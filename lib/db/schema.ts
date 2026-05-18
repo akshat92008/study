@@ -222,3 +222,32 @@ export const studySessions = pgTable('study_sessions', {
   breaksTaken: integer('breaks_taken').default(0),
   notes: text('notes'),
 });
+
+// --- Phase 2: Knowledge Base & Inference ---
+
+export const studentModels = pgTable('student_models', {
+  userId: uuid('user_id').primaryKey().references(() => profiles.id, { onDelete: 'cascade' }),
+  learningStyle: text('learning_style'),
+  strengths: jsonb('strengths').default([]),
+  chronicWeaknesses: jsonb('chronic_weaknesses').default([]),
+  behavioralTraps: jsonb('behavioral_traps').default([]),
+  lastUpdated: timestamp('last_updated').defaultNow(),
+});
+
+export const materials = pgTable('materials', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').references(() => profiles.id, { onDelete: 'cascade' }).notNull(),
+  title: text('title').notNull(),
+  sourceType: text('source_type').default('text'),
+  rawContent: text('raw_content').notNull(),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const materialChunks = pgTable('material_chunks', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').references(() => profiles.id, { onDelete: 'cascade' }).notNull(),
+  materialId: uuid('material_id').references(() => materials.id, { onDelete: 'cascade' }).notNull(),
+  chunkText: text('chunk_text').notNull(),
+  embedding: vector('embedding', { dimensions: 768 }),
+  createdAt: timestamp('created_at').defaultNow(),
+});

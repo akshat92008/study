@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import {
   Brain, Target, RefreshCw, MessageCircle, Calendar,
-  GraduationCap, BarChart3, LayoutDashboard, Zap,
+  GraduationCap, BarChart3, LayoutDashboard, Zap, Database,
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -15,6 +15,7 @@ interface SidebarProps {
 const navItems = [
   { href: '/dashboard', icon: LayoutDashboard, label: 'Command Center', shortcut: '⌘1' },
   { href: '/dashboard/cognition', icon: Brain, label: 'Cognition Graph', shortcut: '⌘2' },
+  { href: '/dashboard/knowledge', icon: Database, label: 'Knowledge Base', shortcut: '⌘9' },
   { href: '/dashboard/mistakes', icon: Target, label: 'Mistake Intelligence', shortcut: '⌘3' },
   { href: '/dashboard/revision', icon: RefreshCw, label: 'Revision Engine', shortcut: '⌘4' },
   { href: '/dashboard/mentor', icon: MessageCircle, label: 'AI Mentor', shortcut: '⌘5' },
