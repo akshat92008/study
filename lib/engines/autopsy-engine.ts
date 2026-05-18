@@ -1,147 +1,124 @@
 import { createClient } from '@/lib/supabase/server';
 import { GoogleGenAI } from '@google/genai';
-import { generateMentorRecovery } from './mentor-engine';
+import { z } from 'zod';
 import { getExamConfig } from '@/lib/utils/constants';
+import { AutopsyPaperSchema, AutopsyQuestionSchema } from './autopsy-schemas';
+import { generateMentorRecovery } from './mentor-engine';
+import { logger } from '@/lib/utils/logger';
 
 type AutopsyFileData =
-  | string
   | { kind: 'text'; text: string }
   | { kind: 'inline'; mimeType: string; data: string };
 
-function extractJSON(text: string) {
-  return text
-    .replace(/```json/g, '')
-    .replace(/```/g, '')
-    .trim();
+type AutopsyQuestion = z.infer<typeof AutopsyQuestionSchema>;
+type ProcessedQuestion = AutopsyQuestion & { marksLost: number };
+
+// Helper: Exponential Backoff for Multimodal Gemini Calls
+async function robustMultimodalExtraction(contents: any[], retries = 3) {
+  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+  let attempt = 0;
+  let delay = 1000;
+
+  while (attempt < retries) {
+    try {
+      const res = await ai.models.generateContent({
+        model: 'gemini-2.5-flash',
+        contents,
+        config: { 
+          responseMimeType: 'application/json',
+          temperature: 0.2, // Low temp for analytical accuracy
+        },
+      });
+
+      const rawText = (res.text || '{}').replace(/```json/gi, '').replace(/```/g, '').trim();
+      const parsed = JSON.parse(rawText);
+      return AutopsyPaperSchema.parse(parsed); // Strict Zod Validation
+
+    } catch (err: any) {
+      attempt++;
+      logger.warn(`Autopsy Extraction Failed (Attempt ${attempt}/${retries})`, { error: err.message });
+      if (attempt >= retries) throw new Error('AI failed to process the document format reliably.');
+      await new Promise(r => setTimeout(r, delay));
+      delay *= 2;
+    }
+  }
+  throw new Error('Unreachable');
 }
 
 export async function processMockAutopsy(userId: string, fileData: AutopsyFileData, testName: string, examType: string = 'NEET') {
   const examConfig = getExamConfig(examType);
-  // Setup API clients
   const supabase = await createClient();
-  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-  const subjectList = examConfig.subjects.join('|');
-  const plainTextPayload =
-    typeof fileData === 'string' ? fileData :
-    fileData.kind === 'text' ? fileData.text :
-    null;
-  
-  // 1. Initial Prompt to parse the mock paper
-  const parsingPrompt = `
-    You are an elite ${examType} exam parsing engine. I have provided a mock test paper, answer key, and possibly student answers/OMR markings.
-    For every question, extract the following into a STRICT JSON array format:
-    [{
-      "questionNumber": 1,
-      "subject": "${subjectList}",
-      "chapter": "Chapter name",
-      "subtopic": "Subtopic if inferable, otherwise null",
-      "difficulty": "Easy|Medium|Hard",
-      "correctAnswer": "A",
-      "studentAnswer": "B", // (If student answers are provided, otherwise null)
-      "status": "Correct|Incorrect|Unattempted"
-    }]
-    Use these exam marking rules: correct = ${examConfig.correctMarks}, incorrect penalty = ${examConfig.negativeMarks}, total marks = ${examConfig.totalMarks}.
-    ONLY output valid JSON. No markdown formatting blocks or explanations.
+  const subjectList = examConfig.subjects.join(', ');
+
+  // 1. Production-Grade OCR & Analysis Prompt
+  const masterPrompt = `
+    You are an elite ${examType} grading and diagnostic engine. 
+    Process the provided mock test submission. It may be a clean PDF, a low-quality scan, an OMR sheet, or contain handwritten scratchpad notes.
+    
+    CRITICAL OCR RULES:
+    - Overcome visual noise. If an OMR bubble is slightly outside the lines but intended, count it.
+    - If a question is entirely illegible, skip it but note it in "overallPaperQuality".
+    
+    ANALYSIS RULES:
+    - Map every readable question to a subject: [${subjectList}] and its specific chapter.
+    - Status MUST be "Correct", "Incorrect", or "Unattempted".
+    - For EVERY "Incorrect" question, assign a STRICT mistakeCategory from: [conceptual, calculation, silly, time_pressure, misread, incomplete_knowledge, overconfidence, anxiety, recall_failure].
+    - Provide a brief "reasoning" for WHY you chose that category based on their scratchpad work or the distractor option they chose.
+    - Assign an "ocrConfidence" score (0-100) indicating how clearly you could read the student's answer.
+    
+    Output strictly adhering to the JSON schema requested. Do not include extra commentary outside the JSON.
   `;
 
-  const contents = plainTextPayload
-    ? `${parsingPrompt}\n\nDocument Data:\n${plainTextPayload}`
-    : [{
-        role: 'user',
-        parts: [
-          {
-            inlineData: {
-              mimeType: (fileData as { kind: 'inline'; mimeType: string; data: string }).mimeType,
-              data: (fileData as { kind: 'inline'; mimeType: string; data: string }).data,
-            },
-          },
-          { text: parsingPrompt },
-        ],
-      }];
+  const contents = fileData.kind === 'text' 
+    ? [{ role: 'user', parts: [{ text: masterPrompt + '\n\nData:\n' + fileData.text }] }]
+    : [{ role: 'user', parts: [{ inlineData: { mimeType: fileData.mimeType, data: fileData.data } }, { text: masterPrompt }] }];
 
-  const rawParseRes = await ai.models.generateContent({
-    model: 'gemini-2.5-flash',
-    contents,
-  });
-  
-  let parsedQuestions = [];
-  try {
-    const rawText = extractJSON(rawParseRes.text || '');
-    parsedQuestions = JSON.parse(rawText);
-  } catch (err) {
-    console.error("JSON parsing failed on OCR output", err);
-    throw new Error('Failed to parse mock paper correctly.');
-  }
+  // Execute Robust Single-Pass Extraction
+  const { questions } = await robustMultimodalExtraction(contents);
 
-  // 2. Secondary Prompt: Root Cause Analysis on incorrect questions
-  const incorrectQs = parsedQuestions.filter((q: any) => q.status === 'Incorrect');
-  
-  const rootCausePrompt = `
-    Analyze the following incorrectly answered questions. As a master diagnostician, categorize the error for each.
-    Assign a 'mistakeCategory' strictly from this list: 
-    ['conceptual', 'calculation', 'silly', 'time_pressure', 'misread', 'incomplete_knowledge', 'overconfidence', 'anxiety', 'recall_failure']
+  // 2. Score Calculation & ROI Engine
+  let totalCorrect = 0, totalIncorrect = 0, totalUnattempted = 0;
+  let recoverableMarks = 0;
+
+  const processedQuestions: ProcessedQuestion[] = questions.map((q: AutopsyQuestion) => {
+    let marksLost = 0;
     
-    Data: ${JSON.stringify(incorrectQs)}
-    
-    Return a JSON array of objects with fields: { questionNumber, mistakeCategory, suggestedFix }.
-    ONLY return valid JSON. No markdown.
-  `;
+    if (q.status === 'Correct') totalCorrect++;
+    else if (q.status === 'Incorrect') {
+      totalIncorrect++;
+      marksLost = examConfig.correctMarks + Math.abs(examConfig.negativeMarks);
+    } else {
+      totalUnattempted++;
+      marksLost = examConfig.correctMarks;
+    }
 
-  const rootCauseRes = await ai.models.generateContent({
-    model: 'gemini-2.5-flash',
-    contents: rootCausePrompt,
+    // Recoverable Engine: High ROI errors
+    if (q.status === 'Incorrect' && q.mistakeCategory && ['silly', 'misread', 'time_pressure', 'recall_failure'].includes(q.mistakeCategory)) {
+      recoverableMarks += marksLost;
+    }
+
+    return { ...q, marksLost };
   });
 
-  let rootCauses = [];
-  try {
-    const rawText = extractJSON(rootCauseRes.text || '');
-    rootCauses = JSON.parse(rawText);
-  } catch (err) {
-    console.warn("Failed root cause analysis JSON", err);
-  }
-
-  // Map root causes back to questions
-  const mappedQuestions = parsedQuestions.map((q: any) => {
-    const cause = rootCauses.find((rc: any) => rc.questionNumber === q.questionNumber);
-    return {
-      ...q,
-      mistakeCategory: cause ? cause.mistakeCategory : (q.status === 'Incorrect' ? 'conceptual' : null),
-      suggestedFix: cause ? cause.suggestedFix : null,
-      marksLost: q.status === 'Incorrect' ? (examConfig.correctMarks + Math.abs(examConfig.negativeMarks)) : (q.status === 'Unattempted' ? examConfig.correctMarks : 0)
-    };
-  });
-
-  // Calculate scores
-  const totalCorrect = mappedQuestions.filter((q: any) => q.status === 'Correct').length;
-  const totalIncorrect = mappedQuestions.filter((q: any) => q.status === 'Incorrect').length;
   const currentScore = (totalCorrect * examConfig.correctMarks) - (totalIncorrect * Math.abs(examConfig.negativeMarks));
-  
-  // Potential score ignores 'silly', 'misread', 'time_pressure' errors
-  const recoverableQs = mappedQuestions.filter((q: any) => 
-    ['silly', 'misread', 'time_pressure', 'recall_failure'].includes(q.mistakeCategory)
-  );
-  
-  const recoverableMarks = recoverableQs.reduce((sum: number, q: any) => sum + q.marksLost, 0);
   const potentialScore = currentScore + recoverableMarks;
 
-  // Insert base autopsy record
-  const { data: autopsyData, error: autopsyErr } = await (await supabase).from('mock_autopsies').insert({
+  // 3. Database Transactions
+  const { data: autopsyData, error: autopsyErr } = await supabase.from('mock_autopsies').insert({
     user_id: userId,
     test_name: testName,
     current_score: currentScore,
     potential_score: potentialScore,
     recoverable_marks: recoverableMarks,
-    total_questions: mappedQuestions.length,
+    total_questions: processedQuestions.length,
     exam_type: examType,
-    ocr_raw_text: plainTextPayload,
-    mentor_insight: "Processing deep mentor insights...",
+    ocr_raw_text: fileData.kind === 'text' ? fileData.text : '[Multimodal Image/PDF]',
     confidence_level: 'High'
   }).select().single();
 
-  if (autopsyErr || !autopsyData) throw new Error('Failed to create autopsy record in database.');
+  if (autopsyErr || !autopsyData) throw new Error('Failed to persist autopsy record.');
 
-  // Insert questions
-  const qRows = mappedQuestions.map((q: any) => ({
+  const qRows = processedQuestions.map((q: ProcessedQuestion) => ({
     autopsy_id: autopsyData.id,
     question_number: q.questionNumber,
     subject: q.subject,
@@ -153,14 +130,19 @@ export async function processMockAutopsy(userId: string, fileData: AutopsyFileDa
     student_answer: q.studentAnswer,
     mistake_category: q.mistakeCategory,
     marks_lost: q.marksLost,
-    suggested_fix: q.suggestedFix
+    suggested_fix: q.reasoning // Mapped reasoning to suggested_fix for DB
   }));
 
-  await (await supabase).from('autopsy_questions').insert(qRows);
+  // Batch insert in chunks to prevent payload size limits on massive tests
+  for (let i = 0; i < qRows.length; i += 50) {
+    await supabase.from('autopsy_questions').insert(qRows.slice(i, i + 50));
+  }
 
-  // Trigger Topper Mentor and Recovery Generation
-  const incorrectQsWithData = mappedQuestions.filter((q: any) => q.status === 'Incorrect');
-  const { mentorQuote, plan } = await generateMentorRecovery(autopsyData.id, currentScore, potentialScore, incorrectQsWithData);
+  // 4. Generate the Recovery Plan
+  const incorrectQs = processedQuestions.filter((q: ProcessedQuestion) => q.status === 'Incorrect');
+  const { mentorQuote, plan } = await generateMentorRecovery(autopsyData.id, currentScore, potentialScore, incorrectQs, examType);
+
+  logger.info(`Autopsy Complete`, { userId, testName, currentScore, potentialScore });
 
   return { autopsyId: autopsyData.id, currentScore, potentialScore, recoverableMarks, mentorQuote, plan };
 }

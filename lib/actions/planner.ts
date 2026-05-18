@@ -2,21 +2,43 @@
 
 import { createClient } from '@/lib/supabase/server';
 import { generateDailyPlan } from '@/lib/ai/agents/planner';
+import { logger } from '@/lib/utils/logger';
 
 export async function getPlanForDate(date: string) {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) return [];
-  return generateDailyPlan(user.id, date);
+  try {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return [];
+    
+    return await generateDailyPlan(user.id, date);
+  } catch (error) {
+    logger.error('Error fetching plan for date', error);
+    return [];
+  }
 }
 
 export async function toggleTask(taskId: string) {
-  const supabase = await createClient();
-  const { data: task } = await supabase.from('study_tasks').select('is_completed').eq('id', taskId).single();
-  if (!task) return;
+  try {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) throw new Error('Unauthorized');
 
-  await supabase.from('study_tasks').update({
-    is_completed: !task.is_completed,
-    completed_at: !task.is_completed ? new Date().toISOString() : null,
-  }).eq('id', taskId);
+    // Secure fetching: ensure task belongs to user
+    const { data: task } = await supabase
+      .from('study_tasks')
+      .select('is_completed')
+      .eq('id', taskId)
+      .eq('user_id', user.id) // IDOR prevention
+      .single();
+      
+    if (!task) return;
+
+    await supabase.from('study_tasks').update({
+      is_completed: !task.is_completed,
+      completed_at: !task.is_completed ? new Date().toISOString() : null,
+    }).eq('id', taskId).eq('user_id', user.id);
+    
+  } catch (error) {
+    logger.error('Error toggling task', error);
+  }
 }

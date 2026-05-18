@@ -1,82 +1,252 @@
 import { createClient } from '@/lib/supabase/server';
 import { generateJSON } from '@/lib/ai/gemini';
+import { logger } from '@/lib/utils/logger';
 
-// Get all concepts for a user, organized by subject
+// Standardized mapping weights
+const MASTERY_WEIGHTS: Record<string, number> = {
+  not_started: 0, exposed: 15, developing: 40, proficient: 70, mastered: 90, automated: 98,
+};
+
+function getMasteryLevel(score: number): 'not_started' | 'exposed' | 'developing' | 'proficient' | 'mastered' | 'automated' {
+  if (score >= 95) return 'automated';
+  if (score >= 85) return 'mastered';
+  if (score >= 60) return 'proficient';
+  if (score >= 25) return 'developing';
+  if (score > 0) return 'exposed';
+  return 'not_started';
+}
+
+// Chapter Syllabus recursive mapping
+const CHAPTER_EXPANSIONS: Record<string, Array<{ topic: string, name: string }>> = {
+  // Physics
+  'Kinematics': [
+    { topic: 'Vectors', name: 'Vector Algebra and Components' },
+    { topic: 'Vectors', name: 'Dot and Cross Products' },
+    { topic: 'Motion in 1D', name: 'Equations of Motion' },
+    { topic: 'Motion in 2D', name: 'Projectile Motion' },
+    { topic: 'Motion in 2D', name: 'Relative Velocity' },
+  ],
+  'Laws of Motion': [
+    { topic: 'Forces', name: 'Newton\'s Laws of Motion' },
+    { topic: 'Forces', name: 'Friction and Friction Coefficients' },
+    { topic: 'Circular Motion', name: 'Banking of Roads and Centripetal Force' },
+  ],
+  'Work, Energy and Power': [
+    { topic: 'Work & Kinetic Energy', name: 'Work-Energy Theorem' },
+    { topic: 'Potential Energy', name: 'Conservative and Non-conservative Forces' },
+    { topic: 'Power & Collisions', name: 'Elastic and Inelastic Collisions' },
+  ],
+  // Chemistry
+  'Some Basic Concepts of Chemistry': [
+    { topic: 'Stoichiometry', name: 'Mole Concept and Molar Mass' },
+    { topic: 'Stoichiometry', name: 'Empirical and Molecular Formulas' },
+  ],
+  'Structure of Atom': [
+    { topic: 'Bohr Model', name: 'Hydrogen Spectrum and Quantum Numbers' },
+    { topic: 'Quantum Mechanics', name: 'Heisenberg Uncertainty Principle' },
+  ],
+  // Biology
+  'The Living World': [
+    { topic: 'Taxonomy', name: 'Binomial Nomenclature' },
+    { topic: 'Taxonomy', name: 'Taxonomic Hierarchy' },
+  ],
+};
+
+// Prerequisite map between seeded micro-concepts
+const PREREQUISITES_MAP: Record<string, string[]> = {
+  'Projectile Motion': ['Vector Algebra and Components', 'Equations of Motion'],
+  'Relative Velocity': ['Vector Algebra and Components'],
+  'Newton\'s Laws of Motion': ['Vector Algebra and Components', 'Equations of Motion'],
+  'Work-Energy Theorem': ['Newton\'s Laws of Motion', 'Equations of Motion'],
+  'Banking of Roads and Centripetal Force': ['Newton\'s Laws of Motion'],
+};
+
 export async function getCognitionGraph(userId: string) {
   const supabase = await createClient();
 
-  const { data: concepts } = await supabase
-    .from('concepts')
-    .select('*')
-    .eq('user_id', userId)
-    .order('subject', { ascending: true });
+  const [conceptsRes, linksRes] = await Promise.all([
+    supabase.from('concepts').select('*').eq('user_id', userId).order('subject', { ascending: true }),
+    supabase.from('concept_links').select('*').eq('user_id', userId)
+  ]);
 
-  const { data: links } = await supabase
-    .from('concept_links')
-    .select('*')
-    .eq('user_id', userId);
+  const concepts = conceptsRes.data || [];
+  const links = linksRes.data || [];
 
-  // Group concepts by subject and chapter
-  const grouped: Record<string, Record<string, any[]>> = {};
-  (concepts || []).forEach((c: any) => {
+  // Deep Hierarchy Grouping: Subject -> Chapter -> Topic -> Concept
+  const grouped: Record<string, Record<string, Record<string, any[]>>> = {};
+
+  // Fetch corresponding FSRS stability curves for all concepts to calculate hybrid decay
+  const { data: cards } = await supabase.from('revision_cards').select('concept_id, stability').eq('user_id', userId);
+  const stabilityMap: Record<string, number> = {};
+  if (cards) {
+    cards.forEach(c => {
+      if (c.concept_id && c.stability > 0) stabilityMap[c.concept_id] = c.stability;
+    });
+  }
+  
+  concepts.forEach((c: any) => {
     if (!grouped[c.subject]) grouped[c.subject] = {};
-    if (!grouped[c.subject][c.chapter]) grouped[c.subject][c.chapter] = [];
-    grouped[c.subject][c.chapter].push(c);
+    if (!grouped[c.subject][c.chapter]) grouped[c.subject][c.chapter] = {};
+    
+    // Fallback if topic is empty
+    const topic = c.topic || 'General';
+    if (!grouped[c.subject][c.chapter][topic]) grouped[c.subject][c.chapter][topic] = [];
+    
+    // Hybrid Decay Engine: Incorporate chronological time decay and FSRS stability metrics
+    if (c.last_reviewed_at) {
+      const daysElapsed = (Date.now() - new Date(c.last_reviewed_at).getTime()) / (1000 * 60 * 60 * 24);
+      const stability = stabilityMap[c.id];
+      
+      if (stability) {
+        // FSRS Forgetting Equation: R = exp(ln(0.9) * D / S)
+        const retention = Math.exp(Math.log(0.9) * daysElapsed / stability);
+        c.live_forgetting_probability = Math.min(0.99, Math.max(0, 1 - retention));
+      } else {
+        // Chronological Ebbinghaus Decay
+        c.live_forgetting_probability = Math.min(0.99, Math.max(0, 1 - (c.retention_strength * Math.exp(-0.1 * daysElapsed))));
+      }
+    } else {
+      c.live_forgetting_probability = 1.0;
+    }
+
+    grouped[c.subject][c.chapter][topic].push(c);
   });
 
-  // Calculate mastery stats
-  const stats = {
-    total: concepts?.length || 0,
-    mastered: concepts?.filter((c: any) => c.mastery === 'mastered' || c.mastery === 'automated').length || 0,
-    proficient: concepts?.filter((c: any) => c.mastery === 'proficient').length || 0,
-    developing: concepts?.filter((c: any) => c.mastery === 'developing').length || 0,
-    weak: concepts?.filter((c: any) => c.mastery === 'exposed' || c.mastery === 'not_started').length || 0,
-    overallMastery: 0,
-  };
-  if (stats.total > 0) {
-    const masteryValues: Record<string, number> = {
-      not_started: 0, exposed: 15, developing: 40, proficient: 70, mastered: 90, automated: 98,
-    };
-    const sum = (concepts || []).reduce((acc: number, c: any) => acc + (masteryValues[c.mastery] || 0), 0);
-    stats.overallMastery = Math.round(sum / stats.total);
+  // Calculate global stats
+  const total = concepts.length;
+  const mastered = concepts.filter((c: any) => c.mastery === 'mastered' || c.mastery === 'automated').length;
+  const developing = concepts.filter((c: any) => c.mastery === 'developing').length;
+  const weak = concepts.filter((c: any) => c.mastery === 'exposed' || c.mastery === 'not_started').length;
+  
+  let overallMastery = 0;
+  if (total > 0) {
+    const sum = concepts.reduce((acc: number, c: any) => acc + (MASTERY_WEIGHTS[c.mastery] || 0), 0);
+    overallMastery = Math.round(sum / total);
   }
 
-  return { concepts: concepts || [], links: links || [], grouped, stats };
+  const stats = {
+    total,
+    mastered,
+    developing,
+    weak,
+    overallMastery,
+  };
+
+  // Detect Weak Clusters (Chapters where avg mastery < 40%)
+  const weakClusters: Array<{ subject: string, chapter: string, mastery: number }> = [];
+  for (const subject in grouped) {
+    for (const chapter in grouped[subject]) {
+      let chapterSum = 0;
+      let chapterTotal = 0;
+      for (const topic in grouped[subject][chapter]) {
+        grouped[subject][chapter][topic].forEach(c => {
+          chapterSum += MASTERY_WEIGHTS[c.mastery] || 0;
+          chapterTotal++;
+        });
+      }
+      const avg = chapterTotal > 0 ? chapterSum / chapterTotal : 0;
+      if (avg < 40) {
+        weakClusters.push({ subject, chapter, mastery: Math.round(avg) });
+      }
+    }
+  }
+
+  return {
+    concepts: concepts || [],
+    links: links || [],
+    grouped,
+    stats,
+    weakClusters,
+  };
 }
 
-// Initialize concepts for a subject (bulk seed from any exam's chapters)
+// Deep Syllabus Recursive Seeding Engine
 export async function seedConceptsForSubject(userId: string, subject: string, chapters: string[]) {
   const supabase = await createClient();
+  const conceptRows: any[] = [];
 
-  const conceptRows = chapters.map((chapter) => ({
-    user_id: userId,
-    name: chapter,
-    subject,
-    chapter,
-    topic: '',
-    mastery: 'not_started' as const,
-    confidence: 'low' as const,
-  }));
+  chapters.forEach((chapter) => {
+    const expansions = CHAPTER_EXPANSIONS[chapter];
+    if (expansions && expansions.length > 0) {
+      expansions.forEach((exp) => {
+        conceptRows.push({
+          user_id: userId,
+          name: exp.name,
+          subject,
+          chapter,
+          topic: exp.topic,
+          mastery: 'not_started',
+          confidence: 'low',
+          times_reviewed: 0,
+          times_correct: 0,
+          times_incorrect: 0,
+          forgetting_probability: 1.0,
+          retention_strength: 0.0,
+        });
+      });
+    } else {
+      // Fallback general concept if no specific subtopics mapped
+      conceptRows.push({
+        user_id: userId,
+        name: chapter,
+        subject,
+        chapter,
+        topic: 'General',
+        mastery: 'not_started',
+        confidence: 'low',
+        times_reviewed: 0,
+        times_correct: 0,
+        times_incorrect: 0,
+        forgetting_probability: 1.0,
+        retention_strength: 0.0,
+      });
+    }
+  });
 
-  const { data, error } = await supabase.from('concepts').insert(conceptRows).select();
-  if (error) throw error;
-  return data;
+  const { data: inserted, error } = await supabase.from('concepts').insert(conceptRows).select();
+  if (error || !inserted) {
+    logger.error('Failed to seed subject concepts', { error });
+    throw error || new Error('Seeding failed');
+  }
+
+  // Auto-generate prerequisite dependency links inside concept_links
+  const conceptMap: Record<string, string> = {};
+  inserted.forEach((c: any) => {
+    conceptMap[c.name] = c.id;
+  });
+
+  const linkRows: any[] = [];
+  inserted.forEach((c: any) => {
+    const prereqs = PREREQUISITES_MAP[c.name];
+    if (prereqs) {
+      prereqs.forEach((prereqName) => {
+        const sourceId = conceptMap[prereqName];
+        if (sourceId) {
+          linkRows.push({
+            user_id: userId,
+            source_concept_id: sourceId,
+            target_concept_id: c.id,
+            link_type: 'prerequisite',
+            strength: 0.8,
+          });
+        }
+      });
+    }
+  });
+
+  if (linkRows.length > 0) {
+    await supabase.from('concept_links').insert(linkRows);
+  }
+
+  logger.info(`Recursively seeded ${inserted.length} micro-concepts and established prerequisite dependencies`, { userId, subject });
+  return inserted;
 }
 
-// Update concept mastery after a quiz/review
-export async function updateConceptMastery(
-  conceptId: string,
-  correct: boolean,
-  timeSpent: number
-) {
+// Unified State Updater Recalculating Local, Chapter, and Prerequisite nodes
+export async function updateConceptState(conceptId: string, correct: boolean, timeSpent: number) {
   const supabase = await createClient();
 
-  const { data: concept } = await supabase
-    .from('concepts')
-    .select('*')
-    .eq('id', conceptId)
-    .single();
-
+  const { data: concept } = await supabase.from('concepts').select('*').eq('id', conceptId).single();
   if (!concept) return;
 
   const newReviewed = (concept.times_reviewed || 0) + 1;
@@ -84,15 +254,11 @@ export async function updateConceptMastery(
   const newIncorrect = (concept.times_incorrect || 0) + (correct ? 0 : 1);
   const accuracy = newCorrect / newReviewed;
 
-  // Calculate new mastery level
-  let newMastery = concept.mastery;
-  if (accuracy >= 0.95 && newReviewed >= 5) newMastery = 'automated';
-  else if (accuracy >= 0.85 && newReviewed >= 4) newMastery = 'mastered';
-  else if (accuracy >= 0.7 && newReviewed >= 3) newMastery = 'proficient';
-  else if (accuracy >= 0.4 && newReviewed >= 2) newMastery = 'developing';
-  else if (newReviewed >= 1) newMastery = 'exposed';
+  // mastery level mapping
+  const newMastery = getMasteryLevel(accuracy * 100);
 
-  // Calculate forgetting probability (simplified Ebbinghaus)
+  // Chronological Ebbinghaus variables
+  const now = new Date();
   const daysSinceReview = concept.last_reviewed_at
     ? (Date.now() - new Date(concept.last_reviewed_at).getTime()) / (1000 * 60 * 60 * 24)
     : 999;
@@ -105,11 +271,34 @@ export async function updateConceptMastery(
     times_incorrect: newIncorrect,
     mastery: newMastery,
     confidence: accuracy >= 0.8 ? 'high' : accuracy >= 0.5 ? 'medium' : 'low',
-    last_reviewed_at: new Date().toISOString(),
+    last_reviewed_at: now.toISOString(),
     retention_strength: retentionStrength,
     forgetting_probability: forgettingProbability,
-    updated_at: new Date().toISOString(),
+    updated_at: now.toISOString(),
   }).eq('id', conceptId);
+
+  // Recalculate and update strengths of prerequisite links where concept is target
+  const { data: inboundLinks } = await supabase.from('concept_links').select('*').eq('target_concept_id', conceptId);
+  if (inboundLinks && inboundLinks.length > 0) {
+    const linkUpdates = inboundLinks.map((l: any) => {
+      // If student was correct, the dependency was successfully recalled (boost strength)
+      // If incorrect, the link strength decays representing a fragile dependency chain
+      const newStrength = correct 
+        ? Math.min(1.0, l.strength + 0.05) 
+        : Math.max(0.1, l.strength - 0.15);
+
+      return supabase.from('concept_links').update({ strength: newStrength }).eq('id', l.id);
+    });
+    
+    await Promise.all(linkUpdates);
+  }
+
+  logger.info('Concept Graph State Updated', { conceptId, correct, newMastery, accuracy });
+}
+
+// Backward-compatible alias for existing callers
+export async function updateConceptMastery(conceptId: string, correct: boolean, timeSpent: number) {
+  return updateConceptState(conceptId, correct, timeSpent);
 }
 
 // AI analysis of cognition state

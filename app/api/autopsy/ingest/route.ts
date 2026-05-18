@@ -1,55 +1,74 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { processMockAutopsy } from '@/lib/engines/autopsy-engine';
+import { logger, safeError } from '@/lib/utils/logger';
+
+// Hard limits for production stability
+const MAX_FILE_SIZE = 6 * 1024 * 1024; // 6 MB limit for Vercel Hobby/Pro stability
+const ALLOWED_MIME_TYPES = new Set([
+  'application/pdf', 
+  'text/plain', 
+  'text/markdown',
+  'image/jpeg', 
+  'image/png', 
+  'image/webp'
+]);
 
 export async function POST(request: Request) {
   try {
     const supabase = await createClient();
     const { data: { user }, error: authError } = await supabase.auth.getUser();
 
-    if (authError || !user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
+    if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
     const formData = await request.formData();
-    const file = formData.get('file') as File;
-    const testName = formData.get('testName') as string || 'Mock Test Autopsy';
-    let examType = (formData.get('examType') as string | null) || '';
+    const file = formData.get('file') as File | null;
+    let testName = formData.get('testName') as string || 'Mock Test Autopsy';
+    
+    // Fallback: Strip extensions from filename for cleaner UI display
+    testName = testName.replace(/\.[^/.]+$/, "");
     
     if (!file) {
       return NextResponse.json({ error: 'No file provided' }, { status: 400 });
     }
 
-    if (!examType) {
-      const { data: profile } = await supabase
-        .from('profiles')
-        .select('exam_type')
-        .eq('id', user.id)
-        .single();
-      examType = profile?.exam_type || 'NEET';
+    // 1. Upload Validation: Size
+    if (file.size > MAX_FILE_SIZE) {
+      logger.warn('Upload rejected: File too large', { userId: user.id, size: file.size });
+      return NextResponse.json({ error: 'File size exceeds 6MB limit. Please compress your PDF or image.' }, { status: 413 });
     }
 
-    // Determine how to extract content based on file type
+    // 2. Upload Validation: MIME Type
     const mimeType = file.type || 'text/plain';
-    let fileData:
-      | { kind: 'text'; text: string }
-      | { kind: 'inline'; mimeType: string; data: string };
+    if (!ALLOWED_MIME_TYPES.has(mimeType)) {
+      logger.warn('Upload rejected: Invalid MIME', { userId: user.id, type: mimeType });
+      return NextResponse.json({ error: 'Unsupported file type. Please upload a PDF, TXT, or Image.' }, { status: 415 });
+    }
 
-    if (mimeType === 'text/plain' || mimeType === 'text/markdown') {
+    // 3. Buffer Safely
+    let fileData: { kind: 'text'; text: string } | { kind: 'inline'; mimeType: string; data: string };
+
+    if (mimeType.startsWith('text/')) {
       fileData = { kind: 'text', text: await file.text() };
-    } else if (mimeType === 'application/pdf' || mimeType.startsWith('image/')) {
+    } else {
       const arrayBuffer = await file.arrayBuffer();
       const base64 = Buffer.from(arrayBuffer).toString('base64');
       fileData = { kind: 'inline', mimeType, data: base64 };
-    } else {
-      fileData = { kind: 'text', text: await file.text() };
     }
 
-    const result = await processMockAutopsy(user.id, fileData, testName, examType || 'NEET');
+    // 4. Fetch User's Exam Type Context
+    const { data: profile } = await supabase.from('profiles').select('exam_type').eq('id', user.id).single();
+    const examType = profile?.exam_type || 'NEET';
+
+    // 5. Process
+    logger.info('Starting Mock Autopsy Processing', { userId: user.id, testName, mimeType });
+    
+    const result = await processMockAutopsy(user.id, fileData, testName, examType);
 
     return NextResponse.json(result);
+
   } catch (error: any) {
-    console.error('Autopsy API Error:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    const safeResponse = safeError(error);
+    return NextResponse.json(safeResponse, { status: 500 });
   }
 }

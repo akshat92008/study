@@ -1,5 +1,22 @@
+import { z } from 'zod';
 import { createClient } from '@/lib/supabase/server';
 import { generateJSON } from '@/lib/ai/gemini';
+
+// Zod schema matching the expected mistake analysis structure
+const AnalyzeMistakeSchema = z.object({
+  rootCause: z.string(),
+  knowledgeGap: z.string(),
+  remediation: z.string(),
+  prevention: z.string(),
+});
+
+// Zod schema matching the expected comprehensive mark-loss report structure
+const MarkLossReportSchema = z.object({
+  biggestLeak: z.string(),
+  recoveryPlan: z.array(z.string()),
+  estimatedImprovement: z.number(),
+  overallAssessment: z.string(),
+});
 
 export async function getMistakeAnalytics(userId: string) {
   const supabase = await createClient();
@@ -37,7 +54,7 @@ export async function getMistakeAnalytics(userId: string) {
   return { mistakes, patterns: patternArray, totalMarksLost, examType };
 }
 
-// AI-powered deep analysis of a single mistake
+// AI-powered deep analysis of a single mistake (hardened with Zod validation)
 export async function analyzeMistake(mistake: any) {
   const questionText = mistake.question_text || mistake.questionText || 'Not provided';
   const userAnswer = mistake.user_answer || mistake.userAnswer || 'Not provided';
@@ -68,10 +85,15 @@ Respond as JSON:
   "prevention": "..."
 }`;
 
-  return generateJSON('flash', 'You are an expert exam analyst and cognitive psychologist.', prompt);
+  return generateJSON(
+    'flash',
+    'You are an expert exam analyst and cognitive psychologist.',
+    prompt,
+    AnalyzeMistakeSchema
+  );
 }
 
-// Generate comprehensive mark-loss report
+// Generate comprehensive mark-loss report (hardened with Zod validation)
 export async function generateMarkLossReport(userId: string) {
   const { mistakes, patterns, totalMarksLost } = await getMistakeAnalytics(userId);
   if (mistakes.length === 0) return null;
@@ -105,5 +127,10 @@ Respond as JSON:
   "overallAssessment": "2-3 sentence summary"
 }`;
 
-  return generateJSON('pro', `You are an elite ${examType} exam strategist who gives brutally honest, data-driven advice.`, prompt);
+  return generateJSON(
+    'pro',
+    `You are an elite ${examType} exam strategist who gives brutally honest, data-driven advice.`,
+    prompt,
+    MarkLossReportSchema
+  );
 }

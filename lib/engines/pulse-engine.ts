@@ -1,155 +1,127 @@
 import { createClient } from '@/lib/supabase/server';
+import { logger } from '@/lib/utils/logger';
 
-type EmotionalState = 'focused' | 'motivated' | 'stressed' | 'burnt_out' | 'anxious' | 'frustrated' | 'confident' | 'overwhelmed' | 'bored' | 'neutral';
+// Safe, friction-based cognitive states (Mapped to existing safe DB enums)
+// focused = High Momentum
+// neutral = Steady
+// frustrated = High Friction (Repeated mistakes)
+// overwhelmed = Cognitive Overload (Accuracy drops, abandonment)
+export type CognitiveState = 'focused' | 'neutral' | 'frustrated' | 'overwhelmed';
 
-interface AdaptiveConfig {
+export interface PulseAdaptationConfig {
   maxDailyTasks: number;
-  difficultyLevel: 'easy' | 'medium' | 'hard';
-  breakFrequencyMinutes: number;
+  taskIntensity: 'light' | 'moderate' | 'intense';
+  explanationDepth: 'concise' | 'standard' | 'step-by-step';
   workloadMultiplier: number;
   uiMessage: string;
-  uiTone: 'push' | 'encourage' | 'calm' | 'rest';
 }
 
-const ADAPTIVE_CONFIGS: Record<EmotionalState, AdaptiveConfig> = {
-  focused: {
-    maxDailyTasks: 12, difficultyLevel: 'hard', breakFrequencyMinutes: 60,
-    workloadMultiplier: 1.2, uiMessage: "You're in the zone. Let's tackle the hardest topics now.",
-    uiTone: 'push',
+const FRICTION_CONFIGS: Record<CognitiveState, PulseAdaptationConfig> = {
+  focused: { // High Momentum
+    maxDailyTasks: 12, taskIntensity: 'intense', explanationDepth: 'concise',
+    workloadMultiplier: 1.2, uiMessage: "Momentum is high. Queuing challenging concepts."
   },
-  motivated: {
-    maxDailyTasks: 10, difficultyLevel: 'hard', breakFrequencyMinutes: 50,
-    workloadMultiplier: 1.1, uiMessage: "Energy is high — capitalize on it. Hard chapter time.",
-    uiTone: 'push',
+  neutral: { // Steady
+    maxDailyTasks: 8, taskIntensity: 'moderate', explanationDepth: 'standard',
+    workloadMultiplier: 1.0, uiMessage: "Steady learning velocity. Proceeding with standard mission."
   },
-  confident: {
-    maxDailyTasks: 10, difficultyLevel: 'hard', breakFrequencyMinutes: 55,
-    workloadMultiplier: 1.0, uiMessage: "Confidence is good. Don't confuse it with mastery — verify with practice.",
-    uiTone: 'encourage',
+  frustrated: { // High Friction (Stuck on concepts)
+    maxDailyTasks: 6, taskIntensity: 'light', explanationDepth: 'step-by-step',
+    workloadMultiplier: 0.7, uiMessage: "High study friction detected. Shifting to step-by-step review mode."
   },
-  neutral: {
-    maxDailyTasks: 8, difficultyLevel: 'medium', breakFrequencyMinutes: 45,
-    workloadMultiplier: 1.0, uiMessage: "Steady state. Follow the plan.",
-    uiTone: 'encourage',
-  },
-  stressed: {
-    maxDailyTasks: 6, difficultyLevel: 'medium', breakFrequencyMinutes: 35,
-    workloadMultiplier: 0.7, uiMessage: "I've reduced your workload today. Focus on what you know — build momentum.",
-    uiTone: 'calm',
-  },
-  anxious: {
-    maxDailyTasks: 5, difficultyLevel: 'easy', breakFrequencyMinutes: 30,
-    workloadMultiplier: 0.6, uiMessage: "Deep breath. You're further ahead than you think. Let's do easy wins today.",
-    uiTone: 'calm',
-  },
-  frustrated: {
-    maxDailyTasks: 6, difficultyLevel: 'easy', breakFrequencyMinutes: 30,
-    workloadMultiplier: 0.65, uiMessage: "Switch approach. Let's try different topics and come back to this fresh.",
-    uiTone: 'calm',
-  },
-  overwhelmed: {
-    maxDailyTasks: 4, difficultyLevel: 'easy', breakFrequencyMinutes: 25,
-    workloadMultiplier: 0.5, uiMessage: "You don't need to do everything today. Just 3 things. That's enough.",
-    uiTone: 'rest',
-  },
-  burnt_out: {
-    maxDailyTasks: 3, difficultyLevel: 'easy', breakFrequencyMinutes: 20,
-    workloadMultiplier: 0.3, uiMessage: "Your brain needs recovery. Light revision only. Take a walk. You'll be sharper tomorrow.",
-    uiTone: 'rest',
-  },
-  bored: {
-    maxDailyTasks: 8, difficultyLevel: 'hard', breakFrequencyMinutes: 40,
-    workloadMultiplier: 0.9, uiMessage: "Bored? That means it's too easy. Let's challenge you with harder problems.",
-    uiTone: 'push',
-  },
+  overwhelmed: { // Cognitive Overload (Fatigue)
+    maxDailyTasks: 4, taskIntensity: 'light', explanationDepth: 'standard',
+    workloadMultiplier: 0.5, uiMessage: "Cognitive overload detected. Reducing daily targets to prioritize retention over speed."
+  }
 };
 
-// Detect emotional state from behavioral signals
-export async function detectEmotionalState(userId: string): Promise<{ state: EmotionalState; confidence: number }> {
+export async function detectStudyFriction(userId: string): Promise<{ state: CognitiveState; confidence: number }> {
   const supabase = await createClient();
 
-  // Signal 1: Recent self-reported mood (highest weight)
-  const { data: recentPulse } = await supabase
-    .from('pulse_signals')
-    .select('emotional_state, confidence')
-    .eq('user_id', userId)
-    .eq('signal_type', 'self_report')
-    .order('created_at', { ascending: false })
-    .limit(1)
-    .single();
+  try {
+    // 1. Fetch Deep Telemetry (Last 48 Hours)
+    const [snapshotsRes, sessionsRes, tasksRes, mistakesRes] = await Promise.all([
+      supabase.from('performance_snapshots').select('accuracy').eq('user_id', userId).order('date', { ascending: false }).limit(3),
+      supabase.from('study_sessions').select('duration_minutes').eq('user_id', userId).order('started_at', { ascending: false }).limit(5),
+      supabase.from('study_tasks').select('scheduled_date, completed_at').eq('user_id', userId).eq('is_completed', true).order('completed_at', { ascending: false }).limit(10),
+      supabase.from('mistakes').select('occurrence_count').eq('user_id', userId).order('created_at', { ascending: false }).limit(10)
+    ]);
 
-  if (recentPulse) {
-    const hoursSince = 2; // If self-reported within last 2 hours, trust it fully
-    return { state: recentPulse.emotional_state as EmotionalState, confidence: recentPulse.confidence || 0.9 };
+    let frictionScore = 0; // 0 = High Momentum, 10 = Severe Overload
+    
+    // Signal A: Accuracy Drops (Weight: +3)
+    const accuracies = (snapshotsRes.data || []).map(s => s.accuracy || 0);
+    if (accuracies.length >= 2 && accuracies[0] < accuracies[1] - 0.15) frictionScore += 3;
+    else if (accuracies[0] < 0.5) frictionScore += 2;
+
+    // Signal B: Session Abandonment (Weight: +3)
+    // Multiple sessions under 5 minutes indicates inability to focus/engage
+    const sessions = sessionsRes.data || [];
+    const abandonedSessions = sessions.filter(s => (s.duration_minutes || 0) < 5).length;
+    if (abandonedSessions >= 2) frictionScore += 3;
+
+    // Signal C: Delayed Completion (Weight: +2)
+    const tasks = tasksRes.data || [];
+    let delayedTasks = 0;
+    tasks.forEach(t => {
+      if (t.completed_at && t.scheduled_date) {
+        const diffHours = (new Date(t.completed_at).getTime() - new Date(t.scheduled_date).getTime()) / (1000 * 60 * 60);
+        if (diffHours > 24) delayedTasks++; // Completed a day late
+      }
+    });
+    if (delayedTasks >= 3) frictionScore += 2;
+
+    // Signal D: Repeated Mistakes (Weight: +2)
+    const mistakes = mistakesRes.data || [];
+    const repeated = mistakes.filter(m => (m.occurrence_count || 1) > 1).length;
+    if (repeated >= 3) frictionScore += 2;
+
+    // 2. Map Friction Score to Safe Cognitive State
+    let determinedState: CognitiveState = 'neutral';
+    if (frictionScore >= 7) determinedState = 'overwhelmed';
+    else if (frictionScore >= 4) determinedState = 'frustrated';
+    else if (frictionScore === 0 && (accuracies[0] || 0) > 0.8) determinedState = 'focused';
+
+    logger.info('PULSE Friction Telemetry Calculated', { userId, frictionScore, determinedState });
+
+    return { state: determinedState, confidence: 0.85 };
+
+  } catch (error) {
+    logger.error('Failed to calculate PULSE friction', error);
+    return { state: 'neutral', confidence: 0.1 }; // Safe fallback
   }
-
-  // Signal 2: Performance trend analysis
-  const { data: recentSnapshots } = await supabase
-    .from('performance_snapshots')
-    .select('accuracy, focus_score, study_minutes, emotional_state')
-    .eq('user_id', userId)
-    .order('date', { ascending: false })
-    .limit(5);
-
-  if (recentSnapshots && recentSnapshots.length >= 3) {
-    const avgAccuracy = recentSnapshots.reduce((s: number, r: any) => s + (r.accuracy || 0), 0) / recentSnapshots.length;
-    const avgFocus = recentSnapshots.reduce((s: number, r: any) => s + (r.focus_score || 50), 0) / recentSnapshots.length;
-    const avgStudyMins = recentSnapshots.reduce((s: number, r: any) => s + (r.study_minutes || 0), 0) / recentSnapshots.length;
-
-    // Declining accuracy + low focus = stressed/burnt_out
-    if (avgAccuracy < 0.4 && avgFocus < 30) return { state: 'burnt_out', confidence: 0.6 };
-    if (avgAccuracy < 0.5 && avgFocus < 50) return { state: 'stressed', confidence: 0.55 };
-    if (avgAccuracy > 0.8 && avgFocus > 70) return { state: 'focused', confidence: 0.65 };
-    if (avgAccuracy > 0.7 && avgStudyMins > 120) return { state: 'motivated', confidence: 0.6 };
-  }
-
-  // Signal 3: Session pattern (have they been studying consistently?)
-  const { data: recentSessions } = await supabase
-    .from('study_sessions')
-    .select('duration_minutes, focus_score')
-    .eq('user_id', userId)
-    .order('started_at', { ascending: false })
-    .limit(3);
-
-  if (recentSessions && recentSessions.length > 0) {
-    const avgDuration = recentSessions.reduce((s: number, r: any) => s + (r.duration_minutes || 0), 0) / recentSessions.length;
-    if (avgDuration < 15) return { state: 'overwhelmed', confidence: 0.45 };
-  }
-
-  // Default: neutral
-  return { state: 'neutral', confidence: 0.3 };
 }
 
-// Get adaptive configuration based on current mental state
-export function getAdaptiveConfig(state: EmotionalState): AdaptiveConfig {
-  return ADAPTIVE_CONFIGS[state] || ADAPTIVE_CONFIGS.neutral;
+export function getAdaptiveConfig(state: CognitiveState): PulseAdaptationConfig {
+  return FRICTION_CONFIGS[state] || FRICTION_CONFIGS.neutral;
 }
 
-// Log a pulse signal (self-report or automated)
-export async function logPulseSignal(
-  userId: string,
-  signalType: 'self_report' | 'session_pattern' | 'performance_trend',
-  emotionalState: EmotionalState,
-  extras?: { sessionDurationMinutes?: number; recentAccuracy?: number; interactionCount?: number; notes?: string }
-) {
+export async function logPulseSignal(userId: string, state: CognitiveState) {
   const supabase = await createClient();
 
+  // Log as purely academic telemetry (no clinical data)
   await supabase.from('pulse_signals').insert({
     user_id: userId,
-    signal_type: signalType,
-    emotional_state: emotionalState,
-    confidence: signalType === 'self_report' ? 0.95 : 0.5,
-    session_duration_minutes: extras?.sessionDurationMinutes,
-    recent_accuracy: extras?.recentAccuracy,
-    interaction_count: extras?.interactionCount,
-    notes: extras?.notes,
+    signal_type: 'self_report',
+    emotional_state: state, // Using existing DB enum safely
+    confidence: 0.95,
   });
 
-  // Also update the profile's current emotional state
+  // Update profile
   await supabase.from('profiles').update({
-    emotional_state: emotionalState,
+    emotional_state: state,
     last_active_at: new Date().toISOString(),
   }).eq('id', userId);
 
-  return { state: emotionalState, config: getAdaptiveConfig(emotionalState) };
+  return { state, config: getAdaptiveConfig(state) };
+}
+
+// ==========================================
+// Backward Compatibility Aliases for Safety
+// ==========================================
+export type EmotionalState = CognitiveState;
+export type AdaptiveConfig = PulseAdaptationConfig;
+
+export async function detectEmotionalState(userId: string): Promise<{ state: CognitiveState; confidence: number }> {
+  return detectStudyFriction(userId);
 }
