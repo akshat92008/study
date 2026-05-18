@@ -7,48 +7,91 @@ import { EXAM_REGISTRY, getExamConfig } from '@/lib/utils/constants';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
-import { Zap, ArrowRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Zap, ArrowRight, Upload, Brain, Check } from 'lucide-react';
 
 export default function OnboardingPage() {
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
   const [formState, setFormState] = useState({
     examType: 'NEET', targetYear: '2026', targetScore: '', studyHours: '8',
   });
-  const router = useRouter();
+  const [weakSpots, setWeakSpots] = useState<Record<string, string[]>>({});
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [result, setResult] = useState<{ seeded: number; tasksCreated: number } | null>(null);
 
   const examConfig = getExamConfig(formState.examType);
 
+  const toggleWeakChapter = (subject: string, chapter: string) => {
+    setWeakSpots(prev => {
+      const current = prev[subject] || [];
+      const next = current.includes(chapter)
+        ? current.filter(c => c !== chapter)
+        : [...current, chapter];
+      return { ...prev, [subject]: next };
+    });
+  };
+
+  async function handleUpload() {
+    if (!uploadedFile) { setStep(3); return; }
+    // Ingest uploaded material
+    const formData = new FormData();
+    formData.append('file', uploadedFile);
+    try {
+      await fetch('/api/ingest', { method: 'POST', body: formData });
+    } catch { /* non-critical */ }
+    setStep(3);
+  }
+
   async function handleComplete() {
     setLoading(true);
-    const fd = new FormData();
-    Object.entries(formState).forEach(([k, v]) => fd.set(k, v));
-    await completeOnboarding(fd);
-    router.push('/dashboard');
+    try {
+      const res = await completeOnboarding(
+        '', // userId is resolved server-side from the session
+        formState.examType,
+        parseInt(formState.targetYear),
+        weakSpots
+      );
+      setResult(res);
+      setStep(4); // magic moment
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   }
+
+  const totalWeak = Object.values(weakSpots).reduce((sum, arr) => sum + arr.length, 0);
 
   const steps = [
     // Step 0: Welcome
-    <div key={0} style={{ textAlign: 'center' }}>
+    <motion.div key={0} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} style={{ textAlign: 'center' }}>
       <div style={{
-        width: 64, height: 64, borderRadius: 'var(--radius-lg)', margin: '0 auto var(--sp-6)',
+        width: 72, height: 72, borderRadius: 'var(--radius-xl)', margin: '0 auto var(--sp-6)',
         background: 'linear-gradient(135deg, var(--accent-blue), var(--accent-purple))',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-      }}><Zap size={32} color="white" /></div>
-      <h2 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-bold)', marginBottom: 'var(--sp-2)' }}>
+        boxShadow: 'var(--shadow-glow-blue)',
+      }}><Zap size={36} color="white" /></div>
+      <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-black)', marginBottom: 'var(--sp-2)' }}>
         Welcome to <span style={{ color: 'var(--accent-blue)' }}>Cognition OS</span>
       </h2>
-      <p style={{ color: 'var(--text-secondary)', marginBottom: 'var(--sp-6)', maxWidth: 400, margin: '0 auto var(--sp-6)' }}>
-        Let's set up your AI academic operating system. This takes 30 seconds.
+      <p style={{ color: 'var(--text-secondary)', marginBottom: 'var(--sp-8)', maxWidth: 400, margin: '0 auto var(--sp-8)' }}>
+        Your AI academic operating system. 60 seconds to set up. A lifetime of strategic advantage.
       </p>
       <Button onClick={() => setStep(1)} size="lg">Get Started <ArrowRight size={18} /></Button>
-    </div>,
+    </motion.div>,
+
     // Step 1: Exam & Target
-    <div key={1} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
-      <h2 style={{ fontSize: 'var(--fs-lg)', fontWeight: 'var(--fw-bold)' }}>Your Learning Goal</h2>
+    <motion.div key={1} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
+      <div>
+        <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--accent-cyan)', fontWeight: 'var(--fw-bold)', textTransform: 'uppercase', letterSpacing: 'var(--ls-ultra)', marginBottom: 'var(--sp-1)' }}>Step 1 of 4</div>
+        <h2 style={{ fontSize: 'var(--fs-lg)', fontWeight: 'var(--fw-bold)' }}>What are you working toward?</h2>
+      </div>
       <div>
         <label style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)', display: 'block', marginBottom: 'var(--sp-1)' }}>Exam Type</label>
-        <select value={formState.examType} onChange={e => setFormState(p => ({ ...p, examType: e.target.value, targetScore: '' }))} style={{
+        <select value={formState.examType} onChange={e => setFormState(p => ({ ...p, examType: e.target.value }))} style={{
           width: '100%', padding: 'var(--sp-3)', background: 'var(--bg-primary)', color: 'var(--text-primary)',
           border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', fontSize: 'var(--fs-base)',
         }}>
@@ -61,16 +104,115 @@ export default function OnboardingPage() {
         </p>
       </div>
       <Input label="Target Year" type="number" value={formState.targetYear}
-        onChange={e => setFormState(p => ({ ...p, targetYear: e.target.value }))} />
+        onChange={(e: any) => setFormState(p => ({ ...p, targetYear: e.target.value }))} />
       <Input label="Target Score" type="number" value={formState.targetScore}
-        onChange={e => setFormState(p => ({ ...p, targetScore: e.target.value }))}
+        onChange={(e: any) => setFormState(p => ({ ...p, targetScore: e.target.value }))}
         placeholder={`Out of ${examConfig.totalMarks}`} />
-      <Input label="Study Hours Per Day" type="number" value={formState.studyHours}
-        onChange={e => setFormState(p => ({ ...p, studyHours: e.target.value }))} />
-      <Button onClick={handleComplete} isLoading={loading} size="lg" style={{ marginTop: 'var(--sp-4)' }}>
+      <Button onClick={() => setStep(2)} size="lg" style={{ marginTop: 'var(--sp-2)' }}>
+        Next <ArrowRight size={18} />
+      </Button>
+    </motion.div>,
+
+    // Step 2: Upload Material
+    <motion.div key={2} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
+      <div>
+        <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--accent-cyan)', fontWeight: 'var(--fw-bold)', textTransform: 'uppercase', letterSpacing: 'var(--ls-ultra)', marginBottom: 'var(--sp-1)' }}>Step 2 of 4</div>
+        <h2 style={{ fontSize: 'var(--fs-lg)', fontWeight: 'var(--fw-bold)' }}>Upload your study material</h2>
+        <p style={{ color: 'var(--text-tertiary)', fontSize: 'var(--fs-sm)' }}>PDF, notes, textbook chapters — the AI will learn from your material.</p>
+      </div>
+      <div style={{
+        border: '2px dashed var(--border-default)', borderRadius: 'var(--radius-lg)',
+        padding: 'var(--sp-10)', textAlign: 'center', cursor: 'pointer',
+        background: uploadedFile ? 'var(--success-dim)' : 'var(--bg-tertiary)',
+        transition: 'all 200ms ease',
+      }}>
+        <Upload size={32} style={{ color: uploadedFile ? 'var(--success)' : 'var(--text-tertiary)', margin: '0 auto var(--sp-3)' }} />
+        <input type="file" accept=".pdf,.txt,.md,.doc,.docx" onChange={e => setUploadedFile(e.target.files?.[0] || null)}
+          style={{ position: 'absolute', opacity: 0, width: 1, height: 1 }} id="file-upload" />
+        <label htmlFor="file-upload" style={{ cursor: 'pointer', color: uploadedFile ? 'var(--success)' : 'var(--text-secondary)', fontSize: 'var(--fs-sm)' }}>
+          {uploadedFile ? `✓ ${uploadedFile.name}` : 'Click to upload or drag file here'}
+        </label>
+      </div>
+      <div style={{ display: 'flex', gap: 'var(--sp-3)' }}>
+        <Button variant="ghost" onClick={() => setStep(3)} style={{ flex: 1 }}>Skip for now</Button>
+        <Button onClick={handleUpload} style={{ flex: 1 }}>Next <ArrowRight size={18} /></Button>
+      </div>
+    </motion.div>,
+
+    // Step 3: Weak Spots Self-Assessment
+    <motion.div key={3} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
+      <div>
+        <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--accent-cyan)', fontWeight: 'var(--fw-bold)', textTransform: 'uppercase', letterSpacing: 'var(--ls-ultra)', marginBottom: 'var(--sp-1)' }}>Step 3 of 4</div>
+        <h2 style={{ fontSize: 'var(--fs-lg)', fontWeight: 'var(--fw-bold)' }}>Which topics feel weakest?</h2>
+        <p style={{ color: 'var(--text-tertiary)', fontSize: 'var(--fs-sm)' }}>Tap the chapters you struggle with. This seeds your knowledge graph.</p>
+      </div>
+      <div style={{ maxHeight: 320, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 'var(--sp-3)' }}>
+        {examConfig.subjects.map(subject => (
+          <div key={subject}>
+            <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', fontWeight: 'var(--fw-bold)', textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)', marginBottom: 'var(--sp-2)' }}>
+              {subject}
+            </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--sp-2)' }}>
+              {(examConfig.chapters[subject] || []).slice(0, 12).map(chapter => {
+                const isSelected = weakSpots[subject]?.includes(chapter);
+                return (
+                  <button
+                    key={chapter}
+                    onClick={() => toggleWeakChapter(subject, chapter)}
+                    style={{
+                      padding: 'var(--sp-1) var(--sp-3)', borderRadius: 'var(--radius-full)',
+                      fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-medium)',
+                      background: isSelected ? 'var(--danger-dim)' : 'var(--bg-tertiary)',
+                      color: isSelected ? 'var(--danger)' : 'var(--text-secondary)',
+                      border: `1px solid ${isSelected ? 'var(--danger)' : 'var(--border-subtle)'}`,
+                      cursor: 'pointer', transition: 'all 150ms ease',
+                    }}
+                  >
+                    {chapter}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+      <p style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
+        {totalWeak} weak spots selected
+      </p>
+      <Button onClick={handleComplete} isLoading={loading} size="lg">
         Launch Cognition OS <Zap size={18} />
       </Button>
-    </div>,
+    </motion.div>,
+
+    // Step 4: The Magic Moment
+    <motion.div key={4} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} style={{ textAlign: 'center' }}>
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ type: 'spring', damping: 12, stiffness: 200, delay: 0.3 }}
+        style={{
+          width: 72, height: 72, borderRadius: 'var(--radius-full)',
+          background: 'var(--success-dim)', margin: '0 auto var(--sp-6)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          boxShadow: 'var(--shadow-glow-success)',
+        }}
+      ><Check size={36} style={{ color: 'var(--success)' }} /></motion.div>
+      <h2 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', marginBottom: 'var(--sp-2)' }}>
+        You're Ready.
+      </h2>
+      {result && (
+        <div style={{ color: 'var(--text-secondary)', marginBottom: 'var(--sp-6)', lineHeight: 'var(--lh-relaxed)' }}>
+          <p><strong style={{ color: 'var(--accent-cyan)' }}>{result.seeded}</strong> concepts mapped to your knowledge graph.</p>
+          <p><strong style={{ color: 'var(--success)' }}>{result.tasksCreated}</strong> tasks in your Day 1 mission.</p>
+          <p style={{ marginTop: 'var(--sp-2)', fontSize: 'var(--fs-sm)', color: 'var(--text-tertiary)' }}>
+            The OS knows you now. Let&apos;s go win.
+          </p>
+        </div>
+      )}
+      <Button onClick={() => router.push('/')} size="lg">
+        Enter Command Center <ArrowRight size={18} />
+      </Button>
+    </motion.div>,
   ];
 
   return (
@@ -78,8 +220,10 @@ export default function OnboardingPage() {
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       minHeight: 'calc(100vh - var(--header-height) - var(--sp-12))',
     }}>
-      <Card padding="lg" style={{ maxWidth: 480, width: '100%' }} className="animate-fade">
-        {steps[step]}
+      <Card padding="lg" style={{ maxWidth: 520, width: '100%' }} className="animate-fade">
+        <AnimatePresence mode="wait">
+          {steps[step]}
+        </AnimatePresence>
       </Card>
     </div>
   );

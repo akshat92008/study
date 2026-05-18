@@ -289,3 +289,18 @@ export const recoveryPlans = pgTable('recovery_plans', {
   tasks: jsonb('tasks').notNull(), // Array of specific study actions
   isCompleted: boolean('is_completed').default(false),
 });
+
+// --- Phase 4: PULSE (Mental State Engine) ---
+
+export const pulseSignals = pgTable('pulse_signals', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').references(() => profiles.id, { onDelete: 'cascade' }).notNull(),
+  signalType: text('signal_type').notNull(), // 'self_report', 'session_pattern', 'performance_trend'
+  emotionalState: emotionalStateEnum('emotional_state').notNull(),
+  confidence: real('confidence').default(0.5), // 0-1 confidence in the detection
+  sessionDurationMinutes: integer('session_duration_minutes'),
+  recentAccuracy: real('recent_accuracy'),
+  interactionCount: integer('interaction_count'),
+  notes: text('notes'),
+  createdAt: timestamp('created_at').defaultNow(),
+});

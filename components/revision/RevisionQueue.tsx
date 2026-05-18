@@ -63,6 +63,8 @@ export default function RevisionQueue() {
       <FlashCard 
         front={currentCard.front || 'Concept: ' + (currentCard.concept_id || currentCard.id)} 
         back={currentCard.back || 'Detailed recall information...'} 
+        cardIndex={0}
+        totalCards={queue.length}
         onRate={handleRate} 
       />
     </div>
