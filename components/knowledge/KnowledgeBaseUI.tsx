@@ -20,15 +20,22 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
     setStatus(null);
     const formData = new FormData(e.currentTarget);
     
-    const res = await uploadNotes(formData);
-    
-    if (res.error) {
-      setStatus({ type: 'error', msg: res.error });
-    } else {
-      setStatus({ type: 'success', msg: `Successfully processed into ${res.chunks} AI memory chunks!` });
-      setShowForm(false);
-      // Soft refresh to show new item (in a real app, use transition or router.refresh)
-      window.location.reload(); 
+    try {
+      const response = await fetch('/api/ingest', {
+        method: 'POST',
+        body: formData,
+      });
+      const res = await response.json();
+      
+      if (!response.ok || res.error) {
+        setStatus({ type: 'error', msg: res.error || 'Upload failed' });
+      } else {
+        setStatus({ type: 'success', msg: `Successfully processed into ${res.chunks} AI memory chunks!` });
+        setShowForm(false);
+        window.location.reload(); 
+      }
+    } catch (err: any) {
+      setStatus({ type: 'error', msg: err.message || 'Network error occurred' });
     }
     setLoading(false);
   }
@@ -73,17 +80,17 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
             
             <div>
               <label style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)', display: 'block', marginBottom: 'var(--sp-1)' }}>
-                Raw Text Content
+                File Upload (PDF, TXT, MD)
               </label>
-              <textarea 
-                name="content" 
-                rows={8} 
+              <input 
+                type="file"
+                name="file" 
                 required
-                placeholder="Paste your lecture notes, textbook excerpts, or study materials here..."
+                accept=".txt,.md,.pdf"
                 style={{
                   width: '100%', padding: 'var(--sp-3)', background: 'var(--bg-primary)',
                   color: 'var(--text-primary)', border: '1px solid var(--border-default)',
-                  borderRadius: 'var(--radius-md)', fontSize: 'var(--fs-base)', fontFamily: 'var(--font-sans)', resize: 'vertical',
+                  borderRadius: 'var(--radius-md)', fontSize: 'var(--fs-base)', fontFamily: 'var(--font-sans)',
                 }} 
               />
             </div>
