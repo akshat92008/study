@@ -23,6 +23,7 @@ export async function logMockTest(formData: FormData) {
     negative_marks: parseFloat(formData.get('negativeMarks') as string) || 0,
     time_taken: parseInt(formData.get('timeTaken') as string) || 0,
     total_time: parseInt(formData.get('totalTime') as string) || 180,
+    unattempted: 0,
     subject_wise: JSON.parse(formData.get('subjectWise') as string || '[]'),
   };
 

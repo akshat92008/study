@@ -7,6 +7,7 @@ export async function getEmbedding(text: string) {
     model: 'text-embedding-004',
     contents: text,
   });
+  if (!result.embeddings || result.embeddings.length === 0) return null;
   return result.embeddings[0].values;
 }
 
@@ -29,6 +30,8 @@ export async function ingestMaterial(userId: string, title: string, content: str
   // 3. Embed and store chunks
   for (const chunk of chunks) {
     const embedding = await getEmbedding(chunk);
+    if (!embedding) continue;
+    
     await supabase.from('material_chunks').insert({
       user_id: userId,
       material_id: material.id,

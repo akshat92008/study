@@ -24,6 +24,7 @@ export default function CommandBar() {
 
   const actions = [
     { name: 'Dashboard', icon: Compass, route: '/dashboard' },
+    { name: 'Mock Test Autopsy', icon: Target, route: '/autopsy' },
     { name: 'Cognition Graph', icon: Search, route: '/dashboard/cognition' },
     { name: 'Knowledge Base', icon: Book, route: '/dashboard/knowledge' },
     { name: 'Mistake Intelligence', icon: Target, route: '/dashboard/mistakes' }

@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
   // 1. RAG: Search the student's personal uploaded materials
   const relevantChunks = await searchPersonalKnowledge(user.id, message);
   const ragContext = relevantChunks.length > 0 
-    ? `\n\n## Student's Personal Uploaded Notes\n${relevantChunks.map(c => `- "${c.chunk_text}"`).join('\n')}`
+    ? `\n\n## Student's Personal Uploaded Notes\n${relevantChunks.map((c: any) => `- "${c.chunk_text}"`).join('\n')}`
     : '';
 
   // 2. Get standard concept/mistake context

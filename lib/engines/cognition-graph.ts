@@ -17,7 +17,7 @@ export async function getCognitionGraph(userId: string) {
     .eq('user_id', userId);
 
   // Group concepts by subject and chapter
-  const grouped: Record<string, Record<string, typeof concepts>> = {};
+  const grouped: Record<string, Record<string, any[]>> = {};
   (concepts || []).forEach((c: any) => {
     if (!grouped[c.subject]) grouped[c.subject] = {};
     if (!grouped[c.subject][c.chapter]) grouped[c.subject][c.chapter] = [];

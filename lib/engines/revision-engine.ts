@@ -83,7 +83,7 @@ export async function reviewCard(cardId: string, rating: 1 | 2 | 3 | 4) {
     1: Rating.Again, 2: Rating.Hard, 3: Rating.Good, 4: Rating.Easy,
   };
 
-  const result = scheduler.next(fsrsCard, now, ratingMap[rating]);
+  const result = scheduler.next(fsrsCard, now, rating as any);
   const updated = result.card;
 
   // Update card in DB

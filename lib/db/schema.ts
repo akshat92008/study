@@ -251,3 +251,41 @@ export const materialChunks = pgTable('material_chunks', {
   embedding: vector('embedding', { dimensions: 768 }),
   createdAt: timestamp('created_at').defaultNow(),
 });
+
+// --- Phase 3: Mock Test Autopsy Engine ---
+
+export const mockAutopsies = pgTable('mock_autopsies', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').references(() => profiles.id, { onDelete: 'cascade' }).notNull(),
+  testName: text('test_name').notNull(),
+  currentScore: integer('current_score').notNull(),
+  potentialScore: integer('potential_score').notNull(),
+  recoverableMarks: integer('recoverable_marks').notNull(),
+  mentorInsight: text('mentor_insight').notNull(), // Topper Mentor quote
+  confidenceLevel: text('confidence_level'), // High, Medium, Low
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const autopsyQuestions = pgTable('autopsy_questions', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  autopsyId: uuid('autopsy_id').references(() => mockAutopsies.id, { onDelete: 'cascade' }).notNull(),
+  questionNumber: integer('question_number').notNull(),
+  subject: text('subject').notNull(),
+  chapter: text('chapter').notNull(),
+  subtopic: text('subtopic'),
+  difficulty: text('difficulty'), // Easy, Medium, Hard
+  status: text('status'), // Correct, Incorrect, Unattempted
+  mistakeCategory: mistakeCategoryEnum('mistake_category'), 
+  marksLost: integer('marks_lost').default(0),
+  suggestedFix: text('suggested_fix'),
+});
+
+export const recoveryPlans = pgTable('recovery_plans', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  autopsyId: uuid('autopsy_id').references(() => mockAutopsies.id, { onDelete: 'cascade' }).notNull(),
+  title: text('title').notNull(), // e.g., "3-Day Biology Sprint"
+  expectedMarksGain: integer('expected_marks_gain').notNull(),
+  estimatedMinutes: integer('estimated_minutes').notNull(),
+  tasks: jsonb('tasks').notNull(), // Array of specific study actions
+  isCompleted: boolean('is_completed').default(false),
+});
