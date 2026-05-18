@@ -8,9 +8,6 @@ export default defineConfig({
   out: './lib/db/migrations',
   dialect: 'postgresql',
   dbCredentials: {
-    url: process.env.NEXT_PUBLIC_SUPABASE_URL!.replace(
-      'https://',
-      'postgresql://postgres:postgres@'
-    ).replace('.supabase.co', '.supabase.co:5432/postgres'),
+    url: process.env.DATABASE_URL!,
   },
 });

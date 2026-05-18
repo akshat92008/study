@@ -17,7 +17,7 @@ export async function uploadNotes(formData: FormData) {
   try {
     // Calls the RAG engine you built!
     const result = await ingestMaterial(user.id, title, content);
-    revalidatePath('/dashboard/knowledge');
+    revalidatePath('/knowledge');
     return { success: true, chunks: result.chunksProcessed };
   } catch (err: any) {
     return { error: err.message || 'Failed to process material' };

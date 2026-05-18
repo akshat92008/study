@@ -47,7 +47,7 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
 
       {/* Primary KPIs */}
       <div className="grid-4 stagger">
-        <Link href="/dashboard/cognition" style={{ textDecoration: 'none', color: 'inherit' }}>
+        <Link href="/cognition" style={{ textDecoration: 'none', color: 'inherit' }}>
           <Card variant="glow" style={{ cursor: 'pointer' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div className="label">Mastery</div>
@@ -60,7 +60,7 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
           </Card>
         </Link>
 
-        <Link href="/dashboard/revision" style={{ textDecoration: 'none', color: 'inherit' }}>
+        <Link href="/revision" style={{ textDecoration: 'none', color: 'inherit' }}>
           <Card style={{ cursor: 'pointer' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div className="label">Cards Due</div>
@@ -73,7 +73,7 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
           </Card>
         </Link>
 
-        <Link href="/dashboard/mistakes" style={{ textDecoration: 'none', color: 'inherit' }}>
+        <Link href="/mistakes" style={{ textDecoration: 'none', color: 'inherit' }}>
           <Card style={{ cursor: 'pointer' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div className="label">Marks Lost</div>
@@ -86,7 +86,7 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
           </Card>
         </Link>
 
-        <Link href="/dashboard/planner" style={{ textDecoration: 'none', color: 'inherit' }}>
+        <Link href="/planner" style={{ textDecoration: 'none', color: 'inherit' }}>
           <Card style={{ cursor: 'pointer' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div className="label">Today</div>
@@ -105,7 +105,7 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
         <Card>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--sp-4)' }}>
             <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'var(--fw-semibold)' }}>Today's Tasks</h3>
-            <Link href="/dashboard/planner" style={{ fontSize: 'var(--fs-xs)', display: 'flex', alignItems: 'center', gap: 4 }}>
+            <Link href="/planner" style={{ fontSize: 'var(--fs-xs)', display: 'flex', alignItems: 'center', gap: 4 }}>
               View all <ArrowRight size={12} />
             </Link>
           </div>
@@ -136,10 +136,10 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)' }}>
             {[
-              { href: '/dashboard/revision', icon: RefreshCw, label: 'Start Revision Session', color: 'var(--accent-cyan)', count: revStats.due },
-              { href: '/dashboard/mistakes', icon: Target, label: 'Log a Mistake', color: 'var(--danger)' },
-              { href: '/dashboard/analytics/log-test', icon: BarChart3, label: 'Log Mock Test', color: 'var(--accent-blue)' },
-              { href: '/dashboard/mentor', icon: Zap, label: 'Talk to AI Mentor', color: 'var(--accent-purple)' },
+              { href: '/revision', icon: RefreshCw, label: 'Start Revision Session', color: 'var(--accent-cyan)', count: revStats.due },
+              { href: '/mistakes', icon: Target, label: 'Log a Mistake', color: 'var(--danger)' },
+              { href: '/analytics/log-test', icon: BarChart3, label: 'Log Mock Test', color: 'var(--accent-blue)' },
+              { href: '/mentor', icon: Zap, label: 'Talk to AI Mentor', color: 'var(--accent-purple)' },
             ].map(action => (
               <Link key={action.href} href={action.href} style={{
                 display: 'flex', alignItems: 'center', gap: 'var(--sp-3)',

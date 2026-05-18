@@ -26,7 +26,8 @@ export async function generateMentorRecovery(autopsyId: string, currentScore: nu
 
   // Update autopsy record with the insight
   await (await supabase).from('mock_autopsies').update({
-    mentor_insight: mentorQuote
+    mentor_insight: mentorQuote,
+    mentor_quote: mentorQuote,
   }).eq('id', autopsyId);
 
   // 2. Recovery Plan Algorithm (Sort by highest ROI)

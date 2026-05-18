@@ -24,7 +24,7 @@ export default function DynamicCurriculumGenerator() {
       if (res.error) {
         setError(res.error);
       } else {
-        router.push('/dashboard');
+        router.push('/');
         router.refresh();
       }
     } catch (err: any) {

@@ -1,36 +1,72 @@
 import { createClient } from '@/lib/supabase/server';
 import { GoogleGenAI } from '@google/genai';
 import { generateMentorRecovery } from './mentor-engine';
+import { getExamConfig } from '@/lib/utils/constants';
 
-export async function processMockAutopsy(userId: string, fileData: string, testName: string) {
+type AutopsyFileData =
+  | string
+  | { kind: 'text'; text: string }
+  | { kind: 'inline'; mimeType: string; data: string };
+
+function extractJSON(text: string) {
+  return text
+    .replace(/```json/g, '')
+    .replace(/```/g, '')
+    .trim();
+}
+
+export async function processMockAutopsy(userId: string, fileData: AutopsyFileData, testName: string, examType: string = 'NEET') {
+  const examConfig = getExamConfig(examType);
   // Setup API clients
   const supabase = await createClient();
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+  const subjectList = examConfig.subjects.join('|');
+  const plainTextPayload =
+    typeof fileData === 'string' ? fileData :
+    fileData.kind === 'text' ? fileData.text :
+    null;
   
   // 1. Initial Prompt to parse the mock paper
   const parsingPrompt = `
-    You are an elite exam parsing engine. I have provided the raw text/content of a mock test paper (which includes questions, options, and an answer key).
+    You are an elite ${examType} exam parsing engine. I have provided a mock test paper, answer key, and possibly student answers/OMR markings.
     For every question, extract the following into a STRICT JSON array format:
     [{
       "questionNumber": 1,
-      "subject": "Physics|Chemistry|Biology",
+      "subject": "${subjectList}",
       "chapter": "Chapter name",
+      "subtopic": "Subtopic if inferable, otherwise null",
       "difficulty": "Easy|Medium|Hard",
       "correctAnswer": "A",
       "studentAnswer": "B", // (If student answers are provided, otherwise null)
       "status": "Correct|Incorrect|Unattempted"
     }]
+    Use these exam marking rules: correct = ${examConfig.correctMarks}, incorrect penalty = ${examConfig.negativeMarks}, total marks = ${examConfig.totalMarks}.
     ONLY output valid JSON. No markdown formatting blocks or explanations.
   `;
-  
+
+  const contents = plainTextPayload
+    ? `${parsingPrompt}\n\nDocument Data:\n${plainTextPayload}`
+    : [{
+        role: 'user',
+        parts: [
+          {
+            inlineData: {
+              mimeType: (fileData as { kind: 'inline'; mimeType: string; data: string }).mimeType,
+              data: (fileData as { kind: 'inline'; mimeType: string; data: string }).data,
+            },
+          },
+          { text: parsingPrompt },
+        ],
+      }];
+
   const rawParseRes = await ai.models.generateContent({
     model: 'gemini-2.5-flash',
-    contents: `${parsingPrompt}\n\nDocument Data:\n${fileData}`,
+    contents,
   });
   
   let parsedQuestions = [];
   try {
-    const rawText = (rawParseRes.text || '').replace(/```json/g, '').replace(/```/g, '').trim();
+    const rawText = extractJSON(rawParseRes.text || '');
     parsedQuestions = JSON.parse(rawText);
   } catch (err) {
     console.error("JSON parsing failed on OCR output", err);
@@ -58,7 +94,7 @@ export async function processMockAutopsy(userId: string, fileData: string, testN
 
   let rootCauses = [];
   try {
-    const rawText = (rootCauseRes.text || '').replace(/```json/g, '').replace(/```/g, '').trim();
+    const rawText = extractJSON(rootCauseRes.text || '');
     rootCauses = JSON.parse(rawText);
   } catch (err) {
     console.warn("Failed root cause analysis JSON", err);
@@ -71,14 +107,14 @@ export async function processMockAutopsy(userId: string, fileData: string, testN
       ...q,
       mistakeCategory: cause ? cause.mistakeCategory : (q.status === 'Incorrect' ? 'conceptual' : null),
       suggestedFix: cause ? cause.suggestedFix : null,
-      marksLost: q.status === 'Incorrect' ? 5 : (q.status === 'Unattempted' ? 4 : 0) // Example 4-mark questions, 1 neg
+      marksLost: q.status === 'Incorrect' ? (examConfig.correctMarks + Math.abs(examConfig.negativeMarks)) : (q.status === 'Unattempted' ? examConfig.correctMarks : 0)
     };
   });
 
   // Calculate scores
   const totalCorrect = mappedQuestions.filter((q: any) => q.status === 'Correct').length;
   const totalIncorrect = mappedQuestions.filter((q: any) => q.status === 'Incorrect').length;
-  const currentScore = (totalCorrect * 4) - (totalIncorrect * 1);
+  const currentScore = (totalCorrect * examConfig.correctMarks) - (totalIncorrect * Math.abs(examConfig.negativeMarks));
   
   // Potential score ignores 'silly', 'misread', 'time_pressure' errors
   const recoverableQs = mappedQuestions.filter((q: any) => 
@@ -95,6 +131,9 @@ export async function processMockAutopsy(userId: string, fileData: string, testN
     current_score: currentScore,
     potential_score: potentialScore,
     recoverable_marks: recoverableMarks,
+    total_questions: mappedQuestions.length,
+    exam_type: examType,
+    ocr_raw_text: plainTextPayload,
     mentor_insight: "Processing deep mentor insights...",
     confidence_level: 'High'
   }).select().single();
@@ -110,6 +149,8 @@ export async function processMockAutopsy(userId: string, fileData: string, testN
     subtopic: q.subtopic,
     difficulty: q.difficulty,
     status: q.status,
+    correct_answer: q.correctAnswer,
+    student_answer: q.studentAnswer,
     mistake_category: q.mistakeCategory,
     marks_lost: q.marksLost,
     suggested_fix: q.suggestedFix

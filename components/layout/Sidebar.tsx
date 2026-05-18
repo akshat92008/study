@@ -13,15 +13,15 @@ interface SidebarProps {
 }
 
 const navItems = [
-  { href: '/dashboard', icon: LayoutDashboard, label: 'Command Center', shortcut: '⌘1' },
-  { href: '/dashboard/cognition', icon: Brain, label: 'Cognition Graph', shortcut: '⌘2' },
-  { href: '/dashboard/knowledge', icon: Database, label: 'Knowledge Base', shortcut: '⌘9' },
-  { href: '/dashboard/mistakes', icon: Target, label: 'Mistake Intelligence', shortcut: '⌘3' },
-  { href: '/dashboard/revision', icon: RefreshCw, label: 'Revision Engine', shortcut: '⌘4' },
-  { href: '/dashboard/mentor', icon: MessageCircle, label: 'AI Mentor', shortcut: '⌘5' },
-  { href: '/dashboard/planner', icon: Calendar, label: 'Planner', shortcut: '⌘6' },
-  { href: '/dashboard/tutor', icon: GraduationCap, label: 'AI Tutor', shortcut: '⌘7' },
-  { href: '/dashboard/analytics', icon: BarChart3, label: 'Analytics', shortcut: '⌘8' },
+  { href: '/', icon: LayoutDashboard, label: 'Command Center', shortcut: '⌘1' },
+  { href: '/cognition', icon: Brain, label: 'Cognition Graph', shortcut: '⌘2' },
+  { href: '/knowledge', icon: Database, label: 'Knowledge Base', shortcut: '⌘9' },
+  { href: '/mistakes', icon: Target, label: 'Mistake Intelligence', shortcut: '⌘3' },
+  { href: '/revision', icon: RefreshCw, label: 'Revision Engine', shortcut: '⌘4' },
+  { href: '/mentor', icon: MessageCircle, label: 'AI Mentor', shortcut: '⌘5' },
+  { href: '/planner', icon: Calendar, label: 'Planner', shortcut: '⌘6' },
+  { href: '/tutor', icon: GraduationCap, label: 'AI Tutor', shortcut: '⌘7' },
+  { href: '/analytics', icon: BarChart3, label: 'Analytics', shortcut: '⌘8' },
 ];
 
 export default function Sidebar({ userName, examType }: SidebarProps) {

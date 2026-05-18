@@ -55,6 +55,7 @@
   --danger-glow: hsla(0, 84%, 60%, 0.12);
   --info: hsl(199, 89%, 48%);
   --info-dim: hsl(199, 50%, 22%);
+  --info-glow: hsla(199, 89%, 48%, 0.12);
 
   /* Typography */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
@@ -207,3 +208,25 @@ a:hover { text-decoration: underline; }
 .stagger > *:nth-child(6) { animation-delay: 300ms; }
 
 @keyframes spin { to { transform: rotate(360deg); } }
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+  :root {
+    --sidebar-width: 0px;
+    --sp-6: 1rem;
+    --sp-12: 1.5rem;
+  }
+  
+  #sidebar {
+    transform: translateX(-100%);
+  }
+
+  .grid-2, .grid-3, .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  /* Make sure main content doesn't overflow when sidebar is hidden */
+  main {
+    padding: var(--sp-4) !important;
+  }
+}

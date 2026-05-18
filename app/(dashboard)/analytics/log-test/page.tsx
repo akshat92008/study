@@ -55,7 +55,7 @@ export default function LogTestPage() {
           <div style={{ fontSize: 'var(--fs-3xl)', marginBottom: 'var(--sp-4)' }}>✅</div>
           <h2 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-bold)', marginBottom: 'var(--sp-3)' }}>Test Logged</h2>
           {result.insight && <p style={{ color: 'var(--text-secondary)', lineHeight: 'var(--lh-relaxed)' }}>{result.insight}</p>}
-          <Link href="/dashboard/analytics"><Button style={{ marginTop: 'var(--sp-6)' }}>View Analytics</Button></Link>
+          <Link href="/analytics"><Button style={{ marginTop: 'var(--sp-6)' }}>View Analytics</Button></Link>
         </Card>
       </div>
     );
@@ -63,7 +63,7 @@ export default function LogTestPage() {
 
   return (
     <div className="animate-fade" style={{ maxWidth: 700, margin: '0 auto' }}>
-      <Link href="/dashboard/analytics" style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--sp-2)', color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', marginBottom: 'var(--sp-4)' }}>
+      <Link href="/analytics" style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--sp-2)', color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', marginBottom: 'var(--sp-4)' }}>
         <ArrowLeft size={14} /> Back to Analytics
       </Link>
       <h1 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-bold)', marginBottom: 'var(--sp-6)' }}>

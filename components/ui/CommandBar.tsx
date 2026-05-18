@@ -23,44 +23,58 @@ export default function CommandBar() {
   }, [isCommandBarOpen, setCommandBarOpen]);
 
   const actions = [
-    { name: 'Dashboard', icon: Compass, route: '/dashboard' },
+    { name: 'Dashboard', icon: Compass, route: '/' },
     { name: 'Mock Test Autopsy', icon: Target, route: '/autopsy' },
-    { name: 'Cognition Graph', icon: Search, route: '/dashboard/cognition' },
-    { name: 'Knowledge Base', icon: Book, route: '/dashboard/knowledge' },
-    { name: 'Mistake Intelligence', icon: Target, route: '/dashboard/mistakes' }
+    { name: 'Cognition Graph', icon: Search, route: '/cognition' },
+    { name: 'Knowledge Base', icon: Book, route: '/knowledge' },
+    { name: 'Mistake Intelligence', icon: Target, route: '/mistakes' }
   ];
 
   const filtered = actions.filter(a => a.name.toLowerCase().includes(query.toLowerCase()));
 
   return (
     <Modal isOpen={isCommandBarOpen} onClose={() => setCommandBarOpen(false)} title="Command Center">
-      <div className="flex flex-col gap-4">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" size={18} />
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
+        <div style={{ position: 'relative' }}>
+          <div style={{ position: 'absolute', left: 'var(--sp-3)', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-tertiary)', display: 'flex', alignItems: 'center' }}>
+            <Search size={18} />
+          </div>
           <input 
             type="text" 
             placeholder="Search commands or jump to..." 
-            className="w-full bg-zinc-800 border border-zinc-700 rounded-lg py-2 pl-10 pr-4 text-zinc-100 focus:outline-none focus:border-cyan-500"
+            style={{
+              width: '100%', background: 'var(--bg-secondary)', border: '1px solid var(--border-default)',
+              borderRadius: 'var(--radius-md)', padding: 'var(--sp-2) var(--sp-4) var(--sp-2) calc(var(--sp-10))',
+              color: 'var(--text-primary)', fontSize: 'var(--fs-base)', outline: 'none', transition: 'border-color 0.2s'
+            }}
+            onFocus={e => e.target.style.borderColor = 'var(--accent-cyan)'}
+            onBlur={e => e.target.style.borderColor = 'var(--border-default)'}
             value={query}
             onChange={e => setQuery(e.target.value)}
             autoFocus
           />
         </div>
-        <div className="flex flex-col gap-1 max-h-64 overflow-y-auto">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-1)', maxHeight: '16rem', overflowY: 'auto' }}>
           {filtered.map((action, idx) => (
             <button
               key={idx}
-              className="flex items-center gap-3 w-full p-2 rounded hover:bg-zinc-800 text-left transition-colors"
+              style={{
+                display: 'flex', alignItems: 'center', gap: 'var(--sp-3)', width: '100%',
+                padding: 'var(--sp-2)', borderRadius: 'var(--radius-sm)', background: 'transparent',
+                border: 'none', textAlign: 'left', cursor: 'pointer', transition: 'background-color 0.15s'
+              }}
+              onMouseOver={e => e.currentTarget.style.background = 'var(--bg-hover)'}
+              onMouseOut={e => e.currentTarget.style.background = 'transparent'}
               onClick={() => {
                 router.push(action.route);
                 setCommandBarOpen(false);
               }}
             >
-              <action.icon size={16} className="text-zinc-400" />
-              <span className="text-sm font-medium text-zinc-200">{action.name}</span>
+              <action.icon size={16} color="var(--text-tertiary)" />
+              <span style={{ fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-medium)', color: 'var(--text-primary)' }}>{action.name}</span>
             </button>
           ))}
-          {filtered.length === 0 && <p className="text-zinc-500 text-sm text-center py-4">No results found.</p>}
+          {filtered.length === 0 && <p style={{ color: 'var(--text-tertiary)', fontSize: 'var(--fs-sm)', textAlign: 'center', padding: 'var(--sp-4) 0' }}>No results found.</p>}
         </div>
       </div>
     </Modal>

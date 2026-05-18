@@ -4,7 +4,8 @@ import { useState } from 'react';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
 import Progress from '@/components/ui/Progress';
-import { Brain, TrendingUp, AlertTriangle, Zap } from 'lucide-react';
+import { generateCards } from '@/lib/actions/revision';
+import { Brain, RefreshCw } from 'lucide-react';
 
 interface Props {
   data: any; // CognitionGraph data from server
@@ -17,6 +18,8 @@ const masteryColor: Record<string, 'green' | 'blue' | 'yellow' | 'red' | 'gray'>
 
 export default function CognitionDashboard({ data }: Props) {
   const [selectedSubject, setSelectedSubject] = useState<string>('all');
+  const [generatingId, setGeneratingId] = useState<string | null>(null);
+  const [generatedIds, setGeneratedIds] = useState<Set<string>>(new Set());
   if (!data) return <p style={{ color: 'var(--text-tertiary)' }}>Loading cognition graph...</p>;
 
   const { grouped, stats, concepts } = data;
@@ -25,6 +28,17 @@ export default function CognitionDashboard({ data }: Props) {
   const filteredGrouped = selectedSubject === 'all'
     ? grouped
     : { [selectedSubject]: grouped[selectedSubject] };
+
+  async function handleGenerateCards(concept: any) {
+    if (!concept?.id || generatingId) return;
+    setGeneratingId(concept.id);
+    try {
+      await generateCards(concept.id, concept.subject, concept.chapter || concept.name);
+      setGeneratedIds(prev => new Set(prev).add(concept.id));
+    } finally {
+      setGeneratingId(null);
+    }
+  }
 
   return (
     <div className="animate-fade" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-6)' }}>
@@ -116,6 +130,22 @@ export default function CognitionDashboard({ data }: Props) {
                       </span>
                     </div>
                   </div>
+                  <button
+                    onClick={() => handleGenerateCards(c)}
+                    disabled={generatingId === c.id || generatedIds.has(c.id)}
+                    style={{
+                      display: 'flex', alignItems: 'center', gap: 'var(--sp-1)',
+                      padding: 'var(--sp-2) var(--sp-3)', borderRadius: 'var(--radius-md)',
+                      border: '1px solid var(--border-default)',
+                      background: generatedIds.has(c.id) ? 'var(--success-glow)' : 'var(--bg-tertiary)',
+                      color: generatedIds.has(c.id) ? 'var(--success)' : 'var(--text-secondary)',
+                      cursor: generatingId === c.id || generatedIds.has(c.id) ? 'default' : 'pointer',
+                      fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-semibold)',
+                    }}
+                  >
+                    <RefreshCw size={12} style={{ animation: generatingId === c.id ? 'spin 1s linear infinite' : undefined }} />
+                    {generatedIds.has(c.id) ? 'Cards Ready' : generatingId === c.id ? 'Generating' : 'Make Cards'}
+                  </button>
                   <div style={{ width: 120 }}>
                     <Progress value={masteryPercent[c.mastery] || 0} color={masteryColor[c.mastery] === 'green' ? 'green' : masteryColor[c.mastery] === 'red' ? 'red' : 'blue'} size="sm" showLabel />
                   </div>

@@ -42,7 +42,7 @@ export async function logMistake(formData: FormData) {
   const { error } = await supabase.from('mistakes').insert({
     ...mistakeData,
     ai_analysis: (analysis as any)?.rootCause || null,
-    improvement_suggestion: (analysis as any)?.fixStrategy || null,
+    improvement_suggestion: (analysis as any)?.remediation || null,
   });
 
   if (error) return { error: error.message };

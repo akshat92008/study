@@ -23,30 +23,52 @@ export default function Modal({ isOpen, onClose, title, children }: ModalProps) 
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
+        <div style={{
+          position: 'fixed', inset: 0, zIndex: 50,
+          display: 'flex', alignItems: 'center', justifyContent: 'center'
+        }}>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            style={{
+              position: 'absolute', inset: 0,
+              background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)'
+            }}
           />
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
-            className="relative z-10 w-full max-w-lg overflow-hidden rounded-2xl bg-zinc-900 border border-zinc-800 shadow-2xl"
+            style={{
+              position: 'relative', zIndex: 10,
+              width: '100%', maxWidth: '32rem', overflow: 'hidden',
+              borderRadius: 'var(--radius-xl)', background: 'var(--bg-elevated)',
+              border: '1px solid var(--border-default)', boxShadow: 'var(--shadow-lg)'
+            }}
           >
-            <div className="flex items-center justify-between p-4 border-b border-zinc-800">
-              <h2 className="text-lg font-semibold text-zinc-100">{title}</h2>
+            <div style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              padding: 'var(--sp-4)', borderBottom: '1px solid var(--border-subtle)'
+            }}>
+              <h2 style={{ fontSize: 'var(--fs-lg)', fontWeight: 'var(--fw-semibold)', color: 'var(--text-primary)' }}>
+                {title}
+              </h2>
               <button
                 onClick={onClose}
-                className="rounded-full p-1 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100 transition-colors"
+                style={{
+                  borderRadius: 'var(--radius-full)', padding: 'var(--sp-1)',
+                  color: 'var(--text-tertiary)', background: 'transparent',
+                  border: 'none', cursor: 'pointer', transition: 'all 0.2s'
+                }}
+                onMouseOver={(e) => { e.currentTarget.style.color = 'var(--text-primary)'; e.currentTarget.style.background = 'var(--bg-hover)'; }}
+                onMouseOut={(e) => { e.currentTarget.style.color = 'var(--text-tertiary)'; e.currentTarget.style.background = 'transparent'; }}
               >
                 <X size={20} />
               </button>
             </div>
-            <div className="p-4">
+            <div style={{ padding: 'var(--sp-4)' }}>
               {children}
             </div>
           </motion.div>

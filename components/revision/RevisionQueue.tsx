@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import FlashCard from './FlashCard';
 import { Loader2, CheckCircle } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
+import { submitReview } from '@/lib/actions/revision';
 
 export default function RevisionQueue() {
   const [queue, setQueue] = useState<any[]>([]);
@@ -28,24 +29,42 @@ export default function RevisionQueue() {
 
   const handleRate = async (rating: string) => {
     const currentCard = queue[0];
+    if (!currentCard) return;
+    const ratingMap: Record<string, 1 | 2 | 3 | 4> = {
+      again: 1,
+      hard: 2,
+      good: 3,
+      easy: 4,
+    };
     
     // Optimistic UI update
     setQueue(q => q.slice(1));
-    
-    // In a real app, you would send this rating to the backend API here:
-    // await fetch('/api/revision/rate', { method: 'POST', body: JSON.stringify({ cardId: currentCard.id, rating }) });
+
+    try {
+      await submitReview(currentCard.id, ratingMap[rating] || 3);
+    } catch (err: any) {
+      setQueue(q => [currentCard, ...q]);
+      addToast(err.message || 'Failed to save review', 'error');
+    }
   };
 
   if (loading) {
-    return <div className="flex justify-center p-12"><Loader2 className="animate-spin text-cyan-500" size={32} /></div>;
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', padding: 'var(--sp-12)' }}>
+        <Loader2 color="var(--accent-cyan)" size={32} style={{ animation: 'spin 1s linear infinite' }} />
+      </div>
+    );
   }
 
   if (queue.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center p-12 text-zinc-400 gap-4">
-        <CheckCircle size={48} className="text-green-500/50" />
-        <p className="text-lg font-medium text-zinc-300">You're all caught up!</p>
-        <p className="text-sm">No cards due for revision right now.</p>
+      <div style={{
+        display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+        padding: 'var(--sp-12)', color: 'var(--text-tertiary)', gap: 'var(--sp-4)'
+      }}>
+        <CheckCircle size={48} color="var(--success-dim)" />
+        <p style={{ fontSize: 'var(--fs-lg)', fontWeight: 'var(--fw-medium)', color: 'var(--text-primary)' }}>You're all caught up!</p>
+        <p style={{ fontSize: 'var(--fs-sm)' }}>No cards due for revision right now.</p>
       </div>
     );
   }
@@ -53,10 +72,10 @@ export default function RevisionQueue() {
   const currentCard = queue[0];
 
   return (
-    <div className="w-full flex flex-col gap-4">
-      <div className="flex justify-between items-center text-sm text-zinc-400 px-4">
+    <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 'var(--fs-sm)', color: 'var(--text-tertiary)', padding: '0 var(--sp-4)' }}>
         <span>Cards remaining: {queue.length}</span>
-        <span className="text-cyan-400 font-medium">{Math.round(((1 - queue.length) / 1) * 100) || 0}% Complete</span>
+        <span style={{ color: 'var(--accent-cyan)', fontWeight: 'var(--fw-medium)' }}>{Math.round(((1 - queue.length) / 1) * 100) || 0}% Complete</span>
       </div>
       
       {/* For demo purposes, we fallback to a stub string if the card structure is complex */}

@@ -3,7 +3,8 @@ import { redirect } from 'next/navigation';
 import { headers } from 'next/headers';
 import Sidebar from '@/components/layout/Sidebar';
 import Header from '@/components/layout/Header';
-
+import CommandBar from '@/components/ui/CommandBar';
+import ToastContainer from '@/components/ui/Toast';
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
@@ -19,7 +20,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
   const headersList = await headers();
   const pathname = headersList.get('x-next-pathname') || '';
   if (profile && !profile.onboarding_complete && !pathname.includes('/onboarding')) {
-    redirect('/dashboard/onboarding');
+    redirect('/onboarding');
   }
 
 
@@ -39,6 +40,8 @@ export default async function DashboardLayout({ children }: { children: React.Re
           {children}
         </main>
       </div>
+      <CommandBar />
+      <ToastContainer />
     </div>
   );
 }

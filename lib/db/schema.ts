@@ -258,11 +258,16 @@ export const mockAutopsies = pgTable('mock_autopsies', {
   id: uuid('id').primaryKey().defaultRandom(),
   userId: uuid('user_id').references(() => profiles.id, { onDelete: 'cascade' }).notNull(),
   testName: text('test_name').notNull(),
-  currentScore: integer('current_score').notNull(),
-  potentialScore: integer('potential_score').notNull(),
-  recoverableMarks: integer('recoverable_marks').notNull(),
-  mentorInsight: text('mentor_insight').notNull(), // Topper Mentor quote
-  confidenceLevel: text('confidence_level'), // High, Medium, Low
+  currentScore: integer('current_score').notNull().default(0),
+  potentialScore: integer('potential_score').notNull().default(0),
+  recoverableMarks: integer('recoverable_marks').notNull().default(0),
+  totalQuestions: integer('total_questions'),
+  examType: text('exam_type').default('NEET'),
+  mentorInsight: text('mentor_insight'),
+  mentorQuote: text('mentor_quote'),
+  praiseRoastTag: text('praise_roast_tag'),
+  confidenceLevel: text('confidence_level').default('Medium'), // High, Medium, Low
+  ocrRawText: text('ocr_raw_text'),
   createdAt: timestamp('created_at').defaultNow(),
 });
 
@@ -271,13 +276,16 @@ export const autopsyQuestions = pgTable('autopsy_questions', {
   autopsyId: uuid('autopsy_id').references(() => mockAutopsies.id, { onDelete: 'cascade' }).notNull(),
   questionNumber: integer('question_number').notNull(),
   subject: text('subject').notNull(),
-  chapter: text('chapter').notNull(),
+  chapter: text('chapter'),
   subtopic: text('subtopic'),
-  difficulty: text('difficulty'), // Easy, Medium, Hard
-  status: text('status'), // Correct, Incorrect, Unattempted
-  mistakeCategory: mistakeCategoryEnum('mistake_category'), 
-  marksLost: integer('marks_lost').default(0),
+  difficulty: text('difficulty').default('Medium'), // Easy, Medium, Hard
+  status: text('status').notNull(), // Correct, Incorrect, Unattempted
+  correctAnswer: text('correct_answer'),
+  studentAnswer: text('student_answer'),
+  mistakeCategory: text('mistake_category'), 
+  marksLost: real('marks_lost').default(0),
   suggestedFix: text('suggested_fix'),
+  createdAt: timestamp('created_at').defaultNow(),
 });
 
 export const recoveryPlans = pgTable('recovery_plans', {
@@ -288,6 +296,7 @@ export const recoveryPlans = pgTable('recovery_plans', {
   estimatedMinutes: integer('estimated_minutes').notNull(),
   tasks: jsonb('tasks').notNull(), // Array of specific study actions
   isCompleted: boolean('is_completed').default(false),
+  createdAt: timestamp('created_at').defaultNow(),
 });
 
 // --- Phase 4: PULSE (Mental State Engine) ---

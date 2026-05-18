@@ -44,13 +44,40 @@ export async function POST(req: NextRequest) {
   const encoder = new TextEncoder();
   const stream = new ReadableStream({
     async start(controller) {
+      let fullResponse = '';
       try {
         // Use 'pro' model if complex RAG context is attached, else 'flash'
         const modelToUse = relevantChunks.length > 0 ? 'pro' : 'flash';
         for await (const chunk of streamText(modelToUse, TUTOR_SYSTEM_PROMPT, fullPrompt, 0.7)) {
           controller.enqueue(encoder.encode(chunk));
+          fullResponse += chunk;
         }
-      } catch { controller.enqueue(encoder.encode('\n\n[Error]')); }
+
+        // Persist session
+        const updatedHistory = [
+          ...(history || []),
+          { role: 'user', content: message },
+          { role: 'assistant', content: fullResponse }
+        ];
+        
+        // Use the supabase instance we created outside the stream
+        await supabase.from('tutor_sessions').insert({
+          user_id: user.id,
+          concept_id: concept?.id || null,
+          messages: updatedHistory,
+        });
+
+        if (concept?.id) {
+          await supabase.from('concepts').update({
+            times_reviewed: (concept.times_reviewed || 0) + 1,
+            last_reviewed_at: new Date().toISOString()
+          }).eq('id', concept.id);
+        }
+
+      } catch (err) { 
+        console.error('Tutor stream error:', err);
+        controller.enqueue(encoder.encode('\n\n[Error]')); 
+      }
       controller.close();
     },
   });

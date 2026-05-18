@@ -39,15 +39,20 @@ export async function getMistakeAnalytics(userId: string) {
 
 // AI-powered deep analysis of a single mistake
 export async function analyzeMistake(mistake: any) {
+  const questionText = mistake.question_text || mistake.questionText || 'Not provided';
+  const userAnswer = mistake.user_answer || mistake.userAnswer || 'Not provided';
+  const correctAnswer = mistake.correct_answer || mistake.correctAnswer || 'Not provided';
+  const marksLost = mistake.marks_lost || mistake.marksLost || 0;
+
   const prompt = `Analyze this exam mistake deeply:
 
 Subject: ${mistake.subject}
 Chapter: ${mistake.chapter}
 Category: ${mistake.category}
-Question: ${mistake.question_text || 'Not provided'}
-Student Answer: ${mistake.user_answer || 'Not provided'}
-Correct Answer: ${mistake.correct_answer || 'Not provided'}
-Marks Lost: ${mistake.marks_lost}
+Question: ${questionText}
+Student Answer: ${userAnswer}
+Correct Answer: ${correctAnswer}
+Marks Lost: ${marksLost}
 
 Provide:
 1. Root cause analysis (WHY the student made this mistake)

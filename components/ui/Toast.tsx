@@ -9,7 +9,10 @@ export default function ToastContainer() {
   const { toastQueue, removeToast } = useAppStore();
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2">
+    <div style={{
+      position: 'fixed', bottom: 'var(--sp-4)', right: 'var(--sp-4)',
+      zIndex: 50, display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)'
+    }}>
       <AnimatePresence>
         {toastQueue.map((toast: any) => (
           <ToastItem key={toast.id} toast={toast} onRemove={() => removeToast(toast.id)} />
@@ -28,27 +31,45 @@ function ToastItem({ toast, onRemove }: { toast: any; onRemove: () => void }) {
   }, [onRemove]);
 
   const icons = {
-    success: <CheckCircle className="text-green-400" size={18} />,
-    error: <AlertCircle className="text-red-400" size={18} />,
-    info: <Info className="text-blue-400" size={18} />
+    success: <CheckCircle color="var(--success)" size={18} />,
+    error: <AlertCircle color="var(--danger)" size={18} />,
+    info: <Info color="var(--info)" size={18} />
   };
 
   const bgs = {
-    success: 'bg-green-950/50 border-green-900',
-    error: 'bg-red-950/50 border-red-900',
-    info: 'bg-blue-950/50 border-blue-900'
+    success: { bg: 'var(--success-glow)', border: 'var(--success-dim)' },
+    error: { bg: 'var(--danger-glow)', border: 'var(--danger-dim)' },
+    info: { bg: 'var(--info-glow)', border: 'var(--info-dim)' }
   };
+
+  const styleConfig = bgs[toast.type as keyof typeof bgs] || bgs.info;
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 20, scale: 0.9 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: -20, scale: 0.9 }}
-      className={`flex items-start gap-3 rounded-lg border p-3 shadow-lg backdrop-blur-md ${bgs[toast.type as keyof typeof bgs]}`}
+      style={{
+        display: 'flex', alignItems: 'flex-start', gap: 'var(--sp-3)',
+        borderRadius: 'var(--radius-lg)', padding: 'var(--sp-3)',
+        boxShadow: 'var(--shadow-lg)', backdropFilter: 'blur(8px)',
+        background: styleConfig.bg, border: `1px solid ${styleConfig.border}`,
+        width: '100%', maxWidth: '300px'
+      }}
     >
-      <div className="mt-0.5">{icons[toast.type as keyof typeof icons]}</div>
-      <div className="flex-1 text-sm font-medium text-zinc-100">{toast.message}</div>
-      <button onClick={onRemove} className="text-zinc-500 hover:text-zinc-300">
+      <div style={{ marginTop: '2px' }}>{icons[toast.type as keyof typeof icons] || icons.info}</div>
+      <div style={{ flex: 1, fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-medium)', color: 'var(--text-primary)' }}>
+        {toast.message}
+      </div>
+      <button 
+        onClick={onRemove} 
+        style={{
+          background: 'none', border: 'none', color: 'var(--text-tertiary)', cursor: 'pointer',
+          display: 'flex', alignItems: 'center', justifyContent: 'center'
+        }}
+        onMouseOver={e => e.currentTarget.style.color = 'var(--text-primary)'}
+        onMouseOut={e => e.currentTarget.style.color = 'var(--text-tertiary)'}
+      >
         <X size={16} />
       </button>
     </motion.div>

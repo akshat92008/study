@@ -4,7 +4,10 @@ import { useState } from 'react';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
 import { toggleTask } from '@/lib/actions/planner';
-import { Calendar, Clock, Check, Circle, BookOpen, Brain, Target, Coffee } from 'lucide-react';
+import DailyBriefing from '@/components/planner/DailyBriefing';
+import PulseCheckIn from '@/components/pulse/PulseCheckIn';
+import { useAppStore } from '@/stores/appStore';
+import { Calendar, Clock, Check, BookOpen, Brain, Target, Coffee, Activity } from 'lucide-react';
 
 const typeIcons: Record<string, any> = {
   study: BookOpen, revision: Brain, practice: Target, mock_test: Target, break: Coffee, review: Brain,
@@ -15,6 +18,8 @@ const priorityColor: Record<string, 'red' | 'yellow' | 'blue' | 'gray'> = {
 
 export default function PlannerDashboard({ initialTasks, date }: { initialTasks: any[]; date: string }) {
   const [tasks, setTasks] = useState(initialTasks);
+  const [showPulse, setShowPulse] = useState(false);
+  const { addToast } = useAppStore();
 
   const completed = tasks.filter(t => t.is_completed).length;
   const totalMinutes = tasks.reduce((s, t) => s + (t.estimated_minutes || 0), 0);
@@ -27,15 +32,41 @@ export default function PlannerDashboard({ initialTasks, date }: { initialTasks:
 
   return (
     <div className="animate-fade" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-6)' }}>
-      <div>
-        <h1 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-bold)', letterSpacing: 'var(--ls-tight)' }}>
-          <Calendar size={28} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 'var(--sp-2)', color: 'var(--accent-cyan)' }} />
-          Today's Plan
-        </h1>
-        <p style={{ color: 'var(--text-secondary)', marginTop: 'var(--sp-1)' }}>
-          {new Date(date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
-        </p>
+      <div style={{ display: 'flex', justifyContent: 'space-between', gap: 'var(--sp-4)', alignItems: 'flex-start' }}>
+        <div>
+          <h1 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-bold)', letterSpacing: 'var(--ls-tight)' }}>
+            <Calendar size={28} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 'var(--sp-2)', color: 'var(--accent-cyan)' }} />
+            Today's Plan
+          </h1>
+          <p style={{ color: 'var(--text-secondary)', marginTop: 'var(--sp-1)' }}>
+            {new Date(date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
+          </p>
+        </div>
+        <button
+          onClick={() => setShowPulse(true)}
+          style={{
+            display: 'flex', alignItems: 'center', gap: 'var(--sp-2)',
+            padding: 'var(--sp-2) var(--sp-3)', borderRadius: 'var(--radius-md)',
+            background: 'var(--bg-secondary)', border: '1px solid var(--border-default)',
+            color: 'var(--text-secondary)', cursor: 'pointer', fontSize: 'var(--fs-sm)',
+          }}
+        >
+          <Activity size={16} color="var(--accent-cyan)" />
+          PULSE Check-In
+        </button>
       </div>
+
+      <DailyBriefing />
+
+      {showPulse && (
+        <PulseCheckIn
+          onComplete={(state) => {
+            setShowPulse(false);
+            addToast(`PULSE updated: ${state.replace('_', ' ')}`, 'success');
+          }}
+          onDismiss={() => setShowPulse(false)}
+        />
+      )}
 
       {/* Progress Bar */}
       <Card variant="glow" padding="md">
