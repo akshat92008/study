@@ -8,7 +8,7 @@ export default function DashboardPage() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  const fetchData = () => {
     fetch('/api/dashboard')
       .then(res => res.json())
       .then(d => {
@@ -16,6 +16,10 @@ export default function DashboardPage() {
         setLoading(false);
       })
       .catch(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
 
   if (loading) {
@@ -71,6 +75,7 @@ export default function DashboardPage() {
       revision={data.revision}
       mistakes={data.mistakes}
       tasks={data.tasks || []}
+      onRefresh={fetchData}
     />
   );
 }

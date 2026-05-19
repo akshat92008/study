@@ -27,6 +27,14 @@ interface AppState {
   sessionStartTime: number | null;
   startSession: () => void;
   endSession: () => number;
+
+  // Sidebar
+  isSidebarCollapsed: boolean;
+  setSidebarCollapsed: (collapsed: boolean) => void;
+  toggleSidebar: () => void;
+  isMobileSidebarOpen: boolean;
+  setMobileSidebarOpen: (open: boolean) => void;
+  toggleMobileSidebar: () => void;
 }
 
 export const useAppStore = create<AppState>((set, get) => ({
@@ -56,5 +64,12 @@ export const useAppStore = create<AppState>((set, get) => ({
     set({ sessionActive: false, sessionStartTime: null });
     if (!start) return 0;
     return Math.round((Date.now() - start) / 60000);
-  }
+  },
+
+  isSidebarCollapsed: false,
+  setSidebarCollapsed: (collapsed) => set({ isSidebarCollapsed: collapsed }),
+  toggleSidebar: () => set((state) => ({ isSidebarCollapsed: !state.isSidebarCollapsed })),
+  isMobileSidebarOpen: false,
+  setMobileSidebarOpen: (open) => set({ isMobileSidebarOpen: open }),
+  toggleMobileSidebar: () => set((state) => ({ isMobileSidebarOpen: !state.isMobileSidebarOpen })),
 }));

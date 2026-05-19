@@ -98,39 +98,6 @@ export default function DailyBriefing() {
         </Card>
       )}
 
-      <Card padding="md">
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 'var(--sp-2)' }}>
-          <span style={{ fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-semibold)' }}>Execution Progress</span>
-          <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-tertiary)' }}>{briefing.progress.completed}/{briefing.progress.total} tasks</span>
-        </div>
-        <div style={{ height: 8, background: 'var(--bg-tertiary)', borderRadius: 'var(--radius-full)', overflow: 'hidden' }}>
-          <motion.div initial={{ width: 0 }} animate={{ width: `${progressPct}%` }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} style={{ height: '100%', background: progressPct === 100 ? 'var(--success)' : toneColor, borderRadius: 'var(--radius-full)' }} />
-        </div>
-      </Card>
-
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)' }}>
-        {briefing.tasks.map((task: any, i: number) => (
-          <motion.div key={task.id || i} initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.06 }}>
-            <Card padding="md" style={{ display: 'flex', gap: 'var(--sp-3)', opacity: task.is_completed ? 0.5 : 1 }}>
-              {task.is_completed ? <CheckCircle size={20} style={{ color: 'var(--success)' }} /> : <Circle size={20} style={{ color: 'var(--text-tertiary)' }} />}
-              <div style={{ flex: 1 }}>
-                <div style={{ fontWeight: 'var(--fw-bold)', textDecoration: task.is_completed ? 'line-through' : 'none', color: task.is_completed ? 'var(--text-tertiary)' : 'var(--text-primary)' }}>{task.title}</div>
-                <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)', marginTop: 4 }}>{task.description}</div>
-                {task.notes && (
-                  <div style={{ marginTop: 'var(--sp-2)', padding: 'var(--sp-2)', background: 'var(--bg-secondary)', borderRadius: 'var(--radius-sm)', borderLeft: '2px solid var(--accent-purple)', fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
-                    <strong>Why:</strong> {task.notes}
-                  </div>
-                )}
-                <div style={{ display: 'flex', gap: 'var(--sp-3)', marginTop: 'var(--sp-2)' }}>
-                  {task.subject && <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--accent-cyan)' }}>{task.subject}</span>}
-                  <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>{task.estimated_minutes} min</span>
-                  {task.scheduled_start_time && <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--warning)' }}>@ {task.scheduled_start_time}</span>}
-                </div>
-              </div>
-            </Card>
-          </motion.div>
-        ))}
-      </div>
     </motion.div>
   );
 }

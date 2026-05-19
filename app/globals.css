@@ -105,9 +105,9 @@
   /* Transitions */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --duration-fast: 150ms;
-  --duration-normal: 250ms;
-  --duration-slow: 400ms;
+  --duration-fast: 80ms;
+  --duration-normal: 120ms;
+  --duration-slow: 200ms;
 
   /* Layout */
   --sidebar-width: 260px;
@@ -196,8 +196,34 @@ a:hover { text-decoration: underline; }
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.3; }
+}
 .animate-fade { animation: fadeIn var(--duration-normal) var(--ease-out) both; }
 .animate-slide { animation: slideInLeft var(--duration-slow) var(--ease-out) both; }
+.animate-pulse { animation: pulse 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+/* --- GLOBAL INTERACTIVE STATES --- */
+button, a, select, textarea {
+  transition: background-color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out), opacity var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+}
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+}
+button:active:not(:disabled) {
+  transform: translateY(0) scale(0.97);
+}
+.card-interactive {
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+.card-interactive:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-strong) !important;
+  box-shadow: var(--shadow-md), 0 0 12px hsla(220, 90%, 56%, 0.1) !important;
+}
 
 /* Staggered children */
 .stagger > *:nth-child(1) { animation-delay: 0ms; }

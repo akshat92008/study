@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
 import Progress from '@/components/ui/Progress';
@@ -10,9 +10,16 @@ import {
   Flame, ArrowRight, CheckCircle2, Clock, Send, MessageCircle, Loader2
 } from 'lucide-react';
 
-interface Props { profile: any; cognition: any; revision: any; mistakes: any; tasks: any[]; }
+interface Props { 
+  profile: any; 
+  cognition: any; 
+  revision: any; 
+  mistakes: any; 
+  tasks: any[]; 
+  onRefresh?: () => void;
+}
 
-export default function CommandCenter({ profile, cognition, revision, mistakes, tasks }: Props) {
+export default function CommandCenter({ profile, cognition, revision, mistakes, tasks, onRefresh }: Props) {
   const stats = cognition?.stats || {};
   const revStats = revision?.stats || {};
   const mistakeData = mistakes || {};
@@ -23,6 +30,10 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
   const [chatInput, setChatInput] = useState('');
   const [chatLoading, setChatLoading] = useState(false);
   const [assistantReply, setAssistantReply] = useState<string | null>(null);
+
+  useEffect(() => {
+    setCurrentTasks(tasks);
+  }, [tasks]);
 
   const completedTasks = currentTasks.filter((t: any) => t.is_completed).length;
 
@@ -50,8 +61,15 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
       setAssistantReply(data.reply);
       setChatInput('');
       
-      // Force a page refresh to pull the newly updated database tasks
-      setTimeout(() => window.location.reload(), 3000);
+      // Update tasks dynamically without a full browser reload
+      setTimeout(() => {
+        if (onRefresh) {
+          onRefresh();
+          setAssistantReply(null);
+        } else {
+          window.location.reload();
+        }
+      }, 3000);
       
     } catch (e) {
       setAssistantReply("Connection error. Let's try that again.");

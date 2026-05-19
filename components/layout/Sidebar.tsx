@@ -5,7 +5,9 @@ import Link from 'next/link';
 import {
   Brain, Target, RefreshCw, MessageCircle, Calendar,
   GraduationCap, BarChart3, LayoutDashboard, Zap, Database, Activity,
+  ChevronLeft, ChevronRight,
 } from 'lucide-react';
+import { useAppStore } from '@/stores/appStore';
 
 interface SidebarProps {
   userName: string;
@@ -27,30 +29,64 @@ const navItems = [
 
 export default function Sidebar({ userName, examType }: SidebarProps) {
   const pathname = usePathname();
+  const { isSidebarCollapsed, toggleSidebar, isMobileSidebarOpen } = useAppStore();
 
   return (
-    <aside id="sidebar" style={{
-      position: 'fixed', left: 0, top: 0, bottom: 0,
-      width: 'var(--sidebar-width)',
-      background: 'var(--bg-primary)',
-      borderRight: '1px solid var(--border-subtle)',
-      display: 'flex', flexDirection: 'column',
-      zIndex: 100,
-    }}>
+    <aside
+      id="sidebar"
+      style={{
+        position: 'fixed',
+        left: 0,
+        top: 0,
+        bottom: 0,
+        width: 'var(--sidebar-width)',
+        background: 'var(--bg-primary)',
+        borderRight: '1px solid var(--border-subtle)',
+        display: 'flex',
+        flexDirection: 'column',
+        zIndex: 100,
+        // Override transform on mobile when the drawer is toggled open
+        transform: isMobileSidebarOpen ? 'translateX(0)' : undefined,
+        transition: 'width var(--duration-normal) var(--ease-out), transform var(--duration-normal) var(--ease-out)',
+      }}
+    >
       {/* Logo */}
-      <div style={{
-        padding: 'var(--sp-5) var(--sp-5)',
-        borderBottom: '1px solid var(--border-subtle)',
-        display: 'flex', alignItems: 'center', gap: 'var(--sp-3)',
-      }}>
-        <div style={{
-          width: 32, height: 32, borderRadius: 'var(--radius-md)',
-          background: 'linear-gradient(135deg, var(--accent-blue), var(--accent-purple))',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-        }}>
+      <div
+        style={{
+          padding: 'var(--sp-5) var(--sp-5)',
+          borderBottom: '1px solid var(--border-subtle)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: isSidebarCollapsed ? 0 : 'var(--sp-3)',
+          justifyContent: isSidebarCollapsed ? 'center' : 'flex-start',
+          overflow: 'hidden',
+        }}
+      >
+        <div
+          style={{
+            width: 32,
+            height: 32,
+            borderRadius: 'var(--radius-md)',
+            background: 'linear-gradient(135deg, var(--accent-blue), var(--accent-purple))',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexShrink: 0,
+          }}
+        >
           <Zap size={18} color="white" />
         </div>
-        <div>
+        <div
+          style={{
+            transition: 'opacity var(--duration-fast) var(--ease-out), width var(--duration-fast) var(--ease-out)',
+            opacity: isSidebarCollapsed ? 0 : 1,
+            width: isSidebarCollapsed ? 0 : 'auto',
+            overflow: 'hidden',
+            whiteSpace: 'nowrap',
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
           <div style={{ fontSize: 'var(--fs-base)', fontWeight: 'var(--fw-bold)', letterSpacing: 'var(--ls-tight)' }}>
             Cognition <span style={{ color: 'var(--accent-blue)' }}>OS</span>
           </div>
@@ -61,53 +97,162 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
       </div>
 
       {/* Navigation */}
-      <nav style={{ flex: 1, padding: 'var(--sp-3)', display: 'flex', flexDirection: 'column', gap: 'var(--sp-1)' }}>
+      <nav
+        style={{
+          flex: 1,
+          padding: 'var(--sp-3)',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'var(--sp-1)',
+          overflowY: 'auto',
+          overflowX: 'hidden',
+        }}
+      >
         {navItems.map((item) => {
           const isActive = pathname === item.href;
           const Icon = item.icon;
           return (
-            <Link key={item.href} href={item.href} style={{
-              display: 'flex', alignItems: 'center', gap: 'var(--sp-3)',
-              padding: 'var(--sp-2) var(--sp-3)',
-              borderRadius: 'var(--radius-md)',
-              fontSize: 'var(--fs-sm)',
-              fontWeight: isActive ? 'var(--fw-semibold)' as any : 'var(--fw-normal)' as any,
-              color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
-              background: isActive ? 'var(--bg-tertiary)' : 'transparent',
-              textDecoration: 'none',
-              transition: 'all var(--duration-fast)',
-              position: 'relative',
-            }}>
-              {isActive && <div style={{
-                position: 'absolute', left: 0, top: '25%', bottom: '25%', width: 3,
-                background: 'var(--accent-blue)', borderRadius: 2,
-              }} />}
-              <Icon size={18} style={{ opacity: isActive ? 1 : 0.6 }} />
-              <span style={{ flex: 1 }}>{item.label}</span>
-              <span style={{
-                fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)',
-                fontFamily: 'var(--font-mono)', opacity: 0.5,
-              }}>{item.shortcut}</span>
+            <Link
+              key={item.href}
+              href={item.href}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: isSidebarCollapsed ? 0 : 'var(--sp-3)',
+                justifyContent: isSidebarCollapsed ? 'center' : 'flex-start',
+                padding: isSidebarCollapsed ? 'var(--sp-3)' : 'var(--sp-2) var(--sp-3)',
+                borderRadius: 'var(--radius-md)',
+                fontSize: 'var(--fs-sm)',
+                fontWeight: isActive ? ('var(--fw-semibold)' as any) : ('var(--fw-normal)' as any),
+                color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
+                background: isActive ? 'var(--bg-tertiary)' : 'transparent',
+                textDecoration: 'none',
+                transition: 'all var(--duration-fast) var(--ease-out)',
+                position: 'relative',
+              }}
+            >
+              {isActive && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: 0,
+                    top: '25%',
+                    bottom: '25%',
+                    width: 3,
+                    background: 'var(--accent-blue)',
+                    borderRadius: 2,
+                  }}
+                />
+              )}
+              <Icon size={18} style={{ opacity: isActive ? 1 : 0.6, flexShrink: 0 }} />
+              <span
+                style={{
+                  transition: 'opacity var(--duration-fast) var(--ease-out), width var(--duration-fast) var(--ease-out)',
+                  opacity: isSidebarCollapsed ? 0 : 1,
+                  width: isSidebarCollapsed ? 0 : 'auto',
+                  overflow: 'hidden',
+                  whiteSpace: 'nowrap',
+                  flex: 1,
+                }}
+              >
+                {item.label}
+              </span>
+              <span
+                style={{
+                  fontSize: 'var(--fs-xs)',
+                  color: 'var(--text-tertiary)',
+                  fontFamily: 'var(--font-mono)',
+                  opacity: isSidebarCollapsed ? 0 : 0.5,
+                  transition: 'opacity var(--duration-fast) var(--ease-out)',
+                  overflow: 'hidden',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {item.shortcut}
+              </span>
             </Link>
           );
         })}
       </nav>
 
+      {/* Collapse Toggle Button (Desktop-only via CSS class) */}
+      <div
+        className="desktop-only"
+        style={{
+          display: 'flex',
+          justifyContent: isSidebarCollapsed ? 'center' : 'flex-end',
+          padding: 'var(--sp-2) var(--sp-4)',
+          borderTop: '1px solid var(--border-subtle)',
+        }}
+      >
+        <button
+          onClick={toggleSidebar}
+          style={{
+            background: 'transparent',
+            border: 'none',
+            color: 'var(--text-secondary)',
+            cursor: 'pointer',
+            padding: 'var(--sp-2)',
+            borderRadius: 'var(--radius-sm)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+          title={isSidebarCollapsed ? 'Expand Sidebar' : 'Collapse Sidebar'}
+        >
+          {isSidebarCollapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
+        </button>
+      </div>
+
       {/* User section */}
-      <div style={{
-        padding: 'var(--sp-4) var(--sp-5)',
-        borderTop: '1px solid var(--border-subtle)',
-        display: 'flex', alignItems: 'center', gap: 'var(--sp-3)',
-      }}>
-        <div style={{
-          width: 32, height: 32, borderRadius: 'var(--radius-full)',
-          background: 'var(--accent-blue-dim)', display: 'flex', alignItems: 'center', justifyContent: 'center',
-          fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-bold)', color: 'var(--accent-blue)',
-        }}>
+      <div
+        style={{
+          padding: isSidebarCollapsed ? 'var(--sp-4) var(--sp-3)' : 'var(--sp-4) var(--sp-5)',
+          borderTop: '1px solid var(--border-subtle)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: isSidebarCollapsed ? 0 : 'var(--sp-3)',
+          justifyContent: isSidebarCollapsed ? 'center' : 'flex-start',
+          transition: 'padding var(--duration-normal) var(--ease-out)',
+        }}
+      >
+        <div
+          style={{
+            width: 32,
+            height: 32,
+            borderRadius: 'var(--radius-full)',
+            background: 'var(--accent-blue-dim)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: 'var(--fs-sm)',
+            fontWeight: 'var(--fw-bold)',
+            color: 'var(--accent-blue)',
+            flexShrink: 0,
+          }}
+        >
           {userName.charAt(0).toUpperCase()}
         </div>
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-medium)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+        <div
+          style={{
+            transition: 'opacity var(--duration-fast) var(--ease-out), width var(--duration-fast) var(--ease-out)',
+            opacity: isSidebarCollapsed ? 0 : 1,
+            width: isSidebarCollapsed ? 0 : 'auto',
+            overflow: 'hidden',
+            whiteSpace: 'nowrap',
+            flex: 1,
+            minWidth: 0,
+          }}
+        >
+          <div
+            style={{
+              fontSize: 'var(--fs-sm)',
+              fontWeight: 'var(--fw-medium)',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+            }}
+          >
             {userName}
           </div>
           <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Free Plan</div>
