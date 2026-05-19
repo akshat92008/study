@@ -48,7 +48,7 @@ export default async function EducatorDashboardPage() {
                 <div style={{ fontWeight: 'bold' }}>{profile?.full_name || 'Unknown Student'}</div>
                 <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>Score: {profile?.current_score || 0}</div>
               </div>
-              <Badge variant={profile?.emotional_state === 'burnt_out' ? 'danger' : 'success'}>
+              <Badge color={profile?.emotional_state === 'burnt_out' ? 'red' : 'green'}>
                 {profile?.emotional_state || 'neutral'}
               </Badge>
             </Card>

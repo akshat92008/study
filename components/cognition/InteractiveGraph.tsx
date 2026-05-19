@@ -9,7 +9,9 @@ import {
   useEdgesState, 
   MarkerType, 
   Position,
-  Panel
+  Panel,
+  Node,
+  Edge
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import dagre from 'dagre';
@@ -102,8 +104,8 @@ export default function InteractiveGraph({ concepts = [], links = [] }: { concep
     }));
   }, [links, concepts]);
 
-  const [nodes, setNodes, onNodesChange] = useNodesState([]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+  const [nodes, setNodes, onNodesChange] = useNodesState<Node>([]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([]);
 
   // 2. Apply Auto-Layout on Mount
   useEffect(() => {
