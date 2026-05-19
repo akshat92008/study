@@ -62,7 +62,17 @@ export async function POST(req: NextRequest) {
 
     return new Response(JSON.stringify(result), { headers: { 'Content-Type': 'application/json' } });
 
-  } catch (err) {
+  } catch (err: any) {
+    const fs = require('fs');
+    const path = require('path');
+    const errorDetails = {
+      message: err.message,
+      stack: err.stack,
+      details: err.details,
+      hint: err.hint,
+      timestamp: new Date().toISOString(),
+    };
+    fs.writeFileSync(path.join(process.cwd(), 'scratch/error.log'), JSON.stringify(errorDetails, null, 2));
     console.error(err);
     return new Response(JSON.stringify({ reply: "I had a glitch processing that. Could you repeat it?", isComplete: false }), { status: 500 });
   }
