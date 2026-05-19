@@ -7,6 +7,7 @@ import Progress from '@/components/ui/Progress';
 import { generateCards } from '@/lib/actions/revision';
 import { Brain, RefreshCw } from 'lucide-react';
 import KnowledgeMap from './KnowledgeMap';
+import InteractiveGraph from './InteractiveGraph';
 
 interface Props {
   data: any; // CognitionGraph data from server
@@ -85,6 +86,11 @@ export default function CognitionDashboard({ data }: Props) {
           <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>critical gaps</div>
         </Card>
       </div>
+
+      <h2 style={{ fontSize: 'var(--fs-lg)', fontWeight: 'var(--fw-semibold)', color: 'var(--text-primary)' }}>Neural Map</h2>
+      <Card padding="none">
+        <InteractiveGraph concepts={concepts} links={data.links} />
+      </Card>
 
       {/* Subject Filter */}
       <div style={{ display: 'flex', gap: 'var(--sp-2)' }}>
