@@ -28,15 +28,16 @@ export async function generateMentorRecovery(
 
   const totalRecoverableFromTop3 = top3Chapters.reduce((s, c) => s + c.marksLost, 0);
 
+  const unit = examType === 'CUSTOM' ? '% points' : 'marks';
   const prompt = `
-    You are an elite top-100 ranker mentor for ${examType}.
+    You are an elite top performer mentor for ${examType === 'CUSTOM' ? 'your field' : examType}.
     The student scored ${currentScore}. Their potential score without silly/rushed mistakes was ${potentialScore}.
     
     Their highest ROI weak points are:
-    ${top3Chapters.map(c => `- ${c.subject}: ${c.chapter} (${c.marksLost} marks lost)`).join('\n')}
+    ${top3Chapters.map(c => `- ${c.subject}: ${c.chapter} (${c.marksLost} ${unit} lost)`).join('\n')}
 
     Generate a structured JSON response containing:
-    1. "mentorQuote": A brutal but highly encouraging 2-sentence roast/mentor quote. (e.g. "You fought Physics bravely, but Chemistry time leakage cost you. Lock in Thermodynamics and you'll jump 20 marks.")
+    1. "mentorQuote": A brutal but highly encouraging 2-sentence roast/mentor quote. (e.g. "You fought Physics bravely, but Chemistry time leakage cost you. Lock in Thermodynamics and you'll jump 20 ${unit}.")
     2. "tasks": A 3-day sprint plan focusing ONLY on these top chapters. 1 task per day.
 
     Respond STRICTLY to the JSON schema.

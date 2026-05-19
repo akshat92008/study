@@ -4,6 +4,8 @@ import { z } from 'zod';
 import { getExamConfig } from '@/lib/utils/constants';
 import { AutopsyPaperSchema, AutopsyQuestionSchema } from './autopsy-schemas';
 import { generateMentorRecovery } from './mentor-engine';
+import { updateConceptState } from './cognition-graph';
+import { createCardFromMistake } from './revision-engine';
 import { logger } from '@/lib/utils/logger';
 
 type AutopsyFileData =
@@ -45,8 +47,17 @@ async function robustMultimodalExtraction(contents: any[], retries = 3) {
   throw new Error('Unreachable');
 }
 
-export async function processMockAutopsy(userId: string, fileData: AutopsyFileData, testName: string, examType: string = 'NEET') {
+export async function processMockAutopsy(
+  userId: string, 
+  fileData: AutopsyFileData, 
+  testName: string, 
+  examType: string = 'NEET',
+  customScoring?: { correctMarks: number; negativeMarks: number }
+) {
   const examConfig = getExamConfig(examType);
+  const correctMarks = customScoring?.correctMarks ?? examConfig.correctMarks;
+  const negativeMarks = customScoring?.negativeMarks ?? examConfig.negativeMarks;
+  
   const supabase = await createClient();
   const subjectList = examConfig.subjects.join(', ');
 
@@ -86,10 +97,10 @@ export async function processMockAutopsy(userId: string, fileData: AutopsyFileDa
     if (q.status === 'Correct') totalCorrect++;
     else if (q.status === 'Incorrect') {
       totalIncorrect++;
-      marksLost = examConfig.correctMarks + Math.abs(examConfig.negativeMarks);
+      marksLost = correctMarks + Math.abs(negativeMarks);
     } else {
       totalUnattempted++;
-      marksLost = examConfig.correctMarks;
+      marksLost = correctMarks;
     }
 
     // Recoverable Engine: High ROI errors
@@ -100,7 +111,7 @@ export async function processMockAutopsy(userId: string, fileData: AutopsyFileDa
     return { ...q, marksLost };
   });
 
-  const currentScore = (totalCorrect * examConfig.correctMarks) - (totalIncorrect * Math.abs(examConfig.negativeMarks));
+  const currentScore = (totalCorrect * correctMarks) - (totalIncorrect * Math.abs(negativeMarks));
   const potentialScore = currentScore + recoverableMarks;
 
   // 3. Database Transactions
@@ -138,11 +149,65 @@ export async function processMockAutopsy(userId: string, fileData: AutopsyFileDa
     await supabase.from('autopsy_questions').insert(qRows.slice(i, i + 50));
   }
 
+  // 3.5 Sync Mistakes to ATLAS and MEMORY
+  for (const q of processedQuestions.filter((q: ProcessedQuestion) => q.status === 'Incorrect')) {
+    const { data: concept } = await supabase
+      .from('concepts')
+      .select('id')
+      .eq('user_id', userId)
+      .ilike('chapter', `%${q.chapter}%`)
+      .limit(1)
+      .single();
+    
+    if (concept) {
+      await updateConceptState(concept.id, false, 0);
+    }
+
+    await createCardFromMistake(
+      userId,
+      concept ? concept.id : null,
+      q.subject,
+      q.chapter,
+      `Question ${q.questionNumber}`,
+      q.correctAnswer || 'Unknown',
+      q.reasoning || 'No reasoning provided.'
+    );
+  }
+
   // 4. Generate the Recovery Plan
   const incorrectQs = processedQuestions.filter((q: ProcessedQuestion) => q.status === 'Incorrect');
   const { mentorQuote, plan } = await generateMentorRecovery(autopsyData.id, currentScore, potentialScore, incorrectQs, examType);
 
+  // 5. Aggregate Analytics for Dashboard
+  const categoryMap: Record<string, number> = {};
+  const chapterMap: Record<string, number> = {};
+
+  incorrectQs.forEach(q => {
+    if (q.mistakeCategory) {
+      categoryMap[q.mistakeCategory] = (categoryMap[q.mistakeCategory] || 0) + 1;
+    }
+    if (q.chapter) {
+      chapterMap[q.chapter] = (chapterMap[q.chapter] || 0) + q.marksLost;
+    }
+  });
+
+  const categoryBreakdown = Object.entries(categoryMap).map(([name, value]) => ({ name, value }));
+  const chapterLoss = Object.entries(chapterMap)
+    .map(([chapter, marksLost]) => ({ chapter, marksLost }))
+    .sort((a, b) => b.marksLost - a.marksLost)
+    .slice(0, 10); // Top 10 chapters
+
   logger.info(`Autopsy Complete`, { userId, testName, currentScore, potentialScore });
 
-  return { autopsyId: autopsyData.id, currentScore, potentialScore, recoverableMarks, mentorQuote, plan };
+  return { 
+    autopsyId: autopsyData.id, 
+    currentScore, 
+    potentialScore, 
+    recoverableMarks, 
+    mentorQuote, 
+    plan, 
+    examType,
+    categoryBreakdown,
+    chapterLoss
+  };
 }

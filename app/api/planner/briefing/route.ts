@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { detectEmotionalState, getAdaptiveConfig } from '@/lib/engines/pulse-engine';
 import { getDueCards } from '@/lib/engines/revision-engine';
+import { generateMorningBriefing } from '@/lib/ai/agents/planner';
 import { logger, safeError } from '@/lib/utils/logger';
 
 export async function GET() {
@@ -20,18 +21,17 @@ export async function GET() {
     // 2. Fetch Profile Context
     const { data: profile } = await supabase
       .from('profiles')
-      .select('exam_type, target_year, streak_days')
+      .select('exam_type, target_year, exam_date, streak_days')
       .eq('id', user.id)
       .single();
 
-    // Dynamically calculate actual days remaining based on target year
+    // Dynamically calculate actual days remaining
     const targetYear = profile?.target_year || new Date().getFullYear() + 1;
-    // Exams usually occur in May (NEET/JEE pattern)
-    const examDate = new Date(`${targetYear}-05-01T00:00:00Z`); 
+    const examDate = profile?.exam_date ? new Date(profile.exam_date) : new Date(`${targetYear}-05-01T00:00:00Z`); 
     const daysRemaining = Math.max(0, Math.ceil((examDate.getTime() - Date.now()) / (1000 * 60 * 60 * 24)));
 
     // 3. Parallel Fetching for Briefing Stats
-    const [existingTasksRes, dueCards, weakConceptsRes] = await Promise.all([
+    const [existingTasksRes, dueCards, weakConceptsRes, morningGreeting] = await Promise.all([
       supabase.from('study_tasks')
         .select('*')
         .eq('user_id', user.id)
@@ -44,7 +44,11 @@ export async function GET() {
         .eq('user_id', user.id)
         .in('mastery', ['exposed', 'developing'])
         .order('forgetting_probability', { ascending: false })
-        .limit(5)
+        .limit(5),
+      generateMorningBriefing(user.id).catch(e => {
+        logger.error('Failed to generate morning briefing narrative', e);
+        return 'Ready for your daily mission. Study hard today!';
+      })
     ]);
 
     const existingTasks = existingTasksRes.data || [];
@@ -75,6 +79,7 @@ export async function GET() {
       })),
 
       pulseMessage: pulseConfig.uiMessage,
+      greetingText: morningGreeting,
     };
 
     return NextResponse.json(briefing);

@@ -164,6 +164,7 @@ export async function getCognitionGraph(userId: string) {
 export async function seedConceptsForSubject(userId: string, subject: string, chapters: string[]) {
   const supabase = await createClient();
   const conceptRows: any[] = [];
+  const chaptersToExpand: string[] = [];
 
   chapters.forEach((chapter) => {
     const expansions = CHAPTER_EXPANSIONS[chapter];
@@ -185,8 +186,62 @@ export async function seedConceptsForSubject(userId: string, subject: string, ch
         });
       });
     } else {
-      // Fallback general concept if no specific subtopics mapped
-      conceptRows.push({
+      // Mark for dynamic expansion if not in hardcoded list
+      chaptersToExpand.push(chapter);
+    }
+  });
+
+  let insertedCount = 0;
+
+  if (conceptRows.length > 0) {
+    const { data: inserted, error } = await supabase.from('concepts').insert(conceptRows).select();
+    if (error || !inserted) {
+      logger.error('Failed to seed subject concepts', { error });
+      throw error || new Error('Seeding failed');
+    }
+    insertedCount += inserted.length;
+
+    // Auto-generate prerequisite dependency links inside concept_links
+    const conceptMap: Record<string, string> = {};
+    inserted.forEach((c: any) => {
+      conceptMap[c.name] = c.id;
+    });
+
+    const linkRows: any[] = [];
+    inserted.forEach((c: any) => {
+      const prereqs = PREREQUISITES_MAP[c.name];
+      if (prereqs) {
+        prereqs.forEach((prereqName) => {
+          const sourceId = conceptMap[prereqName];
+          if (sourceId) {
+            linkRows.push({
+              user_id: userId,
+              source_concept_id: sourceId,
+              target_concept_id: c.id,
+              link_type: 'prerequisite',
+              strength: 0.8,
+            });
+          }
+        });
+      }
+    });
+
+    if (linkRows.length > 0) {
+      await supabase.from('concept_links').insert(linkRows);
+    }
+  }
+
+  // Handle dynamic AI expansion
+  for (const chapter of chaptersToExpand) {
+    try {
+      const expandedConcepts = await expandChapterViaMind(userId, subject, chapter);
+      if (expandedConcepts) {
+        insertedCount += expandedConcepts.length;
+      }
+    } catch (e) {
+      logger.error(`Failed to expand chapter ${chapter}`, { error: e });
+      // Fallback
+      await supabase.from('concepts').insert({
         user_id: userId,
         name: chapter,
         subject,
@@ -200,46 +255,12 @@ export async function seedConceptsForSubject(userId: string, subject: string, ch
         forgetting_probability: 1.0,
         retention_strength: 0.0,
       });
+      insertedCount++;
     }
-  });
-
-  const { data: inserted, error } = await supabase.from('concepts').insert(conceptRows).select();
-  if (error || !inserted) {
-    logger.error('Failed to seed subject concepts', { error });
-    throw error || new Error('Seeding failed');
   }
 
-  // Auto-generate prerequisite dependency links inside concept_links
-  const conceptMap: Record<string, string> = {};
-  inserted.forEach((c: any) => {
-    conceptMap[c.name] = c.id;
-  });
-
-  const linkRows: any[] = [];
-  inserted.forEach((c: any) => {
-    const prereqs = PREREQUISITES_MAP[c.name];
-    if (prereqs) {
-      prereqs.forEach((prereqName) => {
-        const sourceId = conceptMap[prereqName];
-        if (sourceId) {
-          linkRows.push({
-            user_id: userId,
-            source_concept_id: sourceId,
-            target_concept_id: c.id,
-            link_type: 'prerequisite',
-            strength: 0.8,
-          });
-        }
-      });
-    }
-  });
-
-  if (linkRows.length > 0) {
-    await supabase.from('concept_links').insert(linkRows);
-  }
-
-  logger.info(`Recursively seeded ${inserted.length} micro-concepts and established prerequisite dependencies`, { userId, subject });
-  return inserted;
+  logger.info(`Recursively seeded ${insertedCount} micro-concepts and established prerequisite dependencies`, { userId, subject });
+  return { seeded: insertedCount };
 }
 
 // Unified State Updater Recalculating Local, Chapter, and Prerequisite nodes
@@ -336,4 +357,81 @@ Respond as JSON:
 }`;
 
   return generateJSON('flash', `You are an expert ${examType} exam strategist.`, prompt);
+}
+
+// AI-Powered Dynamic Concept Expansion
+export async function expandChapterViaMind(userId: string, subject: string, chapter: string) {
+  const supabase = await createClient();
+  const prompt = `Break down the chapter "${chapter}" (${subject}) into 3-7 essential micro-concepts.
+  For each, identify prerequisites from other chapters if any.
+  
+  Respond as JSON:
+  {
+    "concepts": [
+      { "name": "Concept Name", "topic": "Parent Topic", "prerequisites": ["Other Concept Name"] }
+    ]
+  }`;
+  
+  const result = await generateJSON<{
+    concepts: { name: string; topic: string; prerequisites: string[] }[];
+  }>('flash', 'Expert curriculum designer.', prompt);
+  
+  const insertedConcepts = [];
+
+  // Insert concepts and auto-link prerequisites
+  for (const concept of result.concepts) {
+    const { data } = await supabase.from('concepts').insert({
+      user_id: userId,
+      name: concept.name,
+      subject,
+      chapter,
+      topic: concept.topic,
+      mastery: 'not_started',
+      confidence: 'low',
+    }).select().single();
+    
+    if (data) {
+      insertedConcepts.push(data);
+      
+      // Resolve and link prerequisites
+      if (concept.prerequisites && concept.prerequisites.length > 0) {
+        for (const prereq of concept.prerequisites) {
+          const { resolveConceptByName } = await import('@/lib/engines/concept-resolver');
+          const sourceId = await resolveConceptByName(userId, subject, prereq);
+          
+          if (sourceId) {
+            await supabase.from('concept_links').insert({
+              user_id: userId,
+              source_concept_id: sourceId,
+              target_concept_id: data.id,
+              link_type: 'prerequisite',
+              strength: 0.7,
+            });
+          }
+        }
+      }
+    }
+  }
+  
+  return insertedConcepts;
+}
+
+export async function getPrerequisiteChain(conceptId: string) {
+  const supabase = await createClient();
+  const { data: links } = await supabase
+    .from('concept_links')
+    .select('source_concept_id')
+    .eq('target_concept_id', conceptId)
+    .eq('link_type', 'prerequisite');
+  
+  if (!links || links.length === 0) return [];
+  
+  const sourceIds = links.map((l: any) => l.source_concept_id);
+  
+  const { data: concepts } = await supabase
+    .from('concepts')
+    .select('name, mastery')
+    .in('id', sourceIds);
+    
+  return (concepts || []).filter((c: any) => ['not_started', 'exposed', 'developing'].includes(c.mastery));
 }

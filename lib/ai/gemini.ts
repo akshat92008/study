@@ -108,3 +108,17 @@ export async function* streamText(
     }
   }
 }
+
+// Helper to generate text embeddings
+export async function getEmbedding(text: string): Promise<number[]> {
+  try {
+    const response = await genai.models.embedContent({
+      model: 'text-embedding-004',
+      contents: text,
+    });
+    return response.embeddings?.[0]?.values || [];
+  } catch (err: any) {
+    logger.error('Failed to generate embedding', { error: err.message });
+    throw err;
+  }
+}

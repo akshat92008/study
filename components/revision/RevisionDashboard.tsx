@@ -1,24 +1,32 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import Badge from '@/components/ui/Badge';
 import { submitReview } from '@/lib/actions/revision';
 import { RefreshCw, ChevronRight, RotateCcw, Check, Zap } from 'lucide-react';
+import CardSchedule from './CardSchedule';
 
 export default function RevisionDashboard({ data }: { data: any }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const [reviewing, setReviewing] = useState(false);
 
+  const [cardStartTime, setCardStartTime] = useState(Date.now());
+
   const { due = [], stats = {} } = data || {};
   const currentCard = due[currentIndex];
+
+  useEffect(() => {
+    setCardStartTime(Date.now());
+  }, [currentIndex]);
 
   async function handleRating(rating: 1 | 2 | 3 | 4) {
     if (!currentCard) return;
     setReviewing(true);
-    await submitReview(currentCard.id, rating);
+    const responseTimeMs = Date.now() - cardStartTime;
+    await submitReview(currentCard.id, rating, responseTimeMs);
     setShowAnswer(false);
     setReviewing(false);
     if (currentIndex < due.length - 1) {
@@ -103,10 +111,23 @@ export default function RevisionDashboard({ data }: { data: any }) {
           <p style={{ fontSize: 'var(--fs-md)', color: 'var(--success)', fontWeight: 'var(--fw-semibold)' }}>
             All caught up!
           </p>
-          <p style={{ color: 'var(--text-tertiary)', fontSize: 'var(--fs-sm)', marginTop: 'var(--sp-1)' }}>
+          <p style={{ color: 'var(--text-tertiary)', fontSize: 'var(--fs-sm)', marginTop: 'var(--sp-1)', marginBottom: 'var(--sp-4)' }}>
             {stats.total > 0 ? 'No cards due for review right now.' : 'Generate cards from the Cognition Graph to start reviewing.'}
           </p>
+          {stats.total === 0 && (
+            <a href="/cognition" style={{
+              display: 'inline-block', padding: 'var(--sp-2) var(--sp-4)',
+              background: 'var(--accent-cyan)', color: 'var(--bg-root)',
+              borderRadius: 'var(--radius-md)', fontSize: 'var(--fs-sm)', 
+              fontWeight: 'var(--fw-semibold)', textDecoration: 'none'
+            }}>Go to Cognition Graph</a>
+          )}
         </Card>
+      )}
+
+      {/* Per-Card Retention & Schedule Visualization */}
+      {(data?.allCards || []).length > 0 && (
+        <CardSchedule cards={data.allCards} />
       )}
     </div>
   );

@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import {
   Brain, Target, RefreshCw, MessageCircle, Calendar,
-  GraduationCap, BarChart3, LayoutDashboard, Zap, Database,
+  GraduationCap, BarChart3, LayoutDashboard, Zap, Database, Activity,
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -22,6 +22,7 @@ const navItems = [
   { href: '/planner', icon: Calendar, label: 'Planner', shortcut: '⌘6' },
   { href: '/tutor', icon: GraduationCap, label: 'AI Tutor', shortcut: '⌘7' },
   { href: '/analytics', icon: BarChart3, label: 'Analytics', shortcut: '⌘8' },
+  { href: '/pulse', icon: Activity, label: 'PULSE Center', shortcut: '⌘P' },
 ];
 
 export default function Sidebar({ userName, examType }: SidebarProps) {

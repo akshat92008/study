@@ -14,12 +14,15 @@ const MASTERY_CONFIG: Record<string, { color: string; bg: string; label: string;
   automated: { color: 'var(--accent-cyan)', bg: 'var(--accent-cyan-dim)', label: 'Automated', icon: Zap },
 };
 
+import InteractiveGraph from './InteractiveGraph';
+
 interface KnowledgeMapProps {
   concepts: any[];
+  links?: any[];
   stats: { total: number; mastered: number; proficient: number; developing: number; weak: number; overallMastery: number };
 }
 
-export default function KnowledgeMap({ concepts, stats }: KnowledgeMapProps) {
+export default function KnowledgeMap({ concepts, links = [], stats }: KnowledgeMapProps) {
   const [expandedSubjects, setExpandedSubjects] = useState<Set<string>>(new Set());
   const [selectedConcept, setSelectedConcept] = useState<any>(null);
 
@@ -94,87 +97,10 @@ export default function KnowledgeMap({ concepts, stats }: KnowledgeMapProps) {
         </div>
       </Card>
 
-      {/* Subject Tree Map */}
-      {subjects.map((subject) => {
-        const chapters = grouped[subject];
-        const subjectMastery = getSubjectMastery(chapters);
-        const isExpanded = expandedSubjects.has(subject);
-
-        return (
-          <Card key={subject} padding="none" style={{ overflow: 'hidden' }}>
-            {/* Subject Header */}
-            <button
-              onClick={() => toggleSubject(subject)}
-              style={{
-                width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                padding: 'var(--sp-4) var(--sp-5)', background: 'none', border: 'none',
-                cursor: 'pointer', color: 'var(--text-primary)',
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-3)' }}>
-                {isExpanded ? <ChevronDown size={18} /> : <ChevronRight size={18} />}
-                <span style={{ fontSize: 'var(--fs-md)', fontWeight: 'var(--fw-bold)' }}>{subject}</span>
-                <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
-                  {chapters.length} chapters
-                </span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-3)' }}>
-                <span style={{ fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-semibold)', color: subjectMastery > 70 ? 'var(--success)' : subjectMastery > 40 ? 'var(--warning)' : 'var(--danger)' }}>
-                  {subjectMastery}%
-                </span>
-                {/* Mini mastery bar */}
-                <div style={{ width: 80, height: 4, background: 'var(--bg-tertiary)', borderRadius: 'var(--radius-full)', overflow: 'hidden' }}>
-                  <div style={{ width: `${subjectMastery}%`, height: '100%', background: subjectMastery > 70 ? 'var(--success)' : subjectMastery > 40 ? 'var(--warning)' : 'var(--danger)', borderRadius: 'var(--radius-full)', transition: 'width 0.5s ease' }} />
-                </div>
-              </div>
-            </button>
-
-            {/* Chapter Grid */}
-            <AnimatePresence>
-              {isExpanded && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  style={{ overflow: 'hidden' }}
-                >
-                  <div style={{
-                    display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-                    gap: 'var(--sp-2)', padding: '0 var(--sp-4) var(--sp-4)',
-                  }}>
-                    {chapters.map((c: any, i: number) => {
-                      const mConfig = MASTERY_CONFIG[c.mastery] || MASTERY_CONFIG.not_started;
-                      const Icon = mConfig.icon;
-                      return (
-                        <motion.button
-                          key={c.id || i}
-                          initial={{ opacity: 0, scale: 0.95 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: i * 0.02 }}
-                          onClick={() => setSelectedConcept(c)}
-                          style={{
-                            display: 'flex', alignItems: 'center', gap: 'var(--sp-2)',
-                            padding: 'var(--sp-3)', borderRadius: 'var(--radius-md)',
-                            background: mConfig.bg, border: `1px solid ${mConfig.color}33`,
-                            cursor: 'pointer', textAlign: 'left',
-                            transition: 'all 150ms ease',
-                          }}
-                        >
-                          <Icon size={14} style={{ color: mConfig.color, flexShrink: 0 }} />
-                          <span style={{ fontSize: 'var(--fs-xs)', color: mConfig.color, fontWeight: 'var(--fw-medium)', lineHeight: 'var(--lh-tight)' }}>
-                            {c.chapter || c.name}
-                          </span>
-                        </motion.button>
-                      );
-                    })}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </Card>
-        );
-      })}
+      {/* Interactive Node-Edge Graph */}
+      <Card padding="none">
+        <InteractiveGraph concepts={concepts} links={links} />
+      </Card>
 
       {/* Selected Concept Detail Panel */}
       <AnimatePresence>

@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { getPlanForDate } from '@/lib/actions/planner';
 import PlannerDashboard from '@/components/planner/PlannerDashboard';
 

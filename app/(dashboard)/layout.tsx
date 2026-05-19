@@ -24,10 +24,15 @@ export default async function DashboardLayout({ children }: { children: React.Re
   }
 
 
+  const isOverwhelmed = profile?.emotional_state === 'overwhelmed';
+
   return (
-    <div style={{
-      display: 'flex', minHeight: '100vh', background: 'var(--bg-root)',
-    }}>
+    <div 
+      className={isOverwhelmed ? 'recovery-mode' : ''}
+      style={{
+        display: 'flex', minHeight: '100vh', background: 'var(--bg-root)',
+      }}
+    >
       <Sidebar userName={profile?.full_name || 'Student'} examType={profile?.exam_type || 'NEET'} />
       <div style={{ flex: 1, marginLeft: 'var(--sidebar-width)', display: 'flex', flexDirection: 'column' }}>
         <Header userName={profile?.full_name || 'Student'} streakDays={profile?.streak_days || 0} />

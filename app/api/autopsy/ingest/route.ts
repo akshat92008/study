@@ -24,6 +24,12 @@ export async function POST(request: Request) {
     const formData = await request.formData();
     const file = formData.get('file') as File | null;
     let testName = formData.get('testName') as string || 'Mock Test Autopsy';
+    const correctMarksStr = formData.get('correctMarks') as string;
+    const negativeMarksStr = formData.get('negativeMarks') as string;
+    
+    const customScoring = correctMarksStr && negativeMarksStr 
+      ? { correctMarks: Number(correctMarksStr), negativeMarks: Number(negativeMarksStr) } 
+      : undefined;
     
     // Fallback: Strip extensions from filename for cleaner UI display
     testName = testName.replace(/\.[^/.]+$/, "");
@@ -63,7 +69,7 @@ export async function POST(request: Request) {
     // 5. Process
     logger.info('Starting Mock Autopsy Processing', { userId: user.id, testName, mimeType });
     
-    const result = await processMockAutopsy(user.id, fileData, testName, examType);
+    const result = await processMockAutopsy(user.id, fileData, testName, examType, customScoring);
 
     return NextResponse.json(result);
 

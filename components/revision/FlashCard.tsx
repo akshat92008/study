@@ -4,14 +4,17 @@ import { useState, useEffect, useCallback } from 'react';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import { motion, AnimatePresence } from 'framer-motion';
-import { RotateCcw } from 'lucide-react';
+import { RotateCcw, Pencil, Trash2, Flag, X, Check } from 'lucide-react';
 
 interface FlashCardProps {
   front: string;
   back: string;
+  cardId?: string;
   cardIndex: number;
   totalCards: number;
   onRate: (rating: 'again' | 'hard' | 'good' | 'easy') => void;
+  onDelete?: (cardId: string) => void;
+  onEdit?: (cardId: string, front: string, back: string) => void;
 }
 
 const RATINGS = [
@@ -21,8 +24,13 @@ const RATINGS = [
   { key: 'easy' as const, label: 'Easy', shortcut: '4', color: 'var(--accent-cyan)', bg: 'var(--accent-cyan-dim)' },
 ];
 
-export default function FlashCard({ front, back, cardIndex, totalCards, onRate }: FlashCardProps) {
+export default function FlashCard({ front, back, cardId, cardIndex, totalCards, onRate, onDelete, onEdit }: FlashCardProps) {
   const [flipped, setFlipped] = useState(false);
+  const [editing, setEditing] = useState(false);
+  const [editFront, setEditFront] = useState(front);
+  const [editBack, setEditBack] = useState(back);
+  const [actionLoading, setActionLoading] = useState(false);
+  const [flagged, setFlagged] = useState(false);
 
   // Reset flip state when card changes
   useEffect(() => { setFlipped(false); }, [front]);
@@ -46,10 +54,96 @@ export default function FlashCard({ front, back, cardIndex, totalCards, onRate }
     return () => window.removeEventListener('keydown', handleKey);
   }, [handleKey]);
 
+  // Sync local edit state when card prop changes
+  useEffect(() => { setEditFront(front); setEditBack(back); setEditing(false); setFlagged(false); }, [front, back]);
+
+  async function handleDelete() {
+    if (!cardId || !onDelete) return;
+    setActionLoading(true);
+    try {
+      await fetch(`/api/revision?cardId=${cardId}`, { method: 'DELETE' });
+      onDelete(cardId);
+    } finally { setActionLoading(false); }
+  }
+
+  async function handleSaveEdit() {
+    if (!cardId || !onEdit) return;
+    setActionLoading(true);
+    try {
+      await fetch('/api/revision', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cardId, front: editFront, back: editBack }),
+      });
+      onEdit(cardId, editFront, editBack);
+      setEditing(false);
+    } finally { setActionLoading(false); }
+  }
+
   const progressPct = totalCards > 0 ? Math.round(((cardIndex) / totalCards) * 100) : 0;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--sp-4)', width: '100%', maxWidth: 640, margin: '0 auto' }}>
+
+      {/* Card Actions Bar */}
+      {cardId && (
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end', gap: 'var(--sp-2)' }}>
+          <button
+            onClick={() => setEditing(!editing)}
+            title="Edit card"
+            style={{ background: 'none', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-sm)', padding: 'var(--sp-1) var(--sp-2)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4, fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)' }}
+          >
+            <Pencil size={12} /> Edit
+          </button>
+          <button
+            onClick={() => setFlagged(!flagged)}
+            title="Flag card for review"
+            style={{ background: flagged ? 'var(--warning-dim)' : 'none', border: `1px solid ${flagged ? 'var(--warning)' : 'var(--border-default)'}`, borderRadius: 'var(--radius-sm)', padding: 'var(--sp-1) var(--sp-2)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4, fontSize: 'var(--fs-xs)', color: flagged ? 'var(--warning)' : 'var(--text-secondary)' }}
+          >
+            <Flag size={12} /> {flagged ? 'Flagged' : 'Flag'}
+          </button>
+          <button
+            onClick={handleDelete}
+            disabled={actionLoading}
+            title="Delete card"
+            style={{ background: 'none', border: '1px solid var(--danger-dim)', borderRadius: 'var(--radius-sm)', padding: 'var(--sp-1) var(--sp-2)', cursor: actionLoading ? 'wait' : 'pointer', display: 'flex', alignItems: 'center', gap: 4, fontSize: 'var(--fs-xs)', color: 'var(--danger)' }}
+          >
+            <Trash2 size={12} /> Delete
+          </button>
+        </div>
+      )}
+
+      {/* Inline Edit Panel */}
+      {editing && (
+        <div style={{ width: '100%', background: 'var(--bg-secondary)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: 'var(--sp-4)', display: 'flex', flexDirection: 'column', gap: 'var(--sp-3)' }}>
+          <div>
+            <label style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)' }}>Front</label>
+            <textarea
+              value={editFront}
+              onChange={(e) => setEditFront(e.target.value)}
+              rows={3}
+              style={{ width: '100%', marginTop: 'var(--sp-1)', padding: 'var(--sp-2)', background: 'var(--bg-tertiary)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-sm)', color: 'var(--text-primary)', resize: 'vertical', fontFamily: 'var(--font-sans)', fontSize: 'var(--fs-sm)' }}
+            />
+          </div>
+          <div>
+            <label style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)' }}>Back</label>
+            <textarea
+              value={editBack}
+              onChange={(e) => setEditBack(e.target.value)}
+              rows={3}
+              style={{ width: '100%', marginTop: 'var(--sp-1)', padding: 'var(--sp-2)', background: 'var(--bg-tertiary)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-sm)', color: 'var(--text-primary)', resize: 'vertical', fontFamily: 'var(--font-sans)', fontSize: 'var(--fs-sm)' }}
+            />
+          </div>
+          <div style={{ display: 'flex', gap: 'var(--sp-2)', justifyContent: 'flex-end' }}>
+            <button onClick={() => setEditing(false)} style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-sm)', padding: 'var(--sp-2) var(--sp-3)', cursor: 'pointer', fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: 4 }}>
+              <X size={12} /> Cancel
+            </button>
+            <button onClick={handleSaveEdit} disabled={actionLoading} style={{ background: 'var(--success-dim)', border: '1px solid var(--success)', borderRadius: 'var(--radius-sm)', padding: 'var(--sp-2) var(--sp-3)', cursor: actionLoading ? 'wait' : 'pointer', fontSize: 'var(--fs-xs)', color: 'var(--success)', fontWeight: 'var(--fw-semibold)', display: 'flex', alignItems: 'center', gap: 4 }}>
+              <Check size={12} /> Save
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Progress indicator */}
       <div style={{ width: '100%', display: 'flex', alignItems: 'center', gap: 'var(--sp-3)' }}>

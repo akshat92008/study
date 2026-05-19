@@ -30,6 +30,15 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
     return 'Good evening';
   })();
 
+  const daysRemaining = (() => {
+    if (!profile?.exam_date) {
+      const targetYear = profile?.target_year || new Date().getFullYear() + 1;
+      const defaultExamDate = new Date(`${targetYear}-05-01T00:00:00Z`);
+      return Math.max(0, Math.ceil((defaultExamDate.getTime() - Date.now()) / (1000 * 60 * 60 * 24)));
+    }
+    return Math.max(0, Math.ceil((new Date(profile.exam_date).getTime() - Date.now()) / (1000 * 60 * 60 * 24)));
+  })();
+
   return (
     <div className="animate-fade" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-6)' }}>
       {/* Welcome Header */}
@@ -42,8 +51,29 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
           {profile?.streak_days || 0} day streak
           <span style={{ color: 'var(--border-default)' }}>•</span>
           {profile?.exam_type || 'NEET'} {profile?.target_year || 2026}
+          <span style={{ color: 'var(--border-default)' }}>•</span>
+          <span style={{ color: 'var(--warning)', fontWeight: 'var(--fw-semibold)' }}>{daysRemaining} days left</span>
         </p>
       </div>
+
+      {/* Exam Countdown Banner */}
+      {daysRemaining > 0 && (
+        <Card variant="glow" style={{ background: 'var(--bg-glass)', border: '1px solid var(--border-subtle)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-3)' }}>
+              <Calendar size={20} style={{ color: 'var(--warning)' }} />
+              <div>
+                <div style={{ fontWeight: 'var(--fw-semibold)', fontSize: 'var(--fs-sm)' }}>Exam Countdown</div>
+                <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Target date: {profile?.exam_date ? new Date(profile.exam_date).toLocaleDateString() : 'May 1, ' + (profile?.target_year || (new Date().getFullYear() + 1))}</div>
+              </div>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--sp-1)' }}>
+              <span style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--warning)' }}>{daysRemaining}</span>
+              <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)' }}>days left</span>
+            </div>
+          </div>
+        </Card>
+      )}
 
       {/* Primary KPIs */}
       <div className="grid-4 stagger">
@@ -126,7 +156,22 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
               </span>
             </div>
           ))}
-          {tasks.length === 0 && <p style={{ color: 'var(--text-tertiary)', fontSize: 'var(--fs-sm)' }}>No tasks for today</p>}
+          {tasks.length === 0 && (
+            <div style={{
+              textAlign: 'center', padding: 'var(--sp-6)', 
+              background: 'var(--bg-tertiary)', borderRadius: 'var(--radius-md)',
+              border: '1px dashed var(--border-default)'
+            }}>
+              <Calendar size={32} style={{ color: 'var(--text-tertiary)', margin: '0 auto var(--sp-2)' }} />
+              <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', marginBottom: 'var(--sp-3)' }}>No tasks scheduled for today</p>
+              <Link href="/planner" style={{
+                display: 'inline-block', padding: 'var(--sp-2) var(--sp-4)',
+                background: 'var(--bg-primary)', border: '1px solid var(--border-default)',
+                borderRadius: 'var(--radius-sm)', color: 'var(--text-primary)',
+                fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-semibold)', textDecoration: 'none'
+              }}>Generate Plan</Link>
+            </div>
+          )}
         </Card>
 
         {/* Quick Actions */}

@@ -65,7 +65,7 @@ export async function getRevisionStats(userId: string) {
   };
 }
 
-export async function reviewCard(cardId: string, rating: 1 | 2 | 3 | 4) {
+export async function reviewCard(cardId: string, rating: 1 | 2 | 3 | 4, responseTimeMs?: number) {
   const supabase = await createClient();
   
   // 1. Fetch Card
@@ -104,7 +104,23 @@ export async function reviewCard(cardId: string, rating: 1 | 2 | 3 | 4) {
     elapsed_days: updated.elapsed_days,
     scheduled_days: updated.scheduled_days,
     state: updated.state,
+    response_time_ms: responseTimeMs,
   });
+
+  // Log PULSE friction signal if response time degrades significantly (> 15s)
+  if (responseTimeMs && responseTimeMs > 15000) {
+    try {
+      await supabase.from('pulse_signals').insert({
+        user_id: row.user_id,
+        signal_type: 'performance_trend',
+        emotional_state: 'frustrated',
+        confidence: 0.7,
+        notes: `Slow revision response time: ${responseTimeMs}ms`,
+      });
+    } catch (e) {
+      logger.error('Failed to log slow response time pulse signal', e);
+    }
+  }
 
   // 5. Sync Ecosystem: Update parent Concept Mastery & Streak
   if (row.concept_id) {
@@ -211,5 +227,77 @@ export async function generateCardsForConcept(userId: string, conceptId: string,
   if (error) throw new Error('Failed to save generated cards to database.');
 
   logger.info(`Auto-generated ${rows.length} cards via RAG`, { conceptId });
+  return data;
+}
+
+export async function createCardFromMistake(
+  userId: string,
+  conceptId: string | null,
+  subject: string,
+  chapter: string,
+  question: string,
+  correctAnswer: string,
+  reasoning: string
+) {
+  const supabase = await createClient();
+  const emptyCard = createEmptyCard();
+  
+  const { error } = await supabase.from('revision_cards').insert({
+    user_id: userId,
+    concept_id: conceptId,
+    front: `[Mistake Recovery]\n${question}`,
+    back: `Correct: ${correctAnswer}\n\nWhy you got it wrong: ${reasoning}`,
+    subject,
+    chapter,
+    due: emptyCard.due.toISOString(),
+    stability: emptyCard.stability,
+    difficulty: emptyCard.difficulty,
+    elapsed_days: emptyCard.elapsed_days,
+    scheduled_days: emptyCard.scheduled_days,
+    reps: emptyCard.reps,
+    lapses: emptyCard.lapses,
+    state: emptyCard.state,
+  });
+
+  if (error) {
+    logger.error('Failed to create flashcard from mistake', { error: error.message });
+  } else {
+    logger.info('Auto-generated card from mistake', { chapter });
+  }
+}
+
+export async function createSingleCard(
+  userId: string,
+  conceptId: string,
+  front: string,
+  back: string,
+  subject: string,
+  chapter: string
+) {
+  const supabase = await createClient();
+  const emptyCard = createEmptyCard();
+  
+  const { data, error } = await supabase.from('revision_cards').insert({
+    user_id: userId,
+    concept_id: conceptId,
+    front,
+    back,
+    subject,
+    chapter,
+    due: emptyCard.due.toISOString(),
+    stability: emptyCard.stability,
+    difficulty: emptyCard.difficulty,
+    elapsed_days: emptyCard.elapsed_days,
+    scheduled_days: emptyCard.scheduled_days,
+    reps: emptyCard.reps,
+    lapses: emptyCard.lapses,
+    state: emptyCard.state,
+  }).select().single();
+  
+  if (error) {
+    logger.error('Failed to create single flashcard', error);
+    throw new Error('Failed to create flashcard');
+  }
+  
   return data;
 }

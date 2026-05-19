@@ -1,9 +1,11 @@
 import { NextRequest } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { streamText } from '@/lib/ai/gemini';
-import { TUTOR_SYSTEM_PROMPT, buildTutorContext } from '@/lib/ai/prompts/tutor';
+import { streamText, generateJSON } from '@/lib/ai/gemini';
+import { getTutorSystemPrompt, buildTutorContext } from '@/lib/ai/prompts/tutor';
 import { searchPersonalKnowledge } from '@/lib/engines/rag-engine';
 import { getStudentContext } from '@/lib/engines/student-context-engine';
+import { getPrerequisiteChain, updateConceptState } from '@/lib/engines/cognition-graph';
+import { createSingleCard } from '@/lib/engines/revision-engine';
 import { logger } from '@/lib/utils/logger';
 
 export async function POST(req: NextRequest) {
@@ -22,7 +24,38 @@ export async function POST(req: NextRequest) {
     ]);
 
     const concept = conceptRes.data;
-    const telemetryContext = buildTutorContext(studentContext, subject || 'General', chapter || 'General', concept);
+    
+    // 1.5 Fetch Prerequisite and Longitudinal Context
+    let prerequisites: any[] = [];
+    let pastSessions: any[] = [];
+    
+    if (concept?.id) {
+      prerequisites = await getPrerequisiteChain(concept.id);
+      
+      // Fetch all concept IDs in the same subject and chapter to locate all related past conversations
+      const { data: chapterConcepts } = await supabase
+        .from('concepts')
+        .select('id')
+        .eq('user_id', user.id)
+        .eq('subject', subject || '')
+        .eq('chapter', chapter || '');
+      
+      const conceptIds = chapterConcepts && chapterConcepts.length > 0
+        ? chapterConcepts.map((c: any) => c.id)
+        : [concept.id];
+
+      const { data: sessions } = await supabase
+        .from('tutor_sessions')
+        .select('started_at, summary')
+        .eq('user_id', user.id)
+        .in('concept_id', conceptIds)
+        .not('summary', 'is', null)
+        .order('started_at', { ascending: false })
+        .limit(5);
+      if (sessions) pastSessions = sessions;
+    }
+
+    const telemetryContext = buildTutorContext(studentContext, subject || 'General', chapter || 'General', concept, pastSessions, prerequisites);
 
     // 2. High-Fidelity RAG Search
     // Boost threshold and limit to ensure we only get highly relevant notes, reducing noise.
@@ -50,10 +83,13 @@ export async function POST(req: NextRequest) {
       async start(controller) {
         let fullResponse = '';
         try {
-          for await (const chunk of streamText(modelToUse, TUTOR_SYSTEM_PROMPT, fullPrompt, 0.4)) { // Lower temp for factual rigor
+          const sysPrompt = getTutorSystemPrompt(studentContext.exam.type || 'CUSTOM');
+          const streamStartTime = Date.now();
+          for await (const chunk of streamText(modelToUse, sysPrompt, fullPrompt, 0.4)) { // Lower temp for factual rigor
             controller.enqueue(encoder.encode(chunk));
             fullResponse += chunk;
           }
+          const latency = Date.now() - streamStartTime;
 
           // 6. Asynchronous Telemetry & Session Saving
           const updatedHistory = [
@@ -61,24 +97,75 @@ export async function POST(req: NextRequest) {
             { role: 'user', content: message },
             { role: 'assistant', content: fullResponse }
           ];
-          
-          // Save session
-          await supabase.from('tutor_sessions').insert({
-            user_id: user.id,
-            concept_id: concept?.id || null,
-            messages: updatedHistory,
-            // Automatically upgrade cognitive level tracking based on history length
-            cognitive_level: updatedHistory.length > 10 ? 'advanced' : 'intermediate',
-            understanding_gained: 5, // Arbitrary base gain per deep interaction
-          });
 
-          // Update Concept Mastery
-          if (concept?.id) {
-            await supabase.from('concepts').update({
-              times_reviewed: (concept.times_reviewed || 0) + 1,
-              last_reviewed_at: new Date().toISOString()
-            }).eq('id', concept.id);
-          }
+          // 6. Asynchronous Telemetry, Analysis & Session Saving
+          Promise.resolve().then(async () => {
+            try {
+              const analysisPrompt = `Analyze this tutor session. Did the student demonstrate clear understanding of the concept? Are there any knowledge gaps? 
+              
+              Session:
+              ${historyText}
+              Student: ${message}
+              MIND: ${fullResponse}
+              
+              Respond as JSON:
+              {
+                "summary": "1-sentence summary of what was discussed",
+                "studentDemonstratedUnderstanding": true/false,
+                "knowledgeGaps": [
+                  { "front": "question", "back": "answer" }
+                ]
+              }`;
+              
+              const analysis = await generateJSON<any>('flash', 'You are an expert tutor session analyzer.', analysisPrompt);
+              
+              // Save session with summary
+              await supabase.from('tutor_sessions').insert({
+                user_id: user.id,
+                concept_id: concept?.id || null,
+                messages: updatedHistory,
+                cognitive_level: updatedHistory.length > 10 ? 'advanced' : 'intermediate',
+                understanding_gained: analysis.studentDemonstratedUnderstanding ? 10 : 2,
+                summary: analysis.summary,
+              });
+
+              // Log Tutor Interaction PULSE Signal
+              const messageLength = message.length;
+              const isShortOrFrustrated = messageLength < 10 || 
+                /\b(stuck|confused|hard|cannot|help|fail|error|wrong|bad|frustrated)\b/i.test(message);
+              const emotionalState = isShortOrFrustrated ? 'frustrated' : 'neutral';
+
+              await supabase.from('pulse_signals').insert({
+                user_id: user.id,
+                signal_type: 'tutor_interaction',
+                emotional_state: emotionalState,
+                confidence: isShortOrFrustrated ? 0.8 : 0.5,
+                notes: `Msg len: ${messageLength}, stream latency: ${latency}ms`,
+                interaction_count: 1,
+              });
+
+              // Update Concept Mastery & Create Flashcards
+              if (concept?.id) {
+                if (analysis.studentDemonstratedUnderstanding) {
+                  await updateConceptState(concept.id, true, 0); // true = correct/understood
+                } else {
+                  await supabase.from('concepts').update({
+                    times_reviewed: (concept.times_reviewed || 0) + 1,
+                    last_reviewed_at: new Date().toISOString()
+                  }).eq('id', concept.id);
+                }
+                
+                // Create flashcards for gaps
+                if (analysis.knowledgeGaps && analysis.knowledgeGaps.length > 0) {
+                  for (const gap of analysis.knowledgeGaps) {
+                    await createSingleCard(user.id, concept.id, gap.front, gap.back, subject || 'General', chapter || 'General');
+                  }
+                }
+              }
+            } catch (analysisErr) {
+              logger.error('Post-session analysis failed', analysisErr);
+            }
+          });
 
         } catch (err: any) { 
           logger.error('Tutor stream error', err);

@@ -11,32 +11,30 @@ export async function seedKnowledgeGraph(
 ) {
   const supabase = await createClient();
   const config = getExamConfig(examType);
-  const conceptRows: any[] = [];
+  const { seedConceptsForSubject } = await import('@/lib/engines/cognition-graph');
 
+  let totalSeeded = 0;
   for (const subject of config.subjects) {
     const chapters = config.chapters[subject] || [];
-    for (const chapter of chapters) {
-      const isWeak = weakSpots[subject]?.includes(chapter);
-      conceptRows.push({
-        user_id: userId,
-        name: chapter,
-        subject,
-        chapter,
-        topic: '',
-        mastery: isWeak ? 'exposed' : 'not_started',
-        confidence: isWeak ? 'very_low' : 'low',
-      });
+    if (chapters.length > 0) {
+      const result = await seedConceptsForSubject(userId, subject, chapters);
+      totalSeeded += result.seeded || 0;
     }
   }
 
-  if (conceptRows.length > 0) {
-    for (let i = 0; i < conceptRows.length; i += 50) {
-      const chunk = conceptRows.slice(i, i + 50);
-      await supabase.from('concepts').insert(chunk);
+  // Update mastery for identified weak spots
+  for (const [subject, weakChapters] of Object.entries(weakSpots)) {
+    if (weakChapters.length > 0) {
+      await supabase
+        .from('concepts')
+        .update({ mastery: 'exposed', confidence: 'very_low' })
+        .eq('user_id', userId)
+        .eq('subject', subject)
+        .in('chapter', weakChapters);
     }
   }
 
-  return { seeded: conceptRows.length };
+  return { seeded: totalSeeded };
 }
 
 // Generate the Day 1 plan immediately after onboarding
@@ -129,6 +127,29 @@ export async function completeOnboarding(
 
   const { seeded } = await seedKnowledgeGraph(userId, examType, weakSpots);
   const { tasksCreated } = await generateDay1Plan(userId, examType);
+
+  // Auto-generate revision cards for the first batch of seeded concepts
+  try {
+    const { generateCardsForConcept } = await import('@/lib/engines/revision-engine');
+    const { data: concepts } = await supabase
+      .from('concepts')
+      .select('id, subject, chapter')
+      .eq('user_id', userId)
+      .limit(10); // Cap initial generation to avoid timeout
+
+    if (concepts && concepts.length > 0) {
+      // Generate cards concurrently for speed (batches of 3 to respect rate limits)
+      for (let i = 0; i < concepts.length; i += 3) {
+        const batch = concepts.slice(i, i + 3);
+        await Promise.allSettled(
+          batch.map(c => generateCardsForConcept(userId, c.id, c.subject, c.chapter))
+        );
+      }
+    }
+  } catch (e) {
+    // Non-critical — onboarding succeeds even if card gen fails
+    console.error('Auto-card generation during onboarding failed:', e);
+  }
 
   return { seeded, tasksCreated };
 }

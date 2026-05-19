@@ -82,6 +82,8 @@ export async function generateDailyPlan(userId: string, date: string) {
     3. EXPLAINABILITY: Every task MUST have a "rationale" explaining why you chose it based on the telemetry above.
     4. BREAKS: Schedule "break" type tasks explicitly between intense study blocks. Generate a "breakRecommendation" for the overall day.
     5. Prioritize FSRS Revision if Due Cards > 0.
+    6. TIME SLOTS: Assign each task a "scheduled_start_time" in "HH:mm" 24hr format. Start from "08:00" and schedule sequentially based on task estimated_minutes and breaks (e.g. Task 1 starts at 08:00 for 60m, next break starts at 09:00 for 15m, next study starts at 09:15).
+  
   `;
 
   // 4. Generate & Parse (Using Robust Safe Zod Wrapper)
@@ -112,18 +114,64 @@ export async function generateDailyPlan(userId: string, date: string) {
     logger.warn('AI Mission Generation Failed. Utilizing Heuristic Fallback Planner.', { userId });
     
     finalTasks = [];
+    let currentMinutes = 8 * 60; // Start at 08:00
+    const formatTime = (mins: number) => {
+      const h = Math.floor(mins / 60) % 24;
+      const m = mins % 60;
+      return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
+    };
+
     if (dueRevisionCount > 0) {
-      finalTasks.push({ title: "FSRS Spaced Repetition", description: `Clear ${dueRevisionCount} due cards`, type: "revision", priority: "critical", estimated_minutes: 30, rationale: "Algorithm detected forgetting curve decay." });
+      finalTasks.push({ 
+        title: "FSRS Spaced Repetition", 
+        description: `Clear ${dueRevisionCount} due cards`, 
+        type: "revision", 
+        priority: "critical", 
+        estimated_minutes: 30, 
+        rationale: "Algorithm detected forgetting curve decay.",
+        scheduled_start_time: formatTime(currentMinutes)
+      });
+      currentMinutes += 30;
     }
     if (unfinishedTasks.length > 0) {
       const t = unfinishedTasks[0];
-      finalTasks.push({ title: `Complete: ${t.title}`, description: "Carryover from yesterday", type: (t.type || "study") as any, subject: t.subject, chapter: t.chapter, priority: "high", estimated_minutes: 60, rationale: "Maintaining syllabus momentum." });
+      finalTasks.push({ 
+        title: `Complete: ${t.title}`, 
+        description: "Carryover from yesterday", 
+        type: (t.type || "study") as any, 
+        subject: t.subject, 
+        chapter: t.chapter, 
+        priority: "high", 
+        estimated_minutes: 60, 
+        rationale: "Maintaining syllabus momentum.",
+        scheduled_start_time: formatTime(currentMinutes)
+      });
+      currentMinutes += 60;
     }
     if (weakConcepts.length > 0) {
       const c = weakConcepts[0];
-      finalTasks.push({ title: `Mastery Block: ${c.chapter}`, description: "Focus on weakest area", type: "study", subject: c.subject, chapter: c.chapter, priority: "high", estimated_minutes: 60, rationale: `High forgetting probability detected (${Math.round(c.forgetting_probability * 100)}%).` });
+      finalTasks.push({ 
+        title: `Mastery Block: ${c.chapter}`, 
+        description: "Focus on weakest area", 
+        type: "study", 
+        subject: c.subject, 
+        chapter: c.chapter, 
+        priority: "high", 
+        estimated_minutes: 60, 
+        rationale: `High forgetting probability detected (${Math.round(c.forgetting_probability * 100)}%).`,
+        scheduled_start_time: formatTime(currentMinutes)
+      });
+      currentMinutes += 60;
     }
-    finalTasks.push({ title: "Strategic Rest", description: "Hydrate and detach", type: "break", priority: "medium", estimated_minutes: 15, rationale: "Cognitive reset required to maintain accuracy." });
+    finalTasks.push({ 
+      title: "Strategic Rest", 
+      description: "Hydrate and detach", 
+      type: "break", 
+      priority: "medium", 
+      estimated_minutes: 15, 
+      rationale: "Cognitive reset required to maintain accuracy.",
+      scheduled_start_time: formatTime(currentMinutes)
+    });
   }
 
   // 6. Persist to Database
@@ -151,3 +199,73 @@ export async function generateDailyPlan(userId: string, date: string) {
   
   return data || [];
 }
+
+// AI-powered daily morning briefing narrative generator
+export async function generateMorningBriefing(userId: string) {
+  const supabase = await createClient();
+  
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('exam_type, target_year, exam_date, streak_days, study_hours_per_day')
+    .eq('id', userId)
+    .single();
+
+  const targetYear = profile?.target_year || new Date().getFullYear() + 1;
+  const examDate = profile?.exam_date ? new Date(profile.exam_date) : new Date(`${targetYear}-05-01T00:00:00Z`);
+  const daysRemaining = Math.max(0, Math.ceil((examDate.getTime() - Date.now()) / (1000 * 60 * 60 * 24)));
+
+  // Yesterday's task completion
+  const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+  const { data: yesterdayTasks } = await supabase
+    .from('study_tasks')
+    .select('is_completed')
+    .eq('user_id', userId)
+    .eq('scheduled_date', yesterday);
+    
+  let completionRate = 0;
+  if (yesterdayTasks && yesterdayTasks.length > 0) {
+    const completed = yesterdayTasks.filter(t => t.is_completed).length;
+    completionRate = Math.round((completed / yesterdayTasks.length) * 100);
+  }
+
+  // PULSE emotional state
+  const { detectEmotionalState } = await import('@/lib/engines/pulse-engine');
+  const { state: emotionalState } = await detectEmotionalState(userId);
+
+  // FSRS due cards
+  const { getDueCards } = await import('@/lib/engines/revision-engine');
+  const dueCards = (await getDueCards(userId, 50)).length;
+
+  // Top weak area
+  const { data: weakConcepts } = await supabase
+    .from('concepts')
+    .select('subject, chapter')
+    .eq('user_id', userId)
+    .in('mastery', ['exposed', 'developing'])
+    .order('forgetting_probability', { ascending: false })
+    .limit(1);
+    
+  const topWeakArea = weakConcepts && weakConcepts.length > 0
+    ? `${weakConcepts[0].subject} (${weakConcepts[0].chapter})`
+    : 'None detected';
+
+  // Dynamic hours recommended
+  let recommendedHours = profile?.study_hours_per_day || 8;
+  if (['burnt_out', 'overwhelmed'].includes(emotionalState)) recommendedHours = Math.max(2, recommendedHours * 0.4);
+  else if (['stressed', 'anxious'].includes(emotionalState)) recommendedHours = Math.max(4, recommendedHours * 0.7);
+  else if (['motivated', 'focused'].includes(emotionalState)) recommendedHours = Math.min(12, recommendedHours * 1.2);
+
+  const prompt = `Generate a personalized morning briefing for this student.
+    Days to exam: ${daysRemaining}
+    Yesterday's task completion: ${completionRate}%
+    Cognitive state: ${emotionalState}
+    Due revision cards: ${dueCards}
+    Top weak area: ${topWeakArea}
+    
+    Format: A warm, direct 3-sentence greeting. Include exact hours recommended (specifically mention ${recommendedHours.toFixed(1)} hours).
+    Tone: Mentor, not machine. Reference yesterday's performance.`;
+  
+  const { generateText } = await import('@/lib/ai/gemini');
+  return generateText('flash', 'You are COMMAND, the daily mission AI.', prompt);
+}
+

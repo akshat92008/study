@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Card from '@/components/ui/Card';
-import { CheckCircle, Circle, Clock, Brain, Flame, AlertTriangle, Zap, Calendar } from 'lucide-react';
+import { CheckCircle, Circle, Clock, Brain, Flame, AlertTriangle, Zap, Calendar, Sparkles, ShieldAlert } from 'lucide-react';
 
 interface BriefingData {
   date: string;
@@ -16,6 +16,7 @@ interface BriefingData {
   revision: { dueCount: number; message: string };
   focusAreas: { subject: string; chapter: string; urgency: string }[];
   pulseMessage: string;
+  greetingText?: string;
 }
 
 const TONE_COLORS: Record<string, string> = {
@@ -87,6 +88,32 @@ export default function DailyBriefing() {
           )}
         </div>
       </div>
+
+      {/* Morning Briefing AI Narrative */}
+      {briefing.greetingText && (
+        <Card id="morning-greeting-card" padding="lg" variant="glow" style={{ background: 'var(--bg-glass)', border: '1px solid var(--accent-blue-dim)', boxShadow: 'var(--shadow-glow-blue)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)', marginBottom: 'var(--sp-2)' }}>
+            <Sparkles size={16} style={{ color: 'var(--accent-blue)' }} />
+            <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--accent-blue)', fontWeight: 'var(--fw-bold)', textTransform: 'uppercase', letterSpacing: 'var(--ls-ultra)' }}>COMMAND AI Briefing</span>
+          </div>
+          <p style={{ fontSize: 'var(--fs-md)', fontWeight: 'var(--fw-medium)', lineHeight: 'var(--lh-relaxed)', color: 'var(--text-primary)', fontStyle: 'italic' }}>
+            "{briefing.greetingText}"
+          </p>
+        </Card>
+      )}
+
+      {/* Recovery Mode Active Alert */}
+      {briefing.mood.state === 'overwhelmed' && (
+        <Card padding="md" style={{ background: 'rgba(0, 240, 255, 0.08)', border: '1px solid var(--accent-cyan)', display: 'flex', gap: 'var(--sp-3)', alignItems: 'center' }}>
+          <ShieldAlert size={20} style={{ color: 'var(--accent-cyan)', flexShrink: 0 }} />
+          <div>
+            <div style={{ fontWeight: 'var(--fw-bold)', color: 'var(--accent-cyan)', fontSize: 'var(--fs-sm)' }}>Recovery Mode Active</div>
+            <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)', marginTop: 2 }}>
+              We have automatically adjusted your learning path, lightened your workload, and disabled glowing designs to create a serene visual environment.
+            </div>
+          </div>
+        </Card>
+      )}
 
       {/* PULSE Message */}
       <Card padding="md" style={{ borderLeft: `3px solid ${toneColor}`, background: 'var(--bg-secondary)' }}>

@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { getMistakeData } from '@/lib/actions/mistakes';
 import MistakeDashboard from '@/components/mistakes/MistakeDashboard';
 

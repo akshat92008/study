@@ -16,6 +16,7 @@ export default function OnboardingPage() {
   const router = useRouter();
 
   const [formState, setFormState] = useState({
+    isSpecificExam: false, topic: '', academicLevel: 'University',
     examType: 'NEET', targetYear: '2026', targetScore: '', studyHours: '8',
   });
   const [weakSpots, setWeakSpots] = useState<Record<string, string[]>>({});
@@ -89,27 +90,46 @@ export default function OnboardingPage() {
         <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--accent-cyan)', fontWeight: 'var(--fw-bold)', textTransform: 'uppercase', letterSpacing: 'var(--ls-ultra)', marginBottom: 'var(--sp-1)' }}>Step 1 of 4</div>
         <h2 style={{ fontSize: 'var(--fs-lg)', fontWeight: 'var(--fw-bold)' }}>What are you working toward?</h2>
       </div>
+      <Input 
+        label="What do you want to learn?" 
+        value={formState.topic} 
+        onChange={(e: any) => setFormState(p => ({ ...p, topic: e.target.value }))}
+        placeholder="e.g. Quantum Physics, CFA Level 1, React Native" 
+      />
       <div>
-        <label style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)', display: 'block', marginBottom: 'var(--sp-1)' }}>Exam Type</label>
-        <select value={formState.examType} onChange={e => setFormState(p => ({ ...p, examType: e.target.value }))} style={{
+        <label style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)', display: 'block', marginBottom: 'var(--sp-1)' }}>Academic Level</label>
+        <select value={formState.academicLevel} onChange={e => setFormState(p => ({ ...p, academicLevel: e.target.value }))} style={{
           width: '100%', padding: 'var(--sp-3)', background: 'var(--bg-primary)', color: 'var(--text-primary)',
           border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', fontSize: 'var(--fs-base)',
         }}>
-          {Object.entries(EXAM_REGISTRY).map(([key, config]) => (
-            <option key={key} value={key}>{config.name}</option>
-          ))}
+          <option value="High School">High School</option>
+          <option value="University">Undergraduate / University</option>
+          <option value="Graduate">Masters / Ph.D. / Graduate</option>
+          <option value="Professional">Professional Certification</option>
+          <option value="Hobbyist">Hobbyist / Self-Taught</option>
         </select>
-        <p style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', marginTop: 'var(--sp-1)' }}>
-          Subjects: {examConfig.subjects.join(', ')}
-        </p>
       </div>
-      <Input label="Target Year" type="number" value={formState.targetYear}
-        onChange={(e: any) => setFormState(p => ({ ...p, targetYear: e.target.value }))} />
-      <Input label="Target Score" type="number" value={formState.targetScore}
-        onChange={(e: any) => setFormState(p => ({ ...p, targetScore: e.target.value }))}
-        placeholder={`Out of ${examConfig.totalMarks}`} />
-      <Button onClick={() => setStep(2)} size="lg" style={{ marginTop: 'var(--sp-2)' }}>
-        Next <ArrowRight size={18} />
+
+      <Button 
+        onClick={async () => {
+          if (!formState.topic) return;
+          setLoading(true);
+          try {
+            const { generateDynamicCurriculum } = await import('@/lib/actions/curriculum');
+            await generateDynamicCurriculum(formState.topic, formState.academicLevel);
+            router.push('/');
+            router.refresh();
+          } catch (err) {
+            console.error(err);
+          } finally {
+            setLoading(false);
+          }
+        }} 
+        isLoading={loading}
+        size="lg" 
+        style={{ marginTop: 'var(--sp-2)' }}
+      >
+        Build My Learning Engine {!loading && <ArrowRight size={18} />}
       </Button>
     </motion.div>,
 

@@ -59,22 +59,20 @@ export default function LandingPage() {
           fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 'var(--fw-black)' as any,
           lineHeight: 'var(--lh-tight)', letterSpacing: 'var(--ls-tight)', marginBottom: 'var(--sp-5)',
         }}>
-          Your brain has a<br />
+          The AI that actually <br />
           <span style={{
             background: 'linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--accent-cyan))',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
           }}>
-            learning operating system
-          </span>
-          <br />now.
+            knows you
+          </span>.
         </h1>
 
         <p style={{
           fontSize: 'var(--fs-lg)', color: 'var(--text-secondary)',
           lineHeight: 'var(--lh-relaxed)', maxWidth: 600, margin: '0 auto var(--sp-8)',
         }}>
-          Cognition OS continuously models your knowledge, memory, behavior, and performance
-          to autonomously optimize how you learn — for any subject, any exam, any goal.
+          Upload what you're studying. Tell it your deadline. It takes over from there.
         </p>
 
         <div style={{ display: 'flex', gap: 'var(--sp-3)', justifyContent: 'center' }}>
@@ -87,6 +85,40 @@ export default function LandingPage() {
           }}>
             Start Free <ArrowRight size={18} />
           </Link>
+        </div>
+      </section>
+
+      {/* Use Cases Grid */}
+      <section style={{
+        maxWidth: 1000, margin: '0 auto', padding: '0 var(--sp-8) var(--sp-12)',
+        display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--sp-4)',
+      }}>
+        <div style={{
+          padding: 'var(--sp-6)', borderRadius: 'var(--radius-lg)',
+          background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)',
+          textAlign: 'left'
+        }}>
+          <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--accent-blue)', fontWeight: 'var(--fw-bold)', textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)', marginBottom: 'var(--sp-2)' }}>For University Students</div>
+          <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 'var(--fw-bold)', marginBottom: 'var(--sp-2)' }}>Acing Finals</h3>
+          <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)', lineHeight: 'var(--lh-relaxed)' }}>Upload your lecture slides and textbook chapters. The AI builds a daily study plan backward from your exam date.</p>
+        </div>
+        <div style={{
+          padding: 'var(--sp-6)', borderRadius: 'var(--radius-lg)',
+          background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)',
+          textAlign: 'left'
+        }}>
+          <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--accent-purple)', fontWeight: 'var(--fw-bold)', textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)', marginBottom: 'var(--sp-2)' }}>For Professionals</div>
+          <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 'var(--fw-bold)', marginBottom: 'var(--sp-2)' }}>CFA & Certifications</h3>
+          <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)', lineHeight: 'var(--lh-relaxed)' }}>Tell the AI your exact professional certification. It maps the official syllabus and tests you daily on weak concepts.</p>
+        </div>
+        <div style={{
+          padding: 'var(--sp-6)', borderRadius: 'var(--radius-lg)',
+          background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)',
+          textAlign: 'left'
+        }}>
+          <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--danger)', fontWeight: 'var(--fw-bold)', textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)', marginBottom: 'var(--sp-2)' }}>For Exam Aspirants</div>
+          <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 'var(--fw-bold)', marginBottom: 'var(--sp-2)' }}>Competitive Exams</h3>
+          <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)', lineHeight: 'var(--lh-relaxed)' }}>Upload your mock tests. The AI runs an autopsy to show exactly where you lost marks and assigns a high-ROI recovery sprint.</p>
         </div>
       </section>
 

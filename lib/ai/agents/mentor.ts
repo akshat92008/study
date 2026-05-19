@@ -1,5 +1,5 @@
 import { streamText } from '@/lib/ai/gemini';
-import { MENTOR_SYSTEM_PROMPT, buildMentorContext } from '@/lib/ai/prompts/mentor';
+import { getMentorSystemPrompt, buildMentorContext } from '@/lib/ai/prompts/mentor';
 import { createClient } from '@/lib/supabase/server';
 
 export async function getMentorContext(userId: string) {
@@ -44,5 +44,6 @@ export async function* streamMentorResponse(userId: string, userMessage: string,
 
   const fullPrompt = `${context}\n\n## Chat History\n${historyText}\n\nStudent: ${userMessage}`;
 
-  yield* streamText('pro', MENTOR_SYSTEM_PROMPT, fullPrompt, 0.8);
+  const sysPrompt = getMentorSystemPrompt(profile?.exam_type || 'CUSTOM');
+  yield* streamText('pro', sysPrompt, fullPrompt, 0.8);
 }

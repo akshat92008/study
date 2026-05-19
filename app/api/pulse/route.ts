@@ -12,7 +12,22 @@ export async function GET() {
     const { state, confidence } = await detectStudyFriction(user.id);
     const config = getAdaptiveConfig(state);
 
-    return NextResponse.json({ state, confidence, config });
+    const [signals, snapshots, sessions] = await Promise.all([
+      supabase.from('pulse_signals').select('*').eq('user_id', user.id).order('created_at', { ascending: true }).limit(50),
+      supabase.from('performance_snapshots').select('*').eq('user_id', user.id).order('date', { ascending: true }).limit(14),
+      supabase.from('study_sessions').select('*').eq('user_id', user.id).order('started_at', { ascending: true }).limit(14)
+    ]);
+
+    return NextResponse.json({
+      state,
+      confidence,
+      config,
+      history: {
+        signals: signals.data || [],
+        snapshots: snapshots.data || [],
+        sessions: sessions.data || []
+      }
+    });
   } catch (error: any) {
     return NextResponse.json(safeError(error), { status: 500 });
   }

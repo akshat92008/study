@@ -31,8 +31,9 @@ export const profiles = pgTable('profiles', {
   id: uuid('id').primaryKey(), // matches auth.users.id
   fullName: text('full_name').notNull(),
   email: text('email').notNull(),
-  examType: text('exam_type').default('NEET'),
+  examType: text('exam_type').default('CUSTOM'),
   targetYear: integer('target_year'),
+  examDate: timestamp('exam_date'),
   targetScore: integer('target_score'),
   currentScore: integer('current_score'),
   studyHoursPerDay: integer('study_hours_per_day').default(8),
@@ -129,6 +130,7 @@ export const reviewLogs = pgTable('review_logs', {
   scheduledDays: integer('scheduled_days'),
   review: timestamp('review').defaultNow(),
   state: integer('state'),
+  responseTimeMs: integer('response_time_ms'),
 });
 
 // Study tasks (planner)
@@ -205,6 +207,7 @@ export const tutorSessions = pgTable('tutor_sessions', {
   messages: jsonb('messages').default([]),
   cognitiveLevel: text('cognitive_level').default('intermediate'),
   understandingGained: integer('understanding_gained').default(0),
+  summary: text('summary'),
   startedAt: timestamp('started_at').defaultNow(),
   endedAt: timestamp('ended_at'),
 });

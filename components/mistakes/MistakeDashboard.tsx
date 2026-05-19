@@ -218,9 +218,12 @@ export default function MistakeDashboard({ data }: { data: any }) {
         <Card style={{ textAlign: 'center', padding: 'var(--sp-12)' }}>
           <Target size={48} style={{ color: 'var(--text-tertiary)', margin: '0 auto var(--sp-4)' }} />
           <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-md)' }}>No mistakes logged yet</p>
-          <p style={{ color: 'var(--text-tertiary)', fontSize: 'var(--fs-sm)', marginTop: 'var(--sp-1)' }}>
+          <p style={{ color: 'var(--text-tertiary)', fontSize: 'var(--fs-sm)', marginTop: 'var(--sp-1)', marginBottom: 'var(--sp-4)' }}>
             Start logging mistakes to unlock pattern intelligence
           </p>
+          <Button onClick={() => setShowForm(true)} variant="secondary">
+            <Plus size={16} /> Log First Mistake
+          </Button>
         </Card>
       )}
     </div>

@@ -6,6 +6,7 @@ import Badge from '@/components/ui/Badge';
 import Progress from '@/components/ui/Progress';
 import { generateCards } from '@/lib/actions/revision';
 import { Brain, RefreshCw } from 'lucide-react';
+import KnowledgeMap from './KnowledgeMap';
 
 interface Props {
   data: any; // CognitionGraph data from server
@@ -103,58 +104,8 @@ export default function CognitionDashboard({ data }: Props) {
         ))}
       </div>
 
-      {/* Concept Grid by Chapter */}
-      {Object.entries(filteredGrouped).map(([subject, chapters]: [string, any]) => (
-        <div key={subject}>
-          <h2 style={{ fontSize: 'var(--fs-lg)', fontWeight: 'var(--fw-semibold)', marginBottom: 'var(--sp-4)', color: 'var(--text-primary)' }}>
-            {subject}
-          </h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-3)' }}>
-            {Object.entries(chapters).map(([chapter, chapterConcepts]: [string, any]) => {
-              const c = chapterConcepts[0]; // Each chapter = 1 concept in initial seed
-              if (!c) return null;
-              const masteryPercent: Record<string, number> = {
-                not_started: 0, exposed: 15, developing: 40, proficient: 70, mastered: 90, automated: 98,
-              };
-              return (
-                <Card key={chapter} padding="sm" style={{
-                  display: 'flex', alignItems: 'center', gap: 'var(--sp-4)',
-                  cursor: 'pointer', transition: 'all var(--duration-fast)',
-                }}>
-                  <div style={{ flex: 1 }}>
-                    <div style={{ fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-medium)' }}>{chapter}</div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)', marginTop: 'var(--sp-1)' }}>
-                      <Badge color={masteryColor[c.mastery] || 'gray'}>{c.mastery.replace('_', ' ')}</Badge>
-                      <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', fontFamily: 'var(--font-mono)' }}>
-                        {c.times_reviewed}x reviewed
-                      </span>
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => handleGenerateCards(c)}
-                    disabled={generatingId === c.id || generatedIds.has(c.id)}
-                    style={{
-                      display: 'flex', alignItems: 'center', gap: 'var(--sp-1)',
-                      padding: 'var(--sp-2) var(--sp-3)', borderRadius: 'var(--radius-md)',
-                      border: '1px solid var(--border-default)',
-                      background: generatedIds.has(c.id) ? 'var(--success-glow)' : 'var(--bg-tertiary)',
-                      color: generatedIds.has(c.id) ? 'var(--success)' : 'var(--text-secondary)',
-                      cursor: generatingId === c.id || generatedIds.has(c.id) ? 'default' : 'pointer',
-                      fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-semibold)',
-                    }}
-                  >
-                    <RefreshCw size={12} style={{ animation: generatingId === c.id ? 'spin 1s linear infinite' : undefined }} />
-                    {generatedIds.has(c.id) ? 'Cards Ready' : generatingId === c.id ? 'Generating' : 'Make Cards'}
-                  </button>
-                  <div style={{ width: 120 }}>
-                    <Progress value={masteryPercent[c.mastery] || 0} color={masteryColor[c.mastery] === 'green' ? 'green' : masteryColor[c.mastery] === 'red' ? 'red' : 'blue'} size="sm" showLabel />
-                  </div>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      ))}
+      {/* Interactive Node-Edge Graph Visualization */}
+      <KnowledgeMap concepts={concepts} links={data.links} stats={stats} />
     </div>
   );
 }

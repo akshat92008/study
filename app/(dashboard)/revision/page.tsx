@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { getRevisionData } from '@/lib/actions/revision';
 import RevisionDashboard from '@/components/revision/RevisionDashboard';
 
