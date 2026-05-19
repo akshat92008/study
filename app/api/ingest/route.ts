@@ -1,62 +1,55 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { processDocumentIntoMemory } from '@/lib/engines/memory-engine';
-import { genai } from '@/lib/ai/gemini';
-import { logger } from '@/lib/utils/logger';
-
-const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB limit
+import { GoogleGenAI } from '@google/genai';
+import { logger, safeError } from '@/lib/utils/logger';
 
 export async function POST(request: Request) {
   try {
     const supabase = await createClient();
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
-
-    if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
     const formData = await request.formData();
     const file = formData.get('file') as File;
-    
     if (!file) return NextResponse.json({ error: 'No file provided' }, { status: 400 });
-    if (file.size > MAX_FILE_SIZE) return NextResponse.json({ error: 'File exceeds 10MB limit' }, { status: 413 });
 
-    const title = file.name.replace(/\.[^/.]+$/, ""); // Strip extension
-    const mimeType = file.type || 'application/octet-stream';
-    let extractedText = '';
+    const title = file.name;
+    const mimeType = file.type || 'application/pdf';
+    let text = '';
 
-    // If it's a PDF or Image, use Gemini Flash as a Universal OCR Engine
-    if (mimeType.startsWith('image/') || mimeType === 'application/pdf') {
-      const arrayBuffer = await file.arrayBuffer();
-      const base64 = Buffer.from(arrayBuffer).toString('base64');
+    // 1. Safely buffer the file
+    const arrayBuffer = await file.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
 
-      const response = await genai.models.generateContent({
+    // 2. Multimodal PDF/Image parsing via Gemini 2.5 Flash
+    if (mimeType === 'application/pdf' || mimeType.startsWith('image/')) {
+      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+      const base64 = buffer.toString('base64');
+
+      const res = await ai.models.generateContent({
         model: 'gemini-2.5-flash',
         contents: [{
           role: 'user',
           parts: [
             { inlineData: { mimeType, data: base64 } },
-            { text: 'Extract ALL text content from this document. Preserve headings, lists, tables, and structure. Write all mathematical equations in LaTeX format enclosed in $. Output ONLY the extracted markdown text, with absolutely no conversational commentary.' },
+            { text: 'Extract ALL text content from this document. Preserve headings, lists, and structure. Output strictly the extracted text. Do not add conversational filler.' },
           ],
         }],
       });
-      
-      extractedText = response.text || '';
+      text = res.text || '';
     } else {
-      // Plain text, markdown, etc.
-      extractedText = await file.text();
+      // Standard text/markdown fallback
+      text = buffer.toString('utf-8');
     }
 
-    if (!extractedText.trim()) {
-      return NextResponse.json({ error: 'Could not extract any readable text from the file.' }, { status: 400 });
-    }
+    if (!text.trim()) return NextResponse.json({ error: 'Could not extract text' }, { status: 400 });
 
-    // Pass the extracted Markdown to the memory engine for pgvector chunking
-    const result = await processDocumentIntoMemory(user.id, { title, text: extractedText });
-    
-    logger.info('Knowledge Base Ingestion Complete', { userId: user.id, title, chunks: result.chunks });
+    // 3. Vectorize and store
+    const result = await processDocumentIntoMemory(user.id, { title, text });
     return NextResponse.json(result);
 
   } catch (error: any) {
-    logger.error('Ingest API Error', error);
-    return NextResponse.json({ error: error.message || 'Processing failed' }, { status: 500 });
+    return NextResponse.json(safeError(error), { status: 500 });
   }
 }
