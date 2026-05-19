@@ -2,7 +2,7 @@ import { NextRequest } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { streamText, generateJSON } from '@/lib/ai/gemini';
 import { getTutorSystemPrompt } from '@/lib/ai/prompts/tutor';
-import { updateConceptState } from '@/lib/engines/cognition-graph';
+import { updateConceptState, getPrerequisiteChain } from '@/lib/engines/cognition-graph';
 import { createSingleCard } from '@/lib/engines/revision-engine';
 import { logger } from '@/lib/utils/logger';
 
@@ -21,14 +21,25 @@ export async function POST(req: NextRequest) {
   const { data: concept } = await supabase.from('concepts').select('*').eq('user_id', user.id).eq('subject', subject).eq('chapter', chapter).single();
   
   let pastSessionsText = '';
+  let weakPrereqsText = '';
   if (concept) {
     const { data: pastSessions } = await supabase.from('tutor_sessions')
       .select('summary, started_at').eq('user_id', user.id).eq('concept_id', concept.id)
-      .not('summary', 'is', null).order('started_at', { ascending: false }).limit(3);
+      .not('summary', 'is', null).order('started_at', { ascending: false }).limit(5);
     
     if (pastSessions && pastSessions.length > 0) {
       pastSessionsText = `\n\n### PAST CONVERSATIONS ON THIS TOPIC:\n` + 
         pastSessions.map(s => `- [${new Date(s.started_at).toLocaleDateString()}] ${s.summary}`).join('\n');
+    }
+
+    try {
+      const weakPrereqs = await getPrerequisiteChain(concept.id);
+      if (weakPrereqs && weakPrereqs.length > 0) {
+        weakPrereqsText = `\n\n### WEAK PREREQUISITES:\n` + 
+          weakPrereqs.map(p => `- ${p.name} (Mastery: ${p.mastery})`).join('\n');
+      }
+    } catch (e) {
+      logger.error("Failed to fetch prerequisite chain", e);
     }
   }
 
@@ -37,8 +48,7 @@ export async function POST(req: NextRequest) {
   const context = `
     Current Focus: ${subject} > ${chapter}
     Student Mastery: ${concept?.mastery || 'unknown'}
-    Past Mistakes Here: ${mistakes?.map((m:any) => m.ai_analysis).join(', ') || 'None'}
-    ${pastSessionsText}
+    Past Mistakes Here: ${mistakes?.map((m:any) => m.ai_analysis).join(', ') || 'None'}${weakPrereqsText}${pastSessionsText}
   `;
 
   const historyText = (history || []).slice(-8).map((m: any) => `${m.role === 'user' ? 'Student' : 'Tutor'}: ${m.content}`).join('\n');
@@ -63,7 +73,13 @@ export async function POST(req: NextRequest) {
           
           try {
             const analysis = await generateJSON<any>('flash', 'Expert analyzer.', analysisPrompt);
-            await supabase.from('tutor_sessions').insert({ user_id: user.id, concept_id: concept.id, summary: analysis.summary });
+            const currentMessages = [...(history || []), { role: 'user', content: message }, { role: 'tutor', content: fullResponse }];
+            await supabase.from('tutor_sessions').insert({ 
+              user_id: user.id, 
+              concept_id: concept.id, 
+              summary: analysis.summary,
+              messages: currentMessages
+            });
             if (analysis.understood) await updateConceptState(concept.id, true, 0); 
             if (analysis.gapFound && !analysis.understood) {
               await createSingleCard(user.id, concept.id, analysis.gapFound, analysis.gapAnswer, subject || 'General', chapter || 'General');
