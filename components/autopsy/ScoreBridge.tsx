@@ -15,9 +15,9 @@ export default function ScoreBridge({ currentScore, potentialScore, recoverableM
   const recoverablePercentage = (recoverableMarks / maxScore) * 100;
 
   return (
-    <div style={{ padding: 'var(--sp-6)', background: 'var(--bg-secondary)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--border-default)', boxShadow: 'var(--shadow-md)' }}>
+    <div style={{ padding: 'var(--sp-6)', background: 'var(--bg-secondary)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--accent-purple-dim)', boxShadow: 'var(--shadow-glow-purple)' }}>
       <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 'var(--fw-bold)', marginBottom: 'var(--sp-4)', color: 'var(--text-primary)' }}>
-        Score Recovery Potential
+        Recoverable Score Potential
       </h3>
       
       <div style={{ position: 'relative', height: '48px', background: 'var(--bg-tertiary)', borderRadius: 'var(--radius-md)', overflow: 'hidden', display: 'flex', marginBottom: 'var(--sp-4)' }}>
@@ -53,14 +53,14 @@ export default function ScoreBridge({ currentScore, potentialScore, recoverableM
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div>
           <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)' }}>Actual Score</div>
-          <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-black)', color: 'var(--text-primary)', fontFamily: 'var(--font-mono)' }}>{currentScore}</div>
+          <div style={{ fontSize: 'var(--fs-3xl)', fontWeight: 'var(--fw-black)', color: 'var(--text-primary)', fontFamily: 'var(--font-mono)' }}>{currentScore}</div>
         </div>
         
         <ArrowRight color="var(--text-tertiary)" size={24} />
         
         <div style={{ textAlign: 'right' }}>
-          <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--accent-cyan)', textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)' }}>Potential Score</div>
-          <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-black)', color: 'var(--success)', fontFamily: 'var(--font-mono)' }}>{potentialScore}</div>
+          <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--success)', textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)' }}>Potential Score</div>
+          <div style={{ fontSize: 'var(--fs-3xl)', fontWeight: 'var(--fw-black)', color: 'var(--success)', fontFamily: 'var(--font-mono)' }}>{potentialScore}</div>
         </div>
       </div>
     </div>
