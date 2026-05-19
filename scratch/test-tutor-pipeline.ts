@@ -58,6 +58,10 @@ async function runTest() {
       if (error) throw error;
       profile = newProfile;
     }
+
+    if (!profile) {
+      throw new Error("Failed to resolve user profile.");
+    }
     
     const userId = profile.id;
     console.log(`Using User ID: ${userId}`);

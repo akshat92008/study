@@ -12,8 +12,27 @@ export default function MockAutopsyPage() {
   const [loading, setLoading] = useState(false);
   const [statusMsg, setStatusMsg] = useState('');
   const [result, setResult] = useState<any>(null);
+  const [dragging, setDragging] = useState(false);
   
   const { addToast } = useAppStore();
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    setDragging(true);
+  };
+
+  const handleDragLeave = () => {
+    setDragging(false);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setDragging(false);
+    const droppedFile = e.dataTransfer.files?.[0];
+    if (droppedFile) {
+      setFile(droppedFile);
+    }
+  };
 
   const handleUpload = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -73,13 +92,37 @@ export default function MockAutopsyPage() {
 
       {/* Upload State */}
       {!result && !loading && (
-        <Card padding="lg" style={{ borderStyle: 'dashed', borderWidth: '2px', borderColor: 'var(--border-strong)', background: 'var(--bg-primary)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '350px' }}>
+        <Card 
+          padding="lg" 
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}
+          style={{ 
+            borderStyle: 'dashed', 
+            borderWidth: '2px', 
+            borderColor: dragging ? 'var(--accent-cyan)' : 'var(--border-strong)', 
+            background: dragging ? 'var(--bg-secondary)' : 'var(--bg-primary)', 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'center', 
+            justifyContent: 'center', 
+            minHeight: '350px',
+            transition: 'all 0.25s ease-in-out',
+            boxShadow: dragging ? 'var(--shadow-glow-blue)' : 'none',
+            transform: dragging ? 'scale(1.01)' : 'scale(1)'
+          }}
+        >
           <div style={{ background: 'var(--accent-cyan-dim)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-full)', marginBottom: 'var(--sp-4)' }}>
             <Upload color="var(--accent-cyan)" size={32} />
           </div>
-          <h3 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-semibold)', marginBottom: 'var(--sp-2)' }}>Upload Mock Paper</h3>
+          <h3 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-semibold)', marginBottom: 'var(--sp-2)' }}>
+            {dragging ? 'Drop to upload' : 'Drag & Drop Mock Paper'}
+          </h3>
+          <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', marginBottom: 'var(--sp-4)' }}>
+            or click below to choose a file (PDF, TXT, MD, or Image)
+          </p>
           
-          <form onSubmit={handleUpload} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--sp-4)', width: '100%', maxWidth: '20rem', marginTop: 'var(--sp-4)' }}>
+          <form onSubmit={handleUpload} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--sp-4)', width: '100%', maxWidth: '20rem' }}>
             <input 
               type="file" 
               accept=".pdf,.txt,.md,image/*" 
@@ -90,6 +133,11 @@ export default function MockAutopsyPage() {
                 background: 'var(--bg-secondary)', color: 'var(--text-primary)'
               }}
             />
+            {file && (
+              <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--accent-cyan)', textAlign: 'center', background: 'var(--accent-cyan-dim)', padding: 'var(--sp-2) var(--sp-4)', borderRadius: 'var(--radius-md)', width: '100%', marginTop: 'var(--sp-2)' }}>
+                Staged: <strong>{file.name}</strong> ({(file.size / (1024 * 1024)).toFixed(2)} MB)
+              </div>
+            )}
             <Button type="submit" disabled={!file} size="lg" style={{ width: '100%', background: 'var(--accent-cyan)', color: 'var(--text-inverse)' }}>
               Run Autopsy
             </Button>
