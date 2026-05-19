@@ -14,6 +14,15 @@ export async function POST(request: Request) {
     const file = formData.get('file') as File;
     if (!file) return NextResponse.json({ error: 'No file provided' }, { status: 400 });
 
+    // Enforce Free Tier limits
+    const { data: profile } = await supabase.from('profiles').select('subscription_status').eq('id', user.id).single();
+    if (!profile || profile.subscription_status === 'free') {
+      const { count } = await supabase.from('materials').select('*', { count: 'exact', head: true }).eq('user_id', user.id);
+      if (count && count >= 1) {
+        return NextResponse.json({ error: 'Free tier limit reached (Max 1 document). Please upgrade to Pro.' }, { status: 403 });
+      }
+    }
+
     const title = file.name;
     const mimeType = file.type || 'application/pdf';
     let text = '';

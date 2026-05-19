@@ -40,6 +40,8 @@ export const profiles = pgTable('profiles', {
   emotionalState: emotionalStateEnum('emotional_state').default('neutral'),
   onboardingComplete: boolean('onboarding_complete').default(false),
   streakDays: integer('streak_days').default(0),
+  stripeCustomerId: text('stripe_customer_id'),
+  subscriptionStatus: text('subscription_status').default('free'),
   lastActiveAt: timestamp('last_active_at'),
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow(),
@@ -315,4 +317,22 @@ export const pulseSignals = pgTable('pulse_signals', {
   interactionCount: integer('interaction_count'),
   notes: text('notes'),
   createdAt: timestamp('created_at').defaultNow(),
+});
+
+// --- Phase 5: Educator & Teams ---
+
+export const institutes = pgTable('institutes', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  name: text('name').notNull(),
+  ownerId: uuid('owner_id').references(() => profiles.id).notNull(),
+  stripeSubscriptionId: text('stripe_subscription_id'),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const instituteMemberships = pgTable('institute_memberships', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  instituteId: uuid('institute_id').references(() => institutes.id, { onDelete: 'cascade' }).notNull(),
+  userId: uuid('user_id').references(() => profiles.id, { onDelete: 'cascade' }).notNull(),
+  role: text('role').default('student'), // 'educator', 'student'
+  joinedAt: timestamp('joined_at').defaultNow(),
 });
