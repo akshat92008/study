@@ -39,6 +39,67 @@ export async function generateText(
   return response.text ?? '';
 }
 
+function zodToGeminiSchema(schema: any): any {
+  if (!schema) return undefined;
+
+  if (typeof schema.unwrap === 'function') {
+    return zodToGeminiSchema(schema.unwrap());
+  }
+
+  const def = schema._def;
+  if (!def) return { type: 'string' };
+
+  switch (def.typeName) {
+    case 'ZodString':
+      return { type: 'string' };
+    case 'ZodNumber':
+      return { type: 'number' };
+    case 'ZodBoolean':
+      return { type: 'boolean' };
+    case 'ZodEnum':
+      return { type: 'string', enum: def.values };
+    case 'ZodArray':
+      return {
+        type: 'array',
+        items: zodToGeminiSchema(def.type),
+      };
+    case 'ZodObject': {
+      const properties: Record<string, any> = {};
+      const required: string[] = [];
+      const shape = typeof def.shape === 'function' ? def.shape() : schema.shape;
+      
+      if (shape) {
+        for (const [key, value] of Object.entries(shape)) {
+          const propSchema = zodToGeminiSchema(value);
+          if (propSchema) {
+            properties[key] = propSchema;
+            
+            const valDef = (value as any)?._def;
+            const isOptional = valDef?.typeName === 'ZodOptional' || 
+                               valDef?.typeName === 'ZodNullable' ||
+                               typeof (value as any).unwrap === 'function';
+            if (!isOptional) {
+              required.push(key);
+            }
+          }
+        }
+      }
+      return {
+        type: 'object',
+        properties,
+        required: required.length > 0 ? required : undefined,
+      };
+    }
+    case 'ZodEffects':
+      return zodToGeminiSchema(def.schema);
+    case 'ZodOptional':
+    case 'ZodNullable':
+      return zodToGeminiSchema(def.innerType);
+    default:
+      return { type: 'string' };
+  }
+}
+
 // Helper to generate JSON with a specific model (Zod optional for backward compatibility)
 export async function generateJSON<T>(
   model: keyof typeof MODELS,
@@ -50,6 +111,7 @@ export async function generateJSON<T>(
 ): Promise<T> {
   let attempt = 0;
   let delay = 1000;
+  const geminiSchema = schema ? zodToGeminiSchema(schema) : undefined;
 
   while (attempt < retries) {
     try {
@@ -60,7 +122,7 @@ export async function generateJSON<T>(
           systemInstruction: systemPrompt + '\n\nRespond ONLY with valid JSON. No markdown fences.' + SECURITY_BOUNDARY,
           temperature,
           responseMimeType: 'application/json',
-          responseSchema: schema as any,
+          responseSchema: geminiSchema,
         },
       });
 
