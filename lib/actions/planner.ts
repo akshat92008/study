@@ -10,7 +10,14 @@ export async function getPlanForDate(date: string) {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return [];
     
-    return await generateDailyPlan(user.id, date);
+    const { data: tasks } = await supabase
+      .from('study_tasks')
+      .select('*')
+      .eq('user_id', user.id)
+      .eq('scheduled_date', date)
+      .order('priority', { ascending: true });
+      
+    return tasks || [];
   } catch (error) {
     logger.error('Error fetching plan for date', error);
     return [];

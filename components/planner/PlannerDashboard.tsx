@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
 import { toggleTask } from '@/lib/actions/planner';
@@ -18,8 +18,31 @@ const priorityColor: Record<string, 'red' | 'yellow' | 'blue' | 'gray'> = {
 
 export default function PlannerDashboard({ initialTasks, date }: { initialTasks: any[]; date: string }) {
   const [tasks, setTasks] = useState(initialTasks);
+  const [loading, setLoading] = useState(initialTasks.length === 0);
   const [showPulse, setShowPulse] = useState(false);
   const { addToast } = useAppStore();
+
+  useEffect(() => {
+    if (initialTasks.length === 0) {
+      setLoading(true);
+      fetch('/api/planner', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ date }),
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.plan) {
+            setTasks(data.plan);
+          }
+          setLoading(false);
+        })
+        .catch(() => setLoading(false));
+    } else {
+      setTasks(initialTasks);
+      setLoading(false);
+    }
+  }, [initialTasks, date]);
 
   const completed = tasks.filter(t => t.is_completed).length;
   const totalMinutes = tasks.reduce((s, t) => s + (t.estimated_minutes || 0), 0);
