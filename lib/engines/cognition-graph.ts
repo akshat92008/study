@@ -138,7 +138,6 @@ export async function getCognitionGraph(userId: string) {
 export async function seedConceptsForSubject(userId: string, subject: string, chapters: string[]) {
   const supabase = await createClient();
   const conceptRows: any[] = [];
-  const chaptersToExpand: string[] = [];
 
   chapters.forEach((chapter) => {
     const expansions = CHAPTER_EXPANSIONS[chapter];
@@ -160,7 +159,20 @@ export async function seedConceptsForSubject(userId: string, subject: string, ch
         });
       });
     } else {
-      chaptersToExpand.push(chapter);
+      conceptRows.push({
+        user_id: userId,
+        name: chapter,
+        subject,
+        chapter,
+        topic: 'General',
+        mastery: 'not_started',
+        confidence: 'low',
+        times_reviewed: 0,
+        times_correct: 0,
+        times_incorrect: 0,
+        forgetting_probability: 1.0,
+        retention_strength: 0.0,
+      });
     }
   });
 
@@ -190,20 +202,6 @@ export async function seedConceptsForSubject(userId: string, subject: string, ch
     });
 
     if (linkRows.length > 0) await supabase.from('concept_links').insert(linkRows);
-  }
-
-  for (const chapter of chaptersToExpand) {
-    try {
-      const expandedConcepts = await expandChapterViaMind(userId, subject, chapter);
-      if (expandedConcepts) insertedCount += expandedConcepts.length;
-    } catch (e) {
-      await supabase.from('concepts').insert({
-        user_id: userId, name: chapter, subject, chapter, topic: 'General',
-        mastery: 'not_started', confidence: 'low', times_reviewed: 0, times_correct: 0,
-        times_incorrect: 0, forgetting_probability: 1.0, retention_strength: 0.0,
-      });
-      insertedCount++;
-    }
   }
 
   return { seeded: insertedCount };
