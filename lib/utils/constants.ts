@@ -174,7 +174,21 @@ export const EXAM_REGISTRY: Record<string, ExamConfig> = {
 
 // Helper to get config for any exam (falls back to CUSTOM)
 export function getExamConfig(examType: string): ExamConfig {
-  return EXAM_REGISTRY[examType] || CUSTOM_CONFIG;
+  if (!examType) return CUSTOM_CONFIG;
+  const normalized = examType.toUpperCase().trim();
+  if (normalized === 'RENEET' || normalized === 'RE-NEET' || normalized.includes('NEET')) {
+    return EXAM_REGISTRY.NEET;
+  }
+  if (normalized.includes('JEE')) {
+    return EXAM_REGISTRY.JEE;
+  }
+  if (normalized.includes('SAT')) {
+    return EXAM_REGISTRY.SAT;
+  }
+  if (normalized.includes('UPSC')) {
+    return EXAM_REGISTRY.UPSC;
+  }
+  return EXAM_REGISTRY[normalized] || CUSTOM_CONFIG;
 }
 
 // Helper to get subjects for an exam

@@ -23,12 +23,16 @@ export async function seedKnowledgeGraph(
 
   for (const [subject, weakChapters] of Object.entries(weakSpots)) {
     if (weakChapters.length > 0) {
-      await supabase
+      const query = supabase
         .from('concepts')
         .update({ mastery: 'exposed', confidence: 'very_low' })
         .eq('user_id', userId)
-        .eq('subject', subject)
         .in('chapter', weakChapters);
+
+      if (subject !== 'General') {
+        query.eq('subject', subject);
+      }
+      await query;
     }
   }
 
@@ -94,13 +98,32 @@ export async function completeOnboarding(
   if (!user) throw new Error('Not authenticated');
   const userId = user.id;
 
-  // 1. Save Profile
-  await supabase.from('profiles').update({
-    exam_type: examType,
-    target_year: targetYear,
-    onboarding_complete: true,
-    updated_at: new Date().toISOString(),
-  }).eq('id', userId);
+  // Ensure profile exists (defensive fallback for trigger race conditions or missing profiles)
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('id')
+    .eq('id', userId)
+    .single();
+
+  if (!profile) {
+    await supabase.from('profiles').insert({
+      id: userId,
+      full_name: user.user_metadata?.full_name || 'Student',
+      email: user.email || '',
+      exam_type: examType,
+      target_year: targetYear,
+      onboarding_complete: true,
+      updated_at: new Date().toISOString(),
+    });
+  } else {
+    // 1. Save Profile
+    await supabase.from('profiles').update({
+      exam_type: examType,
+      target_year: targetYear,
+      onboarding_complete: true,
+      updated_at: new Date().toISOString(),
+    }).eq('id', userId);
+  }
 
   // 2. Seed ATLAS Knowledge Graph
   const { seeded } = await seedKnowledgeGraph(userId, examType, weakSpots);
