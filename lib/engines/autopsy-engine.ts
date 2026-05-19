@@ -145,16 +145,25 @@ export async function processMockAutopsy(
     try {
       const { resolveConceptByName } = await import('./concept-resolver');
       const { updateConceptState } = await import('./cognition-graph');
-      const { generateCardsForConcept } = await import('./revision-engine');
+      const { createCardFromMistake } = await import('./revision-engine');
 
       for (const q of incorrectQs) {
         const conceptId = await resolveConceptByName(userId, q.subject, q.chapter || '');
         if (conceptId) {
-          // 1. Punish ATLAS: Downscale mastery because they got it wrong (timeSpent=1)
-          await updateConceptState(conceptId, false, 1);
+          // 1. Punish ATLAS: Downscale mastery because they got it wrong (timeSpent=0)
+          await updateConceptState(conceptId, false, 0);
           
-          // 2. Feed MEMORY: Auto-create FSRS revision cards so they practice this gap
-          await generateCardsForConcept(userId, conceptId, q.subject, q.chapter || '');
+          // 2. Feed MEMORY: Auto-create FSRS revision card for this specific mistake
+          const questionDesc = `Question #${q.questionNumber} from mock test "${testName}"`;
+          await createCardFromMistake(
+            userId,
+            conceptId,
+            q.subject,
+            q.chapter || '',
+            questionDesc,
+            q.correctAnswer || 'N/A',
+            q.reasoning || 'No explanation provided.'
+          );
         }
       }
       logger.info(`Autopsy-to-ATLAS/MEMORY sync complete for ${incorrectQs.length} mistakes.`);
