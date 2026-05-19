@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import Card from '@/components/ui/Card';
-import { Sparkles, Send, Loader2, BrainCircuit, CheckCircle, UploadCloud } from 'lucide-react';
+import { Sparkles, Send, Loader2, BrainCircuit, CheckCircle, UploadCloud, Paperclip } from 'lucide-react';
 
 export default function ConversationalOnboarding() {
   const router = useRouter();
@@ -169,11 +169,20 @@ export default function ConversationalOnboarding() {
                 )}
               </div>
 
-              <div style={{ display: 'flex', gap: 'var(--sp-3)' }}>
+              <div style={{ display: 'flex', gap: 'var(--sp-2)', alignItems: 'center' }}>
+                <label style={{ cursor: 'pointer', padding: 'var(--sp-2)', color: 'var(--text-tertiary)', display: 'flex', alignItems: 'center' }}>
+                  <Paperclip size={20} />
+                  <input 
+                    type="file" 
+                    accept=".pdf,.png,.jpg,.jpeg,.txt" 
+                    style={{ display: 'none' }}
+                    onChange={handleFileUpload} 
+                  />
+                </label>
                 <input 
                   value={input} onChange={e => setInput(e.target.value)}
                   onKeyDown={e => { if (e.key === 'Enter') handleSend(); }}
-                  placeholder="Type your response..." disabled={loading}
+                  placeholder="Type your response or attach syllabus..." disabled={loading}
                   style={{ flex: 1, padding: 'var(--sp-4)', background: 'var(--bg-tertiary)', color: 'var(--text-primary)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-full)', outline: 'none', fontSize: 'var(--fs-base)' }}
                 />
                 <button onClick={handleSend} disabled={loading || !input.trim()} style={{ width: 50, height: 50, borderRadius: 'var(--radius-full)', background: 'var(--accent-purple)', color: 'white', border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
