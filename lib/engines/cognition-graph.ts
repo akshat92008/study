@@ -16,49 +16,49 @@ function getMasteryLevel(score: number): 'not_started' | 'exposed' | 'developing
   return 'not_started';
 }
 
-// Chapter Syllabus recursive mapping
 const CHAPTER_EXPANSIONS: Record<string, Array<{ topic: string, name: string }>> = {
-  // Physics
+  // Massive Physics Expansion
   'Kinematics': [
-    { topic: 'Vectors', name: 'Vector Algebra and Components' },
-    { topic: 'Vectors', name: 'Dot and Cross Products' },
-    { topic: 'Motion in 1D', name: 'Equations of Motion' },
-    { topic: 'Motion in 2D', name: 'Projectile Motion' },
-    { topic: 'Motion in 2D', name: 'Relative Velocity' },
+    { topic: 'Vectors', name: 'Vector Addition & Subtraction' }, { topic: 'Vectors', name: 'Dot and Cross Products' },
+    { topic: '1D Motion', name: 'Equations of Motion' }, { topic: '1D Motion', name: 'Free Fall' },
+    { topic: '2D Motion', name: 'Projectile Motion' }, { topic: '2D Motion', name: 'Relative Velocity' },
   ],
   'Laws of Motion': [
-    { topic: 'Forces', name: 'Newton\'s Laws of Motion' },
-    { topic: 'Forces', name: 'Friction and Friction Coefficients' },
-    { topic: 'Circular Motion', name: 'Banking of Roads and Centripetal Force' },
+    { topic: 'Forces', name: 'Newton\'s First Law (Inertia)' }, { topic: 'Forces', name: 'Newton\'s Second Law (F=ma)' },
+    { topic: 'Forces', name: 'Newton\'s Third Law' }, { topic: 'Friction', name: 'Static & Kinetic Friction' },
+    { topic: 'Circular', name: 'Centripetal Force' }, { topic: 'Circular', name: 'Banking of Roads' },
   ],
-  'Work, Energy and Power': [
-    { topic: 'Work & Kinetic Energy', name: 'Work-Energy Theorem' },
-    { topic: 'Potential Energy', name: 'Conservative and Non-conservative Forces' },
-    { topic: 'Power & Collisions', name: 'Elastic and Inelastic Collisions' },
+  'Thermodynamics': [
+    { topic: 'Laws', name: 'Zeroth Law & Temp' }, { topic: 'Laws', name: 'First Law & Internal Energy' },
+    { topic: 'Processes', name: 'Isothermal & Adiabatic' }, { topic: 'Processes', name: 'Carnot Engine' },
   ],
-  // Chemistry
-  'Some Basic Concepts of Chemistry': [
-    { topic: 'Stoichiometry', name: 'Mole Concept and Molar Mass' },
-    { topic: 'Stoichiometry', name: 'Empirical and Molecular Formulas' },
+  'Electrostatics': [
+    { topic: 'Charge', name: 'Coulomb\'s Law' }, { topic: 'Field', name: 'Electric Field & Flux' },
+    { topic: 'Potential', name: 'Gauss\'s Law' }, { topic: 'Capacitance', name: 'Capacitors in Series/Parallel' },
   ],
-  'Structure of Atom': [
-    { topic: 'Bohr Model', name: 'Hydrogen Spectrum and Quantum Numbers' },
-    { topic: 'Quantum Mechanics', name: 'Heisenberg Uncertainty Principle' },
+  // Massive Biology Expansion
+  'Cell: The Unit of Life': [
+    { topic: 'Structure', name: 'Plasma Membrane' }, { topic: 'Structure', name: 'Cell Wall' },
+    { topic: 'Organelles', name: 'Mitochondria & Chloroplasts' }, { topic: 'Organelles', name: 'Endomembrane System' },
   ],
-  // Biology
-  'The Living World': [
-    { topic: 'Taxonomy', name: 'Binomial Nomenclature' },
-    { topic: 'Taxonomy', name: 'Taxonomic Hierarchy' },
+  'Human Reproduction': [
+    { topic: 'Male', name: 'Male Reproductive System' }, { topic: 'Female', name: 'Female Reproductive System' },
+    { topic: 'Process', name: 'Gametogenesis' }, { topic: 'Process', name: 'Menstrual Cycle' },
   ],
+  'Genetics': [
+    { topic: 'Mendelian', name: 'Laws of Inheritance' }, { topic: 'Mendelian', name: 'Incomplete Dominance' },
+    { topic: 'Molecular', name: 'DNA Structure' }, { topic: 'Molecular', name: 'Transcription & Translation' },
+  ]
 };
 
 // Prerequisite map between seeded micro-concepts
 const PREREQUISITES_MAP: Record<string, string[]> = {
-  'Projectile Motion': ['Vector Algebra and Components', 'Equations of Motion'],
-  'Relative Velocity': ['Vector Algebra and Components'],
-  'Newton\'s Laws of Motion': ['Vector Algebra and Components', 'Equations of Motion'],
-  'Work-Energy Theorem': ['Newton\'s Laws of Motion', 'Equations of Motion'],
-  'Banking of Roads and Centripetal Force': ['Newton\'s Laws of Motion'],
+  'Projectile Motion': ['Vector Addition & Subtraction', 'Equations of Motion'],
+  'Relative Velocity': ['Vector Addition & Subtraction'],
+  'Newton\'s Second Law (F=ma)': ['Vector Addition & Subtraction', 'Equations of Motion'],
+  'Static & Kinetic Friction': ['Newton\'s Second Law (F=ma)'],
+  'Centripetal Force': ['Newton\'s Second Law (F=ma)'],
+  'Banking of Roads': ['Centripetal Force'],
 };
 
 export async function getCognitionGraph(userId: string) {

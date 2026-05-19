@@ -91,10 +91,10 @@ export default function DailyBriefing() {
 
       {/* Morning Briefing AI Narrative */}
       {briefing.greetingText && (
-        <Card id="morning-greeting-card" padding="lg" variant="glow" style={{ background: 'var(--bg-glass)', border: '1px solid var(--accent-blue-dim)', boxShadow: 'var(--shadow-glow-blue)' }}>
+        <Card id="morning-greeting-card" padding="lg" variant="glow" style={{ background: 'var(--bg-glass)', border: '1px solid var(--accent-purple-dim)', boxShadow: 'var(--shadow-glow-purple)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)', marginBottom: 'var(--sp-3)' }}>
-            <Sparkles size={16} style={{ color: 'var(--accent-blue)' }} />
-            <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--accent-blue)', fontWeight: 'var(--fw-bold)', textTransform: 'uppercase', letterSpacing: 'var(--ls-ultra)' }}>COMMAND AI Analysis</span>
+            <Brain size={16} style={{ color: 'var(--accent-purple)' }} />
+            <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--accent-purple)', fontWeight: 'var(--fw-bold)', textTransform: 'uppercase', letterSpacing: 'var(--ls-ultra)' }}>COMMAND AI Briefing</span>
           </div>
           <p style={{ fontSize: 'var(--fs-md)', fontWeight: 'var(--fw-medium)', lineHeight: 'var(--lh-relaxed)', color: 'var(--text-primary)' }}>
             {briefing.greetingText}

@@ -134,38 +134,26 @@ export async function completeOnboarding(
   // 3. Generate Day 1 Plan
   const { tasksCreated } = await generateDay1Plan(userId, examType);
 
-  // 4. THE MISSING PIPELINE: Auto-generate Flashcards from Uploaded Materials
+  // 4. THE MISSING PIPELINE: Auto-generate Flashcards from Weak Spots
   let cardsCreated = 0;
   try {
-    // Check if user uploaded any materials during onboarding
-    const { count } = await supabase.from('materials').select('*', { count: 'exact', head: true }).eq('user_id', userId);
-    
-    if (count && count > 0) {
-      // Find the user's weakest concepts to generate cards for first
-      const { data: priorityConcepts } = await supabase
-        .from('concepts')
-        .select('id, subject, chapter')
-        .eq('user_id', userId)
-        .eq('mastery', 'exposed') // Target weak spots identified in Step 3 of onboarding
-        .limit(3); 
+    const { data: priorityConcepts } = await supabase
+      .from('concepts')
+      .select('id, subject, chapter')
+      .eq('user_id', userId)
+      .eq('mastery', 'exposed') // Targets weak spots you clicked in onboarding
+      .limit(3); 
 
-      if (priorityConcepts && priorityConcepts.length > 0) {
-        const { generateCardsForConcept } = await import('@/lib/engines/revision-engine');
-        
-        // Generate cards concurrently for the top 3 weak chapters
-        const results = await Promise.allSettled(
-          priorityConcepts.map(c => generateCardsForConcept(userId, c.id, c.subject, c.chapter))
-        );
-        results.forEach(res => {
-          if (res.status === 'fulfilled' && res.value) {
-            cardsCreated += res.value.length;
-          }
-        });
+    if (priorityConcepts && priorityConcepts.length > 0) {
+      const { generateCardsForConcept } = await import('@/lib/engines/revision-engine');
+      // Generate 5 cards for each weak chapter instantly
+      for (const c of priorityConcepts) {
+        const cards = await generateCardsForConcept(userId, c.id, c.subject, c.chapter);
+        if (cards) cardsCreated += cards.length;
       }
     }
   } catch (e) {
     console.error('Auto-card generation during onboarding failed:', e);
-    // Non-critical — onboarding succeeds even if card gen fails
   }
 
   return { seeded, tasksCreated, cardsCreated };
