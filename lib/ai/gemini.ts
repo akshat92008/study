@@ -13,7 +13,7 @@ export const MODELS = {
   // Use Flash for fast, cheap operations (classification, extraction, simple Q&A)
   flash: 'gemini-2.5-flash',
   // Use Pro for complex reasoning (analysis, strategy, mentoring)
-  pro: 'gemini-2.5-pro-preview-06-05',
+  pro: 'gemini-2.5-pro',
 } as const;
 
 // Anti-Prompt-Injection Boundary
