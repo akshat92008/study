@@ -1,7 +1,7 @@
 import { useSyncExternalStore } from 'react';
 
 // Hydration-safe, production-grade Zustand emulator using built-in React 18+ features
-function create<T>(createState: (set: (updater: any) => void) => T) {
+function create<T>(createState: (set: (updater: any) => void, get: () => T) => T) {
   let state: T;
   const listeners = new Set<() => void>();
 
@@ -11,7 +11,9 @@ function create<T>(createState: (set: (updater: any) => void) => T) {
     listeners.forEach((listener) => listener());
   };
 
-  state = createState(set);
+  const get = () => state;
+
+  state = createState(set, get);
 
   const subscribe = (listener: () => void) => {
     listeners.add(listener);
@@ -28,20 +30,31 @@ function create<T>(createState: (set: (updater: any) => void) => T) {
   };
 }
 
+interface Toast {
+  id: string;
+  message: string;
+  type: 'success' | 'error' | 'info';
+}
+
 interface AppState {
+  // Command Bar
   isCommandBarOpen: boolean;
   setCommandBarOpen: (open: boolean) => void;
   toggleCommandBar: () => void;
   
-  toastQueue: { id: string; message: string; type: 'success' | 'error' | 'info' }[];
+  // Toasts
+  toastQueue: Toast[];
   addToast: (message: string, type?: 'success' | 'error' | 'info') => void;
   removeToast: (id: string) => void;
   
-  activeModule: string | null;
-  setActiveModule: (module: string | null) => void;
+  // Session Telemetry (PULSE)
+  sessionActive: boolean;
+  sessionStartTime: number | null;
+  startSession: () => void;
+  endSession: () => number; // Returns duration in minutes
 }
 
-export const useAppStore = create<AppState>((set) => ({
+export const useAppStore = create<AppState>((set, get) => ({
   isCommandBarOpen: false,
   setCommandBarOpen: (open) => set({ isCommandBarOpen: open }),
   toggleCommandBar: () => set((state: AppState) => ({ isCommandBarOpen: !state.isCommandBarOpen })),
@@ -53,7 +66,19 @@ export const useAppStore = create<AppState>((set) => ({
   removeToast: (id) => set((state: AppState) => ({
     toastQueue: state.toastQueue.filter(toast => toast.id !== id)
   })),
-  
-  activeModule: null,
-  setActiveModule: (module) => set({ activeModule: module }),
+
+  // Session Tracking
+  sessionActive: false,
+  sessionStartTime: null,
+  startSession: () => {
+    if (!get().sessionActive) {
+      set({ sessionActive: true, sessionStartTime: Date.now() });
+    }
+  },
+  endSession: () => {
+    const start = get().sessionStartTime;
+    set({ sessionActive: false, sessionStartTime: null });
+    if (!start) return 0;
+    return Math.round((Date.now() - start) / 60000); // Minutes
+  }
 }));

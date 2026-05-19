@@ -5,6 +5,8 @@ import Sidebar from '@/components/layout/Sidebar';
 import Header from '@/components/layout/Header';
 import CommandBar from '@/components/ui/CommandBar';
 import ToastContainer from '@/components/ui/Toast';
+import SessionTracker from '@/components/layout/SessionTracker';
+
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
@@ -47,6 +49,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
       </div>
       <CommandBar />
       <ToastContainer />
+      <SessionTracker />
     </div>
   );
 }
