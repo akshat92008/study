@@ -2,37 +2,18 @@ import { z } from 'zod';
 import { createClient } from '@/lib/supabase/server';
 import { generateJSON } from '@/lib/ai/gemini';
 
-// Zod schema matching the expected mistake analysis structure
-const AnalyzeMistakeSchema = z.object({
-  rootCause: z.string(),
-  knowledgeGap: z.string(),
-  remediation: z.string(),
-  prevention: z.string(),
-});
-
-// Zod schema matching the expected comprehensive mark-loss report structure
-const MarkLossReportSchema = z.object({
-  biggestLeak: z.string(),
-  recoveryPlan: z.array(z.string()),
-  estimatedImprovement: z.number(),
-  overallAssessment: z.string(),
-});
+const AnalyzeMistakeSchema = z.object({ rootCause: z.string(), knowledgeGap: z.string(), remediation: z.string(), prevention: z.string() });
+const MarkLossReportSchema = z.object({ biggestLeak: z.string(), recoveryPlan: z.array(z.string()), estimatedImprovement: z.number(), overallAssessment: z.string() });
 
 export async function getMistakeAnalytics(userId: string) {
   const supabase = await createClient();
 
-  const { data: mistakes } = await supabase
-    .from('mistakes')
-    .select('*')
-    .eq('user_id', userId)
-    .order('created_at', { ascending: false });
-
+  const { data: mistakes } = await supabase.from('mistakes').select('*').eq('user_id', userId).order('created_at', { ascending: false });
   const { data: profile } = await supabase.from('profiles').select('exam_type').eq('id', userId).single();
   const examType = profile?.exam_type || 'General';
 
   if (!mistakes || mistakes.length === 0) return { mistakes: [], patterns: [], totalMarksLost: 0, insights: null, examType };
 
-  // Aggregate patterns by category
   const patterns: Record<string, { count: number; marksLost: number; subjects: Set<string> }> = {};
   let totalMarksLost = 0;
 
@@ -45,24 +26,19 @@ export async function getMistakeAnalytics(userId: string) {
   });
 
   const patternArray = Object.entries(patterns).map(([category, data]) => ({
-    category,
-    count: data.count,
-    marksLost: data.marksLost,
-    subjects: Array.from(data.subjects),
+    category, count: data.count, marksLost: data.marksLost, subjects: Array.from(data.subjects),
   })).sort((a, b) => b.marksLost - a.marksLost);
 
   return { mistakes, patterns: patternArray, totalMarksLost, examType };
 }
 
-// AI-powered deep analysis of a single mistake (hardened with Zod validation)
 export async function analyzeMistake(mistake: any) {
-  const questionText = mistake.question_text || mistake.questionText || 'Not provided';
-  const userAnswer = mistake.user_answer || mistake.userAnswer || 'Not provided';
-  const correctAnswer = mistake.correct_answer || mistake.correctAnswer || 'Not provided';
-  const marksLost = mistake.marks_lost || mistake.marksLost || 0;
+  const questionText = mistake.questionText || 'Not provided';
+  const userAnswer = mistake.userAnswer || 'Not provided';
+  const correctAnswer = mistake.correctAnswer || 'Not provided';
+  const marksLost = mistake.marksLost || 0;
 
   const prompt = `Analyze this exam mistake deeply:
-
 Subject: ${mistake.subject}
 Chapter: ${mistake.chapter}
 Category: ${mistake.category}
@@ -71,29 +47,11 @@ Student Answer: ${userAnswer}
 Correct Answer: ${correctAnswer}
 Marks Lost: ${marksLost}
 
-Provide:
-1. Root cause analysis (WHY the student made this mistake)
-2. The specific knowledge gap or cognitive bias involved
-3. A concrete remediation strategy (what to study/practice)
-4. A preventive technique for future exams
+Respond as JSON: { "rootCause": "...", "knowledgeGap": "...", "remediation": "...", "prevention": "..." }`;
 
-Respond as JSON:
-{
-  "rootCause": "...",
-  "knowledgeGap": "...",
-  "remediation": "...",
-  "prevention": "..."
-}`;
-
-  return generateJSON(
-    'flash',
-    'You are an expert exam analyst and cognitive psychologist.',
-    prompt,
-    AnalyzeMistakeSchema
-  );
+  return generateJSON('flash', `You are an expert exam analyst and cognitive psychologist.`, prompt, AnalyzeMistakeSchema);
 }
 
-// Generate comprehensive mark-loss report (hardened with Zod validation)
 export async function generateMarkLossReport(userId: string) {
   const { mistakes, patterns, totalMarksLost } = await getMistakeAnalytics(userId);
   if (mistakes.length === 0) return null;
@@ -103,34 +61,11 @@ export async function generateMarkLossReport(userId: string) {
   const examType = profile?.exam_type || 'General';
 
   const prompt = `Generate a comprehensive mark-loss report for this ${examType} student:
+Total Mistakes: ${mistakes.length} | Total Marks Lost: ${totalMarksLost}
 
-Total Mistakes: ${mistakes.length}
-Total Marks Lost: ${totalMarksLost}
-Target Score: ${profile?.target_score || 'Not set'}
+Top patterns: ${patterns.slice(0, 5).map(p => `- ${p.category}: ${p.count} times, -${p.marksLost} marks`).join('\n')}
 
-Top mistake patterns:
-${patterns.slice(0, 5).map(p => `- ${p.category}: ${p.count} times, -${p.marksLost} marks (in ${p.subjects.join(', ')})`).join('\n')}
+Respond as JSON: { "biggestLeak": "...", "recoveryPlan": ["step 1", "step 2"], "estimatedImprovement": number, "overallAssessment": "summary" }`;
 
-Recent mistakes:
-${mistakes.slice(0, 5).map((m: any) => `- ${m.subject}/${m.chapter}: ${m.category} (-${m.marks_lost})`).join('\n')}
-
-Provide a brutally honest, data-driven analysis with:
-1. The single biggest leak (where most marks are being lost)
-2. A prioritized recovery plan
-3. Estimated score improvement if fixed
-
-Respond as JSON:
-{
-  "biggestLeak": "...",
-  "recoveryPlan": ["step 1", "step 2", "step 3"],
-  "estimatedImprovement": number,
-  "overallAssessment": "2-3 sentence summary"
-}`;
-
-  return generateJSON(
-    'pro',
-    `You are an elite ${examType} exam strategist who gives brutally honest, data-driven advice.`,
-    prompt,
-    MarkLossReportSchema
-  );
+  return generateJSON('pro', `You are an elite ${examType} exam strategist.`, prompt, MarkLossReportSchema);
 }

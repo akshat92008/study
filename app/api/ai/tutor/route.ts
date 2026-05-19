@@ -13,7 +13,11 @@ export async function POST(req: NextRequest) {
 
   const { message, subject, chapter, history } = await req.json();
 
-  // 1. Fetch Concept & Past Sessions (Cross-Session Memory)
+  // Fetch user's specific exam type
+  const { data: profile } = await supabase.from('profiles').select('exam_type').eq('id', user.id).single();
+  const examType = profile?.exam_type || 'General Study';
+
+  // Fetch Concept & Past Sessions
   const { data: concept } = await supabase.from('concepts').select('*').eq('user_id', user.id).eq('subject', subject).eq('chapter', chapter).single();
   
   let pastSessionsText = '';
@@ -45,12 +49,12 @@ export async function POST(req: NextRequest) {
     async start(controller) {
       let fullResponse = '';
       try {
-        for await (const chunk of streamText('flash', getTutorSystemPrompt('NEET'), fullPrompt, 0.7)) {
+        // Pass dynamic examType to prompt
+        for await (const chunk of streamText('flash', getTutorSystemPrompt(examType), fullPrompt, 0.7)) {
           controller.enqueue(encoder.encode(chunk));
           fullResponse += chunk;
         }
 
-        // BACKGROUND TASK: Analyze understanding, update ATLAS, create FSRS Cards
         Promise.resolve().then(async () => {
           if (!concept) return;
           const analysisPrompt = `Analyze this tutor session. Did the student demonstrate clear understanding? Are there knowledge gaps?
@@ -59,14 +63,8 @@ export async function POST(req: NextRequest) {
           
           try {
             const analysis = await generateJSON<any>('flash', 'Expert analyzer.', analysisPrompt);
-            
-            // Log session
             await supabase.from('tutor_sessions').insert({ user_id: user.id, concept_id: concept.id, summary: analysis.summary });
-            
-            // WRITE BACK TO ATLAS
             if (analysis.understood) await updateConceptState(concept.id, true, 0); 
-            
-            // WRITE BACK TO MEMORY (Auto-Cards)
             if (analysis.gapFound && !analysis.understood) {
               await createSingleCard(user.id, concept.id, analysis.gapFound, analysis.gapAnswer, subject || 'General', chapter || 'General');
             }

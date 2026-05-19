@@ -11,15 +11,18 @@ export default function TutorChat({ concepts }: { concepts?: any[] }) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [streaming, setStreaming] = useState(false);
-  // Derive subjects and chapters from user's actual concepts
+  
+  // Extract unique subjects and chapters from the user's actual database
   const subjectChapterMap: Record<string, string[]> = {};
   (concepts || []).forEach((c: any) => {
     if (!subjectChapterMap[c.subject]) subjectChapterMap[c.subject] = [];
     if (!subjectChapterMap[c.subject].includes(c.chapter)) subjectChapterMap[c.subject].push(c.chapter);
   });
+  
   const userSubjects = Object.keys(subjectChapterMap).length > 0 ? Object.keys(subjectChapterMap) : ['General'];
   const [subject, setSubject] = useState(userSubjects[0]);
   const [chapter, setChapter] = useState((subjectChapterMap[userSubjects[0]] || ['General'])[0]);
+  
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -67,7 +70,7 @@ export default function TutorChat({ concepts }: { concepts?: any[] }) {
           <GraduationCap size={28} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 'var(--sp-2)', color: 'var(--accent-cyan)' }} />
           AI Tutor
         </h1>
-        {/* Subject/Chapter selectors */}
+        {/* Dynamic Selectors */}
         <div style={{ display: 'flex', gap: 'var(--sp-3)', marginTop: 'var(--sp-3)' }}>
           <select value={subject} onChange={e => { setSubject(e.target.value); setChapter((subjectChapterMap[e.target.value] || ['General'])[0]); }} style={{
             padding: 'var(--sp-2) var(--sp-3)', background: 'var(--bg-secondary)', color: 'var(--text-primary)',
