@@ -7,12 +7,19 @@ import { getStudentContext } from '@/lib/engines/student-context-engine';
 import { getPrerequisiteChain, updateConceptState } from '@/lib/engines/cognition-graph';
 import { createSingleCard } from '@/lib/engines/revision-engine';
 import { logger } from '@/lib/utils/logger';
+import { rateLimit } from '@/lib/utils/rate-limit';
 
 export async function POST(req: NextRequest) {
   try {
     const supabase = await createClient();
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     if (authError || !user) return new Response('Unauthorized', { status: 401 });
+
+    // Limit: 50 requests per 15 minutes per user
+    const ip = req.headers.get('x-forwarded-for') || user.id;
+    if (!rateLimit(ip, 50, 15 * 60 * 1000)) {
+      return new Response('Rate limit exceeded. Please wait a few minutes.', { status: 429 });
+    }
 
     const { message, subject, chapter, history } = await req.json();
 

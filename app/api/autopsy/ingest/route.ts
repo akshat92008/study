@@ -14,12 +14,20 @@ const ALLOWED_MIME_TYPES = new Set([
   'image/webp'
 ]);
 
+import { rateLimit } from '@/lib/utils/rate-limit';
+
 export async function POST(request: Request) {
   try {
     const supabase = await createClient();
     const { data: { user }, error: authError } = await supabase.auth.getUser();
 
     if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+    // Limit: 50 requests per 15 minutes per user
+    const ip = request.headers.get('x-forwarded-for') || user.id;
+    if (!rateLimit(ip, 50, 15 * 60 * 1000)) {
+      return NextResponse.json({ error: 'Rate limit exceeded. Please wait a few minutes.' }, { status: 429 });
+    }
 
     // 1. Parse Multipart Form Data
     const formData = await request.formData();

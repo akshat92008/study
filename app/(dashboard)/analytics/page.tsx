@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { getAnalyticsData } from '@/lib/actions/analytics';
 import AnalyticsDashboard from '@/components/analytics/AnalyticsDashboard';
 
