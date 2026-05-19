@@ -153,13 +153,13 @@ export async function POST(req: NextRequest) {
                 interaction_count: 1,
               });
 
-              // --- THE MISSING PIPELINE: ATLAS & MEMORY WRITE-BACK ---
+              // --- THE PIPELINE: ATLAS & MEMORY WRITE-BACK ---
               if (concept?.id) {
-                // ATLAS Write-back: If they understood, bump their mastery up!
+                // ATLAS Write-back: Bump mastery up if they understood!
                 if (analysis.studentDemonstratedUnderstanding) {
-                  await updateConceptState(concept.id, true, 0); // true = understood
+                  await updateConceptState(concept.id, true, 0); 
                 } else {
-                  // If they didn't understand, just log a review but no correct mark
+                  // Just log a review but no correct mark
                   await supabase.from('concepts').update({
                     times_reviewed: (concept.times_reviewed || 0) + 1,
                     last_reviewed_at: new Date().toISOString()

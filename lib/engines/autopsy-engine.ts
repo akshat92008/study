@@ -152,17 +152,16 @@ export async function processMockAutopsy(
   const { resolveConceptByName } = await import('./concept-resolver');
   const { createCardsFromAutopsyMistakes } = await import('./mistake-to-card');
 
-  // 3.5a: Downscale Atlas Mastery
-  for (const q of processedQuestions.filter((q: ProcessedQuestion) => q.status === 'Incorrect')) {
+  // 3.5a: Downscale Atlas Mastery for incorrect questions
+  for (const q of processedQuestions.filter((q) => q.status === 'Incorrect')) {
     const conceptId = await resolveConceptByName(userId, q.subject, q.chapter || '');
-    
     if (conceptId) {
-      // Send signal to ATLAS: Student got this wrong. Time spent = 0 (unknown)
+      // false = incorrect, 0 = unknown time spent. Will downgrade mastery in graph.
       await updateConceptState(conceptId, false, 0); 
     }
   }
 
-  // 3.5b: Auto-generate FSRS Revision Cards (MEMORY)
+  // 3.5b: Auto-generate FSRS Revision Cards
   await createCardsFromAutopsyMistakes(userId, autopsyData.id);
 
   // 4. Generate the Recovery Plan

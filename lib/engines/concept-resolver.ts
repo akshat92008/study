@@ -2,26 +2,24 @@ import { createClient } from '@/lib/supabase/server';
 import { getEmbedding } from '@/lib/ai/gemini';
 import { logger } from '@/lib/utils/logger';
 
-/**
- * Resolves a Subject/Chapter string pair into a specific user's Concept ID.
- * Uses Exact Match -> Fuzzy Match -> Semantic pgvector fallback.
- */
 export async function resolveConceptByName(userId: string, subject: string, chapter: string): Promise<string | null> {
   const supabase = await createClient();
   
   // 1. Exact match first (Fastest)
-  let { data: exact } = await supabase.from('concepts').select('id')
-    .eq('user_id', userId).eq('subject', subject).eq('chapter', chapter).limit(1).single();
+  const { data: exact } = await supabase.from('concepts')
+    .select('id').eq('user_id', userId).eq('subject', subject).eq('chapter', chapter)
+    .limit(1).single();
   
   if (exact) return exact.id;
   
-  // 2. Fuzzy match via ilike (Handles slight typos like "Kinematic" vs "Kinematics")
-  const { data: fuzzy } = await supabase.from('concepts').select('id')
-    .eq('user_id', userId).ilike('chapter', `%${chapter}%`).limit(1).single();
+  // 2. Fuzzy match via ilike (Handles slight typos)
+  const { data: fuzzy } = await supabase.from('concepts')
+    .select('id').eq('user_id', userId).ilike('chapter', `%${chapter}%`)
+    .limit(1).single();
   
   if (fuzzy) return fuzzy.id;
   
-  // 3. Semantic match via pgvector (Most expensive, most accurate fallback)
+  // 3. Semantic match via pgvector (Most expensive, fallback)
   try {
     const embedding = await getEmbedding(`${subject} ${chapter}`);
     if (embedding) {
@@ -31,7 +29,6 @@ export async function resolveConceptByName(userId: string, subject: string, chap
         match_count: 1, 
         p_user_id: userId,
       });
-      
       return semantic?.[0]?.id || null;
     }
   } catch (e) {
