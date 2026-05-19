@@ -1,9 +1,10 @@
 import { NextRequest } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { streamText, generateJSON } from '@/lib/ai/gemini';
-import { getTutorSystemPrompt, buildTutorContext } from '@/lib/ai/prompts/tutor';
+import { getTutorSystemPrompt } from '@/lib/ai/prompts/tutor';
 import { updateConceptState } from '@/lib/engines/cognition-graph';
 import { createSingleCard } from '@/lib/engines/revision-engine';
+import { logger } from '@/lib/utils/logger';
 
 export async function POST(req: NextRequest) {
   const supabase = await createClient();
@@ -54,7 +55,7 @@ export async function POST(req: NextRequest) {
           if (!concept) return;
           const analysisPrompt = `Analyze this tutor session. Did the student demonstrate clear understanding? Are there knowledge gaps?
           Session: ${historyText}\nStudent: ${message}\nTutor: ${fullResponse}
-          Respond exactly as JSON: { "summary": "1 sentence", "understood": true/false, "gapFound": "Question to put on flashcard front", "gapAnswer": "Answer for back" }`;
+          Respond exactly as JSON: { "summary": "1 sentence summary", "understood": true, "gapFound": "Question to put on flashcard front", "gapAnswer": "Answer for back" }`;
           
           try {
             const analysis = await generateJSON<any>('flash', 'Expert analyzer.', analysisPrompt);
@@ -67,12 +68,12 @@ export async function POST(req: NextRequest) {
             
             // WRITE BACK TO MEMORY (Auto-Cards)
             if (analysis.gapFound && !analysis.understood) {
-              await createSingleCard(user.id, concept.id, analysis.gapFound, analysis.gapAnswer, subject, chapter);
+              await createSingleCard(user.id, concept.id, analysis.gapFound, analysis.gapAnswer, subject || 'General', chapter || 'General');
             }
-          } catch (e) { console.error("Tutor post-processing failed", e); }
+          } catch (e) { logger.error("Tutor post-processing failed", e); }
         });
 
-      } catch { controller.enqueue(encoder.encode('\n\n[Error processing]')); }
+      } catch { controller.enqueue(encoder.encode('\n\n[System Error processing request.]')); }
       controller.close();
     },
   });

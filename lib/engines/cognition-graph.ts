@@ -2,7 +2,6 @@ import { createClient } from '@/lib/supabase/server';
 import { generateJSON } from '@/lib/ai/gemini';
 import { logger } from '@/lib/utils/logger';
 
-// Standardized mapping weights
 const MASTERY_WEIGHTS: Record<string, number> = {
   not_started: 0, exposed: 15, developing: 40, proficient: 70, mastered: 90, automated: 98,
 };
@@ -17,7 +16,6 @@ function getMasteryLevel(score: number): 'not_started' | 'exposed' | 'developing
 }
 
 const CHAPTER_EXPANSIONS: Record<string, Array<{ topic: string, name: string }>> = {
-  // Massive Physics Expansion
   'Kinematics': [
     { topic: 'Vectors', name: 'Vector Addition & Subtraction' }, { topic: 'Vectors', name: 'Dot and Cross Products' },
     { topic: '1D Motion', name: 'Equations of Motion' }, { topic: '1D Motion', name: 'Free Fall' },
@@ -36,7 +34,6 @@ const CHAPTER_EXPANSIONS: Record<string, Array<{ topic: string, name: string }>>
     { topic: 'Charge', name: 'Coulomb\'s Law' }, { topic: 'Field', name: 'Electric Field & Flux' },
     { topic: 'Potential', name: 'Gauss\'s Law' }, { topic: 'Capacitance', name: 'Capacitors in Series/Parallel' },
   ],
-  // Massive Biology Expansion
   'Cell: The Unit of Life': [
     { topic: 'Structure', name: 'Plasma Membrane' }, { topic: 'Structure', name: 'Cell Wall' },
     { topic: 'Organelles', name: 'Mitochondria & Chloroplasts' }, { topic: 'Organelles', name: 'Endomembrane System' },
@@ -51,14 +48,12 @@ const CHAPTER_EXPANSIONS: Record<string, Array<{ topic: string, name: string }>>
   ]
 };
 
-// Prerequisite map between seeded micro-concepts
 const PREREQUISITES_MAP: Record<string, string[]> = {
   'Projectile Motion': ['Vector Addition & Subtraction', 'Equations of Motion'],
   'Relative Velocity': ['Vector Addition & Subtraction'],
-  'Newton\'s Second Law (F=ma)': ['Vector Addition & Subtraction', 'Equations of Motion'],
-  'Static & Kinetic Friction': ['Newton\'s Second Law (F=ma)'],
-  'Centripetal Force': ['Newton\'s Second Law (F=ma)'],
-  'Banking of Roads': ['Centripetal Force'],
+  'Newton\'s Laws of Motion': ['Vector Addition & Subtraction', 'Equations of Motion'],
+  'Work-Energy Theorem': ['Newton\'s Second Law (F=ma)', 'Equations of Motion'],
+  'Banking of Roads': ['Newton\'s Second Law (F=ma)'],
 };
 
 export async function getCognitionGraph(userId: string) {
@@ -72,10 +67,8 @@ export async function getCognitionGraph(userId: string) {
   const concepts = conceptsRes.data || [];
   const links = linksRes.data || [];
 
-  // Deep Hierarchy Grouping: Subject -> Chapter -> Topic -> Concept
   const grouped: Record<string, Record<string, Record<string, any[]>>> = {};
 
-  // Fetch corresponding FSRS stability curves for all concepts to calculate hybrid decay
   const { data: cards } = await supabase.from('revision_cards').select('concept_id, stability').eq('user_id', userId);
   const stabilityMap: Record<string, number> = {};
   if (cards) {
@@ -88,21 +81,17 @@ export async function getCognitionGraph(userId: string) {
     if (!grouped[c.subject]) grouped[c.subject] = {};
     if (!grouped[c.subject][c.chapter]) grouped[c.subject][c.chapter] = {};
     
-    // Fallback if topic is empty
     const topic = c.topic || 'General';
     if (!grouped[c.subject][c.chapter][topic]) grouped[c.subject][c.chapter][topic] = [];
     
-    // Hybrid Decay Engine: Incorporate chronological time decay and FSRS stability metrics
     if (c.last_reviewed_at) {
       const daysElapsed = (Date.now() - new Date(c.last_reviewed_at).getTime()) / (1000 * 60 * 60 * 24);
       const stability = stabilityMap[c.id];
       
       if (stability) {
-        // FSRS Forgetting Equation: R = exp(ln(0.9) * D / S)
         const retention = Math.exp(Math.log(0.9) * daysElapsed / stability);
         c.live_forgetting_probability = Math.min(0.99, Math.max(0, 1 - retention));
       } else {
-        // Chronological Ebbinghaus Decay
         c.live_forgetting_probability = Math.min(0.99, Math.max(0, 1 - (c.retention_strength * Math.exp(-0.1 * daysElapsed))));
       }
     } else {
@@ -112,7 +101,6 @@ export async function getCognitionGraph(userId: string) {
     grouped[c.subject][c.chapter][topic].push(c);
   });
 
-  // Calculate global stats
   const total = concepts.length;
   const mastered = concepts.filter((c: any) => c.mastery === 'mastered' || c.mastery === 'automated').length;
   const developing = concepts.filter((c: any) => c.mastery === 'developing').length;
@@ -124,15 +112,8 @@ export async function getCognitionGraph(userId: string) {
     overallMastery = Math.round(sum / total);
   }
 
-  const stats = {
-    total,
-    mastered,
-    developing,
-    weak,
-    overallMastery,
-  };
+  const stats = { total, mastered, developing, weak, overallMastery };
 
-  // Detect Weak Clusters (Chapters where avg mastery < 40%)
   const weakClusters: Array<{ subject: string, chapter: string, mastery: number }> = [];
   for (const subject in grouped) {
     for (const chapter in grouped[subject]) {
@@ -151,16 +132,9 @@ export async function getCognitionGraph(userId: string) {
     }
   }
 
-  return {
-    concepts: concepts || [],
-    links: links || [],
-    grouped,
-    stats,
-    weakClusters,
-  };
+  return { concepts: concepts || [], links: links || [], grouped, stats, weakClusters };
 }
 
-// Deep Syllabus Recursive Seeding Engine
 export async function seedConceptsForSubject(userId: string, subject: string, chapters: string[]) {
   const supabase = await createClient();
   const conceptRows: any[] = [];
@@ -186,7 +160,6 @@ export async function seedConceptsForSubject(userId: string, subject: string, ch
         });
       });
     } else {
-      // Mark for dynamic expansion if not in hardcoded list
       chaptersToExpand.push(chapter);
     }
   });
@@ -195,17 +168,11 @@ export async function seedConceptsForSubject(userId: string, subject: string, ch
 
   if (conceptRows.length > 0) {
     const { data: inserted, error } = await supabase.from('concepts').insert(conceptRows).select();
-    if (error || !inserted) {
-      logger.error('Failed to seed subject concepts', { error });
-      throw error || new Error('Seeding failed');
-    }
+    if (error || !inserted) throw error || new Error('Seeding failed');
     insertedCount += inserted.length;
 
-    // Auto-generate prerequisite dependency links inside concept_links
     const conceptMap: Record<string, string> = {};
-    inserted.forEach((c: any) => {
-      conceptMap[c.name] = c.id;
-    });
+    inserted.forEach((c: any) => { conceptMap[c.name] = c.id; });
 
     const linkRows: any[] = [];
     inserted.forEach((c: any) => {
@@ -215,55 +182,33 @@ export async function seedConceptsForSubject(userId: string, subject: string, ch
           const sourceId = conceptMap[prereqName];
           if (sourceId) {
             linkRows.push({
-              user_id: userId,
-              source_concept_id: sourceId,
-              target_concept_id: c.id,
-              link_type: 'prerequisite',
-              strength: 0.8,
+              user_id: userId, source_concept_id: sourceId, target_concept_id: c.id, link_type: 'prerequisite', strength: 0.8,
             });
           }
         });
       }
     });
 
-    if (linkRows.length > 0) {
-      await supabase.from('concept_links').insert(linkRows);
-    }
+    if (linkRows.length > 0) await supabase.from('concept_links').insert(linkRows);
   }
 
-  // Handle dynamic AI expansion
   for (const chapter of chaptersToExpand) {
     try {
       const expandedConcepts = await expandChapterViaMind(userId, subject, chapter);
-      if (expandedConcepts) {
-        insertedCount += expandedConcepts.length;
-      }
+      if (expandedConcepts) insertedCount += expandedConcepts.length;
     } catch (e) {
-      logger.error(`Failed to expand chapter ${chapter}`, { error: e });
-      // Fallback
       await supabase.from('concepts').insert({
-        user_id: userId,
-        name: chapter,
-        subject,
-        chapter,
-        topic: 'General',
-        mastery: 'not_started',
-        confidence: 'low',
-        times_reviewed: 0,
-        times_correct: 0,
-        times_incorrect: 0,
-        forgetting_probability: 1.0,
-        retention_strength: 0.0,
+        user_id: userId, name: chapter, subject, chapter, topic: 'General',
+        mastery: 'not_started', confidence: 'low', times_reviewed: 0, times_correct: 0,
+        times_incorrect: 0, forgetting_probability: 1.0, retention_strength: 0.0,
       });
       insertedCount++;
     }
   }
 
-  logger.info(`Recursively seeded ${insertedCount} micro-concepts and established prerequisite dependencies`, { userId, subject });
   return { seeded: insertedCount };
 }
 
-// Unified State Updater Recalculating Local, Chapter, and Prerequisite nodes
 export async function updateConceptState(conceptId: string, correct: boolean, timeSpent: number) {
   const supabase = await createClient();
 
@@ -275,10 +220,8 @@ export async function updateConceptState(conceptId: string, correct: boolean, ti
   const newIncorrect = (concept.times_incorrect || 0) + (correct ? 0 : 1);
   const accuracy = newCorrect / newReviewed;
 
-  // mastery level mapping
   const newMastery = getMasteryLevel(accuracy * 100);
 
-  // Chronological Ebbinghaus variables
   const now = new Date();
   const daysSinceReview = concept.last_reviewed_at
     ? (Date.now() - new Date(concept.last_reviewed_at).getTime()) / (1000 * 60 * 60 * 24)
@@ -298,31 +241,20 @@ export async function updateConceptState(conceptId: string, correct: boolean, ti
     updated_at: now.toISOString(),
   }).eq('id', conceptId);
 
-  // Recalculate and update strengths of prerequisite links where concept is target
   const { data: inboundLinks } = await supabase.from('concept_links').select('*').eq('target_concept_id', conceptId);
   if (inboundLinks && inboundLinks.length > 0) {
     const linkUpdates = inboundLinks.map((l: any) => {
-      // If student was correct, the dependency was successfully recalled (boost strength)
-      // If incorrect, the link strength decays representing a fragile dependency chain
-      const newStrength = correct 
-        ? Math.min(1.0, l.strength + 0.05) 
-        : Math.max(0.1, l.strength - 0.15);
-
+      const newStrength = correct ? Math.min(1.0, l.strength + 0.05) : Math.max(0.1, l.strength - 0.15);
       return supabase.from('concept_links').update({ strength: newStrength }).eq('id', l.id);
     });
-    
     await Promise.all(linkUpdates);
   }
-
-  logger.info('Concept Graph State Updated', { conceptId, correct, newMastery, accuracy });
 }
 
-// Backward-compatible alias for existing callers
 export async function updateConceptMastery(conceptId: string, correct: boolean, timeSpent: number) {
   return updateConceptState(conceptId, correct, timeSpent);
 }
 
-// AI analysis of cognition state
 export async function analyzeCognitionState(userId: string) {
   const supabase = await createClient();
   const { data: profile } = await supabase.from('profiles').select('exam_type').eq('id', userId).single();
@@ -337,101 +269,50 @@ export async function analyzeCognitionState(userId: string) {
     .slice(0, 10);
 
   const prompt = `Analyze this student's knowledge state and provide strategic insights:
-
 Exam: ${examType}
 Overall Mastery: ${stats.overallMastery}%
-Total Concepts: ${stats.total}
-Mastered: ${stats.mastered}
-Developing: ${stats.developing}
-Weak/Not Started: ${stats.weak}
-
 Weak areas: ${weakConcepts.join(', ')}
 
-Respond as JSON:
-{
-  "summary": "2-3 sentence overall assessment",
-  "topPriority": "single most important thing to focus on",
-  "strengths": ["list of 2-3 strengths"],
-  "criticalGaps": ["list of 2-3 critical gaps"],
-  "recommendation": "specific actionable advice for today"
-}`;
+Respond as JSON: { "summary": "assessment", "topPriority": "focus", "strengths": ["s1"], "criticalGaps": ["g1"], "recommendation": "advice" }`;
 
   return generateJSON('flash', `You are an expert ${examType} exam strategist.`, prompt);
 }
 
-// AI-Powered Dynamic Concept Expansion
 export async function expandChapterViaMind(userId: string, subject: string, chapter: string) {
   const supabase = await createClient();
-  const prompt = `Break down the chapter "${chapter}" (${subject}) into 3-7 essential micro-concepts.
-  For each, identify prerequisites from other chapters if any.
+  const prompt = `Break down the chapter "${chapter}" (${subject}) into 3-7 essential micro-concepts. Respond as JSON: { "concepts": [ { "name": "Concept", "topic": "Parent", "prerequisites": ["Other Concept"] } ] }`;
   
-  Respond as JSON:
-  {
-    "concepts": [
-      { "name": "Concept Name", "topic": "Parent Topic", "prerequisites": ["Other Concept Name"] }
-    ]
-  }`;
-  
-  const result = await generateJSON<{
-    concepts: { name: string; topic: string; prerequisites: string[] }[];
-  }>('flash', 'Expert curriculum designer.', prompt);
-  
+  const result = await generateJSON<any>('flash', 'Expert curriculum designer.', prompt);
   const insertedConcepts = [];
 
-  // Insert concepts and auto-link prerequisites
   for (const concept of result.concepts) {
     const { data } = await supabase.from('concepts').insert({
-      user_id: userId,
-      name: concept.name,
-      subject,
-      chapter,
-      topic: concept.topic,
-      mastery: 'not_started',
-      confidence: 'low',
+      user_id: userId, name: concept.name, subject, chapter, topic: concept.topic, mastery: 'not_started', confidence: 'low',
     }).select().single();
     
     if (data) {
       insertedConcepts.push(data);
-      
-      // Resolve and link prerequisites
       if (concept.prerequisites && concept.prerequisites.length > 0) {
         for (const prereq of concept.prerequisites) {
           const { resolveConceptByName } = await import('@/lib/engines/concept-resolver');
           const sourceId = await resolveConceptByName(userId, subject, prereq);
-          
           if (sourceId) {
             await supabase.from('concept_links').insert({
-              user_id: userId,
-              source_concept_id: sourceId,
-              target_concept_id: data.id,
-              link_type: 'prerequisite',
-              strength: 0.7,
+              user_id: userId, source_concept_id: sourceId, target_concept_id: data.id, link_type: 'prerequisite', strength: 0.7,
             });
           }
         }
       }
     }
   }
-  
   return insertedConcepts;
 }
 
 export async function getPrerequisiteChain(conceptId: string) {
   const supabase = await createClient();
-  const { data: links } = await supabase
-    .from('concept_links')
-    .select('source_concept_id')
-    .eq('target_concept_id', conceptId)
-    .eq('link_type', 'prerequisite');
-  
+  const { data: links } = await supabase.from('concept_links').select('source_concept_id').eq('target_concept_id', conceptId).eq('link_type', 'prerequisite');
   if (!links || links.length === 0) return [];
-  
   const sourceIds = links.map((l: any) => l.source_concept_id);
-  
-  const { data: concepts } = await supabase
-    .from('concepts')
-    .select('name, mastery')
-    .in('id', sourceIds);
-    
+  const { data: concepts } = await supabase.from('concepts').select('name, mastery').in('id', sourceIds);
   return (concepts || []).filter((c: any) => ['not_started', 'exposed', 'developing'].includes(c.mastery));
 }

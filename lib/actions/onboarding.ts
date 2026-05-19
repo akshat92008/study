@@ -3,11 +3,10 @@
 import { createClient } from '@/lib/supabase/server';
 import { getExamConfig } from '@/lib/utils/constants';
 
-// Seed the knowledge graph with exam chapters based on self-assessment
 export async function seedKnowledgeGraph(
   userId: string,
   examType: string,
-  weakSpots: Record<string, string[]> // { "Physics": ["Optics", "Thermodynamics"], ... }
+  weakSpots: Record<string, string[]>
 ) {
   const supabase = await createClient();
   const config = getExamConfig(examType);
@@ -22,7 +21,6 @@ export async function seedKnowledgeGraph(
     }
   }
 
-  // Update mastery for identified weak spots
   for (const [subject, weakChapters] of Object.entries(weakSpots)) {
     if (weakChapters.length > 0) {
       await supabase
@@ -37,7 +35,6 @@ export async function seedKnowledgeGraph(
   return { seeded: totalSeeded };
 }
 
-// Generate the Day 1 plan immediately after onboarding
 export async function generateDay1Plan(userId: string, examType: string) {
   const supabase = await createClient();
 
@@ -68,28 +65,6 @@ export async function generateDay1Plan(userId: string, examType: string) {
     });
   }
 
-  const { data: strongConcepts } = await supabase
-    .from('concepts')
-    .select('subject, chapter')
-    .eq('user_id', userId)
-    .eq('mastery', 'not_started')
-    .limit(1);
-
-  if (strongConcepts && strongConcepts.length > 0) {
-    tasks.push({
-      user_id: userId,
-      title: `Start new chapter: ${strongConcepts[0].chapter}`,
-      description: `Begin ${strongConcepts[0].subject} exploration`,
-      type: 'study',
-      subject: strongConcepts[0].subject,
-      chapter: strongConcepts[0].chapter,
-      priority: 'medium',
-      estimated_minutes: 30,
-      scheduled_date: today,
-      notes: "Syllabus momentum progression."
-    });
-  }
-
   tasks.push({
     user_id: userId,
     title: 'Strategic break — walk, hydrate, reset',
@@ -108,9 +83,8 @@ export async function generateDay1Plan(userId: string, examType: string) {
   return { tasksCreated: tasks.length, tasks };
 }
 
-// Complete onboarding — mark profile and trigger graph + plan + auto-cards
 export async function completeOnboarding(
-  _userId: string, // Kept for API signature, but ignored for security
+  _userId: string, 
   examType: string,
   targetYear: number,
   weakSpots: Record<string, string[]>
@@ -134,23 +108,28 @@ export async function completeOnboarding(
   // 3. Generate Day 1 Plan
   const { tasksCreated } = await generateDay1Plan(userId, examType);
 
-  // 4. THE MISSING PIPELINE: Auto-generate Flashcards from Weak Spots
+  // 4. Auto-generate Flashcards from Weak Spots
   let cardsCreated = 0;
   try {
     const { data: priorityConcepts } = await supabase
       .from('concepts')
       .select('id, subject, chapter')
       .eq('user_id', userId)
-      .eq('mastery', 'exposed') // Targets weak spots you clicked in onboarding
+      .eq('mastery', 'exposed') 
       .limit(3); 
 
     if (priorityConcepts && priorityConcepts.length > 0) {
       const { generateCardsForConcept } = await import('@/lib/engines/revision-engine');
-      // Generate 5 cards for each weak chapter instantly
-      for (const c of priorityConcepts) {
-        const cards = await generateCardsForConcept(userId, c.id, c.subject, c.chapter);
-        if (cards) cardsCreated += cards.length;
-      }
+      
+      // Generate cards concurrently for the top 3 weak chapters
+      const results = await Promise.allSettled(
+        priorityConcepts.map(c => generateCardsForConcept(userId, c.id, c.subject, c.chapter))
+      );
+      results.forEach(res => {
+        if (res.status === 'fulfilled' && res.value) {
+          cardsCreated += res.value.length;
+        }
+      });
     }
   } catch (e) {
     console.error('Auto-card generation during onboarding failed:', e);
