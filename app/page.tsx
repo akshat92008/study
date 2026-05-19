@@ -1,3 +1,5 @@
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Brain, Target, RefreshCw, BarChart3, Calendar, Sparkles, Zap, ArrowRight } from 'lucide-react';
 
@@ -10,7 +12,13 @@ const features = [
   { icon: BarChart3, title: 'Performance Analytics', desc: 'Bloomberg-grade academic intelligence', color: 'var(--success)' },
 ];
 
-export default function LandingPage() {
+export default async function LandingPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (user) {
+    redirect('/dashboard');
+  }
+
   return (
     <div style={{ minHeight: '100vh', background: 'var(--bg-root)', overflow: 'hidden' }}>
       {/* Nav */}

@@ -13,7 +13,7 @@ interface SidebarProps {
 }
 
 const navItems = [
-  { href: '/', icon: LayoutDashboard, label: 'Command Center', shortcut: '⌘1' },
+  { href: '/dashboard', icon: LayoutDashboard, label: 'Command Center', shortcut: '⌘1' },
   { href: '/cognition', icon: Brain, label: 'Cognition Graph', shortcut: '⌘2' },
   { href: '/knowledge', icon: Database, label: 'Knowledge Base', shortcut: '⌘9' },
   { href: '/mistakes', icon: Target, label: 'Mistake Intelligence', shortcut: '⌘3' },

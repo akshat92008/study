@@ -122,18 +122,18 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
 
       {/* KPI Row */}
       <div className="grid-4 stagger">
-        <Link href="/dashboard/cognition" style={{ textDecoration: 'none', color: 'inherit' }}><Card variant="glow"><div className="label">Mastery</div><div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-black)', color: 'var(--accent-blue)', margin: 'var(--sp-1) 0' }}>{stats.overallMastery || 0}%</div></Card></Link>
-        <Link href="/dashboard/revision" style={{ textDecoration: 'none', color: 'inherit' }}><Card><div className="label">Cards Due</div><div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-black)', color: revStats.due > 0 ? 'var(--warning)' : 'var(--success)' }}>{revStats.due || 0}</div></Card></Link>
-        <Link href="/dashboard/mistakes" style={{ textDecoration: 'none', color: 'inherit' }}><Card><div className="label">Marks Lost</div><div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-black)', color: 'var(--danger)' }}>-{mistakeData.totalMarksLost || 0}</div></Card></Link>
-        <Link href="/dashboard/planner" style={{ textDecoration: 'none', color: 'inherit' }}><Card><div className="label">Tasks Done</div><div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-black)', color: 'var(--success)' }}>{completedTasks}/{currentTasks.length}</div></Card></Link>
+        <Link href="/cognition" style={{ textDecoration: 'none', color: 'inherit' }}><Card variant="glow"><div className="label">Mastery</div><div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-black)', color: 'var(--accent-blue)', margin: 'var(--sp-1) 0' }}>{stats.overallMastery || 0}%</div></Card></Link>
+        <Link href="/revision" style={{ textDecoration: 'none', color: 'inherit' }}><Card><div className="label">Cards Due</div><div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-black)', color: revStats.due > 0 ? 'var(--warning)' : 'var(--success)' }}>{revStats.due || 0}</div></Card></Link>
+        <Link href="/mistakes" style={{ textDecoration: 'none', color: 'inherit' }}><Card><div className="label">Marks Lost</div><div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-black)', color: 'var(--danger)' }}>-{mistakeData.totalMarksLost || 0}</div></Card></Link>
+        <Link href="/planner" style={{ textDecoration: 'none', color: 'inherit' }}><Card><div className="label">Tasks Done</div><div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-black)', color: 'var(--success)' }}>{completedTasks}/{currentTasks.length}</div></Card></Link>
       </div>
-
+ 
       {/* Quick Task List View */}
       <div className="grid-2">
         <Card>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--sp-4)' }}>
             <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'var(--fw-semibold)' }}>Today's Tasks</h3>
-            <Link href="/dashboard/planner" style={{ fontSize: 'var(--fs-xs)', display: 'flex', alignItems: 'center', gap: 4 }}>View all <ArrowRight size={12} /></Link>
+            <Link href="/planner" style={{ fontSize: 'var(--fs-xs)', display: 'flex', alignItems: 'center', gap: 4 }}>View all <ArrowRight size={12} /></Link>
           </div>
           {currentTasks.slice(0, 5).map((task: any) => (
             <div key={task.id} style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)', padding: 'var(--sp-2) 0', borderBottom: '1px solid var(--border-subtle)', opacity: task.is_completed ? 0.5 : 1 }}>
