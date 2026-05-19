@@ -278,32 +278,60 @@ Respond as JSON: { "summary": "assessment", "topPriority": "focus", "strengths":
 
 export async function expandChapterViaMind(userId: string, subject: string, chapter: string) {
   const supabase = await createClient();
-  const prompt = `Break down the chapter "${chapter}" (${subject}) into 3-7 essential micro-concepts. Respond as JSON: { "concepts": [ { "name": "Concept", "topic": "Parent", "prerequisites": ["Other Concept"] } ] }`;
-  
-  const result = await generateJSON<any>('flash', 'Expert curriculum designer.', prompt);
-  const insertedConcepts = [];
-
-  for (const concept of result.concepts) {
-    const { data } = await supabase.from('concepts').insert({
-      user_id: userId, name: concept.name, subject, chapter, topic: concept.topic, mastery: 'not_started', confidence: 'low',
-    }).select().single();
+  const prompt = `
+    Break down the chapter/topic "${chapter}" (under the broader subject of ${subject}) into 3-7 essential, bite-sized micro-concepts.
+    For each concept, identify prerequisites (if any) from other fundamental concepts.
     
-    if (data) {
-      insertedConcepts.push(data);
-      if (concept.prerequisites && concept.prerequisites.length > 0) {
-        for (const prereq of concept.prerequisites) {
-          const { resolveConceptByName } = await import('@/lib/engines/concept-resolver');
-          const sourceId = await resolveConceptByName(userId, subject, prereq);
-          if (sourceId) {
-            await supabase.from('concept_links').insert({
-              user_id: userId, source_concept_id: sourceId, target_concept_id: data.id, link_type: 'prerequisite', strength: 0.7,
-            });
-          }
+    Respond STRICTLY as JSON:
+    {
+      "concepts": [
+        { "name": "Concept Name", "topic": "Parent Topic", "prerequisites": ["Other Concept Name"] }
+      ]
+    }
+  `;
+  
+  try {
+    const result = await generateJSON<any>('flash', 'You are an elite academic curriculum designer.', prompt);
+    const insertedConcepts = [];
+
+    // Insert new granular concepts
+    for (const concept of result.concepts) {
+      const { data } = await supabase.from('concepts').insert({
+        user_id: userId, 
+        name: concept.name, 
+        subject, 
+        chapter, 
+        topic: concept.topic || 'General', 
+        mastery: 'not_started', 
+        confidence: 'low',
+      }).select().single();
+      
+      if (data) {
+        insertedConcepts.push({ dbData: data, prereqs: concept.prerequisites || [] });
+      }
+    }
+
+    // Resolve and link prerequisites via semantic/fuzzy matching
+    const { resolveConceptByName } = await import('./concept-resolver');
+    for (const item of insertedConcepts) {
+      for (const prereq of item.prereqs) {
+        const sourceId = await resolveConceptByName(userId, subject, prereq);
+        if (sourceId && sourceId !== item.dbData.id) {
+          await supabase.from('concept_links').insert({
+            user_id: userId, 
+            source_concept_id: sourceId, 
+            target_concept_id: item.dbData.id, 
+            link_type: 'prerequisite', 
+            strength: 0.8,
+          });
         }
       }
     }
+    return insertedConcepts.map(ic => ic.dbData);
+  } catch (error) {
+    logger.error('Failed to dynamically expand chapter', error);
+    return [];
   }
-  return insertedConcepts;
 }
 
 export async function getPrerequisiteChain(conceptId: string) {
