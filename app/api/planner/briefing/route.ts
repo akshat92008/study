@@ -11,7 +11,6 @@ export async function GET() {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-    // Enforce local timezone resolution using server time
     const today = new Date().toISOString().split('T')[0];
 
     // 1. Check PULSE state
@@ -25,7 +24,6 @@ export async function GET() {
       .eq('id', user.id)
       .single();
 
-    // Dynamically calculate actual days remaining
     const targetYear = profile?.target_year || new Date().getFullYear() + 1;
     const examDate = profile?.exam_date ? new Date(profile.exam_date) : new Date(`${targetYear}-05-01T00:00:00Z`); 
     const daysRemaining = Math.max(0, Math.ceil((examDate.getTime() - Date.now()) / (1000 * 60 * 60 * 24)));
@@ -35,7 +33,7 @@ export async function GET() {
       supabase.from('study_tasks')
         .select('*')
         .eq('user_id', user.id)
-        .gte('scheduled_date', `${today}T00:00:00Z`) // Explicit Bounds
+        .gte('scheduled_date', `${today}T00:00:00Z`)
         .lte('scheduled_date', `${today}T23:59:59Z`)
         .order('priority', { ascending: true }),
       getDueCards(user.id, 50),
@@ -45,6 +43,7 @@ export async function GET() {
         .in('mastery', ['exposed', 'developing'])
         .order('forgetting_probability', { ascending: false })
         .limit(5),
+      // Generate the AI narrative greeting!
       generateMorningBriefing(user.id).catch(e => {
         logger.error('Failed to generate morning briefing narrative', e);
         return 'Ready for your daily mission. Study hard today!';
@@ -61,25 +60,21 @@ export async function GET() {
       daysRemaining,
       streak: profile?.streak_days || 0,
       examType: profile?.exam_type || 'NEET',
-
-      tasks: existingTasks, // Note: Existing Tasks now include the 'notes' field containing the AI rationale
+      tasks: existingTasks,
       progress: { completed: completedCount, total: totalCount },
-
       revision: {
         dueCount: dueCards.length,
         message: dueCards.length > 0
           ? `${dueCards.length} cards hit the forgetting threshold. Review required.`
           : 'Retention stable. No urgent reviews required.',
       },
-
       focusAreas: (weakConceptsRes.data || []).map((c: any) => ({
         subject: c.subject,
         chapter: c.chapter,
         urgency: c.forgetting_probability > 0.7 ? 'critical' : 'moderate',
       })),
-
       pulseMessage: pulseConfig.uiMessage,
-      greetingText: morningGreeting,
+      greetingText: morningGreeting, // Pass to UI
     };
 
     return NextResponse.json(briefing);
