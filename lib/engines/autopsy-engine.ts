@@ -166,9 +166,14 @@ export async function processMockAutopsy(
           );
         }
       }
-      logger.info(`Autopsy-to-ATLAS/MEMORY sync complete for ${incorrectQs.length} mistakes.`);
+      
+      // 3. Trigger student model profiling sync
+      const { syncStudentModel } = await import('./inference-engine');
+      await syncStudentModel(userId);
+      
+      logger.info(`Autopsy-to-ATLAS/MEMORY sync complete for ${incorrectQs.length} mistakes and student model synchronized.`);
     } catch (e) {
-      logger.error('Failed to sync autopsy mistakes to ATLAS/MEMORY', e);
+      logger.error('Failed to sync autopsy mistakes to ATLAS/MEMORY or sync student model', e);
     }
   });
   // =====================================================================

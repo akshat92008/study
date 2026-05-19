@@ -74,12 +74,24 @@ export async function POST(req: NextRequest) {
           try {
             const analysis = await generateJSON<any>('flash', 'Expert analyzer.', analysisPrompt);
             const currentMessages = [...(history || []), { role: 'user', content: message }, { role: 'tutor', content: fullResponse }];
-            await supabase.from('tutor_sessions').insert({ 
+            const { data: newSession } = await supabase.from('tutor_sessions').insert({ 
               user_id: user.id, 
               concept_id: concept.id, 
               summary: analysis.summary,
               messages: currentMessages
-            });
+            }).select('id').single();
+
+            // Trigger student model sync after every 10th tutor session
+            const { count } = await supabase.from('tutor_sessions')
+              .select('*', { count: 'exact', head: true })
+              .eq('user_id', user.id);
+            
+            if (count && count % 10 === 0) {
+              const { syncStudentModel } = await import('@/lib/engines/inference-engine');
+              await syncStudentModel(user.id);
+              logger.info(`Student model synced on session count ${count}`);
+            }
+
             if (analysis.understood) await updateConceptState(concept.id, true, 0); 
             if (analysis.gapFound && !analysis.understood) {
               await createSingleCard(user.id, concept.id, analysis.gapFound, analysis.gapAnswer, subject || 'General', chapter || 'General');
