@@ -35,6 +35,20 @@ interface AppState {
   isMobileSidebarOpen: boolean;
   setMobileSidebarOpen: (open: boolean) => void;
   toggleMobileSidebar: () => void;
+
+  // Real-time Dashboard Telemetry
+  currentActiveTask: any;
+  setCurrentActiveTask: (task: any) => void;
+  activeTasksList: any[];
+  setActiveTasksList: (tasks: any[]) => void;
+  emotionalState: string;
+  setEmotionalState: (state: string) => void;
+  atlasMastery: number;
+  setAtlasMastery: (mastery: number) => void;
+  memoryDueCount: number;
+  setMemoryDueCount: (count: number) => void;
+  autopsyLossPoints: number;
+  setAutopsyLossPoints: (points: number) => void;
 }
 
 export const useAppStore = create<AppState>((set, get) => ({
@@ -72,4 +86,18 @@ export const useAppStore = create<AppState>((set, get) => ({
   isMobileSidebarOpen: false,
   setMobileSidebarOpen: (open) => set({ isMobileSidebarOpen: open }),
   toggleMobileSidebar: () => set((state) => ({ isMobileSidebarOpen: !state.isMobileSidebarOpen })),
+
+  // Real-time Dashboard Telemetry implementation
+  currentActiveTask: null,
+  setCurrentActiveTask: (task) => set({ currentActiveTask: task }),
+  activeTasksList: [],
+  setActiveTasksList: (tasks) => set({ activeTasksList: tasks }),
+  emotionalState: 'neutral',
+  setEmotionalState: (state) => set({ emotionalState: state }),
+  atlasMastery: 0,
+  setAtlasMastery: (mastery) => set({ atlasMastery: mastery }),
+  memoryDueCount: 0,
+  setMemoryDueCount: (count) => set({ memoryDueCount: count }),
+  autopsyLossPoints: 0,
+  setAutopsyLossPoints: (points) => set({ autopsyLossPoints: points }),
 }));

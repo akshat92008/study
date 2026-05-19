@@ -22,8 +22,7 @@ export default function DashboardClientLayout({ children, profile }: DashboardCl
         display: 'flex',
         minHeight: '100vh',
         background: 'var(--bg-root)',
-        // Dynamically compute the sidebar width CSS property
-        '--sidebar-width': isSidebarCollapsed ? 'var(--sidebar-collapsed)' : '260px',
+        '--sidebar-width': '0px',
       } as React.CSSProperties}
     >
       {/* Mobile Drawer Overlay Backdrop */}

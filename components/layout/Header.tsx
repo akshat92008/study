@@ -30,23 +30,37 @@ export default function Header({ userName, streakDays }: HeaderProps) {
         transition: 'left var(--duration-normal) var(--ease-out)',
       }}
     >
-      {/* Mobile hamburger menu */}
-      <button
-        className="mobile-only"
-        onClick={toggleMobileSidebar}
-        style={{
-          background: 'transparent',
-          border: 'none',
-          color: 'var(--text-secondary)',
-          cursor: 'pointer',
-          marginRight: 'var(--sp-3)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <Menu size={20} />
-      </button>
+      {/* Menu & Branding */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)', marginRight: 'var(--sp-4)' }}>
+        <button
+          onClick={toggleMobileSidebar}
+          style={{
+            background: 'transparent',
+            border: 'none',
+            color: 'var(--text-secondary)',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '6px',
+            borderRadius: 'var(--radius-sm)',
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.color = 'var(--text-primary)'}
+          onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-secondary)'}
+        >
+          <Menu size={20} />
+        </button>
+        <span style={{ fontWeight: 800, fontSize: 'var(--fs-sm)', display: 'flex', alignItems: 'center', gap: 6 }}>
+          <span style={{
+            width: 18, height: 18, borderRadius: 4,
+            background: 'linear-gradient(135deg, var(--accent-blue), var(--accent-purple))',
+            display: 'inline-flex', alignItems: 'center', justifyContent: 'center'
+          }}>
+            <span style={{ fontSize: 9, color: 'white', fontWeight: 900 }}>C</span>
+          </span>
+          Cognition OS
+        </span>
+      </div>
 
       {/* Search */}
       <div

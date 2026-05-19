@@ -5,7 +5,7 @@ import Link from 'next/link';
 import {
   Brain, Target, RefreshCw, MessageCircle, Calendar,
   GraduationCap, BarChart3, LayoutDashboard, Zap, Database, Activity,
-  ChevronLeft, ChevronRight,
+  ChevronLeft, ChevronRight, X
 } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
 
@@ -21,15 +21,13 @@ const navItems = [
   { href: '/mistakes', icon: Target, label: 'Mistake Intelligence', shortcut: '⌘3' },
   { href: '/revision', icon: RefreshCw, label: 'Revision Engine', shortcut: '⌘4' },
   { href: '/mentor', icon: MessageCircle, label: 'AI Mentor', shortcut: '⌘5' },
-  { href: '/planner', icon: Calendar, label: 'Planner', shortcut: '⌘6' },
-  { href: '/tutor', icon: GraduationCap, label: 'AI Tutor', shortcut: '⌘7' },
   { href: '/analytics', icon: BarChart3, label: 'Analytics', shortcut: '⌘8' },
   { href: '/pulse', icon: Activity, label: 'PULSE Center', shortcut: '⌘P' },
 ];
 
 export default function Sidebar({ userName, examType }: SidebarProps) {
   const pathname = usePathname();
-  const { isSidebarCollapsed, toggleSidebar, isMobileSidebarOpen } = useAppStore();
+  const { isSidebarCollapsed, toggleSidebar, isMobileSidebarOpen, setMobileSidebarOpen } = useAppStore();
 
   return (
     <aside
@@ -39,15 +37,14 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
         left: 0,
         top: 0,
         bottom: 0,
-        width: 'var(--sidebar-width)',
+        width: '260px',
         background: 'var(--bg-primary)',
         borderRight: '1px solid var(--border-subtle)',
         display: 'flex',
         flexDirection: 'column',
         zIndex: 100,
-        // Override transform on mobile when the drawer is toggled open
-        transform: isMobileSidebarOpen ? 'translateX(0)' : undefined,
-        transition: 'width var(--duration-normal) var(--ease-out), transform var(--duration-normal) var(--ease-out)',
+        transform: isMobileSidebarOpen ? 'translateX(0)' : 'translateX(-100%)',
+        transition: 'transform var(--duration-normal) var(--ease-out)',
       }}
     >
       {/* Logo */}
@@ -57,43 +54,60 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
           borderBottom: '1px solid var(--border-subtle)',
           display: 'flex',
           alignItems: 'center',
-          gap: isSidebarCollapsed ? 0 : 'var(--sp-3)',
-          justifyContent: isSidebarCollapsed ? 'center' : 'flex-start',
+          gap: 'var(--sp-3)',
+          justifyContent: 'space-between',
           overflow: 'hidden',
         }}
       >
-        <div
+        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-3)' }}>
+          <div
+            style={{
+              width: 32,
+              height: 32,
+              borderRadius: 'var(--radius-md)',
+              background: 'linear-gradient(135deg, var(--accent-blue), var(--accent-purple))',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+            }}
+          >
+            <Zap size={18} color="white" />
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
+            <div style={{ fontSize: 'var(--fs-base)', fontWeight: 'var(--fw-bold)', letterSpacing: 'var(--ls-tight)' }}>
+              Cognition <span style={{ color: 'var(--accent-blue)' }}>OS</span>
+            </div>
+            <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: 'var(--ls-ultra)' }}>
+              {examType} Engine
+            </div>
+          </div>
+        </div>
+
+        {/* Close Button */}
+        <button
+          onClick={() => setMobileSidebarOpen(false)}
           style={{
-            width: 32,
-            height: 32,
-            borderRadius: 'var(--radius-md)',
-            background: 'linear-gradient(135deg, var(--accent-blue), var(--accent-purple))',
+            background: 'transparent',
+            border: 'none',
+            color: 'var(--text-secondary)',
+            cursor: 'pointer',
+            padding: '4px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            flexShrink: 0,
+            borderRadius: '4px',
           }}
+          onMouseEnter={(e) => e.currentTarget.style.background = 'var(--bg-secondary)'}
+          onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
         >
-          <Zap size={18} color="white" />
-        </div>
-        <div
-          style={{
-            transition: 'opacity var(--duration-fast) var(--ease-out), width var(--duration-fast) var(--ease-out)',
-            opacity: isSidebarCollapsed ? 0 : 1,
-            width: isSidebarCollapsed ? 0 : 'auto',
-            overflow: 'hidden',
-            whiteSpace: 'nowrap',
-            display: 'flex',
-            flexDirection: 'column',
-          }}
-        >
-          <div style={{ fontSize: 'var(--fs-base)', fontWeight: 'var(--fw-bold)', letterSpacing: 'var(--ls-tight)' }}>
-            Cognition <span style={{ color: 'var(--accent-blue)' }}>OS</span>
-          </div>
-          <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: 'var(--ls-ultra)' }}>
-            {examType} Engine
-          </div>
-        </div>
+          <X size={18} />
+        </button>
       </div>
 
       {/* Navigation */}
