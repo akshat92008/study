@@ -101,25 +101,27 @@ export async function POST(req: NextRequest) {
           // 6. Asynchronous Telemetry, Analysis & Session Saving
           Promise.resolve().then(async () => {
             try {
-              const analysisPrompt = `Analyze this tutor session. Did the student demonstrate clear understanding of the concept? Are there any knowledge gaps? 
+              // Create the analysis prompt
+              const analysisPrompt = `Analyze this tutor session. Did the student demonstrate clear understanding of the concept? Are there any specific knowledge gaps remaining? 
               
               Session:
               ${historyText}
               Student: ${message}
               MIND: ${fullResponse}
               
-              Respond as JSON:
+              Respond EXACTLY as JSON:
               {
                 "summary": "1-sentence summary of what was discussed",
                 "studentDemonstratedUnderstanding": true/false,
                 "knowledgeGaps": [
-                  { "front": "question", "back": "answer" }
+                  { "front": "Question testing the gap", "back": "The answer" }
                 ]
               }`;
               
+              // Ask Gemini to analyze the conversation
               const analysis = await generateJSON<any>('flash', 'You are an expert tutor session analyzer.', analysisPrompt);
               
-              // Save session with summary
+              // Save the session record
               await supabase.from('tutor_sessions').insert({
                 user_id: user.id,
                 concept_id: concept?.id || null,
@@ -129,7 +131,7 @@ export async function POST(req: NextRequest) {
                 summary: analysis.summary,
               });
 
-              // Log Tutor Interaction PULSE Signal
+              // Log PULSE Signal: Track if the student is getting frustrated
               const messageLength = message.length;
               const isShortOrFrustrated = messageLength < 10 || 
                 /\b(stuck|confused|hard|cannot|help|fail|error|wrong|bad|frustrated)\b/i.test(message);
@@ -144,21 +146,30 @@ export async function POST(req: NextRequest) {
                 interaction_count: 1,
               });
 
-              // Update Concept Mastery & Create Flashcards
+              // --- THE MISSING PIPELINE: ATLAS & MEMORY WRITE-BACK ---
               if (concept?.id) {
+                // ATLAS Write-back: If they understood, bump their mastery up!
                 if (analysis.studentDemonstratedUnderstanding) {
-                  await updateConceptState(concept.id, true, 0); // true = correct/understood
+                  await updateConceptState(concept.id, true, 0); // true = understood
                 } else {
+                  // If they didn't understand, just log a review but no correct mark
                   await supabase.from('concepts').update({
                     times_reviewed: (concept.times_reviewed || 0) + 1,
                     last_reviewed_at: new Date().toISOString()
                   }).eq('id', concept.id);
                 }
                 
-                // Create flashcards for gaps
+                // MEMORY Write-back: Auto-create flashcards for identified gaps
                 if (analysis.knowledgeGaps && analysis.knowledgeGaps.length > 0) {
                   for (const gap of analysis.knowledgeGaps) {
-                    await createSingleCard(user.id, concept.id, gap.front, gap.back, subject || 'General', chapter || 'General');
+                    await createSingleCard(
+                      user.id, 
+                      concept.id, 
+                      gap.front, 
+                      gap.back, 
+                      subject || 'General', 
+                      chapter || 'General'
+                    );
                   }
                 }
               }

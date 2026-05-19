@@ -280,13 +280,13 @@ export async function createSingleCard(
   const { data, error } = await supabase.from('revision_cards').insert({
     user_id: userId,
     concept_id: conceptId,
-    front,
+    front: `[Tutor Gap] ${front}`, // Tag it so the student knows where it came from
     back,
     subject,
     chapter,
     due: emptyCard.due.toISOString(),
     stability: emptyCard.stability,
-    difficulty: emptyCard.difficulty,
+    difficulty: emptyCard.difficulty + 0.2, // Slight difficulty bump for tutor-identified gaps
     elapsed_days: emptyCard.elapsed_days,
     scheduled_days: emptyCard.scheduled_days,
     reps: emptyCard.reps,
@@ -295,9 +295,10 @@ export async function createSingleCard(
   }).select().single();
   
   if (error) {
-    logger.error('Failed to create single flashcard', error);
-    throw new Error('Failed to create flashcard');
+    logger.error('Failed to create single flashcard from tutor session', error);
+    return null; // Don't crash the tutor session if card creation fails
   }
   
   return data;
 }
+

@@ -1,28 +1,30 @@
-import { useState, useEffect } from 'react';
+import { useSyncExternalStore } from 'react';
 
-// Custom lightweight Zustand emulator to bypass offline sandbox npm install limits
+// Hydration-safe, production-grade Zustand emulator using built-in React 18+ features
 function create<T>(createState: (set: (updater: any) => void) => T) {
   let state: T;
-  const listeners = new Set<(state: T) => void>();
-  
+  const listeners = new Set<() => void>();
+
   const set = (updater: any) => {
     const nextState = typeof updater === 'function' ? updater(state) : updater;
     state = { ...state, ...nextState };
-    listeners.forEach((listener) => listener(state));
+    listeners.forEach((listener) => listener());
   };
-  
+
   state = createState(set);
-  
-  return () => {
-    const [, forceUpdate] = useState(0);
-    useEffect(() => {
-      const listener = () => forceUpdate((c) => c + 1);
-      listeners.add(listener);
-      return () => {
-        listeners.delete(listener);
-      };
-    }, []);
-    return state;
+
+  const subscribe = (listener: () => void) => {
+    listeners.add(listener);
+    return () => {
+      listeners.delete(listener);
+    };
+  };
+
+  const getSnapshot = () => state;
+
+  return <U = T>(selector?: (state: T) => U): U => {
+    const slice = useSyncExternalStore(subscribe, getSnapshot, getSnapshot);
+    return selector ? selector(slice) : (slice as unknown as U);
   };
 }
 

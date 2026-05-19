@@ -3,8 +3,8 @@ import { createClient } from '@/lib/supabase/server';
 import { processMockAutopsy } from '@/lib/engines/autopsy-engine';
 import { logger, safeError } from '@/lib/utils/logger';
 
-// Hard limits for production stability
-const MAX_FILE_SIZE = 6 * 1024 * 1024; // 6 MB limit for Vercel Hobby/Pro stability
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB limit
+
 const ALLOWED_MIME_TYPES = new Set([
   'application/pdf', 
   'text/plain', 
@@ -21,6 +21,7 @@ export async function POST(request: Request) {
 
     if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
+    // 1. Parse Multipart Form Data
     const formData = await request.formData();
     const file = formData.get('file') as File | null;
     let testName = formData.get('testName') as string || 'Mock Test Autopsy';
@@ -31,27 +32,21 @@ export async function POST(request: Request) {
       ? { correctMarks: Number(correctMarksStr), negativeMarks: Number(negativeMarksStr) } 
       : undefined;
     
-    // Fallback: Strip extensions from filename for cleaner UI display
-    testName = testName.replace(/\.[^/.]+$/, "");
+    testName = testName.replace(/\.[^/.]+$/, ""); // Strip extension for clean UI
     
-    if (!file) {
-      return NextResponse.json({ error: 'No file provided' }, { status: 400 });
-    }
+    if (!file) return NextResponse.json({ error: 'No file provided' }, { status: 400 });
 
-    // 1. Upload Validation: Size
+    // 2. Validation
     if (file.size > MAX_FILE_SIZE) {
-      logger.warn('Upload rejected: File too large', { userId: user.id, size: file.size });
-      return NextResponse.json({ error: 'File size exceeds 6MB limit. Please compress your PDF or image.' }, { status: 413 });
+      return NextResponse.json({ error: 'File size exceeds 10MB limit. Please compress.' }, { status: 413 });
     }
 
-    // 2. Upload Validation: MIME Type
     const mimeType = file.type || 'text/plain';
     if (!ALLOWED_MIME_TYPES.has(mimeType)) {
-      logger.warn('Upload rejected: Invalid MIME', { userId: user.id, type: mimeType });
-      return NextResponse.json({ error: 'Unsupported file type. Please upload a PDF, TXT, or Image.' }, { status: 415 });
+      return NextResponse.json({ error: 'Unsupported file type. Use PDF, TXT, or Image.' }, { status: 415 });
     }
 
-    // 3. Buffer Safely
+    // 3. Buffer File for Gemini
     let fileData: { kind: 'text'; text: string } | { kind: 'inline'; mimeType: string; data: string };
 
     if (mimeType.startsWith('text/')) {
@@ -62,19 +57,18 @@ export async function POST(request: Request) {
       fileData = { kind: 'inline', mimeType, data: base64 };
     }
 
-    // 4. Fetch User's Exam Type Context
+    // 4. Fetch Exam Profile
     const { data: profile } = await supabase.from('profiles').select('exam_type').eq('id', user.id).single();
     const examType = profile?.exam_type || 'NEET';
 
-    // 5. Process
     logger.info('Starting Mock Autopsy Processing', { userId: user.id, testName, mimeType });
     
+    // 5. Execute Autopsy Engine
     const result = await processMockAutopsy(user.id, fileData, testName, examType, customScoring);
 
     return NextResponse.json(result);
 
   } catch (error: any) {
-    const safeResponse = safeError(error);
-    return NextResponse.json(safeResponse, { status: 500 });
+    return NextResponse.json(safeError(error), { status: 500 });
   }
 }

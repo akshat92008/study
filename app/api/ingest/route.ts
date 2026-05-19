@@ -1,59 +1,62 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { processDocumentIntoMemory } from '@/lib/engines/memory-engine';
+import { genai } from '@/lib/ai/gemini';
+import { logger } from '@/lib/utils/logger';
+
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB limit
 
 export async function POST(request: Request) {
   try {
     const supabase = await createClient();
     const { data: { user }, error: authError } = await supabase.auth.getUser();
 
-    if (authError || !user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
+    if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
     const formData = await request.formData();
     const file = formData.get('file') as File;
     
-    if (!file) {
-      return NextResponse.json({ error: 'No file provided' }, { status: 400 });
-    }
+    if (!file) return NextResponse.json({ error: 'No file provided' }, { status: 400 });
+    if (file.size > MAX_FILE_SIZE) return NextResponse.json({ error: 'File exceeds 10MB limit' }, { status: 413 });
 
-    const title = file.name;
-    const mimeType = file.type || 'text/plain';
-    let text: string;
+    const title = file.name.replace(/\.[^/.]+$/, ""); // Strip extension
+    const mimeType = file.type || 'application/octet-stream';
+    let extractedText = '';
 
-    if (mimeType === 'application/pdf') {
-      // Convert PDF to base64 and use Gemini vision to extract text
-      const { GoogleGenAI } = await import('@google/genai');
-      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    // If it's a PDF or Image, use Gemini Flash as a Universal OCR Engine
+    if (mimeType.startsWith('image/') || mimeType === 'application/pdf') {
       const arrayBuffer = await file.arrayBuffer();
       const base64 = Buffer.from(arrayBuffer).toString('base64');
 
-      const res = await ai.models.generateContent({
+      const response = await genai.models.generateContent({
         model: 'gemini-2.5-flash',
         contents: [{
           role: 'user',
           parts: [
-            { inlineData: { mimeType: 'application/pdf', data: base64 } },
-            { text: 'Extract ALL text content from this document. Preserve headings, lists, and structure. Output only the extracted text, no commentary.' },
+            { inlineData: { mimeType, data: base64 } },
+            { text: 'Extract ALL text content from this document. Preserve headings, lists, tables, and structure. Write all mathematical equations in LaTeX format enclosed in $. Output ONLY the extracted markdown text, with absolutely no conversational commentary.' },
           ],
         }],
       });
-      text = res.text || '';
+      
+      extractedText = response.text || '';
     } else {
-      // Text files, markdown, etc. — read directly
-      text = await file.text();
+      // Plain text, markdown, etc.
+      extractedText = await file.text();
     }
 
-    if (!text.trim()) {
-      return NextResponse.json({ error: 'Could not extract text from file' }, { status: 400 });
+    if (!extractedText.trim()) {
+      return NextResponse.json({ error: 'Could not extract any readable text from the file.' }, { status: 400 });
     }
 
-    const result = await processDocumentIntoMemory(user.id, { title, text });
-
+    // Pass the extracted Markdown to the memory engine for pgvector chunking
+    const result = await processDocumentIntoMemory(user.id, { title, text: extractedText });
+    
+    logger.info('Knowledge Base Ingestion Complete', { userId: user.id, title, chunks: result.chunks });
     return NextResponse.json(result);
+
   } catch (error: any) {
-    console.error('Ingest API Error:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    logger.error('Ingest API Error', error);
+    return NextResponse.json({ error: error.message || 'Processing failed' }, { status: 500 });
   }
 }

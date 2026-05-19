@@ -5,7 +5,6 @@ import { getExamConfig } from '@/lib/utils/constants';
 import { AutopsyPaperSchema, AutopsyQuestionSchema } from './autopsy-schemas';
 import { generateMentorRecovery } from './mentor-engine';
 import { updateConceptState } from './cognition-graph';
-import { createCardFromMistake } from './revision-engine';
 import { logger } from '@/lib/utils/logger';
 
 type AutopsyFileData =
@@ -150,29 +149,21 @@ export async function processMockAutopsy(
   }
 
   // 3.5 Sync Mistakes to ATLAS and MEMORY
-  for (const q of processedQuestions.filter((q: ProcessedQuestion) => q.status === 'Incorrect')) {
-    const { data: concept } = await supabase
-      .from('concepts')
-      .select('id')
-      .eq('user_id', userId)
-      .ilike('chapter', `%${q.chapter}%`)
-      .limit(1)
-      .single();
-    
-    if (concept) {
-      await updateConceptState(concept.id, false, 0);
-    }
+  const { resolveConceptByName } = await import('./concept-resolver');
+  const { createCardsFromAutopsyMistakes } = await import('./mistake-to-card');
 
-    await createCardFromMistake(
-      userId,
-      concept ? concept.id : null,
-      q.subject,
-      q.chapter,
-      `Question ${q.questionNumber}`,
-      q.correctAnswer || 'Unknown',
-      q.reasoning || 'No reasoning provided.'
-    );
+  // 3.5a: Downscale Atlas Mastery
+  for (const q of processedQuestions.filter((q: ProcessedQuestion) => q.status === 'Incorrect')) {
+    const conceptId = await resolveConceptByName(userId, q.subject, q.chapter || '');
+    
+    if (conceptId) {
+      // Send signal to ATLAS: Student got this wrong. Time spent = 0 (unknown)
+      await updateConceptState(conceptId, false, 0); 
+    }
   }
+
+  // 3.5b: Auto-generate FSRS Revision Cards (MEMORY)
+  await createCardsFromAutopsyMistakes(userId, autopsyData.id);
 
   // 4. Generate the Recovery Plan
   const incorrectQs = processedQuestions.filter((q: ProcessedQuestion) => q.status === 'Incorrect');
