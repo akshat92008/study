@@ -284,3 +284,13 @@ button:active:not(:disabled) {
   box-shadow: none !important;
   text-shadow: none !important;
 }
+
+@keyframes decay-pulse {
+  0%, 100% { box-shadow: 0 0 5px hsla(0, 84%, 60%, 0.4); opacity: 1; border-color: var(--danger); }
+  50% { box-shadow: 0 0 20px hsla(0, 84%, 60%, 0.8); opacity: 0.7; border-color: hsla(0, 84%, 60%, 0.6); }
+}
+
+.high-forgetting-node {
+  animation: decay-pulse 2.5s ease-in-out infinite;
+  border-width: 2px !important;
+}

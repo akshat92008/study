@@ -6,10 +6,21 @@ import { updateConceptState, getPrerequisiteChain } from '@/lib/engines/cognitio
 import { createSingleCard } from '@/lib/engines/revision-engine';
 import { logger } from '@/lib/utils/logger';
 
+import { checkUsageLimit } from '@/lib/utils/billing';
+
 export async function POST(req: NextRequest) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return new Response('Unauthorized', { status: 401 });
+
+  // PAYWALL GATE
+  const usage = await checkUsageLimit(user.id, 'tutor_queries_daily');
+  if (!usage.allowed) {
+    return new Response(JSON.stringify({ error: usage.reason, upgradeRequired: true }), { 
+      status: 403, 
+      headers: { 'Content-Type': 'application/json' } 
+    });
+  }
 
   const { message, subject, chapter, history } = await req.json();
 

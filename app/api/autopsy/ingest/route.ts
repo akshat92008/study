@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { processMockAutopsy } from '@/lib/engines/autopsy-engine';
 import { rateLimit } from '@/lib/utils/rate-limit';
 import { logger, safeError } from '@/lib/utils/logger';
+import { checkUsageLimit } from '@/lib/utils/billing';
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB limit
 const ALLOWED_MIME_TYPES = new Set([
@@ -16,6 +17,12 @@ export async function POST(request: Request) {
     const { data: { user }, error: authError } = await supabase.auth.getUser();
 
     if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+    // PAYWALL GATE
+    const usage = await checkUsageLimit(user.id, 'autopsies_monthly');
+    if (!usage.allowed) {
+      return NextResponse.json({ error: usage.reason, upgradeRequired: true }, { status: 403 });
+    }
 
     // Rate Limiting: 50 requests per 15 minutes
     const ip = request.headers.get('x-forwarded-for') || user.id;
