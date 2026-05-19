@@ -60,6 +60,7 @@ export async function generateJSON<T>(
           systemInstruction: systemPrompt + '\n\nRespond ONLY with valid JSON. No markdown fences.' + SECURITY_BOUNDARY,
           temperature,
           responseMimeType: 'application/json',
+          responseSchema: schema as any,
         },
       });
 
