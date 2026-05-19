@@ -4,7 +4,6 @@ import { z } from 'zod';
 import { getExamConfig } from '@/lib/utils/constants';
 import { AutopsyPaperSchema, AutopsyQuestionSchema } from './autopsy-schemas';
 import { generateMentorRecovery } from './mentor-engine';
-import { updateConceptState } from './cognition-graph';
 import { logger } from '@/lib/utils/logger';
 
 type AutopsyFileData =
@@ -14,7 +13,6 @@ type AutopsyFileData =
 type AutopsyQuestion = z.infer<typeof AutopsyQuestionSchema>;
 type ProcessedQuestion = AutopsyQuestion & { marksLost: number };
 
-// Helper: Exponential Backoff for Multimodal Gemini Calls
 async function robustMultimodalExtraction(contents: any[], retries = 3) {
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
   let attempt = 0;
@@ -27,13 +25,13 @@ async function robustMultimodalExtraction(contents: any[], retries = 3) {
         contents,
         config: { 
           responseMimeType: 'application/json',
-          temperature: 0.2, // Low temp for analytical accuracy
+          temperature: 0.2, 
         },
       });
 
       const rawText = (res.text || '{}').replace(/```json/gi, '').replace(/```/g, '').trim();
       const parsed = JSON.parse(rawText);
-      return AutopsyPaperSchema.parse(parsed); // Strict Zod Validation
+      return AutopsyPaperSchema.parse(parsed); 
 
     } catch (err: any) {
       attempt++;
@@ -60,39 +58,31 @@ export async function processMockAutopsy(
   const supabase = await createClient();
   const subjectList = examConfig.subjects.join(', ');
 
-  // 1. Production-Grade OCR & Analysis Prompt
   const masterPrompt = `
     You are an elite ${examType} grading and diagnostic engine. 
     Process the provided mock test submission. It may be a clean PDF, a low-quality scan, an OMR sheet, or contain handwritten scratchpad notes.
-    
-    CRITICAL OCR RULES:
-    - Overcome visual noise. If an OMR bubble is slightly outside the lines but intended, count it.
-    - If a question is entirely illegible, skip it but note it in "overallPaperQuality".
     
     ANALYSIS RULES:
     - Map every readable question to a subject: [${subjectList}] and its specific chapter.
     - Status MUST be "Correct", "Incorrect", or "Unattempted".
     - For EVERY "Incorrect" question, assign a STRICT mistakeCategory from: [conceptual, calculation, silly, time_pressure, misread, incomplete_knowledge, overconfidence, anxiety, recall_failure].
-    - Provide a brief "reasoning" for WHY you chose that category based on their scratchpad work or the distractor option they chose.
-    - Assign an "ocrConfidence" score (0-100) indicating how clearly you could read the student's answer.
+    - Provide a brief "reasoning" for WHY you chose that category.
+    - Assign an "ocrConfidence" score (0-100).
     
-    Output strictly adhering to the JSON schema requested. Do not include extra commentary outside the JSON.
+    Output strictly adhering to the JSON schema requested.
   `;
 
   const contents = fileData.kind === 'text' 
     ? [{ role: 'user', parts: [{ text: masterPrompt + '\n\nData:\n' + fileData.text }] }]
     : [{ role: 'user', parts: [{ inlineData: { mimeType: fileData.mimeType, data: fileData.data } }, { text: masterPrompt }] }];
 
-  // Execute Robust Single-Pass Extraction
   const { questions } = await robustMultimodalExtraction(contents);
 
-  // 2. Score Calculation & ROI Engine
   let totalCorrect = 0, totalIncorrect = 0, totalUnattempted = 0;
   let recoverableMarks = 0;
 
   const processedQuestions: ProcessedQuestion[] = questions.map((q: AutopsyQuestion) => {
     let marksLost = 0;
-    
     if (q.status === 'Correct') totalCorrect++;
     else if (q.status === 'Incorrect') {
       totalIncorrect++;
@@ -102,7 +92,6 @@ export async function processMockAutopsy(
       marksLost = correctMarks;
     }
 
-    // Recoverable Engine: High ROI errors
     if (q.status === 'Incorrect' && q.mistakeCategory && ['silly', 'misread', 'time_pressure', 'recall_failure'].includes(q.mistakeCategory)) {
       recoverableMarks += marksLost;
     }
@@ -113,7 +102,6 @@ export async function processMockAutopsy(
   const currentScore = (totalCorrect * correctMarks) - (totalIncorrect * Math.abs(negativeMarks));
   const potentialScore = currentScore + recoverableMarks;
 
-  // 3. Database Transactions
   const { data: autopsyData, error: autopsyErr } = await supabase.from('mock_autopsies').insert({
     user_id: userId,
     test_name: testName,
@@ -140,64 +128,57 @@ export async function processMockAutopsy(
     student_answer: q.studentAnswer,
     mistake_category: q.mistakeCategory,
     marks_lost: q.marksLost,
-    suggested_fix: q.reasoning // Mapped reasoning to suggested_fix for DB
+    suggested_fix: q.reasoning 
   }));
 
-  // Batch insert in chunks to prevent payload size limits on massive tests
   for (let i = 0; i < qRows.length; i += 50) {
     await supabase.from('autopsy_questions').insert(qRows.slice(i, i + 50));
   }
 
-  // 3.5 Sync Mistakes to ATLAS and MEMORY
-  const { resolveConceptByName } = await import('./concept-resolver');
-  const { createCardsFromAutopsyMistakes } = await import('./mistake-to-card');
-
-  // 3.5a: Downscale Atlas Mastery for incorrect questions
-  for (const q of processedQuestions.filter((q) => q.status === 'Incorrect')) {
-    const conceptId = await resolveConceptByName(userId, q.subject, q.chapter || '');
-    if (conceptId) {
-      // false = incorrect, 0 = unknown time spent. Will downgrade mastery in graph.
-      await updateConceptState(conceptId, false, 0); 
-    }
-  }
-
-  // 3.5b: Auto-generate FSRS Revision Cards
-  await createCardsFromAutopsyMistakes(userId, autopsyData.id);
-
-  // 4. Generate the Recovery Plan
   const incorrectQs = processedQuestions.filter((q: ProcessedQuestion) => q.status === 'Incorrect');
   const { mentorQuote, plan } = await generateMentorRecovery(autopsyData.id, currentScore, potentialScore, incorrectQs, examType);
 
-  // 5. Aggregate Analytics for Dashboard
+  // =====================================================================
+  // THE MISSING P0 PIPELINE: AUTOPSY -> ATLAS -> MEMORY
+  // =====================================================================
+  Promise.resolve().then(async () => {
+    try {
+      const { resolveConceptByName } = await import('./concept-resolver');
+      const { updateConceptState } = await import('./cognition-graph');
+      const { generateCardsForConcept } = await import('./revision-engine');
+
+      for (const q of incorrectQs) {
+        const conceptId = await resolveConceptByName(userId, q.subject, q.chapter || '');
+        if (conceptId) {
+          // 1. Punish ATLAS: Downscale mastery because they got it wrong (timeSpent=1)
+          await updateConceptState(conceptId, false, 1);
+          
+          // 2. Feed MEMORY: Auto-create FSRS revision cards so they practice this gap
+          await generateCardsForConcept(userId, conceptId, q.subject, q.chapter || '');
+        }
+      }
+      logger.info(`Autopsy-to-ATLAS/MEMORY sync complete for ${incorrectQs.length} mistakes.`);
+    } catch (e) {
+      logger.error('Failed to sync autopsy mistakes to ATLAS/MEMORY', e);
+    }
+  });
+  // =====================================================================
+
   const categoryMap: Record<string, number> = {};
   const chapterMap: Record<string, number> = {};
 
   incorrectQs.forEach(q => {
-    if (q.mistakeCategory) {
-      categoryMap[q.mistakeCategory] = (categoryMap[q.mistakeCategory] || 0) + 1;
-    }
-    if (q.chapter) {
-      chapterMap[q.chapter] = (chapterMap[q.chapter] || 0) + q.marksLost;
-    }
+    if (q.mistakeCategory) categoryMap[q.mistakeCategory] = (categoryMap[q.mistakeCategory] || 0) + 1;
+    if (q.chapter) chapterMap[q.chapter] = (chapterMap[q.chapter] || 0) + q.marksLost;
   });
 
   const categoryBreakdown = Object.entries(categoryMap).map(([name, value]) => ({ name, value }));
   const chapterLoss = Object.entries(chapterMap)
     .map(([chapter, marksLost]) => ({ chapter, marksLost }))
     .sort((a, b) => b.marksLost - a.marksLost)
-    .slice(0, 10); // Top 10 chapters
-
-  logger.info(`Autopsy Complete`, { userId, testName, currentScore, potentialScore });
+    .slice(0, 10); 
 
   return { 
-    autopsyId: autopsyData.id, 
-    currentScore, 
-    potentialScore, 
-    recoverableMarks, 
-    mentorQuote, 
-    plan, 
-    examType,
-    categoryBreakdown,
-    chapterLoss
+    autopsyId: autopsyData.id, currentScore, potentialScore, recoverableMarks, mentorQuote, plan, examType, categoryBreakdown, chapterLoss
   };
 }
