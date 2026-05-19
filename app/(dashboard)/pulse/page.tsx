@@ -29,9 +29,9 @@ export default async function PulsePage() {
   };
 
   return (
-    <div style={{ maxWidth: 900, margin: '0 auto', paddingBottom: 'var(--sp-8)' }}>
+    <div style={{ maxWidth: 1000, margin: '0 auto', paddingBottom: 'var(--sp-8)' }}>
       <div style={{ marginBottom: 'var(--sp-6)' }}>
-        <h1 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-bold)' }}>PULSE Cognitive Center</h1>
+        <h1 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-bold)' }}>PULSE Telemetry</h1>
         <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', marginTop: 2 }}>
           Mental State Engine tracking cognitive load, focus momentum, and learning friction.
         </p>
