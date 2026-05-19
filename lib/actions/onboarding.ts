@@ -2,10 +2,13 @@
 
 import { createClient } from '@/lib/supabase/server';
 import { getExamConfig } from '@/lib/utils/constants';
-import { logger } from '@/lib/utils/logger';
 
 // Seed the knowledge graph with exam chapters based on self-assessment
-export async function seedKnowledgeGraph(userId: string, examType: string, weakSpots: Record<string, string[]>) {
+export async function seedKnowledgeGraph(
+  userId: string,
+  examType: string,
+  weakSpots: Record<string, string[]> // { "Physics": ["Optics", "Thermodynamics"], ... }
+) {
   const supabase = await createClient();
   const config = getExamConfig(examType);
   const { seedConceptsForSubject } = await import('@/lib/engines/cognition-graph');
@@ -19,7 +22,7 @@ export async function seedKnowledgeGraph(userId: string, examType: string, weakS
     }
   }
 
-  // Update mastery for identified weak spots to "exposed"
+  // Update mastery for identified weak spots
   for (const [subject, weakChapters] of Object.entries(weakSpots)) {
     if (weakChapters.length > 0) {
       await supabase
@@ -35,20 +38,79 @@ export async function seedKnowledgeGraph(userId: string, examType: string, weakS
 }
 
 // Generate the Day 1 plan immediately after onboarding
-export async function generateDay1Plan(userId: string) {
+export async function generateDay1Plan(userId: string, examType: string) {
   const supabase = await createClient();
+
+  const { data: weakConcepts } = await supabase
+    .from('concepts')
+    .select('subject, chapter, mastery')
+    .eq('user_id', userId)
+    .eq('mastery', 'exposed')
+    .limit(3);
+
+  const tasks: any[] = [];
   const today = new Date().toISOString();
-  
-  // Trigger the actual AI planner to build a realistic Day 1
-  const { generateDailyPlan } = await import('@/lib/ai/agents/planner');
-  const tasks = await generateDailyPlan(userId, today.split('T')[0]);
+
+  if (weakConcepts && weakConcepts.length > 0) {
+    weakConcepts.forEach((concept: any, i: number) => {
+      tasks.push({
+        user_id: userId,
+        title: `Deep dive: ${concept.chapter}`,
+        description: `Focus revision on your weak chapter in ${concept.subject}`,
+        type: 'study',
+        subject: concept.subject,
+        chapter: concept.chapter,
+        priority: i === 0 ? 'critical' : 'high',
+        estimated_minutes: 45,
+        scheduled_date: today,
+        notes: "AI prioritized based on your onboarding weak-spot analysis."
+      });
+    });
+  }
+
+  const { data: strongConcepts } = await supabase
+    .from('concepts')
+    .select('subject, chapter')
+    .eq('user_id', userId)
+    .eq('mastery', 'not_started')
+    .limit(1);
+
+  if (strongConcepts && strongConcepts.length > 0) {
+    tasks.push({
+      user_id: userId,
+      title: `Start new chapter: ${strongConcepts[0].chapter}`,
+      description: `Begin ${strongConcepts[0].subject} exploration`,
+      type: 'study',
+      subject: strongConcepts[0].subject,
+      chapter: strongConcepts[0].chapter,
+      priority: 'medium',
+      estimated_minutes: 30,
+      scheduled_date: today,
+      notes: "Syllabus momentum progression."
+    });
+  }
+
+  tasks.push({
+    user_id: userId,
+    title: 'Strategic break — walk, hydrate, reset',
+    description: 'Your brain needs recovery between intense sessions',
+    type: 'break',
+    priority: 'medium',
+    estimated_minutes: 15,
+    scheduled_date: today,
+    notes: "Mandatory cognitive down-regulation."
+  });
+
+  if (tasks.length > 0) {
+    await supabase.from('study_tasks').insert(tasks);
+  }
 
   return { tasksCreated: tasks.length, tasks };
 }
 
 // Complete onboarding — mark profile and trigger graph + plan + auto-cards
 export async function completeOnboarding(
-  _userId: string, // Ignored, fetched securely below
+  _userId: string, // Kept for API signature, but ignored for security
   examType: string,
   targetYear: number,
   weakSpots: Record<string, string[]>
@@ -58,7 +120,7 @@ export async function completeOnboarding(
   if (!user) throw new Error('Not authenticated');
   const userId = user.id;
 
-  // 1. Update Profile
+  // 1. Save Profile
   await supabase.from('profiles').update({
     exam_type: examType,
     target_year: targetYear,
@@ -66,31 +128,44 @@ export async function completeOnboarding(
     updated_at: new Date().toISOString(),
   }).eq('id', userId);
 
-  // 2. Seed Graph & Plan
+  // 2. Seed ATLAS Knowledge Graph
   const { seeded } = await seedKnowledgeGraph(userId, examType, weakSpots);
-  const { tasksCreated } = await generateDay1Plan(userId);
+  
+  // 3. Generate Day 1 Plan
+  const { tasksCreated } = await generateDay1Plan(userId, examType);
 
-  // 3. Auto-generate revision cards from the materials they JUST uploaded
+  // 4. THE MISSING PIPELINE: Auto-generate Flashcards from Uploaded Materials
   let cardsCreated = 0;
   try {
-    const { generateCardsForConcept } = await import('@/lib/engines/revision-engine');
+    // Check if user uploaded any materials during onboarding
+    const { count } = await supabase.from('materials').select('*', { count: 'exact', head: true }).eq('user_id', userId);
     
-    // Pick 3 concepts (prioritizing their weak spots) to generate the first deck
-    const { data: concepts } = await supabase
-      .from('concepts')
-      .select('id, subject, chapter')
-      .eq('user_id', userId)
-      .order('forgetting_probability', { ascending: false })
-      .limit(3); 
+    if (count && count > 0) {
+      // Find the user's weakest concepts to generate cards for first
+      const { data: priorityConcepts } = await supabase
+        .from('concepts')
+        .select('id, subject, chapter')
+        .eq('user_id', userId)
+        .eq('mastery', 'exposed') // Target weak spots identified in Step 3 of onboarding
+        .limit(3); 
 
-    if (concepts && concepts.length > 0) {
-      for (const c of concepts) {
-        const generated = await generateCardsForConcept(userId, c.id, c.subject, c.chapter);
-        if (generated) cardsCreated += generated.length;
+      if (priorityConcepts && priorityConcepts.length > 0) {
+        const { generateCardsForConcept } = await import('@/lib/engines/revision-engine');
+        
+        // Generate cards concurrently for the top 3 weak chapters
+        const results = await Promise.allSettled(
+          priorityConcepts.map(c => generateCardsForConcept(userId, c.id, c.subject, c.chapter))
+        );
+        results.forEach(res => {
+          if (res.status === 'fulfilled' && res.value) {
+            cardsCreated += res.value.length;
+          }
+        });
       }
     }
   } catch (e) {
-    logger.error('Auto-card generation during onboarding failed:', e);
+    console.error('Auto-card generation during onboarding failed:', e);
+    // Non-critical — onboarding succeeds even if card gen fails
   }
 
   return { seeded, tasksCreated, cardsCreated };
