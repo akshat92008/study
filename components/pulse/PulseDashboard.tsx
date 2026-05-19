@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
 import { Activity, ShieldAlert, Target, Shield, Clock, TrendingUp, AlertTriangle } from 'lucide-react';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Cell } from 'recharts';
 
 interface PulseDashboardProps {
   data: {
@@ -182,7 +183,7 @@ export default function PulseDashboard({ data }: PulseDashboardProps) {
         </Card>
       </div>
 
-      {/* Friction score timeline (Last 2 Weeks) */}
+      {/* Friction score timeline (Last 14 Days) using RECHARTS */}
       <Card padding="md">
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)', marginBottom: 'var(--sp-4)' }}>
           <Activity size={16} style={{ color: 'var(--warning)' }} />
@@ -191,25 +192,23 @@ export default function PulseDashboard({ data }: PulseDashboardProps) {
           </span>
         </div>
 
-        <div style={{ display: 'flex', gap: 'var(--sp-2)', alignItems: 'flex-end', height: 120, padding: 'var(--sp-2) 0' }}>
-          {timeline.map((day) => {
-            const height = Math.max(8, (day.friction / 10) * 100);
-            let barColor = 'var(--accent-cyan)';
-            if (day.friction >= 7) barColor = 'var(--danger)';
-            else if (day.friction >= 4) barColor = 'var(--warning)';
-
-            return (
-              <div key={day.date} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
-                <div style={{
-                  width: '100%', height: `${height}%`, background: barColor,
-                  borderRadius: 'var(--radius-xs)', opacity: 0.85, transition: 'height 0.3s ease'
-                }} title={`Friction: ${day.friction}/10`} />
-                <span style={{ fontSize: '9px', color: 'var(--text-tertiary)', whiteSpace: 'nowrap' }}>
-                  {day.label}
-                </span>
-              </div>
-            );
-          })}
+        <div style={{ height: 180, width: '100%', marginTop: 'var(--sp-4)' }}>
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={timeline} margin={{ top: 5, right: 0, left: -20, bottom: 0 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="var(--border-subtle)" vertical={false} />
+              <XAxis dataKey="label" stroke="var(--text-tertiary)" fontSize={10} tickLine={false} axisLine={false} />
+              <YAxis stroke="var(--text-tertiary)" fontSize={10} domain={[0, 10]} tickLine={false} axisLine={false} />
+              <Tooltip 
+                contentStyle={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-default)', borderRadius: '8px' }}
+                cursor={{ fill: 'var(--bg-hover)' }}
+              />
+              <Bar dataKey="friction" radius={[4, 4, 0, 0]}>
+                {timeline.map((entry: any, index: number) => (
+                  <Cell key={`cell-${index}`} fill={entry.friction >= 7 ? 'var(--danger)' : entry.friction >= 4 ? 'var(--warning)' : 'var(--accent-cyan)'} />
+                ))}
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
         </div>
       </Card>
     </div>

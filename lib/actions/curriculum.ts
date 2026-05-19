@@ -42,9 +42,21 @@ Respond exactly as this JSON structure:
     onboarding_complete: true,
   }).eq('id', user.id);
 
-  // Seed the concepts dynamically
+  // NEW: Force Deep AI Expansion during Curriculum Generation
+  const { expandChapterViaMind } = await import('@/lib/engines/cognition-graph');
+  
   for (const subject of curriculum.subjects) {
-    await seedConceptsForSubject(user.id, subject.name, subject.chapters);
+    for (const chapter of subject.chapters) {
+      // Ask Gemini to break down this specific custom chapter into micro-concepts
+      const expandedConcepts = await expandChapterViaMind(user.id, subject.name, chapter);
+      
+      // Fallback if AI fails: seed generic chapter node
+      if (!expandedConcepts || expandedConcepts.length === 0) {
+        await supabase.from('concepts').insert({
+          user_id: user.id, name: chapter, subject: subject.name, chapter, topic: 'General'
+        });
+      }
+    }
   }
 
   return { success: true, curriculum };

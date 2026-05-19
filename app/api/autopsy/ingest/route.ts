@@ -25,7 +25,7 @@ export async function POST(request: Request) {
 
     // Limit: 50 requests per 15 minutes per user
     const ip = request.headers.get('x-forwarded-for') || user.id;
-    if (!rateLimit(ip, 50, 15 * 60 * 1000)) {
+    if (!await rateLimit(ip, 50, 15 * 60 * 1000)) {
       return NextResponse.json({ error: 'Rate limit exceeded. Please wait a few minutes.' }, { status: 429 });
     }
 

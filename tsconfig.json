@@ -25,6 +25,12 @@
     "paths": {
       "@/*": [
         "./*"
+      ],
+      "@xyflow/react": [
+        "./lib/mocks/xyflow-react.tsx"
+      ],
+      "@xyflow/react/*": [
+        "./lib/mocks/*"
       ]
     }
   },

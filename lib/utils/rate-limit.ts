@@ -1,24 +1,21 @@
-const rateLimitMap = new Map<string, { count: number; lastReset: number }>();
+import { createClient } from '@/lib/supabase/server';
+import { logger } from '@/lib/utils/logger';
 
-export function rateLimit(ip: string, limit: number, windowMs: number): boolean {
-  const now = Date.now();
-  const userLimit = rateLimitMap.get(ip);
+export async function rateLimit(ip: string, limit: number, windowMs: number): Promise<boolean> {
+  try {
+    const supabase = await createClient();
+    const windowSeconds = Math.floor(windowMs / 1000);
+    
+    const { data, error } = await supabase.rpc('check_rate_limit', {
+      p_ip: ip,
+      p_limit: limit,
+      p_window_seconds: windowSeconds
+    });
 
-  if (!userLimit) {
-    rateLimitMap.set(ip, { count: 1, lastReset: now });
-    return true; // Allowed
+    if (error) throw error;
+    return data as boolean;
+  } catch (err) {
+    logger.error('Rate limiter fallback triggered', err);
+    return true; // Fail open to not block users if DB lags
   }
-
-  if (now - userLimit.lastReset > windowMs) {
-    // Reset window
-    rateLimitMap.set(ip, { count: 1, lastReset: now });
-    return true; // Allowed
-  }
-
-  if (userLimit.count >= limit) {
-    return false; // Rate limit exceeded
-  }
-
-  userLimit.count += 1;
-  return true; // Allowed
 }

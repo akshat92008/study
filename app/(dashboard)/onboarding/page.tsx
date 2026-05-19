@@ -12,6 +12,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Zap, ArrowRight, Upload, Check, Loader2 } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
 import KnowledgeMap from '@/components/cognition/KnowledgeMap';
+import InteractiveGraph from '@/components/cognition/InteractiveGraph';
 
 export default function OnboardingPage() {
   const [step, setStep] = useState(0);
@@ -28,6 +29,7 @@ export default function OnboardingPage() {
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [result, setResult] = useState<{ seeded: number; tasksCreated: number; cardsCreated: number } | null>(null);
   const [graphData, setGraphData] = useState<any>(null);
+  const [revealGraph, setRevealGraph] = useState<{concepts: any[], links: any[]}|null>(null);
 
   const examConfig = getExamConfig(formState.examType);
 
@@ -74,12 +76,12 @@ export default function OnboardingPage() {
         weakSpots
       );
       setResult(res);
+      setStep(4);
       
-      // Fetch the newly generated graph data to show them!
-      const graph = await getCognitionData();
-      setGraphData(graph);
-      
-      setStep(4); // The Magic Moment Reveal
+      // Fetch the newly seeded graph for the Magic Reveal
+      const resGraph = await fetch('/api/cognition');
+      const graphData = await resGraph.json();
+      setRevealGraph(graphData);
     } catch (err: any) {
       addToast(err.message || 'Onboarding failed', 'error');
     } finally {
@@ -213,34 +215,35 @@ export default function OnboardingPage() {
     </motion.div>,
 
     // Step 4: The Magic Moment
-    <motion.div key={4} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} style={{ width: '100%', maxWidth: 900 }}>
-      <div style={{ textAlign: 'center', marginBottom: 'var(--sp-8)' }}>
-        <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-black)', marginBottom: 'var(--sp-2)' }}>
-          System Online.
-        </h2>
-        <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-md)', marginBottom: 'var(--sp-6)' }}>
-          We mapped <strong style={{ color: 'var(--accent-purple)' }}>{result?.seeded}</strong> concepts to your ATLAS.
-          {uploadedFile && (
-            <>
-              <br/>We generated <strong style={{ color: 'var(--accent-cyan)' }}>{result?.cardsCreated || 15}</strong> flashcards from your notes.
-            </>
-          )}
-          <br/>We created <strong style={{ color: 'var(--success)' }}>{result?.tasksCreated}</strong> tasks in your Day 1 mission.
-        </p>
-      </div>
-      
-      {/* Show the actual knowledge graph they just created! */}
-      {graphData && (
-        <div style={{ background: 'var(--bg-root)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-xl)', border: '1px solid var(--border-subtle)', marginBottom: 'var(--sp-8)' }}>
-          <KnowledgeMap concepts={graphData.concepts} links={graphData.links} stats={graphData.stats} />
+    <motion.div key={4} initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ textAlign: 'center', width: '100%' }}>
+      <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-black)', marginBottom: 'var(--sp-2)' }}>
+        System Online. Your Brain is Mapped.
+      </h2>
+      <p style={{ color: 'var(--text-secondary)', marginBottom: 'var(--sp-6)' }}>
+        {result?.seeded} concepts successfully ingested. Your Day 1 mission is ready.
+      </p>
+
+      {/* The Animated Graph Reveal */}
+      {revealGraph ? (
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }} 
+          animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }} 
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          style={{ marginBottom: 'var(--sp-6)', boxShadow: '0 0 40px var(--accent-blue-glow)', borderRadius: 'var(--radius-xl)' }}
+        >
+          {/* Reuse our newly upgraded React Flow component! */}
+          <InteractiveGraph concepts={revealGraph.concepts} links={revealGraph.links} />
+        </motion.div>
+      ) : (
+        <div style={{ padding: 'var(--sp-12)', color: 'var(--accent-cyan)' }}>
+          <Loader2 size={32} className="animate-spin mx-auto" />
+          <p className="mt-4">Compiling neural network...</p>
         </div>
       )}
 
-      <div style={{ textAlign: 'center' }}>
-        <Button onClick={() => router.push('/dashboard')} size="lg" style={{ background: 'white', color: 'black' }}>
-          Enter Command Center <ArrowRight size={18} />
-        </Button>
-      </div>
+      <Button onClick={() => router.push('/')} size="lg" style={{ width: '100%', maxWidth: 400 }}>
+        Enter Command Center <ArrowRight size={18} />
+      </Button>
     </motion.div>,
   ];
 
@@ -250,7 +253,7 @@ export default function OnboardingPage() {
       minHeight: '100vh', background: 'var(--bg-root)'
     }}>
       <Card padding={step === 4 ? 'none' : 'lg'} style={{ 
-        maxWidth: step === 4 ? 900 : 520, 
+        maxWidth: step === 4 ? 800 : 520, 
         width: '100%', 
         background: step === 4 ? 'transparent' : 'var(--bg-secondary)',
         border: step === 4 ? 'none' : '1px solid var(--border-default)',
