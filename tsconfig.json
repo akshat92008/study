@@ -31,6 +31,9 @@
       ],
       "@xyflow/react/*": [
         "./lib/mocks/*"
+      ],
+      "dagre": [
+        "./lib/mocks/dagre.ts"
       ]
     }
   },

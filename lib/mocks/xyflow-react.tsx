@@ -7,6 +7,21 @@ export const MarkerType = {
   ArrowClosed: 'arrowclosed',
 };
 
+export const Position = {
+  Left: 'left',
+  Right: 'right',
+  Top: 'top',
+  Bottom: 'bottom',
+};
+
+export function Panel({ children, position, style }: any) {
+  return (
+    <div style={{ position: 'absolute', zIndex: 10, top: 10, left: 10, ...style }}>
+      {children}
+    </div>
+  );
+}
+
 export function useNodesState(initialNodes: any[]) {
   const [nodes, setNodes] = useState(initialNodes);
   const onNodesChange = () => {};
@@ -32,6 +47,9 @@ export function ReactFlow({ nodes = [], edges = [], children, fitView, colorMode
 
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', userSelect: 'none', background: 'var(--bg-primary)' }}>
+      {/* Panel container */}
+      {children}
+
       {/* SVG Canvas for Edges */}
       <svg
         style={{

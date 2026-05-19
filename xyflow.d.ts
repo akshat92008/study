@@ -7,4 +7,6 @@ declare module '@xyflow/react' {
   export const useEdgesState: any;
   export const addEdge: any;
   export const MarkerType: any;
+  export const Position: any;
+  export const Panel: any;
 }
