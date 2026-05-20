@@ -66,6 +66,13 @@ interface AppState {
   loadChatFromSupabase: () => Promise<void>;
   syncChatToSupabase: () => Promise<void>;
   clearChat: () => void;
+
+  // Learning Goals
+  learningGoals: any[];
+  activeGoalId: string | null;
+  setActiveGoalId: (id: string | null) => void;
+  loadLearningGoals: () => Promise<void>;
+  createLearningGoal: (title: string, details?: { deadline: string; currentLevel: string; timeAvailable: number; preferredLearningStyle: string }) => Promise<any>;
 }
 
 export const useAppStore = create<AppState>()(
@@ -149,7 +156,11 @@ export const useAppStore = create<AppState>()(
             .maybeSingle();
 
           if (error) {
-            console.error('Error loading chat from Supabase:', error);
+            if (error.code === 'PGRST205') {
+              console.warn('orchestrator_chats table not found. Please run the database migrations in the Supabase SQL Editor.');
+            } else {
+              console.error('Error loading chat from Supabase:', error.message || error, 'Details:', error.details, 'Code:', error.code);
+            }
             return;
           }
 
@@ -163,15 +174,21 @@ export const useAppStore = create<AppState>()(
           } else {
             const { data: newChat, error: createError } = await supabase
               .from('orchestrator_chats')
-              .insert({
+              .upsert({
                 user_id: user.id,
                 messages: [{ role: 'assistant', content: 'I am here. What do you need?', timestamp: new Date().toISOString() }]
+              }, {
+                onConflict: 'user_id'
               })
               .select()
               .single();
 
             if (createError) {
-              console.error('Error creating chat in Supabase:', createError);
+              if (createError.code === 'PGRST205') {
+                console.warn('orchestrator_chats table not found. Please run the database migrations in the Supabase SQL Editor.');
+              } else {
+                console.error('Error creating chat in Supabase:', createError.message || createError, 'Details:', createError.details, 'Code:', createError.code);
+              }
             } else if (newChat) {
               set({
                 chatId: newChat.id,
@@ -199,7 +216,11 @@ export const useAppStore = create<AppState>()(
             .eq('id', chatId);
 
           if (error) {
-            console.error('Error syncing chat to Supabase:', error);
+            if (error.code === 'PGRST205') {
+              console.warn('orchestrator_chats table not found. Please run the database migrations in the Supabase SQL Editor.');
+            } else {
+              console.error('Error syncing chat to Supabase:', error.message || error, 'Details:', error.details, 'Code:', error.code);
+            }
           }
         } catch (err) {
           console.error('Failed to sync chat:', err);
@@ -215,6 +236,81 @@ export const useAppStore = create<AppState>()(
         set({ chatMessages: [initialMsg] });
         get().syncChatToSupabase();
       },
+
+      // Learning Goals implementation
+      learningGoals: [],
+      activeGoalId: null,
+      setActiveGoalId: (id) => set({ activeGoalId: id }),
+      loadLearningGoals: async () => {
+        try {
+          const supabase = createClient();
+          const { data: { user } } = await supabase.auth.getUser();
+          if (!user) return;
+          const { data, error } = await supabase
+            .from('learning_goals')
+            .select('*')
+            .order('created_at', { ascending: false });
+          if (!error && data) {
+            set({ learningGoals: data });
+            if (data.length > 0 && !get().activeGoalId) {
+              set({ activeGoalId: data[0].id });
+            }
+          }
+        } catch (err) {
+          console.error('Failed to load learning goals:', err);
+        }
+      },
+      createLearningGoal: async (title, details) => {
+        try {
+          const supabase = createClient();
+          const { data: { user } } = await supabase.auth.getUser();
+          if (!user) return null;
+
+          let goalData = null;
+          if (details) {
+            const res = await fetch('/api/goals', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                title,
+                deadline: details.deadline,
+                currentLevel: details.currentLevel,
+                timeAvailable: details.timeAvailable,
+                preferredLearningStyle: details.preferredLearningStyle,
+              }),
+            });
+            const apiRes = await res.json();
+            if (apiRes.success && apiRes.goalId) {
+              const { data } = await supabase
+                .from('learning_goals')
+                .select('*')
+                .eq('id', apiRes.goalId)
+                .single();
+              goalData = data;
+            }
+          } else {
+            const { data, error } = await supabase
+              .from('learning_goals')
+              .insert({ user_id: user.id, title, status: 'active' })
+              .select()
+              .single();
+            if (!error && data) {
+              goalData = data;
+            }
+          }
+
+          if (goalData) {
+            set((state) => ({
+              learningGoals: [goalData, ...state.learningGoals],
+              activeGoalId: goalData.id,
+            }));
+            return goalData;
+          }
+        } catch (err) {
+          console.error('Failed to create learning goal:', err);
+        }
+        return null;
+      },
     }),
     {
       name: 'cognition-os-store',
@@ -222,6 +318,7 @@ export const useAppStore = create<AppState>()(
         chatMessages: state.chatMessages,
         chatId: state.chatId,
         isSidebarCollapsed: state.isSidebarCollapsed,
+        activeGoalId: state.activeGoalId,
       }),
     }
   )

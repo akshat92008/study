@@ -1,10 +1,8 @@
-import { getCognitionData, initializeConcepts } from '@/lib/actions/cognition';
-import CognitionDashboard from '@/components/cognition/CognitionDashboard';
+import { redirect } from 'next/navigation';
+import { initializeConcepts } from '@/lib/actions/cognition';
 
 export default async function CognitionPage() {
-  // Auto-seed concepts if needed
+  // Ensure concepts are initialized, then redirect
   await initializeConcepts();
-  const data = await getCognitionData();
-
-  return <CognitionDashboard data={data} />;
+  redirect('/dashboard');
 }

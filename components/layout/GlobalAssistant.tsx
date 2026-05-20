@@ -114,6 +114,11 @@ export default function GlobalAssistant() {
     });
   }
 
+  // Do not render the floating copilot on the primary chat pages to prevent overlap
+  if (pathname === '/dashboard' || pathname === '/chat') {
+    return null;
+  }
+
   return (
     <>
       {/* Floating Action Button */}

@@ -12,7 +12,7 @@ import { useAppStore } from '@/stores/appStore';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Calendar, Clock, Check, BookOpen, Brain, Target, 
-  Coffee, Activity, ArrowRight, Play, CheckCircle2, Flame 
+  Coffee, Activity, ArrowRight, Play, CheckCircle2, Flame, Sliders, X, AlertCircle
 } from 'lucide-react';
 
 const typeIcons: Record<string, any> = {
@@ -47,6 +47,61 @@ export default function PlannerDashboard({ initialTasks, date }: { initialTasks:
   const [profile, setProfile] = useState<any>(null);
   const [activeSession, setActiveSession] = useState<any>(null);
   const { addToast } = useAppStore();
+
+  // Replanning state variables
+  const [isReplanOpen, setIsReplanOpen] = useState(false);
+  const [replanDailyHours, setReplanDailyHours] = useState(8);
+  const [isReplanning, setIsReplanning] = useState(false);
+  const [replanStep, setReplanStep] = useState<'config' | 'preview'>('config');
+  const [replanCandidates, setReplanCandidates] = useState<any[]>([]);
+  const [replanPreviewSchedule, setReplanPreviewSchedule] = useState<any[]>([]);
+
+  async function handleReplanPreview() {
+    setIsReplanning(true);
+    try {
+      const res = await fetch('/api/planner/replan', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ date, commit: false, dailyHours: replanDailyHours }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setReplanCandidates(data.candidates || []);
+        setReplanPreviewSchedule(data.schedule || []);
+        setReplanStep('preview');
+      } else {
+        addToast(data.error || 'Failed to generate preview', 'error');
+      }
+    } catch (e) {
+      addToast('Network error during replan', 'error');
+    } finally {
+      setIsReplanning(false);
+    }
+  }
+
+  async function handleReplanCommit() {
+    setIsReplanning(true);
+    try {
+      const res = await fetch('/api/planner/replan', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ date, commit: true, dailyHours: replanDailyHours }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setTasks(data.schedule || []);
+        setIsReplanOpen(false);
+        setReplanStep('config');
+        addToast('Daily schedule reprioritized and saved!', 'success');
+      } else {
+        addToast(data.error || 'Failed to apply plan', 'error');
+      }
+    } catch (e) {
+      addToast('Network error applying plan', 'error');
+    } finally {
+      setIsReplanning(false);
+    }
+  }
 
   useEffect(() => {
     if (initialTasks.length === 0) {
@@ -147,6 +202,26 @@ export default function PlannerDashboard({ initialTasks, date }: { initialTasks:
               </span>
             </div>
           )}
+          
+          <button
+            onClick={() => {
+              setReplanDailyHours(profile?.study_hours_per_day || 8);
+              setReplanStep('config');
+              setIsReplanOpen(true);
+            }}
+            style={{
+              display: 'flex', alignItems: 'center', gap: 'var(--sp-2)',
+              padding: '6px 14px', borderRadius: 'var(--radius-md)',
+              background: 'var(--bg-secondary)', border: '1px solid var(--border-default)',
+              color: 'var(--text-secondary)', cursor: 'pointer', fontSize: 'var(--fs-sm)',
+              fontWeight: 'var(--fw-medium)', transition: 'background var(--duration-fast)'
+            }}
+            onMouseEnter={e => e.currentTarget.style.background = 'var(--bg-tertiary)'}
+            onMouseLeave={e => e.currentTarget.style.background = 'var(--bg-secondary)'}
+          >
+            <Target size={16} color="var(--accent-purple)" />
+            COMMAND Replan
+          </button>
           
           <button
             onClick={() => setShowPulse(true)}
@@ -453,6 +528,206 @@ export default function PlannerDashboard({ initialTasks, date }: { initialTasks:
           </Card>
         )}
       </div>
+
+      {/* COMMAND V2 REPLAN DIALOG MODAL */}
+      <AnimatePresence>
+        {isReplanOpen && (
+          <div style={{
+            position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+            background: 'rgba(0, 0, 0, 0.65)', backdropFilter: 'blur(6px)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            zIndex: 1000, padding: 'var(--sp-4)'
+          }}>
+            <motion.div 
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              style={{
+                background: 'var(--bg-primary)', border: '1px solid var(--border-strong)',
+                borderRadius: 'var(--radius-lg)', width: '100%', maxWidth: '640px',
+                maxHeight: '85vh', display: 'flex', flexDirection: 'column',
+                overflow: 'hidden', boxShadow: 'var(--shadow-xl)'
+              }}
+            >
+              {/* Modal Header */}
+              <div style={{ padding: 'var(--sp-4) var(--sp-5)', borderBottom: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
+                  <Target size={20} style={{ color: 'var(--accent-purple)' }} />
+                  <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)', color: 'var(--text-primary)' }}>
+                    COMMAND Engine v2.0
+                  </span>
+                </div>
+                <button 
+                  onClick={() => setIsReplanOpen(false)}
+                  style={{ background: 'transparent', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer' }}
+                >
+                  <X size={18} />
+                </button>
+              </div>
+
+              {/* Modal Body */}
+              <div style={{ flex: 1, overflowY: 'auto', padding: 'var(--sp-5)', display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
+                {replanStep === 'config' ? (
+                  <>
+                    <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)', lineHeight: 'var(--lh-relaxed)' }}>
+                      COMMAND evaluates your outstanding syllabus topics, FSRS memory decay schedules, and recent test autopsies to formulate a custom study plan.
+                    </p>
+
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)', marginTop: 'var(--sp-2)' }}>
+                      <label style={{ fontSize: 'var(--fs-xs)', fontWeight: 'bold', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>
+                        Daily hours allocated: {replanDailyHours} hours
+                      </label>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-4)' }}>
+                        <input 
+                          type="range" 
+                          min={1} 
+                          max={16} 
+                          value={replanDailyHours} 
+                          onChange={(e) => setReplanDailyHours(Number(e.target.value))}
+                          style={{ flex: 1, accentColor: 'var(--accent-purple)', cursor: 'pointer' }}
+                        />
+                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--fs-sm)', fontWeight: 'bold', color: 'var(--text-primary)' }}>
+                          {replanDailyHours * 60}m
+                        </span>
+                      </div>
+                    </div>
+
+                    <div style={{
+                      display: 'flex', gap: 'var(--sp-3)', background: 'var(--bg-secondary)', 
+                      padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)',
+                      marginTop: 'var(--sp-2)'
+                    }}>
+                      <Sliders size={18} style={{ color: 'var(--accent-cyan)', flexShrink: 0, marginTop: 2 }} />
+                      <div>
+                        <h4 style={{ fontSize: 'var(--fs-sm)', fontWeight: 'bold', color: 'var(--text-primary)', marginBottom: 2 }}>
+                          Algorithmic Balancing Guardrails
+                        </h4>
+                        <p style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)', lineHeight: 'var(--lh-relaxed)' }}>
+                          Prioritized allocations: Backlog (max 30%), FSRS cards (max 25%), autopsies (max 30%), new topics (max 40%). Breaks are auto-inserted.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div style={{ display: 'flex', gap: 'var(--sp-3)', marginTop: 'var(--sp-4)' }}>
+                      <button
+                        onClick={handleReplanPreview}
+                        disabled={isReplanning}
+                        style={{
+                          flex: 1, padding: '10px 16px', background: 'var(--bg-tertiary)',
+                          border: '1px solid var(--border-strong)', color: 'var(--text-primary)',
+                          borderRadius: 'var(--radius-md)', cursor: 'pointer', fontWeight: 600, fontSize: 'var(--fs-sm)'
+                        }}
+                      >
+                        {isReplanning ? 'Analyzing...' : 'Preview Priorities'}
+                      </button>
+                      <button
+                        onClick={handleReplanCommit}
+                        disabled={isReplanning}
+                        style={{
+                          flex: 1, padding: '10px 16px', background: 'var(--accent-purple)',
+                          border: 'none', color: 'white', borderRadius: 'var(--radius-md)',
+                          cursor: 'pointer', fontWeight: 700, fontSize: 'var(--fs-sm)',
+                          boxShadow: 'var(--shadow-glow-purple-dim)'
+                        }}
+                      >
+                        {isReplanning ? 'Generating...' : 'Commit & Replan'}
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <h4 style={{ fontSize: 'var(--fs-sm)', fontWeight: 'bold', color: 'var(--text-primary)' }}>
+                        Priority Queue Matrix ({replanCandidates.length} Items Evaluated)
+                      </h4>
+                      <button 
+                        onClick={() => setReplanStep('config')}
+                        style={{ background: 'transparent', border: 'none', color: 'var(--accent-cyan)', cursor: 'pointer', fontSize: 'var(--fs-xs)' }}
+                      >
+                        Back to settings
+                      </button>
+                    </div>
+
+                    {/* Candidate List */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)', maxHeight: '30vh', overflowY: 'auto', paddingRight: 4 }}>
+                      {replanCandidates.map((c, i) => (
+                        <div key={i} style={{
+                          padding: '8px 12px', background: 'var(--bg-secondary)', 
+                          border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-sm)',
+                          display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 'var(--sp-3)'
+                        }}>
+                          <div style={{ minWidth: 0 }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                              <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 'bold', color: 'var(--text-primary)' }}>{c.title}</span>
+                              <Badge color={c.type === 'revision' ? 'purple' : c.type === 'practice' ? 'red' : 'blue'}>
+                                {c.type}
+                              </Badge>
+                            </div>
+                            <p style={{ fontSize: '10px', color: 'var(--text-secondary)', marginTop: 2 }}>{c.rationale}</p>
+                          </div>
+                          <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                            <span style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--fs-xs)', fontWeight: 'bold', color: 'var(--accent-purple)' }}>
+                              Score: {Math.round(c.score)}
+                            </span>
+                            <div style={{ fontSize: '9px', color: 'var(--text-tertiary)' }}>{c.estimatedMinutes}m</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Preview Schedule */}
+                    <h4 style={{ fontSize: 'var(--fs-sm)', fontWeight: 'bold', color: 'var(--text-primary)', marginTop: 'var(--sp-2)' }}>
+                      Proposed Day Schedule ({replanPreviewSchedule.reduce((s,t) => s+t.estimated_minutes, 0)} mins packed)
+                    </h4>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)', maxHeight: '30vh', overflowY: 'auto', paddingRight: 4 }}>
+                      {replanPreviewSchedule.map((t, i) => (
+                        <div key={i} style={{
+                          padding: '8px 12px', background: t.type === 'break' ? 'rgba(255,255,255,0.02)' : 'var(--bg-tertiary)',
+                          borderLeft: t.type === 'break' ? '3px solid var(--border-strong)' : '3px solid var(--accent-blue)', 
+                          borderRadius: 'var(--radius-sm)', display: 'flex', justifyContent: 'space-between', alignItems: 'center'
+                        }}>
+                          <div>
+                            <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 'bold', color: 'var(--text-primary)' }}>{t.title}</span>
+                            {t.chapter && <span style={{ fontSize: '10px', color: 'var(--text-secondary)', marginLeft: 6 }}>({t.chapter})</span>}
+                          </div>
+                          <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}>
+                            {t.estimated_minutes}m
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div style={{ display: 'flex', gap: 'var(--sp-3)', marginTop: 'var(--sp-4)' }}>
+                      <button
+                        onClick={() => setReplanStep('config')}
+                        style={{
+                          flex: 1, padding: '10px 16px', background: 'var(--bg-tertiary)',
+                          border: '1px solid var(--border-strong)', color: 'var(--text-primary)',
+                          borderRadius: 'var(--radius-md)', cursor: 'pointer', fontWeight: 600, fontSize: 'var(--fs-sm)'
+                        }}
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        onClick={handleReplanCommit}
+                        disabled={isReplanning}
+                        style={{
+                          flex: 1, padding: '10px 16px', background: 'var(--accent-purple)',
+                          border: 'none', color: 'white', borderRadius: 'var(--radius-md)',
+                          cursor: 'pointer', fontWeight: 700, fontSize: 'var(--fs-sm)',
+                          boxShadow: 'var(--shadow-glow-purple-dim)'
+                        }}
+                      >
+                        {isReplanning ? 'Applying Plan...' : 'Apply Schedule'}
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

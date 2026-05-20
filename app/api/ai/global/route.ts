@@ -1,7 +1,10 @@
 import { NextRequest } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { streamText } from '@/lib/ai/gemini';
-import { getSocraticOrchestratorPrompt } from '@/lib/ai/prompts/mentor';
+import { streamText, generateJSON } from '@/lib/ai/gemini';
+import { getMINDContext } from '@/lib/engines/mind-engine';
+import { getMINDSystemPrompt, buildMINDUserPrompt } from '@/lib/ai/prompts/mind-prompt';
+import { updateConceptState } from '@/lib/engines/cognition-graph';
+import { createSingleCard } from '@/lib/engines/revision-engine';
 import { logger } from '@/lib/utils/logger';
 
 export async function POST(req: NextRequest) {
@@ -11,71 +14,145 @@ export async function POST(req: NextRequest) {
     if (!user) return new Response('Unauthorized', { status: 401 });
 
     const { message, history, currentPath } = await req.json();
-    const today = new Date().toISOString().split('T')[0];
 
-    // Fetch rich context from Supabase (profile, today's tasks, recent mistakes, and recent event bus items)
-    const [profileRes, tasksRes, mistakesRes, eventsRes] = await Promise.all([
-      supabase.from('profiles').select('*').eq('id', user.id).single(),
-      supabase.from('study_tasks').select('id, is_completed').eq('user_id', user.id).eq('scheduled_date', today),
-      supabase.from('mistake_records').select('*').eq('user_id', user.id).order('created_at', { ascending: false }).limit(5),
-      supabase.from('student_events').select('*').eq('user_id', user.id).order('created_at', { ascending: false }).limit(10)
-    ]);
+    // 1. Fetch 6-dimensional MIND context (Goal, Struggles, History, Weak Concepts, RAG, etc.)
+    const mindContext = await getMINDContext(user.id, message);
 
-    const profile = profileRes.data || {};
-    const tasks = tasksRes.data || [];
-    const completedTasks = tasks.filter(t => t.is_completed).length;
-    const totalTasks = tasks.length;
-    const recentMistakes = mistakesRes.data || [];
-    const events = eventsRes.data || [];
+    // 2. Construct the Socratic Prompt
+    const systemPrompt = getMINDSystemPrompt(mindContext, currentPath || '/dashboard');
 
-    const stats = {
-      overallMastery: profile.overall_mastery || 0,
-      mastered: 0,
-      total: 0,
-      weak: 0,
-      cardsDue: 0
-    };
-
-    // Construct the rich Socratic system prompt
-    const systemPrompt = getSocraticOrchestratorPrompt(
-      profile,
-      stats,
-      recentMistakes,
-      events,
-      currentPath || '/',
-      completedTasks,
-      totalTasks
-    );
-
-    // Format chat history for context
+    // 3. Format history for user prompt
     const historyText = (history || [])
       .slice(-10)
-      .map((m: any) => `${m.role === 'user' ? 'Student' : 'Cognition OS'}: ${m.content}`)
+      .map((m: any) => `${m.role === 'user' ? 'Student' : 'MIND'}: ${m.content}`)
       .join('\n');
 
-    const fullUserPrompt = `${historyText}\nStudent: ${message}`;
+    const userPrompt = buildMINDUserPrompt(historyText, message);
 
     const encoder = new TextEncoder();
+    let fullResponse = '';
+
     const stream = new ReadableStream({
       async start(controller) {
         try {
-          // Use the pro model (Gemini 2.5 Pro) for high-order Socratic dialog
-          const generator = streamText('pro', systemPrompt, fullUserPrompt, 0.7);
+          // Use gemini-2.5-pro for complex Socratic reasoning & learning coach behaviors
+          const generator = streamText('pro', systemPrompt, userPrompt, 0.75);
           for await (const chunk of generator) {
             controller.enqueue(encoder.encode(chunk));
+            fullResponse += chunk;
           }
         } catch (err: any) {
-          logger.error('Error during global assistant stream', err);
-          controller.enqueue(encoder.encode('\n\n[Cognition is briefly disconnected. Let me know if you want to retry.]'));
+          logger.error('Error during MIND streaming', err);
+          controller.enqueue(encoder.encode('\n\n[MIND engine is temporarily adjusting its parameters. Please try again.]'));
+        } finally {
+          controller.close();
+
+          // 4. Background Post-Session Cognitive Synthesis
+          if (fullResponse.trim().length > 0) {
+            Promise.resolve().then(async () => {
+              try {
+                const recentHistoryText = [
+                  ...historyText.split('\n'),
+                  `Student: ${message}`,
+                  `MIND: ${fullResponse}`
+                ].slice(-6).join('\n');
+
+                const analysisPrompt = `Analyze the student's recent exchange with the AI MIND tutor to check if they were studying/discussing a specific academic concept.
+If yes, identify the broad subject (e.g. 'Physics', 'Chemistry'), the name of the concept (e.g. 'Coulomb\'s Law'), check if they demonstrated clear understanding of it, and if any critical conceptual gaps or confusion were found.
+
+Exchange:
+${recentHistoryText}
+
+Respond STRICTLY in JSON format with these exact fields:
+{
+  "conceptDiscussed": boolean,
+  "subject": string | null,
+  "conceptName": string | null,
+  "understandingGained": boolean,
+  "gapFound": string | null,
+  "gapAnswer": string | null,
+  "summary": string
+}`;
+
+                const analysis = await generateJSON<any>(
+                  'flash',
+                  'You are an expert learning diagnostic engine.',
+                  analysisPrompt
+                );
+
+                if (!analysis) return;
+
+                let conceptId: string | null = null;
+                const db = await createClient();
+
+                // If concept was discussed, try to resolve it in database
+                if (analysis.conceptDiscussed && analysis.subject && analysis.conceptName) {
+                  const { data: matchedConcept } = await db
+                    .from('concepts')
+                    .select('id, name, subject')
+                    .eq('user_id', user.id)
+                    .eq('subject', analysis.subject)
+                    .ilike('name', `%${analysis.conceptName}%`)
+                    .limit(1)
+                    .maybeSingle();
+
+                  if (matchedConcept) {
+                    conceptId = matchedConcept.id;
+                  } else {
+                    const { data: fallbackConcept } = await db
+                      .from('concepts')
+                      .select('id, name, subject')
+                      .eq('user_id', user.id)
+                      .ilike('name', `%${analysis.conceptName}%`)
+                      .limit(1)
+                      .maybeSingle();
+                    if (fallbackConcept) conceptId = fallbackConcept.id;
+                  }
+                }
+
+                // Write Socratic Session to Database for longitudinal memory
+                const currentHistoryMessages = [
+                  ...(history || []),
+                  { role: 'user', content: message },
+                  { role: 'tutor', content: fullResponse }
+                ];
+
+                await db.from('tutor_sessions').insert({
+                  user_id: user.id,
+                  concept_id: conceptId,
+                  messages: currentHistoryMessages,
+                  summary: analysis.summary || 'Study discussion.',
+                  understanding_gained: analysis.understandingGained ? 1 : 0
+                });
+
+                // Update mastery state in ATLAS
+                if (conceptId && analysis.understandingGained) {
+                  await updateConceptState(conceptId, true, 0);
+                }
+
+                // Seed flashcards in MEMORY for conceptual gaps
+                if (conceptId && analysis.gapFound && !analysis.understandingGained) {
+                  await createSingleCard(
+                    user.id,
+                    conceptId,
+                    analysis.gapFound,
+                    analysis.gapAnswer || 'Check source notes.',
+                    analysis.subject || 'General',
+                    analysis.conceptName || 'Discussion'
+                  );
+                }
+              } catch (bgErr) {
+                logger.error('Error during post-session background synthesis', bgErr);
+              }
+            });
+          }
         }
-        controller.close();
       },
     });
 
     return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
   } catch (error: any) {
-    logger.error('Critical failure in global assistant route', error);
+    logger.error('Critical failure in MIND global assistant route', error);
     return new Response('Internal Server Error', { status: 500 });
   }
 }
-

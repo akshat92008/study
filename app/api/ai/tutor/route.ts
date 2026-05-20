@@ -3,11 +3,14 @@ import { NextRequest } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { streamText, generateJSON, genai } from '@/lib/ai/gemini';
 import { getTutorSystemPrompt } from '@/lib/ai/prompts/tutor';
+import { getMINDContext } from '@/lib/engines/mind-engine';
+import { getMINDSystemPrompt, buildMINDUserPrompt } from '@/lib/ai/prompts/mind-prompt';
 import { updateConceptState, getPrerequisiteChain } from '@/lib/engines/cognition-graph';
 import { createSingleCard } from '@/lib/engines/revision-engine';
 import { logger } from '@/lib/utils/logger';
 import { checkUsageLimit } from '@/lib/utils/billing';
 import { generateSprintPlanAction } from '@/lib/actions/planner';
+import { LearningStateEngine } from '@/lib/engines/learning-state-engine';
 import { Type } from '@google/genai';
 
 export async function POST(req: NextRequest) {
@@ -97,6 +100,32 @@ export async function POST(req: NextRequest) {
     ? userMaterials.map(m => m.title).join(', ')
     : 'None';
 
+  // Fetch learner state metrics
+  const { data: learnerState } = await supabase.from('learner_states')
+    .select('overall_confidence, estimated_retention, weekly_velocity, weak_areas, struggle_patterns')
+    .eq('user_id', user.id)
+    .maybeSingle();
+
+  const confidencePercent = learnerState?.overall_confidence !== undefined
+    ? `${Math.round(learnerState.overall_confidence * 100)}%`
+    : `${overallMastery}%`;
+  const retentionPercent = learnerState?.estimated_retention !== undefined
+    ? `${Math.round(learnerState.estimated_retention * 100)}%`
+    : '90%';
+  const weeklyVelocity = learnerState?.weekly_velocity || 0;
+  const recentStruggles = learnerState?.weak_areas 
+    ? (learnerState.weak_areas as any[])
+        .slice(0, 3)
+        .map(wa => `- ${wa.conceptName} (${wa.subject}): struggle index ${Math.round(wa.struggleIndex * 100)}%`)
+        .join('\n')
+    : 'None';
+  const strugglePatterns = learnerState?.struggle_patterns
+    ? (learnerState.struggle_patterns as any[])
+        .slice(0, 3)
+        .map(sp => `- ${sp.category}: count ${sp.count}`)
+        .join('\n')
+    : 'None';
+
   const current_date = new Date().toISOString().split('T')[0];
 
   const ORCHESTRATOR_PROMPT = `You are the central intelligence of Cognition OS — an AI operating system for students. Your name is "Cognition".
@@ -118,6 +147,14 @@ Due Flashcards: ${dueFlashcardCount}
 Last Mock Score: ${lastMockScore}
 PULSE State: ${pulseState}
 Uploaded Materials: ${uploadedMaterials}
+
+Estimated Retention: ${retentionPercent}
+Learning Velocity (7d): ${weeklyVelocity} concepts mastered
+Dynamic Confidence Level: ${confidencePercent}
+Recent Struggles / Weak Areas:
+${recentStruggles}
+Struggle Patterns:
+${strugglePatterns}
 
 ════════════════════════════════════════
 YOUR PERSONALITY
@@ -292,11 +329,27 @@ CRITICAL: NEVER lock yourself to a specific subject unless the student explicitl
                   user_id: user.id, concept_id: concept.id, summary: analysis.summary, messages: currentMessages
                 });
 
-                if (analysis.understood) await updateConceptState(concept.id, true, 0); 
+                // Update standard concept state
+                await updateConceptState(concept.id, analysis.understood, 0);
+
+                // Ingest session completed event into LearningStateEngine to trigger metrics updates and reactive rules
+                await LearningStateEngine.ingestEvent({
+                  userId: user.id,
+                  type: 'SESSION_COMPLETED',
+                  data: {
+                    conceptId: concept.id,
+                    subject: sub,
+                    chapter: topic,
+                    understandingGained: analysis.understood,
+                  }
+                });
+
                 if (analysis.gapFound && !analysis.understood) {
                   await createSingleCard(user.id, concept.id, analysis.gapFound, analysis.gapAnswer, sub, topic);
                 }
-              } catch (e) {}
+              } catch (e) {
+                logger.error('Post-session synthesis or telemetry ingestion failed', e);
+              }
             });
 
           } else if (name === 'create_study_plan') {

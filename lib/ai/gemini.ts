@@ -26,17 +26,34 @@ export async function generateText(
   userPrompt: string,
   temperature: number = 0.7
 ): Promise<string> {
-  const response = await genai.models.generateContent({
-    model: MODELS[model],
-    contents: userPrompt,
-    config: {
-      systemInstruction: systemPrompt + SECURITY_BOUNDARY,
-      temperature,
-      maxOutputTokens: 8192,
-    },
-  });
+  try {
+    const response = await genai.models.generateContent({
+      model: MODELS[model],
+      contents: userPrompt,
+      config: {
+        systemInstruction: systemPrompt + SECURITY_BOUNDARY,
+        temperature,
+        maxOutputTokens: 8192,
+      },
+    });
 
-  return response.text ?? '';
+    return response.text ?? '';
+  } catch (err: any) {
+    if (model === 'pro') {
+      logger.warn('MIND generateText falling back from pro to flash due to error:', { error: err.message });
+      const response = await genai.models.generateContent({
+        model: MODELS.flash,
+        contents: userPrompt,
+        config: {
+          systemInstruction: systemPrompt + SECURITY_BOUNDARY,
+          temperature,
+          maxOutputTokens: 8192,
+        },
+      });
+      return response.text ?? '';
+    }
+    throw err;
+  }
 }
 
 function zodToGeminiSchema(schema: any): any {
@@ -112,11 +129,12 @@ export async function generateJSON<T>(
   let attempt = 0;
   let delay = 1000;
   const geminiSchema = schema ? zodToGeminiSchema(schema) : undefined;
+  let currentModel = model;
 
   while (attempt < retries) {
     try {
       const response = await genai.models.generateContent({
-        model: MODELS[model],
+        model: MODELS[currentModel],
         contents: userPrompt,
         config: {
           systemInstruction: systemPrompt + '\n\nRespond ONLY with valid JSON. No markdown fences.' + SECURITY_BOUNDARY,
@@ -137,6 +155,15 @@ export async function generateJSON<T>(
     } catch (err: any) {
       attempt++;
       logger.warn(`AI JSON Generation Failed (Attempt ${attempt}/${retries})`, { error: err.message });
+      
+      // Fallback from pro to flash immediately on rate-limit/service errors
+      if (currentModel === 'pro' && (err.status === 503 || err.status === 429 || err.message.includes('503') || err.message.includes('429') || err.message.includes('UNAVAILABLE') || err.message.includes('RESOURCE_EXHAUSTED'))) {
+        logger.warn('MIND generateJSON switching from pro to flash due to model availability');
+        currentModel = 'flash';
+        attempt = 0; // Reset attempts for the fallback model
+        continue;
+      }
+
       if (attempt >= retries) {
         logger.error('AI JSON Generation exhausted retries', err);
         throw err;
@@ -155,19 +182,42 @@ export async function* streamText(
   userPrompt: string,
   temperature: number = 0.7
 ): AsyncGenerator<string> {
-  const response = await genai.models.generateContentStream({
-    model: MODELS[model],
-    contents: userPrompt,
-    config: {
-      systemInstruction: systemPrompt + SECURITY_BOUNDARY,
-      temperature,
-      maxOutputTokens: 8192,
-    },
-  });
+  try {
+    const response = await genai.models.generateContentStream({
+      model: MODELS[model],
+      contents: userPrompt,
+      config: {
+        systemInstruction: systemPrompt + SECURITY_BOUNDARY,
+        temperature,
+        maxOutputTokens: 8192,
+      },
+    });
 
-  for await (const chunk of response) {
-    if (chunk.text) {
-      yield chunk.text;
+    for await (const chunk of response) {
+      if (chunk.text) {
+        yield chunk.text;
+      }
+    }
+  } catch (err: any) {
+    if (model === 'pro') {
+      logger.warn('MIND streamText falling back from pro to flash due to error:', { error: err.message });
+      const response = await genai.models.generateContentStream({
+        model: MODELS.flash,
+        contents: userPrompt,
+        config: {
+          systemInstruction: systemPrompt + SECURITY_BOUNDARY,
+          temperature,
+          maxOutputTokens: 8192,
+        },
+      });
+
+      for await (const chunk of response) {
+        if (chunk.text) {
+          yield chunk.text;
+        }
+      }
+    } else {
+      throw err;
     }
   }
 }
@@ -176,7 +226,7 @@ export async function* streamText(
 export async function getEmbedding(text: string): Promise<number[]> {
   try {
     const response = await genai.models.embedContent({
-      model: 'text-embedding-004',
+      model: 'gemini-embedding-2',
       contents: text,
     });
     return response.embeddings?.[0]?.values || [];

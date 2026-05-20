@@ -47,10 +47,28 @@ export const profiles = pgTable('profiles', {
   updatedAt: timestamp('updated_at').defaultNow(),
 });
 
+// Learning goals (exams, skills, university subjects, etc.)
+export const learningGoals = pgTable('learning_goals', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').references(() => profiles.id, { onDelete: 'cascade' }).notNull(),
+  title: text('title').notNull(),
+  description: text('description'),
+  targetCompletionDate: timestamp('target_completion_date'),
+  confidenceScore: real('confidence_score').default(0.5),
+  status: text('status').default('active'), // active, completed, paused
+  currentLevel: text('current_level').default('beginner'),
+  preferredLearningStyle: text('preferred_learning_style').default('read_write'),
+  dailyHoursAvailable: integer('daily_hours_available').default(8),
+  milestones: jsonb('milestones').default([]),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
 // Concept nodes in the cognition graph
 export const concepts = pgTable('concepts', {
   id: uuid('id').primaryKey().defaultRandom(),
   userId: uuid('user_id').references(() => profiles.id).notNull(),
+  goalId: uuid('goal_id').references(() => learningGoals.id, { onDelete: 'cascade' }),
   name: text('name').notNull(),
   subject: text('subject').notNull(),
   chapter: text('chapter').notNull(),
@@ -72,6 +90,7 @@ export const concepts = pgTable('concepts', {
 export const conceptLinks = pgTable('concept_links', {
   id: uuid('id').primaryKey().defaultRandom(),
   userId: uuid('user_id').references(() => profiles.id).notNull(),
+  goalId: uuid('goal_id').references(() => learningGoals.id, { onDelete: 'cascade' }),
   sourceConceptId: uuid('source_concept_id').references(() => concepts.id).notNull(),
   targetConceptId: uuid('target_concept_id').references(() => concepts.id).notNull(),
   linkType: text('link_type').default('prerequisite'), // prerequisite, related, confusion
@@ -349,9 +368,35 @@ export const studentEvents = pgTable('student_events', {
 // Persistent Global Orchestrator Chat
 export const orchestratorChats = pgTable('orchestrator_chats', {
   id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').references(() => profiles.id, { onDelete: 'cascade' }).notNull().unique(),
+  messages: jsonb('messages').default([]).notNull(),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+// Learning State Engine Tables
+export const learnerStates = pgTable('learner_states', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').references(() => profiles.id, { onDelete: 'cascade' }).notNull().unique(),
+  overallConfidence: real('overall_confidence').default(0.5),
+  estimatedRetention: real('estimated_retention').default(0.9),
+  weeklyVelocity: real('weekly_velocity').default(0.0),
+  strugglePatterns: jsonb('struggle_patterns').default([]),
+  weakAreas: jsonb('weak_areas').default([]),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+export const learnerDailyMetrics = pgTable('learner_daily_metrics', {
+  id: uuid('id').primaryKey().defaultRandom(),
   userId: uuid('user_id').references(() => profiles.id, { onDelete: 'cascade' }).notNull(),
-  role: text('role').notNull(), // 'user', 'assistant', 'system'
-  content: text('content').notNull(),
+  date: timestamp('date').defaultNow(),
+  confidence: real('confidence').default(0.5),
+  retention: real('retention').default(0.9),
+  velocity: real('velocity').default(0.0),
+  hoursSpent: real('hours_spent').default(0.0),
+  tasksCompleted: integer('tasks_completed').default(0),
   createdAt: timestamp('created_at').defaultNow(),
 });
+
 

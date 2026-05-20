@@ -1,8 +1,5 @@
-export const dynamic = 'force-dynamic';
-import { getRevisionData } from '@/lib/actions/revision';
-import RevisionDashboard from '@/components/revision/RevisionDashboard';
+import { redirect } from 'next/navigation';
 
 export default async function RevisionPage() {
-  const data = await getRevisionData();
-  return <RevisionDashboard data={data} />;
+  redirect('/dashboard');
 }

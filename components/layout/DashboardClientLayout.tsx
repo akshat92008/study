@@ -17,12 +17,11 @@ export default function DashboardClientLayout({ children, profile }: DashboardCl
 
   return (
     <div
-      className={isOverwhelmed ? 'recovery-mode' : ''}
+      className={`dashboard-layout ${isSidebarCollapsed ? 'sidebar-collapsed' : ''} ${isOverwhelmed ? 'recovery-mode' : ''}`}
       style={{
         display: 'flex',
         minHeight: '100vh',
         background: 'var(--bg-root)',
-        '--sidebar-width': '0px',
       } as React.CSSProperties}
     >
       {/* Mobile Drawer Overlay Backdrop */}

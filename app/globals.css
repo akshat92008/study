@@ -294,3 +294,49 @@ button:active:not(:disabled) {
   animation: decay-pulse 2.5s ease-in-out infinite;
   border-width: 2px !important;
 }
+
+/* --- SIDEBAR RESPONSIVENESS AND LAYOUT --- */
+.dashboard-layout {
+  --sidebar-width: 260px;
+}
+.dashboard-layout.sidebar-collapsed {
+  --sidebar-width: 72px;
+}
+@media (max-width: 768px) {
+  .dashboard-layout {
+    --sidebar-width: 0px !important;
+  }
+}
+
+.sidebar-aside {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 260px;
+  background: var(--bg-primary);
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: transform var(--duration-normal) var(--ease-out), width var(--duration-normal) var(--ease-out);
+}
+
+.sidebar-aside.collapsed {
+  width: 72px;
+}
+
+@media (min-width: 769px) {
+  .sidebar-aside {
+    transform: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar-aside {
+    transform: translateX(-100%);
+  }
+  .sidebar-aside.mobile-open {
+    transform: translateX(0) !important;
+  }
+}

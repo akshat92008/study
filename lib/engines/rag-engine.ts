@@ -4,7 +4,7 @@ import { genai } from '@/lib/ai/gemini';
 // Helper to get embeddings from Gemini
 export async function getEmbedding(text: string) {
   const result = await genai.models.embedContent({
-    model: 'text-embedding-004',
+    model: 'gemini-embedding-2',
     contents: text,
   });
   if (!result.embeddings || result.embeddings.length === 0) return null;
