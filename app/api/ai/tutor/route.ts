@@ -304,9 +304,21 @@ CRITICAL: NEVER lock yourself to a specific subject unless the student explicitl
             controller.enqueue(encoder.encode(`⚡ Ingesting telemetry...\n🧠 Generating customized daily study schedule until ${target_date}...`));
             const result = await generateSprintPlanAction(allConcepts?.map(c => c.subject) || [], target_date, hoursPerDay);
             if (result.success) {
-              const msg = `\n\nAll set! I have generated your study plan.`;
+              const today = new Date();
+              const target = new Date(target_date);
+              const diffDays = Math.ceil((target.getTime() - today.getTime()) / (1000 * 3600 * 24));
+              
+              let msg = `\n\nAll set! I have generated your study plan.`;
+              if (diffDays > 7) {
+                const capDate = new Date();
+                capDate.setDate(today.getDate() + 7);
+                const finalEndDate = capDate.toISOString().split('T')[0];
+                msg = `\n\nAll set! Since your exam is ${diffDays} days away, I've generated a high-focus **7-day sprint** (from today until ${finalEndDate}) to keep your target actionable and avoid planning overwhelm.`;
+              }
               controller.enqueue(encoder.encode(msg));
               metadataPayload = { action: 'sprint_plan_created', tasks: result.tasks };
+            } else {
+              controller.enqueue(encoder.encode(`\n\n❌ Neural core failed to schedule the plan: ${result.error || 'Timeout'}`));
             }
           } else if (name === 'adjust_planner') {
             const msg = `Adjusting your study tasks for today to reduce cognitive load...`;

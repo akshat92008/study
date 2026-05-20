@@ -81,12 +81,27 @@ export async function generateSprintPlanAction(subjects: string[], targetDate: s
       .eq('user_id', user.id)
       .in('subject', subjects);
 
-    const todayStr = new Date().toISOString().split('T')[0];
+    const today = new Date();
+    const todayStr = today.toISOString().split('T')[0];
 
-    // 2. Generate daily schedule from today up to targetDate
+    // Cap planning period to max 7 days to keep AI generation extremely fast and focused.
+    const target = new Date(targetDate);
+    const timeDiff = target.getTime() - today.getTime();
+    const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+    let finalEndDate = targetDate;
+    let capMsg = "";
+    if (diffDays > 7) {
+      const capDate = new Date();
+      capDate.setDate(today.getDate() + 7);
+      finalEndDate = capDate.toISOString().split('T')[0];
+      capMsg = ` (Note: The target exam date is ${diffDays} days away. We are only generating a 7-day focus sprint first from ${todayStr} to ${finalEndDate} to ensure highly active, near-term schedules.)`;
+    }
+
+    // 2. Generate daily schedule from today up to finalEndDate
     const prompt = `
       You are COMMAND, the elite operations director of Cognition OS.
-      Generate a hyper-focused sprint study plan from today (${todayStr}) to the target deadline (${targetDate}) inclusive.
+      Generate a hyper-focused sprint study plan from today (${todayStr}) to the sprint deadline (${finalEndDate}) inclusive.${capMsg}
       
       ## CONSTRAINTS
       - Daily Study Cap: ${dailyHours} hours per day (around ${dailyHours * 60} minutes/day total).
@@ -99,7 +114,7 @@ export async function generateSprintPlanAction(subjects: string[], targetDate: s
       - Allocate study, revision, and break blocks.
       - Ensure study blocks are between 45 to 90 minutes.
       - Every day must contain a reasonable load matching ${dailyHours} hours.
-      - Start scheduling from today (${todayStr}) up to ${targetDate}.
+      - Start scheduling from today (${todayStr}) up to ${finalEndDate}.
     `;
 
     const { generateJSON } = await import('@/lib/ai/gemini');
@@ -115,7 +130,7 @@ export async function generateSprintPlanAction(subjects: string[], targetDate: s
       .delete()
       .eq('user_id', user.id)
       .gte('scheduled_date', todayStr)
-      .lte('scheduled_date', targetDate);
+      .lte('scheduled_date', finalEndDate);
 
     // 4. Insert tasks into Database
     const rows = plan.tasks.map(t => ({
