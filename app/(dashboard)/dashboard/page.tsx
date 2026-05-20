@@ -212,13 +212,26 @@ export default function DashboardPage() {
         if (done) break;
         const chunk = decoder.decode(value);
         fullReply += chunk;
-        setStreamingText(fullReply);
+        
+        // Strip token from the displayed stream in real time
+        const cleanStream = fullReply.replace(/\[ACTION:OPEN_DRAWER:\w+\]/g, '').trim();
+        setStreamingText(cleanStream);
       }
+
+      // Parse drawer action if present
+      const drawerMatch = fullReply.match(/\[ACTION:OPEN_DRAWER:(\w+)\]/);
+      if (drawerMatch) {
+        const drawerName = drawerMatch[1] as 'cognition' | 'revision' | 'autopsy';
+        setActiveDrawer(drawerName);
+      }
+
+      // Clean final reply text for storage
+      const cleanReply = fullReply.replace(/\[ACTION:OPEN_DRAWER:\w+\]/g, '').trim();
 
       // D. Append final message to store and sync with Supabase
       const assistantMsg = {
         role: 'assistant' as const,
-        content: fullReply,
+        content: cleanReply,
         timestamp: new Date().toISOString()
       };
       addChatMessage(assistantMsg);

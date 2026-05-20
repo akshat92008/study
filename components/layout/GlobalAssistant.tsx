@@ -80,14 +80,18 @@ export default function GlobalAssistant() {
           if (done) break;
           const chunk = decoder.decode(value);
           accumulatedText += chunk;
-          setCurrentStreamedText(accumulatedText);
+          
+          const cleanStream = accumulatedText.replace(/\[ACTION:OPEN_DRAWER:\w+\]/g, '').trim();
+          setCurrentStreamedText(cleanStream);
         }
       }
+
+      const cleanReply = accumulatedText.replace(/\[ACTION:OPEN_DRAWER:\w+\]/g, '').trim();
 
       // 3. Streaming complete! Commit the assistant's final response to the store
       const assistantMsg: ChatMessage = {
         role: 'assistant',
-        content: accumulatedText || 'I processed that information.',
+        content: cleanReply || 'I processed that information.',
         timestamp: new Date().toISOString()
       };
       addChatMessage(assistantMsg);
