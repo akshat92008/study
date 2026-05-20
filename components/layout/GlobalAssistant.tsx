@@ -14,7 +14,8 @@ export default function GlobalAssistant() {
     chatMessages,
     addChatMessage,
     loadChatFromSupabase,
-    clearChat
+    clearChat,
+    loadLearningGoals
   } = useAppStore();
   
   const pathname = usePathname();
@@ -101,6 +102,7 @@ export default function GlobalAssistant() {
     } finally {
       setStreaming(false);
       setCurrentStreamedText('');
+      loadLearningGoals(); // reload learning goals to update sidebar/widgets
     }
   };
 

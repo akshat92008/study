@@ -45,6 +45,7 @@ export const profiles = pgTable('profiles', {
   lastActiveAt: timestamp('last_active_at'),
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow(),
+  timezone: text('timezone').default('Asia/Kolkata'),
 });
 
 // Learning goals (exams, skills, university subjects, etc.)

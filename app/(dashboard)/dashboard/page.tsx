@@ -102,7 +102,8 @@ export default function DashboardPage() {
     setChatMessages,
     loadChatFromSupabase,
     syncChatToSupabase,
-    addToast
+    addToast,
+    loadLearningGoals
   } = useAppStore();
 
   const [activeDrawer, setActiveDrawer] = useState<'cognition' | 'revision' | 'autopsy' | null>(null);
@@ -230,6 +231,7 @@ export default function DashboardPage() {
     } finally {
       setIsStreaming(false);
       setStreamingText('');
+      loadLearningGoals(); // reload learning goals to update sidebar/widgets
     }
   };
 
