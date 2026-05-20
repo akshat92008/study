@@ -8,6 +8,8 @@ import {
   Flame, Sparkles, Send, ArrowRight, CheckCircle2, 
   BookOpen, HelpCircle, Trophy, RefreshCw, X 
 } from 'lucide-react';
+import { logStudentEvent } from '@/lib/utils/events';
+
 
 interface Message {
   role: 'user' | 'tutor';
@@ -53,6 +55,9 @@ export default function DailySessionFocus({
     setSessionState('active');
     setStreaming(true);
     setMessages([{ role: 'tutor', content: '' }]);
+
+    // Emit event to the universal event bus
+    logStudentEvent('session_start', { taskId, subject, chapter, estimatedMinutes });
 
     const greetingPrompt = `You are MIND, the Socratic AI Tutor. Greet me for today's daily session on "${subject} > ${chapter}". Welcome me warmly, state the time commitment (${estimatedMinutes} minutes), and present an opening question or concept breakdown to kick off our Socratic study block. Make it direct and highly engaging.`;
 
@@ -145,12 +150,13 @@ export default function DailySessionFocus({
       }
 
       // Check if we want to simulate inline card creation based on keywords
-      const lastTutorContent = messages[messages.length - 1]?.content || '';
       if (nextStep === 3) {
-        setInlineCard({
-          front: `[Concept Gap] Core definition/problem of ${chapter}`,
-          back: `The correct relationship and formula for ${chapter}.`
-        });
+        const front = `[Concept Gap] Core definition/problem of ${chapter}`;
+        const back = `The correct relationship and formula for ${chapter}.`;
+        setInlineCard({ front, back });
+        
+        // Emit concept gap event
+        logStudentEvent('concept_gap_detected', { subject, chapter, front, back });
       }
     } catch {
       setMessages(prev => {
@@ -179,14 +185,20 @@ export default function DailySessionFocus({
       if (data.success) {
         setNewStreak(data.streakDays);
         setSessionState('celebrate');
+        // Emit event to the universal event bus
+        logStudentEvent('session_complete', { taskId, subject, chapter, newStreak: data.streakDays });
       } else {
         // Fallback
-        setNewStreak(initialStreak + 1);
+        const fallbackStreak = initialStreak + 1;
+        setNewStreak(fallbackStreak);
         setSessionState('celebrate');
+        logStudentEvent('session_complete', { taskId, subject, chapter, newStreak: fallbackStreak });
       }
     } catch (e) {
-      setNewStreak(initialStreak + 1);
+      const fallbackStreak = initialStreak + 1;
+      setNewStreak(fallbackStreak);
       setSessionState('celebrate');
+      logStudentEvent('session_complete', { taskId, subject, chapter, newStreak: fallbackStreak });
     } finally {
       setCompleting(false);
     }

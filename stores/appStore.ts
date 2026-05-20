@@ -1,9 +1,17 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
+import { createClient } from '@/lib/supabase/client';
 
 interface Toast {
   id: string;
   message: string;
   type: 'success' | 'error' | 'info';
+}
+
+export interface ChatMessage {
+  role: 'user' | 'assistant' | 'system';
+  content: string;
+  timestamp: string;
 }
 
 interface AppState {
@@ -49,55 +57,173 @@ interface AppState {
   setMemoryDueCount: (count: number) => void;
   autopsyLossPoints: number;
   setAutopsyLossPoints: (points: number) => void;
+
+  // Persistent Orchestrator Chat State
+  chatMessages: ChatMessage[];
+  chatId: string | null;
+  setChatMessages: (messages: ChatMessage[]) => void;
+  addChatMessage: (message: ChatMessage) => void;
+  loadChatFromSupabase: () => Promise<void>;
+  syncChatToSupabase: () => Promise<void>;
+  clearChat: () => void;
 }
 
-export const useAppStore = create<AppState>((set, get) => ({
-  isCommandBarOpen: false,
-  setCommandBarOpen: (open) => set({ isCommandBarOpen: open }),
-  toggleCommandBar: () => set((state) => ({ isCommandBarOpen: !state.isCommandBarOpen })),
-  
-  isAssistantOpen: false,
-  setAssistantOpen: (open) => set({ isAssistantOpen: open }),
-  toggleAssistant: () => set((state) => ({ isAssistantOpen: !state.isAssistantOpen })),
-  
-  toastQueue: [],
-  addToast: (message, type = 'info') => set((state) => ({
-    toastQueue: [...state.toastQueue, { id: Math.random().toString(36).substring(7), message, type }]
-  })),
-  removeToast: (id) => set((state) => ({
-    toastQueue: state.toastQueue.filter(toast => toast.id !== id)
-  })),
+export const useAppStore = create<AppState>()(
+  persist(
+    (set, get) => ({
+      isCommandBarOpen: false,
+      setCommandBarOpen: (open) => set({ isCommandBarOpen: open }),
+      toggleCommandBar: () => set((state) => ({ isCommandBarOpen: !state.isCommandBarOpen })),
+      
+      isAssistantOpen: false,
+      setAssistantOpen: (open) => set({ isAssistantOpen: open }),
+      toggleAssistant: () => set((state) => ({ isAssistantOpen: !state.isAssistantOpen })),
+      
+      toastQueue: [],
+      addToast: (message, type = 'info') => set((state) => ({
+        toastQueue: [...state.toastQueue, { id: Math.random().toString(36).substring(7), message, type }]
+      })),
+      removeToast: (id) => set((state) => ({
+        toastQueue: state.toastQueue.filter(toast => toast.id !== id)
+      })),
 
-  sessionActive: false,
-  sessionStartTime: null,
-  startSession: () => {
-    if (!get().sessionActive) set({ sessionActive: true, sessionStartTime: Date.now() });
-  },
-  endSession: () => {
-    const start = get().sessionStartTime;
-    set({ sessionActive: false, sessionStartTime: null });
-    if (!start) return 0;
-    return Math.round((Date.now() - start) / 60000);
-  },
+      sessionActive: false,
+      sessionStartTime: null,
+      startSession: () => {
+        if (!get().sessionActive) set({ sessionActive: true, sessionStartTime: Date.now() });
+      },
+      endSession: () => {
+        const start = get().sessionStartTime;
+        set({ sessionActive: false, sessionStartTime: null });
+        if (!start) return 0;
+        return Math.round((Date.now() - start) / 60000);
+      },
 
-  isSidebarCollapsed: false,
-  setSidebarCollapsed: (collapsed) => set({ isSidebarCollapsed: collapsed }),
-  toggleSidebar: () => set((state) => ({ isSidebarCollapsed: !state.isSidebarCollapsed })),
-  isMobileSidebarOpen: false,
-  setMobileSidebarOpen: (open) => set({ isMobileSidebarOpen: open }),
-  toggleMobileSidebar: () => set((state) => ({ isMobileSidebarOpen: !state.isMobileSidebarOpen })),
+      isSidebarCollapsed: false,
+      setSidebarCollapsed: (collapsed) => set({ isSidebarCollapsed: collapsed }),
+      toggleSidebar: () => set((state) => ({ isSidebarCollapsed: !state.isSidebarCollapsed })),
+      isMobileSidebarOpen: false,
+      setMobileSidebarOpen: (open) => set({ isMobileSidebarOpen: open }),
+      toggleMobileSidebar: () => set((state) => ({ isMobileSidebarOpen: !state.isMobileSidebarOpen })),
 
-  // Real-time Dashboard Telemetry implementation
-  currentActiveTask: null,
-  setCurrentActiveTask: (task) => set({ currentActiveTask: task }),
-  activeTasksList: [],
-  setActiveTasksList: (tasks) => set({ activeTasksList: tasks }),
-  emotionalState: 'neutral',
-  setEmotionalState: (state) => set({ emotionalState: state }),
-  atlasMastery: 0,
-  setAtlasMastery: (mastery) => set({ atlasMastery: mastery }),
-  memoryDueCount: 0,
-  setMemoryDueCount: (count) => set({ memoryDueCount: count }),
-  autopsyLossPoints: 0,
-  setAutopsyLossPoints: (points) => set({ autopsyLossPoints: points }),
-}));
+      // Real-time Dashboard Telemetry implementation
+      currentActiveTask: null,
+      setCurrentActiveTask: (task) => set({ currentActiveTask: task }),
+      activeTasksList: [],
+      setActiveTasksList: (tasks) => set({ activeTasksList: tasks }),
+      emotionalState: 'neutral',
+      setEmotionalState: (state) => set({ emotionalState: state }),
+      atlasMastery: 0,
+      setAtlasMastery: (mastery) => set({ atlasMastery: mastery }),
+      memoryDueCount: 0,
+      setMemoryDueCount: (count) => set({ memoryDueCount: count }),
+      autopsyLossPoints: 0,
+      setAutopsyLossPoints: (points) => set({ autopsyLossPoints: points }),
+
+      // Persistent Orchestrator Chat State
+      chatMessages: [
+        { role: 'assistant', content: 'I am here. What do you need?', timestamp: new Date().toISOString() }
+      ],
+      chatId: null,
+
+      setChatMessages: (messages) => set({ chatMessages: messages }),
+      addChatMessage: (message) => {
+        set((state) => ({
+          chatMessages: [...state.chatMessages, message]
+        }));
+        get().syncChatToSupabase();
+      },
+
+      loadChatFromSupabase: async () => {
+        try {
+          const supabase = createClient();
+          const { data: { user } } = await supabase.auth.getUser();
+          if (!user) return;
+
+          const { data, error } = await supabase
+            .from('orchestrator_chats')
+            .select('*')
+            .eq('user_id', user.id)
+            .order('updated_at', { ascending: false })
+            .limit(1)
+            .maybeSingle();
+
+          if (error) {
+            console.error('Error loading chat from Supabase:', error);
+            return;
+          }
+
+          if (data) {
+            set({
+              chatId: data.id,
+              chatMessages: data.messages && data.messages.length > 0
+                ? data.messages
+                : [{ role: 'assistant', content: 'I am here. What do you need?', timestamp: new Date().toISOString() }],
+            });
+          } else {
+            const { data: newChat, error: createError } = await supabase
+              .from('orchestrator_chats')
+              .insert({
+                user_id: user.id,
+                messages: [{ role: 'assistant', content: 'I am here. What do you need?', timestamp: new Date().toISOString() }]
+              })
+              .select()
+              .single();
+
+            if (createError) {
+              console.error('Error creating chat in Supabase:', createError);
+            } else if (newChat) {
+              set({
+                chatId: newChat.id,
+                chatMessages: newChat.messages,
+              });
+            }
+          }
+        } catch (err) {
+          console.error('Failed to load chat:', err);
+        }
+      },
+
+      syncChatToSupabase: async () => {
+        try {
+          const { chatId, chatMessages } = get();
+          if (!chatId) return;
+
+          const supabase = createClient();
+          const { error } = await supabase
+            .from('orchestrator_chats')
+            .update({
+              messages: chatMessages,
+              updated_at: new Date().toISOString(),
+            })
+            .eq('id', chatId);
+
+          if (error) {
+            console.error('Error syncing chat to Supabase:', error);
+          }
+        } catch (err) {
+          console.error('Failed to sync chat:', err);
+        }
+      },
+
+      clearChat: () => {
+        const initialMsg: ChatMessage = {
+          role: 'assistant',
+          content: 'I am here. What do you need?',
+          timestamp: new Date().toISOString(),
+        };
+        set({ chatMessages: [initialMsg] });
+        get().syncChatToSupabase();
+      },
+    }),
+    {
+      name: 'cognition-os-store',
+      partialize: (state) => ({
+        chatMessages: state.chatMessages,
+        chatId: state.chatId,
+        isSidebarCollapsed: state.isSidebarCollapsed,
+      }),
+    }
+  )
+);
+

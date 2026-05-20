@@ -3,58 +3,116 @@
 import { useState, useRef, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useAppStore } from '@/stores/appStore';
-import { Sparkles, X, Send, Minus } from 'lucide-react';
+import { useAppStore, ChatMessage } from '@/stores/appStore';
+import { Sparkles, Send, Minus, Trash2 } from 'lucide-react';
 
 export default function GlobalAssistant() {
-  const { isAssistantOpen, toggleAssistant, setAssistantOpen } = useAppStore();
+  const { 
+    isAssistantOpen, 
+    toggleAssistant, 
+    setAssistantOpen,
+    chatMessages,
+    addChatMessage,
+    loadChatFromSupabase,
+    clearChat
+  } = useAppStore();
+  
   const pathname = usePathname();
-  const [messages, setMessages] = useState<{role: string, content: string}[]>([
-    { role: 'assistant', content: 'I am here. What do you need?' }
-  ]);
   const [input, setInput] = useState('');
   const [streaming, setStreaming] = useState(false);
+  const [currentStreamedText, setCurrentStreamedText] = useState('');
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  // Load chat on initial mount
+  useEffect(() => {
+    loadChatFromSupabase();
+  }, [loadChatFromSupabase]);
+
+  // Scroll to bottom on new messages
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
-  }, [messages, isAssistantOpen]);
+  }, [chatMessages, currentStreamedText, isAssistantOpen]);
 
   const handleSend = async () => {
     if (!input.trim() || streaming) return;
-    const userMsg = input.trim();
+    const userContent = input.trim();
     setInput('');
-    setMessages(prev => [...prev, { role: 'user', content: userMsg }]);
+
+    // 1. Commit user message to store (which syncs to Supabase)
+    const userMsg: ChatMessage = {
+      role: 'user',
+      content: userContent,
+      timestamp: new Date().toISOString()
+    };
+    addChatMessage(userMsg);
+
+    // 2. Start streaming state
     setStreaming(true);
-    setMessages(prev => [...prev, { role: 'assistant', content: '' }]);
+    setCurrentStreamedText('');
 
     try {
+      // Pass the updated history (including user message) to the API
+      const updatedHistory = [...chatMessages, userMsg];
       const res = await fetch('/api/ai/global', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userMsg, history: messages, currentPath: pathname }),
+        body: JSON.stringify({
+          message: userContent,
+          history: updatedHistory,
+          currentPath: pathname
+        }),
       });
+
+      if (!res.ok) {
+        throw new Error('Failed to fetch from assistant API');
+      }
+
       const reader = res.body?.getReader();
       const decoder = new TextDecoder();
+      let accumulatedText = '';
+
       if (reader) {
         while (true) {
           const { done, value } = await reader.read();
           if (done) break;
           const chunk = decoder.decode(value);
-          setMessages(prev => {
-            const updated = [...prev];
-            updated[updated.length - 1] = { ...updated[updated.length - 1], content: updated[updated.length - 1].content + chunk };
-            return updated;
-          });
+          accumulatedText += chunk;
+          setCurrentStreamedText(accumulatedText);
         }
       }
-    } catch {
-      setMessages(prev => { const u = [...prev]; u[u.length - 1] = { role: 'assistant', content: 'Connection lost.' }; return u; });
+
+      // 3. Streaming complete! Commit the assistant's final response to the store
+      const assistantMsg: ChatMessage = {
+        role: 'assistant',
+        content: accumulatedText || 'I processed that information.',
+        timestamp: new Date().toISOString()
+      };
+      addChatMessage(assistantMsg);
+    } catch (error) {
+      console.error('Streaming error:', error);
+      const errorMsg: ChatMessage = {
+        role: 'assistant',
+        content: 'Connection lost. I am still tracking your actions, let me know if you want to resume.',
+        timestamp: new Date().toISOString()
+      };
+      addChatMessage(errorMsg);
+    } finally {
+      setStreaming(false);
+      setCurrentStreamedText('');
     }
-    setStreaming(false);
   };
+
+  // Combine store messages and the active stream for display
+  const displayMessages = [...chatMessages];
+  if (streaming && currentStreamedText) {
+    displayMessages.push({
+      role: 'assistant',
+      content: currentStreamedText,
+      timestamp: new Date().toISOString()
+    });
+  }
 
   return (
     <>
@@ -98,18 +156,43 @@ export default function GlobalAssistant() {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 'var(--sp-3) var(--sp-4)', background: 'var(--bg-secondary)', borderBottom: '1px solid var(--border-subtle)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
                 <Sparkles size={16} style={{ color: 'var(--accent-purple)' }} />
-                <span style={{ fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-bold)', color: 'var(--text-primary)' }}>Cognition</span>
+                <span style={{ fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-bold)', color: 'var(--text-primary)' }}>Cognition OS</span>
               </div>
-              <button onClick={() => setAssistantOpen(false)} style={{ background: 'none', border: 'none', color: 'var(--text-tertiary)', cursor: 'pointer' }}>
-                <Minus size={18} />
-              </button>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-3)' }}>
+                <button 
+                  onClick={clearChat} 
+                  title="Clear Conversation"
+                  style={{ background: 'none', border: 'none', color: 'var(--text-tertiary)', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+                >
+                  <Trash2 size={16} />
+                </button>
+                <button 
+                  onClick={() => setAssistantOpen(false)} 
+                  style={{ background: 'none', border: 'none', color: 'var(--text-tertiary)', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+                >
+                  <Minus size={18} />
+                </button>
+              </div>
             </div>
 
             {/* Messages */}
             <div ref={scrollRef} style={{ flex: 1, overflowY: 'auto', padding: 'var(--sp-4)', display: 'flex', flexDirection: 'column', gap: 'var(--sp-3)' }}>
-              {messages.map((msg, i) => (
-                <div key={i} style={{ alignSelf: msg.role === 'user' ? 'flex-end' : 'flex-start', maxWidth: '85%', padding: 'var(--sp-2) var(--sp-3)', borderRadius: 'var(--radius-md)', background: msg.role === 'user' ? 'var(--accent-purple)' : 'var(--bg-tertiary)', color: msg.role === 'user' ? 'white' : 'var(--text-primary)', fontSize: 'var(--fs-sm)', lineHeight: 'var(--lh-relaxed)' }}>
-                  {msg.content || (streaming && i === messages.length - 1 ? '●' : '')}
+              {displayMessages.map((msg, i) => (
+                <div 
+                  key={i} 
+                  style={{ 
+                    alignSelf: msg.role === 'user' ? 'flex-end' : 'flex-start', 
+                    maxWidth: '85%', 
+                    padding: 'var(--sp-2) var(--sp-3)', 
+                    borderRadius: 'var(--radius-md)', 
+                    background: msg.role === 'user' ? 'var(--accent-purple)' : 'var(--bg-tertiary)', 
+                    color: msg.role === 'user' ? 'white' : 'var(--text-primary)', 
+                    fontSize: 'var(--fs-sm)', 
+                    lineHeight: 'var(--lh-relaxed)',
+                    whiteSpace: 'pre-wrap'
+                  }}
+                >
+                  {msg.content || (streaming && i === displayMessages.length - 1 ? '●' : '')}
                 </div>
               ))}
             </div>
@@ -122,7 +205,11 @@ export default function GlobalAssistant() {
                 placeholder="Ask me anything..." disabled={streaming}
                 style={{ flex: 1, padding: 'var(--sp-2) var(--sp-3)', background: 'var(--bg-tertiary)', color: 'var(--text-primary)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-full)', outline: 'none', fontSize: 'var(--fs-sm)' }}
               />
-              <button onClick={handleSend} disabled={!input.trim() || streaming} style={{ width: 36, height: 36, borderRadius: 'var(--radius-full)', background: 'var(--accent-purple)', color: 'white', border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
+              <button 
+                onClick={handleSend} 
+                disabled={!input.trim() || streaming} 
+                style={{ width: 36, height: 36, borderRadius: 'var(--radius-full)', background: 'var(--accent-purple)', color: 'white', border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', opacity: (!input.trim() || streaming) ? 0.5 : 1 }}
+              >
                 <Send size={16} />
               </button>
             </div>
@@ -132,3 +219,4 @@ export default function GlobalAssistant() {
     </>
   );
 }
+

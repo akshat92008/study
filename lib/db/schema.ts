@@ -336,3 +336,22 @@ export const instituteMemberships = pgTable('institute_memberships', {
   role: text('role').default('student'), // 'educator', 'student'
   joinedAt: timestamp('joined_at').defaultNow(),
 });
+
+// Universal Event Bus
+export const studentEvents = pgTable('student_events', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').references(() => profiles.id, { onDelete: 'cascade' }).notNull(),
+  type: text('type').notNull(), // e.g., 'SESSION_COMPLETE', 'FLASHCARD_REVIEWED'
+  data: jsonb('data').notNull(),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+// Persistent Global Orchestrator Chat
+export const orchestratorChats = pgTable('orchestrator_chats', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').references(() => profiles.id, { onDelete: 'cascade' }).notNull(),
+  role: text('role').notNull(), // 'user', 'assistant', 'system'
+  content: text('content').notNull(),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+

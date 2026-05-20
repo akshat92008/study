@@ -7,6 +7,7 @@ import Badge from '@/components/ui/Badge';
 import { submitReview } from '@/lib/actions/revision';
 import { RefreshCw, ChevronRight, RotateCcw, Check, Zap } from 'lucide-react';
 import CardSchedule from './CardSchedule';
+import { logStudentEvent } from '@/lib/utils/events';
 
 export default function RevisionDashboard({ data }: { data: any }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -26,6 +27,19 @@ export default function RevisionDashboard({ data }: { data: any }) {
     if (!currentCard) return;
     setReviewing(true);
     const responseTimeMs = Date.now() - cardStartTime;
+
+    const ratingLabels = { 1: 'Again', 2: 'Hard', 3: 'Good', 4: 'Easy' };
+    
+    // Log the review event to the event bus
+    logStudentEvent('flashcard_review', {
+      cardId: currentCard.id,
+      subject: currentCard.subject,
+      chapter: currentCard.chapter,
+      front: currentCard.front.substring(0, 100), // keep it compact for the context
+      rating: ratingLabels[rating],
+      responseTimeMs
+    });
+
     await submitReview(currentCard.id, rating, responseTimeMs);
     setShowAnswer(false);
     setReviewing(false);
