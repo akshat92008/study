@@ -87,31 +87,51 @@ export default function CognitionDashboard({ data }: Props) {
         </Card>
       </div>
 
-      <h2 style={{ fontSize: 'var(--fs-lg)', fontWeight: 'var(--fw-semibold)', color: 'var(--text-primary)' }}>Neural Map</h2>
-      <Card padding="none">
-        <InteractiveGraph concepts={concepts} links={data.links} />
-      </Card>
+      {concepts.length === 0 ? (
+        <Card style={{ 
+          padding: 'var(--sp-8) var(--sp-6)', 
+          textAlign: 'center', 
+          background: 'var(--bg-secondary)', 
+          border: '1px solid var(--border-subtle)', 
+          borderRadius: 'var(--radius-xl)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 'var(--sp-3)',
+          marginTop: 'var(--sp-4)'
+        }}>
+          <Brain size={48} style={{ color: 'var(--text-tertiary)', opacity: 0.5 }} />
+          <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 'var(--fw-semibold)', color: 'var(--text-primary)' }}>
+            Not enough data to map neural pathways yet
+          </h3>
+          <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', maxWidth: '400px', lineHeight: 'var(--lh-relaxed)' }}>
+            Complete onboarding and start reviewing concepts or taking mock tests to generate your personalized cognition map.
+          </p>
+        </Card>
+      ) : (
+        <>
+          {/* Subject Filter */}
+          <div style={{ display: 'flex', gap: 'var(--sp-2)' }}>
+            <button onClick={() => setSelectedSubject('all')} style={{
+              padding: 'var(--sp-2) var(--sp-4)', borderRadius: 'var(--radius-full)',
+              background: selectedSubject === 'all' ? 'var(--accent-blue)' : 'var(--bg-tertiary)',
+              color: selectedSubject === 'all' ? 'white' : 'var(--text-secondary)',
+              border: 'none', cursor: 'pointer', fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-medium)',
+            }}>All</button>
+            {subjects.map((sub) => (
+              <button key={sub} onClick={() => setSelectedSubject(sub)} style={{
+                padding: 'var(--sp-2) var(--sp-4)', borderRadius: 'var(--radius-full)',
+                background: selectedSubject === sub ? 'var(--accent-blue)' : 'var(--bg-tertiary)',
+                color: selectedSubject === sub ? 'white' : 'var(--text-secondary)',
+                border: 'none', cursor: 'pointer', fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-medium)',
+              }}>{sub}</button>
+            ))}
+          </div>
 
-      {/* Subject Filter */}
-      <div style={{ display: 'flex', gap: 'var(--sp-2)' }}>
-        <button onClick={() => setSelectedSubject('all')} style={{
-          padding: 'var(--sp-2) var(--sp-4)', borderRadius: 'var(--radius-full)',
-          background: selectedSubject === 'all' ? 'var(--accent-blue)' : 'var(--bg-tertiary)',
-          color: selectedSubject === 'all' ? 'white' : 'var(--text-secondary)',
-          border: 'none', cursor: 'pointer', fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-medium)',
-        }}>All</button>
-        {subjects.map((sub) => (
-          <button key={sub} onClick={() => setSelectedSubject(sub)} style={{
-            padding: 'var(--sp-2) var(--sp-4)', borderRadius: 'var(--radius-full)',
-            background: selectedSubject === sub ? 'var(--accent-blue)' : 'var(--bg-tertiary)',
-            color: selectedSubject === sub ? 'white' : 'var(--text-secondary)',
-            border: 'none', cursor: 'pointer', fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-medium)',
-          }}>{sub}</button>
-        ))}
-      </div>
-
-      {/* Interactive Node-Edge Graph Visualization */}
-      <KnowledgeMap concepts={concepts} links={data.links} stats={stats} />
+          {/* Interactive Node-Edge Graph Visualization */}
+          <KnowledgeMap concepts={concepts} links={data.links} stats={stats} />
+        </>
+      )}
     </div>
   );
 }

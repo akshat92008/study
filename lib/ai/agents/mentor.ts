@@ -45,5 +45,5 @@ export async function* streamMentorResponse(userId: string, userMessage: string,
   const fullPrompt = `${context}\n\n## Chat History\n${historyText}\n\nStudent: ${userMessage}`;
 
   const sysPrompt = getMentorSystemPrompt(profile?.exam_type || 'CUSTOM');
-  yield* streamText('pro', sysPrompt, fullPrompt, 0.8);
+  yield* streamText('flash', sysPrompt, fullPrompt, 0.8);
 }

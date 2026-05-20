@@ -54,14 +54,14 @@ export async function toggleTask(taskId: string) {
 // Zod schemas for sprint generator
 const SprintTaskSchema = z.object({
   title: z.string(),
-  description: z.string(),
+  description: z.string().nullable().optional(),
   type: z.enum(['study', 'revision', 'practice', 'mock_test', 'break', 'review']),
-  subject: z.string().nullable(),
-  chapter: z.string().nullable(),
-  priority: z.enum(['critical', 'high', 'medium', 'low']),
+  subject: z.string().nullable().optional(),
+  chapter: z.string().nullable().optional(),
+  priority: z.enum(['critical', 'high', 'medium', 'low']).nullable().optional(),
   estimated_minutes: z.number(),
   scheduled_date: z.string(),
-  scheduled_start_time: z.string().nullable(),
+  scheduled_start_time: z.string().nullable().optional(),
 });
 
 const SprintPlanSchema = z.object({

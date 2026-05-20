@@ -100,7 +100,7 @@ export default function TutorChat({ concepts }: { concepts?: any[] }) {
               maxWidth: '80%', padding: 'var(--sp-3) var(--sp-4)', borderRadius: 'var(--radius-lg)',
               background: msg.role === 'user' ? 'var(--accent-cyan)' : 'var(--bg-secondary)',
               border: msg.role === 'user' ? 'none' : '1px solid var(--border-subtle)',
-              color: msg.role === 'user' ? 'var(--bg-root)' : 'var(--text-primary)',
+              color: msg.role === 'user' ? 'var(--bg-root)' : '#E2E8F0',
               fontSize: 'var(--fs-base)', lineHeight: 'var(--lh-relaxed)', whiteSpace: 'pre-wrap',
             }}>
               {msg.content || (streaming && i === messages.length - 1 ? '●' : '')}

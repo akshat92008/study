@@ -78,7 +78,7 @@ export default function MentorChat({ initialHistory }: { initialHistory: Message
           <Sparkles size={28} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 'var(--sp-2)', color: 'var(--accent-purple)' }} />
           AI Mentor
         </h1>
-        <p style={{ color: 'var(--text-secondary)', marginTop: 'var(--sp-1)', fontSize: 'var(--fs-sm)' }}>
+        <p style={{ color: '#cbd5e1', marginTop: 'var(--sp-1)', fontSize: 'var(--fs-sm)' }}>
           Your elite academic coach • Powered by deep cognition analysis
         </p>
       </div>
@@ -116,7 +116,7 @@ export default function MentorChat({ initialHistory }: { initialHistory: Message
               borderRadius: 'var(--radius-lg)',
               background: msg.role === 'user' ? 'var(--accent-blue)' : 'var(--bg-secondary)',
               border: msg.role === 'user' ? 'none' : '1px solid var(--border-subtle)',
-              color: msg.role === 'user' ? 'white' : 'var(--text-primary)',
+              color: msg.role === 'user' ? 'white' : '#E2E8F0',
               fontSize: 'var(--fs-base)', lineHeight: 'var(--lh-relaxed)',
               whiteSpace: 'pre-wrap',
             }}>

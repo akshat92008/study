@@ -5,6 +5,7 @@ import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
 import Progress from '@/components/ui/Progress';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import {
   Brain, Target, RefreshCw, Calendar, BarChart3, Zap,
   Flame, ArrowRight, CheckCircle2, Clock, Send, MessageCircle,
@@ -33,6 +34,7 @@ interface Message {
 }
 
 export default function CommandCenter({ profile, cognition, revision, mistakes, tasks, onRefresh }: Props) {
+  const router = useRouter();
   const stats = cognition?.stats || {};
   const revStats = revision?.stats || {};
   const mistakeData = mistakes || {};
@@ -225,6 +227,46 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
               addToast("Hyper-sprint plan generated and synced!", "success");
             }
             
+            if (meta.action === 'show_analytics') {
+              addToast("Redirecting to performance Analytics dashboard...", "success");
+              setTimeout(() => {
+                router.push('/analytics');
+              }, 1500);
+            }
+
+            if (meta.action === 'show_atlas') {
+              addToast("Redirecting to ATLAS Knowledge Graph...", "success");
+              setTimeout(() => {
+                router.push('/knowledge');
+              }, 1500);
+            }
+
+            if (meta.action === 'run_autopsy') {
+              addToast(`Opening Autopsy test analysis center for ${meta.test_name || 'Mock Test'}...`, "success");
+              setTimeout(() => {
+                router.push('/autopsy');
+              }, 1500);
+            }
+
+            if (meta.action === 'generate_flashcards') {
+              addToast(`Redirecting to flashcard revision center for ${meta.topic}...`, "success");
+              setTimeout(() => {
+                router.push('/revision');
+              }, 1500);
+            }
+
+            if (meta.action === 'adjust_planner') {
+              addToast("Planner updated! Tasks trimmed for today.", "success");
+              router.refresh();
+            }
+
+            if (meta.action === 'trigger_upload') {
+              addToast("Opening materials upload page...", "success");
+              setTimeout(() => {
+                router.push('/onboarding');
+              }, 1500);
+            }
+
             if (meta.contextState) {
               setContextState(meta.contextState);
             }
@@ -674,35 +716,7 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
               <MessageCircle size={18} style={{ color: 'var(--accent-cyan)' }} />
-              <span style={{ fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-bold)' }}>Socratic Assistant</span>
-            </div>
-            
-            {/* Subject/Chapter Selectors */}
-            <div style={{ display: 'flex', gap: 'var(--sp-2)' }}>
-              <select
-                value={subject}
-                onChange={e => {
-                  setSubject(e.target.value);
-                  setChapter((subjectChapterMap[e.target.value] || ['General'])[0]);
-                }}
-                style={{
-                  padding: '2px 8px', background: 'var(--bg-tertiary)', color: 'var(--text-primary)',
-                  border: '1px solid var(--border-default)', borderRadius: 'var(--radius-sm)', fontSize: '11px', outline: 'none'
-                }}
-              >
-                {userSubjects.map(s => <option key={s}>{s}</option>)}
-              </select>
-              <select
-                value={chapter}
-                onChange={e => setChapter(e.target.value)}
-                style={{
-                  padding: '2px 8px', background: 'var(--bg-tertiary)', color: 'var(--text-primary)',
-                  border: '1px solid var(--border-default)', borderRadius: 'var(--radius-sm)', fontSize: '11px', outline: 'none',
-                  maxWidth: '150px'
-                }}
-              >
-                {(subjectChapterMap[subject] || []).map(c => <option key={c}>{c}</option>)}
-              </select>
+              <span style={{ fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-bold)' }}>Cognition OS</span>
             </div>
           </div>
 
@@ -976,7 +990,7 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
                     handleSend();
                   }
                 }}
-                placeholder={`Ask Socratic assistant about ${chapter}...`}
+                placeholder="Ask anything..."
                 disabled={streaming || uploadLoading}
                 style={{
                   flex: 1,

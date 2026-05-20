@@ -26,6 +26,26 @@ export default function KnowledgeMap({ concepts, links = [], stats }: KnowledgeM
   const [expandedSubjects, setExpandedSubjects] = useState<Set<string>>(new Set());
   const [selectedConcept, setSelectedConcept] = useState<any>(null);
 
+  if (!concepts || concepts.length === 0) {
+    return (
+      <Card style={{ 
+        padding: 'var(--sp-8) var(--sp-6)', 
+        textAlign: 'center', 
+        background: 'var(--bg-secondary)', 
+        border: '1px solid var(--border-subtle)', 
+        borderRadius: 'var(--radius-xl)',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: 'var(--sp-3)'
+      }}>
+        <div style={{ fontSize: 'var(--fs-lg)', fontWeight: 'var(--fw-semibold)', color: 'var(--text-primary)' }}>
+          Not enough data to map neural pathways yet
+        </div>
+      </Card>
+    );
+  }
+
   // Group by subject → chapter
   const grouped = useMemo(() => {
     const map: Record<string, any[]> = {};

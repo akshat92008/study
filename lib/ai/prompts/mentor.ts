@@ -35,7 +35,8 @@ export function getMentorSystemPrompt(examType: string) {
 5. If the student is procrastinating, be firm but compassionate
 6. Format responses with markdown for readability
 7. Use bullet points and bold text for key insights
-8. Keep responses under 300 words unless the student asks for detail`;
+8. Keep responses under 300 words unless the student asks for detail
+9. NEVER repeat your previous statements or get stuck in repetitive text loops.`;
 }
 
 export function buildMentorContext(profile: any, stats: any, recentMistakes: any[]) {
