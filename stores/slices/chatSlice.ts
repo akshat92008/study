@@ -93,6 +93,20 @@ export const createChatSlice: StateCreator<ChatSlice, [["zustand/persist", unkno
       // Try reading from new table first
       let sessionId = get().chatId;
       
+      if (sessionId) {
+        // Verify it actually exists in the DB
+        const { data: existingSession } = await supabase
+          .from('chat_sessions')
+          .select('id')
+          .eq('id', sessionId)
+          .maybeSingle();
+        
+        if (!existingSession) {
+          sessionId = null;
+          set({ chatId: null });
+        }
+      }
+      
       if (!sessionId) {
         // Fetch or create a global session
         const { data: session } = await supabase
@@ -109,12 +123,15 @@ export const createChatSlice: StateCreator<ChatSlice, [["zustand/persist", unkno
           set({ chatId: sessionId });
         } else {
           // Attempt to create
-          const { data: newSession } = await supabase
+          const { data: newSession, error: createError } = await supabase
             .from('chat_sessions')
             .insert({ user_id: user.id, session_type: 'global', title: 'Cognition OS Main Thread' })
             .select('id')
             .single();
           
+          if (createError) {
+            console.error('Failed to create chat session:', createError);
+          }
           if (newSession) {
             sessionId = newSession.id;
             set({ chatId: sessionId });
@@ -186,10 +203,10 @@ export const createChatSlice: StateCreator<ChatSlice, [["zustand/persist", unkno
         // Clear queue on success
         set({ pendingSyncQueue: [] });
       } else {
-        console.error('Failed to sync chat messages', error);
+        console.error('Failed to sync chat messages. Code:', error.code, 'Message:', error.message, 'Details:', error.details, 'Hint:', error.hint, 'Error object:', error);
       }
-    } catch (err) {
-      console.error('Error syncing chat messages', err);
+    } catch (err: any) {
+      console.error('Error syncing chat messages', err?.message || err);
     }
   },
 
