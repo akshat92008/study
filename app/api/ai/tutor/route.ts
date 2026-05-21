@@ -12,6 +12,8 @@ import { checkUsageLimit } from '@/lib/utils/billing';
 import { generateSprintPlanAction } from '@/lib/actions/planner';
 import { LearningStateEngine } from '@/lib/engines/learning-state-engine';
 import { Type } from '@google/genai';
+import { rateLimit } from '@/lib/utils/rate-limit';
+import { safeError } from '@/lib/utils/logger';
 
 export async function POST(req: NextRequest) {
   const supabase = await createClient();
@@ -26,6 +28,14 @@ export async function POST(req: NextRequest) {
       headers: { 'Content-Type': 'application/json' } 
     });
   }
+
+  const ip = req.ip || req.headers.get('x-forwarded-for') || '127.0.0.1';
+  const isAllowed = await rateLimit(ip, 50, 60000); // 50 requests per minute
+  if (!isAllowed) {
+    return new Response(JSON.stringify({ error: 'Too many requests' }), { status: 429 });
+  }
+
+  try {
 
   // Notice: We NO LONGER extract 'subject' and 'chapter' from the request.
   // The orchestrator infers intent entirely from conversation.
@@ -402,4 +412,7 @@ CRITICAL: NEVER lock yourself to a specific subject unless the student explicitl
   });
 
   return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+  } catch (error: any) {
+    return new Response(JSON.stringify(safeError(error)), { status: 500 });
+  }
 }

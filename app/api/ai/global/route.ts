@@ -11,6 +11,7 @@ import { LearningStateEngine } from '@/lib/engines/learning-state-engine';
 import { logPulseSignal } from '@/lib/engines/pulse-engine';
 import { resolveConceptByName } from '@/lib/engines/concept-resolver';
 import { z } from 'zod';
+import { rateLimit } from '@/lib/utils/rate-limit';
  
 // ─── Capability Registry ────────────────────────────────────────────────────
 // Single source of truth for what this OS can actually do.
@@ -80,6 +81,12 @@ export async function POST(req: NextRequest) {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return new Response('Unauthorized', { status: 401 });
+
+    const ip = req.ip || req.headers.get('x-forwarded-for') || '127.0.0.1';
+    const isAllowed = await rateLimit(ip, 50, 60000); // 50 requests per minute
+    if (!isAllowed) {
+      return new Response('Too many requests', { status: 429 });
+    }
  
     const { message, history, currentPath } = await req.json();
  
@@ -428,6 +435,6 @@ Respond STRICTLY in JSON format with these exact fields:
     return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
   } catch (error: any) {
     logger.error('Critical failure in COMMAND orchestrator route', error);
-    return new Response('Internal Server Error', { status: 500 });
+    return new Response(JSON.stringify({ error: 'Internal Server Error' }), { status: 500 });
   }
 }

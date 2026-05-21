@@ -3,12 +3,19 @@ import { createClient } from '@/lib/supabase/server';
 import { processDocumentIntoMemory } from '@/lib/engines/memory-engine';
 import { GoogleGenAI } from '@google/genai';
 import { logger, safeError } from '@/lib/utils/logger';
+import { rateLimit } from '@/lib/utils/rate-limit';
 
 export async function POST(request: Request) {
   try {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+    const ip = request.headers.get('x-forwarded-for') || '127.0.0.1';
+    const isAllowed = await rateLimit(ip, 20, 60000); // 20 requests per minute
+    if (!isAllowed) {
+      return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
+    }
 
     const formData = await request.formData();
     const file = formData.get('file') as File;

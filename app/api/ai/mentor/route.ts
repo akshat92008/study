@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { streamMentorResponse } from '@/lib/ai/agents/mentor';
 
 import { rateLimit } from '@/lib/utils/rate-limit';
+import { safeError, logger } from '@/lib/utils/logger';
 
 export async function POST(req: NextRequest) {
   const supabase = await createClient();
@@ -15,7 +16,8 @@ export async function POST(req: NextRequest) {
     return new Response('Rate limit exceeded. Please wait a few minutes.', { status: 429 });
   }
 
-  const { message, history } = await req.json();
+  try {
+    const { message, history } = await req.json();
 
   // Save user message
   await supabase.from('mentor_chats').insert({
@@ -46,4 +48,8 @@ export async function POST(req: NextRequest) {
   return new Response(stream, {
     headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Transfer-Encoding': 'chunked' },
   });
+  } catch (error: any) {
+    logger.error('Mentor route error', error);
+    return new Response(JSON.stringify(safeError(error)), { status: 500, headers: { 'Content-Type': 'application/json' } });
+  }
 }

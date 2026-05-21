@@ -18,7 +18,7 @@ export default function AnalyticsDashboard({ data }: { data: any }) {
 
   const { scoreTrend, subjectMastery, mistakeDistribution, taskCompletionRate,
     predictedScore, totalStudyHours, totalMockTests, totalMistakes, totalMarksLost,
-    latestScore, maxMarks, examType } = data;
+    latestScore, maxMarks, examType, peakHours, productivityScore } = data;
 
   const displayMax = maxMarks || '—';
   const yAxisMax = maxMarks || 100;
@@ -64,6 +64,32 @@ export default function AnalyticsDashboard({ data }: { data: any }) {
             {taskCompletionRate}%
           </div>
           <Progress value={taskCompletionRate} color="green" size="sm" />
+        </Card>
+      </div>
+
+      {/* Behavioral Insights */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)', marginTop: 'var(--sp-4)', marginBottom: 'var(--sp-2)' }}>
+        <Brain size={20} color="var(--accent-amber)" />
+        <h2 style={{ fontSize: 'var(--fs-lg)', fontWeight: 'var(--fw-bold)', color: 'var(--text-primary)' }}>
+          Behavioral Insights
+        </h2>
+      </div>
+      <div className="grid-2 stagger">
+        <Card variant="glow">
+          <div className="label">Peak Productivity Hours</div>
+          <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--accent-amber)' }}>
+            {peakHours || 'Analyzing...'}
+          </div>
+          <p style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', marginTop: 'var(--sp-2)' }}>
+            When you achieve the highest flow states
+          </p>
+        </Card>
+        <Card>
+          <div className="label">Productivity Score</div>
+          <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', fontFamily: 'var(--font-mono)', color: 'var(--success)' }}>
+            {productivityScore ?? '—'}<span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-tertiary)' }}>/100</span>
+          </div>
+          <Progress value={productivityScore || 0} color="green" size="sm" />
         </Card>
       </div>
 

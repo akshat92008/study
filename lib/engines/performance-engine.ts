@@ -3,19 +3,22 @@ import { createClient } from '@/lib/supabase/server';
 export async function getPerformanceData(userId: string) {
   const supabase = await createClient();
 
-  const [mockTestsRes, snapshotsRes, conceptsRes, mistakesRes, tasksRes, profileRes] = await Promise.all([
+  const [mockTestsRes, snapshotsRes, conceptsRes, mistakesRes, tasksRes, profileRes, sessionsRes] = await Promise.all([
     supabase.from('mock_tests').select('*').eq('user_id', userId).order('created_at', { ascending: true }),
     supabase.from('performance_snapshots').select('*').eq('user_id', userId).order('date', { ascending: true }).limit(30),
     supabase.from('concepts').select('subject, mastery').eq('user_id', userId),
     supabase.from('mistakes').select('subject, category, marks_lost').eq('user_id', userId),
     supabase.from('study_tasks').select('is_completed, estimated_minutes, scheduled_date').eq('user_id', userId),
     supabase.from('profiles').select('exam_type').eq('id', userId).single(),
+    supabase.from('study_sessions').select('started_at, duration_minutes, focus_score').eq('user_id', userId),
   ]);
 
   const mockTests = mockTestsRes.data || [];
+  const snapshots = snapshotsRes.data || [];
   const concepts = conceptsRes.data || [];
   const mistakes = mistakesRes.data || [];
   const tasks = tasksRes.data || [];
+  const sessions = sessionsRes.data || [];
   const examType = profileRes.data?.exam_type || 'General';
 
   // Score trend (from mock tests)
@@ -63,6 +66,31 @@ export async function getPerformanceData(userId: string) {
   const totalStudyMinutes = tasks.filter(t => t.is_completed).reduce((s, t) => s + (t.estimated_minutes || 0), 0);
   const maxMarks = scoreTrend.length > 0 ? scoreTrend[scoreTrend.length - 1].total : null;
 
+  // Peak Hours Analysis
+  const hourBuckets = { Morning: 0, Afternoon: 0, Evening: 0, Night: 0 };
+  sessions.forEach((s: any) => {
+    if (!s.started_at) return;
+    const hour = new Date(s.started_at).getHours();
+    if (hour >= 5 && hour < 12) hourBuckets.Morning += s.duration_minutes || 0;
+    else if (hour >= 12 && hour < 17) hourBuckets.Afternoon += s.duration_minutes || 0;
+    else if (hour >= 17 && hour < 21) hourBuckets.Evening += s.duration_minutes || 0;
+    else hourBuckets.Night += s.duration_minutes || 0;
+  });
+  
+  let peakHours = 'Not enough data';
+  let maxDur = 0;
+  for (const [period, dur] of Object.entries(hourBuckets)) {
+    if (dur > maxDur) {
+      maxDur = dur;
+      peakHours = period;
+    }
+  }
+
+  // Productivity Score (0-100)
+  const avgFocusScore = snapshots.length > 0 ? snapshots.reduce((s: any, snap: any) => s + (snap.focus_score || 0), 0) / snapshots.length : 0.5;
+  const avgAcc = snapshots.length > 0 ? snapshots.reduce((s: any, snap: any) => s + (snap.accuracy || 0), 0) / snapshots.length : 0.5;
+  const productivityScore = Math.round((avgFocusScore * 40) + (avgAcc * 20) + (taskCompletionRate * 0.4));
+
   return {
     scoreTrend,
     subjectMastery,
@@ -76,5 +104,7 @@ export async function getPerformanceData(userId: string) {
     latestScore: scoreTrend.length > 0 ? scoreTrend[scoreTrend.length - 1].score : null,
     maxMarks,
     examType,
+    peakHours,
+    productivityScore,
   };
 }

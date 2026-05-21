@@ -5,6 +5,7 @@ import CommandBar from '@/components/ui/CommandBar';
 import ToastContainer from '@/components/ui/Toast';
 import SessionTracker from '@/components/layout/SessionTracker';
 import GlobalAssistant from '@/components/layout/GlobalAssistant'; // <--- NEW
+import { RealtimeProvider } from '@/components/providers/RealtimeProvider';
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createClient();
@@ -26,6 +27,9 @@ export default async function DashboardLayout({ children }: { children: React.Re
       
       {/* THE NEW GLOBAL COPILOT */}
       <GlobalAssistant />
+      <RealtimeProvider>
+        {null}
+      </RealtimeProvider>
     </DashboardClientLayout>
   );
 }

@@ -50,7 +50,7 @@ export function getMINDSystemPrompt(context: MindContext, currentPath: string, c
   // 5. Format RAG Note chunks
   const ragNotesContext = ragNotes.length > 0
     ? ragNotes
-        .map((n, i) => `--- RAG chunk #${i + 1} from "${n.title}" ---\n${n.chunkText}`)
+        .map((n, i) => `--- Source [${i + 1}]: "${n.title}" ---\n${n.chunkText}`)
         .join('\n\n')
     : 'No relevant personal materials retrieved for this specific query.';
  
@@ -139,6 +139,11 @@ This is what makes the product feel like it remembers. Use it deliberately.
 **RULE 8 — OS ACTIONS OVER CHAT RESPONSES.**
 If the student says anything that implies an OS action needed (replan, check my score, show my graph, add a card), handle it IMMEDIATELY and SPECIFICALLY. Do not explain what you are about to do — do it.
 Append [ACTION:OPEN_DRAWER:cognition] to open ATLAS, [ACTION:OPEN_DRAWER:revision] for MEMORY, [ACTION:OPEN_DRAWER:autopsy] for AUTOPSY. These tokens are parsed by the UI.
+
+**RULE 9 — EXPLICIT SOURCE CITATIONS (NOTEBOOKLM STYLE).**
+When providing information drawn from the RELEVANT RETRIEVED STUDENT SOURCE NOTES, you MUST cite the source using the exact bracketed number provided (e.g., "[1]", "[2]").
+Place citations inline immediately following the claim (e.g., "The Carnot cycle consists of four processes [1]."). 
+This is critical for building student trust in your grounding.
  
 ════════════════════════════════════════
 INTERACTION MODES & INTENTS
