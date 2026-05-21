@@ -14,13 +14,24 @@ export function RealtimeProvider({ children }: { children: React.ReactNode }) {
     
     // We only want to subscribe to events for the current authenticated user
     let subscription: ReturnType<typeof supabase.channel> | null = null;
+    let isMounted = true;
 
     const setupRealtime = async () => {
       const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
+      if (!user || !isMounted) return;
+
+      // Clean up any existing subscription first
+      if (subscription) {
+        await supabase.removeChannel(subscription);
+        subscription = null;
+      }
 
       subscription = supabase
-        .channel('student_events_channel')
+        .channel(`student_events_${user.id}`, {
+          config: {
+            broadcast: { self: true },
+          },
+        })
         .on(
           'postgres_changes',
           {
@@ -61,14 +72,21 @@ export function RealtimeProvider({ children }: { children: React.ReactNode }) {
             }
           }
         )
-        .subscribe();
+        .subscribe((status) => {
+          if (status === 'SUBSCRIBED') {
+            console.log('Realtime subscription established');
+          } else if (status === 'CLOSED' || status === 'CHANNEL_ERROR') {
+            console.log('Realtime subscription closed or errored');
+          }
+        });
     };
 
     setupRealtime();
 
     return () => {
+      isMounted = false;
       if (subscription) {
-        supabase.removeChannel(subscription);
+        supabase.removeChannel(subscription).catch(console.error);
       }
     };
   }, [router, addToast]);
