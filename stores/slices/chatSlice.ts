@@ -43,6 +43,8 @@ To get started, tell me what you want to learn, prepare for, or master.`,
   timestamp: new Date().toISOString(),
 };
 
+let activeRealtimeChannel: any = null;
+
 export const createChatSlice: StateCreator<ChatSlice, [["zustand/persist", unknown]], [], ChatSlice> = (set, get) => ({
   chatId: null,
   chatMessages: [INITIAL_MSG],
@@ -67,6 +69,14 @@ export const createChatSlice: StateCreator<ChatSlice, [["zustand/persist", unkno
     set({ chatMessages: [INITIAL_MSG], pendingSyncQueue: [] });
     // In a real scenario we'd create a new session ID here
     set({ chatId: null });
+    
+    // Clean up channel on clear
+    if (activeRealtimeChannel) {
+      const supabase = createClient();
+      supabase.removeChannel(activeRealtimeChannel);
+      activeRealtimeChannel = null;
+    }
+
     get().loadChatFromSupabase(); // Will create a new session
   },
 
@@ -193,32 +203,41 @@ export const createChatSlice: StateCreator<ChatSlice, [["zustand/persist", unkno
     if (!sessionId) return;
 
     const supabase = createClient();
-    supabase
-      .channel(`chat_messages_${sessionId}`)
-      .on(
-        'postgres_changes',
-        { event: 'INSERT', schema: 'public', table: 'chat_messages', filter: `session_id=eq.${sessionId}` },
-        (payload) => {
-          // Prevent duplicates if we already optimistic-UI'd this message
-          const currentMessages = get().chatMessages;
-          const isDuplicate = currentMessages.some(m => 
-            m.id === payload.new.id || 
-            (m.content === payload.new.content && m.timestamp === payload.new.created_at)
-          );
-          
-          if (!isDuplicate) {
-            set((state) => ({
-              chatMessages: [...state.chatMessages, {
-                id: payload.new.id,
-                role: payload.new.role,
-                content: payload.new.content,
-                timestamp: payload.new.created_at,
-                metadata: payload.new.metadata
-              }]
-            }));
-          }
+    
+    // Clean up any existing active channel subscription first
+    if (activeRealtimeChannel) {
+      supabase.removeChannel(activeRealtimeChannel);
+      activeRealtimeChannel = null;
+    }
+
+    const channel = supabase.channel(`chat_messages_${sessionId}`);
+    
+    channel.on(
+      'postgres_changes',
+      { event: 'INSERT', schema: 'public', table: 'chat_messages', filter: `session_id=eq.${sessionId}` },
+      (payload) => {
+        // Prevent duplicates if we already optimistic-UI'd this message
+        const currentMessages = get().chatMessages;
+        const isDuplicate = currentMessages.some(m => 
+          m.id === payload.new.id || 
+          (m.content === payload.new.content && m.timestamp === payload.new.created_at)
+        );
+        
+        if (!isDuplicate) {
+          set((state) => ({
+            chatMessages: [...state.chatMessages, {
+              id: payload.new.id,
+              role: payload.new.role,
+              content: payload.new.content,
+              timestamp: payload.new.created_at,
+              metadata: payload.new.metadata
+            }]
+          }));
         }
-      )
-      .subscribe();
+      }
+    );
+    
+    channel.subscribe();
+    activeRealtimeChannel = channel;
   }
 });
