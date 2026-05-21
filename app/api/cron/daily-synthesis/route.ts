@@ -1,8 +1,109 @@
 import { generateDailyPlan } from '@/lib/ai/agents/planner';
 import { syncStudentModel } from '@/lib/engines/inference-engine';
 import { logger } from '@/lib/utils/logger';
+import { generateJSON } from '@/lib/ai/gemini';
+import { getEmbedding } from '@/lib/ai/gemini';
+import { z } from 'zod';
 
 export const maxDuration = 300; // Vercel max execution time (5 mins)
+
+// Schema for memory synthesis output
+const MemorySynthesisSchema = z.object({
+  memories: z.array(z.object({
+    type: z.enum(['victory', 'struggle', 'turning_point', 'behavioral_quirk']),
+    description: z.string(),
+    emotional_context: z.string().optional(),
+    importance_score: z.number().default(1.0),
+  }))
+});
+
+// Function to synthesize episodic memories from daily events
+async function synthesizeMemories(userId: string, supabase: any) {
+  try {
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yesterdayStart = new Date(yesterday.setHours(0, 0, 0, 0)).toISOString();
+    const yesterdayEnd = new Date(yesterday.setHours(23, 59, 59, 999)).toISOString();
+
+    // Fetch yesterday's events
+    const { data: events } = await supabase
+      .from('student_events')
+      .select('*')
+      .eq('user_id', userId)
+      .gte('created_at', yesterdayStart)
+      .lte('created_at', yesterdayEnd);
+
+    if (!events || events.length === 0) {
+      logger.info(`No events found for user ${userId} yesterday, skipping memory synthesis`);
+      return;
+    }
+
+    // Fetch mock autopsies from yesterday
+    const { data: autopsies } = await supabase
+      .from('mock_autopsies')
+      .select('*')
+      .eq('user_id', userId)
+      .gte('created_at', yesterdayStart)
+      .lte('created_at', yesterdayEnd);
+
+    // Fetch chat messages from yesterday
+    const { data: chatMessages } = await supabase
+      .from('chat_messages')
+      .select('*')
+      .eq('user_id', userId)
+      .gte('created_at', yesterdayStart)
+      .lte('created_at', yesterdayEnd);
+
+    // Build context for AI
+    const eventsSummary = events.map((e: any) => `- ${e.type}: ${JSON.stringify(e.data)}`).join('\n');
+    const autopsiesSummary = autopsies?.map((a: any) => `- ${a.test_name}: Score ${a.current_score}/${a.potential_score}, Recoverable: ${a.recoverable_marks}`).join('\n') || 'None';
+    const chatSummary = chatMessages?.slice(-10).map((m: any) => `- ${m.role}: ${m.content.substring(0, 100)}...`).join('\n') || 'None';
+
+    const prompt = `
+Analyze today's raw study events, mock autopsies, and chat logs for this student.
+Extract ONLY highly salient episodic memories. Ignore standard progression.
+Look for:
+1. "victories" (e.g., Finally mastered a concept they failed 5 times before).
+2. "struggles" (e.g., 3 consecutive failures on the same question type).
+3. "behavioral_quirks" (e.g., Accuracy drops specifically after 45 minutes).
+4. "turning_point" (e.g., Breakthrough moment in understanding).
+
+RAW DATA:
+EVENTS:
+${eventsSummary}
+
+MOCK AUTOPSIES:
+${autopsiesSummary}
+
+CHAT LOGS (last 10):
+${chatSummary}
+
+Output JSON array of memories to persist. Maximum 3 memories. Be selective.
+`;
+
+    const result = await generateJSON('pro', 'You are the memory synthesis engine of Cognition OS.', prompt, MemorySynthesisSchema);
+
+    if (result.memories && result.memories.length > 0) {
+      // Insert memories with embeddings
+      for (const memory of result.memories) {
+        const embedding = await getEmbedding(memory.description);
+        
+        await supabase.from('episodic_memories').insert({
+          user_id: userId,
+          type: memory.type,
+          description: memory.description,
+          emotional_context: memory.emotional_context || null,
+          importance_score: memory.importance_score,
+          embedding: embedding,
+        });
+      }
+      
+      logger.info(`Synthesized ${result.memories.length} episodic memories for user ${userId}`);
+    }
+  } catch (err) {
+    logger.error(`Failed to synthesize memories for user ${userId}`, err);
+  }
+}
 
 export async function GET(req: Request) {
   try {
@@ -60,6 +161,8 @@ export async function GET(req: Request) {
         await generateDailyPlan(user.id, today);
         // Sync the behavioral inference model
         await syncStudentModel(user.id);
+        // Synthesize episodic memories from yesterday's events
+        await synthesizeMemories(user.id, supabase);
 
         // Write daily performance snapshot
         try {

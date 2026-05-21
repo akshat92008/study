@@ -17,6 +17,10 @@ export const emotionalStateEnum = pgEnum('emotional_state', [
   'focused', 'motivated', 'stressed', 'burnt_out', 'anxious',
   'frustrated', 'confident', 'overwhelmed', 'bored', 'neutral',
 ]);
+
+export const memoryTypeEnum = pgEnum('memory_type', [
+  'victory', 'struggle', 'turning_point', 'behavioral_quirk'
+]);
 export const taskTypeEnum = pgEnum('task_type', [
   'study', 'revision', 'practice', 'mock_test', 'break', 'review',
 ]);
@@ -256,6 +260,10 @@ export const studentModels = pgTable('student_models', {
   strengths: jsonb('strengths').default([]),
   chronicWeaknesses: jsonb('chronic_weaknesses').default([]),
   behavioralTraps: jsonb('behavioral_traps').default([]),
+  optimalPacing: text('optimal_pacing').default('standard'),
+  fatigueThresholdMinutes: integer('fatigue_threshold_minutes').default(90),
+  comebackProbability: real('comeback_probability').default(0.8),
+  explanationPreference: text('explanation_preference').default('conceptual_first'),
   lastUpdated: timestamp('last_updated').defaultNow(),
 });
 
@@ -423,4 +431,19 @@ export const chatMessages = pgTable('chat_messages', {
   createdAt: timestamp('created_at').defaultNow().notNull(),
 });
 
+// --- Soul Layer: Episodic Memory System ---
+
+export const episodicMemories = pgTable('episodic_memories', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').references(() => profiles.id, { onDelete: 'cascade' }).notNull(),
+  conceptId: uuid('concept_id').references(() => concepts.id),
+  type: memoryTypeEnum('type').notNull(),
+  description: text('description').notNull(),
+  emotionalContext: text('emotional_context'),
+  importanceScore: real('importance_score').default(1.0),
+  decayFactor: real('decay_factor').default(0.05),
+  createdAt: timestamp('created_at').defaultNow(),
+  lastRecalledAt: timestamp('last_recalled_at'),
+  embedding: vector('embedding', { dimensions: 768 }),
+});
 

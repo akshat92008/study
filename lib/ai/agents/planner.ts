@@ -206,7 +206,7 @@ export async function generateMorningBriefing(userId: string) {
   
   const { data: profile } = await supabase
     .from('profiles')
-    .select('exam_type, target_year, exam_date, streak_days, study_hours_per_day')
+    .select('exam_type, target_year, exam_date, streak_days, study_hours_per_day, emotional_state')
     .eq('id', userId)
     .single();
 
@@ -255,15 +255,36 @@ export async function generateMorningBriefing(userId: string) {
   else if (['stressed', 'anxious'].includes(emotionalState)) recommendedHours = Math.max(4, recommendedHours * 0.7);
   else if (['motivated', 'focused'].includes(emotionalState)) recommendedHours = Math.min(12, recommendedHours * 1.2);
 
-  const prompt = `Generate a personalized morning briefing for this student.
-    Days to exam: ${daysRemaining}
-    Yesterday's task completion: ${completionRate}%
-    Cognitive state: ${emotionalState}
-    Due revision cards: ${dueCards}
-    Top weak area: ${topWeakArea}
-    
-    Format: A warm, direct 3-sentence greeting. Include exact hours recommended (specifically mention ${recommendedHours.toFixed(1)} hours).
-    Tone: Mentor, not machine. Reference yesterday's performance.`;
+  // Fetch today's top priority task
+  const today = new Date().toISOString().split('T')[0];
+  const { data: todayTasks } = await supabase
+    .from('study_tasks')
+    .select('title, notes, priority')
+    .eq('user_id', userId)
+    .eq('scheduled_date', today)
+    .order('priority', { ascending: false })
+    .limit(1);
+
+  const topTask = todayTasks && todayTasks.length > 0 ? todayTasks[0] : null;
+
+  const prompt = `
+Generate the Morning Briefing narrative for this student.
+
+CONTEXT:
+Days to exam: ${daysRemaining}
+Yesterday's completion: ${completionRate}%
+Cognitive state: ${emotionalState}
+Top Priority Task: ${topTask ? topTask.title + ' (' + (topTask.notes || 'System priority') + ')' : 'None scheduled'}
+
+RULES:
+1. Be direct, authoritative, and grounding.
+2. If state is 'overwhelmed', explicitly tell them you have reduced their workload today to protect their retention. 
+3. If they missed yesterday's tasks, DO NOT guilt trip them. Reframe today as a blank slate.
+4. Point them immediately to their Top Priority Task.
+
+GOOD EXAMPLE (Overwhelmed): "Telemetry shows your cognitive load was peaking yesterday. I've slashed today's workload by 40% and removed all new concepts. We are only doing maintenance. Your only required mission today is a 20-minute FSRS revision block."
+GOOD EXAMPLE (Momentum): "You're on a 5-day streak and your focus score is in the 90th percentile. This is when we attack the hard stuff. I've queued the rotational mechanics autopsies you failed last week. Let's reclaim those 12 marks."
+`;
   
   const { generateText } = await import('@/lib/ai/gemini');
   return generateText('flash', 'You are COMMAND, the daily mission AI.', prompt);

@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useAppStore, ChatMessage } from '@/stores/appStore';
 import {
   Send, Paperclip, Loader2, MessageSquare, ArrowRight,
-  Upload, X, RefreshCw, Target
+  Upload, X, RefreshCw, Target, FileText
 } from 'lucide-react';
 
 // Clean inline Markdown formatter
@@ -110,6 +110,9 @@ export default function GlobalChat() {
   const [isStreaming, setIsStreaming] = useState(false);
   const [streamingText, setStreamingText] = useState('');
   const [dragging, setDragging] = useState(false);
+  const [pendingFile, setPendingFile] = useState<File | null>(null);
+  const [isProcessingDoubt, setIsProcessingDoubt] = useState(false);
+  const [doubtStatus, setDoubtStatus] = useState('');
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -253,6 +256,113 @@ export default function GlobalChat() {
     }
   };
 
+  const handleDoubtUpload = async (file: File) => {
+    setIsProcessingDoubt(true);
+    setDoubtStatus('Extracting content and running diagnostics...');
+    setPendingFile(null);
+
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const res = await fetch('/api/ingest', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Ingestion failed');
+
+      const extractedText = data.text || '';
+      const userText = chatInput.trim();
+      setChatInput('');
+
+      const promptText = `I uploaded a document: "${file.name}".
+Here is the text extracted from the document:
+---
+${extractedText.slice(0, 50000)}
+---
+${userText ? `My specific doubt / question is: ${userText}` : 'Please summarize the core concepts in this document and check if I have any questions about them.'}`;
+
+      const userMsg = {
+        role: 'user' as const,
+        content: promptText,
+        timestamp: new Date().toISOString(),
+        metadata: {
+          type: 'file_upload',
+          fileName: file.name,
+          userQuery: userText || 'Explain this document'
+        }
+      };
+
+      addChatMessage(userMsg);
+      setIsStreaming(true);
+      setStreamingText('');
+      
+      lastMessageSentAt.current = Date.now();
+
+      const apiRes = await fetch('/api/ai/global', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: promptText,
+          history: chatMessages.map(m => ({ role: m.role, content: m.content })),
+          currentPath: '/dashboard',
+          activeGoalId: activeGoalId
+        })
+      });
+
+      if (!apiRes.ok) throw new Error('Orchestrator failed to reply.');
+      if (!apiRes.body) throw new Error('No readable response stream.');
+
+      const reader = apiRes.body.getReader();
+      const decoder = new TextDecoder();
+      let fullReply = '';
+
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        const chunk = decoder.decode(value);
+        fullReply += chunk;
+        
+        const cleanStream = fullReply.replace(/\[ACTION:OPEN_DRAWER:\w+\]/g, '').trim();
+        setStreamingText(cleanStream);
+      }
+
+      const responseTimeMs = lastMessageSentAt.current ? Date.now() - lastMessageSentAt.current : 0;
+      const drawerMatch = fullReply.match(/\[ACTION:OPEN_DRAWER:(\w+)\]/);
+      if (drawerMatch) {
+        const drawerName = drawerMatch[1] as 'cognition' | 'revision' | 'autopsy';
+        setActiveDrawer(drawerName);
+      }
+
+      const cleanReply = fullReply.replace(/\[ACTION:OPEN_DRAWER:\w+\]/g, '').trim();
+
+      const assistantMsg = {
+        role: 'assistant' as const,
+        content: cleanReply,
+        timestamp: new Date().toISOString()
+      };
+      addChatMessage(assistantMsg);
+
+      fetch('/api/pulse/timing', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ responseTimeMs, messageLength: promptText.length })
+      }).catch(() => {});
+
+      await syncChatToSupabase();
+    } catch (err: any) {
+      addToast(err.message || 'Doubt ingestion failed', 'error');
+    } finally {
+      setIsProcessingDoubt(false);
+      setDoubtStatus('');
+      setStreamingText('');
+      setIsStreaming(false);
+      loadLearningGoals();
+    }
+  };
+
   const onDragOver = (e: React.DragEvent) => {
     e.preventDefault();
     setDragging(true);
@@ -266,7 +376,7 @@ export default function GlobalChat() {
     e.preventDefault();
     setDragging(false);
     const file = e.dataTransfer.files?.[0];
-    if (file) handleAutopsyUpload(file);
+    if (file) setPendingFile(file);
   };
 
   const activeGoal = learningGoals.find(g => g.id === activeGoalId);
@@ -404,6 +514,7 @@ export default function GlobalChat() {
           <>
             {chatMessages.map((m, idx) => {
               const isUser = m.role === 'user';
+              const isFile = m.metadata?.type === 'file_upload';
               return (
                 <div key={idx} style={{
                   display: 'flex',
@@ -423,7 +534,33 @@ export default function GlobalChat() {
                     wordBreak: 'break-word'
                   }}>
                     {isUser ? (
-                      <p style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{m.content}</p>
+                      isFile ? (
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)' }}>
+                          <div style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 'var(--sp-2)',
+                            background: 'rgba(255, 255, 255, 0.15)',
+                            padding: '8px 12px',
+                            borderRadius: 'var(--radius-md)',
+                            border: '1px solid rgba(255, 255, 255, 0.25)',
+                            backdropFilter: 'blur(4px)'
+                          }}>
+                            <FileText size={16} style={{ color: '#a5f3fc', flexShrink: 0 }} />
+                            <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+                              <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-xs)', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>
+                                {m.metadata?.fileName || 'Attached Document'}
+                              </span>
+                              <span style={{ fontSize: '9px', color: 'rgba(255, 255, 255, 0.7)' }}>Ingested for doubts</span>
+                            </div>
+                          </div>
+                          {m.metadata?.userQuery && (
+                            <p style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{m.metadata.userQuery}</p>
+                          )}
+                        </div>
+                      ) : (
+                        <p style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{m.content}</p>
+                      )
                     ) : (
                       renderMarkdown(m.content)
                     )}
@@ -483,6 +620,24 @@ export default function GlobalChat() {
         </div>
       )}
 
+      {/* Ingesting doubts loader */}
+      {isProcessingDoubt && (
+        <div style={{
+          padding: 'var(--sp-3) var(--sp-4)',
+          background: 'var(--bg-tertiary)',
+          borderTop: '1px solid var(--border-subtle)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 'var(--sp-3)'
+        }}>
+          <Loader2 color="var(--accent-purple)" size={16} className="animate-spin" />
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ fontSize: 'var(--fs-xs)', fontWeight: 'bold', color: 'var(--text-primary)' }}>Processing Document...</div>
+            <div style={{ fontSize: '10px', color: 'var(--accent-purple)', fontFamily: 'var(--font-mono)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{doubtStatus}</div>
+          </div>
+        </div>
+      )}
+
       {/* Input Form Box */}
       <div style={{
         padding: 'var(--sp-3) var(--sp-4)',
@@ -491,6 +646,121 @@ export default function GlobalChat() {
         backdropFilter: 'blur(8px)'
       }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+          {/* Pending Upload Action Card */}
+          {pendingFile && (
+            <div style={{
+              background: 'linear-gradient(to bottom, var(--bg-tertiary), var(--bg-secondary))',
+              border: '1px solid var(--accent-purple-dim)',
+              borderRadius: 'var(--radius-md)',
+              padding: 'var(--sp-3)',
+              marginBottom: 'var(--sp-2)',
+              boxShadow: 'var(--shadow-md)',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 'var(--sp-2)',
+              animation: 'var(--animation-slide-up)'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)', minWidth: 0 }}>
+                  <Paperclip size={14} style={{ color: 'var(--accent-purple)', flexShrink: 0 }} />
+                  <span style={{
+                    fontSize: 'var(--fs-xs)',
+                    fontWeight: 'bold',
+                    color: 'var(--text-primary)',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap'
+                  }}>
+                    {pendingFile.name}
+                  </span>
+                  <span style={{ fontSize: '9px', color: 'var(--text-tertiary)', flexShrink: 0 }}>
+                    ({(pendingFile.size / 1024).toFixed(1)} KB)
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setPendingFile(null)}
+                  style={{
+                    background: 'transparent',
+                    border: 'none',
+                    color: 'var(--text-tertiary)',
+                    cursor: 'pointer',
+                    padding: 2,
+                    display: 'flex',
+                    alignItems: 'center'
+                  }}
+                >
+                  <X size={14} />
+                </button>
+              </div>
+
+              <div style={{ display: 'flex', gap: 'var(--sp-2)' }}>
+                <button
+                  type="button"
+                  onClick={() => handleDoubtUpload(pendingFile)}
+                  disabled={isStreaming || isProcessingDoubt}
+                  style={{
+                    flex: 1,
+                    background: 'linear-gradient(135deg, var(--accent-purple), var(--accent-blue))',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: 'var(--radius-sm)',
+                    padding: '6px 12px',
+                    fontSize: '11px',
+                    fontWeight: 'bold',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '4px',
+                    transition: 'opacity 0.2s'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.opacity = '0.9'}
+                  onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+                >
+                  <MessageSquare size={12} />
+                  Clear Doubts Inline
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const file = pendingFile;
+                    setPendingFile(null);
+                    handleAutopsyUpload(file);
+                  }}
+                  disabled={isStreaming || isProcessingDoubt}
+                  style={{
+                    flex: 1,
+                    background: 'transparent',
+                    color: 'var(--text-primary)',
+                    border: '1px solid var(--border-strong)',
+                    borderRadius: 'var(--radius-sm)',
+                    padding: '6px 12px',
+                    fontSize: '11px',
+                    fontWeight: 'bold',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '4px',
+                    transition: 'all 0.2s'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'var(--bg-tertiary)';
+                    e.currentTarget.style.borderColor = 'var(--accent-cyan)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'transparent';
+                    e.currentTarget.style.borderColor = 'var(--border-strong)';
+                  }}
+                >
+                  <Target size={12} style={{ color: 'var(--accent-cyan)' }} />
+                  Run Autopsy
+                </button>
+              </div>
+            </div>
+          )}
+
           <form
             onSubmit={(e) => { e.preventDefault(); handleSendMessage(chatInput); }}
             style={{ display: 'flex', gap: 'var(--sp-2)', alignItems: 'center' }}
@@ -503,13 +773,13 @@ export default function GlobalChat() {
               style={{ display: 'none' }}
               onChange={(e) => {
                 const file = e.target.files?.[0];
-                if (file) handleAutopsyUpload(file);
+                if (file) setPendingFile(file);
               }}
             />
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
-              disabled={isStreaming || isUploadingMock}
+              disabled={isStreaming || isUploadingMock || isProcessingDoubt}
               style={{
                 background: 'transparent',
                 border: 'none',
@@ -522,7 +792,7 @@ export default function GlobalChat() {
                 borderRadius: 'var(--radius-sm)',
                 transition: 'color 0.2s'
               }}
-              title="Upload Mock Test for Autopsy"
+              title="Upload File"
             >
               <Paperclip size={16} />
             </button>
@@ -556,7 +826,7 @@ export default function GlobalChat() {
               />
               <button
                 type="submit"
-                disabled={!chatInput.trim() || isStreaming || isUploadingMock}
+                disabled={!chatInput.trim() || isStreaming || isUploadingMock || isProcessingDoubt}
                 style={{
                   background: 'var(--accent-purple)',
                   color: 'white',

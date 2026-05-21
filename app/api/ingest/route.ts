@@ -100,7 +100,7 @@ export async function POST(request: Request) {
       }
     });
 
-    return NextResponse.json(result);
+    return NextResponse.json({ ...result, text });
 
   } catch (error: any) {
     return NextResponse.json(safeError(error), { status: 500 });

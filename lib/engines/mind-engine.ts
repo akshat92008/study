@@ -2,6 +2,7 @@ import { createClient } from '@/lib/supabase/server';
 import { getPrerequisiteChain } from './cognition-graph';
 import { searchPersonalKnowledge } from './rag-engine';
 import { logger } from '@/lib/utils/logger';
+import { getEmbedding } from '@/lib/ai/gemini';
 
 export interface MindContext {
   profile: {
@@ -48,6 +49,11 @@ export interface MindContext {
   ragNotes: Array<{
     title: string;
     chunkText: string;
+  }>;
+  salientMemories: Array<{
+    type: string;
+    description: string;
+    createdAt: string;
   }>;
 }
 
@@ -221,6 +227,29 @@ export async function getMINDContext(userId: string, userQuery: string): Promise
     }
   }
 
+  // 7. Salient Episodic Memories (Soul Layer)
+  let salientMemories: MindContext['salientMemories'] = [];
+  try {
+    const queryEmbedding = await getEmbedding(userQuery);
+    const { data: memories } = await supabase.rpc('get_salient_memories', {
+      p_user_id: userId,
+      p_query_embedding: queryEmbedding,
+      p_pulse_state: profile.emotionalState,
+      p_limit: 2
+    });
+
+    if (memories && memories.length > 0) {
+      salientMemories = memories.map((m: any) => ({
+        type: m.type,
+        description: m.description,
+        createdAt: m.created_at,
+      }));
+    }
+  } catch (err) {
+    logger.error('Failed to fetch salient memories in mind-engine', err);
+    // Non-blocking: continue without memories if RPC fails
+  }
+
   return {
     profile,
     goal,
@@ -228,5 +257,6 @@ export async function getMINDContext(userId: string, userQuery: string): Promise
     struggles,
     sessionHistory,
     ragNotes,
+    salientMemories,
   };
 }
