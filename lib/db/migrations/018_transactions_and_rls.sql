@@ -62,7 +62,7 @@ BEGIN
                 p_memory_cards[i]->>'front',
                 p_memory_cards[i]->>'back',
                 ARRAY(SELECT jsonb_array_elements_text(p_memory_cards[i]->'tags')),
-                'New',
+                0, -- New card state = 0
                 0,
                 0,
                 0,
