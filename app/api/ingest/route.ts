@@ -14,14 +14,7 @@ export async function POST(request: Request) {
     const file = formData.get('file') as File;
     if (!file) return NextResponse.json({ error: 'No file provided' }, { status: 400 });
 
-    // Enforce Free Tier limits
-    const { data: profile } = await supabase.from('profiles').select('subscription_status').eq('id', user.id).single();
-    if (!profile || profile.subscription_status === 'free') {
-      const { count } = await supabase.from('materials').select('*', { count: 'exact', head: true }).eq('user_id', user.id);
-      if (count && count >= 1) {
-        return NextResponse.json({ error: 'Free tier limit reached (Max 1 document). Please upgrade to Pro.' }, { status: 403 });
-      }
-    }
+    // Enforce Free Tier limits (Disabled: Unlimited uploads)
 
     const title = file.name;
     const mimeType = file.type || 'application/pdf';
@@ -56,6 +49,50 @@ export async function POST(request: Request) {
 
     // 3. Vectorize and store
     const result = await processDocumentIntoMemory(user.id, { title, text });
+
+    // Auto-generate FSRS flashcards from uploaded material in background
+    Promise.resolve().then(async () => {
+      try {
+        const { generateJSON } = await import('@/lib/ai/gemini');
+        const { createClient: sc } = await import('@/lib/supabase/server');
+        const db = await sc();
+        
+        // Extract subject and chapter from the material title using AI
+        const metaResult = await generateJSON<{ subject: string; chapter: string; conceptCount: number }>('flash',
+          'You are a curriculum analyzer.',
+          `Given this document title: "${title}", identify the most likely academic subject (e.g. "Physics", "Chemistry", "Biology", "Mathematics") and chapter/topic name it belongs to. Also estimate how many flashcards (3-8) would be appropriate for this material.
+          Respond ONLY as JSON: { "subject": string, "chapter": string, "conceptCount": number }`
+        );
+        
+        if (!metaResult?.subject || !metaResult?.chapter) return;
+        
+        // Find or create a concept node for this material
+        const { resolveConceptByName } = await import('@/lib/engines/concept-resolver');
+        let conceptId = await resolveConceptByName(user.id, metaResult.subject, metaResult.chapter);
+        
+        if (!conceptId) {
+          const { data: newConcept } = await db.from('concepts').insert({
+            user_id: user.id,
+            name: metaResult.chapter,
+            subject: metaResult.subject,
+            chapter: metaResult.chapter,
+            topic: 'Uploaded Material',
+            mastery: 'exposed',
+          }).select().single();
+          conceptId = newConcept?.id || null;
+        }
+        
+        if (!conceptId) return;
+        
+        // Generate flashcards from the material
+        const { generateCardsForConcept } = await import('@/lib/engines/revision-engine');
+        await generateCardsForConcept(user.id, conceptId, metaResult.subject, metaResult.chapter);
+        
+      } catch (bgErr) {
+        console.warn('Background card generation from upload failed:', bgErr);
+      }
+    });
+
     return NextResponse.json(result);
 
   } catch (error: any) {

@@ -125,3 +125,74 @@ export type AdaptiveConfig = PulseAdaptationConfig;
 export async function detectEmotionalState(userId: string): Promise<{ state: CognitiveState; confidence: number }> {
   return detectStudyFriction(userId);
 }
+
+export async function recordMessageTiming(
+  userId: string,
+  responseTimeMs: number,
+  messageLength: number,
+  isCorrectAnswer: boolean | null
+): Promise<void> {
+  const supabase = await createClient();
+
+  try {
+    // 2. Compute hesitation score (0-10)
+    let hesitation = 1;
+    if (responseTimeMs > 30000) {
+      hesitation = 8;
+    } else if (responseTimeMs > 15000) {
+      hesitation = 5;
+    } else if (responseTimeMs < 3000 && messageLength < 10) {
+      hesitation = 6;
+    }
+
+    const emotionalState = hesitation > 6 ? 'frustrated' : hesitation > 3 ? 'neutral' : 'focused';
+
+    // 3. Insert a row into pulse_signals
+    await supabase.from('pulse_signals').insert({
+      user_id: userId,
+      signal_type: 'message_timing',
+      emotional_state: emotionalState,
+      confidence: 0.4,
+      interaction_count: messageLength,
+      notes: JSON.stringify({ responseTimeMs, hesitation, isCorrectAnswer })
+    });
+
+    // 4. Fetch last 5 message_timing signals
+    const { data: signals, error } = await supabase
+      .from('pulse_signals')
+      .select('notes')
+      .eq('user_id', userId)
+      .eq('signal_type', 'message_timing')
+      .order('created_at', { ascending: false })
+      .limit(5);
+
+    if (error) {
+      logger.warn('Failed to fetch pulse signals for timing check', error);
+      return;
+    }
+
+    if (signals && signals.length === 5) {
+      const allHesitant = signals.every(s => {
+        try {
+          const parsed = JSON.parse(s.notes || '{}');
+          return (parsed.hesitation || 0) > 5;
+        } catch {
+          return false;
+        }
+      });
+
+      if (allHesitant) {
+        const friction = await detectEmotionalState(userId);
+        if (friction.state === 'frustrated' || friction.state === 'overwhelmed') {
+          await supabase
+            .from('profiles')
+            .update({ emotional_state: friction.state })
+            .eq('id', userId);
+          logger.info('Updated user emotional state via PULSE timing triggers', { userId, state: friction.state });
+        }
+      }
+    }
+  } catch (error) {
+    logger.warn('Error in recordMessageTiming', error);
+  }
+}

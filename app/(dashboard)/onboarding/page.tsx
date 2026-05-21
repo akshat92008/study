@@ -18,15 +18,41 @@ export default function ConversationalOnboarding() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const [showGraphReveal, setShowGraphReveal] = useState(false);
+  const [conceptCount, setConceptCount] = useState<number | null>(null);
+  const [progress, setProgress] = useState(0);
+
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' });
   }, [messages]);
 
-  const startCompilationSequence = () => {
+  useEffect(() => {
+    if (showGraphReveal) {
+      const progressTimer = setTimeout(() => {
+        setProgress(100);
+      }, 100);
+
+      const redirectTimer = setTimeout(() => {
+        router.push('/dashboard');
+      }, 3500);
+
+      return () => {
+        clearTimeout(progressTimer);
+        clearTimeout(redirectTimer);
+      };
+    }
+  }, [showGraphReveal, router]);
+
+  const startCompilationSequence = (count?: number) => {
+    if (count !== undefined) {
+      setConceptCount(count);
+    }
     setBuildState('compiling');
     // Simulate dramatic compilation sequence
     setTimeout(() => setBuildState('ready'), 3500);
-    setTimeout(() => router.push('/dashboard'), 5500);
+    setTimeout(() => {
+      setShowGraphReveal(true);
+    }, 5500);
   };
 
   const handleSend = async () => {
@@ -82,7 +108,7 @@ export default function ConversationalOnboarding() {
       }
 
       setMessages(prev => [...prev, { role: 'assistant', content: `Brilliant! I've loaded your "${data.title}" curriculum and seeded the ATLAS nodes successfully.` }]);
-      startCompilationSequence();
+      startCompilationSequence(data.seededCount);
     } catch (err: any) {
       setUploadError(err.message || 'Syllabus processing failed.');
       setMessages(prev => [
@@ -205,6 +231,88 @@ export default function ConversationalOnboarding() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {showGraphReveal && (
+        <div style={{
+          position: 'fixed',
+          inset: 0,
+          background: 'var(--bg-primary)',
+          zIndex: 100,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
+          padding: 'var(--sp-6)'
+        }}>
+          <style>{`
+            @keyframes pulse-cyan {
+              0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7);
+              }
+              70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 20px rgba(6, 182, 212, 0);
+              }
+              100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(6, 182, 212, 0);
+              }
+            }
+          `}</style>
+          
+          <div style={{
+            width: 96,
+            height: 96,
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, var(--accent-cyan), rgba(6, 182, 212, 0.3))',
+            animation: 'pulse-cyan 2s infinite',
+            marginBottom: 'var(--sp-8)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 0 15px rgba(6, 182, 212, 0.5)'
+          }}>
+            <BrainCircuit size={48} color="white" />
+          </div>
+
+          <h1 style={{
+            fontSize: 'var(--fs-2xl)',
+            fontWeight: 'var(--fw-black)',
+            color: 'var(--text-primary)',
+            letterSpacing: 'var(--ls-tight)',
+            margin: '0 0 var(--sp-2) 0'
+          }}>
+            Your Knowledge Map
+          </h1>
+          
+          <p style={{
+            color: 'var(--text-secondary)',
+            fontSize: 'var(--fs-base)',
+            maxWidth: '30rem',
+            margin: '0 0 var(--sp-6) 0',
+            lineHeight: 'var(--lh-relaxed)'
+          }}>
+            We&apos;ve mapped {conceptCount !== null ? conceptCount : 'the essential'} concepts across your syllabus. Let&apos;s find your baseline.
+          </p>
+
+          <div style={{
+            width: '240px',
+            height: '6px',
+            background: 'var(--bg-tertiary)',
+            borderRadius: 'var(--radius-full)',
+            overflow: 'hidden'
+          }}>
+            <div style={{
+              width: `${progress}%`,
+              height: '100%',
+              background: 'var(--accent-cyan)',
+              transition: 'width 3s ease-in-out'
+            }} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -4,10 +4,11 @@ import { useState, useEffect, useRef } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import {
-  MessageSquare, Zap, X, ChevronLeft, ChevronRight, Plus, Check, Loader2, Target, Calendar, Clock, Sliders, Sparkles
+  MessageSquare, Zap, X, ChevronLeft, ChevronRight, Plus, Check, Loader2, Target, Calendar, Clock, Sliders, Sparkles, LogOut
 } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
 import { motion, AnimatePresence } from 'framer-motion';
+import { signOut } from '@/lib/actions/auth';
 
 interface SidebarProps {
   userName: string;
@@ -374,56 +375,87 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
       {/* User profile section */}
       <div
         style={{
-          padding: isSidebarCollapsed ? 'var(--sp-4) var(--sp-3)' : 'var(--sp-4) var(--sp-5)',
+          padding: isSidebarCollapsed ? 'var(--sp-4) var(--sp-2)' : 'var(--sp-4) var(--sp-5)',
           borderTop: '1px solid var(--border-subtle)',
           display: 'flex',
+          flexDirection: isSidebarCollapsed ? 'column' : 'row',
           alignItems: 'center',
-          gap: isSidebarCollapsed ? 0 : 'var(--sp-3)',
-          justifyContent: isSidebarCollapsed ? 'center' : 'flex-start',
-          transition: 'padding var(--duration-normal) var(--ease-out)',
+          gap: isSidebarCollapsed ? 'var(--sp-2)' : 'var(--sp-3)',
+          justifyContent: 'space-between',
+          transition: 'all var(--duration-normal) var(--ease-out)',
         }}
       >
-        <div
+        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-3)', minWidth: 0, flex: 1 }}>
+          <div
+            style={{
+              width: 32,
+              height: 32,
+              borderRadius: 'var(--radius-full)',
+              background: 'var(--accent-blue-dim)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: 'var(--fs-sm)',
+              fontWeight: 'var(--fw-bold)',
+              color: 'var(--accent-blue)',
+              flexShrink: 0,
+            }}
+          >
+            {userName.charAt(0).toUpperCase()}
+          </div>
+          {!isSidebarCollapsed && (
+            <div
+              style={{
+                overflow: 'hidden',
+                whiteSpace: 'nowrap',
+                minWidth: 0,
+                flex: 1,
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 'var(--fs-sm)',
+                  fontWeight: 'var(--fw-medium)',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                  color: 'var(--text-primary)',
+                }}
+              >
+                {userName}
+              </div>
+              <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Free Plan</div>
+            </div>
+          )}
+        </div>
+
+        {/* Log Out Button */}
+        <button
+          onClick={() => signOut()}
           style={{
-            width: 32,
-            height: 32,
-            borderRadius: 'var(--radius-full)',
-            background: 'var(--accent-blue-dim)',
+            background: 'transparent',
+            border: 'none',
+            color: 'var(--text-secondary)',
+            cursor: 'pointer',
+            padding: '6px',
+            borderRadius: 'var(--radius-sm)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontSize: 'var(--fs-sm)',
-            fontWeight: 'var(--fw-bold)',
-            color: 'var(--accent-blue)',
-            flexShrink: 0,
+            transition: 'all 0.2s',
+          }}
+          title="Log Out"
+          onMouseEnter={(e) => {
+            e.currentTarget.style.color = 'var(--text-primary)';
+            e.currentTarget.style.background = 'var(--bg-secondary)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.color = 'var(--text-secondary)';
+            e.currentTarget.style.background = 'transparent';
           }}
         >
-          {userName.charAt(0).toUpperCase()}
-        </div>
-        <div
-          style={{
-            opacity: isSidebarCollapsed ? 0 : 1,
-            width: isSidebarCollapsed ? 0 : 'auto',
-            overflow: 'hidden',
-            whiteSpace: 'nowrap',
-            flex: 1,
-            minWidth: 0,
-            transition: 'opacity var(--duration-fast) var(--ease-out)',
-          }}
-        >
-          <div
-            style={{
-              fontSize: 'var(--fs-sm)',
-              fontWeight: 'var(--fw-medium)',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            {userName}
-          </div>
-          <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Free Plan</div>
-        </div>
+          <LogOut size={16} />
+        </button>
       </div>
 
       {/* Goal Ingestion Modal */}

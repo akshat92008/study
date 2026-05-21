@@ -1,6 +1,8 @@
 {
-  "crons": [{
-    "path": "/api/cron/daily-synthesis",
-    "schedule": "0 3 * * *"
-  }]
+  "crons": [
+    {
+      "path": "/api/cron/daily-synthesis",
+      "schedule": "0 1 * * *"
+    }
+  ]
 }

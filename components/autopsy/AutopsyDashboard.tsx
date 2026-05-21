@@ -22,9 +22,12 @@ export default function AutopsyDashboard({ result }: AutopsyDashboardProps) {
       {/* 1. Score Bridge */}
       <ScoreBridge 
         currentScore={result.currentScore}
-        potentialScore={result.potentialScore}
         recoverableMarks={result.recoverableMarks}
-        maxScore={result.examType === 'CUSTOM' ? 100 : 720}
+        potentialScore={result.potentialScore}
+        examType={result.examType}
+        mentorQuote={result.mentorQuote || ''}
+        categoryBreakdown={result.categoryBreakdown || []}
+        chapterLoss={result.chapterLoss || []}
       />
 
       {/* 2. Charts Row */}

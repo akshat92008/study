@@ -5,7 +5,7 @@ import { rateLimit } from '@/lib/utils/rate-limit';
 import { logger, safeError } from '@/lib/utils/logger';
 import { checkUsageLimit } from '@/lib/utils/billing';
 
-const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB limit
+const MAX_FILE_SIZE = Infinity; // Unlimited size limit
 const ALLOWED_MIME_TYPES = new Set([
   'application/pdf', 'text/plain', 'text/markdown',
   'image/jpeg', 'image/png', 'image/webp'
@@ -18,11 +18,7 @@ export async function POST(request: Request) {
 
     if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-    // PAYWALL GATE
-    const usage = await checkUsageLimit(user.id, 'autopsies_monthly');
-    if (!usage.allowed) {
-      return NextResponse.json({ error: usage.reason, upgradeRequired: true }, { status: 403 });
-    }
+    // PAYWALL GATE (Disabled: Unlimited autopsies)
 
     // Rate Limiting: 50 requests per 15 minutes
     const ip = request.headers.get('x-forwarded-for') || user.id;

@@ -42,8 +42,42 @@ export default function CognitionDashboard({ data }: Props) {
     }
   }
 
+  const tiers = { not_started: 0, exposed: 0, developing: 0, proficient: 0, mastered: 0, automated: 0 };
+  (concepts || []).forEach((c: any) => {
+    if (tiers[c.mastery as keyof typeof tiers] !== undefined) {
+      tiers[c.mastery as keyof typeof tiers]++;
+    }
+  });
+
   return (
     <div className="animate-fade" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-6)' }}>
+      {/* Mastery Legend + Stats Banner */}
+      <div style={{ padding: 'var(--sp-4) var(--sp-6)', borderBottom: '1px solid var(--border-subtle)', display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--sp-2)' }}>
+          <div style={{ border: '1px solid #666', color: '#666', borderRadius: 999, padding: '2px 12px', fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-medium)', background: 'transparent' }}>
+            Not Started: {tiers.not_started}
+          </div>
+          <div style={{ border: '1px solid #f59e0b', color: '#f59e0b', borderRadius: 999, padding: '2px 12px', fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-medium)', background: 'transparent' }}>
+            Exposed: {tiers.exposed}
+          </div>
+          <div style={{ border: '1px solid #3b82f6', color: '#3b82f6', borderRadius: 999, padding: '2px 12px', fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-medium)', background: 'transparent' }}>
+            Developing: {tiers.developing}
+          </div>
+          <div style={{ border: '1px solid #8b5cf6', color: '#8b5cf6', borderRadius: 999, padding: '2px 12px', fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-medium)', background: 'transparent' }}>
+            Proficient: {tiers.proficient}
+          </div>
+          <div style={{ border: '1px solid #10b981', color: '#10b981', borderRadius: 999, padding: '2px 12px', fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-medium)', background: 'transparent' }}>
+            Mastered: {tiers.mastered}
+          </div>
+          <div style={{ border: '1px solid #06b6d4', color: '#06b6d4', borderRadius: 999, padding: '2px 12px', fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-medium)', background: 'transparent' }}>
+            Automated: {tiers.automated}
+          </div>
+        </div>
+        <div style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)' }}>
+          {(concepts || []).length} concepts tracked · {tiers.mastered + tiers.automated} mastered · {tiers.not_started} not started
+        </div>
+      </div>
+
       {/* Header */}
       <div>
         <h1 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-bold)', letterSpacing: 'var(--ls-tight)' }}>

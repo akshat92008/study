@@ -73,6 +73,16 @@ interface AppState {
   setActiveGoalId: (id: string | null) => void;
   loadLearningGoals: () => Promise<void>;
   createLearningGoal: (title: string, details?: { deadline: string; currentLevel: string; timeAvailable: number; preferredLearningStyle: string }) => Promise<any>;
+
+  // Global drawer / UI states
+  activeDrawer: 'cognition' | 'revision' | 'autopsy' | null;
+  setActiveDrawer: (drawer: 'cognition' | 'revision' | 'autopsy' | null) => void;
+  autopsyResult: any;
+  setAutopsyResult: (result: any) => void;
+  isUploadingMock: boolean;
+  setIsUploadingMock: (uploading: boolean) => void;
+  uploadStatus: string;
+  setUploadStatus: (status: string) => void;
 }
 
 export const useAppStore = create<AppState>()(
@@ -127,6 +137,15 @@ export const useAppStore = create<AppState>()(
       autopsyLossPoints: 0,
       setAutopsyLossPoints: (points) => set({ autopsyLossPoints: points }),
 
+      activeDrawer: null,
+      setActiveDrawer: (drawer) => set({ activeDrawer: drawer }),
+      autopsyResult: null,
+      setAutopsyResult: (result) => set({ autopsyResult: result }),
+      isUploadingMock: false,
+      setIsUploadingMock: (uploading) => set({ isUploadingMock: uploading }),
+      uploadStatus: '',
+      setUploadStatus: (status) => set({ uploadStatus: status }),
+
       // Persistent Orchestrator Chat State
       chatMessages: [
         {
@@ -177,13 +196,11 @@ To get started, tell me what you want to learn, prepare for, or master (e.g., *"
           }
 
           if (data) {
-            set({
-              chatId: data.id,
-              chatMessages: data.messages && data.messages.length > 0
-                ? data.messages
-                : [{
-                    role: 'assistant',
-                    content: `Welcome to **Cognition OS**. I am your central COMMAND intelligence.
+            const messages = (data.messages && data.messages.length > 0
+              ? data.messages
+              : [{
+                  role: 'assistant',
+                  content: `Welcome to **Cognition OS**. I am your central COMMAND intelligence.
  
 Here is how your study environment is structured:
 • 🧠 **ATLAS** (Cognition Graph) — Visualizes your real-time mastery across all concepts.
@@ -192,9 +209,39 @@ Here is how your study environment is structured:
 • 📅 **PLANNER** (Adaptive Schedule) — Your daily study blocks, optimized by priority and memory retention curves.
  
 To get started, tell me what you want to learn, prepare for, or master (e.g., *"Help me prepare for NEET"* or *"Teach me organic chemistry"*).`,
-                    timestamp: new Date().toISOString()
-                  }],
+                  timestamp: new Date().toISOString()
+                }]) as ChatMessage[];
+
+            set({
+              chatId: data.id,
+              chatMessages: messages,
             });
+
+            const lastMsg = messages[messages.length - 1];
+            const lastMsgTime = lastMsg ? new Date(lastMsg.timestamp).getTime() : 0;
+            const hoursSinceLastMsg = (Date.now() - lastMsgTime) / (1000 * 60 * 60);
+
+            // If more than 8 hours since last message, inject a morning briefing
+            if (hoursSinceLastMsg > 8) {
+              // Fire and forget — fetch briefing and prepend as new assistant message
+              fetch('/api/planner/briefing')
+                .then(r => r.json())
+                .then(briefing => {
+                  if (briefing.greetingText) {
+                    const morningMsg: ChatMessage = {
+                      role: 'assistant',
+                      content: briefing.greetingText,
+                      timestamp: new Date().toISOString()
+                    };
+                    // Add to the beginning of the loaded messages
+                    set(state => ({
+                      chatMessages: [...state.chatMessages, morningMsg]
+                    }));
+                    get().syncChatToSupabase();
+                  }
+                })
+                .catch(() => {}); // Non-critical — silent failure
+            }
           } else {
             const { data: newChat, error: createError } = await supabase
               .from('orchestrator_chats')

@@ -183,6 +183,35 @@ export async function seedConceptsForSubject(userId: string, subject: string, ch
     if (error || !inserted) throw error || new Error('Seeding failed');
     insertedCount += inserted.length;
 
+    // Auto-expand generic (1-concept) chapters via AI in the background
+    Promise.resolve().then(async () => {
+      try {
+        for (const chapter of chapters) {
+          const expansions = CHAPTER_EXPANSIONS[chapter];
+          // Only expand chapters that got the generic fallback (no hardcoded expansion)
+          if (!expansions || expansions.length === 0) {
+            // Check if this chapter still only has 1 concept (the generic node)
+            const { count } = await supabase.from('concepts')
+              .select('*', { count: 'exact', head: true })
+              .eq('user_id', userId)
+              .eq('chapter', chapter);
+            
+            if (count && count <= 1) {
+              // Find the subject for this chapter
+              const { data: existingConcept } = await supabase.from('concepts')
+                .select('subject').eq('user_id', userId).eq('chapter', chapter).limit(1).single();
+              
+              if (existingConcept) {
+                await expandChapterViaMind(userId, existingConcept.subject, chapter);
+              }
+            }
+          }
+        }
+      } catch (e) {
+        logger.warn('Background chapter expansion failed', e);
+      }
+    });
+
     const conceptMap: Record<string, string> = {};
     inserted.forEach((c: any) => { conceptMap[c.name] = c.id; });
 
