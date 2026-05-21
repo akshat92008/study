@@ -1,0 +1,87 @@
+import { z } from 'zod';
+
+// Core System Events Taxonomy
+export const EventTypeSchema = z.enum([
+  'MIND_TUTOR_COMPLETED',
+  'AUTOPSY_MOCK_PROCESSED',
+  'MEMORY_CARD_REVIEWED',
+  'COMMAND_TASK_COMPLETED',
+  'COMMAND_TASK_DELAYED',
+  'PULSE_FRICTION_DETECTED',
+  'ATLAS_MASTERY_UPDATED'
+]);
+
+export type EventType = z.infer<typeof EventTypeSchema>;
+
+// Strict Data Schemas per Event
+export const MindTutorCompletedDataSchema = z.object({
+  conceptId: z.string().uuid(),
+  subject: z.string(),
+  chapter: z.string(),
+  understandingGained: z.boolean(),
+  diagnosedMisconception: z.string().nullable().optional(),
+});
+
+export const AutopsyMockProcessedDataSchema = z.object({
+  mockId: z.string().uuid(),
+  overallAccuracy: z.number().min(0).max(1),
+  primaryMistakeCategory: z.string().optional(),
+  recoverableMarks: z.number(),
+});
+
+export const MemoryCardReviewedDataSchema = z.object({
+  conceptId: z.string().uuid(),
+  cardId: z.string().uuid(),
+  rating: z.number().min(1).max(4), // FSRS rating
+  responseTimeMs: z.number().min(0),
+});
+
+export const CommandTaskCompletedDataSchema = z.object({
+  taskId: z.string().uuid(),
+  taskType: z.string(),
+  timeSpentMs: z.number().min(0),
+});
+
+export const CommandTaskDelayedDataSchema = z.object({
+  taskId: z.string().uuid(),
+  delayHours: z.number(),
+});
+
+export const PulseFrictionDetectedDataSchema = z.object({
+  frictionScore: z.number().min(0).max(100),
+  detectedState: z.enum(['focused', 'neutral', 'frustrated', 'overwhelmed']),
+  triggerSource: z.string(),
+});
+
+export const AtlasMasteryUpdatedDataSchema = z.object({
+  conceptId: z.string().uuid(),
+  newMasteryLevel: z.enum(['learning', 'proficient', 'mastered', 'automated']),
+  previousMasteryLevel: z.string().optional(),
+});
+
+// Union of all data schemas (for general parsing if needed)
+export const EventDataSchema = z.union([
+  MindTutorCompletedDataSchema,
+  AutopsyMockProcessedDataSchema,
+  MemoryCardReviewedDataSchema,
+  CommandTaskCompletedDataSchema,
+  CommandTaskDelayedDataSchema,
+  PulseFrictionDetectedDataSchema,
+  AtlasMasteryUpdatedDataSchema,
+  // Fallback for legacy generic data
+  z.record(z.any())
+]);
+
+export const StrictStudentEventSchema = z.object({
+  id: z.string().uuid().optional(),
+  user_id: z.string().uuid(),
+  type: EventTypeSchema,
+  data: EventDataSchema,
+  status: z.enum(['pending', 'processing', 'completed', 'failed']).default('pending'),
+  idempotency_key: z.string().optional(),
+  retry_count: z.number().default(0),
+  error_message: z.string().nullable().optional(),
+  created_at: z.string().datetime().optional()
+});
+
+export type StrictStudentEvent = z.infer<typeof StrictStudentEventSchema>;

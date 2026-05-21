@@ -26,19 +26,30 @@ function toFSRSCard(row: any): FSRSCard {
   };
 }
 
-export async function getDueCards(userId: string, limit: number = 30) {
+export async function getDueCards(userId: string, limit: number = 75, pulseState: string = 'neutral') {
   const supabase = await createClient();
   const now = new Date().toISOString();
 
+  // HARD CAP: Default to 75 cards max (~15-25 minutes per day).
   // Prioritize Overdue Recovery: 
-  // Oldest due date first, then highest difficulty to rescue at-risk memories.
-  const { data } = await supabase
+  // Oldest due date first, then highest difficulty to rescue at-risk memories, 
+  // then lowest stability (weakness reinforcement).
+  
+  let query = supabase
     .from('revision_cards')
     .select('*')
     .eq('user_id', userId)
-    .lte('due', now)
+    .lte('due', now);
+
+  // PULSE Intervention: Throttle new cognitive load if overwhelmed/frustrated
+  if (pulseState === 'overwhelmed' || pulseState === 'frustrated') {
+    query = query.neq('state', State.New);
+  }
+
+  const { data } = await query
     .order('due', { ascending: true })
     .order('difficulty', { ascending: false })
+    .order('stability', { ascending: true })
     .limit(limit);
 
   return data || [];
@@ -138,6 +149,32 @@ export async function reviewCard(cardId: string, rating: 1 | 2 | 3 | 4, response
       last_reviewed_at: now.toISOString(),
       times_reviewed: row.reps + 1,
     }).eq('id', row.concept_id);
+
+    // 5b. Loop-Breaker: Repeated Failures (> 3 lapses)
+    if (updated.lapses > 3 && rating === 1) {
+      try {
+        const { data: concept } = await supabase.from('concepts').select('subject, chapter').eq('id', row.concept_id).single();
+        if (concept) {
+          // Suspend card or flag it (using 4 for suspended)
+          await supabase.from('revision_cards').update({ state: 4 }).eq('id', cardId);
+          
+          // Inject deep review task into COMMAND planner
+          const d = new Date();
+          d.setDate(d.getDate() + 1); // schedule for tomorrow
+          await supabase.from('study_tasks').insert({
+            user_id: row.user_id,
+            title: `[Deep Review Required] Repeated failures on ${concept.chapter}. Trigger MIND Tutor session.`,
+            scheduled_date: d.toISOString(),
+            estimated_minutes: 30,
+            priority: 4, // High priority
+            is_completed: false
+          });
+          logger.info('Repeated failure loop-breaker triggered. Card suspended, MIND session scheduled.', { cardId, concept_id: row.concept_id });
+        }
+      } catch (e) {
+        logger.error('Failed to trigger repeated failure loop-breaker', e);
+      }
+    }
   }
 
   // 6. Update Daily Performance Telemetry (Accuracy tracking)
@@ -300,5 +337,22 @@ export async function createSingleCard(
   }
   
   return data;
+}
+
+// Exam Mode (Cramming) - Bypasses FSRS due dates
+export async function getExamModeCards(userId: string, subject: string, limit: number = 100) {
+  const supabase = await createClient();
+
+  // Pulls all cards for a specific subject, prioritizing the weakest (lowest stability)
+  const { data } = await supabase
+    .from('revision_cards')
+    .select('*')
+    .eq('user_id', userId)
+    .ilike('subject', `%${subject}%`)
+    .neq('state', 4) // Exclude suspended cards (state = 4)
+    .order('stability', { ascending: true }) // Weakest memories first
+    .limit(limit);
+
+  return data || [];
 }
 

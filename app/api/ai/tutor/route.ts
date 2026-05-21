@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
     });
   }
 
-  const ip = req.ip || req.headers.get('x-forwarded-for') || '127.0.0.1';
+  const ip = (req as any).ip || req.headers.get('x-forwarded-for') || '127.0.0.1';
   const isAllowed = await rateLimit(ip, 50, 60000); // 50 requests per minute
   if (!isAllowed) {
     return new Response(JSON.stringify({ error: 'Too many requests' }), { status: 429 });

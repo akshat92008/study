@@ -30,15 +30,15 @@ export async function generateMentorRecovery(
 
   const unit = examType === 'CUSTOM' ? '% points' : 'marks';
   const prompt = `
-    You are an elite top performer mentor for ${examType === 'CUSTOM' ? 'your field' : examType}.
+    You are an elite, deeply empathetic academic mentor for ${examType === 'CUSTOM' ? 'your field' : examType}.
     The student scored ${currentScore}. Their potential score without silly/rushed mistakes was ${potentialScore}.
     
-    Their highest ROI weak points are:
+    Their highest ROI weak points (unlocked potential) are:
     ${top3Chapters.map(c => `- ${c.subject}: ${c.chapter} (${c.marksLost} ${unit} lost)`).join('\n')}
 
     Generate a structured JSON response containing:
-    1. "mentorQuote": A brutal but highly encouraging 2-sentence roast/mentor quote. (e.g. "You fought Physics bravely, but Chemistry time leakage cost you. Lock in Thermodynamics and you'll jump 20 ${unit}.")
-    2. "tasks": A 3-day sprint plan focusing ONLY on these top chapters. 1 task per day.
+    1. "mentorQuote": A highly encouraging, magical 2-sentence mentor quote focusing on growth and potential. AVOID all shame or "roasting". Frame mistakes as "unlocked potential" and highlight their recoverable marks as guaranteed future gains. (e.g. "You left ${totalRecoverableFromTop3} ${unit} on the table, which is actually incredible news—it means your potential is already there. Let's reclaim those marks by focusing on Physics and Chemistry this week.")
+    2. "tasks": A structured 7-day sprint plan focusing on these top chapters. Exactly 1 task per day.
 
     Respond STRICTLY to the JSON schema.
   `;

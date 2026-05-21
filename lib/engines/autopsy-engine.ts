@@ -138,46 +138,6 @@ export async function processMockAutopsy(
   const incorrectQs = processedQuestions.filter((q: ProcessedQuestion) => q.status === 'Incorrect');
   const { mentorQuote, plan } = await generateMentorRecovery(autopsyData.id, currentScore, potentialScore, incorrectQs, examType);
 
-  // =====================================================================
-  // THE MISSING P0 PIPELINE: AUTOPSY -> ATLAS -> MEMORY
-  // =====================================================================
-  Promise.resolve().then(async () => {
-    try {
-      const { resolveConceptByName } = await import('./concept-resolver');
-      const { updateConceptState } = await import('./cognition-graph');
-      const { createCardFromMistake } = await import('./revision-engine');
-
-      for (const q of incorrectQs) {
-        const conceptId = await resolveConceptByName(userId, q.subject, q.chapter || '');
-        if (conceptId) {
-          // 1. Punish ATLAS: Downscale mastery because they got it wrong (timeSpent=0)
-          await updateConceptState(conceptId, false, 0);
-          
-          // 2. Feed MEMORY: Auto-create FSRS revision card for this specific mistake
-          const questionDesc = `Question #${q.questionNumber} from mock test "${testName}"`;
-          await createCardFromMistake(
-            userId,
-            conceptId,
-            q.subject,
-            q.chapter || '',
-            questionDesc,
-            q.correctAnswer || 'N/A',
-            q.reasoning || 'No explanation provided.'
-          );
-        }
-      }
-      
-      // 3. Trigger student model profiling sync
-      const { syncStudentModel } = await import('./inference-engine');
-      await syncStudentModel(userId);
-      
-      logger.info(`Autopsy-to-ATLAS/MEMORY sync complete for ${incorrectQs.length} mistakes and student model synchronized.`);
-    } catch (e) {
-      logger.error('Failed to sync autopsy mistakes to ATLAS/MEMORY or sync student model', e);
-    }
-  });
-  // =====================================================================
-
   const categoryMap: Record<string, number> = {};
   const chapterMap: Record<string, number> = {};
 
@@ -185,6 +145,73 @@ export async function processMockAutopsy(
     if (q.mistakeCategory) categoryMap[q.mistakeCategory] = (categoryMap[q.mistakeCategory] || 0) + 1;
     if (q.chapter) chapterMap[q.chapter] = (chapterMap[q.chapter] || 0) + q.marksLost;
   });
+
+  // =====================================================================
+  // THE MISSING P0 PIPELINE: AUTOPSY -> ATLAS -> MEMORY -> COMMAND -> PULSE
+  // =====================================================================
+  Promise.resolve().then(async () => {
+    try {
+      const { resolveConceptByName } = await import('./concept-resolver');
+      const { updateConceptState } = await import('./cognition-graph');
+      const { createCardFromMistake } = await import('./revision-engine');
+      const { logPulseSignal } = await import('./pulse-engine');
+
+      // 1. & 2. ATLAS & MEMORY
+      for (const q of incorrectQs) {
+        const conceptId = await resolveConceptByName(userId, q.subject, q.chapter || '');
+        if (conceptId) {
+          // Punish ATLAS
+          await updateConceptState(conceptId, false, 0);
+          
+          // Feed MEMORY
+          const questionDesc = `Question #${q.questionNumber} from mock test "${testName}"`;
+          await createCardFromMistake(
+            userId, conceptId, q.subject, q.chapter || '',
+            questionDesc, q.correctAnswer || 'N/A', q.reasoning || 'No explanation provided.'
+          );
+        }
+      }
+      
+      // 3. COMMAND Planner: Insert 7-day Sprint Plan tasks
+      if (plan && plan.tasks) {
+        const today = new Date();
+        const taskRows = plan.tasks.map((task: any, index: number) => {
+          const d = new Date(today);
+          d.setDate(d.getDate() + index);
+          return {
+            user_id: userId,
+            title: `[Recovery Sprint Day ${index+1}] ${task.subject}: ${task.action}`,
+            scheduled_date: d.toISOString(),
+            estimated_minutes: 60,
+            priority: 3,
+            is_completed: false
+          };
+        });
+        await supabase.from('study_tasks').insert(taskRows);
+      }
+
+      // 4. PULSE: Detect anxiety/time pressure
+      const anxietyMistakes = categoryMap['anxiety'] || 0;
+      const timePressureMistakes = categoryMap['time_pressure'] || 0;
+      
+      if (anxietyMistakes > 2) {
+        await logPulseSignal(userId, 'overwhelmed');
+        logger.info('Pulse Signal: Overwhelmed triggered by high anxiety mistakes.');
+      } else if (timePressureMistakes > 3) {
+        await logPulseSignal(userId, 'frustrated');
+        logger.info('Pulse Signal: Frustrated triggered by high time pressure mistakes.');
+      }
+
+      // 5. Trigger student model profiling sync
+      const { syncStudentModel } = await import('./inference-engine');
+      await syncStudentModel(userId);
+      
+      logger.info(`Autopsy fully synchronized across ATLAS, MEMORY, COMMAND, and PULSE.`);
+    } catch (e) {
+      logger.error('Failed to sync autopsy mistakes to OS sub-systems', e);
+    }
+  });
+  // =====================================================================
 
   const categoryBreakdown = Object.entries(categoryMap).map(([name, value]) => ({ name, value }));
   const chapterLoss = Object.entries(chapterMap)

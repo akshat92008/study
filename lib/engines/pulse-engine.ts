@@ -35,32 +35,37 @@ const FRICTION_CONFIGS: Record<CognitiveState, PulseAdaptationConfig> = {
   }
 };
 
-export async function detectStudyFriction(userId: string): Promise<{ state: CognitiveState; confidence: number }> {
+export async function detectStudyFriction(userId: string): Promise<{ state: CognitiveState; confidence: number; frictionScore: number }> {
   const supabase = await createClient();
 
   try {
     // 1. Fetch Deep Telemetry (Last 48 Hours)
-    const [snapshotsRes, sessionsRes, tasksRes, mistakesRes] = await Promise.all([
+    const [snapshotsRes, sessionsRes, tasksRes, cardsRes, timingRes] = await Promise.all([
       supabase.from('performance_snapshots').select('accuracy').eq('user_id', userId).order('date', { ascending: false }).limit(3),
       supabase.from('study_sessions').select('duration_minutes').eq('user_id', userId).order('started_at', { ascending: false }).limit(5),
       supabase.from('study_tasks').select('scheduled_date, completed_at').eq('user_id', userId).eq('is_completed', true).order('completed_at', { ascending: false }).limit(10),
-      supabase.from('mistakes').select('occurrence_count').eq('user_id', userId).order('created_at', { ascending: false }).limit(10)
+      supabase.from('revision_cards').select('lapses').eq('user_id', userId).order('last_review', { ascending: false }).limit(20),
+      supabase.from('pulse_signals').select('notes').eq('user_id', userId).eq('signal_type', 'message_timing').order('created_at', { ascending: false }).limit(5)
     ]);
 
-    let frictionScore = 0; // 0 = High Momentum, 10 = Severe Overload
+    let frictionScore = 0; // 0 = High Momentum, 100 = Severe Overload / Confidence Collapse
     
-    // Signal A: Accuracy Drops (Weight: +3)
+    // Signal 1: Accuracy Velocity (Max +30)
     const accuracies = (snapshotsRes.data || []).map(s => s.accuracy || 0);
-    if (accuracies.length >= 2 && accuracies[0] < accuracies[1] - 0.15) frictionScore += 3;
-    else if (accuracies[0] < 0.5) frictionScore += 2;
+    if (accuracies.length >= 2) {
+      if (accuracies[0] < accuracies[1] - 0.20) frictionScore += 30; // Massive sudden drop
+      else if (accuracies[0] < accuracies[1] - 0.10) frictionScore += 15;
+    }
+    if (accuracies[0] !== undefined && accuracies[0] < 0.5) frictionScore += 20;
 
-    // Signal B: Session Abandonment (Weight: +3)
+    // Signal 2: Session Abandonment (Max +25)
     // Multiple sessions under 5 minutes indicates inability to focus/engage
     const sessions = sessionsRes.data || [];
     const abandonedSessions = sessions.filter(s => (s.duration_minutes || 0) < 5).length;
-    if (abandonedSessions >= 2) frictionScore += 3;
+    if (abandonedSessions >= 3) frictionScore += 25;
+    else if (abandonedSessions >= 2) frictionScore += 15;
 
-    // Signal C: Delayed Completion (Weight: +2)
+    // Signal 3: Consistency / Delayed Tasks (Max +15)
     const tasks = tasksRes.data || [];
     let delayedTasks = 0;
     tasks.forEach(t => {
@@ -69,26 +74,41 @@ export async function detectStudyFriction(userId: string): Promise<{ state: Cogn
         if (diffHours > 24) delayedTasks++; // Completed a day late
       }
     });
-    if (delayedTasks >= 3) frictionScore += 2;
+    if (delayedTasks >= 3) frictionScore += 15;
 
-    // Signal D: Repeated Mistakes (Weight: +2)
-    const mistakes = mistakesRes.data || [];
-    const repeated = mistakes.filter(m => (m.occurrence_count || 1) > 1).length;
-    if (repeated >= 3) frictionScore += 2;
+    // Signal 4: Retrieval Performance / FSRS Lapses (Max +15)
+    const cards = cardsRes.data || [];
+    const highLapses = cards.filter(c => (c.lapses || 0) > 2).length;
+    if (highLapses >= 5) frictionScore += 15;
+    else if (highLapses >= 3) frictionScore += 10;
+
+    // Signal 5: Tutor Hesitation (Max +15)
+    const timings = timingRes.data || [];
+    let highHesitation = 0;
+    timings.forEach(t => {
+      try {
+        const parsed = JSON.parse(t.notes || '{}');
+        if ((parsed.hesitation || 0) > 6) highHesitation++;
+      } catch {}
+    });
+    if (highHesitation >= 3) frictionScore += 15;
+
+    // Cap at 100
+    frictionScore = Math.min(frictionScore, 100);
 
     // 2. Map Friction Score to Safe Cognitive State
     let determinedState: CognitiveState = 'neutral';
-    if (frictionScore >= 7) determinedState = 'overwhelmed';
-    else if (frictionScore >= 4) determinedState = 'frustrated';
-    else if (frictionScore === 0 && (accuracies[0] || 0) > 0.8) determinedState = 'focused';
+    if (frictionScore >= 75) determinedState = 'overwhelmed'; // Spiral / Confidence Collapse
+    else if (frictionScore >= 45) determinedState = 'frustrated'; // Fatigue / Burnout Risk
+    else if (frictionScore <= 15 && (accuracies[0] || 0) > 0.8) determinedState = 'focused'; // Momentum
 
     logger.info('PULSE Friction Telemetry Calculated', { userId, frictionScore, determinedState });
 
-    return { state: determinedState, confidence: 0.85 };
+    return { state: determinedState, confidence: 0.85, frictionScore };
 
   } catch (error) {
     logger.error('Failed to calculate PULSE friction', error);
-    return { state: 'neutral', confidence: 0.1 }; // Safe fallback
+    return { state: 'neutral', confidence: 0.1, frictionScore: 20 }; // Safe fallback
   }
 }
 

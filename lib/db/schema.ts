@@ -400,4 +400,27 @@ export const learnerDailyMetrics = pgTable('learner_daily_metrics', {
   createdAt: timestamp('created_at').defaultNow(),
 });
 
+// Chat sessions table
+export const chatSessions = pgTable('chat_sessions', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').references(() => profiles.id, { onDelete: 'cascade' }).notNull(),
+  sessionType: text('session_type').notNull(), // 'global', 'tutor', 'mentor'
+  conceptId: uuid('concept_id').references(() => concepts.id, { onDelete: 'set null' }),
+  title: text('title').notNull(),
+  summary: text('summary'),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+
+// Chat messages table (flat table)
+export const chatMessages = pgTable('chat_messages', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  sessionId: uuid('session_id').references(() => chatSessions.id, { onDelete: 'cascade' }).notNull(),
+  userId: uuid('user_id').references(() => profiles.id, { onDelete: 'cascade' }).notNull(),
+  role: text('role').notNull(), // 'user', 'assistant', 'system'
+  content: text('content').notNull(),
+  metadata: jsonb('metadata').default({}),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
 

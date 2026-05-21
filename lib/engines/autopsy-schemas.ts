@@ -33,5 +33,5 @@ export const RecoveryTaskSchema = z.object({
 
 export const RecoveryPlanSchema = z.object({
   mentorQuote: z.string(),
-  tasks: z.array(RecoveryTaskSchema).max(5), // Keep it focused (3-5 days)
+  tasks: z.array(RecoveryTaskSchema).max(7), // 7-day sprint plan
 });

@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { createClient } from '@/lib/supabase/client';
+import { createChatSlice, ChatSlice } from './slices/chatSlice';
 
 interface Toast {
   id: string;
@@ -9,12 +10,14 @@ interface Toast {
 }
 
 export interface ChatMessage {
+  id?: string;
   role: 'user' | 'assistant' | 'system';
   content: string;
   timestamp: string;
+  metadata?: any;
 }
 
-interface AppState {
+interface AppState extends ChatSlice {
   // Command Bar
   isCommandBarOpen: boolean;
   setCommandBarOpen: (open: boolean) => void;
@@ -58,14 +61,7 @@ interface AppState {
   autopsyLossPoints: number;
   setAutopsyLossPoints: (points: number) => void;
 
-  // Persistent Orchestrator Chat State
-  chatMessages: ChatMessage[];
-  chatId: string | null;
-  setChatMessages: (messages: ChatMessage[]) => void;
-  addChatMessage: (message: ChatMessage) => void;
-  loadChatFromSupabase: () => Promise<void>;
-  syncChatToSupabase: () => Promise<void>;
-  clearChat: () => void;
+  // Persistent Orchestrator Chat State (Managed by ChatSlice)
 
   // Learning Goals
   learningGoals: any[];
@@ -87,7 +83,8 @@ interface AppState {
 
 export const useAppStore = create<AppState>()(
   persist(
-    (set, get) => ({
+    (set, get, api) => ({
+      ...createChatSlice(set, get, api as any),
       isCommandBarOpen: false,
       setCommandBarOpen: (open) => set({ isCommandBarOpen: open }),
       toggleCommandBar: () => set((state) => ({ isCommandBarOpen: !state.isCommandBarOpen })),
@@ -146,187 +143,7 @@ export const useAppStore = create<AppState>()(
       uploadStatus: '',
       setUploadStatus: (status) => set({ uploadStatus: status }),
 
-      // Persistent Orchestrator Chat State
-      chatMessages: [
-        {
-          role: 'assistant',
-          content: `Welcome to **Cognition OS**. I am your central COMMAND intelligence.
- 
-Here is how your study environment is structured:
-• 🧠 **ATLAS** (Cognition Graph) — Visualizes your real-time mastery across all concepts.
-• 🃏 **MEMORY** (Spaced Repetition) — A smart flashcard queue powered by FSRS-5.
-• 🔬 **AUTOPSY** (Mistake Ingester) — Upload mock tests to diagnose and fix conceptual mistakes.
-• 📅 **PLANNER** (Adaptive Schedule) — Your daily study blocks, optimized by priority and memory retention curves.
- 
-To get started, tell me what you want to learn, prepare for, or master (e.g., *"Help me prepare for NEET"* or *"Teach me organic chemistry"*).`,
-          timestamp: new Date().toISOString()
-        }
-      ],
-      chatId: null,
-
-      setChatMessages: (messages) => set({ chatMessages: messages }),
-      addChatMessage: (message) => {
-        set((state) => ({
-          chatMessages: [...state.chatMessages, message]
-        }));
-        get().syncChatToSupabase();
-      },
-
-      loadChatFromSupabase: async () => {
-        try {
-          const supabase = createClient();
-          const { data: { user } } = await supabase.auth.getUser();
-          if (!user) return;
-
-          const { data, error } = await supabase
-            .from('orchestrator_chats')
-            .select('*')
-            .eq('user_id', user.id)
-            .order('updated_at', { ascending: false })
-            .limit(1)
-            .maybeSingle();
-
-          if (error) {
-            if (error.code === 'PGRST205') {
-              console.warn('orchestrator_chats table not found. Please run the database migrations in the Supabase SQL Editor.');
-            } else {
-              console.error('Error loading chat from Supabase:', error.message || error, 'Details:', error.details, 'Code:', error.code);
-            }
-            return;
-          }
-
-          if (data) {
-            const messages = (data.messages && data.messages.length > 0
-              ? data.messages
-              : [{
-                  role: 'assistant',
-                  content: `Welcome to **Cognition OS**. I am your central COMMAND intelligence.
- 
-Here is how your study environment is structured:
-• 🧠 **ATLAS** (Cognition Graph) — Visualizes your real-time mastery across all concepts.
-• 🃏 **MEMORY** (Spaced Repetition) — A smart flashcard queue powered by FSRS-5.
-• 🔬 **AUTOPSY** (Mistake Ingester) — Upload mock tests to diagnose and fix conceptual mistakes.
-• 📅 **PLANNER** (Adaptive Schedule) — Your daily study blocks, optimized by priority and memory retention curves.
- 
-To get started, tell me what you want to learn, prepare for, or master (e.g., *"Help me prepare for NEET"* or *"Teach me organic chemistry"*).`,
-                  timestamp: new Date().toISOString()
-                }]) as ChatMessage[];
-
-            set({
-              chatId: data.id,
-              chatMessages: messages,
-            });
-
-            const lastMsg = messages[messages.length - 1];
-            const lastMsgTime = lastMsg ? new Date(lastMsg.timestamp).getTime() : 0;
-            const hoursSinceLastMsg = (Date.now() - lastMsgTime) / (1000 * 60 * 60);
-
-            // If more than 8 hours since last message, inject a morning briefing
-            if (hoursSinceLastMsg > 8) {
-              // Fire and forget — fetch briefing and prepend as new assistant message
-              fetch('/api/planner/briefing')
-                .then(r => r.json())
-                .then(briefing => {
-                  if (briefing.greetingText) {
-                    const morningMsg: ChatMessage = {
-                      role: 'assistant',
-                      content: briefing.greetingText,
-                      timestamp: new Date().toISOString()
-                    };
-                    // Add to the beginning of the loaded messages
-                    set(state => ({
-                      chatMessages: [...state.chatMessages, morningMsg]
-                    }));
-                    get().syncChatToSupabase();
-                  }
-                })
-                .catch(() => {}); // Non-critical — silent failure
-            }
-          } else {
-            const { data: newChat, error: createError } = await supabase
-              .from('orchestrator_chats')
-              .upsert({
-                user_id: user.id,
-                messages: [{
-                  role: 'assistant',
-                  content: `Welcome to **Cognition OS**. I am your central COMMAND intelligence.
- 
-Here is how your study environment is structured:
-• 🧠 **ATLAS** (Cognition Graph) — Visualizes your real-time mastery across all concepts.
-• 🃏 **MEMORY** (Spaced Repetition) — A smart flashcard queue powered by FSRS-5.
-• 🔬 **AUTOPSY** (Mistake Ingester) — Upload mock tests to diagnose and fix conceptual mistakes.
-• 📅 **PLANNER** (Adaptive Schedule) — Your daily study blocks, optimized by priority and memory retention curves.
- 
-To get started, tell me what you want to learn, prepare for, or master (e.g., *"Help me prepare for NEET"* or *"Teach me organic chemistry"*).`,
-                  timestamp: new Date().toISOString()
-                }]
-              }, {
-                onConflict: 'user_id'
-              })
-              .select()
-              .single();
-
-            if (createError) {
-              if (createError.code === 'PGRST205') {
-                console.warn('orchestrator_chats table not found. Please run the database migrations in the Supabase SQL Editor.');
-              } else {
-                console.error('Error creating chat in Supabase:', createError.message || createError, 'Details:', createError.details, 'Code:', createError.code);
-              }
-            } else if (newChat) {
-              set({
-                chatId: newChat.id,
-                chatMessages: newChat.messages,
-              });
-            }
-          }
-        } catch (err) {
-          console.error('Failed to load chat:', err);
-        }
-      },
-
-      syncChatToSupabase: async () => {
-        try {
-          const { chatId, chatMessages } = get();
-          if (!chatId) return;
-
-          const supabase = createClient();
-          const { error } = await supabase
-            .from('orchestrator_chats')
-            .update({
-              messages: chatMessages,
-              updated_at: new Date().toISOString(),
-            })
-            .eq('id', chatId);
-
-          if (error) {
-            if (error.code === 'PGRST205') {
-              console.warn('orchestrator_chats table not found. Please run the database migrations in the Supabase SQL Editor.');
-            } else {
-              console.error('Error syncing chat to Supabase:', error.message || error, 'Details:', error.details, 'Code:', error.code);
-            }
-          }
-        } catch (err) {
-          console.error('Failed to sync chat:', err);
-        }
-      },
-
-      clearChat: () => {
-        const initialMsg: ChatMessage = {
-          role: 'assistant',
-          content: `Welcome to **Cognition OS**. I am your central COMMAND intelligence.
- 
-Here is how your study environment is structured:
-• 🧠 **ATLAS** (Cognition Graph) — Visualizes your real-time mastery across all concepts.
-• 🃏 **MEMORY** (Spaced Repetition) — A smart flashcard queue powered by FSRS-5.
-• 🔬 **AUTOPSY** (Mistake Ingester) — Upload mock tests to diagnose and fix conceptual mistakes.
-• 📅 **PLANNER** (Adaptive Schedule) — Your daily study blocks, optimized by priority and memory retention curves.
- 
-To get started, tell me what you want to learn, prepare for, or master (e.g., *"Help me prepare for NEET"* or *"Teach me organic chemistry"*).`,
-          timestamp: new Date().toISOString(),
-        };
-        set({ chatMessages: [initialMsg] });
-        get().syncChatToSupabase();
-      },
+      // Persistent Orchestrator Chat State is handled by chatSlice above
 
       // Learning Goals implementation
       learningGoals: [],
@@ -408,6 +225,7 @@ To get started, tell me what you want to learn, prepare for, or master (e.g., *"
       partialize: (state) => ({
         chatMessages: state.chatMessages,
         chatId: state.chatId,
+        pendingSyncQueue: state.pendingSyncQueue,
         isSidebarCollapsed: state.isSidebarCollapsed,
         activeGoalId: state.activeGoalId,
       }),

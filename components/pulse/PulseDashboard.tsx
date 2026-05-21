@@ -48,19 +48,19 @@ export default function PulseDashboard({ data }: PulseDashboardProps) {
       days[d.toISOString().split('T')[0]] = { friction: 0, count: 0 };
     }
 
-    const stateFriction: Record<string, number> = { focused: 0, neutral: 2, frustrated: 6, overwhelmed: 10 };
+    const stateFriction: Record<string, number> = { focused: 10, neutral: 30, frustrated: 60, overwhelmed: 90 };
 
     (history?.signals || []).forEach((sig: any) => {
       const dateKey = new Date(sig.created_at).toISOString().split('T')[0];
       if (days[dateKey] !== undefined) {
         const stateStr = sig.emotional_state || 'neutral';
-        days[dateKey].friction += stateFriction[stateStr] ?? 2;
+        days[dateKey].friction += stateFriction[stateStr] ?? 30;
         days[dateKey].count++;
       }
     });
 
     return Object.entries(days).map(([date, val]) => {
-      const avgFriction = val.count > 0 ? Math.round(val.friction / val.count) : 2;
+      const avgFriction = val.count > 0 ? Math.round(val.friction / val.count) : 30;
       return {
         date,
         friction: avgFriction,
@@ -197,14 +197,14 @@ export default function PulseDashboard({ data }: PulseDashboardProps) {
             <BarChart data={timeline} margin={{ top: 5, right: 0, left: -20, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="var(--border-subtle)" vertical={false} />
               <XAxis dataKey="label" stroke="var(--text-tertiary)" fontSize={10} tickLine={false} axisLine={false} />
-              <YAxis stroke="var(--text-tertiary)" fontSize={10} domain={[0, 10]} tickLine={false} axisLine={false} />
+              <YAxis stroke="var(--text-tertiary)" fontSize={10} domain={[0, 100]} tickLine={false} axisLine={false} />
               <Tooltip 
                 contentStyle={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-default)', borderRadius: '8px' }}
                 cursor={{ fill: 'var(--bg-hover)' }}
               />
               <Bar dataKey="friction" radius={[4, 4, 0, 0]}>
                 {timeline.map((entry: any, index: number) => (
-                  <Cell key={`cell-${index}`} fill={entry.friction >= 7 ? 'var(--danger)' : entry.friction >= 4 ? 'var(--warning)' : 'var(--accent-cyan)'} />
+                  <Cell key={`cell-${index}`} fill={entry.friction >= 75 ? 'var(--danger)' : entry.friction >= 45 ? 'var(--warning)' : 'var(--accent-cyan)'} />
                 ))}
               </Bar>
             </BarChart>

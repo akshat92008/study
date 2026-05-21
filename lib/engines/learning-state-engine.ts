@@ -39,18 +39,29 @@ export class LearningStateEngine {
    * and triggers reactive rules.
    */
   static async ingestEvent(event: LearnerTelemetryEvent): Promise<void> {
+    const { EventOrchestrator } = await import('../events/orchestrator');
+    
+    // Instead of processing immediately, we push it to the robust event bus for reliable processing
+    await EventOrchestrator.publishEvent({
+      user_id: event.userId,
+      type: event.type as any, // Cast legacy types
+      data: event.data,
+      idempotency_key: event.data.taskId || undefined // Use task ID as idempotency if available
+    });
+  }
+
+  /**
+   * Internal method called by the EventOrchestrator to actually process the metrics.
+   */
+  static async processLegacyEvent(event: LearnerTelemetryEvent): Promise<void> {
     const supabase = await createClient();
     const { userId, type, data } = event;
 
-    logger.info('Ingesting student telemetry event', { userId, type });
+    logger.info('Processing legacy telemetry event', { userId, type });
 
     try {
-      // 1. Log event to student_events
-      await supabase.from('student_events').insert({
-        user_id: userId,
-        type,
-        data,
-      });
+      // Note: We no longer insert into student_events here. 
+      // The EventOrchestrator handles the database persistence, retries, and locking.
 
       // 2. Recompute and update state metrics
       const [confidence, retention, velocity, patternsAndWeakAreas] = await Promise.all([

@@ -12,6 +12,7 @@ import { logPulseSignal } from '@/lib/engines/pulse-engine';
 import { resolveConceptByName } from '@/lib/engines/concept-resolver';
 import { z } from 'zod';
 import { rateLimit } from '@/lib/utils/rate-limit';
+import { OrchestratorService } from '@/services/orchestrator.service';
  
 // ─── Capability Registry ────────────────────────────────────────────────────
 // Single source of truth for what this OS can actually do.
@@ -82,13 +83,13 @@ export async function POST(req: NextRequest) {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return new Response('Unauthorized', { status: 401 });
 
-    const ip = req.ip || req.headers.get('x-forwarded-for') || '127.0.0.1';
+    const ip = (req as any).ip || req.headers.get('x-forwarded-for') || '127.0.0.1';
     const isAllowed = await rateLimit(ip, 50, 60000); // 50 requests per minute
     if (!isAllowed) {
       return new Response('Too many requests', { status: 429 });
     }
  
-    const { message, history, currentPath } = await req.json();
+    const { message, history, currentPath, activeGoalId } = await req.json();
  
     // 1. Format recent history for classifier context
     const recentHistoryText = (history || [])
@@ -337,29 +338,26 @@ export async function POST(req: NextRequest) {
       return new Response(streamTextResponse(fullResponse), { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
     }
  
-    // ── GENERAL_CHAT / TUTOR_SESSION → MIND Engine ───────────────────────────
-    const mindContext = await getMINDContext(user.id, message);
-    const systemPrompt = getMINDSystemPrompt(mindContext, currentPath || '/dashboard', CAPABILITY_REGISTRY);
-    const userPrompt = buildMINDUserPrompt(recentHistoryText, message);
- 
+    // ── GENERAL_CHAT / TUTOR_SESSION → OrchestratorService ───────────────────
+    const orchestrator = new OrchestratorService();
     const encoder = new TextEncoder();
     let fullResponse = '';
  
     const stream = new ReadableStream({
       async start(controller) {
         try {
-          const generator = streamText('pro', systemPrompt, userPrompt, 0.75);
+          const generator = await orchestrator.processUserMessage(user.id, message, history, activeGoalId, intent);
           for await (const chunk of generator) {
             controller.enqueue(encoder.encode(chunk));
             fullResponse += chunk;
           }
         } catch (err: any) {
-          logger.error('Error during MIND streaming', err);
+          logger.error('Error during MIND streaming via Orchestrator', err);
           controller.enqueue(encoder.encode('\n\nI hit a temporary snag — please try again in a moment.'));
         } finally {
           controller.close();
  
-          // Background Post-Session Synthesis
+          // Background Post-Session Synthesis (Gap detection & flashcards)
           if (fullResponse.trim().length > 0) {
             Promise.resolve().then(async () => {
               try {
@@ -396,18 +394,6 @@ Respond STRICTLY in JSON format with these exact fields:
                 if (analysis.conceptDiscussed && analysis.subject && analysis.conceptName) {
                   resolvedId = await resolveConceptByName(user.id, analysis.subject, analysis.conceptName);
                 }
- 
-                await db.from('tutor_sessions').insert({
-                  user_id: user.id,
-                  concept_id: resolvedId,
-                  messages: [
-                    ...(history || []),
-                    { role: 'user', content: message },
-                    { role: 'tutor', content: fullResponse }
-                  ],
-                  summary: analysis.summary || 'Study discussion.',
-                  understanding_gained: analysis.understandingGained ? 1 : 0
-                });
  
                 if (resolvedId && analysis.understandingGained) {
                   await updateConceptState(resolvedId, true, 0);

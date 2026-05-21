@@ -1,8 +1,10 @@
 'use server';
 
 import { createClient } from '@/lib/supabase/server';
-import { ingestMaterial } from '@/lib/engines/rag-engine';
 import { revalidatePath } from 'next/cache';
+import { processDocumentIntoMemory } from '@/lib/engines/memory-engine';
+import { genai, MODELS } from '@/lib/ai/gemini';
+import { logger } from '@/lib/utils/logger';
 
 export async function uploadNotes(formData: FormData) {
   const supabase = await createClient();
@@ -10,16 +12,43 @@ export async function uploadNotes(formData: FormData) {
   if (!user) return { error: 'Not authenticated' };
 
   const title = formData.get('title') as string;
-  const content = formData.get('content') as string;
+  const file = formData.get('file') as File | null;
+  let content = formData.get('content') as string;
 
-  if (!title || !content) return { error: 'Title and content are required' };
+  if (!title) return { error: 'Title is required' };
+  if (!file && !content) return { error: 'Either a file or text content is required' };
 
   try {
-    // Calls the RAG engine you built!
-    const result = await ingestMaterial(user.id, title, content);
+    // Phase 10: Gemini 1.5 Pro Multimodal Extraction Pipeline
+    if (file) {
+      logger.info('Processing file upload via Gemini Multimodal', { filename: file.name, type: file.type });
+      const buffer = await file.arrayBuffer();
+      const base64 = Buffer.from(buffer).toString('base64');
+
+      const response = await genai.models.generateContent({
+        model: MODELS.pro,
+        contents: [
+          "Extract all text, equations, and tables from this document accurately. Preserve logical reading order and section headers. Output ONLY the extracted text with proper markdown formatting.",
+          {
+            inlineData: {
+              data: base64,
+              mimeType: file.type
+            }
+          }
+        ]
+      });
+
+      content = response.text || '';
+      if (!content) throw new Error('Failed to extract text from file.');
+    }
+
+    // Call the advanced memory engine (semantic chunking)
+    const result = await processDocumentIntoMemory(user.id, { title, text: content });
+    
     revalidatePath('/knowledge');
-    return { success: true, chunks: result.chunksProcessed };
+    return { success: true, chunks: result.chunks };
   } catch (err: any) {
+    logger.error('Upload Notes Failed', err);
     return { error: err.message || 'Failed to process material' };
   }
 }
