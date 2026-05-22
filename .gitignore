@@ -31,3 +31,17 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Development scratch
+scratch/
+*.local
+.env
+.env.local
+.env.production
+.env.*.local
+
+# Test artifacts
+*.test-output.json
+check_*.js
+apply_*.js
+
