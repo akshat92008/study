@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'Missing SUPABASE_DB_PASSWORD in environment' }, { status: 500 });
   }
 
-  const sqlPath = path.join(process.cwd(), 'scratch', 'learner_state_migration.sql');
+  const sqlPath = path.join(process.cwd(), 'scratch', 'soul_layer_migration.sql');
   if (!fs.existsSync(sqlPath)) {
     return NextResponse.json({ error: 'Migration SQL file not found at: ' + sqlPath }, { status: 404 });
   }
@@ -32,7 +32,7 @@ export async function GET(req: NextRequest) {
     await directClient.connect();
     connectionLog.push('🎉 SUCCESS! Connected directly to Supabase host. Running migration...');
     await directClient.query(sql);
-    connectionLog.push('✅ Learning State Engine migration applied successfully!');
+    connectionLog.push('✅ Soul Layer migration applied successfully!');
     await directClient.end();
     success = true;
   } catch (err: any) {
@@ -73,7 +73,7 @@ export async function GET(req: NextRequest) {
           await client.connect();
           connectionLog.push(`🎉 SUCCESS! Connected to pooler ${region} on port ${port}. Running migration...`);
           await client.query(sql);
-          connectionLog.push('✅ Learning State Engine migration applied successfully!');
+          connectionLog.push('✅ Soul Layer migration applied successfully!');
           await client.end();
           success = true;
           break;

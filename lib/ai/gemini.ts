@@ -59,31 +59,54 @@ export async function generateText(
 function zodToGeminiSchema(schema: any): any {
   if (!schema) return undefined;
 
-  if (typeof schema.unwrap === 'function') {
-    return zodToGeminiSchema(schema.unwrap());
+  let isNullable = false;
+  let currentSchema = schema;
+
+  // Unwrap any outer decorators/wrappers (e.g. ZodOptional, ZodNullable, ZodEffects)
+  // to get to the base schema type while preserving nullable metadata.
+  while (currentSchema) {
+    const typeName = currentSchema._def?.typeName;
+    if (typeName === 'ZodNullable' || (typeof currentSchema.isNullable === 'function' && currentSchema.isNullable())) {
+      isNullable = true;
+    }
+
+    if (typeof currentSchema.unwrap === 'function') {
+      currentSchema = currentSchema.unwrap();
+    } else if (currentSchema._def?.schema) {
+      currentSchema = currentSchema._def.schema;
+    } else {
+      break;
+    }
   }
 
-  const def = schema._def;
-  if (!def) return { type: 'string' };
+  const def = currentSchema._def;
+  if (!def) return { type: 'string', ...(isNullable ? { nullable: true } : {}) };
+
+  let geminiSchema: any;
 
   switch (def.typeName) {
     case 'ZodString':
-      return { type: 'string' };
+      geminiSchema = { type: 'string' };
+      break;
     case 'ZodNumber':
-      return { type: 'number' };
+      geminiSchema = { type: 'number' };
+      break;
     case 'ZodBoolean':
-      return { type: 'boolean' };
+      geminiSchema = { type: 'boolean' };
+      break;
     case 'ZodEnum':
-      return { type: 'string', enum: def.values };
+      geminiSchema = { type: 'string', enum: def.values };
+      break;
     case 'ZodArray':
-      return {
+      geminiSchema = {
         type: 'array',
         items: zodToGeminiSchema(def.type),
       };
+      break;
     case 'ZodObject': {
       const properties: Record<string, any> = {};
       const required: string[] = [];
-      const shape = typeof def.shape === 'function' ? def.shape() : schema.shape;
+      const shape = typeof def.shape === 'function' ? def.shape() : currentSchema.shape;
       
       if (shape) {
         for (const [key, value] of Object.entries(shape)) {
@@ -91,30 +114,37 @@ function zodToGeminiSchema(schema: any): any {
           if (propSchema) {
             properties[key] = propSchema;
             
-            const valDef = (value as any)?._def;
-            const isOptional = valDef?.typeName === 'ZodOptional' || 
-                               valDef?.typeName === 'ZodNullable' ||
-                               typeof (value as any).unwrap === 'function';
+            // Check if field is optional. We do NOT check nullable here as optional means it can be omitted,
+            // while nullable just means its value can be null but the field itself should still be present (required).
+            const isOptional = typeof (value as any).isOptional === 'function'
+              ? (value as any).isOptional()
+              : ((value as any)?._def?.typeName === 'ZodOptional');
+            
             if (!isOptional) {
               required.push(key);
             }
           }
         }
       }
-      return {
+      geminiSchema = {
         type: 'object',
         properties,
         required: required.length > 0 ? required : undefined,
       };
+      break;
     }
     case 'ZodEffects':
-      return zodToGeminiSchema(def.schema);
-    case 'ZodOptional':
-    case 'ZodNullable':
-      return zodToGeminiSchema(def.innerType);
+      geminiSchema = zodToGeminiSchema(def.schema);
+      break;
     default:
-      return { type: 'string' };
+      geminiSchema = { type: 'string' };
   }
+
+  if (isNullable && geminiSchema) {
+    geminiSchema.nullable = true;
+  }
+
+  return geminiSchema;
 }
 
 // Helper to generate JSON with a specific model (Zod optional for backward compatibility)
