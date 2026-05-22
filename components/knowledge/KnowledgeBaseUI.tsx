@@ -6,13 +6,42 @@ import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 import Badge from '@/components/ui/Badge';
 import { uploadNotes } from '@/lib/actions/knowledge';
-import { Database, Plus, FileText, Loader2, Sparkles } from 'lucide-react';
+import { Database, Plus, FileText, Loader2, Sparkles, Headphones } from 'lucide-react';
+import { AudioPlayer } from './AudioPlayer';
 
 export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials: any[] }) {
   const [materials, setMaterials] = useState(initialMaterials);
   const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<{ type: 'error' | 'success', msg: string } | null>(null);
+  const [audioResponse, setAudioResponse] = useState<{ script: string; audioDataUrl: string | null; materialTitle: string } | null>(null);
+  const [generatingPodcastId, setGeneratingPodcastId] = useState<string | null>(null);
+
+  async function handleGeneratePodcast(materialId: string) {
+    setGeneratingPodcastId(materialId);
+    setStatus(null);
+    try {
+      const response = await fetch('/api/knowledge/audio', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ materialId }),
+      });
+      const data = await response.json();
+      if (!response.ok || data.error) {
+        setStatus({ type: 'error', msg: data.error || 'Failed to generate podcast' });
+      } else {
+        setAudioResponse({
+          script: data.script,
+          audioDataUrl: data.audioDataUrl,
+          materialTitle: data.materialTitle,
+        });
+      }
+    } catch (err: any) {
+      setStatus({ type: 'error', msg: err.message || 'Error generating podcast' });
+    } finally {
+      setGeneratingPodcastId(null);
+    }
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -106,6 +135,14 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
         </Card>
       )}
 
+      {audioResponse && (
+        <AudioPlayer
+          script={audioResponse.script}
+          audioDataUrl={audioResponse.audioDataUrl}
+          materialTitle={audioResponse.materialTitle}
+        />
+      )}
+
       {/* Uploaded Materials List */}
       <Card>
         <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'var(--fw-semibold)', marginBottom: 'var(--sp-4)' }}>
@@ -131,7 +168,25 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
                     Ingested on {new Date(mat.created_at).toLocaleDateString()}
                   </div>
                 </div>
-                <Badge color="cyan">Vectorized</Badge>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
+                  <Button
+                    size="sm"
+                    variant="secondary"
+                    disabled={generatingPodcastId !== null}
+                    onClick={() => handleGeneratePodcast(mat.id)}
+                  >
+                    {generatingPodcastId === mat.id ? (
+                      <>
+                        <Loader2 size={14} className="spin" style={{ animation: 'spin 1s linear infinite' }} /> Generating...
+                      </>
+                    ) : (
+                      <>
+                        <Headphones size={14} /> Listen
+                      </>
+                    )}
+                  </Button>
+                  <Badge color="cyan">Vectorized</Badge>
+                </div>
               </div>
             ))}
           </div>
