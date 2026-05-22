@@ -180,6 +180,13 @@ export async function POST(req: NextRequest) {
       const todayStr = new Date().toISOString().split('T')[0];
       const date = args.date || todayStr;
  
+      if (!await rateLimit(`planner-${user.id}`, 5, 24 * 60 * 60 * 1000)) {
+        const fallbackText = `You've hit today's plan generation limit. Your current plan is still active and optimized. I'll refresh it automatically overnight. Anything else you want to work on?`;
+        return new Response(streamTextResponse(fallbackText), {
+          headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+        });
+      }
+
       await LearningStateEngine.replanForUser(user.id, date);
  
       const responseText = `Done — I've reorganized today's study plan based on your current progress and retention data.\n\nYour updated tasks for **${date}** are now visible in the left sidebar. The order has been optimized by mastery priority and spaced repetition curves.\n\nReady to begin? Just say "let's start" or ask me about any topic on today's list.`;

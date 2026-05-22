@@ -14,6 +14,9 @@ import { LearningStateEngine } from '@/lib/engines/learning-state-engine';
 import { Type } from '@google/genai';
 import { rateLimit } from '@/lib/utils/rate-limit';
 import { safeError } from '@/lib/utils/logger';
+import { generateSessionClosingMessage } from '@/lib/engines/session-closing';
+import { syncStudentModel } from '@/lib/engines/inference-engine';
+
 
 export async function POST(req: NextRequest) {
   const supabase = await createClient();
@@ -341,8 +344,25 @@ CRITICAL: NEVER lock yourself to a specific subject unless the student explicitl
                   user_id: user.id, concept_id: concept.id, summary: analysis.summary, messages: currentMessages
                 });
 
+                const MASTERY_WEIGHTS_DECIMAL: Record<string, number> = {
+                  not_started: 0.0,
+                  exposed: 0.15,
+                  developing: 0.40,
+                  proficient: 0.70,
+                  mastered: 0.90,
+                  automated: 0.98,
+                };
+                const oldMasteryValue = concept.mastery ? (MASTERY_WEIGHTS_DECIMAL[concept.mastery] ?? 0.0) : null;
+
                 // UPDATE CONCEPT STATE (Mastery Push to ATLAS)
                 await updateConceptState(concept.id, analysis.understood, 0);
+
+                // Re-fetch concept to capture new mastery
+                const { data: updatedConcept } = await supabase.from('concepts')
+                  .select('mastery')
+                  .eq('id', concept.id)
+                  .single();
+                const newMasteryValue = updatedConcept?.mastery ? (MASTERY_WEIGHTS_DECIMAL[updatedConcept.mastery] ?? 0.0) : null;
 
                 // Telemetry Event
                 await LearningStateEngine.ingestEvent({
@@ -360,10 +380,40 @@ CRITICAL: NEVER lock yourself to a specific subject unless the student explicitl
                 if (analysis.gapFound && !analysis.understood) {
                   await createSingleCard(user.id, concept.id, analysis.gapFound, analysis.gapAnswer, sub, topic);
                 }
+
+                // Generate and inject closing message
+                const closing = await generateSessionClosingMessage({
+                  userId: user.id,
+                  conceptId: concept.id,
+                  subject: sub,
+                  chapter: topic,
+                  gapFound: analysis.gapFound || null,
+                  gapAnswer: analysis.gapAnswer || null,
+                  understood: analysis.understood,
+                  turnsCount: history?.length || 0,
+                  oldMastery: oldMasteryValue,
+                  newMastery: newMasteryValue,
+                  cardsCreated: (analysis.gapFound && !analysis.understood) ? 1 : 0,
+                  sessionId: `session-${user.id}-${Date.now()}`,
+                });
+
+                metadataPayload = {
+                  action: 'session_closing_message',
+                  closingMessage: closing.text,
+                  closingType: closing.type,
+                  sessionComplete: true,
+                };
+
+                // Trigger student model profiling sync
+                syncStudentModel(user.id).catch((err) =>
+                  logger.warn('syncStudentModel failed after tutor session', { err: err.message })
+                );
+
               } catch (e) {
                 logger.error('Post-session synthesis or telemetry ingestion failed', e);
               }
             }
+
 
           } else if (name === 'create_study_plan') {
             const target_date = (args as any).target_date;

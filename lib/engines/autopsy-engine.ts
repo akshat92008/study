@@ -5,6 +5,8 @@ import { getExamConfig } from '@/lib/utils/constants';
 import { AutopsyPaperSchema, AutopsyQuestionSchema } from './autopsy-schemas';
 import { generateMentorRecovery } from './mentor-engine';
 import { logger } from '@/lib/utils/logger';
+import { syncStudentModel } from '@/lib/engines/inference-engine';
+
 
 type AutopsyFileData =
   | { kind: 'text'; text: string }
@@ -197,8 +199,9 @@ export async function processMockAutopsy(
     }
 
     // 5. Trigger student model profiling sync
-    const { syncStudentModel } = await import('./inference-engine');
-    await syncStudentModel(userId);
+    syncStudentModel(userId).catch((err) =>
+      logger.warn('syncStudentModel failed after autopsy', { err: err.message })
+    );
     
     logger.info(`Autopsy fully synchronized across ATLAS, MEMORY, COMMAND, and PULSE.`);
   } catch (e) {

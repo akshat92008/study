@@ -447,3 +447,13 @@ export const episodicMemories = pgTable('episodic_memories', {
   embedding: vector('embedding', { dimensions: 768 }),
 });
 
+export const sessionClosingMessages = pgTable('session_closing_messages', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').references(() => profiles.id, { onDelete: 'cascade' }).notNull(),
+  sessionId: text('session_id').notNull(),
+  message: text('message').notNull(),
+  type: text('type').notNull(), // success, partial, gap_identified
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
+

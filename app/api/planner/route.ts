@@ -1,25 +1,24 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { getPlanForDate } from '@/lib/actions/planner';
 import { generateDailyPlan } from '@/lib/ai/agents/planner';
 import { rateLimit } from '@/lib/utils/rate-limit';
+import { safeError, logger } from '@/lib/utils/logger';
 
-export async function POST(request: Request) {
+export async function POST(req: NextRequest) {
   try {
-    const supabase = createClient();
-    const { data: { user }, error: authError } = await (await supabase).auth.getUser();
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-    if (authError || !user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
-    // --- NEW RATE LIMIT ---
-    // 5 requests per 24 hours
+    // 5 planner generations per day per user — expensive multi-step AI call
     if (!await rateLimit(`planner-${user.id}`, 5, 24 * 60 * 60 * 1000)) {
-      return NextResponse.json({ error: 'Daily plan generation limit reached.' }, { status: 429 });
+      return NextResponse.json({
+        error: 'Daily plan generation limit reached. Your current plan is still active — come back tomorrow.',
+      }, { status: 429 });
     }
 
-    const body = await request.json();
+    const body = await req.json();
     const { date } = body;
     const targetDate = date || new Date().toISOString().split('T')[0];
 
@@ -30,7 +29,7 @@ export async function POST(request: Request) {
     
     return NextResponse.json({ plan });
   } catch (error: any) {
-    console.error('Planner API Error:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    logger.error('Planner route failed', error);
+    return NextResponse.json(safeError(error), { status: 500 });
   }
 }
