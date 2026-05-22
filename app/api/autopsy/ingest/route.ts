@@ -4,6 +4,7 @@ import { processMockAutopsy } from '@/lib/engines/autopsy-engine';
 import { rateLimit } from '@/lib/utils/rate-limit';
 import { logger, safeError } from '@/lib/utils/logger';
 import { checkUsageLimit } from '@/lib/utils/billing';
+import { syncStudentModel } from '@/lib/engines/inference-engine';
 
 const MAX_FILE_SIZE = Infinity; // Unlimited size limit
 const ALLOWED_MIME_TYPES = new Set([
@@ -70,6 +71,16 @@ export async function POST(request: Request) {
     
     // 5. Execute Autopsy Engine
     const result = await processMockAutopsy(user.id, fileData, testName, examType, customScoring);
+
+    // Fire student model sync non-blocking so COMMAND has fresh data for tomorrow
+    // This is belt-and-suspenders — autopsy-engine also fires it internally
+    // but we want it guaranteed at the API boundary regardless of engine internals
+    syncStudentModel(user.id).catch((err) =>
+      logger.warn('syncStudentModel failed after autopsy ingest', {
+        userId: user.id,
+        err: err.message,
+      })
+    );
 
     return NextResponse.json(result);
 
