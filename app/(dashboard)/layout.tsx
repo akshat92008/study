@@ -4,12 +4,18 @@ import DashboardClientLayout from '@/components/layout/DashboardClientLayout';
 import CommandBar from '@/components/ui/CommandBar';
 import ToastContainer from '@/components/ui/Toast';
 import SessionTracker from '@/components/layout/SessionTracker';
-import GlobalAssistant from '@/components/layout/GlobalAssistant'; // <--- NEW
 import { RealtimeProvider } from '@/components/providers/RealtimeProvider';
+// GlobalAssistant intentionally removed — GlobalChat in DashboardClientLayout is the single chat surface
 
-export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
+export default async function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   if (!user) redirect('/login');
 
   const { data: profile } = await supabase
@@ -24,12 +30,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
       <CommandBar />
       <ToastContainer />
       <SessionTracker />
-      
-      {/* THE NEW GLOBAL COPILOT */}
-      <GlobalAssistant />
-      <RealtimeProvider>
-        {null}
-      </RealtimeProvider>
+      <RealtimeProvider>{null}</RealtimeProvider>
     </DashboardClientLayout>
   );
 }
