@@ -1,42 +1,79 @@
-import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { generateJSON } from '@/lib/ai/gemini';
+import { NextResponse } from 'next/server';
 import { z } from 'zod';
 
-const QuizSchema = z.object({
-  questions: z.array(z.object({
-    question: z.string(),
-    options: z.array(z.string()).length(4),
-    correctIndex: z.number().min(0).max(3),
-    chapter: z.string(),
-    concept: z.string(),
-  })).length(5)
+// Schema for a single question — used to stream one at a time
+const SingleQuestionSchema = z.object({
+  question: z.string(),
+  options: z.array(z.string()).length(4),
+  correctIndex: z.number().min(0).max(3),
+  chapter: z.string(),
+  concept: z.string(),
 });
 
+// The 5 topic slots are varied via index so each call targets a different domain
+const SLOT_PROMPTS = [
+  'the most fundamental theoretical concept',
+  'a key formula or quantitative principle',
+  'a frequently misunderstood or commonly confused concept',
+  'a high-yield application or problem-solving scenario',
+  'an integration or synthesis concept that links multiple areas',
+];
+
 export async function POST(req: Request) {
-  try {
-    const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-    const { examType } = await req.json();
+  const { examType } = await req.json();
+  if (!examType) return NextResponse.json({ error: 'examType is required' }, { status: 400 });
 
-    const prompt = `
-      You are an elite academic diagnostic engine.
-      The student is preparing for: "${examType}".
-      Generate exactly 5 multiple-choice questions covering the fundamental, high-yield foundational concepts of this exam/subject.
-      
-      RULES:
-      1. These should not be impossibly hard. They are baseline calibrations.
-      2. Identify the specific "chapter" and "concept" each question tests.
-      3. Provide 4 plausible options, with only one correct answer.
-      
-      Return STRICT JSON matching the schema.
-    `;
+  const encoder = new TextEncoder();
 
-    const quiz = await generateJSON('flash', 'Expert Diagnostic Engine', prompt, QuizSchema);
-    return NextResponse.json(quiz);
-  } catch (error: any) {
-    return NextResponse.json({ error: 'Failed to generate diagnostic quiz' }, { status: 500 });
-  }
+  // Stream questions one by one as newline-delimited JSON.
+  // The frontend parses each line and renders the question immediately —
+  // eliminating the 2-minute blocking wait.
+  const stream = new ReadableStream({
+    async start(controller) {
+      for (let i = 0; i < SLOT_PROMPTS.length; i++) {
+        const slotDescription = SLOT_PROMPTS[i];
+        const prompt = `
+          You are an elite academic diagnostic engine.
+          The student is preparing for: "${examType}".
+          
+          Generate exactly ONE multiple-choice question that tests: ${slotDescription}.
+          
+          RULES:
+          1. Baseline calibration difficulty — not impossibly hard.
+          2. Identify the specific "chapter" and "concept" being tested.
+          3. Provide exactly 4 plausible options with only one correct answer (correctIndex 0–3).
+          
+          Return STRICT JSON matching the schema. No preamble, no extra text.
+        `;
+
+        try {
+          const q = await generateJSON(
+            'flash',
+            'Expert Diagnostic Engine. Return only JSON.',
+            prompt,
+            SingleQuestionSchema
+          );
+          // Emit the question as a newline-terminated JSON string
+          controller.enqueue(encoder.encode(JSON.stringify(q) + '\n'));
+        } catch (err) {
+          // Skip failed slots silently — the frontend handles < 5 gracefully
+          console.error(`Quiz slot ${i} failed:`, err);
+        }
+      }
+      controller.close();
+    },
+  });
+
+  return new Response(stream, {
+    headers: {
+      'Content-Type': 'text/plain; charset=utf-8',
+      'X-Content-Type-Options': 'nosniff',
+    },
+  });
 }

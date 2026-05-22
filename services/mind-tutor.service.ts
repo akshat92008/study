@@ -7,6 +7,14 @@ import { createSingleCard } from '@/lib/engines/revision-engine';
 import { updateConceptState } from '@/lib/engines/cognition-graph';
 import { z } from 'zod';
 
+// The exact snag string — used to detect repeat failures in chat history
+const SNAG_MESSAGE = "I hit a temporary cognitive snag interpreting that. Could you rephrase your thought?";
+
+// Circuit breaker: if this many consecutive snag messages are in the trailing
+// history, treat the AI as unavailable and return a terminal error instead of
+// spamming the same fallback indefinitely.
+const SNAG_CIRCUIT_BREAKER_THRESHOLD = 2;
+
 export class MindTutorService extends BaseService {
   private conceptService = new ConceptService();
 
@@ -16,7 +24,6 @@ export class MindTutorService extends BaseService {
   async getOrInitializeState(userId: string, conceptId?: string | null): Promise<any> {
     const supabase = await this.getClient();
 
-    // Check for an active session
     let query = supabase.from('tutor_session_states')
       .select('*')
       .eq('user_id', userId)
@@ -30,7 +37,6 @@ export class MindTutorService extends BaseService {
       return existingSession;
     }
 
-    // Initialize new session
     const { data: newSession, error } = await supabase.from('tutor_session_states').insert({
       user_id: userId,
       session_id: crypto.randomUUID(),
@@ -48,8 +54,30 @@ export class MindTutorService extends BaseService {
   }
 
   /**
-   * Processes a Socratic tutor turn. 
-   * Returns a streaming response (AsyncGenerator) that yields the text, while background actions handle FSM state.
+   * Counts how many of the most recent assistant messages in history are
+   * the snag fallback string. Used by the circuit breaker.
+   */
+  private countTrailingSnags(history: any[]): number {
+    let count = 0;
+    const assistantMessages = [...history].reverse().filter(m => m.role === 'assistant');
+    for (const msg of assistantMessages) {
+      if (typeof msg.content === 'string' && msg.content.trim() === SNAG_MESSAGE.trim()) {
+        count++;
+      } else {
+        break; // Stop at the first non-snag assistant message
+      }
+    }
+    return count;
+  }
+
+  /**
+   * Processes a Socratic tutor turn.
+   * Returns a streaming response (AsyncGenerator) that yields the text,
+   * while background actions handle FSM state.
+   *
+   * Circuit breaker: if the LLM has already failed SNAG_CIRCUIT_BREAKER_THRESHOLD
+   * times in a row, we return a terminal error message instead of repeating
+   * the snag string indefinitely.
    */
   async processTutorTurn(
     userId: string,
@@ -58,45 +86,64 @@ export class MindTutorService extends BaseService {
     context: Omit<MindTutorContext, 'currentState' | 'turnCount'>,
     conceptId?: string
   ): Promise<AsyncGenerator<string>> {
-    
+
+    // ── Circuit Breaker Check ─────────────────────────────────────────────
+    const trailingSnags = this.countTrailingSnags(history);
+    if (trailingSnags >= SNAG_CIRCUIT_BREAKER_THRESHOLD) {
+      logger.error('MIND circuit breaker tripped — AI unavailable for this session', { userId, trailingSnags });
+      return this.simulateStream(
+        "⚠️ The AI core appears to be temporarily unavailable. " +
+        "This is usually caused by a downstream model outage. " +
+        "Please refresh the page and try again in a moment. " +
+        "If the problem persists, your session will be restored automatically."
+      );
+    }
+
     const sessionState = await this.getOrInitializeState(userId, conceptId);
-    
+
     const fullContext: MindTutorContext = {
       ...context,
       currentState: sessionState.current_state,
       turnCount: sessionState.turns_count
     };
-    
+
     const systemPrompt = compileTutorSystemPrompt(fullContext);
-    
+
     const recentHistoryText = (history || [])
       .slice(-6)
       .map((m: any) => `${m.role === 'user' ? 'Student' : 'MIND'}: ${m.content}`)
       .join('\n');
-    
+
     const userPrompt = `${recentHistoryText}\nStudent: ${message}`;
 
+    // ── Two-tier LLM Retry ────────────────────────────────────────────────
+    // Attempt 1: Pro model (highest quality)
+    // Attempt 2: Flash model with stricter JSON instruction (fast fallback)
+    // If both fail: emit snag once. Circuit breaker catches repeated failures.
     let output: MindTutorOutput | null = null;
     try {
       output = await generateJSON<MindTutorOutput>('pro', systemPrompt, userPrompt, MindTutorOutputSchema);
     } catch (err) {
-      logger.error('MIND Engine generateJSON failed, triggering fallback', err);
+      logger.error('MIND Engine generateJSON (pro) failed, falling back to flash', err);
       try {
-        output = await generateJSON<MindTutorOutput>('flash', systemPrompt, userPrompt + "\n\nCRITICAL: You must return valid JSON matching the schema.", MindTutorOutputSchema);
+        output = await generateJSON<MindTutorOutput>(
+          'flash',
+          systemPrompt,
+          userPrompt + '\n\nCRITICAL: You must return valid JSON matching the schema exactly.',
+          MindTutorOutputSchema
+        );
       } catch (fallbackErr) {
-        logger.error('MIND Engine fallback failed', fallbackErr);
+        logger.error('MIND Engine generateJSON (flash) fallback also failed', fallbackErr);
       }
     }
 
     if (!output) {
-      return this.simulateStream("I hit a temporary cognitive snag interpreting that. Could you rephrase your thought?");
+      // Emit the snag once. On the next user message, countTrailingSnags()
+      // will detect it and the circuit breaker will fire instead of repeating.
+      return this.simulateStream(SNAG_MESSAGE);
     }
 
-    // Update State & Fire Background Actions. 
-    // If it reaches SYNTHESIS, it will return the personalized closing message.
     const closingMessage = await this.handleStateTransition(userId, sessionState.id, output);
-
-    // We yield the LLM's response, and if the session just completed, we append the personalized sign-off.
     return this.streamWithOptionalClosing(output.responseToStudent, closingMessage);
   }
 
@@ -112,13 +159,12 @@ export class MindTutorService extends BaseService {
       .eq('id', stateId)
       .maybeSingle();
 
-    // 1. Update FSM State
     await supabase.from('tutor_session_states')
       .update({
         current_state: output.state,
         misconception_detected: output.diagnosedMisconception,
         is_completed: isCompleted,
-        turns_count: supabase.rpc('increment', { x: 1 }), 
+        turns_count: supabase.rpc('increment', { x: 1 }),
         updated_at: new Date().toISOString()
       })
       .eq('id', stateId);
@@ -135,10 +181,9 @@ export class MindTutorService extends BaseService {
       }
     }
 
-    // 2. Wire MIND -> MEMORY (Gap Detection Creates Cards Immediately)
     if (
-      output.diagnosedMisconception && 
-      targetConceptId && 
+      output.diagnosedMisconception &&
+      targetConceptId &&
       output.diagnosedMisconception !== previousState?.misconception_detected
     ) {
       await createSingleCard(
@@ -151,25 +196,21 @@ export class MindTutorService extends BaseService {
       );
     }
 
-    // 3. SYNTHESIS Block: Final updates and personalized closing message generation
     if (isCompleted) {
       let oldMastery = 'unknown';
       let newMastery = 'unknown';
       let pastMistakeStr = 'None';
       const cardsCreatedCount = output.recommendedFlashcards?.length || 0;
 
-      // Fetch pre-synthesis data for the narrative
       if (targetConceptId) {
         const { data: cBefore } = await supabase.from('concepts').select('mastery').eq('id', targetConceptId).maybeSingle();
         oldMastery = cBefore?.mastery || 'unknown';
 
-        // Check for related autopsy mistake
         const { data: mistake } = await supabase.from('mistakes').select('category, created_at')
           .eq('concept_id', targetConceptId).order('created_at', { ascending: false }).limit(1).maybeSingle();
         if (mistake) pastMistakeStr = `${mistake.category} mistake on ${new Date(mistake.created_at).toLocaleDateString()}`;
       }
 
-      // ATLAS Write-back
       if (output.masteryUpdate && output.masteryUpdate.conceptId) {
         await updateConceptState(
           output.masteryUpdate.conceptId,
@@ -178,28 +219,23 @@ export class MindTutorService extends BaseService {
         );
       }
 
-      // Generate final batch of synthesis cards
       if (output.recommendedFlashcards && output.recommendedFlashcards.length > 0 && targetConceptId) {
         for (const card of output.recommendedFlashcards) {
-           await createSingleCard(userId, targetConceptId, card.front, card.back, subject, chapter);
+          await createSingleCard(userId, targetConceptId, card.front, card.back, subject, chapter);
         }
       }
 
-      // Fetch post-synthesis data
       if (targetConceptId) {
         const { data: cAfter } = await supabase.from('concepts').select('mastery').eq('id', targetConceptId).maybeSingle();
         newMastery = cAfter?.mastery || 'unknown';
       }
 
-      // =====================================================================
-      // [TASK 2.3] Generate Personalized Session Closing Message
-      // =====================================================================
       return await this.generateSessionClosingMessage(
-        chapter, 
-        output.diagnosedMisconception, 
-        cardsCreatedCount, 
-        oldMastery, 
-        newMastery, 
+        chapter,
+        output.diagnosedMisconception,
+        cardsCreatedCount,
+        oldMastery,
+        newMastery,
         pastMistakeStr
       );
     }
@@ -208,11 +244,11 @@ export class MindTutorService extends BaseService {
   }
 
   private async generateSessionClosingMessage(
-    conceptName: string, 
-    gapIdentified: string | null, 
-    cardsCount: number, 
-    oldMastery: string, 
-    newMastery: string, 
+    conceptName: string,
+    gapIdentified: string | null,
+    cardsCount: number,
+    oldMastery: string,
+    newMastery: string,
     pastMistake: string
   ): Promise<string> {
     const prompt = `
@@ -236,7 +272,7 @@ export class MindTutorService extends BaseService {
     `;
 
     const schema = z.object({ closingMessage: z.string() });
-    
+
     try {
       const result = await generateJSON<{ closingMessage: string }>('flash', 'You are an elite academic coach.', prompt, schema);
       return result.closingMessage;

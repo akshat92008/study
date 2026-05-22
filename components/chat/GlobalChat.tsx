@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useAppStore, ChatMessage } from '@/stores/appStore';
 import {
   Send, Paperclip, Loader2, MessageSquare, ArrowRight,
-  Upload, X, RefreshCw, Target, FileText
+  Upload, X, RefreshCw, Target, FileText, AlertTriangle
 } from 'lucide-react';
 
 // Clean inline Markdown formatter
@@ -87,6 +87,36 @@ function renderMarkdown(text: string) {
   });
 }
 
+// ── Fetch with timeout helper ──────────────────────────────────────────────
+// Wraps fetch with an AbortController so hanging requests don't leave the UI
+// stuck in "Thinking…" indefinitely. Default: 30 seconds.
+async function fetchWithTimeout(
+  url: string,
+  options: RequestInit,
+  timeoutMs = 30_000
+): Promise<Response> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(url, { ...options, signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+// ── Inline error message helper ────────────────────────────────────────────
+// Creates an assistant-style error message that appears in the chat thread
+// instead of firing a red toast. This means the error is visible in context
+// and the user doesn't have to mentally connect the toast to the message
+// that failed.
+function makeInlineErrorMessage(detail: string): ChatMessage {
+  return {
+    role: 'assistant',
+    content: `⚠️ ${detail} Please try sending your message again.`,
+    timestamp: new Date().toISOString(),
+  };
+}
+
 export default function GlobalChat() {
   const {
     chatMessages,
@@ -126,17 +156,44 @@ export default function GlobalChat() {
     'Help me learn Python'
   ];
 
-  // 1. Initial Chat Load
   useEffect(() => {
     loadChatFromSupabase();
   }, [loadChatFromSupabase]);
 
-  // Scroll to bottom when messages or stream updates
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [chatMessages, streamingText]);
 
-  // 2. Chat Sending Logic
+  // ── Core stream reader ─────────────────────────────────────────────────
+  // Extracted so both handleSendMessage and handleDoubtUpload can share
+  // the same logic without duplication.
+  const readStreamIntoChat = async (res: Response): Promise<string> => {
+    if (!res.body) throw new Error('No readable response stream.');
+
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    let fullReply = '';
+
+    while (true) {
+      const { value, done } = await reader.read();
+      if (done) break;
+      const chunk = decoder.decode(value);
+      fullReply += chunk;
+
+      const cleanStream = fullReply.replace(/\[ACTION:OPEN_DRAWER:\w+\]/g, '').trim();
+      setStreamingText(cleanStream);
+    }
+
+    return fullReply;
+  };
+
+  // ── FIX 1: Chat Sending Logic ──────────────────────────────────────────
+  // Changes vs original:
+  // 1. fetchWithTimeout (30s) prevents permanently stuck "Thinking…" state.
+  // 2. Non-2xx HTTP responses are handled inline (assistant message in chat)
+  //    instead of throwing and showing a red toast.
+  // 3. Network errors (timeout, abort) also produce an inline assistant
+  //    message so the user sees the failure in context.
   const handleSendMessage = async (textToSend: string) => {
     if (!textToSend.trim() || isStreaming) return;
 
@@ -153,33 +210,42 @@ export default function GlobalChat() {
     setStreamingText('');
 
     try {
-      const res = await fetch('/api/ai/global', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: textToSend.trim(),
-          history: chatMessages.map(m => ({ role: m.role, content: m.content })),
-          currentPath: '/dashboard',
-          activeGoalId: activeGoalId
-        })
-      });
-
-      if (!res.ok) throw new Error('Orchestrator failed to reply.');
-      if (!res.body) throw new Error('No readable response stream.');
-
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let fullReply = '';
-
-      while (true) {
-        const { value, done } = await reader.read();
-        if (done) break;
-        const chunk = decoder.decode(value);
-        fullReply += chunk;
-        
-        const cleanStream = fullReply.replace(/\[ACTION:OPEN_DRAWER:\w+\]/g, '').trim();
-        setStreamingText(cleanStream);
+      let res: Response;
+      try {
+        res = await fetchWithTimeout('/api/ai/global', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: textToSend.trim(),
+            history: chatMessages.map(m => ({ role: m.role, content: m.content })),
+            currentPath: '/dashboard',
+            activeGoalId: activeGoalId
+          })
+        });
+      } catch (fetchErr: any) {
+        // Network error or timeout — show inline, not a toast
+        const isTimeout = fetchErr?.name === 'AbortError';
+        addChatMessage(makeInlineErrorMessage(
+          isTimeout
+            ? 'The request timed out (30s). The AI core may be under heavy load.'
+            : 'Could not reach the server. Check your connection.'
+        ));
+        return;
       }
+
+      // FIX 1: Non-2xx responses go inline instead of toasting
+      if (!res.ok) {
+        const errorBody = await res.text().catch(() => '');
+        const detail = res.status === 429
+          ? 'Rate limit reached — you\'ve sent too many messages. Wait a minute and try again.'
+          : res.status === 401
+            ? 'Session expired. Please refresh the page.'
+            : `The AI core returned an error (${res.status}). ${errorBody || ''}`.trim();
+        addChatMessage(makeInlineErrorMessage(detail));
+        return;
+      }
+
+      const fullReply = await readStreamIntoChat(res);
 
       const responseTimeMs = lastMessageSentAt.current ? Date.now() - lastMessageSentAt.current : 0;
 
@@ -191,12 +257,13 @@ export default function GlobalChat() {
 
       const cleanReply = fullReply.replace(/\[ACTION:OPEN_DRAWER:\w+\]/g, '').trim();
 
-      const assistantMsg = {
-        role: 'assistant' as const,
-        content: cleanReply,
-        timestamp: new Date().toISOString()
-      };
-      addChatMessage(assistantMsg);
+      if (cleanReply) {
+        addChatMessage({
+          role: 'assistant',
+          content: cleanReply,
+          timestamp: new Date().toISOString()
+        });
+      }
 
       fetch('/api/pulse/timing', {
         method: 'POST',
@@ -206,7 +273,8 @@ export default function GlobalChat() {
 
       await syncChatToSupabase();
     } catch (err: any) {
-      addToast(err.message || 'Stream failed', 'error');
+      // Unexpected error in stream reading — inline, not toast
+      addChatMessage(makeInlineErrorMessage('An unexpected error occurred while reading the response.'));
     } finally {
       setIsStreaming(false);
       setStreamingText('');
@@ -277,12 +345,7 @@ export default function GlobalChat() {
       const userText = chatInput.trim();
       setChatInput('');
 
-      const promptText = `I uploaded a document: "${file.name}".
-Here is the text extracted from the document:
----
-${extractedText.slice(0, 50000)}
----
-${userText ? `My specific doubt / question is: ${userText}` : 'Please summarize the core concepts in this document and check if I have any questions about them.'}`;
+      const promptText = `I uploaded a document: "${file.name}".\nHere is the text extracted from the document:\n---\n${extractedText.slice(0, 50000)}\n---\n${userText ? `My specific doubt / question is: ${userText}` : 'Please summarize the core concepts in this document and check if I have any questions about them.'}`;
 
       const userMsg = {
         role: 'user' as const,
@@ -298,36 +361,37 @@ ${userText ? `My specific doubt / question is: ${userText}` : 'Please summarize 
       addChatMessage(userMsg);
       setIsStreaming(true);
       setStreamingText('');
-      
+
       lastMessageSentAt.current = Date.now();
 
-      const apiRes = await fetch('/api/ai/global', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: promptText,
-          history: chatMessages.map(m => ({ role: m.role, content: m.content })),
-          currentPath: '/dashboard',
-          activeGoalId: activeGoalId
-        })
-      });
-
-      if (!apiRes.ok) throw new Error('Orchestrator failed to reply.');
-      if (!apiRes.body) throw new Error('No readable response stream.');
-
-      const reader = apiRes.body.getReader();
-      const decoder = new TextDecoder();
-      let fullReply = '';
-
-      while (true) {
-        const { value, done } = await reader.read();
-        if (done) break;
-        const chunk = decoder.decode(value);
-        fullReply += chunk;
-        
-        const cleanStream = fullReply.replace(/\[ACTION:OPEN_DRAWER:\w+\]/g, '').trim();
-        setStreamingText(cleanStream);
+      let apiRes: Response;
+      try {
+        apiRes = await fetchWithTimeout('/api/ai/global', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: promptText,
+            history: chatMessages.map(m => ({ role: m.role, content: m.content })),
+            currentPath: '/dashboard',
+            activeGoalId: activeGoalId
+          })
+        });
+      } catch (fetchErr: any) {
+        const isTimeout = fetchErr?.name === 'AbortError';
+        addChatMessage(makeInlineErrorMessage(
+          isTimeout
+            ? 'The request timed out while processing your document.'
+            : 'Could not reach the server. Check your connection.'
+        ));
+        return;
       }
+
+      if (!apiRes.ok) {
+        addChatMessage(makeInlineErrorMessage(`The AI core returned an error (${apiRes.status}) while analysing your document.`));
+        return;
+      }
+
+      const fullReply = await readStreamIntoChat(apiRes);
 
       const responseTimeMs = lastMessageSentAt.current ? Date.now() - lastMessageSentAt.current : 0;
       const drawerMatch = fullReply.match(/\[ACTION:OPEN_DRAWER:(\w+)\]/);
@@ -337,13 +401,13 @@ ${userText ? `My specific doubt / question is: ${userText}` : 'Please summarize 
       }
 
       const cleanReply = fullReply.replace(/\[ACTION:OPEN_DRAWER:\w+\]/g, '').trim();
-
-      const assistantMsg = {
-        role: 'assistant' as const,
-        content: cleanReply,
-        timestamp: new Date().toISOString()
-      };
-      addChatMessage(assistantMsg);
+      if (cleanReply) {
+        addChatMessage({
+          role: 'assistant',
+          content: cleanReply,
+          timestamp: new Date().toISOString()
+        });
+      }
 
       fetch('/api/pulse/timing', {
         method: 'POST',
@@ -353,7 +417,7 @@ ${userText ? `My specific doubt / question is: ${userText}` : 'Please summarize 
 
       await syncChatToSupabase();
     } catch (err: any) {
-      addToast(err.message || 'Doubt ingestion failed', 'error');
+      addChatMessage(makeInlineErrorMessage('Doubt ingestion encountered an unexpected error.'));
     } finally {
       setIsProcessingDoubt(false);
       setDoubtStatus('');
@@ -462,7 +526,6 @@ ${userText ? `My specific doubt / question is: ${userText}` : 'Please summarize 
         gap: 'var(--sp-4)'
       }}>
         {chatMessages.length === 0 && !isStreaming ? (
-          /* Starter recommendations */
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)', marginTop: 'var(--sp-6)' }}>
             <div style={{ textAlign: 'center', marginBottom: 'var(--sp-4)' }}>
               <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'var(--fw-black)' }}>
@@ -472,7 +535,7 @@ ${userText ? `My specific doubt / question is: ${userText}` : 'Please summarize 
                 Ask questions or drop a mock test paper to run diagnosis.
               </p>
             </div>
-            
+
             <div style={{ fontSize: 'var(--fs-xs)', textTransform: 'uppercase', fontWeight: 'bold', color: 'var(--text-tertiary)', letterSpacing: 'var(--ls-wide)' }}>
               Recommended Starters
             </div>
@@ -510,11 +573,13 @@ ${userText ? `My specific doubt / question is: ${userText}` : 'Please summarize 
             ))}
           </div>
         ) : (
-          /* Active Chat Log */
           <>
             {chatMessages.map((m, idx) => {
               const isUser = m.role === 'user';
               const isFile = m.metadata?.type === 'file_upload';
+              // FIX 1: Inline error messages get a distinct amber warning style
+              const isInlineError = !isUser && m.content.startsWith('⚠️');
+
               return (
                 <div key={idx} style={{
                   display: 'flex',
@@ -526,9 +591,17 @@ ${userText ? `My specific doubt / question is: ${userText}` : 'Please summarize 
                     maxWidth: '90%',
                     padding: '10px 14px',
                     borderRadius: isUser ? '16px 16px 2px 16px' : '16px 16px 16px 2px',
-                    background: isUser ? 'linear-gradient(135deg, var(--accent-purple), var(--accent-blue))' : 'var(--bg-primary)',
+                    background: isUser
+                      ? 'linear-gradient(135deg, var(--accent-purple), var(--accent-blue))'
+                      : isInlineError
+                        ? 'rgba(245, 158, 11, 0.08)'
+                        : 'var(--bg-primary)',
                     color: isUser ? 'white' : 'var(--text-primary)',
-                    border: isUser ? 'none' : '1px solid var(--border-subtle)',
+                    border: isUser
+                      ? 'none'
+                      : isInlineError
+                        ? '1px solid rgba(245, 158, 11, 0.35)'
+                        : '1px solid var(--border-subtle)',
                     boxShadow: 'var(--shadow-sm)',
                     fontSize: 'var(--fs-sm)',
                     wordBreak: 'break-word'
@@ -562,7 +635,16 @@ ${userText ? `My specific doubt / question is: ${userText}` : 'Please summarize 
                         <p style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{m.content}</p>
                       )
                     ) : (
-                      renderMarkdown(m.content)
+                      isInlineError ? (
+                        <div style={{ display: 'flex', gap: 'var(--sp-2)', alignItems: 'flex-start' }}>
+                          <AlertTriangle size={14} style={{ color: '#f59e0b', flexShrink: 0, marginTop: 2 }} />
+                          <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: 'var(--fs-xs)' }}>
+                            {m.content.replace('⚠️ ', '')}
+                          </p>
+                        </div>
+                      ) : (
+                        renderMarkdown(m.content)
+                      )
                     )}
                   </div>
                 </div>
@@ -765,7 +847,6 @@ ${userText ? `My specific doubt / question is: ${userText}` : 'Please summarize 
             onSubmit={(e) => { e.preventDefault(); handleSendMessage(chatInput); }}
             style={{ display: 'flex', gap: 'var(--sp-2)', alignItems: 'center' }}
           >
-            {/* Paperclip upload trigger */}
             <input
               type="file"
               ref={fileInputRef}
@@ -797,7 +878,6 @@ ${userText ? `My specific doubt / question is: ${userText}` : 'Please summarize 
               <Paperclip size={16} />
             </button>
 
-            {/* Input Element */}
             <div style={{
               flex: 1,
               display: 'flex',
@@ -847,7 +927,6 @@ ${userText ? `My specific doubt / question is: ${userText}` : 'Please summarize 
             </div>
           </form>
 
-          {/* Constraint Label */}
           {activeGoal && (
             <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: '9px', color: 'var(--text-tertiary)', paddingLeft: 4 }}>
               <Target size={9} style={{ color: 'var(--accent-purple)' }} />
