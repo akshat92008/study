@@ -1,318 +1,262 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Brain, Calendar, Upload, Loader2, Target } from 'lucide-react';
 import Card from '@/components/ui/Card';
-import { Sparkles, Send, Loader2, BrainCircuit, CheckCircle, UploadCloud, Paperclip } from 'lucide-react';
+import Button from '@/components/ui/Button';
+import { completeOnboarding } from '@/lib/actions/onboarding';
 
-export default function ConversationalOnboarding() {
+export default function OnboardingFlow() {
   const router = useRouter();
-  const [messages, setMessages] = useState([
-    { role: 'assistant', content: "Hello. I'm Cognition. I'll be running your academic schedule from now on. What exactly are we preparing for, and when is the exam?" }
-  ]);
-  const [input, setInput] = useState('');
+  const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [buildState, setBuildState] = useState<'chat' | 'compiling' | 'ready'>('chat');
-  const [uploadError, setUploadError] = useState<string | null>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  
+  // State
+  const [examType, setExamType] = useState('');
+  const [examDate, setExamDate] = useState('');
+  const [daysRemaining, setDaysRemaining] = useState<number | null>(null);
+  
+  // Quiz State
+  const [quizData, setQuizData] = useState<any[]>([]);
+  const [currentQ, setCurrentQ] = useState(0);
+  const [quizResults, setQuizResults] = useState<Array<{ chapter: string; concept: string; isCorrect: boolean }>>([]);
+  const [quizLoading, setQuizLoading] = useState(false);
 
-  const [showGraphReveal, setShowGraphReveal] = useState(false);
-  const [conceptCount, setConceptCount] = useState<number | null>(null);
-  const [progress, setProgress] = useState(0);
-
+  // Recalculate days remaining when date changes
   useEffect(() => {
-    scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' });
-  }, [messages]);
-
-  useEffect(() => {
-    if (showGraphReveal) {
-      const progressTimer = setTimeout(() => {
-        setProgress(100);
-      }, 100);
-
-      const redirectTimer = setTimeout(() => {
-        router.push('/dashboard');
-      }, 3500);
-
-      return () => {
-        clearTimeout(progressTimer);
-        clearTimeout(redirectTimer);
-      };
+    if (examDate) {
+      const days = Math.max(0, Math.ceil((new Date(examDate).getTime() - Date.now()) / (1000 * 3600 * 24)));
+      setDaysRemaining(days);
     }
-  }, [showGraphReveal, router]);
+  }, [examDate]);
 
-  const startCompilationSequence = (count?: number) => {
-    if (count !== undefined) {
-      setConceptCount(count);
-    }
-    setBuildState('compiling');
-    // Simulate dramatic compilation sequence
-    setTimeout(() => setBuildState('ready'), 3500);
-    setTimeout(() => {
-      setShowGraphReveal(true);
-    }, 5500);
-  };
-
-  const handleSend = async () => {
-    if (!input.trim() || loading || buildState !== 'chat') return;
-    
-    const userMsg = input.trim();
-    setInput('');
-    const newHistory = [...messages, { role: 'user', content: userMsg }];
-    setMessages(newHistory);
-    setLoading(true);
-    setUploadError(null);
-
+  // Handle Quiz Fetch
+  const startQuiz = async () => {
+    setStep(4);
+    setQuizLoading(true);
     try {
-      const res = await fetch('/api/ai/setup', {
+      const res = await fetch('/api/onboarding/quiz', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userMsg, history: newHistory.slice(0, -1) }),
+        body: JSON.stringify({ examType })
       });
       const data = await res.json();
-
-      setMessages(prev => [...prev, { role: 'assistant', content: data.reply }]);
-
-      if (data.isComplete) {
-        startCompilationSequence();
-      }
+      if (data.questions) setQuizData(data.questions);
     } catch (e) {
-      setMessages(prev => [...prev, { role: 'assistant', content: "Network error. Try again?" }]);
+      console.error(e);
     } finally {
-      setLoading(false);
+      setQuizLoading(false);
     }
   };
 
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file || buildState !== 'chat') return;
+  // Handle Quiz Answer
+  const handleAnswer = async (selectedIndex: number) => {
+    const q = quizData[currentQ];
+    const isCorrect = selectedIndex === q.correctIndex;
+    
+    const newResults = [...quizResults, { chapter: q.chapter, concept: q.concept, isCorrect }];
+    setQuizResults(newResults);
 
-    setLoading(true);
-    setUploadError(null);
-
-    const formData = new FormData();
-    formData.append('file', file);
-
-    try {
-      setMessages(prev => [...prev, { role: 'user', content: `Uploaded document: ${file.name}` }]);
-      const res = await fetch('/api/onboarding/upload', {
-        method: 'POST',
-        body: formData,
-      });
-      const data = await res.json();
-      
-      if (!res.ok || data.error) {
-        throw new Error(data.error || 'Failed to parse syllabus');
+    if (currentQ < quizData.length - 1) {
+      setCurrentQ(prev => prev + 1);
+    } else {
+      // Finish Quiz & Submit Onboarding
+      setStep(5);
+      setLoading(true);
+      try {
+        await completeOnboarding('temp-id-ignored-by-server', examType, examDate, newResults);
+      } catch (e) {
+        console.error(e);
+      } finally {
+        setLoading(false);
       }
-
-      setMessages(prev => [...prev, { role: 'assistant', content: `Brilliant! I've loaded your "${data.title}" curriculum and seeded the ATLAS nodes successfully.` }]);
-      startCompilationSequence(data.seededCount);
-    } catch (err: any) {
-      setUploadError(err.message || 'Syllabus processing failed.');
-      setMessages(prev => [
-        ...prev, 
-        { role: 'assistant', content: `I had trouble extracting details from that document. Let's continue conversing: what exam are you preparing for?` }
-      ]);
-    } finally {
-      setLoading(false);
     }
-  };
-
-  const triggerFileSelect = () => {
-    fileInputRef.current?.click();
   };
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: 'var(--bg-root)', padding: 'var(--sp-4)' }}>
+    <div style={{
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      minHeight: '100vh', background: 'var(--bg-root)', padding: 'var(--sp-4)'
+    }}>
       <AnimatePresence mode="wait">
-        {buildState === 'chat' ? (
-          <motion.div key="chat" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 1.05 }} style={{ width: '100%', maxWidth: 600 }}>
-            <Card padding="lg" style={{ minHeight: '60vh', display: 'flex', flexDirection: 'column', border: '1px solid var(--accent-purple-dim)', boxShadow: 'var(--shadow-glow-purple)' }}>
-              <div style={{ textAlign: 'center', marginBottom: 'var(--sp-6)', borderBottom: '1px solid var(--border-subtle)', paddingBottom: 'var(--sp-4)' }}>
-                <Sparkles size={32} style={{ color: 'var(--accent-purple)', margin: '0 auto var(--sp-2)' }} />
-                <h2 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-bold)' }}>System Initialization</h2>
+        
+        {/* STEP 1: What are you studying? */}
+        {step === 1 && (
+          <motion.div key="step1" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} style={{ width: '100%', maxWidth: 480 }}>
+            <Card padding="lg" variant="glow">
+              <div style={{ textAlign: 'center', marginBottom: 'var(--sp-8)' }}>
+                <Brain size={48} style={{ color: 'var(--accent-purple)', margin: '0 auto var(--sp-4)' }} />
+                <h2 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)' }}>What are you studying?</h2>
+                <p style={{ color: 'var(--text-secondary)', marginTop: 'var(--sp-2)' }}>Enter your exam, degree, or skill.</p>
+              </div>
+              <input
+                autoFocus
+                value={examType}
+                onChange={e => setExamType(e.target.value)}
+                placeholder="e.g. NEET, CFA Level 1, USMLE..."
+                onKeyDown={e => { if (e.key === 'Enter' && examType) setStep(2); }}
+                style={{
+                  width: '100%', padding: '16px', background: 'var(--bg-tertiary)', color: 'white',
+                  border: '1px solid var(--border-focus)', borderRadius: 'var(--radius-md)', fontSize: 'var(--fs-lg)', textAlign: 'center', outline: 'none'
+                }}
+              />
+              <Button onClick={() => setStep(2)} disabled={!examType} style={{ width: '100%', marginTop: 'var(--sp-6)', padding: '16px' }}>
+                Next <ArrowRight size={18} />
+              </Button>
+            </Card>
+          </motion.div>
+        )}
+
+        {/* STEP 2: Exam Date */}
+        {step === 2 && (
+          <motion.div key="step2" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} style={{ width: '100%', maxWidth: 480 }}>
+            <Card padding="lg" variant="glow">
+              <div style={{ textAlign: 'center', marginBottom: 'var(--sp-6)' }}>
+                <Calendar size={48} style={{ color: 'var(--accent-cyan)', margin: '0 auto var(--sp-4)' }} />
+                <h2 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)' }}>When is the exam?</h2>
+              </div>
+              
+              <input
+                type="date"
+                value={examDate}
+                onChange={e => setExamDate(e.target.value)}
+                style={{
+                  width: '100%', padding: '16px', background: 'var(--bg-tertiary)', color: 'white',
+                  border: '1px solid var(--accent-cyan)', borderRadius: 'var(--radius-md)', fontSize: 'var(--fs-lg)', textAlign: 'center', outline: 'none', colorScheme: 'dark'
+                }}
+              />
+
+              <AnimatePresence>
+                {daysRemaining !== null && (
+                  <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} style={{ textAlign: 'center', marginTop: 'var(--sp-6)', color: 'var(--text-secondary)' }}>
+                    <div style={{ fontSize: 'var(--fs-3xl)', fontWeight: 'var(--fw-black)', color: 'var(--accent-cyan)', fontFamily: 'var(--font-mono)' }}>{daysRemaining}</div>
+                    <div style={{ textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)', fontSize: 'var(--fs-xs)', marginBottom: 'var(--sp-2)' }}>Days Remaining</div>
+                    <div style={{ color: 'var(--success)', fontWeight: 'var(--fw-medium)' }}>That is enough time if we start now.</div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              <Button onClick={() => setStep(3)} disabled={!examDate} style={{ width: '100%', marginTop: 'var(--sp-6)', padding: '16px', background: 'var(--accent-cyan)', color: 'black' }}>
+                Next <ArrowRight size={18} />
+              </Button>
+            </Card>
+          </motion.div>
+        )}
+
+        {/* STEP 3: Upload Material (Optional) */}
+        {step === 3 && (
+          <motion.div key="step3" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} style={{ width: '100%', maxWidth: 480 }}>
+            <Card padding="lg">
+              <div style={{ textAlign: 'center', marginBottom: 'var(--sp-6)' }}>
+                <Upload size={48} style={{ color: 'var(--text-tertiary)', margin: '0 auto var(--sp-4)' }} />
+                <h2 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)' }}>Upload your material</h2>
+                <p style={{ color: 'var(--text-secondary)', marginTop: 'var(--sp-2)', fontSize: 'var(--fs-sm)' }}>Drop your syllabus, notes, or past papers here. The AI will read them and customize your curriculum.</p>
+              </div>
+              
+              <div style={{ border: '2px dashed var(--border-strong)', borderRadius: 'var(--radius-lg)', padding: 'var(--sp-8)', textAlign: 'center', background: 'var(--bg-tertiary)', cursor: 'pointer' }}>
+                <span style={{ color: 'var(--text-secondary)', fontWeight: 'var(--fw-medium)' }}>Click to browse or drag & drop</span>
               </div>
 
-              <div ref={scrollRef} style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)', marginBottom: 'var(--sp-4)' }}>
-                {messages.map((msg, i) => (
-                  <div key={i} style={{ display: 'flex', justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start' }}>
-                    <div style={{
-                      maxWidth: '80%', padding: 'var(--sp-3) var(--sp-4)', borderRadius: 'var(--radius-lg)',
-                      background: msg.role === 'user' ? 'var(--bg-active)' : 'transparent',
-                      color: msg.role === 'user' ? 'var(--text-primary)' : 'var(--accent-purple)',
-                      fontSize: 'var(--fs-md)', lineHeight: 'var(--lh-relaxed)',
-                      border: msg.role === 'assistant' ? 'none' : '1px solid var(--border-subtle)',
-                    }}>
-                      {msg.content}
-                    </div>
-                  </div>
-                ))}
-
-                {messages.length === 1 && (
-                  <div style={{ padding: '0 var(--sp-4)' }}>
-                    <div 
-                      onClick={triggerFileSelect}
-                      style={{
-                        border: '2px dashed var(--accent-purple-dim)',
-                        borderRadius: 'var(--radius-lg)',
-                        padding: 'var(--sp-6)',
-                        textAlign: 'center',
-                        cursor: 'pointer',
-                        background: 'rgba(168, 85, 247, 0.02)',
-                        transition: 'background var(--duration-fast) var(--ease-out)',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        gap: 'var(--sp-2)'
-                      }}
-                      onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(168, 85, 247, 0.06)'; }}
-                      onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(168, 85, 247, 0.02)'; }}
-                    >
-                      <UploadCloud size={32} style={{ color: 'var(--accent-purple)' }} />
-                      <div style={{ fontSize: 'var(--fs-sm)', fontWeight: 600, color: 'var(--text-primary)' }}>
-                        Onboarding Magic Ingestion
-                      </div>
-                      <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)', maxWidth: 400, margin: '0 auto' }}>
-                        Upload a syllabus, test series index, or checklist PDF/Image. Gemini will seed ATLAS instantly.
-                      </div>
-                      <input 
-                        type="file" 
-                        ref={fileInputRef} 
-                        onChange={handleFileUpload} 
-                        accept=".pdf,.png,.jpg,.jpeg,.txt" 
-                        style={{ display: 'none' }} 
-                      />
-                    </div>
-                  </div>
-                )}
-
-                {loading && (
-                  <div style={{ color: 'var(--accent-purple)', padding: 'var(--sp-3) var(--sp-4)' }}>
-                    <Loader2 size={16} className="animate-spin" />
-                  </div>
-                )}
-              </div>
-
-              <div style={{ display: 'flex', gap: 'var(--sp-2)', alignItems: 'center' }}>
-                <label style={{ cursor: 'pointer', padding: 'var(--sp-2)', color: 'var(--text-tertiary)', display: 'flex', alignItems: 'center' }}>
-                  <Paperclip size={20} />
-                  <input 
-                    type="file" 
-                    accept=".pdf,.png,.jpg,.jpeg,.txt" 
-                    style={{ display: 'none' }}
-                    onChange={handleFileUpload} 
-                  />
-                </label>
-                <input 
-                  value={input} onChange={e => setInput(e.target.value)}
-                  onKeyDown={e => { if (e.key === 'Enter') handleSend(); }}
-                  placeholder="Type your response or attach syllabus..." disabled={loading}
-                  style={{ flex: 1, padding: 'var(--sp-4)', background: 'var(--bg-tertiary)', color: 'var(--text-primary)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-full)', outline: 'none', fontSize: 'var(--fs-base)' }}
-                />
-                <button onClick={handleSend} disabled={loading || !input.trim()} style={{ width: 50, height: 50, borderRadius: 'var(--radius-full)', background: 'var(--accent-purple)', color: 'white', border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
-                  <Send size={20} />
-                </button>
+              <div style={{ display: 'flex', gap: 'var(--sp-3)', marginTop: 'var(--sp-6)' }}>
+                <Button variant="secondary" onClick={startQuiz} style={{ flex: 1 }}>Skip for now</Button>
+                <Button onClick={startQuiz} style={{ flex: 1 }}>Continue <ArrowRight size={16}/></Button>
               </div>
             </Card>
           </motion.div>
-        ) : (
-          <motion.div key="compiling" initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ textAlign: 'center', color: 'var(--accent-cyan)' }}>
-            <motion.div animate={buildState === 'compiling' ? { rotate: 360 } : {}} transition={{ duration: 2, repeat: Infinity, ease: 'linear' }} style={{ display: 'inline-block', marginBottom: 'var(--sp-6)' }}>
-              {buildState === 'compiling' ? <BrainCircuit size={64} /> : <CheckCircle size={64} color="var(--success)" />}
-            </motion.div>
-            <motion.h2 initial={{ y: 10, opacity: 0 }} animate={{ y: 0, opacity: 1 }} style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-black)', letterSpacing: 'var(--ls-wide)', textTransform: 'uppercase', color: buildState === 'ready' ? 'var(--success)' : 'var(--accent-cyan)' }}>
-              {buildState === 'compiling' ? 'Compiling Neural Graph...' : 'System Online'}
-            </motion.h2>
-            <p style={{ marginTop: 'var(--sp-3)', color: 'var(--text-tertiary)', fontFamily: 'var(--font-mono)' }}>
-              {buildState === 'compiling' ? 'Mapping syllabus constraints • Initializing FSRS decay weights • Generating daily mission parameters' : 'Redirecting to Command Center...'}
-            </p>
+        )}
+
+        {/* STEP 4: Two-Minute Calibration Quiz */}
+        {step === 4 && (
+          <motion.div key="step4" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} style={{ width: '100%', maxWidth: 600 }}>
+            <Card padding="lg" variant="glow" style={{ border: '1px solid var(--accent-purple-dim)', boxShadow: 'var(--shadow-glow-purple)' }}>
+              
+              {quizLoading ? (
+                <div style={{ textAlign: 'center', padding: 'var(--sp-12) 0' }}>
+                  <Loader2 size={48} className="animate-spin" style={{ color: 'var(--accent-purple)', margin: '0 auto var(--sp-4)' }} />
+                  <h2 style={{ fontSize: 'var(--fs-lg)', fontWeight: 'bold' }}>Generating Calibration Check...</h2>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', marginTop: 8 }}>MIND is analyzing {examType} to find 5 foundational concepts.</p>
+                </div>
+              ) : quizData.length > 0 ? (
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--sp-6)', color: 'var(--text-tertiary)', fontSize: 'var(--fs-xs)', textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)' }}>
+                    <span>Diagnostic Calibration</span>
+                    <span>{currentQ + 1} of 5</span>
+                  </div>
+                  
+                  <h3 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-bold)', lineHeight: 'var(--lh-relaxed)', marginBottom: 'var(--sp-8)' }}>
+                    {quizData[currentQ].question}
+                  </h3>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-3)' }}>
+                    {quizData[currentQ].options.map((opt: string, i: number) => (
+                      <button
+                        key={i}
+                        onClick={() => handleAnswer(i)}
+                        style={{
+                          padding: 'var(--sp-4)', background: 'var(--bg-tertiary)', border: '1px solid var(--border-default)',
+                          borderRadius: 'var(--radius-md)', color: 'var(--text-primary)', textAlign: 'left', fontSize: 'var(--fs-md)',
+                          cursor: 'pointer', transition: 'all 0.2s', display: 'flex', gap: 'var(--sp-4)'
+                        }}
+                        onMouseEnter={e => { e.currentTarget.style.background = 'var(--bg-hover)'; e.currentTarget.style.borderColor = 'var(--accent-purple)'; }}
+                        onMouseLeave={e => { e.currentTarget.style.background = 'var(--bg-tertiary)'; e.currentTarget.style.borderColor = 'var(--border-default)'; }}
+                      >
+                        <span style={{ color: 'var(--accent-purple)', fontWeight: 'bold' }}>{String.fromCharCode(65 + i)}.</span>
+                        {opt}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div style={{ textAlign: 'center' }}>Failed to load quiz. <Button onClick={() => setStep(5)}>Skip Calibration</Button></div>
+              )}
+            </Card>
+          </motion.div>
+        )}
+
+        {/* STEP 5: The Reveal (Knowledge Graph & Redirect) */}
+        {step === 5 && (
+          <motion.div key="step5" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} style={{ width: '100%', maxWidth: 800, textAlign: 'center' }}>
+            
+            {loading ? (
+              <div style={{ padding: 'var(--sp-12)' }}>
+                <Brain size={64} className="animate-pulse" style={{ color: 'var(--accent-cyan)', margin: '0 auto var(--sp-6)' }} />
+                <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-black)', marginBottom: 'var(--sp-2)' }}>Building Your Brain Model...</h2>
+                <p style={{ color: 'var(--text-secondary)' }}>Processing diagnostics, scaling FSRS decay curves, and generating Day 1 mission.</p>
+              </div>
+            ) : (
+              <div>
+                <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: 'spring', damping: 20 }}>
+                  <Target size={64} style={{ color: 'var(--success)', margin: '0 auto var(--sp-4)', filter: 'drop-shadow(0 0 20px var(--success-dim))' }} />
+                </motion.div>
+                <h2 style={{ fontSize: 'var(--fs-3xl)', fontWeight: 'var(--fw-black)', marginBottom: 'var(--sp-4)' }}>Calibration Complete.</h2>
+                
+                <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-lg)', padding: 'var(--sp-6)', marginBottom: 'var(--sp-8)', display: 'inline-block', textAlign: 'left' }}>
+                  <div style={{ display: 'flex', gap: 'var(--sp-6)', alignItems: 'center' }}>
+                    <div style={{ borderRight: '1px solid var(--border-subtle)', paddingRight: 'var(--sp-6)' }}>
+                      <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', textTransform: 'uppercase' }}>Strong Areas Found</div>
+                      <div style={{ color: 'var(--success)', fontWeight: 'bold', fontSize: 'var(--fs-lg)' }}>{quizResults.filter(r=>r.isCorrect).length} Concepts</div>
+                    </div>
+                    <div>
+                      <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', textTransform: 'uppercase' }}>Weak Areas Found</div>
+                      <div style={{ color: 'var(--danger)', fontWeight: 'bold', fontSize: 'var(--fs-lg)' }}>{quizResults.filter(r=>!r.isCorrect).length} Concepts</div>
+                    </div>
+                  </div>
+                </div>
+
+                <p style={{ fontSize: 'var(--fs-lg)', color: 'var(--text-secondary)', marginBottom: 'var(--sp-8)', maxWidth: 600, margin: '0 auto var(--sp-8)' }}>
+                  This is where you stand today. Your ATLAS graph has been seeded. <br/>Your Day 1 mission is locked and waiting.
+                </p>
+
+                <Button size="lg" onClick={() => router.push('/dashboard')} style={{ background: 'linear-gradient(135deg, var(--accent-blue), var(--accent-cyan))', color: 'black', padding: '20px 40px', fontSize: 'var(--fs-lg)', fontWeight: 900, boxShadow: '0 10px 30px rgba(0, 240, 255, 0.3)' }}>
+                  Enter Command Center <ArrowRight size={24} style={{ marginLeft: 8 }} />
+                </Button>
+              </div>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
-
-      {showGraphReveal && (
-        <div style={{
-          position: 'fixed',
-          inset: 0,
-          background: 'var(--bg-primary)',
-          zIndex: 100,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          textAlign: 'center',
-          padding: 'var(--sp-6)'
-        }}>
-          <style>{`
-            @keyframes pulse-cyan {
-              0% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7);
-              }
-              70% {
-                transform: scale(1);
-                box-shadow: 0 0 0 20px rgba(6, 182, 212, 0);
-              }
-              100% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(6, 182, 212, 0);
-              }
-            }
-          `}</style>
-          
-          <div style={{
-            width: 96,
-            height: 96,
-            borderRadius: '50%',
-            background: 'radial-gradient(circle, var(--accent-cyan), rgba(6, 182, 212, 0.3))',
-            animation: 'pulse-cyan 2s infinite',
-            marginBottom: 'var(--sp-8)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            boxShadow: '0 0 15px rgba(6, 182, 212, 0.5)'
-          }}>
-            <BrainCircuit size={48} color="white" />
-          </div>
-
-          <h1 style={{
-            fontSize: 'var(--fs-2xl)',
-            fontWeight: 'var(--fw-black)',
-            color: 'var(--text-primary)',
-            letterSpacing: 'var(--ls-tight)',
-            margin: '0 0 var(--sp-2) 0'
-          }}>
-            Your Knowledge Map
-          </h1>
-          
-          <p style={{
-            color: 'var(--text-secondary)',
-            fontSize: 'var(--fs-base)',
-            maxWidth: '30rem',
-            margin: '0 0 var(--sp-6) 0',
-            lineHeight: 'var(--lh-relaxed)'
-          }}>
-            We&apos;ve mapped {conceptCount !== null ? conceptCount : 'the essential'} concepts across your syllabus. Let&apos;s find your baseline.
-          </p>
-
-          <div style={{
-            width: '240px',
-            height: '6px',
-            background: 'var(--bg-tertiary)',
-            borderRadius: 'var(--radius-full)',
-            overflow: 'hidden'
-          }}>
-            <div style={{
-              width: `${progress}%`,
-              height: '100%',
-              background: 'var(--accent-cyan)',
-              transition: 'width 3s ease-in-out'
-            }} />
-          </div>
-        </div>
-      )}
     </div>
   );
 }

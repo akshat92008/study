@@ -83,10 +83,11 @@ export async function POST(req: NextRequest) {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return new Response('Unauthorized', { status: 401 });
 
-    const ip = (req as any).ip || req.headers.get('x-forwarded-for') || '127.0.0.1';
-    const isAllowed = await rateLimit(ip, 50, 60000); // 50 requests per minute
+    // --- NEW RATE LIMIT ---
+    // 60 requests per hour
+    const isAllowed = await rateLimit(`global-${user.id}`, 60, 60 * 60 * 1000); 
     if (!isAllowed) {
-      return new Response('Too many requests', { status: 429 });
+      return new Response('Rate limit exceeded. Please wait a while.', { status: 429 });
     }
  
     const { message, history, currentPath, activeGoalId } = await req.json();
@@ -355,51 +356,51 @@ export async function POST(req: NextRequest) {
           logger.error('Error during MIND streaming via Orchestrator', err);
           controller.enqueue(encoder.encode('\n\nI hit a temporary snag — please try again in a moment.'));
         } finally {
-          controller.close();
- 
-          // Background Post-Session Synthesis (Gap detection & flashcards)
+          // =========================================================
+          // PIPELINE: Socratic Post-Session Synthesis (MIND -> ATLAS)
+          // =========================================================
           if (fullResponse.trim().length > 0) {
-            Promise.resolve().then(async () => {
-              try {
-                const analysisPrompt = `Analyze the student's recent exchange with the AI MIND tutor to check if they were studying/discussing a specific academic concept.
-If yes, identify the subject (e.g. 'Physics'), the concept (e.g. 'Coulomb\\'s Law'), check if they demonstrated understanding, and if any critical conceptual gaps were found.
+            try {
+              const analysisPrompt = `Analyze the student's recent exchange with the AI MIND tutor to check if they were studying/discussing a specific academic concept.
+              If yes, identify the subject (e.g. 'Physics'), the concept (e.g. 'Coulomb\\'s Law'), check if they demonstrated understanding, and if any critical conceptual gaps were found.
+              
+              Exchange:
+              ${recentHistoryText}
+              Student: ${message}
+              MIND: ${fullResponse}
+              
+              Respond STRICTLY in JSON format with these exact fields:
+              {
+                "conceptDiscussed": boolean,
+                "subject": string | null,
+                "conceptName": string | null,
+                "understandingGained": boolean,
+                "gapFound": string | null,
+                "gapAnswer": string | null,
+                "summary": string
+              }`;
  
-Exchange:
-${recentHistoryText}
-Student: ${message}
-MIND: ${fullResponse}
+              const analysis = await generateJSON<any>(
+                'flash',
+                'You are an expert learning diagnostic engine.',
+                analysisPrompt
+              );
  
-Respond STRICTLY in JSON format with these exact fields:
-{
-  "conceptDiscussed": boolean,
-  "subject": string | null,
-  "conceptName": string | null,
-  "understandingGained": boolean,
-  "gapFound": string | null,
-  "gapAnswer": string | null,
-  "summary": string
-}`;
- 
-                const analysis = await generateJSON<any>(
-                  'flash',
-                  'You are an expert learning diagnostic engine.',
-                  analysisPrompt
-                );
- 
-                if (!analysis) return;
- 
+              if (analysis) {
                 let resolvedId: string | null = null;
                 const db = await createClient();
- 
+   
                 if (analysis.conceptDiscussed && analysis.subject && analysis.conceptName) {
                   resolvedId = await resolveConceptByName(user.id, analysis.subject, analysis.conceptName);
                 }
- 
+   
                 if (resolvedId && analysis.understandingGained) {
+                  // UPDATE CONCEPT STATE (Mastery Push to ATLAS)
                   await updateConceptState(resolvedId, true, 0);
                 }
- 
+   
                 if (resolvedId && analysis.gapFound && !analysis.understandingGained) {
+                  // MEMORY Card Push
                   await createSingleCard(
                     user.id,
                     resolvedId,
@@ -409,11 +410,13 @@ Respond STRICTLY in JSON format with these exact fields:
                     analysis.conceptName || 'Discussion'
                   );
                 }
-              } catch (bgErr) {
-                logger.error('Error during post-session background synthesis', bgErr);
               }
-            });
+            } catch (bgErr) {
+              logger.error('Error during post-session background synthesis', bgErr);
+            }
           }
+          
+          controller.close();
         }
       }
     });

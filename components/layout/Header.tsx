@@ -9,7 +9,9 @@ interface HeaderProps {
 }
 
 export default function Header({ userName, streakDays }: HeaderProps) {
-  const { toggleMobileSidebar } = useAppStore();
+  const { toggleMobileSidebar, activeTasksList } = useAppStore();
+
+  const isAtRisk = streakDays > 0 && activeTasksList.length > 0 && !activeTasksList.some(t => t.is_completed);
 
   return (
     <header
@@ -30,6 +32,24 @@ export default function Header({ userName, streakDays }: HeaderProps) {
         transition: 'left var(--duration-normal) var(--ease-out)',
       }}
     >
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes warning-pulse {
+          0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.45); }
+          70% { box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
+          100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+        }
+        @keyframes flame-flicker {
+          0%, 100% { transform: scale(1); opacity: 1; filter: drop-shadow(0 0 2px rgba(245, 158, 11, 0.2)); }
+          50% { transform: scale(1.1) rotate(-5deg); opacity: 0.9; filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.6)); }
+        }
+        .warning-pulse-anim {
+          animation: warning-pulse 2s infinite;
+        }
+        .flame-flicker-anim {
+          animation: flame-flicker 1.5s infinite ease-in-out;
+        }
+      `}} />
+
       {/* Menu & Branding */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)', marginRight: 'var(--sp-4)' }}>
         <button
@@ -99,23 +119,36 @@ export default function Header({ userName, streakDays }: HeaderProps) {
 
       {/* Right section */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-4)', marginLeft: 'auto' }}>
-        {/* Streak */}
+        
+        {/* ========================================================================= */}
+        {/* TASK 3.2: PROMINENT STREAK COUNTER (With warning pulse for risk states)     */}
+        {/* ========================================================================= */}
         <div
+          title={`${streakDays} Day Habit Streak${isAtRisk ? ' (At Risk - Complete today\'s focus session!)' : ''}`}
+          className={isAtRisk ? 'warning-pulse-anim' : ''}
           style={{
             display: 'flex',
             alignItems: 'center',
             gap: 'var(--sp-1)',
             padding: 'var(--sp-1) var(--sp-3)',
             background: streakDays > 0 ? 'var(--warning-glow)' : 'var(--bg-tertiary)',
-            border: `1px solid ${streakDays > 0 ? 'var(--warning-dim)' : 'var(--border-default)'}`,
+            border: `1px solid ${streakDays > 0 ? (isAtRisk ? 'var(--warning)' : 'var(--warning-dim)') : 'var(--border-default)'}`,
             borderRadius: 'var(--radius-full)',
+            boxShadow: streakDays > 0 ? '0 0 10px hsla(38, 92%, 50%, 0.15)' : 'none',
+            transition: 'all 0.3s ease',
           }}
         >
-          <Flame size={14} style={{ color: streakDays > 0 ? 'var(--warning)' : 'var(--text-tertiary)' }} />
+          <div className={isAtRisk ? 'flame-flicker-anim' : ''} style={{ display: 'flex', alignItems: 'center' }}>
+            <Flame 
+              size={14} 
+              style={{ color: streakDays > 0 ? 'var(--warning)' : 'var(--text-tertiary)' }} 
+              fill={streakDays > 0 ? 'var(--warning)' : 'none'}
+            />
+          </div>
           <span
             style={{
-              fontSize: 'var(--fs-xs)',
-              fontWeight: 'var(--fw-bold)',
+              fontSize: 'var(--fs-sm)', // Scaled up slightly for prominence
+              fontWeight: 'var(--fw-black)',
               fontFamily: 'var(--font-mono)',
               color: streakDays > 0 ? 'var(--warning)' : 'var(--text-tertiary)',
             }}

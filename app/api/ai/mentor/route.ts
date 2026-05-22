@@ -10,10 +10,10 @@ export async function POST(req: NextRequest) {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return new Response('Unauthorized', { status: 401 });
 
-  // Limit: 50 requests per 15 minutes per user
-  const ip = req.headers.get('x-forwarded-for') || user.id;
-  if (!await rateLimit(ip, 50, 15 * 60 * 1000)) {
-    return new Response('Rate limit exceeded. Please wait a few minutes.', { status: 429 });
+  // --- NEW RATE LIMIT ---
+  // 60 requests per hour
+  if (!await rateLimit(`mentor-${user.id}`, 60, 60 * 60 * 1000)) {
+    return new Response('Rate limit exceeded. Please wait a while.', { status: 429 });
   }
 
   try {

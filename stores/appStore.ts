@@ -1,23 +1,17 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { createClient } from '@/lib/supabase/client';
-import { createChatSlice, ChatSlice } from './slices/chatSlice';
+import { createChatSlice, type ChatSlice, type ChatMessage } from './slices/chatSlice';
 
-interface Toast {
+export type { ChatMessage };
+
+export interface Toast {
   id: string;
   message: string;
   type: 'success' | 'error' | 'info';
 }
 
-export interface ChatMessage {
-  id?: string;
-  role: 'user' | 'assistant' | 'system';
-  content: string;
-  timestamp: string;
-  metadata?: any;
-}
-
-interface AppState extends ChatSlice {
+export interface AppState extends ChatSlice {
   // Command Bar
   isCommandBarOpen: boolean;
   setCommandBarOpen: (open: boolean) => void;
@@ -61,14 +55,12 @@ interface AppState extends ChatSlice {
   autopsyLossPoints: number;
   setAutopsyLossPoints: (points: number) => void;
 
-  // Persistent Orchestrator Chat State (Managed by ChatSlice)
-
   // Learning Goals
   learningGoals: any[];
   activeGoalId: string | null;
   setActiveGoalId: (id: string | null) => void;
   loadLearningGoals: () => Promise<void>;
-  createLearningGoal: (title: string, details?: { deadline: string; currentLevel: string; timeAvailable: number; preferredLearningStyle: string }) => Promise<any>;
+  createLearningGoal: (title: string, details?: any) => Promise<any>;
 
   // Global drawer / UI states
   activeDrawer: 'cognition' | 'revision' | 'autopsy' | null;
@@ -84,7 +76,13 @@ interface AppState extends ChatSlice {
 export const useAppStore = create<AppState>()(
   persist(
     (set, get, api) => ({
-      ...createChatSlice(set, get, api as any),
+      // Mount the chat slice directly into the global state
+      ...createChatSlice(
+        set as unknown as any,
+        get as unknown as any,
+        api as unknown as any
+      ),
+      
       isCommandBarOpen: false,
       setCommandBarOpen: (open) => set({ isCommandBarOpen: open }),
       toggleCommandBar: () => set((state) => ({ isCommandBarOpen: !state.isCommandBarOpen })),
@@ -120,7 +118,6 @@ export const useAppStore = create<AppState>()(
       setMobileSidebarOpen: (open) => set({ isMobileSidebarOpen: open }),
       toggleMobileSidebar: () => set((state) => ({ isMobileSidebarOpen: !state.isMobileSidebarOpen })),
 
-      // Real-time Dashboard Telemetry implementation
       currentActiveTask: null,
       setCurrentActiveTask: (task) => set({ currentActiveTask: task }),
       activeTasksList: [],
@@ -143,12 +140,10 @@ export const useAppStore = create<AppState>()(
       uploadStatus: '',
       setUploadStatus: (status) => set({ uploadStatus: status }),
 
-      // Persistent Orchestrator Chat State is handled by chatSlice above
-
-      // Learning Goals implementation
       learningGoals: [],
       activeGoalId: null,
       setActiveGoalId: (id) => set({ activeGoalId: id }),
+      
       loadLearningGoals: async () => {
         try {
           const supabase = createClient();
@@ -168,6 +163,7 @@ export const useAppStore = create<AppState>()(
           console.error('Failed to load learning goals:', err);
         }
       },
+      
       createLearningGoal: async (title, details) => {
         try {
           const supabase = createClient();
@@ -222,6 +218,7 @@ export const useAppStore = create<AppState>()(
     }),
     {
       name: 'cognition-os-store',
+      // Explicitly pick which states get saved to browser localStorage
       partialize: (state) => ({
         chatMessages: state.chatMessages,
         chatId: state.chatId,
@@ -232,4 +229,3 @@ export const useAppStore = create<AppState>()(
     }
   )
 );
-

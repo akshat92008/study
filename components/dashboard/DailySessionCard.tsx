@@ -210,13 +210,15 @@ export default function DailySessionCard() {
           }
         `}} />
 
-        {/* Top row: DAY & STREAK */}
+        {/* ========================================================================= */}
+        {/* TASK 3.2: PROMINENT STREAK COUNTER (Top of the Daily Session Card)        */}
+        {/* ========================================================================= */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--sp-4)' }}>
-          <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-bold)', color: 'var(--accent-amber)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+          <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-bold)', color: 'var(--accent-amber, hsl(38, 92%, 50%))', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             DAY {streak}
           </span>
-          <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-bold)', color: 'var(--accent-amber)', display: 'flex', alignItems: 'center', gap: '4px' }}>
-            🔥 STREAK {streak}
+          <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-bold)', color: 'var(--accent-amber, hsl(38, 92%, 50%))', display: 'flex', alignItems: 'center', gap: '4px' }}>
+            <Flame size={14} fill="currentColor" /> STREAK {streak}
           </span>
         </div>
 

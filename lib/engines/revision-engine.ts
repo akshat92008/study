@@ -206,7 +206,13 @@ export async function reviewCard(cardId: string, rating: 1 | 2 | 3 | 4, response
 }
 
 // RAG-Driven Auto Card Generation
-export async function generateCardsForConcept(userId: string, conceptId: string, subject: string, chapter: string) {
+export async function generateCardsForConcept(
+  userId: string, 
+  conceptId: string, 
+  subject: string, 
+  chapter: string, 
+  maxCards: number = 5 // Added dynamic limit parameter
+) {
   const supabase = await createClient();
   
   // 1. Fetch Context from Student's Uploaded Materials via RAG
@@ -220,12 +226,12 @@ export async function generateCardsForConcept(userId: string, conceptId: string,
   // 2. Strict Prompting
   const prompt = `
     You are an elite automated flashcard extraction engine.
-    Extract exactly 5 high-yield flashcards for the chapter: "${chapter}" (${subject}).
+    Extract exactly ${maxCards} high-yield flashcards for the chapter: "${chapter}" (${subject}).
     
     CRITICAL INSTRUCTIONS:
     - Base the questions strictly on the SOURCE MATERIAL provided below if available.
     - If no source material is provided, use your expert knowledge.
-    - Mix question types: 2 Definitions, 1 Formula/Application, 2 Conceptual/True-False.
+    - Mix question types: Definitions, Formulas/Application, and Conceptual.
     - Keep answers concise and direct.
     - Format mathematical equations using LaTeX inside $...$ or $$...$$.
     
@@ -243,7 +249,7 @@ export async function generateCardsForConcept(userId: string, conceptId: string,
   // 4. Inject into FSRS DB
   const emptyCard = createEmptyCard();
   
-  const rows = result.cards.map((c: { front: string; back: string }) => ({
+  const rows = result.cards.slice(0, maxCards).map((c: { front: string; back: string }) => ({
     user_id: userId,
     concept_id: conceptId,
     front: c.front,

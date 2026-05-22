@@ -45,18 +45,14 @@ export async function POST(req: NextRequest) {
     if (result.isComplete && result.extractedData.examType) {
       const { completeOnboarding } = await import('@/lib/actions/onboarding');
       
-      // Convert their weak subjects array into the format our backend expects
-      const weakSpots: Record<string, string[]> = {};
-      if (result.extractedData.weakSubjects) {
-         // Put all weak subjects under a 'General' key to seed the graph red
-         weakSpots['General'] = result.extractedData.weakSubjects;
-      }
+      const targetYear = result.extractedData.targetYear || new Date().getFullYear();
+      const targetDate = `${targetYear}-05-01`;
 
       await completeOnboarding(
         user.id, 
         result.extractedData.examType, 
-        result.extractedData.targetYear || new Date().getFullYear(), 
-        weakSpots
+        targetDate,
+        []
       );
     }
 

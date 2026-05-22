@@ -45,14 +45,19 @@ To get started, tell me what you want to learn, prepare for, or master.`,
 
 let activeRealtimeChannel: any = null;
 
-export const createChatSlice: StateCreator<ChatSlice, [["zustand/persist", unknown]], [], ChatSlice> = (set, get) => ({
+// Properly typed Zustand slice creator
+export const createChatSlice: StateCreator<
+  ChatSlice,
+  [],
+  [],
+  ChatSlice
+> = (set, get) => ({
   chatId: null,
   chatMessages: [INITIAL_MSG],
   pendingSyncQueue: [],
   isChatLoading: false,
 
   setChatId: (id) => set({ chatId: id }),
-  
   setChatMessages: (messages) => set({ chatMessages: messages }),
   
   addChatMessage: (message) => {
@@ -67,7 +72,6 @@ export const createChatSlice: StateCreator<ChatSlice, [["zustand/persist", unkno
 
   clearChat: () => {
     set({ chatMessages: [INITIAL_MSG], pendingSyncQueue: [] });
-    // In a real scenario we'd create a new session ID here
     set({ chatId: null });
     
     // Clean up channel on clear
@@ -85,12 +89,8 @@ export const createChatSlice: StateCreator<ChatSlice, [["zustand/persist", unkno
     try {
       const supabase = createClient();
       const { data: { user } } = await supabase.auth.getUser();
-      if (!user) {
-        set({ isChatLoading: false });
-        return;
-      }
+      if (!user) return;
 
-      // Try reading from new table first
       let sessionId = get().chatId;
       
       if (sessionId) {
@@ -129,9 +129,7 @@ export const createChatSlice: StateCreator<ChatSlice, [["zustand/persist", unkno
             .select('id')
             .single();
           
-          if (createError) {
-            console.error('Failed to create chat session:', createError);
-          }
+          if (createError) console.error('Failed to create chat session:', createError);
           if (newSession) {
             sessionId = newSession.id;
             set({ chatId: sessionId });
@@ -158,10 +156,6 @@ export const createChatSlice: StateCreator<ChatSlice, [["zustand/persist", unkno
             metadata: m.metadata
           }));
           set({ chatMessages: chronological });
-        } else if (error?.code === '42P01') {
-           // relation does not exist
-           console.warn('chat_messages table not found. Using fallback.');
-           // Wait, we should implement fallback to orchestrator_chats here if we want zero-breakage
         }
       }
 
@@ -195,23 +189,20 @@ export const createChatSlice: StateCreator<ChatSlice, [["zustand/persist", unkno
         metadata: msg.metadata || {}
       }));
 
-      const { error } = await supabase
-        .from('chat_messages')
-        .insert(recordsToInsert);
+      const { error } = await supabase.from('chat_messages').insert(recordsToInsert);
 
       if (!error) {
         // Clear queue on success
         set({ pendingSyncQueue: [] });
       } else {
-        console.error('Failed to sync chat messages. Code:', error.code, 'Message:', error.message, 'Details:', error.details, 'Hint:', error.hint, 'Error object:', error);
+        console.error('Failed to sync chat messages:', error);
       }
     } catch (err: any) {
-      console.error('Error syncing chat messages', err?.message || err);
+      console.error('Error syncing chat messages', err);
     }
   },
 
   syncChatToSupabase: async () => {
-    // Backward compatibility alias for legacy UI calls
     return get().syncPendingQueue();
   },
 

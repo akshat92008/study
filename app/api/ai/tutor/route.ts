@@ -29,10 +29,11 @@ export async function POST(req: NextRequest) {
     });
   }
 
-  const ip = (req as any).ip || req.headers.get('x-forwarded-for') || '127.0.0.1';
-  const isAllowed = await rateLimit(ip, 50, 60000); // 50 requests per minute
+  // --- NEW RATE LIMIT ---
+  // 60 requests per hour
+  const isAllowed = await rateLimit(`tutor-${user.id}`, 60, 60 * 60 * 1000);
   if (!isAllowed) {
-    return new Response(JSON.stringify({ error: 'Too many requests' }), { status: 429 });
+    return new Response(JSON.stringify({ error: 'Rate limit exceeded. Try again later.' }), { status: 429 });
   }
 
   try {
@@ -324,14 +325,15 @@ CRITICAL: NEVER lock yourself to a specific subject unless the student explicitl
               fullResponse += chunk;
             }
 
-            // Trigger Socratic post-session synthesis
-            Promise.resolve().then(async () => {
-              if (!concept) return;
-              const analysisPrompt = `Analyze this tutor session. Did the student demonstrate clear understanding? Are there knowledge gaps?
-              Session: ${historyText}\nStudent: ${message}\nTutor: ${fullResponse}
-              Respond exactly as JSON: { "summary": "1 sentence summary", "understood": true, "gapFound": "Question to put on flashcard front", "gapAnswer": "Answer for back" }`;
-              
+            // =========================================================
+            // PIPELINE: Socratic Post-Session Synthesis (MIND -> ATLAS)
+            // =========================================================
+            if (concept) {
               try {
+                const analysisPrompt = `Analyze this tutor session. Did the student demonstrate clear understanding? Are there knowledge gaps?
+                Session: ${historyText}\nStudent: ${message}\nTutor: ${fullResponse}
+                Respond exactly as JSON: { "summary": "1 sentence summary", "understood": true, "gapFound": "Question to put on flashcard front", "gapAnswer": "Answer for back" }`;
+                
                 const analysis = await generateJSON<any>('flash', 'Expert analyzer.', analysisPrompt);
                 const currentMessages = [...(history || []), { role: 'user', content: message }, { role: 'tutor', content: fullResponse }];
                 
@@ -339,10 +341,10 @@ CRITICAL: NEVER lock yourself to a specific subject unless the student explicitl
                   user_id: user.id, concept_id: concept.id, summary: analysis.summary, messages: currentMessages
                 });
 
-                // Update standard concept state
+                // UPDATE CONCEPT STATE (Mastery Push to ATLAS)
                 await updateConceptState(concept.id, analysis.understood, 0);
 
-                // Ingest session completed event into LearningStateEngine to trigger metrics updates and reactive rules
+                // Telemetry Event
                 await LearningStateEngine.ingestEvent({
                   userId: user.id,
                   type: 'SESSION_COMPLETED',
@@ -354,13 +356,14 @@ CRITICAL: NEVER lock yourself to a specific subject unless the student explicitl
                   }
                 });
 
+                // MEMORY Card Push
                 if (analysis.gapFound && !analysis.understood) {
                   await createSingleCard(user.id, concept.id, analysis.gapFound, analysis.gapAnswer, sub, topic);
                 }
               } catch (e) {
                 logger.error('Post-session synthesis or telemetry ingestion failed', e);
               }
-            });
+            }
 
           } else if (name === 'create_study_plan') {
             const target_date = (args as any).target_date;

@@ -22,8 +22,8 @@ async function test() {
     const res = await completeOnboarding(
       profileRow.id,
       "NEET", 
-      2026, 
-      { General: ["physics"] }
+      "2026-05-01", 
+      []
     );
     console.log("SUCCESS:", res);
   } catch (err: any) {

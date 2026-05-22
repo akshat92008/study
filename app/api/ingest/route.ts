@@ -4,6 +4,7 @@ import { processDocumentIntoMemory } from '@/lib/engines/memory-engine';
 import { GoogleGenAI } from '@google/genai';
 import { logger, safeError } from '@/lib/utils/logger';
 import { rateLimit } from '@/lib/utils/rate-limit';
+import pdfParse from 'pdf-parse';
 
 export async function POST(request: Request) {
   try {
@@ -11,17 +12,16 @@ export async function POST(request: Request) {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-    const ip = request.headers.get('x-forwarded-for') || '127.0.0.1';
-    const isAllowed = await rateLimit(ip, 20, 60000); // 20 requests per minute
+    // --- RATE LIMIT ---
+    // 20 requests per 24 hours (86,400,000 ms)
+    const isAllowed = await rateLimit(`ingest-${user.id}`, 20, 24 * 60 * 60 * 1000); 
     if (!isAllowed) {
-      return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
+      return NextResponse.json({ error: 'Daily document ingestion limit reached.' }, { status: 429 });
     }
 
     const formData = await request.formData();
     const file = formData.get('file') as File;
     if (!file) return NextResponse.json({ error: 'No file provided' }, { status: 400 });
-
-    // Enforce Free Tier limits (Disabled: Unlimited uploads)
 
     const title = file.name;
     const mimeType = file.type || 'application/pdf';
@@ -31,8 +31,16 @@ export async function POST(request: Request) {
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
-    // 2. Multimodal PDF/Image parsing via Gemini 2.5 Flash
-    if (mimeType === 'application/pdf' || mimeType.startsWith('image/')) {
+    // 2. Extraction Pipeline
+    if (mimeType === 'application/pdf') {
+      // PDF PARSE: Fast, token-free local extraction for large files/textbooks
+      logger.info(`Extracting PDF locally via pdf-parse: ${title}`);
+      const parsed = await pdfParse(buffer);
+      text = parsed.text;
+      
+    } else if (mimeType.startsWith('image/')) {
+      // GEMINI OCR: Multimodal extraction for photos of notes/OMR sheets
+      logger.info(`Extracting Image via Gemini OCR: ${title}`);
       const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
       const base64 = buffer.toString('base64');
 
@@ -42,22 +50,25 @@ export async function POST(request: Request) {
           role: 'user',
           parts: [
             { inlineData: { mimeType, data: base64 } },
-            { text: 'Extract ALL text content from this document. Preserve headings, lists, and structure. Output strictly the extracted text. Do not add conversational filler.' },
+            { text: 'Extract ALL text content from this image. Preserve headings, lists, and structure. Output strictly the extracted text. Do not add conversational filler.' },
           ],
         }],
       });
       text = res.text || '';
+      
     } else {
       // Standard text/markdown fallback
       text = buffer.toString('utf-8');
     }
 
-    if (!text.trim()) return NextResponse.json({ error: 'Could not extract text' }, { status: 400 });
+    if (!text.trim()) {
+      return NextResponse.json({ error: 'Could not extract any readable text from this document.' }, { status: 400 });
+    }
 
-    // 3. Vectorize and store
+    // 3. Vectorize and store via pgvector
     const result = await processDocumentIntoMemory(user.id, { title, text });
 
-    // Auto-generate FSRS flashcards from uploaded material in background
+    // 4. Auto-generate FSRS flashcards in background
     Promise.resolve().then(async () => {
       try {
         const { generateJSON } = await import('@/lib/ai/gemini');
@@ -94,15 +105,16 @@ export async function POST(request: Request) {
         // Generate flashcards from the material
         const { generateCardsForConcept } = await import('@/lib/engines/revision-engine');
         await generateCardsForConcept(user.id, conceptId, metaResult.subject, metaResult.chapter);
-        
+        logger.info(`Background flashcard generation complete for ${title}`);
       } catch (bgErr) {
-        console.warn('Background card generation from upload failed:', bgErr);
+        logger.warn('Background card generation from upload failed:', bgErr);
       }
     });
 
-    return NextResponse.json({ ...result, text });
+    return NextResponse.json({ ...result, text: text.substring(0, 500) + '...' }); // Truncate text in JSON response for bandwidth
 
   } catch (error: any) {
+    logger.error('Document ingestion failed', error);
     return NextResponse.json(safeError(error), { status: 500 });
   }
 }

@@ -340,3 +340,7 @@ button:active:not(:disabled) {
     transform: translateX(0) !important;
   }
 }
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}

@@ -1,51 +1,106 @@
--- Enforce Row Level Security on all operational tables
-ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
-ALTER TABLE concepts ENABLE ROW LEVEL SECURITY;
-ALTER TABLE concept_links ENABLE ROW LEVEL SECURITY;
-ALTER TABLE mistakes ENABLE ROW LEVEL SECURITY;
-ALTER TABLE revision_cards ENABLE ROW LEVEL SECURITY;
-ALTER TABLE review_logs ENABLE ROW LEVEL SECURITY;
-ALTER TABLE study_tasks ENABLE ROW LEVEL SECURITY;
-ALTER TABLE mock_tests ENABLE ROW LEVEL SECURITY;
-ALTER TABLE performance_snapshots ENABLE ROW LEVEL SECURITY;
-ALTER TABLE mentor_chats ENABLE ROW LEVEL SECURITY;
-ALTER TABLE tutor_sessions ENABLE ROW LEVEL SECURITY;
-ALTER TABLE study_sessions ENABLE ROW LEVEL SECURITY;
-ALTER TABLE materials ENABLE ROW LEVEL SECURITY;
-ALTER TABLE material_chunks ENABLE ROW LEVEL SECURITY;
-ALTER TABLE mock_autopsies ENABLE ROW LEVEL SECURITY;
-ALTER TABLE autopsy_questions ENABLE ROW LEVEL SECURITY;
-ALTER TABLE recovery_plans ENABLE ROW LEVEL SECURITY;
-ALTER TABLE pulse_signals ENABLE ROW LEVEL SECURITY;
+-- ==============================================================================
+-- CRITICAL SECURITY PATCH: ENFORCE RLS ON ALL TABLES
+-- This script enables Row Level Security and restricts access to auth.uid()
+-- ==============================================================================
 
--- 1. Profiles: Users can read and update their own profile
-CREATE POLICY "Users can manage own profile" ON profiles 
-  FOR ALL USING (auth.uid() = id);
+-- 1. Profiles (Uses 'id' instead of 'user_id')
+ALTER TABLE IF EXISTS profiles ENABLE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "Users access own profiles" ON profiles;
+CREATE POLICY "Users access own profiles" ON profiles FOR ALL USING (auth.uid() = id);
 
--- 2. Standard Tenant Isolation: ALL policies enforce `user_id = auth.uid()`
-CREATE POLICY "Tenant isolation for concepts" ON concepts FOR ALL USING (auth.uid() = user_id);
-CREATE POLICY "Tenant isolation for concept_links" ON concept_links FOR ALL USING (auth.uid() = user_id);
-CREATE POLICY "Tenant isolation for mistakes" ON mistakes FOR ALL USING (auth.uid() = user_id);
-CREATE POLICY "Tenant isolation for revision_cards" ON revision_cards FOR ALL USING (auth.uid() = user_id);
-CREATE POLICY "Tenant isolation for review_logs" ON review_logs FOR ALL USING (auth.uid() = user_id);
-CREATE POLICY "Tenant isolation for study_tasks" ON study_tasks FOR ALL USING (auth.uid() = user_id);
-CREATE POLICY "Tenant isolation for mock_tests" ON mock_tests FOR ALL USING (auth.uid() = user_id);
-CREATE POLICY "Tenant isolation for performance_snapshots" ON performance_snapshots FOR ALL USING (auth.uid() = user_id);
-CREATE POLICY "Tenant isolation for mentor_chats" ON mentor_chats FOR ALL USING (auth.uid() = user_id);
-CREATE POLICY "Tenant isolation for tutor_sessions" ON tutor_sessions FOR ALL USING (auth.uid() = user_id);
-CREATE POLICY "Tenant isolation for study_sessions" ON study_sessions FOR ALL USING (auth.uid() = user_id);
-CREATE POLICY "Tenant isolation for materials" ON materials FOR ALL USING (auth.uid() = user_id);
-CREATE POLICY "Tenant isolation for material_chunks" ON material_chunks FOR ALL USING (auth.uid() = user_id);
-CREATE POLICY "Tenant isolation for mock_autopsies" ON mock_autopsies FOR ALL USING (auth.uid() = user_id);
-CREATE POLICY "Tenant isolation for pulse_signals" ON pulse_signals FOR ALL USING (auth.uid() = user_id);
+-- 2. Standard Tables with direct 'user_id'
+-- (Includes Phase 1 tables and new Phase 2-5 tables)
+DO $$ 
+DECLARE 
+  t text; 
+  tables text[] := ARRAY[
+    'learning_goals', 
+    'concepts', 
+    'concept_links', 
+    'mistakes', 
+    'revision_cards', 
+    'review_logs', 
+    'study_tasks', 
+    'mock_tests', 
+    'performance_snapshots', 
+    'mentor_chats', 
+    'tutor_sessions', 
+    'tutor_session_states',
+    'study_sessions', 
+    'student_models', 
+    'materials', 
+    'material_chunks', 
+    'mock_autopsies', 
+    'pulse_signals', 
+    'student_events', 
+    'orchestrator_chats', 
+    'learner_states', 
+    'learner_daily_metrics', 
+    'chat_sessions', 
+    'chat_messages', 
+    'episodic_memories'
+  ];
+BEGIN 
+  FOREACH t IN ARRAY tables LOOP 
+    -- Enable RLS
+    EXECUTE format('ALTER TABLE IF EXISTS %I ENABLE ROW LEVEL SECURITY;', t);
+    
+    -- Drop existing generic policies if they exist to avoid conflicts
+    EXECUTE format('DROP POLICY IF EXISTS "Users access own %I" ON %I;', t, t);
+    EXECUTE format('DROP POLICY IF EXISTS "Users_access_own_data" ON %I;', t);
+    
+    -- Create strict user_id matching policy
+    EXECUTE format('CREATE POLICY "Users access own %I" ON %I FOR ALL USING (auth.uid() = user_id);', t, t);
+  END LOOP; 
+END $$;
 
--- 3. Cascading Isolation for Sub-tables (They don't have user_id, so they join parent)
-CREATE POLICY "Tenant isolation for autopsy_questions" ON autopsy_questions 
-  FOR ALL USING (
-    EXISTS (SELECT 1 FROM mock_autopsies WHERE id = autopsy_questions.autopsy_id AND user_id = auth.uid())
-  );
+-- 3. Indirectly Owned Tables (Join through parent table)
 
-CREATE POLICY "Tenant isolation for recovery_plans" ON recovery_plans 
-  FOR ALL USING (
-    EXISTS (SELECT 1 FROM mock_autopsies WHERE id = recovery_plans.autopsy_id AND user_id = auth.uid())
-  );
+-- Autopsy Questions: Accessible only if the user owns the parent mock_autopsies record
+ALTER TABLE IF EXISTS autopsy_questions ENABLE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "Users access own autopsy_questions" ON autopsy_questions;
+CREATE POLICY "Users access own autopsy_questions" ON autopsy_questions FOR ALL 
+USING (
+  EXISTS (
+    SELECT 1 FROM mock_autopsies ma 
+    WHERE ma.id = autopsy_questions.autopsy_id 
+    AND ma.user_id = auth.uid()
+  )
+);
+
+-- Recovery Plans: Accessible only if the user owns the parent mock_autopsies record
+ALTER TABLE IF EXISTS recovery_plans ENABLE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "Users access own recovery_plans" ON recovery_plans;
+CREATE POLICY "Users access own recovery_plans" ON recovery_plans FOR ALL 
+USING (
+  EXISTS (
+    SELECT 1 FROM mock_autopsies ma 
+    WHERE ma.id = recovery_plans.autopsy_id 
+    AND ma.user_id = auth.uid()
+  )
+);
+
+-- 4. B2B / Teams Tables
+
+-- Institutes: Only the owner can access/manage the institute
+ALTER TABLE IF EXISTS institutes ENABLE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "Owners manage their institutes" ON institutes;
+CREATE POLICY "Owners manage their institutes" ON institutes FOR ALL 
+USING (auth.uid() = owner_id);
+
+-- Institute Memberships: Users can see their own memberships, Owners see their students
+ALTER TABLE IF EXISTS institute_memberships ENABLE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "Users view own memberships" ON institute_memberships;
+DROP POLICY IF EXISTS "Institute owners view their students" ON institute_memberships;
+
+CREATE POLICY "Users view own memberships" ON institute_memberships FOR SELECT 
+USING (auth.uid() = user_id);
+
+CREATE POLICY "Institute owners view their students" ON institute_memberships FOR SELECT 
+USING (
+  EXISTS (
+    SELECT 1 FROM institutes i 
+    WHERE i.id = institute_memberships.institute_id 
+    AND i.owner_id = auth.uid()
+  )
+);

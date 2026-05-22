@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { getPlanForDate } from '@/lib/actions/planner';
 import { generateDailyPlan } from '@/lib/ai/agents/planner';
+import { rateLimit } from '@/lib/utils/rate-limit';
 
 export async function POST(request: Request) {
   try {
@@ -10,6 +11,12 @@ export async function POST(request: Request) {
 
     if (authError || !user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    // --- NEW RATE LIMIT ---
+    // 5 requests per 24 hours
+    if (!await rateLimit(`planner-${user.id}`, 5, 24 * 60 * 60 * 1000)) {
+      return NextResponse.json({ error: 'Daily plan generation limit reached.' }, { status: 429 });
     }
 
     const body = await request.json();

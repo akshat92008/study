@@ -1,8 +1,7 @@
-import { generateDailyPlan } from '@/lib/ai/agents/planner';
+import { generateDailyPlan, generateMorningBriefing } from '@/lib/ai/agents/planner';
 import { syncStudentModel } from '@/lib/engines/inference-engine';
 import { logger } from '@/lib/utils/logger';
-import { generateJSON } from '@/lib/ai/gemini';
-import { getEmbedding } from '@/lib/ai/gemini';
+import { generateJSON, getEmbedding } from '@/lib/ai/gemini';
 import { z } from 'zod';
 
 export const maxDuration = 300; // Vercel max execution time (5 mins)
@@ -163,6 +162,57 @@ export async function GET(req: Request) {
         await syncStudentModel(user.id);
         // Synthesize episodic memories from yesterday's events
         await synthesizeMemories(user.id, supabase);
+
+        // =====================================================================
+        // TASK 3.3: GENERATE & INJECT MORNING BRIEFING TO GLOBAL CHAT
+        // =====================================================================
+        try {
+          // 1. Get or create the Global Chat session for this user
+          let { data: session } = await supabase
+            .from('chat_sessions')
+            .select('id')
+            .eq('user_id', user.id)
+            .eq('session_type', 'global')
+            .order('created_at', { ascending: false })
+            .limit(1)
+            .maybeSingle();
+
+          if (!session) {
+            const { data: newSession } = await supabase
+              .from('chat_sessions')
+              .insert({ user_id: user.id, session_type: 'global', title: 'Cognition OS Main Thread' })
+              .select('id').single();
+            session = newSession;
+          }
+
+          if (session) {
+            // 2. Idempotency Check: Did we already brief them today?
+            const { data: existingBriefing } = await supabase
+              .from('chat_messages')
+              .select('id')
+              .eq('session_id', session.id)
+              .eq('metadata->>type', 'morning_briefing')
+              .eq('metadata->>date', today)
+              .maybeSingle();
+
+            if (!existingBriefing) {
+              // 3. Generate the narrative via Gemini (from lib/ai/agents/planner.ts)
+              const narrative = await generateMorningBriefing(user.id);
+
+              // 4. Inject as an Assistant message into the chat
+              await supabase.from('chat_messages').insert({
+                session_id: session.id,
+                user_id: user.id,
+                role: 'assistant',
+                content: narrative,
+                metadata: { type: 'morning_briefing', date: today }
+              });
+              logger.info(`Morning briefing injected into Global Chat for user ${user.id}`);
+            }
+          }
+        } catch (briefingErr) {
+          logger.warn(`Failed to generate morning briefing for user ${user.id}`, briefingErr);
+        }
 
         // Write daily performance snapshot
         try {

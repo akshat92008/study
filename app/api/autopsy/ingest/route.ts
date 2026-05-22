@@ -20,10 +20,10 @@ export async function POST(request: Request) {
 
     // PAYWALL GATE (Disabled: Unlimited autopsies)
 
-    // Rate Limiting: 50 requests per 15 minutes
-    const ip = request.headers.get('x-forwarded-for') || user.id;
-    if (!await rateLimit(ip, 50, 15 * 60 * 1000)) {
-      return NextResponse.json({ error: 'Rate limit exceeded. Please wait a few minutes.' }, { status: 429 });
+    // --- NEW RATE LIMIT ---
+    // 10 requests per 24 hours (86,400,000 ms)
+    if (!await rateLimit(`autopsy-${user.id}`, 10, 24 * 60 * 60 * 1000)) {
+      return NextResponse.json({ error: 'Daily mock test analysis limit reached.' }, { status: 429 });
     }
 
     // 1. Parse Multipart Form Data
