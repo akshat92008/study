@@ -147,6 +147,7 @@ export default function OnboardingFlow() {
         setLoading(true);
         try {
           await completeOnboarding('temp-id-ignored-by-server', examType, examDate, newResults);
+          await fetch('/api/onboarding/complete', { method: 'POST' });
         } catch (e) {
           console.error(e);
         } finally {

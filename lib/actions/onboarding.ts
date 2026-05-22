@@ -2,6 +2,7 @@
 
 import { createClient } from '@/lib/supabase/server';
 import { getExamConfig } from '@/lib/utils/constants';
+import { logger } from '@/lib/utils/logger';
 
 export async function seedKnowledgeGraph(
   userId: string,
@@ -149,20 +150,69 @@ export async function completeOnboarding(
   const { tasksCreated } = await generateDay1Plan(userId, examType);
 
   // 5. Auto-Generate First Flashcards (Max 20 concepts, 3 cards each)
-  let cardsCreated = 0;
-  try {
-    const { data: priorityConcepts } = await supabase.from('concepts')
-      .select('id, subject, chapter').eq('user_id', userId)
-      .in('mastery', ['exposed', 'not_started']).order('mastery', { ascending: true }).limit(20);
-
-    if (priorityConcepts && priorityConcepts.length > 0) {
-      const { generateCardsForConcept } = await import('@/lib/engines/revision-engine');
-      const results = await Promise.allSettled(
-        priorityConcepts.map(c => generateCardsForConcept(userId, c.id, c.subject, c.chapter, 3))
-      );
-      results.forEach(res => { if (res.status === 'fulfilled' && res.value) cardsCreated += res.value.length; });
-    }
-  } catch (e) { console.error('Auto-card generation failed:', e); }
+  const { cardsCreated } = await seedInitialCards(userId);
 
   return { seeded: totalSeeded, tasksCreated, cardsCreated };
+}
+
+export async function seedInitialCards(userId: string): Promise<{ cardsCreated: number }> {
+  const supabase = await createClient();
+
+  try {
+    // Check if cards are already generated for this user to prevent duplication
+    const { count, error: countErr } = await supabase
+      .from('revision_cards')
+      .select('*', { count: 'exact', head: true })
+      .eq('user_id', userId);
+
+    if (countErr) {
+      logger.error('seedInitialCards: failed to count existing cards', countErr);
+    }
+
+    if (count && count > 0) {
+      logger.info('seedInitialCards: user already has cards, skipping seeding', { userId, count });
+      return { cardsCreated: 0 };
+    }
+
+    // Fetch concepts seeded during onboarding - prioritize not_started and exposed
+    const { data: concepts, error } = await supabase
+      .from('concepts')
+      .select('id, name, subject, chapter, mastery')
+      .eq('user_id', userId)
+      .in('mastery', ['not_started', 'exposed', 'developing'])
+      .order('created_at', { ascending: true })
+      .limit(20); // Cap at 20 concepts for onboarding — 3 cards each = ~60 cards max
+
+    if (error || !concepts || concepts.length === 0) {
+      logger.warn('seedInitialCards: no concepts found for user', { userId });
+      return { cardsCreated: 0 };
+    }
+
+    const { generateCardsForConcept } = await import('@/lib/engines/revision-engine');
+
+    // Fire card generation for each concept concurrently
+    // allSettled so one failure doesn't block others
+    const results = await Promise.allSettled(
+      concepts.map(concept =>
+        generateCardsForConcept(userId, concept.id, concept.subject, concept.chapter, 3)
+          .then(cards => ({ created: Array.isArray(cards) ? cards.length : 0 }))
+          .catch(err => {
+            logger.warn('Card gen failed for concept', { conceptId: concept.id, err: err.message });
+            return { created: 0 };
+          })
+      )
+    );
+
+    const totalCreated = results.reduce((sum, r) => {
+      if (r.status === 'fulfilled') return sum + (r.value?.created || 0);
+      return sum;
+    }, 0);
+
+    logger.info('seedInitialCards complete', { userId, totalCreated });
+    return { cardsCreated: totalCreated };
+
+  } catch (err: any) {
+    logger.error('seedInitialCards failed', err);
+    return { cardsCreated: 0 };
+  }
 }
