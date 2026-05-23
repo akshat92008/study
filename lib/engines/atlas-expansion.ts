@@ -233,129 +233,79 @@ export async function expandChapterWithAI(
   }));
 }
 
-// In-memory cache for AI-generated syllabuses so we don't re-generate on every call
+export function getSyllabusForExam(examType: string): Record<string, string[]> {
+  // Only return hardcoded syllabuses for exams where the official syllabus
+  // is fixed and well-known. For everything else, return {} so the caller
+  // knows to use generateSyllabusWithAI() instead.
+  const normalized = examType?.toUpperCase().trim() || '';
+  if (normalized.includes('NEET')) {
+    return {
+      Physics: ['Physical World and Measurement','Kinematics','Laws of Motion','Work Energy and Power','Motion of System of Particles','Gravitation','Properties of Bulk Matter','Thermodynamics','Behaviour of Perfect Gas','Oscillations and Waves','Electrostatics','Current Electricity','Magnetic Effects of Current','Magnetism and Matter','Electromagnetic Induction','Alternating Currents','Electromagnetic Waves','Ray Optics','Wave Optics','Dual Nature of Matter','Atoms and Nuclei','Electronic Devices'],
+      Chemistry: ['Some Basic Concepts of Chemistry','Structure of Atom','Classification of Elements','Chemical Bonding','States of Matter','Thermodynamics','Equilibrium','Redox Reactions','s-Block Elements','p-Block Elements','Organic Chemistry Basics','Hydrocarbons','The Solid State','Solutions','Electrochemistry','Chemical Kinetics','Surface Chemistry','d-Block Elements','Coordination Compounds','Haloalkanes','Alcohols Phenols Ethers','Aldehydes Ketones','Carboxylic Acids','Amines','Biomolecules','Polymers'],
+      Biology: ['The Living World','Biological Classification','Plant Kingdom','Animal Kingdom','Morphology of Flowering Plants','Anatomy of Flowering Plants','Structural Organisation in Animals','Cell: The Unit of Life','Biomolecules','Cell Cycle and Cell Division','Transport in Plants','Mineral Nutrition','Photosynthesis in Higher Plants','Respiration in Plants','Plant Growth and Development','Digestion and Absorption','Breathing and Exchange of Gases','Body Fluids and Circulation','Excretory Products and Their Elimination','Locomotion and Movement','Neural Control and Coordination','Chemical Coordination and Integration','Reproduction in Organisms','Sexual Reproduction in Flowering Plants','Human Reproduction','Reproductive Health','Principles of Inheritance and Variation','Molecular Basis of Inheritance','Evolution','Human Health and Disease','Strategies for Enhancement in Food Production','Microbes in Human Welfare','Biotechnology Principles and Processes','Biotechnology and its Applications','Organisms and Populations','Ecosystem','Biodiversity and Conservation','Environmental Issues']
+    };
+  }
+  if (normalized.includes('JEE')) {
+    return {
+      Physics: ['Mechanics','Thermal Physics','Electromagnetism','Optics','Modern Physics','Waves and Sound'],
+      Chemistry: ['Physical Chemistry','Inorganic Chemistry','Organic Chemistry'],
+      Mathematics: ['Algebra','Coordinate Geometry','Calculus','Vectors and 3D','Trigonometry','Statistics and Probability']
+    };
+  }
+  // Everything else gets AI-generated
+  return {};
+}
+
 const aiSyllabusCache = new Map<string, Record<string, string[]>>();
 
-const AISyllabusSchema = z.object({
-  syllabus: z.record(z.array(z.string()))
-});
-
-export async function generateSyllabusWithAI(examType: string): Promise<Record<string, string[]>> {
-  const cacheKey = examType.toLowerCase().trim();
+export async function generateSyllabusWithAI(studyTopic: string): Promise<Record<string, string[]>> {
+  const cacheKey = studyTopic.toLowerCase().trim();
   if (aiSyllabusCache.has(cacheKey)) return aiSyllabusCache.get(cacheKey)!;
 
-  const prompt = `You are a curriculum expert. The student wants to study: "${examType}".
+  const prompt = `A student wants to study: "${studyTopic}"
 
-Generate a structured syllabus with subjects and chapters that a serious student would need to master.
+Generate a structured learning curriculum broken into subjects and chapters.
 
 Rules:
-- 1 to 3 subjects (top-level groupings that make sense for this topic)
-- 5 to 12 chapters per subject (specific, real chapter names — not vague like "Introduction")
-- Chapter names should be what a textbook or course would actually call them
-- If this is an exam (like IELTS, AWS SAA, CPA), structure around what the exam actually tests
-- If this is a skill (like Piano, Python, Spanish), structure around natural learning progression
-- If this is a university subject (like Organic Chemistry, Macroeconomics), structure around standard curriculum
+- 1 to 3 subjects (logical top-level groupings for this topic)
+- 5 to 10 chapters per subject — use real chapter/topic names, not generic ones like "Introduction" or "Basics"
+- Think like a teacher building a course for this exact topic
 
-Examples:
-- "AWS Solutions Architect" → subjects: ["Cloud Fundamentals", "AWS Services", "Architecture Patterns"] with real AWS chapter names
-- "IELTS" → subjects: ["Reading", "Writing", "Listening", "Speaking"] with task-specific chapters
-- "Classical Piano Grade 5" → subjects: ["Theory", "Technique", "Repertoire"] with grade-appropriate chapters
-- "Organic Chemistry" → subjects: ["Reactions", "Mechanisms", "Spectroscopy"] with real topic names
+Examples of good output:
+- "Class 10 Science" → subjects: Physics, Chemistry, Biology with actual NCERT chapter names
+- "React development" → subjects: Core Concepts, State Management, Ecosystem with real topic names  
+- "IELTS" → subjects: Reading, Writing, Listening, Speaking with task-type chapters
+- "Macroeconomics" → subjects: Fundamentals, Policy, Global Economics with real topics
+- "Guitar for beginners" → subjects: Technique, Theory, Repertoire with progressive chapters
+- "French A2" → subjects: Grammar, Vocabulary, Conversation with level-appropriate topics
 
-Return ONLY valid JSON:
+Return ONLY valid JSON — no extra text:
 {
   "syllabus": {
-    "Subject Name": ["Chapter 1", "Chapter 2", ...],
-    "Subject Name 2": ["Chapter A", "Chapter B", ...]
+    "Subject Name": ["Chapter 1", "Chapter 2", "Chapter 3"],
+    "Subject Name 2": ["Chapter A", "Chapter B"]
   }
 }`;
 
   try {
-    const result = await generateJSON<z.infer<typeof AISyllabusSchema>>(
+    const SyllabusSchema = z.object({
+      syllabus: z.record(z.array(z.string()))
+    });
+    const result = await generateJSON<z.infer<typeof SyllabusSchema>>(
       'flash',
-      'You are a curriculum expert. Return only valid JSON.',
+      'You are a curriculum designer. Return only valid JSON.',
       prompt,
-      AISyllabusSchema,
+      SyllabusSchema,
       0.3
     );
-    const syllabus = result.syllabus || {};
-    aiSyllabusCache.set(cacheKey, syllabus);
-    return syllabus;
-  } catch (err) {
-    logger.error('AI syllabus generation failed', { examType, err });
-    // Minimal fallback — better than 'Chapter 1, 2, 3'
-    return {
-      [examType]: ['Core Concepts', 'Key Principles', 'Applied Practice', 'Problem Solving', 'Advanced Topics']
-    };
-  }
-}
-
-export function getSyllabusForExam(examType: string): Record<string, string[]> {
-  const known: Record<string, Record<string, string[]>> = {
-    NEET: {
-      Physics: [
-        'Physical World and Measurement', 'Kinematics', 'Laws of Motion',
-        'Work Energy and Power', 'Motion of System of Particles', 'Gravitation',
-        'Properties of Bulk Matter', 'Thermodynamics', 'Behaviour of Perfect Gas',
-        'Oscillations and Waves', 'Electrostatics', 'Current Electricity',
-        'Magnetic Effects of Current', 'Magnetism and Matter',
-        'Electromagnetic Induction', 'Alternating Currents',
-        'Electromagnetic Waves', 'Ray Optics', 'Wave Optics',
-        'Dual Nature of Matter', 'Atoms and Nuclei', 'Electronic Devices'
-      ],
-      Chemistry: [
-        'Some Basic Concepts of Chemistry', 'Structure of Atom',
-        'Classification of Elements', 'Chemical Bonding', 'States of Matter',
-        'Thermodynamics', 'Equilibrium', 'Redox Reactions',
-        's-Block Elements', 'p-Block Elements', 'Organic Chemistry Basics',
-        'Hydrocarbons', 'The Solid State', 'Solutions',
-        'Electrochemistry', 'Chemical Kinetics', 'Surface Chemistry',
-        'd-Block Elements', 'Coordination Compounds',
-        'Haloalkanes', 'Alcohols Phenols Ethers', 'Aldehydes Ketones',
-        'Carboxylic Acids', 'Amines', 'Biomolecules', 'Polymers'
-      ],
-      Biology: [
-        'The Living World', 'Biological Classification', 'Plant Kingdom',
-        'Animal Kingdom', 'Morphology of Flowering Plants',
-        'Anatomy of Flowering Plants', 'Structural Organisation in Animals',
-        'Cell: The Unit of Life', 'Biomolecules', 'Cell Cycle and Cell Division',
-        'Transport in Plants', 'Mineral Nutrition',
-        'Photosynthesis in Higher Plants', 'Respiration in Plants',
-        'Plant Growth and Development', 'Digestion and Absorption',
-        'Breathing and Exchange of Gases', 'Body Fluids and Circulation',
-        'Excretory Products and Their Elimination', 'Locomotion and Movement',
-        'Neural Control and Coordination', 'Chemical Coordination and Integration',
-        'Reproduction in Organisms', 'Sexual Reproduction in Flowering Plants',
-        'Human Reproduction', 'Reproductive Health',
-        'Principles of Inheritance and Variation', 'Molecular Basis of Inheritance',
-        'Evolution', 'Human Health and Disease',
-        'Strategies for Enhancement in Food Production',
-        'Microbes in Human Welfare', 'Biotechnology Principles and Processes',
-        'Biotechnology and its Applications', 'Organisms and Populations',
-        'Ecosystem', 'Biodiversity and Conservation', 'Environmental Issues'
-      ]
-    },
-    JEE: {
-      Physics: [
-        'Mechanics', 'Thermal Physics', 'Electromagnetism',
-        'Optics', 'Modern Physics', 'Waves and Sound'
-      ],
-      Chemistry: [
-        'Physical Chemistry', 'Inorganic Chemistry', 'Organic Chemistry'
-      ],
-      Mathematics: [
-        'Algebra', 'Coordinate Geometry', 'Calculus',
-        'Vectors and 3D', 'Trigonometry', 'Statistics and Probability'
-      ]
+    const syllabus = result?.syllabus || {};
+    if (Object.keys(syllabus).length > 0) {
+      aiSyllabusCache.set(cacheKey, syllabus);
+      return syllabus;
     }
-  };
-
-  const normalized = examType?.toUpperCase().trim() || '';
-  if (normalized.includes('NEET')) return known['NEET'];
-  if (normalized.includes('JEE')) return known['JEE'];
-  if (known[normalized]) return known[normalized];
-
-  // Unknown exam — caller must use generateSyllabusWithAI() instead
-  // Return null signal so callers know to go async
-  return {};
+    throw new Error('Empty syllabus returned');
+  } catch (err) {
+    logger.error('AI syllabus generation failed', { studyTopic, err });
+    return { [studyTopic]: ['Core Concepts', 'Key Principles', 'Applied Practice', 'Problem Solving', 'Advanced Topics'] };
+  }
 }

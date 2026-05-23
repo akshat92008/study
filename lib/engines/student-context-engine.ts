@@ -11,7 +11,7 @@ export async function getStudentContext(userId: string, currentSubject: string, 
   ]);
 
   const profile = profileRes.data;
-  const examType = profile?.exam_type || 'NEET';
+  const examType = profile?.exam_type || 'General Study';
   const targetYear = profile?.target_year || new Date().getFullYear();
   const examDate = new Date(`${targetYear}-05-01T00:00:00Z`); 
   const daysRemaining = Math.max(0, Math.ceil((examDate.getTime() - Date.now()) / (1000 * 60 * 60 * 24)));

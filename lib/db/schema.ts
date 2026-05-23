@@ -296,7 +296,7 @@ export const mockAutopsies = pgTable('mock_autopsies', {
   potentialScore: integer('potential_score').notNull().default(0),
   recoverableMarks: integer('recoverable_marks').notNull().default(0),
   totalQuestions: integer('total_questions'),
-  examType: text('exam_type').default('NEET'),
+  examType: text('exam_type').default('General Study'),
   mentorInsight: text('mentor_insight'),
   mentorQuote: text('mentor_quote'),
   praiseRoastTag: text('praise_roast_tag'),

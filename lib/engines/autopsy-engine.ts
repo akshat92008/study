@@ -53,7 +53,7 @@ export async function processMockAutopsy(
   userId: string, 
   fileData: AutopsyFileData, 
   testName: string, 
-  examType: string = 'NEET',
+  examType: string = 'General Study',
   customScoring?: { correctMarks: number; negativeMarks: number }
 ) {
   const examConfig = getExamConfig(examType);

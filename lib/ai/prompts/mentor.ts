@@ -43,7 +43,7 @@ export function buildMentorContext(profile: any, stats: any, recentMistakes: any
   return `
 ## Student Context
 - Name: ${profile?.full_name || 'Student'}
-- Exam: ${profile?.exam_type || 'NEET'}
+- Exam: ${profile?.exam_type || 'General Study'}
 - Target Score: ${profile?.target_score || 'Not set'}
 - Current Score: ${profile?.current_score || 'Not assessed'}
 - Streak: ${profile?.streak_days || 0} days

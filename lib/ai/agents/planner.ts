@@ -34,7 +34,7 @@ export async function generateDailyPlan(userId: string, date: string) {
 
   // 2. Pre-process Data for LLM Context
   const profile = profileRes.data;
-  const examType = profile?.exam_type || 'NEET';
+  const examType = profile?.exam_type || 'General Study';
   const { getUserSyllabus } = await import('@/lib/engines/atlas-expansion');
   const userSyllabus = await getUserSyllabus(userId, examType);
   const subjects = userSyllabus.subjects.join(', ');

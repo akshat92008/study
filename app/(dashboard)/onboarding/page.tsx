@@ -11,14 +11,14 @@ import { completeOnboarding } from '@/lib/actions/onboarding';
 // Rotating status messages shown during quiz generation so the UI
 // communicates active work even when the first question hasn't arrived yet.
 const CALIBRATION_STATUS_MESSAGES = [
-  'Mapping your exam syllabus...',
-  'Identifying high-yield foundational concepts...',
+  'Mapping your syllabus...',
+  'Identifying the concepts that matter most...',
   'Generating Question 1...',
   'Generating Question 2...',
   'Generating Question 3...',
   'Generating Question 4...',
   'Generating Question 5...',
-  'Finalising calibration set...',
+  'Finalising calibration...',
 ];
 
 export default function OnboardingFlow() {
@@ -177,13 +177,13 @@ export default function OnboardingFlow() {
               <div style={{ textAlign: 'center', marginBottom: 'var(--sp-8)' }}>
                 <Brain size={48} style={{ color: 'var(--accent-purple)', margin: '0 auto var(--sp-4)' }} />
                 <h2 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)' }}>What are you studying?</h2>
-                <p style={{ color: 'var(--text-secondary)', marginTop: 'var(--sp-2)' }}>Enter your exam, degree, or skill.</p>
+                <p style={{ color: 'var(--text-secondary)', marginTop: 'var(--sp-2)' }}>Can be anything — a subject, exam, skill, or course.</p>
               </div>
               <input
                 autoFocus
                 value={examType}
                 onChange={e => setExamType(e.target.value)}
-                placeholder="e.g. NEET, CFA Level 1, USMLE..."
+                placeholder="e.g. Class 10 Maths, React, Spanish, History..."
                 onKeyDown={e => { if (e.key === 'Enter' && examType) setStep(2); }}
                 style={{
                   width: '100%', padding: '16px', background: 'var(--bg-tertiary)', color: 'white',
@@ -197,13 +197,16 @@ export default function OnboardingFlow() {
           </motion.div>
         )}
 
-        {/* STEP 2: Exam Date */}
+        {/* STEP 2: Target Date (optional) */}
         {step === 2 && (
           <motion.div key="step2" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} style={{ width: '100%', maxWidth: 480 }}>
             <Card padding="lg" variant="glow">
               <div style={{ textAlign: 'center', marginBottom: 'var(--sp-6)' }}>
                 <Calendar size={48} style={{ color: 'var(--accent-cyan)', margin: '0 auto var(--sp-4)' }} />
-                <h2 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)' }}>When is the exam?</h2>
+                <h2 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)' }}>Set a target date</h2>
+                <p style={{ color: 'var(--text-secondary)', marginTop: 'var(--sp-2)', fontSize: 'var(--fs-sm)' }}>
+                  An exam, a deadline, or just when you want to feel ready. You can skip this.
+                </p>
               </div>
 
               <input
@@ -220,15 +223,27 @@ export default function OnboardingFlow() {
                 {daysRemaining !== null && (
                   <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} style={{ textAlign: 'center', marginTop: 'var(--sp-6)', color: 'var(--text-secondary)' }}>
                     <div style={{ fontSize: 'var(--fs-3xl)', fontWeight: 'var(--fw-black)', color: 'var(--accent-cyan)', fontFamily: 'var(--font-mono)' }}>{daysRemaining}</div>
-                    <div style={{ textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)', fontSize: 'var(--fs-xs)', marginBottom: 'var(--sp-2)' }}>Days Remaining</div>
-                    <div style={{ color: 'var(--success)', fontWeight: 'var(--fw-medium)' }}>That is enough time if we start now.</div>
+                    <div style={{ textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)', fontSize: 'var(--fs-xs)', marginBottom: 'var(--sp-2)' }}>Days to target</div>
+                    <div style={{ color: 'var(--success)', fontWeight: 'var(--fw-medium)' }}>Enough time if we start now.</div>
                   </motion.div>
                 )}
               </AnimatePresence>
 
-              <Button onClick={() => setStep(3)} disabled={!examDate} style={{ width: '100%', marginTop: 'var(--sp-6)', padding: '16px', background: 'var(--accent-cyan)', color: 'black' }}>
-                Next <ArrowRight size={18} />
-              </Button>
+              <div style={{ display: 'flex', gap: 'var(--sp-3)', marginTop: 'var(--sp-6)' }}>
+                <Button
+                  onClick={() => setStep(3)}
+                  style={{ flex: 1, padding: '14px', background: 'var(--bg-tertiary)', color: 'var(--text-secondary)', border: '1px solid var(--border-subtle)' }}
+                >
+                  Skip for now
+                </Button>
+                <Button
+                  onClick={() => setStep(3)}
+                  disabled={!examDate}
+                  style={{ flex: 2, padding: '14px', background: 'var(--accent-cyan)', color: 'black' }}
+                >
+                  Set Date <ArrowRight size={18} />
+                </Button>
+              </div>
             </Card>
           </motion.div>
         )}

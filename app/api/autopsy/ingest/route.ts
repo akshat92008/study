@@ -69,7 +69,7 @@ export async function POST(request: Request) {
 
     // 4. Fetch Exam Profile
     const { data: profile } = await supabase.from('profiles').select('exam_type').eq('id', user.id).single();
-    const examType = profile?.exam_type || 'NEET';
+    const examType = profile?.exam_type || 'General Study';
 
     logger.info('Starting Mock Autopsy Processing', { userId: user.id, testName, mimeType });
     

@@ -59,7 +59,7 @@ export async function GET() {
       mood: { state: mood, confidence, config: pulseConfig },
       daysRemaining,
       streak: profile?.streak_days || 0,
-      examType: profile?.exam_type || 'NEET',
+      examType: profile?.exam_type || 'General Study',
       tasks: existingTasks,
       progress: { completed: completedCount, total: totalCount },
       revision: {

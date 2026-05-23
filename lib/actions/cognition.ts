@@ -26,7 +26,7 @@ export async function initializeConcepts() {
 
   // Get user's exam type and seed appropriate chapters
   const { data: profile } = await supabase.from('profiles').select('exam_type').eq('id', user.id).single();
-  const examType = profile?.exam_type || 'NEET';
+  const examType = profile?.exam_type || 'General Study';
   const chapters = getChapters(examType);
 
   for (const [subject, chapterList] of Object.entries(chapters)) {

@@ -125,7 +125,7 @@ If a mistake pattern is relevant: "You've made this exact error in two mock test
 
 RULE 7 — END WITH ACTION, NOT JUST INFORMATION.
 Every response that covers a concept must end with ONE of:
-- A real ${ctx.profile.examType}-style question on this topic ("Here's how this appears in the actual exam:")
+- A real ${ctx.profile.examType}-style practice question on this topic
 - A sharp retention check ("Quick: explain [X] back to me in one sentence")  
 - A clear next step ("Now that you have this, the concept that unlocks next is [Y]")
 
@@ -143,7 +143,7 @@ STUDY GUIDE:
 ## Key Formulas / Principles
 [numbered list with exactly what to memorise]
 
-## How This Appears in ${ctx.profile.examType}
+## How This Shows Up in ${ctx.profile.examType}
 [specific exam insight — typical question formats, common traps, mark schemes]
 
 ## Common Mistakes Made By Students
@@ -229,81 +229,22 @@ ${emotionalBlock}
 }
 
 function getExamSpecificInstructions(examType: string, daysToExam: number | null): string {
-  const exam = examType?.toUpperCase() || '';
+  const exam = examType?.trim() || 'General Study';
+  const timeContext = daysToExam
+    ? `${daysToExam} days to target: ${daysToExam > 60 ? 'foundation-building phase — go deep' : daysToExam > 20 ? 'revision and practice phase — mix theory with problems' : 'final sprint — prioritise high-yield, fix weak spots'}.`
+    : 'No deadline set — focus on genuine understanding over speed.';
 
-  if (exam.includes('NEET')) {
-    return `NEET SPECIFICS:
-- 180 questions · 720 marks · 3 hours 20 min = 66 seconds per question maximum
-- Physics (45Q), Chemistry (45Q), Biology (90Q)  
-- Negative marking: -1 for wrong, +4 for correct
-- Calculation speed is often the real bottleneck, not knowledge
-- Biology is where most marks are won or lost — highest ROI for last-month revision
-- Common traps: unit errors in Physics, IUPAC naming in Organic, taxonomy in Biology
-- Always frame explanations with: "In NEET this appears as MCQs that test [application/recall/calculation]"`;
-  }
-
-  if (exam.includes('JEE')) {
-    return `JEE SPECIFICS:
-- JEE Main: 75Q · 300 marks. JEE Advanced: 54Q complex format
-- Mathematics is the differentiator at the top ranks
-- Conceptual depth >>> breadth — one deep concept beats three surface ones
-- Numerical answer type questions: no negative marking, high value
-- Physics: derivation understanding, not formula memorisation
-- Chemistry: Physical > Organic > Inorganic for time investment
-- Frame every answer with: "JEE tests [conceptual depth/application/proof]"`;
-  }
-
-  if (exam.includes('UPSC')) {
-    return `UPSC SPECIFICS:
-- Prelims: 200Q objective · Mains: 9 papers essay/analytical
-- Answer writing structure is as important as content
-- Current affairs integration with static knowledge is essential
-- GS Paper approach: breadth first, then depth on high-frequency topics
-- Mains answers: Introduction → Body (3-4 points) → Way Forward
-- Always provide multi-dimensional analysis: social, economic, political, environmental angles`;
-  }
-
-  if (exam.includes('GMAT') || exam.includes('GRE')) {
-    return `${exam} SPECIFICS:
-- Adaptive testing: early questions matter more
-- Verbal: precision over speed — each question takes 1.5-2 min
-- Quant: recognise question types, apply the right technique fast
-- IR: data interpretation — practice table, graph, multi-source reasoning
-- Strategy: eliminate clearly wrong answers, manage time per section`;
-  }
-
-  if (exam.includes('MCAT')) {
-    return `MCAT SPECIFICS:
-- 230 questions · 7.5 hours · 4 sections
-- Critical Analysis (CARS) requires dedicated daily practice — cannot be crammed
-- Bio/Biochem: highest weight, molecular mechanisms in depth
-- Psych/Soc: high ROI for time spent — vocabulary-heavy
-- Physics/Chem: equations under stress — practice calculation speed`;
-  }
-
-  if (exam.includes('SAT') || exam.includes('ACT')) {
-    return `${exam} SPECIFICS:
-- Time pressure is the main challenge for most students
-- Math: plug-in strategy, elimination, checking answers by substitution
-- Reading: evidence-based questions — the text always contains the answer
-- Writing: grammar rules are consistent — learn them systematically
-- Practice under real timed conditions every session`;
-  }
-
-  if (exam.includes('CFA')) {
-    return `CFA SPECIFICS:
-- Level 1: breadth across 10 topic areas. Ethics = highest weight
-- Level 2: vignette-based application. Financial Reporting most candidates underestimate
-- Level 3: constructed response in morning session — practice writing answers
-- Fixed Income and Derivatives: formulas must be second nature
-- GIPS and Ethics: re-read Ethics Standards 3 days before the exam`;
-  }
-
-  return `EXAM GUIDANCE (${examType}):
-- Frame every answer around what this exam actually tests
-- Highlight application vs recall requirements
-- Note typical mark allocation and where students lose points
-- Connect concepts to likely question formats${daysToExam ? `\n- ${daysToExam} days remaining: ${daysToExam > 60 ? 'foundation-building phase' : daysToExam > 30 ? 'revision and practice phase' : 'high-intensity exam sprint'}` : ''}`;
+  return `STUDY CONTEXT (${exam}):
+- The student is studying: ${exam}
+- Every explanation must connect directly to how this topic shows up in ${exam}
+- Match your depth and style to what ${exam} actually demands:
+  * If it is a school subject: connect to textbook structure and exam question patterns
+  * If it is a competitive exam: focus on speed, accuracy, and common traps
+  * If it is a skill (coding, music, language): balance theory with practical application
+  * If it is a university course: emphasise conceptual depth and essay/application thinking
+  * If it is a professional certification: focus on scenario-based reasoning and standards
+- ${timeContext}
+- Never give generic textbook explanations — always ask yourself: "Why does a ${exam} student specifically need to understand this, and how will they be tested on it?"`;
 }
 
 export function buildMINDUserPrompt(historyText: string, message: string): string {
