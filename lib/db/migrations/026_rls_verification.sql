@@ -24,7 +24,7 @@ ALTER TABLE material_chunks ENABLE ROW LEVEL SECURITY;
 ALTER TABLE performance_snapshots ENABLE ROW LEVEL SECURITY;
 ALTER TABLE pulse_signals ENABLE ROW LEVEL SECURITY;
 ALTER TABLE chat_messages ENABLE ROW LEVEL SECURITY;
-ALTER TABLE chat_memories ENABLE ROW LEVEL SECURITY;
+ALTER TABLE chat_memory_embeddings ENABLE ROW LEVEL SECURITY;
 ALTER TABLE tutor_session_states ENABLE ROW LEVEL SECURITY;
 ALTER TABLE goals ENABLE ROW LEVEL SECURITY;
 ALTER TABLE student_events ENABLE ROW LEVEL SECURITY;
@@ -36,7 +36,7 @@ FROM pg_tables
 WHERE schemaname = 'public'
   AND tablename IN (
     'profiles','concepts','revision_cards','study_tasks',
-    'mock_autopsies','mistakes','materials','chat_memories',
+    'mock_autopsies','mistakes','materials','chat_memory_embeddings',
     'performance_snapshots','pulse_signals'
   )
   AND rowsecurity = false;
@@ -51,9 +51,9 @@ DO $$
 BEGIN
   IF NOT EXISTS (
     SELECT 1 FROM pg_policies
-    WHERE tablename = 'chat_memories' AND policyname = 'users_own_memories'
+    WHERE tablename = 'chat_memory_embeddings' AND policyname = 'users_own_memories'
   ) THEN
-    CREATE POLICY users_own_memories ON chat_memories
+    CREATE POLICY users_own_memories ON chat_memory_embeddings
       FOR ALL USING (auth.uid() = user_id);
   END IF;
 

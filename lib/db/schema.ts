@@ -457,4 +457,25 @@ export const sessionClosingMessages = pgTable('session_closing_messages', {
   createdAt: timestamp('created_at').defaultNow().notNull(),
 });
 
+// Shared syllabus templates cache (exam_type, subject, chapter, concepts_json)
+export const conceptTemplates = pgTable('concept_templates', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  examType: text('exam_type').notNull(),
+  subject: text('subject').notNull(),
+  chapter: text('chapter').notNull(),
+  conceptsJson: jsonb('concepts_json').notNull(),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+// Chat memory embeddings for episodic RAG
+export const chatMemoryEmbeddings = pgTable('chat_memory_embeddings', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').references(() => profiles.id, { onDelete: 'cascade' }).notNull(),
+  content: text('content').notNull(),
+  embedding: vector('embedding', { dimensions: 768 }),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+
+
 

@@ -32,6 +32,27 @@ export async function expandChapterToMicroConcepts(
     return expansionCache.get(cacheKey)!;
   }
 
+  const supabase = await createClient();
+
+  try {
+    // Check DB template cache first (L2 Cache)
+    const { data: template } = await supabase
+      .from('concept_templates')
+      .select('concepts_json')
+      .eq('exam_type', examType)
+      .eq('subject', subject)
+      .eq('chapter', chapter)
+      .maybeSingle();
+
+    if (template?.concepts_json) {
+      const concepts = template.concepts_json as MicroConcept[];
+      expansionCache.set(cacheKey, concepts); // Fill L1 cache
+      return concepts;
+    }
+  } catch (dbErr) {
+    logger.warn('Failed to query concept template cache', { examType, subject, chapter, dbErr });
+  }
+
   const prompt = `You are a curriculum expert for ${examType} exams.
 
 Break down the chapter "${chapter}" from the subject "${subject}" into specific micro-concepts that students need to master individually for ${examType}.
@@ -59,7 +80,20 @@ Return only valid JSON matching the schema.`;
     );
 
     const concepts = result.concepts || [];
-    expansionCache.set(cacheKey, concepts);
+    expansionCache.set(cacheKey, concepts); // Fill L1 cache
+
+    // Store in Supabase cache (L2 Cache) asynchronously
+    supabase.from('concept_templates').insert({
+      exam_type: examType,
+      subject,
+      chapter,
+      concepts_json: concepts
+    }).then(({ error }) => {
+      if (error) {
+        logger.error('Failed to cache concept template', { examType, subject, chapter, error });
+      }
+    });
+
     return concepts;
   } catch (err) {
     logger.error('Chapter expansion failed', { subject, chapter, examType, err });
