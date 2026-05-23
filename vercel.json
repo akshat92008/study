@@ -3,6 +3,14 @@
     {
       "path": "/api/cron/daily-synthesis",
       "schedule": "0 1 * * *"
+    },
+    {
+      "path": "/api/events/process",
+      "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/cron/cleanup",
+      "schedule": "0 3 * * 0"
     }
   ]
 }
