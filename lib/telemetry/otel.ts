@@ -9,8 +9,7 @@ import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
 import { HttpInstrumentation } from '@opentelemetry/instrumentation-http';
 import { ExpressInstrumentation } from '@opentelemetry/instrumentation-express';
-import { BullMQInstrumentation } from '@opentelemetry/instrumentation-bullmq';
-import { MeterProvider, MetricsExporter } from '@opentelemetry/sdk-metrics';
+import { MeterProvider } from '@opentelemetry/sdk-metrics';
 import { PrometheusExporter } from '@opentelemetry/exporter-prometheus';
 import { Resource } from '@opentelemetry/resources';
 import { env } from '@/lib/utils/env'; // helper to read env vars (you may create a tiny wrapper)
@@ -58,12 +57,11 @@ export function initTelemetry(): void {
 export const tracer = new NodeTracerProvider({ resource }).getTracer('cognition-os-tracer');
 export const meter = new MeterProvider({ resource });
 
-// Register auto‑instrumentations (HTTP, Express, BullMQ)
+// Register auto‑instrumentations (HTTP, Express)
 registerInstrumentations({
   tracerProvider: new NodeTracerProvider({ resource }),
   instrumentations: [
     new HttpInstrumentation(),
     new ExpressInstrumentation(),
-    new BullMQInstrumentation(),
   ],
 });
