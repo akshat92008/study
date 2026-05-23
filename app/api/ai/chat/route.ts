@@ -85,6 +85,7 @@ export async function POST(req: NextRequest) {
   try { body = await req.json(); } catch { return new Response('Invalid JSON', { status: 400 }); }
 
   const { message, history, imageBase64, imageMimeType, activeGoalId, chatId } = body;
+  const sessionId = chatId || crypto.randomUUID();
 
   // ── Build student context ──────────────────────────────────────────────────
   const [mindContext, semanticMemories] = await Promise.all([
@@ -320,41 +321,27 @@ Conversation so far:\n${historyText}\nStudent: ${message}`;
           }
         }
 
-        // ── Persist chat history and memory — non‑blocking ──────────────────
-        if (message) {
-          after(async () => {
-            try {
-              // Get or create global chat session if chatId not provided
-              let sessionId = chatId;
-              if (!sessionId) {
-                const { data: session } = await supabase
-                  .from('chat_sessions')
-                  .select('id')
-                  .eq('user_id', user.id)
-                  .eq('session_type', 'global')
-                  .order('created_at', { ascending: false })
-                  .limit(1)
-                  .maybeSingle();
-                if (session) {
-                  sessionId = session.id;
-                } else {
-                  const { data: newSession } = await supabase
-                    .from('chat_sessions')
-                    .insert({ user_id: user.id, session_type: 'global', title: 'Cognition OS Main Thread' })
-                    .select('id')
-                    .single();
-                  if (newSession) {
-                    sessionId = newSession.id;
-                  }
-                }
-              }
+         // ── Persist chat history and memory — non‑blocking ──────────────────
+         if (message) {
+           after(async () => {
+             try {
+               // Ensure session exists in the DB so FK constraint does not throw
+               const { data: existingSession } = await supabase
+                 .from('chat_sessions')
+                 .select('id')
+                 .eq('id', sessionId)
+                 .maybeSingle();
 
-              if (sessionId) {
-                await supabase.from('chat_messages').insert([
-                  { session_id: sessionId, user_id: user.id, role: 'user', content: message },
-                  { session_id: sessionId, user_id: user.id, role: 'assistant', content: fullResponse.slice(0, 4000) },
-                ]);
-              }
+               if (!existingSession) {
+                 await supabase
+                   .from('chat_sessions')
+                   .insert({ id: sessionId, user_id: user.id, session_type: 'global', title: 'Cognition OS Main Thread' });
+               }
+
+               await supabase.from('chat_messages').insert([
+                 { session_id: sessionId, user_id: user.id, role: 'user', content: message },
+                 { session_id: sessionId, user_id: user.id, role: 'assistant', content: fullResponse.slice(0, 4000) },
+               ]);
 
               if (fullResponse.length > 50) {
                 const memoryContent = `Student asked: ${message}\nAnswer summary: ${fullResponse.slice(0, 400)}`;

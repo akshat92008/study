@@ -2,12 +2,18 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { GoogleGenAI } from '@google/genai';
 import { safeError, logger } from '@/lib/utils/logger';
+import { RateLimiter } from '@/lib/services/rateLimiter';
 
 export async function POST(req: NextRequest) {
   try {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+    // Rate limit: 20 per 24h
+    const limiter = RateLimiter.getInstance();
+    const allowed = await limiter.consume(`knowledge-guide-${user.id}`, 20, 24 * 60 * 60 * 1000);
+    if (!allowed) return NextResponse.json({ error: 'Daily limit reached.' }, { status: 429 });
 
     const { materialId } = await req.json();
     if (!materialId) return NextResponse.json({ error: 'materialId required' }, { status: 400 });

@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { processMockAutopsy } from '@/lib/engines/autopsy-engine';
 import { logger, safeError } from '@/lib/utils/logger';
+import { RateLimiter } from '@/lib/services/rateLimiter';
 
 const MAX_FILE_SIZE = Infinity; // Unlimited size limit
 const ALLOWED_MIME_TYPES = new Set([
@@ -15,6 +16,11 @@ export async function POST(request: Request) {
     const { data: { user }, error: authError } = await supabase.auth.getUser();
 
     if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+    // Rate limit: 10 per 24h
+    const limiter = RateLimiter.getInstance();
+    const allowed = await limiter.consume(`autopsy-${user.id}`, 10, 24 * 60 * 60 * 1000);
+    if (!allowed) return NextResponse.json({ error: 'Daily limit reached.' }, { status: 429 });
 
     // 1. Parse Multipart Form Data
     const formData = await request.formData();

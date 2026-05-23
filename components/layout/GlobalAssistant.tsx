@@ -13,7 +13,6 @@ export default function GlobalAssistant() {
     setAssistantOpen,
     chatMessages,
     addChatMessage,
-    loadChatFromSupabase,
     clearChat,
     loadLearningGoals,
     activeGoalId,
@@ -25,9 +24,7 @@ export default function GlobalAssistant() {
   const [currentStreamedText, setCurrentStreamedText] = useState('');
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    loadChatFromSupabase();
-  }, [loadChatFromSupabase]);
+
 
   useEffect(() => {
     if (scrollRef.current) {

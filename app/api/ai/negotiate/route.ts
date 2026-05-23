@@ -2,6 +2,7 @@ import { NextRequest } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { streamText, generateJSON } from '@/lib/ai/gemini';
 import { z } from 'zod';
+import { RateLimiter } from '@/lib/services/rateLimiter';
 
 // We ask the AI to return BOTH a conversational response and a new task list
 const NegotiatedPlanSchema = z.object({
@@ -22,6 +23,11 @@ export async function POST(req: NextRequest) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return new Response('Unauthorized', { status: 401 });
+
+  // Rate limit: 30 per 1h
+  const limiter = RateLimiter.getInstance();
+  const allowed = await limiter.consume(`ai-negotiate-${user.id}`, 30, 60 * 60 * 1000);
+  if (!allowed) return new Response(JSON.stringify({ error: 'Rate limit reached. Please wait a moment.' }), { status: 429, headers: { 'Content-Type': 'application/json' } });
 
   const { message, date } = await req.json();
 
