@@ -2,7 +2,7 @@
 
 import { EventWorker } from '@/workers/eventWorker';
 import { propagateMastery } from '@/engines/masteryPropagation';
-import { CognitionEventType } from '@/events/types';
+import { CognitionEventType } from '@/lib/events/types';
 
 jest.mock('@/engines/masteryPropagation');
 jest.mock('@/queues/redisQueue', () => {

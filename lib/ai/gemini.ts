@@ -256,7 +256,7 @@ export async function* streamText(
 export async function getEmbedding(text: string): Promise<number[]> {
   try {
     const response = await genai.models.embedContent({
-      model: 'gemini-embedding-2',
+      model: 'text-embedding-004',
       contents: text,
     });
     return response.embeddings?.[0]?.values || [];

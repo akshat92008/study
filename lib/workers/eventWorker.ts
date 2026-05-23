@@ -2,7 +2,7 @@
 
 
 import { trace } from '@/telemetry/otel';
-import { CognitionEventType } from '@/events/types';
+import { CognitionEventType } from '@/lib/events/types';
 import { sendSlackAlert } from '@/alerts/slackAlert';
 import { propagateMastery } from '@/engines/masteryPropagation';
 import { RedisQueue } from '@/queues/redisQueue';

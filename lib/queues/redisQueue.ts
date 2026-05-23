@@ -10,7 +10,7 @@
  *  - Dead‑letter queue (DLQ) after exceeding max retries.
  *  - Optional delayed‑retry handling via a companion "retry" stream.
  */
-import redis from '@/events/redisClient';
+import redis from '@/lib/events/redisClient';
 import { sendSlackAlert } from '@/alerts/slackAlert';
 
 export interface QueueMessage {

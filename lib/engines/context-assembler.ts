@@ -1,8 +1,8 @@
 // lib/engines/context-assembler.ts
 
 import { trace } from '@/telemetry/otel';
-import { publishEvent } from '@/events/publisher';
-import { CognitionEventType } from '@/events/types';
+import { publishEvent } from '@/lib/events/publisher';
+import { CognitionEventType } from '@/lib/events/types';
 import { AdaptivePlanner } from '@/planners/adaptivePlanner';
 
 /**

@@ -1,8 +1,8 @@
 // lib/events/redisPublisher.ts
 
-import redis from '@/events/redisClient';
-import { sanitizeEventData } from '@/events/sanitizer';
-import { CognitionEventType } from '@/events/types';
+import redis from '@/lib/events/redisClient';
+import { sanitizeEventData } from '@/lib/events/sanitizer';
+import { CognitionEventType } from '@/lib/events/types';
 
 /**
  * Publish a sanitized event payload to the Cognition Redis stream.
