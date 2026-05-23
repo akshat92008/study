@@ -1,10 +1,11 @@
+// lib/utils/env-check.ts
+
 const REQUIRED_ENV_VARS = [
   'NEXT_PUBLIC_SUPABASE_URL',
   'NEXT_PUBLIC_SUPABASE_ANON_KEY',
   'SUPABASE_SERVICE_ROLE_KEY',
   'GEMINI_API_KEY',
   'NEXT_PUBLIC_APP_URL',
-  'REDIS_URL',
   'CRON_SECRET',
 ] as const;
 
@@ -18,9 +19,12 @@ COGNITION OS — MISSING REQUIRED ENVIRONMENT VARIABLES
 ============================================================
 ${missing.map(k => `  ❌  ${k}`).join('\n')}
 
-  REDIS_URL    → Upstash free tier: https://upstash.com
-  CRON_SECRET  → Any random string: openssl rand -hex 32
-  GEMINI_API_KEY → https://aistudio.google.com
+  NEXT_PUBLIC_SUPABASE_URL      → Supabase project settings
+  NEXT_PUBLIC_SUPABASE_ANON_KEY → Supabase project settings
+  SUPABASE_SERVICE_ROLE_KEY     → Supabase project settings
+  GEMINI_API_KEY                → https://aistudio.google.com
+  NEXT_PUBLIC_APP_URL           → Your Vercel deployment URL
+  CRON_SECRET                   → Any random string: openssl rand -hex 32
 ============================================================`;
 
     console.error(message);
