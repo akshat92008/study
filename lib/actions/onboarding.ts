@@ -116,17 +116,29 @@ export async function completeOnboarding(
     }).eq('id', userId);
   }
 
-  // 2. Seed Basic ATLAS Knowledge Graph
+  // 2. Seed ATLAS — first 6 chapters per subject immediately, rest lazy
   const { seedConceptsForSubject } = await import('@/lib/engines/cognition-graph');
   const { getExamConfig } = await import('@/lib/utils/constants');
   
   const config = getExamConfig(examType);
   let totalSeeded = 0;
+  const SEED_IMMEDIATELY = 6; // chapters per subject seeded now, rest loads lazily on demand
+
   for (const subject of config.subjects) {
-    const chapters = config.chapters[subject] || ['Foundations', 'Core Concepts', 'Advanced Applications'];
-    if (chapters.length > 0) {
-      const result = await seedConceptsForSubject(userId, subject, chapters);
+    const allChapters = config.chapters[subject] || ['Foundations', 'Core Concepts', 'Advanced Applications'];
+    // Seed the first N chapters now so the student sees a real graph on Day 1
+    const priorityChapters = allChapters.slice(0, SEED_IMMEDIATELY);
+    if (priorityChapters.length > 0) {
+      const result = await seedConceptsForSubject(userId, subject, priorityChapters);
       totalSeeded += result.seeded || 0;
+    }
+    // Queue the rest — they seed lazily when the student opens ATLAS or starts a session
+    // No await — fire and forget so onboarding completes in time
+    const remainingChapters = allChapters.slice(SEED_IMMEDIATELY);
+    if (remainingChapters.length > 0) {
+      seedConceptsForSubject(userId, subject, remainingChapters).catch(() => {
+        // silent — these seed on next ATLAS load if this fails
+      });
     }
   }
 
