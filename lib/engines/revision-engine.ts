@@ -365,3 +365,43 @@ export async function getExamModeCards(userId: string, subject: string, limit: n
   return data || [];
 }
 
+// ------------------------------------------------------------------
+// CONSUMERS
+// ------------------------------------------------------------------
+export class MemoryConsumer {
+  static async handleAutopsyProcessed(userId: string, metadata: any) {
+    if (!metadata || !metadata.questions) return;
+    
+    // Lazy load concept resolver to avoid circular dependency
+    const { resolveConceptByName } = await import('./concept-resolver');
+    
+    const incorrectQuestions = metadata.questions;
+
+    // Run concurrently with a batch limit
+    const batchSize = 5;
+    for (let i = 0; i < incorrectQuestions.length; i += batchSize) {
+      const batch = incorrectQuestions.slice(i, i + batchSize);
+      await Promise.all(batch.map(async (q: any) => {
+        try {
+          const conceptId = await resolveConceptByName(userId, q.subject, q.chapter);
+          
+          const questionDesc = q.questionText || (metadata.test_name ? `Question #${q.questionNumber} from "${metadata.test_name}"` : `Question #${q.questionNumber}`);
+          const reasoning = q.reasoning || 'Review the core concept for this topic.';
+          const correctAnswer = q.correctAnswer || 'Not recorded';
+
+          await createCardFromMistake(
+            userId,
+            conceptId, // can be null
+            q.subject,
+            q.chapter,
+            questionDesc,
+            correctAnswer,
+            reasoning
+          );
+        } catch (err) {
+          logger.error('MEMORY: Failed to map and create card from autopsy', err);
+        }
+      }));
+    }
+  }
+}

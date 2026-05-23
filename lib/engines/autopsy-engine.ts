@@ -5,11 +5,7 @@ import { getExamConfig } from '@/lib/utils/constants';
 import { AutopsyPaperSchema, AutopsyQuestionSchema } from './autopsy-schemas';
 import { generateMentorRecovery } from './mentor-engine';
 import { logger } from '@/lib/utils/logger';
-import { syncStudentModel } from '@/lib/engines/inference-engine';
-import { updateConceptState } from './cognition-graph';
-import { createSingleCard } from './revision-engine';
-import { runAutopsyPipeline } from './autopsy-pipeline';
-
+import { EventDispatcher } from '@/lib/events/orchestrator';
 
 type AutopsyFileData =
   | { kind: 'text'; text: string }
@@ -18,19 +14,44 @@ type AutopsyFileData =
 type AutopsyQuestion = z.infer<typeof AutopsyQuestionSchema>;
 type ProcessedQuestion = AutopsyQuestion & { marksLost: number };
 
-async function robustMultimodalExtraction(contents: any[], retries = 3) {
-  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+
+/**
+ * PASS 1: Fast data extraction using Gemini Flash
+ */
+async function fastExtractionPass(contents: any[], subjectList: string, retries = 3) {
   let attempt = 0;
   let delay = 1000;
+
+  const extractionPrompt = `
+    Extract all questions from this mock test submission. It may be a PDF, low-quality scan, OMR sheet, or handwritten.
+    
+    RULES:
+    - Identify the question number.
+    - Map to a subject: [${subjectList}] and its chapter.
+    - Determine status: "Correct", "Incorrect", or "Unattempted".
+    - Provide an "ocrConfidence" score (0-100).
+    - Leave "mistakeCategory" and "reasoning" null for now.
+    
+    Output strictly as JSON matching the schema.
+  `;
+
+  const augmentedContents = [...contents];
+  if (augmentedContents[0].parts.some((p: any) => p.text)) {
+    const textPart = augmentedContents[0].parts.find((p: any) => p.text);
+    textPart.text = extractionPrompt + '\n\nData:\n' + textPart.text;
+  } else {
+    augmentedContents[0].parts.push({ text: extractionPrompt });
+  }
 
   while (attempt < retries) {
     try {
       const res = await ai.models.generateContent({
         model: 'gemini-2.5-flash',
-        contents,
+        contents: augmentedContents,
         config: { 
           responseMimeType: 'application/json',
-          temperature: 0.2, 
+          temperature: 0.1, 
         },
       });
 
@@ -40,13 +61,62 @@ async function robustMultimodalExtraction(contents: any[], retries = 3) {
 
     } catch (err: any) {
       attempt++;
-      logger.warn(`Autopsy Extraction Failed (Attempt ${attempt}/${retries})`, { error: err.message });
-      if (attempt >= retries) throw new Error('AI failed to process the document format reliably.');
+      logger.warn(`Pass 1 Extraction Failed (Attempt ${attempt}/${retries})`, { error: err.message });
+      if (attempt >= retries) throw new Error('AI failed to extract the document format reliably.');
       await new Promise(r => setTimeout(r, delay));
       delay *= 2;
     }
   }
   throw new Error('Unreachable');
+}
+
+/**
+ * PASS 2: Deep Diagnostic using Gemini Pro (Only for Incorrect questions)
+ */
+async function deepDiagnosticPass(incorrectQuestions: AutopsyQuestion[]): Promise<AutopsyQuestion[]> {
+  if (incorrectQuestions.length === 0) return [];
+
+  const diagnosticPrompt = `
+    You are an elite educational psychologist and diagnostician. 
+    Review the following list of incorrect questions.
+    For EACH question, determine the strict root cause (mistakeCategory) from: 
+    [conceptual, calculation, silly, time_pressure, misread, incomplete_knowledge, overconfidence, anxiety, recall_failure].
+    
+    Provide a 1-sentence "reasoning" explaining exactly WHY you chose this category. Be hyper-specific.
+    
+    Input data:
+    ${JSON.stringify(incorrectQuestions, null, 2)}
+    
+    Respond ONLY with a JSON array of objects, each containing:
+    { "questionNumber": number, "mistakeCategory": string, "reasoning": string }
+  `;
+
+  try {
+    const res = await ai.models.generateContent({
+      model: 'gemini-2.5-pro',
+      contents: [{ role: 'user', parts: [{ text: diagnosticPrompt }] }],
+      config: {
+        responseMimeType: 'application/json',
+        temperature: 0.3,
+      }
+    });
+
+    const rawText = (res.text || '[]').replace(/```json/gi, '').replace(/```/g, '').trim();
+    const diagnostics = JSON.parse(rawText) as Array<{ questionNumber: number, mistakeCategory: any, reasoning: string }>;
+
+    // Merge diagnostics back
+    return incorrectQuestions.map(q => {
+      const diag = diagnostics.find(d => d.questionNumber === q.questionNumber);
+      if (diag) {
+        return { ...q, mistakeCategory: diag.mistakeCategory, reasoning: diag.reasoning };
+      }
+      return q;
+    });
+
+  } catch (err: any) {
+    logger.warn('Pass 2 Diagnostic failed, falling back to basic extraction.', err);
+    return incorrectQuestions; // fallback to un-categorized if Pro fails
+  }
 }
 
 export async function processMockAutopsy(
@@ -66,30 +136,26 @@ export async function processMockAutopsy(
   const userSyllabus = await getUserSyllabus(userId, examType);
   const subjectList = userSyllabus.subjects.join(', ');
 
-  const masterPrompt = `
-    You are an elite ${examType} grading and diagnostic engine. 
-    Process the provided mock test submission. It may be a clean PDF, a low-quality scan, an OMR sheet, or contain handwritten scratchpad notes.
-    
-    ANALYSIS RULES:
-    - Map every readable question to a subject: [${subjectList}] and its specific chapter.
-    - Status MUST be "Correct", "Incorrect", or "Unattempted".
-    - For EVERY "Incorrect" question, assign a STRICT mistakeCategory from: [conceptual, calculation, silly, time_pressure, misread, incomplete_knowledge, overconfidence, anxiety, recall_failure].
-    - Provide a brief "reasoning" for WHY you chose that category.
-    - Assign an "ocrConfidence" score (0-100).
-    
-    Output strictly adhering to the JSON schema requested.
-  `;
-
   const contents = fileData.kind === 'text' 
-    ? [{ role: 'user', parts: [{ text: masterPrompt + '\n\nData:\n' + fileData.text }] }]
-    : [{ role: 'user', parts: [{ inlineData: { mimeType: fileData.mimeType, data: fileData.data } }, { text: masterPrompt }] }];
+    ? [{ role: 'user', parts: [{ text: fileData.text }] }]
+    : [{ role: 'user', parts: [{ inlineData: { mimeType: fileData.mimeType, data: fileData.data } }] }];
 
-  const { questions } = await robustMultimodalExtraction(contents);
+  // 1. Two-Pass AI Extraction & Diagnostics
+  const { questions: extractedQuestions } = await fastExtractionPass(contents, subjectList);
+  
+  const correctAndUnattempted = extractedQuestions.filter(q => q.status !== 'Incorrect');
+  const incorrectRaw = extractedQuestions.filter(q => q.status === 'Incorrect');
+  
+  const diagnosedIncorrect = await deepDiagnosticPass(incorrectRaw);
+  
+  // Combine back
+  const allQuestions = [...correctAndUnattempted, ...diagnosedIncorrect];
 
+  // 2. Score Calculation
   let totalCorrect = 0, totalIncorrect = 0, totalUnattempted = 0;
   let recoverableMarks = 0;
 
-  const processedQuestions: ProcessedQuestion[] = questions.map((q: AutopsyQuestion) => {
+  const processedQuestions: ProcessedQuestion[] = allQuestions.map((q: AutopsyQuestion) => {
     let marksLost = 0;
     if (q.status === 'Correct') totalCorrect++;
     else if (q.status === 'Incorrect') {
@@ -110,6 +176,7 @@ export async function processMockAutopsy(
   const currentScore = (totalCorrect * correctMarks) - (totalIncorrect * Math.abs(negativeMarks));
   const potentialScore = currentScore + recoverableMarks;
 
+  // 3. Database Persistence
   const { data: autopsyData, error: autopsyErr } = await supabase.from('mock_autopsies').insert({
     user_id: userId,
     test_name: testName,
@@ -143,9 +210,40 @@ export async function processMockAutopsy(
     await supabase.from('autopsy_questions').insert(qRows.slice(i, i + 50));
   }
 
+  // 4. Generate Remediation Plan (Sync for UI)
   const incorrectQs = processedQuestions.filter((q: ProcessedQuestion) => q.status === 'Incorrect');
   const { mentorQuote, plan } = await generateMentorRecovery(autopsyData.id, currentScore, potentialScore, incorrectQs, examType);
 
+  // 5. Fire the Event (Decoupled Architecture)
+  const primaryCategory = Object.entries(
+    incorrectQs.reduce((acc, q) => {
+      if (q.mistakeCategory) acc[q.mistakeCategory] = (acc[q.mistakeCategory] || 0) + 1;
+      return acc;
+    }, {} as Record<string, number>)
+  ).sort((a, b) => b[1] - a[1])[0]?.[0];
+
+  try {
+    await EventDispatcher.publish({
+      user_id: userId,
+      type: 'AUTOPSY_MOCK_PROCESSED',
+      data: {
+        mockId: autopsyData.id,
+        overallAccuracy: processedQuestions.length > 0 ? (totalCorrect / processedQuestions.length) : 0,
+        primaryMistakeCategory: primaryCategory,
+        recoverableMarks
+      },
+      metadata: {
+        source: 'autopsy_engine',
+        test_name: testName,
+        questions: incorrectQs // Passing incorrect questions so consumers can process them
+      }
+    });
+    logger.info(`AUTOPSY_MOCK_PROCESSED event published successfully`, { autopsyId: autopsyData.id });
+  } catch (err) {
+    logger.error('Failed to publish AUTOPSY event', err);
+  }
+
+  // UI return mapping
   const categoryMap: Record<string, number> = {};
   const chapterMap: Record<string, number> = {};
 
@@ -153,56 +251,6 @@ export async function processMockAutopsy(
     if (q.mistakeCategory) categoryMap[q.mistakeCategory] = (categoryMap[q.mistakeCategory] || 0) + 1;
     if (q.chapter) chapterMap[q.chapter] = (chapterMap[q.chapter] || 0) + q.marksLost;
   });
-
-  // =====================================================================
-  // THE MISSING P0 PIPELINE: AUTOPSY -> ATLAS -> MEMORY -> COMMAND -> PULSE
-  // =====================================================================
-  try {
-    const { logPulseSignal } = await import('./pulse-engine');
-
-    // 1. Run Autopsy Pipeline: downscale ATLAS mastery and generate MEMORY revision cards
-    await runAutopsyPipeline(userId, processedQuestions, testName);
-    
-    // 3. COMMAND Planner: Insert 7-day Sprint Plan tasks
-    if (plan && plan.tasks) {
-      const today = new Date();
-      const taskRows = plan.tasks.map((task: any, index: number) => {
-        const d = new Date(today);
-        d.setDate(d.getDate() + index);
-        return {
-          user_id: userId,
-          title: `[Recovery Sprint Day ${index+1}] ${task.subject}: ${task.action}`,
-          scheduled_date: d.toISOString(),
-          estimated_minutes: 60,
-          priority: 'high', // Fixed from int 3 to valid schema enum 'high'
-          is_completed: false
-        };
-      });
-      await supabase.from('study_tasks').insert(taskRows);
-    }
-
-    // 4. PULSE: Detect anxiety/time pressure
-    const anxietyMistakes = categoryMap['anxiety'] || 0;
-    const timePressureMistakes = categoryMap['time_pressure'] || 0;
-    
-    if (anxietyMistakes > 2) {
-      await logPulseSignal(userId, 'overwhelmed');
-      logger.info('Pulse Signal: Overwhelmed triggered by high anxiety mistakes.');
-    } else if (timePressureMistakes > 3) {
-      await logPulseSignal(userId, 'frustrated');
-      logger.info('Pulse Signal: Frustrated triggered by high time pressure mistakes.');
-    }
-
-    // 5. Trigger student model profiling sync
-    syncStudentModel(userId).catch((err) =>
-      logger.warn('syncStudentModel failed after autopsy', { err: err.message })
-    );
-    
-    logger.info(`Autopsy fully synchronized across ATLAS, MEMORY, COMMAND, and PULSE.`);
-  } catch (e) {
-    logger.error('Failed to sync autopsy mistakes to OS sub-systems', e);
-  }
-  // =====================================================================
 
   const categoryBreakdown = Object.entries(categoryMap).map(([name, value]) => ({ name, value }));
   const chapterLoss = Object.entries(chapterMap)

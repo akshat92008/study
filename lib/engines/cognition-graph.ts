@@ -175,15 +175,15 @@ export async function seedConceptsForSubject(userId: string, subject: string, ch
   return { seeded: seededCount };
 }
 
-export async function updateConceptState(conceptId: string, correct: boolean, timeSpent: number) {
+export async function updateConceptState(conceptId: string, correct: boolean, timeSpent: number, weight: number = 1) {
   const supabase = await createClient();
 
   const { data: concept } = await supabase.from('concepts').select('*').eq('id', conceptId).single();
   if (!concept) return;
 
-  const newReviewed = (concept.times_reviewed || 0) + 1;
-  const newCorrect = (concept.times_correct || 0) + (correct ? 1 : 0);
-  const newIncorrect = (concept.times_incorrect || 0) + (correct ? 0 : 1);
+  const newReviewed = (concept.times_reviewed || 0) + (1 * weight);
+  const newCorrect = (concept.times_correct || 0) + (correct ? (1 * weight) : 0);
+  const newIncorrect = (concept.times_incorrect || 0) + (correct ? 0 : (1 * weight));
   const accuracy = newCorrect / newReviewed;
 
   const newMastery = getMasteryLevel(accuracy * 100);
@@ -301,4 +301,41 @@ export async function getPrerequisiteChain(conceptId: string) {
   const sourceIds = links.map((l: any) => l.source_concept_id);
   const { data: concepts } = await supabase.from('concepts').select('name, mastery').in('id', sourceIds);
   return (concepts || []).filter((c: any) => ['not_started', 'exposed', 'developing'].includes(c.mastery));
+}
+
+// ------------------------------------------------------------------
+// CONSUMERS
+// ------------------------------------------------------------------
+export class AtlasConsumer {
+  static async handleAutopsyProcessed(userId: string, metadata: any) {
+    if (!metadata || !metadata.questions) return;
+    
+    // Lazy load concept resolver to avoid circular dependency
+    const { resolveConceptByName } = await import('./concept-resolver');
+    
+    const incorrectQuestions = metadata.questions;
+
+    // Run concurrently with a batch limit
+    const batchSize = 5;
+    for (let i = 0; i < incorrectQuestions.length; i += batchSize) {
+      const batch = incorrectQuestions.slice(i, i + batchSize);
+      await Promise.all(batch.map(async (q: any) => {
+        // Only downscale mastery for conceptual or incomplete knowledge errors
+        if (!['conceptual', 'incomplete_knowledge'].includes(q.mistakeCategory)) {
+          return;
+        }
+
+        try {
+          const conceptId = await resolveConceptByName(userId, q.subject, q.chapter);
+          if (conceptId) {
+            // Downscale mastery relative to marks lost (pass weight)
+            await updateConceptState(conceptId, false, 0, Math.max(1, q.marksLost));
+            logger.info('ATLAS: Downscaled mastery due to AUTOPSY error', { conceptId, category: q.mistakeCategory });
+          }
+        } catch (err) {
+          logger.error('ATLAS: Failed to map concept from autopsy', err);
+        }
+      }));
+    }
+  }
 }

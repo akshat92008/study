@@ -4,9 +4,6 @@ import { processMockAutopsy } from '@/lib/engines/autopsy-engine';
 import { rateLimit } from '@/lib/utils/rate-limit';
 import { logger, safeError } from '@/lib/utils/logger';
 
-import { syncStudentModel } from '@/lib/engines/inference-engine';
-import { runAutopsyPipeline } from '@/lib/engines/autopsy-pipeline';
-
 const MAX_FILE_SIZE = Infinity; // Unlimited size limit
 const ALLOWED_MIME_TYPES = new Set([
   'application/pdf', 'text/plain', 'text/markdown',
@@ -20,8 +17,7 @@ export async function POST(request: Request) {
 
     if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-    // --- RATE LIMIT ---
-    // 10 requests per 24 hours (86,400,000 ms)
+    // Rate limit: 10 requests per 24 hours
     if (!await rateLimit(`autopsy-${user.id}`, 10, 24 * 60 * 60 * 1000)) {
       return NextResponse.json({ error: 'Daily mock test analysis limit reached.' }, { status: 429 });
     }
@@ -42,10 +38,6 @@ export async function POST(request: Request) {
     if (!file) return NextResponse.json({ error: 'No file provided' }, { status: 400 });
 
     // 2. Validation
-    if (file.size > MAX_FILE_SIZE) {
-      return NextResponse.json({ error: 'File size exceeds 10MB limit.' }, { status: 413 });
-    }
-
     const mimeType = file.type || 'application/octet-stream';
     if (!ALLOWED_MIME_TYPES.has(mimeType)) {
       return NextResponse.json({ error: 'Unsupported file type. Use PDF, TXT, or Image.' }, { status: 415 });
@@ -69,22 +61,11 @@ export async function POST(request: Request) {
     logger.info('Starting Mock Autopsy Processing', { userId: user.id, testName, mimeType });
     
     // 5. Execute Autopsy Engine
+    // The engine handles all downstream integration via EventDispatcher.
+    // No separate pipeline invocation required.
     const result = await processMockAutopsy(user.id, fileData, testName, examType, customScoring);
 
-    // Fire student model sync non-blocking so COMMAND has fresh data for tomorrow
-    // This is belt-and-suspenders — autopsy-engine also fires it internally
-    // but we want it guaranteed at the API boundary regardless of engine internals
-    syncStudentModel(user.id).catch((err) =>
-      logger.warn('syncStudentModel failed after autopsy ingest', {
-        userId: user.id,
-        err: err.message,
-      })
-    );
-
-    if (result && (result as any).questions) {
-  runAutopsyPipeline(user.id, (result as any).questions, testName).catch(err => logger.error('Autopsy pipeline failed', err));
-}
-return NextResponse.json(result);
+    return NextResponse.json(result);
 
   } catch (error: any) {
     return NextResponse.json(safeError(error), { status: 500 });

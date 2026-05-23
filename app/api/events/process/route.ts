@@ -3,7 +3,7 @@
 // Drains the student_events table — the engine that connects all modules.
 
 import { NextResponse } from 'next/server';
-import { EventOrchestrator } from '@/lib/events/orchestrator';
+import { EventDispatcher, EVENT_CONSUMERS } from '@/lib/events/orchestrator';
 import { logger } from '@/lib/utils/logger';
 
 const BATCH_SIZE = 20;
@@ -22,30 +22,34 @@ export async function GET(req: Request) {
       process.env.SUPABASE_SERVICE_ROLE_KEY! // Bypasses RLS for background jobs
     );
 
-    // Fetch pending events
-    const { data: pendingEvents, error } = await supabase
-      .from('student_events')
-      .select('*')
-      .eq('status', 'pending')
+    // Fetch consumer tracking rows that are pending or have failed and can be retried
+    const { data: pendingConsumers, error } = await supabase
+      .from('event_consumer_tracking')
+      .select('event_id, consumer_name, retry_count')
+      .in('status', ['pending', 'failed'])
+      .lt('retry_count', 5)
+      .order('updated_at', { ascending: true })
       .limit(BATCH_SIZE);
 
     if (error) {
-      logger.error('Failed to fetch pending events', error);
+      logger.error('Failed to fetch pending consumer tracking rows', error);
       return new Response('Error fetching events', { status: 500 });
     }
 
-    if (!pendingEvents || pendingEvents.length === 0) {
-      logger.info('No pending events to process');
+    if (!pendingConsumers || pendingConsumers.length === 0) {
+      logger.info('No pending event consumers to process');
       return new Response('No events', { status: 204 });
     }
 
-    // Process each event
+    // Process each consumer row independently for isolation
     await Promise.allSettled(
-      pendingEvents.map((event) => EventOrchestrator.processEvent(event.id))
+      pendingConsumers.map((row) =>
+        EventDispatcher.processConsumer(row.event_id, row.consumer_name as any)
+      )
     );
 
-    logger.info('Processed batch of events', { count: pendingEvents.length });
-    return NextResponse.json({ processed: pendingEvents.length });
+    logger.info('Processed batch of event consumers', { count: pendingConsumers.length });
+    return NextResponse.json({ processed: pendingConsumers.length });
   } catch (err) {
     logger.error('Event processing route failed', err as any);
     return new Response('Internal server error', { status: 500 });

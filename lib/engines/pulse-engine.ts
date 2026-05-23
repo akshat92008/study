@@ -252,3 +252,29 @@ export async function recordMessageTiming(
     logger.warn('Error in recordMessageTiming', error);
   }
 }
+
+// ------------------------------------------------------------------
+// CONSUMERS
+// ------------------------------------------------------------------
+export class PulseConsumer {
+  static async handleAutopsyProcessed(userId: string, metadata: any) {
+    if (!metadata || !metadata.questions) return;
+    
+    const incorrectQs = metadata.questions;
+    let anxietyMistakes = 0;
+    let timePressureMistakes = 0;
+
+    incorrectQs.forEach((q: any) => {
+      if (q.mistakeCategory === 'anxiety') anxietyMistakes++;
+      if (q.mistakeCategory === 'time_pressure') timePressureMistakes++;
+    });
+
+    if (anxietyMistakes > 2) {
+      await logPulseSignal(userId, 'overwhelmed');
+      logger.info('PULSE: Overwhelmed triggered by high anxiety mistakes from AUTOPSY.');
+    } else if (timePressureMistakes > 3) {
+      await logPulseSignal(userId, 'frustrated');
+      logger.info('PULSE: Frustrated triggered by high time pressure mistakes from AUTOPSY.');
+    }
+  }
+}

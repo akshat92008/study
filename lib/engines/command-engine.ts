@@ -485,3 +485,55 @@ export class CommandPlanner {
     return finalTasksWithBreaks;
   }
 }
+
+// ------------------------------------------------------------------
+// CONSUMERS
+// ------------------------------------------------------------------
+export class CommandConsumer {
+  static async handleAutopsyProcessed(userId: string, metadata: any, data: any) {
+    if (!metadata || !metadata.questions) return;
+    
+    const supabase = await createClient();
+
+    // Dynamically request mentor sprint generation via the autopsy helper
+    // We recreate the sprint plan logic since it was separated from the main loop
+    const incorrectQs = metadata.questions;
+    
+    // We group mistakes by chapter to schedule practice tasks
+    const chapterLossMap: Record<string, { subject: string, marksLost: number }> = {};
+    incorrectQs.forEach((q: any) => {
+      if (!chapterLossMap[q.chapter]) {
+        chapterLossMap[q.chapter] = { subject: q.subject, marksLost: 0 };
+      }
+      chapterLossMap[q.chapter].marksLost += q.marksLost || 1;
+    });
+
+    const today = new Date();
+    const taskRows = [];
+    
+    let index = 0;
+    for (const chapter of Object.keys(chapterLossMap)) {
+      const info = chapterLossMap[chapter];
+      const d = new Date(today);
+      d.setDate(d.getDate() + index);
+      
+      taskRows.push({
+        user_id: userId,
+        title: `[Recovery Sprint Day ${index + 1}] Fix ${chapter}`,
+        scheduled_date: d.toISOString(),
+        estimated_minutes: Math.min(60, 20 + info.marksLost * 5),
+        priority: 'high',
+        is_completed: false,
+        subject: info.subject,
+        chapter: chapter,
+        type: 'practice'
+      });
+      index++;
+    }
+
+    if (taskRows.length > 0) {
+      await supabase.from('study_tasks').insert(taskRows);
+      logger.info('COMMAND: Generated sprint tasks from AUTOPSY event', { taskCount: taskRows.length });
+    }
+  }
+}

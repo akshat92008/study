@@ -39,10 +39,10 @@ export class LearningStateEngine {
    * and triggers reactive rules.
    */
   static async ingestEvent(event: LearnerTelemetryEvent): Promise<void> {
-    const { EventOrchestrator } = await import('../events/orchestrator');
+    const { EventDispatcher } = await import('../events/orchestrator');
     
     // Instead of processing immediately, we push it to the robust event bus for reliable processing
-    await EventOrchestrator.publishEvent({
+    await EventDispatcher.publish({
       user_id: event.userId,
       type: event.type as any, // Cast legacy types
       data: event.data,
