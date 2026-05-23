@@ -222,18 +222,74 @@ export async function processMockAutopsy(
     }, {} as Record<string, number>)
   ).sort((a, b) => b[1] - a[1])[0]?.[0];
 
-  // Direct ATLAS and MEMORY updates for each incorrect question
-    for (const q of processedQuestions) {
-      if (q.status === 'Incorrect' && q.mistakeCategory && ['silly', 'misread', 'time_pressure', 'recall_failure'].includes(q.mistakeCategory)) {
-        // Resolve concept ID if possible
-        const { resolveConceptByName, updateConceptState, createSingleCard } = await import('@/lib/engines/atlas-integration');
-        const conceptId = await resolveConceptByName(userId, q.subject, q.chapter);
-        if (conceptId) {
-          await updateConceptState(conceptId, false, q.marksLost);
-        }
-        await createSingleCard(userId, conceptId || '', q.mistakeCategory, q.reasoning, q.subject, q.chapter);
-      }
+  // ── ATLAS + MEMORY PIPELINE ───────────────────────────────────────────────
+  // ALL incorrect answers downscale ATLAS mastery.
+  // Conceptual + calculation mistakes also auto-generate flashcards.
+  // Run after DB persistence so we have autopsyData.id available.
+  const incorrectForPipeline = processedQuestions.filter(
+    (q: ProcessedQuestion) => q.status === 'Incorrect'
+  );
+
+  if (incorrectForPipeline.length > 0) {
+    // Lazy import to avoid circular dependency at module load time
+    const { resolveConceptByName } = await import('./concept-resolver');
+    const { updateConceptState } = await import('./cognition-graph');
+    const { createSingleCard } = await import('./revision-engine');
+
+    // Process in parallel batches of 5 to avoid overwhelming Supabase
+    const BATCH_SIZE = 5;
+    for (let i = 0; i < incorrectForPipeline.length; i += BATCH_SIZE) {
+      const batch = incorrectForPipeline.slice(i, i + BATCH_SIZE);
+
+      await Promise.allSettled(
+        batch.map(async (q: ProcessedQuestion) => {
+          try {
+            // Step 1 — Resolve concept in ATLAS
+            const conceptId = await resolveConceptByName(userId, q.subject, q.chapter);
+
+            // Step 2 — Downscale ATLAS mastery for this concept
+            // weight = marksLost capped at 5 so a single bad question doesn't nuke mastery
+            if (conceptId) {
+              const weight = Math.min(q.marksLost, 5);
+              await updateConceptState(conceptId, false, 0, weight);
+            }
+
+            // Step 3 — Auto-create flashcard for conceptual + calculation mistakes
+            // (Not for silly/time_pressure — those don't need a card, just speed drills)
+            const cardWorthy = ['conceptual', 'calculation', 'incomplete_knowledge', 'overconfidence', 'recall_failure'];
+            if (q.mistakeCategory && cardWorthy.includes(q.mistakeCategory)) {
+              const front = q.reasoning
+                ? `Why did you get Q${q.questionNumber} wrong? (${q.chapter})`
+                : `Review: ${q.chapter} — Question ${q.questionNumber}`;
+              const back = q.reasoning || `Revisit ${q.chapter} in your ${q.subject} notes.`;
+
+              await createSingleCard(
+                userId,
+                conceptId ?? '',
+                front,
+                back,
+                q.subject,
+                q.chapter
+              );
+            }
+          } catch (err) {
+            // Non-fatal: log and continue. One failed concept must not block the rest.
+            logger.warn('AUTOPSY → ATLAS/MEMORY pipeline failed for one question', {
+              userId,
+              chapter: q.chapter,
+              err,
+            });
+          }
+        })
+      );
     }
+
+    logger.info('AUTOPSY → ATLAS → MEMORY pipeline complete', {
+      userId,
+      incorrectCount: incorrectForPipeline.length,
+    });
+  }
+  // ── END PIPELINE ──────────────────────────────────────────────────────────
 
   try {
     // Event dispatcher logic

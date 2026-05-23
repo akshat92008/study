@@ -3,6 +3,8 @@ import { syncStudentModel } from '@/lib/engines/inference-engine';
 import { logger } from '@/lib/utils/logger';
 import { generateJSON, getEmbedding } from '@/lib/ai/gemini';
 import { z } from 'zod';
+import { NextRequest } from 'next/server';
+import { validateCronSecret } from '@/lib/utils/cron-auth';
 
 export const maxDuration = 300; // Vercel max execution time (5 mins)
 
@@ -261,14 +263,12 @@ async function processUserBatch(userIds: string[], supabase: any, today: string)
   );
 }
 
-export async function GET(req: Request) {
+export async function GET(req: NextRequest) {
+  // ✅ FIX: Authenticate the cron caller
+  const authError = validateCronSecret(req);
+  if (authError) return authError;
+
   try {
-    // 1. Verify Vercel Cron authorization header
-    const authHeader = req.headers.get('authorization');
-    if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-      logger.warn('Unauthorized cron invocation attempt');
-      return new Response('Unauthorized', { status: 401 });
-    }
 
     // 2. We use the service_role key to bypass RLS for background jobs
     const { createClient: createSupabaseClient } = await import('@supabase/supabase-js');

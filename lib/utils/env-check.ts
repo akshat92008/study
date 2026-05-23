@@ -6,26 +6,47 @@ const REQUIRED_ENV_VARS = [
   'STRIPE_SECRET_KEY',
   'STRIPE_WEBHOOK_SECRET',
   'STRIPE_PRO_PRICE_ID',
-  'NEXT_PUBLIC_APP_URL'
+  'NEXT_PUBLIC_APP_URL',
+  // ✅ FIX: Redis is a hard dependency for the event queue. Missing = silent failure.
+  'REDIS_URL',
+  // ✅ FIX: Cron secret prevents unauthorized cron triggering.
+  'CRON_SECRET',
 ] as const;
 
+// These are only required in production. Missing in dev is fine.
+const PROD_ONLY_ENV_VARS: string[] = [
+  'STRIPE_SECRET_KEY',
+  'STRIPE_WEBHOOK_SECRET',
+  'STRIPE_PRO_PRICE_ID',
+];
+
 export function validateEnvironment(): void {
-  const missing = REQUIRED_ENV_VARS.filter(key => !process.env[key]);
+  const isProd = process.env.NODE_ENV === 'production';
+
+  const missing = REQUIRED_ENV_VARS.filter((key) => {
+    if (!isProd && PROD_ONLY_ENV_VARS.includes(key)) return false; // OK to skip in dev
+    return !process.env[key];
+  });
 
   if (missing.length > 0) {
     const message = `
 ============================================================
 COGNITION OS — MISSING REQUIRED ENVIRONMENT VARIABLES
 ============================================================
-The following variables are not set in .env.local:
+The following variables are not set:
 
-${missing.map(k => `  ❌  ${k}`).join('\n')}
+${missing.map((k) => `  ❌  ${k}`).join('\n')}
 
-The application cannot start safely without these values.
-Set them in .env.local or your deployment environment.
+Set them in .env.local (development) or your Vercel environment (production).
+
+Quick guide:
+  REDIS_URL        → Upstash Redis URL (free tier works fine for dev)
+  CRON_SECRET      → Any random string, e.g. openssl rand -hex 32
+  GEMINI_API_KEY   → Google AI Studio → Get API key
 ============================================================`;
+
     console.error(message);
-    // In development, hard crash so you can't miss it
+
     if (process.env.NODE_ENV === 'development') {
       throw new Error(`Missing env vars: ${missing.join(', ')}`);
     }

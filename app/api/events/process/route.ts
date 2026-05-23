@@ -2,18 +2,16 @@
 // Runs every 5 minutes via Vercel cron.
 // Drains the student_events table — the engine that connects all modules.
 
-import { NextResponse } from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
 import { EventDispatcher, EVENT_CONSUMERS } from '@/lib/events/orchestrator';
 import { logger } from '@/lib/utils/logger';
+import { validateCronSecret } from '@/lib/utils/cron-auth';
 
 const BATCH_SIZE = 20;
 
-export async function GET(req: Request) {
-  const authHeader = req.headers.get('authorization');
-  const cronSecret = process.env.CRON_SECRET;
-  if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
-    return new Response('Unauthorized', { status: 401 });
-  }
+export async function GET(req: NextRequest) {
+  const authError = validateCronSecret(req);
+  if (authError) return authError;
 
   try {
     const { createClient } = await import('@supabase/supabase-js');

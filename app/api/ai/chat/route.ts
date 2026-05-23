@@ -18,6 +18,7 @@ import { generateSessionClosingMessage } from '@/lib/engines/session-closing';
 import { syncStudentModel } from '@/lib/engines/inference-engine';
 import { generateSprintPlanAction } from '@/lib/actions/planner';
 import { RateLimiter } from '@/lib/services/rateLimiter';
+import { ChatMemoryService } from '@/services/chat-memory.service';
 import { Type } from '@google/genai';
 import { z } from 'zod';
 
@@ -86,8 +87,16 @@ export async function POST(req: NextRequest) {
   const { message, history, imageBase64, imageMimeType, activeGoalId } = body;
 
   // ── Build student context ──────────────────────────────────────────────────
-  const mindContext = await getMINDContext(user.id, message);
-  const systemPrompt = getMINDSystemPrompt(mindContext);
+  const [mindContext, semanticMemories] = await Promise.all([
+    getMINDContext(user.id, message),
+    // ✅ FIX: Actually call match_chat_memory for cross-session memory
+    message
+      ? new ChatMemoryService().searchMemory(user.id, message, 3).catch(() => [] as string[])
+      : Promise.resolve([] as string[]),
+  ]);
+
+  // Inject semantic memories into the system prompt context
+  const systemPrompt = getMINDSystemPrompt(mindContext, semanticMemories);
 
   // ── Image messages → direct multimodal response ────────────────────────────
   if (imageBase64 && imageMimeType) {

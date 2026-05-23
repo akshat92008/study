@@ -24,19 +24,22 @@ function estimateTokens(text: string): number {
  */
 export async function fetchConversationTurns(userId: string): Promise<ConversationTurn[]> {
   const supabase = await createClient();
+
+  // ✅ FIX: Read from chat_messages (the real table) not conversation_memory (doesn't exist)
   const { data, error } = await supabase
-    .from('conversation_memory')
+    .from('chat_messages')
     .select('role, content, metadata, created_at')
     .eq('user_id', userId)
-    .order('created_at', { ascending: true });
+    .order('created_at', { ascending: true })
+    .limit(100); // Last 100 messages is plenty for context
 
   if (error) {
-    logger.error('Failed to fetch conversation memory', { error, userId });
+    logger.error('Failed to fetch conversation turns', { error, userId });
     return [];
   }
 
   return (data || []).map((row: any) => ({
-    role: row.role,
+    role: row.role === 'assistant' ? 'model' : row.role, // Gemini uses 'model' not 'assistant'
     content: row.content,
     metadata: row.metadata ?? {},
     timestamp: row.created_at,
@@ -49,26 +52,31 @@ export async function fetchConversationTurns(userId: string): Promise<Conversati
  */
 export function rankTurns(
   turns: ConversationTurn[],
-  weights?: { recency?: number; emotional?: number; mastery?: number; similarity?: number },
-  userId?: string
+  weights?: { recency?: number; emotional?: number; mastery?: number },
 ): ConversationTurn[] {
-  const w = { recency: 0.4, emotional: 0.2, mastery: 0.2, similarity: 0.2, ...weights };
+  const w = { recency: 0.6, emotional: 0.2, mastery: 0.2, ...weights };
   const now = Date.now();
-
-  // Simple similarity stub – in production replace with embedding lookup.
-  const similarityScore = (_turn: ConversationTurn) => 0.5;
 
   const scored = turns.map((turn) => {
     const ageMs = now - new Date(turn.timestamp).getTime();
-    const recencyScore = 1 - Math.min(ageMs / (1000 * 60 * 60 * 24 * 30), 1); // decay over 30 days
-    const emotionalScore = turn.metadata?.emotionalState ? 1 : 0;
-    const masteryScore = turn.metadata?.conceptRefs ? turn.metadata.conceptRefs.length / 10 : 0;
-    const simScore = similarityScore(turn);
+    // Recency: linear decay over 14 days (tighter than 30 days — students study fast)
+    const recencyScore = Math.max(0, 1 - ageMs / (1000 * 60 * 60 * 24 * 14));
+    // Emotional: flag turns where the student expressed struggle or success
+    const emotionalKeywords = ['wrong', 'confused', 'stuck', 'got it', 'understand', 'correct', 'nailed'];
+    const hasEmotionalSignal = emotionalKeywords.some((kw) =>
+      turn.content.toLowerCase().includes(kw)
+    );
+    const emotionalScore = hasEmotionalSignal ? 1 : 0;
+    // Mastery: turns referencing concepts are more valuable context
+    const masteryScore = turn.metadata?.conceptRefs
+      ? Math.min(turn.metadata.conceptRefs.length / 5, 1)
+      : 0;
+
     const total =
       recencyScore * w.recency +
       emotionalScore * w.emotional +
-      masteryScore * w.mastery +
-      simScore * w.similarity;
+      masteryScore * w.mastery;
+
     return { turn, score: total };
   });
 
@@ -155,7 +163,7 @@ export async function assemblePrompt(
   maxTokens: number = 12000
 ): Promise<LLMMessage[]> {
   const allTurns = await fetchConversationTurns(userId);
-  const ranked = rankTurns(allTurns, undefined, userId);
+  const ranked = rankTurns(allTurns, undefined);
   // Append the new user message as the latest turn.
   ranked.push({ role: 'user', content: userMessage, metadata: {}, timestamp: new Date().toISOString() });
   const compressed = await compressForPrompt(ranked, maxTokens);

@@ -1,14 +1,13 @@
 // app/api/cron/cleanup/route.ts
 // Runs weekly Sunday 3am UTC.
 
-import { NextResponse } from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
 import { logger } from '@/lib/utils/logger';
+import { validateCronSecret } from '@/lib/utils/cron-auth';
 
-export async function GET(req: Request) {
-  const authHeader = req.headers.get('authorization');
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-    return new Response('Unauthorized', { status: 401 });
-  }
+export async function GET(req: NextRequest) {
+  const authError = validateCronSecret(req);
+  if (authError) return authError;
   try {
     const { createClient } = await import('@supabase/supabase-js');
     const supabase = createClient(

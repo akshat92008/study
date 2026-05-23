@@ -63,7 +63,7 @@ STUDENT STATE: OVERWHELMED — COGNITIVE LOAD CRITICAL
   return adaptations[emotionalState] || adaptations['neutral'];
 }
 
-export function getMINDSystemPrompt(ctx: MINDContext): string {
+export function getMINDSystemPrompt(ctx: MINDContext, semanticMemories: string[] = []): string {
   const daysToExam = ctx.profile.examDate
     ? Math.ceil((new Date(ctx.profile.examDate).getTime() - Date.now()) / (1000 * 60 * 60 * 24))
     : null;
@@ -71,6 +71,10 @@ export function getMINDSystemPrompt(ctx: MINDContext): string {
   const weakList = ctx.weakConcepts.slice(0, 5).map(c => `${c.name} (${c.mastery})`).join(', ') || 'None identified yet';
   const mistakeList = ctx.recentMistakes.slice(0, 3).map(m => `${m.chapter} — ${m.category}`).join('; ') || 'None recorded';
   const emotionalBlock = getEmotionalAdaptationBlock(ctx.emotionalState);
+
+  const memoriesSection = semanticMemories.length > 0
+    ? `\nCROSS-SESSION MEMORY (things this student said in past conversations):\n${semanticMemories.map((m, i) => `${i + 1}. ${m}`).join('\n')}\nReference these naturally if relevant — never robotically.\n`
+    : '';
 
   return `You are MIND — the AI core of Cognition OS. You are the most capable study companion ever built. You know this specific student completely.
 
@@ -90,7 +94,7 @@ WEAK AREAS: ${weakList}
 RECENT MISTAKE PATTERNS: ${mistakeList}
 EMOTIONAL STATE: ${ctx.emotionalState}
 RECENTLY STUDIED: ${ctx.recentTopics.slice(0, 4).join(', ') || 'Nothing yet'}
-
+${memoriesSection}
 ═══════════════════════════════════════
 CORE BEHAVIOURAL RULES — NEVER VIOLATE
 ═══════════════════════════════════════

@@ -65,62 +65,84 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
     }
   }, [messages]);
 
-  // Handle Orchestrator Chat Message
   const handleSend = async () => {
     if (!chatInput.trim() || streaming) return;
     const textToSend = chatInput.trim();
     setChatInput('');
-    
+
     const userMsgId = Math.random().toString(36).substring(7);
     const tutorMsgId = Math.random().toString(36).substring(7);
 
-    setMessages(prev => [
-      ...prev, 
+    setMessages((prev) => [
+      ...prev,
       { id: userMsgId, role: 'user', content: textToSend },
-      { id: tutorMsgId, role: 'tutor', content: '' }
+      { id: tutorMsgId, role: 'tutor', content: '' },
     ]);
     setStreaming(true);
 
     try {
-      // NOTE: Wiring to the global orchestrator endpoint
-      const res = await fetch('/api/ai/global', {
+      // ✅ FIX: Switched from /api/ai/global to /api/ai/chat
+      // Map local 'tutor' role to 'assistant' for the API
+      const historyForApi = messages.map((m) => ({
+        role: m.role === 'tutor' ? 'assistant' : m.role,
+        content: m.content,
+      }));
+
+      const res = await fetch('/api/ai/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           message: textToSend,
-          history: messages.map(m => ({ role: m.role, content: m.content })),
-          currentPath: '/dashboard'
+          history: historyForApi,
+          activeGoalId: null,
         }),
       });
 
-      const reader = res.body?.getReader();
+      if (!res.ok || !res.body) throw new Error('Stream failed');
+
+      const reader = res.body.getReader();
       const decoder = new TextDecoder();
+      let chunkContent = '';
 
-      if (reader) {
-        let chunkContent = '';
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          const chunk = decoder.decode(value);
-          chunkContent += chunk;
-          
-          // Filter out invisible UI action tokens
-          const cleanStream = chunkContent.replace(/\[ACTION:OPEN_DRAWER:\w+\]/g, '').trim();
-          setMessages(prev => prev.map(m => m.id === tutorMsgId ? { ...m, content: cleanStream } : m));
-        }
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        const chunk = decoder.decode(value);
+        chunkContent += chunk;
 
-        // Handle programmatic UI triggers embedded by the Orchestrator
-        const drawerMatch = chunkContent.match(/\[ACTION:OPEN_DRAWER:(\w+)\]/);
-        if (drawerMatch) {
-          const { setActiveDrawer } = useAppStore.getState();
-          setActiveDrawer(drawerMatch[1] as any);
-        }
+        const cleanStream = chunkContent
+          .replace(/\n\n===METADATA===\n[\s\S]*$/, '')
+          .replace(/\[ACTION:OPEN_DRAWER:\w+\]/g, '')
+          .trim();
+
+        setMessages((prev) =>
+          prev.map((m) => (m.id === tutorMsgId ? { ...m, content: cleanStream } : m))
+        );
+      }
+
+      // Handle metadata actions (drawer opens, etc.)
+      const metadataMatch = chunkContent.match(/===METADATA===\n([\s\S]+)$/);
+      if (metadataMatch) {
+        try {
+          const meta = JSON.parse(metadataMatch[1]);
+          if (meta.action) {
+            const { setActiveDrawer } = useAppStore.getState();
+            if (meta.action === 'show_atlas') setActiveDrawer('cognition');
+            else if (meta.action === 'show_flashcards') setActiveDrawer('revision');
+            else if (meta.action === 'run_autopsy') setActiveDrawer('autopsy');
+          }
+        } catch { /* non-fatal */ }
       }
     } catch (e) {
-      setMessages(prev => prev.map(m => m.id === tutorMsgId ? { ...m, content: 'An error occurred connecting to the neural core. Try again.' } : m));
+      setMessages((prev) =>
+        prev.map((m) =>
+          m.id === tutorMsgId
+            ? { ...m, content: 'Connection error. Try again.' }
+            : m
+        )
+      );
     } finally {
       setStreaming(false);
-      if (onRefresh) onRefresh();
     }
   };
 
