@@ -1,25 +1,17 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Brain, Calendar, Upload, Loader2, Target, CheckCircle } from 'lucide-react';
+import WeakSpotCheck from '@/components/onboarding/WeakSpotCheck';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import { completeOnboarding } from '@/lib/actions/onboarding';
 
 // Rotating status messages shown during quiz generation so the UI
 // communicates active work even when the first question hasn't arrived yet.
-const CALIBRATION_STATUS_MESSAGES = [
-  'Mapping your syllabus...',
-  'Identifying the concepts that matter most...',
-  'Generating Question 1...',
-  'Generating Question 2...',
-  'Generating Question 3...',
-  'Generating Question 4...',
-  'Generating Question 5...',
-  'Finalising calibration...',
-];
+
 
 export default function OnboardingFlow() {
   const router = useRouter();
@@ -30,19 +22,8 @@ export default function OnboardingFlow() {
   const [examDate, setExamDate] = useState('');
   const [daysRemaining, setDaysRemaining] = useState<number | null>(null);
 
-  // Quiz state
-  const [quizData, setQuizData] = useState<any[]>([]);
-  const [currentQ, setCurrentQ] = useState(0);
+  // Store results from weak spot check
   const [quizResults, setQuizResults] = useState<Array<{ chapter: string; concept: string; isCorrect: boolean }>>([]);
-
-  // FIX 3: streaming generation state
-  const [quizStreaming, setQuizStreaming] = useState(false);   // true while stream is open
-  const [calibrationStatus, setCalibrationStatus] = useState(CALIBRATION_STATUS_MESSAGES[0]);
-  const statusIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  // FIX 4: selected-answer state — tracks which option was clicked before advancing
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
-  const [isAdvancing, setIsAdvancing] = useState(false); // true during 500ms delay
 
   useEffect(() => {
     if (examDate) {
@@ -51,117 +32,24 @@ export default function OnboardingFlow() {
     }
   }, [examDate]);
 
-  // Clean up the status rotator on unmount
-  useEffect(() => {
-    return () => {
-      if (statusIntervalRef.current) clearInterval(statusIntervalRef.current);
-    };
-  }, []);
 
-  // ── FIX 3: Stream questions one-by-one from the backend ──────────────────
-  // The backend now emits newline-delimited JSON (one question per line).
-  // We parse each line and add it to quizData immediately, so the first
-  // question can appear within ~2 seconds instead of waiting 2+ minutes
-  // for the full batch.
-  const startQuiz = async () => {
-    setStep(4);
-    setQuizData([]);
-    setCurrentQ(0);
-    setQuizResults([]);
-    setSelectedAnswer(null);
-    setIsAdvancing(false);
-    setQuizStreaming(true);
 
-    // Rotate status messages so the user can see active progress
-    let statusIdx = 0;
-    statusIntervalRef.current = setInterval(() => {
-      statusIdx = Math.min(statusIdx + 1, CALIBRATION_STATUS_MESSAGES.length - 1);
-      setCalibrationStatus(CALIBRATION_STATUS_MESSAGES[statusIdx]);
-    }, 1800);
 
+
+  // New function to handle completion of weak spot check
+  const handleWeakSpotComplete = async (results: Array<{ chapter: string; concept: string; isCorrect: boolean }>) => {
+    setQuizResults(results);
+    setLoading(true);
     try {
-      const res = await fetch('/api/onboarding/quiz', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ examType }),
-      });
-
-      if (!res.ok || !res.body) throw new Error('Quiz stream failed');
-
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let buffer = '';
-
-      while (true) {
-        const { value, done } = await reader.read();
-        if (done) break;
-        buffer += decoder.decode(value, { stream: true });
-
-        // Each question is terminated by '\n' — parse every complete line
-        const lines = buffer.split('\n');
-        buffer = lines.pop() ?? ''; // keep the incomplete trailing fragment
-
-        for (const line of lines) {
-          if (!line.trim()) continue;
-          try {
-            const question = JSON.parse(line);
-            setQuizData(prev => [...prev, question]);
-          } catch {
-            // Malformed chunk — skip silently
-          }
-        }
-      }
+      await completeOnboarding('temp-id-ignored-by-server', examType, examDate, results);
+      await fetch('/api/onboarding/complete', { method: 'POST' });
     } catch (e) {
-      console.error('Quiz stream error:', e);
-      // If streaming fails entirely, quizData will be empty — the existing
-      // "Failed to load quiz" fallback UI handles this gracefully.
+      console.error(e);
     } finally {
-      if (statusIntervalRef.current) {
-        clearInterval(statusIntervalRef.current);
-        statusIntervalRef.current = null;
-      }
-      setQuizStreaming(false);
+      setLoading(false);
+      setStep(5);
     }
   };
-
-  // ── FIX 4: Selected-state + 500ms delay before advancing ─────────────────
-  const handleAnswer = (selectedIndex: number) => {
-    if (isAdvancing) return; // Prevent double-click during delay
-
-    setSelectedAnswer(selectedIndex);
-    setIsAdvancing(true);
-
-    setTimeout(async () => {
-      const q = quizData[currentQ];
-      const isCorrect = selectedIndex === q.correctIndex;
-
-      const newResults = [...quizResults, { chapter: q.chapter, concept: q.concept, isCorrect }];
-      setQuizResults(newResults);
-      setSelectedAnswer(null);
-      setIsAdvancing(false);
-
-      if (currentQ < quizData.length - 1) {
-        setCurrentQ(prev => prev + 1);
-      } else {
-        setStep(5);
-        setLoading(true);
-        try {
-          await completeOnboarding('temp-id-ignored-by-server', examType, examDate, newResults);
-          await fetch('/api/onboarding/complete', { method: 'POST' });
-        } catch (e) {
-          console.error(e);
-        } finally {
-          setLoading(false);
-        }
-      }
-    }, 500);
-  };
-
-  // Determine whether to show the quiz or the loading state.
-  // Show questions as soon as the first one arrives (quizData.length > 0),
-  // even if the stream is still open.
-  const firstQuestionReady = quizData.length > 0;
-  const showCalibrationLoader = quizStreaming && !firstQuestionReady;
 
   return (
     <div style={{
@@ -263,8 +151,8 @@ export default function OnboardingFlow() {
               </div>
 
               <div style={{ display: 'flex', gap: 'var(--sp-3)', marginTop: 'var(--sp-6)' }}>
-                <Button variant="secondary" onClick={startQuiz} style={{ flex: 1 }}>Skip for now</Button>
-                <Button onClick={startQuiz} style={{ flex: 1 }}>Continue <ArrowRight size={16} /></Button>
+                <Button variant="secondary" onClick={() => setStep(4)} style={{ flex: 1 }}>Skip for now</Button>
+                <Button onClick={() => setStep(4)} style={{ flex: 1 }}>Continue <ArrowRight size={16} /></Button>
               </div>
             </Card>
           </motion.div>
@@ -273,140 +161,7 @@ export default function OnboardingFlow() {
         {/* STEP 4: Two-Minute Calibration Quiz */}
         {step === 4 && (
           <motion.div key="step4" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} style={{ width: '100%', maxWidth: 600 }}>
-            <Card padding="lg" variant="glow" style={{ border: '1px solid var(--accent-purple-dim)', boxShadow: 'var(--shadow-glow-purple)' }}>
-
-              {/* FIX 3: Granular loader — shown only until first question arrives */}
-              {showCalibrationLoader ? (
-                <div style={{ textAlign: 'center', padding: 'var(--sp-12) 0' }}>
-                  <Loader2 size={48} className="animate-spin" style={{ color: 'var(--accent-purple)', margin: '0 auto var(--sp-4)' }} />
-                  <h2 style={{ fontSize: 'var(--fs-lg)', fontWeight: 'bold' }}>Generating Calibration Check...</h2>
-                  {/* Rotating status — shows active progress instead of a dead spinner */}
-                  <p style={{
-                    color: 'var(--accent-purple)',
-                    fontSize: 'var(--fs-sm)',
-                    marginTop: 8,
-                    fontFamily: 'var(--font-mono)',
-                    transition: 'opacity 0.4s',
-                  }}>
-                    {calibrationStatus}
-                  </p>
-                  <p style={{ color: 'var(--text-tertiary)', fontSize: 'var(--fs-xs)', marginTop: 'var(--sp-2)' }}>
-                    Questions will appear as they're ready — you won't have to wait for all 5.
-                  </p>
-                </div>
-              ) : firstQuestionReady ? (
-                <div>
-                  {/* Progress bar — fills as more questions become available */}
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--sp-4)', color: 'var(--text-tertiary)', fontSize: 'var(--fs-xs)', textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)' }}>
-                    <span>Diagnostic Calibration</span>
-                    <span>{currentQ + 1} of {quizData.length}{quizStreaming ? '…' : ''}</span>
-                  </div>
-
-                  {/* Mini progress dots */}
-                  <div style={{ display: 'flex', gap: 4, marginBottom: 'var(--sp-6)' }}>
-                    {Array.from({ length: Math.max(quizData.length, 5) }).map((_, i) => (
-                      <div key={i} style={{
-                        flex: 1, height: 3, borderRadius: 2,
-                        background: i < currentQ
-                          ? 'var(--accent-purple)'
-                          : i === currentQ
-                            ? 'var(--accent-cyan)'
-                            : i < quizData.length
-                              ? 'var(--border-strong)'
-                              : 'var(--bg-tertiary)',
-                        transition: 'background 0.3s',
-                      }} />
-                    ))}
-                  </div>
-
-                  <h3 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-bold)', lineHeight: 'var(--lh-relaxed)', marginBottom: 'var(--sp-8)' }}>
-                    {quizData[currentQ].question}
-                  </h3>
-
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-3)' }}>
-                    {quizData[currentQ].options.map((opt: string, i: number) => {
-                      const isSelected = selectedAnswer === i;
-                      const isCorrectAnswer = i === quizData[currentQ].correctIndex;
-
-                      // FIX 4: Visual states
-                      // - Default:  dark background, subtle border
-                      // - Selected (correct):  green highlight
-                      // - Selected (wrong):    amber highlight
-                      // - Disabled (waiting):  reduced opacity
-                      let bg = 'var(--bg-tertiary)';
-                      let border = 'var(--border-default)';
-                      let opacity = isAdvancing && !isSelected ? 0.5 : 1;
-
-                      if (isSelected) {
-                        bg = isCorrectAnswer
-                          ? 'rgba(16, 185, 129, 0.18)'   // green tint
-                          : 'rgba(245, 158, 11, 0.18)';  // amber tint
-                        border = isCorrectAnswer
-                          ? 'var(--success)'
-                          : 'var(--warning, var(--accent-amber, #f59e0b))';
-                      }
-
-                      return (
-                        <button
-                          key={i}
-                          onClick={() => handleAnswer(i)}
-                          disabled={isAdvancing}
-                          style={{
-                            padding: 'var(--sp-4)',
-                            background: bg,
-                            border: `2px solid ${border}`,
-                            borderRadius: 'var(--radius-md)',
-                            color: 'var(--text-primary)',
-                            textAlign: 'left',
-                            fontSize: 'var(--fs-md)',
-                            cursor: isAdvancing ? 'not-allowed' : 'pointer',
-                            transition: 'all 0.15s',
-                            display: 'flex',
-                            gap: 'var(--sp-4)',
-                            alignItems: 'center',
-                            opacity,
-                          }}
-                          onMouseEnter={e => {
-                            if (!isAdvancing && !isSelected) {
-                              e.currentTarget.style.background = 'var(--bg-hover)';
-                              e.currentTarget.style.borderColor = 'var(--accent-purple)';
-                            }
-                          }}
-                          onMouseLeave={e => {
-                            if (!isAdvancing && !isSelected) {
-                              e.currentTarget.style.background = 'var(--bg-tertiary)';
-                              e.currentTarget.style.borderColor = 'var(--border-default)';
-                            }
-                          }}
-                        >
-                          {/* FIX 4: Show checkmark icon on the selected answer */}
-                          {isSelected ? (
-                            <CheckCircle
-                              size={16}
-                              style={{
-                                color: isCorrectAnswer ? 'var(--success)' : 'var(--warning, #f59e0b)',
-                                flexShrink: 0,
-                              }}
-                            />
-                          ) : (
-                            <span style={{ color: 'var(--accent-purple)', fontWeight: 'bold', flexShrink: 0 }}>
-                              {String.fromCharCode(65 + i)}.
-                            </span>
-                          )}
-                          {opt}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              ) : (
-                /* Stream ended but no questions were generated */
-                <div style={{ textAlign: 'center' }}>
-                  Failed to load quiz.{' '}
-                  <Button onClick={() => setStep(5)}>Skip Calibration</Button>
-                </div>
-              )}
-            </Card>
+            <WeakSpotCheck examType={examType} onComplete={handleWeakSpotComplete} />
           </motion.div>
         )}
 

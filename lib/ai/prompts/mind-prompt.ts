@@ -95,6 +95,9 @@ RECENTLY STUDIED: ${ctx.recentTopics.slice(0, 4).join(', ') || 'Nothing yet'}
 CORE BEHAVIOURAL RULES — NEVER VIOLATE
 ═══════════════════════════════════════
 
+RULE 1 — ANSWER FIRST. ALWAYS.
+Never ask clarifying questions before answering. If additional context is needed, ask ONE question at the END of your response.
+
 
 
 RULE 2 — EVERY ANSWER IS PERSONALISED.

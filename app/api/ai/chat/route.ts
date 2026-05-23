@@ -17,7 +17,7 @@ import { logPulseSignal } from '@/lib/engines/pulse-engine';
 import { generateSessionClosingMessage } from '@/lib/engines/session-closing';
 import { syncStudentModel } from '@/lib/engines/inference-engine';
 import { generateSprintPlanAction } from '@/lib/actions/planner';
-import { rateLimit } from '@/lib/utils/rate-limit';
+import { RateLimiter } from '@/lib/services/rateLimiter';
 import { Type } from '@google/genai';
 import { z } from 'zod';
 
@@ -71,7 +71,8 @@ export async function POST(req: NextRequest) {
   if (!user) return new Response('Unauthorized', { status: 401 });
 
   // Rate limit: 120 messages/hour (generous for beta, prevents abuse)
-  const allowed = await rateLimit(`chat-${user.id}`, 120, 60 * 60 * 1000);
+  const limiter = RateLimiter.getInstance();
+  const allowed = await limiter.consume(`chat-${user.id}`, 120, 60 * 60 * 1000);
   if (!allowed) {
     return new Response(
       JSON.stringify({ error: 'Rate limit reached. Please wait a moment.' }),
@@ -190,6 +191,27 @@ Conversation so far:\n${historyText}\nStudent: ${message}`;
                 try {
                   const analysisPrompt = `Analyze this tutor exchange. Did the student demonstrate understanding?\n${historyText}\nStudent: ${message}\nTutor: ${fullResponse}\n\nRespond ONLY as JSON:\n{\"summary\":\"1 sentence summary\",\"understood\":true,\"gapFound\":\"question for flashcard front or null\",\"gapAnswer\":\"answer or null\"}`;
                   const analysis = await generateJSON<any>('flash', 'Expert analyzer. Return JSON only.', analysisPrompt);
+
+                  // Every 5 sessions, infer learning style from response patterns
+                  const { count: sessionCount } = await supabase
+                    .from('tutor_sessions')
+                    .select('*', { count: 'exact', head: true })
+                    .eq('user_id', user.id);
+                    
+                  if (sessionCount && sessionCount > 0 && sessionCount % 5 === 0) {
+                    const stylePrompt = `Based on how this student engages — 
+                    do they ask for examples first, first principles, analogies, or visual descriptions?
+                    History: ${historyText}
+                    Return JSON: { "learningStyle": "visual" | "analogy" | "first_principles" | "example_based" | "no_change" }`;
+                    
+                    const styleAnalysis = await generateJSON<any>('flash', 'Learning style detector. Return JSON only.', stylePrompt);
+                    if (styleAnalysis?.learningStyle && styleAnalysis.learningStyle !== 'no_change') {
+                      await supabase.from('learning_goals')
+                        .update({ preferred_learning_style: styleAnalysis.learningStyle })
+                        .eq('user_id', user.id)
+                        .eq('status', 'active');
+                    }
+                  }
 
                   if (conceptId) {
                     await updateConceptState(conceptId, analysis.understood, 0);

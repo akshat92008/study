@@ -5,7 +5,7 @@ import { getExamConfig } from '@/lib/utils/constants';
 import { AutopsyPaperSchema, AutopsyQuestionSchema } from './autopsy-schemas';
 import { generateMentorRecovery } from './mentor-engine';
 import { logger } from '@/lib/utils/logger';
-import { EventDispatcher } from '@/lib/events/orchestrator';
+// EventDispatcher import removed; using direct calls
 
 type AutopsyFileData =
   | { kind: 'text'; text: string }
@@ -222,23 +222,21 @@ export async function processMockAutopsy(
     }, {} as Record<string, number>)
   ).sort((a, b) => b[1] - a[1])[0]?.[0];
 
-  try {
-    await EventDispatcher.publish({
-      user_id: userId,
-      type: 'AUTOPSY_MOCK_PROCESSED',
-      data: {
-        mockId: autopsyData.id,
-        overallAccuracy: processedQuestions.length > 0 ? (totalCorrect / processedQuestions.length) : 0,
-        primaryMistakeCategory: primaryCategory,
-        recoverableMarks
-      },
-      metadata: {
-        source: 'autopsy_engine',
-        test_name: testName,
-        questions: incorrectQs // Passing incorrect questions so consumers can process them
+  // Direct ATLAS and MEMORY updates for each incorrect question
+    for (const q of processedQuestions) {
+      if (q.status === 'Incorrect' && q.mistakeCategory && ['silly', 'misread', 'time_pressure', 'recall_failure'].includes(q.mistakeCategory)) {
+        // Resolve concept ID if possible
+        const { resolveConceptByName, updateConceptState, createSingleCard } = await import('@/lib/engines/atlas-integration');
+        const conceptId = await resolveConceptByName(userId, q.subject, q.chapter);
+        if (conceptId) {
+          await updateConceptState(conceptId, false, q.marksLost);
+        }
+        await createSingleCard(userId, conceptId || '', q.mistakeCategory, q.reasoning, q.subject, q.chapter);
       }
-    });
-    logger.info(`AUTOPSY_MOCK_PROCESSED event published successfully`, { autopsyId: autopsyData.id });
+    }
+
+  try {
+    // Event dispatcher logic
   } catch (err) {
     logger.error('Failed to publish AUTOPSY event', err);
   }

@@ -54,6 +54,8 @@ export interface AppState extends ChatSlice {
   setMemoryDueCount: (count: number) => void;
   autopsyLossPoints: number;
   setAutopsyLossPoints: (points: number) => void;
+  streakDays: number;
+  setStreakDays: (streak: number) => void;
 
   // Learning Goals
   learningGoals: any[];
@@ -130,6 +132,8 @@ export const useAppStore = create<AppState>()(
       setMemoryDueCount: (count) => set({ memoryDueCount: count }),
       autopsyLossPoints: 0,
       setAutopsyLossPoints: (points) => set({ autopsyLossPoints: points }),
+      streakDays: 0,
+      setStreakDays: (streak) => set({ streakDays: streak }),
 
       activeDrawer: null,
       setActiveDrawer: (drawer) => set({ activeDrawer: drawer }),
@@ -230,6 +234,7 @@ export const useAppStore = create<AppState>()(
         atlasMastery: state.atlasMastery,
         memoryDueCount: state.memoryDueCount,
         autopsyLossPoints: state.autopsyLossPoints,
+        streakDays: state.streakDays,
       }),
     }
   )

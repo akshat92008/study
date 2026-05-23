@@ -3,54 +3,52 @@
 /**
  * Simple Redis based token bucket rate limiter.
  * Usage example:
- *   const limiter = new RateLimiter(redis, 'api:chat', 10, 60); // 10 requests per 60 seconds
- *   const allowed = await limiter.consume(userId);
+ *   const limiter = RateLimiter.getInstance();
+ *   const allowed = await limiter.consume(`chat-${userId}`, 120, 60 * 60 * 1000);
  */
 import redis from '@/lib/events/redisClient';
 
 export class RateLimiter {
-  private readonly keyPrefix: string;
-  private readonly maxTokens: number;
-  private readonly refillIntervalSec: number;
+  private static instance: RateLimiter;
 
-  constructor(keyPrefix: string, maxTokens: number, refillIntervalSec: number) {
-    this.keyPrefix = keyPrefix;
-    this.maxTokens = maxTokens;
-    this.refillIntervalSec = refillIntervalSec;
-  }
+  private constructor() {}
 
-  private getKey(identifier: string): string {
-    return `${this.keyPrefix}:${identifier}`;
+  /** Get the singleton instance */
+  static getInstance(): RateLimiter {
+    if (!RateLimiter.instance) {
+      RateLimiter.instance = new RateLimiter();
+    }
+    return RateLimiter.instance;
   }
 
   /**
-   * Attempt to consume a single token for the given identifier.
+   * Attempt to consume a token for the given identifier.
+   * maxTokens: maximum tokens allowed in the bucket (e.g., 120 requests).
+   * windowMs: refill interval in milliseconds (e.g., 60*60*1000 for 1 hour).
    * Returns true if the request is allowed, false otherwise.
    */
-  async consume(identifier: string): Promise<boolean> {
-    const key = this.getKey(identifier);
-    const now = Date.now();
-    const ttl = this.refillIntervalSec * 1000;
+  async consume(identifier: string, maxTokens: number, windowMs: number): Promise<boolean> {
+    const key = `rate:${identifier}`;
+    const ttl = windowMs; // TTL in ms
 
-    // Use a Lua script to ensure atomicity: refill if needed and then decrement.
+    // Lua script implements a token bucket where the key stores remaining tokens.
+    // On first hit the key does not exist → we set remaining tokens = maxTokens - 1 and set TTL.
+    // On subsequent hits we decrement the token count without resetting TTL.
     const script = `
-      local tokens = tonumber(redis.call('GET', KEYS[1])) or ${this.maxTokens}
-      local last = tonumber(redis.call('PTTL', KEYS[1]))
-      if last < 0 then
-        last = 0
-      end
-      if last == -1 then
-        redis.call('PEXPIRE', KEYS[1], ARGV[2])
-      end
-      if tokens > 0 then
-        tokens = tokens - 1
-        redis.call('SET', KEYS[1], tokens, 'PX', ARGV[2])
+      local tokens = redis.call('GET', KEYS[1])
+      if not tokens then
+        redis.call('SET', KEYS[1], ARGV[1] - 1, 'PX', ARGV[2])
         return 1
-      else
+      end
+      tokens = tonumber(tokens)
+      if tokens <= 0 then
         return 0
       end
+      redis.call('DECR', KEYS[1])
+      return 1
     `;
-    const result = await redis.eval(script, 1, key, ttl.toString());
+
+    const result = await redis.eval(script, 1, key, maxTokens.toString(), ttl.toString());
     return result === 1;
   }
 }

@@ -5,7 +5,7 @@ import { useAppStore } from '@/stores/appStore';
 import Sidebar from './Sidebar';
 import Header from './Header';
 
-import GlobalChat from '../chat/GlobalChat';
+import { GlobalChat } from '../chat/GlobalChat';
 
 interface DashboardClientLayoutProps {
   children: React.ReactNode;

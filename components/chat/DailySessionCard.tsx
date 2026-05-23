@@ -16,7 +16,7 @@ interface SessionCard {
 }
 
 interface Props {
-  onStartSession: (topic: string, subject: string) => void;
+  onStartSession: (topic: string, subject: string, estimatedMinutes: number) => void;
 }
 
 export default function DailySessionCard({ onStartSession }: Props) {
@@ -34,7 +34,7 @@ export default function DailySessionCard({ onStartSession }: Props) {
   const handleStart = () => {
     if (!card) return;
     setSessionStarted(true);
-    onStartSession(card.focusTopic, card.subject);
+    onStartSession(card.focusTopic, card.subject, card.estimatedMinutes);
   };
 
   if (loading) {

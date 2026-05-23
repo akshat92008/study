@@ -10,7 +10,7 @@ import RevisionQueue from '@/components/revision/RevisionQueue';
 import AutopsyDashboard from '@/components/autopsy/AutopsyDashboard';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
-import DailySessionCard from '@/components/dashboard/DailySessionCard';
+import CurrentTaskCard from '@/components/dashboard/CurrentTaskCard';
 
 export default function DashboardPage() {
   const {
@@ -233,7 +233,7 @@ export default function DashboardPage() {
 
       {/* Main Content Area */}
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
-        <DailySessionCard onStartSession={handleStartSession} />
+        <CurrentTaskCard />
         
         {/* Introduction area if no goal is active */}
         {!activeGoal && (
