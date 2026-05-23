@@ -209,11 +209,11 @@ export default function GlobalChat() {
   const lastMessageSentAt = useRef<number | null>(null);
 
   const suggestedPrompts = [
-    'Help me crack NEET in 90 days',
+    'What should I study today?',
     'I feel overwhelmed — adjust my plan',
     'Quiz me on what I studied yesterday',
     'What are my weakest topics right now?',
-    'Help me understand Newton\'s laws deeply'
+    'Make me a revision sheet on my current topic',
   ];
 
   useEffect(() => { loadChatFromSupabase(); }, [loadChatFromSupabase]);

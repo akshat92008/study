@@ -3,7 +3,7 @@
 // Supports multiple exam types. Add new exams here.
 // ============================================
 
-export type ExamKey = 'NEET' | 'JEE' | 'SAT' | 'UPSC' | 'CUSTOM';
+export type ExamKey = string;
 
 export interface ExamConfig {
   name: string;

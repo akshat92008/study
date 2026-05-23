@@ -3,7 +3,7 @@
 // ============================================
 
 // Exam types the system supports
-export type ExamType = 'NEET' | 'JEE' | 'SAT' | 'UPSC' | 'CUSTOM';
+export type ExamType = string;
 
 // Generic subject type (dynamically loaded from EXAM_REGISTRY)
 export type Subject = string;
