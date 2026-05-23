@@ -4,6 +4,7 @@ import { getMINDContext } from '@/lib/engines/mind-engine';
 import { getMINDSystemPrompt } from '@/lib/ai/prompts/mind-prompt';
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/utils/logger';
+import { ChatMemoryService } from './chat-memory.service';
 
 type MessageHistory = Array<{ role: 'user' | 'assistant' | 'model'; content: string }>;
 
@@ -104,40 +105,24 @@ export class OrchestratorService {
 
   private async retrieveSemanticMemory(userId: string, message: string): Promise<string | null> {
     try {
-      const supabase = await createClient();
-
-      // Simple keyword-based memory retrieval as fallback if pgvector RPC isn't ready
-      const keywords = message.toLowerCase().split(' ').filter(w => w.length > 4).slice(0, 3);
-      if (!keywords.length) return null;
-
-      const { data: memories } = await supabase
-        .from('chat_memories')
-        .select('content, created_at')
-        .eq('user_id', userId)
-        .textSearch('content', keywords.join(' | '), { type: 'websearch' })
-        .order('created_at', { ascending: false })
-        .limit(3);
-
-      if (!memories?.length) return null;
-
-      return memories.map(m => `• ${m.content}`).join('\n');
+      const memoryService = new ChatMemoryService();
+      const memories = await memoryService.searchMemory(userId, message, 3);
+      if (memories && memories.length > 0) {
+        return memories.map((m: string) => `• ${m}`).join('\n');
+      }
+      return null;
     } catch {
-      return null; // Memory is enhancement, not required
+      return null;
     }
   }
 
   private async saveSemanticMemory(userId: string, message: string, context: any): Promise<void> {
     try {
-      const supabase = await createClient();
+      const memoryService = new ChatMemoryService();
       const summary = `Student asked about: ${message.slice(0, 150)}. Exam: ${context.profile.examType}. Weak areas at time: ${context.weakConcepts.slice(0, 2).map((c: any) => c.name).join(', ')}`;
-
-      await supabase.from('chat_memories').insert({
-        user_id: userId,
-        content: summary,
-        created_at: new Date().toISOString()
-      });
-    } catch {
-      // Non-critical
+      await memoryService.storeMessageInMemory(userId, summary);
+    } catch (e) {
+      logger.error('Failed storing semantic memory', e);
     }
   }
 }

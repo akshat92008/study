@@ -6,7 +6,7 @@ import Badge from '@/components/ui/Badge';
 import { useRouter } from 'next/navigation';
 import { 
   Brain, Target, RefreshCw, Flame, ArrowRight, CheckCircle2, Clock, Send, MessageCircle, 
-  Loader2, Paperclip, UploadCloud, Activity
+  Loader2, Paperclip, UploadCloud, Activity, BookOpen, Calendar, Check, Sliders, X
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import DailySessionFocus from './DailySessionFocus';
@@ -51,6 +51,7 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
   const [streaming, setStreaming] = useState(false);
   const [showUploadMenu, setShowUploadMenu] = useState(false);
   const [uploadLoading, setUploadLoading] = useState(false);
+  const [showFullQueue, setShowFullQueue] = useState(false);
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -186,9 +187,9 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
       }} className="responsive-workspace-grid">
         
         {/* ========================================================================= */}
-        {/* LEFT PANE: One Dashboard Card & Telemetry (TASK 3.1) */}
+        {/* LEFT PANE: One Dashboard Card & Telemetry */}
         {/* ========================================================================= */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)', paddingRight: '4px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)', paddingRight: '4px', overflowY: 'auto' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
               <h2 style={{ fontSize: 'var(--fs-lg)', fontWeight: 'var(--fw-bold)' }}>Command Center</h2>
@@ -248,6 +249,28 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
               <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-xs)', marginTop: 2 }}>All tasks completed for today.</p>
             </Card>
           )}
+
+          {/* Full Schedule Collapsible */}
+          <div style={{ marginTop: 'var(--sp-2)' }}>
+            <button onClick={() => setShowFullQueue(!showFullQueue)} style={{ width: '100%', background: 'transparent', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)', padding: '10px', borderRadius: 'var(--radius-md)', cursor: 'pointer', fontSize: 'var(--fs-sm)', fontWeight: 'bold' }}>
+              {showFullQueue ? 'Hide Schedule' : `View Full Schedule (${tasks.length} Blocks)`}
+            </button>
+            <AnimatePresence>
+              {showFullQueue && (
+                <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} style={{ overflow: 'hidden', marginTop: 'var(--sp-2)', display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)' }}>
+                  {tasks.map((task: any) => (
+                    <Card key={task.id} padding="sm" style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-3)', opacity: task.is_completed ? 0.5 : 1, background: task.id === currentActiveTask?.id ? 'var(--bg-tertiary)' : 'var(--bg-secondary)', borderLeft: task.id === currentActiveTask?.id ? '3px solid var(--accent-blue)' : '3px solid transparent' }}>
+                      {task.is_completed ? <CheckCircle2 size={16} color="var(--success)" /> : <Clock size={16} color="var(--text-tertiary)" />}
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ fontSize: 'var(--fs-sm)', fontWeight: 'bold', textDecoration: task.is_completed ? 'line-through' : 'none' }}>{task.title}</div>
+                        <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>{task.estimated_minutes}m</div>
+                      </div>
+                    </Card>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
 
           {/* Core Telemetry Widgets */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--sp-3)', marginTop: 'auto' }}>

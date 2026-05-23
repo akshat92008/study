@@ -1,4 +1,5 @@
 import { NextRequest } from 'next/server';
+import { after } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { streamText, generateJSON } from '@/lib/ai/gemini';
 import { getMINDContext } from '@/lib/engines/mind-engine';
@@ -14,6 +15,7 @@ import { GoogleGenAI } from '@google/genai';
 import { z } from 'zod';
 import { rateLimit } from '@/lib/utils/rate-limit';
 import { OrchestratorService } from '@/services/orchestrator.service';
+import { generateSessionClosingMessage } from '@/lib/engines/session-closing';
 
 const CAPABILITY_REGISTRY = `
 COGNITION OS CAPABILITIES:
@@ -302,7 +304,59 @@ Return JSON only.`;
     // ── GENERAL_CHAT / TUTOR_SESSION → Orchestrator ───────────────────────
     const orchestrator = new OrchestratorService();
     const encoder = new TextEncoder();
+    
+    // We register a promise so the `after` execution block knows when the stream is done, and gets the result.
     let fullResponse = '';
+    let resolveSynthesis: (value: string) => void;
+    const streamDonePromise = new Promise<string>((resolve) => { resolveSynthesis = resolve; });
+
+    // Ensure non-blocking post-session synthesis
+    after(async () => {
+      const responseText = await streamDonePromise;
+      if (responseText.trim().length > 50) {
+        try {
+          const analysisPrompt = `Analyze this AI tutor exchange. Did the student discuss a specific academic concept?\nExchange:\nStudent: ${message}\nTutor: ${responseText.slice(0, 2000)}\nReturn JSON: { "conceptDiscussed": boolean, "subject": string | null, "conceptName": string | null, "understandingGained": boolean, "gapFound": string | null, "gapAnswer": string | null }`;
+          const analysis = await generateJSON<any>('flash', 'You are a learning diagnostic engine.', analysisPrompt);
+
+          if (analysis?.conceptDiscussed && analysis.subject && analysis.conceptName) {
+            const resolvedId = await resolveConceptByName(user.id, analysis.subject, analysis.conceptName);
+            let cardsCreated = 0;
+            if (resolvedId) {
+              if (analysis.understandingGained) {
+                await updateConceptState(resolvedId, true, 0);
+              } else if (analysis.gapFound) {
+                await createSingleCard(user.id, resolvedId, analysis.gapFound, analysis.gapAnswer || 'Review your notes.', analysis.subject, analysis.conceptName);
+                cardsCreated = 1;
+              }
+              
+              // Generate authoritative closing message & pipe directly into chat log!
+              const { data: cData } = await supabase.from('concepts').select('mastery').eq('id', resolvedId).maybeSingle();
+              const closing = await generateSessionClosingMessage({
+                userId: user.id, conceptId: resolvedId, subject: analysis.subject, chapter: analysis.conceptName,
+                gapFound: analysis.gapFound, gapAnswer: analysis.gapAnswer, understood: analysis.understandingGained,
+                turnsCount: history.length, oldMastery: null, newMastery: null, cardsCreated, sessionId: 'global'
+              });
+
+              // Emulate the "assistant" messaging back the session closure context seamlessly into the UI thread
+              if (closing && closing.text) {
+                const { data: session } = await supabase.from('chat_sessions').select('id').eq('user_id', user.id).eq('session_type', 'global').limit(1).single();
+                if (session) {
+                  await supabase.from('chat_messages').insert({
+                    session_id: session.id,
+                    user_id: user.id,
+                    role: 'assistant',
+                    content: `**System Diagnostics Updated**\n\n${closing.text}`,
+                    metadata: { type: 'closing_message' }
+                  });
+                }
+              }
+            }
+          }
+        } catch (bgErr) {
+          logger.error('Post-session synthesis failed', bgErr);
+        }
+      }
+    });
 
     const stream = new ReadableStream({
       async start(controller) {
@@ -312,55 +366,12 @@ Return JSON only.`;
             controller.enqueue(encoder.encode(chunk));
             fullResponse += chunk;
           }
-
-          // ── POST-SESSION SYNTHESIS (MIND → ATLAS + MEMORY) ──────────────
-          // Runs BEFORE controller.close() so Vercel doesn't kill the function early
-          if (fullResponse.trim().length > 50) {
-            try {
-              const analysisPrompt = `Analyze this AI tutor exchange. Did the student discuss a specific academic concept?
-
-Exchange:
-Student: ${message}
-Tutor: ${fullResponse.slice(0, 2000)}
-
-Return JSON:
-{
-  "conceptDiscussed": boolean,
-  "subject": string | null,
-  "conceptName": string | null,
-  "understandingGained": boolean,
-  "gapFound": string | null,
-  "gapAnswer": string | null,
-  "summary": string
-}`;
-
-              const analysis = await generateJSON<any>('flash', 'You are a learning diagnostic engine. Return valid JSON only.', analysisPrompt);
-
-              if (analysis?.conceptDiscussed && analysis.subject && analysis.conceptName) {
-                const resolvedId = await resolveConceptByName(user.id, analysis.subject, analysis.conceptName);
-                if (resolvedId) {
-                  if (analysis.understandingGained) {
-                    await updateConceptState(resolvedId, true, 0);
-                  } else if (analysis.gapFound) {
-                    await createSingleCard(
-                      user.id, resolvedId,
-                      analysis.gapFound,
-                      analysis.gapAnswer || 'Review your notes on this topic.',
-                      analysis.subject, analysis.conceptName
-                    );
-                  }
-                }
-              }
-            } catch (bgErr) {
-              logger.error('Post-session synthesis failed', bgErr);
-              // Non-blocking — student still got their response
-            }
-          }
         } catch (err: any) {
           logger.error('Orchestrator streaming error', err);
           controller.enqueue(encoder.encode('\n\nI hit a temporary issue — please try again.'));
         } finally {
-          controller.close(); // close LAST — after synthesis completes
+          controller.close(); 
+          resolveSynthesis(fullResponse); // Inform `after` block that streaming is done
         }
       }
     });

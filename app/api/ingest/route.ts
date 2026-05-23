@@ -4,6 +4,7 @@ import { processDocumentIntoMemory } from '@/lib/engines/memory-engine';
 import { GoogleGenAI } from '@google/genai';
 import { logger, safeError } from '@/lib/utils/logger';
 import { rateLimit } from '@/lib/utils/rate-limit';
+import { checkUsageLimit } from '@/lib/utils/billing';
 import pdfParse from 'pdf-parse/lib/pdf-parse';
 
 export async function POST(request: Request) {
@@ -11,6 +12,12 @@ export async function POST(request: Request) {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+    // PAYWALL GATE ENFORCED
+    const usage = await checkUsageLimit(user.id, 'document_uploads');
+    if (!usage.allowed) {
+      return NextResponse.json({ error: usage.reason, upgradeRequired: true }, { status: 403 });
+    }
 
     // --- RATE LIMIT ---
     // 20 requests per 24 hours (86,400,000 ms)

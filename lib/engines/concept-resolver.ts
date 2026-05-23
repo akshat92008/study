@@ -24,16 +24,18 @@ export async function resolveConceptByName(userId: string, subject: string, chap
     const embedding = await getEmbedding(`${subject} ${chapter}`);
     if (embedding) {
       const { data: semantic } = await supabase.rpc('match_concepts', {
-        query_embedding: embedding, 
+        query_embedding: `[${embedding.join(',')}]`, 
         match_threshold: 0.6, 
         match_count: 1, 
         p_user_id: userId,
       });
-      return semantic?.[0]?.id || null;
+      if (semantic && semantic.length > 0) return semantic[0].id;
     }
   } catch (e) {
-    logger.warn("Semantic concept resolution failed", { userId, subject, chapter });
+    logger.warn("Semantic concept resolution query failed", { userId, subject, chapter });
   }
   
+  // 4. Log the miss extensively for analysis!
+  logger.warn('CONCEPT_RESOLVER_MISS', { userId, subject, chapter, reason: 'No exact, fuzzy, or semantic matches located in DB.' });
   return null;
 }

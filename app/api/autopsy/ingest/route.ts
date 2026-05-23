@@ -19,9 +19,13 @@ export async function POST(request: Request) {
 
     if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-    // PAYWALL GATE (Disabled: Unlimited autopsies)
+    // PAYWALL GATE ENFORCED
+    const usage = await checkUsageLimit(user.id, 'autopsies_monthly');
+    if (!usage.allowed) {
+      return NextResponse.json({ error: usage.reason, upgradeRequired: true }, { status: 403 });
+    }
 
-    // --- NEW RATE LIMIT ---
+    // --- RATE LIMIT ---
     // 10 requests per 24 hours (86,400,000 ms)
     if (!await rateLimit(`autopsy-${user.id}`, 10, 24 * 60 * 60 * 1000)) {
       return NextResponse.json({ error: 'Daily mock test analysis limit reached.' }, { status: 429 });
