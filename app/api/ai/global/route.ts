@@ -16,6 +16,7 @@ import { z } from 'zod';
 import { rateLimit } from '@/lib/utils/rate-limit';
 import { OrchestratorService } from '@/services/orchestrator.service';
 import { generateSessionClosingMessage } from '@/lib/engines/session-closing';
+import { ChatMemoryService } from '@/services/chat-memory.service';
 
 const CAPABILITY_REGISTRY = `
 COGNITION OS CAPABILITIES:
@@ -104,6 +105,55 @@ Student's message: ${message}
   return response.text || 'I could not read the image clearly. Please try a clearer photo with better lighting.';
 }
 
+// STEP 1: Build proper Gemini multi-turn contents array
+// Gemini requires alternating user/model roles. If history starts with
+// an assistant message or has consecutive same-role messages, the API
+// throws. This builder handles all edge cases.
+function buildGeminiContents(
+  history: Array<{ role: string; content: string }>,
+  currentMessage: string,
+  mindContextBlock: string
+): Array<{ role: string; parts: Array<{ text: string }> }> {
+  const contents: Array<{ role: string; parts: Array<{ text: string }> }> = [];
+
+  // Take last 20 messages max to stay within context limits
+  // but keep enough for real conversational memory
+  const trimmedHistory = (history || []).slice(-20);
+
+  for (let i = 0; i < trimmedHistory.length; i++) {
+    const msg = trimmedHistory[i];
+    const geminiRole = msg.role === 'user' ? 'user' : 'model';
+
+    // Gemini will reject consecutive messages from the same role.
+    // If this happens (bad client data), merge them.
+    if (contents.length > 0 && contents[contents.length - 1].role === geminiRole) {
+      contents[contents.length - 1].parts[0].text += '\n' + msg.content;
+    } else {
+      contents.push({
+        role: geminiRole,
+        parts: [{ text: msg.content }]
+      });
+    }
+  }
+
+  // The current message goes last as a user turn.
+  // Prepend the MIND context block to it so the model always
+  // has fresh student data without polluting conversation history.
+  const currentWithContext = `${mindContextBlock}\n\n---\nStudent message: ${currentMessage}`;
+
+  if (contents.length > 0 && contents[contents.length - 1].role === 'user') {
+    // Merge if last turn was also user (shouldn't happen but be safe)
+    contents[contents.length - 1].parts[0].text += '\n' + currentWithContext;
+  } else {
+    contents.push({
+      role: 'user',
+      parts: [{ text: currentWithContext }]
+    });
+  }
+
+  return contents;
+}
+
 export async function POST(req: NextRequest) {
   try {
     const supabase = await createClient();
@@ -131,9 +181,9 @@ export async function POST(req: NextRequest) {
 
     // ── TEXT PATH ────────────────────────────────────────────────────────────
 
-    const recentHistoryText = (history || [])
-      .slice(-6)
-      .map((m: any) => `${m.role === 'user' ? 'Student' : 'OS'}: ${m.content.slice(0, 200)}`)
+    const intentHistorySnippet = (history || [])
+      .slice(-3)
+      .map((m: any) => `${m.role === 'user' ? 'Student' : 'AI'}: ${m.content.slice(0, 150)}`)
       .join('\n');
 
     // Intent classification
@@ -153,7 +203,7 @@ Intent types:
 - GENERAL_CHAT: greetings, meta questions, anything else
 
 Recent history:
-${recentHistoryText}
+${intentHistorySnippet}
 
 Current message: "${message}"
 
@@ -301,8 +351,40 @@ Return JSON only.`;
       return new Response(createTextStream(guide.response + actionToken), { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
     }
 
-    // ── GENERAL_CHAT / TUTOR_SESSION → Orchestrator ───────────────────────
-    const orchestrator = new OrchestratorService();
+    // ── GENERAL_CHAT / TUTOR_SESSION → streamText ('pro') Socratic dialogue ───────────────────────
+    const mindContext = await getMINDContext(user.id, message);
+    const systemPrompt = getMINDSystemPrompt(mindContext);
+
+    // Retrieve true semantic memory — past conversations mapped via pgvector
+    let semanticMemory = null;
+    try {
+      const memoryService = new ChatMemoryService();
+      const memories = await memoryService.searchMemory(user.id, message, 3);
+      if (memories && memories.length > 0) {
+        semanticMemory = memories.map((m: string) => `• ${m}`).join('\n');
+      }
+    } catch {
+      // Memory loading failed, proceed without it
+    }
+
+    const fullSystemPrompt = semanticMemory
+      ? `${systemPrompt}\n\n═══ RELEVANT MEMORY FROM PAST SESSIONS ═══\n${semanticMemory}\n═══════════════════════════════════════`
+      : systemPrompt;
+
+    const mindContextBlock = `
+LIVE STUDENT CONTEXT (updated this request):
+Exam: ${mindContext.profile.examType}
+Exam Date: ${mindContext.profile.examDate || 'Not set'}
+Days to Exam: ${mindContext.profile.examDate ? Math.ceil((new Date(mindContext.profile.examDate).getTime() - Date.now()) / 86400000) : 'Unknown'}
+Streak: ${mindContext.profile.streakDays} days
+Emotional State: ${mindContext.emotionalState}
+Weak Concepts: ${mindContext.weakConcepts.slice(0, 5).map((c: any) => c.name).join(', ') || 'None yet'}
+Recent Mistakes: ${mindContext.struggles.slice(0, 3).map((s: any) => s.chapter).join(', ') || 'None'}
+Overdue Cards: ${mindContext.overdueCards}
+Mastery: ${mindContext.masteryStats.masteryPercent}% (${mindContext.masteryStats.masteredCount}/${mindContext.masteryStats.totalConcepts} concepts)
+`;
+
+    const geminiContents = buildGeminiContents(history, message, mindContextBlock);
     const encoder = new TextEncoder();
     
     // We register a promise so the `after` execution block knows when the stream is done, and gets the result.
@@ -361,7 +443,18 @@ Return JSON only.`;
     const stream = new ReadableStream({
       async start(controller) {
         try {
-          const generator = await orchestrator.processUserMessage(user.id, message, history, activeGoalId, intent);
+          // Save semantic memory snapshot after session in background after stream starts
+          Promise.resolve().then(async () => {
+            try {
+              const memoryService = new ChatMemoryService();
+              const summary = `Student asked about: ${message.slice(0, 150)}. Exam: ${mindContext.profile.examType}. Weak areas at time: ${mindContext.weakConcepts.slice(0, 2).map((c: any) => c.name).join(', ')}`;
+              await memoryService.storeMessageInMemory(user.id, summary);
+            } catch (e) {
+              logger.error('Failed storing semantic memory', e);
+            }
+          });
+
+          const generator = streamText('pro', fullSystemPrompt, geminiContents);
           for await (const chunk of generator) {
             controller.enqueue(encoder.encode(chunk));
             fullResponse += chunk;
