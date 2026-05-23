@@ -291,10 +291,28 @@ export async function processMockAutopsy(
   }
   // ── END PIPELINE ──────────────────────────────────────────────────────────
 
+  // Publish AUTOPSY_COMPLETE to student_events so COMMAND and PULSE can react.
+  // Non-blocking — UI result is already computed above.
   try {
-    // Event dispatcher logic
+    const supabaseForEvent = await createClient();
+    await supabaseForEvent.from('student_events').insert({
+      user_id: userId,
+      event_type: 'AUTOPSY_COMPLETE',
+      payload: {
+        autopsyId: autopsyData.id,
+        currentScore,
+        potentialScore,
+        recoverableMarks,
+        primaryMistakeCategory: primaryCategory ?? null,
+        incorrectCount: incorrectQs.length,
+        examType,
+      },
+      status: 'pending',
+      created_at: new Date().toISOString(),
+    });
+    logger.info('AUTOPSY_COMPLETE event published', { autopsyId: autopsyData.id });
   } catch (err) {
-    logger.error('Failed to publish AUTOPSY event', err);
+    logger.error('Failed to publish AUTOPSY_COMPLETE event', err);
   }
 
   // UI return mapping

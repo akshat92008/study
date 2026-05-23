@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { GoogleGenAI } from '@google/genai';
-import { rateLimit } from '@/lib/utils/rate-limit';
 import { safeError, logger } from '@/lib/utils/logger';
 
 async function generatePodcastScript(
@@ -92,13 +91,6 @@ export async function POST(req: NextRequest) {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-
-    if (!await rateLimit(`audio-${user.id}`, 20, 24 * 60 * 60 * 1000)) {
-      return NextResponse.json(
-        { error: 'Daily audio generation limit reached (20/day). Come back tomorrow.' },
-        { status: 429 }
-      );
-    }
 
     const body = await req.json();
     const { materialId } = body;

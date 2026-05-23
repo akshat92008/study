@@ -1,3 +1,4 @@
+import { getMistakeAnalytics } from '@/lib/engines/mistake-engine';
 import { createClient } from '@/lib/supabase/server';
 import MistakeDashboard from '@/components/mistakes/MistakeDashboard';
 
@@ -6,12 +7,7 @@ export default async function MistakesPage() {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return null;
 
-  const { data: mistakes } = await supabase
-    .from('mistakes')
-    .select('*')
-    .eq('user_id', user.id)
-    .order('created_at', { ascending: false })
-    .limit(100);
+  const data = await getMistakeAnalytics(user.id);
 
-  return <MistakeDashboard mistakes={mistakes ?? []} />;
+  return <MistakeDashboard data={data} />;
 }

@@ -3,7 +3,6 @@ import { createClient } from '@/lib/supabase/server';
 import { processDocumentIntoMemory } from '@/lib/engines/memory-engine';
 import { GoogleGenAI } from '@google/genai';
 import { logger, safeError } from '@/lib/utils/logger';
-import { rateLimit } from '@/lib/utils/rate-limit';
 import { checkUsageLimit } from '@/lib/utils/billing';
 import pdfParse from 'pdf-parse';
 
@@ -17,13 +16,6 @@ export async function POST(request: Request) {
     const usage = await checkUsageLimit(user.id, 'document_uploads');
     if (!usage.allowed) {
       return NextResponse.json({ error: usage.reason, upgradeRequired: true }, { status: 403 });
-    }
-
-    // --- RATE LIMIT ---
-    // 20 requests per 24 hours (86,400,000 ms)
-    const isAllowed = await rateLimit(`ingest-${user.id}`, 20, 24 * 60 * 60 * 1000); 
-    if (!isAllowed) {
-      return NextResponse.json({ error: 'Daily document ingestion limit reached.' }, { status: 429 });
     }
 
     const formData = await request.formData();

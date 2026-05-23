@@ -24,6 +24,7 @@ export const GlobalChat = memo(function GlobalChat() {
     setStreakDays,
     startSession,
     sessionStartTime,
+    chatId,
   } = useAppStore();
 
   const [inputMessage, setInputMessage] = useState('');
@@ -38,7 +39,49 @@ export const GlobalChat = memo(function GlobalChat() {
   // Initialize the stream hook
   const { status, streamingText, send, cancel, resetStatus } = useStream('/api/ai/chat');
 
-  // Load history on mount
+  const [user, setUser] = useState<any>(null);
+  const supabase = createClient();
+
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (user) {
+        setUser(user);
+      }
+    });
+  }, []);
+
+  // Load history from Supabase on mount
+  useEffect(() => {
+    if (!user?.id) return;
+
+    async function loadHistory() {
+      const { data } = await supabase
+        .from('chat_messages')
+        .select('role, content, created_at')
+        .eq('user_id', user.id)
+        .order('created_at', { ascending: true })
+        .limit(50);
+
+      if (data && data.length > 0) {
+        // Only hydrate if local store is empty or only has the welcome message
+        const localHistory = useAppStore.getState().chatMessages;
+        const isDefault = localHistory.length === 1 && localHistory[0].content.includes('Welcome to **Cognition OS**');
+        if (!localHistory || localHistory.length === 0 || isDefault) {
+          useAppStore.getState().setChatMessages(
+            data.map(m => ({
+              role: m.role as 'user' | 'assistant' | 'system',
+              content: m.content,
+              timestamp: m.created_at || new Date().toISOString(),
+            }))
+          );
+        }
+      }
+    }
+
+    loadHistory();
+  }, [user?.id]);
+
+  // Load history session info on mount
   useEffect(() => {
     loadChatFromSupabase();
   }, [loadChatFromSupabase]);
@@ -158,6 +201,7 @@ export const GlobalChat = memo(function GlobalChat() {
           imageBase64,
           imageMimeType,
           activeGoalId,
+          chatId,
         }
       });
 
@@ -355,7 +399,7 @@ export const GlobalChat = memo(function GlobalChat() {
                     tomorrowFocus={msg.metadata?.tomorrowFocus}
                   />
                 ) : (
-                  <RichMessageRenderer content={msg.content} isStreaming={false} isUser={isUser} />
+                  <RichMessageRenderer content={msg.content} isStreaming={false} />
                 )}
               </div>
             </div>

@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { CommandPlanner } from '@/lib/engines/command-engine';
 import { logger } from '@/lib/utils/logger';
-import { rateLimit } from '@/lib/utils/rate-limit';
 
 export async function POST(req: NextRequest) {
   try {
@@ -11,12 +10,6 @@ export async function POST(req: NextRequest) {
     
     if (!user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
-    // --- NEW RATE LIMIT ---
-    // 5 replans per 24 hours
-    if (!await rateLimit(`replan-${user.id}`, 5, 24 * 60 * 60 * 1000)) {
-      return NextResponse.json({ error: 'Daily replan limit reached.' }, { status: 429 });
     }
 
     const body = await req.json();

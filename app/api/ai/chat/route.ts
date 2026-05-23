@@ -18,7 +18,7 @@ import { generateSessionClosingMessage } from '@/lib/engines/session-closing';
 import { syncStudentModel } from '@/lib/engines/inference-engine';
 import { generateSprintPlanAction } from '@/lib/actions/planner';
 import { RateLimiter } from '@/lib/services/rateLimiter';
-import { ChatMemoryService } from '@/services/chat-memory.service';
+import { ChatMemoryService } from '../../../../services/chat-memory.service';
 import { Type } from '@google/genai';
 import { z } from 'zod';
 
@@ -84,7 +84,7 @@ export async function POST(req: NextRequest) {
   let body: any;
   try { body = await req.json(); } catch { return new Response('Invalid JSON', { status: 400 }); }
 
-  const { message, history, imageBase64, imageMimeType, activeGoalId } = body;
+  const { message, history, imageBase64, imageMimeType, activeGoalId, chatId } = body;
 
   // ── Build student context ──────────────────────────────────────────────────
   const [mindContext, semanticMemories] = await Promise.all([
@@ -232,8 +232,19 @@ Conversation so far:\n${historyText}\nStudent: ${message}`;
                     });
                   }
 
-                  if (!analysis.understood && typeof analysis.gapFound === 'string' && typeof analysis.gapAnswer === 'string' && conceptId) {
-                    await createSingleCard(user.id, conceptId, analysis.gapFound, analysis.gapAnswer, subject, topic);
+                  // Create card regardless of whether conceptId resolved.
+                  // A student can get something wrong on a brand-new topic not yet in ATLAS.
+                  // createSingleCard accepts empty string for conceptId — the card is still useful.
+                  if (!analysis.understood && typeof analysis.gapFound === 'string' && analysis.gapFound.length > 0 && typeof analysis.gapAnswer === 'string' && analysis.gapAnswer.length > 0) {
+                    await createSingleCard(
+                      user.id,
+                      conceptId ?? '',   // empty string = orphan card, still reviewable
+                      analysis.gapFound,
+                      analysis.gapAnswer,
+                      subject,
+                      topic
+                    );
+                    logger.info('MIND → MEMORY: gap card created', { subject, topic, hasConceptId: !!conceptId });
                   }
 
                   await LearningStateEngine.ingestEvent({
@@ -309,26 +320,61 @@ Conversation so far:\n${historyText}\nStudent: ${message}`;
           }
         }
 
-        // ── Persist chat memory (semantic layer) — non‑blocking ─────────────
-        if (fullResponse.length > 50 && message) {
+        // ── Persist chat history and memory — non‑blocking ──────────────────
+        if (message) {
           after(async () => {
             try {
-              const memoryContent = `Student asked: ${message}\nAnswer summary: ${fullResponse.slice(0, 400)}`;
-              const embedding = await getEmbedding(memoryContent);
-              if (embedding?.length) {
-                await supabase.from('chat_memory_embeddings').insert({
-                  user_id: user.id,
-                  content: memoryContent,
-                  embedding,
-                });
+              // Get or create global chat session if chatId not provided
+              let sessionId = chatId;
+              if (!sessionId) {
+                const { data: session } = await supabase
+                  .from('chat_sessions')
+                  .select('id')
+                  .eq('user_id', user.id)
+                  .eq('session_type', 'global')
+                  .order('created_at', { ascending: false })
+                  .limit(1)
+                  .maybeSingle();
+                if (session) {
+                  sessionId = session.id;
+                } else {
+                  const { data: newSession } = await supabase
+                    .from('chat_sessions')
+                    .insert({ user_id: user.id, session_type: 'global', title: 'Cognition OS Main Thread' })
+                    .select('id')
+                    .single();
+                  if (newSession) {
+                    sessionId = newSession.id;
+                  }
+                }
               }
+
+              if (sessionId) {
+                await supabase.from('chat_messages').insert([
+                  { session_id: sessionId, user_id: user.id, role: 'user', content: message },
+                  { session_id: sessionId, user_id: user.id, role: 'assistant', content: fullResponse.slice(0, 4000) },
+                ]);
+              }
+
+              if (fullResponse.length > 50) {
+                const memoryContent = `Student asked: ${message}\nAnswer summary: ${fullResponse.slice(0, 400)}`;
+                const embedding = await getEmbedding(memoryContent);
+                if (embedding?.length) {
+                  await supabase.from('chat_memory_embeddings').insert({
+                    user_id: user.id,
+                    content: memoryContent,
+                    embedding,
+                  });
+                }
+              }
+
               await logPulseSignal(user.id, 'chat_interaction', {
                 messageLength: message.length,
                 responseLength: fullResponse.length,
                 intent: functionCall?.name || 'general',
               });
             } catch (err) {
-              logger.warn('Chat memory persist failed', err);
+              logger.warn('Chat persistence or memory failed', err);
             }
           });
         }

@@ -18,5 +18,5 @@ export default async function RevisionPage() {
     getRevisionStats(user.id),
   ]);
 
-  return <RevisionDashboard initialCards={cards} initialStats={stats} />;
+  return <RevisionDashboard data={{ due: cards, stats }} />;
 }
