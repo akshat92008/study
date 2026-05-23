@@ -2,6 +2,7 @@ import { NextRequest } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { generateJSON } from '@/lib/ai/gemini';
 import { z } from 'zod';
+import { logger } from '@/lib/utils/logger';
 
 // We ask Gemini to turn their conversational chat into structured data
 const SetupSchema = z.object({
@@ -58,18 +59,11 @@ export async function POST(req: NextRequest) {
 
     return new Response(JSON.stringify(result), { headers: { 'Content-Type': 'application/json' } });
 
-  } catch (err: any) {
-    const fs = require('fs');
-    const path = require('path');
-    const errorDetails = {
-      message: err.message,
-      stack: err.stack,
-      details: err.details,
-      hint: err.hint,
-      timestamp: new Date().toISOString(),
-    };
-    fs.writeFileSync(path.join(process.cwd(), 'scratch/error.log'), JSON.stringify(errorDetails, null, 2));
-    console.error(err);
-    return new Response(JSON.stringify({ reply: "I had a glitch processing that. Could you repeat it?", isComplete: false }), { status: 500 });
-  }
+   } catch (err: any) {
+     logger.error('Setup route failed', err);
+     return new Response(
+       JSON.stringify({ reply: "I had a glitch processing that. Could you repeat it?", isComplete: false }),
+       { status: 500 }
+     );
+   }
 }

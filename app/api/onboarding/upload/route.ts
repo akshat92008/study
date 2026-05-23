@@ -4,7 +4,7 @@ import { genai } from '@/lib/ai/gemini';
 import { logger } from '@/lib/utils/logger';
 import { z } from 'zod';
 
-const MAX_FILE_SIZE = Infinity; // Unlimited limit
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 const ALLOWED_MIME_TYPES = new Set([
   'application/pdf', 
   'text/plain', 
