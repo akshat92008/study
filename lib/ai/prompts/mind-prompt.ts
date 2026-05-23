@@ -23,6 +23,46 @@ export interface MINDContext {
   knownAnalogies: string[];
 }
 
+export function getEmotionalAdaptationBlock(emotionalState: string): string {
+  const adaptations: Record<string, string> = {
+    focused: `
+STUDENT STATE: FOCUSED AND IN FLOW
+- Push them. They can handle harder material right now.
+- Ask tougher follow-up questions than normal.
+- Introduce a more challenging variant of any problem they solve.
+- Minimal hand-holding. They're sharp.
+- End with the hardest exam-style question in this topic area.`,
+
+    neutral: `
+STUDENT STATE: NEUTRAL
+- Standard Socratic pace.
+- Mix explanation with challenge.
+- Check comprehension once per concept before moving on.`,
+
+    frustrated: `
+STUDENT STATE: SHOWING FRUSTRATION SIGNALS
+- Slow down immediately. One concept at a time.
+- Break the current concept into the smallest possible steps.
+- Acknowledge that this topic is genuinely difficult — do not dismiss the frustration.
+- Use an analogy they haven't heard before. Check their uploaded materials for context.
+- Do NOT give them a challenge question right now. First restore confidence with something they can get right.
+- Explicitly say: "Let's approach this differently."`,
+
+    overwhelmed: `
+STUDENT STATE: OVERWHELMED — COGNITIVE LOAD CRITICAL
+- STOP teaching new material immediately.
+- Your only job right now is to reduce anxiety and restore a sense of control.
+- Pick ONE concept they already partially understand. Help them master just that.
+- Use extremely simple language. Short sentences only.
+- Remind them of something they recently got right. Pull from their mastery data.
+- Suggest a 10-minute break if they have been studying for more than 90 minutes.
+- Never give a practice question when they are in this state.
+- End your response with ONE concrete, small action they can do in the next 5 minutes.`
+  };
+
+  return adaptations[emotionalState] || adaptations['neutral'];
+}
+
 export function getMINDSystemPrompt(ctx: MINDContext): string {
   const daysToExam = ctx.profile.examDate
     ? Math.ceil((new Date(ctx.profile.examDate).getTime() - Date.now()) / (1000 * 60 * 60 * 24))
@@ -30,6 +70,7 @@ export function getMINDSystemPrompt(ctx: MINDContext): string {
 
   const weakList = ctx.weakConcepts.slice(0, 5).map(c => `${c.name} (${c.mastery})`).join(', ') || 'None identified yet';
   const mistakeList = ctx.recentMistakes.slice(0, 3).map(m => `${m.chapter} — ${m.category}`).join('; ') || 'None recorded';
+  const emotionalBlock = getEmotionalAdaptationBlock(ctx.emotionalState);
 
   return `You are MIND — the AI core of Cognition OS. You are the most capable study companion ever built. You know this specific student completely.
 
@@ -183,9 +224,7 @@ You are the senior who cracked this exam and is now mentoring this student perso
 
 When the student is anxious or overwhelmed: respond with REAL DATA first ("Your last 3 sessions show improvement in Biology — 54% → 61% → 71%. The trajectory is working.") then adjust the tone. Never generic motivation.
 
-${ctx.emotionalState === 'overwhelmed' ? 'CURRENT STATE: Student is overwhelmed. Reduce complexity, increase reassurance, shorten responses, make next step extremely simple.' : ''}
-${ctx.emotionalState === 'frustrated' ? 'CURRENT STATE: Student is frustrated. Be extra direct, skip preamble, solve the specific thing blocking them.' : ''}
-${ctx.emotionalState === 'focused' ? 'CURRENT STATE: Student is focused and ready. Push harder. Use this window for the deepest material.' : ''}
+${emotionalBlock}
 `;
 }
 

@@ -1,51 +1,103 @@
-# Cognition OS — Personal Deployment Checklist
+# Cognition OS — Production Deployment Checklist
 
-## Step 1: Database Migrations (Run in Supabase SQL Editor in order)
-- [ ] Run 001_init.sql
-- [ ] Run 002_phase2.sql
-- [ ] Run 003_autopsy_pulse.sql
-- [ ] Run 004_fix_exam_defaults.sql
-- [ ] Run 005_production_hardening.sql
-- [ ] Run 005_rls_policies.sql
-- [ ] Run 006_rate_limiting.sql
-- [ ] Run 007_enforce_security.sql
-- [ ] Run 008_production_blockers.sql
-- [ ] Run 009_vector_search_sql_fix.sql
-- [ ] Run 010_god_mode_sql.sql
-- [ ] Run 011_global_chat_events.sql
-- [ ] Run 012_rls_deploy.sql (NEW — from Module 6)
-- [ ] Add unique constraint: ALTER TABLE performance_snapshots ADD CONSTRAINT perf_snap_user_date UNIQUE (user_id, date);
+Follow this exact 10-step sequence to go from the current state to a production-ready release. Do not skip or reorder steps.
 
-## Step 2: Supabase Configuration
-- [ ] Enable pgvector extension: Dashboard → Database → Extensions → vector → Enable
-- [ ] Confirm match_concepts RPC function exists (from migration 009 or 010)
-- [ ] Enable Realtime on student_events table (if using Supabase Realtime event bus)
+---
 
-## Step 3: Environment Variables (.env.local)
-- [ ] NEXT_PUBLIC_SUPABASE_URL=
-- [ ] NEXT_PUBLIC_SUPABASE_ANON_KEY=
-- [ ] SUPABASE_SERVICE_ROLE_KEY= (for cron route)
-- [ ] GEMINI_API_KEY=
-- [ ] CRON_SECRET= (random 32-char string)
+### Step 1 — Environment Setup
+- [ ] Set every required environment variable in `.env.local` and in your Vercel project settings:
+  - `NEXT_PUBLIC_SUPABASE_URL`
+  - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+  - `SUPABASE_SERVICE_ROLE_KEY`
+  - `GEMINI_API_KEY`
+  - `STRIPE_SECRET_KEY`
+  - `STRIPE_WEBHOOK_SECRET`
+  - `STRIPE_PRO_PRICE_ID`
+  - `NEXT_PUBLIC_APP_URL`
+- [ ] Verify validation locally:
+  - Run the application locally (`npm run dev`) or build it (`npm run build`).
+  - Confirm the console output has no `validateEnvironment()` crashes or missing variable warnings.
 
-## Step 4: Vercel Deployment
-- [ ] Push to GitHub
-- [ ] Connect repo to Vercel
-- [ ] Add all env vars in Vercel dashboard
-- [ ] Confirm vercel.json has the cron schedule
-- [ ] After deploy, test cron manually: GET /api/cron/daily-synthesis with Authorization: Bearer [CRON_SECRET]
+---
 
-## Step 5: First Session Test
-- [ ] Sign up → complete onboarding → upload one PDF → confirm ATLAS has concepts seeded
-- [ ] Chat "teach me [topic]" → confirm MIND asks a question back (not just answers directly)
-- [ ] Complete a task → confirm streak increments
-- [ ] Upload a mock test PDF to autopsy → confirm score bridge appears
-- [ ] Navigate to ATLAS → confirm concept nodes visible with mastery colors
-- [ ] Navigate to MEMORY → confirm cards exist (generated from upload)
-- [ ] Come back after 8 hours → confirm morning briefing appears in chat
+### Step 2 — Database Security & RLS Enforcement
+- [ ] Run migration `026_rls_verification.sql` in the Supabase SQL Editor.
+- [ ] Verify that RLS is active on all critical tables. Execute the following verification query and confirm it returns **zero rows**:
+  ```sql
+  SELECT tablename, rowsecurity
+  FROM pg_tables
+  WHERE schemaname = 'public'
+    AND tablename IN (
+      'profiles','concepts','revision_cards','study_tasks',
+      'mock_autopsies','mistakes','materials','chat_memories',
+      'performance_snapshots','pulse_signals'
+    )
+    AND rowsecurity = false;
+  ```
+- [ ] Confirm row security is force-enabled on `profiles` to bypass RLS for service_role processes.
 
-## Known Issues to Watch
-- If orchestrator_chats is empty on first load, the welcome message seeds correctly — verify in Supabase
-- PULSE timing signals are low-confidence (0.4) — this is intentional, single signals don't change state
-- expandChapterViaMind runs async — ATLAS may show 1 concept per chapter for 10-30 seconds on first load
-- generateMorningBriefing can fail silently — briefing route has catch and returns default string
+---
+
+### Step 3 — Deploy & Verify FIX 001 (History Format)
+- [ ] Deploy the history format changes to Vercel/Staging.
+- [ ] Open the chat interface and have a **10-turn conversation** with the tutor.
+- [ ] Confirm the AI references and builds upon earlier conversation turns correctly without context loss or repetition.
+
+---
+
+### Step 4 — Deploy & Verify FIX 002 (Cross-Session Memory)
+- [ ] Confirm the `chat_memories` table exists in Supabase. (If not, run migration `024_match_chat_memory.sql` first).
+- [ ] Start a conversation, close the tab/browser, reopen, and ask the Socratic tutor about concepts discussed in the previous session.
+- [ ] Verify that the past context is retrieved from `chat_memories` and used by the tutor.
+
+---
+
+### Step 5 — Deploy & Verify FIX 004 (ATLAS Syllabus Expansion)
+- [ ] Deploy the dynamic syllabus expansion logic.
+- [ ] Sign up with a new account and choose **NEET** as the exam type. Check the `concepts` table in Supabase to confirm **200+ rows** have been seeded across Physics, Chemistry, and Biology.
+- [ ] Repeat the test using **CFA** as the exam type, and verify concepts are seeded across all CFA modules.
+
+---
+
+### Step 6 — Deploy & Verify FIX 008 (Stripe Checkout & Billing)
+- [ ] Configure Stripe in **Test Mode**.
+- [ ] Initiate a Pro Upgrade from the CommandCenter UI and complete a test checkout.
+- [ ] Verify the user's `subscription_status` column in Supabase flips to `pro`.
+- [ ] Verify that the autopsy rate limit is successfully lifted for the upgraded user.
+
+---
+
+### Step 7 — Deploy Remaining P1 Fixes
+- [ ] Package and deploy the remaining P1 updates together in a single pull request:
+  - **FIX 005**: MIND → ATLAS Write-Back (unconditional concept mentions extraction).
+  - **FIX 006**: Tone switching emotional adaptation based on PULSE data.
+  - **FIX 007**: Auto-card generation at onboarding completion.
+  - **FIX 009**: Batched concurrent cron daily-synthesis processor.
+  - **FIX 010**: Socratic Session card rendered at the top of the chat interface.
+
+---
+
+### Step 8 — Set Up Stripe Webhooks in Production
+- [ ] Access the Stripe Dashboard → Webhooks → Add endpoint.
+- [ ] Register your production URL: `https://<your-app-domain>/api/webhooks/stripe`.
+- [ ] Select events: `checkout.session.completed`, `customer.subscription.updated`, and `customer.subscription.deleted`.
+- [ ] Copy the signing secret (`whsec_...`) and save it as `STRIPE_WEBHOOK_SECRET` in your Vercel project settings.
+
+---
+
+### Step 9 — End-to-End Student Journey Audit
+Test the entire learning habit loop end-to-end:
+1. **New Signup**: Register a new student profile.
+2. **Onboarding**: Complete onboarding flow, quiz calibration, and optional document upload.
+3. **Magic Moment**: Land on dashboard and confirm the Welcome Overlay fades out to reveal the active ATLAS graph.
+4. **Daily Habit Loop**: Socratic Session card appears at the top of the chat interface.
+5. **Start Session**: Chat triggers MIND Socratic dialogue.
+6. **Mastery Updates**: Socratic conversation ends, writing back concept mastery updates to ATLAS.
+7. **Memory Seeding**: Spaced repetition flashcards are automatically generated in MEMORY.
+8. **Next Day Replan**: Tasks and study goals adapt for the following day.
+
+---
+
+### Step 10 — Production Monitoring & Alerts
+- [ ] Connect a monitoring tool (such as Sentry or Logtail) to capture runtime errors.
+- [ ] Configure slack/email alerts for any critical `logger.error` alerts or failed AI calls at scale.

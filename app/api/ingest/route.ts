@@ -5,7 +5,7 @@ import { GoogleGenAI } from '@google/genai';
 import { logger, safeError } from '@/lib/utils/logger';
 import { rateLimit } from '@/lib/utils/rate-limit';
 import { checkUsageLimit } from '@/lib/utils/billing';
-import pdfParse from 'pdf-parse/lib/pdf-parse';
+import pdfParse from 'pdf-parse';
 
 export async function POST(request: Request) {
   try {
@@ -34,38 +34,58 @@ export async function POST(request: Request) {
     const mimeType = file.type || 'application/pdf';
     let text = '';
 
-    // 1. Safely buffer the file
-    const arrayBuffer = await file.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-
-    // 2. Extraction Pipeline
     if (mimeType === 'application/pdf') {
-      // PDF PARSE: Fast, token-free local extraction for large files/textbooks
-      logger.info(`Extracting PDF locally via pdf-parse: ${title}`);
-      const parsed = await pdfParse(buffer);
-      text = parsed.text;
-      
+      try {
+        const arrayBuffer = await file.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
+        const pdfData = await pdfParse(buffer);
+        text = pdfData.text;
+
+        if (text.length < 100) {
+          return NextResponse.json({
+            error: 'PDF appears to be scanned or image-based. Text extraction failed. Please upload a text-based PDF.'
+          }, { status: 422 });
+        }
+
+        logger.info('PDF parsed successfully', {
+          userId: user.id,
+          pages: pdfData.numpages,
+          textLength: text.length
+        });
+      } catch (err) {
+        return NextResponse.json({
+          error: 'Failed to parse PDF. Please ensure the file is not password-protected.'
+        }, { status: 422 });
+      }
     } else if (mimeType.startsWith('image/')) {
       // GEMINI OCR: Multimodal extraction for photos of notes/OMR sheets
-      logger.info(`Extracting Image via Gemini OCR: ${title}`);
-      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
-      const base64 = buffer.toString('base64');
+      try {
+        const arrayBuffer = await file.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
+        logger.info(`Extracting Image via Gemini OCR: ${title}`);
+        const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+        const base64 = buffer.toString('base64');
 
-      const res = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
-        contents: [{
-          role: 'user',
-          parts: [
-            { inlineData: { mimeType, data: base64 } },
-            { text: 'Extract ALL text content from this image. Preserve headings, lists, and structure. Output strictly the extracted text. Do not add conversational filler.' },
-          ],
-        }],
-      });
-      text = res.text || '';
-      
+        const res = await ai.models.generateContent({
+          model: 'gemini-2.5-flash',
+          contents: [{
+            role: 'user',
+            parts: [
+              { inlineData: { mimeType, data: base64 } },
+              { text: 'Extract ALL text content from this image. Preserve headings, lists, and structure. Output strictly the extracted text. Do not add conversational filler.' },
+            ],
+          }],
+        });
+        text = res.text || '';
+      } catch (err) {
+        return NextResponse.json({
+          error: 'Failed to perform OCR on image.'
+        }, { status: 422 });
+      }
+    } else if (mimeType.startsWith('text/')) {
+      text = await file.text();
     } else {
-      // Standard text/markdown fallback
-      text = buffer.toString('utf-8');
+      return NextResponse.json({ error: 'Unsupported file type for knowledge base.' }, { status: 415 });
     }
 
     if (!text.trim()) {

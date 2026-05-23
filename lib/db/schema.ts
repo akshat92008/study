@@ -80,6 +80,7 @@ export const concepts = pgTable('concepts', {
   topic: text('topic').default(''),
   mastery: masteryEnum('mastery').default('not_started'),
   confidence: confidenceEnum('confidence').default('low'),
+  importance: text('importance').default('core'),
   lastReviewedAt: timestamp('last_reviewed_at'),
   timesReviewed: integer('times_reviewed').default(0),
   timesCorrect: integer('times_correct').default(0),

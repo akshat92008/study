@@ -80,6 +80,97 @@ async function fileToBase64(file: File): Promise<string> {
 
 const IMAGE_MIME_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/heic'];
 
+interface SessionCardProps {
+  day: number;
+  streak: number;
+  focus: string;
+  duration: number;
+  reason: string;
+  onStart: () => void;
+}
+
+function DailySessionCard({ day, streak, focus, duration, reason, onStart }: SessionCardProps) {
+  return (
+    <div style={{
+      background: 'var(--bg-secondary)',
+      border: '1px solid var(--border-subtle)',
+      borderRadius: 'var(--radius-lg)',
+      padding: '20px 24px',
+      marginBottom: '16px'
+    }}>
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: '12px'
+      }}>
+        <span style={{
+          fontSize: '12px',
+          fontWeight: 500,
+          color: 'var(--text-secondary)',
+          letterSpacing: '0.08em'
+        }}>
+          DAY {day}
+        </span>
+        <span style={{
+          fontSize: '12px',
+          fontWeight: 500,
+          color: 'var(--warning)',
+          background: 'rgba(249, 115, 22, 0.12)',
+          padding: '2px 10px',
+          borderRadius: 'var(--radius-md)'
+        }}>
+          🔥 {streak} day streak
+        </span>
+      </div>
+
+      <p style={{
+        fontSize: '11px',
+        color: 'var(--text-tertiary)',
+        marginBottom: '4px',
+        fontWeight: 500,
+        letterSpacing: '0.06em'
+      }}>
+        TODAY'S FOCUS
+      </p>
+
+      <p style={{
+        fontSize: '18px',
+        fontWeight: 500,
+        color: 'var(--text-primary)',
+        marginBottom: '4px'
+      }}>
+        {focus} · {duration} minutes
+      </p>
+
+      <p style={{
+        fontSize: '13px',
+        color: 'var(--text-secondary)',
+        marginBottom: '16px'
+      }}>
+        {reason}
+      </p>
+
+      <button
+        onClick={onStart}
+        style={{
+          width: '100%',
+          padding: '12px',
+          background: 'var(--text-primary)',
+          color: 'var(--bg-primary)',
+          border: 'none',
+          borderRadius: 'var(--radius-md)',
+          fontSize: '14px',
+          fontWeight: 500,
+          cursor: 'pointer'
+        }}
+      >
+        Start Session
+      </button>
+    </div>
+  );
+}
+
 export default function GlobalChat() {
   const {
     chatMessages, activeGoalId, learningGoals,
@@ -89,6 +180,22 @@ export default function GlobalChat() {
   } = useAppStore();
 
   const [chatInput, setChatInput] = useState('');
+  const [sessionCard, setSessionCard] = useState<any>(null);
+
+  useEffect(() => {
+    async function loadSessionCard() {
+      try {
+        const res = await fetch('/api/dashboard/session-card');
+        if (res.ok) {
+          const data = await res.json();
+          setSessionCard(data);
+        }
+      } catch (err) {
+        // Silently fail — don't block chat
+      }
+    }
+    loadSessionCard();
+  }, []);
   const [isStreaming, setIsStreaming] = useState(false);
   const [streamingText, setStreamingText] = useState('');
   const [dragging, setDragging] = useState(false);
@@ -412,6 +519,21 @@ export default function GlobalChat() {
 
       {/* Messages */}
       <div style={{ flex: 1, overflowY: 'auto', padding: 'var(--sp-4)', display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
+        {sessionCard && chatMessages.length === 0 && (
+          <DailySessionCard
+            day={sessionCard.dayNumber}
+            streak={sessionCard.streakDays}
+            focus={sessionCard.focusTopic}
+            duration={sessionCard.durationMinutes}
+            reason={sessionCard.reason}
+            onStart={() => {
+              clearChat();
+              handleSendMessage(`Start today's session on ${sessionCard.focusTopic}`);
+              setSessionCard(null); // Hide card once started
+            }}
+          />
+        )}
+
         {chatMessages.length === 0 && !isStreaming ? (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-3)', marginTop: 'var(--sp-6)' }}>
             <div style={{ textAlign: 'center', marginBottom: 'var(--sp-4)' }}>

@@ -429,7 +429,7 @@ export default function OnboardingFlow() {
                   This is where you stand today. Your ATLAS graph has been seeded. <br />Your Day 1 mission is locked and waiting.
                 </p>
 
-                <Button size="lg" onClick={() => router.push('/cognition?magic=true')} style={{ background: 'linear-gradient(135deg, var(--accent-blue), var(--accent-cyan))', color: 'black', padding: '20px 40px', fontSize: 'var(--fs-lg)', fontWeight: 900, boxShadow: '0 10px 30px rgba(0, 240, 255, 0.3)' }}>
+                <Button size="lg" onClick={() => router.push('/cognition?magic=true&firstTime=true')} style={{ background: 'linear-gradient(135deg, var(--accent-blue), var(--accent-cyan))', color: 'black', padding: '20px 40px', fontSize: 'var(--fs-lg)', fontWeight: 900, boxShadow: '0 10px 30px rgba(0, 240, 255, 0.3)' }}>
                   See Your Knowledge Graph <ArrowRight size={24} style={{ marginLeft: 8 }} />
                 </Button>
               </div>

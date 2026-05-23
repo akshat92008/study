@@ -76,6 +76,15 @@ export default function DashboardPage() {
     loadAutopsy();
   }, []);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('magic') === 'true') {
+        setActiveDrawer('cognition');
+      }
+    }
+  }, [setActiveDrawer]);
+
   // 2. Mock Autopsy Ingest within Drawer
   const handleMockUpload = async (e: React.FormEvent) => {
     e.preventDefault();

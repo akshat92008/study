@@ -1,55 +1,46 @@
 import { createClient } from '@/lib/supabase/server';
 import { getEmbedding } from './rag-engine';
 
-/**
- * Recursively splits text into overlapping chunks, respecting paragraphs and sentences.
- */
-function recursiveChunkText(text: string, maxTokens = 1000, overlap = 200): string[] {
-  // Rough approximation: 1 token ~ 4 characters
-  const maxChars = maxTokens * 4;
-  const overlapChars = overlap * 4;
+function buildSemanticChunks(text: string, chunkSize = 800, overlap = 150): string[] {
   const chunks: string[] = [];
-  
-  if (text.length <= maxChars) return [text];
 
-  const separators = ['\n\n', '\n', '. ', '? ', '! ', ' '];
-  
-  let start = 0;
-  while (start < text.length) {
-    let end = start + maxChars;
-    
-    // If we're at the end of the text, just grab the rest
-    if (end >= text.length) {
-      chunks.push(text.slice(start));
-      break;
-    }
+  // Split on natural boundaries: headings, double newlines, then sentences
+  const sections = text.split(/\n{2,}|\r\n{2,}/);
+  let currentChunk = '';
 
-    // Try to find a logical break point near the end limit
-    let bestBreak = -1;
-    for (const sep of separators) {
-      const lastIndex = text.lastIndexOf(sep, end);
-      // Ensure the break isn't too far back (e.g., losing more than 30% of the chunk)
-      if (lastIndex !== -1 && lastIndex > start + (maxChars * 0.7)) {
-        bestBreak = lastIndex + sep.length;
-        break;
+  for (const section of sections) {
+    const trimmed = section.trim();
+    if (!trimmed) continue;
+
+    if (currentChunk.length + trimmed.length <= chunkSize) {
+      currentChunk += (currentChunk ? '\n\n' : '') + trimmed;
+    } else {
+      if (currentChunk) {
+        chunks.push(currentChunk);
+        // Overlap: carry the last 'overlap' characters into the next chunk
+        // so that concepts spanning chunk boundaries are retrievable
+        currentChunk = currentChunk.slice(-overlap) + '\n\n' + trimmed;
+      } else {
+        // Section itself is larger than chunkSize — split by sentences
+        const sentences = trimmed.match(/[^.!?]+[.!?]+/g) || [trimmed];
+        let sentenceChunk = '';
+        for (const sentence of sentences) {
+          if (sentenceChunk.length + sentence.length <= chunkSize) {
+            sentenceChunk += sentence;
+          } else {
+            if (sentenceChunk) chunks.push(sentenceChunk.trim());
+            sentenceChunk = currentChunk.slice(-overlap) + sentence;
+          }
+        }
+        if (sentenceChunk) currentChunk = sentenceChunk;
       }
     }
-
-    // Fallback if no logical separator found
-    if (bestBreak === -1) bestBreak = end;
-
-    const chunk = text.slice(start, bestBreak).trim();
-    if (chunk.length > 30) chunks.push(chunk); // Ignore tiny fragments
-    
-    // Retreat slightly to create overlap
-    start = bestBreak - overlapChars;
-    if (start < 0) start = 0; // Boundary check
-    
-    // Ensure we're moving forward even if overlap is large
-    if (start >= bestBreak) start = bestBreak; 
   }
 
-  return chunks;
+  if (currentChunk.trim()) chunks.push(currentChunk.trim());
+
+  // Filter out chunks that are too short to be meaningful
+  return chunks.filter(c => c.length > 100);
 }
 
 export async function processDocumentIntoMemory(userId: string, fileData: { title: string, text: string }) {
@@ -64,8 +55,8 @@ export async function processDocumentIntoMemory(userId: string, fileData: { titl
 
   if (matErr || !material) throw new Error('Could not create material record.');
 
-  // Advanced learning-aware chunking (1000 tokens, 200 token overlap)
-  const rawChunks = recursiveChunkText(fileData.text, 1000, 200);
+  // Advanced semantic chunking
+  const rawChunks = buildSemanticChunks(fileData.text, 800, 150);
   let processedCount = 0;
 
   for (const chunk of rawChunks) {

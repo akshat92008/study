@@ -9,6 +9,7 @@ import { Brain, RefreshCw, Sparkles } from 'lucide-react';
 import KnowledgeMap from './KnowledgeMap';
 import InteractiveGraph from './InteractiveGraph';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useSearchParams } from 'next/navigation';
 
 interface Props {
   data: any; // CognitionGraph data from server
@@ -24,17 +25,29 @@ export default function CognitionDashboard({ data }: Props) {
   const [generatingId, setGeneratingId] = useState<string | null>(null);
   const [generatedIds, setGeneratedIds] = useState<Set<string>>(new Set());
   const [showMagic, setShowMagic] = useState(false);
+  const [showWelcomeOverlay, setShowWelcomeOverlay] = useState(false);
+
+  const searchParams = useSearchParams();
+  const isMagicMoment = searchParams.get('magic') === 'true';
+  const isFirstTime = searchParams.get('firstTime') === 'true';
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const params = new URLSearchParams(window.location.search);
-      if (params.get('magic') === 'true') {
+    if (isMagicMoment) {
+      if (isFirstTime) {
+        // Show a welcome overlay for 3 seconds, then reveal the graph
+        setShowWelcomeOverlay(true);
+        setTimeout(() => setShowWelcomeOverlay(false), 3000);
+      } else {
         setShowMagic(true);
         setTimeout(() => setShowMagic(false), 3500); // 3.5s magic overlay reveal
+      }
+
+      // Clear query params to keep URL clean
+      if (typeof window !== 'undefined') {
         window.history.replaceState({}, document.title, window.location.pathname);
       }
     }
-  }, []);
+  }, [isMagicMoment, isFirstTime]);
 
   if (!data) return <p style={{ color: 'var(--text-tertiary)' }}>Loading cognition graph...</p>;
 
@@ -91,6 +104,27 @@ export default function CognitionDashboard({ data }: Props) {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {showWelcomeOverlay && (
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'var(--color-background-primary, var(--bg-primary, #090b0f))',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 100,
+          animation: 'fadeOut 0.5s ease forwards 2.5s'
+        }}>
+          <p style={{ fontSize: '32px', fontWeight: 500, marginBottom: '8px', color: 'var(--text-primary, white)' }}>
+            Your knowledge map is ready.
+          </p>
+          <p style={{ fontSize: '16px', color: 'var(--color-text-secondary, var(--text-secondary, #9ca3af))' }}>
+            This is what you know. This is what we need to build.
+          </p>
+        </div>
+      )}
       {/* Mastery Legend + Stats Banner */}
       <div style={{ padding: 'var(--sp-4) var(--sp-6)', borderBottom: '1px solid var(--border-subtle)', display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)' }}>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--sp-2)' }}>

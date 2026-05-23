@@ -20,6 +20,8 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
     memoryDueCount, setMemoryDueCount, autopsyLossPoints, setAutopsyLossPoints, addToast
   } = useAppStore();
 
+  const isPro = profile?.subscription_status === 'pro';
+
   useEffect(() => {
     if (tasks) {
       setActiveTasksList(tasks);
@@ -200,6 +202,38 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
               <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-black)', color: 'var(--warning)' }}>{profile?.streak_days || 0}D</span>
             </div>
           </div>
+
+          {/* Upgrade to Pro Button */}
+          {!isPro && (
+            <button
+              onClick={async () => {
+                try {
+                  const res = await fetch('/api/billing/create-checkout', { method: 'POST' });
+                  const { url, error } = await res.json();
+                  if (url) {
+                    window.location.href = url;
+                  } else if (error) {
+                    addToast?.(error, 'error');
+                  }
+                } catch (err) {
+                  addToast?.('Failed to initiate checkout', 'error');
+                }
+              }}
+              style={{
+                background: 'linear-gradient(135deg, #0055ff, #00f0ff)',
+                color: 'white',
+                fontWeight: 700,
+                padding: '12px 24px',
+                borderRadius: 'var(--radius-md)',
+                border: 'none',
+                cursor: 'pointer',
+                width: '100%',
+                boxShadow: '0 4px 14px rgba(0, 85, 255, 0.3)',
+              }}
+            >
+              Upgrade to Pro — ₹299/mo
+            </button>
+          )}
 
           {/* THE "ONE CARD" APPROACH */}
           {activeSessionTask ? (

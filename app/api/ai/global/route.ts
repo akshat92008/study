@@ -154,14 +154,90 @@ function buildGeminiContents(
   return contents;
 }
 
+async function extractAndUpdateMasteryFromResponse(
+  userId: string,
+  userMessage: string,
+  aiResponse: string,
+  mindContext: any
+): Promise<void> {
+  try {
+    const ExtractionSchema = z.object({
+      conceptsAddressed: z.array(z.object({
+        subject: z.string(),
+        chapter: z.string(),
+        studentDemonstrated: z.enum(['strong_understanding', 'partial_understanding', 'confusion', 'not_assessed'])
+      }))
+    });
+
+    const extractionPrompt = `
+Student message: "${userMessage.slice(0, 300)}"
+AI response summary: "${aiResponse.slice(0, 500)}"
+Student's exam: ${mindContext.profile.examType}
+
+From this exchange, identify which specific subject chapters were addressed and whether the student demonstrated understanding, confusion, or neither.
+
+Only include chapters where the student's understanding level can be reasonably inferred.
+Return JSON only.`;
+
+    const extraction = await generateJSON<z.infer<typeof ExtractionSchema>>(
+      'flash',
+      'You are a learning analytics system. Extract concept mastery signals from conversations. Return JSON only.',
+      extractionPrompt,
+      ExtractionSchema,
+      0.1
+    );
+
+    if (!extraction.conceptsAddressed.length) return;
+
+    const { resolveConceptByName } = await import('@/lib/engines/concept-resolver');
+    const { updateConceptState } = await import('@/lib/engines/cognition-graph');
+
+    for (const concept of extraction.conceptsAddressed) {
+      if (concept.studentDemonstrated === 'not_assessed') continue;
+
+      const conceptId = await resolveConceptByName(userId, concept.subject, concept.chapter);
+      if (!conceptId) continue;
+
+      const correct = concept.studentDemonstrated === 'strong_understanding';
+      await updateConceptState(conceptId, correct, 0);
+
+      logger.info('MIND → ATLAS: mastery updated from conversation', {
+        chapter: concept.chapter,
+        demonstrated: concept.studentDemonstrated
+      });
+    }
+  } catch (err) {
+    // Non-blocking — never crash the chat for analytics
+    logger.warn('MIND→ATLAS extraction failed silently', { userId });
+  }
+}
+
 export async function POST(req: NextRequest) {
   try {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return new Response('Unauthorized', { status: 401 });
 
-    const isAllowed = await rateLimit(`global-${user.id}`, 60, 60 * 60 * 1000);
-    if (!isAllowed) return new Response('Rate limit exceeded. Please wait before sending more messages.', { status: 429 });
+    const { data: profile } = await supabase.from('profiles').select('subscription_status').eq('id', user.id).single();
+
+    const { rateLimit: rl } = await import('@/lib/utils/rate-limit');
+
+    // Free users: 50 messages/day. Pro users: 500/day.
+    const isPro = profile?.subscription_status === 'pro';
+    const chatLimit = isPro ? 500 : 50;
+    const windowMs = 24 * 60 * 60 * 1000; // 24 hours
+
+    const rateLimitKey = `global-chat-${user.id}`;
+    const allowed = await rl(rateLimitKey, chatLimit, windowMs);
+
+    if (!allowed) {
+      return new Response(
+        isPro
+          ? 'Daily message limit reached (500). Resets at midnight.'
+          : 'Free tier limit reached (50 messages/day). Upgrade to Pro for unlimited access.',
+        { status: 429 }
+      );
+    }
 
     const { message, history, activeGoalId, imageBase64, imageMimeType } = await req.json();
 
@@ -396,6 +472,9 @@ Mastery: ${mindContext.masteryStats.masteryPercent}% (${mindContext.masteryStats
     after(async () => {
       const responseText = await streamDonePromise;
       if (responseText.trim().length > 50) {
+        // Run the mastery extractor unconditionally on every streamed response
+        await extractAndUpdateMasteryFromResponse(user.id, message, responseText, mindContext);
+
         try {
           const analysisPrompt = `Analyze this AI tutor exchange. Did the student discuss a specific academic concept?\nExchange:\nStudent: ${message}\nTutor: ${responseText.slice(0, 2000)}\nReturn JSON: { "conceptDiscussed": boolean, "subject": string | null, "conceptName": string | null, "understandingGained": boolean, "gapFound": string | null, "gapAnswer": string | null }`;
           const analysis = await generateJSON<any>('flash', 'You are a learning diagnostic engine.', analysisPrompt);
