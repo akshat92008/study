@@ -35,8 +35,9 @@ export async function generateDailyPlan(userId: string, date: string) {
   // 2. Pre-process Data for LLM Context
   const profile = profileRes.data;
   const examType = profile?.exam_type || 'NEET';
-  const examConfig = getExamConfig(examType);
-  const subjects = examConfig.subjects.join(', ');
+  const { getUserSyllabus } = await import('@/lib/engines/atlas-expansion');
+  const userSyllabus = await getUserSyllabus(userId, examType);
+  const subjects = userSyllabus.subjects.join(', ');
 
   const weakConcepts = (conceptsRes.data || []).sort((a, b) => (b.forgetting_probability || 0) - (a.forgetting_probability || 0)).slice(0, 10);
   const recentMistakes = mistakesRes.data || [];

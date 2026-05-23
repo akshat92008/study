@@ -23,10 +23,18 @@ const CATEGORIES = [
 export default function MistakeDashboard({ data }: { data: any }) {
   const [showForm, setShowForm] = useState(false);
   
-  const { mistakes = [], patterns = [], totalMarksLost = 0, examType = 'General' } = data || {};
+  const { mistakes = [], patterns = [], totalMarksLost = 0, examType = 'General', syllabus } = data || {};
   const examConfig = getExamConfig(examType); // Dynamically load the user's exam config!
   
-  const [subject, setSubject] = useState(examConfig.subjects[0] || 'General');
+  const subjects = syllabus && Object.keys(syllabus).length > 0
+    ? Object.keys(syllabus)
+    : examConfig.subjects;
+
+  const chaptersMap = syllabus && Object.keys(syllabus).length > 0
+    ? syllabus
+    : examConfig.chapters;
+
+  const [subject, setSubject] = useState(subjects[0] || 'General');
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -74,13 +82,13 @@ export default function MistakeDashboard({ data }: { data: any }) {
             <div>
               <label style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)', display: 'block', marginBottom: 'var(--sp-1)' }}>Subject</label>
               <select name="subject" value={subject} onChange={(e) => setSubject(e.target.value)} style={{ width: '100%', padding: 'var(--sp-2) var(--sp-3)', background: 'var(--bg-primary)', color: 'var(--text-primary)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)' }}>
-                {examConfig.subjects.map(s => <option key={s} value={s}>{s}</option>)}
+                {subjects.map(s => <option key={s} value={s}>{s}</option>)}
               </select>
             </div>
             <div>
               <label style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)', display: 'block', marginBottom: 'var(--sp-1)' }}>Chapter</label>
               <select name="chapter" style={{ width: '100%', padding: 'var(--sp-2) var(--sp-3)', background: 'var(--bg-primary)', color: 'var(--text-primary)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)' }}>
-                {(examConfig.chapters[subject] || []).map((c: string) => <option key={c} value={c}>{c}</option>)}
+                {(chaptersMap[subject] || []).map((c: string) => <option key={c} value={c}>{c}</option>)}
               </select>
             </div>
             <div>

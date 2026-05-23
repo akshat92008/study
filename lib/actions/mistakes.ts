@@ -24,7 +24,32 @@ export async function getMistakeData() {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return null;
-    return getMistakeAnalytics(user.id);
+    
+    const analytics = await getMistakeAnalytics(user.id);
+    if (!analytics) return null;
+
+    // Get all unique subjects and chapters for this user from concepts
+    const { data: concepts } = await supabase
+      .from('concepts')
+      .select('subject, chapter')
+      .eq('user_id', user.id);
+
+    const subjectsAndChapters: Record<string, string[]> = {};
+    if (concepts) {
+      concepts.forEach((c: any) => {
+        if (!subjectsAndChapters[c.subject]) {
+          subjectsAndChapters[c.subject] = [];
+        }
+        if (!subjectsAndChapters[c.subject].includes(c.chapter)) {
+          subjectsAndChapters[c.subject].push(c.chapter);
+        }
+      });
+    }
+
+    return {
+      ...analytics,
+      syllabus: subjectsAndChapters
+    };
   } catch (err) {
     logger.error('Failed to get mistake data', err);
     return null;

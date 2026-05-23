@@ -61,7 +61,10 @@ export async function processMockAutopsy(
   const negativeMarks = customScoring?.negativeMarks ?? examConfig.negativeMarks;
   
   const supabase = await createClient();
-  const subjectList = examConfig.subjects.join(', ');
+  
+  const { getUserSyllabus } = await import('@/lib/engines/atlas-expansion');
+  const userSyllabus = await getUserSyllabus(userId, examType);
+  const subjectList = userSyllabus.subjects.join(', ');
 
   const masterPrompt = `
     You are an elite ${examType} grading and diagnostic engine. 

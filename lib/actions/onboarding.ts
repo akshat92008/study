@@ -118,14 +118,18 @@ export async function completeOnboarding(
 
   // 2. Seed ATLAS — first 6 chapters per subject immediately, rest lazy
   const { seedConceptsForSubject } = await import('@/lib/engines/cognition-graph');
-  const { getExamConfig } = await import('@/lib/utils/constants');
+  const { getSyllabusForExam, generateSyllabusWithAI } = await import('@/lib/engines/atlas-expansion');
   
-  const config = getExamConfig(examType);
+  let syllabus = getSyllabusForExam(examType);
+  if (Object.keys(syllabus).length === 0) {
+    syllabus = await generateSyllabusWithAI(examType);
+  }
+
   let totalSeeded = 0;
   const SEED_IMMEDIATELY = 6; // chapters per subject seeded now, rest loads lazily on demand
 
-  for (const subject of config.subjects) {
-    const allChapters = config.chapters[subject] || ['Foundations', 'Core Concepts', 'Advanced Applications'];
+  for (const subject of Object.keys(syllabus)) {
+    const allChapters = syllabus[subject] || ['Foundations', 'Core Concepts', 'Advanced Applications'];
     // Seed the first N chapters now so the student sees a real graph on Day 1
     const priorityChapters = allChapters.slice(0, SEED_IMMEDIATELY);
     if (priorityChapters.length > 0) {
@@ -146,7 +150,7 @@ export async function completeOnboarding(
   if (quizResults && quizResults.length > 0) {
     const { resolveConceptByName } = await import('@/lib/engines/concept-resolver');
     for (const result of quizResults) {
-      const conceptId = await resolveConceptByName(userId, config.subjects[0] || 'General', result.chapter);
+      const conceptId = await resolveConceptByName(userId, Object.keys(syllabus)[0] || 'General', result.chapter);
       if (conceptId) {
         // Correct = Proficient (Green), Incorrect = Exposed (Red)
         await supabase.from('concepts').update({

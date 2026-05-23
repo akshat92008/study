@@ -115,7 +115,10 @@ export async function seedFullSyllabusForUser(
   const supabase = await createClient();
 
   // Get the syllabus for this exam type
-  const syllabusMap = getSyllabusForExam(examType);
+  let syllabusMap = getSyllabusForExam(examType);
+  if (Object.keys(syllabusMap).length === 0) {
+    syllabusMap = await generateSyllabusWithAI(examType);
+  }
 
   for (const subject of subjects) {
     const chapters = syllabusMap[subject] || [];
@@ -160,6 +163,48 @@ export async function seedFullSyllabusForUser(
   logger.info('Full syllabus seeded', { userId, examType, subjects });
 }
 
+export async function getUserSyllabus(
+  userId: string,
+  examType: string
+): Promise<{ subjects: string[]; chapters: Record<string, string[]> }> {
+  const known = getSyllabusForExam(examType);
+  if (Object.keys(known).length > 0) {
+    return {
+      subjects: Object.keys(known),
+      chapters: known
+    };
+  }
+
+  const supabase = await createClient();
+  const { data: concepts } = await supabase
+    .from('concepts')
+    .select('subject, chapter')
+    .eq('user_id', userId);
+
+  if (concepts && concepts.length > 0) {
+    const subjectsMap: Record<string, string[]> = {};
+    concepts.forEach((c: any) => {
+      if (!subjectsMap[c.subject]) {
+        subjectsMap[c.subject] = [];
+      }
+      if (!subjectsMap[c.subject].includes(c.chapter)) {
+        subjectsMap[c.subject].push(c.chapter);
+      }
+    });
+    return {
+      subjects: Object.keys(subjectsMap),
+      chapters: subjectsMap
+    };
+  }
+
+  // Fallback to generating it if concepts aren't seeded yet
+  const aiSyllabus = await generateSyllabusWithAI(examType);
+  return {
+    subjects: Object.keys(aiSyllabus),
+    chapters: aiSyllabus
+  };
+}
+
 // Backward compatibility wrapper for cognition-graph
 export async function expandChapterWithAI(
   userId: string,
@@ -188,10 +233,65 @@ export async function expandChapterWithAI(
   }));
 }
 
-// Comprehensive exam syllabuses
-// Add more exams here as you expand market
+// In-memory cache for AI-generated syllabuses so we don't re-generate on every call
+const aiSyllabusCache = new Map<string, Record<string, string[]>>();
+
+const AISyllabusSchema = z.object({
+  syllabus: z.record(z.array(z.string()))
+});
+
+export async function generateSyllabusWithAI(examType: string): Promise<Record<string, string[]>> {
+  const cacheKey = examType.toLowerCase().trim();
+  if (aiSyllabusCache.has(cacheKey)) return aiSyllabusCache.get(cacheKey)!;
+
+  const prompt = `You are a curriculum expert. The student wants to study: "${examType}".
+
+Generate a structured syllabus with subjects and chapters that a serious student would need to master.
+
+Rules:
+- 1 to 3 subjects (top-level groupings that make sense for this topic)
+- 5 to 12 chapters per subject (specific, real chapter names — not vague like "Introduction")
+- Chapter names should be what a textbook or course would actually call them
+- If this is an exam (like IELTS, AWS SAA, CPA), structure around what the exam actually tests
+- If this is a skill (like Piano, Python, Spanish), structure around natural learning progression
+- If this is a university subject (like Organic Chemistry, Macroeconomics), structure around standard curriculum
+
+Examples:
+- "AWS Solutions Architect" → subjects: ["Cloud Fundamentals", "AWS Services", "Architecture Patterns"] with real AWS chapter names
+- "IELTS" → subjects: ["Reading", "Writing", "Listening", "Speaking"] with task-specific chapters
+- "Classical Piano Grade 5" → subjects: ["Theory", "Technique", "Repertoire"] with grade-appropriate chapters
+- "Organic Chemistry" → subjects: ["Reactions", "Mechanisms", "Spectroscopy"] with real topic names
+
+Return ONLY valid JSON:
+{
+  "syllabus": {
+    "Subject Name": ["Chapter 1", "Chapter 2", ...],
+    "Subject Name 2": ["Chapter A", "Chapter B", ...]
+  }
+}`;
+
+  try {
+    const result = await generateJSON<z.infer<typeof AISyllabusSchema>>(
+      'flash',
+      'You are a curriculum expert. Return only valid JSON.',
+      prompt,
+      AISyllabusSchema,
+      0.3
+    );
+    const syllabus = result.syllabus || {};
+    aiSyllabusCache.set(cacheKey, syllabus);
+    return syllabus;
+  } catch (err) {
+    logger.error('AI syllabus generation failed', { examType, err });
+    // Minimal fallback — better than 'Chapter 1, 2, 3'
+    return {
+      [examType]: ['Core Concepts', 'Key Principles', 'Applied Practice', 'Problem Solving', 'Advanced Topics']
+    };
+  }
+}
+
 export function getSyllabusForExam(examType: string): Record<string, string[]> {
-  const syllabuses: Record<string, Record<string, string[]>> = {
+  const known: Record<string, Record<string, string[]>> = {
     NEET: {
       Physics: [
         'Physical World and Measurement', 'Kinematics', 'Laws of Motion',
@@ -201,17 +301,16 @@ export function getSyllabusForExam(examType: string): Record<string, string[]> {
         'Magnetic Effects of Current', 'Magnetism and Matter',
         'Electromagnetic Induction', 'Alternating Currents',
         'Electromagnetic Waves', 'Ray Optics', 'Wave Optics',
-        'Dual Nature of Matter', 'Atoms and Nuclei',
-        'Electronic Devices', 'Communication Systems'
+        'Dual Nature of Matter', 'Atoms and Nuclei', 'Electronic Devices'
       ],
       Chemistry: [
         'Some Basic Concepts of Chemistry', 'Structure of Atom',
         'Classification of Elements', 'Chemical Bonding', 'States of Matter',
-        'Thermodynamics', 'Equilibrium', 'Redox Reactions', 'Hydrogen',
+        'Thermodynamics', 'Equilibrium', 'Redox Reactions',
         's-Block Elements', 'p-Block Elements', 'Organic Chemistry Basics',
-        'Hydrocarbons', 'Environmental Chemistry', 'Solid State',
-        'Solutions', 'Electrochemistry', 'Chemical Kinetics',
-        'Surface Chemistry', 'd-Block Elements', 'Coordination Compounds',
+        'Hydrocarbons', 'The Solid State', 'Solutions',
+        'Electrochemistry', 'Chemical Kinetics', 'Surface Chemistry',
+        'd-Block Elements', 'Coordination Compounds',
         'Haloalkanes', 'Alcohols Phenols Ethers', 'Aldehydes Ketones',
         'Carboxylic Acids', 'Amines', 'Biomolecules', 'Polymers'
       ],
@@ -219,19 +318,21 @@ export function getSyllabusForExam(examType: string): Record<string, string[]> {
         'The Living World', 'Biological Classification', 'Plant Kingdom',
         'Animal Kingdom', 'Morphology of Flowering Plants',
         'Anatomy of Flowering Plants', 'Structural Organisation in Animals',
-        'Cell Structure and Function', 'Biomolecules', 'Cell Cycle',
-        'Transport in Plants', 'Mineral Nutrition', 'Photosynthesis',
-        'Respiration in Plants', 'Plant Growth', 'Digestion and Absorption',
+        'Cell: The Unit of Life', 'Biomolecules', 'Cell Cycle and Cell Division',
+        'Transport in Plants', 'Mineral Nutrition',
+        'Photosynthesis in Higher Plants', 'Respiration in Plants',
+        'Plant Growth and Development', 'Digestion and Absorption',
         'Breathing and Exchange of Gases', 'Body Fluids and Circulation',
-        'Excretory Products', 'Locomotion and Movement',
-        'Neural Control', 'Chemical Coordination', 'Reproduction in Organisms',
-        'Sexual Reproduction in Plants', 'Human Reproduction',
-        'Reproductive Health', 'Principles of Inheritance',
-        'Molecular Basis of Inheritance', 'Evolution',
-        'Human Health and Disease', 'Strategies for Enhancement',
-        'Microbes in Human Welfare', 'Biotechnology Principles',
-        'Biotechnology Applications', 'Organisms and Populations',
-        'Ecosystem', 'Biodiversity', 'Environmental Issues'
+        'Excretory Products and Their Elimination', 'Locomotion and Movement',
+        'Neural Control and Coordination', 'Chemical Coordination and Integration',
+        'Reproduction in Organisms', 'Sexual Reproduction in Flowering Plants',
+        'Human Reproduction', 'Reproductive Health',
+        'Principles of Inheritance and Variation', 'Molecular Basis of Inheritance',
+        'Evolution', 'Human Health and Disease',
+        'Strategies for Enhancement in Food Production',
+        'Microbes in Human Welfare', 'Biotechnology Principles and Processes',
+        'Biotechnology and its Applications', 'Organisms and Populations',
+        'Ecosystem', 'Biodiversity and Conservation', 'Environmental Issues'
       ]
     },
     JEE: {
@@ -246,68 +347,15 @@ export function getSyllabusForExam(examType: string): Record<string, string[]> {
         'Algebra', 'Coordinate Geometry', 'Calculus',
         'Vectors and 3D', 'Trigonometry', 'Statistics and Probability'
       ]
-    },
-    UPSC: {
-      'General Studies 1': [
-        'Indian History', 'World History', 'Indian Geography',
-        'World Geography', 'Indian Society', 'Social Issues'
-      ],
-      'General Studies 2': [
-        'Indian Polity', 'Constitution', 'Governance',
-        'Social Justice', 'International Relations'
-      ],
-      'General Studies 3': [
-        'Indian Economy', 'Agriculture', 'Science and Technology',
-        'Environment', 'Disaster Management', 'Security'
-      ],
-      'General Studies 4': [
-        'Ethics and Integrity', 'Attitude', 'Aptitude',
-        'Emotional Intelligence', 'Public Service Values'
-      ]
-    },
-    CFA: {
-      'Quantitative Methods': [
-        'Time Value of Money', 'Statistical Concepts', 'Probability',
-        'Common Distributions', 'Sampling and Estimation', 'Hypothesis Testing',
-        'Technical Analysis'
-      ],
-      'Economics': [
-        'Demand and Supply', 'Business Cycles', 'Monetary Policy',
-        'Fiscal Policy', 'International Trade', 'Currency Exchange'
-      ],
-      'Financial Reporting': [
-        'Financial Statements', 'Revenue Recognition', 'Inventories',
-        'Long-term Assets', 'Taxes', 'Long-term Liabilities', 'Equity'
-      ],
-      'Corporate Finance': [
-        'Capital Budgeting', 'Cost of Capital', 'Leverage',
-        'Dividends and Share Repurchases', 'Corporate Governance'
-      ],
-      'Equity Investments': [
-        'Market Organisation', 'Security Market Indexes', 'Equity Valuation',
-        'Industry Analysis', 'Company Analysis'
-      ],
-      'Fixed Income': [
-        'Bond Features', 'Bond Valuation', 'Yield Measures',
-        'Duration and Convexity', 'Credit Risk'
-      ],
-      'Derivatives': [
-        'Derivative Markets', 'Forward Markets', 'Futures Markets',
-        'Options Markets', 'Swaps'
-      ],
-      'Alternative Investments': [
-        'Real Estate', 'Private Equity', 'Hedge Funds',
-        'Commodities', 'Infrastructure'
-      ],
-      'Portfolio Management': [
-        'Portfolio Risk and Return', 'Asset Allocation',
-        'Basics of Portfolio Planning', 'Risk Management'
-      ]
     }
   };
 
-  // Generic fallback for unknown exam types
-  return syllabuses[examType] || {
-    'Core Subject': ['Fundamentals', 'Intermediate Concepts', 'Advanced Topics', 'Applications', 'Practice Problems']
-  };
+  const normalized = examType?.toUpperCase().trim() || '';
+  if (normalized.includes('NEET')) return known['NEET'];
+  if (normalized.includes('JEE')) return known['JEE'];
+  if (known[normalized]) return known[normalized];
+
+  // Unknown exam — caller must use generateSyllabusWithAI() instead
+  // Return null signal so callers know to go async
+  return {};
 }
