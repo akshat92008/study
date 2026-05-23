@@ -170,24 +170,53 @@ export function getAdaptiveConfig(state: CognitiveState): PulseAdaptationConfig 
   return BASE_CONFIG;
 }
 
-export async function logPulseSignal(userId: string, state: CognitiveState) {
+// Overloaded logPulseSignal supporting both old (state) and new (signalType, data) signatures
+export async function logPulseSignal(userId: string, signalOrState: string | CognitiveState, data?: Record<string, any>): Promise<void> {
   const supabase = await createClient();
-
-  // Log explicit self-report check-in
-  await supabase.from('pulse_signals').insert({
-    user_id: userId,
-    signal_type: 'self_report',
-    emotional_state: state,
-    confidence: 1.0,
-  });
-
-  await supabase.from('profiles').update({
-    emotional_state: state,
-    last_active_at: new Date().toISOString(),
-  }).eq('id', userId);
-
-  return { state, config: getAdaptiveConfig(state) };
+  if (typeof signalOrState === 'string' && data) {
+    // New signature: signalType + data
+    try {
+      await supabase.from('pulse_signals').insert({
+        user_id: userId,
+        signal_type: signalOrState,
+        emotional_state: data.emotionalState || 'neutral',
+        data,
+        created_at: new Date().toISOString(),
+      });
+    } catch (err) {
+      logger.warn('logPulseSignal (type+data) failed', err);
+    }
+    return;
+  }
+  // Old signature: state only
+  const state = signalOrState as CognitiveState;
+  try {
+    await supabase.from('pulse_signals').insert({
+      user_id: userId,
+      signal_type: 'self_report',
+      emotional_state: state,
+      confidence: 1.0,
+    });
+    await supabase.from('profiles').update({
+      emotional_state: state,
+      last_active_at: new Date().toISOString(),
+    }).eq('id', userId);
+  } catch (err) {
+    logger.warn('logPulseSignal (state) failed', err);
+  }
 }
+
+// New helper to retrieve the current pulse state for a user
+export async function getPulseState(userId: string): Promise<CognitiveState> {
+  try {
+    const result = await detectStudyFriction(userId);
+    return result.state;
+  } catch {
+    return 'neutral';
+  }
+}
+
+
 
 // ==========================================
 // Backward Compatibility Aliases for Safety

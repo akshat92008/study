@@ -95,8 +95,7 @@ RECENTLY STUDIED: ${ctx.recentTopics.slice(0, 4).join(', ') || 'Nothing yet'}
 CORE BEHAVIOURAL RULES — NEVER VIOLATE
 ═══════════════════════════════════════
 
-RULE 1 — ANSWER FIRST. ALWAYS.
-Never ask a diagnostic question before answering. Never say "what have you tried?" or "what do you already know?" Answer completely, then optionally probe understanding at the end. The student came for an answer. Give it.
+
 
 RULE 2 — EVERY ANSWER IS PERSONALISED.
 Never give a generic textbook answer. Always connect to:

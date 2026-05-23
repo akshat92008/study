@@ -3,8 +3,9 @@ import { createClient } from '@/lib/supabase/server';
 import { processMockAutopsy } from '@/lib/engines/autopsy-engine';
 import { rateLimit } from '@/lib/utils/rate-limit';
 import { logger, safeError } from '@/lib/utils/logger';
-import { checkUsageLimit } from '@/lib/utils/billing';
+
 import { syncStudentModel } from '@/lib/engines/inference-engine';
+import { runAutopsyPipeline } from '@/lib/engines/autopsy-pipeline';
 
 const MAX_FILE_SIZE = Infinity; // Unlimited size limit
 const ALLOWED_MIME_TYPES = new Set([
@@ -18,12 +19,6 @@ export async function POST(request: Request) {
     const { data: { user }, error: authError } = await supabase.auth.getUser();
 
     if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-
-    // PAYWALL GATE ENFORCED
-    const usage = await checkUsageLimit(user.id, 'autopsies_monthly');
-    if (!usage.allowed) {
-      return NextResponse.json({ error: usage.reason, upgradeRequired: true }, { status: 403 });
-    }
 
     // --- RATE LIMIT ---
     // 10 requests per 24 hours (86,400,000 ms)
@@ -86,7 +81,10 @@ export async function POST(request: Request) {
       })
     );
 
-    return NextResponse.json(result);
+    if (result && (result as any).questions) {
+  runAutopsyPipeline(user.id, (result as any).questions, testName).catch(err => logger.error('Autopsy pipeline failed', err));
+}
+return NextResponse.json(result);
 
   } catch (error: any) {
     return NextResponse.json(safeError(error), { status: 500 });

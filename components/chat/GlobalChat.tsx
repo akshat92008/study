@@ -250,7 +250,7 @@ export default function GlobalChat() {
     try {
       let res: Response;
       try {
-        res = await fetchWithTimeout('/api/ai/global', {
+        res = await fetchWithTimeout('/api/ai/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -364,7 +364,7 @@ export default function GlobalChat() {
 
       let apiRes: Response;
       try {
-        apiRes = await fetchWithTimeout('/api/ai/global', {
+        apiRes = await fetchWithTimeout('/api/ai/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(requestBody)
