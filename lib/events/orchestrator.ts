@@ -73,6 +73,12 @@ export class EventDispatcher {
       // Initialize consumer tracking for the new event
       if (insertedEvent) {
         await this.registerConsumers(insertedEvent.id);
+        // Trigger processing in the background asynchronously for real-time responsiveness
+        Promise.allSettled(
+          EVENT_CONSUMERS.map(consumer => this.processConsumer(insertedEvent.id, consumer))
+        ).catch(err => {
+          logger.error('Failed to trigger background event consumer processing', { eventId: insertedEvent.id, err });
+        });
       }
       
       logger.info('Event published successfully', { type: validated.type, traceId });
@@ -112,7 +118,7 @@ export class EventDispatcher {
       .update({ status: 'processing', updated_at: new Date().toISOString() })
       .eq('event_id', eventId)
       .eq('consumer_name', consumer)
-      .in('status', ['pending', 'failed']) // Can pick up pending or previously failed (retry)
+      .in('status', ['processing', 'failed']) // Matches database constraints (default status is processing)
       .select('*')
       .single();
 

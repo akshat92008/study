@@ -24,7 +24,7 @@ export async function GET(req: NextRequest) {
     const { data: pendingConsumers, error } = await supabase
       .from('event_consumer_tracking')
       .select('event_id, consumer_name, retry_count')
-      .in('status', ['pending', 'failed'])
+      .in('status', ['processing', 'failed'])
       .lt('retry_count', 5)
       .order('updated_at', { ascending: true })
       .limit(BATCH_SIZE);
