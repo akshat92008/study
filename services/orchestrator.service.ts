@@ -1,129 +1,143 @@
-import { BaseService } from './base.service';
-import { streamText } from '@/lib/ai/gemini';
-import { ChatMemoryService } from './chat-memory.service';
-import { GoalService } from './goal.service';
-import { ConceptService } from './concept.service';
-import { RevisionService } from './revision.service';
-import { AutopsyService } from './autopsy.service';
-import { PulseService } from './pulse.service';
-import { MindTutorService } from './mind-tutor.service';
+// services/orchestrator.service.ts
+import { GoogleGenAI } from '@google/genai';
+import { getMINDContext } from '@/lib/engines/mind-engine';
+import { getMINDSystemPrompt } from '@/lib/ai/prompts/mind-prompt';
+import { createClient } from '@/lib/supabase/server';
+import { logger } from '@/lib/utils/logger';
 
-export class OrchestratorService extends BaseService {
-  private chatMemoryService = new ChatMemoryService();
-  private goalService = new GoalService();
-  private conceptService = new ConceptService();
-  private revisionService = new RevisionService();
-  private autopsyService = new AutopsyService();
-  private pulseService = new PulseService();
-  private mindTutorService = new MindTutorService();
+type MessageHistory = Array<{ role: 'user' | 'assistant' | 'model'; content: string }>;
 
-  /**
-   * Processes a user message, aggregates the 7 context layers, and returns a streaming AI response.
-   */
-  async processUserMessage(
+export class OrchestratorService {
+  private ai: GoogleGenAI;
+
+  constructor() {
+    this.ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+  }
+
+  async *processUserMessage(
     userId: string,
     message: string,
-    history: any[], // Recent 50 sliding window
+    history: MessageHistory,
     activeGoalId?: string,
-    intent: string = 'GENERAL_CHAT'
-  ): Promise<AsyncGenerator<string>> {
-    
-    // 1. Semantic Memory Context
-    // Run search for older context if message length indicates a real query
-    let semanticMemory: string[] = [];
-    if (message.length > 10) {
-       semanticMemory = await this.chatMemoryService.searchMemory(userId, message, 3);
-    }
+    intent?: string
+  ): AsyncGenerator<string> {
+    // Build full context
+    const mindContext = await getMINDContext(userId, message);
+    const systemPrompt = getMINDSystemPrompt(mindContext);
 
-    // Prepare other layers concurrently to reduce latency
-    const [
-      activeGoal,
-      masteryMetrics,
-      dueCardsCount,
-      latestAutopsy,
-      pulseState
-    ] = await Promise.all([
-      this.goalService.getActiveGoal(userId, activeGoalId),
-      this.conceptService.getMasteryMetrics(userId),
-      this.revisionService.getDueCardsCount(userId),
-      this.autopsyService.getLatestAutopsy(userId),
-      this.pulseService.getPulseState(userId)
-    ]);
+    // Retrieve semantic memory — past conversations about similar topics
+    const semanticMemory = await this.retrieveSemanticMemory(userId, message);
+    const fullSystemPrompt = semanticMemory
+      ? `${systemPrompt}\n\n═══ RELEVANT MEMORY FROM PAST SESSIONS ═══\n${semanticMemory}\n═══════════════════════════════════════`
+      : systemPrompt;
 
-    // 2. Student Brain / Goal Context
-    const goalContext = activeGoal 
-      ? `ACTIVE GOAL: ${activeGoal.title} (Status: ${activeGoal.status})` 
-      : 'No active goal explicitly set for this session.';
+    // Build properly formatted conversation history for Gemini
+    // Gemini requires: alternating user/model turns, starting with user
+    const formattedHistory = this.formatHistory(history);
 
-    // 3. Mastery Context
-    const masteryContext = `Average Mastery: ${masteryMetrics.averageMastery}% across ${masteryMetrics.totalConcepts} tracked concepts.`;
+    try {
+      const chat = this.ai.chats.create({
+        model: 'gemini-2.5-flash',
+        config: {
+          systemInstruction: fullSystemPrompt,
+          temperature: intent === 'TUTOR_SESSION' ? 0.7 : 0.5,
+          maxOutputTokens: 4096,
+        },
+        history: formattedHistory
+      });
 
-    // 4. Flashcard History Context
-    const revisionContext = `${dueCardsCount} flashcards are currently due for review.`;
+      const stream = await chat.sendMessageStream({ message });
 
-    // 5. Mock History Context
-    let autopsyContext = 'No recent mock tests uploaded.';
-    if (latestAutopsy) {
-      autopsyContext = `Last Mock Test: ${latestAutopsy.test_name} - Score: ${latestAutopsy.score}. Extracted metrics: ${JSON.stringify(latestAutopsy.metrics)}`;
-    }
+      for await (const chunk of stream) {
+        const text = chunk.text;
+        if (text) yield text;
+      }
 
-    // 6. Pulse State Context
-    const pulseContext = `Student State: ${pulseState.emotionalState}, Fatigue: ${pulseState.sessionFatigue}.`;
-
-    // Assemble the complete System Prompt
-    const systemPrompt = `You are MIND, the Socratic AI Orchestrator for Cognition OS.
-
-You are interacting with the student in the main command console. Your goal is to guide them towards their learning objectives, utilizing the ecosystem of tools.
-
-=== COGNITION OS CONTEXT LAYERS ===
-[STUDENT BRAIN]: ${goalContext}
-[MASTERY]: ${masteryContext}
-[MEMORY/REVISION]: ${revisionContext}
-[AUTOPSY HISTORY]: ${autopsyContext}
-[PULSE/STATE]: ${pulseContext}
-
-[SEMANTIC MEMORY FROM PAST CHATS]:
-${semanticMemory.length > 0 ? semanticMemory.map(m => '- ' + m).join('\n') : 'No highly relevant older context found.'}
-
-=== RULES ===
-1. Keep responses incredibly concise. Avoid walls of text. 
-2. Be encouraging but firm. If they are fatigued, suggest a break. If they have due cards, suggest doing them.
-3. If the user asks a straightforward question, answer it succinctly. If they are struggling with a concept, use the Socratic method.
-4. Format your text nicely using Markdown, bolding key terms.
-`;
-
-    // 7. Recent Chat History Context (Reconstructed for Gemini SDK)
-    const formattedHistory = history.map(msg => ({
-      role: msg.role === 'user' ? 'user' : 'model',
-      parts: [{ text: msg.content }]
-    }));
-
-    // Append the latest user message
-    formattedHistory.push({
-      role: 'user',
-      parts: [{ text: message }]
-    });
-
-    // Instead of passing everything in one string, we format the history block for context
-    const fullConversationText = formattedHistory.map(h => `${h.role.toUpperCase()}: ${h.parts[0].text}`).join('\n\n');
-
-    if (intent === 'TUTOR_SESSION') {
-      return this.mindTutorService.processTutorTurn(
-        userId,
-        message,
-        history,
-        {
-          studentName: "Student", // Could fetch from profile if needed
-          examType: "General",
-          learningStyle: activeGoal?.preferred_learning_style || 'visual',
-          masteryLevel: masteryContext,
-          historicalMistakes: autopsyContext,
-          ragNotes: semanticMemory.join('\n')
-        }
+      // Save semantic memory snapshot after session
+      this.saveSemanticMemory(userId, message, mindContext).catch(err =>
+        logger.error('Memory save failed', err)
       );
+
+    } catch (err: any) {
+      logger.error('OrchestratorService streaming error', err);
+      // Graceful fallback — try non-streaming
+      try {
+        const response = await this.ai.models.generateContent({
+          model: 'gemini-2.5-flash',
+          config: { systemInstruction: fullSystemPrompt, temperature: 0.5 },
+          contents: [
+            ...formattedHistory.map(h => ({ role: h.role, parts: [{ text: h.parts[0].text }] })),
+            { role: 'user' as const, parts: [{ text: message }] }
+          ]
+        });
+        yield response.text || 'I encountered an issue. Please try again.';
+      } catch {
+        yield 'I hit a temporary issue. Please send your message again.';
+      }
+    }
+  }
+
+  private formatHistory(history: MessageHistory): Array<{ role: 'user' | 'model'; parts: [{ text: string }] }> {
+    const filtered: Array<{ role: 'user' | 'model'; parts: [{ text: string }] }> = [];
+
+    // Only last 20 messages, properly alternating
+    const recent = history.slice(-20);
+    let lastRole: string | null = null;
+
+    for (const msg of recent) {
+      const role: 'user' | 'model' = msg.role === 'user' ? 'user' : 'model';
+      // Skip consecutive same-role messages — Gemini requires alternating
+      if (role === lastRole) continue;
+      // Truncate very long messages to avoid token waste
+      const content = msg.content.length > 3000 ? msg.content.slice(0, 3000) + '...' : msg.content;
+      filtered.push({ role, parts: [{ text: content }] });
+      lastRole = role;
     }
 
-    // Stream from the model (General Chat fallback)
-    return streamText('pro', systemPrompt, fullConversationText);
+    // Must start with 'user' turn
+    if (filtered.length > 0 && filtered[0].role !== 'user') {
+      filtered.shift();
+    }
+
+    return filtered;
+  }
+
+  private async retrieveSemanticMemory(userId: string, message: string): Promise<string | null> {
+    try {
+      const supabase = await createClient();
+
+      // Simple keyword-based memory retrieval as fallback if pgvector RPC isn't ready
+      const keywords = message.toLowerCase().split(' ').filter(w => w.length > 4).slice(0, 3);
+      if (!keywords.length) return null;
+
+      const { data: memories } = await supabase
+        .from('chat_memories')
+        .select('content, created_at')
+        .eq('user_id', userId)
+        .textSearch('content', keywords.join(' | '), { type: 'websearch' })
+        .order('created_at', { ascending: false })
+        .limit(3);
+
+      if (!memories?.length) return null;
+
+      return memories.map(m => `• ${m.content}`).join('\n');
+    } catch {
+      return null; // Memory is enhancement, not required
+    }
+  }
+
+  private async saveSemanticMemory(userId: string, message: string, context: any): Promise<void> {
+    try {
+      const supabase = await createClient();
+      const summary = `Student asked about: ${message.slice(0, 150)}. Exam: ${context.profile.examType}. Weak areas at time: ${context.weakConcepts.slice(0, 2).map((c: any) => c.name).join(', ')}`;
+
+      await supabase.from('chat_memories').insert({
+        user_id: userId,
+        content: summary,
+        created_at: new Date().toISOString()
+      });
+    } catch {
+      // Non-critical
+    }
   }
 }

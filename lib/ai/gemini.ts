@@ -209,7 +209,7 @@ export async function generateJSON<T>(
 export async function* streamText(
   model: keyof typeof MODELS,
   systemPrompt: string,
-  userPrompt: string,
+  userPrompt: string | any[],
   temperature: number = 0.7
 ): AsyncGenerator<string> {
   try {

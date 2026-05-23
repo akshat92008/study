@@ -200,6 +200,10 @@ a:hover { text-decoration: underline; }
   0%, 100% { opacity: 0.6; }
   50% { opacity: 0.3; }
 }
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
 .animate-fade { animation: fadeIn var(--duration-normal) var(--ease-out) both; }
 .animate-slide { animation: slideInLeft var(--duration-slow) var(--ease-out) both; }
 .animate-pulse { animation: pulse 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite; }

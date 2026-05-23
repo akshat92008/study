@@ -24,8 +24,18 @@ export default function DashboardPage() {
     setIsUploadingMock,
     uploadStatus,
     setUploadStatus,
-    addToast
+    addToast,
+    addChatMessage
   } = useAppStore();
+
+  const handleStartSession = (topic: string, subject: string) => {
+    addChatMessage({
+      role: 'user',
+      content: `Let's start a Socratic tutoring session on "${topic}" (${subject}).`,
+      timestamp: new Date().toISOString()
+    });
+    addToast(`Session started: ${topic}`, 'success');
+  };
 
   const [dashboardData, setDashboardData] = useState<any>(null);
   const [loadingTelemetry, setLoadingTelemetry] = useState(true);
@@ -214,7 +224,7 @@ export default function DashboardPage() {
 
       {/* Main Content Area */}
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
-        <DailySessionCard />
+        <DailySessionCard onStartSession={handleStartSession} />
         
         {/* Introduction area if no goal is active */}
         {!activeGoal && (

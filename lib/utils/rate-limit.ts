@@ -1,21 +1,34 @@
 import { createClient } from '@/lib/supabase/server';
-import { logger } from '@/lib/utils/logger';
 
-export async function rateLimit(ip: string, limit: number, windowMs: number): Promise<boolean> {
+/**
+ * Supabase-backed rate limiter. Works across all serverless instances.
+ * Falls open (returns true) if DB is unavailable — never blocks legit traffic.
+ */
+export async function rateLimit(
+  key: string,
+  maxRequests: number,
+  windowMs: number
+): Promise<boolean> {
   try {
     const supabase = await createClient();
-    const windowSeconds = Math.floor(windowMs / 1000);
-    
-    const { data, error } = await supabase.rpc('check_rate_limit', {
-      p_ip: ip,
-      p_limit: limit,
-      p_window_seconds: windowSeconds
-    });
+    const windowStart = new Date(Date.now() - windowMs).toISOString();
 
-    if (error) throw error;
-    return data as boolean;
-  } catch (err) {
-    logger.error('Rate limiter fallback triggered', err);
-    return true; // Fail open to not block users if DB lags
+    const { count, error } = await supabase
+      .from('rate_limit_log')
+      .select('*', { count: 'exact', head: true })
+      .eq('key', key)
+      .gte('created_at', windowStart);
+
+    if (error) return true; // fail open
+
+    if ((count ?? 0) >= maxRequests) return false;
+
+    await supabase
+      .from('rate_limit_log')
+      .insert({ key, created_at: new Date().toISOString() });
+
+    return true;
+  } catch {
+    return true; // fail open — never break the product over rate limit check
   }
 }

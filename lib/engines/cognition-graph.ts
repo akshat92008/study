@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server';
 import { generateJSON } from '@/lib/ai/gemini';
 import { logger } from '@/lib/utils/logger';
+import { expandChapterWithAI } from './atlas-expansion';
 
 const MASTERY_WEIGHTS: Record<string, number> = {
   not_started: 0, exposed: 15, developing: 40, proficient: 70, mastered: 90, automated: 98,
@@ -137,103 +138,80 @@ export async function getCognitionGraph(userId: string) {
 
 export async function seedConceptsForSubject(userId: string, subject: string, chapters: string[]) {
   const supabase = await createClient();
-  const conceptRows: any[] = [];
+  
+  // Get exam type from profile
+  const { data: profile } = await supabase.from('profiles').select('exam_type').eq('id', userId).single();
+  const examType = profile?.exam_type || 'General';
 
-  chapters.forEach((chapter) => {
-    const expansions = CHAPTER_EXPANSIONS[chapter];
-    if (expansions && expansions.length > 0) {
-      expansions.forEach((exp) => {
-        conceptRows.push({
-          user_id: userId,
-          name: exp.name,
-          subject,
-          chapter,
-          topic: exp.topic,
-          mastery: 'not_started',
-          confidence: 'low',
-          times_reviewed: 0,
-          times_correct: 0,
-          times_incorrect: 0,
-          forgetting_probability: 1.0,
-          retention_strength: 0.0,
-        });
-      });
-    } else {
-      conceptRows.push({
+  // Get active goal ID if any
+  const { data: activeGoal } = await supabase.from('learning_goals').select('id').eq('user_id', userId).eq('status', 'active').limit(1).maybeSingle();
+  const goalId = activeGoal?.id || null;
+
+  let seededCount = 0;
+
+  for (const chapter of chapters) {
+    try {
+      // AI-generates 8-12 micro-concepts for the chapter
+      const concepts = await expandChapterWithAI(userId, subject, chapter, examType);
+      if (!concepts.length) continue;
+
+      // Insert concepts
+      const conceptRecords = concepts.map(c => ({
         user_id: userId,
-        name: chapter,
+        goal_id: goalId,
+        name: c.name,
+        description: c.description,
         subject,
         chapter,
-        topic: 'General',
-        mastery: 'not_started',
-        confidence: 'low',
+        mastery: 'not_started' as const,
+        confidence: 'low' as const,
         times_reviewed: 0,
         times_correct: 0,
         times_incorrect: 0,
         forgetting_probability: 1.0,
         retention_strength: 0.0,
+      }));
+
+      const { data: inserted, error: insertErr } = await supabase
+        .from('concepts')
+        .insert(conceptRecords)
+        .select('id, name');
+
+      if (insertErr || !inserted) {
+        logger.error('Failed to insert concepts for chapter', { chapter, insertErr });
+        continue;
+      }
+
+      // Build prerequisite links
+      const nameToId: Record<string, string> = {};
+      inserted.forEach(c => { nameToId[c.name] = c.id; });
+
+      const links = concepts.flatMap(c => {
+        const sourceId = nameToId[c.name];
+        if (!sourceId) return [];
+        return c.prerequisiteNames
+          .map(prereqName => nameToId[prereqName])
+          .filter(Boolean)
+          .map(targetId => ({
+            user_id: userId,
+            source_concept_id: targetId, // prereq must be done first
+            target_concept_id: sourceId,
+            link_type: 'prerequisite',
+            strength: 0.8
+          }));
       });
+
+      if (links.length > 0) {
+        await supabase.from('concept_links').insert(links);
+      }
+
+      seededCount += inserted.length;
+    } catch (err) {
+      logger.error('Failed to seed chapter dynamically', { subject, chapter, err });
     }
-  });
-
-  let insertedCount = 0;
-
-  if (conceptRows.length > 0) {
-    const { data: inserted, error } = await supabase.from('concepts').insert(conceptRows).select();
-    if (error || !inserted) throw error || new Error('Seeding failed');
-    insertedCount += inserted.length;
-
-    // Auto-expand generic (1-concept) chapters via AI in the background
-    Promise.resolve().then(async () => {
-      try {
-        for (const chapter of chapters) {
-          const expansions = CHAPTER_EXPANSIONS[chapter];
-          // Only expand chapters that got the generic fallback (no hardcoded expansion)
-          if (!expansions || expansions.length === 0) {
-            // Check if this chapter still only has 1 concept (the generic node)
-            const { count } = await supabase.from('concepts')
-              .select('*', { count: 'exact', head: true })
-              .eq('user_id', userId)
-              .eq('chapter', chapter);
-            
-            if (count && count <= 1) {
-              // Find the subject for this chapter
-              const { data: existingConcept } = await supabase.from('concepts')
-                .select('subject').eq('user_id', userId).eq('chapter', chapter).limit(1).single();
-              
-              if (existingConcept) {
-                await expandChapterViaMind(userId, existingConcept.subject, chapter);
-              }
-            }
-          }
-        }
-      } catch (e) {
-        logger.warn('Background chapter expansion failed', e);
-      }
-    });
-
-    const conceptMap: Record<string, string> = {};
-    inserted.forEach((c: any) => { conceptMap[c.name] = c.id; });
-
-    const linkRows: any[] = [];
-    inserted.forEach((c: any) => {
-      const prereqs = PREREQUISITES_MAP[c.name];
-      if (prereqs) {
-        prereqs.forEach((prereqName) => {
-          const sourceId = conceptMap[prereqName];
-          if (sourceId) {
-            linkRows.push({
-              user_id: userId, source_concept_id: sourceId, target_concept_id: c.id, link_type: 'prerequisite', strength: 0.8,
-            });
-          }
-        });
-      }
-    });
-
-    if (linkRows.length > 0) await supabase.from('concept_links').insert(linkRows);
   }
 
-  return { seeded: insertedCount };
+  return { seeded: seededCount };
 }
 
 export async function updateConceptState(conceptId: string, correct: boolean, timeSpent: number) {
@@ -307,40 +285,32 @@ Respond as JSON: { "summary": "assessment", "topPriority": "focus", "strengths":
 
 export async function expandChapterViaMind(userId: string, subject: string, chapter: string) {
   const supabase = await createClient();
-  const prompt = `
-    Break down the chapter/topic "${chapter}" (under the broader subject of ${subject}) into 3-7 essential, bite-sized micro-concepts.
-    For each concept, identify prerequisites (if any) from other fundamental concepts.
-    
-    Respond STRICTLY as JSON:
-    {
-      "concepts": [
-        { "name": "Concept Name", "topic": "Parent Topic", "prerequisites": ["Other Concept Name"] }
-      ]
-    }
-  `;
-  
+  const { data: profile } = await supabase.from('profiles').select('exam_type').eq('id', userId).single();
+  const examType = profile?.exam_type || 'General';
+
   try {
-    const result = await generateJSON<any>('flash', 'You are an elite academic curriculum designer.', prompt);
+    const concepts = await expandChapterWithAI(userId, subject, chapter, examType);
     const insertedConcepts = [];
 
     // Insert new granular concepts
-    for (const concept of result.concepts) {
+    for (const concept of concepts) {
       const { data } = await supabase.from('concepts').insert({
         user_id: userId, 
         name: concept.name, 
+        description: concept.description,
         subject, 
         chapter, 
-        topic: concept.topic || 'General', 
+        topic: 'General', 
         mastery: 'not_started', 
         confidence: 'low',
       }).select().single();
       
       if (data) {
-        insertedConcepts.push({ dbData: data, prereqs: concept.prerequisites || [] });
+        insertedConcepts.push({ dbData: data, prereqs: concept.prerequisiteNames || [] });
       }
     }
 
-    // Resolve and link prerequisites via semantic/fuzzy matching
+    // Resolve and link prerequisites
     const { resolveConceptByName } = await import('./concept-resolver');
     for (const item of insertedConcepts) {
       for (const prereq of item.prereqs) {
@@ -358,7 +328,7 @@ export async function expandChapterViaMind(userId: string, subject: string, chap
     }
     return insertedConcepts.map(ic => ic.dbData);
   } catch (error) {
-    logger.error('Failed to dynamically expand chapter', error);
+    logger.error('Failed to dynamically expand chapter via mind', error);
     return [];
   }
 }

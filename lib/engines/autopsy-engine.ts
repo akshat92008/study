@@ -6,6 +6,9 @@ import { AutopsyPaperSchema, AutopsyQuestionSchema } from './autopsy-schemas';
 import { generateMentorRecovery } from './mentor-engine';
 import { logger } from '@/lib/utils/logger';
 import { syncStudentModel } from '@/lib/engines/inference-engine';
+import { updateConceptState } from './cognition-graph';
+import { createSingleCard } from './revision-engine';
+import { runAutopsyPipeline } from './autopsy-pipeline';
 
 
 type AutopsyFileData =
@@ -152,21 +155,10 @@ export async function processMockAutopsy(
   // THE MISSING P0 PIPELINE: AUTOPSY -> ATLAS -> MEMORY -> COMMAND -> PULSE
   // =====================================================================
   try {
-    const { resolveConceptByName } = await import('./concept-resolver');
-    const { updateConceptState } = await import('./cognition-graph');
-    const { createCardsFromAutopsyMistakes } = await import('./mistake-to-card');
     const { logPulseSignal } = await import('./pulse-engine');
 
-    // 1. ATLAS: Punish mastery for each wrong concept
-    for (const q of incorrectQs) {
-      const conceptId = await resolveConceptByName(userId, q.subject, q.chapter || '');
-      if (conceptId) {
-        await updateConceptState(conceptId, false, 0);
-      }
-    }
-    
-    // 2. MEMORY: Feed mistakes to FSRS (bulk insert)
-    await createCardsFromAutopsyMistakes(userId, autopsyData.id);
+    // 1. Run Autopsy Pipeline: downscale ATLAS mastery and generate MEMORY revision cards
+    await runAutopsyPipeline(userId, processedQuestions);
     
     // 3. COMMAND Planner: Insert 7-day Sprint Plan tasks
     if (plan && plan.tasks) {

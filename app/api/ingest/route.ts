@@ -4,7 +4,7 @@ import { processDocumentIntoMemory } from '@/lib/engines/memory-engine';
 import { GoogleGenAI } from '@google/genai';
 import { logger, safeError } from '@/lib/utils/logger';
 import { rateLimit } from '@/lib/utils/rate-limit';
-import pdfParse from 'pdf-parse';
+import pdfParse from 'pdf-parse/lib/pdf-parse';
 
 export async function POST(request: Request) {
   try {

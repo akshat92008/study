@@ -1,9 +1,7 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  turbopack: {
-    root: process.cwd(),
-  },
+  serverExternalPackages: ['pdf-parse'],
   experimental: {
     serverActions: {
       bodySizeLimit: '10mb',

@@ -3,62 +3,68 @@
 import { useEffect, useRef } from 'react';
 import { useAppStore } from '@/stores/appStore';
 
-export default function SessionTracker() {
-  const { startSession, endSession, sessionActive } = useAppStore();
-  const idleTimeout = useRef<NodeJS.Timeout | null>(null);
+const HEARTBEAT_INTERVAL = 30_000; // every 30s
+const IDLE_THRESHOLD = 120_000;    // 2 minutes idle = session effectively paused
 
-  // Send session data to the database
-  const logSessionToDB = async (durationMinutes: number) => {
-    if (durationMinutes < 1) return; // Ignore accidental page reloads
-    try {
-      await fetch('/api/pulse/session', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ durationMinutes }),
-        keepalive: true // Ensures it fires even if the tab is closing
-      });
-    } catch (e) {
-      console.error('Failed to log session telemetry');
+export default function SessionTracker() {
+  const { sessionActive, startSession, endSession } = useAppStore();
+  const lastActivityRef = useRef<number>(Date.now());
+  const heartbeatRef = useRef<NodeJS.Timeout | null>(null);
+  const sessionStartRef = useRef<number | null>(null);
+
+  const recordActivity = () => {
+    lastActivityRef.current = Date.now();
+    if (!sessionStartRef.current) {
+      sessionStartRef.current = Date.now();
+      startSession();
     }
   };
 
   useEffect(() => {
-    startSession();
+    // Track user activity
+    const events = ['keydown', 'mousedown', 'touchstart', 'scroll'];
+    events.forEach(e => window.addEventListener(e, recordActivity, { passive: true }));
 
-    const resetIdleTimer = () => {
-      if (!sessionActive) startSession();
-      
-      if (idleTimeout.current) clearTimeout(idleTimeout.current);
-      
-      // If no mouse/keyboard movement for 5 minutes, end the session
-      idleTimeout.current = setTimeout(() => {
-        const duration = endSession();
-        if (duration > 0) logSessionToDB(duration);
-      }, 5 * 60 * 1000); 
-    };
+    // Heartbeat: check session state and send pulse signal
+    heartbeatRef.current = setInterval(async () => {
+      const idleTime = Date.now() - lastActivityRef.current;
+      const isIdle = idleTime > IDLE_THRESHOLD;
 
-    // Track interactions
-    window.addEventListener('mousemove', resetIdleTimer);
-    window.addEventListener('keydown', resetIdleTimer);
-    window.addEventListener('click', resetIdleTimer);
-    window.addEventListener('scroll', resetIdleTimer);
+      if (sessionStartRef.current && isIdle) {
+        // Session ended due to inactivity
+        const durationMs = Date.now() - sessionStartRef.current;
+        const durationMinutes = Math.round(durationMs / 60000);
 
-    // Save on tab close
-    window.addEventListener('beforeunload', () => {
-      const duration = endSession();
-      if (duration > 0) logSessionToDB(duration);
-    });
+        if (durationMinutes >= 1) {
+          try {
+            await fetch('/api/pulse/session', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ durationMinutes, endReason: 'idle' })
+            });
+          } catch {}
+        }
 
-    resetIdleTimer();
+        sessionStartRef.current = null;
+        endSession();
+      } else if (sessionStartRef.current && !isIdle) {
+        // Active session heartbeat
+        const durationMinutes = Math.round((Date.now() - sessionStartRef.current) / 60000);
+        try {
+          await fetch('/api/pulse/session', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ durationMinutes, endReason: null, heartbeat: true })
+          });
+        } catch {}
+      }
+    }, HEARTBEAT_INTERVAL);
 
     return () => {
-      window.removeEventListener('mousemove', resetIdleTimer);
-      window.removeEventListener('keydown', resetIdleTimer);
-      window.removeEventListener('click', resetIdleTimer);
-      window.removeEventListener('scroll', resetIdleTimer);
-      if (idleTimeout.current) clearTimeout(idleTimeout.current);
+      events.forEach(e => window.removeEventListener(e, recordActivity));
+      if (heartbeatRef.current) clearInterval(heartbeatRef.current);
     };
   }, []);
 
-  return null; // Invisible telemetry component
+  return null; // invisible
 }
