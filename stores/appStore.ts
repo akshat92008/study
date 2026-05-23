@@ -225,6 +225,11 @@ export const useAppStore = create<AppState>()(
         pendingSyncQueue: state.pendingSyncQueue,
         isSidebarCollapsed: state.isSidebarCollapsed,
         activeGoalId: state.activeGoalId,
+        sessionStartTime: state.sessionStartTime,
+        emotionalState: state.emotionalState,
+        atlasMastery: state.atlasMastery,
+        memoryDueCount: state.memoryDueCount,
+        autopsyLossPoints: state.autopsyLossPoints,
       }),
     }
   )

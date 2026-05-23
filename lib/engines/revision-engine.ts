@@ -166,7 +166,10 @@ export async function reviewCard(cardId: string, rating: 1 | 2 | 3 | 4, response
             title: `[Deep Review Required] Repeated failures on ${concept.chapter}. Trigger MIND Tutor session.`,
             scheduled_date: d.toISOString(),
             estimated_minutes: 30,
-            priority: 4, // High priority
+            priority: 'critical', // Fixed from integer 4 to valid enum string
+            type: 'revision', // Set exact type
+            subject: concept.subject,
+            chapter: concept.chapter,
             is_completed: false
           });
           logger.info('Repeated failure loop-breaker triggered. Card suspended, MIND session scheduled.', { cardId, concept_id: row.concept_id });

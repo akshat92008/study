@@ -106,6 +106,25 @@ export async function detectStudyFriction(userId: string): Promise<{ state: Cogn
       uiMessages.push("Accuracy dropped recently. Shifting MIND to step-by-step foundational mode.");
     }
 
+    // --- BEHAVIORAL RULE 5: Real-time Struggle (Predictive) ---
+    // Check if the student has made multiple mistakes or rated cards 'Again' in the last 2 hours.
+    const twoHoursAgo = new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString();
+    const [recentMistakesRes, recentFailsRes] = await Promise.all([
+      supabase.from('mistakes').select('id').eq('user_id', userId).gte('created_at', twoHoursAgo),
+      supabase.from('review_logs').select('id').eq('user_id', userId).eq('rating', 1).gte('review', twoHoursAgo)
+    ]);
+    
+    const recentMistakesCount = recentMistakesRes.data?.length || 0;
+    const recentFailsCount = recentFailsRes.data?.length || 0;
+    
+    if (recentMistakesCount + recentFailsCount >= 4) {
+      config.explanationDepth = 'step-by-step';
+      config.taskIntensity = 'light';
+      config.workloadMultiplier = Math.min(config.workloadMultiplier, 0.6);
+      determinedState = 'frustrated';
+      uiMessages.unshift("Real-time friction detected. You've hit a few roadblocks recently. Slowing down and shifting to foundational step-by-step mode.");
+    }
+
     // --- EXPLICIT OVERRIDE: Self-Report ---
     // If the student explicitly told us they are overwhelmed today, we believe them immediately.
     const selfReport = selfReportRes.data;

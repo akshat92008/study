@@ -16,46 +16,7 @@ function getMasteryLevel(score: number): 'not_started' | 'exposed' | 'developing
   return 'not_started';
 }
 
-const CHAPTER_EXPANSIONS: Record<string, Array<{ topic: string, name: string }>> = {
-  'Kinematics': [
-    { topic: 'Vectors', name: 'Vector Addition & Subtraction' }, { topic: 'Vectors', name: 'Dot and Cross Products' },
-    { topic: '1D Motion', name: 'Equations of Motion' }, { topic: '1D Motion', name: 'Free Fall' },
-    { topic: '2D Motion', name: 'Projectile Motion' }, { topic: '2D Motion', name: 'Relative Velocity' },
-  ],
-  'Laws of Motion': [
-    { topic: 'Forces', name: 'Newton\'s First Law (Inertia)' }, { topic: 'Forces', name: 'Newton\'s Second Law (F=ma)' },
-    { topic: 'Forces', name: 'Newton\'s Third Law' }, { topic: 'Friction', name: 'Static & Kinetic Friction' },
-    { topic: 'Circular', name: 'Centripetal Force' }, { topic: 'Circular', name: 'Banking of Roads' },
-  ],
-  'Thermodynamics': [
-    { topic: 'Laws', name: 'Zeroth Law & Temp' }, { topic: 'Laws', name: 'First Law & Internal Energy' },
-    { topic: 'Processes', name: 'Isothermal & Adiabatic' }, { topic: 'Processes', name: 'Carnot Engine' },
-  ],
-  'Electrostatics': [
-    { topic: 'Charge', name: 'Coulomb\'s Law' }, { topic: 'Field', name: 'Electric Field & Flux' },
-    { topic: 'Potential', name: 'Gauss\'s Law' }, { topic: 'Capacitance', name: 'Capacitors in Series/Parallel' },
-  ],
-  'Cell: The Unit of Life': [
-    { topic: 'Structure', name: 'Plasma Membrane' }, { topic: 'Structure', name: 'Cell Wall' },
-    { topic: 'Organelles', name: 'Mitochondria & Chloroplasts' }, { topic: 'Organelles', name: 'Endomembrane System' },
-  ],
-  'Human Reproduction': [
-    { topic: 'Male', name: 'Male Reproductive System' }, { topic: 'Female', name: 'Female Reproductive System' },
-    { topic: 'Process', name: 'Gametogenesis' }, { topic: 'Process', name: 'Menstrual Cycle' },
-  ],
-  'Genetics': [
-    { topic: 'Mendelian', name: 'Laws of Inheritance' }, { topic: 'Mendelian', name: 'Incomplete Dominance' },
-    { topic: 'Molecular', name: 'DNA Structure' }, { topic: 'Molecular', name: 'Transcription & Translation' },
-  ]
-};
 
-const PREREQUISITES_MAP: Record<string, string[]> = {
-  'Projectile Motion': ['Vector Addition & Subtraction', 'Equations of Motion'],
-  'Relative Velocity': ['Vector Addition & Subtraction'],
-  'Newton\'s Laws of Motion': ['Vector Addition & Subtraction', 'Equations of Motion'],
-  'Work-Energy Theorem': ['Newton\'s Second Law (F=ma)', 'Equations of Motion'],
-  'Banking of Roads': ['Newton\'s Second Law (F=ma)'],
-};
 
 export async function getCognitionGraph(userId: string) {
   const supabase = await createClient();

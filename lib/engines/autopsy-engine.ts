@@ -161,7 +161,7 @@ export async function processMockAutopsy(
     const { logPulseSignal } = await import('./pulse-engine');
 
     // 1. Run Autopsy Pipeline: downscale ATLAS mastery and generate MEMORY revision cards
-    await runAutopsyPipeline(userId, processedQuestions);
+    await runAutopsyPipeline(userId, processedQuestions, testName);
     
     // 3. COMMAND Planner: Insert 7-day Sprint Plan tasks
     if (plan && plan.tasks) {

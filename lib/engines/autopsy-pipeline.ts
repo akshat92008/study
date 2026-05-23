@@ -1,10 +1,11 @@
 import { createClient } from '@/lib/supabase/server';
 import { updateConceptState } from './cognition-graph';
-import { createSingleCard } from './revision-engine';
+import { createCardFromMistake } from './revision-engine';
 import { resolveConceptByName } from './concept-resolver';
 import { logger } from '@/lib/utils/logger';
 
 interface AutopsyQuestion {
+  questionNumber: number;
   subject: string;
   chapter: string;
   status: 'Correct' | 'Incorrect' | 'Unattempted';
@@ -20,7 +21,7 @@ interface AutopsyQuestion {
  * wire every mistake to ATLAS (downscale mastery) and MEMORY (create review card).
  * This is what makes Cognition OS an OS rather than a collection of tools.
  */
-export async function runAutopsyPipeline(userId: string, questions: AutopsyQuestion[]): Promise<void> {
+export async function runAutopsyPipeline(userId: string, questions: AutopsyQuestion[], testName?: string): Promise<void> {
   const incorrectQuestions = questions.filter(q => q.status === 'Incorrect');
 
   // Process each mistake: ATLAS downscale + MEMORY card
@@ -37,36 +38,21 @@ export async function runAutopsyPipeline(userId: string, questions: AutopsyQuest
 
       // 3. MEMORY: Auto-create flashcard from the mistake
       // Use the question itself as the front, correct answer as the back
-      if (q.questionText && q.correctAnswer) {
-        const cardFront = q.questionText.length > 200
-          ? q.questionText.slice(0, 200) + '...'
-          : q.questionText;
+      const questionDesc = q.questionText || (testName ? `Question #${q.questionNumber} from "${testName}"` : `Question #${q.questionNumber}`);
+      const reasoning = q.reasoning || 'Review the core concept for this topic.';
+      const correctAnswer = q.correctAnswer || 'Not recorded';
 
-        const cardBack = `**Correct Answer:** ${q.correctAnswer}\n\n` +
-          `**Why:** ${q.reasoning || 'Review the core concept for this topic.'}\n\n` +
-          `**Category:** ${q.mistakeCategory || 'Review needed'}`;
+      await createCardFromMistake(
+        userId,
+        conceptId, // can be null
+        q.subject,
+        q.chapter,
+        questionDesc,
+        correctAnswer,
+        reasoning
+      );
 
-        await createSingleCard(
-          userId,
-          conceptId || '',
-          cardFront,
-          cardBack,
-          q.subject,
-          q.chapter
-        );
-
-        logger.info('AUTOPSY → MEMORY: created review card', { chapter: q.chapter, category: q.mistakeCategory });
-      } else if (q.chapter) {
-        // Fallback: create a chapter-level review card
-        await createSingleCard(
-          userId,
-          conceptId || '',
-          `Review: ${q.chapter} (${q.subject}) — mistake from mock test`,
-          `This topic caused a mistake. Category: ${q.mistakeCategory || 'unknown'}. ${q.reasoning || 'Focus on fundamentals.'}`,
-          q.subject,
-          q.chapter
-        );
-      }
+      logger.info('AUTOPSY → MEMORY: created mistake recovery card', { chapter: q.chapter, category: q.mistakeCategory });
     } catch (err) {
       logger.error('Autopsy pipeline failed for question', { chapter: q.chapter, err });
       // Non-blocking — process the rest
