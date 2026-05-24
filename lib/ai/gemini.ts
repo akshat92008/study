@@ -15,7 +15,7 @@ export const MODELS = {
   // Use Pro for complex reasoning (analysis, strategy, mentoring)
   pro: 'gemini-2.5-pro',
   // Use Flash for image understanding
-  flashVision: 'gemini-2.5-flash',
+  flashVision: 'gemini-2.0-flash',
 } as const;
 
 // Anti-Prompt-Injection Boundary
