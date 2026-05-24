@@ -127,6 +127,10 @@ export async function generateWithGroq(
   const data = await response.json();
   return data.choices?.[0]?.message?.content || '';
 }
+  );
+  const data = await response.json();
+  return data.choices?.[0]?.message?.content || '';
+}
 
 export async function generateJSONWithGroq<T>(
   systemPrompt: string,
@@ -140,19 +144,41 @@ export async function generateJSONWithGroq<T>(
   let jsonSystemPrompt = systemPrompt.toLowerCase().includes('json')
     ? systemPrompt
     : `${systemPrompt}\n\nRespond ONLY with valid JSON.`;
-
+ 
   if (schema) {
     const shapeDesc = describeZodSchema(schema);
     if (shapeDesc) {
       jsonSystemPrompt += `\n\nYour JSON response must match this schema structure: ${shapeDesc}`;
     }
   }
-
+ 
   const response = await callOpenAICompatibleAPI(
     'https://api.groq.com/openai/v1/chat/completions',
     process.env.GROQ_API_KEY,
     {
       model: 'llama-3.3-70b-versatile',
+      messages: normalizeMessages(jsonSystemPrompt, userPrompt),
+      response_format: { type: 'json_object' },
+      max_tokens: 4096,
+      temperature,
+    }
+  );
+  const data = await response.json();
+  const text = data.choices?.[0]?.message?.content || '{}';
+  const parsed = JSON.parse(text);
+  
+  if (schema) {
+    return schema.parse(parsed);
+  }
+  return parsed as T;
+}
+  }
+ 
+  const response = await callOpenAICompatibleAPI(
+    'https://api.groq.com/openai/v1/chat/completions',
+    process.env.GROQ_API_KEY,
+    {
+      model: 'llama-3-70b-8192',
       messages: normalizeMessages(jsonSystemPrompt, userPrompt),
       response_format: { type: 'json_object' },
       max_tokens: 4096,
