@@ -1,13 +1,15 @@
 import { redirect } from 'next/navigation';
-import { initializeConcepts } from '@/lib/actions/cognition';
+import { createClient } from '@/lib/supabase/server';
 
 interface PageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
 export default async function CognitionPage({ searchParams }: PageProps) {
-  // Ensure concepts are initialized, then redirect
-  await initializeConcepts();
+  // Check auth only — no seeding here, dashboard loads its own data
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) redirect('/login');
 
   const resolvedParams = await searchParams;
   const magic = resolvedParams?.magic === 'true' ? 'magic=true' : '';
