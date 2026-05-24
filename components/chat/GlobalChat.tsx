@@ -241,27 +241,21 @@ export const GlobalChat = memo(function GlobalChat() {
     resetStatus();
   };
 
-  if (!isAssistantOpen) return null;
-
-  return (
-    <div
-      style={{
-        position: 'fixed',
-        bottom: '24px',
-        right: '24px',
-        width: isExpanded ? '600px' : '400px',
-        height: isExpanded ? '80vh' : '600px',
-        maxHeight: 'calc(100vh - 48px)',
-        background: 'var(--bg-elevated)',
-        border: '1px solid var(--border-default)',
-        borderRadius: 'var(--radius-xl)',
-        boxShadow: 'var(--shadow-lg), 0 0 40px hsla(265, 80%, 60%, 0.08)',
-        display: 'flex',
-        flexDirection: 'column',
-        zIndex: 9999,
-        transition: 'all var(--ease-spring) 400ms',
-        overflow: 'hidden',
-      }}
+   return (
+     <div
+       style={{
+         position: 'relative',
+         width: '100%',
+         height: '100%',
+          background: 'var(--bg-elevated)',
+          border: 'none',
+          borderRadius: '0',
+          boxShadow: 'none',
+          display: 'flex',
+         flexDirection: 'column',
+         zIndex: 1,
+         overflow: 'hidden',
+       }}
     >
       {/* Header */}
       <div style={{

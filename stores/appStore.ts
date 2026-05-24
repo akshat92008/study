@@ -89,7 +89,7 @@ export const useAppStore = create<AppState>()(
       setCommandBarOpen: (open) => set({ isCommandBarOpen: open }),
       toggleCommandBar: () => set((state) => ({ isCommandBarOpen: !state.isCommandBarOpen })),
       
-      isAssistantOpen: false,
+       isAssistantOpen: true,
       setAssistantOpen: (open) => set({ isAssistantOpen: open }),
       toggleAssistant: () => set((state) => ({ isAssistantOpen: !state.isAssistantOpen })),
       

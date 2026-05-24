@@ -50,39 +50,27 @@ export default function DashboardClientLayout({ children, profile }: DashboardCl
         examType={profile?.exam_type || 'General'}
       />
 
-      {/* Content wrapper */}
-      <div
-        style={{
-          flex: 1,
-          marginLeft: 'var(--sidebar-width)',
-          display: 'flex',
-          flexDirection: 'column',
-          minWidth: 0,
-          transition: 'margin-left var(--duration-normal) var(--ease-out)',
-          height: '100vh',
-          overflow: 'hidden',
-        }}
-      >
-        <Header
-          userName={profile?.full_name || 'Student'}
-          streakDays={profile?.streak_days || 0}
-        />
-        <div style={{ display: 'flex', flex: 1, overflow: 'hidden', marginTop: 'var(--header-height)' }}>
-          <main
-            style={{
-              flex: 1,
-              padding: 'var(--sp-6)',
-              overflowY: 'auto',
-              maxWidth: 'var(--content-max-width)',
-              width: '100%',
-              minWidth: 0,
-            }}
-          >
-            {children}
-          </main>
-          <GlobalChat />
-        </div>
-      </div>
+       {/* Content wrapper */}
+       <div
+         style={{
+           flex: 1,
+           marginLeft: 'var(--sidebar-width)',
+           display: 'flex',
+           flexDirection: 'column',
+           minWidth: 0,
+           transition: 'margin-left var(--duration-normal) var(--ease-out)',
+           height: '100vh',
+           overflow: 'hidden',
+         }}
+       >
+         <Header
+           userName={profile?.full_name || 'Student'}
+           streakDays={profile?.streak_days || 0}
+         />
+         <div style={{ display: 'flex', flex: 1, overflow: 'hidden', marginTop: 'var(--header-height)' }}>
+           <GlobalChat />
+         </div>
+       </div>
     </div>
   );
 }
