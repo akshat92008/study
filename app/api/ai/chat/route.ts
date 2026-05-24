@@ -122,7 +122,7 @@ export async function POST(req: NextRequest) {
           method: 'POST',
           headers: { 'Authorization': `Bearer ${process.env.GROQ_API_KEY}`, 'Content-Type': 'application/json' },
           body: JSON.stringify({
-             model: 'llama-3-70b-8192',
+             model: 'llama-3.3-70b-versatile',
             messages: [
               { role: 'system', content: orchestratorPrompt },
               ...((history || []).slice(-6).map((m: any) => ({ role: m.role === 'user' ? 'user' : 'assistant', content: m.content }))),
