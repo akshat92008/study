@@ -41,8 +41,8 @@ export class EventWorker {
         }
         // Record metric for processed event
         eventProcessedCounter.add(1, { userId, eventType: type });
-      } catch (innerErr) {
-        span.recordException(innerErr);
+} catch (innerErr) {
+  span.recordException(innerErr as Error);
         throw innerErr;
       } finally {
         const duration = Date.now() - start;
@@ -55,7 +55,7 @@ export class EventWorker {
     } catch (err) {
       await sendSlackAlert('EventWorker crashed', (err as Error).message);
       const span = trace.startSpan('worker.start');
-      span.recordException(err);
+       span.recordException(err as Error);
       span.end();
       throw err;
     }
