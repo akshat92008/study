@@ -127,15 +127,98 @@ export async function POST(req: NextRequest) {
   const tools: any = buildOrchestratorTools();
 
   let orchestratorResponse: any;
-   try {
-     orchestratorResponse = await genai.models.generateContent({
-       model: 'gemini-2.0-flash',
-       contents: geminiHistory,
-       config: { systemInstruction: orchestratorPrompt, tools, temperature: 0.15 },
-     });
-   } catch (err: any) {
+  try {
+    orchestratorResponse = await genai.models.generateContent({
+      model: 'gemini-2.0-flash',
+      contents: geminiHistory,
+      config: { systemInstruction: orchestratorPrompt, tools, temperature: 0.15 },
+    });
+  } catch (err: any) {
     logger.error('Orchestrator failed', err);
-    return new Response('AI service temporarily unavailable. Try again in a moment.', { status: 503 });
+
+    // Try Groq first
+    if (process.env.GROQ_API_KEY) {
+      try {
+        const groqRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            model: 'llama-3.3-70b-versatile',
+            messages: [
+              { role: 'system', content: orchestratorPrompt },
+              ...((history || []).slice(-6).map((m: any) => ({
+                role: m.role === 'user' ? 'user' : 'assistant',
+                content: m.content,
+              }))),
+              { role: 'user', content: message },
+            ],
+            max_tokens: 2048,
+            temperature: 0.7,
+          }),
+        });
+        if (groqRes.ok) {
+          const groqData = await groqRes.json();
+          const groqText = groqData.choices?.[0]?.message?.content || '';
+          const stream = new ReadableStream({
+            start(controller) {
+              controller.enqueue(encoder.encode(groqText));
+              controller.close();
+            }
+          });
+          return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+        }
+      } catch (groqErr) {
+        logger.warn('Groq fallback failed, trying DeepSeek', groqErr);
+      }
+    }
+
+    // Try DeepSeek second
+    if (process.env.DEEPSEEK_API_KEY) {
+      try {
+        const deepseekRes = await fetch('https://api.deepseek.com/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${process.env.DEEPSEEK_API_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            model: 'deepseek-chat',
+            messages: [
+              { role: 'system', content: orchestratorPrompt },
+              ...((history || []).slice(-6).map((m: any) => ({
+                role: m.role === 'user' ? 'user' : 'assistant',
+                content: m.content,
+              }))),
+              { role: 'user', content: message },
+            ],
+            max_tokens: 2048,
+            temperature: 0.7,
+          }),
+        });
+        if (deepseekRes.ok) {
+          const deepseekData = await deepseekRes.json();
+          const deepseekText = deepseekData.choices?.[0]?.message?.content || '';
+          const stream = new ReadableStream({
+            start(controller) {
+              controller.enqueue(encoder.encode(deepseekText));
+              controller.close();
+            }
+          });
+          return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+        }
+      } catch (deepseekErr) {
+        logger.warn('DeepSeek fallback also failed', deepseekErr);
+      }
+    }
+
+    // All three failed
+    return new Response(
+      'AI service temporarily unavailable. Try again in a moment.',
+      { status: 503 }
+    );
   }
 
   const functionCall = orchestratorResponse.functionCalls?.[0];

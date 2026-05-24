@@ -265,6 +265,7 @@ export async function* streamText(
 ): AsyncGenerator<string> {
   let primaryFailed = false;
 
+  // Try primary Gemini model
   try {
     const response = await genai.models.generateContentStream({
       model: MODELS[model],
@@ -275,11 +276,8 @@ export async function* streamText(
         maxOutputTokens: 8192,
       },
     });
-
     for await (const chunk of response) {
-      if (chunk.text) {
-        yield chunk.text;
-      }
+      if (chunk.text) yield chunk.text;
     }
     return; // Succeeded
   } catch (err: any) {
@@ -299,11 +297,8 @@ export async function* streamText(
           maxOutputTokens: 8192,
         },
       });
-
       for await (const chunk of response) {
-        if (chunk.text) {
-          yield chunk.text;
-        }
+        if (chunk.text) yield chunk.text;
       }
       return; // Succeeded
     } catch (fallbackErr: any) {
@@ -338,12 +333,12 @@ export async function* streamText(
 export async function getEmbedding(text: string): Promise<number[]> {
   try {
     const response = await genai.models.embedContent({
-      model: 'text-embedding-004',
+      model: 'models/text-embedding-004',
       contents: text,
     });
     return response.embeddings?.[0]?.values || [];
   } catch (err: any) {
     logger.error('Failed to generate embedding', { error: err.message });
-    throw err;
+    return []; // Return empty array instead of throwing — non-critical
   }
 }
