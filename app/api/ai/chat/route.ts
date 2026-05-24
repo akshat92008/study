@@ -5,7 +5,7 @@
 import { NextRequest } from 'next/server';
 import { after } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { streamText, generateJSON, genai, getEmbedding } from '@/lib/ai/gemini';
+import { streamText, generateJSON, genai, getEmbedding, MODELS } from '@/lib/ai/gemini';
 import { getMINDContext } from '@/lib/engines/mind-engine';
 import { getMINDSystemPrompt } from '@/lib/ai/prompts/mind-prompt';
 import { updateConceptState } from '@/lib/engines/cognition-graph';
@@ -40,11 +40,11 @@ async function handleImageMessage(
       }
     ]
   }];
-  const response = await genai.models.generateContent({
-    model: 'gemini-2.5-flash',
-    contents,
-    config: { systemInstruction: systemPrompt, temperature: 0.4, maxOutputTokens: 4096 },
-  });
+   const response = await genai.models.generateContent({
+     model: MODELS.flashVision,
+     contents,
+     config: { systemInstruction: systemPrompt, temperature: 0.4, maxOutputTokens: 4096 },
+   });
   return response.text || 'Could not read the image clearly. Try a cleaner photo with better lighting.';
 }
 
