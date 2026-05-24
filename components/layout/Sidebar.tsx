@@ -4,7 +4,8 @@ import { useState, useEffect, useRef } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import {
-  MessageSquare, Zap, X, ChevronLeft, ChevronRight, Plus, Check, Loader2, Target, Calendar, Clock, Sliders, Sparkles, LogOut
+  MessageSquare, Zap, X, ChevronLeft, ChevronRight, Plus, Check, Loader2, Target, Calendar, Clock, Sliders, Sparkles, LogOut,
+  Brain, RefreshCw, Activity, BookOpen
 } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -153,53 +154,69 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
           overflowX: 'hidden',
         }}
       >
-        {/* Workspace Link */}
+        {/* Workspace Links */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-1)' }}>
-          <Link
-            href="/dashboard"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: isSidebarCollapsed ? 0 : 'var(--sp-3)',
-              justifyContent: isSidebarCollapsed ? 'center' : 'flex-start',
-              padding: isSidebarCollapsed ? 'var(--sp-3)' : 'var(--sp-2) var(--sp-3)',
-              borderRadius: 'var(--radius-md)',
-              fontSize: 'var(--fs-sm)',
-              fontWeight: pathname === '/dashboard' ? 'var(--fw-semibold)' : 'var(--fw-normal)',
-              color: pathname === '/dashboard' ? 'var(--text-primary)' : 'var(--text-secondary)',
-              background: pathname === '/dashboard' ? 'var(--bg-tertiary)' : 'transparent',
-              textDecoration: 'none',
-              transition: 'all var(--duration-fast) var(--ease-out)',
-              position: 'relative',
-            }}
-          >
-            {pathname === '/dashboard' && (
-              <div
+          {[
+            { href: '/dashboard', label: 'Conversational OS', icon: MessageSquare, accentColor: 'var(--accent-blue)' },
+            { href: '/cognition', label: 'ATLAS Graph', icon: Brain, accentColor: 'var(--accent-purple)' },
+            { href: '/revision', label: 'MEMORY Cards', icon: RefreshCw, accentColor: 'var(--accent-blue)' },
+            { href: '/autopsy', label: 'AUTOPSY Mock', icon: Activity, accentColor: 'var(--danger)' },
+            { href: '/planner', label: 'COMMAND Plan', icon: Calendar, accentColor: 'var(--accent-cyan)' },
+            { href: '/knowledge', label: 'Knowledge Base', icon: BookOpen, accentColor: 'var(--accent-cyan)' },
+            { href: '/analytics', label: 'Analytics', icon: Sparkles, accentColor: 'var(--accent-purple)' },
+            { href: '/pulse', label: 'PULSE State', icon: Sliders, accentColor: 'var(--accent-purple)' },
+          ].map((item) => {
+            const isActive = pathname === item.href;
+            const Icon = item.icon;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
                 style={{
-                  position: 'absolute',
-                  left: 0,
-                  top: '25%',
-                  bottom: '25%',
-                  width: 3,
-                  background: 'var(--accent-blue)',
-                  borderRadius: 2,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: isSidebarCollapsed ? 0 : 'var(--sp-3)',
+                  justifyContent: isSidebarCollapsed ? 'center' : 'flex-start',
+                  padding: isSidebarCollapsed ? 'var(--sp-3)' : 'var(--sp-2) var(--sp-3)',
+                  borderRadius: 'var(--radius-md)',
+                  fontSize: 'var(--fs-sm)',
+                  fontWeight: isActive ? 'var(--fw-semibold)' : 'var(--fw-normal)',
+                  color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
+                  background: isActive ? 'var(--bg-tertiary)' : 'transparent',
+                  textDecoration: 'none',
+                  transition: 'all var(--duration-fast) var(--ease-out)',
+                  position: 'relative',
                 }}
-              />
-            )}
-            <MessageSquare size={18} style={{ opacity: pathname === '/dashboard' ? 1 : 0.6, flexShrink: 0 }} />
-            <span
-              style={{
-                opacity: isSidebarCollapsed ? 0 : 1,
-                width: isSidebarCollapsed ? 0 : 'auto',
-                overflow: 'hidden',
-                whiteSpace: 'nowrap',
-                flex: 1,
-                transition: 'opacity var(--duration-fast) var(--ease-out)',
-              }}
-            >
-              Conversational OS
-            </span>
-          </Link>
+              >
+                {isActive && (
+                  <div
+                    style={{
+                      position: 'absolute',
+                      left: 0,
+                      top: '25%',
+                      bottom: '25%',
+                      width: 3,
+                      background: item.accentColor,
+                      borderRadius: 2,
+                    }}
+                  />
+                )}
+                <Icon size={18} style={{ opacity: isActive ? 1 : 0.6, flexShrink: 0, color: isActive ? item.accentColor : 'inherit' }} />
+                <span
+                  style={{
+                    opacity: isSidebarCollapsed ? 0 : 1,
+                    width: isSidebarCollapsed ? 0 : 'auto',
+                    overflow: 'hidden',
+                    whiteSpace: 'nowrap',
+                    flex: 1,
+                    transition: 'opacity var(--duration-fast) var(--ease-out)',
+                  }}
+                >
+                  {item.label}
+                </span>
+              </Link>
+            );
+          })}
         </div>
 
         {/* Learning Goals Section */}

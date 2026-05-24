@@ -1,18 +1,22 @@
 // lib/events/types.ts
+// FIX FAILURE 1: Previously CognitionEventType enum had values like 'mastery_changed'
+// but schema.ts Zod enum had 'MIND_TUTOR_COMPLETED' and engines inserted 'AUTOPSY_COMPLETE'.
+// Three systems, zero agreement. Events were silently dropped.
+//
+// NOW: This enum mirrors schema.ts exactly so EventWorker, schema validation,
+// and engine inserts all use the same string values.
 
-/**
- * Cognition event types used throughout the system. These are the high‑level
- * domain events that drive learner‑state orchestration.
- */
 export enum CognitionEventType {
+  MindTutorCompleted = 'MIND_TUTOR_COMPLETED',
+  AutopsyMockProcessed = 'AUTOPSY_MOCK_PROCESSED',
+  MemoryCardReviewed = 'MEMORY_CARD_REVIEWED',
+  CommandTaskCompleted = 'COMMAND_TASK_COMPLETED',
+  CommandTaskDelayed = 'COMMAND_TASK_DELAYED',
+  PulseFrictionDetected = 'PULSE_FRICTION_DETECTED',
+  AtlasMasteryUpdated = 'ATLAS_MASTERY_UPDATED',
+
+  // Legacy events for EventWorker and its tests
   MasteryChanged = 'mastery_changed',
   RetrievalSucceeded = 'retrieval_succeeded',
   RetrievalFailed = 'retrieval_failed',
-  MisconceptionDetected = 'misconception_detected',
-  BurnoutRiskIncreased = 'burnout_risk_increased',
-  ConfidenceDropDetected = 'confidence_drop_detected',
-  LearningVelocityChanged = 'learning_velocity_changed',
-  RemediationCompleted = 'remediation_completed',
-  StreakExtended = 'streak_extended',
-  CognitiveOverloadDetected = 'cognitive_overload_detected',
 }

@@ -1,7 +1,4 @@
 // app/api/ai/chat/route.ts
-// THE canonical chat route for Cognition OS. Replaces /api/ai/global and /api/ai/tutor.
-// All chat traffic flows through here. One route, one brain.
-
 import { NextRequest } from 'next/server';
 import { after } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
@@ -13,7 +10,7 @@ import { createSingleCard } from '@/lib/engines/revision-engine';
 import { logger } from '@/lib/utils/logger';
 import { resolveConceptByName } from '@/lib/engines/concept-resolver';
 import { LearningStateEngine } from '@/lib/engines/learning-state-engine';
-import { logPulseSignal } from '@/lib/engines/pulse-engine';
+import { logPulseSignal, detectStudyFriction } from '@/lib/engines/pulse-engine';
 import { generateSessionClosingMessage } from '@/lib/engines/session-closing';
 import { syncStudentModel } from '@/lib/engines/inference-engine';
 import { generateSprintPlanAction } from '@/lib/actions/planner';
@@ -24,7 +21,6 @@ import { z } from 'zod';
 
 const encoder = new TextEncoder();
 
-// ─── Image handler ────────────────────────────────────────────────────────────
 async function handleImageMessage(
   imageBase64: string,
   imageMimeType: string,
@@ -36,42 +32,32 @@ async function handleImageMessage(
     parts: [
       { inlineData: { mimeType: imageMimeType, data: imageBase64 } },
       {
-        text: `${message || 'Solve this question completely.'}\n\nInstructions:\n1. Identify what is shown in the image — question, diagram, handwriting, textbook page, etc.\n2. Solve it completely, step by step.\n3. Explain the core concept behind it.\n4. State how this topic typically appears in exams.\n5. Flag any common mistakes students make on this type of question.`
+        text: `${message || 'Solve this question completely.'}\n\nInstructions:\n1. Identify what is shown — question, diagram, handwriting, textbook page, etc.\n2. Solve completely, step by step.\n3. Explain the core concept behind it.\n4. State how this topic typically appears in exams.\n5. Flag common mistakes on this type of question.`
       }
     ]
   }];
-   const response = await genai.models.generateContent({
-     model: MODELS.flashVision,
-     contents,
-     config: { systemInstruction: systemPrompt, temperature: 0.4, maxOutputTokens: 4096 },
-   });
+  const response = await genai.models.generateContent({
+    model: MODELS.flashVision,
+    contents,
+    config: { systemInstruction: systemPrompt, temperature: 0.4, maxOutputTokens: 4096 },
+  });
   return response.text || 'Could not read the image clearly. Try a cleaner photo with better lighting.';
 }
 
-// ─── Intent detection schema ──────────────────────────────────────────────────
 const IntentSchema = z.object({
   intent: z.enum([
-    'TUTOR_SESSION',   // explain X, what is X, I don't understand X
-    'PRACTICE',        // give me questions, test me, quiz me
-    'CREATE_ARTIFACT', // make me a study guide / revision sheet / flashcards / plan
-    'AUTOPSY',         // I gave a mock test, upload test
-    'ANALYTICS',       // how am I doing, my progress, stats
-    'ATLAS',           // my knowledge map, knowledge graph
-    'FLASHCARDS',      // review flashcards, show me cards
-    'REPLAN',          // I'm overwhelmed, change my plan
-    'GENERAL_CHAT',    // hey, hi, how are you, casual
+    'TUTOR_SESSION', 'PRACTICE', 'CREATE_ARTIFACT', 'AUTOPSY',
+    'ANALYTICS', 'ATLAS', 'FLASHCARDS', 'REPLAN', 'GENERAL_CHAT',
   ]),
   topic: z.string().optional(),
   subject: z.string().optional(),
 });
 
-// ─── Main route ───────────────────────────────────────────────────────────────
 export async function POST(req: NextRequest) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return new Response('Unauthorized', { status: 401 });
 
-  // Rate limit: 120 messages/hour (generous for beta, prevents abuse)
   const limiter = RateLimiter.getInstance();
   const allowed = await limiter.consume(`chat-${user.id}`, 120, 60 * 60 * 1000);
   if (!allowed) {
@@ -87,26 +73,22 @@ export async function POST(req: NextRequest) {
   const { message, history, imageBase64, imageMimeType, activeGoalId, chatId } = body;
   const sessionId = chatId || crypto.randomUUID();
 
-  // ── Build student context ──────────────────────────────────────────────────
   const [mindContext, semanticMemories] = await Promise.all([
     getMINDContext(user.id, message),
-    // ✅ FIX: Actually call match_chat_memory for cross-session memory
     message
       ? new ChatMemoryService().searchMemory(user.id, message, 3).catch(() => [] as string[])
       : Promise.resolve([] as string[]),
   ]);
 
-  // Inject semantic memories into the system prompt context
   const systemPrompt = getMINDSystemPrompt(mindContext, semanticMemories);
 
-  // ── Image messages → direct multimodal response ────────────────────────────
   if (imageBase64 && imageMimeType) {
     const stream = new ReadableStream({
       async start(controller) {
         try {
           const answer = await handleImageMessage(imageBase64, imageMimeType, message || '', systemPrompt);
           controller.enqueue(encoder.encode(answer));
-        } catch (err) {
+        } catch {
           controller.enqueue(encoder.encode('I had trouble reading that image. Try a clearer photo, or type the question out.'));
         }
         controller.close();
@@ -115,14 +97,12 @@ export async function POST(req: NextRequest) {
     return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
   }
 
-  // ── Build Gemini conversation history (last 12 turns) ─────────────────────
   const geminiHistory = (history || []).slice(-12).map((m: any) => ({
     role: m.role === 'user' ? 'user' : 'model',
     parts: [{ text: m.content || '' }],
   }));
   geminiHistory.push({ role: 'user', parts: [{ text: message || '' }] });
 
-  // ── Orchestrator: intent detection via function calling ───────────────────
   const orchestratorPrompt = buildOrchestratorPrompt(mindContext, user.id);
   const tools: any = buildOrchestratorTools();
 
@@ -136,89 +116,55 @@ export async function POST(req: NextRequest) {
   } catch (err: any) {
     logger.error('Orchestrator failed', err);
 
-    // Try Groq first
     if (process.env.GROQ_API_KEY) {
       try {
         const groqRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
           method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
-            'Content-Type': 'application/json',
-          },
+          headers: { 'Authorization': `Bearer ${process.env.GROQ_API_KEY}`, 'Content-Type': 'application/json' },
           body: JSON.stringify({
             model: 'llama-3.3-70b-versatile',
             messages: [
               { role: 'system', content: orchestratorPrompt },
-              ...((history || []).slice(-6).map((m: any) => ({
-                role: m.role === 'user' ? 'user' : 'assistant',
-                content: m.content,
-              }))),
+              ...((history || []).slice(-6).map((m: any) => ({ role: m.role === 'user' ? 'user' : 'assistant', content: m.content }))),
               { role: 'user', content: message },
             ],
-            max_tokens: 2048,
-            temperature: 0.7,
+            max_tokens: 2048, temperature: 0.7,
           }),
         });
         if (groqRes.ok) {
-          const groqData = await groqRes.json();
-          const groqText = groqData.choices?.[0]?.message?.content || '';
-          const stream = new ReadableStream({
-            start(controller) {
-              controller.enqueue(encoder.encode(groqText));
-              controller.close();
-            }
-          });
-          return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+          const d = await groqRes.json();
+          const t = d.choices?.[0]?.message?.content || '';
+          const s = new ReadableStream({ start(c) { c.enqueue(encoder.encode(t)); c.close(); } });
+          return new Response(s, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
         }
-      } catch (groqErr) {
-        logger.warn('Groq fallback failed, trying DeepSeek', groqErr);
-      }
+      } catch (groqErr) { logger.warn('Groq fallback failed', groqErr); }
     }
 
-    // Try DeepSeek second
     if (process.env.DEEPSEEK_API_KEY) {
       try {
-        const deepseekRes = await fetch('https://api.deepseek.com/chat/completions', {
+        const dsRes = await fetch('https://api.deepseek.com/chat/completions', {
           method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${process.env.DEEPSEEK_API_KEY}`,
-            'Content-Type': 'application/json',
-          },
+          headers: { 'Authorization': `Bearer ${process.env.DEEPSEEK_API_KEY}`, 'Content-Type': 'application/json' },
           body: JSON.stringify({
             model: 'deepseek-chat',
             messages: [
               { role: 'system', content: orchestratorPrompt },
-              ...((history || []).slice(-6).map((m: any) => ({
-                role: m.role === 'user' ? 'user' : 'assistant',
-                content: m.content,
-              }))),
+              ...((history || []).slice(-6).map((m: any) => ({ role: m.role === 'user' ? 'user' : 'assistant', content: m.content }))),
               { role: 'user', content: message },
             ],
-            max_tokens: 2048,
-            temperature: 0.7,
+            max_tokens: 2048, temperature: 0.7,
           }),
         });
-        if (deepseekRes.ok) {
-          const deepseekData = await deepseekRes.json();
-          const deepseekText = deepseekData.choices?.[0]?.message?.content || '';
-          const stream = new ReadableStream({
-            start(controller) {
-              controller.enqueue(encoder.encode(deepseekText));
-              controller.close();
-            }
-          });
-          return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+        if (dsRes.ok) {
+          const d = await dsRes.json();
+          const t = d.choices?.[0]?.message?.content || '';
+          const s = new ReadableStream({ start(c) { c.enqueue(encoder.encode(t)); c.close(); } });
+          return new Response(s, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
         }
-      } catch (deepseekErr) {
-        logger.warn('DeepSeek fallback also failed', deepseekErr);
-      }
+      } catch (dsErr) { logger.warn('DeepSeek fallback failed', dsErr); }
     }
 
-    // All three failed
-    return new Response(
-      'AI service temporarily unavailable. Try again in a moment.',
-      { status: 503 }
-    );
+    return new Response('AI service temporarily unavailable. Try again in a moment.', { status: 503 });
   }
 
   const functionCall = orchestratorResponse.functionCalls?.[0];
@@ -226,7 +172,6 @@ export async function POST(req: NextRequest) {
     .map((m: any) => `${m.role === 'user' ? 'Student' : 'Cognition'}: ${m.content}`)
     .join('\n');
 
-  // ── Stream the response ────────────────────────────────────────────────────
   const stream = new ReadableStream({
     async start(controller) {
       let fullResponse = '';
@@ -239,7 +184,7 @@ export async function POST(req: NextRequest) {
         } else {
           const { name, args } = functionCall;
 
-          // ── TUTOR SESSION ───────────────────────────────────────────────
+          // ─── TUTOR SESSION ───────────────────────────────────────────────
           if (name === 'trigger_tutor_session') {
             const topic = (args as any).topic || 'General';
             const subject = (args as any).subject || 'General';
@@ -260,15 +205,13 @@ export async function POST(req: NextRequest) {
                 .not('summary', 'is', null)
                 .order('started_at', { ascending: false })
                 .limit(3);
-
               if (pastSessions?.length) {
                 pastSessionCtx = '\n\nPAST SESSIONS ON THIS TOPIC:\n' +
                   pastSessions.map((s: any) => `- [${new Date(s.started_at).toLocaleDateString()}] ${s.summary}`).join('\n');
               }
             }
 
-            const tutorContext = `
-Topic: ${subject} > ${topic}
+            const tutorContext = `Topic: ${subject} > ${topic}
 Past Mistakes Here: ${mistakes?.map((m: any) => m.ai_analysis).join('; ') || 'None'}${pastSessionCtx}
 
 Conversation so far:\n${historyText}\nStudent: ${message}`;
@@ -278,25 +221,61 @@ Conversation so far:\n${historyText}\nStudent: ${message}`;
               fullResponse += chunk;
             }
 
-            // Post-session processing (async)
+            // ── FIX BUG 3: Compute analysis SYNCHRONOUSLY so closing message gets real values ──
+            // Previously analysis ran in after() AFTER the closing message was already sent,
+            // making it impossible to pass real values. Now we compute it here first.
+            let analysis: { understood: boolean; gapFound: string | null; gapAnswer: string | null; summary: string } = {
+              understood: false, gapFound: null, gapAnswer: null, summary: '',
+            };
+            let cardsCreated = 0;
+
             if (fullResponse.length > 100) {
+              try {
+                const analysisPrompt = `Analyze this tutor exchange.\n${historyText}\nStudent: ${message}\nTutor: ${fullResponse}\n\nRespond ONLY as JSON:\n{"summary":"1 sentence summary","understood":true,"gapFound":"flashcard question or null","gapAnswer":"flashcard answer or null"}`;
+                const raw = await generateJSON<any>('flash', 'Expert analyzer. Return JSON only.', analysisPrompt);
+                if (raw && typeof raw.understood === 'boolean') {
+                  analysis = {
+                    understood: raw.understood,
+                    gapFound: typeof raw.gapFound === 'string' && raw.gapFound.length > 0 ? raw.gapFound : null,
+                    gapAnswer: typeof raw.gapAnswer === 'string' && raw.gapAnswer.length > 0 ? raw.gapAnswer : null,
+                    summary: raw.summary || '',
+                  };
+                }
+              } catch (analysisErr) {
+                logger.warn('Session analysis failed — safe defaults used', analysisErr);
+              }
+
+              // Create gap card now so cardsCreated count is accurate for closing message
+              if (
+                !analysis.understood &&
+                analysis.gapFound && analysis.gapFound.length > 0 &&
+                analysis.gapAnswer && analysis.gapAnswer.length > 0
+              ) {
+                try {
+                  await createSingleCard(
+                    user.id, conceptId ?? '', analysis.gapFound, analysis.gapAnswer, subject, topic
+                  );
+                  cardsCreated = 1;
+                  logger.info('MIND → MEMORY: gap card created', { subject, topic });
+                } catch (cardErr) {
+                  logger.warn('Gap card creation failed', cardErr);
+                }
+              }
+
+              // Defer heavier work — DB writes, model sync — to after()
+              const analysisSnap = { ...analysis };
               after(async () => {
                 try {
-                  const analysisPrompt = `Analyze this tutor exchange. Did the student demonstrate understanding?\n${historyText}\nStudent: ${message}\nTutor: ${fullResponse}\n\nRespond ONLY as JSON:\n{\"summary\":\"1 sentence summary\",\"understood\":true,\"gapFound\":\"question for flashcard front or null\",\"gapAnswer\":\"answer or null\"}`;
-                  const analysis = await generateJSON<any>('flash', 'Expert analyzer. Return JSON only.', analysisPrompt);
-
-                  // Every 5 sessions, infer learning style from response patterns
+                  // Learning style inference every 5 sessions
                   const { count: sessionCount } = await supabase
                     .from('tutor_sessions')
                     .select('*', { count: 'exact', head: true })
                     .eq('user_id', user.id);
-                    
-                  if (sessionCount && sessionCount > 0 && sessionCount % 5 === 0) {
-                    const stylePrompt = `Based on how this student engages — 
-                    do they ask for examples first, first principles, analogies, or visual descriptions?
-                    History: ${historyText}
-                    Return JSON: { "learningStyle": "visual" | "analogy" | "first_principles" | "example_based" | "no_change" }`;
-                    
+
+                  if (sessionCount && sessionCount % 5 === 0) {
+                    const stylePrompt = `Based on how this student engages, what is their learning style?
+History: ${historyText}
+Return JSON: { "learningStyle": "visual" | "analogy" | "first_principles" | "example_based" | "no_change" }`;
                     const styleAnalysis = await generateJSON<any>('flash', 'Learning style detector. Return JSON only.', stylePrompt);
                     if (styleAnalysis?.learningStyle && styleAnalysis.learningStyle !== 'no_change') {
                       await supabase.from('learning_goals')
@@ -307,35 +286,36 @@ Conversation so far:\n${historyText}\nStudent: ${message}`;
                   }
 
                   if (conceptId) {
-                    await updateConceptState(conceptId, analysis.understood, 0);
+                    await updateConceptState(conceptId, analysisSnap.understood, 0);
                     await supabase.from('tutor_sessions').insert({
                       user_id: user.id,
-                      concept_id: conceptId || '',
-                      summary: analysis.summary,
+                      concept_id: conceptId,
+                      summary: analysisSnap.summary,
                       messages: [...(history || []), { role: 'user', content: message }, { role: 'assistant', content: fullResponse }],
                     });
-                  }
-
-                  // Create card regardless of whether conceptId resolved.
-                  // A student can get something wrong on a brand-new topic not yet in ATLAS.
-                  // createSingleCard accepts empty string for conceptId — the card is still useful.
-                  if (!analysis.understood && typeof analysis.gapFound === 'string' && analysis.gapFound.length > 0 && typeof analysis.gapAnswer === 'string' && analysis.gapAnswer.length > 0) {
-                    await createSingleCard(
-                      user.id,
-                      conceptId ?? '',   // empty string = orphan card, still reviewable
-                      analysis.gapFound,
-                      analysis.gapAnswer,
-                      subject,
-                      topic
-                    );
-                    logger.info('MIND → MEMORY: gap card created', { subject, topic, hasConceptId: !!conceptId });
                   }
 
                   await LearningStateEngine.ingestEvent({
                     userId: user.id,
                     type: 'SESSION_COMPLETED',
-                    data: { conceptId: conceptId ?? undefined, subject, chapter: topic, understandingGained: analysis.understood },
+                    data: { conceptId: conceptId ?? undefined, subject, chapter: topic, understandingGained: analysisSnap.understood },
                   });
+
+                  // FIX FAILURE 6: Write performance_snapshots so PULSE Rule 3 (accuracy drop) can actually fire
+                  await supabase.from('performance_snapshots').upsert({
+                    user_id: user.id,
+                    date: new Date().toISOString().split('T')[0],
+                    accuracy: analysisSnap.understood ? 1.0 : 0.0,
+                    session_count: 1,
+                  }, { onConflict: 'user_id,date' });
+
+                  // FIX FAILURE 7 (partial): Also write PULSE state back to profiles.emotional_state
+                  const pulseResult = await detectStudyFriction(user.id).catch(() => null);
+                  if (pulseResult) {
+                    await supabase.from('profiles')
+                      .update({ emotional_state: pulseResult.state })
+                      .eq('id', user.id);
+                  }
 
                   syncStudentModel(user.id).catch(() => {});
                 } catch (err) {
@@ -344,18 +324,19 @@ Conversation so far:\n${historyText}\nStudent: ${message}`;
               });
             }
 
+            // ── FIX BUG 3: Pass REAL analysis values — not hardcoded ──
             const closing = await generateSessionClosingMessage({
               userId: user.id,
               conceptId: conceptId || null,
               subject,
               chapter: topic,
-              gapFound: null,
-              gapAnswer: null,
-              understood: true,
+              gapFound: analysis.gapFound,
+              gapAnswer: analysis.gapAnswer,
+              understood: analysis.understood,
               turnsCount: history?.length || 0,
               oldMastery: null,
               newMastery: null,
-              cardsCreated: 0,
+              cardsCreated,
               sessionId: `chat-${Date.now()}`,
             }).catch(() => null);
 
@@ -365,10 +346,11 @@ Conversation so far:\n${historyText}\nStudent: ${message}`;
                 closingMessage: closing.text,
                 closingType: closing.type,
                 sessionComplete: true,
+                cardsCreated,
               };
             }
 
-          // ── STUDY PLAN ---------------------------------------------------
+          // ─── STUDY PLAN ──────────────────────────────────────────────────
           } else if (name === 'create_study_plan') {
             const target_date = (args as any).target_date;
             const { data: profile } = await supabase.from('profiles').select('study_hours_per_day').eq('id', user.id).single();
@@ -389,52 +371,120 @@ Conversation so far:\n${historyText}\nStudent: ${message}`;
               controller.enqueue(encoder.encode(`Could not generate plan right now: ${result.error}`));
             }
 
-          // ── ROUTING ACTIONS (navigate to a feature) -----------------------
+          // ─── FIX BUG 9: adjust_planner ACTUALLY modifies tasks now ───────
+          } else if (name === 'adjust_planner') {
+            const today = new Date().toISOString().split('T')[0];
+            const action = (args as any).action || 'reduce_tasks';
+
+            try {
+              const { data: todayTasks } = await supabase
+                .from('study_tasks')
+                .select('id, title, estimated_minutes, priority')
+                .eq('user_id', user.id)
+                .eq('scheduled_date', today)
+                .eq('is_completed', false)
+                .order('priority', { ascending: false });
+
+              if (!todayTasks || todayTasks.length === 0) {
+                controller.enqueue(encoder.encode("You have no tasks left for today — nothing to adjust. Want me to build a lighter plan from scratch?"));
+                fullResponse = "No tasks to adjust.";
+              } else {
+                let removedCount = 0;
+                let minutesSaved = 0;
+
+                if (action === 'reduce_tasks') {
+                  // Remove bottom 30% of tasks (lowest priority)
+                  const removeCount = Math.max(1, Math.floor(todayTasks.length * 0.3));
+                  const toRemove = todayTasks.slice(0, removeCount);
+                  const idsToRemove = toRemove.map((t: any) => t.id);
+                  await supabase.from('study_tasks').delete().in('id', idsToRemove).eq('user_id', user.id);
+                  removedCount = toRemove.length;
+                  minutesSaved = toRemove.reduce((sum: number, t: any) => sum + (t.estimated_minutes || 0), 0);
+                  const reply = `Done. Removed ${removedCount} task${removedCount > 1 ? 's' : ''} from today — you've saved ${minutesSaved} minutes. Focus on what remains.`;
+                  controller.enqueue(encoder.encode(reply));
+                  fullResponse = reply;
+
+                } else if (action === 'lighten_intensity') {
+                  // Cap all tasks at 25 minutes
+                  for (const task of todayTasks) {
+                    if ((task.estimated_minutes || 0) > 25) {
+                      minutesSaved += (task.estimated_minutes - 25);
+                      await supabase.from('study_tasks')
+                        .update({ estimated_minutes: 25 })
+                        .eq('id', task.id)
+                        .eq('user_id', user.id);
+                    }
+                  }
+                  const reply = `Done. All sessions capped at 25 minutes. You've saved ${minutesSaved} minutes total. Short, focused blocks — easier to start.`;
+                  controller.enqueue(encoder.encode(reply));
+                  fullResponse = reply;
+
+                } else if (action === 'add_break') {
+                  await supabase.from('study_tasks').insert({
+                    user_id: user.id,
+                    title: 'Recovery Break',
+                    description: 'Step away from your desk. No studying.',
+                    type: 'break',
+                    scheduled_date: today,
+                    estimated_minutes: 15,
+                    priority: 'low',
+                    is_completed: false,
+                  });
+                  const reply = "Added a 15-minute recovery break to your plan. Use it properly — step away from your desk completely.";
+                  controller.enqueue(encoder.encode(reply));
+                  fullResponse = reply;
+                }
+
+                // Log PULSE signal so the emotional state actually updates
+                await logPulseSignal(user.id, 'overwhelmed').catch(() => {});
+                metadataPayload = { action: 'planner_adjusted', tasksModified: true };
+              }
+            } catch (plannerErr) {
+              logger.error('adjust_planner failed', plannerErr);
+              controller.enqueue(encoder.encode("I had trouble adjusting your plan right now. Try again in a moment."));
+            }
+
+          // ─── NAVIGATION ROUTING ───────────────────────────────────────────
           } else {
             const routeMessages: Record<string, string> = {
-              run_autopsy: "Opening **AUTOPSY** — upload your mock test PDF or photo. I’ll diagnose every wrong answer by root cause and show you your recoverable score.",
+              run_autopsy: "Opening **AUTOPSY** — upload your mock test PDF or photo. I'll diagnose every wrong answer by root cause and show you your recoverable score.",
               show_flashcards: `You have **${mindContext.overdueCards}** cards due today. Opening your revision queue now.`,
               show_atlas: `Your knowledge map is at **${mindContext.masteryStats.masteryPercent}%** mastery. Opening ATLAS now.`,
               show_analytics: 'Opening your performance dashboard.',
-              adjust_planner: 'Adjusting today’s workload based on your current state...',
             };
             const msg = routeMessages[name] || 'Opening that for you now...';
             controller.enqueue(encoder.encode(msg));
+            fullResponse = msg;
             metadataPayload = { action: name };
           }
         }
 
-         // ── Persist chat history and memory — non‑blocking ──────────────────
-         if (message) {
-           after(async () => {
-             try {
-               // Ensure session exists in the DB so FK constraint does not throw
-               const { data: existingSession } = await supabase
-                 .from('chat_sessions')
-                 .select('id')
-                 .eq('id', sessionId)
-                 .maybeSingle();
+        // ── Persist chat history and memory — non-blocking ──────────────────
+        if (message) {
+          after(async () => {
+            try {
+              const { data: existingSession } = await supabase
+                .from('chat_sessions')
+                .select('id')
+                .eq('id', sessionId)
+                .maybeSingle();
 
-               if (!existingSession) {
-                 await supabase
-                   .from('chat_sessions')
-                   .insert({ id: sessionId, user_id: user.id, session_type: 'global', title: 'Cognition OS Main Thread' });
-               }
+              if (!existingSession) {
+                await supabase.from('chat_sessions').insert({
+                  id: sessionId, user_id: user.id, session_type: 'global', title: 'Cognition OS Main Thread'
+                });
+              }
 
-               await supabase.from('chat_messages').insert([
-                 { session_id: sessionId, user_id: user.id, role: 'user', content: message },
-                 { session_id: sessionId, user_id: user.id, role: 'assistant', content: fullResponse.slice(0, 4000) },
-               ]);
+              await supabase.from('chat_messages').insert([
+                { session_id: sessionId, user_id: user.id, role: 'user', content: message },
+                { session_id: sessionId, user_id: user.id, role: 'assistant', content: fullResponse.slice(0, 4000) },
+              ]);
 
               if (fullResponse.length > 50) {
                 const memoryContent = `Student asked: ${message}\nAnswer summary: ${fullResponse.slice(0, 400)}`;
                 const embedding = await getEmbedding(memoryContent);
                 if (embedding?.length) {
-                  await supabase.from('chat_memory_embeddings').insert({
-                    user_id: user.id,
-                    content: memoryContent,
-                    embedding,
-                  });
+                  await supabase.from('chat_memory_embeddings').insert({ user_id: user.id, content: memoryContent, embedding });
                 }
               }
 
@@ -449,7 +499,6 @@ Conversation so far:\n${historyText}\nStudent: ${message}`;
           });
         }
 
-        // ── Append metadata for client‑side handling ────────────────────────
         if (metadataPayload) {
           controller.enqueue(encoder.encode(`\n\n===METADATA===\n${JSON.stringify(metadataPayload)}`));
         }
@@ -464,13 +513,12 @@ Conversation so far:\n${historyText}\nStudent: ${message}`;
   return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
 }
 
-// ── Orchestrator system prompt ─────────────────────────────────────────────────
 function buildOrchestratorPrompt(ctx: any, _userId: string): string {
   const daysToExam = ctx.profile.examDate
     ? Math.ceil((new Date(ctx.profile.examDate).getTime() - Date.now()) / 86400000)
     : null;
 
-  return `You are Cognition — the AI core of Cognition OS. Think of yourself as the student's most brilliant senior: one who has read every note they've uploaded, remembers every mistake they've made, knows their exam date, and is available at 3am.
+  return `You are Cognition — the AI core of Cognition OS. Think of yourself as the student's most brilliant senior who has read every note they've uploaded, remembers every mistake, and is available at 3am.
 
 STUDENT SNAPSHOT:
 Name: ${ctx.profile.name}
@@ -485,29 +533,27 @@ Recent mistakes: ${ctx.recentMistakes.slice(0, 3).map((m: any) => `${m.chapter} 
 
 ROUTING RULES:
 - "explain X / what is X / I don't understand X" → trigger_tutor_session
-- "give me questions / test me / quiz me" → trigger_tutor_session (with practice intent)
-- "make a study guide / revision sheet / flashcard set / plan" → trigger_tutor_session (with artifact intent)
+- "give me questions / test me / quiz me" → trigger_tutor_session
+- "make a study guide / revision sheet / flashcards" → trigger_tutor_session
 - "I gave a test / upload a test / check my mock" → run_autopsy
 - "how am I doing / my stats / progress" → show_analytics
 - "my knowledge map / ATLAS" → show_atlas
 - "review flashcards / due cards" → show_flashcards
-- "I'm overwhelmed / reduce my tasks" → adjust_planner
+- "I'm overwhelmed / reduce my tasks / lighten load" → adjust_planner
 - "make a study plan / schedule" → create_study_plan
-- "hey / hi / casual chat" → respond directly, NO function call. Pull one data point naturally.
+- "hey / hi / casual chat" → respond directly, NO function call
 
 PERSONALITY:
 Direct, warm, specific. No filler. No "Great question!". No restating what they said.
-For casual messages: respond in 1-2 sentences maximum, reference one real data point.
-Example: "Hey! ${ctx.overdueCards} flashcards are due today — want to start there, or is something else on your mind?"`;
+For casual messages: 1-2 sentences max, reference one real data point.`;
 }
 
-// ── Tool declarations ─────────────────────────────────────────────────────
 function buildOrchestratorTools() {
   return [{
     functionDeclarations: [
       {
         name: 'trigger_tutor_session',
-        description: 'Activates the MIND tutor engine. Use for any explanation, practice, or artifact generation request.',
+        description: 'Activates the MIND tutor engine for explanations, practice, or artifact generation.',
         parameters: {
           type: Type.OBJECT,
           properties: {
@@ -519,18 +565,18 @@ function buildOrchestratorTools() {
       },
       {
         name: 'create_study_plan',
-        description: 'Generates a personalised day‑by‑day study plan.',
+        description: 'Generates a personalised day-by-day study plan.',
         parameters: {
           type: Type.OBJECT,
           properties: {
-            target_date: { type: Type.STRING, description: 'Exam or target date (YYYY‑MM‑DD)' },
+            target_date: { type: Type.STRING, description: 'Exam or target date (YYYY-MM-DD)' },
           },
           required: ['target_date'],
         },
       },
       {
         name: 'run_autopsy',
-        description: 'Opens mock test autopsy upload. Use when student mentions a test they gave.',
+        description: 'Opens mock test autopsy upload.',
         parameters: { type: Type.OBJECT, properties: {} },
       },
       {
@@ -550,7 +596,7 @@ function buildOrchestratorTools() {
       },
       {
         name: 'adjust_planner',
-        description: 'Reduces daily workload when student signals overwhelm or fatigue.',
+        description: 'Reduces or lightens daily workload when student signals overwhelm or fatigue.',
         parameters: {
           type: Type.OBJECT,
           properties: {

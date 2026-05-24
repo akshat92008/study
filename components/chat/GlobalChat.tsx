@@ -345,17 +345,43 @@ export const GlobalChat = memo(function GlobalChat() {
         gap: '24px',
         scrollBehavior: 'smooth'
       }}>
-        {chatMessages.length === 0 && (
+        {/* FIX BUG 7: Session card no longer disappears after first message.
+            When empty: shows full card. When chat has messages: shows collapsed pill.
+            Previously: chatMessages.length === 0 hid it permanently after first send. */}
+        {chatMessages.length === 0 ? (
           <DailySessionCard
             onStartSession={(topic, subject, estimatedMinutes) => {
               setCurrentSessionTopic(topic);
               setCurrentSessionSubject(subject);
               startSession();
-              
               const prompt = `Let's start today's session. Topic: ${topic}, Subject: ${subject}.\nTeach me, test me, challenge me. I have ${estimatedMinutes} minutes.`;
               handleSendMessage(prompt);
             }}
           />
+        ) : (
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '6px 12px',
+              background: 'var(--bg-secondary)',
+              border: '1px solid var(--border-subtle)',
+              borderRadius: 'var(--radius-full)',
+              alignSelf: 'flex-start',
+              cursor: 'default',
+              marginBottom: '4px',
+            }}
+          >
+            <span style={{ fontSize: '10px', color: 'var(--text-tertiary)', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              TODAY'S SESSION
+            </span>
+            {currentSessionTopic && (
+              <span style={{ fontSize: '11px', color: 'var(--text-secondary)', fontWeight: 'var(--fw-medium)' }}>
+                {currentSessionTopic}
+              </span>
+            )}
+          </div>
         )}
          {chatMessages.map((msg, idx) => {
            const isUser = msg.role === 'user';

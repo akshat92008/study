@@ -3,6 +3,8 @@ import { createClient } from '@/lib/supabase/server';
 import { generateJSON } from '@/lib/ai/gemini';
 import { z } from 'zod';
 
+// FIX BUG 8: Schema and all return shapes now consistently use overdueCards (camelCase)
+// Previously the Zod schema said 'overduecards' but the component declared 'overdueCards'
 const SessionCardSchema = z.object({
   dayNumber: z.number(),
   streakDays: z.number(),
@@ -11,9 +13,9 @@ const SessionCardSchema = z.object({
   estimatedMinutes: z.number(),
   rationale: z.string(),
   daysToExam: z.number().nullable(),
-  overduecards: z.number(),
+  overdueCards: z.number(),   // ← was 'overduecards' — now matches component
   masteryPercent: z.number(),
-  closingMessage: z.string().optional()
+  closingMessage: z.string().optional(),
 });
 
 export async function GET() {
@@ -24,7 +26,6 @@ export async function GET() {
 
     const today = new Date().toISOString().split('T')[0];
 
-    // Gather all context in parallel
     const [
       profileRes, goalRes, weakConceptsRes, overdueCardsRes,
       recentMistakesRes, todayTasksRes, sessionCountRes
@@ -35,7 +36,7 @@ export async function GET() {
       supabase.from('revision_cards').select('id', { count: 'exact', head: true }).eq('user_id', user.id).lte('next_review', new Date().toISOString()),
       supabase.from('mistakes').select('subject, chapter, category').eq('user_id', user.id).order('created_at', { ascending: false }).limit(3),
       supabase.from('study_tasks').select('title, subject, chapter, estimated_minutes').eq('user_id', user.id).eq('scheduled_date', today).eq('is_completed', false).limit(1),
-      supabase.from('study_sessions').select('id', { count: 'exact', head: true }).eq('user_id', user.id)
+      supabase.from('study_sessions').select('id', { count: 'exact', head: true }).eq('user_id', user.id),
     ]);
 
     const profile = profileRes.data;
@@ -46,7 +47,6 @@ export async function GET() {
     const todayTask = todayTasksRes.data?.[0];
     const sessionCount = (sessionCountRes.count || 0) as number;
 
-    // Compute mastery %
     const { count: totalConcepts } = await supabase.from('concepts').select('*', { count: 'exact', head: true }).eq('user_id', user.id);
     const { count: masteredConcepts } = await supabase.from('concepts').select('*', { count: 'exact', head: true }).eq('user_id', user.id).in('mastery', ['mastered', 'automated']);
     const masteryPercent = totalConcepts ? Math.round(((masteredConcepts || 0) / totalConcepts) * 100) : 0;
@@ -57,7 +57,7 @@ export async function GET() {
 
     const streakDays = profile?.streak_days || 0;
 
-    // If there's already a scheduled task for today, use it directly
+    // If there is already a scheduled task, use it directly
     if (todayTask) {
       return NextResponse.json({
         dayNumber: sessionCount + 1,
@@ -67,12 +67,12 @@ export async function GET() {
         estimatedMinutes: todayTask.estimated_minutes || 45,
         rationale: overdueCount > 0 ? `${overdueCount} overdue flashcards need review` : 'Top priority based on your mastery gaps',
         daysToExam,
-        overdueCards: overdueCount,
-        masteryPercent
+        overdueCards: overdueCount,   // ← consistent camelCase
+        masteryPercent,
       });
     }
 
-    // Otherwise: AI-generate the best session card
+    // AI-generate the best session card
     const cardPrompt = `You are the COMMAND engine of Cognition OS. Generate today's single study session card.
 
 Student Context:
@@ -86,7 +86,7 @@ Student Context:
 - Recent mistakes: ${recentMistakes.map(m => `${m.chapter} (${m.category})`).join(', ') || 'None'}
 
 RULE: If overdue flashcards > 5, the session MUST include a review block.
-RULE: Focus on the weakest concept that isn't a prerequisite of something even weaker.
+RULE: Focus on the weakest concept that is not a prerequisite of something even weaker.
 RULE: estimatedMinutes should be 25-60 minutes.
 
 Return JSON only:
@@ -107,8 +107,8 @@ Return JSON only:
       estimatedMinutes: cardData?.estimatedMinutes || 45,
       rationale: cardData?.rationale || (overdueCount > 0 ? `${overdueCount} flashcards are overdue` : 'Focus on your weakest areas'),
       daysToExam,
-      overdueCards: overdueCount,
-      masteryPercent
+      overdueCards: overdueCount,   // ← consistent camelCase throughout
+      masteryPercent,
     });
 
   } catch (error: any) {

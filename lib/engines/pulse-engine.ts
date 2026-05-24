@@ -258,15 +258,24 @@ export async function recordMessageTiming(
 // ------------------------------------------------------------------
 export class PulseConsumer {
   static async handleAutopsyProcessed(userId: string, metadata: any) {
-    if (!metadata || !metadata.questions) return;
+    const autopsyId = metadata?.autopsyId || metadata?.mockId;
+    if (!autopsyId) return;
+
+    const supabase = await createClient();
+    const { data: questions } = await supabase
+      .from('autopsy_questions')
+      .select('mistake_category')
+      .eq('autopsy_id', autopsyId)
+      .eq('status', 'Incorrect');
+
+    if (!questions || questions.length === 0) return;
     
-    const incorrectQs = metadata.questions;
     let anxietyMistakes = 0;
     let timePressureMistakes = 0;
 
-    incorrectQs.forEach((q: any) => {
-      if (q.mistakeCategory === 'anxiety') anxietyMistakes++;
-      if (q.mistakeCategory === 'time_pressure') timePressureMistakes++;
+    questions.forEach((q: any) => {
+      if (q.mistake_category === 'anxiety') anxietyMistakes++;
+      if (q.mistake_category === 'time_pressure') timePressureMistakes++;
     });
 
     if (anxietyMistakes > 2) {

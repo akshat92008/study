@@ -491,21 +491,26 @@ export class CommandPlanner {
 // ------------------------------------------------------------------
 export class CommandConsumer {
   static async handleAutopsyProcessed(userId: string, metadata: any, data: any) {
-    if (!metadata || !metadata.questions) return;
+    const autopsyId = metadata?.autopsyId || metadata?.mockId;
+    if (!autopsyId) return;
     
     const supabase = await createClient();
 
-    // Dynamically request mentor sprint generation via the autopsy helper
-    // We recreate the sprint plan logic since it was separated from the main loop
-    const incorrectQs = metadata.questions;
+    const { data: questions, error } = await supabase
+      .from('autopsy_questions')
+      .select('subject, chapter, marks_lost')
+      .eq('autopsy_id', autopsyId)
+      .eq('status', 'Incorrect');
+
+    if (error || !questions || questions.length === 0) return;
     
     // We group mistakes by chapter to schedule practice tasks
     const chapterLossMap: Record<string, { subject: string, marksLost: number }> = {};
-    incorrectQs.forEach((q: any) => {
+    questions.forEach((q: any) => {
       if (!chapterLossMap[q.chapter]) {
         chapterLossMap[q.chapter] = { subject: q.subject, marksLost: 0 };
       }
-      chapterLossMap[q.chapter].marksLost += q.marksLost || 1;
+      chapterLossMap[q.chapter].marksLost += q.marks_lost || 1;
     });
 
     const today = new Date();

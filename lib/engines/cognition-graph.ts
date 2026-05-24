@@ -308,20 +308,28 @@ export async function getPrerequisiteChain(conceptId: string) {
 // ------------------------------------------------------------------
 export class AtlasConsumer {
   static async handleAutopsyProcessed(userId: string, metadata: any) {
-    if (!metadata || !metadata.questions) return;
+    const autopsyId = metadata?.autopsyId || metadata?.mockId;
+    if (!autopsyId) return;
+
+    const supabase = await createClient();
+    const { data: questions } = await supabase
+      .from('autopsy_questions')
+      .select('subject, chapter, mistake_category, marks_lost')
+      .eq('autopsy_id', autopsyId)
+      .eq('status', 'Incorrect');
+
+    if (!questions || questions.length === 0) return;
     
     // Lazy load concept resolver to avoid circular dependency
     const { resolveConceptByName } = await import('./concept-resolver');
-    
-    const incorrectQuestions = metadata.questions;
 
     // Run concurrently with a batch limit
     const batchSize = 5;
-    for (let i = 0; i < incorrectQuestions.length; i += batchSize) {
-      const batch = incorrectQuestions.slice(i, i + batchSize);
+    for (let i = 0; i < questions.length; i += batchSize) {
+      const batch = questions.slice(i, i + batchSize);
       await Promise.all(batch.map(async (q: any) => {
         // Only downscale mastery for conceptual or incomplete knowledge errors
-        if (!['conceptual', 'incomplete_knowledge'].includes(q.mistakeCategory)) {
+        if (!['conceptual', 'incomplete_knowledge'].includes(q.mistake_category)) {
           return;
         }
 
@@ -329,8 +337,8 @@ export class AtlasConsumer {
           const conceptId = await resolveConceptByName(userId, q.subject, q.chapter);
           if (conceptId) {
             // Downscale mastery relative to marks lost (pass weight)
-            await updateConceptState(conceptId, false, 0, Math.max(1, q.marksLost));
-            logger.info('ATLAS: Downscaled mastery due to AUTOPSY error', { conceptId, category: q.mistakeCategory });
+            await updateConceptState(conceptId, false, 0, Math.max(1, q.marks_lost));
+            logger.info('ATLAS: Downscaled mastery due to AUTOPSY error', { conceptId, category: q.mistake_category });
           }
         } catch (err) {
           logger.error('ATLAS: Failed to map concept from autopsy', err);

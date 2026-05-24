@@ -288,28 +288,35 @@ export async function processMockAutopsy(
   }
   // ── END PIPELINE ──────────────────────────────────────────────────────────
 
-  // Publish AUTOPSY_COMPLETE to student_events so COMMAND and PULSE can react.
-  // Non-blocking — UI result is already computed above.
+  // FIX BUG 4: Use the correct event type 'AUTOPSY_MOCK_PROCESSED' with field 'type'
+  // Previously used event_type:'AUTOPSY_COMPLETE' — the orchestrator checked type:'AUTOPSY_MOCK_PROCESSED'
+  // and they never matched. Also use the EventDispatcher so schema validation, idempotency,
+  // consumer registration, and retry logic all run properly.
   try {
-    const supabaseForEvent = await createClient();
-    await supabaseForEvent.from('student_events').insert({
+    const { EventDispatcher } = await import('@/lib/events/orchestrator');
+    await EventDispatcher.publish({
       user_id: userId,
-      event_type: 'AUTOPSY_COMPLETE',
-      payload: {
-        autopsyId: autopsyData.id,
+      type: 'AUTOPSY_MOCK_PROCESSED',
+      data: {
+        mockId: autopsyData.id,
+        overallAccuracy: processedQuestions.length > 0
+          ? totalCorrect / processedQuestions.length
+          : 0,
+        primaryMistakeCategory: primaryCategory ?? undefined,
+        recoverableMarks,
+      },
+      metadata: {
+        source: 'autopsy_engine',
         currentScore,
         potentialScore,
-        recoverableMarks,
-        primaryMistakeCategory: primaryCategory ?? null,
         incorrectCount: incorrectQs.length,
         examType,
       },
-      status: 'pending',
-      created_at: new Date().toISOString(),
+      idempotency_key: `autopsy-complete-${autopsyData.id}`,
     });
-    logger.info('AUTOPSY_COMPLETE event published', { autopsyId: autopsyData.id });
+    logger.info('AUTOPSY_MOCK_PROCESSED event published via EventDispatcher', { autopsyId: autopsyData.id });
   } catch (err) {
-    logger.error('Failed to publish AUTOPSY_COMPLETE event', err);
+    logger.error('Failed to publish AUTOPSY_MOCK_PROCESSED event', err);
   }
 
   // UI return mapping

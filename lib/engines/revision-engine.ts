@@ -370,24 +370,33 @@ export async function getExamModeCards(userId: string, subject: string, limit: n
 // ------------------------------------------------------------------
 export class MemoryConsumer {
   static async handleAutopsyProcessed(userId: string, metadata: any) {
-    if (!metadata || !metadata.questions) return;
+    const autopsyId = metadata?.autopsyId || metadata?.mockId;
+    if (!autopsyId) return;
+
+    const supabase = await createClient();
+    const { data: questions } = await supabase
+      .from('autopsy_questions')
+      .select('subject, chapter, question_number, correct_answer, student_answer, mistake_category, suggested_fix')
+      .eq('autopsy_id', autopsyId)
+      .eq('status', 'Incorrect');
+
+    if (!questions || questions.length === 0) return;
     
     // Lazy load concept resolver to avoid circular dependency
     const { resolveConceptByName } = await import('./concept-resolver');
-    
-    const incorrectQuestions = metadata.questions;
 
     // Run concurrently with a batch limit
     const batchSize = 5;
-    for (let i = 0; i < incorrectQuestions.length; i += batchSize) {
-      const batch = incorrectQuestions.slice(i, i + batchSize);
+    for (let i = 0; i < questions.length; i += batchSize) {
+      const batch = questions.slice(i, i + batchSize);
       await Promise.all(batch.map(async (q: any) => {
         try {
           const conceptId = await resolveConceptByName(userId, q.subject, q.chapter);
           
-          const questionDesc = q.questionText || (metadata.test_name ? `Question #${q.questionNumber} from "${metadata.test_name}"` : `Question #${q.questionNumber}`);
-          const reasoning = q.reasoning || 'Review the core concept for this topic.';
-          const correctAnswer = q.correctAnswer || 'Not recorded';
+          const testName = metadata.testName || metadata.test_name;
+          const questionDesc = `[Mistake from ${testName || 'mock test'}] Q${q.question_number}: ${q.chapter}`;
+          const reasoning = q.suggested_fix || 'Review the core concept for this topic.';
+          const correctAnswer = q.correct_answer || 'Not recorded';
 
           await createCardFromMistake(
             userId,

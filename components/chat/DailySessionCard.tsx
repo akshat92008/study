@@ -17,9 +17,10 @@ interface SessionCard {
 
 interface Props {
   onStartSession: (topic: string, subject: string, estimatedMinutes: number) => void;
+  isCollapsed?: boolean;
 }
 
-export default function DailySessionCard({ onStartSession }: Props) {
+export default function DailySessionCard({ onStartSession, isCollapsed = false }: Props) {
   const [card, setCard] = useState<SessionCard | null>(null);
   const [loading, setLoading] = useState(true);
   const [sessionStarted, setSessionStarted] = useState(false);
@@ -50,6 +51,79 @@ export default function DailySessionCard({ onStartSession }: Props) {
   }
 
   if (!card) return null;
+
+  if (isCollapsed) {
+    return (
+      <div style={{
+        background: 'linear-gradient(135deg, var(--bg-secondary) 0%, rgba(139, 92, 246, 0.05) 100%)',
+        border: '1px solid var(--border-subtle)',
+        borderRadius: 'var(--radius-md)',
+        padding: '10px 16px',
+        marginBottom: 'var(--sp-4)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        gap: '12px',
+        flexWrap: 'wrap',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        {/* Subtle glow accent */}
+        <div style={{
+          position: 'absolute', top: 0, right: 0, width: 60, height: 60,
+          background: 'radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%)',
+          pointerEvents: 'none'
+        }} />
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0, flex: 1, marginRight: '8px' }}>
+          <div style={{
+            width: 8, height: 8, borderRadius: '50%',
+            background: sessionStarted ? 'var(--success)' : 'var(--accent-purple)',
+            boxShadow: sessionStarted ? 'var(--shadow-glow-success)' : 'none',
+            flexShrink: 0
+          }} />
+          <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 'bold', color: 'var(--text-tertiary)', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
+            Day {card.dayNumber} Focus:
+          </span>
+          <span style={{ fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-bold)', color: 'var(--text-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            {card.focusTopic}
+          </span>
+          <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', whiteSpace: 'nowrap' }}>
+            ({card.subject})
+          </span>
+        </div>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexShrink: 0 }}>
+          <span style={{ fontSize: '11px', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: 4 }}>
+            <Clock size={11} /> {card.estimatedMinutes}m
+          </span>
+          {card.overdueCards > 0 && (
+            <span style={{ fontSize: '11px', color: '#f59e0b', display: 'flex', alignItems: 'center', gap: 4 }}>
+              <Brain size={11} /> {card.overdueCards} overdue
+            </span>
+          )}
+          {!sessionStarted && (
+            <button
+              onClick={handleStart}
+              style={{
+                padding: '4px 12px',
+                background: 'linear-gradient(135deg, var(--accent-purple), var(--accent-blue))',
+                color: 'white',
+                border: 'none',
+                borderRadius: 'var(--radius-sm)',
+                fontWeight: 'bold',
+                fontSize: '11px',
+                cursor: 'pointer',
+                transition: 'opacity 0.2s'
+              }}
+            >
+              Start
+            </button>
+          )}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div style={{

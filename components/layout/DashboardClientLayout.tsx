@@ -1,10 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useAppStore } from '@/stores/appStore';
 import Sidebar from './Sidebar';
 import Header from './Header';
-
 import { GlobalChat } from '../chat/GlobalChat';
 
 interface DashboardClientLayoutProps {
@@ -13,7 +12,13 @@ interface DashboardClientLayoutProps {
 }
 
 export default function DashboardClientLayout({ children, profile }: DashboardClientLayoutProps) {
-  const { isSidebarCollapsed, isMobileSidebarOpen, setMobileSidebarOpen } = useAppStore();
+  const {
+    isSidebarCollapsed,
+    isMobileSidebarOpen,
+    setMobileSidebarOpen,
+    isAssistantOpen,
+    setAssistantOpen,
+  } = useAppStore();
 
   const isOverwhelmed = profile?.emotional_state === 'overwhelmed';
 
@@ -26,16 +31,13 @@ export default function DashboardClientLayout({ children, profile }: DashboardCl
         background: 'var(--bg-root)',
       } as React.CSSProperties}
     >
-      {/* Mobile Drawer Overlay Backdrop */}
+      {/* Mobile overlay backdrop */}
       {isMobileSidebarOpen && (
         <div
           onClick={() => setMobileSidebarOpen(false)}
           style={{
             position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
+            top: 0, left: 0, right: 0, bottom: 0,
             background: 'rgba(5, 7, 12, 0.6)',
             backdropFilter: 'blur(4px)',
             zIndex: 98,
@@ -44,33 +46,87 @@ export default function DashboardClientLayout({ children, profile }: DashboardCl
         />
       )}
 
-      {/* Sidebar Navigation */}
+      {/* ONE sidebar. The hardcoded 56px stub in layout.tsx is deleted. */}
       <Sidebar
         userName={profile?.full_name || 'Student'}
         examType={profile?.exam_type || 'General'}
       />
 
-       {/* Content wrapper */}
-       <div
-         style={{
-           flex: 1,
-           marginLeft: 'var(--sidebar-width)',
-           display: 'flex',
-           flexDirection: 'column',
-           minWidth: 0,
-           transition: 'margin-left var(--duration-normal) var(--ease-out)',
-           height: '100vh',
-           overflow: 'hidden',
-         }}
-       >
-         <Header
-           userName={profile?.full_name || 'Student'}
-           streakDays={profile?.streak_days || 0}
-         />
-         <div style={{ display: 'flex', flex: 1, overflow: 'hidden', marginTop: 'var(--header-height)' }}>
-           <GlobalChat />
-         </div>
-       </div>
+      {/* Right side: header + page content + chat panel */}
+      <div
+        style={{
+          flex: 1,
+          marginLeft: 'var(--sidebar-width)',
+          display: 'flex',
+          flexDirection: 'column',
+          minWidth: 0,
+          transition: 'margin-left var(--duration-normal) var(--ease-out)',
+          height: '100vh',
+          overflow: 'hidden',
+        }}
+      >
+        <Header
+          userName={profile?.full_name || 'Student'}
+          streakDays={profile?.streak_days || 0}
+        />
+
+        <div style={{ display: 'flex', flex: 1, overflow: 'hidden', marginTop: 'var(--header-height)' }}>
+
+          {/* ✅ THE FIX — {children} renders every page: ATLAS, AUTOPSY, PLANNER, etc. */}
+          <main
+            style={{
+              flex: 1,
+              overflowY: 'auto',
+              minWidth: 0,
+              background: 'var(--bg-root)',
+            }}
+          >
+            {children}
+          </main>
+
+          {/* Chat panel — collapsible right drawer */}
+          {isAssistantOpen ? (
+            <div
+              style={{
+                width: '420px',
+                flexShrink: 0,
+                borderLeft: '1px solid var(--border-default)',
+                display: 'flex',
+                flexDirection: 'column',
+                background: 'var(--bg-elevated)',
+              }}
+            >
+              <GlobalChat />
+            </div>
+          ) : (
+            <button
+              onClick={() => setAssistantOpen(true)}
+              title="Open Cognition"
+              style={{
+                position: 'fixed',
+                bottom: '24px',
+                right: '24px',
+                zIndex: 50,
+                width: '48px',
+                height: '48px',
+                borderRadius: '50%',
+                background: 'var(--accent-purple)',
+                color: 'white',
+                border: 'none',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
+              }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+              </svg>
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
