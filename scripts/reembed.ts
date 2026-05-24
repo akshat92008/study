@@ -54,8 +54,8 @@ async function reembedTable(
     if (error) { console.error(`Query error on ${tableName}:`, error); break; }
     if (!rows || rows.length === 0) break;
 
-    for (const row of rows) {
-      const content = row[contentCol];
+     for (const row of rows as any[]) {
+       const content = (row as Record<string, unknown>)[contentCol];
       if (!content || typeof content !== 'string' || content.trim().length === 0) {
         continue;
       }
