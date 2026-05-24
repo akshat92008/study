@@ -77,30 +77,6 @@ export class OrchestratorService {
      }
    }
 
-      // Save semantic memory snapshot after session
-      this.saveSemanticMemory(userId, message, mindContext).catch(err =>
-        logger.error('Memory save failed', err)
-      );
-
-    } catch (err: any) {
-      logger.error('OrchestratorService streaming error', err);
-      // Graceful fallback — try non-streaming
-      try {
-          const response = await this.ai.models.generateContent({
-            model: 'gemini-2.0-flash',
-            config: { systemInstruction: fullSystemPrompt, temperature: 0.5 },
-            contents: [
-              ...formattedHistory.map(h => ({ role: h.role, parts: [{ text: h.parts[0].text }] })),
-              { role: 'user' as const, parts: [{ text: message }] }
-            ]
-          });
-        yield response.text || 'I encountered an issue. Please try again.';
-      } catch {
-        yield 'I hit a temporary issue. Please send your message again.';
-      }
-    }
-  }
-
   private formatHistory(history: MessageHistory): Array<{ role: 'user' | 'model'; parts: [{ text: string }] }> {
     const filtered: Array<{ role: 'user' | 'model'; parts: [{ text: string }] }> = [];
 

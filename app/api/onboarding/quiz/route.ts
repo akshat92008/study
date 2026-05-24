@@ -1,3 +1,4 @@
+export const maxDuration = 60;
 import { createClient } from '@/lib/supabase/server';
 import { generateJSON } from '@/lib/ai/gemini';
 import { NextResponse } from 'next/server';

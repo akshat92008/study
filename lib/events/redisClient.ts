@@ -60,16 +60,7 @@ const redisMock = {
   },
 
   async xreadgroup(
-    _groupWord: string,
-    _group: string,
-    _consumer: string,
-    _countWord: string,
-    _count: number,
-    _blockWord: string,
-    _block: number,
-    _streamsWord: string,
-    _stream: string,
-    _id: string
+    ..._args: any[]
   ): Promise<any> {
     return null;
   },

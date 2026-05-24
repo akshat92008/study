@@ -1,5 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
-import { GoogleGenAI } from '@google/genai';
+import { generateText } from '@/lib/ai/gemini';
 import { logger } from '@/lib/utils/logger';
 
 interface ClosingMessageInput {
@@ -100,7 +100,6 @@ export async function generateSessionClosingMessage(
     const masteryNewPct = newMastery !== null ? Math.round(newMastery * 100) : null;
 
     // Build a data-rich prompt so Gemini writes the message like a real coach
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
     const prompt = `You are the closing message writer for Cognition OS, an AI study OS.
 
 Write a SHORT (3-5 sentences max) personalized closing message for a student who just finished a study session.
@@ -130,12 +129,12 @@ Rules:
 
 Write only the message. Nothing else.`;
 
-    const result = await ai.models.generateContent({
-      model: 'gemini-2.0-flash',
-      contents: prompt,
-    });
-
-    const messageText = result.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || '';
+    const messageText = await generateText(
+      'flash',
+      'You are the closing message writer for Cognition OS, an AI study OS.',
+      prompt,
+      0.7
+    );
 
     if (!messageText) {
       // Deterministic fallback — never fails silently

@@ -5,6 +5,7 @@ import { getExamConfig } from '@/lib/utils/constants';
 import { AutopsyPaperSchema, AutopsyQuestionSchema } from './autopsy-schemas';
 import { generateMentorRecovery } from './mentor-engine';
 import { logger } from '@/lib/utils/logger';
+import { generateJSON } from '@/lib/ai/gemini';
 // EventDispatcher import removed; using direct calls
 
 type AutopsyFileData =
@@ -92,17 +93,13 @@ async function deepDiagnosticPass(incorrectQuestions: AutopsyQuestion[]): Promis
   `;
 
   try {
-     const res = await ai.models.generateContent({
-       model: 'gemini-1.5-pro',
-       contents: [{ role: 'user', parts: [{ text: diagnosticPrompt }] }],
-       config: {
-         responseMimeType: 'application/json',
-         temperature: 0.3,
-       }
-     });
-
-    const rawText = (res.text || '[]').replace(/```json/gi, '').replace(/```/g, '').trim();
-    const diagnostics = JSON.parse(rawText) as Array<{ questionNumber: number, mistakeCategory: any, reasoning: string }>;
+    const diagnostics = await generateJSON<Array<{ questionNumber: number, mistakeCategory: any, reasoning: string }>>(
+      'pro',
+      'You are an elite educational psychologist and diagnostician.',
+      diagnosticPrompt,
+      undefined,
+      0.3
+    );
 
     // Merge diagnostics back
     return incorrectQuestions.map(q => {

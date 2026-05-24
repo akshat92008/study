@@ -1,6 +1,14 @@
 import { GoogleGenAI } from '@google/genai';
 import { z } from 'zod';
 import { logger } from '@/lib/utils/logger';
+import {
+  generateWithGroq,
+  generateJSONWithGroq,
+  streamWithGroq,
+  generateWithDeepSeek,
+  generateJSONWithDeepSeek,
+  streamWithDeepSeek,
+} from './fallback';
 
 if (!process.env.GEMINI_API_KEY) {
   throw new Error('GEMINI_API_KEY environment variable is required');
@@ -30,6 +38,7 @@ export async function generateText(
   userPrompt: string,
   temperature: number = 0.7
 ): Promise<string> {
+  // 1. Try primary Gemini model
   try {
     const response = await genai.models.generateContent({
       model: MODELS[model],
@@ -40,22 +49,42 @@ export async function generateText(
         maxOutputTokens: 8192,
       },
     });
-
     return response.text ?? '';
   } catch (err: any) {
+    logger.warn(`Gemini generateText failed for model ${model}: ${err.message}`);
+    
+    // If primary was pro, try Gemini flash as intermediate fallback
     if (model === 'pro') {
-      logger.warn('MIND generateText falling back from pro to flash due to error:', { error: err.message });
-      const response = await genai.models.generateContent({
-        model: MODELS.flash,
-        contents: userPrompt,
-        config: {
-          systemInstruction: systemPrompt + SECURITY_BOUNDARY,
-          temperature,
-          maxOutputTokens: 8192,
-        },
-      });
-      return response.text ?? '';
+      try {
+        logger.info('MIND generateText falling back from pro to flash');
+        const response = await genai.models.generateContent({
+          model: MODELS.flash,
+          contents: userPrompt,
+          config: {
+            systemInstruction: systemPrompt + SECURITY_BOUNDARY,
+            temperature,
+            maxOutputTokens: 8192,
+          },
+        });
+        return response.text ?? '';
+      } catch (flashErr: any) {
+        logger.warn(`Gemini flash fallback also failed: ${flashErr.message}`);
+      }
     }
+  }
+
+  // 2. Try Groq
+  try {
+    return await generateWithGroq(systemPrompt, userPrompt, temperature);
+  } catch (err: any) {
+    logger.warn(`Groq generateText fallback failed: ${err.message}`);
+  }
+
+  // 3. Try DeepSeek
+  try {
+    return await generateWithDeepSeek(systemPrompt, userPrompt, temperature);
+  } catch (err: any) {
+    logger.error(`All AI providers failed in generateText: ${err.message}`);
     throw err;
   }
 }
@@ -160,53 +189,71 @@ export async function generateJSON<T>(
   temperature: number = 0.3,
   retries: number = 3
 ): Promise<T> {
-  let attempt = 0;
-  let delay = 1000;
-  const geminiSchema = schema ? zodToGeminiSchema(schema) : undefined;
-  let currentModel = model;
+  // 1. Try Gemini (with its internal retries and pro -> flash fallback)
+  try {
+    let attempt = 0;
+    let delay = 1000;
+    const geminiSchema = schema ? zodToGeminiSchema(schema) : undefined;
+    let currentModel = model;
 
-  while (attempt < retries) {
-    try {
-      const response = await genai.models.generateContent({
-        model: MODELS[currentModel],
-        contents: userPrompt,
-        config: {
-          systemInstruction: systemPrompt + '\n\nRespond ONLY with valid JSON. No markdown fences.' + SECURITY_BOUNDARY,
-          temperature,
-          responseMimeType: 'application/json',
-          responseSchema: geminiSchema,
-        },
-      });
+    while (attempt < retries) {
+      try {
+        const response = await genai.models.generateContent({
+          model: MODELS[currentModel],
+          contents: userPrompt,
+          config: {
+            systemInstruction: systemPrompt + '\n\nRespond ONLY with valid JSON. No markdown fences.' + SECURITY_BOUNDARY,
+            temperature,
+            responseMimeType: 'application/json',
+            responseSchema: geminiSchema,
+          },
+        });
 
-      const text = (response.text || '{}').replace(/```json/gi, '').replace(/```/g, '').trim();
-      const parsed = JSON.parse(text);
-      
-      if (schema) {
-        return schema.parse(parsed);
+        const text = (response.text || '{}').replace(/```json/gi, '').replace(/```/g, '').trim();
+        const parsed = JSON.parse(text);
+        
+        if (schema) {
+          return schema.parse(parsed);
+        }
+        return parsed as T;
+
+      } catch (err: any) {
+        attempt++;
+        logger.warn(`AI JSON Generation Failed (Attempt ${attempt}/${retries})`, { error: err.message });
+        
+        // Fallback from pro to flash immediately on rate-limit/service errors
+        if (currentModel === 'pro' && (err.status === 503 || err.status === 429 || err.message.includes('503') || err.message.includes('429') || err.message.includes('UNAVAILABLE') || err.message.includes('RESOURCE_EXHAUSTED'))) {
+          logger.warn('MIND generateJSON switching from pro to flash due to model availability');
+          currentModel = 'flash';
+          attempt = 0; // Reset attempts for the fallback model
+          continue;
+        }
+
+        if (attempt >= retries) {
+          throw err;
+        }
+        await new Promise(res => setTimeout(res, delay));
+        delay *= 2; // Exponential backoff
       }
-      return parsed as T;
-
-    } catch (err: any) {
-      attempt++;
-      logger.warn(`AI JSON Generation Failed (Attempt ${attempt}/${retries})`, { error: err.message });
-      
-      // Fallback from pro to flash immediately on rate-limit/service errors
-      if (currentModel === 'pro' && (err.status === 503 || err.status === 429 || err.message.includes('503') || err.message.includes('429') || err.message.includes('UNAVAILABLE') || err.message.includes('RESOURCE_EXHAUSTED'))) {
-        logger.warn('MIND generateJSON switching from pro to flash due to model availability');
-        currentModel = 'flash';
-        attempt = 0; // Reset attempts for the fallback model
-        continue;
-      }
-
-      if (attempt >= retries) {
-        logger.error('AI JSON Generation exhausted retries', err);
-        throw err;
-      }
-      await new Promise(res => setTimeout(res, delay));
-      delay *= 2; // Exponential backoff
     }
+  } catch (geminiErr: any) {
+    logger.warn(`Gemini generateJSON completely failed: ${geminiErr.message}. Trying Groq fallback.`);
   }
-  throw new Error('AI JSON Generation failed to return a response after retries');
+
+  // 2. Try Groq fallback
+  try {
+    return await generateJSONWithGroq<T>(systemPrompt, userPrompt, schema, temperature);
+  } catch (groqErr: any) {
+    logger.warn(`Groq generateJSON fallback failed: ${groqErr.message}. Trying DeepSeek fallback.`);
+  }
+
+  // 3. Try DeepSeek fallback
+  try {
+    return await generateJSONWithDeepSeek<T>(systemPrompt, userPrompt, schema, temperature);
+  } catch (deepseekErr: any) {
+    logger.error(`All AI providers failed in generateJSON: ${deepseekErr.message}`);
+    throw deepseekErr;
+  }
 }
 
 // Helper for streaming responses (used in chat interfaces)
@@ -216,6 +263,8 @@ export async function* streamText(
   userPrompt: string | any[],
   temperature: number = 0.7
 ): AsyncGenerator<string> {
+  let primaryFailed = false;
+
   try {
     const response = await genai.models.generateContentStream({
       model: MODELS[model],
@@ -232,25 +281,57 @@ export async function* streamText(
         yield chunk.text;
       }
     }
-} catch (err: any) {
-  // Fallback to 1.5 flash if primary model fails
-  logger.warn('Primary model failed, falling back', { error: err.message });
-  const response = await genai.models.generateContentStream({
-    model: MODELS.fallback,
-    contents: userPrompt,
-    config: {
-      systemInstruction: systemPrompt + SECURITY_BOUNDARY,
-      temperature,
-      maxOutputTokens: 8192,
-    },
-  });
+    return; // Succeeded
+  } catch (err: any) {
+    logger.warn(`Primary Gemini stream failed: ${err.message}. Trying Gemini fallback model.`);
+    primaryFailed = true;
+  }
 
-  for await (const chunk of response) {
-    if (chunk.text) {
-      yield chunk.text;
+  // Try Gemini fallback model
+  if (primaryFailed) {
+    try {
+      const response = await genai.models.generateContentStream({
+        model: MODELS.fallback,
+        contents: userPrompt,
+        config: {
+          systemInstruction: systemPrompt + SECURITY_BOUNDARY,
+          temperature,
+          maxOutputTokens: 8192,
+        },
+      });
+
+      for await (const chunk of response) {
+        if (chunk.text) {
+          yield chunk.text;
+        }
+      }
+      return; // Succeeded
+    } catch (fallbackErr: any) {
+      logger.warn(`Gemini fallback model also failed: ${fallbackErr.message}. Trying Groq stream fallback.`);
     }
   }
-}
+
+  // Try Groq stream fallback
+  try {
+    const generator = streamWithGroq(systemPrompt, userPrompt, temperature);
+    for await (const chunk of generator) {
+      yield chunk;
+    }
+    return; // Succeeded
+  } catch (groqErr: any) {
+    logger.warn(`Groq stream fallback failed: ${groqErr.message}. Trying DeepSeek stream fallback.`);
+  }
+
+  // Try DeepSeek stream fallback
+  try {
+    const generator = streamWithDeepSeek(systemPrompt, userPrompt, temperature);
+    for await (const chunk of generator) {
+      yield chunk;
+    }
+  } catch (deepseekErr: any) {
+    logger.error(`All AI providers failed in streamText: ${deepseekErr.message}`);
+    throw deepseekErr;
+  }
 }
 
 // Helper to generate text embeddings
