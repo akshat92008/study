@@ -30,7 +30,7 @@
     "framer-motion": "^11.0.0",
     "ioredis": "^5.10.1",
     "lucide-react": "^0.500.0",
-    "next": "15.2.4",
+    "next": "16.2.6",
     "pdf-parse": "^1.1.1",
     "pg": "^8.21.0",
     "react": "^19.0.0",
@@ -52,8 +52,8 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "drizzle-kit": "^0.30.0",
-    "eslint": "^8",
-    "eslint-config-next": "15.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "16.2.6",
     "typescript": "^5"
   }
 }
