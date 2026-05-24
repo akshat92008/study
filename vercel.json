@@ -1,10 +1,6 @@
 {
   "crons": [
     {
-      "path": "/api/events/process",
-      "schedule": "*/5 * * * *"
-    },
-    {
       "path": "/api/cron/daily-synthesis",
       "schedule": "0 1 * * *"
     },
