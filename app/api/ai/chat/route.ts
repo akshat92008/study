@@ -127,13 +127,13 @@ export async function POST(req: NextRequest) {
   const tools: any = buildOrchestratorTools();
 
   let orchestratorResponse: any;
-  try {
-    orchestratorResponse = await genai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: geminiHistory,
-      config: { systemInstruction: orchestratorPrompt, tools, temperature: 0.15 },
-    });
-  } catch (err: any) {
+   try {
+     orchestratorResponse = await genai.models.generateContent({
+       model: 'gemini-2.0-flash',
+       contents: geminiHistory,
+       config: { systemInstruction: orchestratorPrompt, tools, temperature: 0.15 },
+     });
+   } catch (err: any) {
     logger.error('Orchestrator failed', err);
     return new Response('AI service temporarily unavailable. Try again in a moment.', { status: 503 });
   }

@@ -46,7 +46,7 @@ export class GeminiProvider implements LLMProvider {
     const span = tracer.startSpan('gemini.generate', {
       attributes: {
         'llm.provider': 'gemini',
-        'llm.model': modelKey === 'flash' ? 'gemini-2.5-flash' : 'gemini-2.5-pro',
+         'llm.model': modelKey === 'flash' ? 'gemini-2.0-flash' : 'gemini-1.5-pro',
         'llm.prompt_length': JSON.stringify(messages).length,
       },
     });
@@ -54,11 +54,11 @@ export class GeminiProvider implements LLMProvider {
       const prompt = JSON.stringify(messages);
       const response = await generateJSON<string>(modelKey, 'You are a helpful assistant.', prompt, undefined);
       // Record metrics
-      this.requestCounter.add(1, { model: modelKey === 'flash' ? 'gemini-2.5-flash' : 'gemini-2.5-pro' });
+       this.requestCounter.add(1, { model: modelKey === 'flash' ? 'gemini-2.0-flash' : 'gemini-1.5-pro' });
       // Approximate token usage (1 token ≈ 4 chars)
       const inputTokens = Math.ceil(prompt.length / 4);
       const outputTokens = Math.ceil(response.length / 4);
-      this.tokenCounter.add(inputTokens + outputTokens, { model: modelKey === 'flash' ? 'gemini-2.5-flash' : 'gemini-2.5-pro' });
+       this.tokenCounter.add(inputTokens + outputTokens, { model: modelKey === 'flash' ? 'gemini-2.0-flash' : 'gemini-1.5-pro' });
       span.setAttribute('llm.tokens_input', inputTokens);
       span.setAttribute('llm.tokens_output', outputTokens);
       span.end();
@@ -79,20 +79,20 @@ export class GeminiProvider implements LLMProvider {
     messages: LLMMessage[],
     options?: { maxTokens?: number; temperature?: number }
   ): AsyncIterable<string> {
-    const span = tracer.startSpan('gemini.stream', {
-      attributes: {
-        'llm.provider': 'gemini',
-        'llm.model': 'gemini-2.5-flash',
-        'llm.prompt_length': JSON.stringify(messages).length,
-      },
-    });
+     const span = tracer.startSpan('gemini.stream', {
+       attributes: {
+         'llm.provider': 'gemini',
+         'llm.model': 'gemini-2.0-flash',
+         'llm.prompt_length': JSON.stringify(messages).length,
+       },
+     });
     try {
       const prompt = JSON.stringify(messages);
       const generator = streamText('flash', 'You are a helpful assistant.', prompt);
       for await (const chunk of generator) {
         // Record token metric per chunk (approximate)
         const tokenEstimate = Math.ceil(chunk.length / 4);
-        this.tokenCounter.add(tokenEstimate, { model: 'gemini-2.5-flash' });
+        this.tokenCounter.add(tokenEstimate, { model: 'gemini-2.0-flash' });
         span.addEvent('chunk', { 'chunk.length': chunk.length });
         yield chunk;
       }

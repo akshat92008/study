@@ -21,9 +21,9 @@ export async function POST(request: Request) {
     const { currentCard, performance } = body;
 
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-    const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: `You are a strict but encouraging academic revision coach. The student is struggling with the following flashcard:\n\nCard: ${JSON.stringify(currentCard)}\n\nRecent performance: ${JSON.stringify(performance)}\n\nProvide a 2-sentence motivational strategy to help them lock this concept into their long-term memory.`,
+     const response = await ai.models.generateContent({
+       model: 'gemini-2.0-flash',
+       contents: `You are a strict but encouraging academic revision coach. The student is struggling with the following flashcard:\n\nCard: ${JSON.stringify(currentCard)}\n\nRecent performance: ${JSON.stringify(performance)}\n\nProvide a 2-sentence motivational strategy to help them lock this concept into their long-term memory.`,
     });
 
     return NextResponse.json({ coaching: response.text });

@@ -46,14 +46,14 @@ async function fastExtractionPass(contents: any[], subjectList: string, retries 
 
   while (attempt < retries) {
     try {
-      const res = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
-        contents: augmentedContents,
-        config: { 
-          responseMimeType: 'application/json',
-          temperature: 0.1, 
-        },
-      });
+       const res = await ai.models.generateContent({
+         model: 'gemini-2.0-flash',
+         contents: augmentedContents,
+         config: { 
+           responseMimeType: 'application/json',
+           temperature: 0.1, 
+         },
+       });
 
       const rawText = (res.text || '{}').replace(/```json/gi, '').replace(/```/g, '').trim();
       const parsed = JSON.parse(rawText);
@@ -92,14 +92,14 @@ async function deepDiagnosticPass(incorrectQuestions: AutopsyQuestion[]): Promis
   `;
 
   try {
-    const res = await ai.models.generateContent({
-      model: 'gemini-2.5-pro',
-      contents: [{ role: 'user', parts: [{ text: diagnosticPrompt }] }],
-      config: {
-        responseMimeType: 'application/json',
-        temperature: 0.3,
-      }
-    });
+     const res = await ai.models.generateContent({
+       model: 'gemini-1.5-pro',
+       contents: [{ role: 'user', parts: [{ text: diagnosticPrompt }] }],
+       config: {
+         responseMimeType: 'application/json',
+         temperature: 0.3,
+       }
+     });
 
     const rawText = (res.text || '[]').replace(/```json/gi, '').replace(/```/g, '').trim();
     const diagnostics = JSON.parse(rawText) as Array<{ questionNumber: number, mistakeCategory: any, reasoning: string }>;

@@ -73,10 +73,10 @@ export async function POST(request: Request) {
 
     logger.info('Processing syllabus upload via Gemini', { userId: user.id, fileName: file.name });
 
-    const response = await genai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: [filePart, { text: prompt }],
-      config: {
+     const response = await genai.models.generateContent({
+       model: 'gemini-2.0-flash',
+       contents: [filePart, { text: prompt }],
+       config: {
         responseMimeType: 'application/json',
         responseSchema: {
           type: 'object',

@@ -10,12 +10,14 @@ export const genai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 // Model references
 export const MODELS = {
-  // Use Flash for fast, cheap operations (classification, extraction, simple Q&A)
-  flash: 'gemini-2.5-flash',
-  // Use Pro for complex reasoning (analysis, strategy, mentoring)
-  pro: 'gemini-2.5-pro',
-  // Use Flash for image understanding
+  // Primary: Fast, free, handles images natively
+  flash: 'gemini-2.0-flash',
+  // Complex reasoning only
+  pro: 'gemini-1.5-pro',
+  // Image questions
   flashVision: 'gemini-2.0-flash',
+  // Fallback if primary fails
+  fallback: 'gemini-1.5-flash',
 } as const;
 
 // Anti-Prompt-Injection Boundary
@@ -230,28 +232,25 @@ export async function* streamText(
         yield chunk.text;
       }
     }
-  } catch (err: any) {
-    if (model === 'pro') {
-      logger.warn('MIND streamText falling back from pro to flash due to error:', { error: err.message });
-      const response = await genai.models.generateContentStream({
-        model: MODELS.flash,
-        contents: userPrompt,
-        config: {
-          systemInstruction: systemPrompt + SECURITY_BOUNDARY,
-          temperature,
-          maxOutputTokens: 8192,
-        },
-      });
+} catch (err: any) {
+  // Fallback to 1.5 flash if primary model fails
+  logger.warn('Primary model failed, falling back', { error: err.message });
+  const response = await genai.models.generateContentStream({
+    model: MODELS.fallback,
+    contents: userPrompt,
+    config: {
+      systemInstruction: systemPrompt + SECURITY_BOUNDARY,
+      temperature,
+      maxOutputTokens: 8192,
+    },
+  });
 
-      for await (const chunk of response) {
-        if (chunk.text) {
-          yield chunk.text;
-        }
-      }
-    } else {
-      throw err;
+  for await (const chunk of response) {
+    if (chunk.text) {
+      yield chunk.text;
     }
   }
+}
 }
 
 // Helper to generate text embeddings

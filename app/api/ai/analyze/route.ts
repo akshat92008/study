@@ -15,9 +15,9 @@ export async function POST(request: Request) {
     const { data } = body;
 
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-    const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: `You are an elite academic analyst. Analyze the following student performance data and provide 3 actionable insights.\n\nData: ${JSON.stringify(data)}`,
+     const response = await ai.models.generateContent({
+       model: 'gemini-2.0-flash',
+       contents: `You are an elite academic analyst. Analyze the following student performance data and provide 3 actionable insights.\n\nData: ${JSON.stringify(data)}`,
     });
 
     return NextResponse.json({ analysis: response.text });

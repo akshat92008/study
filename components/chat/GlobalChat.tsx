@@ -357,27 +357,29 @@ export const GlobalChat = memo(function GlobalChat() {
             }}
           />
         )}
-        {chatMessages.map((msg, idx) => {
-          const isUser = msg.role === 'user';
-          const isClosingCard = msg.metadata?.action === 'session_closing_message';
-          return (
-            <div key={idx} style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: isUser ? 'flex-end' : 'flex-start',
-            }}>
-              <div style={{
-                maxWidth: '92%',
-                padding: isClosingCard ? '0' : '12px 16px',
-                borderRadius: isUser ? '16px 16px 2px 16px' : '2px 16px 16px 16px',
-                background: isUser ? 'var(--accent-purple)' : (isClosingCard ? 'transparent' : 'var(--bg-primary)'),
-                border: isUser ? 'none' : (isClosingCard ? 'none' : '1px solid var(--border-subtle)'),
-                color: isUser ? 'white' : 'var(--text-primary)',
-                fontSize: '13px',
-                lineHeight: 1.65,
-                wordBreak: 'break-word',
-                width: isClosingCard ? '100%' : 'auto',
-              }}>
+         {chatMessages.map((msg, idx) => {
+           const isUser = msg.role === 'user';
+           const isClosingCard = msg.metadata?.action === 'session_closing_message';
+           return (
+             <div key={idx} style={{
+               display: 'flex',
+               flexDirection: 'column',
+               alignItems: isUser ? 'flex-end' : 'flex-start',
+             }}>
+               <div style={{
+                 maxWidth: '92%',
+                 padding: isClosingCard ? '0' : '12px 16px',
+                 borderRadius: isUser ? '16px 16px 2px 16px' : '2px 16px 16px 16px',
+                 background: isUser ? 'var(--accent-purple)' : (isClosingCard ? 'transparent' : 'var(--bg-primary)'),
+                 border: isUser ? 'none' : (isClosingCard ? 'none' : '1px solid var(--border-subtle)'),
+                 color: isUser ? 'white' : 'var(--text-primary)',
+                 fontSize: '13px',
+                 lineHeight: 1.65,
+                 wordBreak: 'break-word',
+                 width: isClosingCard ? '100%' : 'auto',
+                 animation: 'messageIn 0.2s ease-out forwards',
+                 opacity: 0,
+               }}>
                 {isClosingCard ? (
                   <SessionClosingCard
                     closingMessage={msg.metadata?.closingMessage || msg.content}
@@ -396,20 +398,10 @@ export const GlobalChat = memo(function GlobalChat() {
 
         {/* Live Streaming Message Bubble */}
         {(status === 'streaming' || status === 'connecting') && (
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-             <StreamingMessage
-                content={streamingText}
-                isStreaming={true}
-             />
-             <button
-               onClick={handleInterrupt}
-               style={{
-                 marginTop: '8px', fontSize: '11px', background: 'transparent',
-                 border: 'none', color: 'var(--text-tertiary)', cursor: 'pointer'
-               }}
-             >
-               Stop generating
-             </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', padding: '12px 16px' }}>
+            <span className="typing-dot" />
+            <span className="typing-dot" />
+            <span className="typing-dot" />
           </div>
         )}
 

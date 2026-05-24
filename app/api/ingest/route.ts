@@ -64,9 +64,9 @@ export async function POST(request: Request) {
         const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
         const base64 = buffer.toString('base64');
 
-        const res = await ai.models.generateContent({
-          model: 'gemini-2.5-flash',
-          contents: [{
+         const res = await ai.models.generateContent({
+           model: 'gemini-2.0-flash',
+           contents: [{
             role: 'user',
             parts: [
               { inlineData: { mimeType, data: base64 } },

@@ -15,44 +15,67 @@ export class OrchestratorService {
     this.ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
   }
 
-  async *processUserMessage(
-    userId: string,
-    message: string,
-    history: MessageHistory,
-    activeGoalId?: string,
-    intent?: string
-  ): AsyncGenerator<string> {
-    // Build full context
-    const mindContext = await getMINDContext(userId, message);
-    const systemPrompt = getMINDSystemPrompt(mindContext);
+   async *processUserMessage(
+     userId: string,
+     message: string,
+     history: MessageHistory,
+     activeGoalId?: string,
+     intent?: string
+   ): AsyncGenerator<string> {
+     // Build full context
+     const mindContext = await getMINDContext(userId, message);
+     const systemPrompt = getMINDSystemPrompt(mindContext);
 
-    // Retrieve semantic memory — past conversations about similar topics
-    const semanticMemory = await this.retrieveSemanticMemory(userId, message);
-    const fullSystemPrompt = semanticMemory
-      ? `${systemPrompt}\n\n═══ RELEVANT MEMORY FROM PAST SESSIONS ═══\n${semanticMemory}\n═══════════════════════════════════════`
-      : systemPrompt;
+     // Retrieve semantic memory — past conversations about similar topics
+     const semanticMemory = await this.retrieveSemanticMemory(userId, message);
+     const fullSystemPrompt = semanticMemory
+       ? `${systemPrompt}\n\n═══ RELEVANT MEMORY FROM PAST SESSIONS ═══\n${semanticMemory}\n════════════════════════════════════════`
+       : systemPrompt;
 
-    // Build properly formatted conversation history for Gemini
-    // Gemini requires: alternating user/model turns, starting with user
-    const formattedHistory = this.formatHistory(history);
+     // Build properly formatted conversation history for Gemini
+     // Gemini requires: alternating user/model turns, starting with user
+     const formattedHistory = this.formatHistory(history);
 
-    try {
-      const chat = this.ai.chats.create({
-        model: 'gemini-2.5-flash',
-        config: {
-          systemInstruction: fullSystemPrompt,
-          temperature: intent === 'TUTOR_SESSION' ? 0.7 : 0.5,
-          maxOutputTokens: 4096,
-        },
-        history: formattedHistory
-      });
+     try {
+       const chat = this.ai.chats.create({
+         model: 'gemini-2.0-flash',
+         config: {
+           systemInstruction: fullSystemPrompt,
+           temperature: intent === 'TUTOR_SESSION' ? 0.7 : 0.5,
+           maxOutputTokens: 4096,
+         },
+         history: formattedHistory
+       });
 
-      const stream = await chat.sendMessageStream({ message });
+       const stream = await chat.sendMessageStream({ message });
 
-      for await (const chunk of stream) {
-        const text = chunk.text;
-        if (text) yield text;
-      }
+       for await (const chunk of stream) {
+         const text = chunk.text;
+         if (text) yield text;
+       }
+
+       // Save semantic memory snapshot after session
+       this.saveSemanticMemory(userId, message, mindContext).catch(err =>
+         logger.error('Memory save failed', err)
+       );
+     } catch (err: any) {
+       logger.error('OrchestratorService streaming error', err);
+       // Graceful fallback — try non-streaming
+       try {
+         const response = await this.ai.models.generateContent({
+           model: 'gemini-2.0-flash',
+           config: { systemInstruction: fullSystemPrompt, temperature: 0.5 },
+           contents: [
+             ...formattedHistory.map(h => ({ role: h.role, parts: [{ text: h.parts[0].text }] })),
+             { role: 'user' as const, parts: [{ text: message }] }
+           ]
+         });
+         yield response.text || 'I encountered an issue. Please try again.';
+       } catch {
+         yield 'I hit a temporary issue. Please send your message again.';
+       }
+     }
+   }
 
       // Save semantic memory snapshot after session
       this.saveSemanticMemory(userId, message, mindContext).catch(err =>
@@ -63,14 +86,14 @@ export class OrchestratorService {
       logger.error('OrchestratorService streaming error', err);
       // Graceful fallback — try non-streaming
       try {
-        const response = await this.ai.models.generateContent({
-          model: 'gemini-2.5-flash',
-          config: { systemInstruction: fullSystemPrompt, temperature: 0.5 },
-          contents: [
-            ...formattedHistory.map(h => ({ role: h.role, parts: [{ text: h.parts[0].text }] })),
-            { role: 'user' as const, parts: [{ text: message }] }
-          ]
-        });
+          const response = await this.ai.models.generateContent({
+            model: 'gemini-2.0-flash',
+            config: { systemInstruction: fullSystemPrompt, temperature: 0.5 },
+            contents: [
+              ...formattedHistory.map(h => ({ role: h.role, parts: [{ text: h.parts[0].text }] })),
+              { role: 'user' as const, parts: [{ text: message }] }
+            ]
+          });
         yield response.text || 'I encountered an issue. Please try again.';
       } catch {
         yield 'I hit a temporary issue. Please send your message again.';
