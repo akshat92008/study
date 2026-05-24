@@ -46,7 +46,8 @@ export class LearningStateEngine {
       user_id: event.userId,
       type: event.type as any, // Cast legacy types
       data: event.data,
-      idempotency_key: event.data.taskId || undefined // Use task ID as idempotency if available
+      idempotency_key: event.data.taskId || undefined, // Use task ID as idempotency if available
+      metadata: {}
     });
   }
 

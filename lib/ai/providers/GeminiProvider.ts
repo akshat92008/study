@@ -35,35 +35,35 @@ export class GeminiProvider implements LLMProvider {
 
   /**
    * Generate a full response from Gemini.
-   * The `options` object mirrors the generic interface but currently only
-   * `maxTokens` and `temperature` are forwarded to the underlying Gemini call.
+   * The `options` object mirrors the generic interface but forwarding
+   * maxTokens and temperature is omitted for simplicity in underlying mapping.
    */
   async generate(
     messages: LLMMessage[],
     options?: { maxTokens?: number; temperature?: number; streaming?: boolean }
   ): Promise<string> {
+    const modelKey = options?.streaming ? 'flash' : 'pro';
     const span = tracer.startSpan('gemini.generate', {
       attributes: {
         'llm.provider': 'gemini',
-        'llm.model': options?.streaming ? 'gemini-2.5-flash' : 'gemini-2.5-pro',
+        'llm.model': modelKey === 'flash' ? 'gemini-2.5-flash' : 'gemini-2.5-pro',
         'llm.prompt_length': JSON.stringify(messages).length,
       },
     });
     try {
       const prompt = JSON.stringify(messages);
-      const model = options?.streaming ? 'gemini-2.5-flash' : 'gemini-2.5-pro';
-      const response = await generateJSON<string>(model, 'You are a helpful assistant.', prompt, undefined);
+      const response = await generateJSON<string>(modelKey, 'You are a helpful assistant.', prompt, undefined);
       // Record metrics
-      this.requestCounter.add(1, { model });
+      this.requestCounter.add(1, { model: modelKey === 'flash' ? 'gemini-2.5-flash' : 'gemini-2.5-pro' });
       // Approximate token usage (1 token ≈ 4 chars)
       const inputTokens = Math.ceil(prompt.length / 4);
       const outputTokens = Math.ceil(response.length / 4);
-      this.tokenCounter.add(inputTokens + outputTokens, { model });
+      this.tokenCounter.add(inputTokens + outputTokens, { model: modelKey === 'flash' ? 'gemini-2.5-flash' : 'gemini-2.5-pro' });
       span.setAttribute('llm.tokens_input', inputTokens);
       span.setAttribute('llm.tokens_output', outputTokens);
       span.end();
       return response;
-    } catch (err:any) {
+    } catch (err: any) {
       this.errorCounter.add(1);
       span.recordException(err);
       span.setStatus({ code: 2, message: err.message }); // 2 = ERROR
@@ -88,7 +88,7 @@ export class GeminiProvider implements LLMProvider {
     });
     try {
       const prompt = JSON.stringify(messages);
-      const generator = streamText(prompt);
+      const generator = streamText('flash', 'You are a helpful assistant.', prompt);
       for await (const chunk of generator) {
         // Record token metric per chunk (approximate)
         const tokenEstimate = Math.ceil(chunk.length / 4);
@@ -97,7 +97,7 @@ export class GeminiProvider implements LLMProvider {
         yield chunk;
       }
       span.end();
-    } catch (err:any) {
+    } catch (err: any) {
       this.errorCounter.add(1);
       span.recordException(err);
       span.setStatus({ code: 2, message: err.message });

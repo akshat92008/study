@@ -104,7 +104,7 @@ export async function rollingSummarize(
     .join('\n');
 
   const prompt = `Summarize the following conversation history concisely, preserving important concepts, emotional tone, and any learner metadata. Return a short paragraph (max 150 words).\n\n${olderText}`;
-  const summary = await generateJSON('summary', 'You are a concise summarizer.', prompt);
+  const summary = (await generateJSON('flash', 'You are a concise summarizer.', prompt)) as string;
 
   return { summary, recentTurns };
 }

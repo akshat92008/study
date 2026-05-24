@@ -39,6 +39,69 @@ const redisMock = {
   on(_event: string, _handler: Function) {
     return this;
   },
+
+  // Mock methods for Redis Stream support to prevent build compilation errors
+  async xgroup(
+    _command: string,
+    _stream: string,
+    _group: string,
+    _id: string,
+    _option?: string
+  ): Promise<string> {
+    return 'OK';
+  },
+
+  async xadd(
+    _stream: string,
+    _id: string,
+    _payload: Record<string, string>
+  ): Promise<string> {
+    return `${Date.now()}-0`;
+  },
+
+  async xreadgroup(
+    _groupWord: string,
+    _group: string,
+    _consumer: string,
+    _countWord: string,
+    _count: number,
+    _blockWord: string,
+    _block: number,
+    _streamsWord: string,
+    _stream: string,
+    _id: string
+  ): Promise<any> {
+    return null;
+  },
+
+  async xack(
+    _stream: string,
+    _group: string,
+    _id: string
+  ): Promise<number> {
+    return 1;
+  },
+
+  async hincrby(
+    _key: string,
+    _field: string,
+    _increment: number
+  ): Promise<number> {
+    return 1;
+  },
+
+  async xdel(
+    _stream: string,
+    _id: string
+  ): Promise<number> {
+    return 1;
+  },
+
+  async del(
+    _key: string
+  ): Promise<number> {
+    return 1;
+  }
 };
 
 export default redisMock;
