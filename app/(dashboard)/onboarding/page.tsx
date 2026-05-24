@@ -36,20 +36,26 @@ export default function OnboardingFlow() {
 
 
 
-  // New function to handle completion of weak spot check
-  const handleWeakSpotComplete = async (results: Array<{ chapter: string; concept: string; isCorrect: boolean }>) => {
-    setQuizResults(results);
-    setLoading(true);
-    try {
-      await completeOnboarding('temp-id-ignored-by-server', examType, examDate, results);
-      await fetch('/api/onboarding/complete', { method: 'POST' });
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setLoading(false);
-      setStep(5);
-    }
-  };
+   // New function to handle completion of weak spot check
+   const handleWeakSpotComplete = async (results: Array<{ chapter: string; concept: string; isCorrect: boolean }>) => {
+     setQuizResults(results);
+     setLoading(true);
+     try {
+       // Just saves profile — returns in under 2 seconds
+       await completeOnboarding('temp-id-ignored-by-server', examType, examDate, results);
+       // Heavy work runs in background on the server — does not block
+       fetch('/api/onboarding/complete', {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify({ quizResults: results }),
+       });
+     } catch (e) {
+       console.error(e);
+     } finally {
+       setLoading(false);
+       setStep(5);
+     }
+   };
 
   return (
     <div style={{

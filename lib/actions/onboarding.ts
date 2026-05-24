@@ -89,7 +89,7 @@ export async function generateDay1Plan(userId: string, examType: string) {
 }
 
 export async function completeOnboarding(
-  _userId: string, 
+  _userId: string,
   examType: string,
   targetDate: string,
   quizResults?: Array<{ chapter: string; concept: string; isCorrect: boolean }>
@@ -97,78 +97,45 @@ export async function completeOnboarding(
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) throw new Error('Not authenticated');
-  const userId = user.id;
 
   const targetYear = new Date(targetDate).getFullYear();
 
-  // 1. Save Profile
-  const { data: profile } = await supabase.from('profiles').select('id').eq('id', userId).single();
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('id')
+    .eq('id', user.id)
+    .single();
+
   if (!profile) {
     await supabase.from('profiles').insert({
-      id: userId, full_name: user.user_metadata?.full_name || 'Student', email: user.email || '',
-      exam_type: examType, target_year: targetYear, exam_date: targetDate,
-      onboarding_complete: true, updated_at: new Date().toISOString(),
+      id: user.id,
+      full_name: user.user_metadata?.full_name || 'Student',
+      email: user.email || '',
+      exam_type: examType,
+      target_year: targetYear,
+      exam_date: targetDate,
+      onboarding_complete: false,
+      updated_at: new Date().toISOString(),
     });
   } else {
     await supabase.from('profiles').update({
-      exam_type: examType, target_year: targetYear, exam_date: targetDate,
-      onboarding_complete: true, updated_at: new Date().toISOString(),
-    }).eq('id', userId);
+      exam_type: examType,
+      target_year: targetYear,
+      exam_date: targetDate,
+      updated_at: new Date().toISOString(),
+    }).eq('id', user.id);
   }
 
-  // 2. Seed ATLAS — first 6 chapters per subject immediately, rest lazy
-  const { seedConceptsForSubject } = await import('@/lib/engines/cognition-graph');
-  const { getSyllabusForExam, generateSyllabusWithAI } = await import('@/lib/engines/atlas-expansion');
-  
-  let syllabus = getSyllabusForExam(examType);
-  if (Object.keys(syllabus).length === 0) {
-    syllabus = await generateSyllabusWithAI(examType);
-  }
-
-  let totalSeeded = 0;
-  const SEED_IMMEDIATELY = 6; // chapters per subject seeded now, rest loads lazily on demand
-
-  for (const subject of Object.keys(syllabus)) {
-    const allChapters = syllabus[subject] || ['Foundations', 'Core Concepts', 'Advanced Applications'];
-    // Seed the first N chapters now so the student sees a real graph on Day 1
-    const priorityChapters = allChapters.slice(0, SEED_IMMEDIATELY);
-    if (priorityChapters.length > 0) {
-      const result = await seedConceptsForSubject(userId, subject, priorityChapters);
-      totalSeeded += result.seeded || 0;
-    }
-    // Queue the rest — they seed lazily when the student opens ATLAS or starts a session
-    // No await — fire and forget so onboarding completes in time
-    const remainingChapters = allChapters.slice(SEED_IMMEDIATELY);
-    if (remainingChapters.length > 0) {
-      seedConceptsForSubject(userId, subject, remainingChapters).catch(() => {
-        // silent — these seed on next ATLAS load if this fails
-      });
-    }
-  }
-
-  // 3. Apply Diagnostic Quiz Results to Graph (The Magic Moment Data)
+  // Save quiz results to student_events so the API route can process them
   if (quizResults && quizResults.length > 0) {
-    const { resolveConceptByName } = await import('@/lib/engines/concept-resolver');
-    for (const result of quizResults) {
-      const conceptId = await resolveConceptByName(userId, Object.keys(syllabus)[0] || 'General', result.chapter);
-      if (conceptId) {
-        // Correct = Proficient (Green), Incorrect = Exposed (Red)
-        await supabase.from('concepts').update({
-          mastery: result.isCorrect ? 'proficient' : 'exposed',
-          confidence: result.isCorrect ? 'high' : 'low'
-        }).eq('id', conceptId);
-      }
-    }
+    await supabase.from('student_events').insert({
+      user_id: user.id,
+      type: 'ONBOARDING_QUIZ_COMPLETE',
+      data: { quizResults, examType },
+    });
   }
-  
-  // 4. Generate Day 1 Plan
-  const { generateDay1Plan } = await import('@/lib/actions/onboarding'); // self import for helper
-  const { tasksCreated } = await generateDay1Plan(userId, examType);
 
-  // 5. Auto-Generate First Flashcards (Max 20 concepts, 3 cards each)
-  const { cardsCreated } = await seedInitialCards(userId);
-
-  return { seeded: totalSeeded, tasksCreated, cardsCreated };
+  return { saved: true };
 }
 
 export async function seedInitialCards(userId: string): Promise<{ cardsCreated: number }> {

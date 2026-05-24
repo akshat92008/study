@@ -41,6 +41,10 @@ export async function POST(req: NextRequest) {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
+    // Parse request body to get quiz results
+    const body = await req.json();
+    const { quizResults = [] } = body;
+
     await supabase
       .from('profiles')
       .update({ onboarding_complete: true })
