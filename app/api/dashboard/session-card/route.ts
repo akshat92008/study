@@ -88,6 +88,7 @@ Student Context:
 RULE: If overdue flashcards > 5, the session MUST include a review block.
 RULE: Focus on the weakest concept that is not a prerequisite of something even weaker.
 RULE: estimatedMinutes should be 25-60 minutes.
+RULE: focusTopic must be a real topic name. Never write 'none', 'null', or 'N/A'. If no weak concepts exist, use 'Exam Fundamentals Overview'.
 
 Return JSON only:
 {
@@ -102,7 +103,9 @@ Return JSON only:
     return NextResponse.json({
       dayNumber: sessionCount + 1,
       streakDays,
-      focusTopic: cardData?.focusTopic || (weakConcepts[0]?.name || 'Review Your Weakest Topic'),
+      focusTopic: (cardData?.focusTopic && !['none', 'null', 'undefined', 'N/A'].includes(cardData.focusTopic.toLowerCase()))
+        ? cardData.focusTopic
+        : (weakConcepts[0]?.name || 'Start with your exam fundamentals'),
       subject: cardData?.subject || weakConcepts[0]?.subject || 'General',
       estimatedMinutes: cardData?.estimatedMinutes || 45,
       rationale: cardData?.rationale || (overdueCount > 0 ? `${overdueCount} flashcards are overdue` : 'Focus on your weakest areas'),
