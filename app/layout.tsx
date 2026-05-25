@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { validateEnvironment } from '@/lib/utils/env-check';
+import { checkEnvironment } from '@/lib/utils/env-check';
 
-validateEnvironment(); // Runs at app startup
+checkEnvironment(); // Runs at app startup
 
 export const metadata: Metadata = {
   title: 'Cognition OS — AI-Powered Learning Operating System',
