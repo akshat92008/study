@@ -123,7 +123,7 @@ ${orchestratorPrompt}`;
     orchestratorResponse = { text };
 
     // Parse metadata from response
-    const metaMatch = text.match(/\|\|\|(\{.*?\})\|\|\|/s);
+    const metaMatch = text.match(/\|\|\|(\{[\s\S]*?\})\|\|\|/);
     if (metaMatch) {
       try {
         const meta = JSON.parse(metaMatch[1]);
