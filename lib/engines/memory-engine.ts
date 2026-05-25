@@ -1,5 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
-import { getEmbedding } from './rag-engine';
+import { getEmbedding } from '@/lib/ai/gemini';
 
 function buildSemanticChunks(text: string, chunkSize = 800, overlap = 150): string[] {
   const chunks: string[] = [];
@@ -62,7 +62,7 @@ export async function processDocumentIntoMemory(userId: string, fileData: { titl
   for (const chunk of rawChunks) {
     // Generate dense vector embedding
     const embedding = await getEmbedding(chunk);
-    if (!embedding) continue;
+    if (!embedding || embedding.length === 0) continue;
 
     // We do NOT need to generate fts_vector here, 
     // it is GENERATED ALWAYS AS (to_tsvector('english', chunk_text)) STORED at DB level.
