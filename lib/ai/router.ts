@@ -274,6 +274,16 @@ export async function routeTextGeneration(
         result = await callGoogle(
           config, config.models.quality, messages, false
         ) as string;
+      } else if (providerName === 'huggingface') {
+        const configHF = getProviderConfig(providerName);
+        result = await callOpenAICompatible(
+          { ...configHF, baseUrl: `https://api-inference.huggingface.co/v1` },
+          configHF.models.quality,
+          messages,
+          temperature,
+          maxTokens,
+          false
+        );
       } else {
         result = await callOpenAICompatible(
           config, config.models.quality, messages,
@@ -327,6 +337,16 @@ export async function routeJSONGeneration<T>(
           rawText = await callGoogle(
             config, config.models.fast, messages, false
           ) as string;
+        } else if (providerName === 'huggingface') {
+          const configHF = getProviderConfig(providerName);
+          rawText = await callOpenAICompatible(
+            { ...configHF, baseUrl: `https://api-inference.huggingface.co/v1` },
+            configHF.models.fast,
+            messages,
+            temperature,
+            1024,
+            false
+          );
         } else {
           rawText = await callOpenAICompatible(
             config, config.models.fast, messages,
@@ -401,6 +421,16 @@ export async function* routeStreamGeneration(
         generator = await callGoogle(
           config, config.models.quality, messages, true
         ) as AsyncGenerator<string>;
+      } else if (providerName === 'huggingface') {
+        const configHF = getProviderConfig(providerName);
+        generator = await callOpenAICompatible(
+          { ...configHF, baseUrl: `https://api-inference.huggingface.co/v1` },
+          configHF.models.quality,
+          messages,
+          temperature,
+          2048,
+          true
+        ) as AsyncGenerator<string>;
       } else {
         generator = await callOpenAICompatible(
           config, config.models.quality, messages,
@@ -470,6 +500,53 @@ export async function routeEmbedding(text: string): Promise<number[]> {
         const truncated = embedding.slice(0, 768);
         markProviderSuccess(providerName);
         return truncated;
+      }
+
+      if (providerName === 'together') {
+        const response = await fetch(`${config.baseUrl}/embeddings`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${config.apiKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            model: config.embeddingModel,
+            input: text.slice(0, 8192),
+          }),
+          signal: AbortSignal.timeout(15_000),
+        });
+        if (!response.ok) throw Object.assign(
+          new Error(`Together embedding failed: ${response.status}`),
+          { statusCode: response.status }
+        );
+        const data = await response.json();
+        const embedding: number[] = data.data?.[0]?.embedding || [];
+        markProviderSuccess(providerName);
+        return embedding;
+      }
+
+      if (providerName === 'mistral') {
+        const response = await fetch(`${config.baseUrl}/embeddings`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${config.apiKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            model: config.embeddingModel,
+            input: [text.slice(0, 8192)],
+            encoding_format: 'float',
+          }),
+          signal: AbortSignal.timeout(15_000),
+        });
+        if (!response.ok) throw Object.assign(
+          new Error(`Mistral embedding failed: ${response.status}`),
+          { statusCode: response.status }
+        );
+        const data = await response.json();
+        const embedding: number[] = data.data?.[0]?.embedding || [];
+        markProviderSuccess(providerName);
+        return embedding;
       }
 
       if (providerName === 'cloudflare') {
