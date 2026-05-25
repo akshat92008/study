@@ -117,7 +117,7 @@ export function getProviderConfig(name: ProviderName): ProviderConfig {
       baseUrl: 'https://api.cerebras.ai/v1',
       apiKey: process.env.CEREBRAS_API_KEY,
       models: {
-        quality: 'llama-3.3-70b',
+        quality: 'llama3.3-70b',
         fast: 'llama3.1-8b',
       },
       supportsStreaming: true,
@@ -143,8 +143,8 @@ export function getProviderConfig(name: ProviderName): ProviderConfig {
       baseUrl: 'https://api.groq.com/openai/v1',
       apiKey: process.env.GROQ_API_KEY,
       models: {
-        quality: 'compound-beta',
-        fast: 'compound-beta-mini',
+        quality: 'llama-3.3-70b-versatile',
+        fast: 'llama-3.1-8b-instant',
       },
       supportsStreaming: true,
       supportsVision: false,

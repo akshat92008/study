@@ -529,7 +529,6 @@ export async function routeEmbedding(text: string): Promise<number[]> {
 
     } catch (err: any) {
       const code = err.statusCode || 500;
-      markProviderFailure(providerName, code);
       logger.warn(`${providerName} embedding failed (${code}), trying next`);
     }
   }
