@@ -61,7 +61,7 @@ export class ChatMemoryService extends BaseService {
           logger.warn('match_chat_memory RPC not found, semantic memory fallback triggered.');
           return [];
         }
-        logger.error('Failed to search chat memory', error);
+        logger.error('Failed to search chat memory', { error });
         return [];
       }
 

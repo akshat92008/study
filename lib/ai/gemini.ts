@@ -39,7 +39,7 @@ export async function generateJSON<T>(
   temperature = 0.3,
   _retries = 3
 ): Promise<T> {
-  return routeJSONGeneration<T>(systemPrompt, userPrompt, temperature);
+  return routeJSONGeneration<T>(systemPrompt, userPrompt, temperature, _schema);
 }
 
 export async function* streamText(

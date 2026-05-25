@@ -8,13 +8,6 @@ export type ProviderName =
   | 'sambanova'       // Fast + free embeddings.
   | 'groq_compound'   // 14,400 req/day free. llama-3.3-70b.
   | 'groq_gemma'      // Same Groq key, different model slot.
-  | 'together'        // Free tier models. Good quality.
-  | 'openrouter'      // Free :free suffix models. Multiple model slots.
-  | 'fireworks'       // Free credits. OpenAI-compatible.
-  | 'deepinfra'       // Free tier. Has vision models.
-  | 'novita'          // Free credits. llama-3.3-70b.
-  | 'mistral'         // Free tier. mistral-small-latest is free.
-  | 'huggingface'     // Slow but always free. Last text resort before Google.
   | 'cloudflare'      // Free Workers AI. Vision capable.
   | 'google';         // LAST RESORT ONLY. Use when everything else is down.
 
@@ -118,7 +111,7 @@ export function getProviderConfig(name: ProviderName): ProviderConfig {
       name: 'cerebras',
       baseUrl: 'https://api.cerebras.ai/v1',
       apiKey: process.env.CEREBRAS_API_KEY,
-      models: { quality: 'llama3.3-70b', fast: 'llama3.1-8b' },
+      models: { quality: 'llama-3.3-70b', fast: 'llama-3.1-8b' },
       supportsStreaming: true,
       supportsVision: false,
       supportsEmbeddings: false,
@@ -131,12 +124,12 @@ export function getProviderConfig(name: ProviderName): ProviderConfig {
       apiKey: process.env.SAMBANOVA_API_KEY,
       models: {
         quality: 'Meta-Llama-3.3-70B-Instruct',
-        fast: 'Meta-Llama-3.1-8B-Instruct',
+        fast: 'gemma-3-12b-it',
       },
       supportsStreaming: true,
       supportsVision: false,
-      supportsEmbeddings: true,
-      embeddingModel: 'E5-Mistral-7B-Instruct',
+      supportsEmbeddings: false,
+      embeddingModel: '',
       embeddingDimensions: 4096, // Truncated to 768 for pgvector
       authHeader: 'bearer',
     },
@@ -163,113 +156,6 @@ export function getProviderConfig(name: ProviderName): ProviderConfig {
       supportsStreaming: true,
       supportsVision: false,
       supportsEmbeddings: false,
-      authHeader: 'bearer',
-    },
-
-    together: {
-      name: 'together',
-      baseUrl: 'https://api.together.xyz/v1',
-      apiKey: process.env.TOGETHER_API_KEY,
-      models: {
-        // These are the permanently free models on Together — no credit needed
-        quality: 'meta-llama/Llama-3.3-70B-Instruct-Turbo-Free',
-        fast: 'meta-llama/Llama-3.2-3B-Instruct-Turbo',
-      },
-      supportsStreaming: true,
-      supportsVision: false,
-      supportsEmbeddings: true,
-      embeddingModel: 'togethercomputer/m2-bert-80M-8k-retrieval',
-      embeddingDimensions: 768,
-      authHeader: 'bearer',
-    },
-
-    openrouter: {
-      name: 'openrouter',
-      baseUrl: 'https://openrouter.ai/api/v1',
-      apiKey: process.env.OPENROUTER_API_KEY,
-      models: {
-        // :free suffix = permanently free, no credits needed
-        quality: 'meta-llama/llama-3.3-70b-instruct:free',
-        fast: 'google/gemma-3-12b-it:free',
-      },
-      supportsStreaming: true,
-      supportsVision: false,
-      supportsEmbeddings: false,
-      authHeader: 'bearer',
-    },
-
-    fireworks: {
-      name: 'fireworks',
-      baseUrl: 'https://api.fireworks.ai/inference/v1',
-      apiKey: process.env.FIREWORKS_API_KEY,
-      models: {
-        quality: 'accounts/fireworks/models/llama-v3p3-70b-instruct',
-        fast: 'accounts/fireworks/models/llama-v3p1-8b-instruct',
-      },
-      supportsStreaming: true,
-      supportsVision: false,
-      supportsEmbeddings: false,
-      authHeader: 'bearer',
-    },
-
-    deepinfra: {
-      name: 'deepinfra',
-      baseUrl: 'https://api.deepinfra.com/v1/openai',
-      apiKey: process.env.DEEPINFRA_API_KEY,
-      models: {
-        quality: 'meta-llama/Meta-Llama-3.1-70B-Instruct',
-        fast: 'meta-llama/Meta-Llama-3.1-8B-Instruct',
-      },
-      supportsStreaming: true,
-      supportsVision: true, // llama-3.2-11b-vision available
-      supportsEmbeddings: false,
-      authHeader: 'bearer',
-    },
-
-    novita: {
-      name: 'novita',
-      baseUrl: 'https://api.novita.ai/v3/openai',
-      apiKey: process.env.NOVITA_API_KEY,
-      models: {
-        quality: 'meta-llama/llama-3.3-70b-instruct',
-        fast: 'meta-llama/llama-3.1-8b-instruct',
-      },
-      supportsStreaming: true,
-      supportsVision: false,
-      supportsEmbeddings: false,
-      authHeader: 'bearer',
-    },
-
-    mistral: {
-      name: 'mistral',
-      baseUrl: 'https://api.mistral.ai/v1',
-      apiKey: process.env.MISTRAL_API_KEY,
-      models: {
-        // mistral-small-latest is free on their free tier
-        quality: 'mistral-small-latest',
-        fast: 'open-mistral-7b',
-      },
-      supportsStreaming: true,
-      supportsVision: false,
-      supportsEmbeddings: true,
-      embeddingModel: 'mistral-embed',
-      embeddingDimensions: 1024,
-      authHeader: 'bearer',
-    },
-
-    huggingface: {
-      name: 'huggingface',
-      baseUrl: 'https://api-inference.huggingface.co/models',
-      apiKey: process.env.HF_API_KEY,
-      models: {
-        quality: 'meta-llama/Meta-Llama-3.1-8B-Instruct',
-        fast: 'microsoft/Phi-3.5-mini-instruct',
-      },
-      supportsStreaming: false, // HF inference API is not streaming
-      supportsVision: false,
-      supportsEmbeddings: true,
-      embeddingModel: 'sentence-transformers/all-MiniLM-L6-v2',
-      embeddingDimensions: 384,
       authHeader: 'bearer',
     },
 
@@ -315,13 +201,6 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
     'sambanova',     // Fast + free.
     'groq_compound', // Reliable. 14,400/day.
     'groq_gemma',    // Same key as groq, different model = second slot.
-    'together',      // Free forever models.
-    'openrouter',    // :free models. Good backup.
-    'fireworks',     // Free credits.
-    'deepinfra',     // Free tier.
-    'novita',        // Free credits.
-    'mistral',       // Free tier.
-    'huggingface',   // Slow but never dies.
     'cloudflare',    // Free Workers AI.
     'google',        // LAST RESORT.
   ],
@@ -331,14 +210,7 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
     'sambanova',
     'groq_compound',
     'groq_gemma',
-    'together',
-    'openrouter',
-    'fireworks',
-    'deepinfra',
-    'novita',
-    'mistral',
     'cloudflare',
-    // huggingface excluded — no streaming support
     'google',
   ],
 
@@ -346,28 +218,18 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
     'groq_compound', // Most reliable structured output.
     'cerebras',
     'sambanova',
-    'together',
-    'openrouter',
-    'fireworks',
-    'deepinfra',
-    'novita',
-    'mistral',
     'groq_gemma',
     'cloudflare',
-    'huggingface',
     'google',
   ],
 
   embedding: [
     'sambanova',   // Free E5-Mistral embeddings.
-    'together',    // Free m2-bert embeddings.
-    'mistral',     // mistral-embed free tier.
     'cloudflare',  // Free bge-base.
     'google',      // Last resort embedding.
   ],
 
   vision: [
-    'deepinfra',   // llama-3.2-11b-vision free.
     'cloudflare',  // llama-3.2-11b-vision free.
     'google',      // gemini-2.0-flash vision — last resort.
   ],

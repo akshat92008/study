@@ -245,7 +245,7 @@ export default function WeakSpotCheck({ examType, onComplete }: WeakSpotCheckPro
                     ) : (
                       <span style={{ color: 'var(--accent-purple)', fontWeight: 'bold', flexShrink: 0 }}>{String.fromCharCode(65 + i)}.</span>
                     )}
-                    {opt}
+                    {typeof opt === 'string' ? opt : (opt as any)?.text || JSON.stringify(opt)}
                   </button>
                 );
               })}

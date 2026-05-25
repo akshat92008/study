@@ -314,7 +314,7 @@ export async function createCardFromMistake(
 
 export async function createSingleCard(
   userId: string,
-  conceptId: string,
+  conceptId: string | null,
   front: string,
   back: string,
   subject: string,

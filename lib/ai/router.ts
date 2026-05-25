@@ -307,7 +307,8 @@ export async function routeTextGeneration(
 export async function routeJSONGeneration<T>(
   systemPrompt: string,
   userPrompt: string,
-  temperature = 0.3
+  temperature = 0.3,
+  schema?: any
 ): Promise<T> {
   const providers = TASK_PROVIDER_PRIORITY['json'];
   const fullSystem = systemPrompt + SECURITY_BOUNDARY + 
@@ -360,9 +361,14 @@ export async function routeJSONGeneration<T>(
           .replace(/```\n?/g, '')
           .trim();
 
-        const parsed = JSON.parse(clean) as T;
+        const parsed = JSON.parse(clean);
+        if (schema) {
+          const validated = schema.parse(parsed);
+          markProviderSuccess(providerName);
+          return validated;
+        }
         markProviderSuccess(providerName);
-        return parsed;
+        return parsed as T;
 
       } catch (err: any) {
         attempt++;

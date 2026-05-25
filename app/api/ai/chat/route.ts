@@ -2,8 +2,8 @@
 import { NextRequest } from 'next/server';
 import { after } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { streamText, generateJSON, genai, getEmbedding, MODELS, handleVisionMessage } from '@/lib/ai/gemini';
-import { routeTextGeneration } from '@/lib/ai/router';
+import { generateJSON, genai, MODELS, handleVisionMessage } from '@/lib/ai/gemini';
+import { routeTextGeneration, routeStreamGeneration, routeEmbedding } from '@/lib/ai/router';
 import { getMINDContext } from '@/lib/engines/mind-engine';
 import { getMINDSystemPrompt } from '@/lib/ai/prompts/mind-prompt';
 import { updateConceptState } from '@/lib/engines/cognition-graph';
@@ -198,7 +198,7 @@ Past Mistakes Here: ${mistakes?.map((m: any) => m.ai_analysis).join('; ') || 'No
 
 Conversation so far:\n${historyText}\nStudent: ${message}`;
 
-            for await (const chunk of streamText('flash', systemPrompt, tutorContext, 0.7)) {
+            for await (const chunk of routeStreamGeneration(systemPrompt, tutorContext, 0.7)) {
               controller.enqueue(encoder.encode(chunk));
               fullResponse += chunk;
             }
@@ -235,7 +235,7 @@ Conversation so far:\n${historyText}\nStudent: ${message}`;
               ) {
                 try {
                   await createSingleCard(
-                    user.id, conceptId ?? '', analysis.gapFound, analysis.gapAnswer, subject, topic
+                    user.id, conceptId || null, analysis.gapFound, analysis.gapAnswer, subject, topic
                   );
                   cardsCreated = 1;
                   logger.info('MIND → MEMORY: gap card created', { subject, topic });
@@ -464,9 +464,14 @@ Return JSON: { "learningStyle": "visual" | "analogy" | "first_principles" | "exa
 
               if (fullResponse.length > 50) {
                 const memoryContent = `Student asked: ${message}\nAnswer summary: ${fullResponse.slice(0, 400)}`;
-                const embedding = await getEmbedding(memoryContent);
+                try {
+                const embedding = await routeEmbedding(memoryContent);
                 if (embedding?.length) {
                   await supabase.from('chat_memory_embeddings').insert({ user_id: user.id, content: memoryContent, embedding });
+                  logger.info('Saved semantic memory', { content: memoryContent.slice(0, 50) });
+                }
+              } catch (err) {
+                  logger.warn('Embedding generation failed', err);
                 }
               }
 
