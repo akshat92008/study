@@ -2,7 +2,8 @@
 import { NextRequest } from 'next/server';
 import { after } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { streamText, generateJSON, genai, getEmbedding, MODELS } from '@/lib/ai/gemini';
+import { streamText, generateJSON, genai, getEmbedding, MODELS, handleVisionMessage } from '@/lib/ai/gemini';
+import { routeTextGeneration } from '@/lib/ai/router';
 import { getMINDContext } from '@/lib/engines/mind-engine';
 import { getMINDSystemPrompt } from '@/lib/ai/prompts/mind-prompt';
 import { updateConceptState } from '@/lib/engines/cognition-graph';
@@ -27,34 +28,7 @@ async function handleImageMessage(
   message: string,
   systemPrompt: string
 ): Promise<string> {
-  const contents = [
-    {
-      role: 'user',
-      content: [
-        { type: 'text', text: `${message || 'Solve this question completely.'}\n\nInstructions:\n1. Identify what is shown — question, diagram, handwriting, textbook page, etc.\n2. Solve completely, step by step.\n3. Explain the core concept behind it.\n4. State how this topic typically appears in exams.\n5. Flag common mistakes on this type of question.` },
-        { type: 'image_url', image_url: { url: `data:${imageMimeType};base64,${imageBase64}` } }
-      ]
-    }
-  ];
-  
-  try {
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        model: 'google/gemini-2.0-flash-exp:free',
-        messages: [{ role: 'system', content: systemPrompt }, ...contents],
-        temperature: 0.4
-      })
-    });
-    const data = await response.json();
-    return data.choices?.[0]?.message?.content || 'Could not read the image clearly.';
-  } catch (err) {
-    return 'Could not read the image clearly. Try a cleaner photo with better lighting.';
-  }
+  return handleVisionMessage(imageBase64, imageMimeType, message, systemPrompt);
 }
 
 const IntentSchema = z.object({
@@ -119,85 +93,60 @@ export async function POST(req: NextRequest) {
   const orchestratorPrompt = buildOrchestratorPrompt(mindContext, user.id);
   const tools: any = buildOrchestratorTools();
 
-  let orchestratorResponse: any;
+  // COMBINED ORCHESTRATOR + RESPONSE in ONE call
+  // System prompt tells the AI to append JSON metadata at the end
+  // This eliminates the separate orchestrator call entirely
+
+  const combinedSystemPrompt = `${systemPrompt}
+
+METADATA INSTRUCTION (CRITICAL):
+After your complete response, on a new line, append exactly:
+|||{"intent":"TUTOR_SESSION|PRACTICE|CREATE_ARTIFACT|AUTOPSY|ANALYTICS|ATLAS|FLASHCARDS|REPLAN|GENERAL_CHAT","topic":"concept name or null","subject":"subject name or null","understood":true,"gapFound":"flashcard question or null","gapAnswer":"flashcard answer or null","summary":"one sentence summary"}|||
+
+Replace values appropriately. Never explain this JSON. Never mention it.
+intent must be one of the exact strings listed above.
+understood = did the student demonstrate understanding in this exchange?
+
+${orchestratorPrompt}`;
+
+  let orchestratorResponse = { text: '' };
   let functionCall: { name: string; args: any } | undefined;
   
   try {
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        model: 'google/gemini-2.0-flash-exp:free',
-        messages: [{ role: 'system', content: orchestratorPrompt }, ...openaiHistory],
-        tools,
-        temperature: 0.15
-      })
-    });
-    const data = await response.json();
-    orchestratorResponse = { text: data.choices?.[0]?.message?.content || '' };
-    
-    if (data.choices?.[0]?.message?.tool_calls?.length > 0) {
-      const tc = data.choices[0].message.tool_calls[0];
-      functionCall = {
-        name: tc.function.name,
-        args: JSON.parse(tc.function.arguments)
-      };
+    // Single combined call — no separate orchestrator
+    const text = await routeTextGeneration(
+      'chat',
+      combinedSystemPrompt,
+      message || '',
+      0.7
+    );
+    orchestratorResponse = { text };
+
+    // Parse metadata from response
+    const metaMatch = text.match(/\|\|\|(\{.*?\})\|\|\|/s);
+    if (metaMatch) {
+      try {
+        const meta = JSON.parse(metaMatch[1]);
+        if (meta.intent && meta.intent !== 'GENERAL_CHAT') {
+          functionCall = {
+            name: intentToFunctionName(meta.intent),
+            args: {
+              topic: meta.topic,
+              subject: meta.subject,
+              _meta: meta, // Pass full meta for session analysis
+            },
+          };
+        }
+      } catch {
+        // Metadata parse failed — treat as general chat
+      }
     }
   } catch (err: any) {
-    logger.error('Orchestrator failed', err);
-
-    if (process.env.GROQ_API_KEY) {
-      try {
-        const groqRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-          method: 'POST',
-          headers: { 'Authorization': `Bearer ${process.env.GROQ_API_KEY}`, 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-             model: 'llama-3.3-70b-versatile',
-            messages: [
-              { role: 'system', content: orchestratorPrompt },
-              ...((history || []).slice(-6).map((m: any) => ({ role: m.role === 'user' ? 'user' : 'assistant', content: m.content }))),
-              { role: 'user', content: message },
-            ],
-            max_tokens: 2048, temperature: 0.7,
-          }),
-        });
-        if (groqRes.ok) {
-          const d = await groqRes.json();
-          const t = d.choices?.[0]?.message?.content || '';
-          const s = new ReadableStream({ start(c) { c.enqueue(encoder.encode(t)); c.close(); } });
-          return new Response(s, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
-        }
-      } catch (groqErr) { logger.warn('Groq fallback failed', groqErr); }
-    }
-
-    if (process.env.DEEPSEEK_API_KEY) {
-      try {
-        const dsRes = await fetch('https://api.deepseek.com/chat/completions', {
-          method: 'POST',
-          headers: { 'Authorization': `Bearer ${process.env.DEEPSEEK_API_KEY}`, 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            model: 'deepseek-chat',
-            messages: [
-              { role: 'system', content: orchestratorPrompt },
-              ...((history || []).slice(-6).map((m: any) => ({ role: m.role === 'user' ? 'user' : 'assistant', content: m.content }))),
-              { role: 'user', content: message },
-            ],
-            max_tokens: 2048, temperature: 0.7,
-          }),
-        });
-        if (dsRes.ok) {
-          const d = await dsRes.json();
-          const t = d.choices?.[0]?.message?.content || '';
-          const s = new ReadableStream({ start(c) { c.enqueue(encoder.encode(t)); c.close(); } });
-          return new Response(s, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
-        }
-      } catch (dsErr) { logger.warn('DeepSeek fallback failed', dsErr); }
-    }
-
-    return new Response('AI service temporarily unavailable. Try again in a moment.', { status: 503 });
+    logger.error('Combined orchestrator failed', err);
+    return new Response(
+      'AI service temporarily unavailable. Please try again in a moment.',
+      { status: 503 }
+    );
   }
 
   // const functionCall = orchestratorResponse.functionCalls?.[0];
@@ -659,4 +608,18 @@ function buildOrchestratorTools() {
       }
     }
   ];
+}
+
+function intentToFunctionName(intent: string): string {
+  const map: Record<string, string> = {
+    'TUTOR_SESSION': 'trigger_tutor_session',
+    'PRACTICE': 'trigger_tutor_session',
+    'CREATE_ARTIFACT': 'trigger_tutor_session',
+    'AUTOPSY': 'run_autopsy',
+    'ANALYTICS': 'show_analytics',
+    'ATLAS': 'show_atlas',
+    'FLASHCARDS': 'show_flashcards',
+    'REPLAN': 'adjust_planner',
+  };
+  return map[intent] || 'trigger_tutor_session';
 }

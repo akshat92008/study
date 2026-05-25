@@ -1,50 +1,33 @@
 // lib/utils/env-check.ts
+export function checkEnvironment(): void {
+  const required = ['NEXT_PUBLIC_SUPABASE_URL', 'NEXT_PUBLIC_SUPABASE_ANON_KEY'];
+  const aiProviders = [
+    'CEREBRAS_API_KEY',
+    'SAMBANOVA_API_KEY', 
+    'GROQ_API_KEY',
+    'CF_API_TOKEN',
+    'GOOGLE_AI_KEY',
+  ];
 
-const REQUIRED_ENV_VARS = [
-  'NEXT_PUBLIC_SUPABASE_URL',
-  'NEXT_PUBLIC_SUPABASE_ANON_KEY',
-  'SUPABASE_SERVICE_ROLE_KEY',
-  'GEMINI_API_KEY',
-] as const;
-
-const OPTIONAL_ENV_VARS = [
-  'NEXT_PUBLIC_APP_URL',
-  'CRON_SECRET',
-] as const;
-
-export function validateEnvironment(): void {
-  const missingRequired = REQUIRED_ENV_VARS.filter(key => !process.env[key]);
-  const missingOptional = OPTIONAL_ENV_VARS.filter(key => !process.env[key]);
-
-  if (missingRequired.length > 0) {
-    const message = `
-============================================================
-COGNITION OS — MISSING REQUIRED ENVIRONMENT VARIABLES
-============================================================
-${missingRequired.map(k => `  ❌  ${k}`).join('\n')}
-
-  NEXT_PUBLIC_SUPABASE_URL      → Supabase project settings
-  NEXT_PUBLIC_SUPABASE_ANON_KEY → Supabase project settings
-  SUPABASE_SERVICE_ROLE_KEY     → Supabase project settings
-  GEMINI_API_KEY                → https://aistudio.google.com
-============================================================`;
-
-    console.error(message);
-    if (process.env.NODE_ENV !== 'production') {
-      throw new Error(`Missing required env vars: ${missingRequired.join(', ')}`);
+  for (const key of required) {
+    if (!process.env[key]) {
+      throw new Error(`Missing required environment variable: ${key}`);
     }
   }
 
-  if (missingOptional.length > 0) {
-    const warningMessage = `
-============================================================
-COGNITION OS — MISSING RECOMMENDED ENVIRONMENT VARIABLES
-============================================================
-${missingOptional.map(k => `  ⚠️  ${k}`).join('\n')}
+  // At least one AI provider must be configured
+  const hasAnyProvider = aiProviders.some(key => !!process.env[key]);
+  if (!hasAnyProvider) {
+    throw new Error(
+      'No AI provider configured. Set at least one of: ' + aiProviders.join(', ')
+    );
+  }
 
-  NEXT_PUBLIC_APP_URL           → Your Vercel deployment URL
-  CRON_SECRET                   → Any random string: openssl rand -hex 32
-============================================================`;
-    console.warn(warningMessage);
+  // Log which providers are active (helpful for debugging)
+  const activeProviders = aiProviders.filter(key => !!process.env[key]);
+  console.log('[ENV] Active AI providers:', activeProviders.join(', '));
+  
+  if (!process.env.SAMBANOVA_API_KEY && !process.env.CF_API_TOKEN && !process.env.GOOGLE_AI_KEY) {
+    console.warn('[ENV] Warning: No embedding provider configured. Semantic memory will be disabled.');
   }
 }
