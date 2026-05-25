@@ -478,52 +478,6 @@ export async function routeEmbedding(text: string): Promise<number[]> {
         return truncated;
       }
 
-      if (providerName === 'together') {
-        const response = await fetch(`${config.baseUrl}/embeddings`, {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${config.apiKey}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            model: config.embeddingModel,
-            input: text.slice(0, 8192),
-          }),
-          signal: AbortSignal.timeout(15_000),
-        });
-        if (!response.ok) throw Object.assign(
-          new Error(`Together embedding failed: ${response.status}`),
-          { statusCode: response.status }
-        );
-        const data = await response.json();
-        const embedding: number[] = data.data?.[0]?.embedding || [];
-        markProviderSuccess(providerName);
-        return embedding;
-      }
-
-      if (providerName === 'mistral') {
-        const response = await fetch(`${config.baseUrl}/embeddings`, {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${config.apiKey}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            model: config.embeddingModel,
-            input: [text.slice(0, 8192)],
-            encoding_format: 'float',
-          }),
-          signal: AbortSignal.timeout(15_000),
-        });
-        if (!response.ok) throw Object.assign(
-          new Error(`Mistral embedding failed: ${response.status}`),
-          { statusCode: response.status }
-        );
-        const data = await response.json();
-        const embedding: number[] = data.data?.[0]?.embedding || [];
-        markProviderSuccess(providerName);
-        return embedding;
-      }
 
       if (providerName === 'cloudflare') {
         const response = await fetch(
