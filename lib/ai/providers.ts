@@ -224,7 +224,6 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
   ],
 
   embedding: [
-    'sambanova',   // Free E5-Mistral embeddings.
     'cloudflare',  // Free bge-base.
     'google',      // Last resort embedding.
   ],

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { signIn } from '@/lib/actions/auth';
+import { signIn, signInAsGuest } from '@/lib/actions/auth';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 import Link from 'next/link';
@@ -9,6 +9,7 @@ import Link from 'next/link';
 export default function LoginPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [guestLoading, setGuestLoading] = useState(false);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -17,6 +18,13 @@ export default function LoginPage() {
     const formData = new FormData(e.currentTarget);
     const result = await signIn(formData);
     if (result?.error) { setError(result.error); setLoading(false); }
+  }
+
+  async function handleGuestSignIn() {
+    setGuestLoading(true);
+    setError('');
+    const result = await signInAsGuest();
+    if (result?.error) { setError(result.error); setGuestLoading(false); }
   }
 
   return (
@@ -50,6 +58,21 @@ export default function LoginPage() {
             Sign In
           </Button>
         </form>
+
+        <div style={{ display: 'flex', alignItems: 'center', margin: 'var(--sp-6) 0' }}>
+          <div style={{ flex: 1, height: 1, background: 'var(--border-subtle)' }} />
+          <span style={{ padding: '0 var(--sp-4)', color: 'var(--text-tertiary)', fontSize: 'var(--fs-xs)' }}>OR</span>
+          <div style={{ flex: 1, height: 1, background: 'var(--border-subtle)' }} />
+        </div>
+
+        <Button 
+          variant="outline" 
+          onClick={handleGuestSignIn} 
+          isLoading={guestLoading} 
+          style={{ width: '100%' }}
+        >
+          Continue as Guest
+        </Button>
 
         <p style={{ textAlign: 'center', marginTop: 'var(--sp-6)', fontSize: 'var(--fs-sm)', color: 'var(--text-tertiary)' }}>
           No account? <Link href="/signup" style={{ color: 'var(--accent-blue)' }}>Create one</Link>
