@@ -66,7 +66,7 @@ export default function LoginPage() {
         </div>
 
         <Button 
-          variant="outline" 
+          variant="secondary" 
           onClick={handleGuestSignIn} 
           isLoading={guestLoading} 
           style={{ width: '100%' }}

@@ -67,7 +67,7 @@ export default function SignupPage() {
         </div>
 
         <Button 
-          variant="outline" 
+          variant="secondary" 
           onClick={handleGuestSignIn} 
           isLoading={guestLoading} 
           style={{ width: '100%' }}
