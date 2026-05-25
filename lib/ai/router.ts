@@ -274,16 +274,6 @@ export async function routeTextGeneration(
         result = await callGoogle(
           config, config.models.quality, messages, false
         ) as string;
-      } else if (providerName === 'huggingface') {
-        const configHF = getProviderConfig(providerName);
-        result = await callOpenAICompatible(
-          { ...configHF, baseUrl: `https://api-inference.huggingface.co/v1` },
-          configHF.models.quality,
-          messages,
-          temperature,
-          maxTokens,
-          false
-        );
       } else {
         result = await callOpenAICompatible(
           config, config.models.quality, messages,
@@ -338,16 +328,6 @@ export async function routeJSONGeneration<T>(
           rawText = await callGoogle(
             config, config.models.fast, messages, false
           ) as string;
-        } else if (providerName === 'huggingface') {
-          const configHF = getProviderConfig(providerName);
-          rawText = await callOpenAICompatible(
-            { ...configHF, baseUrl: `https://api-inference.huggingface.co/v1` },
-            configHF.models.fast,
-            messages,
-            temperature,
-            1024,
-            false
-          );
         } else {
           rawText = await callOpenAICompatible(
             config, config.models.fast, messages,
@@ -426,16 +406,6 @@ export async function* routeStreamGeneration(
       } else if (providerName === 'google') {
         generator = await callGoogle(
           config, config.models.quality, messages, true
-        ) as AsyncGenerator<string>;
-      } else if (providerName === 'huggingface') {
-        const configHF = getProviderConfig(providerName);
-        generator = await callOpenAICompatible(
-          { ...configHF, baseUrl: `https://api-inference.huggingface.co/v1` },
-          configHF.models.quality,
-          messages,
-          temperature,
-          2048,
-          true
         ) as AsyncGenerator<string>;
       } else {
         generator = await callOpenAICompatible(
