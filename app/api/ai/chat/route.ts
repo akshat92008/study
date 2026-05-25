@@ -27,21 +27,34 @@ async function handleImageMessage(
   message: string,
   systemPrompt: string
 ): Promise<string> {
-  const contents = [{
-    role: 'user',
-    parts: [
-      { inlineData: { mimeType: imageMimeType, data: imageBase64 } },
-      {
-        text: `${message || 'Solve this question completely.'}\n\nInstructions:\n1. Identify what is shown — question, diagram, handwriting, textbook page, etc.\n2. Solve completely, step by step.\n3. Explain the core concept behind it.\n4. State how this topic typically appears in exams.\n5. Flag common mistakes on this type of question.`
-      }
-    ]
-  }];
-  const response = await genai.models.generateContent({
-    model: MODELS.flashVision,
-    contents,
-    config: { systemInstruction: systemPrompt, temperature: 0.4, maxOutputTokens: 4096 },
-  });
-  return response.text || 'Could not read the image clearly. Try a cleaner photo with better lighting.';
+  const contents = [
+    {
+      role: 'user',
+      content: [
+        { type: 'text', text: `${message || 'Solve this question completely.'}\n\nInstructions:\n1. Identify what is shown — question, diagram, handwriting, textbook page, etc.\n2. Solve completely, step by step.\n3. Explain the core concept behind it.\n4. State how this topic typically appears in exams.\n5. Flag common mistakes on this type of question.` },
+        { type: 'image_url', image_url: { url: `data:${imageMimeType};base64,${imageBase64}` } }
+      ]
+    }
+  ];
+  
+  try {
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: 'google/gemini-2.0-flash-exp:free',
+        messages: [{ role: 'system', content: systemPrompt }, ...contents],
+        temperature: 0.4
+      })
+    });
+    const data = await response.json();
+    return data.choices?.[0]?.message?.content || 'Could not read the image clearly.';
+  } catch (err) {
+    return 'Could not read the image clearly. Try a cleaner photo with better lighting.';
+  }
 }
 
 const IntentSchema = z.object({
@@ -97,22 +110,42 @@ export async function POST(req: NextRequest) {
     return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
   }
 
-  const geminiHistory = (history || []).slice(-12).map((m: any) => ({
-    role: m.role === 'user' ? 'user' : 'model',
-    parts: [{ text: m.content || '' }],
+  const openaiHistory = (history || []).slice(-12).map((m: any) => ({
+    role: m.role === 'user' ? 'user' : 'assistant',
+    content: m.content || '',
   }));
-  geminiHistory.push({ role: 'user', parts: [{ text: message || '' }] });
+  openaiHistory.push({ role: 'user', content: message || '' });
 
   const orchestratorPrompt = buildOrchestratorPrompt(mindContext, user.id);
   const tools: any = buildOrchestratorTools();
 
   let orchestratorResponse: any;
+  let functionCall: { name: string; args: any } | undefined;
+  
   try {
-    orchestratorResponse = await genai.models.generateContent({
-      model: 'gemini-2.0-flash',
-      contents: geminiHistory,
-      config: { systemInstruction: orchestratorPrompt, tools, temperature: 0.15 },
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: 'google/gemini-2.0-flash-exp:free',
+        messages: [{ role: 'system', content: orchestratorPrompt }, ...openaiHistory],
+        tools,
+        temperature: 0.15
+      })
     });
+    const data = await response.json();
+    orchestratorResponse = { text: data.choices?.[0]?.message?.content || '' };
+    
+    if (data.choices?.[0]?.message?.tool_calls?.length > 0) {
+      const tc = data.choices[0].message.tool_calls[0];
+      functionCall = {
+        name: tc.function.name,
+        args: JSON.parse(tc.function.arguments)
+      };
+    }
   } catch (err: any) {
     logger.error('Orchestrator failed', err);
 
@@ -167,7 +200,7 @@ export async function POST(req: NextRequest) {
     return new Response('AI service temporarily unavailable. Try again in a moment.', { status: 503 });
   }
 
-  const functionCall = orchestratorResponse.functionCalls?.[0];
+  // const functionCall = orchestratorResponse.functionCalls?.[0];
   const historyText = (history || []).slice(-8)
     .map((m: any) => `${m.role === 'user' ? 'Student' : 'Cognition'}: ${m.content}`)
     .join('\n');
@@ -549,62 +582,81 @@ For casual messages: 1-2 sentences max, reference one real data point.`;
 }
 
 function buildOrchestratorTools() {
-  return [{
-    functionDeclarations: [
-      {
+  return [
+    {
+      type: "function",
+      function: {
         name: 'trigger_tutor_session',
         description: 'Activates the MIND tutor engine for explanations, practice, or artifact generation.',
         parameters: {
-          type: Type.OBJECT,
+          type: 'object',
           properties: {
-            topic: { type: Type.STRING, description: 'Specific concept or topic to cover' },
-            subject: { type: Type.STRING, description: 'Subject area (Physics, Chemistry, Math, etc.)' },
+            topic: { type: 'string', description: 'Specific concept or topic to cover' },
+            subject: { type: 'string', description: 'Subject area (Physics, Chemistry, Math, etc.)' },
           },
           required: ['topic'],
         },
-      },
-      {
+      }
+    },
+    {
+      type: "function",
+      function: {
         name: 'create_study_plan',
         description: 'Generates a personalised day-by-day study plan.',
         parameters: {
-          type: Type.OBJECT,
+          type: 'object',
           properties: {
-            target_date: { type: Type.STRING, description: 'Exam or target date (YYYY-MM-DD)' },
+            target_date: { type: 'string', description: 'Exam or target date (YYYY-MM-DD)' },
           },
           required: ['target_date'],
         },
-      },
-      {
+      }
+    },
+    {
+      type: "function",
+      function: {
         name: 'run_autopsy',
         description: 'Opens mock test autopsy upload.',
-        parameters: { type: Type.OBJECT, properties: {} },
-      },
-      {
+        parameters: { type: 'object', properties: {} },
+      }
+    },
+    {
+      type: "function",
+      function: {
         name: 'show_flashcards',
         description: 'Opens spaced repetition flashcard review.',
-        parameters: { type: Type.OBJECT, properties: {} },
-      },
-      {
+        parameters: { type: 'object', properties: {} },
+      }
+    },
+    {
+      type: "function",
+      function: {
         name: 'show_atlas',
         description: 'Opens the ATLAS knowledge graph.',
-        parameters: { type: Type.OBJECT, properties: {} },
-      },
-      {
+        parameters: { type: 'object', properties: {} },
+      }
+    },
+    {
+      type: "function",
+      function: {
         name: 'show_analytics',
         description: 'Opens performance analytics dashboard.',
-        parameters: { type: Type.OBJECT, properties: {} },
-      },
-      {
+        parameters: { type: 'object', properties: {} },
+      }
+    },
+    {
+      type: "function",
+      function: {
         name: 'adjust_planner',
         description: 'Reduces or lightens daily workload when student signals overwhelm or fatigue.',
         parameters: {
-          type: Type.OBJECT,
+          type: 'object',
           properties: {
-            action: { type: Type.STRING, description: 'reduce_tasks | lighten_intensity | add_break' },
+            action: { type: 'string', description: 'reduce_tasks | lighten_intensity | add_break' },
           },
           required: ['action'],
         },
-      },
-    ],
-  }];
+      }
+    }
+  ];
 }

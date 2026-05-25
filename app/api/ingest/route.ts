@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { processDocumentIntoMemory } from '@/lib/engines/memory-engine';
-import { GoogleGenAI } from '@google/genai';
 import { logger, safeError } from '@/lib/utils/logger';
 import { checkUsageLimit } from '@/lib/utils/billing';
 import pdfParse from 'pdf-parse';
@@ -60,21 +59,30 @@ export async function POST(request: Request) {
       try {
         const arrayBuffer = await file.arrayBuffer();
         const buffer = Buffer.from(arrayBuffer);
-        logger.info(`Extracting Image via Gemini OCR: ${title}`);
-        const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+        logger.info(`Extracting Image via OpenRouter: ${title}`);
         const base64 = buffer.toString('base64');
-
-         const res = await ai.models.generateContent({
-           model: 'gemini-2.0-flash',
-           contents: [{
-            role: 'user',
-            parts: [
-              { inlineData: { mimeType, data: base64 } },
-              { text: 'Extract ALL text content from this image. Preserve headings, lists, and structure. Output strictly the extracted text. Do not add conversational filler.' },
-            ],
-          }],
+        
+        const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            model: 'google/gemini-2.0-flash-exp:free',
+            messages: [{
+              role: 'user',
+              content: [
+                { type: 'text', text: 'Extract ALL text content from this image. Preserve headings, lists, and structure. Output strictly the extracted text. Do not add conversational filler.' },
+                { type: 'image_url', image_url: { url: `data:${mimeType};base64,${base64}` } }
+              ]
+            }],
+            temperature: 0.1
+          })
         });
-        text = res.text || '';
+        
+        const data = await response.json();
+        text = data.choices?.[0]?.message?.content || '';
       } catch (err) {
         return NextResponse.json({
           error: 'Failed to perform OCR on image.'
