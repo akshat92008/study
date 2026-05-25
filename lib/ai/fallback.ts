@@ -6,12 +6,6 @@ interface APIMessage {
   content: string;
 }
 
-/**
- * Normalizes userPrompt to a structured message array compatible with OpenAI format.
- * If userPrompt is a JSON-stringified array of messages (e.g. from GeminiProvider),
- * it parses it, maps 'model' to 'assistant', and returns the array.
- * Otherwise, it wraps the system instruction and user prompt as standard messages.
- */
 function normalizeMessages(systemPrompt: string, userPrompt: string | any[]): APIMessage[] {
   const messages: APIMessage[] = [];
 
@@ -20,7 +14,6 @@ function normalizeMessages(systemPrompt: string, userPrompt: string | any[]): AP
   }
 
   if (Array.isArray(userPrompt)) {
-    // Map objects to standard API format
     for (const msg of userPrompt) {
       const role = msg.role === 'model' ? 'assistant' : msg.role;
       messages.push({
@@ -57,9 +50,6 @@ function normalizeMessages(systemPrompt: string, userPrompt: string | any[]): AP
   return messages;
 }
 
-/**
- * Common fetch wrapper for sending requests to Groq/DeepSeek
- */
 async function callOpenAICompatibleAPI(
   url: string,
   apiKey: string | undefined,
@@ -105,7 +95,7 @@ function describeZodSchema(schema: any): string {
 }
 
 // ============================================================================
-// GROQ FALLBACKS
+// GROQ
 // ============================================================================
 
 export async function generateWithGroq(
@@ -113,7 +103,7 @@ export async function generateWithGroq(
   userPrompt: string | any[],
   temperature: number = 0.7
 ): Promise<string> {
-  logger.info('Attempting fallback text generation with Groq');
+  logger.info('Attempting text generation with Groq');
   const response = await callOpenAICompatibleAPI(
     'https://api.groq.com/openai/v1/chat/completions',
     process.env.GROQ_API_KEY,
@@ -134,20 +124,19 @@ export async function generateJSONWithGroq<T>(
   schema?: z.ZodSchema<T>,
   temperature: number = 0.3
 ): Promise<T> {
-  logger.info('Attempting fallback JSON generation with Groq');
+  logger.info('Attempting JSON generation with Groq');
   
-  // Groq requires the word 'json' to be in the messages when response_format is json_object
   let jsonSystemPrompt = systemPrompt.toLowerCase().includes('json')
     ? systemPrompt
     : `${systemPrompt}\n\nRespond ONLY with valid JSON.`;
- 
+
   if (schema) {
     const shapeDesc = describeZodSchema(schema);
     if (shapeDesc) {
       jsonSystemPrompt += `\n\nYour JSON response must match this schema structure: ${shapeDesc}`;
     }
   }
- 
+
   const response = await callOpenAICompatibleAPI(
     'https://api.groq.com/openai/v1/chat/completions',
     process.env.GROQ_API_KEY,
@@ -161,7 +150,8 @@ export async function generateJSONWithGroq<T>(
   );
   const data = await response.json();
   const text = data.choices?.[0]?.message?.content || '{}';
-  const parsed = JSON.parse(text);
+  const cleanText = text.replace(/```json/gi, '').replace(/```/g, '').trim();
+  const parsed = JSON.parse(cleanText);
   
   if (schema) {
     return schema.parse(parsed);
@@ -174,7 +164,7 @@ export async function* streamWithGroq(
   userPrompt: string | any[],
   temperature: number = 0.7
 ): AsyncGenerator<string> {
-  logger.info('Attempting fallback text stream with Groq');
+  logger.info('Attempting text stream with Groq');
   const response = await callOpenAICompatibleAPI(
     'https://api.groq.com/openai/v1/chat/completions',
     process.env.GROQ_API_KEY,
@@ -225,7 +215,127 @@ export async function* streamWithGroq(
 }
 
 // ============================================================================
-// DEEPSEEK FALLBACKS
+// OPENROUTER 
+// ============================================================================
+
+export async function generateWithOpenRouter(
+  systemPrompt: string,
+  userPrompt: string | any[],
+  temperature: number = 0.7
+): Promise<string> {
+  logger.info('Attempting text generation with OpenRouter');
+  const response = await callOpenAICompatibleAPI(
+    'https://openrouter.ai/api/v1/chat/completions',
+    process.env.OPENROUTER_API_KEY,
+    {
+      model: 'meta-llama/llama-3.3-70b-instruct', 
+      messages: normalizeMessages(systemPrompt, userPrompt),
+      max_tokens: 2048,
+      temperature,
+    }
+  );
+  const data = await response.json();
+  return data.choices?.[0]?.message?.content || '';
+}
+
+export async function generateJSONWithOpenRouter<T>(
+  systemPrompt: string,
+  userPrompt: string | any[],
+  schema?: z.ZodSchema<T>,
+  temperature: number = 0.3
+): Promise<T> {
+  logger.info('Attempting JSON generation with OpenRouter');
+  
+  let jsonSystemPrompt = systemPrompt.toLowerCase().includes('json')
+    ? systemPrompt
+    : `${systemPrompt}\n\nRespond ONLY with valid JSON.`;
+
+  if (schema) {
+    const shapeDesc = describeZodSchema(schema);
+    if (shapeDesc) {
+      jsonSystemPrompt += `\n\nYour JSON response must match this schema structure: ${shapeDesc}`;
+    }
+  }
+
+  const response = await callOpenAICompatibleAPI(
+    'https://openrouter.ai/api/v1/chat/completions',
+    process.env.OPENROUTER_API_KEY,
+    {
+      model: 'meta-llama/llama-3.3-70b-instruct',
+      messages: normalizeMessages(jsonSystemPrompt, userPrompt),
+      response_format: { type: 'json_object' },
+      max_tokens: 4096,
+      temperature,
+    }
+  );
+  const data = await response.json();
+  const text = data.choices?.[0]?.message?.content || '{}';
+  const cleanText = text.replace(/```json/gi, '').replace(/```/g, '').trim();
+  const parsed = JSON.parse(cleanText);
+
+  if (schema) {
+    return schema.parse(parsed);
+  }
+  return parsed as T;
+}
+
+export async function* streamWithOpenRouter(
+  systemPrompt: string,
+  userPrompt: string | any[],
+  temperature: number = 0.7
+): AsyncGenerator<string> {
+  logger.info('Attempting text stream with OpenRouter');
+  const response = await callOpenAICompatibleAPI(
+    'https://openrouter.ai/api/v1/chat/completions',
+    process.env.OPENROUTER_API_KEY,
+    {
+      model: 'meta-llama/llama-3.3-70b-instruct',
+      messages: normalizeMessages(systemPrompt, userPrompt),
+      max_tokens: 2048,
+      temperature,
+      stream: true,
+    }
+  );
+
+  if (!response.body) {
+    throw new Error('Response body is null');
+  }
+
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder('utf-8');
+  let buffer = '';
+
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop() || '';
+
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (!trimmed) continue;
+        if (trimmed === 'data: [DONE]') continue;
+        if (trimmed.startsWith('data: ')) {
+          try {
+            const parsed = JSON.parse(trimmed.slice(6));
+            const content = parsed.choices?.[0]?.delta?.content || '';
+            if (content) yield content;
+          } catch {
+            // Silence parsing errors for incomplete SSE chunks
+          }
+        }
+      }
+    }
+  } finally {
+    reader.releaseLock();
+  }
+}
+
+// ============================================================================
+// DEEPSEEK
 // ============================================================================
 
 export async function generateWithDeepSeek(
@@ -233,7 +343,7 @@ export async function generateWithDeepSeek(
   userPrompt: string | any[],
   temperature: number = 0.7
 ): Promise<string> {
-  logger.info('Attempting fallback text generation with DeepSeek');
+  logger.info('Attempting text generation with DeepSeek');
   const response = await callOpenAICompatibleAPI(
     'https://api.deepseek.com/chat/completions',
     process.env.DEEPSEEK_API_KEY,
@@ -254,9 +364,8 @@ export async function generateJSONWithDeepSeek<T>(
   schema?: z.ZodSchema<T>,
   temperature: number = 0.3
 ): Promise<T> {
-  logger.info('Attempting fallback JSON generation with DeepSeek');
+  logger.info('Attempting JSON generation with DeepSeek');
   
-  // Ensure the word 'json' is in the system prompt for format consistency
   let jsonSystemPrompt = systemPrompt.toLowerCase().includes('json')
     ? systemPrompt
     : `${systemPrompt}\n\nRespond ONLY with valid JSON.`;
@@ -281,65 +390,11 @@ export async function generateJSONWithDeepSeek<T>(
   );
   const data = await response.json();
   const text = data.choices?.[0]?.message?.content || '{}';
-  const parsed = JSON.parse(text);
+  const cleanText = text.replace(/```json/gi, '').replace(/```/g, '').trim();
+  const parsed = JSON.parse(cleanText);
 
   if (schema) {
     return schema.parse(parsed);
   }
   return parsed as T;
-}
-
-export async function* streamWithDeepSeek(
-  systemPrompt: string,
-  userPrompt: string | any[],
-  temperature: number = 0.7
-): AsyncGenerator<string> {
-  logger.info('Attempting fallback text stream with DeepSeek');
-  const response = await callOpenAICompatibleAPI(
-    'https://api.deepseek.com/chat/completions',
-    process.env.DEEPSEEK_API_KEY,
-    {
-      model: 'deepseek-chat',
-      messages: normalizeMessages(systemPrompt, userPrompt),
-      max_tokens: 2048,
-      temperature,
-      stream: true,
-    }
-  );
-
-  if (!response.body) {
-    throw new Error('Response body is null');
-  }
-
-  const reader = response.body.getReader();
-  const decoder = new TextDecoder('utf-8');
-  let buffer = '';
-
-  try {
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-
-      buffer += decoder.decode(value, { stream: true });
-      const lines = buffer.split('\n');
-      buffer = lines.pop() || '';
-
-      for (const line of lines) {
-        const trimmed = line.trim();
-        if (!trimmed) continue;
-        if (trimmed === 'data: [DONE]') continue;
-        if (trimmed.startsWith('data: ')) {
-          try {
-            const parsed = JSON.parse(trimmed.slice(6));
-            const content = parsed.choices?.[0]?.delta?.content || '';
-            if (content) yield content;
-          } catch {
-            // Silence parsing errors for incomplete SSE chunks
-          }
-        }
-      }
-    }
-  } finally {
-    reader.releaseLock();
-  }
 }
