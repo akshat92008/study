@@ -235,19 +235,8 @@ export default function DashboardPage() {
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
         <CurrentTaskCard />
         
-        {/* Introduction area if no goal is active */}
-        {!activeGoal && (
-          <Card padding="lg" style={{ textAlign: 'center', marginTop: 'var(--sp-6)', background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)' }}>
-            <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 'bold', marginBottom: 'var(--sp-2)' }}>Welcome to Cognition OS</h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', maxWidth: '500px', margin: '0 auto' }}>
-              Select an active learning goal in the sidebar or tell the Socratic Tutor on the right what you want to study today.
-            </p>
-          </Card>
-        )}
-
-        {activeGoal && (
-          <Card padding="lg" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)' }}>
-            <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'bold', marginBottom: 'var(--sp-2)' }}>Syllabus Coverage & Mastery</h3>
+        <Card padding="lg" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)' }}>
+          <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'bold', marginBottom: 'var(--sp-2)' }}>Syllabus Coverage & Mastery</h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-xs)', marginBottom: 'var(--sp-4)' }}>
               Your real-time cognitive metrics are constantly updated as you complete study sessions, practice spaced-repetition flashcards, and run autopsies on mock test failures.
             </p>
@@ -266,7 +255,6 @@ export default function DashboardPage() {
               </div>
             </div>
           </Card>
-        )}
       </div>
 
       {/* Backdrop overlay for drawers */}
