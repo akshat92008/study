@@ -3,6 +3,17 @@ import { createClient } from '@/lib/supabase/server';
 import { generateJSON } from '@/lib/ai/gemini';
 import { z } from 'zod';
 
+const INVALID_TOPIC_VALUES = new Set([
+  'none', 'null', 'undefined', 'n/a', 'na', 'unknown', 
+  'not set', 'no topic', 'general', ''
+]);
+
+function sanitizeTopic(value: string | null | undefined, fallback: string): string {
+  if (!value) return fallback;
+  if (INVALID_TOPIC_VALUES.has(value.toLowerCase().trim())) return fallback;
+  return value.trim();
+}
+
 // FIX BUG 8: Schema and all return shapes now consistently use overdueCards (camelCase)
 // Previously the Zod schema said 'overduecards' but the component declared 'overdueCards'
 const SessionCardSchema = z.object({
@@ -76,21 +87,21 @@ export async function GET() {
     const cardPrompt = `You are the COMMAND engine of Cognition OS. Generate today's single study session card.
 
 Student Context:
-- Name: ${profile?.full_name || 'Student'}
 - Exam: ${profile?.exam_type || goal?.title || 'General Study'}
 - Days to exam: ${daysToExam || 'Not set'}
 - Streak: ${streakDays} days
 - Mastery: ${masteryPercent}%
 - Overdue flashcards: ${overdueCount}
-- Weak concepts: ${weakConcepts.map(c => `${c.name} (${c.mastery})`).join(', ') || 'None yet'}
-- Recent mistakes: ${recentMistakes.map(m => `${m.chapter} (${m.category})`).join(', ') || 'None'}
+- Weak concepts: ${weakConcepts.map(c => `${c.name} (${c.mastery})`).join(', ') || 'Fundamentals not yet mapped'}
+- Recent mistakes: ${recentMistakes.map(m => `${m.chapter} (${m.category})`).join(', ') || 'None recorded yet'}
 
-RULE: If overdue flashcards > 5, the session MUST include a review block.
-RULE: Focus on the weakest concept that is not a prerequisite of something even weaker.
-RULE: estimatedMinutes should be 25-60 minutes.
-RULE: focusTopic must be a real topic name. Never write 'none', 'null', or 'N/A'. If no weak concepts exist, use 'Exam Fundamentals Overview'.
+STRICT RULES:
+1. focusTopic MUST be a real, specific concept or chapter name. NEVER write "none", "null", "N/A", or "General".
+2. If no weak concepts exist yet, use the first foundational topic for this exam type.
+3. estimatedMinutes must be between 25 and 60.
+4. subject must be the actual subject name (Physics, Chemistry, Biology, Mathematics, etc.)
 
-Return JSON only:
+Return ONLY valid JSON, no markdown:
 {
   "focusTopic": "specific chapter or concept name",
   "subject": "subject name",
@@ -100,17 +111,19 @@ Return JSON only:
 
     const cardData = await generateJSON<any>('flash', 'You are a study session planner. Return valid JSON only.', cardPrompt);
 
+    const examType = profile?.exam_type || 'General Study';
+    const defaultTopic = weakConcepts[0]?.name || `${examType} Fundamentals`;
     return NextResponse.json({
       dayNumber: sessionCount + 1,
       streakDays,
-      focusTopic: (cardData?.focusTopic && !['none', 'null', 'undefined', 'N/A'].includes(cardData.focusTopic.toLowerCase()))
-        ? cardData.focusTopic
-        : (weakConcepts[0]?.name || 'Start with your exam fundamentals'),
-      subject: cardData?.subject || weakConcepts[0]?.subject || 'General',
+      focusTopic: sanitizeTopic(cardData?.focusTopic, defaultTopic),
+      subject: sanitizeTopic(cardData?.subject, weakConcepts[0]?.subject || examType),
       estimatedMinutes: cardData?.estimatedMinutes || 45,
-      rationale: cardData?.rationale || (overdueCount > 0 ? `${overdueCount} flashcards are overdue` : 'Focus on your weakest areas'),
+      rationale: cardData?.rationale || (overdueCount > 0 
+        ? `${overdueCount} flashcards are overdue — review time is critical`
+        : `Focus on your weakest area to build foundation`),
       daysToExam,
-      overdueCards: overdueCount,   // ← consistent camelCase throughout
+      overdueCards: overdueCount,
       masteryPercent,
     });
 

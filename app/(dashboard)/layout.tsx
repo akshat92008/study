@@ -5,6 +5,7 @@ import CommandBar from '@/components/ui/CommandBar';
 import ToastContainer from '@/components/ui/Toast';
 import SessionTracker from '@/components/layout/SessionTracker';
 import { RealtimeProvider } from '@/components/providers/RealtimeProvider';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 export default async function DashboardLayout({
   children,
@@ -22,6 +23,11 @@ export default async function DashboardLayout({
     .select('*')
     .eq('id', user.id)
     .single();
+
+  // After fetching profile, add redirect guard
+  if (!profile?.onboarding_complete) {
+    redirect('/onboarding');
+  }
 
   // Clean layout — ONE sidebar inside DashboardClientLayout.
   // No hardcoded stub sidebar here. No double wrapping.

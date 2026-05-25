@@ -66,11 +66,16 @@ export default function CurrentTaskCard() {
       <Card style={{ 
         background: 'var(--bg-secondary)', 
         border: '1px solid var(--border-subtle)', 
-        padding: 'var(--sp-4)', 
-        textAlign: 'center' 
+        padding: 'var(--sp-5)', 
+        textAlign: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--sp-3)',
+        alignItems: 'center'
       }}>
-        <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)' }}>
-          No session card available. Tell the tutor what you want to learn to get started!
+        <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 700, color: 'var(--text-primary)', margin: 0 }}>Welcome to Day 1</h3>
+        <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', margin: 0, lineHeight: 1.5 }}>
+          Tell the tutor what you're studying and your exam date to unlock your personalized session plan.
         </p>
       </Card>
     );

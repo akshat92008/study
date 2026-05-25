@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Card from '@/components/ui/Card';
 import { ChevronDown, ChevronRight, Eye, Brain, Sparkles, Shield, Zap, Circle } from 'lucide-react';
+import { createClient } from '@/lib/supabase/client';
 
 const MASTERY_CONFIG: Record<string, { color: string; bg: string; label: string; icon: any }> = {
   not_started: { color: 'var(--text-tertiary)', bg: 'var(--bg-tertiary)', label: 'Not Started', icon: Circle },
@@ -22,9 +23,43 @@ interface KnowledgeMapProps {
   stats: { total: number; mastered: number; proficient: number; developing: number; weak: number; overallMastery: number };
 }
 
-export default function KnowledgeMap({ concepts, links = [], stats }: KnowledgeMapProps) {
+export default function KnowledgeMap({ concepts: initialConcepts, links = [], stats }: KnowledgeMapProps) {
+  const [concepts, setConcepts] = useState(initialConcepts);
   const [expandedSubjects, setExpandedSubjects] = useState<Set<string>>(new Set());
   const [selectedConcept, setSelectedConcept] = useState<any>(null);
+
+  useEffect(() => {
+    setConcepts(initialConcepts);
+  }, [initialConcepts]);
+
+  const userId = initialConcepts[0]?.user_id;
+
+  useEffect(() => {
+    if (!userId) return;
+    const supabase = createClient();
+    
+    // Subscribe to concept mastery changes
+    const channel = supabase
+      .channel('atlas-live')
+      .on('postgres_changes', {
+        event: 'UPDATE',
+        schema: 'public',
+        table: 'concepts',
+        filter: `user_id=eq.${userId}`,
+      }, (payload) => {
+        // Update the local concept state immediately
+        setConcepts(prev => prev.map(c => 
+          c.id === payload.new.id 
+            ? { ...c, mastery: payload.new.mastery, confidence: payload.new.confidence }
+            : c
+        ));
+      })
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [userId]);
 
   if (!concepts || concepts.length === 0) {
     return (

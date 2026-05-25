@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect, KeyboardEvent, ChangeEvent } from 'react';
 import { Send, Paperclip, X, Image as ImageIcon, Loader2 } from 'lucide-react';
+import { usePulseCollector } from '@/hooks/usePulseCollector';
 
 export interface ChatInputProps {
   value: string;
@@ -30,6 +31,8 @@ export function ChatInput({
 }: ChatInputProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { recordKeystroke, recordMessageSent } = usePulseCollector();
+  const sendStartTime = useRef<number>(Date.now());
 
   // Auto-grow textarea
   useEffect(() => {
@@ -41,15 +44,26 @@ export function ChatInput({
     }
   }, [value]);
 
+  // Duplicate handleSend removed – single implementation retained below.
+
   const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       if (value.trim() || pendingFile) {
         if (!isStreaming && !isProcessingUpload) {
-          onSend();
+          sendStartTime.current = Date.now();
+          handleSend();
         }
       }
     }
+  };
+
+  const handleSend = () => {
+    const messageLength = value.trim().length;
+    onSend();
+    setTimeout(() => {
+      recordMessageSent(messageLength, Date.now() - sendStartTime.current);
+    }, 100);
   };
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -122,7 +136,7 @@ export function ChatInput({
         <textarea
           ref={textareaRef}
           value={value}
-          onChange={e => onChange(e.target.value)}
+          onChange={e => { onChange(e.target.value); recordKeystroke(); }}
           onKeyDown={handleKeyDown}
           placeholder={placeholder}
           disabled={isProcessingUpload}
@@ -137,7 +151,7 @@ export function ChatInput({
 
         <button
           type="button"
-          onClick={onSend}
+          onClick={handleSend}
           disabled={isSubmitDisabled}
           style={{
             background: isSubmitDisabled ? 'var(--bg-tertiary)' : 'var(--accent-purple)',
@@ -147,6 +161,7 @@ export function ChatInput({
             cursor: isSubmitDisabled ? 'not-allowed' : 'pointer',
             transition: 'all var(--duration-fast)', padding: 0, margin: '4px'
           }}
+
         >
           {isProcessingUpload ? (
             <Loader2 size={14} className="animate-spin" />

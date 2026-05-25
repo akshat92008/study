@@ -11,7 +11,7 @@ import {
 // ── TYPES ──────────────────────────────────────────────────────────────────────
 
 interface ParsedArtifact {
-  type: 'study-guide' | 'practice-test' | 'revision-sheet' | 'flashcard-set' | 'concept-map' | 'study-plan';
+  type: 'study-guide' | 'practice-test' | 'revision-sheet' | 'flashcard-set' | 'concept-map' | 'study-plan' | 'pdf';
   topic: string;
   subject?: string;
   content: string;
@@ -168,6 +168,68 @@ function CopyButton({ text, label = 'Copy' }: { text: string; label?: string }) 
   );
 }
 
+// ── DOWNLOAD BUTTONS ──────────────────────────────────────────────────────────
+
+function DownloadMdButton({ text, filename = 'document' }: { text: string; filename?: string }) {
+  const handleDownload = () => {
+    const blob = new Blob([text], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${filename.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.md`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+  return (
+    <button onClick={handleDownload} title="Download Markdown" style={{
+      display: 'flex', alignItems: 'center', gap: 4, padding: '4px 10px',
+      background: 'var(--bg-tertiary)', border: '1px solid var(--border-subtle)',
+      borderRadius: 6, cursor: 'pointer', fontSize: 11, color: 'var(--text-secondary)',
+      transition: 'all 0.15s'
+    }}>
+      <Download size={11} /> .md
+    </button>
+  );
+}
+function downloadMarkdownAsPDF(content: string, filename: string) {
+  const printWindow = window.open('', '_blank');
+  if (!printWindow) return;
+  const html = `<!DOCTYPE html>
+<html>
+<head>
+<title>${filename}</title>
+<style>
+  body {font-family: 'Georgia', serif; max-width: 800px; margin: 40px auto; padding: 0 40px; line-height: 1.7; color: #1a1a2e;}
+  h1, h2, h3 {color: #0f172a; margin-top: 2em;}
+  h1 {font-size: 2em; border-bottom: 2px solid #3b82f6; padding-bottom: 0.5em;}
+  code {background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.9em;}
+  pre {background: #f1f5f9; padding: 12px; border-radius: 4px; overflow-x: auto;}
+</style>
+</head>
+<body>
+<pre>${content}</pre>
+</body>
+</html>`;
+  printWindow.document.write(html);
+  printWindow.document.close();
+  printWindow.focus();
+  printWindow.print();
+}
+
+function DownloadPdfButton({ text, filename = 'document' }: { text: string; filename?: string }) {
+  return (
+    <button onClick={() => downloadMarkdownAsPDF(text, filename)} title="Save as PDF (Print)" style={{
+      display: 'flex', alignItems: 'center', gap: 4, padding: '4px 10px',
+      background: 'var(--bg-tertiary)', border: '1px solid var(--border-subtle)',
+      borderRadius: 6, cursor: 'pointer', fontSize: 11, color: 'var(--text-secondary)',
+      transition: 'all 0.15s'
+    }}>
+      <Download size={11} /> PDF
+    </button>
+  );
+}
+
+
 // ── STUDY GUIDE COMPONENT ──────────────────────────────────────────────────────
 
 function StudyGuideCard({ artifact }: { artifact: ParsedArtifact }) {
@@ -197,6 +259,8 @@ function StudyGuideCard({ artifact }: { artifact: ParsedArtifact }) {
         </div>
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
           <CopyButton text={artifact.content} label="Copy" />
+          <DownloadMdButton text={artifact.content} filename={artifact.topic || 'study-guide'} />
+          <DownloadPdfButton text={artifact.content} filename={artifact.topic || 'study-guide'} />
           {expanded ? <ChevronUp size={14} style={{ color: 'var(--text-tertiary)' }} /> : <ChevronDown size={14} style={{ color: 'var(--text-tertiary)' }} />}
         </div>
       </div>
@@ -297,6 +361,9 @@ function PracticeTestCard({ artifact }: { artifact: ParsedArtifact }) {
               {score}/{questions.length}
             </div>
           )}
+          <CopyButton text={artifact.content} label="Copy" />
+          <DownloadMdButton text={artifact.content} filename={artifact.topic || 'practice-test'} />
+          <DownloadPdfButton text={artifact.content} filename={artifact.topic || 'practice-test'} />
         </div>
       </div>
 
@@ -432,6 +499,8 @@ function RevisionSheetCard({ artifact }: { artifact: ParsedArtifact }) {
         </div>
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
           <CopyButton text={artifact.content} label="Copy" />
+          <DownloadMdButton text={artifact.content} filename={artifact.topic || 'revision-sheet'} />
+          <DownloadPdfButton text={artifact.content} filename={artifact.topic || 'revision-sheet'} />
           {expanded ? <ChevronUp size={14} style={{ color: 'var(--text-tertiary)' }} /> : <ChevronDown size={14} style={{ color: 'var(--text-tertiary)' }} />}
         </div>
       </div>
@@ -510,9 +579,13 @@ function FlashcardSetComponent({ artifact }: { artifact: ParsedArtifact }) {
             </div>
           </div>
         </div>
-        <div style={{ fontSize: 11, color: 'var(--text-tertiary)', background: 'var(--bg-tertiary)', padding: '3px 8px', borderRadius: 6 }}>
-          {currentIdx + 1}/{cards.length}
-        </div>
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          <div style={{ fontSize: 11, color: 'var(--text-tertiary)', background: 'var(--bg-tertiary)', padding: '3px 8px', borderRadius: 6 }}>
+            {currentIdx + 1}/{cards.length}
+          </div>
+          <CopyButton text={artifact.content} label="Copy" />
+          <DownloadMdButton text={artifact.content} filename={artifact.topic || 'flashcards'} />
+          <DownloadPdfButton text={artifact.content} filename={artifact.topic || 'flashcards'} />        </div>
       </div>
 
       {/* Card */}
@@ -599,8 +672,10 @@ function ConceptMapCard({ artifact }: { artifact: ParsedArtifact }) {
             <div style={{ fontSize: 11, color: 'var(--text-tertiary)', marginTop: 1 }}>{artifact.topic}</div>
           </div>
         </div>
-        <div style={{ display: 'flex', gap: 8 }}>
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
           <CopyButton text={artifact.content} />
+          <DownloadMdButton text={artifact.content} filename={artifact.topic || 'concept-map'} />
+          <DownloadPdfButton text={artifact.content} filename={artifact.topic || 'concept-map'} />
           {expanded ? <ChevronUp size={14} style={{ color: 'var(--text-tertiary)' }} /> : <ChevronDown size={14} style={{ color: 'var(--text-tertiary)' }} />}
         </div>
       </div>
@@ -648,8 +723,10 @@ function StudyPlanCard({ artifact }: { artifact: ParsedArtifact }) {
             </div>
           </div>
         </div>
-        <div style={{ display: 'flex', gap: 8 }}>
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
           <CopyButton text={artifact.content} />
+          <DownloadMdButton text={artifact.content} filename={artifact.topic || 'study-plan'} />
+          <DownloadPdfButton text={artifact.content} filename={artifact.topic || 'study-plan'} />
           {expanded ? <ChevronUp size={14} style={{ color: 'var(--text-tertiary)' }} /> : <ChevronDown size={14} style={{ color: 'var(--text-tertiary)' }} />}
         </div>
       </div>
@@ -673,6 +750,49 @@ function StudyPlanCard({ artifact }: { artifact: ParsedArtifact }) {
               </div>
             );
           })}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── PDF CARD COMPONENT ─────────────────────────────────────────────────────────
+
+function PdfCard({ artifact }: { artifact: ParsedArtifact }) {
+  const [expanded, setExpanded] = useState(true);
+
+  return (
+    <div style={{
+      background: 'var(--bg-primary)', border: '1px solid var(--border-subtle)',
+      borderRadius: 12, overflow: 'hidden', margin: '4px 0',
+      boxShadow: '0 2px 12px rgba(0,0,0,0.15)'
+    }}>
+      <div style={{
+        background: 'linear-gradient(135deg, rgba(239,68,68,0.15), rgba(185,28,28,0.1))',
+        borderBottom: expanded ? '1px solid var(--border-subtle)' : 'none',
+        padding: '12px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+        cursor: 'pointer'
+      }} onClick={() => setExpanded(!expanded)}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div style={{ background: '#ef4444', borderRadius: 8, padding: 6, display: 'flex' }}>
+            <FileText size={14} color="white" />
+          </div>
+          <div>
+            <div style={{ fontWeight: 800, fontSize: 13, color: 'var(--text-primary)' }}>PDF Document</div>
+            <div style={{ fontSize: 11, color: 'var(--text-tertiary)', marginTop: 1 }}>{artifact.topic}</div>
+          </div>
+        </div>
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          <CopyButton text={artifact.content} label="Copy" />
+          <DownloadMdButton text={artifact.content} filename={artifact.topic || 'document'} />
+          <DownloadPdfButton text={artifact.content} filename={artifact.topic || 'document'} />
+          {expanded ? <ChevronUp size={14} style={{ color: 'var(--text-tertiary)' }} /> : <ChevronDown size={14} style={{ color: 'var(--text-tertiary)' }} />}
+        </div>
+      </div>
+
+      {expanded && (
+        <div style={{ padding: '16px 20px' }}>
+          {renderMarkdownBlock(artifact.content)}
         </div>
       )}
     </div>
@@ -709,6 +829,7 @@ export function RichMessageRenderer({ content, isStreaming = false }: RichMessag
           case 'flashcard-set': return <FlashcardSetComponent key={i} artifact={part.artifact} />;
           case 'concept-map': return <ConceptMapCard key={i} artifact={part.artifact} />;
           case 'study-plan': return <StudyPlanCard key={i} artifact={part.artifact} />;
+          case 'pdf': return <PdfCard key={i} artifact={part.artifact} />;
           default: return <div key={i}>{renderMarkdownBlock(part.content)}</div>;
         }
       })}

@@ -149,26 +149,35 @@ export async function processMockAutopsy(
   const allQuestions = [...correctAndUnattempted, ...diagnosedIncorrect];
 
   // 2. Score Calculation
+  // 2. Score Calculation – tally basic counts and marksLost per question
   let totalCorrect = 0, totalIncorrect = 0, totalUnattempted = 0;
-  let recoverableMarks = 0;
 
   const processedQuestions: ProcessedQuestion[] = allQuestions.map((q: AutopsyQuestion) => {
     let marksLost = 0;
-    if (q.status === 'Correct') totalCorrect++;
-    else if (q.status === 'Incorrect') {
+    if (q.status === 'Correct') {
+      totalCorrect++;
+    } else if (q.status === 'Incorrect') {
       totalIncorrect++;
       marksLost = correctMarks + Math.abs(negativeMarks);
     } else {
       totalUnattempted++;
       marksLost = correctMarks;
     }
-
-    if (q.status === 'Incorrect' && q.mistakeCategory && ['silly', 'misread', 'time_pressure', 'recall_failure'].includes(q.mistakeCategory)) {
-      recoverableMarks += marksLost;
-    }
-
     return { ...q, marksLost };
   });
+
+  // Compute recoverable and knowledge‑gap marks after processing all questions
+  const wrongAnswers = processedQuestions.filter(q => q.status === 'Incorrect');
+  const recoverableCategories = ['silly', 'time_pressure', 'anxiety'];
+  const knowledgeGapCategories = ['conceptual', 'calculation'];
+
+  const recoverableMarks = wrongAnswers
+    .filter(q => q.mistakeCategory && recoverableCategories.includes(q.mistakeCategory as string))
+    .reduce((sum, q) => sum + (q.marksLost || 0), 0);
+
+  const knowledgeGapMarks = wrongAnswers
+    .filter(q => q.mistakeCategory && knowledgeGapCategories.includes(q.mistakeCategory as string))
+    .reduce((sum, q) => sum + (q.marksLost || 0), 0);
 
   const currentScore = (totalCorrect * correctMarks) - (totalIncorrect * Math.abs(negativeMarks));
   const potentialScore = currentScore + recoverableMarks;

@@ -5,25 +5,81 @@ import { searchPersonalKnowledge } from './rag-engine';
 import { FlashcardBatchSchema } from './memory-schemas';
 import { logger } from '@/lib/utils/logger';
 
-// FSRS-5 Configuration tuned for competitive exams
-const scheduler = fsrs({
-  request_retention: 0.90, // Target 90% retention (Optimal for NEET/JEE)
-  maximum_interval: 365,   // Cap max interval to 1 year to prevent extreme drop-offs
-  w: [0.4, 0.6, 2.4, 5.8, 4.93, 0.94, 0.86, 0.01, 1.49, 0.14, 0.94, 2.18, 0.05, 0.34, 1.26, 0.29, 2.61], // Standard FSRS v5 weights
-});
+// Custom FSRS-5 Configuration and Implementation
+const FSRS_WEIGHTS = [
+  0.4072, 1.1829, 3.1262, 15.4722, 7.2102, 0.5316, 1.0651, 0.0589,
+  1.4543, 0.1534, 1.0038, 1.9510, 0.1100, 0.2900, 2.2700, 0.1600,
+  2.9898
+];
 
-function toFSRSCard(row: any): FSRSCard {
-  return {
-    due: new Date(row.due),
-    stability: row.stability,
-    difficulty: row.difficulty,
-    elapsed_days: row.elapsed_days,
-    scheduled_days: row.scheduled_days,
-    reps: row.reps,
-    lapses: row.lapses,
-    state: row.state as State,
-    last_review: row.last_review ? new Date(row.last_review) : undefined,
-  };
+export type CustomFSRSRating = 'again' | 'hard' | 'good' | 'easy';
+const CUSTOM_RATING_MAP: Record<CustomFSRSRating, number> = { again: 1, hard: 2, good: 3, easy: 4 };
+
+export interface CustomFSRSCard {
+  stability: number;
+  difficulty: number;
+  retrievability: number;
+  reps: number;
+  lapses: number;
+  lastReview: Date | null;
+  state: 'new' | 'learning' | 'review' | 'relearning';
+}
+
+export function computeNextReview(
+  card: CustomFSRSCard,
+  rating: CustomFSRSRating,
+  requestRetention: number = 0.9
+): { nextDueAt: Date; newStability: number; newDifficulty: number } {
+  const r = CUSTOM_RATING_MAP[rating];
+  const w = FSRS_WEIGHTS;
+  
+  let stability = card.stability;
+  let difficulty = card.difficulty;
+
+  if (card.state === 'new') {
+    // Initial stability based on rating
+    stability = w[r - 1];
+    difficulty = w[4] - w[5] * (r - 3);
+    difficulty = Math.min(Math.max(difficulty, 1), 10);
+  } else {
+    // Recall stability update
+    const retrievability = card.retrievability;
+    
+    if (rating === 'again') {
+      // Forgetting — reduce stability
+      stability = w[11] * Math.pow(difficulty, -w[12]) 
+        * (Math.pow(stability + 1, w[13]) - 1) 
+        * Math.exp((1 - retrievability) * w[14]);
+    } else {
+      // Recall — increase stability
+      const hardPenalty = rating === 'hard' ? w[15] : 1;
+      const easyBonus = rating === 'easy' ? w[16] : 1;
+      
+      stability = stability * (
+        Math.exp(w[8]) 
+        * (11 - difficulty) 
+        * Math.pow(stability, -w[9]) 
+        * (Math.exp((1 - retrievability) * w[10]) - 1) 
+        * hardPenalty 
+        * easyBonus + 1
+      );
+    }
+
+    // Difficulty update
+    const nextDifficulty = difficulty - w[6] * (r - 3);
+    const diffDelta = nextDifficulty - difficulty;
+    difficulty = difficulty + diffDelta * (10 - difficulty) / 9;
+    difficulty = Math.min(Math.max(difficulty, 1), 10);
+  }
+
+  // Compute interval from stability
+  const interval = Math.round(
+    (stability / 9) * (Math.pow(requestRetention, 1 / -0.5) - 1)
+  );
+
+  const nextDueAt = new Date(Date.now() + Math.max(interval, 1) * 86400000);
+
+  return { nextDueAt, newStability: stability, newDifficulty: difficulty };
 }
 
 export async function getDueCards(userId: string, limit: number = 75, pulseState: string = 'neutral') {
@@ -83,27 +139,66 @@ export async function reviewCard(cardId: string, rating: 1 | 2 | 3 | 4, response
   const { data: row } = await supabase.from('revision_cards').select('*').eq('id', cardId).single();
   if (!row) throw new Error('Card not found');
 
-  const fsrsCard = toFSRSCard(row);
   const now = new Date();
-  
-  const ratingMap: Record<number, Rating> = {
-    1: Rating.Again, 2: Rating.Hard, 3: Rating.Good, 4: Rating.Easy,
+
+  // Mapping rating integer to CustomFSRSRating string
+  const ratingStrMap: Record<1 | 2 | 3 | 4, CustomFSRSRating> = {
+    1: 'again',
+    2: 'hard',
+    3: 'good',
+    4: 'easy',
+  };
+  const ratingStr = ratingStrMap[rating];
+
+  // Mapping state integer to state string
+  const stateIntMap: Record<number, 'new' | 'learning' | 'review' | 'relearning'> = {
+    0: 'new',
+    1: 'learning',
+    2: 'review',
+    3: 'relearning',
+  };
+  const stateStrMap: Record<'new' | 'learning' | 'review' | 'relearning', number> = {
+    new: 0,
+    learning: 1,
+    review: 2,
+    relearning: 3,
   };
 
-  // 2. Execute FSRS-5 Math
-  const result = scheduler.next(fsrsCard, now, ratingMap[rating] as any);
-  const updated = result.card;
+  const lastReviewDate = row.last_review ? new Date(row.last_review) : null;
+  const lastReviewTime = lastReviewDate ? lastReviewDate.getTime() : new Date(row.created_at || Date.now()).getTime();
+  const elapsedDays = (Date.now() - lastReviewTime) / 86400000;
+  const retrievability = row.stability > 0 ? Math.exp(Math.log(0.9) * elapsedDays / row.stability) : 1.0;
+
+  const fsrsCard: CustomFSRSCard = {
+    stability: row.stability || 1,
+    difficulty: row.difficulty || 5,
+    retrievability: retrievability,
+    reps: row.reps || 0,
+    lapses: row.lapses || 0,
+    lastReview: lastReviewDate,
+    state: stateIntMap[row.state as number] || 'new',
+  };
+
+  // 2. Execute FSRS-5 Math using custom function
+  const { nextDueAt, newStability, newDifficulty } = computeNextReview(fsrsCard, ratingStr);
+
+  const newReps = ratingStr === 'again' ? 0 : (row.reps || 0) + 1;
+  const newLapses = ratingStr === 'again' ? (row.lapses || 0) + 1 : (row.lapses || 0);
+  
+  const newStateStr = ratingStr === 'again' ? 'relearning' : 'review';
+  const newStateInt = stateStrMap[newStateStr];
+  const interval = Math.round((newStability / 9) * (Math.pow(0.9, 1 / -0.5) - 1));
 
   // 3. Update Card DB
   await supabase.from('revision_cards').update({
-    due: updated.due.toISOString(),
-    stability: updated.stability,
-    difficulty: updated.difficulty,
-    elapsed_days: updated.elapsed_days,
-    scheduled_days: updated.scheduled_days,
-    reps: updated.reps,
-    lapses: updated.lapses,
-    state: updated.state,
+    due: nextDueAt.toISOString(),
+    stability: newStability,
+    difficulty: newDifficulty,
+    elapsed_days: Math.round(elapsedDays),
+    scheduled_days: Math.max(interval, 1),
+    reps: newReps,
+    lapses: newLapses,
+    state: newStateInt,
     last_review: now.toISOString(),
   }).eq('id', cardId);
 
@@ -112,9 +207,9 @@ export async function reviewCard(cardId: string, rating: 1 | 2 | 3 | 4, response
     user_id: row.user_id,
     card_id: cardId,
     rating,
-    elapsed_days: updated.elapsed_days,
-    scheduled_days: updated.scheduled_days,
-    state: updated.state,
+    elapsed_days: Math.round(elapsedDays),
+    scheduled_days: Math.max(interval, 1),
+    state: newStateInt,
     response_time_ms: responseTimeMs,
   });
 
@@ -136,12 +231,10 @@ export async function reviewCard(cardId: string, rating: 1 | 2 | 3 | 4, response
   // 5. Sync Ecosystem: Update parent Concept Mastery & Streak
   if (row.concept_id) {
     let newMastery = 'developing';
-    if (updated.state === State.Review) {
-      if (updated.stability > 21) newMastery = 'automated';
-      else if (updated.stability > 7) newMastery = 'mastered';
+    if (newStateStr === 'review') {
+      if (newStability > 21) newMastery = 'automated';
+      else if (newStability > 7) newMastery = 'mastered';
       else newMastery = 'proficient';
-    } else if (updated.state === State.New) {
-      newMastery = 'exposed';
     }
 
     await supabase.from('concepts').update({
@@ -151,7 +244,7 @@ export async function reviewCard(cardId: string, rating: 1 | 2 | 3 | 4, response
     }).eq('id', row.concept_id);
 
     // 5b. Loop-Breaker: Repeated Failures (> 3 lapses)
-    if (updated.lapses > 3 && rating === 1) {
+    if (newLapses > 3 && rating === 1) {
       try {
         const { data: concept } = await supabase.from('concepts').select('subject, chapter').eq('id', row.concept_id).single();
         if (concept) {
@@ -166,8 +259,8 @@ export async function reviewCard(cardId: string, rating: 1 | 2 | 3 | 4, response
             title: `[Deep Review Required] Repeated failures on ${concept.chapter}. Trigger MIND Tutor session.`,
             scheduled_date: d.toISOString(),
             estimated_minutes: 30,
-            priority: 'critical', // Fixed from integer 4 to valid enum string
-            type: 'revision', // Set exact type
+            priority: 'critical',
+            type: 'revision',
             subject: concept.subject,
             chapter: concept.chapter,
             is_completed: false
@@ -203,9 +296,25 @@ export async function reviewCard(cardId: string, rating: 1 | 2 | 3 | 4, response
     });
   }
 
-  logger.info(`Card Reviewed`, { cardId, rating, newState: updated.state, newDue: updated.due });
+  logger.info(`Card Reviewed`, { cardId, rating, newState: newStateInt, newDue: nextDueAt });
 
-  return { nextDue: updated.due, scheduledDays: updated.scheduled_days };
+  return { nextDue: nextDueAt, scheduledDays: Math.max(interval, 1) };
+}
+
+export type RatingString = 'again' | 'hard' | 'good' | 'easy';
+
+export async function processCardReview(
+  userId: string,
+  cardId: string, 
+  rating: RatingString
+): Promise<void> {
+  const ratingIntMap: Record<RatingString, 1 | 2 | 3 | 4> = {
+    again: 1,
+    hard: 2,
+    good: 3,
+    easy: 4,
+  };
+  await reviewCard(cardId, ratingIntMap[rating]);
 }
 
 // RAG-Driven Auto Card Generation

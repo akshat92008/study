@@ -493,6 +493,16 @@ Return JSON: { "learningStyle": "visual" | "analogy" | "first_principles" | "exa
         logger.error('Chat stream error', err);
         controller.enqueue(encoder.encode('\n\n[Something went wrong. Please try again.]'));
       }
+      // Store messages in memory after response
+      const memoryService = new ChatMemoryService();
+      after(async () => {
+        if (message) {
+          await memoryService.storeMessageInMemory(user.id, message);
+        }
+        if (fullResponse) {
+          await memoryService.storeMessageInMemory(user.id, fullResponse);
+        }
+      });
       controller.close();
     }
   });

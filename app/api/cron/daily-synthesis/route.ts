@@ -113,7 +113,7 @@ async function processOneUser(userId: string, supabase: any, today: string): Pro
   const yesterdayStr = yesterday.toISOString().split('T')[0];
 
   const { data: userProfile } = await supabase.from('profiles')
-    .select('last_active_at, streak_days')
+    .select('last_active_at, streak_days, exam_date')
     .eq('id', userId)
     .single();
 
@@ -134,6 +134,11 @@ async function processOneUser(userId: string, supabase: any, today: string): Pro
   await syncStudentModel(userId);
   // Synthesize episodic memories from yesterday's events
   await synthesizeMemories(userId, supabase);
+
+  // Generate tomorrow's session card / task
+  await generateTomorrowCard(userId, userProfile, supabase).catch(err =>
+    logger.error('Failed to generate tomorrow card', { userId, err: err.message })
+  );
 
   // =====================================================================
   // TASK 3.3: GENERATE & INJECT MORNING BRIEFING TO GLOBAL CHAT
@@ -248,6 +253,75 @@ async function processOneUser(userId: string, supabase: any, today: string): Pro
   } catch (snapErr) {
     logger.warn(`Snapshot write failed for user ${userId}`, snapErr);
   }
+}
+
+async function generateTomorrowCard(userId: string, profile: any, supabase: any): Promise<void> {
+  const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
+
+  // Check if tomorrow already has a task
+  const { count } = await supabase
+    .from('study_tasks')
+    .select('*', { count: 'exact', head: true })
+    .eq('user_id', userId)
+    .eq('scheduled_date', tomorrow)
+    .eq('is_completed', false);
+
+  if (count && count > 0) return; // Already planned
+
+  // Compute priority using weighted scoring
+  const { data: concepts } = await supabase
+    .from('concepts')
+    .select('id, name, subject, chapter, mastery')
+    .eq('user_id', userId)
+    .in('mastery', ['not_started', 'exposed', 'developing'])
+    .limit(20);
+
+  const { data: recentMistakes } = await supabase
+    .from('mistakes')
+    .select('chapter, subject')
+    .eq('user_id', userId)
+    .order('created_at', { ascending: false })
+    .limit(5);
+
+  const { count: overdueCards } = await supabase
+    .from('revision_cards')
+    .select('*', { count: 'exact', head: true })
+    .eq('user_id', userId)
+    .lte('due', new Date(Date.now() + 86400000).toISOString());
+
+  if (!concepts || concepts.length === 0) return;
+
+  // Score each concept
+  const masteryScore: Record<string, number> = {
+    not_started: 10, exposed: 7, developing: 4
+  };
+  
+  const mistakeChapters = new Set(recentMistakes?.map((m: any) => m.chapter) || []);
+  
+  const scored = concepts.map((c: any) => ({
+    ...c,
+    score: (masteryScore[c.mastery] || 5) + (mistakeChapters.has(c.chapter) ? 5 : 0)
+  })).sort((a: any, b: any) => b.score - a.score);
+
+  const topConcept = scored[0];
+  const daysToExam = profile?.exam_date
+    ? Math.ceil((new Date(profile.exam_date).getTime() - Date.now()) / 86400000)
+    : null;
+
+  await supabase.from('study_tasks').insert({
+    user_id: userId,
+    title: topConcept.name,
+    subject: topConcept.subject,
+    chapter: topConcept.chapter,
+    type: 'study',
+    priority: topConcept.mastery === 'not_started' ? 'critical' : 'high',
+    estimated_minutes: (overdueCards || 0) > 10 ? 60 : 45,
+    scheduled_date: tomorrow,
+    is_completed: false,
+    notes: daysToExam 
+      ? `${daysToExam} days to exam. Prioritized by mastery gap and mistake history.`
+      : 'Prioritized by mastery gap analysis.',
+  });
 }
 
 const BATCH_SIZE = 10; // Process 10 users concurrently

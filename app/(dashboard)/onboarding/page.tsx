@@ -8,6 +8,7 @@ import WeakSpotCheck from '@/components/onboarding/WeakSpotCheck';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import { completeOnboarding } from '@/lib/actions/onboarding';
+import { logger } from '@/lib/utils/logger';
 
 // Rotating status messages shown during quiz generation so the UI
 // communicates active work even when the first question hasn't arrived yet.
@@ -15,8 +16,9 @@ import { completeOnboarding } from '@/lib/actions/onboarding';
 
 export default function OnboardingFlow() {
   const router = useRouter();
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState<number | string>(1);
   const [loading, setLoading] = useState(false);
+  const [conceptsSeeded, setConceptsSeeded] = useState(0);
 
   const [examType, setExamType] = useState('');
   const [examDate, setExamDate] = useState('');
@@ -32,30 +34,69 @@ export default function OnboardingFlow() {
     }
   }, [examDate]);
 
+  useEffect(() => {
+    if (step === 'done') {
+      const timer = setTimeout(() => {
+        router.push('/dashboard?magic=true'); // magic=true opens ATLAS drawer
+      }, 2500);
+      return () => clearTimeout(timer);
+    }
+  }, [step, router]);
 
+  const handleWeakSpotComplete = async (
+    results: Array<{ chapter: string; concept: string; isCorrect: boolean }>
+  ) => {
+    setQuizResults(results);
+    setStep('processing'); // Show processing state immediately
 
+    try {
+      // 1. Save quiz results to server action
+      await completeOnboarding('server-uses-auth', examType, examDate, results);
 
+      // 2. Call the seeding API with quiz results — AWAIT this
+      const response = await fetch('/api/onboarding/complete', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ quizResults: results }),
+      });
 
-   // New function to handle completion of weak spot check
-   const handleWeakSpotComplete = async (results: Array<{ chapter: string; concept: string; isCorrect: boolean }>) => {
-     setQuizResults(results);
-     setLoading(true);
-     try {
-       // Just saves profile — returns in under 2 seconds
-       await completeOnboarding('temp-id-ignored-by-server', examType, examDate, results);
-       // Heavy work runs in background on the server — does not block
-       fetch('/api/onboarding/complete', {
-         method: 'POST',
-         headers: { 'Content-Type': 'application/json' },
-         body: JSON.stringify({ quizResults: results }),
-       });
-     } catch (e) {
-       console.error(e);
-     } finally {
-       setLoading(false);
-       setStep(5);
-     }
-   };
+      const data = await response.json();
+
+      if (data.success) {
+        setConceptsSeeded(data.conceptsSeeded || 0);
+        setStep('done');
+      } else {
+        // Even if there's an error, move forward — don't block the user
+        setStep('done');
+      }
+    } catch (err) {
+      logger.error('Onboarding completion failed', err);
+      setStep('done'); // Always move forward
+    }
+  };
+
+  if (step === 'processing') {
+    return (
+      <div style={{ 
+        display: 'flex', flexDirection: 'column', 
+        alignItems: 'center', justifyContent: 'center',
+        minHeight: '100vh', gap: 'var(--sp-6)'
+      }}>
+        <div style={{
+          width: 64, height: 64, borderRadius: '50%',
+          background: 'conic-gradient(var(--accent-purple) 0%, var(--accent-blue) 100%)',
+          animation: 'spin 1s linear infinite'
+        }} />
+        <h2 style={{ fontSize: 'var(--fs-xl)', fontWeight: 900 }}>
+          Building your knowledge map...
+        </h2>
+        <p style={{ color: 'var(--text-secondary)', maxWidth: 400, textAlign: 'center' }}>
+          Processing your diagnostic results, seeding your ATLAS graph, 
+          and generating your Day 1 mission.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div style={{
@@ -172,44 +213,35 @@ export default function OnboardingFlow() {
         )}
 
         {/* STEP 5: The Reveal (Knowledge Graph & Redirect) */}
-        {step === 5 && (
+        {step === 'done' && (
           <motion.div key="step5" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} style={{ width: '100%', maxWidth: 800, textAlign: 'center' }}>
+            <div>
+              <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: 'spring', damping: 20 }}>
+                <Target size={64} style={{ color: 'var(--success)', margin: '0 auto var(--sp-4)', filter: 'drop-shadow(0 0 20px var(--success-dim))' }} />
+              </motion.div>
+              <h2 style={{ fontSize: 'var(--fs-3xl)', fontWeight: 'var(--fw-black)', marginBottom: 'var(--sp-4)' }}>Calibration Complete.</h2>
 
-            {loading ? (
-              <div style={{ padding: 'var(--sp-12)' }}>
-                <Brain size={64} className="animate-pulse" style={{ color: 'var(--accent-cyan)', margin: '0 auto var(--sp-6)' }} />
-                <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-black)', marginBottom: 'var(--sp-2)' }}>Building Your Brain Model...</h2>
-                <p style={{ color: 'var(--text-secondary)' }}>Processing diagnostics, scaling FSRS decay curves, and generating Day 1 mission.</p>
-              </div>
-            ) : (
-              <div>
-                <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: 'spring', damping: 20 }}>
-                  <Target size={64} style={{ color: 'var(--success)', margin: '0 auto var(--sp-4)', filter: 'drop-shadow(0 0 20px var(--success-dim))' }} />
-                </motion.div>
-                <h2 style={{ fontSize: 'var(--fs-3xl)', fontWeight: 'var(--fw-black)', marginBottom: 'var(--sp-4)' }}>Calibration Complete.</h2>
-
-                <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-lg)', padding: 'var(--sp-6)', marginBottom: 'var(--sp-8)', display: 'inline-block', textAlign: 'left' }}>
-                  <div style={{ display: 'flex', gap: 'var(--sp-6)', alignItems: 'center' }}>
-                    <div style={{ borderRight: '1px solid var(--border-subtle)', paddingRight: 'var(--sp-6)' }}>
-                      <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', textTransform: 'uppercase' }}>Strong Areas Found</div>
-                      <div style={{ color: 'var(--success)', fontWeight: 'bold', fontSize: 'var(--fs-lg)' }}>{quizResults.filter(r => r.isCorrect).length} Concepts</div>
-                    </div>
-                    <div>
-                      <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', textTransform: 'uppercase' }}>Weak Areas Found</div>
-                      <div style={{ color: 'var(--danger)', fontWeight: 'bold', fontSize: 'var(--fs-lg)' }}>{quizResults.filter(r => !r.isCorrect).length} Concepts</div>
-                    </div>
+              <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-lg)', padding: 'var(--sp-6)', marginBottom: 'var(--sp-8)', display: 'inline-block', textAlign: 'left' }}>
+                <div style={{ display: 'flex', gap: 'var(--sp-6)', alignItems: 'center' }}>
+                  <div style={{ borderRight: '1px solid var(--border-subtle)', paddingRight: 'var(--sp-6)' }}>
+                    <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', textTransform: 'uppercase' }}>Strong Areas Found</div>
+                    <div style={{ color: 'var(--success)', fontWeight: 'bold', fontSize: 'var(--fs-lg)' }}>{quizResults.filter(r => r.isCorrect).length} Concepts</div>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', textTransform: 'uppercase' }}>Weak Areas Found</div>
+                    <div style={{ color: 'var(--danger)', fontWeight: 'bold', fontSize: 'var(--fs-lg)' }}>{quizResults.filter(r => !r.isCorrect).length} Concepts</div>
                   </div>
                 </div>
-
-                <p style={{ fontSize: 'var(--fs-lg)', color: 'var(--text-secondary)', marginBottom: 'var(--sp-8)', maxWidth: 600, margin: '0 auto var(--sp-8)' }}>
-                  This is where you stand today. Your ATLAS graph has been seeded. <br />Your Day 1 mission is locked and waiting.
-                </p>
-
-                <Button size="lg" onClick={() => router.push('/cognition?magic=true&firstTime=true')} style={{ background: 'linear-gradient(135deg, var(--accent-blue), var(--accent-cyan))', color: 'black', padding: '20px 40px', fontSize: 'var(--fs-lg)', fontWeight: 900, boxShadow: '0 10px 30px rgba(0, 240, 255, 0.3)' }}>
-                  See Your Knowledge Graph <ArrowRight size={24} style={{ marginLeft: 8 }} />
-                </Button>
               </div>
-            )}
+
+              <p style={{ fontSize: 'var(--fs-lg)', color: 'var(--text-secondary)', marginBottom: 'var(--sp-8)', maxWidth: 600, margin: '0 auto var(--sp-8)' }}>
+                This is where you stand today. Your ATLAS graph has been seeded. <br />Your Day 1 mission is locked and waiting.
+              </p>
+
+              <Button size="lg" onClick={() => router.push('/dashboard?magic=true')} style={{ background: 'linear-gradient(135deg, var(--accent-blue), var(--accent-cyan))', color: 'black', padding: '20px 40px', fontSize: 'var(--fs-lg)', fontWeight: 900, boxShadow: '0 10px 30px rgba(0, 240, 255, 0.3)' }}>
+                See Your Knowledge Graph <ArrowRight size={24} style={{ marginLeft: 8 }} />
+              </Button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
