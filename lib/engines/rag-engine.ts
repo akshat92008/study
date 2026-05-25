@@ -1,15 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
-import { genai } from '@/lib/ai/gemini';
-
-// Helper to get embeddings from Gemini
-export async function getEmbedding(text: string) {
-  const result = await genai.models.embedContent({
-    model: 'gemini-embedding-2',
-    contents: text,
-  });
-  if (!result.embeddings || result.embeddings.length === 0) return null;
-  return result.embeddings[0].values;
-}
+import { getEmbedding } from '@/lib/ai/gemini';
 
 // Ingest text, chunk it, embed it, and store it
 export async function ingestMaterial(userId: string, title: string, content: string) {
@@ -30,7 +20,7 @@ export async function ingestMaterial(userId: string, title: string, content: str
   // 3. Embed and store chunks
   for (const chunk of chunks) {
     const embedding = await getEmbedding(chunk);
-    if (!embedding) continue;
+    if (!embedding || embedding.length === 0) continue;
     
     await supabase.from('material_chunks').insert({
       user_id: userId,

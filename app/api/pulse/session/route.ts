@@ -22,7 +22,7 @@ export async function POST(request: Request) {
       notes: 'Auto-tracked by background telemetry',
     });
 
-    if (error) throw error;
+    if (error) throw new Error(`Supabase insert failed: ${error.message} (code: ${error.code})`);
 
     logger.info('Study session logged via telemetry', { userId: user.id, durationMinutes });
     return NextResponse.json({ success: true });
