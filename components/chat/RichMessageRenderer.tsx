@@ -290,7 +290,7 @@ function downloadMarkdownAsPDF(content: string, filename: string) {
       const { jsPDF } = jsPDFModule;
       const doc = new jsPDF();
       doc.html(markdownToHtml(content), {
-        callback: (doc) => {
+        callback: (doc: any) => {
           doc.save(`${filename.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.pdf`);
         },
         x: 10,

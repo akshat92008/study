@@ -295,8 +295,7 @@ export async function POST(req: NextRequest) {
                 }
               }
 
-                // Embedding stored via ChatMemoryService (duplicate removed)
-              }
+              // Embedding stored via ChatMemoryService (duplicate removed)
 
               await logPulseSignal(user.id, 'chat_interaction', {
                 messageLength: message.length,

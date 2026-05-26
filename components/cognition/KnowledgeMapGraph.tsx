@@ -14,7 +14,6 @@ import {
 import '@xyflow/react/dist/style.css';
 import dagre from 'dagre';
 import html2canvas from 'html2canvas';
-import styles from './graph.css'; // Ensure CSS is bundled
 
 const MASTERY_COLORS: Record<string, string> = {
   not_started: 'var(--text-tertiary)',
@@ -137,7 +136,23 @@ export default function KnowledgeMapGraph({ concepts = [], links = [] }: { conce
           Scroll to zoom • Click & Drag to pan
         </Panel>
         <Panel position="top-right" style={{ padding: 'var(--sp-2)' }}>
-          <button onClick={exportPNG} className={styles.exportButton}>Download PNG</button>
+          <button
+            onClick={exportPNG}
+            style={{
+              background: 'var(--bg-glass)',
+              border: '1px solid var(--border-subtle)',
+              borderRadius: 'var(--radius-md)',
+              padding: '6px 12px',
+              color: 'var(--text-primary)',
+              fontSize: 'var(--fs-xs)',
+              fontWeight: 500,
+              cursor: 'pointer',
+              backdropFilter: 'blur(8px)',
+              transition: 'all 0.2s',
+            }}
+          >
+            Download PNG
+          </button>
         </Panel>
       </ReactFlow>
     </div>

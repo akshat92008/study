@@ -21,6 +21,7 @@ export const GlobalChat = memo(function GlobalChat() {
     activeGoalId,
     streakDays,
     setStreakDays,
+    sessionActive,
     startSession,
     sessionStartTime,
     chatId,
