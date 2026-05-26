@@ -3,17 +3,12 @@ import { createClient } from '@/lib/supabase/server';
 import { streamMentorResponse } from '@/lib/ai/agents/mentor';
  
 import { safeError, logger } from '@/lib/utils/logger';
-import { RateLimiter } from '@/lib/services/rateLimiter';
 
 export async function POST(req: NextRequest) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return new Response('Unauthorized', { status: 401 });
 
-  // Rate limit: 60 per 1h
-  const limiter = RateLimiter.getInstance();
-  const allowed = await limiter.consume(`ai-mentor-${user.id}`, 60, 60 * 60 * 1000);
-  if (!allowed) return new Response(JSON.stringify({ error: 'Rate limit reached. Please wait a moment.' }), { status: 429, headers: { 'Content-Type': 'application/json' } });
 
   try {
     const { message, history } = await req.json();

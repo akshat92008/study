@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { GoogleGenAI } from '@google/genai';
-import { RateLimiter } from '@/lib/services/rateLimiter';
 
 export async function POST(request: Request) {
   try {
@@ -12,10 +11,6 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    // Rate limit: 30 per 1h
-    const limiter = RateLimiter.getInstance();
-    const allowed = await limiter.consume(`revision-coach-${user.id}`, 30, 60 * 60 * 1000);
-    if (!allowed) return NextResponse.json({ error: 'Hourly limit reached.' }, { status: 429 });
 
     const body = await request.json();
     const { currentCard, performance } = body;
