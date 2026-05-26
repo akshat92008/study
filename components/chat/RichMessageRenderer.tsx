@@ -83,11 +83,13 @@ function parseArtifacts(content: string): Array<{ type: 'text' | 'artifact'; con
 
 function renderMarkdownInline(text: string): React.ReactNode {
   if (!text) return null;
-  const parts = text.split(/(`[^`]+`|\*\*[^*]+\*\*|__[^_]+__)/g);
+  const parts = text.split(/(`[^`]+`|\*\*[^*]+\*\*|__[^_]+__|\[\[concept:[^\]]+\]\])/g);
   return parts.map((part, i) => {
     if (part.startsWith('**') && part.endsWith('**')) return <strong key={i} style={{ fontWeight: 700, color: 'var(--text-primary)' }}>{part.slice(2, -2)}</strong>;
     if (part.startsWith('__') && part.endsWith('__')) return <strong key={i} style={{ fontWeight: 700 }}>{part.slice(2, -2)}</strong>;
     if (part.startsWith('`') && part.endsWith('`')) return <code key={i} style={{ background: 'var(--bg-tertiary)', padding: '1px 6px', borderRadius: 4, fontFamily: 'var(--font-mono)', fontSize: '0.9em' }}>{part.slice(1, -1)}</code>;
+    const conceptMatch = part.match(/\[\[concept:([^\]]+)\]\]/);
+    if (conceptMatch) return <span key={i} className="conceptHighlight">{conceptMatch[1]}</span>;
     return part;
   });
 }
@@ -106,6 +108,10 @@ function renderMarkdownBlock(text: string): React.ReactNode {
       listItems = [];
     }
   };
+
+  // exam‑trap handling
+  let inExamTrap = false;
+  let examBuffer: string[] = [];
 
   lines.forEach((line, idx) => {
     if (line.startsWith('```')) {
@@ -130,6 +136,33 @@ function renderMarkdownBlock(text: string): React.ReactNode {
       return;
     }
     if (inCodeBlock) { codeLines.push(line); return; }
+
+    // start of exam‑trap block
+    if (line.trim() === '[[exam-trap]]') {
+      flushList();
+      inExamTrap = true;
+      examBuffer = [];
+      return;
+    }
+    // end of exam‑trap block
+    if (line.trim() === '[[/exam-trap]]') {
+      const content = examBuffer.join('\n');
+      elements.push(
+        <div key={idx} className="examTrapBox" style={{
+          background: 'rgba(255,99,71,0.08)',
+          border: '1px solid rgba(255,99,71,0.25)',
+          borderRadius: 8,
+          padding: '12px',
+          margin: '8px 0'
+        }}>
+          {renderMarkdownBlock(content)}
+        </div>
+      );
+      inExamTrap = false;
+      examBuffer = [];
+      return;
+    }
+    if (inExamTrap) { examBuffer.push(line); return; }
 
     if (line.startsWith('### ')) { flushList(); elements.push(<h4 key={idx} style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-primary)', margin: '14px 0 6px', borderBottom: '1px solid var(--border-subtle)', paddingBottom: 4 }}>{renderMarkdownInline(line.slice(4))}</h4>); return; }
     if (line.startsWith('## ')) { flushList(); elements.push(<h3 key={idx} style={{ fontSize: 15, fontWeight: 800, color: 'var(--text-primary)', margin: '16px 0 8px' }}>{renderMarkdownInline(line.slice(3))}</h3>); return; }
@@ -191,39 +224,55 @@ function DownloadMdButton({ text, filename = 'document' }: { text: string; filen
     </button>
   );
 }
-function downloadMarkdownAsPDF(content: string, filename: string) {
-  const printWindow = window.open('', '_blank');
-  if (!printWindow) return;
-  const html = `<!DOCTYPE html>
-<html>
-<head>
-<title>${filename}</title>
-<style>
-  body {font-family: 'Georgia', serif; max-width: 800px; margin: 40px auto; padding: 0 40px; line-height: 1.7; color: #1a1a2e;}
-  h1, h2, h3 {color: #0f172a; margin-top: 2em;}
-  h1 {font-size: 2em; border-bottom: 2px solid #3b82f6; padding-bottom: 0.5em;}
-  code {background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.9em;}
-  pre {background: #f1f5f9; padding: 12px; border-radius: 4px; overflow-x: auto;}
-</style>
-</head>
-<body>
-<pre>${content}</pre>
-</body>
-</html>`;
-  printWindow.document.write(html);
-  printWindow.document.close();
-  printWindow.focus();
-  printWindow.print();
+function exportToPdf(content: string, filename: string) {
+  // Lazy‑load jsPDF from CDN if not already available
+  const loadJsPdf = () => {
+    return new Promise<any>((resolve, reject) => {
+      if ((window as any).jsPDF) {
+        resolve((window as any).jsPDF);
+        return;
+      }
+      const script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+      script.onload = () => {
+        if ((window as any).jsPDF) resolve((window as any).jsPDF);
+        else reject(new Error('jsPDF failed to load'));
+      };
+      script.onerror = reject;
+      document.body.appendChild(script);
+    });
+  };
+
+  loadJsPdf()
+    .then((jsPDFModule) => {
+      const { jsPDF } = jsPDFModule;
+      const doc = new jsPDF();
+      // Simple HTML conversion – render the markdown as preformatted text
+      doc.text(content, 10, 10);
+      doc.save(`${filename.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.pdf`);
+    })
+    .catch((e) => console.error('PDF generation error:', e));
 }
 
 function DownloadPdfButton({ text, filename = 'document' }: { text: string; filename?: string }) {
   return (
-    <button onClick={() => downloadMarkdownAsPDF(text, filename)} title="Save as PDF (Print)" style={{
-      display: 'flex', alignItems: 'center', gap: 4, padding: '4px 10px',
-      background: 'var(--bg-tertiary)', border: '1px solid var(--border-subtle)',
-      borderRadius: 6, cursor: 'pointer', fontSize: 11, color: 'var(--text-secondary)',
-      transition: 'all 0.15s'
-    }}>
+    <button
+      onClick={() => exportToPdf(text, filename)}
+      title="Save as PDF"
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 4,
+        padding: '4px 10px',
+        background: 'var(--bg-tertiary)',
+        border: '1px solid var(--border-subtle)',
+        borderRadius: 6,
+        cursor: 'pointer',
+        fontSize: 11,
+        color: 'var(--text-secondary)',
+        transition: 'all 0.15s',
+      }}
+    >
       <Download size={11} /> PDF
     </button>
   );

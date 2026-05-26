@@ -13,6 +13,7 @@ import { resolveConceptByName } from '@/lib/engines/concept-resolver';
 import { LearningStateEngine } from '@/lib/engines/learning-state-engine';
 import { logPulseSignal, detectStudyFriction } from '@/lib/engines/pulse-engine';
 import { generateSessionClosingMessage } from '@/lib/engines/session-closing';
+import { MASTERY_WEIGHTS } from '@/lib/engines/cognition-graph';
 import { syncStudentModel } from '@/lib/engines/inference-engine';
 import { RateLimiter } from '@/lib/services/rateLimiter';
 import { ChatMemoryService } from '../../../../services/chat-memory.service';
@@ -52,6 +53,15 @@ export async function POST(req: NextRequest) {
       : Promise.resolve([] as string[]),
   ]);
 
+  // Resolve a fallback concept for generic updates (used when no specific tutor session)
+  const fallbackConceptId = await resolveConceptByName(
+    user.id,
+    mindContext.weakConcepts?.[0]?.subject || 'General',
+    mindContext.weakConcepts?.[0]?.chapter || 'General'
+  );
+  if (!fallbackConceptId) {
+    logger.warn('CONCEPT_RESOLUTION_FAILURE', { userId: user.id, subject: mindContext.weakConcepts?.[0]?.subject || 'General', chapter: mindContext.weakConcepts?.[0]?.chapter || 'General', reason: 'No matching concept found for generic update' });
+  }
   const systemPrompt = getMINDSystemPrompt(mindContext, semanticMemories);
 
   if (imageBase64 && imageMimeType) {
@@ -144,10 +154,20 @@ export async function POST(req: NextRequest) {
           const topic = intent.topic || 'General';
           const subject = intent.subject || mindContext.weakConcepts[0]?.subject || 'General';
           const conceptId = await resolveConceptByName(user.id, subject, topic);
+          if (!conceptId) {
+            logger.warn('CONCEPT_RESOLUTION_FAILURE', { userId: user.id, subject, chapter: topic, reason: 'No matching concept found for tutoring session' });
+          }
           const { data: mistakes } = await supabase.from('mistakes').select('category, ai_analysis').eq('user_id', user.id).ilike('chapter', `%${topic}%`).limit(5);
 
           let pastSessionCtx = '';
+          let oldMasteryScore: number | null = null;
           if (conceptId) {
+            // Fetch old mastery level for closing message
+            const { data: conceptRec } = await supabase.from('concepts').select('mastery').eq('id', conceptId).single();
+            if (conceptRec?.mastery) {
+              oldMasteryScore = MASTERY_WEIGHTS[conceptRec.mastery] ?? null;
+            }
+
             const { data: pastSessions } = await supabase
               .from('tutor_sessions')
               .select('summary, started_at')
@@ -171,6 +191,7 @@ export async function POST(req: NextRequest) {
 
           let analysis = { understood: false, gapFound: null as string | null, gapAnswer: null as string | null, summary: '' };
           let cardsCreated = 0;
+          let newMasteryScore: number | null = null;
 
           if (history && history.length > 0) {
             try {
@@ -193,16 +214,29 @@ export async function POST(req: NextRequest) {
             }
 
             const snap = { ...analysis };
+            
+            // Compute new mastery after updating concept state
+            if (conceptId) {
+              const estimatedTimeSeconds = Math.max(60, (history?.length || 0) * 30);
+              await updateConceptState(conceptId, snap.understood, estimatedTimeSeconds);
+              
+              // Fetch updated mastery
+              const { data: updatedConcept } = await supabase.from('concepts').select('mastery').eq('id', conceptId).single();
+              if (updatedConcept?.mastery) {
+                newMasteryScore = MASTERY_WEIGHTS[updatedConcept.mastery] ?? null;
+              }
+              
+              // Insert session record
+              if (intent.intent !== 'PRACTICE') {
+                await supabase.from('tutor_sessions').insert({
+                  user_id: user.id, concept_id: conceptId, summary: snap.summary,
+                  messages: [...(history || []), { role: 'user', content: message }, { role: 'assistant', content: fullResponse }],
+                });
+              }
+            }
+            
             after(async () => {
               try {
-                if (conceptId) {
-                  const estimatedTimeSeconds = Math.max(60, (history?.length || 0) * 30);
-                  await updateConceptState(conceptId, snap.understood, estimatedTimeSeconds);
-                  await supabase.from('tutor_sessions').insert({
-                    user_id: user.id, concept_id: conceptId, summary: snap.summary,
-                    messages: [...(history || []), { role: 'user', content: message }, { role: 'assistant', content: fullResponse }],
-                  });
-                }
                 syncStudentModel(user.id).catch(() => {});
               } catch (err) { logger.error('Post-session synthesis failed', err); }
             });
@@ -211,7 +245,10 @@ export async function POST(req: NextRequest) {
           const closing = await generateSessionClosingMessage({
             userId: user.id, conceptId: conceptId || null, subject, chapter: topic,
             gapFound: analysis.gapFound, gapAnswer: analysis.gapAnswer, understood: analysis.understood,
-            turnsCount: history?.length || 0, oldMastery: null, newMastery: null, cardsCreated,
+            turnsCount: history?.length || 0, 
+            oldMastery: oldMasteryScore !== null ? oldMasteryScore / 100 : null, 
+            newMastery: newMasteryScore !== null ? newMasteryScore / 100 : null, 
+            cardsCreated,
             sessionId: `chat-${Date.now()}`,
           }).catch(() => null);
 
@@ -284,6 +321,15 @@ export async function POST(req: NextRequest) {
               }
             } catch (err) {
               logger.warn('Chat persistence failed', err);
+            }
+            // Update fallback concept state for generic chats (BUG 3 fix)
+            if (fallbackConceptId) {
+              const estimatedTime = Math.max(60, (history?.length || 0) * 30);
+              try {
+                await updateConceptState(fallbackConceptId, true, estimatedTime);
+              } catch (e) {
+                logger.warn('Fallback concept state update failed', e);
+              }
             }
           });
         }

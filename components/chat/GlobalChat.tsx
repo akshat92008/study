@@ -381,8 +381,6 @@ export const GlobalChat = memo(function GlobalChat() {
         gap: '24px',
         scrollBehavior: 'smooth'
       }}>
-        {/* FIX BUG 5: Session card now properly uses session state rather than message length.
-            If no session is active, show the full card. If active, show the pill with a restart button. */}
         {!currentSessionTopic ? (
           <DailySessionCard
             onStartSession={(topic, subject, estimatedMinutes) => {
@@ -457,17 +455,18 @@ export const GlobalChat = memo(function GlobalChat() {
              }}>
                <div style={{
                  maxWidth: '92%',
-                 padding: isClosingCard ? '0' : '12px 16px',
-                 borderRadius: isUser ? '16px 16px 2px 16px' : '2px 16px 16px 16px',
                  background: isUser ? 'var(--accent-purple)' : (isClosingCard ? 'transparent' : 'var(--bg-primary)'),
                  border: isUser ? 'none' : (isClosingCard ? 'none' : '1px solid var(--border-subtle)'),
                  color: isUser ? 'white' : 'var(--text-primary)',
-                 fontSize: '13px',
-                 lineHeight: 1.65,
+                 fontSize: '14px',
+                 lineHeight: 1.9,
                  wordBreak: 'break-word',
                  width: isClosingCard ? '100%' : 'auto',
                  animation: 'messageIn 0.2s ease-out forwards',
                  opacity: 0,
+                 padding: isUser ? '12px 16px' : '14px 18px',
+                 borderRadius: isUser ? '16px 16px 2px 16px' : '12px 16px 16px 16px',
+                 boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
                }}>
                 {isClosingCard ? (
                   <SessionClosingCard

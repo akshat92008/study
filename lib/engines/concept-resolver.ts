@@ -4,18 +4,25 @@ import { logger } from '@/lib/utils/logger';
 
 export async function resolveConceptByName(userId: string, subject: string, chapter: string): Promise<string | null> {
   const supabase = await createClient();
+  const normalizedSubject = subject.trim().toLowerCase();
+  const normalizedChapter = chapter.trim().toLowerCase();
   
-  // 1. Exact match first (Fastest)
+  // 1. Case-insensitive exact match
   const { data: exact } = await supabase.from('concepts')
-    .select('id').eq('user_id', userId).eq('subject', subject).eq('chapter', chapter)
+    .select('id').eq('user_id', userId)
+    .ilike('subject', normalizedSubject)
+    .ilike('chapter', normalizedChapter)
     .limit(1).single();
   
   if (exact) return exact.id;
   
-  // 2. Fuzzy match via ilike (Handles slight typos)
+  // 2. Fuzzy match via ilike on both subject and chapter (handles casing & minor variants)
   const { data: fuzzy } = await supabase.from('concepts')
-    .select('id').eq('user_id', userId).ilike('chapter', `%${chapter}%`)
-    .limit(1).single();
+    .select('id').eq('user_id', userId)
+    .ilike('subject', `%${normalizedSubject}%`)
+    .ilike('chapter', `%${normalizedChapter}%`)
+    .limit(1)
+    .single();
   
   if (fuzzy) return fuzzy.id;
   

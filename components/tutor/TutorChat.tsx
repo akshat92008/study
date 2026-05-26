@@ -3,6 +3,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Button from '@/components/ui/Button';
+import { RichMessageRenderer } from '@/components/chat/RichMessageRenderer';
 import { GraduationCap, Send, BookOpen } from 'lucide-react';
 
 interface Message {
@@ -122,15 +123,19 @@ export default function TutorChat() {
 
           return (
             <div key={i} style={{ display: 'flex', justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start' }}>
-              <div style={{
-                maxWidth: '80%', padding: 'var(--sp-3) var(--sp-4)', borderRadius: 'var(--radius-lg)',
-                background: msg.role === 'user' ? 'var(--accent-cyan)' : 'var(--bg-secondary)',
-                border: msg.role === 'user' ? 'none' : '1px solid var(--border-subtle)',
-                color: msg.role === 'user' ? 'var(--bg-root)' : 'var(--text-primary)',
-                fontSize: 'var(--fs-base)', lineHeight: 'var(--lh-relaxed)', whiteSpace: 'pre-wrap',
-              }}>
-                {msg.content || (streaming && i === messages.length - 1 ? '●' : '')}
-              </div>
+              {msg.role === 'tutor' ? (
+                <RichMessageRenderer content={msg.content} isStreaming={streaming && i === messages.length - 1} />
+              ) : (
+                <div style={{
+                  maxWidth: '80%', padding: 'var(--sp-3) var(--sp-4)', borderRadius: 'var(--radius-lg)',
+                  background: msg.role === 'user' ? 'var(--accent-cyan)' : 'var(--bg-secondary)',
+                  border: msg.role === 'user' ? 'none' : '1px solid var(--border-subtle)',
+                  color: msg.role === 'user' ? 'var(--bg-root)' : 'var(--text-primary)',
+                  fontSize: 'var(--fs-base)', lineHeight: 'var(--lh-relaxed)', whiteSpace: 'pre-wrap',
+                }}>
+                  {msg.content || (streaming && i === messages.length - 1 ? '●' : '')}
+                </div>
+              )}
             </div>
           );
         })}

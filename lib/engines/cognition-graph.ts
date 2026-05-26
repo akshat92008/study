@@ -3,7 +3,7 @@ import { generateJSON } from '@/lib/ai/gemini';
 import { logger } from '@/lib/utils/logger';
 import { expandChapterWithAI } from './atlas-expansion';
 
-const MASTERY_WEIGHTS: Record<string, number> = {
+export const MASTERY_WEIGHTS: Record<string, number> = {
   not_started: 0, exposed: 15, developing: 40, proficient: 70, mastered: 90, automated: 98,
 };
 
