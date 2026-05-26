@@ -824,40 +824,6 @@ function ConceptMapCard({ artifact }: { artifact: ParsedArtifact }) {
   );
 }
 
-// ── STUDY PLAN COMPONENT ───────────────────────────────────────────────────────
-
-function StudyPlanCard({ artifact }: { artifact: ParsedArtifact }) {
-  const [expanded, setExpanded] = useState(true);
-  const lines = artifact.content.split('\n').filter(l => l.trim());
-
-  return (
-    <div style={{
-      background: 'var(--bg-primary)', border: '1px solid var(--border-subtle)',
-      borderRadius: 12, overflow: 'hidden', margin: '4px 0'
-    }}>
-      <div style={{
-        background: 'linear-gradient(135deg, rgba(236,72,153,0.12), rgba(139,92,246,0.08))',
-        borderBottom: expanded ? '1px solid var(--border-subtle)' : 'none',
-        padding: '12px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-        cursor: 'pointer'
-      }} onClick={() => setExpanded(!expanded)}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <div style={{ background: '#ec4899', borderRadius: 8, padding: 6, display: 'flex' }}>
-            <Calendar size={14} color="white" />
-          </div>
-          <div>
-            <div style={{ fontWeight: 800, fontSize: 13, color: 'var(--text-primary)' }}>Study Plan</div>
-            <div style={{ fontSize: 11, color: 'var(--text-tertiary)', marginTop: 1 }}>
-              {artifact.attributes.days ? `${artifact.attributes.days} days` : artifact.topic}
-              </div>
-            );
-          })}
-        </div>
-      )}
-    </div>
-  );
-}
-
 // ── PDF CARD COMPONENT ─────────────────────────────────────────────────────────
 
 function ExportButton({ text, filename = 'document', label = 'Export PDF' }: { text: string; filename?: string; label?: string }) {
