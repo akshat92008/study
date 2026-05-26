@@ -32,7 +32,7 @@ export async function detectStudyFriction(userId: string): Promise<{ state: Cogn
     const today = new Date().toISOString().split('T')[0];
     
     // 1. Fetch Behavioral Data
-    const [tasksRes, sessionsRes, snapshotsRes, selfReportRes] = await Promise.all([
+    const [tasksRes, sessionsRes, snapshotsRes, selfReportRes, keystrokeRes] = await Promise.all([
       // Tasks from the last 3 days
       supabase.from('study_tasks').select('scheduled_date, is_completed')
         .eq('user_id', userId)

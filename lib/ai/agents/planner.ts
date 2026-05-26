@@ -40,7 +40,7 @@ export async function generateDailyPlan(userId: string, date: string) {
   const userSyllabus = await getUserSyllabus(userId, examType);
   const subjects = userSyllabus.subjects.join(', ');
 
-  const studentModel = studentModelRes.data || {};
+  const studentModel: any = studentModelRes.data || {};
   const focusWindow = studentModel.fatigue_threshold_minutes || 45;
   const peakHour = studentModel.peak_productivity_hour || 10;
 

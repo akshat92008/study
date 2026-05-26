@@ -58,7 +58,7 @@ export async function GET() {
     const recentMistakes = recentMistakesRes.data || [];
     const todayTask = todayTasksRes.data?.[0];
     const sessionCount = (sessionCountRes.count || 0) as number;
-    const studentModel = studentModelRes.data || {};
+    const studentModel: any = studentModelRes.data || {};
 
     const focusWindow = studentModel.fatigue_threshold_minutes || 45;
     const peakHour = studentModel.peak_productivity_hour || 10;
