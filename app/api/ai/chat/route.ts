@@ -276,6 +276,13 @@ export async function POST(req: NextRequest) {
                   id: sessionId, user_id: user.id,
                   session_type: 'global', title: 'Cognition OS Main Thread'
                 });
+                // Create a study session for focused tracking
+                await supabase.from('study_sessions').insert({
+                  user_id: user.id,
+                  started_at: new Date().toISOString(),
+                  focus_score: null,
+                  duration_minutes: null
+                });
                 isNewSession = true;
               }
 

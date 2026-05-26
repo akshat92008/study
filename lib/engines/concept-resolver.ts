@@ -44,5 +44,13 @@ export async function resolveConceptByName(userId: string, subject: string, chap
   
   // 4. Log the miss extensively for analysis!
   logger.warn('CONCEPT_RESOLVER_MISS', { userId, subject, chapter, reason: 'No exact, fuzzy, or semantic matches located in DB.' });
+  // Create concept as fallback
+  const { data: newConcept, error: insertErr } = await supabase.from('concepts')
+    .insert({ user_id: userId, subject: normalizedSubject, chapter: normalizedChapter })
+    .select('id')
+    .single();
+  if (newConcept?.id) {
+    return newConcept.id;
+  }
   return null;
 }
