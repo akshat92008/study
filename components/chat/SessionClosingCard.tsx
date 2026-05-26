@@ -10,6 +10,22 @@ interface SessionClosingCardProps {
   streakIncrement?: boolean;
 }
 
+/**
+ * Strips <artifact ...>...</artifact> tags from a string, returning only the
+ * text content outside them. Safety net for when closing message accidentally
+ * contains artifact-wrapped content from the AI response fallback.
+ */
+export function stripArtifactTags(text: string): string {
+  if (!text) return '';
+  // Remove complete artifact blocks
+  let cleaned = text.replace(/<artifact[^>]*>[\s\S]*?<\/artifact>/gi, '').trim();
+  // Remove any orphaned opening tags (unclosed artifacts from truncated responses)
+  cleaned = cleaned.replace(/<artifact[^>]*>/gi, '').trim();
+  // If after stripping, only whitespace remains, return a safe fallback
+  if (!cleaned || cleaned.length < 10) return 'Session recorded successfully.';
+  return cleaned;
+}
+
 export const SessionClosingCard: React.FC<SessionClosingCardProps> = ({
   closingMessage,
   oldMastery,
@@ -18,6 +34,8 @@ export const SessionClosingCard: React.FC<SessionClosingCardProps> = ({
   tomorrowFocus,
   streakIncrement = true,
 }) => {
+  const safeMessage = stripArtifactTags(closingMessage);
+
   return (
     <div style={{
       background: 'linear-gradient(to bottom right, var(--bg-primary), rgba(20, 184, 166, 0.05))',
@@ -38,8 +56,8 @@ export const SessionClosingCard: React.FC<SessionClosingCardProps> = ({
         )}
       </div>
 
-      <div style={{ fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.5, marginBottom: 'var(--sp-4)' }}>
-        {closingMessage}
+      <div style={{ fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: 'var(--sp-4)', whiteSpace: 'pre-wrap' }}>
+        {safeMessage}
       </div>
 
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--sp-3)', fontSize: '12px' }}>
@@ -47,7 +65,10 @@ export const SessionClosingCard: React.FC<SessionClosingCardProps> = ({
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'var(--bg-secondary)', padding: '6px 10px', borderRadius: 'var(--radius-md)' }}>
             <TrendingUp size={14} color="var(--accent-cyan)" />
             <span style={{ color: 'var(--text-secondary)' }}>
-              Mastery: <span style={{ textDecoration: 'line-through', opacity: 0.7 }}>{oldMastery}%</span> → <span style={{ color: 'var(--accent-cyan)', fontWeight: 'bold' }}>{newMastery}%</span>
+              Mastery:{' '}
+              <span style={{ textDecoration: 'line-through', opacity: 0.7 }}>{oldMastery}%</span>
+              {' → '}
+              <span style={{ color: 'var(--accent-cyan)', fontWeight: 'bold' }}>{newMastery}%</span>
             </span>
           </div>
         )}
@@ -61,7 +82,7 @@ export const SessionClosingCard: React.FC<SessionClosingCardProps> = ({
           </div>
         ) : null}
       </div>
-      
+
       {tomorrowFocus && (
         <div style={{ marginTop: 'var(--sp-3)', fontSize: '12px', color: 'var(--text-tertiary)', borderTop: '1px dashed var(--border-subtle)', paddingTop: 'var(--sp-2)' }}>
           <strong>Tomorrow's focus:</strong> {tomorrowFocus}

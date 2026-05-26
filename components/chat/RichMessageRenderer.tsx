@@ -73,7 +73,41 @@ function parseArtifacts(content: string): Array<{ type: 'text' | 'artifact'; con
 
   if (lastIndex < content.length) {
     const remaining = content.slice(lastIndex).trim();
-    if (remaining) parts.push({ type: 'text', content: remaining });
+    if (remaining) {
+      // Check for an unclosed <artifact ...> tag (streaming in progress — closing tag not yet received).
+      // Instead of printing raw XML, emit a loading placeholder so the UI stays clean during streaming.
+      const unclosedMatch = remaining.match(/^([\s\S]*?)<artifact([^>]*)>([\s\S]*)$/);
+      if (unclosedMatch) {
+        const textBefore = unclosedMatch[1].trim();
+        const attrString = unclosedMatch[2];
+        const partialContent = unclosedMatch[3];
+
+        if (textBefore) parts.push({ type: 'text', content: textBefore });
+
+        // Parse what attributes we have so we can show the right label
+        const attrs: Record<string, string> = {};
+        const attrRegex = /(\w+)="([^"]*?)"/g;
+        let attrMatch;
+        while ((attrMatch = attrRegex.exec(attrString)) !== null) {
+          attrs[attrMatch[1]] = attrMatch[2];
+        }
+
+        // Emit a partial artifact so it renders with the correct card header while streaming
+        parts.push({
+          type: 'artifact',
+          content: partialContent,
+          artifact: {
+            type: (attrs.type as any) || 'study-guide',
+            topic: attrs.topic || 'Loading…',
+            subject: attrs.subject,
+            content: partialContent,
+            attributes: { ...attrs, _partial: 'true' },
+          },
+        });
+      } else {
+        parts.push({ type: 'text', content: remaining });
+      }
+    }
   }
 
   return parts.length > 0 ? parts : [{ type: 'text', content }];

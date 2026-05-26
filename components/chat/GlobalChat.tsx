@@ -229,7 +229,7 @@ export const GlobalChat = memo(function GlobalChat() {
           role: 'assistant',
           content: result.text,
           timestamp: new Date().toISOString(),
-          metadata: result.toolCall ? { action: result.toolCall.action } : undefined,
+          metadata: result.toolCall ?? undefined,
         });
         // Trigger UI based on toolCall action
         if (result.toolCall?.action) {

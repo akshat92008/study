@@ -489,56 +489,59 @@ export class CommandPlanner {
 // ------------------------------------------------------------------
 // CONSUMERS
 // ------------------------------------------------------------------
+
 export class CommandConsumer {
-  static async handleAutopsyProcessed(userId: string, metadata: any, data: any) {
-    const autopsyId = metadata?.autopsyId || metadata?.mockId;
-    if (!autopsyId) return;
-    
+  static async handleAutopsyProcessed(
+    userId: string,
+    metadata: any,
+    data: any
+  ): Promise<void> {
+    const wrongQuestions: Array<{ subject: string; chapter: string; mistakeCategory: string | null }> =
+      metadata?.wrongQuestions || [];
+
+    if (wrongQuestions.length === 0) return;
+
     const supabase = await createClient();
+    const tomorrow = new Date(Date.now() + 86_400_000).toISOString().split('T')[0];
 
-    const { data: questions, error } = await supabase
-      .from('autopsy_questions')
-      .select('subject, chapter, marks_lost')
-      .eq('autopsy_id', autopsyId)
-      .eq('status', 'Incorrect');
+    // Dedupe chapters — only one remediation task per chapter
+    const chapters = new Map<string, { subject: string; chapter: string }>();
+    for (const q of wrongQuestions) {
+      if (q.mistakeCategory === 'silly_mistake' || q.mistakeCategory === 'time_pressure') continue;
+      const key = `${q.subject}::${q.chapter}`;
+      if (!chapters.has(key)) chapters.set(key, { subject: q.subject, chapter: q.chapter });
+    }
 
-    if (error || !questions || questions.length === 0) return;
-    
-    // We group mistakes by chapter to schedule practice tasks
-    const chapterLossMap: Record<string, { subject: string, marksLost: number }> = {};
-    questions.forEach((q: any) => {
-      if (!chapterLossMap[q.chapter]) {
-        chapterLossMap[q.chapter] = { subject: q.subject, marksLost: 0 };
-      }
-      chapterLossMap[q.chapter].marksLost += q.marks_lost || 1;
-    });
+    // Insert up to 3 remediation tasks for tomorrow (don't flood the plan)
+    let inserted = 0;
+    for (const { subject, chapter } of chapters.values()) {
+      if (inserted >= 3) break;
 
-    const today = new Date();
-    const taskRows = [];
-    
-    let index = 0;
-    for (const chapter of Object.keys(chapterLossMap)) {
-      const info = chapterLossMap[chapter];
-      const d = new Date(today);
-      d.setDate(d.getDate() + index);
-      
-      taskRows.push({
+      const { count } = await supabase
+        .from('study_tasks')
+        .select('*', { count: 'exact', head: true })
+        .eq('user_id', userId)
+        .eq('scheduled_date', tomorrow)
+        .ilike('chapter', `%${chapter}%`);
+
+      if ((count ?? 0) > 0) continue; // Already planned
+
+      await supabase.from('study_tasks').insert({
         user_id: userId,
-        title: `[Recovery Sprint Day ${index + 1}] Fix ${chapter}`,
-        scheduled_date: d.toISOString(),
-        estimated_minutes: Math.min(60, 20 + info.marksLost * 5),
-        priority: 'high',
+        title: `Remediate: ${chapter}`,
+        subject,
+        chapter,
+        type: 'study',
+        priority: 'critical',
+        estimated_minutes: 30,
+        scheduled_date: tomorrow,
         is_completed: false,
-        subject: info.subject,
-        chapter: chapter,
-        type: 'practice'
+        notes: `Added by AUTOPSY — wrong answers detected in ${chapter}. Review concepts and redo similar questions.`,
       });
-      index++;
+
+      inserted++;
     }
 
-    if (taskRows.length > 0) {
-      await supabase.from('study_tasks').insert(taskRows);
-      logger.info('COMMAND: Generated sprint tasks from AUTOPSY event', { taskCount: taskRows.length });
-    }
+    logger.info(`CommandConsumer: injected ${inserted} remediation tasks for tomorrow`, { userId });
   }
 }

@@ -477,49 +477,60 @@ export async function getExamModeCards(userId: string, subject: string, limit: n
 // ------------------------------------------------------------------
 // CONSUMERS
 // ------------------------------------------------------------------
+
 export class MemoryConsumer {
-  static async handleAutopsyProcessed(userId: string, metadata: any) {
-    const autopsyId = metadata?.autopsyId || metadata?.mockId;
-    if (!autopsyId) return;
+  static async handleAutopsyProcessed(userId: string, metadata: any): Promise<void> {
+    const wrongQuestions: Array<{
+      subject: string;
+      chapter: string;
+      mistakeCategory: string | null;
+      reasoning: string | null;
+      correctExplanation: string | null;
+      conceptualGap: string | null;
+    }> = metadata?.wrongQuestions || [];
+
+    if (wrongQuestions.length === 0) return;
+
+    // Only create cards for conceptual gaps — not for silly mistakes or time pressure
+    const cardWorthy = new Set([
+      'conceptual_gap', 'calculation_error', 'incomplete_knowledge',
+      'overconfidence', 'recall_failure',
+    ]);
 
     const supabase = await createClient();
-    const { data: questions } = await supabase
-      .from('autopsy_questions')
-      .select('subject, chapter, question_number, correct_answer, student_answer, mistake_category, suggested_fix')
-      .eq('autopsy_id', autopsyId)
-      .eq('status', 'Incorrect');
+    let created = 0;
 
-    if (!questions || questions.length === 0) return;
-    
-    // Lazy load concept resolver to avoid circular dependency
-    const { resolveConceptByName } = await import('./concept-resolver');
+    for (const q of wrongQuestions) {
+      if (!q.mistakeCategory || !cardWorthy.has(q.mistakeCategory)) continue;
+      if (!q.reasoning || !q.correctExplanation) continue;
 
-    // Run concurrently with a batch limit
-    const batchSize = 5;
-    for (let i = 0; i < questions.length; i += batchSize) {
-      const batch = questions.slice(i, i + batchSize);
-      await Promise.all(batch.map(async (q: any) => {
-        try {
-          const conceptId = await resolveConceptByName(userId, q.subject, q.chapter);
-          
-          const testName = metadata.testName || metadata.test_name;
-          const questionDesc = `[Mistake from ${testName || 'mock test'}] Q${q.question_number}: ${q.chapter}`;
-          const reasoning = q.suggested_fix || 'Review the core concept for this topic.';
-          const correctAnswer = q.correct_answer || 'Not recorded';
+      try {
+        // Resolve concept ID for this chapter
+        const { data: concept } = await supabase
+          .from('concepts')
+          .select('id')
+          .eq('user_id', userId)
+          .ilike('subject', `%${q.subject}%`)
+          .ilike('chapter', `%${q.chapter}%`)
+          .limit(1)
+          .maybeSingle();
 
-          await createCardFromMistake(
-            userId,
-            conceptId, // can be null
-            q.subject,
-            q.chapter,
-            questionDesc,
-            correctAnswer,
-            reasoning
-          );
-        } catch (err) {
-          logger.error('MEMORY: Failed to map and create card from autopsy', err);
-        }
-      }));
+        await createSingleCard(
+          userId,
+          concept?.id ?? null,
+          q.conceptualGap || q.reasoning,           // front of card = the question/gap
+          q.correctExplanation,                       // back of card = correct explanation
+          q.subject,
+          q.chapter
+        );
+
+        created++;
+      } catch (err) {
+        logger.warn('MemoryConsumer: failed to create card for wrong question', { q, err });
+      }
     }
+
+    logger.info(`MemoryConsumer: created ${created} flashcards from autopsy mistakes`, { userId });
   }
 }
+

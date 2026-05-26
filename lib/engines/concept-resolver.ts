@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server';
 import { getEmbedding } from '@/lib/ai/gemini';
 import { logger } from '@/lib/utils/logger';
+import { EventDispatcher } from '@/lib/events/orchestrator';
 
 export async function resolveConceptByName(userId: string, subject: string, chapter: string): Promise<string | null> {
   const supabase = await createClient();
@@ -46,10 +47,34 @@ export async function resolveConceptByName(userId: string, subject: string, chap
   logger.warn('CONCEPT_RESOLVER_MISS', { userId, subject, chapter, reason: 'No exact, fuzzy, or semantic matches located in DB.' });
   // Create concept as fallback
   const { data: newConcept, error: insertErr } = await supabase.from('concepts')
-    .insert({ user_id: userId, subject: normalizedSubject, chapter: normalizedChapter })
+    .insert({ 
+      user_id: userId, 
+      subject: subject.trim(), 
+      chapter: chapter.trim(), 
+      name: chapter.trim(), 
+      mastery: 'not_started',
+      confidence: 'low'
+    })
     .select('id')
     .single();
+  
+  if (insertErr) {
+    logger.error('Failed to create fallback concept node', { userId, subject, chapter, error: insertErr });
+  }
+
   if (newConcept?.id) {
+    // Trigger asynchronous dynamic expansion
+    EventDispatcher.publish({
+      user_id: userId,
+      type: 'CONCEPT_DISCOVERED' as any, // Schema allows extending
+      data: {
+        parentConceptId: newConcept.id,
+        subject: subject.trim(),
+        chapter: chapter.trim(),
+      },
+      idempotency_key: `concept:discover:${newConcept.id}`,
+    }).catch(err => logger.error('Failed to trigger concept expansion', err));
+
     return newConcept.id;
   }
   return null;

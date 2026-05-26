@@ -15,7 +15,6 @@ import { logPulseSignal, detectStudyFriction } from '@/lib/engines/pulse-engine'
 import { generateSessionClosingMessage } from '@/lib/engines/session-closing';
 import { MASTERY_WEIGHTS } from '@/lib/engines/cognition-graph';
 import { syncStudentModel } from '@/lib/engines/inference-engine';
-import { RateLimiter } from '@/lib/services/rateLimiter';
 import { ChatMemoryService } from '../../../../services/chat-memory.service';
 import { detectChatIntent, buildConversationMessages } from '@/lib/ai/chat-intent';
 
@@ -27,15 +26,6 @@ export async function POST(req: NextRequest) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return new Response('Unauthorized', { status: 401 });
-
-  const limiter = RateLimiter.getInstance();
-  const allowed = await limiter.consume(`chat-${user.id}`, 120, 60 * 60 * 1000);
-  if (!allowed) {
-    return new Response(
-      JSON.stringify({ error: 'Rate limit reached. Please wait a moment.' }),
-      { status: 429, headers: { 'Content-Type': 'application/json' } }
-    );
-  }
 
   let body: any;
   try { body = await req.json(); } catch { return new Response('Invalid JSON', { status: 400 }); }
@@ -53,15 +43,8 @@ export async function POST(req: NextRequest) {
       : Promise.resolve([] as string[]),
   ]);
 
-  // Resolve a fallback concept for generic updates (used when no specific tutor session)
-  const fallbackConceptId = await resolveConceptByName(
-    user.id,
-    mindContext.weakConcepts?.[0]?.subject || 'General',
-    mindContext.weakConcepts?.[0]?.chapter || 'General'
-  );
-  if (!fallbackConceptId) {
-    logger.warn('CONCEPT_RESOLUTION_FAILURE', { userId: user.id, subject: mindContext.weakConcepts?.[0]?.subject || 'General', chapter: mindContext.weakConcepts?.[0]?.chapter || 'General', reason: 'No matching concept found for generic update' });
-  }
+  // fallbackConceptId removed — was incorrectly updating ATLAS on every message.
+  // Concept state updates only happen inside TUTOR_SESSION branch below.
   const systemPrompt = getMINDSystemPrompt(mindContext, semanticMemories);
 
   if (imageBase64 && imageMimeType) {
@@ -291,7 +274,10 @@ export async function POST(req: NextRequest) {
 
               await supabase.from('chat_messages').insert([
                 { session_id: sessionId, user_id: user.id, role: 'user', content: message },
-                { session_id: sessionId, user_id: user.id, role: 'assistant', content: strippedResponse.slice(0, 4000) },
+                // Artificial slice removed to prevent artifact tags being truncated.
+                // A truncated artifact (missing </artifact>) breaks the parseArtifacts regex on page reload,
+                // causing raw XML to show instead of the rendered card.
+                { session_id: sessionId, user_id: user.id, role: 'assistant', content: strippedResponse },
               ]);
 
               if (isNewSession) {
@@ -316,15 +302,7 @@ export async function POST(req: NextRequest) {
             } catch (err) {
               logger.warn('Chat persistence failed', err);
             }
-            // Update fallback concept state for generic chats (BUG 3 fix)
-            if (fallbackConceptId) {
-              const estimatedTime = Math.max(60, (history?.length || 0) * 30);
-              try {
-                await updateConceptState(fallbackConceptId, true, estimatedTime);
-              } catch (e) {
-                logger.warn('Fallback concept state update failed', e);
-              }
-            }
+            // fallback concept state update removed
           });
         }
 

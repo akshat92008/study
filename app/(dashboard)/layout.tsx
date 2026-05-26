@@ -7,6 +7,7 @@ import ToastContainer from '@/components/ui/Toast';
 import SessionTracker from '@/components/layout/SessionTracker';
 import { RealtimeProvider } from '@/components/providers/RealtimeProvider';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { PulseListener } from '@/components/PulseListener';
 
 export default async function DashboardLayout({
   children,
@@ -40,6 +41,7 @@ export default async function DashboardLayout({
       <CommandBar />
       <ToastContainer />
       <SessionTracker />
+      <PulseListener userId={user.id} />
       <RealtimeProvider>{null}</RealtimeProvider>
     </DashboardClientLayout>
   );

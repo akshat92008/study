@@ -8,6 +8,7 @@ import { AtlasConsumer } from '@/lib/engines/cognition-graph';
 import { MemoryConsumer } from '@/lib/engines/revision-engine';
 import { CommandConsumer } from '@/lib/engines/command-engine';
 import { PulseConsumer } from '@/lib/engines/pulse-engine';
+import { ConceptExpansionConsumer } from '@/lib/engines/concept-expansion-engine';
 
 const MAX_RETRIES = 5;
 
@@ -17,7 +18,8 @@ export const EVENT_CONSUMERS = [
   'atlas_engine',
   'pulse_engine',
   'memory_engine',
-  'command_engine'
+  'command_engine',
+  'concept_expansion_engine'
 ] as const;
 
 export type EventConsumer = typeof EVENT_CONSUMERS[number];
@@ -236,6 +238,12 @@ export class EventDispatcher {
       case 'command_engine':
         if (event.type === 'AUTOPSY_MOCK_PROCESSED') {
           await CommandConsumer.handleAutopsyProcessed(event.user_id, event.metadata, event.data);
+        }
+        break;
+
+      case 'concept_expansion_engine':
+        if (event.type === 'CONCEPT_DISCOVERED') {
+          await ConceptExpansionConsumer.handleConceptDiscovered(event.user_id, event.data);
         }
         break;
     }

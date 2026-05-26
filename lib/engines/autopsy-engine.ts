@@ -1,349 +1,310 @@
 import { createClient } from '@/lib/supabase/server';
-import { GoogleGenAI } from '@google/genai';
 import { z } from 'zod';
 import { getExamConfig } from '@/lib/utils/constants';
 import { AutopsyPaperSchema, AutopsyQuestionSchema } from './autopsy-schemas';
 import { generateMentorRecovery } from './mentor-engine';
 import { logger } from '@/lib/utils/logger';
 import { generateJSON } from '@/lib/ai/gemini';
-// EventDispatcher import removed; using direct calls
+import { EventDispatcher } from '@/lib/events/orchestrator';
 
 type AutopsyFileData =
   | { kind: 'text'; text: string }
   | { kind: 'inline'; mimeType: string; data: string };
 
 type AutopsyQuestion = z.infer<typeof AutopsyQuestionSchema>;
-type ProcessedQuestion = AutopsyQuestion & { marksLost: number };
+type ProcessedQuestion = AutopsyQuestion & {
+  marksLost: number;
+  correctExplanation?: string | null;
+  conceptualGap?: string | null;
+};
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+const MAX_FILE_BYTES = 20 * 1024 * 1024;
 
-/**
- * PASS 1: Fast data extraction using Gemini Flash
- */
-async function fastExtractionPass(contents: any[], subjectList: string, retries = 3) {
+async function routeMultimodalExtraction(
+  prompt: string,
+  fileData: { kind: 'inline'; mimeType: string; data: string }
+): Promise<any> {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) {
+    throw new Error(
+      'GEMINI_API_KEY is required for image/PDF autopsy. ' +
+      'Get one free at https://aistudio.google.com/app/apikey'
+    );
+  }
+
+  const response = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [{
+          parts: [
+            { text: prompt },
+            { inline_data: { mime_type: fileData.mimeType, data: fileData.data } },
+          ],
+        }],
+        generationConfig: {
+          responseMimeType: 'application/json',
+          temperature: 0.1,
+        },
+      }),
+      signal: AbortSignal.timeout(90_000),
+    }
+  );
+
+  if (!response.ok) {
+    const text = await response.text().catch(() => '');
+    throw new Error(`Multimodal extraction failed: ${response.status} ${text}`);
+  }
+
+  const data = await response.json();
+  const rawText = (data.candidates?.[0]?.content?.parts?.[0]?.text || '{}')
+    .replace(/```json/gi, '').replace(/```/g, '').trim();
+
+  return JSON.parse(rawText);
+}
+
+async function fastExtractionPass(
+  fileData: AutopsyFileData,
+  subjectList: string,
+  retries = 3
+): Promise<z.infer<typeof AutopsyPaperSchema>> {
+  const extractionPrompt = `
+Extract all questions from this mock test submission. It may be a PDF, low-quality scan, OMR sheet, or handwritten.
+
+RULES:
+- Identify the question number.
+- Map to a subject: [${subjectList}] and its chapter.
+- Determine status: "Correct", "Incorrect", or "Unattempted".
+- Provide an "ocrConfidence" score (0-100).
+- Leave "mistakeCategory" and "reasoning" null for now.
+
+Output strictly as JSON. No markdown.
+`.trim();
+
   let attempt = 0;
   let delay = 1000;
 
-  const extractionPrompt = `
-    Extract all questions from this mock test submission. It may be a PDF, low-quality scan, OMR sheet, or handwritten.
-    
-    RULES:
-    - Identify the question number.
-    - Map to a subject: [${subjectList}] and its chapter.
-    - Determine status: "Correct", "Incorrect", or "Unattempted".
-    - Provide an "ocrConfidence" score (0-100).
-    - Leave "mistakeCategory" and "reasoning" null for now.
-    
-    Output strictly as JSON matching the schema.
-  `;
-
-  const augmentedContents = [...contents];
-  if (augmentedContents[0].parts.some((p: any) => p.text)) {
-    const textPart = augmentedContents[0].parts.find((p: any) => p.text);
-    textPart.text = extractionPrompt + '\n\nData:\n' + textPart.text;
-  } else {
-    augmentedContents[0].parts.push({ text: extractionPrompt });
-  }
-
   while (attempt < retries) {
     try {
-       const res = await ai.models.generateContent({
-         model: 'gemini-2.0-flash',
-         contents: augmentedContents,
-         config: { 
-           responseMimeType: 'application/json',
-           temperature: 0.1, 
-         },
-       });
+      let rawResult: any;
 
-      const rawText = (res.text || '{}').replace(/```json/gi, '').replace(/```/g, '').trim();
-      const parsed = JSON.parse(rawText);
-      return AutopsyPaperSchema.parse(parsed); 
+      if (fileData.kind === 'text') {
+        rawResult = await generateJSON<any>(
+          'flash',
+          'You are a mock test extraction engine. Respond ONLY with JSON.',
+          `${extractionPrompt}\n\nTest Data:\n${fileData.text}`
+        );
+      } else {
+        rawResult = await routeMultimodalExtraction(extractionPrompt, fileData);
+      }
 
+      return AutopsyPaperSchema.parse(rawResult);
     } catch (err: any) {
       attempt++;
-      logger.warn(`Pass 1 Extraction Failed (Attempt ${attempt}/${retries})`, { error: err.message });
-      if (attempt >= retries) throw new Error('AI failed to extract the document format reliably.');
+      logger.warn(`Pass 1 failed (attempt ${attempt}/${retries})`, { error: err.message });
+      if (attempt >= retries) throw new Error('AI failed to extract document format reliably.');
       await new Promise(r => setTimeout(r, delay));
       delay *= 2;
     }
   }
+
   throw new Error('Unreachable');
 }
 
-/**
- * PASS 2: Deep Diagnostic using Gemini Pro (Only for Incorrect questions)
- */
-async function deepDiagnosticPass(incorrectQuestions: AutopsyQuestion[]): Promise<AutopsyQuestion[]> {
+async function deepDiagnosticPass(
+  incorrectQuestions: AutopsyQuestion[]
+): Promise<ProcessedQuestion[]> {
   if (incorrectQuestions.length === 0) return [];
 
   const diagnosticPrompt = `
-    You are an elite educational psychologist and diagnostician. 
-    Review the following list of incorrect questions.
-    For EACH question, determine the strict root cause (mistakeCategory) from: 
-    [conceptual, calculation, silly, time_pressure, misread, incomplete_knowledge, overconfidence, anxiety, recall_failure].
-    
-    Provide a 1-sentence "reasoning" explaining exactly WHY you chose this category. Be hyper-specific.
-    
-    Input data:
-    ${JSON.stringify(incorrectQuestions, null, 2)}
-    
-    Respond ONLY with a JSON array of objects, each containing:
-    { "questionNumber": number, "mistakeCategory": string, "reasoning": string }
-  `;
+You are an expert exam performance analyst. Diagnose each incorrect answer.
+
+For each question provide:
+- mistakeCategory: one of [conceptual_gap, calculation_error, silly_mistake, time_pressure, misread_question, incomplete_knowledge, overconfidence, anxiety_blank, recall_failure]
+- reasoning: one sentence explaining why this student got this wrong
+- conceptualGap: the specific concept they need to study, or null for silly/time mistakes
+- correctExplanation: one-sentence explanation of the correct approach
+
+Questions to diagnose:
+${JSON.stringify(incorrectQuestions.map(q => ({
+  questionNumber: q.questionNumber,
+  subject: q.subject,
+  chapter: q.chapter,
+  status: q.status,
+})))}
+
+Respond ONLY as a JSON array of the same length. No markdown.
+`.trim();
 
   try {
-    const diagnostics = await generateJSON<Array<{ questionNumber: number, mistakeCategory: any, reasoning: string }>>(
+    const diagnosed = await generateJSON<any[]>(
       'pro',
-      'You are an elite educational psychologist and diagnostician.',
-      diagnosticPrompt,
-      undefined,
-      0.3
+      'You are an expert exam analyst. Return JSON array only.',
+      diagnosticPrompt
     );
 
-    // Merge diagnostics back
-    return incorrectQuestions.map(q => {
-      const diag = diagnostics.find(d => d.questionNumber === q.questionNumber);
-      if (diag) {
-        return { ...q, mistakeCategory: diag.mistakeCategory, reasoning: diag.reasoning };
-      }
-      return q;
-    });
+    if (!Array.isArray(diagnosed)) return incorrectQuestions.map(q => ({ ...q, marksLost: 0 }));
 
-  } catch (err: any) {
-    logger.warn('Pass 2 Diagnostic failed, falling back to basic extraction.', err);
-    return incorrectQuestions; // fallback to un-categorized if Pro fails
+    return incorrectQuestions.map((q, i) => ({
+      ...q,
+      marksLost: 0,
+      mistakeCategory: diagnosed[i]?.mistakeCategory ?? q.mistakeCategory,
+      reasoning: diagnosed[i]?.reasoning ?? q.reasoning,
+      conceptualGap: diagnosed[i]?.conceptualGap ?? null,
+      correctExplanation: diagnosed[i]?.correctExplanation ?? null,
+    }));
+  } catch (err) {
+    logger.warn('Deep diagnostic pass failed, using undiagnosed', err);
+    return incorrectQuestions.map(q => ({ ...q, marksLost: 0 }));
   }
 }
 
 export async function processMockAutopsy(
-  userId: string, 
-  fileData: AutopsyFileData, 
-  testName: string, 
-  examType: string = 'General Study',
+  userId: string,
+  fileData: AutopsyFileData,
+  testName: string,
+  examType: string,
   customScoring?: { correctMarks: number; negativeMarks: number }
-) {
-  const examConfig = getExamConfig(examType);
-  const correctMarks = customScoring?.correctMarks ?? examConfig.correctMarks;
-  const negativeMarks = customScoring?.negativeMarks ?? examConfig.negativeMarks;
-  
-  const supabase = await createClient();
-  
-  const { getUserSyllabus } = await import('@/lib/engines/atlas-expansion');
-  const userSyllabus = await getUserSyllabus(userId, examType);
-  const subjectList = userSyllabus.subjects.join(', ');
-
-  const contents = fileData.kind === 'text' 
-    ? [{ role: 'user', parts: [{ text: fileData.text }] }]
-    : [{ role: 'user', parts: [{ inlineData: { mimeType: fileData.mimeType, data: fileData.data } }] }];
-
-  // 1. Two-Pass AI Extraction & Diagnostics
-  const { questions: extractedQuestions } = await fastExtractionPass(contents, subjectList);
-  
-  const correctAndUnattempted = extractedQuestions.filter(q => q.status !== 'Incorrect');
-  const incorrectRaw = extractedQuestions.filter(q => q.status === 'Incorrect');
-  
-  const diagnosedIncorrect = await deepDiagnosticPass(incorrectRaw);
-  
-  // Combine back
-  const allQuestions = [...correctAndUnattempted, ...diagnosedIncorrect];
-
-  // 2. Score Calculation
-  // 2. Score Calculation – tally basic counts and marksLost per question
-  let totalCorrect = 0, totalIncorrect = 0, totalUnattempted = 0;
-
-  const processedQuestions: ProcessedQuestion[] = allQuestions.map((q: AutopsyQuestion) => {
-    let marksLost = 0;
-    if (q.status === 'Correct') {
-      totalCorrect++;
-    } else if (q.status === 'Incorrect') {
-      totalIncorrect++;
-      marksLost = correctMarks + Math.abs(negativeMarks);
-    } else {
-      totalUnattempted++;
-      marksLost = correctMarks;
-    }
-    return { ...q, marksLost };
-  });
-
-  // Compute recoverable and knowledge‑gap marks after processing all questions
-  const wrongAnswers = processedQuestions.filter(q => q.status === 'Incorrect');
-  const recoverableCategories = ['silly', 'time_pressure', 'anxiety'];
-  const knowledgeGapCategories = ['conceptual', 'calculation'];
-
-  const recoverableMarks = wrongAnswers
-    .filter(q => q.mistakeCategory && recoverableCategories.includes(q.mistakeCategory as string))
-    .reduce((sum, q) => sum + (q.marksLost || 0), 0);
-
-  const knowledgeGapMarks = wrongAnswers
-    .filter(q => q.mistakeCategory && knowledgeGapCategories.includes(q.mistakeCategory as string))
-    .reduce((sum, q) => sum + (q.marksLost || 0), 0);
-
-  const currentScore = (totalCorrect * correctMarks) - (totalIncorrect * Math.abs(negativeMarks));
-  const potentialScore = currentScore + recoverableMarks;
-
-  // 3. Database Persistence
-  const { data: autopsyData, error: autopsyErr } = await supabase.from('mock_autopsies').insert({
-    user_id: userId,
-    test_name: testName,
-    current_score: currentScore,
-    potential_score: potentialScore,
-    recoverable_marks: recoverableMarks,
-    total_questions: processedQuestions.length,
-    exam_type: examType,
-    ocr_raw_text: fileData.kind === 'text' ? fileData.text : '[Multimodal Image/PDF]',
-    confidence_level: 'High'
-  }).select().single();
-
-  if (autopsyErr || !autopsyData) throw new Error('Failed to persist autopsy record.');
-
-  const qRows = processedQuestions.map((q: ProcessedQuestion) => ({
-    autopsy_id: autopsyData.id,
-    question_number: q.questionNumber,
-    subject: q.subject,
-    chapter: q.chapter,
-    subtopic: q.subtopic,
-    difficulty: q.difficulty,
-    status: q.status,
-    correct_answer: q.correctAnswer,
-    student_answer: q.studentAnswer,
-    mistake_category: q.mistakeCategory,
-    marks_lost: q.marksLost,
-    suggested_fix: q.reasoning 
-  }));
-
-  for (let i = 0; i < qRows.length; i += 50) {
-    await supabase.from('autopsy_questions').insert(qRows.slice(i, i + 50));
-  }
-
-  // 4. Generate Remediation Plan (Sync for UI)
-  const incorrectQs = processedQuestions.filter((q: ProcessedQuestion) => q.status === 'Incorrect');
-  const { mentorQuote, plan } = await generateMentorRecovery(autopsyData.id, currentScore, potentialScore, incorrectQs, examType);
-
-  // 5. Fire the Event (Decoupled Architecture)
-  const primaryCategory = Object.entries(
-    incorrectQs.reduce((acc, q) => {
-      if (q.mistakeCategory) acc[q.mistakeCategory] = (acc[q.mistakeCategory] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>)
-  ).sort((a, b) => b[1] - a[1])[0]?.[0];
-
-  // ── ATLAS + MEMORY PIPELINE ───────────────────────────────────────────────
-  // ALL incorrect answers downscale ATLAS mastery.
-  // Conceptual + calculation mistakes also auto-generate flashcards.
-  // Run after DB persistence so we have autopsyData.id available.
-  const incorrectForPipeline = processedQuestions.filter(
-    (q: ProcessedQuestion) => q.status === 'Incorrect'
-  );
-
-  if (incorrectForPipeline.length > 0) {
-    // Lazy import to avoid circular dependency at module load time
-    const { resolveConceptByName } = await import('./concept-resolver');
-    const { updateConceptState } = await import('./cognition-graph');
-    const { createSingleCard } = await import('./revision-engine');
-
-    // Process in parallel batches of 5 to avoid overwhelming Supabase
-    const BATCH_SIZE = 5;
-    for (let i = 0; i < incorrectForPipeline.length; i += BATCH_SIZE) {
-      const batch = incorrectForPipeline.slice(i, i + BATCH_SIZE);
-
-      await Promise.allSettled(
-        batch.map(async (q: ProcessedQuestion) => {
-          try {
-            // Step 1 — Resolve concept in ATLAS
-            const conceptId = await resolveConceptByName(userId, q.subject, q.chapter);
-
-            // Step 2 — Downscale ATLAS mastery for this concept
-            // weight = marksLost capped at 5 so a single bad question doesn't nuke mastery
-            if (conceptId) {
-              const weight = Math.min(q.marksLost, 5);
-              await updateConceptState(conceptId, false, 0, weight);
-            }
-
-            // Step 3 — Auto-create flashcard for conceptual + calculation mistakes
-            // (Not for silly/time_pressure — those don't need a card, just speed drills)
-            const cardWorthy = ['conceptual', 'calculation', 'incomplete_knowledge', 'overconfidence', 'recall_failure'];
-            if (q.mistakeCategory && cardWorthy.includes(q.mistakeCategory)) {
-              const front = q.reasoning
-                ? `Why did you get Q${q.questionNumber} wrong? (${q.chapter})`
-                : `Review: ${q.chapter} — Question ${q.questionNumber}`;
-              const back = q.reasoning || `Revisit ${q.chapter} in your ${q.subject} notes.`;
-
-              await createSingleCard(
-                userId,
-                conceptId ?? '',
-                front,
-                back,
-                q.subject,
-                q.chapter
-              );
-            }
-          } catch (err) {
-            // Non-fatal: log and continue. One failed concept must not block the rest.
-            logger.warn('AUTOPSY → ATLAS/MEMORY pipeline failed for one question', {
-              userId,
-              chapter: q.chapter,
-              err,
-            });
-          }
-        })
+): Promise<any> {
+  if (fileData.kind === 'inline') {
+    const byteSize = Buffer.byteLength(fileData.data, 'base64');
+    if (byteSize > MAX_FILE_BYTES) {
+      throw new Error(
+        `File too large (${Math.round(byteSize / 1024 / 1024)}MB). Maximum allowed is 20MB.`
       );
     }
-
-    logger.info('AUTOPSY → ATLAS → MEMORY pipeline complete', {
-      userId,
-      incorrectCount: incorrectForPipeline.length,
-    });
   }
-  // ── END PIPELINE ──────────────────────────────────────────────────────────
 
-  // FIX BUG 4: Use the correct event type 'AUTOPSY_MOCK_PROCESSED' with field 'type'
-  // Previously used event_type:'AUTOPSY_COMPLETE' — the orchestrator checked type:'AUTOPSY_MOCK_PROCESSED'
-  // and they never matched. Also use the EventDispatcher so schema validation, idempotency,
-  // consumer registration, and retry logic all run properly.
+  const examConfig = getExamConfig(examType, customScoring);
+  const subjectList = examConfig.subjects.join(', ');
+
+  logger.info('Autopsy Pass 1: Extracting', { userId, testName });
+  const paper = await fastExtractionPass(fileData, subjectList);
+  const allQuestions: AutopsyQuestion[] = paper.questions || [];
+
+  const incorrectQuestions = allQuestions.filter(q => q.status === 'Incorrect');
+  const correctQuestions  = allQuestions.filter(q => q.status === 'Correct');
+  const unattempted       = allQuestions.filter(q => q.status === 'Unattempted');
+
+  logger.info('Autopsy Pass 2: Diagnosing', { userId, incorrect: incorrectQuestions.length });
+  const diagnosedIncorrect = await deepDiagnosticPass(incorrectQuestions);
+
+  const { correctMarks, negativeMarks } = examConfig;
+  const rawScore =
+    correctQuestions.length * correctMarks -
+    incorrectQuestions.length * Math.abs(negativeMarks);
+
+  const recoverableCategories = new Set([
+    'silly_mistake', 'time_pressure', 'misread_question', 'recall_failure',
+  ]);
+  const recoverableMarks = diagnosedIncorrect
+    .filter(q => q.mistakeCategory && recoverableCategories.has(q.mistakeCategory))
+    .reduce((sum) => sum + correctMarks + Math.abs(negativeMarks), 0);
+
+  const recoverableScore = rawScore + recoverableMarks;
+  const potentialScore   = allQuestions.length * correctMarks;
+
+  const processedQuestions: ProcessedQuestion[] = [
+    ...correctQuestions.map(q  => ({ ...q, marksLost: 0 })),
+    ...diagnosedIncorrect.map(q => ({ ...q, marksLost: Math.abs(negativeMarks) + correctMarks })),
+    ...unattempted.map(q       => ({ ...q, marksLost: correctMarks })),
+  ];
+
+  const supabase = await createClient();
+
+  const { data: autopsyRecord, error: autopsyError } = await supabase
+    .from('mock_autopsies')
+    .insert({
+      user_id: userId,
+      test_name: testName,
+      exam_type: examType,
+      total_questions: allQuestions.length,
+      correct_count: correctQuestions.length,
+      incorrect_count: incorrectQuestions.length,
+      unattempted_count: unattempted.length,
+      current_score: rawScore,
+      recoverable_marks: recoverableMarks,
+      potential_score: potentialScore,
+    })
+    .select('id')
+    .single();
+
+  if (autopsyError || !autopsyRecord) {
+    throw new Error(`Failed to save autopsy: ${autopsyError?.message}`);
+  }
+
+  const CHUNK = 50;
+  for (let i = 0; i < processedQuestions.length; i += CHUNK) {
+    await supabase.from('autopsy_questions').insert(
+      processedQuestions.slice(i, i + CHUNK).map(q => ({
+        autopsy_id: autopsyRecord.id,
+        user_id: userId,
+        question_number: q.questionNumber,
+        subject: q.subject,
+        chapter: q.chapter,
+        status: q.status,
+        mistake_category: q.mistakeCategory ?? null,
+        reasoning: q.reasoning ?? null,
+        marks_lost: q.marksLost,
+        ocr_confidence: q.ocrConfidence ?? 100,
+      }))
+    );
+  }
+
+  const mentorResult = await generateMentorRecovery(
+    userId, rawScore, recoverableScore, potentialScore, diagnosedIncorrect
+  ).catch(err => { logger.warn('Mentor recovery failed', err); return null; });
+
   try {
-    const { EventDispatcher } = await import('@/lib/events/orchestrator');
     await EventDispatcher.publish({
       user_id: userId,
       type: 'AUTOPSY_MOCK_PROCESSED',
       data: {
-        mockId: autopsyData.id,
-        overallAccuracy: processedQuestions.length > 0
-          ? totalCorrect / processedQuestions.length
-          : 0,
-        primaryMistakeCategory: primaryCategory ?? undefined,
-        recoverableMarks,
+        autopsyId: autopsyRecord.id,
+        testName,
+        examType,
+        rawScore,
+        recoverableScore,
+        potentialScore,
+        totalQuestions: allQuestions.length,
+        correctCount: correctQuestions.length,
+        incorrectCount: incorrectQuestions.length,
       },
       metadata: {
         source: 'autopsy_engine',
-        currentScore,
-        potentialScore,
-        incorrectCount: incorrectQs.length,
-        examType,
+        autopsyId: autopsyRecord.id,
+        wrongQuestions: diagnosedIncorrect.map(q => ({
+          questionNumber: q.questionNumber,
+          subject: q.subject,
+          chapter: q.chapter,
+          mistakeCategory: q.mistakeCategory,
+          reasoning: q.reasoning,
+          correctExplanation: q.correctExplanation ?? null,
+          conceptualGap: q.conceptualGap ?? null,
+        })),
       },
-      idempotency_key: `autopsy-complete-${autopsyData.id}`,
+      idempotency_key: `autopsy:${autopsyRecord.id}:processed`,
     });
-    logger.info('AUTOPSY_MOCK_PROCESSED event published via EventDispatcher', { autopsyId: autopsyData.id });
-  } catch (err) {
-    logger.error('Failed to publish AUTOPSY_MOCK_PROCESSED event', err);
+    logger.info('AUTOPSY_MOCK_PROCESSED event fired', { userId });
+  } catch (eventErr) {
+    logger.error('Failed to fire autopsy event (non-fatal — data saved)', eventErr);
   }
 
-  // UI return mapping
-  const categoryMap: Record<string, number> = {};
-  const chapterMap: Record<string, number> = {};
-
-  incorrectQs.forEach(q => {
-    if (q.mistakeCategory) categoryMap[q.mistakeCategory] = (categoryMap[q.mistakeCategory] || 0) + 1;
-    if (q.chapter) chapterMap[q.chapter] = (chapterMap[q.chapter] || 0) + q.marksLost;
-  });
-
-  const categoryBreakdown = Object.entries(categoryMap).map(([name, value]) => ({ name, value }));
-  const chapterLoss = Object.entries(chapterMap)
-    .map(([chapter, marksLost]) => ({ chapter, marksLost }))
-    .sort((a, b) => b.marksLost - a.marksLost)
-    .slice(0, 10); 
-
-  return { 
-    autopsyId: autopsyData.id, currentScore, potentialScore, recoverableMarks, mentorQuote, plan, examType, categoryBreakdown, chapterLoss
+  return {
+    autopsyId: autopsyRecord.id,
+    testName,
+    scores: { raw: rawScore, recoverable: recoverableScore, potential: potentialScore },
+    counts: {
+      total: allQuestions.length,
+      correct: correctQuestions.length,
+      incorrect: incorrectQuestions.length,
+      unattempted: unattempted.length,
+    },
+    recoverableMarks,
+    diagnosedQuestions: processedQuestions,
+    mentorMessage: mentorResult?.message ?? null,
+    recoveryPlan: mentorResult?.plan ?? null,
   };
 }

@@ -358,34 +358,24 @@ export async function calculateProductivityFingerprint(userId: string): Promise<
 // ------------------------------------------------------------------
 // CONSUMERS
 // ------------------------------------------------------------------
+
 export class PulseConsumer {
-  static async handleAutopsyProcessed(userId: string, metadata: any) {
-    const autopsyId = metadata?.autopsyId || metadata?.mockId;
-    if (!autopsyId) return;
+  static async handleAutopsyProcessed(userId: string, metadata: any): Promise<void> {
+    const data = metadata || {};
+    // High incorrect rate → log frustrated/overwhelmed signal
+    const total   = data.totalQuestions || 0;
+    const wrong   = data.incorrectCount || 0;
+    const pct     = total > 0 ? wrong / total : 0;
 
-    const supabase = await createClient();
-    const { data: questions } = await supabase
-      .from('autopsy_questions')
-      .select('mistake_category')
-      .eq('autopsy_id', autopsyId)
-      .eq('status', 'Incorrect');
+    const state: CognitiveState =
+      pct > 0.6 ? 'overwhelmed' :
+      pct > 0.4 ? 'frustrated' :
+      'neutral';
 
-    if (!questions || questions.length === 0) return;
-    
-    let anxietyMistakes = 0;
-    let timePressureMistakes = 0;
-
-    questions.forEach((q: any) => {
-      if (q.mistake_category === 'anxiety') anxietyMistakes++;
-      if (q.mistake_category === 'time_pressure') timePressureMistakes++;
-    });
-
-    if (anxietyMistakes > 2) {
-      await logPulseSignal(userId, 'overwhelmed');
-      logger.info('PULSE: Overwhelmed triggered by high anxiety mistakes from AUTOPSY.');
-    } else if (timePressureMistakes > 3) {
-      await logPulseSignal(userId, 'frustrated');
-      logger.info('PULSE: Frustrated triggered by high time pressure mistakes from AUTOPSY.');
-    }
+    await logPulseSignal(userId, state, {
+      source: 'autopsy',
+      autopsyId: data.autopsyId,
+      incorrectPct: Math.round(pct * 100),
+    }).catch(err => logger.warn('PulseConsumer signal log failed', err));
   }
 }

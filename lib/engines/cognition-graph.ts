@@ -312,44 +312,72 @@ export async function getPrerequisiteChain(conceptId: string) {
 // ------------------------------------------------------------------
 // CONSUMERS
 // ------------------------------------------------------------------
+
 export class AtlasConsumer {
-  static async handleAutopsyProcessed(userId: string, metadata: any) {
-    const autopsyId = metadata?.autopsyId || metadata?.mockId;
-    if (!autopsyId) return;
+  static async handleAutopsyProcessed(userId: string, metadata: any): Promise<void> {
+    const wrongQuestions: Array<{
+      subject: string;
+      chapter: string;
+      mistakeCategory: string | null;
+    }> = metadata?.wrongQuestions || [];
+
+    if (wrongQuestions.length === 0) return;
 
     const supabase = await createClient();
-    const { data: questions } = await supabase
-      .from('autopsy_questions')
-      .select('subject, chapter, mistake_category, marks_lost')
-      .eq('autopsy_id', autopsyId)
-      .eq('status', 'Incorrect');
 
-    if (!questions || questions.length === 0) return;
-    
-    // Lazy load concept resolver to avoid circular dependency
-    const { resolveConceptByName } = await import('./concept-resolver');
-
-    // Run concurrently with a batch limit
-    const batchSize = 5;
-    for (let i = 0; i < questions.length; i += batchSize) {
-      const batch = questions.slice(i, i + batchSize);
-      await Promise.all(batch.map(async (q: any) => {
-        // Only downscale mastery for conceptual or incomplete knowledge errors
-        if (!['conceptual', 'incomplete_knowledge'].includes(q.mistake_category)) {
-          return;
-        }
-
-        try {
-          const conceptId = await resolveConceptByName(userId, q.subject, q.chapter);
-          if (conceptId) {
-            // Downscale mastery relative to marks lost (pass weight)
-            await updateConceptState(conceptId, false, 0, Math.max(1, q.marks_lost));
-            logger.info('ATLAS: Downscaled mastery due to AUTOPSY error', { conceptId, category: q.mistake_category });
-          }
-        } catch (err) {
-          logger.error('ATLAS: Failed to map concept from autopsy', err);
-        }
-      }));
+    // Group by chapter to avoid redundant updates
+    const chapterMap = new Map<string, { subject: string; chapter: string; count: number }>();
+    for (const q of wrongQuestions) {
+      if (!q.chapter || !q.subject) continue;
+      const key = `${q.subject}::${q.chapter}`;
+      const existing = chapterMap.get(key);
+      if (existing) {
+        existing.count++;
+      } else {
+        chapterMap.set(key, { subject: q.subject, chapter: q.chapter, count: 1 });
+      }
     }
+
+    for (const { subject, chapter, count } of chapterMap.values()) {
+      // Find concepts in this chapter
+      const { data: concepts } = await supabase
+        .from('concepts')
+        .select('id, mastery')
+        .eq('user_id', userId)
+        .ilike('subject', `%${subject}%`)
+        .ilike('chapter', `%${chapter}%`);
+
+      if (!concepts || concepts.length === 0) continue;
+
+      for (const concept of concepts) {
+        // Downscale mastery one tier per wrong answer, capped at 'exposed'
+        const downgradedMastery = downgradeMastery(concept.mastery, count);
+        if (downgradedMastery !== concept.mastery) {
+          await supabase
+            .from('concepts')
+            .update({
+              mastery: downgradedMastery,
+              last_reviewed: new Date().toISOString(),
+            })
+            .eq('id', concept.id)
+            .eq('user_id', userId);
+        }
+      }
+    }
+
+    logger.info(`AtlasConsumer: downscaled mastery for ${chapterMap.size} chapters`, { userId });
   }
 }
+
+// Helper: step mastery down the tier ladder
+function downgradeMastery(
+  current: string,
+  wrongCount: number
+): string {
+  const tiers = ['not_started', 'exposed', 'developing', 'proficient', 'mastered', 'automated'];
+  const idx = tiers.indexOf(current);
+  if (idx <= 1) return 'exposed'; // Floor at 'exposed' — never go to not_started from autopsy
+  const steps = Math.min(wrongCount, 2); // Max 2-tier drop per autopsy
+  return tiers[Math.max(1, idx - steps)];
+}
+
