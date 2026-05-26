@@ -262,8 +262,10 @@ export async function routeTextGeneration(
     }
 
     const config = getProviderConfig(providerName);
-    if (!config) { logger.warn(`Skipping ${providerName} — missing env vars`); continue; }
-    if (!config.apiKey) continue;
+if (!config || !config.apiKey) {
+  logger.warn(`Skipping ${providerName} — missing env vars or API key`);
+  continue;
+}
 
     try {
       let result: string;
@@ -310,7 +312,10 @@ export async function routeJSONGeneration<T>(
     if (!isProviderAvailable(providerName)) continue;
 
     const config = getProviderConfig(providerName);
-    if (!config.apiKey) continue;
+if (!config || !config.apiKey) {
+  logger.warn(`Skipping ${providerName} — missing env vars or API key`);
+  continue;
+}
 
     const messages = [
       { role: 'system', content: fullSystem },
@@ -396,7 +401,10 @@ export async function* routeStreamGeneration(
     if (!isProviderAvailable(providerName)) continue;
 
     const config = getProviderConfig(providerName);
-    if (!config.apiKey) continue;
+if (!config || !config.apiKey) {
+  logger.warn(`Skipping ${providerName} — missing env vars or API key`);
+  continue;
+}
 
     try {
       let generator: AsyncGenerator<string>;
@@ -445,7 +453,10 @@ export async function routeEmbedding(text: string): Promise<number[]> {
     if (!isProviderAvailable(providerName)) continue;
 
     const config = getProviderConfig(providerName);
-    if (!config.apiKey || !config.supportsEmbeddings) continue;
+if (!config || !config.apiKey || !config.supportsEmbeddings) {
+  logger.warn(`Skipping ${providerName} — missing env vars, API key, or embeddings not supported`);
+  continue;
+}
 
     try {
       if (providerName === 'sambanova') {
@@ -559,7 +570,10 @@ export async function routeVisionCall(
     if (!isProviderAvailable(providerName)) continue;
 
     const config = getProviderConfig(providerName);
-    if (!config.apiKey || !config.supportsVision) continue;
+if (!config || !config.apiKey || !config.supportsVision) {
+  logger.warn(`Skipping ${providerName} — missing env vars, API key, or vision not supported`);
+  continue;
+}
 
     try {
       if (providerName === 'cloudflare') {

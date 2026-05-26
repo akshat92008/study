@@ -109,12 +109,16 @@ export interface ProviderConfig {
 export const REQUIRED_ENV_VARS: Record<ProviderName, string[]> = {
   cloudflare: ['CF_ACCOUNT_ID', 'CF_API_TOKEN'],
   google: ['GOOGLE_AI_KEY', 'GEMINI_API_KEY'],
-  // Add other providers if they require specific env vars
+  cerebras: [], // No specific env vars
+  sambanova: [], // No specific env vars
+  groq_compound: [], // No specific env vars
+  groq_gemma: [], // No specific env vars
 };
+
 
 export function getProviderConfig(name: ProviderName): ProviderConfig | null {
   const configs: Record<ProviderName, ProviderConfig> = {
-  const configs: Record<ProviderName, ProviderConfig> = {
+
 
     cerebras: {
       name: 'cerebras',
@@ -207,7 +211,7 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
   return config;
 }
 
-}
+
 
 // ─── PRIORITY QUEUES ──────────────────────────────────────────────────────────
 // Order = preference. Router tries each in order, skips if down or no key.

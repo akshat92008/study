@@ -375,6 +375,7 @@ function StudyGuideCard({ artifact }: { artifact: ParsedArtifact }) {
           <CopyButton text={artifact.content} label="Copy" />
           <DownloadMdButton text={artifact.content} filename={artifact.topic || 'study-guide'} />
           <DownloadPdfButton text={artifact.content} filename={artifact.topic || 'study-guide'} />
+        <ExportButton text={artifact.content} filename={artifact.topic || 'study-guide'} />
           {expanded ? <ChevronUp size={14} style={{ color: 'var(--text-tertiary)' }} /> : <ChevronDown size={14} style={{ color: 'var(--text-tertiary)' }} />}
         </div>
       </div>
@@ -478,6 +479,7 @@ function PracticeTestCard({ artifact }: { artifact: ParsedArtifact }) {
           <CopyButton text={artifact.content} label="Copy" />
           <DownloadMdButton text={artifact.content} filename={artifact.topic || 'practice-test'} />
           <DownloadPdfButton text={artifact.content} filename={artifact.topic || 'practice-test'} />
+        <ExportButton text={artifact.content} filename={artifact.topic || 'practice-test'} />
         </div>
       </div>
 
@@ -615,6 +617,7 @@ function RevisionSheetCard({ artifact }: { artifact: ParsedArtifact }) {
           <CopyButton text={artifact.content} label="Copy" />
           <DownloadMdButton text={artifact.content} filename={artifact.topic || 'revision-sheet'} />
           <DownloadPdfButton text={artifact.content} filename={artifact.topic || 'revision-sheet'} />
+        <ExportButton text={artifact.content} filename={artifact.topic || 'revision-sheet'} />
           {expanded ? <ChevronUp size={14} style={{ color: 'var(--text-tertiary)' }} /> : <ChevronDown size={14} style={{ color: 'var(--text-tertiary)' }} />}
         </div>
       </div>
@@ -699,7 +702,8 @@ function FlashcardSetComponent({ artifact }: { artifact: ParsedArtifact }) {
           </div>
           <CopyButton text={artifact.content} label="Copy" />
           <DownloadMdButton text={artifact.content} filename={artifact.topic || 'flashcards'} />
-          <DownloadPdfButton text={artifact.content} filename={artifact.topic || 'flashcards'} />        </div>
+          <DownloadPdfButton text={artifact.content} filename={artifact.topic || 'flashcards'} />
+        <ExportButton text={artifact.content} filename={artifact.topic || 'flashcards'} />        </div>
       </div>
 
       {/* Card */}
@@ -790,6 +794,7 @@ function ConceptMapCard({ artifact }: { artifact: ParsedArtifact }) {
           <CopyButton text={artifact.content} />
           <DownloadMdButton text={artifact.content} filename={artifact.topic || 'concept-map'} />
           <DownloadPdfButton text={artifact.content} filename={artifact.topic || 'concept-map'} />
+        <ExportButton text={artifact.content} filename={artifact.topic || 'concept-map'} />
           {expanded ? <ChevronUp size={14} style={{ color: 'var(--text-tertiary)' }} /> : <ChevronDown size={14} style={{ color: 'var(--text-tertiary)' }} />}
         </div>
       </div>
@@ -841,6 +846,7 @@ function StudyPlanCard({ artifact }: { artifact: ParsedArtifact }) {
           <CopyButton text={artifact.content} />
           <DownloadMdButton text={artifact.content} filename={artifact.topic || 'study-plan'} />
           <DownloadPdfButton text={artifact.content} filename={artifact.topic || 'study-plan'} />
+        <ExportButton text={artifact.content} filename={artifact.topic || 'study-plan'} />
           {expanded ? <ChevronUp size={14} style={{ color: 'var(--text-tertiary)' }} /> : <ChevronDown size={14} style={{ color: 'var(--text-tertiary)' }} />}
         </div>
       </div>
@@ -871,6 +877,42 @@ function StudyPlanCard({ artifact }: { artifact: ParsedArtifact }) {
 }
 
 // ── PDF CARD COMPONENT ─────────────────────────────────────────────────────────
+
+function ExportButton({ text, filename = 'document' }: { text: string; filename?: string }) {
+  const [loading, setLoading] = React.useState(false);
+  const handleClick = () => {
+    setLoading(true);
+    downloadMarkdownAsPDF(text, filename);
+    setTimeout(() => setLoading(false), 800);
+  };
+  return (
+    <button
+      onClick={handleClick}
+      disabled={loading}
+      title="Export as PDF"
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 4,
+        padding: '4px 10px',
+        background: 'var(--bg-tertiary)',
+        border: '1px solid var(--border-subtle)',
+        borderRadius: 6,
+        cursor: loading ? 'default' : 'pointer',
+        fontSize: 11,
+        color: 'var(--text-secondary)',
+        transition: 'all 0.15s',
+        opacity: loading ? 0.6 : 1,
+      }}
+    >
+      {loading ? <>
+        Exporting… <Download size={11} />
+      </> : <>
+        Export PDF <Download size={11} />
+      </>}
+    </button>
+  );
+}
 
 function PdfCard({ artifact }: { artifact: ParsedArtifact }) {
   const [expanded, setExpanded] = useState(true);
