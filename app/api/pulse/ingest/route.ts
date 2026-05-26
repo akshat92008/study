@@ -44,31 +44,39 @@ export async function POST(req: NextRequest) {
     // Short messages = low engagement or frustration
     // Very long gaps between keystrokes = confused or distracted
     let inferredState = 'neutral';
+    let emotionalState = 'neutral';
     
     if (avgKeystrokeGap && avgKeystrokeGap > 3000) {
       inferredState = 'struggling'; // Taking very long to type
+      emotionalState = 'frustrated';
     } else if (keystrokeVariance && keystrokeVariance > 500000) {
       inferredState = 'scattered'; // Very inconsistent typing
+      emotionalState = 'overwhelmed';
     } else if (avgMessageLength && avgMessageLength < 15) {
       inferredState = 'disengaged'; // Very short responses
+      emotionalState = 'bored';
     } else if (avgKeystrokeGap && avgKeystrokeGap < 200 && avgMessageLength && avgMessageLength > 80) {
       inferredState = 'focused'; // Fast typing, long messages
+      emotionalState = 'focused';
     }
 
-    // Store pulse snapshot
+    // Store pulse signal
     try {
-      await supabase.from('pulse_snapshots').insert({
+      await supabase.from('pulse_signals').insert({
         user_id: user.id,
-        signal_count: signals.length,
-        avg_keystroke_gap_ms: avgKeystrokeGap,
-        keystroke_variance: keystrokeVariance,
-        avg_message_length: avgMessageLength,
-        inferred_state: inferredState,
-        raw_sample: signals.slice(0, 20), // Store sample for debugging
-        captured_at: new Date().toISOString(),
+        signal_type: 'keystroke_pattern',
+        emotional_state: emotionalState,
+        confidence: 0.8,
+        notes: JSON.stringify({
+          avgKeystrokeGap,
+          keystrokeVariance,
+          avgMessageLength,
+          inferredState
+        }),
+        created_at: new Date().toISOString(),
       });
     } catch (e) {
-      logger.warn('Failed to store pulse snapshot', e);
+      logger.warn('Failed to store pulse signal', e);
     }
 
     // Update profile emotional state if significantly different from current

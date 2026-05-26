@@ -32,6 +32,7 @@ export const GlobalChat = memo(function GlobalChat() {
   const [pendingFile, setPendingFile] = useState<File | null>(null);
   const [isProcessingUpload, setIsProcessingUpload] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [hasFallbackStreakFired, setHasFallbackStreakFired] = useState(false);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -112,6 +113,46 @@ export const GlobalChat = memo(function GlobalChat() {
       }
     }
   }, [chatMessages, sessionStartTime, currentSessionTopic, currentSessionSubject, setStreakDays]);
+
+  // Reset fallback tracker when session starts
+  useEffect(() => {
+    if (sessionStartTime) {
+      setHasFallbackStreakFired(false);
+    }
+  }, [sessionStartTime]);
+
+  // Fallback streak increment (fires if > 5 messages in current session)
+  useEffect(() => {
+    if (!sessionStartTime || hasFallbackStreakFired) return;
+    
+    let userMsgCount = 0;
+    for (let i = chatMessages.length - 1; i >= 0; i--) {
+      const m = chatMessages[i];
+      if (new Date(m.timestamp).getTime() < sessionStartTime) break;
+      if (m.role === 'user') userMsgCount++;
+    }
+
+    if (userMsgCount >= 5) {
+      setHasFallbackStreakFired(true);
+      const duration = Math.round((Date.now() - sessionStartTime) / 60000);
+      fetch('/api/dashboard/session-close', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          conceptName: currentSessionTopic || 'General Study',
+          subject: currentSessionSubject || 'General',
+          sessionDurationMinutes: duration
+        })
+      })
+      .then(r => r.json())
+      .then(data => {
+        if (data.newStreak !== undefined) {
+          setStreakDays(data.newStreak);
+        }
+      })
+      .catch(console.error);
+    }
+  }, [chatMessages, sessionStartTime, hasFallbackStreakFired, currentSessionTopic, currentSessionSubject, setStreakDays]);
 
   // Convert file to base64
   const fileToBase64 = (file: File): Promise<string> => {

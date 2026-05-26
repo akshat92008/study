@@ -57,9 +57,8 @@ export class ChatMemoryService extends BaseService {
 
       if (error) {
         if (error.code === 'PGRST202') {
-          // RPC not found - log warning and return empty memory instead of crashing
-          logger.warn('match_chat_memory RPC not found, semantic memory fallback triggered.');
-          return [];
+          // Bug 8: RPC not found - throw a verifiable error instead of silently returning empty memory
+          throw new Error('CRITICAL: match_chat_memory RPC is missing in Supabase. Please run the 024_match_chat_memory.sql migration. Semantic memory is broken.');
         }
         logger.error('Failed to search chat memory', { error });
         return [];

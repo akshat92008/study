@@ -14,7 +14,7 @@ export async function generateDailyPlan(userId: string, date: string) {
   // We use parallel fetching to gather the entire cognitive & behavioral state
   const [
     profileRes, conceptsRes, currentTasksRes, mistakesRes, 
-    dueCardsRes, snapshotsRes, unfinishedTasksRes
+    dueCardsRes, snapshotsRes, unfinishedTasksRes, studentModelRes
   ] = await Promise.all([
     supabase.from('profiles').select('*').eq('id', userId).single(),
     supabase.from('concepts').select('subject, chapter, mastery, forgetting_probability').eq('user_id', userId).in('mastery', ['not_started', 'exposed', 'developing']),
@@ -26,7 +26,8 @@ export async function generateDailyPlan(userId: string, date: string) {
     // Fetch carryover tasks from the last 3 days
     supabase.from('study_tasks').select('title, subject, chapter, type').eq('user_id', userId).eq('is_completed', false)
       .gte('scheduled_date', new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0])
-      .lt('scheduled_date', date)
+      .lt('scheduled_date', date),
+    supabase.from('student_models').select('fatigue_threshold_minutes, peak_productivity_hour').eq('user_id', userId).maybeSingle()
   ]);
 
   const existingTasks = currentTasksRes.data || [];
@@ -38,6 +39,10 @@ export async function generateDailyPlan(userId: string, date: string) {
   const { getUserSyllabus } = await import('@/lib/engines/atlas-expansion');
   const userSyllabus = await getUserSyllabus(userId, examType);
   const subjects = userSyllabus.subjects.join(', ');
+
+  const studentModel = studentModelRes.data || {};
+  const focusWindow = studentModel.fatigue_threshold_minutes || 45;
+  const peakHour = studentModel.peak_productivity_hour || 10;
 
   const weakConcepts = (conceptsRes.data || []).sort((a, b) => (b.forgetting_probability || 0) - (a.forgetting_probability || 0)).slice(0, 10);
   const recentMistakes = mistakesRes.data || [];
@@ -67,6 +72,8 @@ export async function generateDailyPlan(userId: string, date: string) {
     - Adaptive Time Cap: ${baseHours.toFixed(1)} hours maximum
     - Recent Focus Score: ${avgFocus.toFixed(0)}/100
     - FSRS Due Cards: ${dueRevisionCount} (If > 0, scheduling a "revision" block is CRITICAL)
+    - Focus Window Length (Fatigue Threshold): ${focusWindow} minutes
+    - Peak Productivity Hour: ${peakHour}:00
 
     ## PRIORITY 1: Carryover Tasks (Unfinished)
     ${unfinishedTasks.length > 0 ? unfinishedTasks.map(t => `- [${t.type}] ${t.subject}: ${t.chapter} (${t.title})`).join('\n') : 'None.'}
@@ -79,11 +86,11 @@ export async function generateDailyPlan(userId: string, date: string) {
 
     ## MISSION RULES
     1. STRICT TIME LIMIT: Total "estimated_minutes" across all tasks MUST NOT exceed ${Math.floor(baseHours * 60)} minutes.
-    2. BLOCK STRUCTURE: Use 45-60 min blocks. 
+    2. BLOCK STRUCTURE: Do not schedule single tasks longer than the student's Focus Window Length (${focusWindow} minutes). Use breaks in between.
     3. EXPLAINABILITY: Every task MUST have a "rationale" explaining why you chose it based on the telemetry above.
     4. BREAKS: Schedule "break" type tasks explicitly between intense study blocks. Generate a "breakRecommendation" for the overall day.
     5. Prioritize FSRS Revision if Due Cards > 0.
-    6. TIME SLOTS: Assign each task a "scheduled_start_time" in "HH:mm" 24hr format. Start from "08:00" and schedule sequentially based on task estimated_minutes and breaks (e.g. Task 1 starts at 08:00 for 60m, next break starts at 09:00 for 15m, next study starts at 09:15).
+    6. TIME SLOTS: Assign each task a "scheduled_start_time" in "HH:mm" 24hr format. Start from 08:00 and align high priority (critical/high) tasks as close to the Peak Productivity Hour (${peakHour}:00) as possible without breaking sequence.
   
   `;
 
@@ -128,11 +135,11 @@ export async function generateDailyPlan(userId: string, date: string) {
         description: `Clear ${dueRevisionCount} due cards`, 
         type: "revision", 
         priority: "critical", 
-        estimated_minutes: 30, 
+        estimated_minutes: Math.min(30, focusWindow), 
         rationale: "Algorithm detected forgetting curve decay.",
         scheduled_start_time: formatTime(currentMinutes)
       });
-      currentMinutes += 30;
+      currentMinutes += Math.min(30, focusWindow);
     }
     if (unfinishedTasks.length > 0) {
       const t = unfinishedTasks[0];
@@ -143,11 +150,11 @@ export async function generateDailyPlan(userId: string, date: string) {
         subject: t.subject, 
         chapter: t.chapter, 
         priority: "high", 
-        estimated_minutes: 60, 
+        estimated_minutes: focusWindow, 
         rationale: "Maintaining syllabus momentum.",
         scheduled_start_time: formatTime(currentMinutes)
       });
-      currentMinutes += 60;
+      currentMinutes += focusWindow;
     }
     if (weakConcepts.length > 0) {
       const c = weakConcepts[0];
@@ -158,11 +165,11 @@ export async function generateDailyPlan(userId: string, date: string) {
         subject: c.subject, 
         chapter: c.chapter, 
         priority: "high", 
-        estimated_minutes: 60, 
+        estimated_minutes: focusWindow, 
         rationale: `High forgetting probability detected (${Math.round(c.forgetting_probability * 100)}%).`,
         scheduled_start_time: formatTime(currentMinutes)
       });
-      currentMinutes += 60;
+      currentMinutes += focusWindow;
     }
     finalTasks.push({ 
       title: "Strategic Rest", 

@@ -54,12 +54,48 @@ export async function detectStudyFriction(userId: string): Promise<{ state: Cogn
         .eq('signal_type', 'self_report')
         .order('created_at', { ascending: false })
         .limit(1)
-        .maybeSingle()
+        .maybeSingle(),
+      // Recent keystroke telemetry (valid for 2 hours)
+      supabase.from('pulse_signals').select('notes, created_at')
+        .eq('user_id', userId)
+        .eq('signal_type', 'keystroke_pattern')
+        .gte('created_at', new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString())
+        .order('created_at', { ascending: false })
+        .limit(5)
     ]);
 
     let config: PulseAdaptationConfig = { ...BASE_CONFIG };
     let determinedState: CognitiveState = 'focused';
     let uiMessages: string[] = [];
+
+    // --- BEHAVIORAL RULE 0: Keystroke Telemetry (Immediate Real-Time Signal) ---
+    // If recent keystroke patterns show friction
+    const recentKeystrokes = keystrokeRes?.data || [];
+    if (recentKeystrokes.length > 0) {
+      let strugglingCount = 0;
+      let scatteredCount = 0;
+      
+      for (const k of recentKeystrokes) {
+        try {
+          if (k.notes) {
+            const data = JSON.parse(k.notes);
+            if (data.inferredState === 'struggling') strugglingCount++;
+            if (data.inferredState === 'scattered') scatteredCount++;
+          }
+        } catch (e) {}
+      }
+
+      if (strugglingCount > 0) {
+        config.explanationDepth = 'step-by-step';
+        config.taskIntensity = 'light';
+        determinedState = 'frustrated';
+        uiMessages.push("Your typing patterns suggest you might be stuck. Shifting to step-by-step mode.");
+      } else if (scatteredCount > 0) {
+        config.workloadMultiplier = Math.min(config.workloadMultiplier, 0.8);
+        determinedState = 'overwhelmed';
+        uiMessages.push("Your typing appears scattered. Reducing the cognitive load to help you focus.");
+      }
+    }
 
     // --- BEHAVIORAL RULE 1: Missed Sessions ---
     // If the student had tasks scheduled for the last 2 distinct days and completed 0 of them
@@ -180,7 +216,7 @@ export async function logPulseSignal(userId: string, signalOrState: string | Cog
         user_id: userId,
         signal_type: signalOrState,
         emotional_state: data.emotionalState || 'neutral',
-        data,
+        notes: JSON.stringify(data),
         created_at: new Date().toISOString(),
       });
     } catch (err) {
@@ -251,6 +287,72 @@ export async function recordMessageTiming(
   } catch (error) {
     logger.warn('Error in recordMessageTiming', error);
   }
+}
+
+export async function calculateProductivityFingerprint(userId: string): Promise<{ fatigueThresholdMinutes: number; peakProductivityHour: number }> {
+  const supabase = await createClient();
+
+  const { data: sessions } = await supabase
+    .from('study_sessions')
+    .select('started_at, duration_minutes, focus_score')
+    .eq('user_id', userId)
+    .not('focus_score', 'is', null)
+    .not('duration_minutes', 'is', null);
+
+  let fatigueThresholdMinutes = 45; // Default focus window
+  let peakProductivityHour = 10; // Default peak hour (10 AM)
+
+  if (sessions && sessions.length > 0) {
+    // 1. Calculate Focus Window (fatigue threshold)
+    const highFocusSessions = sessions.filter(s => (s.focus_score || 0) >= 70 && (s.duration_minutes || 0) > 10);
+    if (highFocusSessions.length > 0) {
+      const totalDuration = highFocusSessions.reduce((acc, s) => acc + (s.duration_minutes || 0), 0);
+      fatigueThresholdMinutes = Math.round(totalDuration / highFocusSessions.length);
+      // Cap between 25 and 90 minutes
+      fatigueThresholdMinutes = Math.max(25, Math.min(90, fatigueThresholdMinutes));
+    }
+
+    // 2. Calculate Peak Productivity Hour
+    const hourScores: Record<number, { sum: number; count: number }> = {};
+    sessions.forEach(s => {
+      if (s.started_at && s.focus_score) {
+        const hour = new Date(s.started_at).getHours();
+        if (!hourScores[hour]) hourScores[hour] = { sum: 0, count: 0 };
+        hourScores[hour].sum += s.focus_score;
+        hourScores[hour].count += 1;
+      }
+    });
+
+    let bestHour = 10;
+    let highestAvg = 0;
+    for (const [hourStr, data] of Object.entries(hourScores)) {
+      if (data.count >= 2) {
+        const avg = data.sum / data.count;
+        if (avg > highestAvg) {
+          highestAvg = avg;
+          bestHour = parseInt(hourStr, 10);
+        }
+      }
+    }
+
+    if (highestAvg > 0) {
+      peakProductivityHour = bestHour;
+    }
+  }
+
+  const { error } = await supabase.from('student_models')
+    .update({
+      fatigue_threshold_minutes: fatigueThresholdMinutes,
+      peak_productivity_hour: peakProductivityHour,
+      last_updated: new Date().toISOString()
+    })
+    .eq('user_id', userId);
+
+  if (error) {
+    logger.error('Failed to update student productivity fingerprint', error);
+  }
+
+  return { fatigueThresholdMinutes, peakProductivityHour };
 }
 
 // ------------------------------------------------------------------

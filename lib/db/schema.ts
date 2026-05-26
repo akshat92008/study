@@ -263,6 +263,7 @@ export const studentModels = pgTable('student_models', {
   behavioralTraps: jsonb('behavioral_traps').default([]),
   optimalPacing: text('optimal_pacing').default('standard'),
   fatigueThresholdMinutes: integer('fatigue_threshold_minutes').default(90),
+  peakProductivityHour: integer('peak_productivity_hour').default(10),
   comebackProbability: real('comeback_probability').default(0.8),
   explanationPreference: text('explanation_preference').default('conceptual_first'),
   lastUpdated: timestamp('last_updated').defaultNow(),

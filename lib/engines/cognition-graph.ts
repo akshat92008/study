@@ -181,9 +181,15 @@ export async function updateConceptState(conceptId: string, correct: boolean, ti
   const { data: concept } = await supabase.from('concepts').select('*').eq('id', conceptId).single();
   if (!concept) return;
 
-  const newReviewed = (concept.times_reviewed || 0) + (1 * weight);
-  const newCorrect = (concept.times_correct || 0) + (correct ? (1 * weight) : 0);
-  const newIncorrect = (concept.times_incorrect || 0) + (correct ? 0 : (1 * weight));
+  // Scale mastery updates based on time spent. 
+  // Minimum weight of 1, max of 3 for deep sessions (e.g. > 3 minutes)
+  const effectiveWeight = (weight === 1 && timeSpent > 0) 
+    ? Math.min(3, Math.max(1, timeSpent / 60)) 
+    : weight;
+
+  const newReviewed = (concept.times_reviewed || 0) + (1 * effectiveWeight);
+  const newCorrect = (concept.times_correct || 0) + (correct ? (1 * effectiveWeight) : 0);
+  const newIncorrect = (concept.times_incorrect || 0) + (correct ? 0 : (1 * effectiveWeight));
   const accuracy = newCorrect / newReviewed;
 
   const newMastery = getMasteryLevel(accuracy * 100);

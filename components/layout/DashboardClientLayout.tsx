@@ -72,19 +72,21 @@ export default function DashboardClientLayout({ children, profile }: DashboardCl
 
         <div style={{ display: 'flex', flex: 1, overflow: 'hidden', marginTop: 'var(--header-height)' }}>
 
-          {/* ✅ THE FIX — {children} renders every page: ATLAS, AUTOPSY, PLANNER, etc. */}
+          {/* Main is now GlobalChat */}
           <main
             style={{
               flex: 1,
               overflowY: 'auto',
               minWidth: 0,
               background: 'var(--bg-root)',
+              display: 'flex',
+              flexDirection: 'column',
             }}
           >
-            {children}
+            <GlobalChat />
           </main>
 
-          {/* Chat panel — collapsible right drawer */}
+          {/* OS Dashboard (children) — collapsible right drawer */}
           {isAssistantOpen ? (
             <div
               style={{
@@ -94,14 +96,15 @@ export default function DashboardClientLayout({ children, profile }: DashboardCl
                 display: 'flex',
                 flexDirection: 'column',
                 background: 'var(--bg-elevated)',
+                overflowY: 'auto'
               }}
             >
-              <GlobalChat />
+              {children}
             </div>
           ) : (
             <button
               onClick={() => setAssistantOpen(true)}
-              title="Open Cognition"
+              title="Open OS Dashboard"
               style={{
                 position: 'fixed',
                 bottom: '24px',
@@ -110,7 +113,7 @@ export default function DashboardClientLayout({ children, profile }: DashboardCl
                 width: '48px',
                 height: '48px',
                 borderRadius: '50%',
-                background: 'var(--accent-purple)',
+                background: 'var(--accent-blue)',
                 color: 'white',
                 border: 'none',
                 cursor: 'pointer',
@@ -121,7 +124,9 @@ export default function DashboardClientLayout({ children, profile }: DashboardCl
               }}
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="3" y1="9" x2="21" y2="9"></line>
+                <line x1="9" y1="21" x2="9" y2="9"></line>
               </svg>
             </button>
           )}

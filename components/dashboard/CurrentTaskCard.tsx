@@ -30,19 +30,6 @@ export default function CurrentTaskCard() {
     fetchSessionCard();
   }, []);
 
-  const handleStartSession = () => {
-    if (!data) return;
-
-    // Send a message to the Socratic assistant to kick off tutoring
-    addChatMessage({
-      role: 'user',
-      content: `Let's start a Socratic tutoring session on "${data.focusTopic}" (${data.subject}).`,
-      timestamp: new Date().toISOString()
-    });
-
-    addToast(`Session started: ${data.focusTopic}`, 'success');
-  };
-
   if (loading) {
     return (
       <Card style={{ 
@@ -127,25 +114,6 @@ export default function CurrentTaskCard() {
             <span>{data.rationale}</span>
           </div>
         )}
-
-        <Button onClick={handleStartSession} style={{
-          width: '100%', 
-          padding: '14px', 
-          background: 'linear-gradient(135deg, #0055ff, #00f0ff)',
-          color: 'white', 
-          border: 'none', 
-          borderRadius: 'var(--radius-md)', 
-          cursor: 'pointer',
-          fontWeight: 700, 
-          fontSize: 'var(--fs-sm)', 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'center', 
-          gap: 8,
-          boxShadow: '0 4px 20px rgba(0, 240, 255, 0.2)'
-        }}>
-          Start Socratic Session <ArrowRight size={16} />
-        </Button>
       </Card>
     </div>
   );

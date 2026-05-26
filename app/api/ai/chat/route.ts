@@ -45,7 +45,10 @@ export async function POST(req: NextRequest) {
   const [mindContext, semanticMemories] = await Promise.all([
     getMINDContext(user.id, message),
     message
-      ? new ChatMemoryService().searchMemory(user.id, message, 3).catch(() => [] as string[])
+      ? new ChatMemoryService().searchMemory(user.id, message, 3).catch((err) => {
+          logger.error('CRITICAL: Semantic memory failed. match_chat_memory RPC may be missing.', err);
+          return [] as string[];
+        })
       : Promise.resolve([] as string[]),
   ]);
 
@@ -169,10 +172,13 @@ export async function POST(req: NextRequest) {
           let analysis = { understood: false, gapFound: null as string | null, gapAnswer: null as string | null, summary: '' };
           let cardsCreated = 0;
 
-          if (fullResponse.length > 100) {
+          if (history && history.length > 0) {
             try {
               const historySnippet = (history || []).slice(-6).map((m: any) => `${m.role === 'user' ? 'Student' : 'Tutor'}: ${m.content.slice(0, 200)}`).join('\n');
-              const analysisPrompt = `Analyze this tutor exchange.\n${historySnippet}\nStudent: ${message}\nTutor: ${fullResponse.slice(0, 800)}\n\nRespond ONLY as JSON:\n{"summary":"1 sentence","understood":true,"gapFound":"flashcard question or null","gapAnswer":"flashcard answer or null"}`;
+              const isPractice = intent.intent === 'PRACTICE';
+              const analysisPrompt = isPractice
+                ? `Analyze this practice interaction.\n${historySnippet}\nStudent Answer: ${message}\nAI Feedback: ${fullResponse.slice(0, 800)}\n\nDid the student answer correctly? Respond ONLY as JSON:\n{"summary":"1 sentence","understood":true,"gapFound":"flashcard question or null","gapAnswer":"flashcard answer or null"}`
+                : `Analyze this tutor exchange.\n${historySnippet}\nStudent: ${message}\nTutor: ${fullResponse.slice(0, 800)}\n\nRespond ONLY as JSON:\n{"summary":"1 sentence","understood":true,"gapFound":"flashcard question or null","gapAnswer":"flashcard answer or null"}`;
               const raw = await generateJSON<any>('flash', 'Expert analyzer. Return JSON only.', analysisPrompt);
               if (raw && typeof raw.understood === 'boolean') {
                 analysis = { understood: raw.understood, gapFound: typeof raw.gapFound === 'string' && raw.gapFound.length > 5 ? raw.gapFound : null, gapAnswer: typeof raw.gapAnswer === 'string' && raw.gapAnswer.length > 5 ? raw.gapAnswer : null, summary: raw.summary || '' };
@@ -190,7 +196,8 @@ export async function POST(req: NextRequest) {
             after(async () => {
               try {
                 if (conceptId) {
-                  await updateConceptState(conceptId, snap.understood, 0);
+                  const estimatedTimeSeconds = Math.max(60, (history?.length || 0) * 30);
+                  await updateConceptState(conceptId, snap.understood, estimatedTimeSeconds);
                   await supabase.from('tutor_sessions').insert({
                     user_id: user.id, concept_id: conceptId, summary: snap.summary,
                     messages: [...(history || []), { role: 'user', content: message }, { role: 'assistant', content: fullResponse }],
@@ -225,11 +232,14 @@ export async function POST(req: NextRequest) {
               const { data: existingSession } = await supabase
                 .from('chat_sessions').select('id').eq('id', sessionId).maybeSingle();
 
+              let isNewSession = false;
+
               if (!existingSession) {
                 await supabase.from('chat_sessions').insert({
                   id: sessionId, user_id: user.id,
                   session_type: 'global', title: 'Cognition OS Main Thread'
                 });
+                isNewSession = true;
               }
 
               // Remove metadata from response stored in database for cleaner history retrieval
@@ -239,6 +249,14 @@ export async function POST(req: NextRequest) {
                 { session_id: sessionId, user_id: user.id, role: 'user', content: message },
                 { session_id: sessionId, user_id: user.id, role: 'assistant', content: strippedResponse.slice(0, 4000) },
               ]);
+
+              if (isNewSession) {
+                const { count } = await supabase.from('chat_sessions').select('*', { count: 'exact', head: true }).eq('user_id', user.id);
+                if (count && count <= 3) {
+                  // Bug 4: explicitly trigger initial style fingerprinting for first 3 sessions
+                  syncStudentModel(user.id, true).catch(() => {});
+                }
+              }
 
               if (strippedResponse.length > 50) {
                 const memoryContent = `Student asked: ${message}\nAnswer: ${strippedResponse.slice(0, 500)}`;

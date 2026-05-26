@@ -1,8 +1,9 @@
 import { createClient } from '@/lib/supabase/server';
 import { generateJSON } from '@/lib/ai/gemini';
 import { logger } from '@/lib/utils/logger';
+import { calculateProductivityFingerprint } from '@/lib/engines/pulse-engine';
 
-export async function syncStudentModel(userId: string) {
+export async function syncStudentModel(userId: string, isInitialFingerprint: boolean = false) {
   const supabase = await createClient();
 
   // FIX FAILURE 7: Previously queried 'mentor_chats' and 'mock_tests' — both legacy
@@ -39,7 +40,11 @@ export async function syncStudentModel(userId: string) {
   // Summarise recent student chat messages (what topics they ask about, how they phrase confusion)
   const chatSample = (chatHistoryRes.data || []).map(m => m.content.slice(0, 200)).join('\n');
 
-  const prompt = `You are a cognitive psychologist profiling a student. Read their recent data and update their psychological profile.
+  const promptContext = isInitialFingerprint 
+    ? `This is the initial profiling phase (first 3 sessions). Focus aggressively on how the student asks questions and structures their thoughts to detect their core learning style (Visual, Auditory, Read/Write, Kinesthetic/Active).`
+    : `Read their recent data and update their psychological profile.`;
+
+  const prompt = `You are a cognitive psychologist profiling a student. ${promptContext}
 
 CURRENT PROFILE:
 Learning Style: ${currentModel.learning_style || 'Unknown'}
@@ -73,6 +78,9 @@ Respond EXACTLY in this JSON format:
         behavioral_traps: newProfile.behavioral_traps,
         last_updated: new Date().toISOString(),
       });
+      
+      // Update temporal personalisation based on study sessions
+      await calculateProductivityFingerprint(userId);
     }
 
     return newProfile;
