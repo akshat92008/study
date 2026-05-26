@@ -257,7 +257,7 @@ export async function processMockAutopsy(
   }
 
   const mentorResult = await generateMentorRecovery(
-    userId, rawScore, recoverableScore, potentialScore, diagnosedIncorrect
+    autopsyRecord.id, rawScore, potentialScore, diagnosedIncorrect, examType
   ).catch(err => { logger.warn('Mentor recovery failed', err); return null; });
 
   try {
@@ -307,7 +307,7 @@ export async function processMockAutopsy(
     },
     recoverableMarks,
     diagnosedQuestions: processedQuestions,
-    mentorMessage: mentorResult?.message ?? null,
+    mentorMessage: mentorResult?.mentorQuote ?? null,
     recoveryPlan: mentorResult?.plan ?? null,
   };
 }

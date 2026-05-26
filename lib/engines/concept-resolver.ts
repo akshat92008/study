@@ -63,7 +63,6 @@ export async function resolveConceptByName(userId: string, subject: string, chap
   }
 
   if (newConcept?.id) {
-    // Trigger asynchronous dynamic expansion
     EventDispatcher.publish({
       user_id: userId,
       type: 'CONCEPT_DISCOVERED' as any, // Schema allows extending
@@ -71,6 +70,10 @@ export async function resolveConceptByName(userId: string, subject: string, chap
         parentConceptId: newConcept.id,
         subject: subject.trim(),
         chapter: chapter.trim(),
+      },
+      metadata: {
+        source: 'concept_resolver',
+        conceptId: newConcept.id,
       },
       idempotency_key: `concept:discover:${newConcept.id}`,
     }).catch(err => logger.error('Failed to trigger concept expansion', err));
