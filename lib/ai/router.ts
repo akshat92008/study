@@ -262,6 +262,7 @@ export async function routeTextGeneration(
     }
 
     const config = getProviderConfig(providerName);
+    if (!config) { logger.warn(`Skipping ${providerName} — missing env vars`); continue; }
     if (!config.apiKey) continue;
 
     try {

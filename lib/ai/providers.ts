@@ -3,6 +3,8 @@
 // Tracks health state per provider so the router can skip broken ones.
 // Priority order: fastest/most generous free tier first, Google last.
 
+import { logger } from '@/lib/utils/logger';
+
 export type ProviderName = 
   | 'cerebras'        // Fastest inference alive. 1M tokens/day free.
   | 'sambanova'       // Fast + free embeddings.
@@ -104,7 +106,14 @@ export interface ProviderConfig {
   authHeader?: 'bearer' | 'hf-token';
 }
 
-export function getProviderConfig(name: ProviderName): ProviderConfig {
+export const REQUIRED_ENV_VARS: Record<ProviderName, string[]> = {
+  cloudflare: ['CF_ACCOUNT_ID', 'CF_API_TOKEN'],
+  google: ['GOOGLE_AI_KEY', 'GEMINI_API_KEY'],
+  // Add other providers if they require specific env vars
+};
+
+export function getProviderConfig(name: ProviderName): ProviderConfig | null {
+  const configs: Record<ProviderName, ProviderConfig> = {
   const configs: Record<ProviderName, ProviderConfig> = {
 
     cerebras: {
@@ -188,7 +197,16 @@ export function getProviderConfig(name: ProviderName): ProviderConfig {
     },
   };
 
-  return configs[name];
+    const config = configs[name];
+  const required = REQUIRED_ENV_VARS[name] || [];
+  const missing = required.filter(v => !process.env[v]);
+  if (missing.length) {
+    logger.warn(`Missing env vars for ${name}: ${missing.join(', ')}`);
+    return null;
+  }
+  return config;
+}
+
 }
 
 // ─── PRIORITY QUEUES ──────────────────────────────────────────────────────────
