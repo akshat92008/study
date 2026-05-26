@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
+import { headers } from 'next/headers';
 import DashboardClientLayout from '@/components/layout/DashboardClientLayout';
 import CommandBar from '@/components/ui/CommandBar';
 import ToastContainer from '@/components/ui/Toast';
@@ -25,7 +26,9 @@ export default async function DashboardLayout({
     .single();
 
   // After fetching profile, add redirect guard
-  if (!profile?.onboarding_complete) {
+  const headersList = await headers();
+  const pathname = headersList.get('x-next-pathname') || '';
+  if (!profile?.onboarding_complete && pathname !== '/onboarding') {
     redirect('/onboarding');
   }
 
