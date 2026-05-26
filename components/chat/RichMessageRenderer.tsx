@@ -81,9 +81,28 @@ function parseArtifacts(content: string): Array<{ type: 'text' | 'artifact'; con
 
 // ── MARKDOWN RENDERER ──────────────────────────────────────────────────────────
 
+function stripLatex(text: string): string {
+  // Remove LaTeX delimiters \(...\) and \[...\] but keep the inner content readable
+  return text
+    .replace(/\\\(([^)]+)\\\)/g, '$1')
+    .replace(/\\\[([\s\S]+?)\\\]/g, '$1')
+    .replace(/\\dfrac\{([^}]+)\}\{([^}]+)\}/g, '($1)/($2)')
+    .replace(/\\tfrac\{([^}]+)\}\{([^}]+)\}/g, '($1)/($2)')
+    .replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '($1)/($2)')
+    .replace(/\\text\{([^}]+)\}/g, '$1')
+    .replace(/\\vec\{([^}]+)\}/g, '→$1')
+    .replace(/\\[a-zA-Z]+\{([^}]*)\}/g, '$1')
+    .replace(/\\[a-zA-Z]+/g, '')
+    .replace(/[{}]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 function renderMarkdownInline(text: string): React.ReactNode {
   if (!text) return null;
-  const parts = text.split(/(`[^`]+`|\*\*[^*]+\*\*|__[^_]+__|\[\[concept:[^\]]+\]\])/g);
+  // Strip latex before processing
+  const cleaned = stripLatex(text);
+  const parts = cleaned.split(/(`[^`]+`|\*\*[^*]+\*\*|__[^_]+__|\[\[concept:[^\]]+\]\])/g);
   return parts.map((part, i) => {
     if (part.startsWith('**') && part.endsWith('**')) return <strong key={i} style={{ fontWeight: 700, color: 'var(--text-primary)' }}>{part.slice(2, -2)}</strong>;
     if (part.startsWith('__') && part.endsWith('__')) return <strong key={i} style={{ fontWeight: 700 }}>{part.slice(2, -2)}</strong>;
@@ -177,7 +196,7 @@ function renderMarkdownBlock(text: string): React.ReactNode {
     if (line.startsWith('### ')) { flushList(); elements.push(<h4 key={idx} style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-primary)', margin: '14px 0 6px', borderBottom: '1px solid var(--border-subtle)', paddingBottom: 4 }}>{renderMarkdownInline(line.slice(4))}</h4>); return; }
     if (line.startsWith('## ')) { flushList(); elements.push(<h3 key={idx} style={{ fontSize: 15, fontWeight: 800, color: 'var(--text-primary)', margin: '16px 0 8px' }}>{renderMarkdownInline(line.slice(3))}</h3>); return; }
     if (line.startsWith('# ')) { flushList(); elements.push(<h2 key={idx} style={{ fontSize: 17, fontWeight: 900, color: 'var(--text-primary)', margin: '16px 0 8px' }}>{renderMarkdownInline(line.slice(2))}</h2>); return; }
-    if (line.match(/^[-•]\s/)) { listItems.push(<li key={idx} style={{ color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.6, padding: '2px 0' }}>{renderMarkdownInline(line.slice(2))}</li>); return; }
+    if (line.match(/^[-•*⚡📐🔗⚠️🏆✓▪▸►→]\s/)) { listItems.push(<li key={idx} style={{ color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.6, padding: '2px 0' }}>{renderMarkdownInline(line.replace(/^[-•*⚡📐🔗⚠️🏆✓▪▸►→]\s+/, ''))}</li>); return; }
     if (line.match(/^\d+\.\s/)) { listItems.push(<li key={idx} style={{ color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.6, padding: '2px 0', listStyleType: 'decimal' }}>{renderMarkdownInline(line.replace(/^\d+\.\s/, ''))}</li>); return; }
 
     flushList();
@@ -281,34 +300,45 @@ function markdownToHtml(markdown: string) {
 // ── PDF DOWNLOAD ────────────────────────────────────────────────────────────────
 
 function downloadMarkdownAsPDF(content: string, filename: string) {
-  const loadJsPdf = () => {
-    return new Promise<any>((resolve, reject) => {
-      if ((window as any).jsPDF) { resolve((window as any).jsPDF); return; }
-      const script = document.createElement('script');
-      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
-      script.onload = () => {
-        if ((window as any).jsPDF) resolve((window as any).jsPDF);
-        else reject();
-      };
-      script.onerror = reject;
-      document.body.appendChild(script);
-    });
-  };
+  // Use browser print as a reliable PDF export fallback
+  const printWindow = window.open('', '_blank');
+  if (!printWindow) {
+    alert('Please allow popups to export PDF.');
+    return;
+  }
 
-  loadJsPdf()
-    .then((jsPDFModule) => {
-      const { jsPDF } = jsPDFModule;
-      const doc = new jsPDF();
-      doc.html(markdownToHtml(content), {
-        callback: (doc: any) => {
-          doc.save(`${filename.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.pdf`);
-        },
-        x: 10,
-        y: 10,
-        width: 180,
-      });
-    })
-    .catch(() => alert('PDF generation failed. Please try again.'));
+  const safeFilename = filename.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+  const html = markdownToHtml(content);
+
+  printWindow.document.write(`
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>${filename}</title>
+  <style>
+    body { font-family: Georgia, 'Times New Roman', serif; max-width: 700px; margin: 40px auto; color: #111; line-height: 1.7; font-size: 14px; }
+    h1 { font-size: 22px; border-bottom: 2px solid #333; padding-bottom: 8px; margin-top: 24px; }
+    h2 { font-size: 18px; margin-top: 20px; }
+    h3 { font-size: 15px; margin-top: 16px; }
+    ul { padding-left: 24px; }
+    li { margin: 4px 0; }
+    p { margin: 8px 0; }
+    code { background: #f4f4f4; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 12px; }
+    pre { background: #f4f4f4; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    hr { border: none; border-top: 1px solid #ddd; margin: 16px 0; }
+    strong { color: #000; }
+    @media print { body { margin: 20px; } }
+  </style>
+</head>
+<body>
+  <h1>${filename}</h1>
+  ${html}
+  <script>window.onload = () => { window.print(); window.onafterprint = () => window.close(); }<\/script>
+</body>
+</html>
+  `);
+  printWindow.document.close();
 }
 
 function DownloadPdfButton({
