@@ -26,23 +26,11 @@ export function PulseListener({ userId }: { userId: string }) {
           const newSignal = payload.new;
           
           if (newSignal.emotional_state === 'overwhelmed') {
-            addToast({
-              id: Date.now().toString(),
-              type: 'error',
-              message: 'High cognitive load detected. Consider taking a 5-minute break.',
-            });
+            addToast('High cognitive load detected. Consider taking a 5-minute break.', 'error');
           } else if (newSignal.emotional_state === 'frustrated') {
-            addToast({
-              id: Date.now().toString(),
-              type: 'info',
-              message: 'You seem frustrated. We are adapting the difficulty of upcoming tasks.',
-            });
+            addToast('You seem frustrated. We are adapting the difficulty of upcoming tasks.', 'info');
           } else if (newSignal.emotional_state === 'focused' || newSignal.emotional_state === 'flow') {
-            addToast({
-              id: Date.now().toString(),
-              type: 'success',
-              message: 'You are in the zone! Keep up the great work.',
-            });
+            addToast('You are in the zone! Keep up the great work.', 'success');
           }
         }
       )
