@@ -2,7 +2,21 @@
 import { NextRequest } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { streamText } from '@/lib/ai/gemini';
-import { TUTOR_SYSTEM_PROMPT, buildTutorContext } from '@/lib/ai/prompts/tutor';
+import { getTutorSystemPrompt } from '@/lib/ai/prompts/tutor';
+
+function buildTutorContext(concept: any, mistakes: any[]) {
+  return `
+## Current Topic
+Subject: ${concept?.subject || 'General'}
+Chapter: ${concept?.chapter || 'Not specified'}
+Student Mastery: ${concept?.mastery || 'unknown'}
+Times Reviewed: ${concept?.times_reviewed || 0}
+
+## Past Mistakes in This Area
+${mistakes.length > 0
+  ? mistakes.map((m: any) => `- ${m.category}: ${m.ai_analysis || 'No analysis'}`).join('\n')
+  : '- No recorded mistakes'}`;
+}
 
 export async function POST(req: NextRequest) {
   const supabase = await createClient();
@@ -39,7 +53,8 @@ export async function POST(req: NextRequest) {
   const stream = new ReadableStream({
     async start(controller) {
       try {
-        for await (const chunk of streamText('flash', TUTOR_SYSTEM_PROMPT, fullPrompt, 0.7)) {
+        const systemPrompt = getTutorSystemPrompt('NEET');
+        for await (const chunk of streamText('flash', systemPrompt, fullPrompt, 0.7)) {
           controller.enqueue(encoder.encode(chunk));
         }
       } catch {
