@@ -49,36 +49,31 @@ export const GlobalChat = memo(function GlobalChat() {
     });
   }, []);
 
-   // Load history from Supabase on mount
-   useEffect(() => {
-     if (!user?.id) return;
-
-     async function loadHistory() {
-       const { data } = await supabase
-         .from('chat_messages')
-         .select('role, content, created_at')
-         .eq('user_id', user.id)
-         .order('created_at', { ascending: true })
-         .limit(50);
-
-       if (data && data.length > 0) {
-         // Only hydrate if local store is empty or only has the welcome message
-         const localHistory = useAppStore.getState().chatMessages;
-         const isDefault = localHistory.length === 1 && localHistory[0].content.includes('Welcome to **Cognition OS**');
-         if (!localHistory || localHistory.length === 0 || isDefault) {
-           useAppStore.getState().setChatMessages(
-             data.map(m => ({
-               role: m.role as 'user' | 'assistant' | 'system',
-               content: m.content,
-               timestamp: m.created_at || new Date().toISOString(),
-             }))
-           );
-         }
-       }
-     }
-
-     loadHistory();
-   }, [user?.id]);
+  // Add personalized welcome message on mount if chat is empty
+  useEffect(() => {
+    if (!user) return;
+    if (chatMessages.length !== 0) return;
+    fetch('/api/ai/welcome')
+      .then(r => r.json())
+      .then(data => {
+        const msg = data.message || "Welcome to **Cognition OS**. How can I help you learn today?";
+        addChatMessage({
+          role: 'assistant',
+          content: msg,
+          timestamp: new Date().toISOString(),
+          metadata: { isWelcomePlaceholder: true },
+        });
+      })
+      .catch(() => {
+        // fallback to default message on error
+        addChatMessage({
+          role: 'assistant',
+          content: "Welcome to **Cognition OS**. How can I help you learn today?",
+          timestamp: new Date().toISOString(),
+          metadata: { isWelcomePlaceholder: true },
+        });
+      });
+  }, [user]);
 
   // Scroll to bottom
   const scrollToBottom = () => {
@@ -345,10 +340,9 @@ export const GlobalChat = memo(function GlobalChat() {
         gap: '24px',
         scrollBehavior: 'smooth'
       }}>
-        {/* FIX BUG 7: Session card no longer disappears after first message.
-            When empty: shows full card. When chat has messages: shows collapsed pill.
-            Previously: chatMessages.length === 0 hid it permanently after first send. */}
-        {chatMessages.length === 0 ? (
+        {/* FIX BUG 5: Session card now properly uses session state rather than message length.
+            If no session is active, show the full card. If active, show the pill with a restart button. */}
+        {!currentSessionTopic ? (
           <DailySessionCard
             onStartSession={(topic, subject, estimatedMinutes) => {
               setCurrentSessionTopic(topic);
@@ -363,24 +357,52 @@ export const GlobalChat = memo(function GlobalChat() {
             style={{
               display: 'flex',
               alignItems: 'center',
+              justifyContent: 'space-between',
+              width: '100%',
               gap: '8px',
               padding: '6px 12px',
               background: 'var(--bg-secondary)',
               border: '1px solid var(--border-subtle)',
-              borderRadius: 'var(--radius-full)',
+              borderRadius: '8px',
               alignSelf: 'flex-start',
-              cursor: 'default',
               marginBottom: '4px',
             }}
           >
-            <span style={{ fontSize: '10px', color: 'var(--text-tertiary)', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              TODAY'S SESSION
-            </span>
-            {currentSessionTopic && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ fontSize: '10px', color: 'var(--text-tertiary)', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                TODAY'S SESSION
+              </span>
               <span style={{ fontSize: '11px', color: 'var(--text-secondary)', fontWeight: 'var(--fw-medium)' }}>
                 {currentSessionTopic}
               </span>
-            )}
+            </div>
+            <button
+              onClick={() => {
+                setCurrentSessionTopic('');
+                setCurrentSessionSubject('');
+                useAppStore.getState().endSession();
+              }}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: 'var(--text-tertiary)',
+                fontSize: '11px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '4px',
+                padding: '4px 8px',
+                borderRadius: '4px',
+              }}
+              onMouseOver={(e) => (e.currentTarget.style.background = 'var(--bg-hover)')}
+              onMouseOut={(e) => (e.currentTarget.style.background = 'transparent')}
+            >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                <path d="M3 3v5h5"></path>
+              </svg>
+              Restart
+            </button>
           </div>
         )}
          {chatMessages.map((msg, idx) => {

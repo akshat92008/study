@@ -29,18 +29,13 @@ export interface ChatSlice {
   clearChat: () => void;
 }
 
+// ★ FIX: No static welcome message. GlobalChat fetches a personalized one from /api/ai/welcome.
+// This placeholder is immediately replaced on mount.
 const INITIAL_MSG: ChatMessage = {
   role: 'assistant',
-  content: `Welcome to **Cognition OS**. I am your central COMMAND intelligence.
- 
-Here is how your study environment is structured:
-• 🧠 **ATLAS** (Cognition Graph) — Visualizes your real-time mastery across all concepts.
-• 🃏 **MEMORY** (Spaced Repetition) — A smart flashcard queue powered by FSRS-5.
-• 🔬 **AUTOPSY** (Mistake Ingester) — Upload mock tests to diagnose and fix conceptual mistakes.
-• 📅 **PLANNER** (Adaptive Schedule) — Your daily study blocks, optimized by priority and memory retention curves.
- 
-To get started, tell me what you want to learn, prepare for, or master.`,
+  content: '...', // Replaced by /api/ai/welcome on mount
   timestamp: new Date().toISOString(),
+  metadata: { isWelcomePlaceholder: true },
 };
 
 let activeRealtimeChannel: any = null;
@@ -53,7 +48,7 @@ export const createChatSlice: StateCreator<
   ChatSlice
 > = (set, get) => ({
   chatId: null,
-  chatMessages: [INITIAL_MSG],
+  chatMessages: [],
   pendingSyncQueue: [],
   isChatLoading: false,
 
@@ -71,7 +66,7 @@ export const createChatSlice: StateCreator<
   },
 
   clearChat: () => {
-    set({ chatMessages: [INITIAL_MSG], pendingSyncQueue: [] });
+    set({ chatMessages: [], pendingSyncQueue: [] });
     set({ chatId: null });
     
     // Clean up channel on clear
@@ -156,6 +151,8 @@ export const createChatSlice: StateCreator<
             metadata: m.metadata
           }));
           set({ chatMessages: chronological });
+        } else {
+          set({ chatMessages: [INITIAL_MSG] });
         }
       }
 

@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
     updated_at: new Date().toISOString(),
   }).eq('id', user.id);
 
-    // 2. Fetch concept details (id and current mastery)
+  // 2. Fetch concept details (id and current mastery)
   const { data: conceptRecord } = await supabase
     .from('concepts')
     .select('id, mastery')
@@ -79,7 +79,7 @@ export async function POST(req: NextRequest) {
     understood,
     turnsCount: 0,
     oldMastery,
-    newMastery: null,
+    newMastery: oldMastery,
     cardsCreated,
     sessionId,
   });
@@ -90,7 +90,7 @@ export async function POST(req: NextRequest) {
     closingMessage: closing.text,
     messageType: closing.type,
     oldMastery,
-    newMastery: null,
+    newMastery: oldMastery,
     cardsCreated,
   });
 }
