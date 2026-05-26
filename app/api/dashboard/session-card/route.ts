@@ -37,6 +37,18 @@ export async function GET() {
 
     const today = new Date().toISOString().split('T')[0];
 
+// Attempt to fetch precomputed session card from DB cache
+const { data: cachedCard, error: cacheErr } = await supabase
+  .from('session_cards')
+  .select('*')
+  .eq('user_id', user.id)
+  .eq('date', today)
+  .single();
+
+if (cachedCard && !cacheErr) {
+  return NextResponse.json(cachedCard);
+}
+
     const [
       profileRes, goalRes, weakConceptsRes, overdueCardsRes,
       recentMistakesRes, todayTasksRes, sessionCountRes, studentModelRes
@@ -80,7 +92,7 @@ export async function GET() {
       let rationale = overdueCount > 0 ? `${overdueCount} overdue flashcards need review` : 'Top priority based on your mastery gaps';
       if (isPeakHour) rationale += ' • You are in your peak focus window.';
 
-      return NextResponse.json({
+      const card = {
         dayNumber: sessionCount + 1,
         streakDays,
         focusTopic: todayTask.title,
@@ -90,7 +102,16 @@ export async function GET() {
         daysToExam,
         overdueCards: overdueCount,   // ← consistent camelCase
         masteryPercent,
+      };
+
+      // Upsert the card into cache table for future requests
+      await supabase.from('session_cards').upsert({
+        user_id: user.id,
+        date: today,
+        ...card,
       });
+
+      return NextResponse.json(card);
     }
 
     // AI-generate the best session card
@@ -131,7 +152,7 @@ Return ONLY valid JSON, no markdown:
         : `Focus on your weakest area to build foundation`;
     if (isPeakHour) fallbackRationale += ' • You are in your peak focus window.';
 
-    return NextResponse.json({
+    const card = {
       dayNumber: sessionCount + 1,
       streakDays,
       focusTopic: sanitizeTopic(cardData?.focusTopic, defaultTopic),
@@ -141,7 +162,16 @@ Return ONLY valid JSON, no markdown:
       daysToExam,
       overdueCards: overdueCount,
       masteryPercent,
+    };
+
+    // Cache the generated card for subsequent loads
+    await supabase.from('session_cards').upsert({
+      user_id: user.id,
+      date: today,
+      ...card,
     });
+
+    return NextResponse.json(card);
 
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });

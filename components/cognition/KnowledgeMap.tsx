@@ -15,7 +15,7 @@ const MASTERY_CONFIG: Record<string, { color: string; bg: string; label: string;
   automated: { color: 'var(--accent-cyan)', bg: 'var(--accent-cyan-dim)', label: 'Automated', icon: Zap },
 };
 
-import InteractiveGraph from './InteractiveGraph';
+import KnowledgeMapGraph from './KnowledgeMapGraph';
 
 interface KnowledgeMapProps {
   concepts: any[];
@@ -154,7 +154,7 @@ export default function KnowledgeMap({ concepts: initialConcepts, links = [], st
 
       {/* Interactive Node-Edge Graph */}
       <Card padding="none">
-        <InteractiveGraph concepts={concepts} links={links} />
+        <KnowledgeMapGraph concepts={concepts} links={links} />
       </Card>
 
       {/* Selected Concept Detail Panel */}

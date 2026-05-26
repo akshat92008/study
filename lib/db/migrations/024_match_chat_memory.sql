@@ -2,7 +2,7 @@
 CREATE OR REPLACE FUNCTION match_chat_memory(
   query_embedding vector(768),
   p_user_id UUID,
-  match_threshold FLOAT DEFAULT 0.7,
+  match_threshold FLOAT DEFAULT 0.75,
   match_count INT DEFAULT 5
 )
 RETURNS TABLE (

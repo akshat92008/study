@@ -24,6 +24,7 @@ export const GlobalChat = memo(function GlobalChat() {
     startSession,
     sessionStartTime,
     chatId,
+    loadChatFromSupabase,
   } = useAppStore();
 
   const [inputMessage, setInputMessage] = useState('');
@@ -42,41 +43,27 @@ export const GlobalChat = memo(function GlobalChat() {
   const [user, setUser] = useState<any>(null);
   const supabase = createClient();
 
+  // Fetch authenticated user on mount
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
-      if (user) {
-        setUser(user);
-      }
+      if (user) setUser(user);
     });
   }, []);
 
-  // Add personalized welcome message on mount if chat is empty
+  // Load chat history when user is available
   useEffect(() => {
     if (!user) return;
-    if (chatMessages.length !== 0) return;
-    fetch('/api/ai/welcome')
-      .then(r => r.json())
-      .then(data => {
-        const msg = data.message || "Welcome to **Cognition OS**. How can I help you learn today?";
-        addChatMessage({
-          role: 'assistant',
-          content: msg,
-          timestamp: new Date().toISOString(),
-          metadata: { isWelcomePlaceholder: true },
-        });
-      })
-      .catch(() => {
-        // fallback to default message on error
-        addChatMessage({
-          role: 'assistant',
-          content: "Welcome to **Cognition OS**. How can I help you learn today?",
-          timestamp: new Date().toISOString(),
-          metadata: { isWelcomePlaceholder: true },
-        });
-      });
+    loadChatFromSupabase();
   }, [user]);
 
-  // Scroll to bottom
+  // Initialize PULSE telemetry session on chat mount
+  useEffect(() => {
+    if (!sessionActive) {
+      startSession();
+    }
+  }, []);
+
+  // Scroll to bottom utility
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };

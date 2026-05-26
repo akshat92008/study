@@ -62,14 +62,12 @@ export default function DailySessionFocus({
     const greetingPrompt = `You are MIND, the Socratic AI Tutor. Greet me for today's daily session on "${subject} > ${chapter}". Welcome me warmly, state the time commitment (${estimatedMinutes} minutes), and present an opening question or concept breakdown to kick off our Socratic study block. Make it direct and highly engaging.`;
 
     try {
-      const res = await fetch('/api/ai/tutor', {
+      const res = await fetch('/api/ai/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          message: greetingPrompt, 
-          subject, 
-          chapter, 
-          history: [] 
+        body: JSON.stringify({
+          message: greetingPrompt,
+          history: []
         }),
       });
 
@@ -120,13 +118,11 @@ export default function DailySessionFocus({
     }
 
     try {
-      const res = await fetch('/api/ai/tutor', {
+      const res = await fetch('/api/ai/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           message: tutorInstructions,
-          subject,
-          chapter,
           history: messages.slice(-6), // Send recent history for context
         }),
       });

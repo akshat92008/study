@@ -3,7 +3,7 @@ import { NextRequest } from 'next/server';
 import { after } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { generateJSON } from '@/lib/ai/gemini';
-import { routeStreamGeneration, routeEmbedding } from '@/lib/ai/router';
+import { routeStreamGeneration } from '@/lib/ai/router';
 import { getMINDContext } from '@/lib/engines/mind-engine';
 import { getMINDSystemPrompt } from '@/lib/ai/prompts/mind-prompt';
 import { updateConceptState } from '@/lib/engines/cognition-graph';
@@ -295,16 +295,7 @@ export async function POST(req: NextRequest) {
                 }
               }
 
-              if (strippedResponse.length > 50) {
-                const memoryContent = `Student asked: ${message}\nAnswer: ${strippedResponse.slice(0, 500)}`;
-                try {
-                  const embedding = await routeEmbedding(memoryContent);
-                  if (embedding?.length) {
-                    await supabase.from('chat_memory_embeddings').insert({ user_id: user.id, content: memoryContent, embedding });
-                  }
-                } catch (err) {
-                  logger.warn('Embedding failed', err);
-                }
+                // Embedding stored via ChatMemoryService (duplicate removed)
               }
 
               await logPulseSignal(user.id, 'chat_interaction', {
@@ -313,12 +304,9 @@ export async function POST(req: NextRequest) {
                 intent: intent.intent,
               });
 
-              // Semantic memory storage
+              // Semantic memory storage (store only user message to avoid duplicate embeddings)
               const memSvc = new ChatMemoryService();
               await memSvc.storeMessageInMemory(user.id, message).catch(() => {});
-              if (fullResponse.length > 50) {
-                await memSvc.storeMessageInMemory(user.id, fullResponse.slice(0, 600)).catch(() => {});
-              }
             } catch (err) {
               logger.warn('Chat persistence failed', err);
             }

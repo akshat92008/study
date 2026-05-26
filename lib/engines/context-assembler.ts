@@ -2,6 +2,7 @@
 // Full replacement — removes all stub/dummy data, wires real data sources.
 
 import { createClient } from '@/lib/supabase/server';
+import { hasMatchChatMemoryRpc } from '@/lib/db/rpc-utils';
 import { getEmbedding } from '@/lib/ai/gemini';
 import { logger } from '@/lib/utils/logger';
 
@@ -45,6 +46,13 @@ export class ContextAssembler {
 
       const embeddingString = `[${embedding.join(',')}]`;
 
+      // Guard: ensure match_chat_memory RPC exists
+      const rpcExists = await hasMatchChatMemoryRpc();
+      if (!rpcExists) {
+        logger.warn('match_chat_memory RPC not found – skipping semantic retrieval');
+        return [];
+      }
+
       const { data, error } = await supabase.rpc('match_chat_memory', {
         query_embedding: embeddingString,
         match_threshold: 0.72,
@@ -53,11 +61,6 @@ export class ContextAssembler {
       });
 
       if (error) {
-        // RPC not deployed yet — silent fallback, not a crash
-        if (error.code === 'PGRST202') {
-          logger.warn('match_chat_memory RPC not found, skipping semantic retrieval');
-          return [];
-        }
         logger.error('Memory retrieval RPC error', error);
         return [];
       }

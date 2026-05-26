@@ -224,19 +224,61 @@ function DownloadMdButton({ text, filename = 'document' }: { text: string; filen
     </button>
   );
 }
-function exportToPdf(content: string, filename: string) {
-  // Lazy‑load jsPDF from CDN if not already available
+
+function markdownToHtml(markdown: string) {
+  // Escape HTML entities
+  let html = markdown
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    // Headers
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+    // Bold and italic
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/__(.+?)__/g, '<strong>$1</strong>')
+    // Inline code
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    // Horizontal rule
+    .replace(/^---+$/gm, '<hr/>')
+    // Bullet lists (including various symbols)
+    .replace(/^[\-\*•⚡📐🔗⚠️🏆]\s+(.+)$/gm, '<li>$1</li>')
+    // Numbered lists
+    .replace(/^\d+\.\s+(.+)$/gm, '<li>$1</li>')
+    // Wrap consecutive <li> in <ul>
+    .replace(/(<li>.*<\/li>\n?)+/g, (m) => `<ul>${m}</ul>`)
+    // Q&A for practice tests
+    .replace(/^(Q\d+[:.])\s+(.+)$/gm, '<p class="question"><strong>$1</strong> $2</p>')
+    .replace(/^(ANSWER[:.])\s+(.+)$/gm, '<p class="answer"><strong>$1</strong> $2</p>')
+    .replace(/^(EXPLANATION[:.])\s+(.+)$/gm, '<p class="explanation">$2</p>')
+    // Flashcard delimiters
+    .replace(/^CARD \d+$/gm, '<div class="card-divider"></div>')
+    .replace(/^FRONT[:]\s+(.+)$/gm, '<p class="card-front"><strong>Q:</strong> $1</p>')
+    .replace(/^BACK[:]\s+(.+)$/gm, '<p class="card-back"><strong>A:</strong> $1</p>')
+    // Paragraph breaks
+    .replace(/\n{2,}/g, '</p><p>')
+    .replace(/\n/g, '<br/>');
+
+  // Ensure content is wrapped in <p> if needed
+  if (!html.match(/^<(h[1-3]|ul|li|hr|div|p)/)) {
+    html = `<p>${html}</p>`;
+  }
+  return html;
+}
+
+// ── PDF DOWNLOAD ────────────────────────────────────────────────────────────────
+
+function downloadMarkdownAsPDF(content: string, filename: string) {
   const loadJsPdf = () => {
     return new Promise<any>((resolve, reject) => {
-      if ((window as any).jsPDF) {
-        resolve((window as any).jsPDF);
-        return;
-      }
+      if ((window as any).jsPDF) { resolve((window as any).jsPDF); return; }
       const script = document.createElement('script');
       script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
       script.onload = () => {
         if ((window as any).jsPDF) resolve((window as any).jsPDF);
-        else reject(new Error('jsPDF failed to load'));
+        else reject();
       };
       script.onerror = reject;
       document.body.appendChild(script);
@@ -247,17 +289,35 @@ function exportToPdf(content: string, filename: string) {
     .then((jsPDFModule) => {
       const { jsPDF } = jsPDFModule;
       const doc = new jsPDF();
-      // Simple HTML conversion – render the markdown as preformatted text
-      doc.text(content, 10, 10);
-      doc.save(`${filename.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.pdf`);
+      doc.html(markdownToHtml(content), {
+        callback: (doc) => {
+          doc.save(`${filename.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.pdf`);
+        },
+        x: 10,
+        y: 10,
+        width: 180,
+      });
     })
-    .catch((e) => console.error('PDF generation error:', e));
+    .catch(() => alert('PDF generation failed. Please try again.'));
 }
 
-function DownloadPdfButton({ text, filename = 'document' }: { text: string; filename?: string }) {
+function DownloadPdfButton({
+  text,
+  filename = 'document',
+}: {
+  text: string;
+  filename?: string;
+}) {
+  const [loading, setLoading] = React.useState(false);
+  const handleClick = () => {
+    setLoading(true);
+    downloadMarkdownAsPDF(text, filename);
+    setTimeout(() => setLoading(false), 800);
+  };
   return (
     <button
-      onClick={() => exportToPdf(text, filename)}
+      onClick={handleClick}
+      disabled={loading}
       title="Save as PDF"
       style={{
         display: 'flex',
@@ -267,13 +327,18 @@ function DownloadPdfButton({ text, filename = 'document' }: { text: string; file
         background: 'var(--bg-tertiary)',
         border: '1px solid var(--border-subtle)',
         borderRadius: 6,
-        cursor: 'pointer',
+        cursor: loading ? 'default' : 'pointer',
         fontSize: 11,
         color: 'var(--text-secondary)',
         transition: 'all 0.15s',
+        opacity: loading ? 0.6 : 1,
       }}
     >
-      <Download size={11} /> PDF
+      {loading ? (
+        <>Opening… <Download size={11} /></>
+      ) : (
+        <>PDF <Download size={11} /></>
+      )}
     </button>
   );
 }

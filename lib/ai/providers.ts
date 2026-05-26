@@ -129,8 +129,9 @@ export function getProviderConfig(name: ProviderName): ProviderConfig {
       supportsStreaming: true,
       supportsVision: false,
       supportsEmbeddings: false,
-      embeddingModel: '',
-      embeddingDimensions: 4096, // Truncated to 768 for pgvector
+      // No embeddings for SambaNova, keep undefined
+      embeddingModel: undefined,
+      embeddingDimensions: undefined,
       authHeader: 'bearer',
     },
 
@@ -198,19 +199,19 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
 
   chat: [
     'cerebras',      // Fastest. 1M tokens/day.
-    'sambanova',     // Fast + free.
     'groq_compound', // Reliable. 14,400/day.
     'groq_gemma',    // Same key as groq, different model = second slot.
     'cloudflare',    // Free Workers AI.
+    'sambanova',     // Fast + free, lower priority to avoid rate limits.
     'google',        // LAST RESORT.
   ],
 
   stream: [
     'cerebras',
-    'sambanova',
     'groq_compound',
     'groq_gemma',
     'cloudflare',
+    'sambanova', // Lower priority for streaming.
     'google',
   ],
 
