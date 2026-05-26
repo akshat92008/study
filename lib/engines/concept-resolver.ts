@@ -29,7 +29,7 @@ export async function resolveConceptByName(userId: string, subject: string, chap
   // 3. Semantic match via pgvector (Most expensive, fallback)
   try {
     const embedding = await getEmbedding(`${subject} ${chapter}`);
-    if (embedding) {
+    if (embedding && embedding.length > 0) {
       const { data: semantic } = await supabase.rpc('match_concepts', {
         query_embedding: `[${embedding.join(',')}]`, 
         match_threshold: 0.6, 
