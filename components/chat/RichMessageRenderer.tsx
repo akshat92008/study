@@ -109,11 +109,21 @@ function renderMarkdownBlock(text: string): React.ReactNode {
     }
   };
 
+  // Helper to clean each line: trim leading whitespace and remove a leading "ChatGPT:" if present
+  const cleanLine = (line: string) => {
+    const trimmed = line.replace(/^\s+/, '');
+    return trimmed.replace(/^ChatGPT:\s*/, '');
+  };
+
   // exam‑trap handling
   let inExamTrap = false;
   let examBuffer: string[] = [];
 
-  lines.forEach((line, idx) => {
+  lines.forEach((rawLine, idx) => {
+    // Skip lines that are pure error messages from the model
+    if (/model output error/.test(rawLine)) return;
+    const line = cleanLine(rawLine);
+
     if (line.startsWith('```')) {
       if (!inCodeBlock) {
         flushList();
@@ -839,34 +849,6 @@ function StudyPlanCard({ artifact }: { artifact: ParsedArtifact }) {
             <div style={{ fontWeight: 800, fontSize: 13, color: 'var(--text-primary)' }}>Study Plan</div>
             <div style={{ fontSize: 11, color: 'var(--text-tertiary)', marginTop: 1 }}>
               {artifact.attributes.days ? `${artifact.attributes.days} days` : artifact.topic}
-            </div>
-          </div>
-        </div>
-        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-          <CopyButton text={artifact.content} />
-          <DownloadMdButton text={artifact.content} filename={artifact.topic || 'study-plan'} />
-          <DownloadPdfButton text={artifact.content} filename={artifact.topic || 'study-plan'} />
-        <ExportButton text={artifact.content} filename={artifact.topic || 'study-plan'} />
-          {expanded ? <ChevronUp size={14} style={{ color: 'var(--text-tertiary)' }} /> : <ChevronDown size={14} style={{ color: 'var(--text-tertiary)' }} />}
-        </div>
-      </div>
-      {expanded && (
-        <div style={{ padding: '12px 20px' }}>
-          {lines.map((line, i) => {
-            const isDayLine = line.match(/^DAY \d+/);
-            const isMeta = line.startsWith('TOTAL:') || line.startsWith('Priority');
-            return (
-              <div key={i} style={{
-                padding: isDayLine ? '8px 12px' : '3px 12px',
-                background: isDayLine ? 'var(--bg-secondary)' : 'transparent',
-                borderRadius: isDayLine ? 6 : 0, marginBottom: isDayLine ? 4 : 0,
-                borderLeft: isDayLine ? '3px solid var(--accent-purple)' : 'none',
-                fontSize: isDayLine ? 12 : 11,
-                fontWeight: isDayLine ? 700 : 400,
-                color: isMeta ? 'var(--text-tertiary)' : isDayLine ? 'var(--text-primary)' : 'var(--text-secondary)',
-                lineHeight: 1.5
-              }}>
-                {renderMarkdownInline(line)}
               </div>
             );
           })}
@@ -878,7 +860,7 @@ function StudyPlanCard({ artifact }: { artifact: ParsedArtifact }) {
 
 // ── PDF CARD COMPONENT ─────────────────────────────────────────────────────────
 
-function ExportButton({ text, filename = 'document' }: { text: string; filename?: string }) {
+function ExportButton({ text, filename = 'document', label = 'Export PDF' }: { text: string; filename?: string; label?: string }) {
   const [loading, setLoading] = React.useState(false);
   const handleClick = () => {
     setLoading(true);
@@ -889,7 +871,7 @@ function ExportButton({ text, filename = 'document' }: { text: string; filename?
     <button
       onClick={handleClick}
       disabled={loading}
-      title="Export as PDF"
+      title={label}
       style={{
         display: 'flex',
         alignItems: 'center',
@@ -905,11 +887,15 @@ function ExportButton({ text, filename = 'document' }: { text: string; filename?
         opacity: loading ? 0.6 : 1,
       }}
     >
-      {loading ? <>
-        Exporting… <Download size={11} />
-      </> : <>
-        Export PDF <Download size={11} />
-      </>}
+      {loading ? (
+        <>
+          Exporting… <Download size={11} />
+        </>
+      ) : (
+        <>
+          {label} <Download size={11} />
+        </>
+      )}
     </button>
   );
 }
@@ -942,6 +928,48 @@ function PdfCard({ artifact }: { artifact: ParsedArtifact }) {
           <CopyButton text={artifact.content} label="Copy" />
           <DownloadMdButton text={artifact.content} filename={artifact.topic || 'document'} />
           <DownloadPdfButton text={artifact.content} filename={artifact.topic || 'document'} />
+          {expanded ? <ChevronUp size={14} style={{ color: 'var(--text-tertiary)' }} /> : <ChevronDown size={14} style={{ color: 'var(--text-tertiary)' }} />}
+        </div>
+      </div>
+
+      {expanded && (
+        <div style={{ padding: '16px 20px' }}>
+          {renderMarkdownBlock(artifact.content)}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function StudyPlanCard({ artifact }: { artifact: ParsedArtifact }) {
+  const [expanded, setExpanded] = useState(true);
+
+  return (
+    <div style={{
+      background: 'var(--bg-primary)', border: '1px solid var(--border-subtle)',
+      borderRadius: 12, overflow: 'hidden', margin: '4px 0',
+      boxShadow: '0 2px 12px rgba(0,0,0,0.15)'
+    }}>
+      <div style={{
+        background: 'linear-gradient(135deg, rgba(34,211,238,0.15), rgba(59,130,246,0.1))',
+        borderBottom: expanded ? '1px solid var(--border-subtle)' : 'none',
+        padding: '12px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+        cursor: 'pointer'
+      }} onClick={() => setExpanded(!expanded)}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div style={{ background: '#22d3ee', borderRadius: 8, padding: 6, display: 'flex' }}>
+            <Zap size={14} color="white" />
+          </div>
+          <div>
+            <div style={{ fontWeight: 800, fontSize: 13, color: 'var(--text-primary)' }}>Study Plan</div>
+            <div style={{ fontSize: 11, color: 'var(--text-tertiary)', marginTop: 1 }}>{artifact.topic}{artifact.subject ? ` · ${artifact.subject}` : ''}</div>
+          </div>
+        </div>
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          <CopyButton text={artifact.content} label="Copy" />
+          <DownloadMdButton text={artifact.content} filename={artifact.topic || 'study-plan'} />
+          <DownloadPdfButton text={artifact.content} filename={artifact.topic || 'study-plan'} />
+          <ExportButton text={artifact.content} filename={artifact.topic || 'study-plan'} />
           {expanded ? <ChevronUp size={14} style={{ color: 'var(--text-tertiary)' }} /> : <ChevronDown size={14} style={{ color: 'var(--text-tertiary)' }} />}
         </div>
       </div>
