@@ -177,7 +177,10 @@ export async function processMockAutopsy(
     }
   }
 
-  const examConfig = getExamConfig(examType, customScoring);
+  let examConfig = getExamConfig(examType);
+  if (customScoring) {
+    examConfig = { ...examConfig, ...customScoring };
+  }
   const subjectList = examConfig.subjects.join(', ');
 
   logger.info('Autopsy Pass 1: Extracting', { userId, testName });
