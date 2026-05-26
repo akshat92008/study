@@ -3,18 +3,12 @@ import { createClient } from '@/lib/supabase/server';
 import { getPlanForDate } from '@/lib/actions/planner';
 import { generateDailyPlan } from '@/lib/ai/agents/planner';
 import { safeError, logger } from '@/lib/utils/logger';
-import { RateLimiter } from '@/lib/services/rateLimiter';
 
 export async function POST(req: NextRequest) {
   try {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-
-    // Rate limit: 5 per 24h
-    const limiter = RateLimiter.getInstance();
-    const allowed = await limiter.consume(`planner-${user.id}`, 5, 24 * 60 * 60 * 1000);
-    if (!allowed) return NextResponse.json({ error: 'Daily limit reached.' }, { status: 429 });
 
     const body = await req.json();
     const { date } = body;
