@@ -1,8 +1,9 @@
 -- Run this in the Supabase SQL Editor
 
 -- 1. Ensure unique constraint exists for ON CONFLICT DO NOTHING to work
-ALTER TABLE concepts ADD CONSTRAINT concepts_user_subject_chapter_unique 
-UNIQUE (user_id, subject, chapter);
+ALTER TABLE concepts DROP CONSTRAINT IF EXISTS concepts_user_subject_chapter_unique;
+ALTER TABLE concepts ADD CONSTRAINT concepts_user_subject_chapter_name_unique 
+UNIQUE (user_id, subject, chapter, name);
 
 -- 2. Function to seed syllabus for a user on signup
 CREATE OR REPLACE FUNCTION seed_syllabus_for_user(p_user_id uuid, p_exam_type text)
@@ -41,8 +42,8 @@ BEGIN
       'Atoms and Nuclei',
       'Electronic Devices'
     ]) LOOP
-      INSERT INTO concepts (user_id, subject, chapter, mastery, last_reviewed)
-      VALUES (p_user_id, 'Physics', v_chapter, 'not_started', now())
+      INSERT INTO concepts (user_id, subject, chapter, name, mastery, confidence, last_reviewed_at)
+      VALUES (p_user_id, 'Physics', v_chapter, v_chapter, 'not_started', 'low', now())
       ON CONFLICT DO NOTHING;
     END LOOP;
 
@@ -78,8 +79,8 @@ BEGIN
       'Polymers',
       'Chemistry in Everyday Life'
     ]) LOOP
-      INSERT INTO concepts (user_id, subject, chapter, mastery, last_reviewed)
-      VALUES (p_user_id, 'Chemistry', v_chapter, 'not_started', now())
+      INSERT INTO concepts (user_id, subject, chapter, name, mastery, confidence, last_reviewed_at)
+      VALUES (p_user_id, 'Chemistry', v_chapter, v_chapter, 'not_started', 'low', now())
       ON CONFLICT DO NOTHING;
     END LOOP;
 
@@ -125,8 +126,8 @@ BEGIN
       'Biodiversity and Conservation',
       'Environmental Issues'
     ]) LOOP
-      INSERT INTO concepts (user_id, subject, chapter, mastery, last_reviewed)
-      VALUES (p_user_id, 'Biology', v_chapter, 'not_started', now())
+      INSERT INTO concepts (user_id, subject, chapter, name, mastery, confidence, last_reviewed_at)
+      VALUES (p_user_id, 'Biology', v_chapter, v_chapter, 'not_started', 'low', now())
       ON CONFLICT DO NOTHING;
     END LOOP;
 

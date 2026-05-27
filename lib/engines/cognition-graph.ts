@@ -357,7 +357,8 @@ export class AtlasConsumer {
             .from('concepts')
             .update({
               mastery: downgradedMastery,
-              last_reviewed: new Date().toISOString(),
+              last_reviewed_at: new Date().toISOString(),
+              updated_at: new Date().toISOString(),
             })
             .eq('id', concept.id)
             .eq('user_id', userId);
@@ -387,8 +388,10 @@ export class AtlasConsumer {
         user_id: userId,
         subject,
         chapter,
+        name: chapter,
         mastery: 'exposed',
-        last_reviewed: new Date().toISOString(),
+        confidence: 'low',
+        last_reviewed_at: new Date().toISOString(),
       });
       logger.info(`AtlasConsumer: created new concept at exposed — ${subject} / ${chapter}`, { userId });
       return;
@@ -401,7 +404,8 @@ export class AtlasConsumer {
           .from('concepts')
           .update({
             mastery: upgradedMastery,
-            last_reviewed: new Date().toISOString(),
+            last_reviewed_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
           })
           .eq('id', concept.id)
           .eq('user_id', userId);

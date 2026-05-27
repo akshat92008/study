@@ -218,7 +218,7 @@ export class EventDispatcher {
       case 'atlas_engine':
         if (event.type === 'AUTOPSY_MOCK_PROCESSED') {
           await AtlasConsumer.handleAutopsyProcessed(event.user_id, event.metadata);
-        } else if (event.type === 'STUDY_SESSION_COMPLETED') {
+        } else if (event.type === 'STUDY_SESSION_COMPLETED' || event.type === 'MIND_TUTOR_COMPLETED') {
           await AtlasConsumer.handleStudySessionCompleted(event.user_id, event.data);
         }
         break;
@@ -226,7 +226,7 @@ export class EventDispatcher {
       case 'memory_engine':
         if (event.type === 'AUTOPSY_MOCK_PROCESSED') {
           await MemoryConsumer.handleAutopsyProcessed(event.user_id, event.metadata);
-        } else if (event.type === 'STUDY_SESSION_COMPLETED') {
+        } else if (event.type === 'STUDY_SESSION_COMPLETED' || event.type === 'MIND_TUTOR_COMPLETED') {
           await MemoryConsumer.handleStudySessionCompleted(event.user_id, event.data);
         }
         break;
@@ -234,7 +234,7 @@ export class EventDispatcher {
       case 'command_engine':
         if (event.type === 'AUTOPSY_MOCK_PROCESSED') {
           await CommandConsumer.handleAutopsyProcessed(event.user_id, event.metadata, event.data);
-        } else if (event.type === 'STUDY_SESSION_COMPLETED') {
+        } else if (event.type === 'STUDY_SESSION_COMPLETED' || event.type === 'MIND_TUTOR_COMPLETED') {
           await CommandConsumer.handleStudySessionCompleted(event.user_id, event.data);
         }
         break;
