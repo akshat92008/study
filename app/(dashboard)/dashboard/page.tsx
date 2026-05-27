@@ -9,6 +9,7 @@ import { toggleTask } from '@/lib/actions/planner';
 import CognitionDashboard from '@/components/cognition/CognitionDashboard';
 import RevisionQueue from '@/components/revision/RevisionQueue';
 import AutopsyDashboard from '@/components/autopsy/AutopsyDashboard';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
@@ -518,7 +519,9 @@ export default function DashboardPage() {
           {activeDrawer === 'cognition' && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
               {dashboardData?.cognition ? (
-                <CognitionDashboard data={dashboardData.cognition} />
+                <ErrorBoundary fallback={<div className="text-sm text-muted-foreground p-4">Cognition graph unavailable</div>}>
+                  <CognitionDashboard data={dashboardData.cognition} />
+                </ErrorBoundary>
               ) : (
                 <div style={{ display: 'flex', justifyContent: 'center', padding: 'var(--sp-12)' }}>
                   <Loader2 className="animate-spin" color="var(--accent-purple)" size={32} />
@@ -530,7 +533,9 @@ export default function DashboardPage() {
           {/* B. MEMORY / Revision Queue Drawer */}
           {activeDrawer === 'revision' && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
-              <RevisionQueue />
+              <ErrorBoundary fallback={<div className="text-sm text-muted-foreground p-4">Revision queue unavailable</div>}>
+                <RevisionQueue />
+              </ErrorBoundary>
             </div>
           )}
 
@@ -604,7 +609,9 @@ export default function DashboardPage() {
               {/* Autopsy Results Dashboard */}
               {autopsyResult && !isUploadingMock && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
-                  <AutopsyDashboard result={autopsyResult} />
+                  <ErrorBoundary fallback={<div className="text-sm text-muted-foreground p-4">Autopsy analyzer unavailable</div>}>
+                    <AutopsyDashboard result={autopsyResult} />
+                  </ErrorBoundary>
                   <div style={{ display: 'flex', justifyContent: 'center', marginTop: 'var(--sp-4)' }}>
                     <Button variant="secondary" size="sm" onClick={() => { setAutopsyResult(null); setFileToUpload(null); }}>
                       Analyze Another Mock Test

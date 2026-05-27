@@ -80,13 +80,31 @@ export class EventDispatcher {
     const eventId = insertedEvent?.id ?? traceId;
     await this.registerConsumers(eventId);
 
-    Promise.allSettled(
-      EVENT_CONSUMERS.map((consumer) => this.processConsumer(eventId, consumer))
-    ).catch((err) => {
-      logger.error('Failed to trigger event consumers', { eventId, err });
-    });
+    await this.dispatchConsumers(eventId);
 
     return eventId;
+  }
+
+  private static async dispatchConsumers(eventId: string): Promise<void> {
+    // Give consumers a hard 25-second budget (well under Vercel's 30s hobby limit).
+    // On Pro plan raise this to 55s.
+    const CONSUMER_TIMEOUT_MS = 25_000;
+
+    const timeoutPromise = new Promise<void>((_, reject) =>
+      setTimeout(() => reject(new Error('consumer_timeout')), CONSUMER_TIMEOUT_MS)
+    );
+
+    const consumerPromise = Promise.allSettled(
+      EVENT_CONSUMERS.map((consumer) => this.processConsumer(eventId, consumer))
+    );
+
+    try {
+      await Promise.race([consumerPromise, timeoutPromise]);
+    } catch (err) {
+      // Timeout hit — consumers that haven't finished stay in `pending`
+      // and will be picked up by the nightly DLQ retry cron.
+      console.warn(`[Orchestrator] Consumer dispatch timed out for event ${eventId}. Will retry via cron.`);
+    }
   }
 
   private static async registerConsumers(eventId: string): Promise<void> {

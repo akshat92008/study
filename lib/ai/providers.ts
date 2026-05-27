@@ -20,74 +20,7 @@ export type TaskType =
   | 'embedding'
   | 'vision';
 
-interface ProviderHealth {
-  isDown: boolean;
-  cooldownUntil: number;
-  consecutiveFailures: number;
-  totalRequests: number;
-  totalFailures: number;
-}
 
-const healthMap = new Map<ProviderName, ProviderHealth>();
-
-function getHealth(name: ProviderName): ProviderHealth {
-  if (!healthMap.has(name)) {
-    healthMap.set(name, {
-      isDown: false,
-      cooldownUntil: 0,
-      consecutiveFailures: 0,
-      totalRequests: 0,
-      totalFailures: 0,
-    });
-  }
-  return healthMap.get(name)!;
-}
-
-export function isProviderAvailable(name: ProviderName): boolean {
-  const health = getHealth(name);
-  if (!health.isDown) return true;
-  if (Date.now() > health.cooldownUntil) {
-    health.isDown = false;
-    health.consecutiveFailures = 0;
-    return true;
-  }
-  return false;
-}
-
-export function markProviderSuccess(name: ProviderName): void {
-  const health = getHealth(name);
-  health.isDown = false;
-  health.consecutiveFailures = 0;
-  health.totalRequests++;
-}
-
-export function markProviderFailure(name: ProviderName, errorCode: number): void {
-  const health = getHealth(name);
-  health.consecutiveFailures++;
-  health.totalRequests++;
-  health.totalFailures++;
-
-  // Kept short intentionally — free tier 401s are almost always rate limits,
-  // not dead keys. Long cooldowns cause the "all exhausted" cascade.
-  const cooldownMs =
-    errorCode === 429 ? 30_000 :
-    errorCode === 401 ? 30_000 :
-    errorCode === 503 ? 20_000 :
-    15_000;
-
-  // Cap multiplier at 2 to prevent 25-minute lockouts
-  const multiplier = Math.min(health.consecutiveFailures, 2);
-  health.cooldownUntil = Date.now() + (cooldownMs * multiplier);
-  health.isDown = true;
-}
-
-export function getProviderStats(): Record<string, ProviderHealth> {
-  const result: any = {};
-  for (const [name, health] of healthMap.entries()) {
-    result[name] = { ...health };
-  }
-  return result;
-}
 
 export interface ProviderConfig {
   name: ProviderName;

@@ -6,7 +6,7 @@
  *   const limiter = RateLimiter.getInstance();
  *   const allowed = await limiter.consume(`chat-${userId}`, 120, 60 * 60 * 1000);
  */
-import redis from '@/lib/events/redisClient';
+import { getRedisClientSafe } from '@/lib/events/redisClient';
 
 export class RateLimiter {
   private static instance: RateLimiter;
@@ -28,6 +28,12 @@ export class RateLimiter {
    * Returns true if the request is allowed, false otherwise.
    */
   async consume(identifier: string, maxTokens: number, windowMs: number): Promise<boolean> {
+    const redis = getRedisClientSafe();
+    if (!redis) {
+      // If Redis is unconfigured or failed to load, fail open to avoid breaking the app
+      return true;
+    }
+
     const key = `rate:${identifier}`;
     const ttl = windowMs; // TTL in ms
 

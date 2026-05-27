@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { getDueCards, reviewCard } from '@/lib/engines/revision-engine';
+import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 
 export async function GET(request: Request) {
   try {
@@ -10,6 +11,14 @@ export async function GET(request: Request) {
     if (authError || !user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
+
+    const { allowed, remaining, resetAt } = await checkRateLimit({
+      identifier: user.id,
+      bucket: 'revision',
+      maxTokens: 60,
+      windowSeconds: 60,
+    });
+    if (!allowed) return rateLimitResponse(remaining, resetAt);
 
     const dueCards = await getDueCards(user.id);
     return NextResponse.json({ dueCards });
@@ -25,6 +34,14 @@ export async function PATCH(request: Request) {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+    const { allowed, remaining, resetAt } = await checkRateLimit({
+      identifier: user.id,
+      bucket: 'revision',
+      maxTokens: 60,
+      windowSeconds: 60,
+    });
+    if (!allowed) return rateLimitResponse(remaining, resetAt);
 
     const body = await request.json();
     const { cardId, front, back } = body;
@@ -71,6 +88,14 @@ export async function DELETE(request: Request) {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
+    const { allowed, remaining, resetAt } = await checkRateLimit({
+      identifier: user.id,
+      bucket: 'revision',
+      maxTokens: 60,
+      windowSeconds: 60,
+    });
+    if (!allowed) return rateLimitResponse(remaining, resetAt);
+
     const { searchParams } = new URL(request.url);
     const cardId = searchParams.get('cardId');
 
@@ -98,6 +123,14 @@ export async function POST(request: Request) {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+    const { allowed, remaining, resetAt } = await checkRateLimit({
+      identifier: user.id,
+      bucket: 'revision',
+      maxTokens: 60,
+      windowSeconds: 60,
+    });
+    if (!allowed) return rateLimitResponse(remaining, resetAt);
 
     const body = await request.json();
     const { cardId, rating, responseTimeMs } = body;

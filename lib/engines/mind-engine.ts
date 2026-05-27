@@ -2,6 +2,7 @@
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/utils/logger';
 import type { MINDContext } from '@/lib/ai/prompts/mind-prompt';
+import { RAGEngine } from './rag-engine';
 
 export async function getMINDContext(userId: string, message?: string): Promise<MINDContext> {
   try {
@@ -47,6 +48,14 @@ export async function getMINDContext(userId: string, message?: string): Promise<
         .limit(5)
     ]);
 
+    const { data: studentModel } = await supabase
+      .from('student_models')
+      .select('learning_style, strengths, weaknesses, behavioral_traps, last_updated_at')
+      .eq('user_id', userId)
+      .order('last_updated_at', { ascending: false })
+      .limit(1)
+      .maybeSingle();
+
     const profile = profileRes.data;
     const [totalRes, masteredRes] = masteryRes;
     const total = totalRes.count || 0;
@@ -58,6 +67,21 @@ export async function getMINDContext(userId: string, message?: string): Promise<
     const recentTopics = (sessionsRes.data || [])
       .map(s => s.chapter || s.notes?.match(/studied\s+(.+?)(?:\s+\(|\.)/i)?.[1])
       .filter(Boolean) as string[];
+
+    let ragChunks: { content: string; similarity: number; sourceTitle: string }[] = [];
+    if (message) {
+      try {
+        const ragEngine = new RAGEngine(supabase);
+        ragChunks = await ragEngine.search({
+          userId,
+          query: message,
+          limit: 4,
+          minSimilarity: 0.72, // only include high-confidence chunks
+        });
+      } catch (err) {
+        logger.warn('[MIND] RAG search failed, continuing without:', err);
+      }
+    }
 
     return {
       profile: {
@@ -83,7 +107,9 @@ export async function getMINDContext(userId: string, message?: string): Promise<
       knownAnalogies: [],
       rootGapChains,
       currentSessionDurationMinutes: 0,
-      sessionGoal: ''
+      sessionGoal: '',
+      ragChunks,
+      studentModel: studentModel ?? null
     };
   } catch (err) {
     logger.error('getMINDContext failed', err);
@@ -95,7 +121,9 @@ export async function getMINDContext(userId: string, message?: string): Promise<
       overdueCards: 0, emotionalState: 'neutral', recentTopics: [], knownAnalogies: [],
       rootGapChains: [],
       currentSessionDurationMinutes: 0,
-      sessionGoal: ''
+      sessionGoal: '',
+      ragChunks: [],
+      studentModel: null
     };
   }
 }

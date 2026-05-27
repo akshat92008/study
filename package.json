@@ -10,9 +10,9 @@
     "type-check": "tsc --noEmit",
     "ci:type-check": "node scripts/checkTypeTime.js",
     "audit:db": "node scripts/auditDbCalls.js",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:ci": "jest --ci --coverage"
+    "test": "vitest",
+    "test:integration": "vitest --project integration",
+    "test:coverage": "vitest --coverage"
   },
   "dependencies": {
     "@google/genai": "^1.52.0",
@@ -66,6 +66,8 @@
     "jest": "^29.7.0",
     "ts-jest": "^29.2.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^1.6.0",
+    "@vitest/coverage-v8": "^1.6.0"
   }
 }

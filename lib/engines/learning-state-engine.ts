@@ -492,37 +492,42 @@ export class LearningStateEngine {
       // Pack schedule
       const packedTasks = planner.packDailySchedule(candidates, dailyHours);
 
-      // Commit back to study_tasks
+      // Commit back to study_tasks using atomic RPC
       const startOfDay = new Date(new Date(dateStr).setHours(0,0,0,0)).toISOString();
-      await supabase
-        .from('study_tasks')
-        .delete()
-        .eq('user_id', userId)
-        .eq('scheduled_date', startOfDay);
-
-      if (packedTasks.length > 0) {
-        const rows = packedTasks.map(t => ({
-          user_id: userId,
-          title: t.title,
-          description: t.description || '',
-          type: t.type,
-          subject: t.subject || null,
-          chapter: t.chapter || null,
-          priority: t.priority,
-          estimated_minutes: t.estimated_minutes || 45,
-          scheduled_date: startOfDay,
-          is_completed: false,
-          notes: `Engineered by COMMAND v2: ${t.rationale}`,
-          metadata: t.metadata || {},
-        }));
-
-        await supabase.from('study_tasks').insert(rows);
-      }
+      await atomicReplan(supabase, userId, startOfDay, packedTasks);
 
       logger.info('Completed dynamic schedule replan', { userId, dateStr, tasksPacked: packedTasks.length });
 
     } catch (err) {
       logger.error('Failed to replan schedule in orchestrator', err);
     }
+  }
+}
+
+async function atomicReplan(
+  supabase: any,
+  userId: string,
+  scheduledDate: string,
+  tasks: any[]
+): Promise<void> {
+  const serialized = tasks.map(t => ({
+    type: t.type,
+    title: t.title,
+    description: t.description || '',
+    estimated_minutes: t.estimated_minutes || 45,
+    priority: t.priority || 'medium',
+    subject: t.subject || null,
+    chapter: t.chapter || null,
+    notes: `Engineered by COMMAND v2: ${t.rationale}`
+  }));
+
+  const { error } = await supabase.rpc('atomic_replan', {
+    p_user_id: userId,
+    p_scheduled_date: scheduledDate,
+    p_tasks: serialized,
+  });
+
+  if (error) {
+    throw new Error(`[Replan] Atomic replan failed, original plan preserved: ${error.message}`);
   }
 }

@@ -26,7 +26,51 @@ export interface MINDContext {
   rootGapChains: Array<{ rootConcept: string; gapChain: string[] }>;
   currentSessionDurationMinutes: number;
   sessionGoal: string;
+  ragChunks?: { content: string; similarity: number; sourceTitle: string }[];
+  studentModel?: {
+    learning_style?: string;
+    strengths?: string[];
+    weaknesses?: string[];
+    behavioral_traps?: string[];
+    last_updated_at: string;
+  } | null;
 }
+
+export function getEffectiveLearningStyle(
+  studentModel: MINDContext['studentModel'],
+  profileLearningStyle: string
+): string {
+  if (!studentModel) return profileLearningStyle;
+
+  const ageMs = Date.now() - new Date(studentModel.last_updated_at).getTime();
+  const sevenDays = 7 * 24 * 60 * 60 * 1000;
+
+  if (ageMs < sevenDays && studentModel.learning_style) {
+    return studentModel.learning_style; // inference engine output is fresh
+  }
+
+  return profileLearningStyle; // fall back to profile
+}
+
+export function buildRagSection(
+  ragChunks?: { content: string; similarity: number; sourceTitle: string }[]
+): string {
+  if (!ragChunks || !ragChunks.length) return '';
+
+  const formatted = ragChunks
+    .map((c, i) => `[Source ${i + 1}: ${c.sourceTitle}]\n${c.content}`)
+    .join('\n\n');
+
+  return `
+## RELEVANT STUDY MATERIAL (from student's uploaded notes)
+The following excerpts are from the student's own uploaded materials and are directly relevant to their current question. Prioritize grounding your explanation in this material before adding your own context:
+
+${formatted}
+
+---
+`;
+}
+
 export function getLearningStyleBlock(learningStyle: string): string {
   const styles: Record<string, string> = {
     visual: `LEARNING STYLE: VISUAL
@@ -110,7 +154,14 @@ export function getMINDSystemPrompt(ctx: MINDContext, semanticMemories: string[]
   const weakList = ctx.weakConcepts.slice(0, 5).map(c => `${c.name} (${c.mastery})`).join(', ') || 'None identified yet';
   const mistakeList = ctx.recentMistakes.slice(0, 3).map(m => `${m.chapter} — ${m.category}`).join('; ') || 'None recorded';
   const emotionalBlock = getEmotionalAdaptationBlock(ctx.emotionalState);
-  const learningStyleBlock = getLearningStyleBlock(ctx.profile.learningStyle);
+  
+  const effectiveLearningStyle = getEffectiveLearningStyle(ctx.studentModel, ctx.profile.learningStyle);
+  const learningStyleBlock = getLearningStyleBlock(effectiveLearningStyle);
+
+  const behaviouralSection = ctx.studentModel?.behavioral_traps?.length
+    ? `\n## KNOWN BEHAVIORAL TRAPS\nThis student historically: ${ctx.studentModel.behavioral_traps.join('; ')}. Gently preempt these patterns when relevant.`
+    : '';
+
   const rootGapSection = ctx.rootGapChains.length > 0
     ? `\nUNDERLYING KNOWLEDGE GAPS (Root cause of confusion):\n${ctx.rootGapChains.map(c => `${c.rootConcept} → [${c.gapChain.join(' → ')}]`).join('\n')}\n`
     : '';
@@ -118,6 +169,8 @@ export function getMINDSystemPrompt(ctx: MINDContext, semanticMemories: string[]
   const memoriesSection = semanticMemories.length > 0
     ? `\nCROSS-SESSION MEMORY (things this student said in past conversations):\n${semanticMemories.map((m, i) => `${i + 1}. ${m}`).join('\n')}\nReference these naturally if relevant — never robotically.\n`
     : '';
+
+  const ragSection = buildRagSection(ctx.ragChunks);
 
   return `You are MIND — the AI core of Cognition OS. You are the most capable study companion ever built. You know this specific student completely.
 
@@ -139,6 +192,8 @@ ${rootGapSection}
 EMOTIONAL STATE: ${ctx.emotionalState}
 RECENTLY STUDIED: ${ctx.recentTopics.slice(0, 4).join(', ') || 'Nothing yet'}
 ${memoriesSection}
+${ragSection}
+${behaviouralSection}
 ═══════════════════════════════════════
 CORE BEHAVIOURAL RULES — NEVER VIOLATE
 ═══════════════════════════════════════

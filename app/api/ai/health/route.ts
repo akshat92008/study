@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getProviderStats } from '@/lib/ai/providers';
+import { getAllProviderStats } from '@/lib/ai/provider-health';
 import { createClient } from '@/lib/supabase/server';
 import { getDeadLetterCount } from '@/lib/events/retry';
 
@@ -10,7 +10,7 @@ export async function GET() {
 
   const deadLetterCount = await getDeadLetterCount(user.id);
 
-  const stats = getProviderStats();
+  const stats = await getAllProviderStats();
   
   // Check which providers have keys configured
   const configured = {

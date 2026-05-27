@@ -4,6 +4,7 @@ import { after } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { generateJSON } from '@/lib/ai/gemini';
 import { z } from 'zod';
+import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { routeStreamGeneration } from '@/lib/ai/router';
 import { getMINDContext } from '@/lib/engines/mind-engine';
 import { getMINDSystemPrompt } from '@/lib/ai/prompts/mind-prompt';
@@ -30,6 +31,15 @@ export async function POST(req: NextRequest) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return new Response('Unauthorized', { status: 401 });
+
+  // Rate limit: 30 chat messages per minute per user
+  const { allowed, remaining, resetAt } = await checkRateLimit({
+    identifier: user.id,
+    bucket: 'chat',
+    maxTokens: 30,
+    windowSeconds: 60,
+  });
+  if (!allowed) return rateLimitResponse(remaining, resetAt);
 
   let body: any;
   try { body = await req.json(); } catch { return new Response('Invalid JSON', { status: 400 }); }

@@ -7,7 +7,7 @@ import { generateSessionClosingMessage } from '@/lib/engines/session-closing';
 import { computeAndUpdateStreak } from '@/lib/engines/streak-engine';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { logger } from '@/lib/utils/logger';
-import { advanceMastery, applyMasteryUpdate } from '@/lib/engines/mastery-updater';
+import { advanceMastery, applyMasteryUpdate, MasteryLevel } from '@/lib/engines/mastery-updater';
 
 // session-closing expects a 0.0–1.0 float — convert from enum
 const MASTERY_NUMERIC: Record<string, number> = {

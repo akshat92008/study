@@ -46,6 +46,29 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  let onboardingComplete: boolean | null = null;
+
+  if (user) {
+    const cachedOb = request.cookies.get('_ob');
+    if (cachedOb) {
+      onboardingComplete = cachedOb.value === '1';
+    } else {
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('onboarding_complete')
+        .eq('id', user.id)
+        .single();
+
+      onboardingComplete = profile?.onboarding_complete ?? false;
+    }
+  }
+
+  const isOnboarded = onboardingComplete === true;
+
+  let finalResponse = supabaseResponse;
+  let shouldRedirect = false;
+  const url = request.nextUrl.clone();
+
   // Redirect authenticated users away from public routes to dashboard/onboarding
   if (
     user &&
@@ -53,38 +76,37 @@ export async function updateSession(request: NextRequest) {
       request.nextUrl.pathname.startsWith('/login') ||
       request.nextUrl.pathname.startsWith('/signup'))
   ) {
-    const { data: profile } = await supabase
-      .from('profiles')
-      .select('onboarding_complete')
-      .eq('id', user.id)
-      .single();
-
-    const url = request.nextUrl.clone();
-    if (profile?.onboarding_complete) {
-      url.pathname = '/dashboard';
-    } else {
-      url.pathname = '/onboarding';
-    }
-    return NextResponse.redirect(url);
-  }
-
-  if (
+    url.pathname = isOnboarded ? '/dashboard' : '/onboarding';
+    shouldRedirect = true;
+  } else if (
     user &&
+    !isOnboarded &&
     !request.nextUrl.pathname.startsWith('/api') &&
     !request.nextUrl.pathname.startsWith('/onboarding')
   ) {
-    const { data: profile } = await supabase
-      .from('profiles')
-      .select('onboarding_complete')
-      .eq('id', user.id)
-      .single();
-
-    if (!profile?.onboarding_complete) {
-      const url = request.nextUrl.clone();
-      url.pathname = '/onboarding';
-      return NextResponse.redirect(url);
-    }
+    url.pathname = '/onboarding';
+    shouldRedirect = true;
+  } else if (
+    user &&
+    isOnboarded &&
+    request.nextUrl.pathname.startsWith('/onboarding')
+  ) {
+    url.pathname = '/dashboard';
+    shouldRedirect = true;
   }
 
-  return supabaseResponse;
+  if (shouldRedirect) {
+    finalResponse = NextResponse.redirect(url);
+  }
+
+  if (user && onboardingComplete !== null) {
+    finalResponse.cookies.set('_ob', isOnboarded ? '1' : '0', {
+      httpOnly: true,
+      sameSite: 'lax',
+      maxAge: 60 * 5, // 5 minutes
+      path: '/',
+    });
+  }
+
+  return finalResponse;
 }

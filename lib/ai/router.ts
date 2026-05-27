@@ -4,9 +4,13 @@
 
 import { 
   ProviderName, TaskType, ProviderConfig,
-  isProviderAvailable, markProviderSuccess, markProviderFailure,
   getProviderConfig, TASK_PROVIDER_PRIORITY
 } from './providers';
+import { 
+  recordProviderFailure, 
+  resetProviderHealth, 
+  isProviderInCooldown 
+} from './provider-health';
 import { logger } from '@/lib/utils/logger';
 import { runOCR } from '@/utils/ocr';
 
@@ -256,7 +260,7 @@ export async function routeTextGeneration(
   ];
 
   for (const providerName of providers) {
-    if (!isProviderAvailable(providerName)) {
+    if (await isProviderInCooldown(providerName)) {
       logger.info(`Skipping ${providerName} — in cooldown`);
       continue;
     }
@@ -285,12 +289,13 @@ if (!config || !config.apiKey) {
         );
       }
 
-      markProviderSuccess(providerName);
+      await resetProviderHealth(providerName);
       return result;
 
     } catch (err: any) {
       const code = err.statusCode || 500;
-      markProviderFailure(providerName, code);
+      const cooldownMs = code === 429 || code === 401 ? 30_000 : code === 503 ? 20_000 : 15_000;
+      await recordProviderFailure(providerName, cooldownMs);
       logger.warn(`${providerName} failed (${code}), trying next provider`);
     }
   }
@@ -309,7 +314,7 @@ export async function routeJSONGeneration<T>(
     '\n\nIMPORTANT: Respond ONLY with valid JSON. No markdown. No explanation. No code fences.';
 
   for (const providerName of providers) {
-    if (!isProviderAvailable(providerName)) continue;
+    if (await isProviderInCooldown(providerName)) continue;
 
     const config = getProviderConfig(providerName);
 if (!config || !config.apiKey) {
@@ -351,17 +356,19 @@ if (!config || !config.apiKey) {
         const parsed = JSON.parse(clean);
         if (schema) {
           const validated = schema.parse(parsed);
-          markProviderSuccess(providerName);
+          await resetProviderHealth(providerName);
           return validated;
         }
-        markProviderSuccess(providerName);
+        await resetProviderHealth(providerName);
         return parsed as T;
 
       } catch (err: any) {
         attempt++;
         if (err.statusCode) {
           // API error — mark failure and break to next provider
-          markProviderFailure(providerName, err.statusCode);
+          const code = err.statusCode;
+          const cooldownMs = code === 429 || code === 401 ? 30_000 : code === 503 ? 20_000 : 15_000;
+          await recordProviderFailure(providerName, cooldownMs);
           logger.warn(`${providerName} JSON gen failed (${err.statusCode})`);
           break;
         }
@@ -398,7 +405,7 @@ export async function* routeStreamGeneration(
         ];
 
   for (const providerName of providers) {
-    if (!isProviderAvailable(providerName)) continue;
+    if (await isProviderInCooldown(providerName)) continue;
 
     const config = getProviderConfig(providerName);
 if (!config || !config.apiKey) {
@@ -431,13 +438,14 @@ if (!config || !config.apiKey) {
       }
 
       if (hasYielded) {
-        markProviderSuccess(providerName);
+        await resetProviderHealth(providerName);
         return; // Success — stop trying other providers
       }
 
     } catch (err: any) {
       const code = err.statusCode || 500;
-      markProviderFailure(providerName, code);
+      const cooldownMs = code === 429 || code === 401 ? 30_000 : code === 503 ? 20_000 : 15_000;
+      await recordProviderFailure(providerName, cooldownMs);
       logger.warn(`${providerName} stream failed (${code}), trying next`);
     }
   }
@@ -450,7 +458,7 @@ export async function routeEmbedding(text: string): Promise<number[]> {
   const providers = TASK_PROVIDER_PRIORITY['embedding'];
 
   for (const providerName of providers) {
-    if (!isProviderAvailable(providerName)) continue;
+    if (await isProviderInCooldown(providerName)) continue;
 
     const config = getProviderConfig(providerName);
 if (!config || !config.apiKey || !config.supportsEmbeddings) {
@@ -487,7 +495,7 @@ if (!config || !config.apiKey || !config.supportsEmbeddings) {
         // SambaNova E5-Mistral outputs 4096 dims, pgvector needs 768
         // Truncate to first 768 dimensions
         const truncated = embedding.slice(0, 768);
-        markProviderSuccess(providerName);
+        await resetProviderHealth(providerName);
         return truncated;
       }
 
@@ -515,7 +523,7 @@ if (!config || !config.apiKey || !config.supportsEmbeddings) {
 
         const data = await response.json();
         const embedding: number[] = data.result?.data?.[0] || [];
-        markProviderSuccess(providerName);
+        await resetProviderHealth(providerName);
         return embedding; // Already 768 dims
       }
 
@@ -543,7 +551,7 @@ if (!config || !config.apiKey || !config.supportsEmbeddings) {
 
         const data = await response.json();
         const embedding: number[] = data.embedding?.values || [];
-        markProviderSuccess(providerName);
+        await resetProviderHealth(providerName);
         return embedding;
       }
 
@@ -567,7 +575,7 @@ export async function routeVisionCall(
 ): Promise<string> {
   // Cloudflare vision first, then Google
   for (const providerName of TASK_PROVIDER_PRIORITY['vision']) {
-    if (!isProviderAvailable(providerName)) continue;
+    if (await isProviderInCooldown(providerName)) continue;
 
     const config = getProviderConfig(providerName);
 if (!config || !config.apiKey || !config.supportsVision) {
@@ -614,7 +622,7 @@ if (!config || !config.apiKey || !config.supportsVision) {
 
         const data = await response.json();
         const result = data.result?.response || '';
-        markProviderSuccess(providerName);
+        await resetProviderHealth(providerName);
         return result;
       }
 
@@ -661,7 +669,7 @@ if (!config || !config.apiKey || !config.supportsVision) {
 
         const data = await response.json();
         const result = data.choices?.[0]?.message?.content || '';
-        markProviderSuccess(providerName);
+        await resetProviderHealth(providerName);
         return result;
       }
 
@@ -692,13 +700,14 @@ if (!config || !config.apiKey || !config.supportsVision) {
 
         const data = await response.json();
         const result = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
-        markProviderSuccess(providerName);
+        await resetProviderHealth(providerName);
         return result;
       }
 
     } catch (err: any) {
       const code = err.statusCode || 500;
-      markProviderFailure(providerName, code);
+      const cooldownMs = code === 429 || code === 401 ? 30_000 : code === 503 ? 20_000 : 15_000;
+      await recordProviderFailure(providerName, cooldownMs);
       logger.warn(`${providerName} vision failed (${code}), trying next`);
     }
   }
