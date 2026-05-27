@@ -306,8 +306,10 @@ export async function POST(req: NextRequest) {
                     user_id: user.id,
                     type: 'MIND_TUTOR_COMPLETED',
                     data: {
+                      conceptId: null,
                       subject: sessionSubject,
                       chapter: sessionChapter,
+                      understandingGained: true,
                       durationMinutes: estimatedMinutes,
                       messageCount,
                       sessionType: (mindContext as any)?.sessionType || 'chat',

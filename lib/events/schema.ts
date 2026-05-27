@@ -8,18 +8,23 @@ export const EventTypeSchema = z.enum([
   'COMMAND_TASK_COMPLETED',
   'COMMAND_TASK_DELAYED',
   'PULSE_FRICTION_DETECTED',
-  'ATLAS_MASTERY_UPDATED'
+  'ATLAS_MASTERY_UPDATED',
+  'STUDY_SESSION_COMPLETED',
+  'CONCEPT_DISCOVERED'
 ]);
 
 export type EventType = z.infer<typeof EventTypeSchema>;
 
 // Strict Data Schemas per Event
 export const MindTutorCompletedDataSchema = z.object({
-  conceptId: z.string().uuid(),
+  conceptId: z.string().uuid().optional().nullable(),
   subject: z.string(),
   chapter: z.string(),
-  understandingGained: z.boolean(),
+  understandingGained: z.boolean().optional(),
   diagnosedMisconception: z.string().nullable().optional(),
+  durationMinutes: z.number().optional(),
+  messageCount: z.number().optional(),
+  sessionType: z.string().optional(),
 });
 
 export const AutopsyMockProcessedDataSchema = z.object({
