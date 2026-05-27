@@ -2,7 +2,7 @@
   "crons": [
     {
       "path": "/api/cron/daily-synthesis",
-      "schedule": "30 17 * * *"
+      "schedule": "0 17 * * *"
     },
     {
       "path": "/api/cron/cleanup",
@@ -10,7 +10,7 @@
     },
     {
       "path": "/api/cron/retry-pending-events",
-      "schedule": "*/5 * * * *"
+      "schedule": "0 4 * * *"
     }
   ]
 }
