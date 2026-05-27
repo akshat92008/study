@@ -72,7 +72,7 @@ export default function DashboardClientLayout({ children, profile }: DashboardCl
 
         <div style={{ display: 'flex', flex: 1, overflow: 'hidden', marginTop: 'var(--header-height)' }}>
 
-          {/* Main is now GlobalChat */}
+          {/* Main content area (OS Dashboard / Pages) */}
           <main
             style={{
               flex: 1,
@@ -83,10 +83,10 @@ export default function DashboardClientLayout({ children, profile }: DashboardCl
               flexDirection: 'column',
             }}
           >
-            <GlobalChat />
+            {children}
           </main>
 
-          {/* OS Dashboard (children) — collapsible right drawer */}
+          {/* Global Chat — collapsible right drawer */}
           {isAssistantOpen ? (
             <div
               style={{
@@ -99,12 +99,12 @@ export default function DashboardClientLayout({ children, profile }: DashboardCl
                 overflowY: 'auto'
               }}
             >
-              {children}
+              <GlobalChat />
             </div>
           ) : (
             <button
               onClick={() => setAssistantOpen(true)}
-              title="Open OS Dashboard"
+              title="Open Assistant"
               style={{
                 position: 'fixed',
                 bottom: '24px',
