@@ -28,8 +28,9 @@ export async function resolveConceptByName(userId: string, subject: string, chap
   if (fuzzy) return fuzzy.id;
   
   // 3. Semantic match via pgvector (Most expensive, fallback)
+  let embedding: number[] | null = null;
   try {
-    const embedding = await getEmbedding(`${subject} ${chapter}`);
+    embedding = await getEmbedding(`${subject} ${chapter}`);
     if (embedding && embedding.length > 0) {
       const { data: semantic } = await supabase.rpc('match_concepts', {
         query_embedding: `[${embedding.join(',')}]`, 
