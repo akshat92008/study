@@ -106,6 +106,12 @@ export default function DashboardPage() {
   useEffect(() => {
     loadTelemetry();
     loadAutopsy();
+
+    const handleRefresh = () => {
+      loadTelemetry();
+    };
+    window.addEventListener('refresh-dashboard', handleRefresh);
+    return () => window.removeEventListener('refresh-dashboard', handleRefresh);
   }, []);
 
   useEffect(() => {

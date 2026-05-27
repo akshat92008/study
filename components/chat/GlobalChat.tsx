@@ -11,6 +11,7 @@ import { createClient } from '@/lib/supabase/client';
 import DailySessionCard from './DailySessionCard';
 import { SessionClosingCard } from './SessionClosingCard';
 import { useSessionTimer } from '@/hooks/useSessionTimer';
+import { useRouter } from 'next/navigation';
 
 export const GlobalChat = memo(function GlobalChat() {
   const {
@@ -39,6 +40,7 @@ export const GlobalChat = memo(function GlobalChat() {
   const [hasFallbackStreakFired, setHasFallbackStreakFired] = useState(false);
   const [sessionCardKey, setSessionCardKey] = useState(0);
   const [showDailySession, setShowDailySession] = useState(true);
+  const router = useRouter();
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -269,10 +271,16 @@ export const GlobalChat = memo(function GlobalChat() {
           // Access store actions
           const { setActiveDrawer } = useAppStore.getState();
           // Simple mapping – can be extended
-          if (result.toolCall.action === 'show_revision') {
+          if (result.toolCall.action === 'show_revision' || result.toolCall.action === 'show_flashcards') {
             setActiveDrawer('revision');
           } else if (result.toolCall.action === 'show_atlas') {
             setActiveDrawer('cognition');
+          } else if (result.toolCall.action === 'run_autopsy') {
+            setActiveDrawer('autopsy');
+          } else if (result.toolCall.action === 'show_analytics') {
+            router.push('/dashboard');
+          } else if (result.toolCall.action === 'planner_adjusted') {
+            window.dispatchEvent(new Event('refresh-dashboard'));
           }
         }
       }

@@ -227,6 +227,80 @@ Rules:
             fullResponse += chunk;
           }
 
+          controller.enqueue(encoder.encode('\n\n*Scheduling microtargets to your dashboard...*'));
+          fullResponse += '\n\n*Scheduling microtargets to your dashboard...*';
+
+          try {
+            const todayStr = new Date().toISOString().split('T')[0];
+            const extractPrompt = `You are a structured operational planner for Cognition OS.
+Extract a list of specific microtarget study tasks from this study plan to schedule in the student's database.
+If a task does not have a specific date mentioned, schedule it for today (${todayStr}).
+
+Study Plan Text:
+${fullResponse}
+
+Return ONLY valid JSON matching this schema:
+{
+  "tasks": [
+    {
+      "title": "Short title of the task (e.g. Study Electrostatics, Revise Thermodynamics)",
+      "subject": "Physics|Chemistry|Biology|Mathematics",
+      "chapter": "Chapter name",
+      "estimated_minutes": 45,
+      "scheduled_date": "YYYY-MM-DD"
+    }
+  ]
+}`;
+            
+            const taskListSchema = z.object({
+              tasks: z.array(z.object({
+                title: z.string(),
+                subject: z.string(),
+                chapter: z.string(),
+                estimated_minutes: z.number().default(45),
+                scheduled_date: z.string()
+              }))
+            });
+
+            const planData = await generateJSON<any>(
+              'flash',
+              'Expert task extractor. Output JSON only.',
+              extractPrompt,
+              taskListSchema
+            ).catch(() => null);
+
+            if (planData && planData.tasks && planData.tasks.length > 0) {
+              const tasksToInsert = planData.tasks.map((t: any) => ({
+                user_id: user.id,
+                title: t.title,
+                type: 'study',
+                subject: t.subject || 'General',
+                chapter: t.chapter || '',
+                estimated_minutes: t.estimated_minutes || 45,
+                scheduled_date: new Date(t.scheduled_date || todayStr).toISOString(),
+                is_completed: false,
+                notes: 'Auto-extracted from chat study planner.'
+              }));
+              
+              await supabase.from('study_tasks').insert(tasksToInsert);
+              logger.info(`Auto-inserted ${tasksToInsert.length} microtargets from study planner`, { userId: user.id });
+
+              const datesToInvalidate = Array.from(new Set([
+                todayStr,
+                ...tasksToInsert.map((t: any) => t.scheduled_date.split('T')[0])
+              ]));
+              await supabase
+                .from('session_cards')
+                .delete()
+                .eq('user_id', user.id)
+                .in('date', datesToInvalidate);
+                
+              metadataPayload = { action: 'planner_adjusted', tasksModified: true, sessionCardInvalidated: true };
+            }
+          } catch (err) {
+            logger.warn('Failed to extract and insert study tasks from planner', err);
+          }
+
         } else if (['TUTOR_SESSION', 'PRACTICE'].includes(intent.intent)) {
           const topic = intent.topic || 'General';
           const subject = intent.subject || mindContext.weakConcepts[0]?.subject || 'General';
@@ -434,79 +508,7 @@ Rules:
                 }
               }
 
-              // Extract microtarget tasks from study plan if the user asked to generate a plan/schedule
-              const lowerMsg = (message || '').toLowerCase();
-              if (lowerMsg.includes('plan') || lowerMsg.includes('sched') || lowerMsg.includes('planner') || lowerMsg.includes('prep') || intent.intent === 'CREATE_ARTIFACT') {
-                try {
-                  const todayStr = new Date().toISOString().split('T')[0];
-                  const extractPrompt = `You are a structured operational planner for Cognition OS.
-Extract a list of specific microtarget study tasks from this study plan to schedule in the student's database.
-If a task does not have a specific date mentioned, schedule it for today (${todayStr}).
-
-Study Plan Text:
-${fullResponse}
-
-Return ONLY valid JSON matching this schema:
-{
-  "tasks": [
-    {
-      "title": "Short title of the task (e.g. Study Electrostatics, Revise Thermodynamics)",
-      "subject": "Physics|Chemistry|Biology|Mathematics",
-      "chapter": "Chapter name",
-      "estimated_minutes": 45,
-      "scheduled_date": "YYYY-MM-DD"
-    }
-  ]
-}`;
-                  
-                  const taskListSchema = z.object({
-                    tasks: z.array(z.object({
-                      title: z.string(),
-                      subject: z.string(),
-                      chapter: z.string(),
-                      estimated_minutes: z.number().default(45),
-                      scheduled_date: z.string()
-                    }))
-                  });
-
-                  const planData = await generateJSON<any>(
-                    'flash',
-                    'Expert task extractor. Output JSON only.',
-                    extractPrompt,
-                    taskListSchema
-                  ).catch(() => null);
-
-                  if (planData && planData.tasks && planData.tasks.length > 0) {
-                    const tasksToInsert = planData.tasks.map((t: any) => ({
-                      user_id: user.id,
-                      title: t.title,
-                      type: 'study',
-                      subject: t.subject || 'General',
-                      chapter: t.chapter || '',
-                      estimated_minutes: t.estimated_minutes || 45,
-                      scheduled_date: new Date(t.scheduled_date || todayStr).toISOString(),
-                      is_completed: false,
-                      notes: 'Auto-extracted from chat study planner.'
-                    }));
-                    
-                    await supabase.from('study_tasks').insert(tasksToInsert);
-                    logger.info(`Auto-inserted ${tasksToInsert.length} microtargets from study planner`, { userId: user.id });
-
-                    // Invalidate today's and scheduled session cards cache so dashboard updates
-                    const datesToInvalidate = Array.from(new Set([
-                      todayStr,
-                      ...tasksToInsert.map((t: any) => t.scheduled_date.split('T')[0])
-                    ]));
-                    await supabase
-                      .from('session_cards')
-                      .delete()
-                      .eq('user_id', user.id)
-                      .in('date', datesToInvalidate);
-                  }
-                } catch (err) {
-                  logger.warn('Failed to extract and insert study tasks from planner', err);
-                }
-              }
+              // Extraction moved up to CREATE_ARTIFACT intent block
             } catch (err) {
               logger.warn('Chat persistence failed', err);
             }
