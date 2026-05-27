@@ -1,11 +1,14 @@
 import { NextResponse } from 'next/server';
 import { getProviderStats } from '@/lib/ai/providers';
 import { createClient } from '@/lib/supabase/server';
+import { getDeadLetterCount } from '@/lib/events/retry';
 
 export async function GET() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+  const deadLetterCount = await getDeadLetterCount(user.id);
 
   const stats = getProviderStats();
   
@@ -19,9 +22,10 @@ export async function GET() {
   };
 
   return NextResponse.json({
-    configured,
-    health: stats,
-    embeddingsEnabled: process.env.DISABLE_EMBEDDINGS !== 'true',
-    timestamp: new Date().toISOString(),
-  });
+  configured,
+  health: stats,
+  deadLetterCount,
+  embeddingsEnabled: process.env.DISABLE_EMBEDDINGS !== 'true',
+  timestamp: new Date().toISOString(),
+});
 }

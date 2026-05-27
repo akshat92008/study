@@ -18,10 +18,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { quizResults = [] } = body;
 
-    // 1. Mark onboarding complete
-    await supabase.from('profiles')
-      .update({ onboarding_complete: true })
-      .eq('id', user.id);
+
 
     const { data: profile } = await supabase.from('profiles')
       .select('exam_type')
@@ -35,7 +32,19 @@ export async function POST(req: NextRequest) {
     if (Object.keys(syllabus).length === 0) {
       syllabus = await generateSyllabusWithAI(examType);
     }
+    // Mark onboarding complete and start seeding
+    await supabase.from('profiles')
+      .update({
+        onboarding_complete: true,
+        atlas_seeding_status: 'seeding',
+        atlas_seeding_concepts_total: Object.values(syllabus).flat().length,
+        atlas_seeding_concepts_done: 0,
+      })
+      .eq('id', user.id);
+
     const subjects = Object.keys(syllabus);
+
+
 
     // 3. SYNCHRONOUS seed of first subject — gives instant graph feedback
     const firstSubject = subjects[0];
@@ -43,8 +52,12 @@ export async function POST(req: NextRequest) {
 
     if (firstSubject) {
       await seedFullSyllabusForUser(user.id, examType, [firstSubject]).catch(err =>
-        logger.error('First subject seeding failed', { userId: user.id, err })
-      );
+          logger.error('First subject seeding failed', { userId: user.id, err })
+        );
+    // Update concepts done after first subject seeding
+    await supabase.from('profiles')
+      .update({ atlas_seeding_concepts_done: subjects[0] ? 1 : 0 })
+      .eq('id', user.id);
     }
 
     // 4. IMMEDIATELY apply quiz results to mark weak concepts
@@ -89,11 +102,21 @@ export async function POST(req: NextRequest) {
     }
 
     // 5. Seed rest of subjects in background — don't block response
-    if (restSubjects.length > 0) {
-      seedFullSyllabusForUser(user.id, examType, restSubjects).catch(err =>
-        logger.error('Background syllabus seeding failed', { userId: user.id, err })
-      );
-    }
+      if (restSubjects.length > 0) {
+        seedFullSyllabusForUser(user.id, examType, restSubjects)
+          .then(async () => {
+            await supabase.from('profiles').update({
+              atlas_seeding_status: 'complete',
+              atlas_seeding_concepts_done: subjects.length,
+            }).eq('id', user.id);
+          })
+          .catch(async (err) => {
+            logger.error('Background syllabus seeding failed', { userId: user.id, err });
+            await supabase.from('profiles').update({
+              atlas_seeding_status: 'failed',
+            }).eq('id', user.id);
+          });
+      }
 
     // 6. Generate initial flashcards for the first-seeded subject in background
     generateInitialCardSet(user.id, examType).catch(err =>

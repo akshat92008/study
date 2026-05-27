@@ -2,6 +2,8 @@ import { generateDailyPlan, generateMorningBriefing } from '@/lib/ai/agents/plan
 import { syncStudentModel } from '@/lib/engines/inference-engine';
 import { logger } from '@/lib/utils/logger';
 import { generateJSON, getEmbedding } from '@/lib/ai/gemini';
+import { resetStreakIfInactive } from '@/lib/engines/streak-engine';
+import { retryFailedEvents } from '@/lib/events/retry';
 import { z } from 'zod';
 import { NextRequest } from 'next/server';
 import { validateCronSecret } from '@/lib/utils/cron-auth';
@@ -107,26 +109,8 @@ Output JSON array of memories to persist. Maximum 3 memories. Be selective.
 }
 
 async function processOneUser(userId: string, supabase: any, today: string): Promise<void> {
-  // Reset streak if user was not active yesterday
-  const yesterday = new Date();
-  yesterday.setDate(yesterday.getDate() - 1);
-  const yesterdayStr = yesterday.toISOString().split('T')[0];
-
-  const { data: userProfile } = await supabase.from('profiles')
-    .select('last_active_at, streak_days, exam_date')
-    .eq('id', userId)
-    .single();
-
-  if (userProfile?.last_active_at) {
-    const lastActiveDate = new Date(userProfile.last_active_at).toISOString().split('T')[0];
-    // If last active was NOT yesterday and NOT today, streak should reset
-    if (lastActiveDate !== yesterdayStr && lastActiveDate !== today && (userProfile.streak_days || 0) > 0) {
-      await supabase.from('profiles')
-        .update({ streak_days: 0 })
-        .eq('id', userId);
-      logger.info(`Streak reset for user ${userId}. Last active: ${lastActiveDate}`);
-    }
-  }
+  // Reset streak if user was not active yesterday using shared engine
+  await resetStreakIfInactive(userId);
 
   // Generate the new daily mission
   await generateDailyPlan(userId, today);
@@ -138,9 +122,8 @@ async function processOneUser(userId: string, supabase: any, today: string): Pro
   await synthesizeDailyEmotionalState(userId, supabase);
 
   // Generate tomorrow's session card / task
-  await generateTomorrowCard(userId, userProfile, supabase).catch(err =>
-    logger.error('Failed to generate tomorrow card', { userId, err: err.message })
-  );
+  const { data: profile } = await supabase.from('profiles').select('*').eq('id', userId).single();
+  await generateTomorrowCard(userId, profile, supabase);
 
   // =====================================================================
   // TASK 3.3: GENERATE & INJECT MORNING BRIEFING TO GLOBAL CHAT
@@ -365,7 +348,15 @@ export async function GET(req: NextRequest) {
     const today = new Date().toISOString().split('T')[0];
     logger.info(`Cron: Starting daily synthesis for ${userIds.length} users targeting date: ${today}`);
 
-    // 4. Process in batches concurrently
+      // Retry failed events before processing users
+      try {
+        const retryResult = await retryFailedEvents();
+        logger.info('Daily retry sweep complete', retryResult);
+      } catch (retryErr) {
+        logger.error('Daily retry sweep failed (non-fatal)', retryErr);
+      }
+
+      // 4. Process in batches concurrently
     for (let i = 0; i < userIds.length; i += BATCH_SIZE) {
       const batch = userIds.slice(i, i + BATCH_SIZE);
       await processUserBatch(batch, supabase, today);

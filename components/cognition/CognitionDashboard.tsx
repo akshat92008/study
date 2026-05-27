@@ -5,6 +5,7 @@ import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
 import Progress from '@/components/ui/Progress';
 import { generateCards } from '@/lib/actions/revision';
+import { useAtlasSeedingStatus } from '@/hooks/useAtlasSeedingStatus';
 import { Brain, RefreshCw, Sparkles } from 'lucide-react';
 import KnowledgeMap from './KnowledgeMap';
 import InteractiveGraph from './InteractiveGraph';
@@ -28,6 +29,7 @@ export default function CognitionDashboard({ data }: Props) {
   const [showWelcomeOverlay, setShowWelcomeOverlay] = useState(false);
 
   const searchParams = useSearchParams();
+  const { status, isSeeding, isComplete, progressPercent, conceptsDone, conceptsTotal } = useAtlasSeedingStatus();
   const isMagicMoment = searchParams.get('magic') === 'true';
   const isFirstTime = searchParams.get('firstTime') === 'true';
 

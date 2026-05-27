@@ -12,7 +12,7 @@ export async function getMINDContext(userId: string, message?: string): Promise<
       overdueRes, masteryRes, sessionsRes
     ] = await Promise.all([
       supabase.from('profiles')
-        .select('full_name, exam_type, exam_date, current_level, learning_style, streak_days, emotional_state')
+        .select('full_name, exam_type, exam_date, current_level, learning_style, streak_days, emotional_state, timezone')
         .eq('id', userId)
         .single(),
 
@@ -52,6 +52,8 @@ export async function getMINDContext(userId: string, message?: string): Promise<
     const total = totalRes.count || 0;
     const mastered = masteredRes.count || 0;
 
+    const rootGapChains = await getRootGapChains(userId, weakConceptsRes.data || []);
+
     // Extract recently studied topics from session summaries
     const recentTopics = (sessionsRes.data || [])
       .map(s => s.summary?.match(/studied\s+(.+?)(?:\s+\(|\.)/i)?.[1])
@@ -64,7 +66,8 @@ export async function getMINDContext(userId: string, message?: string): Promise<
         examDate: profile?.exam_date || null,
         currentLevel: profile?.current_level || 'intermediate',
         learningStyle: profile?.learning_style || 'visual',
-        streakDays: profile?.streak_days || 0
+        streakDays: profile?.streak_days || 0,
+        timezone: profile?.timezone || 'UTC'
       },
       weakConcepts: weakConceptsRes.data || [],
       recentMistakes: recentMistakesRes.data || [],
@@ -77,16 +80,118 @@ export async function getMINDContext(userId: string, message?: string): Promise<
       overdueCards: overdueRes.count || 0,
       emotionalState: profile?.emotional_state || 'neutral',
       recentTopics,
-      knownAnalogies: []
+      knownAnalogies: [],
+      rootGapChains,
+      currentSessionDurationMinutes: 0,
+      sessionGoal: ''
     };
   } catch (err) {
     logger.error('getMINDContext failed', err);
     // Return safe defaults — never crash the chat
     return {
-      profile: { name: 'Student', examType: 'General', examDate: null, currentLevel: 'intermediate', learningStyle: 'visual', streakDays: 0 },
+      profile: { name: 'Student', examType: 'General', examDate: null, currentLevel: 'intermediate', learningStyle: 'visual', streakDays: 0, timezone: 'UTC' },
       weakConcepts: [], recentMistakes: [], struggles: [],
       masteryStats: { totalConcepts: 0, masteredCount: 0, masteryPercent: 0 },
-      overdueCards: 0, emotionalState: 'neutral', recentTopics: [], knownAnalogies: []
+      overdueCards: 0, emotionalState: 'neutral', recentTopics: [], knownAnalogies: [],
+      rootGapChains: [],
+      currentSessionDurationMinutes: 0,
+      sessionGoal: ''
     };
   }
 }
+
+/**
+ * Traverses the prerequisite graph backward from a weak concept
+ * to find the deepest unmastered root cause.
+ * Returns up to 3 root gap chains — each is the path from root to surface.
+ */
+export async function getRootGapChains(
+  userId: string,
+  weakConcepts: Array<{ name: string; subject: string; chapter: string; mastery: string }>
+): Promise<Array<{ rootConcept: string; gapChain: string[] }>> {
+  if (weakConcepts.length === 0) return [];
+
+  try {
+    const supabase = await createClient();
+
+    // Fetch all concept links for this user once
+    const { data: allLinks } = await supabase
+      .from('concept_links')
+      .select('concept_id, linked_concept_id, link_type, strength')
+      .eq('user_id', userId)
+      .in('link_type', ['prerequisite', 'depends_on']);
+
+    if (!allLinks || allLinks.length === 0) return [];
+
+    // Build prerequisite adjacency: conceptId → [prerequisiteConceptIds]
+    const prereqMap = new Map<string, string[]>();
+    for (const link of allLinks) {
+      const existing = prereqMap.get(link.concept_id) || [];
+      existing.push(link.linked_concept_id);
+      prereqMap.set(link.concept_id, existing);
+    }
+
+    // Fetch all concepts for this user to resolve IDs to names+mastery
+    const { data: allConcepts } = await supabase
+      .from('concepts')
+      .select('id, name, chapter, subject, mastery')
+      .eq('user_id', userId);
+
+    if (!allConcepts) return [];
+
+    const conceptById = new Map(allConcepts.map(c => [c.id, c]));
+
+    // Only analyse the top 3 weakest concepts to keep latency low
+    const targetConcepts = weakConcepts.slice(0, 3);
+
+    const UNMASTERED = new Set(['not_started', 'exposed', 'developing']);
+    const chains: Array<{ rootConcept: string; gapChain: string[] }> = [];
+
+    for (const weak of targetConcepts) {
+      // Find the concept record
+      const conceptRecord = allConcepts.find(
+        c => c.name.toLowerCase() === weak.name.toLowerCase() || c.chapter.toLowerCase() === weak.chapter.toLowerCase()
+      );
+      if (!conceptRecord) continue;
+
+      // BFS backward through prerequisites to find deepest unmastered root
+      const visited = new Set<string>();
+      const queue: Array<{ id: string; path: string[] }> = [{ id: conceptRecord.id, path: [conceptRecord.name] }];
+      let deepestGap = { id: conceptRecord.id, path: [conceptRecord.name] };
+
+      while (queue.length > 0) {
+        const current = queue.shift()!;
+        if (visited.has(current.id)) continue;
+        visited.add(current.id);
+
+        const prereqs = prereqMap.get(current.id) || [];
+        for (const prereqId of prereqs) {
+          const prereqConcept = conceptById.get(prereqId);
+          if (!prereqConcept) continue;
+          if (!UNMASTERED.has(prereqConcept.mastery)) continue; // Skip mastered prerequisites
+
+          const newPath = [...current.path, prereqConcept.name];
+          queue.push({ id: prereqId, path: newPath });
+
+          if (newPath.length > deepestGap.path.length) {
+            deepestGap = { id: prereqId, path: newPath };
+          }
+        }
+      }
+
+      if (deepestGap.path.length > 1) {
+        const rootConceptRecord = conceptById.get(deepestGap.id);
+        chains.push({
+          rootConcept: rootConceptRecord?.name || deepestGap.path[deepestGap.path.length - 1],
+          gapChain: deepestGap.path.reverse(), // root → surface
+        });
+      }
+    }
+
+    return chains;
+  } catch (err) {
+    logger.error('getRootGapChains failed', err);
+    return [];
+  }
+}
+

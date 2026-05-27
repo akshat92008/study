@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { generateSessionClosingMessage } from '@/lib/engines/session-closing';
+import { computeAndUpdateStreak } from '@/lib/engines/streak-engine';
 
 export async function POST(req: NextRequest) {
   const supabase = await createClient();
@@ -16,29 +17,8 @@ export async function POST(req: NextRequest) {
     cardsCreated = 0,
   } = await req.json();
 
-  // 1. Update streak based on last_study_date
-  const today = new Date().toISOString().split('T')[0];
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('streak_days, last_study_date')
-    .eq('id', user.id)
-    .single();
-
-  const lastStudy = profile?.last_study_date;
-  const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
-
-  let newStreak = 1;
-  if (lastStudy === yesterday) {
-    newStreak = (profile?.streak_days || 0) + 1;
-  } else if (lastStudy === today) {
-    newStreak = profile?.streak_days || 1; // already counted today
-  }
-
-  await supabase.from('profiles').update({
-    streak_days: newStreak,
-    last_study_date: today,
-    updated_at: new Date().toISOString(),
-  }).eq('id', user.id);
+// 1. Update streak using shared engine
+  const newStreak = await computeAndUpdateStreak(user.id);
 
   // 2. Fetch concept details (id and current mastery)
   const { data: conceptRecord } = await supabase

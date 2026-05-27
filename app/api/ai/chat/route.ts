@@ -68,6 +68,58 @@ export async function POST(req: NextRequest) {
     (history || []).slice(-6),
     mindContext.profile.examType
   );
+// OVERWHELMED GATE — Hard structural enforcement.
+// When emotional state is overwhelmed, override TUTOR_SESSION and PRACTICE intents
+// regardless of what the student asked. The vision is explicit: "stop teaching new material immediately."
+if (
+  mindContext.emotionalState === 'overwhelmed' &&
+  ['TUTOR_SESSION', 'PRACTICE'].includes(intent.intent)
+) {
+  const recentVictory = mindContext.weakConcepts.find(c =>
+    c.mastery === 'developing' || c.mastery === 'proficient'
+  );
+  const masteryPercent = mindContext.masteryStats.masteryPercent;
+  const streakDays = mindContext.profile.streakDays;
+
+  const groundingMessage = [
+    `Before we go into ${intent.topic || 'that topic'} — I'm noticing you seem overwhelmed right now, and I'm not going to add more to the pile.`,
+    ``,
+    `Here's what's actually true right now: you're at ${masteryPercent}% mastery across your syllabus.`,
+    streakDays > 1 ? `You've shown up ${streakDays} days in a row. That's not nothing.` : '',
+    recentVictory ? `You're developing ${recentVictory.name} — that's real progress, not luck.` : '',
+    ``,
+    `Right now, pick one of these:`,
+    ``,
+    `**1. Take 10 minutes away from your screen.** Come back and we'll tackle one small thing together.`,
+    ``,
+    `**2. Tell me one specific thing that's making you feel stuck.** Not "everything" — one thing. I'll help you sort it.`,
+    ``,
+    `**3. Do 5 flashcard reviews only.** Short. Familiar. It'll remind your brain it still knows things.`,
+    ``,
+    `Which one works for right now?`,
+  ].filter(Boolean).join('\n');
+
+  const stream = new ReadableStream({
+    async start(controller) {
+      controller.enqueue(encoder.encode(groundingMessage));
+
+      if (message && sessionId) {
+        try {
+          await supabase.from('chat_messages').insert([
+            { session_id: sessionId, user_id: user.id, role: 'user', content: message },
+            { session_id: sessionId, user_id: user.id, role: 'assistant', content: groundingMessage },
+          ]);
+        } catch {}
+      }
+
+      controller.close();
+    }
+  });
+
+  return new Response(stream, {
+    headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-cache' }
+  });
+}
 
   const stream = new ReadableStream({
     async start(controller) {
@@ -111,6 +163,12 @@ export async function POST(req: NextRequest) {
               await supabase.from('study_tasks').delete().in('id', toRemove.map((t: any) => t.id)).eq('user_id', user.id);
               const saved = toRemove.reduce((s: number, t: any) => s + (t.estimated_minutes || 0), 0);
               reply = `Done. Removed ${toRemove.length} task${toRemove.length > 1 ? 's' : ''} from today — ${saved} minutes freed. Focus on what remains.`;
+              const todayForCache = new Date().toISOString().split('T')[0];
+              await supabase
+                .from('session_cards')
+                .delete()
+                .eq('user_id', user.id)
+                .eq('date', todayForCache);
             } else if (action === 'lighten_intensity') {
               let saved = 0;
               for (const task of todayTasks) {
@@ -120,6 +178,12 @@ export async function POST(req: NextRequest) {
                 }
               }
               reply = `Done. All sessions capped at 25 minutes. ${saved} minutes saved. Short focused blocks are easier to start.`;
+              const todayForCache = new Date().toISOString().split('T')[0];
+              await supabase
+                .from('session_cards')
+                .delete()
+                .eq('user_id', user.id)
+                .eq('date', todayForCache);
             } else {
               await supabase.from('study_tasks').insert({
                 user_id: user.id, title: 'Recovery Break',
@@ -127,11 +191,17 @@ export async function POST(req: NextRequest) {
                 estimated_minutes: 15, priority: 'low', is_completed: false,
               });
               reply = "Added a 15-minute recovery break. Step fully away from your desk — no studying.";
+              const todayForCache = new Date().toISOString().split('T')[0];
+              await supabase
+                .from('session_cards')
+                .delete()
+                .eq('user_id', user.id)
+                .eq('date', todayForCache);
             }
             controller.enqueue(encoder.encode(reply));
             fullResponse = reply;
+                    metadataPayload = { action: 'planner_adjusted', tasksModified: true, sessionCardInvalidated: true };
           }
-          metadataPayload = { action: 'planner_adjusted', tasksModified: true };
 
         } else if (intent.intent === 'CREATE_ARTIFACT') {
           const topic = intent.topic || null;
@@ -303,22 +373,25 @@ Rules:
                 { session_id: sessionId, user_id: user.id, role: 'assistant', content: strippedResponse },
               ]);
 
-              if (isNewSession) {
-                const { count } = await supabase
-                  .from('chat_sessions')
-                  .select('*', { count: 'exact', head: true })
-                  .eq('user_id', user.id);
+                if (isNewSession) {
+                  const { count: totalSessionCount } = await supabase
+                    .from('chat_sessions')
+                    .select('*', { count: 'exact', head: true })
+                    .eq('user_id', user.id);
 
-                if (count && count <= 3) {
-                  // First 3 sessions: aggressive initial fingerprinting
-                  syncStudentModel(user.id, true).catch(() => {});
-                } else if (count && count % 10 === 0) {
-                  // Every 10th session after that: routine profile refresh
-                  // This keeps the learning style, strengths, and chronic weaknesses current
-                  // without running the expensive inference call on every single session.
-                  syncStudentModel(user.id, false).catch(() => {});
+                  const { count: totalMessageCount } = await supabase
+                    .from('chat_messages')
+                    .select('*', { count: 'exact', head: true })
+                    .eq('user_id', user.id)
+                    .eq('role', 'user');
+
+                  const isEarlyFingerprint = totalMessageCount !== null && [1, 5, 10].includes(totalMessageCount);
+                  const isRoutineRefresh = totalMessageCount !== null && totalMessageCount > 10 && totalMessageCount % 25 === 0;
+
+                  if (isEarlyFingerprint || isRoutineRefresh) {
+                    syncStudentModel(user.id, isEarlyFingerprint).catch(() => {});
+                  }
                 }
-              }
 
               // Embedding stored via ChatMemoryService (duplicate removed)
 

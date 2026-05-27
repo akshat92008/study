@@ -59,6 +59,18 @@ export function ChatInput({
   };
 
   const handleSend = () => {
+    // Validate pending image file before sending
+    if (pendingFile) {
+      const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+      if (!allowedTypes.includes(pendingFile.type)) {
+        console.error('Only JPEG, PNG, WebP, and GIF images are supported.');
+        return;
+      }
+      if (pendingFile.size > 10 * 1024 * 1024) {
+        console.error('Image must be under 10MB.');
+        return;
+      }
+    }
     const messageLength = value.trim().length;
     onSend();
     setTimeout(() => {

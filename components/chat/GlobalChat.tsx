@@ -36,6 +36,8 @@ export const GlobalChat = memo(function GlobalChat() {
   const [isProcessingUpload, setIsProcessingUpload] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [hasFallbackStreakFired, setHasFallbackStreakFired] = useState(false);
+  const [sessionCardKey, setSessionCardKey] = useState(0);
+  const [showDailySession, setShowDailySession] = useState(true);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -54,6 +56,13 @@ export const GlobalChat = memo(function GlobalChat() {
       if (user) setUser(user);
     });
   }, []);
+
+  // Sync session state from store
+  useEffect(() => {
+    if (sessionActive) {
+      setShowDailySession(false);
+    }
+  }, [sessionActive]);
 
   // Load chat history when user is available
   useEffect(() => {
@@ -105,6 +114,15 @@ export const GlobalChat = memo(function GlobalChat() {
       }
     }
   }, [chatMessages, sessionStartTime, currentSessionTopic, currentSessionSubject, setStreakDays]);
+
+  // Invalidate session card cache after REPLAN adjustments
+  useEffect(() => {
+    if (chatMessages.length === 0) return;
+    const lastMsg = chatMessages[chatMessages.length - 1];
+    if (lastMsg.role === 'assistant' && lastMsg.metadata?.action === 'planner_adjusted' && lastMsg.metadata?.sessionCardInvalidated) {
+      setSessionCardKey(prev => prev + 1);
+    }
+  }, [chatMessages]);
 
   // Reset fallback tracker when session starts
   useEffect(() => {
@@ -378,17 +396,20 @@ export const GlobalChat = memo(function GlobalChat() {
         gap: '24px',
         scrollBehavior: 'smooth'
       }}>
-        {!currentSessionTopic ? (
-          <DailySessionCard
+        {showDailySession && (
+          <DailySessionCard key={sessionCardKey}
             onStartSession={(topic, subject, estimatedMinutes) => {
               setCurrentSessionTopic(topic);
               setCurrentSessionSubject(subject);
+              setShowDailySession(false);
               startSession();
               const prompt = `Let's start today's session. Topic: ${topic}, Subject: ${subject}.\nTeach me, test me, challenge me. I have ${estimatedMinutes} minutes.`;
               handleSendMessage(prompt);
             }}
           />
-        ) : (
+        )}
+        
+        {!showDailySession && currentSessionTopic && (
           <div
             style={{
               display: 'flex',

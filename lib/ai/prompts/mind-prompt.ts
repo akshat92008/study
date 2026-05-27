@@ -8,6 +8,8 @@ export interface MINDContext {
     currentLevel: string;
     learningStyle: string;
     streakDays: number;
+    timezone: string;
+    targetScore?: string;
   };
   weakConcepts: Array<{ name: string; subject: string; chapter: string; mastery: string }>;
   recentMistakes: Array<{ chapter: string; category: string; subject: string }>;
@@ -21,6 +23,43 @@ export interface MINDContext {
   emotionalState: string;
   recentTopics: string[];
   knownAnalogies: string[];
+  rootGapChains: Array<{ rootConcept: string; gapChain: string[] }>;
+  currentSessionDurationMinutes: number;
+  sessionGoal: string;
+}
+export function getLearningStyleBlock(learningStyle: string): string {
+  const styles: Record<string, string> = {
+    visual: `LEARNING STYLE: VISUAL
+- Use spatial analogies — "imagine the reaction as a funnel," "think of the graph as..."
+- Describe diagrams and processes in terms of position, shape, flow, and structure.
+- When explaining a process, give the student a mental image to anchor it.
+- Suggest they draw what you're describing.
+- For formulae, show what each variable represents geometrically.`,
+
+    auditory: `LEARNING STYLE: AUDITORY / VERBAL
+- Use spoken-word rhythm: "Here's the rule. Now here's why. Now here's the exception."
+- Repeat key terms in slightly varied phrasing to cement them through pattern recognition.
+- Encourage the student to explain back what you said in their own words before moving on.
+- Use mnemonics, verbal patterns, and rhyme where appropriate.
+- Avoid heavy visual metaphors — describe things as sequences and stories instead.`,
+
+    read_write: `LEARNING STYLE: READ/WRITE
+- Structure every explanation with clear headings and sub-points even in chat.
+- Give definitions before examples — they need the rule stated precisely first.
+- Present lists of conditions, exceptions, and edge cases explicitly.
+- Encourage note-taking: "Write this exact definition down before we continue."
+- Formulae should be derived from first principles in written step form.`,
+
+    kinesthetic: `LEARNING STYLE: KINESTHETIC / ACTIVE
+- Jump to an example or worked problem before giving any theory.
+- After every explanation: "Now you try a variation." Make them do before they learn.
+- Use real-world and tactile analogies — "Like pushing against a wall and the wall pushes back."
+- Frame concepts in terms of what happens, what you do, what changes.
+- Never explain without immediately following with a hands-on application.`,
+  };
+
+  const normalized = (learningStyle || 'visual').toLowerCase().replace(/[^a-z_]/g, '');
+  return styles[normalized] || styles['visual'];
 }
 
 export function getEmotionalAdaptationBlock(emotionalState: string): string {
@@ -71,6 +110,10 @@ export function getMINDSystemPrompt(ctx: MINDContext, semanticMemories: string[]
   const weakList = ctx.weakConcepts.slice(0, 5).map(c => `${c.name} (${c.mastery})`).join(', ') || 'None identified yet';
   const mistakeList = ctx.recentMistakes.slice(0, 3).map(m => `${m.chapter} — ${m.category}`).join('; ') || 'None recorded';
   const emotionalBlock = getEmotionalAdaptationBlock(ctx.emotionalState);
+  const learningStyleBlock = getLearningStyleBlock(ctx.profile.learningStyle);
+  const rootGapSection = ctx.rootGapChains.length > 0
+    ? `\nUNDERLYING KNOWLEDGE GAPS (Root cause of confusion):\n${ctx.rootGapChains.map(c => `${c.rootConcept} → [${c.gapChain.join(' → ')}]`).join('\n')}\n`
+    : '';
 
   const memoriesSection = semanticMemories.length > 0
     ? `\nCROSS-SESSION MEMORY (things this student said in past conversations):\n${semanticMemories.map((m, i) => `${i + 1}. ${m}`).join('\n')}\nReference these naturally if relevant — never robotically.\n`
@@ -92,6 +135,7 @@ Overdue flashcards: ${ctx.overdueCards}
 
 WEAK AREAS: ${weakList}
 RECENT MISTAKE PATTERNS: ${mistakeList}
+${rootGapSection}
 EMOTIONAL STATE: ${ctx.emotionalState}
 RECENTLY STUDIED: ${ctx.recentTopics.slice(0, 4).join(', ') || 'Nothing yet'}
 ${memoriesSection}
@@ -230,7 +274,8 @@ You are the senior who cracked this exam and is now mentoring this student perso
 
 When the student is anxious or overwhelmed: respond with REAL DATA first ("Your last 3 sessions show improvement in Biology — 54% → 61% → 71%. The trajectory is working.") then adjust the tone. Never generic motivation.
 
-${emotionalBlock}
+  ${emotionalBlock}
+  ${learningStyleBlock}
 `;
 }
 

@@ -1,4 +1,10 @@
 import type { NextConfig } from 'next';
+import { validateEnvironment } from './lib/utils/env-validate';
+
+// Validate at build/start time — fails fast before any request
+if (process.env.NODE_ENV !== 'test') {
+  validateEnvironment();
+}
 
 const nextConfig: NextConfig = {
   serverExternalPackages: ['pdf-parse'],
@@ -15,7 +21,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-   async headers() {
+  async headers() {
     return [
       {
         source: '/(.*)',

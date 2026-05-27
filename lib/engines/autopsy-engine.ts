@@ -6,6 +6,7 @@ import { generateMentorRecovery } from './mentor-engine';
 import { logger } from '@/lib/utils/logger';
 import { generateJSON } from '@/lib/ai/gemini';
 import { EventDispatcher } from '@/lib/events/orchestrator';
+import { generateKnowledgeUpdate } from './knowledge-engine';
 
 type AutopsyFileData =
   | { kind: 'text'; text: string }
@@ -255,6 +256,8 @@ export async function processMockAutopsy(
       }))
     );
   }
+
+  await generateKnowledgeUpdate(userId, diagnosedIncorrect).catch(err => logger.error('Knowledge sync failed', err));
 
   const mentorResult = await generateMentorRecovery(
     autopsyRecord.id, rawScore, potentialScore, diagnosedIncorrect, examType
