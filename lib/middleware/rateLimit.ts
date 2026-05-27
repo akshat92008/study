@@ -28,16 +28,13 @@ export async function checkRateLimit(
   pipeline.expire(key, config.windowSeconds);
   const results = await pipeline.exec();
 
-  const count = (results[2]?.[1] as number) ?? (results[2] as unknown as number) ?? 0;
-  
-  // Depending on ioredis version, pipeline.exec() returns Array<[Error | null, any]>
-  // Usually results[2] is [null, count]
   let actualCount = 0;
   if (Array.isArray(results) && results.length > 2) {
-      if (Array.isArray(results[2])) {
-          actualCount = typeof results[2][1] === 'number' ? results[2][1] : 0;
+      const res = results as any[];
+      if (Array.isArray(res[2])) {
+          actualCount = typeof res[2][1] === 'number' ? res[2][1] : 0;
       } else {
-          actualCount = typeof results[2] === 'number' ? results[2] : 0;
+          actualCount = typeof res[2] === 'number' ? res[2] : 0;
       }
   }
 
