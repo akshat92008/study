@@ -2,8 +2,6 @@ import { createClient } from '@/lib/supabase/server';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { EventTypes } from '@/lib/events/types';
 import { traversePrerequisites } from '@/lib/atlas/prerequisiteTraversal';
-import { v4 as uuidv4 } from 'uuid';
-
 export type MasteryEvidence =
   | { type: 'correct_answer'; strength: number; sourceId: string }
   | { type: 'wrong_answer'; strength: number; sourceId: string }
@@ -40,7 +38,7 @@ export async function applyMasteryEvidence(input: {
   }
 
   const masteryRow = existing ?? {
-    id: uuidv4(),
+    id: crypto.randomUUID(),
     user_id: input.userId,
     concept_id: input.conceptId,
     mastery_score: 0,
@@ -76,7 +74,7 @@ export async function applyMasteryEvidence(input: {
   newScore = Math.max(0, Math.min(1, newScore));
 
   // Update prerequisites (if any) – simple additive boost/penalty
-  const updates: Promise<any>[] = [];
+  const updates: any[] = [];
   for (const preId of prerequisites) {
     const { data: preRow, error: preErr } = await supabase
       .from('concept_mastery')
@@ -85,7 +83,7 @@ export async function applyMasteryEvidence(input: {
       .eq('concept_id', preId)
       .single();
     const row = preRow ?? {
-      id: uuidv4(),
+      id: crypto.randomUUID(),
       user_id: input.userId,
       concept_id: preId,
       mastery_score: 0,
@@ -96,7 +94,7 @@ export async function applyMasteryEvidence(input: {
     updates.push(
       supabase
         .from('concept_mastery')
-        .upsert({ ...row, mastery_score: updatedScore }, { onConflict: ['id'] })
+        .upsert({ ...row, mastery_score: updatedScore }, { onConflict: 'id' })
     );
   }
 
@@ -106,14 +104,14 @@ export async function applyMasteryEvidence(input: {
 
   const { error: upsertErr } = await supabase.from('concept_mastery').upsert(
     { ...masteryRow, mastery_score: newScore, confidence: newConfidence },
-    { onConflict: ['id'] }
+    { onConflict: 'id' }
   );
 
   if (upsertErr) throw upsertErr;
 
   // Log evidence
   await supabase.from('mastery_evidence_log').insert({
-    id: uuidv4(),
+    id: crypto.randomUUID(),
     mastery_id: masteryRow.id,
     evidence_type: input.evidence.type,
     strength: delta,
@@ -122,7 +120,7 @@ export async function applyMasteryEvidence(input: {
 
   // Confidence audit (optional)
   await supabase.from('mastery_confidence').insert({
-    id: uuidv4(),
+    id: crypto.randomUUID(),
     mastery_id: masteryRow.id,
     confidence: newConfidence,
     reason: `Applied ${input.evidence.type}`,
@@ -141,6 +139,6 @@ export async function applyMasteryEvidence(input: {
       newMastery: newScore,
       confidence: newConfidence,
     },
-    idempotencyKey: uuidv4(),
+    idempotencyKey: crypto.randomUUID(),
   });
 }

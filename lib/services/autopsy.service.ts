@@ -37,7 +37,7 @@ function classifyRootCause(answer: string, correct: string): {
   // Very naive concept detection – look for keyword overlap with correct answer
   const overlap = cleaned.split(' ').filter((w) => correct.toLowerCase().includes(w)).length;
   if (overlap > 0) {
-    return { rootCause: 'conceptual', conceptName: null, confidence: 0.6 };
+    return { rootCause: 'conceptual', confidence: 0.6 };
   }
   // Default to calculation or time pressure based on length
   if (cleaned.length > 20) return { rootCause: 'calculation', confidence: 0.5 };

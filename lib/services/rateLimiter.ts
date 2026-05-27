@@ -48,7 +48,7 @@ export class RateLimiter {
       return 1
     `;
 
-    const result = await redis.eval(script, 1, key, maxTokens.toString(), ttl.toString());
+    const result = await redis.eval(script, [key], [maxTokens.toString(), ttl.toString()]);
     return result === 1;
   }
 }

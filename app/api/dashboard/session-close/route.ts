@@ -7,6 +7,7 @@ import { generateSessionClosingMessage } from '@/lib/engines/session-closing';
 import { computeAndUpdateStreak } from '@/lib/engines/streak-engine';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { logger } from '@/lib/utils/logger';
+import { MASTERY_WEIGHTS } from '@/lib/engines/cognition-graph';
 
 const MASTERY_ORDER = [
   'not_started', 'exposed', 'developing', 'proficient', 'mastered', 'automated'
@@ -140,8 +141,8 @@ export async function POST(req: NextRequest) {
     gapAnswer: null,
     understood,
     turnsCount: 0,
-    oldMastery,
-    newMastery,
+    oldMastery: oldMastery ? (MASTERY_WEIGHTS[oldMastery as keyof typeof MASTERY_WEIGHTS] ?? null) !== null ? (MASTERY_WEIGHTS[oldMastery as keyof typeof MASTERY_WEIGHTS] ?? null)! / 100 : null : null,
+    newMastery: newMastery ? (MASTERY_WEIGHTS[newMastery as keyof typeof MASTERY_WEIGHTS] ?? null) !== null ? (MASTERY_WEIGHTS[newMastery as keyof typeof MASTERY_WEIGHTS] ?? null)! / 100 : null : null,
     cardsCreated,
     sessionId,
   });

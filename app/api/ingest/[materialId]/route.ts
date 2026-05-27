@@ -5,8 +5,9 @@ import { logger } from '@/lib/utils/logger';
 
 export async function GET(
   _req: NextRequest,
-  { params }: { params: { materialId: string } }
+  { params }: { params: Promise<{ materialId: string }> }
 ) {
+  const { materialId } = await params;
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -15,7 +16,7 @@ export async function GET(
   const { data: material, error: matErr } = await supabase
     .from('materials')
     .select('id, title, storage_path, mime_type, original_filename, created_at')
-    .eq('id', params.materialId)
+    .eq('id', materialId)
     .eq('user_id', user.id)
     .single();
 

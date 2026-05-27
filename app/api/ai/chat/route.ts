@@ -165,8 +165,10 @@ if (orchestratorResult.intent === 'planning' && !imageBase64) {
   const stream = new ReadableStream({
     async start(controller) {
       try {
-        const plan = await routeStreamGeneration(systemPrompt, orchestratorResult, mindContext);
-        controller.enqueue(encoder.encode(plan));
+        const conversationMessages = buildConversationMessages(history || [], message || '');
+        for await (const chunk of routeStreamGeneration(systemPrompt, conversationMessages, 0.7)) {
+          controller.enqueue(encoder.encode(chunk));
+        }
       } catch (err) {
         controller.enqueue(encoder.encode('Failed to generate plan.'));
         logger.error('Planning generation failed', err);
