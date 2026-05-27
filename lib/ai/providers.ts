@@ -157,7 +157,7 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
         fast: 'llama-3.1-8b-instant',
       },
       supportsStreaming: true,
-      supportsVision: false,
+      supportsVision: true,
       supportsEmbeddings: false,
       authHeader: 'bearer',
     },
@@ -252,6 +252,7 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
   ],
 
   vision: [
+    'groq_compound', // Fast and reliable vision model
     'cloudflare',  // llama-3.2-11b-vision free.
     'google',      // gemini-2.0-flash vision — last resort.
   ],

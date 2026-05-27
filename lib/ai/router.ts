@@ -618,6 +618,53 @@ if (!config || !config.apiKey || !config.supportsVision) {
         return result;
       }
 
+      if (providerName === 'groq_compound') {
+        const model = 'llama-3.2-90b-vision-preview';
+        const messages = [
+          { role: 'system', content: systemPrompt },
+          {
+            role: 'user',
+            content: [
+              {
+                type: 'text',
+                text: `${userMessage || 'Solve this question completely.'}\n\n1. Identify what is shown.\n2. Solve completely, step by step.\n3. Explain the core concept.\n4. How this appears in exams.\n5. Common mistakes on this type.`,
+              },
+              {
+                type: 'image_url',
+                image_url: { url: `data:${imageMimeType};base64,${imageBase64}` },
+              },
+            ],
+          },
+        ];
+
+        const response = await fetch(`${config.baseUrl}/chat/completions`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${config.apiKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            model,
+            messages,
+            temperature: 0.1,
+            max_tokens: 1024,
+          }),
+          signal: AbortSignal.timeout(45_000),
+        });
+
+        if (!response.ok) {
+          throw Object.assign(
+            new Error(`Groq vision failed: ${response.status}`),
+            { statusCode: response.status }
+          );
+        }
+
+        const data = await response.json();
+        const result = data.choices?.[0]?.message?.content || '';
+        markProviderSuccess(providerName);
+        return result;
+      }
+
       if (providerName === 'google') {
         const response = await fetch(
           `${config.baseUrl}/models/gemini-2.0-flash:generateContent?key=${config.apiKey}`,
