@@ -12,10 +12,7 @@ DECLARE
   v_subject text;
   v_chapter text;
 BEGIN
-  -- Only seed if user has no concepts yet
-  IF (SELECT COUNT(*) FROM concepts WHERE user_id = p_user_id) > 0 THEN
-    RETURN;
-  END IF;
+
 
   -- NEET syllabus
   IF p_exam_type ILIKE '%neet%' THEN
