@@ -21,6 +21,11 @@ export interface AppState extends ChatSlice {
   isAssistantOpen: boolean;
   setAssistantOpen: (open: boolean) => void;
   toggleAssistant: () => void;
+  assistantWidth: number;
+  setAssistantWidth: (width: number) => void;
+  isAssistantExpanded: boolean;
+  setAssistantExpanded: (expanded: boolean) => void;
+  toggleAssistantExpanded: () => void;
   
   // Toasts
   toastQueue: Toast[];
@@ -89,9 +94,14 @@ export const useAppStore = create<AppState>()(
       setCommandBarOpen: (open) => set({ isCommandBarOpen: open }),
       toggleCommandBar: () => set((state) => ({ isCommandBarOpen: !state.isCommandBarOpen })),
       
-       isAssistantOpen: true,
+      isAssistantOpen: true,
       setAssistantOpen: (open) => set({ isAssistantOpen: open }),
       toggleAssistant: () => set((state) => ({ isAssistantOpen: !state.isAssistantOpen })),
+      assistantWidth: 500,
+      setAssistantWidth: (width) => set({ assistantWidth: width }),
+      isAssistantExpanded: false,
+      setAssistantExpanded: (expanded) => set({ isAssistantExpanded: expanded }),
+      toggleAssistantExpanded: () => set((state) => ({ isAssistantExpanded: !state.isAssistantExpanded })),
       
       toastQueue: [],
       addToast: (message, type = 'info') => set((state) => ({
@@ -235,6 +245,8 @@ export const useAppStore = create<AppState>()(
         memoryDueCount: state.memoryDueCount,
         autopsyLossPoints: state.autopsyLossPoints,
         streakDays: state.streakDays,
+        assistantWidth: state.assistantWidth,
+        isAssistantExpanded: state.isAssistantExpanded,
       }),
     }
   )

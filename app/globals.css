@@ -385,3 +385,44 @@ button:active:not(:disabled) {
 .animate-spin {
   animation: spin 1s linear infinite;
 }
+
+/* --- CHAT RESIZE HANDLE --- */
+.chat-resize-handle {
+  position: absolute;
+  top: 0;
+  left: -3px;
+  width: 6px;
+  height: 100%;
+  cursor: col-resize;
+  z-index: 100;
+  background: transparent;
+  transition: background var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.chat-resize-handle:hover,
+.chat-resize-handle.active {
+  background: linear-gradient(to bottom, transparent, var(--accent-purple), transparent);
+  box-shadow: -2px 0 10px var(--accent-purple-dim);
+}
+
+.chat-resize-handle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: var(--border-strong);
+  transition: background var(--duration-normal) var(--ease-out), height var(--duration-normal) var(--ease-out), opacity var(--duration-normal) var(--ease-out);
+  opacity: 0.3;
+}
+
+.chat-resize-handle:hover::after,
+.chat-resize-handle.active::after {
+  background: var(--text-primary);
+  height: 48px;
+  opacity: 0.9;
+}
+

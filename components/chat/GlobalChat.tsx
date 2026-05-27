@@ -27,6 +27,8 @@ export const GlobalChat = memo(function GlobalChat() {
     sessionStartTime,
     chatId,
     loadChatFromSupabase,
+    isAssistantExpanded,
+    toggleAssistantExpanded,
   } = useAppStore();
 
   const [inputMessage, setInputMessage] = useState('');
@@ -34,7 +36,6 @@ export const GlobalChat = memo(function GlobalChat() {
   const [currentSessionSubject, setCurrentSessionSubject] = useState('');
   const [pendingFile, setPendingFile] = useState<File | null>(null);
   const [isProcessingUpload, setIsProcessingUpload] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
   const [hasFallbackStreakFired, setHasFallbackStreakFired] = useState(false);
   const [sessionCardKey, setSessionCardKey] = useState(0);
   const [showDailySession, setShowDailySession] = useState(true);
@@ -363,13 +364,14 @@ export const GlobalChat = memo(function GlobalChat() {
             <Trash2 size={16} />
           </button>
           <button
-            onClick={() => setIsExpanded(!isExpanded)}
+            onClick={toggleAssistantExpanded}
             style={{
               background: 'transparent', border: 'none', color: 'var(--text-tertiary)',
               padding: '6px', cursor: 'pointer', borderRadius: '4px'
             }}
+            title={isAssistantExpanded ? "Minimize Chat" : "Expand Chat"}
           >
-            {isExpanded ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
+            {isAssistantExpanded ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
           </button>
           <button
             onClick={toggleAssistant}

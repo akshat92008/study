@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAppStore } from '@/stores/appStore';
 import Sidebar from './Sidebar';
 import Header from './Header';
@@ -18,9 +18,60 @@ export default function DashboardClientLayout({ children, profile }: DashboardCl
     setMobileSidebarOpen,
     isAssistantOpen,
     setAssistantOpen,
+    assistantWidth,
+    setAssistantWidth,
+    isAssistantExpanded,
+    setAssistantExpanded,
   } = useAppStore();
 
   const isOverwhelmed = profile?.emotional_state === 'overwhelmed';
+  const [isDragging, setIsDragging] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Monitor resize to set mobile flag
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Handle panel drag resizing
+  useEffect(() => {
+    if (!isDragging) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const newWidth = window.innerWidth - e.clientX;
+      const minWidth = 320;
+      const maxWidth = window.innerWidth * 0.8;
+      const constrainedWidth = Math.max(minWidth, Math.min(newWidth, maxWidth));
+      
+      setAssistantWidth(constrainedWidth);
+      
+      if (isAssistantExpanded) {
+        setAssistantExpanded(false);
+      }
+    };
+
+    const handleMouseUp = () => {
+      setIsDragging(false);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [isDragging, isAssistantExpanded, setAssistantWidth, setAssistantExpanded]);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
 
   return (
     <div
@@ -88,19 +139,44 @@ export default function DashboardClientLayout({ children, profile }: DashboardCl
 
           {/* Global Chat — collapsible right drawer */}
           {isAssistantOpen ? (
-            <div
-              style={{
-                width: '420px',
-                flexShrink: 0,
-                borderLeft: '1px solid var(--border-default)',
-                display: 'flex',
-                flexDirection: 'column',
-                background: 'var(--bg-elevated)',
-                overflowY: 'auto'
-              }}
-            >
-              <GlobalChat />
-            </div>
+            isMobile ? (
+              <div
+                style={{
+                  position: 'fixed',
+                  top: 'var(--header-height)',
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  zIndex: 90,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  background: 'var(--bg-elevated)',
+                }}
+              >
+                <GlobalChat />
+              </div>
+            ) : (
+              <div
+                style={{
+                  width: isAssistantExpanded ? '750px' : `${assistantWidth}px`,
+                  maxWidth: '85vw',
+                  minWidth: '320px',
+                  flexShrink: 0,
+                  borderLeft: '1px solid var(--border-default)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  background: 'var(--bg-elevated)',
+                  position: 'relative',
+                  transition: isDragging ? 'none' : 'width var(--duration-slow) var(--ease-out)',
+                }}
+              >
+                <div
+                  onMouseDown={handleMouseDown}
+                  className={`chat-resize-handle ${isDragging ? 'active' : ''}`}
+                />
+                <GlobalChat />
+              </div>
+            )
           ) : (
             <button
               onClick={() => setAssistantOpen(true)}
