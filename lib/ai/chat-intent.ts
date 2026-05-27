@@ -50,15 +50,17 @@ Classify and return JSON:
 }
 
 Rules:
-- "explain", "what is", "how does", "I don't understand" → TUTOR_SESSION
-- "test me", "quiz me", "give me questions", "practice" → PRACTICE  
-- "make a study guide", "revision sheet", "flashcards", "create" → CREATE_ARTIFACT
-- "I gave a test", "upload test", "check my mock", "mock test" → AUTOPSY
+- "explain", "what is", "how does", "I don't understand", "teach me" → TUTOR_SESSION
+- "test me", "quiz me", "give me questions", "practice" → PRACTICE
+- "make a study guide", "revision sheet", "create flashcards", "write a plan", "prepare a planner", "help me prepare", "study plan", "revise everything", "full syllabus revision" → CREATE_ARTIFACT
+- "I gave a test", "upload test", "check my mock", "analyse my test", "I scored" → AUTOPSY
 - "how am I doing", "my stats", "progress", "percentage" → ANALYTICS
 - "knowledge map", "ATLAS", "what do I know" → ATLAS
 - "review cards", "due cards", "flashcard queue" → FLASHCARDS
 - "overwhelmed", "reduce tasks", "too much", "lighten", "I'm stressed" → REPLAN
-- Everything else, greetings, casual → GENERAL_CHAT`;
+- Everything else, greetings, casual → GENERAL_CHAT
+
+IMPORTANT: If the message asks to BUILD or CREATE a plan/schedule/planner — even if it mentions "mock test" — classify as CREATE_ARTIFACT not AUTOPSY. AUTOPSY is only for analysing a test the student already took and wants to upload.`;
 
   try {
     const raw = await routeTextGeneration('json', INTENT_SYSTEM, prompt, 0.1, 256);

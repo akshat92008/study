@@ -132,7 +132,30 @@ export async function POST(req: NextRequest) {
           }
           metadataPayload = { action: 'planner_adjusted', tasksModified: true };
 
-        } else if (['TUTOR_SESSION', 'PRACTICE', 'CREATE_ARTIFACT'].includes(intent.intent)) {
+        } else if (intent.intent === 'CREATE_ARTIFACT') {
+          const topic = intent.topic || null;
+          const subject = intent.subject || null;
+          
+          // Build a contextual system prompt for artifact generation
+          const artifactSystemPrompt = `${systemPrompt}
+
+You are in ARTIFACT CREATION mode. The student has asked you to create a study plan, planner, revision sheet, or similar artifact.
+
+Rules:
+- If they mention an upcoming test date, build a day-by-day study plan from today until that date.
+- Cover all weak areas from their ATLAS profile first, then fill remaining days with stronger subjects.
+- Format the plan clearly with days, topics, and time estimates.
+- If they say "full syllabus", cover all three subjects: Physics, Chemistry, Biology.
+- Be specific and actionable. Not generic.
+- End with one motivating line about what hitting this plan will do for their score.`;
+
+          const conversationMessages = buildConversationMessages(history || [], message || '');
+          for await (const chunk of routeStreamGeneration(artifactSystemPrompt, conversationMessages, 0.6)) {
+            controller.enqueue(encoder.encode(chunk));
+            fullResponse += chunk;
+          }
+
+        } else if (['TUTOR_SESSION', 'PRACTICE'].includes(intent.intent)) {
           const topic = intent.topic || 'General';
           const subject = intent.subject || mindContext.weakConcepts[0]?.subject || 'General';
           const conceptId = await resolveConceptByName(user.id, subject, topic);

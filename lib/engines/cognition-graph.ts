@@ -69,10 +69,18 @@ export async function getCognitionGraph(userId: string) {
   const weak = concepts.filter((c: any) => c.mastery === 'exposed' || c.mastery === 'not_started').length;
   
   let overallMastery = 0;
-  if (total > 0) {
-    const sum = concepts.reduce((acc: number, c: any) => acc + (MASTERY_WEIGHTS[c.mastery] || 0), 0);
-    overallMastery = Math.round(sum / total);
+  // Deduplicate to chapter level before computing mastery %
+  const chapterBestMap = new Map<string, number>();
+  for (const c of concepts) {
+    const key = `${c.subject}::${c.chapter}`;
+    const existing = chapterBestMap.get(key) ?? 0;
+    const current = MASTERY_WEIGHTS[c.mastery] || 0;
+    if (current > existing) chapterBestMap.set(key, current);
   }
+  const chapterValues = Array.from(chapterBestMap.values());
+  const chapterTotal = chapterValues.length;
+  const sum = chapterValues.reduce((acc, v) => acc + v, 0);
+  overallMastery = chapterTotal > 0 ? Math.round(sum / chapterTotal) : 0;
 
   const stats = { total, mastered, developing, weak, overallMastery };
 
