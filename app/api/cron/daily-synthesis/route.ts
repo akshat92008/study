@@ -134,6 +134,8 @@ async function processOneUser(userId: string, supabase: any, today: string): Pro
   await syncStudentModel(userId);
   // Synthesize episodic memories from yesterday's events
   await synthesizeMemories(userId, supabase);
+  // Pulse: Update emotional state based on yesterday's signals
+  await synthesizeDailyEmotionalState(userId, supabase);
 
   // Generate tomorrow's session card / task
   await generateTomorrowCard(userId, userProfile, supabase).catch(err =>
@@ -377,5 +379,63 @@ export async function GET(req: NextRequest) {
   } catch (globalErr: any) {
     logger.error('Cron: Global execution crash', globalErr);
     return new Response('Internal Server Error', { status: 500 });
+  }
+}
+
+async function synthesizeDailyEmotionalState(
+  userId: string,
+  supabase: any
+): Promise<void> {
+  try {
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const start = new Date(yesterday.setHours(0, 0, 0, 0)).toISOString();
+    const end = new Date(yesterday.setHours(23, 59, 59, 999)).toISOString();
+
+    // Read all pulse signals logged yesterday
+    const { data: signals } = await supabase
+      .from('pulse_signals')
+      .select('emotional_state, confidence')
+      .eq('user_id', userId)
+      .gte('created_at', start)
+      .lte('created_at', end);
+
+    // If no signals yesterday, reset transient negative states to neutral
+    // so the student doesn't carry yesterday's anxiety into today
+    if (!signals || signals.length === 0) {
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('emotional_state')
+        .eq('id', userId)
+        .single();
+
+      const transient = ['stressed', 'overwhelmed', 'frustrated', 'anxious', 'burnt_out'];
+      if (transient.includes(profile?.emotional_state)) {
+        await supabase
+          .from('profiles')
+          .update({ emotional_state: 'neutral' })
+          .eq('id', userId);
+      }
+      return;
+    }
+
+    // Weighted vote: sum confidence per state, pick the winner
+    const votes: Record<string, number> = {};
+    for (const s of signals) {
+      if (!s.emotional_state) continue;
+      votes[s.emotional_state] = (votes[s.emotional_state] || 0) + (s.confidence || 0.5);
+    }
+
+    const dominant = Object.entries(votes).sort((a, b) => b[1] - a[1])[0]?.[0];
+    if (!dominant) return;
+
+    await supabase
+      .from('profiles')
+      .update({ emotional_state: dominant })
+      .eq('id', userId);
+
+  } catch (err) {
+    // Non-fatal — cron must not crash because one user's state failed
+    console.error(`synthesizeDailyEmotionalState failed for ${userId}`, err);
   }
 }

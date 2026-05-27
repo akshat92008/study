@@ -17,6 +17,7 @@ import { MASTERY_WEIGHTS } from '@/lib/engines/cognition-graph';
 import { syncStudentModel } from '@/lib/engines/inference-engine';
 import { ChatMemoryService } from '../../../../services/chat-memory.service';
 import { detectChatIntent, buildConversationMessages } from '@/lib/ai/chat-intent';
+import { inferAndUpdateEmotionalState } from '@/lib/engines/emotional-state-updater';
 
 const encoder = new TextEncoder();
 
@@ -303,10 +304,19 @@ Rules:
               ]);
 
               if (isNewSession) {
-                const { count } = await supabase.from('chat_sessions').select('*', { count: 'exact', head: true }).eq('user_id', user.id);
+                const { count } = await supabase
+                  .from('chat_sessions')
+                  .select('*', { count: 'exact', head: true })
+                  .eq('user_id', user.id);
+
                 if (count && count <= 3) {
-                  // Bug 4: explicitly trigger initial style fingerprinting for first 3 sessions
+                  // First 3 sessions: aggressive initial fingerprinting
                   syncStudentModel(user.id, true).catch(() => {});
+                } else if (count && count % 10 === 0) {
+                  // Every 10th session after that: routine profile refresh
+                  // This keeps the learning style, strengths, and chronic weaknesses current
+                  // without running the expensive inference call on every single session.
+                  syncStudentModel(user.id, false).catch(() => {});
                 }
               }
 
@@ -315,6 +325,8 @@ Rules:
               // Semantic memory storage (store only user message to avoid duplicate embeddings)
               const memSvc = new ChatMemoryService();
               await memSvc.storeMessageInMemory(user.id, message).catch(() => {});
+              
+              inferAndUpdateEmotionalState(user.id, message).catch(() => {});
 
               // Only fire if we have a real concept context — not for generic messages
               const sessionSubject = (mindContext as any)?.currentTopic?.subject || mindContext?.weakConcepts?.[0]?.subject;
