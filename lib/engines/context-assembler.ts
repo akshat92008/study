@@ -12,6 +12,15 @@ interface MemoryItem {
   score: number;
 }
 
+const MASTERY_SCORE: Record<string, number> = {
+  not_started: 0,
+  exposed: 0.2,
+  developing: 0.45,
+  proficient: 0.7,
+  mastered: 0.9,
+  automated: 1,
+};
+
 /**
  * ContextAssembler — builds enriched prompt context for LLM calls.
  * Replaces all stub implementations with real Supabase queries.
@@ -96,13 +105,13 @@ export class ContextAssembler {
 
       const { data: recentConcepts } = await supabase
         .from('concepts')
-        .select('name, mastery_level')
+        .select('name, mastery')
         .eq('user_id', userId)
-        .order('last_reviewed', { ascending: false })
+        .order('last_reviewed_at', { ascending: false })
         .limit(5);
 
       const avgMastery = recentConcepts?.length
-        ? recentConcepts.reduce((sum: number, c: any) => sum + (c.mastery_level || 0), 0) / recentConcepts.length
+        ? recentConcepts.reduce((sum: number, c: any) => sum + (MASTERY_SCORE[c.mastery] ?? 0), 0) / recentConcepts.length
         : 0;
 
       const masteryLevel =

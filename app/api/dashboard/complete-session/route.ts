@@ -27,13 +27,13 @@ export async function POST(req: NextRequest) {
     // 2. Fetch profile for streak logic
     const { data: profile } = await supabase
       .from('profiles')
-      .select('streak_days, last_session_date')
+      .select('streak_days, last_active_at')
       .eq('id', user.id)
       .single();
 
     const today = new Date().toISOString().split('T')[0];
-    const lastSessionDate = profile?.last_session_date
-      ? String(profile.last_session_date).split('T')[0]
+    const lastSessionDate = profile?.last_active_at
+      ? String(profile.last_active_at).split('T')[0]
       : null;
 
     let newStreak = profile?.streak_days || 0;
@@ -61,17 +61,18 @@ export async function POST(req: NextRequest) {
     };
     if (streakChanged) {
       updatePayload.streak_days = newStreak;
-      updatePayload.last_session_date = today;
     }
     await supabase.from('profiles').update(updatePayload).eq('id', user.id);
 
-    // 4. Log study session for PULSE signals
+    // 4. Log completed study session for streaks, planning, and analytics.
     await supabase.from('study_sessions').insert({
       user_id: user.id,
+      subject: subject || null,
+      chapter: chapter || null,
       started_at: new Date(Date.now() - (durationMinutes || 25) * 60 * 1000).toISOString(),
       ended_at: new Date().toISOString(),
       duration_minutes: durationMinutes || 25,
-      summary: subject && chapter
+      notes: subject && chapter
         ? `Studied ${chapter} (${subject})`
         : 'Daily session completed',
     });

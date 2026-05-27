@@ -2,9 +2,11 @@ export const maxDuration = 60;
 
 import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { genai } from '@/lib/ai/gemini';
+import { generateJSON } from '@/lib/ai/gemini';
 import { logger } from '@/lib/utils/logger';
 import { z } from 'zod';
+import pdf from 'pdf-parse';
+import { runOCR } from '@/utils/ocr';
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 const ALLOWED_MIME_TYPES = new Set([
@@ -51,60 +53,51 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Unsupported file type. Use PDF, TXT, or Image.' }, { status: 415 });
     }
 
-    // 1. Convert file data for Gemini API
-    let filePart: any;
+    // 1. Extract text locally, then route the structured extraction through
+    // the configured provider stack. Do not call the legacy genai stub.
+    let extractedText = '';
     if (mimeType.startsWith('text/')) {
-      filePart = { text: await file.text() };
-    } else {
+      extractedText = await file.text();
+    } else if (mimeType === 'application/pdf') {
+      const arrayBuffer = await file.arrayBuffer();
+      const parsed = await pdf(Buffer.from(arrayBuffer));
+      extractedText = parsed.text;
+    } else if (mimeType.startsWith('image/')) {
       const arrayBuffer = await file.arrayBuffer();
       const base64 = Buffer.from(arrayBuffer).toString('base64');
-      filePart = { inlineData: { mimeType, data: base64 } };
+      extractedText = await runOCR(base64, mimeType);
+    } else {
+      extractedText = file.name;
     }
 
-    // 2. Instruct Gemini to extract subjects/chapters
+    const sourceText = extractedText.trim().slice(0, 30_000);
+    if (!sourceText) {
+      return NextResponse.json({ error: 'Could not extract readable text from the uploaded file.' }, { status: 422 });
+    }
+
+    // 2. Extract subjects/chapters
     const prompt = `
       You are an expert curriculum extractor. 
-      Analyze the attached syllabus, exam description, course overview, or textbook document.
+      Analyze this syllabus, exam description, course overview, or textbook excerpt.
       Extract a structured list of subjects, and for each subject, a list of chapters.
       Keep names concise, standard, and highly relevant. Limit the total number of subjects to max 3, and chapters per subject to max 5 to speed up graph seeding.
       
       Respond STRICTLY in the requested JSON format.
+
+      File name: ${file.name}
+      Extracted content:
+      ${sourceText}
     `;
 
-    logger.info('Processing syllabus upload via Gemini', { userId: user.id, fileName: file.name });
+    logger.info('Processing syllabus upload', { userId: user.id, fileName: file.name });
 
-     const response = await genai.models.generateContent({
-       model: 'gemini-2.0-flash',
-       contents: [filePart, { text: prompt }],
-       config: {
-        responseMimeType: 'application/json',
-        responseSchema: {
-          type: 'object',
-          properties: {
-            syllabusTitle: { type: 'string' },
-            subjects: {
-              type: 'array',
-              items: {
-                type: 'object',
-                properties: {
-                  name: { type: 'string' },
-                  chapters: {
-                    type: 'array',
-                    items: { type: 'string' }
-                  }
-                },
-                required: ['name', 'chapters']
-              }
-            }
-          },
-          required: ['syllabusTitle', 'subjects']
-        },
-        temperature: 0.2,
-      }
-    });
-
-    const rawText = (response.text || '{}').replace(/```json/gi, '').replace(/```/g, '').trim();
-    const parsedData = SyllabusSchema.parse(JSON.parse(rawText));
+    const parsedData = await generateJSON<z.infer<typeof SyllabusSchema>>(
+      'flash',
+      'You extract curricula into valid JSON only.',
+      prompt,
+      SyllabusSchema,
+      0.2
+    );
 
     const examTitle = parsedData.syllabusTitle || 'Uploaded Syllabus';
 

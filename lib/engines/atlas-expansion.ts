@@ -247,9 +247,29 @@ export function getSyllabusForExam(examType: string): Record<string, string[]> {
   }
   if (normalized.includes('JEE')) {
     return {
-      Physics: ['Mechanics','Thermal Physics','Electromagnetism','Optics','Modern Physics','Waves and Sound'],
-      Chemistry: ['Physical Chemistry','Inorganic Chemistry','Organic Chemistry'],
-      Mathematics: ['Algebra','Coordinate Geometry','Calculus','Vectors and 3D','Trigonometry','Statistics and Probability']
+      Physics: [
+        'Kinematics','Laws of Motion','Work Energy and Power','Rotational Motion',
+        'Gravitation','Properties of Matter','Thermal Properties','Thermodynamics',
+        'Kinetic Theory','Oscillations','Waves','Electrostatics','Current Electricity',
+        'Magnetic Effects of Current','Electromagnetic Induction','Alternating Current',
+        'Electromagnetic Waves','Ray Optics','Wave Optics','Modern Physics','Semiconductors'
+      ],
+      Chemistry: [
+        'Mole Concept','Atomic Structure','Chemical Bonding','States of Matter',
+        'Thermodynamics','Chemical Equilibrium','Ionic Equilibrium','Electrochemistry',
+        'Chemical Kinetics','Solutions','Surface Chemistry','Metallurgy',
+        's-Block Elements','p-Block Elements','d-Block Elements','Coordination Compounds',
+        'Hydrocarbons','Halogen Derivatives','Alcohols and Ethers','Carbonyl Compounds',
+        'Carboxylic Acids','Amines','Biomolecules and Polymers'
+      ],
+      Mathematics: [
+        'Sets and Relations','Complex Numbers','Quadratic Equations','Sequences and Series',
+        'Permutations and Combinations','Binomial Theorem','Matrices and Determinants',
+        'Straight Lines','Circles','Conic Sections','3D Geometry','Vectors',
+        'Limits and Continuity','Differentiation','Applications of Derivatives',
+        'Indefinite Integration','Definite Integration','Differential Equations',
+        'Trigonometry','Inverse Trigonometry','Statistics and Probability'
+      ]
     };
   }
   // Everything else gets AI-generated

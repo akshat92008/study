@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabase/server';
+import { createAdminClient } from '@/lib/supabase/admin';
 import { generateJSON } from '@/lib/ai/gemini';
 import { logger } from '@/lib/utils/logger';
 
@@ -33,7 +33,7 @@ Respond ONLY with a JSON array of strings, where each string is a subtopic name.
         return;
       }
 
-      const supabase = await createClient();
+      const supabase = createAdminClient();
       
       const newConcepts = subtopics.map(subtopic => ({
         user_id: userId,

@@ -16,5 +16,5 @@ ON concepts (user_id, mastery, created_at);
 
 -- Add index for revision cards due date queries
 CREATE INDEX IF NOT EXISTS idx_revision_cards_user_due 
-ON revision_cards (user_id, next_review) 
-WHERE next_review IS NOT NULL;
+ON revision_cards (user_id, due) 
+WHERE due IS NOT NULL;

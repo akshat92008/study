@@ -1,5 +1,6 @@
 import { createEmptyCard, fsrs, Rating, State, type Card as FSRSCard } from 'ts-fsrs';
 import { createClient } from '@/lib/supabase/server';
+import { createAdminClient } from '@/lib/supabase/admin';
 import { generateJSON } from '@/lib/ai/gemini';
 import { searchPersonalKnowledge } from './rag-engine';
 import { FlashcardBatchSchema } from './memory-schemas';
@@ -82,7 +83,7 @@ export function computeNextReview(
   return { nextDueAt, newStability: stability, newDifficulty: difficulty };
 }
 
-export async function getDueCards(userId: string, limit: number = 75, pulseState: string = 'neutral') {
+export async function getDueCards(userId: string, limit: number = 75) {
   const supabase = await createClient();
   const now = new Date().toISOString();
 
@@ -96,11 +97,6 @@ export async function getDueCards(userId: string, limit: number = 75, pulseState
     .select('*')
     .eq('user_id', userId)
     .lte('due', now);
-
-  // PULSE Intervention: Throttle new cognitive load if overwhelmed/frustrated
-  if (pulseState === 'overwhelmed' || pulseState === 'frustrated') {
-    query = query.neq('state', State.New);
-  }
 
   const { data } = await query
     .order('due', { ascending: true })
@@ -212,21 +208,6 @@ export async function reviewCard(cardId: string, rating: 1 | 2 | 3 | 4, response
     state: newStateInt,
     response_time_ms: responseTimeMs,
   });
-
-  // Log PULSE friction signal if response time degrades significantly (> 15s)
-  if (responseTimeMs && responseTimeMs > 15000) {
-    try {
-      await supabase.from('pulse_signals').insert({
-        user_id: row.user_id,
-        signal_type: 'performance_trend',
-        emotional_state: 'frustrated',
-        confidence: 0.7,
-        notes: `Slow revision response time: ${responseTimeMs}ms`,
-      });
-    } catch (e) {
-      logger.error('Failed to log slow response time pulse signal', e);
-    }
-  }
 
   // 5. Sync Ecosystem: Update parent Concept Mastery & Streak
   if (row.concept_id) {
@@ -427,9 +408,10 @@ export async function createSingleCard(
   front: string,
   back: string,
   subject: string,
-  chapter: string
+  chapter: string,
+  client?: Awaited<ReturnType<typeof createClient>>
 ) {
-  const supabase = await createClient();
+  const supabase = client ?? await createClient();
   const emptyCard = createEmptyCard();
   
   const { data, error } = await supabase.from('revision_cards').insert({
@@ -497,7 +479,7 @@ export class MemoryConsumer {
       'overconfidence', 'recall_failure',
     ]);
 
-    const supabase = await createClient();
+    const supabase = createAdminClient();
     let created = 0;
 
     for (const q of wrongQuestions) {
@@ -521,7 +503,8 @@ export class MemoryConsumer {
           q.conceptualGap || q.reasoning,           // front of card = the question/gap
           q.correctExplanation,                       // back of card = correct explanation
           q.subject,
-          q.chapter
+          q.chapter,
+          supabase as any
         );
 
         created++;
@@ -541,7 +524,7 @@ export class MemoryConsumer {
     if (sessionType === 'chat') return; // Only from TUTOR_SESSION type
 
     try {
-      const supabase = await createClient();
+      const supabase = createAdminClient();
       const { data: concept } = await supabase
         .from('concepts')
         .select('id')
@@ -557,7 +540,8 @@ export class MemoryConsumer {
         `What are the key concepts in ${chapter}?`,
         `Review your notes from your ${subject} — ${chapter} study session.`,
         subject,
-        chapter
+        chapter,
+        supabase as any
       );
 
       logger.info(`MemoryConsumer: created review card for ${chapter}`, { userId });
@@ -566,4 +550,3 @@ export class MemoryConsumer {
     }
   }
 }
-

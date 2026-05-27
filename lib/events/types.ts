@@ -1,21 +1,37 @@
-// lib/events/types.ts
-// FIX FAILURE 1: Previously CognitionEventType enum had values like 'mastery_changed'
-// but schema.ts Zod enum had 'MIND_TUTOR_COMPLETED' and engines inserted 'AUTOPSY_COMPLETE'.
-// Three systems, zero agreement. Events were silently dropped.
-//
-// NOW: This enum mirrors schema.ts exactly so EventWorker, schema validation,
-// and engine inserts all use the same string values.
+export const EventTypes = {
+  MIND_MESSAGE_CREATED: 'MIND_MESSAGE_CREATED',
+  MIND_TUTOR_COMPLETED: 'MIND_TUTOR_COMPLETED',
+  AUTOPSY_MOCK_PROCESSED: 'AUTOPSY_MOCK_PROCESSED',
+  ATLAS_MASTERY_UPDATED: 'ATLAS_MASTERY_UPDATED',
+  MEMORY_CARD_CREATED: 'MEMORY_CARD_CREATED',
+  MEMORY_CARD_REVIEWED: 'MEMORY_CARD_REVIEWED',
+  COMMAND_SESSION_CREATED: 'COMMAND_SESSION_CREATED',
+  COMMAND_SESSION_COMPLETED: 'COMMAND_SESSION_COMPLETED',
+  COMMAND_TASK_COMPLETED: 'COMMAND_TASK_COMPLETED',
+  COMMAND_TASK_DELAYED: 'COMMAND_TASK_DELAYED',
+  STUDY_SESSION_COMPLETED: 'STUDY_SESSION_COMPLETED',
+  CONCEPT_DISCOVERED: 'CONCEPT_DISCOVERED',
+  INGESTION_DOCUMENT_PROCESSED: 'INGESTION_DOCUMENT_PROCESSED',
+} as const;
+
+export type EventType = keyof typeof EventTypes;
 
 export enum CognitionEventType {
+  MindMessageCreated = 'MIND_MESSAGE_CREATED',
   MindTutorCompleted = 'MIND_TUTOR_COMPLETED',
   AutopsyMockProcessed = 'AUTOPSY_MOCK_PROCESSED',
+  AtlasMasteryUpdated = 'ATLAS_MASTERY_UPDATED',
+  MemoryCardCreated = 'MEMORY_CARD_CREATED',
   MemoryCardReviewed = 'MEMORY_CARD_REVIEWED',
+  CommandSessionCreated = 'COMMAND_SESSION_CREATED',
+  CommandSessionCompleted = 'COMMAND_SESSION_COMPLETED',
   CommandTaskCompleted = 'COMMAND_TASK_COMPLETED',
   CommandTaskDelayed = 'COMMAND_TASK_DELAYED',
-  PulseFrictionDetected = 'PULSE_FRICTION_DETECTED',
-  AtlasMasteryUpdated = 'ATLAS_MASTERY_UPDATED',
+  StudySessionCompleted = 'STUDY_SESSION_COMPLETED',
+  ConceptDiscovered = 'CONCEPT_DISCOVERED',
+  IngestionDocumentProcessed = 'INGESTION_DOCUMENT_PROCESSED',
 
-  // Legacy events for EventWorker and its tests
+  // Legacy worker events retained for the existing background worker tests.
   MasteryChanged = 'mastery_changed',
   RetrievalSucceeded = 'retrieval_succeeded',
   RetrievalFailed = 'retrieval_failed',

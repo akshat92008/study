@@ -8,6 +8,9 @@ if (process.env.NODE_ENV !== 'test') {
 
 const nextConfig: NextConfig = {
   serverExternalPackages: ['pdf-parse'],
+  turbopack: {
+    root: process.cwd(),
+  },
   experimental: {
     serverActions: {
       bodySizeLimit: '10mb',

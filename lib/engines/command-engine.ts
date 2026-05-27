@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
+import { createAdminClient } from '@/lib/supabase/admin';
 import { generateJSON } from '@/lib/ai/gemini';
 import { logger } from '@/lib/utils/logger';
 import { z } from 'zod';
@@ -67,7 +68,7 @@ export class CommandPlanner {
    * and concepts, and populates the database concepts and concept_links tables.
    */
   async initializeGoalRoadmap(userId: string, input: GoalInput): Promise<{ goalId: string; milestonesCount: number; conceptsCount: number }> {
-    const supabase = await createClient();
+    const supabase = createAdminClient();
 
     // 1. Create the Goal Record
     const { data: goal, error: goalErr } = await supabase
@@ -203,7 +204,7 @@ export class CommandPlanner {
    * based on backlog, FSRS memory decay, autopsies, and roadmap prerequisites.
    */
   async computeScores(userId: string, dateStr: string): Promise<CandidateTask[]> {
-    const supabase = await createClient();
+    const supabase = createAdminClient();
     const candidates: CandidateTask[] = [];
 
     // Resolve date boundary
@@ -501,7 +502,7 @@ export class CommandConsumer {
 
     if (wrongQuestions.length === 0) return;
 
-    const supabase = await createClient();
+    const supabase = createAdminClient();
     const tomorrow = new Date(Date.now() + 86_400_000).toISOString().split('T')[0];
 
     // Dedupe chapters — only one remediation task per chapter
@@ -549,7 +550,7 @@ export class CommandConsumer {
     const { subject, chapter } = data || {};
     if (!subject || !chapter) return;
 
-    const supabase = await createClient();
+    const supabase = createAdminClient();
     const today = new Date().toISOString().split('T')[0];
 
     // Mark any matching task for today as complete

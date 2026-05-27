@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 interface ScriptLine {
   speaker: 'ALEX' | 'PRIYA';
@@ -118,39 +118,35 @@ function WebSpeechPlayer({
     }
   }, [currentLine]);
 
-  const speakLine = useCallback(
-    (index: number) => {
-      if (cancelledRef.current || !synthRef.current) return;
-      if (index >= lines.length) {
-        setPlaying(false);
-        setCurrentLine(-1);
-        return;
-      }
+  function speakLine(index: number) {
+    if (cancelledRef.current || !synthRef.current) return;
+    if (index >= lines.length) {
+      setPlaying(false);
+      setCurrentLine(-1);
+      return;
+    }
 
-      setCurrentLine(index);
-      const line = lines[index];
-      const utterance = new SpeechSynthesisUtterance(line.text);
+    setCurrentLine(index);
+    const line = lines[index];
+    const utterance = new SpeechSynthesisUtterance(line.text);
 
-      // Differentiate voices slightly by pitch
-      utterance.rate = 1.05;
-      utterance.pitch = line.speaker === 'PRIYA' ? 1.15 : 0.9;
-      utterance.volume = 1;
+    utterance.rate = 1.05;
+    utterance.pitch = line.speaker === 'PRIYA' ? 1.15 : 0.9;
+    utterance.volume = 1;
 
-      utterance.onend = () => {
+    utterance.onend = () => {
+      if (!cancelledRef.current) speakLine(index + 1);
+    };
+
+    utterance.onerror = (e) => {
+      if (e.error !== 'interrupted') {
+        logger_client(`Speech error on line ${index}: ${e.error}`);
         if (!cancelledRef.current) speakLine(index + 1);
-      };
+      }
+    };
 
-      utterance.onerror = (e) => {
-        if (e.error !== 'interrupted') {
-          logger_client(`Speech error on line ${index}: ${e.error}`);
-          if (!cancelledRef.current) speakLine(index + 1);
-        }
-      };
-
-      synthRef.current.speak(utterance);
-    },
-    [lines]
-  );
+    synthRef.current.speak(utterance);
+  }
 
   const handlePlay = () => {
     if (!synthRef.current) return;

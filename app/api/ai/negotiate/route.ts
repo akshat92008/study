@@ -50,33 +50,61 @@ export async function POST(req: NextRequest) {
   `;
 
   try {
-    // We use generateJSON so it perfectly formats the new database rows
-    const result = await generateJSON('pro', 'You are an elite, empathetic academic assistant.', prompt, NegotiatedPlanSchema);
+  const result = await generateJSON('pro', 'You are an elite, empathetic academic assistant.', prompt, NegotiatedPlanSchema);
 
-    // 2. Delete the old uncompleted tasks
-    if (currentTasks && currentTasks.length > 0) {
-      const taskIds = currentTasks.map(t => t.id);
-      await supabase.from('study_tasks').delete().in('id', taskIds);
-    }
-
-    // 3. Insert the newly negotiated tasks
-    if (result.newTasks.length > 0) {
-      const rowsToInsert = result.newTasks.map(t => ({
-        ...t,
-        user_id: user.id,
-        scheduled_date: date,
-        is_completed: false
-      }));
-      await supabase.from('study_tasks').insert(rowsToInsert);
-    }
-
-    // 4. Return the conversational reply to the UI
-    return new Response(JSON.stringify({ reply: result.assistantReply }), {
-      headers: { 'Content-Type': 'application/json' },
-    });
-
-  } catch (err) {
-    console.error(err);
-    return new Response(JSON.stringify({ reply: "I'm having trouble updating the plan right now. Let me know what you want to drop and I'll try again." }), { status: 500 });
+  // Validate we got real tasks back before touching the database
+  if (!result || !Array.isArray(result.newTasks)) {
+    throw new Error('AI returned invalid task structure');
   }
+
+  // Build insert rows BEFORE deleting anything
+  const rowsToInsert = result.newTasks.map(t => ({
+    ...t,
+    user_id: user.id,
+    scheduled_date: date,
+    is_completed: false
+  }));
+
+  // Only delete after we have confirmed valid replacement data
+  if (currentTasks && currentTasks.length > 0) {
+    const taskIds = currentTasks.map((t: any) => t.id);
+    const { error: deleteError } = await supabase
+      .from('study_tasks')
+      .delete()
+      .in('id', taskIds);
+    
+    if (deleteError) throw new Error(`Failed to delete old tasks: ${deleteError.message}`);
+  }
+
+  // Now insert the new tasks
+  if (rowsToInsert.length > 0) {
+    const { error: insertError } = await supabase
+      .from('study_tasks')
+      .insert(rowsToInsert);
+    
+    if (insertError) {
+      // Critical: insert failed after delete. Re-insert the original tasks to recover.
+      if (currentTasks && currentTasks.length > 0) {
+        try {
+          await supabase.from('study_tasks').insert(
+            currentTasks.map((t: any) => ({ ...t, id: undefined })) // let DB assign new IDs
+          );
+        } catch {
+          // best effort recovery
+        }
+      }
+      throw new Error(`Failed to insert new tasks: ${insertError.message}`);
+    }
+  }
+
+  return new Response(JSON.stringify({ reply: result.assistantReply }), {
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+} catch (err) {
+  console.error('Negotiate route error:', err);
+  return new Response(JSON.stringify({ 
+    reply: "I couldn't update the plan safely — your original tasks are still there. Tell me exactly what you want to change and I'll try again." 
+  }), { status: 500 });
+}
 }

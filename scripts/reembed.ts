@@ -7,6 +7,8 @@
  * Run on staging first. Takes ~10-30 min depending on DB size.
  */
 
+import * as dotenv from 'dotenv';
+dotenv.config({ path: '.env.local' });
 import { createClient } from '@supabase/supabase-js';
 import { GoogleGenAI } from '@google/genai';
 

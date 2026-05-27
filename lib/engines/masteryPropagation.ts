@@ -2,6 +2,23 @@ import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/utils/logger';
 
 const PREREQ_BOOST_DECAY = 0.1; // Fraction of mastery boost that propagates to prerequisites
+const MASTERY_TO_SCORE: Record<string, number> = {
+  not_started: 0,
+  exposed: 0.2,
+  developing: 0.45,
+  proficient: 0.7,
+  mastered: 0.9,
+  automated: 1,
+};
+
+function scoreToMastery(score: number): string {
+  if (score >= 0.95) return 'automated';
+  if (score >= 0.8) return 'mastered';
+  if (score >= 0.6) return 'proficient';
+  if (score >= 0.35) return 'developing';
+  if (score > 0) return 'exposed';
+  return 'not_started';
+}
 
 /**
  * Updates mastery for a target concept, then propagates a decayed boost to its prerequisites.
@@ -31,12 +48,12 @@ export async function propagateMastery(
   // 3. Fetch current mastery of each prerequisite
   const { data: currentMasteries } = await supabase
     .from('concepts')
-    .select('id, mastery_level')
+    .select('id, mastery')
     .in('id', prereqIds)
     .eq('user_id', userId);
 
   const masteryMap = new Map<string, number>(
-    (currentMasteries || []).map((c: any) => [c.id, c.mastery_level ?? 0])
+    (currentMasteries || []).map((c: any) => [c.id, MASTERY_TO_SCORE[c.mastery] ?? 0])
   );
 
   // 4. Propagate decayed boost to each prerequisite
@@ -74,8 +91,8 @@ export class LearnerStateService {
     const { error } = await supabase
       .from('concepts')
       .update({
-        mastery_level: params.masteryScore,
-        last_reviewed: params.lastUpdated.toISOString(),
+        mastery: scoreToMastery(params.masteryScore),
+        last_reviewed_at: params.lastUpdated.toISOString(),
       })
       .eq('id', params.conceptId)
       .eq('user_id', params.userId);

@@ -3,7 +3,8 @@
 import { createClient } from '@/lib/supabase/server';
 import { revalidatePath } from 'next/cache';
 import { processDocumentIntoMemory } from '@/lib/engines/memory-engine';
-import { genai, MODELS } from '@/lib/ai/gemini';
+import pdf from 'pdf-parse';
+import { runOCR } from '@/utils/ocr';
 import { logger } from '@/lib/utils/logger';
 
 export async function uploadNotes(formData: FormData) {
@@ -19,26 +20,20 @@ export async function uploadNotes(formData: FormData) {
   if (!file && !content) return { error: 'Either a file or text content is required' };
 
   try {
-    // Phase 10: Gemini 1.5 Pro Multimodal Extraction Pipeline
     if (file) {
-      logger.info('Processing file upload via Gemini Multimodal', { filename: file.name, type: file.type });
+      logger.info('Processing file upload for knowledge ingestion', { filename: file.name, type: file.type });
       const buffer = await file.arrayBuffer();
-      const base64 = Buffer.from(buffer).toString('base64');
+      const bytes = Buffer.from(buffer);
 
-      const response = await genai.models.generateContent({
-        model: MODELS.pro,
-        contents: [
-          "Extract all text, equations, and tables from this document accurately. Preserve logical reading order and section headers. Output ONLY the extracted text with proper markdown formatting.",
-          {
-            inlineData: {
-              data: base64,
-              mimeType: file.type
-            }
-          }
-        ]
-      });
+      if (file.type === 'application/pdf') {
+        const parsed = await pdf(bytes);
+        content = parsed.text;
+      } else if (file.type.startsWith('image/')) {
+        content = await runOCR(bytes.toString('base64'), file.type);
+      } else {
+        content = bytes.toString('utf-8');
+      }
 
-      content = response.text || '';
       if (!content) throw new Error('Failed to extract text from file.');
     }
 

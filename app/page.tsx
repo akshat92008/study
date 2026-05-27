@@ -6,7 +6,7 @@ export default async function LandingPage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (user) {
-    redirect('/dashboard');
+    redirect('/chat');
   }
 
   return <LandingClient />;

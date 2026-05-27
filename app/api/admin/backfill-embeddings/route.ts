@@ -5,16 +5,20 @@ import { logger } from '@/lib/utils/logger';
 import { after } from 'next/server';
 
 export async function POST(req: Request) {
+  // Secured — only callable with CRON_SECRET header
+  const authHeader = req.headers.get('authorization');
+  if (!process.env.CRON_SECRET || authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   const supabase = await createClient();
-  
-  // Basic auth check if needed, or we can just rely on RLS / internal triggering
-  
+
   // Find concepts with no embedding
   const { data: concepts, error } = await supabase
     .from('concepts')
     .select('id, subject, chapter')
     .is('embedding', null)
-    .limit(100);
+    .limit(40);
     
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
@@ -51,7 +55,7 @@ export async function POST(req: Request) {
       }
       
       // Delay to avoid Gemini rate limits
-      await new Promise(r => setTimeout(r, 500));
+      await new Promise(r => setTimeout(r, 200));
     }
     logger.info(`Finished background backfill. Successfully updated ${successCount} concepts.`);
   });

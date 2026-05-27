@@ -25,10 +25,15 @@ function useTopicTimer(running: boolean) {
   const [elapsed, setElapsed] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const startRef = useRef<number | null>(null);
+  const elapsedRef = useRef(0);
+
+  useEffect(() => {
+    elapsedRef.current = elapsed;
+  }, [elapsed]);
 
   useEffect(() => {
     if (running && !intervalRef.current) {
-      startRef.current = Date.now() - elapsed * 1000;
+      startRef.current = Date.now() - elapsedRef.current * 1000;
       intervalRef.current = setInterval(() => {
         setElapsed(Math.floor((Date.now() - (startRef.current ?? Date.now())) / 1000));
       }, 1000);

@@ -170,7 +170,7 @@ export default function LandingClient() {
             { value: '$42B', label: 'AI in Education by 2030', sub: 'Growing at 40.9% CAGR' },
             { value: '$33B', label: 'India EdTech by 2034', sub: 'Second largest global market' },
             { value: '30.5%', label: 'AI Tutor CAGR', sub: 'From $2.75B today' },
-            { value: '$19/mo', label: 'Pro Pricing Point', sub: 'High value retention model' }
+            { value: '5', label: 'Connected Learning Engines', sub: 'One study OS, not scattered tools' }
           ].map((stat, i) => (
             <div key={i} style={{
               background: 'rgba(255, 255, 255, 0.02)',
@@ -276,7 +276,7 @@ export default function LandingClient() {
                 <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 800 }}>The OS Dashboard <span style={{ fontSize: 10, background: 'rgba(168, 85, 247, 0.1)', color: '#a855f7', padding: '2px 8px', borderRadius: 4, marginLeft: 8 }}>DEPTH</span></h3>
               </div>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12, color: '#a1a1aa', fontSize: 'var(--fs-sm)' }}>
-                {['ATLAS — Dynamic concept knowledge graph', 'MEMORY — Math-backed FSRS flashcard queue', 'AUTOPSY — Error root-cause classifier', 'COMMAND — AI mission daily planner', 'PULSE — Silent mental state burnout monitor', 'Analytics — Bloomberg-grade performance trends'].map((item, idx) => (
+                {['ATLAS — Dynamic concept knowledge graph', 'MEMORY — Math-backed FSRS flashcard queue', 'AUTOPSY — Error root-cause classifier', 'COMMAND — AI mission daily planner', 'Analytics — performance trends that explain what to do next'].map((item, idx) => (
                   <li key={idx} style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
                     <span style={{ color: '#a855f7' }}>→</span>
                     {item}
@@ -360,10 +360,10 @@ export default function LandingClient() {
             04 — The Intelligence Engine
           </div>
           <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, marginBottom: 'var(--sp-4)', letterSpacing: '-0.02em' }}>
-            Six modules. All invisible. All connected.
+            Five engines. All invisible. All connected.
           </h2>
           <p style={{ color: '#a1a1aa', fontSize: 'var(--fs-md)', lineHeight: 1.6, maxWidth: 800, marginBottom: 40 }}>
-            Students never see names of modules or graphs. Under the hood, six AI systems synchronize to form one continuously-updating student brain model.
+            Students never see names of modules or graphs. Under the hood, five AI systems synchronize to form one continuously-updating student brain model.
           </p>
 
           <div style={{
@@ -378,7 +378,6 @@ export default function LandingClient() {
               { icon: Microscope, title: 'AUTOPSY', label: 'Mock Test Intelligence', desc: 'Ingest PDFs or images. Classifies error root causes: conceptual gaps, calculation slips, or anxiety.', color: '#ef4444' },
               { icon: Network, title: 'ATLAS', label: 'Knowledge Graph', desc: 'Living map tracking prerequisite chains and masteries across topics.', color: '#00f0ff' },
               { icon: Zap, title: 'MEMORY', label: 'FSRS-5 Revision Engine', desc: 'Math-backed spacing scheduler that prompts reviews at the optimal forgetting point.', color: '#eab308' },
-              { icon: Activity, title: 'PULSE', label: 'Mental State Engine', desc: 'Silently monitors burnout triggers (drop in session time/accuracy) and dials back load.', color: '#ec4899' },
             ].map((engine, idx) => (
               <div key={idx} style={{
                 background: 'rgba(255, 255, 255, 0.02)',
@@ -422,83 +421,28 @@ export default function LandingClient() {
           </div>
         </section>
 
-        {/* SECTION 05 — PRICING & TIER GATING */}
+        {/* SECTION 05 — BETA ACCESS */}
         <section style={{ margin: '80px 0', borderTop: '1px solid rgba(255, 255, 255, 0.05)', paddingTop: 60 }}>
           <div style={{ color: '#00f0ff', fontSize: 'var(--fs-xs)', fontFamily: 'monospace', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>
-            05 — Revenue Model
+            05 — Beta Access
           </div>
           <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, marginBottom: 'var(--sp-4)', letterSpacing: '-0.02em' }}>
-            Three tiers. Subscription. No ads.
+            One full product while the learning loop is being proven.
           </h2>
-
           <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: 24,
-            marginTop: 32
+            background: '#0e0e11',
+            border: '1px solid rgba(255, 255, 255, 0.05)',
+            borderRadius: 16,
+            padding: 28,
+            marginTop: 32,
+            maxWidth: 720
           }}>
-            {/* Free Card */}
-            <div style={{
-              background: '#0e0e11',
-              border: '1px solid rgba(255, 255, 255, 0.05)',
-              borderRadius: 16,
-              padding: 28
-            }}>
-              <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 700 }}>Free</h3>
-              <div style={{ fontSize: '1.8rem', fontWeight: 900, margin: '8px 0 16px' }}>$0 <span style={{ fontSize: 'var(--fs-xs)', color: '#71717a' }}>/ month</span></div>
-              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px', display: 'flex', flexDirection: 'column', gap: 10, fontSize: 'var(--fs-xs)', color: '#a1a1aa' }}>
-                <li style={{ display: 'flex', gap: 8 }}><Check size={14} style={{ color: '#22c55e' }} /> 1 syllabus document upload</li>
-                <li style={{ display: 'flex', gap: 8 }}><Check size={14} style={{ color: '#22c55e' }} /> 10 tutor chats / day</li>
-                <li style={{ display: 'flex', gap: 8 }}><Check size={14} style={{ color: '#22c55e' }} /> 1 mock test autopsy / month</li>
-                <li style={{ display: 'flex', gap: 8 }}><Check size={14} style={{ color: '#22c55e' }} /> 20 flashcard reviews / day</li>
-              </ul>
-              <NextLink href="/signup" style={{ display: 'block', textAlign: 'center', border: '1px solid rgba(255, 255, 255, 0.1)', color: 'white', padding: 12, borderRadius: 8, fontSize: 'var(--fs-xs)', fontWeight: 600, textDecoration: 'none' }}>
-                Sign Up
-              </NextLink>
-            </div>
-
-            {/* Pro Card */}
-            <div style={{
-              background: 'linear-gradient(135deg, #12121c, #0e0e14)',
-              border: '1px solid rgba(168, 85, 247, 0.3)',
-              borderRadius: 16,
-              padding: 28,
-              position: 'relative'
-            }}>
-              <div style={{ position: 'absolute', top: -12, right: 16, background: '#a855f7', color: 'white', padding: '2px 10px', borderRadius: 20, fontSize: 10, fontWeight: 'bold', textTransform: 'uppercase' }}>Most Popular</div>
-              <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 700 }}>Pro</h3>
-              <div style={{ fontSize: '1.8rem', fontWeight: 900, margin: '8px 0 16px' }}>$19 <span style={{ fontSize: 'var(--fs-xs)', color: '#71717a' }}>/ month</span></div>
-              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px', display: 'flex', flexDirection: 'column', gap: 10, fontSize: 'var(--fs-xs)', color: '#e4e4e7' }}>
-                <li style={{ display: 'flex', gap: 8 }}><Check size={14} style={{ color: '#a855f7' }} /> Unlimited tutor chats & uploads</li>
-                <li style={{ display: 'flex', gap: 8 }}><Check size={14} style={{ color: '#a855f7' }} /> Full ATLAS knowledge graph</li>
-                <li style={{ display: 'flex', gap: 8 }}><Check size={14} style={{ color: '#a855f7' }} /> Unlimited autopsies & reviews</li>
-                <li style={{ display: 'flex', gap: 8 }}><Check size={14} style={{ color: '#a855f7' }} /> Daily mission + morning briefs</li>
-                <li style={{ display: 'flex', gap: 8 }}><Check size={14} style={{ color: '#a855f7' }} /> PULSE burnout monitoring</li>
-              </ul>
-              <NextLink href="/signup" style={{ display: 'block', textAlign: 'center', background: '#a855f7', color: 'white', padding: 12, borderRadius: 8, fontSize: 'var(--fs-xs)', fontWeight: 600, textDecoration: 'none' }}>
-                Upgrade to Pro
-              </NextLink>
-            </div>
-
-            {/* Teams Card */}
-            <div style={{
-              background: '#0e0e11',
-              border: '1px solid rgba(255, 255, 255, 0.05)',
-              borderRadius: 16,
-              padding: 28
-            }}>
-              <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 700 }}>Teams</h3>
-              <div style={{ fontSize: '1.8rem', fontWeight: 900, margin: '8px 0 16px' }}>$49 <span style={{ fontSize: 'var(--fs-xs)', color: '#71717a' }}>/ user / mo</span></div>
-              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px', display: 'flex', flexDirection: 'column', gap: 10, fontSize: 'var(--fs-xs)', color: '#a1a1aa' }}>
-                <li style={{ display: 'flex', gap: 8 }}><Check size={14} style={{ color: '#3b82f6' }} /> Everything in Pro</li>
-                <li style={{ display: 'flex', gap: 8 }}><Check size={14} style={{ color: '#3b82f6' }} /> Custom curriculum seeding</li>
-                <li style={{ display: 'flex', gap: 8 }}><Check size={14} style={{ color: '#3b82f6' }} /> Educator dashboard</li>
-                <li style={{ display: 'flex', gap: 8 }}><Check size={14} style={{ color: '#3b82f6' }} /> At-risk student alert analytics</li>
-              </ul>
-              <NextLink href="/signup" style={{ display: 'block', textAlign: 'center', border: '1px solid rgba(255, 255, 255, 0.1)', color: 'white', padding: 12, borderRadius: 8, fontSize: 'var(--fs-xs)', fontWeight: 600, textDecoration: 'none' }}>
-                Contact Sales
-              </NextLink>
-            </div>
+            <p style={{ color: '#a1a1aa', fontSize: 'var(--fs-md)', lineHeight: 1.6, margin: '0 0 20px' }}>
+              Monetisation is intentionally disabled for now. Every beta learner gets the complete Cognition OS study loop: chat, ATLAS, MEMORY, AUTOPSY, COMMAND, uploads, and daily sessions.
+            </p>
+            <NextLink href="/signup" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#0055ff', color: 'white', padding: '12px 18px', borderRadius: 8, fontSize: 'var(--fs-xs)', fontWeight: 700, textDecoration: 'none' }}>
+              Start Free Beta <ArrowRight size={14} />
+            </NextLink>
           </div>
         </section>
 

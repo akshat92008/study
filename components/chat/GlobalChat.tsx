@@ -1,10 +1,9 @@
 'use client';
 
-import React, { useState, useEffect, useRef, memo } from 'react';
+import React, { useState, useEffect, useRef, memo, useCallback } from 'react';
 import { Bot, Maximize2, Minimize2, Trash2, Flame, Volume2, VolumeX } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
 import { useStream } from '@/hooks/useStream';
-import { StreamingMessage } from './StreamingMessage';
 import { ChatInput } from './ChatInput';
 import { RichMessageRenderer } from './RichMessageRenderer';
 import { createClient } from '@/lib/supabase/client';
@@ -50,20 +49,21 @@ export const GlobalChat = memo(function GlobalChat() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Initialize the stream hook
-  const { status, streamingText, send, cancel, resetStatus } = useStream('/api/ai/chat');
+  const { status, streamingText, send, resetStatus } = useStream('/api/ai/chat');
 
   const hasMessages = chatMessages.length > 0;
   const { formatted } = useSessionTimer(hasMessages);
 
   const [user, setUser] = useState<any>(null);
-  const supabase = createClient();
+  const supabaseRef = useRef(createClient());
+  const supabase = supabaseRef.current;
 
   // Fetch authenticated user on mount
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
       if (user) setUser(user);
     });
-  }, []);
+  }, [supabase]);
 
   // Sync session state from store
   useEffect(() => {
@@ -76,14 +76,14 @@ export const GlobalChat = memo(function GlobalChat() {
   useEffect(() => {
     if (!user) return;
     loadChatFromSupabase();
-  }, [user]);
+  }, [loadChatFromSupabase, user]);
 
-  // Initialize PULSE telemetry session on chat mount
+  // Keep the chat session timer alive while the assistant is mounted.
   useEffect(() => {
     if (!sessionActive) {
       startSession();
     }
-  }, []);
+  }, [sessionActive, startSession]);
 
   // Scroll to bottom utility
   const scrollToBottom = () => {
@@ -182,7 +182,7 @@ export const GlobalChat = memo(function GlobalChat() {
     });
   };
 
-  const handleSendMessage = async (overrideMessage?: string) => {
+  const handleSendMessage = useCallback(async (overrideMessage?: string) => {
     const textToSend = typeof overrideMessage === 'string' ? overrideMessage : inputMessage.trim();
     if (!textToSend && !pendingFile) return;
     if (status === 'streaming' || status === 'connecting' || isProcessingUpload) return;
@@ -302,19 +302,24 @@ export const GlobalChat = memo(function GlobalChat() {
         timestamp: new Date().toISOString(),
       });
     }
-  };
-
-  const handleInterrupt = () => {
-    cancel();
-    if (streamingText) {
-      addChatMessage({
-        role: 'assistant',
-        content: streamingText + ' [Interrupted]',
-        timestamp: new Date().toISOString(),
-      });
-    }
-    resetStatus();
-  };
+  }, [
+    activeGoalId,
+    addChatMessage,
+    chatId,
+    chatMessages,
+    inputMessage,
+    isProcessingUpload,
+    pendingFile,
+    resetStatus,
+    router,
+    send,
+    sessionActive,
+    sessionStartTime,
+    speak,
+    startSession,
+    status,
+    voiceModeEnabled,
+  ]);
 
    return (
      <div

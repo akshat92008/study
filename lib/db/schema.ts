@@ -334,7 +334,7 @@ export const recoveryPlans = pgTable('recovery_plans', {
   createdAt: timestamp('created_at').defaultNow(),
 });
 
-// --- Phase 4: PULSE (Mental State Engine) ---
+// --- Emotional signals (legacy table retained for migration compatibility) ---
 
 export const pulseSignals = pgTable('pulse_signals', {
   id: uuid('id').primaryKey().defaultRandom(),
@@ -476,7 +476,6 @@ export const chatMemoryEmbeddings = pgTable('chat_memory_embeddings', {
   embedding: vector('embedding', { dimensions: 768 }),
   createdAt: timestamp('created_at').defaultNow(),
 });
-
 
 
 

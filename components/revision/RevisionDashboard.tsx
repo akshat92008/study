@@ -14,7 +14,7 @@ export default function RevisionDashboard({ data }: { data: any }) {
   const [showAnswer, setShowAnswer] = useState(false);
   const [reviewing, setReviewing] = useState(false);
 
-  const [cardStartTime, setCardStartTime] = useState(Date.now());
+  const [cardStartTime, setCardStartTime] = useState(0);
 
   const { due = [], stats = {} } = data || {};
   const currentCard = due[currentIndex];

@@ -1,5 +1,5 @@
 // lib/utils/billing.ts
-// BETA MODE: All features unlimited. Stripe deferred post-beta.
+// Beta mode: all student features are available without monetization.
 
 export type FeatureLimit = 'tutor_queries_daily' | 'document_uploads' | 'autopsies_monthly';
 
@@ -13,7 +13,7 @@ export async function checkUsageLimit(
 export async function getUserSubscriptionStatus(
   _userId: string
 ): Promise<'free' | 'pro' | 'teams'> {
-  return 'pro';
+  return 'free';
 }
 
 export async function incrementUsage(

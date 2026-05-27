@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useAppStore } from '@/stores/appStore';
 import {
   Brain, RefreshCw, Loader2, Upload, X, Activity, CheckCircle, Play
@@ -27,21 +27,10 @@ export default function DashboardPage() {
     uploadStatus,
     setUploadStatus,
     addToast,
-    addChatMessage
   } = useAppStore();
-
-  const handleStartSession = (topic: string, subject: string) => {
-    addChatMessage({
-      role: 'user',
-      content: `Let's start a Socratic tutoring session on "${topic}" (${subject}).`,
-      timestamp: new Date().toISOString()
-    });
-    addToast(`Session started: ${topic}`, 'success');
-  };
 
   const [dashboardData, setDashboardData] = useState<any>(null);
   const [masteryData, setMasteryData] = useState<any>(null);
-  const [loadingTelemetry, setLoadingTelemetry] = useState(true);
 
   const handleToggleTask = async (taskId: string) => {
     if (!dashboardData?.tasks) return;
@@ -59,7 +48,7 @@ export default function DashboardPage() {
       await toggleTask(taskId);
       addToast('Target status updated!', 'success');
       await loadTelemetry();
-    } catch (e) {
+    } catch {
       addToast('Failed to update target', 'error');
       loadTelemetry();
     }
@@ -70,7 +59,7 @@ export default function DashboardPage() {
   const [dragging, setDragging] = useState(false);
 
   // 1. Initial Data Loading
-  const loadTelemetry = async () => {
+  const loadTelemetry = useCallback(async () => {
     try {
       const [resDash, resMastery] = await Promise.all([
         fetch('/api/dashboard'),
@@ -86,12 +75,10 @@ export default function DashboardPage() {
       }
     } catch (e) {
       console.error('Failed to load dashboard data', e);
-    } finally {
-      setLoadingTelemetry(false);
     }
-  };
+  }, []);
 
-  const loadAutopsy = async () => {
+  const loadAutopsy = useCallback(async () => {
     try {
       const res = await fetch('/api/autopsy');
       if (res.ok) {
@@ -101,7 +88,7 @@ export default function DashboardPage() {
     } catch (e) {
       console.error('Failed to load autopsy data', e);
     }
-  };
+  }, [setAutopsyResult]);
 
   useEffect(() => {
     loadTelemetry();
@@ -112,7 +99,7 @@ export default function DashboardPage() {
     };
     window.addEventListener('refresh-dashboard', handleRefresh);
     return () => window.removeEventListener('refresh-dashboard', handleRefresh);
-  }, []);
+  }, [loadAutopsy, loadTelemetry]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {

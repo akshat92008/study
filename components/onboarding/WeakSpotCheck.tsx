@@ -1,7 +1,7 @@
 // components/onboarding/WeakSpotCheck.tsx
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle, Loader2 } from 'lucide-react';
 import Card from '@/components/ui/Card';
@@ -33,17 +33,7 @@ export default function WeakSpotCheck({ examType, onComplete }: WeakSpotCheckPro
   const [calibrationStatus, setCalibrationStatus] = useState('Generating Calibration Check...');
   const statusIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  // Start streaming quiz questions when component mounts
-  useEffect(() => {
-    startQuiz();
-    // Cleanup interval on unmount
-    return () => {
-      if (statusIntervalRef.current) clearInterval(statusIntervalRef.current);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const startQuiz = async () => {
+  const startQuiz = useCallback(async () => {
     setQuizData([]);
     setCurrentQ(0);
     setQuizResults([]);
@@ -104,7 +94,15 @@ export default function WeakSpotCheck({ examType, onComplete }: WeakSpotCheckPro
       }
       setQuizStreaming(false);
     }
-  };
+  }, [examType]);
+
+  // Start streaming quiz questions when component mounts
+  useEffect(() => {
+    startQuiz();
+    return () => {
+      if (statusIntervalRef.current) clearInterval(statusIntervalRef.current);
+    };
+  }, [startQuiz]);
 
   const handleAnswer = (selectedIndex: number) => {
     if (isAdvancing) return;

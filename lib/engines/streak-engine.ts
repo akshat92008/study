@@ -11,7 +11,7 @@ export async function computeAndUpdateStreak(userId: string): Promise<number> {
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('streak_days, last_study_date')
+    .select('streak_days')
     .eq('id', userId)
     .single();
 
@@ -19,14 +19,24 @@ export async function computeAndUpdateStreak(userId: string): Promise<number> {
 
   const today = new Date().toISOString().split('T')[0];
   const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
-  const lastStudy = profile.last_study_date;
+
+  const { data: latestSession } = await supabase
+    .from('study_sessions')
+    .select('ended_at, started_at')
+    .eq('user_id', userId)
+    .order('ended_at', { ascending: false, nullsFirst: false })
+    .limit(1)
+    .maybeSingle();
+
+  const lastStudy = latestSession?.ended_at || latestSession?.started_at;
+  const lastStudyDate = lastStudy ? String(lastStudy).split('T')[0] : null;
 
   let newStreak: number;
 
-  if (lastStudy === today) {
+  if (lastStudyDate === today) {
     // Already studied today — don't increment again
     newStreak = profile.streak_days || 1;
-  } else if (lastStudy === yesterday) {
+  } else if (lastStudyDate === yesterday) {
     // Studied yesterday — continue streak
     newStreak = (profile.streak_days || 0) + 1;
   } else {
@@ -38,7 +48,6 @@ export async function computeAndUpdateStreak(userId: string): Promise<number> {
     .from('profiles')
     .update({
       streak_days: newStreak,
-      last_study_date: today,
       last_active_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     })
@@ -50,22 +59,34 @@ export async function computeAndUpdateStreak(userId: string): Promise<number> {
 
 /**
  * Called by the daily synthesis cron to reset streaks for inactive users.
- * Only resets if last_study_date is before yesterday.
+ * Only resets if the latest completed study session is before yesterday.
  */
 export async function resetStreakIfInactive(userId: string): Promise<void> {
   const supabase = await createClient();
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('streak_days, last_study_date')
+    .select('streak_days')
     .eq('id', userId)
     .single();
 
-  if (!profile || !profile.last_study_date) return;
+  if (!profile) return;
+
+  const { data: latestSession } = await supabase
+    .from('study_sessions')
+    .select('ended_at, started_at')
+    .eq('user_id', userId)
+    .order('ended_at', { ascending: false, nullsFirst: false })
+    .limit(1)
+    .maybeSingle();
+
+  const lastStudy = latestSession?.ended_at || latestSession?.started_at;
+  if (!lastStudy) return;
 
   const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+  const lastStudyDate = String(lastStudy).split('T')[0];
 
-  if (profile.last_study_date < yesterday && (profile.streak_days || 0) > 0) {
+  if (lastStudyDate < yesterday && (profile.streak_days || 0) > 0) {
     await supabase
       .from('profiles')
       .update({ streak_days: 0, updated_at: new Date().toISOString() })

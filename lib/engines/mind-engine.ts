@@ -32,7 +32,7 @@ export async function getMINDContext(userId: string, message?: string): Promise<
       supabase.from('revision_cards')
         .select('id', { count: 'exact', head: true })
         .eq('user_id', userId)
-        .lte('next_review', new Date().toISOString()),
+        .lte('due', new Date().toISOString()),
 
       Promise.all([
         supabase.from('concepts').select('id', { count: 'exact', head: true }).eq('user_id', userId),
@@ -40,9 +40,9 @@ export async function getMINDContext(userId: string, message?: string): Promise<
       ]),
 
       supabase.from('study_sessions')
-        .select('summary, started_at')
+        .select('notes, started_at, subject, chapter')
         .eq('user_id', userId)
-        .not('summary', 'is', null)
+        .not('notes', 'is', null)
         .order('started_at', { ascending: false })
         .limit(5)
     ]);
@@ -56,7 +56,7 @@ export async function getMINDContext(userId: string, message?: string): Promise<
 
     // Extract recently studied topics from session summaries
     const recentTopics = (sessionsRes.data || [])
-      .map(s => s.summary?.match(/studied\s+(.+?)(?:\s+\(|\.)/i)?.[1])
+      .map(s => s.chapter || s.notes?.match(/studied\s+(.+?)(?:\s+\(|\.)/i)?.[1])
       .filter(Boolean) as string[];
 
     return {
@@ -117,7 +117,7 @@ export async function getRootGapChains(
     // Fetch all concept links for this user once
     const { data: allLinks } = await supabase
       .from('concept_links')
-      .select('concept_id, linked_concept_id, link_type, strength')
+      .select('source_concept_id, target_concept_id, link_type, strength')
       .eq('user_id', userId)
       .in('link_type', ['prerequisite', 'depends_on']);
 
@@ -126,9 +126,9 @@ export async function getRootGapChains(
     // Build prerequisite adjacency: conceptId → [prerequisiteConceptIds]
     const prereqMap = new Map<string, string[]>();
     for (const link of allLinks) {
-      const existing = prereqMap.get(link.concept_id) || [];
-      existing.push(link.linked_concept_id);
-      prereqMap.set(link.concept_id, existing);
+      const existing = prereqMap.get(link.target_concept_id) || [];
+      existing.push(link.source_concept_id);
+      prereqMap.set(link.target_concept_id, existing);
     }
 
     // Fetch all concepts for this user to resolve IDs to names+mastery
@@ -194,4 +194,3 @@ export async function getRootGapChains(
     return [];
   }
 }
-

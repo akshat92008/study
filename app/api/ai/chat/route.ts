@@ -10,13 +10,15 @@ import { getMINDSystemPrompt } from '@/lib/ai/prompts/mind-prompt';
 import { updateConceptState } from '@/lib/engines/cognition-graph';
 import { createSingleCard } from '@/lib/engines/revision-engine';
 import { logger } from '@/lib/utils/logger';
+import { orchestrate } from '@/lib/engines/orchestrator';
+import { logDecision } from '@/lib/utils/orchestratorLogger';
 import { resolveConceptByName } from '@/lib/engines/concept-resolver';
 import { LearningStateEngine } from '@/lib/engines/learning-state-engine';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { generateSessionClosingMessage } from '@/lib/engines/session-closing';
 import { MASTERY_WEIGHTS } from '@/lib/engines/cognition-graph';
 import { syncStudentModel } from '@/lib/engines/inference-engine';
-import { ChatMemoryService } from '../../../../services/chat-memory.service';
+import { ChatMemoryService } from '@/lib/services/chatMemoryService';
 import { detectChatIntent, buildConversationMessages } from '@/lib/ai/chat-intent';
 import { inferAndUpdateEmotionalState } from '@/lib/engines/emotional-state-updater';
 
@@ -52,11 +54,53 @@ export async function POST(req: NextRequest) {
   if (imageBase64 && imageMimeType) {
     const stream = new ReadableStream({
       async start(controller) {
+        let answer = '';
         try {
-          const answer = await routeVisionCall(systemPrompt, imageBase64, imageMimeType, message || 'Solve this question completely.');
+          answer = await routeVisionCall(systemPrompt, imageBase64, imageMimeType, message || 'Solve this question completely.');
           controller.enqueue(encoder.encode(answer));
         } catch {
-          controller.enqueue(encoder.encode('I had trouble reading that image. Try a clearer photo, or type the question out.'));
+          answer = 'I had trouble reading that image. Try a clearer photo, or type the question out.';
+          controller.enqueue(encoder.encode(answer));
+        }
+
+        try {
+          const userContent = message || '[Image question]';
+          const { data: existingSession } = await supabase
+            .from('chat_sessions')
+            .select('id')
+            .eq('id', sessionId)
+            .maybeSingle();
+
+          if (!existingSession) {
+            await supabase.from('chat_sessions').insert({
+              id: sessionId,
+              user_id: user.id,
+              session_type: 'global',
+              title: 'Cognition OS Main Thread',
+            });
+          }
+
+          await supabase.from('chat_messages').insert([
+            {
+              session_id: sessionId,
+              user_id: user.id,
+              role: 'user',
+              content: userContent,
+              metadata: { attachmentType: 'image', imageMimeType },
+            },
+            {
+              session_id: sessionId,
+              user_id: user.id,
+              role: 'assistant',
+              content: answer,
+            },
+          ]);
+
+          if (message) {
+            await new ChatMemoryService().storeMessageInMemory(user.id, message).catch(() => {});
+          }
+        } catch (err) {
+          logger.warn('Image chat persistence failed', err);
         }
         controller.close();
       }
@@ -64,11 +108,16 @@ export async function POST(req: NextRequest) {
     return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
   }
 
-  const intent = await detectChatIntent(
+  const detectedIntent = await detectChatIntent(
     message || '',
     (history || []).slice(-6),
     mindContext.profile.examType
   );
+// Determine routing via orchestrator
+const orchestratorResult = await orchestrate(user.id, message || '', (history || []).slice(-6), !!(imageBase64 && imageMimeType));
+await logDecision(orchestratorResult, user.id, message || '');
+// Use original intent for existing processing flow
+const intent = detectedIntent;
 // OVERWHELMED GATE — Hard structural enforcement.
 // When emotional state is overwhelmed, override TUTOR_SESSION and PRACTICE intents
 // regardless of what the student asked. The vision is explicit: "stop teaching new material immediately."

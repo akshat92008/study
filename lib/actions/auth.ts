@@ -41,24 +41,12 @@ export async function signOut() {
 export async function signInAsGuest() {
   const supabase = await createClient();
   
-  // Try anonymous sign-in first (standard approach)
-  let { data, error } = await supabase.auth.signInAnonymously();
-  
-  // If anonymous sign-ins are disabled in Supabase, fallback to a dummy user
+  const { data, error } = await supabase.auth.signInAnonymously();
+
   if (error || !data.user) {
-    const randomStr = Math.random().toString(36).substring(2, 10);
-    const email = `guest_${randomStr}@cognition.os`;
-    const password = `guest_${randomStr}_password`;
-    
-    const { error: signUpError } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: { full_name: 'Guest User', is_guest: true },
-      },
-    });
-    
-    if (signUpError) return { error: signUpError.message };
+    return {
+      error: error?.message || 'Guest access is not enabled for this project.',
+    };
   }
   
   redirect('/onboarding');

@@ -53,10 +53,10 @@ export function useVoiceInteraction(onTranscript?: (text: string) => void) {
     }
     
     return () => {
-      if (recognitionRef.current && isListening) {
-        recognitionRef.current.stop();
+      if (recognitionRef.current) {
+        try { recognitionRef.current.stop(); } catch {}
       }
-      if (synthesisRef.current && isSpeaking) {
+      if (synthesisRef.current) {
         synthesisRef.current.cancel();
       }
     };
@@ -84,7 +84,19 @@ export function useVoiceInteraction(onTranscript?: (text: string) => void) {
       synthesisRef.current.cancel(); // Cancel any ongoing speech
       
       // Basic cleaning for TTS (remove markdown asterisks, hashes, etc.)
-      const cleanText = text.replace(/[*_#]/g, '').trim();
+      const cleanText = text
+        .replace(/```[\s\S]*?```/g, 'code block')
+        .replace(/`([^`]+)`/g, '$1')
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+        .replace(/!\[[^\]]*\]\([^)]+\)/g, '')
+        .replace(/#{1,6}\s/g, '')
+        .replace(/[*_~]/g, '')
+        .replace(/^\s*[-•]\s/gm, '')
+        .replace(/\[Interrupted\]/g, '')
+        .replace(/===METADATA===[^]*/g, '')
+        .replace(/\n{2,}/g, '. ')
+        .replace(/\n/g, ' ')
+        .trim();
       
       if (!cleanText) return;
 
@@ -119,7 +131,9 @@ export function useVoiceInteraction(onTranscript?: (text: string) => void) {
     isSpeaking,
     speak,
     stopSpeaking,
-    isSpeechSupported: !!recognitionRef.current,
-    isSynthesisSupported: !!synthesisRef.current
+    isSpeechSupported: typeof window !== 'undefined' && (
+      'SpeechRecognition' in window || 'webkitSpeechRecognition' in window
+    ),
+    isSynthesisSupported: typeof window !== 'undefined' && 'speechSynthesis' in window,
   };
 }

@@ -56,7 +56,7 @@ if (cachedCard && !cacheErr) {
       supabase.from('profiles').select('full_name, exam_type, exam_date, streak_days').eq('id', user.id).single(),
       supabase.from('learning_goals').select('*').eq('user_id', user.id).eq('status', 'active').limit(1).maybeSingle(),
       supabase.from('concepts').select('name, subject, chapter, mastery').eq('user_id', user.id).in('mastery', ['not_started', 'exposed', 'developing']).order('mastery').limit(5),
-      supabase.from('revision_cards').select('id', { count: 'exact', head: true }).eq('user_id', user.id).lte('next_review', new Date().toISOString()),
+      supabase.from('revision_cards').select('id', { count: 'exact', head: true }).eq('user_id', user.id).lte('due', new Date().toISOString()),
       supabase.from('mistakes').select('subject, chapter, category').eq('user_id', user.id).order('created_at', { ascending: false }).limit(3),
       supabase.from('study_tasks').select('title, subject, chapter, estimated_minutes').eq('user_id', user.id).eq('scheduled_date', today).eq('is_completed', false).limit(1),
       supabase.from('study_sessions').select('id', { count: 'exact', head: true }).eq('user_id', user.id),

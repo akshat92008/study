@@ -2,7 +2,6 @@
 
 import React, { useRef, useEffect, KeyboardEvent, ChangeEvent } from 'react';
 import { Send, Paperclip, X, Image as ImageIcon, Loader2, Mic, MicOff } from 'lucide-react';
-import { usePulseCollector } from '@/hooks/usePulseCollector';
 import { useVoiceInteraction } from '@/hooks/useVoiceInteraction';
 
 export interface ChatInputProps {
@@ -32,8 +31,6 @@ export function ChatInput({
 }: ChatInputProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const { recordKeystroke, recordMessageSent } = usePulseCollector();
-  const sendStartTime = useRef<number>(Date.now());
 
   const { isListening, startListening, stopListening, isSpeechSupported } = useVoiceInteraction((text) => {
     onChange(value + (value ? ' ' : '') + text);
@@ -56,7 +53,6 @@ export function ChatInput({
       e.preventDefault();
       if (value.trim() || pendingFile) {
         if (!isStreaming && !isProcessingUpload) {
-          sendStartTime.current = Date.now();
           handleSend();
         }
       }
@@ -76,11 +72,7 @@ export function ChatInput({
         return;
       }
     }
-    const messageLength = value.trim().length;
     onSend();
-    setTimeout(() => {
-      recordMessageSent(messageLength, Date.now() - sendStartTime.current);
-    }, 100);
   };
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -169,7 +161,7 @@ export function ChatInput({
         <textarea
           ref={textareaRef}
           value={value}
-          onChange={e => { onChange(e.target.value); recordKeystroke(); }}
+          onChange={e => { onChange(e.target.value); }}
           onKeyDown={handleKeyDown}
           placeholder={placeholder}
           disabled={isProcessingUpload}

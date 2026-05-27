@@ -5,7 +5,7 @@ import { useAppStore } from '@/stores/appStore';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
 import Button from '@/components/ui/Button';
-import { Brain, Flame, Clock, ArrowRight, Loader2, Sparkles, Play, Volume2, VolumeX, Maximize2, Minimize2, Trophy, Headphones, X } from 'lucide-react';
+import { Brain, Flame, Clock, Loader2, Sparkles, Volume2, VolumeX, Maximize2, Minimize2, Trophy, Headphones } from 'lucide-react';
 
 export default function CurrentTaskCard({ onSessionComplete }: { onSessionComplete?: () => void }) {
   const [data, setData] = useState<any>(null);
@@ -82,7 +82,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
     };
     window.addEventListener('start-focus-session', handleStartFocus);
     return () => window.removeEventListener('start-focus-session', handleStartFocus);
-  }, [data]);
+  }, [addToast, data]);
 
   // Clean up audio on unmount
   useEffect(() => {
@@ -92,7 +92,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
           audioNodes.oscL.stop();
           audioNodes.oscR.stop();
           audioNodes.ctx.close();
-        } catch (e) {}
+        } catch {}
       }
     };
   }, [audioNodes]);
@@ -122,7 +122,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
       }, 25000);
     }
     return () => clearInterval(interval);
-  }, [isSessionActive]);
+  }, [STUDY_QUOTES.length, isSessionActive]);
 
   // Binaural Audio Toggle / Synthesizer
   const toggleFocusAudio = () => {
@@ -137,7 +137,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
 
   const startBinauralBeats = () => {
     try {
-      const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+      const AudioContextClass = window.AudioContext || (window as Window & typeof globalThis & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
       if (!AudioContextClass) return;
       const ctx = new AudioContextClass();
 
@@ -181,57 +181,12 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
         audioNodes.oscL.stop();
         audioNodes.oscR.stop();
         audioNodes.ctx.close();
-      } catch (e) {}
+      } catch {}
       setAudioNodes(null);
     }
   };
 
-  // Countdown timer logic
-  useEffect(() => {
-    let timer: any;
-    if (isSessionActive && timeLeft > 0) {
-      timer = setInterval(() => {
-        setTimeLeft(prev => {
-          if (prev <= 1) {
-            clearInterval(timer);
-            // Trigger automatic completion
-            completeFocusSession();
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
-    }
-    return () => clearInterval(timer);
-  }, [isSessionActive, timeLeft]);
-
-  const startFocusSession = () => {
-    if (!data) return;
-    const durationSeconds = (data.estimatedMinutes || 45) * 60;
-    const endTime = Date.now() + durationSeconds * 1000;
-    localStorage.setItem(`focus_session_end_${data.focusTopic}`, String(endTime));
-    setIsSessionActive(true);
-    setTimeLeft(durationSeconds);
-    setIsMinimized(false);
-    setShowCelebration(false);
-    addToast(`Focus session started for ${data.focusTopic}!`, 'info');
-  };
-
-  const cancelFocusSession = () => {
-    if (!data) return;
-    const confirm = window.confirm("Are you sure you want to end this study session early? Your progress won't be saved.");
-    if (!confirm) return;
-
-    stopBinauralBeats();
-    setIsAudioPlaying(false);
-    localStorage.removeItem(`focus_session_end_${data.focusTopic}`);
-    setIsSessionActive(false);
-    setTimeLeft(0);
-    setIsMinimized(false);
-    addToast('Focus session cancelled.', 'info');
-  };
-
-  const completeFocusSession = async () => {
+  async function completeFocusSession() {
     if (!data) return;
     try {
       stopBinauralBeats();
@@ -280,6 +235,51 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
     } catch (e) {
       console.error('Failed to complete focus session', e);
     }
+  }
+
+  // Countdown timer logic
+  useEffect(() => {
+    let timer: any;
+    if (isSessionActive && timeLeft > 0) {
+      timer = setInterval(() => {
+        setTimeLeft(prev => {
+          if (prev <= 1) {
+            clearInterval(timer);
+            // Trigger automatic completion
+            completeFocusSession();
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    }
+    return () => clearInterval(timer);
+  }, [completeFocusSession, isSessionActive, timeLeft]);
+
+  const startFocusSession = () => {
+    if (!data) return;
+    const durationSeconds = (data.estimatedMinutes || 45) * 60;
+    const endTime = Date.now() + durationSeconds * 1000;
+    localStorage.setItem(`focus_session_end_${data.focusTopic}`, String(endTime));
+    setIsSessionActive(true);
+    setTimeLeft(durationSeconds);
+    setIsMinimized(false);
+    setShowCelebration(false);
+    addToast(`Focus session started for ${data.focusTopic}!`, 'info');
+  };
+
+  const cancelFocusSession = () => {
+    if (!data) return;
+    const confirm = window.confirm("Are you sure you want to end this study session early? Your progress won't be saved.");
+    if (!confirm) return;
+
+    stopBinauralBeats();
+    setIsAudioPlaying(false);
+    localStorage.removeItem(`focus_session_end_${data.focusTopic}`);
+    setIsSessionActive(false);
+    setTimeLeft(0);
+    setIsMinimized(false);
+    addToast('Focus session cancelled.', 'info');
   };
 
   const closeCelebration = () => {

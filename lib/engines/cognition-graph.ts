@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
+import { createAdminClient } from '@/lib/supabase/admin';
 import { generateJSON } from '@/lib/ai/gemini';
 import { logger } from '@/lib/utils/logger';
 import { expandChapterWithAI } from './atlas-expansion';
@@ -332,7 +333,7 @@ export class AtlasConsumer {
 
     if (wrongQuestions.length === 0) return;
 
-    const supabase = await createClient();
+    const supabase = createAdminClient();
 
     // Group by chapter to avoid redundant updates
     const chapterMap = new Map<string, { subject: string; chapter: string; count: number }>();
@@ -382,7 +383,7 @@ export class AtlasConsumer {
     const { subject, chapter, durationMinutes = 10 } = data || {};
     if (!subject || !chapter) return;
 
-    const supabase = await createClient();
+    const supabase = createAdminClient();
 
     const { data: concepts } = await supabase
       .from('concepts')

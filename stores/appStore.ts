@@ -32,7 +32,7 @@ export interface AppState extends ChatSlice {
   addToast: (message: string, type?: 'success' | 'error' | 'info') => void;
   removeToast: (id: string) => void;
   
-  // Session Telemetry (PULSE)
+  // Local session timer
   sessionActive: boolean;
   sessionStartTime: number | null;
   startSession: () => void;

@@ -5,14 +5,13 @@ import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
 import { toggleTask } from '@/lib/actions/planner';
 import DailyBriefing from '@/components/planner/DailyBriefing';
-import PulseCheckIn from '@/components/pulse/PulseCheckIn';
 import DailySessionFocus from '@/components/dashboard/DailySessionFocus';
 import { createClient } from '@/lib/supabase/client';
 import { useAppStore } from '@/stores/appStore';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Calendar, Clock, Check, BookOpen, Brain, Target, 
-  Coffee, Activity, ArrowRight, Play, CheckCircle2, Flame, Sliders, X, AlertCircle
+  Coffee, ArrowRight, Play, CheckCircle2, Flame, Sliders, X, AlertCircle
 } from 'lucide-react';
 
 const typeIcons: Record<string, any> = {
@@ -43,7 +42,6 @@ const typeLabels: Record<string, string> = {
 export default function PlannerDashboard({ initialTasks, date }: { initialTasks: any[]; date: string }) {
   const [tasks, setTasks] = useState(initialTasks);
   const [loading, setLoading] = useState(initialTasks.length === 0);
-  const [showPulse, setShowPulse] = useState(false);
   const [profile, setProfile] = useState<any>(null);
   const [activeSession, setActiveSession] = useState<any>(null);
   const { addToast } = useAppStore();
@@ -223,36 +221,10 @@ export default function PlannerDashboard({ initialTasks, date }: { initialTasks:
             COMMAND Replan
           </button>
           
-          <button
-            onClick={() => setShowPulse(true)}
-            style={{
-              display: 'flex', alignItems: 'center', gap: 'var(--sp-2)',
-              padding: '6px 14px', borderRadius: 'var(--radius-md)',
-              background: 'var(--bg-secondary)', border: '1px solid var(--border-default)',
-              color: 'var(--text-secondary)', cursor: 'pointer', fontSize: 'var(--fs-sm)',
-              fontWeight: 'var(--fw-medium)', transition: 'background var(--duration-fast)'
-            }}
-            onMouseEnter={e => e.currentTarget.style.background = 'var(--bg-tertiary)'}
-            onMouseLeave={e => e.currentTarget.style.background = 'var(--bg-secondary)'}
-          >
-            <Activity size={16} color="var(--accent-cyan)" />
-            PULSE Check-In
-          </button>
         </div>
       </div>
 
       <DailyBriefing />
-
-      {showPulse && (
-        <PulseCheckIn
-          onComplete={(state) => {
-            setShowPulse(false);
-            addToast(`PULSE updated: ${state.replace('_', ' ')}`, 'success');
-            if (profile) setProfile({ ...profile, emotional_state: state });
-          }}
-          onDismiss={() => setShowPulse(false)}
-        />
-      )}
 
       {/* Progress Bar */}
       <Card variant="glow" padding="md" style={{ background: 'var(--bg-secondary)' }}>

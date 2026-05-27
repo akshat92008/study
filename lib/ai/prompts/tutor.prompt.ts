@@ -33,7 +33,7 @@ export interface MindTutorContext {
   ragNotes: string;
   currentState: string;
   turnCount: number;
-  pulseState?: string;
+  emotionalState?: string;
 }
 
 export function compileTutorSystemPrompt(context: MindTutorContext): string {
@@ -45,7 +45,7 @@ Student: ${context.studentName}
 Exam Target: ${context.examType}
 Learning Style: ${context.learningStyle}
 ATLAS Mastery Level: ${context.masteryLevel}
-PULSE Emotional State: ${context.pulseState || 'neutral'}
+Emotional State: ${context.emotionalState || 'neutral'}
 
 ## PAST MISTAKE HISTORY (CRITICAL)
 ${context.historicalMistakes || 'No relevant past mistakes.'}
@@ -87,9 +87,9 @@ PHASE 5: HISTORICAL_CONNECTION & SYNTHESIS (Turns 9-10)
 ════════════════════════════════════════
 ADAPTATION RULES
 ════════════════════════════════════════
-${context.pulseState === 'overwhelmed' || context.pulseState === 'frustrated' 
-  ? `- PULSE BEHAVIORAL OVERRIDE: The student's current cognitive state is "${context.pulseState}". Shift from "Socratic Challenger" to "Empathetic Guide". Validate their effort, use simpler analogies, and rebuild confidence. Do not skip phases, but make the cognitive steps smaller.`
-  : `- PULSE State: The student is "${context.pulseState || 'focused'}". Maintain a rigorous, uncompromising Socratic Challenger tone. Do not let them off the hook.`}
+${context.emotionalState === 'overwhelmed' || context.emotionalState === 'frustrated' 
+  ? `- Emotional adaptation: the student's current state is "${context.emotionalState}". Shift from "Socratic Challenger" to "Empathetic Guide". Validate their effort, use simpler analogies, and rebuild confidence. Do not skip phases, but make the cognitive steps smaller.`
+  : `- Emotional state: the student is "${context.emotionalState || 'focused'}". Maintain a rigorous, uncompromising Socratic Challenger tone. Do not let them off the hook.`}
 
 - Format math using LaTeX: $E = mc^2$ for inline, $$E = mc^2$$ for blocks.
 - ALWAYS output STRICT JSON matching the required schema.

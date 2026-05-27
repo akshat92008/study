@@ -6,7 +6,7 @@ import Badge from '@/components/ui/Badge';
 import { useRouter } from 'next/navigation';
 import { 
   Brain, Target, RefreshCw, Flame, ArrowRight, CheckCircle2, Clock, Send, MessageCircle, 
-  Loader2, Paperclip, UploadCloud, Activity, BookOpen, Calendar, Check, Sliders, X
+  Loader2, Paperclip, UploadCloud, BookOpen, Calendar, Check, Sliders, X
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import DailySessionFocus from './DailySessionFocus';
@@ -16,11 +16,9 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
   const router = useRouter();
   const {
     currentActiveTask, setCurrentActiveTask, activeTasksList, setActiveTasksList,
-    emotionalState, setEmotionalState, atlasMastery, setAtlasMastery,
+    atlasMastery, setAtlasMastery,
     memoryDueCount, setMemoryDueCount, autopsyLossPoints, setAutopsyLossPoints, addToast
   } = useAppStore();
-
-  const isPro = profile?.subscription_status === 'pro';
 
   useEffect(() => {
     if (tasks) {
@@ -40,7 +38,6 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
   }, [tasks, setActiveTasksList, setCurrentActiveTask]);
 
   // Sync server data to Zustand store for global telemetry
-  useEffect(() => { if (profile?.emotional_state) setEmotionalState(profile.emotional_state); }, [profile]);
   useEffect(() => { if (cognition?.stats?.overallMastery !== undefined) setAtlasMastery(cognition.stats.overallMastery); }, [cognition]);
   useEffect(() => { if (revision?.stats?.due !== undefined) setMemoryDueCount(revision.stats.due); }, [revision]);
   useEffect(() => { if (mistakes?.totalMarksLost !== undefined) setAutopsyLossPoints(mistakes.totalMarksLost); }, [mistakes]);
@@ -225,38 +222,6 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
             </div>
           </div>
 
-          {/* Upgrade to Pro Button */}
-          {!isPro && (
-            <button
-              onClick={async () => {
-                try {
-                  const res = await fetch('/api/billing/create-checkout', { method: 'POST' });
-                  const { url, error } = await res.json();
-                  if (url) {
-                    window.location.href = url;
-                  } else if (error) {
-                    addToast?.(error, 'error');
-                  }
-                } catch (err) {
-                  addToast?.('Failed to initiate checkout', 'error');
-                }
-              }}
-              style={{
-                background: 'linear-gradient(135deg, #0055ff, #00f0ff)',
-                color: 'white',
-                fontWeight: 700,
-                padding: '12px 24px',
-                borderRadius: 'var(--radius-md)',
-                border: 'none',
-                cursor: 'pointer',
-                width: '100%',
-                boxShadow: '0 4px 14px rgba(0, 85, 255, 0.3)',
-              }}
-            >
-              Upgrade to Pro — ₹299/mo
-            </button>
-          )}
-
           {/* THE "ONE CARD" APPROACH */}
           {activeSessionTask ? (
             <motion.div whileHover={{ y: -4 }} style={{ width: '100%' }}>
@@ -343,8 +308,8 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
               <span style={{ fontSize: 'var(--sp-5)', fontWeight: 'var(--fw-black)', color: 'var(--danger)' }}>-{autopsyLossPoints || 0}</span>
             </Card>
             <Card style={{ padding: 'var(--sp-3)', display: 'flex', flexDirection: 'column', gap: 6 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}><span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>PULSE State</span><Activity size={12} style={{ color: 'var(--text-primary)' }} /></div>
-              <span style={{ fontSize: '13px', fontWeight: 'var(--fw-black)', color: emotionalState === 'burnt_out' ? 'var(--danger)' : 'var(--success)', textTransform: 'capitalize', marginTop: 2 }}>{emotionalState || 'Neutral'}</span>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}><span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>COMMAND Streak</span><Flame size={12} style={{ color: 'var(--warning)' }} /></div>
+              <span style={{ fontSize: 'var(--sp-5)', fontWeight: 'var(--fw-black)', color: 'var(--warning)' }}>{profile?.streak_days || 0}</span>
             </Card>
           </div>
         </div>

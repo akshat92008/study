@@ -1,9 +1,6 @@
-import { createClient } from '@/lib/supabase/server';
+import { createAdminClient } from '@/lib/supabase/admin';
 import { logger } from '@/lib/utils/logger';
-import { StrictStudentEventSchema, StrictStudentEvent } from './schema';
 import { LearningStateEngine } from '@/lib/engines/learning-state-engine';
-
-// Import New Consumers
 import { AtlasConsumer } from '@/lib/engines/cognition-graph';
 import { MemoryConsumer } from '@/lib/engines/revision-engine';
 import { CommandConsumer } from '@/lib/engines/command-engine';
@@ -11,122 +8,119 @@ import { ConceptExpansionConsumer } from '@/lib/engines/concept-expansion-engine
 
 const MAX_RETRIES = 5;
 
-// Define known consumers
 export const EVENT_CONSUMERS = [
   'learning_state_engine',
   'atlas_engine',
   'memory_engine',
   'command_engine',
-  'concept_expansion_engine'
+  'concept_expansion_engine',
 ] as const;
 
 export type EventConsumer = typeof EVENT_CONSUMERS[number];
 
-/**
- * The EventDispatcher manages the lifecycle of cross-system events.
- * It enforces strict schemas, guarantees idempotency, handles retries,
- * enforces consumer isolation, and routes fatally failed events to a Dead Letter Queue (DLQ).
- */
+type PublishInput = {
+  userId?: string;
+  user_id?: string;
+  type: string;
+  source?: string;
+  data?: any;
+  payload?: any;
+  idempotencyKey?: string;
+  idempotency_key?: string;
+  metadata?: Record<string, any>;
+};
+
 export class EventDispatcher {
-  /**
-   * Safely publishes an event to the bus (student_events table).
-   * Generates trace_id and ensures consumers are registered.
-   */
-  static async publish(eventData: Omit<StrictStudentEvent, 'id' | 'status' | 'retry_count' | 'created_at' | 'trace_id' | 'version'>): Promise<string> {
-    const supabase = await createClient();
-    
-    try {
-      const traceId = crypto.randomUUID();
-      
-      const validated = StrictStudentEventSchema.parse({
-        ...eventData,
-        status: 'pending',
-        retry_count: 0,
-        version: 'v2',
-        trace_id: traceId,
-        metadata: {
-          ...eventData.metadata,
-          source: eventData.metadata?.source || 'system_publish'
-        }
-      });
+  static async publish(input: PublishInput): Promise<string> {
+    const supabase = createAdminClient();
 
-      const { data: insertedEvent, error } = await supabase.from('student_events').insert({
-        user_id: validated.user_id,
-        type: validated.type,
-        data: validated.data,
-        status: validated.status,
-        idempotency_key: validated.idempotency_key,
-        trace_id: validated.trace_id,
-        version: validated.version,
-        metadata: validated.metadata
-      }).select('id').single();
+    const userId = input.userId ?? input.user_id;
+    if (!userId) throw new Error('Event publish requires userId');
 
-      if (error) {
-        if (error.code === '23505') {
-          logger.info('Idempotency key prevented duplicate event ingestion', { key: validated.idempotency_key, traceId });
-          // In real production, we might fetch and return the existing ID
-          return 'idempotent_skip';
-        }
-        throw error;
+    const idempotencyKey = input.idempotencyKey ?? input.idempotency_key;
+    const traceId = crypto.randomUUID();
+    const metadata = {
+      ...(input.metadata ?? {}),
+      source: input.source ?? input.metadata?.source ?? 'system_publish',
+    };
+
+    const eventRow = {
+      user_id: userId,
+      type: input.type,
+      data: input.data ?? input.payload ?? {},
+      status: 'pending',
+      retry_count: 0,
+      idempotency_key: idempotencyKey,
+      trace_id: traceId,
+      version: 'v2',
+      metadata,
+    };
+
+    const { data: insertedEvent, error } = await supabase
+      .from('student_events')
+      .insert(eventRow)
+      .select('id')
+      .single();
+
+    if (error) {
+      if (error.code === '23505' && idempotencyKey) {
+        const { data: existing } = await supabase
+          .from('student_events')
+          .select('id')
+          .eq('user_id', userId)
+          .eq('idempotency_key', idempotencyKey)
+          .maybeSingle();
+        if (existing?.id) return existing.id;
+        return 'idempotent_skip';
       }
+      logger.error('Failed to publish event', { type: input.type, error });
+      throw error;
+    }
 
-      // Initialize consumer tracking for the new event
-      if (insertedEvent) {
-        await this.registerConsumers(insertedEvent.id);
-        // Trigger processing in the background asynchronously for real-time responsiveness
-        Promise.allSettled(
-          EVENT_CONSUMERS.map(consumer => this.processConsumer(insertedEvent.id, consumer))
-        ).catch(err => {
-          logger.error('Failed to trigger background event consumer processing', { eventId: insertedEvent.id, err });
-        });
-      }
-      
-      logger.info('Event published successfully', { type: validated.type, traceId });
-      return insertedEvent?.id || traceId;
-    } catch (err) {
-      logger.error('Failed to publish event', err);
-      throw err;
+    const eventId = insertedEvent?.id ?? traceId;
+    await this.registerConsumers(eventId);
+
+    Promise.allSettled(
+      EVENT_CONSUMERS.map((consumer) => this.processConsumer(eventId, consumer))
+    ).catch((err) => {
+      logger.error('Failed to trigger event consumers', { eventId, err });
+    });
+
+    return eventId;
+  }
+
+  private static async registerConsumers(eventId: string): Promise<void> {
+    const supabase = createAdminClient();
+    const trackingRows = EVENT_CONSUMERS.map((consumer) => ({
+      event_id: eventId,
+      consumer_name: consumer,
+      status: 'processing',
+    }));
+
+    const { error } = await supabase
+      .from('event_consumer_tracking')
+      .insert(trackingRows);
+
+    if (error && error.code !== '23505') {
+      logger.error('Failed to register event consumers', { eventId, error });
+      throw error;
     }
   }
 
-  /**
-   * Register tracking rows for all known consumers for this event
-   */
-  private static async registerConsumers(eventId: string) {
-    const supabase = await createClient();
-    
-    // We register all consumers. If a consumer doesn't care about an event type,
-    // its handler will quickly NO-OP and mark it completed.
-    const trackingRows = EVENT_CONSUMERS.map(consumer => ({
-      event_id: eventId,
-      consumer_name: consumer,
-      status: 'processing'
-    }));
-
-    await supabase.from('event_consumer_tracking').insert(trackingRows);
-  }
-
-  /**
-   * Processes a single pending event for a specific consumer.
-   */
   static async processConsumer(eventId: string, consumer: EventConsumer): Promise<void> {
-    const supabase = await createClient();
+    const supabase = createAdminClient();
 
-    // 1. Lock the consumer tracking record
     const { data: tracking, error: lockErr } = await supabase
       .from('event_consumer_tracking')
       .update({ status: 'processing', updated_at: new Date().toISOString() })
       .eq('event_id', eventId)
       .eq('consumer_name', consumer)
-      .in('status', ['processing', 'failed']) // Matches database constraints (default status is processing)
+      .in('status', ['processing', 'failed'])
       .select('*')
       .single();
 
-    if (lockErr || !tracking) {
-      return; // Already processed or locked by another worker
-    }
+    if (lockErr || !tracking) return;
 
-    // Fetch the full event
     const { data: event } = await supabase
       .from('student_events')
       .select('*')
@@ -136,62 +130,62 @@ export class EventDispatcher {
     if (!event) return;
 
     try {
-      logger.info(`Consumer [${consumer}] processing event`, { eventId, type: event.type, traceId: event.trace_id });
-
-      // 2. Route to appropriate domain handlers based on consumer
       await this.routeToConsumer(event, consumer);
 
-      // 3. Mark completed for this consumer
       await supabase
         .from('event_consumer_tracking')
-        .update({ status: 'completed', last_error: null, updated_at: new Date().toISOString() })
+        .update({
+          status: 'completed',
+          last_error: null,
+          updated_at: new Date().toISOString(),
+        })
         .eq('event_id', eventId)
         .eq('consumer_name', consumer);
 
-      logger.info(`Consumer [${consumer}] completed successfully`, { eventId, traceId: event.trace_id });
-
-      // Check if ALL consumers are done, if so, mark the parent event as completed
       await this.checkParentEventCompletion(eventId);
+    } catch (err: any) {
+      const errorMsg = err instanceof Error ? err.message : String(err);
+      const retryCount = (tracking.retry_count || 0) + 1;
 
-    } catch (error: any) {
-      const errorMsg = error instanceof Error ? error.message : String(error);
-      logger.error(`Consumer [${consumer}] failed`, { eventId, errorMsg, traceId: event.trace_id });
-      
-      const newRetryCount = (tracking.retry_count || 0) + 1;
-
-      if (newRetryCount > MAX_RETRIES) {
-        // 4. Move to DLQ and mark consumer tracking as fatally failed
-        await this.moveToDLQ(event, `Consumer [${consumer}] failed fatally: ${errorMsg}`);
-        
+      if (retryCount > MAX_RETRIES) {
+        await this.moveToDLQ(event, `Consumer ${consumer} failed: ${errorMsg}`);
         await supabase
           .from('event_consumer_tracking')
-          .update({ status: 'failed', retry_count: newRetryCount, last_error: 'Max retries exceeded' })
+          .update({
+            status: 'failed',
+            retry_count: retryCount,
+            last_error: 'Max retries exceeded',
+            updated_at: new Date().toISOString(),
+          })
           .eq('event_id', eventId)
           .eq('consumer_name', consumer);
-
         await supabase
           .from('student_events')
-          .update({ status: 'failed', last_error: `Consumer ${consumer} DLQ'd` })
+          .update({ status: 'failed', last_error: `Consumer ${consumer} failed` })
           .eq('id', eventId);
       } else {
-        // 5. Backoff logic (exponential handled by worker polling intervals checking updated_at + retry_count)
         await supabase
           .from('event_consumer_tracking')
-          .update({ status: 'failed', retry_count: newRetryCount, last_error: errorMsg, updated_at: new Date().toISOString() })
+          .update({
+            status: 'failed',
+            retry_count: retryCount,
+            last_error: errorMsg,
+            updated_at: new Date().toISOString(),
+          })
           .eq('event_id', eventId)
           .eq('consumer_name', consumer);
       }
     }
   }
 
-  private static async checkParentEventCompletion(eventId: string) {
-    const supabase = await createClient();
-    const { data: trackings } = await supabase
+  private static async checkParentEventCompletion(eventId: string): Promise<void> {
+    const supabase = createAdminClient();
+    const { data: trackingRows } = await supabase
       .from('event_consumer_tracking')
       .select('status')
       .eq('event_id', eventId);
 
-    if (trackings && trackings.every(t => t.status === 'completed')) {
+    if (trackingRows?.length && trackingRows.every((row: any) => row.status === 'completed')) {
       await supabase
         .from('student_events')
         .update({ status: 'completed', last_error: null })
@@ -199,49 +193,48 @@ export class EventDispatcher {
     }
   }
 
-  /**
-   * Routes the event to domain-specific handlers for a given consumer.
-   */
   private static async routeToConsumer(event: any, consumer: EventConsumer): Promise<void> {
+    const payload = {
+      ...(event.metadata ?? {}),
+      ...(event.data ?? {}),
+    };
+
     switch (consumer) {
-      case 'learning_state_engine':
-        const mappedType = this.mapToLegacyType(event.type);
-        if (mappedType) {
+      case 'learning_state_engine': {
+        const legacyType = this.mapToLegacyType(event.type);
+        if (legacyType) {
           await LearningStateEngine.processLegacyEvent({
             userId: event.user_id,
-            type: mappedType as any,
-            data: event.data
+            type: legacyType as any,
+            data: payload,
           });
         }
         break;
-      
+      }
       case 'atlas_engine':
         if (event.type === 'AUTOPSY_MOCK_PROCESSED') {
-          await AtlasConsumer.handleAutopsyProcessed(event.user_id, event.metadata);
+          await AtlasConsumer.handleAutopsyProcessed(event.user_id, payload);
         } else if (event.type === 'STUDY_SESSION_COMPLETED' || event.type === 'MIND_TUTOR_COMPLETED') {
-          await AtlasConsumer.handleStudySessionCompleted(event.user_id, event.data);
+          await AtlasConsumer.handleStudySessionCompleted(event.user_id, payload);
         }
         break;
-
       case 'memory_engine':
         if (event.type === 'AUTOPSY_MOCK_PROCESSED') {
-          await MemoryConsumer.handleAutopsyProcessed(event.user_id, event.metadata);
+          await MemoryConsumer.handleAutopsyProcessed(event.user_id, payload);
         } else if (event.type === 'STUDY_SESSION_COMPLETED' || event.type === 'MIND_TUTOR_COMPLETED') {
-          await MemoryConsumer.handleStudySessionCompleted(event.user_id, event.data);
+          await MemoryConsumer.handleStudySessionCompleted(event.user_id, payload);
         }
         break;
-        
       case 'command_engine':
         if (event.type === 'AUTOPSY_MOCK_PROCESSED') {
-          await CommandConsumer.handleAutopsyProcessed(event.user_id, event.metadata, event.data);
+          await CommandConsumer.handleAutopsyProcessed(event.user_id, payload, payload);
         } else if (event.type === 'STUDY_SESSION_COMPLETED' || event.type === 'MIND_TUTOR_COMPLETED') {
-          await CommandConsumer.handleStudySessionCompleted(event.user_id, event.data);
+          await CommandConsumer.handleStudySessionCompleted(event.user_id, payload);
         }
         break;
-
       case 'concept_expansion_engine':
         if (event.type === 'CONCEPT_DISCOVERED') {
-          await ConceptExpansionConsumer.handleConceptDiscovered(event.user_id, event.data);
+          await ConceptExpansionConsumer.handleConceptDiscovered(event.user_id, payload);
         }
         break;
     }
@@ -249,15 +242,21 @@ export class EventDispatcher {
 
   private static mapToLegacyType(type: string): string | null {
     switch (type) {
-      case 'MIND_TUTOR_COMPLETED': return 'SESSION_COMPLETED';
-      case 'MEMORY_CARD_REVIEWED': return 'CARD_REVIEWED';
-      case 'COMMAND_TASK_COMPLETED': return 'TASK_COMPLETED';
-      default: return type;
+      case 'MIND_TUTOR_COMPLETED':
+      case 'STUDY_SESSION_COMPLETED':
+      case 'COMMAND_SESSION_COMPLETED':
+        return 'SESSION_COMPLETED';
+      case 'MEMORY_CARD_REVIEWED':
+        return 'CARD_REVIEWED';
+      case 'COMMAND_TASK_COMPLETED':
+        return 'TASK_COMPLETED';
+      default:
+        return type;
     }
   }
 
   private static async moveToDLQ(event: any, errorMessage: string): Promise<void> {
-    const supabase = await createClient();
+    const supabase = createAdminClient();
     const { error } = await supabase.from('dlq_events').insert({
       event_id: event.id,
       user_id: event.user_id,
@@ -266,16 +265,13 @@ export class EventDispatcher {
       type: event.type,
       data: event.data,
       metadata: event.metadata,
-      error_message: errorMessage
+      error_message: errorMessage,
     });
 
     if (error) {
-      logger.error('CRITICAL: Failed to write to Dead Letter Queue', { eventId: event.id, traceId: event.trace_id, error });
-    } else {
-      logger.info('Event moved to DLQ', { eventId: event.id, traceId: event.trace_id });
+      logger.error('Failed to write event to DLQ', { eventId: event.id, error });
     }
   }
 }
 
-// Backward compatibility for existing code calls
 export const EventOrchestrator = EventDispatcher;

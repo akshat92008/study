@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabase/server';
+import { createAdminClient } from '@/lib/supabase/admin';
 import { CommandPlanner } from './command-engine';
 import { generateCardsForConcept } from './revision-engine';
 import { logger } from '@/lib/utils/logger';
@@ -7,7 +7,7 @@ export type LearnerEventType =
   | 'QUIZ_ATTEMPTED'
   | 'CARD_REVIEWED'
   | 'SESSION_COMPLETED'
-  | 'PULSE_REPORTED'
+  | 'EMOTIONAL_STATE_REPORTED'
   | 'SESSION_SKIPPED'
   | 'TASK_COMPLETED';
 
@@ -55,7 +55,7 @@ export class LearningStateEngine {
    * Internal method called by the EventOrchestrator to actually process the metrics.
    */
   static async processLegacyEvent(event: LearnerTelemetryEvent): Promise<void> {
-    const supabase = await createClient();
+    const supabase = createAdminClient();
     const { userId, type, data } = event;
 
     logger.info('Processing legacy telemetry event', { userId, type });
@@ -134,10 +134,10 @@ export class LearningStateEngine {
   }
 
   /**
-   * Confidence formula: C = 0.2 * PulseWeight + 0.5 * QuizAccuracy + 0.3 * CardRecallRate
+   * Confidence formula: C = 0.5 * QuizAccuracy + 0.3 * CardRecallRate + 0.2 * behavioral context
    */
   static async calculateConfidence(userId: string): Promise<number> {
-    const supabase = await createClient();
+    const supabase = createAdminClient();
 
     // 1. Emotional state from profile
     const { data: profile } = await supabase
@@ -191,7 +191,7 @@ export class LearningStateEngine {
    * Retention formula: Average R across active revision cards. R = e^(ln(0.9) * t / S)
    */
   static async calculateRetention(userId: string): Promise<number> {
-    const supabase = await createClient();
+    const supabase = createAdminClient();
 
     const { data: cards } = await supabase
       .from('revision_cards')
@@ -219,7 +219,7 @@ export class LearningStateEngine {
    * Velocity: Count of concepts mastered in last 7 days.
    */
   static async calculateVelocity(userId: string): Promise<number> {
-    const supabase = await createClient();
+    const supabase = createAdminClient();
     const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
 
     const { data: concepts } = await supabase
@@ -236,7 +236,7 @@ export class LearningStateEngine {
    * Struggle Index: S_I = 0.5 * (1 - R) + 0.3 * (IncorrectReviews / (Total + 1)) + 0.2 * responseTimeFriction
    */
   static async calculateStrugglePatternsAndWeakAreas(userId: string): Promise<{ weakAreas: any[]; strugglePatterns: any[] }> {
-    const supabase = await createClient();
+    const supabase = createAdminClient();
 
     const { data: concepts } = await supabase
       .from('concepts')
@@ -341,7 +341,7 @@ export class LearningStateEngine {
    * Creates revision cards, triggers prereq injection, and schedules a replan.
    */
   static async handleConceptStruggle(userId: string, conceptId: string, subject: string, chapter: string): Promise<void> {
-    const supabase = await createClient();
+    const supabase = createAdminClient();
 
     logger.info('Executing Concept Struggle Response', { userId, conceptId });
 
@@ -419,7 +419,7 @@ export class LearningStateEngine {
    * Lowers plan difficulty, extends milestone deadline, and triggers replan.
    */
   static async handleSessionSkip(userId: string, skippedDays: number): Promise<void> {
-    const supabase = await createClient();
+    const supabase = createAdminClient();
 
     logger.info('Executing Session Skip Response', { userId, skippedDays });
 
@@ -471,7 +471,7 @@ export class LearningStateEngine {
    * Orchestrates the CommandPlanner to re-compute and pack tasks for the user.
    */
   static async replanForUser(userId: string, dateStr: string): Promise<void> {
-    const supabase = await createClient();
+    const supabase = createAdminClient();
 
     try {
       const { data: activeGoal } = await supabase

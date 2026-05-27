@@ -8,6 +8,7 @@ import { submitReview } from '@/lib/actions/revision';
 
 export default function RevisionQueue() {
   const [queue, setQueue] = useState<any[]>([]);
+  const [initialCount, setInitialCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const { addToast } = useAppStore();
 
@@ -17,7 +18,9 @@ export default function RevisionQueue() {
         const res = await fetch('/api/revision');
         if (!res.ok) throw new Error('Failed to load queue');
         const data = await res.json();
-        setQueue(data.dueCards || []);
+        const dueCards = data.dueCards || [];
+        setQueue(dueCards);
+        setInitialCount(dueCards.length);
       } catch (err: any) {
         addToast(err.message, 'error');
       } finally {
@@ -70,18 +73,21 @@ export default function RevisionQueue() {
   }
 
   const currentCard = queue[0];
+  const completedCount = Math.max(0, initialCount - queue.length);
+  const progress = initialCount > 0 ? Math.round((completedCount / initialCount) * 100) : 0;
+  const front = currentCard.front || `Concept: ${currentCard.subject || currentCard.chapter || currentCard.concept_id || currentCard.id}`;
+  const back = currentCard.back || currentCard.answer || currentCard.explanation || 'Review the concept, then rate how well you recalled it.';
 
   return (
     <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 'var(--fs-sm)', color: 'var(--text-tertiary)', padding: '0 var(--sp-4)' }}>
         <span>Cards remaining: {queue.length}</span>
-        <span style={{ color: 'var(--accent-cyan)', fontWeight: 'var(--fw-medium)' }}>{Math.round(((1 - queue.length) / 1) * 100) || 0}% Complete</span>
+        <span style={{ color: 'var(--accent-cyan)', fontWeight: 'var(--fw-medium)' }}>{progress}% Complete</span>
       </div>
       
-      {/* For demo purposes, we fallback to a stub string if the card structure is complex */}
       <FlashCard 
-        front={currentCard.front || 'Concept: ' + (currentCard.concept_id || currentCard.id)} 
-        back={currentCard.back || 'Detailed recall information...'} 
+        front={front} 
+        back={back} 
         cardIndex={0}
         totalCards={queue.length}
         onRate={handleRate} 

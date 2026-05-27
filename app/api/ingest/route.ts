@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { processDocumentIntoMemory } from '@/lib/engines/memory-engine';
 import { logger, safeError } from '@/lib/utils/logger';
-import { checkUsageLimit } from '@/lib/utils/billing';
+
 import pdfParse from 'pdf-parse';
 
 export async function POST(request: Request) {
@@ -11,11 +11,7 @@ export async function POST(request: Request) {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-    // PAYWALL GATE ENFORCED
-    const usage = await checkUsageLimit(user.id, 'document_uploads');
-    if (!usage.allowed) {
-      return NextResponse.json({ error: usage.reason, upgradeRequired: true }, { status: 403 });
-    }
+    
 
     const formData = await request.formData();
     const file = formData.get('file') as File;
