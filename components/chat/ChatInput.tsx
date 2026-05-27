@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useRef, useEffect, KeyboardEvent, ChangeEvent } from 'react';
-import { Send, Paperclip, X, Image as ImageIcon, Loader2 } from 'lucide-react';
+import { Send, Paperclip, X, Image as ImageIcon, Loader2, Mic, MicOff } from 'lucide-react';
 import { usePulseCollector } from '@/hooks/usePulseCollector';
+import { useVoiceInteraction } from '@/hooks/useVoiceInteraction';
 
 export interface ChatInputProps {
   value: string;
@@ -33,6 +34,10 @@ export function ChatInput({
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { recordKeystroke, recordMessageSent } = usePulseCollector();
   const sendStartTime = useRef<number>(Date.now());
+
+  const { isListening, startListening, stopListening, isSpeechSupported } = useVoiceInteraction((text) => {
+    onChange(value + (value ? ' ' : '') + text);
+  });
 
   // Auto-grow textarea
   useEffect(() => {
@@ -144,6 +149,22 @@ export function ChatInput({
         >
           <Paperclip size={16} />
         </button>
+
+        {isSpeechSupported && (
+          <button
+            type="button"
+            onClick={isListening ? stopListening : startListening}
+            disabled={isStreaming || isProcessingUpload}
+            style={{
+              background: 'transparent', border: 'none', color: isListening ? 'var(--accent-pink)' : 'var(--text-secondary)',
+              cursor: 'pointer', padding: 'var(--sp-2)', display: 'flex', alignItems: 'center',
+              animation: isListening ? 'pulse 2s infinite' : 'none',
+            }}
+            title={isListening ? "Stop listening" : "Start Voice Input"}
+          >
+            {isListening ? <MicOff size={16} /> : <Mic size={16} />}
+          </button>
+        )}
 
         <textarea
           ref={textareaRef}

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef, memo } from 'react';
-import { Bot, Maximize2, Minimize2, Trash2, Flame } from 'lucide-react';
+import { Bot, Maximize2, Minimize2, Trash2, Flame, Volume2, VolumeX } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
 import { useStream } from '@/hooks/useStream';
 import { StreamingMessage } from './StreamingMessage';
@@ -11,6 +11,7 @@ import { createClient } from '@/lib/supabase/client';
 import DailySessionCard from './DailySessionCard';
 import { SessionClosingCard } from './SessionClosingCard';
 import { useSessionTimer } from '@/hooks/useSessionTimer';
+import { useVoiceInteraction } from '@/hooks/useVoiceInteraction';
 import { useRouter } from 'next/navigation';
 
 export const GlobalChat = memo(function GlobalChat() {
@@ -30,6 +31,8 @@ export const GlobalChat = memo(function GlobalChat() {
     loadChatFromSupabase,
     isAssistantExpanded,
     toggleAssistantExpanded,
+    voiceModeEnabled,
+    toggleVoiceMode,
   } = useAppStore();
 
   const [inputMessage, setInputMessage] = useState('');
@@ -41,6 +44,8 @@ export const GlobalChat = memo(function GlobalChat() {
   const [sessionCardKey, setSessionCardKey] = useState(0);
   const [showDailySession, setShowDailySession] = useState(true);
   const router = useRouter();
+
+  const { speak, isSynthesisSupported } = useVoiceInteraction();
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -266,6 +271,11 @@ export const GlobalChat = memo(function GlobalChat() {
           timestamp: new Date().toISOString(),
           metadata: result.toolCall ?? undefined,
         });
+        
+        if (voiceModeEnabled) {
+          speak(result.text);
+        }
+
         // Trigger UI based on toolCall action
         if (result.toolCall?.action) {
           // Access store actions
@@ -381,6 +391,18 @@ export const GlobalChat = memo(function GlobalChat() {
           >
             <Trash2 size={16} />
           </button>
+          {isSynthesisSupported && (
+            <button
+              onClick={toggleVoiceMode}
+              style={{
+                background: 'transparent', border: 'none', color: voiceModeEnabled ? 'var(--accent-purple)' : 'var(--text-tertiary)',
+                padding: '6px', cursor: 'pointer', borderRadius: '4px'
+              }}
+              title={voiceModeEnabled ? "Disable Auto-Read" : "Enable Auto-Read"}
+            >
+              {voiceModeEnabled ? <Volume2 size={16} /> : <VolumeX size={16} />}
+            </button>
+          )}
           <button
             onClick={toggleAssistantExpanded}
             style={{

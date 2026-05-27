@@ -5,8 +5,9 @@ import {
   BookOpen, CheckCircle, XCircle, ChevronDown, ChevronUp,
   Download, Copy, Check, Brain, Zap, AlertTriangle,
   FileText, Layout, List, Map, Calendar, RotateCcw,
-  ChevronRight, ChevronLeft, Eye, EyeOff
+  ChevronRight, ChevronLeft, Eye, EyeOff, Volume2, VolumeX
 } from 'lucide-react';
+import { useVoiceInteraction } from '@/hooks/useVoiceInteraction';
 
 // ── TYPES ──────────────────────────────────────────────────────────────────────
 
@@ -1022,6 +1023,7 @@ interface RichMessageRendererProps {
 
 export function RichMessageRenderer({ content, isStreaming = false }: RichMessageRendererProps) {
   const parts = parseArtifacts(content);
+  const { isSpeaking, speak, stopSpeaking, isSynthesisSupported } = useVoiceInteraction();
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -1054,6 +1056,18 @@ export function RichMessageRenderer({ content, isStreaming = false }: RichMessag
           background: 'var(--accent-purple)', borderRadius: 2, marginLeft: 2,
           verticalAlign: 'middle', animation: 'blink 1s step-end infinite'
         }} />
+      )}
+
+      {!isStreaming && isSynthesisSupported && (
+        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 4 }}>
+          <button onClick={() => isSpeaking ? stopSpeaking() : speak(content)} style={{
+            background: 'transparent', border: 'none', color: isSpeaking ? 'var(--accent-purple)' : 'var(--text-tertiary)',
+            cursor: 'pointer', padding: 4, display: 'flex', alignItems: 'center', gap: 4
+          }}>
+            {isSpeaking ? <VolumeX size={14} /> : <Volume2 size={14} />}
+            <span style={{ fontSize: 10 }}>{isSpeaking ? 'Stop reading' : 'Read aloud'}</span>
+          </button>
+        </div>
       )}
     </div>
   );

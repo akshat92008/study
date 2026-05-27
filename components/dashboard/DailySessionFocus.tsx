@@ -6,9 +6,12 @@ import Button from '@/components/ui/Button';
 import Progress from '@/components/ui/Progress';
 import { 
   Flame, Sparkles, Send, ArrowRight, CheckCircle2, 
-  BookOpen, HelpCircle, Trophy, RefreshCw, X 
+  BookOpen, HelpCircle, Trophy, RefreshCw, X,
+  Mic, MicOff, Volume2, VolumeX
 } from 'lucide-react';
 import { logStudentEvent } from '@/lib/utils/events';
+import { useVoiceInteraction } from '@/hooks/useVoiceInteraction';
+import { useAppStore } from '@/stores/appStore';
 
 
 interface Message {
@@ -44,6 +47,11 @@ export default function DailySessionFocus({
   const [completing, setCompleting] = useState(false);
   const [inlineCard, setInlineCard] = useState<{ front: string; back: string } | null>(null);
 
+  const { voiceModeEnabled, toggleVoiceMode } = useAppStore();
+  const { isListening, startListening, stopListening, isSpeaking, speak, stopSpeaking, isSpeechSupported, isSynthesisSupported } = useVoiceInteraction((text) => {
+    setInput(prev => prev + (prev ? ' ' : '') + text);
+  });
+
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -73,11 +81,13 @@ export default function DailySessionFocus({
 
       const reader = res.body?.getReader();
       const decoder = new TextDecoder();
+      let fullResponse = '';
       if (reader) {
         while (true) {
           const { done, value } = await reader.read();
           if (done) break;
           const chunk = decoder.decode(value);
+          fullResponse += chunk;
           setMessages(prev => {
             const updated = [...prev];
             updated[updated.length - 1] = {
@@ -87,6 +97,10 @@ export default function DailySessionFocus({
             return updated;
           });
         }
+      }
+      
+      if (voiceModeEnabled && fullResponse) {
+        speak(fullResponse);
       }
     } catch (e) {
       setMessages([{ role: 'tutor', content: "Let's start our study block. How confident are you feeling with today's topic?" }]);
@@ -129,11 +143,13 @@ export default function DailySessionFocus({
 
       const reader = res.body?.getReader();
       const decoder = new TextDecoder();
+      let fullResponse = '';
       if (reader) {
         while (true) {
           const { done, value } = await reader.read();
           if (done) break;
           const chunk = decoder.decode(value);
+          fullResponse += chunk;
           setMessages(prev => {
             const updated = [...prev];
             updated[updated.length - 1] = {
@@ -143,6 +159,10 @@ export default function DailySessionFocus({
             return updated;
           });
         }
+      }
+      
+      if (voiceModeEnabled && fullResponse) {
+        speak(fullResponse);
       }
 
       // Check if we want to simulate inline card creation based on keywords
@@ -362,11 +382,20 @@ export default function DailySessionFocus({
           </span>
         </div>
 
-        <button onClick={onClose} style={{
-          background: 'transparent', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer'
-        }}>
-          <X size={20} />
-        </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
+          {isSynthesisSupported && (
+            <button onClick={toggleVoiceMode} style={{
+              background: 'transparent', border: 'none', color: voiceModeEnabled ? 'var(--accent-purple)' : 'var(--text-secondary)', cursor: 'pointer', padding: 4
+            }} title={voiceModeEnabled ? "Disable Voice Mode" : "Enable Voice Mode"}>
+              {voiceModeEnabled ? <Volume2 size={20} /> : <VolumeX size={20} />}
+            </button>
+          )}
+          <button onClick={onClose} style={{
+            background: 'transparent', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', padding: 4
+          }}>
+            <X size={20} />
+          </button>
+        </div>
       </div>
 
       {/* Main Workspace split */}
@@ -432,6 +461,20 @@ export default function DailySessionFocus({
               </div>
             ) : (
               <div style={{ display: 'flex', gap: 'var(--sp-3)' }}>
+                {isSpeechSupported && (
+                  <Button 
+                    onClick={isListening ? stopListening : startListening}
+                    disabled={streaming}
+                    style={{
+                      background: 'transparent', border: '1px solid var(--border-default)', 
+                      color: isListening ? 'var(--accent-pink)' : 'var(--text-secondary)',
+                      animation: isListening ? 'pulse 2s infinite' : 'none'
+                    }}
+                    title={isListening ? "Stop Listening" : "Start Voice Input"}
+                  >
+                    {isListening ? <MicOff size={16} /> : <Mic size={16} />}
+                  </Button>
+                )}
                 <input
                   value={input}
                   onChange={e => setInput(e.target.value)}

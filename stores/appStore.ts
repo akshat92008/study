@@ -78,6 +78,10 @@ export interface AppState extends ChatSlice {
   setIsUploadingMock: (uploading: boolean) => void;
   uploadStatus: string;
   setUploadStatus: (status: string) => void;
+
+  // Voice Interaction
+  voiceModeEnabled: boolean;
+  toggleVoiceMode: () => void;
 }
 
 export const useAppStore = create<AppState>()(
@@ -153,6 +157,9 @@ export const useAppStore = create<AppState>()(
       setIsUploadingMock: (uploading) => set({ isUploadingMock: uploading }),
       uploadStatus: '',
       setUploadStatus: (status) => set({ uploadStatus: status }),
+
+      voiceModeEnabled: false,
+      toggleVoiceMode: () => set((state) => ({ voiceModeEnabled: !state.voiceModeEnabled })),
 
       learningGoals: [],
       activeGoalId: null,
@@ -247,6 +254,7 @@ export const useAppStore = create<AppState>()(
         streakDays: state.streakDays,
         assistantWidth: state.assistantWidth,
         isAssistantExpanded: state.isAssistantExpanded,
+        voiceModeEnabled: state.voiceModeEnabled,
       }),
     }
   )
