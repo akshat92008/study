@@ -7,24 +7,19 @@ import { generateSessionClosingMessage } from '@/lib/engines/session-closing';
 import { computeAndUpdateStreak } from '@/lib/engines/streak-engine';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { logger } from '@/lib/utils/logger';
-import { MASTERY_WEIGHTS } from '@/lib/engines/cognition-graph';
+import { advanceMastery, applyMasteryUpdate } from '@/lib/engines/mastery-updater';
 
-const MASTERY_ORDER = [
-  'not_started', 'exposed', 'developing', 'proficient', 'mastered', 'automated'
-] as const;
-
-type MasteryLevel = typeof MASTERY_ORDER[number];
-
-function advanceMastery(current: MasteryLevel | null, understood: boolean): MasteryLevel {
-  if (!understood) {
-    // Regression: drop one tier if not understood, floor at 'exposed'
-    const idx = current ? MASTERY_ORDER.indexOf(current) : 0;
-    return MASTERY_ORDER[Math.max(1, idx - 1)];
-  }
-  const idx = current ? MASTERY_ORDER.indexOf(current) : 0;
-  if (idx === -1) return 'developing';
-  // Advance one tier, cap at 'mastered' (automated requires card reviews)
-  return MASTERY_ORDER[Math.min(idx + 1, 4)] as MasteryLevel;
+// session-closing expects a 0.0–1.0 float — convert from enum
+const MASTERY_NUMERIC: Record<string, number> = {
+  not_started: 0,
+  exposed: 0.15,
+  developing: 0.40,
+  proficient: 0.70,
+  mastered: 0.90,
+  automated: 0.98,
+};
+function masteryToNumeric(level: string): number | null {
+  return MASTERY_NUMERIC[level] ?? null;
 }
 
 export async function POST(req: NextRequest) {
@@ -59,24 +54,21 @@ export async function POST(req: NextRequest) {
   const conceptId = conceptRecord?.id ?? null;
   const oldMastery = (conceptRecord?.mastery ?? null) as MasteryLevel | null;
 
-  // 3️⃣ Compute new mastery and persist if changed
+  // 3️⃣ Compute new mastery, persist, and record evidence trail
   let newMastery = oldMastery;
   if (conceptId && oldMastery !== null) {
-    newMastery = advanceMastery(oldMastery, understood);
-    if (newMastery !== oldMastery) {
-      const { error: masteryErr } = await supabase
-        .from('concepts')
-        .update({
-          mastery: newMastery,
-          last_reviewed_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
-        })
-        .eq('id', conceptId)
-        .eq('user_id', user.id);
-      if (masteryErr) {
-        logger.warn('Failed to update mastery on session close', { conceptId, masteryErr });
-      }
-    }
+    const computed = advanceMastery(oldMastery as any, understood);
+    const { changed } = await applyMasteryUpdate({
+      userId: user.id,
+      conceptId,
+      newMastery: computed,
+      source: 'session_close',
+      sourceId: undefined, // sessionId not yet known at this point — set below after insert
+      evidence: understood
+        ? `Student completed session on ${conceptName}`
+        : `Student struggled with ${conceptName}${gapFound ? `: ${gapFound}` : ''}`,
+    });
+    if (changed) newMastery = computed;
   }
 
   // 4️⃣ Insert study session with rich metadata
@@ -141,8 +133,8 @@ export async function POST(req: NextRequest) {
     gapAnswer: null,
     understood,
     turnsCount: 0,
-    oldMastery: oldMastery ? (MASTERY_WEIGHTS[oldMastery as keyof typeof MASTERY_WEIGHTS] ?? null) !== null ? (MASTERY_WEIGHTS[oldMastery as keyof typeof MASTERY_WEIGHTS] ?? null)! / 100 : null : null,
-    newMastery: newMastery ? (MASTERY_WEIGHTS[newMastery as keyof typeof MASTERY_WEIGHTS] ?? null) !== null ? (MASTERY_WEIGHTS[newMastery as keyof typeof MASTERY_WEIGHTS] ?? null)! / 100 : null : null,
+    oldMastery: oldMastery !== null ? masteryToNumeric(oldMastery) : null,
+    newMastery: newMastery !== null ? masteryToNumeric(newMastery) : null,
     cardsCreated,
     sessionId,
   });

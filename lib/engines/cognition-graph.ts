@@ -3,6 +3,7 @@ import { createAdminClient } from '@/lib/supabase/admin';
 import { generateJSON } from '@/lib/ai/gemini';
 import { logger } from '@/lib/utils/logger';
 import { expandChapterWithAI } from './atlas-expansion';
+import { applyMasteryUpdate } from '@/lib/engines/mastery-updater';
 
 export const MASTERY_WEIGHTS: Record<string, number> = {
   not_started: 0, exposed: 15, developing: 40, proficient: 70, mastered: 90, automated: 98,
@@ -360,18 +361,17 @@ export class AtlasConsumer {
       if (!concepts || concepts.length === 0) continue;
 
       for (const concept of concepts) {
-        // Downscale mastery one tier per wrong answer, capped at 'exposed'
         const downgradedMastery = downgradeMastery(concept.mastery, count);
         if (downgradedMastery !== concept.mastery) {
-          await supabase
-            .from('concepts')
-            .update({
-              mastery: downgradedMastery,
-              last_reviewed_at: new Date().toISOString(),
-              updated_at: new Date().toISOString(),
-            })
-            .eq('id', concept.id)
-            .eq('user_id', userId);
+          await applyMasteryUpdate({
+            userId,
+            conceptId: concept.id,
+            newMastery: downgradedMastery as any,
+            source: 'autopsy',
+            sourceId: metadata?.autopsyId ?? undefined,
+            evidence: `${count} wrong answer(s) in ${chapter} (${subject})`,
+            useAdminClient: true,
+          });
         }
       }
     }
@@ -410,15 +410,14 @@ export class AtlasConsumer {
     for (const concept of concepts) {
       const upgradedMastery = upgradeMastery(concept.mastery, durationMinutes);
       if (upgradedMastery !== concept.mastery) {
-        await supabase
-          .from('concepts')
-          .update({
-            mastery: upgradedMastery,
-            last_reviewed_at: new Date().toISOString(),
-            updated_at: new Date().toISOString(),
-          })
-          .eq('id', concept.id)
-          .eq('user_id', userId);
+        await applyMasteryUpdate({
+          userId,
+          conceptId: concept.id,
+          newMastery: upgradedMastery as any,
+          source: 'tutor_session',
+          evidence: `Session on ${chapter} (${subject}), ${durationMinutes} min`,
+          useAdminClient: true,
+        });
       }
     }
 

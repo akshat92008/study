@@ -214,22 +214,34 @@ export class EventDispatcher {
       case 'atlas_engine':
         if (event.type === 'AUTOPSY_MOCK_PROCESSED') {
           await AtlasConsumer.handleAutopsyProcessed(event.user_id, payload);
-        } else if (event.type === 'STUDY_SESSION_COMPLETED' || event.type === 'MIND_TUTOR_COMPLETED') {
-          await AtlasConsumer.handleStudySessionCompleted(event.user_id, payload);
+        } else if (
+          event.type === 'STUDY_SESSION_COMPLETED' ||
+          event.type === 'MIND_TUTOR_COMPLETED' ||
+          event.type === 'COMMAND_SESSION_COMPLETED'
+        ) {
+          await AtlasConsumer.handleStudySessionCompleted(event.user_id, event.data);
         }
         break;
       case 'memory_engine':
         if (event.type === 'AUTOPSY_MOCK_PROCESSED') {
           await MemoryConsumer.handleAutopsyProcessed(event.user_id, payload);
-        } else if (event.type === 'STUDY_SESSION_COMPLETED' || event.type === 'MIND_TUTOR_COMPLETED') {
-          await MemoryConsumer.handleStudySessionCompleted(event.user_id, payload);
+        } else if (
+          event.type === 'STUDY_SESSION_COMPLETED' ||
+          event.type === 'MIND_TUTOR_COMPLETED' ||
+          event.type === 'COMMAND_SESSION_COMPLETED'
+        ) {
+          await MemoryConsumer.handleStudySessionCompleted(event.user_id, event.data);
         }
         break;
       case 'command_engine':
         if (event.type === 'AUTOPSY_MOCK_PROCESSED') {
           await CommandConsumer.handleAutopsyProcessed(event.user_id, payload, payload);
-        } else if (event.type === 'STUDY_SESSION_COMPLETED' || event.type === 'MIND_TUTOR_COMPLETED') {
-          await CommandConsumer.handleStudySessionCompleted(event.user_id, payload);
+        } else if (
+          event.type === 'STUDY_SESSION_COMPLETED' ||
+          event.type === 'MIND_TUTOR_COMPLETED' ||
+          event.type === 'COMMAND_SESSION_COMPLETED'
+        ) {
+          await CommandConsumer.handleStudySessionCompleted(event.user_id, event.data);
         }
         break;
       case 'concept_expansion_engine':

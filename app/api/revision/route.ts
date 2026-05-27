@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { getDueCards } from '@/lib/engines/revision-engine';
+import { getDueCards, reviewCard } from '@/lib/engines/revision-engine';
 
 export async function GET(request: Request) {
   try {
@@ -88,6 +88,43 @@ export async function DELETE(request: Request) {
     return NextResponse.json({ success: true });
   } catch (error: any) {
     console.error('Revision DELETE Error:', error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}
+
+// Submit a card review (FSRS rating 1–4)
+export async function POST(request: Request) {
+  try {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+    const body = await request.json();
+    const { cardId, rating, responseTimeMs } = body;
+
+    if (!cardId || typeof rating !== 'number' || rating < 1 || rating > 4) {
+      return NextResponse.json(
+        { error: 'cardId (string) and rating (1–4) are required' },
+        { status: 400 }
+      );
+    }
+
+    // IDOR prevention: verify ownership before touching the card
+    const { data: card } = await supabase
+      .from('revision_cards')
+      .select('id, user_id')
+      .eq('id', cardId)
+      .eq('user_id', user.id)
+      .single();
+
+    if (!card) {
+      return NextResponse.json({ error: 'Card not found' }, { status: 404 });
+    }
+
+    const result = await reviewCard(cardId, rating as 1 | 2 | 3 | 4, responseTimeMs);
+    return NextResponse.json(result);
+  } catch (error: any) {
+    console.error('Revision POST Error:', error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

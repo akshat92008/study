@@ -59,8 +59,16 @@ export class ChatMemoryService {
       }
 
       return (data || []).slice(0, matchCount).map((row: any) => row.content).filter(Boolean);
-    } catch (err) {
-      logger.error('Error in searchMemory', err);
+    } catch (err: any) {
+      if (err?.message?.includes('match_chat_memory') || err?.code === 'PGRST202') {
+        logger.error(
+          'CRITICAL: match_chat_memory RPC missing. Run migration 024_match_chat_memory.sql',
+          { userId, err: err.message }
+        );
+      } else {
+        logger.error('Error in searchMemory', { err: err.message, userId });
+      }
+      // Return empty — chat still works, just without memory context
       return [];
     }
   }
