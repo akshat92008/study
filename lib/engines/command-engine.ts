@@ -544,4 +544,28 @@ export class CommandConsumer {
 
     logger.info(`CommandConsumer: injected ${inserted} remediation tasks for tomorrow`, { userId });
   }
+
+  static async handleStudySessionCompleted(userId: string, data: any): Promise<void> {
+    const { subject, chapter } = data || {};
+    if (!subject || !chapter) return;
+
+    const supabase = await createClient();
+    const today = new Date().toISOString().split('T')[0];
+
+    // Mark any matching task for today as complete
+    const { error } = await supabase
+      .from('study_tasks')
+      .update({ is_completed: true })
+      .eq('user_id', userId)
+      .eq('scheduled_date', today)
+      .eq('is_completed', false)
+      .ilike('chapter', `%${chapter}%`);
+
+    if (error) {
+      logger.warn('CommandConsumer: failed to mark task complete', { error, chapter });
+      return;
+    }
+
+    logger.info(`CommandConsumer: marked task complete for ${chapter}`, { userId });
+  }
 }

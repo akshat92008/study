@@ -38,6 +38,7 @@ export default function DashboardPage() {
   };
 
   const [dashboardData, setDashboardData] = useState<any>(null);
+  const [masteryData, setMasteryData] = useState<any>(null);
   const [loadingTelemetry, setLoadingTelemetry] = useState(true);
 
   // Local state for the drawer upload mechanism
@@ -47,10 +48,17 @@ export default function DashboardPage() {
   // 1. Initial Data Loading
   const loadTelemetry = async () => {
     try {
-      const res = await fetch('/api/dashboard');
-      if (res.ok) {
-        const data = await res.json();
+      const [resDash, resMastery] = await Promise.all([
+        fetch('/api/dashboard'),
+        fetch('/api/atlas/mastery')
+      ]);
+      if (resDash.ok) {
+        const data = await resDash.json();
         setDashboardData(data);
+      }
+      if (resMastery.ok) {
+        const mData = await resMastery.json();
+        setMasteryData(mData);
       }
     } catch (e) {
       console.error('Failed to load dashboard data', e);
@@ -133,7 +141,7 @@ export default function DashboardPage() {
   const activeGoal = learningGoals.find(g => g.id === activeGoalId);
 
   // Numeric Stats definitions
-  const overallMastery = dashboardData?.cognition?.stats?.overallMastery ?? dashboardData?.profile?.overall_mastery ?? 0;
+  const overallMastery = masteryData?.overallPct ?? dashboardData?.cognition?.stats?.overallMastery ?? dashboardData?.profile?.overall_mastery ?? 0;
   const cardsDue = dashboardData?.revision?.dueCards?.length ?? 0;
   const marksLost = autopsyResult?.recoverableMarks ?? 0;
 

@@ -11,7 +11,7 @@ import { createSingleCard } from '@/lib/engines/revision-engine';
 import { logger } from '@/lib/utils/logger';
 import { resolveConceptByName } from '@/lib/engines/concept-resolver';
 import { LearningStateEngine } from '@/lib/engines/learning-state-engine';
-import { logPulseSignal, detectStudyFriction } from '@/lib/engines/pulse-engine';
+import { EventDispatcher } from '@/lib/events/orchestrator';
 import { generateSessionClosingMessage } from '@/lib/engines/session-closing';
 import { MASTERY_WEIGHTS } from '@/lib/engines/cognition-graph';
 import { syncStudentModel } from '@/lib/engines/inference-engine';
@@ -130,7 +130,6 @@ export async function POST(req: NextRequest) {
             controller.enqueue(encoder.encode(reply));
             fullResponse = reply;
           }
-          await logPulseSignal(user.id, 'overwhelmed').catch(() => {});
           metadataPayload = { action: 'planner_adjusted', tasksModified: true };
 
         } else if (['TUTOR_SESSION', 'PRACTICE', 'CREATE_ARTIFACT'].includes(intent.intent)) {
@@ -290,15 +289,37 @@ export async function POST(req: NextRequest) {
 
               // Embedding stored via ChatMemoryService (duplicate removed)
 
-              await logPulseSignal(user.id, 'chat_interaction', {
-                messageLength: message.length,
-                responseLength: fullResponse.length,
-                intent: intent.intent,
-              });
-
               // Semantic memory storage (store only user message to avoid duplicate embeddings)
               const memSvc = new ChatMemoryService();
               await memSvc.storeMessageInMemory(user.id, message).catch(() => {});
+
+              // Only fire if we have a real concept context — not for generic messages
+              const sessionSubject = (mindContext as any)?.currentTopic?.subject || mindContext?.weakConcepts?.[0]?.subject;
+              const sessionChapter = (mindContext as any)?.currentTopic?.chapter || mindContext?.weakConcepts?.[0]?.chapter;
+
+              if (sessionSubject && sessionChapter && sessionSubject !== 'General') {
+                const messageCount = history?.length || 1;
+                const estimatedMinutes = Math.max(5, Math.round(messageCount * 1.5));
+
+                try {
+                  await EventDispatcher.publish({
+                    user_id: user.id,
+                    type: 'MIND_TUTOR_COMPLETED',
+                    data: {
+                      subject: sessionSubject,
+                      chapter: sessionChapter,
+                      durationMinutes: estimatedMinutes,
+                      messageCount,
+                      sessionType: (mindContext as any)?.sessionType || 'chat',
+                    },
+                    metadata: { source: 'chat' },
+                    // Use minute-level granularity so rapid messages don't spam consumers
+                    idempotency_key: `session:${user.id}:${sessionSubject}:${sessionChapter}:${new Date().toISOString().slice(0, 16)}`,
+                  });
+                } catch (err) {
+                  logger.warn('STUDY_SESSION_COMPLETED event failed (non-fatal)', err);
+                }
+              }
             } catch (err) {
               logger.warn('Chat persistence failed', err);
             }

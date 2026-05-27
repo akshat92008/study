@@ -532,5 +532,38 @@ export class MemoryConsumer {
 
     logger.info(`MemoryConsumer: created ${created} flashcards from autopsy mistakes`, { userId });
   }
+
+  static async handleStudySessionCompleted(userId: string, data: any): Promise<void> {
+    const { subject, chapter, durationMinutes = 0, sessionType } = data || {};
+
+    // Only create cards from real tutor sessions, not casual chat
+    if (!subject || !chapter || durationMinutes < 10) return;
+    if (sessionType === 'chat') return; // Only from TUTOR_SESSION type
+
+    try {
+      const supabase = await createClient();
+      const { data: concept } = await supabase
+        .from('concepts')
+        .select('id')
+        .eq('user_id', userId)
+        .ilike('subject', `%${subject}%`)
+        .ilike('chapter', `%${chapter}%`)
+        .limit(1)
+        .maybeSingle();
+
+      await createSingleCard(
+        userId,
+        concept?.id ?? null,
+        `What are the key concepts in ${chapter}?`,
+        `Review your notes from your ${subject} — ${chapter} study session.`,
+        subject,
+        chapter
+      );
+
+      logger.info(`MemoryConsumer: created review card for ${chapter}`, { userId });
+    } catch (err) {
+      logger.warn('MemoryConsumer: failed to create study session card', err);
+    }
+  }
 }
 

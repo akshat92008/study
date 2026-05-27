@@ -367,6 +367,49 @@ export class AtlasConsumer {
 
     logger.info(`AtlasConsumer: downscaled mastery for ${chapterMap.size} chapters`, { userId });
   }
+
+  static async handleStudySessionCompleted(userId: string, data: any): Promise<void> {
+    const { subject, chapter, durationMinutes = 10 } = data || {};
+    if (!subject || !chapter) return;
+
+    const supabase = await createClient();
+
+    const { data: concepts } = await supabase
+      .from('concepts')
+      .select('id, mastery')
+      .eq('user_id', userId)
+      .ilike('subject', `%${subject}%`)
+      .ilike('chapter', `%${chapter}%`);
+
+    if (!concepts || concepts.length === 0) {
+      // Concept doesn't exist yet — create it at 'exposed'
+      await supabase.from('concepts').insert({
+        user_id: userId,
+        subject,
+        chapter,
+        mastery: 'exposed',
+        last_reviewed: new Date().toISOString(),
+      });
+      logger.info(`AtlasConsumer: created new concept at exposed — ${subject} / ${chapter}`, { userId });
+      return;
+    }
+
+    for (const concept of concepts) {
+      const upgradedMastery = upgradeMastery(concept.mastery, durationMinutes);
+      if (upgradedMastery !== concept.mastery) {
+        await supabase
+          .from('concepts')
+          .update({
+            mastery: upgradedMastery,
+            last_reviewed: new Date().toISOString(),
+          })
+          .eq('id', concept.id)
+          .eq('user_id', userId);
+      }
+    }
+
+    logger.info(`AtlasConsumer: upgraded mastery for ${subject} / ${chapter}`, { userId });
+  }
 }
 
 // Helper: step mastery down the tier ladder
@@ -381,3 +424,14 @@ function downgradeMastery(
   return tiers[Math.max(1, idx - steps)];
 }
 
+function upgradeMastery(current: string, durationMinutes: number): string {
+  const tiers = ['not_started', 'exposed', 'developing', 'proficient', 'mastered', 'automated'];
+  const idx = tiers.indexOf(current);
+  if (idx < 0) return 'exposed';
+  if (idx >= tiers.length - 1) return current; // Already automated
+
+  // Only upgrade if meaningful time was spent
+  // Short session (<10 min): max 1 tier. Longer (30+ min): up to 2 tiers.
+  const steps = durationMinutes >= 30 ? Math.min(2, tiers.length - 1 - idx) : 1;
+  return tiers[idx + steps];
+}

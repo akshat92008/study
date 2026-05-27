@@ -1,7 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import { generateJSON } from '@/lib/ai/gemini';
 import { logger } from '@/lib/utils/logger';
-import { calculateProductivityFingerprint } from '@/lib/engines/pulse-engine';
 
 export async function syncStudentModel(userId: string, isInitialFingerprint: boolean = false) {
   const supabase = await createClient();
@@ -78,9 +77,6 @@ Respond EXACTLY in this JSON format:
         behavioral_traps: newProfile.behavioral_traps,
         last_updated: new Date().toISOString(),
       });
-      
-      // Update temporal personalisation based on study sessions
-      await calculateProductivityFingerprint(userId);
     }
 
     return newProfile;

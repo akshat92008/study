@@ -236,9 +236,8 @@ export async function generateMorningBriefing(userId: string) {
     completionRate = Math.round((completed / yesterdayTasks.length) * 100);
   }
 
-  // PULSE emotional state
-  const { detectEmotionalState } = await import('@/lib/engines/pulse-engine');
-  const { state: emotionalState } = await detectEmotionalState(userId);
+  // Emotional state from profile
+  const emotionalState = profile?.emotional_state || 'neutral';
 
   // FSRS due cards
   const { getDueCards } = await import('@/lib/engines/revision-engine');

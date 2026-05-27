@@ -32,6 +32,8 @@ export type MistakeCategory =
   | 'anxiety'            // Stress-induced error
   | 'recall_failure';    // Knew it but couldn't recall
 
+export type CognitiveState = 'focused' | 'neutral' | 'frustrated' | 'overwhelmed';
+
 // Emotional states
 export type EmotionalState = 
   | 'focused'

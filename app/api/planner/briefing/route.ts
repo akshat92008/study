@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { detectEmotionalState, getAdaptiveConfig } from '@/lib/engines/pulse-engine';
+
 import { getDueCards } from '@/lib/engines/revision-engine';
 import { generateMorningBriefing } from '@/lib/ai/agents/planner';
 import { logger, safeError } from '@/lib/utils/logger';
@@ -13,16 +13,16 @@ export async function GET() {
 
     const today = new Date().toISOString().split('T')[0];
 
-    // 1. Check PULSE state
-    const { state: mood, confidence } = await detectEmotionalState(user.id);
-    const pulseConfig = getAdaptiveConfig(mood);
-
     // 2. Fetch Profile Context
     const { data: profile } = await supabase
       .from('profiles')
-      .select('exam_type, target_year, exam_date, streak_days')
+      .select('exam_type, target_year, exam_date, streak_days, emotional_state')
       .eq('id', user.id)
       .single();
+
+    const mood = profile?.emotional_state || 'neutral';
+    const confidence = 0.8;
+    const pulseConfig = { uiMessage: 'Stay focused on your mission.' };
 
     const targetYear = profile?.target_year || new Date().getFullYear() + 1;
     const examDate = profile?.exam_date ? new Date(profile.exam_date) : new Date(`${targetYear}-05-01T00:00:00Z`); 

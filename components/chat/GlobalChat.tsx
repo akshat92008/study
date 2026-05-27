@@ -10,6 +10,7 @@ import { RichMessageRenderer } from './RichMessageRenderer';
 import { createClient } from '@/lib/supabase/client';
 import DailySessionCard from './DailySessionCard';
 import { SessionClosingCard } from './SessionClosingCard';
+import { useSessionTimer } from '@/hooks/useSessionTimer';
 
 export const GlobalChat = memo(function GlobalChat() {
   const {
@@ -40,6 +41,9 @@ export const GlobalChat = memo(function GlobalChat() {
 
   // Initialize the stream hook
   const { status, streamingText, send, cancel, resetStatus } = useStream('/api/ai/chat');
+
+  const hasMessages = chatMessages.length > 0;
+  const { formatted } = useSessionTimer(hasMessages);
 
   const [user, setUser] = useState<any>(null);
   const supabase = createClient();
@@ -325,6 +329,11 @@ export const GlobalChat = memo(function GlobalChat() {
           </div>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+          {hasMessages && (
+            <span style={{ fontSize: '12px', color: 'var(--text-tertiary)', fontFamily: 'monospace', marginRight: '8px' }}>
+              {formatted()}
+            </span>
+          )}
           <button
             onClick={() => clearChat()}
             style={{

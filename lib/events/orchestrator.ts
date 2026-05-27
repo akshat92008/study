@@ -7,7 +7,6 @@ import { LearningStateEngine } from '@/lib/engines/learning-state-engine';
 import { AtlasConsumer } from '@/lib/engines/cognition-graph';
 import { MemoryConsumer } from '@/lib/engines/revision-engine';
 import { CommandConsumer } from '@/lib/engines/command-engine';
-import { PulseConsumer } from '@/lib/engines/pulse-engine';
 import { ConceptExpansionConsumer } from '@/lib/engines/concept-expansion-engine';
 
 const MAX_RETRIES = 5;
@@ -16,7 +15,6 @@ const MAX_RETRIES = 5;
 export const EVENT_CONSUMERS = [
   'learning_state_engine',
   'atlas_engine',
-  'pulse_engine',
   'memory_engine',
   'command_engine',
   'concept_expansion_engine'
@@ -220,24 +218,24 @@ export class EventDispatcher {
       case 'atlas_engine':
         if (event.type === 'AUTOPSY_MOCK_PROCESSED') {
           await AtlasConsumer.handleAutopsyProcessed(event.user_id, event.metadata);
+        } else if (event.type === 'STUDY_SESSION_COMPLETED') {
+          await AtlasConsumer.handleStudySessionCompleted(event.user_id, event.data);
         }
         break;
 
       case 'memory_engine':
         if (event.type === 'AUTOPSY_MOCK_PROCESSED') {
           await MemoryConsumer.handleAutopsyProcessed(event.user_id, event.metadata);
-        }
-        break;
-
-      case 'pulse_engine':
-        if (event.type === 'AUTOPSY_MOCK_PROCESSED') {
-          await PulseConsumer.handleAutopsyProcessed(event.user_id, event.metadata);
+        } else if (event.type === 'STUDY_SESSION_COMPLETED') {
+          await MemoryConsumer.handleStudySessionCompleted(event.user_id, event.data);
         }
         break;
         
       case 'command_engine':
         if (event.type === 'AUTOPSY_MOCK_PROCESSED') {
           await CommandConsumer.handleAutopsyProcessed(event.user_id, event.metadata, event.data);
+        } else if (event.type === 'STUDY_SESSION_COMPLETED') {
+          await CommandConsumer.handleStudySessionCompleted(event.user_id, event.data);
         }
         break;
 
