@@ -3,6 +3,7 @@ import { NextRequest } from 'next/server';
 import { after } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { generateJSON } from '@/lib/ai/gemini';
+import { z } from 'zod';
 import { routeStreamGeneration } from '@/lib/ai/router';
 import { getMINDContext } from '@/lib/engines/mind-engine';
 import { getMINDSystemPrompt } from '@/lib/ai/prompts/mind-prompt';
@@ -31,7 +32,7 @@ export async function POST(req: NextRequest) {
   let body: any;
   try { body = await req.json(); } catch { return new Response('Invalid JSON', { status: 400 }); }
 
-  const { message, history, imageBase64, imageMimeType, chatId } = body;
+  const { message, history, imageBase64, imageMimeType, chatId, sessionTurnsCount } = body;
   const sessionId = chatId || crypto.randomUUID();
 
   const [mindContext, semanticMemories] = await Promise.all([
@@ -269,7 +270,9 @@ Rules:
           let cardsCreated = 0;
           let newMasteryScore: number | null = null;
 
-          if (history && history.length > 0) {
+          const isSessionComplete = sessionTurnsCount ? (sessionTurnsCount >= 6) : (history && history.length >= 10);
+
+          if (isSessionComplete && history && history.length > 0) {
             try {
               const historySnippet = (history || []).slice(-6).map((m: any) => `${m.role === 'user' ? 'Student' : 'Tutor'}: ${m.content.slice(0, 200)}`).join('\n');
               const isPractice = intent.intent === 'PRACTICE';
@@ -316,20 +319,20 @@ Rules:
                 syncStudentModel(user.id).catch(() => {});
               } catch (err) { logger.error('Post-session synthesis failed', err); }
             });
-          }
 
-          const closing = await generateSessionClosingMessage({
-            userId: user.id, conceptId: conceptId || null, subject, chapter: topic,
-            gapFound: analysis.gapFound, gapAnswer: analysis.gapAnswer, understood: analysis.understood,
-            turnsCount: history?.length || 0, 
-            oldMastery: oldMasteryScore !== null ? oldMasteryScore / 100 : null, 
-            newMastery: newMasteryScore !== null ? newMasteryScore / 100 : null, 
-            cardsCreated,
-            sessionId: `chat-${Date.now()}`,
-          }).catch(() => null);
+            const closing = await generateSessionClosingMessage({
+              userId: user.id, conceptId: conceptId || null, subject, chapter: topic,
+              gapFound: analysis.gapFound, gapAnswer: analysis.gapAnswer, understood: analysis.understood,
+              turnsCount: history?.length || 0, 
+              oldMastery: oldMasteryScore !== null ? oldMasteryScore / 100 : null, 
+              newMastery: newMasteryScore !== null ? newMasteryScore / 100 : null, 
+              cardsCreated,
+              sessionId: `chat-${Date.now()}`,
+            }).catch(() => null);
 
-          if (closing) {
-            metadataPayload = { action: 'session_closing_message', closingMessage: closing.text, closingType: closing.type, sessionComplete: true, cardsCreated };
+            if (closing) {
+              metadataPayload = { action: 'session_closing_message', closingMessage: closing.text, closingType: closing.type, sessionComplete: true, cardsCreated };
+            }
           }
         } else {
           const conversationMessages = buildConversationMessages(history || [], message || '');
@@ -428,6 +431,80 @@ Rules:
                   });
                 } catch (err) {
                   logger.warn('STUDY_SESSION_COMPLETED event failed (non-fatal)', err);
+                }
+              }
+
+              // Extract microtarget tasks from study plan if the user asked to generate a plan/schedule
+              const lowerMsg = (message || '').toLowerCase();
+              if (lowerMsg.includes('plan') || lowerMsg.includes('sched') || lowerMsg.includes('planner') || lowerMsg.includes('prep') || intent.intent === 'CREATE_ARTIFACT') {
+                try {
+                  const todayStr = new Date().toISOString().split('T')[0];
+                  const extractPrompt = `You are a structured operational planner for Cognition OS.
+Extract a list of specific microtarget study tasks from this study plan to schedule in the student's database.
+If a task does not have a specific date mentioned, schedule it for today (${todayStr}).
+
+Study Plan Text:
+${fullResponse}
+
+Return ONLY valid JSON matching this schema:
+{
+  "tasks": [
+    {
+      "title": "Short title of the task (e.g. Study Electrostatics, Revise Thermodynamics)",
+      "subject": "Physics|Chemistry|Biology|Mathematics",
+      "chapter": "Chapter name",
+      "estimated_minutes": 45,
+      "scheduled_date": "YYYY-MM-DD"
+    }
+  ]
+}`;
+                  
+                  const taskListSchema = z.object({
+                    tasks: z.array(z.object({
+                      title: z.string(),
+                      subject: z.string(),
+                      chapter: z.string(),
+                      estimated_minutes: z.number().default(45),
+                      scheduled_date: z.string()
+                    }))
+                  });
+
+                  const planData = await generateJSON<any>(
+                    'flash',
+                    'Expert task extractor. Output JSON only.',
+                    extractPrompt,
+                    taskListSchema
+                  ).catch(() => null);
+
+                  if (planData && planData.tasks && planData.tasks.length > 0) {
+                    const tasksToInsert = planData.tasks.map((t: any) => ({
+                      user_id: user.id,
+                      title: t.title,
+                      type: 'study',
+                      subject: t.subject || 'General',
+                      chapter: t.chapter || '',
+                      estimated_minutes: t.estimated_minutes || 45,
+                      scheduled_date: new Date(t.scheduled_date || todayStr).toISOString(),
+                      is_completed: false,
+                      notes: 'Auto-extracted from chat study planner.'
+                    }));
+                    
+                    await supabase.from('study_tasks').insert(tasksToInsert);
+                    logger.info(`Auto-inserted ${tasksToInsert.length} microtargets from study planner`, { userId: user.id });
+
+                    // Invalidate today's and scheduled session cards cache so dashboard updates
+                    const datesToInvalidate = Array.from(new Set([
+                      todayStr,
+                      ...tasksToInsert.map((t: any) => t.scheduled_date.split('T')[0])
+                    ]));
+                    await supabase
+                      .from('session_cards')
+                      .delete()
+                      .eq('user_id', user.id)
+                      .in('date', datesToInvalidate);
+                  }
+                } catch (err) {
+                  logger.warn('Failed to extract and insert study tasks from planner', err);
                 }
               }
             } catch (err) {

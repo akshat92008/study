@@ -73,9 +73,10 @@ export async function getCognitionGraph(userId: string) {
   const chapterBestMap = new Map<string, number>();
   for (const c of concepts) {
     const key = `${c.subject}::${c.chapter}`;
-    const existing = chapterBestMap.get(key) ?? 0;
     const current = MASTERY_WEIGHTS[c.mastery] || 0;
-    if (current > existing) chapterBestMap.set(key, current);
+    if (!chapterBestMap.has(key) || current > chapterBestMap.get(key)!) {
+      chapterBestMap.set(key, current);
+    }
   }
   const chapterValues = Array.from(chapterBestMap.values());
   const chapterTotal = chapterValues.length;

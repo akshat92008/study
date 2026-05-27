@@ -180,6 +180,10 @@ export const GlobalChat = memo(function GlobalChat() {
     if (!textToSend && !pendingFile) return;
     if (status === 'streaming' || status === 'connecting' || isProcessingUpload) return;
 
+    if (!sessionActive) {
+      startSession();
+    }
+
     let imageBase64 = null;
     let imageMimeType = null;
     let extractedText = '';
@@ -233,12 +237,18 @@ export const GlobalChat = memo(function GlobalChat() {
     setPendingFile(null);
     resetStatus();
 
+    const activeStartTime = sessionStartTime || Date.now();
+    const sessionTurnsCount = chatMessages.filter(
+      m => m.role === 'user' && new Date(m.timestamp).getTime() >= activeStartTime
+    ).length;
+
     // Call the streaming engine
     try {
       const result = await send({
         body: {
           message: content,
           history: chatMessages.slice(-10),
+          sessionTurnsCount: sessionTurnsCount + 1,
           imageBase64,
           imageMimeType,
           activeGoalId,

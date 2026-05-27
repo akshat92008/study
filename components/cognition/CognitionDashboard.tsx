@@ -239,7 +239,7 @@ export default function CognitionDashboard({ data }: Props) {
           </div>
 
           {/* Interactive Node-Edge Graph Visualization */}
-          <KnowledgeMap concepts={concepts} links={data.links} stats={stats} />
+          <KnowledgeMap concepts={concepts} links={data.links} stats={stats} selectedSubject={selectedSubject} />
         </>
       )}
     </div>

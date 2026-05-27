@@ -21,9 +21,10 @@ interface KnowledgeMapProps {
   concepts: any[];
   links?: any[];
   stats: { total: number; mastered: number; proficient: number; developing: number; weak: number; overallMastery: number };
+  selectedSubject?: string;
 }
 
-export default function KnowledgeMap({ concepts: initialConcepts, links = [], stats }: KnowledgeMapProps) {
+export default function KnowledgeMap({ concepts: initialConcepts, links = [], stats, selectedSubject = 'all' }: KnowledgeMapProps) {
   const [concepts, setConcepts] = useState(initialConcepts);
   const [expandedSubjects, setExpandedSubjects] = useState<Set<string>>(new Set());
   const [selectedConcept, setSelectedConcept] = useState<any>(null);
@@ -81,6 +82,35 @@ export default function KnowledgeMap({ concepts: initialConcepts, links = [], st
     );
   }
 
+  const filteredConcepts = useMemo(() => {
+    if (!selectedSubject || selectedSubject === 'all') return concepts;
+    return concepts.filter(c => c.subject.toLowerCase() === selectedSubject.toLowerCase());
+  }, [concepts, selectedSubject]);
+
+  const filteredLinks = useMemo(() => {
+    if (!selectedSubject || selectedSubject === 'all') return links;
+    const conceptIds = new Set(filteredConcepts.map(c => c.id));
+    return links.filter(l => conceptIds.has(l.source_concept_id) && conceptIds.has(l.target_concept_id));
+  }, [links, filteredConcepts, selectedSubject]);
+
+  const subjectStats = useMemo(() => {
+    if (!selectedSubject || selectedSubject === 'all') return stats;
+    
+    const total = filteredConcepts.length;
+    const mastered = filteredConcepts.filter((c: any) => c.mastery === 'mastered' || c.mastery === 'automated').length;
+    const proficient = filteredConcepts.filter((c: any) => c.mastery === 'proficient').length;
+    const developing = filteredConcepts.filter((c: any) => c.mastery === 'developing').length;
+    const weak = filteredConcepts.filter((c: any) => c.mastery === 'exposed' || c.mastery === 'not_started').length;
+    
+    const masteryValues: Record<string, number> = {
+      not_started: 0, exposed: 15, developing: 40, proficient: 70, mastered: 90, automated: 98,
+    };
+    const sum = filteredConcepts.reduce((acc: number, c: any) => acc + (masteryValues[c.mastery] || 0), 0);
+    const overallMastery = total > 0 ? Math.round(sum / total) : 0;
+    
+    return { total, mastered, proficient, developing, weak, overallMastery };
+  }, [filteredConcepts, selectedSubject, stats]);
+
   // Group by subject → chapter
   const grouped = useMemo(() => {
     const map: Record<string, any[]> = {};
@@ -114,11 +144,11 @@ export default function KnowledgeMap({ concepts: initialConcepts, links = [], st
       {/* Overview Stats */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 'var(--sp-3)' }}>
         {[
-          { label: 'Total', value: stats.total, color: 'var(--text-primary)' },
-          { label: 'Mastered', value: stats.mastered, color: 'var(--success)' },
-          { label: 'Proficient', value: stats.proficient, color: 'var(--info)' },
-          { label: 'Developing', value: stats.developing, color: 'var(--warning)' },
-          { label: 'Weak', value: stats.weak, color: 'var(--danger)' },
+          { label: 'Total', value: subjectStats.total, color: 'var(--text-primary)' },
+          { label: 'Mastered', value: subjectStats.mastered, color: 'var(--success)' },
+          { label: 'Proficient', value: subjectStats.proficient, color: 'var(--info)' },
+          { label: 'Developing', value: subjectStats.developing, color: 'var(--warning)' },
+          { label: 'Weak', value: subjectStats.weak, color: 'var(--danger)' },
         ].map((s) => (
           <Card key={s.label} padding="md" style={{ textAlign: 'center' }}>
             <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-black)', color: s.color }}>
@@ -134,15 +164,17 @@ export default function KnowledgeMap({ concepts: initialConcepts, links = [], st
       {/* Overall Mastery Bar */}
       <Card padding="md">
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 'var(--sp-2)' }}>
-          <span style={{ fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-semibold)' }}>Overall Mastery</span>
+          <span style={{ fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-semibold)' }}>
+            {selectedSubject === 'all' ? 'Overall Mastery' : `${selectedSubject} Mastery`}
+          </span>
           <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--accent-cyan)', fontWeight: 'var(--fw-bold)' }}>
-            {stats.overallMastery}%
+            {subjectStats.overallMastery}%
           </span>
         </div>
         <div style={{ height: 10, background: 'var(--bg-tertiary)', borderRadius: 'var(--radius-full)', overflow: 'hidden' }}>
           <motion.div
             initial={{ width: 0 }}
-            animate={{ width: `${stats.overallMastery}%` }}
+            animate={{ width: `${subjectStats.overallMastery}%` }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             style={{
               height: '100%', borderRadius: 'var(--radius-full)',
@@ -154,7 +186,7 @@ export default function KnowledgeMap({ concepts: initialConcepts, links = [], st
 
       {/* Interactive Node-Edge Graph */}
       <Card padding="none">
-        <KnowledgeMapGraph concepts={concepts} links={links} />
+        <KnowledgeMapGraph concepts={filteredConcepts} links={filteredLinks} />
       </Card>
 
       {/* Selected Concept Detail Panel */}
