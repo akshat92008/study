@@ -133,8 +133,52 @@ BEGIN
 
   END IF;
 
-  -- JEE syllabus (add similarly when ready)
-  -- IF p_exam_type ILIKE '%jee%' THEN ... END IF;
+  -- JEE syllabus
+  IF p_exam_type ILIKE '%jee%' THEN
+  
+    -- Physics
+    FOR v_chapter IN SELECT unnest(ARRAY[
+      'Physical World and Measurement', 'Kinematics', 'Laws of Motion', 'Work Energy and Power',
+      'Motion of System of Particles and Rigid Body', 'Gravitation', 'Properties of Bulk Matter',
+      'Thermodynamics', 'Behaviour of Perfect Gas and Kinetic Theory', 'Oscillations and Waves',
+      'Electrostatics', 'Current Electricity', 'Magnetic Effects of Current and Magnetism',
+      'Electromagnetic Induction and Alternating Currents', 'Electromagnetic Waves', 'Optics',
+      'Dual Nature of Matter and Radiation', 'Atoms and Nuclei', 'Electronic Devices'
+    ]) LOOP
+      INSERT INTO concepts (user_id, subject, chapter, name, mastery, confidence, last_reviewed_at)
+      VALUES (p_user_id, 'Physics', v_chapter, v_chapter, 'not_started', 'low', now())
+      ON CONFLICT DO NOTHING;
+    END LOOP;
+
+    -- Chemistry
+    FOR v_chapter IN SELECT unnest(ARRAY[
+      'Some Basic Concepts of Chemistry', 'Structure of Atom', 'Classification of Elements and Periodicity in Properties',
+      'Chemical Bonding and Molecular Structure', 'States of Matter', 'Thermodynamics', 'Equilibrium', 'Redox Reactions',
+      'Hydrogen', 'The s-Block Elements', 'The p-Block Elements', 'Organic Chemistry: Basic Principles and Techniques',
+      'Hydrocarbons', 'Environmental Chemistry', 'The Solid State', 'Solutions', 'Electrochemistry', 'Chemical Kinetics',
+      'Surface Chemistry', 'General Principles and Processes of Isolation of Elements', 'The d and f Block Elements',
+      'Coordination Compounds', 'Haloalkanes and Haloarenes', 'Alcohols Phenols and Ethers',
+      'Aldehydes Ketones and Carboxylic Acids', 'Amines', 'Biomolecules', 'Polymers', 'Chemistry in Everyday Life'
+    ]) LOOP
+      INSERT INTO concepts (user_id, subject, chapter, name, mastery, confidence, last_reviewed_at)
+      VALUES (p_user_id, 'Chemistry', v_chapter, v_chapter, 'not_started', 'low', now())
+      ON CONFLICT DO NOTHING;
+    END LOOP;
+
+    -- Mathematics
+    FOR v_chapter IN SELECT unnest(ARRAY[
+      'Sets Relations and Functions', 'Complex Numbers and Quadratic Equations', 'Matrices and Determinants',
+      'Permutations and Combinations', 'Mathematical Induction', 'Binomial Theorem and its Simple Applications',
+      'Sequences and Series', 'Limit Continuity and Differentiability', 'Integral Calculus', 'Differential Equations',
+      'Coordinate Geometry', 'Three Dimensional Geometry', 'Vector Algebra', 'Statistics and Probability',
+      'Trigonometry', 'Mathematical Reasoning'
+    ]) LOOP
+      INSERT INTO concepts (user_id, subject, chapter, name, mastery, confidence, last_reviewed_at)
+      VALUES (p_user_id, 'Mathematics', v_chapter, v_chapter, 'not_started', 'low', now())
+      ON CONFLICT DO NOTHING;
+    END LOOP;
+
+  END IF;
 
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;

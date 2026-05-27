@@ -46,15 +46,21 @@ export async function resolveConceptByName(userId: string, subject: string, chap
   // 4. Log the miss extensively for analysis!
   logger.warn('CONCEPT_RESOLVER_MISS', { userId, subject, chapter, reason: 'No exact, fuzzy, or semantic matches located in DB.' });
   // Create concept as fallback
+  const insertData: any = { 
+    user_id: userId, 
+    subject: subject.trim(), 
+    chapter: chapter.trim(), 
+    name: chapter.trim(), 
+    mastery: 'not_started',
+    confidence: 'low'
+  };
+  
+  if (embedding && embedding.length > 0) {
+    insertData.embedding = `[${embedding.join(',')}]`;
+  }
+
   const { data: newConcept, error: insertErr } = await supabase.from('concepts')
-    .insert({ 
-      user_id: userId, 
-      subject: subject.trim(), 
-      chapter: chapter.trim(), 
-      name: chapter.trim(), 
-      mastery: 'not_started',
-      confidence: 'low'
-    })
+    .insert(insertData)
     .select('id')
     .single();
   
