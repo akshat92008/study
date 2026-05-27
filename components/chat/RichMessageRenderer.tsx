@@ -198,7 +198,7 @@ function renderMarkdownBlock(text: string): React.ReactNode {
       }
       return;
     }
-    if (inCodeBlock) { codeLines.push(line); return; }
+    if (inCodeBlock) { codeLines.push(rawLine); return; }
 
     // start of exam‑trap block
     if (line.trim() === '[[exam-trap]]') {
