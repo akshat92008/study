@@ -114,16 +114,76 @@ export async function POST(req: NextRequest) {
     mindContext.profile.examType
   );
 // Determine routing via orchestrator
-const orchestratorResult = await orchestrate(user.id, message || '', (history || []).slice(-6), !!(imageBase64 && imageMimeType));
+const orchestratorResult = await orchestrate(
+  user.id,
+  message || '',
+  (history || []).slice(-6),
+  !!(imageBase64 && imageMimeType)
+);
 await logDecision(orchestratorResult, user.id, message || '');
-// Use original intent for existing processing flow
+
+// If orchestrator says this is a mock autopsy (file uploaded with test intent),
+// hand off to the autopsy ingest endpoint internally instead of answering in chat.
+if (
+  orchestratorResult.intent === 'mock_autopsy' &&
+  orchestratorResult.needsFileProcessing &&
+  (imageBase64 || body?.documentBase64)
+) {
+  const stream = new ReadableStream({
+    async start(controller) {
+      controller.enqueue(encoder.encode(
+        "I can see you've uploaded a test paper. Let me run a full autopsy on it — analyzing every question, classifying mistakes, and updating your knowledge map. Give me 30 seconds.\n\nHead to the Autopsy section to see the full breakdown once I'm done."
+      ));
+      controller.close();
+    }
+  });
+  // Fire autopsy in background
+  const autopsyPayload = {
+    fileData: imageBase64
+      ? { kind: 'inline', data: imageBase64, mimeType: imageMimeType }
+      : { kind: 'inline', data: body?.documentBase64, mimeType: body?.documentMimeType },
+    testName: `Chat Upload ${new Date().toLocaleDateString()}`,
+    examType: mindContext.profile.examType,
+  };
+  fetch(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/autopsy/ingest`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Cookie: req.headers.get('cookie') || '',
+    },
+    body: JSON.stringify(autopsyPayload),
+  }).catch(err => logger.warn('Background autopsy from chat failed', err));
+
+  return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+}
+
+// Intent from detected intent
 const intent = detectedIntent;
+
+// If orchestrator indicates a planning intent, generate plan and return as COMMAND session
+if (orchestratorResult.intent === 'planning' && !imageBase64) {
+  const stream = new ReadableStream({
+    async start(controller) {
+      try {
+        const plan = await routeStreamGeneration(systemPrompt, orchestratorResult, mindContext);
+        controller.enqueue(encoder.encode(plan));
+      } catch (err) {
+        controller.enqueue(encoder.encode('Failed to generate plan.'));
+        logger.error('Planning generation failed', err);
+      } finally {
+        controller.close();
+      }
+    }
+  });
+  return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+}
+
 // OVERWHELMED GATE — Hard structural enforcement.
 // When emotional state is overwhelmed, override TUTOR_SESSION and PRACTICE intents
 // regardless of what the student asked. The vision is explicit: "stop teaching new material immediately."
 if (
   mindContext.emotionalState === 'overwhelmed' &&
-  ['TUTOR_SESSION', 'PRACTICE'].includes(intent.intent)
+  ['TUTOR_SESSION', 'PRACTICE'].includes(orchestratorResult.intent)
 ) {
   const recentVictory = mindContext.weakConcepts.find(c =>
     c.mastery === 'developing' || c.mastery === 'proficient'

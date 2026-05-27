@@ -94,7 +94,7 @@ export class EventDispatcher {
     const trackingRows = EVENT_CONSUMERS.map((consumer) => ({
       event_id: eventId,
       consumer_name: consumer,
-      status: 'processing',
+      status: 'pending',
     }));
 
     const { error } = await supabase
@@ -115,7 +115,7 @@ export class EventDispatcher {
       .update({ status: 'processing', updated_at: new Date().toISOString() })
       .eq('event_id', eventId)
       .eq('consumer_name', consumer)
-      .in('status', ['processing', 'failed'])
+      .in('status', ['pending', 'processing', 'failed'])
       .select('*')
       .single();
 

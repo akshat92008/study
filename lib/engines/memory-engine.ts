@@ -43,14 +43,18 @@ function buildSemanticChunks(text: string, chunkSize = 800, overlap = 150): stri
   return chunks.filter(c => c.length > 100);
 }
 
-export async function processDocumentIntoMemory(userId: string, fileData: { title: string, text: string }) {
+export async function processDocumentIntoMemory(userId: string, fileData: { title: string, text: string, storage_path?: string | null, file_size_bytes?: number | null, mime_type?: string | null, original_filename?: string | null }) {
   const supabase = await createClient();
   
   // Create material
   const { data: material, error: matErr } = await supabase.from('materials').insert({
     user_id: userId,
     title: fileData.title,
-    raw_content: fileData.text
+    raw_content: fileData.text,
+    storage_path: fileData.storage_path ?? null,
+    file_size_bytes: fileData.file_size_bytes ?? null,
+    mime_type: fileData.mime_type ?? null,
+    original_filename: fileData.original_filename ?? null
   }).select().single();
 
   if (matErr || !material) throw new Error('Could not create material record.');

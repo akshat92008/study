@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { processDocumentIntoMemory } from '@/lib/engines/memory-engine';
 import { logger, safeError } from '@/lib/utils/logger';
+import { createAdminClient } from '@/lib/supabase/admin';
 
 import pdfParse from 'pdf-parse';
 
@@ -19,6 +20,24 @@ export async function POST(request: Request) {
 
     const title = file.name;
     const mimeType = file.type || 'application/pdf';
+    // Store original file in Supabase Storage
+    const fileBuffer = Buffer.from(await file.arrayBuffer());
+    const storageFileName = `${user.id}/${Date.now()}_${file.name.replace(/[^a-zA-Z0-9._-]/g, '_')}`;
+    const adminClient = createAdminClient();
+    const { data: storageData, error: storageErr } = await adminClient.storage
+      .from('user-materials')
+      .upload(storageFileName, fileBuffer, {
+        contentType: mimeType,
+        upsert: false,
+      });
+    const storagePath = storageErr ? null : storageData?.path;
+    if (storageErr) {
+      logger.warn('File storage failed (non-fatal, continuing with processing)', {
+        userId: user.id,
+        fileName: file.name,
+        error: storageErr.message,
+      });
+    }
     let text = '';
 
     if (mimeType === 'application/pdf') {
@@ -89,7 +108,14 @@ export async function POST(request: Request) {
     }
 
     // 3. Vectorize and store via pgvector
-    const result = await processDocumentIntoMemory(user.id, { title, text });
+    const result = await processDocumentIntoMemory(user.id, {
+      title,
+      text,
+      storage_path: storagePath,
+      file_size_bytes: fileBuffer.byteLength,
+      mime_type: mimeType,
+      original_filename: file.name,
+    });
 
     // 4. Auto-generate FSRS flashcards in background
     Promise.resolve().then(async () => {
