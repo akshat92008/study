@@ -2,12 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { GoogleGenAI } from '@google/genai';
 import { safeError, logger } from '@/lib/utils/logger';
+import { withRateLimit } from '@/lib/middleware/withRateLimit';
 
-export async function POST(req: NextRequest) {
+export const POST = withRateLimit('knowledge', async (req, userId) => {
   try {
     const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
     const { materialId } = await req.json();
     if (!materialId) return NextResponse.json({ error: 'materialId required' }, { status: 400 });
@@ -16,7 +15,7 @@ export async function POST(req: NextRequest) {
       .from('materials')
       .select('*')
       .eq('id', materialId)
-      .eq('user_id', user.id) // RLS double-check
+      .eq('user_id', userId) // RLS double-check
       .single();
 
     if (!material) return NextResponse.json({ error: 'Material not found' }, { status: 404 });
@@ -26,7 +25,7 @@ export async function POST(req: NextRequest) {
       .from('material_chunks')
       .select('chunk_text')
       .eq('material_id', materialId)
-      .eq('user_id', user.id)
+      .eq('user_id', userId)
       .order('id', { ascending: true })
       .limit(40); // cap to avoid token overflow
 
@@ -71,4 +70,4 @@ Output only valid Markdown. No preamble.`,
     logger.error('Study guide generation failed', error);
     return NextResponse.json(safeError(error), { status: 500 });
   }
-}
+});

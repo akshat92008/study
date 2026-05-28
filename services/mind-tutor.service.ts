@@ -91,12 +91,12 @@ export class MindTutorService extends BaseService {
     const trailingSnags = this.countTrailingSnags(history);
     if (trailingSnags >= SNAG_CIRCUIT_BREAKER_THRESHOLD) {
       logger.error('MIND circuit breaker tripped — AI unavailable for this session', { userId, trailingSnags });
-      return this.simulateStream(
-        "⚠️ The AI core appears to be temporarily unavailable. " +
+      return (async function* () {
+        yield "⚠️ The AI core appears to be temporarily unavailable. " +
         "This is usually caused by a downstream model outage. " +
         "Please refresh the page and try again in a moment. " +
-        "If the problem persists, your session will be restored automatically."
-      );
+        "If the problem persists, your session will be restored automatically.";
+      })();
     }
 
     const sessionState = await this.getOrInitializeState(userId, conceptId);
@@ -140,11 +140,11 @@ export class MindTutorService extends BaseService {
     if (!output) {
       // Emit the snag once. On the next user message, countTrailingSnags()
       // will detect it and the circuit breaker will fire instead of repeating.
-      return this.simulateStream(SNAG_MESSAGE);
+      return (async function* () { yield SNAG_MESSAGE; })();
     }
 
     const closingMessage = await this.handleStateTransition(userId, sessionState.id, output);
-    return this.streamWithOptionalClosing(output.responseToStudent, closingMessage);
+    return this.streamWithOptionalClosing(systemPrompt, userPrompt, closingMessage);
   }
 
   private async handleStateTransition(userId: string, stateId: string, output: MindTutorOutput): Promise<string | null> {
@@ -282,19 +282,32 @@ export class MindTutorService extends BaseService {
     }
   }
 
-  private async *simulateStream(text: string): AsyncGenerator<string> {
-    const words = text.split(' ');
-    for (const word of words) {
-      yield word + ' ';
-      await new Promise(r => setTimeout(r, 20));
+  private async *realStream(
+    systemPrompt: string,
+    userPrompt: string
+  ): AsyncGenerator<string> {
+    try {
+      const { routeStreamGeneration } = await import('@/lib/ai/router');
+      const stream = routeStreamGeneration(systemPrompt, userPrompt);
+      for await (const chunk of stream) {
+        yield chunk;
+      }
+    } catch (err) {
+      console.error('[MindTutor] Stream failed, falling back to text:', err);
+      // Graceful fallback — yield the error message as a complete string
+      yield 'I encountered an issue generating a response. Please try again.';
     }
   }
 
-  private async *streamWithOptionalClosing(responseText: string, closingMessage: string | null): AsyncGenerator<string> {
-    yield* this.simulateStream(responseText);
+  private async *streamWithOptionalClosing(
+    systemPrompt: string,
+    userPrompt: string,
+    closingMessage: string | null
+  ): AsyncGenerator<string> {
+    yield* this.realStream(systemPrompt, userPrompt);
     if (closingMessage) {
       yield "\n\n---\n\n";
-      yield* this.simulateStream(`**Session Complete:** ${closingMessage}`);
+      yield `**Session Complete:** ${closingMessage}`;
     }
   }
 }

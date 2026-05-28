@@ -21,7 +21,8 @@ import { MASTERY_WEIGHTS } from '@/lib/engines/cognition-graph';
 import { syncStudentModel } from '@/lib/engines/inference-engine';
 import { ChatMemoryService } from '@/lib/services/chatMemoryService';
 import { detectChatIntent, buildConversationMessages } from '@/lib/ai/chat-intent';
-import { inferAndUpdateEmotionalState } from '@/lib/engines/emotional-state-updater';
+import { classifyMessageCombined } from '@/lib/ai/chat-intent-with-emotion';
+import { validateBase64Payload } from '@/lib/middleware/validateUpload';
 
 const encoder = new TextEncoder();
 
@@ -46,6 +47,11 @@ export async function POST(req: NextRequest) {
 
   const { message, history, imageBase64, imageMimeType, chatId, sessionTurnsCount } = body;
   const sessionId = chatId || crypto.randomUUID();
+
+  if (imageBase64) {
+    const imgValidation = validateBase64Payload(imageBase64);
+    if (!imgValidation.valid) return imgValidation.error!;
+  }
 
   const [mindContext, semanticMemories] = await Promise.all([
     getMINDContext(user.id, message),
@@ -118,9 +124,9 @@ export async function POST(req: NextRequest) {
     return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
   }
 
-  const detectedIntent = await detectChatIntent(
+  const { intent: detectedIntent, emotion, confidence } = await classifyMessageCombined(
     message || '',
-    (history || []).slice(-6),
+    (history || []).slice(-2).map((m: any) => m.content).join(' '),
     mindContext.profile.examType
   );
 // Determine routing via orchestrator
@@ -597,7 +603,20 @@ Return ONLY valid JSON matching this schema:
               const memSvc = new ChatMemoryService();
               await memSvc.storeMessageInMemory(user.id, message).catch(() => {});
               
-              inferAndUpdateEmotionalState(user.id, message).catch(() => {});
+              // Save emotion update in after() without another LLM call:
+              if (emotion !== 'neutral') {
+                const { data: profile } = await supabase
+                  .from('profiles')
+                  .select('emotional_state')
+                  .eq('id', user.id)
+                  .single();
+                if (profile?.emotional_state !== emotion) {
+                  await supabase
+                    .from('profiles')
+                    .update({ emotional_state: emotion })
+                    .eq('id', user.id);
+                }
+              }
 
               // Only fire if we have a real concept context — not for generic messages
               const sessionSubject = (mindContext as any)?.currentTopic?.subject || mindContext?.weakConcepts?.[0]?.subject;

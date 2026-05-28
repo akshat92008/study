@@ -2,15 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { CommandPlanner } from '@/lib/engines/command-engine';
 import { logger } from '@/lib/utils/logger';
+import { withRateLimit } from '@/lib/middleware/withRateLimit';
 
-export async function POST(req: NextRequest) {
+export const POST = withRateLimit('planner', async (req, userId) => {
   try {
     const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-    
-    if (!user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
 
     const body = await req.json();
     const { date, commit } = body;
@@ -23,7 +19,7 @@ export async function POST(req: NextRequest) {
     const { data: activeGoal } = await supabase
       .from('learning_goals')
       .select('daily_hours_available')
-      .eq('user_id', user.id)
+      .eq('user_id', userId)
       .eq('status', 'active')
       .order('created_at', { ascending: false })
       .limit(1)
@@ -34,7 +30,7 @@ export async function POST(req: NextRequest) {
     const planner = new CommandPlanner();
 
     // 2. Compute candidate scores
-    const candidates = await planner.computeScores(user.id, date);
+    const candidates = await planner.computeScores(userId, date);
 
     // 3. Pack daily schedule
     const packedTasks = planner.packDailySchedule(candidates, dailyHours);
@@ -45,12 +41,12 @@ export async function POST(req: NextRequest) {
       await supabase
         .from('study_tasks')
         .delete()
-        .eq('user_id', user.id)
+        .eq('user_id', userId)
         .eq('scheduled_date', date);
 
       if (packedTasks.length > 0) {
         const rows = packedTasks.map(t => ({
-          user_id: user.id,
+          user_id: userId,
           title: t.title,
           description: t.description || '',
           type: t.type,
@@ -86,4 +82,4 @@ export async function POST(req: NextRequest) {
     logger.error('Error in POST /api/planner/replan', error);
     return NextResponse.json({ error: error.message || 'Internal Server Error' }, { status: 500 });
   }
-}
+});

@@ -1,7 +1,8 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { processMockAutopsy } from '@/lib/engines/autopsy-engine';
 import { logger, safeError } from '@/lib/utils/logger';
+import { withRateLimit } from '@/lib/middleware/withRateLimit';
 
 const MAX_FILE_SIZE_BYTES = 20 * 1024 * 1024;
 
@@ -14,11 +15,9 @@ const ALLOWED_MIME_TYPES = new Set([
   'image/webp',
 ]);
 
-export async function POST(request: Request) {
+export const POST = withRateLimit('autopsy', async (request, userId) => {
   try {
     const supabase = await createClient();
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
-    if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
     const formData = await request.formData();
     const file = formData.get('file') as File | null;
@@ -63,17 +62,17 @@ export async function POST(request: Request) {
     const { data: profile } = await supabase
       .from('profiles')
       .select('exam_type')
-      .eq('id', user.id)
+      .eq('id', userId)
       .single();
 
     const examType = profile?.exam_type || 'General Study';
 
-    logger.info('Starting autopsy', { userId: user.id, testName, mimeType, fileSizeKB: Math.round(file.size / 1024) });
+    logger.info('Starting autopsy', { userId: userId, testName, mimeType, fileSizeKB: Math.round(file.size / 1024) });
 
-    const result = await processMockAutopsy(user.id, fileData, testName, examType, customScoring);
+    const result = await processMockAutopsy(userId, fileData, testName, examType, customScoring);
     return NextResponse.json(result);
 
   } catch (error: any) {
     return NextResponse.json(safeError(error), { status: 500 });
   }
-}
+});

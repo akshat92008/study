@@ -5,6 +5,7 @@ import { AtlasConsumer } from '@/lib/engines/cognition-graph';
 import { MemoryConsumer } from '@/lib/engines/revision-engine';
 import { CommandConsumer } from '@/lib/engines/command-engine';
 import { ConceptExpansionConsumer } from '@/lib/engines/concept-expansion-engine';
+import { after } from 'next/server';
 
 const MAX_RETRIES = 5;
 
@@ -86,24 +87,21 @@ export class EventDispatcher {
   }
 
   private static async dispatchConsumers(eventId: string): Promise<void> {
-    // Give consumers a hard 25-second budget (well under Vercel's 30s hobby limit).
-    // On Pro plan raise this to 55s.
-    const CONSUMER_TIMEOUT_MS = 25_000;
+    const useAfter = typeof after === 'function';
 
-    const timeoutPromise = new Promise<void>((_, reject) =>
-      setTimeout(() => reject(new Error('consumer_timeout')), CONSUMER_TIMEOUT_MS)
-    );
+    const runConsumers = async () => {
+      await Promise.allSettled(
+        EVENT_CONSUMERS.map((consumer) => this.processConsumer(eventId, consumer))
+      );
+    };
 
-    const consumerPromise = Promise.allSettled(
-      EVENT_CONSUMERS.map((consumer) => this.processConsumer(eventId, consumer))
-    );
-
-    try {
-      await Promise.race([consumerPromise, timeoutPromise]);
-    } catch (err) {
-      // Timeout hit — consumers that haven't finished stay in `pending`
-      // and will be picked up by the nightly DLQ retry cron.
-      console.warn(`[Orchestrator] Consumer dispatch timed out for event ${eventId}. Will retry via cron.`);
+    if (useAfter) {
+      after(runConsumers);
+    } else {
+      // Hobby tier fallback: fire and forget with microtask
+      Promise.resolve().then(runConsumers).catch((err) => {
+        console.error('[Orchestrator] Background consumer error:', err);
+      });
     }
   }
 

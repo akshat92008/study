@@ -3,12 +3,11 @@ import { createClient } from '@/lib/supabase/server';
 import { getPlanForDate } from '@/lib/actions/planner';
 import { generateDailyPlan } from '@/lib/ai/agents/planner';
 import { safeError, logger } from '@/lib/utils/logger';
+import { withRateLimit } from '@/lib/middleware/withRateLimit';
 
-export async function POST(req: NextRequest) {
+export const POST = withRateLimit('planner', async (req, userId) => {
   try {
     const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
     const body = await req.json();
     const { date } = body;
@@ -16,7 +15,7 @@ export async function POST(req: NextRequest) {
 
     let plan = await getPlanForDate(targetDate);
     if (!plan || plan.length === 0) {
-      plan = await generateDailyPlan(user.id, targetDate);
+      plan = await generateDailyPlan(userId, targetDate);
     }
     
     return NextResponse.json({ plan });
@@ -24,4 +23,4 @@ export async function POST(req: NextRequest) {
     logger.error('Planner route failed', error);
     return NextResponse.json(safeError(error), { status: 500 });
   }
-}
+});

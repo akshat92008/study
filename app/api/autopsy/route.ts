@@ -15,7 +15,7 @@ export async function GET(request: Request) {
       identifier: user.id,
       bucket: 'autopsy',
       maxTokens: 5,
-      windowSeconds: 60,
+      windowSeconds: 300,
     });
     if (!allowed) return rateLimitResponse(remaining, resetAt);
 

@@ -1,18 +1,31 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { processDocumentIntoMemory } from '@/lib/engines/memory-engine';
 import { logger, safeError } from '@/lib/utils/logger';
 import { createAdminClient } from '@/lib/supabase/admin';
+import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
+import { validateUploadedFile } from '@/lib/middleware/validateUpload';
 
 import pdfParse from 'pdf-parse';
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
 
-    
+    if (authError || !user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const { allowed, remaining, resetAt } = await checkRateLimit({
+      identifier: user.id,
+      bucket: 'ingest',
+      maxTokens: 10,      // 10 uploads per 5 minutes
+      windowSeconds: 300,
+    });
+    if (!allowed) return rateLimitResponse(remaining, resetAt);
+
+    const userId = user.id;
 
     const formData = await request.formData();
     const file = formData.get('file') as File;
@@ -22,7 +35,11 @@ export async function POST(request: Request) {
     const mimeType = file.type || 'application/pdf';
     // Store original file in Supabase Storage
     const fileBuffer = Buffer.from(await file.arrayBuffer());
-    const storageFileName = `${user.id}/${Date.now()}_${file.name.replace(/[^a-zA-Z0-9._-]/g, '_')}`;
+
+    const validation = validateUploadedFile(fileBuffer, mimeType, file.name);
+    if (!validation.valid) return validation.error!;
+
+    const storageFileName = `${userId}/${Date.now()}_${file.name.replace(/[^a-zA-Z0-9._-]/g, '_')}`;
     const adminClient = createAdminClient();
     const { data: storageData, error: storageErr } = await adminClient.storage
       .from('user-materials')
@@ -33,7 +50,7 @@ export async function POST(request: Request) {
     const storagePath = storageErr ? null : storageData?.path;
     if (storageErr) {
       logger.warn('File storage failed (non-fatal, continuing with processing)', {
-        userId: user.id,
+        userId: userId,
         fileName: file.name,
         error: storageErr.message,
       });
@@ -54,7 +71,7 @@ export async function POST(request: Request) {
         }
 
         logger.info('PDF parsed successfully', {
-          userId: user.id,
+          userId: userId,
           pages: pdfData.numpages,
           textLength: text.length
         });
@@ -108,7 +125,7 @@ export async function POST(request: Request) {
     }
 
     // 3. Vectorize and store via pgvector
-    const result = await processDocumentIntoMemory(user.id, {
+    const result = await processDocumentIntoMemory(userId, {
       title,
       text,
       storage_path: storagePath,
@@ -135,11 +152,11 @@ export async function POST(request: Request) {
         
         // Find or create a concept node for this material
         const { resolveConceptByName } = await import('@/lib/engines/concept-resolver');
-        let conceptId = await resolveConceptByName(user.id, metaResult.subject, metaResult.chapter);
+        let conceptId = await resolveConceptByName(userId, metaResult.subject, metaResult.chapter);
         
         if (!conceptId) {
           const { data: newConcept } = await db.from('concepts').insert({
-            user_id: user.id,
+            user_id: userId,
             name: metaResult.chapter,
             subject: metaResult.subject,
             chapter: metaResult.chapter,
@@ -153,7 +170,7 @@ export async function POST(request: Request) {
         
         // Generate flashcards from the material
         const { generateCardsForConcept } = await import('@/lib/engines/revision-engine');
-        await generateCardsForConcept(user.id, conceptId, metaResult.subject, metaResult.chapter);
+        await generateCardsForConcept(userId, conceptId, metaResult.subject, metaResult.chapter);
         logger.info(`Background flashcard generation complete for ${title}`);
       } catch (bgErr) {
         logger.warn('Background card generation from upload failed:', bgErr);

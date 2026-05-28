@@ -1,26 +1,25 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { getDueCards, reviewCard } from '@/lib/engines/revision-engine';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
   try {
-    const supabase = createClient();
-    const { data: { user }, error: authError } = await (await supabase).auth.getUser();
+    const supabase = await createClient();
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
 
-    if (authError || !user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
+    if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
     const { allowed, remaining, resetAt } = await checkRateLimit({
       identifier: user.id,
       bucket: 'revision',
-      maxTokens: 60,
+      maxTokens: 120,     // 2 per second sustained
       windowSeconds: 60,
     });
     if (!allowed) return rateLimitResponse(remaining, resetAt);
 
-    const dueCards = await getDueCards(user.id);
+    const userId = user.id;
+    const dueCards = await getDueCards(userId);
     return NextResponse.json({ dueCards });
   } catch (error: any) {
     console.error('Revision API Error:', error);
@@ -29,20 +28,22 @@ export async function GET(request: Request) {
 }
 
 // Edit a card (front/back text)
-export async function PATCH(request: Request) {
+export async function PATCH(request: NextRequest) {
   try {
     const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+
+    if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
     const { allowed, remaining, resetAt } = await checkRateLimit({
       identifier: user.id,
       bucket: 'revision',
-      maxTokens: 60,
+      maxTokens: 120,     // 2 per second sustained
       windowSeconds: 60,
     });
     if (!allowed) return rateLimitResponse(remaining, resetAt);
 
+    const userId = user.id;
     const body = await request.json();
     const { cardId, front, back } = body;
 
@@ -53,7 +54,7 @@ export async function PATCH(request: Request) {
       .from('revision_cards')
       .select('id')
       .eq('id', cardId)
-      .eq('user_id', user.id)
+      .eq('user_id', userId)
       .single();
 
     if (!card) return NextResponse.json({ error: 'Card not found' }, { status: 404 });
@@ -70,7 +71,7 @@ export async function PATCH(request: Request) {
       .from('revision_cards')
       .update(updates)
       .eq('id', cardId)
-      .eq('user_id', user.id);
+      .eq('user_id', userId);
 
     if (error) throw error;
 
@@ -82,20 +83,22 @@ export async function PATCH(request: Request) {
 }
 
 // Delete a card
-export async function DELETE(request: Request) {
+export async function DELETE(request: NextRequest) {
   try {
     const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+
+    if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
     const { allowed, remaining, resetAt } = await checkRateLimit({
       identifier: user.id,
       bucket: 'revision',
-      maxTokens: 60,
+      maxTokens: 120,     // 2 per second sustained
       windowSeconds: 60,
     });
     if (!allowed) return rateLimitResponse(remaining, resetAt);
 
+    const userId = user.id;
     const { searchParams } = new URL(request.url);
     const cardId = searchParams.get('cardId');
 
@@ -106,7 +109,7 @@ export async function DELETE(request: Request) {
       .from('revision_cards')
       .delete()
       .eq('id', cardId)
-      .eq('user_id', user.id);
+      .eq('user_id', userId);
 
     if (error) throw error;
 
@@ -118,20 +121,22 @@ export async function DELETE(request: Request) {
 }
 
 // Submit a card review (FSRS rating 1–4)
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+
+    if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
     const { allowed, remaining, resetAt } = await checkRateLimit({
       identifier: user.id,
       bucket: 'revision',
-      maxTokens: 60,
+      maxTokens: 120,     // 2 per second sustained
       windowSeconds: 60,
     });
     if (!allowed) return rateLimitResponse(remaining, resetAt);
 
+    const userId = user.id;
     const body = await request.json();
     const { cardId, rating, responseTimeMs } = body;
 
@@ -147,7 +152,7 @@ export async function POST(request: Request) {
       .from('revision_cards')
       .select('id, user_id')
       .eq('id', cardId)
-      .eq('user_id', user.id)
+      .eq('user_id', userId)
       .single();
 
     if (!card) {
