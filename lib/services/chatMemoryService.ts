@@ -38,7 +38,9 @@ export class ChatMemoryService {
           .delete()
           .eq('user_id', userId)
           .lt('created_at', thirtyDaysAgo.toISOString())
-          .catch((err) => logger.warn('Background memory eviction failed', err));
+          .then(({ error }) => {
+            if (error) logger.warn('Background memory eviction failed', error);
+          });
       }
     } catch (err) {
       logger.error('Error in storeMessageInMemory', err);

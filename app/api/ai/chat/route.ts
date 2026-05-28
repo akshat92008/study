@@ -579,7 +579,7 @@ Return ONLY valid JSON matching this schema:
                     user_id: user.id,
                     type: 'MIND_TUTOR_COMPLETED',
                     data: {
-                      conceptId: (typeof conceptId !== 'undefined') ? conceptId : null,
+                      conceptId: null,
                       subject: sessionSubject,
                       chapter: sessionChapter,
                       durationMinutes: estimatedMinutes,
