@@ -1,3 +1,4 @@
+// lib/events/orchestrator.ts
 import { createAdminClient } from '@/lib/supabase/admin';
 import { withCorrelationId } from '@/lib/telemetry/correlation';
 import { logger } from '@/lib/utils/logger';
@@ -6,10 +7,10 @@ import { AtlasConsumer } from '@/lib/engines/cognition-graph';
 import { MemoryConsumer } from '@/lib/engines/revision-engine';
 import { CommandConsumer } from '@/lib/engines/command-engine';
 import { ConceptExpansionConsumer } from '@/lib/engines/concept-expansion-engine';
-import { RedisQueue } from '@/lib/queues/redisQueue';
 import { after } from 'next/server';
 
-const orchestratorQueue = new RedisQueue('orchestrator.events');
+// BullMQ/ioredis removed — incompatible with Vercel serverless (TCP Redis).
+// Consumers are dispatched inline via after() — no worker process needed.
 
 const MAX_RETRIES = 5;
 
@@ -85,13 +86,18 @@ export class EventDispatcher {
     const eventId = insertedEvent?.id ?? traceId;
     await this.registerConsumers(eventId);
 
-    await this.dispatchConsumers(eventId);
+    // Dispatch consumers non-blocking via after() — no TCP Redis, no BullMQ worker needed.
+    after(async () => {
+      await this.runAllConsumers(eventId);
+    });
 
     return eventId;
   }
 
-  private static async dispatchConsumers(eventId: string): Promise<void> {
-    await orchestratorQueue.enqueue({ eventId });
+  private static async runAllConsumers(eventId: string): Promise<void> {
+    await Promise.allSettled(
+      EVENT_CONSUMERS.map((consumer) => this.processConsumer(eventId, consumer))
+    );
   }
 
   private static async registerConsumers(eventId: string): Promise<void> {

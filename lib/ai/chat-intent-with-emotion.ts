@@ -20,7 +20,7 @@ const VALID_EMOTIONS = new Set<EmotionalState>([
 // Fast keyword pre-screens — skip the LLM call entirely for obvious cases
 const INTENT_KEYWORDS: Partial<Record<ChatIntent, RegExp>> = {
   FLASHCARDS: /\b(revise|flashcard|quiz me|test me|spaced repetition)\b/i,
-  CREATE_ARTIFACT: /\b(plan|schedule|today|timetable|what should i study)\b/i,
+  CREATE_ARTIFACT: /\b(plan|schedule|today|timetable|what should i study|microtarget|planner|add task|add.*microtarget)\b/i,
   AUTOPSY: /\b(autopsy|mock test|analyze my test|paper analysis)\b/i,
 };
 

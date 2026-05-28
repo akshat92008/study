@@ -190,8 +190,8 @@ async function callGoogle(
     body.systemInstruction = { parts: [{ text: systemMsg.content }] };
   }
 
-  const endpoint = stream ? 'streamGenerateContent?alt=sse' : 'generateContent';
-  const url = `${config.baseUrl}/models/${model}:${endpoint}&key=${config.apiKey}`;
+  const endpoint = stream ? 'streamGenerateContent?alt=sse&' : 'generateContent?';
+  const url = `${config.baseUrl}/models/${model}:${endpoint}key=${config.apiKey}`;
 
   const response = await fetch(url, {
     method: 'POST',
@@ -683,7 +683,7 @@ if (!config || !config.apiKey || !config.supportsVision) {
               contents: [{
                 parts: [
                   { text: `${systemPrompt}\n\n${userMessage || 'Solve this question completely.'}` },
-                  { inline_data: { mime_type: imageMimeType, data: imageBase64 } },
+                  { inlineData: { mimeType: imageMimeType, data: imageBase64 } },
                 ],
               }],
             }),

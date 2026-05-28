@@ -16,6 +16,11 @@ export function useVoiceInteraction(onTranscript?: (text: string) => void) {
   
   const recognitionRef = useRef<any>(null);
   const synthesisRef = useRef<SpeechSynthesis | null>(null);
+  const onTranscriptRef = useRef(onTranscript);
+
+  useEffect(() => {
+    onTranscriptRef.current = onTranscript;
+  }, [onTranscript]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -34,8 +39,8 @@ export function useVoiceInteraction(onTranscript?: (text: string) => void) {
               // We could also pass interim results, but final is usually cleaner for inputs
             }
           }
-          if (finalTranscript && onTranscript) {
-            onTranscript(finalTranscript);
+          if (finalTranscript && onTranscriptRef.current) {
+            onTranscriptRef.current(finalTranscript);
           }
         };
 
@@ -60,7 +65,7 @@ export function useVoiceInteraction(onTranscript?: (text: string) => void) {
         synthesisRef.current.cancel();
       }
     };
-  }, [onTranscript]);
+  }, []);
 
   const startListening = useCallback(() => {
     if (recognitionRef.current) {

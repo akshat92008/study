@@ -46,6 +46,21 @@ export function validateEnvironment(): void {
     console.warn('');
   }
 
+  // Warn if embeddings are explicitly disabled — this kills semantic memory.
+  if (process.env.DISABLE_EMBEDDINGS === 'true') {
+    const embeddingWarn = [
+      '\n⚠️  COGNITION OS — DISABLE_EMBEDDINGS=true is set.',
+      '   Semantic memory, RAG retrieval, and the "AI knows you" feature are all OFF.',
+      '   Set DISABLE_EMBEDDINGS=false in production to enable the full product.\n',
+    ].join('\n');
+    console.warn(embeddingWarn);
+
+    if (process.env.NODE_ENV === 'production') {
+      // In production this is always a mistake — make it loud.
+      console.error('❌ CRITICAL: DISABLE_EMBEDDINGS=true in a production environment. This disables the core product value proposition.');
+    }
+  }
+
   if (missing.length > 0) {
     const message = [
       '\n❌ COGNITION OS — Critical environment variables missing. Server cannot start.\n',

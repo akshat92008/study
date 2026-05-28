@@ -35,13 +35,13 @@ export async function ingestMaterial(userId: string, title: string, content: str
   // 3. Embed and store chunks
   for (const chunk of chunks) {
     const embedding = await getEmbedding(chunk);
-    if (!embedding || embedding.length === 0) continue;
+    if (!embedding || !Array.isArray(embedding) || embedding.length === 0 || typeof embedding[0] !== "number") continue;
     
     await supabase.from('material_chunks').insert({
       user_id: userId,
       material_id: material.id,
       chunk_text: chunk,
-      embedding: embedding as any
+      embedding: `[${embedding.join(',')}]`
     });
   }
   
@@ -52,9 +52,10 @@ export async function ingestMaterial(userId: string, title: string, content: str
 export async function searchPersonalKnowledge(userId: string, query: string, threshold = 0.5, limit = 3) {
   const supabase = await createClient();
   const queryEmbedding = await getEmbedding(query);
+  if (!queryEmbedding || !Array.isArray(queryEmbedding) || queryEmbedding.length === 0 || typeof queryEmbedding[0] !== 'number') return [];
 
   const { data, error } = await supabase.rpc('match_material_chunks', {
-    query_embedding: queryEmbedding,
+    query_embedding: `[${queryEmbedding.join(',')}]`,
     match_threshold: threshold,
     match_count: limit,
     p_user_id: userId
@@ -72,9 +73,10 @@ export class RAGEngine {
 
   async search({ userId, query, limit = 4, minSimilarity = 0.72 }: { userId: string, query: string, limit?: number, minSimilarity?: number }) {
     const queryEmbedding = await getEmbedding(query);
+    if (!queryEmbedding || !Array.isArray(queryEmbedding) || queryEmbedding.length === 0 || typeof queryEmbedding[0] !== 'number') return [];
 
     const { data, error } = await this.supabase.rpc('match_material_chunks', {
-      query_embedding: queryEmbedding,
+      query_embedding: `[${queryEmbedding.join(',')}]`,
       match_threshold: minSimilarity,
       match_count: limit,
       p_user_id: userId

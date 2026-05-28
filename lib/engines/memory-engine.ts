@@ -66,7 +66,7 @@ export async function processDocumentIntoMemory(userId: string, fileData: { titl
   for (const chunk of rawChunks) {
     // Generate dense vector embedding
     const embedding = await getEmbedding(chunk);
-    if (!embedding || embedding.length === 0) continue;
+    if (!embedding || !Array.isArray(embedding) || embedding.length === 0 || typeof embedding[0] !== "number") continue;
 
     // We do NOT need to generate fts_vector here, 
     // it is GENERATED ALWAYS AS (to_tsvector('english', chunk_text)) STORED at DB level.
@@ -74,7 +74,7 @@ export async function processDocumentIntoMemory(userId: string, fileData: { titl
       user_id: userId,
       material_id: material.id,
       chunk_text: chunk,
-      embedding: embedding as any
+      embedding: `[${embedding.join(',')}]`
     });
     processedCount++;
   }

@@ -4,6 +4,7 @@ import { generateJSON } from '@/lib/ai/gemini';
 import { logger } from '@/lib/utils/logger';
 import { expandChapterWithAI } from './atlas-expansion';
 import { applyMasteryUpdate } from '@/lib/engines/mastery-updater';
+import { sanitizeIlike } from '@/lib/utils/sanitize';
 
 export const MASTERY_WEIGHTS: Record<string, number> = {
   not_started: 0, exposed: 15, developing: 40, proficient: 70, mastered: 90, automated: 98,
@@ -365,8 +366,8 @@ export class AtlasConsumer {
         .from('concepts')
         .select('id, mastery')
         .eq('user_id', userId)
-        .ilike('subject', `%${subject}%`)
-        .ilike('chapter', `%${chapter}%`);
+        .ilike('subject', `%${sanitizeIlike(subject)}%`)
+        .ilike('chapter', `%${sanitizeIlike(chapter)}%`);
 
       if (!concepts || concepts.length === 0) continue;
 
@@ -420,8 +421,8 @@ export class AtlasConsumer {
       .from('concepts')
       .select('id, mastery')
       .eq('user_id', userId)
-      .ilike('subject', `%${subject}%`)
-      .ilike('chapter', `%${chapter}%`);
+      .ilike('subject', `%${sanitizeIlike(subject)}%`)
+      .ilike('chapter', `%${sanitizeIlike(chapter)}%`);
 
     if (!concepts || concepts.length === 0) {
       // Concept doesn't exist yet — create it at 'exposed'

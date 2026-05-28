@@ -52,7 +52,7 @@ Classify and return JSON:
 Rules:
 - "explain", "what is", "how does", "I don't understand", "teach me" → TUTOR_SESSION
 - "test me", "quiz me", "give me questions", "practice" → PRACTICE
-- "make a study guide", "revision sheet", "create flashcards", "write a plan", "prepare a planner", "help me prepare", "study plan", "revise everything", "full syllabus revision" → CREATE_ARTIFACT
+- "make a study guide", "revision sheet", "create flashcards", "write a plan", "prepare a planner", "help me prepare", "study plan", "revise everything", "full syllabus revision", "add to microtargets", "microtarget", "add task", "update planner" → CREATE_ARTIFACT
 - "I gave a test", "upload test", "check my mock", "analyse my test", "I scored" → AUTOPSY
 - "how am I doing", "my stats", "progress", "percentage" → ANALYTICS
 - "knowledge map", "ATLAS", "what do I know" → ATLAS

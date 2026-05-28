@@ -42,7 +42,7 @@ async function routeMultimodalExtraction(
         contents: [{
           parts: [
             { text: prompt },
-            { inline_data: { mime_type: fileData.mimeType, data: fileData.data } },
+            { inlineData: { mimeType: fileData.mimeType, data: fileData.data } },
           ],
         }],
         generationConfig: {

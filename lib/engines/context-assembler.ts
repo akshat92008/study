@@ -51,7 +51,7 @@ export class ContextAssembler {
     try {
       const supabase = await createClient();
       const embedding = await getEmbedding(query);
-      if (!embedding || embedding.length === 0) return [];
+      if (!embedding || !Array.isArray(embedding) || embedding.length === 0 || typeof embedding[0] !== "number") return [];
 
       const embeddingString = `[${embedding.join(',')}]`;
 

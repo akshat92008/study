@@ -8,7 +8,6 @@ import { mockAutopsies, autopsyQuestions, mistakes } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
 import type { SupabaseClient } from '@supabase/supabase-js';
 import pdf from 'pdf-parse';
-import Tesseract from 'tesseract.js';
 import { parse as csvParse } from 'csv-parse/sync';
 
 export type RawQuestion = {
@@ -53,8 +52,8 @@ async function extractText(file: File): Promise<string> {
     return data.text;
   }
   if (mime.startsWith('image/')) {
-    const { data: { text } } = await Tesseract.recognize(buffer, 'eng');
-    return text;
+    logger.warn('Tesseract OCR disabled to prevent crashes.');
+    return 'OCR fallback disabled. Please provide raw text or use an API.';
   }
   // Assume CSV – return raw text for later parsing
   return buffer.toString('utf-8');

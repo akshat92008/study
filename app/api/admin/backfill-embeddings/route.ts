@@ -38,11 +38,11 @@ export async function POST(req: Request) {
         const textToEmbed = `${concept.subject} ${concept.chapter}`;
         const embedding = await getEmbedding(textToEmbed);
         
-        if (embedding && embedding.length > 0) {
-           const { error: updateErr } = await supabase
-             .from('concepts')
-             .update({ embedding: `[${embedding.join(',')}]` })
-             .eq('id', concept.id);
+        if (embedding && Array.isArray(embedding) && embedding.length > 0 && typeof embedding[0] === 'number') {
+          const { error: updateErr } = await supabase
+            .from('concepts')
+            .update({ embedding: `[${embedding.join(',')}]` })
+            .eq('id', concept.id);
              
            if (updateErr) {
              logger.error('Failed to update DB for concept', { conceptId: concept.id, error: updateErr });

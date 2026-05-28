@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next';
+import { withSentryConfig } from '@sentry/nextjs';
 import { validateEnvironment } from './lib/utils/env-validate';
 
 // Validate at build/start time — fails fast before any request
@@ -40,4 +41,15 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withSentryConfig(nextConfig, {
+  // Sentry org/project — set these as env vars in Vercel/GitHub
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+  // Only upload source maps in CI/production, not local dev
+  silent: process.env.NODE_ENV !== 'production',
+  widenClientFileUpload: true,
+  hideSourceMaps: true,
+  disableLogger: true,
+  // If SENTRY_DSN is not set, the plugin is a no-op
+  // so this is safe to leave in without an active account
+});

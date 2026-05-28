@@ -32,7 +32,7 @@ CREATE INDEX IF NOT EXISTS idx_dlq_events_user ON public.dlq_events(user_id);
 CREATE TABLE IF NOT EXISTS public.event_consumer_tracking (
   event_id UUID REFERENCES public.student_events(id) ON DELETE CASCADE,
   consumer_name TEXT NOT NULL,
-  status TEXT CHECK (status IN ('processing', 'completed', 'failed')) DEFAULT 'processing' NOT NULL,
+  status TEXT CHECK (status IN ('pending', 'processing', 'completed', 'failed')) DEFAULT 'pending' NOT NULL,
   retry_count INT DEFAULT 0 NOT NULL,
   last_error TEXT,
   created_at TIMESTAMPTZ DEFAULT NOW() NOT NULL,

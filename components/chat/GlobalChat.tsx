@@ -289,6 +289,7 @@ export const GlobalChat = memo(function GlobalChat() {
             setActiveDrawer('autopsy');
           } else if (result.toolCall.action === 'show_analytics') {
             router.push('/dashboard');
+            window.dispatchEvent(new Event('refresh-dashboard'));
           } else if (result.toolCall.action === 'planner_adjusted') {
             window.dispatchEvent(new Event('refresh-dashboard'));
           }

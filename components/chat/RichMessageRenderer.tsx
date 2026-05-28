@@ -468,7 +468,7 @@ function StudyGuideCard({ artifact }: { artifact: ParsedArtifact }) {
 
 function parseQuestions(content: string): ParsedQuestion[] {
   const questions: ParsedQuestion[] = [];
-  const blocks = content.split(/\n---\n/);
+  const blocks = content.split(/\n\s*---\s*(?:\n|$)/);
 
   blocks.forEach((block, idx) => {
     if (!block.trim()) return;
@@ -720,7 +720,7 @@ function RevisionSheetCard({ artifact }: { artifact: ParsedArtifact }) {
 
 function parseFlashcards(content: string): ParsedFlashcard[] {
   const cards: ParsedFlashcard[] = [];
-  const blocks = content.split(/\n---\n/);
+  const blocks = content.split(/\n\s*---\s*(?:\n|$)/);
   blocks.forEach((block, idx) => {
     if (!block.trim()) return;
     const lines = block.trim().split('\n');

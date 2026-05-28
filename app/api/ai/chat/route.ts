@@ -11,7 +11,7 @@ import { getMINDSystemPrompt } from '@/lib/ai/prompts/mind-prompt';
 import { updateConceptState } from '@/lib/engines/cognition-graph';
 import { createSingleCard } from '@/lib/engines/revision-engine';
 import { logger } from '@/lib/utils/logger';
-import { orchestrate } from '@/lib/engines/orchestrator';
+import { orchestrateFromIntent } from '@/lib/engines/orchestrator';
 import { logDecision } from '@/lib/utils/orchestratorLogger';
 import { resolveConceptByName } from '@/lib/engines/concept-resolver';
 import { LearningStateEngine } from '@/lib/engines/learning-state-engine';
@@ -20,7 +20,7 @@ import { generateSessionClosingMessage } from '@/lib/engines/session-closing';
 import { MASTERY_WEIGHTS } from '@/lib/engines/cognition-graph';
 import { syncStudentModel } from '@/lib/engines/inference-engine';
 import { ChatMemoryService } from '@/lib/services/chatMemoryService';
-import { detectChatIntent, buildConversationMessages } from '@/lib/ai/chat-intent';
+import { buildConversationMessages } from '@/lib/ai/chat-intent';
 import { classifyMessageCombined } from '@/lib/ai/chat-intent-with-emotion';
 import { validateBase64Payload } from '@/lib/middleware/validateUpload';
 
@@ -129,14 +129,14 @@ export async function POST(req: NextRequest) {
     (history || []).slice(-2).map((m: any) => m.content).join(' '),
     mindContext.profile.examType
   );
-// Determine routing via orchestrator
-const orchestratorResult = await orchestrate(
-  user.id,
-  message || '',
-  (history || []).slice(-6),
-  !!(imageBase64 && imageMimeType)
-);
-await logDecision(orchestratorResult, user.id, message || '');
+
+  // Orchestrate using the already-classified intent — no second LLM call.
+  const orchestratorResult = orchestrateFromIntent(
+    detectedIntent,
+    !!(imageBase64 && imageMimeType),
+    message || ''
+  );
+  await logDecision(orchestratorResult, user.id, message || '');
 
 // If orchestrator says this is a mock autopsy (file uploaded with test intent),
 // hand off to the autopsy ingest endpoint internally instead of answering in chat.
@@ -240,7 +240,7 @@ if (
             AUTOPSY: "Opening **AUTOPSY** — upload your mock test PDF or photo. I'll diagnose every wrong answer by root cause and show you your recoverable score.",
             FLASHCARDS: `You have **${mindContext.overdueCards}** cards due today. Opening your revision queue now.`,
             ATLAS: `Your knowledge map is at **${mindContext.masteryStats.masteryPercent}%** mastery. Opening ATLAS now.`,
-            ANALYTICS: 'Opening your performance dashboard.',
+            ANALYTICS: `Opening your performance dashboard. You are currently at **${mindContext.masteryStats.masteryPercent}%** overall mastery with **${mindContext.overdueCards}** cards due.`,
           };
           const msg = routeMessages[intent.intent] || 'Opening that for you now...';
           controller.enqueue(encoder.encode(msg));
@@ -324,6 +324,7 @@ Rules:
 - If they mention an upcoming test date, build a day-by-day study plan from today until that date.
 - Cover all weak areas from their ATLAS profile first, then fill remaining days with stronger subjects.
 - Format the plan clearly with days, topics, and time estimates.
+- If the user simply asks to add a specific topic to their microtargets, dashboard, or planner, output a short 1-day plan with just that task.
 - If they say "full syllabus", cover all three subjects: Physics, Chemistry, Biology.
 - Be specific and actionable. Not generic.
 - End with one motivating line about what hitting this plan will do for their score.
@@ -516,20 +517,17 @@ Return ONLY valid JSON matching this schema:
                 { session_id: sessionId, user_id: user.id, role: 'assistant', content: strippedResponse },
               ]);
 
-                if (isNewSession) {
-                  const { count: totalSessionCount } = await supabase
-                    .from('chat_sessions')
-                    .select('*', { count: 'exact', head: true })
-                    .eq('user_id', user.id);
+                // Message count query runs every turn, but is a lightweight COUNT query.
+                // syncStudentModel itself is the expensive call — we guard it tightly.
+                const { count: totalMessageCount } = await supabase
+                  .from('chat_messages')
+                  .select('*', { count: 'exact', head: true })
+                  .eq('user_id', user.id)
+                  .eq('role', 'user');
 
-                  const { count: totalMessageCount } = await supabase
-                    .from('chat_messages')
-                    .select('*', { count: 'exact', head: true })
-                    .eq('user_id', user.id)
-                    .eq('role', 'user');
-
-                  const isEarlyFingerprint = totalMessageCount !== null && [1, 5, 10].includes(totalMessageCount);
-                  const isRoutineRefresh = totalMessageCount !== null && totalMessageCount > 10 && totalMessageCount % 25 === 0;
+                if (totalMessageCount !== null) {
+                  const isEarlyFingerprint = [1, 5, 10].includes(totalMessageCount);
+                  const isRoutineRefresh = totalMessageCount > 10 && totalMessageCount % 25 === 0;
 
                   if (isEarlyFingerprint || isRoutineRefresh) {
                     syncStudentModel(user.id, isEarlyFingerprint).catch(() => {});

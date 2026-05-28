@@ -56,6 +56,11 @@ export async function* streamText(
 }
 
 export async function getEmbedding(text: string): Promise<number[]> {
+  // Guard: if embeddings are disabled, return empty array.
+  // ChatMemoryService.storeMessageInMemory already handles empty embedding gracefully.
+  if (process.env.DISABLE_EMBEDDINGS === 'true') {
+    return [];
+  }
   try {
     return await routeEmbedding(text);
   } catch (err) {

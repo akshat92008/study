@@ -11,7 +11,7 @@ export class ChatMemoryService {
 
     try {
       const embedding = await getEmbedding(trimmed);
-      if (!embedding || embedding.length === 0) {
+      if (!embedding || !Array.isArray(embedding) || embedding.length === 0 || typeof embedding[0] !== 'number') {
         logger.warn('Skipping memory storage, empty embedding returned', { userId });
         return;
       }
@@ -61,7 +61,7 @@ export class ChatMemoryService {
         return null;
       });
 
-      if (embedding && embedding.length > 0) {
+      if (embedding && Array.isArray(embedding) && embedding.length > 0 && typeof embedding[0] === 'number') {
         // Semantic Search (pgvector)
         const { data, error } = await supabase.rpc('match_chat_memory', {
           query_embedding: `[${embedding.join(',')}]`,
