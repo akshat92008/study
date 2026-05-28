@@ -363,10 +363,10 @@ Return ONLY valid JSON matching this schema:
             const taskListSchema = z.object({
               tasks: z.array(z.object({
                 title: z.string(),
-                subject: z.string(),
-                chapter: z.string(),
-                estimated_minutes: z.number().default(45),
-                scheduled_date: z.string()
+                subject: z.string().optional().default('General'),
+                chapter: z.string().optional().default(''),
+                estimated_minutes: z.number().optional().default(45),
+                scheduled_date: z.string().optional().default(todayStr)
               }))
             });
 
@@ -385,17 +385,27 @@ Return ONLY valid JSON matching this schema:
                 subject: t.subject || 'General',
                 chapter: t.chapter || '',
                 estimated_minutes: t.estimated_minutes || 45,
-                scheduled_date: new Date(t.scheduled_date || todayStr).toISOString(),
+                scheduled_date: t.scheduled_date || todayStr,
                 is_completed: false,
                 notes: 'Auto-extracted from chat study planner.'
               }));
               
+              const datesToUpdate = Array.from(new Set(tasksToInsert.map((t: any) => t.scheduled_date)));
+              if (datesToUpdate.length > 0) {
+                 await supabase
+                   .from('study_tasks')
+                   .delete()
+                   .eq('user_id', user.id)
+                   .eq('is_completed', false)
+                   .in('scheduled_date', datesToUpdate);
+              }
+
               await supabase.from('study_tasks').insert(tasksToInsert);
               logger.info(`Auto-inserted ${tasksToInsert.length} microtargets from study planner`, { userId: user.id });
 
               const datesToInvalidate = Array.from(new Set([
                 todayStr,
-                ...tasksToInsert.map((t: any) => t.scheduled_date.split('T')[0])
+                ...datesToUpdate
               ]));
               await supabase
                 .from('session_cards')

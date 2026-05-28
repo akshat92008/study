@@ -8,6 +8,7 @@ export interface QueueMessage {
 // Ensure you have REDIS_URL in your environment variables for production
 const connection = new IORedis(process.env.REDIS_URL || 'redis://localhost:6379', {
   maxRetriesPerRequest: null,
+  lazyConnect: true,
 });
 
 export class RedisQueue {
