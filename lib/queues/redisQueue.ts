@@ -31,7 +31,7 @@ export class RedisQueue {
     this.maxRetries = options?.maxRetries ?? 5;
     
     this.queue = new Queue(this.stream, {
-      connection,
+      connection: connection as any,
       defaultJobOptions: {
         attempts: this.maxRetries,
         backoff: {
@@ -59,7 +59,7 @@ export class RedisQueue {
       async (job: Job) => {
         await handler(job.data);
       },
-      { connection }
+      { connection: connection as any }
     );
 
     this.worker.on('completed', (job) => {

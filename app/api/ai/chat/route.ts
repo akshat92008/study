@@ -176,26 +176,6 @@ if (
 // Intent from detected intent
 const intent = detectedIntent;
 
-// If orchestrator indicates a planning intent, generate plan and return as COMMAND session
-if (orchestratorResult.intent === 'planning' && !imageBase64) {
-  const stream = new ReadableStream({
-    async start(controller) {
-      try {
-        const conversationMessages = buildConversationMessages(history || [], message || '');
-        for await (const chunk of routeStreamGeneration(systemPrompt, conversationMessages, 0.7)) {
-          controller.enqueue(encoder.encode(chunk));
-        }
-      } catch (err) {
-        controller.enqueue(encoder.encode('Failed to generate plan.'));
-        logger.error('Planning generation failed', err);
-      } finally {
-        controller.close();
-      }
-    }
-  });
-  return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
-}
-
 // OVERWHELMED GATE — Hard structural enforcement.
 // When emotional state is overwhelmed, override TUTOR_SESSION and PRACTICE intents
 // regardless of what the student asked. The vision is explicit: "stop teaching new material immediately."
@@ -331,7 +311,7 @@ if (
                     metadataPayload = { action: 'planner_adjusted', tasksModified: true, sessionCardInvalidated: true };
           }
 
-        } else if (intent.intent === 'CREATE_ARTIFACT') {
+        } else if (intent.intent === 'CREATE_ARTIFACT' || orchestratorResult.intent === 'planning') {
           const topic = intent.topic || null;
           const subject = intent.subject || null;
           
@@ -346,7 +326,8 @@ Rules:
 - Format the plan clearly with days, topics, and time estimates.
 - If they say "full syllabus", cover all three subjects: Physics, Chemistry, Biology.
 - Be specific and actionable. Not generic.
-- End with one motivating line about what hitting this plan will do for their score.`;
+- End with one motivating line about what hitting this plan will do for their score.
+- IMPORTANT: Do NOT wrap the <artifact> tags in markdown code blocks (like \`\`\`xml). Output the raw <artifact> tags directly.`;
 
           const conversationMessages = buildConversationMessages(history || [], message || '');
           for await (const chunk of routeStreamGeneration(artifactSystemPrompt, conversationMessages, 0.6)) {

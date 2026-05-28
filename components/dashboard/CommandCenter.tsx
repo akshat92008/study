@@ -127,6 +127,7 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
             if (meta.action === 'show_atlas') setActiveDrawer('cognition');
             else if (meta.action === 'show_flashcards') setActiveDrawer('revision');
             else if (meta.action === 'run_autopsy') setActiveDrawer('autopsy');
+            else if (meta.action === 'planner_adjusted' && onRefresh) onRefresh();
           }
         } catch { /* non-fatal */ }
       }
