@@ -36,12 +36,14 @@ next-env.d.ts
 scratch/
 *.local
 .env
+
+# SECURITY — never commit these
 .env.local
 .env.production
 .env.*.local
 
-# Test artifacts
-*.test-output.json
-check_*.js
-apply_*.js
-
+# General
+node_modules/
+.next/
+.vercel/
+dist/
