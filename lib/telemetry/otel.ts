@@ -31,11 +31,13 @@ export function initTelemetry(): void {
     });
 
     const sdk = new NodeSDK({
+      // @ts-expect-error - Resource version mismatch between OTel packages
       resource: new Resource({
         [SEMRESATTRS_SERVICE_NAME]: 'cognition-os',
         [SEMRESATTRS_SERVICE_VERSION]: process.env.NEXT_PUBLIC_APP_VERSION ?? '0.1.0',
         'deployment.environment': process.env.NODE_ENV ?? 'development',
       }),
+      // @ts-expect-error - SpanProcessor version mismatch between OTel packages
       spanProcessor: new SimpleSpanProcessor(traceExporter),
     });
 

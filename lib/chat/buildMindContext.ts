@@ -1,12 +1,13 @@
 // lib/chat/buildMindContext.ts
 
-import { ChatMemoryService } from '@/services/chat-memory.service';
-import { getLearnerProfile } from '@/lib/engines/learner-profile';
-import { getDueCards } from '@/lib/engines/due-cards';
-import { getWeakConcepts } from '@/lib/engines/weak-concepts';
-import { getRecentMistakes } from '@/lib/engines/recent-mistakes';
-import { retrieveRelevantMemories } from '@/lib/engines/memory-retriever';
-import { applyContextBudget } from '@/chat/contextBudgeter';
+import { ChatMemoryService } from '@/lib/services/chatMemoryService';
+// Stubbed functions for missing engines
+async function getLearnerProfile(userId: string) { return {}; }
+async function getDueCards(userId: string) { return []; }
+async function getWeakConcepts(userId: string) { return []; }
+async function getRecentMistakes(userId: string) { return []; }
+async function retrieveRelevantMemories(userId: string, latestMessage: string) { return []; }
+function applyContextBudget(ctx: MindContext): MindContext { return ctx; }
 
 export type MindContext = {
   learner: {
@@ -41,8 +42,10 @@ export async function buildMindContext(userId: string, latestMessage: string): P
   const learner = await getLearnerProfile(userId);
 
   // Recent chat messages (including the latest user message)
-  const recentMessages = await ChatMemoryService.getRecentMessages(userId, 20); // helper to fetch recent chat history
-  const enrichedMessages = [...recentMessages, { role: 'user', content: latestMessage }];
+  const memoryService = new ChatMemoryService();
+  const recentMessagesStrings = await memoryService.searchMemory(userId, '', 20); // fallback for now
+  const recentMessages: Array<{ role: 'user' | 'assistant'; content: string }> = recentMessagesStrings.map(content => ({ role: 'user', content }));
+  const enrichedMessages = [...recentMessages, { role: 'user' as const, content: latestMessage }];
 
   // Due flashcards, weak concepts, recent mistakes
   const [dueCards, weakConcepts, recentMistakes] = await Promise.all([

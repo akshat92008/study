@@ -5,7 +5,7 @@ import { createClient } from '@/lib/supabase/server';
  * Each consumer receives the event payload and performs domain‑specific side effects.
  * For now these are simple stubs – replace with real business logic.
  */
-export const eventConsumers: Record<keyof typeof EventTypes, (payload: any, userId: string) => Promise<void>> = {
+export const eventConsumers: Partial<Record<keyof typeof EventTypes, (payload: any, userId: string) => Promise<void>>> = {
   MIND_MESSAGE_CREATED: async (payload, userId) => {
     // Example: track message analytics
     const supabase = await createClient();
