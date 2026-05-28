@@ -6,7 +6,7 @@ import { Metrics } from '@/lib/observability/metrics';
 type RateLimitResult = {
   allowed: boolean;
   remaining: number;
-  reset: number;
+  resetAt: number;
   limit: number;
   degraded?: boolean; // true = Redis down, fail-open
 };
@@ -94,7 +94,7 @@ export async function checkRateLimit(
     return {
       allowed: true,
       remaining: opt.requests,
-      reset: Date.now() + 60000,
+      resetAt: Date.now() + 60000,
       limit: opt.requests,
       degraded: true,
     };
@@ -108,7 +108,7 @@ export async function checkRateLimit(
     return {
       allowed: success,
       remaining,
-      reset,
+      resetAt: reset,
       limit,
     };
   } catch (err) {
@@ -117,7 +117,7 @@ export async function checkRateLimit(
     return {
       allowed: true,
       remaining: opt.requests,
-      reset: Date.now() + 60000,
+      resetAt: Date.now() + 60000,
       limit: opt.requests,
       degraded: true,
     };

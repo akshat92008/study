@@ -521,7 +521,7 @@ if (!config || !config.apiKey || !config.supportsEmbeddings) {
         // SambaNova E5-Mistral outputs 4096 dims, pgvector needs 768
         // Truncate to first 768 dimensions
         const truncated = embedding.slice(0, 768);
-        Metrics.embeddingGenerated(1, config.embeddingModel);
+        Metrics.embeddingGenerated(1, config.embeddingModel || 'unknown');
         Metrics.aiCall(providerName, 'embedding', Date.now() - start, true);
         await resetProviderHealth(providerName);
         return truncated;
@@ -551,7 +551,7 @@ if (!config || !config.apiKey || !config.supportsEmbeddings) {
 
         const data = await response.json();
         const embedding: number[] = data.result?.data?.[0] || [];
-        Metrics.embeddingGenerated(1, config.embeddingModel);
+        Metrics.embeddingGenerated(1, config.embeddingModel || 'unknown');
         Metrics.aiCall(providerName, 'embedding', Date.now() - start, true);
         await resetProviderHealth(providerName);
         return embedding; // Already 768 dims
@@ -581,7 +581,7 @@ if (!config || !config.apiKey || !config.supportsEmbeddings) {
 
         const data = await response.json();
         const embedding: number[] = data.embedding?.values || [];
-        Metrics.embeddingGenerated(1, config.embeddingModel);
+        Metrics.embeddingGenerated(1, config.embeddingModel || 'unknown');
         Metrics.aiCall(providerName, 'embedding', Date.now() - start, true);
         await resetProviderHealth(providerName);
         return embedding;

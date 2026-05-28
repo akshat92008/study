@@ -48,8 +48,7 @@ export default withSentryConfig(nextConfig, {
   // Only upload source maps in CI/production, not local dev
   silent: process.env.NODE_ENV !== 'production',
   widenClientFileUpload: true,
-  hideSourceMaps: true,
-  disableLogger: true,
+
   // If SENTRY_DSN is not set, the plugin is a no-op
   // so this is safe to leave in without an active account
 });
