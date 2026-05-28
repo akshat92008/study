@@ -13,8 +13,8 @@ export async function checkRateLimit(
 ): Promise<{ allowed: boolean; remaining: number; resetAt: number }> {
   const redis = getRedisClientSafe();
 
-  // If Redis is unavailable, fail open (allow request) — availability > strict limiting
-  if (!redis) return { allowed: true, remaining: 99, resetAt: 0 };
+  // If Redis is unavailable, fail closed to prevent unbounded API abuse
+  if (!redis) return { allowed: false, remaining: 0, resetAt: Math.floor(Date.now() / 1000) + 60 };
 
   const key = `rl:${config.bucket}:${config.identifier}`;
   const now = Math.floor(Date.now() / 1000);

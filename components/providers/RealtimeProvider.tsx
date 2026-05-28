@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { useAppStore } from '@/stores/appStore';
@@ -8,6 +8,7 @@ import { useAppStore } from '@/stores/appStore';
 export function RealtimeProvider({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const addToast = useAppStore((state) => state.addToast);
+  const refreshTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const supabase = createClient();
@@ -15,6 +16,15 @@ export function RealtimeProvider({ children }: { children: React.ReactNode }) {
     // We only want to subscribe to events for the current authenticated user
     let subscription: ReturnType<typeof supabase.channel> | null = null;
     let isMounted = true;
+    let reconnectTimeout: NodeJS.Timeout | null = null;
+    let reconnectAttempts = 0;
+
+    const debouncedRefresh = () => {
+      if (refreshTimeoutRef.current) clearTimeout(refreshTimeoutRef.current);
+      refreshTimeoutRef.current = setTimeout(() => {
+        if (isMounted) router.refresh();
+      }, 5000); // 5-second debounce prevents refresh storms
+    };
 
     const setupRealtime = async () => {
       const { data: { user } } = await supabase.auth.getUser();
@@ -47,27 +57,27 @@ export function RealtimeProvider({ children }: { children: React.ReactNode }) {
             switch (type) {
               case 'CONCEPT_STRUGGLE':
                 addToast('Knowledge gap detected. Adjusting Atlas mastery...', 'info');
-                router.refresh();
+                debouncedRefresh();
                 break;
               case 'MOCK_TEST_COMPLETED':
                 addToast('Mock test autopsy complete. New recovery sprint generated.', 'success');
-                router.refresh();
+                debouncedRefresh();
                 break;
               case 'SESSION_COMPLETED':
                 addToast('Study session recorded. Daily snapshot updated.', 'success');
-                router.refresh();
+                debouncedRefresh();
                 break;
               case 'CARD_REVIEWED':
                 // Silent background update
-                router.refresh();
+                debouncedRefresh();
                 break;
               case 'NEW_DOCUMENT_INGESTED':
                 addToast('Document processed into knowledge graph.', 'success');
-                router.refresh();
+                debouncedRefresh();
                 break;
               default:
-                // For unhandled events, just refresh the router state to grab latest data
-                router.refresh();
+                // For unhandled events, debounce to grab latest data safely
+                debouncedRefresh();
                 break;
             }
           }
@@ -75,8 +85,14 @@ export function RealtimeProvider({ children }: { children: React.ReactNode }) {
         .subscribe((status) => {
           if (status === 'SUBSCRIBED') {
             console.log('Realtime subscription established');
+            reconnectAttempts = 0; // reset on success
           } else if (status === 'CLOSED' || status === 'CHANNEL_ERROR') {
-            console.log('Realtime subscription closed or errored');
+            console.log('Realtime subscription closed or errored, scheduling reconnect...');
+            if (isMounted) {
+              const backoff = Math.min(1000 * Math.pow(2, reconnectAttempts), 30000);
+              reconnectAttempts++;
+              reconnectTimeout = setTimeout(setupRealtime, backoff);
+            }
           }
         });
     };
@@ -85,6 +101,8 @@ export function RealtimeProvider({ children }: { children: React.ReactNode }) {
 
     return () => {
       isMounted = false;
+      if (refreshTimeoutRef.current) clearTimeout(refreshTimeoutRef.current);
+      if (reconnectTimeout) clearTimeout(reconnectTimeout);
       if (subscription) {
         supabase.removeChannel(subscription).catch(console.error);
       }

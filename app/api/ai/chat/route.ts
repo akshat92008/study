@@ -474,66 +474,14 @@ Return ONLY valid JSON matching this schema:
           const isSessionComplete = sessionTurnsCount ? (sessionTurnsCount >= 6) : (history && history.length >= 10);
 
           if (isSessionComplete && history && history.length > 0) {
-            try {
-              const historySnippet = (history || []).slice(-6).map((m: any) => `${m.role === 'user' ? 'Student' : 'Tutor'}: ${m.content.slice(0, 200)}`).join('\n');
-              const isPractice = intent.intent === 'PRACTICE';
-              const analysisPrompt = isPractice
-                ? `Analyze this practice interaction.\n${historySnippet}\nStudent Answer: ${message}\nAI Feedback: ${fullResponse.slice(0, 800)}\n\nDid the student answer correctly? Respond ONLY as JSON:\n{"summary":"1 sentence","understood":true,"gapFound":"flashcard question or null","gapAnswer":"flashcard answer or null"}`
-                : `Analyze this tutor exchange.\n${historySnippet}\nStudent: ${message}\nTutor: ${fullResponse.slice(0, 800)}\n\nRespond ONLY as JSON:\n{"summary":"1 sentence","understood":true,"gapFound":"flashcard question or null","gapAnswer":"flashcard answer or null"}`;
-              const raw = await generateJSON<any>('flash', 'Expert analyzer. Return JSON only.', analysisPrompt);
-              if (raw && typeof raw.understood === 'boolean') {
-                analysis = { understood: raw.understood, gapFound: typeof raw.gapFound === 'string' && raw.gapFound.length > 5 ? raw.gapFound : null, gapAnswer: typeof raw.gapAnswer === 'string' && raw.gapAnswer.length > 5 ? raw.gapAnswer : null, summary: raw.summary || '' };
-              }
-            } catch (err) { logger.warn('Session analysis failed', err); }
-
-            if (!analysis.understood && analysis.gapFound && analysis.gapAnswer) {
-              try {
-                await createSingleCard(user.id, conceptId || null, analysis.gapFound, analysis.gapAnswer, subject, topic);
-                cardsCreated = 1;
-              } catch (err) { logger.warn('Gap card creation failed', err); }
-            }
-
-            const snap = { ...analysis };
-            
-            // Compute new mastery after updating concept state
-            if (conceptId) {
-              const estimatedTimeSeconds = Math.max(60, (history?.length || 0) * 30);
-              await updateConceptState(conceptId, snap.understood, estimatedTimeSeconds);
-              
-              // Fetch updated mastery
-              const { data: updatedConcept } = await supabase.from('concepts').select('mastery').eq('id', conceptId).single();
-              if (updatedConcept?.mastery) {
-                newMasteryScore = MASTERY_WEIGHTS[updatedConcept.mastery] ?? null;
-              }
-              
-              // Insert session record
-              if (intent.intent !== 'PRACTICE') {
-                await supabase.from('tutor_sessions').insert({
-                  user_id: user.id, concept_id: conceptId, summary: snap.summary,
-                  messages: [...(history || []), { role: 'user', content: message }, { role: 'assistant', content: fullResponse }],
-                });
-              }
-            }
-            
-            after(async () => {
-              try {
-                syncStudentModel(user.id).catch(() => {});
-              } catch (err) { logger.error('Post-session synthesis failed', err); }
-            });
-
-            const closing = await generateSessionClosingMessage({
-              userId: user.id, conceptId: conceptId || null, subject, chapter: topic,
-              gapFound: analysis.gapFound, gapAnswer: analysis.gapAnswer, understood: analysis.understood,
-              turnsCount: history?.length || 0, 
-              oldMastery: oldMasteryScore !== null ? oldMasteryScore / 100 : null, 
-              newMastery: newMasteryScore !== null ? newMasteryScore / 100 : null, 
-              cardsCreated,
-              sessionId: `chat-${Date.now()}`,
-            }).catch(() => null);
-
-            if (closing) {
-              metadataPayload = { action: 'session_closing_message', closingMessage: closing.text, closingType: closing.type, sessionComplete: true, cardsCreated };
-            }
+            // Asynchronous post-processing will be handled by the event bus.
+            // We provide immediate closure to the user without blocking for multiple LLM calls.
+            metadataPayload = { 
+              action: 'session_closing_message', 
+              closingMessage: "We've covered a lot today. I'm analyzing our session in the background and will update your knowledge map and flashcards shortly.", 
+              closingType: 'async_analysis', 
+              sessionComplete: true 
+            };
           }
         } else {
           const conversationMessages = buildConversationMessages(history || [], message || '');
@@ -631,16 +579,19 @@ Return ONLY valid JSON matching this schema:
                     user_id: user.id,
                     type: 'MIND_TUTOR_COMPLETED',
                     data: {
-                      conceptId: null,
+                      conceptId: (typeof conceptId !== 'undefined') ? conceptId : null,
                       subject: sessionSubject,
                       chapter: sessionChapter,
-                      understandingGained: true,
                       durationMinutes: estimatedMinutes,
                       messageCount,
                       sessionType: (mindContext as any)?.sessionType || 'chat',
+                      history: (history || []).slice(-6),
+                      latestMessage: message,
+                      latestResponse: fullResponse,
+                      isSessionComplete: sessionTurnsCount ? (sessionTurnsCount >= 6) : (history && history.length >= 10),
+                      intent: intent.intent
                     },
                     metadata: { source: 'chat' },
-                    // Use minute-level granularity so rapid messages don't spam consumers
                     idempotency_key: `session:${user.id}:${sessionSubject}:${sessionChapter}:${new Date().toISOString().slice(0, 16)}`,
                   });
                 } catch (err) {

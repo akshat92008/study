@@ -46,46 +46,8 @@ export async function resolveConceptByName(userId: string, subject: string, chap
   
   // 4. Log the miss extensively for analysis!
   logger.warn('CONCEPT_RESOLVER_MISS', { userId, subject, chapter, reason: 'No exact, fuzzy, or semantic matches located in DB.' });
-  // Create concept as fallback
-  const insertData: any = { 
-    user_id: userId, 
-    subject: subject.trim(), 
-    chapter: chapter.trim(), 
-    name: chapter.trim(), 
-    mastery: 'not_started',
-    confidence: 'low'
-  };
   
-  if (embedding && embedding.length > 0) {
-    insertData.embedding = `[${embedding.join(',')}]`;
-  }
-
-  const { data: newConcept, error: insertErr } = await supabase.from('concepts')
-    .insert(insertData)
-    .select('id')
-    .single();
-  
-  if (insertErr) {
-    logger.error('Failed to create fallback concept node', { userId, subject, chapter, error: insertErr });
-  }
-
-  if (newConcept?.id) {
-    EventDispatcher.publish({
-      user_id: userId,
-      type: 'CONCEPT_DISCOVERED' as any, // Schema allows extending
-      data: {
-        parentConceptId: newConcept.id,
-        subject: subject.trim(),
-        chapter: chapter.trim(),
-      },
-      metadata: {
-        source: 'concept_resolver',
-        conceptId: newConcept.id,
-      },
-      idempotency_key: `concept:discover:${newConcept.id}`,
-    }).catch(err => logger.error('Failed to trigger concept expansion', err));
-
-    return newConcept.id;
-  }
+  // Constrain auto-creation of new concept nodes to prevent DB bloat from LLM hallucinations.
+  // The system should rely on explicit curriculum ingestion rather than lazy auto-creation.
   return null;
 }

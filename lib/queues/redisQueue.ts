@@ -1,12 +1,20 @@
+import { Queue, Worker, Job } from 'bullmq';
+import IORedis from 'ioredis';
+
 export interface QueueMessage {
   payload: any;
 }
 
+// Ensure you have REDIS_URL in your environment variables for production
+const connection = new IORedis(process.env.REDIS_URL || 'redis://localhost:6379', {
+  maxRetriesPerRequest: null,
+});
+
 export class RedisQueue {
   private readonly stream: string;
   private readonly maxRetries: number;
-  private queue: Array<{ id: string; payload: any; attempts: number }> = [];
-  private processing = false;
+  private queue: Queue;
+  private worker?: Worker;
 
   constructor(
     stream: string,
@@ -21,42 +29,45 @@ export class RedisQueue {
   ) {
     this.stream = stream;
     this.maxRetries = options?.maxRetries ?? 5;
-    console.log(`[Queue] In-memory queue initialised for stream: ${stream}`);
+    
+    this.queue = new Queue(this.stream, {
+      connection,
+      defaultJobOptions: {
+        attempts: this.maxRetries,
+        backoff: {
+          type: 'exponential',
+          delay: options?.baseDelayMs ?? 1000,
+        },
+        removeOnComplete: true,
+        removeOnFail: false,
+      },
+    });
+    console.log(`[Queue] BullMQ queue initialized for stream: ${stream}`);
   }
 
   async enqueue(payload: any): Promise<string> {
-    const id = `${Date.now()}-${Math.random().toString(36).substring(2, 8)}`;
-    this.queue.push({ id, payload, attempts: 0 });
-    console.log(`[Queue] Enqueued message ${id} on stream: ${this.stream}`);
-    return id;
+    const job = await this.queue.add('default', payload);
+    console.log(`[Queue] Enqueued message ${job.id} on stream: ${this.stream}`);
+    return job.id || '';
   }
 
   async process(handler: (payload: any) => Promise<void>): Promise<void> {
-    if (this.processing) return;
-    this.processing = true;
+    if (this.worker) return;
 
-    while (true) {
-      if (this.queue.length === 0) {
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-        continue;
-      }
+    this.worker = new Worker(
+      this.stream,
+      async (job: Job) => {
+        await handler(job.data);
+      },
+      { connection }
+    );
 
-      const message = this.queue.shift();
-      if (!message) continue;
+    this.worker.on('completed', (job) => {
+      console.log(`[Queue] Processed message ${job.id}`);
+    });
 
-      try {
-        await handler(message.payload);
-        console.log(`[Queue] Processed message ${message.id}`);
-      } catch (err) {
-        message.attempts += 1;
-        if (message.attempts < this.maxRetries) {
-          const delay = 1000 * Math.pow(2, message.attempts - 1);
-          console.warn(`[Queue] Message ${message.id} failed (attempt ${message.attempts}), retrying in ${delay}ms`);
-          setTimeout(() => this.queue.push(message), delay);
-        } else {
-          console.error(`[Queue] Message ${message.id} exceeded max retries. Dropping.`, err);
-        }
-      }
-    }
+    this.worker.on('failed', (job, err) => {
+      console.warn(`[Queue] Message ${job?.id} failed:`, err);
+    });
   }
 }

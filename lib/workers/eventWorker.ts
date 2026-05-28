@@ -5,8 +5,9 @@ import { trace } from '@/telemetry/otel';
 import { CognitionEventType } from '@/lib/events/types';
 import { sendSlackAlert } from '@/alerts/slackAlert';
 import { propagateMastery } from '@/engines/masteryPropagation';
-import { RedisQueue } from '@/queues/redisQueue';
+import { RedisQueue } from '@/lib/queues/redisQueue';
 import { eventProcessedCounter, eventProcessingLatency } from '@/telemetry/metrics';
+import { EventDispatcher, EVENT_CONSUMERS } from '@/lib/events/orchestrator';
 
 /**
  * EventWorker processes cognition events using a durable RedisQueue.
@@ -14,10 +15,11 @@ import { eventProcessedCounter, eventProcessingLatency } from '@/telemetry/metri
  */
 export class EventWorker {
   private readonly queue: RedisQueue;
+  private readonly orchestratorQueue: RedisQueue;
 
   constructor() {
     this.queue = new RedisQueue('cognition.events');
-    // Consumer group is created inside RedisQueue constructor.
+    this.orchestratorQueue = new RedisQueue('orchestrator.events');
   }
 
   /** Start processing events via the RedisQueue. */
@@ -52,6 +54,25 @@ export class EventWorker {
     };
     try {
       await this.queue.process(handler);
+      
+      await this.orchestratorQueue.process(async (payload: any) => {
+        const span = trace.startSpan('orchestratorWorker.handle');
+        const start = Date.now();
+        try {
+          const { eventId } = payload;
+          console.log(`Processing orchestrator events for eventId: ${eventId}`);
+          await Promise.allSettled(
+            EVENT_CONSUMERS.map((consumer) => EventDispatcher.processConsumer(eventId, consumer))
+          );
+        } catch (err) {
+          span.recordException(err as Error);
+          throw err;
+        } finally {
+          const duration = Date.now() - start;
+          eventProcessingLatency.record(duration, {});
+          span.end();
+        }
+      });
     } catch (err) {
       await sendSlackAlert('EventWorker crashed', (err as Error).message);
       const span = trace.startSpan('worker.start');

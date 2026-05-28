@@ -1,11 +1,15 @@
 import { createAdminClient } from '@/lib/supabase/admin';
+import { withCorrelationId } from '@/lib/telemetry/correlation';
 import { logger } from '@/lib/utils/logger';
 import { LearningStateEngine } from '@/lib/engines/learning-state-engine';
 import { AtlasConsumer } from '@/lib/engines/cognition-graph';
 import { MemoryConsumer } from '@/lib/engines/revision-engine';
 import { CommandConsumer } from '@/lib/engines/command-engine';
 import { ConceptExpansionConsumer } from '@/lib/engines/concept-expansion-engine';
+import { RedisQueue } from '@/lib/queues/redisQueue';
 import { after } from 'next/server';
+
+const orchestratorQueue = new RedisQueue('orchestrator.events');
 
 const MAX_RETRIES = 5;
 
@@ -87,22 +91,7 @@ export class EventDispatcher {
   }
 
   private static async dispatchConsumers(eventId: string): Promise<void> {
-    const useAfter = typeof after === 'function';
-
-    const runConsumers = async () => {
-      await Promise.allSettled(
-        EVENT_CONSUMERS.map((consumer) => this.processConsumer(eventId, consumer))
-      );
-    };
-
-    if (useAfter) {
-      after(runConsumers);
-    } else {
-      // Hobby tier fallback: fire and forget with microtask
-      Promise.resolve().then(runConsumers).catch((err) => {
-        console.error('[Orchestrator] Background consumer error:', err);
-      });
-    }
+    await orchestratorQueue.enqueue({ eventId });
   }
 
   private static async registerConsumers(eventId: string): Promise<void> {
@@ -146,7 +135,9 @@ export class EventDispatcher {
     if (!event) return;
 
     try {
-      await this.routeToConsumer(event, consumer);
+      await withCorrelationId(event.trace_id || event.id, async () => {
+        await this.routeToConsumer(event, consumer);
+      });
 
       await supabase
         .from('event_consumer_tracking')

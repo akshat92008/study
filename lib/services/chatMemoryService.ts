@@ -27,6 +27,18 @@ export class ChatMemoryService {
 
       if (error) {
         logger.error('Failed to store chat memory embedding', error);
+      } else {
+        // Eviction strategy: TTL pruning (delete memories older than 30 days)
+        // Helps maintain relevance and scale the pgvector index
+        const thirtyDaysAgo = new Date();
+        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+        
+        await supabase
+          .from('chat_memory_embeddings')
+          .delete()
+          .eq('user_id', userId)
+          .lt('created_at', thirtyDaysAgo.toISOString())
+          .catch((err) => logger.warn('Background memory eviction failed', err));
       }
     } catch (err) {
       logger.error('Error in storeMessageInMemory', err);
@@ -38,37 +50,77 @@ export class ChatMemoryService {
     if (!trimmed) return [];
 
     try {
-      const embedding = await getEmbedding(trimmed);
-      if (!embedding || embedding.length === 0) return [];
-
       const supabase = await createClient();
       const matchCount = Math.max(1, Math.min(limit, MAX_MEMORY_RESULTS));
-      const { data, error } = await supabase.rpc('match_chat_memory', {
-        query_embedding: `[${embedding.join(',')}]`,
-        match_threshold: 0.75,
-        match_count: matchCount,
-        p_user_id: userId,
+
+      let vectorMatches: any[] = [];
+      const embedding = await getEmbedding(trimmed).catch((err) => {
+        logger.warn('Embedding generation failed, falling back to BM25 only', err);
+        return null;
       });
 
-      if (error) {
-        if (error.code === 'PGRST202') {
-          throw new Error('CRITICAL: match_chat_memory RPC is missing. Run 024_match_chat_memory.sql.');
+      if (embedding && embedding.length > 0) {
+        // Semantic Search (pgvector)
+        const { data, error } = await supabase.rpc('match_chat_memory', {
+          query_embedding: `[${embedding.join(',')}]`,
+          match_threshold: 0.70, // lower threshold for hybrid
+          match_count: matchCount * 2, // overfetch for RRF
+          p_user_id: userId,
+        });
+        
+        if (!error && data) {
+          vectorMatches = data;
+        } else if (error) {
+          logger.warn('match_chat_memory RPC failed, falling back to BM25', { code: error.code });
         }
-        logger.error('Failed to search chat memory', { error });
-        return [];
       }
 
-      return (data || []).slice(0, matchCount).map((row: any) => row.content).filter(Boolean);
-    } catch (err: any) {
-      if (err?.message?.includes('match_chat_memory') || err?.code === 'PGRST202') {
-        logger.error(
-          'CRITICAL: match_chat_memory RPC missing. Run migration 024_match_chat_memory.sql',
-          { userId, err: err.message }
-        );
-      } else {
-        logger.error('Error in searchMemory', { err: err.message, userId });
+      // Keyword Search (BM25)
+      let textMatches: any[] = [];
+      const sanitizedQuery = trimmed.replace(/[^\w\s]/gi, ' ').trim().split(/\s+/).join(' | ');
+      
+      if (sanitizedQuery) {
+        const { data, error } = await supabase
+          .from('chat_memory_embeddings')
+          .select('id, content')
+          .eq('user_id', userId)
+          .textSearch('content', sanitizedQuery)
+          .limit(matchCount * 2);
+          
+        if (!error && data) {
+          textMatches = data;
+        }
       }
-      // Return empty — chat still works, just without memory context
+
+      if (!vectorMatches.length && !textMatches.length) return [];
+
+      // App-level Reciprocal Rank Fusion (RRF)
+      const k = 60;
+      const scores = new Map<string, { content: string, score: number }>();
+
+      vectorMatches.forEach((match, idx) => {
+        const score = 1 / (k + idx + 1);
+        scores.set(match.id, { content: match.content, score });
+      });
+
+      textMatches.forEach((match, idx) => {
+        const score = 1 / (k + idx + 1);
+        if (scores.has(match.id)) {
+          scores.get(match.id)!.score += score;
+        } else {
+          scores.set(match.id, { content: match.content, score });
+        }
+      });
+
+      const sorted = Array.from(scores.values())
+        .sort((a, b) => b.score - a.score)
+        .slice(0, matchCount)
+        .map(x => x.content)
+        .filter(Boolean);
+
+      return sorted;
+    } catch (err: any) {
+      logger.error('Error in searchMemory hybrid', { err: err.message, userId });
       return [];
     }
   }

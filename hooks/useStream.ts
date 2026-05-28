@@ -121,9 +121,13 @@ export function useStream(defaultUrl = '/api/ai/chat'): UseStreamReturn {
           // ── Read stream ────────────────────────────────────────────────
           const reader = res.body.getReader();
           const decoder = new TextDecoder();
-          let fullRaw = resumeFrom;
+          // Server stream currently restarts from 0, so prepending resumeFrom duplicates text.
+          // Deduplication: start fresh and only append new chunks.
+          let fullRaw = '';
 
           setStatus('streaming');
+          
+          let lastRenderTime = 0;
 
           while (true) {
             const { value, done } = await reader.read();
@@ -132,14 +136,21 @@ export function useStream(defaultUrl = '/api/ai/chat'): UseStreamReturn {
             const chunk = decoder.decode(value, { stream: true });
             fullRaw += chunk;
 
-            // Strip metadata/action tokens for live display
-            const displayText = fullRaw
-              .split(META_SEP)[0]
-              .replace(DRAWER_RE, '')
-              .trimEnd();
+            const now = Date.now();
+            // Memory backpressure: throttle React updates to max 30fps (~33ms) to prevent render churn
+            if (now - lastRenderTime > 33) {
+              const displayText = fullRaw
+                .split(META_SEP)[0]
+                .replace(DRAWER_RE, '')
+                .trimEnd();
 
-            setStreamingText(displayText);
+              setStreamingText(displayText);
+              lastRenderTime = now;
+            }
           }
+          
+          // Final render to ensure no dropped frames at the end
+          setStreamingText(fullRaw.split(META_SEP)[0].replace(DRAWER_RE, '').trimEnd());
 
           // ── Parse metadata ─────────────────────────────────────────────
           const [responseText, metaRaw] = fullRaw.split(META_SEP);

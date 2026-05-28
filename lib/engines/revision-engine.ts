@@ -517,11 +517,9 @@ export class MemoryConsumer {
   }
 
   static async handleStudySessionCompleted(userId: string, data: any): Promise<void> {
-    const { subject, chapter, durationMinutes = 0, sessionType } = data || {};
+    const { subject, chapter, durationMinutes = 0, sessionType, isSessionComplete, history, latestMessage, latestResponse, intent } = data || {};
 
-    // Only create cards from real tutor sessions, not casual chat
     if (!subject || !chapter || durationMinutes < 10) return;
-    if (sessionType === 'chat') return; // Only from TUTOR_SESSION type
 
     try {
       const supabase = createAdminClient();
@@ -534,17 +532,44 @@ export class MemoryConsumer {
         .limit(1)
         .maybeSingle();
 
-      await createSingleCard(
-        userId,
-        concept?.id ?? null,
-        `What are the key concepts in ${chapter}?`,
-        `Review your notes from your ${subject} — ${chapter} study session.`,
-        subject,
-        chapter,
-        supabase as any
-      );
+      if (sessionType !== 'chat') {
+        await createSingleCard(
+          userId,
+          concept?.id ?? null,
+          `What are the key concepts in ${chapter}?`,
+          `Review your notes from your ${subject} — ${chapter} study session.`,
+          subject,
+          chapter,
+          supabase as any
+        );
 
-      logger.info(`MemoryConsumer: created review card for ${chapter}`, { userId });
+        logger.info(`MemoryConsumer: created review card for ${chapter}`, { userId });
+      }
+
+      // If chat session, run the async analysis to generate specific cards from gaps
+      if (sessionType === 'chat' && isSessionComplete && history && latestResponse) {
+        const historySnippet = history.map((m: any) => `${m.role === 'user' ? 'Student' : 'Tutor'}: ${m.content.slice(0, 200)}`).join('\n');
+        const isPractice = intent === 'PRACTICE';
+        const analysisPrompt = isPractice
+          ? `Analyze this practice interaction.\n${historySnippet}\nStudent Answer: ${latestMessage}\nAI Feedback: ${latestResponse.slice(0, 800)}\n\nDid the student answer correctly? Respond ONLY as JSON:\n{"summary":"1 sentence","understood":true,"gapFound":"flashcard question or null","gapAnswer":"flashcard answer or null"}`
+          : `Analyze this tutor exchange.\n${historySnippet}\nStudent: ${latestMessage}\nTutor: ${latestResponse.slice(0, 800)}\n\nRespond ONLY as JSON:\n{"summary":"1 sentence","understood":true,"gapFound":"flashcard question or null","gapAnswer":"flashcard answer or null"}`;
+        
+        const { generateJSON } = await import('@/lib/ai/gemini');
+        const raw = await generateJSON<any>('flash', 'Expert analyzer. Return JSON only.', analysisPrompt);
+        
+        if (raw && !raw.understood && raw.gapFound && raw.gapAnswer) {
+          await createSingleCard(
+            userId,
+            concept?.id ?? null,
+            raw.gapFound,
+            raw.gapAnswer,
+            subject,
+            chapter,
+            supabase as any
+          );
+          logger.info(`MemoryConsumer: created specific gap card for ${chapter}`, { userId });
+        }
+      }
     } catch (err) {
       logger.warn('MemoryConsumer: failed to create study session card', err);
     }

@@ -349,7 +349,17 @@ export class AtlasConsumer {
       }
     }
 
+    // OVERWHELMED GATE: Cap the number of downgrades per autopsy to 3
+    // to prevent cascading failure in user motivation and task spam.
+    let downgradeCount = 0;
+    const MAX_DOWNGRADES = 3;
+
     for (const { subject, chapter, count } of chapterMap.values()) {
+      if (downgradeCount >= MAX_DOWNGRADES) {
+        logger.warn(`AtlasConsumer: Overwhelmed gate triggered. Skipping remaining downgrades for user ${userId}`);
+        break;
+      }
+
       // Find concepts in this chapter
       const { data: concepts } = await supabase
         .from('concepts')
@@ -372,6 +382,7 @@ export class AtlasConsumer {
             evidence: `${count} wrong answer(s) in ${chapter} (${subject})`,
             useAdminClient: true,
           });
+          downgradeCount++;
         }
       }
     }
@@ -380,10 +391,30 @@ export class AtlasConsumer {
   }
 
   static async handleStudySessionCompleted(userId: string, data: any): Promise<void> {
-    const { subject, chapter, durationMinutes = 10 } = data || {};
+    const { subject, chapter, durationMinutes = 10, history, latestMessage, latestResponse, intent, isSessionComplete } = data || {};
     if (!subject || !chapter) return;
 
     const supabase = createAdminClient();
+
+    let understood = false;
+
+    // AI Analysis for actual understanding if session completed
+    if (isSessionComplete && history && latestResponse) {
+      try {
+        const historySnippet = history.map((m: any) => `${m.role === 'user' ? 'Student' : 'Tutor'}: ${m.content.slice(0, 200)}`).join('\n');
+        const isPractice = intent === 'PRACTICE';
+        const analysisPrompt = isPractice
+          ? `Analyze this practice interaction.\n${historySnippet}\nStudent Answer: ${latestMessage}\nAI Feedback: ${latestResponse.slice(0, 800)}\n\nDid the student answer correctly? Respond ONLY as JSON:\n{"summary":"1 sentence","understood":true}`
+          : `Analyze this tutor exchange.\n${historySnippet}\nStudent: ${latestMessage}\nTutor: ${latestResponse.slice(0, 800)}\n\nRespond ONLY as JSON:\n{"summary":"1 sentence","understood":true}`;
+        
+        const raw = await generateJSON<any>('flash', 'Expert analyzer. Return JSON only.', analysisPrompt);
+        if (raw && typeof raw.understood === 'boolean') {
+          understood = raw.understood;
+        }
+      } catch (err) {
+        logger.warn('Async session analysis failed', err);
+      }
+    }
 
     const { data: concepts } = await supabase
       .from('concepts')
@@ -408,14 +439,18 @@ export class AtlasConsumer {
     }
 
     for (const concept of concepts) {
-      const upgradedMastery = upgradeMastery(concept.mastery, durationMinutes);
+      // If completed, use actual understood signal. If not, fallback to small duration upgrade.
+      const upgradedMastery = isSessionComplete 
+        ? (understood ? upgradeMastery(concept.mastery, 30) : concept.mastery) 
+        : upgradeMastery(concept.mastery, Math.min(10, durationMinutes));
+
       if (upgradedMastery !== concept.mastery) {
         await applyMasteryUpdate({
           userId,
           conceptId: concept.id,
           newMastery: upgradedMastery as any,
           source: 'tutor_session',
-          evidence: `Session on ${chapter} (${subject}), ${durationMinutes} min`,
+          evidence: isSessionComplete ? `Session on ${chapter} (${subject}), understood: ${understood}` : `Session on ${chapter} (${subject}), ${durationMinutes} min`,
           useAdminClient: true,
         });
       }
