@@ -110,7 +110,7 @@ export class EventDispatcher {
     const trackingRows = EVENT_CONSUMERS.map((consumer) => ({
       event_id: eventId,
       consumer_name: consumer,
-      status: 'pending',
+      status: 'processing',
     }));
 
     const { error } = await supabase

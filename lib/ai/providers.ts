@@ -7,6 +7,7 @@ import { logger } from '@/lib/utils/logger';
 
 export type ProviderName = 
   | 'cerebras'        // Fastest inference alive. 1M tokens/day free.
+  | 'cerebras_fallback' // Second Cerebras key.
   | 'sambanova'       // Fast + free embeddings.
   | 'groq_compound'   // 14,400 req/day free. llama-3.3-70b.
   | 'groq_gemma'      // Same Groq key, different model slot.
@@ -44,6 +45,7 @@ export const REQUIRED_ENV_VARS: Record<ProviderName, string[]> = {
   cloudflare: ['CF_ACCOUNT_ID', 'CF_API_TOKEN'],
   google: ['GOOGLE_AI_KEY'],
   cerebras: [], // No specific env vars
+  cerebras_fallback: [],
   sambanova: [], // No specific env vars
   groq_compound: [], // No specific env vars
   groq_gemma: [], // No specific env vars
@@ -59,6 +61,17 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
       name: 'cerebras',
       baseUrl: 'https://api.cerebras.ai/v1',
       apiKey: process.env.CEREBRAS_API_KEY,
+      models: { quality: 'llama-3.3-70b', fast: 'llama3.1-8b' },
+      supportsStreaming: true,
+      supportsVision: false,
+      supportsEmbeddings: false,
+      authHeader: 'bearer',
+    },
+
+    cerebras_fallback: {
+      name: 'cerebras_fallback',
+      baseUrl: 'https://api.cerebras.ai/v1',
+      apiKey: process.env.CEREBRAS_API_KEY_2 || process.env.CEREBRAS_API_KEY,
       models: { quality: 'llama-3.3-70b', fast: 'llama3.1-8b' },
       supportsStreaming: true,
       supportsVision: false,
@@ -100,7 +113,7 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
     groq_gemma: {
       name: 'groq_gemma',
       baseUrl: 'https://api.groq.com/openai/v1',
-      apiKey: process.env.GROQ_API_KEY,
+      apiKey: process.env.GROQ_API_KEY_2 || process.env.GROQ_API_KEY,
       models: { quality: 'llama-3.1-8b-instant', fast: 'llama-3.1-8b-instant' },
       supportsStreaming: true,
       supportsVision: false,
@@ -169,6 +182,7 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
 
   chat: [
     'cerebras',      // Fastest. 1M tokens/day.
+    'cerebras_fallback',
     'groq_compound', // Reliable. 14,400/day.
     'groq_gemma',    // Same key as groq, different model = second slot.
     'cloudflare',    // Free Workers AI.
@@ -179,6 +193,7 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
 
   stream: [
     'cerebras',
+    'cerebras_fallback',
     'groq_compound',
     'groq_gemma',
     'cloudflare',
@@ -190,6 +205,7 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
   json: [
     'groq_compound', // Most reliable structured output.
     'cerebras',
+    'cerebras_fallback',
     'sambanova',
     'groq_gemma',
     'cloudflare',

@@ -35,15 +35,6 @@ export async function POST(req: NextRequest) {
     .select('id', { count: 'exact', head: true });
   results.dlqQueueDepth = dlqCount ?? 0;
 
-  // 4. Reset stale processing events back to pending (stuck jobs)
-  const fifteenMinutesAgo = new Date(Date.now() - 15 * 60 * 1000).toISOString();
-  const { count: resetCount } = await supabase
-    .from('event_consumer_tracking')
-    .update({ status: 'pending', updated_at: new Date().toISOString() })
-    .eq('status', 'processing')
-    .lt('updated_at', fifteenMinutesAgo);
-  results.resetStuckJobs = resetCount ?? 0;
-
   console.log('[Cleanup Cron] Results:', results);
   return NextResponse.json({ ok: true, ...results });
 }

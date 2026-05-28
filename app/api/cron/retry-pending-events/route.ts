@@ -12,18 +12,28 @@ export async function POST(req: NextRequest) {
 
   const supabase = createAdminClient();
 
-  // Find events with pending consumers older than 2 minutes
-  const cutoff = new Date(Date.now() - 2 * 60 * 1000).toISOString();
+  // Find failed events (under max retries) or events stuck in processing for more than 15 minutes
+  const cutoff = new Date(Date.now() - 15 * 60 * 1000).toISOString();
 
-  const { data: staleTracking, error } = await supabase
+  const { data: failedTracking, error: err1 } = await supabase
     .from('event_consumer_tracking')
     .select('event_id, consumer_name')
-    .eq('status', 'pending')
-    .lt('created_at', cutoff)
-    .limit(50);
+    .eq('status', 'failed')
+    .lt('retry_count', 5)
+    .limit(25);
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  if (!staleTracking?.length) return NextResponse.json({ retried: 0 });
+  const { data: stuckTracking, error: err2 } = await supabase
+    .from('event_consumer_tracking')
+    .select('event_id, consumer_name')
+    .eq('status', 'processing')
+    .lt('updated_at', cutoff)
+    .limit(25);
+
+  if (err1 || err2) return NextResponse.json({ error: err1?.message || err2?.message }, { status: 500 });
+
+  const staleTracking = [...(failedTracking || []), ...(stuckTracking || [])];
+  
+  if (!staleTracking.length) return NextResponse.json({ retried: 0 });
 
   let retried = 0;
 
