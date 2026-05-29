@@ -167,9 +167,9 @@ BEGIN
 END;
 $$;
 
-REVOKE EXECUTE ON FUNCTION public.match_chat_memory FROM anon;
-GRANT EXECUTE ON FUNCTION public.match_chat_memory TO authenticated;
-GRANT EXECUTE ON FUNCTION public.match_chat_memory TO service_role;
+REVOKE EXECUTE ON FUNCTION public.match_chat_memory(vector(768), float, int, uuid) FROM anon;
+GRANT EXECUTE ON FUNCTION public.match_chat_memory(vector(768), float, int, uuid) TO authenticated;
+GRANT EXECUTE ON FUNCTION public.match_chat_memory(vector(768), float, int, uuid) TO service_role;
 
 -- ── Fix 10: Ensure event_consumer_tracking RLS exists ───────────────────────
 DO $$

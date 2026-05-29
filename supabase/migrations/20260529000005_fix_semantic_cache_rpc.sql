@@ -33,7 +33,7 @@ END;
 $$;
 
 -- Revoke from anon, grant only to authenticated and service_role
-REVOKE EXECUTE ON FUNCTION public.match_semantic_cache FROM anon;
-REVOKE EXECUTE ON FUNCTION public.match_semantic_cache FROM public;
-GRANT EXECUTE ON FUNCTION public.match_semantic_cache TO authenticated;
-GRANT EXECUTE ON FUNCTION public.match_semantic_cache TO service_role;
+REVOKE EXECUTE ON FUNCTION public.match_semantic_cache(vector(768), float, int, uuid) FROM anon;
+REVOKE EXECUTE ON FUNCTION public.match_semantic_cache(vector(768), float, int, uuid) FROM public;
+GRANT EXECUTE ON FUNCTION public.match_semantic_cache(vector(768), float, int, uuid) TO authenticated;
+GRANT EXECUTE ON FUNCTION public.match_semantic_cache(vector(768), float, int, uuid) TO service_role;
