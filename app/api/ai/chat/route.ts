@@ -463,7 +463,17 @@ Return ONLY valid JSON matching this schema:
           const tutorSystemPrompt = `${systemPrompt}\n\nACTIVE TUTOR SESSION:\nTopic: ${subject} > ${topic}\nPast Mistakes Here: ${mistakes?.map((m: any) => m.ai_analysis).join('; ') || 'None'}${pastSessionCtx}\n\nYou are now in active teaching mode for this topic. Apply RULE 3 (Learning Mode) — Socratic method, minimum 6-10 exchanges.`;
 
           const conversationMessages = buildConversationMessages(recentHistory, message || '');
-          const canCache = isCacheable({ intent: intent.intent, hasUserContext: false });
+          
+          const hasUserSpecificContext =
+            (mistakes && mistakes.length > 0) ||
+            (pastSessionCtx && pastSessionCtx.length > 0) ||
+            (oldMasteryScore !== null);
+
+          const canCache = isCacheable({
+            intent: intent.intent,
+            hasUserContext: hasUserSpecificContext
+          });
+          
           const cached = canCache && message ? await checkSemanticCache(message) : null;
 
           if (cached) {

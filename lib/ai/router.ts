@@ -137,8 +137,21 @@ async function callCloudflare(
 
   if (!stream) {
     const data = await response.json();
-    // Cloudflare usage is typically inside result or meta if available, otherwise estimate
-    return data.result?.response || '';
+    const result = data.result?.response || '';
+
+    // Cloudflare does not return usage metadata — estimate from content size
+    // This is intentionally conservative; actual counts may be slightly higher
+    const estimatedInputTokens = Math.ceil(
+      messages.reduce((sum, m) => sum + m.content.length, 0) / 4
+    );
+    const estimatedOutputTokens = Math.ceil(result.length / 4);
+    Metrics.tokenUsage(
+      model,
+      estimatedInputTokens,
+      estimatedOutputTokens
+    );
+
+    return result;
   }
 
   return (async function* () {
@@ -462,13 +475,26 @@ if (!config || !config.apiKey) {
         ) as AsyncGenerator<string>;
       }
 
+      let totalChars = 0;
       let hasYielded = false;
       for await (const chunk of generator) {
         hasYielded = true;
+        totalChars += chunk.length;
         yield chunk;
       }
 
       if (hasYielded) {
+        // Estimate tokens: ~4 chars per token is standard approximation
+        // Input prompt estimation: serialize messages and divide
+        const inputChars = messages.reduce((sum, m) => sum + m.content.length, 0);
+        const estimatedInputTokens = Math.ceil(inputChars / 4);
+        const estimatedOutputTokens = Math.ceil(totalChars / 4);
+
+        Metrics.tokenUsage(
+          config.models.quality,
+          estimatedInputTokens,
+          estimatedOutputTokens
+        );
         Metrics.aiCall(providerName, 'stream', Date.now() - start, true);
         await resetProviderHealth(providerName);
         return; // Success — stop trying other providers

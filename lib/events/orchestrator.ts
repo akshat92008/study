@@ -87,13 +87,10 @@ export class EventDispatcher {
     const eventId = insertedEvent?.id ?? traceId;
     await this.registerConsumers(eventId);
 
-    // Dispatch consumers non-blocking via after() — no TCP Redis, no BullMQ worker needed.
-    after(async () => {
-      try {
-        await this.runAllConsumers(eventId);
-      } catch (err) {
-        logger.error('Unhandled error in after() dispatch', err);
-      }
+    // Run consumers directly — caller is already inside after() context
+    // Do not nest after() inside after()
+    this.runAllConsumers(eventId).catch(err => {
+      logger.error('Unhandled error in consumer dispatch', err);
     });
 
     return eventId;

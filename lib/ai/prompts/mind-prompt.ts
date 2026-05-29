@@ -147,7 +147,9 @@ STUDENT STATE: OVERWHELMED — COGNITIVE LOAD CRITICAL
   return adaptations[emotionalState] || '';
 }
 
-export function getMINDSystemPrompt(ctx: MINDContext, semanticMemories: string[] = [], intent?: string): string {
+const MAX_SYSTEM_CHARS = 12000;
+
+function buildPrompt(ctx: MINDContext, semanticMemories: string[] = [], intent?: string): string {
   const isGeneralChat = intent === 'GENERAL_CHAT';
   
   const daysToExam = ctx.profile.examDate
@@ -358,4 +360,50 @@ function getExamSpecificInstructions(examType: string, daysToExam: number | null
 
 export function buildMINDUserPrompt(historyText: string, message: string): string {
   return `${historyText}\nStudent: ${message}`;
+}
+
+export function getMINDSystemPrompt(ctx: MINDContext, semanticMemories: string[] = [], intent?: string): string {
+  let prompt = buildPrompt(ctx, semanticMemories, intent);
+  if (prompt.length <= MAX_SYSTEM_CHARS) return prompt;
+
+  const trimmedCtx = { ...ctx };
+
+  // 1. rootGapChains (verbose, rarely acted on immediately)
+  trimmedCtx.rootGapChains = [];
+  prompt = buildPrompt(trimmedCtx, semanticMemories, intent);
+  if (prompt.length <= MAX_SYSTEM_CHARS) return prompt;
+
+  // 2. knownAnalogies (nice-to-have, not critical)
+  trimmedCtx.knownAnalogies = [];
+  prompt = buildPrompt(trimmedCtx, semanticMemories, intent);
+  if (prompt.length <= MAX_SYSTEM_CHARS) return prompt;
+
+  // 3. RAG chunks (reduce from 2 to 1, then to 0)
+  if (trimmedCtx.ragChunks && trimmedCtx.ragChunks.length > 1) {
+    trimmedCtx.ragChunks = [trimmedCtx.ragChunks[0]];
+    prompt = buildPrompt(trimmedCtx, semanticMemories, intent);
+    if (prompt.length <= MAX_SYSTEM_CHARS) return prompt;
+  }
+  if (trimmedCtx.ragChunks && trimmedCtx.ragChunks.length > 0) {
+    trimmedCtx.ragChunks = [];
+    prompt = buildPrompt(trimmedCtx, semanticMemories, intent);
+    if (prompt.length <= MAX_SYSTEM_CHARS) return prompt;
+  }
+
+  // 4. recentTopics beyond first 3
+  if (trimmedCtx.recentTopics.length > 3) {
+    trimmedCtx.recentTopics = trimmedCtx.recentTopics.slice(0, 3);
+    prompt = buildPrompt(trimmedCtx, semanticMemories, intent);
+    if (prompt.length <= MAX_SYSTEM_CHARS) return prompt;
+  }
+
+  // 5. weakConcepts beyond first 2
+  if (trimmedCtx.weakConcepts.length > 2) {
+    trimmedCtx.weakConcepts = trimmedCtx.weakConcepts.slice(0, 2);
+    prompt = buildPrompt(trimmedCtx, semanticMemories, intent);
+    if (prompt.length <= MAX_SYSTEM_CHARS) return prompt;
+  }
+
+  // Fallback: return the smallest version we got
+  return prompt;
 }
