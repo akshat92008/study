@@ -1,46 +1,25 @@
-import { EventTypes } from '@/lib/events/types';
-import { createClient } from '@/lib/supabase/server';
+// lib/events/consumers/index.ts
+// REAL event consumer registry — routes to the actual engine consumers.
+// These are wired to the EventDispatcher in lib/events/orchestrator.ts.
+// If you need to add a consumer, add it to EVENT_CONSUMERS there and add a case to routeToConsumer.
 
-/**
- * Each consumer receives the event payload and performs domain‑specific side effects.
- * For now these are simple stubs – replace with real business logic.
- */
-export const eventConsumers: Partial<Record<keyof typeof EventTypes, (payload: any, userId: string) => Promise<void>>> = {
-  MIND_MESSAGE_CREATED: async (payload, userId) => {
-    // Example: track message analytics
-    const supabase = await createClient();
-    await supabase.from('mind_message_events').insert({ user_id: userId, payload });
-  },
-  MIND_TUTOR_COMPLETED: async (payload, userId) => {
-    const supabase = await createClient();
-    await supabase.from('mind_tutor_events').insert({ user_id: userId, payload });
-  },
-  AUTOPSY_MOCK_PROCESSED: async (payload, userId) => {
-    const supabase = await createClient();
-    await supabase.from('autopsy_events').insert({ user_id: userId, payload });
-  },
-  ATLAS_MASTERY_UPDATED: async (payload, userId) => {
-    const supabase = await createClient();
-    await supabase.from('atlas_mastery_events').insert({ user_id: userId, payload });
-  },
-  MEMORY_CARD_CREATED: async (payload, userId) => {
-    const supabase = await createClient();
-    await supabase.from('memory_card_events').insert({ user_id: userId, payload });
-  },
-  MEMORY_CARD_REVIEWED: async (payload, userId) => {
-    const supabase = await createClient();
-    await supabase.from('memory_review_events').insert({ user_id: userId, payload });
-  },
-  COMMAND_SESSION_CREATED: async (payload, userId) => {
-    const supabase = await createClient();
-    await supabase.from('command_session_events').insert({ user_id: userId, payload });
-  },
-  COMMAND_SESSION_COMPLETED: async (payload, userId) => {
-    const supabase = await createClient();
-    await supabase.from('command_session_events').insert({ user_id: userId, payload, completed: true });
-  },
-  INGESTION_DOCUMENT_PROCESSED: async (payload, userId) => {
-    const supabase = await createClient();
-    await supabase.from('ingestion_events').insert({ user_id: userId, payload });
-  },
-};
+// This file is intentionally minimal.
+// All consumer logic is in the engine files:
+//   - learning_state_engine: lib/engines/learning-state-engine.ts
+//   - atlas_engine:          lib/engines/cognition-graph.ts (AtlasConsumer)
+//   - memory_engine:         lib/engines/revision-engine.ts (MemoryConsumer)
+//   - command_engine:        lib/engines/command-engine.ts (CommandConsumer)
+//   - concept_expansion:     lib/engines/concept-expansion-engine.ts (ConceptExpansionConsumer)
+//
+// Do NOT add consumers here that insert into raw event tracking tables.
+// The event_consumer_tracking table is managed by the EventDispatcher itself.
+
+export const EVENT_CONSUMER_NAMES = [
+  'learning_state_engine',
+  'atlas_engine',
+  'memory_engine',
+  'command_engine',
+  'concept_expansion_engine',
+] as const;
+
+export type EventConsumerName = typeof EVENT_CONSUMER_NAMES[number];

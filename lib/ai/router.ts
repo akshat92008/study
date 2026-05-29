@@ -193,12 +193,15 @@ async function callGoogle(
     body.systemInstruction = { parts: [{ text: systemMsg.content }] };
   }
 
-  const endpoint = stream ? 'streamGenerateContent?alt=sse&' : 'generateContent?';
-  const url = `${config.baseUrl}/models/${model}:${endpoint}key=${config.apiKey}`;
+  const endpoint = stream ? 'streamGenerateContent?alt=sse' : 'generateContent';
+  const url = `${config.baseUrl}/models/${model}:${endpoint}`;
 
   const response = await fetch(url, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      'x-goog-api-key': config.apiKey,
+    },
     body: JSON.stringify(body),
     signal: AbortSignal.timeout(30_000),
   });
@@ -559,10 +562,13 @@ if (!config || !config.apiKey || !config.supportsEmbeddings) {
 
       if (providerName === 'google') {
         const response = await fetch(
-          `${config.baseUrl}/models/${config.embeddingModel}:embedContent?key=${config.apiKey}`,
+          `${config.baseUrl}/models/${config.embeddingModel}:embedContent`,
           {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+              'Content-Type': 'application/json',
+              'x-goog-api-key': config.apiKey,
+            },
             body: JSON.stringify({
               model: `models/${config.embeddingModel}`,
               content: { parts: [{ text: text.slice(0, 2000) }] },
@@ -711,10 +717,13 @@ if (!config || !config.apiKey || !config.supportsVision) {
 
       if (providerName === 'google') {
         const response = await fetch(
-          `${config.baseUrl}/models/gemini-2.0-flash:generateContent?key=${config.apiKey}`,
+          `${config.baseUrl}/models/gemini-2.0-flash:generateContent`,
           {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+              'Content-Type': 'application/json',
+              'x-goog-api-key': config.apiKey,
+            },
             body: JSON.stringify({
               contents: [{
                 parts: [

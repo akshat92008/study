@@ -1,73 +1,16 @@
-import { BaseService } from './base.service';
-import { getEmbedding } from '@/lib/ai/gemini';
-import { logger } from '@/lib/utils/logger';
+// services/chat-memory.service.ts
+// ⚠️  TOMBSTONE — DO NOT USE ⚠️
+// This file previously wrote to `chat_memory_embeddings` which does not exist in the schema.
+// The correct service is at lib/services/chatMemoryService.ts (writes to `chat_memory`).
+// This file is kept as a tombstone to prevent accidental re-creation.
+// If you see this imported anywhere, redirect the import to:
+//   import { ChatMemoryService } from '@/lib/services/chatMemoryService';
 
-export class ChatMemoryService extends BaseService {
-  /**
-   * Embeds and stores an older chat message into pgvector memory.
-   */
-  async storeMessageInMemory(userId: string, content: string): Promise<void> {
-    try {
-      const embedding = await getEmbedding(content);
-      if (!embedding || embedding.length === 0) {
-        logger.warn('Skipping memory storage, empty embedding returned', { userId });
-        return;
-      }
-
-      const supabase = await this.getClient();
-      // Use pgvector's vector string representation: '[1.0, 2.0, ...]'
-      const embeddingString = `[${embedding.join(',')}]`;
-
-      const { error } = await supabase
-        .from('chat_memory_embeddings')
-        .insert({
-          user_id: userId,
-          content,
-          embedding: embeddingString
-        });
-
-      if (error) {
-        logger.error('Failed to store chat memory embedding', error);
-      }
-    } catch (err) {
-      logger.error('Error in storeMessageInMemory', err);
-    }
-  }
-
-  /**
-   * Semantically searches the user's older chats for relevant context based on their current query.
-   */
-  async searchMemory(userId: string, query: string, limit: number = 3): Promise<string[]> {
-    try {
-      const embedding = await getEmbedding(query);
-      if (!embedding || embedding.length === 0) return [];
-
-      const supabase = await this.getClient();
-      const embeddingString = `[${embedding.join(',')}]`;
-
-      // We need a custom RPC to perform the pgvector similarity search since Supabase REST
-      // doesn't natively expose the `<->` operator without it.
-      // Assuming RPC `match_chat_memory` is created:
-      const { data, error } = await supabase.rpc('match_chat_memory', {
-        query_embedding: embeddingString,
-        match_threshold: 0.75,
-        match_count: limit,
-        p_user_id: userId
-      });
-
-      if (error) {
-        if (error.code === 'PGRST202') {
-          // Bug 8: RPC not found - throw a verifiable error instead of silently returning empty memory
-          throw new Error('CRITICAL: match_chat_memory RPC is missing in Supabase. Please run the 024_match_chat_memory.sql migration. Semantic memory is broken.');
-        }
-        logger.error('Failed to search chat memory', { error });
-        return [];
-      }
-
-      return (data || []).map((row: any) => row.content);
-    } catch (err) {
-      logger.error('Error in searchMemory', err);
-      return [];
-    }
+export class ChatMemoryService {
+  constructor() {
+    throw new Error(
+      'WRONG ChatMemoryService: import from @/lib/services/chatMemoryService instead. ' +
+      'This file (services/chat-memory.service.ts) targets a nonexistent table and must not be used.'
+    );
   }
 }

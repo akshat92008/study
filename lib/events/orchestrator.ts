@@ -99,7 +99,7 @@ export class EventDispatcher {
     return eventId;
   }
 
-  private static async runAllConsumers(eventId: string): Promise<void> {
+  static async runAllConsumers(eventId: string): Promise<void> {
     await Promise.allSettled(
       EVENT_CONSUMERS.map((consumer) => this.processConsumer(eventId, consumer))
     );
@@ -110,7 +110,7 @@ export class EventDispatcher {
     const trackingRows = EVENT_CONSUMERS.map((consumer) => ({
       event_id: eventId,
       consumer_name: consumer,
-      status: 'processing',
+      status: 'pending', // ← Start as pending, not processing (was a bug)
     }));
 
     const { error } = await supabase

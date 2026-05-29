@@ -25,6 +25,8 @@ const ENV_VARS: EnvVar[] = [
   { key: 'GROQ_API_KEY', required: false, description: 'Groq fast inference (optional but recommended)' },
   { key: 'SAMBANOVA_API_KEY', required: false, description: 'SambaNova inference (optional)' },
   { key: 'NEXT_PUBLIC_APP_URL', required: false, description: 'Full app URL — needed for event retry HTTP calls' },
+  { key: 'SENTRY_DSN', required: false, description: 'Sentry DSN for error tracking — without this, all production errors are invisible' },
+  { key: 'NEXT_PUBLIC_SENTRY_DSN', required: false, description: 'Sentry DSN for client-side error tracking' },
 ];
 
 export function validateEnvironment(): void {
@@ -74,5 +76,14 @@ export function validateEnvironment(): void {
     if (process.env.NODE_ENV === 'production') {
       throw new Error('Critical environment variables missing. See console for details.');
     }
+  }
+
+  const sentryDsn = process.env.SENTRY_DSN;
+  if (!sentryDsn || sentryDsn === 'YOUR_SENTRY_DSN_HERE') {
+    console.error(
+      '\n⚠️  COGNITION OS — SENTRY_DSN is not configured.\n' +
+      '   You will be COMPLETELY BLIND to production errors.\n' +
+      '   Get a free DSN at https://sentry.io and set it in your environment.\n'
+    );
   }
 }

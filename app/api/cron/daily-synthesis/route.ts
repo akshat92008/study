@@ -213,31 +213,22 @@ async function generateTomorrowCard(userId: string, profile: any, supabase: any)
 const BATCH_SIZE = 10; // Process 10 users concurrently
 const DELAY_BETWEEN_BATCHES = 2000; // 2 seconds between batches
 
-async function processUserBatch(userIds: string[], supabase: any, today: string): Promise<void> {
-  await Promise.allSettled(
-    userIds.map(userId =>
-      processOneUser(userId, supabase, today).catch(err =>
-        logger.error('Daily synthesis failed for user', { userId, err: err.message })
-      )
-    )
-  );
-}
-
 export async function GET(req: NextRequest) {
-  // ✅ FIX: Authenticate the cron caller
   const authError = validateCronRequest(req);
   if (authError) return authError;
 
-  try {
+  // Track start time — exit safely before Vercel's 5-min hard limit
+  const CRON_START = Date.now();
+  const MAX_EXECUTION_MS = 270_000; // 4.5 min — 30s buffer before Vercel kills at 5 min
+  const isTimeBudgetExceeded = () => Date.now() - CRON_START > MAX_EXECUTION_MS;
 
-    // 2. We use the service_role key to bypass RLS for background jobs
+  try {
     const { createClient: createSupabaseClient } = await import('@supabase/supabase-js');
     const supabase = createSupabaseClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.SUPABASE_SERVICE_ROLE_KEY!
     );
-    
-    // 3. Fetch all active users who have completed onboarding
+
     const { data: users, error } = await supabase
       .from('profiles')
       .select('id')
@@ -247,27 +238,74 @@ export async function GET(req: NextRequest) {
 
     const userIds = (users || []).map((u: any) => u.id);
     const today = new Date().toISOString().split('T')[0];
-    logger.info(`Cron: Starting daily synthesis for ${userIds.length} users targeting date: ${today}`);
+    logger.info(`Cron: Starting daily synthesis for ${userIds.length} users`, { today });
 
-      // Retry failed events before processing users
+    // Retry failed events first (bounded — if it exceeds budget, skip gracefully)
+    if (!isTimeBudgetExceeded()) {
       try {
-        const retryResult = await retryFailedEvents();
-        logger.info('Daily retry sweep complete', retryResult);
+        const retryResult = await Promise.race([
+          retryFailedEvents(),
+          new Promise<null>((resolve) => setTimeout(() => resolve(null), 30_000)), // 30s cap on retry
+        ]);
+        if (retryResult) {
+          logger.info('Daily retry sweep complete', retryResult);
+        } else {
+          logger.warn('Daily retry sweep timed out (30s cap), continuing to user processing');
+        }
       } catch (retryErr) {
         logger.error('Daily retry sweep failed (non-fatal)', retryErr);
       }
+    }
 
-      // 4. Process in batches concurrently
+    let processedCount = 0;
+    let skippedCount = 0;
+
     for (let i = 0; i < userIds.length; i += BATCH_SIZE) {
-      const batch = userIds.slice(i, i + BATCH_SIZE);
-      await processUserBatch(batch, supabase, today);
+      // Check time budget BEFORE each batch — not after
+      if (isTimeBudgetExceeded()) {
+        skippedCount = userIds.length - i;
+        logger.warn('Cron: Time budget exceeded — stopping early', {
+          processed: processedCount,
+          skipped: skippedCount,
+          totalUsers: userIds.length,
+          elapsedMs: Date.now() - CRON_START,
+        });
+        break;
+      }
 
-      if (i + BATCH_SIZE < userIds.length) {
-        await new Promise(r => setTimeout(r, DELAY_BETWEEN_BATCHES));
+      const batch = userIds.slice(i, i + BATCH_SIZE);
+      await Promise.allSettled(
+        batch.map((userId: string) =>
+          processOneUser(userId, supabase, today).catch((err) =>
+            logger.error('Daily synthesis failed for user', { userId, err: err.message })
+          )
+        )
+      );
+      processedCount += batch.length;
+
+      // Brief yield between batches — only if we have budget remaining
+      if (i + BATCH_SIZE < userIds.length && !isTimeBudgetExceeded()) {
+        await new Promise((r) => setTimeout(r, DELAY_BETWEEN_BATCHES));
       }
     }
-    
-    return Response.json({ processed: userIds.length, success: true });
+
+    const elapsed = Date.now() - CRON_START;
+    logger.info('Cron: Daily synthesis complete', {
+      processed: processedCount,
+      skipped: skippedCount,
+      totalUsers: userIds.length,
+      elapsedMs: elapsed,
+      timedOut: skippedCount > 0,
+    });
+
+    return Response.json({
+      processed: processedCount,
+      skipped: skippedCount,
+      total: userIds.length,
+      elapsed_ms: elapsed,
+      timed_out: skippedCount > 0,
+      success: true,
+    });
   } catch (globalErr: any) {
     logger.error('Cron: Global execution crash', globalErr);
     return new Response('Internal Server Error', { status: 500 });

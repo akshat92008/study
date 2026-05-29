@@ -170,27 +170,25 @@ create table if not exists study_tasks (
   id uuid primary key default uuid_generate_v4(),
   user_id uuid not null references profiles(id) on delete cascade,
   concept_id uuid references concepts(id) on delete set null,
-  card_id uuid references revision_cards(id) on delete set null,
-  
   title text not null,
   description text,
-  category text not null check (category in ('study','revise','practice','mock','break','autopsy_recovery')),
-  priority float default 0,
-  estimated_minutes int default 15,
-  
-  scheduled_for date not null,
-  scheduled_slot int,
-  status text default 'pending' check (status in ('pending','in_progress','completed','skipped','cancelled')),
-  
+  type text not null default 'study' check (type in ('study','revise','practice','mock','break','autopsy_recovery','review')),
+  subject text,
+  chapter text,
+  priority text default 'medium' check (priority in ('critical','high','medium','low')),
+  estimated_minutes int default 45,
+  scheduled_date date not null,
+  is_completed boolean default false,
   completed_at timestamptz,
-  actual_minutes int,
-  
+  focus_score int,
+  notes text,
   source text,
   metadata jsonb default '{}'::jsonb,
   created_at timestamptz default now()
 );
 
-create index idx_study_tasks_user_date on study_tasks(user_id, scheduled_for, status);
+create index idx_study_tasks_user_date on study_tasks(user_id, scheduled_date);
+create index idx_study_tasks_incomplete on study_tasks(user_id, scheduled_date) where is_completed = false;
 
 create table if not exists study_goals (
   id uuid primary key default uuid_generate_v4(),
@@ -324,47 +322,56 @@ create table if not exists performance_snapshots (
 -- ============================================================================
 -- EVENT BUS (already exists as function — adding tables)
 -- ============================================================================
-create table if not exists events (
+create table if not exists student_events (
   id uuid primary key default uuid_generate_v4(),
   user_id uuid references profiles(id) on delete cascade,
-  event_type text not null,
-  payload jsonb not null default '{}'::jsonb,
-  idempotency_key text unique,
-  parent_event_id uuid references events(id),
+  type text not null,
+  data jsonb not null default '{}'::jsonb,
   status text default 'pending' check (status in ('pending','processing','completed','failed','dead_letter')),
-  attempts int default 0,
+  retry_count int default 0,
+  idempotency_key text,
+  trace_id uuid default uuid_generate_v4(),
+  version text default 'v2',
+  metadata jsonb default '{}'::jsonb,
   last_error text,
   created_at timestamptz default now(),
   processed_at timestamptz,
-  completed_at timestamptz
+  completed_at timestamptz,
+  unique nulls not distinct (user_id, idempotency_key)
 );
 
-create index idx_events_status on events(status, created_at) where status in ('pending','processing');
-create index idx_events_user on events(user_id, created_at desc);
+create index idx_student_events_status on student_events(status, created_at) where status in ('pending','processing');
+create index idx_student_events_user on student_events(user_id, created_at desc);
 
-create table if not exists event_consumers (
-  id uuid primary key default uuid_generate_v4(),
-  event_id uuid not null references events(id) on delete cascade,
+create table if not exists event_consumer_tracking (
+  event_id uuid not null references student_events(id) on delete cascade,
   consumer_name text not null,
-  status text default 'pending' check (status in ('pending','processing','completed','failed','dead_letter')),
-  attempts int default 0,
+  status text default 'pending' check (status in ('pending','processing','completed','failed')),
+  retry_count int default 0,
   last_error text,
-  processed_at timestamptz,
-  unique(event_id, consumer_name)
+  created_at timestamptz default now(),
+  updated_at timestamptz default now(),
+  primary key (event_id, consumer_name)
 );
 
-create index idx_event_consumers_pending on event_consumers(status, event_id) where status in ('pending','processing');
+create index idx_event_consumer_tracking_status on event_consumer_tracking(consumer_name, status);
 
-create table if not exists event_dead_letter (
+create table if not exists dlq_events (
   id uuid primary key default uuid_generate_v4(),
-  original_event_id uuid,
-  event_type text,
-  payload jsonb,
-  consumer_name text,
-  error text,
-  attempts int,
-  failed_at timestamptz default now()
+  event_id uuid not null,
+  user_id uuid references profiles(id) on delete cascade,
+  trace_id uuid,
+  version text,
+  type text not null,
+  data jsonb not null,
+  metadata jsonb default '{}'::jsonb,
+  error_message text not null,
+  created_at timestamptz default now(),
+  resolved_at timestamptz,
+  resolution_notes text
 );
+
+create index idx_dlq_events_unresolved on dlq_events(created_at) where resolved_at is null;
 
 -- ============================================================================
 -- TRIGGERS
