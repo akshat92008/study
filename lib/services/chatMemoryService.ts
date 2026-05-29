@@ -23,7 +23,7 @@ Return ONLY JSON: { "importance": number (0-10) }`;
       ).catch(() => ({ importance: 5 }));
 
       if (evalResult.importance < 7) {
-        logger.debug('Skipping memory storage, low importance', { score: evalResult.importance, userId });
+        logger.info('Skipping memory storage, low importance', { score: evalResult.importance, userId });
         return;
       }
 

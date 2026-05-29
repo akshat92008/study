@@ -55,8 +55,23 @@ export async function POST(req: NextRequest) {
     if (!imgValidation.valid) return imgValidation.error!;
   }
 
+  const recentHistory = (history || []).slice(-6); // Hard budget on history length
+
+  const { data: profilePreview } = await supabase.from('profiles').select('exam_type').eq('id', user.id).maybeSingle();
+
+  const { intent: detectedIntent, emotion, confidence } = await classifyMessageCombined(
+    message || '',
+    recentHistory.slice(-2).map((m: any) => m.content).join(' '),
+    profilePreview?.exam_type || undefined
+  );
+
   const [mindContext, semanticMemories] = await Promise.all([
-    getMINDContext(user.id, message),
+    getMINDContext(
+      user.id, 
+      message, 
+      detectedIntent.topic || undefined, 
+      detectedIntent.subject || undefined
+    ),
     (message && message.trim().length > 15)
       ? new ChatMemoryService().searchMemory(user.id, message, 2).catch((err) => {
           logger.error('CRITICAL: Semantic memory failed. match_chat_memory RPC may be missing.', err);
@@ -65,9 +80,7 @@ export async function POST(req: NextRequest) {
       : Promise.resolve([] as string[]),
   ]);
 
-  // fallbackConceptId removed — was incorrectly updating ATLAS on every message.
-  // Concept state updates only happen inside TUTOR_SESSION branch below.
-  let systemPrompt = getMINDSystemPrompt(mindContext, semanticMemories, 'GENERAL_CHAT');
+  let systemPrompt = getMINDSystemPrompt(mindContext, semanticMemories, detectedIntent.intent);
 
   if (imageBase64 && imageMimeType) {
     const stream = new ReadableStream({
@@ -125,17 +138,6 @@ export async function POST(req: NextRequest) {
     });
     return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
   }
-
-  const recentHistory = (history || []).slice(-6); // Hard budget on history length
-  
-  const { intent: detectedIntent, emotion, confidence } = await classifyMessageCombined(
-    message || '',
-    recentHistory.slice(-2).map((m: any) => m.content).join(' '),
-    mindContext.profile.examType
-  );
-  
-  // Re-generate system prompt with the proper intent to load modules
-  systemPrompt = getMINDSystemPrompt(mindContext, semanticMemories, detectedIntent.intent);
 
   // Orchestrate using the already-classified intent — no second LLM call.
   const orchestratorResult = orchestrateFromIntent(

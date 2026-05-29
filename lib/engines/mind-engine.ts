@@ -4,9 +4,26 @@ import { logger } from '@/lib/utils/logger';
 import type { MINDContext } from '@/lib/ai/prompts/mind-prompt';
 import { RAGEngine } from './rag-engine';
 
-export async function getMINDContext(userId: string, message?: string): Promise<MINDContext> {
+export async function getMINDContext(userId: string, message?: string, topic?: string, subject?: string): Promise<MINDContext> {
   try {
     const supabase = await createClient();
+
+    let weakConceptsQuery = supabase.from('concepts')
+      .select('name, subject, chapter, mastery')
+      .eq('user_id', userId)
+      .in('mastery', ['not_started', 'exposed', 'developing'])
+      .order('mastery')
+      .limit(10);
+    if (subject) weakConceptsQuery = weakConceptsQuery.eq('subject', subject);
+    if (topic) weakConceptsQuery = weakConceptsQuery.ilike('chapter', `%${topic}%`);
+
+    let mistakesQuery = supabase.from('mistakes')
+      .select('chapter, category, subject, created_at')
+      .eq('user_id', userId)
+      .order('created_at', { ascending: false })
+      .limit(5);
+    if (subject) mistakesQuery = mistakesQuery.eq('subject', subject);
+    if (topic) mistakesQuery = mistakesQuery.ilike('chapter', `%${topic}%`);
 
     const [
       profileRes, weakConceptsRes, recentMistakesRes,
@@ -17,18 +34,9 @@ export async function getMINDContext(userId: string, message?: string): Promise<
         .eq('id', userId)
         .single(),
 
-      supabase.from('concepts')
-        .select('name, subject, chapter, mastery')
-        .eq('user_id', userId)
-        .in('mastery', ['not_started', 'exposed', 'developing'])
-        .order('mastery')
-        .limit(10),
+      weakConceptsQuery,
 
-      supabase.from('mistakes')
-        .select('chapter, category, subject, created_at')
-        .eq('user_id', userId)
-        .order('created_at', { ascending: false })
-        .limit(5),
+      mistakesQuery,
 
       supabase.from('revision_cards')
         .select('id', { count: 'exact', head: true })

@@ -204,8 +204,8 @@ async function callGoogle(
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'x-goog-api-key': config.apiKey,
-    },
+      'x-goog-api-key': config.apiKey || '',
+    } as Record<string, string>,
     body: JSON.stringify(body),
     signal: AbortSignal.timeout(30_000),
   });
@@ -574,8 +574,8 @@ if (!config || !config.apiKey || !config.supportsEmbeddings) {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'x-goog-api-key': config.apiKey,
-            },
+              'x-goog-api-key': config.apiKey || '',
+            } as Record<string, string>,
             body: JSON.stringify({
               model: `models/${config.embeddingModel}`,
               content: { parts: [{ text: text.slice(0, 2000) }] },
@@ -729,8 +729,8 @@ if (!config || !config.apiKey || !config.supportsVision) {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'x-goog-api-key': config.apiKey,
-            },
+              'x-goog-api-key': config.apiKey || '',
+            } as Record<string, string>,
             body: JSON.stringify({
               contents: [{
                 parts: [

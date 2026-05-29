@@ -143,7 +143,8 @@ STUDENT STATE: OVERWHELMED — COGNITIVE LOAD CRITICAL
 - End your response with ONE concrete, small action they can do in the next 5 minutes.`
   };
 
-  return adaptations[emotionalState] || adaptations['neutral'];
+  if (emotionalState === 'neutral') return '';
+  return adaptations[emotionalState] || '';
 }
 
 export function getMINDSystemPrompt(ctx: MINDContext, semanticMemories: string[] = [], intent?: string): string {
@@ -331,7 +332,7 @@ You are the senior who cracked this exam and is now mentoring this student perso
 
 When the student is anxious or overwhelmed: respond with REAL DATA first ("Your last 3 sessions show improvement in Biology — 54% → 61% → 71%. The trajectory is working.") then adjust the tone. Never generic motivation.
 
-  ${emotionalBlock}
+  ${emotionalBlock ? emotionalBlock : ''}
   ${learningStyleBlock}
 `;
 }

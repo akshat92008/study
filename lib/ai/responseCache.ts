@@ -23,10 +23,16 @@ import { logger } from '@/lib/utils/logger';
 export async function checkSemanticCache(prompt: string): Promise<string | null> {
   try {
     const trimmed = prompt.trim();
-    if (trimmed.length < 15 || trimmed.length > 500) return null; // Only cache moderately sized specific queries
+    if (trimmed.length < 15 || trimmed.length > 500) {
+      logger.info('Semantic cache rejected: length out of bounds');
+      return null; // Only cache moderately sized specific queries
+    }
 
     const embedding = await getEmbedding(trimmed);
-    if (!embedding || embedding.length === 0) return null;
+    if (!embedding || embedding.length === 0) {
+      logger.info('Semantic cache miss: empty embedding');
+      return null;
+    }
 
     const supabase = await createClient();
     const { data, error } = await supabase.rpc('match_semantic_cache', {
@@ -36,9 +42,16 @@ export async function checkSemanticCache(prompt: string): Promise<string | null>
     });
 
     if (!error && data && data.length > 0) {
+      logger.info(`Semantic cache hit: id=${data[0].id}`);
       // Update access count and timestamp asynchronously
-      supabase.rpc('increment_cache_access', { cache_id: data[0].id }).catch(() => {});
+      supabase.rpc('increment_cache_access', { cache_id: data[0].id })
+        .then(({ error }: any) => {
+          if (error) logger.warn('Failed to increment cache access', error);
+        });
       return data[0].response_text;
+    } else {
+      if (error) logger.error('match_semantic_cache RPC failed', error);
+      else logger.info('Semantic cache miss: no semantic matches above threshold');
     }
   } catch (err) {
     logger.warn('Semantic cache check failed', err);
@@ -73,6 +86,15 @@ export async function setSemanticCache(prompt: string, response: string): Promis
  * NEVER cache personalized responses or anything with user state injected.
  */
 export function isCacheable(metadata: { intent?: string; hasUserContext?: boolean }): boolean {
-  if (metadata.hasUserContext) return false;
-  return ['concept_explanation', 'definition', 'formula', 'TUTOR_SESSION'].includes(metadata.intent || '');
+  if (metadata.hasUserContext) {
+    logger.info('Semantic cache rejected: unsafe personalization detected (hasUserContext=true)');
+    return false;
+  }
+  
+  const cacheable = ['concept_explanation', 'definition', 'formula'].includes(metadata.intent || '');
+  if (!cacheable) {
+    logger.info(`Semantic cache rejected: intent '${metadata.intent || 'none'}' is not cacheable`);
+  }
+  
+  return cacheable;
 }

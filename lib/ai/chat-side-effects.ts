@@ -97,6 +97,9 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
         idempotency_key: `summarize:${sessionId}:${history.length}`
       });
     }
+  } catch (err) {
+    logger.warn('SideEffect: Summarization trigger failed', err);
+  }
 
   // 3. Semantic Memory Storage
   try {

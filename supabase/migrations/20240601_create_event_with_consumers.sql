@@ -13,7 +13,7 @@ DECLARE
     v_event_id uuid;
 BEGIN
     INSERT INTO student_events (
-        user_id, type, data, status, retry_count, idempotency_key, trace_id, version, metadata, source
+        user_id, type, data, status, retry_count, idempotency_key, trace_id, version, metadata
     ) VALUES (
         p_user_id,
         p_type,
@@ -23,8 +23,7 @@ BEGIN
         p_idempotency_key,
         gen_random_uuid(),
         'v2',
-        COALESCE(p_metadata, '{}'::jsonb),
-        p_source
+        COALESCE(p_metadata, '{}'::jsonb)
     )
     RETURNING id INTO v_event_id;
 

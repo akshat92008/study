@@ -37,3 +37,27 @@ BEGIN
   LIMIT match_count;
 END;
 $$;
+
+-- Enable Row Level Security
+ALTER TABLE semantic_cache ENABLE ROW LEVEL SECURITY;
+
+-- Deny all direct access to authenticated users (only service_role or SECURITY DEFINER RPCs can access)
+CREATE POLICY "Deny all to semantic cache for authenticated users"
+ON semantic_cache
+FOR ALL
+TO authenticated
+USING (false);
+
+-- Create missing RPC for cache access increments
+CREATE OR REPLACE FUNCTION increment_cache_access(cache_id uuid)
+RETURNS void
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+BEGIN
+  UPDATE semantic_cache
+  SET access_count = access_count + 1,
+      last_accessed_at = now()
+  WHERE id = cache_id;
+END;
+$$;
