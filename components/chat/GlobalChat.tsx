@@ -521,10 +521,10 @@ export const GlobalChat = memo(function GlobalChat() {
              }}>
                <div style={{
                  maxWidth: isUser ? '85%' : '100%',
-                 background: isUser ? 'linear-gradient(145deg, var(--bg-tertiary), var(--bg-secondary))' : 'transparent',
-                 border: isUser ? '1px solid var(--border-subtle)' : 'none',
+                 background: isUser ? 'var(--accent-purple)' : 'transparent',
+                 border: isUser ? 'none' : 'none',
                  borderLeft: (!isUser && !isClosingCard) ? '2px solid rgba(124, 102, 255, 0.3)' : 'none',
-                 color: 'var(--text-primary)',
+                 color: isUser ? 'white' : 'var(--text-primary)',
                  fontSize: '14px',
                  lineHeight: 'var(--lh-relaxed)',
                  wordBreak: 'break-word',
