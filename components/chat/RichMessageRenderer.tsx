@@ -186,13 +186,22 @@ function renderMarkdownBlock(text: string): React.ReactNode {
         codeLines = [];
       } else {
         elements.push(
-          <pre key={idx} style={{
-            background: 'var(--bg-tertiary)', border: '1px solid var(--border-subtle)',
-            borderRadius: 8, padding: '12px 16px', overflowX: 'auto',
-            fontFamily: 'var(--font-mono)', fontSize: 12, margin: '8px 0', color: 'var(--text-primary)'
-          }}>
-            <code>{codeLines.join('\n')}</code>
-          </pre>
+          <div key={idx} style={{ margin: '12px 0', borderRadius: 8, overflow: 'hidden', border: '1px solid var(--border-subtle)', background: 'var(--bg-root)', boxShadow: 'var(--shadow-sm)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', padding: '8px 12px', background: 'rgba(255,255,255,0.02)', borderBottom: '1px solid var(--border-subtle)' }}>
+              <div style={{ display: 'flex', gap: 6 }}>
+                <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#ff5f56' }} />
+                <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#ffbd2e' }} />
+                <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#27c93f' }} />
+              </div>
+              {codeLang && <div style={{ marginLeft: 'auto', fontSize: 10, color: 'var(--text-tertiary)', fontFamily: 'var(--font-mono)', textTransform: 'uppercase' }}>{codeLang}</div>}
+            </div>
+            <pre style={{
+              margin: 0, padding: '12px 16px', overflowX: 'auto',
+              fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-primary)'
+            }}>
+              <code>{codeLines.join('\n')}</code>
+            </pre>
+          </div>
         );
         inCodeBlock = false;
         codeLines = [];

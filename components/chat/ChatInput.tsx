@@ -115,12 +115,20 @@ export function ChatInput({
       )}
 
       <div style={{
-        display: 'flex', alignItems: 'flex-end', background: 'var(--bg-primary)',
-        border: '1px solid var(--border-strong)', borderRadius: 'var(--radius-lg)', padding: '6px 10px',
-        transition: 'border-color var(--duration-fast)',
+        display: 'flex', alignItems: 'flex-end', 
+        background: 'rgba(22, 24, 29, 0.6)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
+        border: '1px solid var(--border-default)', borderRadius: '24px', padding: '6px 12px',
+        transition: 'all var(--duration-normal) var(--ease-out)',
+        boxShadow: 'var(--shadow-md)',
       }}
-        onFocusCapture={e => e.currentTarget.style.borderColor = 'var(--accent-purple)'}
-        onBlurCapture={e => e.currentTarget.style.borderColor = 'var(--border-strong)'}
+        onFocusCapture={e => {
+          e.currentTarget.style.borderColor = 'var(--border-focus)';
+          e.currentTarget.style.boxShadow = 'var(--shadow-lg), var(--shadow-glow-purple)';
+        }}
+        onBlurCapture={e => {
+          e.currentTarget.style.borderColor = 'var(--border-default)';
+          e.currentTarget.style.boxShadow = 'var(--shadow-md)';
+        }}
       >
         <input
           type="file"
@@ -179,19 +187,31 @@ export function ChatInput({
           onClick={handleSend}
           disabled={isSubmitDisabled}
           style={{
-            background: isSubmitDisabled ? 'var(--bg-tertiary)' : 'var(--accent-purple)',
-            color: isSubmitDisabled ? 'var(--text-tertiary)' : 'white',
-            border: 'none', borderRadius: 'var(--radius-sm)', width: 32, height: 32,
+            background: 'transparent',
+            color: isSubmitDisabled ? 'var(--text-tertiary)' : 'var(--text-primary)',
+            border: 'none', borderRadius: '50%', width: 32, height: 32,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             cursor: isSubmitDisabled ? 'not-allowed' : 'pointer',
-            transition: 'all var(--duration-fast)', padding: 0, margin: '4px'
+            transition: 'all var(--duration-fast) var(--ease-out)', padding: 0, margin: '4px',
+            transform: isSubmitDisabled ? 'scale(0.95)' : 'scale(1)',
           }}
-
+          onMouseOver={(e) => {
+            if (!isSubmitDisabled) {
+              e.currentTarget.style.color = 'var(--accent-purple)';
+              e.currentTarget.style.transform = 'scale(1.05)';
+            }
+          }}
+          onMouseOut={(e) => {
+            if (!isSubmitDisabled) {
+              e.currentTarget.style.color = 'var(--text-primary)';
+              e.currentTarget.style.transform = 'scale(1)';
+            }
+          }}
         >
           {isProcessingUpload ? (
-            <Loader2 size={14} className="animate-spin" />
+            <Loader2 size={16} className="animate-spin" />
           ) : (
-            <Send size={14} style={{ marginLeft: 2 }} />
+            <Send size={16} style={{ marginLeft: 2 }} />
           )}
         </button>
       </div>

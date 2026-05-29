@@ -520,19 +520,21 @@ export const GlobalChat = memo(function GlobalChat() {
                alignItems: isUser ? 'flex-end' : 'flex-start',
              }}>
                <div style={{
-                 maxWidth: '92%',
-                 background: isUser ? 'var(--accent-purple)' : (isClosingCard ? 'transparent' : 'var(--bg-primary)'),
-                 border: isUser ? 'none' : (isClosingCard ? 'none' : '1px solid var(--border-subtle)'),
-                 color: isUser ? 'white' : 'var(--text-primary)',
+                 maxWidth: isUser ? '85%' : '100%',
+                 background: isUser ? 'linear-gradient(145deg, var(--bg-tertiary), var(--bg-secondary))' : 'transparent',
+                 border: isUser ? '1px solid var(--border-subtle)' : 'none',
+                 borderLeft: (!isUser && !isClosingCard) ? '2px solid rgba(124, 102, 255, 0.3)' : 'none',
+                 color: 'var(--text-primary)',
                  fontSize: '14px',
-                 lineHeight: 1.9,
+                 lineHeight: 'var(--lh-relaxed)',
                  wordBreak: 'break-word',
-                 width: isClosingCard ? '100%' : 'auto',
-                 animation: 'messageIn 0.2s ease-out forwards',
+                 width: isClosingCard ? '100%' : (isUser ? 'auto' : '100%'),
+                 animation: 'messageIn var(--duration-normal) var(--ease-out) forwards',
                  opacity: 0,
-                 padding: isUser ? '12px 16px' : '14px 18px',
-                 borderRadius: isUser ? '16px 16px 2px 16px' : '12px 16px 16px 16px',
-                 boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
+                 padding: isUser ? '12px 18px' : '8px 0 8px 16px',
+                 borderRadius: isUser ? '20px' : '0',
+                 boxShadow: isUser ? 'var(--shadow-sm)' : 'none',
+                 fontFamily: 'var(--font-sans)'
                }}>
                 {isClosingCard ? (
                   <SessionClosingCard
@@ -565,8 +567,9 @@ export const GlobalChat = memo(function GlobalChat() {
       {/* Input Area */}
       <div style={{
         padding: '16px 20px',
-        borderTop: '1px solid var(--border-subtle)',
-        background: 'var(--bg-secondary)',
+        background: 'linear-gradient(to top, var(--bg-root) 60%, transparent)',
+        position: 'relative',
+        zIndex: 10,
       }}>
         <ChatInput
           value={inputMessage}

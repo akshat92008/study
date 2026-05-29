@@ -12,54 +12,55 @@
 
 /* --- DESIGN TOKENS --- */
 :root {
-  /* Surfaces */
-  --bg-root: hsl(225, 25%, 6%);
-  --bg-primary: hsl(225, 20%, 9%);
-  --bg-secondary: hsl(225, 18%, 12%);
-  --bg-tertiary: hsl(225, 16%, 16%);
-  --bg-elevated: hsl(225, 20%, 14%);
-  --bg-hover: hsl(225, 18%, 18%);
-  --bg-active: hsl(225, 18%, 22%);
-  --bg-glass: hsla(225, 20%, 12%, 0.7);
+  /* Surfaces - Deep Obsidian/Slate */
+  --bg-root: #0A0B0E;
+  --bg-primary: #111216;
+  --bg-secondary: #16181D;
+  --bg-tertiary: #1C1E24;
+  --bg-elevated: #16181D;
+  --bg-hover: #1C1E24;
+  --bg-active: rgba(124, 102, 255, 0.1);
+  --bg-glass: rgba(17, 18, 22, 0.65);
 
-  /* Borders */
-  --border-subtle: hsl(225, 15%, 18%);
-  --border-default: hsl(225, 15%, 22%);
-  --border-strong: hsl(225, 15%, 30%);
-  --border-focus: hsl(220, 90%, 56%);
+  /* Borders - Hairline, low contrast */
+  --border-subtle: rgba(255, 255, 255, 0.04);
+  --border-default: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.12);
+  --border-focus: rgba(124, 102, 255, 0.4);
 
   /* Text */
-  --text-primary: hsl(220, 20%, 95%);
-  --text-secondary: hsl(220, 15%, 65%);
-  --text-tertiary: hsl(220, 10%, 45%);
-  --text-inverse: hsl(225, 25%, 6%);
+  --text-primary: #EDEDF0;
+  --text-secondary: #A1A1AA;
+  --text-tertiary: #71717A;
+  --text-inverse: #0A0B0E;
 
-  /* Accent Colors */
-  --accent-blue: hsl(220, 90%, 56%);
-  --accent-blue-dim: hsl(220, 60%, 30%);
-  --accent-blue-glow: hsla(220, 90%, 56%, 0.15);
-  --accent-purple: hsl(265, 80%, 60%);
-  --accent-purple-dim: hsl(265, 50%, 30%);
-  --accent-cyan: hsl(185, 80%, 50%);
-  --accent-cyan-dim: hsl(185, 50%, 25%);
+  /* Accent Colors - Smart Violet & Teal */
+  --accent-blue: #7C66FF; /* Using violet for main accent */
+  --accent-blue-dim: rgba(124, 102, 255, 0.2);
+  --accent-blue-glow: rgba(124, 102, 255, 0.15);
+  --accent-purple: #9D88FF;
+  --accent-purple-dim: rgba(157, 136, 255, 0.2);
+  --accent-cyan: #4CB5AE;
+  --accent-cyan-dim: rgba(76, 181, 174, 0.2);
 
   /* Semantic Colors */
-  --success: hsl(142, 71%, 45%);
-  --success-dim: hsl(142, 40%, 20%);
-  --success-glow: hsla(142, 71%, 45%, 0.12);
-  --warning: hsl(38, 92%, 50%);
-  --warning-dim: hsl(38, 50%, 22%);
-  --warning-glow: hsla(38, 92%, 50%, 0.12);
-  --danger: hsl(0, 84%, 60%);
-  --danger-dim: hsl(0, 50%, 22%);
-  --danger-glow: hsla(0, 84%, 60%, 0.12);
-  --info: hsl(199, 89%, 48%);
-  --info-dim: hsl(199, 50%, 22%);
-  --info-glow: hsla(199, 89%, 48%, 0.12);
+  --success: #4CB5AE;
+  --success-dim: rgba(76, 181, 174, 0.2);
+  --success-glow: rgba(76, 181, 174, 0.15);
+  --warning: #F59E0B;
+  --warning-dim: rgba(245, 158, 11, 0.2);
+  --warning-glow: rgba(245, 158, 11, 0.15);
+  --danger: #EF4444;
+  --danger-dim: rgba(239, 68, 68, 0.2);
+  --danger-glow: rgba(239, 68, 68, 0.15);
+  --info: #3B82F6;
+  --info-dim: rgba(59, 130, 246, 0.2);
+  --info-glow: rgba(59, 130, 246, 0.15);
 
   /* Typography */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-display: 'Inter Display', 'Inter', -apple-system, sans-serif;
+  --font-mono: 'Berkeley Mono', 'JetBrains Mono', 'Fira Code', monospace;
   --fs-xs: 0.6875rem;    /* 11px */
   --fs-sm: 0.75rem;      /* 12px */
   --fs-base: 0.875rem;   /* 14px */
@@ -76,10 +77,10 @@
   --fw-black: 900;
   --lh-tight: 1.2;
   --lh-normal: 1.5;
-  --lh-relaxed: 1.7;
+  --lh-relaxed: 1.65;
   --ls-tight: -0.02em;
-  --ls-wide: 0.05em;
-  --ls-ultra: 0.12em;
+  --ls-wide: 0.02em;
+  --ls-ultra: 0.08em;
 
   /* Spacing */
   --sp-1: 0.25rem;  --sp-2: 0.5rem;  --sp-3: 0.75rem;
@@ -94,20 +95,20 @@
   --radius-xl: 20px;
   --radius-full: 9999px;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 3px hsla(0,0%,0%,0.3);
-  --shadow-md: 0 4px 12px hsla(0,0%,0%,0.4);
-  --shadow-lg: 0 8px 30px hsla(0,0%,0%,0.5);
-  --shadow-glow-blue: 0 0 20px hsla(220,90%,56%,0.2);
-  --shadow-glow-purple: 0 0 20px hsla(265,80%,60%,0.2);
-  --shadow-glow-success: 0 0 20px hsla(142,71%,45%,0.15);
+  /* Shadows - Ambient Lighting */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --shadow-glow-blue: 0 0 40px rgba(124, 102, 255, 0.08);
+  --shadow-glow-purple: 0 0 40px rgba(157, 136, 255, 0.08);
+  --shadow-glow-success: 0 0 40px rgba(76, 181, 174, 0.1);
 
   /* Transitions */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --duration-fast: 80ms;
-  --duration-normal: 120ms;
-  --duration-slow: 200ms;
+  --duration-fast: 100ms;
+  --duration-normal: 150ms;
+  --duration-slow: 250ms;
 
   /* Layout */
   --sidebar-width: 260px;
@@ -288,6 +289,7 @@ button:active:not(:disabled) {
 /* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 768px) {
   :root {
+    --bg-root: #000000;
     --sidebar-width: 0px;
     --sp-6: 1rem;
     --sp-12: 1.5rem;
@@ -356,7 +358,8 @@ button:active:not(:disabled) {
   bottom: 0;
   width: 260px;
   background: var(--bg-primary);
-  border-right: 1px solid var(--border-subtle);
+  border-right: none;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
   z-index: 100;
