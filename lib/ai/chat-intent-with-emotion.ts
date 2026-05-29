@@ -1,4 +1,4 @@
-import { routeTextGeneration } from '@/lib/ai/router';
+import { routeJSONGeneration } from '@/lib/ai/router';
 import { logger } from '@/lib/utils/logger';
 import { ChatIntent, IntentResult } from './chat-intent';
 
@@ -85,16 +85,11 @@ Emotion rules:
 - Pure academic questions → neutral`;
 
   try {
-    const raw = await routeTextGeneration(
-      'json',
+    const parsed = await routeJSONGeneration<any>(
       'You are a classification model. Return only valid JSON. No markdown.',
       prompt,
-      0.1,
-      256
+      0.1
     );
-
-    const cleaned = raw.replace(/```json|```/g, '').trim();
-    const parsed = JSON.parse(cleaned);
 
     const emotion = VALID_EMOTIONS.has(parsed.emotion) ? parsed.emotion : 'neutral';
     const confidence = typeof parsed.confidence === 'number'

@@ -1,7 +1,7 @@
-import { createClient } from '@/lib/supabase/server';
+import { createAdminClient } from '@/lib/supabase/admin';
 import { logger } from '@/lib/utils/logger';
 
-const MAX_RETRIES = 3;
+const MAX_RETRIES = 5;
 const BASE_DELAY_MS = 1000;
 
 /**
@@ -13,7 +13,7 @@ export async function retryFailedEvents(userId?: string): Promise<{
   succeeded: number;
   permanentlyFailed: number;
 }> {
-  const supabase = await createClient();
+  const supabase = createAdminClient();
 
   // Fetch failed events with retries remaining
   let query = supabase
@@ -118,7 +118,7 @@ export async function retryFailedEvents(userId?: string): Promise<{
  * Use this in /api/ai/health to surface dead events to ops.
  */
 export async function getDeadLetterCount(userId?: string): Promise<number> {
-  const supabase = await createClient();
+  const supabase = createAdminClient();
   let query = supabase
     .from('student_events')
     .select('id', { count: 'exact', head: true })
@@ -142,7 +142,6 @@ const STALE_CONSUMER_THRESHOLD_MS = 15 * 60 * 1000; // 15 minutes
  * indefinitely until they're detected here.
  */
 export async function recoverStaleConsumers(): Promise<{ recovered: number }> {
-  const { createAdminClient } = await import('@/lib/supabase/admin');
   const supabase = createAdminClient();
   const staleThreshold = new Date(Date.now() - STALE_CONSUMER_THRESHOLD_MS).toISOString();
 

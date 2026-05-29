@@ -236,9 +236,20 @@ export async function GET(req: NextRequest) {
 
     if (error) throw error;
 
-    const userIds = (users || []).map((u: any) => u.id);
     const today = new Date().toISOString().split('T')[0];
-    logger.info(`Cron: Starting daily synthesis for ${userIds.length} users`, { today });
+
+    // Catch-up mechanism: filter out users who already have a performance snapshot today
+    const { data: todaySnapshots, error: snapErr } = await supabase
+      .from('performance_snapshots')
+      .select('user_id')
+      .eq('date', today);
+
+    if (snapErr) throw snapErr;
+
+    const completedUserIds = new Set((todaySnapshots || []).map((s: any) => s.user_id));
+    const userIds = (users || []).map((u: any) => u.id).filter((id: string) => !completedUserIds.has(id));
+    
+    logger.info(`Cron: Starting daily synthesis for ${userIds.length} users (skipped ${completedUserIds.size} already processed)`, { today });
 
     // Retry failed events first (bounded — if it exceeds budget, skip gracefully)
     if (!isTimeBudgetExceeded()) {

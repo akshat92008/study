@@ -71,6 +71,9 @@ async function callOpenAICompatible(
 
   if (!stream) {
     const data = await response.json();
+    if (data.usage) {
+      Metrics.tokenUsage(model, data.usage.prompt_tokens || 0, data.usage.completion_tokens || 0);
+    }
     return data.choices?.[0]?.message?.content || '';
   }
 
@@ -134,6 +137,7 @@ async function callCloudflare(
 
   if (!stream) {
     const data = await response.json();
+    // Cloudflare usage is typically inside result or meta if available, otherwise estimate
     return data.result?.response || '';
   }
 
@@ -215,6 +219,9 @@ async function callGoogle(
 
   if (!stream) {
     const data = await response.json();
+    if (data.usageMetadata) {
+      Metrics.tokenUsage(model, data.usageMetadata.promptTokenCount || 0, data.usageMetadata.candidatesTokenCount || 0);
+    }
     return data.candidates?.[0]?.content?.parts?.[0]?.text || '';
   }
 

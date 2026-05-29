@@ -20,8 +20,8 @@ alter table material_chunks enable row level security;
 alter table student_models enable row level security;
 alter table learner_states enable row level security;
 alter table performance_snapshots enable row level security;
-alter table events enable row level security;
-alter table event_consumers enable row level security;
+alter table student_events enable row level security;
+alter table event_consumer_tracking enable row level security;
 
 -- ============================================================================
 -- GENERIC USER-OWNED POLICY GENERATOR
@@ -34,7 +34,7 @@ declare
     'mock_autopsies','mistakes','study_tasks','study_goals',
     'chat_sessions','chat_messages','chat_memory',
     'materials','material_chunks',
-    'student_models','learner_states','performance_snapshots','events'
+    'student_models','learner_states','performance_snapshots','student_events'
   ];
 begin
   foreach t in array user_tables loop
@@ -66,14 +66,14 @@ begin
 end$$;
 
 -- ============================================================================
--- EVENT_CONSUMERS — special policy (joins via events)
+-- EVENT_CONSUMER_TRACKING — special policy (joins via student_events)
 -- ============================================================================
-create policy "event_consumers_select_own" on event_consumers
+create policy "event_consumer_tracking_select_own" on event_consumer_tracking
   for select using (
     exists (
-      select 1 from events
-      where events.id = event_consumers.event_id
-      and events.user_id = auth.uid()
+      select 1 from student_events
+      where student_events.id = event_consumer_tracking.event_id
+      and student_events.user_id = auth.uid()
     )
   );
 

@@ -146,31 +146,33 @@ STUDENT STATE: OVERWHELMED — COGNITIVE LOAD CRITICAL
   return adaptations[emotionalState] || adaptations['neutral'];
 }
 
-export function getMINDSystemPrompt(ctx: MINDContext, semanticMemories: string[] = []): string {
+export function getMINDSystemPrompt(ctx: MINDContext, semanticMemories: string[] = [], intent?: string): string {
+  const isGeneralChat = intent === 'GENERAL_CHAT';
+  
   const daysToExam = ctx.profile.examDate
     ? Math.ceil((new Date(ctx.profile.examDate).getTime() - Date.now()) / (1000 * 60 * 60 * 24))
     : null;
 
-  const weakList = ctx.weakConcepts.slice(0, 5).map(c => `${c.name} (${c.mastery})`).join(', ') || 'None identified yet';
-  const mistakeList = ctx.recentMistakes.slice(0, 3).map(m => `${m.chapter} — ${m.category}`).join('; ') || 'None recorded';
+  const weakList = ctx.weakConcepts.slice(0, 3).map(c => `${c.name} (${c.mastery})`).join(', ') || 'None identified yet'; // Limit to 3 to save tokens
+  const mistakeList = ctx.recentMistakes.slice(0, 2).map(m => `${m.chapter} — ${m.category}`).join('; ') || 'None recorded'; // Limit to 2
   const emotionalBlock = getEmotionalAdaptationBlock(ctx.emotionalState);
   
   const effectiveLearningStyle = getEffectiveLearningStyle(ctx.studentModel, ctx.profile.learningStyle);
   const learningStyleBlock = getLearningStyleBlock(effectiveLearningStyle);
 
-  const behaviouralSection = ctx.studentModel?.behavioral_traps?.length
+  const behaviouralSection = (!isGeneralChat && ctx.studentModel?.behavioral_traps?.length)
     ? `\n## KNOWN BEHAVIORAL TRAPS\nThis student historically: ${ctx.studentModel.behavioral_traps.join('; ')}. Gently preempt these patterns when relevant.`
     : '';
 
-  const rootGapSection = ctx.rootGapChains.length > 0
+  const rootGapSection = (!isGeneralChat && ctx.rootGapChains.length > 0)
     ? `\nUNDERLYING KNOWLEDGE GAPS (Root cause of confusion):\n${ctx.rootGapChains.map(c => `${c.rootConcept} → [${c.gapChain.join(' → ')}]`).join('\n')}\n`
     : '';
 
-  const memoriesSection = semanticMemories.length > 0
+  const memoriesSection = (!isGeneralChat && semanticMemories.length > 0)
     ? `\nCROSS-SESSION MEMORY (things this student said in past conversations):\n${semanticMemories.map((m, i) => `${i + 1}. ${m}`).join('\n')}\nReference these naturally if relevant — never robotically.\n`
     : '';
 
-  const ragSection = buildRagSection(ctx.ragChunks);
+  const ragSection = !isGeneralChat ? buildRagSection(ctx.ragChunks) : '';
 
   return `You are MIND — the AI core of Cognition OS. You are the most capable study companion ever built. You know this specific student completely.
 

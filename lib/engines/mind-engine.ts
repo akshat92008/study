@@ -69,13 +69,13 @@ export async function getMINDContext(userId: string, message?: string): Promise<
       .filter(Boolean) as string[];
 
     let ragChunks: { content: string; similarity: number; sourceTitle: string }[] = [];
-    if (message) {
+    if (message && message.trim().length > 15) {
       try {
         const ragEngine = new RAGEngine(supabase);
         ragChunks = await ragEngine.search({
           userId,
           query: message,
-          limit: 4,
+          limit: 2, // reduced from 4 to save tokens
           minSimilarity: 0.72, // only include high-confidence chunks
         });
       } catch (err) {

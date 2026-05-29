@@ -1,15 +1,32 @@
 import { getEmbedding } from '@/lib/ai/gemini';
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/utils/logger';
+import { routeJSONGeneration } from '@/lib/ai/router';
 
 const MAX_MEMORY_RESULTS = 8;
 
 export class ChatMemoryService {
   async storeMessageInMemory(userId: string, content: string): Promise<void> {
     const trimmed = content.trim();
-    if (!trimmed) return;
+    if (trimmed.length < 15) return; // Immediate drop for short conversational noise
 
     try {
+      // 1. Importance Filtering
+      const checkPrompt = `Evaluate if this user message contains important learning insights, study behaviors, emotional states, specific struggles, or preferences worth remembering long-term.
+Message: "${trimmed}"
+Return ONLY JSON: { "importance": number (0-10) }`;
+
+      const evalResult = await routeJSONGeneration<{ importance: number }>(
+        'You are a strict AI memory filter. Only score >= 7 if it contains specific long-term value. Generic statements score 0.',
+        checkPrompt,
+        0.1
+      ).catch(() => ({ importance: 5 }));
+
+      if (evalResult.importance < 7) {
+        logger.debug('Skipping memory storage, low importance', { score: evalResult.importance, userId });
+        return;
+      }
+
       const embedding = await getEmbedding(trimmed);
       if (!embedding || !Array.isArray(embedding) || embedding.length === 0 || typeof embedding[0] !== 'number') {
         logger.warn('Skipping memory storage, empty embedding returned', { userId });

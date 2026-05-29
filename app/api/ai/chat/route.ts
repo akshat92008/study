@@ -23,6 +23,8 @@ import { ChatMemoryService } from '@/lib/services/chatMemoryService';
 import { buildConversationMessages } from '@/lib/ai/chat-intent';
 import { classifyMessageCombined } from '@/lib/ai/chat-intent-with-emotion';
 import { validateBase64Payload } from '@/lib/middleware/validateUpload';
+import { processChatSideEffects } from '@/lib/ai/chat-side-effects';
+import { checkSemanticCache, setSemanticCache, isCacheable } from '@/lib/ai/responseCache';
 
 const encoder = new TextEncoder();
 
@@ -55,8 +57,8 @@ export async function POST(req: NextRequest) {
 
   const [mindContext, semanticMemories] = await Promise.all([
     getMINDContext(user.id, message),
-    message
-      ? new ChatMemoryService().searchMemory(user.id, message, 3).catch((err) => {
+    (message && message.trim().length > 15)
+      ? new ChatMemoryService().searchMemory(user.id, message, 2).catch((err) => {
           logger.error('CRITICAL: Semantic memory failed. match_chat_memory RPC may be missing.', err);
           return [] as string[];
         })
@@ -65,7 +67,7 @@ export async function POST(req: NextRequest) {
 
   // fallbackConceptId removed — was incorrectly updating ATLAS on every message.
   // Concept state updates only happen inside TUTOR_SESSION branch below.
-  const systemPrompt = getMINDSystemPrompt(mindContext, semanticMemories);
+  let systemPrompt = getMINDSystemPrompt(mindContext, semanticMemories, 'GENERAL_CHAT');
 
   if (imageBase64 && imageMimeType) {
     const stream = new ReadableStream({
@@ -124,11 +126,16 @@ export async function POST(req: NextRequest) {
     return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
   }
 
+  const recentHistory = (history || []).slice(-6); // Hard budget on history length
+  
   const { intent: detectedIntent, emotion, confidence } = await classifyMessageCombined(
     message || '',
-    (history || []).slice(-2).map((m: any) => m.content).join(' '),
+    recentHistory.slice(-2).map((m: any) => m.content).join(' '),
     mindContext.profile.examType
   );
+  
+  // Re-generate system prompt with the proper intent to load modules
+  systemPrompt = getMINDSystemPrompt(mindContext, semanticMemories, detectedIntent.intent);
 
   // Orchestrate using the already-classified intent — no second LLM call.
   const orchestratorResult = orchestrateFromIntent(
@@ -330,7 +337,7 @@ Rules:
 - End with one motivating line about what hitting this plan will do for their score.
 - IMPORTANT: Do NOT wrap the <artifact> tags in markdown code blocks (like \`\`\`xml). Output the raw <artifact> tags directly.`;
 
-          const conversationMessages = buildConversationMessages(history || [], message || '');
+          const conversationMessages = buildConversationMessages(recentHistory, message || '');
           for await (const chunk of routeStreamGeneration(artifactSystemPrompt, conversationMessages, 0.6)) {
             controller.enqueue(encoder.encode(chunk));
             fullResponse += chunk;
@@ -453,10 +460,21 @@ Return ONLY valid JSON matching this schema:
 
           const tutorSystemPrompt = `${systemPrompt}\n\nACTIVE TUTOR SESSION:\nTopic: ${subject} > ${topic}\nPast Mistakes Here: ${mistakes?.map((m: any) => m.ai_analysis).join('; ') || 'None'}${pastSessionCtx}\n\nYou are now in active teaching mode for this topic. Apply RULE 3 (Learning Mode) — Socratic method, minimum 6-10 exchanges.`;
 
-          const conversationMessages = buildConversationMessages(history || [], message || '');
-          for await (const chunk of routeStreamGeneration(tutorSystemPrompt, conversationMessages, 0.75)) {
-            controller.enqueue(encoder.encode(chunk));
-            fullResponse += chunk;
+          const conversationMessages = buildConversationMessages(recentHistory, message || '');
+          const canCache = isCacheable({ intent: intent.intent, hasUserContext: false });
+          const cached = canCache && message ? await checkSemanticCache(message) : null;
+
+          if (cached) {
+            controller.enqueue(encoder.encode(cached));
+            fullResponse = cached;
+          } else {
+            for await (const chunk of routeStreamGeneration(tutorSystemPrompt, conversationMessages, 0.75)) {
+              controller.enqueue(encoder.encode(chunk));
+              fullResponse += chunk;
+            }
+            if (canCache && message) {
+              setSemanticCache(message, fullResponse).catch(err => logger.error('Cache save failed', err));
+            }
           }
 
           let analysis = { understood: false, gapFound: null as string | null, gapAnswer: null as string | null, summary: '' };
@@ -476,7 +494,7 @@ Return ONLY valid JSON matching this schema:
             };
           }
         } else {
-          const conversationMessages = buildConversationMessages(history || [], message || '');
+          const conversationMessages = buildConversationMessages(recentHistory, message || '');
           for await (const chunk of routeStreamGeneration(systemPrompt, conversationMessages, 0.7)) {
             controller.enqueue(encoder.encode(chunk));
             fullResponse += chunk;
@@ -485,114 +503,18 @@ Return ONLY valid JSON matching this schema:
 
         if (message) {
           after(async () => {
-            try {
-              const { data: existingSession } = await supabase
-                .from('chat_sessions').select('id').eq('id', sessionId).maybeSingle();
-
-              let isNewSession = false;
-
-              if (!existingSession) {
-                await supabase.from('chat_sessions').insert({
-                  id: sessionId, user_id: user.id,
-                  session_type: 'global', title: 'Cognition OS Main Thread'
-                });
-                // Create a study session for focused tracking
-                await supabase.from('study_sessions').insert({
-                  user_id: user.id,
-                  started_at: new Date().toISOString(),
-                  focus_score: null,
-                  duration_minutes: null
-                });
-                isNewSession = true;
-              }
-
-              // Remove metadata from response stored in database for cleaner history retrieval
-              const strippedResponse = fullResponse.replace(/\n\n===METADATA===\n[\s\S]*/g, '').trim();
-
-              await supabase.from('chat_messages').insert([
-                { session_id: sessionId, user_id: user.id, role: 'user', content: message },
-                // Artificial slice removed to prevent artifact tags being truncated.
-                // A truncated artifact (missing </artifact>) breaks the parseArtifacts regex on page reload,
-                // causing raw XML to show instead of the rendered card.
-                { session_id: sessionId, user_id: user.id, role: 'assistant', content: strippedResponse },
-              ]);
-
-                // Message count query runs every turn, but is a lightweight COUNT query.
-                // syncStudentModel itself is the expensive call — we guard it tightly.
-                const { count: totalMessageCount } = await supabase
-                  .from('chat_messages')
-                  .select('*', { count: 'exact', head: true })
-                  .eq('user_id', user.id)
-                  .eq('role', 'user');
-
-                if (totalMessageCount !== null) {
-                  const isEarlyFingerprint = [1, 5, 10].includes(totalMessageCount);
-                  const isRoutineRefresh = totalMessageCount > 10 && totalMessageCount % 25 === 0;
-
-                  if (isEarlyFingerprint || isRoutineRefresh) {
-                    syncStudentModel(user.id, isEarlyFingerprint).catch(() => {});
-                  }
-                }
-
-              // Embedding stored via ChatMemoryService (duplicate removed)
-
-              // Semantic memory storage (store only user message to avoid duplicate embeddings)
-              const memSvc = new ChatMemoryService();
-              await memSvc.storeMessageInMemory(user.id, message).catch(() => {});
-              
-              // Save emotion update in after() without another LLM call:
-              if (emotion !== 'neutral') {
-                const { data: profile } = await supabase
-                  .from('profiles')
-                  .select('emotional_state')
-                  .eq('id', user.id)
-                  .single();
-                if (profile?.emotional_state !== emotion) {
-                  await supabase
-                    .from('profiles')
-                    .update({ emotional_state: emotion })
-                    .eq('id', user.id);
-                }
-              }
-
-              // Only fire if we have a real concept context — not for generic messages
-              const sessionSubject = (mindContext as any)?.currentTopic?.subject || mindContext?.weakConcepts?.[0]?.subject;
-              const sessionChapter = (mindContext as any)?.currentTopic?.chapter || mindContext?.weakConcepts?.[0]?.chapter;
-
-              if (sessionSubject && sessionChapter && sessionSubject !== 'General') {
-                const messageCount = history?.length || 1;
-                const estimatedMinutes = Math.max(5, Math.round(messageCount * 1.5));
-
-                try {
-                  await EventDispatcher.publish({
-                    user_id: user.id,
-                    type: 'MIND_TUTOR_COMPLETED',
-                    data: {
-                      conceptId: null,
-                      subject: sessionSubject,
-                      chapter: sessionChapter,
-                      durationMinutes: estimatedMinutes,
-                      messageCount,
-                      sessionType: (mindContext as any)?.sessionType || 'chat',
-                      history: (history || []).slice(-6),
-                      latestMessage: message,
-                      latestResponse: fullResponse,
-                      isSessionComplete: sessionTurnsCount ? (sessionTurnsCount >= 6) : (history && history.length >= 10),
-                      intent: intent.intent
-                    },
-                    metadata: { source: 'chat' },
-                    idempotency_key: `session:${user.id}:${sessionSubject}:${sessionChapter}:${new Date().toISOString().slice(0, 16)}`,
-                  });
-                } catch (err) {
-                  logger.warn('STUDY_SESSION_COMPLETED event failed (non-fatal)', err);
-                }
-              }
-
-              // Extraction moved up to CREATE_ARTIFACT intent block
-            } catch (err) {
-              logger.warn('Chat persistence failed', err);
-            }
-            // fallback concept state update removed
+            await processChatSideEffects({
+              supabase,
+              userId: user.id,
+              sessionId,
+              message,
+              fullResponse,
+              emotion,
+              history: history || [],
+              sessionTurnsCount,
+              mindContext,
+              intent
+            });
           });
         }
 

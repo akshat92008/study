@@ -104,6 +104,24 @@ export const Metrics = {
   },
 
   /**
+   * Track token usage.
+   */
+  tokenUsage: (model: string, promptTokens: number, completionTokens: number): void => {
+    try {
+      if (isSentryActive()) {
+        Sentry.addBreadcrumb({
+          category: 'token.usage',
+          message: `${model}: ${promptTokens} prompt / ${completionTokens} completion`,
+          level: 'info',
+          data: { model, promptTokens, completionTokens },
+        });
+      }
+    } catch {
+      // Metrics must never throw
+    }
+  },
+
+  /**
    * Track rate limit hits — these are silent budget exhaustion signals in production.
    */
   rateLimitHit: (endpoint: string, userId: string): void => {
