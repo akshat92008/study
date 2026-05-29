@@ -53,7 +53,7 @@ if (cachedCard && !cacheErr) {
       profileRes, goalRes, weakConceptsRes, overdueCardsRes,
       recentMistakesRes, todayTasksRes, sessionCountRes, studentModelRes
     ] = await Promise.all([
-      supabase.from('profiles').select('full_name, exam_type, exam_date, streak_days').eq('id', user.id).single(),
+      supabase.from('profiles').select('full_name, exam_type, target_date, streak_days').eq('id', user.id).single(),
       supabase.from('learning_goals').select('*').eq('user_id', user.id).eq('status', 'active').limit(1).maybeSingle(),
       supabase.from('concepts').select('name, subject, chapter, mastery').eq('user_id', user.id).in('mastery', ['not_started', 'exposed', 'developing']).order('mastery').limit(5),
       supabase.from('revision_cards').select('id', { count: 'exact', head: true }).eq('user_id', user.id).lte('due', new Date().toISOString()),
@@ -81,8 +81,8 @@ if (cachedCard && !cacheErr) {
     const { count: masteredConcepts } = await supabase.from('concepts').select('*', { count: 'exact', head: true }).eq('user_id', user.id).in('mastery', ['mastered', 'automated']);
     const masteryPercent = totalConcepts ? Math.round(((masteredConcepts || 0) / totalConcepts) * 100) : 0;
 
-    const daysToExam = profile?.exam_date
-      ? Math.ceil((new Date(profile.exam_date).getTime() - Date.now()) / (1000 * 60 * 60 * 24))
+    const daysToExam = profile?.target_date
+      ? Math.ceil((new Date(profile.target_date).getTime() - Date.now()) / (1000 * 60 * 60 * 24))
       : null;
 
     const streakDays = profile?.streak_days || 0;

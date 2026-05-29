@@ -1,5 +1,6 @@
 import { createAdminClient } from '@/lib/supabase/admin';
 import { logger } from '@/lib/utils/logger';
+import { EVENT_CONSUMERS } from '@/lib/events/orchestrator';
 
 const MAX_RETRIES = 5;
 const BASE_DELAY_MS = 1000;
@@ -179,5 +180,51 @@ export async function recoverStaleConsumers(): Promise<{ recovered: number }> {
     });
   }
 
+  return { recovered };
+}
+
+/**
+ * Finds events that were successfully written to `student_events` but failed
+ * to write to `event_consumer_tracking` (orphans) and registers them for processing.
+ */
+export async function recoverOrphanedEvents(): Promise<{ recovered: number }> {
+  const supabase = createAdminClient();
+  const staleThreshold = new Date(Date.now() - STALE_CONSUMER_THRESHOLD_MS).toISOString();
+
+  const { data: events, error } = await supabase
+    .from('student_events')
+    .select('id, type')
+    .in('status', ['pending', 'processing'])
+    .lt('created_at', staleThreshold)
+    .limit(100);
+
+  if (error || !events?.length) return { recovered: 0 };
+
+  let recovered = 0;
+  for (const ev of events) {
+    const { count, error: countErr } = await supabase
+      .from('event_consumer_tracking')
+      .select('event_id', { count: 'exact', head: true })
+      .eq('event_id', ev.id);
+      
+    if (countErr) continue;
+    
+    if (count === 0) {
+      try {
+        const trackingRows = EVENT_CONSUMERS.map((consumer) => ({
+          event_id: ev.id,
+          consumer_name: consumer,
+          status: 'pending',
+        }));
+        const { error: insertErr } = await supabase.from('event_consumer_tracking').insert(trackingRows);
+        if (!insertErr) {
+          recovered++;
+          logger.info('Recovered orphaned event', { eventId: ev.id, type: ev.type });
+        }
+      } catch (err) {
+        logger.error('Failed to recover orphaned event', { eventId: ev.id, err });
+      }
+    }
+  }
   return { recovered };
 }

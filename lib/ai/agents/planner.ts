@@ -21,7 +21,7 @@ export async function generateDailyPlan(userId: string, date: string) {
     supabase.from('study_tasks').select('*').eq('user_id', userId).eq('scheduled_date', date),
     supabase.from('mistakes').select('subject, chapter, category, marks_lost').eq('user_id', userId).order('created_at', { ascending: false }).limit(10),
     supabase.from('revision_cards').select('id').eq('user_id', userId).lte('due', new Date().toISOString()),
-    supabase.from('performance_snapshots').select('accuracy, focus_score').eq('user_id', userId).order('date', { ascending: false }).limit(3),
+    supabase.from('performance_snapshots').select('metrics').eq('user_id', userId).order('snapshot_date', { ascending: false }).limit(3),
     
     // Fetch carryover tasks from the last 3 days
     supabase.from('study_tasks').select('title, subject, chapter, type').eq('user_id', userId).eq('is_completed', false)
@@ -51,7 +51,7 @@ export async function generateDailyPlan(userId: string, date: string) {
   
   // Calculate average recent focus to determine learning velocity
   const snapshots = snapshotsRes.data || [];
-  const avgFocus = snapshots.length > 0 ? snapshots.reduce((s, snap) => s + (snap.focus_score || 50), 0) / snapshots.length : 50;
+  const avgFocus = snapshots.length > 0 ? snapshots.reduce((s, snap) => s + (snap.metrics?.focus_score || 50), 0) / snapshots.length : 50;
 
   // Adaptive Workload Calculation
   let baseHours = profile?.study_hours_per_day || 8;
@@ -214,12 +214,12 @@ export async function generateMorningBriefing(userId: string) {
   
   const { data: profile } = await supabase
     .from('profiles')
-    .select('exam_type, target_year, exam_date, streak_days, study_hours_per_day, emotional_state')
+    .select('exam_type, target_year, target_date, streak_days, study_hours_per_day, emotional_state')
     .eq('id', userId)
     .single();
 
   const targetYear = profile?.target_year || new Date().getFullYear() + 1;
-  const examDate = profile?.exam_date ? new Date(profile.exam_date) : new Date(`${targetYear}-05-01T00:00:00Z`);
+  const examDate = profile?.target_date ? new Date(profile.target_date) : new Date(`${targetYear}-05-01T00:00:00Z`);
   const daysRemaining = Math.max(0, Math.ceil((examDate.getTime() - Date.now()) / (1000 * 60 * 60 * 24)));
 
   // Yesterday's task completion

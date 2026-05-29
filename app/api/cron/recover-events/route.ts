@@ -3,7 +3,7 @@
 // Recovers consumers dropped by after() and retries failed events.
 import { NextRequest } from 'next/server';
 import { validateCronRequest } from '@/lib/middleware/cronAuth';
-import { recoverStaleConsumers } from '@/lib/events/retry';
+import { recoverStaleConsumers, recoverOrphanedEvents } from '@/lib/events/retry';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { logger } from '@/lib/utils/logger';
@@ -18,9 +18,14 @@ export async function GET(req: NextRequest) {
     const supabase = createAdminClient();
 
     // 1. Recover stale consumers (dropped by after())
-    const { recovered } = await recoverStaleConsumers();
+    const { recovered: staleRecovered } = await recoverStaleConsumers();
 
-    // 2. Find pending consumers whose events need re-dispatch
+    // 2. Recover orphaned events (no consumers registered)
+    const { recovered: orphanedRecovered } = await recoverOrphanedEvents();
+    
+    const recovered = staleRecovered + orphanedRecovered;
+
+    // 3. Find pending consumers whose events need re-dispatch
     const { data: pendingConsumers } = await supabase
       .from('event_consumer_tracking')
       .select('event_id')

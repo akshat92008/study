@@ -172,7 +172,7 @@ export class LearningStateEngine {
     // 3. Card Recall Rate (rating > 1 in last 30 days)
     const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
     const { data: logs } = await supabase
-      .from('review_logs')
+      .from('revision_logs')
       .select('rating')
       .eq('user_id', userId)
       .gte('created_at', thirtyDaysAgo);
@@ -263,7 +263,7 @@ export class LearningStateEngine {
 
     // Fetch review response times
     const { data: reviewLogs } = await supabase
-      .from('review_logs')
+      .from('revision_logs')
       .select('card_id, response_time_ms')
       .eq('user_id', userId);
 

@@ -199,7 +199,7 @@ export async function reviewCard(cardId: string, rating: 1 | 2 | 3 | 4, response
   }).eq('id', cardId);
 
   // 4. Log Review Telemetry
-  await supabase.from('review_logs').insert({
+  await supabase.from('revision_logs').insert({
     user_id: row.user_id,
     card_id: cardId,
     rating,
@@ -257,23 +257,29 @@ export async function reviewCard(cardId: string, rating: 1 | 2 | 3 | 4, response
   // 6. Update Daily Performance Telemetry (Accuracy tracking)
   const today = now.toISOString().split('T')[0];
   const { data: snapshot } = await supabase.from('performance_snapshots')
-    .select('id, questions_attempted, questions_correct').eq('user_id', row.user_id).eq('date', today).single();
+    .select('id, metrics').eq('user_id', row.user_id).eq('snapshot_date', today).single();
 
   const isCorrect = rating > 1; // 2, 3, 4 count as correct recall
   
   if (snapshot) {
+    const metrics = snapshot.metrics || {};
     await supabase.from('performance_snapshots').update({
-      questions_attempted: snapshot.questions_attempted + 1,
-      questions_correct: snapshot.questions_correct + (isCorrect ? 1 : 0),
-      concepts_revised: snapshot.questions_attempted + 1, // rough mapping
+      metrics: {
+        ...metrics,
+        questions_attempted: (metrics.questions_attempted || 0) + 1,
+        questions_correct: (metrics.questions_correct || 0) + (isCorrect ? 1 : 0),
+        concepts_revised: (metrics.questions_attempted || 0) + 1,
+      }
     }).eq('id', snapshot.id);
   } else {
     await supabase.from('performance_snapshots').insert({
       user_id: row.user_id,
-      date: today,
-      questions_attempted: 1,
-      questions_correct: isCorrect ? 1 : 0,
-      concepts_revised: 1,
+      snapshot_date: today,
+      metrics: {
+        questions_attempted: 1,
+        questions_correct: isCorrect ? 1 : 0,
+        concepts_revised: 1,
+      }
     });
   }
 

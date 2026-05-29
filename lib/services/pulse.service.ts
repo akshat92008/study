@@ -1,5 +1,5 @@
 // services/pulse.service.ts
-// Real implementation: reads from profiles.emotional_state + review_logs for fatigue.
+// Real implementation: reads from profiles.emotional_state + revision_logs for fatigue.
 // Replaces the 12-line hardcoded stub.
 
 import { BaseService } from './base.service';
@@ -57,7 +57,7 @@ export class PulseService extends BaseService {
       // 2. Count cards reviewed in the last 2 hours (session proxy)
       const sessionStart = new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString();
       const { count: cardsReviewed } = await supabase
-        .from('review_logs')
+        .from('revision_logs')
         .select('id', { count: 'exact', head: true })
         .eq('user_id', userId)
         .gte('reviewed_at', sessionStart);

@@ -113,7 +113,7 @@ export async function completeOnboarding(
       email: user.email || '',
       exam_type: examType,
       target_year: targetYear,
-      exam_date: targetDate,
+      target_date: targetDate,
       onboarding_complete: false,
       updated_at: new Date().toISOString(),
     });
@@ -121,7 +121,7 @@ export async function completeOnboarding(
     await supabase.from('profiles').update({
       exam_type: examType,
       target_year: targetYear,
-      exam_date: targetDate,
+      target_date: targetDate,
       updated_at: new Date().toISOString(),
     }).eq('id', user.id);
   }

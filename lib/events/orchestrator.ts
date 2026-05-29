@@ -85,7 +85,12 @@ export class EventDispatcher {
     }
 
     const eventId = insertedEvent?.id ?? traceId;
-    await this.registerConsumers(eventId);
+    
+    try {
+      await this.registerConsumers(eventId);
+    } catch (regErr) {
+      logger.error('Failed to register consumers inline, orphan recovery scanner will pick it up', { eventId, error: regErr });
+    }
 
     // Run consumers directly — caller is already inside after() context
     // Do not nest after() inside after()
@@ -102,7 +107,7 @@ export class EventDispatcher {
     );
   }
 
-  private static async registerConsumers(eventId: string): Promise<void> {
+  public static async registerConsumers(eventId: string): Promise<void> {
     const supabase = createAdminClient();
     const trackingRows = EVENT_CONSUMERS.map((consumer) => ({
       event_id: eventId,

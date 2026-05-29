@@ -16,7 +16,7 @@ export async function GET() {
     // 2. Fetch Profile Context
     const { data: profile } = await supabase
       .from('profiles')
-      .select('exam_type, target_year, exam_date, streak_days, emotional_state')
+      .select('exam_type, target_year, target_date, streak_days, emotional_state')
       .eq('id', user.id)
       .single();
 
@@ -25,7 +25,7 @@ export async function GET() {
     const pulseConfig = { uiMessage: 'Stay focused on your mission.' };
 
     const targetYear = profile?.target_year || new Date().getFullYear() + 1;
-    const examDate = profile?.exam_date ? new Date(profile.exam_date) : new Date(`${targetYear}-05-01T00:00:00Z`); 
+    const examDate = profile?.target_date ? new Date(profile.target_date) : new Date(`${targetYear}-05-01T00:00:00Z`); 
     const daysRemaining = Math.max(0, Math.ceil((examDate.getTime() - Date.now()) / (1000 * 60 * 60 * 24)));
 
     // 3. Parallel Fetching for Briefing Stats

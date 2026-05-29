@@ -30,7 +30,7 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       overdueRes, masteryRes, sessionsRes
     ] = await Promise.all([
       supabase.from('profiles')
-        .select('full_name, exam_type, exam_date, current_level, learning_style, streak_days, emotional_state, timezone')
+        .select('full_name, exam_type, target_date, current_level, learning_style, streak_days, emotional_state, timezone')
         .eq('id', userId)
         .single(),
 
@@ -95,7 +95,7 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       profile: {
         name: profile?.full_name || 'Student',
         examType: profile?.exam_type || 'General',
-        examDate: profile?.exam_date || null,
+        examDate: profile?.target_date || null,
         currentLevel: profile?.current_level || 'intermediate',
         learningStyle: profile?.learning_style || 'visual',
         streakDays: profile?.streak_days || 0,

@@ -13,68 +13,78 @@ export const maxDuration = 300; // Vercel max execution time (5 mins)
 
 
 async function processOneUser(userId: string, supabase: any, today: string): Promise<void> {
+  const { data: profile } = await supabase.from('profiles').select('*').eq('id', userId).single();
+
   // Reset streak if user was not active yesterday using shared engine
   await resetStreakIfInactive(userId);
 
-  // Generate the new daily mission
-  await generateDailyPlan(userId, today);
-  // Sync the behavioral inference model
-  await syncStudentModel(userId);
-  // Episodic memories logic removed as it was disconnected and caused unbound LLM costs.
+  const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+  const lastActiveDate = profile?.last_active_at ? String(profile.last_active_at).split('T')[0] : null;
+  const isActive = lastActiveDate === yesterday || lastActiveDate === today;
+
+  if (isActive) {
+    // Generate the new daily mission
+    await generateDailyPlan(userId, today);
+    // Sync the behavioral inference model
+    await syncStudentModel(userId);
+  } else {
+    logger.info(`Skipping AI plan & sync for inactive user ${userId}`);
+  }
 
   // Generate tomorrow's session card / task
-  const { data: profile } = await supabase.from('profiles').select('*').eq('id', userId).single();
   await generateTomorrowCard(userId, profile, supabase);
 
   // =====================================================================
   // TASK 3.3: GENERATE & INJECT MORNING BRIEFING TO GLOBAL CHAT
   // =====================================================================
-  try {
-    // 1. Get or create the Global Chat session for this user
-    let { data: session } = await supabase
-      .from('chat_sessions')
-      .select('id')
-      .eq('user_id', userId)
-      .eq('session_type', 'global')
-      .order('created_at', { ascending: false })
-      .limit(1)
-      .maybeSingle();
-
-    if (!session) {
-      const { data: newSession } = await supabase
+  if (isActive) {
+    try {
+      // 1. Get or create the Global Chat session for this user
+      let { data: session } = await supabase
         .from('chat_sessions')
-        .insert({ user_id: userId, session_type: 'global', title: 'Cognition OS Main Thread' })
-        .select('id').single();
-      session = newSession;
-    }
-
-    if (session) {
-      // 2. Idempotency Check: Did we already brief them today?
-      const { data: existingBriefing } = await supabase
-        .from('chat_messages')
         .select('id')
-        .eq('session_id', session.id)
-        .eq('metadata->>type', 'morning_briefing')
-        .eq('metadata->>date', today)
+        .eq('user_id', userId)
+        .eq('session_type', 'global')
+        .order('created_at', { ascending: false })
+        .limit(1)
         .maybeSingle();
 
-      if (!existingBriefing) {
-        // 3. Generate the narrative via Gemini (from lib/ai/agents/planner.ts)
-        const narrative = await generateMorningBriefing(userId);
-
-        // 4. Inject as an Assistant message into the chat
-        await supabase.from('chat_messages').insert({
-          session_id: session.id,
-          user_id: userId,
-          role: 'assistant',
-          content: narrative,
-          metadata: { type: 'morning_briefing', date: today }
-        });
-        logger.info(`Morning briefing injected into Global Chat for user ${userId}`);
+      if (!session) {
+        const { data: newSession } = await supabase
+          .from('chat_sessions')
+          .insert({ user_id: userId, session_type: 'global', title: 'Cognition OS Main Thread' })
+          .select('id').single();
+        session = newSession;
       }
+
+      if (session) {
+        // 2. Idempotency Check: Did we already brief them today?
+        const { data: existingBriefing } = await supabase
+          .from('chat_messages')
+          .select('id')
+          .eq('session_id', session.id)
+          .eq('metadata->>type', 'morning_briefing')
+          .eq('metadata->>date', today)
+          .maybeSingle();
+
+        if (!existingBriefing) {
+          // 3. Generate the narrative via Gemini (from lib/ai/agents/planner.ts)
+          const narrative = await generateMorningBriefing(userId);
+
+          // 4. Inject as an Assistant message into the chat
+          await supabase.from('chat_messages').insert({
+            session_id: session.id,
+            user_id: userId,
+            role: 'assistant',
+            content: narrative,
+            metadata: { type: 'morning_briefing', date: today }
+          });
+          logger.info(`Morning briefing injected into Global Chat for user ${userId}`);
+        }
+      }
+    } catch (briefingErr) {
+      logger.warn(`Failed to generate morning briefing for user ${userId}`, briefingErr);
     }
-  } catch (briefingErr) {
-    logger.warn(`Failed to generate morning briefing for user ${userId}`, briefingErr);
   }
 
   // Write daily performance snapshot
@@ -102,10 +112,10 @@ async function processOneUser(userId: string, supabase: any, today: string): Pro
     const overallMastery = totalCount > 0 ? masteredCount / totalCount : 0;
 
     // Fetch accuracy from review logs today
-    const { data: reviews } = await supabase.from('review_logs')
+    const { data: reviews } = await supabase.from('revision_logs')
       .select('rating')
       .eq('user_id', userId)
-      .gte('review', `${todayDateStr}T00:00:00Z`);
+      .gte('reviewed_at', `${todayDateStr}T00:00:00Z`);
 
     const goodReviews = (reviews || []).filter((r: any) => r.rating >= 3).length;
     const accuracy = reviews && reviews.length > 0 ? goodReviews / reviews.length : 0;
@@ -114,25 +124,21 @@ async function processOneUser(userId: string, supabase: any, today: string): Pro
     const { data: existingSnapshot } = await supabase.from('performance_snapshots')
       .select('id')
       .eq('user_id', userId)
-      .eq('date', todayDateStr)
+      .eq('snapshot_date', todayDateStr)
       .maybeSingle();
 
     if (existingSnapshot) {
       await supabase.from('performance_snapshots')
         .update({
-          accuracy: accuracy,
-          retention_rate: overallMastery,
-          concepts_revised: completed,
+          metrics: { accuracy: accuracy, retention_rate: overallMastery, concepts_revised: completed },
         })
         .eq('id', existingSnapshot.id);
     } else {
       await supabase.from('performance_snapshots')
         .insert({
           user_id: userId,
-          date: todayDateStr,
-          accuracy: accuracy,
-          retention_rate: overallMastery,
-          concepts_revised: completed,
+          snapshot_date: todayDateStr,
+          metrics: { accuracy: accuracy, retention_rate: overallMastery, concepts_revised: completed },
           created_at: new Date().toISOString(),
         });
     }
@@ -190,8 +196,8 @@ async function generateTomorrowCard(userId: string, profile: any, supabase: any)
   })).sort((a: any, b: any) => b.score - a.score);
 
   const topConcept = scored[0];
-  const daysToExam = profile?.exam_date
-    ? Math.ceil((new Date(profile.exam_date).getTime() - Date.now()) / 86400000)
+  const daysToExam = profile?.target_date
+    ? Math.ceil((new Date(profile.target_date).getTime() - Date.now()) / 86400000)
     : null;
 
   await supabase.from('study_tasks').insert({
@@ -242,7 +248,7 @@ export async function GET(req: NextRequest) {
     const { data: todaySnapshots, error: snapErr } = await supabase
       .from('performance_snapshots')
       .select('user_id')
-      .eq('date', today);
+      .eq('snapshot_date', today);
 
     if (snapErr) throw snapErr;
 

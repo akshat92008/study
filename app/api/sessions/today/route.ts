@@ -43,9 +43,9 @@ export async function GET() {
     const today = new Date().toISOString().split('T')[0];
 
     // Fetch profile for exam date
-    const { data: profile } = await supabase.from('profiles').select('exam_date').eq('id', user.id).single();
-    const daysToExam = profile?.exam_date
-      ? Math.ceil((new Date(profile.exam_date).getTime() - Date.now()) / (1000 * 60 * 60 * 24))
+    const { data: profile } = await supabase.from('profiles').select('target_date').eq('id', user.id).single();
+    const daysToExam = profile?.target_date
+      ? Math.ceil((new Date(profile.target_date).getTime() - Date.now()) / (1000 * 60 * 60 * 24))
       : null;
 
     // Planned tasks for today

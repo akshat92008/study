@@ -5,7 +5,7 @@ export async function getPerformanceData(userId: string) {
 
   const [mockTestsRes, snapshotsRes, conceptsRes, mistakesRes, tasksRes, profileRes, sessionsRes] = await Promise.all([
     supabase.from('mock_tests').select('*').eq('user_id', userId).order('created_at', { ascending: true }),
-    supabase.from('performance_snapshots').select('*').eq('user_id', userId).order('date', { ascending: true }).limit(30),
+    supabase.from('performance_snapshots').select('*').eq('user_id', userId).order('snapshot_date', { ascending: true }).limit(30),
     supabase.from('concepts').select('subject, mastery').eq('user_id', userId),
     supabase.from('mistakes').select('subject, category, marks_lost').eq('user_id', userId),
     supabase.from('study_tasks').select('is_completed, estimated_minutes, scheduled_date').eq('user_id', userId),
@@ -87,8 +87,8 @@ export async function getPerformanceData(userId: string) {
   }
 
   // Productivity Score (0-100)
-  const avgFocusScore = snapshots.length > 0 ? snapshots.reduce((s: any, snap: any) => s + (snap.focus_score || 0), 0) / snapshots.length : 0.5;
-  const avgAcc = snapshots.length > 0 ? snapshots.reduce((s: any, snap: any) => s + (snap.accuracy || 0), 0) / snapshots.length : 0.5;
+  const avgFocusScore = snapshots.length > 0 ? snapshots.reduce((s: any, snap: any) => s + (snap.metrics?.focus_score || 0), 0) / snapshots.length : 0.5;
+  const avgAcc = snapshots.length > 0 ? snapshots.reduce((s: any, snap: any) => s + (snap.metrics?.accuracy || 0), 0) / snapshots.length : 0.5;
   const productivityScore = Math.round((avgFocusScore * 40) + (avgAcc * 20) + (taskCompletionRate * 0.4));
 
   return {
