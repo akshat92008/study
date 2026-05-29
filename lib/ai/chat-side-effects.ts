@@ -4,7 +4,6 @@ import * as Sentry from '@sentry/nextjs';
 import { syncStudentModel } from '@/lib/engines/inference-engine';
 import { ChatMemoryService } from '@/lib/services/chatMemoryService';
 import { EventDispatcher } from '@/lib/events/orchestrator';
-import * as Sentry from '@sentry/nextjs';
 
 export interface ChatSideEffectsInput {
   supabase: SupabaseClient;
