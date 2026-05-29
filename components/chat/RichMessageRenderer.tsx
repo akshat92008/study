@@ -482,7 +482,20 @@ function parseQuestions(content: string): ParsedQuestion[] {
       else if (l.match(/^\(B\)/)) options[1] = l.slice(3).trim();
       else if (l.match(/^\(C\)/)) options[2] = l.slice(3).trim();
       else if (l.match(/^\(D\)/)) options[3] = l.slice(3).trim();
-      else if (l.startsWith('ANSWER:')) answer = l.replace('ANSWER:', '').trim();
+      else if (l.startsWith('ANSWER:')) {
+        const rawAnswer = l.replace('ANSWER:', '').trim();
+        const match = rawAnswer.match(/^(?:\*\*|__)?\(?([A-D])\)?(?:\*\*|__)?\s*(?:\.|-|\)|\s|$)/i) || rawAnswer.match(/\b(?:Option\s+)?([A-D])\b/i);
+        if (match) {
+          answer = match[1].toUpperCase();
+        } else {
+          const optIdx = options.findIndex(o => o.trim() === rawAnswer || rawAnswer.includes(o.trim()));
+          if (optIdx !== -1) {
+            answer = String.fromCharCode(65 + optIdx);
+          } else {
+            answer = rawAnswer;
+          }
+        }
+      }
       else if (l.startsWith('EXPLANATION:')) explanation = l.replace('EXPLANATION:', '').trim();
       else if (l.startsWith('EXAM_RELEVANCE:')) examRelevance = l.replace('EXAM_RELEVANCE:', '').trim();
     });
