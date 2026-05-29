@@ -1,8 +1,10 @@
 import { SupabaseClient } from '@supabase/supabase-js';
 import { logger } from '@/lib/utils/logger';
+import * as Sentry from '@sentry/nextjs';
 import { syncStudentModel } from '@/lib/engines/inference-engine';
 import { ChatMemoryService } from '@/lib/services/chatMemoryService';
 import { EventDispatcher } from '@/lib/events/orchestrator';
+import * as Sentry from '@sentry/nextjs';
 
 export interface ChatSideEffectsInput {
   supabase: SupabaseClient;
@@ -106,7 +108,7 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
     const memSvc = new ChatMemoryService();
     await memSvc.storeMessageInMemory(userId, message);
   } catch (err) {
-    logger.warn('SideEffect: Semantic memory storage failed', err);
+    Sentry.captureException(err, { tags: { context: 'semantic_memory_storage' } });
   }
 
   // 4. Emotion State Update
@@ -126,7 +128,7 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
       }
     }
   } catch (err) {
-    logger.warn('SideEffect: Emotion state update failed', err);
+    Sentry.captureException(err, { tags: { context: 'emotion_state_update' } });
   }
 
   // 5. Event Publishing
@@ -160,6 +162,6 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
       });
     }
   } catch (err) {
-    logger.warn('SideEffect: Event publishing failed', err);
+    Sentry.captureException(err, { tags: { context: 'event_publishing' } });
   }
 }

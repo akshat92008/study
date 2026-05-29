@@ -330,7 +330,7 @@ if (!config || !config.apiKey) {
   }
 
   // CRITICAL: graceful degradation, not "All providers exhausted"
-  if (process.env.OPENAI_API_KEY) {
+  if (process.env.OPENAI_API_KEY && process.env.OPENAI_MONTHLY_SPEND_LIMIT) {
     try {
       logger.warn('[Router] All free providers exhausted — using OpenAI paid fallback');
       Sentry.captureMessage('All providers exhausted, used OpenAI', 'warning');

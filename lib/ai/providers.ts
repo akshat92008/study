@@ -8,7 +8,7 @@ import { logger } from '@/lib/utils/logger';
 export type ProviderName = 
   | 'cerebras'        // Fastest inference alive. 1M tokens/day free.
   | 'cerebras_fallback' // Second Cerebras key.
-  | 'sambanova'       // Fast + free embeddings.
+  | 'sambanova'       // Fast + free inference.
   | 'groq_compound'   // 14,400 req/day free. llama-3.3-70b.
   | 'groq_gemma'      // Same Groq key, different model slot.
   | 'cloudflare'      // Free Workers AI. Vision capable.

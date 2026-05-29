@@ -84,12 +84,14 @@ export async function POST(req: NextRequest) {
           } catch (e) { /* ignore */ }
         }
 
+        const currentTutorSessionId = `tutor-${Date.now()}`;
         // Update concept state and store session
         if (conceptId) {
           const estimatedTime = Math.max(60, (history?.length || 0) * 30);
           await updateConceptState(conceptId, analysis.understood, estimatedTime);
           await supabase.from('tutor_sessions').insert({
             user_id: user.id,
+            session_id: currentTutorSessionId,
             concept_id: conceptId,
             summary: analysis.summary,
             messages: [...(history || []), { role: 'user', content: message }, { role: 'assistant', content: fullResponse }]
@@ -115,7 +117,7 @@ export async function POST(req: NextRequest) {
           oldMastery: null,
           newMastery: null,
           cardsCreated: (!analysis.understood && analysis.gapFound) ? 1 : 0,
-          sessionId: `tutor-${Date.now()}`
+          sessionId: currentTutorSessionId
         }).catch(() => null);
         if (closing) {
           controller.enqueue(encoder.encode(`\n\n===METADATA===\n${JSON.stringify({ action: 'session_closing_message', closingMessage: closing.text, closingType: closing.type })}`));

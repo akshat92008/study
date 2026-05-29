@@ -474,7 +474,7 @@ Return ONLY valid JSON matching this schema:
             hasUserContext: hasUserSpecificContext
           });
           
-          const cached = canCache && message ? await checkSemanticCache(message) : null;
+          const cached = canCache && message ? await checkSemanticCache(message, user.id) : null;
 
           if (cached) {
             controller.enqueue(encoder.encode(cached));

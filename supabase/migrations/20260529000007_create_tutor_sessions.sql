@@ -3,9 +3,12 @@
 create table if not exists tutor_sessions (
   id uuid primary key default uuid_generate_v4(),
   user_id uuid not null references profiles(id) on delete cascade,
-  session_id text not null,
+  session_id text,
   topic text,
   summary text,
+  concept_id uuid references concepts(id),
+  messages jsonb default '[]'::jsonb,
+  started_at timestamptz default now(),
   created_at timestamptz default now(),
   updated_at timestamptz default now()
 );

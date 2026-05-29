@@ -20,7 +20,7 @@ import { createClient } from '@/lib/supabase/server';
 import { getEmbedding } from '@/lib/ai/gemini';
 import { logger } from '@/lib/utils/logger';
 
-export async function checkSemanticCache(prompt: string): Promise<string | null> {
+export async function checkSemanticCache(prompt: string, userId: string): Promise<string | null> {
   try {
     const trimmed = prompt.trim();
     if (trimmed.length < 15 || trimmed.length > 500) {
@@ -38,7 +38,8 @@ export async function checkSemanticCache(prompt: string): Promise<string | null>
     const { data, error } = await supabase.rpc('match_semantic_cache', {
       query_embedding: `[${embedding.join(',')}]`,
       match_threshold: 0.95, // High threshold to ensure semantic equivalence
-      match_count: 1
+      match_count: 1,
+      p_user_id: userId
     });
 
     if (!error && data && data.length > 0) {

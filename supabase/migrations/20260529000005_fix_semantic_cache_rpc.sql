@@ -3,7 +3,8 @@
 CREATE OR REPLACE FUNCTION public.match_semantic_cache(
   query_embedding vector(768),
   match_threshold float,
-  match_count int
+  match_count int,
+  p_user_id uuid
 )
 RETURNS TABLE (
   id uuid,
@@ -15,6 +16,10 @@ SECURITY DEFINER
 SET search_path = public
 AS $$
 BEGIN
+  IF p_user_id != auth.uid() THEN
+    RAISE EXCEPTION 'Unauthorized';
+  END IF;
+
   RETURN QUERY
   SELECT
     sc.id,
