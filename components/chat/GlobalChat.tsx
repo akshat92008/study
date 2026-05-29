@@ -521,7 +521,7 @@ export const GlobalChat = memo(function GlobalChat() {
              }}>
                <div style={{
                  maxWidth: isUser ? '85%' : '100%',
-                 background: isUser ? 'var(--accent-purple)' : 'transparent',
+                 background: isUser ? '#8B5CF6' : 'transparent',
                  border: isUser ? 'none' : 'none',
                  borderLeft: (!isUser && !isClosingCard) ? '2px solid rgba(124, 102, 255, 0.3)' : 'none',
                  color: isUser ? 'white' : 'var(--text-primary)',
