@@ -15,23 +15,23 @@ export async function POST(req: NextRequest) {
   // 1. Delete completed events older than 7 days
   const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
   const { count: deletedEvents } = await supabase
-    .from('student_events')
+    .from('event_queue')
     .delete({ count: 'exact' })
-    .eq('status', 'completed')
+    .eq('status', 'COMPLETED')
     .lt('created_at', sevenDaysAgo);
   results.deletedCompletedEvents = deletedEvents ?? 0;
 
   // 2. Delete orphaned consumer tracking rows
   const { count: deletedTracking } = await supabase
-    .from('event_consumer_tracking')
+    .from('consumer_locks')
     .delete({ count: 'exact' })
     .lt('created_at', sevenDaysAgo)
-    .in('status', ['completed']);
+    .in('status', ['COMPLETED']);
   results.deletedTrackingRows = deletedTracking ?? 0;
 
   // 3. Log DLQ summary (don't delete — keep for manual inspection)
   const { count: dlqCount } = await supabase
-    .from('dlq_events')
+    .from('event_dlq')
     .select('id', { count: 'exact', head: true });
   results.dlqQueueDepth = dlqCount ?? 0;
 

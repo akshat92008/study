@@ -61,50 +61,44 @@ export class LearningStateEngine {
     logger.info('Processing legacy telemetry event', { userId, type });
 
     try {
-      // Note: We no longer insert into student_events here. 
+      // Note: We no longer insert into raw event tables here.
       // The EventOrchestrator handles the database persistence, retries, and locking.
 
-      // 2. Recompute and update state metrics
-      const [confidence, retention, velocity, patternsAndWeakAreas] = await Promise.all([
-        this.calculateConfidence(userId),
-        this.calculateRetention(userId),
-        this.calculateVelocity(userId),
-        this.calculateStrugglePatternsAndWeakAreas(userId),
-      ]);
+      // 2. Incremental state updates based on event type
+      let confDelta = 0;
+      let retDelta = 0;
+      let velDelta = 0;
 
-      // Write-back to learner_states
-      const { error: upsertErr } = await supabase
-        .from('learner_states')
-        .upsert({
-          user_id: userId,
-          overall_confidence: confidence,
-          estimated_retention: retention,
-          weekly_velocity: velocity,
-          struggle_patterns: patternsAndWeakAreas.strugglePatterns,
-          weak_areas: patternsAndWeakAreas.weakAreas,
-          updated_at: new Date().toISOString(),
-        }, {
-          onConflict: 'user_id',
-        });
-
-      if (upsertErr) {
-        logger.error('Failed to upsert learner_states', upsertErr);
+      if (type === 'QUIZ_ATTEMPTED') {
+        confDelta = data.isCorrect ? 0.02 : -0.02;
+        retDelta = data.isCorrect ? 0.01 : -0.01;
+      } else if (type === 'CARD_REVIEWED') {
+        confDelta = (data.rating || 0) > 2 ? 0.01 : -0.01;
+        retDelta = (data.rating || 0) > 2 ? 0.02 : -0.02;
+      } else if (type === 'SESSION_COMPLETED') {
+        confDelta = data.understandingGained ? 0.05 : -0.02;
+        velDelta = data.understandingGained ? 1 : 0;
+      } else if (type === 'TASK_COMPLETED') {
+        velDelta = 1;
+        confDelta = 0.01;
+      } else if (type === 'SESSION_SKIPPED') {
+        confDelta = -0.05;
+        retDelta = -0.05;
       }
 
-      // Record daily snapshot
+      // Fast incremental update for real-time freshness
+      const { error: rpcErr } = await supabase.rpc('update_learner_state_incrementally', {
+        p_user_id: userId,
+        p_confidence_delta: confDelta,
+        p_retention_delta: retDelta,
+        p_velocity_delta: velDelta
+      });
+
+      if (rpcErr) {
+        logger.error('Failed to update learner state incrementally', rpcErr);
+      }
+
       const todayStr = new Date().toISOString().split('T')[0];
-      await supabase
-        .from('learner_daily_metrics')
-        .upsert({
-          user_id: userId,
-          date: todayStr,
-          confidence,
-          retention,
-          velocity,
-          hours_spent: 0.0, // Aggregated by trackers/session completions if needed
-        }, {
-          onConflict: 'user_id,date',
-        });
 
       // 3. Evaluate Reactive Rules
       if (type === 'QUIZ_ATTEMPTED' && data.isCorrect === false && data.conceptId) {
@@ -146,12 +140,12 @@ export class LearningStateEngine {
       .eq('id', userId)
       .maybeSingle();
 
-    let pulseWeight = 0.8;
+    let moodWeight = 0.8;
     const emotionalState = profile?.emotional_state;
     if (emotionalState === 'anxious' || emotionalState === 'frustrated') {
-      pulseWeight = 0.6;
+      moodWeight = 0.6;
     } else if (emotionalState === 'motivated' || emotionalState === 'confident') {
-      pulseWeight = 1.0;
+      moodWeight = 1.0;
     }
 
     // 2. Quiz accuracy from performance_snapshots
@@ -183,7 +177,7 @@ export class LearningStateEngine {
       cardRecallRate = correctLogs / logs.length;
     }
 
-    const confidence = 0.2 * pulseWeight + 0.5 * quizAccuracy + 0.3 * cardRecallRate;
+    const confidence = 0.2 * moodWeight + 0.5 * quizAccuracy + 0.3 * cardRecallRate;
     return Math.max(0.0, Math.min(1.0, confidence));
   }
 

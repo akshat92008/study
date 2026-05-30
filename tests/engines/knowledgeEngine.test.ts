@@ -1,18 +1,19 @@
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { generateKnowledgeUpdate } from '@/lib/engines/knowledge-engine';
 
-const fromMock = jest.fn();
+const fromMock = vi.hoisted(() => vi.fn());
 
-jest.mock('@/lib/supabase/server', () => ({
-  createClient: jest.fn(async () => ({
+vi.mock('@/lib/supabase/server', () => ({
+  createClient: vi.fn(async () => ({
     from: fromMock,
   })),
 }));
 
-jest.mock('@/lib/utils/logger', () => ({
+vi.mock('@/lib/utils/logger', () => ({
   logger: {
-    info: jest.fn(),
-    warn: jest.fn(),
-    error: jest.fn(),
+    info: vi.fn(),
+    warn: vi.fn(),
+    error: vi.fn(),
   },
 }));
 
@@ -21,19 +22,19 @@ function makeSupabaseMock(existingConcept: any = null) {
 
   fromMock.mockImplementation((table: string) => {
     const builder: any = {
-      select: jest.fn(() => builder),
-      eq: jest.fn(() => builder),
-      ilike: jest.fn(() => builder),
-      update: jest.fn((payload) => {
+      select: vi.fn(() => builder),
+      eq: vi.fn(() => builder),
+      ilike: vi.fn(() => builder),
+      update: vi.fn((payload) => {
         operations.push({ table, type: 'update', payload });
         return builder;
       }),
-      insert: jest.fn((payload) => {
+      insert: vi.fn((payload) => {
         operations.push({ table, type: 'insert', payload });
         return builder;
       }),
-      maybeSingle: jest.fn(async () => ({ data: existingConcept, error: null })),
-      single: jest.fn(async () => ({ data: { id: 'created-concept-id' }, error: null })),
+      maybeSingle: vi.fn(async () => ({ data: existingConcept, error: null })),
+      single: vi.fn(async () => ({ data: { id: 'created-concept-id' }, error: null })),
     };
     return builder;
   });

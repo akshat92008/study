@@ -38,7 +38,6 @@ Respond exactly as this JSON structure:
   // Update user profile with the new custom target
   await supabase.from('profiles').update({
     exam_type: topic,
-    target_year: new Date().getFullYear(),
     onboarding_complete: true,
   }).eq('id', user.id);
 

@@ -4,6 +4,14 @@ import { logger } from '@/lib/utils/logger';
 import type { MINDContext } from '@/lib/ai/prompts/mind-prompt';
 import { RAGEngine } from './rag-engine';
 
+type ConceptGraphRow = {
+  id: string;
+  name: string;
+  chapter: string;
+  subject: string;
+  mastery: string;
+};
+
 export async function getMINDContext(userId: string, message?: string, topic?: string, subject?: string): Promise<MINDContext> {
   try {
     const supabase = await createClient();
@@ -175,7 +183,8 @@ export async function getRootGapChains(
 
     if (!allConcepts) return [];
 
-    const conceptById = new Map(allConcepts.map(c => [c.id, c]));
+    const concepts = allConcepts as ConceptGraphRow[];
+    const conceptById = new Map(concepts.map(c => [c.id, c]));
 
     // Only analyse the top 3 weakest concepts to keep latency low
     const targetConcepts = weakConcepts.slice(0, 3);
@@ -185,7 +194,7 @@ export async function getRootGapChains(
 
     for (const weak of targetConcepts) {
       // Find the concept record
-      const conceptRecord = allConcepts.find(
+      const conceptRecord = concepts.find(
         c => c.name.toLowerCase() === weak.name.toLowerCase() || c.chapter.toLowerCase() === weak.chapter.toLowerCase()
       );
       if (!conceptRecord) continue;

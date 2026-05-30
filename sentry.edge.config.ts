@@ -1,6 +1,8 @@
-import * as Sentry from "@sentry/nextjs";
+import { loadSentry } from '@/lib/telemetry/sentry-runtime';
 
-Sentry.init({
-  dsn: process.env.SENTRY_DSN,
-  tracesSampleRate: 0.05,
-});
+void loadSentry()
+  .then((Sentry) => Sentry?.init?.({
+    dsn: process.env.SENTRY_DSN,
+    tracesSampleRate: 0.05,
+  }))
+  .catch(() => {});

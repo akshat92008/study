@@ -7,6 +7,18 @@ export const dynamic = 'force-dynamic';
 
 export async function GET() {
   const checks: Record<string, { ok: boolean; latencyMs?: number; error?: string }> = {};
+
+  const requiredEnv = [
+    'NEXT_PUBLIC_SUPABASE_URL',
+    'NEXT_PUBLIC_SUPABASE_ANON_KEY',
+    'SUPABASE_SERVICE_ROLE_KEY',
+    'GEMINI_API_KEY',
+  ];
+  const missingEnv = requiredEnv.filter((key) => !process.env[key]);
+  checks.env = {
+    ok: missingEnv.length === 0,
+    error: missingEnv.length ? `Missing: ${missingEnv.join(', ')}` : undefined,
+  };
   
   // Supabase
   const sbStart = Date.now();

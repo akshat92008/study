@@ -1,6 +1,7 @@
 import { createAdminClient } from '@/lib/supabase/admin';
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/utils/logger';
+import { invalidateSessionCards } from '@/lib/services/session-card-cache';
 
 export type MasterySource =
   | 'session_close'
@@ -103,6 +104,8 @@ export async function applyMasteryUpdate(params: {
   if (eventErr) {
     logger.warn('applyMasteryUpdate: mastery_events insert failed (non-fatal)', { eventErr });
   }
+
+  await invalidateSessionCards(params.userId, supabase);
 
   logger.info('Mastery updated', {
     userId: params.userId,

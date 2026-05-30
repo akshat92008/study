@@ -241,7 +241,7 @@ export async function processMockAutopsy(
 
   const CHUNK = 50;
   for (let i = 0; i < processedQuestions.length; i += CHUNK) {
-    await supabase.from('autopsy_questions').insert(
+    const { error: questionInsertError } = await supabase.from('autopsy_questions').insert(
       processedQuestions.slice(i, i + CHUNK).map(q => ({
         autopsy_id: autopsyRecord.id,
         user_id: userId,
@@ -255,6 +255,10 @@ export async function processMockAutopsy(
         ocr_confidence: q.ocrConfidence ?? 100,
       }))
     );
+
+    if (questionInsertError) {
+      throw new Error(`Failed to save autopsy questions: ${questionInsertError.message}`);
+    }
   }
 
   await generateKnowledgeUpdate(userId, diagnosedIncorrect).catch(err => logger.error('Knowledge sync failed', err));
@@ -263,40 +267,36 @@ export async function processMockAutopsy(
     autopsyRecord.id, rawScore, potentialScore, diagnosedIncorrect, examType
   ).catch(err => { logger.warn('Mentor recovery failed', err); return null; });
 
-  try {
-    await EventDispatcher.publish({
-      user_id: userId,
-      type: 'AUTOPSY_MOCK_PROCESSED',
-      data: {
-        autopsyId: autopsyRecord.id,
-        testName,
-        examType,
-        rawScore,
-        recoverableScore,
-        potentialScore,
-        totalQuestions: allQuestions.length,
-        correctCount: correctQuestions.length,
-        incorrectCount: incorrectQuestions.length,
-      },
-      metadata: {
-        source: 'autopsy_engine',
-        autopsyId: autopsyRecord.id,
-        wrongQuestions: diagnosedIncorrect.map(q => ({
-          questionNumber: q.questionNumber,
-          subject: q.subject,
-          chapter: q.chapter,
-          mistakeCategory: q.mistakeCategory,
-          reasoning: q.reasoning,
-          correctExplanation: q.correctExplanation ?? null,
-          conceptualGap: q.conceptualGap ?? null,
-        })),
-      },
-      idempotency_key: `autopsy:${autopsyRecord.id}:processed`,
-    });
-    logger.info('AUTOPSY_MOCK_PROCESSED event fired', { userId });
-  } catch (eventErr) {
-    logger.error('Failed to fire autopsy event (non-fatal — data saved)', eventErr);
-  }
+  await EventDispatcher.publish({
+    user_id: userId,
+    type: 'AUTOPSY_MOCK_PROCESSED',
+    data: {
+      autopsyId: autopsyRecord.id,
+      testName,
+      examType,
+      rawScore,
+      recoverableScore,
+      potentialScore,
+      totalQuestions: allQuestions.length,
+      correctCount: correctQuestions.length,
+      incorrectCount: incorrectQuestions.length,
+    },
+    metadata: {
+      source: 'autopsy_engine',
+      autopsyId: autopsyRecord.id,
+      wrongQuestions: diagnosedIncorrect.map(q => ({
+        questionNumber: q.questionNumber,
+        subject: q.subject,
+        chapter: q.chapter,
+        mistakeCategory: q.mistakeCategory,
+        reasoning: q.reasoning,
+        correctExplanation: q.correctExplanation ?? null,
+        conceptualGap: q.conceptualGap ?? null,
+      })),
+    },
+    idempotency_key: `autopsy:${autopsyRecord.id}:processed`,
+  });
+  logger.info('AUTOPSY_MOCK_PROCESSED event fired', { userId });
 
   return {
     autopsyId: autopsyRecord.id,

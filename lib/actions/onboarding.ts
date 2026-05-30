@@ -98,8 +98,6 @@ export async function completeOnboarding(
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) throw new Error('Not authenticated');
 
-  const targetYear = new Date(targetDate).getFullYear();
-
   const { data: profile } = await supabase
     .from('profiles')
     .select('id')
@@ -112,7 +110,6 @@ export async function completeOnboarding(
       full_name: user.user_metadata?.full_name || 'Student',
       email: user.email || '',
       exam_type: examType,
-      target_year: targetYear,
       target_date: targetDate,
       onboarding_complete: false,
       updated_at: new Date().toISOString(),
@@ -120,18 +117,20 @@ export async function completeOnboarding(
   } else {
     await supabase.from('profiles').update({
       exam_type: examType,
-      target_year: targetYear,
       target_date: targetDate,
       updated_at: new Date().toISOString(),
     }).eq('id', user.id);
   }
 
-  // Save quiz results to student_events so the API route can process them
+  // Save quiz results to the durable event queue so workers can process them.
   if (quizResults && quizResults.length > 0) {
-    await supabase.from('student_events').insert({
+    const { EventDispatcher } = await import('@/lib/events/orchestrator');
+    await EventDispatcher.publish({
       user_id: user.id,
       type: 'ONBOARDING_QUIZ_COMPLETE',
       data: { quizResults, examType },
+      metadata: { source: 'onboarding' },
+      idempotency_key: `onboarding:${user.id}:${targetDate}`,
     });
   }
 

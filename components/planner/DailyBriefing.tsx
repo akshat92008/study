@@ -15,7 +15,7 @@ interface BriefingData {
   progress: { completed: number; total: number };
   revision: { dueCount: number; message: string };
   focusAreas: { subject: string; chapter: string; urgency: string }[];
-  pulseMessage: string;
+  missionMessage: string;
   greetingText?: string;
 }
 

@@ -24,7 +24,7 @@ export class MindTutorService extends BaseService {
   async getOrInitializeState(userId: string, conceptId?: string | null): Promise<any> {
     const supabase = await this.getClient();
 
-    let query = supabase.from('tutor_session_states')
+    let query = supabase.from('tutor_sessions')
       .select('*')
       .eq('user_id', userId)
       .eq('is_completed', false)
@@ -37,7 +37,7 @@ export class MindTutorService extends BaseService {
       return existingSession;
     }
 
-    const { data: newSession, error } = await supabase.from('tutor_session_states').insert({
+    const { data: newSession, error } = await supabase.from('tutor_sessions').insert({
       user_id: userId,
       session_id: crypto.randomUUID(),
       concept_id: conceptId || null,
@@ -154,20 +154,26 @@ export class MindTutorService extends BaseService {
     const isCompleted = output.state === 'SYNTHESIS';
 
     const { data: previousState } = await supabase
-      .from('tutor_session_states')
-      .select('misconception_detected, concept_id')
+      .from('tutor_sessions')
+      .select('misconception_detected, concept_id, turns_count')
       .eq('id', stateId)
       .maybeSingle();
 
-    await supabase.from('tutor_session_states')
+    const nextTurnCount = (previousState?.turns_count || 0) + 1;
+
+    const { error: updateError } = await supabase.from('tutor_sessions')
       .update({
         current_state: output.state,
         misconception_detected: output.diagnosedMisconception,
         is_completed: isCompleted,
-        turns_count: supabase.rpc('increment', { x: 1 }),
+        turns_count: nextTurnCount,
         updated_at: new Date().toISOString()
       })
       .eq('id', stateId);
+
+    if (updateError) {
+      logger.error('Failed to update tutor session state', updateError);
+    }
 
     const targetConceptId = previousState?.concept_id || output.masteryUpdate?.conceptId;
     let subject = 'MIND Tutor';

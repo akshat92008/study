@@ -4,7 +4,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/utils/logger';
-import { LearningStateEngine } from '@/lib/engines/learning-state-engine';
+import { EventDispatcher } from '@/lib/events/orchestrator';
 
 export async function POST(req: NextRequest) {
   try {
@@ -17,11 +17,12 @@ export async function POST(req: NextRequest) {
 
     // 1. Mark task complete if provided (with IDOR protection)
     if (taskId) {
-      await supabase
+      const { error: taskError } = await supabase
         .from('study_tasks')
         .update({ is_completed: true, completed_at: new Date().toISOString() })
         .eq('id', taskId)
         .eq('user_id', user.id);
+      if (taskError) return NextResponse.json({ error: taskError.message }, { status: 500 });
     }
 
     // 2. Fetch profile for streak logic
@@ -62,32 +63,47 @@ export async function POST(req: NextRequest) {
     if (streakChanged) {
       updatePayload.streak_days = newStreak;
     }
-    await supabase.from('profiles').update(updatePayload).eq('id', user.id);
+    const { error: profileUpdateError } = await supabase.from('profiles').update(updatePayload).eq('id', user.id);
+    if (profileUpdateError) return NextResponse.json({ error: profileUpdateError.message }, { status: 500 });
 
     // 4. Log completed study session for streaks, planning, and analytics.
-    await supabase.from('study_sessions').insert({
+    const { data: sessionRecord, error: sessionInsertError } = await supabase.from('study_sessions').insert({
       user_id: user.id,
       subject: subject || null,
       chapter: chapter || null,
+      topic: chapter || null,
+      concept_name: chapter || null,
       started_at: new Date(Date.now() - (durationMinutes || 25) * 60 * 1000).toISOString(),
       ended_at: new Date().toISOString(),
+      completed_at: new Date().toISOString(),
       duration_minutes: durationMinutes || 25,
+      understood: true,
+      is_completed: true,
       notes: subject && chapter
         ? `Studied ${chapter} (${subject})`
         : 'Daily session completed',
-    });
+    }).select('id').single();
+    if (sessionInsertError || !sessionRecord) {
+      return NextResponse.json({ error: sessionInsertError?.message || 'Failed to save study session' }, { status: 500 });
+    }
 
-    // 5. Fire telemetry event — non-blocking, never crashes the response
-    LearningStateEngine.ingestEvent({
-      userId: user.id,
-      type: 'TASK_COMPLETED',
+    // 5. Enqueue the durable command completion event.
+    await EventDispatcher.publish({
+      user_id: user.id,
+      type: 'COMMAND_SESSION_COMPLETED',
       data: {
+        sessionId: sessionRecord.id,
         taskId: taskId || `session-${Date.now()}`,
         subject: subject || 'General',
         chapter: chapter || 'Session',
         durationMinutes: durationMinutes || 25,
+        understood: true,
+        understandingGained: true,
+        isSessionComplete: true,
       },
-    }).catch(err => logger.warn('Telemetry ingest failed', { err: err.message }));
+      metadata: { source: 'complete_session' },
+      idempotency_key: `complete_session:${sessionRecord.id}`,
+    });
 
     return NextResponse.json({
       success: true,

@@ -9,11 +9,12 @@ import {
 import { 
   recordProviderFailure, 
   resetProviderHealth, 
-  isProviderInCooldown 
+  isProviderInCooldown,
+  recordProviderSuccess,
+  getProviderHealth
 } from './provider-health';
 import { logger } from '@/lib/utils/logger';
 import { runOCR } from '@/utils/ocr';
-import * as Sentry from '@sentry/nextjs';
 import { openaiFallback } from './providers/openai';
 import { Metrics } from '@/lib/observability/metrics';
 
@@ -270,6 +271,10 @@ async function callGoogle(
 
 // ─── MAIN ROUTER FUNCTIONS ────────────────────────────────────────────────────
 
+async function getPrioritizedProviders(taskType: TaskType): Promise<ProviderName[]> {
+  return TASK_PROVIDER_PRIORITY[taskType] || [];
+}
+
 export async function routeTextGeneration(
   taskType: TaskType,
   systemPrompt: string,
@@ -277,7 +282,7 @@ export async function routeTextGeneration(
   temperature = 0.7,
   maxTokens = 2048
 ): Promise<string> {
-  const providers = TASK_PROVIDER_PRIORITY[taskType];
+  const providers = await getPrioritizedProviders(taskType);
   const fullSystem = systemPrompt + SECURITY_BOUNDARY;
   
   const messages = [
@@ -317,6 +322,7 @@ if (!config || !config.apiKey) {
       }
 
       Metrics.aiCall(providerName, taskType, Date.now() - start, true);
+      await recordProviderSuccess(providerName, Date.now() - start);
       await resetProviderHealth(providerName);
       return result;
 
@@ -333,10 +339,10 @@ if (!config || !config.apiKey) {
   if (process.env.OPENAI_API_KEY && process.env.OPENAI_MONTHLY_SPEND_LIMIT) {
     try {
       logger.warn('[Router] All free providers exhausted — using OpenAI paid fallback');
-      Sentry.captureMessage('All providers exhausted, used OpenAI', 'warning');
+      Metrics.providerExhaustion(taskType);
       return await openaiFallback({ prompt: userPrompt, systemPrompt });
-    } catch (err) {
-      Sentry.captureException(err, { tags: { provider: 'openai_fallback' } });
+    } catch (err: any) {
+      Metrics.captureError(err instanceof Error ? err : new Error(err?.message || 'OpenAI fallback failed'), { provider: 'openai_fallback' });
     }
   }
 
@@ -349,7 +355,7 @@ export async function routeJSONGeneration<T>(
   temperature = 0.3,
   schema?: any
 ): Promise<T> {
-  const providers = TASK_PROVIDER_PRIORITY['json'];
+  const providers = await getPrioritizedProviders('json');
   const fullSystem = systemPrompt + SECURITY_BOUNDARY + 
     '\n\nIMPORTANT: Respond ONLY with valid JSON. No markdown. No explanation. No code fences.';
 
@@ -398,9 +404,11 @@ if (!config || !config.apiKey) {
         Metrics.aiCall(providerName, 'json', Date.now() - start, true);
         if (schema) {
           const validated = schema.parse(parsed);
+          await recordProviderSuccess(providerName, Date.now() - start);
           await resetProviderHealth(providerName);
           return validated;
         }
+        await recordProviderSuccess(providerName, Date.now() - start);
         await resetProviderHealth(providerName);
         return parsed as T;
 
@@ -433,7 +441,7 @@ export async function* routeStreamGeneration(
   userPrompt: string | Array<{ role: string; content: string }>,
   temperature = 0.7
 ): AsyncGenerator<string> {
-  const providers = TASK_PROVIDER_PRIORITY['stream'];
+  const providers = await getPrioritizedProviders('stream');
   const fullSystem = systemPrompt + SECURITY_BOUNDARY;
 
   const messages: Array<{ role: string; content: string }> = 
@@ -496,6 +504,7 @@ if (!config || !config.apiKey) {
           estimatedOutputTokens
         );
         Metrics.aiCall(providerName, 'stream', Date.now() - start, true);
+        await recordProviderSuccess(providerName, Date.now() - start);
         await resetProviderHealth(providerName);
         return; // Success — stop trying other providers
       }
@@ -512,13 +521,42 @@ if (!config || !config.apiKey) {
   yield "I'm experiencing high load right now. Please try again in a moment.";
 }
 
+const embeddingCache = new Map<string, number[]>();
+const MAX_CACHE_SIZE = 1000;
+const pendingEmbeddings = new Map<string, Promise<number[]>>();
+
 export async function routeEmbedding(text: string): Promise<number[]> {
+  if (process.env.DISABLE_EMBEDDINGS === 'true') return [];
+  if (embeddingCache.has(text)) return embeddingCache.get(text)!;
+  if (pendingEmbeddings.has(text)) return pendingEmbeddings.get(text)!;
+
+  const promise = _routeEmbedding(text);
+  pendingEmbeddings.set(text, promise);
+  
+  try {
+    const result = await promise;
+    if (result.length > 0) {
+      if (embeddingCache.size >= MAX_CACHE_SIZE) {
+        const firstKey = embeddingCache.keys().next().value;
+        if (firstKey) embeddingCache.delete(firstKey);
+      }
+      embeddingCache.set(text, result);
+    }
+    return result;
+  } finally {
+    pendingEmbeddings.delete(text);
+  }
+}
+
+async function _routeEmbedding(text: string): Promise<number[]> {
   // Skip if disabled (for local dev)
   if (process.env.DISABLE_EMBEDDINGS === 'true') return [];
 
-  const providers = TASK_PROVIDER_PRIORITY['embedding'];
+  const providersToTry = await getPrioritizedProviders('embedding');
+  let lastError: Error | null = null;
+  let attempts = 0;
 
-  for (const providerName of providers) {
+  for (const providerName of providersToTry) {
     if (await isProviderInCooldown(providerName)) continue;
 
     const config = getProviderConfig(providerName);
@@ -645,8 +683,9 @@ export async function routeVisionCall(
   imageMimeType: string,
   userMessage: string
 ): Promise<string> {
-  // Cloudflare vision first, then Google
-  for (const providerName of TASK_PROVIDER_PRIORITY['vision']) {
+  const providers = await getPrioritizedProviders('vision');
+
+  for (const providerName of providers) {
     if (await isProviderInCooldown(providerName)) continue;
 
     const config = getProviderConfig(providerName);
@@ -696,6 +735,7 @@ if (!config || !config.apiKey || !config.supportsVision) {
         const data = await response.json();
         const result = data.result?.response || '';
         Metrics.aiCall(providerName, 'vision', Date.now() - start, true);
+        await recordProviderSuccess(providerName, Date.now() - start);
         await resetProviderHealth(providerName);
         return result;
       }
@@ -744,6 +784,7 @@ if (!config || !config.apiKey || !config.supportsVision) {
         const data = await response.json();
         const result = data.choices?.[0]?.message?.content || '';
         Metrics.aiCall(providerName, 'vision', Date.now() - start, true);
+        await recordProviderSuccess(providerName, Date.now() - start);
         await resetProviderHealth(providerName);
         return result;
       }
@@ -779,6 +820,7 @@ if (!config || !config.apiKey || !config.supportsVision) {
         const data = await response.json();
         const result = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
         Metrics.aiCall(providerName, 'vision', Date.now() - start, true);
+        await recordProviderSuccess(providerName, Date.now() - start);
         await resetProviderHealth(providerName);
         return result;
       }

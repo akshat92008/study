@@ -53,6 +53,15 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Unsupported file type. Use PDF, TXT, or Image.' }, { status: 415 });
     }
 
+    const { validateMagicBytes } = await import('@/lib/utils/magicBytes');
+    const isValidBytes = await validateMagicBytes(file, mimeType);
+    if (!isValidBytes) {
+      return NextResponse.json(
+        { error: 'File contents do not match the declared MIME type. Potential malware blocked.' },
+        { status: 422 }
+      );
+    }
+
     // 1. Extract text locally, then route the structured extraction through
     // the configured provider stack. Do not call the legacy genai stub.
     let extractedText = '';
@@ -104,7 +113,6 @@ export async function POST(request: Request) {
     // 3. Update User Profile with the syllabus title
     await supabase.from('profiles').update({
       exam_type: examTitle,
-      target_year: new Date().getFullYear(),
       onboarding_complete: true,
       updated_at: new Date().toISOString()
     }).eq('id', user.id);

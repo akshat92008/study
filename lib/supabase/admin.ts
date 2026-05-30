@@ -19,7 +19,7 @@ export function createAdminClient(): SupabaseClient {
         persistSession: false,
       },
       global: {
-        fetch: (...args) => fetch(...args),
+        fetch: (...args: Parameters<typeof fetch>) => fetch(...args),
       },
       db: {
         schema: 'public',

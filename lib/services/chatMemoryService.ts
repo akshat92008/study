@@ -11,19 +11,35 @@ export class ChatMemoryService {
     if (trimmed.length < 15) return; // Immediate drop for short conversational noise
 
     try {
-      // 1. Importance Filtering
-      const checkPrompt = `Evaluate if this user message contains important learning insights, study behaviors, emotional states, specific struggles, or preferences worth remembering long-term.
+      // 1. Hybrid Scoring
+      const checkPrompt = `Evaluate this user message for semantic memory storage.
 Message: "${trimmed}"
-Return ONLY JSON: { "importance": number (0-10) }`;
+Rate the following from 0.0 to 10.0:
+1. importance: Overall value for long-term retention.
+2. novelty: Is this new information about the user?
+3. emotional_salience: Does it show strong motivation, frustration, or anxiety?
+4. learning_relevance: Does it contain specific facts about their curriculum, goals, or weak points?
+5. repetition_signal: Is the user repeating something they mentioned before?
 
-      const evalResult = await routeJSONGeneration<{ importance: number }>(
-        'You are a strict AI memory filter. Only score >= 7 if it contains specific long-term value. Generic statements score 0.',
+Return ONLY valid JSON in this exact format:
+{
+  "importance": 0.0,
+  "novelty": 0.0,
+  "emotional_salience": 0.0,
+  "learning_relevance": 0.0,
+  "repetition_signal": 0.0
+}`;
+
+      type HybridScores = { importance: number; novelty: number; emotional_salience: number; learning_relevance: number; repetition_signal: number };
+      const evalResult = await routeJSONGeneration<HybridScores>(
+        'You are an expert semantic memory analyzer. Only provide high scores for highly specific and valuable insights. Generic chatter scores 0.',
         checkPrompt,
         0.1
-      ).catch(() => ({ importance: 5 }));
+      ).catch(() => ({ importance: 5, novelty: 0, emotional_salience: 0, learning_relevance: 0, repetition_signal: 0 }));
 
-      if (evalResult.importance < 7) {
-        logger.info('Skipping memory storage, low importance', { score: evalResult.importance, userId });
+      // Accept if importance is high, or if it's highly emotionally salient or relevant to learning
+      if (evalResult.importance < 6 && evalResult.learning_relevance < 7 && evalResult.emotional_salience < 7) {
+        logger.info('Skipping memory storage, low hybrid scores', { scores: evalResult, userId });
         return;
       }
 
@@ -40,24 +56,17 @@ Return ONLY JSON: { "importance": number (0-10) }`;
           user_id: userId,
           content: trimmed,
           embedding: `[${embedding.join(',')}]`,
+          importance_score: evalResult.importance,
+          novelty_score: evalResult.novelty,
+          emotional_score: evalResult.emotional_salience,
+          learning_score: evalResult.learning_relevance,
+          repetition_score: evalResult.repetition_signal
         });
 
       if (error) {
         logger.error('Failed to store chat memory embedding', error);
       } else {
-        // Eviction strategy: TTL pruning (delete memories older than 30 days)
-        // Helps maintain relevance and scale the pgvector index
-        const thirtyDaysAgo = new Date();
-        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-        
-        await supabase
-          .from('chat_memory')
-          .delete()
-          .eq('user_id', userId)
-          .lt('created_at', thirtyDaysAgo.toISOString())
-          .then(({ error }) => {
-            if (error) logger.warn('Background memory eviction failed', error);
-          });
+        logger.info('Stored durable chat memory', { userId });
       }
     } catch (err) {
       logger.error('Error in storeMessageInMemory', err);
@@ -72,44 +81,42 @@ Return ONLY JSON: { "importance": number (0-10) }`;
       const supabase = await createClient();
       const matchCount = Math.max(1, Math.min(limit, MAX_MEMORY_RESULTS));
 
-      let vectorMatches: any[] = [];
-      const embedding = await getEmbedding(trimmed).catch((err) => {
-        logger.warn('Embedding generation failed, falling back to BM25 only', err);
-        return null;
-      });
-
-      if (embedding && Array.isArray(embedding) && embedding.length > 0 && typeof embedding[0] === 'number') {
-        // Semantic Search (pgvector)
-        const { data, error } = await supabase.rpc('match_chat_memory', {
-          query_embedding: `[${embedding.join(',')}]`,
-          match_threshold: 0.70, // lower threshold for hybrid
-          match_count: matchCount * 2, // overfetch for RRF
-          p_user_id: userId,
-        });
-        
-        if (!error && data) {
-          vectorMatches = data;
-        } else if (error) {
-          logger.warn('match_chat_memory RPC failed, falling back to BM25', { code: error.code });
-        }
-      }
-
-      // Keyword Search (BM25)
-      let textMatches: any[] = [];
+      // Run semantic and keyword searches in parallel
       const sanitizedQuery = trimmed.replace(/[^\w\s]/gi, ' ').trim().split(/\s+/).join(' | ');
-      
-      if (sanitizedQuery) {
-        const { data, error } = await supabase
-          .from('chat_memory')
-          .select('id, content')
-          .eq('user_id', userId)
-          .textSearch('content', sanitizedQuery)
-          .limit(matchCount * 2);
-          
-        if (!error && data) {
-          textMatches = data;
-        }
-      }
+
+      const [vectorResult, textResult] = await Promise.all([
+        (async () => {
+          const embedding = await getEmbedding(trimmed).catch((err) => {
+            logger.warn('Embedding generation failed, falling back to BM25 only', err);
+            return null;
+          });
+
+          if (embedding && Array.isArray(embedding) && embedding.length > 0 && typeof embedding[0] === 'number') {
+            const { data, error } = await supabase.rpc('match_chat_memory', {
+              query_embedding: `[${embedding.join(',')}]`,
+              match_threshold: 0.70,
+              match_count: matchCount * 2,
+              p_user_id: userId,
+            });
+            if (error) logger.warn('match_chat_memory RPC failed', { code: error.code });
+            return data || [];
+          }
+          return [];
+        })(),
+        (async () => {
+          if (!sanitizedQuery) return [];
+          const { data, error } = await supabase
+            .from('chat_memory')
+            .select('id, content')
+            .eq('user_id', userId)
+            .textSearch('content', sanitizedQuery)
+            .limit(matchCount * 2);
+          return data || [];
+        })()
+      ]);
+
+      const vectorMatches = vectorResult;
+      const textMatches = textResult;
 
       if (!vectorMatches.length && !textMatches.length) return [];
 

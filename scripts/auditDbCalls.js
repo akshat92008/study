@@ -8,7 +8,8 @@ const ignoredPathParts = [
   `${path.sep}node_modules${path.sep}`,
   `${path.sep}.next${path.sep}`,
   `${path.sep}scratch${path.sep}`,
-  `${path.sep}lib${path.sep}db${path.sep}migrations${path.sep}`,
+  `${path.sep}temp_neetapp${path.sep}`,
+  `${path.sep}lib${path.sep}db${path.sep}migrations_deprecated${path.sep}`,
 ];
 
 const forbiddenTokens = [
@@ -66,4 +67,21 @@ if (offenders.length > 0) {
   process.exit(1);
 }
 
-console.log('✅ No forbidden schema drift tokens found in live TypeScript code.');
+const migrationsDir = path.join(root, 'supabase', 'migrations');
+const versions = new Map();
+for (const file of fs.readdirSync(migrationsDir)) {
+  if (!file.endsWith('.sql')) continue;
+  const version = file.split('_')[0];
+  versions.set(version, [...(versions.get(version) || []), file]);
+}
+const duplicateVersions = Array.from(versions.entries())
+  .filter(([, files]) => files.length > 1)
+  .map(([version, files]) => `${version}: ${files.join(', ')}`);
+
+if (duplicateVersions.length > 0) {
+  console.error('Duplicate Supabase migration versions found:');
+  duplicateVersions.forEach((entry) => console.error(`- ${entry}`));
+  process.exit(1);
+}
+
+console.log('No forbidden schema drift tokens found in live TypeScript code.');

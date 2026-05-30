@@ -20,19 +20,21 @@ export interface ProviderHealth {
   failCount: number;
   lastFailure: number; // unix ms
   cooldownMs: number;
+  avgLatencyMs: number;
+  successCount: number;
 }
 
 const HEALTH_TTL_SECONDS = 300; // 5 minutes — matches typical cooldown window
 
 export async function getProviderHealth(providerId: string): Promise<ProviderHealth> {
   const redis = getRedis();
-  if (!redis) return { failCount: 0, lastFailure: 0, cooldownMs: 0 };
+  if (!redis) return { failCount: 0, lastFailure: 0, cooldownMs: 0, avgLatencyMs: 0, successCount: 0 };
 
   try {
     const raw = await redis.get<ProviderHealth>(`provider:health:${providerId}`);
-    return raw ?? { failCount: 0, lastFailure: 0, cooldownMs: 0 };
+    return raw ?? { failCount: 0, lastFailure: 0, cooldownMs: 0, avgLatencyMs: 0, successCount: 0 };
   } catch {
-    return { failCount: 0, lastFailure: 0, cooldownMs: 0 };
+    return { failCount: 0, lastFailure: 0, cooldownMs: 0, avgLatencyMs: 0, successCount: 0 };
   }
 }
 
@@ -45,6 +47,7 @@ export async function recordProviderFailure(
 
   const current = await getProviderHealth(providerId);
   const updated: ProviderHealth = {
+    ...current,
     failCount: current.failCount + 1,
     lastFailure: Date.now(),
     cooldownMs,
@@ -57,11 +60,33 @@ export async function recordProviderFailure(
   }
 }
 
+export async function recordProviderSuccess(providerId: string, latencyMs: number): Promise<void> {
+  const redis = getRedis();
+  if (!redis) return;
+  const current = await getProviderHealth(providerId);
+  const newSuccessCount = current.successCount + 1;
+  const newAvgLatency = current.avgLatencyMs === 0 
+    ? latencyMs 
+    : (current.avgLatencyMs * 0.7) + (latencyMs * 0.3); // exponential moving average
+
+  const updated: ProviderHealth = {
+    ...current,
+    successCount: newSuccessCount,
+    avgLatencyMs: newAvgLatency,
+  };
+  try {
+    await redis.set(`provider:health:${providerId}`, updated, { ex: HEALTH_TTL_SECONDS });
+  } catch {}
+}
+
 export async function resetProviderHealth(providerId: string): Promise<void> {
   const redis = getRedis();
   if (!redis) return;
   try {
-    await redis.del(`provider:health:${providerId}`);
+    const current = await getProviderHealth(providerId);
+    // Only reset failures, keep latency metrics
+    const updated = { ...current, failCount: 0, lastFailure: 0, cooldownMs: 0 };
+    await redis.set(`provider:health:${providerId}`, updated, { ex: HEALTH_TTL_SECONDS });
   } catch {}
 }
 

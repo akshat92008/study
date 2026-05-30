@@ -14,13 +14,17 @@ type RateLimitResult = {
 let redis: Redis | null = null;
 let limiters: Record<string, Ratelimit> = {};
 
+function shouldFailClosed(_requested?: boolean): boolean {
+  return process.env.NODE_ENV === 'production';
+}
+
 function getRedis(): Redis | null {
   if (redis) return redis;
   try {
     const url = process.env.UPSTASH_REDIS_REST_URL;
     const token = process.env.UPSTASH_REDIS_REST_TOKEN;
     if (!url || !token) {
-      console.warn('[RateLimit] Upstash credentials missing — fail-open mode');
+      console.warn('[RateLimit] Upstash credentials missing');
       return null;
     }
     redis = new Redis({ url, token });
@@ -65,15 +69,16 @@ export function rateLimitResponse(remaining: number, resetAt: number) {
  * This prevents Redis outages from taking down the entire product.
  */
 export async function checkRateLimit(
-  identifierOrOptions: string | { identifier: string; bucket: string; maxTokens: number; windowSeconds: number },
+  identifierOrOptions: string | { identifier: string; bucket: string; maxTokens: number; windowSeconds: number; failClosed?: boolean },
   options?: {
     name: string;
     requests: number;
     window: string;
+    failClosed?: boolean;
   }
 ): Promise<RateLimitResult> {
   let id: string;
-  let opt: { name: string; requests: number; window: string };
+  let opt: { name: string; requests: number; window: string; failClosed?: boolean };
 
   if (typeof identifierOrOptions === 'string') {
     id = identifierOrOptions;
@@ -84,23 +89,32 @@ export async function checkRateLimit(
       name: identifierOrOptions.bucket,
       requests: identifierOrOptions.maxTokens,
       window: `${identifierOrOptions.windowSeconds} s`,
+      failClosed: identifierOrOptions.failClosed,
     };
   }
 
   const limiter = getLimiter(opt.name, opt.requests, opt.window);
   
-  // FAIL OPEN: if Redis is unavailable, allow request but mark as degraded
+  // Daily cap for heavy routes (abuse prevention)
+  const isHeavy = ['chat', 'autopsy', 'planner', 'revision', 'atlas'].includes(opt.name);
+  const dailyLimiter = isHeavy ? getLimiter(`${opt.name}_daily`, 200, '86400 s') : null;
+
   if (!limiter) {
-    return {
-      allowed: true,
-      remaining: opt.requests,
-      resetAt: Date.now() + 60000,
-      limit: opt.requests,
-      degraded: true,
-    };
+    if (shouldFailClosed(opt.failClosed)) {
+      return { allowed: false, remaining: 0, resetAt: Date.now() + 60000, limit: opt.requests, degraded: true };
+    }
+    return { allowed: true, remaining: opt.requests, resetAt: Date.now() + 60000, limit: opt.requests, degraded: true };
   }
 
   try {
+    if (dailyLimiter) {
+      const dailyRes = await dailyLimiter.limit(id);
+      if (!dailyRes.success) {
+        Metrics.rateLimitHit(`${opt.name}_daily`, id);
+        return { allowed: false, remaining: 0, resetAt: dailyRes.reset, limit: 200 };
+      }
+    }
+
     const { success, remaining, reset, limit } = await limiter.limit(id);
     if (!success) {
       Metrics.rateLimitHit(opt.name, id);
@@ -112,8 +126,16 @@ export async function checkRateLimit(
       limit,
     };
   } catch (err) {
-    // FAIL OPEN on transient Redis errors
-    console.error('[RateLimit] Check failed, allowing request:', err);
+    console.error('[RateLimit] Check failed:', err);
+    if (shouldFailClosed(opt.failClosed)) {
+      return {
+        allowed: false,
+        remaining: 0,
+        resetAt: Date.now() + 60000,
+        limit: opt.requests,
+        degraded: true,
+      };
+    }
     return {
       allowed: true,
       remaining: opt.requests,

@@ -52,6 +52,27 @@
       ],
       "@/engines/*": [
         "./lib/engines/*"
+      ],
+      "@supabase/ssr": [
+        "./types/supabase-ssr-shim.d.ts"
+      ],
+      "@supabase/supabase-js": [
+        "./types/supabase-js-shim.d.ts"
+      ],
+      "zustand": [
+        "./types/zustand-shim.d.ts"
+      ],
+      "zustand/middleware": [
+        "./types/zustand-shim.d.ts"
+      ],
+      "framer-motion": [
+        "./types/framer-motion-shim.d.ts"
+      ],
+      "recharts": [
+        "./types/recharts-shim.d.ts"
+      ],
+      "@xyflow/react": [
+        "./types/xyflow-react-shim.d.ts"
       ]
     }
   },
@@ -59,11 +80,16 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts"
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",
-    "scratch"
+    "scratch",
+    ".next/dev",
+    "temp_neetapp",
+    "tests",
+    "__tests__",
+    "scripts",
+    "*.config.ts"
   ]
 }

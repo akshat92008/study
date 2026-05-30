@@ -18,7 +18,7 @@ export async function GET() {
     sambanova: !!process.env.SAMBANOVA_API_KEY,
     groq: !!process.env.GROQ_API_KEY,
     cloudflare: !!(process.env.CF_ACCOUNT_ID && process.env.CF_API_TOKEN),
-    google: !!process.env.GOOGLE_AI_KEY,
+    google: !!process.env.GEMINI_API_KEY,
   };
 
   return NextResponse.json({

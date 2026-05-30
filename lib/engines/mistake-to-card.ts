@@ -15,7 +15,22 @@ export async function createCardsFromAutopsyMistakes(userId: string, autopsyId: 
   if (!questions || questions.length === 0) return 0;
 
   const emptyCard = createEmptyCard();
-  const cards = [];
+  const cards: Array<{
+    user_id: string;
+    concept_id: string | null;
+    front: string;
+    back: string;
+    subject: any;
+    chapter: any;
+    due: string;
+    stability: number;
+    difficulty: number;
+    elapsed_days: number;
+    scheduled_days: number;
+    reps: number;
+    lapses: number;
+    state: number;
+  }> = [];
 
   for (const q of questions) {
     const conceptId = await resolveConceptByName(userId, q.subject, q.chapter || '');

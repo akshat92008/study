@@ -12,7 +12,7 @@ export class EventReplayTooling {
   static async getDLQEvents(limit: number = 50, unresolvedOnly: boolean = true) {
     const supabase = await createClient();
     let query = supabase
-      .from('dlq_events')
+      .from('event_dlq')
       .select('*')
       .order('created_at', { ascending: false })
       .limit(limit);
@@ -38,7 +38,7 @@ export class EventReplayTooling {
 
     // 1. Fetch DLQ event
     const { data: dlqEvent, error: fetchErr } = await supabase
-      .from('dlq_events')
+      .from('event_dlq')
       .select('*')
       .eq('id', dlqEventId)
       .is('resolved_at', null)
@@ -53,14 +53,13 @@ export class EventReplayTooling {
       // We append the original trace and event ID to the metadata to maintain lineage.
       const newEventId = await EventDispatcher.publish({
         user_id: dlqEvent.user_id,
-        type: dlqEvent.type as any,
-        data: dlqEvent.data,
+        type: dlqEvent.event_type as any,
+        data: dlqEvent.payload,
         idempotency_key: undefined, // Strip idempotency so it isn't dropped
         metadata: {
-          ...dlqEvent.metadata,
+          ...(dlqEvent.event_metadata || {}),
           source: 'dlq_replay',
           original_event_id: dlqEvent.event_id,
-          original_trace_id: dlqEvent.trace_id,
           replay_timestamp: new Date().toISOString()
         }
       });
@@ -71,7 +70,7 @@ export class EventReplayTooling {
 
       // 3. Mark DLQ event as resolved
       await supabase
-        .from('dlq_events')
+        .from('event_dlq')
         .update({
           resolved_at: new Date().toISOString(),
           resolution_notes: resolutionNotes
@@ -81,7 +80,7 @@ export class EventReplayTooling {
       logger.info('Successfully replayed DLQ event', {
         dlqEventId,
         newEventId,
-        originalTraceId: dlqEvent.trace_id
+        originalEventId: dlqEvent.event_id
       });
 
       return newEventId;
@@ -98,9 +97,9 @@ export class EventReplayTooling {
     const supabase = await createClient();
     
     const { data: events, error: eventErr } = await supabase
-      .from('student_events')
-      .select('id, user_id, type, status, version, metadata, created_at, last_error')
-      .eq('trace_id', traceId);
+      .from('event_queue')
+      .select('id, user_id, type, status, metadata, created_at, last_error')
+      .eq('metadata->>trace_id', traceId);
 
     if (eventErr || !events) {
       return null;
@@ -109,15 +108,15 @@ export class EventReplayTooling {
     // Fetch consumer tracking for all events in this trace
     const eventIds = events.map(e => e.id);
     const { data: consumers, error: consErr } = await supabase
-      .from('event_consumer_tracking')
+      .from('consumer_locks')
       .select('*')
       .in('event_id', eventIds);
 
     // Fetch DLQ history
     const { data: dlq, error: dlqErr } = await supabase
-      .from('dlq_events')
+      .from('event_dlq')
       .select('*')
-      .eq('trace_id', traceId);
+      .eq('event_metadata->>trace_id', traceId);
 
     return {
       trace_id: traceId,

@@ -1,15 +1,14 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { getEmbedding } from '@/lib/ai/gemini';
 import { logger } from '@/lib/utils/logger';
 import { after } from 'next/server';
 
-export async function POST(req: Request) {
-  // Secured — only callable with CRON_SECRET header
-  const authHeader = req.headers.get('authorization');
-  if (!process.env.CRON_SECRET || authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
+import { validateCronRequest } from '@/lib/middleware/cronAuth';
+
+export async function POST(req: NextRequest) {
+  const authError = validateCronRequest(req);
+  if (authError) return authError;
 
   const supabase = await createClient();
 

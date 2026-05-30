@@ -41,7 +41,7 @@ export default function KnowledgeMap({ concepts: initialConcepts, links = [], st
     
     // Subscribe to concept mastery changes
     const channel = supabase
-      .channel('atlas-live')
+      .channel(`atlas-live-${userId}`)
       .on('postgres_changes', {
         event: 'UPDATE',
         schema: 'public',

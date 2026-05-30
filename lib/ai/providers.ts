@@ -43,7 +43,7 @@ export interface ProviderConfig {
 
 export const REQUIRED_ENV_VARS: Record<ProviderName, string[]> = {
   cloudflare: ['CF_ACCOUNT_ID', 'CF_API_TOKEN'],
-  google: ['GOOGLE_AI_KEY'],
+  google: ['GEMINI_API_KEY'],
   cerebras: [], // No specific env vars
   cerebras_fallback: [],
   sambanova: [], // No specific env vars
@@ -139,7 +139,7 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
     google: {
       name: 'google',
       baseUrl: 'https://generativelanguage.googleapis.com/v1beta',
-      apiKey: process.env.GOOGLE_AI_KEY,
+      apiKey: process.env.GEMINI_API_KEY,
       models: { quality: 'gemini-2.0-flash', fast: 'gemini-2.0-flash' },
       supportsStreaming: true,
       supportsVision: true,

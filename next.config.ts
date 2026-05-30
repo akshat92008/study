@@ -1,6 +1,16 @@
 import type { NextConfig } from 'next';
-import { withSentryConfig } from '@sentry/nextjs';
 import { validateEnvironment } from './lib/utils/env-validate';
+
+function getWithSentryConfig(): (config: NextConfig, options: Record<string, unknown>) => NextConfig {
+  try {
+    if (typeof require === 'function') {
+      return require('@sentry/nextjs').withSentryConfig;
+    }
+  } catch {
+    // Sentry is optional for local MVP validation.
+  }
+  return (config) => config;
+}
 
 // Validate at build/start time — fails fast before any request
 if (process.env.NODE_ENV !== 'test') {
@@ -40,6 +50,8 @@ const nextConfig: NextConfig = {
     ];
   },
 };
+
+const withSentryConfig = getWithSentryConfig();
 
 export default withSentryConfig(nextConfig, {
   // Sentry org/project — set these as env vars in Vercel/GitHub

@@ -1,8 +1,3 @@
-import { NodeSDK } from '@opentelemetry/sdk-node';
-import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
-import { Resource } from '@opentelemetry/resources';
-import { SEMRESATTRS_SERVICE_NAME, SEMRESATTRS_SERVICE_VERSION } from '@opentelemetry/semantic-conventions';
-import { SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base';
 import { trace as apiTrace, metrics as apiMetrics, SpanStatusCode } from '@opentelemetry/api';
 
 export const tracer = apiTrace.getTracer('cognition-os-tracer');
@@ -10,10 +5,15 @@ export const trace = tracer;
 export const meter = apiMetrics.getMeter('cognition-os-meter');
 
 let _sdkInitialized = false;
+let _sdkStarting = false;
+
+const runtimeImport = new Function('specifier', 'return import(specifier)') as <T = any>(
+  specifier: string
+) => Promise<T>;
 
 export function initTelemetry(): void {
   // Only initialize once, only in Node.js (not Edge runtime), only if endpoint configured
-  if (_sdkInitialized) return;
+  if (_sdkInitialized || _sdkStarting) return;
   if (typeof process === 'undefined') return;
   if (!process.env.OTEL_EXPORTER_OTLP_ENDPOINT) {
     // No exporter configured — tracer/meter still work but spans go nowhere
@@ -22,7 +22,38 @@ export function initTelemetry(): void {
     return;
   }
 
+  _sdkStarting = true;
+  void startTelemetry().finally(() => {
+    _sdkStarting = false;
+  });
+}
+
+async function startTelemetry(): Promise<void> {
   try {
+    const [
+      { NodeSDK },
+      { OTLPTraceExporter },
+      resourcesModule,
+      semanticConventions,
+      { SimpleSpanProcessor },
+    ] = await Promise.all([
+      runtimeImport('@opentelemetry/sdk-node'),
+      runtimeImport('@opentelemetry/exporter-trace-otlp-http'),
+      runtimeImport('@opentelemetry/resources'),
+      runtimeImport('@opentelemetry/semantic-conventions'),
+      runtimeImport('@opentelemetry/sdk-trace-base'),
+    ]);
+
+    const Resource = resourcesModule.Resource;
+    const serviceNameKey =
+      semanticConventions.SEMRESATTRS_SERVICE_NAME ||
+      semanticConventions.SEMATTRS_SERVICE_NAME ||
+      'service.name';
+    const serviceVersionKey =
+      semanticConventions.SEMRESATTRS_SERVICE_VERSION ||
+      semanticConventions.SEMATTRS_SERVICE_VERSION ||
+      'service.version';
+
     const traceExporter = new OTLPTraceExporter({
       url: process.env.OTEL_EXPORTER_OTLP_ENDPOINT + '/v1/traces',
       headers: process.env.OTEL_EXPORTER_OTLP_HEADERS
@@ -31,17 +62,15 @@ export function initTelemetry(): void {
     });
 
     const sdk = new NodeSDK({
-      // @ts-expect-error - Resource version mismatch between OTel packages
       resource: new Resource({
-        [SEMRESATTRS_SERVICE_NAME]: 'cognition-os',
-        [SEMRESATTRS_SERVICE_VERSION]: process.env.NEXT_PUBLIC_APP_VERSION ?? '0.1.0',
+        [serviceNameKey]: 'cognition-os',
+        [serviceVersionKey]: process.env.NEXT_PUBLIC_APP_VERSION ?? '0.1.0',
         'deployment.environment': process.env.NODE_ENV ?? 'development',
       }),
-      // @ts-expect-error - SpanProcessor version mismatch between OTel packages
       spanProcessor: new SimpleSpanProcessor(traceExporter),
-    });
+    } as any);
 
-    sdk.start();
+    await sdk.start();
     _sdkInitialized = true;
     console.log('[OTel] Telemetry initialized →', process.env.OTEL_EXPORTER_OTLP_ENDPOINT);
 

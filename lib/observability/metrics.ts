@@ -1,8 +1,9 @@
 // lib/observability/metrics.ts
 // Real implementation — every call routes to Sentry breadcrumbs + performance spans.
 // Uses dynamic import so Sentry only loads in environments where DSN is configured.
-import * as Sentry from '@sentry/nextjs';
 import { logger } from '@/lib/utils/logger';
+import { getCorrelationId } from '@/lib/telemetry/correlation';
+import { withSentry } from '@/lib/telemetry/sentry-runtime';
 
 const isSentryActive = (): boolean =>
   typeof process.env.SENTRY_DSN === 'string' &&
@@ -29,17 +30,20 @@ export const Metrics = {
       };
 
       if (isSentryActive()) {
-        Sentry.addBreadcrumb({
-          category: 'ai.call',
-          message: `${provider} — ${taskType} — ${latencyMs}ms — ${success ? 'OK' : 'FAIL'}`,
-          level: success ? 'info' : 'warning',
-          data,
-        });
+        const correlationId = getCorrelationId();
+        withSentry((Sentry) => {
+          Sentry.addBreadcrumb?.({
+            category: 'ai.call',
+            message: `${provider} — ${taskType} — ${latencyMs}ms — ${success ? 'OK' : 'FAIL'}`,
+            level: success ? 'info' : 'warning',
+            data: { ...data, trace_id: correlationId },
+          });
 
-        if (!success) {
-          // Surface failed AI calls as Sentry measurements so they show up in dashboards
-          Sentry.setMeasurement(`ai.${provider}.latency_ms`, latencyMs, 'millisecond');
-        }
+          if (!success) {
+            // Surface failed AI calls as Sentry measurements so they show up in dashboards
+            Sentry.setMeasurement?.(`ai.${provider}.latency_ms`, latencyMs, 'millisecond');
+          }
+        });
       }
 
       // Always log to structured console so Vercel/Datadog log drain picks it up
@@ -69,11 +73,13 @@ export const Metrics = {
       };
 
       if (isSentryActive()) {
-        Sentry.addBreadcrumb({
-          category: 'event.consumer',
-          message: `${consumer} processed ${eventType} in ${durationMs}ms — ${success ? 'OK' : 'FAIL'}`,
-          level: success ? 'info' : 'error',
-          data,
+        withSentry((Sentry) => {
+          Sentry.addBreadcrumb?.({
+            category: 'event.consumer',
+            message: `${consumer} processed ${eventType} in ${durationMs}ms — ${success ? 'OK' : 'FAIL'}`,
+            level: success ? 'info' : 'error',
+            data,
+          });
         });
       }
 
@@ -91,11 +97,13 @@ export const Metrics = {
   embeddingGenerated: (count: number, model: string): void => {
     try {
       if (isSentryActive()) {
-        Sentry.addBreadcrumb({
-          category: 'embedding.generated',
-          message: `Generated ${count} embedding(s) via ${model}`,
-          level: 'info',
-          data: { count, model },
+        withSentry((Sentry) => {
+          Sentry.addBreadcrumb?.({
+            category: 'embedding.generated',
+            message: `Generated ${count} embedding(s) via ${model}`,
+            level: 'info',
+            data: { count, model },
+          });
         });
       }
     } catch {
@@ -109,11 +117,13 @@ export const Metrics = {
   tokenUsage: (model: string, promptTokens: number, completionTokens: number): void => {
     try {
       if (isSentryActive()) {
-        Sentry.addBreadcrumb({
-          category: 'token.usage',
-          message: `${model}: ${promptTokens} prompt / ${completionTokens} completion`,
-          level: 'info',
-          data: { model, promptTokens, completionTokens },
+        withSentry((Sentry) => {
+          Sentry.addBreadcrumb?.({
+            category: 'token.usage',
+            message: `${model}: ${promptTokens} prompt / ${completionTokens} completion`,
+            level: 'info',
+            data: { model, promptTokens, completionTokens },
+          });
         });
       }
     } catch {
@@ -129,11 +139,13 @@ export const Metrics = {
       const data = { endpoint, userId: userId.slice(0, 8) + '…' }; // partial ID only
 
       if (isSentryActive()) {
-        Sentry.addBreadcrumb({
-          category: 'rate_limit.hit',
-          message: `Rate limit hit on ${endpoint}`,
-          level: 'warning',
-          data,
+        withSentry((Sentry) => {
+          Sentry.addBreadcrumb?.({
+            category: 'rate_limit.hit',
+            message: `Rate limit hit on ${endpoint}`,
+            level: 'warning',
+            data,
+          });
         });
       }
 
@@ -144,22 +156,128 @@ export const Metrics = {
   },
 
   /**
+   * Track queue depth for background events.
+   */
+  queueDepth: (depth: number): void => {
+    try {
+      if (isSentryActive()) {
+        withSentry((Sentry) => {
+          Sentry.setMeasurement?.('event_queue.depth', depth, '');
+        });
+      }
+    } catch {}
+  },
+
+  /**
+   * Track planner failures (e.g. LLM failure causing fallback).
+   */
+  plannerFailure: (reason: string): void => {
+    try {
+      if (isSentryActive()) {
+        withSentry((Sentry) => {
+          Sentry.addBreadcrumb?.({
+            category: 'planner.failure',
+            message: `Planner failed: ${reason}`,
+            level: 'error',
+            data: { reason, trace_id: getCorrelationId() },
+          });
+        });
+      }
+      logger.error('Planner failure', undefined, { reason });
+    } catch {}
+  },
+
+  /**
+   * Track RLS Denials for security monitoring.
+   */
+  rlsDenial: (table: string, action?: string): void => {
+    try {
+      if (isSentryActive()) {
+        withSentry((Sentry) => {
+          Sentry.addBreadcrumb?.({
+            category: 'security.rls_denial',
+            message: `RLS policy denied access to ${table}`,
+            level: 'error',
+            data: { table, action, trace_id: getCorrelationId() },
+          });
+        });
+      }
+      logger.error('RLS Denial', undefined, { table, action });
+    } catch {}
+  },
+
+  /**
+   * Track End-to-end student response latency.
+   */
+  studentResponseLatency: (latencyMs: number): void => {
+    try {
+      if (isSentryActive()) {
+        withSentry((Sentry) => {
+          Sentry.setMeasurement?.('student_response.latency_ms', latencyMs, 'millisecond');
+        });
+      }
+    } catch {}
+  },
+
+  /**
+   * Track event retries and DLQ spikes.
+   */
+  eventRetry: (consumer: string, attempt: number, isDlq: boolean): void => {
+    try {
+      if (isSentryActive()) {
+        withSentry((Sentry) => {
+          Sentry.addBreadcrumb?.({
+            category: isDlq ? 'event.dlq_spike' : 'event.retry',
+            message: isDlq ? `Event moved to DLQ: ${consumer}` : `Event retry ${attempt} for ${consumer}`,
+            level: isDlq ? 'fatal' : 'warning',
+            data: { consumer, attempt, isDlq, trace_id: getCorrelationId() },
+          });
+        });
+      }
+    } catch {}
+  },
+
+  /**
    * Track a critical error with full Sentry capture.
    * Use this for errors that indicate system-level failure, not user errors.
    */
   captureError: (error: Error, context?: Record<string, unknown>): void => {
     try {
-      if (context) {
-        Sentry.withScope((scope) => {
-          scope.setExtras(context);
-          Sentry.captureException(error);
-        });
-      } else {
-        Sentry.captureException(error);
-      }
-      logger.error('Critical error captured', error);
+      const traceId = getCorrelationId();
+      withSentry((Sentry) => {
+        if (Sentry.withScope) {
+          Sentry.withScope((scope: any) => {
+            if (context) scope.setExtras(context);
+            if (traceId) scope.setTag('trace_id', traceId);
+            Sentry.captureException?.(error);
+          });
+          return;
+        }
+        Sentry.captureException?.(error, { extra: context, tags: traceId ? { trace_id: traceId } : undefined });
+      });
+      logger.error('Critical error captured', error, { traceId });
     } catch {
       // Metrics must never throw
     }
+  },
+
+  /**
+   * Track provider exhaustion (when all free providers fail).
+   */
+  providerExhaustion: (taskType: string): void => {
+    try {
+      if (isSentryActive()) {
+        withSentry((Sentry) => {
+          Sentry.addBreadcrumb?.({
+            category: 'ai.provider_exhaustion',
+            message: `All providers exhausted for ${taskType}`,
+            level: 'fatal',
+            data: { taskType, trace_id: getCorrelationId() },
+          });
+          Sentry.captureMessage?.(`All providers exhausted for ${taskType}`, 'warning');
+        });
+      }
+      logger.error('Provider exhaustion', undefined, { taskType, trace_id: getCorrelationId() });
+    } catch {}
   },
 };

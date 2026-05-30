@@ -14,29 +14,31 @@ export async function logMockTest(formData: FormData) {
   const testData = {
     user_id: user.id,
     test_name: formData.get('testName') as string,
+    exam_type: examType,
     total_questions: parseInt(formData.get('totalQuestions') as string) || 200,
-    attempted: parseInt(formData.get('attempted') as string) || 0,
-    correct: parseInt(formData.get('correct') as string) || 0,
-    incorrect: parseInt(formData.get('incorrect') as string) || 0,
+    correct_count: parseInt(formData.get('correct') as string) || 0,
+    incorrect_count: parseInt(formData.get('incorrect') as string) || 0,
     total_marks: parseFloat(formData.get('totalMarks') as string) || 100,
-    marks_obtained: parseFloat(formData.get('marksObtained') as string) || 0,
-    negative_marks: parseFloat(formData.get('negativeMarks') as string) || 0,
-    time_taken: parseInt(formData.get('timeTaken') as string) || 0,
-    total_time: parseInt(formData.get('totalTime') as string) || 180,
-    unattempted: 0,
-    subject_wise: JSON.parse(formData.get('subjectWise') as string || '[]'),
+    current_score: parseFloat(formData.get('marksObtained') as string) || 0,
+    recoverable_marks: 0,
+    potential_score: 0,
+    unattempted_count: 0,
+    diagnosis: { subject_wise: JSON.parse(formData.get('subjectWise') as string || '[]') },
+    status: 'completed',
+    completed_at: new Date().toISOString(),
   };
 
-  testData.unattempted = testData.total_questions - testData.attempted;
+  testData.unattempted_count = Math.max(0, testData.total_questions - testData.correct_count - testData.incorrect_count);
+  testData.recoverable_marks = Math.max(0, testData.incorrect_count * 0.5);
+  testData.potential_score = testData.total_marks;
 
-  const { error } = await supabase.from('mock_tests').insert(testData);
+  const { error } = await supabase.from('mock_autopsies').insert(testData);
   if (error) return { error: error.message };
 
   // Auto-generate AI insights about the test
   const prompt = `${examType} Mock Test Analysis:
-Score: ${testData.marks_obtained}/${testData.total_marks}
-Correct: ${testData.correct}, Incorrect: ${testData.incorrect}, Unattempted: ${testData.unattempted}
-Time: ${testData.time_taken} minutes
+Score: ${testData.current_score}/${testData.total_marks}
+Correct: ${testData.correct_count}, Incorrect: ${testData.incorrect_count}, Unattempted: ${testData.unattempted_count}
 
 Give a brief 2-sentence strategic assessment.`;
 

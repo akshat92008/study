@@ -8,12 +8,11 @@ type RateLimitConfig = {
   windowSeconds: number;
 };
 
-const ROUTE_LIMITS: Record<string, RateLimitConfig> = {
-  autopsy:   { bucket: 'autopsy',   maxTokens: 5,  windowSeconds: 300 },  // 5/5min
+const ROUTE_LIMITS: Record<string, RateLimitConfig & { failClosed?: boolean }> = {
+  autopsy:   { bucket: 'autopsy',   maxTokens: 5,  windowSeconds: 300, failClosed: true },  // 5/5min
   ingest:    { bucket: 'ingest',    maxTokens: 10, windowSeconds: 300 },  // 10/5min
   revision:  { bucket: 'revision',  maxTokens: 60, windowSeconds: 60  },  // 60/min
-  planner:   { bucket: 'planner',   maxTokens: 10, windowSeconds: 60  },  // 10/min
-  pulse:     { bucket: 'pulse',     maxTokens: 60, windowSeconds: 60  },  // 60/min
+  planner:   { bucket: 'planner',   maxTokens: 10, windowSeconds: 60, failClosed: true },  // 10/min
   atlas:     { bucket: 'atlas',     maxTokens: 30, windowSeconds: 60  },  // 30/min
   knowledge: { bucket: 'knowledge', maxTokens: 30, windowSeconds: 60  },  // 30/min
 };

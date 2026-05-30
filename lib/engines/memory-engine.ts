@@ -1,5 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
-import { getEmbedding } from '@/lib/ai/gemini';
+import { getEmbeddingsBatch } from '@/lib/ai/embeddings';
 
 function buildSemanticChunks(text: string, chunkSize = 800, overlap = 150): string[] {
   const chunks: string[] = [];
@@ -61,23 +61,39 @@ export async function processDocumentIntoMemory(userId: string, fileData: { titl
 
   // Advanced semantic chunking
   const rawChunks = buildSemanticChunks(fileData.text, 800, 150);
-  let processedCount = 0;
+  
+  // Process embeddings async in background using batches
+  (async () => {
+    try {
+      const embeddings = await getEmbeddingsBatch(rawChunks, 10);
+      const inserts: Array<{
+        user_id: string;
+        material_id: any;
+        chunk_text: string;
+        embedding: string;
+      }> = [];
+      for (let i = 0; i < rawChunks.length; i++) {
+        const emb = embeddings[i];
+        if (emb && Array.isArray(emb) && emb.length > 0) {
+          inserts.push({
+            user_id: userId,
+            material_id: material.id,
+            chunk_text: rawChunks[i],
+            embedding: `[${emb.join(',')}]`
+          });
+        }
+      }
+      
+      if (inserts.length > 0) {
+        // Insert in batches of 100
+        for (let i = 0; i < inserts.length; i += 100) {
+          await supabase.from('material_chunks').insert(inserts.slice(i, i + 100));
+        }
+      }
+    } catch (err) {
+      console.error('Background embedding failed:', err);
+    }
+  })();
 
-  for (const chunk of rawChunks) {
-    // Generate dense vector embedding
-    const embedding = await getEmbedding(chunk);
-    if (!embedding || !Array.isArray(embedding) || embedding.length === 0 || typeof embedding[0] !== "number") continue;
-
-    // We do NOT need to generate fts_vector here, 
-    // it is GENERATED ALWAYS AS (to_tsvector('english', chunk_text)) STORED at DB level.
-    await supabase.from('material_chunks').insert({
-      user_id: userId,
-      material_id: material.id,
-      chunk_text: chunk,
-      embedding: `[${embedding.join(',')}]`
-    });
-    processedCount++;
-  }
-
-  return { success: true, chunks: processedCount, materialId: material.id };
+  return { success: true, message: 'Processing started in background', chunks: rawChunks.length, materialId: material.id };
 }

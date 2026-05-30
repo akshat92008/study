@@ -191,7 +191,7 @@ export const useAppStore = create<AppState>()(
           const { data: { user } } = await supabase.auth.getUser();
           if (!user) return null;
 
-          let goalData = null;
+          let goalData: any = null;
           if (details) {
             const res = await fetch('/api/goals', {
               method: 'POST',

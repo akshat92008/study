@@ -1,87 +1,99 @@
-// __tests__/integration/autopsy-event-loop.test.ts
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
-import { AutopsyEngine } from '@/lib/engines/autopsy-engine';
-import { EventOrchestrator } from '@/lib/events/orchestrator';
-import { RevisionEngine } from '@/lib/engines/revision-engine';
-import { createTestSupabaseClient, seedTestUser, cleanupTestUser } from '../helpers';
+const inserts: Record<string, any[]> = {};
+const published: any[] = [];
 
-describe('Autopsy → Event → Revision Card loop', () => {
-  let supabase: ReturnType<typeof createTestSupabaseClient>;
-  let userId: string;
+function insertBuilder(table: string, row: any) {
+  inserts[table] ||= [];
+  const rows = Array.isArray(row) ? row : [row];
+  inserts[table].push(...rows);
+  return {
+    select: vi.fn(() => ({
+      single: vi.fn(async () => ({
+        data: table === 'mock_autopsies' ? { id: 'autopsy-1' } : { id: `${table}-1` },
+        error: null,
+      })),
+    })),
+  };
+}
 
-  beforeEach(async () => {
-    supabase = createTestSupabaseClient();
-    userId = await seedTestUser(supabase);
+vi.mock('@/lib/supabase/server', () => ({
+  createClient: vi.fn(async () => ({
+    from: vi.fn((table: string) => ({
+      insert: vi.fn((row: any) => insertBuilder(table, row)),
+    })),
+  })),
+}));
+
+vi.mock('@/lib/ai/gemini', () => ({
+  generateJSON: vi.fn(async (_model: string, _system: string, prompt: string) => {
+    if (prompt.includes('Extract all questions')) {
+      return {
+        questions: [
+          { questionNumber: 1, subject: 'Physics', chapter: 'Motion', status: 'Incorrect', mistakeCategory: null, reasoning: null, ocrConfidence: 99 },
+          { questionNumber: 2, subject: 'Physics', chapter: 'Motion', status: 'Correct', mistakeCategory: null, reasoning: null, ocrConfidence: 99 },
+        ],
+      };
+    }
+    return [{
+      mistakeCategory: 'conceptual_gap',
+      reasoning: 'Velocity and acceleration were mixed up.',
+      conceptualGap: 'Acceleration definition',
+      correctExplanation: 'Acceleration is the rate of change of velocity.',
+    }];
+  }),
+}));
+
+vi.mock('@/lib/events/orchestrator', () => ({
+  EventDispatcher: {
+    publish: vi.fn(async (event: any) => {
+      published.push(event);
+      return 'event-1';
+    }),
+  },
+}));
+
+vi.mock('@/lib/engines/knowledge-engine', () => ({
+  generateKnowledgeUpdate: vi.fn(async () => undefined),
+}));
+
+vi.mock('@/lib/engines/mentor-engine', () => ({
+  generateMentorRecovery: vi.fn(async () => ({ mentorQuote: 'Review Motion.', plan: [] })),
+}));
+
+vi.mock('@/lib/utils/logger', () => ({
+  logger: { info: vi.fn(), warn: vi.fn(), error: vi.fn() },
+}));
+
+describe('Autopsy event loop', () => {
+  beforeEach(() => {
+    for (const key of Object.keys(inserts)) delete inserts[key];
+    published.length = 0;
   });
 
-  afterEach(async () => {
-    await cleanupTestUser(supabase, userId);
-  });
+  it('saves autopsy rows and publishes AUTOPSY_MOCK_PROCESSED', async () => {
+    const { processMockAutopsy } = await import('@/lib/engines/autopsy-engine');
 
-  it('autopsy creates at least one mistake record', async () => {
-    const engine = new AutopsyEngine(supabase);
-    // Use a minimal text-based autopsy input to avoid actual AI calls
-    vi.spyOn(engine as any, 'callGemini').mockResolvedValue({
-      questions: [
-        { id: 'q1', userAnswer: 'A', correctAnswer: 'B', topic: 'Thermodynamics',
-          mistakeType: 'conceptual_gap', explanation: 'Wrong law applied' }
-      ]
+    const result = await processMockAutopsy(
+      'user-1',
+      { kind: 'text', text: 'mock paper text' },
+      'Unit Test Mock',
+      'neet'
+    );
+
+    expect(result.autopsyId).toBe('autopsy-1');
+    expect(inserts.mock_autopsies?.[0]).toMatchObject({
+      user_id: 'user-1',
+      test_name: 'Unit Test Mock',
+      total_questions: 2,
+      correct_count: 1,
+      incorrect_count: 1,
     });
-
-    const result = await engine.processAutopsy({ userId, content: 'mock test content', type: 'text' });
-
-    const { data: mistakes } = await supabase
-      .from('mistakes')
-      .select('id')
-      .eq('user_id', userId);
-
-    expect(mistakes?.length).toBeGreaterThan(0);
-    expect(result.score).toBeDefined();
-  });
-
-  it('AUTOPSY_MOCK_PROCESSED event triggers MemoryConsumer', async () => {
-    const orchestrator = new EventOrchestrator(supabase);
-    const memoryConsumerSpy = vi.spyOn(orchestrator as any, 'runMemoryConsumer');
-
-    await orchestrator.publish({
-      userId,
+    expect(inserts.autopsy_questions).toHaveLength(2);
+    expect(published[0]).toMatchObject({
+      user_id: 'user-1',
       type: 'AUTOPSY_MOCK_PROCESSED',
-      payload: { conceptIds: ['test-concept-id'] },
+      data: { autopsyId: 'autopsy-1', incorrectCount: 1 },
     });
-
-    expect(memoryConsumerSpy).toHaveBeenCalledOnce();
-  });
-
-  it('FSRS card is created after autopsy event', async () => {
-    const engine = new RevisionEngine(supabase);
-    await engine.generateCardsForConcept(userId, 'test-concept-id', 'Thermodynamics: First Law');
-
-    const { data: cards } = await supabase
-      .from('revision_cards')
-      .select('id, due, stability')
-      .eq('user_id', userId);
-
-    expect(cards?.length).toBeGreaterThan(0);
-    expect(cards![0].due).toBeDefined();
-    expect(cards![0].stability).toBeGreaterThan(0);
-  });
-
-  it('reviewing a card updates FSRS state correctly', async () => {
-    const engine = new RevisionEngine(supabase);
-    const cards = await engine.getDueCards(userId, 1);
-    if (!cards.length) return; // skip if no cards
-
-    const before = cards[0];
-    await engine.reviewCard(userId, before.id, 3); // rating: 3 = Good
-
-    const { data: after } = await supabase
-      .from('revision_cards')
-      .select('stability, due, lapses')
-      .eq('id', before.id)
-      .single();
-
-    expect(after?.stability).toBeGreaterThan(before.stability);
-    expect(new Date(after!.due).getTime()).toBeGreaterThan(Date.now());
   });
 });

@@ -191,8 +191,8 @@ export const GlobalChat = memo(function GlobalChat() {
       startSession();
     }
 
-    let imageBase64 = null;
-    let imageMimeType = null;
+    let imageBase64: string | null = null;
+    let imageMimeType: string | null = null;
     let extractedText = '';
 
     if (pendingFile) {

@@ -1,0 +1,54 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "types": [
+      "node",
+      "react",
+      "react-dom"
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    "global.d.ts",
+    "middleware.ts",
+    "instrumentation.ts",
+    "app/api/**/*.ts",
+    "app/chat/**/*.tsx",
+    "app/(dashboard)/autopsy/**/*.tsx",
+    "app/(dashboard)/revision/**/*.tsx",
+    "lib/**/*.ts",
+    "services/**/*.ts",
+    "utils/**/*.ts",
+    "components/chat/**/*.tsx",
+    "components/autopsy/**/*.tsx",
+    "components/revision/**/*.tsx",
+    "components/dashboard/CurrentTaskCard.tsx",
+    "components/dashboard/DailySessionFocus.tsx",
+    "components/layout/DashboardClientLayout.tsx",
+    "components/layout/Header.tsx",
+    "components/layout/SessionTracker.tsx",
+    "components/layout/Sidebar.tsx",
+    "components/providers/RealtimeProvider.tsx",
+    "components/ui/**/*.tsx",
+    "stores/**/*.ts",
+    "types/**/*.d.ts",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "scratch",
+    ".next/dev",
+    "temp_neetapp",
+    "tests",
+    "__tests__",
+    "scripts",
+    "app/(educator)",
+    "components/cognition",
+    "components/analytics",
+    "components/knowledge",
+    "components/mentor",
+    "components/mistakes",
+    "components/planner"
+  ]
+}

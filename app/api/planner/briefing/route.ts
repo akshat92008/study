@@ -16,16 +16,15 @@ export async function GET() {
     // 2. Fetch Profile Context
     const { data: profile } = await supabase
       .from('profiles')
-      .select('exam_type, target_year, target_date, streak_days, emotional_state')
+      .select('exam_type, target_date, streak_days, emotional_state')
       .eq('id', user.id)
       .single();
 
     const mood = profile?.emotional_state || 'neutral';
     const confidence = 0.8;
-    const pulseConfig = { uiMessage: 'Stay focused on your mission.' };
+    const moodConfig = { uiMessage: 'Stay focused on your mission.' };
 
-    const targetYear = profile?.target_year || new Date().getFullYear() + 1;
-    const examDate = profile?.target_date ? new Date(profile.target_date) : new Date(`${targetYear}-05-01T00:00:00Z`); 
+    const examDate = profile?.target_date ? new Date(profile.target_date) : new Date(`${new Date().getFullYear() + 1}-05-01T00:00:00Z`); 
     const daysRemaining = Math.max(0, Math.ceil((examDate.getTime() - Date.now()) / (1000 * 60 * 60 * 24)));
 
     // 3. Parallel Fetching for Briefing Stats
@@ -33,8 +32,7 @@ export async function GET() {
       supabase.from('study_tasks')
         .select('*')
         .eq('user_id', user.id)
-        .gte('scheduled_date', `${today}T00:00:00Z`)
-        .lte('scheduled_date', `${today}T23:59:59Z`)
+        .eq('scheduled_date', today)
         .order('priority', { ascending: true }),
       getDueCards(user.id, 50),
       supabase.from('concepts')
@@ -56,7 +54,7 @@ export async function GET() {
 
     const briefing = {
       date: today,
-      mood: { state: mood, confidence, config: pulseConfig },
+      mood: { state: mood, confidence, config: moodConfig },
       daysRemaining,
       streak: profile?.streak_days || 0,
       examType: profile?.exam_type || 'General Study',
@@ -73,7 +71,7 @@ export async function GET() {
         chapter: c.chapter,
         urgency: c.forgetting_probability > 0.7 ? 'critical' : 'moderate',
       })),
-      pulseMessage: pulseConfig.uiMessage,
+      missionMessage: moodConfig.uiMessage,
       greetingText: morningGreeting, // Pass to UI
     };
 

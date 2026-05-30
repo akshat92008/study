@@ -1,11 +1,18 @@
 // __tests__/integration/replan-atomicity.test.ts
 
 import { describe, it, expect } from 'vitest';
-import { atomicReplan } from '@/lib/engines/learning-state-engine';
-import { createTestSupabaseClient, seedTestUser, cleanupTestUser } from '../helpers';
 
-describe('atomicReplan', () => {
+const hasSupabaseTestEnv = Boolean(
+  (process.env.SUPABASE_TEST_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL) &&
+  process.env.SUPABASE_SERVICE_ROLE_KEY
+);
+
+const describeWithSupabase = hasSupabaseTestEnv ? describe : describe.skip;
+
+describeWithSupabase('atomicReplan', () => {
   it('preserves existing tasks when new task list is empty', async () => {
+    const { atomicReplan } = await import('@/lib/engines/learning-state-engine');
+    const { createTestSupabaseClient, seedTestUser, cleanupTestUser } = await import('../helpers');
     const supabase = createTestSupabaseClient();
     const userId = await seedTestUser(supabase);
 

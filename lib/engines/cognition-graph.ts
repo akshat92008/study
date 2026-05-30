@@ -4,6 +4,7 @@ import { generateJSON } from '@/lib/ai/gemini';
 import { logger } from '@/lib/utils/logger';
 import { expandChapterWithAI } from './atlas-expansion';
 import { applyMasteryUpdate } from '@/lib/engines/mastery-updater';
+import { invalidateSessionCards } from '@/lib/services/session-card-cache';
 
 
 export const MASTERY_WEIGHTS: Record<string, number> = {
@@ -128,8 +129,21 @@ export async function seedConceptsForSubject(userId: string, subject: string, ch
       const concepts = await expandChapterWithAI(userId, subject, chapter, examType);
       if (!concepts.length) continue;
 
+      // Deduplicate against existing concepts
+      const { data: existingConcepts } = await supabase
+        .from('concepts')
+        .select('name')
+        .eq('user_id', userId)
+        .eq('subject', subject)
+        .eq('chapter', chapter);
+      
+      const existingNames = new Set((existingConcepts || []).map(c => c.name.toLowerCase()));
+      const filteredConcepts = concepts.filter(c => !existingNames.has(c.name.toLowerCase()));
+
+      if (filteredConcepts.length === 0) continue;
+
       // Insert concepts
-      const conceptRecords = concepts.map(c => ({
+      const conceptRecords = filteredConcepts.map(c => ({
         user_id: userId,
         goal_id: goalId,
         name: c.name,
@@ -143,6 +157,7 @@ export async function seedConceptsForSubject(userId: string, subject: string, ch
         times_incorrect: 0,
         forgetting_probability: 1.0,
         retention_strength: 0.0,
+        version: 1,
       }));
 
       const { data: inserted, error: insertErr } = await supabase
@@ -269,7 +284,7 @@ export async function expandChapterViaMind(userId: string, subject: string, chap
 
   try {
     const concepts = await expandChapterWithAI(userId, subject, chapter, examType);
-    const insertedConcepts = [];
+    const insertedConcepts: Array<{ dbData: any; prereqs: string[] }> = [];
 
     // Insert new granular concepts
     for (const concept of concepts) {
@@ -435,6 +450,7 @@ export class AtlasConsumer {
         confidence: 'low',
         last_reviewed_at: new Date().toISOString(),
       });
+      await invalidateSessionCards(userId, supabase);
       logger.info(`AtlasConsumer: created new concept at exposed — ${subject} / ${chapter}`, { userId });
       return;
     }

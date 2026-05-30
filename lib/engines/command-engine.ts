@@ -3,6 +3,7 @@ import { createAdminClient } from '@/lib/supabase/admin';
 import { generateJSON } from '@/lib/ai/gemini';
 import { logger } from '@/lib/utils/logger';
 import { z } from 'zod';
+import { invalidateSessionCards } from '@/lib/services/session-card-cache';
 
 export interface GoalInput {
   title: string;
@@ -543,6 +544,10 @@ export class CommandConsumer {
       inserted++;
     }
 
+    if (inserted > 0) {
+      await invalidateSessionCards(userId, supabase);
+    }
+
     logger.info(`CommandConsumer: injected ${inserted} remediation tasks for tomorrow`, { userId });
   }
 
@@ -566,6 +571,8 @@ export class CommandConsumer {
       logger.warn('CommandConsumer: failed to mark task complete', { error, chapter });
       return;
     }
+
+    await invalidateSessionCards(userId, supabase);
 
     logger.info(`CommandConsumer: marked task complete for ${chapter}`, { userId });
   }

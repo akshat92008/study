@@ -27,16 +27,16 @@ function classifyRootCause(answer: string, correct: string): {
 } {
   const cleaned = answer.trim().toLowerCase();
   if (!cleaned) return { rootCause: 'anxiety_blank', confidence: 0.9 };
-  if (cleaned.length < 3) return { rootCause: 'silly', confidence: 0.8 };
+  if (cleaned.length < 3) return { rootCause: 'silly_mistake', confidence: 0.8 };
   if (cleaned.includes('i don\'t know') || cleaned.includes('guess'))
-    return { rootCause: 'guessed', confidence: 0.7 };
+    return { rootCause: 'incomplete_knowledge', confidence: 0.7 };
   // Very naive concept detection – look for keyword overlap with correct answer
   const overlap = cleaned.split(' ').filter((w) => correct.toLowerCase().includes(w)).length;
   if (overlap > 0) {
-    return { rootCause: 'conceptual', confidence: 0.6 };
+    return { rootCause: 'conceptual_gap', confidence: 0.6 };
   }
   // Default to calculation or time pressure based on length
-  if (cleaned.length > 20) return { rootCause: 'calculation', confidence: 0.5 };
+  if (cleaned.length > 20) return { rootCause: 'calculation_error', confidence: 0.5 };
   return { rootCause: 'time_pressure', confidence: 0.5 };
 }
 
@@ -108,6 +108,13 @@ export async function processAutopsy(params: {
 
   const questions: RawQuestion[] = manualQuestions ?? normaliseQuestions(rawText);
 
+  const correctCount = questions.filter(q => q.studentAnswer?.trim() === q.correctAnswer?.trim()).length;
+  const incorrectCount = questions.filter(q => q.studentAnswer?.trim() && q.studentAnswer?.trim() !== q.correctAnswer?.trim()).length;
+  const unattemptedCount = Math.max(0, questions.length - correctCount - incorrectCount);
+  const currentScore = correctCount - incorrectCount * 0.25;
+  const recoverableMarks = incorrectCount * 0.5;
+  const potentialScore = questions.length;
+
   // Insert mock_autopsies row
   const mockRes = await supabase
     .from('mock_autopsies')
@@ -116,6 +123,12 @@ export async function processAutopsy(params: {
       test_name: testName,
       exam_type: examType,
       total_questions: questions.length,
+      correct_count: correctCount,
+      incorrect_count: incorrectCount,
+      unattempted_count: unattemptedCount,
+      current_score: currentScore,
+      recoverable_marks: recoverableMarks,
+      potential_score: potentialScore,
     })
     .select('id')
     .single();
@@ -176,14 +189,14 @@ export async function processAutopsy(params: {
   for (let i = 0; i < autopsyRows.length; i += batchSize) {
     const slice = autopsyRows.slice(i, i + batchSize);
     const res = await supabase.from('autopsy_questions').insert(slice);
-    if (res.error) logger.error('Failed to insert autopsy_questions batch', res.error);
+    if (res.error) throw new Error(`Failed to insert autopsy_questions batch: ${res.error.message}`);
   }
 
   // Bulk insert mistakes
   for (let i = 0; i < mistakeRows.length; i += batchSize) {
     const slice = mistakeRows.slice(i, i + batchSize);
     const res = await supabase.from('mistakes').insert(slice);
-    if (res.error) logger.error('Failed to insert mistakes batch', res.error);
+    if (res.error) throw new Error(`Failed to insert mistakes batch: ${res.error.message}`);
   }
 
   // Publish event
@@ -195,13 +208,28 @@ export async function processAutopsy(params: {
       totalQuestions: questions.length,
       wrongAnswers: mistakeRows.length,
     },
+    metadata: {
+      source: 'autopsy_service',
+      autopsyId: mockId,
+      wrongQuestions: autopsyRows
+        .filter(row => row.status === 'Incorrect')
+        .map(row => ({
+          subject: row.subject,
+          chapter: row.chapter,
+          mistakeCategory: row.mistake_category,
+          reasoning: row.mistake_category,
+          correctExplanation: row.correct_answer,
+          conceptualGap: row.subtopic || row.chapter,
+        })),
+    },
+    idempotency_key: `autopsy:${mockId}:processed`,
   });
 
   // Return summary JSON
   const overallDiagnosis = mistakeRows.length > 0 ? 'Needs improvement' : 'Excellent';
   return {
     overallDiagnosis,
-    recoverableMarks: mistakeRows.length * 0.5, // naive estimate
+    recoverableMarks,
     conceptRebuildMarks: mistakeRows.length * 1,
     questions: autopsyRows.map((row) => ({
       questionNumber: row.question_number,

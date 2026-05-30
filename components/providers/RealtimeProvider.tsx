@@ -37,7 +37,7 @@ export function RealtimeProvider({ children }: { children: React.ReactNode }) {
       }
 
       subscription = supabase
-        .channel(`student_events_${user.id}`, {
+        .channel(`event_queue_${user.id}`, {
           config: {
             broadcast: { self: true },
           },
@@ -47,11 +47,11 @@ export function RealtimeProvider({ children }: { children: React.ReactNode }) {
           {
             event: 'INSERT',
             schema: 'public',
-            table: 'student_events',
+            table: 'event_queue',
             filter: `user_id=eq.${user.id}`,
           },
           (payload) => {
-            const { type, data } = payload.new;
+            const { type } = payload.new;
             
             // Handle different event types dynamically
             switch (type) {
@@ -89,7 +89,8 @@ export function RealtimeProvider({ children }: { children: React.ReactNode }) {
           } else if (status === 'CLOSED' || status === 'CHANNEL_ERROR') {
             console.log('Realtime subscription closed or errored, scheduling reconnect...');
             if (isMounted) {
-              const backoff = Math.min(1000 * Math.pow(2, reconnectAttempts), 30000);
+              const jitter = Math.random() * 1000;
+              const backoff = Math.min(1000 * Math.pow(2, reconnectAttempts) + jitter, 30000);
               reconnectAttempts++;
               reconnectTimeout = setTimeout(setupRealtime, backoff);
             }

@@ -203,7 +203,7 @@ export default function PlannerDashboard({ initialTasks, date }: { initialTasks:
           
           <button
             onClick={() => {
-              setReplanDailyHours(profile?.study_hours_per_day || 8);
+              setReplanDailyHours(profile?.daily_hours || 8);
               setReplanStep('config');
               setIsReplanOpen(true);
             }}

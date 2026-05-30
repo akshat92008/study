@@ -54,7 +54,7 @@ export async function generateDailyPlan(userId: string, date: string) {
   const avgFocus = snapshots.length > 0 ? snapshots.reduce((s, snap) => s + (snap.metrics?.focus_score || 50), 0) / snapshots.length : 50;
 
   // Adaptive Workload Calculation
-  let baseHours = profile?.study_hours_per_day || 8;
+  let baseHours = profile?.daily_hours || 8;
   const emotionalState = profile?.emotional_state || 'neutral';
   if (['burnt_out', 'overwhelmed'].includes(emotionalState)) baseHours = Math.max(2, baseHours * 0.4);
   else if (['stressed', 'anxious'].includes(emotionalState)) baseHours = Math.max(4, baseHours * 0.7);
@@ -214,12 +214,11 @@ export async function generateMorningBriefing(userId: string) {
   
   const { data: profile } = await supabase
     .from('profiles')
-    .select('exam_type, target_year, target_date, streak_days, study_hours_per_day, emotional_state')
+    .select('exam_type, target_date, streak_days, daily_hours, emotional_state')
     .eq('id', userId)
     .single();
 
-  const targetYear = profile?.target_year || new Date().getFullYear() + 1;
-  const examDate = profile?.target_date ? new Date(profile.target_date) : new Date(`${targetYear}-05-01T00:00:00Z`);
+  const examDate = profile?.target_date ? new Date(profile.target_date) : new Date(`${new Date().getFullYear() + 1}-05-01T00:00:00Z`);
   const daysRemaining = Math.max(0, Math.ceil((examDate.getTime() - Date.now()) / (1000 * 60 * 60 * 24)));
 
   // Yesterday's task completion
@@ -257,7 +256,7 @@ export async function generateMorningBriefing(userId: string) {
     : 'None detected';
 
   // Dynamic hours recommended
-  let recommendedHours = profile?.study_hours_per_day || 8;
+  let recommendedHours = profile?.daily_hours || 8;
   if (['burnt_out', 'overwhelmed'].includes(emotionalState)) recommendedHours = Math.max(2, recommendedHours * 0.4);
   else if (['stressed', 'anxious'].includes(emotionalState)) recommendedHours = Math.max(4, recommendedHours * 0.7);
   else if (['motivated', 'focused'].includes(emotionalState)) recommendedHours = Math.min(12, recommendedHours * 1.2);
@@ -296,4 +295,3 @@ GOOD EXAMPLE (Momentum): "You're on a 5-day streak and your focus score is in th
   const { generateText } = await import('@/lib/ai/gemini');
   return generateText('flash', 'You are COMMAND, the daily mission AI.', prompt);
 }
-

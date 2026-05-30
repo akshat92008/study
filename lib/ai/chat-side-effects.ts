@@ -1,9 +1,9 @@
 import { SupabaseClient } from '@supabase/supabase-js';
 import { logger } from '@/lib/utils/logger';
-import * as Sentry from '@sentry/nextjs';
 import { syncStudentModel } from '@/lib/engines/inference-engine';
 import { ChatMemoryService } from '@/lib/services/chatMemoryService';
 import { EventDispatcher } from '@/lib/events/orchestrator';
+import { captureSentryException } from '@/lib/telemetry/sentry-runtime';
 
 export interface ChatSideEffectsInput {
   supabase: SupabaseClient;
@@ -32,36 +32,8 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
     intent
   } = input;
 
-  // 1. Session & Message Persistence
-  try {
-    const { data: existingSession } = await supabase
-      .from('chat_sessions').select('id').eq('id', sessionId).maybeSingle();
-
-    if (!existingSession) {
-      await supabase.from('chat_sessions').insert({
-        id: sessionId, user_id: userId,
-        session_type: 'global', title: 'Cognition OS Main Thread'
-      });
-      // Create a study session for focused tracking
-      await supabase.from('study_sessions').insert({
-        user_id: userId,
-        started_at: new Date().toISOString(),
-        focus_score: null,
-        duration_minutes: null
-      });
-    }
-
-    const strippedResponse = fullResponse.replace(/\n\n===METADATA===\n[\s\S]*/g, '').trim();
-
-    await supabase.from('chat_messages').insert([
-      { session_id: sessionId, user_id: userId, role: 'user', content: message },
-      { session_id: sessionId, user_id: userId, role: 'assistant', content: strippedResponse },
-    ]);
-  } catch (err) {
-    logger.error('SideEffect: Chat persistence failed', err);
-  }
-
-  // 2. Student Model Sync Trigger
+  // 1. Student Model Sync Trigger. Message persistence happens in the chat
+  // route before this event is published; this worker must never duplicate it.
   try {
     const { count: totalMessageCount } = await supabase
       .from('chat_messages')
@@ -107,7 +79,7 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
     const memSvc = new ChatMemoryService();
     await memSvc.storeMessageInMemory(userId, message);
   } catch (err) {
-    Sentry.captureException(err, { tags: { context: 'semantic_memory_storage' } });
+    captureSentryException(err, { tags: { context: 'semantic_memory_storage' } });
   }
 
   // 4. Emotion State Update
@@ -127,7 +99,7 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
       }
     }
   } catch (err) {
-    Sentry.captureException(err, { tags: { context: 'emotion_state_update' } });
+    captureSentryException(err, { tags: { context: 'emotion_state_update' } });
   }
 
   // 5. Event Publishing
@@ -161,6 +133,6 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
       });
     }
   } catch (err) {
-    Sentry.captureException(err, { tags: { context: 'event_publishing' } });
+    captureSentryException(err, { tags: { context: 'event_publishing' } });
   }
 }

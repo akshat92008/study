@@ -4,7 +4,7 @@ import { LLMProvider, LLMMessage } from '@/lib/ai/providers/LLMProvider';
 import { generateJSON, streamText } from '@/lib/ai/gemini';
 import { ProviderCapabilities } from '@/lib/ai/providers/LLMProvider';
 import { tracer, meter } from '@/lib/telemetry/otel';
-import { Counter } from '@opentelemetry/api';
+import type { Counter } from '@opentelemetry/api';
 
 /**
  * GeminiProvider implements the generic LLMProvider interface using the

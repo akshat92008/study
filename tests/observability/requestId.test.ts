@@ -1,30 +1,31 @@
-import { POST } from '../../app/api/ai/revision-coach/route';
+import { expect, test, vi } from 'vitest';
 import { NextResponse } from 'next/server';
 
 // Mock Supabase client
-jest.mock('@/lib/supabase/server', () => ({
-  createClient: jest.fn(() => ({
+vi.mock('@/lib/supabase/server', () => ({
+  createClient: vi.fn(() => ({
     auth: {
       getUser: async () => ({ data: { user: { id: 'test-user' } }, error: null }),
     },
     from: () => ({
-      select: jest.fn().mockReturnThis(),
-      eq: jest.fn().mockReturnThis(),
-      maybeSingle: jest.fn().mockResolvedValue({ data: null }),
+      select: vi.fn().mockReturnThis(),
+      eq: vi.fn().mockReturnThis(),
+      maybeSingle: vi.fn().mockResolvedValue({ data: null }),
     }),
   })),
 }));
 
 // Mock GoogleGenAI
-jest.mock('@google/genai', () => ({
-  GoogleGenAI: jest.fn(() => ({
+vi.mock('@google/genai', () => ({
+  GoogleGenAI: vi.fn(() => ({
     models: {
-      generateContent: jest.fn().mockResolvedValue({ text: 'Mock coaching response' }),
+      generateContent: vi.fn().mockResolvedValue({ text: 'Mock coaching response' }),
     },
   })),
 }));
 
 test('revision-coach route emits requestId and returns coaching', async () => {
+  const { POST } = await import('../../app/api/ai/revision-coach/route');
   const request = new Request('http://localhost/api/ai/revision-coach', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

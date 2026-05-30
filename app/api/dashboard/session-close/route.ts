@@ -94,34 +94,34 @@ export async function POST(req: NextRequest) {
 
   if (sessionErr) {
     logger.error('Failed to insert study session', { sessionErr });
+    return NextResponse.json({ error: sessionErr.message }, { status: 500 });
   }
   const sessionId = sessionRecord?.id ?? '';
 
   // 5️⃣ Publish COMMAND_SESSION_COMPLETED event for tomorrow's adaptation
-  try {
-    await EventDispatcher.publish({
-      user_id: user.id,
-      type: 'COMMAND_SESSION_COMPLETED',
-      data: {
-        sessionId,
-        conceptId,
-        conceptName,
-        subject: subject || 'General',
-        durationMinutes: sessionDurationMinutes,
-        understood,
-        gapFound,
-        cardsCreated,
-        oldMastery,
-        newMastery,
-      },
-      metadata: { source: 'session_close' },
-      idempotency_key: sessionId
-        ? `session_close:${sessionId}`
-        : `session_close:${user.id}:${endedAt}`,
-    });
-  } catch (eventErr) {
-    logger.warn('Failed to publish COMMAND_SESSION_COMPLETED (non‑fatal)', eventErr);
-  }
+  await EventDispatcher.publish({
+    user_id: user.id,
+    type: 'COMMAND_SESSION_COMPLETED',
+    data: {
+      sessionId,
+      conceptId,
+      conceptName,
+      subject: subject || 'General',
+      chapter: conceptName,
+      durationMinutes: sessionDurationMinutes,
+      understood,
+      gapFound,
+      cardsCreated,
+      oldMastery,
+      newMastery,
+      understandingGained: understood,
+      isSessionComplete: true,
+    },
+    metadata: { source: 'session_close' },
+    idempotency_key: sessionId
+      ? `session_close:${sessionId}`
+      : `session_close:${user.id}:${endedAt}`,
+  });
 
   // 6️⃣ Generate closing message for UI
   const closing = await generateSessionClosingMessage({

@@ -4,7 +4,7 @@ export async function getPerformanceData(userId: string) {
   const supabase = await createClient();
 
   const [mockTestsRes, snapshotsRes, conceptsRes, mistakesRes, tasksRes, profileRes, sessionsRes] = await Promise.all([
-    supabase.from('mock_tests').select('*').eq('user_id', userId).order('created_at', { ascending: true }),
+    supabase.from('mock_autopsies').select('*').eq('user_id', userId).order('created_at', { ascending: true }),
     supabase.from('performance_snapshots').select('*').eq('user_id', userId).order('snapshot_date', { ascending: true }).limit(30),
     supabase.from('concepts').select('subject, mastery').eq('user_id', userId),
     supabase.from('mistakes').select('subject, category, marks_lost').eq('user_id', userId),
@@ -24,9 +24,9 @@ export async function getPerformanceData(userId: string) {
   // Score trend (from mock tests)
   const scoreTrend = mockTests.map((t: any) => ({
     name: t.test_name,
-    score: t.marks_obtained,
-    total: t.total_marks,
-    accuracy: t.correct && t.attempted ? Math.round((t.correct / t.attempted) * 100) : 0,
+    score: t.current_score,
+    total: t.potential_score || t.total_marks,
+    accuracy: t.correct_count && t.total_questions ? Math.round((t.correct_count / t.total_questions) * 100) : 0,
     date: t.created_at,
   }));
 
@@ -54,7 +54,7 @@ export async function getPerformanceData(userId: string) {
   const taskCompletionRate = tasks.length > 0 ? Math.round((completedTasks / tasks.length) * 100) : 0;
 
   // Predicted score (simple linear regression on mock scores)
-  let predictedScore = null;
+  let predictedScore: number | null = null;
   if (scoreTrend.length >= 2) {
     const lastTwo = scoreTrend.slice(-2);
     const trend = lastTwo[1].score - lastTwo[0].score;

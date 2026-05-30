@@ -12,7 +12,7 @@
 //   - concept_expansion:     lib/engines/concept-expansion-engine.ts (ConceptExpansionConsumer)
 //
 // Do NOT add consumers here that insert into raw event tracking tables.
-// The event_consumer_tracking table is managed by the EventDispatcher itself.
+// The consumer_locks table is managed by the EventDispatcher/worker path.
 
 export const EVENT_CONSUMER_NAMES = [
   'learning_state_engine',
@@ -20,6 +20,7 @@ export const EVENT_CONSUMER_NAMES = [
   'memory_engine',
   'command_engine',
   'concept_expansion_engine',
+  'chat_side_effect_engine',
 ] as const;
 
 export type EventConsumerName = typeof EVENT_CONSUMER_NAMES[number];

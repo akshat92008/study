@@ -5,6 +5,7 @@ import { generateJSON } from '@/lib/ai/gemini';
 import { searchPersonalKnowledge } from './rag-engine';
 import { FlashcardBatchSchema } from './memory-schemas';
 import { logger } from '@/lib/utils/logger';
+import { invalidateSessionCards } from '@/lib/services/session-card-cache';
 
 // Custom FSRS-5 Configuration and Implementation
 const FSRS_WEIGHTS = [
@@ -519,6 +520,10 @@ export class MemoryConsumer {
       }
     }
 
+    if (created > 0) {
+      await invalidateSessionCards(userId, supabase);
+    }
+
     logger.info(`MemoryConsumer: created ${created} flashcards from autopsy mistakes`, { userId });
   }
 
@@ -538,6 +543,8 @@ export class MemoryConsumer {
         .limit(1)
         .maybeSingle();
 
+      let created = 0;
+
       if (sessionType !== 'chat') {
         await createSingleCard(
           userId,
@@ -548,6 +555,7 @@ export class MemoryConsumer {
           chapter,
           supabase as any
         );
+        created++;
 
         logger.info(`MemoryConsumer: created review card for ${chapter}`, { userId });
       }
@@ -573,8 +581,13 @@ export class MemoryConsumer {
             chapter,
             supabase as any
           );
+          created++;
           logger.info(`MemoryConsumer: created specific gap card for ${chapter}`, { userId });
         }
+      }
+
+      if (created > 0) {
+        await invalidateSessionCards(userId, supabase);
       }
     } catch (err) {
       logger.warn('MemoryConsumer: failed to create study session card', err);

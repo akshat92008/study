@@ -3,7 +3,7 @@ import { syncStudentModel } from '@/lib/engines/inference-engine';
 import { logger } from '@/lib/utils/logger';
 import { generateJSON, getEmbedding } from '@/lib/ai/gemini';
 import { resetStreakIfInactive } from '@/lib/engines/streak-engine';
-import { retryFailedEvents } from '@/lib/events/retry';
+import { EventWorkerService } from '@/lib/events/worker';
 import { z } from 'zod';
 import { NextRequest } from 'next/server';
 import { validateCronRequest } from '@/lib/middleware/cronAuth';
@@ -95,8 +95,7 @@ async function processOneUser(userId: string, supabase: any, today: string): Pro
     const { data: tasks } = await supabase.from('study_tasks')
       .select('is_completed, subject')
       .eq('user_id', userId)
-      .gte('scheduled_date', `${todayDateStr}T00:00:00Z`)
-      .lte('scheduled_date', `${todayDateStr}T23:59:59Z`);
+      .eq('scheduled_date', todayDateStr);
 
     const completed = (tasks || []).filter((t: any) => t.is_completed).length;
 
@@ -260,17 +259,17 @@ export async function GET(req: NextRequest) {
     // Retry failed events first (bounded — if it exceeds budget, skip gracefully)
     if (!isTimeBudgetExceeded()) {
       try {
-        const retryResult = await Promise.race([
-          retryFailedEvents(),
+        const processedEvents = await Promise.race([
+          EventWorkerService.processBatch(50, 5),
           new Promise<null>((resolve) => setTimeout(() => resolve(null), 30_000)), // 30s cap on retry
         ]);
-        if (retryResult) {
-          logger.info('Daily retry sweep complete', retryResult);
+        if (processedEvents !== null) {
+          logger.info('Daily event sweep complete', { processedEvents });
         } else {
-          logger.warn('Daily retry sweep timed out (30s cap), continuing to user processing');
+          logger.warn('Daily event sweep timed out (30s cap), continuing to user processing');
         }
       } catch (retryErr) {
-        logger.error('Daily retry sweep failed (non-fatal)', retryErr);
+        logger.error('Daily event sweep failed (non-fatal)', retryErr);
       }
     }
 

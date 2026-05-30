@@ -160,7 +160,7 @@ export async function generateSprintPlanAction(subjects: string[], targetDate: s
     // 5. Update study hours in profile
     await supabase
       .from('profiles')
-      .update({ study_hours_per_day: dailyHours })
+      .update({ daily_hours: dailyHours })
       .eq('id', user.id);
 
     return { success: true, tasks: inserted };

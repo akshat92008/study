@@ -1,4 +1,6 @@
-const links = [
+import { describe, expect, it, vi } from 'vitest';
+
+const links = vi.hoisted(() => [
   {
     source_concept_id: '00000000-0000-0000-0000-00000000000a',
     target_concept_id: '00000000-0000-0000-0000-00000000000b',
@@ -7,13 +9,13 @@ const links = [
     source_concept_id: '00000000-0000-0000-0000-00000000000b',
     target_concept_id: '00000000-0000-0000-0000-00000000000c',
   },
-];
+]);
 
-jest.mock('@/lib/supabase/server', () => ({
-  createClient: jest.fn(async () => ({
-    from: jest.fn(() => ({
-      select: jest.fn(() => ({
-        eq: jest.fn((_field: string, value: string) =>
+vi.mock('@/lib/supabase/server', () => ({
+  createClient: vi.fn(async () => ({
+    from: vi.fn(() => ({
+      select: vi.fn(() => ({
+        eq: vi.fn((_field: string, value: string) =>
           Promise.resolve({
             data: links.filter((link) => link.target_concept_id === value),
             error: null,
