@@ -110,6 +110,16 @@ alter table public.concepts
   add column if not exists version int default 1;
 
 do $$
+begin
+  if exists (
+    select 1 from information_schema.columns
+    where table_schema = 'public' and table_name = 'concepts' and column_name = 'mastery'
+  ) then
+    execute 'alter table public.concepts alter column mastery type text using mastery::text';
+  end if;
+end $$;
+
+do $$
 declare
   v_mastery_tier text;
   v_mastery_level text;
@@ -139,16 +149,16 @@ begin
   execute format($sql$
     update public.concepts
     set mastery = coalesce(
-      mastery,
-      case
-        when %1$s in ('weak') then 'exposed'
-        when %1$s in ('developing', 'proficient', 'mastered') then %1$s
-        when %2$s >= 0.85 then 'mastered'
-        when %2$s >= 0.60 then 'proficient'
-        when %2$s >= 0.25 then 'developing'
-        when %2$s > 0 then 'exposed'
+      mastery::text,
+      (case
+        when %1$s::text in ('weak') then 'exposed'
+        when %1$s::text in ('developing', 'proficient', 'mastered') then %1$s::text
+        when %2$s::numeric >= 0.85 then 'mastered'
+        when %2$s::numeric >= 0.60 then 'proficient'
+        when %2$s::numeric >= 0.25 then 'developing'
+        when %2$s::numeric > 0 then 'exposed'
         else 'not_started'
-      end
+      end)::text
     )
   $sql$, v_mastery_tier, v_mastery_level);
 
@@ -319,12 +329,30 @@ create index if not exists idx_revision_cards_due
   on public.revision_cards(user_id, due)
   where state <> 4;
 
-alter table public.revision_logs
-  add column if not exists elapsed_days int,
-  add column if not exists scheduled_days int,
-  add column if not exists state int,
-  add column if not exists response_time_ms int,
-  add column if not exists created_at timestamptz default now();
+create table if not exists public.revision_logs (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null references public.profiles(id) on delete cascade,
+  card_id uuid not null references public.revision_cards(id) on delete cascade,
+  rating int not null check (rating between 1 and 4),
+  prev_stability float,
+  new_stability float,
+  prev_difficulty float,
+  new_difficulty float,
+  review_duration_ms int,
+  reviewed_at timestamptz default now()
+);
+
+do $$
+begin
+  if exists (select 1 from information_schema.tables where table_schema = 'public' and table_name = 'revision_logs') then
+    alter table public.revision_logs
+      add column if not exists elapsed_days int,
+      add column if not exists scheduled_days int,
+      add column if not exists state int,
+      add column if not exists response_time_ms int,
+      add column if not exists created_at timestamptz default now();
+  end if;
+end $$;
 
 -- ---------------------------------------------------------------------------
 -- AUTOPSY tables
@@ -368,6 +396,22 @@ create table if not exists public.autopsy_questions (
   ocr_confidence numeric,
   created_at timestamptz default now()
 );
+
+alter table public.autopsy_questions
+  add column if not exists user_id uuid references public.profiles(id) on delete cascade,
+  add column if not exists subject text,
+  add column if not exists chapter text,
+  add column if not exists subtopic text,
+  add column if not exists difficulty text,
+  add column if not exists status text default 'Unattempted',
+  add column if not exists question_text text,
+  add column if not exists correct_answer text,
+  add column if not exists student_answer text,
+  add column if not exists mistake_category text,
+  add column if not exists reasoning text,
+  add column if not exists marks_lost numeric default 0,
+  add column if not exists ocr_confidence numeric,
+  add column if not exists created_at timestamptz default now();
 
 create index if not exists idx_autopsy_questions_autopsy
   on public.autopsy_questions(autopsy_id, question_number);
@@ -452,6 +496,18 @@ alter table public.student_models
 
 do $$
 declare
+  v_type text;
+begin
+  select data_type into v_type from information_schema.columns
+  where table_schema = 'public' and table_name = 'student_models' and column_name = 'chronic_weaknesses';
+  
+  if v_type is not null and v_type <> 'jsonb' then
+    execute 'alter table public.student_models alter column chronic_weaknesses type jsonb using to_jsonb(chronic_weaknesses)';
+  end if;
+end $$;
+
+do $$
+declare
   v_weaknesses text;
   v_last_inferred_at text;
   v_updated_at text;
@@ -459,7 +515,7 @@ begin
   v_weaknesses := case when exists (
     select 1 from information_schema.columns
     where table_schema = 'public' and table_name = 'student_models' and column_name = 'weaknesses'
-  ) then 'weaknesses' else 'null::jsonb' end;
+  ) then 'to_jsonb(weaknesses)' else 'null::jsonb' end;
 
   v_last_inferred_at := case when exists (
     select 1 from information_schema.columns
@@ -481,6 +537,7 @@ begin
 end $$;
 
 alter table public.learner_states
+  add column if not exists state_type text default 'aggregate',
   add column if not exists overall_confidence numeric default 0.5,
   add column if not exists estimated_retention numeric default 0.5,
   add column if not exists weekly_velocity int default 0,
@@ -543,6 +600,9 @@ alter table public.chat_sessions
   add column if not exists session_type text default 'global',
   add column if not exists is_global boolean default false;
 
+alter table public.chat_sessions
+  drop constraint if exists chat_sessions_session_type_check;
+
 with ranked as (
   select
     id,
@@ -575,6 +635,7 @@ alter table public.chat_memory
   add column if not exists emotional_score numeric,
   add column if not exists learning_score numeric,
   add column if not exists repetition_score numeric,
+  add column if not exists memory_type text default 'episodic',
   add column if not exists updated_at timestamptz default now(),
   add constraint chat_memory_memory_type_check
     check (memory_type in (

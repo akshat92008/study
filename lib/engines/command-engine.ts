@@ -3,7 +3,7 @@ import { createAdminClient } from '@/lib/supabase/admin';
 import { generateJSON } from '@/lib/ai/provider-client';
 import { logger } from '@/lib/utils/logger';
 import { z } from 'zod';
-import { invalidateSessionCards } from '@/lib/services/session-card-cache';
+import { invalidateSessionCard } from '@/lib/services/session-card-invalidation';
 import { resolveConcept } from '@/lib/engines/concept-resolver';
 import { isVerifiedAutopsyMistake } from '@/lib/events/autopsy-evidence';
 
@@ -568,7 +568,10 @@ export class CommandConsumer {
     }
 
     if (inserted > 0) {
-      await invalidateSessionCards(userId, supabase);
+      await invalidateSessionCard(userId, 'AUTOPSY_COMPLETED', {
+        skipVersionBump: true,
+        client: supabase,
+      }).catch((err: any) => logger.warn('CommandConsumer: invalidation failed', err));
     }
 
     logger.info(`CommandConsumer: injected ${inserted} remediation tasks for tomorrow`, { userId });
@@ -595,7 +598,10 @@ export class CommandConsumer {
       return;
     }
 
-    await invalidateSessionCards(userId, supabase);
+    await invalidateSessionCard(userId, 'STUDY_SESSION_COMPLETED', {
+      skipVersionBump: true,
+      client: supabase,
+    }).catch((err: any) => logger.warn('CommandConsumer: invalidation failed', err));
 
     logger.info(`CommandConsumer: marked task complete for ${chapter}`, { userId });
   }

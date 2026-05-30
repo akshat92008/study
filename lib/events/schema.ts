@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { EventTypes } from './types';
+
 
 export const EventTypeSchema = z.enum([
   'MIND_MESSAGE_CREATED',
@@ -21,7 +21,7 @@ export const EventTypeSchema = z.enum([
 export type EventType = z.infer<typeof EventTypeSchema>;
 
 export const StudentEventInputSchema = z.object({
-  type: z.enum(Object.keys(EventTypes) as [keyof typeof EventTypes]),
+  type: EventTypeSchema,
   source: z.string().optional(),
   data: z.any(), // payload can be any JSON‑serialisable object
   idempotencyKey: z.string().uuid().optional(), // optional UUID, generate client‑side if needed

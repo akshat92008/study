@@ -1,3 +1,10 @@
+// lib/services/chat-persistence.ts
+//
+// MODULE 3 PATCH: persistChatMessage now returns { id } so callers can thread
+// the assistant_message_id into downstream events. It also accepts an optional
+// idempotencyKey; when the unique index fires (duplicate write), it returns the
+// existing row's id instead of throwing — making all writes idempotent.
+
 export type ChatMessageForPrompt = { role: 'user' | 'assistant' | 'system'; content: string };
 
 export async function getOrCreateGlobalChatSession(supabase: any, userId: string): Promise<string> {
@@ -49,6 +56,13 @@ export async function loadRecentMessages(supabase: any, sessionId: string): Prom
     .filter((m: any) => ['user', 'assistant', 'system'].includes(m.role) && typeof m.content === 'string');
 }
 
+// ---------------------------------------------------------------------------
+// persistChatMessage
+//
+// Returns { id } of the inserted (or, on idempotency conflict, existing) row.
+// The caller should thread this id into any CHAT_MESSAGE_PROCESSED event so
+// the worker can reference the message without re-inserting it.
+// ---------------------------------------------------------------------------
 export async function persistChatMessage(
   supabase: any,
   input: {
@@ -59,31 +73,58 @@ export async function persistChatMessage(
     metadata?: Record<string, any>;
     intent?: string;
     emotionalState?: string;
+    /** Deterministic key for assistant messages: "<requestId>:assistant".
+     *  When set, a second insert with the same key silently returns the existing id. */
+    idempotencyKey?: string;
   }
-) {
-  const { error } = await supabase.from('chat_messages').insert({
-    session_id: input.sessionId,
-    user_id: input.userId,
-    role: input.role,
-    content: input.content,
-    intent: input.intent ?? null,
-    emotional_state: input.emotionalState ?? null,
-    metadata: input.metadata ?? {},
-  });
+): Promise<{ id: string }> {
+  const { data, error } = await supabase
+    .from('chat_messages')
+    .insert({
+      session_id: input.sessionId,
+      user_id: input.userId,
+      role: input.role,
+      content: input.content,
+      intent: input.intent ?? null,
+      emotional_state: input.emotionalState ?? null,
+      metadata: input.metadata ?? {},
+      idempotency_key: input.idempotencyKey ?? null,
+    })
+    .select('id')
+    .single();
 
   if (error) {
+    // PostgreSQL unique_violation = 23505.
+    // This means the route (or a retry) already inserted this assistant message.
+    // Return the existing row's id — caller still gets a valid reference.
+    if (error.code === '23505' && input.idempotencyKey) {
+      const { data: existing, error: lookupErr } = await supabase
+        .from('chat_messages')
+        .select('id')
+        .eq('user_id', input.userId)
+        .eq('idempotency_key', input.idempotencyKey)
+        .maybeSingle();
+
+      if (!lookupErr && existing?.id) {
+        return { id: existing.id };
+      }
+    }
     throw new Error(`Failed to persist ${input.role} chat message: ${error.message}`);
   }
 
-  const { error: updateError } = await supabase
+  // Best-effort session timestamp update — never throws
+  await supabase
     .from('chat_sessions')
     .update({ updated_at: new Date().toISOString() })
     .eq('id', input.sessionId)
-    .eq('user_id', input.userId);
+    .eq('user_id', input.userId)
+    .then(({ error: updateError }: any) => {
+      if (updateError) {
+        console.warn('[chat-persistence] Failed to update session timestamp:', updateError.message);
+      }
+    });
 
-  if (updateError) {
-    throw new Error(`Failed to update chat session timestamp: ${updateError.message}`);
-  }
+  return { id: data.id };
 }
 
 export function stripMetadataBlock(content: string): string {

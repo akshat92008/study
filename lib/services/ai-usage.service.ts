@@ -63,6 +63,10 @@ export function isAIUsageBudgetExceeded(error: unknown): error is AIUsageBudgetE
   return error instanceof AIUsageBudgetExceededError;
 }
 
+/**
+ * @deprecated Use reserveBudgetForModelCall in @/lib/ai/cost-guard instead.
+ * This method is non-atomic and prone to race conditions under load.
+ */
 export async function assertDailyAIUsageBudget(input: {
   userId: string;
   kind: UsageKind;
@@ -70,6 +74,7 @@ export async function assertDailyAIUsageBudget(input: {
   estimatedCompletionTokens?: number;
   estimatedCost?: number;
 }): Promise<void> {
+  logger.warn('DEPRECATED CALL: assertDailyAIUsageBudget called. Migrate to cost-guard.', { userId: input.userId });
   const supabase = createAdminClient();
   // Deep reflection bypass fix: Add 1500 tokens to completion estimate to account for <reflection> blocks
   const REFLECTION_ALLOWANCE = 1500;
@@ -96,6 +101,10 @@ export async function assertDailyAIUsageBudget(input: {
   }
 }
 
+/**
+ * @deprecated Use commitBudgetUsage in @/lib/ai/cost-guard instead.
+ * This method does not support the atomic reservation lifecycle.
+ */
 export async function trackDailyAIUsage(input: {
   userId: string;
   kind: UsageKind;
@@ -105,6 +114,7 @@ export async function trackDailyAIUsage(input: {
   completionTokens?: number;
   estimatedCost?: number;
 }): Promise<void> {
+  logger.warn('DEPRECATED CALL: trackDailyAIUsage called. Migrate to cost-guard.', { userId: input.userId });
   const supabase = createAdminClient();
   const promptTokens = Math.max(0, Math.round(input.promptTokens ?? 0));
   const completionTokens = Math.max(0, Math.round(input.completionTokens ?? 0));

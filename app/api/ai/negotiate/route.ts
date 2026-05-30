@@ -27,13 +27,23 @@ interface StudyTaskRow {
   estimated_minutes: number | null;
 }
 
+import { reserveBudgetForModelCall, budgetExceededResponse, budgetUnavailableResponse, isBudgetExceeded, isBudgetUnavailable } from '@/lib/ai/cost-guard';
+
 export async function POST(req: NextRequest) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return new Response('Unauthorized', { status: 401 });
 
-
   const { message, date } = await req.json();
+
+  let reservation;
+  try {
+    reservation = await reserveBudgetForModelCall(user.id, 'negotiate', 'pro', 500, 800);
+  } catch (err) {
+    if (isBudgetExceeded(err)) return budgetExceededResponse();
+    if (isBudgetUnavailable(err)) return budgetUnavailableResponse();
+    throw err;
+  }
 
   // 1. Fetch the CURRENT uncompleted tasks for today
   const { data: currentTasksData } = await supabase
@@ -60,7 +70,7 @@ export async function POST(req: NextRequest) {
   `;
 
   try {
-  const result = await generateJSON('pro', 'You are an elite, empathetic academic assistant.', prompt, NegotiatedPlanSchema);
+  const result = await generateJSON('pro', 'You are an elite, empathetic academic assistant.', prompt, NegotiatedPlanSchema, 0.3, 3, reservation.reservationId);
 
   // Validate we got real tasks back before touching the database
   if (!result || !Array.isArray(result.newTasks)) {

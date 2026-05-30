@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { generateText } from '@/lib/ai/provider-client';
 import { safeError, logger } from '@/lib/utils/logger';
 import { withRateLimit } from '@/lib/middleware/withRateLimit';
+import { reserveBudgetForModelCall, budgetExceededResponse, budgetUnavailableResponse, isBudgetExceeded, isBudgetUnavailable } from '@/lib/ai/cost-guard';
 
 export const POST = withRateLimit('knowledge', async (req, userId) => {
   try {
@@ -36,6 +37,15 @@ export const POST = withRateLimit('knowledge', async (req, userId) => {
     const fullText = chunks.map(c => c.chunk_text).join('\n\n');
     const truncatedText = fullText.slice(0, 80000); // ~20k tokens safety cap
 
+    let reservation;
+    try {
+      reservation = await reserveBudgetForModelCall(userId, 'knowledge-guide', 'quality', 15000, 3000);
+    } catch (err) {
+      if (isBudgetExceeded(err)) return budgetExceededResponse();
+      if (isBudgetUnavailable(err)) return budgetUnavailableResponse();
+      throw err;
+    }
+
     const guideText = await generateText(
       'pro',
       'You are an expert curriculum designer for competitive exam preparation.',
@@ -55,7 +65,8 @@ Material Content:
 ${truncatedText}
 
 Output only valid Markdown. No preamble.`,
-      0.4
+      0.4,
+      reservation.reservationId
     );
 
     if (!guideText) {

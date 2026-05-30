@@ -1,11 +1,28 @@
-// lib/services/autopsy.service.ts
+/**
+ * @deprecated lib/services/autopsy.service.ts — LEGACY STUB
+ *
+ * This file is the old autopsy service that performed direct table inserts,
+ * bypassing the validated `ingest_mock_autopsy` RPC. It has been superseded by:
+ *
+ *   lib/engines/autopsy-engine.ts → processMockAutopsy()
+ *
+ * The canonical pipeline:
+ *   1. app/api/autopsy/ingest/route.ts — receives upload, budget-checks
+ *   2. lib/engines/autopsy-engine.ts  — 2-pass AI extract + diagnose
+ *   3. supabase RPC: ingest_mock_autopsy — atomic insert, confidence routing,
+ *      event publication (AUTOPSY_MOCK_PROCESSED)
+ *   4. lib/events/worker.ts — routes event to consumers:
+ *      - AtlasConsumer  → mastery update (verified_mistake only)
+ *      - MemoryConsumer → revision card creation (verified_mistake only)
+ *      - CommandConsumer → remediation tasks (verified_mistake only)
+ *
+ * The legacy processAutopsy() function is intentionally disabled to prevent
+ * accidental invocation that would bypass confidence gating and directly
+ * mutate the mistakes table without event publication.
+ */
 
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/utils/logger';
-import { EventDispatcher } from '@/lib/events/orchestrator';
-import type { SupabaseClient } from '@supabase/supabase-js';
-import pdf from 'pdf-parse';
-import { parse as csvParse } from 'csv-parse/sync';
 
 export type RawQuestion = {
   questionNumber: number;
@@ -19,235 +36,42 @@ export type RawQuestion = {
   timeSpentSeconds?: number;
 };
 
-/** Simple heuristic classifier for wrong answers */
-function classifyRootCause(answer: string, correct: string): {
-  rootCause: string;
-  conceptName?: string;
-  confidence: number;
-} {
-  const cleaned = answer.trim().toLowerCase();
-  if (!cleaned) return { rootCause: 'anxiety_blank', confidence: 0.9 };
-  if (cleaned.length < 3) return { rootCause: 'silly_mistake', confidence: 0.8 };
-  if (cleaned.includes('i don\'t know') || cleaned.includes('guess'))
-    return { rootCause: 'incomplete_knowledge', confidence: 0.7 };
-  // Very naive concept detection – look for keyword overlap with correct answer
-  const overlap = cleaned.split(' ').filter((w) => correct.toLowerCase().includes(w)).length;
-  if (overlap > 0) {
-    return { rootCause: 'conceptual_gap', confidence: 0.6 };
-  }
-  // Default to calculation or time pressure based on length
-  if (cleaned.length > 20) return { rootCause: 'calculation_error', confidence: 0.5 };
-  return { rootCause: 'time_pressure', confidence: 0.5 };
-}
-
-/** Extract raw text from uploaded file */
-async function extractText(file: File): Promise<string> {
-  const mime = file.type;
-  const buffer = Buffer.from(await file.arrayBuffer());
-  if (mime === 'application/pdf') {
-    const data = await pdf(buffer);
-    return data.text;
-  }
-  if (mime.startsWith('image/')) {
-    logger.warn('Tesseract OCR disabled to prevent crashes.');
-    return 'OCR fallback disabled. Please provide raw text or use an API.';
-  }
-  // Assume CSV – return raw text for later parsing
-  return buffer.toString('utf-8');
-}
-
-/** Normalise raw text into structured questions – placeholder implementation */
-function normaliseQuestions(rawText: string): RawQuestion[] {
-  // Very simple CSV split – expects columns in order
-  try {
-    const records = csvParse(rawText, { columns: true, skip_empty_lines: true }) as any[];
-    return records.map((r, idx) => ({
-      questionNumber: Number(r.questionNumber) || idx + 1,
-      subject: r.subject || 'General',
-      chapter: r.chapter,
-      subtopic: r.subtopic,
-      difficulty: r.difficulty,
-      questionText: r.questionText,
-      correctAnswer: r.correctAnswer,
-      studentAnswer: r.studentAnswer,
-      timeSpentSeconds: r.timeSpent ? Number(r.timeSpent) : undefined,
-    }));
-  } catch (_) {
-    // Fallback – split by lines assuming a simple line format "Q|Subject|Correct|Student"
-    const lines = rawText.split('\n').filter(Boolean);
-    return lines.map((line, i) => {
-      const parts = line.split('|');
-      return {
-        questionNumber: i + 1,
-        subject: parts[1] || 'General',
-        questionText: parts[0] || '',
-        correctAnswer: parts[2] || '',
-        studentAnswer: parts[3] || '',
-      } as RawQuestion;
-    });
-  }
-}
-
-/** Main entry – process a mock test */
-export async function processAutopsy(params: {
+/**
+ * @deprecated Use processMockAutopsy from lib/engines/autopsy-engine.ts instead.
+ * This function is intentionally disabled to prevent bypassing the validated pipeline.
+ */
+export async function processAutopsy(_params: {
   userId: string;
   testName: string;
   examType?: string;
   rawFile?: File;
   manualQuestions?: RawQuestion[];
-}) {
-  const supabase = await createClient();
-  const { userId, testName, examType = 'General Study', rawFile, manualQuestions } = params;
-
-  let rawText = '';
-  if (rawFile) {
-    rawText = await extractText(rawFile);
-  } else if (manualQuestions) {
-    // When manual entry, we skip OCR – we already have structured data
-  }
-
-  const questions: RawQuestion[] = manualQuestions ?? normaliseQuestions(rawText);
-
-  const correctCount = questions.filter(q => q.studentAnswer?.trim() === q.correctAnswer?.trim()).length;
-  const incorrectCount = questions.filter(q => q.studentAnswer?.trim() && q.studentAnswer?.trim() !== q.correctAnswer?.trim()).length;
-  const unattemptedCount = Math.max(0, questions.length - correctCount - incorrectCount);
-  const currentScore = correctCount - incorrectCount * 0.25;
-  const recoverableMarks = incorrectCount * 0.5;
-  const potentialScore = questions.length;
-
-  // Insert mock_autopsies row
-  const mockRes = await supabase
-    .from('mock_autopsies')
-    .insert({
-      user_id: userId,
-      test_name: testName,
-      exam_type: examType,
-      total_questions: questions.length,
-      correct_count: correctCount,
-      incorrect_count: incorrectCount,
-      unattempted_count: unattemptedCount,
-      current_score: currentScore,
-      recoverable_marks: recoverableMarks,
-      potential_score: potentialScore,
-    })
-    .select('id')
-    .single();
-
-  if (mockRes.error) {
-    logger.error('Failed to insert mock_autopsy', mockRes.error);
-    throw new Error('Autopsy insertion failed');
-  }
-  const mockId = mockRes.data.id;
-
-  // Prepare batch inserts
-  const autopsyRows: any[] = [];
-  const mistakeRows: any[] = [];
-
-  for (const q of questions) {
-    const isCorrect = q.studentAnswer?.trim() === q.correctAnswer?.trim();
-    const status = isCorrect ? 'Correct' : q.studentAnswer ? 'Incorrect' : 'Unattempted';
-
-    const classification = !isCorrect && q.studentAnswer ? classifyRootCause(q.studentAnswer, q.correctAnswer) : null;
-
-    autopsyRows.push({
-      autopsy_id: mockId,
-      question_number: q.questionNumber,
-      subject: q.subject,
-      chapter: q.chapter,
-      subtopic: q.subtopic,
-      difficulty: q.difficulty || 'Medium',
-      status,
-      correct_answer: q.correctAnswer,
-      student_answer: q.studentAnswer,
-      mistake_category: classification?.rootCause,
-    });
-
-    if (!isCorrect && q.studentAnswer) {
-      const isVerified = classification && classification.confidence >= 0.85;
-      mistakeRows.push({
-        user_id: userId,
-        concept_id: null, // concept linking can be added later
-        category: classification?.rootCause || 'unknown',
-        status: isVerified ? 'verified_mistake' : 'pending_review',
-        subject: q.subject,
-        chapter: q.chapter || '',
-        topic: q.subtopic || '',
-        question_text: q.questionText,
-        user_answer: q.studentAnswer,
-        correct_answer: q.correctAnswer,
-        marks_lost: 1, // placeholder – real logic can compute based on marks schema
-        total_marks: 1,
-        time_spent_seconds: q.timeSpentSeconds,
-        ai_analysis: null,
-        improvement_suggestion: null,
-        is_recurring: false,
-        occurrence_count: 1,
-      });
-    }
-  }
-
-  // Bulk insert autopsy_questions
-  const batchSize = 500;
-  for (let i = 0; i < autopsyRows.length; i += batchSize) {
-    const slice = autopsyRows.slice(i, i + batchSize);
-    const res = await supabase.from('autopsy_questions').insert(slice);
-    if (res.error) throw new Error(`Failed to insert autopsy_questions batch: ${res.error.message}`);
-  }
-
-  // Bulk insert mistakes
-  for (let i = 0; i < mistakeRows.length; i += batchSize) {
-    const slice = mistakeRows.slice(i, i + batchSize);
-    const res = await supabase.from('mistakes').insert(slice);
-    if (res.error) throw new Error(`Failed to insert mistakes batch: ${res.error.message}`);
-  }
-
-  // Publish event
-  await EventDispatcher.publish({
-    user_id: userId,
-    type: 'AUTOPSY_MOCK_PROCESSED',
-    data: {
-      mockId,
-      totalQuestions: questions.length,
-      wrongAnswers: mistakeRows.length,
-    },
-    metadata: {
-      source: 'autopsy_service',
-      autopsyId: mockId,
-      wrongQuestions: mistakeRows.map(row => ({
-          subject: row.subject,
-          chapter: row.chapter,
-          mistakeCategory: row.category,
-          reasoning: row.category,
-          correctExplanation: row.correct_answer,
-          conceptualGap: row.topic || row.chapter,
-          status: row.status,
-        })),
-    },
-    idempotency_key: `autopsy:${mockId}:processed`,
-  });
-
-  // Return summary JSON
-  const overallDiagnosis = mistakeRows.length > 0 ? 'Needs improvement' : 'Excellent';
-  return {
-    overallDiagnosis,
-    recoverableMarks,
-    conceptRebuildMarks: mistakeRows.length * 1,
-    questions: autopsyRows.map((row) => ({
-      questionNumber: row.question_number,
-      isCorrect: row.status === 'Correct',
-      rootCause: row.mistake_category || null,
-      conceptName: null,
-      confidence: 0.7,
-      studentFacingLesson: null,
-      atlasImpact: null,
-      memoryCardSeed: { shouldCreate: false, front: '', back: '' },
-    })),
-    nextSevenDays: [],
-  };
+}): Promise<never> {
+  throw new Error(
+    '[DEPRECATED] processAutopsy() has been disabled. ' +
+    'Use processMockAutopsy() from lib/engines/autopsy-engine.ts instead, ' +
+    'which routes through the validated ingest_mock_autopsy RPC with confidence gating.'
+  );
 }
 
-// Helper to fetch recent messages – reused from previous codebase (placeholder)
+/** @deprecated This function is kept only for read-only analytics use. */
 export async function getRecentMessages(userId: string, limit = 20) {
-  // This function can be implemented based on existing chat memory service if needed.
+  logger.warn('getRecentMessages() called from deprecated autopsy.service.ts', { userId });
   return [] as any;
 }
+
+// Legacy class kept for any surviving import references — methods throw.
+export class AutopsyService {
+  async getLatestAutopsy(userId: string): Promise<any> {
+    const supabase = await createClient();
+    const { data } = await supabase
+      .from('mock_autopsies')
+      .select('test_name, current_score, potential_score, recoverable_marks, total_questions, correct_count, incorrect_count, unattempted_count, created_at')
+      .eq('user_id', userId)
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .maybeSingle();
+    return data;
+  }
+}
+

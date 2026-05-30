@@ -7,6 +7,7 @@ import { createClient } from '@/lib/supabase/server';
 import { getMINDContext } from '@/lib/engines/mind-engine';
 import { routeTextGeneration } from '@/lib/ai/router';
 import { logger } from '@/lib/utils/logger';
+import { reserveBudgetForModelCall } from '@/lib/ai/cost-guard';
 
 export async function GET() {
   try {
@@ -41,6 +42,19 @@ export async function GET() {
     }
 
     // Returning user — build data-driven greeting
+    let reservation;
+    try {
+      reservation = await reserveBudgetForModelCall(user.id, 'welcome', 'fast', 250, 100);
+    } catch (err) {
+      return NextResponse.json({
+        message: `Hey — ${ctx.overdueCards > 0 ? `${ctx.overdueCards} cards are overdue.` : 'ready when you are.'}`,
+        isFirstTime: false,
+        streakDays: ctx.profile.streakDays,
+        overdueCards: ctx.overdueCards,
+        masteryPercent: ctx.masteryStats.masteryPercent,
+      });
+    }
+
     const prompt = `You are Cognition OS, a senior who knows this student completely.
 Write a ONE sentence opening message for when they open the app today.
 
@@ -69,7 +83,7 @@ Examples of good messages:
 
 Return ONLY the message. No explanation. No quotes around it.`;
 
-    const message = await routeTextGeneration('chat', 'You are a concise, warm AI tutor. Respond with a single sentence.', prompt, 0.8, 150);
+    const message = await routeTextGeneration('chat', 'You are a concise, warm AI tutor. Respond with a single sentence.', prompt, 0.8, 150, reservation.reservationId);
 
     return NextResponse.json({
       message: message?.trim() || `Hey — ${ctx.overdueCards > 0 ? `${ctx.overdueCards} cards are overdue.` : 'ready when you are.'}`,

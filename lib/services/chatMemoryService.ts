@@ -13,7 +13,7 @@ interface ChatMemoryMatch {
 export class ChatMemoryService {
   async storeMessageInMemory(userId: string, content: string): Promise<void> {
     const trimmed = content.trim();
-    if (trimmed.length < 15) return; // Immediate drop for short conversational noise
+    if (trimmed.length < 15 && !/scared|failed|quit|hate|tired|stuck|help|overwhelmed|give up/i.test(trimmed)) return; // Immediate drop for short conversational noise, unless emotional
 
     try {
       // 1. Hybrid Scoring

@@ -26,9 +26,10 @@ export async function generateText(
   _model: keyof typeof MODELS,
   systemPrompt: string,
   userPrompt: string,
-  temperature = 0.7
+  temperature = 0.7,
+  reservationId?: string
 ): Promise<string> {
-  return routeTextGeneration('chat', systemPrompt, userPrompt, temperature);
+  return routeTextGeneration('chat', systemPrompt, userPrompt, temperature, 2048, reservationId);
 }
 
 export async function generateJSON<T>(
@@ -37,22 +38,24 @@ export async function generateJSON<T>(
   userPrompt: string,
   _schema?: z.ZodSchema<T>,
   temperature = 0.3,
-  _retries = 3
+  _retries = 3,
+  reservationId?: string
 ): Promise<T> {
-  return routeJSONGeneration<T>(systemPrompt, userPrompt, temperature, _schema);
+  return routeJSONGeneration<T>(systemPrompt, userPrompt, temperature, _schema, reservationId);
 }
 
 export async function* streamText(
   _model: keyof typeof MODELS,
   systemPrompt: string,
   userPrompt: string | any[],
-  temperature = 0.7
+  temperature = 0.7,
+  reservationId?: string
 ): AsyncGenerator<string> {
   const prompt = Array.isArray(userPrompt)
     ? userPrompt
     : userPrompt;
 
-  yield* routeStreamGeneration(systemPrompt, prompt as any, temperature);
+  yield* routeStreamGeneration(systemPrompt, prompt as any, temperature, reservationId);
 }
 
 export async function getEmbedding(text: string): Promise<number[]> {

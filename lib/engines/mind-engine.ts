@@ -21,7 +21,7 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       .eq('user_id', userId)
       .in('mastery', ['not_started', 'exposed', 'developing'])
       .order('mastery')
-      .limit(10);
+      .limit(3);
     if (subject) weakConceptsQuery = weakConceptsQuery.eq('subject', subject);
     if (topic) weakConceptsQuery = weakConceptsQuery.ilike('chapter', `%${topic}%`);
 
@@ -29,7 +29,7 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       .select('chapter, category, subject, created_at')
       .eq('user_id', userId)
       .order('created_at', { ascending: false })
-      .limit(5);
+      .limit(3);
     if (subject) mistakesQuery = mistakesQuery.eq('subject', subject);
     if (topic) mistakesQuery = mistakesQuery.ilike('chapter', `%${topic}%`);
 
@@ -38,7 +38,7 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       overdueRes, masteryRes, sessionsRes, goalRes, sessionCardRes, taskRes
     ] = await Promise.all([
       supabase.from('profiles')
-        .select('full_name, exam_type, target_date, current_level, learning_style, streak_days, emotional_state, timezone')
+        .select('full_name, exam_type, target_date, current_level, learning_style, streak_days, emotional_state, timezone, learner_state_version')
         .eq('id', userId)
         .single(),
 
@@ -47,9 +47,10 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       mistakesQuery,
 
       supabase.from('revision_cards')
-        .select('id', { count: 'exact', head: true })
+        .select('id, front', { count: 'exact' })
         .eq('user_id', userId)
-        .lte('due', new Date().toISOString()),
+        .lte('due', new Date().toISOString())
+        .limit(3),
 
       Promise.all([
         supabase.from('concepts').select('id', { count: 'exact', head: true }).eq('user_id', userId),
@@ -128,7 +129,8 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
         currentLevel: profile?.current_level || 'intermediate',
         learningStyle: profile?.learning_style || 'visual',
         streakDays: profile?.streak_days || 0,
-        timezone: profile?.timezone || 'UTC'
+        timezone: profile?.timezone || 'UTC',
+        learnerStateVersion: profile?.learner_state_version || 0
       },
       activeGoal: goalRes.data
         ? {
@@ -159,7 +161,8 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
         masteredCount: mastered,
         masteryPercent: total > 0 ? Math.round((mastered / total) * 100) : 0
       },
-      overdueCards: overdueRes.count || 0,
+      overdueCardsCount: overdueRes.count || 0,
+      topOverdueCards: (overdueRes.data || []).map((c: any) => ({ id: c.id, front: c.front })),
       emotionalState: profile?.emotional_state || 'neutral',
       recentTopics,
       knownAnalogies: [],
@@ -173,14 +176,14 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
     logger.error('getMINDContext failed', err);
     // Return safe defaults — never crash the chat
     return {
-      profile: { name: 'Student', examType: 'General', examDate: null, currentLevel: 'intermediate', learningStyle: 'visual', streakDays: 0, timezone: 'UTC' },
+      profile: { name: 'Student', examType: 'General', examDate: null, currentLevel: 'intermediate', learningStyle: 'visual', streakDays: 0, timezone: 'UTC', learnerStateVersion: 0 },
       activeGoal: null,
       currentSessionCard: null,
       commandTasks: [],
       recentStudySessions: [],
       weakConcepts: [], recentMistakes: [], struggles: [],
       masteryStats: { totalConcepts: 0, masteredCount: 0, masteryPercent: 0 },
-      overdueCards: 0, emotionalState: 'neutral', recentTopics: [], knownAnalogies: [],
+      overdueCardsCount: 0, topOverdueCards: [], emotionalState: 'neutral', recentTopics: [], knownAnalogies: [],
       rootGapChains: [],
       currentSessionDurationMinutes: 0,
       sessionGoal: '',

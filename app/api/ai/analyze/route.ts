@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { generateText } from '@/lib/ai/provider-client';
+import { reserveBudgetForModelCall, budgetExceededResponse, budgetUnavailableResponse, isBudgetExceeded, isBudgetUnavailable } from '@/lib/ai/cost-guard';
 
 export async function POST(request: Request) {
   try {
@@ -14,11 +15,21 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { data } = body;
 
+    let reservation;
+    try {
+      reservation = await reserveBudgetForModelCall(user.id, 'analyze', 'quality', 1000, 500);
+    } catch (err) {
+      if (isBudgetExceeded(err)) return budgetExceededResponse();
+      if (isBudgetUnavailable(err)) return budgetUnavailableResponse();
+      throw err;
+    }
+
     const analysis = await generateText(
       'flash',
       'You are an elite academic analyst.',
       `Analyze the following student performance data and provide 3 actionable insights.\n\nData: ${JSON.stringify(data)}`,
-      0.4
+      0.4,
+      reservation.reservationId
     );
 
     return NextResponse.json({ analysis });

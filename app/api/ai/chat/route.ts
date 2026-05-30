@@ -1,3 +1,13 @@
+// app/api/ai/chat/route.ts
+//
+// MODULE 3 PATCH — global chat persistence fix.
+//
+// Canonical write rules:
+//   • User message   → persisted ONCE before any AI call (line ~119).
+//   • Assistant msg  → persisted ONCE in the route, with idempotencyKey, returning its DB id.
+//   • CHAT_MESSAGE_PROCESSED events carry assistant_message_id so the worker never re-inserts.
+//   • ChatSideEffectService / processChatSideEffects do NOT call persistChatMessage.
+
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { generateJSON } from '@/lib/ai/provider-client';
@@ -64,10 +74,10 @@ export async function POST(req: NextRequest) {
   });
 
   let body;
-  try { 
-    body = ChatPayloadSchema.parse(await req.json()); 
-  } catch (err) { 
-    return new Response('Invalid JSON or Payload structure', { status: 400 }); 
+  try {
+    body = ChatPayloadSchema.parse(await req.json());
+  } catch (err) {
+    return new Response('Invalid JSON or Payload structure', { status: 400 });
   }
 
   const { message, imageBase64, imageMimeType, sessionTurnsCount } = body;
@@ -112,10 +122,18 @@ export async function POST(req: NextRequest) {
   const { checkIdempotency } = await import('@/lib/middleware/idempotency');
   const idempotencyKey = req.headers.get('Idempotency-Key');
   const { isDuplicate, error: idempError } = await checkIdempotency(user.id, 'chat', idempotencyKey);
-  
+
   if (idempError) return NextResponse.json({ error: idempError }, { status: 400 });
   if (isDuplicate) return NextResponse.json({ error: 'Duplicate request' }, { status: 409 });
 
+  // ── MODULE 3: stable request id used as assistant message idempotency key ──
+  // Format: "<requestId>:assistant"
+  // The unique index on chat_messages(user_id, idempotency_key) ensures no
+  // duplicate row is created even if this request is retried or the event
+  // worker runs again.
+  const requestId = idempotencyKey || crypto.randomUUID();
+
+  // Persist user message (once, no idempotency key needed — request dedup above covers this)
   await persistChatMessage(supabase, {
     sessionId,
     userId: user.id,
@@ -130,13 +148,13 @@ export async function POST(req: NextRequest) {
   const intentPromise = classifyMessageCombined(
     message || '',
     recentHistory.slice(-2).map((m: any) => m.content).join(' '),
-    undefined // Don't block intent on profile fetch
+    undefined
   );
 
   const [profileResult, intentResult] = await Promise.all([
     Promise.race([profilePromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1500))]).catch(() => ({ data: null })),
-    Promise.race([intentPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1500))]).catch(() => ({ 
-      intent: { intent: 'GENERAL_CHAT' }, emotion: 'neutral', confidence: 0.5 
+    Promise.race([intentPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1500))]).catch(() => ({
+      intent: { intent: 'GENERAL_CHAT' }, emotion: 'neutral', confidence: 0.5
     }))
   ]) as [any, any];
 
@@ -154,9 +172,9 @@ export async function POST(req: NextRequest) {
     : Promise.resolve([] as string[]);
 
   const mindContextPromise = getMINDContext(
-    user.id, 
-    message, 
-    detectedIntent.topic || undefined, 
+    user.id,
+    message,
+    detectedIntent.topic || undefined,
     detectedIntent.subject || undefined
   ).catch((err) => {
     logger.error('Failed to get MIND context', err);
@@ -179,6 +197,8 @@ export async function POST(req: NextRequest) {
   // ============================================================================
   // STAGE 5: AI ORCHESTRATION & STREAMING
   // ============================================================================
+
+  // ── Branch A: Image / vision call ──────────────────────────────────────────
   if (
     imageBase64 &&
     imageMimeType &&
@@ -195,14 +215,24 @@ export async function POST(req: NextRequest) {
           controller.enqueue(encoder.encode(answer));
         }
 
-        await persistChatMessage(supabase, {
-          sessionId,
-          userId: user.id,
-          role: 'assistant',
-          content: answer,
-          intent: detectedIntent.intent,
-          emotionalState: emotion,
-        });
+        // ── MODULE 3: persist assistant message ONCE, capture id ──
+        let assistantMessageId: string;
+        try {
+          ({ id: assistantMessageId } = await persistChatMessage(supabase, {
+            sessionId,
+            userId: user.id,
+            role: 'assistant',
+            content: answer,
+            intent: detectedIntent.intent,
+            emotionalState: emotion,
+            idempotencyKey: `${requestId}:assistant`,
+          }));
+        } catch (persistErr) {
+          logger.error('Chat route [image]: failed to persist assistant message', persistErr);
+          controller.close();
+          return;
+        }
+
         await trackDailyAIUsage({
           userId: user.id,
           kind: 'image',
@@ -210,8 +240,9 @@ export async function POST(req: NextRequest) {
           model: 'router:vision',
           promptTokens: Math.ceil((message || '').length / 4),
           completionTokens: Math.ceil(answer.length / 4),
-        });
+        }).catch((e: Error) => logger.error('Image branch: billing failed', e));
 
+        // Worker receives assistant_message_id — must NOT persist again
         await EventDispatcher.publish({
           user_id: user.id,
           type: 'CHAT_MESSAGE_PROCESSED',
@@ -223,10 +254,11 @@ export async function POST(req: NextRequest) {
             history: recentHistory,
             sessionTurnsCount,
             mindContext,
-            intent: detectedIntent
+            intent: detectedIntent,
+            assistant_message_id: assistantMessageId,
           },
-          idempotency_key: crypto.randomUUID()
-        });
+          idempotency_key: crypto.randomUUID(),
+        }).catch((e: Error) => logger.error('Image branch: event publish failed', e));
 
         controller.close();
       }
@@ -234,6 +266,7 @@ export async function POST(req: NextRequest) {
     return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
   }
 
+  // ── Branch B: Mock-autopsy file redirect ───────────────────────────────────
   if (
     orchestratorResult.intent === 'mock_autopsy' &&
     orchestratorResult.needsFileProcessing &&
@@ -245,15 +278,25 @@ export async function POST(req: NextRequest) {
       async start(controller) {
         controller.enqueue(encoder.encode(responseText));
 
-        await persistChatMessage(supabase, {
-          sessionId,
-          userId: user.id,
-          role: 'assistant',
-          content: responseText,
-          intent: detectedIntent.intent,
-          emotionalState: emotion,
-          metadata: { action: 'run_autopsy' },
-        });
+        // ── MODULE 3: persist assistant message ONCE, capture id ──
+        let assistantMessageId: string;
+        try {
+          ({ id: assistantMessageId } = await persistChatMessage(supabase, {
+            sessionId,
+            userId: user.id,
+            role: 'assistant',
+            content: responseText,
+            intent: detectedIntent.intent,
+            emotionalState: emotion,
+            metadata: { action: 'run_autopsy' },
+            idempotencyKey: `${requestId}:assistant`,
+          }));
+        } catch (persistErr) {
+          logger.error('Chat route [autopsy-redirect]: failed to persist assistant message', persistErr);
+          controller.close();
+          return;
+        }
+
         await trackDailyAIUsage({
           userId: user.id,
           kind: 'chat',
@@ -261,8 +304,9 @@ export async function POST(req: NextRequest) {
           model: 'router:chat',
           promptTokens: Math.ceil((message || '').length / 4),
           completionTokens: Math.ceil(responseText.length / 4),
-        });
+        }).catch((e: Error) => logger.error('Autopsy-redirect branch: billing failed', e));
 
+        // Worker receives assistant_message_id — must NOT persist again
         await EventDispatcher.publish({
           user_id: user.id,
           type: 'CHAT_MESSAGE_PROCESSED',
@@ -275,9 +319,10 @@ export async function POST(req: NextRequest) {
             sessionTurnsCount,
             mindContext,
             intent: detectedIntent,
+            assistant_message_id: assistantMessageId,
           },
           idempotency_key: crypto.randomUUID(),
-        });
+        }).catch((e: Error) => logger.error('Autopsy-redirect branch: event publish failed', e));
 
         controller.close();
       }
@@ -288,6 +333,7 @@ export async function POST(req: NextRequest) {
 
   const intent = detectedIntent;
 
+  // ── Branch C: Overwhelmed / emotional grounding ────────────────────────────
   if (
     mindContext?.emotionalState === 'overwhelmed' &&
     ['TUTOR_SESSION', 'PRACTICE'].includes(orchestratorResult.intent)
@@ -320,14 +366,24 @@ export async function POST(req: NextRequest) {
       async start(controller) {
         controller.enqueue(encoder.encode(groundingMessage));
 
-        await persistChatMessage(supabase, {
-          sessionId,
-          userId: user.id,
-          role: 'assistant',
-          content: groundingMessage,
-          intent: intent.intent,
-          emotionalState: emotion,
-        });
+        // ── MODULE 3: persist assistant message ONCE, capture id ──
+        let assistantMessageId: string;
+        try {
+          ({ id: assistantMessageId } = await persistChatMessage(supabase, {
+            sessionId,
+            userId: user.id,
+            role: 'assistant',
+            content: groundingMessage,
+            intent: intent.intent,
+            emotionalState: emotion,
+            idempotencyKey: `${requestId}:assistant`,
+          }));
+        } catch (persistErr) {
+          logger.error('Chat route [grounding]: failed to persist assistant message', persistErr);
+          controller.close();
+          return;
+        }
+
         await trackDailyAIUsage({
           userId: user.id,
           kind: 'chat',
@@ -335,17 +391,19 @@ export async function POST(req: NextRequest) {
           model: 'router:chat',
           promptTokens: Math.ceil((message || '').length / 4),
           completionTokens: Math.ceil(groundingMessage.length / 4),
-        });
+        }).catch((e: Error) => logger.error('Grounding branch: billing failed', e));
 
+        // Worker receives assistant_message_id — must NOT persist again
         await EventDispatcher.publish({
           user_id: user.id,
           type: 'CHAT_MESSAGE_PROCESSED',
           data: {
             sessionId, message, fullResponse: groundingMessage, emotion,
-            history: recentHistory, sessionTurnsCount, mindContext, intent
+            history: recentHistory, sessionTurnsCount, mindContext, intent,
+            assistant_message_id: assistantMessageId,
           },
-          idempotency_key: crypto.randomUUID()
-        });
+          idempotency_key: crypto.randomUUID(),
+        }).catch((e: Error) => logger.error('Grounding branch: event publish failed', e));
 
         controller.close();
       }
@@ -353,6 +411,7 @@ export async function POST(req: NextRequest) {
     return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-cache' } });
   }
 
+  // ── Branch D: Main streaming branch ────────────────────────────────────────
   const stream = new ReadableStream({
     async start(controller) {
       let fullResponse = '';
@@ -397,13 +456,44 @@ export async function POST(req: NextRequest) {
           }
         }
 
+        const contextTrace = {
+          learner_state_version: mindContext?.profile?.learnerStateVersion || 0,
+          memory_count: semanticMemories.length,
+          weak_concept_count: mindContext?.weakConcepts?.length || 0,
+          due_card_count: mindContext?.overdueCardsCount || 0,
+          mistake_count: mindContext?.recentMistakes?.length || 0,
+        };
+        metadataPayload = { ...(metadataPayload || {}), contextTrace };
+
         if (metadataPayload) {
           controller.enqueue(encoder.encode(`\n\n===METADATA===\n${JSON.stringify(metadataPayload)}`));
         }
 
-        // ============================================================================
-        // STAGE 6 & 7: ASYNC SIDE EFFECTS (QUEUED)
-        // ============================================================================
+        // ── MODULE 3: persist assistant message ONCE in route ──────────────
+        // The streaming is done; fullResponse is complete. Persist here, before
+        // the side-effect event, so the worker never needs to insert.
+        const cleanContent = stripMetadataBlock(fullResponse);
+        let assistantMessageId: string;
+        try {
+          ({ id: assistantMessageId } = await persistChatMessage(supabase, {
+            sessionId,
+            userId: user.id,
+            role: 'assistant',
+            content: cleanContent,
+            intent: intent.intent,
+            emotionalState: emotion,
+            metadata: metadataPayload ?? {},
+            idempotencyKey: `${requestId}:assistant`,
+          }));
+        } catch (persistErr) {
+          logger.error('Chat route [streaming]: failed to persist assistant message', persistErr);
+          // Don't rethrow — we still want side effects to fire if possible.
+          // Assign a sentinel so finalizeChatResponse can log the gap.
+          assistantMessageId = '';
+        }
+
+        // ── STAGE 6 & 7: ASYNC SIDE EFFECTS (QUEUED) ──────────────────────
+        // assistantMessageId is threaded through so the worker never persists again.
         await ChatSideEffectService.finalizeChatResponse({
           supabase,
           userId: user.id,
@@ -415,7 +505,8 @@ export async function POST(req: NextRequest) {
           metadataPayload,
           recentHistory,
           sessionTurnsCount,
-          mindContext
+          mindContext,
+          assistantMessageId,
         });
 
       } catch (err: any) {

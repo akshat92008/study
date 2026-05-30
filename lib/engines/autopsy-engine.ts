@@ -8,6 +8,15 @@ import { generateMentorRecovery } from './mentor-engine';
 import { logger } from '@/lib/utils/logger';
 import { generateJSON, generateMultimodalJSON } from '@/lib/ai/provider-client';
 
+/** Typed error thrown when extraction completely fails (safe for callers to detect). */
+export class AutopsyExtractionError extends Error {
+  readonly extractionFailed = true;
+  constructor(message: string) {
+    super(message);
+    this.name = 'AutopsyExtractionError';
+  }
+}
+
 type AutopsyFileData =
   | { kind: 'text'; text: string }
   | { kind: 'inline'; mimeType: string; data: string };
@@ -22,6 +31,8 @@ type ProcessedQuestion = AutopsyQuestion & {
 
 const MAX_FILE_BYTES = 20 * 1024 * 1024;
 const MIN_EXTRACTION_CONFIDENCE = 70;
+/** Safety cap: refuse to process more than 250 questions in a single autopsy */
+const MAX_QUESTION_COUNT = 250;
 
 function autopsyIdempotencyKey(
   userId: string,
@@ -91,13 +102,17 @@ Output strictly as JSON. No markdown.
     } catch (err: any) {
       attempt++;
       logger.warn(`Pass 1 failed (attempt ${attempt}/${retries})`, { error: err.message });
-      if (attempt >= retries) throw new Error('AI failed to extract document format reliably.');
+      if (attempt >= retries) {
+        // Throw typed error so the route can return a safe, structured response
+        // without leaking raw AI/parse error messages to the client.
+        throw new AutopsyExtractionError('AI failed to extract document format reliably. The file may be unreadable, corrupt, or contain unsupported content.');
+      }
       await new Promise(r => setTimeout(r, delay));
       delay *= 2;
     }
   }
 
-  throw new Error('Unreachable');
+  throw new AutopsyExtractionError('Unreachable extraction state');
 }
 
 async function deepDiagnosticPass(
@@ -158,7 +173,7 @@ export async function processMockAutopsy(
   if (fileData.kind === 'inline') {
     const byteSize = Buffer.byteLength(fileData.data, 'base64');
     if (byteSize > MAX_FILE_BYTES) {
-      throw new Error(
+      throw new AutopsyExtractionError(
         `File too large (${Math.round(byteSize / 1024 / 1024)}MB). Maximum allowed is 20MB.`
       );
     }
@@ -173,6 +188,23 @@ export async function processMockAutopsy(
   logger.info('Autopsy Pass 1: Extracting', { userId, testName });
   const paper = await fastExtractionPass(fileData, subjectList);
   const allQuestions: AutopsyQuestion[] = paper.questions || [];
+
+  // Safety gate: refuse to process suspiciously large question sets
+  if (allQuestions.length > MAX_QUESTION_COUNT) {
+    throw new AutopsyExtractionError(
+      `Extracted ${allQuestions.length} questions which exceeds the maximum of ${MAX_QUESTION_COUNT}. ` +
+      'The file may be corrupt or contain multiple test papers concatenated together.'
+    );
+  }
+
+  // If no questions were extracted at all, fail safely rather than creating an
+  // empty autopsy record that would confuse the learner.
+  if (allQuestions.length === 0) {
+    throw new AutopsyExtractionError(
+      'No questions could be extracted from the provided file. ' +
+      'Please ensure the file contains a readable mock test with clear question numbering.'
+    );
+  }
 
   const verifiedQuestions = allQuestions.filter(q => (q.ocrConfidence ?? 100) >= MIN_EXTRACTION_CONFIDENCE);
   const needsReviewQuestions = allQuestions.filter(q => (q.ocrConfidence ?? 100) < MIN_EXTRACTION_CONFIDENCE);
@@ -214,26 +246,40 @@ export async function processMockAutopsy(
 
   const supabase = createAdminClient();
 
-  const questionsPayload = processedQuestions.map(q => ({
-    questionNumber: q.questionNumber,
-    subject: q.subject,
-    chapter: q.chapter,
-    subtopic: q.subtopic,
-    difficulty: q.difficulty,
-    status: q.status,
-    questionText: q.questionText,
-    correctAnswer: q.correctAnswer,
-    studentAnswer: q.studentAnswer,
-    mistakeCategory: q.mistakeCategory ?? null,
-    reasoning: q.reasoning ?? null,
-    conceptualGap: q.conceptualGap ?? null,
-    correctExplanation: q.correctExplanation ?? null,
-    marksLost: q.marksLost,
-    totalMarks: correctMarks,
-    needsReview: q.needsReview || false,
-    ocrConfidence: q.ocrConfidence ?? 100,
-    extractionConfidence: q.ocrConfidence ?? 100,
-  }));
+  const questionsPayload = processedQuestions.map(q => {
+    // Confidence propagation:
+    // - ocrConfidence comes from Pass 1 (image/text quality)
+    // - For items that went through the diagnostic pass (Pass 2) without error,
+    //   we trust the OCR confidence as the extraction confidence.
+    // - For needsReview items, we explicitly clamp confidence to 0 so the RPC
+    //   routing always puts them in needs_review regardless of threshold.
+    const baseConfidence = q.ocrConfidence ?? 100;
+    const effectiveConfidence = (q.needsReview || q.status === 'NeedsReview')
+      ? 0  // force below threshold → RPC assigns needs_review
+      : baseConfidence;
+
+    return {
+      questionNumber: q.questionNumber,
+      subject: q.subject,
+      chapter: q.chapter,
+      subtopic: q.subtopic,
+      difficulty: q.difficulty,
+      status: q.status,
+      questionText: q.questionText,
+      correctAnswer: q.correctAnswer,
+      studentAnswer: q.studentAnswer,
+      mistakeCategory: q.mistakeCategory ?? null,
+      reasoning: q.reasoning ?? null,
+      conceptualGap: (q as any).conceptualGap ?? null,
+      correctExplanation: (q as any).correctExplanation ?? null,
+      marksLost: q.marksLost,
+      totalMarks: correctMarks,
+      needsReview: q.needsReview || false,
+      // Pass both fields — RPC prefers extractionConfidence
+      ocrConfidence: effectiveConfidence,
+      extractionConfidence: effectiveConfidence,
+    };
+  });
 
   const idempotencyKey = autopsyIdempotencyKey(userId, testName, examType, fileData);
   const traceId = randomUUID();

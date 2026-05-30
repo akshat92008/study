@@ -3,11 +3,15 @@ import { createClient } from '@/lib/supabase/server';
 import { generateText, synthesizeSpeech } from '@/lib/ai/provider-client';
 import { safeError, logger } from '@/lib/utils/logger';
 import { withRateLimit } from '@/lib/middleware/withRateLimit';
+import { reserveBudgetForModelCall, budgetExceededResponse, budgetUnavailableResponse, isBudgetExceeded, isBudgetUnavailable } from '@/lib/ai/cost-guard';
 
 async function generatePodcastScript(
+  userId: string,
   materialTitle: string,
   content: string
 ): Promise<string> {
+  const reservation = await reserveBudgetForModelCall(userId, 'knowledge-audio', 'quality', 2000, 1000);
+
   const text = await generateText(
     'flash',
     'You are writing a podcast script for two hosts.',
@@ -31,7 +35,8 @@ Content to discuss:
 ${content.slice(0, 18000)}
 
 Output only the script. Start immediately with ALEX: or PRIYA:`,
-    0.6
+    0.6,
+    reservation.reservationId
   );
 
   if (!text?.trim()) throw new Error('Empty podcast script from provider router');
@@ -79,7 +84,14 @@ export const POST = withRateLimit('knowledge', async (req, userId) => {
     const content = chunks.map(c => c.chunk_text).join('\n\n');
 
     // Generate podcast script
-    const script = await generatePodcastScript(material.title, content);
+    let script;
+    try {
+      script = await generatePodcastScript(userId, material.title, content);
+    } catch (err) {
+      if (isBudgetExceeded(err)) return budgetExceededResponse();
+      if (isBudgetUnavailable(err)) return budgetUnavailableResponse();
+      throw err;
+    }
 
     // Attempt real TTS — returns null if GOOGLE_TTS_API_KEY not set
     const audioDataUrl = await synthesizeSpeech(script);

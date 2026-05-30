@@ -10,6 +10,7 @@ export interface MINDContext {
     streakDays: number;
     timezone: string;
     targetScore?: string;
+    learnerStateVersion: number;
   };
   activeGoal?: {
     title: string;
@@ -32,7 +33,8 @@ export interface MINDContext {
     masteredCount: number;
     masteryPercent: number;
   };
-  overdueCards: number;
+  overdueCardsCount: number;
+  topOverdueCards: Array<{ id: string; front: string }>;
   emotionalState: string;
   recentTopics: string[];
   knownAnalogies: string[];
@@ -169,12 +171,13 @@ function buildPrompt(ctx: MINDContext, semanticMemories: string[] = [], intent?:
     ? Math.ceil((new Date(ctx.profile.examDate).getTime() - Date.now()) / (1000 * 60 * 60 * 24))
     : null;
 
-  const weakList = ctx.weakConcepts.slice(0, 3).map(c => `${c.name} (${c.mastery})`).join(', ') || 'None identified yet'; // Limit to 3 to save tokens
-  const mistakeList = ctx.recentMistakes.slice(0, 2).map(m => `${m.chapter} — ${m.category}`).join('; ') || 'None recorded'; // Limit to 2
+  const weakList = ctx.weakConcepts.slice(0, 3).map(c => `${c.name} (${c.mastery})`).join(', ') || 'None identified yet';
+  const mistakeList = ctx.recentMistakes.slice(0, 3).map(m => `${m.chapter} — ${m.category}`).join('; ') || 'None recorded';
   const commandTaskList = (ctx.commandTasks || []).slice(0, 3).map(t => `${t.title}${t.priority ? ` (${t.priority})` : ''}`).join('; ') || 'None queued';
   const sessionCard = ctx.currentSessionCard
     ? `${ctx.currentSessionCard.subject || 'General'} — ${ctx.currentSessionCard.focusTopic || 'Daily focus'} (${ctx.currentSessionCard.estimatedMinutes || 25} min)`
     : 'No active card loaded';
+  const dueCardsList = ctx.topOverdueCards?.length > 0 ? ctx.topOverdueCards.slice(0, 3).map(c => c.front).join(' | ') : 'No due cards';
   const emotionalBlock = getEmotionalAdaptationBlock(ctx.emotionalState);
   
   const effectiveLearningStyle = getEffectiveLearningStyle(ctx.studentModel, ctx.profile.learningStyle);
@@ -291,7 +294,7 @@ Current level: ${ctx.profile.currentLevel}
 Learning style: ${ctx.profile.learningStyle}
 Active streak: ${ctx.profile.streakDays} days
 Mastery: ${ctx.masteryStats.masteryPercent}% of syllabus (${ctx.masteryStats.masteredCount}/${ctx.masteryStats.totalConcepts} concepts)
-Overdue flashcards: ${ctx.overdueCards}
+Overdue flashcards: ${ctx.overdueCardsCount} (Top due: ${dueCardsList})
 Today's session card: ${sessionCard}
 COMMAND tasks: ${commandTaskList}
 
@@ -318,6 +321,13 @@ Never give a generic textbook answer. Always connect to:
 - Their known weak areas: ${weakList}
 - Their recent mistakes if relevant: ${mistakeList}
 - ${daysToExam ? `Their timeline: ${daysToExam} days remaining` : ''}
+
+You must proactively follow these personalization principles:
+- If the student asks about study planning, specifically reference their active goal, exam date, and weak concepts.
+- If the student asks "what should I do now?", specifically instruct them based on today's session card, their overdue flashcards, or their recent mistakes.
+- If the student asks a doubt or concept question, connect your explanation to a known weak concept of theirs if relevant.
+- If the student expresses demotivation or frustration, carefully use their active streak (${ctx.profile.streakDays} days) and recent effort/emotional state (${ctx.emotionalState}) to ground them, rather than generic platitudes.
+- NEVER invent or hallucinate learner data, scores, or concepts that aren't explicitly provided in this prompt.
 
 RULE 3 — MATCH EXPLANATION DEPTH TO INTENT.
 Quick doubt → answer fast, clear, complete. No padding.

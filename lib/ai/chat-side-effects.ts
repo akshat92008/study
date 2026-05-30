@@ -1,11 +1,25 @@
+// lib/ai/chat-side-effects.ts
+//
+// MODULE 3 PATCH: This function is the worker's side-effect handler for
+// CHAT_MESSAGE_PROCESSED events. It must NEVER insert assistant chat messages.
+// The route is the single source of truth for message persistence.
+//
+// Worker responsibilities (this file):
+//   1. Student model sync trigger
+//   2. Session summarization trigger
+//   3. Semantic memory storage
+//   4. Emotional state update
+//   5. MIND_TUTOR_COMPLETED event derivation
+//
+// Removed from this file:
+//   ✗  persistChatMessage  (was section 0 — route owns this now)
+//   ✗  trackDailyAIUsage   (moved to finalizeChatResponse in the route context)
+
 import { SupabaseClient } from '@supabase/supabase-js';
 import { logger } from '@/lib/utils/logger';
 import { syncStudentModel } from '@/lib/engines/inference-engine';
 import { ChatMemoryService } from '@/lib/services/chatMemoryService';
 import { captureSentryException } from '@/lib/telemetry/sentry-runtime';
-
-import { persistChatMessage } from '@/lib/services/chat-persistence';
-import { trackDailyAIUsage } from '@/lib/services/ai-usage.service';
 
 export interface ChatSideEffectsInput {
   supabase: SupabaseClient;
@@ -19,6 +33,10 @@ export interface ChatSideEffectsInput {
   mindContext: any;
   intent: any;
   metadataPayload?: any;
+  /** The id of the already-persisted assistant chat_messages row.
+   *  Present in all events published after the MODULE 3 patch.
+   *  Used for logging/reference only — never needed to insert. */
+  assistant_message_id?: string;
 }
 
 export async function processChatSideEffects(input: ChatSideEffectsInput) {
@@ -33,34 +51,21 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
     sessionTurnsCount,
     mindContext,
     intent,
-    metadataPayload
+    assistant_message_id,
   } = input;
 
-  // 0. Persistence and Billing
-  try {
-    await persistChatMessage(supabase, {
+  // ⚠️  INVARIANT: The route persists the assistant message before publishing this event.
+  //    This function must never call persistChatMessage for the assistant message.
+  //    If assistant_message_id is absent the event predates the MODULE 3 patch — that
+  //    is fine, we just skip the reference log.
+  if (!assistant_message_id) {
+    logger.warn('processChatSideEffects: assistant_message_id not in payload (pre-patch event or route bug)', {
+      userId,
       sessionId,
-      userId,
-      role: 'assistant',
-      content: fullResponse,
-      intent: intent?.intent,
-      emotionalState: emotion,
-      metadata: metadataPayload ?? {},
     });
-
-    await trackDailyAIUsage({
-      userId,
-      kind: 'chat',
-      route: '/api/ai/chat',
-      model: 'router:chat',
-      promptTokens: Math.ceil((message || '').length / 4),
-      completionTokens: Math.ceil((fullResponse || '').length / 4),
-    });
-  } catch (err) {
-    logger.error('SideEffect: Persistence and billing failed', err);
   }
 
-  // 1. Student Model Sync Trigger.
+  // 1. Student Model Sync Trigger — unchanged
   try {
     const { count: totalMessageCount } = await supabase
       .from('chat_messages')
@@ -82,7 +87,7 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
     logger.warn('SideEffect: Student model sync trigger failed', err);
   }
 
-  // 2.5. Session Summarization Trigger
+  // 2. Session Summarization Trigger — unchanged
   try {
     if (history && history.length > 10 && history.length % 5 === 0) {
       logger.info('SideEffect: chat summary due', { sessionId, messageCount: history.length });
@@ -91,7 +96,7 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
     logger.warn('SideEffect: Summarization trigger failed', err);
   }
 
-  // 3. Semantic Memory Storage
+  // 3. Semantic Memory Storage — unchanged
   try {
     const memSvc = new ChatMemoryService();
     await memSvc.storeMessageInMemory(userId, message);
@@ -99,7 +104,7 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
     captureSentryException(err, { tags: { context: 'semantic_memory_storage' } });
   }
 
-  // 4. Emotion State Update
+  // 4. Emotion State Update — unchanged
   try {
     if (emotion !== 'neutral') {
       const { data: profile } = await supabase
@@ -107,7 +112,7 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
         .select('emotional_state')
         .eq('id', userId)
         .single();
-        
+
       if (profile?.emotional_state !== emotion) {
         await supabase
           .from('profiles')
@@ -119,7 +124,7 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
     captureSentryException(err, { tags: { context: 'emotion_state_update' } });
   }
 
-  // 5. Event Publishing
+  // 5. Downstream Event Derivation (MIND_TUTOR_COMPLETED) — unchanged
   try {
     const sessionSubject = mindContext?.currentTopic?.subject || mindContext?.weakConcepts?.[0]?.subject;
     const sessionChapter = mindContext?.currentTopic?.chapter || mindContext?.weakConcepts?.[0]?.chapter;
@@ -127,7 +132,9 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
     if (sessionSubject && sessionChapter && sessionSubject !== 'General') {
       const messageCount = history?.length || 1;
       const estimatedMinutes = Math.max(5, Math.round(messageCount * 1.5));
-      const isSessionComplete = sessionTurnsCount ? (sessionTurnsCount >= 6) : (history && history.length >= 10);
+      const isSessionComplete = sessionTurnsCount
+        ? sessionTurnsCount >= 6
+        : history && history.length >= 10;
 
       const { EventDispatcher } = await import('@/lib/events/orchestrator');
       await EventDispatcher.publish({
@@ -144,7 +151,7 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
           latestMessage: message,
           latestResponse: fullResponse,
           isSessionComplete,
-          intent: intent.intent
+          intent: intent.intent,
         },
         metadata: { source: 'chat' },
         idempotency_key: `session:${userId}:${sessionSubject}:${sessionChapter}:${new Date().toISOString().slice(0, 16)}`,

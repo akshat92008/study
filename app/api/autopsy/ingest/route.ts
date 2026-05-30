@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { processMockAutopsy } from '@/lib/engines/autopsy-engine';
+import { processMockAutopsy, AutopsyExtractionError } from '@/lib/engines/autopsy-engine';
 import { logger, safeError } from '@/lib/utils/logger';
 import { withRateLimit } from '@/lib/middleware/withRateLimit';
 import {
@@ -187,6 +187,29 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
     return NextResponse.json(result);
 
   } catch (error: any) {
-    return NextResponse.json(safeError(error), { status: 500 });
+    // AutopsyExtractionError: the file couldn't be parsed/extracted.
+    // Return 422 with a clear user-facing message. Critically: no ATLAS/MEMORY
+    // mutations can have occurred because the error is thrown before the RPC call.
+    if (error instanceof AutopsyExtractionError || error?.extractionFailed === true) {
+      logger.warn('Autopsy extraction failed (user-safe)', {
+        userId,
+        message: error.message,
+      });
+      return NextResponse.json(
+        {
+          error: error.message,
+          extraction_failed: true,
+          // Explicit guarantee: learner state was not mutated
+          learner_state_mutated: false,
+        },
+        { status: 422 }
+      );
+    }
+    // All other errors: internal failure, log and return safe 500
+    logger.error('Autopsy ingest internal error', safeError(error));
+    return NextResponse.json(
+      { ...safeError(error), extraction_failed: false, learner_state_mutated: false },
+      { status: 500 }
+    );
   }
 });

@@ -98,6 +98,32 @@ export class LearningStateEngine {
         logger.error('Failed to update learner state incrementally', rpcErr);
       }
 
+      // --- SESSION CARD INVALIDATION ---
+      // These events change learner state enough to warrant regenerating today's card.
+      const INVALIDATING_EVENT_TYPES = new Set([
+        'STUDY_SESSION_COMPLETED',
+        'COMMAND_SESSION_COMPLETED',
+        'MIND_TUTOR_COMPLETED',
+        'MEMORY_CARD_REVIEWED',      // only if rating = 1 (again) or 4 (easy)
+        'AUTOPSY_MOCK_PROCESSED',
+        'ATLAS_MASTERY_UPDATED',
+      ]);
+
+      const shouldInvalidate =
+        INVALIDATING_EVENT_TYPES.has(type) &&
+        // For MEMORY_CARD_REVIEWED, only invalidate on significant ratings
+        (type !== 'MEMORY_CARD_REVIEWED' || data.rating === 1 || data.rating === 4);
+
+      if (shouldInvalidate) {
+        const { invalidateSessionCard } = await import('@/lib/services/session-card-invalidation');
+        await invalidateSessionCard(userId, type as any, {
+          skipVersionBump: true, // LearningStateEngine already bumped it via RPC
+          client: supabase,
+        }).catch((err: any) =>
+          logger.warn('LearningStateEngine: failed to invalidate session card', { type, err })
+        );
+      }
+
       const todayStr = new Date().toISOString().split('T')[0];
 
       // 3. Evaluate Reactive Rules

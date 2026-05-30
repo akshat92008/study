@@ -16,6 +16,7 @@ import { routeStreamGeneration, routeEmbedding } from '@/lib/ai/router';
 import { generateSessionClosingMessage } from '@/lib/engines/session-closing';
 
 import { buildConversationMessages } from '@/lib/ai/chat-intent';
+import { reserveBudgetForModelCall, budgetExceededResponse, budgetUnavailableResponse, isBudgetExceeded, isBudgetUnavailable } from '@/lib/ai/cost-guard';
 
 interface TutorConceptContext {
   subject?: string | null;
@@ -63,6 +64,15 @@ export async function POST(req: NextRequest) {
   const { message, subject, chapter, history } = await req.json();
   const historyMessages: TutorHistoryMessage[] = Array.isArray(history) ? history : [];
 
+  let mainReservation;
+  try {
+    mainReservation = await reserveBudgetForModelCall(user.id, 'tutor', 'quality', 1000, 1000);
+  } catch (err) {
+    if (isBudgetExceeded(err)) return budgetExceededResponse();
+    if (isBudgetUnavailable(err)) return budgetUnavailableResponse();
+    throw err;
+  }
+
   // Build context similar to chat route
   const mindContext = await getMINDContext(user.id, message);
   const systemPrompt = getMINDSystemPrompt(mindContext, []);
@@ -88,7 +98,7 @@ export async function POST(req: NextRequest) {
       let fullResponse = '';
       try {
         // Generate response using router similar to chat route
-        for await (const chunk of routeStreamGeneration(tutorSystemPrompt, buildConversationMessages(historyMessages, message || ''), 0.75)) {
+        for await (const chunk of routeStreamGeneration(tutorSystemPrompt, buildConversationMessages(historyMessages, message || ''), 0.75, mainReservation.reservationId)) {
           controller.enqueue(encoder.encode(chunk));
           fullResponse += chunk;
         }
@@ -96,9 +106,10 @@ export async function POST(req: NextRequest) {
         // Perform session analysis
         let analysis: TutorAnalysis = { understood: false, gapFound: null, gapAnswer: null, summary: '' };
         try {
+          const analysisReservation = await reserveBudgetForModelCall(user.id, 'session-analysis', 'fast', 500, 200);
           const historySnippet = historyMessages.slice(-6).map((m: TutorHistoryMessage) => `${m.role === 'user' ? 'Student' : 'Tutor'}: ${m.content.slice(0, 200)}`).join('\n');
           const analysisPrompt = `Analyze this tutor exchange.\n${historySnippet}\nStudent: ${message}\nTutor: ${fullResponse.slice(0, 800)}\n\nRespond ONLY as JSON:\n{\"summary\":\"1 sentence\",\"understood\":true,\"gapFound\":\"flashcard question or null\",\"gapAnswer\":\"flashcard answer or null\"}`;
-          const raw = await generateJSON<Partial<TutorAnalysis>>('flash', 'Expert analyzer. Return JSON only.', analysisPrompt);
+          const raw = await generateJSON<Partial<TutorAnalysis>>('flash', 'Expert analyzer. Return JSON only.', analysisPrompt, undefined, 0.3, 3, analysisReservation.reservationId);
           if (raw && typeof raw.understood === 'boolean') {
             const gapFound = raw.gapFound && raw.gapFound.length > 5 ? raw.gapFound : null;
             const gapAnswer = raw.gapAnswer && raw.gapAnswer.length > 5 ? raw.gapAnswer : null;

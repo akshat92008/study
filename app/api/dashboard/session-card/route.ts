@@ -1,3 +1,28 @@
+/**
+ * GET /api/dashboard/session-card
+ * ================================
+ * Returns the single authoritative daily session card for the authenticated user.
+ *
+ * CONTRACT (always returned):
+ * {
+ *   hasCard:              boolean
+ *   card:                 SessionCardPayload | null
+ *   sourceSignals:        SourceSignals
+ *   generatedAt:          ISO string
+ *   learnerStateVersion:  number
+ *   needsOnboarding:      boolean
+ * }
+ *
+ * DETERMINISM RULES:
+ *   - One card per (user_id, local_date) — enforced by DB unique constraint.
+ *   - The LLM only writes `focusTopic` (display label) and `rationale` prose.
+ *   - All structural fields (target, duration, task type, etc.) are code-computed
+ *     by selectSessionCard() before any LLM call.
+ *   - Stale cards (learner_state_version mismatch) are deleted and regenerated.
+ *   - After state-changing events (session complete, autopsy, card reviewed),
+ *     the cache row is deleted, so the next GET regenerates.
+ */
+
 import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { generateJSON } from '@/lib/ai/provider-client';
@@ -7,219 +32,474 @@ import {
   isAIUsageBudgetExceeded,
   trackDailyAIUsage,
 } from '@/lib/services/ai-usage.service';
+import {
+  selectSessionCard,
+  type SelectorInput,
+  type SelectorOutput,
+} from '@/lib/engines/session-card-selector';
+import { getLearnerStateVersion } from '@/lib/services/learner-state-version';
+import { logger } from '@/lib/utils/logger';
 
-const INVALID_TOPIC_VALUES = new Set([
-  'none', 'null', 'undefined', 'n/a', 'na', 'unknown', 
-  'not set', 'no topic', 'general', ''
-]);
+// ─── Response contract ───────────────────────────────────────────────────────
 
-function sanitizeTopic(value: string | null | undefined, fallback: string): string {
-  if (!value) return fallback;
-  if (INVALID_TOPIC_VALUES.has(value.toLowerCase().trim())) return fallback;
-  return value.trim();
+export interface SessionCardPayload {
+  // Identity
+  dayNumber: number;
+  streakDays: number;
+  // Display
+  focusTopic: string;
+  subject: string;
+  estimatedMinutes: number;
+  rationale: string;
+  // Learner state
+  daysToExam: number | null;
+  overdueCards: number;
+  masteryPercent: number;
+  closingMessage?: string;
+  // Deterministic signals
+  taskType: string;
+  resourceType: string;
+  targetConceptId: string | null;
+  priority: string;
+  // Status
+  isCompleted: boolean;
+  completedAt: string | null;
 }
 
-// FIX BUG 8: Schema and all return shapes now consistently use overdueCards (camelCase)
-// Previously the Zod schema said 'overduecards' but the component declared 'overdueCards'
-const SessionCardSchema = z.object({
-  dayNumber: z.number(),
-  streakDays: z.number(),
-  focusTopic: z.string(),
-  subject: z.string(),
-  estimatedMinutes: z.number(),
-  rationale: z.string(),
-  daysToExam: z.number().nullable(),
-  overdueCards: z.number(),   // ← was 'overduecards' — now matches component
-  masteryPercent: z.number(),
-  closingMessage: z.string().optional(),
+export interface SourceSignals {
+  overdueCardCount: number;
+  recentMistakeCount: number;
+  weakConceptCount: number;
+  hasActiveGoal: boolean;
+  daysToExam: number | null;
+  priorityBucket: string;
+  selectionReason: string;
+}
+
+export interface SessionCardResponse {
+  hasCard: boolean;
+  card: SessionCardPayload | null;
+  sourceSignals: SourceSignals;
+  generatedAt: string;
+  learnerStateVersion: number;
+  needsOnboarding: boolean;
+}
+
+// ─── Zod schema for LLM prose patch ─────────────────────────────────────────
+
+const LLMCardProse = z.object({
+  focusTopic: z.string().max(120),
+  rationale: z.string().max(400),
+  closingMessage: z.string().max(200).optional(),
 });
 
-export async function GET() {
-  try {
-    const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+type LLMCardProseType = z.infer<typeof LLMCardProse>;
 
-    const today = new Date().toISOString().split('T')[0];
-    const { data: profileVersion } = await supabase
-      .from('profiles')
-      .select('learner_state_version')
-      .eq('id', user.id)
-      .maybeSingle();
-    const learnerStateVersion = Number(profileVersion?.learner_state_version ?? 0);
+// ─── Helpers ─────────────────────────────────────────────────────────────────
 
-// Attempt to fetch precomputed session card from DB cache
-const { data: cachedCard, error: cacheErr } = await supabase
-  .from('session_cards')
-  .select('*')
-  .eq('user_id', user.id)
-  .eq('date', today)
-  .single();
+const INVALID_TOPIC = new Set([
+  'none', 'null', 'undefined', 'n/a', 'na', 'unknown',
+  'not set', 'no topic', 'general', '',
+]);
 
-if (cachedCard && !cacheErr && Number(cachedCard.learner_state_version ?? 0) === learnerStateVersion) {
-  return NextResponse.json(cachedCard);
+function safeTopic(value: string | null | undefined, fallback: string): string {
+  if (!value) return fallback;
+  const t = value.trim();
+  if (INVALID_TOPIC.has(t.toLowerCase())) return fallback;
+  return t;
 }
 
-    const [
-      profileRes, goalRes, weakConceptsRes, overdueCardsRes,
-      recentMistakesRes, todayTasksRes, sessionCountRes, studentModelRes
-    ] = await Promise.all([
-      supabase.from('profiles').select('full_name, exam_type, target_date, streak_days').eq('id', user.id).single(),
-      supabase.from('learning_goals').select('*').eq('user_id', user.id).eq('status', 'active').limit(1).maybeSingle(),
-      supabase.from('concepts').select('name, subject, chapter, mastery').eq('user_id', user.id).in('mastery', ['not_started', 'exposed', 'developing']).order('mastery').limit(5),
-      supabase.from('revision_cards').select('id', { count: 'exact', head: true }).eq('user_id', user.id).lte('due', new Date().toISOString()),
-      supabase.from('mistakes').select('subject, chapter, category').eq('user_id', user.id).order('created_at', { ascending: false }).limit(3),
-      supabase.from('study_tasks').select('title, subject, chapter, estimated_minutes').eq('user_id', user.id).eq('scheduled_date', today).eq('is_completed', false).limit(1),
-      supabase.from('study_sessions').select('id', { count: 'exact', head: true }).eq('user_id', user.id),
-      supabase.from('student_models').select('fatigue_threshold_minutes, peak_productivity_hour').eq('user_id', user.id).maybeSingle()
-    ]);
+function getLocalDate(timezone: string | null): string {
+  try {
+    if (timezone) {
+      return new Date()
+        .toLocaleDateString('en-CA', { timeZone: timezone }) // YYYY-MM-DD
+        .split('T')[0];
+    }
+  } catch {
+    // fall through
+  }
+  return new Date().toISOString().split('T')[0];
+}
 
-    const profile = profileRes.data;
-    const goal = goalRes.data;
-    const weakConcepts = weakConceptsRes.data || [];
-    const overdueCount = (overdueCardsRes.count || 0) as number;
-    const recentMistakes = recentMistakesRes.data || [];
-    const todayTask = todayTasksRes.data?.[0];
-    const sessionCount = (sessionCountRes.count || 0) as number;
-    const studentModel: any = studentModelRes.data || {};
+// ─── Route handler ───────────────────────────────────────────────────────────
 
-    const focusWindow = studentModel.fatigue_threshold_minutes || 45;
-    const peakHour = studentModel.peak_productivity_hour || 10;
-    const currentHour = new Date().getHours();
-    const isPeakHour = Math.abs(currentHour - peakHour) <= 1;
-
-    const { count: totalConcepts } = await supabase.from('concepts').select('*', { count: 'exact', head: true }).eq('user_id', user.id);
-    const { count: masteredConcepts } = await supabase.from('concepts').select('*', { count: 'exact', head: true }).eq('user_id', user.id).in('mastery', ['mastered', 'automated']);
-    const masteryPercent = totalConcepts ? Math.round(((masteredConcepts || 0) / totalConcepts) * 100) : 0;
-
-    const daysToExam = profile?.target_date
-      ? Math.ceil((new Date(profile.target_date).getTime() - Date.now()) / (1000 * 60 * 60 * 24))
-      : null;
-
-    const streakDays = profile?.streak_days || 0;
-
-    // If there is already a scheduled task, use it directly
-    if (todayTask) {
-      let rationale = overdueCount > 0 ? `${overdueCount} overdue flashcards need review` : 'Top priority based on your mastery gaps';
-      if (isPeakHour) rationale += ' • You are in your peak focus window.';
-
-      const card = {
-        dayNumber: sessionCount + 1,
-        streakDays,
-        focusTopic: todayTask.title,
-        subject: todayTask.subject || 'General',
-        estimatedMinutes: todayTask.estimated_minutes || focusWindow,
-        rationale,
-        daysToExam,
-        overdueCards: overdueCount,   // ← consistent camelCase
-        masteryPercent,
-      };
-
-      // Upsert the card into cache table for future requests
-      await supabase.from('session_cards').upsert({
-        user_id: user.id,
-        date: today,
-        learner_state_version: learnerStateVersion,
-        ...card,
-      });
-
-      return NextResponse.json(card);
+export async function GET(): Promise<NextResponse> {
+  try {
+    const supabase = await createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    // AI-generate the best session card
-    const cardPrompt = `You are the COMMAND engine of Cognition OS. Generate today's single study session card.
+    const generatedAt = new Date().toISOString();
 
-Student Context:
-- Exam: ${profile?.exam_type || goal?.title || 'General Study'}
-- Days to exam: ${daysToExam || 'Not set'}
-- Streak: ${streakDays} days
-- Mastery: ${masteryPercent}%
-- Overdue flashcards: ${overdueCount}
-- Weak concepts: ${weakConcepts.map(c => `${c.name} (${c.mastery})`).join(', ') || 'Fundamentals not yet mapped'}
-- Recent mistakes: ${recentMistakes.map(m => `${m.chapter} (${m.category})`).join(', ') || 'None recorded yet'}
-- Optimal Focus Window: ${focusWindow} minutes
-- Peak Productivity Status: ${isPeakHour ? 'Active now' : 'Not active'}
+    // ── 1. Read learner_state_version from profile ──────────────────────────
+    const learnerStateVersion = await getLearnerStateVersion(user.id, supabase);
 
-STRICT RULES:
-1. focusTopic MUST be a real, specific concept or chapter name. NEVER write "none", "null", "N/A", or "General".
-2. If no weak concepts exist yet, use the first foundational topic for this exam type.
-3. estimatedMinutes MUST be EXACTLY the Optimal Focus Window (${focusWindow} minutes).
-4. subject must be the actual subject name (Physics, Chemistry, Biology, Mathematics, etc.)
-5. rationale should mention if they are in their Peak Productivity window if it is 'Active now'.
+    // ── 2. Read profile (includes timezone) ────────────────────────────────
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select(
+        'full_name, exam_type, target_date, streak_days, timezone, onboarding_complete, learner_state_version'
+      )
+      .eq('id', user.id)
+      .maybeSingle();
 
-Return ONLY valid JSON, no markdown:
-{
-  "focusTopic": "specific chapter or concept name",
-  "subject": "subject name",
-  "estimatedMinutes": ${focusWindow},
-  "rationale": "one clear sentence explaining why this is today's priority"
-}`;
+    const localDate = getLocalDate(profile?.timezone ?? null);
+
+    // ── 3. Check cache ──────────────────────────────────────────────────────
+    const { data: cached } = await supabase
+      .from('session_cards')
+      .select('*')
+      .eq('user_id', user.id)
+      .eq('date', localDate)
+      .maybeSingle();
+
+    if (
+      cached &&
+      Number(cached.learner_state_version ?? 0) === learnerStateVersion
+    ) {
+      // Hit — card is still valid for today
+      const signals: SourceSignals = {
+        overdueCardCount: cached.overdueCards ?? 0,
+        recentMistakeCount: cached.mistakeCount ?? 0,
+        weakConceptCount: cached.weakConceptCount ?? 0,
+        hasActiveGoal: Boolean(cached.hasActiveGoal),
+        daysToExam: cached.daysToExam ?? null,
+        priorityBucket: cached.priority ?? 'unknown',
+        selectionReason: cached.selectionReason ?? '',
+      };
+
+      return NextResponse.json({
+        hasCard: true,
+        card: dbRowToPayload(cached),
+        sourceSignals: signals,
+        generatedAt: cached.created_at ?? generatedAt,
+        learnerStateVersion,
+        needsOnboarding: false,
+      } satisfies SessionCardResponse);
+    }
+
+    // ── 4. Fetch all learner signals in parallel ────────────────────────────
+    const now = new Date().toISOString();
+
+    const [
+      goalRes,
+      overdueCountRes,
+      topDueCardRes,
+      recentMistakesRes,
+      weakConceptsRes,
+      sessionCountRes,
+      studentModelRes,
+      totalConceptsRes,
+      masteredConceptsRes,
+    ] = await Promise.all([
+      supabase
+        .from('learning_goals')
+        .select('id, title, target_date, progress')
+        .eq('user_id', user.id)
+        .eq('status', 'active')
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .maybeSingle(),
+
+      supabase
+        .from('revision_cards')
+        .select('id', { count: 'exact', head: true })
+        .eq('user_id', user.id)
+        .lte('due', now)
+        .neq('state', 4),
+
+      supabase
+        .from('revision_cards')
+        .select('id, subject, chapter, concept_id, difficulty, lapses')
+        .eq('user_id', user.id)
+        .lte('due', now)
+        .neq('state', 4)
+        .order('due', { ascending: true })
+        .order('difficulty', { ascending: false })
+        .order('stability', { ascending: true })
+        .limit(1)
+        .maybeSingle(),
+
+      supabase
+        .from('mistakes')
+        .select('id, subject, chapter, category, concept_id, created_at')
+        .eq('user_id', user.id)
+        .gte(
+          'created_at',
+          new Date(Date.now() - 7 * 86_400_000).toISOString()
+        )
+        .order('created_at', { ascending: false })
+        .limit(20),
+
+      supabase
+        .from('concepts')
+        .select(
+          'id, name, subject, chapter, mastery, mastery_score, forgetting_probability, times_reviewed'
+        )
+        .eq('user_id', user.id)
+        .in('mastery', ['not_started', 'exposed', 'developing'])
+        .order('mastery')
+        .order('forgetting_probability', { ascending: false })
+        .limit(10),
+
+      supabase
+        .from('study_sessions')
+        .select('id', { count: 'exact', head: true })
+        .eq('user_id', user.id),
+
+      supabase
+        .from('student_models')
+        .select('fatigue_threshold_minutes, peak_productivity_hour')
+        .eq('user_id', user.id)
+        .maybeSingle(),
+
+      supabase
+        .from('concepts')
+        .select('id', { count: 'exact', head: true })
+        .eq('user_id', user.id),
+
+      supabase
+        .from('concepts')
+        .select('id', { count: 'exact', head: true })
+        .eq('user_id', user.id)
+        .in('mastery', ['mastered', 'automated', 'proficient']),
+    ]);
+
+    const overdueCardCount = overdueCountRes.count ?? 0;
+    const sessionCount = sessionCountRes.count ?? 0;
+    const totalConcepts = totalConceptsRes.count ?? 0;
+    const masteredConcepts = masteredConceptsRes.count ?? 0;
+    const masteryPercent = totalConcepts
+      ? Math.round((masteredConcepts / totalConcepts) * 100)
+      : 0;
+
+    // ── 5. Run deterministic selector ───────────────────────────────────────
+    const selectorInput: SelectorInput = {
+      profile: profile
+        ? {
+            id: user.id,
+            exam_type: profile.exam_type ?? null,
+            target_date: profile.target_date ?? null,
+            streak_days: profile.streak_days ?? 0,
+            timezone: profile.timezone ?? null,
+            onboarding_complete: profile.onboarding_complete ?? false,
+          }
+        : null,
+      activeGoal: goalRes.data ?? null,
+      overdueCardCount,
+      topDueCard: topDueCardRes.data ?? null,
+      recentMistakes: recentMistakesRes.data ?? [],
+      weakConcepts: weakConceptsRes.data ?? [],
+      sessionCount,
+      studentModel: studentModelRes.data ?? null,
+      now: generatedAt,
+    };
+
+    const selection: SelectorOutput = selectSessionCard(selectorInput);
+
+    // Handle onboarding gate
+    if (selection.needsOnboarding) {
+      const response: SessionCardResponse = {
+        hasCard: false,
+        card: null,
+        sourceSignals: buildSignals(selection, goalRes.data),
+        generatedAt,
+        learnerStateVersion,
+        needsOnboarding: true,
+      };
+      return NextResponse.json(response);
+    }
+
+    // ── 6. LLM phrasing (optional polish — code drives structure) ───────────
+    let llmProse: LLMCardProseType | null = null;
+
+    const prosePrompt = buildProsePrompt(selection, profile, masteryPercent);
 
     try {
       await assertDailyAIUsageBudget({
         userId: user.id,
         kind: 'session-card',
-        estimatedPromptTokens: Math.ceil(cardPrompt.length / 4),
-        estimatedCompletionTokens: 300,
+        estimatedPromptTokens: Math.ceil(prosePrompt.length / 4),
+        estimatedCompletionTokens: 200,
       });
-    } catch (error) {
-      if (isAIUsageBudgetExceeded(error)) {
-        const fallbackCard = {
-          dayNumber: sessionCount + 1,
-          streakDays,
-          focusTopic: weakConcepts[0]?.name || `${profile?.exam_type || 'General Study'} Fundamentals`,
-          subject: weakConcepts[0]?.subject || profile?.exam_type || 'General',
-          estimatedMinutes: focusWindow,
-          rationale: 'Generated from current learner state without an AI call because today’s AI budget is exhausted.',
-          daysToExam,
-          overdueCards: overdueCount,
-          masteryPercent,
-        };
-        return NextResponse.json(fallbackCard, { status: 200 });
+
+      const raw = await generateJSON<LLMCardProseType>(
+        'flash',
+        'You are a study coach. Return ONLY valid JSON, no markdown or explanation.',
+        prosePrompt
+      );
+
+      if (raw && typeof raw.focusTopic === 'string' && typeof raw.rationale === 'string') {
+        llmProse = raw;
+        await trackDailyAIUsage({
+          userId: user.id,
+          kind: 'session-card',
+          route: '/api/dashboard/session-card',
+          model: 'flash',
+          promptTokens: Math.ceil(prosePrompt.length / 4),
+          completionTokens: Math.ceil(JSON.stringify(raw).length / 4),
+        });
       }
-      throw error;
+    } catch (err: any) {
+      if (!isAIUsageBudgetExceeded(err)) {
+        logger.warn('session-card: LLM prose generation failed, using code fallback', {
+          userId: user.id,
+          error: err?.message,
+        });
+      }
+      // LLM failure is non-fatal — code values are the source of truth
     }
 
-    const cardData = await generateJSON<any>('flash', 'You are a study session planner. Return valid JSON only.', cardPrompt);
-    await trackDailyAIUsage({
-      userId: user.id,
-      kind: 'session-card',
-      route: '/api/dashboard/session-card',
-      model: 'flash',
-      promptTokens: Math.ceil(cardPrompt.length / 4),
-      completionTokens: Math.ceil(JSON.stringify(cardData ?? {}).length / 4),
-    });
+    // ── 7. Build final card payload ──────────────────────────────────────────
+    const focusTopic = safeTopic(
+      llmProse?.focusTopic ?? null,
+      selection.topic
+    );
+    const rationale = llmProse?.rationale ?? selection.reason;
+    const closingMessage = llmProse?.closingMessage;
 
-    const examType = profile?.exam_type || 'General Study';
-    const defaultTopic = weakConcepts[0]?.name || `${examType} Fundamentals`;
-    let fallbackRationale = overdueCount > 0 
-        ? `${overdueCount} flashcards are overdue — review time is critical`
-        : `Focus on your weakest area to build foundation`;
-    if (isPeakHour) fallbackRationale += ' • You are in your peak focus window.';
-
-    const card = {
+    const card: SessionCardPayload = {
       dayNumber: sessionCount + 1,
-      streakDays,
-      focusTopic: sanitizeTopic(cardData?.focusTopic, defaultTopic),
-      subject: sanitizeTopic(cardData?.subject, weakConcepts[0]?.subject || examType),
-      estimatedMinutes: cardData?.estimatedMinutes || focusWindow,
-      rationale: cardData?.rationale || fallbackRationale,
-      daysToExam,
-      overdueCards: overdueCount,
+      streakDays: profile?.streak_days ?? 0,
+      focusTopic,
+      subject: selection.subject,
+      estimatedMinutes: selection.estimatedMinutes,
+      rationale,
+      daysToExam: selection.daysToExam,
+      overdueCards: overdueCardCount,
       masteryPercent,
+      closingMessage,
+      taskType: selection.taskType,
+      resourceType: selection.resourceType,
+      targetConceptId: selection.targetConceptId,
+      priority: selection.priority,
+      isCompleted: false,
+      completedAt: null,
     };
 
-    // Cache the generated card for subsequent loads
-    await supabase.from('session_cards').upsert({
+    // ── 8. Persist to session_cards (upsert) ─────────────────────────────────
+    const dbRow = {
       user_id: user.id,
-      date: today,
+      date: localDate,
       learner_state_version: learnerStateVersion,
-      ...card,
-    });
+      // payload fields
+      dayNumber: card.dayNumber,
+      streakDays: card.streakDays,
+      focusTopic: card.focusTopic,
+      subject: card.subject,
+      estimatedMinutes: card.estimatedMinutes,
+      rationale: card.rationale,
+      daysToExam: card.daysToExam,
+      overdueCards: card.overdueCards,
+      masteryPercent: card.masteryPercent,
+      closingMessage: card.closingMessage ?? null,
+      taskType: card.taskType,
+      resourceType: card.resourceType,
+      targetConceptId: card.targetConceptId,
+      priority: card.priority,
+      isCompleted: false,
+      completedAt: null,
+      // source signals (stored for cache re-hydration)
+      selectionReason: selection.reason,
+      mistakeCount: selection.mistakeCount,
+      weakConceptCount: weakConceptsRes.data?.length ?? 0,
+      hasActiveGoal: Boolean(goalRes.data),
+    };
 
-    return NextResponse.json(card);
+    const { error: upsertError } = await supabase
+      .from('session_cards')
+      .upsert(dbRow, { onConflict: 'user_id,date' });
 
+    if (upsertError) {
+      logger.warn('session-card: failed to upsert card to cache', {
+        userId: user.id,
+        error: upsertError.message,
+      });
+    }
+
+    const response: SessionCardResponse = {
+      hasCard: true,
+      card,
+      sourceSignals: buildSignals(selection, goalRes.data),
+      generatedAt,
+      learnerStateVersion,
+      needsOnboarding: false,
+    };
+
+    return NextResponse.json(response);
   } catch (error: any) {
+    logger.error('session-card: unhandled error', error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
+}
+
+// ─── Helpers ─────────────────────────────────────────────────────────────────
+
+function buildSignals(
+  sel: SelectorOutput,
+  goal: { title: string } | null | undefined
+): SourceSignals {
+  return {
+    overdueCardCount: sel.dueCardCount,
+    recentMistakeCount: sel.mistakeCount,
+    weakConceptCount: sel.weakConcepts?.length ?? 0,
+    hasActiveGoal: Boolean(goal),
+    daysToExam: sel.daysToExam,
+    priorityBucket: sel.priority,
+    selectionReason: sel.reason,
+  };
+}
+
+function dbRowToPayload(row: any): SessionCardPayload {
+  return {
+    dayNumber: row.dayNumber ?? row.day_number ?? 1,
+    streakDays: row.streakDays ?? row.streak_days ?? 0,
+    focusTopic: row.focusTopic ?? row.focus_topic ?? '',
+    subject: row.subject ?? '',
+    estimatedMinutes: row.estimatedMinutes ?? row.estimated_minutes ?? 45,
+    rationale: row.rationale ?? '',
+    daysToExam: row.daysToExam ?? row.days_to_exam ?? null,
+    overdueCards: row.overdueCards ?? row.overdue_cards ?? 0,
+    masteryPercent: row.masteryPercent ?? row.mastery_percent ?? 0,
+    closingMessage: row.closingMessage ?? row.closing_message ?? undefined,
+    taskType: row.taskType ?? row.task_type ?? 'concept_study',
+    resourceType: row.resourceType ?? row.resource_type ?? 'practice_questions',
+    targetConceptId: row.targetConceptId ?? row.target_concept_id ?? null,
+    priority: row.priority ?? 'concept_study',
+    isCompleted: row.isCompleted ?? row.is_completed ?? false,
+    completedAt: row.completedAt ?? row.completed_at ?? null,
+  };
+}
+
+function buildProsePrompt(
+  sel: SelectorOutput,
+  profile: any,
+  masteryPercent: number
+): string {
+  return `You are a study session coach for a ${profile?.exam_type ?? 'competitive exam'} student.
+
+The algorithm has ALREADY decided the following (do NOT change these):
+- Target topic: ${sel.topic}
+- Subject: ${sel.subject}
+- Priority: ${sel.priority}
+- Duration: ${sel.estimatedMinutes} minutes
+- Reason: ${sel.reason}
+
+Your ONLY job is to write friendly display text in JSON:
+{
+  "focusTopic": "<concise 3-8 word label for the topic, specific, never vague>",
+  "rationale": "<1 sentence, motivating and specific, ≤100 words>",
+  "closingMessage": "<optional short encouragement, ≤20 words>"
+}
+
+Rules:
+- focusTopic MUST be a real chapter or concept name — never "General Study", "null", or "N/A".
+- If the topic is "${sel.topic}", keep it or make it more specific, never more vague.
+- rationale must mention the specific reason (${sel.priority.replace('_', ' ')}).
+- Return ONLY valid JSON. No markdown, no backticks, no preamble.`;
 }
