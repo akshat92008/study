@@ -120,10 +120,10 @@ export default function DailySessionCard({ onStartSession, onEndSession, isColla
           borderRadius: 'var(--radius-lg)', padding: 'var(--sp-5)', marginBottom: 'var(--sp-4)'
         }}>
           <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: 6 }}>
-            Profile needed
+            First mission setup
           </div>
           <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
-            Complete onboarding to generate your daily session.
+            Complete onboarding, finish a session, or upload a mock so Cognition OS can personalize your next mission.
           </div>
         </div>
       );
@@ -146,10 +146,10 @@ export default function DailySessionCard({ onStartSession, onEndSession, isColla
         <CheckCircle2 size={18} style={{ color: 'var(--success)', flexShrink: 0 }} />
         <div>
           <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-primary)', fontWeight: 'var(--fw-bold)' }}>
-            Today's session is complete
+            Today's mission is complete
           </div>
           <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)', marginTop: 2 }}>
-            {card.focusTopic} is saved into your learner state.
+            {card.focusTopic} is saved for ATLAS, MEMORY, and your next mission.
           </div>
         </div>
       </div>
@@ -183,7 +183,7 @@ export default function DailySessionCard({ onStartSession, onEndSession, isColla
             flexShrink: 0
           }} />
           <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 'bold', color: 'var(--text-tertiary)', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
-            Day {card.dayNumber}:
+            Today:
           </span>
           <span style={{ fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-bold)', color: 'var(--text-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {card.focusTopic}
@@ -254,7 +254,7 @@ export default function DailySessionCard({ onStartSession, onEndSession, isColla
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--sp-4)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
           <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 'bold', color: 'var(--text-tertiary)', letterSpacing: 'var(--ls-wide)', textTransform: 'uppercase' }}>
-            DAY {card.dayNumber}
+            TODAY'S MISSION
           </span>
           {card.streakDays > 0 && (
             <div style={{ display: 'flex', alignItems: 'center', gap: 4, background: 'rgba(251,146,60,0.12)', border: '1px solid rgba(251,146,60,0.25)', borderRadius: 'var(--radius-full)', padding: '2px 8px' }}>
@@ -277,7 +277,7 @@ export default function DailySessionCard({ onStartSession, onEndSession, isColla
       {/* Topic */}
       <div style={{ marginBottom: 'var(--sp-4)' }}>
         <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', marginBottom: 'var(--sp-1)', textTransform: 'uppercase', fontWeight: 'bold', letterSpacing: 'var(--ls-wide)' }}>
-          TODAY'S FOCUS
+          NEXT BEST ACTION
         </div>
         <div style={{ fontSize: 'var(--fs-md)', fontWeight: 'var(--fw-black)', color: 'var(--text-primary)', lineHeight: 1.3, marginBottom: 4 }}>
           {card.focusTopic}
@@ -334,7 +334,9 @@ export default function DailySessionCard({ onStartSession, onEndSession, isColla
         )}
         <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
           <Target size={11} style={{ color: 'var(--text-tertiary)' }} />
-          <span style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>{card.rationale}</span>
+          <span style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>
+            <strong style={{ color: 'var(--text-primary)' }}>Why:</strong> {card.rationale}
+          </span>
         </div>
       </div>
 
@@ -350,7 +352,7 @@ export default function DailySessionCard({ onStartSession, onEndSession, isColla
             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
           }}
         >
-          <Play size={14} /> START SESSION
+          <Play size={14} /> START TODAY'S MISSION
         </button>
       )}
 

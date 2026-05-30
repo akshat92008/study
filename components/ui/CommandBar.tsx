@@ -4,7 +4,7 @@ import { useAppStore } from '@/stores/appStore';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Modal from './Modal';
-import { Search, Compass, Book, Target } from 'lucide-react';
+import { Search, Home, MessageSquare, Brain, RefreshCw, Activity } from 'lucide-react';
 
 export default function CommandBar() {
   const { isCommandBarOpen, setCommandBarOpen } = useAppStore();
@@ -23,17 +23,17 @@ export default function CommandBar() {
   }, [isCommandBarOpen, setCommandBarOpen]);
 
   const actions = [
-    { name: 'Dashboard', icon: Compass, route: '/' },
-    { name: 'Mock Test Autopsy', icon: Target, route: '/autopsy' },
-    { name: 'Cognition Graph', icon: Search, route: '/cognition' },
-    { name: 'Knowledge Base', icon: Book, route: '/knowledge' },
-    { name: 'Mistake Intelligence', icon: Target, route: '/mistakes' }
+    { name: "Today's Mission", icon: Home, route: '/dashboard' },
+    { name: 'MIND', icon: MessageSquare, route: '/chat' },
+    { name: 'AUTOPSY', icon: Activity, route: '/autopsy' },
+    { name: 'ATLAS', icon: Brain, route: '/cognition' },
+    { name: 'MEMORY', icon: RefreshCw, route: '/revision' }
   ];
 
   const filtered = actions.filter(a => a.name.toLowerCase().includes(query.toLowerCase()));
 
   return (
-    <Modal isOpen={isCommandBarOpen} onClose={() => setCommandBarOpen(false)} title="Command Center">
+    <Modal isOpen={isCommandBarOpen} onClose={() => setCommandBarOpen(false)} title="Quick Actions">
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
         <div style={{ position: 'relative' }}>
           <div style={{ position: 'absolute', left: 'var(--sp-3)', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-tertiary)', display: 'flex', alignItems: 'center' }}>

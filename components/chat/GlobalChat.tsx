@@ -36,7 +36,6 @@ export const GlobalChat = memo(function GlobalChat() {
   const [currentSessionSubject, setCurrentSessionSubject] = useState('');
   const [pendingFile, setPendingFile] = useState<File | null>(null);
   const [isProcessingUpload, setIsProcessingUpload] = useState(false);
-  const [hasFallbackStreakFired, setHasFallbackStreakFired] = useState(false);
   const [sessionCardKey, setSessionCardKey] = useState(0);
   const [showDailySession, setShowDailySession] = useState(true);
   const router = useRouter();
@@ -126,46 +125,6 @@ export const GlobalChat = memo(function GlobalChat() {
       setSessionCardKey(prev => prev + 1);
     }
   }, [chatMessages]);
-
-  // Reset fallback tracker when session starts
-  useEffect(() => {
-    if (sessionStartTime) {
-      setHasFallbackStreakFired(false);
-    }
-  }, [sessionStartTime]);
-
-  // Fallback streak increment (fires if > 5 messages in current session)
-  useEffect(() => {
-    if (!sessionStartTime || hasFallbackStreakFired) return;
-    
-    let userMsgCount = 0;
-    for (let i = chatMessages.length - 1; i >= 0; i--) {
-      const m = chatMessages[i];
-      if (new Date(m.timestamp).getTime() < sessionStartTime) break;
-      if (m.role === 'user') userMsgCount++;
-    }
-
-    if (userMsgCount >= 5) {
-      setHasFallbackStreakFired(true);
-      const duration = Math.round((Date.now() - sessionStartTime) / 60000);
-      fetch('/api/dashboard/session-close', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          conceptName: currentSessionTopic || 'General Study',
-          subject: currentSessionSubject || 'General',
-          sessionDurationMinutes: duration
-        })
-      })
-      .then(r => r.json())
-      .then(data => {
-        if (data.newStreak !== undefined) {
-          setStreakDays(data.newStreak);
-        }
-      })
-      .catch(console.error);
-    }
-  }, [chatMessages, sessionStartTime, hasFallbackStreakFired, currentSessionTopic, currentSessionSubject, setStreakDays]);
 
   // Convert file to base64
   const fileToBase64 = (file: File): Promise<string> => {
@@ -352,7 +311,7 @@ export const GlobalChat = memo(function GlobalChat() {
           <div>
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <h3 style={{ fontSize: '14px', fontWeight: 'var(--fw-semibold)', margin: 0, letterSpacing: '-0.01em' }}>
-                Cognition OS
+                MIND
               </h3>
               {streakDays > 0 && (
                 <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginLeft: '8px', padding: '2px 6px', background: 'rgba(251,146,60,0.12)', borderRadius: '12px', border: '1px solid rgba(251,146,60,0.25)' }}>
@@ -368,7 +327,9 @@ export const GlobalChat = memo(function GlobalChat() {
                 boxShadow: 'var(--shadow-glow-success)'
               }} />
               <span style={{ fontSize: '11px', color: 'var(--text-tertiary)', fontWeight: 'var(--fw-medium)' }}>
-                {status === 'streaming' || status === 'connecting' ? 'Synthesizing...' : 'Online & synced'}
+                {status === 'streaming' || status === 'connecting'
+                  ? 'Loading mission and learner state...'
+                  : 'Using Today, ATLAS, MEMORY, and AUTOPSY'}
               </span>
             </div>
           </div>

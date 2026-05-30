@@ -13,7 +13,7 @@
 //
 // Removed from this file:
 //   ✗  persistChatMessage  (was section 0 — route owns this now)
-//   ✗  trackDailyAIUsage   (moved to finalizeChatResponse in the route context)
+//   ✗  usage tracking      (route owns reservation, commit, and release)
 
 import { SupabaseClient } from '@supabase/supabase-js';
 import { logger } from '@/lib/utils/logger';

@@ -1,12 +1,11 @@
 // lib/services/chat-side-effects.service.ts
 //
 // MODULE 3 PATCH: finalizeChatResponse no longer persists the assistant message
-// (the route does that and provides assistantMessageId). It handles billing for
-// the streaming branch and publishes CHAT_MESSAGE_PROCESSED carrying the stable
+// (the route does that and provides assistantMessageId). Budget accounting also
+// lives in the route; this service only publishes CHAT_MESSAGE_PROCESSED carrying the stable
 // assistant_message_id so the worker never needs to re-insert.
 
 import { EventDispatcher } from '@/lib/events/orchestrator';
-import { trackDailyAIUsage } from '@/lib/services/ai-usage.service';
 import { stripMetadataBlock } from '@/lib/services/chat-persistence';
 import { SupabaseClient } from '@supabase/supabase-js';
 import { logger } from '@/lib/utils/logger';
@@ -19,14 +18,12 @@ export class ChatSideEffectService {
    *  3. assistantMessageId holds the canonical DB row id.
    *
    * Responsibilities here:
-   *  - Billing (trackDailyAIUsage) for the streaming path.
    *  - Enqueue CHAT_MESSAGE_PROCESSED with assistant_message_id.
    *
    * What this must NOT do:
    *  - Call persistChatMessage — the route already did it.
    */
   static async finalizeChatResponse({
-    supabase,
     userId,
     sessionId,
     message,
@@ -58,19 +55,6 @@ export class ChatSideEffectService {
 
     try {
       const cleanResponse = stripMetadataBlock(fullResponse);
-
-      // Billing for the streaming path lives here so it executes synchronously
-      // in the route context rather than inside the async worker.
-      await trackDailyAIUsage({
-        userId,
-        kind: 'chat',
-        route: '/api/ai/chat',
-        model: 'router:chat',
-        promptTokens: Math.ceil((message || '').length / 4),
-        completionTokens: Math.ceil(cleanResponse.length / 4),
-      }).catch((err: Error) =>
-        logger.error('finalizeChatResponse: failed to track AI usage', err)
-      );
 
       // Publish the side-effect event. The worker will use assistant_message_id
       // as a reference and must NOT create another chat_messages row.

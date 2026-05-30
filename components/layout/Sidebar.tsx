@@ -1,14 +1,14 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import {
-  MessageSquare, Zap, X, ChevronLeft, ChevronRight, Plus, Check, Loader2, Target, Calendar, Clock, Sliders, Sparkles, LogOut,
-  Brain, RefreshCw, Activity, BookOpen
+  MessageSquare, Zap, X, ChevronLeft, ChevronRight, Plus, Target, LogOut,
+  Brain, RefreshCw, Activity, Home
 } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { signOut } from '@/lib/actions/auth';
 import GoalCreationModal from '@/components/modals/GoalCreationModal';
 
@@ -33,6 +33,13 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
   } = useAppStore();
 
   const [isAddingGoal, setIsAddingGoal] = useState(false);
+  const navItems = [
+    { label: 'Today', href: '/dashboard', icon: Home },
+    { label: 'MIND', href: '/chat', icon: MessageSquare },
+    { label: 'AUTOPSY', href: '/autopsy', icon: Activity },
+    { label: 'ATLAS', href: '/cognition', icon: Brain },
+    { label: 'MEMORY', href: '/revision', icon: RefreshCw },
+  ];
 
   useEffect(() => {
     loadLearningGoals();
@@ -86,7 +93,7 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
               Cognition <span style={{ color: 'var(--accent-blue)' }}>OS</span>
             </div>
             <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: 'var(--ls-ultra)' }}>
-              {examType} Engine
+              {examType} Mission Loop
             </div>
           </div>
         </div>
@@ -125,7 +132,53 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
       >
         {/* Workspace Links */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-1)' }}>
-          {/* Navigation links hidden per OS vision */}
+          {!isSidebarCollapsed && (
+            <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-bold)', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)', padding: '0 var(--sp-3)', marginBottom: 4 }}>
+              Core Loop
+            </span>
+          )}
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = pathname === item.href || (item.href === '/dashboard' && pathname === '/');
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                title={item.label}
+                onClick={() => setMobileSidebarOpen(false)}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: isSidebarCollapsed ? 0 : 'var(--sp-3)',
+                  justifyContent: isSidebarCollapsed ? 'center' : 'flex-start',
+                  padding: 'var(--sp-2) var(--sp-3)',
+                  borderRadius: 'var(--radius-md)',
+                  fontSize: 'var(--fs-sm)',
+                  fontWeight: isActive ? 'var(--fw-bold)' : 'var(--fw-medium)',
+                  color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
+                  background: isActive ? 'var(--bg-secondary)' : 'transparent',
+                  textDecoration: 'none',
+                  position: 'relative',
+                }}
+              >
+                {isActive && (
+                  <div
+                    style={{
+                      position: 'absolute',
+                      left: 0,
+                      top: '25%',
+                      bottom: '25%',
+                      width: 3,
+                      background: 'var(--accent-blue)',
+                      borderRadius: 2,
+                    }}
+                  />
+                )}
+                <Icon size={16} style={{ color: isActive ? 'var(--accent-blue)' : 'var(--text-tertiary)', flexShrink: 0 }} />
+                {!isSidebarCollapsed && <span>{item.label}</span>}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Learning Goals Section */}

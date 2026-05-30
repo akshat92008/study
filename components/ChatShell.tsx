@@ -6,16 +6,13 @@ import { GlobalChat } from '@/components/chat/GlobalChat';
 import { useRouter } from 'next/navigation';
 
 /**
- * ChatShell – a full‑screen wrapper for the Cognition OS chat UI.
- * It provides a clean glass‑morphism background, a header bar with the app logo
- * and a quick‑access button to the dashboard (if needed). The component is
- * responsive: on mobile it occupies the entire viewport; on larger screens it
- * keeps a maximum width to avoid stretching the chat too far.
+ * ChatShell is the full-screen MIND surface: today's mission plus the persistent
+ * mentor that reads the learner state available to Cognition OS.
  */
 export default function ChatShell() {
   const router = useRouter();
 
-  const handleDashboard = () => {
+  const handleToday = () => {
     router.push('/dashboard');
   };
 
@@ -42,10 +39,10 @@ export default function ChatShell() {
         }}
       >
         <div style={{ fontSize: '18px', fontWeight: 600, color: 'var(--text-primary)' }}>
-          Cognition OS
+          MIND
         </div>
         <button
-          onClick={handleDashboard}
+          onClick={handleToday}
           style={{
             background: 'transparent',
             border: 'none',
@@ -55,7 +52,7 @@ export default function ChatShell() {
             padding: '4px 8px',
           }}
         >
-          Dashboard
+          Today
         </button>
       </header>
 

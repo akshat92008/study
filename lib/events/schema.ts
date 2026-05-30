@@ -67,6 +67,8 @@ export const EventPayloadSchemas: Partial<Record<EventType | string, z.ZodTypeAn
     emotion: z.string().optional(),
     history: z.array(z.any()).optional(),
     intent: z.any().optional(),
+    metadataPayload: z.any().optional(),
+    assistant_message_id: z.string().optional(),
   }),
   AUTOPSY_MOCK_PROCESSED: z.object({
     autopsyId: z.string().min(1),

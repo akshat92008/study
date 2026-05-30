@@ -44,12 +44,12 @@ async function startTelemetry(): Promise<void> {
 
     const Resource = resourcesModule.Resource;
     const serviceNameKey =
-      semanticConventions.SEMRESATTRS_SERVICE_NAME ||
-      semanticConventions.SEMATTRS_SERVICE_NAME ||
+      (semanticConventions as any).SEMRESATTRS_SERVICE_NAME ||
+      (semanticConventions as any).SEMATTRS_SERVICE_NAME ||
       'service.name';
     const serviceVersionKey =
-      semanticConventions.SEMRESATTRS_SERVICE_VERSION ||
-      semanticConventions.SEMATTRS_SERVICE_VERSION ||
+      (semanticConventions as any).SEMRESATTRS_SERVICE_VERSION ||
+      (semanticConventions as any).SEMATTRS_SERVICE_VERSION ||
       'service.version';
 
     const traceExporter = new OTLPTraceExporter({

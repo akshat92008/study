@@ -8,7 +8,7 @@ import { AtlasConsumer } from '@/lib/engines/cognition-graph';
 import { MemoryConsumer } from '@/lib/engines/revision-engine';
 import { CommandConsumer } from '@/lib/engines/command-engine';
 import { ConceptExpansionConsumer } from '@/lib/engines/concept-expansion-engine';
-import { processChatSideEffects } from '@/lib/ai/chat-side-effects';
+import { processChatSideEffects, type ChatSideEffectsInput } from '@/lib/ai/chat-side-effects';
 
 const MAX_RETRIES = 2; // Equivalent to retry_count < 3
 
@@ -308,11 +308,10 @@ export class EventWorkerService {
         break;
       case 'chat_side_effect_engine':
         if (event.type === 'CHAT_MESSAGE_PROCESSED') {
-          // Initialize supabase locally in the worker to pass it down
-          const { createAdminClient } = await import('@/lib/supabase/admin');
+          const chatSideEffectsInput = this.buildChatSideEffectsInput(event.user_id, payload);
           await processChatSideEffects({
             supabase: createAdminClient(),
-            ...payload
+            ...chatSideEffectsInput,
           });
           return { status: 'HANDLED' };
         }
@@ -320,6 +319,55 @@ export class EventWorkerService {
     }
 
     throw new Error(`Event routing error: ${consumer} has no handler for ${event.type}`);
+  }
+
+  private static buildChatSideEffectsInput(
+    eventUserId: unknown,
+    payload: Record<string, any>
+  ): Omit<ChatSideEffectsInput, 'supabase'> {
+    const userId = this.requireNonEmptyString(eventUserId, 'event.user_id');
+    const sessionId = this.requireNonEmptyString(payload.sessionId, 'event_payload.sessionId');
+    const message = this.requireNonEmptyString(payload.message, 'event_payload.message');
+    const fullResponse = this.requireString(payload.fullResponse, 'event_payload.fullResponse');
+
+    return {
+      // userId is intentionally sourced only from the event envelope. The payload
+      // may be stale or malicious; it must never override the leased event user.
+      userId,
+      sessionId,
+      message,
+      fullResponse,
+      emotion: typeof payload.emotion === 'string' && payload.emotion.trim()
+        ? payload.emotion
+        : 'neutral',
+      history: Array.isArray(payload.history) ? payload.history : [],
+      sessionTurnsCount: Number.isFinite(payload.sessionTurnsCount)
+        ? Number(payload.sessionTurnsCount)
+        : 0,
+      mindContext: payload.mindContext ?? null,
+      intent: payload.intent && typeof payload.intent === 'object'
+        ? payload.intent
+        : { intent: 'GENERAL_CHAT' },
+      metadataPayload: payload.metadataPayload,
+      assistant_message_id: typeof payload.assistant_message_id === 'string'
+        ? payload.assistant_message_id
+        : undefined,
+    };
+  }
+
+  private static requireNonEmptyString(value: unknown, field: string): string {
+    const text = this.requireString(value, field);
+    if (!text.trim()) {
+      throw new Error(`CHAT_MESSAGE_PROCESSED missing ${field}`);
+    }
+    return text;
+  }
+
+  private static requireString(value: unknown, field: string): string {
+    if (typeof value !== 'string') {
+      throw new Error(`CHAT_MESSAGE_PROCESSED missing ${field}`);
+    }
+    return value;
   }
 
   private static mapToLegacyType(type: string): string | null {

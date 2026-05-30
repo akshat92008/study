@@ -28,10 +28,16 @@ import { classifyMessageCombined } from '@/lib/ai/chat-intent-with-emotion';
 import { validateBase64Payload } from '@/lib/middleware/validateUpload';
 import { checkSemanticCache, setSemanticCache, isCacheable } from '@/lib/ai/responseCache';
 import {
-  assertDailyAIUsageBudget,
-  isAIUsageBudgetExceeded,
-  trackDailyAIUsage,
-} from '@/lib/services/ai-usage.service';
+  budgetExceededResponse,
+  budgetUnavailableResponse,
+  commitBudgetUsage,
+  isBudgetExceeded,
+  isBudgetUnavailable,
+  releaseBudgetReservation,
+  reserveBudgetForModelCall,
+  type BudgetFeature,
+  type BudgetReservation,
+} from '@/lib/ai/cost-guard';
 import { invalidateSessionCards } from '@/lib/services/session-card-cache';
 import {
   getOrCreateGlobalChatSession,
@@ -94,29 +100,6 @@ export async function POST(req: NextRequest) {
   const userMessageForPersistence = message || (imageBase64 ? '[Image question]' : '');
   if (!userMessageForPersistence.trim()) {
     return NextResponse.json({ error: 'Message or upload is required' }, { status: 400 });
-  }
-
-  try {
-    await assertDailyAIUsageBudget({
-      userId: user.id,
-      kind: imageBase64 ? 'image' : 'chat',
-      estimatedPromptTokens: Math.ceil((userMessageForPersistence.length + (imageBase64?.length || 0)) / 4),
-      estimatedCompletionTokens: 1200,
-      estimatedCost: imageBase64 ? 0.01 : undefined,
-    });
-  } catch (error) {
-    if (isAIUsageBudgetExceeded(error)) {
-      return NextResponse.json(
-        {
-          error: 'Daily AI budget exceeded',
-          message: 'Your daily AI budget is used up. Existing plans, cards, and dashboards remain available.',
-          limitUsd: error.limitUsd,
-          usedUsd: error.usedUsd,
-        },
-        { status: error.status }
-      );
-    }
-    throw error;
   }
 
   const { checkIdempotency } = await import('@/lib/middleware/idempotency');
@@ -204,15 +187,36 @@ export async function POST(req: NextRequest) {
     imageMimeType &&
     !(orchestratorResult.intent === 'mock_autopsy' && orchestratorResult.needsFileProcessing)
   ) {
+    const imageBudget = await reserveModelBudgetOrResponse({
+      userId: user.id,
+      feature: 'image',
+      model: 'router:vision',
+      estimatedInputTokens: estimateTextTokens(systemPrompt, message || '[Image question]') + 1200,
+      estimatedOutputTokens: 1200,
+    });
+    if (imageBudget instanceof Response) return imageBudget;
+
     const stream = new ReadableStream({
       async start(controller) {
         let answer = '';
+        let budgetSettled = false;
         try {
           answer = await routeVisionCall(systemPrompt, imageBase64, imageMimeType, message || 'Solve this question completely.');
           controller.enqueue(encoder.encode(answer));
         } catch {
+          await releaseBudgetReservation(imageBudget.reservationId, 'vision_call_failed');
+          budgetSettled = true;
           answer = 'I had trouble reading that image. Try a clearer photo, or type the question out.';
           controller.enqueue(encoder.encode(answer));
+        }
+
+        if (!budgetSettled) {
+          await commitBudgetUsage(imageBudget.reservationId, {
+            promptTokens: estimateTextTokens(systemPrompt, message || '[Image question]') + 1200,
+            completionTokens: estimateTextTokens(answer),
+            route: '/api/ai/chat',
+          });
+          budgetSettled = true;
         }
 
         // ── MODULE 3: persist assistant message ONCE, capture id ──
@@ -232,15 +236,6 @@ export async function POST(req: NextRequest) {
           controller.close();
           return;
         }
-
-        await trackDailyAIUsage({
-          userId: user.id,
-          kind: 'image',
-          route: '/api/ai/chat',
-          model: 'router:vision',
-          promptTokens: Math.ceil((message || '').length / 4),
-          completionTokens: Math.ceil(answer.length / 4),
-        }).catch((e: Error) => logger.error('Image branch: billing failed', e));
 
         // Worker receives assistant_message_id — must NOT persist again
         await EventDispatcher.publish({
@@ -296,15 +291,6 @@ export async function POST(req: NextRequest) {
           controller.close();
           return;
         }
-
-        await trackDailyAIUsage({
-          userId: user.id,
-          kind: 'chat',
-          route: '/api/ai/chat',
-          model: 'router:chat',
-          promptTokens: Math.ceil((message || '').length / 4),
-          completionTokens: Math.ceil(responseText.length / 4),
-        }).catch((e: Error) => logger.error('Autopsy-redirect branch: billing failed', e));
 
         // Worker receives assistant_message_id — must NOT persist again
         await EventDispatcher.publish({
@@ -384,15 +370,6 @@ export async function POST(req: NextRequest) {
           return;
         }
 
-        await trackDailyAIUsage({
-          userId: user.id,
-          kind: 'chat',
-          route: '/api/ai/chat',
-          model: 'router:chat',
-          promptTokens: Math.ceil((message || '').length / 4),
-          completionTokens: Math.ceil(groundingMessage.length / 4),
-        }).catch((e: Error) => logger.error('Grounding branch: billing failed', e));
-
         // Worker receives assistant_message_id — must NOT persist again
         await EventDispatcher.publish({
           user_id: user.id,
@@ -412,10 +389,22 @@ export async function POST(req: NextRequest) {
   }
 
   // ── Branch D: Main streaming branch ────────────────────────────────────────
+  const mainBudget = shouldReserveMainChatBudget(intent.intent)
+    ? await reserveModelBudgetOrResponse({
+        userId: user.id,
+        feature: budgetFeatureForMainChat(intent.intent, orchestratorResult.intent),
+        model: 'router:chat',
+        estimatedInputTokens: estimateMainPromptTokens(systemPrompt, recentHistory, message || ''),
+        estimatedOutputTokens: 1600,
+      })
+    : null;
+  if (mainBudget instanceof Response) return mainBudget;
+
   const stream = new ReadableStream({
     async start(controller) {
       let fullResponse = '';
       let metadataPayload: any = null;
+      let budgetSettled = false;
 
       try {
         if (['AUTOPSY', 'ANALYTICS', 'ATLAS', 'FLASHCARDS'].includes(intent.intent)) {
@@ -473,6 +462,15 @@ export async function POST(req: NextRequest) {
         // The streaming is done; fullResponse is complete. Persist here, before
         // the side-effect event, so the worker never needs to insert.
         const cleanContent = stripMetadataBlock(fullResponse);
+        if (mainBudget) {
+          await commitBudgetUsage(mainBudget.reservationId, {
+            promptTokens: estimateMainPromptTokens(systemPrompt, recentHistory, message || ''),
+            completionTokens: estimateTextTokens(cleanContent),
+            route: '/api/ai/chat',
+          });
+          budgetSettled = true;
+        }
+
         let assistantMessageId: string;
         try {
           ({ id: assistantMessageId } = await persistChatMessage(supabase, {
@@ -511,6 +509,13 @@ export async function POST(req: NextRequest) {
 
       } catch (err: any) {
         logger.error('Chat stream error', err);
+        if (mainBudget && !budgetSettled) {
+          await releaseBudgetReservation(
+            mainBudget.reservationId,
+            err instanceof Error ? err.message : 'chat_stream_error'
+          );
+          budgetSettled = true;
+        }
         controller.enqueue(encoder.encode('\n\n[Something went wrong. Please try again.]'));
       }
 
@@ -535,4 +540,52 @@ function intentToAction(intent: string): string {
     FLASHCARDS: 'show_flashcards',
   };
   return map[intent] || 'show_analytics';
+}
+
+function shouldReserveMainChatBudget(intent: string): boolean {
+  if (['AUTOPSY', 'ANALYTICS', 'ATLAS', 'FLASHCARDS', 'REPLAN'].includes(intent)) {
+    return false;
+  }
+  return true;
+}
+
+function budgetFeatureForMainChat(intent: string, orchestratorIntent?: string): BudgetFeature {
+  if (intent === 'CREATE_ARTIFACT' || orchestratorIntent === 'planning') return 'planner';
+  if (['TUTOR_SESSION', 'PRACTICE'].includes(intent)) return 'tutor';
+  return 'chat';
+}
+
+async function reserveModelBudgetOrResponse(input: {
+  userId: string;
+  feature: BudgetFeature;
+  model: string;
+  estimatedInputTokens: number;
+  estimatedOutputTokens: number;
+}): Promise<BudgetReservation | Response> {
+  try {
+    return await reserveBudgetForModelCall(
+      input.userId,
+      input.feature,
+      input.model,
+      input.estimatedInputTokens,
+      input.estimatedOutputTokens
+    );
+  } catch (error) {
+    if (isBudgetExceeded(error)) return budgetExceededResponse();
+    if (isBudgetUnavailable(error)) return budgetUnavailableResponse();
+    throw error;
+  }
+}
+
+function estimateMainPromptTokens(systemPrompt: string, recentHistory: any[], message: string): number {
+  const historyText = recentHistory
+    .slice(-12)
+    .map((item: any) => `${item?.role || ''}:${item?.content || ''}`)
+    .join('\n');
+  return estimateTextTokens(systemPrompt, historyText, message);
+}
+
+function estimateTextTokens(...parts: Array<string | null | undefined>): number {
+  const chars = parts.reduce((sum, part) => sum + (part?.length || 0), 0);
+  return Math.max(1, Math.ceil(chars / 4));
 }

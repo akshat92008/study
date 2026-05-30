@@ -121,10 +121,10 @@ export default function DashboardPage() {
     setUploadStatus('Uploading and running OCR extraction...');
 
     const statuses = [
-      'Extracting answers via Gemini 2.5 Flash...',
+      'Extracting answers from your upload...',
       'Mapping incorrect responses to syllabus chapters...',
-      'Diagnosing root cognitive failures...',
-      'Generating Mentor sprint plan...'
+      'Diagnosing root mistake patterns...',
+      'Preparing the AUTOPSY summary for MIND...'
     ];
     let i = 0;
     const interval = setInterval(() => {
@@ -260,12 +260,20 @@ export default function DashboardPage() {
 
       {/* Main Content Area */}
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
+        <div>
+          <h1 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--text-primary)', margin: 0 }}>
+            Today's Mission
+          </h1>
+          <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', marginTop: 4, lineHeight: 1.5 }}>
+            Start with the mission, ask MIND for help, then use AUTOPSY, ATLAS, and MEMORY to keep the next plan current.
+          </p>
+        </div>
         <CurrentTaskCard onSessionComplete={loadTelemetry} />
         
         <Card padding="lg" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)' }}>
-          <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'bold', marginBottom: 'var(--sp-2)' }}>Syllabus Coverage & Mastery</h3>
+          <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'bold', marginBottom: 'var(--sp-2)' }}>Learner State</h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-xs)', marginBottom: 'var(--sp-4)' }}>
-              Your real-time cognitive metrics are constantly updated as you complete study sessions, practice spaced-repetition flashcards, and run autopsies on mock test failures.
+              Cognition OS turns your sessions, doubts, mistakes, and mock tests into the next daily study mission.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--sp-4)' }}>
               <div style={{ flex: '1 1 200px', background: 'var(--bg-primary)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
@@ -334,7 +342,7 @@ export default function DashboardPage() {
                 color: 'var(--text-tertiary)',
                 fontSize: 'var(--fs-xs)'
               }}>
-                No microtargets scheduled for today. Ask the tutor to "create a planner" to schedule your microtargets!
+                No microtargets scheduled for today. Ask MIND what to do now, complete a mission, or upload a mock to AUTOPSY.
               </div>
             ) : (
               dashboardData.tasks.map((task: any) => {
@@ -486,7 +494,7 @@ export default function DashboardPage() {
             {activeDrawer === 'cognition' && (
               <>
                 <Brain size={18} style={{ color: 'var(--accent-purple)' }} />
-                <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)' }}>ATLAS: Cognition Graph</span>
+                <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)' }}>ATLAS: Mastery Map</span>
               </>
             )}
             {activeDrawer === 'revision' && (
@@ -498,7 +506,7 @@ export default function DashboardPage() {
             {activeDrawer === 'autopsy' && (
               <>
                 <Activity size={18} style={{ color: 'var(--danger)' }} />
-                <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)' }}>AUTOPSY: Mistake Diagnoser</span>
+                <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)' }}>AUTOPSY: Mistake Diagnosis</span>
               </>
             )}
           </div>

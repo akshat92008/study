@@ -4,6 +4,11 @@ import { createClient } from '@/lib/supabase/server';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { StudentEventInputSchema } from '@/lib/events/schema';
 
+// Public browser-origin event publishing is fail-closed for production MVP.
+// Add explicit client-safe event types here only after their payload contract,
+// consumers, and authorization semantics are reviewed.
+const CLIENT_EVENT_TYPE_ALLOWLIST = new Set<string>();
+
 export async function POST(req: Request) {
   try {
     const supabase = await createClient();
@@ -13,6 +18,9 @@ export async function POST(req: Request) {
     }
 
     const body = StudentEventInputSchema.parse(await req.json());
+    if (!CLIENT_EVENT_TYPE_ALLOWLIST.has(body.type)) {
+      return NextResponse.json({ error: 'Event type is not client-publishable' }, { status: 403 });
+    }
 
     const eventId = await EventDispatcher.publish({
       userId: user.id,
