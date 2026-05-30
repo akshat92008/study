@@ -57,10 +57,34 @@ export async function generateKnowledgeUpdate(
   let mistakesLogged = 0;
 
   for (const question of diagnosedIncorrect) {
+    const extractionConfidence =
+      typeof question.ocrConfidence === 'number' ? question.ocrConfidence :
+      typeof question.extractionConfidence === 'number' ? question.extractionConfidence :
+      100;
+    if (question.needsReview || extractionConfidence < 70) {
+      logger.warn('Skipping low-confidence autopsy knowledge update', {
+        userId,
+        questionNumber: question.questionNumber,
+        extractionConfidence,
+      });
+      continue;
+    }
+
     const subject = normalizeText(question.subject, 'General');
     const chapter = normalizeText(question.chapter, subject);
     const topic = normalizeText(question.conceptualGap, '');
     const conceptId = await resolveAutopsyConcept(supabase, userId, question);
+
+    if (question.autopsyId && question.questionNumber) {
+      const { data: existingMistake } = await supabase
+        .from('mistakes')
+        .select('id')
+        .eq('user_id', userId)
+        .eq('source_autopsy_id', question.autopsyId)
+        .eq('source_question_number', question.questionNumber)
+        .maybeSingle();
+      if (existingMistake) continue;
+    }
 
     const { error } = await supabase.from('mistakes').insert({
       user_id: userId,
@@ -76,6 +100,9 @@ export async function generateKnowledgeUpdate(
       total_marks: question.totalMarks ?? 0,
       ai_analysis: question.reasoning ?? null,
       improvement_suggestion: question.correctExplanation ?? question.conceptualGap ?? null,
+      source_autopsy_id: question.autopsyId ?? null,
+      source_question_number: question.questionNumber ?? null,
+      extraction_confidence: extractionConfidence,
     });
 
     if (conceptId) conceptsTouched += 1;

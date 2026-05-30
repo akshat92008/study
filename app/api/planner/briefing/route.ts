@@ -4,6 +4,11 @@ import { createClient } from '@/lib/supabase/server';
 import { getDueCards } from '@/lib/engines/revision-engine';
 import { generateMorningBriefing } from '@/lib/ai/agents/planner';
 import { logger, safeError } from '@/lib/utils/logger';
+import {
+  assertDailyAIUsageBudget,
+  isAIUsageBudgetExceeded,
+  trackDailyAIUsage,
+} from '@/lib/services/ai-usage.service';
 
 export async function GET() {
   try {
@@ -28,6 +33,32 @@ export async function GET() {
     const daysRemaining = Math.max(0, Math.ceil((examDate.getTime() - Date.now()) / (1000 * 60 * 60 * 24)));
 
     // 3. Parallel Fetching for Briefing Stats
+    const morningGreetingPromise = assertDailyAIUsageBudget({
+      userId: user.id,
+      kind: 'planner',
+      estimatedPromptTokens: 1200,
+      estimatedCompletionTokens: 250,
+    })
+      .then(async () => {
+        const greeting = await generateMorningBriefing(user.id);
+        await trackDailyAIUsage({
+          userId: user.id,
+          kind: 'planner',
+          route: '/api/planner/briefing',
+          model: 'planner:morning-briefing',
+          promptTokens: 1200,
+          completionTokens: Math.ceil(greeting.length / 4),
+        });
+        return greeting;
+      })
+      .catch(e => {
+        if (isAIUsageBudgetExceeded(e)) {
+          return 'Ready for your daily mission. AI briefing is paused because today’s AI budget is exhausted.';
+        }
+        logger.error('Failed to generate morning briefing narrative', e);
+        return 'Ready for your daily mission. Study hard today!';
+      });
+
     const [existingTasksRes, dueCards, weakConceptsRes, morningGreeting] = await Promise.all([
       supabase.from('study_tasks')
         .select('*')
@@ -41,11 +72,7 @@ export async function GET() {
         .in('mastery', ['exposed', 'developing'])
         .order('forgetting_probability', { ascending: false })
         .limit(5),
-      // Generate the AI narrative greeting!
-      generateMorningBriefing(user.id).catch(e => {
-        logger.error('Failed to generate morning briefing narrative', e);
-        return 'Ready for your daily mission. Study hard today!';
-      })
+      morningGreetingPromise
     ]);
 
     const existingTasks = existingTasksRes.data || [];

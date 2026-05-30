@@ -207,7 +207,7 @@ export default function KnowledgeMap({ concepts: initialConcepts, links = [], st
               initial={{ scale: 0.95, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
               style={{
                 background: 'var(--bg-secondary)', border: '1px solid var(--border-default)',
                 borderRadius: 'var(--radius-xl)', padding: 'var(--sp-8)',

@@ -5,6 +5,11 @@ import { routeJSONGeneration } from '@/lib/ai/router';
 
 const MAX_MEMORY_RESULTS = 8;
 
+interface ChatMemoryMatch {
+  id: string;
+  content: string;
+}
+
 export class ChatMemoryService {
   async storeMessageInMemory(userId: string, content: string): Promise<void> {
     const trimmed = content.trim();
@@ -115,8 +120,8 @@ Return ONLY valid JSON in this exact format:
         })()
       ]);
 
-      const vectorMatches = vectorResult;
-      const textMatches = textResult;
+      const vectorMatches = vectorResult as ChatMemoryMatch[];
+      const textMatches = textResult as ChatMemoryMatch[];
 
       if (!vectorMatches.length && !textMatches.length) return [];
 
@@ -124,12 +129,12 @@ Return ONLY valid JSON in this exact format:
       const k = 60;
       const scores = new Map<string, { content: string, score: number }>();
 
-      vectorMatches.forEach((match, idx) => {
+      vectorMatches.forEach((match: ChatMemoryMatch, idx: number) => {
         const score = 1 / (k + idx + 1);
         scores.set(match.id, { content: match.content, score });
       });
 
-      textMatches.forEach((match, idx) => {
+      textMatches.forEach((match: ChatMemoryMatch, idx: number) => {
         const score = 1 / (k + idx + 1);
         if (scores.has(match.id)) {
           scores.get(match.id)!.score += score;

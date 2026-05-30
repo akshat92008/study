@@ -4,6 +4,11 @@ import { getPlanForDate } from '@/lib/actions/planner';
 import { generateDailyPlan } from '@/lib/ai/agents/planner';
 import { safeError, logger } from '@/lib/utils/logger';
 import { withRateLimit } from '@/lib/middleware/withRateLimit';
+import {
+  assertDailyAIUsageBudget,
+  isAIUsageBudgetExceeded,
+  trackDailyAIUsage,
+} from '@/lib/services/ai-usage.service';
 
 import { z } from 'zod';
 
@@ -33,7 +38,35 @@ export const POST = withRateLimit('planner', async (req, userId) => {
 
     let plan = await getPlanForDate(targetDate);
     if (!plan || plan.length === 0) {
+      try {
+        await assertDailyAIUsageBudget({
+          userId,
+          kind: 'planner',
+          estimatedPromptTokens: 1800,
+          estimatedCompletionTokens: 900,
+        });
+      } catch (error) {
+        if (isAIUsageBudgetExceeded(error)) {
+          return NextResponse.json(
+            {
+              error: 'Daily AI budget exceeded',
+              message: 'Planner generation is paused for today, but existing tasks remain available.',
+              plan: [],
+            },
+            { status: error.status }
+          );
+        }
+        throw error;
+      }
       plan = await generateDailyPlan(userId, targetDate);
+      await trackDailyAIUsage({
+        userId,
+        kind: 'planner',
+        route: '/api/planner',
+        model: 'planner:daily-plan',
+        promptTokens: 1800,
+        completionTokens: Math.ceil(JSON.stringify(plan).length / 4),
+      });
     }
     
     return NextResponse.json({ plan });

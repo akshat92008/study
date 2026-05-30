@@ -15,11 +15,13 @@ type AutopsyFileData =
 type AutopsyQuestion = z.infer<typeof AutopsyQuestionSchema>;
 type ProcessedQuestion = AutopsyQuestion & {
   marksLost: number;
+  needsReview?: boolean;
   correctExplanation?: string | null;
   conceptualGap?: string | null;
 };
 
 const MAX_FILE_BYTES = 20 * 1024 * 1024;
+const MIN_EXTRACTION_CONFIDENCE = 70;
 
 async function routeMultimodalExtraction(
   prompt: string,
@@ -153,9 +155,11 @@ export async function processMockAutopsy(
   const paper = await fastExtractionPass(fileData, subjectList);
   const allQuestions: AutopsyQuestion[] = paper.questions || [];
 
-  const incorrectQuestions = allQuestions.filter(q => q.status === 'Incorrect');
-  const correctQuestions  = allQuestions.filter(q => q.status === 'Correct');
-  const unattempted       = allQuestions.filter(q => q.status === 'Unattempted');
+  const verifiedQuestions = allQuestions.filter(q => (q.ocrConfidence ?? 100) >= MIN_EXTRACTION_CONFIDENCE);
+  const needsReviewQuestions = allQuestions.filter(q => (q.ocrConfidence ?? 100) < MIN_EXTRACTION_CONFIDENCE);
+  const incorrectQuestions = verifiedQuestions.filter(q => q.status === 'Incorrect');
+  const correctQuestions  = verifiedQuestions.filter(q => q.status === 'Correct');
+  const unattempted       = verifiedQuestions.filter(q => q.status === 'Unattempted');
 
   logger.info('Autopsy Pass 2: Diagnosing', { userId, incorrect: incorrectQuestions.length });
   const diagnosedIncorrect = await deepDiagnosticPass(incorrectQuestions);
@@ -179,6 +183,14 @@ export async function processMockAutopsy(
     ...correctQuestions.map(q  => ({ ...q, marksLost: 0 })),
     ...diagnosedIncorrect.map(q => ({ ...q, marksLost: Math.abs(negativeMarks) + correctMarks })),
     ...unattempted.map(q       => ({ ...q, marksLost: correctMarks })),
+    ...needsReviewQuestions.map(q => ({
+      ...q,
+      status: 'NeedsReview' as const,
+      marksLost: 0,
+      needsReview: true,
+      mistakeCategory: null,
+      reasoning: 'Extraction confidence below review threshold; learner state was not mutated.',
+    })),
   ];
 
   const supabase = await createClient();
@@ -217,7 +229,13 @@ export async function processMockAutopsy(
         mistake_category: q.mistakeCategory ?? null,
         reasoning: q.reasoning ?? null,
         marks_lost: q.marksLost,
+        needs_review: q.needsReview || false,
         ocr_confidence: q.ocrConfidence ?? 100,
+        extraction_confidence: q.ocrConfidence ?? 100,
+        trace_metadata: {
+          extractionThreshold: MIN_EXTRACTION_CONFIDENCE,
+          eligibleForLearnerState: !q.needsReview,
+        },
       }))
     );
 
@@ -226,7 +244,12 @@ export async function processMockAutopsy(
     }
   }
 
-  await generateKnowledgeUpdate(userId, diagnosedIncorrect).catch(err => logger.error('Knowledge sync failed', err));
+  const traceableDiagnosedIncorrect = diagnosedIncorrect.map(q => ({
+    ...q,
+    autopsyId: autopsyRecord.id,
+  }));
+
+  await generateKnowledgeUpdate(userId, traceableDiagnosedIncorrect).catch(err => logger.error('Knowledge sync failed', err));
 
   const mentorResult = await generateMentorRecovery(
     autopsyRecord.id, rawScore, potentialScore, diagnosedIncorrect, examType
@@ -245,11 +268,12 @@ export async function processMockAutopsy(
       totalQuestions: allQuestions.length,
       correctCount: correctQuestions.length,
       incorrectCount: incorrectQuestions.length,
+      needsReviewCount: needsReviewQuestions.length,
     },
     metadata: {
       source: 'autopsy_engine',
-      autopsyId: autopsyRecord.id,
-      wrongQuestions: diagnosedIncorrect.map(q => ({
+        autopsyId: autopsyRecord.id,
+      wrongQuestions: traceableDiagnosedIncorrect.map(q => ({
         questionNumber: q.questionNumber,
         subject: q.subject,
         chapter: q.chapter,
@@ -257,6 +281,7 @@ export async function processMockAutopsy(
         reasoning: q.reasoning,
         correctExplanation: q.correctExplanation ?? null,
         conceptualGap: q.conceptualGap ?? null,
+        extractionConfidence: q.ocrConfidence ?? 100,
       })),
     },
     idempotency_key: `autopsy:${autopsyRecord.id}:processed`,
@@ -272,9 +297,11 @@ export async function processMockAutopsy(
       correct: correctQuestions.length,
       incorrect: incorrectQuestions.length,
       unattempted: unattempted.length,
+      needsReview: needsReviewQuestions.length,
     },
     recoverableMarks,
     diagnosedQuestions: processedQuestions,
+    needsReviewQuestions: processedQuestions.filter(q => q.needsReview),
     mentorMessage: mentorResult?.mentorQuote ?? null,
     recoveryPlan: mentorResult?.plan ?? null,
   };

@@ -18,6 +18,15 @@ const NegotiatedPlanSchema = z.object({
   }))
 });
 
+type NegotiatedTask = z.infer<typeof NegotiatedPlanSchema>['newTasks'][number];
+
+interface StudyTaskRow {
+  id: string;
+  title: string;
+  subject: string | null;
+  estimated_minutes: number | null;
+}
+
 export async function POST(req: NextRequest) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
@@ -27,12 +36,13 @@ export async function POST(req: NextRequest) {
   const { message, date } = await req.json();
 
   // 1. Fetch the CURRENT uncompleted tasks for today
-  const { data: currentTasks } = await supabase
+  const { data: currentTasksData } = await supabase
     .from('study_tasks')
     .select('*')
     .eq('user_id', user.id)
     .eq('scheduled_date', date)
     .eq('is_completed', false);
+  const currentTasks = (currentTasksData ?? []) as StudyTaskRow[];
 
   const prompt = `
     You are the empathetic AI Chief of Staff in Cognition OS.
@@ -41,7 +51,7 @@ export async function POST(req: NextRequest) {
     User Request: "${message}"
     
     Current Uncompleted Tasks:
-    ${JSON.stringify(currentTasks?.map(t => ({ title: t.title, subject: t.subject, minutes: t.estimated_minutes })))}
+    ${JSON.stringify(currentTasks.map((t: StudyTaskRow) => ({ title: t.title, subject: t.subject, minutes: t.estimated_minutes })))}
     
     YOUR JOB:
     1. Acknowledge their feeling/request warmly and empathetically in 'assistantReply'.
@@ -58,7 +68,7 @@ export async function POST(req: NextRequest) {
   }
 
   // Build insert rows BEFORE deleting anything
-  const rowsToInsert = result.newTasks.map(t => ({
+  const rowsToInsert = result.newTasks.map((t: NegotiatedTask) => ({
     ...t,
     user_id: user.id,
     scheduled_date: date,
@@ -66,8 +76,8 @@ export async function POST(req: NextRequest) {
   }));
 
   // Only delete after we have confirmed valid replacement data
-  if (currentTasks && currentTasks.length > 0) {
-    const taskIds = currentTasks.map((t: any) => t.id);
+  if (currentTasks.length > 0) {
+    const taskIds = currentTasks.map((t: StudyTaskRow) => t.id);
     const { error: deleteError } = await supabase
       .from('study_tasks')
       .delete()
@@ -84,10 +94,10 @@ export async function POST(req: NextRequest) {
     
     if (insertError) {
       // Critical: insert failed after delete. Re-insert the original tasks to recover.
-      if (currentTasks && currentTasks.length > 0) {
+      if (currentTasks.length > 0) {
         try {
           await supabase.from('study_tasks').insert(
-            currentTasks.map((t: any) => ({ ...t, id: undefined })) // let DB assign new IDs
+            currentTasks.map((t: StudyTaskRow) => ({ ...t, id: undefined })) // let DB assign new IDs
           );
         } catch {
           // best effort recovery

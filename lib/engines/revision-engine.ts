@@ -509,6 +509,7 @@ export class MemoryConsumer {
       reasoning: string | null;
       correctExplanation: string | null;
       conceptualGap: string | null;
+      status?: string;
     }> = metadata?.wrongQuestions || [];
 
     if (wrongQuestions.length === 0) return;
@@ -523,6 +524,7 @@ export class MemoryConsumer {
     let created = 0;
 
     for (const q of wrongQuestions) {
+      if (q.status && q.status !== 'verified_mistake') continue;
       if (!q.mistakeCategory || !cardWorthy.has(q.mistakeCategory)) continue;
       if (!q.reasoning || !q.correctExplanation) continue;
 

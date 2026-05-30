@@ -13,7 +13,7 @@ export const AutopsyQuestionSchema = z.object({
   difficulty: z.enum(['Easy', 'Medium', 'Hard']).default('Medium'),
   correctAnswer: z.string().nullable().optional(),
   studentAnswer: z.string().nullable().optional(),
-  status: z.enum(['Correct', 'Incorrect', 'Unattempted']),
+  status: z.enum(['Correct', 'Incorrect', 'Unattempted', 'NeedsReview']),
   mistakeCategory: MistakeCategorySchema.nullable(),
   reasoning: z.string().nullable().optional(), // Explainability for the student
   ocrConfidence: z.number().min(0).max(100), // Confidence in the scan/OMR read

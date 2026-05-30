@@ -163,10 +163,12 @@ export async function processAutopsy(params: {
     });
 
     if (!isCorrect && q.studentAnswer) {
+      const isVerified = classification && classification.confidence >= 0.85;
       mistakeRows.push({
         user_id: userId,
         concept_id: null, // concept linking can be added later
         category: classification?.rootCause || 'unknown',
+        status: isVerified ? 'verified_mistake' : 'pending_review',
         subject: q.subject,
         chapter: q.chapter || '',
         topic: q.subtopic || '',
@@ -211,15 +213,14 @@ export async function processAutopsy(params: {
     metadata: {
       source: 'autopsy_service',
       autopsyId: mockId,
-      wrongQuestions: autopsyRows
-        .filter(row => row.status === 'Incorrect')
-        .map(row => ({
+      wrongQuestions: mistakeRows.map(row => ({
           subject: row.subject,
           chapter: row.chapter,
-          mistakeCategory: row.mistake_category,
-          reasoning: row.mistake_category,
+          mistakeCategory: row.category,
+          reasoning: row.category,
           correctExplanation: row.correct_answer,
-          conceptualGap: row.subtopic || row.chapter,
+          conceptualGap: row.topic || row.chapter,
+          status: row.status,
         })),
     },
     idempotency_key: `autopsy:${mockId}:processed`,

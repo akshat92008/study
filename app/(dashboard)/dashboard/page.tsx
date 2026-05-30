@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { useAppStore } from '@/stores/appStore';
+import type { LearningGoal } from '@/stores/appStore';
 import {
   Brain, RefreshCw, Loader2, Upload, X, Activity, CheckCircle, Play
 } from 'lucide-react';
@@ -156,7 +157,7 @@ export default function DashboardPage() {
   };
 
   // Find active goal title
-  const activeGoal = learningGoals.find(g => g.id === activeGoalId);
+  const activeGoal = learningGoals.find((g: LearningGoal) => g.id === activeGoalId);
 
   // Numeric Stats definitions
   const overallMastery = masteryData?.overallPct ?? dashboardData?.cognition?.stats?.overallMastery ?? dashboardData?.profile?.overall_mastery ?? 0;

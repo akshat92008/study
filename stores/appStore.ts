@@ -11,6 +11,26 @@ export interface Toast {
   type: 'success' | 'error' | 'info';
 }
 
+export interface LearningGoal {
+  id: string;
+  title: string;
+  user_id?: string;
+  status?: string | null;
+  created_at?: string | null;
+  deadline?: string | null;
+  current_level?: string | null;
+  time_available?: string | null;
+  preferred_learning_style?: string | null;
+  confidence_score?: number | null;
+}
+
+interface CreateLearningGoalDetails {
+  deadline?: string;
+  currentLevel?: string;
+  timeAvailable?: string | number;
+  preferredLearningStyle?: string;
+}
+
 export interface AppState extends ChatSlice {
   // Command Bar
   isCommandBarOpen: boolean;
@@ -63,11 +83,11 @@ export interface AppState extends ChatSlice {
   setStreakDays: (streak: number) => void;
 
   // Learning Goals
-  learningGoals: any[];
+  learningGoals: LearningGoal[];
   activeGoalId: string | null;
   setActiveGoalId: (id: string | null) => void;
   loadLearningGoals: () => Promise<void>;
-  createLearningGoal: (title: string, details?: any) => Promise<any>;
+  createLearningGoal: (title: string, details?: CreateLearningGoalDetails) => Promise<LearningGoal | null>;
 
   // Global drawer / UI states
   activeDrawer: 'cognition' | 'revision' | 'autopsy' | null;
@@ -175,7 +195,7 @@ export const useAppStore = create<AppState>()(
             .select('*')
             .order('created_at', { ascending: false });
           if (!error && data) {
-            set({ learningGoals: data });
+            set({ learningGoals: data as LearningGoal[] });
             if (data.length > 0 && !get().activeGoalId) {
               set({ activeGoalId: data[0].id });
             }
@@ -191,7 +211,7 @@ export const useAppStore = create<AppState>()(
           const { data: { user } } = await supabase.auth.getUser();
           if (!user) return null;
 
-          let goalData: any = null;
+          let goalData: LearningGoal | null = null;
           if (details) {
             const res = await fetch('/api/goals', {
               method: 'POST',

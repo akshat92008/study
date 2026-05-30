@@ -3,7 +3,11 @@ import { createClient } from '@/lib/supabase/server';
 import { processMockAutopsy } from '@/lib/engines/autopsy-engine';
 import { logger, safeError } from '@/lib/utils/logger';
 import { withRateLimit } from '@/lib/middleware/withRateLimit';
-import { trackDailyAIUsage } from '@/lib/services/ai-usage.service';
+import {
+  assertDailyAIUsageBudget,
+  isAIUsageBudgetExceeded,
+  trackDailyAIUsage,
+} from '@/lib/services/ai-usage.service';
 
 const MAX_FILE_SIZE_BYTES = 20 * 1024 * 1024;
 
@@ -144,15 +148,41 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
 
     logger.info('Starting autopsy', { userId, testName, mimeType, fileSizeKB });
 
+    try {
+      await assertDailyAIUsageBudget({
+        userId,
+        kind: 'autopsy',
+        estimatedPromptTokens: fileData.kind === 'text'
+          ? Math.ceil(fileData.text.length / 4)
+          : Math.ceil(Buffer.byteLength(fileData.data, 'base64') / 4),
+        estimatedCompletionTokens: 2500,
+      });
+    } catch (error) {
+      if (isAIUsageBudgetExceeded(error)) {
+        return NextResponse.json(
+          {
+            error: 'Daily AI budget exceeded',
+            message: 'AUTOPSY is paused for today before any extraction ran. Try again tomorrow or reduce file size.',
+            limitUsd: error.limitUsd,
+            usedUsd: error.usedUsd,
+          },
+          { status: error.status }
+        );
+      }
+      throw error;
+    }
+
     const result = await processMockAutopsy(userId, fileData, testName, examType, customScoring);
     await trackDailyAIUsage({
       userId,
       kind: 'autopsy',
+      route: '/api/autopsy/ingest',
+      model: fileData.kind === 'text' ? 'router:flash+pro' : 'router:multimodal+pro',
       promptTokens: fileData.kind === 'text' ? Math.ceil(fileData.text.length / 4) : Math.ceil(Buffer.byteLength(fileData.data, 'base64') / 4),
       completionTokens: Math.ceil(JSON.stringify(result).length / 4),
     });
     if (mimeType.startsWith('image/')) {
-      await trackDailyAIUsage({ userId, kind: 'image' });
+      await trackDailyAIUsage({ userId, kind: 'image', route: '/api/autopsy/ingest', model: 'router:multimodal' });
     }
     return NextResponse.json(result);
 

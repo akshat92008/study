@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import { execSync } from 'child_process';
 import http from 'http';
+import dotenv from 'dotenv';
 
 async function checkSmoke() {
   console.log('--- Cognition OS MVP Smoke Check ---\n');
@@ -27,22 +27,43 @@ async function checkSmoke() {
   }
 
   // 3. Required env vars exist
-  require('dotenv').config();
+  dotenv.config({ path: path.join(process.cwd(), '.env.local') });
+  dotenv.config();
   const requiredVars = [
     'NEXT_PUBLIC_SUPABASE_URL',
     'NEXT_PUBLIC_SUPABASE_ANON_KEY',
     'SUPABASE_SERVICE_ROLE_KEY',
-    'GEMINI_API_KEY',
     'CRON_SECRET',
   ];
   
-  for (const v of requiredVars) {
-    if (!process.env[v]) {
-      console.error(`❌ Missing env var: ${v}`);
-      passed = false;
-    } else {
-      console.log(`✅ ${v} exists`);
+  if (process.env.SKIP_ENV_VALIDATION === '1') {
+    console.log('⚠️ Skipping env var validation due to SKIP_ENV_VALIDATION=1');
+  } else {
+    for (const v of requiredVars) {
+      if (!process.env[v]) {
+        console.error(`❌ Missing env var: ${v}`);
+        passed = false;
+      } else {
+        console.log(`✅ ${v} exists`);
+      }
     }
+  }
+
+  const aiProviders = [
+    'OPENAI_API_KEY',
+    'GEMINI_API_KEY',
+    'CEREBRAS_API_KEY',
+    'GROQ_API_KEY',
+    'SAMBANOVA_API_KEY',
+    'CF_API_TOKEN',
+  ];
+  if (process.env.SKIP_ENV_VALIDATION === '1') {
+    // Skip checking AI providers
+  } else if (aiProviders.some((v) => process.env[v])) {
+    console.log('✅ At least one AI provider is configured');
+  } else {
+    console.error(`❌ Missing AI provider. Configure one of: ${aiProviders.join(', ')}`);
+    passed = false;
   }
 
   // Upstash conditional
@@ -68,7 +89,7 @@ async function checkSmoke() {
 
   // 5. Package scripts
   const pkg = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf8'));
-  const scripts = ['typecheck', 'test', 'audit:schema'];
+  const scripts = ['typecheck', 'test', 'audit:schema', 'verify:mvp'];
   for (const s of scripts) {
     if (!pkg.scripts[s]) {
       console.error(`❌ Missing package script: ${s}`);

@@ -1,4 +1,6 @@
 declare module '@supabase/ssr' {
-  export function createBrowserClient(...args: any[]): any;
-  export function createServerClient(...args: any[]): any;
+  import type { SupabaseClient } from '@supabase/supabase-js';
+
+  export function createBrowserClient(...args: unknown[]): SupabaseClient;
+  export function createServerClient(...args: unknown[]): SupabaseClient;
 }

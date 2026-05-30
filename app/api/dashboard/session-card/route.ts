@@ -2,6 +2,11 @@ import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { generateJSON } from '@/lib/ai/provider-client';
 import { z } from 'zod';
+import {
+  assertDailyAIUsageBudget,
+  isAIUsageBudgetExceeded,
+  trackDailyAIUsage,
+} from '@/lib/services/ai-usage.service';
 
 const INVALID_TOPIC_VALUES = new Set([
   'none', 'null', 'undefined', 'n/a', 'na', 'unknown', 
@@ -150,7 +155,40 @@ Return ONLY valid JSON, no markdown:
   "rationale": "one clear sentence explaining why this is today's priority"
 }`;
 
+    try {
+      await assertDailyAIUsageBudget({
+        userId: user.id,
+        kind: 'session-card',
+        estimatedPromptTokens: Math.ceil(cardPrompt.length / 4),
+        estimatedCompletionTokens: 300,
+      });
+    } catch (error) {
+      if (isAIUsageBudgetExceeded(error)) {
+        const fallbackCard = {
+          dayNumber: sessionCount + 1,
+          streakDays,
+          focusTopic: weakConcepts[0]?.name || `${profile?.exam_type || 'General Study'} Fundamentals`,
+          subject: weakConcepts[0]?.subject || profile?.exam_type || 'General',
+          estimatedMinutes: focusWindow,
+          rationale: 'Generated from current learner state without an AI call because today’s AI budget is exhausted.',
+          daysToExam,
+          overdueCards: overdueCount,
+          masteryPercent,
+        };
+        return NextResponse.json(fallbackCard, { status: 200 });
+      }
+      throw error;
+    }
+
     const cardData = await generateJSON<any>('flash', 'You are a study session planner. Return valid JSON only.', cardPrompt);
+    await trackDailyAIUsage({
+      userId: user.id,
+      kind: 'session-card',
+      route: '/api/dashboard/session-card',
+      model: 'flash',
+      promptTokens: Math.ceil(cardPrompt.length / 4),
+      completionTokens: Math.ceil(JSON.stringify(cardData ?? {}).length / 4),
+    });
 
     const examType = profile?.exam_type || 'General Study';
     const defaultTopic = weakConcepts[0]?.name || `${examType} Fundamentals`;

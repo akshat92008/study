@@ -52,27 +52,6 @@
       ],
       "@/engines/*": [
         "./lib/engines/*"
-      ],
-      "@supabase/ssr": [
-        "./types/supabase-ssr-shim.d.ts"
-      ],
-      "@supabase/supabase-js": [
-        "./types/supabase-js-shim.d.ts"
-      ],
-      "zustand": [
-        "./types/zustand-shim.d.ts"
-      ],
-      "zustand/middleware": [
-        "./types/zustand-shim.d.ts"
-      ],
-      "framer-motion": [
-        "./types/framer-motion-shim.d.ts"
-      ],
-      "recharts": [
-        "./types/recharts-shim.d.ts"
-      ],
-      "@xyflow/react": [
-        "./types/xyflow-react-shim.d.ts"
       ]
     }
   },

@@ -130,38 +130,29 @@ export async function completeLearningSession(
   const conceptId = resolution.conceptId;
 
   const endedAt = new Date().toISOString();
-  const { data: sessionRecord, error: sessionError } = await supabase
-    .from('study_sessions')
-    .insert({
-      user_id: input.userId,
-      subject,
-      chapter,
-      topic: conceptName,
-      concept_name: conceptName,
-      started_at: new Date(Date.now() - durationMinutes * 60_000).toISOString(),
-      ended_at: endedAt,
-      completed_at: endedAt,
-      duration_minutes: durationMinutes,
-      understood,
-      gap_found: input.gapFound ?? null,
-      cards_created: cardsCreated,
-      session_type: input.sessionType || 'study',
-      is_completed: true,
-      notes: input.gapFound ? `Gap identified: ${input.gapFound}` : `Studied ${chapter} (${subject})`,
-      metadata: {
-        completion_key: completionKey,
-        source,
-        taskId: input.taskId ?? null,
-        conceptId,
-      },
-    })
-    .select('id')
-    .single();
+  
+  const { data: rpcResult, error: sessionError } = await supabase.rpc('complete_study_session', {
+    p_user_id: input.userId,
+    p_subject: subject,
+    p_chapter: chapter,
+    p_topic: conceptName,
+    p_concept_name: conceptName,
+    p_duration_minutes: durationMinutes,
+    p_understood: understood,
+    p_gap_found: input.gapFound ?? null,
+    p_cards_created: cardsCreated,
+    p_session_type: input.sessionType || 'study',
+    p_task_id: input.taskId ?? null,
+    p_concept_id: conceptId,
+    p_completion_key: completionKey,
+    p_source: source
+  });
 
-  if (sessionError || !sessionRecord?.id) {
-    throw new Error(sessionError?.message || 'Failed to save study session');
+  if (sessionError || !rpcResult?.session_id) {
+    throw new Error(sessionError?.message || 'Failed to save study session via RPC');
   }
 
+  const sessionId = rpcResult.session_id;
   const { streakDays, streakChanged } = await updateStreak(supabase, input.userId);
 
   if (conceptId) {
@@ -170,7 +161,7 @@ export async function completeLearningSession(
       conceptId,
       evidenceType: understood ? 'tutor_understood' : 'tutor_confused',
       source: source === 'session_close' ? 'session_close' : 'tutor_session',
-      sourceId: sessionRecord.id,
+      sourceId: sessionId,
       evidence: understood
         ? `Completed session on ${chapter}`
         : `Session on ${chapter} surfaced gap${input.gapFound ? `: ${input.gapFound}` : ''}`,
@@ -178,34 +169,12 @@ export async function completeLearningSession(
     });
   }
 
-  await EventDispatcher.publish({
-    user_id: input.userId,
-    type: 'COMMAND_SESSION_COMPLETED',
-    data: {
-      sessionId: sessionRecord.id,
-      taskId: input.taskId || `session-${sessionRecord.id}`,
-      conceptId,
-      conceptName,
-      subject,
-      chapter,
-      durationMinutes,
-      understood,
-      gapFound: input.gapFound ?? null,
-      cardsCreated,
-      understandingGained: understood,
-      isSessionComplete: true,
-      masteryEvidenceRecorded: Boolean(conceptId),
-    },
-    metadata: { source },
-    idempotency_key: completionKey || `${source}:${sessionRecord.id}`,
-  });
-
   await invalidateSessionCards(input.userId, supabase, 'study_session_completed').catch(err => {
     logger.warn('Failed to invalidate session cards after completion', err);
   });
 
   return {
-    sessionId: sessionRecord.id,
+    sessionId,
     conceptId,
     streakDays,
     streakChanged,

@@ -1,8 +1,9 @@
 import { createClient } from '@/lib/supabase/server';
 import { generateJSON } from '@/lib/ai/provider-client';
 import { logger } from '@/lib/utils/logger';
+import type { SupabaseClient, DatabaseRow } from '@supabase/supabase-js';
 
-export async function syncStudentModel(userId: string, isInitialFingerprint: boolean = false, client?: any) {
+export async function syncStudentModel(userId: string, isInitialFingerprint: boolean = false, client?: SupabaseClient) {
   const supabase = client ?? (await createClient());
 
   // FIX FAILURE 7: Previously queried 'mentor_chats' and 'mock_tests' — both legacy
@@ -25,10 +26,10 @@ export async function syncStudentModel(userId: string, isInitialFingerprint: boo
       .limit(5),
   ]);
 
-  const currentModel = modelRes.data || {};
+  const currentModel = (modelRes.data ?? {}) as Partial<DatabaseRow>;
 
   // Summarise autopsy performance
-  const autopsySummary = (autopsiesRes.data || []).map(a => ({
+  const autopsySummary = (autopsiesRes.data || []).map((a: DatabaseRow) => ({
     score: a.current_score,
     potential: a.potential_score,
     recoverable: a.recoverable_marks,
@@ -37,7 +38,7 @@ export async function syncStudentModel(userId: string, isInitialFingerprint: boo
   }));
 
   // Summarise recent student chat messages (what topics they ask about, how they phrase confusion)
-  const chatSample = (chatHistoryRes.data || []).map(m => m.content.slice(0, 200)).join('\n');
+  const chatSample = (chatHistoryRes.data || []).map((m: DatabaseRow) => m.content.slice(0, 200)).join('\n');
 
   const promptContext = isInitialFingerprint 
     ? `This is the initial profiling phase (first 3 sessions). Focus aggressively on how the student asks questions and structures their thoughts to detect their core learning style (Visual, Auditory, Read/Write, Kinesthetic/Active).`

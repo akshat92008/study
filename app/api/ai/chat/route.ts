@@ -17,7 +17,11 @@ import { buildConversationMessages } from '@/lib/ai/chat-intent';
 import { classifyMessageCombined } from '@/lib/ai/chat-intent-with-emotion';
 import { validateBase64Payload } from '@/lib/middleware/validateUpload';
 import { checkSemanticCache, setSemanticCache, isCacheable } from '@/lib/ai/responseCache';
-import { trackDailyAIUsage } from '@/lib/services/ai-usage.service';
+import {
+  assertDailyAIUsageBudget,
+  isAIUsageBudgetExceeded,
+  trackDailyAIUsage,
+} from '@/lib/services/ai-usage.service';
 import { invalidateSessionCards } from '@/lib/services/session-card-cache';
 import {
   getOrCreateGlobalChatSession,
@@ -25,6 +29,9 @@ import {
   persistChatMessage,
   stripMetadataBlock,
 } from '@/lib/services/chat-persistence';
+import { ChatPlannerService } from '@/lib/services/chat-planner.service';
+import { ChatTutorService } from '@/lib/services/chat-tutor.service';
+import { ChatSideEffectService } from '@/lib/services/chat-side-effects.service';
 
 const encoder = new TextEncoder();
 
@@ -77,6 +84,29 @@ export async function POST(req: NextRequest) {
   const userMessageForPersistence = message || (imageBase64 ? '[Image question]' : '');
   if (!userMessageForPersistence.trim()) {
     return NextResponse.json({ error: 'Message or upload is required' }, { status: 400 });
+  }
+
+  try {
+    await assertDailyAIUsageBudget({
+      userId: user.id,
+      kind: imageBase64 ? 'image' : 'chat',
+      estimatedPromptTokens: Math.ceil((userMessageForPersistence.length + (imageBase64?.length || 0)) / 4),
+      estimatedCompletionTokens: 1200,
+      estimatedCost: imageBase64 ? 0.01 : undefined,
+    });
+  } catch (error) {
+    if (isAIUsageBudgetExceeded(error)) {
+      return NextResponse.json(
+        {
+          error: 'Daily AI budget exceeded',
+          message: 'Your daily AI budget is used up. Existing plans, cards, and dashboards remain available.',
+          limitUsd: error.limitUsd,
+          usedUsd: error.usedUsd,
+        },
+        { status: error.status }
+      );
+    }
+    throw error;
   }
 
   const { checkIdempotency } = await import('@/lib/middleware/idempotency');
@@ -176,6 +206,8 @@ export async function POST(req: NextRequest) {
         await trackDailyAIUsage({
           userId: user.id,
           kind: 'image',
+          route: '/api/ai/chat',
+          model: 'router:vision',
           promptTokens: Math.ceil((message || '').length / 4),
           completionTokens: Math.ceil(answer.length / 4),
         });
@@ -225,6 +257,8 @@ export async function POST(req: NextRequest) {
         await trackDailyAIUsage({
           userId: user.id,
           kind: 'chat',
+          route: '/api/ai/chat',
+          model: 'router:chat',
           promptTokens: Math.ceil((message || '').length / 4),
           completionTokens: Math.ceil(responseText.length / 4),
         });
@@ -297,6 +331,8 @@ export async function POST(req: NextRequest) {
         await trackDailyAIUsage({
           userId: user.id,
           kind: 'chat',
+          route: '/api/ai/chat',
+          model: 'router:chat',
           promptTokens: Math.ceil((message || '').length / 4),
           completionTokens: Math.ceil(groundingMessage.length / 4),
         });
@@ -336,140 +372,23 @@ export async function POST(req: NextRequest) {
           metadataPayload = { action: intentToAction(intent.intent) };
 
         } else if (intent.intent === 'REPLAN') {
-          // Replan functionality
-          const today = new Date().toISOString().split('T')[0];
-          const action = intent.action || 'reduce_tasks';
-          const { data: todayTasks } = await supabase.from('study_tasks').select('id, title, estimated_minutes, priority')
-            .eq('user_id', user.id).eq('scheduled_date', today).eq('is_completed', false).order('priority', { ascending: false });
-
-          if (!todayTasks || todayTasks.length === 0) {
-            const reply = "You have no tasks left for today — nothing to adjust. Want me to build a lighter plan from scratch?";
-            controller.enqueue(encoder.encode(reply));
-            fullResponse = reply;
-          } else {
-            let reply = '';
-            if (action === 'reduce_tasks') {
-              const removeCount = Math.max(1, Math.floor(todayTasks.length * 0.3));
-              const toRemove = todayTasks.slice(0, removeCount);
-              await supabase.from('study_tasks').delete().in('id', toRemove.map((t: any) => t.id)).eq('user_id', user.id);
-              const saved = toRemove.reduce((s: number, t: any) => s + (t.estimated_minutes || 0), 0);
-              reply = `Done. Removed ${toRemove.length} task${toRemove.length > 1 ? 's' : ''} from today — ${saved} minutes freed. Focus on what remains.`;
-              await invalidateSessionCards(user.id, supabase, 'chat_replan_removed_tasks');
-            } else if (action === 'lighten_intensity') {
-              let saved = 0;
-              for (const task of todayTasks) {
-                if ((task.estimated_minutes || 0) > 25) {
-                  saved += task.estimated_minutes - 25;
-                  await supabase.from('study_tasks').update({ estimated_minutes: 25 }).eq('id', task.id).eq('user_id', user.id);
-                }
-              }
-              reply = `Done. All sessions capped at 25 minutes. ${saved} minutes saved. Short focused blocks are easier to start.`;
-              await invalidateSessionCards(user.id, supabase, 'chat_replan_lightened_intensity');
-            } else {
-              await supabase.from('study_tasks').insert({
-                user_id: user.id, title: 'Recovery Break', type: 'break', scheduled_date: today,
-                estimated_minutes: 15, priority: 'low', is_completed: false,
-              });
-              reply = "Added a 15-minute recovery break. Step fully away from your desk — no studying.";
-              await invalidateSessionCards(user.id, supabase, 'chat_replan_added_recovery_break');
-            }
-            controller.enqueue(encoder.encode(reply));
-            fullResponse = reply;
-            metadataPayload = { action: 'planner_adjusted', tasksModified: true, sessionCardInvalidated: true };
-          }
+          const { fullResponse: reply, metadataPayload: payload } = await ChatPlannerService.handleReplan(
+            supabase, user.id, intent.action || 'reduce_tasks', controller, encoder
+          );
+          fullResponse = reply;
+          metadataPayload = payload;
         } else if (intent.intent === 'CREATE_ARTIFACT' || orchestratorResult.intent === 'planning') {
-          const artifactSystemPrompt = `${systemPrompt}\n\nYou are in ARTIFACT CREATION mode. The student has asked you to create a study plan, planner, revision sheet, or similar artifact.\n\nRules:\n- If they mention an upcoming test date, build a day-by-day study plan from today until that date.\n- Cover all weak areas from their ATLAS profile first, then fill remaining days with stronger subjects.\n- Format the plan clearly with days, topics, and time estimates.\n- If the user simply asks to add a specific topic to their microtargets, dashboard, or planner, output a short 1-day plan with just that task.\n- If they say "full syllabus", cover all three subjects: Physics, Chemistry, Biology.\n- Be specific and actionable. Not generic.\n- End with one motivating line about what hitting this plan will do for their score.\n- IMPORTANT: Do NOT wrap the <artifact> tags in markdown code blocks (like \`\`\`xml). Output the raw <artifact> tags directly.`;
-          const conversationMessages = buildConversationMessages(recentHistory, message || '');
-          
-          for await (const chunk of routeStreamGeneration(artifactSystemPrompt, conversationMessages, 0.6)) {
-            controller.enqueue(encoder.encode(chunk));
-            fullResponse += chunk;
-          }
-
-          controller.enqueue(encoder.encode('\n\n*Scheduling microtargets to your dashboard...*'));
-          fullResponse += '\n\n*Scheduling microtargets to your dashboard...*';
-
-          try {
-            const todayStr = new Date().toISOString().split('T')[0];
-            const extractPrompt = `You are a structured operational planner for Cognition OS.\nExtract a list of specific microtarget study tasks from this study plan to schedule in the student's database.\nIf a task does not have a specific date mentioned, schedule it for today (${todayStr}).\n\nStudy Plan Text:\n${fullResponse}\n\nReturn ONLY valid JSON matching this schema:\n{\n  "tasks": [\n    {\n      "title": "Short title of the task (e.g. Study Electrostatics, Revise Thermodynamics)",\n      "subject": "Physics|Chemistry|Biology|Mathematics",\n      "chapter": "Chapter name",\n      "estimated_minutes": 45,\n      "scheduled_date": "YYYY-MM-DD"\n    }\n  ]\n}`;
-            const taskListSchema = z.object({
-              tasks: z.array(z.object({
-                title: z.string(), subject: z.string().optional().default('General'),
-                chapter: z.string().optional().default(''), estimated_minutes: z.number().optional().default(45),
-                scheduled_date: z.string().optional().default(todayStr)
-              }))
-            });
-
-            const planData = await generateJSON<any>('flash', 'Expert task extractor. Output JSON only.', extractPrompt, taskListSchema).catch(() => null);
-
-            if (planData && planData.tasks && planData.tasks.length > 0) {
-              const tasksToInsert = planData.tasks.map((t: any) => ({
-                user_id: user.id, title: t.title, type: 'study', subject: t.subject || 'General',
-                chapter: t.chapter || '', estimated_minutes: t.estimated_minutes || 45,
-                scheduled_date: t.scheduled_date || todayStr, is_completed: false,
-                notes: 'Auto-extracted from chat study planner.'
-              }));
-              const datesToUpdate = Array.from(new Set(tasksToInsert.map((t: any) => t.scheduled_date)));
-              if (datesToUpdate.length > 0) {
-                 await supabase.from('study_tasks').delete().eq('user_id', user.id).eq('is_completed', false).in('scheduled_date', datesToUpdate);
-              }
-              await supabase.from('study_tasks').insert(tasksToInsert);
-              await invalidateSessionCards(user.id, supabase, 'chat_planner_tasks_updated');
-              metadataPayload = { action: 'planner_adjusted', tasksModified: true, sessionCardInvalidated: true };
-            }
-          } catch (err) { logger.warn('Failed to extract and insert study tasks from planner', err); }
-
+          const { fullResponse: reply, metadataPayload: payload } = await ChatPlannerService.handleCreateArtifact(
+            supabase, user.id, systemPrompt, recentHistory, message || '', controller, encoder
+          );
+          fullResponse = reply;
+          metadataPayload = payload;
         } else if (['TUTOR_SESSION', 'PRACTICE'].includes(intent.intent)) {
-          const topic = intent.topic || 'General';
-          const subject = intent.subject || mindContext?.weakConcepts?.[0]?.subject || 'General';
-          const conceptId = await resolveConceptByName(user.id, subject, topic);
-          if (!conceptId) {
-            logger.warn('CONCEPT_RESOLUTION_FAILURE', { userId: user.id, subject, chapter: topic, reason: 'No matching concept found for tutoring session' });
-          }
-          const { data: mistakes } = await supabase.from('mistakes').select('category, ai_analysis').eq('user_id', user.id).ilike('chapter', `%${topic}%`).limit(5);
-
-          let pastSessionCtx = '';
-          let oldMasteryScore: number | null = null;
-          if (conceptId) {
-            const { data: conceptRec } = await supabase.from('concepts').select('mastery').eq('id', conceptId).single();
-            if (conceptRec?.mastery) {
-              oldMasteryScore = MASTERY_WEIGHTS[conceptRec.mastery] ?? null;
-            }
-            const { data: pastSessions } = await supabase.from('tutor_sessions').select('summary, started_at')
-              .eq('user_id', user.id).eq('concept_id', conceptId).not('summary', 'is', null).order('started_at', { ascending: false }).limit(3);
-            if (pastSessions?.length) {
-              pastSessionCtx = '\n\nPAST SESSIONS ON THIS TOPIC:\n' + pastSessions.map((s: any) => `- [${new Date(s.started_at).toLocaleDateString()}] ${s.summary}`).join('\n');
-            }
-          }
-
-          const tutorSystemPrompt = `${systemPrompt}\n\nACTIVE TUTOR SESSION:\nTopic: ${subject} > ${topic}\nPast Mistakes Here: ${mistakes?.map((m: any) => m.ai_analysis).join('; ') || 'None'}${pastSessionCtx}\n\nYou are now in active teaching mode for this topic. Apply RULE 3 (Learning Mode) — Socratic method, minimum 6-10 exchanges.`;
-          const conversationMessages = buildConversationMessages(recentHistory, message || '');
-          const hasUserSpecificContext = (mistakes && mistakes.length > 0) || (pastSessionCtx && pastSessionCtx.length > 0) || (oldMasteryScore !== null);
-          const canCache = isCacheable({ intent: intent.intent, hasUserContext: hasUserSpecificContext });
-          const cached = canCache && message ? await checkSemanticCache(message, user.id) : null;
-
-          if (cached) {
-            controller.enqueue(encoder.encode(cached));
-            fullResponse = cached;
-          } else {
-            for await (const chunk of routeStreamGeneration(tutorSystemPrompt, conversationMessages, 0.75)) {
-              controller.enqueue(encoder.encode(chunk));
-              fullResponse += chunk;
-            }
-            if (canCache && message) {
-              setSemanticCache(message, fullResponse).catch(err => logger.error('Cache save failed', err));
-            }
-          }
-
-          const isSessionComplete = sessionTurnsCount ? (sessionTurnsCount >= 6) : (recentHistory.length >= 10);
-          if (isSessionComplete && recentHistory.length > 0) {
-            metadataPayload = { 
-              action: 'session_closing_message', 
-              closingMessage: "We've covered a lot today. I'm analyzing our session in the background and will update your knowledge map and flashcards shortly.", 
-              closingType: 'async_analysis', 
-              sessionComplete: true 
-            };
-          }
+          const { fullResponse: reply, metadataPayload: payload } = await ChatTutorService.handleTutorSession(
+            supabase, user.id, intent, mindContext, systemPrompt, recentHistory, message || '', sessionTurnsCount, controller, encoder
+          );
+          fullResponse = reply;
+          metadataPayload = payload;
         } else {
           const conversationMessages = buildConversationMessages(recentHistory, message || '');
           for await (const chunk of routeStreamGeneration(systemPrompt, conversationMessages, 0.7)) {
@@ -485,40 +404,19 @@ export async function POST(req: NextRequest) {
         // ============================================================================
         // STAGE 6 & 7: ASYNC SIDE EFFECTS (QUEUED)
         // ============================================================================
-        if (message) {
-          const persistedResponse = stripMetadataBlock(fullResponse);
-          await persistChatMessage(supabase, {
-            sessionId,
-            userId: user.id,
-            role: 'assistant',
-            content: persistedResponse,
-            intent: intent.intent,
-            emotionalState: emotion,
-            metadata: metadataPayload ?? {},
-          });
-          await trackDailyAIUsage({
-            userId: user.id,
-            kind: 'chat',
-            promptTokens: Math.ceil((message || '').length / 4),
-            completionTokens: Math.ceil(persistedResponse.length / 4),
-          });
-
-          await EventDispatcher.publish({
-            user_id: user.id,
-            type: 'CHAT_MESSAGE_PROCESSED',
-            data: {
-              sessionId,
-              message,
-              fullResponse,
-              emotion,
-              history: recentHistory,
-              sessionTurnsCount,
-              mindContext,
-              intent
-            },
-            idempotency_key: crypto.randomUUID()
-          }).catch(err => logger.error('Failed to enqueue CHAT_MESSAGE_PROCESSED event', err));
-        }
+        await ChatSideEffectService.finalizeChatResponse({
+          supabase,
+          userId: user.id,
+          sessionId,
+          message: message || '',
+          fullResponse,
+          intent,
+          emotion,
+          metadataPayload,
+          recentHistory,
+          sessionTurnsCount,
+          mindContext
+        });
 
       } catch (err: any) {
         logger.error('Chat stream error', err);

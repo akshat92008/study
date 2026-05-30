@@ -16,7 +16,32 @@ import { routeStreamGeneration, routeEmbedding } from '@/lib/ai/router';
 import { generateSessionClosingMessage } from '@/lib/engines/session-closing';
 
 import { buildConversationMessages } from '@/lib/ai/chat-intent';
-function buildTutorContext(concept: any, mistakes: any[]) {
+
+interface TutorConceptContext {
+  subject?: string | null;
+  chapter?: string | null;
+  mastery?: string | number | null;
+  times_reviewed?: number | null;
+}
+
+interface MistakeSummary {
+  category: string | null;
+  ai_analysis: string | null;
+}
+
+interface TutorHistoryMessage {
+  role: 'user' | 'assistant' | 'system';
+  content: string;
+}
+
+interface TutorAnalysis {
+  understood: boolean;
+  gapFound: string | null;
+  gapAnswer: string | null;
+  summary: string;
+}
+
+function buildTutorContext(concept: TutorConceptContext, mistakes: MistakeSummary[]) {
   return `
 ## Current Topic
 Subject: ${concept?.subject || 'General'}
@@ -26,7 +51,7 @@ Times Reviewed: ${concept?.times_reviewed || 0}
 
 ## Past Mistakes in This Area
 ${mistakes.length > 0
-  ? mistakes.map((m: any) => `- ${m.category}: ${m.ai_analysis || 'No analysis'}`).join('\n')
+  ? mistakes.map((m: MistakeSummary) => `- ${m.category}: ${m.ai_analysis || 'No analysis'}`).join('\n')
   : '- No recorded mistakes'}`;
 }
 
@@ -36,6 +61,7 @@ export async function POST(req: NextRequest) {
   if (!user) return new Response('Unauthorized', { status: 401 });
 
   const { message, subject, chapter, history } = await req.json();
+  const historyMessages: TutorHistoryMessage[] = Array.isArray(history) ? history : [];
 
   // Build context similar to chat route
   const mindContext = await getMINDContext(user.id, message);
@@ -46,13 +72,14 @@ export async function POST(req: NextRequest) {
   if (!conceptId) {
     logger.warn('CONCEPT_RESOLUTION_FAILURE', { userId: user.id, subject: subject || mindContext.weakConcepts?.[0]?.subject || 'General', chapter: chapter || 'General', reason: 'No matching concept found for tutor session' });
   }
-  const { data: mistakes } = await supabase.from('mistakes').select('category, ai_analysis').eq('user_id', user.id).ilike('chapter', `%${chapter || ''}%`).limit(5);
+  const { data: mistakesData } = await supabase.from('mistakes').select('category, ai_analysis').eq('user_id', user.id).ilike('chapter', `%${chapter || ''}%`).limit(5);
+  const mistakes = (mistakesData ?? []) as MistakeSummary[];
 
-  const tutorContext = buildTutorContext({ subject, chapter }, mistakes || []);
-  const historyText = (history || []).slice(-8).map((m: any) => `${m.role === 'user' ? 'Student' : 'Tutor'}: ${m.content}`).join('\n');
+  const tutorContext = buildTutorContext({ subject, chapter }, mistakes);
+  const historyText = historyMessages.slice(-8).map((m: TutorHistoryMessage) => `${m.role === 'user' ? 'Student' : 'Tutor'}: ${m.content}`).join('\n');
   const fullPrompt = `${tutorContext}\n\n## Conversation\n${historyText}\n\nStudent: ${message}`;
 
-  const tutorSystemPrompt = `${systemPrompt}\n\nACTIVE TUTOR SESSION:\nSubject: ${subject || 'General'}\nChapter: ${chapter || 'General'}\nPast Mistakes: ${mistakes?.map(m => m.ai_analysis).join('; ') || 'None'}`;
+  const tutorSystemPrompt = `${systemPrompt}\n\nACTIVE TUTOR SESSION:\nSubject: ${subject || 'General'}\nChapter: ${chapter || 'General'}\nPast Mistakes: ${mistakes.map((m: MistakeSummary) => m.ai_analysis).filter(Boolean).join('; ') || 'None'}`;
 
   const encoder = new TextEncoder();
 
@@ -61,19 +88,21 @@ export async function POST(req: NextRequest) {
       let fullResponse = '';
       try {
         // Generate response using router similar to chat route
-        for await (const chunk of routeStreamGeneration(tutorSystemPrompt, buildConversationMessages(history || [], message || ''), 0.75)) {
+        for await (const chunk of routeStreamGeneration(tutorSystemPrompt, buildConversationMessages(historyMessages, message || ''), 0.75)) {
           controller.enqueue(encoder.encode(chunk));
           fullResponse += chunk;
         }
 
         // Perform session analysis
-        let analysis: any = { understood: false, gapFound: null, gapAnswer: null, summary: '' };
+        let analysis: TutorAnalysis = { understood: false, gapFound: null, gapAnswer: null, summary: '' };
         try {
-          const historySnippet = (history || []).slice(-6).map((m: any) => `${m.role === 'user' ? 'Student' : 'Tutor'}: ${m.content.slice(0, 200)}`).join('\n');
+          const historySnippet = historyMessages.slice(-6).map((m: TutorHistoryMessage) => `${m.role === 'user' ? 'Student' : 'Tutor'}: ${m.content.slice(0, 200)}`).join('\n');
           const analysisPrompt = `Analyze this tutor exchange.\n${historySnippet}\nStudent: ${message}\nTutor: ${fullResponse.slice(0, 800)}\n\nRespond ONLY as JSON:\n{\"summary\":\"1 sentence\",\"understood\":true,\"gapFound\":\"flashcard question or null\",\"gapAnswer\":\"flashcard answer or null\"}`;
-          const raw = await generateJSON<any>('flash', 'Expert analyzer. Return JSON only.', analysisPrompt);
+          const raw = await generateJSON<Partial<TutorAnalysis>>('flash', 'Expert analyzer. Return JSON only.', analysisPrompt);
           if (raw && typeof raw.understood === 'boolean') {
-            analysis = { understood: raw.understood, gapFound: raw.gapFound?.length > 5 ? raw.gapFound : null, gapAnswer: raw.gapAnswer?.length > 5 ? raw.gapAnswer : null, summary: raw.summary || '' };
+            const gapFound = raw.gapFound && raw.gapFound.length > 5 ? raw.gapFound : null;
+            const gapAnswer = raw.gapAnswer && raw.gapAnswer.length > 5 ? raw.gapAnswer : null;
+            analysis = { understood: raw.understood, gapFound, gapAnswer, summary: raw.summary || '' };
           }
         } catch (err) { /* ignore analysis errors */ }
 
@@ -87,14 +116,14 @@ export async function POST(req: NextRequest) {
         const currentTutorSessionId = `tutor-${Date.now()}`;
         // Update concept state and store session
         if (conceptId) {
-          const estimatedTime = Math.max(60, (history?.length || 0) * 30);
+          const estimatedTime = Math.max(60, historyMessages.length * 30);
           await updateConceptState(conceptId, analysis.understood, estimatedTime);
           await supabase.from('tutor_sessions').insert({
             user_id: user.id,
             session_id: currentTutorSessionId,
             concept_id: conceptId,
             summary: analysis.summary,
-            messages: [...(history || []), { role: 'user', content: message }, { role: 'assistant', content: fullResponse }]
+            messages: [...historyMessages, { role: 'user', content: message }, { role: 'assistant', content: fullResponse }]
           });
           // Trigger aggressive initial profiling for first three tutor sessions
           const { count } = await supabase.from('tutor_sessions').select('*', { count: 'exact', head: true }).eq('user_id', user.id);
@@ -113,7 +142,7 @@ export async function POST(req: NextRequest) {
           gapFound: analysis.gapFound,
           gapAnswer: analysis.gapAnswer,
           understood: analysis.understood,
-          turnsCount: history?.length || 0,
+          turnsCount: historyMessages.length,
           oldMastery: null,
           newMastery: null,
           cardsCreated: (!analysis.understood && analysis.gapFound) ? 1 : 0,
@@ -131,6 +160,4 @@ export async function POST(req: NextRequest) {
 
   return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
 }
-
-
 
