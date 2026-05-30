@@ -11,8 +11,8 @@ declare module '@xyflow/react' {
   export const MarkerType: Record<string, string>;
   export const Position: Record<string, string>;
 
-  export function useNodesState(initialNodes: any[]): [any[], (nodes: any[]) => void, (...args: any[]) => void];
-  export function useEdgesState(initialEdges: any[]): [any[], (edges: any[]) => void, (...args: any[]) => void];
+  export function useNodesState<T = any>(initialNodes: T[]): [T[], (nodes: T[]) => void, (...args: any[]) => void];
+  export function useEdgesState<T = any>(initialEdges: T[]): [T[], (edges: T[]) => void, (...args: any[]) => void];
 }
 
 declare module '@xyflow/react/dist/style.css';

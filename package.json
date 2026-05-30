@@ -6,7 +6,7 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "typecheck": "tsc --noEmit --project tsconfig.typecheck.json",
     "type-check": "tsc --noEmit --project tsconfig.typecheck.json",
     "ci:type-check": "node scripts/checkTypeTime.js",

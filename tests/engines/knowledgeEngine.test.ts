@@ -2,11 +2,16 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { generateKnowledgeUpdate } from '@/lib/engines/knowledge-engine';
 
 const fromMock = vi.hoisted(() => vi.fn());
+const resolveConceptMock = vi.hoisted(() => vi.fn());
 
 vi.mock('@/lib/supabase/server', () => ({
   createClient: vi.fn(async () => ({
     from: fromMock,
   })),
+}));
+
+vi.mock('@/lib/engines/concept-resolver', () => ({
+  resolveConcept: resolveConceptMock,
 }));
 
 vi.mock('@/lib/utils/logger', () => ({
@@ -17,7 +22,7 @@ vi.mock('@/lib/utils/logger', () => ({
   },
 }));
 
-function makeSupabaseMock(existingConcept: any = null) {
+function makeSupabaseMock() {
   const operations: any[] = [];
 
   fromMock.mockImplementation((table: string) => {
@@ -35,7 +40,7 @@ function makeSupabaseMock(existingConcept: any = null) {
         operations.push({ table, type: 'insert', payload });
         return builder;
       }),
-      maybeSingle: vi.fn(async () => ({ data: existingConcept, error: null })),
+      maybeSingle: vi.fn(async () => ({ data: null, error: null })),
       single: vi.fn(async () => ({ data: { id: 'created-concept-id' }, error: null })),
     };
     return builder;
@@ -47,10 +52,21 @@ function makeSupabaseMock(existingConcept: any = null) {
 describe('generateKnowledgeUpdate', () => {
   beforeEach(() => {
     fromMock.mockReset();
+    resolveConceptMock.mockReset();
   });
 
-  it('creates an ATLAS concept and logs a linked mistake for a new autopsy gap', async () => {
-    const operations = makeSupabaseMock(null);
+  it('resolves a concept via concept-resolver and logs a linked mistake for a new autopsy gap', async () => {
+    const operations = makeSupabaseMock();
+
+    // concept-resolver returns a newly-created concept ID
+    resolveConceptMock.mockResolvedValue({
+      conceptId: 'created-concept-id',
+      confidence: 0.95,
+      method: 'created',
+      normalizedSubject: 'physics',
+      normalizedChapter: 'thermodynamics',
+      normalizedTopic: 'carnot efficiency',
+    });
 
     await generateKnowledgeUpdate('user-1', [
       {
@@ -66,18 +82,21 @@ describe('generateKnowledgeUpdate', () => {
       },
     ]);
 
+    // concept-resolver was called with correct args
+    expect(resolveConceptMock).toHaveBeenCalledOnce();
+    expect(resolveConceptMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        userId: 'user-1',
+        subject: 'Physics',
+        chapter: 'Thermodynamics',
+        topic: 'Carnot efficiency',
+        sourceType: 'autopsy',
+      })
+    );
+
+    // A mistake row is inserted with the resolved concept ID
     expect(operations).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({
-          table: 'concepts',
-          type: 'insert',
-          payload: expect.objectContaining({
-            user_id: 'user-1',
-            name: 'Carnot efficiency',
-            mastery: 'exposed',
-            times_incorrect: 1,
-          }),
-        }),
         expect.objectContaining({
           table: 'mistakes',
           type: 'insert',
@@ -92,11 +111,17 @@ describe('generateKnowledgeUpdate', () => {
     );
   });
 
-  it('downscales an existing concept when the same gap appears again', async () => {
-    const operations = makeSupabaseMock({
-      id: 'concept-1',
-      mastery: 'mastered',
-      times_incorrect: 2,
+  it('resolves an existing concept and logs a mistake without direct concept table mutation', async () => {
+    const operations = makeSupabaseMock();
+
+    // concept-resolver finds the existing concept via exact match
+    resolveConceptMock.mockResolvedValue({
+      conceptId: 'concept-1',
+      confidence: 0.95,
+      method: 'exact',
+      normalizedSubject: 'chemistry',
+      normalizedChapter: 'electrochemistry',
+      normalizedTopic: 'nernst equation',
     });
 
     await generateKnowledgeUpdate('user-1', [
@@ -109,17 +134,12 @@ describe('generateKnowledgeUpdate', () => {
       },
     ]);
 
+    // concept-resolver was called
+    expect(resolveConceptMock).toHaveBeenCalledOnce();
+
+    // A mistake row is inserted referencing the existing concept
     expect(operations).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({
-          table: 'concepts',
-          type: 'update',
-          payload: expect.objectContaining({
-            mastery: 'proficient',
-            confidence: 'low',
-            times_incorrect: 3,
-          }),
-        }),
         expect.objectContaining({
           table: 'mistakes',
           type: 'insert',
@@ -130,5 +150,9 @@ describe('generateKnowledgeUpdate', () => {
         }),
       ])
     );
+
+    // No direct concepts table mutations should occur
+    const conceptOps = operations.filter((op) => op.table === 'concepts');
+    expect(conceptOps).toHaveLength(0);
   });
 });
