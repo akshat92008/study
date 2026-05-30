@@ -39,6 +39,7 @@ export interface StreamResult {
 export interface SendOptions {
   url?: string;
   body: Record<string, unknown>;
+  headers?: Record<string, string>;
   /** Optionally supply a prior partial response to resume from */
   resumeFrom?: string;
   signal?: AbortSignal;
@@ -101,6 +102,7 @@ export function useStream(defaultUrl = '/api/ai/chat'): UseStreamReturn {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
+              ...opts.headers,
               // Pass partial text so the server can potentially resume
               ...(resumeFrom ? { 'X-Stream-Resume-From': String(resumeFrom.length) } : {}),
             },

@@ -247,6 +247,9 @@ export const GlobalChat = memo(function GlobalChat() {
     // Call the streaming engine
     try {
       const result = await send({
+        headers: {
+          'Idempotency-Key': crypto.randomUUID(),
+        },
         body: {
           message: content,
           history: chatMessages.slice(-10),

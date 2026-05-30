@@ -87,7 +87,10 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
 
       const res = await fetch('/api/ai/chat', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Idempotency-Key': crypto.randomUUID(),
+        },
         body: JSON.stringify({
           message: textToSend,
           history: historyForApi,

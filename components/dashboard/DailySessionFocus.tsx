@@ -64,7 +64,10 @@ export default function DailySessionFocus({
     try {
       const res = await fetch('/api/ai/chat', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Idempotency-Key': crypto.randomUUID(),
+        },
         body: JSON.stringify({
           message: greetingPrompt,
           history: []
@@ -123,7 +126,10 @@ export default function DailySessionFocus({
     try {
       const res = await fetch('/api/ai/chat', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Idempotency-Key': crypto.randomUUID(),
+        },
         body: JSON.stringify({
           message: tutorInstructions,
           history: messages.slice(-6), // Send recent history for context
