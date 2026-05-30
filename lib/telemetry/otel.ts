@@ -7,9 +7,7 @@ export const meter = apiMetrics.getMeter('cognition-os-meter');
 let _sdkInitialized = false;
 let _sdkStarting = false;
 
-const runtimeImport = new Function('specifier', 'return import(specifier)') as <T = any>(
-  specifier: string
-) => Promise<T>;
+
 
 export function initTelemetry(): void {
   // Only initialize once, only in Node.js (not Edge runtime), only if endpoint configured
@@ -37,11 +35,11 @@ async function startTelemetry(): Promise<void> {
       semanticConventions,
       { SimpleSpanProcessor },
     ] = await Promise.all([
-      runtimeImport('@opentelemetry/sdk-node'),
-      runtimeImport('@opentelemetry/exporter-trace-otlp-http'),
-      runtimeImport('@opentelemetry/resources'),
-      runtimeImport('@opentelemetry/semantic-conventions'),
-      runtimeImport('@opentelemetry/sdk-trace-base'),
+      import('@opentelemetry/sdk-node'),
+      import('@opentelemetry/exporter-trace-otlp-http'),
+      import('@opentelemetry/resources'),
+      import('@opentelemetry/semantic-conventions'),
+      import('@opentelemetry/sdk-trace-base'),
     ]);
 
     const Resource = resourcesModule.Resource;

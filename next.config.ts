@@ -18,7 +18,14 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 const nextConfig: NextConfig = {
-  serverExternalPackages: ['pdf-parse'],
+  serverExternalPackages: [
+    'pdf-parse',
+    '@opentelemetry/sdk-node',
+    '@opentelemetry/exporter-trace-otlp-http',
+    '@opentelemetry/resources',
+    '@opentelemetry/semantic-conventions',
+    '@opentelemetry/sdk-trace-base'
+  ],
   turbopack: {
     root: process.cwd(),
   },
