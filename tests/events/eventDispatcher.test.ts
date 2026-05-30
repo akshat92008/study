@@ -31,7 +31,7 @@ describe('EventDispatcher', () => {
       userId: '00000000-0000-0000-0000-000000000001',
       type: 'AUTOPSY_MOCK_PROCESSED',
       source: 'test',
-      data: { wrongAnswers: 2 },
+      data: { autopsyId: 'autopsy-test', incorrectCount: 2 },
       idempotencyKey: 'autopsy-test',
     });
 
@@ -40,7 +40,7 @@ describe('EventDispatcher', () => {
     expect(rpc).toHaveBeenCalledWith('create_event_with_consumers', {
       p_user_id: '00000000-0000-0000-0000-000000000001',
       p_type: 'AUTOPSY_MOCK_PROCESSED',
-      p_data: { wrongAnswers: 2 },
+      p_data: { autopsyId: 'autopsy-test', incorrectCount: 2 },
       p_idempotency_key: 'autopsy-test',
       p_source: 'test',
       p_metadata: {
@@ -48,5 +48,18 @@ describe('EventDispatcher', () => {
         trace_id: 'trace-test',
       },
     });
+  });
+
+  it('rejects unsupported event types before enqueueing', async () => {
+    const { EventDispatcher } = await import('@/lib/events/orchestrator');
+
+    await expect(EventDispatcher.publish({
+      userId: '00000000-0000-0000-0000-000000000001',
+      type: 'UNSUPPORTED_EVENT',
+      source: 'test',
+      data: {},
+    })).rejects.toThrow('Unsupported event type');
+
+    expect(rpc).not.toHaveBeenCalled();
   });
 });

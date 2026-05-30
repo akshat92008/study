@@ -10,6 +10,8 @@ import {
   streamText,
   getEmbedding,
   handleVisionMessage,
+  generateMultimodalJSON,
+  synthesizeSpeech,
 } from './provider-client';
 
 export const genai = null as any;
@@ -21,4 +23,6 @@ export {
   streamText,
   getEmbedding,
   handleVisionMessage,
+  generateMultimodalJSON,
+  synthesizeSpeech,
 };

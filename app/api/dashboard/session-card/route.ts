@@ -36,6 +36,12 @@ export async function GET() {
     if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
     const today = new Date().toISOString().split('T')[0];
+    const { data: profileVersion } = await supabase
+      .from('profiles')
+      .select('learner_state_version')
+      .eq('id', user.id)
+      .maybeSingle();
+    const learnerStateVersion = Number(profileVersion?.learner_state_version ?? 0);
 
 // Attempt to fetch precomputed session card from DB cache
 const { data: cachedCard, error: cacheErr } = await supabase
@@ -45,7 +51,7 @@ const { data: cachedCard, error: cacheErr } = await supabase
   .eq('date', today)
   .single();
 
-if (cachedCard && !cacheErr) {
+if (cachedCard && !cacheErr && Number(cachedCard.learner_state_version ?? 0) === learnerStateVersion) {
   return NextResponse.json(cachedCard);
 }
 
@@ -108,6 +114,7 @@ if (cachedCard && !cacheErr) {
       await supabase.from('session_cards').upsert({
         user_id: user.id,
         date: today,
+        learner_state_version: learnerStateVersion,
         ...card,
       });
 
@@ -168,6 +175,7 @@ Return ONLY valid JSON, no markdown:
     await supabase.from('session_cards').upsert({
       user_id: user.id,
       date: today,
+      learner_state_version: learnerStateVersion,
       ...card,
     });
 

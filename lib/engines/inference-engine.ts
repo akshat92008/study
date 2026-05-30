@@ -2,8 +2,8 @@ import { createClient } from '@/lib/supabase/server';
 import { generateJSON } from '@/lib/ai/provider-client';
 import { logger } from '@/lib/utils/logger';
 
-export async function syncStudentModel(userId: string, isInitialFingerprint: boolean = false) {
-  const supabase = await createClient();
+export async function syncStudentModel(userId: string, isInitialFingerprint: boolean = false, client?: any) {
+  const supabase = client ?? (await createClient());
 
   // FIX FAILURE 7: Previously queried 'mentor_chats' and 'mock_tests' — both legacy
   // empty tables from old schema. Now queries the real active tables:

@@ -2,7 +2,7 @@ import { createAdminClient } from '@/lib/supabase/admin';
 import { withCorrelationId } from '@/lib/telemetry/correlation';
 import { logger } from '@/lib/utils/logger';
 import { Metrics } from '@/lib/observability/metrics';
-import { EventConsumer } from './orchestrator';
+import { assertEventConsumerRoute, EventConsumer } from './orchestrator';
 import { LearningStateEngine } from '@/lib/engines/learning-state-engine';
 import { AtlasConsumer } from '@/lib/engines/cognition-graph';
 import { MemoryConsumer } from '@/lib/engines/revision-engine';
@@ -11,6 +11,13 @@ import { ConceptExpansionConsumer } from '@/lib/engines/concept-expansion-engine
 import { processChatSideEffects } from '@/lib/ai/chat-side-effects';
 
 const MAX_RETRIES = 5;
+
+type ConsumerResultStatus = 'HANDLED' | 'SKIPPED_INTENTIONALLY';
+
+type ConsumerResult = {
+  status: ConsumerResultStatus;
+  reason?: string;
+};
 
 export class EventWorkerService {
   /**
@@ -54,8 +61,9 @@ export class EventWorkerService {
           .single();
 
         try {
+          let result: ConsumerResult = { status: 'HANDLED' };
           await withCorrelationId(traceId, async () => {
-            await this.routeToConsumer(lease);
+            result = await this.routeToConsumer(lease);
           });
 
           Metrics.eventConsumer(lease.consumer_name, lease.event_type, Date.now() - start, true);
@@ -75,7 +83,11 @@ export class EventWorkerService {
           if (attempt) {
             await supabase
               .from('event_attempts')
-              .update({ finished_at: new Date().toISOString() })
+              .update({
+                finished_at: new Date().toISOString(),
+                result_status: result.status,
+                result_reason: result.reason ?? null,
+              })
               .eq('id', attempt.id);
           }
 
@@ -215,8 +227,10 @@ export class EventWorkerService {
     }
   }
 
-  private static async routeToConsumer(lease: any): Promise<void> {
+  private static async routeToConsumer(lease: any): Promise<ConsumerResult> {
     const consumer = lease.consumer_name as EventConsumer;
+    assertEventConsumerRoute(lease.event_type, lease.consumer_name);
+
     const event = {
       user_id: lease.user_id,
       type: lease.event_type,
@@ -237,45 +251,55 @@ export class EventWorkerService {
             type: legacyType as any,
             data: payload,
           });
+          return { status: 'HANDLED' };
         }
-        break;
+        return { status: 'SKIPPED_INTENTIONALLY', reason: 'No learning-state projection for this event yet' };
       }
       case 'atlas_engine':
         if (event.type === 'AUTOPSY_MOCK_PROCESSED') {
           await AtlasConsumer.handleAutopsyProcessed(event.user_id, payload);
+          return { status: 'HANDLED' };
         } else if (
           event.type === 'STUDY_SESSION_COMPLETED' ||
           event.type === 'MIND_TUTOR_COMPLETED' ||
           event.type === 'COMMAND_SESSION_COMPLETED'
         ) {
           await AtlasConsumer.handleStudySessionCompleted(event.user_id, event.data);
+          return { status: 'HANDLED' };
+        } else if (event.type === 'MEMORY_CARD_REVIEWED') {
+          return { status: 'SKIPPED_INTENTIONALLY', reason: 'Card review updates ATLAS through mastery evidence writer' };
         }
         break;
       case 'memory_engine':
         if (event.type === 'AUTOPSY_MOCK_PROCESSED') {
           await MemoryConsumer.handleAutopsyProcessed(event.user_id, payload);
+          return { status: 'HANDLED' };
         } else if (
           event.type === 'STUDY_SESSION_COMPLETED' ||
           event.type === 'MIND_TUTOR_COMPLETED' ||
           event.type === 'COMMAND_SESSION_COMPLETED'
         ) {
           await MemoryConsumer.handleStudySessionCompleted(event.user_id, event.data);
+          return { status: 'HANDLED' };
         }
         break;
       case 'command_engine':
         if (event.type === 'AUTOPSY_MOCK_PROCESSED') {
           await CommandConsumer.handleAutopsyProcessed(event.user_id, payload, payload);
+          return { status: 'HANDLED' };
         } else if (
           event.type === 'STUDY_SESSION_COMPLETED' ||
           event.type === 'MIND_TUTOR_COMPLETED' ||
           event.type === 'COMMAND_SESSION_COMPLETED'
         ) {
           await CommandConsumer.handleStudySessionCompleted(event.user_id, event.data);
+          return { status: 'HANDLED' };
         }
         break;
       case 'concept_expansion_engine':
         if (event.type === 'CONCEPT_DISCOVERED') {
           await ConceptExpansionConsumer.handleConceptDiscovered(event.user_id, payload);
+          return { status: 'HANDLED' };
         }
         break;
       case 'chat_side_effect_engine':
@@ -286,9 +310,12 @@ export class EventWorkerService {
             supabase: createAdminClient(),
             ...payload
           });
+          return { status: 'HANDLED' };
         }
         break;
     }
+
+    throw new Error(`Event routing error: ${consumer} has no handler for ${event.type}`);
   }
 
   private static mapToLegacyType(type: string): string | null {

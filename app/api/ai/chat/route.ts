@@ -6,23 +6,19 @@ import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { routeStreamGeneration, routeVisionCall } from '@/lib/ai/router';
 import { getMINDContext } from '@/lib/engines/mind-engine';
 import { getMINDSystemPrompt } from '@/lib/ai/prompts/mind-prompt';
-import { updateConceptState } from '@/lib/engines/cognition-graph';
-import { createSingleCard } from '@/lib/engines/revision-engine';
 import { logger } from '@/lib/utils/logger';
 import { orchestrateFromIntent } from '@/lib/engines/orchestrator';
 import { logDecision } from '@/lib/utils/orchestratorLogger';
 import { resolveConceptByName } from '@/lib/engines/concept-resolver';
-import { LearningStateEngine } from '@/lib/engines/learning-state-engine';
 import { EventDispatcher } from '@/lib/events/orchestrator';
-import { generateSessionClosingMessage } from '@/lib/engines/session-closing';
 import { MASTERY_WEIGHTS } from '@/lib/engines/cognition-graph';
-import { syncStudentModel } from '@/lib/engines/inference-engine';
 import { ChatMemoryService } from '@/lib/services/chatMemoryService';
 import { buildConversationMessages } from '@/lib/ai/chat-intent';
 import { classifyMessageCombined } from '@/lib/ai/chat-intent-with-emotion';
 import { validateBase64Payload } from '@/lib/middleware/validateUpload';
 import { checkSemanticCache, setSemanticCache, isCacheable } from '@/lib/ai/responseCache';
 import { trackDailyAIUsage } from '@/lib/services/ai-usage.service';
+import { invalidateSessionCards } from '@/lib/services/session-card-cache';
 import {
   getOrCreateGlobalChatSession,
   loadRecentMessages,
@@ -71,7 +67,7 @@ export async function POST(req: NextRequest) {
   const sessionId = await getOrCreateGlobalChatSession(supabase, user.id);
 
   if (imageBase64) {
-    const imgValidation = validateBase64Payload(imageBase64);
+    const imgValidation = validateBase64Payload(imageBase64, imageMimeType);
     if (!imgValidation.valid) return imgValidation.error!;
   }
 
@@ -211,14 +207,7 @@ export async function POST(req: NextRequest) {
     orchestratorResult.needsFileProcessing &&
     (imageBase64 || body?.documentBase64)
   ) {
-    const responseText = "I can see you've uploaded a test paper. Let me run a full autopsy on it — analyzing every question, classifying mistakes, and updating your knowledge map. Give me 30 seconds.\n\nHead to the Autopsy section to see the full breakdown once I'm done.";
-    const autopsyPayload = {
-      fileData: imageBase64
-        ? { kind: 'inline', data: imageBase64, mimeType: imageMimeType }
-        : { kind: 'inline', data: body?.documentBase64, mimeType: body?.documentMimeType },
-      testName: `Chat Upload ${new Date().toLocaleDateString()}`,
-      examType: mindContext?.profile?.examType || 'neet',
-    };
+    const responseText = "I can see this is a mock-test upload. Full AUTOPSY runs outside the chat stream so the upload can be validated, extracted, and processed safely. Open AUTOPSY and upload the same file there; I'll use the processed result on the next turn.";
 
     const stream = new ReadableStream({
       async start(controller) {
@@ -255,16 +244,6 @@ export async function POST(req: NextRequest) {
           },
           idempotency_key: crypto.randomUUID(),
         });
-
-        const autopsyRes = await fetch(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/autopsy/ingest`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Cookie: req.headers.get('cookie') || '' },
-          body: JSON.stringify(autopsyPayload),
-        });
-        if (!autopsyRes.ok) {
-          const errorText = await autopsyRes.text().catch(() => '');
-          logger.error('Background autopsy from chat failed', undefined, { status: autopsyRes.status, errorText });
-        }
 
         controller.close();
       }
@@ -375,7 +354,7 @@ export async function POST(req: NextRequest) {
               await supabase.from('study_tasks').delete().in('id', toRemove.map((t: any) => t.id)).eq('user_id', user.id);
               const saved = toRemove.reduce((s: number, t: any) => s + (t.estimated_minutes || 0), 0);
               reply = `Done. Removed ${toRemove.length} task${toRemove.length > 1 ? 's' : ''} from today — ${saved} minutes freed. Focus on what remains.`;
-              await supabase.from('session_cards').delete().eq('user_id', user.id).eq('date', today);
+              await invalidateSessionCards(user.id, supabase, 'chat_replan_removed_tasks');
             } else if (action === 'lighten_intensity') {
               let saved = 0;
               for (const task of todayTasks) {
@@ -385,14 +364,14 @@ export async function POST(req: NextRequest) {
                 }
               }
               reply = `Done. All sessions capped at 25 minutes. ${saved} minutes saved. Short focused blocks are easier to start.`;
-              await supabase.from('session_cards').delete().eq('user_id', user.id).eq('date', today);
+              await invalidateSessionCards(user.id, supabase, 'chat_replan_lightened_intensity');
             } else {
               await supabase.from('study_tasks').insert({
                 user_id: user.id, title: 'Recovery Break', type: 'break', scheduled_date: today,
                 estimated_minutes: 15, priority: 'low', is_completed: false,
               });
               reply = "Added a 15-minute recovery break. Step fully away from your desk — no studying.";
-              await supabase.from('session_cards').delete().eq('user_id', user.id).eq('date', today);
+              await invalidateSessionCards(user.id, supabase, 'chat_replan_added_recovery_break');
             }
             controller.enqueue(encoder.encode(reply));
             fullResponse = reply;
@@ -435,8 +414,7 @@ export async function POST(req: NextRequest) {
                  await supabase.from('study_tasks').delete().eq('user_id', user.id).eq('is_completed', false).in('scheduled_date', datesToUpdate);
               }
               await supabase.from('study_tasks').insert(tasksToInsert);
-              const datesToInvalidate = Array.from(new Set([todayStr, ...datesToUpdate]));
-              await supabase.from('session_cards').delete().eq('user_id', user.id).in('date', datesToInvalidate);
+              await invalidateSessionCards(user.id, supabase, 'chat_planner_tasks_updated');
               metadataPayload = { action: 'planner_adjusted', tasksModified: true, sessionCardInvalidated: true };
             }
           } catch (err) { logger.warn('Failed to extract and insert study tasks from planner', err); }

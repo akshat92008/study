@@ -4,7 +4,7 @@ import { getExamConfig } from '@/lib/utils/constants';
 import { AutopsyPaperSchema, AutopsyQuestionSchema } from './autopsy-schemas';
 import { generateMentorRecovery } from './mentor-engine';
 import { logger } from '@/lib/utils/logger';
-import { generateJSON } from '@/lib/ai/provider-client';
+import { generateJSON, generateMultimodalJSON } from '@/lib/ai/provider-client';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { generateKnowledgeUpdate } from './knowledge-engine';
 
@@ -25,45 +25,10 @@ async function routeMultimodalExtraction(
   prompt: string,
   fileData: { kind: 'inline'; mimeType: string; data: string }
 ): Promise<any> {
-  const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey) {
-    throw new Error(
-      'GEMINI_API_KEY is required for image/PDF autopsy. ' +
-      'Get one free at https://aistudio.google.com/app/apikey'
-    );
-  }
-
-  const response = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
-    {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        contents: [{
-          parts: [
-            { text: prompt },
-            { inlineData: { mimeType: fileData.mimeType, data: fileData.data } },
-          ],
-        }],
-        generationConfig: {
-          responseMimeType: 'application/json',
-          temperature: 0.1,
-        },
-      }),
-      signal: AbortSignal.timeout(90_000),
-    }
-  );
-
-  if (!response.ok) {
-    const text = await response.text().catch(() => '');
-    throw new Error(`Multimodal extraction failed: ${response.status} ${text}`);
-  }
-
-  const data = await response.json();
-  const rawText = (data.candidates?.[0]?.content?.parts?.[0]?.text || '{}')
-    .replace(/```json/gi, '').replace(/```/g, '').trim();
-
-  return JSON.parse(rawText);
+  return generateMultimodalJSON(prompt, {
+    mimeType: fileData.mimeType,
+    data: fileData.data,
+  });
 }
 
 async function fastExtractionPass(

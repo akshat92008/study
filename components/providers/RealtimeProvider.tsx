@@ -73,7 +73,7 @@ export function RealtimeProvider({ children }: { children: React.ReactNode }) {
                 // Silent background update
                 debouncedRefresh();
                 break;
-              case 'NEW_DOCUMENT_INGESTED':
+              case 'INGESTION_DOCUMENT_PROCESSED':
                 addToast('Document processed into knowledge graph.', 'success');
                 debouncedRefresh();
                 break;

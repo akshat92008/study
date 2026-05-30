@@ -35,7 +35,7 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
 
     const [
       profileRes, weakConceptsRes, recentMistakesRes,
-      overdueRes, masteryRes, sessionsRes
+      overdueRes, masteryRes, sessionsRes, goalRes, sessionCardRes, taskRes
     ] = await Promise.all([
       supabase.from('profiles')
         .select('full_name, exam_type, target_date, current_level, learning_style, streak_days, emotional_state, timezone')
@@ -57,10 +57,31 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       ]),
 
       supabase.from('study_sessions')
-        .select('notes, started_at, subject, chapter')
+        .select('notes, started_at, subject, chapter, duration_minutes')
         .eq('user_id', userId)
         .not('notes', 'is', null)
         .order('started_at', { ascending: false })
+        .limit(5),
+
+      supabase.from('learning_goals')
+        .select('title, target_date, progress')
+        .eq('user_id', userId)
+        .eq('status', 'active')
+        .limit(1)
+        .maybeSingle(),
+
+      supabase.from('session_cards')
+        .select('"focusTopic", subject, "estimatedMinutes", rationale, learner_state_version')
+        .eq('user_id', userId)
+        .eq('date', new Date().toISOString().split('T')[0])
+        .maybeSingle(),
+
+      supabase.from('study_tasks')
+        .select('title, subject, chapter, priority')
+        .eq('user_id', userId)
+        .eq('scheduled_date', new Date().toISOString().split('T')[0])
+        .eq('is_completed', false)
+        .order('priority', { ascending: false })
         .limit(5)
     ]);
 
@@ -109,6 +130,27 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
         streakDays: profile?.streak_days || 0,
         timezone: profile?.timezone || 'UTC'
       },
+      activeGoal: goalRes.data
+        ? {
+            title: goalRes.data.title,
+            targetDate: goalRes.data.target_date ?? null,
+            progress: goalRes.data.progress ?? null,
+          }
+        : null,
+      currentSessionCard: sessionCardRes.data
+        ? {
+            focusTopic: sessionCardRes.data.focusTopic,
+            subject: sessionCardRes.data.subject,
+            estimatedMinutes: sessionCardRes.data.estimatedMinutes,
+            rationale: sessionCardRes.data.rationale,
+          }
+        : null,
+      commandTasks: taskRes.data || [],
+      recentStudySessions: (sessionsRes.data || []).map((s: any) => ({
+        subject: s.subject,
+        chapter: s.chapter,
+        durationMinutes: s.duration_minutes ?? null,
+      })),
       weakConcepts: weakConceptsRes.data || [],
       recentMistakes: recentMistakesRes.data || [],
       struggles: (recentMistakesRes.data || []).map(m => ({ chapter: m.chapter, subject: m.subject })),
@@ -132,6 +174,10 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
     // Return safe defaults — never crash the chat
     return {
       profile: { name: 'Student', examType: 'General', examDate: null, currentLevel: 'intermediate', learningStyle: 'visual', streakDays: 0, timezone: 'UTC' },
+      activeGoal: null,
+      currentSessionCard: null,
+      commandTasks: [],
+      recentStudySessions: [],
       weakConcepts: [], recentMistakes: [], struggles: [],
       masteryStats: { totalConcepts: 0, masteredCount: 0, masteryPercent: 0 },
       overdueCards: 0, emotionalState: 'neutral', recentTopics: [], knownAnalogies: [],

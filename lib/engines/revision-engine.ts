@@ -6,6 +6,9 @@ import { searchPersonalKnowledge } from './rag-engine';
 import { FlashcardBatchSchema } from './memory-schemas';
 import { logger } from '@/lib/utils/logger';
 import { invalidateSessionCards } from '@/lib/services/session-card-cache';
+import { resolveConcept } from '@/lib/engines/concept-resolver';
+import { recordMasteryEvidence } from '@/lib/engines/mastery-updater';
+import { EventDispatcher } from '@/lib/events/orchestrator';
 
 // Custom FSRS-5 Configuration and Implementation
 const FSRS_WEIGHTS = [
@@ -212,18 +215,25 @@ export async function reviewCard(cardId: string, rating: 1 | 2 | 3 | 4, response
 
   // 5. Sync Ecosystem: Update parent Concept Mastery & Streak
   if (row.concept_id) {
-    let newMastery = 'developing';
-    if (newStateStr === 'review') {
-      if (newStability > 21) newMastery = 'automated';
-      else if (newStability > 7) newMastery = 'mastered';
-      else newMastery = 'proficient';
-    }
-
     await supabase.from('concepts').update({
-      mastery: newMastery,
       last_reviewed_at: now.toISOString(),
       times_reviewed: row.reps + 1,
-    }).eq('id', row.concept_id);
+    }).eq('id', row.concept_id).eq('user_id', row.user_id);
+
+    await recordMasteryEvidence({
+      userId: row.user_id,
+      conceptId: row.concept_id,
+      evidenceType: ratingStr === 'again'
+        ? 'revision_again'
+        : ratingStr === 'hard'
+          ? 'revision_hard'
+          : ratingStr === 'easy'
+            ? 'revision_easy'
+            : 'revision_good',
+      source: 'card_review',
+      sourceId: `${cardId}:${now.toISOString()}`,
+      evidence: `Revision card reviewed as ${ratingStr}`,
+    });
 
     // 5b. Loop-Breaker: Repeated Failures (> 3 lapses)
     if (newLapses > 3 && rating === 1) {
@@ -247,6 +257,7 @@ export async function reviewCard(cardId: string, rating: 1 | 2 | 3 | 4, response
             chapter: concept.chapter,
             is_completed: false
           });
+          await invalidateSessionCards(row.user_id, supabase, 'revision_repeated_failure_task_created');
           logger.info('Repeated failure loop-breaker triggered. Card suspended, MIND session scheduled.', { cardId, concept_id: row.concept_id });
         }
       } catch (e) {
@@ -285,6 +296,19 @@ export async function reviewCard(cardId: string, rating: 1 | 2 | 3 | 4, response
   }
 
   logger.info(`Card Reviewed`, { cardId, rating, newState: newStateInt, newDue: nextDueAt });
+
+  await EventDispatcher.publish({
+    user_id: row.user_id,
+    type: 'MEMORY_CARD_REVIEWED',
+    data: {
+      cardId,
+      conceptId: row.concept_id ?? null,
+      rating: ratingStr,
+      responseTimeMs: responseTimeMs ?? null,
+    },
+    metadata: { source: 'revision_engine' },
+    idempotency_key: `card_review:${cardId}:${now.toISOString()}`,
+  }).catch(err => logger.warn('Failed to publish MEMORY_CARD_REVIEWED', err));
 
   return { nextDue: nextDueAt, scheduledDays: Math.max(interval, 1) };
 }
@@ -369,6 +393,9 @@ export async function generateCardsForConcept(
   const { data, error } = await supabase.from('revision_cards').insert(rows).select();
   if (error) throw new Error('Failed to save generated cards to database.');
 
+  await invalidateSessionCards(userId, supabase, 'revision_cards_generated').catch(err =>
+    logger.warn('Failed to invalidate session cards after generated cards', err)
+  );
   logger.info(`Auto-generated ${rows.length} cards via RAG`, { conceptId });
   return data;
 }
@@ -405,6 +432,9 @@ export async function createCardFromMistake(
   if (error) {
     logger.error('Failed to create flashcard from mistake', { error: error.message });
   } else {
+    await invalidateSessionCards(userId, supabase, 'mistake_revision_card_created').catch(err =>
+      logger.warn('Failed to invalidate session cards after mistake card', err)
+    );
     logger.info('Auto-generated card from mistake', { chapter });
   }
 }
@@ -418,7 +448,7 @@ export async function createSingleCard(
   chapter: string,
   client?: Awaited<ReturnType<typeof createClient>>
 ) {
-  const supabase = client ?? await createClient();
+  const supabase = client ?? (await createClient());
   const emptyCard = createEmptyCard();
   
   const { data, error } = await supabase.from('revision_cards').insert({
@@ -443,6 +473,9 @@ export async function createSingleCard(
     return null; // Don't crash the tutor session if card creation fails
   }
   
+  await invalidateSessionCards(userId, supabase, 'revision_card_created').catch(err =>
+    logger.warn('Failed to invalidate session cards after single card', err)
+  );
   return data;
 }
 
@@ -494,19 +527,19 @@ export class MemoryConsumer {
       if (!q.reasoning || !q.correctExplanation) continue;
 
       try {
-        // Resolve concept ID for this chapter
-        const { data: concept } = await supabase
-          .from('concepts')
-          .select('id')
-          .eq('user_id', userId)
-          .ilike('subject', `%${q.subject}%`)
-          .ilike('chapter', `%${q.chapter}%`)
-          .limit(1)
-          .maybeSingle();
+        const resolution = await resolveConcept({
+          userId,
+          subject: q.subject,
+          chapter: q.chapter,
+          topic: q.conceptualGap || q.chapter,
+          sourceType: 'autopsy',
+          confidence: 0.8,
+          client: supabase,
+        });
 
         await createSingleCard(
           userId,
-          concept?.id ?? null,
+          resolution.conceptId,
           q.conceptualGap || q.reasoning,           // front of card = the question/gap
           q.correctExplanation,                       // back of card = correct explanation
           q.subject,
@@ -534,21 +567,22 @@ export class MemoryConsumer {
 
     try {
       const supabase = createAdminClient();
-      const { data: concept } = await supabase
-        .from('concepts')
-        .select('id')
-        .eq('user_id', userId)
-        .ilike('subject', `%${subject}%`)
-        .ilike('chapter', `%${chapter}%`)
-        .limit(1)
-        .maybeSingle();
+      const resolution = await resolveConcept({
+        userId,
+        subject,
+        chapter,
+        topic: chapter,
+        sourceType: 'session',
+        confidence: 0.94,
+        client: supabase,
+      });
 
       let created = 0;
 
       if (sessionType !== 'chat') {
         await createSingleCard(
           userId,
-          concept?.id ?? null,
+          resolution.conceptId,
           `What are the key concepts in ${chapter}?`,
           `Review your notes from your ${subject} — ${chapter} study session.`,
           subject,
@@ -574,7 +608,7 @@ export class MemoryConsumer {
         if (raw && !raw.understood && raw.gapFound && raw.gapAnswer) {
           await createSingleCard(
             userId,
-            concept?.id ?? null,
+            resolution.conceptId,
             raw.gapFound,
             raw.gapAnswer,
             subject,

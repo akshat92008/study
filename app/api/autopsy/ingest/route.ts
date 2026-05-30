@@ -70,7 +70,7 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
 
         const buffer = Buffer.from(base64, 'base64');
         const { validateMagicBytesArray } = await import('@/lib/utils/magicBytes');
-        const isValidBytes = validateMagicBytesArray(new Uint8Array(buffer.subarray(0, 4)), mimeType);
+        const isValidBytes = validateMagicBytesArray(new Uint8Array(buffer.subarray(0, 12)), mimeType);
         if (!isValidBytes) {
           return NextResponse.json(
             { error: 'File contents do not match the declared MIME type. Potential malware blocked.' },

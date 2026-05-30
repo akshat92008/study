@@ -40,6 +40,20 @@ describe("schema drift", () => {
     }
     expect(offenders).toEqual([]);
   });
+
+  it("no deprecated Gemini imports in runtime files", () => {
+    const offenders: string[] = [];
+    for (const file of walk(root)) {
+      if (file.endsWith('noSchemaDrift.test.ts') || file.endsWith('chatPersistence.test.ts')) continue;
+      if (file.endsWith('gemini.ts')) continue; 
+      if (file.includes('scripts/') || file.includes('lib/db/schema.ts')) continue;
+      const text = fs.readFileSync(file, "utf8");
+      if (text.includes('@/lib/ai/gemini') || text.includes('lib/ai/gemini')) {
+        offenders.push(`${file}: uses deprecated @/lib/ai/gemini`);
+      }
+    }
+    expect(offenders).toEqual([]);
+  });
 });
 
 describe('migration contracts', () => {
@@ -69,5 +83,23 @@ describe('migration contracts', () => {
       .map(([version, files]) => `${version}: ${files.join(', ')}`);
 
     expect(duplicates).toEqual([]);
+  });
+
+  it('profile trigger migration has search_path', () => {
+    const migrationsDir = path.join(root, 'supabase', 'migrations');
+    let found = false;
+    let hasSearchPath = false;
+    for (const file of fs.readdirSync(migrationsDir)) {
+      if (!file.endsWith('.sql')) continue;
+      const text = fs.readFileSync(path.join(migrationsDir, file), 'utf8');
+      if (text.includes('handle_new_user')) {
+        found = true;
+        if (text.includes('SET search_path = public')) {
+          hasSearchPath = true;
+        }
+      }
+    }
+    expect(found).toBe(true);
+    expect(hasSearchPath).toBe(true);
   });
 });

@@ -3,24 +3,14 @@ import { createAdminClient } from '@/lib/supabase/admin';
 import { generateJSON } from '@/lib/ai/provider-client';
 import { logger } from '@/lib/utils/logger';
 import { expandChapterWithAI } from './atlas-expansion';
-import { applyMasteryUpdate } from '@/lib/engines/mastery-updater';
+import { applyMasteryUpdate, recordMasteryEvidence } from '@/lib/engines/mastery-updater';
 import { invalidateSessionCards } from '@/lib/services/session-card-cache';
+import { resolveConcept } from '@/lib/engines/concept-resolver';
 
 
 export const MASTERY_WEIGHTS: Record<string, number> = {
   not_started: 0, exposed: 15, developing: 40, proficient: 70, mastered: 90, automated: 98,
 };
-
-function getMasteryLevel(score: number): 'not_started' | 'exposed' | 'developing' | 'proficient' | 'mastered' | 'automated' {
-  if (score >= 95) return 'automated';
-  if (score >= 85) return 'mastered';
-  if (score >= 60) return 'proficient';
-  if (score >= 25) return 'developing';
-  if (score > 0) return 'exposed';
-  return 'not_started';
-}
-
-
 
 export async function getCognitionGraph(userId: string) {
   const supabase = await createClient();
@@ -219,8 +209,6 @@ export async function updateConceptState(conceptId: string, correct: boolean, ti
   const newIncorrect = (concept.times_incorrect || 0) + (correct ? 0 : (1 * effectiveWeight));
   const accuracy = newCorrect / newReviewed;
 
-  const newMastery = getMasteryLevel(accuracy * 100);
-
   const now = new Date();
   const daysSinceReview = concept.last_reviewed_at
     ? (Date.now() - new Date(concept.last_reviewed_at).getTime()) / (1000 * 60 * 60 * 24)
@@ -232,7 +220,6 @@ export async function updateConceptState(conceptId: string, correct: boolean, ti
     times_reviewed: newReviewed,
     times_correct: newCorrect,
     times_incorrect: newIncorrect,
-    mastery: newMastery,
     confidence: accuracy >= 0.8 ? 'high' : accuracy >= 0.5 ? 'medium' : 'low',
     last_reviewed_at: now.toISOString(),
     retention_strength: retentionStrength,
@@ -248,6 +235,14 @@ export async function updateConceptState(conceptId: string, correct: boolean, ti
     });
     await Promise.all(linkUpdates);
   }
+
+  await recordMasteryEvidence({
+    userId: concept.user_id,
+    conceptId,
+    evidenceType: correct ? 'practice_correct' : 'practice_wrong',
+    source: 'practice',
+    evidence: `Practice signal; accuracy ${(accuracy * 100).toFixed(0)}%, time spent ${timeSpent}s`,
+  });
 }
 
 export async function updateConceptMastery(conceptId: string, correct: boolean, timeSpent: number) {
@@ -376,30 +371,39 @@ export class AtlasConsumer {
         break;
       }
 
-      // Find concepts in this chapter
-      const { data: concepts } = await supabase
+      const resolution = await resolveConcept({
+        userId,
+        subject,
+        chapter,
+        topic: chapter,
+        sourceType: 'autopsy',
+        confidence: 0.8,
+        client: supabase,
+      });
+
+      if (!resolution.conceptId) continue;
+
+      const { data: concept } = await supabase
         .from('concepts')
         .select('id, mastery')
+        .eq('id', resolution.conceptId)
         .eq('user_id', userId)
-        .eq('subject', subject)
-        .eq('chapter', chapter);
+        .maybeSingle();
 
-      if (!concepts || concepts.length === 0) continue;
+      if (!concept) continue;
 
-      for (const concept of concepts) {
-        const downgradedMastery = downgradeMastery(concept.mastery, count);
-        if (downgradedMastery !== concept.mastery) {
-          await applyMasteryUpdate({
-            userId,
-            conceptId: concept.id,
-            newMastery: downgradedMastery as any,
-            source: 'autopsy',
-            sourceId: metadata?.autopsyId ?? undefined,
-            evidence: `${count} wrong answer(s) in ${chapter} (${subject})`,
-            useAdminClient: true,
-          });
-          downgradeCount++;
-        }
+      const downgradedMastery = downgradeMastery(concept.mastery, count);
+      if (downgradedMastery !== concept.mastery) {
+        await applyMasteryUpdate({
+          userId,
+          conceptId: concept.id,
+          newMastery: downgradedMastery as any,
+          source: 'autopsy',
+          sourceId: metadata?.autopsyId ?? undefined,
+          evidence: `${count} wrong answer(s) in ${chapter} (${subject})`,
+          useAdminClient: true,
+        });
+        downgradeCount++;
       }
     }
 
@@ -407,8 +411,12 @@ export class AtlasConsumer {
   }
 
   static async handleStudySessionCompleted(userId: string, data: any): Promise<void> {
-    const { subject, chapter, durationMinutes = 10, history, latestMessage, latestResponse, intent, isSessionComplete } = data || {};
+    const { subject, chapter, durationMinutes = 10, history, latestMessage, latestResponse, intent, isSessionComplete, masteryEvidenceRecorded } = data || {};
     if (!subject || !chapter) return;
+    if (masteryEvidenceRecorded) {
+      logger.info('AtlasConsumer: session mastery evidence already recorded by canonical completion service', { userId, subject, chapter });
+      return;
+    }
 
     const supabase = createAdminClient();
 
@@ -432,28 +440,25 @@ export class AtlasConsumer {
       }
     }
 
+    const resolution = await resolveConcept({
+      userId,
+      subject,
+      chapter,
+      topic: chapter,
+      sourceType: 'session',
+      confidence: data?.conceptId ? 1 : 0.94,
+      client: supabase,
+    });
+
+    if (!resolution.conceptId) return;
+
     const { data: concepts } = await supabase
       .from('concepts')
       .select('id, mastery')
       .eq('user_id', userId)
-      .eq('subject', subject)
-      .eq('chapter', chapter);
+      .eq('id', resolution.conceptId);
 
-    if (!concepts || concepts.length === 0) {
-      // Concept doesn't exist yet — create it at 'exposed'
-      await supabase.from('concepts').insert({
-        user_id: userId,
-        subject,
-        chapter,
-        name: chapter,
-        mastery: 'exposed',
-        confidence: 'low',
-        last_reviewed_at: new Date().toISOString(),
-      });
-      await invalidateSessionCards(userId, supabase);
-      logger.info(`AtlasConsumer: created new concept at exposed — ${subject} / ${chapter}`, { userId });
-      return;
-    }
+    if (!concepts || concepts.length === 0) return;
 
     for (const concept of concepts) {
       // If completed, use actual understood signal. If not, fallback to small duration upgrade.

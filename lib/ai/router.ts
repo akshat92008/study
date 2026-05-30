@@ -275,6 +275,14 @@ async function getPrioritizedProviders(taskType: TaskType): Promise<ProviderName
   return TASK_PROVIDER_PRIORITY[taskType] || [];
 }
 
+function parseJSONPayload<T>(rawText: string): T {
+  const clean = (rawText || '{}')
+    .replace(/```json\n?/gi, '')
+    .replace(/```\n?/g, '')
+    .trim();
+  return JSON.parse(clean) as T;
+}
+
 export async function routeTextGeneration(
   taskType: TaskType,
   systemPrompt: string,
@@ -846,4 +854,227 @@ if (!config || !config.apiKey || !config.supportsVision) {
   }
 
   return 'Could not process the image. Please try a clearer photo or type out the question.';
+}
+
+export async function routeMultimodalJSONExtraction<T>(
+  systemPrompt: string,
+  fileData: { mimeType: string; data: string },
+  schema?: { parse: (value: unknown) => T }
+): Promise<T> {
+  const taskType: TaskType = fileData.mimeType === 'application/pdf' ? 'pdf' : 'autopsy';
+  const providers = await getPrioritizedProviders(taskType);
+  const isPdf = fileData.mimeType === 'application/pdf';
+  let sawCapableProvider = false;
+
+  for (const providerName of providers) {
+    if (await isProviderInCooldown(providerName)) continue;
+
+    const config = getProviderConfig(providerName);
+    const supportsFile =
+      isPdf
+        ? config?.supportsPdf
+        : config?.supportsVision;
+
+    if (!config || !config.apiKey || !supportsFile) {
+      logger.warn(`Skipping ${providerName} — missing key or multimodal capability`, {
+        providerName,
+        taskType,
+        mimeType: fileData.mimeType,
+      });
+      continue;
+    }
+
+    sawCapableProvider = true;
+    const start = Date.now();
+
+    try {
+      let rawText = '';
+
+      if (providerName === 'google') {
+        const response = await fetch(
+          `${config.baseUrl}/models/${config.models.quality}:generateContent`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'x-goog-api-key': config.apiKey || '',
+            } as Record<string, string>,
+            body: JSON.stringify({
+              contents: [{
+                parts: [
+                  { text: systemPrompt },
+                  { inlineData: { mimeType: fileData.mimeType, data: fileData.data } },
+                ],
+              }],
+              generationConfig: {
+                responseMimeType: 'application/json',
+                temperature: 0.1,
+              },
+            }),
+            signal: AbortSignal.timeout(90_000),
+          }
+        );
+
+        if (!response.ok) {
+          const text = await response.text().catch(() => '');
+          throw Object.assign(
+            new Error(`Google multimodal extraction failed: ${response.status} ${text}`),
+            { statusCode: response.status }
+          );
+        }
+
+        const data = await response.json();
+        rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || '{}';
+      } else if (providerName === 'groq_compound' || providerName === 'openai') {
+        const model = providerName === 'groq_compound'
+          ? 'llama-3.2-90b-vision-preview'
+          : config.models.quality;
+        const response = await fetch(`${config.baseUrl}/chat/completions`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${config.apiKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            model,
+            messages: [
+              { role: 'system', content: 'Return only valid JSON. No markdown or code fences.' },
+              {
+                role: 'user',
+                content: [
+                  { type: 'text', text: systemPrompt },
+                  { type: 'image_url', image_url: { url: `data:${fileData.mimeType};base64,${fileData.data}` } },
+                ],
+              },
+            ],
+            temperature: 0.1,
+            max_tokens: 4096,
+          }),
+          signal: AbortSignal.timeout(90_000),
+        });
+
+        if (!response.ok) {
+          const text = await response.text().catch(() => '');
+          throw Object.assign(
+            new Error(`${providerName} multimodal extraction failed: ${response.status} ${text}`),
+            { statusCode: response.status }
+          );
+        }
+
+        const data = await response.json();
+        rawText = data.choices?.[0]?.message?.content || '{}';
+      } else if (providerName === 'cloudflare') {
+        const model = '@cf/meta/llama-3.2-11b-vision-instruct';
+        const response = await fetch(`${config.baseUrl}/${model}`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${config.apiKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            messages: [
+              {
+                role: 'user',
+                content: [
+                  { type: 'image_url', image_url: { url: `data:${fileData.mimeType};base64,${fileData.data}` } },
+                  { type: 'text', text: `${systemPrompt}\n\nReturn only valid JSON.` },
+                ],
+              },
+            ],
+          }),
+          signal: AbortSignal.timeout(90_000),
+        });
+
+        if (!response.ok) {
+          const text = await response.text().catch(() => '');
+          throw Object.assign(
+            new Error(`Cloudflare multimodal extraction failed: ${response.status} ${text}`),
+            { statusCode: response.status }
+          );
+        }
+
+        const data = await response.json();
+        rawText = data.result?.response || '{}';
+      } else {
+        continue;
+      }
+
+      const parsed = parseJSONPayload<T>(rawText);
+      const validated = schema ? schema.parse(parsed) : parsed;
+      Metrics.aiCall(providerName, taskType, Date.now() - start, true);
+      await recordProviderSuccess(providerName, Date.now() - start);
+      await resetProviderHealth(providerName);
+      logger.info('Multimodal extraction routed through provider', {
+        provider: providerName,
+        taskType,
+        mimeType: fileData.mimeType,
+      });
+      return validated;
+    } catch (err: any) {
+      Metrics.aiCall(providerName, taskType, Date.now() - start, false);
+      const code = err.statusCode || 500;
+      const cooldownMs = code === 429 || code === 401 ? 30_000 : code === 503 ? 20_000 : 15_000;
+      await recordProviderFailure(providerName, cooldownMs);
+      logger.warn(`${providerName} multimodal extraction failed (${code}), trying next`, {
+        providerName,
+        taskType,
+        mimeType: fileData.mimeType,
+      });
+    }
+  }
+
+  if (!sawCapableProvider && isPdf) {
+    throw new Error('PDF AUTOPSY extraction requires a configured PDF-capable provider. Configure GEMINI_API_KEY or upload extracted text.');
+  }
+
+  throw new Error(`No configured provider could process ${fileData.mimeType} for AUTOPSY extraction.`);
+}
+
+export async function routeAudioSynthesis(script: string): Promise<string | null> {
+  if (!process.env.GOOGLE_TTS_API_KEY) return null;
+
+  const plainText = script
+    .split('\n')
+    .filter(l => l.trim().startsWith('ALEX:') || l.trim().startsWith('PRIYA:'))
+    .map(l => l.replace(/^(ALEX:|PRIYA:)\s*/, '').trim())
+    .join(' ... ');
+
+  try {
+    const start = Date.now();
+    const response = await fetch(
+      `https://texttospeech.googleapis.com/v1/text:synthesize?key=${process.env.GOOGLE_TTS_API_KEY}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          input: { text: plainText },
+          voice: {
+            languageCode: 'en-IN',
+            name: 'en-IN-Neural2-A',
+            ssmlGender: 'NEUTRAL',
+          },
+          audioConfig: {
+            audioEncoding: 'MP3',
+            speakingRate: 1.05,
+            pitch: 0,
+          },
+        }),
+        signal: AbortSignal.timeout(45_000),
+      }
+    );
+
+    if (!response.ok) {
+      const err = await response.text().catch(() => '');
+      logger.warn('Google TTS failed', { status: response.status, err });
+      return null;
+    }
+
+    const data = await response.json();
+    Metrics.aiCall('google', 'audio', Date.now() - start, true);
+    return data.audioContent ? `data:audio/mp3;base64,${data.audioContent}` : null;
+  } catch (err: any) {
+    Metrics.aiCall('google', 'audio', 0, false);
+    logger.warn('Google TTS exception', { err: err.message });
+    return null;
+  }
 }

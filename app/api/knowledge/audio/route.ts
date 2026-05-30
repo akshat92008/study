@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { GoogleGenAI } from '@google/genai';
+import { generateText, synthesizeSpeech } from '@/lib/ai/provider-client';
 import { safeError, logger } from '@/lib/utils/logger';
 import { withRateLimit } from '@/lib/middleware/withRateLimit';
 
@@ -8,11 +8,10 @@ async function generatePodcastScript(
   materialTitle: string,
   content: string
 ): Promise<string> {
-  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
-
-  const result = await ai.models.generateContent({
-    model: 'gemini-2.0-flash',
-    contents: `You are writing a podcast script for two hosts: ALEX (conceptual explainer, calm and precise) and PRIYA (curious questioner, asks what a confused student would ask).
+  const text = await generateText(
+    'flash',
+    'You are writing a podcast script for two hosts.',
+    `You are writing a podcast script for two hosts: ALEX (conceptual explainer, calm and precise) and PRIYA (curious questioner, asks what a confused student would ask).
 
 They are discussing study material for a competitive exam student. The tone is conversational, engaging, and educational. This is for a student listening while commuting.
 
@@ -32,59 +31,11 @@ Content to discuss:
 ${content.slice(0, 18000)}
 
 Output only the script. Start immediately with ALEX: or PRIYA:`,
-  });
+    0.6
+  );
 
-  const text = result.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || '';
-  if (!text) throw new Error('Empty script from Gemini');
-  return text;
-}
-
-async function synthesizeWithGoogleTTS(script: string): Promise<string | null> {
-  if (!process.env.GOOGLE_TTS_API_KEY) return null;
-
-  try {
-    // Strip speaker names and flatten to plain speech for TTS
-    const plainText = script
-      .split('\n')
-      .filter(l => l.trim().startsWith('ALEX:') || l.trim().startsWith('PRIYA:'))
-      .map(l => l.replace(/^(ALEX:|PRIYA:)\s*/, '').trim())
-      .join(' ... '); // short pause between speakers
-
-    const response = await fetch(
-      `https://texttospeech.googleapis.com/v1/text:synthesize?key=${process.env.GOOGLE_TTS_API_KEY}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          input: { text: plainText },
-          voice: {
-            languageCode: 'en-IN',
-            name: 'en-IN-Neural2-A',
-            ssmlGender: 'NEUTRAL',
-          },
-          audioConfig: {
-            audioEncoding: 'MP3',
-            speakingRate: 1.05,
-            pitch: 0,
-          },
-        }),
-      }
-    );
-
-    if (!response.ok) {
-      const err = await response.text();
-      logger.warn('Google TTS failed', { status: response.status, err });
-      return null;
-    }
-
-    const data = await response.json();
-    if (!data.audioContent) return null;
-
-    return `data:audio/mp3;base64,${data.audioContent}`;
-  } catch (err: any) {
-    logger.warn('Google TTS exception', { err: err.message });
-    return null;
-  }
+  if (!text?.trim()) throw new Error('Empty podcast script from provider router');
+  return text.trim();
 }
 
 export const POST = withRateLimit('knowledge', async (req, userId) => {
@@ -131,7 +82,7 @@ export const POST = withRateLimit('knowledge', async (req, userId) => {
     const script = await generatePodcastScript(material.title, content);
 
     // Attempt real TTS — returns null if GOOGLE_TTS_API_KEY not set
-    const audioDataUrl = await synthesizeWithGoogleTTS(script);
+    const audioDataUrl = await synthesizeSpeech(script);
 
     return NextResponse.json({
       success: true,

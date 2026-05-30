@@ -25,6 +25,8 @@ function makeSupabaseMock(existingConcept: any = null) {
       select: vi.fn(() => builder),
       eq: vi.fn(() => builder),
       ilike: vi.fn(() => builder),
+      limit: vi.fn(() => builder),
+      in: vi.fn(() => builder),
       update: vi.fn((payload) => {
         operations.push({ table, type: 'update', payload });
         return builder;
@@ -60,6 +62,7 @@ describe('generateKnowledgeUpdate', () => {
         reasoning: 'Confused heat absorbed with work output.',
         correctExplanation: 'Efficiency depends on temperature ratio.',
         marksLost: 4,
+        ocrConfidence: 95,
       },
     ]);
 
@@ -102,6 +105,7 @@ describe('generateKnowledgeUpdate', () => {
         chapter: 'Electrochemistry',
         conceptualGap: 'Nernst equation',
         mistakeCategory: 'calculation_error',
+        ocrConfidence: 95,
       },
     ]);
 

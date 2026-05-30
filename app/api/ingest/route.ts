@@ -5,6 +5,7 @@ import { logger, safeError } from '@/lib/utils/logger';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { validateUploadedFile } from '@/lib/middleware/validateUpload';
+import { handleVisionMessage } from '@/lib/ai/provider-client';
 
 import pdfParse from 'pdf-parse';
 
@@ -81,34 +82,18 @@ export async function POST(request: NextRequest) {
         }, { status: 422 });
       }
     } else if (mimeType.startsWith('image/')) {
-      // GEMINI OCR: Multimodal extraction for photos of notes/OMR sheets
+      // Multimodal extraction for photos of notes/OMR sheets through the provider router.
       try {
         const arrayBuffer = await file.arrayBuffer();
         const buffer = Buffer.from(arrayBuffer);
-        logger.info(`Extracting Image via OpenRouter: ${title}`);
+        logger.info(`Extracting image text through provider router: ${title}`);
         const base64 = buffer.toString('base64');
-        
-        const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            model: 'google/gemini-2.0-flash-exp:free',
-            messages: [{
-              role: 'user',
-              content: [
-                { type: 'text', text: 'Extract ALL text content from this image. Preserve headings, lists, and structure. Output strictly the extracted text. Do not add conversational filler.' },
-                { type: 'image_url', image_url: { url: `data:${mimeType};base64,${base64}` } }
-              ]
-            }],
-            temperature: 0.1
-          })
-        });
-        
-        const data = await response.json();
-        text = data.choices?.[0]?.message?.content || '';
+        text = await handleVisionMessage(
+          base64,
+          mimeType,
+          'Extract ALL text content from this image. Preserve headings, lists, and structure. Output strictly the extracted text. Do not add conversational filler.',
+          'You are an OCR extraction engine for study materials.'
+        );
       } catch (err) {
         return NextResponse.json({
           error: 'Failed to perform OCR on image.'

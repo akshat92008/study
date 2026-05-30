@@ -37,7 +37,7 @@ describeWithSupabase('MVP Smoke Tests', () => {
       
     expect(error).toBeNull();
     expect(profile).toBeDefined();
-    expect(profile.exam_type).toBe('NEET');
+    expect(profile.exam_type).toBe('neet');
   });
 
   it('2. Global chat creates/reuses one global session', async () => {
@@ -111,16 +111,16 @@ describeWithSupabase('MVP Smoke Tests', () => {
       user_id: userId,
       front: 'Front MVP',
       back: 'Back MVP',
-      due_at: '2026-05-01T00:00:00.000Z',
-      review_count: 0
+      due: '2026-05-01T00:00:00.000Z',
+      reps: 0
     }).select('id').single();
     
     expect(insertErr).toBeNull();
 
     const newDate = '2030-01-01T00:00:00.000Z';
     const { error: updateErr } = await supabase.from('revision_cards').update({
-      due_at: newDate,
-      review_count: 1
+      due: newDate,
+      reps: 1
     }).eq('id', card.id);
 
     expect(updateErr).toBeNull();
@@ -131,8 +131,8 @@ describeWithSupabase('MVP Smoke Tests', () => {
       .eq('id', card.id)
       .single();
       
-    expect(updatedCard.due_at).toBe(newDate);
-    expect(updatedCard.review_count).toBe(1);
+    expect(updatedCard.due).toBe(newDate);
+    expect(updatedCard.reps).toBe(1);
   });
 });
 
@@ -143,5 +143,32 @@ describe('MVP Frontend Logic Smoke Tests', () => {
     
     const cleanContent = sidebarContent.replace(/\{?\/\*.*?\*\/\}/gs, '');
     expect(cleanContent).not.toMatch(/Pulse/i);
+  });
+
+  it('10. AUTOPSY validation rejects fake PDF/image', async () => {
+    const { validateMagicBytesArray } = await import('@/lib/utils/magicBytes');
+    // Fake PDF (doesn't start with %PDF)
+    const fakePdfBytes = new Uint8Array([0x00, 0x01, 0x02, 0x03]);
+    expect(validateMagicBytesArray(fakePdfBytes, 'application/pdf')).toBe(false);
+
+    // Fake JPEG (doesn't start with FF D8 FF)
+    const fakeJpegBytes = new Uint8Array([0x89, 0x50, 0x4E, 0x47]); // This is PNG magic bytes
+    expect(validateMagicBytesArray(fakeJpegBytes, 'image/jpeg')).toBe(false);
+
+    // Fake WEBP (starts with RIFF but missing WEBP at byte 8)
+    const fakeWebpBytes = new Uint8Array([
+      0x52, 0x49, 0x46, 0x46, // RIFF
+      0x00, 0x00, 0x00, 0x00, 
+      0x41, 0x56, 0x49, 0x20  // AVI instead of WEBP
+    ]);
+    expect(validateMagicBytesArray(fakeWebpBytes, 'image/webp')).toBe(false);
+
+    // Valid WEBP
+    const validWebpBytes = new Uint8Array([
+      0x52, 0x49, 0x46, 0x46, // RIFF
+      0x00, 0x00, 0x00, 0x00, 
+      0x57, 0x45, 0x42, 0x50  // WEBP
+    ]);
+    expect(validateMagicBytesArray(validWebpBytes, 'image/webp')).toBe(true);
   });
 });

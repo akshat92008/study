@@ -11,6 +11,19 @@ export interface MINDContext {
     timezone: string;
     targetScore?: string;
   };
+  activeGoal?: {
+    title: string;
+    targetDate?: string | null;
+    progress?: number | null;
+  } | null;
+  currentSessionCard?: {
+    focusTopic?: string | null;
+    subject?: string | null;
+    estimatedMinutes?: number | null;
+    rationale?: string | null;
+  } | null;
+  commandTasks?: Array<{ title: string; subject?: string | null; chapter?: string | null; priority?: string | null }>;
+  recentStudySessions?: Array<{ subject?: string | null; chapter?: string | null; durationMinutes?: number | null }>;
   weakConcepts: Array<{ name: string; subject: string; chapter: string; mastery: string }>;
   recentMistakes: Array<{ chapter: string; category: string; subject: string }>;
   struggles: Array<{ chapter: string; subject: string }>;
@@ -158,6 +171,10 @@ function buildPrompt(ctx: MINDContext, semanticMemories: string[] = [], intent?:
 
   const weakList = ctx.weakConcepts.slice(0, 3).map(c => `${c.name} (${c.mastery})`).join(', ') || 'None identified yet'; // Limit to 3 to save tokens
   const mistakeList = ctx.recentMistakes.slice(0, 2).map(m => `${m.chapter} — ${m.category}`).join('; ') || 'None recorded'; // Limit to 2
+  const commandTaskList = (ctx.commandTasks || []).slice(0, 3).map(t => `${t.title}${t.priority ? ` (${t.priority})` : ''}`).join('; ') || 'None queued';
+  const sessionCard = ctx.currentSessionCard
+    ? `${ctx.currentSessionCard.subject || 'General'} — ${ctx.currentSessionCard.focusTopic || 'Daily focus'} (${ctx.currentSessionCard.estimatedMinutes || 25} min)`
+    : 'No active card loaded';
   const emotionalBlock = getEmotionalAdaptationBlock(ctx.emotionalState);
   
   const effectiveLearningStyle = getEffectiveLearningStyle(ctx.studentModel, ctx.profile.learningStyle);
@@ -269,11 +286,14 @@ STUDENT PROFILE
 Name: ${ctx.profile.name}
 Exam: ${ctx.profile.examType}
 ${daysToExam ? `Days to exam: ${daysToExam}` : 'No exam date set yet'}
+Active goal: ${ctx.activeGoal?.title || 'No active goal set'}
 Current level: ${ctx.profile.currentLevel}
 Learning style: ${ctx.profile.learningStyle}
 Active streak: ${ctx.profile.streakDays} days
 Mastery: ${ctx.masteryStats.masteryPercent}% of syllabus (${ctx.masteryStats.masteredCount}/${ctx.masteryStats.totalConcepts} concepts)
 Overdue flashcards: ${ctx.overdueCards}
+Today's session card: ${sessionCard}
+COMMAND tasks: ${commandTaskList}
 
 WEAK AREAS: ${weakList}
 RECENT MISTAKE PATTERNS: ${mistakeList}

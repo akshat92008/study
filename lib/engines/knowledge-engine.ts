@@ -1,7 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/utils/logger';
-
-const MASTERY_ORDER = ['not_started', 'exposed', 'developing', 'proficient', 'mastered', 'automated'];
+import { resolveConcept } from '@/lib/engines/concept-resolver';
 
 const CATEGORY_MAP: Record<string, string> = {
   conceptual_gap: 'conceptual',
@@ -26,71 +25,25 @@ function mapMistakeCategory(category: unknown): string {
   return CATEGORY_MAP[category] ?? category;
 }
 
-function lowerMastery(current: unknown): string {
-  const currentIndex = MASTERY_ORDER.indexOf(typeof current === 'string' ? current : 'not_started');
-  if (currentIndex <= 1) return 'exposed';
-  return MASTERY_ORDER[currentIndex - 1];
-}
-
-async function findOrCreateConcept(supabase: any, userId: string, question: any): Promise<string | null> {
+async function resolveAutopsyConcept(supabase: any, userId: string, question: any): Promise<string | null> {
   const subject = normalizeText(question.subject, 'General');
   const chapter = normalizeText(question.chapter, subject);
   const conceptName = normalizeText(question.conceptualGap, chapter);
 
-  const { data: existing } = await supabase
-    .from('concepts')
-    .select('id, mastery, times_incorrect')
-    .eq('user_id', userId)
-    .ilike('subject', subject)
-    .ilike('chapter', chapter)
-    .ilike('name', conceptName)
-    .maybeSingle();
+  const resolution = await resolveConcept({
+    userId,
+    subject,
+    chapter,
+    topic: conceptName,
+    questionText: question.questionText ?? null,
+    sourceType: 'autopsy',
+    confidence: typeof question.ocrConfidence === 'number'
+      ? Math.max(0.1, Math.min(1, question.ocrConfidence / 100))
+      : 0.75,
+    client: supabase,
+  });
 
-  if (existing?.id) {
-    await supabase
-      .from('concepts')
-      .update({
-        mastery: lowerMastery(existing.mastery),
-        confidence: 'low',
-        times_incorrect: (existing.times_incorrect || 0) + 1,
-        forgetting_probability: 1,
-        retention_strength: 0,
-        updated_at: new Date().toISOString(),
-      })
-      .eq('id', existing.id);
-
-    return existing.id;
-  }
-
-  const { data: created, error } = await supabase
-    .from('concepts')
-    .insert({
-      user_id: userId,
-      name: conceptName,
-      subject,
-      chapter,
-      topic: conceptName === chapter ? '' : conceptName,
-      mastery: 'exposed',
-      confidence: 'low',
-      times_incorrect: 1,
-      forgetting_probability: 1,
-      retention_strength: 0,
-    })
-    .select('id')
-    .single();
-
-  if (error) {
-    logger.error('Failed to create concept from autopsy gap', {
-      userId,
-      subject,
-      chapter,
-      conceptName,
-      error,
-    });
-    return null;
-  }
-
-  return created?.id ?? null;
+  return resolution.conceptId;
 }
 
 export async function generateKnowledgeUpdate(
@@ -107,7 +60,7 @@ export async function generateKnowledgeUpdate(
     const subject = normalizeText(question.subject, 'General');
     const chapter = normalizeText(question.chapter, subject);
     const topic = normalizeText(question.conceptualGap, '');
-    const conceptId = await findOrCreateConcept(supabase, userId, question);
+    const conceptId = await resolveAutopsyConcept(supabase, userId, question);
 
     const { error } = await supabase.from('mistakes').insert({
       user_id: userId,

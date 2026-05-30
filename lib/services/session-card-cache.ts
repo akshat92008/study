@@ -1,8 +1,15 @@
 import { createAdminClient } from '@/lib/supabase/admin';
 import { logger } from '@/lib/utils/logger';
+import { bumpLearnerStateVersion } from '@/lib/services/learner-state-version';
 
-export async function invalidateSessionCards(userId: string, client?: any): Promise<void> {
+export async function invalidateSessionCards(
+  userId: string,
+  client?: any,
+  reason = 'session_card_invalidation'
+): Promise<void> {
   const supabase = client ?? createAdminClient();
+  await bumpLearnerStateVersion(userId, reason, null, supabase);
+
   const today = new Date();
   const tomorrow = new Date(Date.now() + 86_400_000);
   const dates = [

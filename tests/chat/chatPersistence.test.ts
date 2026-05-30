@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 
 vi.mock('@/lib/supabase/server', () => ({ createClient: vi.fn() }));
-vi.mock('@/lib/ai/gemini', () => ({ generateJSON: vi.fn(), getEmbedding: vi.fn() }));
+vi.mock('@/lib/ai/provider-client', () => ({ generateJSON: vi.fn(), getEmbedding: vi.fn() }));
 vi.mock('@/lib/ai/router', () => ({
   routeStreamGeneration: vi.fn(),
   routeVisionCall: vi.fn(),

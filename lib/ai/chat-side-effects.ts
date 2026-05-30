@@ -2,7 +2,6 @@ import { SupabaseClient } from '@supabase/supabase-js';
 import { logger } from '@/lib/utils/logger';
 import { syncStudentModel } from '@/lib/engines/inference-engine';
 import { ChatMemoryService } from '@/lib/services/chatMemoryService';
-import { EventDispatcher } from '@/lib/events/orchestrator';
 import { captureSentryException } from '@/lib/telemetry/sentry-runtime';
 
 export interface ChatSideEffectsInput {
@@ -46,12 +45,8 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
       const isRoutineRefresh = totalMessageCount > 10 && totalMessageCount % 25 === 0;
 
       if (isEarlyFingerprint || isRoutineRefresh) {
-        await EventDispatcher.publish({
-          user_id: userId,
-          type: 'STUDENT_MODEL_SYNC_REQUESTED',
-          data: { isEarlyFingerprint },
-          metadata: { source: 'chat_side_effects' },
-          idempotency_key: `sync:${userId}:${totalMessageCount}`
+        await syncStudentModel(userId, isEarlyFingerprint, supabase).catch((err) => {
+          logger.warn('SideEffect: Student model sync failed', err);
         });
       }
     }
@@ -62,13 +57,7 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
   // 2.5. Session Summarization Trigger
   try {
     if (history && history.length > 10 && history.length % 5 === 0) {
-      await EventDispatcher.publish({
-        user_id: userId,
-        type: 'CHAT_SESSION_SUMMARIZE',
-        data: { sessionId, messageCount: history.length },
-        metadata: { source: 'chat_side_effects' },
-        idempotency_key: `summarize:${sessionId}:${history.length}`
-      });
+      logger.info('SideEffect: chat summary due', { sessionId, messageCount: history.length });
     }
   } catch (err) {
     logger.warn('SideEffect: Summarization trigger failed', err);
@@ -112,6 +101,7 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
       const estimatedMinutes = Math.max(5, Math.round(messageCount * 1.5));
       const isSessionComplete = sessionTurnsCount ? (sessionTurnsCount >= 6) : (history && history.length >= 10);
 
+      const { EventDispatcher } = await import('@/lib/events/orchestrator');
       await EventDispatcher.publish({
         user_id: userId,
         type: 'MIND_TUTOR_COMPLETED',

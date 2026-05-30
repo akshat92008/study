@@ -1,5 +1,6 @@
 export const EventTypes = {
   MIND_MESSAGE_CREATED: 'MIND_MESSAGE_CREATED',
+  CHAT_MESSAGE_PROCESSED: 'CHAT_MESSAGE_PROCESSED',
   MIND_TUTOR_COMPLETED: 'MIND_TUTOR_COMPLETED',
   AUTOPSY_MOCK_PROCESSED: 'AUTOPSY_MOCK_PROCESSED',
   ATLAS_MASTERY_UPDATED: 'ATLAS_MASTERY_UPDATED',
@@ -30,6 +31,7 @@ export enum CognitionEventType {
   StudySessionCompleted = 'STUDY_SESSION_COMPLETED',
   ConceptDiscovered = 'CONCEPT_DISCOVERED',
   IngestionDocumentProcessed = 'INGESTION_DOCUMENT_PROCESSED',
+  ChatMessageProcessed = 'CHAT_MESSAGE_PROCESSED',
 
   // Legacy worker events retained for the existing background worker tests.
   MasteryChanged = 'mastery_changed',

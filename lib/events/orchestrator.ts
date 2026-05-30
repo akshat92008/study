@@ -2,6 +2,7 @@
 import { createAdminClient } from '@/lib/supabase/admin';
 import { getCorrelationId } from '@/lib/telemetry/correlation';
 import { logger } from '@/lib/utils/logger';
+import { validateEventEnvelope } from './schema';
 export const EVENT_CONSUMERS = [
   'learning_state_engine',
   'atlas_engine',
@@ -12,6 +13,56 @@ export const EVENT_CONSUMERS = [
 ] as const;
 
 export type EventConsumer = typeof EVENT_CONSUMERS[number];
+
+export const EVENT_CONSUMER_MATRIX = {
+  CHAT_MESSAGE_PROCESSED: ['chat_side_effect_engine'],
+  AUTOPSY_MOCK_PROCESSED: [
+    'atlas_engine',
+    'memory_engine',
+    'command_engine',
+    'learning_state_engine',
+  ],
+  COMMAND_SESSION_COMPLETED: [
+    'atlas_engine',
+    'memory_engine',
+    'command_engine',
+    'learning_state_engine',
+  ],
+  STUDY_SESSION_COMPLETED: [
+    'atlas_engine',
+    'memory_engine',
+    'command_engine',
+    'learning_state_engine',
+  ],
+  MIND_TUTOR_COMPLETED: [
+    'atlas_engine',
+    'memory_engine',
+    'command_engine',
+    'learning_state_engine',
+  ],
+  MEMORY_CARD_REVIEWED: ['learning_state_engine', 'atlas_engine'],
+  COMMAND_TASK_COMPLETED: ['learning_state_engine'],
+  COMMAND_TASK_DELAYED: ['learning_state_engine'],
+  ATLAS_MASTERY_UPDATED: ['learning_state_engine'],
+  MEMORY_CARD_CREATED: ['learning_state_engine'],
+  COMMAND_SESSION_CREATED: ['learning_state_engine'],
+  CONCEPT_DISCOVERED: ['concept_expansion_engine'],
+  INGESTION_DOCUMENT_PROCESSED: ['learning_state_engine'],
+  MIND_MESSAGE_CREATED: ['learning_state_engine'],
+} as const satisfies Record<string, readonly EventConsumer[]>;
+
+export type RoutedEventType = keyof typeof EVENT_CONSUMER_MATRIX;
+
+export function getConsumersForEvent(type: string): readonly EventConsumer[] {
+  return EVENT_CONSUMER_MATRIX[type as RoutedEventType] ?? [];
+}
+
+export function assertEventConsumerRoute(type: string, consumer: string): asserts consumer is EventConsumer {
+  const expected = getConsumersForEvent(type);
+  if (!expected.includes(consumer as EventConsumer)) {
+    throw new Error(`Event routing error: ${consumer} is not registered for ${type}`);
+  }
+}
 
 type PublishInput = {
   userId?: string;
@@ -32,12 +83,23 @@ export class EventDispatcher {
     const userId = input.userId ?? input.user_id;
     if (!userId) throw new Error('Event publish requires userId');
 
+    const consumers = getConsumersForEvent(input.type);
+    if (consumers.length === 0) {
+      throw new Error(`Unsupported event type: ${input.type}`);
+    }
+
     const idempotencyKey = input.idempotencyKey ?? input.idempotency_key ?? crypto.randomUUID();
     const metadata = {
       ...(input.metadata ?? {}),
       source: input.source ?? input.metadata?.source ?? 'system_publish',
       trace_id: getCorrelationId() ?? crypto.randomUUID(),
     };
+
+    validateEventEnvelope({
+      user_id: userId,
+      type: input.type,
+      data: input.data ?? input.payload ?? {},
+    });
 
     // Use the RPC to atomically insert into event_queue and create consumer_locks
     const { data: eventId, error } = await supabase.rpc('create_event_with_consumers', {

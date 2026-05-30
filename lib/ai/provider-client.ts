@@ -11,6 +11,8 @@ import {
   routeStreamGeneration,
   routeEmbedding,
   routeVisionCall,
+  routeMultimodalJSONExtraction,
+  routeAudioSynthesis,
 } from './router';
 
 export const MODELS = {
@@ -75,4 +77,16 @@ export async function handleVisionMessage(
   systemPrompt: string
 ): Promise<string> {
   return routeVisionCall(systemPrompt, imageBase64, imageMimeType, message);
+}
+
+export async function generateMultimodalJSON<T>(
+  systemPrompt: string,
+  fileData: { mimeType: string; data: string },
+  schema?: z.ZodSchema<T>
+): Promise<T> {
+  return routeMultimodalJSONExtraction<T>(systemPrompt, fileData, schema);
+}
+
+export async function synthesizeSpeech(script: string): Promise<string | null> {
+  return routeAudioSynthesis(script);
 }

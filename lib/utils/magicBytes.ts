@@ -1,5 +1,5 @@
 export async function validateMagicBytes(file: File, expectedMime: string): Promise<boolean> {
-  const arr = new Uint8Array(await file.slice(0, 4).arrayBuffer());
+  const arr = new Uint8Array(await file.slice(0, 12).arrayBuffer());
   return validateMagicBytesArray(arr, expectedMime);
 }
 
@@ -14,8 +14,10 @@ export function validateMagicBytesArray(arr: Uint8Array, expectedMime: string): 
     case 'image/png':
       return hex.startsWith('89504E47');
     case 'image/webp':
-      // RIFF....WEBP. Magic bytes for WEBP start with RIFF
-      return hex.startsWith('52494646');
+      // WebP must be RIFF....WEBP, not just any RIFF container.
+      return arr.length >= 12 &&
+        hex.startsWith('52494646') &&
+        Array.from(arr.slice(8, 12)).map(b => String.fromCharCode(b)).join('') === 'WEBP';
     default:
       // Text formats don't have strict magic bytes, assume valid for now
       return true;

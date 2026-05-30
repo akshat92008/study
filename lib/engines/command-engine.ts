@@ -4,6 +4,7 @@ import { generateJSON } from '@/lib/ai/provider-client';
 import { logger } from '@/lib/utils/logger';
 import { z } from 'zod';
 import { invalidateSessionCards } from '@/lib/services/session-card-cache';
+import { resolveConcept } from '@/lib/engines/concept-resolver';
 
 export interface GoalInput {
   title: string;
@@ -519,6 +520,16 @@ export class CommandConsumer {
     for (const { subject, chapter } of chapters.values()) {
       if (inserted >= 3) break;
 
+      const resolution = await resolveConcept({
+        userId,
+        subject,
+        chapter,
+        topic: chapter,
+        sourceType: 'autopsy',
+        confidence: 0.8,
+        client: supabase,
+      });
+
       const { count } = await supabase
         .from('study_tasks')
         .select('*', { count: 'exact', head: true })
@@ -530,6 +541,7 @@ export class CommandConsumer {
 
       await supabase.from('study_tasks').insert({
         user_id: userId,
+        concept_id: resolution.conceptId,
         title: `Remediate: ${chapter}`,
         subject,
         chapter,

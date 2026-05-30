@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { GoogleGenAI } from '@google/genai';
+import { generateText } from '@/lib/ai/provider-client';
 import { safeError, logger } from '@/lib/utils/logger';
 import { withRateLimit } from '@/lib/middleware/withRateLimit';
 
@@ -36,11 +36,10 @@ export const POST = withRateLimit('knowledge', async (req, userId) => {
     const fullText = chunks.map(c => c.chunk_text).join('\n\n');
     const truncatedText = fullText.slice(0, 80000); // ~20k tokens safety cap
 
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
-    const model = ai.models.generateContent({
-      model: 'gemini-2.0-flash',
-      contents: `You are an expert curriculum designer for competitive exam preparation. 
-Given the following raw study material, generate a highly structured, comprehensive Markdown Study Guide.
+    const guideText = await generateText(
+      'pro',
+      'You are an expert curriculum designer for competitive exam preparation.',
+      `Given the following raw study material, generate a highly structured, comprehensive Markdown Study Guide.
 
 Include:
 - A high-level Executive Summary (3-5 sentences)
@@ -56,10 +55,8 @@ Material Content:
 ${truncatedText}
 
 Output only valid Markdown. No preamble.`,
-    });
-
-    const result = await model;
-    const guideText = result.candidates?.[0]?.content?.parts?.[0]?.text || '';
+      0.4
+    );
 
     if (!guideText) {
       return NextResponse.json({ error: 'Guide generation failed. Please try again.' }, { status: 500 });

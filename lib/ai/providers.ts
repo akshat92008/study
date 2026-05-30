@@ -20,8 +20,26 @@ export type TaskType =
   | 'json'
   | 'stream'
   | 'embedding'
-  | 'vision';
+  | 'vision'
+  | 'pdf'
+  | 'classification'
+  | 'autopsy'
+  | 'tutor'
+  | 'audio';
 
+export interface ProviderCapabilities {
+  supportsText: boolean;
+  supportsStreaming: boolean;
+  supportsJson: boolean;
+  supportsVision: boolean;
+  supportsPdf: boolean;
+  supportsEmbeddings: boolean;
+  supportsAudio: boolean;
+  maxInputBytes?: number;
+  maxInputTokens?: number;
+  costTier?: 'free' | 'metered' | 'paid';
+  cooldownMs?: number;
+}
 
 
 export interface ProviderConfig {
@@ -32,13 +50,38 @@ export interface ProviderConfig {
     quality: string;
     fast: string;
   };
+  capabilities: ProviderCapabilities;
+  supportsText: boolean;
   supportsStreaming: boolean;
+  supportsJson: boolean;
   supportsVision: boolean;
+  supportsPdf: boolean;
   supportsEmbeddings: boolean;
+  supportsAudio: boolean;
+  maxInputBytes?: number;
+  maxInputTokens?: number;
+  costTier?: 'free' | 'metered' | 'paid';
+  cooldownMs?: number;
   embeddingModel?: string;
   embeddingDimensions?: number;
   // Some providers need a custom auth header format
   authHeader?: 'bearer' | 'hf-token';
+}
+
+function capabilities(input: Partial<ProviderCapabilities>): ProviderCapabilities {
+  return {
+    supportsText: input.supportsText ?? true,
+    supportsStreaming: input.supportsStreaming ?? false,
+    supportsJson: input.supportsJson ?? true,
+    supportsVision: input.supportsVision ?? false,
+    supportsPdf: input.supportsPdf ?? false,
+    supportsEmbeddings: input.supportsEmbeddings ?? false,
+    supportsAudio: input.supportsAudio ?? false,
+    maxInputBytes: input.maxInputBytes,
+    maxInputTokens: input.maxInputTokens,
+    costTier: input.costTier ?? 'free',
+    cooldownMs: input.cooldownMs ?? 15_000,
+  };
 }
 
 export const REQUIRED_ENV_VARS: Record<ProviderName, string[]> = {
@@ -62,9 +105,20 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
       baseUrl: 'https://api.cerebras.ai/v1',
       apiKey: process.env.CEREBRAS_API_KEY,
       models: { quality: 'llama-3.3-70b', fast: 'llama3.1-8b' },
+      capabilities: capabilities({
+        supportsStreaming: true,
+        maxInputTokens: 8192,
+        costTier: 'free',
+      }),
+      supportsText: true,
       supportsStreaming: true,
+      supportsJson: true,
       supportsVision: false,
+      supportsPdf: false,
       supportsEmbeddings: false,
+      supportsAudio: false,
+      maxInputTokens: 8192,
+      costTier: 'free',
       authHeader: 'bearer',
     },
 
@@ -73,9 +127,20 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
       baseUrl: 'https://api.cerebras.ai/v1',
       apiKey: process.env.CEREBRAS_API_KEY_2 || process.env.CEREBRAS_API_KEY,
       models: { quality: 'llama-3.3-70b', fast: 'llama3.1-8b' },
+      capabilities: capabilities({
+        supportsStreaming: true,
+        maxInputTokens: 8192,
+        costTier: 'free',
+      }),
+      supportsText: true,
       supportsStreaming: true,
+      supportsJson: true,
       supportsVision: false,
+      supportsPdf: false,
       supportsEmbeddings: false,
+      supportsAudio: false,
+      maxInputTokens: 8192,
+      costTier: 'free',
       authHeader: 'bearer',
     },
 
@@ -87,9 +152,20 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
         quality: 'Meta-Llama-3.1-70B-Instruct',
         fast: 'Meta-Llama-3.1-8B-Instruct',
       },
+      capabilities: capabilities({
+        supportsStreaming: true,
+        maxInputTokens: 8192,
+        costTier: 'free',
+      }),
+      supportsText: true,
       supportsStreaming: true,
+      supportsJson: true,
       supportsVision: false,
+      supportsPdf: false,
       supportsEmbeddings: false,
+      supportsAudio: false,
+      maxInputTokens: 8192,
+      costTier: 'free',
       // No embeddings for SambaNova, keep undefined
       embeddingModel: undefined,
       embeddingDimensions: undefined,
@@ -104,9 +180,21 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
         quality: 'llama-3.3-70b-versatile',
         fast: 'llama-3.1-8b-instant',
       },
+      capabilities: capabilities({
+        supportsStreaming: true,
+        supportsVision: true,
+        maxInputTokens: 8192,
+        costTier: 'free',
+      }),
+      supportsText: true,
       supportsStreaming: true,
+      supportsJson: true,
       supportsVision: true,
+      supportsPdf: false,
       supportsEmbeddings: false,
+      supportsAudio: false,
+      maxInputTokens: 8192,
+      costTier: 'free',
       authHeader: 'bearer',
     },
 
@@ -115,9 +203,20 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
       baseUrl: 'https://api.groq.com/openai/v1',
       apiKey: process.env.GROQ_API_KEY_2 || process.env.GROQ_API_KEY,
       models: { quality: 'llama-3.1-8b-instant', fast: 'llama-3.1-8b-instant' },
+      capabilities: capabilities({
+        supportsStreaming: true,
+        maxInputTokens: 8192,
+        costTier: 'free',
+      }),
+      supportsText: true,
       supportsStreaming: true,
+      supportsJson: true,
       supportsVision: false,
+      supportsPdf: false,
       supportsEmbeddings: false,
+      supportsAudio: false,
+      maxInputTokens: 8192,
+      costTier: 'free',
       authHeader: 'bearer',
     },
 
@@ -129,9 +228,22 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
         quality: '@cf/meta/llama-3.3-70b-instruct-fp8-fast',
         fast: '@cf/meta/llama-3.1-8b-instruct',
       },
+      capabilities: capabilities({
+        supportsStreaming: true,
+        supportsVision: true,
+        supportsEmbeddings: true,
+        maxInputTokens: 8192,
+        costTier: 'free',
+      }),
+      supportsText: true,
       supportsStreaming: true,
+      supportsJson: true,
       supportsVision: true,
+      supportsPdf: false,
       supportsEmbeddings: true,
+      supportsAudio: false,
+      maxInputTokens: 8192,
+      costTier: 'free',
       embeddingModel: '@cf/baai/bge-base-en-v1.5',
       embeddingDimensions: 768,
     },
@@ -141,9 +253,26 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
       baseUrl: 'https://generativelanguage.googleapis.com/v1beta',
       apiKey: process.env.GEMINI_API_KEY,
       models: { quality: 'gemini-2.0-flash', fast: 'gemini-2.0-flash' },
+      capabilities: capabilities({
+        supportsStreaming: true,
+        supportsVision: true,
+        supportsPdf: true,
+        supportsEmbeddings: true,
+        supportsAudio: true,
+        maxInputBytes: 20 * 1024 * 1024,
+        maxInputTokens: 1_000_000,
+        costTier: 'metered',
+      }),
+      supportsText: true,
       supportsStreaming: true,
+      supportsJson: true,
       supportsVision: true,
+      supportsPdf: true,
       supportsEmbeddings: true,
+      supportsAudio: true,
+      maxInputBytes: 20 * 1024 * 1024,
+      maxInputTokens: 1_000_000,
+      costTier: 'metered',
       embeddingModel: 'text-embedding-004',
       embeddingDimensions: 768,
     },
@@ -153,9 +282,22 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
       baseUrl: 'https://api.openai.com/v1',
       apiKey: process.env.OPENAI_API_KEY,
       models: { quality: 'gpt-4o-mini', fast: 'gpt-4o-mini' },
+      capabilities: capabilities({
+        supportsStreaming: true,
+        supportsVision: true,
+        supportsEmbeddings: true,
+        maxInputTokens: 128_000,
+        costTier: 'paid',
+      }),
+      supportsText: true,
       supportsStreaming: true,
+      supportsJson: true,
       supportsVision: true,
+      supportsPdf: false,
       supportsEmbeddings: true,
+      supportsAudio: false,
+      maxInputTokens: 128_000,
+      costTier: 'paid',
       embeddingModel: 'text-embedding-3-small',
       embeddingDimensions: 768,
       authHeader: 'bearer',
@@ -191,6 +333,17 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
     'openai',        // PAID FALLBACK
   ],
 
+  tutor: [
+    'cerebras',
+    'cerebras_fallback',
+    'groq_compound',
+    'groq_gemma',
+    'cloudflare',
+    'sambanova',
+    'google',
+    'openai',
+  ],
+
   stream: [
     'cerebras',
     'cerebras_fallback',
@@ -213,6 +366,24 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
     'openai',
   ],
 
+  classification: [
+    'groq_compound',
+    'cerebras',
+    'cerebras_fallback',
+    'sambanova',
+    'groq_gemma',
+    'cloudflare',
+    'google',
+    'openai',
+  ],
+
+  autopsy: [
+    'groq_compound',
+    'cloudflare',
+    'google',
+    'openai',
+  ],
+
   embedding: [
     'cloudflare',  // Free bge-base.
     'google',      // Last resort embedding.
@@ -224,5 +395,13 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
     'cloudflare',  // llama-3.2-11b-vision free.
     'google',      // gemini-2.0-flash vision — last resort.
     'openai',
+  ],
+
+  pdf: [
+    'google',
+  ],
+
+  audio: [
+    'google',
   ],
 };
