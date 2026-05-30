@@ -414,6 +414,11 @@ grant execute on function public.ingest_mock_autopsy(
 alter table public.autopsy_questions
   add column if not exists updated_at timestamptz default now();
 
+-- Ensure columns exist before creating indexes
+alter table public.mock_autopsies
+  add column if not exists idempotency_key text,
+  add column if not exists trace_id uuid;
+
 -- Ensure the unique index for idempotency on mock_autopsies exists
 create unique index if not exists idx_mock_autopsies_idempotency_key
   on public.mock_autopsies(idempotency_key)

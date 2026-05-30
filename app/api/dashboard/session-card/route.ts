@@ -307,7 +307,7 @@ export async function GET(): Promise<NextResponse> {
       const response: SessionCardResponse = {
         hasCard: false,
         card: null,
-        sourceSignals: buildSignals(selection, goalRes.data),
+        sourceSignals: buildSignals(selection, goalRes.data, weakConceptsRes.data?.length ?? 0),
         generatedAt,
         learnerStateVersion,
         needsOnboarding: true,
@@ -425,7 +425,7 @@ export async function GET(): Promise<NextResponse> {
     const response: SessionCardResponse = {
       hasCard: true,
       card,
-      sourceSignals: buildSignals(selection, goalRes.data),
+      sourceSignals: buildSignals(selection, goalRes.data, weakConceptsRes.data?.length ?? 0),
       generatedAt,
       learnerStateVersion,
       needsOnboarding: false,
@@ -442,12 +442,13 @@ export async function GET(): Promise<NextResponse> {
 
 function buildSignals(
   sel: SelectorOutput,
-  goal: { title: string } | null | undefined
+  goal: { title: string } | null | undefined,
+  weakConceptCount = 0
 ): SourceSignals {
   return {
     overdueCardCount: sel.dueCardCount,
     recentMistakeCount: sel.mistakeCount,
-    weakConceptCount: sel.weakConcepts?.length ?? 0,
+    weakConceptCount,
     hasActiveGoal: Boolean(goal),
     daysToExam: sel.daysToExam,
     priorityBucket: sel.priority,

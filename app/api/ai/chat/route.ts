@@ -421,9 +421,9 @@ export async function POST(req: NextRequest) {
         if (['AUTOPSY', 'ANALYTICS', 'ATLAS', 'FLASHCARDS'].includes(intent.intent)) {
           const routeMessages: Record<string, string> = {
             AUTOPSY: "Opening **AUTOPSY** — upload your mock test PDF or photo. I'll diagnose every wrong answer by root cause and show you your recoverable score.",
-            FLASHCARDS: `You have **${mindContext?.overdueCards || 0}** cards due today. Opening your revision queue now.`,
+            FLASHCARDS: `You have **${mindContext?.overdueCardsCount || 0}** cards due today. Opening your revision queue now.`,
             ATLAS: `Your knowledge map is at **${mindContext?.masteryStats?.masteryPercent || 0}%** mastery. Opening ATLAS now.`,
-            ANALYTICS: `Opening your performance dashboard. You are currently at **${mindContext?.masteryStats?.masteryPercent || 0}%** overall mastery with **${mindContext?.overdueCards || 0}** cards due.`,
+            ANALYTICS: `Opening your performance dashboard. You are currently at **${mindContext?.masteryStats?.masteryPercent || 0}%** overall mastery with **${mindContext?.overdueCardsCount || 0}** cards due.`,
           };
           const msg = routeMessages[intent.intent] || 'Opening that for you now...';
           controller.enqueue(encoder.encode(msg));

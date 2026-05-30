@@ -15,13 +15,16 @@ vi.mock('@/lib/supabase/server', () => ({
   })),
 }));
 
-// Mock GoogleGenAI
-vi.mock('@google/genai', () => ({
-  GoogleGenAI: vi.fn(() => ({
-    models: {
-      generateContent: vi.fn().mockResolvedValue({ text: 'Mock coaching response' }),
-    },
-  })),
+vi.mock('@/lib/ai/provider-client', () => ({
+  generateText: vi.fn().mockResolvedValue('Mock coaching response'),
+}));
+
+vi.mock('@/lib/ai/cost-guard', () => ({
+  reserveBudgetForModelCall: vi.fn().mockResolvedValue({ reservationId: 'reservation-1' }),
+  budgetExceededResponse: vi.fn(),
+  budgetUnavailableResponse: vi.fn(),
+  isBudgetExceeded: vi.fn().mockReturnValue(false),
+  isBudgetUnavailable: vi.fn().mockReturnValue(false),
 }));
 
 test('revision-coach route emits requestId and returns coaching', async () => {

@@ -33,7 +33,12 @@ export type InvalidationReason =
   | 'revision_cards_generated'
   | 'mistake_revision_card_created'
   | 'revision_card_created'
-  | 'revision_repeated_failure_task_created';
+  | 'revision_repeated_failure_task_created'
+  | 'concept_mastery_recomputed'
+  | 'chat_replan_removed_tasks'
+  | 'chat_replan_lightened_intensity'
+  | 'chat_replan_added_recovery_break'
+  | 'chat_planner_tasks_updated';
 
 export interface InvalidateOptions {
   /**

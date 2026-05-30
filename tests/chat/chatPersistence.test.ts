@@ -42,9 +42,16 @@ describe('chat persistence helpers', () => {
     const updated: any[] = [];
     const supabase = {
       from: vi.fn((table: string) => ({
-        insert: vi.fn(async (row: any) => {
+        insert: vi.fn((row: any) => {
           inserted.push({ table, row });
-          return { error: null };
+          return {
+            select: vi.fn(() => ({
+              single: vi.fn(async () => ({
+                data: { id: `${row.role}-message-id` },
+                error: null,
+              })),
+            })),
+          };
         }),
         update: vi.fn((row: any) => {
           updated.push({ table, row });

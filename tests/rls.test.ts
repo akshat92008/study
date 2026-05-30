@@ -43,7 +43,13 @@ describe('Row Level Security migration invariants', () => {
   });
 
   it('hardens client-callable security-definer RPCs against cross-user calls', () => {
-    for (const functionName of ['complete_study_session', 'ingest_mock_autopsy', 'ingest_autopsy_document']) {
+    for (const functionName of [
+      'complete_study_session',
+      'ingest_mock_autopsy',
+      'ingest_autopsy_document',
+      'complete_daily_session_card',
+      'invalidate_session_card',
+    ]) {
       const matches = Array.from(sql.matchAll(new RegExp(`create or replace function public\\.${functionName}[\\s\\S]*?\\$\\$ language plpgsql`, 'gi')));
       const finalDefinition = matches.at(-1)?.[0] ?? '';
       expect(finalDefinition).toMatch(/auth\.uid\(\) is null or auth\.uid\(\) <> p_user_id|current_setting\('request\.jwt\.claim\.role', true\) <> 'service_role'/i);

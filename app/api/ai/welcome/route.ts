@@ -47,10 +47,10 @@ export async function GET() {
       reservation = await reserveBudgetForModelCall(user.id, 'welcome', 'fast', 250, 100);
     } catch (err) {
       return NextResponse.json({
-        message: `Hey — ${ctx.overdueCards > 0 ? `${ctx.overdueCards} cards are overdue.` : 'ready when you are.'}`,
+        message: `Hey — ${ctx.overdueCardsCount > 0 ? `${ctx.overdueCardsCount} cards are overdue.` : 'ready when you are.'}`,
         isFirstTime: false,
         streakDays: ctx.profile.streakDays,
-        overdueCards: ctx.overdueCards,
+        overdueCards: ctx.overdueCardsCount,
         masteryPercent: ctx.masteryStats.masteryPercent,
       });
     }
@@ -62,7 +62,7 @@ Student: ${ctx.profile.name}
 Exam: ${ctx.profile.examType}
 Days to exam: ${daysToExam || 'Not set'}
 Active streak: ${ctx.profile.streakDays} days
-Overdue flashcards: ${ctx.overdueCards}
+Overdue flashcards: ${ctx.overdueCardsCount}
 Mastery: ${ctx.masteryStats.masteryPercent}%
 Weak areas: ${ctx.weakConcepts.slice(0, 3).map(c => c.name).join(', ') || 'None identified yet'}
 Emotional state: ${ctx.emotionalState}
@@ -86,10 +86,10 @@ Return ONLY the message. No explanation. No quotes around it.`;
     const message = await routeTextGeneration('chat', 'You are a concise, warm AI tutor. Respond with a single sentence.', prompt, 0.8, 150, reservation.reservationId);
 
     return NextResponse.json({
-      message: message?.trim() || `Hey — ${ctx.overdueCards > 0 ? `${ctx.overdueCards} cards are overdue.` : 'ready when you are.'}`,
+      message: message?.trim() || `Hey — ${ctx.overdueCardsCount > 0 ? `${ctx.overdueCardsCount} cards are overdue.` : 'ready when you are.'}`,
       isFirstTime: false,
       streakDays: ctx.profile.streakDays,
-      overdueCards: ctx.overdueCards,
+      overdueCards: ctx.overdueCardsCount,
       masteryPercent: ctx.masteryStats.masteryPercent,
     });
 

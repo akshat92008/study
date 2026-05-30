@@ -20,6 +20,7 @@
 
 import { createAdminClient } from '@/lib/supabase/admin';
 import { logger } from '@/lib/utils/logger';
+import { NextResponse } from 'next/server';
 
 // ─── TYPES ───────────────────────────────────────────────────────────────────
 
@@ -431,7 +432,7 @@ export function isBudgetUnavailable(err: unknown): err is BudgetSystemUnavailabl
 }
 
 export function budgetExceededResponse() {
-  return Response.json(
+  return NextResponse.json(
     {
       error: 'Daily AI budget exceeded',
       message:
@@ -443,7 +444,7 @@ export function budgetExceededResponse() {
 }
 
 export function budgetUnavailableResponse() {
-  return Response.json(
+  return NextResponse.json(
     {
       error: 'AI usage limit system is temporarily unavailable. Please try again shortly.',
       code: 'BUDGET_SYSTEM_UNAVAILABLE',

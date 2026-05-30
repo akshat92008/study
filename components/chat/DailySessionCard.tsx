@@ -2,18 +2,11 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Play, Flame, Brain, Clock, Target, TrendingUp, BookOpen, CheckCircle2, Square } from 'lucide-react';
-
-interface SessionCard {
-  dayNumber: number;
-  streakDays: number;
-  focusTopic: string;
-  subject: string;
-  estimatedMinutes: number;
-  rationale: string;
-  daysToExam: number | null;
-  overdueCards: number;
-  masteryPercent: number;
-}
+import {
+  normalizeSessionCardResponse,
+  type ClientSessionCard,
+  type SessionCardUiStatus,
+} from '@/lib/dashboard/session-card-contract';
 
 interface Props {
   onStartSession: (topic: string, subject: string, estimatedMinutes: number) => void;
@@ -63,7 +56,8 @@ function useTopicTimer(running: boolean) {
 }
 
 export default function DailySessionCard({ onStartSession, onEndSession, isCollapsed = false }: Props) {
-  const [card, setCard] = useState<SessionCard | null>(null);
+  const [card, setCard] = useState<ClientSessionCard | null>(null);
+  const [cardStatus, setCardStatus] = useState<SessionCardUiStatus>('empty');
   const [loading, setLoading] = useState(true);
   const [sessionStarted, setSessionStarted] = useState(false);
   const [sessionDone, setSessionDone] = useState(false);
@@ -72,8 +66,16 @@ export default function DailySessionCard({ onStartSession, onEndSession, isColla
   useEffect(() => {
     fetch('/api/dashboard/session-card')
       .then(r => r.json())
-      .then(data => { setCard(data); setLoading(false); })
-      .catch(() => setLoading(false));
+      .then(data => {
+        const normalized = normalizeSessionCardResponse(data);
+        setCard(normalized.card);
+        setCardStatus(normalized.status);
+        setLoading(false);
+      })
+      .catch(() => {
+        setCardStatus('error');
+        setLoading(false);
+      });
   }, []);
 
   const handleStart = () => {
@@ -110,7 +112,49 @@ export default function DailySessionCard({ onStartSession, onEndSession, isColla
     );
   }
 
-  if (!card) return null;
+  if (!card) {
+    if (cardStatus === 'onboarding') {
+      return (
+        <div style={{
+          background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)',
+          borderRadius: 'var(--radius-lg)', padding: 'var(--sp-5)', marginBottom: 'var(--sp-4)'
+        }}>
+          <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: 6 }}>
+            Profile needed
+          </div>
+          <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
+            Complete onboarding to generate your daily session.
+          </div>
+        </div>
+      );
+    }
+    return null;
+  }
+
+  if (cardStatus === 'completed') {
+    return (
+      <div style={{
+        background: 'var(--bg-secondary)',
+        border: '1px solid rgba(16,185,129,0.25)',
+        borderRadius: 'var(--radius-lg)',
+        padding: 'var(--sp-5)',
+        marginBottom: 'var(--sp-4)',
+        display: 'flex',
+        alignItems: 'center',
+        gap: 'var(--sp-3)'
+      }}>
+        <CheckCircle2 size={18} style={{ color: 'var(--success)', flexShrink: 0 }} />
+        <div>
+          <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-primary)', fontWeight: 'var(--fw-bold)' }}>
+            Today's session is complete
+          </div>
+          <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)', marginTop: 2 }}>
+            {card.focusTopic} is saved into your learner state.
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   // ── Collapsed view ──────────────────────────────────────────────────────────
   if (isCollapsed) {

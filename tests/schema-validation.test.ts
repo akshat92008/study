@@ -1,78 +1,51 @@
+import { describe, expect, it } from 'vitest';
 import { createAdminClient } from '@/lib/supabase/admin';
 
-async function validateSchema() {
-  console.log('Starting MVP Schema validation...');
-  const supabase = createAdminClient();
+const hasSupabaseEnv =
+  Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL) &&
+  Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY);
 
-  // 1. Verify that `ai_usage_events` exists
-  const { data: usageEvents, error: evErr } = await supabase
-    .from('ai_usage_events')
-    .select('id')
-    .limit(1);
+const liveIt = hasSupabaseEnv ? it : it.skip;
 
-  if (evErr) {
-    console.error('❌ Failed to verify ai_usage_events:', evErr);
-  } else {
-    console.log('✅ ai_usage_events table exists.');
-  }
+describe('live Supabase schema validation', () => {
+  liveIt('has the runtime tables, columns, and budget RPC used by the MVP loop', async () => {
+    const supabase = createAdminClient();
 
-  // 2. Verify profiles
-  const { data: profiles, error: pErr } = await supabase
-    .from('profiles')
-    .select('id, exam_type, streak_days, last_active_at')
-    .limit(1);
+    const checks = [
+      supabase.from('ai_usage_events').select('id').limit(1),
+      supabase.from('profiles').select('id, exam_type, streak_days, last_active_at').limit(1),
+      supabase.from('concepts').select('id, mastery, forgetting_probability').limit(1),
+      supabase.from('revision_cards').select('id, due').limit(1),
+      supabase.from('session_cards').select('id, user_id, date, learner_state_version').limit(1),
+      supabase.from('chat_messages').select('id, user_id, session_id').limit(1),
+      supabase.from('semantic_memories').select('id, user_id, content').limit(1),
+      supabase.from('mock_autopsies').select('id, user_id, status').limit(1),
+      supabase.from('mistake_events').select('id, user_id').limit(1),
+      supabase.from('event_queue').select('id, user_id, type').limit(1),
+      supabase.from('consumer_locks').select('id, event_id, consumer_name').limit(1),
+    ];
 
-  if (pErr) {
-    console.error('❌ Failed to verify profiles columns:', pErr);
-  } else {
-    console.log('✅ profiles canonical columns (exam_type, streak_days, last_active_at) exist.');
-  }
+    const results = await Promise.all(checks);
+    const failures = results
+      .map((result, index) => ({ index, error: result.error }))
+      .filter((result) => result.error);
 
-  // 3. Verify concepts
-  const { data: concepts, error: cErr } = await supabase
-    .from('concepts')
-    .select('id, mastery, forgetting')
-    .limit(1);
+    expect(failures).toEqual([]);
 
-  if (cErr) {
-    console.error('❌ Failed to verify concepts columns:', cErr);
-  } else {
-    console.log('✅ concepts canonical columns (mastery, forgetting) exist.');
-  }
+    const { error: rpcErr } = await supabase.rpc('atomic_ai_budget_spend', {
+      p_user_id: '00000000-0000-0000-0000-000000000000',
+      p_feature: 'test',
+      p_model: 'test_model',
+      p_cost: 0,
+      p_prompt_tokens: 0,
+      p_completion_tokens: 0,
+      p_route: 'test',
+    });
 
-  // 4. Verify revision_cards
-  const { data: cards, error: rcErr } = await supabase
-    .from('revision_cards')
-    .select('id, due')
-    .limit(1);
-
-  if (rcErr) {
-    console.error('❌ Failed to verify revision_cards columns:', rcErr);
-  } else {
-    console.log('✅ revision_cards canonical columns (due) exist.');
-  }
-
-  // 5. Test if atomic_ai_budget_spend works or compiles 
-  // We can't easily execute it fully without setup data, but since it's defined, 
-  // we know it exists. We can attempt to call it with a fake user to see if we get a budget exceeded or not found error 
-  // instead of a "function does not exist" error.
-  const { error: rpcErr } = await supabase.rpc('atomic_ai_budget_spend', {
-    p_user_id: '00000000-0000-0000-0000-000000000000',
-    p_feature: 'test',
-    p_model: 'test_model',
-    p_cost: 0,
-    p_prompt_tokens: 0,
-    p_completion_tokens: 0,
-    p_route: 'test'
+    expect(rpcErr?.code).not.toBe('42883');
   });
 
-  if (rpcErr && rpcErr.code === '42883') { // function does not exist
-    console.error('❌ atomic_ai_budget_spend RPC does not exist or has wrong signature:', rpcErr);
-  } else {
-    console.log('✅ atomic_ai_budget_spend RPC compiled and is accessible via service_role.');
-  }
-
-  console.log('Validation complete.');
-}
-
-validateSchema().catch(console.error);
+  it('documents why live schema validation may be skipped locally', () => {
+    expect(typeof hasSupabaseEnv).toBe('boolean');
+  });
+});

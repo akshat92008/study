@@ -1,6 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
 import { EventDispatcher } from '@/lib/events/orchestrator';
-import { EventTypes } from '@/lib/events/types';
 import { traversePrerequisites } from '@/lib/atlas/prerequisiteTraversal';
 export type MasteryEvidence =
   | { type: 'correct_answer'; strength: number; sourceId: string }
@@ -132,7 +131,7 @@ export async function applyMasteryEvidence(input: {
   // ---------- 5. Publish event ----------
   await EventDispatcher.publish({
     userId: input.userId,
-    type: 'ATLAS_MASTERY_UPDATED' as keyof typeof EventTypes,
+    type: 'ATLAS_MASTERY_UPDATED',
     source: 'service',
     data: {
       conceptId: input.conceptId,

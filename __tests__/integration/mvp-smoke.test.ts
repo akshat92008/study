@@ -98,7 +98,7 @@ describeWithSupabase('MVP Smoke Tests', () => {
     const eventId = await EventDispatcher.publish({
       userId,
       type: 'AUTOPSY_MOCK_PROCESSED',
-      data: { mockId: '123' },
+      data: { autopsyId: '123e4567-e89b-12d3-a456-426614174000' },
     });
     expect(eventId).toBeDefined();
 
@@ -112,6 +112,8 @@ describeWithSupabase('MVP Smoke Tests', () => {
       front: 'Front MVP',
       back: 'Back MVP',
       due: '2026-05-01T00:00:00.000Z',
+      subject: 'Physics',
+      chapter: 'Kinematics',
       reps: 0
     }).select('id').single();
     
@@ -131,7 +133,7 @@ describeWithSupabase('MVP Smoke Tests', () => {
       .eq('id', card.id)
       .single();
       
-    expect(updatedCard.due).toBe(newDate);
+    expect(new Date(updatedCard.due).toISOString()).toBe(newDate);
     expect(updatedCard.reps).toBe(1);
   });
 });

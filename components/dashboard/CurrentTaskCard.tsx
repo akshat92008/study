@@ -1,15 +1,22 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import { useAppStore } from '@/stores/appStore';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
 import Button from '@/components/ui/Button';
-import { Brain, Flame, Clock, Loader2, Sparkles, Volume2, VolumeX, Maximize2, Minimize2, Trophy, Headphones } from 'lucide-react';
+import { Brain, Flame, Clock, Loader2, Sparkles, Maximize2, Minimize2, Trophy } from 'lucide-react';
+import {
+  normalizeSessionCardResponse,
+  type ClientSessionCard,
+  type SessionCardUiStatus,
+} from '@/lib/dashboard/session-card-contract';
 
 export default function CurrentTaskCard({ onSessionComplete }: { onSessionComplete?: () => void }) {
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<ClientSessionCard | null>(null);
   const [loading, setLoading] = useState(true);
+  const [cardStatus, setCardStatus] = useState<SessionCardUiStatus>('empty');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const { addChatMessage, addToast } = useAppStore();
 
   const [isSessionActive, setIsSessionActive] = useState(false);
@@ -19,10 +26,6 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
   const [isMinimized, setIsMinimized] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
   const [updatedStreak, setUpdatedStreak] = useState(0);
-
-  // Audio state
-  const [audioNodes, setAudioNodes] = useState<{ ctx: AudioContext, oscL: OscillatorNode, oscR: OscillatorNode, gain: GainNode } | null>(null);
-  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
 
   // Quotes
   const STUDY_QUOTES = [
@@ -38,13 +41,26 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
 
   const fetchSessionCard = async () => {
     try {
+      setLoading(true);
+      setErrorMessage(null);
       const res = await fetch('/api/dashboard/session-card');
-      if (res.ok) {
-        const json = await res.json();
-        setData(json);
+      if (!res.ok) {
+        const message = res.status === 401 ? 'Please sign in to load today\'s session.' : 'Unable to load today\'s session.';
+        setData(null);
+        setCardStatus('error');
+        setErrorMessage(message);
+        return;
       }
+      const json = await res.json();
+      const normalized = normalizeSessionCardResponse(json);
+      setData(normalized.card);
+      setCardStatus(normalized.status);
+      setErrorMessage(normalized.errorMessage ?? null);
     } catch (e) {
       console.error('Failed to fetch daily session card', e);
+      setData(null);
+      setCardStatus('error');
+      setErrorMessage('Unable to load today\'s session.');
     } finally {
       setLoading(false);
     }
@@ -59,16 +75,21 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
     const handleStartFocus = (e: Event) => {
       const detail = (e as CustomEvent).detail;
       if (detail) {
-        const newCard = {
+        const newCard: ClientSessionCard = {
           focusTopic: detail.chapter || detail.title,
           subject: detail.subject,
           estimatedMinutes: detail.estimatedMinutes,
           dayNumber: data?.dayNumber || 1,
           streakDays: data?.streakDays || 0,
           rationale: `Focus session triggered from your daily targets checklist.`,
+          daysToExam: data?.daysToExam ?? null,
+          overdueCards: data?.overdueCards ?? 0,
+          masteryPercent: data?.masteryPercent ?? 0,
           taskId: detail.taskId
         };
         setData(newCard);
+        setCardStatus('ready');
+        setErrorMessage(null);
 
         const durationSeconds = (detail.estimatedMinutes || 45) * 60;
         const endTime = Date.now() + durationSeconds * 1000;
@@ -83,19 +104,6 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
     window.addEventListener('start-focus-session', handleStartFocus);
     return () => window.removeEventListener('start-focus-session', handleStartFocus);
   }, [addToast, data]);
-
-  // Clean up audio on unmount
-  useEffect(() => {
-    return () => {
-      if (audioNodes) {
-        try {
-          audioNodes.oscL.stop();
-          audioNodes.oscR.stop();
-          audioNodes.ctx.close();
-        } catch {}
-      }
-    };
-  }, [audioNodes]);
 
   // Load active session from localStorage
   useEffect(() => {
@@ -124,74 +132,9 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
     return () => clearInterval(interval);
   }, [STUDY_QUOTES.length, isSessionActive]);
 
-  // Binaural Audio Toggle / Synthesizer
-  const toggleFocusAudio = () => {
-    if (isAudioPlaying) {
-      stopBinauralBeats();
-      setIsAudioPlaying(false);
-    } else {
-      startBinauralBeats();
-      setIsAudioPlaying(true);
-    }
-  };
-
-  const startBinauralBeats = () => {
-    try {
-      const AudioContextClass = window.AudioContext || (window as Window & typeof globalThis & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
-      if (!AudioContextClass) return;
-      const ctx = new AudioContextClass();
-
-      const oscL = ctx.createOscillator();
-      oscL.type = 'sine';
-      oscL.frequency.value = 200; // 200Hz Left
-
-      const oscR = ctx.createOscillator();
-      oscR.type = 'sine';
-      oscR.frequency.value = 204; // 204Hz Right (4Hz Theta Wave difference)
-
-      const pannerL = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
-      const pannerR = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
-      if (pannerL) pannerL.pan.value = -1;
-      if (pannerR) pannerR.pan.value = 1;
-
-      const gain = ctx.createGain();
-      gain.gain.value = 0.04; // low, non-distracting volume
-
-      if (pannerL && pannerR) {
-        oscL.connect(pannerL).connect(gain);
-        oscR.connect(pannerR).connect(gain);
-      } else {
-        oscL.connect(gain);
-        oscR.connect(gain);
-      }
-
-      gain.connect(ctx.destination);
-      oscL.start();
-      oscR.start();
-
-      setAudioNodes({ ctx, oscL, oscR, gain });
-    } catch (e) {
-      console.error('Failed to initialize focus audio synthesizer', e);
-    }
-  };
-
-  const stopBinauralBeats = () => {
-    if (audioNodes) {
-      try {
-        audioNodes.oscL.stop();
-        audioNodes.oscR.stop();
-        audioNodes.ctx.close();
-      } catch {}
-      setAudioNodes(null);
-    }
-  };
-
-  async function completeFocusSession() {
+  const completeFocusSession = useCallback(async () => {
     if (!data) return;
     try {
-      stopBinauralBeats();
-      setIsAudioPlaying(false);
-
       let taskId = data.taskId || null;
       if (!taskId) {
         // Find matching task inside study_tasks if possible to complete it
@@ -231,11 +174,12 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
         const nextStreak = resJson.streakDays || ((data.streakDays || 0) + 1);
         setUpdatedStreak(nextStreak);
         setShowCelebration(true);
+        setCardStatus('completed');
       }
     } catch (e) {
       console.error('Failed to complete focus session', e);
     }
-  }
+  }, [addChatMessage, addToast, data]);
 
   // Countdown timer logic
   useEffect(() => {
@@ -273,8 +217,6 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
     const confirm = window.confirm("Are you sure you want to end this study session early? Your progress won't be saved.");
     if (!confirm) return;
 
-    stopBinauralBeats();
-    setIsAudioPlaying(false);
     localStorage.removeItem(`focus_session_end_${data.focusTopic}`);
     setIsSessionActive(false);
     setTimeLeft(0);
@@ -316,7 +258,53 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
     );
   }
 
+  if (cardStatus === 'error') {
+    return (
+      <Card style={{
+        background: 'var(--bg-secondary)',
+        border: '1px solid var(--border-subtle)',
+        padding: 'var(--sp-5)',
+        textAlign: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--sp-3)',
+        alignItems: 'center'
+      }}>
+        <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 700, color: 'var(--text-primary)', margin: 0 }}>Session unavailable</h3>
+        <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', margin: 0, lineHeight: 1.5 }}>
+          {errorMessage ?? 'Unable to load today\'s session.'}
+        </p>
+        <Button variant="secondary" onClick={fetchSessionCard}>Retry</Button>
+      </Card>
+    );
+  }
+
+  if (cardStatus === 'completed') {
+    return (
+      <Card style={{
+        background: 'var(--bg-secondary)',
+        border: '1px solid var(--success-dim)',
+        padding: 'var(--sp-5)',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--sp-3)'
+      }}>
+        <Badge color="green">Today's Session Complete</Badge>
+        <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 800, color: 'var(--text-primary)', margin: 0 }}>
+          {data?.focusTopic ?? 'Daily focus'}
+        </h3>
+        <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', margin: 0, lineHeight: 1.5 }}>
+          Your streak and learner state are saved. Tomorrow's card will adapt from the updated ATLAS and MEMORY signals.
+        </p>
+      </Card>
+    );
+  }
+
   if (!data) {
+    const title = cardStatus === 'onboarding' ? 'Complete your profile' : 'No session card yet';
+    const description = cardStatus === 'onboarding'
+      ? 'Finish onboarding so Cognition OS can generate one daily session from your exam, goals, ATLAS, and MEMORY state.'
+      : 'No daily session is available yet. Try again after your learner state is ready.';
     return (
       <Card style={{ 
         background: 'var(--bg-secondary)', 
@@ -328,9 +316,9 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
         gap: 'var(--sp-3)',
         alignItems: 'center'
       }}>
-        <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 700, color: 'var(--text-primary)', margin: 0 }}>Welcome to Day 1</h3>
+        <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 700, color: 'var(--text-primary)', margin: 0 }}>{title}</h3>
         <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', margin: 0, lineHeight: 1.5 }}>
-          Tell the tutor what you're studying and your exam date to unlock your personalized session plan.
+          {description}
         </p>
       </Card>
     );
@@ -424,41 +412,6 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
                   remaining
                 </span>
               </div>
-            </div>
-
-            {/* Binaural Beats Controller */}
-            <div style={{
-              background: 'rgba(255, 255, 255, 0.02)', border: '1px solid rgba(255, 255, 255, 0.05)',
-              borderRadius: 'var(--radius-lg)', padding: '12px 20px', width: '100%',
-              display: 'flex', justifyContent: 'space-between', alignItems: 'center'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-3)', textAlign: 'left' }}>
-                <Headphones size={18} style={{ color: isAudioPlaying ? 'var(--accent-cyan)' : 'var(--text-tertiary)' }} />
-                <div>
-                  <div style={{ fontSize: 'var(--fs-xs)', fontWeight: 'bold' }}>Binaural Focus Beat</div>
-                  <div style={{ fontSize: '10px', color: 'var(--text-tertiary)' }}>Theta 4Hz wave drone to help study</div>
-                </div>
-              </div>
-              <button
-                onClick={toggleFocusAudio}
-                style={{
-                  background: isAudioPlaying ? 'var(--accent-cyan)' : 'rgba(255, 255, 255, 0.05)',
-                  border: 'none', cursor: 'pointer', padding: '6px 12px', borderRadius: 'var(--radius-md)',
-                  color: isAudioPlaying ? 'var(--text-inverse)' : 'var(--text-primary)',
-                  fontSize: '11px', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: 4,
-                  transition: 'all 0.2s'
-                }}
-              >
-                {isAudioPlaying ? (
-                  <>
-                    <VolumeX size={12} /> Stop Audio
-                  </>
-                ) : (
-                  <>
-                    <Volume2 size={12} /> Play Beat
-                  </>
-                )}
-              </button>
             </div>
 
             {/* Motivational Study Quote */}

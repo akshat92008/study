@@ -3,6 +3,18 @@ import { NextResponse, type NextRequest } from "next/server";
 
 const PUBLIC_ROUTES = ["/login", "/signup", "/", "/api/health"];
 const CRON_ROUTES = ["/api/cron", "/api/events/process"];
+const MVP_DISABLED_ROUTES = [
+  "/analytics",
+  "/educator",
+  "/knowledge",
+  "/mentor",
+  "/mistakes",
+  "/planner",
+  "/tutor",
+  "/api/admin",
+  "/api/billing",
+  "/api/knowledge",
+];
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -16,13 +28,17 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  if (MVP_DISABLED_ROUTES.some(r => pathname === r || pathname.startsWith(`${r}/`))) {
+    return new NextResponse("Not Found", { status: 404 });
+  }
+
   // Public routes
   if (PUBLIC_ROUTES.some(r => pathname === r || pathname.startsWith("/_next"))) {
     return NextResponse.next();
   }
 
   // Auth check
-  let response = NextResponse.next({ request });
+  const response = NextResponse.next({ request });
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
