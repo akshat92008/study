@@ -4,6 +4,8 @@ import http from 'http';
 import dotenv from 'dotenv';
 
 async function checkSmoke() {
+  const modeArg = process.argv.find((arg) => arg.startsWith('--mode='));
+  const mode = modeArg?.split('=')[1] || 'local';
   console.log('--- Cognition OS MVP Smoke Check ---\n');
   let passed = true;
 
@@ -89,13 +91,62 @@ async function checkSmoke() {
 
   // 5. Package scripts
   const pkg = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf8'));
-  const scripts = ['typecheck', 'test', 'audit:schema', 'verify:mvp'];
+  const scripts = ['typecheck', 'test', 'audit:schema', 'verify:local', 'verify:production', 'verify:mvp'];
   for (const s of scripts) {
     if (!pkg.scripts[s]) {
       console.error(`❌ Missing package script: ${s}`);
       passed = false;
     } else {
       console.log(`✅ Package script ${s} exists`);
+    }
+  }
+
+  if (mode === 'mvp') {
+    const packageJsonText = fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf8');
+    if (/verify:mvp[^"]*SKIP_ENV_VALIDATION/.test(packageJsonText) || /verify:production[^"]*SKIP_ENV_VALIDATION/.test(packageJsonText)) {
+      console.error('❌ Production/MVP verification must not skip env validation');
+      passed = false;
+    } else {
+      console.log('✅ Production/MVP verification does not skip env validation');
+    }
+
+    const migrationSql = fs
+      .readdirSync(migrationsPath)
+      .filter((file) => file.endsWith('.sql'))
+      .sort()
+      .map((file) => fs.readFileSync(path.join(migrationsPath, file), 'utf8'))
+      .join('\n');
+
+    const requiredSqlSignals = [
+      'create or replace function public.complete_study_session',
+      'auth.uid() is null or auth.uid() <> p_user_id',
+      'create or replace function public.ingest_mock_autopsy',
+      'create or replace function public.reserve_ai_budget',
+      'create unique index if not exists idx_revision_cards_unique_source',
+    ];
+
+    for (const signal of requiredSqlSignals) {
+      if (!migrationSql.includes(signal)) {
+        console.error(`❌ Missing MVP migration signal: ${signal}`);
+        passed = false;
+      } else {
+        console.log(`✅ Migration signal present: ${signal}`);
+      }
+    }
+
+    for (const file of [
+      'lib/events/autopsy-evidence.ts',
+      'lib/engines/cognition-graph.ts',
+      'lib/engines/revision-engine.ts',
+      'lib/engines/command-engine.ts',
+    ]) {
+      const contents = fs.readFileSync(path.join(process.cwd(), file), 'utf8');
+      if (!contents.includes('isVerifiedAutopsyMistake')) {
+        console.error(`❌ ${file} does not enforce verified AUTOPSY evidence`);
+        passed = false;
+      } else {
+        console.log(`✅ ${file} enforces verified AUTOPSY evidence`);
+      }
     }
   }
 

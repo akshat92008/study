@@ -1,9 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
-import { EventDispatcher } from '@/lib/events/orchestrator';
 import { resolveConcept } from '@/lib/engines/concept-resolver';
-import { recordMasteryEvidence } from '@/lib/engines/mastery-updater';
-import { invalidateSessionCards } from '@/lib/services/session-card-cache';
-import { logger } from '@/lib/utils/logger';
 
 export interface CompleteLearningSessionInput {
   userId: string;
@@ -32,46 +28,6 @@ export interface CompleteLearningSessionResult {
   cardsCreated: number;
 }
 
-async function updateStreak(
-  supabase: any,
-  userId: string
-): Promise<{ streakDays: number; streakChanged: boolean }> {
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('streak_days, last_active_at')
-    .eq('id', userId)
-    .single();
-
-  const today = new Date().toISOString().split('T')[0];
-  const lastActiveDate = profile?.last_active_at
-    ? String(profile.last_active_at).split('T')[0]
-    : null;
-
-  let streakDays = profile?.streak_days || 0;
-  let streakChanged = false;
-
-  if (lastActiveDate !== today) {
-    const yesterday = new Date(Date.now() - 86_400_000).toISOString().split('T')[0];
-    streakDays = lastActiveDate === yesterday ? streakDays + 1 : 1;
-    streakChanged = true;
-  }
-
-  const updatePayload: Record<string, any> = {
-    last_active_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-  };
-  if (streakChanged) updatePayload.streak_days = streakDays;
-
-  const { error } = await supabase
-    .from('profiles')
-    .update(updatePayload)
-    .eq('id', userId);
-
-  if (error) throw new Error(`Failed to update streak: ${error.message}`);
-
-  return { streakDays, streakChanged };
-}
-
 export async function completeLearningSession(
   input: CompleteLearningSessionInput
 ): Promise<CompleteLearningSessionResult> {
@@ -88,34 +44,29 @@ export async function completeLearningSession(
   if (completionKey) {
     const { data: existing } = await supabase
       .from('study_sessions')
-      .select('id, subject, chapter')
+      .select('id, subject, chapter, metadata')
       .eq('user_id', input.userId)
       .eq('metadata->>completion_key', completionKey)
       .maybeSingle();
 
     if (existing?.id) {
-      const { streakDays, streakChanged } = await updateStreak(supabase, input.userId);
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('streak_days')
+        .eq('id', input.userId)
+        .maybeSingle();
+
       return {
         sessionId: existing.id,
-        conceptId: null,
-        streakDays,
-        streakChanged,
+        conceptId: existing.metadata?.conceptId ?? null,
+        streakDays: Number(profile?.streak_days ?? 0),
+        streakChanged: false,
         subject: existing.subject || subject,
         chapter: existing.chapter || chapter,
         understood,
         cardsCreated,
       };
     }
-  }
-
-  if (input.taskId) {
-    const { error: taskError } = await supabase
-      .from('study_tasks')
-      .update({ is_completed: true, completed_at: new Date().toISOString() })
-      .eq('id', input.taskId)
-      .eq('user_id', input.userId);
-
-    if (taskError) throw new Error(`Failed to complete task: ${taskError.message}`);
   }
 
   const resolution = await resolveConcept({
@@ -128,8 +79,6 @@ export async function completeLearningSession(
     client: supabase,
   });
   const conceptId = resolution.conceptId;
-
-  const endedAt = new Date().toISOString();
   
   const { data: rpcResult, error: sessionError } = await supabase.rpc('complete_study_session', {
     p_user_id: input.userId,
@@ -153,31 +102,12 @@ export async function completeLearningSession(
   }
 
   const sessionId = rpcResult.session_id;
-  const { streakDays, streakChanged } = await updateStreak(supabase, input.userId);
-
-  if (conceptId) {
-    await recordMasteryEvidence({
-      userId: input.userId,
-      conceptId,
-      evidenceType: understood ? 'tutor_understood' : 'tutor_confused',
-      source: source === 'session_close' ? 'session_close' : 'tutor_session',
-      sourceId: sessionId,
-      evidence: understood
-        ? `Completed session on ${chapter}`
-        : `Session on ${chapter} surfaced gap${input.gapFound ? `: ${input.gapFound}` : ''}`,
-      client: supabase,
-    });
-  }
-
-  await invalidateSessionCards(input.userId, supabase, 'study_session_completed').catch(err => {
-    logger.warn('Failed to invalidate session cards after completion', err);
-  });
 
   return {
     sessionId,
     conceptId,
-    streakDays,
-    streakChanged,
+    streakDays: Number(rpcResult.streak_days ?? 0),
+    streakChanged: Boolean(rpcResult.streak_changed),
     subject,
     chapter,
     understood,

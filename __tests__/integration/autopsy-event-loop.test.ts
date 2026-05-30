@@ -1,27 +1,16 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-const inserts: Record<string, any[]> = {};
-const published: any[] = [];
-
-function insertBuilder(table: string, row: any) {
-  inserts[table] ||= [];
-  const rows = Array.isArray(row) ? row : [row];
-  inserts[table].push(...rows);
-  return {
-    select: vi.fn(() => ({
-      single: vi.fn(async () => ({
-        data: table === 'mock_autopsies' ? { id: 'autopsy-1' } : { id: `${table}-1` },
-        error: null,
-      })),
-    })),
-  };
-}
+const rpc = vi.hoisted(() => vi.fn());
 
 vi.mock('@/lib/supabase/server', () => ({
   createClient: vi.fn(async () => ({
-    from: vi.fn((table: string) => ({
-      insert: vi.fn((row: any) => insertBuilder(table, row)),
-    })),
+    rpc,
+  })),
+}));
+
+vi.mock('@/lib/supabase/admin', () => ({
+  createAdminClient: vi.fn(() => ({
+    rpc,
   })),
 }));
 
@@ -44,19 +33,6 @@ vi.mock('@/lib/ai/provider-client', () => ({
   }),
 }));
 
-vi.mock('@/lib/events/orchestrator', () => ({
-  EventDispatcher: {
-    publish: vi.fn(async (event: any) => {
-      published.push(event);
-      return 'event-1';
-    }),
-  },
-}));
-
-vi.mock('@/lib/engines/knowledge-engine', () => ({
-  generateKnowledgeUpdate: vi.fn(async () => undefined),
-}));
-
 vi.mock('@/lib/engines/mentor-engine', () => ({
   generateMentorRecovery: vi.fn(async () => ({ mentorQuote: 'Review Motion.', plan: [] })),
 }));
@@ -67,11 +43,14 @@ vi.mock('@/lib/utils/logger', () => ({
 
 describe('Autopsy event loop', () => {
   beforeEach(() => {
-    for (const key of Object.keys(inserts)) delete inserts[key];
-    published.length = 0;
+    rpc.mockReset();
+    rpc.mockResolvedValue({
+      data: { autopsy_id: 'autopsy-1', event_id: 'event-1', idempotent_replay: false },
+      error: null,
+    });
   });
 
-  it('saves autopsy rows and publishes AUTOPSY_MOCK_PROCESSED', async () => {
+  it('ingests autopsy rows and enqueues AUTOPSY_MOCK_PROCESSED transactionally', async () => {
     const { processMockAutopsy } = await import('@/lib/engines/autopsy-engine');
 
     const result = await processMockAutopsy(
@@ -82,18 +61,14 @@ describe('Autopsy event loop', () => {
     );
 
     expect(result.autopsyId).toBe('autopsy-1');
-    expect(inserts.mock_autopsies?.[0]).toMatchObject({
-      user_id: 'user-1',
-      test_name: 'Unit Test Mock',
-      total_questions: 2,
-      correct_count: 1,
-      incorrect_count: 1,
-    });
-    expect(inserts.autopsy_questions).toHaveLength(2);
-    expect(published[0]).toMatchObject({
-      user_id: 'user-1',
-      type: 'AUTOPSY_MOCK_PROCESSED',
-      data: { autopsyId: 'autopsy-1', incorrectCount: 1 },
-    });
+    expect(result.eventId).toBe('event-1');
+    expect(rpc).toHaveBeenCalledWith('ingest_mock_autopsy', expect.objectContaining({
+      p_user_id: 'user-1',
+      p_test_name: 'Unit Test Mock',
+      p_total_questions: 2,
+      p_correct_count: 1,
+      p_incorrect_count: 1,
+    }));
+    expect(rpc.mock.calls[0][1].p_questions).toHaveLength(2);
   });
 });

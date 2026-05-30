@@ -1,35 +1,66 @@
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
-import { createClient } from '@supabase/supabase-js';
+import fs from 'node:fs';
+import path from 'node:path';
+import { describe, expect, it } from 'vitest';
 
-// Use anonymous/anon key to test RLS
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'http://127.0.0.1:54321';
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'anon_key';
-const anonClient = createClient(supabaseUrl, supabaseAnonKey);
+const migrationsDir = path.join(process.cwd(), 'supabase', 'migrations');
 
-describe('Row Level Security (RLS) Tests', () => {
-  it('should deny anonymous access to profiles', async () => {
-    const { data, error } = await anonClient.from('profiles').select('*');
-    // RLS should return an empty array or an error depending on the policy
-    expect(error || (data && data.length === 0)).toBeTruthy();
+function readMigrations(): string {
+  return fs
+    .readdirSync(migrationsDir)
+    .filter((file) => file.endsWith('.sql'))
+    .sort()
+    .map((file) => fs.readFileSync(path.join(migrationsDir, file), 'utf8'))
+    .join('\n\n');
+}
+
+describe('Row Level Security migration invariants', () => {
+  const sql = readMigrations();
+
+  it('uses profiles.id, not profiles.user_id, in profile RLS policies', () => {
+    expect(sql).not.toMatch(/on\s+public?\.?profiles[\s\S]{0,180}auth\.uid\(\)\s*=\s*user_id/i);
+    expect(sql).toMatch(/on\s+public?\.?profiles[\s\S]{0,220}auth\.uid\(\)\s*=\s*id/i);
   });
 
-  it('should deny anonymous access to study_sessions', async () => {
-    const { data, error } = await anonClient.from('study_sessions').select('*');
-    expect(error || (data && data.length === 0)).toBeTruthy();
+  it('enables RLS for user-owned MVP tables', () => {
+    for (const table of [
+      'profiles',
+      'learning_goals',
+      'concepts',
+      'mastery_events',
+      'study_tasks',
+      'study_sessions',
+      'revision_cards',
+      'mock_autopsies',
+      'autopsy_questions',
+      'mistakes',
+      'session_cards',
+      'ai_usage_daily',
+      'ai_usage_events',
+    ]) {
+      expect(sql).toMatch(new RegExp(`alter table public\\.${table}|alter table ${table}`, 'i'));
+      expect(sql).toMatch(new RegExp(`${table}[\\s\\S]{0,120}enable row level security`, 'i'));
+    }
   });
 
-  it('should deny anonymous access to autopsy_questions', async () => {
-    const { data, error } = await anonClient.from('autopsy_questions').select('*');
-    expect(error || (data && data.length === 0)).toBeTruthy();
+  it('hardens client-callable security-definer RPCs against cross-user calls', () => {
+    for (const functionName of ['complete_study_session', 'ingest_mock_autopsy', 'ingest_autopsy_document']) {
+      const matches = Array.from(sql.matchAll(new RegExp(`create or replace function public\\.${functionName}[\\s\\S]*?\\$\\$ language plpgsql`, 'gi')));
+      const finalDefinition = matches.at(-1)?.[0] ?? '';
+      expect(finalDefinition).toMatch(/auth\.uid\(\) is null or auth\.uid\(\) <> p_user_id|current_setting\('request\.jwt\.claim\.role', true\) <> 'service_role'/i);
+    }
   });
 
-  it('should deny anonymous access to event_queue', async () => {
-    const { data, error } = await anonClient.from('event_queue').select('*');
-    expect(error || (data && data.length === 0)).toBeTruthy();
+  it('does not expose backend-only queue and budget RPCs to authenticated clients', () => {
+    for (const functionName of ['create_event_with_consumers', 'acquire_event_leases', 'reserve_ai_budget', 'commit_ai_usage', 'release_ai_budget']) {
+      expect(sql).toMatch(new RegExp(`revoke execute on function public\\.${functionName}[\\s\\S]*from public, authenticated`, 'i'));
+      expect(sql).toMatch(new RegExp(`grant execute on function public\\.${functionName}[\\s\\S]*to service_role`, 'i'));
+    }
   });
 
-  it('should deny anonymous access to mistakes', async () => {
-    const { data, error } = await anonClient.from('mistakes').select('*');
-    expect(error || (data && data.length === 0)).toBeTruthy();
+  it('requires verified high-confidence AUTOPSY evidence before learner-state consumers can mutate', () => {
+    expect(sql).toContain("evidence_status in ('verified_mistake', 'needs_review', 'ignored_or_unverified', 'corrected_by_user')");
+    expect(sql).toContain("'status', 'verified_mistake'");
+    expect(sql).toContain("'needs_review', false");
+    expect(sql).toContain("'extraction_confidence'");
   });
 });

@@ -38,6 +38,32 @@ declare
   ];
 begin
   foreach t in array user_tables loop
+    if t = 'profiles' then
+      -- profiles is keyed directly by auth.users(id); it does not have user_id.
+      execute format('
+        create policy "%I_select_own" on %I
+        for select using (auth.uid() = id);
+      ', t, t);
+
+      execute format('
+        create policy "%I_insert_own" on %I
+        for insert with check (auth.uid() = id);
+      ', t, t);
+
+      execute format('
+        create policy "%I_update_own" on %I
+        for update using (auth.uid() = id)
+        with check (auth.uid() = id);
+      ', t, t);
+
+      execute format('
+        create policy "%I_delete_own" on %I
+        for delete using (auth.uid() = id);
+      ', t, t);
+
+      continue;
+    end if;
+
     -- SELECT
     execute format('
       create policy "%I_select_own" on %I

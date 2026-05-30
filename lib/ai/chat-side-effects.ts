@@ -4,6 +4,9 @@ import { syncStudentModel } from '@/lib/engines/inference-engine';
 import { ChatMemoryService } from '@/lib/services/chatMemoryService';
 import { captureSentryException } from '@/lib/telemetry/sentry-runtime';
 
+import { persistChatMessage } from '@/lib/services/chat-persistence';
+import { trackDailyAIUsage } from '@/lib/services/ai-usage.service';
+
 export interface ChatSideEffectsInput {
   supabase: SupabaseClient;
   userId: string;
@@ -15,6 +18,7 @@ export interface ChatSideEffectsInput {
   sessionTurnsCount: number;
   mindContext: any;
   intent: any;
+  metadataPayload?: any;
 }
 
 export async function processChatSideEffects(input: ChatSideEffectsInput) {
@@ -28,11 +32,35 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
     history,
     sessionTurnsCount,
     mindContext,
-    intent
+    intent,
+    metadataPayload
   } = input;
 
-  // 1. Student Model Sync Trigger. Message persistence happens in the chat
-  // route before this event is published; this worker must never duplicate it.
+  // 0. Persistence and Billing
+  try {
+    await persistChatMessage(supabase, {
+      sessionId,
+      userId,
+      role: 'assistant',
+      content: fullResponse,
+      intent: intent?.intent,
+      emotionalState: emotion,
+      metadata: metadataPayload ?? {},
+    });
+
+    await trackDailyAIUsage({
+      userId,
+      kind: 'chat',
+      route: '/api/ai/chat',
+      model: 'router:chat',
+      promptTokens: Math.ceil((message || '').length / 4),
+      completionTokens: Math.ceil((fullResponse || '').length / 4),
+    });
+  } catch (err) {
+    logger.error('SideEffect: Persistence and billing failed', err);
+  }
+
+  // 1. Student Model Sync Trigger.
   try {
     const { count: totalMessageCount } = await supabase
       .from('chat_messages')

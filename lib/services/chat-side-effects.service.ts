@@ -34,38 +34,19 @@ export class ChatSideEffectService {
 
     try {
       const persistedResponse = stripMetadataBlock(fullResponse);
-      
-      await persistChatMessage(supabase, {
-        sessionId,
-        userId,
-        role: 'assistant',
-        content: persistedResponse,
-        intent: intent.intent,
-        emotionalState: emotion,
-        metadata: metadataPayload ?? {},
-      });
-
-      await trackDailyAIUsage({
-        userId,
-        kind: 'chat',
-        route: '/api/ai/chat',
-        model: 'router:chat',
-        promptTokens: Math.ceil(message.length / 4),
-        completionTokens: Math.ceil(persistedResponse.length / 4),
-      });
-
       await EventDispatcher.publish({
         user_id: userId,
         type: 'CHAT_MESSAGE_PROCESSED',
         data: {
           sessionId,
           message,
-          fullResponse,
+          fullResponse: persistedResponse,
           emotion,
           history: recentHistory,
           sessionTurnsCount,
           mindContext,
-          intent
+          intent,
+          metadataPayload
         },
         idempotency_key: crypto.randomUUID()
       }).catch(err => logger.error('Failed to enqueue CHAT_MESSAGE_PROCESSED event', err));

@@ -6,6 +6,7 @@ import { expandChapterWithAI } from './atlas-expansion';
 import { applyMasteryUpdate, recordMasteryEvidence } from '@/lib/engines/mastery-updater';
 import { invalidateSessionCards } from '@/lib/services/session-card-cache';
 import { resolveConcept } from '@/lib/engines/concept-resolver';
+import { isVerifiedAutopsyMistake } from '@/lib/events/autopsy-evidence';
 
 
 export const MASTERY_WEIGHTS: Record<string, number> = {
@@ -341,6 +342,11 @@ export class AtlasConsumer {
       subject: string;
       chapter: string;
       mistakeCategory: string | null;
+      status?: string;
+      extractionConfidence?: number;
+      extraction_confidence?: number;
+      needsReview?: boolean;
+      needs_review?: boolean;
     }> = metadata?.wrongQuestions || [];
 
     if (wrongQuestions.length === 0) return;
@@ -350,6 +356,7 @@ export class AtlasConsumer {
     // Group by chapter to avoid redundant updates
     const chapterMap = new Map<string, { subject: string; chapter: string; count: number }>();
     for (const q of wrongQuestions) {
+      if (!isVerifiedAutopsyMistake(q)) continue;
       if (!q.chapter || !q.subject) continue;
       const key = `${q.subject}::${q.chapter}`;
       const existing = chapterMap.get(key);

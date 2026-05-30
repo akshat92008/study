@@ -5,6 +5,10 @@ import dotenv from 'dotenv';
 dotenv.config({ path: path.join(process.cwd(), '.env.local') });
 dotenv.config();
 
+const modeArg = process.argv.find((arg) => arg.startsWith('--mode='));
+const mode = modeArg?.split('=')[1] || (process.env.NODE_ENV === 'production' ? 'production' : 'local');
+const isProductionMode = mode === 'production';
+
 const required = [
   'NEXT_PUBLIC_SUPABASE_URL',
   'NEXT_PUBLIC_SUPABASE_ANON_KEY',
@@ -12,7 +16,7 @@ const required = [
   'CRON_SECRET',
 ];
 
-if (process.env.SKIP_ENV_VALIDATION === '1') {
+if (process.env.SKIP_ENV_VALIDATION === '1' && !isProductionMode) {
   console.log('Skipping environment validation due to SKIP_ENV_VALIDATION=1');
   process.exit(0);
 }
@@ -40,12 +44,17 @@ if (!aiProviders.some((key) => Boolean(process.env[key]))) {
   ok = false;
 }
 
-if (process.env.NODE_ENV === 'production') {
+if (isProductionMode) {
   for (const key of ['UPSTASH_REDIS_REST_URL', 'UPSTASH_REDIS_REST_TOKEN']) {
     if (!process.env[key]) {
       console.error(`Missing production env var: ${key}`);
       ok = false;
     }
+  }
+
+  if (!process.env.NEXT_PUBLIC_APP_URL && !process.env.VERCEL_PROJECT_PRODUCTION_URL && !process.env.VERCEL_URL) {
+    console.error('Missing production URL/domain env var: NEXT_PUBLIC_APP_URL, VERCEL_PROJECT_PRODUCTION_URL, or VERCEL_URL');
+    ok = false;
   }
 }
 
@@ -56,4 +65,4 @@ if (!fs.existsSync(migrationsDir) || fs.readdirSync(migrationsDir).filter((f) =>
 }
 
 if (!ok) process.exit(1);
-console.log('Environment preflight passed.');
+console.log(`Environment preflight passed (${mode}).`);

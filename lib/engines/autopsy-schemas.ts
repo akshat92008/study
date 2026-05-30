@@ -11,6 +11,7 @@ export const AutopsyQuestionSchema = z.object({
   chapter: z.string().default('Unknown'),
   subtopic: z.string().nullable().optional(),
   difficulty: z.enum(['Easy', 'Medium', 'Hard']).default('Medium'),
+  questionText: z.string().nullable().optional(),
   correctAnswer: z.string().nullable().optional(),
   studentAnswer: z.string().nullable().optional(),
   status: z.enum(['Correct', 'Incorrect', 'Unattempted', 'NeedsReview']),

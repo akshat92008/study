@@ -1,12 +1,12 @@
 import { createClient } from '@/lib/supabase/server';
+import { createAdminClient } from '@/lib/supabase/admin';
+import { createHash, randomUUID } from 'node:crypto';
 import { z } from 'zod';
 import { getExamConfig } from '@/lib/utils/constants';
 import { AutopsyPaperSchema, AutopsyQuestionSchema } from './autopsy-schemas';
 import { generateMentorRecovery } from './mentor-engine';
 import { logger } from '@/lib/utils/logger';
 import { generateJSON, generateMultimodalJSON } from '@/lib/ai/provider-client';
-import { EventDispatcher } from '@/lib/events/orchestrator';
-import { generateKnowledgeUpdate } from './knowledge-engine';
 
 type AutopsyFileData =
   | { kind: 'text'; text: string }
@@ -22,6 +22,25 @@ type ProcessedQuestion = AutopsyQuestion & {
 
 const MAX_FILE_BYTES = 20 * 1024 * 1024;
 const MIN_EXTRACTION_CONFIDENCE = 70;
+
+function autopsyIdempotencyKey(
+  userId: string,
+  testName: string,
+  examType: string,
+  fileData: AutopsyFileData
+): string {
+  const hash = createHash('sha256');
+  hash.update(userId);
+  hash.update('\n');
+  hash.update(testName);
+  hash.update('\n');
+  hash.update(examType);
+  hash.update('\n');
+  hash.update(fileData.kind);
+  hash.update('\n');
+  hash.update(fileData.kind === 'text' ? fileData.text : fileData.data);
+  return `autopsy:${hash.digest('hex')}`;
+}
 
 async function routeMultimodalExtraction(
   prompt: string,
@@ -193,103 +212,66 @@ export async function processMockAutopsy(
     })),
   ];
 
-  const supabase = await createClient();
+  const supabase = createAdminClient();
 
-  const { data: autopsyRecord, error: autopsyError } = await supabase
-    .from('mock_autopsies')
-    .insert({
-      user_id: userId,
-      test_name: testName,
-      exam_type: examType,
-      total_questions: allQuestions.length,
-      correct_count: correctQuestions.length,
-      incorrect_count: incorrectQuestions.length,
-      unattempted_count: unattempted.length,
-      current_score: rawScore,
-      recoverable_marks: recoverableMarks,
-      potential_score: potentialScore,
-    })
-    .select('id')
-    .single();
-
-  if (autopsyError || !autopsyRecord) {
-    throw new Error(`Failed to save autopsy: ${autopsyError?.message}`);
-  }
-
-  const CHUNK = 50;
-  for (let i = 0; i < processedQuestions.length; i += CHUNK) {
-    const { error: questionInsertError } = await supabase.from('autopsy_questions').insert(
-      processedQuestions.slice(i, i + CHUNK).map(q => ({
-        autopsy_id: autopsyRecord.id,
-        user_id: userId,
-        question_number: q.questionNumber,
-        subject: q.subject,
-        chapter: q.chapter,
-        status: q.status,
-        mistake_category: q.mistakeCategory ?? null,
-        reasoning: q.reasoning ?? null,
-        marks_lost: q.marksLost,
-        needs_review: q.needsReview || false,
-        ocr_confidence: q.ocrConfidence ?? 100,
-        extraction_confidence: q.ocrConfidence ?? 100,
-        trace_metadata: {
-          extractionThreshold: MIN_EXTRACTION_CONFIDENCE,
-          eligibleForLearnerState: !q.needsReview,
-        },
-      }))
-    );
-
-    if (questionInsertError) {
-      throw new Error(`Failed to save autopsy questions: ${questionInsertError.message}`);
-    }
-  }
-
-  const traceableDiagnosedIncorrect = diagnosedIncorrect.map(q => ({
-    ...q,
-    autopsyId: autopsyRecord.id,
+  const questionsPayload = processedQuestions.map(q => ({
+    questionNumber: q.questionNumber,
+    subject: q.subject,
+    chapter: q.chapter,
+    subtopic: q.subtopic,
+    difficulty: q.difficulty,
+    status: q.status,
+    questionText: q.questionText,
+    correctAnswer: q.correctAnswer,
+    studentAnswer: q.studentAnswer,
+    mistakeCategory: q.mistakeCategory ?? null,
+    reasoning: q.reasoning ?? null,
+    conceptualGap: q.conceptualGap ?? null,
+    correctExplanation: q.correctExplanation ?? null,
+    marksLost: q.marksLost,
+    totalMarks: correctMarks,
+    needsReview: q.needsReview || false,
+    ocrConfidence: q.ocrConfidence ?? 100,
+    extractionConfidence: q.ocrConfidence ?? 100,
   }));
 
-  await generateKnowledgeUpdate(userId, traceableDiagnosedIncorrect).catch(err => logger.error('Knowledge sync failed', err));
+  const idempotencyKey = autopsyIdempotencyKey(userId, testName, examType, fileData);
+  const traceId = randomUUID();
+  const { data: ingestResult, error: autopsyError } = await supabase.rpc('ingest_mock_autopsy', {
+    p_user_id: userId,
+    p_test_name: testName,
+    p_exam_type: examType,
+    p_total_questions: allQuestions.length,
+    p_correct_count: correctQuestions.length,
+    p_incorrect_count: incorrectQuestions.length,
+    p_unattempted_count: unattempted.length,
+    p_current_score: rawScore,
+    p_recoverable_marks: recoverableMarks,
+    p_potential_score: potentialScore,
+    p_questions: questionsPayload,
+    p_idempotency_key: idempotencyKey,
+    p_trace_id: traceId,
+    p_confidence_threshold: MIN_EXTRACTION_CONFIDENCE,
+  });
+
+  if (autopsyError || !ingestResult?.autopsy_id) {
+    throw new Error(`Failed to save autopsy: ${autopsyError?.message ?? 'unknown error'}`);
+  }
+
+  const autopsyId = ingestResult.autopsy_id as string;
 
   const mentorResult = await generateMentorRecovery(
-    autopsyRecord.id, rawScore, potentialScore, diagnosedIncorrect, examType
+    autopsyId, rawScore, potentialScore, diagnosedIncorrect, examType
   ).catch(err => { logger.warn('Mentor recovery failed', err); return null; });
-
-  await EventDispatcher.publish({
-    user_id: userId,
-    type: 'AUTOPSY_MOCK_PROCESSED',
-    data: {
-      autopsyId: autopsyRecord.id,
-      testName,
-      examType,
-      rawScore,
-      recoverableScore,
-      potentialScore,
-      totalQuestions: allQuestions.length,
-      correctCount: correctQuestions.length,
-      incorrectCount: incorrectQuestions.length,
-      needsReviewCount: needsReviewQuestions.length,
-    },
-    metadata: {
-      source: 'autopsy_engine',
-        autopsyId: autopsyRecord.id,
-      wrongQuestions: traceableDiagnosedIncorrect.map(q => ({
-        questionNumber: q.questionNumber,
-        subject: q.subject,
-        chapter: q.chapter,
-        mistakeCategory: q.mistakeCategory,
-        reasoning: q.reasoning,
-        correctExplanation: q.correctExplanation ?? null,
-        conceptualGap: q.conceptualGap ?? null,
-        extractionConfidence: q.ocrConfidence ?? 100,
-      })),
-    },
-    idempotency_key: `autopsy:${autopsyRecord.id}:processed`,
+  logger.info('AUTOPSY_MOCK_PROCESSED event enqueued transactionally', {
+    userId,
+    autopsyId,
+    eventId: ingestResult.event_id,
   });
-  logger.info('AUTOPSY_MOCK_PROCESSED event fired', { userId });
 
   return {
-    autopsyId: autopsyRecord.id,
+    autopsyId,
+    eventId: ingestResult.event_id ?? null,
     testName,
     scores: { raw: rawScore, recoverable: recoverableScore, potential: potentialScore },
     counts: {

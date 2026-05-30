@@ -10,7 +10,7 @@ import { CommandConsumer } from '@/lib/engines/command-engine';
 import { ConceptExpansionConsumer } from '@/lib/engines/concept-expansion-engine';
 import { processChatSideEffects } from '@/lib/ai/chat-side-effects';
 
-const MAX_RETRIES = 5;
+const MAX_RETRIES = 2; // Equivalent to retry_count < 3
 
 type ConsumerResultStatus = 'HANDLED' | 'SKIPPED_INTENTIONALLY';
 
@@ -54,6 +54,8 @@ export class EventWorkerService {
           .from('event_attempts')
           .insert({
             consumer_lock_id: lease.lock_id,
+            event_id: lease.event_id,
+            consumer_name: lease.consumer_name,
             worker_id: workerId,
             started_at: new Date().toISOString(),
           })
@@ -146,6 +148,8 @@ export class EventWorkerService {
         event_type: lease.event_type,
         payload: lease.event_payload,
         event_metadata: lease.event_metadata,
+        attempts: newRetryCount,
+        last_attempt_at: new Date().toISOString(),
         last_error: errorMsg,
       });
       

@@ -5,6 +5,7 @@ import { logger } from '@/lib/utils/logger';
 import { z } from 'zod';
 import { invalidateSessionCards } from '@/lib/services/session-card-cache';
 import { resolveConcept } from '@/lib/engines/concept-resolver';
+import { isVerifiedAutopsyMistake } from '@/lib/events/autopsy-evidence';
 
 export interface GoalInput {
   title: string;
@@ -499,7 +500,16 @@ export class CommandConsumer {
     metadata: any,
     data: any
   ): Promise<void> {
-    const wrongQuestions: Array<{ subject: string; chapter: string; mistakeCategory: string | null }> =
+    const wrongQuestions: Array<{
+      subject: string;
+      chapter: string;
+      mistakeCategory: string | null;
+      status?: string;
+      extractionConfidence?: number;
+      extraction_confidence?: number;
+      needsReview?: boolean;
+      needs_review?: boolean;
+    }> =
       metadata?.wrongQuestions || [];
 
     if (wrongQuestions.length === 0) return;
@@ -510,6 +520,7 @@ export class CommandConsumer {
     // Dedupe chapters — only one remediation task per chapter
     const chapters = new Map<string, { subject: string; chapter: string }>();
     for (const q of wrongQuestions) {
+      if (!isVerifiedAutopsyMistake(q)) continue;
       if (q.mistakeCategory === 'silly_mistake' || q.mistakeCategory === 'time_pressure') continue;
       const key = `${q.subject}::${q.chapter}`;
       if (!chapters.has(key)) chapters.set(key, { subject: q.subject, chapter: q.chapter });

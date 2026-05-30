@@ -1,4 +1,5 @@
 import { createEmptyCard, fsrs, Rating, State, type Card as FSRSCard } from 'ts-fsrs';
+import { createHash } from 'node:crypto';
 import { createClient } from '@/lib/supabase/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { generateJSON } from '@/lib/ai/provider-client';
@@ -9,6 +10,7 @@ import { invalidateSessionCards } from '@/lib/services/session-card-cache';
 import { resolveConcept } from '@/lib/engines/concept-resolver';
 import { recordMasteryEvidence } from '@/lib/engines/mastery-updater';
 import { EventDispatcher } from '@/lib/events/orchestrator';
+import { isVerifiedAutopsyMistake } from '@/lib/events/autopsy-evidence';
 
 // Custom FSRS-5 Configuration and Implementation
 const FSRS_WEIGHTS = [
@@ -446,16 +448,33 @@ export async function createSingleCard(
   back: string,
   subject: string,
   chapter: string,
-  client?: Awaited<ReturnType<typeof createClient>>
+  client?: Awaited<ReturnType<typeof createClient>>,
+  source?: {
+    sourceType: string;
+    sourceId: string;
+    verified?: boolean;
+    confidence?: number;
+    originEventId?: string | null;
+  }
 ) {
   const supabase = client ?? (await createClient());
   const emptyCard = createEmptyCard();
+  const normalizedFront = front.trim();
+  const normalizedBack = back.trim();
+  const sourceHash = source
+    ? createHash('sha256').update(`${normalizedFront}\n---\n${normalizedBack}`).digest('hex')
+    : null;
+
+  if (!isSpecificRevisionCard(normalizedFront, normalizedBack)) {
+    logger.warn('Rejected low-specificity revision card', { userId, subject, chapter, sourceType: source?.sourceType });
+    return null;
+  }
   
   const { data, error } = await supabase.from('revision_cards').insert({
     user_id: userId,
     concept_id: conceptId,
-    front: `[Tutor Gap] ${front}`, // Tag it so the student knows where it came from
-    back,
+    front: `[Tutor Gap] ${normalizedFront}`, // Tag it so the student knows where it came from
+    back: normalizedBack,
     subject,
     chapter,
     due: emptyCard.due.toISOString(),
@@ -466,9 +485,16 @@ export async function createSingleCard(
     reps: emptyCard.reps,
     lapses: emptyCard.lapses,
     state: emptyCard.state,
+    source_type: source?.sourceType ?? null,
+    source_id: source?.sourceId ?? null,
+    source_hash: sourceHash,
+    verified: source?.verified ?? false,
+    confidence: source?.confidence ?? null,
+    origin_event_id: source?.originEventId ?? null,
   }).select().single();
   
   if (error) {
+    if ((error as any).code === '23505') return null;
     logger.error('Failed to create single flashcard from tutor session', error);
     return null; // Don't crash the tutor session if card creation fails
   }
@@ -477,6 +503,15 @@ export async function createSingleCard(
     logger.warn('Failed to invalidate session cards after single card', err)
   );
   return data;
+}
+
+function isSpecificRevisionCard(front: string, back: string): boolean {
+  const normalizedFront = front.trim();
+  const normalizedBack = back.trim();
+  if (normalizedFront.length < 12 || normalizedBack.length < 8) return false;
+  if (/what are the key concepts in/i.test(normalizedFront)) return false;
+  if (/review your notes/i.test(normalizedBack)) return false;
+  return /[?]|define|explain|why|how|calculate|derive|state|differentiate/i.test(normalizedFront);
 }
 
 // Exam Mode (Cramming) - Bypasses FSRS due dates
@@ -510,6 +545,13 @@ export class MemoryConsumer {
       correctExplanation: string | null;
       conceptualGap: string | null;
       status?: string;
+      extractionConfidence?: number;
+      extraction_confidence?: number;
+      needsReview?: boolean;
+      needs_review?: boolean;
+      sourceQuestionId?: string;
+      source_question_id?: string;
+      trace_id?: string;
     }> = metadata?.wrongQuestions || [];
 
     if (wrongQuestions.length === 0) return;
@@ -524,7 +566,7 @@ export class MemoryConsumer {
     let created = 0;
 
     for (const q of wrongQuestions) {
-      if (q.status && q.status !== 'verified_mistake') continue;
+      if (!isVerifiedAutopsyMistake(q)) continue;
       if (!q.mistakeCategory || !cardWorthy.has(q.mistakeCategory)) continue;
       if (!q.reasoning || !q.correctExplanation) continue;
 
@@ -542,11 +584,18 @@ export class MemoryConsumer {
         await createSingleCard(
           userId,
           resolution.conceptId,
-          q.conceptualGap || q.reasoning,           // front of card = the question/gap
+          `Explain: ${q.conceptualGap || q.reasoning}`, // front of card = the specific gap
           q.correctExplanation,                       // back of card = correct explanation
           q.subject,
           q.chapter,
-          supabase as any
+          supabase as any,
+          {
+            sourceType: 'autopsy_mistake',
+            sourceId: String(q.sourceQuestionId ?? q.source_question_id ?? `${metadata?.autopsyId ?? 'autopsy'}:${q.subject}:${q.chapter}:${q.reasoning}`),
+            verified: true,
+            confidence: Number(q.extractionConfidence ?? q.extraction_confidence ?? 100),
+            originEventId: metadata?.eventId ?? null,
+          }
         );
 
         created++;
@@ -563,7 +612,7 @@ export class MemoryConsumer {
   }
 
   static async handleStudySessionCompleted(userId: string, data: any): Promise<void> {
-    const { subject, chapter, durationMinutes = 0, sessionType, isSessionComplete, history, latestMessage, latestResponse, intent } = data || {};
+    const { subject, chapter, durationMinutes = 0, sessionType, isSessionComplete, history, latestMessage, latestResponse, intent, understood, gapFound, sessionId } = data || {};
 
     if (!subject || !chapter || durationMinutes < 10) return;
 
@@ -581,19 +630,24 @@ export class MemoryConsumer {
 
       let created = 0;
 
-      if (sessionType !== 'chat') {
-        await createSingleCard(
+      if (sessionType !== 'chat' && isSessionComplete && understood === false && gapFound) {
+        const card = await createSingleCard(
           userId,
           resolution.conceptId,
-          `What are the key concepts in ${chapter}?`,
-          `Review your notes from your ${subject} — ${chapter} study session.`,
+          `Explain this gap from ${chapter}: ${gapFound}`,
+          `Correct the misconception and practice one targeted example for ${gapFound}.`,
           subject,
           chapter,
-          supabase as any
+          supabase as any,
+          {
+            sourceType: 'session_gap',
+            sourceId: String(sessionId ?? `${subject}:${chapter}:${gapFound}`),
+            verified: true,
+            confidence: 0.8,
+            originEventId: data?.eventId ?? null,
+          }
         );
-        created++;
-
-        logger.info(`MemoryConsumer: created review card for ${chapter}`, { userId });
+        if (card) created++;
       }
 
       // If chat session, run the async analysis to generate specific cards from gaps
@@ -608,16 +662,23 @@ export class MemoryConsumer {
         const raw = await generateJSON<any>('flash', 'Expert analyzer. Return JSON only.', analysisPrompt);
         
         if (raw && !raw.understood && raw.gapFound && raw.gapAnswer) {
-          await createSingleCard(
+          const card = await createSingleCard(
             userId,
             resolution.conceptId,
             raw.gapFound,
             raw.gapAnswer,
             subject,
             chapter,
-            supabase as any
+            supabase as any,
+            {
+              sourceType: 'tutor_gap',
+              sourceId: String(sessionId ?? `${subject}:${chapter}:${raw.gapFound}`),
+              verified: true,
+              confidence: 0.75,
+              originEventId: data?.eventId ?? null,
+            }
           );
-          created++;
+          if (card) created++;
           logger.info(`MemoryConsumer: created specific gap card for ${chapter}`, { userId });
         }
       }
