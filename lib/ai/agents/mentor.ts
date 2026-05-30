@@ -1,4 +1,4 @@
-import { streamText } from '@/lib/ai/gemini';
+import { streamText } from '@/lib/ai/provider-client';
 import { getMentorSystemPrompt, buildMentorContext } from '@/lib/ai/prompts/mentor';
 import { createClient } from '@/lib/supabase/server';
 

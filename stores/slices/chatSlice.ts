@@ -56,13 +56,12 @@ export const createChatSlice: StateCreator<
   setChatMessages: (messages) => set({ chatMessages: messages }),
   
   addChatMessage: (message) => {
-    // Optimistic UI update + enqueue for sync
+    // Optimistic UI update (server handles persistence)
+    const optimisticMsg = { ...message, id: message.id || `temp-${Date.now()}` };
     set((state) => ({
-      chatMessages: [...state.chatMessages, message],
-      pendingSyncQueue: [...state.pendingSyncQueue, message]
+      chatMessages: [...state.chatMessages, optimisticMsg],
+      pendingSyncQueue: [] // Disabled direct sync queue
     }));
-    // Trigger async sync without blocking
-    get().syncPendingQueue();
   },
 
   clearChat: () => {
@@ -166,37 +165,13 @@ export const createChatSlice: StateCreator<
   },
 
   syncPendingQueue: async () => {
+    // Disabled direct Supabase insert for MVP.
+    // Server route (app/api/ai/chat) handles all persistence.
     const queue = get().pendingSyncQueue;
-    if (queue.length === 0) return;
-    
-    const sessionId = get().chatId;
-    if (!sessionId) return; // Cant sync without a session
-
-    try {
-      const supabase = createClient();
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
-
-      const recordsToInsert = queue.map(msg => ({
-        session_id: sessionId,
-        user_id: user.id,
-        role: msg.role,
-        content: msg.content,
-        created_at: msg.timestamp,
-        metadata: msg.metadata || {}
-      }));
-
-      const { error } = await supabase.from('chat_messages').insert(recordsToInsert);
-
-      if (!error) {
-        // Clear queue on success
-        set({ pendingSyncQueue: [] });
-      } else {
-        console.error('Failed to sync chat messages:', error);
-      }
-    } catch (err: any) {
-      console.error('Error syncing chat messages', err);
+    if (queue.length > 0) {
+      set({ pendingSyncQueue: [] });
     }
+    return Promise.resolve();
   },
 
   syncChatToSupabase: async () => {
@@ -223,20 +198,41 @@ export const createChatSlice: StateCreator<
       (payload) => {
         // Prevent duplicates if we already optimistic-UI'd this message
         const currentMessages = get().chatMessages;
-        const isDuplicate = currentMessages.some(m => 
-          m.id === payload.new.id || 
-          (m.content === payload.new.content && m.timestamp === payload.new.created_at)
-        );
+        const isDuplicate = currentMessages.some(m => {
+          if (m.id === payload.new.id) return true;
+          
+          if (typeof m.content === 'string' && typeof payload.new.content === 'string') {
+            if (m.content.trim() === payload.new.content.trim() && m.role === payload.new.role) {
+              const timeDiff = Math.abs(new Date(m.timestamp).getTime() - new Date(payload.new.created_at).getTime());
+              return timeDiff < 15000; // 15 seconds window for optimistic UI match
+            }
+          }
+          
+          return false;
+        });
         
         if (!isDuplicate) {
           set((state) => ({
             chatMessages: [...state.chatMessages, {
               id: payload.new.id,
-              role: payload.new.role,
+              role: payload.new.role as any,
               content: payload.new.content,
               timestamp: payload.new.created_at,
               metadata: payload.new.metadata
             }]
+          }));
+        } else {
+          // If it's an optimistic duplicate, update its temporary ID to the real database ID
+          set((state) => ({
+            chatMessages: state.chatMessages.map(m => {
+              if (m.id === payload.new.id) return m;
+              if (typeof m.content === 'string' && typeof payload.new.content === 'string') {
+                if (m.content.trim() === payload.new.content.trim() && m.role === payload.new.role) {
+                  return { ...m, id: payload.new.id };
+                }
+              }
+              return m;
+            })
           }));
         }
       }

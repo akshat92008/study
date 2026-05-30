@@ -1,7 +1,7 @@
 // lib/ai/providers/GeminiProvider.ts
 
 import { LLMProvider, LLMMessage } from '@/lib/ai/providers/LLMProvider';
-import { generateJSON, streamText } from '@/lib/ai/gemini';
+import { generateJSON, streamText } from '@/lib/ai/provider-client';
 import { ProviderCapabilities } from '@/lib/ai/providers/LLMProvider';
 import { tracer, meter } from '@/lib/telemetry/otel';
 import type { Counter } from '@opentelemetry/api';

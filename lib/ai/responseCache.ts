@@ -17,7 +17,7 @@ function hashKey(prompt: string, systemPrompt?: string): string {
 }
 
 import { createClient } from '@/lib/supabase/server';
-import { getEmbedding } from '@/lib/ai/gemini';
+import { getEmbedding } from '@/lib/ai/provider-client';
 import { logger } from '@/lib/utils/logger';
 
 export async function checkSemanticCache(prompt: string, userId: string): Promise<string | null> {

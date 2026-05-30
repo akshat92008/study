@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { createClient } from '@/lib/supabase/server';
-import { generateJSON } from '@/lib/ai/gemini';
+import { generateJSON } from '@/lib/ai/provider-client';
 
 const AnalyzeMistakeSchema = z.object({ rootCause: z.string(), knowledgeGap: z.string(), remediation: z.string(), prevention: z.string() });
 const MarkLossReportSchema = z.object({ biggestLeak: z.string(), recoveryPlan: z.array(z.string()), estimatedImprovement: z.number(), overallAssessment: z.string() });

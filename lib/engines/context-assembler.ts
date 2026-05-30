@@ -3,7 +3,7 @@
 
 import { createClient } from '@/lib/supabase/server';
 import { hasMatchChatMemoryRpc } from '@/lib/db/rpc-utils';
-import { getEmbedding } from '@/lib/ai/gemini';
+import { getEmbedding } from '@/lib/ai/provider-client';
 import { logger } from '@/lib/utils/logger';
 
 interface MemoryItem {

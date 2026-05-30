@@ -1,4 +1,4 @@
-import { getEmbedding } from '@/lib/ai/gemini';
+import { getEmbedding } from '@/lib/ai/provider-client';
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/utils/logger';
 import { routeJSONGeneration } from '@/lib/ai/router';

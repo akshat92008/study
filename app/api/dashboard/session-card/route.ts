@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { generateJSON } from '@/lib/ai/gemini';
+import { generateJSON } from '@/lib/ai/provider-client';
 import { z } from 'zod';
 
 const INVALID_TOPIC_VALUES = new Set([

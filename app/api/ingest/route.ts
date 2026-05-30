@@ -137,7 +137,7 @@ export async function POST(request: NextRequest) {
     // 4. Auto-generate FSRS flashcards in background
     Promise.resolve().then(async () => {
       try {
-        const { generateJSON } = await import('@/lib/ai/gemini');
+        const { generateJSON } = await import('@/lib/ai/provider-client');
         const { createClient: sc } = await import('@/lib/supabase/server');
         const db = await sc();
         

@@ -1,7 +1,7 @@
 import { generateDailyPlan, generateMorningBriefing } from '@/lib/ai/agents/planner';
 import { syncStudentModel } from '@/lib/engines/inference-engine';
 import { logger } from '@/lib/utils/logger';
-import { generateJSON, getEmbedding } from '@/lib/ai/gemini';
+import { generateJSON, getEmbedding } from '@/lib/ai/provider-client';
 import { resetStreakIfInactive } from '@/lib/engines/streak-engine';
 import { EventWorkerService } from '@/lib/events/worker';
 import { z } from 'zod';

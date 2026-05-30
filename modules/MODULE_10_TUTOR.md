@@ -65,7 +65,7 @@ ${mistakes.length > 0
 ```typescript
 import { NextRequest } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { streamText } from '@/lib/ai/gemini';
+import { streamText } from '@/lib/ai/provider-client';
 import { TUTOR_SYSTEM_PROMPT, buildTutorContext } from '@/lib/ai/prompts/tutor';
 
 export async function POST(req: NextRequest) {

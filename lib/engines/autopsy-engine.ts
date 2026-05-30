@@ -4,7 +4,7 @@ import { getExamConfig } from '@/lib/utils/constants';
 import { AutopsyPaperSchema, AutopsyQuestionSchema } from './autopsy-schemas';
 import { generateMentorRecovery } from './mentor-engine';
 import { logger } from '@/lib/utils/logger';
-import { generateJSON } from '@/lib/ai/gemini';
+import { generateJSON } from '@/lib/ai/provider-client';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { generateKnowledgeUpdate } from './knowledge-engine';
 

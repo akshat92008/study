@@ -55,24 +55,30 @@ export function RealtimeProvider({ children }: { children: React.ReactNode }) {
             
             // Handle different event types dynamically
             switch (type) {
-              case 'CONCEPT_STRUGGLE':
+              case 'CONCEPT_DISCOVERED':
                 addToast('Knowledge gap detected. Adjusting Atlas mastery...', 'info');
                 debouncedRefresh();
                 break;
-              case 'MOCK_TEST_COMPLETED':
+              case 'AUTOPSY_MOCK_PROCESSED':
                 addToast('Mock test autopsy complete. New recovery sprint generated.', 'success');
                 debouncedRefresh();
                 break;
-              case 'SESSION_COMPLETED':
+              case 'STUDY_SESSION_COMPLETED':
+              case 'MIND_TUTOR_COMPLETED':
+              case 'COMMAND_SESSION_COMPLETED':
                 addToast('Study session recorded. Daily snapshot updated.', 'success');
                 debouncedRefresh();
                 break;
-              case 'CARD_REVIEWED':
+              case 'MEMORY_CARD_REVIEWED':
                 // Silent background update
                 debouncedRefresh();
                 break;
               case 'NEW_DOCUMENT_INGESTED':
                 addToast('Document processed into knowledge graph.', 'success');
+                debouncedRefresh();
+                break;
+              case 'CHAT_MESSAGE_PROCESSED':
+                // Silent background update to keep UI fresh
                 debouncedRefresh();
                 break;
               default:

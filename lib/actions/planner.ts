@@ -117,7 +117,7 @@ export async function generateSprintPlanAction(subjects: string[], targetDate: s
       - Start scheduling from today (${todayStr}) up to ${finalEndDate}.
     `;
 
-    const { generateJSON } = await import('@/lib/ai/gemini');
+    const { generateJSON } = await import('@/lib/ai/provider-client');
     const plan = await generateJSON('flash', 'Expert academic scheduler.', prompt, SprintPlanSchema);
     
     if (!plan || !plan.tasks || plan.tasks.length === 0) {

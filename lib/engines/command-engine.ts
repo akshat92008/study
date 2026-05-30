@@ -1,6 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import { createAdminClient } from '@/lib/supabase/admin';
-import { generateJSON } from '@/lib/ai/gemini';
+import { generateJSON } from '@/lib/ai/provider-client';
 import { logger } from '@/lib/utils/logger';
 import { z } from 'zod';
 import { invalidateSessionCards } from '@/lib/services/session-card-cache';

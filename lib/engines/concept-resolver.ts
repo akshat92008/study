@@ -1,5 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
-import { getEmbedding } from '@/lib/ai/gemini';
+import { getEmbedding } from '@/lib/ai/provider-client';
 import { logger } from '@/lib/utils/logger';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 

@@ -16,7 +16,7 @@ Import { createEmptyCard, fsrs, Rating, State } from 'ts-fsrs'.
 ```typescript
 import { createEmptyCard, fsrs, Rating, type Card as FSRSCard } from 'ts-fsrs';
 import { createClient } from '@/lib/supabase/server';
-import { generateJSON } from '@/lib/ai/gemini';
+import { generateJSON } from '@/lib/ai/provider-client';
 
 const scheduler = fsrs({
   request_retention: 0.9, // Target 90% retention

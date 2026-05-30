@@ -1,5 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
-import { generateJSON } from '@/lib/ai/gemini';
+import { generateJSON } from '@/lib/ai/provider-client';
 import { logger } from '@/lib/utils/logger';
 
 export async function syncStudentModel(userId: string, isInitialFingerprint: boolean = false) {

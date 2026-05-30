@@ -62,7 +62,7 @@ export async function GET() {
       priority: t.priority,
     }));
 
-    const plannedMinutes = tasks.reduce((sum, t) => sum + (t.completed ? 0 : (t as any).estimated_minutes || 0), 0);
+    const plannedMinutes = (plannedTasks || []).reduce((sum: number, t: any) => sum + (t.is_completed ? 0 : (t.estimated_minutes || 0)), 0);
 
     // Completed sessions for today
     const { data: todaySessions } = await supabase

@@ -15,7 +15,7 @@ Use Gemini AI for deep mistake analysis. Style with CSS variables. NO Tailwind.
 
 ```typescript
 import { createClient } from '@/lib/supabase/server';
-import { generateJSON } from '@/lib/ai/gemini';
+import { generateJSON } from '@/lib/ai/provider-client';
 
 export async function getMistakeAnalytics(userId: string) {
   const supabase = await createClient();

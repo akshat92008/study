@@ -16,7 +16,7 @@ Create a form to log mock test results with per-question breakdown.
 'use server';
 
 import { createClient } from '@/lib/supabase/server';
-import { generateJSON } from '@/lib/ai/gemini';
+import { generateJSON } from '@/lib/ai/provider-client';
 
 export async function logMockTest(formData: FormData) {
   const supabase = await createClient();

@@ -1,5 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
-import { generateJSON } from '@/lib/ai/gemini';
+import { generateJSON } from '@/lib/ai/provider-client';
 import { z } from 'zod';
 import { getExamConfig } from '@/lib/utils/constants';
 import { DailyMissionSchema, MissionTaskSchema } from '@/lib/engines/planner-schemas';
@@ -292,6 +292,6 @@ GOOD EXAMPLE (Overwhelmed): "Telemetry shows your cognitive load was peaking yes
 GOOD EXAMPLE (Momentum): "You're on a 5-day streak and your focus score is in the 90th percentile. This is when we attack the hard stuff. I've queued the rotational mechanics autopsies you failed last week. Let's reclaim those 12 marks."
 `;
   
-  const { generateText } = await import('@/lib/ai/gemini');
+  const { generateText } = await import('@/lib/ai/provider-client');
   return generateText('flash', 'You are COMMAND, the daily mission AI.', prompt);
 }

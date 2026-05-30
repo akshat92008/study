@@ -16,7 +16,7 @@ Import types from @/lib/utils/types. Import Supabase client from @/lib/supabase/
 
 ```typescript
 import { createClient } from '@/lib/supabase/server';
-import { generateJSON } from '@/lib/ai/gemini';
+import { generateJSON } from '@/lib/ai/provider-client';
 
 // Get all concepts for a user, organized by subject
 export async function getCognitionGraph(userId: string) {

@@ -1,7 +1,7 @@
 import { createEmptyCard, fsrs, Rating, State, type Card as FSRSCard } from 'ts-fsrs';
 import { createClient } from '@/lib/supabase/server';
 import { createAdminClient } from '@/lib/supabase/admin';
-import { generateJSON } from '@/lib/ai/gemini';
+import { generateJSON } from '@/lib/ai/provider-client';
 import { searchPersonalKnowledge } from './rag-engine';
 import { FlashcardBatchSchema } from './memory-schemas';
 import { logger } from '@/lib/utils/logger';
@@ -568,7 +568,7 @@ export class MemoryConsumer {
           ? `Analyze this practice interaction.\n${historySnippet}\nStudent Answer: ${latestMessage}\nAI Feedback: ${latestResponse.slice(0, 800)}\n\nDid the student answer correctly? Respond ONLY as JSON:\n{"summary":"1 sentence","understood":true,"gapFound":"flashcard question or null","gapAnswer":"flashcard answer or null"}`
           : `Analyze this tutor exchange.\n${historySnippet}\nStudent: ${latestMessage}\nTutor: ${latestResponse.slice(0, 800)}\n\nRespond ONLY as JSON:\n{"summary":"1 sentence","understood":true,"gapFound":"flashcard question or null","gapAnswer":"flashcard answer or null"}`;
         
-        const { generateJSON } = await import('@/lib/ai/gemini');
+        const { generateJSON } = await import('@/lib/ai/provider-client');
         const raw = await generateJSON<any>('flash', 'Expert analyzer. Return JSON only.', analysisPrompt);
         
         if (raw && !raw.understood && raw.gapFound && raw.gapAnswer) {

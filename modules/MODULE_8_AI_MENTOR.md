@@ -80,7 +80,7 @@ ${recentMistakes.length > 0
 ## STEP 2: Mentor Agent — `lib/ai/agents/mentor.ts`
 
 ```typescript
-import { streamText } from '@/lib/ai/gemini';
+import { streamText } from '@/lib/ai/provider-client';
 import { MENTOR_SYSTEM_PROMPT, buildMentorContext } from '@/lib/ai/prompts/mentor';
 import { createClient } from '@/lib/supabase/server';
 

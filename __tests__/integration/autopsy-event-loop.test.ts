@@ -25,7 +25,7 @@ vi.mock('@/lib/supabase/server', () => ({
   })),
 }));
 
-vi.mock('@/lib/ai/gemini', () => ({
+vi.mock('@/lib/ai/provider-client', () => ({
   generateJSON: vi.fn(async (_model: string, _system: string, prompt: string) => {
     if (prompt.includes('Extract all questions')) {
       return {

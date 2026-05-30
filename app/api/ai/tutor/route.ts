@@ -10,7 +10,7 @@ import { resolveConceptByName } from '@/lib/engines/concept-resolver';
 import { createSingleCard } from '@/lib/engines/revision-engine';
 import { updateConceptState } from '@/lib/engines/cognition-graph';
 import { syncStudentModel } from '@/lib/engines/inference-engine';
-import { generateJSON } from '@/lib/ai/gemini';
+import { generateJSON } from '@/lib/ai/provider-client';
 import { routeStreamGeneration, routeEmbedding } from '@/lib/ai/router';
 
 import { generateSessionClosingMessage } from '@/lib/engines/session-closing';

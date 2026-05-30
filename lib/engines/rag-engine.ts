@@ -1,5 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
-import { getEmbedding } from '@/lib/ai/gemini';
+import { getEmbedding } from '@/lib/ai/provider-client';
 import { SupabaseClient } from '@supabase/supabase-js';
 
 export function chunkText(text: string, chunkSize = 400, overlapSize = 80): string[] {

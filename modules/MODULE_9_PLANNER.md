@@ -14,7 +14,7 @@ Use Gemini Flash for plan generation. Style with CSS variables. NO Tailwind.
 ## STEP 1: Planner Agent — `lib/ai/agents/planner.ts`
 
 ```typescript
-import { generateJSON } from '@/lib/ai/gemini';
+import { generateJSON } from '@/lib/ai/provider-client';
 import { createClient } from '@/lib/supabase/server';
 
 export async function generateDailyPlan(userId: string, date: string) {

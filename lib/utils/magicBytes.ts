@@ -1,5 +1,9 @@
 export async function validateMagicBytes(file: File, expectedMime: string): Promise<boolean> {
   const arr = new Uint8Array(await file.slice(0, 4).arrayBuffer());
+  return validateMagicBytesArray(arr, expectedMime);
+}
+
+export function validateMagicBytesArray(arr: Uint8Array, expectedMime: string): boolean {
   const hex = Array.from(arr).map(b => b.toString(16).padStart(2, '0')).join('').toUpperCase();
 
   switch (expectedMime) {

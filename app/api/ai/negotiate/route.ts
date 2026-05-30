@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { streamText, generateJSON } from '@/lib/ai/gemini';
+import { streamText, generateJSON } from '@/lib/ai/provider-client';
 import { z } from 'zod';
 
 // We ask the AI to return BOTH a conversational response and a new task list

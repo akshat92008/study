@@ -1,5 +1,5 @@
 import { BaseService } from './base.service';
-import { generateJSON } from '@/lib/ai/gemini';
+import { generateJSON } from '@/lib/ai/provider-client';
 import { MindTutorOutputSchema, MindTutorOutput, compileTutorSystemPrompt, MindTutorContext } from '@/lib/ai/prompts/tutor.prompt';
 import { logger } from '@/lib/utils/logger';
 import { ConceptService } from './concept.service';
