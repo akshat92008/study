@@ -145,12 +145,11 @@ export async function reserveBudgetForModelCall(
     estimatedOutputTokens,
   );
 
-  const supabase = createAdminClient();
-
   let data: string | null = null;
   let error: any = null;
 
   try {
+    const supabase = createAdminClient();
     const result = await supabase.rpc('reserve_ai_budget', {
       p_user_id: userId,
       p_feature: feature,
@@ -224,18 +223,13 @@ export async function commitBudgetUsage(
   reservationId: string,
   usage: ActualUsage,
 ): Promise<void> {
-  const supabase = createAdminClient();
   const promptTokens = Math.max(0, Math.round(usage.promptTokens ?? 0));
   const completionTokens = Math.max(0, Math.round(usage.completionTokens ?? 0));
   const totalTokens = promptTokens + completionTokens;
-
-  // If caller doesn't supply actual cost, derive it from token counts.
-  // This is conservative: we don't know the feature here so we use a
-  // mid-range rate. The reservation already holds the feature-specific
-  // estimate; the commit just records what was actually charged.
   const actualCost = usage.actualCost ?? (totalTokens / 1000) * 0.0001;
 
   try {
+    const supabase = createAdminClient();
     const { error } = await supabase.rpc('commit_ai_usage', {
       p_reservation_id: reservationId,
       p_actual_cost: actualCost,
@@ -272,9 +266,8 @@ export async function releaseBudgetReservation(
   reservationId: string,
   reason = 'call_failed',
 ): Promise<void> {
-  const supabase = createAdminClient();
-
   try {
+    const supabase = createAdminClient();
     const { error } = await supabase.rpc('release_ai_budget', {
       p_reservation_id: reservationId,
     });
