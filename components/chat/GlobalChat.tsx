@@ -178,7 +178,7 @@ export const GlobalChat = memo(function GlobalChat() {
     } catch (e: any) {
       console.error('Stream failed to complete', e);
       const status = e?.status;
-      let content = 'I lost connection there. Please try again.';
+      let content = 'Something went wrong. Please try again.';
       if (status === 400) content = 'I could not read that message. Please try again.';
       else if (status === 401) content = 'Your session has expired. Please log in again.';
       else if (status === 429) content = 'You are sending messages too quickly. Please slow down.';

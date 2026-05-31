@@ -147,13 +147,12 @@ export async function POST(req: NextRequest) {
         userId: user.id,
         receivedKeys: Object.keys(rawBody ?? {}),
         reason: err instanceof Error ? err.message : 'unknown',
-        feature: 'chat'
       });
-      return apiErrorResponse('invalid_chat_payload', {
-        status: 400,
+      return NextResponse.json({
+        error: 'invalid_chat_payload',
         message: 'MIND could not read the chat request payload.',
         requestId,
-      });
+      }, { status: 400 });
     }
 
     const message =
