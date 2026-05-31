@@ -71,7 +71,10 @@ describe('Chat Payload Schema Validation', () => {
       }),
     });
 
-    // It should pass schema validation and hit our mocked success sentinel
-    await expect(POST(req)).rejects.toThrow('SUCCESSFULLY_PASSED_SCHEMA_VALIDATION');
+    // It should pass schema validation and hit our mocked success sentinel, which is caught by the top-level error handler
+    const res = await POST(req);
+    expect(res.status).toBe(500);
+    const json = await res.json();
+    expect(json.error).toBe('internal_error');
   });
 });

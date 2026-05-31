@@ -75,542 +75,547 @@ export async function GET(request?: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  // ============================================================================
-  // STAGE 1: REQUEST VALIDATION
-  // ============================================================================
-  const requestId = getRequestId(req);
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) {
-    return apiErrorResponse('unauthorized', {
-      status: 401,
-      message: 'Authentication is required.',
-      requestId,
-    });
-  }
-
-  logger.info('Chat request started', { userId: user.id, requestId, feature: 'chat' });
-
-  const { allowed, remaining, resetAt } = await checkRateLimit({
-    identifier: user.id,
-    bucket: 'chat',
-    maxTokens: 30,
-    windowSeconds: 60,
-    failClosed: true,
-  });
-  if (!allowed) return rateLimitResponse(remaining, resetAt);
-
-  const ChatPayloadSchema = z.object({
-    message: z.string().nullable().optional(),
-    content: z.string().nullable().optional(),
-    text: z.string().nullable().optional(),
-    input: z.string().nullable().optional(),
-    prompt: z.string().nullable().optional(),
-
-    history: z.array(z.any()).nullable().optional(),
-
-    imageBase64: z.string().nullable().optional(),
-    imageMimeType: z.string().nullable().optional(),
-    documentBase64: z.string().nullable().optional(),
-    documentMimeType: z.string().nullable().optional(),
-
-    chatId: z.string().nullable().optional(),
-    activeGoalId: z.string().nullable().optional(),
-
-    sessionTurnsCount: z.number().nullable().optional()
-  });
-
-  let rawBody: any;
   try {
-    rawBody = await req.json();
-  } catch (jsonErr) {
-    logger.warn('Invalid JSON in request', {
-      requestId,
-      userId: user.id,
-      reason: jsonErr instanceof Error ? jsonErr.message : 'unknown',
-      feature: 'chat'
+    // ============================================================================
+    // STAGE 1: REQUEST VALIDATION
+    // ============================================================================
+    const requestId = getRequestId(req);
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      return apiErrorResponse('unauthorized', {
+        status: 401,
+        message: 'Authentication is required.',
+        requestId,
+      });
+    }
+
+    logger.info('Chat request started', { userId: user.id, requestId, feature: 'chat' });
+
+    const { allowed, remaining, resetAt } = await checkRateLimit({
+      identifier: user.id,
+      bucket: 'chat',
+      maxTokens: 30,
+      windowSeconds: 60,
+      failClosed: true,
     });
-    return apiErrorResponse('invalid_chat_payload', {
-      status: 400,
-      message: 'MIND could not read the chat request payload.',
-      requestId,
-    });
-  }
+    if (!allowed) return rateLimitResponse(remaining, resetAt);
 
-  let parsed;
-  try {
-    parsed = ChatPayloadSchema.parse(rawBody);
-  } catch (err) {
-    logger.warn('Invalid chat payload', {
-      requestId,
-      userId: user.id,
-      receivedKeys: Object.keys(rawBody ?? {}),
-      reason: err instanceof Error ? err.message : 'unknown',
-      feature: 'chat'
-    });
-    return apiErrorResponse('invalid_chat_payload', {
-      status: 400,
-      message: 'MIND could not read the chat request payload.',
-      requestId,
-    });
-  }
+    const ChatPayloadSchema = z.object({
+      message: z.string().nullable().optional(),
+      content: z.string().nullable().optional(),
+      text: z.string().nullable().optional(),
+      input: z.string().nullable().optional(),
+      prompt: z.string().nullable().optional(),
 
-  const message =
-    parsed.message ??
-    parsed.content ??
-    parsed.text ??
-    parsed.input ??
-    parsed.prompt ??
-    '';
+      history: z.array(z.any()).nullable().optional(),
 
-  const history = Array.isArray(parsed.history) ? parsed.history : [];
-  const imageBase64 = parsed.imageBase64 ?? undefined;
-  const imageMimeType = parsed.imageMimeType ?? undefined;
-  const documentBase64 = parsed.documentBase64 ?? undefined;
-  const documentMimeType = parsed.documentMimeType ?? undefined;
-  const chatId = parsed.chatId ?? undefined;
-  const activeGoalId = parsed.activeGoalId ?? undefined;
-  const sessionTurnsCount = parsed.sessionTurnsCount ?? 0;
-  const sessionId = await getOrCreateGlobalChatSession(supabase, user.id);
+      imageBase64: z.string().nullable().optional(),
+      imageMimeType: z.string().nullable().optional(),
+      documentBase64: z.string().nullable().optional(),
+      documentMimeType: z.string().nullable().optional(),
 
-  if (imageBase64) {
-    const imgValidation = validateBase64Payload(imageBase64, imageMimeType);
-    if (!imgValidation.valid) return imgValidation.error!;
-  }
+      chatId: z.string().nullable().optional(),
+      activeGoalId: z.string().nullable().optional(),
 
-  const persistedHistory = await loadRecentMessages(supabase, sessionId);
-  const recentHistory = persistedHistory.slice(-50);
-
-  const userMessageForPersistence = message || (imageBase64 ? '[Image question]' : '');
-  if (!userMessageForPersistence.trim()) {
-    return apiErrorResponse('invalid_request', {
-      status: 400,
-      message: 'Message or upload is required.',
-      requestId,
-    });
-  }
-
-  const { checkIdempotency } = await import('@/lib/middleware/idempotency');
-  const idempotencyKey = req.headers.get('Idempotency-Key');
-  const { isDuplicate, error: idempError } = await checkIdempotency(user.id, 'chat', idempotencyKey);
-
-  if (idempError) {
-    return apiErrorResponse('invalid_idempotency_key', {
-      status: 400,
-      message: idempError,
-      requestId,
-    });
-  }
-  if (isDuplicate) {
-    return apiErrorResponse('duplicate_request', {
-      status: 409,
-      message: 'Duplicate request.',
-      requestId,
-    });
-  }
-
-  // ── MODULE 3: stable request id used as assistant message idempotency key ──
-  // Format: "<requestId>:assistant"
-  // The unique index on chat_messages(user_id, idempotency_key) ensures no
-  // duplicate row is created even if this request is retried or the event
-  // worker runs again.
-  const messageRequestId = idempotencyKey || requestId;
-
-  // Persist user message (once, no idempotency key needed — request dedup above covers this)
-  await persistChatMessage(supabase, {
-    sessionId,
-    userId: user.id,
-    role: 'user',
-    content: userMessageForPersistence,
-  });
-
-  // ============================================================================
-  // STAGE 2: CONTEXT HYDRATION & INTENT (PARALLEL)
-  // ============================================================================
-  const profilePromise = supabase.from('profiles').select('exam_type').eq('id', user.id).maybeSingle();
-  const intentPromise = classifyMessageCombined(
-    message || '',
-    recentHistory.slice(-2).map((m: any) => m.content).join(' '),
-    undefined,
-    user.id
-  );
-
-  const [profileResult, intentResult] = await Promise.all([
-    Promise.race([profilePromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1500))]).catch(() => ({ data: null })),
-    Promise.race([intentPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1500))]).catch(() => ({
-      intent: { intent: 'GENERAL_CHAT' }, emotion: 'neutral', confidence: 0.5
-    }))
-  ]) as [any, any];
-
-  const profilePreview = profileResult?.data;
-  const { intent: detectedIntent, emotion } = intentResult;
-
-  // ============================================================================
-  // STAGE 3 & 4: MEMORY RETRIEVAL & STUDENT MODEL (PARALLEL)
-  // ============================================================================
-  const memoryPromise = (message && message.trim().length > 15)
-    ? new ChatMemoryService().searchMemory(user.id, message, 2).catch((err) => {
-        logger.error('CRITICAL: Semantic memory failed', err);
-        return [] as string[];
-      })
-    : Promise.resolve([] as string[]);
-
-  const mindContextPromise = getMINDContext(
-    user.id,
-    message,
-    detectedIntent.topic || undefined,
-    detectedIntent.subject || undefined
-  ).catch((err) => {
-    logger.error('Failed to get MIND context', err);
-    return null;
-  });
-
-  const [semanticMemories, mindContext] = await Promise.all([
-    Promise.race([memoryPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1000))]).catch(() => [] as string[]),
-    Promise.race([mindContextPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1000))]).catch(() => null)
-  ]) as [string[], any];
-
-  let systemPrompt = getMINDSystemPrompt(mindContext, semanticMemories, detectedIntent.intent);
-  const orchestratorResult = orchestrateFromIntent(
-    detectedIntent,
-    !!(imageBase64 && imageMimeType),
-    message || ''
-  );
-  await logDecision(orchestratorResult, user.id, message || '').catch(() => {});
-
-  // ============================================================================
-  // STAGE 5: AI ORCHESTRATION & STREAMING
-  // ============================================================================
-
-  // ── Branch A: Image / vision call ──────────────────────────────────────────
-  if (
-    imageBase64 &&
-    imageMimeType &&
-    !(orchestratorResult.intent === 'mock_autopsy' && orchestratorResult.needsFileProcessing)
-  ) {
-    const imageBudget = await reserveModelBudgetOrResponse({
-      userId: user.id,
-      feature: 'image',
-      model: 'router:vision',
-      estimatedInputTokens: estimateTextTokens(systemPrompt, message || '[Image question]') + 1200,
-      estimatedOutputTokens: 1200,
-    });
-    if (imageBudget instanceof Response) return imageBudget;
-
-    const stream = new ReadableStream({
-      async start(controller) {
-        let answer = '';
-        let budgetSettled = false;
-        try {
-          answer = await routeVisionCall(systemPrompt, imageBase64, imageMimeType, message || 'Solve this question completely.');
-          controller.enqueue(encoder.encode(answer));
-        } catch {
-          await releaseBudgetReservation(imageBudget.reservationId, 'vision_call_failed');
-          budgetSettled = true;
-          answer = 'I had trouble reading that image. Try a clearer photo, or type the question out.';
-          controller.enqueue(encoder.encode(answer));
-        }
-
-        if (!budgetSettled) {
-          await commitBudgetUsage(imageBudget.reservationId, {
-            promptTokens: estimateTextTokens(systemPrompt, message || '[Image question]') + 1200,
-            completionTokens: estimateTextTokens(answer),
-            route: '/api/ai/chat',
-          });
-          budgetSettled = true;
-        }
-
-        // ── MODULE 3: persist assistant message ONCE, capture id ──
-        let assistantMessageId: string;
-        try {
-          ({ id: assistantMessageId } = await persistChatMessage(supabase, {
-            sessionId,
-            userId: user.id,
-            role: 'assistant',
-            content: answer,
-            intent: detectedIntent.intent,
-            emotionalState: emotion,
-            idempotencyKey: `${messageRequestId}:assistant`,
-          }));
-        } catch (persistErr) {
-          logger.error('Chat route [image]: failed to persist assistant message', persistErr);
-          controller.close();
-          return;
-        }
-
-        // Worker receives assistant_message_id — must NOT persist again
-        await EventDispatcher.publish({
-          user_id: user.id,
-          type: 'CHAT_MESSAGE_PROCESSED',
-          data: {
-            sessionId,
-            message: message || '[Image question]',
-            fullResponse: answer,
-            emotion,
-            history: recentHistory,
-            sessionTurnsCount,
-            mindContext,
-            intent: detectedIntent,
-            assistant_message_id: assistantMessageId,
-          },
-          idempotency_key: crypto.randomUUID(),
-        }).catch((e: Error) => logger.error('Image branch: event publish failed', e));
-
-        controller.close();
-      }
-    });
-    return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
-  }
-
-  // ── Branch B: Mock-autopsy file redirect ───────────────────────────────────
-  if (
-    orchestratorResult.intent === 'mock_autopsy' &&
-    orchestratorResult.needsFileProcessing &&
-    (imageBase64 || documentBase64)
-  ) {
-    const responseText = "I can see this is a mock-test upload. Full AUTOPSY runs outside the chat stream so the upload can be validated, extracted, and processed safely. Open AUTOPSY and upload the same file there; I'll use the processed result on the next turn.";
-
-    const stream = new ReadableStream({
-      async start(controller) {
-        controller.enqueue(encoder.encode(responseText));
-
-        // ── MODULE 3: persist assistant message ONCE, capture id ──
-        let assistantMessageId: string;
-        try {
-          ({ id: assistantMessageId } = await persistChatMessage(supabase, {
-            sessionId,
-            userId: user.id,
-            role: 'assistant',
-            content: responseText,
-            intent: detectedIntent.intent,
-            emotionalState: emotion,
-            metadata: { action: 'run_autopsy' },
-            idempotencyKey: `${messageRequestId}:assistant`,
-          }));
-        } catch (persistErr) {
-          logger.error('Chat route [autopsy-redirect]: failed to persist assistant message', persistErr);
-          controller.close();
-          return;
-        }
-
-        // Worker receives assistant_message_id — must NOT persist again
-        await EventDispatcher.publish({
-          user_id: user.id,
-          type: 'CHAT_MESSAGE_PROCESSED',
-          data: {
-            sessionId,
-            message: message || '[Autopsy upload]',
-            fullResponse: responseText,
-            emotion,
-            history: recentHistory,
-            sessionTurnsCount,
-            mindContext,
-            intent: detectedIntent,
-            assistant_message_id: assistantMessageId,
-          },
-          idempotency_key: crypto.randomUUID(),
-        }).catch((e: Error) => logger.error('Autopsy-redirect branch: event publish failed', e));
-
-        controller.close();
-      }
+      sessionTurnsCount: z.number().nullable().optional()
     });
 
-    return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
-  }
-
-  const intent = detectedIntent;
-
-  // ── Branch C: Overwhelmed / emotional grounding ────────────────────────────
-  if (
-    mindContext?.emotionalState === 'overwhelmed' &&
-    ['TUTOR_SESSION', 'PRACTICE'].includes(orchestratorResult.intent)
-  ) {
-    const recentVictory = mindContext.weakConcepts.find((c: any) =>
-      c.mastery === 'developing' || c.mastery === 'proficient'
-    );
-    const masteryPercent = mindContext.masteryStats.masteryPercent;
-    const streakDays = mindContext.profile.streakDays;
-
-    const groundingMessage = [
-      `Before we go into ${intent.topic || 'that topic'} — I'm noticing you seem overwhelmed right now, and I'm not going to add more to the pile.`,
-      ``,
-      `Here's what's actually true right now: you're at ${masteryPercent}% mastery across your syllabus.`,
-      streakDays > 1 ? `You've shown up ${streakDays} days in a row. That's not nothing.` : '',
-      recentVictory ? `You're developing ${recentVictory.name} — that's real progress, not luck.` : '',
-      ``,
-      `Right now, pick one of these:`,
-      ``,
-      `**1. Take 10 minutes away from your screen.** Come back and we'll tackle one small thing together.`,
-      ``,
-      `**2. Tell me one specific thing that's making you feel stuck.** Not "everything" — one thing. I'll help you sort it.`,
-      ``,
-      `**3. Do 5 flashcard reviews only.** Short. Familiar. It'll remind your brain it still knows things.`,
-      ``,
-      `Which one works for right now?`,
-    ].filter(Boolean).join('\n');
-
-    const stream = new ReadableStream({
-      async start(controller) {
-        controller.enqueue(encoder.encode(groundingMessage));
-
-        // ── MODULE 3: persist assistant message ONCE, capture id ──
-        let assistantMessageId: string;
-        try {
-          ({ id: assistantMessageId } = await persistChatMessage(supabase, {
-            sessionId,
-            userId: user.id,
-            role: 'assistant',
-            content: groundingMessage,
-            intent: intent.intent,
-            emotionalState: emotion,
-            idempotencyKey: `${messageRequestId}:assistant`,
-          }));
-        } catch (persistErr) {
-          logger.error('Chat route [grounding]: failed to persist assistant message', persistErr);
-          controller.close();
-          return;
-        }
-
-        // Worker receives assistant_message_id — must NOT persist again
-        await EventDispatcher.publish({
-          user_id: user.id,
-          type: 'CHAT_MESSAGE_PROCESSED',
-          data: {
-            sessionId, message, fullResponse: groundingMessage, emotion,
-            history: recentHistory, sessionTurnsCount, mindContext, intent,
-            assistant_message_id: assistantMessageId,
-          },
-          idempotency_key: crypto.randomUUID(),
-        }).catch((e: Error) => logger.error('Grounding branch: event publish failed', e));
-
-        controller.close();
-      }
-    });
-    return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-cache' } });
-  }
-
-  // ── Branch D: Main streaming branch ────────────────────────────────────────
-  const mainBudget = shouldReserveMainChatBudget(intent.intent)
-    ? await reserveModelBudgetOrResponse({
+    let rawBody: any;
+    try {
+      rawBody = await req.json();
+    } catch (jsonErr) {
+      logger.warn('Invalid JSON in request', {
+        requestId,
         userId: user.id,
-        feature: budgetFeatureForMainChat(intent.intent, orchestratorResult.intent),
-        model: 'router:chat',
-        estimatedInputTokens: estimateMainPromptTokens(systemPrompt, recentHistory, message || ''),
-        estimatedOutputTokens: 1600,
-      })
-    : null;
-  if (mainBudget instanceof Response) return mainBudget;
+        reason: jsonErr instanceof Error ? jsonErr.message : 'unknown',
+        feature: 'chat'
+      });
+      return apiErrorResponse('invalid_chat_payload', {
+        status: 400,
+        message: 'MIND could not read the chat request payload.',
+        requestId,
+      });
+    }
 
-  const stream = new ReadableStream({
-    async start(controller) {
-      let fullResponse = '';
-      let metadataPayload: any = null;
-      let budgetSettled = false;
+    let parsed;
+    try {
+      parsed = ChatPayloadSchema.parse(rawBody);
+    } catch (err) {
+      logger.warn('Invalid chat payload', {
+        requestId,
+        userId: user.id,
+        receivedKeys: Object.keys(rawBody ?? {}),
+        reason: err instanceof Error ? err.message : 'unknown',
+        feature: 'chat'
+      });
+      return apiErrorResponse('invalid_chat_payload', {
+        status: 400,
+        message: 'MIND could not read the chat request payload.',
+        requestId,
+      });
+    }
 
-      try {
-        if (['AUTOPSY', 'ATLAS', 'FLASHCARDS'].includes(intent.intent)) {
-          const routeMessages: Record<string, string> = {
-            AUTOPSY: "Opening **AUTOPSY** — upload your mock test PDF or photo. I'll diagnose every wrong answer by root cause and show you your recoverable score.",
-            FLASHCARDS: `You have **${mindContext?.overdueCardsCount || 0}** cards due today. Opening your revision queue now.`,
-            ATLAS: `Your knowledge map is at **${mindContext?.masteryStats?.masteryPercent || 0}%** mastery. Opening ATLAS now.`,
-          };
-          const msg = routeMessages[intent.intent] || 'Opening that for you now...';
-          controller.enqueue(encoder.encode(msg));
-          fullResponse = msg;
-          metadataPayload = { action: intentToAction(intent.intent) };
-        } else {
-          const conversationMessages = buildConversationMessages(recentHistory, message || '');
-          for await (const chunk of routeStreamGeneration(systemPrompt, conversationMessages, 0.7)) {
-            controller.enqueue(encoder.encode(chunk));
-            fullResponse += chunk;
+    const message =
+      parsed.message ??
+      parsed.content ??
+      parsed.text ??
+      parsed.input ??
+      parsed.prompt ??
+      '';
+
+    const history = Array.isArray(parsed.history) ? parsed.history : [];
+    const imageBase64 = parsed.imageBase64 ?? undefined;
+    const imageMimeType = parsed.imageMimeType ?? undefined;
+    const documentBase64 = parsed.documentBase64 ?? undefined;
+    const documentMimeType = parsed.documentMimeType ?? undefined;
+    const chatId = parsed.chatId ?? undefined;
+    const activeGoalId = parsed.activeGoalId ?? undefined;
+    const sessionTurnsCount = parsed.sessionTurnsCount ?? 0;
+    const sessionId = await getOrCreateGlobalChatSession(supabase, user.id);
+
+    if (imageBase64) {
+      const imgValidation = validateBase64Payload(imageBase64, imageMimeType);
+      if (!imgValidation.valid) return imgValidation.error!;
+    }
+
+    const persistedHistory = await loadRecentMessages(supabase, sessionId);
+    const recentHistory = persistedHistory.slice(-50);
+
+    const userMessageForPersistence = message || (imageBase64 ? '[Image question]' : '');
+    if (!userMessageForPersistence.trim()) {
+      return apiErrorResponse('invalid_request', {
+        status: 400,
+        message: 'Message or upload is required.',
+        requestId,
+      });
+    }
+
+    const { checkIdempotency } = await import('@/lib/middleware/idempotency');
+    const idempotencyKey = req.headers.get('Idempotency-Key');
+    const { isDuplicate, error: idempError } = await checkIdempotency(user.id, 'chat', idempotencyKey);
+
+    if (idempError) {
+      return apiErrorResponse('invalid_idempotency_key', {
+        status: 400,
+        message: idempError,
+        requestId,
+      });
+    }
+    if (isDuplicate) {
+      return apiErrorResponse('duplicate_request', {
+        status: 409,
+        message: 'Duplicate request.',
+        requestId,
+      });
+    }
+
+    // ── MODULE 3: stable request id used as assistant message idempotency key ──
+    // Format: "<requestId>:assistant"
+    // The unique index on chat_messages(user_id, idempotency_key) ensures no
+    // duplicate row is created even if this request is retried or the event
+    // worker runs again.
+    const messageRequestId = idempotencyKey || requestId;
+
+    // Persist user message (once, no idempotency key needed — request dedup above covers this)
+    await persistChatMessage(supabase, {
+      sessionId,
+      userId: user.id,
+      role: 'user',
+      content: userMessageForPersistence,
+    });
+
+    // ============================================================================
+    // STAGE 2: CONTEXT HYDRATION & INTENT (PARALLEL)
+    // ============================================================================
+    const profilePromise = supabase.from('profiles').select('exam_type').eq('id', user.id).maybeSingle();
+    const intentPromise = classifyMessageCombined(
+      message || '',
+      recentHistory.slice(-2).map((m: any) => m.content).join(' '),
+      undefined,
+      user.id
+    );
+
+    const [profileResult, intentResult] = await Promise.all([
+      Promise.race([profilePromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1500))]).catch(() => ({ data: null })),
+      Promise.race([intentPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1500))]).catch(() => ({
+        intent: { intent: 'GENERAL_CHAT' }, emotion: 'neutral', confidence: 0.5
+      }))
+    ]) as [any, any];
+
+    const profilePreview = profileResult?.data;
+    const { intent: detectedIntent, emotion } = intentResult;
+
+    // ============================================================================
+    // STAGE 3 & 4: MEMORY RETRIEVAL & STUDENT MODEL (PARALLEL)
+    // ============================================================================
+    const memoryPromise = (message && message.trim().length > 15)
+      ? new ChatMemoryService().searchMemory(user.id, message, 2).catch((err) => {
+          logger.error('CRITICAL: Semantic memory failed', err);
+          return [] as string[];
+        })
+      : Promise.resolve([] as string[]);
+
+    const mindContextPromise = getMINDContext(
+      user.id,
+      message,
+      detectedIntent.topic || undefined,
+      detectedIntent.subject || undefined
+    ).catch((err) => {
+      logger.error('Failed to get MIND context', err);
+      return null;
+    });
+
+    const [semanticMemories, mindContext] = await Promise.all([
+      Promise.race([memoryPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1000))]).catch(() => [] as string[]),
+      Promise.race([mindContextPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1000))]).catch(() => null)
+    ]) as [string[], any];
+
+    let systemPrompt = getMINDSystemPrompt(mindContext, semanticMemories, detectedIntent.intent);
+    const orchestratorResult = orchestrateFromIntent(
+      detectedIntent,
+      !!(imageBase64 && imageMimeType),
+      message || ''
+    );
+    await logDecision(orchestratorResult, user.id, message || '').catch(() => {});
+
+    // ============================================================================
+    // STAGE 5: AI ORCHESTRATION & STREAMING
+    // ============================================================================
+
+    // ── Branch A: Image / vision call ──────────────────────────────────────────
+    if (
+      imageBase64 &&
+      imageMimeType &&
+      !(orchestratorResult.intent === 'mock_autopsy' && orchestratorResult.needsFileProcessing)
+    ) {
+      const imageBudget = await reserveModelBudgetOrResponse({
+        userId: user.id,
+        feature: 'image',
+        model: 'router:vision',
+        estimatedInputTokens: estimateTextTokens(systemPrompt, message || '[Image question]') + 1200,
+        estimatedOutputTokens: 1200,
+      });
+      if (imageBudget instanceof Response) return imageBudget;
+
+      const stream = new ReadableStream({
+        async start(controller) {
+          let answer = '';
+          let budgetSettled = false;
+          try {
+            answer = await routeVisionCall(systemPrompt, imageBase64, imageMimeType, message || 'Solve this question completely.');
+            controller.enqueue(encoder.encode(answer));
+          } catch {
+            await releaseBudgetReservation(imageBudget.reservationId, 'vision_call_failed');
+            budgetSettled = true;
+            answer = 'I had trouble reading that image. Try a clearer photo, or type the question out.';
+            controller.enqueue(encoder.encode(answer));
           }
+
+          if (!budgetSettled) {
+            await commitBudgetUsage(imageBudget.reservationId, {
+              promptTokens: estimateTextTokens(systemPrompt, message || '[Image question]') + 1200,
+              completionTokens: estimateTextTokens(answer),
+              route: '/api/ai/chat',
+            });
+            budgetSettled = true;
+          }
+
+          // ── MODULE 3: persist assistant message ONCE, capture id ──
+          let assistantMessageId: string;
+          try {
+            ({ id: assistantMessageId } = await persistChatMessage(supabase, {
+              sessionId,
+              userId: user.id,
+              role: 'assistant',
+              content: answer,
+              intent: detectedIntent.intent,
+              emotionalState: emotion,
+              idempotencyKey: `${messageRequestId}:assistant`,
+            }));
+          } catch (persistErr) {
+            logger.error('Chat route [image]: failed to persist assistant message', persistErr);
+            controller.close();
+            return;
+          }
+
+          // Worker receives assistant_message_id — must NOT persist again
+          await EventDispatcher.publish({
+            user_id: user.id,
+            type: 'CHAT_MESSAGE_PROCESSED',
+            data: {
+              sessionId,
+              message: message || '[Image question]',
+              fullResponse: answer,
+              emotion,
+              history: recentHistory,
+              sessionTurnsCount,
+              mindContext,
+              intent: detectedIntent,
+              assistant_message_id: assistantMessageId,
+            },
+            idempotency_key: crypto.randomUUID(),
+          }).catch((e: Error) => logger.error('Image branch: event publish failed', e));
+
+          controller.close();
         }
+      });
+      return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+    }
 
-        const contextTrace = {
-          learner_state_version: mindContext?.profile?.learnerStateVersion || 0,
-          memory_count: semanticMemories.length,
-          weak_concept_count: mindContext?.weakConcepts?.length || 0,
-          due_card_count: mindContext?.overdueCardsCount || 0,
-          mistake_count: mindContext?.recentMistakes?.length || 0,
-        };
-        metadataPayload = { ...(metadataPayload || {}), contextTrace };
+    // ── Branch B: Mock-autopsy file redirect ───────────────────────────────────
+    if (
+      orchestratorResult.intent === 'mock_autopsy' &&
+      orchestratorResult.needsFileProcessing &&
+      (imageBase64 || documentBase64)
+    ) {
+      const responseText = "I can see this is a mock-test upload. Full Test Analysis runs outside the chat stream so the upload can be validated, extracted, and processed safely. Open Test Analysis and upload the same file there; I'll use the processed result on the next turn.";
 
-        if (metadataPayload) {
-          controller.enqueue(encoder.encode(`\n\n===METADATA===\n${JSON.stringify(metadataPayload)}`));
+      const stream = new ReadableStream({
+        async start(controller) {
+          controller.enqueue(encoder.encode(responseText));
+
+          // ── MODULE 3: persist assistant message ONCE, capture id ──
+          let assistantMessageId: string;
+          try {
+            ({ id: assistantMessageId } = await persistChatMessage(supabase, {
+              sessionId,
+              userId: user.id,
+              role: 'assistant',
+              content: responseText,
+              intent: detectedIntent.intent,
+              emotionalState: emotion,
+              metadata: { action: 'run_autopsy' },
+              idempotencyKey: `${messageRequestId}:assistant`,
+            }));
+          } catch (persistErr) {
+            logger.error('Chat route [autopsy-redirect]: failed to persist assistant message', persistErr);
+            controller.close();
+            return;
+          }
+
+          // Worker receives assistant_message_id — must NOT persist again
+          await EventDispatcher.publish({
+            user_id: user.id,
+            type: 'CHAT_MESSAGE_PROCESSED',
+            data: {
+              sessionId,
+              message: message || '[Autopsy upload]',
+              fullResponse: responseText,
+              emotion,
+              history: recentHistory,
+              sessionTurnsCount,
+              mindContext,
+              intent: detectedIntent,
+              assistant_message_id: assistantMessageId,
+            },
+            idempotency_key: crypto.randomUUID(),
+          }).catch((e: Error) => logger.error('Autopsy-redirect branch: event publish failed', e));
+
+          controller.close();
         }
+      });
 
-        // ── MODULE 3: persist assistant message ONCE in route ──────────────
-        // The streaming is done; fullResponse is complete. Persist here, before
-        // the side-effect event, so the worker never needs to insert.
-        const cleanContent = stripMetadataBlock(fullResponse);
-        if (mainBudget) {
-          await commitBudgetUsage(mainBudget.reservationId, {
-            promptTokens: estimateMainPromptTokens(systemPrompt, recentHistory, message || ''),
-            completionTokens: estimateTextTokens(cleanContent),
-            route: '/api/ai/chat',
-          });
-          budgetSettled = true;
+      return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+    }
+
+    const intent = detectedIntent;
+
+    // ── Branch C: Overwhelmed / emotional grounding ────────────────────────────
+    if (
+      mindContext?.emotionalState === 'overwhelmed' &&
+      ['TUTOR_SESSION', 'PRACTICE'].includes(orchestratorResult.intent)
+    ) {
+      const recentVictory = mindContext.weakConcepts.find((c: any) =>
+        c.mastery === 'developing' || c.mastery === 'proficient'
+      );
+      const masteryPercent = mindContext.masteryStats?.masteryPercent || 0;
+      const streakDays = mindContext.profile?.streakDays || 0;
+
+      const groundingMessage = [
+        `Before we go into ${intent.topic || 'that topic'} — I'm noticing you seem overwhelmed right now, and I'm not going to add more to the pile.`,
+        ``,
+        `Here's what's actually true right now: you're at ${masteryPercent}% mastery across your syllabus.`,
+        streakDays > 1 ? `You've shown up ${streakDays} days in a row. That's not nothing.` : '',
+        recentVictory ? `You're developing ${recentVictory.name} — that's real progress, not luck.` : '',
+        ``,
+        `Right now, pick one of these:`,
+        ``,
+        `**1. Take 10 minutes away from your screen.** Come back and we'll tackle one small thing together.`,
+        ``,
+        `**2. Tell me one specific thing that's making you feel stuck.** Not "everything" — one thing. I'll help you sort it.`,
+        ``,
+        `**3. Do 5 flashcard reviews only.** Short. Familiar. It'll remind your brain it still knows things.`,
+        ``,
+        `Which one works for right now?`,
+      ].filter(Boolean).join('\n');
+
+      const stream = new ReadableStream({
+        async start(controller) {
+          controller.enqueue(encoder.encode(groundingMessage));
+
+          // ── MODULE 3: persist assistant message ONCE, capture id ──
+          let assistantMessageId: string;
+          try {
+            ({ id: assistantMessageId } = await persistChatMessage(supabase, {
+              sessionId,
+              userId: user.id,
+              role: 'assistant',
+              content: groundingMessage,
+              intent: intent.intent,
+              emotionalState: emotion,
+              idempotencyKey: `${messageRequestId}:assistant`,
+            }));
+          } catch (persistErr) {
+            logger.error('Chat route [grounding]: failed to persist assistant message', persistErr);
+            controller.close();
+            return;
+          }
+
+          // Worker receives assistant_message_id — must NOT persist again
+          await EventDispatcher.publish({
+            user_id: user.id,
+            type: 'CHAT_MESSAGE_PROCESSED',
+            data: {
+              sessionId, message, fullResponse: groundingMessage, emotion,
+              history: recentHistory, sessionTurnsCount, mindContext, intent,
+              assistant_message_id: assistantMessageId,
+            },
+            idempotency_key: crypto.randomUUID(),
+          }).catch((e: Error) => logger.error('Grounding branch: event publish failed', e));
+
+          controller.close();
         }
+      });
+      return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-cache' } });
+    }
 
-        let assistantMessageId: string;
-        try {
-          ({ id: assistantMessageId } = await persistChatMessage(supabase, {
-            sessionId,
-            userId: user.id,
-            role: 'assistant',
-            content: cleanContent,
-            intent: intent.intent,
-            emotionalState: emotion,
-            metadata: metadataPayload ?? {},
-            idempotencyKey: `${messageRequestId}:assistant`,
-          }));
-        } catch (persistErr) {
-          logger.error('Chat route [streaming]: failed to persist assistant message', persistErr);
-          // Don't rethrow — we still want side effects to fire if possible.
-          // Assign a sentinel so finalizeChatResponse can log the gap.
-          assistantMessageId = '';
-        }
-
-        // ── STAGE 6 & 7: ASYNC SIDE EFFECTS (QUEUED) ──────────────────────
-        // assistantMessageId is threaded through so the worker never persists again.
-        await ChatSideEffectService.finalizeChatResponse({
-          supabase,
+    // ── Branch D: Main streaming branch ────────────────────────────────────────
+    const mainBudget = shouldReserveMainChatBudget(intent.intent)
+      ? await reserveModelBudgetOrResponse({
           userId: user.id,
-          sessionId,
-          message: message || '',
-          fullResponse,
-          intent,
-          emotion,
-          metadataPayload,
-          recentHistory,
-          sessionTurnsCount,
-          mindContext,
-          assistantMessageId,
-        });
+          feature: budgetFeatureForMainChat(intent.intent, orchestratorResult.intent),
+          model: 'router:chat',
+          estimatedInputTokens: estimateMainPromptTokens(systemPrompt, recentHistory, message || ''),
+          estimatedOutputTokens: 1600,
+        })
+      : null;
+    if (mainBudget instanceof Response) return mainBudget;
 
-      } catch (err: any) {
-        logger.error('Chat stream error', err);
-        if (mainBudget && !budgetSettled) {
-          await releaseBudgetReservation(
-            mainBudget.reservationId,
-            err instanceof Error ? err.message : 'chat_stream_error'
-          );
-          budgetSettled = true;
+    const stream = new ReadableStream({
+      async start(controller) {
+        let fullResponse = '';
+        let metadataPayload: any = null;
+        let budgetSettled = false;
+
+        try {
+          if (['AUTOPSY', 'ATLAS', 'FLASHCARDS'].includes(intent.intent)) {
+            const routeMessages: Record<string, string> = {
+              AUTOPSY: "Opening **Test Analysis** — upload your mock test PDF or photo. I'll diagnose every wrong answer by root cause and show you your recoverable score.",
+              FLASHCARDS: `You have **${mindContext?.overdueCardsCount || 0}** cards due today. Opening your revision queue now.`,
+              ATLAS: `Your knowledge map is at **${mindContext?.masteryStats?.masteryPercent || 0}%** mastery. Opening Progress now.`,
+            };
+            const msg = routeMessages[intent.intent] || 'Opening that for you now...';
+            controller.enqueue(encoder.encode(msg));
+            fullResponse = msg;
+            metadataPayload = { action: intentToAction(intent.intent) };
+          } else {
+            const conversationMessages = buildConversationMessages(recentHistory, message || '');
+            for await (const chunk of routeStreamGeneration(systemPrompt, conversationMessages, 0.7)) {
+              controller.enqueue(encoder.encode(chunk));
+              fullResponse += chunk;
+            }
+          }
+
+          const contextTrace = {
+            learner_state_version: mindContext?.profile?.learnerStateVersion || 0,
+            memory_count: semanticMemories.length,
+            weak_concept_count: mindContext?.weakConcepts?.length || 0,
+            due_card_count: mindContext?.overdueCardsCount || 0,
+            mistake_count: mindContext?.recentMistakes?.length || 0,
+          };
+          metadataPayload = { ...(metadataPayload || {}), contextTrace };
+
+          if (metadataPayload) {
+            controller.enqueue(encoder.encode(`\n\n===METADATA===\n${JSON.stringify(metadataPayload)}`));
+          }
+
+          // ── MODULE 3: persist assistant message ONCE in route ──────────────
+          // The streaming is done; fullResponse is complete. Persist here, before
+          // the side-effect event, so the worker never needs to insert.
+          const cleanContent = stripMetadataBlock(fullResponse);
+          if (mainBudget) {
+            await commitBudgetUsage(mainBudget.reservationId, {
+              promptTokens: estimateMainPromptTokens(systemPrompt, recentHistory, message || ''),
+              completionTokens: estimateTextTokens(cleanContent),
+              route: '/api/ai/chat',
+            });
+            budgetSettled = true;
+          }
+
+          let assistantMessageId: string;
+          try {
+            ({ id: assistantMessageId } = await persistChatMessage(supabase, {
+              sessionId,
+              userId: user.id,
+              role: 'assistant',
+              content: cleanContent,
+              intent: intent.intent,
+              emotionalState: emotion,
+              metadata: metadataPayload ?? {},
+              idempotencyKey: `${messageRequestId}:assistant`,
+            }));
+          } catch (persistErr) {
+            logger.error('Chat route [streaming]: failed to persist assistant message', persistErr);
+            // Don't rethrow — we still want side effects to fire if possible.
+            // Assign a sentinel so finalizeChatResponse can log the gap.
+            assistantMessageId = '';
+          }
+
+          // ── STAGE 6 & 7: ASYNC SIDE EFFECTS (QUEUED) ──────────────────────
+          // assistantMessageId is threaded through so the worker never persists again.
+          await ChatSideEffectService.finalizeChatResponse({
+            supabase,
+            userId: user.id,
+            sessionId,
+            message: message || '',
+            fullResponse,
+            intent,
+            emotion,
+            metadataPayload,
+            recentHistory,
+            sessionTurnsCount,
+            mindContext,
+            assistantMessageId,
+          });
+
+        } catch (err: any) {
+          logger.error('Chat stream error', err);
+          if (mainBudget && !budgetSettled) {
+            await releaseBudgetReservation(
+              mainBudget.reservationId,
+              err instanceof Error ? err.message : 'chat_stream_error'
+            );
+            budgetSettled = true;
+          }
+          controller.enqueue(encoder.encode('\n\n[Something went wrong. Please try again.]'));
         }
-        controller.enqueue(encoder.encode('\n\n[Something went wrong. Please try again.]'));
+
+        controller.close();
       }
+    });
 
-      controller.close();
-    }
-  });
-
-  return new Response(stream, {
-    headers: {
-      'Content-Type': 'text/plain; charset=utf-8',
-      'X-Accel-Buffering': 'no',
-      'Cache-Control': 'no-cache',
-    }
-  });
+    return new Response(stream, {
+      headers: {
+        'Content-Type': 'text/plain; charset=utf-8',
+        'X-Accel-Buffering': 'no',
+        'Cache-Control': 'no-cache',
+      }
+    });
+  } catch (error) {
+    const { unexpectedApiErrorResponse } = await import('@/lib/api/errors');
+    return unexpectedApiErrorResponse(req, error, 'chat_route_unhandled');
+  }
 }
 
 function intentToAction(intent: string): string {

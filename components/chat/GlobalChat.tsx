@@ -100,7 +100,7 @@ export const GlobalChat = memo(function GlobalChat() {
       } else if (pendingFile.type === 'application/pdf') {
         addChatMessage({
           role: 'assistant',
-          content: 'PDF ingestion is handled through AUTOPSY for the MVP. Open AUTOPSY and upload the mock paper there.',
+          content: 'PDF ingestion is handled through Test Analysis for the MVP. Open Test Analysis and upload the mock paper there.',
           timestamp: new Date().toISOString(),
           metadata: { action: 'run_autopsy' },
         });
@@ -177,12 +177,17 @@ export const GlobalChat = memo(function GlobalChat() {
       }
     } catch (e: any) {
       console.error('Stream failed to complete', e);
-      const is400 = e?.status === 400;
+      const status = e?.status;
+      let content = 'I lost connection there. Please try again.';
+      if (status === 400) content = 'I could not read that message. Please try again.';
+      else if (status === 401) content = 'Your session has expired. Please log in again.';
+      else if (status === 429) content = 'You are sending messages too quickly. Please slow down.';
+      else if (status === 413) content = 'The attached file is too large.';
+      else if (status >= 500) content = `I encountered an internal server error (HTTP ${status}). Please try again.`;
+
       addChatMessage({
         role: 'assistant',
-        content: is400
-          ? 'I could not read that message. Please try again.'
-          : 'I lost connection there. Please try again.',
+        content,
         timestamp: new Date().toISOString(),
       });
     }
@@ -256,7 +261,7 @@ export const GlobalChat = memo(function GlobalChat() {
               <span style={{ fontSize: '11px', color: 'var(--text-tertiary)', fontWeight: 'var(--fw-medium)' }}>
                 {status === 'streaming' || status === 'connecting'
                   ? 'Loading mission and learner state...'
-                  : 'Using Today, ATLAS, MEMORY, and AUTOPSY'}
+                  : 'Using Today, Progress, Revision, and Test Analysis'}
               </span>
             </div>
           </div>
