@@ -56,7 +56,7 @@ export const POST = withRateLimit('planner', async (req, userId) => {
           estimated_minutes: t.estimated_minutes,
           scheduled_date: date,
           is_completed: false,
-          notes: `Engineered by COMMAND v2: ${t.rationale}`,
+          notes: `Mission plan rationale: ${t.rationale}`,
           metadata: t.metadata || {}
         }));
 

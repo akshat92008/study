@@ -55,10 +55,10 @@ export default function RevisionDashboard({ data }: { data: any }) {
       <div>
         <h1 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-bold)', letterSpacing: 'var(--ls-tight)' }}>
           <RefreshCw size={28} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 'var(--sp-2)', color: 'var(--accent-cyan)' }} />
-          Revision Engine
+          MEMORY
         </h1>
         <p style={{ color: 'var(--text-secondary)', marginTop: 'var(--sp-1)' }}>
-          FSRS-5 powered spaced repetition • Optimized for 90% retention
+          Your revision system. Review what is due before it fades.
         </p>
       </div>
 
@@ -87,6 +87,11 @@ export default function RevisionDashboard({ data }: { data: any }) {
               {currentIndex + 1} / {due.length}
             </span>
           </div>
+          {(currentCard.chapter || currentCard.source || currentCard.concept_id || currentCard.front?.startsWith?.('[')) && (
+            <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', marginBottom: 'var(--sp-3)' }}>
+              Source: {currentCard.source || (currentCard.front?.startsWith?.('[Mock Recovery]') ? 'AUTOPSY mock recovery' : currentCard.front?.startsWith?.('[Mistake Recovery]') ? 'mistake recovery' : currentCard.front?.startsWith?.('[Tutor Gap]') ? 'MIND session gap' : currentCard.chapter || 'concept review')}
+            </div>
+          )}
 
           <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <div style={{ textAlign: 'center', maxWidth: 600 }}>
@@ -126,7 +131,7 @@ export default function RevisionDashboard({ data }: { data: any }) {
             All caught up!
           </p>
           <p style={{ color: 'var(--text-tertiary)', fontSize: 'var(--fs-sm)', marginTop: 'var(--sp-1)', marginBottom: 'var(--sp-4)' }}>
-            {stats.total > 0 ? 'No cards due for review right now.' : 'Generate cards from the Cognition Graph to start reviewing.'}
+            {stats.total > 0 ? 'No cards due for review right now.' : 'Create revision from ATLAS weak concepts, a MIND session, or an AUTOPSY upload.'}
           </p>
           {stats.total === 0 && (
             <a href="/cognition" style={{
@@ -134,7 +139,7 @@ export default function RevisionDashboard({ data }: { data: any }) {
               background: 'var(--accent-cyan)', color: 'var(--bg-root)',
               borderRadius: 'var(--radius-md)', fontSize: 'var(--fs-sm)', 
               fontWeight: 'var(--fw-semibold)', textDecoration: 'none'
-            }}>Go to Cognition Graph</a>
+            }}>Open ATLAS</a>
           )}
         </Card>
       )}

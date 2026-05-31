@@ -117,6 +117,28 @@ describe('MIND Context & Prompts', () => {
     expect(prompt).toContain('Active streak: 5 days');
     expect(prompt).toContain('Overdue flashcards: 10');
   });
+
+  it('frames MIND around the unified learner state loop', () => {
+    const prompt = getMINDSystemPrompt({
+      ...baseCtx,
+      activeGoal: { title: 'NEET Biology sprint', targetDate: null, progress: 0.4 },
+      currentSessionCard: {
+        focusTopic: 'Electrochemistry',
+        subject: 'Chemistry',
+        estimatedMinutes: 30,
+        rationale: 'Recent AUTOPSY mistakes and due MEMORY cards point here.',
+      },
+      commandTasks: [{ title: 'Review redox mistakes', subject: 'Chemistry', chapter: 'Electrochemistry', priority: 'high' }],
+    }, ['Student struggled with redox balancing.'], 'TUTOR_SESSION');
+
+    expect(prompt).toContain('You are MIND — the persistent AI mentor');
+    expect(prompt).toContain('Active goal: NEET Biology sprint');
+    expect(prompt).toContain("Today's mission: Chemistry — Electrochemistry (30 min)");
+    expect(prompt).toContain('Open mission tasks: Review redox mistakes (high)');
+    expect(prompt).toContain('If MEMORY has due cards');
+    expect(prompt).toContain('guide them to AUTOPSY');
+    expect(prompt).not.toContain('know this specific student completely');
+  });
 });
 
 describe('ChatMemoryService', () => {

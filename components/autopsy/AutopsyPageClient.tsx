@@ -58,7 +58,7 @@ export default function AutopsyPageClient({ result: initialResult }: Props) {
           AUTOPSY
         </h1>
         <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)' }}>
-          Upload any mock test — PDF, photo, scanned paper. Full cognitive diagnosis in 30 seconds.
+          Upload a mock test or mistake sheet to find patterns and improve ATLAS, MEMORY, and your next mission when verified.
         </p>
       </div>
 

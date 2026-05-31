@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/utils/logger';
 import type { MINDContext } from '@/lib/ai/prompts/mind-prompt';
 import { RAGEngine } from './rag-engine';
+import { getLearnerStateSnapshot } from '@/lib/learner-state/getLearnerState';
 
 type ConceptGraphRow = {
   id: string;
@@ -15,96 +16,8 @@ type ConceptGraphRow = {
 export async function getMINDContext(userId: string, message?: string, topic?: string, subject?: string): Promise<MINDContext> {
   try {
     const supabase = await createClient();
-
-    let weakConceptsQuery = supabase.from('concepts')
-      .select('name, subject, chapter, mastery')
-      .eq('user_id', userId)
-      .in('mastery', ['not_started', 'exposed', 'developing'])
-      .order('mastery')
-      .limit(3);
-    if (subject) weakConceptsQuery = weakConceptsQuery.eq('subject', subject);
-    if (topic) weakConceptsQuery = weakConceptsQuery.ilike('chapter', `%${topic}%`);
-
-    let mistakesQuery = supabase.from('mistakes')
-      .select('chapter, category, subject, created_at')
-      .eq('user_id', userId)
-      .order('created_at', { ascending: false })
-      .limit(3);
-    if (subject) mistakesQuery = mistakesQuery.eq('subject', subject);
-    if (topic) mistakesQuery = mistakesQuery.ilike('chapter', `%${topic}%`);
-
-    const [
-      profileRes, weakConceptsRes, recentMistakesRes,
-      overdueRes, masteryRes, sessionsRes, goalRes, sessionCardRes, taskRes
-    ] = await Promise.all([
-      supabase.from('profiles')
-        .select('full_name, exam_type, target_date, current_level, learning_style, streak_days, emotional_state, timezone, learner_state_version')
-        .eq('id', userId)
-        .single(),
-
-      weakConceptsQuery,
-
-      mistakesQuery,
-
-      supabase.from('revision_cards')
-        .select('id, front', { count: 'exact' })
-        .eq('user_id', userId)
-        .lte('due', new Date().toISOString())
-        .limit(3),
-
-      Promise.all([
-        supabase.from('concepts').select('id', { count: 'exact', head: true }).eq('user_id', userId),
-        supabase.from('concepts').select('id', { count: 'exact', head: true }).eq('user_id', userId).in('mastery', ['mastered', 'automated'])
-      ]),
-
-      supabase.from('study_sessions')
-        .select('notes, started_at, subject, chapter, duration_minutes')
-        .eq('user_id', userId)
-        .not('notes', 'is', null)
-        .order('started_at', { ascending: false })
-        .limit(5),
-
-      supabase.from('learning_goals')
-        .select('title, target_date, progress')
-        .eq('user_id', userId)
-        .eq('status', 'active')
-        .limit(1)
-        .maybeSingle(),
-
-      supabase.from('session_cards')
-        .select('"focusTopic", subject, "estimatedMinutes", rationale, learner_state_version')
-        .eq('user_id', userId)
-        .eq('date', new Date().toISOString().split('T')[0])
-        .maybeSingle(),
-
-      supabase.from('study_tasks')
-        .select('title, subject, chapter, priority')
-        .eq('user_id', userId)
-        .eq('scheduled_date', new Date().toISOString().split('T')[0])
-        .eq('is_completed', false)
-        .order('priority', { ascending: false })
-        .limit(5)
-    ]);
-
-    const { data: studentModel } = await supabase
-      .from('student_models')
-      .select('learning_style, strengths, weaknesses, behavioral_traps, last_updated_at')
-      .eq('user_id', userId)
-      .order('last_updated_at', { ascending: false })
-      .limit(1)
-      .maybeSingle();
-
-    const profile = profileRes.data;
-    const [totalRes, masteredRes] = masteryRes;
-    const total = totalRes.count || 0;
-    const mastered = masteredRes.count || 0;
-
-    const rootGapChains = await getRootGapChains(userId, weakConceptsRes.data || []);
-
-    // Extract recently studied topics from session summaries
-    const recentTopics = (sessionsRes.data || [])
-      .map(s => s.chapter || s.notes?.match(/studied\s+(.+?)(?:\s+\(|\.)/i)?.[1])
-      .filter(Boolean) as string[];
+    const learnerState = await getLearnerStateSnapshot(userId, { topic, subject, client: supabase });
+    const rootGapChains = await getRootGapChains(userId, learnerState.atlas.weakConcepts);
 
     let ragChunks: { content: string; similarity: number; sourceTitle: string }[] = [];
     if (message && message.trim().length > 15) {
@@ -123,54 +36,33 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
 
     return {
       profile: {
-        name: profile?.full_name || 'Student',
-        examType: profile?.exam_type || 'General',
-        examDate: profile?.target_date || null,
-        currentLevel: profile?.current_level || 'intermediate',
-        learningStyle: profile?.learning_style || 'visual',
-        streakDays: profile?.streak_days || 0,
-        timezone: profile?.timezone || 'UTC',
-        learnerStateVersion: profile?.learner_state_version || 0
+        name: learnerState.profile.name,
+        examType: learnerState.profile.examType,
+        examDate: learnerState.profile.examDate,
+        currentLevel: learnerState.profile.currentLevel,
+        learningStyle: learnerState.profile.learningStyle,
+        streakDays: learnerState.profile.streakDays,
+        timezone: learnerState.profile.timezone,
+        learnerStateVersion: learnerState.profile.version
       },
-      activeGoal: goalRes.data
-        ? {
-            title: goalRes.data.title,
-            targetDate: goalRes.data.target_date ?? null,
-            progress: goalRes.data.progress ?? null,
-          }
-        : null,
-      currentSessionCard: sessionCardRes.data
-        ? {
-            focusTopic: sessionCardRes.data.focusTopic,
-            subject: sessionCardRes.data.subject,
-            estimatedMinutes: sessionCardRes.data.estimatedMinutes,
-            rationale: sessionCardRes.data.rationale,
-          }
-        : null,
-      commandTasks: taskRes.data || [],
-      recentStudySessions: (sessionsRes.data || []).map((s: any) => ({
-        subject: s.subject,
-        chapter: s.chapter,
-        durationMinutes: s.duration_minutes ?? null,
-      })),
-      weakConcepts: weakConceptsRes.data || [],
-      recentMistakes: recentMistakesRes.data || [],
-      struggles: (recentMistakesRes.data || []).map(m => ({ chapter: m.chapter, subject: m.subject })),
-      masteryStats: {
-        totalConcepts: total,
-        masteredCount: mastered,
-        masteryPercent: total > 0 ? Math.round((mastered / total) * 100) : 0
-      },
-      overdueCardsCount: overdueRes.count || 0,
-      topOverdueCards: (overdueRes.data || []).map((c: any) => ({ id: c.id, front: c.front })),
-      emotionalState: profile?.emotional_state || 'neutral',
-      recentTopics,
+      activeGoal: learnerState.activeGoal,
+      currentSessionCard: learnerState.currentMission,
+      commandTasks: learnerState.command.openTasks,
+      recentStudySessions: learnerState.recentStudySessions,
+      weakConcepts: learnerState.atlas.weakConcepts.slice(0, 3),
+      recentMistakes: learnerState.autopsy.recentMistakes.slice(0, 3),
+      struggles: learnerState.autopsy.recentMistakes.slice(0, 3).map(m => ({ chapter: m.chapter, subject: m.subject })),
+      masteryStats: learnerState.atlas.masterySummary,
+      overdueCardsCount: learnerState.memory.dueCount,
+      topOverdueCards: learnerState.memory.topDueCards.slice(0, 3),
+      emotionalState: learnerState.profile.mindStateSignal,
+      recentTopics: learnerState.recentTopics.slice(0, 5),
       knownAnalogies: [],
       rootGapChains,
       currentSessionDurationMinutes: 0,
       sessionGoal: '',
       ragChunks,
-      studentModel: studentModel ?? null
+      studentModel: learnerState.studentModel
     };
   } catch (err) {
     logger.error('getMINDContext failed', err);

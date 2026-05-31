@@ -145,6 +145,26 @@ describe('MVP Frontend Logic Smoke Tests', () => {
     
     const cleanContent = sidebarContent.replace(/\{?\/\*.*?\*\/\}/gs, '');
     expect(cleanContent).not.toMatch(/Pulse/i);
+    expect(cleanContent).not.toMatch(/COMMAND/i);
+    for (const label of ['Today', 'MIND', 'AUTOPSY', 'ATLAS', 'MEMORY']) {
+      expect(cleanContent).toContain(label);
+    }
+  });
+
+  it('9b. Runtime product copy uses the corrected OS architecture', () => {
+    const landingPath = path.resolve(__dirname, '../../components/landing/LandingClient.tsx');
+    const commandBarPath = path.resolve(__dirname, '../../components/ui/CommandBar.tsx');
+    const landingContent = fs.readFileSync(landingPath, 'utf-8');
+    const commandBarContent = fs.readFileSync(commandBarPath, 'utf-8');
+
+    expect(landingContent).not.toMatch(/PULSE|six engines|six modules|six separate apps|COMMAND/i);
+    expect(commandBarContent).toContain("Today's Mission");
+    expect(commandBarContent).toContain('MIND');
+    expect(commandBarContent).toContain('AUTOPSY');
+    expect(commandBarContent).toContain('ATLAS');
+    expect(commandBarContent).toContain('MEMORY');
+    expect(commandBarContent).not.toContain('Knowledge Base');
+    expect(commandBarContent).not.toContain('Mistake Intelligence');
   });
 
   it('10. AUTOPSY validation rejects fake PDF/image', async () => {

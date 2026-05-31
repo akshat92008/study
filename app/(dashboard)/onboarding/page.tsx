@@ -239,7 +239,7 @@ export default function OnboardingFlow() {
               </p>
 
               <Button size="lg" onClick={() => router.push('/dashboard?magic=true')} style={{ background: 'linear-gradient(135deg, var(--accent-blue), var(--accent-cyan))', color: 'black', padding: '20px 40px', fontSize: 'var(--fs-lg)', fontWeight: 900, boxShadow: '0 10px 30px rgba(0, 240, 255, 0.3)' }}>
-                See Your Knowledge Graph <ArrowRight size={24} style={{ marginLeft: 8 }} />
+                Open ATLAS <ArrowRight size={24} style={{ marginLeft: 8 }} />
               </Button>
             </div>
           </motion.div>

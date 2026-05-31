@@ -4,7 +4,6 @@ import NextLink from 'next/link';
 import { motion } from 'framer-motion';
 import { 
   Brain, 
-  Compass, 
   Microscope, 
   Network, 
   Zap, 
@@ -119,7 +118,7 @@ export default function LandingClient() {
           }}
         >
           <Sparkles size={12} />
-          Confidential Vision Document · May 2026
+          Daily mission loop · May 2026
         </motion.div>
 
         <motion.h1
@@ -149,7 +148,7 @@ export default function LandingClient() {
             margin: '0 auto var(--sp-8)',
           }}
         >
-          The AI study partner that actually knows you.
+          An AI mentor that uses your latest learning state.
         </motion.p>
 
         {/* Global Market Data Grid */}
@@ -170,7 +169,7 @@ export default function LandingClient() {
             { value: '$42B', label: 'AI in Education by 2030', sub: 'Growing at 40.9% CAGR' },
             { value: '$33B', label: 'India EdTech by 2034', sub: 'Second largest global market' },
             { value: '30.5%', label: 'AI Tutor CAGR', sub: 'From $2.75B today' },
-            { value: '5', label: 'Connected Learning Engines', sub: 'One study OS, not scattered tools' }
+            { value: '4', label: 'Connected Learning Systems', sub: 'MIND guided by ATLAS, MEMORY, and AUTOPSY' }
           ].map((stat, i) => (
             <div key={i} style={{
               background: 'rgba(255, 255, 255, 0.02)',
@@ -233,7 +232,7 @@ export default function LandingClient() {
             Two surfaces. One intelligence.
           </h2>
           <p style={{ color: '#a1a1aa', fontSize: 'var(--fs-md)', lineHeight: 1.6, maxWidth: 800, marginBottom: 40 }}>
-            Cognition OS is built around a simple insight: students need a conversation and a dashboard — not six separate apps. The chat is the front door. The OS is the house. They share one brain.
+            Cognition OS is built around a simple loop: one daily mission, one MIND conversation, and learner state that updates from study sessions, revision, and mistakes.
           </p>
 
           <div style={{
@@ -254,7 +253,7 @@ export default function LandingClient() {
                 <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 800 }}>The Chat <span style={{ fontSize: 10, background: 'rgba(0, 240, 255, 0.1)', color: '#00f0ff', padding: '2px 8px', borderRadius: 4, marginLeft: 8 }}>PRIMARY</span></h3>
               </div>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12, color: '#a1a1aa', fontSize: 'var(--fs-sm)' }}>
-                {['Talks to all six modules simultaneously', 'Remembers everything — mistakes, gaps, history', 'Teaches Socratically, not passively', 'Generates flashcards inline, in conversation', 'Runs Autopsy when you upload a test', 'Tells you what to study right now', 'Watches OS activity and responds proactively'].map((item, idx) => (
+                {['Uses Today\'s Mission, ATLAS, MEMORY, and AUTOPSY state', 'References saved mistakes, weak concepts, and due revision', 'Teaches Socratically, not passively', 'Generates study material inline when requested', 'Guides you to AUTOPSY after a mock test', 'Tells you the next best study action'].map((item, idx) => (
                   <li key={idx} style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
                     <span style={{ color: '#00f0ff' }}>→</span>
                     {item}
@@ -276,7 +275,7 @@ export default function LandingClient() {
                 <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 800 }}>The OS Dashboard <span style={{ fontSize: 10, background: 'rgba(168, 85, 247, 0.1)', color: '#a855f7', padding: '2px 8px', borderRadius: 4, marginLeft: 8 }}>DEPTH</span></h3>
               </div>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12, color: '#a1a1aa', fontSize: 'var(--fs-sm)' }}>
-                {['ATLAS — Dynamic concept knowledge graph', 'MEMORY — Math-backed FSRS flashcard queue', 'AUTOPSY — Error root-cause classifier', 'COMMAND — AI mission daily planner', 'Analytics — performance trends that explain what to do next'].map((item, idx) => (
+                {['Today\'s Mission — the one study action to start with', 'ATLAS — concept mastery and weak areas', 'MEMORY — spaced-repetition revision queue', 'AUTOPSY — mock and mistake diagnosis'].map((item, idx) => (
                   <li key={idx} style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
                     <span style={{ color: '#a855f7' }}>→</span>
                     {item}
@@ -360,10 +359,10 @@ export default function LandingClient() {
             04 — The Intelligence Engine
           </div>
           <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, marginBottom: 'var(--sp-4)', letterSpacing: '-0.02em' }}>
-            Five engines. All invisible. All connected.
+            One mentor. Four connected learner systems.
           </h2>
           <p style={{ color: '#a1a1aa', fontSize: 'var(--fs-md)', lineHeight: 1.6, maxWidth: 800, marginBottom: 40 }}>
-            Students never see names of modules or graphs. Under the hood, five AI systems synchronize to form one continuously-updating student brain model.
+            MIND is the front door. ATLAS, MEMORY, and AUTOPSY provide the state underneath so every session, doubt, and mistake can shape the next study action.
           </p>
 
           <div style={{
@@ -373,11 +372,10 @@ export default function LandingClient() {
             marginBottom: 40
           }}>
             {[
-              { icon: Brain, title: 'MIND', label: 'Socratic AI Tutor', desc: 'Reads your notes, mistake history, and weak concepts. Guides understanding rather than giving answers.', color: '#a855f7' },
-              { icon: Compass, title: 'COMMAND', label: 'Daily Mission Engine', desc: 'Overnight synthesis of 7 data streams into tomorrow morning\'s single focused session.', color: '#3b82f6' },
-              { icon: Microscope, title: 'AUTOPSY', label: 'Mock Test Intelligence', desc: 'Ingest PDFs or images. Classifies error root causes: conceptual gaps, calculation slips, or anxiety.', color: '#ef4444' },
-              { icon: Network, title: 'ATLAS', label: 'Knowledge Graph', desc: 'Living map tracking prerequisite chains and masteries across topics.', color: '#00f0ff' },
-              { icon: Zap, title: 'MEMORY', label: 'FSRS-5 Revision Engine', desc: 'Math-backed spacing scheduler that prompts reviews at the optimal forgetting point.', color: '#eab308' },
+              { icon: Brain, title: 'MIND', label: 'Persistent AI Mentor', desc: 'Uses your current mission, weak concepts, mistakes, revision backlog, and recent sessions to guide you.', color: '#a855f7' },
+              { icon: Microscope, title: 'AUTOPSY', label: 'Mistake Diagnosis', desc: 'Upload tests or mistake sheets to find patterns and improve the next study plan.', color: '#ef4444' },
+              { icon: Network, title: 'ATLAS', label: 'Concept Mastery Map', desc: 'Tracks strong, weak, and risky areas based on sessions, mistakes, and autopsy.', color: '#00f0ff' },
+              { icon: Zap, title: 'MEMORY', label: 'Revision System', desc: 'Schedules what to review before you forget it, including cards from mistakes and weak concepts.', color: '#eab308' },
             ].map((engine, idx) => (
               <div key={idx} style={{
                 background: 'rgba(255, 255, 255, 0.02)',
@@ -392,7 +390,7 @@ export default function LandingClient() {
                   width: 40,
                   height: 40,
                   borderRadius: 8,
-                  background: `rgba(${engine.title === 'MIND' ? '168,85,247' : engine.title === 'COMMAND' ? '59,130,246' : engine.title === 'AUTOPSY' ? '239,68,68' : engine.title === 'ATLAS' ? '0,240,255' : engine.title === 'MEMORY' ? '234,179,8' : '236,72,153'}, 0.1)`,
+                  background: `rgba(${engine.title === 'MIND' ? '168,85,247' : engine.title === 'AUTOPSY' ? '239,68,68' : engine.title === 'ATLAS' ? '0,240,255' : engine.title === 'MEMORY' ? '234,179,8' : '236,72,153'}, 0.1)`,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -417,7 +415,7 @@ export default function LandingClient() {
             color: '#71717a',
             lineHeight: 1.5
           }}>
-            <strong>The magic:</strong> when you get a question wrong in a mock test, <span style={{ color: '#ef4444' }}>AUTOPSY</span> classifies the error → <span style={{ color: '#00f0ff' }}>ATLAS</span> downscales mastery → <span style={{ color: '#eab308' }}>MEMORY</span> creates a flashcard → <span style={{ color: '#3b82f6' }}>COMMAND</span> adds remediation to tomorrow → <span style={{ color: '#a855f7' }}>MIND</span> is primed to approach it differently next time. One mistake triggers the entire system. Automatically.
+            <strong>The loop:</strong> when a verified mock mistake is processed, <span style={{ color: '#ef4444' }}>AUTOPSY</span> identifies the pattern, <span style={{ color: '#00f0ff' }}>ATLAS</span> can update weak areas, <span style={{ color: '#eab308' }}>MEMORY</span> can create revision, and <span style={{ color: '#a855f7' }}>MIND</span> uses that state on the next turn.
           </div>
         </section>
 
@@ -438,7 +436,7 @@ export default function LandingClient() {
             maxWidth: 720
           }}>
             <p style={{ color: '#a1a1aa', fontSize: 'var(--fs-md)', lineHeight: 1.6, margin: '0 0 20px' }}>
-              Monetisation is intentionally disabled for now. Every beta learner gets the complete Cognition OS study loop: chat, ATLAS, MEMORY, AUTOPSY, COMMAND, uploads, and daily sessions.
+              Monetisation is intentionally disabled for now. Every beta learner gets the MVP Cognition OS study loop: MIND, ATLAS, MEMORY, AUTOPSY, uploads, and daily missions.
             </p>
             <NextLink href="/signup" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#0055ff', color: 'white', padding: '12px 18px', borderRadius: 8, fontSize: 'var(--fs-xs)', fontWeight: 700, textDecoration: 'none' }}>
               Start Free Beta <ArrowRight size={14} />

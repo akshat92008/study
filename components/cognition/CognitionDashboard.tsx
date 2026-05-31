@@ -6,7 +6,7 @@ import Badge from '@/components/ui/Badge';
 import Progress from '@/components/ui/Progress';
 import { generateCards } from '@/lib/actions/revision';
 import { useAtlasSeedingStatus } from '@/hooks/useAtlasSeedingStatus';
-import { Brain, RefreshCw, Sparkles } from 'lucide-react';
+import { Brain, MessageCircle, Sparkles } from 'lucide-react';
 import KnowledgeMap from './KnowledgeMap';
 import InteractiveGraph from './InteractiveGraph';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -77,6 +77,10 @@ export default function CognitionDashboard({ data }: Props) {
       tiers[c.mastery as keyof typeof tiers]++;
     }
   });
+  const weakConcepts = [...(concepts || [])]
+    .filter((c: any) => ['not_started', 'exposed', 'developing'].includes(c.mastery))
+    .sort((a: any, b: any) => (b.forgetting_probability ?? 0) - (a.forgetting_probability ?? 0))
+    .slice(0, 3);
 
   return (
     <div className="animate-fade" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-6)', position: 'relative' }}>
@@ -158,10 +162,10 @@ export default function CognitionDashboard({ data }: Props) {
       <div>
         <h1 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-bold)', letterSpacing: 'var(--ls-tight)' }}>
           <Brain size={28} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 'var(--sp-2)', color: 'var(--accent-purple)' }} />
-          Cognition Graph
+          ATLAS
         </h1>
         <p style={{ color: 'var(--text-secondary)', marginTop: 'var(--sp-1)' }}>
-          Your knowledge state across {stats.total} concepts
+          Your concept mastery map. Weak areas here feed MIND, MEMORY, AUTOPSY, and the next mission.
         </p>
       </div>
 
@@ -197,6 +201,32 @@ export default function CognitionDashboard({ data }: Props) {
         </Card>
       </div>
 
+      {weakConcepts.length > 0 && (
+        <Card padding="lg" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)' }}>
+          <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'var(--fw-bold)', marginBottom: 'var(--sp-3)', color: 'var(--text-primary)' }}>
+            Weak Concepts To Act On
+          </h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)' }}>
+            {weakConcepts.map((concept: any) => (
+              <div key={concept.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 'var(--sp-3)', padding: 'var(--sp-3)', borderRadius: 'var(--radius-md)', background: 'var(--bg-primary)', border: '1px solid var(--border-subtle)' }}>
+                <div style={{ minWidth: 0 }}>
+                  <div style={{ fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-bold)', color: 'var(--text-primary)' }}>{concept.name || concept.chapter}</div>
+                  <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', marginTop: 2 }}>
+                    {concept.subject} · {concept.mastery?.replace('_', ' ')}
+                  </div>
+                </div>
+                <a
+                  href={`/chat?topic=${encodeURIComponent(concept.name || concept.chapter || '')}`}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: 6, flexShrink: 0, color: 'var(--accent-blue)', textDecoration: 'none', fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-bold)' }}
+                >
+                  <MessageCircle size={14} /> Ask MIND
+                </a>
+              </div>
+            ))}
+          </div>
+        </Card>
+      )}
+
       {concepts.length === 0 ? (
         <Card style={{ 
           padding: 'var(--sp-8) var(--sp-6)', 
@@ -212,10 +242,10 @@ export default function CognitionDashboard({ data }: Props) {
         }}>
           <Brain size={48} style={{ color: 'var(--text-tertiary)', opacity: 0.5 }} />
           <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 'var(--fw-semibold)', color: 'var(--text-primary)' }}>
-            Not enough data to map neural pathways yet
+            Not enough data to map mastery yet
           </h3>
           <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', maxWidth: '400px', lineHeight: 'var(--lh-relaxed)' }}>
-            Complete onboarding and start reviewing concepts or taking mock tests to generate your personalized cognition map.
+            Complete onboarding, finish a mission, or upload a mock so ATLAS can map your weak and strong concepts.
           </p>
         </Card>
       ) : (

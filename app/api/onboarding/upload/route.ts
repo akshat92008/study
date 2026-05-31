@@ -171,7 +171,7 @@ export async function POST(request: Request) {
       tasks.push({
         user_id: user.id,
         title: 'Cognitive rest & hydration',
-        description: 'Take a brief break to cement neural pathways.',
+        description: 'Take a brief break to consolidate the session.',
         type: 'break',
         priority: 'medium',
         estimated_minutes: 10,

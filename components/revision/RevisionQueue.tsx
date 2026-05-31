@@ -77,6 +77,11 @@ export default function RevisionQueue() {
   const progress = initialCount > 0 ? Math.round((completedCount / initialCount) * 100) : 0;
   const front = currentCard.front || `Concept: ${currentCard.subject || currentCard.chapter || currentCard.concept_id || currentCard.id}`;
   const back = currentCard.back || currentCard.answer || currentCard.explanation || 'Review the concept, then rate how well you recalled it.';
+  const source = currentCard.source
+    || (front.startsWith('[Mock Recovery]') ? 'AUTOPSY mock recovery'
+      : front.startsWith('[Mistake Recovery]') ? 'mistake recovery'
+        : front.startsWith('[Tutor Gap]') ? 'MIND session gap'
+          : currentCard.chapter || currentCard.subject || null);
 
   return (
     <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
@@ -84,6 +89,11 @@ export default function RevisionQueue() {
         <span>Cards remaining: {queue.length}</span>
         <span style={{ color: 'var(--accent-cyan)', fontWeight: 'var(--fw-medium)' }}>{progress}% Complete</span>
       </div>
+      {source && (
+        <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', padding: '0 var(--sp-4)' }}>
+          Source: {source}
+        </div>
+      )}
       
       <FlashCard 
         front={front} 

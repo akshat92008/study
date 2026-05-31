@@ -53,9 +53,9 @@ export default function MistakeDashboard({ data }: { data: any }) {
         <div>
           <h1 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-bold)' }}>
             <Target size={28} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 'var(--sp-2)', color: 'var(--danger)' }} />
-            Mistake Intelligence
+            AUTOPSY Findings
           </h1>
-          <p style={{ color: 'var(--text-secondary)', marginTop: 'var(--sp-1)' }}>Understand why you lose marks. Fix patterns.</p>
+          <p style={{ color: 'var(--text-secondary)', marginTop: 'var(--sp-1)' }}>Log or review mistake patterns that can feed ATLAS, MEMORY, and your next mission.</p>
         </div>
         <Button onClick={() => setShowForm(!showForm)}><Plus size={16} /> Log Mistake</Button>
       </div>

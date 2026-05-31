@@ -159,10 +159,10 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
         })
       });
       if (res.ok) {
-        addToast(`Session completed: ${data.focusTopic} revised!`, 'success');
+        addToast(`Mission completed: ${data.focusTopic} saved.`, 'success');
         addChatMessage({
           role: 'assistant',
-          content: `⚡ **Session Completed!** You've completed your focus session on **${data.focusTopic}** (${data.subject}) for ${data.estimatedMinutes} minutes. Keep up the momentum!`,
+          content: `**Mission complete.** Your ${data.estimatedMinutes}-minute session on **${data.focusTopic}** (${data.subject}) has been saved. I can use the updated learner state for your next step.`,
           timestamp: new Date().toISOString()
         });
 
@@ -252,7 +252,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
       }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--sp-2)' }}>
           <Loader2 className="animate-spin" size={24} style={{ color: 'var(--accent-blue)' }} />
-          <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)' }}>Analyzing mastery gaps...</span>
+          <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)' }}>Loading your latest mission, weak concepts, due revision, and recent mistakes.</span>
         </div>
       </Card>
     );
@@ -294,7 +294,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
           {data?.focusTopic ?? 'Daily focus'}
         </h3>
         <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', margin: 0, lineHeight: 1.5 }}>
-          Your streak and learner state are saved. Tomorrow's card will adapt from the updated ATLAS and MEMORY signals.
+          Your streak and learner state are saved. The next mission can adapt from updated ATLAS and MEMORY signals.
         </p>
       </Card>
     );
@@ -303,8 +303,8 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
   if (!data) {
     const title = cardStatus === 'onboarding' ? 'Complete your profile' : 'No session card yet';
     const description = cardStatus === 'onboarding'
-      ? 'Finish onboarding so Cognition OS can generate one daily session from your exam, goals, ATLAS, and MEMORY state.'
-      : 'No daily session is available yet. Try again after your learner state is ready.';
+      ? 'Finish onboarding, complete a session, or upload a mock so Cognition OS can generate one daily mission from your goal, ATLAS, MEMORY, and AUTOPSY state.'
+      : 'No daily mission is available yet. Ask MIND what to do now or upload a mock to create the first learner signal.';
     return (
       <Card style={{ 
         background: 'var(--bg-secondary)', 
@@ -563,7 +563,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
             DAY {data.dayNumber || 1} · {data.streakDays || 0}D STREAK
           </span>
           <Badge color={isSessionActive ? 'yellow' : 'cyan'}>
-            {isSessionActive ? 'Session Active' : "Today's Focus"}
+            {isSessionActive ? 'Mission Active' : "Today's Mission"}
           </Badge>
         </div>
         
@@ -591,7 +591,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
             gap: 6
           }}>
             <Sparkles size={12} style={{ color: 'var(--accent-cyan)', marginTop: 2, flexShrink: 0 }} />
-            <span>{data.rationale}</span>
+            <span><strong style={{ color: 'var(--text-primary)' }}>Why this mission:</strong> {data.rationale}</span>
           </div>
         )}
 

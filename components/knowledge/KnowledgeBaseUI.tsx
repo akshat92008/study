@@ -59,7 +59,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
       if (!response.ok || res.error) {
         setStatus({ type: 'error', msg: res.error || 'Upload failed' });
       } else {
-        setStatus({ type: 'success', msg: `Successfully processed into ${res.chunks} AI memory chunks!` });
+        setStatus({ type: 'success', msg: `Processed ${res.chunks} study chunks for MIND context.` });
         setShowForm(false);
         window.location.reload(); 
       }
@@ -76,10 +76,10 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
         <div>
           <h1 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-bold)', letterSpacing: 'var(--ls-tight)' }}>
             <Database size={28} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 'var(--sp-2)', color: 'var(--accent-cyan)' }} />
-            Personal Knowledge Base
+            ATLAS Source Library
           </h1>
           <p style={{ color: 'var(--text-secondary)', marginTop: 'var(--sp-1)' }}>
-            Upload your lecture notes. The AI will embed them into your personalized memory.
+            Upload lecture notes so MIND can ground explanations in your own materials.
           </p>
         </div>
         <Button onClick={() => setShowForm(!showForm)}>
@@ -102,7 +102,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
       {showForm && (
         <Card padding="lg" variant="glow" className="animate-fade">
           <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'var(--fw-semibold)', marginBottom: 'var(--sp-4)' }}>
-            Ingest New Knowledge
+            Add Study Material
           </h3>
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
             <Input name="title" label="Document Title" placeholder="e.g. Chapter 4: Thermodynamics Notes" required />
@@ -128,7 +128,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
               <Button variant="ghost" type="button" onClick={() => setShowForm(false)}>Cancel</Button>
               <Button type="submit" disabled={loading} style={{ background: 'var(--accent-cyan)', color: '#000' }}>
                 {loading ? <Loader2 size={16} className="spin" /> : <Sparkles size={16} />}
-                {loading ? 'Embedding via Gemini...' : 'Process & Embed'}
+                {loading ? 'Processing...' : 'Process Material'}
               </Button>
             </div>
           </form>

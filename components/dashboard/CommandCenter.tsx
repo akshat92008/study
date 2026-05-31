@@ -312,7 +312,7 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
               <span style={{ fontSize: 'var(--sp-5)', fontWeight: 'var(--fw-black)', color: 'var(--danger)' }}>-{autopsyLossPoints || 0}</span>
             </Card>
             <Card style={{ padding: 'var(--sp-3)', display: 'flex', flexDirection: 'column', gap: 6 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}><span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>COMMAND Streak</span><Flame size={12} style={{ color: 'var(--warning)' }} /></div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}><span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Daily Streak</span><Flame size={12} style={{ color: 'var(--warning)' }} /></div>
               <span style={{ fontSize: 'var(--sp-5)', fontWeight: 'var(--fw-black)', color: 'var(--warning)' }}>{profile?.streak_days || 0}</span>
             </Card>
           </div>

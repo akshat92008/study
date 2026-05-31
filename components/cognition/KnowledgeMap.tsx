@@ -132,7 +132,7 @@ export default function KnowledgeMap({ concepts: initialConcepts, links = [], st
         gap: 'var(--sp-3)'
       }}>
         <div style={{ fontSize: 'var(--fs-lg)', fontWeight: 'var(--fw-semibold)', color: 'var(--text-primary)' }}>
-          Not enough data to map neural pathways yet
+          Not enough data to map mastery yet
         </div>
       </Card>
     );

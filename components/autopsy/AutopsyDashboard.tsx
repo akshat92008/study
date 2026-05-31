@@ -65,6 +65,17 @@ export default function AutopsyDashboard({ result }: AutopsyDashboardProps) {
         examType={result.examType}
       />
 
+      {result.eventId && (
+        <Card padding="md" style={{ border: '1px solid var(--accent-cyan-dim)', background: 'var(--bg-secondary)' }}>
+          <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--accent-cyan)', fontWeight: 'var(--fw-bold)', textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)', marginBottom: 6 }}>
+            Downstream update queued
+          </div>
+          <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.5 }}>
+            Verified AUTOPSY mistakes are queued to update ATLAS weak areas, create MEMORY revision where supported, and influence the next mission.
+          </p>
+        </Card>
+      )}
+
       <div className="grid-2">
         {/* SECTION 2: Mistake Taxonomy (Execution vs Knowledge) */}
         <Card padding="lg">

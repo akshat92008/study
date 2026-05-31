@@ -218,7 +218,7 @@ export default function PlannerDashboard({ initialTasks, date }: { initialTasks:
             onMouseLeave={e => e.currentTarget.style.background = 'var(--bg-secondary)'}
           >
             <Target size={16} color="var(--accent-purple)" />
-            COMMAND Replan
+            Refresh Mission Plan
           </button>
           
         </div>
@@ -429,7 +429,7 @@ export default function PlannerDashboard({ initialTasks, date }: { initialTasks:
                 <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
                   <Target size={20} style={{ color: 'var(--accent-purple)' }} />
                   <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)', color: 'var(--text-primary)' }}>
-                    COMMAND Engine v2.0
+                    Mission Plan
                   </span>
                 </div>
                 <button 
@@ -445,7 +445,7 @@ export default function PlannerDashboard({ initialTasks, date }: { initialTasks:
                 {replanStep === 'config' ? (
                   <>
                     <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)', lineHeight: 'var(--lh-relaxed)' }}>
-                      COMMAND evaluates your outstanding syllabus topics, FSRS memory decay schedules, and recent test autopsies to formulate a custom study plan.
+                      Cognition OS evaluates outstanding syllabus topics, MEMORY due reviews, and recent AUTOPSY results to formulate a focused study plan.
                     </p>
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)', marginTop: 'var(--sp-2)' }}>
