@@ -6,7 +6,6 @@ import { EventConsumer } from './orchestrator';
 import { LearningStateEngine } from '@/lib/engines/learning-state-engine';
 import { AtlasConsumer } from '@/lib/engines/cognition-graph';
 import { MemoryConsumer } from '@/lib/engines/revision-engine';
-import { CommandConsumer } from '@/lib/engines/command-engine';
 import { ConceptExpansionConsumer } from '@/lib/engines/concept-expansion-engine';
 import { processChatSideEffects } from '@/lib/ai/chat-side-effects';
 
@@ -180,39 +179,48 @@ export class EventWorkerService {
 
   private static async checkParentEventCompletion(eventId: string) {
     const supabase = createAdminClient();
-    
-    // If all locks for this event are COMPLETED, DLQ, or FAILED, we mark parent accordingly.
+
     const { data: locks } = await supabase
       .from('consumer_locks')
       .select('status')
       .eq('event_id', eventId);
 
-    if (locks && locks.length > 0) {
-      const allCompleted = locks.every(l => l.status === 'COMPLETED');
-      const anyFailed = locks.some(l => l.status === 'DLQ' || l.status === 'FAILED');
+    if (!locks || locks.length === 0) return;
 
-      if (allCompleted) {
-        await supabase
-          .from('event_queue')
-          .update({
-            status: 'COMPLETED',
-            locked_at: null,
-            locked_by: null,
-            updated_at: new Date().toISOString()
-          })
-          .eq('id', eventId);
-      } else if (anyFailed && !locks.some(l => l.status === 'PENDING' || l.status === 'PROCESSING' || l.status === 'RETRY_SCHEDULED')) {
-        await supabase
-          .from('event_queue')
-          .update({
-            status: 'FAILED',
-            locked_at: null,
-            locked_by: null,
-            updated_at: new Date().toISOString()
-          })
-          .eq('id', eventId);
-      }
+    const allCompleted = locks.every(l => l.status === 'COMPLETED');
+    const anyProcessing = locks.some(l => l.status === 'PROCESSING');
+    const anyPending = locks.some(l => l.status === 'PENDING');
+    const anyFailed = locks.some(l => l.status === 'FAILED' || l.status === 'DLQ');
+    const anyCompleted = locks.some(l => l.status === 'COMPLETED');
+    const allTerminal = locks.every(l =>
+      l.status === 'COMPLETED' || l.status === 'FAILED' || l.status === 'DLQ'
+    );
+
+    let status: 'COMPLETED' | 'PROCESSING' | 'PENDING' | 'PARTIAL_FAILED' | 'FAILED';
+
+    if (allCompleted) {
+      status = 'COMPLETED';
+    } else if (anyProcessing) {
+      status = 'PROCESSING';
+    } else if (anyPending) {
+      status = 'PENDING';
+    } else if (allTerminal && anyCompleted && anyFailed) {
+      status = 'PARTIAL_FAILED';
+    } else if (allTerminal && anyFailed) {
+      status = 'FAILED';
+    } else {
+      status = 'PENDING';
     }
+
+    await supabase
+      .from('event_queue')
+      .update({
+        status,
+        locked_at: null,
+        locked_by: null,
+        updated_at: new Date().toISOString(),
+      })
+      .eq('id', eventId);
   }
 
   private static async routeToConsumer(lease: any): Promise<void> {
@@ -263,15 +271,7 @@ export class EventWorkerService {
         }
         break;
       case 'command_engine':
-        if (event.type === 'AUTOPSY_MOCK_PROCESSED') {
-          await CommandConsumer.handleAutopsyProcessed(event.user_id, payload, payload);
-        } else if (
-          event.type === 'STUDY_SESSION_COMPLETED' ||
-          event.type === 'MIND_TUTOR_COMPLETED' ||
-          event.type === 'COMMAND_SESSION_COMPLETED'
-        ) {
-          await CommandConsumer.handleStudySessionCompleted(event.user_id, event.data);
-        }
+        // MVP: command_engine disabled for session/autopsy/tutor events
         break;
       case 'concept_expansion_engine':
         if (event.type === 'CONCEPT_DISCOVERED') {

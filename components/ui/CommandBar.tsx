@@ -24,10 +24,9 @@ export default function CommandBar() {
 
   const actions = [
     { name: 'Dashboard', icon: Compass, route: '/' },
-    { name: 'Mock Test Autopsy', icon: Target, route: '/autopsy' },
-    { name: 'Cognition Graph', icon: Search, route: '/cognition' },
-    { name: 'Knowledge Base', icon: Book, route: '/knowledge' },
-    { name: 'Mistake Intelligence', icon: Target, route: '/mistakes' }
+    { name: 'Test Analysis', icon: Target, route: '/autopsy' },
+    { name: 'Progress', icon: Search, route: '/cognition' },
+    { name: 'Mistakes', icon: Target, route: '/mistakes' }
   ];
 
   const filtered = actions.filter(a => a.name.toLowerCase().includes(query.toLowerCase()));

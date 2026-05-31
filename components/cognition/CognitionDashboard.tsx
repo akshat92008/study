@@ -100,8 +100,8 @@ export default function CognitionDashboard({ data }: Props) {
               style={{ textAlign: 'center' }}
             >
               <Sparkles size={64} style={{ color: 'var(--accent-cyan)', margin: '0 auto 24px', filter: 'drop-shadow(0 0 20px var(--accent-cyan))' }} />
-              <h1 style={{ fontSize: '3rem', fontWeight: 900, color: 'white' }}>ATLAS Generated.</h1>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', marginTop: 12 }}>Mapping dependencies across {data.stats?.total || 0} nodes...</p>
+              <h1 style={{ fontSize: '3rem', fontWeight: 900, color: 'white' }}>Progress Generated.</h1>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', marginTop: 12 }}>Building your syllabus map with {data.stats?.total || 0} topics...</p>
             </motion.div>
           </motion.div>
         )}
@@ -127,69 +127,69 @@ export default function CognitionDashboard({ data }: Props) {
           </p>
         </div>
       )}
-      {/* Mastery Legend + Stats Banner */}
+      {/* Strength Legend + Stats Banner */}
       <div style={{ padding: 'var(--sp-4) var(--sp-6)', borderBottom: '1px solid var(--border-subtle)', display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)' }}>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--sp-2)' }}>
           <div style={{ border: '1px solid #666', color: '#666', borderRadius: 999, padding: '2px 12px', fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-medium)', background: 'transparent' }}>
             Not Started: {tiers.not_started}
           </div>
           <div style={{ border: '1px solid #f59e0b', color: '#f59e0b', borderRadius: 999, padding: '2px 12px', fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-medium)', background: 'transparent' }}>
-            Exposed: {tiers.exposed}
+            Weak: {tiers.exposed}
           </div>
           <div style={{ border: '1px solid #3b82f6', color: '#3b82f6', borderRadius: 999, padding: '2px 12px', fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-medium)', background: 'transparent' }}>
-            Developing: {tiers.developing}
+            Learning: {tiers.developing}
           </div>
           <div style={{ border: '1px solid #8b5cf6', color: '#8b5cf6', borderRadius: 999, padding: '2px 12px', fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-medium)', background: 'transparent' }}>
-            Proficient: {tiers.proficient}
+            Good: {tiers.proficient}
           </div>
           <div style={{ border: '1px solid #10b981', color: '#10b981', borderRadius: 999, padding: '2px 12px', fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-medium)', background: 'transparent' }}>
-            Mastered: {tiers.mastered}
+            Strong: {tiers.mastered}
           </div>
           <div style={{ border: '1px solid #06b6d4', color: '#06b6d4', borderRadius: 999, padding: '2px 12px', fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-medium)', background: 'transparent' }}>
-            Automated: {tiers.automated}
+            Ready: {tiers.automated}
           </div>
         </div>
         <div style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)' }}>
-          {(concepts || []).length} concepts tracked · {tiers.mastered + tiers.automated} mastered · {tiers.not_started} not started
+          {(concepts || []).length} topics tracked · {tiers.mastered + tiers.automated} strong · {tiers.not_started} not started
         </div>
       </div>
 
       {/* Header */}
       <div>
-        <h1 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-bold)', letterSpacing: 'var(--ls-tight)' }}>
-          <Brain size={28} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 'var(--sp-2)', color: 'var(--accent-purple)' }} />
-          Cognition Graph
-        </h1>
-        <p style={{ color: 'var(--text-secondary)', marginTop: 'var(--sp-1)' }}>
-          Your knowledge state across {stats.total} concepts
-        </p>
+          <h1 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-bold)', letterSpacing: 'var(--ls-tight)' }}>
+            <Brain size={28} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 'var(--sp-2)', color: 'var(--accent-purple)' }} />
+            Syllabus Map
+          </h1>
+          <p style={{ color: 'var(--text-secondary)', marginTop: 'var(--sp-1)' }}>
+            Your progress across {stats.total} topics
+          </p>
       </div>
 
       {/* Stats Cards */}
       <div className="grid-4 stagger">
         <Card id="stat-mastery" variant="glow">
-          <div className="label">Overall Mastery</div>
+          <div className="label">Overall Strength</div>
           <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-black)', fontFamily: 'var(--font-mono)', color: 'var(--accent-blue)', marginTop: 'var(--sp-1)' }}>
             {stats.overallMastery}%
           </div>
           <Progress value={stats.overallMastery} color="blue" size="sm" />
         </Card>
         <Card id="stat-mastered">
-          <div className="label">Mastered</div>
+          <div className="label">Strong</div>
           <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-black)', fontFamily: 'var(--font-mono)', color: 'var(--success)', marginTop: 'var(--sp-1)' }}>
             {stats.mastered}
           </div>
-          <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>of {stats.total} concepts</div>
+          <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>of {stats.total} topics</div>
         </Card>
         <Card id="stat-developing">
-          <div className="label">Developing</div>
+          <div className="label">Learning</div>
           <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-black)', fontFamily: 'var(--font-mono)', color: 'var(--warning)', marginTop: 'var(--sp-1)' }}>
             {stats.developing}
           </div>
           <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>need more practice</div>
         </Card>
         <Card id="stat-weak">
-          <div className="label">Weak / Not Started</div>
+          <div className="label">Weak</div>
           <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-black)', fontFamily: 'var(--font-mono)', color: 'var(--danger)', marginTop: 'var(--sp-1)' }}>
             {stats.weak}
           </div>
@@ -212,10 +212,10 @@ export default function CognitionDashboard({ data }: Props) {
         }}>
           <Brain size={48} style={{ color: 'var(--text-tertiary)', opacity: 0.5 }} />
           <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 'var(--fw-semibold)', color: 'var(--text-primary)' }}>
-            Not enough data to map neural pathways yet
+            Not enough data yet
           </h3>
           <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', maxWidth: '400px', lineHeight: 'var(--lh-relaxed)' }}>
-            Complete onboarding and start reviewing concepts or taking mock tests to generate your personalized cognition map.
+            Complete onboarding and start studying to track your syllabus progress.
           </p>
         </Card>
       ) : (

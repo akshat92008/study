@@ -215,23 +215,28 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
           durationMinutes: data.estimatedMinutes,
         })
       });
-      if (res.ok) {
-        addToast(`Session completed: ${data.focusTopic} revised!`, 'success');
-        addChatMessage({
-          role: 'assistant',
-          content: `⚡ **Session Completed!** You've completed your focus session on **${data.focusTopic}** (${data.subject}) for ${data.estimatedMinutes} minutes. Keep up the momentum!`,
-          timestamp: new Date().toISOString()
-        });
 
-        localStorage.removeItem(`focus_session_end_${data.focusTopic}`);
-        setIsSessionActive(false);
-        setTimeLeft(0);
-
-        const resJson = await res.json().catch(() => ({}));
-        const nextStreak = resJson.streakDays || ((data.streakDays || 0) + 1);
-        setUpdatedStreak(nextStreak);
-        setShowCelebration(true);
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        addToast(errorData.message || 'Could not save this focus session. Please retry.', 'error');
+        return;
       }
+
+      addToast(`Session completed: ${data.focusTopic} revised!`, 'success');
+      addChatMessage({
+        role: 'assistant',
+        content: `⚡ **Session Completed!** You've completed your focus session on **${data.focusTopic}** (${data.subject}) for ${data.estimatedMinutes} minutes. Keep up the momentum!`,
+        timestamp: new Date().toISOString()
+      });
+
+      localStorage.removeItem(`focus_session_end_${data.focusTopic}`);
+      setIsSessionActive(false);
+      setTimeLeft(0);
+
+      const resJson = await res.json().catch(() => ({}));
+      const nextStreak = resJson.streakDays || ((data.streakDays || 0) + 1);
+      setUpdatedStreak(nextStreak);
+      setShowCelebration(true);
     } catch (e) {
       console.error('Failed to complete focus session', e);
     }

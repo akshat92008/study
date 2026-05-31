@@ -193,28 +193,33 @@ export default function DailySessionFocus({
     try {
       const res = await fetch('/api/dashboard/complete-session', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ taskId }),
+        headers: {
+          'Content-Type': 'application/json',
+          'Idempotency-Key': `daily-session:${taskId || chapter}:${new Date().toISOString().slice(0, 10)}`,
+        },
+        body: JSON.stringify({ taskId, subject, chapter, durationMinutes: estimatedMinutes }),
       });
-      const data = await res.json();
 
-      if (data.success) {
-        setNewStreak(data.streakDays);
-        setSessionState('celebrate');
-        // Emit event to the universal event bus
-        logStudentEvent('session_complete', { taskId, subject, chapter, newStreak: data.streakDays });
-      } else {
-        // Fallback
-        const fallbackStreak = initialStreak + 1;
-        setNewStreak(fallbackStreak);
-        setSessionState('celebrate');
-        logStudentEvent('session_complete', { taskId, subject, chapter, newStreak: fallbackStreak });
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok || !data.success) {
+        console.error('Session completion failed', data);
+        alert(data.message || 'Could not save your session. Please retry.');
+        return;
       }
-    } catch (e) {
-      const fallbackStreak = initialStreak + 1;
-      setNewStreak(fallbackStreak);
+
+      setNewStreak(data.streakDays || initialStreak);
       setSessionState('celebrate');
-      logStudentEvent('session_complete', { taskId, subject, chapter, newStreak: fallbackStreak });
+
+      logStudentEvent('session_complete', {
+        taskId,
+        subject,
+        chapter,
+        newStreak: data.streakDays || initialStreak,
+      });
+    } catch (e) {
+      console.error('Failed to complete session', e);
+      alert('Could not save your session. Please check your connection and retry.');
     } finally {
       setCompleting(false);
     }
@@ -504,7 +509,7 @@ export default function DailySessionFocus({
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)', color: 'var(--accent-purple)' }}>
               <Sparkles size={18} />
-              <h4 style={{ fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-bold)' }}>MEMORY Flashcard Seeding</h4>
+              <h4 style={{ fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-bold)' }}>Revision Items</h4>
             </div>
             
             <p style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)', lineHeight: 'var(--lh-relaxed)' }}>

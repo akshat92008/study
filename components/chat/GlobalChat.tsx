@@ -251,16 +251,22 @@ export const GlobalChat = memo(function GlobalChat() {
 
     // Call the streaming engine
     try {
+      const requestBody: Record<string, unknown> = {
+        message: content,
+        history: chatMessages.slice(-10),
+        sessionTurnsCount: sessionTurnsCount + 1,
+      };
+
+      if (imageBase64) requestBody.imageBase64 = imageBase64;
+      if (imageMimeType) requestBody.imageMimeType = imageMimeType;
+      if (activeGoalId) requestBody.activeGoalId = activeGoalId;
+      if (chatId) requestBody.chatId = chatId;
+
       const result = await send({
-        body: {
-          message: content,
-          history: chatMessages.slice(-10),
-          sessionTurnsCount: sessionTurnsCount + 1,
-          imageBase64,
-          imageMimeType,
-          activeGoalId,
-          chatId,
-        }
+        headers: {
+          'Idempotency-Key': crypto.randomUUID(),
+        },
+        body: requestBody,
       });
 
       if (result) {

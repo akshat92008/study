@@ -91,7 +91,7 @@ export default function OnboardingFlow() {
           Building your knowledge map...
         </h2>
         <p style={{ color: 'var(--text-secondary)', maxWidth: 400, textAlign: 'center' }}>
-          Processing your diagnostic results, seeding your ATLAS graph, 
+          Processing your diagnostic results, building your study map, 
           and generating your Day 1 mission.
         </p>
       </div>
@@ -235,11 +235,11 @@ export default function OnboardingFlow() {
               </div>
 
               <p style={{ fontSize: 'var(--fs-lg)', color: 'var(--text-secondary)', marginBottom: 'var(--sp-8)', maxWidth: 600, margin: '0 auto var(--sp-8)' }}>
-                This is where you stand today. Your ATLAS graph has been seeded. <br />Your Day 1 mission is locked and waiting.
+                This is where you stand today. Your study map has been built. <br />Your Day 1 mission is locked and waiting.
               </p>
 
               <Button size="lg" onClick={() => router.push('/dashboard?magic=true')} style={{ background: 'linear-gradient(135deg, var(--accent-blue), var(--accent-cyan))', color: 'black', padding: '20px 40px', fontSize: 'var(--fs-lg)', fontWeight: 900, boxShadow: '0 10px 30px rgba(0, 240, 255, 0.3)' }}>
-                See Your Knowledge Graph <ArrowRight size={24} style={{ marginLeft: 8 }} />
+                See Your Progress <ArrowRight size={24} style={{ marginLeft: 8 }} />
               </Button>
             </div>
           </motion.div>

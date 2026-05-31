@@ -55,7 +55,7 @@ export default function AutopsyPageClient({ result: initialResult }: Props) {
     <div style={{ padding: 'var(--sp-6)', maxWidth: 900, margin: '0 auto' }}>
       <div style={{ marginBottom: 'var(--sp-6)' }}>
         <h1 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', marginBottom: 4 }}>
-          AUTOPSY
+          Test Analysis
         </h1>
         <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)' }}>
           Upload any mock test — PDF, photo, scanned paper. Full cognitive diagnosis in 30 seconds.

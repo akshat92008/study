@@ -3,16 +3,14 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useAppStore } from '@/stores/appStore';
 import {
-  Brain, RefreshCw, Loader2, Upload, X, Activity, CheckCircle, Play
+  Brain, RefreshCw, Loader2, Upload, X, Activity,
 } from 'lucide-react';
-import { toggleTask } from '@/lib/actions/planner';
 import CognitionDashboard from '@/components/cognition/CognitionDashboard';
 import RevisionQueue from '@/components/revision/RevisionQueue';
 import AutopsyDashboard from '@/components/autopsy/AutopsyDashboard';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
-import Badge from '@/components/ui/Badge';
 import CurrentTaskCard from '@/components/dashboard/CurrentTaskCard';
 
 export default function DashboardPage() {
@@ -32,28 +30,6 @@ export default function DashboardPage() {
 
   const [dashboardData, setDashboardData] = useState<any>(null);
   const [masteryData, setMasteryData] = useState<any>(null);
-
-  const handleToggleTask = async (taskId: string) => {
-    if (!dashboardData?.tasks) return;
-
-    // Optimistic Update
-    const updatedTasks = dashboardData.tasks.map((t: any) =>
-      t.id === taskId ? { ...t, is_completed: !t.is_completed } : t
-    );
-    setDashboardData({
-      ...dashboardData,
-      tasks: updatedTasks
-    });
-
-    try {
-      await toggleTask(taskId);
-      addToast('Target status updated!', 'success');
-      await loadTelemetry();
-    } catch {
-      addToast('Failed to update target', 'error');
-      loadTelemetry();
-    }
-  };
 
   // Local state for the drawer upload mechanism
   const [fileToUpload, setFileToUpload] = useState<File | null>(null);
@@ -210,7 +186,7 @@ export default function DashboardPage() {
             }}
           >
             <Brain size={12} style={{ color: 'var(--accent-purple)' }} />
-            <span>ATLAS: {overallMastery}%</span>
+            <span>Progress: {overallMastery}%</span>
           </button>
 
           {/* Memory Pill */}
@@ -231,7 +207,7 @@ export default function DashboardPage() {
             }}
           >
             <RefreshCw size={12} style={{ color: 'var(--accent-blue)' }} />
-            <span>MEMORY: {cardsDue} due</span>
+            <span>Revision: {cardsDue} due</span>
           </button>
 
           {/* Autopsy Pill */}
@@ -252,7 +228,7 @@ export default function DashboardPage() {
             }}
           >
             <Activity size={12} style={{ color: 'var(--danger)' }} />
-            <span>AUTOPSY: -{marksLost} pts</span>
+            <span>Test Analysis: -{marksLost} pts</span>
           </button>
         </div>
       </div>
@@ -262,21 +238,21 @@ export default function DashboardPage() {
         <CurrentTaskCard onSessionComplete={loadTelemetry} />
         
         <Card padding="lg" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)' }}>
-          <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'bold', marginBottom: 'var(--sp-2)' }}>Syllabus Coverage & Mastery</h3>
+          <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'bold', marginBottom: 'var(--sp-2)' }}>Study Progress</h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-xs)', marginBottom: 'var(--sp-4)' }}>
-              Your real-time cognitive metrics are constantly updated as you complete study sessions, practice spaced-repetition flashcards, and run autopsies on mock test failures.
+              Your learning progress at a glance.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--sp-4)' }}>
               <div style={{ flex: '1 1 200px', background: 'var(--bg-primary)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
-                <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Overall Mastery</div>
+                <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Overall Progress</div>
                 <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--accent-purple)', marginTop: 4 }}>{overallMastery}%</div>
               </div>
               <div style={{ flex: '1 1 200px', background: 'var(--bg-primary)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
-                <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Due Reviews</div>
+                <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Revision Due</div>
                 <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--accent-blue)', marginTop: 4 }}>{cardsDue} cards</div>
               </div>
               <div style={{ flex: '1 1 200px', background: 'var(--bg-primary)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
-                <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Autopsy Points Staged</div>
+                <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Mistakes to Review</div>
                 <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--danger)', marginTop: 4 }}>{marksLost} marks</div>
               </div>
               <div style={{ flex: '1 1 200px', background: 'var(--bg-primary)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
@@ -288,169 +264,136 @@ export default function DashboardPage() {
                 </div>
               </div>
             </div>
-          </Card>
 
-        {/* Today's Microtargets Checklist */}
-        <Card padding="lg" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--sp-3)' }}>
-            <div>
-              <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'bold' }}>Today's Microtargets</h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-xs)', marginTop: 2 }}>
-                Complete today's study blocks to lock in your daily revision targets and build your streak.
-              </p>
-            </div>
-            {dashboardData?.tasks && dashboardData.tasks.length > 0 && (
-              <Badge color="cyan">
-                {dashboardData.tasks.filter((t: any) => t.is_completed).length} / {dashboardData.tasks.length} Completed
-              </Badge>
-            )}
-          </div>
-
-          {/* Progress Bar */}
-          {dashboardData?.tasks && dashboardData.tasks.length > 0 && (
-            <div style={{ marginBottom: 'var(--sp-4)' }}>
-              <div style={{ height: 6, background: 'var(--bg-tertiary)', borderRadius: 3, overflow: 'hidden' }}>
-                <div style={{
-                  height: '100%',
-                  borderRadius: 3,
-                  width: `${Math.round((dashboardData.tasks.filter((t: any) => t.is_completed).length / dashboardData.tasks.length) * 100)}%`,
-                  background: 'linear-gradient(90deg, var(--accent-cyan), var(--accent-blue))',
-                  transition: 'width 0.4s var(--ease-out)'
-                }} />
-              </div>
-            </div>
-          )}
-
-          {/* Checklist Items */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)' }}>
-            {!dashboardData?.tasks || dashboardData.tasks.length === 0 ? (
-              <div style={{
-                textAlign: 'center',
-                padding: 'var(--sp-8) var(--sp-4)',
-                background: 'var(--bg-primary)',
-                borderRadius: 'var(--radius-md)',
-                border: '1px dashed var(--border-subtle)',
-                color: 'var(--text-tertiary)',
-                fontSize: 'var(--fs-xs)'
-              }}>
-                No microtargets scheduled for today. Ask the tutor to "create a planner" to schedule your microtargets!
-              </div>
-            ) : (
-              dashboardData.tasks.map((task: any) => {
-                const isStudyOrRevision = task.type === 'study' || task.type === 'revision';
+            {/* Weak Chapters */}
+            {dashboardData?.cognition?.concepts ? (
+              (() => {
+                const weakConcepts = (dashboardData.cognition.concepts as any[])
+                  .filter((c: any) => c.mastery === 'not_started' || c.mastery === 'exposed' || c.mastery === 'developing');
+                const uniqueWeak = new Map<string, { subject: string; chapter: string }>();
+                weakConcepts.forEach((c: any) => {
+                  const key = `${c.subject}::${c.chapter}`;
+                  if (!uniqueWeak.has(key)) uniqueWeak.set(key, { subject: c.subject, chapter: c.chapter });
+                });
+                const weakList = Array.from(uniqueWeak.values()).slice(0, 5);
+                if (weakList.length === 0) return null;
                 return (
-                  <div
-                    key={task.id}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyItems: 'center',
-                      justifyContent: 'space-between',
-                      padding: 'var(--sp-3) var(--sp-4)',
-                      background: 'var(--bg-primary)',
-                      border: '1px solid var(--border-subtle)',
-                      borderRadius: 'var(--radius-md)',
-                      transition: 'all 0.2s',
-                      opacity: task.is_completed ? 0.6 : 1
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-3)', flex: 1, minWidth: 0 }}>
-                      {/* Custom Checkbox */}
-                      <button
-                        onClick={() => handleToggleTask(task.id)}
-                        style={{
-                          background: 'transparent',
-                          border: 'none',
-                          cursor: 'pointer',
-                          padding: 0,
-                          color: task.is_completed ? 'var(--success)' : 'var(--text-tertiary)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          flexShrink: 0
-                        }}
-                      >
-                        {task.is_completed ? (
-                          <CheckCircle size={18} fill="var(--success-dim)" />
-                        ) : (
-                          <div style={{
-                            width: 18,
-                            height: 18,
-                            borderRadius: '50%',
-                            border: '2px solid var(--border-strong)',
-                            transition: 'border-color 0.2s'
-                          }} />
-                        )}
-                      </button>
-
-                      {/* Title & Context */}
-                      <div style={{ minWidth: 0 }}>
-                        <div style={{
-                          fontSize: 'var(--fs-sm)',
-                          fontWeight: 'bold',
-                          color: task.is_completed ? 'var(--text-tertiary)' : 'var(--text-primary)',
-                          textDecoration: task.is_completed ? 'line-through' : 'none'
-                        }}>
-                          {task.title}
+                  <div style={{ marginTop: 'var(--sp-4)', padding: 'var(--sp-3) var(--sp-4)', background: 'var(--bg-primary)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
+                    <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', marginBottom: 'var(--sp-2)' }}>Weak Chapters</div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-1)' }}>
+                      {weakList.map((w, i) => (
+                        <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)', fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)' }}>
+                          <span style={{ display: 'inline-block', width: 6, height: 6, borderRadius: '50%', background: 'var(--danger)' }} />
+                          {w.subject} — {w.chapter}
                         </div>
-                        <div style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: 'var(--sp-2)',
-                          fontSize: '10px',
-                          color: 'var(--text-tertiary)',
-                          marginTop: 2
-                        }}>
-                          {task.subject && (
-                            <span style={{ color: 'var(--accent-cyan)', fontWeight: 'bold' }}>{task.subject}</span>
-                          )}
-                          {task.chapter && (
-                            <>
-                              <span>·</span>
-                              <span>{task.chapter}</span>
-                            </>
-                          )}
-                          <span>·</span>
-                          <span>{task.estimated_minutes || 45} mins</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Actions */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
-                      {!task.is_completed && isStudyOrRevision && (
-                        <Button
-                          size="sm"
-                          onClick={() => {
-                            window.dispatchEvent(new CustomEvent('start-focus-session', {
-                              detail: {
-                                title: task.title,
-                                subject: task.subject || 'General',
-                                chapter: task.chapter || task.title,
-                                estimatedMinutes: task.estimated_minutes || 45,
-                                taskId: task.id
-                              }
-                            }));
-                          }}
-                          style={{
-                            background: 'var(--accent-blue)',
-                            color: 'white',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: 4,
-                            padding: '4px 10px',
-                            fontSize: '11px',
-                            fontWeight: 'bold'
-                          }}
-                        >
-                          <Play size={10} fill="white" /> Start Focus
-                        </Button>
-                      )}
+                      ))}
                     </div>
                   </div>
                 );
-              })
+              })()
+            ) : (
+              <div style={{ marginTop: 'var(--sp-4)', padding: 'var(--sp-3) var(--sp-4)', background: 'var(--bg-primary)', borderRadius: 'var(--radius-md)', border: '1px dashed var(--border-subtle)', fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
+                Add your exam/goal so Cognition OS can build your syllabus progress.
+              </div>
             )}
+          </Card>
+
+        {/* Today's Microtargets */}
+        <Card padding="lg" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', gap: 'var(--sp-4)', alignItems: 'flex-start', marginBottom: 'var(--sp-4)' }}>
+            <div>
+              <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'bold', margin: 0 }}>
+                Today's Microtargets
+              </h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-xs)', marginTop: 4 }}>
+                Small targets that make today's mission clear and finishable.
+              </p>
+            </div>
+          </div>
+
+          <div style={{ display: 'grid', gap: 'var(--sp-3)' }}>
+            {(() => {
+              const tasks = Array.isArray(dashboardData?.tasks) ? dashboardData.tasks : [];
+              const sessionCard = dashboardData?.sessionCard;
+              const fallbackTargets = [
+                {
+                  title: `Focus on ${sessionCard?.focusTopic || 'today\u2019s priority topic'}`,
+                  subject: sessionCard?.subject || 'Study',
+                  type: 'focus',
+                  estimated_minutes: sessionCard?.estimatedMinutes || 45,
+                  is_completed: false,
+                },
+                {
+                  title: cardsDue > 0 ? `Revise ${cardsDue} due item${cardsDue === 1 ? '' : 's'}` : 'Do one quick revision round',
+                  subject: 'Revision',
+                  type: 'revision',
+                  estimated_minutes: 20,
+                  is_completed: false,
+                },
+                {
+                  title: marksLost > 0 ? `Review mistakes worth ${marksLost} marks` : 'Analyze one recent mistake or mock section',
+                  subject: 'Test Analysis',
+                  type: 'mistake_review',
+                  estimated_minutes: 25,
+                  is_completed: false,
+                },
+              ];
+
+              const visibleTargets = tasks.length > 0 ? tasks.slice(0, 5) : fallbackTargets;
+
+              return visibleTargets.map((task: any, index: number) => {
+                const title = task.title || task.chapter || task.focusTopic || `Target ${index + 1}`;
+                const subject = task.subject || 'Study';
+                const type = task.type || task.taskType || 'focus';
+                const minutes = task.estimated_minutes || task.estimatedMinutes || 30;
+                const completed = task.is_completed === true || task.isCompleted === true;
+
+                return (
+                  <div
+                    key={task.id || `${title}-${index}`}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      gap: 'var(--sp-3)',
+                      padding: 'var(--sp-3)',
+                      borderRadius: 'var(--radius-md)',
+                      background: 'var(--bg-primary)',
+                      border: '1px solid var(--border-subtle)',
+                      opacity: completed ? 0.65 : 1,
+                    }}
+                  >
+                    <div style={{ minWidth: 0 }}>
+                      <div style={{ fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-semibold)', color: 'var(--text-primary)' }}>
+                        {completed ? '✓ ' : ''}{title}
+                      </div>
+                      <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', marginTop: 2 }}>
+                        {subject} · {String(type).replace(/_/g, ' ')} · {minutes} min
+                      </div>
+                    </div>
+
+                    <Button
+                      size="sm"
+                      variant={completed ? 'secondary' : 'primary'}
+                      disabled={completed}
+                      onClick={() => {
+                        window.dispatchEvent(new CustomEvent('start-focus-session', {
+                          detail: {
+                            taskId: task.id,
+                            title,
+                            subject,
+                            chapter: task.chapter || title,
+                            estimatedMinutes: minutes,
+                          },
+                        }));
+                      }}
+                    >
+                      {completed ? 'Done' : 'Start'}
+                    </Button>
+                  </div>
+                );
+              });
+            })()}
           </div>
         </Card>
       </div>
@@ -485,19 +428,19 @@ export default function DashboardPage() {
             {activeDrawer === 'cognition' && (
               <>
                 <Brain size={18} style={{ color: 'var(--accent-purple)' }} />
-                <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)' }}>ATLAS: Cognition Graph</span>
+                <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)' }}>Progress</span>
               </>
             )}
             {activeDrawer === 'revision' && (
               <>
                 <RefreshCw size={18} style={{ color: 'var(--accent-blue)' }} />
-                <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)' }}>MEMORY: Spaced Repetition Queue</span>
+                <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)' }}>Revision</span>
               </>
             )}
             {activeDrawer === 'autopsy' && (
               <>
                 <Activity size={18} style={{ color: 'var(--danger)' }} />
-                <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)' }}>AUTOPSY: Mistake Diagnoser</span>
+                <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)' }}>Test Analysis</span>
               </>
             )}
           </div>

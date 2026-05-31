@@ -5,7 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import {
   MessageSquare, Zap, X, ChevronLeft, ChevronRight, Plus, Check, Loader2, Target, Calendar, Clock, Sliders, Sparkles, LogOut,
-  Brain, RefreshCw, Activity, BookOpen
+  Brain, RefreshCw, Activity, BookOpen, Home
 } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -86,7 +86,7 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
               Cognition <span style={{ color: 'var(--accent-blue)' }}>OS</span>
             </div>
             <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: 'var(--ls-ultra)' }}>
-              {examType} Engine
+              {examType}
             </div>
           </div>
         </div>
@@ -123,9 +123,55 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
           overflowX: 'hidden',
         }}
       >
-        {/* Workspace Links */}
+        {/* Navigation */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-1)' }}>
-          {/* Navigation links hidden per OS vision */}
+          {[
+            { label: 'Today', href: '/dashboard', icon: Home },
+            { label: 'Ask MIND', href: '/chat', icon: MessageSquare },
+            { label: 'Test Analysis', href: '/autopsy', icon: Activity },
+            { label: 'Progress', href: '/cognition', icon: Brain },
+            { label: 'Revision', href: '/revision', icon: RefreshCw },
+          ].map((item) => {
+            const isActive = pathname.startsWith(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: isSidebarCollapsed ? 0 : 'var(--sp-3)',
+                  justifyContent: isSidebarCollapsed ? 'center' : 'flex-start',
+                  padding: 'var(--sp-2) var(--sp-3)',
+                  borderRadius: 'var(--radius-md)',
+                  textDecoration: 'none',
+                  fontSize: 'var(--fs-sm)',
+                  fontWeight: isActive ? 'var(--fw-semibold)' : 'var(--fw-normal)',
+                  color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
+                  background: isActive ? 'var(--bg-secondary)' : 'transparent',
+                  width: '100%',
+                  transition: 'all var(--duration-fast) var(--ease-out)',
+                  position: 'relative',
+                }}
+              >
+                {isActive && (
+                  <div
+                    style={{
+                      position: 'absolute',
+                      left: 0,
+                      top: '25%',
+                      bottom: '25%',
+                      width: 3,
+                      background: 'var(--accent-purple)',
+                      borderRadius: 2,
+                    }}
+                  />
+                )}
+                <item.icon size={16} style={{ color: isActive ? 'var(--accent-purple)' : 'var(--text-tertiary)', flexShrink: 0 }} />
+                {!isSidebarCollapsed && <span>{item.label}</span>}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Learning Goals Section */}

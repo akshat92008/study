@@ -1,6 +1,5 @@
-// app/chat/page.tsx
-import ChatShell from '@/components/ChatShell';
+import { redirect } from 'next/navigation';
 
 export default function ChatPage() {
-  return <ChatShell />;
+  redirect('/dashboard?mind=open');
 }
