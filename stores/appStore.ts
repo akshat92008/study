@@ -269,7 +269,7 @@ export const useAppStore = create<AppState>()(
         voiceModeEnabled: state.voiceModeEnabled,
       }),
       version: 2,
-      migrate: (persistedState) => {
+      migrate: (persistedState: any) => {
         const state = (persistedState ?? {}) as Partial<AppState>;
         return {
           isSidebarCollapsed: state.isSidebarCollapsed,
