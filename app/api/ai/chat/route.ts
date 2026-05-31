@@ -101,28 +101,76 @@ export async function POST(req: NextRequest) {
   if (!allowed) return rateLimitResponse(remaining, resetAt);
 
   const ChatPayloadSchema = z.object({
-    message: z.string().optional(),
-    history: z.array(z.any()).optional(),
-    imageBase64: z.string().optional(),
-    imageMimeType: z.string().optional(),
-    documentBase64: z.string().optional(),
-    documentMimeType: z.string().optional(),
-    chatId: z.string().optional(),
-    sessionTurnsCount: z.number().optional()
+    message: z.string().nullable().optional(),
+    content: z.string().nullable().optional(),
+    text: z.string().nullable().optional(),
+    input: z.string().nullable().optional(),
+    prompt: z.string().nullable().optional(),
+
+    history: z.array(z.any()).nullable().optional(),
+
+    imageBase64: z.string().nullable().optional(),
+    imageMimeType: z.string().nullable().optional(),
+    documentBase64: z.string().nullable().optional(),
+    documentMimeType: z.string().nullable().optional(),
+
+    chatId: z.string().nullable().optional(),
+    activeGoalId: z.string().nullable().optional(),
+
+    sessionTurnsCount: z.number().nullable().optional()
   });
 
-  let body;
+  let rawBody: any;
   try {
-    body = ChatPayloadSchema.parse(await req.json());
-  } catch (err) {
-    return apiErrorResponse('invalid_request', {
+    rawBody = await req.json();
+  } catch (jsonErr) {
+    logger.warn('Invalid JSON in request', {
+      requestId,
+      userId: user.id,
+      reason: jsonErr instanceof Error ? jsonErr.message : 'unknown',
+      feature: 'chat'
+    });
+    return apiErrorResponse('invalid_chat_payload', {
       status: 400,
-      message: 'Invalid JSON or payload structure.',
+      message: 'MIND could not read the chat request payload.',
       requestId,
     });
   }
 
-  const { message, imageBase64, imageMimeType, sessionTurnsCount } = body;
+  let parsed;
+  try {
+    parsed = ChatPayloadSchema.parse(rawBody);
+  } catch (err) {
+    logger.warn('Invalid chat payload', {
+      requestId,
+      userId: user.id,
+      receivedKeys: Object.keys(rawBody ?? {}),
+      reason: err instanceof Error ? err.message : 'unknown',
+      feature: 'chat'
+    });
+    return apiErrorResponse('invalid_chat_payload', {
+      status: 400,
+      message: 'MIND could not read the chat request payload.',
+      requestId,
+    });
+  }
+
+  const message =
+    parsed.message ??
+    parsed.content ??
+    parsed.text ??
+    parsed.input ??
+    parsed.prompt ??
+    '';
+
+  const history = Array.isArray(parsed.history) ? parsed.history : [];
+  const imageBase64 = parsed.imageBase64 ?? undefined;
+  const imageMimeType = parsed.imageMimeType ?? undefined;
+  const documentBase64 = parsed.documentBase64 ?? undefined;
+  const documentMimeType = parsed.documentMimeType ?? undefined;
+  const chatId = parsed.chatId ?? undefined;
+  const activeGoalId = parsed.activeGoalId ?? undefined;
+  const sessionTurnsCount = parsed.sessionTurnsCount ?? 0;
   const sessionId = await getOrCreateGlobalChatSession(supabase, user.id);
 
   if (imageBase64) {
@@ -318,7 +366,7 @@ export async function POST(req: NextRequest) {
   if (
     orchestratorResult.intent === 'mock_autopsy' &&
     orchestratorResult.needsFileProcessing &&
-    (imageBase64 || body?.documentBase64)
+    (imageBase64 || documentBase64)
   ) {
     const responseText = "I can see this is a mock-test upload. Full AUTOPSY runs outside the chat stream so the upload can be validated, extracted, and processed safely. Open AUTOPSY and upload the same file there; I'll use the processed result on the next turn.";
 

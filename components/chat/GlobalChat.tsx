@@ -175,11 +175,14 @@ export const GlobalChat = memo(function GlobalChat() {
           }
         }
       }
-    } catch (e) {
+    } catch (e: any) {
       console.error('Stream failed to complete', e);
+      const is400 = e?.status === 400;
       addChatMessage({
         role: 'assistant',
-        content: 'I lost connection there. Please try again.',
+        content: is400
+          ? 'I could not read that message. Please try again.'
+          : 'I lost connection there. Please try again.',
         timestamp: new Date().toISOString(),
       });
     }
