@@ -50,24 +50,84 @@ export async function POST(req: NextRequest) {
   if (!allowed) return rateLimitResponse(remaining, resetAt);
 
   const ChatPayloadSchema = z.object({
-    message: z.string().optional(),
-    history: z.array(z.any()).optional(),
-    imageBase64: z.string().optional(),
-    imageMimeType: z.string().optional(),
-    documentBase64: z.string().optional(),
-    documentMimeType: z.string().optional(),
-    chatId: z.string().optional(),
-    sessionTurnsCount: z.number().optional()
+    message: z.string().nullable().optional(),
+    content: z.string().nullable().optional(),
+    text: z.string().nullable().optional(),
+    input: z.string().nullable().optional(),
+    prompt: z.string().nullable().optional(),
+
+    history: z.array(z.any()).nullable().optional(),
+
+    imageBase64: z.string().nullable().optional(),
+    imageMimeType: z.string().nullable().optional(),
+    documentBase64: z.string().nullable().optional(),
+    documentMimeType: z.string().nullable().optional(),
+
+    chatId: z.string().nullable().optional(),
+    activeGoalId: z.string().nullable().optional(),
+
+    sessionTurnsCount: z.number().nullable().optional(),
   });
 
-  let body;
-  try { 
-    body = ChatPayloadSchema.parse(await req.json()); 
-  } catch (err) { 
-    return new Response('Invalid JSON or Payload structure', { status: 400 }); 
+  let rawBody: unknown;
+
+  try {
+    rawBody = await req.json();
+  } catch (jsonErr) {
+    logger.warn('Invalid JSON in chat request', {
+      userId: user.id,
+      reason: jsonErr instanceof Error ? jsonErr.message : 'unknown',
+      feature: 'chat',
+    });
+
+    return NextResponse.json(
+      {
+        error: 'invalid_chat_payload',
+        message: 'MIND could not read the chat request payload.',
+      },
+      { status: 400 }
+    );
   }
 
-  const { message, imageBase64, imageMimeType, sessionTurnsCount } = body;
+  let parsed: z.infer<typeof ChatPayloadSchema>;
+
+  try {
+    parsed = ChatPayloadSchema.parse(rawBody);
+  } catch (err) {
+    logger.warn('Invalid chat payload', {
+      userId: user.id,
+      receivedKeys:
+        rawBody && typeof rawBody === 'object'
+          ? Object.keys(rawBody as Record<string, unknown>)
+          : [],
+      reason: err instanceof Error ? err.message : 'unknown',
+      feature: 'chat',
+    });
+
+    return NextResponse.json(
+      {
+        error: 'invalid_chat_payload',
+        message: 'MIND could not read the chat request payload.',
+      },
+      { status: 400 }
+    );
+  }
+
+  const message =
+    parsed.message ??
+    parsed.content ??
+    parsed.text ??
+    parsed.input ??
+    parsed.prompt ??
+    '';
+  const history = Array.isArray(parsed.history) ? parsed.history : [];
+  const imageBase64 = parsed.imageBase64 ?? undefined;
+  const imageMimeType = parsed.imageMimeType ?? undefined;
+  const documentBase64 = parsed.documentBase64 ?? undefined;
+  const documentMimeType = parsed.documentMimeType ?? undefined;
+  const chatId = parsed.chatId ?? undefined;
+  const activeGoalId = parsed.activeGoalId ?? undefined;
+  const sessionTurnsCount = parsed.sessionTurnsCount ?? 0;
   const sessionId = await getOrCreateGlobalChatSession(supabase, user.id);
 
   if (imageBase64) {
@@ -209,13 +269,13 @@ export async function POST(req: NextRequest) {
   if (
     orchestratorResult.intent === 'mock_autopsy' &&
     orchestratorResult.needsFileProcessing &&
-    (imageBase64 || body?.documentBase64)
+    (imageBase64 || documentBase64)
   ) {
     const responseText = "I can see you've uploaded a test paper. Let me run a full autopsy on it — analyzing every question, classifying mistakes, and updating your knowledge map. Give me 30 seconds.\n\nHead to the Autopsy section to see the full breakdown once I'm done.";
     const autopsyPayload = {
       fileData: imageBase64
         ? { kind: 'inline', data: imageBase64, mimeType: imageMimeType }
-        : { kind: 'inline', data: body?.documentBase64, mimeType: body?.documentMimeType },
+        : { kind: 'inline', data: documentBase64, mimeType: documentMimeType },
       testName: `Chat Upload ${new Date().toLocaleDateString()}`,
       examType: mindContext?.profile?.examType || 'neet',
     };

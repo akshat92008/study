@@ -303,9 +303,24 @@ export const GlobalChat = memo(function GlobalChat() {
       }
     } catch (e) {
       console.error('Stream failed to complete', e);
+      const err: any = e;
+      let friendlyMessage = 'MIND had trouble responding. Please try again.';
+
+      if (err?.status === 400) {
+        friendlyMessage = 'I could not read that message. Please try again.';
+      } else if (err?.status === 401) {
+        friendlyMessage = 'Your session expired. Please log in again.';
+      } else if (err?.status === 429) {
+        friendlyMessage = 'Too many requests. Wait a minute and try again.';
+      } else if (err?.status === 503 || err?.status === 504) {
+        friendlyMessage = 'MIND is temporarily overloaded. Please retry in a moment.';
+      } else if (err?.status >= 500) {
+        friendlyMessage = 'MIND had a server issue. Please retry.';
+      }
+
       addChatMessage({
         role: 'assistant',
-        content: 'I lost connection there. Please try again.',
+        content: friendlyMessage,
         timestamp: new Date().toISOString(),
       });
     }

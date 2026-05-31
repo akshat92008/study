@@ -110,9 +110,25 @@ export function useStream(defaultUrl = '/api/ai/chat'): UseStreamReturn {
 
           if (!res.ok) {
             const errText = await res.text().catch(() => '');
-            throw Object.assign(new Error(`HTTP ${res.status}: ${errText}`), {
+            let parsedError: any = null;
+
+            try {
+              parsedError = errText ? JSON.parse(errText) : null;
+            } catch {
+              parsedError = null;
+            }
+
+            const safeMessage =
+              parsedError?.message ||
+              parsedError?.error ||
+              errText ||
+              `HTTP ${res.status}`;
+
+            throw Object.assign(new Error(`HTTP ${res.status}: ${safeMessage}`), {
               status: res.status,
-              retryable: res.status === 503 || res.status === 429,
+              errorCode: parsedError?.error,
+              requestId: parsedError?.requestId,
+              retryable: res.status === 503 || res.status === 429 || res.status === 504,
             });
           }
 
