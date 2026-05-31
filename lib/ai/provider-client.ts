@@ -13,6 +13,7 @@ import {
   routeVisionCall,
   routeMultimodalJSONExtraction,
   routeAudioSynthesis,
+  type EmbeddingBudgetOptions,
 } from './router';
 
 export const MODELS = {
@@ -58,7 +59,10 @@ export async function* streamText(
   yield* routeStreamGeneration(systemPrompt, prompt as any, temperature, reservationId);
 }
 
-export async function getEmbedding(text: string): Promise<number[]> {
+export async function getEmbedding(
+  text: string,
+  budgetOptions?: EmbeddingBudgetOptions
+): Promise<number[]> {
   // Guard: if embeddings are disabled, return empty array.
   // ChatMemoryService.storeMessageInMemory already handles empty embedding gracefully.
   if (process.env.DISABLE_EMBEDDINGS === 'true') {
@@ -66,7 +70,7 @@ export async function getEmbedding(text: string): Promise<number[]> {
   }
   if (!text || text.trim().length < 3) return [];
   try {
-    return await routeEmbedding(text.slice(0, 8000));
+    return await routeEmbedding(text.slice(0, 8000), budgetOptions);
   } catch (err) {
     logger.warn('getEmbedding failed silently', err);
     return [];

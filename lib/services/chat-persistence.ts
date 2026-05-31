@@ -6,6 +6,11 @@
 // existing row's id instead of throwing — making all writes idempotent.
 
 export type ChatMessageForPrompt = { role: 'user' | 'assistant' | 'system'; content: string };
+export type ChatMessageForClient = ChatMessageForPrompt & {
+  id: string;
+  timestamp: string;
+  metadata?: Record<string, any>;
+};
 
 export async function getOrCreateGlobalChatSession(supabase: any, userId: string): Promise<string> {
   const { data: existing, error: existingError } = await supabase
@@ -53,6 +58,33 @@ export async function loadRecentMessages(supabase: any, sessionId: string): Prom
   return (data || [])
     .reverse()
     .map((m: any) => ({ role: m.role, content: m.content }))
+    .filter((m: any) => ['user', 'assistant', 'system'].includes(m.role) && typeof m.content === 'string');
+}
+
+export async function loadRecentMessagesForClient(
+  supabase: any,
+  sessionId: string
+): Promise<ChatMessageForClient[]> {
+  const { data, error } = await supabase
+    .from('chat_messages')
+    .select('id, role, content, metadata, created_at')
+    .eq('session_id', sessionId)
+    .order('created_at', { ascending: false })
+    .limit(50);
+
+  if (error) {
+    throw new Error(`Failed to load chat history: ${error.message}`);
+  }
+
+  return (data || [])
+    .reverse()
+    .map((m: any) => ({
+      id: m.id,
+      role: m.role,
+      content: m.content,
+      timestamp: m.created_at,
+      metadata: m.metadata ?? {},
+    }))
     .filter((m: any) => ['user', 'assistant', 'system'].includes(m.role) && typeof m.content === 'string');
 }
 

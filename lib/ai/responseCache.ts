@@ -28,7 +28,10 @@ export async function checkSemanticCache(prompt: string, userId: string): Promis
       return null; // Only cache moderately sized specific queries
     }
 
-    const embedding = await getEmbedding(trimmed);
+    const embedding = await getEmbedding(trimmed, {
+      userId,
+      route: 'semantic-cache-check',
+    });
     if (!embedding || embedding.length === 0) {
       logger.info('Semantic cache miss: empty embedding');
       return null;
@@ -60,12 +63,19 @@ export async function checkSemanticCache(prompt: string, userId: string): Promis
   return null;
 }
 
-export async function setSemanticCache(prompt: string, response: string): Promise<void> {
+export async function setSemanticCache(
+  prompt: string,
+  response: string,
+  userId?: string
+): Promise<void> {
   try {
     const trimmed = prompt.trim();
     if (trimmed.length < 15 || trimmed.length > 500) return;
 
-    const embedding = await getEmbedding(trimmed);
+    const embedding = await getEmbedding(
+      trimmed,
+      userId ? { userId, route: 'semantic-cache-set' } : undefined
+    );
     if (!embedding || embedding.length === 0) return;
 
     const supabase = await createClient();

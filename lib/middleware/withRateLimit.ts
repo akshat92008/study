@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
+import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 
 type RateLimitConfig = {
   bucket: string;
@@ -22,9 +23,16 @@ export function withRateLimit(
   handler: (req: NextRequest, userId: string) => Promise<NextResponse>
 ) {
   return async (req: NextRequest): Promise<NextResponse> => {
+    const requestId = getRequestId(req);
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    if (!user) {
+      return apiErrorResponse('unauthorized', {
+        status: 401,
+        message: 'Authentication is required.',
+        requestId,
+      });
+    }
 
     const config = ROUTE_LIMITS[routeName];
     const { allowed, remaining, resetAt } = await checkRateLimit({
@@ -33,6 +41,10 @@ export function withRateLimit(
     });
 
     if (!allowed) return rateLimitResponse(remaining, resetAt);
-    return handler(req, user.id);
+    try {
+      return await handler(req, user.id);
+    } catch (error) {
+      return unexpectedApiErrorResponse(req, error, routeName, 'Request failed.');
+    }
   };
 }

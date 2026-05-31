@@ -166,6 +166,11 @@ export async function getLearnerStateSnapshot(
   ]);
 
   const profile = profileRes.data;
+  const profileVersion = Number(profile?.learner_state_version ?? 0);
+  const missionVersion = Number(missionRes.data?.learner_state_version ?? -1);
+  const currentMission = missionRes.data && missionVersion === profileVersion
+    ? missionRes.data
+    : null;
   const totalConcepts = totalConceptsRes.count ?? 0;
   const masteredCount = masteredConceptsRes.count ?? 0;
   const sessions = sessionsRes.data ?? [];
@@ -181,7 +186,7 @@ export async function getLearnerStateSnapshot(
       streakDays: profile?.streak_days || 0,
       timezone: profile?.timezone || 'UTC',
       mindStateSignal: profile?.emotional_state || 'neutral',
-      version: profile?.learner_state_version || 0,
+      version: profileVersion,
     },
     activeGoal: goalRes.data
       ? {
@@ -190,12 +195,12 @@ export async function getLearnerStateSnapshot(
           progress: goalRes.data.progress ?? null,
         }
       : null,
-    currentMission: missionRes.data
+    currentMission: currentMission
       ? {
-          focusTopic: missionRes.data.focusTopic,
-          subject: missionRes.data.subject,
-          estimatedMinutes: missionRes.data.estimatedMinutes,
-          rationale: missionRes.data.rationale,
+          focusTopic: currentMission.focusTopic,
+          subject: currentMission.subject,
+          estimatedMinutes: currentMission.estimatedMinutes,
+          rationale: currentMission.rationale,
         }
       : null,
     atlas: {

@@ -2,18 +2,43 @@ import { getEmbedding } from '@/lib/ai/provider-client';
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/utils/logger';
 import { routeJSONGeneration } from '@/lib/ai/router';
+import {
+  isBudgetExceeded,
+  isBudgetUnavailable,
+  reserveBudgetForModelCall,
+} from '@/lib/ai/cost-guard';
 
 const MAX_MEMORY_RESULTS = 8;
+const EMOTIONAL_MEMORY_PATTERN = /scared|failed|quit|hate|tired|stuck|help|overwhelmed|give up/i;
 
 interface ChatMemoryMatch {
   id: string;
   content: string;
 }
 
+const LOW_MEMORY_SCORES = {
+  importance: 0,
+  novelty: 0,
+  emotional_salience: 0,
+  learning_relevance: 0,
+  repetition_signal: 0,
+};
+
+function fallbackMemoryScores(content: string) {
+  if (EMOTIONAL_MEMORY_PATTERN.test(content)) {
+    return {
+      ...LOW_MEMORY_SCORES,
+      importance: 7,
+      emotional_salience: 8,
+    };
+  }
+  return LOW_MEMORY_SCORES;
+}
+
 export class ChatMemoryService {
   async storeMessageInMemory(userId: string, content: string): Promise<void> {
     const trimmed = content.trim();
-    if (trimmed.length < 15 && !/scared|failed|quit|hate|tired|stuck|help|overwhelmed|give up/i.test(trimmed)) return; // Immediate drop for short conversational noise, unless emotional
+    if (trimmed.length < 15 && !EMOTIONAL_MEMORY_PATTERN.test(trimmed)) return; // Immediate drop for short conversational noise, unless emotional
 
     try {
       // 1. Hybrid Scoring
@@ -36,11 +61,30 @@ Return ONLY valid JSON in this exact format:
 }`;
 
       type HybridScores = { importance: number; novelty: number; emotional_salience: number; learning_relevance: number; repetition_signal: number };
-      const evalResult = await routeJSONGeneration<HybridScores>(
-        'You are an expert semantic memory analyzer. Only provide high scores for highly specific and valuable insights. Generic chatter scores 0.',
-        checkPrompt,
-        0.1
-      ).catch(() => ({ importance: 5, novelty: 0, emotional_salience: 0, learning_relevance: 0, repetition_signal: 0 }));
+      const evalResult = await (async (): Promise<HybridScores> => {
+        try {
+          const reservation = await reserveBudgetForModelCall(
+            userId,
+            'memory-scoring',
+            'router:json',
+            Math.max(1, Math.ceil(checkPrompt.length / 4)),
+            200
+          );
+
+          return await routeJSONGeneration<HybridScores>(
+            'You are an expert semantic memory analyzer. Only provide high scores for highly specific and valuable insights. Generic chatter scores 0.',
+            checkPrompt,
+            0.1,
+            undefined,
+            reservation.reservationId
+          );
+        } catch (err) {
+          if (isBudgetExceeded(err) || isBudgetUnavailable(err)) {
+            logger.warn('Skipping memory scoring because AI budget is unavailable', { userId });
+          }
+          return fallbackMemoryScores(trimmed);
+        }
+      })();
 
       // Accept if importance is high, or if it's highly emotionally salient or relevant to learning
       if (evalResult.importance < 6 && evalResult.learning_relevance < 7 && evalResult.emotional_salience < 7) {
@@ -48,7 +92,10 @@ Return ONLY valid JSON in this exact format:
         return;
       }
 
-      const embedding = await getEmbedding(trimmed);
+      const embedding = await getEmbedding(trimmed, {
+        userId,
+        route: 'chat-memory-store',
+      });
       if (!embedding || !Array.isArray(embedding) || embedding.length === 0 || typeof embedding[0] !== 'number') {
         logger.warn('Skipping memory storage, empty embedding returned', { userId });
         return;
@@ -91,7 +138,10 @@ Return ONLY valid JSON in this exact format:
 
       const [vectorResult, textResult] = await Promise.all([
         (async () => {
-          const embedding = await getEmbedding(trimmed).catch((err) => {
+          const embedding = await getEmbedding(trimmed, {
+            userId,
+            route: 'chat-memory-search',
+          }).catch((err) => {
             logger.warn('Embedding generation failed, falling back to BM25 only', err);
             return null;
           });

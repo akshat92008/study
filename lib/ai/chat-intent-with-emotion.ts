@@ -1,6 +1,11 @@
 import { routeJSONGeneration } from '@/lib/ai/router';
 import { logger } from '@/lib/utils/logger';
 import { ChatIntent, IntentResult } from './chat-intent';
+import {
+  isBudgetExceeded,
+  isBudgetUnavailable,
+  reserveBudgetForModelCall,
+} from '@/lib/ai/cost-guard';
 
 export type EmotionalState =
   | 'focused' | 'motivated' | 'stressed' | 'burnt_out' | 'anxious'
@@ -32,7 +37,8 @@ const NEUTRAL_PATTERNS = [
 export async function classifyMessageCombined(
   message: string,
   conversationContext?: string,
-  examType?: string
+  examType?: string,
+  userId?: string
 ): Promise<ClassificationResult> {
   // Try keyword shortcuts first
   for (const [intentStr, pattern] of Object.entries(INTENT_KEYWORDS)) {
@@ -85,10 +91,22 @@ Emotion rules:
 - Pure academic questions → neutral`;
 
   try {
+    const reservation = userId
+      ? await reserveBudgetForModelCall(
+          userId,
+          'intent-classification',
+          'router:json',
+          Math.max(1, Math.ceil(prompt.length / 4)),
+          160
+        )
+      : null;
+
     const parsed = await routeJSONGeneration<any>(
       'You are a classification model. Return only valid JSON. No markdown.',
       prompt,
-      0.1
+      0.1,
+      undefined,
+      reservation?.reservationId
     );
 
     const emotion = VALID_EMOTIONS.has(parsed.emotion) ? parsed.emotion : 'neutral';
@@ -107,7 +125,11 @@ Emotion rules:
       confidence 
     };
   } catch (err) {
-    logger.warn('[classifyMessageCombined] Failed, defaulting:', err);
+    if (isBudgetExceeded(err) || isBudgetUnavailable(err)) {
+      logger.warn('[classifyMessageCombined] Budget unavailable, defaulting to GENERAL_CHAT');
+    } else {
+      logger.warn('[classifyMessageCombined] Failed, defaulting:', err);
+    }
     return { 
       intent: { intent: 'GENERAL_CHAT', topic: null, subject: null, action: null }, 
       emotion: 'neutral', 

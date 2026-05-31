@@ -14,10 +14,6 @@ export default async function AutopsyPage() {
     .limit(1)
     .maybeSingle();
 
-  const { data: plan } = autopsy
-    ? await supabase.from('recovery_plans').select('*').eq('autopsy_id', autopsy.id).maybeSingle()
-    : { data: null };
-
   const { data: questions } = autopsy
     ? await supabase.from('autopsy_questions').select('*').eq('autopsy_id', autopsy.id)
     : { data: [] };
@@ -36,7 +32,7 @@ export default async function AutopsyPage() {
     potentialScore: autopsy.potential_score,
     recoverableMarks: autopsy.recoverable_marks,
     mentorQuote: autopsy.mentor_quote || autopsy.mentor_insight,
-    plan,
+    plan: null,
     examType: autopsy.exam_type,
     categoryBreakdown: Object.entries(categoryMap).map(([name, value]) => ({ name, value })),
     chapterLoss: Object.entries(chapterMap)

@@ -1,6 +1,9 @@
-import { routeEmbedding } from './router';
+import { routeEmbedding, type EmbeddingBudgetOptions } from './router';
 
-export async function getEmbedding(text: string): Promise<number[] | null> {
+export async function getEmbedding(
+  text: string,
+  budgetOptions?: EmbeddingBudgetOptions
+): Promise<number[] | null> {
   if (process.env.DISABLE_EMBEDDINGS === "true") {
     return null; // explicit opt-out
   }
@@ -8,7 +11,7 @@ export async function getEmbedding(text: string): Promise<number[] | null> {
   if (!text || text.trim().length < 3) return null;
   
   try {
-    const result = await routeEmbedding(text.slice(0, 8000));
+    const result = await routeEmbedding(text.slice(0, 8000), budgetOptions);
     return result ?? null;
   } catch (e) {
     console.error("[embeddings] Failed:", e);
@@ -16,7 +19,11 @@ export async function getEmbedding(text: string): Promise<number[] | null> {
   }
 }
 
-export async function getEmbeddingsBatch(texts: string[], concurrency = 5): Promise<(number[] | null)[]> {
+export async function getEmbeddingsBatch(
+  texts: string[],
+  concurrency = 5,
+  budgetOptions?: EmbeddingBudgetOptions
+): Promise<(number[] | null)[]> {
   if (process.env.DISABLE_EMBEDDINGS === "true") {
     return texts.map(() => null);
   }
@@ -27,7 +34,7 @@ export async function getEmbeddingsBatch(texts: string[], concurrency = 5): Prom
   for (let i = 0; i < texts.length; i += concurrency) {
     const batch = texts.slice(i, i + concurrency);
     const batchPromises = batch.map((text, idx) => 
-      getEmbedding(text).then(emb => {
+      getEmbedding(text, budgetOptions).then(emb => {
         results[i + idx] = emb;
       })
     );

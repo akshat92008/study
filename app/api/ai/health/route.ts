@@ -1,31 +1,5 @@
-import { NextResponse } from 'next/server';
-import { getAllProviderStats } from '@/lib/ai/provider-health';
-import { createClient } from '@/lib/supabase/server';
-import { getDeadLetterCount } from '@/lib/events/retry';
+import { disabledForMvp } from '@/lib/api/disabled';
 
 export async function GET() {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-
-  const deadLetterCount = await getDeadLetterCount(user.id);
-
-  const stats = await getAllProviderStats();
-  
-  // Check which providers have keys configured
-  const configured = {
-    cerebras: !!process.env.CEREBRAS_API_KEY,
-    sambanova: !!process.env.SAMBANOVA_API_KEY,
-    groq: !!process.env.GROQ_API_KEY,
-    cloudflare: !!(process.env.CF_ACCOUNT_ID && process.env.CF_API_TOKEN),
-    google: !!process.env.GEMINI_API_KEY,
-  };
-
-  return NextResponse.json({
-  configured,
-  health: stats,
-  deadLetterCount,
-  embeddingsEnabled: process.env.DISABLE_EMBEDDINGS !== 'true',
-  timestamp: new Date().toISOString(),
-});
+  return disabledForMvp();
 }

@@ -26,6 +26,67 @@ function walk(dir: string, files: string[] = []): string[] {
   return files;
 }
 
+function stripComments(text: string): string {
+  return text
+    .replace(/\/\*[\s\S]*?\*\//g, '')
+    .replace(/\/\/.*$/gm, '');
+}
+
+function migrationObjects() {
+  const migrationsDir = path.join(root, 'supabase', 'migrations');
+  const tables = new Set<string>();
+  const views = new Set<string>();
+  const functions = new Set<string>();
+
+  for (const file of fs.readdirSync(migrationsDir)) {
+    if (!file.endsWith('.sql')) continue;
+    const text = fs.readFileSync(path.join(migrationsDir, file), 'utf8');
+    for (const match of text.matchAll(/create\s+table\s+(?:if\s+not\s+exists\s+)?(?:public\.)?([a-zA-Z_][\w-]*)/gi)) {
+      tables.add(match[1]);
+    }
+    for (const match of text.matchAll(/create\s+(?:or\s+replace\s+)?view\s+(?:public\.)?([a-zA-Z_][\w-]*)/gi)) {
+      views.add(match[1]);
+    }
+    for (const match of text.matchAll(/create\s+(?:or\s+replace\s+)?function\s+(?:public\.)?([a-zA-Z_][\w]*)/gi)) {
+      functions.add(match[1]);
+    }
+  }
+
+  return { tables, views, functions };
+}
+
+function runtimeDbRefs() {
+  const runtimeDirs = ['app', 'components', 'lib', 'stores'];
+  const refs = new Map<string, Set<string>>();
+  const storageBuckets = new Map<string, Set<string>>();
+
+  for (const dir of runtimeDirs) {
+    const fullDir = path.join(root, dir);
+    if (!fs.existsSync(fullDir)) continue;
+
+    for (const file of walk(fullDir)) {
+      const relative = path.relative(root, file);
+      if (relative.includes('lib/db/migrations_deprecated')) continue;
+
+      const text = stripComments(fs.readFileSync(file, 'utf8'));
+      for (const match of text.matchAll(/\.from\(\s*['"]([^'"]+)['"]\s*\)|\.rpc\(\s*['"]([^'"]+)['"]\s*\)|storage\.from\(\s*['"]([^'"]+)['"]\s*\)/g)) {
+        const tableOrRpc = match[1] || match[2];
+        const bucket = match[3];
+        if (tableOrRpc) {
+          if (!refs.has(tableOrRpc)) refs.set(tableOrRpc, new Set());
+          refs.get(tableOrRpc)!.add(relative);
+        }
+        if (bucket) {
+          if (!storageBuckets.has(bucket)) storageBuckets.set(bucket, new Set());
+          storageBuckets.get(bucket)!.add(relative);
+        }
+      }
+    }
+  }
+
+  return { refs, storageBuckets };
+}
+
 describe("schema drift", () => {
   it("does not use removed database fields", () => {
     const offenders: string[] = [];
@@ -101,5 +162,24 @@ describe('migration contracts', () => {
     }
     expect(found).toBe(true);
     expect(hasSearchPath).toBe(true);
+  });
+
+  it('runtime table and RPC references exist in active migrations', () => {
+    const { tables, views, functions } = migrationObjects();
+    const { refs, storageBuckets } = runtimeDbRefs();
+    const allowedStorageBuckets = new Set<string>();
+    const missing: string[] = [];
+
+    for (const [name, files] of refs) {
+      if (tables.has(name) || views.has(name) || functions.has(name)) continue;
+      missing.push(`${name}: ${Array.from(files).sort().join(', ')}`);
+    }
+
+    for (const [bucket, files] of storageBuckets) {
+      if (allowedStorageBuckets.has(bucket)) continue;
+      missing.push(`storage:${bucket}: ${Array.from(files).sort().join(', ')}`);
+    }
+
+    expect(missing.sort()).toEqual([]);
   });
 });

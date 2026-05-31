@@ -34,7 +34,10 @@ export async function ingestMaterial(userId: string, title: string, content: str
   
   // 3. Embed and store chunks
   for (const chunk of chunks) {
-    const embedding = await getEmbedding(chunk);
+    const embedding = await getEmbedding(chunk, {
+      userId,
+      route: 'rag-ingest',
+    });
     if (!embedding || !Array.isArray(embedding) || embedding.length === 0 || typeof embedding[0] !== "number") continue;
     
     await supabase.from('material_chunks').insert({
@@ -51,7 +54,10 @@ export async function ingestMaterial(userId: string, title: string, content: str
 // Search student's personal database
 export async function searchPersonalKnowledge(userId: string, query: string, threshold = 0.5, limit = 3) {
   const supabase = await createClient();
-  const queryEmbedding = await getEmbedding(query);
+  const queryEmbedding = await getEmbedding(query, {
+    userId,
+    route: 'rag-search',
+  });
   if (!queryEmbedding || !Array.isArray(queryEmbedding) || queryEmbedding.length === 0 || typeof queryEmbedding[0] !== 'number') return [];
 
   const { data, error } = await supabase.rpc('match_material_chunks', {
@@ -72,7 +78,10 @@ export class RAGEngine {
   constructor(private supabase: SupabaseClient) {}
 
   async search({ userId, query, limit = 4, minSimilarity = 0.72 }: { userId: string, query: string, limit?: number, minSimilarity?: number }) {
-    const queryEmbedding = await getEmbedding(query);
+    const queryEmbedding = await getEmbedding(query, {
+      userId,
+      route: 'rag-search',
+    });
     if (!queryEmbedding || !Array.isArray(queryEmbedding) || queryEmbedding.length === 0 || typeof queryEmbedding[0] !== 'number') return [];
 
     const { data, error } = await this.supabase.rpc('match_material_chunks', {

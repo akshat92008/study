@@ -14,7 +14,9 @@ type ConceptGraphRow = {
 };
 
 export async function getMINDContext(userId: string, message?: string, topic?: string, subject?: string): Promise<MINDContext> {
+  const startedAt = Date.now();
   try {
+    logger.info('[MIND] context build started', { userId, feature: 'mind-context' });
     const supabase = await createClient();
     const learnerState = await getLearnerStateSnapshot(userId, { topic, subject, client: supabase });
     const rootGapChains = await getRootGapChains(userId, learnerState.atlas.weakConcepts);
@@ -34,7 +36,7 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       }
     }
 
-    return {
+    const context = {
       profile: {
         name: learnerState.profile.name,
         examType: learnerState.profile.examType,
@@ -64,8 +66,22 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       ragChunks,
       studentModel: learnerState.studentModel
     };
+    logger.info('[MIND] context build completed', {
+      userId,
+      feature: 'mind-context',
+      durationMs: Date.now() - startedAt,
+      learnerStateVersion: context.profile.learnerStateVersion,
+      weakConceptCount: context.weakConcepts.length,
+      dueCardCount: context.overdueCardsCount,
+      mistakeCount: context.recentMistakes.length,
+    });
+    return context;
   } catch (err) {
-    logger.error('getMINDContext failed', err);
+    logger.error('getMINDContext failed', err, {
+      userId,
+      feature: 'mind-context',
+      durationMs: Date.now() - startedAt,
+    });
     // Return safe defaults — never crash the chat
     return {
       profile: { name: 'Student', examType: 'General', examDate: null, currentLevel: 'intermediate', learningStyle: 'visual', streakDays: 0, timezone: 'UTC', learnerStateVersion: 0 },

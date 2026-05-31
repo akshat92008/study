@@ -3,9 +3,7 @@ import { redirect } from 'next/navigation';
 import DashboardClientLayout from '@/components/layout/DashboardClientLayout';
 import CommandBar from '@/components/ui/CommandBar';
 import ToastContainer from '@/components/ui/Toast';
-import SessionTracker from '@/components/layout/SessionTracker';
 import { RealtimeProvider } from '@/components/providers/RealtimeProvider';
-import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 export default async function DashboardLayout({
   children,
@@ -31,7 +29,6 @@ export default async function DashboardLayout({
       {children}
       <CommandBar />
       <ToastContainer />
-      <SessionTracker />
       <RealtimeProvider>{null}</RealtimeProvider>
     </DashboardClientLayout>
   );

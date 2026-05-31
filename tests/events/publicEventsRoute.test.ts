@@ -38,7 +38,10 @@ describe('/api/events public publisher', () => {
     }));
 
     expect(res.status).toBe(403);
-    expect(await res.json()).toEqual({ error: 'Event type is not client-publishable' });
+    expect(await res.json()).toMatchObject({
+      error: 'event_not_publishable',
+      message: 'Event type is not client-publishable.',
+    });
     expect(publish).not.toHaveBeenCalled();
   });
 });

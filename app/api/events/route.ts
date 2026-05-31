@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { StudentEventInputSchema } from '@/lib/events/schema';
+import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 
 // Public browser-origin event publishing is fail-closed for production MVP.
 // Add explicit client-safe event types here only after their payload contract,
@@ -11,15 +12,24 @@ const CLIENT_EVENT_TYPE_ALLOWLIST = new Set<string>();
 
 export async function POST(req: Request) {
   try {
+    const requestId = getRequestId(req);
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      return apiErrorResponse('unauthorized', {
+        status: 401,
+        message: 'Authentication is required.',
+        requestId,
+      });
     }
 
     const body = StudentEventInputSchema.parse(await req.json());
     if (!CLIENT_EVENT_TYPE_ALLOWLIST.has(body.type)) {
-      return NextResponse.json({ error: 'Event type is not client-publishable' }, { status: 403 });
+      return apiErrorResponse('event_not_publishable', {
+        status: 403,
+        message: 'Event type is not client-publishable.',
+        requestId,
+      });
     }
 
     const eventId = await EventDispatcher.publish({
@@ -30,11 +40,17 @@ export async function POST(req: Request) {
       idempotencyKey: body.idempotencyKey,
     });
 
-    return NextResponse.json({ ok: true, eventId });
+    return NextResponse.json({ ok: true, eventId }, { headers: { 'x-request-id': requestId } });
   } catch (err: any) {
+    const requestId = getRequestId(req);
     if (err?.name === 'ZodError') {
-      return NextResponse.json({ error: 'Invalid event payload', details: err.errors }, { status: 400 });
+      return apiErrorResponse('invalid_event_payload', {
+        status: 400,
+        message: 'Invalid event payload.',
+        details: err.errors,
+        requestId,
+      });
     }
-    return NextResponse.json({ error: err?.message || 'Failed to publish event' }, { status: 500 });
+    return unexpectedApiErrorResponse(req, err, 'events', 'Failed to publish event.');
   }
 }

@@ -69,22 +69,52 @@ export async function GET() {
   };
 
   // Queue/DLQ status
+  let workerHealth = {
+    pendingEvents: 0,
+    processingEvents: 0,
+    failedEvents: 0,
+    dlqCount: 0,
+    oldestPendingAgeSeconds: 0,
+    lastWorkerRunAt: null as string | null,
+    failedConsumersByType: {} as Record<string, number>,
+  };
   const queueStart = Date.now();
   try {
     const sb = createAdminClient();
-    const [pending, failed, dlq] = await Promise.all([
-      sb.from('event_queue').select('*', { count: 'exact', head: true }).in('status', ['PENDING', 'PROCESSING']),
+    const [pending, processing, failed, dlq, oldestPending, lastAttempt, failedConsumers] = await Promise.all([
+      sb.from('event_queue').select('*', { count: 'exact', head: true }).eq('status', 'PENDING'),
+      sb.from('event_queue').select('*', { count: 'exact', head: true }).eq('status', 'PROCESSING'),
       sb.from('event_queue').select('*', { count: 'exact', head: true }).in('status', ['FAILED', 'DLQ']),
       sb.from('event_dlq').select('*', { count: 'exact', head: true }).is('resolved_at', null),
+      sb.from('event_queue').select('created_at').eq('status', 'PENDING').order('created_at', { ascending: true }).limit(1).maybeSingle(),
+      sb.from('event_attempts').select('finished_at').not('finished_at', 'is', null).order('finished_at', { ascending: false }).limit(1).maybeSingle(),
+      sb.from('consumer_locks').select('consumer_name').in('status', ['FAILED', 'DLQ']).limit(500),
     ]);
+    const oldestCreatedAt = oldestPending.data?.created_at ? new Date(oldestPending.data.created_at).getTime() : null;
+    const failedConsumersByType = (failedConsumers.data || []).reduce((acc: Record<string, number>, lock: any) => {
+      const name = lock.consumer_name || 'unknown';
+      acc[name] = (acc[name] || 0) + 1;
+      return acc;
+    }, {});
+    workerHealth = {
+      pendingEvents: pending.count || 0,
+      processingEvents: processing.count || 0,
+      failedEvents: failed.count || 0,
+      dlqCount: dlq.count || 0,
+      oldestPendingAgeSeconds: oldestCreatedAt
+        ? Math.max(0, Math.round((Date.now() - oldestCreatedAt) / 1000))
+        : 0,
+      lastWorkerRunAt: lastAttempt.data?.finished_at ?? null,
+      failedConsumersByType,
+    };
     checks.queue = {
-      ok: !pending.error && !failed.error && !dlq.error,
+      ok: !pending.error && !processing.error && !failed.error && !dlq.error && !oldestPending.error && !lastAttempt.error && !failedConsumers.error,
       latencyMs: Date.now() - queueStart,
-      error: pending.error?.message || failed.error?.message || dlq.error?.message,
+      error: pending.error?.message || processing.error?.message || failed.error?.message || dlq.error?.message || oldestPending.error?.message || lastAttempt.error?.message || failedConsumers.error?.message,
     };
     checks.queue_status = {
       ok: (dlq.count || 0) === 0,
-      error: `pending=${pending.count || 0}; failed=${failed.count || 0}; unresolved_dlq=${dlq.count || 0}`,
+      error: `pending=${pending.count || 0}; processing=${processing.count || 0}; failed=${failed.count || 0}; unresolved_dlq=${dlq.count || 0}`,
     };
   } catch (err: any) {
     checks.queue = { ok: false, error: err.message };
@@ -93,7 +123,7 @@ export async function GET() {
   const allOk = Object.values(checks).every((c) => c.ok);
   
   return NextResponse.json(
-    { status: allOk ? 'healthy' : 'degraded', checks, timestamp: new Date().toISOString() },
+    { status: allOk ? 'healthy' : 'degraded', checks, worker: workerHealth, timestamp: new Date().toISOString() },
     { status: allOk ? 200 : 503 }
   );
 }

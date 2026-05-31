@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import { resolveConcept } from '@/lib/engines/concept-resolver';
+import { logger } from '@/lib/utils/logger';
 
 export interface CompleteLearningSessionInput {
   userId: string;
@@ -31,6 +32,7 @@ export interface CompleteLearningSessionResult {
 export async function completeLearningSession(
   input: CompleteLearningSessionInput
 ): Promise<CompleteLearningSessionResult> {
+  const startedAt = Date.now();
   const supabase = input.client ?? (await createClient());
   const source = input.source ?? 'complete_session';
   const subject = (input.subject || 'General').trim() || 'General';
@@ -50,6 +52,11 @@ export async function completeLearningSession(
       .maybeSingle();
 
     if (existing?.id) {
+      logger.info('Session completion idempotency hit', {
+        userId: input.userId,
+        feature: 'session-completion',
+        sessionId: existing.id,
+      });
       const { data: profile } = await supabase
         .from('profiles')
         .select('streak_days')
@@ -98,10 +105,22 @@ export async function completeLearningSession(
   });
 
   if (sessionError || !rpcResult?.session_id) {
+    logger.error('Session completion RPC failed', sessionError, {
+      userId: input.userId,
+      feature: 'session-completion',
+    });
     throw new Error(sessionError?.message || 'Failed to save study session via RPC');
   }
 
   const sessionId = rpcResult.session_id;
+  logger.info('Session completion persisted', {
+    userId: input.userId,
+    feature: 'session-completion',
+    sessionId,
+    conceptId,
+    durationMs: Date.now() - startedAt,
+    streakChanged: Boolean(rpcResult.streak_changed),
+  });
 
   return {
     sessionId,

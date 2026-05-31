@@ -1,10 +1,9 @@
 import { createClient } from '@/lib/supabase/server';
-import { createAdminClient } from '@/lib/supabase/admin';
+import type { SupabaseClient } from '@supabase/supabase-js';
 import { createHash, randomUUID } from 'node:crypto';
 import { z } from 'zod';
 import { getExamConfig } from '@/lib/utils/constants';
 import { AutopsyPaperSchema, AutopsyQuestionSchema } from './autopsy-schemas';
-import { generateMentorRecovery } from './mentor-engine';
 import { logger } from '@/lib/utils/logger';
 import { generateJSON, generateMultimodalJSON } from '@/lib/ai/provider-client';
 
@@ -51,6 +50,14 @@ function autopsyIdempotencyKey(
   hash.update('\n');
   hash.update(fileData.kind === 'text' ? fileData.text : fileData.data);
   return `autopsy:${hash.digest('hex')}`;
+}
+
+function clientAutopsyIdempotencyKey(userId: string, idempotencyKey: string): string {
+  const hash = createHash('sha256');
+  hash.update(userId);
+  hash.update('\n');
+  hash.update(idempotencyKey.trim());
+  return `autopsy:client:${hash.digest('hex')}`;
 }
 
 async function routeMultimodalExtraction(
@@ -168,7 +175,9 @@ export async function processMockAutopsy(
   fileData: AutopsyFileData,
   testName: string,
   examType: string,
-  customScoring?: { correctMarks: number; negativeMarks: number }
+  customScoring?: { correctMarks: number; negativeMarks: number },
+  authenticatedClient?: SupabaseClient,
+  requestedIdempotencyKey?: string | null
 ): Promise<any> {
   if (fileData.kind === 'inline') {
     const byteSize = Buffer.byteLength(fileData.data, 'base64');
@@ -244,7 +253,7 @@ export async function processMockAutopsy(
     })),
   ];
 
-  const supabase = createAdminClient();
+  const supabase = authenticatedClient ?? await createClient();
 
   const questionsPayload = processedQuestions.map(q => {
     // Confidence propagation:
@@ -281,7 +290,9 @@ export async function processMockAutopsy(
     };
   });
 
-  const idempotencyKey = autopsyIdempotencyKey(userId, testName, examType, fileData);
+  const idempotencyKey = requestedIdempotencyKey?.trim()
+    ? clientAutopsyIdempotencyKey(userId, requestedIdempotencyKey)
+    : autopsyIdempotencyKey(userId, testName, examType, fileData);
   const traceId = randomUUID();
   const { data: ingestResult, error: autopsyError } = await supabase.rpc('ingest_mock_autopsy', {
     p_user_id: userId,
@@ -306,9 +317,6 @@ export async function processMockAutopsy(
 
   const autopsyId = ingestResult.autopsy_id as string;
 
-  const mentorResult = await generateMentorRecovery(
-    autopsyId, rawScore, potentialScore, diagnosedIncorrect, examType
-  ).catch(err => { logger.warn('Mentor recovery failed', err); return null; });
   logger.info('AUTOPSY_MOCK_PROCESSED event enqueued transactionally', {
     userId,
     autopsyId,
@@ -330,7 +338,7 @@ export async function processMockAutopsy(
     recoverableMarks,
     diagnosedQuestions: processedQuestions,
     needsReviewQuestions: processedQuestions.filter(q => q.needsReview),
-    mentorMessage: mentorResult?.mentorQuote ?? null,
-    recoveryPlan: mentorResult?.plan ?? null,
+    mentorMessage: null,
+    recoveryPlan: null,
   };
 }

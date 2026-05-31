@@ -3,11 +3,14 @@ import { createTestSupabaseClient, seedTestUser, cleanupTestUser } from '../help
 import { getOrCreateGlobalChatSession, persistChatMessage } from '@/lib/services/chat-persistence';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { EventWorkerService } from '@/lib/events/worker';
+import { completeLearningSession } from '@/lib/services/session-completion';
+import { createClient as createSupabaseClient } from '@supabase/supabase-js';
 import fs from 'fs';
 import path from 'path';
 
 const hasSupabaseTestEnv = Boolean(
   (process.env.SUPABASE_TEST_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL) &&
+  (process.env.SUPABASE_TEST_ANON_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) &&
   process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
@@ -15,11 +18,30 @@ const describeWithSupabase = hasSupabaseTestEnv ? describe : describe.skip;
 
 describeWithSupabase('MVP Smoke Tests', () => {
   let supabase: any;
+  let authClient: any;
   let userId: string;
+  let userEmail: string;
 
   beforeAll(async () => {
     supabase = createTestSupabaseClient();
     userId = await seedTestUser(supabase);
+
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('email')
+      .eq('id', userId)
+      .single();
+    userEmail = profile.email;
+
+    authClient = createSupabaseClient(
+      process.env.SUPABASE_TEST_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_TEST_ANON_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    );
+    const { error } = await authClient.auth.signInWithPassword({
+      email: userEmail,
+      password: 'test-password-123',
+    });
+    if (error) throw new Error('Failed to authenticate MVP test user: ' + error.message);
   });
 
   afterAll(async () => {
@@ -79,19 +101,68 @@ describeWithSupabase('MVP Smoke Tests', () => {
     expect(Array.isArray(cards)).toBe(true);
   });
 
-  it('5. Session completion inserts study session', async () => {
-    const today = new Date().toISOString().split('T')[0];
-    const { data: session, error } = await supabase.from('study_sessions').insert({
-      user_id: userId,
-      date: today,
-      duration_minutes: 30,
-      understood: true,
-      cards_created: 5,
-    }).select().single();
+  it('5. Explicit session completion uses the real RPC, updates state, and is idempotent', async () => {
+    const { data: beforeProfile } = await supabase
+      .from('profiles')
+      .select('streak_days, learner_state_version')
+      .eq('id', userId)
+      .single();
 
-    expect(error).toBeNull();
-    expect(session).toBeDefined();
-    expect(session.duration_minutes).toBe(30);
+    const completionKey = `mvp-session-${Date.now()}`;
+    const result = await completeLearningSession({
+      userId,
+      subject: 'Physics',
+      chapter: 'Kinematics',
+      conceptName: 'Acceleration',
+      durationMinutes: 30,
+      understood: false,
+      gapFound: 'Acceleration definition',
+      cardsCreated: 1,
+      idempotencyKey: completionKey,
+      client: authClient,
+    });
+
+    expect(result.sessionId).toBeDefined();
+
+    const replay = await completeLearningSession({
+      userId,
+      subject: 'Physics',
+      chapter: 'Kinematics',
+      conceptName: 'Acceleration',
+      durationMinutes: 30,
+      understood: false,
+      gapFound: 'Acceleration definition',
+      cardsCreated: 1,
+      idempotencyKey: completionKey,
+      client: authClient,
+    });
+    expect(replay.sessionId).toBe(result.sessionId);
+
+    const { data: sessions, error: sessionErr } = await supabase
+      .from('study_sessions')
+      .select('id, duration_minutes, metadata')
+      .eq('user_id', userId)
+      .eq('metadata->>completion_key', completionKey);
+
+    expect(sessionErr).toBeNull();
+    expect(sessions).toHaveLength(1);
+    expect(sessions?.[0].duration_minutes).toBe(30);
+
+    const { data: afterProfile } = await supabase
+      .from('profiles')
+      .select('streak_days, learner_state_version')
+      .eq('id', userId)
+      .single();
+    expect(afterProfile.learner_state_version).toBeGreaterThan(beforeProfile.learner_state_version ?? 0);
+    expect(afterProfile.streak_days).toBeGreaterThanOrEqual(1);
+
+    const { data: events, error: eventErr } = await supabase
+      .from('event_queue')
+      .select('id, type')
+      .eq('user_id', userId)
+      .eq('type', 'STUDY_SESSION_COMPLETED');
+    expect(eventErr).toBeNull();
+    expect(events?.length).toBeGreaterThan(0);
   });
 
   it('6 & 7. AUTOPSY event can enqueue and worker process without crashing', async () => {
@@ -165,6 +236,18 @@ describe('MVP Frontend Logic Smoke Tests', () => {
     expect(commandBarContent).toContain('MEMORY');
     expect(commandBarContent).not.toContain('Knowledge Base');
     expect(commandBarContent).not.toContain('Mistake Intelligence');
+  });
+
+  it('9c. Dashboard does not expose planner microtargets in MVP', () => {
+    const dashboardPagePath = path.resolve(__dirname, '../../app/(dashboard)/dashboard/page.tsx');
+    const dashboardApiPath = path.resolve(__dirname, '../../app/api/dashboard/route.ts');
+    const dashboardPage = fs.readFileSync(dashboardPagePath, 'utf-8');
+    const dashboardApi = fs.readFileSync(dashboardApiPath, 'utf-8');
+
+    expect(dashboardPage).not.toContain("Today's Microtargets");
+    expect(dashboardPage).not.toContain('@/lib/actions/planner');
+    expect(dashboardPage).not.toContain('toggleTask');
+    expect(dashboardApi).not.toContain('getPlanForDate');
   });
 
   it('10. AUTOPSY validation rejects fake PDF/image', async () => {

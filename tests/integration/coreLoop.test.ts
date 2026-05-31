@@ -11,7 +11,7 @@ vi.mock('@/lib/supabase/admin', () => ({
         lock_id: `lock-${index}`,
         event_id: 'event-session-1',
         consumer_name,
-        event_type: 'COMMAND_SESSION_COMPLETED',
+        event_type: 'STUDY_SESSION_COMPLETED',
         event_payload: {
           subject: 'Physics',
           chapter: 'Motion',

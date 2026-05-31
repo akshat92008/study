@@ -28,10 +28,10 @@ import { createClient } from '@/lib/supabase/server';
 import { generateJSON } from '@/lib/ai/provider-client';
 import { z } from 'zod';
 import {
-  assertDailyAIUsageBudget,
-  isAIUsageBudgetExceeded,
-  trackDailyAIUsage,
-} from '@/lib/services/ai-usage.service';
+  isBudgetExceeded,
+  isBudgetUnavailable,
+  reserveBudgetForModelCall,
+} from '@/lib/ai/cost-guard';
 import {
   selectSessionCard,
   type SelectorInput,
@@ -39,6 +39,7 @@ import {
 } from '@/lib/engines/session-card-selector';
 import { getLearnerStateVersion } from '@/lib/services/learner-state-version';
 import { logger } from '@/lib/utils/logger';
+import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 
 // ─── Response contract ───────────────────────────────────────────────────────
 
@@ -124,14 +125,19 @@ function getLocalDate(timezone: string | null): string {
 
 // ─── Route handler ───────────────────────────────────────────────────────────
 
-export async function GET(): Promise<NextResponse> {
+export async function GET(request?: Request): Promise<NextResponse> {
   try {
+    const requestId = getRequestId(request);
     const supabase = await createClient();
     const {
       data: { user },
     } = await supabase.auth.getUser();
     if (!user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      return apiErrorResponse('unauthorized', {
+        status: 401,
+        message: 'Authentication is required.',
+        requestId,
+      });
     }
 
     const generatedAt = new Date().toISOString();
@@ -321,32 +327,33 @@ export async function GET(): Promise<NextResponse> {
     const prosePrompt = buildProsePrompt(selection, profile, masteryPercent);
 
     try {
-      await assertDailyAIUsageBudget({
-        userId: user.id,
-        kind: 'session-card',
-        estimatedPromptTokens: Math.ceil(prosePrompt.length / 4),
-        estimatedCompletionTokens: 200,
-      });
+      const reservation = await reserveBudgetForModelCall(
+        user.id,
+        'session-card',
+        'router:json',
+        Math.max(1, Math.ceil(prosePrompt.length / 4)),
+        200
+      );
 
       const raw = await generateJSON<LLMCardProseType>(
         'flash',
         'You are a study coach. Return ONLY valid JSON, no markdown or explanation.',
-        prosePrompt
+        prosePrompt,
+        undefined,
+        0.3,
+        3,
+        reservation.reservationId
       );
 
       if (raw && typeof raw.focusTopic === 'string' && typeof raw.rationale === 'string') {
         llmProse = raw;
-        await trackDailyAIUsage({
-          userId: user.id,
-          kind: 'session-card',
-          route: '/api/dashboard/session-card',
-          model: 'flash',
-          promptTokens: Math.ceil(prosePrompt.length / 4),
-          completionTokens: Math.ceil(JSON.stringify(raw).length / 4),
-        });
       }
     } catch (err: any) {
-      if (!isAIUsageBudgetExceeded(err)) {
+      if (isBudgetExceeded(err) || isBudgetUnavailable(err)) {
+        logger.warn('session-card: LLM prose skipped by AI budget guard', {
+          userId: user.id,
+        });
+      } else {
         logger.warn('session-card: LLM prose generation failed, using code fallback', {
           userId: user.id,
           error: err?.message,
@@ -433,8 +440,7 @@ export async function GET(): Promise<NextResponse> {
 
     return NextResponse.json(response);
   } catch (error: any) {
-    logger.error('session-card: unhandled error', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return unexpectedApiErrorResponse(request, error, 'session-card', 'Unable to build today\'s session card.');
   }
 }
 

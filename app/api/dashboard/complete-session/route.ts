@@ -1,13 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { completeLearningSession } from '@/lib/services/session-completion';
-import { logger } from '@/lib/utils/logger';
+import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 
 export async function POST(req: NextRequest) {
   try {
+    const requestId = getRequestId(req);
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    if (!user) {
+      return apiErrorResponse('unauthorized', {
+        status: 401,
+        message: 'Authentication is required.',
+        requestId,
+      });
+    }
 
     const body = await req.json().catch(() => ({}));
     const result = await completeLearningSession({
@@ -31,9 +38,8 @@ export async function POST(req: NextRequest) {
       streakChanged: result.streakChanged,
       sessionId: result.sessionId,
       conceptId: result.conceptId,
-    });
+    }, { headers: { 'x-request-id': requestId } });
   } catch (error: any) {
-    logger.error('complete-session error', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return unexpectedApiErrorResponse(req, error, 'complete-session', 'Session completion failed.');
   }
 }

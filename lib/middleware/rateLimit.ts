@@ -53,7 +53,10 @@ import { NextResponse } from 'next/server';
 
 export function rateLimitResponse(remaining: number, resetAt: number) {
   return NextResponse.json(
-    { error: 'Too many requests, please slow down.' },
+    {
+      error: 'rate_limited',
+      message: 'Too many requests, please slow down.',
+    },
     {
       status: 429,
       headers: {

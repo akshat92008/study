@@ -1,14 +1,20 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
+import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 
 export async function GET(request: Request) {
   try {
+    const requestId = getRequestId(request);
     const supabase = await createClient();
     const { data: { user }, error: authError } = await supabase.auth.getUser();
 
     if (authError || !user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      return apiErrorResponse('unauthorized', {
+        status: 401,
+        message: 'Authentication is required.',
+        requestId,
+      });
     }
 
     const { allowed, remaining, resetAt } = await checkRateLimit({
@@ -31,17 +37,11 @@ export async function GET(request: Request) {
 
     if (autopsyErr) throw autopsyErr;
     if (!autopsy) {
-      return NextResponse.json({ result: null });
+      return NextResponse.json({ result: null }, { headers: { 'x-request-id': requestId } });
     }
 
-    // 2. Get recovery plan for this autopsy
-    const { data: plan } = await supabase
-      .from('recovery_plans')
-      .select('*')
-      .eq('autopsy_id', autopsy.id)
-      .maybeSingle();
-
-    // 3. Get questions for this autopsy
+    // 2. Get questions for this autopsy. Recovery planning is intentionally
+    // outside the production MVP runtime surface.
     const { data: questions } = await supabase
       .from('autopsy_questions')
       .select('*')
@@ -70,15 +70,14 @@ export async function GET(request: Request) {
       potentialScore: autopsy.potential_score,
       recoverableMarks: autopsy.recoverable_marks,
       mentorQuote: autopsy.mentor_quote || autopsy.mentor_insight,
-      plan: plan,
+      plan: null,
       examType: autopsy.exam_type,
       categoryBreakdown,
       chapterLoss
     };
 
-    return NextResponse.json({ result });
+    return NextResponse.json({ result }, { headers: { 'x-request-id': requestId } });
   } catch (error: any) {
-    console.error('Autopsy Fetch API Error:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return unexpectedApiErrorResponse(request, error, 'autopsy', 'Unable to load latest AUTOPSY result.');
   }
 }

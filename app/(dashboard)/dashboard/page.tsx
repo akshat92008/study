@@ -4,16 +4,14 @@ import { useState, useEffect, useCallback } from 'react';
 import { useAppStore } from '@/stores/appStore';
 import type { LearningGoal } from '@/stores/appStore';
 import {
-  Brain, RefreshCw, Loader2, Upload, X, Activity, CheckCircle, Play
+  Brain, RefreshCw, Loader2, Upload, X, Activity
 } from 'lucide-react';
-import { toggleTask } from '@/lib/actions/planner';
 import CognitionDashboard from '@/components/cognition/CognitionDashboard';
 import RevisionQueue from '@/components/revision/RevisionQueue';
 import AutopsyDashboard from '@/components/autopsy/AutopsyDashboard';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
-import Badge from '@/components/ui/Badge';
 import CurrentTaskCard from '@/components/dashboard/CurrentTaskCard';
 
 export default function DashboardPage() {
@@ -33,28 +31,6 @@ export default function DashboardPage() {
 
   const [dashboardData, setDashboardData] = useState<any>(null);
   const [masteryData, setMasteryData] = useState<any>(null);
-
-  const handleToggleTask = async (taskId: string) => {
-    if (!dashboardData?.tasks) return;
-
-    // Optimistic Update
-    const updatedTasks = dashboardData.tasks.map((t: any) =>
-      t.id === taskId ? { ...t, is_completed: !t.is_completed } : t
-    );
-    setDashboardData({
-      ...dashboardData,
-      tasks: updatedTasks
-    });
-
-    try {
-      await toggleTask(taskId);
-      addToast('Target status updated!', 'success');
-      await loadTelemetry();
-    } catch {
-      addToast('Failed to update target', 'error');
-      loadTelemetry();
-    }
-  };
 
   // Local state for the drawer upload mechanism
   const [fileToUpload, setFileToUpload] = useState<File | null>(null);
@@ -288,180 +264,8 @@ export default function DashboardPage() {
                 <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Autopsy Points Staged</div>
                 <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--danger)', marginTop: 4 }}>{marksLost} marks</div>
               </div>
-              <div style={{ flex: '1 1 200px', background: 'var(--bg-primary)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
-                <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Today's Targets</div>
-                <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--success)', marginTop: 4 }}>
-                  {dashboardData?.tasks && dashboardData.tasks.length > 0 ? (
-                    `${Math.round((dashboardData.tasks.filter((t: any) => t.is_completed).length / dashboardData.tasks.length) * 100)}% (${dashboardData.tasks.filter((t: any) => t.is_completed).length}/${dashboardData.tasks.length})`
-                  ) : 'No targets set'}
-                </div>
-              </div>
             </div>
           </Card>
-
-        {/* Today's Microtargets Checklist */}
-        <Card padding="lg" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--sp-3)' }}>
-            <div>
-              <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'bold' }}>Today's Microtargets</h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-xs)', marginTop: 2 }}>
-                Complete today's study blocks to lock in your daily revision targets and build your streak.
-              </p>
-            </div>
-            {dashboardData?.tasks && dashboardData.tasks.length > 0 && (
-              <Badge color="cyan">
-                {dashboardData.tasks.filter((t: any) => t.is_completed).length} / {dashboardData.tasks.length} Completed
-              </Badge>
-            )}
-          </div>
-
-          {/* Progress Bar */}
-          {dashboardData?.tasks && dashboardData.tasks.length > 0 && (
-            <div style={{ marginBottom: 'var(--sp-4)' }}>
-              <div style={{ height: 6, background: 'var(--bg-tertiary)', borderRadius: 3, overflow: 'hidden' }}>
-                <div style={{
-                  height: '100%',
-                  borderRadius: 3,
-                  width: `${Math.round((dashboardData.tasks.filter((t: any) => t.is_completed).length / dashboardData.tasks.length) * 100)}%`,
-                  background: 'linear-gradient(90deg, var(--accent-cyan), var(--accent-blue))',
-                  transition: 'width 0.4s var(--ease-out)'
-                }} />
-              </div>
-            </div>
-          )}
-
-          {/* Checklist Items */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)' }}>
-            {!dashboardData?.tasks || dashboardData.tasks.length === 0 ? (
-              <div style={{
-                textAlign: 'center',
-                padding: 'var(--sp-8) var(--sp-4)',
-                background: 'var(--bg-primary)',
-                borderRadius: 'var(--radius-md)',
-                border: '1px dashed var(--border-subtle)',
-                color: 'var(--text-tertiary)',
-                fontSize: 'var(--fs-xs)'
-              }}>
-                No microtargets scheduled for today. Ask MIND what to do now, complete a mission, or upload a mock to AUTOPSY.
-              </div>
-            ) : (
-              dashboardData.tasks.map((task: any) => {
-                const isStudyOrRevision = task.type === 'study' || task.type === 'revision';
-                return (
-                  <div
-                    key={task.id}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyItems: 'center',
-                      justifyContent: 'space-between',
-                      padding: 'var(--sp-3) var(--sp-4)',
-                      background: 'var(--bg-primary)',
-                      border: '1px solid var(--border-subtle)',
-                      borderRadius: 'var(--radius-md)',
-                      transition: 'all 0.2s',
-                      opacity: task.is_completed ? 0.6 : 1
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-3)', flex: 1, minWidth: 0 }}>
-                      {/* Custom Checkbox */}
-                      <button
-                        onClick={() => handleToggleTask(task.id)}
-                        style={{
-                          background: 'transparent',
-                          border: 'none',
-                          cursor: 'pointer',
-                          padding: 0,
-                          color: task.is_completed ? 'var(--success)' : 'var(--text-tertiary)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          flexShrink: 0
-                        }}
-                      >
-                        {task.is_completed ? (
-                          <CheckCircle size={18} fill="var(--success-dim)" />
-                        ) : (
-                          <div style={{
-                            width: 18,
-                            height: 18,
-                            borderRadius: '50%',
-                            border: '2px solid var(--border-strong)',
-                            transition: 'border-color 0.2s'
-                          }} />
-                        )}
-                      </button>
-
-                      {/* Title & Context */}
-                      <div style={{ minWidth: 0 }}>
-                        <div style={{
-                          fontSize: 'var(--fs-sm)',
-                          fontWeight: 'bold',
-                          color: task.is_completed ? 'var(--text-tertiary)' : 'var(--text-primary)',
-                          textDecoration: task.is_completed ? 'line-through' : 'none'
-                        }}>
-                          {task.title}
-                        </div>
-                        <div style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: 'var(--sp-2)',
-                          fontSize: '10px',
-                          color: 'var(--text-tertiary)',
-                          marginTop: 2
-                        }}>
-                          {task.subject && (
-                            <span style={{ color: 'var(--accent-cyan)', fontWeight: 'bold' }}>{task.subject}</span>
-                          )}
-                          {task.chapter && (
-                            <>
-                              <span>·</span>
-                              <span>{task.chapter}</span>
-                            </>
-                          )}
-                          <span>·</span>
-                          <span>{task.estimated_minutes || 45} mins</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Actions */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
-                      {!task.is_completed && isStudyOrRevision && (
-                        <Button
-                          size="sm"
-                          onClick={() => {
-                            window.dispatchEvent(new CustomEvent('start-focus-session', {
-                              detail: {
-                                title: task.title,
-                                subject: task.subject || 'General',
-                                chapter: task.chapter || task.title,
-                                estimatedMinutes: task.estimated_minutes || 45,
-                                taskId: task.id
-                              }
-                            }));
-                          }}
-                          style={{
-                            background: 'var(--accent-blue)',
-                            color: 'white',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: 4,
-                            padding: '4px 10px',
-                            fontSize: '11px',
-                            fontWeight: 'bold'
-                          }}
-                        >
-                          <Play size={10} fill="white" /> Start Focus
-                        </Button>
-                      )}
-                    </div>
-                  </div>
-                );
-              })
-            )}
-          </div>
-        </Card>
       </div>
 
       {/* Backdrop overlay for drawers */}

@@ -29,15 +29,6 @@ export interface ChatSlice {
   clearChat: () => void;
 }
 
-// ★ FIX: No static welcome message. GlobalChat fetches a personalized one from /api/ai/welcome.
-// This placeholder is immediately replaced on mount.
-const INITIAL_MSG: ChatMessage = {
-  role: 'assistant',
-  content: '...', // Replaced by /api/ai/welcome on mount
-  timestamp: new Date().toISOString(),
-  metadata: { isWelcomePlaceholder: true },
-};
-
 let activeRealtimeChannel: any = null;
 
 // Properly typed Zustand slice creator
@@ -81,79 +72,30 @@ export const createChatSlice: StateCreator<
   loadChatFromSupabase: async () => {
     set({ isChatLoading: true });
     try {
-      const supabase = createClient();
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
+      const response = await fetch('/api/ai/chat', {
+        method: 'GET',
+        headers: { Accept: 'application/json' },
+      });
 
-      let sessionId = get().chatId;
-      
-      if (sessionId) {
-        // Verify it actually exists in the DB
-        const { data: existingSession } = await supabase
-          .from('chat_sessions')
-          .select('id')
-          .eq('id', sessionId)
-          .maybeSingle();
-        
-        if (!existingSession) {
-          sessionId = null;
-          set({ chatId: null });
-        }
-      }
-      
-      if (!sessionId) {
-        // Fetch or create a global session
-        const { data: session } = await supabase
-          .from('chat_sessions')
-          .select('id')
-          .eq('user_id', user.id)
-          .eq('session_type', 'global')
-          .order('created_at', { ascending: false })
-          .limit(1)
-          .maybeSingle();
-
-        if (session) {
-          sessionId = session.id;
-          set({ chatId: sessionId });
-        } else {
-          // Attempt to create
-          const { data: newSession, error: createError } = await supabase
-            .from('chat_sessions')
-            .insert({ user_id: user.id, session_type: 'global', title: 'Cognition OS Main Thread' })
-            .select('id')
-            .single();
-          
-          if (createError) console.error('Failed to create chat session:', createError);
-          if (newSession) {
-            sessionId = newSession.id;
-            set({ chatId: sessionId });
-          }
-        }
+      if (!response.ok) {
+        set({ chatId: null, chatMessages: [] });
+        return;
       }
 
-      if (sessionId) {
-        // Load last 50 messages
-        const { data: messages, error } = await supabase
-          .from('chat_messages')
-          .select('*')
-          .eq('session_id', sessionId)
-          .order('created_at', { ascending: false })
-          .limit(50);
+      const data = await response.json();
+      const sessionId = data.sessionId ?? null;
+      const messages = Array.isArray(data.messages) ? data.messages : [];
 
-        if (!error && messages && messages.length > 0) {
-          // Reverse to display chronologically
-          const chronological = messages.reverse().map(m => ({
-            id: m.id,
-            role: m.role as 'user' | 'assistant' | 'system',
-            content: m.content,
-            timestamp: m.created_at,
-            metadata: m.metadata
-          }));
-          set({ chatMessages: chronological });
-        } else {
-          set({ chatMessages: [INITIAL_MSG] });
-        }
-      }
+      set({
+        chatId: sessionId,
+        chatMessages: messages.map((m: any) => ({
+          id: m.id,
+          role: m.role as 'user' | 'assistant' | 'system',
+          content: m.content,
+          timestamp: m.timestamp,
+          metadata: m.metadata ?? {},
+        })),
+      });
 
       // Initialize Realtime Sync
       get().subscribeToRealtime();

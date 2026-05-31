@@ -112,9 +112,22 @@ export class EventDispatcher {
     });
 
     if (error) {
-      logger.error('Failed to publish event', error, { type: input.type });
+      logger.error('Failed to publish event', error, {
+        userId,
+        type: input.type,
+        feature: 'event-enqueue',
+        traceId: metadata.trace_id,
+      });
       throw error;
     }
+    logger.info('Event enqueued', {
+      userId,
+      eventId,
+      type: input.type,
+      consumers,
+      feature: 'event-enqueue',
+      traceId: metadata.trace_id,
+    });
 
     // Instead of after(), we just return. The external worker (or cron) 
     // hitting /api/internal/workers/process-events will pick this up.

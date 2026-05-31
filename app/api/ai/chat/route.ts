@@ -10,7 +10,6 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { generateJSON } from '@/lib/ai/provider-client';
 import { z } from 'zod';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { routeStreamGeneration, routeVisionCall } from '@/lib/ai/router';
@@ -19,14 +18,13 @@ import { getMINDSystemPrompt } from '@/lib/ai/prompts/mind-prompt';
 import { logger } from '@/lib/utils/logger';
 import { orchestrateFromIntent } from '@/lib/engines/orchestrator';
 import { logDecision } from '@/lib/utils/orchestratorLogger';
-import { resolveConceptByName } from '@/lib/engines/concept-resolver';
 import { EventDispatcher } from '@/lib/events/orchestrator';
-import { MASTERY_WEIGHTS } from '@/lib/engines/cognition-graph';
 import { ChatMemoryService } from '@/lib/services/chatMemoryService';
 import { buildConversationMessages } from '@/lib/ai/chat-intent';
 import { classifyMessageCombined } from '@/lib/ai/chat-intent-with-emotion';
 import { validateBase64Payload } from '@/lib/middleware/validateUpload';
 import { checkSemanticCache, setSemanticCache, isCacheable } from '@/lib/ai/responseCache';
+import { apiErrorResponse, getRequestId } from '@/lib/api/errors';
 import {
   budgetExceededResponse,
   budgetUnavailableResponse,
@@ -38,26 +36,60 @@ import {
   type BudgetFeature,
   type BudgetReservation,
 } from '@/lib/ai/cost-guard';
-import { invalidateSessionCards } from '@/lib/services/session-card-cache';
 import {
   getOrCreateGlobalChatSession,
+  loadRecentMessagesForClient,
   loadRecentMessages,
   persistChatMessage,
   stripMetadataBlock,
 } from '@/lib/services/chat-persistence';
-import { ChatPlannerService } from '@/lib/services/chat-planner.service';
-import { ChatTutorService } from '@/lib/services/chat-tutor.service';
 import { ChatSideEffectService } from '@/lib/services/chat-side-effects.service';
 
 const encoder = new TextEncoder();
+
+export async function GET(request?: NextRequest) {
+  const requestId = getRequestId(request);
+  try {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      return apiErrorResponse('unauthorized', {
+        status: 401,
+        message: 'Authentication is required.',
+        requestId,
+      });
+    }
+
+    const sessionId = await getOrCreateGlobalChatSession(supabase, user.id);
+    const messages = await loadRecentMessagesForClient(supabase, sessionId);
+
+    return NextResponse.json({ sessionId, messages }, { headers: { 'x-request-id': requestId } });
+  } catch (error) {
+    logger.error('Failed to hydrate global chat', error, { requestId, feature: 'chat' });
+    return apiErrorResponse('chat_hydration_failed', {
+      status: 500,
+      message: 'Unable to load MIND chat history.',
+      requestId,
+    });
+  }
+}
 
 export async function POST(req: NextRequest) {
   // ============================================================================
   // STAGE 1: REQUEST VALIDATION
   // ============================================================================
+  const requestId = getRequestId(req);
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
-  if (!user) return new Response('Unauthorized', { status: 401 });
+  if (!user) {
+    return apiErrorResponse('unauthorized', {
+      status: 401,
+      message: 'Authentication is required.',
+      requestId,
+    });
+  }
+
+  logger.info('Chat request started', { userId: user.id, requestId, feature: 'chat' });
 
   const { allowed, remaining, resetAt } = await checkRateLimit({
     identifier: user.id,
@@ -83,7 +115,11 @@ export async function POST(req: NextRequest) {
   try {
     body = ChatPayloadSchema.parse(await req.json());
   } catch (err) {
-    return new Response('Invalid JSON or Payload structure', { status: 400 });
+    return apiErrorResponse('invalid_request', {
+      status: 400,
+      message: 'Invalid JSON or payload structure.',
+      requestId,
+    });
   }
 
   const { message, imageBase64, imageMimeType, sessionTurnsCount } = body;
@@ -99,22 +135,38 @@ export async function POST(req: NextRequest) {
 
   const userMessageForPersistence = message || (imageBase64 ? '[Image question]' : '');
   if (!userMessageForPersistence.trim()) {
-    return NextResponse.json({ error: 'Message or upload is required' }, { status: 400 });
+    return apiErrorResponse('invalid_request', {
+      status: 400,
+      message: 'Message or upload is required.',
+      requestId,
+    });
   }
 
   const { checkIdempotency } = await import('@/lib/middleware/idempotency');
   const idempotencyKey = req.headers.get('Idempotency-Key');
   const { isDuplicate, error: idempError } = await checkIdempotency(user.id, 'chat', idempotencyKey);
 
-  if (idempError) return NextResponse.json({ error: idempError }, { status: 400 });
-  if (isDuplicate) return NextResponse.json({ error: 'Duplicate request' }, { status: 409 });
+  if (idempError) {
+    return apiErrorResponse('invalid_idempotency_key', {
+      status: 400,
+      message: idempError,
+      requestId,
+    });
+  }
+  if (isDuplicate) {
+    return apiErrorResponse('duplicate_request', {
+      status: 409,
+      message: 'Duplicate request.',
+      requestId,
+    });
+  }
 
   // ── MODULE 3: stable request id used as assistant message idempotency key ──
   // Format: "<requestId>:assistant"
   // The unique index on chat_messages(user_id, idempotency_key) ensures no
   // duplicate row is created even if this request is retried or the event
   // worker runs again.
-  const requestId = idempotencyKey || crypto.randomUUID();
+  const messageRequestId = idempotencyKey || requestId;
 
   // Persist user message (once, no idempotency key needed — request dedup above covers this)
   await persistChatMessage(supabase, {
@@ -131,7 +183,8 @@ export async function POST(req: NextRequest) {
   const intentPromise = classifyMessageCombined(
     message || '',
     recentHistory.slice(-2).map((m: any) => m.content).join(' '),
-    undefined
+    undefined,
+    user.id
   );
 
   const [profileResult, intentResult] = await Promise.all([
@@ -229,7 +282,7 @@ export async function POST(req: NextRequest) {
             content: answer,
             intent: detectedIntent.intent,
             emotionalState: emotion,
-            idempotencyKey: `${requestId}:assistant`,
+            idempotencyKey: `${messageRequestId}:assistant`,
           }));
         } catch (persistErr) {
           logger.error('Chat route [image]: failed to persist assistant message', persistErr);
@@ -284,7 +337,7 @@ export async function POST(req: NextRequest) {
             intent: detectedIntent.intent,
             emotionalState: emotion,
             metadata: { action: 'run_autopsy' },
-            idempotencyKey: `${requestId}:assistant`,
+            idempotencyKey: `${messageRequestId}:assistant`,
           }));
         } catch (persistErr) {
           logger.error('Chat route [autopsy-redirect]: failed to persist assistant message', persistErr);
@@ -362,7 +415,7 @@ export async function POST(req: NextRequest) {
             content: groundingMessage,
             intent: intent.intent,
             emotionalState: emotion,
-            idempotencyKey: `${requestId}:assistant`,
+            idempotencyKey: `${messageRequestId}:assistant`,
           }));
         } catch (persistErr) {
           logger.error('Chat route [grounding]: failed to persist assistant message', persistErr);
@@ -407,36 +460,16 @@ export async function POST(req: NextRequest) {
       let budgetSettled = false;
 
       try {
-        if (['AUTOPSY', 'ANALYTICS', 'ATLAS', 'FLASHCARDS'].includes(intent.intent)) {
+        if (['AUTOPSY', 'ATLAS', 'FLASHCARDS'].includes(intent.intent)) {
           const routeMessages: Record<string, string> = {
             AUTOPSY: "Opening **AUTOPSY** — upload your mock test PDF or photo. I'll diagnose every wrong answer by root cause and show you your recoverable score.",
             FLASHCARDS: `You have **${mindContext?.overdueCardsCount || 0}** cards due today. Opening your revision queue now.`,
             ATLAS: `Your knowledge map is at **${mindContext?.masteryStats?.masteryPercent || 0}%** mastery. Opening ATLAS now.`,
-            ANALYTICS: `Opening your performance dashboard. You are currently at **${mindContext?.masteryStats?.masteryPercent || 0}%** overall mastery with **${mindContext?.overdueCardsCount || 0}** cards due.`,
           };
           const msg = routeMessages[intent.intent] || 'Opening that for you now...';
           controller.enqueue(encoder.encode(msg));
           fullResponse = msg;
           metadataPayload = { action: intentToAction(intent.intent) };
-
-        } else if (intent.intent === 'REPLAN') {
-          const { fullResponse: reply, metadataPayload: payload } = await ChatPlannerService.handleReplan(
-            supabase, user.id, intent.action || 'reduce_tasks', controller, encoder
-          );
-          fullResponse = reply;
-          metadataPayload = payload;
-        } else if (intent.intent === 'CREATE_ARTIFACT' || orchestratorResult.intent === 'planning') {
-          const { fullResponse: reply, metadataPayload: payload } = await ChatPlannerService.handleCreateArtifact(
-            supabase, user.id, systemPrompt, recentHistory, message || '', controller, encoder
-          );
-          fullResponse = reply;
-          metadataPayload = payload;
-        } else if (['TUTOR_SESSION', 'PRACTICE'].includes(intent.intent)) {
-          const { fullResponse: reply, metadataPayload: payload } = await ChatTutorService.handleTutorSession(
-            supabase, user.id, intent, mindContext, systemPrompt, recentHistory, message || '', sessionTurnsCount, controller, encoder
-          );
-          fullResponse = reply;
-          metadataPayload = payload;
         } else {
           const conversationMessages = buildConversationMessages(recentHistory, message || '');
           for await (const chunk of routeStreamGeneration(systemPrompt, conversationMessages, 0.7)) {
@@ -481,7 +514,7 @@ export async function POST(req: NextRequest) {
             intent: intent.intent,
             emotionalState: emotion,
             metadata: metadataPayload ?? {},
-            idempotencyKey: `${requestId}:assistant`,
+            idempotencyKey: `${messageRequestId}:assistant`,
           }));
         } catch (persistErr) {
           logger.error('Chat route [streaming]: failed to persist assistant message', persistErr);
@@ -543,15 +576,13 @@ function intentToAction(intent: string): string {
 }
 
 function shouldReserveMainChatBudget(intent: string): boolean {
-  if (['AUTOPSY', 'ANALYTICS', 'ATLAS', 'FLASHCARDS', 'REPLAN'].includes(intent)) {
+  if (['AUTOPSY', 'ATLAS', 'FLASHCARDS'].includes(intent)) {
     return false;
   }
   return true;
 }
 
-function budgetFeatureForMainChat(intent: string, orchestratorIntent?: string): BudgetFeature {
-  if (intent === 'CREATE_ARTIFACT' || orchestratorIntent === 'planning') return 'planner';
-  if (['TUTOR_SESSION', 'PRACTICE'].includes(intent)) return 'tutor';
+function budgetFeatureForMainChat(_intent: string, _orchestratorIntent?: string): BudgetFeature {
   return 'chat';
 }
 

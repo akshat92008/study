@@ -251,7 +251,10 @@ export async function resolveConcept(input: ResolveConceptInput): Promise<Concep
       input.topic,
       input.questionText?.slice(0, 500),
     ].filter(Boolean).join(' ');
-    const embedding = await getEmbedding(embeddingText);
+    const embedding = await getEmbedding(embeddingText, {
+      userId: input.userId,
+      route: 'concept-resolver',
+    });
 
     if (embedding && embedding.length > 0) {
       const { data: semantic } = await supabase.rpc('match_concepts', {

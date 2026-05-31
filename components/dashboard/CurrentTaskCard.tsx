@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useState, useEffect } from 'react';
+import { useCallback, useRef, useState, useEffect } from 'react';
 import { useAppStore } from '@/stores/appStore';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
@@ -17,7 +17,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
   const [loading, setLoading] = useState(true);
   const [cardStatus, setCardStatus] = useState<SessionCardUiStatus>('empty');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const { addChatMessage, addToast } = useAppStore();
+  const { addToast } = useAppStore();
 
   const [isSessionActive, setIsSessionActive] = useState(false);
   const [timeLeft, setTimeLeft] = useState(0);
@@ -26,6 +26,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
   const [isMinimized, setIsMinimized] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
   const [updatedStreak, setUpdatedStreak] = useState(0);
+  const completionKeyRef = useRef<string | null>(null);
 
   // Quotes
   const STUDY_QUOTES = [
@@ -150,7 +151,10 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
 
       const res = await fetch('/api/dashboard/complete-session', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Idempotency-Key': completionKeyRef.current || `session-card:${taskId || data.focusTopic}:${new Date().toISOString().slice(0, 10)}`,
+        },
         body: JSON.stringify({
           taskId,
           subject: data.subject,
@@ -160,11 +164,6 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
       });
       if (res.ok) {
         addToast(`Mission completed: ${data.focusTopic} saved.`, 'success');
-        addChatMessage({
-          role: 'assistant',
-          content: `**Mission complete.** Your ${data.estimatedMinutes}-minute session on **${data.focusTopic}** (${data.subject}) has been saved. I can use the updated learner state for your next step.`,
-          timestamp: new Date().toISOString()
-        });
 
         localStorage.removeItem(`focus_session_end_${data.focusTopic}`);
         setIsSessionActive(false);
@@ -175,11 +174,12 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
         setUpdatedStreak(nextStreak);
         setShowCelebration(true);
         setCardStatus('completed');
+        completionKeyRef.current = null;
       }
     } catch (e) {
       console.error('Failed to complete focus session', e);
     }
-  }, [addChatMessage, addToast, data]);
+  }, [addToast, data]);
 
   // Countdown timer logic
   useEffect(() => {
@@ -189,8 +189,6 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
         setTimeLeft(prev => {
           if (prev <= 1) {
             clearInterval(timer);
-            // Trigger automatic completion
-            completeFocusSession();
             return 0;
           }
           return prev - 1;
@@ -198,12 +196,13 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
       }, 1000);
     }
     return () => clearInterval(timer);
-  }, [completeFocusSession, isSessionActive, timeLeft]);
+  }, [isSessionActive, timeLeft]);
 
   const startFocusSession = () => {
     if (!data) return;
     const durationSeconds = (data.estimatedMinutes || 45) * 60;
     const endTime = Date.now() + durationSeconds * 1000;
+    completionKeyRef.current = `session-card:${data.taskId || data.focusTopic}:${new Date().toISOString().slice(0, 10)}`;
     localStorage.setItem(`focus_session_end_${data.focusTopic}`, String(endTime));
     setIsSessionActive(true);
     setTimeLeft(durationSeconds);

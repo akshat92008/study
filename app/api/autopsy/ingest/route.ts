@@ -1,13 +1,17 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { processMockAutopsy, AutopsyExtractionError } from '@/lib/engines/autopsy-engine';
-import { logger, safeError } from '@/lib/utils/logger';
+import { logger } from '@/lib/utils/logger';
 import { withRateLimit } from '@/lib/middleware/withRateLimit';
+import { apiErrorResponse, getRequestId } from '@/lib/api/errors';
 import {
-  assertDailyAIUsageBudget,
-  isAIUsageBudgetExceeded,
-  trackDailyAIUsage,
-} from '@/lib/services/ai-usage.service';
+  commitBudgetUsage,
+  isBudgetExceeded,
+  isBudgetUnavailable,
+  releaseBudgetReservation,
+  reserveBudgetForModelCall,
+  type BudgetReservation,
+} from '@/lib/ai/cost-guard';
 
 const MAX_FILE_SIZE_BYTES = 20 * 1024 * 1024;
 
@@ -21,6 +25,10 @@ const ALLOWED_MIME_TYPES = new Set([
 ]);
 
 export const POST = withRateLimit('autopsy', async (request, userId) => {
+  const requestId = getRequestId(request);
+  const apiError = (error: string, message: string, status: number, details?: unknown) =>
+    apiErrorResponse(error, { message, status, details, requestId, feature: 'autopsy' });
+
   try {
     const supabase = await createClient();
     const contentType = request.headers.get('content-type') || '';
@@ -31,11 +39,15 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
     let requestedExamType: string | undefined;
     let fileSizeKB: number | undefined;
     let mimeType = 'text/plain';
+    let idempotencyKey = request.headers.get('Idempotency-Key');
 
     if (contentType.includes('application/json')) {
       const body = await request.json();
       testName = body.testName || body.fileName || testName;
       requestedExamType = body.examType;
+      if (!idempotencyKey && typeof body.idempotencyKey === 'string') {
+        idempotencyKey = body.idempotencyKey;
+      }
 
       if (body.correctMarks !== undefined && body.negativeMarks !== undefined) {
         customScoring = {
@@ -53,33 +65,24 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
         mimeType = body.fileData?.mimeType || body.imageMimeType || body.documentMimeType || body.mimeType || 'application/octet-stream';
 
         if (!base64 || typeof base64 !== 'string') {
-          return NextResponse.json({ error: 'No base64 upload provided.' }, { status: 400 });
+          return apiError('invalid_file', 'No base64 upload content was provided.', 400);
         }
 
         if (!ALLOWED_MIME_TYPES.has(mimeType)) {
-          return NextResponse.json(
-            { error: 'Unsupported file type. Use PDF, TXT, or image (JPEG/PNG/WebP).' },
-            { status: 415 }
-          );
+          return apiError('unsupported_file_type', 'Use PDF, TXT, Markdown, or image (JPEG/PNG/WebP).', 415);
         }
 
         const byteSize = Buffer.byteLength(base64, 'base64');
         fileSizeKB = Math.round(byteSize / 1024);
         if (byteSize > MAX_FILE_SIZE_BYTES) {
-          return NextResponse.json(
-            { error: `File too large (${Math.round(byteSize / 1024 / 1024)}MB). Maximum is 20MB.` },
-            { status: 413 }
-          );
+          return apiError('invalid_file', `File too large (${Math.round(byteSize / 1024 / 1024)}MB). Maximum is 20MB.`, 413);
         }
 
         const buffer = Buffer.from(base64, 'base64');
         const { validateMagicBytesArray } = await import('@/lib/utils/magicBytes');
         const isValidBytes = validateMagicBytesArray(new Uint8Array(buffer.subarray(0, 12)), mimeType);
         if (!isValidBytes) {
-          return NextResponse.json(
-            { error: 'File contents do not match the declared MIME type. Potential malware blocked.' },
-            { status: 422 }
-          );
+          return apiError('invalid_file', 'File contents do not match the declared MIME type.', 422);
         }
 
         fileData = { kind: 'inline', mimeType, data: base64 };
@@ -88,6 +91,7 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
       const formData = await request.formData();
       const file = formData.get('file') as File | null;
       testName = (formData.get('testName') as string) || testName;
+      idempotencyKey = idempotencyKey || (formData.get('idempotencyKey') as string | null);
       const correctMarksStr = formData.get('correctMarks') as string;
       const negativeMarksStr = formData.get('negativeMarks') as string;
 
@@ -96,30 +100,21 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
           ? { correctMarks: Number(correctMarksStr), negativeMarks: Number(negativeMarksStr) }
           : undefined;
 
-      if (!file) return NextResponse.json({ error: 'No file provided.' }, { status: 400 });
+      if (!file) return apiError('invalid_file', 'No file was provided.', 400);
 
       if (file.size > MAX_FILE_SIZE_BYTES) {
-        return NextResponse.json(
-          { error: `File too large (${Math.round(file.size / 1024 / 1024)}MB). Maximum is 20MB.` },
-          { status: 413 }
-        );
+        return apiError('invalid_file', `File too large (${Math.round(file.size / 1024 / 1024)}MB). Maximum is 20MB.`, 413);
       }
 
       mimeType = file.type || 'application/octet-stream';
       if (!ALLOWED_MIME_TYPES.has(mimeType)) {
-        return NextResponse.json(
-          { error: 'Unsupported file type. Use PDF, TXT, or image (JPEG/PNG/WebP).' },
-          { status: 415 }
-        );
+        return apiError('unsupported_file_type', 'Use PDF, TXT, Markdown, or image (JPEG/PNG/WebP).', 415);
       }
 
       const { validateMagicBytes } = await import('@/lib/utils/magicBytes');
       const isValidBytes = await validateMagicBytes(file, mimeType);
       if (!isValidBytes) {
-        return NextResponse.json(
-          { error: 'File contents do not match the declared MIME type. Potential malware blocked.' },
-          { status: 422 }
-        );
+        return apiError('invalid_file', 'File contents do not match the declared MIME type.', 422);
       }
 
       fileSizeKB = Math.round(file.size / 1024);
@@ -135,7 +130,7 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
     testName = testName.replace(/\.[^/.]+$/, '');
 
     if (!fileData) {
-      return NextResponse.json({ error: 'No upload content provided.' }, { status: 400 });
+      return apiError('invalid_file', 'No upload content was provided.', 400);
     }
 
     const { data: profile } = await supabase
@@ -146,45 +141,59 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
 
     const examType = requestedExamType || profile?.exam_type || 'General Study';
 
-    logger.info('Starting autopsy', { userId, testName, mimeType, fileSizeKB });
+    logger.info('Starting autopsy', { userId, requestId, feature: 'autopsy', testName, mimeType, fileSizeKB });
+
+    let budgetReservation: BudgetReservation | null = null;
+    const estimatedPromptTokens = fileData.kind === 'text'
+      ? Math.ceil(fileData.text.length / 4)
+      : Math.ceil(Buffer.byteLength(fileData.data, 'base64') / 4);
+    const model = fileData.kind === 'text' ? 'router:flash+pro' : 'router:multimodal+pro';
 
     try {
-      await assertDailyAIUsageBudget({
+      budgetReservation = await reserveBudgetForModelCall(
         userId,
-        kind: 'autopsy',
-        estimatedPromptTokens: fileData.kind === 'text'
-          ? Math.ceil(fileData.text.length / 4)
-          : Math.ceil(Buffer.byteLength(fileData.data, 'base64') / 4),
-        estimatedCompletionTokens: 2500,
-      });
+        'autopsy',
+        model,
+        estimatedPromptTokens,
+        2500
+      );
     } catch (error) {
-      if (isAIUsageBudgetExceeded(error)) {
-        return NextResponse.json(
+      if (isBudgetExceeded(error)) {
+        return apiError(
+          'budget_exceeded',
+          'AUTOPSY is paused for today before any extraction ran. Try again tomorrow or reduce file size.',
+          error.status,
           {
-            error: 'Daily AI budget exceeded',
-            message: 'AUTOPSY is paused for today before any extraction ran. Try again tomorrow or reduce file size.',
             limitUsd: error.limitUsd,
-            usedUsd: error.usedUsd,
-          },
-          { status: error.status }
+            estimatedCost: error.estimatedCost,
+          }
+        );
+      }
+      if (isBudgetUnavailable(error)) {
+        return apiError(
+          'budget_unavailable',
+          'AUTOPSY is temporarily paused because AI usage limits could not be verified.',
+          error.status
         );
       }
       throw error;
     }
 
-    const result = await processMockAutopsy(userId, fileData, testName, examType, customScoring);
-    await trackDailyAIUsage({
-      userId,
-      kind: 'autopsy',
-      route: '/api/autopsy/ingest',
-      model: fileData.kind === 'text' ? 'router:flash+pro' : 'router:multimodal+pro',
-      promptTokens: fileData.kind === 'text' ? Math.ceil(fileData.text.length / 4) : Math.ceil(Buffer.byteLength(fileData.data, 'base64') / 4),
-      completionTokens: Math.ceil(JSON.stringify(result).length / 4),
-    });
-    if (mimeType.startsWith('image/')) {
-      await trackDailyAIUsage({ userId, kind: 'image', route: '/api/autopsy/ingest', model: 'router:multimodal' });
+    try {
+      const result = await processMockAutopsy(userId, fileData, testName, examType, customScoring, supabase, idempotencyKey);
+      await commitBudgetUsage(budgetReservation.reservationId, {
+        promptTokens: estimatedPromptTokens,
+        completionTokens: Math.ceil(JSON.stringify(result).length / 4),
+        route: '/api/autopsy/ingest',
+      });
+      return NextResponse.json(result);
+    } catch (error) {
+      await releaseBudgetReservation(
+        budgetReservation.reservationId,
+        error instanceof Error ? error.message : 'autopsy_failed'
+      );
+      throw error;
     }
-    return NextResponse.json(result);
 
   } catch (error: any) {
     // AutopsyExtractionError: the file couldn't be parsed/extracted.
@@ -193,23 +202,33 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
     if (error instanceof AutopsyExtractionError || error?.extractionFailed === true) {
       logger.warn('Autopsy extraction failed (user-safe)', {
         userId,
+        requestId,
         message: error.message,
       });
-      return NextResponse.json(
+      return apiError(
+        'extraction_failed',
+        error.message,
+        422,
         {
-          error: error.message,
           extraction_failed: true,
-          // Explicit guarantee: learner state was not mutated
           learner_state_mutated: false,
-        },
-        { status: 422 }
+        }
       );
     }
-    // All other errors: internal failure, log and return safe 500
-    logger.error('Autopsy ingest internal error', safeError(error));
-    return NextResponse.json(
-      { ...safeError(error), extraction_failed: false, learner_state_mutated: false },
-      { status: 500 }
+
+    const message = error instanceof Error ? error.message : String(error);
+    const isPersistenceFailure = message.startsWith('Failed to save autopsy:');
+    logger.error('Autopsy ingest internal error', error, { userId, requestId, feature: 'autopsy' });
+    return apiError(
+      isPersistenceFailure ? 'persistence_failed' : 'internal_error',
+      isPersistenceFailure
+        ? 'AUTOPSY extraction completed but persistence failed. No downstream learner update was trusted.'
+        : 'AUTOPSY failed unexpectedly.',
+      500,
+      {
+        extraction_failed: false,
+        learner_state_mutated: false,
+      }
     );
   }
 });

@@ -18,6 +18,11 @@
 import { createClient } from '@/lib/supabase/server';
 import { routeTextGeneration } from '@/lib/ai/router';
 import { logger } from '@/lib/utils/logger';
+import {
+  isBudgetExceeded,
+  isBudgetUnavailable,
+  reserveBudgetForModelCall,
+} from '@/lib/ai/cost-guard';
 
 // Only these values are valid in the emotional_state enum
 type EmotionalState =
@@ -110,7 +115,21 @@ Rules:
 - Only flag negative states if the message CLEARLY signals them
 - Return ONLY the one-word state. Nothing else.`;
 
-    const raw = await routeTextGeneration('json', 'You are an emotional state classifier. Return one word only.', prompt, 0.1, 10);
+    const reservation = await reserveBudgetForModelCall(
+      userId,
+      'emotional-state',
+      'router:json',
+      Math.max(1, Math.ceil(prompt.length / 4)),
+      10
+    );
+    const raw = await routeTextGeneration(
+      'json',
+      'You are an emotional state classifier. Return one word only.',
+      prompt,
+      0.1,
+      10,
+      reservation.reservationId
+    );
     const detected = raw.trim().toLowerCase() as EmotionalState;
 
     const validStates: EmotionalState[] = [
@@ -135,6 +154,10 @@ Rules:
     logger.info('Emotional state updated', { userId, from: currentState, to: detected });
   } catch (err) {
     // Completely non-fatal — never let this crash the chat
-    logger.warn('inferAndUpdateEmotionalState failed silently', err);
+    if (isBudgetExceeded(err) || isBudgetUnavailable(err)) {
+      logger.warn('inferAndUpdateEmotionalState skipped because AI budget is unavailable', { userId });
+    } else {
+      logger.warn('inferAndUpdateEmotionalState failed silently', err);
+    }
   }
 }

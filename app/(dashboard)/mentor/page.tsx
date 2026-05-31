@@ -1,5 +1,5 @@
-import { redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 
-export default async function MentorPage() {
-  redirect('/chat');
+export default function MentorPage() {
+  notFound();
 }

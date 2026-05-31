@@ -1,13 +1,12 @@
 'use client';
 
 import React, { useState, useEffect, useRef, memo, useCallback } from 'react';
-import { Bot, Maximize2, Minimize2, Trash2, Flame } from 'lucide-react';
+import { Bot, Maximize2, Minimize2, RefreshCw, Flame } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
 import { useStream } from '@/hooks/useStream';
 import { ChatInput } from './ChatInput';
 import { RichMessageRenderer } from './RichMessageRenderer';
 import { createClient } from '@/lib/supabase/client';
-import DailySessionCard from './DailySessionCard';
 import { SessionClosingCard } from './SessionClosingCard';
 import { useSessionTimer } from '@/hooks/useSessionTimer';
 import { useRouter } from 'next/navigation';
@@ -21,10 +20,6 @@ export const GlobalChat = memo(function GlobalChat() {
     clearChat,
     activeGoalId,
     streakDays,
-    setStreakDays,
-    sessionActive,
-    startSession,
-    sessionStartTime,
     chatId,
     loadChatFromSupabase,
     isAssistantExpanded,
@@ -32,12 +27,8 @@ export const GlobalChat = memo(function GlobalChat() {
   } = useAppStore();
 
   const [inputMessage, setInputMessage] = useState('');
-  const [currentSessionTopic, setCurrentSessionTopic] = useState('');
-  const [currentSessionSubject, setCurrentSessionSubject] = useState('');
   const [pendingFile, setPendingFile] = useState<File | null>(null);
   const [isProcessingUpload, setIsProcessingUpload] = useState(false);
-  const [sessionCardKey, setSessionCardKey] = useState(0);
-  const [showDailySession, setShowDailySession] = useState(true);
   const router = useRouter();
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -59,25 +50,11 @@ export const GlobalChat = memo(function GlobalChat() {
     });
   }, [supabase]);
 
-  // Sync session state from store
-  useEffect(() => {
-    if (sessionActive) {
-      setShowDailySession(false);
-    }
-  }, [sessionActive]);
-
   // Load chat history when user is available
   useEffect(() => {
     if (!user) return;
     loadChatFromSupabase();
   }, [loadChatFromSupabase, user]);
-
-  // Keep the chat session timer alive while the assistant is mounted.
-  useEffect(() => {
-    if (!sessionActive) {
-      startSession();
-    }
-  }, [sessionActive, startSession]);
 
   // Scroll to bottom utility
   const scrollToBottom = () => {
@@ -87,44 +64,6 @@ export const GlobalChat = memo(function GlobalChat() {
   useEffect(() => {
     scrollToBottom();
   }, [chatMessages, streamingText, isAssistantOpen]);
-
-  // Handle session closing message -> update streak
-  useEffect(() => {
-    if (chatMessages.length === 0) return;
-    const lastMsg = chatMessages[chatMessages.length - 1];
-    if (lastMsg.role === 'assistant' && lastMsg.metadata?.action === 'session_closing_message') {
-      if (lastMsg.metadata.sessionComplete && sessionStartTime) {
-        const duration = Math.round((Date.now() - sessionStartTime) / 60000);
-        fetch('/api/dashboard/session-close', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            conceptName: currentSessionTopic,
-            subject: currentSessionSubject,
-            sessionDurationMinutes: duration
-          })
-        })
-        .then(r => r.json())
-        .then(data => {
-          if (data.newStreak !== undefined) {
-            setStreakDays(data.newStreak);
-          }
-        })
-        .catch(console.error);
-        
-        useAppStore.getState().endSession();
-      }
-    }
-  }, [chatMessages, sessionStartTime, currentSessionTopic, currentSessionSubject, setStreakDays]);
-
-  // Invalidate session card cache after REPLAN adjustments
-  useEffect(() => {
-    if (chatMessages.length === 0) return;
-    const lastMsg = chatMessages[chatMessages.length - 1];
-    if (lastMsg.role === 'assistant' && lastMsg.metadata?.action === 'planner_adjusted' && lastMsg.metadata?.sessionCardInvalidated) {
-      setSessionCardKey(prev => prev + 1);
-    }
-  }, [chatMessages]);
 
   // Convert file to base64
   const fileToBase64 = (file: File): Promise<string> => {
@@ -141,10 +80,6 @@ export const GlobalChat = memo(function GlobalChat() {
     if (!textToSend && !pendingFile) return;
     if (status === 'streaming' || status === 'connecting' || isProcessingUpload) return;
 
-    if (!sessionActive) {
-      startSession();
-    }
-
     let imageBase64: string | null = null;
     let imageMimeType: string | null = null;
     let extractedText = '';
@@ -160,22 +95,17 @@ export const GlobalChat = memo(function GlobalChat() {
           console.error('Failed to parse image', e);
         }
         setIsProcessingUpload(false);
-      } else if (pendingFile.type === 'application/pdf' || pendingFile.type.startsWith('text/')) {
-        // Process document through ingestion API
-        setIsProcessingUpload(true);
-        try {
-          const form = new FormData();
-          form.append('file', pendingFile);
-          const resp = await fetch('/api/ingest', {
-            method: 'POST',
-            body: form,
-          });
-          const data = await resp.json();
-          extractedText = data.text ?? '';
-        } catch (e) {
-          console.error('Failed to ingest document', e);
-        }
-        setIsProcessingUpload(false);
+      } else if (pendingFile.type.startsWith('text/')) {
+        extractedText = await pendingFile.text();
+      } else if (pendingFile.type === 'application/pdf') {
+        addChatMessage({
+          role: 'assistant',
+          content: 'PDF ingestion is handled through AUTOPSY for the MVP. Open AUTOPSY and upload the mock paper there.',
+          timestamp: new Date().toISOString(),
+          metadata: { action: 'run_autopsy' },
+        });
+        setPendingFile(null);
+        return;
       } else {
         // Unsupported file type – clear it
         setPendingFile(null);
@@ -198,10 +128,7 @@ export const GlobalChat = memo(function GlobalChat() {
     setPendingFile(null);
     resetStatus();
 
-    const activeStartTime = sessionStartTime || Date.now();
-    const sessionTurnsCount = chatMessages.filter(
-      m => m.role === 'user' && new Date(m.timestamp).getTime() >= activeStartTime
-    ).length;
+    const sessionTurnsCount = chatMessages.filter(m => m.role === 'user').length;
 
     // Call the streaming engine
     try {
@@ -267,9 +194,6 @@ export const GlobalChat = memo(function GlobalChat() {
     resetStatus,
     router,
     send,
-    sessionActive,
-    sessionStartTime,
-    startSession,
     status,
   ]);
 
@@ -346,9 +270,9 @@ export const GlobalChat = memo(function GlobalChat() {
               background: 'transparent', border: 'none', color: 'var(--text-tertiary)',
               padding: '6px', cursor: 'pointer', borderRadius: '4px'
             }}
-            title="Clear Chat"
+            title="Reload Chat"
           >
-            <Trash2 size={16} />
+            <RefreshCw size={16} />
           </button>
           <button
             onClick={toggleAssistantExpanded}
@@ -385,72 +309,6 @@ export const GlobalChat = memo(function GlobalChat() {
         gap: '24px',
         scrollBehavior: 'smooth'
       }}>
-        {showDailySession && (
-          <DailySessionCard key={sessionCardKey}
-            onStartSession={(topic, subject, estimatedMinutes) => {
-              setCurrentSessionTopic(topic);
-              setCurrentSessionSubject(subject);
-              setShowDailySession(false);
-              startSession();
-              const prompt = `Let's start today's session. Topic: ${topic}, Subject: ${subject}.\nTeach me, test me, challenge me. I have ${estimatedMinutes} minutes.`;
-              handleSendMessage(prompt);
-            }}
-          />
-        )}
-        
-        {!showDailySession && currentSessionTopic && (
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              width: '100%',
-              gap: '8px',
-              padding: '6px 12px',
-              background: 'var(--bg-secondary)',
-              border: '1px solid var(--border-subtle)',
-              borderRadius: '8px',
-              alignSelf: 'flex-start',
-              marginBottom: '4px',
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{ fontSize: '10px', color: 'var(--text-tertiary)', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                TODAY'S SESSION
-              </span>
-              <span style={{ fontSize: '11px', color: 'var(--text-secondary)', fontWeight: 'var(--fw-medium)' }}>
-                {currentSessionTopic}
-              </span>
-            </div>
-            <button
-              onClick={() => {
-                setCurrentSessionTopic('');
-                setCurrentSessionSubject('');
-                useAppStore.getState().endSession();
-              }}
-              style={{
-                background: 'transparent',
-                border: 'none',
-                color: 'var(--text-tertiary)',
-                fontSize: '11px',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '4px',
-                padding: '4px 8px',
-                borderRadius: '4px',
-              }}
-              onMouseOver={(e) => (e.currentTarget.style.background = 'var(--bg-hover)')}
-              onMouseOut={(e) => (e.currentTarget.style.background = 'transparent')}
-            >
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
-                <path d="M3 3v5h5"></path>
-              </svg>
-              Restart
-            </button>
-          </div>
-        )}
          {chatMessages.map((msg, idx) => {
            const isUser = msg.role === 'user';
            const isClosingCard = msg.metadata?.action === 'session_closing_message';

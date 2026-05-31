@@ -42,12 +42,25 @@ export class EventWorkerService {
     if (!leases || leases.length === 0) {
       return 0; // No events to process
     }
+    logger.info('Event worker leases acquired', {
+      workerId,
+      feature: 'event-worker',
+      leaseCount: leases.length,
+    });
 
     // 2. Process events concurrently with Promise.allSettled for isolation
     await Promise.allSettled(
       leases.map(async (lease: any) => {
         const start = Date.now();
         const traceId = lease.event_metadata?.trace_id || lease.event_id;
+        logger.info('Event consumer started', {
+          workerId,
+          traceId,
+          feature: 'event-worker',
+          eventId: lease.event_id,
+          eventType: lease.event_type,
+          consumer: lease.consumer_name,
+        });
 
         // Record attempt start
         const { data: attempt } = await supabase
@@ -95,6 +108,16 @@ export class EventWorkerService {
 
           // Check parent completion
           await this.checkParentEventCompletion(lease.event_id);
+          logger.info('Event consumer completed', {
+            workerId,
+            traceId,
+            feature: 'event-worker',
+            eventId: lease.event_id,
+            eventType: lease.event_type,
+            consumer: lease.consumer_name,
+            durationMs: Date.now() - start,
+            resultStatus: result.status,
+          });
 
         } catch (err: any) {
           Metrics.eventConsumer(lease.consumer_name, lease.event_type, Date.now() - start, false);
@@ -117,6 +140,16 @@ export class EventWorkerService {
           }
 
           await this.handleConsumerFailure(lease, errorMsg);
+          logger.warn('Event consumer failed', {
+            workerId,
+            traceId,
+            feature: 'event-worker',
+            eventId: lease.event_id,
+            eventType: lease.event_type,
+            consumer: lease.consumer_name,
+            durationMs: Date.now() - start,
+            error: errorMsg,
+          });
         }
       })
     );
@@ -128,16 +161,6 @@ export class EventWorkerService {
     const supabase = createAdminClient();
     const newRetryCount = lease.retry_count + 1;
     const nextAttemptAt = new Date(Date.now() + Math.pow(2, newRetryCount) * 10_000).toISOString();
-
-    await supabase
-      .from('event_queue')
-      .update({
-        retry_count: newRetryCount,
-        next_attempt_at: nextAttemptAt,
-        last_error: errorMsg,
-        updated_at: new Date().toISOString(),
-      })
-      .eq('id', lease.event_id);
 
     if (newRetryCount > MAX_RETRIES) {
       // Move to DLQ
@@ -154,6 +177,13 @@ export class EventWorkerService {
       });
       
       Metrics.eventRetry(lease.consumer_name, newRetryCount, true);
+      logger.warn('Event consumer moved to DLQ', {
+        feature: 'event-worker',
+        eventId: lease.event_id,
+        eventType: lease.event_type,
+        consumer: lease.consumer_name,
+        retryCount: newRetryCount,
+      });
 
       // Update lock to DLQ
       await supabase
@@ -176,6 +206,14 @@ export class EventWorkerService {
       const nextRetryAt = nextAttemptAt;
 
       Metrics.eventRetry(lease.consumer_name, newRetryCount, false);
+      logger.warn('Event consumer retry scheduled', {
+        feature: 'event-worker',
+        eventId: lease.event_id,
+        eventType: lease.event_type,
+        consumer: lease.consumer_name,
+        retryCount: newRetryCount,
+        nextRetryAt,
+      });
 
       await supabase
         .from('consumer_locks')
@@ -191,13 +229,16 @@ export class EventWorkerService {
           updated_at: new Date().toISOString(),
         })
         .eq('id', lease.lock_id);
+
+      await this.checkParentEventCompletion(lease.event_id);
     }
   }
 
   private static async checkParentEventCompletion(eventId: string) {
     const supabase = createAdminClient();
     
-    // If all locks for this event are COMPLETED, DLQ, or FAILED, we mark parent accordingly.
+    // Parent event status is a summary of per-consumer locks. Retry counts live
+    // on consumer_locks so one failing consumer cannot erase successful ones.
     const { data: locks } = await supabase
       .from('consumer_locks')
       .select('status')
@@ -205,29 +246,37 @@ export class EventWorkerService {
 
     if (locks && locks.length > 0) {
       const allCompleted = locks.every(l => l.status === 'COMPLETED');
+      const anyProcessing = locks.some(l => l.status === 'PROCESSING');
+      const anyPending = locks.some(l => l.status === 'PENDING' || l.status === 'RETRY_SCHEDULED');
+      const anyCompleted = locks.some(l => l.status === 'COMPLETED');
       const anyFailed = locks.some(l => l.status === 'DLQ' || l.status === 'FAILED');
+      const allTerminal = locks.every(l => l.status === 'COMPLETED' || l.status === 'DLQ' || l.status === 'FAILED');
 
-      if (allCompleted) {
-        await supabase
-          .from('event_queue')
-          .update({
-            status: 'COMPLETED',
-            locked_at: null,
-            locked_by: null,
-            updated_at: new Date().toISOString()
-          })
-          .eq('id', eventId);
-      } else if (anyFailed && !locks.some(l => l.status === 'PENDING' || l.status === 'PROCESSING' || l.status === 'RETRY_SCHEDULED')) {
-        await supabase
-          .from('event_queue')
-          .update({
-            status: 'FAILED',
-            locked_at: null,
-            locked_by: null,
-            updated_at: new Date().toISOString()
-          })
-          .eq('id', eventId);
+      const status = allCompleted
+        ? 'COMPLETED'
+        : anyProcessing
+          ? 'PROCESSING'
+          : anyPending
+            ? 'PENDING'
+            : allTerminal && anyCompleted && anyFailed
+              ? 'PARTIAL_FAILED'
+              : allTerminal && anyFailed
+                ? 'FAILED'
+                : 'PENDING';
+
+      const updatePayload: Record<string, any> = {
+        status,
+        updated_at: new Date().toISOString(),
+      };
+      if (!anyProcessing) {
+        updatePayload.locked_at = null;
+        updatePayload.locked_by = null;
       }
+
+      await supabase
+        .from('event_queue')
+        .update(updatePayload)
+        .eq('id', eventId);
     }
   }
 

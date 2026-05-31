@@ -61,9 +61,8 @@ declare
   v_total_marks numeric;
   v_marks_lost numeric;
 begin
-  -- SECURITY: Only service_role can call this (prevents client-side score spoofing)
-  if current_setting('request.jwt.claim.role', true) <> 'service_role' then
-    raise exception 'unauthorized: mock autopsies must be processed via the backend AI engine';
+  if auth.uid() is null or auth.uid() <> p_user_id then
+    raise exception 'unauthorized';
   end if;
 
   -- ─── IDEMPOTENCY GUARD ────────────────────────────────────────────────────
@@ -398,16 +397,15 @@ exception when others then
 end;
 $$ language plpgsql volatile security definer set search_path = public;
 
--- Ensure only the backend service role can call this function
 revoke execute on function public.ingest_mock_autopsy(
   uuid, text, text, int, int, int, int, numeric, numeric, numeric,
   jsonb, text, uuid, numeric
-) from public, authenticated;
+) from public, authenticated, service_role;
 
 grant execute on function public.ingest_mock_autopsy(
   uuid, text, text, int, int, int, int, numeric, numeric, numeric,
   jsonb, text, uuid, numeric
-) to service_role;
+) to authenticated;
 
 -- ─── Schema hardening: ensure updated_at column exists on autopsy_questions ─
 -- (needed for the ON CONFLICT ... do update clause above)

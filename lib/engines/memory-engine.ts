@@ -65,7 +65,10 @@ export async function processDocumentIntoMemory(userId: string, fileData: { titl
   // Process embeddings async in background using batches
   (async () => {
     try {
-      const embeddings = await getEmbeddingsBatch(rawChunks, 10);
+      const embeddings = await getEmbeddingsBatch(rawChunks, 10, {
+        userId,
+        route: 'document-memory-ingest',
+      });
       const inserts: Array<{
         user_id: string;
         material_id: any;

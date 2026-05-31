@@ -290,6 +290,7 @@ begin
 end $$;
 
 alter table public.revision_cards drop constraint if exists revision_cards_state_check;
+drop index if exists idx_revision_cards_due;
 
 do $$
 declare
@@ -324,7 +325,6 @@ end $$;
 alter table public.revision_cards
   add constraint revision_cards_state_check check (state between 0 and 4);
 
-drop index if exists idx_revision_cards_due;
 create index if not exists idx_revision_cards_due
   on public.revision_cards(user_id, due)
   where state <> 4;

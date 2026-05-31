@@ -1,7 +1,5 @@
-import { getMaterials } from '@/lib/actions/knowledge';
-import KnowledgeBaseUI from '@/components/knowledge/KnowledgeBaseUI';
+import { notFound } from 'next/navigation';
 
-export default async function KnowledgePage() {
-  const materials = await getMaterials();
-  return <KnowledgeBaseUI initialMaterials={materials} />;
+export default function KnowledgePage() {
+  notFound();
 }

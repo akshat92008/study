@@ -1,16 +1,14 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import {
-  MessageSquare, Zap, X, ChevronLeft, ChevronRight, Plus, Target, LogOut,
+  MessageSquare, Zap, X, ChevronLeft, ChevronRight, LogOut,
   Brain, RefreshCw, Activity, Home
 } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
-import { AnimatePresence } from 'framer-motion';
 import { signOut } from '@/lib/actions/auth';
-import GoalCreationModal from '@/components/modals/GoalCreationModal';
 
 interface SidebarProps {
   userName: string;
@@ -19,20 +17,12 @@ interface SidebarProps {
 
 export default function Sidebar({ userName, examType }: SidebarProps) {
   const pathname = usePathname();
-  const router = useRouter();
   const {
     isSidebarCollapsed,
     toggleSidebar,
     isMobileSidebarOpen,
     setMobileSidebarOpen,
-    learningGoals,
-    activeGoalId,
-    setActiveGoalId,
-    loadLearningGoals,
-    createLearningGoal
   } = useAppStore();
-
-  const [isAddingGoal, setIsAddingGoal] = useState(false);
   const navItems = [
     { label: 'Today', href: '/dashboard', icon: Home },
     { label: 'MIND', href: '/chat', icon: MessageSquare },
@@ -42,8 +32,8 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
   ];
 
   useEffect(() => {
-    loadLearningGoals();
-  }, [loadLearningGoals]);
+    // Goals removed for MVP
+  }, []);
 
 
   return (
@@ -181,145 +171,8 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
           })}
         </div>
 
-        {/* Learning Goals Section */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)' }}>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: isSidebarCollapsed ? 'center' : 'space-between',
-              padding: '0 var(--sp-3)',
-              marginBottom: 4,
-            }}
-          >
-            {!isSidebarCollapsed && (
-              <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-bold)', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)' }}>
-                Learning Goals
-              </span>
-            )}
-            <button
-              onClick={() => setIsAddingGoal(true)}
-              style={{
-                background: 'transparent',
-                border: 'none',
-                color: 'var(--text-secondary)',
-                cursor: 'pointer',
-                padding: '2px',
-                borderRadius: '4px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-              title="Add New Learning Goal"
-            >
-              <Plus size={14} />
-            </button>
-          </div>
+        {/* Learning Goals Section removed for MVP */}
 
-          {/* New Goal Input Inline removed - now uses Modal */}
-
-          {/* Goals List */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-            {learningGoals.map((goal) => {
-              const isGoalActive = activeGoalId === goal.id;
-              return (
-                <button
-                  key={goal.id}
-                  onClick={() => {
-                    setActiveGoalId(goal.id);
-                    if (pathname !== '/dashboard') {
-                      router.push('/dashboard');
-                    }
-                  }}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: isSidebarCollapsed ? 0 : 'var(--sp-3)',
-                    justifyContent: isSidebarCollapsed ? 'center' : 'flex-start',
-                    padding: 'var(--sp-2) var(--sp-3)',
-                    borderRadius: 'var(--radius-md)',
-                    border: 'none',
-                    cursor: 'pointer',
-                    fontSize: 'var(--fs-sm)',
-                    fontWeight: isGoalActive ? 'var(--fw-semibold)' : 'var(--fw-normal)',
-                    color: isGoalActive ? 'var(--text-primary)' : 'var(--text-secondary)',
-                    background: isGoalActive ? 'var(--bg-secondary)' : 'transparent',
-                    width: '100%',
-                    textAlign: 'left',
-                    transition: 'all var(--duration-fast) var(--ease-out)',
-                    position: 'relative',
-                  }}
-                >
-                  {isGoalActive && (
-                    <div
-                      style={{
-                        position: 'absolute',
-                        left: 0,
-                        top: '25%',
-                        bottom: '25%',
-                        width: 3,
-                        background: 'var(--accent-purple)',
-                        borderRadius: 2,
-                      }}
-                    />
-                  )}
-                  {isSidebarCollapsed ? (
-                    <div
-                      style={{
-                        width: 24,
-                        height: 24,
-                        borderRadius: 'var(--radius-full)',
-                        background: isGoalActive ? 'var(--accent-purple-dim)' : 'var(--bg-tertiary)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: '10px',
-                        fontWeight: 'bold',
-                        color: isGoalActive ? 'var(--text-primary)' : 'var(--text-secondary)',
-                      }}
-                    >
-                      {goal.title.charAt(0).toUpperCase()}
-                    </div>
-                  ) : (
-                    <>
-                      <Target size={16} style={{ color: isGoalActive ? 'var(--accent-purple)' : 'var(--text-tertiary)', flexShrink: 0 }} />
-                      <span
-                        style={{
-                          overflow: 'hidden',
-                          textOverflow: 'ellipsis',
-                          whiteSpace: 'nowrap',
-                          flex: 1,
-                        }}
-                      >
-                        {goal.title}
-                      </span>
-                      {goal.confidence_score !== null && goal.confidence_score !== undefined && (
-                        <span
-                          style={{
-                            fontSize: '9px',
-                            padding: '2px 6px',
-                            background: 'var(--bg-tertiary)',
-                            borderRadius: 'var(--radius-full)',
-                            fontFamily: 'var(--font-mono)',
-                            color: 'var(--accent-cyan)',
-                          }}
-                        >
-                          {Math.round(goal.confidence_score)}%
-                        </span>
-                      )}
-                    </>
-                  )}
-                </button>
-              );
-            })}
-
-            {learningGoals.length === 0 && !isSidebarCollapsed && (
-              <div style={{ padding: 'var(--sp-2) var(--sp-3)', fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', fontStyle: 'italic' }}>
-                No active goals.
-              </div>
-            )}
-          </div>
-        </div>
       </nav>
 
       {/* Collapse Toggle Button (Desktop-only) */}
@@ -437,12 +290,8 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
         </button>
       </div>
 
-      {/* Goal Ingestion Modal */}
-      <AnimatePresence>
-        {isAddingGoal && (
-          <GoalCreationModal onClose={() => setIsAddingGoal(false)} />
-        )}
-      </AnimatePresence>
+      {/* Goal Ingestion Modal removed for MVP */}
+
     </aside>
   );
 }

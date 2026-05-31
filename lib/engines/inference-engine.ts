@@ -2,6 +2,11 @@ import { createClient } from '@/lib/supabase/server';
 import { generateJSON } from '@/lib/ai/provider-client';
 import { logger } from '@/lib/utils/logger';
 import type { SupabaseClient, DatabaseRow } from '@supabase/supabase-js';
+import {
+  isBudgetExceeded,
+  isBudgetUnavailable,
+  reserveBudgetForModelCall,
+} from '@/lib/ai/cost-guard';
 
 export async function syncStudentModel(userId: string, isInitialFingerprint: boolean = false, client?: SupabaseClient) {
   const supabase = client ?? (await createClient());
@@ -67,7 +72,22 @@ Respond EXACTLY in this JSON format:
 }`;
 
   try {
-    const newProfile = await generateJSON<any>('pro', 'You are an elite behavioral analyst.', prompt);
+    const reservation = await reserveBudgetForModelCall(
+      userId,
+      'session-analysis',
+      'router:json',
+      Math.max(1, Math.ceil(prompt.length / 4)),
+      500
+    );
+    const newProfile = await generateJSON<any>(
+      'pro',
+      'You are an elite behavioral analyst.',
+      prompt,
+      undefined,
+      0.3,
+      3,
+      reservation.reservationId
+    );
 
     if (newProfile) {
       await supabase.from('student_models').upsert({
@@ -82,7 +102,11 @@ Respond EXACTLY in this JSON format:
 
     return newProfile;
   } catch (err) {
-    logger.error('syncStudentModel failed', err);
+    if (isBudgetExceeded(err) || isBudgetUnavailable(err)) {
+      logger.warn('syncStudentModel skipped because AI budget is unavailable', { userId });
+    } else {
+      logger.error('syncStudentModel failed', err);
+    }
     return null;
   }
 }

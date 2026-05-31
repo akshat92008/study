@@ -50,7 +50,10 @@ export class ContextAssembler {
   private async retrieveMemories(userId: string, query: string): Promise<MemoryItem[]> {
     try {
       const supabase = await createClient();
-      const embedding = await getEmbedding(query);
+      const embedding = await getEmbedding(query, {
+        userId,
+        route: 'context-assembler',
+      });
       if (!embedding || !Array.isArray(embedding) || embedding.length === 0 || typeof embedding[0] !== "number") return [];
 
       const embeddingString = `[${embedding.join(',')}]`;

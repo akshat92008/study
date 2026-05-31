@@ -66,7 +66,7 @@ export class ChatTutorService {
         fullResponse += chunk;
       }
       if (canCache && message) {
-        setSemanticCache(message, fullResponse).catch(err => logger.error('Cache save failed', err));
+        setSemanticCache(message, fullResponse, userId).catch(err => logger.error('Cache save failed', err));
       }
     }
 

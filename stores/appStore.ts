@@ -259,23 +259,26 @@ export const useAppStore = create<AppState>()(
     }),
     {
       name: 'cognition-os-store',
-      // Explicitly pick which states get saved to browser localStorage
+      // Persist UI preferences only. Chat history and live learner telemetry are
+      // server-authoritative and must be hydrated from Supabase on each load.
       partialize: (state) => ({
-        chatMessages: state.chatMessages,
-        chatId: state.chatId,
-        pendingSyncQueue: state.pendingSyncQueue,
         isSidebarCollapsed: state.isSidebarCollapsed,
         activeGoalId: state.activeGoalId,
-        sessionStartTime: state.sessionStartTime,
-        emotionalState: state.emotionalState,
-        atlasMastery: state.atlasMastery,
-        memoryDueCount: state.memoryDueCount,
-        autopsyLossPoints: state.autopsyLossPoints,
-        streakDays: state.streakDays,
         assistantWidth: state.assistantWidth,
         isAssistantExpanded: state.isAssistantExpanded,
         voiceModeEnabled: state.voiceModeEnabled,
       }),
+      version: 2,
+      migrate: (persistedState) => {
+        const state = (persistedState ?? {}) as Partial<AppState>;
+        return {
+          isSidebarCollapsed: state.isSidebarCollapsed,
+          activeGoalId: state.activeGoalId,
+          assistantWidth: state.assistantWidth,
+          isAssistantExpanded: state.isAssistantExpanded,
+          voiceModeEnabled: state.voiceModeEnabled,
+        };
+      },
     }
   )
 );
