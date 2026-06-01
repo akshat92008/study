@@ -67,6 +67,7 @@ export const EVENT_CONSUMER_MATRIX = {
     'memory_engine',
     'learning_state_engine',
   ],
+  ONBOARDING_QUIZ_COMPLETE: ['learning_state_engine', 'planner_agent'],
 } as const satisfies Record<string, readonly EventConsumer[]>;
 
 export type RoutedEventType = keyof typeof EVENT_CONSUMER_MATRIX;

@@ -274,7 +274,7 @@ export async function approveAgentAction(
 
   if (fetchError) throw fetchError;
   if (!action) throw new Error('Agent action not found');
-  if (action.approval_status === 'rejected') return action;
+  if (action.approval_status === 'rejected') throw new Error('Rejected actions cannot be approved');
 
   await supabase
     .from('agent_action_approvals')
@@ -327,6 +327,7 @@ export async function rejectAgentAction(
   if (fetchError) throw fetchError;
   if (!action) throw new Error('Agent action not found');
   if (action.status === 'applied') throw new Error('Applied actions cannot be rejected');
+  if (action.approval_status === 'approved' || action.status === 'approved') return action;
 
   await supabase
     .from('agent_action_approvals')

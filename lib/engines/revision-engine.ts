@@ -234,7 +234,7 @@ export async function reviewCard(cardId: string, rating: 1 | 2 | 3 | 4, response
             ? 'revision_easy'
             : 'revision_good',
       source: 'card_review',
-      sourceId: `${cardId}:${now.toISOString()}`,
+      sourceId: `card_review:${cardId}:${row.reps || 0}:${ratingStr}`,
       evidence: `Revision card reviewed as ${ratingStr}`,
     });
 
@@ -310,7 +310,7 @@ export async function reviewCard(cardId: string, rating: 1 | 2 | 3 | 4, response
       responseTimeMs: responseTimeMs ?? null,
     },
     metadata: { source: 'revision_engine' },
-    idempotency_key: `card_review:${cardId}:${now.toISOString()}`,
+    idempotency_key: `card_review:${cardId}:${row.reps || 0}:${ratingStr}`,
   }).catch(err => logger.warn('Failed to publish MEMORY_CARD_REVIEWED', err));
 
   return { nextDue: nextDueAt, scheduledDays: Math.max(interval, 1) };

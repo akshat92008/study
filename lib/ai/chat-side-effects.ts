@@ -182,7 +182,7 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
           intent: intent?.intent,
         },
         metadata: { source: source_type || 'global_chat' },
-        idempotency_key: `student_model_sync:${userId}:${sessionId}:${assistant_message_id || user_message_id || Date.now()}`,
+        idempotency_key: `student_model_sync:${userId}:${sessionId}:${assistant_message_id || user_message_id || 'unknown-message'}`,
       })).catch((err: Error) =>
         logger.warn('SideEffect: model sync event publish failed', { userId, err })
       );

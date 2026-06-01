@@ -78,7 +78,7 @@ export class ChatSideEffectService {
           // ── CRITICAL: tells the worker the message is already in the DB ──
           assistant_message_id: assistantMessageId,
         },
-        idempotency_key: crypto.randomUUID(),
+        idempotency_key: `chat_processed:${userId}:${assistantMessageId || userMessageId || sessionId}`,
       }).catch((err: Error) =>
         logger.error('finalizeChatResponse: failed to enqueue CHAT_MESSAGE_PROCESSED', err)
       );

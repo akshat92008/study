@@ -285,6 +285,7 @@ export class EventWorkerService {
     assertEventConsumerRoute(lease.event_type, lease.consumer_name);
 
     const event = {
+      id: lease.event_id,
       user_id: lease.user_id,
       type: lease.event_type,
       data: lease.event_payload,
@@ -293,6 +294,8 @@ export class EventWorkerService {
     const payload = {
       ...(event.metadata ?? {}),
       ...(event.data ?? {}),
+      eventId: lease.event_id,
+      sourceEventId: lease.event_id,
     };
 
     switch (consumer) {
@@ -445,6 +448,7 @@ export class EventWorkerService {
           'LEARNER_STATE_CHANGED',
           'SESSION_RECOMMENDATION_REQUESTED',
           'PLANNER_REPLAN_REQUESTED',
+          'ONBOARDING_QUIZ_COMPLETE',
         ].includes(event.type)) {
           const { invalidateSessionCard } = await import('@/lib/services/session-card-invalidation');
           await invalidateSessionCard(event.user_id, 'LEARNER_STATE_UPDATED', {

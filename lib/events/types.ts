@@ -35,6 +35,7 @@ export const EventTypeSchema = z.enum([
   'STUDENT_MODEL_SYNC_REQUESTED',
   'PLANNER_REPLAN_REQUESTED',
   'PRACTICE_ATTEMPT_RECORDED',
+  'ONBOARDING_QUIZ_COMPLETE',
 ]);
 
 export type EventType = z.infer<typeof EventTypeSchema>;
@@ -237,6 +238,10 @@ export const EventPayloadSchemas: Partial<Record<EventType | string, z.ZodTypeAn
       isCorrect: z.boolean().optional(),
       confidence: z.string().optional(),
     })).optional()
+  }).passthrough(),
+  ONBOARDING_QUIZ_COMPLETE: z.object({
+    quizResults: z.array(z.any()).optional(),
+    examType: z.string().optional(),
   }).passthrough(),
 };
 

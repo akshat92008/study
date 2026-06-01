@@ -268,6 +268,7 @@ export async function updateConceptState(conceptId: string, correct: boolean, ti
     conceptId,
     evidenceType: correct ? 'practice_correct' : 'practice_wrong',
     source: 'practice',
+    sourceId: `practice:${conceptId}:${correct ? 'correct' : 'wrong'}:${timeSpent}`,
     evidence: `Practice signal; accuracy ${(accuracy * 100).toFixed(0)}%, time spent ${timeSpent}s`,
   });
 }
@@ -433,6 +434,7 @@ export class AtlasConsumer {
           newMastery: downgradedMastery as any,
           source: 'autopsy',
           sourceId: metadata?.autopsyId ?? undefined,
+          sourceEventId: metadata?.eventId ?? metadata?.sourceEventId ?? undefined,
           evidence: `${count} wrong answer(s) in ${chapter} (${subject})`,
           useAdminClient: true,
         });
@@ -505,6 +507,8 @@ export class AtlasConsumer {
           conceptId: concept.id,
           newMastery: upgradedMastery as any,
           source: 'tutor_session',
+          sourceId: data?.sessionId ?? undefined,
+          sourceEventId: data?.eventId ?? data?.sourceEventId ?? undefined,
           evidence: isSessionComplete ? `Session on ${chapter} (${subject}), understood: ${understood}` : `Session on ${chapter} (${subject}), ${durationMinutes} min`,
           useAdminClient: true,
         });

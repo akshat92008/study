@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/utils/logger';
 import { invalidateSessionCards } from '@/lib/services/session-card-cache';
 import { recordAgentAction } from '@/lib/agents/agent-runtime';
+import { createHash } from 'node:crypto';
 
 export type MasterySource =
   | 'session_close'
@@ -130,6 +131,13 @@ async function getSupabase(useAdminClient?: boolean, client?: any) {
   return useAdminClient ? createAdminClient() : await createClient();
 }
 
+function hashKey(value: unknown): string {
+  return createHash('sha256')
+    .update(JSON.stringify(value))
+    .digest('hex')
+    .slice(0, 32);
+}
+
 export async function recomputeConceptMastery(
   userId: string,
   conceptId: string,
@@ -217,6 +225,7 @@ export async function recordMasteryEvidence(params: {
   source: MasterySource;
   sourceId?: string;
   sourceEventId?: string;
+  idempotencyKey?: string;
   evidence?: string;
   weight?: number;
   confidence?: number;
@@ -236,6 +245,30 @@ export async function recordMasteryEvidence(params: {
   const oldScore = concept?.mastery_score || 0;
 
   const weight = params.weight ?? EVIDENCE_WEIGHTS[params.evidenceType];
+  const sourceRef = params.sourceId ?? params.sourceEventId ?? params.idempotencyKey;
+  if (!sourceRef) {
+    logger.warn('recordMasteryEvidence: missing deterministic source/idempotency reference', {
+      userId: params.userId,
+      conceptId: params.conceptId,
+      source: params.source,
+      evidenceType: params.evidenceType,
+    });
+    return { oldMastery, newMastery: oldMastery, changed: false, oldScore, newScore: oldScore, delta: 0 };
+  }
+  const idempotencyKey = params.idempotencyKey
+    ?? `mastery_ledger:${params.userId}:${params.conceptId}:${params.source}:${sourceRef}:${hashKey(params.evidenceType)}`;
+
+  const { data: existingLedger, error: existingLedgerError } = await supabase
+    .from('mastery_evidence_ledger')
+    .select('id')
+    .eq('user_id', params.userId)
+    .eq('concept_id', params.conceptId)
+    .eq('idempotency_key', idempotencyKey)
+    .maybeSingle();
+  if (existingLedgerError) throw existingLedgerError;
+  if (existingLedger?.id) {
+    return { oldMastery, newMastery: oldMastery, changed: false, oldScore, newScore: oldScore, delta: 0 };
+  }
 
   const { error: insertErr } = await supabase
     .from('mastery_events')
@@ -263,7 +296,6 @@ export async function recordMasteryEvidence(params: {
     client: supabase,
   });
 
-  const idempotencyKey = `mastery_ledger:${params.userId}:${params.conceptId}:${params.sourceId ?? Date.now()}`;
   await supabase.from('mastery_evidence_ledger').insert({
     user_id: params.userId,
     concept_id: params.conceptId,
@@ -312,6 +344,8 @@ export async function applyMasteryUpdate(params: {
   newMastery: MasteryLevel;
   source: MasterySource;
   sourceId?: string;
+  sourceEventId?: string;
+  idempotencyKey?: string;
   evidence?: string;
   useAdminClient?: boolean;
 }): Promise<{ oldMastery: MasteryLevel | null; changed: boolean }> {
@@ -346,6 +380,8 @@ export async function applyMasteryUpdate(params: {
     evidenceType,
     source: params.source,
     sourceId: params.sourceId,
+    sourceEventId: params.sourceEventId,
+    idempotencyKey: params.idempotencyKey,
     evidence: params.evidence,
     useAdminClient: params.useAdminClient,
     client: supabase,
@@ -361,7 +397,7 @@ export async function applyMasteryUpdate(params: {
       status: 'applied',
       confidence: 1.0,
       evidence: { oldMastery, newMastery: params.newMastery, source: params.source, evidence: params.evidence },
-      idempotencyKey: `mastery_update_action:${params.userId}:${params.conceptId}:${params.sourceId ?? Date.now()}`,
+      idempotencyKey: `mastery_update_action:${params.userId}:${params.conceptId}:${params.source}:${params.sourceId ?? params.sourceEventId ?? params.idempotencyKey}`,
     }, { client: supabase }).catch(err => logger.warn('Failed to record ATLAS mastery action', err));
   }
 

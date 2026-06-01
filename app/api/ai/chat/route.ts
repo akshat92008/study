@@ -58,8 +58,9 @@ import {
 import { generateJSON } from '@/lib/ai/provider-client';
 import { DailyMicrotaskService } from '@/lib/services/daily-microtask.service';
 import { buildMindRagContext } from '@/lib/rag/mind-rag';
-import { ingestStudyMaterial, materialContentHash } from '@/lib/rag/ingest';
-import { SUPPORTED_MATERIAL_MIME_TYPES } from '@/lib/rag/config';
+import { materialContentHash } from '@/lib/rag/ingest';
+import { getRagConfig, SUPPORTED_MATERIAL_MIME_TYPES } from '@/lib/rag/config';
+import { validateMagicBytesArray } from '@/lib/utils/magicBytes';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 const encoder = new TextEncoder();
 const STUDY_MATERIAL_UPLOAD_RE =
@@ -586,10 +587,25 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
     if (documentBase64 && documentMimeType) {
       // Begin Background Ingestion if supported
       if (SUPPORTED_MATERIAL_MIME_TYPES.has(documentMimeType)) {
+        const ragConfig = getRagConfig();
         const buffer = Buffer.from(documentBase64, 'base64');
+        if (buffer.byteLength > ragConfig.maxFileBytes) {
+          return apiErrorResponse('file_too_large', {
+            status: 413,
+            message: `Study material files are capped at ${Math.round(ragConfig.maxFileBytes / 1024 / 1024)}MB.`,
+            requestId,
+          });
+        }
+        if (!validateMagicBytesArray(new Uint8Array(buffer.subarray(0, 12)), documentMimeType)) {
+          return apiErrorResponse('invalid_file', {
+            status: 422,
+            message: 'File contents do not match the declared MIME type.',
+            requestId,
+          });
+        }
         const contentHash = materialContentHash(buffer);
         
-        const ingestUploadedMaterial = async () => {
+        const ingestUploadedMaterial = async (): Promise<boolean> => {
           try {
             const { data: duplicate } = await supabase
               .from('study_materials')
@@ -598,39 +614,57 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
               .eq('content_hash', contentHash)
               .neq('status', 'archived')
               .maybeSingle();
-            if (!duplicate) {
-              const originalFilename = 'chat-upload-' + Date.now();
-              const storagePath = `${user.id}/${Date.now()}-${contentHash.slice(0, 12)}-${originalFilename}`;
-              const upload = await supabase.storage.from('study-materials').upload(storagePath, buffer, { contentType: documentMimeType, upsert: false });
-              if (!upload.error) {
-                const { data: material } = await supabase.from('study_materials').insert({
-                  user_id: user.id, title: 'Chat Upload', original_filename: originalFilename, mime_type: documentMimeType, storage_path: storagePath, source_type: 'upload', language: 'en', status: 'uploaded', content_hash: contentHash
-                }).select('id').single();
-                if (material) {
-                  await supabase.from('rag_ingestion_jobs').insert({
-                    user_id: user.id,
-                    material_id: material.id,
-                    status: 'queued',
-                    idempotency_key: `rag_ingest:${material.id}`
-                  });
-                  await EventDispatcher.publish({
-                    user_id: user.id,
-                    type: 'MATERIAL_UPLOADED',
-                    data: { materialId: material.id },
-                    metadata: { source: 'chat_upload' },
-                    idempotency_key: `material_uploaded:${material.id}`,
-                  }).catch(() => {});
-                }
-              }
-            }
+            if (duplicate) return true;
+
+            let materialId: string | null = null;
+            const originalFilename = `chat-upload-${contentHash.slice(0, 12)}`;
+            const storagePath = `${user.id}/${contentHash.slice(0, 12)}-${originalFilename}`;
+            const upload = await supabase.storage.from('study-materials').upload(storagePath, buffer, { contentType: documentMimeType, upsert: false });
+            if (upload.error) throw upload.error;
+
+            const { data: material, error: materialError } = await supabase.from('study_materials').insert({
+              user_id: user.id,
+              title: 'Chat Upload',
+              original_filename: originalFilename,
+              mime_type: documentMimeType,
+              storage_path: storagePath,
+              source_type: 'upload',
+              language: 'en',
+              status: 'uploaded',
+              content_hash: contentHash,
+            }).select('id').single();
+            if (materialError || !material) throw materialError || new Error('Material insert failed');
+            materialId = material.id;
+
+            const { error: jobError } = await supabase.from('rag_ingestion_jobs').upsert({
+              user_id: user.id,
+              material_id: materialId,
+              status: 'queued',
+              idempotency_key: `rag_ingestion:${user.id}:${materialId}`,
+              metadata: { mimeType: documentMimeType },
+            }, { onConflict: 'user_id,material_id,idempotency_key' });
+            if (jobError) throw jobError;
+
+            await EventDispatcher.publish({
+              user_id: user.id,
+              type: 'MATERIAL_UPLOADED',
+              data: { materialId },
+              metadata: { source: 'chat_upload' },
+              idempotency_key: `material_uploaded:${materialId}`,
+            });
+
+            return true;
           } catch (e) {
             logger.warn('Failed study material ingestion of chat upload', e);
+            return false;
           }
         };
 
         if (isMaterialIndexing) {
-           await ingestUploadedMaterial();
-           const answer = "Material uploaded and is being indexed in the background. You can check its status in the Study Materials panel and ask MIND questions from it soon.";
+           const queued = await ingestUploadedMaterial();
+           const answer = queued
+             ? "Material uploaded and is being indexed in the background. You can check its status in the Study Materials panel and ask MIND questions from it soon."
+             : "I could not queue that material for indexing. Please try uploading it again.";
            const stream = new ReadableStream({
              async start(controller) {
                controller.enqueue(encoder.encode(answer));

@@ -137,7 +137,8 @@ export async function applyMasteryEvidence(input: {
       conceptId: input.conceptId,
       newMastery: newScore,
       confidence: newConfidence,
+      sourceId: input.evidence.sourceId,
     },
-    idempotencyKey: crypto.randomUUID(),
+    idempotencyKey: `atlas_mastery_updated:${input.userId}:${input.conceptId}:${input.evidence.sourceId}`,
   });
 }

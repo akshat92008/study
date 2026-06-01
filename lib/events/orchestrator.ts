@@ -1,4 +1,5 @@
 // lib/events/orchestrator.ts
+import { createHash } from 'node:crypto';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { getCorrelationId } from '@/lib/telemetry/correlation';
 import { logger } from '@/lib/utils/logger';
@@ -25,6 +26,36 @@ type PublishInput = {
   metadata?: Record<string, any>;
 };
 
+function stableStringify(value: unknown): string {
+  if (Array.isArray(value)) return `[${value.map(stableStringify).join(',')}]`;
+  if (value && typeof value === 'object') {
+    const record = value as Record<string, unknown>;
+    return `{${Object.keys(record)
+      .sort()
+      .map((key) => `${JSON.stringify(key)}:${stableStringify(record[key])}`)
+      .join(',')}}`;
+  }
+  return JSON.stringify(value);
+}
+
+function deterministicEventKey(input: {
+  userId: string;
+  type: string;
+  source: string;
+  data: unknown;
+}) {
+  const digest = createHash('sha256')
+    .update(stableStringify({
+      userId: input.userId,
+      type: input.type,
+      source: input.source,
+      data: input.data ?? {},
+    }))
+    .digest('hex')
+    .slice(0, 32);
+  return `event:${input.type}:${digest}`;
+}
+
 export class EventDispatcher {
   static async publish(input: PublishInput): Promise<string> {
     const supabase = createAdminClient();
@@ -37,24 +68,31 @@ export class EventDispatcher {
       throw new Error(`Unsupported event type: ${input.type}`);
     }
 
-    const idempotencyKey = input.idempotencyKey ?? input.idempotency_key ?? crypto.randomUUID();
+    const data = input.data ?? input.payload ?? {};
+    const source = input.source ?? input.metadata?.source ?? 'system_publish';
+    const idempotencyKey = input.idempotencyKey ?? input.idempotency_key ?? deterministicEventKey({
+      userId,
+      type: input.type,
+      source,
+      data,
+    });
     const metadata = {
       ...(input.metadata ?? {}),
-      source: input.source ?? input.metadata?.source ?? 'system_publish',
+      source,
       trace_id: getCorrelationId() ?? crypto.randomUUID(),
     };
 
     validateEventEnvelope({
       user_id: userId,
       type: input.type,
-      data: input.data ?? input.payload ?? {},
+      data,
     });
 
     // Use the RPC to atomically insert into event_queue and create consumer_locks
     const { data: eventId, error } = await supabase.rpc('create_event_with_consumers', {
       p_user_id: userId,
       p_type: input.type,
-      p_data: input.data ?? input.payload ?? {},
+      p_data: data,
       p_idempotency_key: idempotencyKey,
       p_source: metadata.source,
       p_metadata: metadata,

@@ -25,35 +25,27 @@ describe('private beta MVP surface', () => {
     }
   });
 
-  it('blocks disabled private-beta routes in middleware while allowing MVP APIs', () => {
+  it('does not hide beta-critical product routes in middleware', () => {
     const middleware = read('middleware.ts');
 
-    for (const disabled of [
-      '"/planner"',
-      '"/knowledge"',
-      '"/analytics"',
-      '"/mistakes"',
-      '"/api/planner"',
-      '"/api/knowledge"',
-      '"/api/ingest"',
-      '"/api/ai/revision-coach"',
+    expect(middleware).not.toContain('MVP_DISABLED_ROUTES');
+    expect(middleware).not.toContain('disabled_for_mvp');
+
+    for (const route of [
+      '/planner',
+      '/knowledge',
+      '/analytics',
+      '/mistakes',
+      '/goals',
+      '/api/planner',
+      '/api/knowledge',
+      '/api/ingest',
+      '/api/ai/revision-coach',
     ]) {
-      expect(middleware).toContain(disabled);
+      expect(middleware).not.toContain(`"${route}"`);
     }
 
-    for (const allowed of [
-      '"/api/ai/chat"',
-      '"/api/dashboard/session-card"',
-      '"/api/autopsy/ingest"',
-      '"/api/revision"',
-      '"/api/atlas/mastery"',
-      '"/api/cron"',
-    ]) {
-      const disabledRoutesBlock = middleware.slice(
-        middleware.indexOf('const MVP_DISABLED_ROUTES'),
-        middleware.indexOf('];', middleware.indexOf('const MVP_DISABLED_ROUTES'))
-      );
-      expect(disabledRoutesBlock).not.toContain(allowed);
-    }
+    expect(middleware).toContain('CRON_ROUTES');
+    expect(middleware).toContain('Authentication is required');
   });
 });

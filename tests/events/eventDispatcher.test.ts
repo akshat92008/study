@@ -63,6 +63,28 @@ describe('EventDispatcher', () => {
     expect(rpc).not.toHaveBeenCalled();
   });
 
+  it('derives a deterministic idempotency key when a caller omits one', async () => {
+    const { EventDispatcher } = await import('@/lib/events/orchestrator');
+
+    await EventDispatcher.publish({
+      userId: '00000000-0000-0000-0000-000000000001',
+      type: 'MATERIAL_UPLOADED',
+      source: 'test',
+      data: { materialId: '00000000-0000-0000-0000-0000000000aa' },
+    });
+    await EventDispatcher.publish({
+      userId: '00000000-0000-0000-0000-000000000001',
+      type: 'MATERIAL_UPLOADED',
+      source: 'test',
+      data: { materialId: '00000000-0000-0000-0000-0000000000aa' },
+    });
+
+    const firstKey = rpc.mock.calls[0][1].p_idempotency_key;
+    const secondKey = rpc.mock.calls[1][1].p_idempotency_key;
+    expect(firstKey).toBe(secondKey);
+    expect(firstKey).toMatch(/^event:MATERIAL_UPLOADED:/);
+  });
+
   it('routes MVP events to connected learner-state engines including COMMAND', async () => {
     const { getConsumersForEvent } = await import('@/lib/events/orchestrator');
 

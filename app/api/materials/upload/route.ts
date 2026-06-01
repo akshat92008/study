@@ -136,23 +136,25 @@ export async function POST(req: NextRequest) {
 
     if (insertError || !material) throw insertError || new Error('Material insert failed');
 
+    const { error: jobError } = await supabase
+      .from('rag_ingestion_jobs')
+      .upsert({
+        user_id: user.id,
+        material_id: material.id,
+        status: 'queued',
+        idempotency_key: `rag_ingestion:${user.id}:${material.id}`,
+        metadata: { mimeType },
+      }, { onConflict: 'user_id,material_id,idempotency_key' });
+
+    if (jobError) throw jobError;
+
     await EventDispatcher.publish({
       user_id: user.id,
       type: 'MATERIAL_UPLOADED',
       data: { materialId: material.id },
       metadata: { source: 'materials_upload' },
       idempotency_key: `material_uploaded:${material.id}`,
-    }).catch(() => {});
-
-    await supabase
-      .from('rag_ingestion_jobs')
-      .insert({
-        user_id: user.id,
-        material_id: material.id,
-        status: 'queued',
-        idempotency_key: `rag_ingestion:${user.id}:${material.id}`,
-        metadata: { mimeType },
-      });
+    });
 
     return NextResponse.json({
       material: {

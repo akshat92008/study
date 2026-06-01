@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
-import { ingestStudyMaterial } from '@/lib/rag/ingest';
+import { EventDispatcher } from '@/lib/events/orchestrator';
 
 type RouteContext = { params: Promise<{ id: string }> | { id: string } };
 
@@ -24,18 +24,39 @@ export async function POST(req: NextRequest, context: RouteContext) {
       return apiErrorResponse('not_found', { status: 404, message: 'Study material file was not found.', requestId });
     }
 
-    const download = await supabase.storage.from('study-materials').download(material.storage_path);
-    if (download.error || !download.data) throw download.error || new Error('Storage download failed');
+    const idempotencyKey = `rag_reprocess:${user.id}:${material.id}`;
+    const { error: jobError } = await supabase
+      .from('rag_ingestion_jobs')
+      .upsert({
+        user_id: user.id,
+        material_id: material.id,
+        status: 'queued',
+        idempotency_key: idempotencyKey,
+        metadata: {
+          mimeType: material.mime_type,
+          requestedBy: 'user_reprocess',
+        },
+      }, { onConflict: 'user_id,material_id,idempotency_key' });
+    if (jobError) throw jobError;
 
-    const buffer = Buffer.from(await download.data.arrayBuffer());
-    const result = await ingestStudyMaterial({
-      materialId: material.id,
-      userId: user.id,
-      buffer,
-      mimeType: material.mime_type,
+    await supabase
+      .from('study_materials')
+      .update({ status: 'uploaded', error_message: null, updated_at: new Date().toISOString() })
+      .eq('id', material.id)
+      .eq('user_id', user.id);
+
+    await EventDispatcher.publish({
+      user_id: user.id,
+      type: 'MATERIAL_INGESTION_REQUESTED',
+      data: { materialId: material.id },
+      metadata: { source: 'materials_reprocess' },
+      idempotency_key: `material_reprocess_requested:${material.id}`,
     });
 
-    return NextResponse.json({ status: result.status, chunksProcessed: result.chunks }, { headers: { 'x-request-id': requestId } });
+    return NextResponse.json(
+      { status: 'queued', chunksProcessed: 0 },
+      { status: 202, headers: { 'x-request-id': requestId } }
+    );
   } catch (error) {
     return unexpectedApiErrorResponse(req, error, 'material_reprocess_unhandled', 'Unable to reprocess study material.');
   }

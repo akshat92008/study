@@ -3,30 +3,6 @@ import { NextResponse, type NextRequest } from "next/server";
 
 const PUBLIC_ROUTES = ["/login", "/signup", "/", "/api/health", "/api/webhooks/stripe"];
 const CRON_ROUTES = ["/api/cron", "/api/events/process", "/api/internal"];
-const MVP_DISABLED_ROUTES = [
-  "/analytics",
-  "/educator",
-  "/health",
-  "/knowledge",
-  "/mistakes",
-  "/planner",
-  "/api/admin",
-  "/api/ingest",
-  "/api/knowledge",
-  "/api/mistakes",
-  "/api/planner",
-  "/api/ai/analyze",
-  "/api/ai/health",
-  "/api/ai/negotiate",
-  "/api/ai/revision-coach",
-  "/api/ai/setup",
-  "/api/ai/welcome",
-  "/goals",
-  "/api/goals",
-  "/api/onboarding",
-  "/api/sessions/today",
-  "/api/pulse",
-];
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -34,22 +10,6 @@ export async function middleware(request: NextRequest) {
     request.headers.get("x-request-id") ||
     request.headers.get("x-correlation-id") ||
     crypto.randomUUID();
-
-  if (MVP_DISABLED_ROUTES.some(r => pathname === r || pathname.startsWith(`${r}/`))) {
-    if (pathname.startsWith("/api/")) {
-      return NextResponse.json(
-        {
-          error: "disabled_for_mvp",
-          message: "This feature is not part of the production MVP.",
-        },
-        {
-          status: 404,
-          headers: { "x-request-id": requestId },
-        }
-      );
-    }
-    return new NextResponse("Not Found", { status: 404 });
-  }
 
   // Cron routes need secret validation
   if (CRON_ROUTES.some(r => pathname.startsWith(r))) {

@@ -96,7 +96,7 @@ export async function POST(req: NextRequest) {
         items: eventItems
       },
       metadata: { source: 'mind_chat_flashcard' },
-      idempotency_key: `practice_review:${set.id}:${Date.now()}`
+      idempotency_key: `practice_review:${set.id}:${eventItems.map((item) => `${item.practiceItemId}:${item.confidence}`).sort().join('|')}`
     });
 
     return NextResponse.json({

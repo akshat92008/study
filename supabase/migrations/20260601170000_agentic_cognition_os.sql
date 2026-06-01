@@ -298,6 +298,7 @@ begin
     when 'PLANNER_REPLAN_REQUESTED' then array['planner_agent', 'command_agent']
     when 'STUDENT_MODEL_SYNC_REQUESTED' then array['learning_state_engine', 'command_engine']
     when 'PRACTICE_ATTEMPT_RECORDED' then array['atlas_engine', 'memory_engine', 'learning_state_engine']
+    when 'ONBOARDING_QUIZ_COMPLETE' then array['learning_state_engine', 'planner_agent']
     else array[]::text[]
   end;
 

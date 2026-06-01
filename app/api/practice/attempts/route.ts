@@ -112,7 +112,7 @@ export async function POST(req: NextRequest) {
         items: eventItems
       },
       metadata: { source: 'mind_chat_mcq' },
-      idempotency_key: `practice_attempt:${set.id}:${Date.now()}`
+      idempotency_key: `practice_attempt:${set.id}:${eventItems.map((item) => `${item.practiceItemId}:${item.isCorrect}`).sort().join('|')}`
     });
 
     return NextResponse.json({
