@@ -10,9 +10,6 @@ Follow this exact 10-step sequence to go from the current state to a production-
   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
   - `SUPABASE_SERVICE_ROLE_KEY`
   - `GEMINI_API_KEY`
-  - `STRIPE_SECRET_KEY`
-  - `STRIPE_WEBHOOK_SECRET`
-  - `STRIPE_PRO_PRICE_ID`
   - `NEXT_PUBLIC_APP_URL`
 - [ ] Verify validation locally:
   - Run the application locally (`npm run dev`) or build it (`npm run build`).
@@ -21,7 +18,7 @@ Follow this exact 10-step sequence to go from the current state to a production-
 ---
 
 ### Step 2 — Database Security & RLS Enforcement
-- [ ] Run migration `026_rls_verification.sql` in the Supabase SQL Editor.
+- [ ] Ensure all migrations have been applied using Supabase CLI or GitHub Actions.
 - [ ] Verify that RLS is active on all critical tables. Execute the following verification query and confirm it returns **zero rows**:
   ```sql
   SELECT tablename, rowsecurity
@@ -29,8 +26,7 @@ Follow this exact 10-step sequence to go from the current state to a production-
   WHERE schemaname = 'public'
     AND tablename IN (
       'profiles','concepts','revision_cards','study_tasks',
-      'mock_autopsies','mistakes','materials','chat_memories',
-      'performance_snapshots','pulse_signals'
+      'mock_autopsies','mistakes','materials','chat_memories'
     )
     AND rowsecurity = false;
   ```
@@ -46,7 +42,7 @@ Follow this exact 10-step sequence to go from the current state to a production-
 ---
 
 ### Step 4 — Deploy & Verify FIX 002 (Cross-Session Memory)
-- [ ] Confirm the `chat_memories` table exists in Supabase. (If not, run migration `024_match_chat_memory.sql` first).
+- [ ] Confirm the `chat_memories` table exists in Supabase.
 - [ ] Start a conversation, close the tab/browser, reopen, and ask the Socratic tutor about concepts discussed in the previous session.
 - [ ] Verify that the past context is retrieved from `chat_memories` and used by the tutor.
 
@@ -59,29 +55,12 @@ Follow this exact 10-step sequence to go from the current state to a production-
 
 ---
 
-### Step 6 — Deploy & Verify FIX 008 (Stripe Checkout & Billing)
-- [ ] Configure Stripe in **Test Mode**.
-- [ ] Initiate a Pro Upgrade from the CommandCenter UI and complete a test checkout.
-- [ ] Verify the user's `subscription_status` column in Supabase flips to `pro`.
-- [ ] Verify that the autopsy rate limit is successfully lifted for the upgraded user.
-
----
-
 ### Step 7 — Deploy Remaining P1 Fixes
 - [ ] Package and deploy the remaining P1 updates together in a single pull request:
   - **FIX 005**: MIND → ATLAS Write-Back (unconditional concept mentions extraction).
-  - **FIX 006**: Tone switching emotional adaptation based on PULSE data.
   - **FIX 007**: Auto-card generation at onboarding completion.
   - **FIX 009**: Batched concurrent cron daily-synthesis processor.
   - **FIX 010**: Socratic Session card rendered at the top of the chat interface.
-
----
-
-### Step 8 — Set Up Stripe Webhooks in Production
-- [ ] Access the Stripe Dashboard → Webhooks → Add endpoint.
-- [ ] Register your production URL: `https://<your-app-domain>/api/webhooks/stripe`.
-- [ ] Select events: `checkout.session.completed`, `customer.subscription.updated`, and `customer.subscription.deleted`.
-- [ ] Copy the signing secret (`whsec_...`) and save it as `STRIPE_WEBHOOK_SECRET` in your Vercel project settings.
 
 ---
 
