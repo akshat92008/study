@@ -40,7 +40,7 @@ export default function ScoreBridge({
 
       <div style={{ textAlign: 'center', marginBottom: 'var(--sp-8)' }}>
         <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--accent-blue)', fontWeight: 'var(--fw-bold)', textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)', marginBottom: 'var(--sp-1)' }}>
-          {examType} Autopsy Analysis
+          {examType} Test Analysis
         </div>
         <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-black)', color: 'var(--text-primary)' }}>
           Score Recovery Bridge

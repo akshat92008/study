@@ -69,7 +69,7 @@ export default function ShareCard({
           }}>
             <div>
               <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--accent-purple)', fontWeight: 'var(--fw-bold)', textTransform: 'uppercase', letterSpacing: 'var(--ls-ultra)' }}>
-                Mock Autopsy
+                Mock Test Analysis
               </div>
               <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-tertiary)', marginTop: 2 }}>
                 {testName}

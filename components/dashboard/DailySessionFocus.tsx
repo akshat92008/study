@@ -184,10 +184,12 @@ export default function DailySessionFocus({
     try {
       const res = await fetch('/api/dashboard/complete-session', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ taskId }),
+        headers: {
+          'Content-Type': 'application/json',
+          'Idempotency-Key': `daily-session:${taskId || chapter}:${new Date().toISOString().slice(0, 10)}`,
+        },
+        body: JSON.stringify({ taskId, subject, chapter, durationMinutes: estimatedMinutes }),
       });
-      const data = await res.json();
 
       if (res.ok && data.success) {
         setNewStreak(data.streakDays ?? (initialStreak + 1));

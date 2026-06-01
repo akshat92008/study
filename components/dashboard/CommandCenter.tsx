@@ -327,7 +327,7 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
         }}>
           <div style={{ padding: 'var(--sp-3) var(--sp-4)', borderBottom: '1px solid var(--border-subtle)', display: 'flex', alignItems: 'center', background: 'var(--bg-primary)' }}>
             <MessageCircle size={18} style={{ color: 'var(--accent-cyan)', marginRight: 8 }} />
-            <span style={{ fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-bold)' }}>Cognition OS Engine</span>
+            <span style={{ fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-bold)' }}>Cognition OS</span>
           </div>
 
           <div ref={scrollRef} style={{ flex: 1, overflowY: 'auto', padding: 'var(--sp-4)', display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>

@@ -120,7 +120,7 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
           overflowX: 'hidden',
         }}
       >
-        {/* Workspace Links */}
+        {/* Navigation */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-1)' }}>
           {!isSidebarCollapsed && (
             <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-bold)', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)', padding: '0 var(--sp-3)', marginBottom: 4 }}>
