@@ -48,7 +48,6 @@
     "components/knowledge",
     "components/mentor",
     "components/mistakes",
-    "components/planner",
-    "lib/services/learnerStateService.ts"
+    "components/planner"
   ]
 }

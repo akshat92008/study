@@ -1,0 +1,18 @@
+alter table public.mistakes
+  add column if not exists autopsy_id uuid references public.mock_autopsies(id) on delete cascade,
+  add column if not exists concept_id uuid references public.concepts(id) on delete set null,
+  add column if not exists category text,
+  add column if not exists status text,
+  add column if not exists subject text,
+  add column if not exists chapter text,
+  add column if not exists topic text,
+  add column if not exists question_text text,
+  add column if not exists user_answer text,
+  add column if not exists correct_answer text,
+  add column if not exists marks_lost numeric,
+  add column if not exists total_marks numeric,
+  add column if not exists ai_analysis text,
+  add column if not exists improvement_suggestion text,
+  add column if not exists source_autopsy_id uuid references public.mock_autopsies(id) on delete cascade,
+  add column if not exists source_question_number integer,
+  add column if not exists extraction_confidence numeric;

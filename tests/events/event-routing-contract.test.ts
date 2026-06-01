@@ -40,7 +40,7 @@ describe('event routing SQL/TypeScript contract', () => {
     const { file, sql } = latestCreateEventMigration();
     const sqlMatrix = extractSqlRouteMatrix(sql);
 
-    expect(file).toBe('20260601000100_private_beta_mvp_schema_canonicalization.sql');
+    expect(file).toBe('20260601000300_remove_command_engine_from_mvp_consumers.sql');
     expect(sqlMatrix).toEqual(EVENT_CONSUMER_MATRIX);
   });
 
@@ -63,10 +63,9 @@ describe('event routing SQL/TypeScript contract', () => {
     expect(EVENT_CONSUMER_MATRIX.AUTOPSY_MOCK_PROCESSED).toEqual([
       'atlas_engine',
       'memory_engine',
-      'command_engine',
       'learning_state_engine',
     ]);
-    expect(EVENT_CONSUMER_MATRIX.STUDY_SESSION_COMPLETED).toContain('command_engine');
+    expect(EVENT_CONSUMER_MATRIX.STUDY_SESSION_COMPLETED).toContain('learning_state_engine');
     expect(EVENT_CONSUMER_MATRIX.STUDENT_MODEL_SYNC_REQUESTED).toEqual([
       'learning_state_engine',
       'command_engine',

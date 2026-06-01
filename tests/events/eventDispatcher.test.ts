@@ -69,7 +69,6 @@ describe('EventDispatcher', () => {
     expect(getConsumersForEvent('AUTOPSY_MOCK_PROCESSED')).toEqual([
       'atlas_engine',
       'memory_engine',
-      'command_engine',
       'learning_state_engine',
     ]);
     expect(getConsumersForEvent('CHAT_MESSAGE_PROCESSED')).toEqual(['chat_side_effect_engine']);

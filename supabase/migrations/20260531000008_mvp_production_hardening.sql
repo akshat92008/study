@@ -758,6 +758,7 @@ begin
 end;
 $$ language plpgsql volatile security definer set search_path = public;
 
+drop function if exists public.match_concepts cascade;
 create or replace function public.match_concepts(
   query_embedding vector(768),
   match_threshold float,

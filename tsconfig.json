@@ -38,15 +38,10 @@
       "@/alerts/*": [
         "./lib/alerts/*"
       ],
-      "@/workers/*": [
-        "./lib/workers/*"
-      ],
       "@/planners/*": [
         "./lib/planners/*"
       ],
-      "@/queues/*": [
-        "./lib/queues/*"
-      ],
+
       "@/engines/*": [
         "./lib/engines/*"
       ]

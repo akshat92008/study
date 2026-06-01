@@ -106,7 +106,7 @@ create or replace function public.match_chat_memory(
     and 1 - (cm.embedding <=> query_embedding) > match_threshold
   order by
     (1 - (cm.embedding <=> query_embedding)) desc,
-    coalesce(cm.importance_score, cm.importance, 0) desc,
+    coalesce(cm.importance_score, 0) desc,
     cm.created_at desc
   limit match_count;
 $$;
@@ -128,6 +128,16 @@ create table if not exists public.episodic_memories (
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
+
+alter table public.episodic_memories
+  add column if not exists summary text not null default '',
+  add column if not exists source_type text not null default 'system',
+  add column if not exists source_id text,
+  add column if not exists importance_score numeric(4,2) not null default 0,
+  add column if not exists emotional_salience numeric(4,2) not null default 0,
+  add column if not exists retrieval_weight numeric(6,3) not null default 0,
+  add column if not exists last_referenced_at timestamptz,
+  add column if not exists metadata jsonb not null default '{}'::jsonb;
 
 alter table public.episodic_memories enable row level security;
 
