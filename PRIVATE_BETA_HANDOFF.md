@@ -30,7 +30,7 @@
 - Supabase env setup
 - build command (`npm run build`)
 - post-deploy verify command (`npm run verify:db`)
-- worker/cron setup (Verify Cron API routes are secured by `CRON_SECRET`)
+- worker/cron setup (See [PRIVATE_BETA_WORKER_CRON.md](./PRIVATE_BETA_WORKER_CRON.md))
 
 ## Manual Smoke Test
 - signup/login

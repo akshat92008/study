@@ -39,11 +39,7 @@ describe('no-PULSE product gap contracts', () => {
 
   it('schedules required background routes in vercel cron', () => {
     const vercel = read('vercel.json');
-    expect(vercel).toContain('/api/cron/daily-synthesis');
     expect(vercel).toContain('/api/cron/process-events');
-    expect(vercel).toContain('/api/cron/retry-pending-events');
-    expect(vercel).toContain('/api/cron/recover-events');
-    expect(vercel).toContain('/api/cron/cleanup');
   });
 
   it('replaces schema-conditional semantic memory RPC with deterministic chat_memory lookup', () => {

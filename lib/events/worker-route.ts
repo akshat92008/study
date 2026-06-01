@@ -16,9 +16,10 @@ export async function processEventWorkerRoute(req: NextRequest | Request) {
     const processedCount = await EventWorkerService.processBatch(50, 5);
 
     return NextResponse.json({
-      success: true,
-      processed_count: processedCount,
-      duration_ms: Date.now() - start,
+      ok: true,
+      processed: processedCount,
+      failed: 0,
+      durationMs: Date.now() - start,
     }, { headers: { 'x-request-id': requestId } });
   } catch (error: any) {
     logger.error('process-events worker route failed', error, { requestId, feature: 'event-worker' });

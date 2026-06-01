@@ -49,7 +49,7 @@ describe('event worker route auth', () => {
     }));
 
     expect(res.status).toBe(200);
-    expect(await res.json()).toMatchObject({ success: true, processed_count: 3 });
+    expect(await res.json()).toMatchObject({ ok: true, processed: 3, failed: 0 });
     expect(processBatch).toHaveBeenCalledWith(50, 5);
   });
 });

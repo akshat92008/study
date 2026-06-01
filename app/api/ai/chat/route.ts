@@ -306,7 +306,24 @@ export async function POST(req: NextRequest) {
     const [semanticMemories, episodicMemories, mindContext] = await Promise.all([
       Promise.race([memoryPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1000))]).catch(() => [] as string[]),
       Promise.race([episodicMemoryPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1000))]).catch(() => [] as string[]),
-      Promise.race([mindContextPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1000))]).catch(() => null)
+      Promise.race([mindContextPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1000))]).catch(() => ({
+        profile: { name: 'Student', examType: 'General Study', examDate: null, currentLevel: 'intermediate', learningStyle: 'visual', streakDays: 0, timezone: 'UTC', learnerStateVersion: 0 },
+        activeGoal: null,
+        currentSessionCard: null,
+        commandTasks: [],
+        recentStudySessions: [],
+        weakConcepts: [], recentMistakes: [], struggles: [],
+        masteryStats: { totalConcepts: 0, masteredCount: 0, masteryPercent: 0 },
+        overdueCardsCount: 0, topOverdueCards: [], emotionalState: 'neutral', recentTopics: [], knownAnalogies: [],
+        conceptHistory: [],
+        cognitiveLoad: { level: 'normal', signals: [] },
+        rootGapChains: [],
+        currentSessionDurationMinutes: 0,
+        sessionGoal: '',
+        ragChunks: [],
+        studentModel: null,
+        outcomeAnalytics: null,
+      }))
     ]) as [string[], string[], any];
 
     const crossSessionMemories = [
