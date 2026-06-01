@@ -81,24 +81,40 @@ create table if not exists public.concepts (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references public.profiles(id) on delete cascade,
   name text not null,
+  description text,
   subject text,
   chapter text,
   topic text,
   mastery text not null default 'not_started',
   mastery_score numeric not null default 0,
+  confidence text not null default 'low',
+  importance text not null default 'core',
   forgetting_probability numeric not null default 1,
   forgetting numeric,
+  last_reviewed_at timestamptz,
   times_reviewed integer not null default 0,
+  times_correct numeric not null default 0,
+  times_incorrect numeric not null default 0,
+  retention_strength numeric not null default 0,
+  version integer not null default 1,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
 
 alter table if exists public.concepts
+  add column if not exists description text,
   add column if not exists mastery text not null default 'not_started',
   add column if not exists mastery_score numeric not null default 0,
+  add column if not exists confidence text not null default 'low',
+  add column if not exists importance text not null default 'core',
   add column if not exists forgetting_probability numeric not null default 1,
   add column if not exists forgetting numeric,
-  add column if not exists times_reviewed integer not null default 0;
+  add column if not exists last_reviewed_at timestamptz,
+  add column if not exists times_reviewed integer not null default 0,
+  add column if not exists times_correct numeric not null default 0,
+  add column if not exists times_incorrect numeric not null default 0,
+  add column if not exists retention_strength numeric not null default 0,
+  add column if not exists version integer not null default 1;
 
 do $$
 begin

@@ -67,7 +67,10 @@ export const EventPayloadSchemas: Partial<Record<EventType | string, z.ZodTypeAn
     fullResponse: z.string(),
     emotion: z.string().optional(),
     history: z.array(z.any()).optional(),
+    sessionTurnsCount: z.number().optional(),
+    mindContext: z.any().optional(),
     intent: z.any().optional(),
+    metadataPayload: z.any().optional(),
     source_type: z.string().optional(),
     user_message_id: z.string().uuid().optional(),
     /** ID of the already-persisted assistant chat_messages row. */
@@ -98,10 +101,15 @@ export const EventPayloadSchemas: Partial<Record<EventType | string, z.ZodTypeAn
     conceptId: MaybeUuid,
   }).passthrough(),
   MIND_TUTOR_COMPLETED: z.object({
+    sessionId: z.string().min(1).optional(),
     subject: z.string().min(1),
     chapter: z.string().min(1),
     durationMinutes: z.number().nonnegative().optional(),
     conceptId: MaybeUuid,
+    messageCount: z.number().nonnegative().optional(),
+    coverageTurns: z.number().nonnegative().optional(),
+    minCoverageTurns: z.number().nonnegative().optional(),
+    isSessionComplete: z.boolean().optional(),
   }).passthrough(),
   MEMORY_CARD_REVIEWED: z.object({
     cardId: z.string().min(1),

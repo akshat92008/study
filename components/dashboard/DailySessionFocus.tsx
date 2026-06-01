@@ -191,6 +191,7 @@ export default function DailySessionFocus({
         body: JSON.stringify({ taskId, subject, chapter, durationMinutes: estimatedMinutes }),
       });
 
+      const data = await res.json().catch(() => ({}));
       if (res.ok && data.success) {
         setNewStreak(data.streakDays ?? (initialStreak + 1));
         setSessionState('celebrate');

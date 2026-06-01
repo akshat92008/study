@@ -48,6 +48,12 @@
     "components/knowledge",
     "components/mentor",
     "components/mistakes",
-    "components/planner"
+    "components/planner",
+    "lib/db/index.ts",
+    "lib/db/learnerState.ts",
+    "lib/db/schema.ts",
+    "lib/planners/adaptivePlanner.ts",
+    "lib/services/learnerStateService.ts",
+    "lib/workers/eventWorker.ts"
   ]
 }

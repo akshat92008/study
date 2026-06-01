@@ -1,4 +1,4 @@
--- 20260529000007_upgrade_vector_indexes_to_hnsw.sql
+-- 20260529000013_upgrade_vector_indexes_to_hnsw.sql
 -- HNSW is significantly more scalable for high-concurrency vector searches.
 
 -- 1. Drop existing ivfflat indexes

@@ -9,8 +9,7 @@ import { reserveBudgetForModelCall, isBudgetExceeded, isBudgetUnavailable, budge
 import { estimateTokensFromText } from '@/lib/ai/token-budget';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { apiErrorResponse, getRequestId } from '@/lib/api/errors';
-import { validatePromptLength, usageGateResponse } from '@/lib/utils/billing';
-import { consumeUsageLimit } from '@/lib/utils/billing';
+import { consumeUsageLimit, validatePromptLength, usageGateResponse } from '@/lib/utils/billing';
 import { logger } from '@/lib/utils/logger';
 import {
   getOrCreateChatSession,

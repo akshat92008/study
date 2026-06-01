@@ -57,7 +57,7 @@ describe('processChatSideEffects identity propagation', () => {
     publish.mockReset();
   });
 
-  it('derives MIND_TUTOR_COMPLETED with the canonical worker userId', async () => {
+  it('derives concept discovery and tutor completion with the canonical worker userId after coverage', async () => {
     const { processChatSideEffects } = await import('@/lib/ai/chat-side-effects');
 
     await processChatSideEffects({
@@ -92,8 +92,44 @@ describe('processChatSideEffects identity propagation', () => {
 
     expect(publish).toHaveBeenCalledWith(expect.objectContaining({
       user_id: '00000000-0000-0000-0000-000000000001',
+      type: 'CONCEPT_DISCOVERED',
+      idempotency_key: expect.stringContaining('concept_discovered:tutor:00000000-0000-0000-0000-000000000001:physics:motion'),
+    }));
+    expect(publish).toHaveBeenCalledWith(expect.objectContaining({
+      user_id: '00000000-0000-0000-0000-000000000001',
       type: 'MIND_TUTOR_COMPLETED',
-      idempotency_key: expect.stringContaining('session:00000000-0000-0000-0000-000000000001:Physics:Motion:'),
+      idempotency_key: expect.stringContaining('mind_tutor_completed:00000000-0000-0000-0000-000000000001:session-1:physics:motion'),
+      data: expect.objectContaining({
+        coverageTurns: 8,
+        minCoverageTurns: 8,
+        isSessionComplete: true,
+      }),
+    }));
+  });
+
+  it('does not mark tutor completion before the coverage floor', async () => {
+    const { processChatSideEffects } = await import('@/lib/ai/chat-side-effects');
+
+    await processChatSideEffects({
+      supabase: makeSupabase() as any,
+      userId: '00000000-0000-0000-0000-000000000001',
+      sessionId: 'session-early',
+      message: 'latest question',
+      fullResponse: 'latest answer',
+      emotion: 'neutral',
+      history: [{ role: 'user', content: 'a' }],
+      sessionTurnsCount: 7,
+      mindContext: {
+        weakConcepts: [{ subject: 'Physics', chapter: 'Motion' }],
+      },
+      intent: { intent: 'TUTOR_SESSION' },
+    });
+
+    expect(publish).toHaveBeenCalledWith(expect.objectContaining({
+      type: 'CONCEPT_DISCOVERED',
+    }));
+    expect(publish).not.toHaveBeenCalledWith(expect.objectContaining({
+      type: 'MIND_TUTOR_COMPLETED',
     }));
   });
 });

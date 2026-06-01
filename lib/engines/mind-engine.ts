@@ -153,10 +153,10 @@ async function getLongitudinalConceptHistory(
     if (targetTopic) conceptQuery = conceptQuery.or(`chapter.ilike.%${targetTopic}%,name.ilike.%${targetTopic}%`);
 
     const { data: concepts } = await conceptQuery;
-    const conceptRows = concepts || [];
+    const conceptRows: any[] = concepts || [];
     if (!conceptRows.length) return [];
 
-    const conceptById = new Map(conceptRows.map((concept: any) => [concept.id, concept]));
+    const conceptById = new Map<string, any>(conceptRows.map((concept: any) => [concept.id, concept]));
     const conceptIds = conceptRows.map((concept: any) => concept.id).filter(Boolean);
     const chapters = Array.from(new Set(conceptRows.map((concept: any) => concept.chapter).filter(Boolean)));
 

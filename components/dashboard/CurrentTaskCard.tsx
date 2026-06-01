@@ -17,7 +17,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
   const [loading, setLoading] = useState(true);
   const [cardStatus, setCardStatus] = useState<SessionCardUiStatus>('empty');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const { addToast } = useAppStore();
+  const { addToast, addChatMessage } = useAppStore();
 
   const [isSessionActive, setIsSessionActive] = useState(false);
   const [timeLeft, setTimeLeft] = useState(0);
@@ -164,26 +164,15 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
           durationMinutes: data.estimatedMinutes,
         })
       });
-      if (res.ok) {
-        addToast(`Mission completed: ${data.focusTopic} saved.`, 'success');
-
-        localStorage.removeItem(`focus_session_end_${data.focusTopic}`);
-        setIsSessionActive(false);
-        setTimeLeft(0);
-
-        const resJson = await res.json().catch(() => ({}));
-        const nextStreak = resJson.streakDays || ((data.streakDays || 0) + 1);
-        setSessionClosingMessage(resJson.closingMessage ?? null);
-        setUpdatedStreak(nextStreak);
-        setShowCelebration(true);
-        setCardStatus('completed');
-        completionKeyRef.current = null;
+      const resJson = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        throw new Error(resJson?.message || 'Session completion failed.');
       }
 
-      addToast(`Session completed: ${data.focusTopic} revised!`, 'success');
+      addToast(`Mission completed: ${data.focusTopic} saved.`, 'success');
       addChatMessage({
         role: 'assistant',
-        content: `⚡ **Session Completed!** You've completed your focus session on **${data.focusTopic}** (${data.subject}) for ${data.estimatedMinutes} minutes. Keep up the momentum!`,
+        content: `**Session Complete.** ${resJson.closingMessage || `You completed ${data.focusTopic} for ${data.estimatedMinutes} minutes. ATLAS and MEMORY are updating from this session.`}`,
         timestamp: new Date().toISOString()
       });
 
@@ -191,14 +180,17 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
       setIsSessionActive(false);
       setTimeLeft(0);
 
-      const resJson = await res.json().catch(() => ({}));
       const nextStreak = resJson.streakDays || ((data.streakDays || 0) + 1);
+      setSessionClosingMessage(resJson.closingMessage ?? null);
       setUpdatedStreak(nextStreak);
       setShowCelebration(true);
-    } catch (e) {
+      setCardStatus('completed');
+      completionKeyRef.current = null;
+    } catch (e: any) {
       console.error('Failed to complete focus session', e);
+      addToast(e?.message || 'Failed to complete focus session.', 'error');
     }
-  }, [addToast, data]);
+  }, [addChatMessage, addToast, data]);
 
   // Countdown timer logic
   useEffect(() => {

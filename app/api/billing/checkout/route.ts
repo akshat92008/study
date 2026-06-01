@@ -54,9 +54,10 @@ async function createCheckoutSession(req: NextRequest, mode: 'redirect' | 'json'
 
   let customerId = profile?.stripe_customer_id || null;
   if (!customerId) {
+    const metadataName = user.user_metadata?.full_name;
     const customer = await stripe.customers.create({
       email: user.email || profile?.email || undefined,
-      name: profile?.full_name || user.user_metadata?.full_name || undefined,
+      name: profile?.full_name || (typeof metadataName === 'string' ? metadataName : undefined),
       metadata: { userId: user.id },
     });
     customerId = customer.id;

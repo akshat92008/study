@@ -3,175 +3,151 @@ import { logger } from '@/lib/utils/logger';
 
 export const MIN_MIND_TUTOR_COVERAGE_TURNS = 8;
 
-type IntentLike = {
-  intent?: string;
-  subject?: string;
-  topic?: string;
-  chapter?: string;
-};
-
-export type TutorSessionTopic = {
-  subject: string;
-  chapter: string;
-  source: 'intent' | 'session_card' | 'weak_concept' | 'explicit';
-};
-
-export type PublishTutorProgressInput = {
-  userId: string;
-  sessionId?: string | null;
-  message: string;
-  fullResponse: string;
-  history?: any[];
-  sessionTurnsCount?: number;
+type TutorTopicInput = {
   mindContext?: any;
-  intent?: IntentLike | null;
-  emotion?: string;
-  sourceType?: string;
-  assistantMessageId?: string | null;
-  userMessageId?: string | null;
-  conceptId?: string | null;
+  intent?: any;
   subject?: string | null;
   chapter?: string | null;
 };
 
-export type TutorProgressPublishResult = {
-  topic: TutorSessionTopic | null;
-  conceptDiscoveryQueued: boolean;
-  tutorCompletionQueued: boolean;
-  reason?: 'no_topic' | 'coverage_incomplete' | 'not_learning_intent';
+type TutorProgressInput = TutorTopicInput & {
+  userId: string;
+  sessionId: string;
+  message: string;
+  fullResponse: string;
+  history?: any[];
+  sessionTurnsCount?: number | null;
+  sourceType?: string;
+  conceptId?: string | null;
+  assistantMessageId?: string | null;
+  userMessageId?: string | null;
 };
 
-const LEARNING_INTENTS = new Set(['TUTOR_SESSION', 'PRACTICE']);
-
-function cleanPart(value: unknown): string | null {
+function cleanTopicPart(value: unknown): string | null {
   if (typeof value !== 'string') return null;
   const trimmed = value.trim();
-  if (!trimmed || /^general$/i.test(trimmed)) return null;
+  if (!trimmed || trimmed.toLowerCase() === 'general') return null;
   return trimmed;
 }
 
-function idempotencyPart(value: string): string {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 80) || 'topic';
+function topicKey(value: string): string {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'topic';
 }
 
-export function inferTutorSessionTopic(input: Pick<PublishTutorProgressInput, 'intent' | 'mindContext' | 'subject' | 'chapter'>): TutorSessionTopic | null {
-  const explicitSubject = cleanPart(input.subject);
-  const explicitChapter = cleanPart(input.chapter);
-  if (explicitSubject && explicitChapter) {
-    return { subject: explicitSubject, chapter: explicitChapter, source: 'explicit' };
-  }
+export function inferTutorSessionTopic(input: TutorTopicInput): {
+  subject: string | null;
+  chapter: string | null;
+} {
+  const weakConcept = input.mindContext?.weakConcepts?.[0] ?? null;
+  const currentTopic = input.mindContext?.currentTopic ?? null;
+  const intent = input.intent ?? {};
 
-  const intentSubject = cleanPart(input.intent?.subject);
-  const intentChapter = cleanPart(input.intent?.chapter) ?? cleanPart(input.intent?.topic);
-  if (intentSubject && intentChapter) {
-    return { subject: intentSubject, chapter: intentChapter, source: 'intent' };
-  }
+  const subject =
+    cleanTopicPart(input.subject) ||
+    cleanTopicPart(intent.subject) ||
+    cleanTopicPart(currentTopic?.subject) ||
+    cleanTopicPart(weakConcept?.subject);
 
-  const cardSubject = cleanPart(input.mindContext?.currentSessionCard?.subject);
-  const cardChapter = cleanPart(input.mindContext?.currentSessionCard?.focusTopic);
-  if (cardSubject && cardChapter) {
-    return { subject: cardSubject, chapter: cardChapter, source: 'session_card' };
-  }
+  const chapter =
+    cleanTopicPart(input.chapter) ||
+    cleanTopicPart(intent.chapter) ||
+    cleanTopicPart(intent.topic) ||
+    cleanTopicPart(currentTopic?.chapter) ||
+    cleanTopicPart(currentTopic?.topic) ||
+    cleanTopicPart(weakConcept?.chapter) ||
+    cleanTopicPart(weakConcept?.name);
 
-  const weak = Array.isArray(input.mindContext?.weakConcepts)
-    ? input.mindContext.weakConcepts[0]
-    : null;
-  const weakSubject = cleanPart(weak?.subject);
-  const weakChapter = cleanPart(weak?.chapter) ?? cleanPart(weak?.name);
-  if (weakSubject && weakChapter) {
-    return { subject: weakSubject, chapter: weakChapter, source: 'weak_concept' };
-  }
-
-  return null;
+  return { subject, chapter };
 }
 
-function isLearningIntent(intent?: IntentLike | null): boolean {
-  if (!intent?.intent) return true;
-  return LEARNING_INTENTS.has(intent.intent);
-}
-
-export function hasMetTutorCoverage(input: Pick<PublishTutorProgressInput, 'sessionTurnsCount' | 'history'>): boolean {
-  const explicitTurns = Number(input.sessionTurnsCount ?? 0);
-  if (explicitTurns >= MIN_MIND_TUTOR_COVERAGE_TURNS) return true;
-
+export function getTutorCoverageTurns(input: {
+  history?: any[];
+  sessionTurnsCount?: number | null;
+}): number {
+  const suppliedTurns = Number(input.sessionTurnsCount ?? 0);
   const userTurnsFromHistory = Array.isArray(input.history)
-    ? input.history.filter((turn: any) => turn?.role === 'user').length + 1
-    : 1;
-  return userTurnsFromHistory >= MIN_MIND_TUTOR_COVERAGE_TURNS;
+    ? input.history.filter((item) => item?.role === 'user').length
+    : 0;
+  return Math.max(
+    Number.isFinite(suppliedTurns) ? suppliedTurns : 0,
+    userTurnsFromHistory
+  );
 }
 
-export async function publishTutorProgressEvents(input: PublishTutorProgressInput): Promise<TutorProgressPublishResult> {
-  const topic = inferTutorSessionTopic(input);
-  if (!topic) return { topic: null, conceptDiscoveryQueued: false, tutorCompletionQueued: false, reason: 'no_topic' };
+export function hasMetTutorCoverage(input: {
+  history?: any[];
+  sessionTurnsCount?: number | null;
+}): boolean {
+  return getTutorCoverageTurns(input) >= MIN_MIND_TUTOR_COVERAGE_TURNS;
+}
 
-  let conceptDiscoveryQueued = false;
-  try {
-    await EventDispatcher.publish({
-      user_id: input.userId,
-      type: 'CONCEPT_DISCOVERED',
-      data: {
-        conceptId: input.conceptId ?? null,
-        subject: topic.subject,
-        chapter: topic.chapter,
-        topic: topic.chapter,
-        source_type: input.sourceType ?? 'mind_tutor',
-      },
-      metadata: { source: input.sourceType ?? 'mind_tutor' },
-      idempotency_key: `concept_seed:mind:${input.userId}:${idempotencyPart(topic.subject)}:${idempotencyPart(topic.chapter)}`,
-    });
-    conceptDiscoveryQueued = true;
-  } catch (err) {
-    logger.warn('Tutor progress concept discovery publish failed', {
+export async function publishTutorProgressEvents(input: TutorProgressInput): Promise<{
+  conceptDiscovered: boolean;
+  tutorCompleted: boolean;
+  coverageTurns: number;
+  subject: string | null;
+  chapter: string | null;
+}> {
+  const { subject, chapter } = inferTutorSessionTopic(input);
+  const coverageTurns = getTutorCoverageTurns(input);
+
+  if (!subject || !chapter) {
+    logger.info('Tutor progress skipped: no concrete subject/chapter', {
       userId: input.userId,
-      subject: topic.subject,
-      chapter: topic.chapter,
-      err,
+      sessionId: input.sessionId,
+      coverageTurns,
     });
+    return { conceptDiscovered: false, tutorCompleted: false, coverageTurns, subject, chapter };
   }
 
-  if (!isLearningIntent(input.intent)) {
-    return { topic, conceptDiscoveryQueued, tutorCompletionQueued: false, reason: 'not_learning_intent' };
-  }
+  const source = input.sourceType || 'mind_tutor';
+  const topicSuffix = `${topicKey(subject)}:${topicKey(chapter)}`;
 
-  if (!hasMetTutorCoverage(input)) {
-    return { topic, conceptDiscoveryQueued, tutorCompletionQueued: false, reason: 'coverage_incomplete' };
+  await EventDispatcher.publish({
+    user_id: input.userId,
+    type: 'CONCEPT_DISCOVERED',
+    data: {
+      conceptId: input.conceptId ?? null,
+      subject,
+      chapter,
+      topic: chapter,
+      sourceSessionId: input.sessionId,
+      coverageTurns,
+      minCoverageTurns: MIN_MIND_TUTOR_COVERAGE_TURNS,
+    },
+    metadata: { source },
+    idempotency_key: `concept_discovered:tutor:${input.userId}:${topicSuffix}`,
+  });
+
+  if (coverageTurns < MIN_MIND_TUTOR_COVERAGE_TURNS) {
+    return { conceptDiscovered: true, tutorCompleted: false, coverageTurns, subject, chapter };
   }
 
   const history = Array.isArray(input.history) ? input.history : [];
-  const messageCount = Math.max(
-    Number(input.sessionTurnsCount ?? 0),
-    history.filter((turn: any) => turn?.role === 'user').length + 1
-  );
-  const estimatedMinutes = Math.max(8, Math.round(messageCount * 1.5));
-  const completionKeyBase = input.sessionId
-    ? input.sessionId
-    : `${new Date().toISOString().slice(0, 13)}:00`;
-
   await EventDispatcher.publish({
     user_id: input.userId,
     type: 'MIND_TUTOR_COMPLETED',
     data: {
+      sessionId: input.sessionId,
       conceptId: input.conceptId ?? null,
-      subject: topic.subject,
-      chapter: topic.chapter,
-      durationMinutes: estimatedMinutes,
-      messageCount,
-      sessionType: input.sourceType ?? 'chat',
+      subject,
+      chapter,
+      durationMinutes: Math.max(8, Math.round(Math.max(history.length, coverageTurns * 2) * 1.5)),
+      messageCount: history.length,
+      sessionType: 'mind_tutor',
       history: history.slice(-8),
       latestMessage: input.message,
       latestResponse: input.fullResponse,
-      isSessionComplete: true,
-      coverageTurns: messageCount,
+      assistantMessageId: input.assistantMessageId ?? null,
+      userMessageId: input.userMessageId ?? null,
+      coverageTurns,
       minCoverageTurns: MIN_MIND_TUTOR_COVERAGE_TURNS,
-      coverageStatus: 'covered',
+      isSessionComplete: true,
       intent: input.intent?.intent ?? 'TUTOR_SESSION',
-      emotion: input.emotion ?? 'neutral',
-      user_message_id: input.userMessageId ?? undefined,
-      assistant_message_id: input.assistantMessageId ?? undefined,
     },
-    metadata: { source: input.sourceType ?? 'mind_tutor' },
-    idempotency_key: `mind_tutor_completed:${input.userId}:${completionKeyBase}:${idempotencyPart(topic.subject)}:${idempotencyPart(topic.chapter)}`,
+    metadata: { source },
+    idempotency_key: `mind_tutor_completed:${input.userId}:${input.sessionId}:${topicSuffix}`,
   });
 
-  return { topic, conceptDiscoveryQueued, tutorCompletionQueued: true };
+  return { conceptDiscovered: true, tutorCompleted: true, coverageTurns, subject, chapter };
 }

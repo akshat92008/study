@@ -267,8 +267,10 @@ export async function getUserSubscriptionStatus(
       .maybeSingle();
     if (error) throw error;
 
-    const status = data?.subscription_status;
-    return status === 'pro' || status === 'teams' ? status : 'free';
+    const status = String(data?.subscription_status || 'free').toLowerCase();
+    if (status === 'teams') return 'teams';
+    if (status === 'pro' || status === 'active' || status === 'trialing') return 'pro';
+    return 'free';
   } catch (error: any) {
     logger.warn('[Billing] subscription status unavailable; defaulting to free', {
       userId,

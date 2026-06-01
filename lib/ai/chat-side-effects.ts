@@ -170,20 +170,21 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
       );
     }
 
-    await publishTutorProgressEvents({
-      userId,
-      sessionId,
-      message,
-      fullResponse,
-      history,
-      sessionTurnsCount,
-      mindContext,
-      intent,
-      emotion,
-      sourceType: source_type || 'global_chat',
-      assistantMessageId: assistant_message_id,
-      userMessageId: user_message_id,
-    });
+    if (['TUTOR_SESSION', 'PRACTICE'].includes(intent?.intent)) {
+      await publishTutorProgressEvents({
+        userId,
+        sessionId,
+        message,
+        fullResponse,
+        history,
+        sessionTurnsCount,
+        mindContext,
+        intent,
+        sourceType: source_type || 'global_chat',
+        assistantMessageId: assistant_message_id,
+        userMessageId: user_message_id,
+      });
+    }
   } catch (err) {
     captureSentryException(err, { tags: { context: 'event_publishing' } });
   }

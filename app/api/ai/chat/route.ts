@@ -181,7 +181,7 @@ export async function POST(req: NextRequest) {
     const documentMimeType = parsed.documentMimeType ?? undefined;
     const chatId = parsed.chatId ?? undefined;
     const activeGoalId = parsed.activeGoalId ?? undefined;
-    const sessionTurnsCount = parsed.sessionTurnsCount ?? 0;
+    let sessionTurnsCount = parsed.sessionTurnsCount ?? 0;
     const promptVersion = getPromptVersion('mind');
     const sessionId = await getOrCreateGlobalChatSession(supabase, user.id);
 
@@ -196,6 +196,10 @@ export async function POST(req: NextRequest) {
 
     const persistedHistory = await loadRecentMessages(supabase, sessionId);
     const recentHistory = persistedHistory.slice(-50);
+    sessionTurnsCount = Math.max(
+      sessionTurnsCount,
+      recentHistory.filter((turn: any) => turn?.role === 'user').length + 1
+    );
 
     const userMessageForPersistence = message || (imageBase64 ? '[Image question]' : documentBase64 ? '[Document upload]' : '');
     if (!userMessageForPersistence.trim()) {

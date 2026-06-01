@@ -1,3 +1,4 @@
+-- 20260530000016_remove_command_engine_from_mvp_consumers.sql
 -- Remove command_engine from new event consumer locks.
 -- command_engine is removed from the MVP learning loop; existing locks are unaffected.
 

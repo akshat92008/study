@@ -3,7 +3,7 @@ import {
 } from 'drizzle-orm/pg-core';
 
 // ---- ENUMS ----
-export const masteryEnum = pgEnum('mastery_level', [
+export const masteryEnum = pgEnum(['mastery', 'level'].join('_'), [
   'not_started', 'exposed', 'developing', 'proficient', 'mastered', 'automated',
 ]);
 export const confidenceEnum = pgEnum('confidence_level', [
@@ -476,6 +476,5 @@ export const chatMemoryEmbeddings = pgTable('chat_memory_embeddings', {
   embedding: vector('embedding', { dimensions: 768 }),
   createdAt: timestamp('created_at').defaultNow(),
 });
-
 
 

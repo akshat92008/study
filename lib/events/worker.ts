@@ -278,16 +278,6 @@ export class EventWorkerService {
         .update(updatePayload)
         .eq('id', eventId);
     }
-
-    await supabase
-      .from('event_queue')
-      .update({
-        status,
-        locked_at: null,
-        locked_by: null,
-        updated_at: new Date().toISOString(),
-      })
-      .eq('id', eventId);
   }
 
   private static async routeToConsumer(lease: any): Promise<ConsumerResult> {
