@@ -432,6 +432,20 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
               </p>
             </div>
 
+            {/* Natural Beats Player */}
+            <div style={{ width: '100%', maxWidth: '360px', borderRadius: 'var(--radius-md)', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.05)', marginTop: 'var(--sp-2)' }}>
+              <iframe
+                width="100%"
+                height="120"
+                src="https://www.youtube.com/embed/5qap5aO4i9A"
+                title="Natural Beats for Concentration"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                style={{ display: 'block' }}
+              ></iframe>
+            </div>
+
             {/* Control Actions */}
             <div style={{ display: 'flex', gap: 'var(--sp-3)', width: '100%', marginTop: 'var(--sp-2)' }}>
               <Button
