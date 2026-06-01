@@ -11,6 +11,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import DailySessionFocus from './DailySessionFocus';
 import { useAppStore } from '@/stores/appStore';
+import StudyMaterialPanel from '@/components/materials/StudyMaterialPanel';
 
 export default function CommandCenter({ profile, cognition, revision, mistakes, tasks, onRefresh }: any) {
   const router = useRouter();
@@ -177,7 +178,9 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
       } else {
         const textContent = uploadType === 'mock_test' 
           ? `📊 Test Analysis Complete. Mistakes Found: **${data.autopsy?.marks_lost || 0}**. Sprint Scheduled.`
-          : `📚 Syllabus Ingested: **${file.name}**. Injected into your study profile.`;
+          : data.material?.status === 'failed'
+            ? `❌ Material indexing failed for **${file.name}**.`
+            : `📚 Syllabus Ingested: **${file.name}**. Material indexed: ${data.chunksProcessed || 0} chunks ready.`;
         setMessages(prev => prev.map(m => m.id === fileMsgId ? { ...m, content: textContent, type: 'text' } : m));
         
         if (uploadType === 'mock_test') {
@@ -324,6 +327,7 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
               <span style={{ fontSize: 'var(--sp-5)', fontWeight: 'var(--fw-black)', color: 'var(--warning)' }}>{profile?.streak_days || 0}</span>
             </Card>
           </div>
+          <StudyMaterialPanel />
         </div>
 
         {/* ========================================================================= */}

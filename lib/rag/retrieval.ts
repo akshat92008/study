@@ -80,16 +80,20 @@ export async function retrieveRagContext(input: RagRetrieveInput): Promise<RagCo
     warnings: chunks.length === 0 ? ['No relevant uploaded source chunks found.'] : [],
   };
 
-  await supabase.from('rag_query_logs').insert({
-    user_id: input.userId,
-    query: input.query.slice(0, 2000),
-    material_ids: input.materialIds ?? null,
-    retrieved_chunk_ids: chunks.map((chunk) => chunk.id),
-    total_chunks: chunks.length,
-    total_context_chars: context.totalContextChars,
-    grounded: context.grounded,
-    mode,
-  });
+  try {
+    await supabase.from('rag_query_logs').insert({
+      user_id: input.userId,
+      query: input.query.slice(0, 2000),
+      material_ids: input.materialIds ?? null,
+      retrieved_chunk_ids: chunks.map((chunk) => chunk.id),
+      total_chunks: chunks.length,
+      total_context_chars: context.totalContextChars,
+      grounded: context.grounded,
+      mode,
+    });
+  } catch (err) {
+    console.warn('[RAG] Failed to log query', err);
+  }
 
   return context;
 }

@@ -28,7 +28,9 @@ export interface MINDContext {
   commandTasks?: Array<{ title: string; subject?: string | null; chapter?: string | null; priority?: string | null }>;
   recentStudySessions?: Array<{ subject?: string | null; chapter?: string | null; durationMinutes?: number | null }>;
   weakConcepts: Array<{ name: string; subject: string; chapter: string; mastery: string }>;
-  recentMistakes: Array<{ chapter: string; category: string; subject: string }>;
+  recentMistakes: Array<{ chapter: string; category: string; mistake_type?: string; subject: string }>;
+  needsReviewCount?: number;
+  lastAutopsy?: { test_name: string; current_score: number; potential_score: number; created_at: string } | null;
   recentPracticeStruggles?: Array<{ conceptName: string; chapter: string; subject: string; evidence: string }>;
   struggles: Array<{ chapter: string; subject: string }>;
   masteryStats: {
@@ -238,7 +240,7 @@ function buildPrompt(ctx: MINDContext, semanticMemories: string[] = [], intent?:
     : null;
 
   const weakList = ctx.weakConcepts.slice(0, 3).map(c => `${c.name} (${c.mastery})`).join(', ') || 'None identified yet';
-  const mistakeList = ctx.recentMistakes.slice(0, 3).map(m => `${m.chapter} — ${m.category}`).join('; ') || 'None recorded';
+  const mistakeList = ctx.recentMistakes.slice(0, 3).map(m => `${m.chapter} — ${m.mistake_type || m.category}`).join('; ') || 'None recorded';
   const practiceStrugglesList = (ctx.recentPracticeStruggles || []).slice(0, 3).map(p => `${p.conceptName} (${p.chapter}): ${p.evidence}`).join('; ') || 'None recorded';
   const commandTaskList = (ctx.commandTasks || []).slice(0, 3).map(t => `${t.title}${t.priority ? ` (${t.priority})` : ''}`).join('; ') || 'None queued';
   const sessionCard = ctx.currentSessionCard
@@ -247,6 +249,13 @@ function buildPrompt(ctx: MINDContext, semanticMemories: string[] = [], intent?:
   const dueCardsList = ctx.topOverdueCards?.length > 0 ? ctx.topOverdueCards.slice(0, 3).map(c => c.front).join(' | ') : 'No due cards';
   const emotionalBlock = getEmotionalAdaptationBlock(ctx.emotionalState);
   
+  const autopsySummary = ctx.lastAutopsy 
+    ? `Last Autopsy: ${ctx.lastAutopsy.test_name} (${ctx.lastAutopsy.current_score}/${ctx.lastAutopsy.potential_score})`
+    : 'No autopsy processed yet';
+  const needsReviewText = ctx.needsReviewCount && ctx.needsReviewCount > 0 
+    ? `PENDING REVIEW: ${ctx.needsReviewCount} mistake(s) need manual verification in AUTOPSY.`
+    : '';
+
   const effectiveLearningStyle = getEffectiveLearningStyle(ctx.studentModel, ctx.profile.learningStyle);
   const learningStyleBlock = getLearningStyleBlock(effectiveLearningStyle);
 
@@ -380,6 +389,8 @@ Mastery: ${ctx.masteryStats.masteryPercent}% of syllabus (${ctx.masteryStats.mas
 Overdue flashcards: ${ctx.overdueCardsCount} (Top due: ${dueCardsList})
 Today's mission: ${sessionCard}
 Open mission tasks: ${commandTaskList}
+${autopsySummary}
+${needsReviewText ? `\n${needsReviewText}` : ''}
 
 WEAK AREAS: ${weakList}
 RECENT MISTAKE PATTERNS: ${mistakeList}

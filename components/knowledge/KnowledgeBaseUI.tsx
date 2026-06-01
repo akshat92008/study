@@ -58,8 +58,10 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
       
       if (!response.ok || res.error) {
         setStatus({ type: 'error', msg: res.error || 'Upload failed' });
+      } else if (res.material?.status === 'failed') {
+        setStatus({ type: 'error', msg: 'Material indexing failed.' });
       } else {
-        setStatus({ type: 'success', msg: `Processed ${res.chunks} study chunks for MIND context.` });
+        setStatus({ type: 'success', msg: `Material indexed: ${res.chunksProcessed || 0} chunks ready.` });
         setShowForm(false);
         window.location.reload(); 
       }

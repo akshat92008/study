@@ -565,13 +565,17 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
       return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
     }
 
+    const STUDY_MATERIAL_UPLOAD_RE = /\b(save|upload|index|use this as|notes|material|source|ncert|textbook)\b/i;
+    const EXPLICIT_READ = /\b(read this|what does this say|explain this)\b/i;
+    const isMaterialIndexing = (message && STUDY_MATERIAL_UPLOAD_RE.test(message) && !EXPLICIT_READ.test(message)) || (!message && documentBase64 && documentMimeType && SUPPORTED_MATERIAL_MIME_TYPES.has(documentMimeType));
+
     if (documentBase64 && documentMimeType) {
       // Begin Background Ingestion if supported
       if (SUPPORTED_MATERIAL_MIME_TYPES.has(documentMimeType)) {
         const buffer = Buffer.from(documentBase64, 'base64');
         const contentHash = materialContentHash(buffer);
-        // Fire and forget ingestion
-        (async () => {
+        
+        const ingestFn = async () => {
           try {
             const { data: duplicate } = await supabase
               .from('study_materials')
@@ -596,7 +600,27 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
           } catch (e) {
             logger.warn('Failed background ingestion of chat upload', e);
           }
-        })();
+        };
+
+        if (isMaterialIndexing) {
+           await ingestFn();
+           const answer = "Material indexed. You can now ask MIND questions from it.";
+           const stream = new ReadableStream({
+             async start(controller) {
+               controller.enqueue(encoder.encode(answer));
+               try {
+                 await finalizeAssistantTurn({
+                   assistantText: answer,
+                   userMessage: message || '[Document upload]',
+                 });
+               } catch (e) {}
+               controller.close();
+             }
+           });
+           return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+        } else {
+           await ingestFn();
+        }
       }
 
       const documentBudget = await reserveModelBudgetOrResponse({

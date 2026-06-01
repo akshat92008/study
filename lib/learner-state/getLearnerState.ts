@@ -39,7 +39,9 @@ export interface LearnerStateSnapshot {
     topDueCards: Array<{ id: string; front: string }>;
   };
   autopsy: {
-    recentMistakes: Array<{ chapter: string; category: string; subject: string; created_at?: string }>;
+    recentMistakes: Array<{ chapter: string; category: string; mistake_type: string; subject: string; created_at?: string }>;
+    needsReviewCount: number;
+    lastAutopsy: { test_name: string; current_score: number; potential_score: number; created_at: string } | null;
   };
   recentStudySessions: Array<{ subject?: string | null; chapter?: string | null; durationMinutes?: number | null }>;
   command: {
@@ -76,8 +78,9 @@ export async function getLearnerStateSnapshot(
 
   let mistakesQuery = supabase
     .from('mistakes')
-    .select('chapter, category, subject, created_at')
+    .select('chapter, category, mistake_type, subject, created_at')
     .eq('user_id', userId)
+    .eq('status', 'verified_mistake')
     .order('created_at', { ascending: false })
     .limit(5);
   if (options.subject) mistakesQuery = mistakesQuery.eq('subject', options.subject);
@@ -95,6 +98,8 @@ export async function getLearnerStateSnapshot(
     missionRes,
     taskRes,
     studentModelRes,
+    needsReviewCountRes,
+    lastAutopsyRes,
   ] = await Promise.all([
     supabase
       .from('profiles')
@@ -163,6 +168,20 @@ export async function getLearnerStateSnapshot(
       .order('last_updated_at', { ascending: false })
       .limit(1)
       .maybeSingle(),
+
+    supabase
+      .from('autopsy_questions')
+      .select('id', { count: 'exact', head: true })
+      .eq('user_id', userId)
+      .in('evidence_status', ['needs_review', 'pending_review']),
+
+    supabase
+      .from('mock_autopsies')
+      .select('test_name, current_score, potential_score, created_at')
+      .eq('user_id', userId)
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .maybeSingle(),
   ]);
 
   const profile = profileRes.data;
@@ -174,6 +193,8 @@ export async function getLearnerStateSnapshot(
   const totalConcepts = totalConceptsRes.count ?? 0;
   const masteredCount = masteredConceptsRes.count ?? 0;
   const sessions = sessionsRes.data ?? [];
+  const needsReviewCount = needsReviewCountRes?.count ?? 0;
+  const lastAutopsyData = lastAutopsyRes?.data ?? null;
 
   return {
     profile: {
@@ -217,6 +238,13 @@ export async function getLearnerStateSnapshot(
     },
     autopsy: {
       recentMistakes: recentMistakesRes.data || [],
+      needsReviewCount,
+      lastAutopsy: lastAutopsyData ? {
+        test_name: lastAutopsyData.test_name,
+        current_score: lastAutopsyData.current_score,
+        potential_score: lastAutopsyData.potential_score,
+        created_at: lastAutopsyData.created_at,
+      } : null,
     },
     recentStudySessions: sessions.map((session: any) => ({
       subject: session.subject,

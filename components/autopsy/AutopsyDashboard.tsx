@@ -76,6 +76,17 @@ export default function AutopsyDashboard({ result }: AutopsyDashboardProps) {
         </Card>
       )}
 
+      {(result.pending_review_count > 0 || result.needsReviewCount > 0) && (
+        <Card padding="md" style={{ border: '1px solid var(--warning-dim)', background: 'var(--bg-secondary)' }}>
+          <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--warning)', fontWeight: 'var(--fw-bold)', textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)', marginBottom: 6 }}>
+            Manual Review Required
+          </div>
+          <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.5 }}>
+            There are {result.pending_review_count || result.needsReviewCount} mistake(s) waiting for manual review because the confidence was too low. Once verified, they will update your learner profile.
+          </p>
+        </Card>
+      )}
+
       <div className="grid-2">
         {/* SECTION 2: Mistake Taxonomy (Execution vs Knowledge) */}
         <Card padding="lg">

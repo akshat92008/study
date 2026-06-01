@@ -6,6 +6,7 @@ import { getExamConfig } from '@/lib/utils/constants';
 import { AutopsyPaperSchema, AutopsyQuestionSchema } from './autopsy-schemas';
 import { logger } from '@/lib/utils/logger';
 import { generateJSON, generateMultimodalJSON } from '@/lib/ai/provider-client';
+import { classifyMistake } from '../autopsy/classifier';
 
 /** Typed error thrown when extraction completely fails (safe for callers to detect). */
 export class AutopsyExtractionError extends Error {
@@ -32,6 +33,8 @@ type AutopsyQuestion = z.infer<typeof AutopsyQuestionSchema>;
 type ProcessedQuestion = AutopsyQuestion & {
   marksLost: number;
   needsReview?: boolean;
+  evidenceStatus?: string;
+  mistakeType?: string;
   correctExplanation?: string | null;
   conceptualGap?: string | null;
 };
@@ -148,47 +151,34 @@ async function deepDiagnosticPass(
 ): Promise<ProcessedQuestion[]> {
   if (incorrectQuestions.length === 0) return [];
 
-  const diagnosticPrompt = `
-You are an expert exam performance analyst. Diagnose each incorrect answer.
+  const results: ProcessedQuestion[] = [];
+  
+  for (const q of incorrectQuestions) {
+    const classification = await classifyMistake({
+      questionText: q.questionText,
+      studentAnswer: q.studentAnswer,
+      correctAnswer: q.correctAnswer,
+      explanation: q.reasoning,
+      subject: q.subject,
+      chapter: q.chapter,
+      topic: q.subtopic,
+      confidence: (q.ocrConfidence ?? 100) / 100, // Pass 0 to 1
+    });
 
-For each question provide:
-- mistakeCategory: one of [conceptual_gap, calculation_error, silly_mistake, time_pressure, misread_question, incomplete_knowledge, overconfidence, anxiety_blank, recall_failure]
-- reasoning: one sentence explaining why this student got this wrong
-- conceptualGap: the specific concept they need to study, or null for silly/time mistakes
-- correctExplanation: one-sentence explanation of the correct approach
-
-Questions to diagnose:
-${JSON.stringify(incorrectQuestions.map(q => ({
-  questionNumber: q.questionNumber,
-  subject: q.subject,
-  chapter: q.chapter,
-  status: q.status,
-})))}
-
-Respond ONLY as a JSON array of the same length. No markdown.
-`.trim();
-
-  try {
-    const diagnosed = await generateJSON<any[]>(
-      'pro',
-      'You are an expert exam analyst. Return JSON array only.',
-      diagnosticPrompt
-    );
-
-    if (!Array.isArray(diagnosed)) return incorrectQuestions.map(q => ({ ...q, marksLost: 0 }));
-
-    return incorrectQuestions.map((q, i) => ({
+    results.push({
       ...q,
       marksLost: 0,
-      mistakeCategory: diagnosed[i]?.mistakeCategory ?? q.mistakeCategory,
-      reasoning: diagnosed[i]?.reasoning ?? q.reasoning,
-      conceptualGap: diagnosed[i]?.conceptualGap ?? null,
-      correctExplanation: diagnosed[i]?.correctExplanation ?? null,
-    }));
-  } catch (err) {
-    logger.warn('Deep diagnostic pass failed, using undiagnosed', err);
-    return incorrectQuestions.map(q => ({ ...q, marksLost: 0 }));
+      mistakeCategory: classification.mistakeType ?? q.mistakeCategory,
+      mistakeType: classification.mistakeType,
+      reasoning: classification.shortReason ?? q.reasoning,
+      conceptualGap: classification.conceptName ?? null,
+      correctExplanation: null,
+      evidenceStatus: classification.evidenceStatus,
+      needsReview: classification.evidenceStatus === 'needs_review',
+    });
   }
+
+  return results;
 }
 
 export async function processMockAutopsy(
@@ -310,12 +300,14 @@ export async function processMockAutopsy(
       correctAnswer: q.correctAnswer,
       studentAnswer: q.studentAnswer,
       mistakeCategory: q.mistakeCategory ?? null,
+      mistakeType: q.mistakeType ?? null,
       reasoning: q.reasoning ?? null,
       conceptualGap: (q as any).conceptualGap ?? null,
       correctExplanation: (q as any).correctExplanation ?? null,
       marksLost: q.marksLost,
       totalMarks: correctMarks,
       needsReview: q.needsReview || false,
+      evidenceStatus: q.evidenceStatus,
       // Pass both fields — RPC prefers extractionConfidence
       ocrConfidence: effectiveConfidence,
       extractionConfidence: effectiveConfidence,
