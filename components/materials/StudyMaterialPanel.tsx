@@ -13,6 +13,8 @@ export default function StudyMaterialPanel() {
 
   useEffect(() => {
     fetchMaterials();
+    const intervalId = setInterval(fetchMaterials, 5000);
+    return () => clearInterval(intervalId);
   }, []);
 
   async function fetchMaterials() {
@@ -42,9 +44,11 @@ export default function StudyMaterialPanel() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-3)', marginTop: 'var(--sp-4)' }}>
-      <h3 style={{ fontSize: 'var(--fs-sm)', fontWeight: 'bold', color: 'var(--text-secondary)' }}>Active Study Materials</h3>
+      <h3 style={{ fontSize: 'var(--fs-sm)', fontWeight: 'bold', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
+        <BookOpen size={16} /> Active Study Materials
+      </h3>
       <p style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', marginTop: '-4px' }}>
-        Ask MIND: "answer from my uploaded notes."
+        MIND will automatically use these sources when answering questions.
       </p>
       
       {materials.map(mat => (

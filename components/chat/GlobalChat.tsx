@@ -403,7 +403,7 @@ export const GlobalChat = memo(function GlobalChat() {
                     tomorrowFocus={msg.metadata?.tomorrowFocus}
                   />
                 ) : (
-                  <RichMessageRenderer content={msg.content} isStreaming={false} messageId={msg.id} />
+                  <RichMessageRenderer content={msg.content} isStreaming={false} messageId={msg.id} metadata={msg.metadata} />
                 )}
               </div>
             </div>

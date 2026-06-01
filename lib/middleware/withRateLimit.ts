@@ -20,9 +20,9 @@ const ROUTE_LIMITS: Record<string, RateLimitConfig & { failClosed?: boolean }> =
 
 export function withRateLimit(
   routeName: keyof typeof ROUTE_LIMITS,
-  handler: (req: NextRequest, userId: string) => Promise<NextResponse>
+  handler: (req: NextRequest, userId: string, ...args: any[]) => Promise<NextResponse>
 ) {
-  return async (req: NextRequest): Promise<NextResponse> => {
+  return async (req: NextRequest, ...args: any[]): Promise<NextResponse> => {
     const requestId = getRequestId(req);
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
@@ -42,7 +42,7 @@ export function withRateLimit(
 
     if (!allowed) return rateLimitResponse(remaining, resetAt);
     try {
-      return await handler(req, user.id);
+      return await handler(req, user.id, ...args);
     } catch (error) {
       return unexpectedApiErrorResponse(req, error, routeName, 'Request failed.');
     }

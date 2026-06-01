@@ -613,7 +613,9 @@ export class MemoryConsumer {
     for (const q of wrongQuestions) {
       if (!isVerifiedAutopsyMistake(q)) continue;
       if (!q.mistakeCategory || !cardWorthy.has(q.mistakeCategory)) continue;
-      if (!q.reasoning || !q.correctExplanation) continue;
+      if (!q.reasoning && !q.correctExplanation && !q.conceptualGap) continue;
+
+      const fallbackExplanation = q.correctExplanation || q.reasoning || q.conceptualGap || 'Review this concept carefully.';
 
       try {
         const resolution = await resolveConcept({
@@ -629,8 +631,8 @@ export class MemoryConsumer {
         await createSingleCard(
           userId,
           resolution.conceptId,
-          `Explain: ${q.conceptualGap || q.reasoning}`, // front of card = the specific gap
-          q.correctExplanation,                       // back of card = correct explanation
+          `Explain: ${q.conceptualGap || q.reasoning || 'this mistake'}`, // front of card = the specific gap
+          fallbackExplanation,                       // back of card = correct explanation
           q.subject,
           q.chapter,
           supabase as any,

@@ -24,7 +24,7 @@ import { buildConversationMessages } from '@/lib/ai/chat-intent';
 import { classifyMessageCombined } from '@/lib/ai/chat-intent-with-emotion';
 import { inferAndUpdateEmotionalState } from '@/lib/engines/emotional-state-updater';
 import { validateBase64Payload } from '@/lib/middleware/validateUpload';
-import { isAutopsyUploadIntent } from '@/lib/autopsy/upload-intent';
+import { classifyChatUploadIntent } from '@/lib/rag/upload-intent';
 import { createAutopsyJob } from '@/lib/services/autopsy-jobs';
 import { checkSemanticCache, setSemanticCache, isCacheable } from '@/lib/ai/responseCache';
 import { apiErrorResponse, getRequestId } from '@/lib/api/errors';
@@ -438,7 +438,10 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
       userMessage: input.userMessage ?? message ?? '',
       userMessageId,
       assistantText: input.assistantText,
-      metadata: input.metadata,
+      metadata: {
+        ...(input.metadata || {}),
+        ...(mindContext?.ragChunks?.length ? { ragChunks: mindContext.ragChunks } : {})
+      },
       intent: input.intent ?? detectedIntent,
       emotion,
       promptVersion,
@@ -513,12 +516,19 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
       return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
     }
 
-    // ── Branch B: Mock-autopsy file redirect ───────────────────────────────────
+    // ── Branch B: File Upload Routing via Intent ───────────────────────────────────
+    const uploadIntent = hasUploadedFile 
+      ? classifyChatUploadIntent({
+          message: message || '',
+          mimeType: imageMimeType || documentMimeType,
+        })
+      : 'unsupported';
+
     const shouldRouteUploadToAutopsy =
       hasUploadedFile &&
       (
         (orchestratorResult.intent === 'mock_autopsy' && orchestratorResult.needsFileProcessing) ||
-        isAutopsyUploadIntent(message || '')
+        uploadIntent === 'autopsy_mock_analysis'
       );
 
     if (shouldRouteUploadToAutopsy && ((imageBase64 && imageMimeType) || (documentBase64 && documentMimeType))) {
@@ -565,9 +575,7 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
       return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
     }
 
-    const STUDY_MATERIAL_UPLOAD_RE = /\b(save|upload|index|use this as|notes|material|source|ncert|textbook)\b/i;
-    const EXPLICIT_READ = /\b(read this|what does this say|explain this)\b/i;
-    const isMaterialIndexing = (message && STUDY_MATERIAL_UPLOAD_RE.test(message) && !EXPLICIT_READ.test(message)) || (!message && documentBase64 && documentMimeType && SUPPORTED_MATERIAL_MIME_TYPES.has(documentMimeType));
+    const isMaterialIndexing = uploadIntent === 'study_material_index';
 
     if (documentBase64 && documentMimeType) {
       // Begin Background Ingestion if supported
@@ -575,7 +583,7 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
         const buffer = Buffer.from(documentBase64, 'base64');
         const contentHash = materialContentHash(buffer);
         
-        const ingestFn = async () => {
+        const triggerAsyncIngestion = async () => {
           try {
             const { data: duplicate } = await supabase
               .from('study_materials')
@@ -593,7 +601,12 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
                   user_id: user.id, title: 'Chat Upload', original_filename: originalFilename, mime_type: documentMimeType, storage_path: storagePath, source_type: 'upload', language: 'en', status: 'uploaded', content_hash: contentHash
                 }).select('id').single();
                 if (material) {
-                  await ingestStudyMaterial({ materialId: material.id, userId: user.id, buffer, mimeType: documentMimeType });
+                  // Fire-and-forget background ingestion route to prevent Vercel timeouts
+                  fetch(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/rag/ingest`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ materialId: material.id, userId: user.id })
+                  }).catch(e => logger.error('Failed to trigger async ingestion', e));
                 }
               }
             }
@@ -603,8 +616,8 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
         };
 
         if (isMaterialIndexing) {
-           await ingestFn();
-           const answer = "Material indexed. You can now ask MIND questions from it.";
+           await triggerAsyncIngestion();
+           const answer = "Material uploaded and is being indexed in the background. You can check its status in the Study Materials panel and ask MIND questions from it soon.";
            const stream = new ReadableStream({
              async start(controller) {
                controller.enqueue(encoder.encode(answer));
@@ -619,7 +632,7 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
            });
            return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
         } else {
-           await ingestFn();
+           await triggerAsyncIngestion();
         }
       }
 

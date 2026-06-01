@@ -117,8 +117,10 @@ export const PATCH = withRateLimit('autopsy', async (request, userId, { params }
         }
       });
       
-      // Bump learner state version
-      await supabase.from('profiles').update({ learner_state_version: supabase.rpc('coalesce', { val: 'learner_state_version', default_val: 0 }) }).eq('id', userId);
+      // Bump learner state version safely
+      const { data: profile } = await supabase.from('profiles').select('learner_state_version').eq('id', userId).single();
+      const newVersion = (profile?.learner_state_version || 0) + 1;
+      await supabase.from('profiles').update({ learner_state_version: newVersion, updated_at: new Date().toISOString() }).eq('id', userId);
     }
 
     return NextResponse.json({ success: true });

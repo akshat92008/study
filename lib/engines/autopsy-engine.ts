@@ -155,23 +155,23 @@ async function deepDiagnosticPass(
   
   for (const q of incorrectQuestions) {
     const classification = await classifyMistake({
-      questionText: q.questionText,
-      studentAnswer: q.studentAnswer,
-      correctAnswer: q.correctAnswer,
-      explanation: q.reasoning,
+      questionText: q.questionText ?? undefined,
+      studentAnswer: q.studentAnswer ?? undefined,
+      correctAnswer: q.correctAnswer ?? undefined,
+      explanation: q.reasoning ?? undefined,
       subject: q.subject,
       chapter: q.chapter,
-      topic: q.subtopic,
+      topic: q.subtopic ?? undefined,
       confidence: (q.ocrConfidence ?? 100) / 100, // Pass 0 to 1
     });
 
     results.push({
       ...q,
       marksLost: 0,
-      mistakeCategory: classification.mistakeType ?? q.mistakeCategory,
-      mistakeType: classification.mistakeType,
-      reasoning: classification.shortReason ?? q.reasoning,
-      conceptualGap: classification.conceptName ?? null,
+      mistakeCategory: (classification.mistakeType ?? q.mistakeCategory ?? undefined) as any,
+      mistakeType: (classification.mistakeType ?? undefined) as any,
+      reasoning: classification.shortReason ?? q.reasoning ?? undefined,
+      conceptualGap: classification.conceptName ?? undefined,
       correctExplanation: null,
       evidenceStatus: classification.evidenceStatus,
       needsReview: classification.evidenceStatus === 'needs_review',

@@ -1,5 +1,6 @@
 import { generateJSON, MODELS } from '@/lib/ai/provider-client';
 import { AutopsyEvidence, AutopsyEvidenceStatus, MistakeType, EvidenceSource } from './types';
+import { areMcqAnswersEquivalent } from '@/lib/practice/answer-normalization';
 
 export interface ClassifyParams {
   questionText?: string;
@@ -45,7 +46,7 @@ export async function classifyMistake(params: ClassifyParams): Promise<Classifie
   }
 
   // 2. Deterministic Rule: Correct
-  if (cleanCorrect && cleanStudent === cleanCorrect) {
+  if (cleanCorrect && areMcqAnswersEquivalent(studentAnswer, correctAnswer)) {
     return {
       isCorrect: true,
       evidenceStatus: 'verified_correct',
@@ -86,7 +87,7 @@ Respond with JSON format:
 `;
 
   try {
-    const aiResult = await generateJSON<'flash', {
+    const aiResult = await generateJSON<{
       mistakeType: MistakeType;
       conceptName: string;
       shortReason: string;

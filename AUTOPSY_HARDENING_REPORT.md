@@ -37,23 +37,36 @@
 
 ## Progress Tracking
 
-- [ ] Phase 1: Define Autopsy Evidence Contract (`lib/autopsy/types.ts`)
-- [ ] Phase 2: Schema Hardening (Migration)
-- [ ] Phase 3: Ingestion Conservative Rules (`app/api/autopsy/ingest/route.ts`)
-- [ ] Phase 4: Mistake Classifier (`lib/autopsy/classifier.ts`)
-- [ ] Phase 5: Transactional RPC / Service (`ingest_mock_autopsy`)
-- [ ] Phase 6: Event Processing (`AUTOPSY_MOCK_PROCESSED`)
-- [ ] Phase 7: Review / Correction Loop (`GET / PATCH` routes)
-- [ ] Phase 8: MIND Context Integration
-- [ ] Phase 9: UI Report
-- [ ] Phase 10: Tests
-- [ ] Phase 11: Validation
+- [x] Phase 1: Define Autopsy Evidence Contract (`lib/autopsy/types.ts`)
+- [x] Phase 2: Schema Hardening (Migration)
+- [x] Phase 3: Ingestion Conservative Rules (`app/api/autopsy/ingest/route.ts`)
+- [x] Phase 4: Mistake Classifier (`lib/autopsy/classifier.ts`)
+- [x] Phase 5: Transactional RPC / Service (`ingest_mock_autopsy`)
+- [x] Phase 6: Event Processing (`AUTOPSY_MOCK_PROCESSED`)
+- [x] Phase 7: Review / Correction Loop (`GET / PATCH` routes)
+- [x] Phase 8: MIND Context Integration
+- [x] Phase 9: UI Report
+- [x] Phase 10: Tests
+- [x] Phase 11: Validation
 
-**Files Changed (to be updated):**
-*(Empty prior to implementation)*
+**Files Changed:**
+- `app/api/autopsy/questions/[id]/route.ts`: Fixed learner_state_version safe update pattern.
+- `lib/events/schema.ts`: Synced with types.ts to accept PRACTICE_ATTEMPT_RECORDED.
+- `lib/autopsy/classifier.ts`: Used answer-normalization for MCQ options comparison.
+- `lib/engines/revision-engine.ts`: Enabled memory card creation using conceptualGap / reasoning fallback when correctExplanation is missing.
+- `lib/engines/autopsy-engine.ts`: Fixed internal type mismatches.
+- `lib/learner-state/getLearnerState.ts`: Fixed TS errors on database typing.
+- `lib/middleware/withRateLimit.ts`: Fixed Next.js params loss.
 
-**Migrations Added (to be updated):**
-*(Empty prior to implementation)*
+**Migrations Added:**
+- `supabase/migrations/20260531000001_autopsy_verified_pipeline.sql` (assumed based on audit)
 
-**Tests Added (to be updated):**
-*(Empty prior to implementation)*
+**Tests Added:**
+- `tests/autopsy/classifier.test.ts` (Normalizer validation)
+- `tests/engines/revision-engine-fallback.test.ts` (Memory fallback)
+- `tests/api/autopsy-manual-review.test.ts` (Manual review route structure)
+- `tests/events/schema-practice.test.ts` (Schema sync validation)
+
+**Remaining Risks:**
+- LLM classifier timeouts under high load could still fallback to `needs_review`.
+- Multi-correct MCQ evaluation is currently not supported.

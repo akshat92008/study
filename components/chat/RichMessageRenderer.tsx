@@ -133,22 +133,42 @@ function stripLatex(text: string): string {
     .trim();
 }
 
-function renderMarkdownInline(text: string): React.ReactNode {
+function renderMarkdownInline(text: string, ragChunks?: any[]): React.ReactNode {
   if (!text) return null;
   // Strip latex before processing
   const cleaned = stripLatex(text);
-  const parts = cleaned.split(/(`[^`]+`|\*\*[^*]+\*\*|__[^_]+__|\[\[concept:[^\]]+\]\])/g);
+  const parts = cleaned.split(/(`[^`]+`|\*\*[^*]+\*\*|__[^_]+__|\[\[concept:[^\]]+\]\]|\[(?:Source )?\d+(?::[^\]]+)?\])/g);
   return parts.map((part, i) => {
     if (part.startsWith('**') && part.endsWith('**')) return <strong key={i} style={{ fontWeight: 700, color: 'var(--text-primary)' }}>{part.slice(2, -2)}</strong>;
     if (part.startsWith('__') && part.endsWith('__')) return <strong key={i} style={{ fontWeight: 700 }}>{part.slice(2, -2)}</strong>;
     if (part.startsWith('`') && part.endsWith('`')) return <code key={i} style={{ background: 'var(--bg-tertiary)', padding: '1px 6px', borderRadius: 4, fontFamily: 'var(--font-mono)', fontSize: '0.9em' }}>{part.slice(1, -1)}</code>;
     const conceptMatch = part.match(/\[\[concept:([^\]]+)\]\]/);
     if (conceptMatch) return <span key={i} className="conceptHighlight">{conceptMatch[1]}</span>;
+    const citationMatch = part.match(/^\[(?:Source )?(\d+)(?::[^\]]+)?\]$/);
+    if (citationMatch) {
+      const idx = parseInt(citationMatch[1], 10) - 1;
+      const chunk = ragChunks?.[idx];
+      return (
+        <span key={i} className="citation-tooltip" title={chunk?.text || `Source ${idx + 1}`} style={{
+          cursor: chunk ? 'help' : 'default',
+          background: 'var(--accent-cyan-dim)',
+          color: 'var(--accent-cyan)',
+          padding: '2px 6px',
+          borderRadius: '4px',
+          fontSize: '0.85em',
+          marginLeft: '4px',
+          border: '1px solid var(--accent-cyan)',
+          fontWeight: 600
+        }}>
+          [{idx + 1}]
+        </span>
+      );
+    }
     return part;
   });
 }
 
-function renderMarkdownBlock(text: string): React.ReactNode {
+function renderMarkdownBlock(text: string, ragChunks?: any[]): React.ReactNode {
   const lines = text.split('\n');
   const elements: React.ReactNode[] = [];
   let listItems: React.ReactNode[] = [];
@@ -228,7 +248,7 @@ function renderMarkdownBlock(text: string): React.ReactNode {
           padding: '12px',
           margin: '8px 0'
         }}>
-          {renderMarkdownBlock(content)}
+          {renderMarkdownBlock(content, ragChunks)}
         </div>
       );
       inExamTrap = false;
@@ -237,15 +257,15 @@ function renderMarkdownBlock(text: string): React.ReactNode {
     }
     if (inExamTrap) { examBuffer.push(line); return; }
 
-    if (line.startsWith('### ')) { flushList(); elements.push(<h4 key={idx} style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-primary)', margin: '14px 0 6px', borderBottom: '1px solid var(--border-subtle)', paddingBottom: 4 }}>{renderMarkdownInline(line.slice(4))}</h4>); return; }
-    if (line.startsWith('## ')) { flushList(); elements.push(<h3 key={idx} style={{ fontSize: 15, fontWeight: 800, color: 'var(--text-primary)', margin: '16px 0 8px' }}>{renderMarkdownInline(line.slice(3))}</h3>); return; }
-    if (line.startsWith('# ')) { flushList(); elements.push(<h2 key={idx} style={{ fontSize: 17, fontWeight: 900, color: 'var(--text-primary)', margin: '16px 0 8px' }}>{renderMarkdownInline(line.slice(2))}</h2>); return; }
-    if (line.match(/^[-•*⚡📐🔗⚠️🏆✓▪▸►→]\s/)) { listItems.push(<li key={idx} style={{ color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.6, padding: '2px 0' }}>{renderMarkdownInline(line.replace(/^[-•*⚡📐🔗⚠️🏆✓▪▸►→]\s+/, ''))}</li>); return; }
-    if (line.match(/^\d+\.\s/)) { listItems.push(<li key={idx} style={{ color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.6, padding: '2px 0', listStyleType: 'decimal' }}>{renderMarkdownInline(line.replace(/^\d+\.\s/, ''))}</li>); return; }
+    if (line.startsWith('### ')) { flushList(); elements.push(<h4 key={idx} style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-primary)', margin: '14px 0 6px', borderBottom: '1px solid var(--border-subtle)', paddingBottom: 4 }}>{renderMarkdownInline(line.slice(4), ragChunks)}</h4>); return; }
+    if (line.startsWith('## ')) { flushList(); elements.push(<h3 key={idx} style={{ fontSize: 15, fontWeight: 800, color: 'var(--text-primary)', margin: '16px 0 8px' }}>{renderMarkdownInline(line.slice(3), ragChunks)}</h3>); return; }
+    if (line.startsWith('# ')) { flushList(); elements.push(<h2 key={idx} style={{ fontSize: 17, fontWeight: 900, color: 'var(--text-primary)', margin: '16px 0 8px' }}>{renderMarkdownInline(line.slice(2), ragChunks)}</h2>); return; }
+    if (line.match(/^[-•*⚡📐🔗⚠️🏆✓▪▸►→]\s/)) { listItems.push(<li key={idx} style={{ color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.6, padding: '2px 0' }}>{renderMarkdownInline(line.replace(/^[-•*⚡📐🔗⚠️🏆✓▪▸►→]\s+/, ''), ragChunks)}</li>); return; }
+    if (line.match(/^\d+\.\s/)) { listItems.push(<li key={idx} style={{ color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.6, padding: '2px 0', listStyleType: 'decimal' }}>{renderMarkdownInline(line.replace(/^\d+\.\s/, ''), ragChunks)}</li>); return; }
 
     flushList();
     if (line.trim() === '') { elements.push(<div key={idx} style={{ height: 8 }} />); return; }
-    elements.push(<p key={idx} style={{ margin: '3px 0', color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.65 }}>{renderMarkdownInline(line)}</p>);
+    elements.push(<p key={idx} style={{ margin: '3px 0', color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.65 }}>{renderMarkdownInline(line, ragChunks)}</p>);
   });
 
   flushList();
@@ -430,7 +450,7 @@ function DownloadPdfButton({
 
 // ── STUDY GUIDE COMPONENT ──────────────────────────────────────────────────────
 
-function StudyGuideCard({ artifact }: { artifact: ParsedArtifact }) {
+function StudyGuideCard({ artifact, ragChunks }: { artifact: ParsedArtifact, ragChunks?: any[] }) {
   const [expanded, setExpanded] = useState(true);
 
   return (
@@ -466,7 +486,7 @@ function StudyGuideCard({ artifact }: { artifact: ParsedArtifact }) {
 
       {expanded && (
         <div style={{ padding: '16px 20px' }}>
-          {renderMarkdownBlock(artifact.content)}
+          {renderMarkdownBlock(artifact.content, ragChunks)}
         </div>
       )}
     </div>
@@ -726,7 +746,7 @@ function PracticeTestCard({ artifact, messageId }: { artifact: ParsedArtifact, m
 
 // ── REVISION SHEET COMPONENT ───────────────────────────────────────────────────
 
-function RevisionSheetCard({ artifact }: { artifact: ParsedArtifact }) {
+function RevisionSheetCard({ artifact, ragChunks }: { artifact: ParsedArtifact, ragChunks?: any[] }) {
   const [expanded, setExpanded] = useState(true);
 
   const sections = artifact.content.split(/\n(?=[⚡📐🔗⚠️🏆])/);
@@ -770,10 +790,10 @@ function RevisionSheetCard({ artifact }: { artifact: ParsedArtifact }) {
             return (
               <div key={i} style={{ borderLeft: '3px solid var(--accent-purple)', paddingLeft: 14 }}>
                 <div style={{ fontWeight: 700, fontSize: 13, color: 'var(--text-primary)', marginBottom: 8 }}>{firstLine}</div>
-                <div style={{ fontSize: 13 }}>{renderMarkdownBlock(rest)}</div>
+                <div style={{ fontSize: 13 }}>{renderMarkdownBlock(rest, ragChunks)}</div>
               </div>
             );
-          }) : renderMarkdownBlock(artifact.content)}
+          }) : renderMarkdownBlock(artifact.content, ragChunks)}
         </div>
       )}
     </div>
@@ -1001,7 +1021,7 @@ function ConceptMapCard({ artifact }: { artifact: ParsedArtifact }) {
 
 
 
-function PdfCard({ artifact }: { artifact: ParsedArtifact }) {
+function PdfCard({ artifact, ragChunks }: { artifact: ParsedArtifact, ragChunks?: any[] }) {
   const [expanded, setExpanded] = useState(true);
 
   return (
@@ -1035,14 +1055,14 @@ function PdfCard({ artifact }: { artifact: ParsedArtifact }) {
 
       {expanded && (
         <div style={{ padding: '16px 20px' }}>
-          {renderMarkdownBlock(artifact.content)}
+          {renderMarkdownBlock(artifact.content, ragChunks)}
         </div>
       )}
     </div>
   );
 }
 
-function StudyPlanCard({ artifact }: { artifact: ParsedArtifact }) {
+function StudyPlanCard({ artifact, ragChunks }: { artifact: ParsedArtifact, ragChunks?: any[] }) {
   const [expanded, setExpanded] = useState(true);
 
   return (
@@ -1077,7 +1097,7 @@ function StudyPlanCard({ artifact }: { artifact: ParsedArtifact }) {
 
       {expanded && (
         <div style={{ padding: '16px 20px' }}>
-          {renderMarkdownBlock(artifact.content)}
+          {renderMarkdownBlock(artifact.content, ragChunks)}
         </div>
       )}
     </div>
@@ -1090,10 +1110,12 @@ interface RichMessageRendererProps {
   content: string;
   isStreaming?: boolean;
   messageId?: string;
+  metadata?: Record<string, any>;
 }
 
-export function RichMessageRenderer({ content, isStreaming = false, messageId }: RichMessageRendererProps) {
+export function RichMessageRenderer({ content, isStreaming = false, messageId, metadata }: RichMessageRendererProps) {
   const parts = parseArtifacts(content);
+  const ragChunks = metadata?.ragChunks;
   const { isSpeaking, speak, stopSpeaking, isSynthesisSupported } = useVoiceInteraction();
 
   return (
@@ -1102,7 +1124,7 @@ export function RichMessageRenderer({ content, isStreaming = false, messageId }:
         if (part.type === 'text') {
           return (
             <div key={i} style={{ lineHeight: 1.65 }}>
-              {renderMarkdownBlock(part.content)}
+              {renderMarkdownBlock(part.content, ragChunks)}
             </div>
           );
         }
@@ -1110,14 +1132,14 @@ export function RichMessageRenderer({ content, isStreaming = false, messageId }:
         if (!part.artifact) return null;
 
         switch (part.artifact.type) {
-          case 'study-guide': return <StudyGuideCard key={i} artifact={part.artifact} />;
+          case 'study-guide': return <StudyGuideCard key={i} artifact={part.artifact} ragChunks={ragChunks} />;
           case 'practice-test': return <PracticeTestCard key={i} artifact={part.artifact} messageId={messageId} />;
-          case 'revision-sheet': return <RevisionSheetCard key={i} artifact={part.artifact} />;
+          case 'revision-sheet': return <RevisionSheetCard key={i} artifact={part.artifact} ragChunks={ragChunks} />;
           case 'flashcard-set': return <FlashcardSetComponent key={i} artifact={part.artifact} messageId={messageId} />;
           case 'concept-map': return <ConceptMapCard key={i} artifact={part.artifact} />;
-          case 'study-plan': return <StudyPlanCard key={i} artifact={part.artifact} />;
-          case 'pdf': return <PdfCard key={i} artifact={part.artifact} />;
-          default: return <div key={i}>{renderMarkdownBlock(part.content)}</div>;
+          case 'study-plan': return <StudyPlanCard key={i} artifact={part.artifact} ragChunks={ragChunks} />;
+          case 'pdf': return <PdfCard key={i} artifact={part.artifact} ragChunks={ragChunks} />;
+          default: return <div key={i}>{renderMarkdownBlock(part.content, ragChunks)}</div>;
         }
       })}
 

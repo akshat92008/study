@@ -237,7 +237,7 @@ export async function getLearnerStateSnapshot(
       topDueCards: (overdueRes.data || []).map((card: any) => ({ id: card.id, front: card.front })),
     },
     autopsy: {
-      recentMistakes: recentMistakesRes.data || [],
+      recentMistakes: (recentMistakesRes.data as any) || [],
       needsReviewCount,
       lastAutopsy: lastAutopsyData ? {
         test_name: lastAutopsyData.test_name,
