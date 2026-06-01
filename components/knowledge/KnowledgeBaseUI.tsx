@@ -50,7 +50,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
     const formData = new FormData(e.currentTarget);
     
     try {
-      const response = await fetch('/api/ingest', {
+      const response = await fetch('/api/materials/upload', {
         method: 'POST',
         body: formData,
       });

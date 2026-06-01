@@ -41,6 +41,8 @@ export interface RagChunk {
 export interface RagContext {
   mode: RagMode;
   chunks: RagChunk[];
+  materialIds: string[];
+  chunkIds: string[];
   totalContextChars: number;
   grounded: boolean;
   evidenceStrength: EvidenceStrength;

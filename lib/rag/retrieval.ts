@@ -72,6 +72,8 @@ export async function retrieveRagContext(input: RagRetrieveInput): Promise<RagCo
   const context: RagContext = {
     mode,
     chunks,
+    materialIds: Array.from(new Set(chunks.map((c) => c.materialId))),
+    chunkIds: chunks.map((c) => c.id),
     totalContextChars: chunks.reduce((sum, chunk) => sum + chunk.text.length, 0),
     grounded: chunks.length > 0,
     evidenceStrength: getEvidenceStrength(chunks),
@@ -198,6 +200,8 @@ function emptyContext(mode: RagMode): RagContext {
   return {
     mode,
     chunks: [],
+    materialIds: [],
+    chunkIds: [],
     totalContextChars: 0,
     grounded: false,
     evidenceStrength: 'none',

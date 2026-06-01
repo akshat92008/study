@@ -58,6 +58,8 @@ import {
 import { generateJSON } from '@/lib/ai/provider-client';
 import { DailyMicrotaskService } from '@/lib/services/daily-microtask.service';
 import { buildMindRagContext } from '@/lib/rag/mind-rag';
+import { ingestStudyMaterial, materialContentHash } from '@/lib/rag/ingest';
+import { SUPPORTED_MATERIAL_MIME_TYPES } from '@/lib/rag/config';
 const encoder = new TextEncoder();
 
 export async function GET(request?: NextRequest) {
@@ -564,6 +566,39 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
     }
 
     if (documentBase64 && documentMimeType) {
+      // Begin Background Ingestion if supported
+      if (SUPPORTED_MATERIAL_MIME_TYPES.has(documentMimeType)) {
+        const buffer = Buffer.from(documentBase64, 'base64');
+        const contentHash = materialContentHash(buffer);
+        // Fire and forget ingestion
+        (async () => {
+          try {
+            const { data: duplicate } = await supabase
+              .from('study_materials')
+              .select('id')
+              .eq('user_id', user.id)
+              .eq('content_hash', contentHash)
+              .neq('status', 'archived')
+              .maybeSingle();
+            if (!duplicate) {
+              const originalFilename = 'chat-upload-' + Date.now();
+              const storagePath = `${user.id}/${Date.now()}-${contentHash.slice(0, 12)}-${originalFilename}`;
+              const upload = await supabase.storage.from('study-materials').upload(storagePath, buffer, { contentType: documentMimeType, upsert: false });
+              if (!upload.error) {
+                const { data: material } = await supabase.from('study_materials').insert({
+                  user_id: user.id, title: 'Chat Upload', original_filename: originalFilename, mime_type: documentMimeType, storage_path: storagePath, source_type: 'upload', language: 'en', status: 'uploaded', content_hash: contentHash
+                }).select('id').single();
+                if (material) {
+                  await ingestStudyMaterial({ materialId: material.id, userId: user.id, buffer, mimeType: documentMimeType });
+                }
+              }
+            }
+          } catch (e) {
+            logger.warn('Failed background ingestion of chat upload', e);
+          }
+        })();
+      }
+
       const documentBudget = await reserveModelBudgetOrResponse({
         userId: user.id,
         feature: 'chat',
@@ -763,6 +798,8 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
             mistake_count: mindContext?.recentMistakes?.length || 0,
             rag_grounded: Boolean(mindContext?.ragContext?.grounded),
             rag_chunk_count: mindContext?.ragContext?.chunks?.length || 0,
+            rag_material_ids: mindContext?.ragContext?.materialIds || [],
+            rag_chunk_ids: mindContext?.ragContext?.chunkIds || [],
           };
           metadataPayload = { ...(metadataPayload || {}), contextTrace };
 

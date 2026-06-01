@@ -31,8 +31,14 @@ export async function buildMindRagContext(input: {
     chapter: input.chapter ?? undefined,
   });
 
+  let ragPromptBlock = formatRagContextForPrompt(ragContext);
+
+  if (ragContext.mode === 'explicit' && !ragContext.grounded) {
+    ragPromptBlock = `\n\nSOURCE-GROUNDED MODE: EXPLICIT\nSTATUS: NOT FOUND\nInstruct the AI: Tell the user clearly: "I could not find this in your uploaded material." Then, if you have general knowledge, provide it separately. DO NOT hallucinate citations.`;
+  }
+
   return {
     ragContext,
-    ragPromptBlock: formatRagContextForPrompt(ragContext),
+    ragPromptBlock,
   };
 }
