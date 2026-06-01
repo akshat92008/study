@@ -90,8 +90,8 @@ export interface AppState extends ChatSlice {
   createLearningGoal: (title: string, details?: CreateLearningGoalDetails) => Promise<LearningGoal | null>;
 
   // Global drawer / UI states
-  activeDrawer: 'cognition' | 'revision' | 'autopsy' | null;
-  setActiveDrawer: (drawer: 'cognition' | 'revision' | 'autopsy' | null) => void;
+  activeDrawer: 'cognition' | 'revision' | 'autopsy' | 'beats' | null;
+  setActiveDrawer: (drawer: 'cognition' | 'revision' | 'autopsy' | 'beats' | null) => void;
   autopsyResult: any;
   setAutopsyResult: (result: any) => void;
   isUploadingMock: boolean;
