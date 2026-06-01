@@ -36,6 +36,11 @@ export const EVENT_CONSUMER_MATRIX = {
   INGESTION_DOCUMENT_PROCESSED: ['learning_state_engine'],
   MIND_MESSAGE_CREATED: ['learning_state_engine'],
   STUDENT_MODEL_SYNC_REQUESTED: ['learning_state_engine', 'command_engine'],
+  PRACTICE_ATTEMPT_RECORDED: [
+    'atlas_engine',
+    'memory_engine',
+    'learning_state_engine',
+  ],
 } as const satisfies Record<string, readonly EventConsumer[]>;
 
 export type RoutedEventType = keyof typeof EVENT_CONSUMER_MATRIX;

@@ -72,6 +72,7 @@ describe('private beta MVP schema contract', () => {
       'event_attempts',
       'event_dlq',
       'session_cards',
+      'daily_microtasks',
       'learner_states',
       'ai_usage_daily',
       'ai_usage_events',

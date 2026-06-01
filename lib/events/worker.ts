@@ -317,6 +317,16 @@ export class EventWorkerService {
             data: payload,
           });
           return { status: 'HANDLED' };
+        } else if (event.type === 'PRACTICE_ATTEMPT_RECORDED') {
+          // Trigger a learning state invalidation/recalculation
+          const { invalidateSessionCard } = await import('@/lib/services/session-card-invalidation');
+          await invalidateSessionCard(event.user_id, 'LEARNER_STATE_UPDATED', {
+            skipVersionBump: false,
+            client: createAdminClient(),
+          }).catch((err: any) =>
+            logger.warn('Practice attempt: failed to invalidate session card', { userId: event.user_id, err })
+          );
+          return { status: 'HANDLED' };
         }
         return { status: 'SKIPPED_INTENTIONALLY', reason: 'No learning-state projection for this event yet' };
       }
@@ -329,6 +339,9 @@ export class EventWorkerService {
           return { status: 'HANDLED' };
         } else if (event.type === 'MEMORY_CARD_REVIEWED') {
           return { status: 'SKIPPED_INTENTIONALLY', reason: 'Card review updates ATLAS through mastery evidence writer' };
+        } else if (event.type === 'PRACTICE_ATTEMPT_RECORDED') {
+          await AtlasConsumer.handlePracticeAttempt(event.user_id, payload);
+          return { status: 'HANDLED' };
         }
         break;
       case 'memory_engine':
@@ -337,6 +350,9 @@ export class EventWorkerService {
           return { status: 'HANDLED' };
         } else if (event.type === 'STUDY_SESSION_COMPLETED' || event.type === 'MIND_TUTOR_COMPLETED') {
           await MemoryConsumer.handleStudySessionCompleted(event.user_id, event.data);
+          return { status: 'HANDLED' };
+        } else if (event.type === 'PRACTICE_ATTEMPT_RECORDED') {
+          await MemoryConsumer.handlePracticeAttempt(event.user_id, payload);
           return { status: 'HANDLED' };
         }
         break;

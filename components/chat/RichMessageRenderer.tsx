@@ -517,12 +517,13 @@ function parseQuestions(content: string): ParsedQuestion[] {
   return questions;
 }
 
-function PracticeTestCard({ artifact }: { artifact: ParsedArtifact }) {
+function PracticeTestCard({ artifact, messageId }: { artifact: ParsedArtifact, messageId?: string }) {
   const questions = parseQuestions(artifact.content);
   const [currentQ, setCurrentQ] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, string>>({});
   const [showExplanations, setShowExplanations] = useState<Record<number, boolean>>({});
-  const [testComplete, setTestComplete] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const question = questions[currentQ];
   const selected = selectedAnswers[currentQ];
@@ -677,6 +678,47 @@ function PracticeTestCard({ artifact }: { artifact: ParsedArtifact }) {
             Next <ChevronRight size={12} />
           </button>
         </div>
+
+        {/* Submit Action */}
+        {Object.keys(selectedAnswers).length > 0 && !isSubmitted && (
+          <div style={{ marginTop: 20, display: 'flex', justifyContent: 'center' }}>
+            <button
+              onClick={async () => {
+                if (!messageId || isSubmitting) return;
+                setIsSubmitting(true);
+                try {
+                  const answers = Object.entries(selectedAnswers).map(([idx, ans]) => ({
+                    position: parseInt(idx) + 1,
+                    answer: ans
+                  }));
+                  await fetch('/api/practice/attempts', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ messageId, answers })
+                  });
+                  setIsSubmitted(true);
+                } catch (e) {
+                  console.error(e);
+                }
+                setIsSubmitting(false);
+              }}
+              disabled={isSubmitting || !messageId}
+              style={{
+                padding: '8px 24px', background: 'var(--accent-purple)',
+                color: 'white', border: 'none', borderRadius: 8,
+                fontSize: 13, fontWeight: 700, cursor: isSubmitting || !messageId ? 'not-allowed' : 'pointer',
+                opacity: isSubmitting || !messageId ? 0.7 : 1
+              }}
+            >
+              {isSubmitting ? 'Saving...' : 'Submit Answers to Learning Profile'}
+            </button>
+          </div>
+        )}
+        {isSubmitted && (
+          <div style={{ marginTop: 20, textAlign: 'center', fontSize: 12, color: 'var(--success)' }}>
+            ✓ Results saved to your learning profile.
+          </div>
+        )}
       </div>
     </div>
   );
@@ -756,17 +798,21 @@ function parseFlashcards(content: string): ParsedFlashcard[] {
   return cards;
 }
 
-function FlashcardSetComponent({ artifact }: { artifact: ParsedArtifact }) {
+function FlashcardSetComponent({ artifact, messageId }: { artifact: ParsedArtifact, messageId?: string }) {
   const cards = parseFlashcards(artifact.content);
   const [currentIdx, setCurrentIdx] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [mastered, setMastered] = useState<Set<number>>(new Set());
+  const [pendingReviews, setPendingReviews] = useState<Record<number, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const card = cards[currentIdx];
   if (!card) return null;
 
   const handleRate = (knew: boolean) => {
     if (knew) setMastered(prev => new Set([...prev, currentIdx]));
+    setPendingReviews(prev => ({ ...prev, [currentIdx]: knew ? 'knew' : 'forgot' }));
     setFlipped(false);
     setTimeout(() => setCurrentIdx(i => (i + 1) % cards.length), 200);
   };
@@ -858,6 +904,46 @@ function FlashcardSetComponent({ artifact }: { artifact: ParsedArtifact }) {
             }} />
           ))}
         </div>
+        
+        {Object.keys(pendingReviews).length > 0 && !isSubmitted && (
+          <div style={{ marginTop: 12, display: 'flex', justifyContent: 'center' }}>
+            <button
+              onClick={async () => {
+                if (!messageId || isSubmitting) return;
+                setIsSubmitting(true);
+                try {
+                  const reviews = Object.entries(pendingReviews).map(([idx, confidence]) => ({
+                    position: parseInt(idx) + 1,
+                    confidence
+                  }));
+                  await fetch('/api/practice/reviews', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ messageId, reviews })
+                  });
+                  setIsSubmitted(true);
+                } catch (e) {
+                  console.error(e);
+                }
+                setIsSubmitting(false);
+              }}
+              disabled={isSubmitting || !messageId}
+              style={{
+                padding: '6px 16px', background: 'var(--accent-purple)',
+                color: 'white', border: 'none', borderRadius: 8,
+                fontSize: 12, fontWeight: 700, cursor: isSubmitting || !messageId ? 'not-allowed' : 'pointer',
+                opacity: isSubmitting || !messageId ? 0.7 : 1
+              }}
+            >
+              {isSubmitting ? 'Saving...' : 'Sync Progress'}
+            </button>
+          </div>
+        )}
+        {isSubmitted && (
+          <div style={{ marginTop: 12, textAlign: 'center', fontSize: 11, color: 'var(--success)' }}>
+            ✓ Progress synced
+          </div>
+        )}
       </div>
     </div>
   );
@@ -1003,9 +1089,10 @@ function StudyPlanCard({ artifact }: { artifact: ParsedArtifact }) {
 interface RichMessageRendererProps {
   content: string;
   isStreaming?: boolean;
+  messageId?: string;
 }
 
-export function RichMessageRenderer({ content, isStreaming = false }: RichMessageRendererProps) {
+export function RichMessageRenderer({ content, isStreaming = false, messageId }: RichMessageRendererProps) {
   const parts = parseArtifacts(content);
   const { isSpeaking, speak, stopSpeaking, isSynthesisSupported } = useVoiceInteraction();
 
@@ -1024,9 +1111,9 @@ export function RichMessageRenderer({ content, isStreaming = false }: RichMessag
 
         switch (part.artifact.type) {
           case 'study-guide': return <StudyGuideCard key={i} artifact={part.artifact} />;
-          case 'practice-test': return <PracticeTestCard key={i} artifact={part.artifact} />;
+          case 'practice-test': return <PracticeTestCard key={i} artifact={part.artifact} messageId={messageId} />;
           case 'revision-sheet': return <RevisionSheetCard key={i} artifact={part.artifact} />;
-          case 'flashcard-set': return <FlashcardSetComponent key={i} artifact={part.artifact} />;
+          case 'flashcard-set': return <FlashcardSetComponent key={i} artifact={part.artifact} messageId={messageId} />;
           case 'concept-map': return <ConceptMapCard key={i} artifact={part.artifact} />;
           case 'study-plan': return <StudyPlanCard key={i} artifact={part.artifact} />;
           case 'pdf': return <PdfCard key={i} artifact={part.artifact} />;

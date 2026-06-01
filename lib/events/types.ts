@@ -15,6 +15,7 @@ export const EventTypeSchema = z.enum([
   'CONCEPT_DISCOVERED',
   'INGESTION_DOCUMENT_PROCESSED',
   'STUDENT_MODEL_SYNC_REQUESTED',
+  'PRACTICE_ATTEMPT_RECORDED',
 ]);
 
 export type EventType = z.infer<typeof EventTypeSchema>;
@@ -124,6 +125,24 @@ export const EventPayloadSchemas: Partial<Record<EventType | string, z.ZodTypeAn
   }).passthrough(),
   STUDENT_MODEL_SYNC_REQUESTED: z.object({
     reason: z.string().optional(),
+  }).passthrough(),
+  PRACTICE_ATTEMPT_RECORDED: z.object({
+    practiceSetId: z.string().uuid(),
+    setType: z.enum(['mcq', 'flashcard']),
+    metrics: z.object({
+      correctCount: z.number().int().nonnegative().optional(),
+      wrongCount: z.number().int().nonnegative().optional(),
+      reviewedCount: z.number().int().nonnegative().optional(),
+      wrongConceptIds: z.array(z.string().uuid()).optional(),
+      wrongConceptNames: z.array(z.string()).optional(),
+    }).optional(),
+    items: z.array(z.object({
+      practiceItemId: z.string().uuid(),
+      conceptId: MaybeUuid,
+      conceptName: z.string().optional(),
+      isCorrect: z.boolean().optional(),
+      confidence: z.string().optional(),
+    })).optional()
   }).passthrough(),
 };
 

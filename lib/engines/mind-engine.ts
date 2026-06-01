@@ -67,6 +67,7 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       recentStudySessions: learnerState.recentStudySessions,
       weakConcepts: learnerState.atlas.weakConcepts.slice(0, 3),
       recentMistakes: learnerState.autopsy.recentMistakes.slice(0, 3),
+      recentPracticeStruggles: await getRecentPracticeStruggles(userId, supabase),
       struggles: learnerState.autopsy.recentMistakes.slice(0, 3).map(m => ({ chapter: m.chapter, subject: m.subject })),
       masteryStats: learnerState.atlas.masterySummary,
       overdueCardsCount: learnerState.memory.dueCount,
@@ -106,7 +107,7 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       currentSessionCard: null,
       commandTasks: [],
       recentStudySessions: [],
-      weakConcepts: [], recentMistakes: [], struggles: [],
+      weakConcepts: [], recentMistakes: [], recentPracticeStruggles: [], struggles: [],
       masteryStats: { totalConcepts: 0, masteredCount: 0, masteryPercent: 0 },
       overdueCardsCount: 0, topOverdueCards: [], emotionalState: 'neutral', recentTopics: [], knownAnalogies: [],
       conceptHistory: [],
@@ -222,6 +223,30 @@ async function getLongitudinalConceptHistory(
       .slice(0, 6);
   } catch (err) {
     logger.warn('[MIND] longitudinal concept history unavailable', { userId, err });
+    return [];
+  }
+}
+
+async function getRecentPracticeStruggles(userId: string, supabase: any) {
+  try {
+    const { data } = await supabase
+      .from('mastery_events')
+      .select('evidence, created_at, concepts(name, chapter, subject)')
+      .eq('user_id', userId)
+      .eq('source', 'practice')
+      .eq('evidence_type', 'practice_wrong')
+      .order('created_at', { ascending: false })
+      .limit(3);
+    
+    if (!data) return [];
+    return data.map((d: any) => ({
+      conceptName: d.concepts?.name || 'Unknown',
+      chapter: d.concepts?.chapter || 'Unknown',
+      subject: d.concepts?.subject || 'Unknown',
+      evidence: d.evidence
+    }));
+  } catch (err) {
+    logger.warn('[MIND] recent practice struggles unavailable', { userId, err });
     return [];
   }
 }

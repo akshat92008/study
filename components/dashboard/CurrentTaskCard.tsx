@@ -11,9 +11,11 @@ import {
   type ClientSessionCard,
   type SessionCardUiStatus,
 } from '@/lib/dashboard/session-card-contract';
+import { CheckCircle2, Circle } from 'lucide-react';
 
 export default function CurrentTaskCard({ onSessionComplete }: { onSessionComplete?: () => void }) {
   const [data, setData] = useState<ClientSessionCard | null>(null);
+  const [microtasks, setMicrotasks] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [cardStatus, setCardStatus] = useState<SessionCardUiStatus>('empty');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -58,6 +60,14 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
       setData(normalized.card);
       setCardStatus(normalized.status);
       setErrorMessage(normalized.errorMessage ?? null);
+
+      if (normalized.card) {
+        const tasksRes = await fetch('/api/dashboard/microtasks');
+        if (tasksRes.ok) {
+          const tasksData = await tasksRes.json();
+          setMicrotasks(tasksData.tasks || []);
+        }
+      }
     } catch (e) {
       console.error('Failed to fetch daily session card', e);
       setData(null);
@@ -619,7 +629,44 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
           </div>
         )}
 
-        <div style={{ marginTop: 'var(--sp-2)' }}>
+        {microtasks.length > 0 && !isSessionActive && (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)', marginTop: 'var(--sp-2)' }}>
+            {microtasks.map((task) => (
+              <div key={task.id} style={{ 
+                display: 'flex', alignItems: 'center', gap: 'var(--sp-2)', 
+                background: 'rgba(255,255,255,0.03)', padding: 'var(--sp-2) var(--sp-3)', 
+                borderRadius: 'var(--radius-md)', border: '1px solid rgba(255,255,255,0.05)'
+              }}>
+                <button 
+                  onClick={async () => {
+                    const newStatus = task.status === 'done' ? 'pending' : 'done';
+                    setMicrotasks(prev => prev.map(t => t.id === task.id ? { ...t, status: newStatus } : t));
+                    await fetch('/api/dashboard/microtasks', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({ action: 'update_status', id: task.id, status: newStatus })
+                    });
+                  }}
+                  style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', padding: 0 }}
+                >
+                  {task.status === 'done' ? <CheckCircle2 size={16} style={{ color: 'var(--success)' }} /> : <Circle size={16} style={{ color: 'var(--text-tertiary)' }} />}
+                </button>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 600, color: task.status === 'done' ? 'var(--text-tertiary)' : 'var(--text-primary)', textDecoration: task.status === 'done' ? 'line-through' : 'none' }}>
+                    {task.title}
+                  </span>
+                  {(task.subject || task.estimated_minutes) && (
+                    <span style={{ fontSize: '10px', color: 'var(--text-tertiary)' }}>
+                      {[task.subject, `${task.estimated_minutes}m`].filter(Boolean).join(' • ')}
+                    </span>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <div style={{ marginTop: 'var(--sp-3)' }}>
           {!isSessionActive ? (
             <Button 
               onClick={startFocusSession} 

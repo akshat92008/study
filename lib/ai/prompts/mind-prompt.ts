@@ -27,6 +27,7 @@ export interface MINDContext {
   recentStudySessions?: Array<{ subject?: string | null; chapter?: string | null; durationMinutes?: number | null }>;
   weakConcepts: Array<{ name: string; subject: string; chapter: string; mastery: string }>;
   recentMistakes: Array<{ chapter: string; category: string; subject: string }>;
+  recentPracticeStruggles?: Array<{ conceptName: string; chapter: string; subject: string; evidence: string }>;
   struggles: Array<{ chapter: string; subject: string }>;
   masteryStats: {
     totalConcepts: number;
@@ -199,6 +200,7 @@ function buildPrompt(ctx: MINDContext, semanticMemories: string[] = [], intent?:
 
   const weakList = ctx.weakConcepts.slice(0, 3).map(c => `${c.name} (${c.mastery})`).join(', ') || 'None identified yet';
   const mistakeList = ctx.recentMistakes.slice(0, 3).map(m => `${m.chapter} — ${m.category}`).join('; ') || 'None recorded';
+  const practiceStrugglesList = (ctx.recentPracticeStruggles || []).slice(0, 3).map(p => `${p.conceptName} (${p.chapter}): ${p.evidence}`).join('; ') || 'None recorded';
   const commandTaskList = (ctx.commandTasks || []).slice(0, 3).map(t => `${t.title}${t.priority ? ` (${t.priority})` : ''}`).join('; ') || 'None queued';
   const sessionCard = ctx.currentSessionCard
     ? `${ctx.currentSessionCard.subject || 'General'} — ${ctx.currentSessionCard.focusTopic || 'Daily focus'} (${ctx.currentSessionCard.estimatedMinutes || 25} min)`
@@ -363,6 +365,7 @@ Never give a generic textbook answer. Always connect to:
 - Their specific exam (${ctx.profile.examType}) and how this topic appears in it
 - Their known weak areas: ${weakList}
 - Their recent mistakes if relevant: ${mistakeList}
+- Recent Struggles (Practice): ${practiceStrugglesList}
 - ${daysToExam ? `Their timeline: ${daysToExam} days remaining` : ''}
 
 MIND answers the user directly first. Internal engines are background context. Do not let empty MEMORY, ATLAS, or AUTOPSY data prevent helpful answers. If engine data exists, use it to personalize. If engine data does not exist, answer with exam-specific reasoning.

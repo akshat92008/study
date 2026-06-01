@@ -25,6 +25,7 @@ export const GlobalChat = memo(function GlobalChat() {
     loadChatFromSupabase,
     isAssistantExpanded,
     toggleAssistantExpanded,
+    sessions,
   } = useAppStore();
 
   const [inputMessage, setInputMessage] = useState('');
@@ -293,7 +294,7 @@ export const GlobalChat = memo(function GlobalChat() {
           <div>
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <h3 style={{ fontSize: '14px', fontWeight: 'var(--fw-semibold)', margin: 0, letterSpacing: '-0.01em' }}>
-                MIND
+                {sessions.find((s: any) => s.id === chatId)?.title || 'MIND'}
               </h3>
               {streakDays > 0 && (
                 <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginLeft: '8px', padding: '2px 6px', background: 'rgba(251,146,60,0.12)', borderRadius: '12px', border: '1px solid rgba(251,146,60,0.25)' }}>
@@ -402,7 +403,7 @@ export const GlobalChat = memo(function GlobalChat() {
                     tomorrowFocus={msg.metadata?.tomorrowFocus}
                   />
                 ) : (
-                  <RichMessageRenderer content={msg.content} isStreaming={false} />
+                  <RichMessageRenderer content={msg.content} isStreaming={false} messageId={msg.id} />
                 )}
               </div>
             </div>

@@ -728,4 +728,81 @@ export class MemoryConsumer {
       logger.warn('MemoryConsumer: failed to create study session card', err);
     }
   }
+
+  static async handlePracticeAttempt(userId: string, data: any): Promise<void> {
+    const { items = [], setType, practiceSetId } = data || {};
+    if (items.length === 0) return;
+
+    const supabase = createAdminClient();
+    let created = 0;
+
+    for (const item of items) {
+      try {
+        if (setType === 'mcq' && item.isCorrect === false) {
+          // Got MCQ wrong -> Add to revision cards if we can extract a gap.
+          // Since we might not have the full question/answer text here, we rely on the client
+          // sending the context, OR we just record that a mistake was made if context isn't available.
+          // The event payload (data.items) has practiceItemId and conceptId. 
+          // If the backend recorded the items in practice_items, we can fetch them.
+          const { data: practiceItem } = await supabase
+            .from('practice_items')
+            .select('question, correct_answer, explanation, subject, chapter')
+            .eq('id', item.practiceItemId)
+            .single();
+
+          if (practiceItem && practiceItem.question && practiceItem.correct_answer) {
+            const card = await createSingleCard(
+              userId,
+              item.conceptId || null,
+              `Missed MCQ: ${practiceItem.question}`,
+              `Correct: ${practiceItem.correct_answer}\n\nExplanation: ${practiceItem.explanation || 'No explanation provided.'}`,
+              practiceItem.subject || 'General',
+              practiceItem.chapter || 'Practice',
+              supabase as any,
+              {
+                sourceType: 'practice_mistake',
+                sourceId: item.practiceItemId,
+                verified: true,
+                confidence: 0.9,
+              }
+            );
+            if (card) created++;
+          }
+        } else if (setType === 'flashcard' && ['again', 'hard'].includes(item.confidence)) {
+          // Struggled with a flashcard -> ensure it's in their revision deck
+          const { data: practiceItem } = await supabase
+            .from('practice_items')
+            .select('question, correct_answer, explanation, subject, chapter')
+            .eq('id', item.practiceItemId)
+            .single();
+
+          if (practiceItem && practiceItem.question && practiceItem.correct_answer) {
+            const card = await createSingleCard(
+              userId,
+              item.conceptId || null,
+              practiceItem.question,
+              practiceItem.correct_answer,
+              practiceItem.subject || 'General',
+              practiceItem.chapter || 'Practice',
+              supabase as any,
+              {
+                sourceType: 'practice_flashcard',
+                sourceId: item.practiceItemId,
+                verified: true,
+                confidence: 0.9,
+              }
+            );
+            if (card) created++;
+          }
+        }
+      } catch (err) {
+        logger.warn('MemoryConsumer: failed to process practice item for memory', { item, err });
+      }
+    }
+
+    if (created > 0) {
+      await invalidateSessionCards(userId, supabase);
+      logger.info(`MemoryConsumer: created ${created} flashcards from practice attempt`, { userId, setType, practiceSetId });
+    }
+  }
 }

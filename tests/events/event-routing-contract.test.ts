@@ -40,7 +40,7 @@ describe('event routing SQL/TypeScript contract', () => {
     const { file, sql } = latestCreateEventMigration();
     const sqlMatrix = extractSqlRouteMatrix(sql);
 
-    expect(file).toBe('20260601000300_remove_command_engine_from_mvp_consumers.sql');
+    expect(file).toBe('20260601000800_practice_event_routing.sql');
     expect(sqlMatrix).toEqual(EVENT_CONSUMER_MATRIX);
   });
 
@@ -54,6 +54,7 @@ describe('event routing SQL/TypeScript contract', () => {
       'MEMORY_CARD_CREATED',
       'MEMORY_CARD_REVIEWED',
       'STUDENT_MODEL_SYNC_REQUESTED',
+      'PRACTICE_ATTEMPT_RECORDED',
     ] as const;
 
     for (const event of mvpEvents) {

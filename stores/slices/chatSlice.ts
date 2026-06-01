@@ -22,11 +22,20 @@ export interface ChatSlice {
   setChatMessages: (messages: ChatMessage[]) => void;
   
   // Async Thunks
-  loadChatFromSupabase: () => Promise<void>;
+  loadChatFromSupabase: (id?: string) => Promise<void>;
   syncPendingQueue: () => Promise<void>;
   syncChatToSupabase: () => Promise<void>;
   subscribeToRealtime: () => void;
   clearChat: () => void;
+
+  // Sessions
+  sessions: any[];
+  isSessionsLoading: boolean;
+  loadSessions: () => Promise<void>;
+  createNewSession: () => Promise<void>;
+  selectSession: (id: string) => Promise<void>;
+  renameSession: (id: string, title: string) => Promise<void>;
+  deleteSession: (id: string) => Promise<void>;
 }
 
 let activeRealtimeChannel: any = null;
@@ -42,6 +51,8 @@ export const createChatSlice: StateCreator<
   chatMessages: [],
   pendingSyncQueue: [],
   isChatLoading: false,
+  sessions: [],
+  isSessionsLoading: false,
 
   setChatId: (id) => set({ chatId: id }),
   setChatMessages: (messages) => set({ chatMessages: messages }),
@@ -56,8 +67,8 @@ export const createChatSlice: StateCreator<
   },
 
   clearChat: () => {
+    const currentChatId = get().chatId;
     set({ chatMessages: [], pendingSyncQueue: [] });
-    set({ chatId: null });
     
     // Clean up channel on clear
     if (activeRealtimeChannel) {
@@ -66,13 +77,14 @@ export const createChatSlice: StateCreator<
       activeRealtimeChannel = null;
     }
 
-    get().loadChatFromSupabase(); // Will create a new session
+    get().loadChatFromSupabase(currentChatId || undefined);
   },
 
-  loadChatFromSupabase: async () => {
+  loadChatFromSupabase: async (id?: string) => {
     set({ isChatLoading: true });
     try {
-      const response = await fetch('/api/ai/chat', {
+      const url = id ? `/api/ai/chat?chatId=${id}` : '/api/ai/chat';
+      const response = await fetch(url, {
         method: 'GET',
         headers: { Accept: 'application/json' },
       });
@@ -103,6 +115,69 @@ export const createChatSlice: StateCreator<
       console.error('Failed to load chat:', err);
     } finally {
       set({ isChatLoading: false });
+    }
+  },
+
+  loadSessions: async () => {
+    set({ isSessionsLoading: true });
+    try {
+      const response = await fetch('/api/chat/sessions', { method: 'GET' });
+      if (response.ok) {
+        const data = await response.json();
+        set({ sessions: data.sessions || [] });
+      }
+    } catch (err) {
+      console.error('Failed to load sessions:', err);
+    } finally {
+      set({ isSessionsLoading: false });
+    }
+  },
+
+  createNewSession: async () => {
+    try {
+      const response = await fetch('/api/chat/sessions', { method: 'POST', body: JSON.stringify({ title: 'New Chat' }) });
+      if (response.ok) {
+        const data = await response.json();
+        await get().loadSessions();
+        await get().selectSession(data.session.id);
+      }
+    } catch (err) {
+      console.error('Failed to create session:', err);
+    }
+  },
+
+  selectSession: async (id: string) => {
+    if (activeRealtimeChannel) {
+      const supabase = createClient();
+      supabase.removeChannel(activeRealtimeChannel);
+      activeRealtimeChannel = null;
+    }
+    set({ chatId: id, chatMessages: [] });
+    await get().loadChatFromSupabase(id);
+  },
+
+  renameSession: async (id: string, title: string) => {
+    try {
+      const response = await fetch(`/api/chat/sessions/${id}`, { method: 'PATCH', body: JSON.stringify({ title }) });
+      if (response.ok) {
+        await get().loadSessions();
+      }
+    } catch (err) {
+      console.error('Failed to rename session:', err);
+    }
+  },
+
+  deleteSession: async (id: string) => {
+    try {
+      const response = await fetch(`/api/chat/sessions/${id}`, { method: 'DELETE' });
+      if (response.ok) {
+        await get().loadSessions();
+        if (get().chatId === id) {
+          get().clearChat();
+        }
+      }
+    } catch (err) {
+      console.error('Failed to delete session:', err);
     }
   },
 

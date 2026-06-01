@@ -22,6 +22,7 @@ import { ChatMemoryService } from '@/lib/services/chatMemoryService';
 import { EpisodicMemoryService } from '@/lib/services/episodic-memory.service';
 import { captureSentryException } from '@/lib/telemetry/sentry-runtime';
 import { publishTutorProgressEvents } from '@/lib/mind/tutor-completion';
+import { PracticeService } from '@/lib/services/practice.service';
 
 export interface ChatSideEffectsInput {
   supabase: SupabaseClient;
@@ -143,6 +144,19 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
     }
   } catch (err) {
     captureSentryException(err, { tags: { context: 'emotion_state_update' } });
+  }
+
+  // 4.5. Practice Artifact Storage
+  try {
+    await PracticeService.extractAndStorePracticeArtifacts(supabase, {
+      userId,
+      chatSessionId: sessionId,
+      messageId: assistant_message_id,
+      fullResponse,
+    });
+  } catch (err) {
+    logger.warn('SideEffect: Practice artifact extraction failed', err);
+    captureSentryException(err, { tags: { context: 'practice_artifact_storage' } });
   }
 
   // 5. Downstream Event Derivation (MIND_TUTOR_COMPLETED + concept expansion)

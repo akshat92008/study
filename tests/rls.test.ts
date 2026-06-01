@@ -35,6 +35,7 @@ describe('Row Level Security migration invariants', () => {
       'autopsy_jobs',
       'mistakes',
       'session_cards',
+      'daily_microtasks',
       'daily_plans',
       'ai_usage_daily',
       'ai_usage_events',

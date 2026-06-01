@@ -55,6 +55,8 @@ import {
   formatWeakAreasForChat,
   localDateAfter,
 } from '@/lib/services/command-plan.service';
+import { generateJSON } from '@/lib/ai/provider-client';
+import { DailyMicrotaskService } from '@/lib/services/daily-microtask.service';
 
 const encoder = new TextEncoder();
 
@@ -71,7 +73,24 @@ export async function GET(request?: NextRequest) {
       });
     }
 
-    const sessionId = await getOrCreateGlobalChatSession(supabase, user.id);
+    const url = request ? new URL(request.url) : null;
+    const chatId = url?.searchParams.get('chatId');
+
+    let sessionId = chatId;
+    if (!sessionId) {
+      sessionId = await getOrCreateGlobalChatSession(supabase, user.id);
+    } else {
+      const { data: sessionData, error: sessionError } = await supabase
+        .from('chat_sessions')
+        .select('id')
+        .eq('id', sessionId)
+        .eq('user_id', user.id)
+        .single();
+      if (sessionError || !sessionData) {
+        return apiErrorResponse('not_found', { status: 404, message: 'Chat session not found.', requestId });
+      }
+    }
+
     const messages = await loadRecentMessagesForClient(supabase, sessionId);
 
     return NextResponse.json({ sessionId, messages }, { headers: { 'x-request-id': requestId } });
@@ -183,7 +202,30 @@ export async function POST(req: NextRequest) {
     const activeGoalId = parsed.activeGoalId ?? undefined;
     let sessionTurnsCount = parsed.sessionTurnsCount ?? 0;
     const promptVersion = getPromptVersion('mind');
-    const sessionId = await getOrCreateGlobalChatSession(supabase, user.id);
+    
+    let sessionId = chatId;
+    if (!sessionId) {
+      sessionId = await getOrCreateGlobalChatSession(supabase, user.id);
+    } else {
+      const { data: sessionData } = await supabase
+        .from('chat_sessions')
+        .select('id, title')
+        .eq('id', sessionId)
+        .eq('user_id', user.id)
+        .single();
+        
+      if (!sessionData) {
+        return apiErrorResponse('not_found', { status: 404, message: 'Chat session not found.', requestId });
+      }
+      
+      if (sessionData.title === 'New Chat') {
+        const titleContent = message || (parsed.imageBase64 ? 'Image question' : parsed.documentBase64 ? 'Document analysis' : 'New Chat');
+        const newTitle = titleContent.length > 30 ? titleContent.substring(0, 30) + '...' : titleContent;
+        if (newTitle !== 'New Chat') {
+          supabase.from('chat_sessions').update({ title: newTitle }).eq('id', sessionId).then();
+        }
+      }
+    }
 
     if (imageBase64) {
       const imgValidation = validateBase64Payload(imageBase64, imageMimeType);
@@ -824,6 +866,74 @@ export async function buildChatFirstEngineResponse(input: {
     policyIntent = 'autopsy_query';
   }
 
+  // Detect plan edits
+  const isPlanEdit = /\b(add|remove|change|shift|lighten|increase|mark|replace)\b/i.test(normalized) && 
+                     /\b(plan|target|task|microtask|mcq|mcqs|today|tomorrow)\b/i.test(normalized);
+
+  if (isPlanEdit) {
+    try {
+      const service = new DailyMicrotaskService(input.supabase);
+      const today = new Date().toISOString().split('T')[0];
+      const currentTasks = await service.getMicrotasksForDate(input.userId, today);
+      
+      const editPrompt = `You are a study plan editor. The user wants to edit their plan.
+User request: "${input.message}"
+Current tasks: ${JSON.stringify(currentTasks.map(t => ({ id: t.id, title: t.title, status: t.status, minutes: t.estimated_minutes })))}
+
+Determine the actions to take. Return ONLY valid JSON:
+{
+  "actions": [
+    {
+      "type": "add",
+      "title": "<title>",
+      "subject": "<optional subject>",
+      "estimated_minutes": 15
+    },
+    {
+      "type": "remove",
+      "taskId": "<id>"
+    },
+    {
+      "type": "mark_done",
+      "taskId": "<id>"
+    }
+  ],
+  "responseMessage": "<Short confirmation message to the user>"
+}
+If the user wants to clear the plan, use "remove" for all. If they want to lighten, remove some.`;
+
+      const editResult = await generateJSON<any>('flash', 'Return ONLY JSON.', editPrompt);
+      if (editResult && editResult.actions) {
+        for (const action of editResult.actions) {
+          if (action.type === 'add') {
+            await service.addMicrotask({
+              user_id: input.userId,
+              task_date: today,
+              title: action.title,
+              subject: action.subject || null,
+              type: 'custom',
+              estimated_minutes: action.estimated_minutes || 15,
+              status: 'pending',
+              priority: 'medium',
+              source: 'mind'
+            });
+          } else if (action.type === 'remove' && action.taskId) {
+            await service.deleteMicrotask(action.taskId, input.userId);
+          } else if (action.type === 'mark_done' && action.taskId) {
+            await service.updateMicrotaskStatus(action.taskId, input.userId, 'done');
+          }
+        }
+        return {
+          text: editResult.responseMessage || 'I have updated your plan for today.',
+          metadata: { action: 'plan_edited' }
+        };
+      }
+    } catch (err) {
+      // Fallback if JSON generation fails
+      console.error('Plan edit failed', err);
+    }
+  }
+
   if (policyIntent === 'direct_generation') {
     return null;
   }
@@ -832,11 +942,39 @@ export async function buildChatFirstEngineResponse(input: {
     // If the user is just asking for a plan, we return null to let the LLM generate a rich, expanded plan.
     // The LLM will read ctx.commandTasks and ctx.currentSessionCard to do this.
     // But we should ensure the DB has a plan generated for tomorrow/today if missing, just so the state is consistent.
-    await ensureCommandPlanForDate({
+    const targetDate = localDateAfter(/\btomorrow\b/i.test(normalized) ? 1 : 0);
+    const planResult = await ensureCommandPlanForDate({
       userId: input.userId,
-      date: localDateAfter(/\btomorrow\b/i.test(normalized) ? 1 : 0),
+      date: targetDate,
       client: input.supabase,
     });
+    
+    // Auto-expand session card into microtasks if none exist for today
+    if (targetDate === new Date().toISOString().split('T')[0]) {
+      try {
+        const service = new DailyMicrotaskService(input.supabase);
+        const existingMicrotasks = await service.getMicrotasksForDate(input.userId, targetDate);
+        if (existingMicrotasks.length === 0 && planResult.tasks.length > 0) {
+          for (const task of planResult.tasks) {
+            await service.addMicrotask({
+              user_id: input.userId,
+              task_date: targetDate,
+              title: task.title,
+              subject: task.subject || null,
+              topic: task.chapter || null,
+              type: task.type === 'study' ? 'concept' : task.type,
+              estimated_minutes: task.estimated_minutes,
+              status: 'pending',
+              priority: task.priority,
+              source: 'system'
+            });
+          }
+        }
+      } catch (err) {
+        console.error('Failed to auto-expand plan into microtasks', err);
+      }
+    }
+    
     return null;
   }
 

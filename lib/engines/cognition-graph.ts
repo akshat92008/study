@@ -513,6 +513,31 @@ export class AtlasConsumer {
 
     logger.info(`AtlasConsumer: upgraded mastery for ${subject} / ${chapter}`, { userId });
   }
+
+  static async handlePracticeAttempt(userId: string, data: any): Promise<void> {
+    const { items = [], setType } = data || {};
+    if (items.length === 0) return;
+
+    // Time spent per item, default to ~15 seconds for MCQ, ~10s for flashcard
+    const timeSpentPerItem = setType === 'mcq' ? 15 : 10;
+
+    for (const item of items) {
+      if (item.conceptId) {
+        // For MCQ, we use isCorrect. For flashcard, we use confidence.
+        // If confidence is 'knew' or 'easy', we count it as correct.
+        let correct = false;
+        if (setType === 'mcq') {
+          correct = !!item.isCorrect;
+        } else if (setType === 'flashcard') {
+          correct = ['knew', 'easy'].includes(item.confidence);
+        }
+
+        await updateConceptState(item.conceptId, correct, timeSpentPerItem, 1);
+      }
+    }
+    
+    logger.info(`AtlasConsumer: processed practice attempt for ${items.length} items`, { userId, setType });
+  }
 }
 
 // Helper: step mastery down the tier ladder
