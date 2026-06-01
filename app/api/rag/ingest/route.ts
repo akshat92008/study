@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createAdminClient } from '@/lib/supabase/admin';
+import { createClient } from '@/lib/supabase/server';
 import { ingestStudyMaterial } from '@/lib/rag/ingest';
 import { logger } from '@/lib/utils/logger';
 
@@ -7,21 +7,25 @@ export const maxDuration = 300; // 5 minutes max duration on Vercel Pro
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json();
-    const { materialId, userId } = body;
-
-    if (!materialId || !userId) {
-      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      return NextResponse.json({ error: 'Authentication is required' }, { status: 401 });
     }
 
-    const supabase = createAdminClient();
+    const body = await req.json();
+    const { materialId } = body;
+
+    if (!materialId) {
+      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+    }
     
     // Fetch the material to get storage path and mime type
     const { data: material, error: fetchError } = await supabase
       .from('study_materials')
       .select('storage_path, mime_type')
       .eq('id', materialId)
-      .eq('user_id', userId)
+      .eq('user_id', user.id)
       .single();
 
     if (fetchError || !material) {
@@ -39,7 +43,8 @@ export async function POST(req: NextRequest) {
       await supabase
         .from('study_materials')
         .update({ status: 'failed', error_message: 'Failed to read file from storage' })
-        .eq('id', materialId);
+        .eq('id', materialId)
+        .eq('user_id', user.id);
       return NextResponse.json({ error: 'File download failed' }, { status: 500 });
     }
 
@@ -48,7 +53,7 @@ export async function POST(req: NextRequest) {
     // Run ingestion
     await ingestStudyMaterial({
       materialId,
-      userId,
+      userId: user.id,
       buffer,
       mimeType: material.mime_type
     });

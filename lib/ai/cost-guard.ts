@@ -134,6 +134,18 @@ const DAILY_BUDGET_USD = () => {
 
 // Reflection token allowance for models that emit <reflection> blocks
 const REFLECTION_ALLOWANCE = 1500;
+const TEST_RESERVATION_PREFIX = 'test-reservation:';
+
+function shouldBypassNetworkBudgetForTests(): boolean {
+  return (
+    (process.env.NODE_ENV === 'test' || process.env.VITEST === 'true') &&
+    process.env.ENABLE_NETWORK_BUDGET_TESTS !== 'true'
+  );
+}
+
+function isTestReservation(reservationId: string): boolean {
+  return reservationId.startsWith(TEST_RESERVATION_PREFIX);
+}
 
 export function estimateCallCost(
   feature: BudgetFeature,
@@ -169,6 +181,14 @@ export async function reserveBudgetForModelCall(
     estimatedInputTokens,
     estimatedOutputTokens,
   );
+
+  if (shouldBypassNetworkBudgetForTests()) {
+    return {
+      reservationId: `${TEST_RESERVATION_PREFIX}${crypto.randomUUID()}`,
+      estimatedCost,
+      estimatedTokens,
+    };
+  }
 
   const expensiveCallGate = await consumeUsageLimit(userId, 'ai_calls_daily');
   if (!expensiveCallGate.allowed) {
@@ -266,6 +286,10 @@ export async function commitBudgetUsage(
   reservationId: string,
   usage: ActualUsage,
 ): Promise<void> {
+  if (shouldBypassNetworkBudgetForTests() && isTestReservation(reservationId)) {
+    return;
+  }
+
   const promptTokens = Math.max(0, Math.round(usage.promptTokens ?? 0));
   const completionTokens = Math.max(0, Math.round(usage.completionTokens ?? 0));
   const totalTokens = promptTokens + completionTokens;
@@ -341,6 +365,10 @@ export async function releaseBudgetReservation(
   reservationId: string,
   reason = 'call_failed',
 ): Promise<void> {
+  if (shouldBypassNetworkBudgetForTests() && isTestReservation(reservationId)) {
+    return;
+  }
+
   try {
     const supabase = createAdminClient();
     const { error } = await supabase.rpc('release_ai_budget', {

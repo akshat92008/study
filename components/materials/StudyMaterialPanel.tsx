@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
@@ -9,18 +9,15 @@ import { FileText, Trash2, Loader2, BookOpen } from 'lucide-react';
 export default function StudyMaterialPanel() {
   const [materials, setMaterials] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const supabase = createClient();
+  const supabase = useMemo(() => createClient(), []);
 
-  useEffect(() => {
-    fetchMaterials();
-    const intervalId = setInterval(fetchMaterials, 5000);
-    return () => clearInterval(intervalId);
-  }, []);
-
-  async function fetchMaterials() {
+  const fetchMaterials = useCallback(async () => {
     const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return;
-    
+    if (!user) {
+      setLoading(false);
+      return;
+    }
+
     const { data } = await supabase
       .from('study_materials')
       .select('id, title, status, subject, chapter, error_message')
@@ -28,12 +25,18 @@ export default function StudyMaterialPanel() {
       .neq('status', 'archived')
       .order('created_at', { ascending: false })
       .limit(5);
-      
+
     if (data) {
       setMaterials(data);
     }
     setLoading(false);
-  }
+  }, [supabase]);
+
+  useEffect(() => {
+    fetchMaterials();
+    const intervalId = setInterval(fetchMaterials, 5000);
+    return () => clearInterval(intervalId);
+  }, [fetchMaterials]);
 
   async function handleRemove(id: string) {
     setMaterials(prev => prev.filter(m => m.id !== id));
@@ -49,6 +52,9 @@ export default function StudyMaterialPanel() {
       </h3>
       <p style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', marginTop: '-4px' }}>
         MIND will automatically use these sources when answering questions.
+      </p>
+      <p style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', marginTop: '-6px' }}>
+        Ask MIND: "answer from my uploaded notes."
       </p>
       
       {materials.map(mat => (

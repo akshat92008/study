@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { createAdminClient } from '@/lib/supabase/admin';
 
 const hasSupabaseEnv =
-  Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL) &&
+  Boolean(process.env.SUPABASE_TEST_URL) &&
   Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY);
 
 const liveIt = hasSupabaseEnv ? it : it.skip;

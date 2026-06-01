@@ -61,6 +61,10 @@ import { buildMindRagContext } from '@/lib/rag/mind-rag';
 import { ingestStudyMaterial, materialContentHash } from '@/lib/rag/ingest';
 import { SUPPORTED_MATERIAL_MIME_TYPES } from '@/lib/rag/config';
 const encoder = new TextEncoder();
+const STUDY_MATERIAL_UPLOAD_RE =
+  /\b(use this|save this|upload this|index this|store this|add this|my notes|study material|ncert|textbook|chapter|pdf|source|answer from this|use later|prescribed material|according to this|make this my source)\b/i;
+const EXPLICIT_READ =
+  /\b(read this|explain this document|summarize this document|what does this pdf say|extract this|explain this pdf|summarize this pdf)\b/i;
 
 export async function GET(request?: NextRequest) {
   const requestId = getRequestId(request);
@@ -575,7 +579,8 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
       return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
     }
 
-    const isMaterialIndexing = uploadIntent === 'study_material_index';
+    const isMaterialIndexing = (message && STUDY_MATERIAL_UPLOAD_RE.test(message) && uploadIntent === 'study_material_index') || uploadIntent === 'study_material_index';
+    const isExplicitDocumentRead = Boolean(message && EXPLICIT_READ.test(message));
 
     if (documentBase64 && documentMimeType) {
       // Begin Background Ingestion if supported
@@ -583,11 +588,11 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
         const buffer = Buffer.from(documentBase64, 'base64');
         const contentHash = materialContentHash(buffer);
         
-        const triggerAsyncIngestion = async () => {
+        const ingestUploadedMaterial = async () => {
           try {
             const { data: duplicate } = await supabase
               .from('study_materials')
-              .select('id')
+              .select('id, status')
               .eq('user_id', user.id)
               .eq('content_hash', contentHash)
               .neq('status', 'archived')
@@ -601,22 +606,22 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
                   user_id: user.id, title: 'Chat Upload', original_filename: originalFilename, mime_type: documentMimeType, storage_path: storagePath, source_type: 'upload', language: 'en', status: 'uploaded', content_hash: contentHash
                 }).select('id').single();
                 if (material) {
-                  // Fire-and-forget background ingestion route to prevent Vercel timeouts
-                  fetch(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/rag/ingest`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ materialId: material.id, userId: user.id })
-                  }).catch(e => logger.error('Failed to trigger async ingestion', e));
+                  await ingestStudyMaterial({
+                    materialId: material.id,
+                    userId: user.id,
+                    buffer,
+                    mimeType: documentMimeType,
+                  });
                 }
               }
             }
           } catch (e) {
-            logger.warn('Failed background ingestion of chat upload', e);
+            logger.warn('Failed study material ingestion of chat upload', e);
           }
         };
 
         if (isMaterialIndexing) {
-           await triggerAsyncIngestion();
+           await ingestUploadedMaterial();
            const answer = "Material uploaded and is being indexed in the background. You can check its status in the Study Materials panel and ask MIND questions from it soon.";
            const stream = new ReadableStream({
              async start(controller) {
@@ -632,7 +637,7 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
            });
            return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
         } else {
-           await triggerAsyncIngestion();
+           await ingestUploadedMaterial();
         }
       }
 
@@ -650,11 +655,14 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
           let answer = '';
           let budgetSettled = false;
           try {
+            const documentVisionPrompt = isExplicitDocumentRead && message
+              ? message
+              : message || 'Read this document and explain the useful study context without inventing details.';
             answer = await routeVisionCall(
               systemPrompt,
               documentBase64,
               documentMimeType,
-              message || 'Read this document and explain the useful study context without inventing details.'
+              documentVisionPrompt
             );
             controller.enqueue(encoder.encode(answer));
           } catch {

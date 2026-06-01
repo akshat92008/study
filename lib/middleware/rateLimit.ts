@@ -12,10 +12,17 @@ type RateLimitResult = {
 };
 
 let redis: Redis | null = null;
-let limiters: Record<string, Ratelimit> = {};
+const limiters: Record<string, Ratelimit> = {};
 
 function shouldFailClosed(_requested?: boolean): boolean {
   return process.env.NODE_ENV === 'production';
+}
+
+function shouldBypassNetworkRateLimitForTests(): boolean {
+  return (
+    (process.env.NODE_ENV === 'test' || process.env.VITEST === 'true') &&
+    process.env.ENABLE_NETWORK_RATE_LIMIT_TESTS !== 'true'
+  );
 }
 
 function getRedis(): Redis | null {
@@ -93,6 +100,16 @@ export async function checkRateLimit(
       requests: identifierOrOptions.maxTokens,
       window: `${identifierOrOptions.windowSeconds} s`,
       failClosed: identifierOrOptions.failClosed,
+    };
+  }
+
+  if (shouldBypassNetworkRateLimitForTests()) {
+    return {
+      allowed: true,
+      remaining: opt.requests,
+      resetAt: Date.now() + 60000,
+      limit: opt.requests,
+      degraded: true,
     };
   }
 
