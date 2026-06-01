@@ -806,7 +806,7 @@ function estimateTextTokens(...parts: Array<string | null | undefined>): number 
   return Math.max(1, Math.ceil(chars / 4));
 }
 
-async function buildChatFirstEngineResponse(input: {
+export async function buildChatFirstEngineResponse(input: {
   userId: string;
   message: string;
   intent: string;
@@ -815,37 +815,42 @@ async function buildChatFirstEngineResponse(input: {
   supabase: any;
 }): Promise<{ text: string; metadata: Record<string, any> } | null> {
   const normalized = input.message.toLowerCase();
-  const asksForPlan =
-    input.orchestratorIntent === 'planning' ||
-    /\b(what should i do tomorrow|tomorrow'?s plan|study plan for tomorrow|plan tomorrow|what should i study tomorrow)\b/i.test(input.message);
-  const asksWeakAreas =
-    input.intent === 'ATLAS' ||
-    /\b(weakest areas|weak areas|weak chapters|where am i weak|what am i weak)\b/i.test(input.message);
-  const asksRevision =
-    input.intent === 'FLASHCARDS' ||
-    /\b(what should i revise now|revise now|due revision|due cards|memory queue)\b/i.test(input.message);
-  const asksAutopsyWithoutEvidence =
-    input.intent === 'AUTOPSY' &&
-    /\b(analy[sz]e my test|check my mock|autopsy|test analysis|paper analysis)\b/i.test(input.message);
+  
+  let policyIntent: 'direct_generation' | 'revision_query' | 'progress_query' | 'planning_query' | 'autopsy_query' | 'normal_chat' = 'normal_chat';
 
-  if (asksForPlan) {
-    const plan = await ensureCommandPlanForDate({
+  if (/\b(generate mcq|make flashcards|give me flashcard|give flashcard|flashcards for|flashcard for|mcq for|mcqs|explain|formula sheet|make notes)\b/i.test(normalized)) {
+    policyIntent = 'direct_generation';
+  } else if (/\b(what is due|show my due cards|what should i revise from memory|due revision|due cards|memory queue)\b/i.test(normalized) || 
+      (input.intent === 'FLASHCARDS' && !/\b(generate|make|create|give me|practice)\b/i.test(normalized))) {
+    policyIntent = 'revision_query';
+  } else if (/\b(weakest areas|weak areas|weak chapters|where am i weak|what am i weak|what is my mastery|what should i improve)\b/i.test(normalized) || 
+      input.intent === 'ATLAS') {
+    policyIntent = 'progress_query';
+  } else if (/\b(today'?s plan|full plan|study plan for tomorrow|plan tomorrow|what should i study tomorrow|targets|schedule)\b/i.test(normalized) || 
+      (input.orchestratorIntent === 'planning' && !/\b(make|create|give me)\b/i.test(normalized))) {
+    policyIntent = 'planning_query';
+  } else if (/\b(analy[sz]e my test|check my mock|autopsy|test analysis|paper analysis|analyze mistakes|why did i lose marks)\b/i.test(normalized) || 
+      (input.intent === 'AUTOPSY' && !/\b(make|create|generate)\b/i.test(normalized))) {
+    policyIntent = 'autopsy_query';
+  }
+
+  if (policyIntent === 'direct_generation') {
+    return null;
+  }
+
+  if (policyIntent === 'planning_query') {
+    // If the user is just asking for a plan, we return null to let the LLM generate a rich, expanded plan.
+    // The LLM will read ctx.commandTasks and ctx.currentSessionCard to do this.
+    // But we should ensure the DB has a plan generated for tomorrow/today if missing, just so the state is consistent.
+    await ensureCommandPlanForDate({
       userId: input.userId,
       date: localDateAfter(/\btomorrow\b/i.test(normalized) ? 1 : 0),
       client: input.supabase,
     });
-    return {
-      text: formatCommandPlanForChat(plan),
-      metadata: {
-        action: 'show_command_plan',
-        date: plan.date,
-        taskCount: plan.tasks.length,
-        sourceSignals: plan.sourceSignals,
-      },
-    };
+    return null;
   }
 
-  if (asksWeakAreas) {
+  if (policyIntent === 'progress_query') {
     return {
       text: formatWeakAreasForChat({
         weakConcepts: input.mindContext?.weakConcepts ?? [],
@@ -860,7 +865,7 @@ async function buildChatFirstEngineResponse(input: {
     };
   }
 
-  if (asksRevision) {
+  if (policyIntent === 'revision_query') {
     return {
       text: formatRevisionQueueForChat({
         dueCount: input.mindContext?.overdueCardsCount ?? 0,
@@ -873,7 +878,7 @@ async function buildChatFirstEngineResponse(input: {
     };
   }
 
-  if (asksAutopsyWithoutEvidence) {
+  if (policyIntent === 'autopsy_query') {
     return {
       text: [
         'AUTOPSY needs evidence before it can diagnose. Upload or paste one of these inside this chat:',
