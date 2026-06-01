@@ -24,7 +24,6 @@ export async function POST(req: NextRequest) {
     }
 
     const context = await retrieveRagContext({
-      supabase,
       userId: user.id,
       query: parsed.data.query,
       materialIds: parsed.data.materialIds,

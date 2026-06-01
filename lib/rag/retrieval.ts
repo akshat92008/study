@@ -1,118 +1,197 @@
-import { SupabaseClient } from '@supabase/supabase-js';
-import { formatCitation } from '@/lib/rag/citations';
-import { getRagConfig } from '@/lib/rag/config';
-import { embedRagText } from '@/lib/rag/embedding';
-import { classifyRagMode, mentionsNcert, type RagMode } from '@/lib/rag/intent';
-import { logger } from '@/lib/utils/logger';
+import { createAdminClient } from '@/lib/supabase/admin';
+import { getRagConfig } from './config';
+import { embedRagText } from './embedding';
+import type { RagChunk, RagContext, RagMode, RagRetrieveInput } from './types';
 
-export type RagRetrievedChunk = {
-  id: string;
-  materialId: string;
-  materialTitle: string;
-  sourceType: string | null;
-  pageStart: number | null;
-  pageEnd: number | null;
-  heading: string | null;
-  chunkIndex: number;
-  text: string;
-  score: number;
-  citation: string;
-};
+const EXPLICIT_RAG_RE =
+  /\b(from|according to|based on|use|using|in)\s+(my\s+)?(notes|material|pdf|document|source|ncert|textbook|uploaded|chapter)\b/i;
 
-export type RagContext = {
-  mode: RagMode;
-  chunks: RagRetrievedChunk[];
-  totalContextChars: number;
-  grounded: boolean;
-  evidenceStrength: 'high' | 'medium' | 'low' | 'none';
-  warnings: string[];
-  materialIds: string[];
-  chunkIds: string[];
-};
+const STUDY_RE =
+  /\b(explain|summarize|summary|flashcards?|mcqs?|questions?|notes?|study guide|compare|chapter|topic|formula|neet|ncert|according)\b/i;
 
-export type RetrieveRagContextInput = {
-  supabase: SupabaseClient;
-  userId: string;
-  query: string;
-  materialIds?: string[];
-  subject?: string | null;
-  chapter?: string | null;
-  mode?: RagMode;
-};
+export function inferRagMode(message: string, hasReadyMaterials: boolean): RagMode {
+  if (!hasReadyMaterials) return 'off';
+  if (EXPLICIT_RAG_RE.test(message)) return 'explicit';
+  if (message.length >= 16 && STUDY_RE.test(message)) return 'implicit';
+  return 'off';
+}
 
-export async function retrieveRagContext(input: RetrieveRagContextInput): Promise<RagContext> {
-  const config = getRagConfig();
-  const mode = input.mode ?? classifyRagMode(input.query);
-  const warnings: string[] = [];
-  if (mode === 'off') return emptyContext(mode);
+export async function retrieveRagContext(input: RagRetrieveInput): Promise<RagContext> {
+  const supabase = createAdminClient();
+  const RAG_CONFIG = getRagConfig();
+  const topK = Math.max(1, Math.min(input.topK ?? RAG_CONFIG.topK, RAG_CONFIG.hardMaxTopK));
+  const maxContextChars = input.maxContextChars ?? RAG_CONFIG.maxContextChars;
+  const mode = input.mode ?? 'implicit';
 
-  try {
-    const embedding = await embedRagText(input.query, {
-      userId: input.userId,
-      route: 'rag-search',
-    });
-
-    let rows: any[] = [];
-    if (embedding.length) {
-      const { data, error } = await input.supabase.rpc('match_study_material_chunks', {
-        query_embedding: `[${embedding.join(',')}]`,
-        match_user_id: input.userId,
-        match_count: config.topK,
-        material_filter: input.materialIds?.length ? input.materialIds : null,
-        subject_filter: input.subject ?? null,
-        chapter_filter: input.chapter ?? null,
-        similarity_threshold: config.minSimilarity,
-      });
-      if (error) {
-        warnings.push('Vector retrieval failed; keyword fallback used.');
-        logger.warn('RAG vector retrieval failed', { userId: input.userId, error: error.message });
-      } else {
-        rows = data || [];
-      }
-    } else {
-      warnings.push('No embedding provider available; keyword fallback used.');
-    }
-
-    if (!rows.length) {
-      rows = await keywordFallback(input, config.topK);
-    }
-
-    const boosted = rerankRows(rows, input.query, mentionsNcert(input.query));
-    const capped = capContext(boosted, config.maxContextChars);
-    const chunks = capped.map(rowToChunk);
-    const evidenceStrength = getEvidenceStrength(chunks);
-    const context: RagContext = {
-      mode,
-      chunks,
-      totalContextChars: chunks.reduce((sum, chunk) => sum + chunk.text.length, 0),
-      grounded: chunks.length > 0 && evidenceStrength !== 'none',
-      evidenceStrength,
-      warnings,
-      materialIds: Array.from(new Set(chunks.map((chunk) => chunk.materialId))),
-      chunkIds: chunks.map((chunk) => chunk.id),
-    };
-
-    await input.supabase.from('rag_query_logs').insert({
-      user_id: input.userId,
-      query: input.query.slice(0, 2000),
-      material_ids: context.materialIds,
-      retrieved_chunk_ids: context.chunkIds,
-      total_chunks: context.chunks.length,
-      total_context_chars: context.totalContextChars,
-      grounded: context.grounded,
-    }).then(() => undefined);
-
-    return context;
-  } catch (error) {
-    logger.warn('RAG retrieval failed safely', {
-      userId: input.userId,
-      error: error instanceof Error ? error.message : String(error),
-    });
-    return {
-      ...emptyContext(mode),
-      warnings: ['RAG retrieval failed; MIND can answer normally without source grounding.'],
-    };
+  if (mode === 'off' || !input.query.trim()) {
+    return emptyContext(mode);
   }
+
+  const embedding = await embedRagText(input.query.slice(0, 2000), {
+    userId: input.userId,
+    route: 'rag-search'
+  });
+  let chunks: RagChunk[] = [];
+
+  if (embedding && embedding.length > 0) {
+    const { data, error } = await supabase.rpc('match_study_material_chunks', {
+      query_embedding: `[${embedding.join(',')}]`,
+      match_user_id: input.userId,
+      match_count: topK,
+      material_filter: input.materialIds ?? null,
+      subject_filter: input.subject ?? null,
+      chapter_filter: input.chapter ?? null,
+      similarity_threshold: RAG_CONFIG.minSimilarity,
+    });
+
+    if (!error && Array.isArray(data)) {
+      chunks = data.map((row: any) => ({
+        id: row.id,
+        materialId: row.material_id,
+        materialTitle: row.material_title ?? 'Uploaded material',
+        sourceType: row.source_type ?? null,
+        subject: row.subject ?? null,
+        chapter: row.chapter ?? null,
+        heading: row.heading ?? null,
+        pageStart: row.page_start ?? null,
+        pageEnd: row.page_end ?? null,
+        text: row.text,
+        score: Number(row.similarity ?? 0),
+      }));
+    } else if (error) {
+      console.warn('[RAG] vector retrieval failed; falling back to keyword search', error.message);
+    }
+  }
+
+  if (chunks.length === 0) {
+    chunks = await keywordFallback(input, topK);
+  }
+
+  chunks = diversifyAndCap(chunks, maxContextChars);
+
+  const context: RagContext = {
+    mode,
+    chunks,
+    totalContextChars: chunks.reduce((sum, chunk) => sum + chunk.text.length, 0),
+    grounded: chunks.length > 0,
+    evidenceStrength: getEvidenceStrength(chunks),
+    warnings: chunks.length === 0 ? ['No relevant uploaded source chunks found.'] : [],
+  };
+
+  await supabase.from('rag_query_logs').insert({
+    user_id: input.userId,
+    query: input.query.slice(0, 2000),
+    material_ids: input.materialIds ?? null,
+    retrieved_chunk_ids: chunks.map((chunk) => chunk.id),
+    total_chunks: chunks.length,
+    total_context_chars: context.totalContextChars,
+    grounded: context.grounded,
+    mode,
+  });
+
+  return context;
+}
+
+async function keywordFallback(input: RagRetrieveInput, topK: number): Promise<RagChunk[]> {
+  const supabase = createAdminClient();
+  const terms = input.query
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .split(/\s+/)
+    .filter((term) => term.length >= 4)
+    .slice(0, 8);
+
+  if (terms.length === 0) return [];
+
+  let query: any = supabase
+    .from('study_material_chunks')
+    .select(`
+      id,
+      material_id,
+      user_id,
+      chunk_index,
+      page_start,
+      page_end,
+      heading,
+      text,
+      study_materials!inner(title, source_type, subject, chapter, status)
+    `)
+    .eq('user_id', input.userId)
+    .eq('study_materials.status', 'ready')
+    .limit(Math.max(topK * 4, 12));
+
+  if (input.materialIds?.length) {
+    query = query.in('material_id', input.materialIds);
+  }
+
+  const orFilter = terms.map((term) => `text.ilike.%${term}%`).join(',');
+  query = query.or(orFilter);
+
+  const { data, error } = await query;
+
+  if (error || !Array.isArray(data)) {
+    if (error) console.warn('[RAG] keyword fallback failed', error.message);
+    return [];
+  }
+
+  return data
+    .map((row: any) => {
+      const score = keywordScore(row.text, terms);
+      const material = Array.isArray(row.study_materials)
+        ? row.study_materials[0]
+        : row.study_materials;
+
+      return {
+        id: row.id,
+        materialId: row.material_id,
+        materialTitle: material?.title ?? 'Uploaded material',
+        sourceType: material?.source_type ?? null,
+        subject: material?.subject ?? null,
+        chapter: material?.chapter ?? null,
+        heading: row.heading ?? null,
+        pageStart: row.page_start ?? null,
+        pageEnd: row.page_end ?? null,
+        text: row.text,
+        score,
+      } satisfies RagChunk;
+    })
+    .sort((a, b) => b.score - a.score)
+    .slice(0, topK);
+}
+
+function keywordScore(text: string, terms: string[]): number {
+  const lower = text.toLowerCase();
+  const hits = terms.reduce((count, term) => count + (lower.includes(term) ? 1 : 0), 0);
+  return hits / Math.max(terms.length, 1);
+}
+
+function diversifyAndCap(chunks: RagChunk[], maxChars: number): RagChunk[] {
+  const sorted = [...chunks].sort((a, b) => b.score - a.score);
+  const selected: RagChunk[] = [];
+  const perMaterialCount = new Map<string, number>();
+  let chars = 0;
+
+  for (const chunk of sorted) {
+    const current = perMaterialCount.get(chunk.materialId) ?? 0;
+    if (current >= 3 && sorted.length > 3) continue;
+    if (chars + chunk.text.length > maxChars && selected.length > 0) continue;
+
+    selected.push(chunk);
+    perMaterialCount.set(chunk.materialId, current + 1);
+    chars += chunk.text.length;
+
+    if (selected.length >= getRagConfig().hardMaxTopK) break;
+  }
+
+  return selected;
+}
+
+function getEvidenceStrength(chunks: RagChunk[]): 'high' | 'medium' | 'low' | 'none' {
+  if (chunks.length === 0) return 'none';
+  const best = Math.max(...chunks.map((chunk) => chunk.score));
+  if (best >= 0.65 || chunks.length >= 5) return 'high';
+  if (best >= 0.35 || chunks.length >= 3) return 'medium';
+  return 'low';
 }
 
 function emptyContext(mode: RagMode): RagContext {
@@ -123,128 +202,5 @@ function emptyContext(mode: RagMode): RagContext {
     grounded: false,
     evidenceStrength: 'none',
     warnings: [],
-    materialIds: [],
-    chunkIds: [],
   };
-}
-
-async function keywordFallback(input: RetrieveRagContextInput, limit: number): Promise<any[]> {
-  const terms = tokenize(input.query).slice(0, 8);
-  if (!terms.length) return [];
-
-  let query = input.supabase
-    .from('study_material_chunks')
-    .select(`
-      id,
-      material_id,
-      chunk_index,
-      page_start,
-      page_end,
-      heading,
-      text,
-      study_materials!inner(id, title, source_type, subject, chapter, status)
-    `)
-    .eq('user_id', input.userId)
-    .eq('study_materials.status', 'ready')
-    .limit(120);
-
-  if (input.materialIds?.length) query = query.in('material_id', input.materialIds);
-  if (input.subject) query = query.ilike('study_materials.subject', `%${input.subject}%`);
-  if (input.chapter) query = query.ilike('study_materials.chapter', `%${input.chapter}%`);
-
-  const { data, error } = await query;
-  if (error || !data) return [];
-
-  return data
-    .map((row: any) => ({
-      ...row,
-      similarity: keywordScore(row.text, terms),
-    }))
-    .filter((row: any) => row.similarity > 0)
-    .sort((a: any, b: any) => b.similarity - a.similarity)
-    .slice(0, limit);
-}
-
-function tokenize(text: string): string[] {
-  return Array.from(new Set(
-    text
-      .toLowerCase()
-      .replace(/[^a-z0-9\s]/g, ' ')
-      .split(/\s+/)
-      .filter((term) => term.length > 2)
-  ));
-}
-
-function keywordScore(text: string, terms: string[]): number {
-  const haystack = text.toLowerCase();
-  const hits = terms.filter((term) => haystack.includes(term)).length;
-  return terms.length ? hits / terms.length : 0;
-}
-
-function rerankRows(rows: any[], query: string, ncertBoost: boolean): any[] {
-  const terms = tokenize(query);
-  return rows
-    .map((row) => {
-      const material = Array.isArray(row.study_materials) ? row.study_materials[0] : row.study_materials;
-      const keyword = keywordScore(row.text ?? row.content ?? '', terms);
-      const sourceBoost = ncertBoost && material?.source_type === 'ncert' ? 0.08 : 0;
-      return {
-        ...row,
-        study_materials: material,
-        score: Math.min(1, Number(row.similarity ?? 0) + keyword * 0.15 + sourceBoost),
-      };
-    })
-    .sort((a, b) => b.score - a.score);
-}
-
-function capContext(rows: any[], maxChars: number): any[] {
-  const selected: any[] = [];
-  let chars = 0;
-  const seenMaterials = new Map<string, number>();
-
-  for (const row of rows) {
-    const text = row.text ?? row.content ?? '';
-    if (!text) continue;
-    const materialId = row.material_id;
-    const materialCount = seenMaterials.get(materialId) ?? 0;
-    if (materialCount >= 3) continue;
-    if (chars + text.length > maxChars && selected.length > 0) continue;
-    selected.push(row);
-    chars += text.length;
-    seenMaterials.set(materialId, materialCount + 1);
-    if (chars >= maxChars) break;
-  }
-
-  return selected;
-}
-
-function rowToChunk(row: any): RagRetrievedChunk {
-  const material = Array.isArray(row.study_materials) ? row.study_materials[0] : row.study_materials;
-  return {
-    id: row.id,
-    materialId: row.material_id,
-    materialTitle: material?.title || row.material_title || 'Uploaded material',
-    sourceType: material?.source_type || row.source_type || null,
-    pageStart: row.page_start ?? null,
-    pageEnd: row.page_end ?? null,
-    heading: row.heading ?? null,
-    chunkIndex: Number(row.chunk_index ?? 0),
-    text: row.text ?? row.content ?? '',
-    score: Number(row.score ?? row.similarity ?? 0),
-    citation: formatCitation({
-      title: material?.title || row.material_title,
-      pageStart: row.page_start,
-      pageEnd: row.page_end,
-      heading: row.heading,
-      chunkIndex: Number(row.chunk_index ?? 0),
-    }),
-  };
-}
-
-function getEvidenceStrength(chunks: RagRetrievedChunk[]): RagContext['evidenceStrength'] {
-  if (!chunks.length) return 'none';
-  const top = chunks[0]?.score ?? 0;
-  if (top >= 0.78 || chunks.length >= 3) return 'high';
-  if (top >= 0.62 || chunks.length >= 2) return 'medium';
-  return 'low';
 }

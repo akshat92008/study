@@ -3,7 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/utils/logger';
 import type { MINDContext } from '@/lib/ai/prompts/mind-prompt';
 import { RAGEngine } from './rag-engine';
-import type { RagContext } from '@/lib/rag/retrieval';
+import type { RagContext } from '@/lib/rag/types';
 import { getLearnerStateSnapshot } from '@/lib/learner-state/getLearnerState';
 import { OutcomeAnalyticsService } from '@/lib/services/outcome-analytics.service';
 
@@ -48,18 +48,24 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
     let ragContext: RagContext | null = null;
     if (message && message.trim().length > 15) {
       try {
-        const ragEngine = new RAGEngine(supabase);
+        const ragEngine = new RAGEngine();
         ragContext = await ragEngine.retrieve({
           userId,
           query: message,
           subject,
           chapter: topic,
         });
+        const { formatCitation } = await import('@/lib/rag/citations');
         ragChunks = ragContext.chunks.slice(0, 5).map((chunk) => ({
           content: chunk.text,
           similarity: chunk.score,
           sourceTitle: chunk.materialTitle,
-          citation: chunk.citation,
+          citation: formatCitation({
+            title: chunk.materialTitle,
+            pageStart: chunk.pageStart,
+            pageEnd: chunk.pageEnd,
+            heading: chunk.heading,
+          }),
           pageStart: chunk.pageStart,
           pageEnd: chunk.pageEnd,
           heading: chunk.heading,

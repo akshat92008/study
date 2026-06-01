@@ -156,9 +156,17 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
     const fileMsgId = Math.random().toString(36).substring(7);
     setMessages(prev => [...prev, { id: fileMsgId, role: 'tutor', content: `Ingesting ${file.name} to neural core...`, type: 'upload_status', meta: { filename: file.name } }]);
 
+    const apiRoute = uploadType === 'mock_test' ? '/api/autopsy/ingest' : '/api/materials/upload';
+
     const formData = new FormData();
     formData.append('file', file);
-    const apiRoute = uploadType === 'mock_test' ? '/api/autopsy/ingest' : '/api/ingest';
+    
+    if (uploadType !== 'mock_test') {
+      formData.append('sourceType', uploadType === 'study_material' ? 'upload' : 'upload');
+      formData.append('title', file.name);
+      if (currentActiveTask?.subject) formData.append('subject', currentActiveTask.subject);
+      if (currentActiveTask?.chapter) formData.append('chapter', currentActiveTask.chapter);
+    }
 
     try {
       const res = await fetch(apiRoute, { method: 'POST', body: formData });

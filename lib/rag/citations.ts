@@ -20,3 +20,21 @@ export function formatCitation(parts: CitationParts): string {
   }
   return details.length ? `${title}, ${details.join(', ')}` : title;
 }
+
+export function formatRagContextForPrompt(context: import('./types').RagContext): string {
+  if (!context || !context.chunks || context.chunks.length === 0) {
+    return '';
+  }
+
+  const chunkBlocks = context.chunks.map((chunk, index) => {
+    const citation = formatCitation({
+      title: chunk.materialTitle,
+      pageStart: chunk.pageStart,
+      pageEnd: chunk.pageEnd,
+      heading: chunk.heading,
+    });
+    return `[Source ${index + 1}: ${citation}]\n${chunk.text}`;
+  });
+
+  return `RETRIEVED SOURCE CHUNKS:\n\n${chunkBlocks.join('\n\n')}`;
+}

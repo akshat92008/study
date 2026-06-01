@@ -1,6 +1,6 @@
 // lib/ai/prompts/mind-prompt.ts
 
-import type { RagContext } from '@/lib/rag/retrieval';
+import type { RagContext } from '@/lib/rag/types';
 
 export interface MINDContext {
   profile: {

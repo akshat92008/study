@@ -1,7 +1,5 @@
-import { createClient } from '@/lib/supabase/server';
-import { getEmbedding } from '@/lib/ai/provider-client';
-import { SupabaseClient } from '@supabase/supabase-js';
 import { retrieveRagContext } from '@/lib/rag/retrieval';
+import { formatCitation } from '@/lib/rag/citations';
 
 export function chunkText(text: string, chunkSize = 400, overlapSize = 80): string[] {
   const words = text.split(/\s+/).filter(Boolean);
@@ -17,67 +15,21 @@ export function chunkText(text: string, chunkSize = 400, overlapSize = 80): stri
   return chunks;
 }
 
-// Ingest text, chunk it, embed it, and store it
+/**
+ * @deprecated Use lib/rag/ingest instead. This function relies on deprecated 'materials' tables.
+ */
 export async function ingestMaterial(userId: string, title: string, content: string) {
-  const supabase = await createClient();
-  
-  // 1. Save parent material
-  const { data: material, error } = await supabase.from('materials').insert({
-    user_id: userId,
-    title,
-    raw_content: content
-  }).select().single();
-  
-  if (error || !material) throw new Error('Failed to save material');
-
-  // 2. Overlapping chunking
-  const chunks = chunkText(content);
-  
-  // 3. Embed and store chunks
-  for (const chunk of chunks) {
-    const embedding = await getEmbedding(chunk, {
-      userId,
-      route: 'rag-ingest',
-    });
-    if (!embedding || !Array.isArray(embedding) || embedding.length === 0 || typeof embedding[0] !== "number") continue;
-    
-    await supabase.from('material_chunks').insert({
-      user_id: userId,
-      material_id: material.id,
-      chunk_text: chunk,
-      embedding: `[${embedding.join(',')}]`
-    });
-  }
-  
-  return { success: true, chunksProcessed: chunks.length };
+  throw new Error("ingestMaterial is deprecated. Use lib/rag/ingest.ts instead.");
 }
 
-// Search student's personal database
+/**
+ * @deprecated Use lib/rag/retrieval instead. This function relies on deprecated 'materials' tables.
+ */
 export async function searchPersonalKnowledge(userId: string, query: string, threshold = 0.5, limit = 3) {
-  const supabase = await createClient();
-  const queryEmbedding = await getEmbedding(query, {
-    userId,
-    route: 'rag-search',
-  });
-  if (!queryEmbedding || !Array.isArray(queryEmbedding) || queryEmbedding.length === 0 || typeof queryEmbedding[0] !== 'number') return [];
-
-  const { data, error } = await supabase.rpc('match_material_chunks', {
-    query_embedding: `[${queryEmbedding.join(',')}]`,
-    match_threshold: threshold,
-    match_count: limit,
-    p_user_id: userId
-  });
-
-  if (error) {
-    console.error('Vector search error:', error);
-    return [];
-  }
-  return data || [];
+  throw new Error("searchPersonalKnowledge is deprecated. Use lib/rag/retrieval.ts instead.");
 }
 
 export class RAGEngine {
-  constructor(private supabase: SupabaseClient) {}
-
   async retrieve(input: {
     userId: string;
     query: string;
@@ -86,24 +38,29 @@ export class RAGEngine {
     chapter?: string | null;
   }) {
     return retrieveRagContext({
-      supabase: this.supabase,
       userId: input.userId,
       query: input.query,
       materialIds: input.materialIds,
-      subject: input.subject,
-      chapter: input.chapter,
+      subject: input.subject || undefined,
+      chapter: input.chapter || undefined,
     });
   }
 
-  async search({ userId, query, limit = 4 }: { userId: string, query: string, limit?: number, minSimilarity?: number }) {
+  async search({ userId, query, limit = 4 }: { userId: string, query: string, limit?: number }) {
     const context = await this.retrieve({ userId, query });
-    return context.chunks.slice(0, limit).map((chunk) => ({
+    return context.chunks.slice(0, limit).map((chunk, index) => ({
       id: chunk.id,
       materialId: chunk.materialId,
       content: chunk.text,
       similarity: chunk.score,
       sourceTitle: chunk.materialTitle,
-      citation: chunk.citation,
+      citation: formatCitation({
+        title: chunk.materialTitle,
+        pageStart: chunk.pageStart,
+        pageEnd: chunk.pageEnd,
+        heading: chunk.heading,
+        chunkIndex: index,
+      }),
       pageStart: chunk.pageStart,
       pageEnd: chunk.pageEnd,
       heading: chunk.heading,

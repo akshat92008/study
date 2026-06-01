@@ -57,7 +57,7 @@ import {
 } from '@/lib/services/command-plan.service';
 import { generateJSON } from '@/lib/ai/provider-client';
 import { DailyMicrotaskService } from '@/lib/services/daily-microtask.service';
-
+import { buildMindRagContext } from '@/lib/rag/mind-rag';
 const encoder = new TextEncoder();
 
 export async function GET(request?: NextRequest) {
@@ -345,7 +345,17 @@ export async function POST(req: NextRequest) {
       return null;
     });
 
-    const [semanticMemories, episodicMemories, mindContext] = await Promise.all([
+    const mindRagPromise = buildMindRagContext({
+      userId: user.id,
+      message: message || '',
+      subject: detectedIntent.subject || undefined,
+      chapter: detectedIntent.topic || undefined,
+    }).catch((err) => {
+      logger.error('Failed to get RAG context', err);
+      return { ragContext: null, ragPromptBlock: '' };
+    });
+
+    const [semanticMemories, episodicMemories, mindContext, mindRag] = await Promise.all([
       Promise.race([memoryPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1000))]).catch(() => [] as string[]),
       Promise.race([episodicMemoryPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1000))]).catch(() => [] as string[]),
       Promise.race([mindContextPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1000))]).catch(() => ({
@@ -366,14 +376,36 @@ export async function POST(req: NextRequest) {
         ragContext: null,
         studentModel: null,
         outcomeAnalytics: null,
-      }))
-    ]) as [string[], string[], any];
+      })),
+      Promise.race([mindRagPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 2000))]).catch(() => ({ ragContext: null, ragPromptBlock: '' }))
+    ]) as [string[], string[], any, any];
 
     const crossSessionMemories = [
       ...episodicMemories.map((memory) => `Episode: ${memory}`),
       ...semanticMemories,
     ].slice(0, 4);
     let systemPrompt = getMINDSystemPrompt(mindContext, crossSessionMemories, detectedIntent.intent);
+
+    const RAG_GROUNDING_RULES = `
+SOURCE-GROUNDED STUDY MATERIAL RULES:
+- Uploaded sources are grounding evidence, not decoration.
+- If SOURCE-GROUNDED MODE is explicit, answer from the retrieved source chunks first.
+- If explicit mode has no chunks, say: "I could not find this in your uploaded material." Then optionally provide a general answer separately if helpful.
+- If SOURCE-GROUNDED MODE is implicit, use source chunks to improve accuracy when relevant, but answer naturally.
+- Never invent citations.
+- Cite only the provided source chunks.
+- Use compact citations like [Source 1], [Source 2].
+- Do not quote long copyrighted passages. Summarize/paraphrase unless a short exact phrase is necessary.
+- For NCERT/NEET, prefer NCERT wording/facts when source chunks are available.
+- For flashcards/MCQs generated from sources, mention that they are source-grounded and cite the source briefly.
+`;
+
+    if (mindRag?.ragPromptBlock) {
+      systemPrompt += `\n\n${RAG_GROUNDING_RULES}\n\n${mindRag.ragPromptBlock}`;
+      mindContext.ragContext = mindRag.ragContext;
+      mindContext.ragChunks = mindRag.ragContext?.chunks || [];
+    }
+
     const hasUploadedFile = !!((imageBase64 && imageMimeType) || (documentBase64 && documentMimeType));
     const orchestratorResult = orchestrateFromIntent(
       detectedIntent,

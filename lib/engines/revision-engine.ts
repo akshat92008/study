@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { createClient } from '@/lib/supabase/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { generateJSON } from '@/lib/ai/provider-client';
-import { searchPersonalKnowledge } from './rag-engine';
+import { retrieveRagContext } from '@/lib/rag/retrieval';
 import { FlashcardBatchSchema } from './memory-schemas';
 import { logger } from '@/lib/utils/logger';
 import { invalidateSessionCards } from '@/lib/services/session-card-cache';
@@ -343,10 +343,17 @@ export async function generateCardsForConcept(
   
   // 1. Fetch Context from Student's Uploaded Materials via RAG
   const searchQuery = `${subject} ${chapter} core concepts and formulas`;
-  const relevantChunks = await searchPersonalKnowledge(userId, searchQuery, 0.4, 4);
+  const ragResult = await retrieveRagContext({
+    userId,
+    query: searchQuery,
+    subject,
+    chapter,
+    topK: 4
+  });
+  const relevantChunks = ragResult.chunks;
   
   const ragContext = relevantChunks.length > 0 
-    ? `SOURCE MATERIAL:\n${relevantChunks.map((c: any) => c.chunk_text).join('\n\n')}`
+    ? `SOURCE MATERIAL:\n${relevantChunks.map((c: any) => c.text).join('\n\n')}`
     : `*No personal materials uploaded. Use general expert knowledge for ${subject}: ${chapter}.*`;
 
   // 2. Strict Prompting
