@@ -657,17 +657,7 @@ export async function POST(req: NextRequest) {
         let budgetSettled = false;
 
         try {
-          if (['AUTOPSY', 'ATLAS', 'FLASHCARDS'].includes(intent.intent)) {
-            const routeMessages: Record<string, string> = {
-              AUTOPSY: "Opening **Test Analysis** — upload your mock test PDF or photo. I'll diagnose every wrong answer by root cause and show you your recoverable score.",
-              FLASHCARDS: `You have **${mindContext?.overdueCardsCount || 0}** cards due today. Opening your revision queue now.`,
-              ATLAS: `Your knowledge map is at **${mindContext?.masteryStats?.masteryPercent || 0}%** mastery. Opening Progress now.`,
-            };
-            const msg = routeMessages[intent.intent] || 'Opening that for you now...';
-            controller.enqueue(encoder.encode(msg));
-            fullResponse = msg;
-            metadataPayload = { action: intentToAction(intent.intent) };
-          } else if (intent.intent === 'TUTOR_SESSION' || intent.intent === 'PRACTICE') {
+          if (intent.intent === 'TUTOR_SESSION' || intent.intent === 'PRACTICE') {
             const tutorResult = await ChatTutorService.handleTutorSession(
               supabase,
               user.id,
@@ -816,20 +806,20 @@ export async function buildChatFirstEngineResponse(input: {
 }): Promise<{ text: string; metadata: Record<string, any> } | null> {
   const normalized = input.message.toLowerCase();
   
-  let policyIntent: 'direct_generation' | 'revision_query' | 'progress_query' | 'planning_query' | 'autopsy_query' | 'normal_chat' = 'normal_chat';
+  let policyIntent: 'direct_generation' | 'memory_query' | 'atlas_query' | 'planning_query' | 'autopsy_query' | 'normal_chat' = 'normal_chat';
 
-  if (/\b(generate mcq|make flashcards|give me flashcard|give flashcard|flashcards for|flashcard for|mcq for|mcqs|explain|formula sheet|make notes)\b/i.test(normalized)) {
+  if (/\b(generate mcq|make flashcards|give me flashcard|give flashcard|flashcards for|flashcard for|mcq for|mcqs|explain|formula sheet|make notes|teach me|revise|generate)\b/i.test(normalized)) {
     policyIntent = 'direct_generation';
-  } else if (/\b(what is due|show my due cards|what should i revise from memory|due revision|due cards|memory queue)\b/i.test(normalized) || 
-      (input.intent === 'FLASHCARDS' && !/\b(generate|make|create|give me|practice)\b/i.test(normalized))) {
-    policyIntent = 'revision_query';
-  } else if (/\b(weakest areas|weak areas|weak chapters|where am i weak|what am i weak|what is my mastery|what should i improve)\b/i.test(normalized) || 
+  } else if (/\b(what is due|show my due|show due|what should i revise from memory|due revision|due cards|memory queue|open memory|my saved revision cards)\b/i.test(normalized) || 
+      (input.intent === 'FLASHCARDS' && !/\b(generate|make|create|give me|practice|revise|flashcard for|flashcards for)\b/i.test(normalized))) {
+    policyIntent = 'memory_query';
+  } else if (/\b(weakest areas|weak areas|weak chapters|where am i weak|what am i weak|what is my mastery|what should i improve|progress|mastery)\b/i.test(normalized) || 
       input.intent === 'ATLAS') {
-    policyIntent = 'progress_query';
-  } else if (/\b(today'?s plan|full plan|study plan for tomorrow|plan tomorrow|what should i study tomorrow|targets|schedule)\b/i.test(normalized) || 
+    policyIntent = 'atlas_query';
+  } else if (/\b(today'?s plan|full plan|study plan for tomorrow|plan tomorrow|what should i study tomorrow|targets|schedule|what should i study)\b/i.test(normalized) || 
       (input.orchestratorIntent === 'planning' && !/\b(make|create|give me)\b/i.test(normalized))) {
     policyIntent = 'planning_query';
-  } else if (/\b(analy[sz]e my test|check my mock|autopsy|test analysis|paper analysis|analyze mistakes|why did i lose marks)\b/i.test(normalized) || 
+  } else if (/\b(analy[sz]e my test|check my mock|autopsy|test analysis|paper analysis|analyze mistakes|why did i lose marks|mistake analysis)\b/i.test(normalized) || 
       (input.intent === 'AUTOPSY' && !/\b(make|create|generate)\b/i.test(normalized))) {
     policyIntent = 'autopsy_query';
   }
@@ -850,7 +840,7 @@ export async function buildChatFirstEngineResponse(input: {
     return null;
   }
 
-  if (policyIntent === 'progress_query') {
+  if (policyIntent === 'atlas_query') {
     return {
       text: formatWeakAreasForChat({
         weakConcepts: input.mindContext?.weakConcepts ?? [],
@@ -865,7 +855,7 @@ export async function buildChatFirstEngineResponse(input: {
     };
   }
 
-  if (policyIntent === 'revision_query') {
+  if (policyIntent === 'memory_query') {
     return {
       text: formatRevisionQueueForChat({
         dueCount: input.mindContext?.overdueCardsCount ?? 0,
