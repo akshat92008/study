@@ -1,11 +1,15 @@
 // app/api/health/route.ts
 import { NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
+import { validateCronRequest } from '@/lib/middleware/cronAuth';
 import { Redis } from '@upstash/redis';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET() {
+export async function GET(req: Request) {
+  const authError = validateCronRequest(req as any);
+  if (authError) return authError;
+
   const checks: Record<string, { ok: boolean; latencyMs?: number; error?: string }> = {};
 
   const requiredEnv = [
@@ -78,7 +82,7 @@ export async function GET() {
     lastWorkerRunAt: null as string | null,
     failedConsumersByType: {} as Record<string, number>,
     autopsyJobs: {
-      queued: 0,
+      pending: 0,
       processing: 0,
       failed: 0,
       needsUserInput: 0,
@@ -87,7 +91,7 @@ export async function GET() {
   const queueStart = Date.now();
   try {
     const sb = createAdminClient();
-    const [pending, processing, failed, dlq, oldestPending, lastAttempt, failedConsumers, autopsyQueued, autopsyProcessing, autopsyFailed, autopsyNeedsInput] = await Promise.all([
+    const [pending, processing, failed, dlq, oldestPending, lastAttempt, failedConsumers, autopsyPending, autopsyProcessing, autopsyFailed, autopsyNeedsInput] = await Promise.all([
       sb.from('event_queue').select('*', { count: 'exact', head: true }).eq('status', 'PENDING'),
       sb.from('event_queue').select('*', { count: 'exact', head: true }).eq('status', 'PROCESSING'),
       sb.from('event_queue').select('*', { count: 'exact', head: true }).in('status', ['FAILED', 'DLQ']),
@@ -95,7 +99,7 @@ export async function GET() {
       sb.from('event_queue').select('created_at').eq('status', 'PENDING').order('created_at', { ascending: true }).limit(1).maybeSingle(),
       sb.from('event_attempts').select('finished_at').not('finished_at', 'is', null).order('finished_at', { ascending: false }).limit(1).maybeSingle(),
       sb.from('consumer_locks').select('consumer_name').in('status', ['FAILED', 'DLQ']).limit(500),
-      sb.from('autopsy_jobs').select('*', { count: 'exact', head: true }).eq('status', 'queued'),
+      sb.from('autopsy_jobs').select('*', { count: 'exact', head: true }).eq('status', 'pending'),
       sb.from('autopsy_jobs').select('*', { count: 'exact', head: true }).eq('status', 'processing'),
       sb.from('autopsy_jobs').select('*', { count: 'exact', head: true }).eq('status', 'failed'),
       sb.from('autopsy_jobs').select('*', { count: 'exact', head: true }).eq('status', 'needs_user_input'),
@@ -117,16 +121,16 @@ export async function GET() {
       lastWorkerRunAt: lastAttempt.data?.finished_at ?? null,
       failedConsumersByType,
       autopsyJobs: {
-        queued: autopsyQueued.count || 0,
+        pending: autopsyPending.count || 0,
         processing: autopsyProcessing.count || 0,
         failed: autopsyFailed.count || 0,
         needsUserInput: autopsyNeedsInput.count || 0,
       },
     };
     checks.queue = {
-      ok: !pending.error && !processing.error && !failed.error && !dlq.error && !oldestPending.error && !lastAttempt.error && !failedConsumers.error && !autopsyQueued.error && !autopsyProcessing.error && !autopsyFailed.error && !autopsyNeedsInput.error,
+      ok: !pending.error && !processing.error && !failed.error && !dlq.error && !oldestPending.error && !lastAttempt.error && !failedConsumers.error && !autopsyPending.error && !autopsyProcessing.error && !autopsyFailed.error && !autopsyNeedsInput.error,
       latencyMs: Date.now() - queueStart,
-      error: pending.error?.message || processing.error?.message || failed.error?.message || dlq.error?.message || oldestPending.error?.message || lastAttempt.error?.message || failedConsumers.error?.message || autopsyQueued.error?.message || autopsyProcessing.error?.message || autopsyFailed.error?.message || autopsyNeedsInput.error?.message,
+      error: pending.error?.message || processing.error?.message || failed.error?.message || dlq.error?.message || oldestPending.error?.message || lastAttempt.error?.message || failedConsumers.error?.message || autopsyPending.error?.message || autopsyProcessing.error?.message || autopsyFailed.error?.message || autopsyNeedsInput.error?.message,
     };
     checks.queue_status = {
       ok: (dlq.count || 0) === 0,

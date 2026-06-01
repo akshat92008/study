@@ -18,7 +18,6 @@ import { getMINDSystemPrompt } from '@/lib/ai/prompts/mind-prompt';
 import { logger } from '@/lib/utils/logger';
 import { orchestrateFromIntent } from '@/lib/engines/orchestrator';
 import { logDecision } from '@/lib/utils/orchestratorLogger';
-import { EventDispatcher } from '@/lib/events/orchestrator';
 import { ChatMemoryService } from '@/lib/services/chatMemoryService';
 import { EpisodicMemoryService } from '@/lib/services/episodic-memory.service';
 import { buildConversationMessages } from '@/lib/ai/chat-intent';
@@ -34,7 +33,6 @@ import { getPromptVersion } from '@/lib/ai/prompt-version';
 import {
   budgetExceededResponse,
   budgetUnavailableResponse,
-  commitBudgetUsage,
   isBudgetExceeded,
   isBudgetUnavailable,
   releaseBudgetReservation,
@@ -47,9 +45,8 @@ import {
   loadRecentMessagesForClient,
   loadRecentMessages,
   persistChatMessage,
-  stripMetadataBlock,
 } from '@/lib/services/chat-persistence';
-import { ChatSideEffectService } from '@/lib/services/chat-side-effects.service';
+import { finalizeChatTurn } from '@/lib/services/chat-turn-finalizer';
 import {
   ensureCommandPlanForDate,
   formatCommandPlanForChat,
@@ -320,6 +317,41 @@ export async function POST(req: NextRequest) {
     );
     await logDecision(orchestratorResult, user.id, message || '').catch(() => {});
 
+    const finalizeAssistantTurn = (input: {
+      assistantText: string;
+      userMessage?: string;
+      metadata?: Record<string, any> | null;
+      intent?: any;
+      budgetReservationId?: string | null;
+      budgetUsage?: {
+        promptTokens: number;
+        completionTokens: number;
+        route: string;
+        promptVersion?: string;
+        promptFamily?: string;
+        promptSource?: string;
+      } | null;
+      onBudgetSettled?: () => void;
+    }) => finalizeChatTurn({
+      supabase,
+      userId: user.id,
+      sessionId,
+      userMessage: input.userMessage ?? message ?? '',
+      userMessageId,
+      assistantText: input.assistantText,
+      metadata: input.metadata,
+      intent: input.intent ?? detectedIntent,
+      emotion,
+      promptVersion,
+      idempotencyKey: messageRequestId,
+      recentHistory,
+      sessionTurnsCount,
+      mindContext,
+      budgetReservationId: input.budgetReservationId,
+      budgetUsage: input.budgetUsage,
+      onBudgetSettled: input.onBudgetSettled,
+    });
+
     // ============================================================================
     // STAGE 5: AI ORCHESTRATION & STREAMING
     // ============================================================================
@@ -353,55 +385,28 @@ export async function POST(req: NextRequest) {
             controller.enqueue(encoder.encode(answer));
           }
 
-          if (!budgetSettled) {
-            await commitBudgetUsage(imageBudget.reservationId, {
-              promptTokens: estimateTextTokens(systemPrompt, message || '[Image question]') + 1200,
-              completionTokens: estimateTextTokens(answer),
-              route: '/api/ai/chat',
-              promptVersion,
-              promptFamily: 'mind_chat',
-              promptSource: 'chat_image',
-            });
-            budgetSettled = true;
-          }
-
-          // ── MODULE 3: persist assistant message ONCE, capture id ──
-          let assistantMessageId: string;
           try {
-            ({ id: assistantMessageId } = await persistChatMessage(supabase, {
-              sessionId,
-              userId: user.id,
-              role: 'assistant',
-              content: answer,
-              intent: detectedIntent.intent,
-              emotionalState: emotion,
-              promptVersion,
-              idempotencyKey: `${messageRequestId}:assistant`,
-            }));
-          } catch (persistErr) {
-            logger.error('Chat route [image]: failed to persist assistant message', persistErr);
+            await finalizeAssistantTurn({
+              assistantText: answer,
+              userMessage: message || '[Image question]',
+              budgetReservationId: budgetSettled ? null : imageBudget.reservationId,
+              budgetUsage: budgetSettled ? null : {
+                promptTokens: estimateTextTokens(systemPrompt, message || '[Image question]') + 1200,
+                completionTokens: estimateTextTokens(answer),
+                route: '/api/ai/chat',
+                promptVersion,
+                promptFamily: 'mind_chat',
+                promptSource: 'chat_image',
+              },
+              onBudgetSettled: () => {
+                budgetSettled = true;
+              },
+            });
+          } catch (finalizeErr) {
+            logger.error('Chat route [image]: finalization failed', finalizeErr);
             controller.close();
             return;
           }
-
-          // Worker receives assistant_message_id — must NOT persist again
-          await EventDispatcher.publish({
-            user_id: user.id,
-            type: 'CHAT_MESSAGE_PROCESSED',
-            data: {
-              sessionId,
-              message: message || '[Image question]',
-              fullResponse: answer,
-              emotion,
-              history: recentHistory,
-              sessionTurnsCount,
-              mindContext,
-              intent: detectedIntent,
-              user_message_id: userMessageId,
-              assistant_message_id: assistantMessageId,
-            },
-            idempotency_key: crypto.randomUUID(),
-          }).catch((e: Error) => logger.error('Image branch: event publish failed', e));
 
           controller.close();
         }
@@ -442,45 +447,17 @@ export async function POST(req: NextRequest) {
         async start(controller) {
           controller.enqueue(encoder.encode(responseText));
 
-          // ── MODULE 3: persist assistant message ONCE, capture id ──
-          let assistantMessageId: string;
           try {
-            ({ id: assistantMessageId } = await persistChatMessage(supabase, {
-              sessionId,
-              userId: user.id,
-              role: 'assistant',
-              content: responseText,
-              intent: detectedIntent.intent,
-              emotionalState: emotion,
+            await finalizeAssistantTurn({
+              assistantText: responseText,
+              userMessage: message || '[Autopsy upload]',
               metadata: { action: 'run_autopsy', jobId: job.id, status: job.status },
-              promptVersion,
-              idempotencyKey: `${messageRequestId}:assistant`,
-            }));
-          } catch (persistErr) {
-            logger.error('Chat route [autopsy-redirect]: failed to persist assistant message', persistErr);
+            });
+          } catch (finalizeErr) {
+            logger.error('Chat route [autopsy-redirect]: finalization failed', finalizeErr);
             controller.close();
             return;
           }
-
-          // Worker receives assistant_message_id — must NOT persist again
-          await EventDispatcher.publish({
-            user_id: user.id,
-            type: 'CHAT_MESSAGE_PROCESSED',
-            data: {
-              sessionId,
-              message: message || '[Autopsy upload]',
-              fullResponse: responseText,
-              emotion,
-              history: recentHistory,
-              sessionTurnsCount,
-              mindContext,
-              intent: detectedIntent,
-              metadataPayload: { action: 'run_autopsy', jobId: job.id, status: job.status },
-              user_message_id: userMessageId,
-              assistant_message_id: assistantMessageId,
-            },
-            idempotency_key: crypto.randomUUID(),
-          }).catch((e: Error) => logger.error('Autopsy-redirect branch: event publish failed', e));
 
           controller.close();
         }
@@ -518,53 +495,28 @@ export async function POST(req: NextRequest) {
             controller.enqueue(encoder.encode(answer));
           }
 
-          if (!budgetSettled) {
-            await commitBudgetUsage(documentBudget.reservationId, {
-              promptTokens: estimateTextTokens(systemPrompt, message || '[Document upload]') + Math.ceil(Buffer.byteLength(documentBase64, 'base64') / 4),
-              completionTokens: estimateTextTokens(answer),
-              route: '/api/ai/chat',
-              promptVersion,
-              promptFamily: 'mind_chat',
-              promptSource: 'chat_document',
-            });
-            budgetSettled = true;
-          }
-
-          let assistantMessageId: string;
           try {
-            ({ id: assistantMessageId } = await persistChatMessage(supabase, {
-              sessionId,
-              userId: user.id,
-              role: 'assistant',
-              content: answer,
-              intent: detectedIntent.intent,
-              emotionalState: emotion,
-              promptVersion,
-              idempotencyKey: `${messageRequestId}:assistant`,
-            }));
-          } catch (persistErr) {
-            logger.error('Chat route [document]: failed to persist assistant message', persistErr);
+            await finalizeAssistantTurn({
+              assistantText: answer,
+              userMessage: message || '[Document upload]',
+              budgetReservationId: budgetSettled ? null : documentBudget.reservationId,
+              budgetUsage: budgetSettled ? null : {
+                promptTokens: estimateTextTokens(systemPrompt, message || '[Document upload]') + Math.ceil(Buffer.byteLength(documentBase64, 'base64') / 4),
+                completionTokens: estimateTextTokens(answer),
+                route: '/api/ai/chat',
+                promptVersion,
+                promptFamily: 'mind_chat',
+                promptSource: 'chat_document',
+              },
+              onBudgetSettled: () => {
+                budgetSettled = true;
+              },
+            });
+          } catch (finalizeErr) {
+            logger.error('Chat route [document]: finalization failed', finalizeErr);
             controller.close();
             return;
           }
-
-          await EventDispatcher.publish({
-            user_id: user.id,
-            type: 'CHAT_MESSAGE_PROCESSED',
-            data: {
-              sessionId,
-              message: message || '[Document upload]',
-              fullResponse: answer,
-              emotion,
-              history: recentHistory,
-              sessionTurnsCount,
-              mindContext,
-              intent: detectedIntent,
-              user_message_id: userMessageId,
-              assistant_message_id: assistantMessageId,
-            },
-            idempotency_key: crypto.randomUUID(),
-          }).catch((e: Error) => logger.error('Document branch: event publish failed', e));
 
           controller.close();
         }
@@ -607,37 +559,16 @@ export async function POST(req: NextRequest) {
         async start(controller) {
           controller.enqueue(encoder.encode(groundingMessage));
 
-          // ── MODULE 3: persist assistant message ONCE, capture id ──
-          let assistantMessageId: string;
           try {
-            ({ id: assistantMessageId } = await persistChatMessage(supabase, {
-              sessionId,
-              userId: user.id,
-              role: 'assistant',
-              content: groundingMessage,
-              intent: intent.intent,
-              emotionalState: emotion,
-              promptVersion,
-              idempotencyKey: `${messageRequestId}:assistant`,
-            }));
-          } catch (persistErr) {
-            logger.error('Chat route [grounding]: failed to persist assistant message', persistErr);
+            await finalizeAssistantTurn({
+              assistantText: groundingMessage,
+              intent,
+            });
+          } catch (finalizeErr) {
+            logger.error('Chat route [grounding]: finalization failed', finalizeErr);
             controller.close();
             return;
           }
-
-          // Worker receives assistant_message_id — must NOT persist again
-          await EventDispatcher.publish({
-            user_id: user.id,
-            type: 'CHAT_MESSAGE_PROCESSED',
-            data: {
-              sessionId, message, fullResponse: groundingMessage, emotion,
-              history: recentHistory, sessionTurnsCount, mindContext, intent,
-              user_message_id: userMessageId,
-              assistant_message_id: assistantMessageId,
-            },
-            idempotency_key: crypto.randomUUID(),
-          }).catch((e: Error) => logger.error('Grounding branch: event publish failed', e));
 
           controller.close();
         }
@@ -660,38 +591,17 @@ export async function POST(req: NextRequest) {
         async start(controller) {
           controller.enqueue(encoder.encode(responseText));
 
-          let assistantMessageId = '';
           try {
-            ({ id: assistantMessageId } = await persistChatMessage(supabase, {
-              sessionId,
-              userId: user.id,
-              role: 'assistant',
-              content: responseText,
-              intent: intent.intent,
-              emotionalState: emotion,
+            await finalizeAssistantTurn({
+              assistantText: responseText,
+              intent,
               metadata: deterministicEngineResponse.metadata,
-              promptVersion,
-              idempotencyKey: `${messageRequestId}:assistant`,
-            }));
-          } catch (persistErr) {
-            logger.error('Chat route [deterministic-engine]: failed to persist assistant message', persistErr);
+            });
+          } catch (finalizeErr) {
+            logger.error('Chat route [deterministic-engine]: finalization failed', finalizeErr);
+            controller.close();
+            return;
           }
-
-          await ChatSideEffectService.finalizeChatResponse({
-            supabase,
-            userId: user.id,
-            sessionId,
-            message: message || '',
-            fullResponse: responseText,
-            intent,
-            emotion,
-            metadataPayload: deterministicEngineResponse.metadata,
-            recentHistory,
-            sessionTurnsCount,
-            mindContext,
-            assistantMessageId,
-            userMessageId,
-          });
 
           controller.close();
         },
@@ -756,58 +666,22 @@ export async function POST(req: NextRequest) {
             controller.enqueue(encoder.encode(`\n\n===METADATA===\n${JSON.stringify(metadataPayload)}`));
           }
 
-          // ── MODULE 3: persist assistant message ONCE in route ──────────────
-          // The streaming is done; fullResponse is complete. Persist here, before
-          // the side-effect event, so the worker never needs to insert.
-          const cleanContent = stripMetadataBlock(fullResponse);
-          if (mainBudget) {
-            await commitBudgetUsage(mainBudget.reservationId, {
+          await finalizeAssistantTurn({
+            assistantText: fullResponse,
+            intent,
+            metadata: metadataPayload ?? {},
+            budgetReservationId: mainBudget?.reservationId ?? null,
+            budgetUsage: mainBudget ? {
               promptTokens: estimateMainPromptTokens(systemPrompt, recentHistory, message || ''),
-              completionTokens: estimateTextTokens(cleanContent),
+              completionTokens: estimateTextTokens(fullResponse),
               route: '/api/ai/chat',
               promptVersion,
               promptFamily: 'mind_chat',
               promptSource: 'chat_stream',
-            });
-            budgetSettled = true;
-          }
-
-          let assistantMessageId: string;
-          try {
-            ({ id: assistantMessageId } = await persistChatMessage(supabase, {
-              sessionId,
-              userId: user.id,
-              role: 'assistant',
-              content: cleanContent,
-              intent: intent.intent,
-              emotionalState: emotion,
-              metadata: metadataPayload ?? {},
-              promptVersion,
-              idempotencyKey: `${messageRequestId}:assistant`,
-            }));
-          } catch (persistErr) {
-            logger.error('Chat route [streaming]: failed to persist assistant message', persistErr);
-            // Don't rethrow — we still want side effects to fire if possible.
-            // Assign a sentinel so finalizeChatResponse can log the gap.
-            assistantMessageId = '';
-          }
-
-          // ── STAGE 6 & 7: ASYNC SIDE EFFECTS (QUEUED) ──────────────────────
-          // assistantMessageId is threaded through so the worker never persists again.
-          await ChatSideEffectService.finalizeChatResponse({
-            supabase,
-            userId: user.id,
-            sessionId,
-            message: message || '',
-            fullResponse,
-            intent,
-            emotion,
-            metadataPayload,
-            recentHistory,
-            sessionTurnsCount,
-            mindContext,
-            assistantMessageId,
-            userMessageId,
+            } : null,
+            onBudgetSettled: () => {
+              budgetSettled = true;
+            },
           });
 
         } catch (err: any) {

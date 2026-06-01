@@ -119,7 +119,7 @@ export async function persistChatMessage(
      *  When set, a second insert with the same key silently returns the existing id. */
     idempotencyKey?: string;
   }
-): Promise<{ id: string }> {
+): Promise<{ id: string; existed?: boolean }> {
   const { data, error } = await supabase
     .from('chat_messages')
     .insert({
@@ -149,7 +149,7 @@ export async function persistChatMessage(
         .maybeSingle();
 
       if (!lookupErr && existing?.id) {
-        return { id: existing.id };
+        return { id: existing.id, existed: true };
       }
     }
     throw new Error(`Failed to persist ${input.role} chat message: ${error.message}`);
@@ -167,7 +167,7 @@ export async function persistChatMessage(
       }
     });
 
-  return { id: data.id };
+  return { id: data.id, existed: false };
 }
 
 export function stripMetadataBlock(content: string): string {

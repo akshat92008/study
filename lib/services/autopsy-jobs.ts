@@ -31,7 +31,7 @@ export interface CreateAutopsyJobInput {
 
 export interface AutopsyJobRecord {
   id: string;
-  status: 'queued' | 'processing' | 'completed' | 'failed' | 'needs_user_input';
+  status: 'pending' | 'processing' | 'completed' | 'failed' | 'needs_user_input';
   result_autopsy_id: string | null;
   error_message: string | null;
 }
@@ -85,7 +85,7 @@ export async function createAutopsyJob(input: CreateAutopsyJobInput): Promise<Au
     .from('autopsy_jobs')
     .insert({
       user_id: input.userId,
-      status: 'queued',
+      status: 'pending',
       test_name: input.testName,
       exam_type: input.examType,
       idempotency_key: idempotencyKey,
@@ -110,7 +110,7 @@ export async function createAutopsyJob(input: CreateAutopsyJobInput): Promise<Au
     idempotency_key: `autopsy_upload:${created.id}`,
   });
 
-  logger.info('Autopsy job queued', {
+  logger.info('Autopsy job pending', {
     userId: input.userId,
     jobId: created.id,
     source: input.source ?? 'autopsy_ingest',
