@@ -127,48 +127,7 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
               Core Loop
             </span>
           )}
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            const isActive = pathname === item.href || (item.href === '/dashboard' && pathname === '/');
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                title={item.label}
-                onClick={() => setMobileSidebarOpen(false)}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: isSidebarCollapsed ? 0 : 'var(--sp-3)',
-                  justifyContent: isSidebarCollapsed ? 'center' : 'flex-start',
-                  padding: 'var(--sp-2) var(--sp-3)',
-                  borderRadius: 'var(--radius-md)',
-                  fontSize: 'var(--fs-sm)',
-                  fontWeight: isActive ? 'var(--fw-bold)' : 'var(--fw-medium)',
-                  color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
-                  background: isActive ? 'var(--bg-secondary)' : 'transparent',
-                  textDecoration: 'none',
-                  position: 'relative',
-                }}
-              >
-                {isActive && (
-                  <div
-                    style={{
-                      position: 'absolute',
-                      left: 0,
-                      top: '25%',
-                      bottom: '25%',
-                      width: 3,
-                      background: 'var(--accent-blue)',
-                      borderRadius: 2,
-                    }}
-                  />
-                )}
-                <Icon size={16} style={{ color: isActive ? 'var(--accent-blue)' : 'var(--text-tertiary)', flexShrink: 0 }} />
-                {!isSidebarCollapsed && <span>{item.label}</span>}
-              </Link>
-            );
-          })}
+          {/* Navigation removed as per user request */}
         </div>
 
         {/* Learning Goals Section removed for MVP */}

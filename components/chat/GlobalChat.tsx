@@ -385,7 +385,7 @@ export const GlobalChat = memo(function GlobalChat() {
                  fontSize: '14px',
                  lineHeight: 'var(--lh-relaxed)',
                  wordBreak: 'break-word',
-                 width: isClosingCard ? '100%' : (isUser ? 'auto' : '100%'),
+                 width: isClosingCard ? '100%' : (isUser ? 'fit-content' : '100%'),
                  animation: 'messageIn var(--duration-normal) var(--ease-out) forwards',
                  opacity: 0,
                  padding: isUser ? '12px 18px' : '8px 0 8px 16px',

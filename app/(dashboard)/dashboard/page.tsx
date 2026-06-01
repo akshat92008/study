@@ -4,8 +4,9 @@ import { useState, useEffect, useCallback } from 'react';
 import { useAppStore } from '@/stores/appStore';
 import type { LearningGoal } from '@/stores/appStore';
 import {
-  Brain, RefreshCw, Loader2, Upload, X, Activity
+  Brain, RefreshCw, Loader2, Upload, X, Activity, MessageSquare, Music
 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import CognitionDashboard from '@/components/cognition/CognitionDashboard';
 import RevisionQueue from '@/components/revision/RevisionQueue';
 import AutopsyDashboard from '@/components/autopsy/AutopsyDashboard';
@@ -13,6 +14,7 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import CurrentTaskCard from '@/components/dashboard/CurrentTaskCard';
+import MicrotargetsCard from '@/components/dashboard/MicrotargetsCard';
 
 export default function DashboardPage() {
   const {
@@ -31,6 +33,7 @@ export default function DashboardPage() {
 
   const [dashboardData, setDashboardData] = useState<any>(null);
   const [masteryData, setMasteryData] = useState<any>(null);
+  const router = useRouter();
 
   // Local state for the drawer upload mechanism
   const [fileToUpload, setFileToUpload] = useState<File | null>(null);
@@ -179,6 +182,10 @@ export default function DashboardPage() {
           </p>
         </div>
         <CurrentTaskCard onSessionComplete={loadTelemetry} />
+
+        {dashboardData?.tasks && (
+          <MicrotargetsCard tasks={dashboardData.tasks} />
+        )}
         
         <Card padding="lg" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)' }}>
           <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'bold', marginBottom: 'var(--sp-2)' }}>Study Profile</h3>
@@ -195,6 +202,17 @@ export default function DashboardPage() {
                   Progress
                 </div>
                 <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--accent-purple)', marginTop: 4 }}>{overallMastery}%</div>
+              </button>
+
+              <button
+                onClick={() => router.push('/chat')}
+                style={{ textAlign: 'left', cursor: 'pointer', flex: '1 1 200px', background: 'var(--accent-cyan-dim)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: `1px solid var(--accent-cyan)`, transition: 'all 0.2s' }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
+                  <MessageSquare size={12} style={{ color: 'var(--accent-cyan)' }} />
+                  MIND
+                </div>
+                <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--accent-cyan)', marginTop: 4 }}>Chat</div>
               </button>
               
               <button
@@ -217,6 +235,17 @@ export default function DashboardPage() {
                   Test Analysis
                 </div>
                 <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--danger)', marginTop: 4 }}>{marksLost} mistakes found</div>
+              </button>
+
+              <button
+                onClick={() => setActiveDrawer(activeDrawer === 'beats' ? null : 'beats')}
+                style={{ textAlign: 'left', cursor: 'pointer', flex: '1 1 200px', background: activeDrawer === 'beats' ? 'var(--warning-dim)' : 'var(--bg-primary)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: `1px solid ${activeDrawer === 'beats' ? 'var(--warning)' : 'var(--border-subtle)'}`, transition: 'all 0.2s' }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
+                  <Music size={12} style={{ color: 'var(--warning)' }} />
+                  Focus Beats
+                </div>
+                <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--warning)', marginTop: 4 }}>Lofi Study</div>
               </button>
             </div>
           </Card>
@@ -265,6 +294,12 @@ export default function DashboardPage() {
               <>
                 <Activity size={18} style={{ color: 'var(--danger)' }} />
                 <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)' }}>Test Analysis</span>
+              </>
+            )}
+            {activeDrawer === 'beats' && (
+              <>
+                <Music size={18} style={{ color: 'var(--warning)' }} />
+                <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)' }}>Focus Beats</span>
               </>
             )}
           </div>
@@ -387,6 +422,25 @@ export default function DashboardPage() {
                 </div>
               )}
 
+            </div>
+          )}
+
+          {/* D. BEATS Drawer */}
+          {activeDrawer === 'beats' && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)', height: '100%' }}>
+              <iframe
+                width="100%"
+                height="315"
+                src="https://www.youtube.com/embed/jfKfPfyJRdk"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                style={{ borderRadius: 'var(--radius-lg)', border: 'none' }}
+              ></iframe>
+              <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', textAlign: 'center' }}>
+                Lofi beats to relax/study to.
+              </p>
             </div>
           )}
         </div>
