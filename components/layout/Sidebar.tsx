@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import {
   MessageSquare, Zap, X, ChevronLeft, ChevronRight, LogOut,
-  Brain, RefreshCw, Activity, Home
+  Brain, RefreshCw, Activity, Home, CreditCard
 } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
 import { signOut } from '@/lib/actions/auth';
@@ -256,7 +256,12 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
               >
                 {userName}
               </div>
-              <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Free Plan</div>
+              <a
+                href="/api/billing/checkout"
+                style={{ fontSize: 'var(--fs-xs)', color: 'var(--accent-blue)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 4 }}
+              >
+                <CreditCard size={11} /> Upgrade
+              </a>
             </div>
           )}
         </div>

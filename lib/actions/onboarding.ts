@@ -114,7 +114,7 @@ export async function generateDay1Plan(userId: string, examType: string) {
     .from('concepts')
     .select('subject, chapter, mastery')
     .eq('user_id', userId)
-    .eq('mastery', 'exposed')
+    .in('mastery', ['exposed', 'developing', 'not_started'])
     .limit(3);
 
   const tasks: any[] = [];

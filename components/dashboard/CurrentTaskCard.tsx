@@ -26,6 +26,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
   const [isMinimized, setIsMinimized] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
   const [updatedStreak, setUpdatedStreak] = useState(0);
+  const [sessionClosingMessage, setSessionClosingMessage] = useState<string | null>(null);
   const completionKeyRef = useRef<string | null>(null);
 
   // Quotes
@@ -171,6 +172,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
 
         const resJson = await res.json().catch(() => ({}));
         const nextStreak = resJson.streakDays || ((data.streakDays || 0) + 1);
+        setSessionClosingMessage(resJson.closingMessage ?? null);
         setUpdatedStreak(nextStreak);
         setShowCelebration(true);
         setCardStatus('completed');
@@ -521,6 +523,11 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
               <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', marginTop: 8, lineHeight: 1.4 }}>
                 You successfully completed your study block and revised <strong style={{ color: 'var(--text-primary)' }}>{data.focusTopic}</strong>.
               </p>
+              {sessionClosingMessage && (
+                <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', marginTop: 14, lineHeight: 1.55, textAlign: 'left', background: 'var(--bg-tertiary)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: 'var(--sp-3)' }}>
+                  {sessionClosingMessage}
+                </p>
+              )}
             </div>
 
             <div style={{

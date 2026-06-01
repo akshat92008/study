@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { completeLearningSession } from '@/lib/services/session-completion';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
+import { generateSessionClosingMessage } from '@/lib/engines/session-closing';
 
 export async function POST(req: NextRequest) {
   try {
@@ -42,12 +43,29 @@ export async function POST(req: NextRequest) {
       client: supabase,
     });
 
+    const closing = await generateSessionClosingMessage({
+      userId: user.id,
+      conceptId: result.conceptId,
+      subject: result.subject,
+      chapter: result.chapter,
+      gapFound: body.gapFound ?? null,
+      gapAnswer: null,
+      understood: result.understood,
+      turnsCount: 1,
+      oldMastery: null,
+      newMastery: null,
+      cardsCreated: result.cardsCreated,
+      sessionId: result.sessionId,
+    }).catch(() => null);
+
     return NextResponse.json({
       success: true,
       streakDays: result.streakDays,
       streakChanged: result.streakChanged,
       sessionId: result.sessionId,
       conceptId: result.conceptId,
+      closingMessage: closing?.text ?? null,
+      closingType: closing?.type ?? null,
     }, { headers: { 'x-request-id': requestId } });
   } catch (error: any) {
     return unexpectedApiErrorResponse(req, error, 'complete-session', 'Session completion failed.');

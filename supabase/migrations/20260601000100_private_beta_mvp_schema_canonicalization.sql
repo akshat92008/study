@@ -9,7 +9,10 @@ alter table if exists public.profiles
   add column if not exists exam_type text,
   add column if not exists streak_days integer not null default 0,
   add column if not exists last_active_at timestamptz,
-  add column if not exists learner_state_version integer not null default 0;
+  add column if not exists learner_state_version integer not null default 0,
+  add column if not exists stripe_customer_id text,
+  add column if not exists stripe_subscription_id text,
+  add column if not exists subscription_status text not null default 'free';
 
 do $$
 begin

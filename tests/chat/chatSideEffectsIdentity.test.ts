@@ -4,6 +4,7 @@ const publish = vi.hoisted(() => vi.fn());
 
 vi.mock('@/lib/services/chatMemoryService', () => ({
   ChatMemoryService: vi.fn(() => ({
+    storeConversationTurnInMemory: vi.fn(),
     storeMessageInMemory: vi.fn(),
   })),
 }));
@@ -71,8 +72,18 @@ describe('processChatSideEffects identity propagation', () => {
         { role: 'assistant', content: 'b' },
         { role: 'user', content: 'c' },
         { role: 'assistant', content: 'd' },
+        { role: 'user', content: 'e' },
+        { role: 'assistant', content: 'f' },
+        { role: 'user', content: 'g' },
+        { role: 'assistant', content: 'h' },
+        { role: 'user', content: 'i' },
+        { role: 'assistant', content: 'j' },
+        { role: 'user', content: 'k' },
+        { role: 'assistant', content: 'l' },
+        { role: 'user', content: 'm' },
+        { role: 'assistant', content: 'n' },
       ],
-      sessionTurnsCount: 6,
+      sessionTurnsCount: 8,
       mindContext: {
         weakConcepts: [{ subject: 'Physics', chapter: 'Motion' }],
       },
