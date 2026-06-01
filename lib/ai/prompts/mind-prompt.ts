@@ -237,7 +237,7 @@ function buildPrompt(ctx: MINDContext, semanticMemories: string[] = [], intent?:
 
   const ragSection = !isGeneralChat ? buildRagSection(ctx.ragChunks) : '';
 
-  const artifactBlock = (intent === 'CREATE_ARTIFACT' || intent === 'PRACTICE' || intent === 'TUTOR_SESSION') ? `
+  const artifactBlock = `
 ═══════════════════════════════════════
 ARTIFACT FORMAT — USE FOR RICH CONTENT
 ═══════════════════════════════════════
@@ -319,7 +319,7 @@ DAY 1 — [date]: [topic] · [duration] · [method]
 TOTAL: [X] hours over [N] days
 Priority logic: [why this order]
 </artifact>
-` : '';
+` ;
 
   return `You are MIND — the persistent AI mentor and main interface of Cognition OS. Use the learner state provided here to guide the student; never invent missing data.
 
