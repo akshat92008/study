@@ -437,7 +437,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
               <iframe
                 width="100%"
                 height="120"
-                src="https://www.youtube.com/embed/5qap5aO4i9A"
+                src="https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=1&mute=1"
                 title="Natural Beats for Concentration"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
