@@ -6,11 +6,11 @@
     },
     {
       "path": "/api/cron/process-events",
-      "schedule": "* * * * *"
+      "schedule": "0 4 * * *"
     },
     {
       "path": "/api/cron/retry-pending-events",
-      "schedule": "*/15 * * * *"
+      "schedule": "0 5 * * *"
     },
     {
       "path": "/api/cron/recover-events",
