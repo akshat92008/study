@@ -3,6 +3,30 @@ import path from 'path';
 import http from 'http';
 import dotenv from 'dotenv';
 
+function checkLocalHealth(): Promise<{ statusCode: number | undefined; body: string }> {
+  return new Promise((resolve, reject) => {
+    const req = http.get('http://localhost:3000/api/health', {
+      headers: process.env.CRON_SECRET
+        ? { Authorization: `Bearer ${process.env.CRON_SECRET}` }
+        : undefined,
+    }, (res) => {
+      let body = '';
+      res.setEncoding('utf8');
+      res.on('data', (chunk) => {
+        body += chunk;
+      });
+      res.on('end', () => {
+        resolve({ statusCode: res.statusCode, body });
+      });
+    });
+    req.setTimeout(5000, () => {
+      req.destroy(new Error('Timed out checking /api/health'));
+    });
+    req.on('error', reject);
+    req.end();
+  });
+}
+
 async function checkSmoke() {
   const modeArg = process.argv.find((arg) => arg.startsWith('--mode='));
   const mode = modeArg?.split('=')[1] || 'local';
@@ -153,26 +177,25 @@ async function checkSmoke() {
   // 6. Local server health
   console.log('Checking local server health (http://localhost:3000/api/health)...');
   try {
-    const req = http.get('http://localhost:3000/api/health', (res) => {
-      console.log(`✅ Server responded with status ${res.statusCode}`);
-    });
-    req.on('error', (e) => {
-      console.log('⚠️ Server not running or /api/health not available, skipping health check');
-    });
-    req.end();
-  } catch (err) {
+    const health = await checkLocalHealth();
+    if (health.statusCode === 200) {
+      console.log(`✅ Server health responded with status ${health.statusCode}`);
+    } else {
+      console.error(`❌ Server health failed with status ${health.statusCode}`);
+      console.error(health.body.slice(0, 500));
+      passed = false;
+    }
+  } catch {
     console.log('⚠️ Server check skipped');
   }
 
-  setTimeout(() => {
-    if (!passed) {
-      console.error('\n❌ Smoke check failed.');
-      process.exit(1);
-    } else {
-      console.log('\n✅ All smoke checks passed.');
-      process.exit(0);
-    }
-  }, 1000);
+  if (!passed) {
+    console.error('\n❌ Smoke check failed.');
+    process.exit(1);
+  } else {
+    console.log('\n✅ All smoke checks passed.');
+    process.exit(0);
+  }
 }
 
 checkSmoke();

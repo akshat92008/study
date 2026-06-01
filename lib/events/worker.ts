@@ -2,7 +2,7 @@ import { createAdminClient } from '@/lib/supabase/admin';
 import { withCorrelationId } from '@/lib/telemetry/correlation';
 import { logger } from '@/lib/utils/logger';
 import { Metrics } from '@/lib/observability/metrics';
-import { assertEventConsumerRoute, EventConsumer } from './orchestrator';
+import { EventConsumer, getConsumersForEvent } from './orchestrator';
 import { LearningStateEngine } from '@/lib/engines/learning-state-engine';
 import { AtlasConsumer } from '@/lib/engines/cognition-graph';
 import { MemoryConsumer } from '@/lib/engines/revision-engine';
@@ -282,7 +282,12 @@ export class EventWorkerService {
 
   private static async routeToConsumer(lease: any): Promise<ConsumerResult> {
     const consumer = lease.consumer_name as EventConsumer;
-    assertEventConsumerRoute(lease.event_type, lease.consumer_name);
+    if (!getConsumersForEvent(lease.event_type).includes(consumer)) {
+      return {
+        status: 'SKIPPED_INTENTIONALLY',
+        reason: `${lease.consumer_name} is no longer registered for ${lease.event_type}`,
+      };
+    }
 
     const event = {
       id: lease.event_id,
