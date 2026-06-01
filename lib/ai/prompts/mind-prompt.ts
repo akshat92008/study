@@ -49,6 +49,19 @@ export interface MINDContext {
     behavioral_traps?: string[];
     last_updated_at: string;
   } | null;
+  outcomeAnalytics?: {
+    scoreTrend: 'improving' | 'declining' | 'flat' | 'insufficient_data';
+    latestScore: number | null;
+    previousScore: number | null;
+    recoverableMarksTrend: number | null;
+    featureUsage: {
+      chatSessions: number;
+      autopsyUploads: number;
+      revisionCardsReviewed: number;
+      studySessionsCompleted: number;
+    };
+    usageAssociation: string;
+  } | null;
 }
 
 export function getEffectiveLearningStyle(
@@ -194,6 +207,9 @@ function buildPrompt(ctx: MINDContext, semanticMemories: string[] = [], intent?:
   const memoriesSection = (!isGeneralChat && semanticMemories.length > 0)
     ? `\nCROSS-SESSION MEMORY (things this student said in past conversations):\n${semanticMemories.map((m, i) => `${i + 1}. ${m}`).join('\n')}\nReference these naturally if relevant — never robotically.\n`
     : '';
+  const outcomeSection = ctx.outcomeAnalytics
+    ? `\nOUTCOME ANALYTICS (descriptive, never causal):\n- Score trend: ${ctx.outcomeAnalytics.scoreTrend}\n- Latest score: ${ctx.outcomeAnalytics.latestScore ?? 'not available'}; previous: ${ctx.outcomeAnalytics.previousScore ?? 'not available'}\n- Loop usage: chat ${ctx.outcomeAnalytics.featureUsage.chatSessions}, autopsy ${ctx.outcomeAnalytics.featureUsage.autopsyUploads}, revision reviews ${ctx.outcomeAnalytics.featureUsage.revisionCardsReviewed}, completed sessions ${ctx.outcomeAnalytics.featureUsage.studySessionsCompleted}\n- Wording rule: use "associated with" or "correlates with"; never claim the product caused a score change.\n`
+    : '';
 
   const ragSection = !isGeneralChat ? buildRagSection(ctx.ragChunks) : '';
 
@@ -304,6 +320,7 @@ ${rootGapSection}
 OPTIONAL MIND STATE SIGNAL: ${ctx.emotionalState}
 RECENTLY STUDIED: ${ctx.recentTopics.slice(0, 4).join(', ') || 'Nothing yet'}
 ${memoriesSection}
+${outcomeSection}
 ${ragSection}
 ${behaviouralSection}
 ═══════════════════════════════════════

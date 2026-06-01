@@ -16,6 +16,31 @@ interface ChatMemoryMatch {
   content: string;
 }
 
+export type ChatMemorySourceType =
+  | 'global_chat'
+  | 'mentor_chat'
+  | 'tutor_chat'
+  | 'session_chat'
+  | 'autopsy'
+  | 'memory_review';
+
+export interface StoreMemoryOptions {
+  sourceType?: ChatMemorySourceType;
+  sourceId?: string | null;
+  sessionId?: string | null;
+  role?: 'user' | 'assistant' | 'system';
+  createdAt?: string;
+}
+
+export interface StoreConversationTurnInput {
+  sourceType: ChatMemorySourceType;
+  sessionId?: string | null;
+  userMessageId?: string | null;
+  assistantMessageId?: string | null;
+  userMessage: string;
+  assistantMessage?: string;
+}
+
 const LOW_MEMORY_SCORES = {
   importance: 0,
   novelty: 0,
@@ -36,11 +61,51 @@ function fallbackMemoryScores(content: string) {
 }
 
 export class ChatMemoryService {
-  async storeMessageInMemory(userId: string, content: string): Promise<void> {
+  async storeConversationTurnInMemory(userId: string, input: StoreConversationTurnInput): Promise<void> {
+    await this.storeMessageInMemory(userId, input.userMessage, {
+      sourceType: input.sourceType,
+      sourceId: input.userMessageId,
+      sessionId: input.sessionId,
+      role: 'user',
+    });
+
+    if (input.assistantMessage) {
+      await this.storeMessageInMemory(userId, input.assistantMessage, {
+        sourceType: input.sourceType,
+        sourceId: input.assistantMessageId,
+        sessionId: input.sessionId,
+        role: 'assistant',
+      });
+    }
+  }
+
+  async storeMessageInMemory(userId: string, content: string, options: StoreMemoryOptions = {}): Promise<void> {
     const trimmed = content.trim();
     if (trimmed.length < 15 && !EMOTIONAL_MEMORY_PATTERN.test(trimmed)) return; // Immediate drop for short conversational noise, unless emotional
 
     try {
+      const supabase = await createClient();
+      if (options.sourceId) {
+        const { data: existing } = await supabase
+          .from('chat_memory')
+          .select('id')
+          .eq('user_id', userId)
+          .eq('source_type', options.sourceType ?? 'global_chat')
+          .eq('source_id', options.sourceId)
+          .eq('role', options.role ?? 'user')
+          .maybeSingle();
+
+        if (existing?.id) {
+          logger.info('Skipping duplicate chat memory write', {
+            userId,
+            sourceType: options.sourceType,
+            sourceId: options.sourceId,
+            role: options.role,
+          });
+          return;
+        }
+      }
+
       // 1. Hybrid Scoring
       const checkPrompt = `Evaluate this user message for semantic memory storage.
 Message: "${trimmed}"
@@ -101,13 +166,16 @@ Return ONLY valid JSON in this exact format:
         return;
       }
 
-      const supabase = await createClient();
       const { error } = await supabase
         .from('chat_memory')
         .insert({
           user_id: userId,
+          session_id: options.sessionId ?? null,
           content: trimmed,
           embedding: `[${embedding.join(',')}]`,
+          source_type: options.sourceType ?? 'global_chat',
+          source_id: options.sourceId ?? null,
+          role: options.role ?? 'user',
           importance_score: evalResult.importance,
           novelty_score: evalResult.novelty,
           emotional_score: evalResult.emotional_salience,

@@ -19,6 +19,7 @@ import { SupabaseClient } from '@supabase/supabase-js';
 import { logger } from '@/lib/utils/logger';
 import { syncStudentModel } from '@/lib/engines/inference-engine';
 import { ChatMemoryService } from '@/lib/services/chatMemoryService';
+import { EpisodicMemoryService } from '@/lib/services/episodic-memory.service';
 import { captureSentryException } from '@/lib/telemetry/sentry-runtime';
 
 export interface ChatSideEffectsInput {
@@ -37,6 +38,8 @@ export interface ChatSideEffectsInput {
    *  Present in all events published after the MODULE 3 patch.
    *  Used for logging/reference only — never needed to insert. */
   assistant_message_id?: string;
+  user_message_id?: string;
+  source_type?: string;
 }
 
 export async function processChatSideEffects(input: ChatSideEffectsInput) {
@@ -52,6 +55,8 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
     mindContext,
     intent,
     assistant_message_id,
+    user_message_id,
+    source_type,
   } = input;
 
   // ⚠️  INVARIANT: The route persists the assistant message before publishing this event.
@@ -99,7 +104,22 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
   // 3. Semantic Memory Storage — unchanged
   try {
     const memSvc = new ChatMemoryService();
-    await memSvc.storeMessageInMemory(userId, message);
+    const episodeSvc = new EpisodicMemoryService();
+    await memSvc.storeConversationTurnInMemory(userId, {
+      sourceType: (source_type as any) || 'global_chat',
+      sessionId,
+      userMessageId: user_message_id,
+      assistantMessageId: assistant_message_id,
+      userMessage: message,
+      assistantMessage: fullResponse,
+    });
+    await episodeSvc.writeEpisode({
+      userId,
+      text: message,
+      sourceType: (source_type as any) || 'global_chat',
+      sourceId: user_message_id,
+      metadata: { sessionId, intent: intent?.intent },
+    });
   } catch (err) {
     captureSentryException(err, { tags: { context: 'semantic_memory_storage' } });
   }
@@ -126,6 +146,29 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
 
   // 5. Downstream Event Derivation (MIND_TUTOR_COMPLETED) — unchanged
   try {
+    const significantModelSignal =
+      emotion && emotion !== 'neutral' ||
+      ['TUTOR_SESSION', 'PRACTICE', 'REPLAN'].includes(intent?.intent) ||
+      /\b(stuck|confused|burnt out|overwhelmed|deadline|goal|mock|mistake)\b/i.test(message);
+
+    if (significantModelSignal) {
+      const { EventDispatcher } = await import('@/lib/events/orchestrator');
+      await Promise.resolve(EventDispatcher.publish({
+        user_id: userId,
+        type: 'STUDENT_MODEL_SYNC_REQUESTED',
+        data: {
+          reason: 'intra_session_signal',
+          sessionId,
+          emotion,
+          intent: intent?.intent,
+        },
+        metadata: { source: source_type || 'global_chat' },
+        idempotency_key: `student_model_sync:${userId}:${sessionId}:${assistant_message_id || user_message_id || Date.now()}`,
+      })).catch((err: Error) =>
+        logger.warn('SideEffect: model sync event publish failed', { userId, err })
+      );
+    }
+
     const sessionSubject = mindContext?.currentTopic?.subject || mindContext?.weakConcepts?.[0]?.subject;
     const sessionChapter = mindContext?.currentTopic?.chapter || mindContext?.weakConcepts?.[0]?.chapter;
 

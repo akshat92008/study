@@ -20,11 +20,17 @@ import { orchestrateFromIntent } from '@/lib/engines/orchestrator';
 import { logDecision } from '@/lib/utils/orchestratorLogger';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { ChatMemoryService } from '@/lib/services/chatMemoryService';
+import { EpisodicMemoryService } from '@/lib/services/episodic-memory.service';
 import { buildConversationMessages } from '@/lib/ai/chat-intent';
 import { classifyMessageCombined } from '@/lib/ai/chat-intent-with-emotion';
+import { inferAndUpdateEmotionalState } from '@/lib/engines/emotional-state-updater';
 import { validateBase64Payload } from '@/lib/middleware/validateUpload';
+import { isAutopsyUploadIntent } from '@/lib/autopsy/upload-intent';
+import { createAutopsyJob } from '@/lib/services/autopsy-jobs';
 import { checkSemanticCache, setSemanticCache, isCacheable } from '@/lib/ai/responseCache';
 import { apiErrorResponse, getRequestId } from '@/lib/api/errors';
+import { consumeUsageLimit, usageGateResponse, validatePromptLength } from '@/lib/utils/billing';
+import { getPromptVersion } from '@/lib/ai/prompt-version';
 import {
   budgetExceededResponse,
   budgetUnavailableResponse,
@@ -44,6 +50,13 @@ import {
   stripMetadataBlock,
 } from '@/lib/services/chat-persistence';
 import { ChatSideEffectService } from '@/lib/services/chat-side-effects.service';
+import {
+  ensureCommandPlanForDate,
+  formatCommandPlanForChat,
+  formatRevisionQueueForChat,
+  formatWeakAreasForChat,
+  localDateAfter,
+} from '@/lib/services/command-plan.service';
 
 const encoder = new TextEncoder();
 
@@ -171,17 +184,22 @@ export async function POST(req: NextRequest) {
     const chatId = parsed.chatId ?? undefined;
     const activeGoalId = parsed.activeGoalId ?? undefined;
     const sessionTurnsCount = parsed.sessionTurnsCount ?? 0;
+    const promptVersion = getPromptVersion('mind');
     const sessionId = await getOrCreateGlobalChatSession(supabase, user.id);
 
     if (imageBase64) {
       const imgValidation = validateBase64Payload(imageBase64, imageMimeType);
       if (!imgValidation.valid) return imgValidation.error!;
     }
+    if (documentBase64) {
+      const docValidation = validateBase64Payload(documentBase64, documentMimeType);
+      if (!docValidation.valid) return docValidation.error!;
+    }
 
     const persistedHistory = await loadRecentMessages(supabase, sessionId);
     const recentHistory = persistedHistory.slice(-50);
 
-    const userMessageForPersistence = message || (imageBase64 ? '[Image question]' : '');
+    const userMessageForPersistence = message || (imageBase64 ? '[Image question]' : documentBase64 ? '[Document upload]' : '');
     if (!userMessageForPersistence.trim()) {
       return apiErrorResponse('invalid_request', {
         status: 400,
@@ -216,12 +234,24 @@ export async function POST(req: NextRequest) {
     // worker runs again.
     const messageRequestId = idempotencyKey || requestId;
 
+    const promptLength = validatePromptLength(userMessageForPersistence);
+    if (!promptLength.allowed) return usageGateResponse(promptLength);
+
+    const usageGate = await consumeUsageLimit(user.id, 'chat_messages_daily');
+    if (!usageGate.allowed) return usageGateResponse(usageGate);
+
     // Persist user message (once, no idempotency key needed — request dedup above covers this)
-    await persistChatMessage(supabase, {
+    const { id: userMessageId } = await persistChatMessage(supabase, {
       sessionId,
       userId: user.id,
       role: 'user',
       content: userMessageForPersistence,
+    });
+    void inferAndUpdateEmotionalState(user.id, userMessageForPersistence).catch((err) => {
+      logger.warn('Chat route emotional-state updater failed', {
+        userId: user.id,
+        error: err instanceof Error ? err.message : String(err),
+      });
     });
 
     // ============================================================================
@@ -254,6 +284,12 @@ export async function POST(req: NextRequest) {
           return [] as string[];
         })
       : Promise.resolve([] as string[]);
+    const episodicMemoryPromise = (message && message.trim().length > 15)
+      ? new EpisodicMemoryService().retrieveRelevant(user.id, message, 2).catch((err) => {
+          logger.warn('Episodic memory retrieval failed', err);
+          return [] as string[];
+        })
+      : Promise.resolve([] as string[]);
 
     const mindContextPromise = getMINDContext(
       user.id,
@@ -265,15 +301,21 @@ export async function POST(req: NextRequest) {
       return null;
     });
 
-    const [semanticMemories, mindContext] = await Promise.all([
+    const [semanticMemories, episodicMemories, mindContext] = await Promise.all([
       Promise.race([memoryPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1000))]).catch(() => [] as string[]),
+      Promise.race([episodicMemoryPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1000))]).catch(() => [] as string[]),
       Promise.race([mindContextPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1000))]).catch(() => null)
-    ]) as [string[], any];
+    ]) as [string[], string[], any];
 
-    let systemPrompt = getMINDSystemPrompt(mindContext, semanticMemories, detectedIntent.intent);
+    const crossSessionMemories = [
+      ...episodicMemories.map((memory) => `Episode: ${memory}`),
+      ...semanticMemories,
+    ].slice(0, 4);
+    let systemPrompt = getMINDSystemPrompt(mindContext, crossSessionMemories, detectedIntent.intent);
+    const hasUploadedFile = !!((imageBase64 && imageMimeType) || (documentBase64 && documentMimeType));
     const orchestratorResult = orchestrateFromIntent(
       detectedIntent,
-      !!(imageBase64 && imageMimeType),
+      hasUploadedFile,
       message || ''
     );
     await logDecision(orchestratorResult, user.id, message || '').catch(() => {});
@@ -316,6 +358,9 @@ export async function POST(req: NextRequest) {
               promptTokens: estimateTextTokens(systemPrompt, message || '[Image question]') + 1200,
               completionTokens: estimateTextTokens(answer),
               route: '/api/ai/chat',
+              promptVersion,
+              promptFamily: 'mind_chat',
+              promptSource: 'chat_image',
             });
             budgetSettled = true;
           }
@@ -330,6 +375,7 @@ export async function POST(req: NextRequest) {
               content: answer,
               intent: detectedIntent.intent,
               emotionalState: emotion,
+              promptVersion,
               idempotencyKey: `${messageRequestId}:assistant`,
             }));
           } catch (persistErr) {
@@ -351,6 +397,7 @@ export async function POST(req: NextRequest) {
               sessionTurnsCount,
               mindContext,
               intent: detectedIntent,
+              user_message_id: userMessageId,
               assistant_message_id: assistantMessageId,
             },
             idempotency_key: crypto.randomUUID(),
@@ -363,12 +410,33 @@ export async function POST(req: NextRequest) {
     }
 
     // ── Branch B: Mock-autopsy file redirect ───────────────────────────────────
-    if (
-      orchestratorResult.intent === 'mock_autopsy' &&
-      orchestratorResult.needsFileProcessing &&
-      (imageBase64 || documentBase64)
-    ) {
-      const responseText = "I can see this is a mock-test upload. Full Test Analysis runs outside the chat stream so the upload can be validated, extracted, and processed safely. Open Test Analysis and upload the same file there; I'll use the processed result on the next turn.";
+    const shouldRouteUploadToAutopsy =
+      hasUploadedFile &&
+      (
+        (orchestratorResult.intent === 'mock_autopsy' && orchestratorResult.needsFileProcessing) ||
+        isAutopsyUploadIntent(message || '')
+      );
+
+    if (shouldRouteUploadToAutopsy && ((imageBase64 && imageMimeType) || (documentBase64 && documentMimeType))) {
+      const fileData = imageBase64 && imageMimeType
+        ? { kind: 'inline' as const, mimeType: imageMimeType, data: imageBase64 }
+        : documentMimeType?.startsWith('text/')
+          ? { kind: 'text' as const, text: Buffer.from(documentBase64!, 'base64').toString('utf8') }
+          : { kind: 'inline' as const, mimeType: documentMimeType!, data: documentBase64! };
+
+      const job = await createAutopsyJob({
+        userId: user.id,
+        fileData,
+        testName: 'MIND Chat Upload',
+        examType: profilePreview?.exam_type || 'General Study',
+        idempotencyKey: `${messageRequestId}:autopsy`,
+        source: 'chat_upload',
+        client: supabase,
+      });
+
+      const responseText = job.status === 'completed'
+        ? "I found an existing completed Test Analysis for this upload. Opening Test Analysis now so you can review the processed result."
+        : "I've queued this upload for Test Analysis. AUTOPSY will validate the file, classify only evidence-backed mistakes, update ATLAS and MEMORY through events, and I'll use the updated learner state on the next turn.";
 
       const stream = new ReadableStream({
         async start(controller) {
@@ -384,7 +452,8 @@ export async function POST(req: NextRequest) {
               content: responseText,
               intent: detectedIntent.intent,
               emotionalState: emotion,
-              metadata: { action: 'run_autopsy' },
+              metadata: { action: 'run_autopsy', jobId: job.id, status: job.status },
+              promptVersion,
               idempotencyKey: `${messageRequestId}:assistant`,
             }));
           } catch (persistErr) {
@@ -406,6 +475,8 @@ export async function POST(req: NextRequest) {
               sessionTurnsCount,
               mindContext,
               intent: detectedIntent,
+              metadataPayload: { action: 'run_autopsy', jobId: job.id, status: job.status },
+              user_message_id: userMessageId,
               assistant_message_id: assistantMessageId,
             },
             idempotency_key: crypto.randomUUID(),
@@ -415,6 +486,89 @@ export async function POST(req: NextRequest) {
         }
       });
 
+      return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+    }
+
+    if (documentBase64 && documentMimeType) {
+      const documentBudget = await reserveModelBudgetOrResponse({
+        userId: user.id,
+        feature: 'chat',
+        model: 'router:document',
+        estimatedInputTokens: estimateTextTokens(systemPrompt, message || '[Document upload]') + Math.ceil(Buffer.byteLength(documentBase64, 'base64') / 4),
+        estimatedOutputTokens: 1200,
+      });
+      if (documentBudget instanceof Response) return documentBudget;
+
+      const stream = new ReadableStream({
+        async start(controller) {
+          let answer = '';
+          let budgetSettled = false;
+          try {
+            answer = await routeVisionCall(
+              systemPrompt,
+              documentBase64,
+              documentMimeType,
+              message || 'Read this document and explain the useful study context without inventing details.'
+            );
+            controller.enqueue(encoder.encode(answer));
+          } catch {
+            await releaseBudgetReservation(documentBudget.reservationId, 'document_call_failed');
+            budgetSettled = true;
+            answer = 'I could not read that document reliably. If this is for Test Analysis, upload it with your answer key, student answers, OMR sheet, or result sheet. For explanation, paste the relevant text here.';
+            controller.enqueue(encoder.encode(answer));
+          }
+
+          if (!budgetSettled) {
+            await commitBudgetUsage(documentBudget.reservationId, {
+              promptTokens: estimateTextTokens(systemPrompt, message || '[Document upload]') + Math.ceil(Buffer.byteLength(documentBase64, 'base64') / 4),
+              completionTokens: estimateTextTokens(answer),
+              route: '/api/ai/chat',
+              promptVersion,
+              promptFamily: 'mind_chat',
+              promptSource: 'chat_document',
+            });
+            budgetSettled = true;
+          }
+
+          let assistantMessageId: string;
+          try {
+            ({ id: assistantMessageId } = await persistChatMessage(supabase, {
+              sessionId,
+              userId: user.id,
+              role: 'assistant',
+              content: answer,
+              intent: detectedIntent.intent,
+              emotionalState: emotion,
+              promptVersion,
+              idempotencyKey: `${messageRequestId}:assistant`,
+            }));
+          } catch (persistErr) {
+            logger.error('Chat route [document]: failed to persist assistant message', persistErr);
+            controller.close();
+            return;
+          }
+
+          await EventDispatcher.publish({
+            user_id: user.id,
+            type: 'CHAT_MESSAGE_PROCESSED',
+            data: {
+              sessionId,
+              message: message || '[Document upload]',
+              fullResponse: answer,
+              emotion,
+              history: recentHistory,
+              sessionTurnsCount,
+              mindContext,
+              intent: detectedIntent,
+              user_message_id: userMessageId,
+              assistant_message_id: assistantMessageId,
+            },
+            idempotency_key: crypto.randomUUID(),
+          }).catch((e: Error) => logger.error('Document branch: event publish failed', e));
+
+          controller.close();
+        }
+      });
       return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
     }
 
@@ -463,6 +617,7 @@ export async function POST(req: NextRequest) {
               content: groundingMessage,
               intent: intent.intent,
               emotionalState: emotion,
+              promptVersion,
               idempotencyKey: `${messageRequestId}:assistant`,
             }));
           } catch (persistErr) {
@@ -478,6 +633,7 @@ export async function POST(req: NextRequest) {
             data: {
               sessionId, message, fullResponse: groundingMessage, emotion,
               history: recentHistory, sessionTurnsCount, mindContext, intent,
+              user_message_id: userMessageId,
               assistant_message_id: assistantMessageId,
             },
             idempotency_key: crypto.randomUUID(),
@@ -487,6 +643,67 @@ export async function POST(req: NextRequest) {
         }
       });
       return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-cache' } });
+    }
+
+    const deterministicEngineResponse = await buildChatFirstEngineResponse({
+      userId: user.id,
+      message: message || '',
+      intent: intent.intent,
+      orchestratorIntent: orchestratorResult.intent,
+      mindContext,
+      supabase,
+    });
+
+    if (deterministicEngineResponse) {
+      const responseText = deterministicEngineResponse.text;
+      const stream = new ReadableStream({
+        async start(controller) {
+          controller.enqueue(encoder.encode(responseText));
+
+          let assistantMessageId = '';
+          try {
+            ({ id: assistantMessageId } = await persistChatMessage(supabase, {
+              sessionId,
+              userId: user.id,
+              role: 'assistant',
+              content: responseText,
+              intent: intent.intent,
+              emotionalState: emotion,
+              metadata: deterministicEngineResponse.metadata,
+              promptVersion,
+              idempotencyKey: `${messageRequestId}:assistant`,
+            }));
+          } catch (persistErr) {
+            logger.error('Chat route [deterministic-engine]: failed to persist assistant message', persistErr);
+          }
+
+          await ChatSideEffectService.finalizeChatResponse({
+            supabase,
+            userId: user.id,
+            sessionId,
+            message: message || '',
+            fullResponse: responseText,
+            intent,
+            emotion,
+            metadataPayload: deterministicEngineResponse.metadata,
+            recentHistory,
+            sessionTurnsCount,
+            mindContext,
+            assistantMessageId,
+            userMessageId,
+          });
+
+          controller.close();
+        },
+      });
+
+      return new Response(stream, {
+        headers: {
+          'Content-Type': 'text/plain; charset=utf-8',
+          'X-Accel-Buffering': 'no',
+          'Cache-Control': 'no-cache',
+        },
+      });
     }
 
     // ── Branch D: Main streaming branch ────────────────────────────────────────
@@ -528,7 +745,7 @@ export async function POST(req: NextRequest) {
 
           const contextTrace = {
             learner_state_version: mindContext?.profile?.learnerStateVersion || 0,
-            memory_count: semanticMemories.length,
+            memory_count: crossSessionMemories.length,
             weak_concept_count: mindContext?.weakConcepts?.length || 0,
             due_card_count: mindContext?.overdueCardsCount || 0,
             mistake_count: mindContext?.recentMistakes?.length || 0,
@@ -548,6 +765,9 @@ export async function POST(req: NextRequest) {
               promptTokens: estimateMainPromptTokens(systemPrompt, recentHistory, message || ''),
               completionTokens: estimateTextTokens(cleanContent),
               route: '/api/ai/chat',
+              promptVersion,
+              promptFamily: 'mind_chat',
+              promptSource: 'chat_stream',
             });
             budgetSettled = true;
           }
@@ -562,6 +782,7 @@ export async function POST(req: NextRequest) {
               intent: intent.intent,
               emotionalState: emotion,
               metadata: metadataPayload ?? {},
+              promptVersion,
               idempotencyKey: `${messageRequestId}:assistant`,
             }));
           } catch (persistErr) {
@@ -586,6 +807,7 @@ export async function POST(req: NextRequest) {
             sessionTurnsCount,
             mindContext,
             assistantMessageId,
+            userMessageId,
           });
 
         } catch (err: any) {
@@ -671,4 +893,90 @@ function estimateMainPromptTokens(systemPrompt: string, recentHistory: any[], me
 function estimateTextTokens(...parts: Array<string | null | undefined>): number {
   const chars = parts.reduce((sum, part) => sum + (part?.length || 0), 0);
   return Math.max(1, Math.ceil(chars / 4));
+}
+
+async function buildChatFirstEngineResponse(input: {
+  userId: string;
+  message: string;
+  intent: string;
+  orchestratorIntent: string;
+  mindContext: any;
+  supabase: any;
+}): Promise<{ text: string; metadata: Record<string, any> } | null> {
+  const normalized = input.message.toLowerCase();
+  const asksForPlan =
+    input.orchestratorIntent === 'planning' ||
+    /\b(what should i do tomorrow|tomorrow'?s plan|study plan for tomorrow|plan tomorrow|what should i study tomorrow)\b/i.test(input.message);
+  const asksWeakAreas =
+    input.intent === 'ATLAS' ||
+    /\b(weakest areas|weak areas|weak chapters|where am i weak|what am i weak)\b/i.test(input.message);
+  const asksRevision =
+    input.intent === 'FLASHCARDS' ||
+    /\b(what should i revise now|revise now|due revision|due cards|memory queue)\b/i.test(input.message);
+  const asksAutopsyWithoutEvidence =
+    input.intent === 'AUTOPSY' &&
+    /\b(analy[sz]e my test|check my mock|autopsy|test analysis|paper analysis)\b/i.test(input.message);
+
+  if (asksForPlan) {
+    const plan = await ensureCommandPlanForDate({
+      userId: input.userId,
+      date: localDateAfter(/\btomorrow\b/i.test(normalized) ? 1 : 0),
+      client: input.supabase,
+    });
+    return {
+      text: formatCommandPlanForChat(plan),
+      metadata: {
+        action: 'show_command_plan',
+        date: plan.date,
+        taskCount: plan.tasks.length,
+        sourceSignals: plan.sourceSignals,
+      },
+    };
+  }
+
+  if (asksWeakAreas) {
+    return {
+      text: formatWeakAreasForChat({
+        weakConcepts: input.mindContext?.weakConcepts ?? [],
+        recentMistakes: input.mindContext?.recentMistakes ?? [],
+        masteryPercent: input.mindContext?.masteryStats?.masteryPercent ?? 0,
+      }),
+      metadata: {
+        action: 'answer_atlas_inline',
+        weakConceptCount: input.mindContext?.weakConcepts?.length ?? 0,
+        mistakeCount: input.mindContext?.recentMistakes?.length ?? 0,
+      },
+    };
+  }
+
+  if (asksRevision) {
+    return {
+      text: formatRevisionQueueForChat({
+        dueCount: input.mindContext?.overdueCardsCount ?? 0,
+        cards: input.mindContext?.topOverdueCards ?? [],
+      }),
+      metadata: {
+        action: 'answer_memory_inline',
+        dueCardCount: input.mindContext?.overdueCardsCount ?? 0,
+      },
+    };
+  }
+
+  if (asksAutopsyWithoutEvidence) {
+    return {
+      text: [
+        'AUTOPSY needs evidence before it can diagnose. Upload or paste one of these inside this chat:',
+        '1. answer key plus your answers',
+        '2. OMR or response sheet',
+        '3. score/subject breakdown',
+        '4. mistake rows with question, correct answer, your answer, and chapter',
+        'I will only update ATLAS, MEMORY, and COMMAND from evidence-backed mistakes.',
+      ].join('\n'),
+      metadata: {
+        action: 'request_autopsy_evidence',
+      },
+    };
+  }
+
+  return null;
 }

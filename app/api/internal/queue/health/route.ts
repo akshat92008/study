@@ -9,7 +9,7 @@ export async function GET(req: Request) {
   if (authError) return authError;
 
   const supabase = createAdminClient();
-  const [pending, processing, failed, dlq, consumerLag] = await Promise.all([
+  const [pending, processing, failed, dlq, consumerLag, autopsyQueued, autopsyProcessing, autopsyFailed] = await Promise.all([
     supabase.from('event_queue').select('*', { count: 'exact', head: true }).eq('status', 'PENDING'),
     supabase.from('event_queue').select('*', { count: 'exact', head: true }).eq('status', 'PROCESSING'),
     supabase.from('event_queue').select('*', { count: 'exact', head: true }).eq('status', 'FAILED'),
@@ -20,9 +20,12 @@ export async function GET(req: Request) {
       .in('status', ['PENDING', 'RETRY_SCHEDULED'])
       .order('created_at', { ascending: true })
       .limit(100),
+    supabase.from('autopsy_jobs').select('*', { count: 'exact', head: true }).eq('status', 'queued'),
+    supabase.from('autopsy_jobs').select('*', { count: 'exact', head: true }).eq('status', 'processing'),
+    supabase.from('autopsy_jobs').select('*', { count: 'exact', head: true }).eq('status', 'failed'),
   ]);
 
-  const errors = [pending.error, processing.error, failed.error, dlq.error, consumerLag.error]
+  const errors = [pending.error, processing.error, failed.error, dlq.error, consumerLag.error, autopsyQueued.error, autopsyProcessing.error, autopsyFailed.error]
     .filter(Boolean)
     .map((error: any) => error.message);
 
@@ -38,6 +41,11 @@ export async function GET(req: Request) {
     processingEvents: processing.count || 0,
     failedEvents: failed.count || 0,
     dlqCount: dlq.count || 0,
+    autopsyJobs: {
+      queued: autopsyQueued.count || 0,
+      processing: autopsyProcessing.count || 0,
+      failed: autopsyFailed.count || 0,
+    },
     consumerLagSeconds: lagByConsumer,
     errors,
     timestamp: new Date().toISOString(),

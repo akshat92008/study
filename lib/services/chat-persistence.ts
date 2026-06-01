@@ -12,16 +12,21 @@ export type ChatMessageForClient = ChatMessageForPrompt & {
   metadata?: Record<string, any>;
 };
 
-export async function getOrCreateGlobalChatSession(supabase: any, userId: string): Promise<string> {
+export async function getOrCreateChatSession(
+  supabase: any,
+  userId: string,
+  sessionType: string,
+  title: string
+): Promise<string> {
   const { data: existing, error: existingError } = await supabase
     .from('chat_sessions')
     .select('id')
     .eq('user_id', userId)
-    .eq('session_type', 'global')
+    .eq('session_type', sessionType)
     .maybeSingle();
 
   if (existingError) {
-    throw new Error(`Failed to load global chat session: ${existingError.message}`);
+    throw new Error(`Failed to load ${sessionType} chat session: ${existingError.message}`);
   }
   if (existing?.id) return existing.id;
 
@@ -29,18 +34,22 @@ export async function getOrCreateGlobalChatSession(supabase: any, userId: string
     .from('chat_sessions')
     .insert({
       user_id: userId,
-      session_type: 'global',
-      is_global: true,
-      title: 'Cognition OS Main Thread',
+      session_type: sessionType,
+      is_global: sessionType === 'global',
+      title,
     })
     .select('id')
     .single();
 
   if (createError || !created?.id) {
-    throw new Error(`Failed to create global chat session: ${createError?.message || 'missing id'}`);
+    throw new Error(`Failed to create ${sessionType} chat session: ${createError?.message || 'missing id'}`);
   }
 
   return created.id;
+}
+
+export async function getOrCreateGlobalChatSession(supabase: any, userId: string): Promise<string> {
+  return getOrCreateChatSession(supabase, userId, 'global', 'Cognition OS Main Thread');
 }
 
 export async function loadRecentMessages(supabase: any, sessionId: string): Promise<ChatMessageForPrompt[]> {
@@ -105,6 +114,7 @@ export async function persistChatMessage(
     metadata?: Record<string, any>;
     intent?: string;
     emotionalState?: string;
+    promptVersion?: string;
     /** Deterministic key for assistant messages: "<requestId>:assistant".
      *  When set, a second insert with the same key silently returns the existing id. */
     idempotencyKey?: string;
@@ -120,6 +130,7 @@ export async function persistChatMessage(
       intent: input.intent ?? null,
       emotional_state: input.emotionalState ?? null,
       metadata: input.metadata ?? {},
+      prompt_version: input.promptVersion ?? null,
       idempotency_key: input.idempotencyKey ?? null,
     })
     .select('id')

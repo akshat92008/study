@@ -1,6 +1,13 @@
 import { createClient } from '@/lib/supabase/server';
 import { getEmbedding } from '@/lib/ai/provider-client';
 import { logger } from '@/lib/utils/logger';
+import {
+  buildConceptKey,
+  normalizeChapter,
+  normalizeConceptName,
+  normalizeSubject,
+  titleizeConceptLabel,
+} from '@/lib/engines/concept-normalization';
 
 export type ConceptResolutionSource =
   | 'chat'
@@ -42,28 +49,7 @@ export interface ConceptResolution {
   reason?: string;
 }
 
-const SAFE_CREATE_SOURCES = new Set<ConceptResolutionSource>(['onboarding', 'ingest', 'command', 'session', 'autopsy']);
-
-function normalize(value?: string | null): string | null {
-  if (!value) return null;
-  const normalized = value
-    .toLowerCase()
-    .normalize('NFKD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z0-9]+/g, ' ')
-    .trim()
-    .replace(/\s+/g, ' ');
-  return normalized.length > 0 ? normalized : null;
-}
-
-function titleize(value: string | null, fallback: string): string {
-  const source = value || fallback;
-  return source
-    .split(' ')
-    .filter(Boolean)
-    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
-    .join(' ');
-}
+const SAFE_CREATE_SOURCES = new Set<ConceptResolutionSource>(['onboarding', 'ingest', 'session', 'autopsy']);
 
 async function logResolution(
   supabase: any,
@@ -139,9 +125,15 @@ export async function resolveConcept(input: ResolveConceptInput): Promise<Concep
     topic: input.topic ?? null,
   };
 
-  const normalizedSubject = normalize(input.subject);
-  const normalizedChapter = normalize(input.chapter);
-  const normalizedTopic = normalize(input.topic) ?? normalizedChapter;
+  const normalizedSubject = normalizeSubject(input.subject);
+  const normalizedChapter = normalizeChapter(input.chapter);
+  const normalizedTopic = normalizeConceptName(input.topic) ?? normalizedChapter;
+  const conceptKey = buildConceptKey({
+    subject: input.subject,
+    chapter: input.chapter,
+    topic: input.topic,
+    name: input.topic ?? input.chapter,
+  });
   const extractionConfidence = Math.max(0, Math.min(1, input.confidence ?? 0.75));
 
   const unresolvedBase = {
@@ -160,6 +152,40 @@ export async function resolveConcept(input: ResolveConceptInput): Promise<Concep
       { ...unresolvedBase, reason: 'No subject/chapter/topic provided' },
       raw
     );
+  }
+
+  if (conceptKey) {
+    const { data: canonicalMatch, error: canonicalError } = await supabase
+      .from('concepts')
+      .select('id')
+      .eq('user_id', input.userId)
+      .eq('concept_key', conceptKey)
+      .limit(1)
+      .maybeSingle();
+
+    if (canonicalMatch?.id) {
+      return finishResolution(
+        supabase,
+        input,
+        {
+          conceptId: canonicalMatch.id,
+          confidence: Math.max(0.97, extractionConfidence),
+          method: 'normalized',
+          normalizedSubject,
+          normalizedChapter,
+          normalizedTopic,
+          reason: 'Matched canonical concept_key',
+        },
+        raw
+      );
+    }
+
+    if (canonicalError) {
+      logger.warn('Canonical concept_key lookup failed; falling back', {
+        userId: input.userId,
+        error: canonicalError.message,
+      });
+    }
   }
 
   const exactQuery = supabase
@@ -296,9 +322,9 @@ export async function resolveConcept(input: ResolveConceptInput): Promise<Concep
     (normalizedChapter || normalizedTopic);
 
   if (canCreate) {
-    const subject = titleize(normalizedSubject, 'General');
-    const chapter = titleize(normalizedChapter ?? normalizedTopic, 'General');
-    const topic = titleize(normalizedTopic ?? normalizedChapter, 'General');
+    const subject = titleizeConceptLabel(normalizedSubject, 'General');
+    const chapter = titleizeConceptLabel(normalizedChapter ?? normalizedTopic, 'General');
+    const topic = titleizeConceptLabel(normalizedTopic ?? normalizedChapter, 'General');
 
     const { data: created, error } = await supabase
       .from('concepts')
@@ -308,6 +334,10 @@ export async function resolveConcept(input: ResolveConceptInput): Promise<Concep
         subject,
         chapter,
         topic,
+        normalized_subject: normalizedSubject,
+        normalized_chapter: normalizedChapter,
+        normalized_name: normalizedTopic,
+        concept_key: conceptKey,
         mastery: 'not_started',
         confidence: 'low',
         forgetting_probability: 1.0,

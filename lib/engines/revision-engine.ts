@@ -245,7 +245,7 @@ export async function reviewCard(cardId: string, rating: 1 | 2 | 3 | 4, response
           // Suspend card or flag it (using 4 for suspended)
           await supabase.from('revision_cards').update({ state: 4 }).eq('id', cardId);
           
-          // Inject deep review task into COMMAND planner
+          // Inject a deep review task for tomorrow's session-card selector
           const d = new Date();
           d.setDate(d.getDate() + 1); // schedule for tomorrow
           await supabase.from('study_tasks').insert({
@@ -461,6 +461,16 @@ export async function createSingleCard(
   const emptyCard = createEmptyCard();
   const normalizedFront = front.trim();
   const normalizedBack = back.trim();
+  const normalizedFrontKey = normalizeCardText(normalizedFront);
+  const normalizedKey = createHash('sha256')
+    .update([
+      userId,
+      conceptId ?? 'no-concept',
+      source?.sourceType ?? 'manual',
+      source?.sourceId ?? 'no-source',
+      normalizedFrontKey,
+    ].join('\n'))
+    .digest('hex');
   const sourceHash = source
     ? createHash('sha256').update(`${normalizedFront}\n---\n${normalizedBack}`).digest('hex')
     : null;
@@ -468,6 +478,23 @@ export async function createSingleCard(
   if (!isSpecificRevisionCard(normalizedFront, normalizedBack)) {
     logger.warn('Rejected low-specificity revision card', { userId, subject, chapter, sourceType: source?.sourceType });
     return null;
+  }
+
+  const { data: duplicate } = await supabase
+    .from('revision_cards')
+    .select('id')
+    .eq('user_id', userId)
+    .eq('normalized_key', normalizedKey)
+    .maybeSingle();
+
+  if (duplicate?.id) {
+    logger.info('Revision card dedupe skip', {
+      userId,
+      conceptId,
+      sourceType: source?.sourceType,
+      sourceId: source?.sourceId,
+    });
+    return duplicate;
   }
   
   const { data, error } = await supabase.from('revision_cards').insert({
@@ -488,6 +515,7 @@ export async function createSingleCard(
     source_type: source?.sourceType ?? null,
     source_id: source?.sourceId ?? null,
     source_hash: sourceHash,
+    normalized_key: normalizedKey,
     verified: source?.verified ?? false,
     confidence: source?.confidence ?? null,
     origin_event_id: source?.originEventId ?? null,
@@ -503,6 +531,16 @@ export async function createSingleCard(
     logger.warn('Failed to invalidate session cards after single card', err)
   );
   return data;
+}
+
+function normalizeCardText(value: string): string {
+  return value
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim()
+    .replace(/\s+/g, ' ');
 }
 
 function isSpecificRevisionCard(front: string, back: string): boolean {

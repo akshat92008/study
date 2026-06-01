@@ -8,7 +8,7 @@ import { z } from 'zod';
 export type OrchestratorResult = {
   intent: string; // direct_answer | solve_question | study_session | make_artifact | mock_autopsy | memory_review | progress_check | planning | emotional_support | unknown
   mode: string; // doubt | learning | workflow
-  requiredWorkers: string[]; // e.g., ["autopsy"], ["command"], []
+  requiredWorkers: string[]; // e.g., ["autopsy"], []
   shouldAnswerFirst: boolean;
   needsFileProcessing: boolean;
   riskLevel: 'low' | 'medium' | 'high';
@@ -42,7 +42,7 @@ export function orchestrateFromIntent(
     return {
       intent: 'planning',
       mode: 'workflow',
-      requiredWorkers: ['command'],
+      requiredWorkers: [],
       shouldAnswerFirst: false,
       needsFileProcessing: false,
       riskLevel: 'medium',

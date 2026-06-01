@@ -9,10 +9,10 @@ vi.mock('@/lib/events/orchestrator', () => ({
 }));
 
 describe('Worker Event Processing', () => {
-  it('should process COMMAND_SESSION_COMPLETED correctly', async () => {
+  it('should process STUDY_SESSION_COMPLETED correctly', async () => {
     const payload = {
       user_id: 'test-user-id',
-      type: 'COMMAND_SESSION_COMPLETED',
+      type: 'STUDY_SESSION_COMPLETED',
       data: {
         sessionId: 'test-session',
         understood: true,

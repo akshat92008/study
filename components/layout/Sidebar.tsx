@@ -26,9 +26,9 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
   const navItems = [
     { label: 'Today', href: '/dashboard', icon: Home },
     { label: 'MIND', href: '/chat', icon: MessageSquare },
-    { label: 'AUTOPSY', href: '/autopsy', icon: Activity },
-    { label: 'ATLAS', href: '/cognition', icon: Brain },
-    { label: 'MEMORY', href: '/revision', icon: RefreshCw },
+    { label: 'Test Analysis', href: '/autopsy', icon: Activity },
+    { label: 'Progress', href: '/cognition', icon: Brain },
+    { label: 'Revision Due', href: '/revision', icon: RefreshCw },
   ];
 
   useEffect(() => {

@@ -763,7 +763,7 @@ describe('local MVP loop integration contract', () => {
 
     const autopsy = await processMockAutopsy(
       USER_ID,
-      { kind: 'text', text: 'Mock paper text with Motion mistakes' },
+      { kind: 'text', text: 'Mock result sheet: Q1 Incorrect, student answer A, correct answer B. Q2 NeedsReview from low OCR.' },
       'Motion Mock',
       'neet',
       undefined,

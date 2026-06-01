@@ -55,7 +55,7 @@ describe('Autopsy event loop', () => {
 
     const result = await processMockAutopsy(
       'user-1',
-      { kind: 'text', text: 'mock paper text' },
+      { kind: 'text', text: 'Mock result sheet: Q1 Incorrect, student answer A, correct answer B. Q2 Correct, student answer C, correct answer C.' },
       'Unit Test Mock',
       'neet'
     );
@@ -70,5 +70,18 @@ describe('Autopsy event loop', () => {
       p_incorrect_count: 1,
     }));
     expect(rpc.mock.calls[0][1].p_questions).toHaveLength(2);
+  });
+
+  it('does not classify a bare question paper without answer evidence', async () => {
+    const { processMockAutopsy, AutopsyNeedsUserInputError } = await import('@/lib/engines/autopsy-engine');
+
+    await expect(processMockAutopsy(
+      'user-1',
+      { kind: 'text', text: 'Question 1. A ball is thrown upward. Question 2. Define acceleration.' },
+      'Question Paper Only',
+      'neet'
+    )).rejects.toBeInstanceOf(AutopsyNeedsUserInputError);
+
+    expect(rpc).not.toHaveBeenCalled();
   });
 });

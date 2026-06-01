@@ -29,9 +29,6 @@
       "@/db/*": [
         "./lib/db/*"
       ],
-      "@/services/*": [
-        "./lib/services/*"
-      ],
       "@/graph/*": [
         "./lib/graph/*"
       ],

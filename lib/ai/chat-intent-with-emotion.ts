@@ -4,8 +4,10 @@ import { ChatIntent, IntentResult } from './chat-intent';
 import {
   isBudgetExceeded,
   isBudgetUnavailable,
+  registerPromptAudit,
   reserveBudgetForModelCall,
 } from '@/lib/ai/cost-guard';
+import { getPromptVersion } from '@/lib/ai/prompt-version';
 
 export type EmotionalState =
   | 'focused' | 'motivated' | 'stressed' | 'burnt_out' | 'anxious'
@@ -100,6 +102,15 @@ Emotion rules:
           160
         )
       : null;
+    if (reservation) {
+      registerPromptAudit(reservation.reservationId, {
+        userId,
+        promptVersion: getPromptVersion('mind'),
+        promptFamily: 'mind_chat',
+        promptSource: 'intent_and_emotion_classifier',
+        route: 'chat:intent-emotion',
+      });
+    }
 
     const parsed = await routeJSONGeneration<any>(
       'You are a classification model. Return only valid JSON. No markdown.',

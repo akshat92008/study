@@ -17,6 +17,7 @@
     "test:watch": "vitest",
     "test:integration": "vitest --project integration",
     "test:coverage": "vitest --coverage",
+    "evals": "node scripts/run-evals.js",
     "preflight:env": "ts-node scripts/env-preflight.ts",
     "smoke:mvp": "ts-node scripts/mvp-smoke-check.ts",
     "verify:local": "SKIP_ENV_VALIDATION=1 npm run typecheck && npm run lint && npm test && npm run build && SKIP_ENV_VALIDATION=1 npm run smoke:mvp -- --mode=local",

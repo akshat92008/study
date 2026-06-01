@@ -1,6 +1,11 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { processMockAutopsy, AutopsyExtractionError } from '@/lib/engines/autopsy-engine';
+import {
+  processMockAutopsy,
+  AutopsyExtractionError,
+  AutopsyNeedsUserInputError,
+} from '@/lib/engines/autopsy-engine';
+import { createAutopsyJob } from '@/lib/services/autopsy-jobs';
 import { logger } from '@/lib/utils/logger';
 import { withRateLimit } from '@/lib/middleware/withRateLimit';
 import { apiErrorResponse, getRequestId } from '@/lib/api/errors';
@@ -12,8 +17,14 @@ import {
   reserveBudgetForModelCall,
   type BudgetReservation,
 } from '@/lib/ai/cost-guard';
-
-const MAX_FILE_SIZE_BYTES = 20 * 1024 * 1024;
+import {
+  consumeUsageLimit,
+  getMaxUploadBytes,
+  usageGateResponse,
+  validatePromptLength,
+  validateUploadBytes,
+} from '@/lib/utils/billing';
+import { getPromptVersion } from '@/lib/ai/prompt-version';
 
 const ALLOWED_MIME_TYPES = new Set([
   'application/pdf',
@@ -40,11 +51,13 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
     let fileSizeKB: number | undefined;
     let mimeType = 'text/plain';
     let idempotencyKey = request.headers.get('Idempotency-Key');
+    let asyncRequested = request.headers.get('prefer')?.toLowerCase().includes('respond-async') ?? false;
 
     if (contentType.includes('application/json')) {
       const body = await request.json();
       testName = body.testName || body.fileName || testName;
       requestedExamType = body.examType;
+      asyncRequested = asyncRequested || body.async === true || body.processAsync === true;
       if (!idempotencyKey && typeof body.idempotencyKey === 'string') {
         idempotencyKey = body.idempotencyKey;
       }
@@ -74,9 +87,8 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
 
         const byteSize = Buffer.byteLength(base64, 'base64');
         fileSizeKB = Math.round(byteSize / 1024);
-        if (byteSize > MAX_FILE_SIZE_BYTES) {
-          return apiError('invalid_file', `File too large (${Math.round(byteSize / 1024 / 1024)}MB). Maximum is 20MB.`, 413);
-        }
+        const uploadSize = validateUploadBytes(byteSize);
+        if (!uploadSize.allowed) return usageGateResponse(uploadSize);
 
         const buffer = Buffer.from(base64, 'base64');
         const { validateMagicBytesArray } = await import('@/lib/utils/magicBytes');
@@ -92,6 +104,7 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
       const file = formData.get('file') as File | null;
       testName = (formData.get('testName') as string) || testName;
       idempotencyKey = idempotencyKey || (formData.get('idempotencyKey') as string | null);
+      asyncRequested = asyncRequested || formData.get('async') === 'true';
       const correctMarksStr = formData.get('correctMarks') as string;
       const negativeMarksStr = formData.get('negativeMarks') as string;
 
@@ -102,9 +115,8 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
 
       if (!file) return apiError('invalid_file', 'No file was provided.', 400);
 
-      if (file.size > MAX_FILE_SIZE_BYTES) {
-        return apiError('invalid_file', `File too large (${Math.round(file.size / 1024 / 1024)}MB). Maximum is 20MB.`, 413);
-      }
+      const uploadSize = validateUploadBytes(file.size);
+      if (!uploadSize.allowed) return usageGateResponse(uploadSize);
 
       mimeType = file.type || 'application/octet-stream';
       if (!ALLOWED_MIME_TYPES.has(mimeType)) {
@@ -133,6 +145,14 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
       return apiError('invalid_file', 'No upload content was provided.', 400);
     }
 
+    if (fileData.kind === 'text') {
+      const promptLength = validatePromptLength(fileData.text);
+      if (!promptLength.allowed) return usageGateResponse(promptLength);
+    }
+
+    const autopsyUsageGate = await consumeUsageLimit(userId, 'autopsy_uploads_daily');
+    if (!autopsyUsageGate.allowed) return usageGateResponse(autopsyUsageGate);
+
     const { data: profile } = await supabase
       .from('profiles')
       .select('exam_type')
@@ -142,6 +162,29 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
     const examType = requestedExamType || profile?.exam_type || 'General Study';
 
     logger.info('Starting autopsy', { userId, requestId, feature: 'autopsy', testName, mimeType, fileSizeKB });
+
+    if (asyncRequested) {
+      const job = await createAutopsyJob({
+        userId,
+        fileData,
+        testName,
+        examType,
+        customScoring,
+        idempotencyKey,
+        source: 'autopsy_ingest',
+        client: supabase,
+      });
+
+      return NextResponse.json(
+        {
+          status: job.status,
+          jobId: job.id,
+          autopsyId: job.result_autopsy_id,
+          error: job.error_message,
+        },
+        { status: job.status === 'completed' ? 200 : 202 }
+      );
+    }
 
     let budgetReservation: BudgetReservation | null = null;
     const estimatedPromptTokens = fileData.kind === 'text'
@@ -161,7 +204,7 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
       if (isBudgetExceeded(error)) {
         return apiError(
           'budget_exceeded',
-          'AUTOPSY is paused for today before any extraction ran. Try again tomorrow or reduce file size.',
+          `AUTOPSY is paused for today before any extraction ran. Try again tomorrow or reduce file size. Max upload size is ${Math.round(getMaxUploadBytes() / 1024 / 1024)}MB.`,
           error.status,
           {
             limitUsd: error.limitUsd,
@@ -185,6 +228,9 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
         promptTokens: estimatedPromptTokens,
         completionTokens: Math.ceil(JSON.stringify(result).length / 4),
         route: '/api/autopsy/ingest',
+        promptVersion: getPromptVersion('autopsy'),
+        promptFamily: 'autopsy_extract',
+        promptSource: 'autopsy_ingest',
       });
       return NextResponse.json(result);
     } catch (error) {
@@ -196,6 +242,23 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
     }
 
   } catch (error: any) {
+    if (error instanceof AutopsyNeedsUserInputError || error?.needsUserInput === true) {
+      logger.warn('Autopsy needs user input', {
+        userId,
+        requestId,
+        message: error.message,
+      });
+      return apiError(
+        'needs_user_input',
+        error.message,
+        422,
+        {
+          needs_user_input: true,
+          learner_state_mutated: false,
+        }
+      );
+    }
+
     // AutopsyExtractionError: the file couldn't be parsed/extracted.
     // Return 422 with a clear user-facing message. Critically: no ATLAS/MEMORY
     // mutations can have occurred because the error is thrown before the RPC call.

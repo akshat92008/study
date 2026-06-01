@@ -1,6 +1,7 @@
 import { streamText } from '@/lib/ai/provider-client';
 import { getMentorSystemPrompt, buildMentorContext } from '@/lib/ai/prompts/mentor';
 import { createClient } from '@/lib/supabase/server';
+import { getMINDContext } from '@/lib/engines/mind-engine';
 
 export async function getMentorContext(userId: string) {
   const supabase = await createClient();
@@ -34,16 +35,28 @@ export async function getMentorContext(userId: string) {
   };
 }
 
-export async function* streamMentorResponse(userId: string, userMessage: string, chatHistory: any[]) {
+export async function* streamMentorResponse(
+  userId: string,
+  userMessage: string,
+  chatHistory: any[],
+  reservationId?: string
+) {
   const { profile, stats, recentMistakes } = await getMentorContext(userId);
+  const mindContext = await getMINDContext(userId, userMessage).catch(() => null);
   const context = buildMentorContext(profile, stats, recentMistakes);
+  const rootGapContext = mindContext?.rootGapChains?.length
+    ? `\n\n## Root Prerequisite Gap Chains\n${mindContext.rootGapChains
+        .slice(0, 3)
+        .map((chain: any) => `- ${chain.gapChain.join(' -> ')}`)
+        .join('\n')}`
+    : '';
 
   const historyText = chatHistory.slice(-10).map(m =>
     `${m.role === 'user' ? 'Student' : 'Mentor'}: ${m.content}`
   ).join('\n');
 
-  const fullPrompt = `${context}\n\n## Chat History\n${historyText}\n\nStudent: ${userMessage}`;
+  const fullPrompt = `${context}${rootGapContext}\n\n## Chat History\n${historyText}\n\nStudent: ${userMessage}`;
 
   const sysPrompt = getMentorSystemPrompt(profile?.exam_type || 'CUSTOM');
-  yield* streamText('flash', sysPrompt, fullPrompt, 0.8);
+  yield* streamText('flash', sysPrompt, fullPrompt, 0.8, reservationId);
 }

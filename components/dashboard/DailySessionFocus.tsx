@@ -189,23 +189,16 @@ export default function DailySessionFocus({
       });
       const data = await res.json();
 
-      if (data.success) {
-        setNewStreak(data.streakDays);
+      if (res.ok && data.success) {
+        setNewStreak(data.streakDays ?? (initialStreak + 1));
         setSessionState('celebrate');
         // Emit event to the universal event bus
-        logStudentEvent('session_complete', { taskId, subject, chapter, newStreak: data.streakDays });
+        logStudentEvent('session_complete', { taskId, subject, chapter, newStreak: data.streakDays ?? (initialStreak + 1) });
       } else {
-        // Fallback
-        const fallbackStreak = initialStreak + 1;
-        setNewStreak(fallbackStreak);
-        setSessionState('celebrate');
-        logStudentEvent('session_complete', { taskId, subject, chapter, newStreak: fallbackStreak });
+        alert('Failed to update session progress. Please try again.');
       }
     } catch (e) {
-      const fallbackStreak = initialStreak + 1;
-      setNewStreak(fallbackStreak);
-      setSessionState('celebrate');
-      logStudentEvent('session_complete', { taskId, subject, chapter, newStreak: fallbackStreak });
+      alert('Network error while completing session. Please try again.');
     } finally {
       setCompleting(false);
     }
@@ -474,7 +467,7 @@ export default function DailySessionFocus({
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)', color: 'var(--accent-purple)' }}>
               <Sparkles size={18} />
-              <h4 style={{ fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-bold)' }}>MEMORY Flashcard Seeding</h4>
+              <h4 style={{ fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-bold)' }}>Revision Card Created</h4>
             </div>
             
             <p style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)', lineHeight: 'var(--lh-relaxed)' }}>

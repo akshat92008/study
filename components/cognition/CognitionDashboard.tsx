@@ -104,7 +104,7 @@ export default function CognitionDashboard({ data }: Props) {
               style={{ textAlign: 'center' }}
             >
               <Sparkles size={64} style={{ color: 'var(--accent-cyan)', margin: '0 auto 24px', filter: 'drop-shadow(0 0 20px var(--accent-cyan))' }} />
-              <h1 style={{ fontSize: '3rem', fontWeight: 900, color: 'white' }}>ATLAS Generated.</h1>
+              <h1 style={{ fontSize: '3rem', fontWeight: 900, color: 'white' }}>Progress Tracked.</h1>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', marginTop: 12 }}>Mapping dependencies across {data.stats?.total || 0} nodes...</p>
             </motion.div>
           </motion.div>
@@ -162,10 +162,10 @@ export default function CognitionDashboard({ data }: Props) {
       <div>
         <h1 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-bold)', letterSpacing: 'var(--ls-tight)' }}>
           <Brain size={28} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 'var(--sp-2)', color: 'var(--accent-purple)' }} />
-          ATLAS
+          Progress
         </h1>
         <p style={{ color: 'var(--text-secondary)', marginTop: 'var(--sp-1)' }}>
-          Your concept mastery map. Weak areas here feed MIND, MEMORY, AUTOPSY, and the next mission.
+          Your concept mastery map. Weak areas here feed your revision queue, test analysis, and the next mission.
         </p>
       </div>
 
@@ -245,7 +245,7 @@ export default function CognitionDashboard({ data }: Props) {
             Not enough data to map mastery yet
           </h3>
           <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', maxWidth: '400px', lineHeight: 'var(--lh-relaxed)' }}>
-            Complete onboarding, finish a mission, or upload a mock so ATLAS can map your weak and strong concepts.
+            Complete onboarding, finish a mission, or upload a mock so we can map your weak and strong concepts.
           </p>
         </Card>
       ) : (

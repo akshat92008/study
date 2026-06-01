@@ -55,7 +55,7 @@ export default function RevisionDashboard({ data }: { data: any }) {
       <div>
         <h1 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-bold)', letterSpacing: 'var(--ls-tight)' }}>
           <RefreshCw size={28} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 'var(--sp-2)', color: 'var(--accent-cyan)' }} />
-          MEMORY
+          Revision Due
         </h1>
         <p style={{ color: 'var(--text-secondary)', marginTop: 'var(--sp-1)' }}>
           Your revision system. Review what is due before it fades.
@@ -89,7 +89,7 @@ export default function RevisionDashboard({ data }: { data: any }) {
           </div>
           {(currentCard.chapter || currentCard.source || currentCard.concept_id || currentCard.front?.startsWith?.('[')) && (
             <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', marginBottom: 'var(--sp-3)' }}>
-              Source: {currentCard.source || (currentCard.front?.startsWith?.('[Mock Recovery]') ? 'AUTOPSY mock recovery' : currentCard.front?.startsWith?.('[Mistake Recovery]') ? 'mistake recovery' : currentCard.front?.startsWith?.('[Tutor Gap]') ? 'MIND session gap' : currentCard.chapter || 'concept review')}
+              Source: {currentCard.source || (currentCard.front?.startsWith?.('[Mock Recovery]') ? 'mock recovery' : currentCard.front?.startsWith?.('[Mistake Recovery]') ? 'mistake recovery' : currentCard.front?.startsWith?.('[Tutor Gap]') ? 'session gap' : currentCard.chapter || 'concept review')}
             </div>
           )}
 
@@ -131,7 +131,7 @@ export default function RevisionDashboard({ data }: { data: any }) {
             All caught up!
           </p>
           <p style={{ color: 'var(--text-tertiary)', fontSize: 'var(--fs-sm)', marginTop: 'var(--sp-1)', marginBottom: 'var(--sp-4)' }}>
-            {stats.total > 0 ? 'No cards due for review right now.' : 'Create revision from ATLAS weak concepts, a MIND session, or an AUTOPSY upload.'}
+            {stats.total > 0 ? 'No cards due for review right now.' : 'Create revision from weak concepts, a session, or a mock upload.'}
           </p>
           {stats.total === 0 && (
             <a href="/cognition" style={{
@@ -139,7 +139,7 @@ export default function RevisionDashboard({ data }: { data: any }) {
               background: 'var(--accent-cyan)', color: 'var(--bg-root)',
               borderRadius: 'var(--radius-md)', fontSize: 'var(--fs-sm)', 
               fontWeight: 'var(--fw-semibold)', textDecoration: 'none'
-            }}>Open ATLAS</a>
+            }}>Open Progress</a>
           )}
         </Card>
       )}

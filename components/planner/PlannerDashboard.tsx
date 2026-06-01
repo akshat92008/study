@@ -404,7 +404,7 @@ export default function PlannerDashboard({ initialTasks, date }: { initialTasks:
       </div>
 
 
-      {/* COMMAND V2 REPLAN DIALOG MODAL */}
+      {/* MVP REPLAN DIALOG MODAL */}
       <AnimatePresence>
         {isReplanOpen && (
           <div style={{
@@ -445,7 +445,7 @@ export default function PlannerDashboard({ initialTasks, date }: { initialTasks:
                 {replanStep === 'config' ? (
                   <>
                     <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)', lineHeight: 'var(--lh-relaxed)' }}>
-                      Cognition OS evaluates outstanding syllabus topics, MEMORY due reviews, and recent AUTOPSY results to formulate a focused study plan.
+                      Cognition OS evaluates outstanding syllabus topics, due reviews, and recent test results to formulate a focused study plan.
                     </p>
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)', marginTop: 'var(--sp-2)' }}>

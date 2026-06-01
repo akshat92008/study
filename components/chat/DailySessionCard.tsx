@@ -149,7 +149,7 @@ export default function DailySessionCard({ onStartSession, onEndSession, isColla
             Today's mission is complete
           </div>
           <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)', marginTop: 2 }}>
-            {card.focusTopic} is saved for ATLAS, MEMORY, and your next mission.
+            {card.focusTopic} is saved for your progress, revision queue, and next mission.
           </div>
         </div>
       </div>

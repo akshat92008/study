@@ -21,6 +21,14 @@ export default [
       'react-hooks/error-boundaries': 'off',
       'react-hooks/set-state-in-effect': 'off',
       'prefer-const': 'warn',
+      'no-restricted-imports': ['error', {
+        patterns: [
+          '@/services/*',
+          'services/*',
+          '../services/*',
+          '../../services/*',
+        ],
+      }],
     },
   },
 ];

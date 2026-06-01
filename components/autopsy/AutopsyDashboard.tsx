@@ -71,7 +71,7 @@ export default function AutopsyDashboard({ result }: AutopsyDashboardProps) {
             Downstream update queued
           </div>
           <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.5 }}>
-            Verified AUTOPSY mistakes are queued to update ATLAS weak areas, create MEMORY revision where supported, and influence the next mission.
+            Verified mistakes are queued to update your weak areas, create revision cards where supported, and influence the next mission.
           </p>
         </Card>
       )}

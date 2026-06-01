@@ -4,18 +4,17 @@ import { z } from 'zod';
 export const EventTypeSchema = z.enum([
   'MIND_MESSAGE_CREATED',
   'CHAT_MESSAGE_PROCESSED',
+  'CHAT_SESSION_SUMMARIZE',
   'MIND_TUTOR_COMPLETED',
+  'AUTOPSY_UPLOAD_RECEIVED',
   'AUTOPSY_MOCK_PROCESSED',
   'ATLAS_MASTERY_UPDATED',
   'MEMORY_CARD_CREATED',
   'MEMORY_CARD_REVIEWED',
-  'COMMAND_SESSION_CREATED',
-  'COMMAND_SESSION_COMPLETED',
-  'COMMAND_TASK_COMPLETED',
-  'COMMAND_TASK_DELAYED',
   'STUDY_SESSION_COMPLETED',
   'CONCEPT_DISCOVERED',
   'INGESTION_DOCUMENT_PROCESSED',
+  'STUDENT_MODEL_SYNC_REQUESTED',
 ]);
 
 export type EventType = z.infer<typeof EventTypeSchema>;
@@ -40,7 +39,7 @@ export const StrictStudentEventSchema = z.object({
   user_id: z.string().uuid(),
   type: z.string(),
   data: z.any(),
-  status: z.enum(['pending', 'processing', 'completed', 'failed']).default('pending'),
+  status: z.enum(['PENDING', 'PROCESSING', 'COMPLETED', 'FAILED', 'PARTIAL_FAILED']).default('PENDING'),
   idempotency_key: z.string().optional(),
   retry_count: z.number().default(0),
   error_message: z.string().nullable().optional(),
@@ -69,9 +68,17 @@ export const EventPayloadSchemas: Partial<Record<EventType | string, z.ZodTypeAn
     emotion: z.string().optional(),
     history: z.array(z.any()).optional(),
     intent: z.any().optional(),
+    source_type: z.string().optional(),
+    user_message_id: z.string().uuid().optional(),
     /** ID of the already-persisted assistant chat_messages row. */
     assistant_message_id: z.string().uuid().optional(),
   }),
+  CHAT_SESSION_SUMMARIZE: z.object({
+    sessionId: z.string().min(1),
+  }).passthrough(),
+  AUTOPSY_UPLOAD_RECEIVED: z.object({
+    jobId: z.string().min(1),
+  }).passthrough(),
   AUTOPSY_MOCK_PROCESSED: z.object({
     autopsyId: z.string().min(1),
     testName: z.string().optional(),
@@ -82,16 +89,6 @@ export const EventPayloadSchemas: Partial<Record<EventType | string, z.ZodTypeAn
     totalQuestions: z.number().int().nonnegative().optional(),
     correctCount: z.number().int().nonnegative().optional(),
     incorrectCount: z.number().int().nonnegative().optional(),
-  }).passthrough(),
-  COMMAND_SESSION_COMPLETED: z.object({
-    sessionId: z.string().min(1),
-    taskId: z.string().optional(),
-    subject: z.string().min(1),
-    chapter: z.string().min(1),
-    durationMinutes: z.number().nonnegative().optional(),
-    understood: z.boolean().optional(),
-    isSessionComplete: z.boolean().optional(),
-    conceptId: MaybeUuid,
   }).passthrough(),
   STUDY_SESSION_COMPLETED: z.object({
     sessionId: z.string().min(1),
@@ -116,6 +113,9 @@ export const EventPayloadSchemas: Partial<Record<EventType | string, z.ZodTypeAn
     subject: z.string().optional(),
     chapter: z.string().optional(),
     topic: z.string().optional(),
+  }).passthrough(),
+  STUDENT_MODEL_SYNC_REQUESTED: z.object({
+    reason: z.string().optional(),
   }).passthrough(),
 };
 

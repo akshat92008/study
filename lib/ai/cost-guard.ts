@@ -21,6 +21,7 @@
 import { createAdminClient } from '@/lib/supabase/admin';
 import { logger } from '@/lib/utils/logger';
 import { NextResponse } from 'next/server';
+import { consumeUsageLimit } from '@/lib/utils/billing';
 
 // ─── TYPES ───────────────────────────────────────────────────────────────────
 
@@ -54,6 +55,30 @@ export interface ActualUsage {
   completionTokens: number;
   actualCost?: number;
   route?: string;
+  promptVersion?: string | null;
+  promptFamily?: string | null;
+  promptSource?: string | null;
+}
+
+export interface PromptAuditMetadata {
+  userId?: string | null;
+  promptVersion?: string | null;
+  promptFamily?: string | null;
+  promptSource?: string | null;
+  route?: string | null;
+}
+
+const promptAuditByReservation = new Map<string, PromptAuditMetadata>();
+
+export function registerPromptAudit(
+  reservationId: string | null | undefined,
+  metadata: PromptAuditMetadata
+): void {
+  if (!reservationId || reservationId === 'no-reservation') return;
+  promptAuditByReservation.set(reservationId, {
+    ...(promptAuditByReservation.get(reservationId) ?? {}),
+    ...metadata,
+  });
 }
 
 // ─── ERRORS ──────────────────────────────────────────────────────────────────
@@ -144,6 +169,24 @@ export async function reserveBudgetForModelCall(
     estimatedInputTokens,
     estimatedOutputTokens,
   );
+
+  const expensiveCallGate = await consumeUsageLimit(userId, 'ai_calls_daily');
+  if (!expensiveCallGate.allowed) {
+    if (expensiveCallGate.code === 'limit_reached') {
+      throw new AIBudgetExceededError(0, estimatedCost);
+    }
+    throw new BudgetSystemUnavailableError(expensiveCallGate.reason);
+  }
+
+  if (feature === 'tutor') {
+    const tutorGate = await consumeUsageLimit(userId, 'tutor_messages_daily');
+    if (!tutorGate.allowed) {
+      if (tutorGate.code === 'limit_reached') {
+        throw new AIBudgetExceededError(0, estimatedCost);
+      }
+      throw new BudgetSystemUnavailableError(tutorGate.reason);
+    }
+  }
 
   let data: string | null = null;
   let error: any = null;
@@ -243,6 +286,7 @@ export async function commitBudgetUsage(
         error: error.message,
       });
     } else {
+      await applyPromptAuditMetadata(supabase, reservationId, usage);
       logger.info('[BudgetGuard] Committed', {
         reservationId,
         promptTokens,
@@ -254,6 +298,37 @@ export async function commitBudgetUsage(
     logger.error('[BudgetGuard] commit_ai_usage threw', {
       reservationId,
       error: err?.message,
+    });
+  }
+}
+
+async function applyPromptAuditMetadata(
+  supabase: ReturnType<typeof createAdminClient>,
+  reservationId: string,
+  usage: ActualUsage
+) {
+  const registered = promptAuditByReservation.get(reservationId) ?? {};
+  const promptVersion = usage.promptVersion ?? registered.promptVersion ?? null;
+  const promptFamily = usage.promptFamily ?? registered.promptFamily ?? null;
+  const promptSource = usage.promptSource ?? registered.promptSource ?? usage.route ?? registered.route ?? null;
+
+  if (!promptVersion && !promptFamily && !promptSource) return;
+
+  const { error } = await supabase
+    .from('ai_usage_events')
+    .update({
+      prompt_version: promptVersion,
+      prompt_family: promptFamily,
+      prompt_source: promptSource,
+    })
+    .eq('reservation_id', reservationId);
+
+  promptAuditByReservation.delete(reservationId);
+
+  if (error) {
+    logger.warn('[BudgetGuard] prompt audit metadata update failed', {
+      reservationId,
+      error: error.message,
     });
   }
 }

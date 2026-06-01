@@ -1,6 +1,7 @@
 import { createAdminClient } from '@/lib/supabase/admin';
 import { generateJSON } from '@/lib/ai/provider-client';
 import { logger } from '@/lib/utils/logger';
+import { reserveBudgetForModelCall } from '@/lib/ai/cost-guard';
 
 interface ConceptDiscoveredData {
   parentConceptId: string;
@@ -22,10 +23,22 @@ Respond ONLY with a JSON array of strings, where each string is a subtopic name.
 `.trim();
 
     try {
+      const reservation = await reserveBudgetForModelCall(
+        userId,
+        'planner',
+        'router:concept-expansion',
+        Math.max(1, Math.ceil(prompt.length / 4)),
+        300
+      );
+
       const subtopics = await generateJSON<string[]>(
         'flash',
         'You are a curriculum expert. Output only a JSON array of strings.',
-        prompt
+        prompt,
+        undefined,
+        0.3,
+        3,
+        reservation.reservationId
       );
 
       if (!Array.isArray(subtopics) || subtopics.length === 0) {
@@ -35,7 +48,17 @@ Respond ONLY with a JSON array of strings, where each string is a subtopic name.
 
       const supabase = createAdminClient();
       
-      const newConcepts = subtopics.map(subtopic => ({
+      const { data: existing } = await supabase
+        .from('concepts')
+        .select('name')
+        .eq('user_id', userId)
+        .eq('subject', subject)
+        .eq('chapter', chapter);
+      const existingNames = new Set((existing ?? []).map((row: any) => String(row.name).toLowerCase()));
+
+      const newConcepts = subtopics
+      .filter(subtopic => !existingNames.has(String(subtopic).toLowerCase()))
+      .map(subtopic => ({
         user_id: userId,
         subject: subject,
         chapter: chapter,
@@ -44,6 +67,11 @@ Respond ONLY with a JSON array of strings, where each string is a subtopic name.
         confidence: 'low',
         // Depending on DB schema, there might not be a parent_id, so we just group by chapter
       }));
+
+      if (newConcepts.length === 0) {
+        logger.info('Concept expansion idempotency hit; no new subtopics to insert', { userId, subject, chapter });
+        return;
+      }
 
       const { error } = await supabase.from('concepts').insert(newConcepts);
 

@@ -1,0 +1,53 @@
+{
+  "generated_at": "2026-05-31T17:42:20.188Z",
+  "average_score": 1,
+  "results": [
+    {
+      "id": "autopsy-missing-evidence",
+      "task": "autopsy",
+      "score": 1,
+      "passed_terms": [
+        "answer key",
+        "student answers",
+        "cannot diagnose"
+      ],
+      "missing_terms": [],
+      "mode": "mocked_ci"
+    },
+    {
+      "id": "socratic-hess-law",
+      "task": "tutor",
+      "score": 1,
+      "passed_terms": [
+        "sign",
+        "enthalpy",
+        "question"
+      ],
+      "missing_terms": [],
+      "mode": "mocked_ci"
+    },
+    {
+      "id": "daily-plan-weak-prereq",
+      "task": "daily_plan",
+      "score": 1,
+      "passed_terms": [
+        "due cards",
+        "torque",
+        "rotational"
+      ],
+      "missing_terms": [],
+      "mode": "mocked_ci"
+    },
+    {
+      "id": "revision-card-quality",
+      "task": "revision_card",
+      "score": 1,
+      "passed_terms": [
+        "nucleophile",
+        "electrophile"
+      ],
+      "missing_terms": [],
+      "mode": "mocked_ci"
+    }
+  ]
+}

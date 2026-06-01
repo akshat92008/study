@@ -1,5 +1,5 @@
-import { notFound } from 'next/navigation';
+import TutorChat from '@/components/tutor/TutorChat';
 
 export default function TutorPage() {
-  notFound();
+  return <TutorChat />;
 }

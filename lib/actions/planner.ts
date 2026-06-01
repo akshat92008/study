@@ -100,7 +100,7 @@ export async function generateSprintPlanAction(subjects: string[], targetDate: s
 
     // 2. Generate daily schedule from today up to finalEndDate
     const prompt = `
-      You are COMMAND, the elite operations director of Cognition OS.
+      You are the closed-beta daily mission planner for Cognition OS.
       Generate a hyper-focused sprint study plan from today (${todayStr}) to the sprint deadline (${finalEndDate}) inclusive.${capMsg}
       
       ## CONSTRAINTS

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "autopsy-missing-evidence",
+    "task": "autopsy",
+    "input": "Here is only my question paper. Tell me my mistakes.",
+    "must_include": ["answer key", "student answers", "cannot diagnose"],
+    "rubric": ["asks for missing evidence", "does not hallucinate mistakes", "gives next action"]
+  },
+  {
+    "id": "socratic-hess-law",
+    "task": "tutor",
+    "input": "I keep getting Hess Law signs wrong.",
+    "must_include": ["sign", "enthalpy", "question"],
+    "rubric": ["uses Socratic prompt", "targets misconception", "keeps one focused next question"]
+  },
+  {
+    "id": "daily-plan-weak-prereq",
+    "task": "daily_plan",
+    "input": "Weak rotational motion, due cards, and recent torque prerequisite misses.",
+    "must_include": ["due cards", "torque", "rotational"],
+    "rubric": ["prioritizes revision", "uses prerequisite gap", "specific next action"]
+  },
+  {
+    "id": "revision-card-quality",
+    "task": "revision_card",
+    "input": "Student confused nucleophile and electrophile.",
+    "must_include": ["nucleophile", "electrophile"],
+    "rubric": ["atomic card", "tests one concept", "clear answer"]
+  }
+]

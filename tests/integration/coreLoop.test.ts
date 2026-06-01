@@ -36,7 +36,7 @@ vi.mock('@/lib/supabase/admin', () => ({
       select: vi.fn(() => ({
         eq: vi.fn(async () => ({
           data: table === 'consumer_locks'
-            ? [{ status: 'COMPLETED' }, { status: 'COMPLETED' }, { status: 'COMPLETED' }]
+            ? [{ status: 'COMPLETED' }, { status: 'COMPLETED' }]
             : [],
           error: null,
         })),
@@ -79,10 +79,9 @@ describe('MVP core loop event routing', () => {
   beforeEach(() => {
     atlas.mockReset();
     memory.mockReset();
-    command.mockReset();
   });
 
-  it('routes a completed session to ATLAS, MEMORY, and COMMAND consumers', async () => {
+  it('routes a completed session to ATLAS, MEMORY, and COMMAND', async () => {
     const { EventWorkerService } = await import('@/lib/events/worker');
 
     const processed = await EventWorkerService.processBatch(3, 5);
@@ -90,6 +89,6 @@ describe('MVP core loop event routing', () => {
     expect(processed).toBe(3);
     expect(atlas).toHaveBeenCalledWith('user-1', expect.objectContaining({ gapFound: 'Acceleration definition' }));
     expect(memory).toHaveBeenCalledWith('user-1', expect.objectContaining({ gapFound: 'Acceleration definition' }));
-    expect(command).toHaveBeenCalledWith('user-1', expect.objectContaining({ chapter: 'Motion' }));
+    expect(command).toHaveBeenCalledWith('user-1', expect.objectContaining({ gapFound: 'Acceleration definition' }));
   });
 });

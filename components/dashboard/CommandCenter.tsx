@@ -138,7 +138,7 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
       setMessages((prev) =>
         prev.map((m) =>
           m.id === tutorMsgId
-            ? { ...m, content: 'Connection error. Try again.' }
+            ? { ...m, content: 'I could not read that message. Please try again.' }
             : m
         )
       );
@@ -168,8 +168,8 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
         setMessages(prev => prev.map(m => m.id === fileMsgId ? { ...m, content: `❌ Upload Failed: ${data.error}`, type: 'text' } : m));
       } else {
         const textContent = uploadType === 'mock_test' 
-          ? `📊 Autopsy Complete. Total Marks Lost: **${data.autopsy?.marks_lost || 0}**. Sprint Scheduled.`
-          : `📚 Syllabus Ingested: **${file.name}**. Injected into your ATLAS vector memory.`;
+          ? `📊 Test Analysis Complete. Mistakes Found: **${data.autopsy?.marks_lost || 0}**. Sprint Scheduled.`
+          : `📚 Syllabus Ingested: **${file.name}**. Injected into your study profile.`;
         setMessages(prev => prev.map(m => m.id === fileMsgId ? { ...m, content: textContent, type: 'text' } : m));
         
         if (uploadType === 'mock_test') {
@@ -300,16 +300,16 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
           {/* Core Telemetry Widgets */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--sp-3)', marginTop: 'auto' }}>
             <Card style={{ padding: 'var(--sp-3)', display: 'flex', flexDirection: 'column', gap: 6 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}><span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>MEMORY Due</span><RefreshCw size={12} style={{ color: memoryDueCount > 0 ? 'var(--warning)' : 'var(--text-tertiary)' }} /></div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}><span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Revision Due</span><RefreshCw size={12} style={{ color: memoryDueCount > 0 ? 'var(--warning)' : 'var(--text-tertiary)' }} /></div>
               <span style={{ fontSize: 'var(--sp-5)', fontWeight: 'var(--fw-black)', color: memoryDueCount > 0 ? 'var(--warning)' : 'var(--success)' }}>{memoryDueCount || 0}</span>
             </Card>
             <Card style={{ padding: 'var(--sp-3)', display: 'flex', flexDirection: 'column', gap: 6 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}><span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>ATLAS Mastery</span><Brain size={12} style={{ color: 'var(--accent-blue)' }} /></div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}><span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Progress</span><Brain size={12} style={{ color: 'var(--accent-blue)' }} /></div>
               <span style={{ fontSize: 'var(--sp-5)', fontWeight: 'var(--fw-black)', color: 'var(--accent-blue)' }}>{atlasMastery || 0}%</span>
             </Card>
             <Card style={{ padding: 'var(--sp-3)', display: 'flex', flexDirection: 'column', gap: 6 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}><span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>AUTOPSY Loss</span><Target size={12} style={{ color: 'var(--danger)' }} /></div>
-              <span style={{ fontSize: 'var(--sp-5)', fontWeight: 'var(--fw-black)', color: 'var(--danger)' }}>-{autopsyLossPoints || 0}</span>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}><span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Test Analysis</span><Target size={12} style={{ color: 'var(--danger)' }} /></div>
+              <span style={{ fontSize: 'var(--sp-5)', fontWeight: 'var(--fw-black)', color: 'var(--danger)' }}>{autopsyLossPoints || 0} mistakes</span>
             </Card>
             <Card style={{ padding: 'var(--sp-3)', display: 'flex', flexDirection: 'column', gap: 6 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}><span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Daily Streak</span><Flame size={12} style={{ color: 'var(--warning)' }} /></div>
@@ -368,7 +368,7 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
                   </button>
                   <button onClick={() => { setUploadType('study_material'); setShowUploadMenu(false); fileInputRef.current?.click(); }} style={{ padding: '8px 12px', background: 'transparent', border: 'none', color: 'var(--text-primary)', textAlign: 'left', cursor: 'pointer' }}>
                     <span style={{ fontSize: 'var(--fs-sm)', fontWeight: 'bold', display: 'block' }}>Upload Syllabus/Material</span>
-                    <span style={{ fontSize: '9px', color: 'var(--text-tertiary)' }}>Index documents to your ATLAS vector database</span>
+                    <span style={{ fontSize: '9px', color: 'var(--text-tertiary)' }}>Index documents to your study profile</span>
                   </button>
                 </motion.div>
               )}

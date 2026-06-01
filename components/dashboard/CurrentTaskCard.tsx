@@ -293,7 +293,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
           {data?.focusTopic ?? 'Daily focus'}
         </h3>
         <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', margin: 0, lineHeight: 1.5 }}>
-          Your streak and learner state are saved. The next mission can adapt from updated ATLAS and MEMORY signals.
+          Your streak and study profile are saved. The next mission can adapt from updated weak areas and revision signals.
         </p>
       </Card>
     );
@@ -302,7 +302,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
   if (!data) {
     const title = cardStatus === 'onboarding' ? 'Complete your profile' : 'No session card yet';
     const description = cardStatus === 'onboarding'
-      ? 'Finish onboarding, complete a session, or upload a mock so Cognition OS can generate one daily mission from your goal, ATLAS, MEMORY, and AUTOPSY state.'
+      ? 'Finish onboarding, complete a session, or upload a mock so we can generate one daily mission from your goals, weak areas, and revision state.'
       : 'No daily mission is available yet. Ask MIND what to do now or upload a mock to create the first learner signal.';
     return (
       <Card style={{ 

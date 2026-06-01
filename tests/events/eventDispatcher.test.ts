@@ -62,4 +62,29 @@ describe('EventDispatcher', () => {
 
     expect(rpc).not.toHaveBeenCalled();
   });
+
+  it('routes MVP events to connected learner-state engines including COMMAND', async () => {
+    const { getConsumersForEvent } = await import('@/lib/events/orchestrator');
+
+    expect(getConsumersForEvent('AUTOPSY_MOCK_PROCESSED')).toEqual([
+      'atlas_engine',
+      'memory_engine',
+      'command_engine',
+      'learning_state_engine',
+    ]);
+    expect(getConsumersForEvent('CHAT_MESSAGE_PROCESSED')).toEqual(['chat_side_effect_engine']);
+    expect(getConsumersForEvent('AUTOPSY_UPLOAD_RECEIVED')).toEqual(['autopsy_engine']);
+    expect(getConsumersForEvent('STUDENT_MODEL_SYNC_REQUESTED')).toContain('command_engine');
+  });
+
+  it('allows every parent event status used by the worker', async () => {
+    const { StrictStudentEventSchema } = await import('@/lib/events/schema');
+
+    expect(() => StrictStudentEventSchema.parse({
+      user_id: '00000000-0000-0000-0000-000000000001',
+      type: 'AUTOPSY_MOCK_PROCESSED',
+      data: {},
+      status: 'PARTIAL_FAILED',
+    })).not.toThrow();
+  });
 });

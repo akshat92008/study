@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { validateMagicBytesArray } from '@/lib/utils/magicBytes';
+import { getMaxUploadBytes, validateUploadBytes } from '@/lib/utils/billing';
 
-const MAX_FILE_SIZE_BYTES = 20 * 1024 * 1024; // 20MB
 const ALLOWED_MIME_TYPES = new Set([
   'application/pdf',
   'image/jpeg',
@@ -9,6 +9,7 @@ const ALLOWED_MIME_TYPES = new Set([
   'image/webp',
   'image/gif',
   'text/plain',
+  'text/markdown',
 ]);
 
 export interface UploadValidationResult {
@@ -28,11 +29,12 @@ export function validateUploadedFile(
     };
   }
 
-  if (fileBuffer.length > MAX_FILE_SIZE_BYTES) {
+  const sizeValidation = validateUploadBytes(fileBuffer.length);
+  if (!sizeValidation.allowed) {
     return {
       valid: false,
       error: NextResponse.json(
-        { error: `File too large. Maximum size is ${MAX_FILE_SIZE_BYTES / 1024 / 1024}MB` },
+        { error: 'file_too_large', message: sizeValidation.reason },
         { status: 413 }
       ),
     };
@@ -72,19 +74,30 @@ export function validateUploadedFile(
 // Also validate base64 payloads in chat (image uploads)
 export function validateBase64Payload(base64: string, mimeType?: string): UploadValidationResult {
   const byteLength = Math.ceil((base64.length * 3) / 4);
-  if (byteLength > MAX_FILE_SIZE_BYTES) {
+  const sizeValidation = validateUploadBytes(byteLength);
+  if (!sizeValidation.allowed) {
     return {
       valid: false,
-      error: NextResponse.json({ error: 'Image too large (max 20MB)' }, { status: 413 }),
+      error: NextResponse.json(
+        { error: 'file_too_large', message: sizeValidation.reason, maxBytes: getMaxUploadBytes() },
+        { status: 413 }
+      ),
     };
   }
 
-  if (mimeType && ALLOWED_MIME_TYPES.has(mimeType)) {
+  if (mimeType && !ALLOWED_MIME_TYPES.has(mimeType)) {
+    return {
+      valid: false,
+      error: NextResponse.json({ error: `Unsupported file type: ${mimeType}` }, { status: 415 }),
+    };
+  }
+
+  if (mimeType) {
     const buffer = Buffer.from(base64, 'base64');
     if (!validateMagicBytesArray(new Uint8Array(buffer.subarray(0, 12)), mimeType)) {
       return {
         valid: false,
-        error: NextResponse.json({ error: 'Image contents do not match declared MIME type' }, { status: 400 }),
+        error: NextResponse.json({ error: 'File contents do not match declared MIME type' }, { status: 400 }),
       };
     }
   }

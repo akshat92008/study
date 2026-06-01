@@ -4,6 +4,7 @@ import { logger } from '@/lib/utils/logger';
 import type { MINDContext } from '@/lib/ai/prompts/mind-prompt';
 import { RAGEngine } from './rag-engine';
 import { getLearnerStateSnapshot } from '@/lib/learner-state/getLearnerState';
+import { OutcomeAnalyticsService } from '@/lib/services/outcome-analytics.service';
 
 type ConceptGraphRow = {
   id: string;
@@ -19,6 +20,12 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
     logger.info('[MIND] context build started', { userId, feature: 'mind-context' });
     const supabase = await createClient();
     const learnerState = await getLearnerStateSnapshot(userId, { topic, subject, client: supabase });
+    const outcomeSummary = await new OutcomeAnalyticsService(supabase)
+      .getSummary(userId)
+      .catch((err) => {
+        logger.warn('[MIND] outcome analytics unavailable', { userId, err });
+        return null;
+      });
     const rootGapChains = await getRootGapChains(userId, learnerState.atlas.weakConcepts);
 
     let ragChunks: { content: string; similarity: number; sourceTitle: string }[] = [];
@@ -64,7 +71,8 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       currentSessionDurationMinutes: 0,
       sessionGoal: '',
       ragChunks,
-      studentModel: learnerState.studentModel
+      studentModel: learnerState.studentModel,
+      outcomeAnalytics: outcomeSummary,
     };
     logger.info('[MIND] context build completed', {
       userId,
@@ -96,7 +104,8 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       currentSessionDurationMinutes: 0,
       sessionGoal: '',
       ragChunks: [],
-      studentModel: null
+      studentModel: null,
+      outcomeAnalytics: null,
     };
   }
 }

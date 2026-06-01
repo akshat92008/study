@@ -16,6 +16,14 @@ export class AutopsyExtractionError extends Error {
   }
 }
 
+export class AutopsyNeedsUserInputError extends Error {
+  readonly needsUserInput = true;
+  constructor(message: string) {
+    super(message);
+    this.name = 'AutopsyNeedsUserInputError';
+  }
+}
+
 type AutopsyFileData =
   | { kind: 'text'; text: string }
   | { kind: 'inline'; mimeType: string; data: string };
@@ -81,7 +89,9 @@ Extract all questions from this mock test submission. It may be a PDF, low-quali
 RULES:
 - Identify the question number.
 - Map to a subject: [${subjectList}] and its chapter.
-- Determine status: "Correct", "Incorrect", or "Unattempted".
+- Determine status: "Correct", "Incorrect", or "Unattempted" only from explicit evidence: answer key, student answer, OMR marks, score/result table, or visible correct/wrong markings.
+- If the upload only contains a question paper without answer key, student answers, OMR/result markings, or score data, return {"questions":[],"overallPaperQuality":"needs_user_input: answer key, student answers, OMR sheet, or result sheet required"}.
+- Do not infer or invent mistakes from question text alone.
 - Provide an "ocrConfidence" score (0-100).
 - Leave "mistakeCategory" and "reasoning" null for now.
 
@@ -120,6 +130,17 @@ Output strictly as JSON. No markdown.
   }
 
   throw new AutopsyExtractionError('Unreachable extraction state');
+}
+
+function textNeedsAnswerEvidence(text: string): boolean {
+  const sample = text.slice(0, 8000).toLowerCase();
+  const evidencePatterns = [
+    /\b(correct|incorrect|wrong|right|unattempted|attempted)\b/,
+    /\b(answer key|student answer|your answer|marked answer|omr|response sheet|result|score|marks)\b/,
+    /\b(ans|key)\s*[:=]/,
+    /\b[abcd]\s*(?:->|=>|=)\s*[abcd]\b/,
+  ];
+  return !evidencePatterns.some(pattern => pattern.test(sample));
 }
 
 async function deepDiagnosticPass(
@@ -179,6 +200,12 @@ export async function processMockAutopsy(
   authenticatedClient?: SupabaseClient,
   requestedIdempotencyKey?: string | null
 ): Promise<any> {
+  if (fileData.kind === 'text' && textNeedsAnswerEvidence(fileData.text)) {
+    throw new AutopsyNeedsUserInputError(
+      'AUTOPSY needs answer evidence before it can classify mistakes. Upload an answer key, student answers, OMR sheet, or result sheet with the question paper.'
+    );
+  }
+
   if (fileData.kind === 'inline') {
     const byteSize = Buffer.byteLength(fileData.data, 'base64');
     if (byteSize > MAX_FILE_BYTES) {
@@ -209,6 +236,11 @@ export async function processMockAutopsy(
   // If no questions were extracted at all, fail safely rather than creating an
   // empty autopsy record that would confuse the learner.
   if (allQuestions.length === 0) {
+    if (/needs_user_input/i.test(paper.overallPaperQuality || '')) {
+      throw new AutopsyNeedsUserInputError(
+        'AUTOPSY needs answer evidence before it can classify mistakes. Upload an answer key, student answers, OMR sheet, or result sheet with the question paper.'
+      );
+    }
     throw new AutopsyExtractionError(
       'No questions could be extracted from the provided file. ' +
       'Please ensure the file contains a readable mock test with clear question numbering.'

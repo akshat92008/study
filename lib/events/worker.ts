@@ -6,9 +6,9 @@ import { assertEventConsumerRoute, EventConsumer } from './orchestrator';
 import { LearningStateEngine } from '@/lib/engines/learning-state-engine';
 import { AtlasConsumer } from '@/lib/engines/cognition-graph';
 import { MemoryConsumer } from '@/lib/engines/revision-engine';
-import { CommandConsumer } from '@/lib/engines/command-engine';
 import { ConceptExpansionConsumer } from '@/lib/engines/concept-expansion-engine';
 import { processChatSideEffects, type ChatSideEffectsInput } from '@/lib/ai/chat-side-effects';
+import { CommandConsumer } from '@/lib/engines/command-engine';
 
 const MAX_RETRIES = 2; // Equivalent to retry_count < 3
 
@@ -297,6 +297,18 @@ export class EventWorkerService {
 
     switch (consumer) {
       case 'learning_state_engine': {
+        if (event.type === 'STUDENT_MODEL_SYNC_REQUESTED') {
+          const { syncStudentModel } = await import('@/lib/engines/inference-engine');
+          await syncStudentModel(event.user_id, Boolean(payload.isInitialFingerprint), createAdminClient());
+          const { invalidateSessionCard } = await import('@/lib/services/session-card-invalidation');
+          await invalidateSessionCard(event.user_id, 'LEARNER_STATE_UPDATED', {
+            skipVersionBump: false,
+            client: createAdminClient(),
+          }).catch((err: any) =>
+            logger.warn('Daily synthesis: failed to invalidate session card', { userId: event.user_id, err })
+          );
+          return { status: 'HANDLED' };
+        }
         const legacyType = this.mapToLegacyType(event.type);
         if (legacyType) {
           await LearningStateEngine.processLegacyEvent({
@@ -312,11 +324,7 @@ export class EventWorkerService {
         if (event.type === 'AUTOPSY_MOCK_PROCESSED') {
           await AtlasConsumer.handleAutopsyProcessed(event.user_id, payload);
           return { status: 'HANDLED' };
-        } else if (
-          event.type === 'STUDY_SESSION_COMPLETED' ||
-          event.type === 'MIND_TUTOR_COMPLETED' ||
-          event.type === 'COMMAND_SESSION_COMPLETED'
-        ) {
+        } else if (event.type === 'STUDY_SESSION_COMPLETED' || event.type === 'MIND_TUTOR_COMPLETED') {
           await AtlasConsumer.handleStudySessionCompleted(event.user_id, event.data);
           return { status: 'HANDLED' };
         } else if (event.type === 'MEMORY_CARD_REVIEWED') {
@@ -327,25 +335,35 @@ export class EventWorkerService {
         if (event.type === 'AUTOPSY_MOCK_PROCESSED') {
           await MemoryConsumer.handleAutopsyProcessed(event.user_id, payload);
           return { status: 'HANDLED' };
-        } else if (
-          event.type === 'STUDY_SESSION_COMPLETED' ||
-          event.type === 'MIND_TUTOR_COMPLETED' ||
-          event.type === 'COMMAND_SESSION_COMPLETED'
-        ) {
+        } else if (event.type === 'STUDY_SESSION_COMPLETED' || event.type === 'MIND_TUTOR_COMPLETED') {
           await MemoryConsumer.handleStudySessionCompleted(event.user_id, event.data);
           return { status: 'HANDLED' };
         }
         break;
       case 'command_engine':
         if (event.type === 'AUTOPSY_MOCK_PROCESSED') {
-          await CommandConsumer.handleAutopsyProcessed(event.user_id, payload, payload);
+          await CommandConsumer.handleAutopsyProcessed(event.user_id, payload, event.data);
           return { status: 'HANDLED' };
-        } else if (
-          event.type === 'STUDY_SESSION_COMPLETED' ||
-          event.type === 'MIND_TUTOR_COMPLETED' ||
-          event.type === 'COMMAND_SESSION_COMPLETED'
-        ) {
+        } else if (event.type === 'STUDY_SESSION_COMPLETED' || event.type === 'MIND_TUTOR_COMPLETED') {
           await CommandConsumer.handleStudySessionCompleted(event.user_id, event.data);
+          return { status: 'HANDLED' };
+        } else if (event.type === 'STUDENT_MODEL_SYNC_REQUESTED') {
+          if (payload.reason !== 'daily_synthesis') {
+            return { status: 'SKIPPED_INTENTIONALLY', reason: 'COMMAND only handles daily synthesis sync requests' };
+          }
+          const { runDailySynthesisForUser } = await import('@/lib/services/command-plan.service');
+          await runDailySynthesisForUser({
+            userId: event.user_id,
+            date: payload.date || new Date().toISOString().slice(0, 10),
+            client: createAdminClient(),
+          });
+          return { status: 'HANDLED' };
+        }
+        break;
+      case 'autopsy_engine':
+        if (event.type === 'AUTOPSY_UPLOAD_RECEIVED') {
+          const { processAutopsyJob } = await import('@/lib/services/autopsy-jobs');
+          await processAutopsyJob(event.user_id, payload.jobId);
           return { status: 'HANDLED' };
         }
         break;
@@ -401,6 +419,12 @@ export class EventWorkerService {
       assistant_message_id: typeof payload.assistant_message_id === 'string'
         ? payload.assistant_message_id
         : undefined,
+      user_message_id: typeof payload.user_message_id === 'string'
+        ? payload.user_message_id
+        : undefined,
+      source_type: typeof payload.source_type === 'string'
+        ? payload.source_type
+        : 'global_chat',
     };
   }
 
@@ -423,12 +447,9 @@ export class EventWorkerService {
     switch (type) {
       case 'MIND_TUTOR_COMPLETED':
       case 'STUDY_SESSION_COMPLETED':
-      case 'COMMAND_SESSION_COMPLETED':
         return 'SESSION_COMPLETED';
       case 'MEMORY_CARD_REVIEWED':
         return 'CARD_REVIEWED';
-      case 'COMMAND_TASK_COMPLETED':
-        return 'TASK_COMPLETED';
       default:
         return type;
     }

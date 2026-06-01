@@ -76,7 +76,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
         <div>
           <h1 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-bold)', letterSpacing: 'var(--ls-tight)' }}>
             <Database size={28} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 'var(--sp-2)', color: 'var(--accent-cyan)' }} />
-            ATLAS Source Library
+            Progress Source Library
           </h1>
           <p style={{ color: 'var(--text-secondary)', marginTop: 'var(--sp-1)' }}>
             Upload lecture notes so MIND can ground explanations in your own materials.

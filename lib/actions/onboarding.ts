@@ -11,14 +11,14 @@ export async function seedKnowledgeGraph(
 ) {
   const supabase = await createClient();
   const config = getExamConfig(examType);
-  const { seedConceptsForSubject } = await import('@/lib/engines/cognition-graph');
+  const { queueConceptSeedingForSubject } = await import('@/lib/engines/cognition-graph');
 
   let totalSeeded = 0;
   for (const subject of config.subjects) {
     const chapters = config.chapters[subject] || [];
     if (chapters.length > 0) {
-      const result = await seedConceptsForSubject(userId, subject, chapters);
-      totalSeeded += result.seeded || 0;
+      const result = await queueConceptSeedingForSubject(userId, subject, chapters);
+      totalSeeded += result.queued || 0;
     }
   }
 
@@ -37,7 +37,7 @@ export async function seedKnowledgeGraph(
     }
   }
 
-  return { seeded: totalSeeded };
+  return { status: 'queued', seeded: totalSeeded };
 }
 
 export async function generateDay1Plan(userId: string, examType: string) {

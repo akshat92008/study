@@ -4,6 +4,7 @@ import { createClient } from '@/lib/supabase/server';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { StudentEventInputSchema } from '@/lib/events/schema';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
+import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 
 // Public browser-origin event publishing is fail-closed for production MVP.
 // Add explicit client-safe event types here only after their payload contract,
@@ -22,6 +23,15 @@ export async function POST(req: Request) {
         requestId,
       });
     }
+
+    const { allowed, remaining, resetAt } = await checkRateLimit({
+      identifier: user.id,
+      bucket: 'events',
+      maxTokens: 30,
+      windowSeconds: 60,
+      failClosed: true,
+    });
+    if (!allowed) return rateLimitResponse(remaining, resetAt);
 
     const body = StudentEventInputSchema.parse(await req.json());
     if (!CLIENT_EVENT_TYPE_ALLOWLIST.has(body.type)) {

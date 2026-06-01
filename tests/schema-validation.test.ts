@@ -17,6 +17,7 @@ describe('live Supabase schema validation', () => {
       supabase.from('concepts').select('id, mastery, forgetting_probability').limit(1),
       supabase.from('revision_cards').select('id, due').limit(1),
       supabase.from('session_cards').select('id, user_id, date, learner_state_version').limit(1),
+      supabase.from('daily_plans').select('id, user_id, plan_date, morning_briefing').limit(1),
       supabase.from('chat_messages').select('id, user_id, session_id').limit(1),
       supabase.from('semantic_memories').select('id, user_id, content').limit(1),
       supabase.from('mock_autopsies').select('id, user_id, status').limit(1),

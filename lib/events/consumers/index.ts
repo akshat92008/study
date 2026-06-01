@@ -8,19 +8,10 @@
 //   - learning_state_engine: lib/engines/learning-state-engine.ts
 //   - atlas_engine:          lib/engines/cognition-graph.ts (AtlasConsumer)
 //   - memory_engine:         lib/engines/revision-engine.ts (MemoryConsumer)
-//   - command_engine:        lib/engines/command-engine.ts (CommandConsumer)
+//   - autopsy_engine:        lib/services/autopsy-jobs.ts
 //   - concept_expansion:     lib/engines/concept-expansion-engine.ts (ConceptExpansionConsumer)
 //
 // Do NOT add consumers here that insert into raw event tracking tables.
 // The consumer_locks table is managed by the EventDispatcher/worker path.
 
-export const EVENT_CONSUMER_NAMES = [
-  'learning_state_engine',
-  'atlas_engine',
-  'memory_engine',
-  'command_engine',
-  'concept_expansion_engine',
-  'chat_side_effect_engine',
-] as const;
-
-export type EventConsumerName = typeof EVENT_CONSUMER_NAMES[number];
+export { EVENT_CONSUMERS as EVENT_CONSUMER_NAMES, type EventConsumer as EventConsumerName } from '@/lib/events/routes';

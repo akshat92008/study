@@ -25,9 +25,9 @@ export default function CommandBar() {
   const actions = [
     { name: "Today's Mission", icon: Home, route: '/dashboard' },
     { name: 'MIND', icon: MessageSquare, route: '/chat' },
-    { name: 'AUTOPSY', icon: Activity, route: '/autopsy' },
-    { name: 'ATLAS', icon: Brain, route: '/cognition' },
-    { name: 'MEMORY', icon: RefreshCw, route: '/revision' }
+    { name: 'Test Analysis', icon: Activity, route: '/autopsy' },
+    { name: 'Progress', icon: Brain, route: '/cognition' },
+    { name: 'Revision Due', icon: RefreshCw, route: '/revision' }
   ];
 
   const filtered = actions.filter(a => a.name.toLowerCase().includes(query.toLowerCase()));

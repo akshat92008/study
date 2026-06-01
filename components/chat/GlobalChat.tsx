@@ -10,6 +10,7 @@ import { createClient } from '@/lib/supabase/client';
 import { SessionClosingCard } from './SessionClosingCard';
 import { useSessionTimer } from '@/hooks/useSessionTimer';
 import { useRouter } from 'next/navigation';
+import { isAutopsyUploadIntent } from '@/lib/autopsy/upload-intent';
 
 export const GlobalChat = memo(function GlobalChat() {
   const {
@@ -66,14 +67,23 @@ export const GlobalChat = memo(function GlobalChat() {
   }, [chatMessages, streamingText, isAssistantOpen]);
 
   // Convert file to base64
-  const fileToBase64 = (file: File): Promise<string> => {
+  const fileToBase64 = useCallback((file: File): Promise<string> => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => resolve(reader.result as string);
       reader.onerror = error => reject(error);
     });
-  };
+  }, []);
+
+  const inferMimeType = useCallback((file: File): string => {
+    if (file.type) return file.type;
+    const lower = file.name.toLowerCase();
+    if (lower.endsWith('.pdf')) return 'application/pdf';
+    if (lower.endsWith('.md') || lower.endsWith('.markdown')) return 'text/markdown';
+    if (lower.endsWith('.txt')) return 'text/plain';
+    return 'application/octet-stream';
+  }, []);
 
   const handleSendMessage = useCallback(async (overrideMessage?: string) => {
     const textToSend = typeof overrideMessage === 'string' ? overrideMessage : inputMessage.trim();
@@ -82,30 +92,54 @@ export const GlobalChat = memo(function GlobalChat() {
 
     let imageBase64: string | null = null;
     let imageMimeType: string | null = null;
+    let documentBase64: string | null = null;
+    let documentMimeType: string | null = null;
     let extractedText = '';
+    let uploadedFileName: string | null = null;
 
     if (pendingFile) {
-      if (pendingFile.type.startsWith('image/')) {
+      uploadedFileName = pendingFile.name;
+      const pendingMimeType = inferMimeType(pendingFile);
+      const shouldRouteToAutopsy = isAutopsyUploadIntent(textToSend, pendingFile.name);
+
+      if (shouldRouteToAutopsy) {
+        setIsProcessingUpload(true);
+        try {
+          const b64 = await fileToBase64(pendingFile);
+          const payload = b64.split(',')[1];
+          if (pendingMimeType.startsWith('image/')) {
+            imageBase64 = payload;
+            imageMimeType = pendingMimeType;
+          } else {
+            documentBase64 = payload;
+            documentMimeType = pendingMimeType;
+          }
+        } catch (e) {
+          console.error('Failed to parse upload', e);
+        }
+        setIsProcessingUpload(false);
+      } else if (pendingMimeType.startsWith('image/')) {
         setIsProcessingUpload(true);
         try {
           const b64 = await fileToBase64(pendingFile);
           imageBase64 = b64.split(',')[1];
-          imageMimeType = pendingFile.type;
+          imageMimeType = pendingMimeType;
         } catch (e) {
           console.error('Failed to parse image', e);
         }
         setIsProcessingUpload(false);
-      } else if (pendingFile.type.startsWith('text/')) {
+      } else if (pendingMimeType.startsWith('text/')) {
         extractedText = await pendingFile.text();
-      } else if (pendingFile.type === 'application/pdf') {
-        addChatMessage({
-          role: 'assistant',
-          content: 'PDF ingestion is handled through Test Analysis for the MVP. Open Test Analysis and upload the mock paper there.',
-          timestamp: new Date().toISOString(),
-          metadata: { action: 'run_autopsy' },
-        });
-        setPendingFile(null);
-        return;
+      } else if (pendingMimeType === 'application/pdf') {
+        setIsProcessingUpload(true);
+        try {
+          const b64 = await fileToBase64(pendingFile);
+          documentBase64 = b64.split(',')[1];
+          documentMimeType = pendingMimeType;
+        } catch (e) {
+          console.error('Failed to parse PDF', e);
+        }
+        setIsProcessingUpload(false);
       } else {
         // Unsupported file type – clear it
         setPendingFile(null);
@@ -114,7 +148,8 @@ export const GlobalChat = memo(function GlobalChat() {
 
     // Build message content
     const content = textToSend
-      || (imageBase64 ? `[Uploaded image: ${pendingFile?.name}]` : extractedText);
+      || (imageBase64 ? `[Uploaded image: ${uploadedFileName}]` : extractedText)
+      || (documentBase64 ? `[Uploaded document: ${uploadedFileName}]` : '');
     
     // Optimistic UI - user message
     const userMsg = {
@@ -142,6 +177,8 @@ export const GlobalChat = memo(function GlobalChat() {
           sessionTurnsCount: sessionTurnsCount + 1,
           imageBase64,
           imageMimeType,
+          documentBase64,
+          documentMimeType,
           activeGoalId,
           chatId,
         }
@@ -196,6 +233,8 @@ export const GlobalChat = memo(function GlobalChat() {
     addChatMessage,
     chatId,
     chatMessages,
+    fileToBase64,
+    inferMimeType,
     inputMessage,
     isProcessingUpload,
     pendingFile,

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { completeLearningSession } from '@/lib/services/session-completion';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
+import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 
 export async function POST(req: NextRequest) {
   try {
@@ -15,6 +16,15 @@ export async function POST(req: NextRequest) {
         requestId,
       });
     }
+
+    const { allowed, remaining, resetAt } = await checkRateLimit({
+      identifier: user.id,
+      bucket: 'complete-session',
+      maxTokens: 20,
+      windowSeconds: 60,
+      failClosed: true,
+    });
+    if (!allowed) return rateLimitResponse(remaining, resetAt);
 
     const body = await req.json().catch(() => ({}));
     const result = await completeLearningSession({

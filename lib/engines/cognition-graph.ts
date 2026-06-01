@@ -193,6 +193,32 @@ export async function seedConceptsForSubject(userId: string, subject: string, ch
   return { seeded: seededCount };
 }
 
+export async function queueConceptSeedingForSubject(userId: string, subject: string, chapters: string[]) {
+  const { EventDispatcher } = await import('@/lib/events/orchestrator');
+  const uniqueChapters = Array.from(new Set(chapters.filter(Boolean)));
+  const results = await Promise.allSettled(
+    uniqueChapters.map((chapter) =>
+      EventDispatcher.publish({
+        user_id: userId,
+        type: 'CONCEPT_DISCOVERED',
+        data: {
+          subject,
+          chapter,
+          topic: chapter,
+        },
+        metadata: { source: 'concept_seeding_queue' },
+        idempotency_key: `concept_seed:${userId}:${subject}:${chapter}`,
+      })
+    )
+  );
+
+  return {
+    status: 'queued',
+    queued: results.filter((result) => result.status === 'fulfilled').length,
+    failed: results.filter((result) => result.status === 'rejected').length,
+  };
+}
+
 export async function updateConceptState(conceptId: string, correct: boolean, timeSpent: number, weight: number = 1) {
   const supabase = await createClient();
 

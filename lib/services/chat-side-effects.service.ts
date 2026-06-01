@@ -35,6 +35,7 @@ export class ChatSideEffectService {
     sessionTurnsCount,
     mindContext,
     assistantMessageId,
+    userMessageId,
   }: {
     supabase: SupabaseClient;
     userId: string;
@@ -50,6 +51,7 @@ export class ChatSideEffectService {
     /** ID of the already-persisted assistant chat_messages row.
      *  Required. If absent the route has a bug; we log but continue. */
     assistantMessageId: string;
+    userMessageId?: string;
   }) {
     if (!message) return;
 
@@ -71,6 +73,8 @@ export class ChatSideEffectService {
           mindContext,
           intent,
           metadataPayload,
+          source_type: 'global_chat',
+          user_message_id: userMessageId,
           // ── CRITICAL: tells the worker the message is already in the DB ──
           assistant_message_id: assistantMessageId,
         },

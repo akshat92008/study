@@ -55,7 +55,7 @@ export function getAutopsyConfidenceThreshold(): number {
  *   2. needsReview is not true
  *   3. confidence >= threshold (default 70)
  *
- * Used as the primary gate in AtlasConsumer, MemoryConsumer, and CommandConsumer
+ * Used as the primary gate in AtlasConsumer and MemoryConsumer
  * to prevent pending_review / needs_review items from mutating learner state.
  */
 export function isVerifiedAutopsyMistake(input: unknown): boolean {
@@ -119,4 +119,3 @@ export type AutopsyEvidenceStatus =
   | 'pending_review'
   | 'needs_review'
   | 'ignored_or_unverified';
-

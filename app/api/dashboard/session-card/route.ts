@@ -40,6 +40,7 @@ import {
 import { getLearnerStateVersion } from '@/lib/services/learner-state-version';
 import { logger } from '@/lib/utils/logger';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
+import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 
 // ─── Response contract ───────────────────────────────────────────────────────
 
@@ -139,6 +140,15 @@ export async function GET(request?: Request): Promise<NextResponse> {
         requestId,
       });
     }
+
+    const { allowed, remaining, resetAt } = await checkRateLimit({
+      identifier: user.id,
+      bucket: 'session-card',
+      maxTokens: 30,
+      windowSeconds: 300,
+      failClosed: true,
+    });
+    if (!allowed) return rateLimitResponse(remaining, resetAt);
 
     const generatedAt = new Date().toISOString();
 

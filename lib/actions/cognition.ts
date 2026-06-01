@@ -1,7 +1,7 @@
 'use server';
 
 import { createClient } from '@/lib/supabase/server';
-import { getCognitionGraph, seedConceptsForSubject, analyzeCognitionState } from '@/lib/engines/cognition-graph';
+import { getCognitionGraph, queueConceptSeedingForSubject, analyzeCognitionState } from '@/lib/engines/cognition-graph';
 import { getChapters } from '@/lib/utils/constants';
 
 export async function getCognitionData() {
@@ -30,9 +30,9 @@ export async function initializeConcepts() {
   const chapters = getChapters(examType);
 
   for (const [subject, chapterList] of Object.entries(chapters)) {
-    await seedConceptsForSubject(user.id, subject, chapterList);
+    await queueConceptSeedingForSubject(user.id, subject, chapterList);
   }
-  return { status: 'seeded' };
+  return { status: 'queued' };
 }
 
 export async function getAIAnalysis() {

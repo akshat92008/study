@@ -1,6 +1,7 @@
 interface BadgeProps {
   children: React.ReactNode;
   color?: 'blue' | 'green' | 'yellow' | 'red' | 'purple' | 'cyan' | 'gray';
+  style?: React.CSSProperties;
 }
 
 const colorMap: Record<string, { bg: string; fg: string; border: string }> = {
@@ -13,7 +14,7 @@ const colorMap: Record<string, { bg: string; fg: string; border: string }> = {
   gray:   { bg: 'var(--bg-tertiary)', fg: 'var(--text-secondary)', border: 'var(--border-default)' },
 };
 
-export default function Badge({ children, color = 'blue' }: BadgeProps) {
+export default function Badge({ children, color = 'blue', style }: BadgeProps) {
   const c = colorMap[color];
   return (
     <span style={{
@@ -22,6 +23,7 @@ export default function Badge({ children, color = 'blue' }: BadgeProps) {
       background: c.bg, color: c.fg, border: `1px solid ${c.border}`,
       borderRadius: 'var(--radius-full)', letterSpacing: 'var(--ls-wide)',
       textTransform: 'uppercase',
+      ...style,
     }}>
       {children}
     </span>

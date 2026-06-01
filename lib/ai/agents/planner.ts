@@ -4,6 +4,9 @@ import { z } from 'zod';
 import { getExamConfig } from '@/lib/utils/constants';
 import { DailyMissionSchema, MissionTaskSchema } from '@/lib/engines/planner-schemas';
 import { logger } from '@/lib/utils/logger';
+import { EpisodicMemoryService } from '@/lib/services/episodic-memory.service';
+import { registerPromptAudit, reserveBudgetForModelCall } from '@/lib/ai/cost-guard';
+import { getPromptVersion } from '@/lib/ai/prompt-version';
 
 type MissionTask = z.infer<typeof MissionTaskSchema>;
 
@@ -62,7 +65,7 @@ export async function generateDailyPlan(userId: string, date: string) {
 
   // 3. Construct Mission Prompt
   const prompt = `
-    You are COMMAND, the elite AI mission planner for ${examType}.
+    You are the closed-beta daily mission planner for ${examType}.
     Generate today's highly optimized study mission.
 
     ## STUDENT TELEMETRY
@@ -97,7 +100,29 @@ export async function generateDailyPlan(userId: string, date: string) {
   // 4. Generate & Parse (Using Robust Safe Zod Wrapper)
   logger.info(`Generating Daily Mission`, { userId, date, baseHours, emotionalState });
   
-  const mission = await generateJSON('pro', 'You are an elite academic operations director.', prompt, DailyMissionSchema);
+  const planReservation = await reserveBudgetForModelCall(
+    userId,
+    'planner',
+    'router:daily-plan',
+    Math.max(1, Math.ceil(prompt.length / 4)),
+    1200
+  );
+  registerPromptAudit(planReservation.reservationId, {
+    userId,
+    promptVersion: getPromptVersion('command'),
+    promptFamily: 'command_plan',
+    promptSource: 'generateDailyPlan',
+    route: 'planner:daily-plan',
+  });
+  const mission = await generateJSON(
+    'pro',
+    'You are an elite academic operations director.',
+    prompt,
+    DailyMissionSchema,
+    0.3,
+    3,
+    planReservation.reservationId
+  );
 
   let finalTasks: MissionTask[] = [];
 
@@ -254,6 +279,10 @@ export async function generateMorningBriefing(userId: string) {
   const topWeakArea = weakConcepts && weakConcepts.length > 0
     ? `${weakConcepts[0].subject} (${weakConcepts[0].chapter})`
     : 'None detected';
+  const relevantEpisodes = await new EpisodicMemoryService()
+    .retrieveRelevant(userId, topWeakArea === 'None detected' ? 'study struggle' : topWeakArea, 1)
+    .catch(() => [] as string[]);
+  const specificCallback = relevantEpisodes[0] || null;
 
   // Dynamic hours recommended
   let recommendedHours = profile?.daily_hours || 8;
@@ -281,17 +310,33 @@ Days to exam: ${daysRemaining}
 Yesterday's completion: ${completionRate}%
 Cognitive state: ${emotionalState}
 Top Priority Task: ${topTask ? topTask.title + ' (' + (topTask.notes || 'System priority') + ')' : 'None scheduled'}
+Specific past conversation to reference if relevant: ${specificCallback || 'None available. Do not invent one.'}
 
 RULES:
 1. Be direct, authoritative, and grounding.
 2. If state is 'overwhelmed', explicitly tell them you have reduced their workload today to protect their retention. 
 3. If they missed yesterday's tasks, DO NOT guilt trip them. Reframe today as a blank slate.
 4. Point them immediately to their Top Priority Task.
+5. Include at most one callback to a specific past conversation, and only if it is listed above.
 
 GOOD EXAMPLE (Overwhelmed): "Telemetry shows your cognitive load was peaking yesterday. I've slashed today's workload by 40% and removed all new concepts. We are only doing maintenance. Your only required mission today is a 20-minute FSRS revision block."
 GOOD EXAMPLE (Momentum): "You're on a 5-day streak and your focus score is in the 90th percentile. This is when we attack the hard stuff. I've queued the rotational mechanics autopsies you failed last week. Let's reclaim those 12 marks."
 `;
   
   const { generateText } = await import('@/lib/ai/provider-client');
-  return generateText('flash', 'You are COMMAND, the daily mission AI.', prompt);
+  const reservation = await reserveBudgetForModelCall(
+    userId,
+    'planner',
+    'router:daily-briefing',
+    Math.max(1, Math.ceil(prompt.length / 4)),
+    500
+  );
+  registerPromptAudit(reservation.reservationId, {
+    userId,
+    promptVersion: getPromptVersion('briefing'),
+    promptFamily: 'morning_briefing',
+    promptSource: 'generateMorningBriefing',
+    route: 'planner:morning-briefing',
+  });
+  return generateText('flash', 'You are the daily mission planner.', prompt, 0.7, reservation.reservationId);
 }

@@ -217,7 +217,7 @@ describe('MVP Frontend Logic Smoke Tests', () => {
     const cleanContent = sidebarContent.replace(/\{?\/\*.*?\*\/\}/gs, '');
     expect(cleanContent).not.toMatch(/Pulse/i);
     expect(cleanContent).not.toMatch(/COMMAND/i);
-    for (const label of ['Today', 'MIND', 'AUTOPSY', 'ATLAS', 'MEMORY']) {
+    for (const label of ['Today', 'MIND', 'Test Analysis', 'Progress', 'Revision Due']) {
       expect(cleanContent).toContain(label);
     }
   });
@@ -231,9 +231,9 @@ describe('MVP Frontend Logic Smoke Tests', () => {
     expect(landingContent).not.toMatch(/PULSE|six engines|six modules|six separate apps|COMMAND/i);
     expect(commandBarContent).toContain("Today's Mission");
     expect(commandBarContent).toContain('MIND');
-    expect(commandBarContent).toContain('AUTOPSY');
-    expect(commandBarContent).toContain('ATLAS');
-    expect(commandBarContent).toContain('MEMORY');
+    expect(commandBarContent).toContain('Test Analysis');
+    expect(commandBarContent).toContain('Progress');
+    expect(commandBarContent).toContain('Revision Due');
     expect(commandBarContent).not.toContain('Knowledge Base');
     expect(commandBarContent).not.toContain('Mistake Intelligence');
   });

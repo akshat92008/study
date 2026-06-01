@@ -78,7 +78,7 @@ export default function RevisionQueue() {
   const front = currentCard.front || `Concept: ${currentCard.subject || currentCard.chapter || currentCard.concept_id || currentCard.id}`;
   const back = currentCard.back || currentCard.answer || currentCard.explanation || 'Review the concept, then rate how well you recalled it.';
   const source = currentCard.source
-    || (front.startsWith('[Mock Recovery]') ? 'AUTOPSY mock recovery'
+    || (front.startsWith('[Mock Recovery]') ? 'mock recovery'
       : front.startsWith('[Mistake Recovery]') ? 'mistake recovery'
         : front.startsWith('[Tutor Gap]') ? 'MIND session gap'
           : currentCard.chapter || currentCard.subject || null);

@@ -18,7 +18,6 @@
     "app/(dashboard)/autopsy/**/*.tsx",
     "app/(dashboard)/revision/**/*.tsx",
     "lib/**/*.ts",
-    "services/**/*.ts",
     "utils/**/*.ts",
     "components/chat/**/*.tsx",
     "components/autopsy/**/*.tsx",

@@ -14,7 +14,7 @@
  *   4. lib/events/worker.ts — routes event to consumers:
  *      - AtlasConsumer  → mastery update (verified_mistake only)
  *      - MemoryConsumer → revision card creation (verified_mistake only)
- *      - CommandConsumer → remediation tasks (verified_mistake only)
+ *      - session-card invalidation for remediation prioritization
  *
  * The legacy processAutopsy() function is intentionally disabled to prevent
  * accidental invocation that would bypass confidence gating and directly
@@ -74,4 +74,3 @@ export class AutopsyService {
     return data;
   }
 }
-

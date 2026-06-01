@@ -1,13 +1,247 @@
-// lib/utils/billing.ts
-// Beta mode: all student features are available without monetization.
+import { NextResponse } from 'next/server';
+import { createAdminClient } from '@/lib/supabase/admin';
+import { logger } from '@/lib/utils/logger';
+import { getMaxPromptChars, isPromptTooLarge } from '@/lib/ai/token-budget';
 
-export type FeatureLimit = 'tutor_queries_daily' | 'document_uploads' | 'autopsies_monthly';
+export type FeatureLimit =
+  | 'chat_messages_daily'
+  | 'tutor_messages_daily'
+  | 'autopsy_uploads_daily'
+  | 'ai_calls_daily'
+  | 'document_uploads'
+  | 'tutor_queries_daily'
+  | 'autopsies_monthly';
+
+export type UsageGateCode =
+  | 'limit_reached'
+  | 'auth_required'
+  | 'file_too_large'
+  | 'prompt_too_large'
+  | 'usage_check_failed';
+
+export type UsageGateResult = {
+  allowed: boolean;
+  code?: UsageGateCode;
+  reason?: string;
+  limit?: number;
+  used?: number;
+  remaining?: number;
+};
+
+const DEFAULT_LIMITS: Record<FeatureLimit, number> = {
+  chat_messages_daily: 80,
+  tutor_messages_daily: 60,
+  autopsy_uploads_daily: 5,
+  ai_calls_daily: 120,
+  document_uploads: 20,
+  tutor_queries_daily: 60,
+  autopsies_monthly: 20,
+};
+
+const LIMIT_ENV: Partial<Record<FeatureLimit, string>> = {
+  chat_messages_daily: 'FREE_DAILY_CHAT_LIMIT',
+  tutor_messages_daily: 'FREE_DAILY_TUTOR_LIMIT',
+  autopsy_uploads_daily: 'FREE_DAILY_AUTOPSY_LIMIT',
+  ai_calls_daily: 'FREE_DAILY_AI_CALL_LIMIT',
+  document_uploads: 'FREE_DAILY_AUTOPSY_LIMIT',
+  tutor_queries_daily: 'FREE_DAILY_TUTOR_LIMIT',
+  autopsies_monthly: 'FREE_DAILY_AUTOPSY_LIMIT',
+};
+
+const RPC_GATE_MAP: Record<FeatureLimit, string> = {
+  chat_messages_daily: 'chat_messages',
+  tutor_messages_daily: 'tutor_messages',
+  autopsy_uploads_daily: 'autopsy_uploads',
+  ai_calls_daily: 'ai_calls',
+  document_uploads: 'autopsy_uploads',
+  tutor_queries_daily: 'tutor_messages',
+  autopsies_monthly: 'autopsy_uploads',
+};
+
+export function getLimit(feature: FeatureLimit): number {
+  const envName = LIMIT_ENV[feature];
+  const configured = envName ? Number(process.env[envName]) : NaN;
+  return Number.isFinite(configured) && configured >= 0
+    ? Math.floor(configured)
+    : DEFAULT_LIMITS[feature];
+}
+
+export function getMaxUploadBytes(): number {
+  const configured = Number(process.env.MAX_UPLOAD_BYTES);
+  return Number.isFinite(configured) && configured > 0
+    ? Math.floor(configured)
+    : 20 * 1024 * 1024;
+}
+
+function developmentMayFailOpen(): boolean {
+  return process.env.NODE_ENV !== 'production' && process.env.ALLOW_USAGE_GATE_FAIL_OPEN === 'true';
+}
+
+export function usageGateResponse(result: UsageGateResult): NextResponse {
+  const status =
+    result.code === 'auth_required' ? 401 :
+    result.code === 'file_too_large' || result.code === 'prompt_too_large' ? 413 :
+    result.code === 'limit_reached' ? 429 :
+    503;
+
+  return NextResponse.json(
+    {
+      error: result.code ?? 'usage_check_failed',
+      message: result.reason ?? 'Usage could not be verified. Please try again shortly.',
+      limit: result.limit,
+      used: result.used,
+      remaining: result.remaining,
+    },
+    { status }
+  );
+}
+
+export function enforceAuthenticatedUsage(userId?: string | null): UsageGateResult {
+  if (!userId) {
+    return {
+      allowed: false,
+      code: 'auth_required',
+      reason: 'Authentication is required for AI features.',
+    };
+  }
+  return { allowed: true };
+}
+
+export function validatePromptLength(input: string): UsageGateResult {
+  const limit = getMaxPromptChars();
+  if (isPromptTooLarge(input, limit)) {
+    return {
+      allowed: false,
+      code: 'prompt_too_large',
+      reason: `Input is too long. Maximum is ${limit} characters.`,
+      limit,
+      used: input.length,
+      remaining: 0,
+    };
+  }
+  return { allowed: true, limit, used: input.length, remaining: Math.max(0, limit - input.length) };
+}
+
+export function validateUploadBytes(sizeBytes: number): UsageGateResult {
+  const limit = getMaxUploadBytes();
+  if (sizeBytes > limit) {
+    return {
+      allowed: false,
+      code: 'file_too_large',
+      reason: `File too large. Maximum size is ${Math.round(limit / 1024 / 1024)}MB.`,
+      limit,
+      used: sizeBytes,
+      remaining: 0,
+    };
+  }
+  return { allowed: true, limit, used: sizeBytes, remaining: Math.max(0, limit - sizeBytes) };
+}
+
+export async function consumeUsageLimit(
+  userId: string | null | undefined,
+  feature: FeatureLimit,
+  amount = 1
+): Promise<UsageGateResult> {
+  const auth = enforceAuthenticatedUsage(userId);
+  if (!auth.allowed) return auth;
+
+  const limit = getLimit(feature);
+  if (limit === 0) {
+    return {
+      allowed: false,
+      code: 'limit_reached',
+      reason: 'Daily usage limit reached.',
+      limit,
+      used: 0,
+      remaining: 0,
+    };
+  }
+
+  try {
+    const supabase = createAdminClient();
+    const { data, error } = await supabase.rpc('check_and_increment_usage_gate', {
+      p_user_id: userId,
+      p_gate: RPC_GATE_MAP[feature],
+      p_limit: limit,
+      p_amount: Math.max(1, Math.floor(amount)),
+    });
+
+    if (error) {
+      throw error;
+    }
+
+    const result = (data ?? {}) as { allowed?: boolean; used?: number; remaining?: number; limit?: number };
+    if (result.allowed === false) {
+      return {
+        allowed: false,
+        code: 'limit_reached',
+        reason: 'Daily usage limit reached.',
+        limit: result.limit ?? limit,
+        used: result.used,
+        remaining: result.remaining ?? 0,
+      };
+    }
+
+    return {
+      allowed: true,
+      limit: result.limit ?? limit,
+      used: result.used,
+      remaining: result.remaining,
+    };
+  } catch (error: any) {
+    logger.error('[UsageGate] usage check failed', {
+      userId,
+      feature,
+      error: error?.message ?? String(error),
+    });
+
+    if (developmentMayFailOpen()) {
+      logger.warn('[UsageGate] allowing request because development fail-open is explicitly enabled', {
+        userId,
+        feature,
+      });
+      return { allowed: true, limit, remaining: limit };
+    }
+
+    return {
+      allowed: false,
+      code: 'usage_check_failed',
+      reason: 'Usage limits could not be verified. Please try again shortly.',
+      limit,
+      remaining: 0,
+    };
+  }
+}
 
 export async function checkUsageLimit(
-  _userId: string,
-  _feature: FeatureLimit
+  userId: string,
+  feature: FeatureLimit
 ): Promise<{ allowed: boolean; reason?: string }> {
-  return { allowed: true };
+  const auth = enforceAuthenticatedUsage(userId);
+  if (!auth.allowed) return { allowed: false, reason: auth.code };
+
+  try {
+    const supabase = createAdminClient();
+    const { data, error } = await supabase
+      .from('ai_usage_daily')
+      .select('chat_messages, tutor_messages, autopsy_uploads, ai_calls')
+      .eq('user_id', userId)
+      .eq('usage_date', new Date().toISOString().split('T')[0])
+      .maybeSingle();
+    if (error) throw error;
+
+    const gate = RPC_GATE_MAP[feature];
+    const row = data as Record<string, any> | null;
+    const used = Number(row?.[gate] ?? 0);
+    return {
+      allowed: used < getLimit(feature),
+      reason: used < getLimit(feature) ? undefined : 'limit_reached',
+    };
+  } catch (error: any) {
+    logger.error('[UsageGate] read-only usage check failed', { userId, feature, error: error?.message });
+    if (developmentMayFailOpen()) return { allowed: true };
+    return { allowed: false, reason: 'usage_check_failed' };
+  }
 }
 
 export async function getUserSubscriptionStatus(
@@ -17,8 +251,11 @@ export async function getUserSubscriptionStatus(
 }
 
 export async function incrementUsage(
-  _userId: string,
-  _feature: FeatureLimit
+  userId: string,
+  feature: FeatureLimit
 ): Promise<void> {
-  // No-op in beta
+  const result = await consumeUsageLimit(userId, feature);
+  if (!result.allowed) {
+    throw new Error(result.code ?? 'usage_check_failed');
+  }
 }

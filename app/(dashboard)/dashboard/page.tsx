@@ -166,72 +166,6 @@ export default function DashboardPage() {
             Select or create a learning goal in the sidebar
           </div>
         )}
-
-        {/* Telemetry Pills */}
-        <div style={{ display: 'flex', gap: 'var(--sp-2)' }}>
-          {/* Atlas Pill */}
-          <button
-            onClick={() => setActiveDrawer(activeDrawer === 'cognition' ? null : 'cognition')}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 6,
-              padding: '4px 10px',
-              borderRadius: 'var(--radius-full)',
-              background: activeDrawer === 'cognition' ? 'var(--accent-purple-dim)' : 'var(--bg-secondary)',
-              border: `1px solid ${activeDrawer === 'cognition' ? 'var(--accent-purple)' : 'var(--border-subtle)'}`,
-              cursor: 'pointer',
-              fontSize: 'var(--fs-xs)',
-              color: activeDrawer === 'cognition' ? 'var(--text-primary)' : 'var(--text-secondary)',
-              transition: 'all 0.2s'
-            }}
-          >
-            <Brain size={12} style={{ color: 'var(--accent-purple)' }} />
-            <span>ATLAS: {overallMastery}%</span>
-          </button>
-
-          {/* Memory Pill */}
-          <button
-            onClick={() => setActiveDrawer(activeDrawer === 'revision' ? null : 'revision')}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 6,
-              padding: '4px 10px',
-              borderRadius: 'var(--radius-full)',
-              background: activeDrawer === 'revision' ? 'var(--accent-blue-dim)' : 'var(--bg-secondary)',
-              border: `1px solid ${activeDrawer === 'revision' ? 'var(--accent-blue)' : 'var(--border-subtle)'}`,
-              cursor: 'pointer',
-              fontSize: 'var(--fs-xs)',
-              color: activeDrawer === 'revision' ? 'var(--text-primary)' : 'var(--text-secondary)',
-              transition: 'all 0.2s'
-            }}
-          >
-            <RefreshCw size={12} style={{ color: 'var(--accent-blue)' }} />
-            <span>MEMORY: {cardsDue} due</span>
-          </button>
-
-          {/* Autopsy Pill */}
-          <button
-            onClick={() => setActiveDrawer(activeDrawer === 'autopsy' ? null : 'autopsy')}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 6,
-              padding: '4px 10px',
-              borderRadius: 'var(--radius-full)',
-              background: activeDrawer === 'autopsy' ? 'var(--danger-glow)' : 'var(--bg-secondary)',
-              border: `1px solid ${activeDrawer === 'autopsy' ? 'var(--danger)' : 'var(--border-subtle)'}`,
-              cursor: 'pointer',
-              fontSize: 'var(--fs-xs)',
-              color: activeDrawer === 'autopsy' ? 'var(--text-primary)' : 'var(--text-secondary)',
-              transition: 'all 0.2s'
-            }}
-          >
-            <Activity size={12} style={{ color: 'var(--danger)' }} />
-            <span>AUTOPSY: -{marksLost} pts</span>
-          </button>
-        </div>
       </div>
 
       {/* Main Content Area */}
@@ -241,29 +175,49 @@ export default function DashboardPage() {
             Today's Mission
           </h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', marginTop: 4, lineHeight: 1.5 }}>
-            Start with the mission, ask MIND for help, then use AUTOPSY, ATLAS, and MEMORY to keep the next plan current.
+            Start with the mission, ask MIND for help, then use Test Analysis, Progress, and Revision Due to keep the next plan current.
           </p>
         </div>
         <CurrentTaskCard onSessionComplete={loadTelemetry} />
         
         <Card padding="lg" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)' }}>
-          <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'bold', marginBottom: 'var(--sp-2)' }}>Learner State</h3>
+          <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'bold', marginBottom: 'var(--sp-2)' }}>Study Profile</h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-xs)', marginBottom: 'var(--sp-4)' }}>
               Cognition OS turns your sessions, doubts, mistakes, and mock tests into the next daily study mission.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--sp-4)' }}>
-              <div style={{ flex: '1 1 200px', background: 'var(--bg-primary)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
-                <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Overall Mastery</div>
+              <button
+                onClick={() => setActiveDrawer(activeDrawer === 'cognition' ? null : 'cognition')}
+                style={{ textAlign: 'left', cursor: 'pointer', flex: '1 1 200px', background: activeDrawer === 'cognition' ? 'var(--accent-purple-dim)' : 'var(--bg-primary)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: `1px solid ${activeDrawer === 'cognition' ? 'var(--accent-purple)' : 'var(--border-subtle)'}`, transition: 'all 0.2s' }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
+                  <Brain size={12} style={{ color: 'var(--accent-purple)' }} />
+                  Progress
+                </div>
                 <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--accent-purple)', marginTop: 4 }}>{overallMastery}%</div>
-              </div>
-              <div style={{ flex: '1 1 200px', background: 'var(--bg-primary)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
-                <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Due Reviews</div>
-                <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--accent-blue)', marginTop: 4 }}>{cardsDue} cards</div>
-              </div>
-              <div style={{ flex: '1 1 200px', background: 'var(--bg-primary)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
-                <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Autopsy Points Staged</div>
-                <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--danger)', marginTop: 4 }}>{marksLost} marks</div>
-              </div>
+              </button>
+              
+              <button
+                onClick={() => setActiveDrawer(activeDrawer === 'revision' ? null : 'revision')}
+                style={{ textAlign: 'left', cursor: 'pointer', flex: '1 1 200px', background: activeDrawer === 'revision' ? 'var(--accent-blue-dim)' : 'var(--bg-primary)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: `1px solid ${activeDrawer === 'revision' ? 'var(--accent-blue)' : 'var(--border-subtle)'}`, transition: 'all 0.2s' }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
+                  <RefreshCw size={12} style={{ color: 'var(--accent-blue)' }} />
+                  Revision Due
+                </div>
+                <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--accent-blue)', marginTop: 4 }}>{cardsDue}</div>
+              </button>
+              
+              <button
+                onClick={() => setActiveDrawer(activeDrawer === 'autopsy' ? null : 'autopsy')}
+                style={{ textAlign: 'left', cursor: 'pointer', flex: '1 1 200px', background: activeDrawer === 'autopsy' ? 'var(--danger-glow)' : 'var(--bg-primary)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: `1px solid ${activeDrawer === 'autopsy' ? 'var(--danger)' : 'var(--border-subtle)'}`, transition: 'all 0.2s' }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
+                  <Activity size={12} style={{ color: 'var(--danger)' }} />
+                  Test Analysis
+                </div>
+                <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--danger)', marginTop: 4 }}>{marksLost} mistakes found</div>
+              </button>
             </div>
           </Card>
       </div>
@@ -298,19 +252,19 @@ export default function DashboardPage() {
             {activeDrawer === 'cognition' && (
               <>
                 <Brain size={18} style={{ color: 'var(--accent-purple)' }} />
-                <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)' }}>ATLAS: Mastery Map</span>
+                <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)' }}>Progress</span>
               </>
             )}
             {activeDrawer === 'revision' && (
               <>
                 <RefreshCw size={18} style={{ color: 'var(--accent-blue)' }} />
-                <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)' }}>MEMORY: Spaced Repetition Queue</span>
+                <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)' }}>Revision Due</span>
               </>
             )}
             {activeDrawer === 'autopsy' && (
               <>
                 <Activity size={18} style={{ color: 'var(--danger)' }} />
-                <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)' }}>AUTOPSY: Mistake Diagnosis</span>
+                <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)' }}>Test Analysis</span>
               </>
             )}
           </div>
