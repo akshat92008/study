@@ -607,6 +607,12 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
                   user_id: user.id, title: 'Chat Upload', original_filename: originalFilename, mime_type: documentMimeType, storage_path: storagePath, source_type: 'upload', language: 'en', status: 'uploaded', content_hash: contentHash
                 }).select('id').single();
                 if (material) {
+                  await supabase.from('rag_ingestion_jobs').insert({
+                    user_id: user.id,
+                    material_id: material.id,
+                    status: 'queued',
+                    idempotency_key: `rag_ingest:${material.id}`
+                  });
                   await EventDispatcher.publish({
                     user_id: user.id,
                     type: 'MATERIAL_UPLOADED',
@@ -614,12 +620,6 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
                     metadata: { source: 'chat_upload' },
                     idempotency_key: `material_uploaded:${material.id}`,
                   }).catch(() => {});
-                  await ingestStudyMaterial({
-                    materialId: material.id,
-                    userId: user.id,
-                    buffer,
-                    mimeType: documentMimeType,
-                  });
                 }
               }
             }

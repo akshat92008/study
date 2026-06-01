@@ -50,7 +50,7 @@ describe('RAG Final Fixes', () => {
     const uploadPath = path.resolve(__dirname, '../../app/api/materials/upload/route.ts');
     const content = fs.readFileSync(uploadPath, 'utf8');
     
-    expect(content).toContain('chunksProcessed: ingestResult.chunks');
-    expect(content).toContain('status: ingestResult.status');
+    expect(content).toContain('chunksProcessed: 0');
+    expect(content).toContain('status: \'queued\'');
   });
 });

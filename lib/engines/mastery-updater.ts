@@ -134,7 +134,7 @@ export async function recomputeConceptMastery(
   userId: string,
   conceptId: string,
   options: { useAdminClient?: boolean; client?: any } = {}
-): Promise<{ oldMastery: MasteryLevel | null; newMastery: MasteryLevel | null; changed: boolean }> {
+): Promise<{ oldMastery: MasteryLevel | null; newMastery: MasteryLevel | null; changed: boolean; oldScore: number; newScore: number; delta: number }> {
   const supabase = await getSupabase(options.useAdminClient, options.client);
 
   const { data: concept, error: conceptErr } = await supabase
@@ -227,20 +227,14 @@ export async function recordMasteryEvidence(params: {
 
   const { data: concept } = await supabase
     .from('concepts')
-    .select('mastery')
+    .select('mastery, mastery_score')
     .eq('id', params.conceptId)
     .eq('user_id', params.userId)
     .maybeSingle();
 
-  if (!concept) {
-    logger.warn('recordMasteryEvidence: concept not found', {
-      userId: params.userId,
-      conceptId: params.conceptId,
-    });
-    return { oldMastery: null, newMastery: null, changed: false };
-  }
+  const oldMastery = (concept?.mastery as MasteryLevel) ?? null;
+  const oldScore = concept?.mastery_score || 0;
 
-  const oldMastery = concept.mastery as MasteryLevel;
   const weight = params.weight ?? EVIDENCE_WEIGHTS[params.evidenceType];
 
   const { error: insertErr } = await supabase
@@ -261,7 +255,7 @@ export async function recordMasteryEvidence(params: {
 
   if (insertErr) {
     logger.warn('recordMasteryEvidence: mastery_events insert failed', { insertErr });
-    return { oldMastery, newMastery: oldMastery, changed: false };
+    return { oldMastery, newMastery: oldMastery, changed: false, oldScore, newScore: oldScore, delta: 0 };
   }
 
   const result = await recomputeConceptMastery(params.userId, params.conceptId, {
@@ -360,7 +354,7 @@ export async function applyMasteryUpdate(params: {
   if (result.changed) {
     await recordAgentAction({
       userId: params.userId,
-      agentName: 'atlas_agent',
+      agentName: 'atlas',
       actionType: 'mastery_updated',
       targetType: 'concept',
       targetId: params.conceptId,
@@ -368,8 +362,7 @@ export async function applyMasteryUpdate(params: {
       confidence: 1.0,
       evidence: { oldMastery, newMastery: params.newMastery, source: params.source, evidence: params.evidence },
       idempotencyKey: `mastery_update_action:${params.userId}:${params.conceptId}:${params.sourceId ?? Date.now()}`,
-      client: supabase,
-    }).catch(err => logger.warn('Failed to record ATLAS mastery action', err));
+    }, { client: supabase }).catch(err => logger.warn('Failed to record ATLAS mastery action', err));
   }
 
   return { oldMastery, changed: result.changed };

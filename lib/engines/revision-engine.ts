@@ -541,7 +541,7 @@ export async function createSingleCard(
 
   await recordAgentAction({
     userId,
-    agentName: 'memory_agent',
+    agentName: 'memory',
     actionType: 'memory_card_created',
     targetType: 'revision_card',
     targetId: data.id,
@@ -549,8 +549,7 @@ export async function createSingleCard(
     confidence: source?.confidence ?? 1.0,
     evidence: { subject, chapter, front: normalizedFront, sourceType: source?.sourceType },
     idempotencyKey: `memory_card_creation:${userId}:${data.id}`,
-    client: supabase as any,
-  }).catch(err => logger.warn('Failed to record MEMORY card action', err));
+  }, { client: supabase as any }).catch(err => logger.warn('Failed to record MEMORY card action', err));
 
   return data;
 }

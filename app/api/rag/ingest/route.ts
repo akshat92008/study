@@ -12,6 +12,14 @@ export async function POST(req: NextRequest) {
     if (!user) {
       return NextResponse.json({ error: 'Authentication is required' }, { status: 401 });
     }
+    
+    // This is an administrative/manual reprocess endpoint.
+    // Standard RAG ingestion occurs via the EVENT_QUEUE ('MATERIAL_UPLOADED') and background workers.
+    const authHeader = req.headers.get('authorization');
+    const isServiceRole = authHeader && authHeader.includes(process.env.SUPABASE_SERVICE_ROLE_KEY || 'super_secret_never_match');
+    if (!isServiceRole) {
+      return NextResponse.json({ error: 'Unauthorized: Manual synchronous ingestion requires admin privileges.' }, { status: 403 });
+    }
 
     const body = await req.json();
     const { materialId } = body;

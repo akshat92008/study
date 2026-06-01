@@ -213,7 +213,7 @@ export async function processAutopsyJob(userId: string, jobId: string): Promise<
       for (const q of result.needsReviewQuestions) {
         await recordAgentAction({
           userId,
-          agentName: 'autopsy_agent',
+          agentName: 'autopsy',
           actionType: 'uncertain_autopsy_mistake',
           targetType: 'autopsy',
           targetId: result.autopsyId,
@@ -223,8 +223,7 @@ export async function processAutopsyJob(userId: string, jobId: string): Promise<
           confidence: q.ocrConfidence ? q.ocrConfidence / 100 : 0.5,
           evidence: { questionNumber: q.questionNumber, subject: q.subject, chapter: q.chapter },
           idempotencyKey: `autopsy_needs_review:${result.autopsyId}:${q.questionNumber}`,
-          client: supabase,
-        }).catch(err => logger.warn('Failed to record AUTOPSY action', err));
+        }, { client: supabase }).catch(err => logger.warn('Failed to record AUTOPSY action', err));
       }
     }
 

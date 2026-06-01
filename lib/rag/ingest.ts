@@ -114,7 +114,7 @@ export async function ingestStudyMaterial(input: IngestStudyMaterialInput) {
     
     await recordAgentAction({
       userId: input.userId,
-      agentName: 'rag_agent',
+      agentName: 'rag',
       actionType: 'material_ingested',
       targetType: 'study_material',
       targetId: input.materialId,
@@ -122,8 +122,7 @@ export async function ingestStudyMaterial(input: IngestStudyMaterialInput) {
       confidence: 1.0,
       evidence: { chunks: chunks.length, pageCount: extracted.pageCount },
       idempotencyKey: `rag_ingestion_action:${input.userId}:${input.materialId}`,
-      client: supabase,
-    }).catch(err => logger.warn('Failed to record RAG ingestion action', err));
+    }, { client: supabase }).catch(err => logger.warn('Failed to record RAG ingestion action', err));
 
     await EventDispatcher.publish({
       user_id: input.userId,

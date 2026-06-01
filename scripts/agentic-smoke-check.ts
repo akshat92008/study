@@ -29,21 +29,42 @@ async function runTests() {
     email_confirm: true,
   });
 
-  if (authErr) throw new Error(`Auth Error: ${authErr.message}`);
+  if (authErr) {
+    console.error(`Auth Error: ${authErr.message}`);
+    process.exit(1);
+  }
   const userId = authData.user.id;
   console.log(`✅ User created (ID: ${userId})`);
 
   try {
     console.log('\n2. Testing RAG Ingestion & Chunking pipeline');
     const materialId = randomUUID();
+    
+    const { error: matErr } = await supabase.from('study_materials').insert({
+      id: materialId,
+      user_id: userId,
+      title: 'Smoke Test Protocol',
+      original_filename: 'smoke_test.txt',
+      mime_type: 'text/plain',
+      storage_path: 'smoke/smoke.txt',
+      source_type: 'upload',
+      status: 'uploaded',
+      content_hash: 'testhash'
+    });
+    if (matErr) {
+      console.error(`❌ Failed to create study_materials row: ${matErr.message}`);
+      passed = false;
+    } else {
+      console.log('✅ study_materials row created');
+    }
+
     const { error: ragErr } = await supabase.from('rag_ingestion_jobs').insert({
       id: randomUUID(),
       user_id: userId,
       material_id: materialId,
-      title: 'Smoke Test Protocol',
-      content: 'Mitochondria is the powerhouse of the cell.',
-      source_type: 'text',
-      status: 'queued'
+      status: 'queued',
+      idempotency_key: `smoke_rag_test_${Date.now()}`,
+      metadata: { test: true }
     });
     if (ragErr) {
       console.error(`❌ Failed to queue rag_ingestion_jobs row: ${ragErr.message}`);
@@ -56,7 +77,8 @@ async function runTests() {
       id: randomUUID(),
       user_id: userId,
       material_id: materialId,
-      content: 'Mitochondria is the powerhouse of the cell.',
+      chunk_index: 0,
+      text: 'Mitochondria is the powerhouse of the cell.',
       metadata: { source: 'smoke' }
     });
     if (chunkErr) {
@@ -71,7 +93,7 @@ async function runTests() {
     const { error: actionErr } = await supabase.from('agent_actions').insert({
       id: actionId,
       user_id: userId,
-      agent_name: 'autopsy_agent',
+      agent_name: 'autopsy',
       action_type: 'uncertain_autopsy_mistake',
       target_type: 'autopsy',
       target_id: randomUUID(),
@@ -104,15 +126,30 @@ async function runTests() {
     }
 
     console.log('\n4. Testing Mastery Ledger (ATLAS update)');
+    const conceptId = randomUUID();
+    const { error: conceptErr } = await supabase.from('concepts').insert({
+      id: conceptId,
+      user_id: userId,
+      name: 'Smoke Concept',
+      subject: 'Smoke',
+      chapter: 'Smoke Chapter',
+      description: 'Smoke testing concept'
+    });
+    if (conceptErr) {
+      console.error(`❌ Failed to create concepts row: ${conceptErr.message}`);
+      passed = false;
+    }
+
     const { error: masteryErr } = await supabase.from('mastery_evidence_ledger').insert({
       user_id: userId,
-      concept_id: randomUUID(),
+      concept_id: conceptId,
       source_id: randomUUID(),
       source_type: 'smoke_test',
       delta: 0.1,
-      old_mastery: 'not_started',
-      new_mastery: 'developing',
-      evidence_metadata: { test: true }
+      previous_mastery: 0,
+      new_mastery: 0.1,
+      evidence: { test: true },
+      idempotency_key: `smoke_mastery_test_${Date.now()}`
     });
     if (masteryErr) {
       console.error(`❌ Failed to write to mastery_evidence_ledger: ${masteryErr.message}`);
@@ -122,10 +159,27 @@ async function runTests() {
     }
 
     console.log('\n5. Testing Citations & Episodic Memory (MIND context)');
+    const sessionId = randomUUID();
+    const messageId = randomUUID();
+    
+    await supabase.from('chat_sessions').insert({
+      id: sessionId,
+      user_id: userId,
+      title: 'Smoke Test Session'
+    });
+    
+    await supabase.from('chat_messages').insert({
+      id: messageId,
+      session_id: sessionId,
+      user_id: userId,
+      role: 'assistant',
+      content: 'This is a test response'
+    });
+
     const { error: citationErr } = await supabase.from('message_citations').insert({
       id: randomUUID(),
-      message_id: randomUUID(),
-      chunk_id: randomUUID(),
+      user_id: userId,
+      message_id: messageId,
       metadata: { test: true }
     });
     if (citationErr) {
@@ -139,8 +193,9 @@ async function runTests() {
     const { error: episodicErr } = await supabase.from('episodic_memories').insert({
       id: randomUUID(),
       user_id: userId,
-      summary: 'Student uploaded material and an agent action was approved.',
-      entities_referenced: ['autopsy', 'rag'],
+      type: 'victory',
+      source_type: 'event',
+      description: 'Student uploaded material and an agent action was approved.',
       emotional_context: 'neutral',
       retrieval_weight: 1.0
     });
@@ -180,17 +235,12 @@ async function runTests() {
     console.log(`✅ Cleaned up user ${userId}`);
   }
 
-  // The worker processing isn't tested directly here because the script is synchronously checking DB capabilities,
-  // but we verify the DB tables allow the flows.
-  // We can't wait for the worker unless we have a worker running.
-
   if (!passed) {
-    console.warn('\n⚠️ E2E Smoke check completed with errors. Wait for migrations to deploy or test locally.');
-    // Exit with 0 so the script doesn't break CI, but warns loudly, since we can't reliably know the remote state
+    console.warn('\n⚠️ E2E Smoke check completed with errors.');
     process.exit(1);
   } else {
     console.log('\n✅ E2E Smoke check completed successfully. All agentic foundations are wired.');
-    process.exit(1);
+    process.exit(0);
   }
 }
 

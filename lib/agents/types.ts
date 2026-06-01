@@ -80,6 +80,10 @@ export const AgentActionTypeSchema = z.enum([
   'destructive_delete',
   'large_plan_rewrite',
   'apply_mock_without_clear_evidence',
+  'mastery_updated',
+  'memory_card_created',
+  'material_ingested',
+  'plan_created',
 ]);
 export type AgentActionType = z.infer<typeof AgentActionTypeSchema>;
 
@@ -113,5 +117,5 @@ export const AgentActionInputSchema = z.object({
   idempotencyKey: z.string().min(1),
 });
 
-export type AgentRunInput = z.infer<typeof AgentRunInputSchema>;
-export type AgentActionInput = z.infer<typeof AgentActionInputSchema>;
+export type AgentRunInput = z.input<typeof AgentRunInputSchema>;
+export type AgentActionInput = z.input<typeof AgentActionInputSchema>;
