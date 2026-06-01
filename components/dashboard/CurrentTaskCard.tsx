@@ -100,6 +100,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
         setTimeLeft(durationSeconds);
         setIsMinimized(false);
         setShowCelebration(false);
+        setSessionClosingMessage(null);
         addToast(`Focus session started for ${detail.chapter || detail.title}!`, 'info');
       }
     };
@@ -226,6 +227,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
     setTimeLeft(durationSeconds);
     setIsMinimized(false);
     setShowCelebration(false);
+    setSessionClosingMessage(null);
     addToast(`Focus session started for ${data.focusTopic}!`, 'info');
   };
 
