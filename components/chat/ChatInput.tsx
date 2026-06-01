@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useEffect, KeyboardEvent, ChangeEvent } from 'react';
-import { Send, Paperclip, X, Image as ImageIcon, Loader2, Mic } from 'lucide-react';
+import { Send, Paperclip, X, Image as ImageIcon, Loader2 } from 'lucide-react';
 
 export interface ChatInputProps {
   value: string;
@@ -145,18 +145,6 @@ export function ChatInput({
           <Paperclip size={16} />
         </button>
 
-        <button
-          type="button"
-          onClick={() => alert("Voice input coming soon!")}
-          disabled={isStreaming || isProcessingUpload}
-          style={{
-            background: 'transparent', border: 'none', color: 'var(--text-secondary)',
-            cursor: 'pointer', padding: 'var(--sp-2)', display: 'flex', alignItems: 'center'
-          }}
-          title="Voice Input"
-        >
-          <Mic size={16} />
-        </button>
 
         <textarea
           ref={textareaRef}
