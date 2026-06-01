@@ -38,3 +38,35 @@ export function formatRagContextForPrompt(context: import('./types').RagContext)
 
   return `RETRIEVED SOURCE CHUNKS:\n\n${chunkBlocks.join('\n\n')}`;
 }
+
+export async function storeMessageCitations(input: {
+  supabase: any;
+  userId: string;
+  messageId: string;
+  context: import('./types').RagContext | null | undefined;
+}) {
+  if (!input.context?.grounded || !input.context.chunks.length) return { inserted: 0 };
+
+  const rows = input.context.chunks.map((chunk) => ({
+    user_id: input.userId,
+    message_id: input.messageId,
+    material_id: chunk.materialId,
+    chunk_id: chunk.id,
+    source_title: chunk.materialTitle,
+    page_number: chunk.pageStart,
+    section_title: chunk.heading,
+    quote: chunk.text.slice(0, 280),
+    relevance_score: chunk.score,
+    metadata: {
+      mode: input.context?.mode,
+      evidenceStrength: input.context?.evidenceStrength,
+    },
+  }));
+
+  const { error } = await input.supabase
+    .from('message_citations')
+    .upsert(rows, { onConflict: 'user_id,message_id,chunk_id' });
+
+  if (error) throw error;
+  return { inserted: rows.length };
+}

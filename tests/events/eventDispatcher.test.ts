@@ -71,8 +71,14 @@ describe('EventDispatcher', () => {
       'memory_engine',
       'learning_state_engine',
     ]);
-    expect(getConsumersForEvent('CHAT_MESSAGE_PROCESSED')).toEqual(['chat_side_effect_engine']);
+    expect(getConsumersForEvent('CHAT_MESSAGE_PROCESSED')).toEqual(['chat_side_effect_engine', 'mind_agent']);
     expect(getConsumersForEvent('AUTOPSY_UPLOAD_RECEIVED')).toEqual(['autopsy_engine']);
+    expect(getConsumersForEvent('MATERIAL_UPLOADED')).toEqual(['rag_agent']);
+    expect(getConsumersForEvent('AUTOPSY_MISTAKE_APPROVED')).toEqual([
+      'atlas_agent',
+      'memory_agent',
+      'planner_agent',
+    ]);
     expect(getConsumersForEvent('STUDENT_MODEL_SYNC_REQUESTED')).toContain('command_engine');
   });
 

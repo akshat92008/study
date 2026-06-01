@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { apiErrorResponse, getRequestId } from '@/lib/api/errors';
 import { withRateLimit } from '@/lib/middleware/withRateLimit';
 import { randomUUID } from 'node:crypto';
+import { EventDispatcher } from '@/lib/events/orchestrator';
 
 export const PATCH = withRateLimit('autopsy', async (request, userId, { params }) => {
   const requestId = getRequestId(request);
@@ -99,22 +100,21 @@ export const PATCH = withRateLimit('autopsy', async (request, userId, { params }
         trace_id: traceId
       }];
 
-      await supabase.rpc('create_event_with_consumers', {
-        p_user_id: userId,
-        p_type: 'AUTOPSY_MOCK_PROCESSED',
-        p_data: {
+      await EventDispatcher.publish({
+        user_id: userId,
+        type: 'AUTOPSY_MISTAKE_APPROVED',
+        data: {
           autopsyId: question.autopsy_id,
           isCorrection: true,
           verifiedCount: 1,
+          wrongQuestions,
         },
-        p_idempotency_key: `autopsy_correction:${question.id}:${new Date().getTime()}`,
-        p_consumers: ['atlas_engine', 'memory_engine', 'learning_state_engine'],
-        p_metadata: {
+        idempotency_key: `autopsy_mistake_approved:${question.id}:${evidence_status}`,
+        metadata: {
           source: 'manual_review',
           autopsyId: question.autopsy_id,
           trace_id: traceId,
-          wrongQuestions
-        }
+        },
       });
       
       // Bump learner state version safely

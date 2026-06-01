@@ -8,7 +8,7 @@ import { AtlasConsumer } from '@/lib/engines/cognition-graph';
 import { MemoryConsumer } from '@/lib/engines/revision-engine';
 import { ConceptExpansionConsumer } from '@/lib/engines/concept-expansion-engine';
 import { processChatSideEffects, type ChatSideEffectsInput } from '@/lib/ai/chat-side-effects';
-import { CommandConsumer } from '@/lib/engines/command-engine';
+import { runAgenticConsumer } from '@/lib/agents/event-runner';
 
 const MAX_RETRIES = 2; // Equivalent to retry_count < 3
 
@@ -78,7 +78,7 @@ export class EventWorkerService {
         try {
           let result: ConsumerResult = { status: 'HANDLED' };
           await withCorrelationId(traceId, async () => {
-            result = await this.routeToConsumer(lease);
+            result = await runAgenticConsumer(lease, () => this.routeToConsumer(lease));
           });
 
           Metrics.eventConsumer(lease.consumer_name, lease.event_type, Date.now() - start, true);
@@ -393,9 +393,138 @@ export class EventWorkerService {
           return { status: 'HANDLED' };
         }
         break;
+      case 'rag_agent':
+        if (event.type === 'MATERIAL_UPLOADED' || event.type === 'MATERIAL_INGESTION_REQUESTED') {
+          return this.handleRagIngestionRequested(event.user_id, payload);
+        }
+        if (event.type === 'RAG_QUERY_USED') {
+          return { status: 'SKIPPED_INTENTIONALLY', reason: 'RAG query usage is logged during retrieval' };
+        }
+        break;
+      case 'atlas_agent':
+        if (event.type === 'AUTOPSY_MISTAKE_APPROVED') {
+          await AtlasConsumer.handleAutopsyProcessed(event.user_id, {
+            ...payload,
+            wrongQuestions: payload.wrongQuestions ?? [payload.mistake ?? payload],
+          });
+          return { status: 'HANDLED' };
+        }
+        if (event.type === 'STUDY_SESSION_COMPLETED' || event.type === 'SESSION_CARD_COMPLETED') {
+          await AtlasConsumer.handleStudySessionCompleted(event.user_id, payload);
+          return { status: 'HANDLED' };
+        }
+        if (event.type === 'REVISION_CARD_REVIEWED') {
+          return { status: 'SKIPPED_INTENTIONALLY', reason: 'Revision review is handled by MEMORY_CARD_REVIEWED projection' };
+        }
+        if (event.type === 'MATERIAL_INGESTED' || event.type === 'ATLAS_MASTERY_UPDATE_REQUESTED') {
+          return { status: 'SKIPPED_INTENTIONALLY', reason: 'ATLAS agent wrapper registered; concrete handler is pending product-specific evidence mapping' };
+        }
+        break;
+      case 'memory_agent':
+        if (event.type === 'AUTOPSY_MISTAKE_APPROVED') {
+          await MemoryConsumer.handleAutopsyProcessed(event.user_id, {
+            ...payload,
+            wrongQuestions: payload.wrongQuestions ?? [payload.mistake ?? payload],
+          });
+          return { status: 'HANDLED' };
+        }
+        if (event.type === 'STUDY_SESSION_COMPLETED' || event.type === 'SESSION_CARD_COMPLETED') {
+          await MemoryConsumer.handleStudySessionCompleted(event.user_id, payload);
+          return { status: 'HANDLED' };
+        }
+        if (event.type === 'RAG_CARD_CANDIDATE_CREATED' || event.type === 'MEMORY_CARD_CREATE_REQUESTED' || event.type === 'MATERIAL_INGESTED') {
+          return { status: 'SKIPPED_INTENTIONALLY', reason: 'MEMORY agent wrapper registered; card extraction requires explicit source payload' };
+        }
+        break;
+      case 'planner_agent':
+        if ([
+          'MATERIAL_INGESTED',
+          'AUTOPSY_PROCESSING_COMPLETED',
+          'AUTOPSY_MISTAKE_APPROVED',
+          'REVISION_CARD_REVIEWED',
+          'LEARNER_STATE_CHANGED',
+          'SESSION_RECOMMENDATION_REQUESTED',
+          'PLANNER_REPLAN_REQUESTED',
+        ].includes(event.type)) {
+          const { invalidateSessionCard } = await import('@/lib/services/session-card-invalidation');
+          await invalidateSessionCard(event.user_id, 'LEARNER_STATE_UPDATED', {
+            client: createAdminClient(),
+            sourceEventId: lease.event_id,
+          });
+          return { status: 'HANDLED' };
+        }
+        break;
+      case 'mind_agent':
+        if ([
+          'CHAT_MESSAGE_PROCESSED',
+          'MIND_ACTION_REQUESTED',
+          'MIND_CONTEXT_REFRESHED',
+          'SESSION_RECOMMENDATION_CREATED',
+          'LEARNER_STATE_CHANGED',
+        ].includes(event.type)) {
+          return { status: 'SKIPPED_INTENTIONALLY', reason: 'MIND context refresh is request-time; event is audited by agent runtime' };
+        }
+        break;
+      case 'autopsy_agent':
+        if ([
+          'AUTOPSY_PROCESSING_COMPLETED',
+          'AUTOPSY_MISTAKE_EXTRACTED',
+          'AUTOPSY_MISTAKE_REJECTED',
+        ].includes(event.type)) {
+          return { status: 'SKIPPED_INTENTIONALLY', reason: 'AUTOPSY agent event acknowledged; state mutation happens only on approval' };
+        }
+        break;
+      case 'command_agent':
+        if (event.type === 'PLANNER_REPLAN_REQUESTED') {
+          const { runDailySynthesisForUser } = await import('@/lib/services/command-plan.service');
+          await runDailySynthesisForUser({
+            userId: event.user_id,
+            date: payload.date || new Date().toISOString().slice(0, 10),
+            client: createAdminClient(),
+          });
+          return { status: 'HANDLED' };
+        }
+        break;
     }
 
     throw new Error(`Event routing error: ${consumer} has no handler for ${event.type}`);
+  }
+
+  private static async handleRagIngestionRequested(userId: string, payload: Record<string, any>): Promise<ConsumerResult> {
+    const materialId = this.requireNonEmptyString(payload.materialId ?? payload.material_id, 'event_payload.materialId');
+    const supabase = createAdminClient();
+
+    const { data: material, error: materialError } = await supabase
+      .from('study_materials')
+      .select('id, storage_path, mime_type, status')
+      .eq('id', materialId)
+      .eq('user_id', userId)
+      .maybeSingle();
+
+    if (materialError) throw materialError;
+    if (!material) return { status: 'SKIPPED_INTENTIONALLY', reason: 'Material not found for user' };
+    if (material.status === 'ready') return { status: 'SKIPPED_INTENTIONALLY', reason: 'Material already ingested' };
+    if (material.status === 'processing') return { status: 'SKIPPED_INTENTIONALLY', reason: 'Material ingestion already in progress' };
+    if (!material.storage_path) return { status: 'SKIPPED_INTENTIONALLY', reason: 'Material has no storage path' };
+
+    const { data: fileData, error: downloadError } = await supabase
+      .storage
+      .from('study-materials')
+      .download(material.storage_path);
+
+    if (downloadError || !fileData) {
+      throw new Error(`RAG material download failed: ${downloadError?.message ?? 'missing file data'}`);
+    }
+
+    const { ingestStudyMaterial } = await import('@/lib/rag/ingest');
+    await ingestStudyMaterial({
+      materialId,
+      userId,
+      buffer: Buffer.from(await fileData.arrayBuffer()),
+      mimeType: material.mime_type,
+    });
+
+    return { status: 'HANDLED' };
   }
 
   private static buildChatSideEffectsInput(

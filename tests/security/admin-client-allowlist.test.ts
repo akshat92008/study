@@ -24,6 +24,7 @@ const allowedAppApiPrefixes = [
 ];
 
 const allowedRuntimeFiles = new Set([
+  'lib/agents/agent-runtime.ts',
   'lib/ai/cost-guard.ts',
   'lib/events/agents/provider-health.ts',
   'lib/events/orchestrator.ts',

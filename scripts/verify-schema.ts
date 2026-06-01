@@ -59,6 +59,14 @@ function main() {
     'public.study_materials',
     'public.study_material_chunks',
     'public.rag_query_logs',
+    'public.agent_runs',
+    'public.agent_actions',
+    'public.agent_action_approvals',
+    'public.agent_state_snapshots',
+    'public.mastery_evidence_ledger',
+    'public.rag_ingestion_jobs',
+    'public.message_citations',
+    'public.material_concept_links',
     'public.ai_usage_events',
   ];
 
@@ -101,6 +109,14 @@ function main() {
     'mistakes',
     'study_materials',
     'study_material_chunks',
+    'agent_runs',
+    'agent_actions',
+    'agent_action_approvals',
+    'agent_state_snapshots',
+    'mastery_evidence_ledger',
+    'rag_ingestion_jobs',
+    'message_citations',
+    'material_concept_links',
   ];
 
   const requiredIndexes = [
@@ -119,6 +135,12 @@ function main() {
     'MEMORY_CARD_REVIEWED',
     'PRACTICE_ATTEMPT_RECORDED',
     'STUDENT_MODEL_SYNC_REQUESTED',
+    'MATERIAL_UPLOADED',
+    'MATERIAL_INGESTED',
+    'AUTOPSY_MISTAKE_APPROVED',
+    'ATLAS_MASTERY_UPDATE_REQUESTED',
+    'MEMORY_CARD_CREATE_REQUESTED',
+    'LEARNER_STATE_CHANGED',
   ];
 
   const checks: Check[] = [

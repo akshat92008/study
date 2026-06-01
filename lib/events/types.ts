@@ -6,15 +6,34 @@ export const EventTypeSchema = z.enum([
   'CHAT_MESSAGE_PROCESSED',
   'CHAT_SESSION_SUMMARIZE',
   'MIND_TUTOR_COMPLETED',
+  'MATERIAL_UPLOADED',
+  'MATERIAL_INGESTION_REQUESTED',
+  'MATERIAL_INGESTED',
+  'RAG_QUERY_USED',
+  'RAG_CARD_CANDIDATE_CREATED',
+  'MIND_ACTION_REQUESTED',
+  'MIND_CONTEXT_REFRESHED',
   'AUTOPSY_UPLOAD_RECEIVED',
+  'AUTOPSY_PROCESSING_COMPLETED',
+  'AUTOPSY_MISTAKE_EXTRACTED',
+  'AUTOPSY_MISTAKE_APPROVED',
+  'AUTOPSY_MISTAKE_REJECTED',
   'AUTOPSY_MOCK_PROCESSED',
+  'ATLAS_MASTERY_UPDATE_REQUESTED',
   'ATLAS_MASTERY_UPDATED',
+  'MEMORY_CARD_CREATE_REQUESTED',
   'MEMORY_CARD_CREATED',
   'MEMORY_CARD_REVIEWED',
+  'REVISION_CARD_REVIEWED',
   'STUDY_SESSION_COMPLETED',
+  'SESSION_CARD_COMPLETED',
+  'SESSION_RECOMMENDATION_REQUESTED',
+  'SESSION_RECOMMENDATION_CREATED',
   'CONCEPT_DISCOVERED',
   'INGESTION_DOCUMENT_PROCESSED',
+  'LEARNER_STATE_CHANGED',
   'STUDENT_MODEL_SYNC_REQUESTED',
+  'PLANNER_REPLAN_REQUESTED',
   'PRACTICE_ATTEMPT_RECORDED',
 ]);
 
@@ -80,8 +99,51 @@ export const EventPayloadSchemas: Partial<Record<EventType | string, z.ZodTypeAn
   CHAT_SESSION_SUMMARIZE: z.object({
     sessionId: z.string().min(1),
   }).passthrough(),
+  MATERIAL_UPLOADED: z.object({
+    materialId: z.string().uuid(),
+  }).passthrough(),
+  MATERIAL_INGESTION_REQUESTED: z.object({
+    materialId: z.string().uuid(),
+  }).passthrough(),
+  MATERIAL_INGESTED: z.object({
+    materialId: z.string().uuid(),
+    chunkCount: z.number().int().nonnegative().optional(),
+  }).passthrough(),
+  RAG_QUERY_USED: z.object({
+    query: z.string().optional(),
+    materialIds: z.array(z.string().uuid()).optional(),
+    chunkIds: z.array(z.string().uuid()).optional(),
+    messageId: z.string().uuid().optional(),
+  }).passthrough(),
+  RAG_CARD_CANDIDATE_CREATED: z.object({
+    materialId: z.string().uuid().optional(),
+    chunkId: z.string().uuid().optional(),
+    conceptId: MaybeUuid,
+  }).passthrough(),
+  MIND_ACTION_REQUESTED: z.object({
+    action: z.string().min(1),
+  }).passthrough(),
+  MIND_CONTEXT_REFRESHED: z.object({
+    reason: z.string().optional(),
+  }).passthrough(),
   AUTOPSY_UPLOAD_RECEIVED: z.object({
     jobId: z.string().min(1),
+  }).passthrough(),
+  AUTOPSY_PROCESSING_COMPLETED: z.object({
+    autopsyId: z.string().min(1).optional(),
+    jobId: z.string().min(1).optional(),
+  }).passthrough(),
+  AUTOPSY_MISTAKE_EXTRACTED: z.object({
+    autopsyId: z.string().min(1),
+  }).passthrough(),
+  AUTOPSY_MISTAKE_APPROVED: z.object({
+    autopsyId: z.string().min(1).optional(),
+    mistake: z.any().optional(),
+    wrongQuestions: z.array(z.any()).optional(),
+  }).passthrough(),
+  AUTOPSY_MISTAKE_REJECTED: z.object({
+    autopsyId: z.string().min(1).optional(),
+    mistakeId: z.string().min(1).optional(),
   }).passthrough(),
   AUTOPSY_MOCK_PROCESSED: z.object({
     autopsyId: z.string().min(1),
@@ -117,14 +179,46 @@ export const EventPayloadSchemas: Partial<Record<EventType | string, z.ZodTypeAn
     conceptId: MaybeUuid,
     rating: z.union([z.number(), z.string()]),
   }).passthrough(),
+  REVISION_CARD_REVIEWED: z.object({
+    cardId: z.string().min(1),
+    conceptId: MaybeUuid,
+    rating: z.union([z.number(), z.string()]),
+  }).passthrough(),
+  MEMORY_CARD_CREATE_REQUESTED: z.object({
+    conceptId: MaybeUuid,
+    sourceType: z.string().optional(),
+    sourceId: z.string().optional(),
+  }).passthrough(),
+  ATLAS_MASTERY_UPDATE_REQUESTED: z.object({
+    conceptId: z.string().uuid().optional(),
+    delta: z.number().optional(),
+  }).passthrough(),
+  SESSION_CARD_COMPLETED: z.object({
+    sessionId: z.string().min(1).optional(),
+    subject: z.string().optional(),
+    chapter: z.string().optional(),
+  }).passthrough(),
+  SESSION_RECOMMENDATION_REQUESTED: z.object({
+    reason: z.string().optional(),
+  }).passthrough(),
+  SESSION_RECOMMENDATION_CREATED: z.object({
+    sessionCardId: z.string().uuid().optional(),
+  }).passthrough(),
   CONCEPT_DISCOVERED: z.object({
     conceptId: MaybeUuid,
     subject: z.string().optional(),
     chapter: z.string().optional(),
     topic: z.string().optional(),
   }).passthrough(),
+  LEARNER_STATE_CHANGED: z.object({
+    reason: z.string().optional(),
+  }).passthrough(),
   STUDENT_MODEL_SYNC_REQUESTED: z.object({
     reason: z.string().optional(),
+  }).passthrough(),
+  PLANNER_REPLAN_REQUESTED: z.object({
+    reason: z.string().optional(),
+    date: z.string().optional(),
   }).passthrough(),
   PRACTICE_ATTEMPT_RECORDED: z.object({
     practiceSetId: z.string().uuid(),

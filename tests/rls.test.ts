@@ -68,6 +68,7 @@ describe('Row Level Security migration invariants', () => {
 
   it('requires verified high-confidence AUTOPSY evidence before learner-state consumers can mutate', () => {
     expect(sql).toContain("evidence_status in ('verified_mistake', 'needs_review', 'ignored_or_unverified', 'corrected_by_user')");
+    expect(sql).toContain("evidence_status in ('verified_mistake', 'verified_correct', 'needs_review', 'pending_review', 'ignored', 'corrected_by_user', 'ignored_or_unverified')");
     expect(sql).toContain("'status', 'verified_mistake'");
     expect(sql).toContain("'needs_review', false");
     expect(sql).toContain("'extraction_confidence'");

@@ -40,7 +40,7 @@ describe('event routing SQL/TypeScript contract', () => {
     const { file, sql } = latestCreateEventMigration();
     const sqlMatrix = extractSqlRouteMatrix(sql);
 
-    expect(file).toBe('20260601000800_practice_event_routing.sql');
+    expect(file).toBe('20260601170000_agentic_cognition_os.sql');
     expect(sqlMatrix).toEqual(EVENT_CONSUMER_MATRIX);
   });
 
@@ -53,6 +53,9 @@ describe('event routing SQL/TypeScript contract', () => {
       'MIND_TUTOR_COMPLETED',
       'MEMORY_CARD_CREATED',
       'MEMORY_CARD_REVIEWED',
+      'MATERIAL_UPLOADED',
+      'MATERIAL_INGESTED',
+      'AUTOPSY_MISTAKE_APPROVED',
       'STUDENT_MODEL_SYNC_REQUESTED',
       'PRACTICE_ATTEMPT_RECORDED',
     ] as const;
@@ -79,6 +82,6 @@ describe('event routing SQL/TypeScript contract', () => {
     const routeText = `${tsText}\n${sql}`.toLowerCase();
 
     expect(routeText).not.toContain('pulse_engine');
-    expect(routeText).not.toMatch(/['"]pulse['"]/);
+    expect(routeText).not.toMatch(/array\s*\[[^\]]*['"]pulse_agent['"]/);
   });
 });

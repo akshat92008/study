@@ -34,6 +34,7 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       weakConcepts: learnerState.atlas.weakConcepts,
       client: supabase,
     });
+    const agentActivity = await getAgentActivitySummary(userId, supabase);
     const cognitiveLoad = deriveCognitiveLoadSignal(learnerState);
 
     let ragChunks: {
@@ -111,6 +112,7 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       ragContext,
       studentModel: learnerState.studentModel,
       outcomeAnalytics: outcomeSummary,
+      agentActivity,
     };
     logger.info('[MIND] context build completed', {
       userId,
@@ -148,7 +150,56 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       ragContext: null,
       studentModel: null,
       outcomeAnalytics: null,
+      agentActivity: { recentRuns: [], recentActions: [], pendingApprovalCount: 0 },
     };
+  }
+}
+
+async function getAgentActivitySummary(userId: string, supabase: any): Promise<MINDContext['agentActivity']> {
+  try {
+    const [runsRes, actionsRes, pendingRes] = await Promise.all([
+      supabase
+        .from('agent_runs')
+        .select('agent_name, status, created_at, error')
+        .eq('user_id', userId)
+        .order('created_at', { ascending: false })
+        .limit(5),
+      supabase
+        .from('agent_actions')
+        .select('action_type, status, approval_status, reason, created_at')
+        .eq('user_id', userId)
+        .order('created_at', { ascending: false })
+        .limit(5),
+      supabase
+        .from('agent_actions')
+        .select('id', { count: 'exact', head: true })
+        .eq('user_id', userId)
+        .eq('approval_status', 'pending'),
+    ]);
+
+    if (runsRes.error || actionsRes.error || pendingRes.error) {
+      return { recentRuns: [], recentActions: [], pendingApprovalCount: 0 };
+    }
+
+    return {
+      recentRuns: (runsRes.data || []).map((run: any) => ({
+        agentName: run.agent_name,
+        status: run.status,
+        createdAt: run.created_at,
+        error: run.error ?? null,
+      })),
+      recentActions: (actionsRes.data || []).map((action: any) => ({
+        actionType: action.action_type,
+        status: action.status,
+        approvalStatus: action.approval_status,
+        createdAt: action.created_at,
+        reason: action.reason ?? null,
+      })),
+      pendingApprovalCount: pendingRes.count || 0,
+    };
+  } catch (err) {
+    logger.warn('[MIND] agent activity unavailable', { userId, err });
+    return { recentRuns: [], recentActions: [], pendingApprovalCount: 0 };
   }
 }
 

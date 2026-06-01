@@ -5,6 +5,7 @@ import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { getRagConfig, SUPPORTED_MATERIAL_MIME_TYPES } from '@/lib/rag/config';
 import { materialContentHash, ingestStudyMaterial } from '@/lib/rag/ingest';
 import { validateMagicBytesArray } from '@/lib/utils/magicBytes';
+import { EventDispatcher } from '@/lib/events/orchestrator';
 
 function sanitizeFilename(value: string): string {
   return value
@@ -134,6 +135,14 @@ export async function POST(req: NextRequest) {
       .single();
 
     if (insertError || !material) throw insertError || new Error('Material insert failed');
+
+    await EventDispatcher.publish({
+      user_id: user.id,
+      type: 'MATERIAL_UPLOADED',
+      data: { materialId: material.id },
+      metadata: { source: 'materials_upload' },
+      idempotency_key: `material_uploaded:${material.id}`,
+    }).catch(() => {});
 
     const ingestResult = await ingestStudyMaterial({
       materialId: material.id,

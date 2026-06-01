@@ -8,6 +8,7 @@ import {
   releaseBudgetReservation,
 } from '@/lib/ai/cost-guard';
 import { logger } from '@/lib/utils/logger';
+import { storeMessageCitations } from '@/lib/rag/citations';
 
 type BudgetUsage = {
   promptTokens: number;
@@ -97,6 +98,19 @@ export async function finalizeChatTurn(input: FinalizeChatTurnInput): Promise<Fi
         await releaseBudgetOnce('missing_chat_budget_usage');
       }
     }
+
+    await storeMessageCitations({
+      supabase: input.supabase,
+      userId: input.userId,
+      messageId: assistant.id,
+      context: input.mindContext?.ragContext,
+    }).catch((err) => {
+      logger.warn('Chat turn finalization: failed to store RAG citations', {
+        userId: input.userId,
+        messageId: assistant.id,
+        error: err instanceof Error ? err.message : String(err),
+      });
+    });
 
     const eventId = await publishEvent({
       user_id: input.userId,

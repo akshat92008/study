@@ -89,6 +89,11 @@ export interface MINDContext {
     };
     usageAssociation: string;
   } | null;
+  agentActivity?: {
+    recentRuns: Array<{ agentName: string; status: string; createdAt: string; error?: string | null }>;
+    recentActions: Array<{ actionType: string; status: string; approvalStatus: string; createdAt: string; reason?: string | null }>;
+    pendingApprovalCount: number;
+  };
 }
 
 export function getEffectiveLearningStyle(
@@ -285,6 +290,10 @@ function buildPrompt(ctx: MINDContext, semanticMemories: string[] = [], intent?:
     ? `\nCOGNITIVE LOAD SIGNAL: HIGH\n${ctx.cognitiveLoad.signals.map(signal => `- ${signal}`).join('\n')}\nAdapt by reducing step size, limiting simultaneous tasks, and ending with one concrete action.\n`
     : '';
 
+  const agentActivitySection = ctx.agentActivity
+    ? `\nAGENTIC ACTIVITY SUMMARY:\n- Recent runs: ${ctx.agentActivity.recentRuns.slice(0, 3).map(run => `${run.agentName}:${run.status}`).join(', ') || 'none'}\n- Recent actions: ${ctx.agentActivity.recentActions.slice(0, 3).map(action => `${action.actionType}:${action.status}`).join(', ') || 'none'}\n- Pending approvals: ${ctx.agentActivity.pendingApprovalCount}\nUse this to answer transparency questions like what changed, what needs approval, or why a recommendation shifted.\n`
+    : '';
+
   const ragSection = !isGeneralChat || ctx.ragContext?.mode === 'explicit'
     ? buildRagSection(ctx.ragChunks, ctx.ragContext)
     : '';
@@ -403,6 +412,7 @@ ${outcomeSection}
 ${ragSection}
 ${behaviouralSection}
 ${cognitiveLoadSection}
+${agentActivitySection}
 ═══════════════════════════════════════
 CORE BEHAVIOURAL RULES — NEVER VIOLATE
 ═══════════════════════════════════════

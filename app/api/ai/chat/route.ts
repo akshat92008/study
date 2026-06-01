@@ -60,6 +60,7 @@ import { DailyMicrotaskService } from '@/lib/services/daily-microtask.service';
 import { buildMindRagContext } from '@/lib/rag/mind-rag';
 import { ingestStudyMaterial, materialContentHash } from '@/lib/rag/ingest';
 import { SUPPORTED_MATERIAL_MIME_TYPES } from '@/lib/rag/config';
+import { EventDispatcher } from '@/lib/events/orchestrator';
 const encoder = new TextEncoder();
 const STUDY_MATERIAL_UPLOAD_RE =
   /\b(use this|save this|upload this|index this|store this|add this|my notes|study material|ncert|textbook|chapter|pdf|source|answer from this|use later|prescribed material|according to this|make this my source)\b/i;
@@ -606,6 +607,13 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
                   user_id: user.id, title: 'Chat Upload', original_filename: originalFilename, mime_type: documentMimeType, storage_path: storagePath, source_type: 'upload', language: 'en', status: 'uploaded', content_hash: contentHash
                 }).select('id').single();
                 if (material) {
+                  await EventDispatcher.publish({
+                    user_id: user.id,
+                    type: 'MATERIAL_UPLOADED',
+                    data: { materialId: material.id },
+                    metadata: { source: 'chat_upload' },
+                    idempotency_key: `material_uploaded:${material.id}`,
+                  }).catch(() => {});
                   await ingestStudyMaterial({
                     materialId: material.id,
                     userId: user.id,

@@ -91,7 +91,7 @@ async function checkSmoke() {
 
   // 5. Package scripts
   const pkg = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf8'));
-  const scripts = ['typecheck', 'test', 'audit:schema', 'verify:schema', 'verify:local', 'verify:production', 'verify:mvp'];
+  const scripts = ['typecheck', 'test', 'audit:schema', 'verify:schema', 'smoke:agentic', 'verify:local', 'verify:production', 'verify:mvp'];
   for (const s of scripts) {
     if (!pkg.scripts[s]) {
       console.error(`❌ Missing package script: ${s}`);
