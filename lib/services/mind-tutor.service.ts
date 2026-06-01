@@ -6,6 +6,10 @@ import { ConceptService } from './concept.service';
 import { createSingleCard } from '@/lib/engines/revision-engine';
 import { updateConceptState } from '@/lib/engines/cognition-graph';
 import { z } from 'zod';
+import {
+  MIN_MIND_TUTOR_COVERAGE_TURNS,
+  publishTutorProgressEvents,
+} from '@/lib/mind/tutor-completion';
 
 // The exact snag string — used to detect repeat failures in chat history
 const SNAG_MESSAGE = "I hit a temporary cognitive snag interpreting that. Could you rephrase your thought?";
@@ -143,27 +147,36 @@ export class MindTutorService extends BaseService {
       return (async function* () { yield SNAG_MESSAGE; })();
     }
 
-    const closingMessage = await this.handleStateTransition(userId, sessionState.id, output);
+    const closingMessage = await this.handleStateTransition(userId, sessionState.id, output, message, history);
     return this.streamWithOptionalClosing(systemPrompt, userPrompt, closingMessage);
   }
 
-  private async handleStateTransition(userId: string, stateId: string, output: MindTutorOutput): Promise<string | null> {
+  private async handleStateTransition(
+    userId: string,
+    stateId: string,
+    output: MindTutorOutput,
+    latestMessage: string,
+    history: any[]
+  ): Promise<string | null> {
     if (stateId === 'fallback') return null;
 
     const supabase = await this.getClient();
-    const isCompleted = output.state === 'SYNTHESIS';
 
     const { data: previousState } = await supabase
       .from('tutor_sessions')
-      .select('misconception_detected, concept_id, turns_count')
+      .select('session_id, misconception_detected, concept_id, turns_count')
       .eq('id', stateId)
       .maybeSingle();
 
     const nextTurnCount = (previousState?.turns_count || 0) + 1;
+    const isCompleted = output.state === 'SYNTHESIS' && nextTurnCount >= MIN_MIND_TUTOR_COVERAGE_TURNS;
+    const nextState = output.state === 'SYNTHESIS' && !isCompleted
+      ? 'HARD_APPLICATION'
+      : output.state;
 
     const { error: updateError } = await supabase.from('tutor_sessions')
       .update({
-        current_state: output.state,
+        current_state: nextState,
         misconception_detected: output.diagnosedMisconception,
         is_completed: isCompleted,
         turns_count: nextTurnCount,
@@ -235,6 +248,22 @@ export class MindTutorService extends BaseService {
         const { data: cAfter } = await supabase.from('concepts').select('mastery').eq('id', targetConceptId).maybeSingle();
         newMastery = cAfter?.mastery || 'unknown';
       }
+
+      await publishTutorProgressEvents({
+        userId,
+        sessionId: previousState?.session_id || stateId,
+        message: latestMessage,
+        fullResponse: output.responseToStudent,
+        history,
+        sessionTurnsCount: nextTurnCount,
+        intent: { intent: 'TUTOR_SESSION', subject, topic: chapter },
+        sourceType: 'mind_tutor_service',
+        conceptId: targetConceptId ?? null,
+        subject,
+        chapter,
+      }).catch((err) =>
+        logger.warn('MindTutorService: failed to publish tutor completion event', { userId, err })
+      );
 
       return await this.generateSessionClosingMessage(
         chapter,

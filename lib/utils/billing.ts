@@ -91,6 +91,7 @@ export function usageGateResponse(result: UsageGateResult): NextResponse {
       limit: result.limit,
       used: result.used,
       remaining: result.remaining,
+      upgradeUrl: result.code === 'limit_reached' ? '/api/billing/checkout' : undefined,
     },
     { status }
   );
@@ -146,6 +147,16 @@ export async function consumeUsageLimit(
   if (!auth.allowed) return auth;
 
   const limit = getLimit(feature);
+  const subscriptionStatus = await getUserSubscriptionStatus(userId as string);
+  if (subscriptionStatus !== 'free') {
+    return {
+      allowed: true,
+      limit: Number.MAX_SAFE_INTEGER,
+      used: 0,
+      remaining: Number.MAX_SAFE_INTEGER,
+    };
+  }
+
   if (limit === 0) {
     return {
       allowed: false,
@@ -245,9 +256,26 @@ export async function checkUsageLimit(
 }
 
 export async function getUserSubscriptionStatus(
-  _userId: string
+  userId: string
 ): Promise<'free' | 'pro' | 'teams'> {
-  return 'free';
+  try {
+    const supabase = createAdminClient();
+    const { data, error } = await supabase
+      .from('profiles')
+      .select('subscription_status')
+      .eq('id', userId)
+      .maybeSingle();
+    if (error) throw error;
+
+    const status = data?.subscription_status;
+    return status === 'pro' || status === 'teams' ? status : 'free';
+  } catch (error: any) {
+    logger.warn('[Billing] subscription status unavailable; defaulting to free', {
+      userId,
+      error: error?.message,
+    });
+    return 'free';
+  }
 }
 
 export async function incrementUsage(

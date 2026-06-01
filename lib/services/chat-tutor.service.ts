@@ -5,6 +5,7 @@ import { checkSemanticCache, setSemanticCache, isCacheable } from '@/lib/ai/resp
 import { resolveConceptByName } from '@/lib/engines/concept-resolver';
 import { MASTERY_WEIGHTS } from '@/lib/engines/cognition-graph';
 import { logger } from '@/lib/utils/logger';
+import { MIN_MIND_TUTOR_COVERAGE_TURNS } from '@/lib/mind/tutor-completion';
 
 export class ChatTutorService {
   static async handleTutorSession(
@@ -17,7 +18,8 @@ export class ChatTutorService {
     message: string,
     sessionTurnsCount: number | undefined,
     controller: ReadableStreamDefaultController,
-    encoder: TextEncoder
+    encoder: TextEncoder,
+    reservationId?: string
   ) {
     const topic = intent.topic || 'General';
     const subject = intent.subject || mindContext?.weakConcepts?.[0]?.subject || 'General';
@@ -49,7 +51,7 @@ export class ChatTutorService {
       }
     }
 
-    const tutorSystemPrompt = `${systemPrompt}\n\nACTIVE TUTOR SESSION:\nTopic: ${subject} > ${topic}\nPast Mistakes Here: ${mistakes?.map((m: any) => m.ai_analysis).join('; ') || 'None'}${pastSessionCtx}\n\nYou are now in active teaching mode for this topic. Apply RULE 3 (Learning Mode) — Socratic method, minimum 6-10 exchanges.`;
+    const tutorSystemPrompt = `${systemPrompt}\n\nACTIVE TUTOR SESSION:\nTopic: ${subject} > ${topic}\nPast Mistakes Here: ${mistakes?.map((m: any) => m.ai_analysis).join('; ') || 'None'}${pastSessionCtx}\n\nYou are now in active teaching mode for this topic. Apply RULE 3 (Learning Mode) — Socratic method, minimum ${MIN_MIND_TUTOR_COVERAGE_TURNS}-10 exchanges before the concept is considered covered.`;
     const conversationMessages = buildConversationMessages(recentHistory, message);
     const hasUserSpecificContext = (mistakes && mistakes.length > 0) || (pastSessionCtx && pastSessionCtx.length > 0) || (oldMasteryScore !== null);
     const canCache = isCacheable({ intent: intent.intent, hasUserContext: hasUserSpecificContext });
@@ -61,7 +63,7 @@ export class ChatTutorService {
       controller.enqueue(encoder.encode(cached));
       fullResponse = cached;
     } else {
-      for await (const chunk of routeStreamGeneration(tutorSystemPrompt, conversationMessages, 0.75)) {
+      for await (const chunk of routeStreamGeneration(tutorSystemPrompt, conversationMessages, 0.75, reservationId)) {
         controller.enqueue(encoder.encode(chunk));
         fullResponse += chunk;
       }
@@ -71,13 +73,21 @@ export class ChatTutorService {
     }
 
     let metadataPayload: any = null;
-    const isSessionComplete = sessionTurnsCount ? (sessionTurnsCount >= 6) : (recentHistory.length >= 10);
+    const isSessionComplete = sessionTurnsCount
+      ? (sessionTurnsCount >= MIN_MIND_TUTOR_COVERAGE_TURNS)
+      : (recentHistory.filter((turn: any) => turn?.role === 'user').length + 1 >= MIN_MIND_TUTOR_COVERAGE_TURNS);
     if (isSessionComplete && recentHistory.length > 0) {
       metadataPayload = { 
         action: 'session_closing_message', 
-        closingMessage: "We've covered a lot today. I'm analyzing our session in the background and will update your knowledge map and flashcards shortly.", 
+        closingMessage: `Session recorded for ${subject} / ${topic}. I have enough turns to update your knowledge map now; ATLAS and MEMORY will use this exact exchange to adjust mastery and cards.`, 
         closingType: 'async_analysis', 
-        sessionComplete: true 
+        sessionComplete: true,
+        subject,
+        chapter: topic,
+        conceptId,
+        oldMastery: oldMasteryScore,
+        minCoverageTurns: MIN_MIND_TUTOR_COVERAGE_TURNS,
+        coverageTurns: sessionTurnsCount ?? recentHistory.filter((turn: any) => turn?.role === 'user').length + 1,
       };
     }
 

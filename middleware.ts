@@ -1,7 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-const PUBLIC_ROUTES = ["/login", "/signup", "/", "/api/health"];
+const PUBLIC_ROUTES = ["/login", "/signup", "/", "/api/health", "/api/webhooks/stripe"];
 const CRON_ROUTES = ["/api/cron", "/api/events/process", "/api/internal"];
 const MVP_DISABLED_ROUTES = [
   "/analytics",
@@ -11,7 +11,6 @@ const MVP_DISABLED_ROUTES = [
   "/mistakes",
   "/planner",
   "/api/admin",
-  "/api/billing",
   "/api/ingest",
   "/api/knowledge",
   "/api/mistakes",
@@ -22,7 +21,6 @@ const MVP_DISABLED_ROUTES = [
   "/api/ai/revision-coach",
   "/api/ai/setup",
   "/api/ai/welcome",
-  "/api/webhooks/stripe",
   "/goals",
   "/api/goals",
   "/api/onboarding",

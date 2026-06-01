@@ -47,6 +47,7 @@ import {
   persistChatMessage,
 } from '@/lib/services/chat-persistence';
 import { finalizeChatTurn } from '@/lib/services/chat-turn-finalizer';
+import { ChatTutorService } from '@/lib/services/chat-tutor.service';
 import {
   ensureCommandPlanForDate,
   formatCommandPlanForChat,
@@ -645,6 +646,21 @@ export async function POST(req: NextRequest) {
             controller.enqueue(encoder.encode(msg));
             fullResponse = msg;
             metadataPayload = { action: intentToAction(intent.intent) };
+          } else if (intent.intent === 'TUTOR_SESSION' || intent.intent === 'PRACTICE') {
+            const tutorResult = await ChatTutorService.handleTutorSession(
+              supabase,
+              user.id,
+              intent,
+              mindContext,
+              systemPrompt,
+              recentHistory,
+              message || '',
+              sessionTurnsCount,
+              controller,
+              encoder
+            );
+            fullResponse = tutorResult.fullResponse;
+            metadataPayload = tutorResult.metadataPayload;
           } else {
             const conversationMessages = buildConversationMessages(recentHistory, message || '');
             for await (const chunk of routeStreamGeneration(systemPrompt, conversationMessages, 0.7)) {

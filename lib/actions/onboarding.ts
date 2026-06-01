@@ -40,6 +40,73 @@ export async function seedKnowledgeGraph(
   return { status: 'queued', seeded: totalSeeded };
 }
 
+export async function seedOnboardingKnowledgeMap(
+  userId: string,
+  examType: string,
+  preferredSubjects: string[] = []
+): Promise<{ skeletonCreated: number; expansionQueued: number }> {
+  const supabase = await createClient();
+  const config = getExamConfig(examType);
+  const { queueConceptSeedingForSubject } = await import('@/lib/engines/cognition-graph');
+
+  const subjects = preferredSubjects.length > 0
+    ? preferredSubjects
+    : config.subjects;
+
+  let skeletonCreated = 0;
+  let expansionQueued = 0;
+
+  for (const subject of subjects) {
+    const chapters = config.chapters[subject]?.length
+      ? config.chapters[subject]
+      : ['Foundations'];
+
+    const { data: existing } = await supabase
+      .from('concepts')
+      .select('chapter')
+      .eq('user_id', userId)
+      .eq('subject', subject);
+
+    const existingChapters = new Set((existing || []).map((row: any) => String(row.chapter).toLowerCase()));
+    const rows = chapters
+      .filter((chapter) => !existingChapters.has(chapter.toLowerCase()))
+      .map((chapter) => ({
+        user_id: userId,
+        name: chapter,
+        description: `${examType} onboarding syllabus anchor for ${subject}: ${chapter}`,
+        subject,
+        chapter,
+        topic: 'Onboarding',
+        mastery: 'not_started' as const,
+        confidence: 'low' as const,
+        forgetting_probability: 1.0,
+        retention_strength: 0.0,
+        version: 1,
+      }));
+
+    if (rows.length > 0) {
+      const { data, error } = await supabase
+        .from('concepts')
+        .insert(rows)
+        .select('id');
+      if (error) {
+        logger.warn('seedOnboardingKnowledgeMap: skeleton insert failed', { userId, subject, error: error.message });
+      } else {
+        skeletonCreated += data?.length || rows.length;
+      }
+    }
+
+    const queued = await queueConceptSeedingForSubject(userId, subject, chapters)
+      .catch((err) => {
+        logger.warn('seedOnboardingKnowledgeMap: expansion queue failed', { userId, subject, err });
+        return { queued: 0 };
+      });
+    expansionQueued += queued.queued || 0;
+  }
+
+  return { skeletonCreated, expansionQueued };
+}
+
 export async function generateDay1Plan(userId: string, examType: string) {
   const supabase = await createClient();
 
@@ -137,8 +204,13 @@ export async function completeOnboarding(
   return { saved: true };
 }
 
-export async function seedInitialCards(userId: string): Promise<{ cardsCreated: number }> {
+export async function seedInitialCards(
+  userId: string,
+  options: { maxConcepts?: number; cardsPerConcept?: number } = {}
+): Promise<{ cardsCreated: number }> {
   const supabase = await createClient();
+  const maxConcepts = Math.max(1, Math.min(options.maxConcepts ?? 20, 20));
+  const cardsPerConcept = Math.max(1, Math.min(options.cardsPerConcept ?? 3, 5));
 
   try {
     // Check if cards are already generated for this user to prevent duplication
@@ -163,7 +235,7 @@ export async function seedInitialCards(userId: string): Promise<{ cardsCreated: 
       .eq('user_id', userId)
       .in('mastery', ['not_started', 'exposed', 'developing'])
       .order('created_at', { ascending: true })
-      .limit(20); // Cap at 20 concepts for onboarding — 3 cards each = ~60 cards max
+      .limit(maxConcepts);
 
     if (error || !concepts || concepts.length === 0) {
       logger.warn('seedInitialCards: no concepts found for user', { userId });
@@ -176,7 +248,7 @@ export async function seedInitialCards(userId: string): Promise<{ cardsCreated: 
     // allSettled so one failure doesn't block others
     const results = await Promise.allSettled(
       concepts.map(concept =>
-        generateCardsForConcept(userId, concept.id, concept.subject, concept.chapter, 3)
+        generateCardsForConcept(userId, concept.id, concept.subject, concept.chapter, cardsPerConcept)
           .then(cards => ({ created: Array.isArray(cards) ? cards.length : 0 }))
           .catch(err => {
             logger.warn('Card gen failed for concept', { conceptId: concept.id, err: err.message });

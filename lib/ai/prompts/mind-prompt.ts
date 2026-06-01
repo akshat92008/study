@@ -37,6 +37,19 @@ export interface MINDContext {
   topOverdueCards: Array<{ id: string; front: string }>;
   emotionalState: string;
   recentTopics: string[];
+  conceptHistory?: Array<{
+    conceptId?: string | null;
+    conceptName: string;
+    subject: string;
+    chapter: string;
+    lastSeenAt: string;
+    outcome: string;
+    source: string;
+  }>;
+  cognitiveLoad?: {
+    level: 'low' | 'normal' | 'high';
+    signals: string[];
+  };
   knownAnalogies: string[];
   rootGapChains: Array<{ rootConcept: string; gapChain: string[] }>;
   currentSessionDurationMinutes: number;
@@ -211,6 +224,17 @@ function buildPrompt(ctx: MINDContext, semanticMemories: string[] = [], intent?:
     ? `\nOUTCOME ANALYTICS (descriptive, never causal):\n- Score trend: ${ctx.outcomeAnalytics.scoreTrend}\n- Latest score: ${ctx.outcomeAnalytics.latestScore ?? 'not available'}; previous: ${ctx.outcomeAnalytics.previousScore ?? 'not available'}\n- Loop usage: chat ${ctx.outcomeAnalytics.featureUsage.chatSessions}, autopsy ${ctx.outcomeAnalytics.featureUsage.autopsyUploads}, revision reviews ${ctx.outcomeAnalytics.featureUsage.revisionCardsReviewed}, completed sessions ${ctx.outcomeAnalytics.featureUsage.studySessionsCompleted}\n- Wording rule: use "associated with" or "correlates with"; never claim the product caused a score change.\n`
     : '';
 
+  const conceptHistorySection = (!isGeneralChat && ctx.conceptHistory?.length)
+    ? `\nCONCEPT-LEVEL LONGITUDINAL HISTORY:\n${ctx.conceptHistory.slice(0, 5).map((item) => {
+        const date = item.lastSeenAt ? new Date(item.lastSeenAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }) : 'recently';
+        return `- ${item.subject} / ${item.chapter} / ${item.conceptName}: ${item.outcome} (${item.source}, ${date})`;
+      }).join('\n')}\nUse this only when relevant, e.g. "You saw this before on 12 May and the gap was...".\n`
+    : '';
+
+  const cognitiveLoadSection = ctx.cognitiveLoad?.level === 'high'
+    ? `\nCOGNITIVE LOAD SIGNAL: HIGH\n${ctx.cognitiveLoad.signals.map(signal => `- ${signal}`).join('\n')}\nAdapt by reducing step size, limiting simultaneous tasks, and ending with one concrete action.\n`
+    : '';
+
   const ragSection = !isGeneralChat ? buildRagSection(ctx.ragChunks) : '';
 
   const artifactBlock = (intent === 'CREATE_ARTIFACT' || intent === 'PRACTICE' || intent === 'TUTOR_SESSION') ? `
@@ -320,9 +344,11 @@ ${rootGapSection}
 OPTIONAL MIND STATE SIGNAL: ${ctx.emotionalState}
 RECENTLY STUDIED: ${ctx.recentTopics.slice(0, 4).join(', ') || 'Nothing yet'}
 ${memoriesSection}
+${conceptHistorySection}
 ${outcomeSection}
 ${ragSection}
 ${behaviouralSection}
+${cognitiveLoadSection}
 ═══════════════════════════════════════
 CORE BEHAVIOURAL RULES — NEVER VIOLATE
 ═══════════════════════════════════════
@@ -351,7 +377,7 @@ You must proactively follow these personalization principles:
 
 RULE 3 — MATCH EXPLANATION DEPTH TO INTENT.
 Quick doubt → answer fast, clear, complete. No padding.
-Learning session → go deep. Use the Socratic method. Minimum 6–10 exchanges before marking a concept covered.
+Learning session → go deep. Use the Socratic method. Minimum 8–10 exchanges before marking a concept covered.
 Practice request → generate questions immediately using the practice-test artifact. Generate the EXACT NUMBER of questions requested (default 5). Do not output just 1 question unless explicitly asked. Don't describe what you're about to do. Do it.
 
 RULE 4 — USE THEIR LEARNING STYLE.

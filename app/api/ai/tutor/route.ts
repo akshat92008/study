@@ -10,6 +10,7 @@ import { estimateTokensFromText } from '@/lib/ai/token-budget';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { apiErrorResponse, getRequestId } from '@/lib/api/errors';
 import { validatePromptLength, usageGateResponse } from '@/lib/utils/billing';
+import { consumeUsageLimit } from '@/lib/utils/billing';
 import { logger } from '@/lib/utils/logger';
 import {
   getOrCreateChatSession,
@@ -21,6 +22,7 @@ import { ChatMemoryService } from '@/lib/services/chatMemoryService';
 import { EpisodicMemoryService } from '@/lib/services/episodic-memory.service';
 import { inferAndUpdateEmotionalState } from '@/lib/engines/emotional-state-updater';
 import { getPromptVersion } from '@/lib/ai/prompt-version';
+import { publishTutorProgressEvents } from '@/lib/mind/tutor-completion';
 
 const encoder = new TextEncoder();
 
@@ -29,6 +31,7 @@ const TutorPayloadSchema = z.object({
   history: z.array(z.any()).optional().default([]),
   topic: z.string().optional(),
   subject: z.string().optional(),
+  sessionTurnsCount: z.number().int().nonnegative().optional(),
 });
 
 export async function GET(request?: NextRequest) {
@@ -82,6 +85,8 @@ export async function POST(req: NextRequest) {
 
   const promptLength = validatePromptLength(parsed.message);
   if (!promptLength.allowed) return usageGateResponse(promptLength);
+  const usageGate = await consumeUsageLimit(user.id, 'tutor_messages_daily');
+  if (!usageGate.allowed) return usageGateResponse(usageGate);
 
   const { checkIdempotency } = await import('@/lib/middleware/idempotency');
   const idempotencyKey = req.headers.get('Idempotency-Key');
@@ -104,6 +109,10 @@ export async function POST(req: NextRequest) {
   const sessionId = await getOrCreateChatSession(supabase, user.id, 'tutor', 'AI Tutor');
   const persistedHistory = await loadRecentMessages(supabase, sessionId);
   const recentHistory = persistedHistory.length ? persistedHistory : parsed.history.slice(-20);
+  const tutorTurnsCount = Math.max(
+    parsed.sessionTurnsCount ?? 0,
+    recentHistory.filter((turn: any) => turn?.role === 'user').length + 1
+  );
   const messageRequestId = idempotencyKey || requestId;
   const promptVersion = getPromptVersion('tutor');
 
@@ -178,6 +187,28 @@ export async function POST(req: NextRequest) {
           sourceType: 'tutor_chat',
           sourceId: userMessageId,
           metadata: { sessionId, topic: parsed.topic, subject: parsed.subject },
+        });
+
+        await publishTutorProgressEvents({
+          userId: user.id,
+          sessionId,
+          message: parsed.message,
+          fullResponse,
+          history: recentHistory,
+          sessionTurnsCount: tutorTurnsCount,
+          mindContext,
+          intent: {
+            intent: 'TUTOR_SESSION',
+            subject: parsed.subject,
+            topic: parsed.topic,
+          },
+          sourceType: 'tutor_chat',
+          userMessageId,
+          assistantMessageId,
+          subject: parsed.subject ?? null,
+          chapter: parsed.topic ?? null,
+        }).catch((err) => {
+          logger.warn('Tutor route progress event publish failed', { userId: user.id, requestId, err });
         });
       } catch (error) {
         logger.error('Tutor stream failed', error, { userId: user.id, requestId });

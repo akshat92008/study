@@ -27,6 +27,13 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
         return null;
       });
     const rootGapChains = await getRootGapChains(userId, learnerState.atlas.weakConcepts);
+    const conceptHistory = await getLongitudinalConceptHistory(userId, {
+      topic,
+      subject,
+      weakConcepts: learnerState.atlas.weakConcepts,
+      client: supabase,
+    });
+    const cognitiveLoad = deriveCognitiveLoadSignal(learnerState);
 
     let ragChunks: { content: string; similarity: number; sourceTitle: string }[] = [];
     if (message && message.trim().length > 15) {
@@ -66,6 +73,8 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       topOverdueCards: learnerState.memory.topDueCards.slice(0, 3),
       emotionalState: learnerState.profile.mindStateSignal,
       recentTopics: learnerState.recentTopics.slice(0, 5),
+      conceptHistory,
+      cognitiveLoad,
       knownAnalogies: [],
       rootGapChains,
       currentSessionDurationMinutes: 0,
@@ -100,6 +109,8 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       weakConcepts: [], recentMistakes: [], struggles: [],
       masteryStats: { totalConcepts: 0, masteredCount: 0, masteryPercent: 0 },
       overdueCardsCount: 0, topOverdueCards: [], emotionalState: 'neutral', recentTopics: [], knownAnalogies: [],
+      conceptHistory: [],
+      cognitiveLoad: { level: 'normal', signals: [] },
       rootGapChains: [],
       currentSessionDurationMinutes: 0,
       sessionGoal: '',
@@ -108,6 +119,131 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       outcomeAnalytics: null,
     };
   }
+}
+
+async function getLongitudinalConceptHistory(
+  userId: string,
+  options: {
+    topic?: string;
+    subject?: string;
+    weakConcepts: Array<{ name: string; subject: string; chapter: string; mastery: string }>;
+    client: any;
+  }
+): Promise<Array<{
+  conceptId?: string | null;
+  conceptName: string;
+  subject: string;
+  chapter: string;
+  lastSeenAt: string;
+  outcome: string;
+  source: string;
+}>> {
+  try {
+    const supabase = options.client;
+    const targetSubject = options.subject || options.weakConcepts[0]?.subject;
+    const targetTopic = options.topic || options.weakConcepts[0]?.chapter || options.weakConcepts[0]?.name;
+
+    let conceptQuery = supabase
+      .from('concepts')
+      .select('id, name, subject, chapter, mastery, updated_at')
+      .eq('user_id', userId)
+      .limit(8);
+
+    if (targetSubject) conceptQuery = conceptQuery.eq('subject', targetSubject);
+    if (targetTopic) conceptQuery = conceptQuery.or(`chapter.ilike.%${targetTopic}%,name.ilike.%${targetTopic}%`);
+
+    const { data: concepts } = await conceptQuery;
+    const conceptRows = concepts || [];
+    if (!conceptRows.length) return [];
+
+    const conceptById = new Map(conceptRows.map((concept: any) => [concept.id, concept]));
+    const conceptIds = conceptRows.map((concept: any) => concept.id).filter(Boolean);
+    const chapters = Array.from(new Set(conceptRows.map((concept: any) => concept.chapter).filter(Boolean)));
+
+    const [eventsRes, sessionsRes] = await Promise.all([
+      supabase
+        .from('mastery_events')
+        .select('concept_id, evidence, evidence_type, source, weight, created_at')
+        .eq('user_id', userId)
+        .in('concept_id', conceptIds)
+        .order('created_at', { ascending: false })
+        .limit(8),
+      chapters.length
+        ? supabase
+            .from('study_sessions')
+            .select('subject, chapter, concept_name, understood, gap_found, completed_at, created_at, session_type')
+            .eq('user_id', userId)
+            .in('chapter', chapters)
+            .order('created_at', { ascending: false })
+            .limit(5)
+        : Promise.resolve({ data: [] }),
+    ]);
+
+    const history: Array<{
+      conceptId?: string | null;
+      conceptName: string;
+      subject: string;
+      chapter: string;
+      lastSeenAt: string;
+      outcome: string;
+      source: string;
+    }> = [];
+
+    for (const event of eventsRes.data || []) {
+      const concept = conceptById.get(event.concept_id);
+      if (!concept) continue;
+      const weight = Number(event.weight ?? 0);
+      history.push({
+        conceptId: event.concept_id,
+        conceptName: concept.name,
+        subject: concept.subject,
+        chapter: concept.chapter,
+        lastSeenAt: event.created_at,
+        outcome: event.evidence || (weight < 0 ? 'student struggled here' : 'student showed understanding here'),
+        source: event.source || event.evidence_type || 'mastery_event',
+      });
+    }
+
+    for (const session of sessionsRes.data || []) {
+      history.push({
+        conceptName: session.concept_name || session.chapter,
+        subject: session.subject,
+        chapter: session.chapter,
+        lastSeenAt: session.completed_at || session.created_at,
+        outcome: session.understood === false
+          ? `session surfaced gap${session.gap_found ? `: ${session.gap_found}` : ''}`
+          : 'session completed with understanding signal',
+        source: session.session_type || 'study_session',
+      });
+    }
+
+    return history
+      .sort((a, b) => new Date(b.lastSeenAt).getTime() - new Date(a.lastSeenAt).getTime())
+      .slice(0, 6);
+  } catch (err) {
+    logger.warn('[MIND] longitudinal concept history unavailable', { userId, err });
+    return [];
+  }
+}
+
+function deriveCognitiveLoadSignal(learnerState: Awaited<ReturnType<typeof getLearnerStateSnapshot>>): MINDContext['cognitiveLoad'] {
+  const signals: string[] = [];
+  const emotionalState = learnerState.profile.mindStateSignal;
+
+  if (['overwhelmed', 'burnt_out', 'frustrated', 'anxious', 'stressed'].includes(emotionalState)) {
+    signals.push(`Current MIND state is ${emotionalState}.`);
+  }
+  if (learnerState.memory.dueCount >= 40) {
+    signals.push(`${learnerState.memory.dueCount} revision cards are due.`);
+  }
+  if (learnerState.atlas.weakConcepts.length >= 5) {
+    signals.push('Multiple weak ATLAS concepts are active.');
+  }
+
+  return {
+    level: signals.length >= 2 || ['overwhelmed', 'burnt_out'].includes(emotionalState) ? 'high' : 'normal',
+    signals,
+  };
 }
 
 /**

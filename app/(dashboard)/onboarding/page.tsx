@@ -1,6 +1,12 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
+import {
+  generateDay1Plan,
+  seedInitialCards,
+  seedOnboardingKnowledgeMap,
+} from '@/lib/actions/onboarding';
+import { logger } from '@/lib/utils/logger';
 
 async function completeOnboarding(formData: FormData) {
   'use server';
@@ -41,6 +47,20 @@ async function completeOnboarding(formData: FormData) {
     throw new Error(`Failed to complete onboarding: ${error.message}`);
   }
 
+  const seedResult = await seedOnboardingKnowledgeMap(user.id, examType, subjects)
+    .catch((err) => {
+      logger.warn('Onboarding ATLAS seed failed', { userId: user.id, err });
+      return { skeletonCreated: 0, expansionQueued: 0 };
+    });
+
+  await generateDay1Plan(user.id, examType).catch((err) => {
+    logger.warn('Onboarding day-1 plan generation failed', { userId: user.id, err });
+  });
+
+  await seedInitialCards(user.id, { maxConcepts: 3, cardsPerConcept: 2 }).catch((err) => {
+    logger.warn('Onboarding starter card generation failed', { userId: user.id, err });
+  });
+
   const cookieStore = await cookies();
   cookieStore.set('_ob', '1', {
     httpOnly: true,
@@ -49,7 +69,7 @@ async function completeOnboarding(formData: FormData) {
     path: '/',
   });
 
-  redirect('/chat');
+  redirect(`/dashboard?magic=true&firstTime=true&seeded=${seedResult.skeletonCreated}`);
 }
 
 export default async function OnboardingPage() {

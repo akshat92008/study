@@ -21,6 +21,7 @@ import { syncStudentModel } from '@/lib/engines/inference-engine';
 import { ChatMemoryService } from '@/lib/services/chatMemoryService';
 import { EpisodicMemoryService } from '@/lib/services/episodic-memory.service';
 import { captureSentryException } from '@/lib/telemetry/sentry-runtime';
+import { publishTutorProgressEvents } from '@/lib/mind/tutor-completion';
 
 export interface ChatSideEffectsInput {
   supabase: SupabaseClient;
@@ -144,7 +145,7 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
     captureSentryException(err, { tags: { context: 'emotion_state_update' } });
   }
 
-  // 5. Downstream Event Derivation (MIND_TUTOR_COMPLETED) — unchanged
+  // 5. Downstream Event Derivation (MIND_TUTOR_COMPLETED + concept expansion)
   try {
     const significantModelSignal =
       emotion && emotion !== 'neutral' ||
@@ -169,37 +170,20 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
       );
     }
 
-    const sessionSubject = mindContext?.currentTopic?.subject || mindContext?.weakConcepts?.[0]?.subject;
-    const sessionChapter = mindContext?.currentTopic?.chapter || mindContext?.weakConcepts?.[0]?.chapter;
-
-    if (sessionSubject && sessionChapter && sessionSubject !== 'General') {
-      const messageCount = history?.length || 1;
-      const estimatedMinutes = Math.max(5, Math.round(messageCount * 1.5));
-      const isSessionComplete = sessionTurnsCount
-        ? sessionTurnsCount >= 6
-        : history && history.length >= 10;
-
-      const { EventDispatcher } = await import('@/lib/events/orchestrator');
-      await EventDispatcher.publish({
-        user_id: userId,
-        type: 'MIND_TUTOR_COMPLETED',
-        data: {
-          conceptId: null,
-          subject: sessionSubject,
-          chapter: sessionChapter,
-          durationMinutes: estimatedMinutes,
-          messageCount,
-          sessionType: mindContext?.sessionType || 'chat',
-          history: (history || []).slice(-6),
-          latestMessage: message,
-          latestResponse: fullResponse,
-          isSessionComplete,
-          intent: intent.intent,
-        },
-        metadata: { source: 'chat' },
-        idempotency_key: `session:${userId}:${sessionSubject}:${sessionChapter}:${new Date().toISOString().slice(0, 16)}`,
-      });
-    }
+    await publishTutorProgressEvents({
+      userId,
+      sessionId,
+      message,
+      fullResponse,
+      history,
+      sessionTurnsCount,
+      mindContext,
+      intent,
+      emotion,
+      sourceType: source_type || 'global_chat',
+      assistantMessageId: assistant_message_id,
+      userMessageId: user_message_id,
+    });
   } catch (err) {
     captureSentryException(err, { tags: { context: 'event_publishing' } });
   }

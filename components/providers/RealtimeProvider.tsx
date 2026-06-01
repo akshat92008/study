@@ -45,13 +45,15 @@ export function RealtimeProvider({ children }: { children: React.ReactNode }) {
         .on(
           'postgres_changes',
           {
-            event: 'INSERT',
+            event: '*',
             schema: 'public',
             table: 'event_queue',
             filter: `user_id=eq.${user.id}`,
           },
           (payload) => {
-            const { type } = payload.new;
+            const row = payload.new as any;
+            if (!row) return;
+            const { type, status } = row;
             
             // Handle different event types dynamically
             switch (type) {
@@ -84,6 +86,10 @@ export function RealtimeProvider({ children }: { children: React.ReactNode }) {
                 // For unhandled events, debounce to grab latest data safely
                 debouncedRefresh();
                 break;
+            }
+
+            if (status === 'COMPLETED' || status === 'PARTIAL_FAILED') {
+              debouncedRefresh();
             }
           }
         )
