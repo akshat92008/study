@@ -7,7 +7,7 @@ const command = vi.fn();
 vi.mock('@/lib/supabase/admin', () => ({
   createAdminClient: vi.fn(() => ({
     rpc: vi.fn(async () => ({
-      data: ['atlas_engine', 'memory_engine', 'command_engine'].map((consumer_name, index) => ({
+      data: ['atlas_engine', 'memory_engine'].map((consumer_name, index) => ({
         lock_id: `lock-${index}`,
         event_id: 'event-session-1',
         consumer_name,
@@ -81,14 +81,14 @@ describe('MVP core loop event routing', () => {
     memory.mockReset();
   });
 
-  it('routes a completed session to ATLAS, MEMORY, and COMMAND', async () => {
+  it('routes a completed session to ATLAS and MEMORY', async () => {
     const { EventWorkerService } = await import('@/lib/events/worker');
 
-    const processed = await EventWorkerService.processBatch(3, 5);
+    const processed = await EventWorkerService.processBatch(2, 5);
 
-    expect(processed).toBe(3);
+    expect(processed).toBe(2);
     expect(atlas).toHaveBeenCalledWith('user-1', expect.objectContaining({ gapFound: 'Acceleration definition' }));
     expect(memory).toHaveBeenCalledWith('user-1', expect.objectContaining({ gapFound: 'Acceleration definition' }));
-    expect(command).toHaveBeenCalledWith('user-1', expect.objectContaining({ gapFound: 'Acceleration definition' }));
+    expect(command).not.toHaveBeenCalled();
   });
 });

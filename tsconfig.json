@@ -67,6 +67,7 @@
     "tests",
     "__tests__",
     "scripts",
-    "*.config.ts"
+    "*.config.ts",
+    "module5-session-card-hardening"
   ]
 }

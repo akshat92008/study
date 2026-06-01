@@ -341,13 +341,7 @@ export class EventWorkerService {
         }
         break;
       case 'command_engine':
-        if (event.type === 'AUTOPSY_MOCK_PROCESSED') {
-          await CommandConsumer.handleAutopsyProcessed(event.user_id, payload, event.data);
-          return { status: 'HANDLED' };
-        } else if (event.type === 'STUDY_SESSION_COMPLETED' || event.type === 'MIND_TUTOR_COMPLETED') {
-          await CommandConsumer.handleStudySessionCompleted(event.user_id, event.data);
-          return { status: 'HANDLED' };
-        } else if (event.type === 'STUDENT_MODEL_SYNC_REQUESTED') {
+        if (event.type === 'STUDENT_MODEL_SYNC_REQUESTED') {
           if (payload.reason !== 'daily_synthesis') {
             return { status: 'SKIPPED_INTENTIONALLY', reason: 'COMMAND only handles daily synthesis sync requests' };
           }

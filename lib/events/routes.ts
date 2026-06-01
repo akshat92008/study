@@ -17,19 +17,16 @@ export const EVENT_CONSUMER_MATRIX = {
   AUTOPSY_MOCK_PROCESSED: [
     'atlas_engine',
     'memory_engine',
-    'command_engine',
     'learning_state_engine',
   ],
   STUDY_SESSION_COMPLETED: [
     'atlas_engine',
     'memory_engine',
-    'command_engine',
     'learning_state_engine',
   ],
   MIND_TUTOR_COMPLETED: [
     'atlas_engine',
     'memory_engine',
-    'command_engine',
     'learning_state_engine',
   ],
   MEMORY_CARD_REVIEWED: ['learning_state_engine', 'atlas_engine'],

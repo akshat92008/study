@@ -25,6 +25,7 @@ const MVP_DISABLED_ROUTES = [
   "/api/goals",
   "/api/onboarding",
   "/api/sessions/today",
+  "/api/pulse",
 ];
 
 export async function middleware(request: NextRequest) {

@@ -90,6 +90,8 @@ export async function createAutopsyJob(input: CreateAutopsyJobInput): Promise<Au
       exam_type: input.examType,
       idempotency_key: idempotencyKey,
       payload: {
+        // TODO(production): Consider migrating fileData to Supabase Storage
+        // instead of JSONB base64 to reduce row size, despite 20MB cap.
         fileData: input.fileData,
         customScoring: input.customScoring ?? null,
       },
