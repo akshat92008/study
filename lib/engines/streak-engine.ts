@@ -6,12 +6,12 @@ import { logger } from '@/lib/utils/logger';
  * Call this from both session-close route and daily-synthesis cron.
  * Returns the new streak value.
  */
-export async function computeAndUpdateStreak(userId: string): Promise<number> {
-  const supabase = await createClient();
+export async function computeAndUpdateStreak(userId: string, client?: any): Promise<number> {
+  const supabase = client ?? (await createClient());
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('streak_days')
+    .select('streak_days, last_active_at')
     .eq('id', userId)
     .single();
 
@@ -20,27 +20,18 @@ export async function computeAndUpdateStreak(userId: string): Promise<number> {
   const today = new Date().toISOString().split('T')[0];
   const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
 
-  const { data: latestSession } = await supabase
-    .from('study_sessions')
-    .select('ended_at, started_at')
-    .eq('user_id', userId)
-    .order('ended_at', { ascending: false, nullsFirst: false })
-    .limit(1)
-    .maybeSingle();
-
-  const lastStudy = latestSession?.ended_at || latestSession?.started_at;
-  const lastStudyDate = lastStudy ? String(lastStudy).split('T')[0] : null;
+  const lastActiveDate = profile.last_active_at ? String(profile.last_active_at).split('T')[0] : null;
 
   let newStreak: number;
 
-  if (lastStudyDate === today) {
-    // Already studied today — don't increment again
-    newStreak = profile.streak_days || 1;
-  } else if (lastStudyDate === yesterday) {
-    // Studied yesterday — continue streak
+  if (lastActiveDate === today) {
+    // Already active today — don't increment again
+    newStreak = Math.max(profile.streak_days || 1, 1);
+  } else if (lastActiveDate === yesterday) {
+    // Active yesterday — continue streak
     newStreak = (profile.streak_days || 0) + 1;
   } else {
-    // Gap in studying — reset
+    // Gap in activity — reset
     newStreak = 1;
   }
 
@@ -66,27 +57,16 @@ export async function resetStreakIfInactive(userId: string): Promise<void> {
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('streak_days')
+    .select('streak_days, last_active_at')
     .eq('id', userId)
     .single();
 
-  if (!profile) return;
-
-  const { data: latestSession } = await supabase
-    .from('study_sessions')
-    .select('ended_at, started_at')
-    .eq('user_id', userId)
-    .order('ended_at', { ascending: false, nullsFirst: false })
-    .limit(1)
-    .maybeSingle();
-
-  const lastStudy = latestSession?.ended_at || latestSession?.started_at;
-  if (!lastStudy) return;
+  if (!profile || !profile.last_active_at) return;
 
   const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
-  const lastStudyDate = String(lastStudy).split('T')[0];
+  const lastActiveDate = String(profile.last_active_at).split('T')[0];
 
-  if (lastStudyDate < yesterday && (profile.streak_days || 0) > 0) {
+  if (lastActiveDate < yesterday && (profile.streak_days || 0) > 0) {
     await supabase
       .from('profiles')
       .update({ streak_days: 0, updated_at: new Date().toISOString() })

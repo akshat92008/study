@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import { resolveConcept } from '@/lib/engines/concept-resolver';
+import { computeAndUpdateStreak } from '@/lib/engines/streak-engine';
 import { logger } from '@/lib/utils/logger';
 
 export interface CompleteLearningSessionInput {
@@ -113,20 +114,24 @@ export async function completeLearningSession(
   }
 
   const sessionId = rpcResult.session_id;
+  
+  const streakChanged = rpcResult.streak_changed ?? false;
+  const newStreak = rpcResult.streak_days ?? 0;
+
   logger.info('Session completion persisted', {
     userId: input.userId,
     feature: 'session-completion',
     sessionId,
     conceptId,
     durationMs: Date.now() - startedAt,
-    streakChanged: Boolean(rpcResult.streak_changed),
+    streakChanged,
   });
 
   return {
     sessionId,
     conceptId,
-    streakDays: Number(rpcResult.streak_days ?? 0),
-    streakChanged: Boolean(rpcResult.streak_changed),
+    streakDays: newStreak,
+    streakChanged,
     subject,
     chapter,
     understood,
