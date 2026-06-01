@@ -13,6 +13,7 @@ import {
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { logger } from '@/lib/utils/logger';
 import { getPromptVersion } from '@/lib/ai/prompt-version';
+import { recordAgentAction } from '@/lib/agents/agent-runtime';
 
 export type AutopsyJobFileData =
   | { kind: 'text'; text: string }
@@ -207,6 +208,25 @@ export async function processAutopsyJob(userId: string, jobId: string): Promise<
       .eq('user_id', userId)
       .select('id, status, result_autopsy_id, error_message')
       .single();
+
+    if (result.needsReviewQuestions?.length) {
+      for (const q of result.needsReviewQuestions) {
+        await recordAgentAction({
+          userId,
+          agentName: 'autopsy_agent',
+          actionType: 'uncertain_autopsy_mistake',
+          targetType: 'autopsy',
+          targetId: result.autopsyId,
+          status: 'pending_approval',
+          approvalStatus: 'pending',
+          riskLevel: 'requires_approval',
+          confidence: q.ocrConfidence ? q.ocrConfidence / 100 : 0.5,
+          evidence: { questionNumber: q.questionNumber, subject: q.subject, chapter: q.chapter },
+          idempotencyKey: `autopsy_needs_review:${result.autopsyId}:${q.questionNumber}`,
+          client: supabase,
+        }).catch(err => logger.warn('Failed to record AUTOPSY action', err));
+      }
+    }
 
     logger.info('Autopsy job completed', { userId, jobId: job.id, autopsyId: result.autopsyId });
     return {

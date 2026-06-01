@@ -2,6 +2,7 @@ import { createAdminClient } from '@/lib/supabase/admin';
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/utils/logger';
 import { invalidateSessionCards } from '@/lib/services/session-card-cache';
+import { recordAgentAction } from '@/lib/agents/agent-runtime';
 
 export type MasterySource =
   | 'session_close'
@@ -138,14 +139,14 @@ export async function recomputeConceptMastery(
 
   const { data: concept, error: conceptErr } = await supabase
     .from('concepts')
-    .select('mastery')
+    .select('mastery, mastery_score')
     .eq('id', conceptId)
     .eq('user_id', userId)
     .maybeSingle();
 
   if (conceptErr || !concept) {
     logger.warn('recomputeConceptMastery: concept not found', { userId, conceptId });
-    return { oldMastery: null, newMastery: null, changed: false };
+    return { oldMastery: null, newMastery: null, changed: false, oldScore: 0, newScore: 0, delta: 0 };
   }
 
   const { data: events, error: eventsErr } = await supabase
@@ -158,7 +159,14 @@ export async function recomputeConceptMastery(
 
   if (eventsErr) {
     logger.warn('recomputeConceptMastery: failed to read evidence', { userId, conceptId, eventsErr });
-    return { oldMastery: concept.mastery as MasteryLevel, newMastery: concept.mastery as MasteryLevel, changed: false };
+    return { 
+      oldMastery: concept.mastery as MasteryLevel, 
+      newMastery: concept.mastery as MasteryLevel, 
+      changed: false,
+      oldScore: concept.mastery_score || 0,
+      newScore: concept.mastery_score || 0,
+      delta: 0
+    };
   }
 
   const weightedScore = (events || []).reduce((sum: number, event: any) => {
@@ -173,6 +181,8 @@ export async function recomputeConceptMastery(
   const forgettingProbability = Math.max(0, Math.min(1, 1 - confidence + (score < 25 ? 0.15 : 0)));
   const newMastery = masteryFromScore(score);
   const oldMastery = concept.mastery as MasteryLevel;
+  const oldScore = typeof concept.mastery_score === 'number' ? concept.mastery_score : LEVEL_SCORES[oldMastery];
+  const delta = score - oldScore;
 
   const { error: updateErr } = await supabase
     .from('concepts')
@@ -189,7 +199,7 @@ export async function recomputeConceptMastery(
 
   if (updateErr) {
     logger.error('recomputeConceptMastery: failed to materialize mastery', { updateErr });
-    return { oldMastery, newMastery: oldMastery, changed: false };
+    return { oldMastery, newMastery: oldMastery, changed: false, oldScore, newScore: oldScore, delta: 0 };
   }
 
   const changed = oldMastery !== newMastery;
@@ -197,7 +207,7 @@ export async function recomputeConceptMastery(
     await invalidateSessionCards(userId, supabase, 'concept_mastery_recomputed');
   }
 
-  return { oldMastery, newMastery, changed };
+  return { oldMastery, newMastery, changed, oldScore, newScore: score, delta };
 }
 
 export async function recordMasteryEvidence(params: {
@@ -212,7 +222,7 @@ export async function recordMasteryEvidence(params: {
   confidence?: number;
   useAdminClient?: boolean;
   client?: any;
-}): Promise<{ oldMastery: MasteryLevel | null; newMastery: MasteryLevel | null; changed: boolean }> {
+}): Promise<{ oldMastery: MasteryLevel | null; newMastery: MasteryLevel | null; changed: boolean; oldScore?: number; newScore?: number; delta?: number }> {
   const supabase = await getSupabase(params.useAdminClient, params.client);
 
   const { data: concept } = await supabase
@@ -258,6 +268,26 @@ export async function recordMasteryEvidence(params: {
     useAdminClient: params.useAdminClient,
     client: supabase,
   });
+
+  const idempotencyKey = `mastery_ledger:${params.userId}:${params.conceptId}:${params.sourceId ?? Date.now()}`;
+  await supabase.from('mastery_evidence_ledger').insert({
+    user_id: params.userId,
+    concept_id: params.conceptId,
+    source_type: params.source,
+    source_id: params.sourceId ?? null,
+    source_event_id: params.sourceEventId ?? null,
+    previous_mastery: result.oldScore,
+    delta: result.delta,
+    new_mastery: result.newScore,
+    confidence: params.confidence ?? 0.5,
+    evidence: {
+      type: params.evidenceType,
+      text: params.evidence ?? null,
+      weight,
+    },
+    reason: params.evidence ?? null,
+    idempotency_key: idempotencyKey,
+  }).catch((err: any) => logger.warn('Failed to insert mastery_evidence_ledger', err));
 
   logger.info('Mastery evidence recorded', {
     userId: params.userId,
@@ -326,6 +356,21 @@ export async function applyMasteryUpdate(params: {
     useAdminClient: params.useAdminClient,
     client: supabase,
   });
+
+  if (result.changed) {
+    await recordAgentAction({
+      userId: params.userId,
+      agentName: 'atlas_agent',
+      actionType: 'mastery_updated',
+      targetType: 'concept',
+      targetId: params.conceptId,
+      status: 'applied',
+      confidence: 1.0,
+      evidence: { oldMastery, newMastery: params.newMastery, source: params.source, evidence: params.evidence },
+      idempotencyKey: `mastery_update_action:${params.userId}:${params.conceptId}:${params.sourceId ?? Date.now()}`,
+      client: supabase,
+    }).catch(err => logger.warn('Failed to record ATLAS mastery action', err));
+  }
 
   return { oldMastery, changed: result.changed };
 }

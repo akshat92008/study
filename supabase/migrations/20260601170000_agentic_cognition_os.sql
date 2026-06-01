@@ -127,9 +127,16 @@ create table if not exists public.material_concept_links (
   confidence numeric not null default 0.5,
   evidence jsonb not null default '{}'::jsonb,
   source text not null default 'rag_agent',
-  created_at timestamptz not null default now(),
-  unique(user_id, material_id, chunk_id, concept_id)
+  created_at timestamptz not null default now()
 );
+
+create unique index if not exists idx_material_concept_links_chunk_null 
+  on public.material_concept_links(user_id, material_id, concept_id) 
+  where chunk_id is null;
+
+create unique index if not exists idx_material_concept_links_chunk_not_null 
+  on public.material_concept_links(user_id, material_id, chunk_id, concept_id) 
+  where chunk_id is not null;
 
 alter table public.study_material_chunks
   add column if not exists page_number integer null,

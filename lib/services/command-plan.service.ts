@@ -1,6 +1,7 @@
 import { createAdminClient } from '@/lib/supabase/admin';
 import { OutcomeAnalyticsService, type OutcomeAnalyticsSummary } from '@/lib/services/outcome-analytics.service';
 import { logger } from '@/lib/utils/logger';
+import { recordAgentAction } from '@/lib/agents/agent-runtime';
 
 type SupabaseLike = ReturnType<typeof createAdminClient> | any;
 
@@ -88,6 +89,20 @@ export async function ensureCommandPlanForDate(input: {
     const persistedTasks = (data ?? tasks) as CommandPlanTask[];
     const briefing = buildMorningBriefing(state, persistedTasks, input.date);
     await persistDailyPlan(supabase, input.userId, input.date, persistedTasks, briefing, state, true);
+    
+    await recordAgentAction({
+      userId: input.userId,
+      agentName: 'planner_agent',
+      actionType: 'plan_created',
+      targetType: 'daily_plan',
+      targetId: input.date,
+      status: 'applied',
+      confidence: 1.0,
+      evidence: { tasks: persistedTasks.length, briefing },
+      idempotencyKey: `planner_action:${input.userId}:${input.date}`,
+      client: supabase,
+    }).catch(err => logger.warn('Failed to record PLANNER action', err));
+
     return {
       date: input.date,
       tasks: persistedTasks,

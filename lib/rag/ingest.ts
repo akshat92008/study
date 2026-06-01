@@ -6,6 +6,7 @@ import { embedRagText } from '@/lib/rag/embedding';
 import { sha256Hex } from '@/lib/rag/hash';
 import { logger } from '@/lib/utils/logger';
 import { EventDispatcher } from '@/lib/events/orchestrator';
+import { recordAgentAction } from '@/lib/agents/agent-runtime';
 
 export type IngestStudyMaterialInput = {
   materialId: string;
@@ -110,6 +111,20 @@ export async function ingestStudyMaterial(input: IngestStudyMaterialInput) {
 
     if (updateError) throw updateError;
     await completeRagJob(job?.id, input.userId, { chunks: chunks.length, pageCount: extracted.pageCount });
+    
+    await recordAgentAction({
+      userId: input.userId,
+      agentName: 'rag_agent',
+      actionType: 'material_ingested',
+      targetType: 'study_material',
+      targetId: input.materialId,
+      status: 'applied',
+      confidence: 1.0,
+      evidence: { chunks: chunks.length, pageCount: extracted.pageCount },
+      idempotencyKey: `rag_ingestion_action:${input.userId}:${input.materialId}`,
+      client: supabase,
+    }).catch(err => logger.warn('Failed to record RAG ingestion action', err));
+
     await EventDispatcher.publish({
       user_id: input.userId,
       type: 'MATERIAL_INGESTED',

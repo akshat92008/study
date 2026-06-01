@@ -3,7 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { getRagConfig, SUPPORTED_MATERIAL_MIME_TYPES } from '@/lib/rag/config';
-import { materialContentHash, ingestStudyMaterial } from '@/lib/rag/ingest';
+import { materialContentHash } from '@/lib/rag/ingest';
 import { validateMagicBytesArray } from '@/lib/utils/magicBytes';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 
@@ -144,21 +144,24 @@ export async function POST(req: NextRequest) {
       idempotency_key: `material_uploaded:${material.id}`,
     }).catch(() => {});
 
-    const ingestResult = await ingestStudyMaterial({
-      materialId: material.id,
-      userId: user.id,
-      buffer,
-      mimeType,
-    });
+    await supabase
+      .from('rag_ingestion_jobs')
+      .insert({
+        user_id: user.id,
+        material_id: material.id,
+        status: 'queued',
+        idempotency_key: `rag_ingestion:${user.id}:${material.id}`,
+        metadata: { mimeType },
+      });
 
     return NextResponse.json({
       material: {
         ...material,
-        status: ingestResult.status,
+        status: 'queued',
       },
-      chunksProcessed: ingestResult.chunks,
+      chunksProcessed: 0,
       duplicate: false,
-    }, { status: ingestResult.status === 'ready' ? 201 : 202, headers: { 'x-request-id': requestId } });
+    }, { status: 202, headers: { 'x-request-id': requestId } });
   } catch (error) {
     return unexpectedApiErrorResponse(req, error, 'materials_upload_unhandled', 'Unable to upload study material.');
   }

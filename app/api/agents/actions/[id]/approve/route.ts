@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { approveAgentAction } from '@/lib/agents/agent-runtime';
+import { EventDispatcher } from '@/lib/events/orchestrator';
 
 type RouteContext = { params: Promise<{ id: string }> | { id: string } };
 
@@ -30,7 +31,18 @@ export async function POST(req: NextRequest, context: RouteContext) {
 
     const params = await context.params;
     const body = await req.json().catch(() => ({}));
-    const action = await approveAgentAction(params.id, user.id, typeof body.reason === 'string' ? body.reason : undefined);
+    const action = await approveAgentAction(params.id, user.id, typeof body.reason === 'string' ? body.reason : undefined, { client: supabase });
+    
+    if (action.action_type === 'uncertain_autopsy_mistake') {
+      await EventDispatcher.publish({
+        user_id: user.id,
+        type: 'AUTOPSY_MISTAKE_APPROVED',
+        data: { actionId: action.id, targetId: action.target_id, evidence: action.evidence },
+        metadata: { source: 'agent_approval_api' },
+        idempotency_key: `autopsy_mistake_approved:${action.id}`
+      }).catch(err => console.warn('Failed to publish AUTOPSY_MISTAKE_APPROVED', err));
+    }
+
     return NextResponse.json({ action }, { headers: { 'x-request-id': requestId } });
   } catch (error) {
     return unexpectedApiErrorResponse(req, error, 'agent-action-approve', 'Unable to approve agent action.');

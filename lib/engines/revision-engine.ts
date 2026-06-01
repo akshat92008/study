@@ -11,6 +11,7 @@ import { resolveConcept } from '@/lib/engines/concept-resolver';
 import { recordMasteryEvidence } from '@/lib/engines/mastery-updater';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { isVerifiedAutopsyMistake } from '@/lib/events/autopsy-evidence';
+import { recordAgentAction } from '@/lib/agents/agent-runtime';
 
 // Custom FSRS-5 Configuration and Implementation
 const FSRS_WEIGHTS = [
@@ -537,6 +538,20 @@ export async function createSingleCard(
   await invalidateSessionCards(userId, supabase, 'revision_card_created').catch(err =>
     logger.warn('Failed to invalidate session cards after single card', err)
   );
+
+  await recordAgentAction({
+    userId,
+    agentName: 'memory_agent',
+    actionType: 'memory_card_created',
+    targetType: 'revision_card',
+    targetId: data.id,
+    status: 'applied',
+    confidence: source?.confidence ?? 1.0,
+    evidence: { subject, chapter, front: normalizedFront, sourceType: source?.sourceType },
+    idempotencyKey: `memory_card_creation:${userId}:${data.id}`,
+    client: supabase as any,
+  }).catch(err => logger.warn('Failed to record MEMORY card action', err));
+
   return data;
 }
 
