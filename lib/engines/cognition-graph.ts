@@ -520,9 +520,36 @@ export class AtlasConsumer {
 
     // Time spent per item, default to ~15 seconds for MCQ, ~10s for flashcard
     const timeSpentPerItem = setType === 'mcq' ? 15 : 10;
+    const supabase = createAdminClient();
 
     for (const item of items) {
-      if (item.conceptId) {
+      let conceptId = item.conceptId;
+      if (!conceptId && item.practiceItemId && item.conceptName) {
+        try {
+          const { data: practiceItem } = await supabase
+            .from('practice_items')
+            .select('subject, chapter, topic, question')
+            .eq('id', item.practiceItemId)
+            .eq('user_id', userId)
+            .maybeSingle();
+
+          const resolution = await resolveConcept({
+            userId,
+            subject: practiceItem?.subject || null,
+            chapter: practiceItem?.chapter || null,
+            topic: item.conceptName,
+            questionText: practiceItem?.question || null,
+            sourceType: 'ingest',
+            confidence: 0.93,
+            client: supabase,
+          });
+          conceptId = resolution.conceptId;
+        } catch (err) {
+          logger.warn('AtlasConsumer: could not resolve practice concept by name', { userId, item, err });
+        }
+      }
+
+      if (conceptId) {
         // For MCQ, we use isCorrect. For flashcard, we use confidence.
         // If confidence is 'knew' or 'easy', we count it as correct.
         let correct = false;
@@ -532,7 +559,7 @@ export class AtlasConsumer {
           correct = ['knew', 'easy'].includes(item.confidence);
         }
 
-        await updateConceptState(item.conceptId, correct, timeSpentPerItem, 1);
+        await updateConceptState(conceptId, correct, timeSpentPerItem, 1);
       }
     }
     

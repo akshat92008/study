@@ -363,6 +363,7 @@ export async function POST(req: NextRequest) {
         currentSessionDurationMinutes: 0,
         sessionGoal: '',
         ragChunks: [],
+        ragContext: null,
         studentModel: null,
         outcomeAnalytics: null,
       }))
@@ -728,6 +729,8 @@ export async function POST(req: NextRequest) {
             weak_concept_count: mindContext?.weakConcepts?.length || 0,
             due_card_count: mindContext?.overdueCardsCount || 0,
             mistake_count: mindContext?.recentMistakes?.length || 0,
+            rag_grounded: Boolean(mindContext?.ragContext?.grounded),
+            rag_chunk_count: mindContext?.ragContext?.chunks?.length || 0,
           };
           metadataPayload = { ...(metadataPayload || {}), contextTrace };
 

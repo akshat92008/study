@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server';
 import { getEmbedding } from '@/lib/ai/provider-client';
 import { SupabaseClient } from '@supabase/supabase-js';
+import { retrieveRagContext } from '@/lib/rag/retrieval';
 
 export function chunkText(text: string, chunkSize = 400, overlapSize = 80): string[] {
   const words = text.split(/\s+/).filter(Boolean);
@@ -77,29 +78,35 @@ export async function searchPersonalKnowledge(userId: string, query: string, thr
 export class RAGEngine {
   constructor(private supabase: SupabaseClient) {}
 
-  async search({ userId, query, limit = 4, minSimilarity = 0.72 }: { userId: string, query: string, limit?: number, minSimilarity?: number }) {
-    const queryEmbedding = await getEmbedding(query, {
-      userId,
-      route: 'rag-search',
+  async retrieve(input: {
+    userId: string;
+    query: string;
+    materialIds?: string[];
+    subject?: string | null;
+    chapter?: string | null;
+  }) {
+    return retrieveRagContext({
+      supabase: this.supabase,
+      userId: input.userId,
+      query: input.query,
+      materialIds: input.materialIds,
+      subject: input.subject,
+      chapter: input.chapter,
     });
-    if (!queryEmbedding || !Array.isArray(queryEmbedding) || queryEmbedding.length === 0 || typeof queryEmbedding[0] !== 'number') return [];
+  }
 
-    const { data, error } = await this.supabase.rpc('match_material_chunks', {
-      query_embedding: `[${queryEmbedding.join(',')}]`,
-      match_threshold: minSimilarity,
-      match_count: limit,
-      p_user_id: userId
-    });
-
-    if (error) {
-      console.error('Vector search error:', error);
-      return [];
-    }
-
-    return (data || []).map((row: any) => ({
-      content: row.chunk_text,
-      similarity: row.similarity,
-      sourceTitle: row.material_title || 'Uploaded Document'
+  async search({ userId, query, limit = 4 }: { userId: string, query: string, limit?: number, minSimilarity?: number }) {
+    const context = await this.retrieve({ userId, query });
+    return context.chunks.slice(0, limit).map((chunk) => ({
+      id: chunk.id,
+      materialId: chunk.materialId,
+      content: chunk.text,
+      similarity: chunk.score,
+      sourceTitle: chunk.materialTitle,
+      citation: chunk.citation,
+      pageStart: chunk.pageStart,
+      pageEnd: chunk.pageEnd,
+      heading: chunk.heading,
     }));
   }
 }

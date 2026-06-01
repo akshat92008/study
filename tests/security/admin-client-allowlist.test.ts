@@ -32,6 +32,7 @@ const allowedRuntimeFiles = new Set([
   'lib/events/worker-route.ts',
   'lib/events/worker.ts',
   'lib/graph/knowledgeGraph.ts',
+  'lib/rag/ingest.ts',
   'lib/services/ai-usage.service.ts',
   'lib/services/autopsy-jobs.ts',
   'lib/services/command-plan.service.ts',

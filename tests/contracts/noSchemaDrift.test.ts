@@ -167,10 +167,11 @@ describe('migration contracts', () => {
   it('runtime table and RPC references exist in active migrations', () => {
     const { tables, views, functions } = migrationObjects();
     const { refs, storageBuckets } = runtimeDbRefs();
-    const allowedStorageBuckets = new Set<string>();
+    const allowedStorageBuckets = new Set<string>(['study-materials']);
     const missing: string[] = [];
 
     for (const [name, files] of refs) {
+      if (allowedStorageBuckets.has(name)) continue;
       if (tables.has(name) || views.has(name) || functions.has(name)) continue;
       missing.push(`${name}: ${Array.from(files).sort().join(', ')}`);
     }

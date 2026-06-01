@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { z } from 'zod';
 import { apiErrorResponse, getRequestId } from '@/lib/api/errors';
 import { EventDispatcher } from '@/lib/events/orchestrator';
+import { areMcqAnswersEquivalent } from '@/lib/practice/answer-normalization';
 
 const AttemptsSchema = z.object({
   messageId: z.string().optional(),
@@ -51,7 +52,7 @@ export async function POST(req: NextRequest) {
 
     // Fetch items to check correctness
     const positions = answers.map(a => a.position);
-    const { data: items } = await supabase.from('practice_items').select('id, correct_answer, concept_id, concept_name, position').eq('practice_set_id', set.id).in('position', positions);
+    const { data: items } = await supabase.from('practice_items').select('id, correct_answer, options, concept_id, concept_name, position').eq('practice_set_id', set.id).in('position', positions);
     if (!items) {
       return apiErrorResponse('not_found', { status: 404, message: 'Practice items not found', requestId });
     }
@@ -64,10 +65,12 @@ export async function POST(req: NextRequest) {
 
     const attemptsToInsert = answers.map(ans => {
       const item = items.find(i => i.position === ans.position);
-      const isCorrect = item ? (item.correct_answer === ans.answer) : false;
+      const options = Array.isArray(item?.options) ? item.options : [];
+      const isCorrect = item ? areMcqAnswersEquivalent(ans.answer, item.correct_answer, options) : false;
       
       if (isCorrect) correctCount++;
       else {
+        wrongCount++;
         if (item?.concept_id && !wrongConceptIds.includes(item.concept_id)) wrongConceptIds.push(item.concept_id);
         if (item?.concept_name && !wrongConceptNames.includes(item.concept_name)) wrongConceptNames.push(item.concept_name);
       }

@@ -1,5 +1,7 @@
 // lib/ai/prompts/mind-prompt.ts
 
+import type { RagContext } from '@/lib/rag/retrieval';
+
 export interface MINDContext {
   profile: {
     name: string;
@@ -55,7 +57,16 @@ export interface MINDContext {
   rootGapChains: Array<{ rootConcept: string; gapChain: string[] }>;
   currentSessionDurationMinutes: number;
   sessionGoal: string;
-  ragChunks?: { content: string; similarity: number; sourceTitle: string }[];
+  ragChunks?: {
+    content: string;
+    similarity: number;
+    sourceTitle: string;
+    citation?: string;
+    pageStart?: number | null;
+    pageEnd?: number | null;
+    heading?: string | null;
+  }[];
+  ragContext?: RagContext | null;
   studentModel?: {
     learning_style?: string;
     strengths?: string[];
@@ -95,17 +106,45 @@ export function getEffectiveLearningStyle(
 }
 
 export function buildRagSection(
-  ragChunks?: { content: string; similarity: number; sourceTitle: string }[]
+  ragChunks?: {
+    content: string;
+    similarity: number;
+    sourceTitle: string;
+    citation?: string;
+    pageStart?: number | null;
+    pageEnd?: number | null;
+    heading?: string | null;
+  }[],
+  ragContext?: RagContext | null
 ): string {
+  if ((!ragChunks || !ragChunks.length) && ragContext?.mode === 'explicit') {
+    return `
+## UPLOADED STUDY MATERIAL STATUS
+The student explicitly asked for an answer from uploaded/NCERT/source material, but retrieval found no supporting chunks.
+Instruction: say clearly that you could not find enough evidence in their uploaded material. Then, if useful, give a separate general ${ragContext.warnings.length ? `answer and briefly note: ${ragContext.warnings.join(' ')}` : 'answer'} without pretending it is source-supported.
+
+---
+`;
+  }
+
   if (!ragChunks || !ragChunks.length) return '';
 
   const formatted = ragChunks
-    .map((c, i) => `[Source ${i + 1}: ${c.sourceTitle}]\n${c.content}`)
+    .map((c, i) => {
+      const label = c.citation || c.sourceTitle;
+      return `[Source ${i + 1}: ${label}]\n${c.content}`;
+    })
     .join('\n\n');
 
   return `
 ## RELEVANT STUDY MATERIAL (from student's uploaded notes)
-The following excerpts are from the student's own uploaded materials and are directly relevant to their current question. Prioritize grounding your explanation in this material before adding your own context:
+The following excerpts are from the student's own uploaded materials and are directly relevant to their current question. Prioritize grounding your explanation in this material before adding your own context.
+
+Citation rules:
+- Cite source-backed claims with compact brackets like [Source 1] or [NCERT Biology, p. 42].
+- Never invent citations or cite facts not supported by these excerpts.
+- If the user asked for NCERT/uploaded material and the evidence is weak, say what was not found before giving general context.
+- Use short quotes only when necessary; otherwise paraphrase.
 
 ${formatted}
 
@@ -237,7 +276,9 @@ function buildPrompt(ctx: MINDContext, semanticMemories: string[] = [], intent?:
     ? `\nCOGNITIVE LOAD SIGNAL: HIGH\n${ctx.cognitiveLoad.signals.map(signal => `- ${signal}`).join('\n')}\nAdapt by reducing step size, limiting simultaneous tasks, and ending with one concrete action.\n`
     : '';
 
-  const ragSection = !isGeneralChat ? buildRagSection(ctx.ragChunks) : '';
+  const ragSection = !isGeneralChat || ctx.ragContext?.mode === 'explicit'
+    ? buildRagSection(ctx.ragChunks, ctx.ragContext)
+    : '';
 
   const artifactBlock = `
 ═══════════════════════════════════════
@@ -375,6 +416,7 @@ You must proactively follow these personalization principles:
 - If the student asks for a full plan or today's plan: use the current session card as the main focus, expand it into 4-6 specific study blocks (with time estimates), include a practice questions target, include a revision/flashcard block, and include a mistake review step if relevant. Always give a first action. Do not repeat the same one-line target twice. If there is little or no evidence, provide a useful generic-but-exam-specific plan and give action; say evidence is thin at most once.
 - If the student asks for flashcards: generate 5-10 fresh practice flashcards immediately in concise Q/A format. Make them exam-level for ${ctx.profile.examType}. Do NOT refuse just because there are no due MEMORY cards. Mention weak/high-yield areas if possible. If there are no due cards, say at most once: "No saved cards are due, so these are fresh practice cards." Do not open revision queue and do not return only due-card count.
 - If the student asks for MCQs: generate ${ctx.profile.examType}-level MCQs. Include an answer key and short explanation. Use weak subtopics from ATLAS if available. Avoid trivial school-level questions unless they specifically ask for basics.
+- If uploaded study material is present in the prompt and the user asks for flashcards, MCQs, notes, a study guide, a comparison, or a summary from it, ground the generated artifact in those sources and include compact citations inside explanations or card backs.
 - If the student asks "what should I do now?", specifically instruct them based on today's session card, their overdue flashcards, or their recent mistakes.
 - If MEMORY has due cards, recommend starting there before new material when it is the best next action.
 - If the student mentions a mock test or mistake sheet, guide them to AUTOPSY so mistakes can update ATLAS, MEMORY, and the next mission.

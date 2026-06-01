@@ -6,6 +6,9 @@ export interface PracticeSetData {
   chatSessionId?: string;
   messageId?: string;
   fullResponse: string;
+  source?: 'mind' | 'rag';
+  sourceMaterialIds?: string[];
+  sourceChunkIds?: string[];
 }
 
 export class PracticeService {
@@ -32,9 +35,9 @@ export class PracticeService {
       const subject = attrs.subject;
       
       if (type === 'practice-test') {
-        await this.storePracticeTest(supabase, userId, chatSessionId, messageId, topic, subject, content);
+        await this.storePracticeTest(supabase, userId, chatSessionId, messageId, topic, subject, content, data);
       } else if (type === 'flashcard-set') {
-        await this.storeFlashcardSet(supabase, userId, chatSessionId, messageId, topic, subject, content);
+        await this.storeFlashcardSet(supabase, userId, chatSessionId, messageId, topic, subject, content, data);
       }
     }
   }
@@ -46,7 +49,8 @@ export class PracticeService {
     messageId: string | undefined, 
     topic: string, 
     subject: string | undefined, 
-    content: string
+    content: string,
+    artifactContext: PracticeSetData
   ) {
     // Check if it already exists for this messageId to prevent duplicates on retries
     if (messageId) {
@@ -72,7 +76,7 @@ export class PracticeService {
         topic,
         subject,
         set_type: 'mcq',
-        source: 'mind'
+        source: artifactContext.source || 'mind'
       })
       .select('id')
       .single();
@@ -90,6 +94,11 @@ export class PracticeService {
       options: q.options,
       correct_answer: q.answer,
       explanation: q.explanation,
+      subject,
+      chapter: topic,
+      topic,
+      source_material_id: artifactContext.sourceMaterialIds?.[0] ?? null,
+      source_chunk_ids: artifactContext.sourceChunkIds ?? null,
       position: idx + 1
     }));
 
@@ -106,7 +115,8 @@ export class PracticeService {
     messageId: string | undefined, 
     topic: string, 
     subject: string | undefined, 
-    content: string
+    content: string,
+    artifactContext: PracticeSetData
   ) {
     if (messageId) {
       const { data: existing } = await supabase
@@ -130,7 +140,7 @@ export class PracticeService {
         topic,
         subject,
         set_type: 'flashcard',
-        source: 'mind'
+        source: artifactContext.source || 'mind'
       })
       .select('id')
       .single();
@@ -145,6 +155,11 @@ export class PracticeService {
       user_id: userId,
       question: c.front,
       correct_answer: c.back,
+      subject,
+      chapter: topic,
+      topic,
+      source_material_id: artifactContext.sourceMaterialIds?.[0] ?? null,
+      source_chunk_ids: artifactContext.sourceChunkIds ?? null,
       position: idx + 1
     }));
 
@@ -161,7 +176,8 @@ export class PracticeService {
     blocks.forEach((block) => {
       if (!block.trim()) return;
       const lines = block.trim().split('\n');
-      let text = '', options: string[] = [], answer = '', explanation = '';
+      let text = '', answer = '', explanation = '';
+      const options: string[] = [];
 
       lines.forEach(line => {
         const l = line.trim();

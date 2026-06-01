@@ -9,7 +9,7 @@ const ReviewsSchema = z.object({
   practiceSetId: z.string().optional(),
   reviews: z.array(z.object({
     position: z.number().int().positive(),
-    confidence: z.enum(['easy', 'medium', 'hard', 'forgot', 'knew'])
+    confidence: z.enum(['easy', 'medium', 'hard', 'forgot', 'again', 'knew'])
   }))
 });
 

@@ -6,8 +6,8 @@
 - tests: PASS (188/188 passed)
 - build: PASS (Compiled successfully)
 - verify:db: PASS (All Database Smoke Tests Passed!)
-- latest migration: 20260601082600_fix_streak_rpc_event_type.sql
-- migration count: 54
+- latest migration: 20260601120000_source_material_rag.sql
+- migration count: 59
 - PULSE runtime: Excluded / absent
 - streak behavior: PASS (Updates correctly to 1)
 - autopsy ingest: PASS (Ingested successfully, mistakes linked)
@@ -25,6 +25,18 @@
 - STRIPE_WEBHOOK_SECRET (Stripe Webhook integration)
 - STRIPE_PRO_PRICE_ID (Stripe Pricing)
 
+## Study Material / RAG
+- Upload route: `POST /api/materials/upload`
+- List route: `GET /api/materials`
+- Detail/delete route: `GET|DELETE /api/materials/:id`
+- Query route: `POST /api/materials/query`
+- Reprocess route: `POST /api/materials/:id/reprocess`
+- Supported files: text PDFs, TXT, Markdown
+- Default limits: 20MB/file, 5 active files/user, 160 chunks/file, topK 5, max RAG context 10k chars
+- Normal text RAG does not require Gemini; it uses the existing router for embeddings/final answers and keyword fallback if embeddings are unavailable.
+- Scanned PDFs/images are OCR-limited while `RAG_ENABLE_OCR=false`.
+- See `PRIVATE_BETA_ENV_CHECKLIST.md` for RAG env vars.
+
 ## Deployment Steps
 - Vercel env setup
 - Supabase env setup
@@ -40,6 +52,7 @@
 - streak updates to 1
 - event worker processes
 - autopsy ingest
+- study material upload and cited MIND answer
 - verified mistake
 - ATLAS update
 - MEMORY card created

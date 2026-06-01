@@ -768,7 +768,7 @@ export class MemoryConsumer {
             );
             if (card) created++;
           }
-        } else if (setType === 'flashcard' && ['again', 'hard'].includes(item.confidence)) {
+        } else if (setType === 'flashcard' && ['again', 'forgot', 'hard'].includes(item.confidence)) {
           // Struggled with a flashcard -> ensure it's in their revision deck
           const { data: practiceItem } = await supabase
             .from('practice_items')

@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/utils/logger';
 import type { MINDContext } from '@/lib/ai/prompts/mind-prompt';
 import { RAGEngine } from './rag-engine';
+import type { RagContext } from '@/lib/rag/retrieval';
 import { getLearnerStateSnapshot } from '@/lib/learner-state/getLearnerState';
 import { OutcomeAnalyticsService } from '@/lib/services/outcome-analytics.service';
 
@@ -35,16 +36,34 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
     });
     const cognitiveLoad = deriveCognitiveLoadSignal(learnerState);
 
-    let ragChunks: { content: string; similarity: number; sourceTitle: string }[] = [];
+    let ragChunks: {
+      content: string;
+      similarity: number;
+      sourceTitle: string;
+      citation?: string;
+      pageStart?: number | null;
+      pageEnd?: number | null;
+      heading?: string | null;
+    }[] = [];
+    let ragContext: RagContext | null = null;
     if (message && message.trim().length > 15) {
       try {
         const ragEngine = new RAGEngine(supabase);
-        ragChunks = await ragEngine.search({
+        ragContext = await ragEngine.retrieve({
           userId,
           query: message,
-          limit: 2, // reduced from 4 to save tokens
-          minSimilarity: 0.72, // only include high-confidence chunks
+          subject,
+          chapter: topic,
         });
+        ragChunks = ragContext.chunks.slice(0, 5).map((chunk) => ({
+          content: chunk.text,
+          similarity: chunk.score,
+          sourceTitle: chunk.materialTitle,
+          citation: chunk.citation,
+          pageStart: chunk.pageStart,
+          pageEnd: chunk.pageEnd,
+          heading: chunk.heading,
+        }));
       } catch (err) {
         logger.warn('[MIND] RAG search failed, continuing without:', err);
       }
@@ -81,6 +100,7 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       currentSessionDurationMinutes: 0,
       sessionGoal: '',
       ragChunks,
+      ragContext,
       studentModel: learnerState.studentModel,
       outcomeAnalytics: outcomeSummary,
     };
@@ -116,6 +136,7 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       currentSessionDurationMinutes: 0,
       sessionGoal: '',
       ragChunks: [],
+      ragContext: null,
       studentModel: null,
       outcomeAnalytics: null,
     };

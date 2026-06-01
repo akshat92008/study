@@ -148,11 +148,15 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
 
   // 4.5. Practice Artifact Storage
   try {
+    const ragContext = mindContext?.ragContext;
     await PracticeService.extractAndStorePracticeArtifacts(supabase, {
       userId,
       chatSessionId: sessionId,
       messageId: assistant_message_id,
       fullResponse,
+      source: ragContext?.grounded ? 'rag' : 'mind',
+      sourceMaterialIds: ragContext?.materialIds ?? [],
+      sourceChunkIds: ragContext?.chunkIds ?? [],
     });
   } catch (err) {
     logger.warn('SideEffect: Practice artifact extraction failed', err);

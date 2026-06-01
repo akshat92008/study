@@ -1,0 +1,156 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { createClient } from '@/lib/supabase/server';
+import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
+import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
+import { getRagConfig, SUPPORTED_MATERIAL_MIME_TYPES } from '@/lib/rag/config';
+import { materialContentHash, ingestStudyMaterial } from '@/lib/rag/ingest';
+import { validateMagicBytesArray } from '@/lib/utils/magicBytes';
+
+function sanitizeFilename(value: string): string {
+  return value
+    .replace(/[/\\?%*:|"<>]/g, '-')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 120) || 'material';
+}
+
+function formString(value: FormDataEntryValue | null): string | null {
+  return typeof value === 'string' && value.trim() ? value.trim() : null;
+}
+
+function sanitizeSourceType(value: FormDataEntryValue | null): string {
+  const sourceType = formString(value) || 'upload';
+  return ['upload', 'ncert', 'notes', 'coaching', 'pyq', 'solution', 'other'].includes(sourceType)
+    ? sourceType
+    : 'other';
+}
+
+export async function POST(req: NextRequest) {
+  const requestId = getRequestId(req);
+  try {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      return apiErrorResponse('unauthorized', { status: 401, message: 'Authentication is required.', requestId });
+    }
+
+    const { allowed, remaining, resetAt } = await checkRateLimit({
+      identifier: user.id,
+      bucket: 'materials-upload',
+      maxTokens: 10,
+      windowSeconds: 300,
+      failClosed: true,
+    });
+    if (!allowed) return rateLimitResponse(remaining, resetAt);
+
+    const config = getRagConfig();
+    const formData = await req.formData();
+    const file = formData.get('file') as File | null;
+    if (!file) {
+      return apiErrorResponse('invalid_file', { status: 400, message: 'No study material file was provided.', requestId });
+    }
+
+    const mimeType = file.type || 'application/octet-stream';
+    if (!SUPPORTED_MATERIAL_MIME_TYPES.has(mimeType)) {
+      return apiErrorResponse('unsupported_file_type', {
+        status: 415,
+        message: 'Use PDF, TXT, or Markdown study material.',
+        requestId,
+      });
+    }
+
+    if (file.size > config.maxFileBytes) {
+      return apiErrorResponse('file_too_large', {
+        status: 413,
+        message: `Study material files are capped at ${Math.round(config.maxFileBytes / 1024 / 1024)}MB.`,
+        requestId,
+      });
+    }
+
+    const buffer = Buffer.from(await file.arrayBuffer());
+    if (!validateMagicBytesArray(new Uint8Array(buffer.subarray(0, 12)), mimeType)) {
+      return apiErrorResponse('invalid_file', { status: 422, message: 'File contents do not match the declared MIME type.', requestId });
+    }
+
+    const { count, error: countError } = await supabase
+      .from('study_materials')
+      .select('id', { count: 'exact', head: true })
+      .eq('user_id', user.id)
+      .in('status', ['uploaded', 'processing', 'ready']);
+    if (countError) throw countError;
+    if ((count ?? 0) >= config.maxFilesPerUser) {
+      return apiErrorResponse('material_limit_reached', {
+        status: 429,
+        message: `Private beta allows ${config.maxFilesPerUser} active study material files.`,
+        requestId,
+      });
+    }
+
+    const contentHash = materialContentHash(buffer);
+    const { data: duplicate } = await supabase
+      .from('study_materials')
+      .select('id, title, status, error_message')
+      .eq('user_id', user.id)
+      .eq('content_hash', contentHash)
+      .neq('status', 'archived')
+      .maybeSingle();
+    if (duplicate) {
+      return NextResponse.json({
+        material: duplicate,
+        duplicate: true,
+      }, { status: 200, headers: { 'x-request-id': requestId } });
+    }
+
+    const originalFilename = sanitizeFilename(file.name || 'study-material');
+    const title = (formString(formData.get('title')) || originalFilename.replace(/\.[^/.]+$/, '')).slice(0, 160) || originalFilename;
+    const storagePath = `${user.id}/${Date.now()}-${contentHash.slice(0, 12)}-${originalFilename}`;
+
+    const upload = await supabase.storage
+      .from('study-materials')
+      .upload(storagePath, buffer, {
+        contentType: mimeType,
+        upsert: false,
+      });
+    if (upload.error) throw upload.error;
+
+    const { data: material, error: insertError } = await supabase
+      .from('study_materials')
+      .insert({
+        user_id: user.id,
+        title,
+        original_filename: originalFilename,
+        mime_type: mimeType,
+        storage_path: storagePath,
+        source_type: sanitizeSourceType(formData.get('sourceType')),
+        exam_type: formString(formData.get('examType')),
+        subject: formString(formData.get('subject')),
+        chapter: formString(formData.get('chapter')),
+        topic: formString(formData.get('topic')),
+        language: formString(formData.get('language')) || 'en',
+        status: 'uploaded',
+        content_hash: contentHash,
+      })
+      .select('id, title, status')
+      .single();
+
+    if (insertError || !material) throw insertError || new Error('Material insert failed');
+
+    const ingestResult = await ingestStudyMaterial({
+      materialId: material.id,
+      userId: user.id,
+      buffer,
+      mimeType,
+    });
+
+    return NextResponse.json({
+      material: {
+        ...material,
+        status: ingestResult.status,
+      },
+      chunksProcessed: ingestResult.chunks,
+      duplicate: false,
+    }, { status: ingestResult.status === 'ready' ? 201 : 202, headers: { 'x-request-id': requestId } });
+  } catch (error) {
+    return unexpectedApiErrorResponse(req, error, 'materials_upload_unhandled', 'Unable to upload study material.');
+  }
+}
