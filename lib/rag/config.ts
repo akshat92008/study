@@ -1,13 +1,13 @@
 export const RAG_DEFAULTS = {
-  maxFileMb: 10,
-  maxFilesPerUser: 20,
-  maxDailyUploads: 3,
-  maxChunksPerFile: 160,
-  chunkSizeChars: 3200,
+  maxFileMb: 3,
+  maxFilesPerUser: 5,
+  maxDailyUploads: 1,
+  maxChunksPerFile: 40,
+  chunkSizeChars: 2500,
   chunkOverlapChars: 450,
-  topK: 5,
+  topK: 4,
   hardMaxTopK: 8,
-  maxContextChars: 10000,
+  maxContextChars: 6000,
   minSimilarity: 0.68,
 };
 
