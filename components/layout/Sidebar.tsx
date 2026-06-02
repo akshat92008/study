@@ -29,7 +29,6 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
     { label: 'MIND', href: '/chat', icon: MessageSquare, feature: 'ENABLE_CHAT' as const },
     { label: 'Test Analysis', href: '/autopsy', icon: Activity, feature: 'ENABLE_AUTOPSY_UI' as const },
     { label: 'Progress', href: '/cognition', icon: Brain, feature: 'ENABLE_ATLAS_UI' as const },
-    { label: 'Knowledge Base', href: '/knowledge', icon: Database },
   ].filter(item => !item.feature || isFeatureEnabled(item.feature));
 
   const [sessions, setSessions] = useState<{ id: string; title: string; updated_at: string }[]>([]);

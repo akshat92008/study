@@ -308,6 +308,7 @@ Respond as JSON: { "summary": "assessment", "topPriority": "focus", "strengths":
     userPrompt: prompt,
     maxOutputTokens: 500
   });
+}
 
 export async function expandChapterViaMind(userId: string, subject: string, chapter: string) {
   const supabase = await createClient();

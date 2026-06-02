@@ -16,31 +16,69 @@ export default function AutopsyPageClient({ result: initialResult }: Props) {
 
   const handleUpload = async (file: File) => {
     setUploading(true);
-    const statuses = [
-      'Running OCR on your test...',
-      'Mapping mistakes to syllabus chapters...',
-      'Diagnosing root causes...',
-      'Building your recovery sprint...',
-    ];
-    let i = 0;
-    setStatus(statuses[0]);
-    const interval = setInterval(() => {
-      i = Math.min(i + 1, statuses.length - 1);
-      setStatus(statuses[i]);
-    }, 3500);
+    setStatus('Uploading and preparing file...');
 
     try {
       const form = new FormData();
       form.append('file', file);
       form.append('testName', file.name);
+      form.append('async', 'true');
+      
       const res = await fetch('/api/autopsy/ingest', { method: 'POST', body: form });
       const data = await res.json();
-      if (res.ok) setResult(data);
-      else setStatus('Upload failed — ' + (data.error || 'unknown error'));
+      
+      if (!res.ok && res.status !== 202) {
+        setStatus('Upload failed — ' + (data.error || data.message || 'unknown error'));
+        setUploading(false);
+        return;
+      }
+      
+      // If synchronous fallback (unlikely with async=true but safe to check)
+      if (data.autopsyId && !data.jobId) {
+        setResult(data);
+        setUploading(false);
+        return;
+      }
+      
+      if (!data.jobId) {
+        setStatus('Upload failed — missing job ID');
+        setUploading(false);
+        return;
+      }
+
+      setStatus('Running OCR and AI extraction...');
+      
+      // Poll for job completion
+      const pollJob = async () => {
+        try {
+          const pollRes = await fetch(`/api/autopsy/jobs/${data.jobId}`);
+          const jobData = await pollRes.json();
+          
+          if (jobData.status === 'completed') {
+            const finalRes = await fetch('/api/autopsy');
+            const finalData = await finalRes.json();
+            setResult(finalData.result);
+            setUploading(false);
+            return;
+          } else if (jobData.status === 'failed') {
+            setStatus('Analysis failed — ' + (jobData.error || 'unknown error'));
+            setUploading(false);
+            return;
+          } else if (jobData.status === 'processing') {
+            setStatus('Extracting insights from the AI model...');
+          }
+          
+          setTimeout(pollJob, 2000);
+        } catch {
+          setStatus('Analysis polling failed. Please refresh the page.');
+          setUploading(false);
+        }
+      };
+      
+      setTimeout(pollJob, 2000);
+      
     } catch {
       setStatus('Upload failed. Try again.');
-    } finally {
-      clearInterval(interval);
       setUploading(false);
     }
   };

@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { logger } from '@/lib/utils/logger';
-import { classifyAgentActionRisk } from './action-policy';
+import { classifyAgentActionRisk } from './beta-policy';
 import {
   AgentActionInputSchema,
   AgentRunInputSchema,

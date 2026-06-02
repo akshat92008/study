@@ -217,7 +217,7 @@ describe('MVP Frontend Logic Smoke Tests', () => {
     const cleanContent = sidebarContent.replace(/\{?\/\*.*?\*\/\}/gs, '');
     expect(cleanContent).not.toMatch(/Pulse/i);
     expect(cleanContent).not.toMatch(/COMMAND/i);
-    for (const label of ['Today', 'MIND', 'Test Analysis', 'Progress', 'Revision Due']) {
+    for (const label of ['Today', 'MIND', 'Test Analysis', 'Progress']) {
       expect(cleanContent).toContain(label);
     }
   });

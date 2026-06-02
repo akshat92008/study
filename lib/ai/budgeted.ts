@@ -13,7 +13,7 @@ import {
   BudgetFeature,
 } from './cost-guard'
 
-type AIModelTier = 'cheap' | 'flash' | 'balanced' | 'vision' | 'embedding' | 'fast' | 'quality'
+export type AIModelTier = 'cheap' | 'flash' | 'balanced' | 'vision' | 'embedding' | 'fast' | 'quality' | 'pro' | 'router:daily-plan' | 'router:daily-briefing' | 'router:multimodal+pro' | 'router:flash+pro'
 
 type BudgetedBase = {
   userId: string

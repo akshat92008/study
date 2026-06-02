@@ -10,6 +10,7 @@ export const FeatureFlags = {
   ENABLE_ATLAS_UI: false,
   ENABLE_FLASHCARDS_UI: false,
   ENABLE_VOICE_CHAT: false,
+  ENABLE_KNOWLEDGE_UI: false,
 };
 
 export function isFeatureEnabled(featureName: keyof typeof FeatureFlags): boolean {

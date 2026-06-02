@@ -385,7 +385,9 @@ export async function generateCardsForConcept(
     maxOutputTokens: 1000
   });
 
-  if (!result || !result.cards || result.cards.length === 0) {
+  const resultCards = result as any;
+
+  if (!resultCards || !resultCards.cards || resultCards.cards.length === 0) {
     logger.error('Failed to generate cards', { conceptId });
     throw new Error('AI failed to generate valid flashcards. Please try again.');
   }
@@ -393,7 +395,7 @@ export async function generateCardsForConcept(
   // 4. Inject into FSRS DB
   const emptyCard = createEmptyCard();
   
-  const rows = result.cards.slice(0, maxCards).map((c: { front: string; back: string }) => ({
+  const rows = resultCards.cards.slice(0, maxCards).map((c: { front: string; back: string }) => ({
     user_id: userId,
     concept_id: conceptId,
     front: c.front,

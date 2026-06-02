@@ -118,7 +118,7 @@ export async function generateSprintPlanAction(subjects: string[], targetDate: s
     `;
 
     const { budgetedGenerateJSON } = await import('@/lib/ai/budgeted');
-    const plan = await budgetedGenerateJSON({
+    const plan = await budgetedGenerateJSON<z.infer<typeof SprintPlanSchema>>({
       userId: user.id,
       feature: 'planner',
       route: 'planner:sprint-plan',

@@ -42,7 +42,9 @@ export type BudgetFeature =
   | 'negotiate'
   | 'knowledge-guide'
   | 'knowledge-audio'
-  | 'analyze';
+  | 'analyze'
+  | 'atlas'
+  | 'rag_flashcard';
 
 export interface BudgetReservation {
   reservationId: string;
@@ -125,6 +127,8 @@ const COST_PER_1K_TOKENS: Record<BudgetFeature, number> = {
   'knowledge-guide':       0.0002,
   'knowledge-audio':       0.00015,
   analyze:                 0.00005,
+  atlas:                   0.00005,
+  rag_flashcard:           0.00005,
 };
 
 const DAILY_BUDGET_USD = () => {

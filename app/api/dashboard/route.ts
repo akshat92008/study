@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { getCognitionData } from '@/lib/actions/cognition';
-import { getRevisionData } from '@/lib/actions/revision';
-import { getMistakeData } from '@/lib/actions/mistakes';
+import { getCognitionGraph } from '@/lib/engines/cognition-graph';
+import { getRevisionStats, getDueCards } from '@/lib/engines/revision-engine';
+import { getMistakeAnalytics } from '@/lib/engines/mistake-engine';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 
 export const dynamic = 'force-dynamic';
@@ -20,18 +20,39 @@ export async function GET(request: Request) {
       });
     }
 
-    const [profileRes, cognition, revision, mistakes] = await Promise.all([
+    const [
+      profileRes,
+      cognition,
+      dueRes,
+      statsRes,
+      allCardsRes,
+      mistakeAnalytics,
+      conceptsRes
+    ] = await Promise.all([
       supabase.from('profiles').select('*').eq('id', user.id).single(),
-      getCognitionData(),
-      getRevisionData(),
-      getMistakeData(),
+      getCognitionGraph(user.id),
+      getDueCards(user.id),
+      getRevisionStats(user.id),
+      supabase.from('revision_cards')
+        .select('id, due, stability, difficulty, state, subject, chapter')
+        .eq('user_id', user.id),
+      getMistakeAnalytics(user.id),
+      supabase.from('concepts').select('subject, chapter').eq('user_id', user.id)
     ]);
+
+    const syllabus: Record<string, string[]> = {};
+    if (conceptsRes.data) {
+      conceptsRes.data.forEach((c: any) => {
+        if (!syllabus[c.subject]) syllabus[c.subject] = [];
+        if (!syllabus[c.subject].includes(c.chapter)) syllabus[c.subject].push(c.chapter);
+      });
+    }
 
     return NextResponse.json({
       profile: profileRes.data,
       cognition,
-      revision,
-      mistakes,
+      revision: { due: dueRes, stats: statsRes, allCards: allCardsRes.data || [] },
+      mistakes: mistakeAnalytics ? { ...mistakeAnalytics, syllabus } : null,
       tasks: [],
     }, { headers: { 'x-request-id': requestId } });
   } catch (error: any) {

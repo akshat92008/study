@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { getRequestId, apiErrorResponse } from '@/lib/api/errors';
+import { validateCronRequest } from '@/lib/middleware/cronAuth';
 import { env } from '@/lib/utils/env';
 
 export const dynamic = 'force-dynamic';
@@ -8,23 +9,8 @@ export const dynamic = 'force-dynamic';
 export async function GET(req: NextRequest) {
   const requestId = getRequestId(req);
 
-  // Simple auth check via basic auth or bearer token matching CRON_SECRET or ADMIN_EMAILS
-  const authHeader = req.headers.get('authorization');
-  let isAuthorized = false;
-
-  if (authHeader) {
-    const token = authHeader.replace(/^Bearer\s+/i, '').trim();
-    if (token === process.env.CRON_SECRET) {
-      isAuthorized = true;
-    }
-  }
-
-  // URL query secret has been disabled for safety.
-  // Use Authorization: Bearer <CRON_SECRET> instead.
-
-  if (!isAuthorized) {
-    return apiErrorResponse('unauthorized', { status: 401, message: 'Admin authentication required', requestId });
-  }
+  const authError = validateCronRequest(req);
+  if (authError) return authError;
 
   try {
     const supabase = createAdminClient();

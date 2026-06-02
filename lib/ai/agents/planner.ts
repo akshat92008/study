@@ -114,11 +114,12 @@ export async function generateDailyPlan(userId: string, date: string) {
     promptFamily: 'command_plan',
     promptSource: 'generateDailyPlan',
     route: 'planner:daily-plan',
-  const mission = await budgetedGenerateJSON({
+  });
+  const mission = await budgetedGenerateJSON<z.infer<typeof DailyMissionSchema>>({
     userId,
     feature: 'planner',
     route: 'planner:daily-plan',
-    model: 'pro',
+    model: 'flash',
     systemPrompt: 'You are an elite academic operations director.',
     userPrompt: prompt,
     schema: DailyMissionSchema,
@@ -126,15 +127,16 @@ export async function generateDailyPlan(userId: string, date: string) {
   });
 
   let finalTasks: MissionTask[] = [];
+  const missionData = mission as any;
 
-  if (mission && mission.tasks && mission.tasks.length > 0) {
-    finalTasks = mission.tasks;
+  if (missionData && missionData.tasks && missionData.tasks.length > 0) {
+    finalTasks = missionData.tasks;
     
     // Add the AI's overall break recommendation as a final wrap-up task if needed
-    if (mission.breakRecommendation) {
+    if (missionData.breakRecommendation) {
       finalTasks.push({
         title: "Daily Debrief & Recovery",
-        description: mission.breakRecommendation,
+        description: missionData.breakRecommendation,
         type: "break",
         subject: null,
         chapter: null,
