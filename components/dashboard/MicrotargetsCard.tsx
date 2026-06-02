@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
 import { CheckCircle2, Circle, ListTodo } from 'lucide-react';
@@ -18,6 +18,10 @@ interface Task {
 export default function MicrotargetsCard({ tasks: initialTasks = [] }: { tasks?: Task[] }) {
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
   const { addToast } = useAppStore();
+
+  useEffect(() => {
+    setTasks(initialTasks);
+  }, [initialTasks]);
 
   const toggleTask = (id: string) => {
     setTasks(tasks.map(t => {

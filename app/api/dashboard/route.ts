@@ -20,6 +20,8 @@ export async function GET(request: Request) {
       });
     }
 
+    const localDate = new Date().toISOString().split('T')[0];
+
     const [
       profileRes,
       cognition,
@@ -27,7 +29,8 @@ export async function GET(request: Request) {
       statsRes,
       allCardsRes,
       mistakeAnalytics,
-      conceptsRes
+      conceptsRes,
+      tasksRes
     ] = await Promise.all([
       supabase.from('profiles').select('*').eq('id', user.id).single(),
       getCognitionGraph(user.id),
@@ -37,7 +40,12 @@ export async function GET(request: Request) {
         .select('id, due, stability, difficulty, state, subject, chapter')
         .eq('user_id', user.id),
       getMistakeAnalytics(user.id),
-      supabase.from('concepts').select('subject, chapter').eq('user_id', user.id)
+      supabase.from('concepts').select('subject, chapter').eq('user_id', user.id),
+      supabase.from('study_tasks')
+        .select('id, title, is_completed, subject, chapter, estimated_minutes')
+        .eq('user_id', user.id)
+        .eq('scheduled_date', localDate)
+        .order('priority', { ascending: true })
     ]);
 
     const syllabus: Record<string, string[]> = {};
@@ -53,7 +61,14 @@ export async function GET(request: Request) {
       cognition,
       revision: { due: dueRes, stats: statsRes, allCards: allCardsRes.data || [] },
       mistakes: mistakeAnalytics ? { ...mistakeAnalytics, syllabus } : null,
-      tasks: [],
+      tasks: (tasksRes.data || []).map((t: any) => ({
+        id: t.id,
+        title: t.title,
+        completed: t.is_completed,
+        subject: t.subject,
+        chapter: t.chapter,
+        estimatedMinutes: t.estimated_minutes
+      })),
     }, { headers: { 'x-request-id': requestId } });
   } catch (error: any) {
     return unexpectedApiErrorResponse(request, error, 'dashboard', 'Unable to load dashboard data.');

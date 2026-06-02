@@ -80,6 +80,13 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
 
   useEffect(() => {
     fetchSessionCard();
+    
+    const handleRefresh = () => {
+      fetchSessionCard();
+    };
+    
+    window.addEventListener('refresh-dashboard', handleRefresh);
+    return () => window.removeEventListener('refresh-dashboard', handleRefresh);
   }, []);
 
   // Listen to start-focus-session events from other components (like checklist)
