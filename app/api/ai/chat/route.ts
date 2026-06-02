@@ -964,8 +964,8 @@ export async function buildChatFirstEngineResponse(input: {
   }
 
   // Detect plan edits
-  const isPlanEdit = /\b(add|remove|change|shift|lighten|increase|mark|replace)\b/i.test(normalized) && 
-                     /\b(plan|target|task|microtask|mcq|mcqs|today|tomorrow)\b/i.test(normalized);
+  const isPlanEdit = /\b(add|remove|change|shift|lighten|increase|mark|replace|update|create|generate|make)\b/i.test(normalized) && 
+                     /\b(plan|target|targets|task|tasks|microtask|microtasks|schedule|today|tomorrow)\b/i.test(normalized);
 
   if (isPlanEdit) {
     try {
@@ -976,6 +976,8 @@ export async function buildChatFirstEngineResponse(input: {
       const editPrompt = `You are a study plan editor. The user wants to edit their plan.
 User request: "${input.message}"
 Current tasks: ${JSON.stringify(currentTasks.map(t => ({ id: t.id, title: t.title, status: t.status, minutes: t.estimated_minutes })))}
+Weak concepts: ${input.mindContext?.weakConcepts?.map((c: any) => c.name).join(', ') || 'None'}
+Recent topic: ${input.mindContext?.recentTopics?.[0] || 'Unknown'}
 
 Determine the actions to take. Return ONLY valid JSON:
 {
@@ -997,7 +999,8 @@ Determine the actions to take. Return ONLY valid JSON:
   ],
   "responseMessage": "<Short confirmation message to the user>"
 }
-If the user wants to clear the plan, use "remove" for all. If they want to lighten, remove some.`;
+If the user wants to clear the plan, use "remove" for all. If they want to lighten, remove some. 
+If they ask to update or generate targets generally, use "add" to create a few targeted tasks based on their weak concepts or recent topics.`;
 
       const editResult = await budgetedGenerateJSON<any>({
         userId: input.userId,
