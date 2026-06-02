@@ -52,7 +52,7 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
     let fileSizeKB: number | undefined;
     let mimeType = 'text/plain';
     let idempotencyKey = request.headers.get('Idempotency-Key');
-    let asyncRequested = request.headers.get('prefer')?.toLowerCase().includes('respond-async') ?? false;
+    let asyncRequested = true; // Forced true for beta
 
     if (contentType.includes('application/json')) {
       const body = await request.json();
