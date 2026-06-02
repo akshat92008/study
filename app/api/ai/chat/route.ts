@@ -44,6 +44,7 @@ import {
 } from '@/lib/services/chat-persistence';
 import { finalizeChatTurn } from '@/lib/services/chat-turn-finalizer';
 import { ChatTutorService } from '@/lib/services/chat-tutor.service';
+import { ChatPlannerService } from '@/lib/services/chat-planner.service';
 import {
   ensureCommandPlanForDate,
   formatCommandPlanForChat,
@@ -835,7 +836,7 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
 
     // ── Branch D: Main streaming branch ────────────────────────────────────────
     let mainGenerator: AsyncGenerator<string> | null = null;
-    if (intent.intent !== 'TUTOR_SESSION' && intent.intent !== 'PRACTICE') {
+    if (intent.intent !== 'TUTOR_SESSION' && intent.intent !== 'PRACTICE' && intent.intent !== 'REPLAN' && intent.intent !== 'CREATE_ARTIFACT' && orchestratorResult.intent !== 'planning') {
       try {
         const conversationMessages = buildConversationMessages(recentHistory, message || '');
         mainGenerator = await budgetedStreamGeneration({
@@ -882,6 +883,18 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
             );
             fullResponse = tutorResult.fullResponse;
             metadataPayload = tutorResult.metadataPayload;
+          } else if (intent.intent === 'REPLAN') {
+            const replanResult = await ChatPlannerService.handleReplan(
+              supabase, user.id, intent.action || 'reduce_tasks', controller, encoder
+            );
+            fullResponse = replanResult.fullResponse;
+            metadataPayload = replanResult.metadataPayload;
+          } else if (intent.intent === 'CREATE_ARTIFACT' || orchestratorResult.intent === 'planning') {
+            const artifactResult = await ChatPlannerService.handleCreateArtifact(
+              supabase, user.id, systemPrompt, recentHistory, message || '', controller, encoder
+            );
+            fullResponse = artifactResult.fullResponse;
+            metadataPayload = artifactResult.metadataPayload;
           } else if (mainGenerator) {
             for await (const chunk of mainGenerator) {
               controller.enqueue(encoder.encode(chunk));
