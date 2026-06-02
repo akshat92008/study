@@ -49,7 +49,7 @@ describe('event worker route auth', () => {
     vi.stubEnv('CRON_SECRET', '');
     const { processEventWorkerRoute } = await import('@/lib/events/worker-route');
 
-    const res = await processEventWorkerRoute(new Request('http://localhost/api/events/process'));
+    const res = await processEventWorkerRoute(new Request('http://localhost/api/internal/workers/process-events'));
 
     expect(res.status).toBe(500);
     expect(processBatch).not.toHaveBeenCalled();
@@ -59,7 +59,7 @@ describe('event worker route auth', () => {
     vi.stubEnv('INTERNAL_CRON_SECRET', 'test-secret');
     const { processEventWorkerRoute } = await import('@/lib/events/worker-route');
 
-    const res = await processEventWorkerRoute(new Request('http://localhost/api/events/process'));
+    const res = await processEventWorkerRoute(new Request('http://localhost/api/internal/workers/process-events'));
 
     expect(res.status).toBe(401);
     expect(processBatch).not.toHaveBeenCalled();
@@ -70,7 +70,7 @@ describe('event worker route auth', () => {
     vi.stubEnv('INTERNAL_CRON_SECRET', 'test-secret');
     const { processEventWorkerRoute } = await import('@/lib/events/worker-route');
 
-    const res = await processEventWorkerRoute(new Request('http://localhost/api/events/process', {
+    const res = await processEventWorkerRoute(new Request('http://localhost/api/internal/workers/process-events', {
       headers: { authorization: 'Bearer test-secret' },
     }));
 
@@ -83,7 +83,7 @@ describe('event worker route auth', () => {
     vi.stubEnv('INTERNAL_CRON_SECRET', 'test-secret');
     const { processEventWorkerRoute } = await import('@/lib/events/worker-route');
 
-    const res = await processEventWorkerRoute(new Request('http://localhost/api/events/process', {
+    const res = await processEventWorkerRoute(new Request('http://localhost/api/internal/workers/process-events', {
       headers: { authorization: 'Bearer test-secret' },
     }));
 
@@ -115,7 +115,7 @@ describe('event worker route auth', () => {
     vi.stubEnv('EVENT_WORKER_MAX_RUNTIME_MS', '17000');
     const { processEventWorkerRoute } = await import('@/lib/events/worker-route');
 
-    const res = await processEventWorkerRoute(new Request('http://localhost/api/events/process', {
+    const res = await processEventWorkerRoute(new Request('http://localhost/api/internal/workers/process-events', {
       headers: { authorization: 'Bearer test-secret' },
     }));
 

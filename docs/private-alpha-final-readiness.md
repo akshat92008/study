@@ -29,7 +29,7 @@ All focus was placed on runtime reality, stripping out "happy-path" assumptions 
 ### 4. Admin Recovery & Health Observability
 - **Issue:** No way to monitor queue health securely without raw DB access.
 - **Fix:** 
-  - Rewrote `/api/admin/system/status/route.ts` to require `Bearer INTERNAL_INTERNAL_CRON_SECRET` rather than insecure query params.
+  - Rewrote `/api/admin/system/status/route.ts` to require `Bearer INTERNAL_CRON_SECRET` rather than insecure query params.
   - Added GREEN/YELLOW/RED health logic assessing DLQ size, pending queue age, and stuck consumer locks.
   - Documented manual recovery curl commands in `docs/private-alpha-runbook.md`.
 - **Status:** Verified. Secure observability is live.

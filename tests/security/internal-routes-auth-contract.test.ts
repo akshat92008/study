@@ -22,7 +22,6 @@ describe('internal route auth contract', () => {
       path.join(root, 'app/api/internal'),
     ];
     const files = protectedRoots.flatMap((dir) => routeFiles(dir));
-    files.push(path.join(root, 'app/api/events/process/route.ts'));
     files.push(path.join(root, 'app/api/health/route.ts'));
 
     const offenders = files.filter((file) => {

@@ -19,7 +19,6 @@ const allowedAppApiPrefixes = [
   'app/api/cron/',
   'app/api/admin/',
   'app/api/internal/',
-  'app/api/events/process/route.ts',
   'app/api/health/route.ts',
   'app/api/webhooks/stripe/route.ts',
 ];

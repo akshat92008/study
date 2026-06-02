@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import {
-  processMockAutopsy,
   AutopsyExtractionError,
   AutopsyNeedsUserInputError,
 } from '@/lib/engines/autopsy-engine';
@@ -9,22 +8,14 @@ import { createAutopsyJob } from '@/lib/services/autopsy-jobs';
 import { logger } from '@/lib/utils/logger';
 import { withRateLimit } from '@/lib/middleware/withRateLimit';
 import { apiErrorResponse, getRequestId } from '@/lib/api/errors';
-import {
-  commitBudgetUsage,
-  isBudgetExceeded,
-  isBudgetUnavailable,
-  releaseBudgetReservation,
-  reserveBudgetForModelCall,
-  type BudgetReservation,
-} from '@/lib/ai/cost-guard';
+
 import {
   consumeUsageLimit,
-  getMaxUploadBytes,
   usageGateResponse,
   validatePromptLength,
   validateUploadBytes,
 } from '@/lib/utils/billing';
-import { getPromptVersion } from '@/lib/ai/prompt-version';
+
 import { featureFlags } from '@/lib/config/flags';
 
 const ALLOWED_MIME_TYPES = new Set([

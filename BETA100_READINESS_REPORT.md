@@ -35,7 +35,7 @@ Due to the Vercel Hobby tier only supporting 1 scheduled job per day, you must s
 - **Service:** [cron-job.org](https://cron-job.org) (or similar free tier)
 - **URL:** `https://your-production-url.vercel.app/api/internal/workers/process-events`
 - **Method:** `POST`
-- **Headers:** `Authorization: Bearer <YOUR_CRON_SECRET>`
+- **Headers:** `Authorization: Bearer <INTERNAL_CRON_SECRET>`
 - **Cadence:** Every 5 minutes.
 
 ## 6. Current readiness verdict

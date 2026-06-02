@@ -24,7 +24,7 @@ Request:
 POST https://YOUR_DOMAIN/api/internal/workers/process-events
 
 Header:
-Authorization: Bearer YOUR_CRON_SECRET
+Authorization: Bearer INTERNAL_CRON_SECRET
 
 Frequency:
 Every 10–15 minutes for private beta.
@@ -32,7 +32,7 @@ Every 10–15 minutes for private beta.
 ## Manual Test
 curl command:
 curl -X POST "https://YOUR_DOMAIN/api/internal/workers/process-events" \
-  -H "Authorization: Bearer YOUR_CRON_SECRET"
+  -H "Authorization: Bearer INTERNAL_CRON_SECRET"
 
 Expected response:
 {

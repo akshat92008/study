@@ -13,8 +13,8 @@ Vercel Hobby plan only supports cron once a day. For this 10-user alpha, you MUS
 **Frequency:**
 Run this every 1 to 5 minutes.
 
-### Setting `INTERNAL_INTERNAL_CRON_SECRET`
-- The `INTERNAL_INTERNAL_CRON_SECRET` must be set in your Vercel Environment Variables.
+### Setting `INTERNAL_CRON_SECRET`
+- The `INTERNAL_CRON_SECRET` must be set in your Vercel Environment Variables.
 - It is the shared secret that authenticates your external cron runner.
 - Do NOT use the default `super_secret_cron_token_123` in production.
 
