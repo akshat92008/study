@@ -1,10 +1,10 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 export const maxDuration = 10;
 
 import { validateCronRequest } from '@/lib/middleware/cronAuth';
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   const authErr = validateCronRequest(req);
   if (authErr) return authErr;
 
@@ -14,6 +14,6 @@ export async function POST(req: Request) {
   }, { status: 410 });
 }
 
-export async function GET(req: Request) {
+export async function GET(req: NextRequest) {
   return POST(req);
 }
