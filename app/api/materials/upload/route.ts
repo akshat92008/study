@@ -6,6 +6,7 @@ import { getRagConfig, SUPPORTED_MATERIAL_MIME_TYPES } from '@/lib/rag/config';
 import { materialContentHash } from '@/lib/rag/ingest';
 import { validateMagicBytesArray } from '@/lib/utils/magicBytes';
 import { EventDispatcher } from '@/lib/events/orchestrator';
+import { logger } from '@/lib/utils/logger';
 
 function sanitizeFilename(value: string): string {
   return value
@@ -48,11 +49,13 @@ export async function POST(req: NextRequest) {
     const formData = await req.formData();
     const file = formData.get('file') as File | null;
     if (!file) {
+      logger.warn('Upload rejected: no file provided', { userId: user.id, requestId });
       return apiErrorResponse('invalid_file', { status: 400, message: 'No study material file was provided.', requestId });
     }
 
     const mimeType = file.type || 'application/octet-stream';
     if (!SUPPORTED_MATERIAL_MIME_TYPES.has(mimeType)) {
+      logger.warn('Upload rejected: unsupported file type', { userId: user.id, mimeType, requestId });
       return apiErrorResponse('unsupported_file_type', {
         status: 415,
         message: 'Use PDF, TXT, or Markdown study material.',
@@ -61,6 +64,7 @@ export async function POST(req: NextRequest) {
     }
 
     if (file.size > config.maxFileBytes) {
+      logger.warn('Upload rejected: file too large', { userId: user.id, fileSize: file.size, requestId });
       return apiErrorResponse('file_too_large', {
         status: 413,
         message: `Study material files are capped at ${Math.round(config.maxFileBytes / 1024 / 1024)}MB.`,
@@ -70,6 +74,7 @@ export async function POST(req: NextRequest) {
 
     const buffer = Buffer.from(await file.arrayBuffer());
     if (!validateMagicBytesArray(new Uint8Array(buffer.subarray(0, 12)), mimeType)) {
+      logger.warn('Upload rejected: magic byte mismatch', { userId: user.id, mimeType, requestId });
       return apiErrorResponse('invalid_file', { status: 422, message: 'File contents do not match the declared MIME type.', requestId });
     }
 
@@ -83,6 +88,22 @@ export async function POST(req: NextRequest) {
       return apiErrorResponse('material_limit_reached', {
         status: 429,
         message: `Private beta allows ${config.maxFilesPerUser} active study material files.`,
+        requestId,
+      });
+    }
+
+    const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
+    const { count: dailyCount, error: dailyCountError } = await supabase
+      .from('study_materials')
+      .select('id', { count: 'exact', head: true })
+      .eq('user_id', user.id)
+      .gte('created_at', twentyFourHoursAgo);
+      
+    if (dailyCountError) throw dailyCountError;
+    if ((dailyCount ?? 0) >= config.maxDailyUploads) {
+      return apiErrorResponse('daily_upload_limit_reached', {
+        status: 429,
+        message: `You have reached the daily upload limit of ${config.maxDailyUploads} files.`,
         requestId,
       });
     }
@@ -155,6 +176,8 @@ export async function POST(req: NextRequest) {
       metadata: { source: 'materials_upload' },
       idempotency_key: `material_uploaded:${material.id}`,
     });
+
+    logger.info('Upload accepted', { userId: user.id, materialId: material.id, mimeType, fileSize: file.size, requestId });
 
     return NextResponse.json({
       material: {

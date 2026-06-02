@@ -5,12 +5,14 @@ import { getMaxPromptChars, isPromptTooLarge } from '@/lib/ai/token-budget';
 
 export type FeatureLimit =
   | 'chat_messages_daily'
+  | 'chat_messages_hourly'
   | 'tutor_messages_daily'
   | 'autopsy_uploads_daily'
   | 'ai_calls_daily'
   | 'document_uploads'
   | 'tutor_queries_daily'
-  | 'autopsies_monthly';
+  | 'autopsies_monthly'
+  | 'expensive_operations_daily';
 
 export type UsageGateCode =
   | 'limit_reached'
@@ -30,32 +32,38 @@ export type UsageGateResult = {
 
 const DEFAULT_LIMITS: Record<FeatureLimit, number> = {
   chat_messages_daily: 80,
+  chat_messages_hourly: 20,
   tutor_messages_daily: 60,
   autopsy_uploads_daily: 5,
   ai_calls_daily: 120,
   document_uploads: 20,
   tutor_queries_daily: 60,
   autopsies_monthly: 20,
+  expensive_operations_daily: 10,
 };
 
 const LIMIT_ENV: Partial<Record<FeatureLimit, string>> = {
   chat_messages_daily: 'FREE_DAILY_CHAT_LIMIT',
+  chat_messages_hourly: 'FREE_HOURLY_CHAT_LIMIT',
   tutor_messages_daily: 'FREE_DAILY_TUTOR_LIMIT',
   autopsy_uploads_daily: 'FREE_DAILY_AUTOPSY_LIMIT',
   ai_calls_daily: 'FREE_DAILY_AI_CALL_LIMIT',
   document_uploads: 'FREE_DAILY_AUTOPSY_LIMIT',
   tutor_queries_daily: 'FREE_DAILY_TUTOR_LIMIT',
   autopsies_monthly: 'FREE_DAILY_AUTOPSY_LIMIT',
+  expensive_operations_daily: 'FREE_DAILY_EXPENSIVE_LIMIT',
 };
 
 const RPC_GATE_MAP: Record<FeatureLimit, string> = {
   chat_messages_daily: 'chat_messages',
+  chat_messages_hourly: 'chat_messages_hourly',
   tutor_messages_daily: 'tutor_messages',
   autopsy_uploads_daily: 'autopsy_uploads',
   ai_calls_daily: 'ai_calls',
   document_uploads: 'autopsy_uploads',
   tutor_queries_daily: 'tutor_messages',
   autopsies_monthly: 'autopsy_uploads',
+  expensive_operations_daily: 'expensive_operations',
 };
 
 export function getLimit(feature: FeatureLimit): number {
@@ -158,10 +166,11 @@ export async function consumeUsageLimit(
   }
 
   if (limit === 0) {
+    const isHourly = feature === 'chat_messages_hourly';
     return {
       allowed: false,
       code: 'limit_reached',
-      reason: 'Daily usage limit reached.',
+      reason: isHourly ? 'Hourly usage limit reached. Please wait a bit.' : 'Daily usage limit reached. Try again tomorrow.',
       limit,
       used: 0,
       remaining: 0,
@@ -183,10 +192,11 @@ export async function consumeUsageLimit(
 
     const result = (data ?? {}) as { allowed?: boolean; used?: number; remaining?: number; limit?: number };
     if (result.allowed === false) {
+      const isHourly = feature === 'chat_messages_hourly';
       return {
         allowed: false,
         code: 'limit_reached',
-        reason: 'Daily usage limit reached.',
+        reason: isHourly ? 'Hourly usage limit reached. Please wait a bit.' : 'Daily usage limit reached. Try again tomorrow.',
         limit: result.limit ?? limit,
         used: result.used,
         remaining: result.remaining ?? 0,

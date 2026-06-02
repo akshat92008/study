@@ -17,6 +17,7 @@ function walk(dir: string, files: string[] = []) {
 
 const allowedAppApiPrefixes = [
   'app/api/cron/',
+  'app/api/admin/',
   'app/api/internal/',
   'app/api/events/process/route.ts',
   'app/api/health/route.ts',

@@ -92,7 +92,7 @@ describe('EventWorkerService AUTOPSY_UPLOAD_RECEIVED routing', () => {
 
     const processed = await EventWorkerService.processBatch(1, 5);
 
-    expect(processed).toBe(1);
+    expect(processed.processed).toBe(1);
     expect(state.processAutopsyJob).toHaveBeenCalledWith(
       '00000000-0000-0000-0000-000000000001',
       'job-1'

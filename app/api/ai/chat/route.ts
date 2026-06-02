@@ -291,6 +291,8 @@ export async function POST(req: NextRequest) {
 
     const usageGate = await consumeUsageLimit(user.id, 'chat_messages_daily');
     if (!usageGate.allowed) return usageGateResponse(usageGate);
+    const hourlyGate = await consumeUsageLimit(user.id, 'chat_messages_hourly');
+    if (!hourlyGate.allowed) return usageGateResponse(hourlyGate);
 
     // Persist user message (once, no idempotency key needed — request dedup above covers this)
     const { id: userMessageId } = await persistChatMessage(supabase, {
@@ -309,13 +311,18 @@ export async function POST(req: NextRequest) {
     // ============================================================================
     // STAGE 2: CONTEXT HYDRATION & INTENT (PARALLEL)
     // ============================================================================
+    const cleanMsg = (message || '').trim().toLowerCase();
+    const isSimpleMessage = cleanMsg === 'hi' || cleanMsg === 'hello' || cleanMsg === 'hey' || cleanMsg === 'ok' || cleanMsg === 'thanks' || cleanMsg === 'thank you';
+
     const profilePromise = supabase.from('profiles').select('exam_type').eq('id', user.id).maybeSingle();
-    const intentPromise = classifyMessageCombined(
-      message || '',
-      recentHistory.slice(-2).map((m: any) => m.content).join(' '),
-      undefined,
-      user.id
-    );
+    const intentPromise = isSimpleMessage 
+      ? Promise.resolve({ intent: { intent: 'GENERAL_CHAT' }, emotion: 'neutral', confidence: 1.0 })
+      : classifyMessageCombined(
+          message || '',
+          recentHistory.slice(-2).map((m: any) => m.content).join(' '),
+          undefined,
+          user.id
+        );
 
     const [profileResult, intentResult] = await Promise.all([
       Promise.race([profilePromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1500))]).catch(() => ({ data: null })),
@@ -330,38 +337,60 @@ export async function POST(req: NextRequest) {
     // ============================================================================
     // STAGE 3 & 4: MEMORY RETRIEVAL & STUDENT MODEL (PARALLEL)
     // ============================================================================
-    const memoryPromise = (message && message.trim().length > 15)
+    const memoryPromise = (message && message.trim().length > 15 && !isSimpleMessage)
       ? new ChatMemoryService().searchMemory(user.id, message, 2).catch((err) => {
           logger.error('CRITICAL: Semantic memory failed', err);
           return [] as string[];
         })
       : Promise.resolve([] as string[]);
-    const episodicMemoryPromise = (message && message.trim().length > 15)
+    const episodicMemoryPromise = (message && message.trim().length > 15 && !isSimpleMessage)
       ? new EpisodicMemoryService().retrieveRelevant(user.id, message, 2).catch((err) => {
           logger.warn('Episodic memory retrieval failed', err);
           return [] as string[];
         })
       : Promise.resolve([] as string[]);
 
-    const mindContextPromise = getMINDContext(
-      user.id,
-      message,
-      detectedIntent.topic || undefined,
-      detectedIntent.subject || undefined
-    ).catch((err) => {
-      logger.error('Failed to get MIND context', err);
-      return null;
-    });
+    const mindContextPromise = isSimpleMessage
+      ? Promise.resolve({
+          profile: profilePreview || { name: 'Student', examType: 'General Study' },
+          activeGoal: null,
+          currentSessionCard: null,
+          commandTasks: [],
+          recentStudySessions: [],
+          weakConcepts: [], recentMistakes: [], struggles: [],
+          masteryStats: { totalConcepts: 0, masteredCount: 0, masteryPercent: 0 },
+          overdueCardsCount: 0, topOverdueCards: [], emotionalState: 'neutral', recentTopics: [], knownAnalogies: [],
+          conceptHistory: [],
+          cognitiveLoad: { level: 'normal', signals: [] },
+          rootGapChains: [],
+          currentSessionDurationMinutes: 0,
+          sessionGoal: '',
+          ragChunks: [],
+          ragContext: null,
+          studentModel: null,
+          outcomeAnalytics: null,
+        })
+      : getMINDContext(
+          user.id,
+          message,
+          detectedIntent.topic || undefined,
+          detectedIntent.subject || undefined
+        ).catch((err) => {
+          logger.error('Failed to get MIND context', err);
+          return null;
+        });
 
-    const mindRagPromise = buildMindRagContext({
-      userId: user.id,
-      message: message || '',
-      subject: detectedIntent.subject || undefined,
-      chapter: detectedIntent.topic || undefined,
-    }).catch((err) => {
-      logger.error('Failed to get RAG context', err);
-      return { ragContext: null, ragPromptBlock: '' };
-    });
+    const mindRagPromise = isSimpleMessage
+      ? Promise.resolve({ ragContext: null, ragPromptBlock: '' })
+      : buildMindRagContext({
+          userId: user.id,
+          message: message || '',
+          subject: detectedIntent.subject || undefined,
+          chapter: detectedIntent.topic || undefined,
+        }).catch((err) => {
+          logger.error('Failed to get RAG context', err);
+          return { ragContext: null, ragPromptBlock: '' };
+        });
 
     const [semanticMemories, episodicMemories, mindContext, mindRag] = await Promise.all([
       Promise.race([memoryPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1000))]).catch(() => [] as string[]),
@@ -871,7 +900,13 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
             metadataPayload = tutorResult.metadataPayload;
           } else {
             const conversationMessages = buildConversationMessages(recentHistory, message || '');
-            for await (const chunk of routeStreamGeneration(systemPrompt, conversationMessages, 0.7)) {
+            for await (const chunk of routeStreamGeneration(
+              systemPrompt, 
+              conversationMessages, 
+              0.7,
+              mainBudget?.reservationId,
+              isSimpleMessage ? 'fast' : 'quality'
+            )) {
               controller.enqueue(encoder.encode(chunk));
               fullResponse += chunk;
             }

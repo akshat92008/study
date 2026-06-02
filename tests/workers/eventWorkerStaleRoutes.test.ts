@@ -106,7 +106,7 @@ describe('EventWorkerService stale route leases', () => {
 
     const processed = await EventWorkerService.processBatch(1, 5);
 
-    expect(processed).toBe(1);
+    expect(processed.processed).toBe(1);
     expect(state.inserts.event_dlq).toBeUndefined();
     expect(state.updates.consumer_locks).toContainEqual(expect.objectContaining({
       status: 'COMPLETED',

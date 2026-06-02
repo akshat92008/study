@@ -12,14 +12,23 @@ export async function processEventWorkerRoute(req: NextRequest | Request) {
   try {
     const start = Date.now();
     logger.info('Worker batch started', { requestId, feature: 'event-worker' });
-    const processedCount = await EventWorkerService.processBatch(50, 5);
+    const { processed, failed, skipped } = await EventWorkerService.processBatch(25, 5);
+    logger.info('Worker batch completed', { processed, failed, skipped, durationMs: Date.now() - start, requestId, feature: 'event-worker' });
     const queue = await EventWorkerService.getHealthSummary();
+
+    const queueDepth = queue.pendingEvents;
+    const dlqDepth = queue.dlqCount;
+    const nextRecommendedRunSeconds = (queueDepth > 0 || skipped > 0) ? 60 : 300;
 
     return NextResponse.json({
       ok: true,
-      processed: processedCount,
-      queue,
+      processed,
+      failed,
+      skipped,
       durationMs: Date.now() - start,
+      queueDepth,
+      dlqDepth,
+      nextRecommendedRunSeconds,
     }, { headers: { 'x-request-id': requestId } });
   } catch (error: any) {
     logger.error('process-events worker route failed', error, { requestId, feature: 'event-worker' });

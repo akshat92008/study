@@ -14,7 +14,7 @@ vi.mock('@/lib/utils/logger', () => ({
 describe('event worker route auth', () => {
   beforeEach(() => {
     processBatch.mockReset();
-    processBatch.mockResolvedValue(3);
+    processBatch.mockResolvedValue({ processed: 3, failed: 0, skipped: 0 });
     getHealthSummary.mockReset();
     getHealthSummary.mockResolvedValue({
       pendingEvents: 0,
@@ -68,8 +68,12 @@ describe('event worker route auth', () => {
     expect(await res.json()).toMatchObject({
       ok: true,
       processed: 3,
-      queue: { pendingEvents: 0, dlqCount: 0 },
+      failed: 0,
+      skipped: 0,
+      queueDepth: 0,
+      dlqDepth: 0,
+      nextRecommendedRunSeconds: 300,
     });
-    expect(processBatch).toHaveBeenCalledWith(50, 5);
+    expect(processBatch).toHaveBeenCalledWith(25, 5);
   });
 });

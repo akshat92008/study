@@ -296,8 +296,13 @@ export async function routeTextGeneration(
   userPrompt: string,
   temperature = 0.7,
   maxTokens = 2048,
-  reservationId?: string
+  reservationId?: string,
+  budgetMode: 'fast' | 'quality' = 'quality'
 ): Promise<string> {
+  if (process.env.AI_DISABLED === 'true') {
+    return 'AI features are temporarily paused for maintenance. Please check back shortly.';
+  }
+
   const providers = await getPrioritizedProviders(taskType);
   const fullSystem = systemPrompt + SECURITY_BOUNDARY;
   
@@ -328,15 +333,15 @@ if (!config || !config.apiKey) {
       
       if (providerName === 'cloudflare') {
         result = await callCloudflare(
-          config, config.models.quality, messages, false
+          config, config.models[budgetMode], messages, false
         ) as string;
       } else if (providerName === 'google') {
         result = await callGoogle(
-          config, config.models.quality, messages, false
+          config, config.models[budgetMode], messages, false
         ) as string;
       } else {
         result = await callOpenAICompatible(
-          config, config.models.quality, messages,
+          config, config.models[budgetMode], messages,
           temperature, maxTokens, false
         );
       }
@@ -388,6 +393,10 @@ export async function routeJSONGeneration<T>(
   schema?: any,
   reservationId?: string
 ): Promise<T> {
+  if (process.env.AI_DISABLED === 'true') {
+    throw new Error('AI features are temporarily paused for maintenance. Please check back shortly.');
+  }
+
   const providers = await getPrioritizedProviders('json');
   const fullSystem = systemPrompt + SECURITY_BOUNDARY + 
     '\n\nIMPORTANT: Respond ONLY with valid JSON. No markdown. No explanation. No code fences.';
@@ -489,8 +498,14 @@ export async function* routeStreamGeneration(
   systemPrompt: string,
   userPrompt: string | Array<{ role: string; content: string }>,
   temperature = 0.7,
-  reservationId?: string
+  reservationId?: string,
+  budgetMode: 'fast' | 'quality' = 'quality'
 ): AsyncGenerator<string> {
+  if (process.env.AI_DISABLED === 'true') {
+    yield 'AI features are temporarily paused for maintenance. Please check back shortly.';
+    return;
+  }
+
   const providers = await getPrioritizedProviders('stream');
   const fullSystem = systemPrompt + SECURITY_BOUNDARY;
 
@@ -524,15 +539,15 @@ if (!config || !config.apiKey) {
 
       if (providerName === 'cloudflare') {
         generator = await callCloudflare(
-          config, config.models.quality, messages, true
+          config, config.models[budgetMode], messages, true
         ) as AsyncGenerator<string>;
       } else if (providerName === 'google') {
         generator = await callGoogle(
-          config, config.models.quality, messages, true
+          config, config.models[budgetMode], messages, true
         ) as AsyncGenerator<string>;
       } else {
         generator = await callOpenAICompatible(
-          config, config.models.quality, messages,
+          config, config.models[budgetMode], messages,
           temperature, 2048, true
         ) as AsyncGenerator<string>;
       }

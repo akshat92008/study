@@ -1,6 +1,7 @@
 export const RAG_DEFAULTS = {
-  maxFileMb: 20,
-  maxFilesPerUser: 5,
+  maxFileMb: 10,
+  maxFilesPerUser: 20,
+  maxDailyUploads: 3,
   maxChunksPerFile: 160,
   chunkSizeChars: 3200,
   chunkOverlapChars: 450,
@@ -20,6 +21,7 @@ export function getRagConfig() {
   return {
     maxFileBytes: numberFromEnv('RAG_MAX_FILE_MB', RAG_DEFAULTS.maxFileMb, 1) * 1024 * 1024,
     maxFilesPerUser: numberFromEnv('RAG_MAX_FILES_PER_USER', RAG_DEFAULTS.maxFilesPerUser, 1),
+    maxDailyUploads: numberFromEnv('RAG_MAX_DAILY_UPLOADS', RAG_DEFAULTS.maxDailyUploads, 1),
     maxChunksPerFile: numberFromEnv('RAG_MAX_CHUNKS_PER_FILE', RAG_DEFAULTS.maxChunksPerFile, 1),
     chunkSizeChars: numberFromEnv('RAG_CHUNK_SIZE_CHARS', RAG_DEFAULTS.chunkSizeChars, 500),
     chunkOverlapChars: numberFromEnv('RAG_CHUNK_OVERLAP_CHARS', RAG_DEFAULTS.chunkOverlapChars, 0),

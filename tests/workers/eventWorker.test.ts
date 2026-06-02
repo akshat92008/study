@@ -42,7 +42,10 @@ vi.mock('@/lib/supabase/admin', () => ({
       }),
       update: vi.fn((row: any) => {
         recordUpdate(table, row);
-        return { eq: vi.fn(async () => ({ data: null, error: null })) };
+        return {
+          eq: vi.fn(async () => ({ data: null, error: null })),
+          in: vi.fn(async () => ({ data: null, error: null })),
+        };
       }),
       select: vi.fn(() => ({
         eq: vi.fn(async () => ({
@@ -113,9 +116,10 @@ describe('EventWorkerService', () => {
   it('moves exhausted consumer failures to the DLQ', async () => {
     const { EventWorkerService } = await import('@/lib/events/worker');
 
-    const processed = await EventWorkerService.processBatch(1, 5);
+    const result = await EventWorkerService.processBatch(1, 5);
 
-    expect(processed).toBe(1);
+    expect(result.failed).toBe(1);
+    expect(result.processed).toBe(0);
     expect(inserts.event_dlq?.[0]).toMatchObject({
       event_id: 'event-1',
       user_id: 'user-1',
@@ -127,6 +131,20 @@ describe('EventWorkerService', () => {
       status: 'DLQ',
       retry_count: 6,
       last_error: 'atlas failed',
+    }));
+  });
+
+  it('skips leases and releases them when maxRuntimeMs is reached', async () => {
+    const { EventWorkerService } = await import('@/lib/events/worker');
+
+    // Passing maxRuntimeMs = 0 ensures the time limit is immediately reached
+    const result = await EventWorkerService.processBatch(1, 5, 0);
+
+    expect(result).toMatchObject({ processed: 0, failed: 0, skipped: 1 });
+    expect(updates.consumer_locks).toContainEqual(expect.objectContaining({
+      status: 'PENDING',
+      locked_at: null,
+      locked_by: null,
     }));
   });
 });

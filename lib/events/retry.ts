@@ -8,8 +8,8 @@ export async function retryFailedEvents(): Promise<{
   succeeded: number;
   permanentlyFailed: number;
 }> {
-  const processed = await EventWorkerService.processBatch(50, 5);
-  return { retried: processed, succeeded: processed, permanentlyFailed: 0 };
+  const result = await EventWorkerService.processBatch(50, 5);
+  return { retried: result.processed, succeeded: result.processed, permanentlyFailed: result.failed };
 }
 
 export async function getDeadLetterCount(userId?: string): Promise<number> {
@@ -92,4 +92,49 @@ export async function recoverOrphanedEvents(): Promise<{ recovered: number }> {
   }
 
   return { recovered };
+}
+
+export async function retryDlqEvents(): Promise<{ recovered: number }> {
+  const supabase = createAdminClient();
+  
+  // 1. Find all DLQ locks
+  const { data: locks, error: lockErr } = await supabase
+    .from('consumer_locks')
+    .select('id, event_id')
+    .eq('status', 'DLQ');
+    
+  if (lockErr) {
+    logger.error('Failed to query DLQ locks', lockErr);
+    return { recovered: 0 };
+  }
+  
+  if (!locks || locks.length === 0) return { recovered: 0 };
+  
+  const lockIds = locks.map(l => l.id);
+  const eventIds = Array.from(new Set(locks.map(l => l.event_id)));
+  
+  // 2. Move locks back to PENDING
+  await supabase
+    .from('consumer_locks')
+    .update({
+      status: 'PENDING',
+      retry_count: 0,
+      next_attempt_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
+    })
+    .in('id', lockIds);
+    
+  // 3. Delete from DLQ
+  await supabase
+    .from('event_dlq')
+    .delete()
+    .in('event_id', eventIds);
+    
+  // 4. Update parent event status to PENDING
+  await supabase
+    .from('event_queue')
+    .update({ status: 'PENDING' })
+    .in('id', eventIds);
+    
+  return { recovered: locks.length };
 }

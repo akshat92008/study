@@ -23,6 +23,7 @@
     "smoke:agentic": "ts-node scripts/agentic-smoke-check.ts",
     "smoke:beta100": "ts-node scripts/beta100-smoke-check.ts",
     "verify:schema": "ts-node scripts/verify-schema.ts",
+    "schema:check": "ts-node scripts/schema-sanity-check.ts",
     "verify:local": "SKIP_ENV_VALIDATION=1 npm run typecheck && npm run lint && npm test && npm run build && SKIP_ENV_VALIDATION=1 npm run smoke:mvp -- --mode=local",
     "verify:db": "npx tsx scripts/verify-db.ts",
     "verify:production": "NODE_ENV=production ts-node scripts/env-preflight.ts --mode=production && npm run typecheck && npm run lint && npm test && npm run build",

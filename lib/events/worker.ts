@@ -40,14 +40,15 @@ export class EventWorkerService {
   /**
    * Processes a batch of events by acquiring a lease and routing to the respective consumer.
    */
-  static async processBatch(limit: number = 50, leaseTimeoutMinutes: number = 5) {
+  static async processBatch(limit: number = 25, leaseTimeoutMinutes: number = 5, maxRuntimeMs: number = 8500, startTimeMs: number = Date.now()) {
     const supabase = createAdminClient();
     const workerId = crypto.randomUUID();
+    const actualLimit = Math.min(limit, 50);
 
     // 1. Acquire Leases
     const { data: leases, error: leaseErr } = await supabase.rpc('acquire_event_leases', {
       p_worker_id: workerId,
-      p_limit: limit,
+      p_limit: actualLimit,
       p_lease_timeout: `${leaseTimeoutMinutes} minutes`,
     });
 
@@ -57,7 +58,7 @@ export class EventWorkerService {
     }
 
     if (!leases || leases.length === 0) {
-      return 0; // No events to process
+      return { processed: 0, failed: 0, skipped: 0 }; // No events to process
     }
     logger.info('Event worker leases acquired', {
       workerId,
@@ -65,9 +66,7 @@ export class EventWorkerService {
       leaseCount: leases.length,
     });
 
-    await this.processLeasesWithBoundedConcurrency(leases, workerId);
-
-    return leases.length;
+    return await this.processLeasesWithBoundedConcurrency(leases, workerId, maxRuntimeMs, startTimeMs);
   }
 
   static async getHealthSummary(): Promise<QueueHealthSummary> {
@@ -134,18 +133,53 @@ export class EventWorkerService {
     };
   }
 
-  private static async processLeasesWithBoundedConcurrency(leases: any[], workerId: string) {
+  private static async processLeasesWithBoundedConcurrency(leases: any[], workerId: string, maxRuntimeMs: number, startTimeMs: number) {
     const concurrency = this.getConcurrencyLimit();
     let nextIndex = 0;
+    
+    let processed = 0;
+    let failed = 0;
+    let skipped = 0;
+
+    const supabase = createAdminClient();
 
     const workers = Array.from({ length: Math.min(concurrency, leases.length) }, async () => {
       while (nextIndex < leases.length) {
+        if (Date.now() - startTimeMs >= maxRuntimeMs) {
+          break; // Let the loop exit, we will skip the rest
+        }
+
         const lease = leases[nextIndex++];
-        await this.processLease(lease, workerId);
+        const success = await this.processLease(lease, workerId);
+        if (success) {
+          processed++;
+        } else {
+          failed++;
+        }
       }
     });
 
     await Promise.all(workers);
+
+    // Any leases that were not processed due to timeout must be released
+    const skippedLeases = leases.slice(nextIndex);
+    if (skippedLeases.length > 0) {
+      skipped = skippedLeases.length;
+      logger.warn('Worker time limit reached, releasing skipped leases', { feature: 'event-worker', skippedCount: skipped });
+      const lockIds = skippedLeases.map(l => l.lock_id);
+      
+      await supabase
+        .from('consumer_locks')
+        .update({
+          status: 'PENDING',
+          locked_at: null,
+          locked_by: null,
+          lease_expires_at: null
+        })
+        .in('id', lockIds);
+    }
+
+    return { processed, failed, skipped };
   }
 
   private static getConcurrencyLimit() {
@@ -154,7 +188,7 @@ export class EventWorkerService {
     return Math.max(1, Math.min(MAX_CONCURRENCY, Math.floor(configured)));
   }
 
-  private static async processLease(lease: any, workerId: string) {
+  private static async processLease(lease: any, workerId: string): Promise<boolean> {
     const supabase = createAdminClient();
     const start = Date.now();
     const traceId = lease.event_metadata?.trace_id || lease.event_id;
@@ -220,6 +254,7 @@ export class EventWorkerService {
         durationMs: Date.now() - start,
         resultStatus: result.status,
       });
+      return true;
     } catch (err: any) {
       Metrics.eventConsumer(lease.consumer_name, lease.event_type, Date.now() - start, false);
       const errorMsg = err instanceof Error ? err.message : String(err);
@@ -251,6 +286,7 @@ export class EventWorkerService {
         durationMs: Date.now() - start,
         error: errorMsg,
       });
+      return false;
     }
   }
 

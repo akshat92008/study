@@ -130,7 +130,7 @@ describe('EventWorkerService CHAT_MESSAGE_PROCESSED routing', () => {
     const { EventWorkerService } = await import('@/lib/events/worker');
     const processed = await EventWorkerService.processBatch(1, 5);
 
-    expect(processed).toBe(1);
+    expect(processed.processed).toBe(1);
     expect(state.processChatSideEffects).toHaveBeenCalledWith(expect.objectContaining({
       userId: '00000000-0000-0000-0000-000000000001',
       sessionId: 'session-1',
@@ -149,7 +149,7 @@ describe('EventWorkerService CHAT_MESSAGE_PROCESSED routing', () => {
     const { EventWorkerService } = await import('@/lib/events/worker');
     const processed = await EventWorkerService.processBatch(1, 5);
 
-    expect(processed).toBe(1);
+    expect(processed.failed).toBe(1);
     expect(state.processChatSideEffects).not.toHaveBeenCalled();
     expect(state.updates.consumer_locks).toContainEqual(expect.objectContaining({
       status: 'RETRY_SCHEDULED',

@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server';
 import { processEventWorkerRoute } from '@/lib/events/worker-route';
 
-export const maxDuration = 60;
+export const maxDuration = 10;
 
 export async function POST(req: NextRequest) {
   return processEventWorkerRoute(req);

@@ -136,6 +136,8 @@ export async function finalizeChatTurn(input: FinalizeChatTurnInput): Promise<Fi
       },
     });
 
+    logger.info('Chat request completed', { userId: input.userId, feature: 'chat', idempotencyKey: input.idempotencyKey });
+
     return {
       assistantMessageId: assistant.id,
       eventId,
@@ -143,10 +145,11 @@ export async function finalizeChatTurn(input: FinalizeChatTurnInput): Promise<Fi
     };
   } catch (error) {
     await releaseBudgetOnce(error instanceof Error ? error.message : 'chat_turn_finalization_failed');
-    logger.error('Chat turn finalization failed', error, {
+    logger.error('Chat request failed', error, {
       userId: input.userId,
       sessionId: input.sessionId,
-      feature: 'chat-turn-finalizer',
+      feature: 'chat',
+      idempotencyKey: input.idempotencyKey,
     });
     throw error;
   }

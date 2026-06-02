@@ -86,7 +86,7 @@ describe('MVP core loop event routing', () => {
 
     const processed = await EventWorkerService.processBatch(2, 5);
 
-    expect(processed).toBe(2);
+    expect(processed.processed).toBe(2);
     expect(atlas).toHaveBeenCalledWith('user-1', expect.objectContaining({ gapFound: 'Acceleration definition' }));
     expect(memory).toHaveBeenCalledWith('user-1', expect.objectContaining({ gapFound: 'Acceleration definition' }));
     expect(command).not.toHaveBeenCalled();

@@ -1,8 +1,10 @@
 {
+  "_comment": "Vercel Hobby plan only supports 1 cron job per day. This is a fallback backup.",
+  "_comment_setup": "For 5-minute queue processing, use external free tier of cron-job.org pointing to /api/cron/process-events with Bearer CRON_SECRET.",
   "crons": [
     {
       "path": "/api/cron/process-events",
-      "schedule": "*/5 * * * *"
+      "schedule": "0 0 * * *"
     }
   ]
 }

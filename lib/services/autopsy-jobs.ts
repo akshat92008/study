@@ -11,6 +11,7 @@ import {
   type BudgetReservation,
 } from '@/lib/ai/cost-guard';
 import { EventDispatcher } from '@/lib/events/orchestrator';
+import { consumeUsageLimit } from '@/lib/utils/billing';
 import { logger } from '@/lib/utils/logger';
 import { getPromptVersion } from '@/lib/ai/prompt-version';
 import { recordAgentAction } from '@/lib/agents/agent-runtime';
@@ -166,6 +167,20 @@ export async function processAutopsyJob(userId: string, jobId: string): Promise<
   let budgetReservation: BudgetReservation | null = null;
   const estimatedPromptTokens = estimatePromptTokens(fileData);
   const model = fileData.kind === 'text' ? 'router:flash+pro' : 'router:multimodal+pro';
+
+  const usageGate = await consumeUsageLimit(userId, 'expensive_operations_daily');
+  if (!usageGate.allowed) {
+    await supabase
+      .from('autopsy_jobs')
+      .update({
+        status: 'failed',
+        error_message: 'Daily expensive operations limit reached.',
+        updated_at: new Date().toISOString(),
+      })
+      .eq('id', job.id)
+      .eq('user_id', userId);
+    throw new Error('Daily expensive operations limit reached.');
+  }
 
   try {
     budgetReservation = await reserveBudgetForModelCall(

@@ -16,9 +16,10 @@ const ENV_VARS: EnvVar[] = [
   { key: 'NEXT_PUBLIC_SUPABASE_ANON_KEY', required: true, description: 'Supabase anon key' },
   { key: 'SUPABASE_SERVICE_ROLE_KEY', required: true, description: 'Supabase service role key (server-side)' },
   { key: 'CRON_SECRET', required: true, description: 'Secret for cron route auth — missing disables all overnight synthesis' },
+  { key: 'ADMIN_EMAILS', required: true, description: 'Comma-separated list of admin emails' },
+  { key: 'GEMINI_API_KEY', required: true, description: 'Google Gemini API key — used for embeddings and fast generation' },
 
   // Recommended — graceful degradation possible but features degrade
-  { key: 'GEMINI_API_KEY', required: false, description: 'Google Gemini API key — used for embeddings and fast generation' },
   { key: 'UPSTASH_REDIS_REST_URL', required: false, description: 'Upstash Redis URL for rate limiting and cache' },
   { key: 'UPSTASH_REDIS_REST_TOKEN', required: false, description: 'Upstash Redis Token' },
   { key: 'CEREBRAS_API_KEY', required: false, description: 'Cerebras fastest inference (optional but recommended)' },
@@ -72,10 +73,7 @@ export function validateEnvironment(): void {
       '\nSet these in your .env.local file or Vercel environment settings.\n',
     ].join('\n');
     console.error(message);
-    // In production throw hard. In test/development print and continue.
-    if (process.env.NODE_ENV === 'production') {
-      throw new Error('Critical environment variables missing. See console for details.');
-    }
+    throw new Error('Critical environment variables missing. See console for details.');
   }
 
   const sentryDsn = process.env.SENTRY_DSN;
