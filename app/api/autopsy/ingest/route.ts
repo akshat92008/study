@@ -173,83 +173,26 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
       });
     }
 
-    if (asyncRequested) {
-      const job = await createAutopsyJob({
-        userId,
-        fileData,
-        testName,
-        examType,
-        customScoring,
-        idempotencyKey,
-        source: 'autopsy_ingest',
-        client: supabase,
-      });
+    const job = await createAutopsyJob({
+      userId,
+      fileData,
+      testName,
+      examType,
+      customScoring,
+      idempotencyKey,
+      source: 'autopsy_ingest',
+      client: supabase,
+    });
 
-      return NextResponse.json(
-        {
-          status: job.status,
-          jobId: job.id,
-          autopsyId: job.result_autopsy_id,
-          error: job.error_message,
-        },
-        { status: job.status === 'completed' ? 200 : 202 }
-      );
-    }
-
-    let budgetReservation: BudgetReservation | null = null;
-    const estimatedPromptTokens = fileData.kind === 'text'
-      ? Math.ceil(fileData.text.length / 4)
-      : Math.ceil(Buffer.byteLength(fileData.data, 'base64') / 4);
-    const model = fileData.kind === 'text' ? 'router:flash+pro' : 'router:multimodal+pro';
-
-    try {
-      budgetReservation = await reserveBudgetForModelCall(
-        userId,
-        'autopsy',
-        model,
-        estimatedPromptTokens,
-        2500
-      );
-    } catch (error) {
-      if (isBudgetExceeded(error)) {
-        return apiError(
-          'budget_exceeded',
-          `AUTOPSY is paused for today before any extraction ran. Try again tomorrow or reduce file size. Max upload size is ${Math.round(getMaxUploadBytes() / 1024 / 1024)}MB.`,
-          error.status,
-          {
-            limitUsd: error.limitUsd,
-            estimatedCost: error.estimatedCost,
-          }
-        );
-      }
-      if (isBudgetUnavailable(error)) {
-        return apiError(
-          'budget_unavailable',
-          'AUTOPSY is temporarily paused because AI usage limits could not be verified.',
-          error.status
-        );
-      }
-      throw error;
-    }
-
-    try {
-      const result = await processMockAutopsy(userId, fileData, testName, examType, customScoring, supabase, idempotencyKey);
-      await commitBudgetUsage(budgetReservation.reservationId, {
-        promptTokens: estimatedPromptTokens,
-        completionTokens: Math.ceil(JSON.stringify(result).length / 4),
-        route: '/api/autopsy/ingest',
-        promptVersion: getPromptVersion('autopsy'),
-        promptFamily: 'autopsy_extract',
-        promptSource: 'autopsy_ingest',
-      });
-      return NextResponse.json(result);
-    } catch (error) {
-      await releaseBudgetReservation(
-        budgetReservation.reservationId,
-        error instanceof Error ? error.message : 'autopsy_failed'
-      );
-      throw error;
-    }
+    return NextResponse.json(
+      {
+        status: job.status,
+        jobId: job.id,
+        autopsyId: job.result_autopsy_id,
+        error: job.error_message,
+      },
+      { status: job.status === 'completed' ? 200 : 202 }
+    );
 
   } catch (error: any) {
     if (error instanceof AutopsyNeedsUserInputError || error?.needsUserInput === true) {

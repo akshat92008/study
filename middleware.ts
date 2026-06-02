@@ -13,7 +13,7 @@ export async function middleware(request: NextRequest) {
 
   // Cron routes need secret validation
   if (CRON_ROUTES.some(r => pathname.startsWith(r))) {
-    const secret = process.env.CRON_SECRET;
+    const secret = process.env.INTERNAL_CRON_SECRET || process.env.CRON_SECRET;
     const weakSecrets = new Set([
       "super_secret_cron_token_123",
       "test-secret",
@@ -24,7 +24,7 @@ export async function middleware(request: NextRequest) {
     ]);
     if (
       !secret ||
-      (process.env.NODE_ENV !== "test" && (secret.length < 24 || weakSecrets.has(secret)))
+      (process.env.NODE_ENV !== "test" && (secret.length < 32 || weakSecrets.has(secret)))
     ) {
       return NextResponse.json(
         {

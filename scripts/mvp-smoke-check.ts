@@ -6,8 +6,8 @@ import dotenv from 'dotenv';
 function checkLocalHealth(): Promise<{ statusCode: number | undefined; body: string }> {
   return new Promise((resolve, reject) => {
     const req = http.get('http://localhost:3000/api/health', {
-      headers: process.env.CRON_SECRET
-        ? { Authorization: `Bearer ${process.env.CRON_SECRET}` }
+      headers: process.env.INTERNAL_CRON_SECRET
+        ? { Authorization: `Bearer ${process.env.INTERNAL_CRON_SECRET}` }
         : undefined,
     }, (res) => {
       let body = '';
@@ -59,7 +59,7 @@ async function checkSmoke() {
     'NEXT_PUBLIC_SUPABASE_URL',
     'NEXT_PUBLIC_SUPABASE_ANON_KEY',
     'SUPABASE_SERVICE_ROLE_KEY',
-    'CRON_SECRET',
+    'INTERNAL_CRON_SECRET',
   ];
   
   if (process.env.SKIP_ENV_VALIDATION === '1') {

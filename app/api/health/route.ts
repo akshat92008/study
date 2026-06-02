@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
     'NEXT_PUBLIC_SUPABASE_URL',
     'NEXT_PUBLIC_SUPABASE_ANON_KEY',
     'SUPABASE_SERVICE_ROLE_KEY',
-    'CRON_SECRET',
+    'INTERNAL_CRON_SECRET',
   ];
   const missingEnv = requiredEnv.filter((key) => !process.env[key]);
   checks.env = {

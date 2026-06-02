@@ -12,6 +12,7 @@ export const EVENT_CONSUMERS = [
   'autopsy_agent',
   'planner_agent',
   'command_agent',
+  'command_engine',
 ] as const;
 
 export type EventConsumer = typeof EVENT_CONSUMERS[number];
@@ -78,7 +79,7 @@ export const EVENT_CONSUMER_MATRIX = {
   SESSION_RECOMMENDATION_CREATED: ['mind_agent'],
   LEARNER_STATE_CHANGED: ['planner_agent', 'mind_agent'],
   PLANNER_REPLAN_REQUESTED: ['planner_agent', 'command_agent'],
-  STUDENT_MODEL_SYNC_REQUESTED: ['learning_state_engine'],
+  STUDENT_MODEL_SYNC_REQUESTED: ['learning_state_engine', 'command_engine'],
   PRACTICE_ATTEMPT_RECORDED: [
     'atlas_engine',
     'memory_engine',

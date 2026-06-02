@@ -11,7 +11,7 @@ This document is the final sanity check before onboarding the first 10 external 
 - [ ] `AI_DAILY_BUDGET_CENTS` is set (e.g., `200` for $2/day per user)
 - [ ] `AI_MONTHLY_BUDGET_CENTS` is set (e.g., `1000` for $10/month per user)
 - [ ] `ADMIN_EMAILS` or `ADMIN_USER_IDS` is configured with authorized users.
-- [ ] `INTERNAL_CRON_SECRET` is set and matches worker schedules.
+- [ ] `INTERNAL_INTERNAL_CRON_SECRET` is set and matches worker schedules.
 
 ## 2. Infrastructure & Operations
 - [ ] Database migrations are fully applied (no schema drift).

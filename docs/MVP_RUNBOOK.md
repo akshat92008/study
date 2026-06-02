@@ -8,7 +8,7 @@ This runbook helps founders run, test, demo, and debug the Cognition OS MVP loca
    - `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`
    - `SUPABASE_SERVICE_ROLE_KEY`
    - `GEMINI_API_KEY`
-   - `INTERNAL_CRON_SECRET`
+   - `INTERNAL_INTERNAL_CRON_SECRET`
    - `UPSTASH_REDIS_REST_URL` & `UPSTASH_REDIS_REST_TOKEN` (required for production)
    - `NODE_ENV` (development for local)
 

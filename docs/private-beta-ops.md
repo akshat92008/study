@@ -2,12 +2,12 @@
 
 ## Required GitHub secrets
 - `COGNITION_WORKER_URL`
-- `INTERNAL_CRON_SECRET`
+- `INTERNAL_INTERNAL_CRON_SECRET`
 
 ## Manual worker curl
 ```bash
 curl -X POST "$COGNITION_WORKER_URL" \
-  -H "Authorization: Bearer $INTERNAL_CRON_SECRET" \
+  -H "Authorization: Bearer $INTERNAL_INTERNAL_CRON_SECRET" \
   -H "Content-Type: application/json"
 ```
 

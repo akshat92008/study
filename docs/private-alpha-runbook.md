@@ -8,13 +8,13 @@ Vercel Hobby plan only supports cron once a day. For this 10-user alpha, you MUS
 `POST https://<your-domain>/api/internal/workers/process-events`
 
 **Headers:**
-`Authorization: Bearer <YOUR_CRON_SECRET>`
+`Authorization: Bearer <YOUR_INTERNAL_CRON_SECRET>`
 
 **Frequency:**
 Run this every 1 to 5 minutes.
 
-### Setting `INTERNAL_CRON_SECRET`
-- The `INTERNAL_CRON_SECRET` must be set in your Vercel Environment Variables.
+### Setting `INTERNAL_INTERNAL_CRON_SECRET`
+- The `INTERNAL_INTERNAL_CRON_SECRET` must be set in your Vercel Environment Variables.
 - It is the shared secret that authenticates your external cron runner.
 - Do NOT use the default `super_secret_cron_token_123` in production.
 
@@ -24,7 +24,7 @@ You can check the health of the background system by visiting:
 
 `GET https://<your-domain>/api/admin/system/status`
 
-**Note:** You must either be authenticated as an Admin user, or you can send `Authorization: Bearer <YOUR_CRON_SECRET>` to the endpoint. URL query secrets (`?secret=`) have been disabled for security.
+**Note:** You must either be authenticated as an Admin user, or you can send `Authorization: Bearer <YOUR_INTERNAL_CRON_SECRET>` to the endpoint. URL query secrets (`?secret=`) have been disabled for security.
 
 ### Interpreting Health Status
 

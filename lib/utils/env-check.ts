@@ -26,7 +26,7 @@ export function checkEnvironment(): void {
 
   console.log('[ENV] Active AI providers:', active.join(', '));
 
-  if (!process.env.CRON_SECRET) {
-    console.warn('[ENV] CRON_SECRET not set — daily synthesis cron is unprotected.');
+  if (!process.env.INTERNAL_CRON_SECRET) {
+    console.warn('[ENV] INTERNAL_CRON_SECRET not set — daily synthesis cron is unprotected.');
   }
 }

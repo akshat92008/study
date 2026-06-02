@@ -81,6 +81,7 @@ vi.mock('@/lib/utils/logger', () => ({
 
 describe('EventWorkerService AUTOPSY_UPLOAD_RECEIVED routing', () => {
   beforeEach(() => {
+    vi.stubEnv('ENABLE_AUTOPSY_PROCESSING', 'true');
     state.processAutopsyJob.mockReset();
     state.processAutopsyJob.mockResolvedValue({ id: 'job-1', status: 'completed' });
     state.updates = {};

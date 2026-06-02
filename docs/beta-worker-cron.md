@@ -9,11 +9,11 @@ Cognition OS is transitioning away from the weak, low-duration Vercel Hobby tier
 
 ## Authentication
 
-The endpoint is protected by a Bearer token matching the `INTERNAL_CRON_SECRET` environment variable configured in your Vercel deployment.
+The endpoint is protected by a Bearer token matching the `INTERNAL_INTERNAL_CRON_SECRET` environment variable configured in your Vercel deployment.
 
 **Header:**
 ```
-Authorization: Bearer <YOUR_CRON_SECRET>
+Authorization: Bearer <YOUR_INTERNAL_CRON_SECRET>
 ```
 
 ## Recommended Cron Runners
@@ -38,7 +38,7 @@ jobs:
       - name: Trigger process-events endpoint
         run: |
           curl -X POST "https://${{ secrets.PROD_URL }}/api/internal/workers/process-events" \
-          -H "Authorization: Bearer ${{ secrets.INTERNAL_CRON_SECRET }}"
+          -H "Authorization: Bearer ${{ secrets.INTERNAL_INTERNAL_CRON_SECRET }}"
 ```
 
 ### 2. AWS EventBridge / Lambda

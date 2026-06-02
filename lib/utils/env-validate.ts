@@ -15,7 +15,7 @@ const ENV_VARS: EnvVar[] = [
   { key: 'NEXT_PUBLIC_SUPABASE_URL', required: true, description: 'Supabase project URL' },
   { key: 'NEXT_PUBLIC_SUPABASE_ANON_KEY', required: true, description: 'Supabase anon key' },
   { key: 'SUPABASE_SERVICE_ROLE_KEY', required: true, description: 'Supabase service role key (server-side)' },
-  { key: 'CRON_SECRET', required: true, description: 'Secret for cron route auth — missing disables all overnight synthesis' },
+  { key: 'INTERNAL_CRON_SECRET', required: true, description: 'Secret for cron route auth — missing disables all overnight synthesis' },
   { key: 'ADMIN_EMAILS', required: true, description: 'Comma-separated list of admin emails' },
   { key: 'GEMINI_API_KEY', required: true, description: 'Google Gemini API key — used for embeddings and fast generation' },
 

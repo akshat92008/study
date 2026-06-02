@@ -7,6 +7,13 @@ describe('RAG Limits', () => {
   });
 
   it('uses tight beta safe defaults when env is missing', () => {
+    vi.stubEnv('RAG_MAX_FILE_MB', '');
+    vi.stubEnv('RAG_MAX_FILES_PER_USER', '');
+    vi.stubEnv('RAG_MAX_DAILY_UPLOADS', '');
+    vi.stubEnv('RAG_MAX_CHUNKS_PER_FILE', '');
+    vi.stubEnv('RAG_CHUNK_SIZE_CHARS', '');
+    vi.stubEnv('RAG_TOP_K', '');
+    vi.stubEnv('RAG_MAX_CONTEXT_CHARS', '');
     const config = getRagConfig();
     expect(config.maxFileBytes).toBe(3 * 1024 * 1024);
     expect(config.maxFilesPerUser).toBe(5);

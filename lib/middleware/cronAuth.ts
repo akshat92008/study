@@ -22,10 +22,10 @@ export function validateCronRequest(req: NextRequest): NextResponse | null {
     !secret ||
     (process.env.NODE_ENV !== 'test' && (secret.length < 32 || weakSecrets.has(secret)))
   ) {
-    console.error('[CronAuth] CRON_SECRET not configured or using default!');
+    console.error('[CronAuth] INTERNAL_CRON_SECRET not configured or using default!');
     return apiErrorResponse('cron_not_configured', {
       status: 500,
-      message: 'CRON_SECRET is not configured safely.',
+      message: 'INTERNAL_CRON_SECRET is not configured safely.',
       requestId,
     });
   }

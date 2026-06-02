@@ -2,7 +2,7 @@
 
 ## Required Environment
 
-- `INTERNAL_CRON_SECRET` must be long, random, and at least 24 characters.
+- `INTERNAL_INTERNAL_CRON_SECRET` must be long, random, and at least 24 characters.
 - External cron must `POST` `/api/internal/workers/process-events`.
 - Vercel Hobby daily cron is backup only, not the primary worker.
 - `ENABLE_AGENT_ACTIONS=false` by default. Set it to `true` only after verifying the beta allowlist and kill switch.
@@ -12,7 +12,7 @@
 
 POST: `/api/internal/workers/process-events`
 
-Header: `Authorization: Bearer $INTERNAL_CRON_SECRET`
+Header: `Authorization: Bearer $INTERNAL_INTERNAL_CRON_SECRET`
 
 Cadence:
 
@@ -71,7 +71,7 @@ Pause beta if:
 - [ ] `npm run verify:beta` passes
 - [ ] Supabase migrations applied cleanly
 - [ ] RLS verified
-- [ ] `INTERNAL_CRON_SECRET` configured and not default
+- [ ] `INTERNAL_INTERNAL_CRON_SECRET` configured and not default
 - [ ] External cron is running
 - [ ] `/api/admin/queue/status` works
 - [ ] AI budget limits configured

@@ -9,6 +9,7 @@ describe('cronAuth validation', () => {
 
   it('rejects missing secret', () => {
     vi.stubEnv('INTERNAL_CRON_SECRET', '');
+    vi.stubEnv('CRON_SECRET', '');
     vi.stubEnv('NODE_ENV', 'production');
     const req = new NextRequest('http://localhost/api');
     const res = validateCronRequest(req);
@@ -18,6 +19,7 @@ describe('cronAuth validation', () => {
 
   it('rejects weak secret', () => {
     vi.stubEnv('INTERNAL_CRON_SECRET', 'changeme');
+    vi.stubEnv('CRON_SECRET', '');
     vi.stubEnv('NODE_ENV', 'production');
     const req = new NextRequest('http://localhost/api');
     const res = validateCronRequest(req);
