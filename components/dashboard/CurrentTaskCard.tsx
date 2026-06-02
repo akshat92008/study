@@ -445,7 +445,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
             {/* Natural Beats Player */}
             <div style={{ width: '100%', maxWidth: '360px', borderRadius: 'var(--radius-md)', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.05)', marginTop: 'var(--sp-2)', display: 'flex', justifyContent: 'center' }}>
               <audio controls loop style={{ height: '40px', width: '100%' }}>
-                <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg" />
+                <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg" />
                 Your browser does not support the audio element.
               </audio>
             </div>
