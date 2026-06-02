@@ -296,7 +296,7 @@ export async function recordMasteryEvidence(params: {
     client: supabase,
   });
 
-  await supabase.from('mastery_evidence_ledger').insert({
+  const { error: ledgerError } = await supabase.from('mastery_evidence_ledger').insert({
     user_id: params.userId,
     concept_id: params.conceptId,
     source_type: params.source,
@@ -313,7 +313,9 @@ export async function recordMasteryEvidence(params: {
     },
     reason: params.evidence ?? null,
     idempotency_key: idempotencyKey,
-  }).catch((err: any) => logger.warn('Failed to insert mastery_evidence_ledger', err));
+  });
+
+  if (ledgerError) throw ledgerError;
 
   logger.info('Mastery evidence recorded', {
     userId: params.userId,

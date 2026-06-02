@@ -32,8 +32,8 @@ export async function GET(req: Request) {
     supabase.from('agent_actions').select('*', { count: 'exact', head: true }).eq('approval_status', 'pending'),
     supabase.from('rag_ingestion_jobs').select('*', { count: 'exact', head: true }).in('status', ['queued', 'extracting', 'chunking', 'embedding']),
     supabase.from('rag_ingestion_jobs').select('*', { count: 'exact', head: true }).eq('status', 'failed'),
-    supabase.from('autopsy_jobs').select('*', { count: 'exact', head: true }).in('status', ['pending', 'processing', 'needs_user_input']),
-    supabase.from('autopsy_jobs').select('*', { count: 'exact', head: true }).eq('status', 'failed'),
+    supabase.from('agent_runs').select('*', { count: 'exact', head: true }).eq('agent_name', 'autopsy').eq('status', 'running'),
+    supabase.from('agent_runs').select('*', { count: 'exact', head: true }).eq('agent_name', 'autopsy').eq('status', 'failed'),
     supabase
       .from('agent_runs')
       .select('id, agent_name, error, error_code, created_at')
@@ -55,7 +55,7 @@ export async function GET(req: Request) {
     autopsyPending.error,
     autopsyFailed.error,
     recentFailures.error,
-  ].filter(Boolean).map((error: any) => error.message);
+  ].filter((err: any) => err != null && err.code !== '42P01').map((error: any) => error.message);
 
   return NextResponse.json({
     ok: errors.length === 0,

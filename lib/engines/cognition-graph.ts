@@ -141,6 +141,7 @@ export async function seedConceptsForSubject(userId: string, subject: string, ch
         description: c.description,
         subject,
         chapter,
+        topic: c.name, // Using name as topic or 'General'
         mastery: 'not_started' as const,
         confidence: 'low' as const,
         times_reviewed: 0,

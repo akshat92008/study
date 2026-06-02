@@ -188,6 +188,7 @@ async function run() {
         name: `Beta Concept ${i + 1}`,
         subject: 'Physics',
         chapter: 'Thermodynamics',
+        topic: 'Thermodynamics',
         mastery: 'exposed',
         mastery_score: 12,
       }));

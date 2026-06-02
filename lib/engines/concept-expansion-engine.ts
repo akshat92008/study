@@ -62,6 +62,7 @@ Respond ONLY with a JSON array of strings, where each string is a subtopic name.
         user_id: userId,
         subject: subject,
         chapter: chapter,
+        topic: subtopic,
         name: subtopic,
         mastery: 'not_started',
         confidence: 'low',

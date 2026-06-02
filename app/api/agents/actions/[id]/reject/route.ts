@@ -40,7 +40,7 @@ export async function POST(req: NextRequest, context: RouteContext) {
         data: { actionId: action.id, targetId: action.target_id, evidence: action.evidence },
         metadata: { source: 'agent_approval_api' },
         idempotency_key: `autopsy_mistake_rejected:${action.id}`
-      }).catch(err => console.warn('Failed to publish AUTOPSY_MISTAKE_REJECTED', err));
+      });
     }
 
     return NextResponse.json({ action }, { headers: { 'x-request-id': requestId } });

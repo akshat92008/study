@@ -142,6 +142,7 @@ export async function seedFullSyllabusForUser(
         user_id: userId,
         subject,
         chapter,
+        topic: mc.name, // Using name as topic or 'General'
         name: mc.name,
         description: mc.description,
         mastery: 'not_started' as const,
