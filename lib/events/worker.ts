@@ -213,8 +213,8 @@ export class EventWorkerService {
       .select('id')
       .single();
 
+    let result: ConsumerResult = { status: 'HANDLED' };
     try {
-      let result: ConsumerResult = { status: 'HANDLED' };
       await withCorrelationId(traceId, async () => {
         result = await runAgenticConsumer(lease, () => this.routeToConsumer(lease));
       });
