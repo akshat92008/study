@@ -106,6 +106,39 @@ export async function completeLearningSession(
   });
 
   if (sessionError || !rpcResult?.session_id) {
+    // If it's a unique constraint violation on the completion key, handle it as idempotency hit due to a race condition
+    if (sessionError?.code === '23505' && completionKey) {
+      logger.info('Session completion idempotency hit via race condition constraint', {
+        userId: input.userId,
+        feature: 'session-completion',
+      });
+      const { data: existing } = await supabase
+        .from('study_sessions')
+        .select('id, subject, chapter, metadata')
+        .eq('user_id', input.userId)
+        .eq('metadata->>completion_key', completionKey)
+        .maybeSingle();
+
+      if (existing?.id) {
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('streak_days')
+          .eq('id', input.userId)
+          .maybeSingle();
+
+        return {
+          sessionId: existing.id,
+          conceptId: existing.metadata?.conceptId ?? null,
+          streakDays: Number(profile?.streak_days ?? 0),
+          streakChanged: false,
+          subject: existing.subject || subject,
+          chapter: existing.chapter || chapter,
+          understood,
+          cardsCreated,
+        };
+      }
+    }
+
     logger.error('Session completion RPC failed', sessionError, {
       userId: input.userId,
       feature: 'session-completion',
