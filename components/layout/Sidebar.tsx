@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import {
   MessageSquare, Zap, X, ChevronLeft, ChevronRight, LogOut,
-  Brain, RefreshCw, Activity, Home, CreditCard
+  Brain, RefreshCw, Activity, Home, CreditCard, Database, MessageCircle
 } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
 import { signOut } from '@/lib/actions/auth';
@@ -29,13 +29,21 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
     { label: 'MIND', href: '/chat', icon: MessageSquare, feature: 'ENABLE_CHAT' as const },
     { label: 'Test Analysis', href: '/autopsy', icon: Activity, feature: 'ENABLE_AUTOPSY_UI' as const },
     { label: 'Progress', href: '/cognition', icon: Brain, feature: 'ENABLE_ATLAS_UI' as const },
-    { label: 'Revision Due', href: '/revision', icon: RefreshCw },
+    { label: 'Knowledge Base', href: '/knowledge', icon: Database },
   ].filter(item => !item.feature || isFeatureEnabled(item.feature));
 
-  useEffect(() => {
-    // Goals removed for MVP
-  }, []);
+  const [sessions, setSessions] = useState<{ id: string; title: string; updated_at: string }[]>([]);
 
+  useEffect(() => {
+    fetch('/api/chat/sessions')
+      .then(res => res.json())
+      .then(data => {
+        if (data.sessions) {
+          setSessions(data.sessions);
+        }
+      })
+      .catch(console.error);
+  }, []);
 
   return (
     <aside
@@ -184,7 +192,54 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
           })}
         </div>
 
-        {/* Learning Goals Section removed for MVP */}
+        {/* Chat History Section */}
+        {sessions.length > 0 && (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-1)', marginTop: 'var(--sp-2)' }}>
+            {!isSidebarCollapsed && (
+              <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-bold)', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)', padding: '0 var(--sp-3)', marginBottom: 4 }}>
+                Conversations
+              </span>
+            )}
+            {sessions.map((session) => {
+              const isActive = pathname === `/chat/sessions/${session.id}`;
+              return (
+                <Link
+                  key={session.id}
+                  href={`/chat/sessions/${session.id}`}
+                  className="nav-link-base"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 'var(--sp-3)',
+                    padding: 'var(--sp-2) var(--sp-3)',
+                    borderRadius: 'var(--radius-md)',
+                    color: isActive ? 'var(--accent-blue)' : 'var(--text-secondary)',
+                    background: isActive ? 'var(--accent-blue-dim)' : 'transparent',
+                    textDecoration: 'none',
+                    transition: 'all 0.2s',
+                  }}
+                  title={isSidebarCollapsed ? session.title : undefined}
+                  onClick={() => setMobileSidebarOpen(false)}
+                >
+                  <MessageCircle size={16} strokeWidth={isActive ? 2.5 : 2} style={{ flexShrink: 0 }} />
+                  {!isSidebarCollapsed && (
+                    <span style={{
+                      fontSize: 'var(--fs-xs)',
+                      fontWeight: isActive ? 'var(--fw-semibold)' : 'var(--fw-medium)',
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      opacity: 1,
+                      transition: 'opacity 0.2s',
+                    }}>
+                      {session.title || 'New Chat'}
+                    </span>
+                  )}
+                </Link>
+              );
+            })}
+          </div>
+        )}
 
       </nav>
 
