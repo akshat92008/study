@@ -167,7 +167,8 @@ export async function POST(req: NextRequest) {
       }, { status: 202, headers: { 'x-request-id': requestId } });
     }
 
-    const { error: jobError } = await supabase
+    const adminClient = await import('@/lib/supabase/admin').then(m => m.createAdminClient());
+    const { error: jobError } = await adminClient
       .from('rag_ingestion_jobs')
       .upsert({
         user_id: user.id,
@@ -177,7 +178,7 @@ export async function POST(req: NextRequest) {
         metadata: { mimeType },
       }, { onConflict: 'user_id,material_id,idempotency_key' });
 
-    if (jobError) throw jobError;
+    if (jobError) { console.error("JOB ERROR DETAILS:", jobError); throw jobError; }
 
     await EventDispatcher.publish({
       user_id: user.id,

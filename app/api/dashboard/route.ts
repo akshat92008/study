@@ -41,10 +41,10 @@ export async function GET(request: Request) {
         .eq('user_id', user.id),
       getMistakeAnalytics(user.id),
       supabase.from('concepts').select('subject, chapter').eq('user_id', user.id),
-      supabase.from('study_tasks')
-        .select('id, title, is_completed, subject, chapter, estimated_minutes')
+      supabase.from('daily_microtasks')
+        .select('id, title, status, subject, topic, estimated_minutes')
         .eq('user_id', user.id)
-        .eq('scheduled_date', localDate)
+        .eq('task_date', localDate)
         .order('priority', { ascending: true })
     ]);
 
@@ -64,9 +64,9 @@ export async function GET(request: Request) {
       tasks: (tasksRes.data || []).map((t: any) => ({
         id: t.id,
         title: t.title,
-        completed: t.is_completed,
+        completed: t.status === 'done',
         subject: t.subject,
-        chapter: t.chapter,
+        chapter: t.topic,
         estimatedMinutes: t.estimated_minutes
       })),
     }, { headers: { 'x-request-id': requestId } });

@@ -283,11 +283,11 @@ export async function GET(request?: Request): Promise<NextResponse> {
         .in('mastery', ['mastered', 'automated', 'proficient']),
 
       supabase
-        .from('study_tasks')
-        .select('title, type, subject, chapter, estimated_minutes, priority, notes')
+        .from('daily_microtasks')
+        .select('title, type, subject, topic, estimated_minutes, priority, source')
         .eq('user_id', user.id)
-        .eq('scheduled_date', localDate)
-        .eq('is_completed', false)
+        .eq('task_date', localDate)
+        .eq('status', 'pending')
         .order('priority', { ascending: true })
         .order('created_at', { ascending: true })
         .limit(5),
@@ -320,7 +320,15 @@ export async function GET(request?: Request): Promise<NextResponse> {
       weakConcepts: weakConceptsRes.data ?? [],
       sessionCount,
       studentModel: studentModelRes.data ?? null,
-      commandOpenTasks: commandTasksRes.data ?? [],
+      commandOpenTasks: (commandTasksRes.data ?? []).map((t: any) => ({
+        title: t.title,
+        type: t.type,
+        subject: t.subject,
+        chapter: t.topic,
+        estimated_minutes: t.estimated_minutes,
+        priority: t.priority,
+        notes: t.source,
+      })),
       now: generatedAt,
     };
 
