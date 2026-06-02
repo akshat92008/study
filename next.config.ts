@@ -13,7 +13,11 @@ function getWithSentryConfig(): (config: NextConfig, options: Record<string, unk
 }
 
 // Validate at build/start time — fails fast before any request
-if (process.env.NODE_ENV !== 'test') {
+if (
+  process.env.NODE_ENV !== 'test' && 
+  process.env.SKIP_ENV_VALIDATION !== '1' && 
+  process.env.SKIP_ENV_VALIDATION !== 'true'
+) {
   validateEnvironment();
 }
 

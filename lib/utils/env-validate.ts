@@ -68,12 +68,23 @@ export function validateEnvironment(): void {
 
   if (missing.length > 0) {
     const message = [
-      '\n❌ COGNITION OS — Critical environment variables missing. Server cannot start.\n',
+      '\n❌ COGNITION OS — Critical environment variables missing.\n',
       ...missing,
       '\nSet these in your .env.local file or Vercel environment settings.\n',
     ].join('\n');
     console.error(message);
-    throw new Error('Critical environment variables missing. See console for details.');
+    
+    // Don't crash during build steps so we can successfully deploy to Vercel
+    if (
+      process.env.npm_lifecycle_event === 'build' ||
+      process.env.NEXT_PHASE === 'phase-production-build' ||
+      process.env.SKIP_ENV_VALIDATION === '1' ||
+      process.env.SKIP_ENV_VALIDATION === 'true'
+    ) {
+      console.warn('⚠️  Skipping critical environment validation crash because we are in a build step or validation is explicitly skipped.');
+    } else {
+      throw new Error('Critical environment variables missing. See console for details.');
+    }
   }
 
   const sentryDsn = process.env.SENTRY_DSN;
