@@ -186,7 +186,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
                   <Button
                     size="sm"
                     variant="secondary"
-                    disabled={generatingPodcastId !== null}
+                    disabled={generatingPodcastId !== null || mat.status !== 'ready'}
                     onClick={() => handleGeneratePodcast(mat.id)}
                   >
                     {generatingPodcastId === mat.id ? (
@@ -199,7 +199,9 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
                       </>
                     )}
                   </Button>
-                  <Badge color="cyan">Vectorized</Badge>
+                  <Badge color={mat.status === 'ready' ? 'cyan' : mat.status === 'failed' ? 'red' : 'yellow'}>
+                    {mat.status === 'ready' ? 'Vectorized' : mat.status === 'failed' ? 'Failed' : 'Processing'}
+                  </Badge>
                 </div>
               </div>
             ))}

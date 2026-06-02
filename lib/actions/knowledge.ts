@@ -54,8 +54,8 @@ export async function getMaterials() {
   if (!user) return [];
 
   const { data } = await supabase
-    .from('materials')
-    .select('id, title, source_type, created_at')
+    .from('study_materials')
+    .select('id, title, source_type, created_at, status')
     .eq('user_id', user.id)
     .order('created_at', { ascending: false });
 

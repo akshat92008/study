@@ -1,7 +1,7 @@
 export const RAG_DEFAULTS = {
   maxFileMb: 3,
   maxFilesPerUser: 5,
-  maxDailyUploads: 1,
+  maxDailyUploads: 5,
   maxChunksPerFile: 40,
   chunkSizeChars: 2500,
   chunkOverlapChars: 450,
