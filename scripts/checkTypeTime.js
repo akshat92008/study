@@ -8,7 +8,7 @@ function runCommand(command) {
 const start = Date.now();
 rmSync('.next/types', { recursive: true, force: true });
 // Run the local TypeScript binary through pnpm; no network access required.
-runCommand('pnpm exec tsc --noEmit');
+runCommand('npm run typecheck');
 const durationSec = (Date.now() - start) / 1000;
 console.log(`TypeScript type-check completed in ${durationSec.toFixed(2)} seconds`);
 if (durationSec > 90) {
