@@ -25,13 +25,9 @@
 
 import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { generateJSON } from '@/lib/ai/provider-client';
+
 import { z } from 'zod';
-import {
-  isBudgetExceeded,
-  isBudgetUnavailable,
-  reserveBudgetForModelCall,
-} from '@/lib/ai/cost-guard';
+import { budgetedGenerateJSON } from '@/lib/ai/budgeted';
 import {
   selectSessionCard,
   type SelectorInput,
@@ -349,30 +345,22 @@ export async function GET(request?: Request): Promise<NextResponse> {
     const prosePrompt = buildProsePrompt(selection, profile, masteryPercent);
 
     try {
-      const reservation = await reserveBudgetForModelCall(
-        user.id,
-        'session-card',
-        'router:json',
-        Math.max(1, Math.ceil(prosePrompt.length / 4)),
-        200
-      );
+      const raw = await budgetedGenerateJSON<LLMCardProseType>({
+        userId: user.id,
+        feature: 'session-card',
+        route: 'session-card:prose',
+        model: 'flash',
+        systemPrompt: 'You are a study coach. Return ONLY valid JSON, no markdown or explanation.',
+        userPrompt: prosePrompt,
+        schema: LLMCardProse,
+        maxOutputTokens: 200
+      });
 
-      const raw = await generateJSON<LLMCardProseType>(
-        'flash',
-        'You are a study coach. Return ONLY valid JSON, no markdown or explanation.',
-        prosePrompt,
-        undefined,
-        0.3,
-        3,
-        reservation.reservationId
-      );
-
-      const parsed = LLMCardProse.safeParse(raw);
-      if (parsed.success) {
-        llmProse = parsed.data;
+      if (raw) {
+        llmProse = raw;
       }
     } catch (err: any) {
-      if (isBudgetExceeded(err) || isBudgetUnavailable(err)) {
+      if (err.message?.includes('budget') || err.message?.includes('exceeded')) {
         logger.warn('session-card: LLM prose skipped by AI budget guard', {
           userId: user.id,
         });

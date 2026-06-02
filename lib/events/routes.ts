@@ -19,6 +19,8 @@ export type EventConsumer = typeof EVENT_CONSUMERS[number];
 
 export const EVENT_CONSUMER_MATRIX = {
   CHAT_MESSAGE_PROCESSED: ['chat_side_effect_engine', 'mind_agent'],
+  CHAT_MESSAGE_CREATED: ['chat_side_effect_engine', 'mind_agent'],
+  CHAT_LEARNING_SIGNAL: ['learning_state_engine', 'atlas_agent', 'memory_agent', 'command_agent', 'planner_agent'],
   CHAT_SESSION_SUMMARIZE: ['chat_side_effect_engine'],
   MATERIAL_UPLOADED: ['rag_agent'],
   MATERIAL_INGESTION_REQUESTED: ['rag_agent'],
@@ -28,11 +30,20 @@ export const EVENT_CONSUMER_MATRIX = {
   MIND_ACTION_REQUESTED: ['mind_agent'],
   MIND_CONTEXT_REFRESHED: ['mind_agent'],
   AUTOPSY_UPLOAD_RECEIVED: ['autopsy_engine'],
+  MOCK_TEST_UPLOADED: ['autopsy_engine'],
   AUTOPSY_PROCESSING_COMPLETED: ['autopsy_agent', 'planner_agent'],
+  TEST_ANALYSIS_COMPLETED: ['autopsy_agent', 'planner_agent', 'command_agent'],
   AUTOPSY_MISTAKE_EXTRACTED: ['autopsy_agent'],
   AUTOPSY_MISTAKE_APPROVED: ['atlas_agent', 'memory_agent', 'planner_agent', 'command_agent'],
   AUTOPSY_MISTAKE_REJECTED: ['autopsy_agent'],
   AUTOPSY_MOCK_PROCESSED: [
+    'atlas_engine',
+    'memory_engine',
+    'learning_state_engine',
+    'command_agent',
+    'planner_agent',
+  ],
+  MOCK_TEST_ANALYZED: [
     'atlas_engine',
     'memory_engine',
     'learning_state_engine',
@@ -55,6 +66,7 @@ export const EVENT_CONSUMER_MATRIX = {
   ],
   MEMORY_CARD_REVIEWED: ['learning_state_engine', 'atlas_engine', 'command_agent', 'planner_agent'],
   REVISION_CARD_REVIEWED: ['memory_agent', 'atlas_agent', 'planner_agent'],
+  REVISION_COMPLETED: ['memory_agent', 'atlas_agent', 'planner_agent', 'command_agent'],
   MEMORY_CARD_CREATE_REQUESTED: ['memory_agent'],
   ATLAS_MASTERY_UPDATED: ['learning_state_engine', 'command_agent', 'planner_agent'],
   ATLAS_MASTERY_UPDATE_REQUESTED: ['atlas_agent'],
@@ -69,6 +81,13 @@ export const EVENT_CONSUMER_MATRIX = {
   PLANNER_REPLAN_REQUESTED: ['planner_agent', 'command_agent'],
   STUDENT_MODEL_SYNC_REQUESTED: ['learning_state_engine', 'command_engine'],
   PRACTICE_ATTEMPT_RECORDED: [
+    'atlas_engine',
+    'memory_engine',
+    'learning_state_engine',
+    'command_agent',
+    'planner_agent',
+  ],
+  PRACTICE_ATTEMPT_SUBMITTED: [
     'atlas_engine',
     'memory_engine',
     'learning_state_engine',

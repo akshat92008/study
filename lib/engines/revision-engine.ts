@@ -2,7 +2,6 @@ import { createEmptyCard, fsrs, Rating, State, type Card as FSRSCard } from 'ts-
 import { createHash } from 'node:crypto';
 import { createClient } from '@/lib/supabase/server';
 import { createAdminClient } from '@/lib/supabase/admin';
-import { generateJSON } from '@/lib/ai/provider-client';
 import { retrieveRagContext } from '@/lib/rag/retrieval';
 import { FlashcardBatchSchema } from './memory-schemas';
 import { logger } from '@/lib/utils/logger';

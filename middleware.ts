@@ -14,7 +14,18 @@ export async function middleware(request: NextRequest) {
   // Cron routes need secret validation
   if (CRON_ROUTES.some(r => pathname.startsWith(r))) {
     const secret = process.env.CRON_SECRET;
-    if (!secret || secret === "super_secret_cron_token_123") {
+    const weakSecrets = new Set([
+      "super_secret_cron_token_123",
+      "test-secret",
+      "changeme",
+      "change-me",
+      "secret",
+      "cron_secret",
+    ]);
+    if (
+      !secret ||
+      (process.env.NODE_ENV !== "test" && (secret.length < 24 || weakSecrets.has(secret)))
+    ) {
       return NextResponse.json(
         {
           error: "cron_not_configured",

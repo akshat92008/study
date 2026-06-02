@@ -12,7 +12,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { z } from 'zod';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
-import { routeStreamGeneration, routeVisionCall } from '@/lib/ai/router';
+import { budgetedGenerateJSON, budgetedStreamGeneration, budgetedVisionCall } from '@/lib/ai/budgeted';
 import { getMINDContext } from '@/lib/engines/mind-engine';
 import { getMINDSystemPrompt } from '@/lib/ai/prompts/mind-prompt';
 import { logger } from '@/lib/utils/logger';
@@ -35,10 +35,6 @@ import {
   budgetUnavailableResponse,
   isBudgetExceeded,
   isBudgetUnavailable,
-  releaseBudgetReservation,
-  reserveBudgetForModelCall,
-  type BudgetFeature,
-  type BudgetReservation,
 } from '@/lib/ai/cost-guard';
 import {
   getOrCreateGlobalChatSession,
@@ -55,13 +51,13 @@ import {
   formatWeakAreasForChat,
   localDateAfter,
 } from '@/lib/services/command-plan.service';
-import { generateJSON } from '@/lib/ai/provider-client';
 import { DailyMicrotaskService } from '@/lib/services/daily-microtask.service';
 import { buildMindRagContext } from '@/lib/rag/mind-rag';
 import { materialContentHash } from '@/lib/rag/ingest';
 import { getRagConfig, SUPPORTED_MATERIAL_MIME_TYPES } from '@/lib/rag/config';
 import { validateMagicBytesArray } from '@/lib/utils/magicBytes';
 import { EventDispatcher } from '@/lib/events/orchestrator';
+import { featureFlags } from '@/lib/config/flags';
 const encoder = new TextEncoder();
 const STUDY_MATERIAL_UPLOAD_RE =
   /\b(use this|save this|upload this|index this|store this|add this|my notes|study material|ncert|textbook|chapter|pdf|source|answer from this|use later|prescribed material|according to this|make this my source)\b/i;
@@ -242,6 +238,15 @@ export async function POST(req: NextRequest) {
     if (documentBase64) {
       const docValidation = validateBase64Payload(documentBase64, documentMimeType);
       if (!docValidation.valid) return docValidation.error!;
+    }
+
+    if ((imageBase64 || documentBase64) && !featureFlags.visionUploads()) {
+      return NextResponse.json(
+        {
+          error: 'Vision uploads are temporarily disabled for beta stability.',
+        },
+        { status: 503 }
+      )
     }
 
     const persistedHistory = await loadRecentMessages(supabase, sessionId);
@@ -493,58 +498,39 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
     // STAGE 5: AI ORCHESTRATION & STREAMING
     // ============================================================================
 
-    // ── Branch A: Image / vision call ──────────────────────────────────────────
-    if (
-      imageBase64 &&
-      imageMimeType &&
-      !(orchestratorResult.intent === 'mock_autopsy' && orchestratorResult.needsFileProcessing)
-    ) {
-      const imageBudget = await reserveModelBudgetOrResponse({
-        userId: user.id,
-        feature: 'image',
-        model: 'router:vision',
-        estimatedInputTokens: estimateTextTokens(systemPrompt, message || '[Image question]') + 1200,
-        estimatedOutputTokens: 1200,
-      });
-      if (imageBudget instanceof Response) return imageBudget;
+    // ── Branch A: Image / Vision Uploads ─────────────────────────────────────
+    if (imageBase64) {
+      let answer = '';
+      try {
+        answer = await budgetedVisionCall({
+          userId: user.id,
+          feature: 'chat_vision',
+          route: '/api/ai/chat',
+          systemPrompt,
+          userMessage: message || 'Solve this question completely.',
+          imageBase64: imageBase64,
+          imageMimeType: imageMimeType,
+          metadata: { source: 'chat_image' }
+        });
+      } catch (err) {
+        if (isBudgetExceeded(err)) return budgetExceededResponse();
+        if (isBudgetUnavailable(err)) return budgetUnavailableResponse();
+        answer = 'I encountered an issue processing that image. Please try again.';
+      }
 
       const stream = new ReadableStream({
         async start(controller) {
-          let answer = '';
-          let budgetSettled = false;
-          try {
-            answer = await routeVisionCall(systemPrompt, imageBase64, imageMimeType, message || 'Solve this question completely.');
-            controller.enqueue(encoder.encode(answer));
-          } catch {
-            await releaseBudgetReservation(imageBudget.reservationId, 'vision_call_failed');
-            budgetSettled = true;
-            answer = 'I had trouble reading that image. Try a clearer photo, or type the question out.';
-            controller.enqueue(encoder.encode(answer));
-          }
+          controller.enqueue(encoder.encode(answer));
 
           try {
             await finalizeAssistantTurn({
               assistantText: answer,
-              userMessage: message || '[Image question]',
-              budgetReservationId: budgetSettled ? null : imageBudget.reservationId,
-              budgetUsage: budgetSettled ? null : {
-                promptTokens: estimateTextTokens(systemPrompt, message || '[Image question]') + 1200,
-                completionTokens: estimateTextTokens(answer),
-                route: '/api/ai/chat',
-                promptVersion,
-                promptFamily: 'mind_chat',
-                promptSource: 'chat_image',
-              },
-              onBudgetSettled: () => {
-                budgetSettled = true;
-              },
+              userMessage: message || '[Image upload]',
+              budgetReservationId: null, // Budget handled internally by budgeted wrapper
             });
           } catch (finalizeErr) {
             logger.error('Chat route [image]: finalization failed', finalizeErr);
-            controller.close();
-            return;
           }
-
           controller.close();
         }
       });
@@ -692,7 +678,7 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
         if (isMaterialIndexing) {
            const queued = await ingestUploadedMaterial();
            const answer = queued
-             ? "Material uploaded and is being indexed in the background. You can check its status in the Study Materials panel and ask MIND questions from it soon."
+             ? "Material uploaded and queued for indexing. You can check its status in the Study Materials panel."
              : "I could not queue that material for indexing. Please try uploading it again.";
            const stream = new ReadableStream({
              async start(controller) {
@@ -712,64 +698,47 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
         }
       }
 
-      const documentBudget = await reserveModelBudgetOrResponse({
-        userId: user.id,
-        feature: 'chat',
-        model: 'router:document',
-        estimatedInputTokens: estimateTextTokens(systemPrompt, message || '[Document upload]') + Math.ceil(Buffer.byteLength(documentBase64, 'base64') / 4),
-        estimatedOutputTokens: 1200,
-      });
-      if (documentBudget instanceof Response) return documentBudget;
+       // ── Branch B: Document / PDF Uploads ──────────────────────────────────────
+    if (documentBase64) {
+      let answer = '';
+      try {
+        const documentVisionPrompt = isExplicitDocumentRead && message
+          ? message
+          : message || 'Read this document and explain the useful study context without inventing details.';
+        answer = await budgetedVisionCall({
+          userId: user.id,
+          feature: 'chat_document_vision',
+          route: '/api/ai/chat',
+          systemPrompt,
+          userMessage: documentVisionPrompt,
+          imageBase64: documentBase64,
+          imageMimeType: documentMimeType,
+          metadata: { source: 'chat_document' }
+        });
+      } catch (err) {
+        if (isBudgetExceeded(err)) return budgetExceededResponse();
+        if (isBudgetUnavailable(err)) return budgetUnavailableResponse();
+        answer = 'I could not read that document reliably. If this is for Test Analysis, upload it with your answer key, student answers, OMR sheet, or result sheet. For explanation, paste the relevant text here.';
+      }
 
       const stream = new ReadableStream({
         async start(controller) {
-          let answer = '';
-          let budgetSettled = false;
-          try {
-            const documentVisionPrompt = isExplicitDocumentRead && message
-              ? message
-              : message || 'Read this document and explain the useful study context without inventing details.';
-            answer = await routeVisionCall(
-              systemPrompt,
-              documentBase64,
-              documentMimeType,
-              documentVisionPrompt
-            );
-            controller.enqueue(encoder.encode(answer));
-          } catch {
-            await releaseBudgetReservation(documentBudget.reservationId, 'document_call_failed');
-            budgetSettled = true;
-            answer = 'I could not read that document reliably. If this is for Test Analysis, upload it with your answer key, student answers, OMR sheet, or result sheet. For explanation, paste the relevant text here.';
-            controller.enqueue(encoder.encode(answer));
-          }
+          controller.enqueue(encoder.encode(answer));
 
           try {
             await finalizeAssistantTurn({
               assistantText: answer,
               userMessage: message || '[Document upload]',
-              budgetReservationId: budgetSettled ? null : documentBudget.reservationId,
-              budgetUsage: budgetSettled ? null : {
-                promptTokens: estimateTextTokens(systemPrompt, message || '[Document upload]') + Math.ceil(Buffer.byteLength(documentBase64, 'base64') / 4),
-                completionTokens: estimateTextTokens(answer),
-                route: '/api/ai/chat',
-                promptVersion,
-                promptFamily: 'mind_chat',
-                promptSource: 'chat_document',
-              },
-              onBudgetSettled: () => {
-                budgetSettled = true;
-              },
+              budgetReservationId: null, // Budget handled internally
             });
           } catch (finalizeErr) {
             logger.error('Chat route [document]: finalization failed', finalizeErr);
-            controller.close();
-            return;
           }
-
           controller.close();
         }
       });
       return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+    }
     }
 
     const intent = detectedIntent;
@@ -865,22 +834,29 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
     }
 
     // ── Branch D: Main streaming branch ────────────────────────────────────────
-    const mainBudget = shouldReserveMainChatBudget(intent.intent)
-      ? await reserveModelBudgetOrResponse({
+    let mainGenerator: AsyncGenerator<string> | null = null;
+    if (intent.intent !== 'TUTOR_SESSION' && intent.intent !== 'PRACTICE') {
+      try {
+        const conversationMessages = buildConversationMessages(recentHistory, message || '');
+        mainGenerator = await budgetedStreamGeneration({
           userId: user.id,
-          feature: budgetFeatureForMainChat(intent.intent, orchestratorResult.intent),
-          model: 'router:chat',
-          estimatedInputTokens: estimateMainPromptTokens(systemPrompt, recentHistory, message || ''),
-          estimatedOutputTokens: 1600,
-        })
-      : null;
-    if (mainBudget instanceof Response) return mainBudget;
+          feature: 'chat',
+          route: '/api/ai/chat',
+          model: isSimpleMessage ? 'flash' : 'pro',
+          systemPrompt,
+          userPrompt: conversationMessages,
+        });
+      } catch (err) {
+        if (isBudgetExceeded(err)) return budgetExceededResponse();
+        if (isBudgetUnavailable(err)) return budgetUnavailableResponse();
+        throw err;
+      }
+    }
 
     const stream = new ReadableStream({
       async start(controller) {
         let fullResponse = '';
         let metadataPayload: any = null;
-        let budgetSettled = false;
 
         try {
           if (intent.intent === 'TUTOR_SESSION' || intent.intent === 'PRACTICE') {
@@ -898,16 +874,8 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
             );
             fullResponse = tutorResult.fullResponse;
             metadataPayload = tutorResult.metadataPayload;
-          } else {
-            const conversationMessages = buildConversationMessages(recentHistory, message || '');
-            for await (const chunk of routeStreamGeneration(
-              systemPrompt, 
-              conversationMessages, 
-              0.7,
-              mainBudget?.reservationId,
-              isSimpleMessage ? 'fast' : 'quality',
-              true // skipCommit: defer to finalizeAssistantTurn
-            )) {
+          } else if (mainGenerator) {
+            for await (const chunk of mainGenerator) {
               controller.enqueue(encoder.encode(chunk));
               fullResponse += chunk;
             }
@@ -934,33 +902,15 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
             assistantText: fullResponse,
             intent,
             metadata: metadataPayload ?? {},
-            budgetReservationId: mainBudget?.reservationId ?? null,
-            budgetUsage: mainBudget ? {
-              promptTokens: estimateMainPromptTokens(systemPrompt, recentHistory, message || ''),
-              completionTokens: estimateTextTokens(fullResponse),
-              route: '/api/ai/chat',
-              promptVersion,
-              promptFamily: 'mind_chat',
-              promptSource: 'chat_stream',
-            } : null,
-            onBudgetSettled: () => {
-              budgetSettled = true;
-            },
+            budgetReservationId: null, // Budget handled internally
           });
 
         } catch (err: any) {
           logger.error('Chat stream error', err);
-          if (mainBudget && !budgetSettled) {
-            await releaseBudgetReservation(
-              mainBudget.reservationId,
-              err instanceof Error ? err.message : 'chat_stream_error'
-            );
-            budgetSettled = true;
-          }
-          controller.enqueue(encoder.encode('\n\n[Something went wrong. Please try again.]'));
+          controller.enqueue(encoder.encode('\n\n[Error: Connection interrupted. Please try again.]'));
+        } finally {
+          controller.close();
         }
-
-        controller.close();
       }
     });
 
@@ -975,62 +925,6 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
     const { unexpectedApiErrorResponse } = await import('@/lib/api/errors');
     return unexpectedApiErrorResponse(req, error, 'chat_route_unhandled');
   }
-}
-
-function intentToAction(intent: string): string {
-  const map: Record<string, string> = {
-    AUTOPSY: 'run_autopsy',
-    ANALYTICS: 'show_analytics',
-    ATLAS: 'show_atlas',
-    FLASHCARDS: 'show_flashcards',
-  };
-  return map[intent] || 'show_analytics';
-}
-
-function shouldReserveMainChatBudget(intent: string): boolean {
-  if (['AUTOPSY', 'ATLAS', 'FLASHCARDS'].includes(intent)) {
-    return false;
-  }
-  return true;
-}
-
-function budgetFeatureForMainChat(_intent: string, _orchestratorIntent?: string): BudgetFeature {
-  return 'chat';
-}
-
-async function reserveModelBudgetOrResponse(input: {
-  userId: string;
-  feature: BudgetFeature;
-  model: string;
-  estimatedInputTokens: number;
-  estimatedOutputTokens: number;
-}): Promise<BudgetReservation | Response> {
-  try {
-    return await reserveBudgetForModelCall(
-      input.userId,
-      input.feature,
-      input.model,
-      input.estimatedInputTokens,
-      input.estimatedOutputTokens
-    );
-  } catch (error) {
-    if (isBudgetExceeded(error)) return budgetExceededResponse();
-    if (isBudgetUnavailable(error)) return budgetUnavailableResponse();
-    throw error;
-  }
-}
-
-function estimateMainPromptTokens(systemPrompt: string, recentHistory: any[], message: string): number {
-  const historyText = recentHistory
-    .slice(-12)
-    .map((item: any) => `${item?.role || ''}:${item?.content || ''}`)
-    .join('\n');
-  return estimateTextTokens(systemPrompt, historyText, message);
-}
-
-function estimateTextTokens(...parts: Array<string | null | undefined>): number {
-  const chars = parts.reduce((sum, part) => sum + (part?.length || 0), 0);
-  return Math.max(1, Math.ceil(chars / 4));
 }
 
 export async function buildChatFirstEngineResponse(input: {
@@ -1097,7 +991,15 @@ Determine the actions to take. Return ONLY valid JSON:
 }
 If the user wants to clear the plan, use "remove" for all. If they want to lighten, remove some.`;
 
-      const editResult = await generateJSON<any>('flash', 'Return ONLY JSON.', editPrompt);
+      const editResult = await budgetedGenerateJSON<any>({
+        userId: input.userId,
+        feature: 'planner',
+        route: 'chat:plan-edit',
+        model: 'flash',
+        systemPrompt: 'Return ONLY JSON.',
+        userPrompt: editPrompt,
+        maxOutputTokens: 700,
+      });
       if (editResult && editResult.actions) {
         for (const action of editResult.actions) {
           if (action.type === 'add') {

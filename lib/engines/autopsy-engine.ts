@@ -5,8 +5,8 @@ import { z } from 'zod';
 import { getExamConfig } from '@/lib/utils/constants';
 import { AutopsyPaperSchema, AutopsyQuestionSchema } from './autopsy-schemas';
 import { logger } from '@/lib/utils/logger';
-import { generateJSON, generateMultimodalJSON } from '@/lib/ai/provider-client';
 import { classifyMistake } from '../autopsy/classifier';
+import { budgetedGenerateJSON, budgetedGenerateMultimodalJSON } from '@/lib/ai/budgeted';
 
 /** Typed error thrown when extraction completely fails (safe for callers to detect). */
 export class AutopsyExtractionError extends Error {
@@ -72,16 +72,23 @@ function clientAutopsyIdempotencyKey(userId: string, idempotencyKey: string): st
 }
 
 async function routeMultimodalExtraction(
+  userId: string,
   prompt: string,
   fileData: { kind: 'inline'; mimeType: string; data: string }
 ): Promise<any> {
-  return generateMultimodalJSON(prompt, {
-    mimeType: fileData.mimeType,
-    data: fileData.data,
+  return budgetedGenerateMultimodalJSON({
+    userId,
+    feature: 'autopsy',
+    route: 'autopsy:extraction-multimodal',
+    model: 'router:multimodal+pro',
+    systemPrompt: 'You are a mock test extraction engine. Respond ONLY with JSON.',
+    fileData: { mimeType: fileData.mimeType, data: fileData.data },
+    maxOutputTokens: 2000
   });
 }
 
 async function fastExtractionPass(
+  userId: string,
   fileData: AutopsyFileData,
   subjectList: string,
   retries = 3
@@ -109,13 +116,17 @@ Output strictly as JSON. No markdown.
       let rawResult: any;
 
       if (fileData.kind === 'text') {
-        rawResult = await generateJSON<any>(
-          'flash',
-          'You are a mock test extraction engine. Respond ONLY with JSON.',
-          `${extractionPrompt}\n\nTest Data:\n${fileData.text}`
-        );
+        rawResult = await budgetedGenerateJSON<any>({
+          userId,
+          feature: 'autopsy',
+          route: 'autopsy:extraction-text',
+          model: 'flash',
+          systemPrompt: 'You are a mock test extraction engine. Respond ONLY with JSON.',
+          userPrompt: `${extractionPrompt}\n\nTest Data:\n${fileData.text}`,
+          maxOutputTokens: 2000
+        });
       } else {
-        rawResult = await routeMultimodalExtraction(extractionPrompt, fileData);
+        rawResult = await routeMultimodalExtraction(userId, extractionPrompt, fileData);
       }
 
       return AutopsyPaperSchema.parse(rawResult);
@@ -147,6 +158,7 @@ function textNeedsAnswerEvidence(text: string): boolean {
 }
 
 async function deepDiagnosticPass(
+  userId: string,
   incorrectQuestions: AutopsyQuestion[]
 ): Promise<ProcessedQuestion[]> {
   if (incorrectQuestions.length === 0) return [];
@@ -155,6 +167,7 @@ async function deepDiagnosticPass(
   
   for (const q of incorrectQuestions) {
     const classification = await classifyMistake({
+      userId,
       questionText: q.questionText ?? undefined,
       studentAnswer: q.studentAnswer ?? undefined,
       correctAnswer: q.correctAnswer ?? undefined,
@@ -212,7 +225,7 @@ export async function processMockAutopsy(
   const subjectList = examConfig.subjects.join(', ');
 
   logger.info('Autopsy Pass 1: Extracting', { userId, testName });
-  const paper = await fastExtractionPass(fileData, subjectList);
+  const paper = await fastExtractionPass(userId, fileData, subjectList);
   const allQuestions: AutopsyQuestion[] = paper.questions || [];
 
   // Safety gate: refuse to process suspiciously large question sets
@@ -244,7 +257,7 @@ export async function processMockAutopsy(
   const unattempted       = verifiedQuestions.filter(q => q.status === 'Unattempted');
 
   logger.info('Autopsy Pass 2: Diagnosing', { userId, incorrect: incorrectQuestions.length });
-  const diagnosedIncorrect = await deepDiagnosticPass(incorrectQuestions);
+  const diagnosedIncorrect = await deepDiagnosticPass(userId, incorrectQuestions);
 
   const { correctMarks, negativeMarks } = examConfig;
   const rawScore =

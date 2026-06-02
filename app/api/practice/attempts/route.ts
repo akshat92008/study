@@ -40,9 +40,10 @@ export async function POST(req: NextRequest) {
     if (idempError) {
       return apiErrorResponse('invalid_idempotency_key', { status: 400, message: idempError, requestId });
     }
-    if (isDuplicate) {
-      return apiErrorResponse('duplicate_request', { status: 409, message: 'Duplicate request.', requestId });
-    }
+    // Redis idempotency is advisory here. The database unique index is the
+    // source of truth, so duplicate keys still flow through to fetch existing rows.
+    void isDuplicate;
+    const idempotencySeed = idempotencyKey ?? requestId;
 
     const body = await req.json();
     const parsed = AttemptsSchema.safeParse(body);
@@ -72,7 +73,11 @@ export async function POST(req: NextRequest) {
 
     // Fetch items to check correctness
     const positions = answers.map(a => a.position);
-    const { data: items } = await supabase.from('practice_items').select('id, correct_answer, options, concept_id, concept_name, position').eq('practice_set_id', set.id).in('position', positions);
+    const { data: items } = await supabase
+      .from('practice_items')
+      .select('id, correct_answer, options, concept_id, concept_name, position, question')
+      .eq('practice_set_id', set.id)
+      .in('position', positions);
     if (!items) {
       return apiErrorResponse('not_found', { status: 404, message: 'Practice items not found', requestId });
     }
@@ -82,11 +87,15 @@ export async function POST(req: NextRequest) {
     const wrongConceptIds: string[] = [];
     const wrongConceptNames: string[] = [];
     const eventItems: any[] = [];
+    const attemptKeys: string[] = [];
 
     const attemptsToInsert = answers.map(ans => {
       const item = items.find(i => i.position === ans.position);
       const options = Array.isArray(item?.options) ? item.options : [];
       const isCorrect = item ? areMcqAnswersEquivalent(ans.answer, item.correct_answer, options) : false;
+      const attemptKey = item?.id
+        ? `${idempotencySeed}:${set.id}:${item.id}`
+        : `${idempotencySeed}:${set.id}:missing:${ans.position}`;
       
       if (isCorrect) correctCount++;
       else {
@@ -97,10 +106,21 @@ export async function POST(req: NextRequest) {
 
       eventItems.push({
         practiceItemId: item?.id,
+        questionId: item?.id,
+        question: item?.question,
         conceptId: item?.concept_id,
         conceptName: item?.concept_name,
+        subject: set.subject ?? null,
+        chapter: set.topic ?? null,
+        topic: item?.concept_name ?? set.topic ?? null,
         isCorrect,
+        selectedAnswer: ans.answer,
+        correctAnswer: item?.correct_answer,
+        timeTakenSeconds: ans.timeTakenSeconds ?? null,
+        source: 'practice_attempt',
+        idempotencyKey: attemptKey,
       });
+      attemptKeys.push(attemptKey);
 
       return {
         user_id: user.id,
@@ -108,13 +128,37 @@ export async function POST(req: NextRequest) {
         practice_item_id: item?.id,
         answer: ans.answer,
         is_correct: isCorrect,
-        time_taken_seconds: ans.timeTakenSeconds
+        time_taken_seconds: ans.timeTakenSeconds,
+        idempotency_key: attemptKey,
       };
     }).filter(a => a.practice_item_id); // Filter out any that didn't match an item
 
-    const { error: insertError } = await supabase.from('practice_attempts').insert(attemptsToInsert);
-    if (insertError) {
-      throw insertError;
+    if (attemptsToInsert.length === 0) {
+      return apiErrorResponse('invalid_request', { status: 400, message: 'No matching practice items found', requestId });
+    }
+
+    const { error: insertError } = await supabase
+      .from('practice_attempts')
+      .upsert(attemptsToInsert, {
+        onConflict: 'user_id,idempotency_key',
+        ignoreDuplicates: true,
+      });
+    if (insertError) throw insertError;
+
+    const { data: persistedAttempts, error: fetchAttemptsError } = await supabase
+      .from('practice_attempts')
+      .select('id, practice_item_id, idempotency_key, answer, is_correct, time_taken_seconds, created_at')
+      .eq('user_id', user.id)
+      .in('idempotency_key', attemptKeys);
+    if (fetchAttemptsError) throw fetchAttemptsError;
+
+    const attemptsByKey = new Map((persistedAttempts ?? []).map((attempt: any) => [attempt.idempotency_key, attempt]));
+    for (const item of eventItems) {
+      const attempt = attemptsByKey.get(item.idempotencyKey);
+      if (attempt) {
+        item.attemptId = attempt.id;
+        item.sourceId = attempt.id;
+      }
     }
 
     await EventDispatcher.publish({
@@ -123,6 +167,8 @@ export async function POST(req: NextRequest) {
       data: {
         practiceSetId: set.id,
         setType: 'mcq',
+        subject: set.subject ?? null,
+        chapter: set.topic ?? null,
         metrics: {
           correctCount,
           wrongCount,
@@ -137,6 +183,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({
       success: true,
+      attempts: persistedAttempts ?? [],
       metrics: { correctCount, wrongCount, wrongConceptIds, wrongConceptNames }
     });
   } catch (error) {

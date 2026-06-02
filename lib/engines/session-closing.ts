@@ -1,5 +1,4 @@
 import { createClient } from '@/lib/supabase/server';
-import { generateText } from '@/lib/ai/provider-client';
 import { logger } from '@/lib/utils/logger';
 
 interface ClosingMessageInput {

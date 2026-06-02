@@ -9,12 +9,23 @@ import { apiErrorResponse, getRequestId } from '@/lib/api/errors';
 export function validateCronRequest(req: NextRequest): NextResponse | null {
   const secret = process.env.CRON_SECRET;
   const requestId = getRequestId(req);
+  const weakSecrets = new Set([
+    'super_secret_cron_token_123',
+    'test-secret',
+    'changeme',
+    'change-me',
+    'secret',
+    'cron_secret',
+  ]);
   
-  if (!secret || secret === 'super_secret_cron_token_123') {
+  if (
+    !secret ||
+    (process.env.NODE_ENV !== 'test' && (secret.length < 24 || weakSecrets.has(secret)))
+  ) {
     console.error('[CronAuth] CRON_SECRET not configured or using default!');
     return apiErrorResponse('cron_not_configured', {
       status: 500,
-      message: 'Cron authentication is not configured.',
+      message: 'CRON_SECRET is not configured safely.',
       requestId,
     });
   }

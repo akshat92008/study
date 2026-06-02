@@ -1,6 +1,5 @@
 import { SupabaseClient } from '@supabase/supabase-js';
-import { generateJSON } from '@/lib/ai/provider-client';
-import { routeStreamGeneration } from '@/lib/ai/router';
+import { budgetedStreamGeneration, budgetedGenerateJSON } from '@/lib/ai/budgeted';
 import { buildConversationMessages } from '@/lib/ai/chat-intent';
 import { invalidateSessionCards } from '@/lib/services/session-card-cache';
 import { logger } from '@/lib/utils/logger';
@@ -75,7 +74,16 @@ export class ChatPlannerService {
     const artifactSystemPrompt = `${systemPrompt}\n\nYou are in ARTIFACT CREATION mode. The student has asked you to create a study plan, planner, revision sheet, or similar artifact.\n\nRules:\n- If they mention an upcoming test date, build a day-by-day study plan from today until that date.\n- Cover all weak areas from their ATLAS profile first, then fill remaining days with stronger subjects.\n- Format the plan clearly with days, topics, and time estimates.\n- If the user simply asks to add a specific topic to their microtargets, dashboard, or planner, output a short 1-day plan with just that task.\n- If they say "full syllabus", cover all three subjects: Physics, Chemistry, Biology.\n- Be specific and actionable. Not generic.\n- End with one motivating line about what hitting this plan will do for their score.\n- IMPORTANT: Do NOT wrap the <artifact> tags in markdown code blocks (like \`\`\`xml). Output the raw <artifact> tags directly.`;
     const conversationMessages = buildConversationMessages(recentHistory, message);
     
-    for await (const chunk of routeStreamGeneration(artifactSystemPrompt, conversationMessages, 0.6)) {
+    const generator = await budgetedStreamGeneration({
+      userId,
+      feature: 'chat',
+      route: 'chat:planner',
+      model: 'pro',
+      systemPrompt: artifactSystemPrompt,
+      userPrompt: conversationMessages,
+      maxOutputTokens: 1600,
+    });
+    for await (const chunk of generator) {
       controller.enqueue(encoder.encode(chunk));
       fullResponse += chunk;
     }
@@ -94,7 +102,15 @@ export class ChatPlannerService {
         }))
       });
 
-      const planData = await generateJSON<any>('flash', 'Expert task extractor. Output JSON only.', extractPrompt, taskListSchema).catch(() => null);
+      const planData = await budgetedGenerateJSON<any>({
+        userId,
+        feature: 'chat',
+        route: 'chat:planner-extract',
+        model: 'flash',
+        systemPrompt: 'Expert task extractor. Output JSON only.',
+        userPrompt: extractPrompt,
+        maxOutputTokens: 800,
+      }).catch(() => null);
 
       if (planData && planData.tasks && planData.tasks.length > 0) {
         const tasksToInsert = planData.tasks.map((t: any) => ({

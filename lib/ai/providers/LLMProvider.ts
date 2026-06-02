@@ -8,6 +8,7 @@ export interface LLMMessage {
 export interface LLMProvider {
   /** Generate a full response given messages */
   generate(messages: LLMMessage[], options?: {
+    userId?: string;
     maxTokens?: number;
     temperature?: number;
     /** optional streaming flag */
@@ -16,6 +17,7 @@ export interface LLMProvider {
 
   /** Stream response token by token or chunk */
   stream(messages: LLMMessage[], options?: {
+    userId?: string;
     maxTokens?: number;
     temperature?: number;
   }): AsyncIterable<string>;

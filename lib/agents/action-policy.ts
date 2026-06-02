@@ -8,7 +8,21 @@ const SAFE_AUTO = new Set<AgentActionType>([
   'store_citation',
   'log_source_usage',
   'create_session_recommendation',
+  'plan_created',
   'create_low_risk_revision_card',
+  'record_learning_evidence',
+  'update_mastery_score',
+  'tag_weak_topic',
+  'record_mistake_pattern',
+  'create_revision_due_item',
+  'update_revision_priority',
+  'invalidate_today_mission',
+  'increase_topic_priority',
+  'mark_concept_practiced',
+  'flag_student_risk',
+  'create_revision_card_from_verified_mistake',
+  'update_mastery_from_evidence',
+  'invalidate_session_card',
 ]);
 
 const AUTO_WITH_UNDO = new Set<AgentActionType>([
@@ -28,6 +42,13 @@ const REQUIRES_APPROVAL = new Set<AgentActionType>([
   'destructive_delete',
   'large_plan_rewrite',
   'apply_mock_without_clear_evidence',
+  'replace_daily_plan',
+  'skip_chapter',
+  'reduce_test_frequency',
+  'run_full_material_analysis',
+  'run_vision_interpretation',
+  'change_exam_strategy',
+  'generate_large_strategy_plan',
 ]);
 
 export function classifyAgentActionRisk(

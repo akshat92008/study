@@ -4,6 +4,7 @@ import { classifyMistake } from '@/lib/autopsy/classifier';
 describe('Classifier', () => {
   it('normalizes MCQ answers', async () => {
     const result = await classifyMistake({
+      userId: 'test-user',
       studentAnswer: 'Option A',
       correctAnswer: 'A',
       evidenceSource: 'autopsy'
@@ -12,6 +13,7 @@ describe('Classifier', () => {
     expect(result.evidenceStatus).toBe('verified_correct');
 
     const result2 = await classifyMistake({
+      userId: 'test-user',
       studentAnswer: '(B)',
       correctAnswer: 'B',
       evidenceSource: 'autopsy'

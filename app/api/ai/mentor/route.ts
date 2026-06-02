@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { createClient } from '@/lib/supabase/server';
 import { streamMentorResponse } from '@/lib/ai/agents/mentor';
-import { reserveBudgetForModelCall, isBudgetExceeded, isBudgetUnavailable, budgetExceededResponse, budgetUnavailableResponse, registerPromptAudit } from '@/lib/ai/cost-guard';
-import { estimateTokensFromText } from '@/lib/ai/token-budget';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { apiErrorResponse, getRequestId } from '@/lib/api/errors';
 import { validatePromptLength, usageGateResponse } from '@/lib/utils/billing';
@@ -111,34 +109,11 @@ export async function POST(req: NextRequest) {
   });
   void inferAndUpdateEmotionalState(user.id, parsed.message).catch(() => {});
 
-  let reservationId: string;
-  try {
-    const reservation = await reserveBudgetForModelCall(
-      user.id,
-      'tutor',
-      'router:mentor',
-      estimateTokensFromText(parsed.message, JSON.stringify(recentHistory).slice(0, 4000)),
-      1200
-    );
-    reservationId = reservation.reservationId;
-    registerPromptAudit(reservationId, {
-      userId: user.id,
-      promptVersion,
-      promptFamily: 'mentor_chat',
-      promptSource: 'mentor_route',
-      route: '/api/ai/mentor',
-    });
-  } catch (error) {
-    if (isBudgetExceeded(error)) return budgetExceededResponse();
-    if (isBudgetUnavailable(error)) return budgetUnavailableResponse();
-    throw error;
-  }
-
   const stream = new ReadableStream({
     async start(controller) {
       let fullResponse = '';
       try {
-        for await (const chunk of streamMentorResponse(user.id, parsed.message, recentHistory, reservationId)) {
+        for await (const chunk of streamMentorResponse(user.id, parsed.message, recentHistory)) {
           fullResponse += chunk;
           controller.enqueue(encoder.encode(chunk));
         }

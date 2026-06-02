@@ -370,6 +370,9 @@ export default function DailySessionFocus({
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
+          <audio controls loop style={{ height: 28, maxWidth: 200, opacity: 0.8 }} title="Focus Beats">
+            <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg" />
+          </audio>
           <button onClick={onClose} style={{
             background: 'transparent', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', padding: 4
           }}>

@@ -6,8 +6,10 @@ export const AgentNameSchema = z.enum([
   'atlas',
   'memory',
   'autopsy',
+  'revision',
   'planner',
   'command',
+  'pulse',
   'system',
 ]);
 export type AgentName = z.infer<typeof AgentNameSchema>;
@@ -83,6 +85,26 @@ export const AgentActionTypeSchema = z.enum([
   'memory_card_created',
   'material_ingested',
   'plan_created',
+  'record_learning_evidence',
+  'update_mastery_score',
+  'tag_weak_topic',
+  'record_mistake_pattern',
+  'create_revision_due_item',
+  'update_revision_priority',
+  'invalidate_today_mission',
+  'increase_topic_priority',
+  'mark_concept_practiced',
+  'flag_student_risk',
+  'replace_daily_plan',
+  'create_revision_card_from_verified_mistake',
+  'update_mastery_from_evidence',
+  'invalidate_session_card',
+  'skip_chapter',
+  'reduce_test_frequency',
+  'run_full_material_analysis',
+  'run_vision_interpretation',
+  'change_exam_strategy',
+  'generate_large_strategy_plan',
 ]);
 export type AgentActionType = z.infer<typeof AgentActionTypeSchema>;
 

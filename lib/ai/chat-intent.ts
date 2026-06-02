@@ -2,7 +2,7 @@
 // Fast intent classifier — runs in ~100ms on the fast model tier.
 // Keeps intent detection separate from response generation so both can be optimized independently.
 
-import { routeTextGeneration } from './router';
+import { budgetedGenerateJSON } from '@/lib/ai/budgeted';
 import { logger } from '@/lib/utils/logger';
 
 export type ChatIntent =
@@ -28,7 +28,8 @@ const INTENT_SYSTEM = `You are an intent classifier for an AI study companion. C
 export async function detectChatIntent(
   message: string,
   recentHistory: Array<{ role: string; content: string }>,
-  examType: string
+  examType: string,
+  userId?: string
 ): Promise<IntentResult> {
   const historySnippet = recentHistory
     .slice(-4)
@@ -63,9 +64,14 @@ Rules:
 IMPORTANT: If the message asks to BUILD or CREATE a plan/schedule/planner — even if it mentions "mock test" — classify as CREATE_ARTIFACT not AUTOPSY. AUTOPSY is only for analysing a test the student already took and wants to upload.`;
 
   try {
-    const raw = await routeTextGeneration('json', INTENT_SYSTEM, prompt, 0.1, 256);
-    const clean = raw.replace(/```json\n?/gi, '').replace(/```\n?/g, '').trim();
-    const parsed = JSON.parse(clean);
+    const parsed = await budgetedGenerateJSON<any>({
+      userId: userId || 'anonymous',
+      feature: 'intent-classification',
+      model: 'fast',
+      systemPrompt: INTENT_SYSTEM,
+      userPrompt: prompt,
+      maxOutputTokens: 256
+    });
     return {
       intent: parsed.intent || 'GENERAL_CHAT',
       topic: parsed.topic || null,

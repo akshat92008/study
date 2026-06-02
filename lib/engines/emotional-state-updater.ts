@@ -16,7 +16,7 @@
 // immediately once this file is live.
 
 import { createClient } from '@/lib/supabase/server';
-import { routeTextGeneration } from '@/lib/ai/router';
+import { budgetedGenerateText } from '@/lib/ai/budgeted';
 import { logger } from '@/lib/utils/logger';
 import {
   isBudgetExceeded,
@@ -115,21 +115,14 @@ Rules:
 - Only flag negative states if the message CLEARLY signals them
 - Return ONLY the one-word state. Nothing else.`;
 
-    const reservation = await reserveBudgetForModelCall(
+    const raw = await budgetedGenerateText({
       userId,
-      'emotional-state',
-      'router:json',
-      Math.max(1, Math.ceil(prompt.length / 4)),
-      10
-    );
-    const raw = await routeTextGeneration(
-      'json',
-      'You are an emotional state classifier. Return one word only.',
-      prompt,
-      0.1,
-      10,
-      reservation.reservationId
-    );
+      feature: 'emotional-state',
+      model: 'fast',
+      systemPrompt: 'You are an emotional state classifier. Return one word only.',
+      userPrompt: prompt,
+      maxOutputTokens: 10
+    });
     const detected = raw.trim().toLowerCase() as EmotionalState;
 
     const validStates: EmotionalState[] = [

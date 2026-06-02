@@ -46,7 +46,7 @@ export default function AutopsyPageClient({ result: initialResult }: Props) {
         return;
       }
 
-      setStatus('Running OCR and AI extraction...');
+      setStatus('Queued for processing...');
       
       // Poll for job completion
       const pollJob = async () => {
@@ -65,7 +65,13 @@ export default function AutopsyPageClient({ result: initialResult }: Props) {
             setUploading(false);
             return;
           } else if (jobData.status === 'processing') {
-            setStatus('Extracting insights from the AI model...');
+            setStatus('Processing upload...');
+          } else if (jobData.status === 'needs_input') {
+            setStatus('Needs input');
+            setUploading(false);
+            return;
+          } else {
+            setStatus('Queued for processing...');
           }
           
           setTimeout(pollJob, 2000);

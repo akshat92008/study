@@ -1,6 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
 import { createAdminClient } from '@/lib/supabase/admin';
-import { generateJSON } from '@/lib/ai/provider-client';
 import { logger } from '@/lib/utils/logger';
 import { expandChapterWithAI } from './atlas-expansion';
 import { applyMasteryUpdate, recordMasteryEvidence } from '@/lib/engines/mastery-updater';

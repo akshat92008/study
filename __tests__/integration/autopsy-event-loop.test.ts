@@ -33,6 +33,27 @@ vi.mock('@/lib/ai/provider-client', () => ({
   }),
 }));
 
+vi.mock('@/lib/ai/budgeted', () => ({
+  budgetedGenerateMultimodalJSON: vi.fn(),
+  budgetedGenerateJSON: vi.fn(async (input: { userPrompt?: string }) => {
+    const prompt = input.userPrompt ?? '';
+    if (prompt.includes('Extract all questions')) {
+      return {
+        questions: [
+          { questionNumber: 1, subject: 'Physics', chapter: 'Motion', status: 'Incorrect', mistakeCategory: null, reasoning: null, ocrConfidence: 99 },
+          { questionNumber: 2, subject: 'Physics', chapter: 'Motion', status: 'Correct', mistakeCategory: null, reasoning: null, ocrConfidence: 99 },
+        ],
+      };
+    }
+    return [{
+      mistakeCategory: 'conceptual_gap',
+      reasoning: 'Velocity and acceleration were mixed up.',
+      conceptualGap: 'Acceleration definition',
+      correctExplanation: 'Acceleration is the rate of change of velocity.',
+    }];
+  }),
+}));
+
 vi.mock('@/lib/engines/mentor-engine', () => ({
   generateMentorRecovery: vi.fn(async () => ({ mentorQuote: 'Review Motion.', plan: [] })),
 }));

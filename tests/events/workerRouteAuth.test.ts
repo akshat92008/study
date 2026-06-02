@@ -14,7 +14,15 @@ vi.mock('@/lib/utils/logger', () => ({
 describe('event worker route auth', () => {
   beforeEach(() => {
     processBatch.mockReset();
-    processBatch.mockResolvedValue({ processed: 3, failed: 0, skipped: 0 });
+    processBatch.mockResolvedValue({
+      processed: 3,
+      failed: 0,
+      skipped: 0,
+      agentActionsApplied: 2,
+      agentActionsProposed: 1,
+      agentActionsSkipped: 0,
+      agentActionsFailed: 0,
+    });
     getHealthSummary.mockReset();
     getHealthSummary.mockResolvedValue({
       pendingEvents: 0,
@@ -56,7 +64,21 @@ describe('event worker route auth', () => {
     expect(processBatch).not.toHaveBeenCalled();
   });
 
+  it('fails closed for weak production cron secrets', async () => {
+    vi.stubEnv('NODE_ENV', 'production');
+    vi.stubEnv('CRON_SECRET', 'test-secret');
+    const { processEventWorkerRoute } = await import('@/lib/events/worker-route');
+
+    const res = await processEventWorkerRoute(new Request('http://localhost/api/events/process', {
+      headers: { authorization: 'Bearer test-secret' },
+    }));
+
+    expect(res.status).toBe(500);
+    expect(processBatch).not.toHaveBeenCalled();
+  });
+
   it('runs the canonical worker only for authenticated requests', async () => {
+    vi.stubEnv('NODE_ENV', 'test');
     vi.stubEnv('CRON_SECRET', 'test-secret');
     const { processEventWorkerRoute } = await import('@/lib/events/worker-route');
 
@@ -70,10 +92,29 @@ describe('event worker route auth', () => {
       processed: 3,
       failed: 0,
       skipped: 0,
+      agentActionsApplied: 2,
+      agentActionsProposed: 1,
       queueDepth: 0,
       dlqDepth: 0,
+      oldestPendingAgeSeconds: 0,
       nextRecommendedRunSeconds: 300,
     });
-    expect(processBatch).toHaveBeenCalledWith(25, 5);
+    expect(processBatch).toHaveBeenCalledWith(25, 5, 50000, expect.any(Number));
+  });
+
+  it('passes bounded env-configured runtime limits into the worker', async () => {
+    vi.stubEnv('NODE_ENV', 'test');
+    vi.stubEnv('CRON_SECRET', 'test-secret');
+    vi.stubEnv('EVENT_WORKER_BATCH_SIZE', '12');
+    vi.stubEnv('EVENT_WORKER_LEASE_MINUTES', '3');
+    vi.stubEnv('EVENT_WORKER_MAX_RUNTIME_MS', '17000');
+    const { processEventWorkerRoute } = await import('@/lib/events/worker-route');
+
+    const res = await processEventWorkerRoute(new Request('http://localhost/api/events/process', {
+      headers: { authorization: 'Bearer test-secret' },
+    }));
+
+    expect(res.status).toBe(200);
+    expect(processBatch).toHaveBeenCalledWith(12, 3, 17000, expect.any(Number));
   });
 });

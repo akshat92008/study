@@ -7,12 +7,16 @@ dotenv.config({ path: '.env.local' });
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+const runLiveSupabase = process.env.RUN_SUPABASE_INTEGRATION_TESTS === 'true';
+const describeLiveSupabase = runLiveSupabase ? describe : describe.skip;
 
-const supabase = createClient(supabaseUrl, supabaseKey, {
-  auth: { autoRefreshToken: false, persistSession: false },
-});
+const supabase = runLiveSupabase
+  ? createClient(supabaseUrl, supabaseKey, {
+      auth: { autoRefreshToken: false, persistSession: false },
+    })
+  : null as any;
 
-describe('Agentic Runtime Wiring', () => {
+describeLiveSupabase('Agentic Runtime Wiring', () => {
   let userId: string;
 
   beforeAll(async () => {

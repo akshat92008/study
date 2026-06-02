@@ -1,7 +1,7 @@
 'use server';
 
 import { createClient } from '@/lib/supabase/server';
-import { generateJSON } from '@/lib/ai/provider-client';
+import { budgetedGenerateJSON } from '@/lib/ai/budgeted';
 import { seedConceptsForSubject } from '@/lib/engines/cognition-graph';
 
 export async function generateDynamicCurriculum(topic: string, academicLevel: string) {
@@ -27,11 +27,15 @@ Respond exactly as this JSON structure:
   ]
 }`;
 
-  const curriculum = await generateJSON<{ subjects: { name: string, chapters: string[] }[] }>(
-    'pro', 
-    'You are an elite academic curriculum designer.', 
-    prompt
-  );
+  const curriculum = await budgetedGenerateJSON<{ subjects: { name: string, chapters: string[] }[] }>({
+    userId: user.id,
+    feature: 'onboarding',
+    route: 'curriculum:generate',
+    model: 'pro',
+    systemPrompt: 'You are an elite academic curriculum designer.',
+    userPrompt: prompt,
+    maxOutputTokens: 1000
+  });
 
   if (!curriculum || !curriculum.subjects) return { error: 'Failed to generate curriculum' };
 

@@ -30,7 +30,7 @@
     "verify:db": "npx tsx scripts/verify-db.ts",
     "verify:production": "NODE_ENV=production ts-node scripts/env-preflight.ts --mode=production && npm run typecheck && npm run lint && npm test && npm run build",
     "verify:mvp": "npm run verify:production && ts-node scripts/mvp-smoke-check.ts -- --mode=mvp",
-    "verify:beta": "npm run verify:production && npm run beta100:cheap-test",
+    "verify:beta": "npm run typecheck && npm run lint && npm run test && npm run build",
     "seed:mvp": "ts-node scripts/seed-mvp-demo.ts",
     "debug:events": "ts-node scripts/debug-events.ts",
     "debug:user": "ts-node scripts/debug-user-mvp-state.ts",

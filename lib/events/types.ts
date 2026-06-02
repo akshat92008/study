@@ -3,7 +3,9 @@ import { z } from 'zod';
 
 export const EventTypeSchema = z.enum([
   'MIND_MESSAGE_CREATED',
+  'CHAT_MESSAGE_CREATED',
   'CHAT_MESSAGE_PROCESSED',
+  'CHAT_LEARNING_SIGNAL',
   'CHAT_SESSION_SUMMARIZE',
   'MIND_TUTOR_COMPLETED',
   'MATERIAL_UPLOADED',
@@ -14,17 +16,21 @@ export const EventTypeSchema = z.enum([
   'MIND_ACTION_REQUESTED',
   'MIND_CONTEXT_REFRESHED',
   'AUTOPSY_UPLOAD_RECEIVED',
+  'MOCK_TEST_UPLOADED',
   'AUTOPSY_PROCESSING_COMPLETED',
+  'TEST_ANALYSIS_COMPLETED',
   'AUTOPSY_MISTAKE_EXTRACTED',
   'AUTOPSY_MISTAKE_APPROVED',
   'AUTOPSY_MISTAKE_REJECTED',
   'AUTOPSY_MOCK_PROCESSED',
+  'MOCK_TEST_ANALYZED',
   'ATLAS_MASTERY_UPDATE_REQUESTED',
   'ATLAS_MASTERY_UPDATED',
   'MEMORY_CARD_CREATE_REQUESTED',
   'MEMORY_CARD_CREATED',
   'MEMORY_CARD_REVIEWED',
   'REVISION_CARD_REVIEWED',
+  'REVISION_COMPLETED',
   'STUDY_SESSION_COMPLETED',
   'SESSION_CARD_COMPLETED',
   'SESSION_RECOMMENDATION_REQUESTED',
@@ -35,6 +41,7 @@ export const EventTypeSchema = z.enum([
   'STUDENT_MODEL_SYNC_REQUESTED',
   'PLANNER_REPLAN_REQUESTED',
   'PRACTICE_ATTEMPT_RECORDED',
+  'PRACTICE_ATTEMPT_SUBMITTED',
   'ONBOARDING_QUIZ_COMPLETE',
 ]);
 
@@ -97,6 +104,23 @@ export const EventPayloadSchemas: Partial<Record<EventType | string, z.ZodTypeAn
     /** ID of the already-persisted assistant chat_messages row. */
     assistant_message_id: z.string().uuid().optional(),
   }),
+  CHAT_MESSAGE_CREATED: z.object({
+    sessionId: z.string().min(1).optional(),
+    messageId: z.string().uuid().optional(),
+    message: z.string().optional(),
+    detectedSubject: z.string().optional().nullable(),
+    detectedChapter: z.string().optional().nullable(),
+    detectedTopic: z.string().optional().nullable(),
+  }).passthrough(),
+  CHAT_LEARNING_SIGNAL: z.object({
+    conversationId: z.string().optional(),
+    messageId: z.string().uuid().optional(),
+    detectedSubject: z.string().optional().nullable(),
+    detectedChapter: z.string().optional().nullable(),
+    detectedTopic: z.string().optional().nullable(),
+    signalType: z.enum(['doubt_asked', 'explanation_given', 'concept_practiced', 'confusion_detected']).optional(),
+    confidence: z.number().optional(),
+  }).passthrough(),
   CHAT_SESSION_SUMMARIZE: z.object({
     sessionId: z.string().min(1),
   }).passthrough(),
@@ -130,7 +154,15 @@ export const EventPayloadSchemas: Partial<Record<EventType | string, z.ZodTypeAn
   AUTOPSY_UPLOAD_RECEIVED: z.object({
     jobId: z.string().min(1),
   }).passthrough(),
+  MOCK_TEST_UPLOADED: z.object({
+    jobId: z.string().min(1).optional(),
+    materialId: z.string().uuid().optional(),
+  }).passthrough(),
   AUTOPSY_PROCESSING_COMPLETED: z.object({
+    autopsyId: z.string().min(1).optional(),
+    jobId: z.string().min(1).optional(),
+  }).passthrough(),
+  TEST_ANALYSIS_COMPLETED: z.object({
     autopsyId: z.string().min(1).optional(),
     jobId: z.string().min(1).optional(),
   }).passthrough(),
@@ -156,6 +188,12 @@ export const EventPayloadSchemas: Partial<Record<EventType | string, z.ZodTypeAn
     totalQuestions: z.number().int().nonnegative().optional(),
     correctCount: z.number().int().nonnegative().optional(),
     incorrectCount: z.number().int().nonnegative().optional(),
+  }).passthrough(),
+  MOCK_TEST_ANALYZED: z.object({
+    autopsyId: z.string().min(1).optional(),
+    testName: z.string().optional(),
+    examType: z.string().optional(),
+    items: z.array(z.any()).optional(),
   }).passthrough(),
   STUDY_SESSION_COMPLETED: z.object({
     sessionId: z.string().min(1),
@@ -184,6 +222,14 @@ export const EventPayloadSchemas: Partial<Record<EventType | string, z.ZodTypeAn
     cardId: z.string().min(1),
     conceptId: MaybeUuid,
     rating: z.union([z.number(), z.string()]),
+  }).passthrough(),
+  REVISION_COMPLETED: z.object({
+    cardId: z.string().min(1).optional(),
+    conceptId: MaybeUuid,
+    subject: z.string().optional(),
+    chapter: z.string().optional(),
+    topic: z.string().optional(),
+    items: z.array(z.any()).optional(),
   }).passthrough(),
   MEMORY_CARD_CREATE_REQUESTED: z.object({
     conceptId: MaybeUuid,
@@ -238,6 +284,12 @@ export const EventPayloadSchemas: Partial<Record<EventType | string, z.ZodTypeAn
       isCorrect: z.boolean().optional(),
       confidence: z.string().optional(),
     })).optional()
+  }).passthrough(),
+  PRACTICE_ATTEMPT_SUBMITTED: z.object({
+    practiceSetId: z.string().uuid().optional(),
+    setType: z.enum(['mcq', 'flashcard']).optional(),
+    metrics: z.any().optional(),
+    items: z.array(z.any()).optional(),
   }).passthrough(),
   ONBOARDING_QUIZ_COMPLETE: z.object({
     quizResults: z.array(z.any()).optional(),

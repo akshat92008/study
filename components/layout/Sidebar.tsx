@@ -26,6 +26,7 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
   } = useAppStore();
   const navItems = [
     { label: 'Today', href: '/dashboard', icon: Home },
+    { label: 'NotebookLM', href: '/knowledge', icon: Database, feature: 'ENABLE_KNOWLEDGE_UI' as const },
     { label: 'MIND', href: '/chat', icon: MessageSquare, feature: 'ENABLE_CHAT' as const },
     { label: 'Test Analysis', href: '/autopsy', icon: Activity, feature: 'ENABLE_AUTOPSY_UI' as const },
     { label: 'Progress', href: '/cognition', icon: Brain, feature: 'ENABLE_ATLAS_UI' as const },

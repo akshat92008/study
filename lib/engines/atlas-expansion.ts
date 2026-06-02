@@ -1,4 +1,4 @@
-import { generateJSON } from '@/lib/ai/provider-client';
+import { budgetedGenerateJSON } from '@/lib/ai/budgeted';
 import { z } from 'zod';
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/utils/logger';
@@ -23,6 +23,7 @@ export type MicroConcept = {
 };
 
 export async function expandChapterToMicroConcepts(
+  userId: string,
   subject: string,
   chapter: string,
   examType: string
@@ -71,13 +72,16 @@ Examples of good micro-concepts for "Electrochemistry" (NEET Chemistry):
 Return only valid JSON matching the schema.`;
 
   try {
-    const result = await generateJSON<z.infer<typeof MicroConceptSchema>>(
-      'flash', // Use flash for cost efficiency — this runs at onboarding
-      'You are a curriculum expert. Return only valid JSON.',
-      prompt,
-      MicroConceptSchema,
-      0.3
-    );
+    const result = await budgetedGenerateJSON<z.infer<typeof MicroConceptSchema>>({
+      userId,
+      feature: 'onboarding',
+      route: 'atlas-expansion:micro-concepts',
+      model: 'flash', // Use flash for cost efficiency
+      systemPrompt: 'You are a curriculum expert. Return only valid JSON.',
+      userPrompt: prompt,
+      schema: MicroConceptSchema,
+      maxOutputTokens: 1000
+    });
 
     const concepts = result.concepts || [];
     expansionCache.set(cacheKey, concepts); // Fill L1 cache
@@ -117,7 +121,7 @@ export async function seedFullSyllabusForUser(
   // Get the syllabus for this exam type
   let syllabusMap = getSyllabusForExam(examType);
   if (Object.keys(syllabusMap).length === 0) {
-    syllabusMap = await generateSyllabusWithAI(examType);
+    syllabusMap = await generateSyllabusWithAI(userId, examType);
   }
 
   for (const subject of subjects) {
@@ -135,7 +139,7 @@ export async function seedFullSyllabusForUser(
       if ((count || 0) > 0) continue; // Already seeded
 
       // Expand chapter into micro-concepts
-      const microConcepts = await expandChapterToMicroConcepts(subject, chapter, examType);
+      const microConcepts = await expandChapterToMicroConcepts(userId, subject, chapter, examType);
 
       // Insert all micro-concepts for this chapter
       const inserts = microConcepts.map(mc => ({
@@ -199,7 +203,7 @@ export async function getUserSyllabus(
   }
 
   // Fallback to generating it if concepts aren't seeded yet
-  const aiSyllabus = await generateSyllabusWithAI(examType);
+  const aiSyllabus = await generateSyllabusWithAI(userId, examType);
   return {
     subjects: Object.keys(aiSyllabus),
     chapters: aiSyllabus
@@ -226,7 +230,7 @@ export async function expandChapterWithAI(
     return [];
   }
 
-  const microConcepts = await expandChapterToMicroConcepts(subject, chapter, examType);
+  const microConcepts = await expandChapterToMicroConcepts(userId, subject, chapter, examType);
   return microConcepts.map(mc => ({
     name: mc.name,
     description: mc.description,
@@ -279,7 +283,7 @@ export function getSyllabusForExam(examType: string): Record<string, string[]> {
 
 const aiSyllabusCache = new Map<string, Record<string, string[]>>();
 
-export async function generateSyllabusWithAI(studyTopic: string): Promise<Record<string, string[]>> {
+export async function generateSyllabusWithAI(userId: string, studyTopic: string): Promise<Record<string, string[]>> {
   const cacheKey = studyTopic.toLowerCase().trim();
   if (aiSyllabusCache.has(cacheKey)) return aiSyllabusCache.get(cacheKey)!;
 
@@ -312,13 +316,16 @@ Return ONLY valid JSON — no extra text:
     const SyllabusSchema = z.object({
       syllabus: z.record(z.array(z.string()))
     });
-    const result = await generateJSON<z.infer<typeof SyllabusSchema>>(
-      'flash',
-      'You are a curriculum designer. Return only valid JSON.',
-      prompt,
-      SyllabusSchema,
-      0.3
-    );
+    const result = await budgetedGenerateJSON<z.infer<typeof SyllabusSchema>>({
+      userId,
+      feature: 'onboarding',
+      route: 'atlas-expansion:syllabus',
+      model: 'flash',
+      systemPrompt: 'You are a curriculum designer. Return only valid JSON.',
+      userPrompt: prompt,
+      schema: SyllabusSchema,
+      maxOutputTokens: 1000
+    });
     const syllabus = result?.syllabus || {};
     if (Object.keys(syllabus).length > 0) {
       aiSyllabusCache.set(cacheKey, syllabus);

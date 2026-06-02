@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useRef, useEffect, KeyboardEvent, ChangeEvent } from 'react';
-import { Send, Paperclip, X, Image as ImageIcon, Loader2 } from 'lucide-react';
+import React, { useRef, useEffect, useState, KeyboardEvent, ChangeEvent } from 'react';
+import { Send, Paperclip, X, Image as ImageIcon, Loader2, Mic, MicOff } from 'lucide-react';
 
 export interface ChatInputProps {
   value: string;
@@ -30,6 +30,60 @@ export function ChatInput({
 }: ChatInputProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const [isListening, setIsListening] = useState(false);
+  const [isSpeechAvailable, setIsSpeechAvailable] = useState(false);
+  const recognitionRef = useRef<any>(null);
+  const originalValueRef = useRef('');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+      if (SpeechRecognition) {
+        const recognition = new SpeechRecognition();
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        recognition.onresult = (event: any) => {
+          let fullTranscript = '';
+          for (let i = 0; i < event.results.length; i++) {
+            fullTranscript += event.results[i][0].transcript;
+          }
+          onChange(originalValueRef.current + (originalValueRef.current ? ' ' : '') + fullTranscript);
+        };
+        recognition.onerror = (event: any) => {
+          console.error('Speech recognition error', event.error);
+          setIsListening(false);
+        };
+        recognition.onend = () => {
+          setIsListening(false);
+        };
+        recognitionRef.current = recognition;
+        setIsSpeechAvailable(true);
+      } else {
+        setIsSpeechAvailable(false);
+      }
+    }
+    return () => {
+      if (recognitionRef.current) {
+        recognitionRef.current.stop();
+      }
+    };
+  }, [onChange]);
+
+  const toggleListening = () => {
+    if (isListening) {
+      recognitionRef.current?.stop();
+      setIsListening(false);
+    } else {
+      originalValueRef.current = value;
+      try {
+        recognitionRef.current?.start();
+        setIsListening(true);
+      } catch (e) {
+        console.error('Error starting speech recognition:', e);
+      }
+    }
+  };
 
   // Auto-grow textarea
   useEffect(() => {
@@ -143,6 +197,20 @@ export function ChatInput({
           title="Attach file"
         >
           <Paperclip size={16} />
+        </button>
+
+        <button
+          type="button"
+          onClick={toggleListening}
+          disabled={isProcessingUpload || !isSpeechAvailable}
+          style={{
+            background: 'transparent', border: 'none', color: isListening ? 'var(--danger)' : 'var(--text-secondary)',
+            cursor: 'pointer', padding: 'var(--sp-2)', display: 'flex', alignItems: 'center',
+            animation: isListening ? 'pulse-flame 1.5s infinite' : 'none'
+          }}
+          title={isListening ? 'Stop listening' : 'Start voice typing'}
+        >
+          {isListening ? <MicOff size={16} /> : <Mic size={16} />}
         </button>
 
 

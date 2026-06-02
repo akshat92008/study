@@ -1,12 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { createClient } from '@/lib/supabase/server';
-import { routeStreamGeneration } from '@/lib/ai/router';
+import { budgetedStreamGeneration } from '@/lib/ai/budgeted';
 import { buildConversationMessages } from '@/lib/ai/chat-intent';
 import { getMINDContext } from '@/lib/engines/mind-engine';
 import { getMINDSystemPrompt } from '@/lib/ai/prompts/mind-prompt';
-import { reserveBudgetForModelCall, isBudgetExceeded, isBudgetUnavailable, budgetExceededResponse, budgetUnavailableResponse, registerPromptAudit } from '@/lib/ai/cost-guard';
-import { estimateTokensFromText } from '@/lib/ai/token-budget';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { apiErrorResponse, getRequestId } from '@/lib/api/errors';
 import { consumeUsageLimit, validatePromptLength, usageGateResponse } from '@/lib/utils/billing';
@@ -128,34 +126,20 @@ export async function POST(req: NextRequest) {
   const systemPrompt = getMINDSystemPrompt(mindContext, [], 'TUTOR_SESSION');
   const conversationMessages = buildConversationMessages(recentHistory, parsed.message);
 
-  let reservationId: string;
-  try {
-    const reservation = await reserveBudgetForModelCall(
-      user.id,
-      'tutor',
-      'router:tutor',
-      estimateTokensFromText(systemPrompt, JSON.stringify(conversationMessages)),
-      1600
-    );
-    reservationId = reservation.reservationId;
-    registerPromptAudit(reservationId, {
-      userId: user.id,
-      promptVersion,
-      promptFamily: 'tutor_chat',
-      promptSource: 'tutor_route',
-      route: '/api/ai/tutor',
-    });
-  } catch (error) {
-    if (isBudgetExceeded(error)) return budgetExceededResponse();
-    if (isBudgetUnavailable(error)) return budgetUnavailableResponse();
-    throw error;
-  }
-
   const stream = new ReadableStream({
     async start(controller) {
       let fullResponse = '';
       try {
-        for await (const chunk of routeStreamGeneration(systemPrompt, conversationMessages, 0.7, reservationId)) {
+        const generator = await budgetedStreamGeneration({
+          userId: user.id,
+          feature: 'tutor',
+          route: '/api/ai/tutor',
+          model: 'pro',
+          systemPrompt,
+          userPrompt: conversationMessages,
+          maxOutputTokens: 1600,
+        });
+        for await (const chunk of generator) {
           fullResponse += chunk;
           controller.enqueue(encoder.encode(chunk));
         }

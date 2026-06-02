@@ -1,26 +1,30 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@/lib/supabase/server';
+import { createAdminClient } from '@/lib/supabase/admin';
 import { ingestStudyMaterial } from '@/lib/rag/ingest';
 import { logger } from '@/lib/utils/logger';
 import { validateCronRequest } from '@/lib/middleware/cronAuth';
+import { featureFlags } from '@/lib/config/flags';
 
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 export const maxDuration = 300; // 5 minutes max duration on Vercel Pro
 
 export async function POST(req: NextRequest) {
   try {
-    const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) {
-      return NextResponse.json({ error: 'Authentication is required' }, { status: 401 });
-    }
-    
     const authError = validateCronRequest(req as any);
     if (authError) return authError;
-    const body = await req.json();
-    const { materialId } = body;
 
-    if (!materialId) {
-      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+    if (!featureFlags.ragIngestion()) {
+      return NextResponse.json({ error: 'RAG ingestion is disabled' }, { status: 503 });
+    }
+
+    const supabase = createAdminClient();
+    const body = await req.json().catch(() => null);
+    const materialId = body?.materialId;
+    const userId = body?.userId;
+
+    if (!materialId || !userId) {
+      return NextResponse.json({ error: 'materialId and userId are required' }, { status: 400 });
     }
     
     // Fetch the material to get storage path and mime type
@@ -28,7 +32,7 @@ export async function POST(req: NextRequest) {
       .from('study_materials')
       .select('storage_path, mime_type')
       .eq('id', materialId)
-      .eq('user_id', user.id)
+      .eq('user_id', userId)
       .single();
 
     if (fetchError || !material) {
@@ -47,7 +51,7 @@ export async function POST(req: NextRequest) {
         .from('study_materials')
         .update({ status: 'failed', error_message: 'Failed to read file from storage' })
         .eq('id', materialId)
-        .eq('user_id', user.id);
+        .eq('user_id', userId);
       return NextResponse.json({ error: 'File download failed' }, { status: 500 });
     }
 
@@ -56,7 +60,7 @@ export async function POST(req: NextRequest) {
     // Run ingestion
     await ingestStudyMaterial({
       materialId,
-      userId: user.id,
+      userId,
       buffer,
       mimeType: material.mime_type
     });

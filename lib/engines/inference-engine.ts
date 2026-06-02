@@ -1,12 +1,14 @@
 import { createClient } from '@/lib/supabase/server';
-import { generateJSON } from '@/lib/ai/provider-client';
+
 import { logger } from '@/lib/utils/logger';
-import type { SupabaseClient, DatabaseRow } from '@supabase/supabase-js';
+import type { SupabaseClient } from '@supabase/supabase-js';
 import {
   isBudgetExceeded,
   isBudgetUnavailable,
-  reserveBudgetForModelCall,
 } from '@/lib/ai/cost-guard';
+import { budgetedGenerateJSON } from '@/lib/ai/budgeted';
+
+type DatabaseRow = Record<string, any>;
 
 export async function syncStudentModel(userId: string, isInitialFingerprint: boolean = false, client?: SupabaseClient) {
   const supabase = client ?? (await createClient());
@@ -72,22 +74,15 @@ Respond EXACTLY in this JSON format:
 }`;
 
   try {
-    const reservation = await reserveBudgetForModelCall(
+    const newProfile = await budgetedGenerateJSON<any>({
       userId,
-      'session-analysis',
-      'router:json',
-      Math.max(1, Math.ceil(prompt.length / 4)),
-      500
-    );
-    const newProfile = await generateJSON<any>(
-      'pro',
-      'You are an elite behavioral analyst.',
-      prompt,
-      undefined,
-      0.3,
-      3,
-      reservation.reservationId
-    );
+      feature: 'session-analysis',
+      route: 'inference:sync',
+      model: 'pro',
+      systemPrompt: 'You are an elite behavioral analyst.',
+      userPrompt: prompt,
+      maxOutputTokens: 500,
+    });
 
     if (newProfile) {
       await supabase.from('student_models').upsert({

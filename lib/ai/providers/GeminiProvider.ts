@@ -1,7 +1,7 @@
 // lib/ai/providers/GeminiProvider.ts
 
 import { LLMProvider, LLMMessage } from '@/lib/ai/providers/LLMProvider';
-import { generateJSON, streamText } from '@/lib/ai/provider-client';
+import { budgetedGenerateJSON, budgetedStreamGeneration } from '@/lib/ai/budgeted';
 import { ProviderCapabilities } from '@/lib/ai/providers/LLMProvider';
 import { tracer, meter } from '@/lib/telemetry/otel';
 import type { Counter } from '@opentelemetry/api';
@@ -40,8 +40,11 @@ export class GeminiProvider implements LLMProvider {
    */
   async generate(
     messages: LLMMessage[],
-    options?: { maxTokens?: number; temperature?: number; streaming?: boolean }
+    options?: { userId?: string; maxTokens?: number; temperature?: number; streaming?: boolean }
   ): Promise<string> {
+    if (!options?.userId) {
+      throw new Error('GeminiProvider.generate requires userId for AI budget enforcement.');
+    }
     const modelKey = options?.streaming ? 'flash' : 'pro';
     const span = tracer.startSpan('gemini.generate', {
       attributes: {
@@ -52,7 +55,15 @@ export class GeminiProvider implements LLMProvider {
     });
     try {
       const prompt = JSON.stringify(messages);
-      const response = await generateJSON<string>(modelKey, 'You are a helpful assistant.', prompt, undefined);
+      const response = await budgetedGenerateJSON<string>({
+        userId: options.userId,
+        feature: 'chat',
+        route: 'gemini-provider:generate',
+        model: modelKey,
+        systemPrompt: 'You are a helpful assistant.',
+        userPrompt: prompt,
+        maxOutputTokens: options?.maxTokens ?? 1024,
+      });
       // Record metrics
        this.requestCounter.add(1, { model: modelKey === 'flash' ? 'gemini-2.0-flash' : 'gemini-1.5-pro' });
       // Approximate token usage (1 token ≈ 4 chars)
@@ -77,8 +88,11 @@ export class GeminiProvider implements LLMProvider {
    */
   async *stream(
     messages: LLMMessage[],
-    options?: { maxTokens?: number; temperature?: number }
+    options?: { userId?: string; maxTokens?: number; temperature?: number }
   ): AsyncIterable<string> {
+    if (!options?.userId) {
+      throw new Error('GeminiProvider.stream requires userId for AI budget enforcement.');
+    }
      const span = tracer.startSpan('gemini.stream', {
        attributes: {
          'llm.provider': 'gemini',
@@ -88,7 +102,15 @@ export class GeminiProvider implements LLMProvider {
      });
     try {
       const prompt = JSON.stringify(messages);
-      const generator = streamText('flash', 'You are a helpful assistant.', prompt);
+      const generator = await budgetedStreamGeneration({
+        userId: options.userId,
+        feature: 'chat',
+        route: 'gemini-provider:stream',
+        model: 'flash',
+        systemPrompt: 'You are a helpful assistant.',
+        userPrompt: prompt,
+        maxOutputTokens: options?.maxTokens ?? 1200,
+      });
       for await (const chunk of generator) {
         // Record token metric per chunk (approximate)
         const tokenEstimate = Math.ceil(chunk.length / 4);

@@ -136,6 +136,37 @@ export async function finalizeChatTurn(input: FinalizeChatTurnInput): Promise<Fi
       },
     });
 
+    const detectedSubject = input.intent?.subject ?? input.metadata?.subject ?? null;
+    const detectedChapter = input.intent?.chapter ?? input.metadata?.chapter ?? null;
+    const detectedTopic = input.intent?.topic ?? input.metadata?.topic ?? null;
+    if (detectedSubject || detectedChapter || detectedTopic) {
+      const signalType = inferSignalType(input.userMessage, cleanAssistantText);
+      await publishEvent({
+        user_id: input.userId,
+        type: 'CHAT_LEARNING_SIGNAL',
+        source: input.sourceType ?? 'global_chat',
+        data: {
+          conversationId: input.sessionId,
+          messageId: assistant.id,
+          detectedSubject,
+          detectedChapter,
+          detectedTopic,
+          signalType,
+          confidence: 0.62,
+        },
+        idempotency_key: `${input.idempotencyKey}:chat-learning-signal`,
+        metadata: {
+          source: input.sourceType ?? 'global_chat',
+        },
+      }).catch((err) => {
+        logger.warn('Chat learning signal publish failed', {
+          userId: input.userId,
+          messageId: assistant.id,
+          error: err instanceof Error ? err.message : String(err),
+        });
+      });
+    }
+
     logger.info('Chat request completed', { userId: input.userId, feature: 'chat', idempotencyKey: input.idempotencyKey });
 
     return {
@@ -153,4 +184,11 @@ export async function finalizeChatTurn(input: FinalizeChatTurnInput): Promise<Fi
     });
     throw error;
   }
+}
+
+function inferSignalType(userMessage: string, assistantText: string) {
+  if (/\b(confus|stuck|doubt|why|how)\b/i.test(userMessage)) return 'doubt_asked';
+  if (/\b(practice|mcq|question|solve)\b/i.test(userMessage)) return 'concept_practiced';
+  if (/\b(confus|mistake|stuck)\b/i.test(`${userMessage}\n${assistantText}`)) return 'confusion_detected';
+  return 'explanation_given';
 }

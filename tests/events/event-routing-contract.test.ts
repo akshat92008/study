@@ -40,7 +40,7 @@ describe('event routing SQL/TypeScript contract', () => {
     const { file, sql } = latestCreateEventMigration();
     const sqlMatrix = extractSqlRouteMatrix(sql);
 
-    expect(file).toBe('20260602000000_command_no_pulse_event_routing_canonical.sql');
+    expect(file).toBe('20260602000300_cheap_agentic_os_core.sql');
     expect(sqlMatrix).toEqual(EVENT_CONSUMER_MATRIX);
   });
 
@@ -58,6 +58,8 @@ describe('event routing SQL/TypeScript contract', () => {
       'AUTOPSY_MISTAKE_APPROVED',
       'STUDENT_MODEL_SYNC_REQUESTED',
       'PRACTICE_ATTEMPT_RECORDED',
+      'PRACTICE_ATTEMPT_SUBMITTED',
+      'CHAT_LEARNING_SIGNAL',
     ] as const;
 
     for (const event of mvpEvents) {

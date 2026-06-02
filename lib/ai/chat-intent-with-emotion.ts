@@ -1,4 +1,4 @@
-import { routeJSONGeneration } from '@/lib/ai/router';
+import { budgetedGenerateJSON } from '@/lib/ai/budgeted';
 import { logger } from '@/lib/utils/logger';
 import { ChatIntent, IntentResult } from './chat-intent';
 import {
@@ -93,32 +93,14 @@ Emotion rules:
 - Pure academic questions → neutral`;
 
   try {
-    const reservation = userId
-      ? await reserveBudgetForModelCall(
-          userId,
-          'intent-classification',
-          'router:json',
-          Math.max(1, Math.ceil(prompt.length / 4)),
-          160
-        )
-      : null;
-    if (reservation) {
-      registerPromptAudit(reservation.reservationId, {
-        userId,
-        promptVersion: getPromptVersion('mind'),
-        promptFamily: 'mind_chat',
-        promptSource: 'intent_and_emotion_classifier',
-        route: 'chat:intent-emotion',
-      });
-    }
-
-    const parsed = await routeJSONGeneration<any>(
-      'You are a classification model. Return only valid JSON. No markdown.',
-      prompt,
-      0.1,
-      undefined,
-      reservation?.reservationId
-    );
+    const parsed = await budgetedGenerateJSON<any>({
+      userId: userId || 'anonymous',
+      feature: 'intent-classification',
+      route: 'chat:intent-emotion',
+      model: 'fast',
+      systemPrompt: 'You are a classification model. Return only valid JSON. No markdown.',
+      userPrompt: prompt,
+    });
 
     const emotion = VALID_EMOTIONS.has(parsed.emotion) ? parsed.emotion : 'neutral';
     const confidence = typeof parsed.confidence === 'number'

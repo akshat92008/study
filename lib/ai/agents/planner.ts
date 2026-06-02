@@ -1,5 +1,4 @@
 import { createClient } from '@/lib/supabase/server';
-import { generateJSON } from '@/lib/ai/provider-client';
 import { budgetedGenerateJSON, budgetedGenerateText } from '@/lib/ai/budgeted';
 import { z } from 'zod';
 import { getExamConfig } from '@/lib/utils/constants';
@@ -326,7 +325,6 @@ GOOD EXAMPLE (Overwhelmed): "Telemetry shows your cognitive load was peaking yes
 GOOD EXAMPLE (Momentum): "You're on a 5-day streak and your focus score is in the 90th percentile. This is when we attack the hard stuff. I've queued the rotational mechanics autopsies you failed last week. Let's reclaim those 12 marks."
 `;
   
-  const { generateText } = await import('@/lib/ai/provider-client');
   const reservation = await reserveBudgetForModelCall(
     userId,
     'planner',

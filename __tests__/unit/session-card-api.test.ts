@@ -63,6 +63,10 @@ vi.mock('@/lib/ai/provider-client', () => ({
   generateJSON: vi.fn().mockRejectedValue(new Error('LLM not available')),
 }));
 
+vi.mock('@/lib/ai/budgeted', () => ({
+  budgetedGenerateJSON: vi.fn().mockRejectedValue(new Error('LLM not available')),
+}));
+
 vi.mock('@/lib/services/ai-usage.service', () => ({
   assertDailyAIUsageBudget: vi.fn().mockResolvedValue(undefined),
   isAIUsageBudgetExceeded: vi.fn().mockReturnValue(false),
@@ -165,7 +169,7 @@ describe('Session Card API — Response Contract', () => {
   });
 
   it('T_CACHE_HIT: valid cached card is returned without LLM call', async () => {
-    const { generateJSON } = await import('@/lib/ai/provider-client');
+    const { budgetedGenerateJSON } = await import('@/lib/ai/budgeted');
 
     stubFrom({
       profiles: {
@@ -209,11 +213,11 @@ describe('Session Card API — Response Contract', () => {
     expect(res.hasCard).toBe(true);
     expect(res.card?.focusTopic).toBe('Newton\'s Laws');
     // LLM should NOT be called for a cache hit
-    expect(generateJSON).not.toHaveBeenCalled();
+    expect(budgetedGenerateJSON).not.toHaveBeenCalled();
   });
 
   it('T_STALE_CACHE: version mismatch → regeneration (LLM attempted)', async () => {
-    const { generateJSON } = await import('@/lib/ai/provider-client');
+    const { budgetedGenerateJSON } = await import('@/lib/ai/budgeted');
 
     stubFrom({
       profiles: {
@@ -269,13 +273,14 @@ describe('Session Card API — Response Contract', () => {
     // Should regenerate (LLM is attempted, even if it fails → code fallback)
     expect(res.hasCard).toBe(true);
     expect(res.card?.focusTopic).not.toBe('Stale Topic'); // regenerated
+    expect(budgetedGenerateJSON).toHaveBeenCalled();
     // Upsert should be called to store new card
     expect(mockUpsert).toHaveBeenCalled();
   });
 
   it('T_LLM_FALLBACK: LLM failure → code-computed values used (no crash)', async () => {
-    const { generateJSON } = await import('@/lib/ai/provider-client');
-    vi.mocked(generateJSON).mockRejectedValue(new Error('Simulated LLM error'));
+    const { budgetedGenerateJSON } = await import('@/lib/ai/budgeted');
+    vi.mocked(budgetedGenerateJSON).mockRejectedValue(new Error('Simulated LLM error'));
 
     stubFrom({
       profiles: {

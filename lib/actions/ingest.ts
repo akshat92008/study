@@ -1,7 +1,7 @@
 'use server';
 
 import { createClient } from '@/lib/supabase/server';
-import { generateJSON } from '@/lib/ai/provider-client';
+import { budgetedGenerateJSON } from '@/lib/ai/budgeted';
 
 export async function logMockTest(formData: FormData) {
   const supabase = await createClient();
@@ -42,8 +42,15 @@ Correct: ${testData.correct_count}, Incorrect: ${testData.incorrect_count}, Unat
 
 Give a brief 2-sentence strategic assessment.`;
 
-  const insight = await generateJSON<{ assessment: string }>('flash',
-    `You are a ${examType} exam analyst.`, prompt + '\nRespond as: {"assessment": "..."}');
+  const insight = await budgetedGenerateJSON<{ assessment: string }>({
+    userId: user.id,
+    feature: 'autopsy',
+    route: 'ingest:mock-test',
+    model: 'flash',
+    systemPrompt: `You are a ${examType} exam analyst.`,
+    userPrompt: prompt + '\nRespond as: {"assessment": "..."}',
+    maxOutputTokens: 200
+  });
 
   return { success: true, insight: (insight as any)?.assessment };
 }

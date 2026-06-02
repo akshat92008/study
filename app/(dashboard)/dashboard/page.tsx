@@ -97,13 +97,11 @@ export default function DashboardPage() {
     if (!fileToUpload) return addToast('Please select a mock paper', 'error');
 
     setIsUploadingMock(true);
-    setUploadStatus('Uploading and running OCR extraction...');
+    setUploadStatus('Uploading...');
 
     const statuses = [
-      'Extracting answers from your upload...',
-      'Mapping incorrect responses to syllabus chapters...',
-      'Diagnosing root mistake patterns...',
-      'Preparing the AUTOPSY summary for MIND...'
+      'Upload received. Waiting for the worker queue...',
+      'Queued for processing...',
     ];
     let i = 0;
     const interval = setInterval(() => {

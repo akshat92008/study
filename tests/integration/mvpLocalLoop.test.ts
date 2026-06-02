@@ -67,6 +67,66 @@ vi.mock('@/lib/ai/provider-client', () => ({
   }),
 }));
 
+vi.mock('@/lib/ai/budgeted', () => ({
+  budgetedGenerateMultimodalJSON: vi.fn(),
+  budgetedVisionCall: vi.fn(),
+  budgetedStreamGeneration: vi.fn(),
+  budgetedGenerateJSON: vi.fn(async (input: { userPrompt?: string }) => {
+    const prompt = input.userPrompt ?? '';
+    if (prompt.includes('Extract all questions')) {
+      return {
+        questions: [
+          {
+            questionNumber: 1,
+            subject: 'Physics',
+            chapter: 'Motion',
+            questionText: 'A velocity-time graph has changing slope.',
+            correctAnswer: 'Acceleration changes',
+            studentAnswer: 'Velocity changes only',
+            status: 'Incorrect',
+            mistakeCategory: null,
+            reasoning: null,
+            ocrConfidence: 96,
+          },
+          {
+            questionNumber: 2,
+            subject: 'Physics',
+            chapter: 'Motion',
+            questionText: 'Blurry low-confidence row',
+            correctAnswer: 'Needs review',
+            studentAnswer: 'Unknown',
+            status: 'Incorrect',
+            mistakeCategory: null,
+            reasoning: null,
+            ocrConfidence: 42,
+          },
+          {
+            questionNumber: 3,
+            subject: 'Physics',
+            chapter: 'Motion',
+            questionText: 'Define displacement.',
+            correctAnswer: 'Shortest vector distance',
+            studentAnswer: 'Shortest vector distance',
+            status: 'Correct',
+            mistakeCategory: null,
+            reasoning: null,
+            ocrConfidence: 98,
+          },
+        ],
+      };
+    }
+
+    return [
+      {
+        mistakeCategory: 'conceptual_gap',
+        reasoning: 'Velocity and acceleration were mixed up.',
+        conceptualGap: 'Acceleration definition',
+        correctExplanation: 'Acceleration is the rate of change of velocity.',
+      },
+    ];
+  }),
+}));
+
 type TableRow = Record<string, any>;
 type MvpState = Record<string, TableRow[]>;
 

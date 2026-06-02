@@ -1,8 +1,9 @@
-import { generateJSON, MODELS } from '@/lib/ai/provider-client';
+import { budgetedGenerateJSON } from '@/lib/ai/budgeted';
 import { AutopsyEvidence, AutopsyEvidenceStatus, MistakeType, EvidenceSource } from './types';
 import { areMcqAnswersEquivalent } from '@/lib/practice/answer-normalization';
 
 export interface ClassifyParams {
+  userId: string;
   questionText?: string;
   studentAnswer?: string;
   correctAnswer?: string;
@@ -30,7 +31,7 @@ function cleanAnswer(ans: string | undefined): string {
 }
 
 export async function classifyMistake(params: ClassifyParams): Promise<ClassifierResult> {
-  const { studentAnswer, correctAnswer, confidence = 1, evidenceSource = 'autopsy' } = params;
+  const { userId, studentAnswer, correctAnswer, confidence = 1, evidenceSource = 'autopsy' } = params;
   const cleanStudent = cleanAnswer(studentAnswer);
   const cleanCorrect = cleanAnswer(correctAnswer);
 
@@ -87,16 +88,20 @@ Respond with JSON format:
 `;
 
   try {
-    const aiResult = await generateJSON<{
+    const aiResult = await budgetedGenerateJSON<{
       mistakeType: MistakeType;
       conceptName: string;
       shortReason: string;
       isHighConfidence: boolean;
-    }>(
-      'flash',
-      'You are a precise, analytical educational AI.',
-      prompt
-    );
+    }>({
+      userId,
+      feature: 'autopsy',
+      route: 'autopsy:classify-mistake',
+      model: 'flash',
+      systemPrompt: 'You are a precise, analytical educational AI.',
+      userPrompt: prompt,
+      maxOutputTokens: 200
+    });
 
     const isConfident = aiResult.isHighConfidence !== false;
 

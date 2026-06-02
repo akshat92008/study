@@ -1,4 +1,4 @@
-import { streamText } from '@/lib/ai/provider-client';
+import { budgetedStreamGeneration } from '@/lib/ai/budgeted';
 import { getMentorSystemPrompt, buildMentorContext } from '@/lib/ai/prompts/mentor';
 import { createClient } from '@/lib/supabase/server';
 import { getMINDContext } from '@/lib/engines/mind-engine';
@@ -38,8 +38,7 @@ export async function getMentorContext(userId: string) {
 export async function* streamMentorResponse(
   userId: string,
   userMessage: string,
-  chatHistory: any[],
-  reservationId?: string
+  chatHistory: any[]
 ) {
   const { profile, stats, recentMistakes } = await getMentorContext(userId);
   const mindContext = await getMINDContext(userId, userMessage).catch(() => null);
@@ -58,5 +57,14 @@ export async function* streamMentorResponse(
   const fullPrompt = `${context}${rootGapContext}\n\n## Chat History\n${historyText}\n\nStudent: ${userMessage}`;
 
   const sysPrompt = getMentorSystemPrompt(profile?.exam_type || 'CUSTOM');
-  yield* streamText('flash', sysPrompt, fullPrompt, 0.8, reservationId);
+  const generator = await budgetedStreamGeneration({
+    userId,
+    feature: 'chat-mentor',
+    route: 'mentor:stream',
+    model: 'flash',
+    systemPrompt: sysPrompt,
+    userPrompt: fullPrompt,
+    maxOutputTokens: 1000,
+  });
+  yield* generator;
 }

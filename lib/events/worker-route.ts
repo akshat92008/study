@@ -11,8 +11,19 @@ export async function processEventWorkerRoute(req: NextRequest | Request) {
 
   try {
     const start = Date.now();
+    const batchSize = boundedInt(process.env.EVENT_WORKER_BATCH_SIZE, 25, 1, 50);
+    const leaseMinutes = boundedInt(process.env.EVENT_WORKER_LEASE_MINUTES, 5, 1, 30);
+    const maxRuntimeMs = boundedInt(process.env.EVENT_WORKER_MAX_RUNTIME_MS, 50_000, 1_000, 3_600_000);
     logger.info('Worker batch started', { requestId, feature: 'event-worker' });
-    const { processed, failed, skipped } = await EventWorkerService.processBatch(25, 5);
+    const {
+      processed,
+      failed,
+      skipped,
+      agentActionsApplied,
+      agentActionsProposed,
+      agentActionsSkipped,
+      agentActionsFailed,
+    } = await EventWorkerService.processBatch(batchSize, leaseMinutes, maxRuntimeMs, start);
     logger.info('Worker batch completed', { processed, failed, skipped, durationMs: Date.now() - start, requestId, feature: 'event-worker' });
     const queue = await EventWorkerService.getHealthSummary();
 
@@ -25,6 +36,11 @@ export async function processEventWorkerRoute(req: NextRequest | Request) {
       processed,
       failed,
       skipped,
+      agentActionsApplied,
+      agentActionsProposed,
+      agentActionsSkipped,
+      agentActionsFailed,
+      oldestPendingAgeSeconds: queue.oldestPendingAgeSeconds ?? null,
       durationMs: Date.now() - start,
       queueDepth,
       dlqDepth,
@@ -38,6 +54,12 @@ export async function processEventWorkerRoute(req: NextRequest | Request) {
       requestId,
     });
   }
+}
+
+function boundedInt(value: string | undefined, fallback: number, min: number, max: number) {
+  const parsed = Number(value);
+  if (!Number.isFinite(parsed)) return fallback;
+  return Math.max(min, Math.min(max, Math.floor(parsed)));
 }
 
 export async function eventWorkerHealthRoute(req: NextRequest | Request) {

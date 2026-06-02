@@ -1,16 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { getRequestId, apiErrorResponse } from '@/lib/api/errors';
-import { validateCronRequest } from '@/lib/middleware/cronAuth';
-import { env } from '@/lib/utils/env';
+import { requireAdmin } from '@/lib/auth/admin';
 
+export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export async function GET(req: NextRequest) {
   const requestId = getRequestId(req);
 
-  const authError = validateCronRequest(req);
-  if (authError) return authError;
+  const auth = await requireAdmin();
+  if (auth.error) {
+    return NextResponse.json({ error: auth.error }, { status: auth.status });
+  }
 
   try {
     const supabase = createAdminClient();
@@ -42,7 +44,6 @@ export async function GET(req: NextRequest) {
       'NEXT_PUBLIC_SUPABASE_URL',
       'NEXT_PUBLIC_SUPABASE_ANON_KEY',
       'SUPABASE_SERVICE_ROLE_KEY',
-      'CRON_SECRET',
     ];
     const missingEnv = requiredEnv.filter((key) => !process.env[key]);
     const envStatus = missingEnv.length === 0 ? 'ok' : 'missing';

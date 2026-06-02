@@ -1,7 +1,7 @@
 import { createAdminClient } from '@/lib/supabase/admin';
-import { generateJSON } from '@/lib/ai/provider-client';
+
 import { logger } from '@/lib/utils/logger';
-import { reserveBudgetForModelCall } from '@/lib/ai/cost-guard';
+import { budgetedGenerateJSON } from '@/lib/ai/budgeted';
 
 interface ConceptDiscoveredData {
   parentConceptId: string;
@@ -23,23 +23,15 @@ Respond ONLY with a JSON array of strings, where each string is a subtopic name.
 `.trim();
 
     try {
-      const reservation = await reserveBudgetForModelCall(
+      const subtopics = await budgetedGenerateJSON<string[]>({
         userId,
-        'planner',
-        'router:concept-expansion',
-        Math.max(1, Math.ceil(prompt.length / 4)),
-        300
-      );
-
-      const subtopics = await generateJSON<string[]>(
-        'flash',
-        'You are a curriculum expert. Output only a JSON array of strings.',
-        prompt,
-        undefined,
-        0.3,
-        3,
-        reservation.reservationId
-      );
+        feature: 'planner',
+        route: 'concept-expansion:handle',
+        model: 'flash',
+        systemPrompt: 'You are a curriculum expert. Output only a JSON array of strings.',
+        userPrompt: prompt,
+        maxOutputTokens: 300,
+      });
 
       if (!Array.isArray(subtopics) || subtopics.length === 0) {
         logger.warn('Concept expansion failed to generate subtopics', { subject, chapter });

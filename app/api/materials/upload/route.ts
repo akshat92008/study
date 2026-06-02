@@ -7,6 +7,7 @@ import { materialContentHash } from '@/lib/rag/ingest';
 import { validateMagicBytesArray } from '@/lib/utils/magicBytes';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { logger } from '@/lib/utils/logger';
+import { featureFlags } from '@/lib/config/flags';
 
 function sanitizeFilename(value: string): string {
   return value
@@ -156,6 +157,15 @@ export async function POST(req: NextRequest) {
       .single();
 
     if (insertError || !material) throw insertError || new Error('Material insert failed');
+
+    if (!featureFlags.ragIngestion()) {
+      logger.info('Upload accepted without ingestion; RAG disabled', { userId: user.id, materialId: material.id, requestId });
+      return NextResponse.json({
+        material,
+        chunksProcessed: 0,
+        duplicate: false,
+      }, { status: 202, headers: { 'x-request-id': requestId } });
+    }
 
     const { error: jobError } = await supabase
       .from('rag_ingestion_jobs')

@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { logger } from '@/lib/utils/logger';
-import { classifyAgentActionRisk } from './beta-policy';
+import { assertBetaAgentActionAllowed, classifyAgentActionRisk } from './beta-policy';
 import {
   AgentActionInputSchema,
   AgentRunInputSchema,
@@ -154,6 +154,22 @@ export async function recordAgentAction(
   options: { client?: SupabaseLike } = {}
 ) {
   const parsed = AgentActionInputSchema.parse(input);
+  const betaPolicy = assertBetaAgentActionAllowed(parsed.actionType);
+  if (!betaPolicy.allowed) {
+    logger.info('Agent action skipped by beta policy', {
+      userId: parsed.userId,
+      actionType: parsed.actionType,
+      reason: betaPolicy.reason,
+    });
+    return {
+      user_id: parsed.userId,
+      action_type: parsed.actionType,
+      status: 'SKIPPED_INTENTIONALLY',
+      reason: betaPolicy.reason,
+      idempotency_key: parsed.idempotencyKey,
+    };
+  }
+
   const supabase = getClient(options.client);
 
   const { data: existing, error: existingError } = await supabase
@@ -381,6 +397,19 @@ export async function applyAgentAction(
   }
   if (action.approval_status === 'rejected' || action.status === 'rejected') {
     return action;
+  }
+  const betaPolicy = assertBetaAgentActionAllowed(action.action_type);
+  if (!betaPolicy.allowed) {
+    logger.info('Agent action application skipped by beta policy', {
+      actionId,
+      actionType: action.action_type,
+      reason: betaPolicy.reason,
+    });
+    return {
+      ...action,
+      status: 'skipped',
+      reason: betaPolicy.reason,
+    };
   }
 
   try {

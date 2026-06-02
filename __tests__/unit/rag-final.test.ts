@@ -12,11 +12,11 @@ describe('RAG Final Fixes', () => {
     expect(content).toMatch(/if \(isMaterialIndexing\) \{[\s\S]*?return new Response\(stream/);
   });
   
-  it('explicit document reading still can call routeVisionCall', () => {
+  it('explicit document reading still can call budgeted vision', () => {
     const routePath = path.resolve(__dirname, '../../app/api/ai/chat/route.ts');
     const content = fs.readFileSync(routePath, 'utf8');
     
-    expect(content).toContain('routeVisionCall(');
+    expect(content).toContain('budgetedVisionCall({');
     expect(content).toContain('EXPLICIT_READ.test(message)');
   });
 

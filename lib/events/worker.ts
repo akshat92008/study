@@ -9,6 +9,8 @@ import { MemoryConsumer } from '@/lib/engines/revision-engine';
 import { ConceptExpansionConsumer } from '@/lib/engines/concept-expansion-engine';
 import { processChatSideEffects, type ChatSideEffectsInput } from '@/lib/ai/chat-side-effects';
 import { runAgenticConsumer } from '@/lib/agents/event-runner';
+import { runCheapAgenticCycle } from '@/lib/agents/orchestrator';
+import { featureFlags } from '@/lib/config/flags';
 
 const MAX_RETRIES = 2; // Equivalent to retry_count < 3
 const DEFAULT_CONCURRENCY = 5;
@@ -19,6 +21,17 @@ type ConsumerResultStatus = 'HANDLED' | 'SKIPPED_INTENTIONALLY' | 'SKIPPED_STALE
 type ConsumerResult = {
   status: ConsumerResultStatus;
   reason?: string;
+};
+
+type AgentActionCounts = {
+  agentActionsApplied: number;
+  agentActionsProposed: number;
+  agentActionsSkipped: number;
+  agentActionsFailed: number;
+};
+
+type ProcessLeaseOutcome = AgentActionCounts & {
+  success: boolean;
 };
 
 type QueueHealthSummary = {
@@ -58,7 +71,15 @@ export class EventWorkerService {
     }
 
     if (!leases || leases.length === 0) {
-      return { processed: 0, failed: 0, skipped: 0 }; // No events to process
+      return {
+        processed: 0,
+        failed: 0,
+        skipped: 0,
+        agentActionsApplied: 0,
+        agentActionsProposed: 0,
+        agentActionsSkipped: 0,
+        agentActionsFailed: 0,
+      }; // No events to process
     }
     logger.info('Event worker leases acquired', {
       workerId,
@@ -140,6 +161,10 @@ export class EventWorkerService {
     let processed = 0;
     let failed = 0;
     let skipped = 0;
+    let agentActionsApplied = 0;
+    let agentActionsProposed = 0;
+    let agentActionsSkipped = 0;
+    let agentActionsFailed = 0;
 
     const supabase = createAdminClient();
 
@@ -150,8 +175,12 @@ export class EventWorkerService {
         }
 
         const lease = leases[nextIndex++];
-        const success = await this.processLease(lease, workerId);
-        if (success) {
+        const outcome = await this.processLease(lease, workerId);
+        agentActionsApplied += outcome.agentActionsApplied;
+        agentActionsProposed += outcome.agentActionsProposed;
+        agentActionsSkipped += outcome.agentActionsSkipped;
+        agentActionsFailed += outcome.agentActionsFailed;
+        if (outcome.success) {
           processed++;
         } else {
           failed++;
@@ -179,7 +208,15 @@ export class EventWorkerService {
         .in('id', lockIds);
     }
 
-    return { processed, failed, skipped };
+    return {
+      processed,
+      failed,
+      skipped,
+      agentActionsApplied,
+      agentActionsProposed,
+      agentActionsSkipped,
+      agentActionsFailed,
+    };
   }
 
   private static getConcurrencyLimit() {
@@ -188,7 +225,7 @@ export class EventWorkerService {
     return Math.max(1, Math.min(MAX_CONCURRENCY, Math.floor(configured)));
   }
 
-  private static async processLease(lease: any, workerId: string): Promise<boolean> {
+  private static async processLease(lease: any, workerId: string): Promise<ProcessLeaseOutcome> {
     const supabase = createAdminClient();
     const start = Date.now();
     const traceId = lease.event_metadata?.trace_id || lease.event_id;
@@ -214,7 +251,15 @@ export class EventWorkerService {
       .single();
 
     let result: ConsumerResult = { status: 'HANDLED' };
+    let agentCounts: AgentActionCounts = {
+      agentActionsApplied: 0,
+      agentActionsProposed: 0,
+      agentActionsSkipped: 0,
+      agentActionsFailed: 0,
+    };
     try {
+      agentCounts = await this.runCheapAgenticCycleForLease(lease);
+
       await withCorrelationId(traceId, async () => {
         result = await runAgenticConsumer(lease, () => this.routeToConsumer(lease));
       });
@@ -258,7 +303,7 @@ export class EventWorkerService {
         durationMs: Date.now() - start,
         resultStatus: result.status,
       });
-      return true;
+      return { success: true, ...agentCounts };
     } catch (err: any) {
       Metrics.eventConsumer(lease.consumer_name, lease.event_type, Date.now() - start, false);
       const errorMsg = err instanceof Error ? err.message : String(err);
@@ -291,7 +336,50 @@ export class EventWorkerService {
         durationMs: Date.now() - start,
         error: errorMsg,
       });
-      return false;
+      return { success: false, ...agentCounts };
+    }
+  }
+
+  private static async runCheapAgenticCycleForLease(lease: any): Promise<AgentActionCounts> {
+    const empty = {
+      agentActionsApplied: 0,
+      agentActionsProposed: 0,
+      agentActionsSkipped: 0,
+      agentActionsFailed: 0,
+    };
+
+    const consumers = getConsumersForEvent(lease.event_type);
+    if (consumers[0] !== lease.consumer_name) return empty;
+    if (!lease.user_id) {
+      logger.warn('Cheap agentic cycle skipped: event lacks user_id', {
+        eventId: lease.event_id,
+        eventType: lease.event_type,
+      });
+      return { ...empty, agentActionsSkipped: 1 };
+    }
+
+    try {
+      const result = await runCheapAgenticCycle({
+        id: lease.event_id,
+        userId: lease.user_id,
+        type: lease.event_type,
+        payload: lease.event_payload ?? {},
+        createdAt: lease.event_created_at ?? lease.created_at ?? null,
+      });
+      return {
+        agentActionsApplied: result.applied,
+        agentActionsProposed: result.proposed,
+        agentActionsSkipped: result.skipped,
+        agentActionsFailed: result.failed,
+      };
+    } catch (error) {
+      logger.warn('Cheap agentic cycle failed without aborting event consumer', {
+        eventId: lease.event_id,
+        eventType: lease.event_type,
+        userId: lease.user_id,
+        error: error instanceof Error ? error.message : String(error),
+      });
+      return { ...empty, agentActionsFailed: 1 };
     }
   }
 
@@ -469,7 +557,7 @@ export class EventWorkerService {
             data: payload,
           });
           return { status: 'HANDLED' };
-        } else if (event.type === 'PRACTICE_ATTEMPT_RECORDED') {
+        } else if (event.type === 'PRACTICE_ATTEMPT_RECORDED' || event.type === 'PRACTICE_ATTEMPT_SUBMITTED') {
           // Trigger a learning state invalidation/recalculation
           const { invalidateSessionCard } = await import('@/lib/services/session-card-invalidation');
           await invalidateSessionCard(event.user_id, 'LEARNER_STATE_UPDATED', {
@@ -483,27 +571,27 @@ export class EventWorkerService {
         return { status: 'SKIPPED_INTENTIONALLY', reason: 'No learning-state projection for this event yet' };
       }
       case 'atlas_engine':
-        if (event.type === 'AUTOPSY_MOCK_PROCESSED') {
+        if (event.type === 'AUTOPSY_MOCK_PROCESSED' || event.type === 'MOCK_TEST_ANALYZED') {
           await AtlasConsumer.handleAutopsyProcessed(event.user_id, payload);
           return { status: 'HANDLED' };
-        } else if (event.type === 'STUDY_SESSION_COMPLETED' || event.type === 'MIND_TUTOR_COMPLETED') {
+        } else if (event.type === 'STUDY_SESSION_COMPLETED' || event.type === 'MIND_TUTOR_COMPLETED' || event.type === 'REVISION_COMPLETED') {
           await AtlasConsumer.handleStudySessionCompleted(event.user_id, event.data);
           return { status: 'HANDLED' };
         } else if (event.type === 'MEMORY_CARD_REVIEWED') {
           return { status: 'SKIPPED_INTENTIONALLY', reason: 'Card review updates ATLAS through mastery evidence writer' };
-        } else if (event.type === 'PRACTICE_ATTEMPT_RECORDED') {
+        } else if (event.type === 'PRACTICE_ATTEMPT_RECORDED' || event.type === 'PRACTICE_ATTEMPT_SUBMITTED') {
           await AtlasConsumer.handlePracticeAttempt(event.user_id, payload);
           return { status: 'HANDLED' };
         }
         break;
       case 'memory_engine':
-        if (event.type === 'AUTOPSY_MOCK_PROCESSED') {
+        if (event.type === 'AUTOPSY_MOCK_PROCESSED' || event.type === 'MOCK_TEST_ANALYZED') {
           await MemoryConsumer.handleAutopsyProcessed(event.user_id, payload);
           return { status: 'HANDLED' };
-        } else if (event.type === 'STUDY_SESSION_COMPLETED' || event.type === 'MIND_TUTOR_COMPLETED') {
+        } else if (event.type === 'STUDY_SESSION_COMPLETED' || event.type === 'MIND_TUTOR_COMPLETED' || event.type === 'REVISION_COMPLETED') {
           await MemoryConsumer.handleStudySessionCompleted(event.user_id, event.data);
           return { status: 'HANDLED' };
-        } else if (event.type === 'PRACTICE_ATTEMPT_RECORDED') {
+        } else if (event.type === 'PRACTICE_ATTEMPT_RECORDED' || event.type === 'PRACTICE_ATTEMPT_SUBMITTED') {
           await MemoryConsumer.handlePracticeAttempt(event.user_id, payload);
           return { status: 'HANDLED' };
         }
@@ -523,7 +611,11 @@ export class EventWorkerService {
         }
         break;
       case 'autopsy_engine':
-        if (event.type === 'AUTOPSY_UPLOAD_RECEIVED') {
+        if (event.type === 'AUTOPSY_UPLOAD_RECEIVED' || event.type === 'MOCK_TEST_UPLOADED') {
+          if (!featureFlags.autopsyProcessing()) {
+            return { status: 'SKIPPED_INTENTIONALLY', reason: 'Autopsy processing disabled by feature flag' };
+          }
+          if (!payload.jobId) return { status: 'SKIPPED_INTENTIONALLY', reason: 'No autopsy jobId provided' };
           const { processAutopsyJob } = await import('@/lib/services/autopsy-jobs');
           await processAutopsyJob(event.user_id, payload.jobId);
           return { status: 'HANDLED' };
@@ -547,6 +639,9 @@ export class EventWorkerService {
         if (event.type === 'CHAT_SESSION_SUMMARIZE') {
           return { status: 'SKIPPED_INTENTIONALLY', reason: 'CHAT_SESSION_SUMMARIZE is currently audit-only/handled differently' };
         }
+        if (event.type === 'CHAT_MESSAGE_CREATED') {
+          return { status: 'SKIPPED_INTENTIONALLY', reason: 'CHAT_MESSAGE_CREATED is audited by the cheap agentic cycle' };
+        }
         break;
       case 'rag_agent':
         if (event.type === 'MATERIAL_UPLOADED' || event.type === 'MATERIAL_INGESTION_REQUESTED') {
@@ -564,7 +659,7 @@ export class EventWorkerService {
           });
           return { status: 'HANDLED' };
         }
-        if (event.type === 'STUDY_SESSION_COMPLETED' || event.type === 'SESSION_CARD_COMPLETED') {
+        if (event.type === 'STUDY_SESSION_COMPLETED' || event.type === 'SESSION_CARD_COMPLETED' || event.type === 'REVISION_COMPLETED') {
           await AtlasConsumer.handleStudySessionCompleted(event.user_id, payload);
           return { status: 'HANDLED' };
         }
@@ -583,7 +678,7 @@ export class EventWorkerService {
           });
           return { status: 'HANDLED' };
         }
-        if (event.type === 'STUDY_SESSION_COMPLETED' || event.type === 'SESSION_CARD_COMPLETED') {
+        if (event.type === 'STUDY_SESSION_COMPLETED' || event.type === 'SESSION_CARD_COMPLETED' || event.type === 'REVISION_COMPLETED') {
           await MemoryConsumer.handleStudySessionCompleted(event.user_id, payload);
           return { status: 'HANDLED' };
         }
@@ -599,11 +694,13 @@ export class EventWorkerService {
           'MATERIAL_INGESTED',
           'AUTOPSY_MOCK_PROCESSED',
           'AUTOPSY_PROCESSING_COMPLETED',
+          'TEST_ANALYSIS_COMPLETED',
           'AUTOPSY_MISTAKE_APPROVED',
           'STUDY_SESSION_COMPLETED',
           'MIND_TUTOR_COMPLETED',
           'MEMORY_CARD_REVIEWED',
           'REVISION_CARD_REVIEWED',
+          'REVISION_COMPLETED',
           'ATLAS_MASTERY_UPDATED',
           'MEMORY_CARD_CREATED',
           'LEARNER_STATE_CHANGED',
@@ -611,6 +708,7 @@ export class EventWorkerService {
           'PLANNER_REPLAN_REQUESTED',
           'SESSION_CARD_COMPLETED',
           'PRACTICE_ATTEMPT_RECORDED',
+          'PRACTICE_ATTEMPT_SUBMITTED',
           'ONBOARDING_QUIZ_COMPLETE',
         ].includes(event.type)) {
           const { invalidateSessionCard } = await import('@/lib/services/session-card-invalidation');
@@ -624,6 +722,8 @@ export class EventWorkerService {
       case 'mind_agent':
         if ([
           'CHAT_MESSAGE_PROCESSED',
+          'CHAT_MESSAGE_CREATED',
+          'CHAT_LEARNING_SIGNAL',
           'MIND_ACTION_REQUESTED',
           'MIND_CONTEXT_REFRESHED',
           'SESSION_RECOMMENDATION_CREATED',
@@ -635,6 +735,7 @@ export class EventWorkerService {
       case 'autopsy_agent':
         if ([
           'AUTOPSY_PROCESSING_COMPLETED',
+          'TEST_ANALYSIS_COMPLETED',
           'AUTOPSY_MISTAKE_EXTRACTED',
           'AUTOPSY_MISTAKE_REJECTED',
         ].includes(event.type)) {
@@ -645,16 +746,20 @@ export class EventWorkerService {
         if ([
           'MATERIAL_INGESTED',
           'AUTOPSY_MOCK_PROCESSED',
+          'MOCK_TEST_ANALYZED',
+          'TEST_ANALYSIS_COMPLETED',
           'AUTOPSY_MISTAKE_APPROVED',
           'STUDY_SESSION_COMPLETED',
           'MIND_TUTOR_COMPLETED',
           'MEMORY_CARD_REVIEWED',
           'REVISION_CARD_REVIEWED',
+          'REVISION_COMPLETED',
           'ATLAS_MASTERY_UPDATED',
           'MEMORY_CARD_CREATED',
           'PLANNER_REPLAN_REQUESTED',
           'SESSION_CARD_COMPLETED',
           'PRACTICE_ATTEMPT_RECORDED',
+          'PRACTICE_ATTEMPT_SUBMITTED',
           'ONBOARDING_QUIZ_COMPLETE',
         ].includes(event.type)) {
           return this.handleCommandAgentEvent(event, payload);
@@ -721,6 +826,9 @@ export class EventWorkerService {
   }
 
   private static async handleRagIngestionRequested(userId: string, payload: Record<string, any>): Promise<ConsumerResult> {
+    if (!featureFlags.ragIngestion()) {
+      return { status: 'SKIPPED_INTENTIONALLY', reason: 'RAG ingestion disabled by feature flag' };
+    }
     const materialId = this.requireNonEmptyString(payload.materialId ?? payload.material_id, 'event_payload.materialId');
     const supabase = createAdminClient();
 

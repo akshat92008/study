@@ -1,5 +1,5 @@
 import { SupabaseClient } from '@supabase/supabase-js';
-import { routeStreamGeneration } from '@/lib/ai/router';
+import { budgetedStreamGeneration } from '@/lib/ai/budgeted';
 import { buildConversationMessages } from '@/lib/ai/chat-intent';
 import { checkSemanticCache, setSemanticCache, isCacheable } from '@/lib/ai/responseCache';
 import { resolveConceptByName } from '@/lib/engines/concept-resolver';
@@ -18,8 +18,7 @@ export class ChatTutorService {
     message: string,
     sessionTurnsCount: number | undefined,
     controller: ReadableStreamDefaultController,
-    encoder: TextEncoder,
-    reservationId?: string
+    encoder: TextEncoder
   ) {
     const topic = intent.topic || 'General';
     const subject = intent.subject || mindContext?.weakConcepts?.[0]?.subject || 'General';
@@ -63,7 +62,16 @@ export class ChatTutorService {
       controller.enqueue(encoder.encode(cached));
       fullResponse = cached;
     } else {
-      for await (const chunk of routeStreamGeneration(tutorSystemPrompt, conversationMessages, 0.75, reservationId)) {
+      const generator = await budgetedStreamGeneration({
+        userId,
+        feature: 'chat',
+        route: 'chat:tutor',
+        model: 'pro',
+        systemPrompt: tutorSystemPrompt,
+        userPrompt: conversationMessages,
+        maxOutputTokens: 1600,
+      });
+      for await (const chunk of generator) {
         controller.enqueue(encoder.encode(chunk));
         fullResponse += chunk;
       }

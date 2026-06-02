@@ -27,6 +27,8 @@ import { consumeUsageLimit } from '@/lib/utils/billing';
 
 export type BudgetFeature =
   | 'chat'
+  | 'chat_vision'
+  | 'chat_document_vision'
   | 'autopsy'
   | 'image'
   | 'planner'
@@ -44,6 +46,8 @@ export type BudgetFeature =
   | 'knowledge-audio'
   | 'analyze'
   | 'atlas'
+  | 'onboarding'
+  | 'chat-mentor'
   | 'rag_flashcard';
 
 export interface BudgetReservation {
@@ -111,6 +115,8 @@ export class BudgetSystemUnavailableError extends Error {
 // estimates — actual spend is committed from real token counts.
 const COST_PER_1K_TOKENS: Record<BudgetFeature, number> = {
   chat:                    0.0001,
+  chat_vision:             0.0003,
+  chat_document_vision:    0.0003,
   autopsy:                 0.0005, // multimodal PDF is expensive
   image:                   0.0003,
   planner:                 0.00015,
@@ -128,11 +134,13 @@ const COST_PER_1K_TOKENS: Record<BudgetFeature, number> = {
   'knowledge-audio':       0.00015,
   analyze:                 0.00005,
   atlas:                   0.00005,
+  onboarding:              0.00005,
+  'chat-mentor':           0.0001,
   rag_flashcard:           0.00005,
 };
 
 const DAILY_BUDGET_USD = () => {
-  const v = Number(process.env.AI_DAILY_USER_BUDGET_USD);
+  const v = Number(process.env.AI_PER_USER_DAILY_BUDGET_USD ?? process.env.AI_DAILY_USER_BUDGET_USD);
   return Number.isFinite(v) && v > 0 ? v : 0.25;
 };
 

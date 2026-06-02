@@ -1,5 +1,5 @@
 import { BaseService } from './base.service';
-import { generateJSON } from '@/lib/ai/provider-client';
+import { budgetedGenerateJSON, budgetedStreamGeneration } from '@/lib/ai/budgeted';
 import { MindTutorOutputSchema, MindTutorOutput, compileTutorSystemPrompt, MindTutorContext } from '@/lib/ai/prompts/tutor.prompt';
 import { logger } from '@/lib/utils/logger';
 import { ConceptService } from './concept.service';
@@ -126,16 +126,18 @@ export class MindTutorService extends BaseService {
     // If both fail: emit snag once. Circuit breaker catches repeated failures.
     let output: MindTutorOutput | null = null;
     try {
-      output = await generateJSON<MindTutorOutput>('pro', systemPrompt, userPrompt, MindTutorOutputSchema);
+      output = await budgetedGenerateJSON<MindTutorOutput>({
+        userId, feature: 'tutor', route: 'mind-tutor:fsm', model: 'pro',
+        systemPrompt, userPrompt, schema: MindTutorOutputSchema, maxOutputTokens: 800
+      });
     } catch (err) {
       logger.error('MIND Engine generateJSON (pro) failed, falling back to flash', err);
       try {
-        output = await generateJSON<MindTutorOutput>(
-          'flash',
-          systemPrompt,
-          userPrompt + '\n\nCRITICAL: You must return valid JSON matching the schema exactly.',
-          MindTutorOutputSchema
-        );
+        output = await budgetedGenerateJSON<MindTutorOutput>({
+          userId, feature: 'tutor', route: 'mind-tutor:fsm-fallback', model: 'flash',
+          systemPrompt, userPrompt: userPrompt + '\n\nCRITICAL: You must return valid JSON matching the schema exactly.',
+          schema: MindTutorOutputSchema, maxOutputTokens: 800
+        });
       } catch (fallbackErr) {
         logger.error('MIND Engine generateJSON (flash) fallback also failed', fallbackErr);
       }
@@ -148,7 +150,7 @@ export class MindTutorService extends BaseService {
     }
 
     const closingMessage = await this.handleStateTransition(userId, sessionState.id, output, message, history);
-    return this.streamWithOptionalClosing(systemPrompt, userPrompt, closingMessage);
+    return this.streamWithOptionalClosing(userId, systemPrompt, userPrompt, closingMessage);
   }
 
   private async handleStateTransition(
@@ -266,6 +268,7 @@ export class MindTutorService extends BaseService {
       );
 
       return await this.generateSessionClosingMessage(
+        userId,
         chapter,
         output.diagnosedMisconception,
         cardsCreatedCount,
@@ -279,6 +282,7 @@ export class MindTutorService extends BaseService {
   }
 
   private async generateSessionClosingMessage(
+    userId: string,
     conceptName: string,
     gapIdentified: string | null,
     cardsCount: number,
@@ -309,7 +313,10 @@ export class MindTutorService extends BaseService {
     const schema = z.object({ closingMessage: z.string() });
 
     try {
-      const result = await generateJSON<{ closingMessage: string }>('flash', 'You are an elite academic coach.', prompt, schema);
+      const result = await budgetedGenerateJSON<{ closingMessage: string }>({
+        userId, feature: 'tutor', route: 'mind-tutor:closing', model: 'flash',
+        systemPrompt: 'You are an elite academic coach.', userPrompt: prompt, schema, maxOutputTokens: 150
+      });
       return result.closingMessage;
     } catch (err) {
       logger.error('Failed to generate closing narrative', err);
@@ -318,12 +325,15 @@ export class MindTutorService extends BaseService {
   }
 
   private async *realStream(
+    userId: string,
     systemPrompt: string,
     userPrompt: string
   ): AsyncGenerator<string> {
     try {
-      const { routeStreamGeneration } = await import('@/lib/ai/router');
-      const stream = routeStreamGeneration(systemPrompt, userPrompt);
+      const stream = await budgetedStreamGeneration({
+        userId, feature: 'tutor', route: 'mind-tutor:stream', model: 'pro',
+        systemPrompt, userPrompt, maxOutputTokens: 1200
+      });
       for await (const chunk of stream) {
         yield chunk;
       }
@@ -335,11 +345,12 @@ export class MindTutorService extends BaseService {
   }
 
   private async *streamWithOptionalClosing(
+    userId: string,
     systemPrompt: string,
     userPrompt: string,
     closingMessage: string | null
   ): AsyncGenerator<string> {
-    yield* this.realStream(systemPrompt, userPrompt);
+    yield* this.realStream(userId, systemPrompt, userPrompt);
     if (closingMessage) {
       yield "\n\n---\n\n";
       yield `**Session Complete:** ${closingMessage}`;

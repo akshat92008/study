@@ -14,11 +14,12 @@ describe('private beta MVP surface', () => {
     const commandBar = read('components/ui/CommandBar.tsx');
     const navText = `${sidebar}\n${commandBar}`;
 
-    for (const label of ['Today', 'MIND', 'Test Analysis', 'Progress', 'Revision Due']) {
+    for (const label of ['Today', 'NotebookLM', 'MIND', 'Test Analysis', 'Progress']) {
       expect(navText).toContain(label);
     }
+    expect(navText).toContain("feature: 'ENABLE_KNOWLEDGE_UI'");
 
-    for (const disabled of ['/planner', '/knowledge', '/analytics', '/mistakes', '/mentor', '/tutor']) {
+    for (const disabled of ['/planner', '/analytics', '/mistakes', '/mentor', '/tutor']) {
       expect(navText).not.toContain(`route: '${disabled}'`);
       expect(navText).not.toContain(`href: '${disabled}'`);
       expect(navText).not.toContain(`href="${disabled}"`);
