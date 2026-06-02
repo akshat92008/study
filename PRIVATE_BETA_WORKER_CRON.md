@@ -11,7 +11,7 @@ vercel.json:
 {
   "crons": [
     {
-      "path": "/api/cron/process-events",
+      "path": "/api/internal/workers/process-events",
       "schedule": "0 0 * * *"
     }
   ]
@@ -43,8 +43,8 @@ Expected response:
 }
 
 ## Security
-- never expose CRON_SECRET
-- rotate CRON_SECRET if leaked
+- never expose INTERNAL_CRON_SECRET
+- rotate INTERNAL_CRON_SECRET if leaked
 - route must reject missing/wrong Authorization
 - do not put secret in frontend code
 - do not log secret

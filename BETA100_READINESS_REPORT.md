@@ -2,7 +2,7 @@
 
 ## 1. What was changed
 - **Observability:** Added structured JSON logging (`logger.info` and `logger.warn`) across all major entry points including chat sessions (request started/completed/failed), event publishing, worker batch operations, consumer failures, and RAG upload validation.
-- **Admin Status API:** Implemented a new secure internal route at `/api/admin/system/status` using `CRON_SECRET` authorization to expose real-time metrics on the event queue (pending/processing/failed/DLQ counts), database health, required environment variables, and recent failure logs.
+- **Admin Status API:** Implemented a new secure internal route at `/api/admin/system/status` using `INTERNAL_CRON_SECRET` authorization to expose real-time metrics on the event queue (pending/processing/failed/DLQ counts), database health, required environment variables, and recent failure logs.
 - **Deployment Safety (Vercel Hobby):** Updated `vercel.json` with comments documenting the Vercel Hobby tier's limit of a single daily cron job. Instructed the use of external chronos triggers (like cron-job.org).
 - **Environment Validation:** Enhanced `lib/utils/env-validate.ts` to strictly validate `ADMIN_EMAILS` and forcefully throw errors in the server process when critical configuration is missing. Updated `.env.example`.
 
@@ -25,7 +25,7 @@ Critical variables required to run the server:
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - `SUPABASE_SERVICE_ROLE_KEY`
-- `CRON_SECRET`
+- `INTERNAL_CRON_SECRET`
 - `ADMIN_EMAILS`
 - `GEMINI_API_KEY`
 
@@ -33,7 +33,7 @@ Critical variables required to run the server:
 Due to the Vercel Hobby tier only supporting 1 scheduled job per day, you must set up an external ping to keep the event queue processing efficiently.
 
 - **Service:** [cron-job.org](https://cron-job.org) (or similar free tier)
-- **URL:** `https://your-production-url.vercel.app/api/cron/process-events`
+- **URL:** `https://your-production-url.vercel.app/api/internal/workers/process-events`
 - **Method:** `POST`
 - **Headers:** `Authorization: Bearer <YOUR_CRON_SECRET>`
 - **Cadence:** Every 5 minutes.

@@ -16,7 +16,7 @@ Rules decide. Database remembers. Events coordinate. Workers execute. AI escalat
 
 POST `/api/internal/workers/process-events`
 
-Header: `Authorization: Bearer $CRON_SECRET`
+Header: `Authorization: Bearer $INTERNAL_CRON_SECRET`
 
 Cadence:
 

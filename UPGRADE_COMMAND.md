@@ -58,7 +58,7 @@ export async function generateMorningBriefing(userId: string) {
 export async function GET(req: Request) {
   // Verify cron secret
   const authHeader = req.headers.get('authorization');
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  if (authHeader !== `Bearer ${process.env.INTERNAL_CRON_SECRET}`) {
     return new Response('Unauthorized', { status: 401 });
   }
 

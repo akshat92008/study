@@ -10,7 +10,7 @@
 - **Agentic Policies:** The Planner agent uses a strict Action Policy (`lib/agents/beta-policy.ts`) prohibiting unsafe state transitions or infinite loops.
 
 ## 2. Infrastructure & Background Reliability
-- **External Cron Authorization:** Replaced unreliable internal asynchronous execution with a rigid external-trigger model. The background worker route (`app/api/cron/process-events/route.ts`) now demands a securely verified `Bearer ${CRON_SECRET}` via the `validateCronRequest` middleware (`lib/auth/cron.ts`).
+- **External Cron Authorization:** Replaced unreliable internal asynchronous execution with a rigid external-trigger model. The background worker route (`app/api/internal/workers/process-events/route.ts`) now demands a securely verified `Bearer ${INTERNAL_CRON_SECRET}` via the `validateCronRequest` middleware (`lib/auth/cron.ts`).
 - **Admin Recovery:** Server-side administrative endpoints are available (`GET /api/admin/queue/status` and `POST /api/admin/queue/retry`) to allow safe monitoring and Dead Letter Queue (DLQ) retry logic in the absence of advanced Datadog-like observability tools.
 - **RAG & File Upload Limits:** Hardened magic-byte payload inspection. Imposed strict `5MB` PDF limits. Upload queues have explicit rate limiting. Duplicate content hashing eliminates redundant processing.
 

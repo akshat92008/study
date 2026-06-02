@@ -5,7 +5,7 @@
 Vercel Hobby plan only supports cron once a day. For this 10-user alpha, you MUST configure an external cron service (like cron-job.org or GitHub Actions) to run the event queue frequently.
 
 **Endpoint:**
-`POST https://<your-domain>/api/cron/process-events`
+`POST https://<your-domain>/api/internal/workers/process-events`
 
 **Headers:**
 `Authorization: Bearer <YOUR_CRON_SECRET>`
@@ -13,8 +13,8 @@ Vercel Hobby plan only supports cron once a day. For this 10-user alpha, you MUS
 **Frequency:**
 Run this every 1 to 5 minutes.
 
-### Setting `CRON_SECRET`
-- The `CRON_SECRET` must be set in your Vercel Environment Variables.
+### Setting `INTERNAL_CRON_SECRET`
+- The `INTERNAL_CRON_SECRET` must be set in your Vercel Environment Variables.
 - It is the shared secret that authenticates your external cron runner.
 - Do NOT use the default `super_secret_cron_token_123` in production.
 
@@ -34,7 +34,7 @@ You can check the health of the background system by visiting:
 
 ### Troubleshooting RED Health
 
-1. **Check your external cron runner:** Is it hitting `/api/cron/process-events` successfully every 5 minutes? Check the runner's logs.
+1. **Check your external cron runner:** Is it hitting `/api/internal/workers/process-events` successfully every 5 minutes? Check the runner's logs.
 2. **Check Vercel Server Logs:** Look for errors from the `event-worker` feature.
 3. **Check DLQ:** The admin status route will list the 10 most recent failures in the DLQ. If a specific provider API is down (like Groq/Cloudflare), wait for it to recover. The queue locks events safely in the meantime.
-4. **Manual Retry:** You can manually trigger `/api/cron/process-events` if the cron service stops working.
+4. **Manual Retry:** You can manually trigger `/api/internal/workers/process-events` if the cron service stops working.
