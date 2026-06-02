@@ -190,6 +190,17 @@ export async function POST(req: NextRequest) {
 
     logger.info('Upload accepted', { userId: user.id, materialId: material.id, mimeType, fileSize: file.size, requestId });
 
+    // Ensure the event queue gets processed in Vercel immediately
+    const { after } = await import('next/server');
+    after(async () => {
+      try {
+        const { EventWorkerService } = await import('@/lib/events/worker');
+        await EventWorkerService.processBatch(25, 5, 50_000, Date.now());
+      } catch (err) {
+        console.error('Failed to run background event worker:', err);
+      }
+    });
+
     return NextResponse.json({
       material: {
         ...material,
