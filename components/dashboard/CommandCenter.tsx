@@ -171,6 +171,17 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
 
     try {
       const res = await fetch(apiRoute, { method: 'POST', body: formData });
+      
+      const contentType = res.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        if (res.status === 413) {
+           setMessages(prev => prev.map(m => m.id === fileMsgId ? { ...m, content: `❌ Upload Failed: File is too large. Max file size is 4MB.`, type: 'text' } : m));
+        } else {
+           setMessages(prev => prev.map(m => m.id === fileMsgId ? { ...m, content: `❌ Upload Failed: ${res.status} ${res.statusText}`, type: 'text' } : m));
+        }
+        return;
+      }
+      
       const data = await res.json();
 
       if (!res.ok) {

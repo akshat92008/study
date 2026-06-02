@@ -54,7 +54,19 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
         method: 'POST',
         body: formData,
       });
-      const res = await response.json();
+      let res;
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        res = await response.json();
+      } else {
+        if (response.status === 413) {
+          setStatus({ type: 'error', msg: 'File is too large. Max file size is 4MB.' });
+        } else {
+          setStatus({ type: 'error', msg: `Upload failed: ${response.status} ${response.statusText}` });
+        }
+        setLoading(false);
+        return;
+      }
       
       if (!response.ok || res.error) {
         setStatus({ type: 'error', msg: res.error || 'Upload failed' });
