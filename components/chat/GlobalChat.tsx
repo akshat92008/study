@@ -228,11 +228,14 @@ export const GlobalChat = memo(function GlobalChat() {
       console.error('Stream failed to complete', e);
       const status = e?.status;
       let content = 'Something went wrong. Please try again.';
-      if (status === 400) content = 'I could not read that message. Please try again.';
-      else if (status === 401) content = 'Your session has expired. Please log in again.';
-      else if (status === 429) content = 'You are sending messages too quickly. Please slow down.';
-      else if (status === 413) content = 'The attached file is too large.';
-      else if (status >= 500) content = `I encountered an internal server error (HTTP ${status}). Please try again.`;
+      const backendMessage = e?.message?.replace(/^HTTP \d+: /, '');
+
+      if (status === 400) content = backendMessage || 'I could not read that message. Please try again.';
+      else if (status === 401) content = backendMessage || 'Your session has expired. Please log in again.';
+      else if (status === 429) content = backendMessage || 'You are sending messages too quickly. Please slow down.';
+      else if (status === 413) content = backendMessage || 'The attached file is too large.';
+      else if (status >= 500) content = backendMessage || `I encountered an internal server error (HTTP ${status}). Please try again.`;
+      else if (backendMessage && backendMessage !== 'Failed to fetch') content = backendMessage;
 
       addChatMessage({
         role: 'assistant',
