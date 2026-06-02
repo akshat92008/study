@@ -4,6 +4,8 @@ import { z } from 'zod';
 import { apiErrorResponse, getRequestId } from '@/lib/api/errors';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { areMcqAnswersEquivalent } from '@/lib/practice/answer-normalization';
+import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
+import { checkIdempotency } from '@/lib/middleware/idempotency';
 
 const AttemptsSchema = z.object({
   messageId: z.string().optional(),
@@ -22,6 +24,24 @@ export async function POST(req: NextRequest) {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) {
       return apiErrorResponse('unauthorized', { status: 401, message: 'Authentication required', requestId });
+    }
+
+    const { allowed, remaining, resetAt } = await checkRateLimit({
+      identifier: user.id,
+      bucket: 'practice',
+      maxTokens: 50,
+      windowSeconds: 60,
+      failClosed: true,
+    });
+    if (!allowed) return rateLimitResponse(remaining, resetAt);
+
+    const idempotencyKey = req.headers.get('Idempotency-Key');
+    const { isDuplicate, error: idempError } = await checkIdempotency(user.id, 'practice_attempt', idempotencyKey);
+    if (idempError) {
+      return apiErrorResponse('invalid_idempotency_key', { status: 400, message: idempError, requestId });
+    }
+    if (isDuplicate) {
+      return apiErrorResponse('duplicate_request', { status: 409, message: 'Duplicate request.', requestId });
     }
 
     const body = await req.json();

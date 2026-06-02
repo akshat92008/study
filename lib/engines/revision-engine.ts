@@ -373,7 +373,17 @@ export async function generateCardsForConcept(
   `;
 
   // 3. Generate with Zod Schema & Retries
-  const result = await generateJSON('pro', 'You are an expert curriculum extraction engine.', prompt, FlashcardBatchSchema);
+  const { budgetedGenerateJSON } = await import('@/lib/ai/budgeted');
+  const result = await budgetedGenerateJSON({
+    userId,
+    feature: 'rag_flashcard',
+    route: 'rag:flashcard-generation',
+    model: 'pro',
+    systemPrompt: 'You are an expert curriculum extraction engine.',
+    userPrompt: prompt,
+    schema: FlashcardBatchSchema,
+    maxOutputTokens: 1000
+  });
 
   if (!result || !result.cards || result.cards.length === 0) {
     logger.error('Failed to generate cards', { conceptId });
@@ -719,8 +729,16 @@ export class MemoryConsumer {
           ? `Analyze this practice interaction.\n${historySnippet}\nStudent Answer: ${latestMessage}\nAI Feedback: ${latestResponse.slice(0, 800)}\n\nDid the student answer correctly? Respond ONLY as JSON:\n{"summary":"1 sentence","understood":true,"gapFound":"flashcard question or null","gapAnswer":"flashcard answer or null"}`
           : `Analyze this tutor exchange.\n${historySnippet}\nStudent: ${latestMessage}\nTutor: ${latestResponse.slice(0, 800)}\n\nRespond ONLY as JSON:\n{"summary":"1 sentence","understood":true,"gapFound":"flashcard question or null","gapAnswer":"flashcard answer or null"}`;
         
-        const { generateJSON } = await import('@/lib/ai/provider-client');
-        const raw = await generateJSON<any>('flash', 'Expert analyzer. Return JSON only.', analysisPrompt);
+        const { budgetedGenerateJSON } = await import('@/lib/ai/budgeted');
+        const raw = await budgetedGenerateJSON<any>({
+          userId,
+          feature: 'rag_flashcard',
+          route: 'rag:chat-analysis',
+          model: 'flash',
+          systemPrompt: 'Expert analyzer. Return JSON only.',
+          userPrompt: analysisPrompt,
+          maxOutputTokens: 500
+        });
         
         if (raw && !raw.understood && raw.gapFound && raw.gapAnswer) {
           const card = await createSingleCard(

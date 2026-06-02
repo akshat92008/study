@@ -129,12 +129,16 @@ Rules:
 
 Write only the message. Nothing else.`;
 
-    const messageText = await generateText(
-      'flash',
-      'You are the closing message writer for Cognition OS, an AI study OS.',
-      prompt,
-      0.7
-    );
+    const { budgetedGenerateText } = await import('@/lib/ai/budgeted');
+    const messageText = await budgetedGenerateText({
+      userId,
+      feature: 'chat',
+      route: 'chat:session-closing',
+      model: 'flash',
+      systemPrompt: 'You are the closing message writer for Cognition OS, an AI study OS.',
+      userPrompt: prompt,
+      maxOutputTokens: 200
+    });
 
     if (!messageText) {
       // Deterministic fallback — never fails silently

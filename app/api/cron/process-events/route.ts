@@ -1,12 +1,14 @@
-import { NextRequest } from 'next/server';
-import { processEventWorkerRoute } from '@/lib/events/worker-route';
+import { NextResponse } from 'next/server';
 
 export const maxDuration = 10;
 
-export async function POST(req: NextRequest) {
-  return processEventWorkerRoute(req);
+export async function POST() {
+  return NextResponse.json({
+    ok: false,
+    message: 'Deprecated. Please use /api/internal/workers/process-events with an external cron runner.',
+  }, { status: 410 });
 }
 
-export async function GET(req: NextRequest) {
-  return POST(req);
+export async function GET() {
+  return POST();
 }

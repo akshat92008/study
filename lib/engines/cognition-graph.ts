@@ -298,8 +298,16 @@ Weak areas: ${weakConcepts.join(', ')}
 
 Respond as JSON: { "summary": "assessment", "topPriority": "focus", "strengths": ["s1"], "criticalGaps": ["g1"], "recommendation": "advice" }`;
 
-  return generateJSON('flash', `You are an expert ${examType} exam strategist.`, prompt);
-}
+  const { budgetedGenerateJSON } = await import('@/lib/ai/budgeted');
+  return budgetedGenerateJSON({
+    userId,
+    feature: 'atlas',
+    route: 'atlas:cognition-analysis',
+    model: 'flash',
+    systemPrompt: `You are an expert ${examType} exam strategist.`,
+    userPrompt: prompt,
+    maxOutputTokens: 500
+  });
 
 export async function expandChapterViaMind(userId: string, subject: string, chapter: string) {
   const supabase = await createClient();
@@ -467,7 +475,16 @@ export class AtlasConsumer {
           ? `Analyze this practice interaction.\n${historySnippet}\nStudent Answer: ${latestMessage}\nAI Feedback: ${latestResponse.slice(0, 800)}\n\nDid the student answer correctly? Respond ONLY as JSON:\n{"summary":"1 sentence","understood":true}`
           : `Analyze this tutor exchange.\n${historySnippet}\nStudent: ${latestMessage}\nTutor: ${latestResponse.slice(0, 800)}\n\nRespond ONLY as JSON:\n{"summary":"1 sentence","understood":true}`;
         
-        const raw = await generateJSON<any>('flash', 'Expert analyzer. Return JSON only.', analysisPrompt);
+        const { budgetedGenerateJSON } = await import('@/lib/ai/budgeted');
+        const raw = await budgetedGenerateJSON<any>({
+          userId,
+          feature: 'atlas',
+          route: 'atlas:session-analysis',
+          model: 'flash',
+          systemPrompt: 'Expert analyzer. Return JSON only.',
+          userPrompt: analysisPrompt,
+          maxOutputTokens: 500
+        });
         if (raw && typeof raw.understood === 'boolean') {
           understood = raw.understood;
         }

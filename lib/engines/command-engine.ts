@@ -113,12 +113,17 @@ export class CommandPlanner {
       Ensure concepts are grouped logically by subject and chapter.
     `;
 
-    const roadmap = await generateJSON(
-      'pro',
+    const { budgetedGenerateJSON } = await import('@/lib/ai/budgeted');
+    const roadmap = await budgetedGenerateJSON<RoadmapPlan>({
+      userId,
+      feature: 'planner',
+      route: 'planner:initialize-goal',
+      model: 'pro',
       systemPrompt,
       userPrompt,
-      RoadmapPlanSchema
-    );
+      schema: RoadmapPlanSchema,
+      maxOutputTokens: 1500
+    });
 
     if (!roadmap || !roadmap.milestones) {
       throw new Error('COMMAND failed to generate a valid roadmap JSON.');

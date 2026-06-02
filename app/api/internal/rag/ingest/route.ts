@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { ingestStudyMaterial } from '@/lib/rag/ingest';
 import { logger } from '@/lib/utils/logger';
+import { validateCronRequest } from '@/lib/middleware/cronAuth';
 
 export const maxDuration = 300; // 5 minutes max duration on Vercel Pro
 
@@ -13,14 +14,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Authentication is required' }, { status: 401 });
     }
     
-    // This is an administrative/manual reprocess endpoint.
-    // Standard RAG ingestion occurs via the EVENT_QUEUE ('MATERIAL_UPLOADED') and background workers.
-    const authHeader = req.headers.get('authorization');
-    const isServiceRole = authHeader && authHeader.includes(process.env.SUPABASE_SERVICE_ROLE_KEY || 'super_secret_never_match');
-    if (!isServiceRole) {
-      return NextResponse.json({ error: 'Unauthorized: Manual synchronous ingestion requires admin privileges.' }, { status: 403 });
-    }
-
+    const authError = validateCronRequest(req as any);
+    if (authError) return authError;
     const body = await req.json();
     const { materialId } = body;
 
