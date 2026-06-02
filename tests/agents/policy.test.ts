@@ -10,17 +10,17 @@ describe('cheap agent policy', () => {
     expect(classifyAgentAction('invalidate_session_card')).toEqual({ riskLevel: 'safe', autoApply: true });
   });
 
-  it('auto-applies low-risk evidence actions and stores risky actions as proposals', () => {
-    expect(classifyAgentAction('record_learning_evidence')).toEqual({ riskLevel: 'safe', autoApply: true });
-    expect(classifyAgentAction('tag_weak_topic')).toEqual({ riskLevel: 'safe', autoApply: true });
+  it('stores non-allowlisted evidence actions and risky actions as proposals', () => {
+    expect(classifyAgentAction('record_learning_evidence')).toEqual({ riskLevel: 'medium', autoApply: false });
+    expect(classifyAgentAction('tag_weak_topic')).toEqual({ riskLevel: 'medium', autoApply: false });
     expect(classifyAgentAction('replace_daily_plan')).toEqual({ riskLevel: 'medium', autoApply: false });
   });
 
-  it('enables mutating agent actions by default but honors the kill switch', () => {
+  it('disables mutating agent actions by default and honors explicit enablement', () => {
     vi.stubEnv('ENABLE_AGENT_ACTIONS', '');
-    expect(shouldSkipAgentMutation()).toBe(false);
-
-    vi.stubEnv('ENABLE_AGENT_ACTIONS', 'false');
     expect(shouldSkipAgentMutation()).toBe(true);
+
+    vi.stubEnv('ENABLE_AGENT_ACTIONS', 'true');
+    expect(shouldSkipAgentMutation()).toBe(false);
   });
 });

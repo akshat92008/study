@@ -200,7 +200,7 @@ function makeState() {
 }
 
 describe('COMMAND plan service', () => {
-  it('creates an idempotent daily plan grounded in memory, ATLAS, AUTOPSY, and MEMORY', async () => {
+  it('creates an idempotent daily plan without persisting non-allowlisted beta actions', async () => {
     const state = makeState();
     const client = makeClient(state);
 
@@ -215,11 +215,7 @@ describe('COMMAND plan service', () => {
     expect(first.briefing).toContain('Last time: Student confused oxidation potential');
     expect(state.daily_plans).toHaveLength(1);
     expect(state.study_tasks).toHaveLength(first.tasks.length);
-    expect(state.agent_actions).toContainEqual(expect.objectContaining({
-      agent_name: 'command',
-      action_type: 'plan_created',
-      idempotency_key: `command_plan_created:${USER_ID}:2026-06-01`,
-    }));
+    expect(state.agent_actions).toEqual([]);
 
     const second = await ensureCommandPlanForDate({
       userId: USER_ID,

@@ -27,10 +27,10 @@ describe('feature flags', () => {
     vi.stubEnv('ENABLE_AGENT_ACTIONS', '');
     vi.stubEnv('ENABLE_AI_ESCALATION', '');
 
-    expect(featureFlags.visionUploads()).toBe(false);
+    expect(featureFlags.visionUploads()).toBe(true);
     expect(featureFlags.ragIngestion()).toBe(true);
     expect(featureFlags.autopsyProcessing()).toBe(true);
-    expect(featureFlags.agentActions()).toBe(true);
+    expect(featureFlags.agentActions()).toBe(false);
     expect(featureFlags.aiEscalation()).toBe(true);
   });
 });

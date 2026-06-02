@@ -4,9 +4,12 @@ import { assertBetaAgentActionAllowed } from '@/lib/agents/beta-policy';
 describe('agent beta policy', () => {
   afterEach(() => vi.unstubAllEnvs());
 
-  it('allows safe actions when the beta kill switch is unset', () => {
+  it('skips actions when the beta kill switch is unset', () => {
     vi.stubEnv('ENABLE_AGENT_ACTIONS', '');
-    expect(assertBetaAgentActionAllowed('create_revision_card_from_verified_mistake')).toEqual({ allowed: true });
+    expect(assertBetaAgentActionAllowed('create_revision_card_from_verified_mistake')).toEqual({
+      allowed: false,
+      reason: 'Agent actions are disabled for beta stability.',
+    });
   });
 
   it('skips actions when the beta kill switch is explicitly disabled', () => {
@@ -22,6 +25,10 @@ describe('agent beta policy', () => {
     expect(assertBetaAgentActionAllowed('replace_daily_plan')).toEqual({
       allowed: false,
       reason: 'Agent action replace_daily_plan is not allowed in beta.',
+    });
+    expect(assertBetaAgentActionAllowed('record_learning_evidence')).toEqual({
+      allowed: false,
+      reason: 'Agent action record_learning_evidence is not allowed in beta.',
     });
   });
 

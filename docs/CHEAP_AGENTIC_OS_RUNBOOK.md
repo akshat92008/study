@@ -6,8 +6,8 @@ Rules decide. Database remembers. Events coordinate. Workers execute. AI escalat
 
 ## Cheap defaults
 
-- `ENABLE_VISION_UPLOADS=false`
-- `ENABLE_AGENT_ACTIONS=true`
+- `ENABLE_VISION_UPLOADS=true`
+- `ENABLE_AGENT_ACTIONS=false`
 - `ENABLE_AI_ESCALATION=true`
 - `ENABLE_RAG_INGESTION=true`
 - `AI_PER_USER_DAILY_BUDGET_USD=0.05`
@@ -28,15 +28,9 @@ Vercel cron is a backup only. Private beta should use an external cron runner so
 
 ## Beta-Allowed Auto-Actions
 
-- record learning evidence
 - update mastery from evidence
-- tag weak topic
-- record mistake pattern
 - create revision card from verified mistake
 - invalidate session card
-- increase topic priority
-- mark concept practiced
-- flag student risk
 
 ## Approval-required actions
 

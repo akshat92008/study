@@ -5,7 +5,7 @@
 - `CRON_SECRET` must be long, random, and at least 24 characters.
 - External cron must `POST` `/api/internal/workers/process-events`.
 - Vercel Hobby daily cron is backup only, not the primary worker.
-- `ENABLE_AGENT_ACTIONS=true` by default for deterministic safe actions.
+- `ENABLE_AGENT_ACTIONS=false` by default. Set it to `true` only after verifying the beta allowlist and kill switch.
 - AI budget env vars must be configured before inviting users.
 
 ## External Cron Setup
@@ -75,7 +75,7 @@ Pause beta if:
 - [ ] External cron is running
 - [ ] `/api/admin/queue/status` works
 - [ ] AI budget limits configured
-- [ ] Safe rule agent actions enabled; emergency kill switch verified
+- [ ] Beta rule-agent actions are explicitly enabled only after verifying the emergency kill switch
 - [ ] Practice attempt route is rate-limited and DB-idempotent
 - [ ] RAG internal route uses cron auth, not service-role bearer auth
 - [ ] Admin routes use admin auth
