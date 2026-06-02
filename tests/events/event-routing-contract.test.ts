@@ -76,7 +76,6 @@ describe('event routing SQL/TypeScript contract', () => {
     expect(EVENT_CONSUMER_MATRIX.STUDY_SESSION_COMPLETED).toContain('learning_state_engine');
     expect(EVENT_CONSUMER_MATRIX.STUDENT_MODEL_SYNC_REQUESTED).toEqual([
       'learning_state_engine',
-      'command_engine',
     ]);
   });
 

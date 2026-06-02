@@ -36,14 +36,15 @@ export async function processEventWorkerRoute(req: NextRequest | Request) {
       processed,
       failed,
       skipped,
-      agentActionsApplied,
-      agentActionsProposed,
-      agentActionsSkipped,
-      agentActionsFailed,
-      oldestPendingAgeSeconds: queue.oldestPendingAgeSeconds ?? null,
+      dlq: queue.dlqCount,
       durationMs: Date.now() - start,
-      queueDepth,
-      dlqDepth,
+      queueHealth: {
+        pendingEvents: queue.pendingEvents,
+        pendingLocks: queue.pendingLocks,
+        processingLocks: queue.processingLocks,
+        dlqCount: queue.dlqCount,
+        oldestPendingAgeSeconds: queue.oldestPendingAgeSeconds ?? null,
+      },
       nextRecommendedRunSeconds,
     }, { headers: { 'x-request-id': requestId } });
   } catch (error: any) {

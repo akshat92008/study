@@ -7,7 +7,7 @@ import { apiErrorResponse, getRequestId } from '@/lib/api/errors';
  * Vercel Cron sets the Authorization header with CRON_SECRET.
  */
 export function validateCronRequest(req: NextRequest): NextResponse | null {
-  const secret = process.env.CRON_SECRET;
+  const secret = process.env.INTERNAL_CRON_SECRET || process.env.CRON_SECRET;
   const requestId = getRequestId(req);
   const weakSecrets = new Set([
     'super_secret_cron_token_123',

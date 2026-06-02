@@ -11,7 +11,7 @@ export const maxDuration = 300; // 5 minutes max duration on Vercel Pro
 
 export async function POST(req: NextRequest) {
   try {
-    const authError = validateCronRequest(req as any);
+    const authError = validateCronRequest(req);
     if (authError) return authError;
 
     if (!featureFlags.ragIngestion()) {

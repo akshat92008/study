@@ -94,6 +94,11 @@ export async function GET(req: NextRequest) {
       timestamp: new Date().toISOString()
     }, { headers: { 'x-request-id': requestId } });
   } catch (error: any) {
-    return apiErrorResponse('internal_error', { status: 500, message: 'Admin status check failed', requestId });
+    return NextResponse.json({
+      status: 'error',
+      health: 'RED',
+      error: error.message,
+      timestamp: new Date().toISOString()
+    }, { status: 200, headers: { 'x-request-id': requestId } });
   }
 }

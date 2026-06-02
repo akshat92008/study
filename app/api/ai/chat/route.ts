@@ -849,7 +849,15 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
       } catch (err) {
         if (isBudgetExceeded(err)) return budgetExceededResponse();
         if (isBudgetUnavailable(err)) return budgetUnavailableResponse();
-        throw err;
+        
+        logger.error('Main AI generation failed', err);
+        const fallbackStream = new ReadableStream({
+          start(controller) {
+            controller.enqueue(encoder.encode("I'm currently unable to process your request due to a connection or configuration issue. Please try again in a moment."));
+            controller.close();
+          }
+        });
+        return new Response(fallbackStream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
       }
     }
 

@@ -191,7 +191,9 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
           ? `📊 Test Analysis Complete. Mistakes Found: **${data.autopsy?.marks_lost || 0}**. Sprint Scheduled.`
           : data.material?.status === 'failed'
             ? `❌ Material indexing failed for **${file.name}**.`
-            : `📚 Syllabus Ingested: **${file.name}**. Material indexed: ${data.chunksProcessed || 0} chunks ready.`;
+            : data.material?.status === 'uploaded' && data.chunksProcessed === 0
+              ? `📁 Material uploaded: **${file.name}**. Indexing is currently disabled for beta stability.`
+              : `📚 Syllabus Ingested: **${file.name}**. Material indexed: ${data.chunksProcessed || 0} chunks ready.`;
         setMessages(prev => prev.map(m => m.id === fileMsgId ? { ...m, content: textContent, type: 'text' } : m));
         
         if (uploadType === 'mock_test') {

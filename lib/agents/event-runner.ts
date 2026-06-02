@@ -7,7 +7,6 @@ const CONSUMER_AGENT_MAP: Record<string, AgentName> = {
   learning_state_engine: 'system',
   atlas_engine: 'atlas',
   memory_engine: 'memory',
-  command_engine: 'command',
   autopsy_engine: 'autopsy',
   concept_expansion_engine: 'atlas',
   mind_agent: 'mind',

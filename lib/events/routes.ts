@@ -2,7 +2,6 @@ export const EVENT_CONSUMERS = [
   'learning_state_engine',
   'atlas_engine',
   'memory_engine',
-  'command_engine',
   'autopsy_engine',
   'concept_expansion_engine',
   'chat_side_effect_engine',
@@ -79,7 +78,7 @@ export const EVENT_CONSUMER_MATRIX = {
   SESSION_RECOMMENDATION_CREATED: ['mind_agent'],
   LEARNER_STATE_CHANGED: ['planner_agent', 'mind_agent'],
   PLANNER_REPLAN_REQUESTED: ['planner_agent', 'command_agent'],
-  STUDENT_MODEL_SYNC_REQUESTED: ['learning_state_engine', 'command_engine'],
+  STUDENT_MODEL_SYNC_REQUESTED: ['learning_state_engine'],
   PRACTICE_ATTEMPT_RECORDED: [
     'atlas_engine',
     'memory_engine',

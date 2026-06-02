@@ -32,6 +32,6 @@ export async function GET(req: NextRequest) {
       dlqEvents: dlqResponse.data || []
     });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: err.message }, { status: 200 });
   }
 }

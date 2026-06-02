@@ -81,8 +81,10 @@ export default function StudyMaterialPanel() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
             {mat.status === 'processing' ? (
               <Badge color="yellow"><Loader2 size={10} className="animate-spin" style={{ display: 'inline', marginRight: 4 }} />Processing</Badge>
-            ) : mat.status === 'uploaded' || mat.status === 'queued' ? (
+            ) : mat.status === 'queued' ? (
               <Badge color="yellow">Queued</Badge>
+            ) : mat.status === 'uploaded' ? (
+              <Badge color="gray">Disabled</Badge>
             ) : mat.status === 'failed' ? (
               <Badge color="red">Failed</Badge>
             ) : (

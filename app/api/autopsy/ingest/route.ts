@@ -25,6 +25,7 @@ import {
   validateUploadBytes,
 } from '@/lib/utils/billing';
 import { getPromptVersion } from '@/lib/ai/prompt-version';
+import { featureFlags } from '@/lib/config/flags';
 
 const ALLOWED_MIME_TYPES = new Set([
   'application/pdf',
@@ -162,6 +163,15 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
     const examType = requestedExamType || profile?.exam_type || 'General Study';
 
     logger.info('Starting autopsy', { userId, requestId, feature: 'autopsy', testName, mimeType, fileSizeKB });
+
+    if (!featureFlags.autopsyProcessing()) {
+      return apiErrorResponse('autopsy_disabled', {
+        status: 503,
+        message: 'Test Analysis is temporarily disabled for beta stability.',
+        requestId,
+        feature: 'autopsy',
+      });
+    }
 
     if (asyncRequested) {
       const job = await createAutopsyJob({

@@ -1,11 +1,11 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { validateCronRequest } from '@/lib/middleware/cronAuth';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET(req: Request) {
-  const authError = validateCronRequest(req as any);
+export async function GET(req: NextRequest) {
+  const authError = validateCronRequest(req);
   if (authError) return authError;
 
   const supabase = createAdminClient();

@@ -596,20 +596,7 @@ export class EventWorkerService {
           return { status: 'HANDLED' };
         }
         break;
-      case 'command_engine':
-        if (event.type === 'STUDENT_MODEL_SYNC_REQUESTED') {
-          if (payload.reason !== 'daily_synthesis') {
-            return { status: 'SKIPPED_INTENTIONALLY', reason: 'COMMAND only handles daily synthesis sync requests' };
-          }
-          const { runDailySynthesisForUser } = await import('@/lib/services/command-plan.service');
-          await runDailySynthesisForUser({
-            userId: event.user_id,
-            date: payload.date || new Date().toISOString().slice(0, 10),
-            client: createAdminClient(),
-          });
-          return { status: 'HANDLED' };
-        }
-        break;
+
       case 'autopsy_engine':
         if (event.type === 'AUTOPSY_UPLOAD_RECEIVED' || event.type === 'MOCK_TEST_UPLOADED') {
           if (!featureFlags.autopsyProcessing()) {

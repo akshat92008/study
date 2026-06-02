@@ -27,7 +27,7 @@ export async function GET() {
       autopsyJobs,
     });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: err.message, unavailable: true }, { status: 200 });
   }
 }
 

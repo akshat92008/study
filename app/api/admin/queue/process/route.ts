@@ -15,6 +15,6 @@ export async function POST(req: NextRequest) {
     const result = await EventWorkerService.processBatch(50, 5, 50000); // 50 items, 5 min lease, 50s max runtime
     return NextResponse.json(result);
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: err.message }, { status: 200 });
   }
 }

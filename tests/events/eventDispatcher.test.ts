@@ -104,7 +104,7 @@ describe('EventDispatcher', () => {
       'planner_agent',
       'command_agent',
     ]);
-    expect(getConsumersForEvent('STUDENT_MODEL_SYNC_REQUESTED')).toContain('command_engine');
+    expect(getConsumersForEvent('STUDENT_MODEL_SYNC_REQUESTED')).toContain('learning_state_engine');
   });
 
   it('allows every parent event status used by the worker', async () => {

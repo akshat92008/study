@@ -124,14 +124,7 @@ export class EventDispatcher {
     return eventId;
   }
 
-  static async runAllConsumers(_eventId: string): Promise<void> {
-    if (process.env.NODE_ENV !== 'test') {
-      throw new Error('runAllConsumers is test-only. Use /api/cron/process-events for runtime processing.');
-    }
 
-    const { EventWorkerService } = await import('@/lib/events/worker');
-    await EventWorkerService.processBatch(EVENT_CONSUMERS.length, 5);
-  }
 }
 
 export const EventOrchestrator = EventDispatcher;
