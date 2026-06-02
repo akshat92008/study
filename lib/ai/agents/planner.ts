@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import { generateJSON } from '@/lib/ai/provider-client';
+import { budgetedGenerateJSON, budgetedGenerateText } from '@/lib/ai/budgeted';
 import { z } from 'zod';
 import { getExamConfig } from '@/lib/utils/constants';
 import { DailyMissionSchema, MissionTaskSchema } from '@/lib/engines/planner-schemas';
@@ -113,16 +114,16 @@ export async function generateDailyPlan(userId: string, date: string) {
     promptFamily: 'command_plan',
     promptSource: 'generateDailyPlan',
     route: 'planner:daily-plan',
+  const mission = await budgetedGenerateJSON({
+    userId,
+    feature: 'planner',
+    route: 'planner:daily-plan',
+    model: 'pro',
+    systemPrompt: 'You are an elite academic operations director.',
+    userPrompt: prompt,
+    schema: DailyMissionSchema,
+    maxOutputTokens: 1200
   });
-  const mission = await generateJSON(
-    'pro',
-    'You are an elite academic operations director.',
-    prompt,
-    DailyMissionSchema,
-    0.3,
-    3,
-    planReservation.reservationId
-  );
 
   let finalTasks: MissionTask[] = [];
 
@@ -338,5 +339,13 @@ GOOD EXAMPLE (Momentum): "You're on a 5-day streak and your focus score is in th
     promptSource: 'generateMorningBriefing',
     route: 'planner:morning-briefing',
   });
-  return generateText('flash', 'You are the daily mission planner.', prompt, 0.7, reservation.reservationId);
+  return budgetedGenerateText({
+    userId,
+    feature: 'planner',
+    route: 'planner:morning-briefing',
+    model: 'flash',
+    systemPrompt: 'You are the daily mission planner.',
+    userPrompt: prompt,
+    maxOutputTokens: 500
+  });
 }

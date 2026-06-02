@@ -32,7 +32,9 @@ export async function getMistakeAnalytics(userId: string) {
   return { mistakes, patterns: patternArray, totalMarksLost, examType };
 }
 
-export async function analyzeMistake(mistake: any) {
+import { budgetedGenerateJSON } from '@/lib/ai/budgeted';
+
+export async function analyzeMistake(userId: string, mistake: any) {
   const questionText = mistake.questionText || 'Not provided';
   const userAnswer = mistake.userAnswer || 'Not provided';
   const correctAnswer = mistake.correctAnswer || 'Not provided';
@@ -49,7 +51,16 @@ Marks Lost: ${marksLost}
 
 Respond as JSON: { "rootCause": "...", "knowledgeGap": "...", "remediation": "...", "prevention": "..." }`;
 
-  return generateJSON('flash', `You are an expert exam analyst and cognitive psychologist.`, prompt, AnalyzeMistakeSchema);
+  return budgetedGenerateJSON({
+    userId,
+    feature: 'autopsy',
+    route: 'autopsy:mistake-analysis',
+    model: 'flash',
+    systemPrompt: `You are an expert exam analyst and cognitive psychologist.`,
+    userPrompt: prompt,
+    schema: AnalyzeMistakeSchema,
+    maxOutputTokens: 1000
+  });
 }
 
 export async function generateMarkLossReport(userId: string) {
@@ -67,5 +78,14 @@ Top patterns: ${patterns.slice(0, 5).map(p => `- ${p.category}: ${p.count} times
 
 Respond as JSON: { "biggestLeak": "...", "recoveryPlan": ["step 1", "step 2"], "estimatedImprovement": number, "overallAssessment": "summary" }`;
 
-  return generateJSON('pro', `You are an elite ${examType} exam strategist.`, prompt, MarkLossReportSchema);
+  return budgetedGenerateJSON({
+    userId,
+    feature: 'autopsy',
+    route: 'autopsy:mark-loss-report',
+    model: 'pro',
+    systemPrompt: `You are an elite ${examType} exam strategist.`,
+    userPrompt: prompt,
+    schema: MarkLossReportSchema,
+    maxOutputTokens: 1500
+  });
 }

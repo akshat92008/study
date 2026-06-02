@@ -103,7 +103,7 @@ export function useStream(defaultUrl = '/api/ai/chat'): UseStreamReturn {
             headers: {
               'Content-Type': 'application/json',
               ...opts.headers,
-              // Pass partial text so the server can potentially resume
+              ...(opts.headers?.['Idempotency-Key'] ? { 'Idempotency-Key': attempt === 0 ? opts.headers['Idempotency-Key'] : crypto.randomUUID() } : {}),
               ...(resumeFrom ? { 'X-Stream-Resume-From': String(resumeFrom.length) } : {}),
             },
             body: JSON.stringify(body),

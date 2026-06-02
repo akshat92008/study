@@ -117,8 +117,17 @@ export async function generateSprintPlanAction(subjects: string[], targetDate: s
       - Start scheduling from today (${todayStr}) up to ${finalEndDate}.
     `;
 
-    const { generateJSON } = await import('@/lib/ai/provider-client');
-    const plan = await generateJSON('flash', 'Expert academic scheduler.', prompt, SprintPlanSchema);
+    const { budgetedGenerateJSON } = await import('@/lib/ai/budgeted');
+    const plan = await budgetedGenerateJSON({
+      userId: user.id,
+      feature: 'planner',
+      route: 'planner:sprint-plan',
+      model: 'flash',
+      systemPrompt: 'Expert academic scheduler.',
+      userPrompt: prompt,
+      schema: SprintPlanSchema,
+      maxOutputTokens: 1000
+    });
     
     if (!plan || !plan.tasks || plan.tasks.length === 0) {
       throw new Error('Failed to generate study plan.');

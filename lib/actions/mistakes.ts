@@ -77,7 +77,7 @@ export async function logMistake(formData: FormData) {
     });
 
     // Get AI analysis
-    const analysis = await analyzeMistake(payload);
+    const analysis = await analyzeMistake(user.id, payload);
 
     const { error } = await supabase.from('mistakes').insert({
       user_id: user.id,
