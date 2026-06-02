@@ -14,7 +14,7 @@ const MAX_RETRIES = 2; // Equivalent to retry_count < 3
 const DEFAULT_CONCURRENCY = 5;
 const MAX_CONCURRENCY = 10;
 
-type ConsumerResultStatus = 'HANDLED' | 'SKIPPED_INTENTIONALLY' | 'SKIPPED_STALE_ROUTE';
+type ConsumerResultStatus = 'HANDLED' | 'SKIPPED_INTENTIONALLY' | 'SKIPPED_STALE_ROUTE' | 'RETRYABLE_FAILURE' | 'PERMANENT_FAILURE';
 
 type ConsumerResult = {
   status: ConsumerResultStatus;
@@ -221,6 +221,10 @@ export class EventWorkerService {
 
       Metrics.eventConsumer(lease.consumer_name, lease.event_type, Date.now() - start, true);
 
+      if (result.status === 'PERMANENT_FAILURE' || result.status === 'RETRYABLE_FAILURE') {
+        throw new Error(result.reason || `Consumer returned ${result.status}`);
+      }
+
       await supabase
         .from('consumer_locks')
         .update({
@@ -258,6 +262,7 @@ export class EventWorkerService {
     } catch (err: any) {
       Metrics.eventConsumer(lease.consumer_name, lease.event_type, Date.now() - start, false);
       const errorMsg = err instanceof Error ? err.message : String(err);
+      const isPermanent = result.status === 'PERMANENT_FAILURE';
 
       Metrics.captureError(err instanceof Error ? err : new Error(errorMsg), {
         consumer: lease.consumer_name,
@@ -275,7 +280,7 @@ export class EventWorkerService {
           .eq('id', attempt.id);
       }
 
-      await this.handleConsumerFailure(lease, errorMsg);
+      await this.handleConsumerFailure(lease, errorMsg, isPermanent);
       logger.warn('Event consumer failed', {
         workerId,
         traceId,
@@ -290,12 +295,12 @@ export class EventWorkerService {
     }
   }
 
-  private static async handleConsumerFailure(lease: any, errorMsg: string) {
+  private static async handleConsumerFailure(lease: any, errorMsg: string, isPermanent: boolean = false) {
     const supabase = createAdminClient();
     const newRetryCount = Number(lease.retry_count ?? 0) + 1;
     const nextAttemptAt = new Date(Date.now() + Math.pow(2, newRetryCount) * 10_000).toISOString();
 
-    if (newRetryCount > MAX_RETRIES) {
+    if (isPermanent || newRetryCount > MAX_RETRIES) {
       // Move to DLQ
       await supabase.from('event_dlq').insert({
         event_id: lease.event_id,
@@ -539,6 +544,9 @@ export class EventWorkerService {
           });
           return { status: 'HANDLED' };
         }
+        if (event.type === 'CHAT_SESSION_SUMMARIZE') {
+          return { status: 'SKIPPED_INTENTIONALLY', reason: 'CHAT_SESSION_SUMMARIZE is currently audit-only/handled differently' };
+        }
         break;
       case 'rag_agent':
         if (event.type === 'MATERIAL_UPLOADED' || event.type === 'MATERIAL_INGESTION_REQUESTED') {
@@ -581,6 +589,9 @@ export class EventWorkerService {
         }
         if (event.type === 'RAG_CARD_CANDIDATE_CREATED' || event.type === 'MEMORY_CARD_CREATE_REQUESTED' || event.type === 'MATERIAL_INGESTED') {
           return { status: 'SKIPPED_INTENTIONALLY', reason: 'MEMORY agent wrapper registered; card extraction requires explicit source payload' };
+        }
+        if (event.type === 'REVISION_CARD_REVIEWED') {
+          return { status: 'SKIPPED_INTENTIONALLY', reason: 'REVISION_CARD_REVIEWED handled elsewhere or audit-only for memory_agent' };
         }
         break;
       case 'planner_agent':
@@ -651,7 +662,7 @@ export class EventWorkerService {
         break;
     }
 
-    throw new Error(`Event routing error: ${consumer} has no handler for ${event.type}`);
+    return { status: 'PERMANENT_FAILURE', reason: `Event routing error: ${consumer} has no handler for ${event.type}` };
   }
 
   private static async handleCommandAgentEvent(event: any, payload: Record<string, any>): Promise<ConsumerResult> {

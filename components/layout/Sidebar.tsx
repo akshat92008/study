@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
 import { signOut } from '@/lib/actions/auth';
+import { isFeatureEnabled } from '@/lib/feature-flags';
 
 interface SidebarProps {
   userName: string;
@@ -25,11 +26,11 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
   } = useAppStore();
   const navItems = [
     { label: 'Today', href: '/dashboard', icon: Home },
-    { label: 'MIND', href: '/chat', icon: MessageSquare },
-    { label: 'Test Analysis', href: '/autopsy', icon: Activity },
-    { label: 'Progress', href: '/cognition', icon: Brain },
+    { label: 'MIND', href: '/chat', icon: MessageSquare, feature: 'ENABLE_CHAT' as const },
+    { label: 'Test Analysis', href: '/autopsy', icon: Activity, feature: 'ENABLE_AUTOPSY_UI' as const },
+    { label: 'Progress', href: '/cognition', icon: Brain, feature: 'ENABLE_ATLAS_UI' as const },
     { label: 'Revision Due', href: '/revision', icon: RefreshCw },
-  ];
+  ].filter(item => !item.feature || isFeatureEnabled(item.feature));
 
   useEffect(() => {
     // Goals removed for MVP
@@ -127,7 +128,60 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
               Core Loop
             </span>
           )}
-          {/* Navigation removed as per user request */}
+          {navItems.map((item) => {
+            const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
+            return (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="nav-link-base"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 'var(--sp-3)',
+                  padding: 'var(--sp-3)',
+                  borderRadius: 'var(--radius-md)',
+                  color: isActive ? 'var(--accent-blue)' : 'var(--text-secondary)',
+                  background: isActive ? 'var(--accent-blue-dim)' : 'transparent',
+                  textDecoration: 'none',
+                  transition: 'all 0.2s',
+                  position: 'relative',
+                  overflow: 'hidden',
+                }}
+                title={isSidebarCollapsed ? item.label : undefined}
+                onClick={() => setMobileSidebarOpen(false)}
+              >
+                {isActive && (
+                  <div style={{
+                    position: 'absolute',
+                    left: 0,
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    width: 3,
+                    height: 16,
+                    background: 'var(--accent-blue)',
+                    borderRadius: '0 4px 4px 0',
+                  }} />
+                )}
+                <item.icon
+                  size={20}
+                  strokeWidth={isActive ? 2.5 : 2}
+                  style={{ flexShrink: 0 }}
+                />
+                {!isSidebarCollapsed && (
+                  <span style={{
+                    fontSize: 'var(--fs-sm)',
+                    fontWeight: isActive ? 'var(--fw-semibold)' : 'var(--fw-medium)',
+                    whiteSpace: 'nowrap',
+                    opacity: 1,
+                    transition: 'opacity 0.2s',
+                  }}>
+                    {item.label}
+                  </span>
+                )}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Learning Goals Section removed for MVP */}

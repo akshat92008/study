@@ -19,11 +19,8 @@ export async function GET(req: NextRequest) {
     }
   }
 
-  // Allow passing ?secret=xxx for simple manual queries
-  const url = new URL(req.url);
-  if (url.searchParams.get('secret') === process.env.CRON_SECRET) {
-    isAuthorized = true;
-  }
+  // URL query secret has been disabled for safety.
+  // Use Authorization: Bearer <CRON_SECRET> instead.
 
   if (!isAuthorized) {
     return apiErrorResponse('unauthorized', { status: 401, message: 'Admin authentication required', requestId });
@@ -34,13 +31,15 @@ export async function GET(req: NextRequest) {
 
     // 1. Queue Status
     const [
-      pending, processing, failed, dlq, lastAttempt
+      pending, processing, failed, dlq, lastAttempt, oldestPending, stuckLocks
     ] = await Promise.all([
       supabase.from('event_queue').select('*', { count: 'exact', head: true }).eq('status', 'PENDING'),
       supabase.from('event_queue').select('*', { count: 'exact', head: true }).eq('status', 'PROCESSING'),
       supabase.from('event_queue').select('*', { count: 'exact', head: true }).in('status', ['FAILED', 'DLQ']),
       supabase.from('event_dlq').select('*', { count: 'exact', head: true }).is('resolved_at', null),
       supabase.from('event_attempts').select('finished_at').not('finished_at', 'is', null).order('finished_at', { ascending: false }).limit(1).maybeSingle(),
+      supabase.from('event_queue').select('created_at').eq('status', 'PENDING').order('created_at', { ascending: true }).limit(1).maybeSingle(),
+      supabase.from('consumer_locks').select('*', { count: 'exact', head: true }).eq('status', 'PROCESSING').lt('updated_at', new Date(Date.now() - 10 * 60 * 1000).toISOString()),
     ]);
 
     // 2. DB Check
@@ -70,13 +69,31 @@ export async function GET(req: NextRequest) {
       .order('created_at', { ascending: false })
       .limit(10);
 
+    const oldestPendingAgeSeconds = oldestPending.data?.created_at
+      ? Math.max(0, Math.round((Date.now() - new Date(oldestPending.data.created_at).getTime()) / 1000))
+      : 0;
+    const stuckLocksCount = stuckLocks.count || 0;
+    const dlqCount = dlq.count || 0;
+    const pendingEvents = pending.count || 0;
+
+    let queueHealth = 'GREEN';
+    if (dlqCount > 0 || oldestPendingAgeSeconds > 600) {
+      queueHealth = 'YELLOW';
+    }
+    if (dlqCount > 50 || oldestPendingAgeSeconds > 1800 || stuckLocksCount > 0) {
+      queueHealth = 'RED';
+    }
+
     return NextResponse.json({
       status: 'ok',
+      health: queueHealth,
       queue: {
-        pendingEvents: pending.count || 0,
+        pendingEvents,
         processingEvents: processing.count || 0,
         failedEvents: failed.count || 0,
-        dlqCount: dlq.count || 0,
+        dlqCount,
+        stuckLocksCount,
+        oldestPendingAgeSeconds,
         lastWorkerRunAt: lastAttempt.data?.finished_at ?? null,
       },
       db: { status: dbStatus, latencyMs: Date.now() - dbStart },

@@ -297,7 +297,8 @@ export async function routeTextGeneration(
   temperature = 0.7,
   maxTokens = 2048,
   reservationId?: string,
-  budgetMode: 'fast' | 'quality' = 'quality'
+  budgetMode: 'fast' | 'quality' = 'quality',
+  skipCommit?: boolean
 ): Promise<string> {
   if (process.env.AI_DISABLED === 'true') {
     return 'AI features are temporarily paused for maintenance. Please check back shortly.';
@@ -349,7 +350,7 @@ if (!config || !config.apiKey) {
       Metrics.aiCall(providerName, taskType, Date.now() - start, true);
       await recordProviderSuccess(providerName, Date.now() - start);
       await resetProviderHealth(providerName);
-      if (reservationId) {
+      if (reservationId && !skipCommit) {
         const inputChars = messages.reduce((sum, m) => sum + m.content.length, 0);
         await commitBudgetUsage(reservationId, {
           promptTokens: Math.ceil(inputChars / 4),
@@ -391,7 +392,8 @@ export async function routeJSONGeneration<T>(
   userPrompt: string,
   temperature = 0.3,
   schema?: any,
-  reservationId?: string
+  reservationId?: string,
+  skipCommit?: boolean
 ): Promise<T> {
   if (process.env.AI_DISABLED === 'true') {
     throw new Error('AI features are temporarily paused for maintenance. Please check back shortly.');
@@ -449,7 +451,7 @@ if (!config || !config.apiKey) {
         const parsed = JSON.parse(clean);
         Metrics.aiCall(providerName, 'json', Date.now() - start, true);
         
-        if (reservationId) {
+        if (reservationId && !skipCommit) {
           const inputChars = messages.reduce((sum, m) => sum + m.content.length, 0);
           await commitBudgetUsage(reservationId, {
             promptTokens: Math.ceil(inputChars / 4),
@@ -499,7 +501,8 @@ export async function* routeStreamGeneration(
   userPrompt: string | Array<{ role: string; content: string }>,
   temperature = 0.7,
   reservationId?: string,
-  budgetMode: 'fast' | 'quality' = 'quality'
+  budgetMode: 'fast' | 'quality' = 'quality',
+  skipCommit?: boolean
 ): AsyncGenerator<string> {
   if (process.env.AI_DISABLED === 'true') {
     yield 'AI features are temporarily paused for maintenance. Please check back shortly.';
@@ -576,7 +579,7 @@ if (!config || !config.apiKey) {
         await recordProviderSuccess(providerName, Date.now() - start);
         await resetProviderHealth(providerName);
         
-        if (reservationId) {
+        if (reservationId && !skipCommit) {
           await commitBudgetUsage(reservationId, {
             promptTokens: estimatedInputTokens,
             completionTokens: estimatedOutputTokens

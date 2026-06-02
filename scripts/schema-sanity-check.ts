@@ -29,7 +29,9 @@ async function main() {
       'mastery_evidence_ledger',
       'mock_autopsies',
       'autopsy_questions',
-      'practice_sets'
+      'practice_sets',
+      'ai_budget_reservations',
+      'ai_usage_events'
     ];
     
     const optionalTables = [
@@ -48,7 +50,9 @@ async function main() {
       'event_queue': ['id', 'event_type', 'payload', 'status'],
       'consumer_locks': ['event_id', 'consumer_id'],
       'study_materials': ['id', 'user_id', 'content_hash'],
-      'mock_autopsies': ['id', 'user_id']
+      'mock_autopsies': ['id', 'user_id'],
+      'ai_budget_reservations': ['id', 'user_id', 'status', 'feature', 'reserved_at', 'expires_at'],
+      'ai_usage_events': ['id', 'user_id', 'feature', 'prompt_tokens', 'completion_tokens']
     };
 
     let allPassed = true;

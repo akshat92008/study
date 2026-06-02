@@ -905,7 +905,8 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
               conversationMessages, 
               0.7,
               mainBudget?.reservationId,
-              isSimpleMessage ? 'fast' : 'quality'
+              isSimpleMessage ? 'fast' : 'quality',
+              true // skipCommit: defer to finalizeAssistantTurn
             )) {
               controller.enqueue(encoder.encode(chunk));
               fullResponse += chunk;

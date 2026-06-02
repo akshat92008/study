@@ -222,8 +222,8 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
 
     cloudflare: {
       name: 'cloudflare',
-      baseUrl: `https://api.cloudflare.com/client/v4/accounts/${process.env.CF_ACCOUNT_ID}/ai/run`,
-      apiKey: process.env.CF_API_TOKEN,
+      baseUrl: `https://api.cloudflare.com/client/v4/accounts/${process.env.CF_ACCOUNT_ID || process.env.CLOUDFLARE_ACCOUNT_ID}/ai/run`,
+      apiKey: process.env.CF_API_TOKEN || process.env.CLOUDFLARE_API_TOKEN,
       models: {
         quality: '@cf/meta/llama-3.3-70b-instruct-fp8-fast',
         fast: '@cf/meta/llama-3.1-8b-instruct',
@@ -306,10 +306,21 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
 
     const config = configs[name];
   const required = REQUIRED_ENV_VARS[name] || [];
-  const missing = required.filter(v => !process.env[v]);
-  if (missing.length) {
-    logger.warn(`Missing env vars for ${name}: ${missing.join(', ')}`);
-    return null;
+  
+  // Special handling for Cloudflare aliases
+  if (name === 'cloudflare') {
+    const hasAccountId = process.env.CF_ACCOUNT_ID || process.env.CLOUDFLARE_ACCOUNT_ID;
+    const hasToken = process.env.CF_API_TOKEN || process.env.CLOUDFLARE_API_TOKEN;
+    if (!hasAccountId || !hasToken) {
+      logger.warn(`Missing env vars for cloudflare: requires (CF_ACCOUNT_ID or CLOUDFLARE_ACCOUNT_ID) and (CF_API_TOKEN or CLOUDFLARE_API_TOKEN)`);
+      return null;
+    }
+  } else {
+    const missing = required.filter(v => !process.env[v]);
+    if (missing.length) {
+      logger.warn(`Missing env vars for ${name}: ${missing.join(', ')}`);
+      return null;
+    }
   }
   return config;
 }

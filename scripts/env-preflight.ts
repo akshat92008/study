@@ -28,6 +28,7 @@ const aiProviders = [
   'GROQ_API_KEY',
   'SAMBANOVA_API_KEY',
   'CF_API_TOKEN',
+  'CLOUDFLARE_API_TOKEN',
 ];
 
 let ok = true;
