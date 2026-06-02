@@ -3,7 +3,7 @@
 create table if not exists public.agent_runs (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
-  agent_name text not null check (agent_name in ('mind', 'rag', 'atlas', 'memory', 'autopsy', 'planner', 'pulse', 'command', 'system')),
+  agent_name text not null check (agent_name in ('mind', 'rag', 'atlas', 'memory', 'autopsy', 'planner', 'command', 'system')),
   trigger_type text not null check (trigger_type in ('event', 'request', 'worker', 'scheduled', 'manual', 'system')),
   trigger_event_id uuid null,
   trigger_source text null,
@@ -25,7 +25,7 @@ create table if not exists public.agent_actions (
   id uuid primary key default gen_random_uuid(),
   run_id uuid null references public.agent_runs(id) on delete cascade,
   user_id uuid not null references auth.users(id) on delete cascade,
-  agent_name text not null check (agent_name in ('mind', 'rag', 'atlas', 'memory', 'autopsy', 'planner', 'pulse', 'command', 'system')),
+  agent_name text not null check (agent_name in ('mind', 'rag', 'atlas', 'memory', 'autopsy', 'planner', 'command', 'system')),
   action_type text not null,
   target_type text null,
   target_id uuid null,

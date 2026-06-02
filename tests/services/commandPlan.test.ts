@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { ensureCommandPlanForDate } from '@/lib/services/command-plan.service';
 
 type Row = Record<string, any>;
+const USER_ID = '00000000-0000-0000-0000-000000000001';
 
 function isoNow() {
   return new Date().toISOString();
@@ -74,6 +75,11 @@ class Query {
     return { ...result, data: Array.isArray(result.data) ? result.data[0] ?? null : result.data };
   }
 
+  async single() {
+    const result = await this.execute();
+    return { ...result, data: Array.isArray(result.data) ? result.data[0] ?? null : result.data };
+  }
+
   then(resolve: any, reject?: any) {
     return this.execute().then(resolve, reject);
   }
@@ -140,7 +146,7 @@ function makeClient(state: Record<string, Row[]>) {
 function makeState() {
   return {
     profiles: [{
-      id: 'user-1',
+      id: USER_ID,
       exam_type: 'NEET',
       target_date: '2026-05-03',
       target_score: 650,
@@ -149,7 +155,7 @@ function makeState() {
     }],
     revision_cards: [{
       id: 'card-1',
-      user_id: 'user-1',
+      user_id: USER_ID,
       front: 'Electrochemistry Nernst equation',
       subject: 'Chemistry',
       chapter: 'Electrochemistry',
@@ -160,7 +166,7 @@ function makeState() {
     }],
     concepts: [{
       id: 'concept-1',
-      user_id: 'user-1',
+      user_id: USER_ID,
       name: 'Plant Physiology Transport',
       subject: 'Biology',
       chapter: 'Plant Physiology',
@@ -169,7 +175,7 @@ function makeState() {
     }],
     mistakes: [{
       id: 'mistake-1',
-      user_id: 'user-1',
+      user_id: USER_ID,
       subject: 'Chemistry',
       chapter: 'Electrochemistry',
       category: 'conceptual_gap',
@@ -178,7 +184,7 @@ function makeState() {
     }],
     episodic_memories: [{
       id: 'episode-1',
-      user_id: 'user-1',
+      user_id: USER_ID,
       summary: 'Student confused oxidation potential with reduction potential.',
       retrieval_weight: 5,
       created_at: isoNow(),
@@ -189,6 +195,7 @@ function makeState() {
     chat_sessions: [],
     daily_plans: [],
     study_tasks: [],
+    agent_actions: [],
   };
 }
 
@@ -198,7 +205,7 @@ describe('COMMAND plan service', () => {
     const client = makeClient(state);
 
     const first = await ensureCommandPlanForDate({
-      userId: 'user-1',
+      userId: USER_ID,
       date: '2026-06-01',
       client,
     });
@@ -208,9 +215,14 @@ describe('COMMAND plan service', () => {
     expect(first.briefing).toContain('Last time: Student confused oxidation potential');
     expect(state.daily_plans).toHaveLength(1);
     expect(state.study_tasks).toHaveLength(first.tasks.length);
+    expect(state.agent_actions).toContainEqual(expect.objectContaining({
+      agent_name: 'command',
+      action_type: 'plan_created',
+      idempotency_key: `command_plan_created:${USER_ID}:2026-06-01`,
+    }));
 
     const second = await ensureCommandPlanForDate({
-      userId: 'user-1',
+      userId: USER_ID,
       date: '2026-06-01',
       client,
     });
@@ -225,7 +237,7 @@ describe('COMMAND plan service', () => {
     state.episodic_memories = [];
 
     const result = await ensureCommandPlanForDate({
-      userId: 'user-1',
+      userId: USER_ID,
       date: '2026-06-01',
       client: makeClient(state),
     });

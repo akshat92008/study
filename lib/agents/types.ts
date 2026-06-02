@@ -7,7 +7,6 @@ export const AgentNameSchema = z.enum([
   'memory',
   'autopsy',
   'planner',
-  'pulse',
   'command',
   'system',
 ]);

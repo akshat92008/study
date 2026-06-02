@@ -92,6 +92,8 @@ describe('EventDispatcher', () => {
       'atlas_engine',
       'memory_engine',
       'learning_state_engine',
+      'command_agent',
+      'planner_agent',
     ]);
     expect(getConsumersForEvent('CHAT_MESSAGE_PROCESSED')).toEqual(['chat_side_effect_engine', 'mind_agent']);
     expect(getConsumersForEvent('AUTOPSY_UPLOAD_RECEIVED')).toEqual(['autopsy_engine']);
@@ -100,6 +102,7 @@ describe('EventDispatcher', () => {
       'atlas_agent',
       'memory_agent',
       'planner_agent',
+      'command_agent',
     ]);
     expect(getConsumersForEvent('STUDENT_MODEL_SYNC_REQUESTED')).toContain('command_engine');
   });

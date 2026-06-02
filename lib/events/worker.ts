@@ -11,12 +11,29 @@ import { processChatSideEffects, type ChatSideEffectsInput } from '@/lib/ai/chat
 import { runAgenticConsumer } from '@/lib/agents/event-runner';
 
 const MAX_RETRIES = 2; // Equivalent to retry_count < 3
+const DEFAULT_CONCURRENCY = 5;
+const MAX_CONCURRENCY = 10;
 
-type ConsumerResultStatus = 'HANDLED' | 'SKIPPED_INTENTIONALLY';
+type ConsumerResultStatus = 'HANDLED' | 'SKIPPED_INTENTIONALLY' | 'SKIPPED_STALE_ROUTE';
 
 type ConsumerResult = {
   status: ConsumerResultStatus;
   reason?: string;
+};
+
+type QueueHealthSummary = {
+  pendingEvents: number;
+  processingEvents: number;
+  failedEvents: number;
+  pendingLocks: number;
+  processingLocks: number;
+  failedLocks: number;
+  dlqCount: number;
+  oldestPendingAgeSeconds: number;
+  staleRouteSkips: number;
+  averageAttempts: number;
+  errors: string[];
+  timestamp: string;
 };
 
 export class EventWorkerService {
@@ -48,118 +65,198 @@ export class EventWorkerService {
       leaseCount: leases.length,
     });
 
-    // 2. Process events concurrently with Promise.allSettled for isolation
-    await Promise.allSettled(
-      leases.map(async (lease: any) => {
-        const start = Date.now();
-        const traceId = lease.event_metadata?.trace_id || lease.event_id;
-        logger.info('Event consumer started', {
-          workerId,
-          traceId,
-          feature: 'event-worker',
-          eventId: lease.event_id,
-          eventType: lease.event_type,
-          consumer: lease.consumer_name,
-        });
-
-        // Record attempt start
-        const { data: attempt } = await supabase
-          .from('event_attempts')
-          .insert({
-            consumer_lock_id: lease.lock_id,
-            event_id: lease.event_id,
-            consumer_name: lease.consumer_name,
-            worker_id: workerId,
-            started_at: new Date().toISOString(),
-          })
-          .select('id')
-          .single();
-
-        try {
-          let result: ConsumerResult = { status: 'HANDLED' };
-          await withCorrelationId(traceId, async () => {
-            result = await runAgenticConsumer(lease, () => this.routeToConsumer(lease));
-          });
-
-          Metrics.eventConsumer(lease.consumer_name, lease.event_type, Date.now() - start, true);
-
-          // Mark lock as completed
-          await supabase
-            .from('consumer_locks')
-            .update({
-              status: 'COMPLETED',
-              locked_at: null,
-              locked_by: null,
-              lease_expires_at: null,
-              updated_at: new Date().toISOString(),
-            })
-            .eq('id', lease.lock_id);
-
-          if (attempt) {
-            await supabase
-              .from('event_attempts')
-              .update({
-                finished_at: new Date().toISOString(),
-                result_status: result.status,
-                result_reason: result.reason ?? null,
-              })
-              .eq('id', attempt.id);
-          }
-
-          // Check parent completion
-          await this.checkParentEventCompletion(lease.event_id);
-          logger.info('Event consumer completed', {
-            workerId,
-            traceId,
-            feature: 'event-worker',
-            eventId: lease.event_id,
-            eventType: lease.event_type,
-            consumer: lease.consumer_name,
-            durationMs: Date.now() - start,
-            resultStatus: result.status,
-          });
-
-        } catch (err: any) {
-          Metrics.eventConsumer(lease.consumer_name, lease.event_type, Date.now() - start, false);
-          const errorMsg = err instanceof Error ? err.message : String(err);
-          
-          Metrics.captureError(err instanceof Error ? err : new Error(errorMsg), {
-            consumer: lease.consumer_name,
-            event_type: lease.event_type,
-            event_id: lease.event_id
-          });
-          
-          if (attempt) {
-            await supabase
-              .from('event_attempts')
-              .update({
-                error_message: errorMsg,
-                finished_at: new Date().toISOString()
-              })
-              .eq('id', attempt.id);
-          }
-
-          await this.handleConsumerFailure(lease, errorMsg);
-          logger.warn('Event consumer failed', {
-            workerId,
-            traceId,
-            feature: 'event-worker',
-            eventId: lease.event_id,
-            eventType: lease.event_type,
-            consumer: lease.consumer_name,
-            durationMs: Date.now() - start,
-            error: errorMsg,
-          });
-        }
-      })
-    );
+    await this.processLeasesWithBoundedConcurrency(leases, workerId);
 
     return leases.length;
   }
 
+  static async getHealthSummary(): Promise<QueueHealthSummary> {
+    const supabase = createAdminClient();
+    const now = Date.now();
+
+    const [
+      pending,
+      processing,
+      failed,
+      pendingLocks,
+      processingLocks,
+      failedLocks,
+      dlq,
+      oldestPending,
+      staleRouteSkips,
+      retrySample,
+    ] = await Promise.all([
+      supabase.from('event_queue').select('*', { count: 'exact', head: true }).eq('status', 'PENDING'),
+      supabase.from('event_queue').select('*', { count: 'exact', head: true }).eq('status', 'PROCESSING'),
+      supabase.from('event_queue').select('*', { count: 'exact', head: true }).in('status', ['FAILED', 'PARTIAL_FAILED']),
+      supabase.from('consumer_locks').select('*', { count: 'exact', head: true }).in('status', ['PENDING', 'RETRY_SCHEDULED']),
+      supabase.from('consumer_locks').select('*', { count: 'exact', head: true }).eq('status', 'PROCESSING'),
+      supabase.from('consumer_locks').select('*', { count: 'exact', head: true }).in('status', ['FAILED', 'DLQ']),
+      supabase.from('event_dlq').select('*', { count: 'exact', head: true }).is('resolved_at', null),
+      supabase.from('event_queue').select('created_at').eq('status', 'PENDING').order('created_at', { ascending: true }).limit(1).maybeSingle(),
+      supabase.from('event_attempts').select('*', { count: 'exact', head: true }).eq('result_status', 'SKIPPED_STALE_ROUTE'),
+      supabase.from('consumer_locks').select('retry_count').order('updated_at', { ascending: false }).limit(1000),
+    ]);
+
+    const oldestCreatedAt = oldestPending.data?.created_at
+      ? new Date(oldestPending.data.created_at).getTime()
+      : null;
+    const retryRows = retrySample.data ?? [];
+    const averageAttempts = retryRows.length > 0
+      ? retryRows.reduce((sum: number, row: any) => sum + Number(row.retry_count ?? 0), 0) / retryRows.length
+      : 0;
+    const errors = [
+      pending.error,
+      processing.error,
+      failed.error,
+      pendingLocks.error,
+      processingLocks.error,
+      failedLocks.error,
+      dlq.error,
+      oldestPending.error,
+      staleRouteSkips.error,
+      retrySample.error,
+    ].filter(Boolean).map((error: any) => error.message);
+
+    return {
+      pendingEvents: pending.count || 0,
+      processingEvents: processing.count || 0,
+      failedEvents: failed.count || 0,
+      pendingLocks: pendingLocks.count || 0,
+      processingLocks: processingLocks.count || 0,
+      failedLocks: failedLocks.count || 0,
+      dlqCount: dlq.count || 0,
+      oldestPendingAgeSeconds: oldestCreatedAt ? Math.max(0, Math.round((now - oldestCreatedAt) / 1000)) : 0,
+      staleRouteSkips: staleRouteSkips.count || 0,
+      averageAttempts: Math.round(averageAttempts * 100) / 100,
+      errors,
+      timestamp: new Date().toISOString(),
+    };
+  }
+
+  private static async processLeasesWithBoundedConcurrency(leases: any[], workerId: string) {
+    const concurrency = this.getConcurrencyLimit();
+    let nextIndex = 0;
+
+    const workers = Array.from({ length: Math.min(concurrency, leases.length) }, async () => {
+      while (nextIndex < leases.length) {
+        const lease = leases[nextIndex++];
+        await this.processLease(lease, workerId);
+      }
+    });
+
+    await Promise.all(workers);
+  }
+
+  private static getConcurrencyLimit() {
+    const configured = Number(process.env.EVENT_WORKER_CONCURRENCY ?? DEFAULT_CONCURRENCY);
+    if (!Number.isFinite(configured)) return DEFAULT_CONCURRENCY;
+    return Math.max(1, Math.min(MAX_CONCURRENCY, Math.floor(configured)));
+  }
+
+  private static async processLease(lease: any, workerId: string) {
+    const supabase = createAdminClient();
+    const start = Date.now();
+    const traceId = lease.event_metadata?.trace_id || lease.event_id;
+    logger.info('Event consumer started', {
+      workerId,
+      traceId,
+      feature: 'event-worker',
+      eventId: lease.event_id,
+      eventType: lease.event_type,
+      consumer: lease.consumer_name,
+    });
+
+    const { data: attempt } = await supabase
+      .from('event_attempts')
+      .insert({
+        consumer_lock_id: lease.lock_id,
+        event_id: lease.event_id,
+        consumer_name: lease.consumer_name,
+        worker_id: workerId,
+        started_at: new Date().toISOString(),
+      })
+      .select('id')
+      .single();
+
+    try {
+      let result: ConsumerResult = { status: 'HANDLED' };
+      await withCorrelationId(traceId, async () => {
+        result = await runAgenticConsumer(lease, () => this.routeToConsumer(lease));
+      });
+
+      Metrics.eventConsumer(lease.consumer_name, lease.event_type, Date.now() - start, true);
+
+      await supabase
+        .from('consumer_locks')
+        .update({
+          status: 'COMPLETED',
+          locked_at: null,
+          locked_by: null,
+          lease_expires_at: null,
+          updated_at: new Date().toISOString(),
+        })
+        .eq('id', lease.lock_id);
+
+      if (attempt) {
+        await supabase
+          .from('event_attempts')
+          .update({
+            finished_at: new Date().toISOString(),
+            result_status: result.status,
+            result_reason: result.reason ?? null,
+          })
+          .eq('id', attempt.id);
+      }
+
+      await this.checkParentEventCompletion(lease.event_id);
+      logger.info('Event consumer completed', {
+        workerId,
+        traceId,
+        feature: 'event-worker',
+        eventId: lease.event_id,
+        eventType: lease.event_type,
+        consumer: lease.consumer_name,
+        durationMs: Date.now() - start,
+        resultStatus: result.status,
+      });
+    } catch (err: any) {
+      Metrics.eventConsumer(lease.consumer_name, lease.event_type, Date.now() - start, false);
+      const errorMsg = err instanceof Error ? err.message : String(err);
+
+      Metrics.captureError(err instanceof Error ? err : new Error(errorMsg), {
+        consumer: lease.consumer_name,
+        event_type: lease.event_type,
+        event_id: lease.event_id
+      });
+
+      if (attempt) {
+        await supabase
+          .from('event_attempts')
+          .update({
+            error_message: errorMsg,
+            finished_at: new Date().toISOString()
+          })
+          .eq('id', attempt.id);
+      }
+
+      await this.handleConsumerFailure(lease, errorMsg);
+      logger.warn('Event consumer failed', {
+        workerId,
+        traceId,
+        feature: 'event-worker',
+        eventId: lease.event_id,
+        eventType: lease.event_type,
+        consumer: lease.consumer_name,
+        durationMs: Date.now() - start,
+        error: errorMsg,
+      });
+    }
+  }
+
   private static async handleConsumerFailure(lease: any, errorMsg: string) {
     const supabase = createAdminClient();
-    const newRetryCount = lease.retry_count + 1;
+    const newRetryCount = Number(lease.retry_count ?? 0) + 1;
     const nextAttemptAt = new Date(Date.now() + Math.pow(2, newRetryCount) * 10_000).toISOString();
 
     if (newRetryCount > MAX_RETRIES) {
@@ -283,8 +380,14 @@ export class EventWorkerService {
   private static async routeToConsumer(lease: any): Promise<ConsumerResult> {
     const consumer = lease.consumer_name as EventConsumer;
     if (!getConsumersForEvent(lease.event_type).includes(consumer)) {
+      logger.warn('Event worker skipped stale consumer route', {
+        feature: 'event-worker',
+        eventId: lease.event_id,
+        eventType: lease.event_type,
+        consumer: lease.consumer_name,
+      });
       return {
-        status: 'SKIPPED_INTENTIONALLY',
+        status: 'SKIPPED_STALE_ROUTE',
         reason: `${lease.consumer_name} is no longer registered for ${lease.event_type}`,
       };
     }
@@ -447,12 +550,20 @@ export class EventWorkerService {
       case 'planner_agent':
         if ([
           'MATERIAL_INGESTED',
+          'AUTOPSY_MOCK_PROCESSED',
           'AUTOPSY_PROCESSING_COMPLETED',
           'AUTOPSY_MISTAKE_APPROVED',
+          'STUDY_SESSION_COMPLETED',
+          'MIND_TUTOR_COMPLETED',
+          'MEMORY_CARD_REVIEWED',
           'REVISION_CARD_REVIEWED',
+          'ATLAS_MASTERY_UPDATED',
+          'MEMORY_CARD_CREATED',
           'LEARNER_STATE_CHANGED',
           'SESSION_RECOMMENDATION_REQUESTED',
           'PLANNER_REPLAN_REQUESTED',
+          'SESSION_CARD_COMPLETED',
+          'PRACTICE_ATTEMPT_RECORDED',
           'ONBOARDING_QUIZ_COMPLETE',
         ].includes(event.type)) {
           const { invalidateSessionCard } = await import('@/lib/services/session-card-invalidation');
@@ -484,19 +595,82 @@ export class EventWorkerService {
         }
         break;
       case 'command_agent':
-        if (event.type === 'PLANNER_REPLAN_REQUESTED') {
-          const { runDailySynthesisForUser } = await import('@/lib/services/command-plan.service');
-          await runDailySynthesisForUser({
-            userId: event.user_id,
-            date: payload.date || new Date().toISOString().slice(0, 10),
-            client: createAdminClient(),
-          });
-          return { status: 'HANDLED' };
+        if ([
+          'MATERIAL_INGESTED',
+          'AUTOPSY_MOCK_PROCESSED',
+          'AUTOPSY_MISTAKE_APPROVED',
+          'STUDY_SESSION_COMPLETED',
+          'MIND_TUTOR_COMPLETED',
+          'MEMORY_CARD_REVIEWED',
+          'REVISION_CARD_REVIEWED',
+          'ATLAS_MASTERY_UPDATED',
+          'MEMORY_CARD_CREATED',
+          'PLANNER_REPLAN_REQUESTED',
+          'SESSION_CARD_COMPLETED',
+          'PRACTICE_ATTEMPT_RECORDED',
+          'ONBOARDING_QUIZ_COMPLETE',
+        ].includes(event.type)) {
+          return this.handleCommandAgentEvent(event, payload);
         }
         break;
     }
 
     throw new Error(`Event routing error: ${consumer} has no handler for ${event.type}`);
+  }
+
+  private static async handleCommandAgentEvent(event: any, payload: Record<string, any>): Promise<ConsumerResult> {
+    const supabase = createAdminClient();
+    const date = typeof payload.date === 'string' && payload.date
+      ? payload.date
+      : new Date().toISOString().slice(0, 10);
+
+    const { runDailySynthesisForUser } = await import('@/lib/services/command-plan.service');
+    const plan = await runDailySynthesisForUser({
+      userId: event.user_id,
+      date,
+      client: supabase,
+    });
+
+    const { recordAgentAction } = await import('@/lib/agents/agent-runtime');
+    await recordAgentAction({
+      userId: event.user_id,
+      agentName: 'command',
+      actionType: 'adjust_next_session',
+      targetType: 'daily_plan',
+      status: 'applied',
+      confidence: 0.95,
+      evidence: {
+        date,
+        eventId: event.id,
+        eventType: event.type,
+        taskCount: plan.tasks.length,
+        created: plan.created,
+        sourceSignals: plan.sourceSignals,
+      },
+      reason: `COMMAND reconciled the daily plan after ${event.type}.`,
+      idempotencyKey: `command_reconcile:${event.id}:${event.type}`,
+    }, { client: supabase }).catch((err: any) => {
+      logger.warn('COMMAND decision action write failed', {
+        userId: event.user_id,
+        eventId: event.id,
+        eventType: event.type,
+        error: err instanceof Error ? err.message : String(err),
+      });
+    });
+
+    const { invalidateSessionCard } = await import('@/lib/services/session-card-invalidation');
+    await invalidateSessionCard(event.user_id, 'LEARNER_STATE_UPDATED', {
+      client: supabase,
+      sourceEventId: event.id,
+      skipVersionBump: true,
+    });
+
+    return {
+      status: 'HANDLED',
+      reason: plan.created
+        ? 'COMMAND created a daily plan and invalidated the session card'
+        : 'COMMAND reconciled the existing daily plan and invalidated the session card',
+    };
   }
 
   private static async handleRagIngestionRequested(userId: string, payload: Record<string, any>): Promise<ConsumerResult> {

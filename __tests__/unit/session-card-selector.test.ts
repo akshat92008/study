@@ -21,7 +21,7 @@
  * Uses vitest + mock Supabase client (no live DB required).
  */
 
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import {
   selectSessionCard,
   type SelectorInput,
@@ -222,6 +222,59 @@ describe('T3: User with recent autopsy mistakes → mistake_repair', () => {
     );
     // No overdue cards, no mistakes (old), no weak concepts → P6 fallback
     expect(result.priority).toBe('onboarding');
+  });
+});
+
+// ─── T3b: COMMAND active plan ───────────────────────────────────────────────
+
+describe('T3b: COMMAND active plan task → session card', () => {
+  it('uses the first open COMMAND task after urgent MEMORY/AUTOPSY signals', () => {
+    const result = selectSessionCard(
+      makeInput({
+        commandOpenTasks: [{
+          title: 'ATLAS weak-area block: Plant Transport',
+          type: 'study',
+          subject: 'Biology',
+          chapter: 'Plant Transport',
+          estimated_minutes: 35,
+          priority: 'high',
+          notes: 'COMMAND selected this because ATLAS marks it as exposed.',
+        }],
+      })
+    );
+
+    expect(result.priority).toBe('concept_study');
+    expect(result.reason).toContain('COMMAND selected');
+    expect(result.subject).toBe('Biology');
+    expect(result.topic).toBe('Plant Transport');
+    expect(result.estimatedMinutes).toBe(35);
+    expect(result.needsOnboarding).toBe(false);
+  });
+
+  it('keeps recent AUTOPSY mistakes ahead of COMMAND tasks', () => {
+    const result = selectSessionCard(
+      makeInput({
+        commandOpenTasks: [{
+          title: 'Study Ecology',
+          type: 'study',
+          subject: 'Biology',
+          chapter: 'Ecology',
+          estimated_minutes: 30,
+          priority: 'high',
+        }],
+        recentMistakes: [{
+          id: 'm-command-order',
+          subject: 'Physics',
+          chapter: 'Rotational Motion',
+          category: 'conceptual_gap',
+          concept_id: null,
+          created_at: new Date().toISOString(),
+        }],
+      })
+    );
+
+    expect(result.priority).toBe('mistake_repair');
+    expect(result.topic).toBe('Rotational Motion');
   });
 });
 
@@ -544,6 +597,27 @@ describe('T9: Priority hierarchy', () => {
       recentMistakes: [],
     };
     expect(selectSessionCard(noMistakes).priority).toBe('concept_study');
+  });
+
+  it('COMMAND beats generic weak concepts when urgent signals are absent', () => {
+    const withCommand = {
+      ...allSignals,
+      overdueCardCount: 0,
+      topDueCard: null,
+      recentMistakes: [],
+      commandOpenTasks: [{
+        title: 'COMMAND priority block',
+        type: 'practice',
+        subject: 'Chemistry',
+        chapter: 'Equilibrium',
+        estimated_minutes: 25,
+        priority: 'critical',
+      }],
+    };
+
+    const result = selectSessionCard(withCommand);
+    expect(result.reason).toContain('COMMAND selected');
+    expect(result.topic).toBe('Equilibrium');
   });
 });
 

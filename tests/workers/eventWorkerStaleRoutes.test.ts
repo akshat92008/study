@@ -101,7 +101,7 @@ describe('EventWorkerService stale route leases', () => {
     for (const key of Object.keys(state.updates)) delete state.updates[key];
   });
 
-  it('completes no-longer-routed consumer locks instead of sending them to DLQ', async () => {
+  it('accounts for no-longer-routed consumer locks without sending them to DLQ', async () => {
     const { EventWorkerService } = await import('@/lib/events/worker');
 
     const processed = await EventWorkerService.processBatch(1, 5);
@@ -112,7 +112,7 @@ describe('EventWorkerService stale route leases', () => {
       status: 'COMPLETED',
     }));
     expect(state.updates.event_attempts).toContainEqual(expect.objectContaining({
-      result_status: 'SKIPPED_INTENTIONALLY',
+      result_status: 'SKIPPED_STALE_ROUTE',
       result_reason: 'chat_side_effect_engine is no longer registered for STUDY_SESSION_COMPLETED',
     }));
   });

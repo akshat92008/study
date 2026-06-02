@@ -7,10 +7,11 @@
  * Priority (evaluated in order, first match wins):
  *   P1  Due / overdue MEMORY (FSRS revision) cards
  *   P2  Recent AUTOPSY mistakes (last 7 days)
- *   P3  Weakest ATLAS concepts  (mastery ∈ {not_started, exposed, developing})
+ *   P3  Active COMMAND task (after urgent MEMORY/AUTOPSY signals)
  *   P4  Active LEARNING GOAL deadline pressure
  *   P5  Recently studied but low-mastery concepts
- *   P6  Fallback / onboarding  (no learner data at all)
+ *   P6  Weakest ATLAS concepts  (mastery ∈ {not_started, exposed, developing})
+ *   P7  Fallback / onboarding  (no learner data at all)
  */
 
 // ─── Types ──────────────────────────────────────────────────────────────────
@@ -95,6 +96,17 @@ export interface SelectorInput {
     fatigue_threshold_minutes: number | null;
     peak_productivity_hour: number | null;
   } | null;
+
+  /** Open COMMAND tasks for today, already ordered by orchestration priority. */
+  commandOpenTasks?: Array<{
+    title: string;
+    type?: string | null;
+    subject?: string | null;
+    chapter?: string | null;
+    estimated_minutes?: number | null;
+    priority?: string | null;
+    notes?: string | null;
+  }>;
 
   /** ISO timestamp of "now" (injectable for tests) */
   now?: string;
@@ -278,7 +290,36 @@ export function selectSessionCard(input: SelectorInput): SelectorOutput {
     };
   }
 
-  // ─── P3: Active learning goal deadline pressure ───────────────────────────
+  // ─── P3: COMMAND active plan task ────────────────────────────────────────
+  const commandTask = input.commandOpenTasks?.find((task) => task.type !== 'break');
+  if (commandTask) {
+    const commandPriority = mapCommandTaskType(commandTask.type);
+    return {
+      targetConceptId: null,
+      priority: commandPriority.taskType,
+      reason:
+        `COMMAND selected "${commandTask.title}" from the active daily plan. ` +
+        (commandTask.notes || 'This keeps today aligned with your latest learner-state evidence.'),
+      estimatedMinutes: Math.min(
+        focusMinutes,
+        Math.max(10, Number(commandTask.estimated_minutes ?? focusMinutes))
+      ),
+      taskType: commandPriority.taskType,
+      resourceType: commandPriority.resourceType,
+      subject: commandTask.subject ?? examType,
+      topic: commandTask.chapter ?? commandTask.title,
+      masteryBefore: null,
+      dueCardCount: input.overdueCardCount,
+      mistakeCount: freshMistakes.length,
+      questionTarget: commandTask.chapter ?? commandTask.title,
+      revisionTarget: '',
+      needsOnboarding: false,
+      daysToExam,
+      isPeakHour,
+    };
+  }
+
+  // ─── P4: Active learning goal deadline pressure ───────────────────────────
   if (input.activeGoal?.target_date) {
     const daysLeft = daysUntil(input.activeGoal.target_date, now);
     if (daysLeft <= 30 && daysLeft > 0) {
@@ -306,7 +347,7 @@ export function selectSessionCard(input: SelectorInput): SelectorOutput {
     }
   }
 
-  // ─── P4: Recently studied but low-mastery concepts ───────────────────────
+  // ─── P5: Recently studied but low-mastery concepts ───────────────────────
   // (uses same weakConcepts pool but sorted differently: most recently touched first)
   // weakConcepts already filtered to mastery ∈ {not_started, exposed, developing}
   if (input.weakConcepts.length > 0) {
@@ -345,7 +386,7 @@ export function selectSessionCard(input: SelectorInput): SelectorOutput {
     }
   }
 
-  // ─── P5: Weakest ATLAS concepts ──────────────────────────────────────────
+  // ─── P6: Weakest ATLAS concepts ──────────────────────────────────────────
   if (input.weakConcepts.length > 0) {
     // Sort: mastery asc → forgetting_probability desc → times_reviewed asc
     const sorted = [...input.weakConcepts].sort((a, b) => {
@@ -387,7 +428,7 @@ export function selectSessionCard(input: SelectorInput): SelectorOutput {
     };
   }
 
-  // ─── P6: Fallback – exam/default plan (no real learner data) ─────────────
+  // ─── P7: Fallback – exam/default plan (no real learner data) ─────────────
   return {
     targetConceptId: null,
     priority: 'onboarding',
@@ -408,4 +449,22 @@ export function selectSessionCard(input: SelectorInput): SelectorOutput {
     daysToExam,
     isPeakHour,
   };
+}
+
+function mapCommandTaskType(type: string | null | undefined): {
+  taskType: SessionCardTaskType;
+  resourceType: SessionCardResourceType;
+} {
+  switch (type) {
+    case 'revision':
+    case 'review':
+      return { taskType: 'revision', resourceType: 'flashcard_review' };
+    case 'practice':
+      return { taskType: 'reinforcement', resourceType: 'practice_questions' };
+    case 'mock_test':
+      return { taskType: 'goal_sprint', resourceType: 'practice_questions' };
+    case 'study':
+    default:
+      return { taskType: 'concept_study', resourceType: 'reading' };
+  }
 }

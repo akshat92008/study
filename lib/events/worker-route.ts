@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createAdminClient } from '@/lib/supabase/admin';
 import { validateCronRequest } from '@/lib/middleware/cronAuth';
 import { logger } from '@/lib/utils/logger';
 import { EventWorkerService } from './worker';
@@ -14,11 +13,12 @@ export async function processEventWorkerRoute(req: NextRequest | Request) {
     const start = Date.now();
     logger.info('Worker batch started', { requestId, feature: 'event-worker' });
     const processedCount = await EventWorkerService.processBatch(50, 5);
+    const queue = await EventWorkerService.getHealthSummary();
 
     return NextResponse.json({
       ok: true,
       processed: processedCount,
-      failed: 0,
+      queue,
       durationMs: Date.now() - start,
     }, { headers: { 'x-request-id': requestId } });
   } catch (error: any) {
@@ -37,24 +37,18 @@ export async function eventWorkerHealthRoute(req: NextRequest | Request) {
   if (authError) return authError;
 
   try {
-    const supabase = createAdminClient();
-    const [pending, processing, dlq] = await Promise.all([
-      supabase.from('event_queue').select('*', { count: 'exact', head: true }).eq('status', 'PENDING'),
-      supabase.from('event_queue').select('*', { count: 'exact', head: true }).eq('status', 'PROCESSING'),
-      supabase.from('event_dlq').select('*', { count: 'exact', head: true }).is('resolved_at', null),
-    ]);
+    const queue = await EventWorkerService.getHealthSummary();
 
     return NextResponse.json({
-      ok: !pending.error && !processing.error && !dlq.error,
+      ok: queue.errors.length === 0,
       worker: 'event_worker',
-      queue: {
-        pending: pending.count || 0,
-        processing: processing.count || 0,
-        unresolvedDlq: dlq.count || 0,
-      },
-      errors: [pending.error?.message, processing.error?.message, dlq.error?.message].filter(Boolean),
+      queue,
+      errors: queue.errors,
       timestamp: new Date().toISOString(),
-    }, { headers: { 'x-request-id': requestId } });
+    }, {
+      status: queue.errors.length === 0 ? 200 : 503,
+      headers: { 'x-request-id': requestId },
+    });
   } catch (error: any) {
     logger.error('event worker health route failed', error, { requestId, feature: 'event-worker' });
     return apiErrorResponse('worker_health_failed', {

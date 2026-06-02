@@ -1,9 +1,10 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 const processBatch = vi.hoisted(() => vi.fn());
+const getHealthSummary = vi.hoisted(() => vi.fn());
 
 vi.mock('@/lib/events/worker', () => ({
-  EventWorkerService: { processBatch },
+  EventWorkerService: { processBatch, getHealthSummary },
 }));
 
 vi.mock('@/lib/utils/logger', () => ({
@@ -14,6 +15,21 @@ describe('event worker route auth', () => {
   beforeEach(() => {
     processBatch.mockReset();
     processBatch.mockResolvedValue(3);
+    getHealthSummary.mockReset();
+    getHealthSummary.mockResolvedValue({
+      pendingEvents: 0,
+      processingEvents: 0,
+      failedEvents: 0,
+      pendingLocks: 0,
+      processingLocks: 0,
+      failedLocks: 0,
+      dlqCount: 0,
+      oldestPendingAgeSeconds: 0,
+      staleRouteSkips: 0,
+      averageAttempts: 0,
+      errors: [],
+      timestamp: '2026-06-02T00:00:00.000Z',
+    });
   });
 
   afterEach(() => {
@@ -49,7 +65,11 @@ describe('event worker route auth', () => {
     }));
 
     expect(res.status).toBe(200);
-    expect(await res.json()).toMatchObject({ ok: true, processed: 3, failed: 0 });
+    expect(await res.json()).toMatchObject({
+      ok: true,
+      processed: 3,
+      queue: { pendingEvents: 0, dlqCount: 0 },
+    });
     expect(processBatch).toHaveBeenCalledWith(50, 5);
   });
 });

@@ -212,6 +212,7 @@ export async function GET(request?: Request): Promise<NextResponse> {
       studentModelRes,
       totalConceptsRes,
       masteredConceptsRes,
+      commandTasksRes,
     ] = await Promise.all([
       supabase
         .from('learning_goals')
@@ -284,6 +285,16 @@ export async function GET(request?: Request): Promise<NextResponse> {
         .select('id', { count: 'exact', head: true })
         .eq('user_id', user.id)
         .in('mastery', ['mastered', 'automated', 'proficient']),
+
+      supabase
+        .from('study_tasks')
+        .select('title, type, subject, chapter, estimated_minutes, priority, notes')
+        .eq('user_id', user.id)
+        .eq('scheduled_date', localDate)
+        .eq('is_completed', false)
+        .order('priority', { ascending: true })
+        .order('created_at', { ascending: true })
+        .limit(5),
     ]);
 
     const overdueCardCount = overdueCountRes.count ?? 0;
@@ -313,6 +324,7 @@ export async function GET(request?: Request): Promise<NextResponse> {
       weakConcepts: weakConceptsRes.data ?? [],
       sessionCount,
       studentModel: studentModelRes.data ?? null,
+      commandOpenTasks: commandTasksRes.data ?? [],
       now: generatedAt,
     };
 
@@ -355,8 +367,9 @@ export async function GET(request?: Request): Promise<NextResponse> {
         reservation.reservationId
       );
 
-      if (raw && typeof raw.focusTopic === 'string' && typeof raw.rationale === 'string') {
-        llmProse = raw;
+      const parsed = LLMCardProse.safeParse(raw);
+      if (parsed.success) {
+        llmProse = parsed.data;
       }
     } catch (err: any) {
       if (isBudgetExceeded(err) || isBudgetUnavailable(err)) {
@@ -506,6 +519,7 @@ The algorithm has ALREADY decided the following (do NOT change these):
 - Priority: ${sel.priority}
 - Duration: ${sel.estimatedMinutes} minutes
 - Reason: ${sel.reason}
+- Current overall mastery: ${masteryPercent}%
 
 Your ONLY job is to write friendly display text in JSON:
 {

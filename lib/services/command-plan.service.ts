@@ -92,15 +92,15 @@ export async function ensureCommandPlanForDate(input: {
     
     await recordAgentAction({
       userId: input.userId,
-      agentName: 'planner',
+      agentName: 'command',
       actionType: 'plan_created',
       targetType: 'daily_plan',
-      targetId: input.date,
       status: 'applied',
+      riskLevel: 'safe_auto',
       confidence: 1.0,
-      evidence: { tasks: persistedTasks.length, briefing },
-      idempotencyKey: `planner_action:${input.userId}:${input.date}`,
-    }, { client: supabase }).catch(err => logger.warn('Failed to record PLANNER action', err));
+      evidence: { date: input.date, tasks: persistedTasks.length, briefing },
+      idempotencyKey: `command_plan_created:${input.userId}:${input.date}`,
+    }, { client: supabase }).catch(err => logger.warn('Failed to record COMMAND action', err));
 
     return {
       date: input.date,

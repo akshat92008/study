@@ -17,7 +17,6 @@ const CONSUMER_AGENT_MAP: Record<string, AgentName> = {
   autopsy_agent: 'autopsy',
   planner_agent: 'planner',
   command_agent: 'command',
-  pulse_agent: 'pulse',
 };
 
 export async function runAgenticConsumer<T>(
