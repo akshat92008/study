@@ -324,7 +324,7 @@ export async function routeTextGeneration(
 
     const config = getProviderConfig(providerName);
 if (!config || !config.apiKey) {
-  logger.debug(`Skipping ${providerName} — missing env vars or API key`);
+  logger.info(`Skipping ${providerName} — missing env vars or API key`);
   continue;
 }
 
@@ -408,7 +408,7 @@ export async function routeJSONGeneration<T>(
 
     const config = getProviderConfig(providerName);
 if (!config || !config.apiKey) {
-  logger.debug(`Skipping ${providerName} — missing env vars or API key`);
+  logger.info(`Skipping ${providerName} — missing env vars or API key`);
   continue;
 }
 
@@ -532,7 +532,7 @@ export async function* routeStreamGeneration(
 
     const config = getProviderConfig(providerName);
 if (!config || !config.apiKey) {
-  logger.debug(`Skipping ${providerName} — missing env vars or API key`);
+  logger.info(`Skipping ${providerName} — missing env vars or API key`);
   continue;
 }
 
@@ -670,7 +670,7 @@ async function _routeEmbedding(
 
     const config = getProviderConfig(providerName);
 if (!config || !config.apiKey || !config.supportsEmbeddings) {
-  logger.debug(`Skipping ${providerName} — missing env vars, API key, or embeddings not supported`);
+  logger.info(`Skipping ${providerName} — missing env vars, API key, or embeddings not supported`);
   continue;
 }
 
@@ -806,7 +806,7 @@ if (!config || !config.apiKey || !config.supportsEmbeddings) {
   if (reservationId) {
     await releaseBudgetReservation(reservationId, 'embedding_providers_failed');
   }
-  logger.debug('All embedding providers failed — semantic memory disabled this request');
+  logger.info('All embedding providers failed — semantic memory disabled this request');
   return [];
 }
 
@@ -823,7 +823,7 @@ export async function routeVisionCall(
 
     const config = getProviderConfig(providerName);
 if (!config || !config.apiKey || !config.supportsVision) {
-  logger.debug(`Skipping ${providerName} — missing env vars, API key, or vision not supported`);
+  logger.info(`Skipping ${providerName} — missing env vars, API key, or vision not supported`);
   continue;
 }
 
@@ -1001,7 +1001,7 @@ export async function routeMultimodalJSONExtraction<T>(
         : config?.supportsVision;
 
     if (!config || !config.apiKey || !supportsFile) {
-      logger.debug(`Skipping ${providerName} — missing key or multimodal capability`, {
+      logger.info(`Skipping ${providerName} — missing key or multimodal capability`, {
         providerName,
         taskType,
         mimeType: fileData.mimeType,
