@@ -16,7 +16,7 @@ export const logger = {
     console.error(JSON.stringify({
       level: 'ERROR',
       msg,
-      error: err instanceof Error ? err.message : String(err),
+      error: err instanceof Error ? err.message : typeof err === 'object' && err !== null ? JSON.stringify(err) : String(err),
       stack: err instanceof Error ? err.stack : undefined,
       timestamp: new Date(),
       ...(cid && { correlationId: cid }),
