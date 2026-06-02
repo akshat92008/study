@@ -4,7 +4,7 @@ import { apiErrorResponse, getRequestId } from '@/lib/api/errors';
 
 /**
  * Validate that a cron request is authentic.
- * Vercel Cron sets the Authorization header with CRON_SECRET.
+ * Vercel Cron sets the Authorization header with INTERNAL_CRON_SECRET.
  */
 export function validateCronRequest(req: NextRequest): NextResponse | null {
   const secret = process.env.INTERNAL_CRON_SECRET || process.env.CRON_SECRET;

@@ -1,7 +1,7 @@
 # Private Beta Operations Runbook
 
 ## Required GitHub secrets
-- `COGNITION_WORKER_URL`
+- `COGNITION_WORKER_URL` (must point to /api/internal/workers/process-events)
 - `INTERNAL_CRON_SECRET`
 
 ## Manual worker curl

@@ -1,7 +1,7 @@
 {
   "crons": [
     {
-      "path": "/api/cron/process-events",
+      "path": "/api/internal/workers/process-events",
       "schedule": "0 0 * * *"
     }
   ]

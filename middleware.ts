@@ -2,7 +2,7 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 const PUBLIC_ROUTES = ["/login", "/signup", "/", "/api/health", "/api/webhooks/stripe"];
-const CRON_ROUTES = ["/api/cron", "/api/events/process", "/api/internal"];
+const CRON_ROUTES = ["/api/cron", "/api/internal/workers/process-events", "/api/internal"];
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
