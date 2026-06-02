@@ -51,9 +51,47 @@ export default function TestAnalysisCard({ onUploadSuccess }: { onUploadSuccess?
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Test Analysis failed');
 
-      setAutopsyResult(data);
-      addToast('Mock Analysis completed successfully!', 'success');
-      if (onUploadSuccess) onUploadSuccess();
+      if (data.status === 'completed') {
+        setAutopsyResult(data);
+        addToast('Mock Analysis completed successfully!', 'success');
+        if (onUploadSuccess) onUploadSuccess();
+      } else {
+        // Start polling if pending/processing
+        let currentStatus = data.status;
+        let elapsed = 0;
+        const maxWait = 900000; // 15 min max
+
+        while (currentStatus !== 'completed' && currentStatus !== 'failed' && currentStatus !== 'needs_user_input' && currentStatus !== 'needs_input' && elapsed < maxWait) {
+          await new Promise(r => setTimeout(r, 2000));
+          elapsed += 2000;
+          
+          const pollRes = await fetch(`/api/autopsy/jobs/${data.jobId}`);
+          if (!pollRes.ok) continue;
+          
+          const pollData = await pollRes.json();
+          currentStatus = pollData.status;
+
+          if (currentStatus === 'processing') {
+             setUploadStatus('Processing upload...');
+          } else if (currentStatus === 'needs_user_input' || currentStatus === 'needs_input') {
+             throw new Error(pollData.error || 'Autopsy needs user input.');
+          } else if (currentStatus === 'failed') {
+             throw new Error(pollData.error || 'Autopsy analysis failed.');
+          } else if (currentStatus === 'completed') {
+             const resultRes = await fetch('/api/autopsy');
+             if (resultRes.ok) {
+               const resultData = await resultRes.json();
+               setAutopsyResult(resultData.result);
+             } else {
+               setAutopsyResult(pollData);
+             }
+             addToast('Mock Analysis completed successfully!', 'success');
+             if (onUploadSuccess) onUploadSuccess();
+             break;
+          }
+        }
+        if (elapsed >= maxWait) throw new Error('Analysis timed out');
+      }
     } catch (err: any) {
       addToast(err.message, 'error');
     } finally {
