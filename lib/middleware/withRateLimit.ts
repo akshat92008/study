@@ -10,7 +10,7 @@ type RateLimitConfig = {
 };
 
 const ROUTE_LIMITS: Record<string, RateLimitConfig & { failClosed?: boolean }> = {
-  autopsy:   { bucket: 'autopsy',   maxTokens: 5,  windowSeconds: 300, failClosed: true },  // 5/5min
+  autopsy:   { bucket: 'autopsy',   maxTokens: 10, windowSeconds: 300, failClosed: true },  // 10/5min
   ingest:    { bucket: 'ingest',    maxTokens: 10, windowSeconds: 300 },  // 10/5min
   revision:  { bucket: 'revision',  maxTokens: 60, windowSeconds: 60  },  // 60/min
   planner:   { bucket: 'planner',   maxTokens: 10, windowSeconds: 60, failClosed: true },  // 10/min

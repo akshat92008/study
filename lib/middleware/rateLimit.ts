@@ -170,7 +170,7 @@ export async function checkRateLimit(
 export const RateLimits = {
   CHAT: { name: 'chat', requests: 30, window: '1 m' },
   AI_HEAVY: { name: 'ai_heavy', requests: 10, window: '1 m' },
-  AUTOPSY: { name: 'autopsy', requests: 5, window: '5 m' },
+  AUTOPSY: { name: 'autopsy', requests: 10, window: '5 m' },
   AUTH: { name: 'auth', requests: 5, window: '15 m' },
   UPLOAD: { name: 'upload', requests: 10, window: '1 h' },
 } as const;
