@@ -13,14 +13,35 @@ export const logger = {
   },
   error: (msg: string, err?: any, meta?: any) => {
     const cid = logger.correlationIdProvider();
+    let errorStr = String(err);
+    let stackStr = undefined;
+    let extra = {};
+
+    if (err instanceof Error) {
+      errorStr = err.message;
+      stackStr = err.stack;
+    } else if (typeof err === 'object' && err !== null) {
+      errorStr = err.message || JSON.stringify(err);
+      if (errorStr === '{}') errorStr = String(err);
+      stackStr = err.stack;
+      const props: Record<string, any> = {};
+      try {
+        Object.getOwnPropertyNames(err).forEach(key => {
+          props[key] = (err as any)[key];
+        });
+        extra = { error_details: props };
+      } catch (e) {}
+    }
+
     console.error(JSON.stringify({
       level: 'ERROR',
       msg,
-      error: err instanceof Error ? err.message : typeof err === 'object' && err !== null ? JSON.stringify(err) : String(err),
-      stack: err instanceof Error ? err.stack : undefined,
+      error: errorStr,
+      stack: stackStr,
       timestamp: new Date(),
       ...(cid && { correlationId: cid }),
-      ...meta
+      ...meta,
+      ...extra
     }));
   }
 };

@@ -1031,9 +1031,11 @@ If they ask to update or generate targets generally, use "add" to create a few t
             await service.updateMicrotaskStatus(action.taskId, input.userId, 'done');
           }
         }
+        const { invalidateSessionCards } = await import('@/lib/services/session-card-invalidation');
+        await invalidateSessionCards(input.userId, input.supabase, 'chat_planner_tasks_updated');
         return {
           text: editResult.responseMessage || 'I have updated your plan for today.',
-          metadata: { action: 'plan_edited' }
+          metadata: { action: 'planner_adjusted', tasksModified: true, sessionCardInvalidated: true }
         };
       }
     } catch (err) {
