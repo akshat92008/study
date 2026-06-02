@@ -9,12 +9,12 @@ async function fixQueue() {
     process.env.SUPABASE_SERVICE_ROLE_KEY!
   );
 
-  console.log('Marking clogged events as DLQ...');
+  console.log('Marking clogged events as FAILED...');
   
-  // Update all PENDING events that are NOT MATERIAL_UPLOADED to DLQ so they don't block the queue
+  // Update all PENDING events that are NOT MATERIAL_UPLOADED to FAILED so they don't block the queue
   const { data, error } = await supabase
     .from('event_queue')
-    .update({ status: 'DLQ' })
+    .update({ status: 'FAILED' })
     .eq('status', 'PENDING')
     .neq('type', 'MATERIAL_UPLOADED');
     
