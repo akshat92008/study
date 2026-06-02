@@ -114,8 +114,11 @@ describe('Agentic Runtime Wiring', () => {
     
     await supabase.from('concepts').insert({
       id: conceptId,
+      user_id: userId,
       name: 'Wiring Concept',
       subject: 'Wiring',
+      chapter: 'Wiring Chapter',
+      topic: 'Wiring Topic',
       description: 'Wiring testing concept'
     });
 

@@ -87,7 +87,8 @@ async function cleanup() {
 
 async function run() {
   console.log('--- 100-user Private Beta Architecture Smoke ---');
-  console.log(`Simulating beta architecture for ${simulatedUserCount} users with ${realUsers} real isolated Supabase users.`);
+  console.log('NOTE: This is NOT a full load test.');
+  console.log(`Simulating beta architecture for ${simulatedUserCount} users using ${realUsers} real isolated Supabase users.`);
   const runId = randomUUID();
   const perUser: Array<{
     userId: string;

@@ -123,6 +123,7 @@ function main() {
     'idx_study_materials_user_content_hash_unique',
     'idx_study_material_chunks_material_hash_unique',
     'idx_revision_cards_unique_source',
+    'idx_revision_cards_user_normalized_key_unique',
     'idempotency_key text unique',
     'unique(user_id, material_id, idempotency_key)',
     'idx_consumer_locks_event',
