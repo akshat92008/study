@@ -22,6 +22,7 @@
     "smoke:mvp": "ts-node scripts/mvp-smoke-check.ts",
     "smoke:agentic": "ts-node scripts/agentic-smoke-check.ts",
     "smoke:beta100": "ts-node scripts/beta100-smoke-check.ts",
+    "beta100:cheap-test": "npx tsx scripts/beta100-load-test.ts",
     "verify:schema": "ts-node scripts/verify-schema.ts",
     "schema:check": "ts-node scripts/schema-sanity-check.ts",
     "verify:local": "SKIP_ENV_VALIDATION=1 npm run typecheck && npm run lint && npm test && npm run build && SKIP_ENV_VALIDATION=1 npm run smoke:mvp -- --mode=local",
