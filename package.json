@@ -23,6 +23,7 @@
     "smoke:agentic": "ts-node scripts/agentic-smoke-check.ts",
     "smoke:beta100": "ts-node scripts/beta100-smoke-check.ts",
     "smoke:beta10": "tsx scripts/beta-smoke-check.ts",
+    "preflight:beta": "tsx scripts/preflight-beta.ts",
     "beta100:cheap-test": "npx tsx scripts/beta100-load-test.ts",
     "alpha10:smoke": "tsx scripts/alpha10-smoke-test.ts",
     "verify:schema": "ts-node scripts/verify-schema.ts",

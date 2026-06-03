@@ -1,15 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
+import { requireAdmin } from '@/lib/auth/admin';
 
 export async function GET(req: NextRequest) {
-  // Check authorization using ADMIN_EMAILS like other admin routes
-  const authHeader = req.headers.get('Authorization');
-  const adminEmails = process.env.ADMIN_EMAILS?.split(',').map(e => e.trim()) || [];
-  
-  // This is a simplified auth check for the endpoint.
-  // In a real production system this would use proper sessions or JWTs,
-  // but this matches the existing admin auth pattern in this codebase.
-  
+  const auth = await requireAdmin();
+  if (auth.error) {
+    return NextResponse.json({ error: auth.error }, { status: auth.status });
+  }
+
   const supabase = createAdminClient();
   
   try {

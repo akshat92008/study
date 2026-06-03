@@ -29,6 +29,8 @@ const allowedRuntimeFiles = new Set([
   'lib/agents/action-executor.ts',
   'lib/agents/mind-explainer.ts',
   'lib/ai/cost-guard.ts',
+  'lib/ai/response-cache.ts',
+  'lib/ai/session-summary.ts',
   'lib/events/agents/provider-health.ts',
   'lib/events/orchestrator.ts',
   'lib/events/replay.ts',

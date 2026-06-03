@@ -12,6 +12,23 @@ import { runAgenticConsumer } from '@/lib/agents/event-runner';
 import { runCheapAgenticCycle } from '@/lib/agents/orchestrator';
 import { featureFlags } from '@/lib/config/flags';
 
+export const HANDLED_EVENT_CONSUMERS = [
+  'learning_state_engine',
+  'atlas_engine',
+  'memory_engine',
+  'autopsy_engine',
+  'concept_expansion_engine',
+  'chat_side_effect_engine',
+  'rag_agent',
+  'atlas_agent',
+  'memory_agent',
+  'planner_agent',
+  'mind_agent',
+  'autopsy_agent',
+  'command_agent',
+] as const;
+
+
 const MAX_RETRIES = 2; // Equivalent to retry_count < 3
 const DEFAULT_CONCURRENCY = 5;
 const MAX_CONCURRENCY = 10;

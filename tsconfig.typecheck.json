@@ -42,12 +42,6 @@
     "tests",
     "__tests__",
     "scripts",
-    "app/(educator)",
-    "components/cognition",
-    "components/analytics",
-    "components/knowledge",
-    "components/mentor",
-    "components/mistakes",
-    "components/planner"
+    "app/(educator)"
   ]
 }
