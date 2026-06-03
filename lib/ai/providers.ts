@@ -1,3 +1,5 @@
+import { logger } from '@/lib/utils/logger';
+
 export type ProviderName =
   | 'cerebras'        // Fastest inference alive. 1M tokens/day free.
   | 'cerebras_fallback' // Second Cerebras key.
@@ -299,11 +301,11 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
     },
       nvidia: {
       name: 'nvidia',
-      baseUrl: 'https://api.nvcf.nvidia.com/v2/nvcf/exec',
+      baseUrl: 'https://integrate.api.nvidia.com/v1',
       apiKey: process.env.NVIDIA_API_KEY,
       models: {
-        quality: 'meta-llama-3.1-70b-instruct', // best reasoning model
-        fast: 'meta-llama-3.1-8b-instruct',   // faster, cheaper
+        quality: 'meta/llama-3.3-70b-instruct', // best reasoning model
+        fast: 'meta/llama-3.1-8b-instruct',   // faster, cheaper
       },
       capabilities: capabilities({
         supportsVision: true,
@@ -323,8 +325,8 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
       maxInputBytes: 20 * 1024 * 1024,
       maxInputTokens: 1_000_000,
       costTier: 'metered',
-      embeddingModel: 'nvidia-embed-v1',
-      embeddingDimensions: 1536,
+      embeddingModel: 'nvidia/nv-embedqa-e5-v5',
+      embeddingDimensions: 1024,
       authHeader: 'bearer',
     },
 };
@@ -414,9 +416,9 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
   ],
 
   autopsy: [
+    'nvidia',
     'groq_compound',
     'cloudflare',
-    'nvidia',
     'google',
     'openai',
   ],

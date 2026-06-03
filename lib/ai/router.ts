@@ -873,8 +873,12 @@ if (!config || !config.apiKey || !config.supportsVision) {
         return result;
       }
 
-      if (providerName === 'groq_compound') {
-        const model = 'llama-3.2-90b-vision-preview';
+      if (providerName === 'groq_compound' || providerName === 'openai' || providerName === 'nvidia') {
+        const model = providerName === 'groq_compound'
+          ? 'llama-3.2-90b-vision-preview'
+          : providerName === 'nvidia'
+          ? 'meta/llama-3.2-90b-vision-instruct'
+          : config.models.quality;
         const messages = [
           { role: 'system', content: systemPrompt },
           {
@@ -1050,9 +1054,11 @@ export async function routeMultimodalJSONExtraction<T>(
 
         const data = await response.json();
         rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || '{}';
-      } else if (providerName === 'groq_compound' || providerName === 'openai') {
+      } else if (providerName === 'groq_compound' || providerName === 'openai' || providerName === 'nvidia') {
         const model = providerName === 'groq_compound'
           ? 'llama-3.2-90b-vision-preview'
+          : providerName === 'nvidia'
+          ? 'meta/llama-3.2-90b-vision-instruct'
           : config.models.quality;
         const response = await fetch(`${config.baseUrl}/chat/completions`, {
           method: 'POST',
