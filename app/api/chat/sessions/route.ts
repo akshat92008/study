@@ -17,7 +17,7 @@ export async function GET(req: NextRequest) {
 
     const { data, error } = await supabase
       .from('chat_sessions')
-      .select(`${SESSION_SELECT}, learning_goals(title)`)
+      .select(`${SESSION_SELECT}, learning_goals!chat_sessions_goal_id_fkey(title)`)
       .eq('user_id', user.id)
       .is('archived_at', null)
       .order('updated_at', { ascending: false });
