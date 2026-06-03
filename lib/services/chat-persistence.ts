@@ -58,7 +58,7 @@ export async function loadRecentMessages(supabase: any, sessionId: string): Prom
     .select('role, content, created_at')
     .eq('session_id', sessionId)
     .order('created_at', { ascending: false })
-    .limit(50);
+    .limit(15);
 
   if (error) {
     throw new Error(`Failed to load chat history: ${error.message}`);
@@ -79,7 +79,7 @@ export async function loadRecentMessagesForClient(
     .select('id, role, content, metadata, created_at')
     .eq('session_id', sessionId)
     .order('created_at', { ascending: false })
-    .limit(50);
+    .limit(15);
 
   if (error) {
     throw new Error(`Failed to load chat history: ${error.message}`);
