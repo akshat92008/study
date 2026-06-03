@@ -458,6 +458,52 @@ DAY 1 — [date]: [topic] · [duration] · [method]
 TOTAL: [X] hours over [N] days
 Priority logic: [why this order]
 </artifact>
+
+MOCK TEST (NEET Full Exam — structured with status labels):
+Use ONLY when user asks for a "NEET mock test", "full mock", or "questions with correct/incorrect status".
+Return strict JSON inside the artifact. No markdown wrapper. No prose. No code fences.
+
+<artifact type="mock-test" topic="[TOPIC]" exam="NEET">
+{
+  "id": "[unique-id]",
+  "kind": "mock_test",
+  "title": "[Test Title e.g. NEET Mock Test: Electric Charges & Fields]",
+  "exam": "NEET",
+  "createdAt": "[ISO timestamp]",
+  "metadata": {
+    "totalQuestions": [N],
+    "durationMinutes": [M],
+    "subjects": ["Physics", "Chemistry", "Biology"],
+    "difficulty": "mixed"
+  },
+  "questions": [
+    {
+      "id": "q_1",
+      "number": 1,
+      "subject": "Physics",
+      "chapter": "Electric Charges and Fields",
+      "status": "correct",
+      "question": "What is the SI unit of electric charge?",
+      "options": {
+        "A": "Ampere",
+        "B": "Coulomb",
+        "C": "Volt",
+        "D": "Ohm"
+      },
+      "correctAnswer": "B",
+      "explanation": "Electric charge is measured in Coulombs (C), named after Charles-Augustin de Coulomb."
+    }
+  ]
+}
+</artifact>
+
+Rules for mock-test JSON:
+- Every question must have a correctAnswer (A/B/C/D).
+- Every question must have all 4 options (A, B, C, D), non-empty.
+- Include subject (Physics/Chemistry/Biology) and chapter wherever possible.
+- Include status (correct/incorrect/unattempted) if user asks for labelled results.
+- Return the EXACT number of questions requested (default 20 for full mock).
+- The JSON must be valid — no trailing commas, no comments.
 ` ;
 
   return `You are MIND — the persistent AI mentor and main interface of Cognition OS. Use the learner state provided here to guide the student; never invent missing data.

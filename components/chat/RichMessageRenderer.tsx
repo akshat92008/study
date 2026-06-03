@@ -8,11 +8,13 @@ import {
   ChevronRight, ChevronLeft, Eye, EyeOff, Volume2, VolumeX
 } from 'lucide-react';
 import { useVoiceInteraction } from '@/hooks/useVoiceInteraction';
+import { GeneratedDocumentCard } from '@/components/documents/GeneratedDocumentCard';
+import { parseGeneratedDocument, looksLikeGeneratedDocument } from '@/lib/documents/parse-generated-document';
 
 // ── TYPES ──────────────────────────────────────────────────────────────────────
 
 interface ParsedArtifact {
-  type: 'study-guide' | 'learning-document' | 'practice-test' | 'mcq-set' | 'revision-sheet' | 'formula-sheet' | 'flashcard-set' | 'concept-map' | 'study-plan' | 'pdf';
+  type: 'study-guide' | 'learning-document' | 'practice-test' | 'mcq-set' | 'revision-sheet' | 'formula-sheet' | 'flashcard-set' | 'concept-map' | 'study-plan' | 'pdf' | 'mock-test';
   topic: string;
   subject?: string;
   content: string;
@@ -1123,7 +1125,14 @@ interface RichMessageRendererProps {
 export function RichMessageRenderer({ content, isStreaming = false, messageId, metadata }: RichMessageRendererProps) {
   const parts = parseArtifacts(content);
   const ragChunks = metadata?.ragChunks;
+  // Check if the message itself carries a pre-parsed generatedDocument in metadata
+  const metadataDoc = metadata?.generatedDocument;
   const { isSpeaking, speak, stopSpeaking, isSynthesisSupported } = useVoiceInteraction();
+
+  // If a generatedDocument is attached to message metadata, render it directly
+  if (metadataDoc && typeof metadataDoc === 'object' && 'kind' in metadataDoc) {
+    return <GeneratedDocumentCard document={metadataDoc} />;
+  }
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -1146,7 +1155,19 @@ export function RichMessageRenderer({ content, isStreaming = false, messageId, m
           case 'concept-map': return <ConceptMapCard key={i} artifact={part.artifact} />;
           case 'study-plan': return <StudyPlanCard key={i} artifact={part.artifact} ragChunks={ragChunks} />;
           case 'pdf': return <PdfCard key={i} artifact={part.artifact} ragChunks={ragChunks} />;
-          default: return <div key={i}>{renderMarkdownBlock(part.content, ragChunks)}</div>;
+          case 'mock-test': {
+            // Render as structured GeneratedDocumentCard with PDF export
+            const parsedDoc = parseGeneratedDocument(part.artifact.content);
+            return <GeneratedDocumentCard key={i} document={parsedDoc} />;
+          }
+          default: {
+            // Check if plain-text content looks like a structured document
+            if (looksLikeGeneratedDocument(part.content)) {
+              const parsedDoc = parseGeneratedDocument(part.content);
+              return <GeneratedDocumentCard key={i} document={parsedDoc} />;
+            }
+            return <div key={i}>{renderMarkdownBlock(part.content, ragChunks)}</div>;
+          }
         }
       })}
 

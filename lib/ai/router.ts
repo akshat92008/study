@@ -527,8 +527,13 @@ export async function* routeStreamGeneration(
     messages: rawMessages,
   });
 
+  const providerErrors: string[] = [];
+
   for (const providerName of providers) {
-    if (await isProviderInCooldown(providerName)) continue;
+    if (await isProviderInCooldown(providerName)) {
+      providerErrors.push(`${providerName}: skipped (cooldown)`);
+      continue;
+    }
 
     const config = getProviderConfig(providerName);
 if (!config || !config.apiKey) {
@@ -594,6 +599,7 @@ if (!config || !config.apiKey) {
       const cooldownMs = code === 429 || code === 401 ? 30_000 : code === 503 ? 20_000 : 15_000;
       await recordProviderFailure(providerName, cooldownMs);
       logger.warn(`${providerName} stream failed (${code}), trying next`);
+      providerErrors.push(`${providerName}: ${code} - ${err.message}`);
     }
   }
 
@@ -601,7 +607,8 @@ if (!config || !config.apiKey) {
     await releaseBudgetReservation(reservationId, 'all_stream_providers_failed');
   }
 
-  yield "I'm experiencing high load right now. Please try again in a moment.";
+  const debugInfo = providerErrors.length > 0 ? ` (Debug: ${providerErrors.join(' | ')})` : '';
+  yield `I'm experiencing high load right now. Please try again in a moment.${debugInfo}`;
 }
 
 const embeddingCache = new Map<string, number[]>();
