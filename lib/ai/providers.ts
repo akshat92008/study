@@ -146,7 +146,7 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
       baseUrl: 'https://api.sambanova.ai/v1',
       apiKey: process.env.SAMBANOVA_API_KEY,
       models: {
-        quality: 'Meta-Llama-3.1-70B-Instruct',
+        quality: 'Meta-Llama-3.3-70B-Instruct',
         fast: 'Meta-Llama-3.1-8B-Instruct',
       },
       capabilities: capabilities({
