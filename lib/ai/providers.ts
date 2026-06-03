@@ -9,7 +9,8 @@ export type ProviderName =
   | 'cloudflare'      // Free Workers AI. Vision capable.
   | 'google'          // LAST RESORT ONLY. Use when everything else is down.
   | 'openai'          // PAID FALLBACK
-  | 'nvidia';         // NVIDIA NIM provider
+  | 'nvidia'          // NVIDIA NIM provider
+  | 'anthropic';      // ANTHROPIC CLAUDE FALLBACK
 
 export type TaskType = 
   | 'chat'
@@ -90,6 +91,7 @@ export const REQUIRED_ENV_VARS: Record<ProviderName, string[]> = {
   groq_gemma: [], // No specific env vars
   openai: ['OPENAI_API_KEY'],
   nvidia: ['NVIDIA_API_KEY'],
+  anthropic: ['ANTHROPIC_API_KEY'],
 };
 
 
@@ -304,7 +306,7 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
       baseUrl: 'https://integrate.api.nvidia.com/v1',
       apiKey: process.env.NVIDIA_API_KEY_2 || process.env.NVIDIA_API_KEY,
       models: {
-        quality: 'meta/llama-3.3-70b-instruct', // best reasoning model
+        quality: 'deepseek-ai/deepseek-r1', // best reasoning model
         fast: 'meta/llama-3.1-8b-instruct',   // faster, cheaper
       },
       capabilities: capabilities({
@@ -328,6 +330,30 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
       embeddingModel: 'nvidia/nv-embedqa-e5-v5',
       embeddingDimensions: 1024,
       authHeader: 'bearer',
+    },
+
+    anthropic: {
+      name: 'anthropic',
+      baseUrl: 'https://api.anthropic.com/v1',
+      apiKey: process.env.ANTHROPIC_API_KEY,
+      models: { quality: 'claude-3-7-sonnet-20250219', fast: 'claude-3-5-haiku-20241022' },
+      capabilities: capabilities({
+        supportsStreaming: true,
+        supportsVision: true,
+        supportsPdf: true, // Claude supports PDF natively via API
+        supportsEmbeddings: false,
+        maxInputTokens: 200_000,
+        costTier: 'paid',
+      }),
+      supportsText: true,
+      supportsStreaming: true,
+      supportsJson: true, // Via prompt
+      supportsVision: true,
+      supportsPdf: true,
+      supportsEmbeddings: false,
+      supportsAudio: false,
+      maxInputTokens: 200_000,
+      costTier: 'paid',
     },
 };
 
@@ -370,6 +396,7 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
     'sambanova',     // Fast + free, lower priority to avoid rate limits.
     'google',        // LAST RESORT.
     'openai',        // PAID FALLBACK
+    'anthropic',
   ],
 
   tutor: [
@@ -382,6 +409,7 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
     'sambanova',
     'google',
     'openai',
+    'anthropic',
   ],
 
   stream: [
@@ -394,6 +422,7 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
     'sambanova', // Lower priority for streaming.
     'google',
     'openai',
+    'anthropic',
   ],
 
   json: [
@@ -406,6 +435,7 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
     'cloudflare',
     'google',
     'openai',
+    'anthropic',
   ],
 
   classification: [
@@ -418,6 +448,7 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
     'cloudflare',
     'google',
     'openai',
+    'anthropic',
   ],
 
   autopsy: [
@@ -426,6 +457,7 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
     'cloudflare',
     'google',
     'openai',
+    'anthropic',
   ],
 
   embedding: [
@@ -439,12 +471,14 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
     'cloudflare',  // llama-3.2-11b-vision free.
     'google',      // gemini-2.0-flash vision — last resort.
     'openai',
+    'anthropic',
   ],
 
   pdf: [
     'google',
     'nvidia',
     'openai',
+    'anthropic',
   ],
 
   audio: [

@@ -113,7 +113,14 @@ export async function POST(req: NextRequest) {
     async start(controller) {
       let fullResponse = '';
       try {
-        for await (const chunk of streamMentorResponse(user.id, parsed.message, recentHistory)) {
+        const { getMaxRecentMessages } = await import('@/lib/ai/cost-mode');
+        const { sanitizeHistoryForPrompt } = await import('@/lib/ai/chat-history-sanitizer');
+        const { maybeUpdateSessionSummary } = await import('@/lib/ai/session-summary');
+        
+        const sanitizedHistory = sanitizeHistoryForPrompt(recentHistory, getMaxRecentMessages(), parsed.message);
+        void maybeUpdateSessionSummary(user.id, sessionId, recentHistory).catch(() => {});
+
+        for await (const chunk of streamMentorResponse(user.id, parsed.message, sanitizedHistory)) {
           fullResponse += chunk;
           controller.enqueue(encoder.encode(chunk));
         }

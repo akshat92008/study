@@ -60,6 +60,10 @@ import { getRagConfig, SUPPORTED_MATERIAL_MIME_TYPES } from '@/lib/rag/config';
 import { validateMagicBytesArray } from '@/lib/utils/magicBytes';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { featureFlags } from '@/lib/config/flags';
+import { sanitizeHistoryForPrompt } from '@/lib/ai/chat-history-sanitizer';
+import { tryRuleFirstResponse } from '@/lib/ai/rule-first-responder';
+import { maybeUpdateSessionSummary } from '@/lib/ai/session-summary';
+
 const encoder = new TextEncoder();
 const STUDY_MATERIAL_UPLOAD_RE =
   /\b(use this|save this|upload this|index this|store this|add this|my notes|study material|ncert|textbook|chapter|pdf|source|answer from this|use later|prescribed material|according to this|make this my source)\b/i;
@@ -795,6 +799,27 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
       return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-cache' } });
     }
 
+    const ruleFirst = await tryRuleFirstResponse(user.id, message || '', mindContext);
+    if (ruleFirst.handled) {
+      const responseText = ruleFirst.response || "Handled deterministically.";
+      const stream = new ReadableStream({
+        async start(controller) {
+          controller.enqueue(encoder.encode(responseText));
+          try {
+            await finalizeAssistantTurn({
+              assistantText: responseText,
+              intent,
+              metadata: { ruleFirst: true }
+            });
+          } catch (finalizeErr) {
+            logger.error('Chat route [rule-first]: finalization failed', finalizeErr);
+          }
+          controller.close();
+        },
+      });
+      return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-cache' } });
+    }
+
     const deterministicEngineResponse = await buildChatFirstEngineResponse({
       userId: user.id,
       message: message || '',
@@ -839,7 +864,11 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
     let mainGenerator: AsyncGenerator<string> | null = null;
     if (intent.intent !== 'TUTOR_SESSION' && intent.intent !== 'PRACTICE' && intent.intent !== 'REPLAN' && intent.intent !== 'CREATE_ARTIFACT' && orchestratorResult.intent !== 'planning') {
       try {
-        const conversationMessages = buildConversationMessages(recentHistory, message || '');
+        const { getMaxRecentMessages } = await import('@/lib/ai/cost-mode');
+        const sanitizedHistory = sanitizeHistoryForPrompt(recentHistory, getMaxRecentMessages(), message || '');
+        void maybeUpdateSessionSummary(user.id, sessionId, recentHistory).catch(() => {});
+
+        const conversationMessages = buildConversationMessages(sanitizedHistory, message || '');
         mainGenerator = await budgetedStreamGeneration({
           userId: user.id,
           feature: 'chat',
@@ -870,13 +899,17 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
 
         try {
           if (intent.intent === 'TUTOR_SESSION' || intent.intent === 'PRACTICE') {
+            const { getMaxRecentMessages } = await import('@/lib/ai/cost-mode');
+            const sanitizedHistory = sanitizeHistoryForPrompt(recentHistory, getMaxRecentMessages(), message || '');
+            void maybeUpdateSessionSummary(user.id, sessionId, recentHistory).catch(() => {});
+
             const tutorResult = await ChatTutorService.handleTutorSession(
               supabase,
               user.id,
               intent,
               mindContext,
               systemPrompt,
-              recentHistory,
+              sanitizedHistory,
               message || '',
               sessionTurnsCount,
               controller,
@@ -891,8 +924,12 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
             fullResponse = replanResult.fullResponse;
             metadataPayload = replanResult.metadataPayload;
           } else if (intent.intent === 'CREATE_ARTIFACT' || orchestratorResult.intent === 'planning') {
+            const { getMaxRecentMessages } = await import('@/lib/ai/cost-mode');
+            const sanitizedHistory = sanitizeHistoryForPrompt(recentHistory, getMaxRecentMessages(), message || '');
+            void maybeUpdateSessionSummary(user.id, sessionId, recentHistory).catch(() => {});
+
             const artifactResult = await ChatPlannerService.handleCreateArtifact(
-              supabase, user.id, systemPrompt, recentHistory, message || '', controller, encoder
+              supabase, user.id, systemPrompt, sanitizedHistory, message || '', controller, encoder
             );
             fullResponse = artifactResult.fullResponse;
             metadataPayload = artifactResult.metadataPayload;

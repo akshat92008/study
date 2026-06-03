@@ -2,6 +2,9 @@ import { createAdminClient } from '@/lib/supabase/admin';
 import { getRagConfig } from './config';
 import { embedRagText } from './embedding';
 import type { RagChunk, RagContext, RagMode, RagRetrieveInput } from './types';
+import { getAiCostMode } from '@/lib/ai/cost-mode';
+import { getTokenBudget, type AiTask } from '@/lib/ai/token-budget';
+import { selectRagContext } from './token-aware-context';
 
 const EXPLICIT_RAG_RE =
   /\b(from|according to|based on|use|using|in)\s+(my\s+)?(notes|material|pdf|document|source|ncert|textbook|uploaded|chapter)\b/i;
@@ -67,7 +70,12 @@ export async function retrieveRagContext(input: RagRetrieveInput): Promise<RagCo
     chunks = await keywordFallback(input, topK);
   }
 
-  chunks = diversifyAndCap(chunks, maxContextChars);
+  const costMode = getAiCostMode();
+  // Assume chat task for budget if not specified.
+  const task: AiTask = (input as any).task ?? 'chat'; 
+  const budget = getTokenBudget(task, costMode);
+
+  chunks = selectRagContext(chunks, budget, costMode);
 
   const context: RagContext = {
     mode,
@@ -171,26 +179,7 @@ function keywordScore(text: string, terms: string[]): number {
   return hits / Math.max(terms.length, 1);
 }
 
-function diversifyAndCap(chunks: RagChunk[], maxChars: number): RagChunk[] {
-  const sorted = [...chunks].sort((a, b) => b.score - a.score);
-  const selected: RagChunk[] = [];
-  const perMaterialCount = new Map<string, number>();
-  let chars = 0;
 
-  for (const chunk of sorted) {
-    const current = perMaterialCount.get(chunk.materialId) ?? 0;
-    if (current >= 3 && sorted.length > 3) continue;
-    if (chars + chunk.text.length > maxChars && selected.length > 0) continue;
-
-    selected.push(chunk);
-    perMaterialCount.set(chunk.materialId, current + 1);
-    chars += chunk.text.length;
-
-    if (selected.length >= getRagConfig().hardMaxTopK) break;
-  }
-
-  return selected;
-}
 
 function getEvidenceStrength(chunks: RagChunk[]): 'high' | 'medium' | 'low' | 'none' {
   if (chunks.length === 0) return 'none';

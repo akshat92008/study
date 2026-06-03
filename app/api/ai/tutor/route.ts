@@ -124,7 +124,15 @@ export async function POST(req: NextRequest) {
 
   const mindContext = await getMINDContext(user.id, parsed.message, parsed.topic, parsed.subject);
   const systemPrompt = getMINDSystemPrompt(mindContext, [], 'TUTOR_SESSION');
-  const conversationMessages = buildConversationMessages(recentHistory, parsed.message);
+  
+  const { getMaxRecentMessages } = await import('@/lib/ai/cost-mode');
+  const { sanitizeHistoryForPrompt } = await import('@/lib/ai/chat-history-sanitizer');
+  const { maybeUpdateSessionSummary } = await import('@/lib/ai/session-summary');
+  
+  const sanitizedHistory = sanitizeHistoryForPrompt(recentHistory, getMaxRecentMessages(), parsed.message);
+  void maybeUpdateSessionSummary(user.id, sessionId, recentHistory).catch(() => {});
+
+  const conversationMessages = buildConversationMessages(sanitizedHistory, parsed.message);
 
   const stream = new ReadableStream({
     async start(controller) {

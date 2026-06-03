@@ -53,12 +53,15 @@ export async function getOrCreateGlobalChatSession(supabase: any, userId: string
 }
 
 export async function loadRecentMessages(supabase: any, sessionId: string): Promise<ChatMessageForPrompt[]> {
+  const { getMaxRecentMessages } = await import('@/lib/ai/cost-mode');
+  const limit = getMaxRecentMessages();
+
   const { data, error } = await supabase
     .from('chat_messages')
     .select('role, content, created_at')
     .eq('session_id', sessionId)
     .order('created_at', { ascending: false })
-    .limit(15);
+    .limit(limit);
 
   if (error) {
     throw new Error(`Failed to load chat history: ${error.message}`);
@@ -74,12 +77,15 @@ export async function loadRecentMessagesForClient(
   supabase: any,
   sessionId: string
 ): Promise<ChatMessageForClient[]> {
+  const { getMaxRecentMessages } = await import('@/lib/ai/cost-mode');
+  const limit = getMaxRecentMessages();
+
   const { data, error } = await supabase
     .from('chat_messages')
     .select('id, role, content, metadata, created_at')
     .eq('session_id', sessionId)
     .order('created_at', { ascending: false })
-    .limit(15);
+    .limit(limit);
 
   if (error) {
     throw new Error(`Failed to load chat history: ${error.message}`);
