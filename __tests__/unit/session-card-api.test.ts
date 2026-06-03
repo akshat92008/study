@@ -33,11 +33,12 @@ function buildQuery(result: any) {
     in: () => q,
     gte: () => q,
     lte: () => q,
+    is: () => q,
     order: () => q,
     limit: () => q,
     upsert: mockUpsert,
-    delete: () => ({ eq: () => ({ in: mockDelete }) }),
-    update: () => ({ eq: () => ({ eq: mockDelete }) }),
+    delete: () => q,
+    update: () => q,
     single: () => Promise.resolve(result),
     maybeSingle: () => Promise.resolve(result),
     then: (resolve: any) => resolve(result),
@@ -109,7 +110,7 @@ function stubFrom(tableDataMap: Record<string, any>) {
       q.catch = () => q;
       q.finally = () => q;
       q.upsert = mockUpsert;
-      q.delete = () => ({ eq: () => ({ in: mockDelete }) });
+      q.delete = () => q;
       return q;
     }
     return buildQuery({ data, error: null });

@@ -57,8 +57,10 @@ export const GlobalChat = memo(function GlobalChat() {
   // Load chat history when user is available
   useEffect(() => {
     if (!user) return;
-    loadChatFromSupabase();
-  }, [activeGoalId, loadChatFromSupabase, user]);
+    if (!chatId && !activeGoalId) {
+      loadChatFromSupabase();
+    }
+  }, [activeGoalId, chatId, loadChatFromSupabase, user]);
 
   // Scroll to bottom utility
   const scrollToBottom = () => {

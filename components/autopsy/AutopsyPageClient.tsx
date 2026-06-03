@@ -16,7 +16,6 @@ export default function AutopsyPageClient({ result: initialResult }: Props) {
   const [status, setStatus] = useState('');
   
   // Manual entry state
-  const [manualMode, setManualMode] = useState(false);
   const [question, setQuestion] = useState('');
   const [myAnswer, setMyAnswer] = useState('');
   const [correctAnswer, setCorrectAnswer] = useState('');
@@ -145,12 +144,18 @@ export default function AutopsyPageClient({ result: initialResult }: Props) {
       });
       if (!res.ok) throw new Error('Failed');
       
+      const data = await res.json();
+      
       setQuestion('');
       setMyAnswer('');
       setCorrectAnswer('');
       setExplanation('');
-      setStatus('');
-      setManualMode(false);
+      
+      if (data.cardsCreated) {
+        setStatus(`Logged! Generated ${data.cardsCreated} cards. Next: ${data.nextAction || 'Continue your mission.'}`);
+      } else {
+        setStatus('Logged and diagnosed successfully.');
+      }
       
       // Reload result to show any updates if necessary, or just show a toast.
       await loadLatestResult();
@@ -173,6 +178,56 @@ export default function AutopsyPageClient({ result: initialResult }: Props) {
             : 'Upload a mock test or mistake sheet to find patterns and improve your weak areas, review queue, and next mission when verified.'}
         </p>
       </div>
+
+      <form onSubmit={handleManualSubmit} style={{
+        background: 'var(--bg-secondary)',
+        padding: 'var(--sp-6)',
+        borderRadius: 'var(--radius-lg)',
+        marginBottom: 'var(--sp-6)',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--sp-4)'
+      }}>
+        <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'var(--fw-bold)', marginBottom: 0 }}>Paste a missed question</h3>
+        
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+          <label style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)', fontWeight: 'var(--fw-bold)' }}>Question *</label>
+          <textarea required value={question} onChange={e => setQuestion(e.target.value)} rows={2} style={{ background: 'var(--bg-primary)', border: '1px solid var(--border-subtle)', borderRadius: 4, padding: 8, color: 'var(--text-primary)' }} />
+        </div>
+
+        <div style={{ display: 'flex', gap: 'var(--sp-4)' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 4, flex: 1 }}>
+            <label style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)', fontWeight: 'var(--fw-bold)' }}>Your Answer *</label>
+            <input required value={myAnswer} onChange={e => setMyAnswer(e.target.value)} style={{ background: 'var(--bg-primary)', border: '1px solid var(--border-subtle)', borderRadius: 4, padding: 8, color: 'var(--text-primary)' }} />
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 4, flex: 1 }}>
+            <label style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)', fontWeight: 'var(--fw-bold)' }}>Correct Answer *</label>
+            <input required value={correctAnswer} onChange={e => setCorrectAnswer(e.target.value)} style={{ background: 'var(--bg-primary)', border: '1px solid var(--border-subtle)', borderRadius: 4, padding: 8, color: 'var(--text-primary)' }} />
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+          <label style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)', fontWeight: 'var(--fw-bold)' }}>Explanation (Optional)</label>
+          <textarea value={explanation} onChange={e => setExplanation(e.target.value)} rows={2} style={{ background: 'var(--bg-primary)', border: '1px solid var(--border-subtle)', borderRadius: 4, padding: 8, color: 'var(--text-primary)' }} />
+        </div>
+
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 8 }}>
+          <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--success)', fontWeight: 'var(--fw-medium)' }}>
+            {status && !uploading && status}
+          </div>
+          <button type="submit" disabled={manualLoading} style={{
+            background: 'var(--accent-purple)',
+            color: 'white',
+            border: 'none',
+            padding: 'var(--sp-2) var(--sp-6)',
+            borderRadius: 'var(--radius-md)',
+            cursor: manualLoading ? 'not-allowed' : 'pointer',
+            fontWeight: 'var(--fw-bold)'
+          }}>
+            {manualLoading ? 'Diagnosing...' : 'Diagnose Mistake'}
+          </button>
+        </div>
+      </form>
 
       {/* Upload zone */}
       <div
@@ -207,77 +262,11 @@ export default function AutopsyPageClient({ result: initialResult }: Props) {
         ) : (
           <>
             <Upload size={32} style={{ color: 'var(--text-tertiary)', marginBottom: 12 }} />
-            <p style={{ fontWeight: 'bold', marginBottom: 4 }}>Drop your mock test here</p>
+            <p style={{ fontWeight: 'bold', marginBottom: 4 }}>Or upload a full mock test here</p>
             <p style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>PDF · JPG · PNG · TXT</p>
           </>
         )}
       </div>
-
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 'var(--sp-6)' }}>
-        <button 
-          onClick={() => setManualMode(!manualMode)}
-          style={{
-            background: 'transparent',
-            border: '1px solid var(--border-default)',
-            padding: 'var(--sp-2) var(--sp-4)',
-            borderRadius: 'var(--radius-md)',
-            color: 'var(--text-primary)',
-            cursor: 'pointer',
-            fontSize: 'var(--fs-sm)'
-          }}
-        >
-          {manualMode ? 'Hide Manual Entry' : 'Paste Mistake Manually'}
-        </button>
-      </div>
-
-      {manualMode && (
-        <form onSubmit={handleManualSubmit} style={{
-          background: 'var(--bg-secondary)',
-          padding: 'var(--sp-6)',
-          borderRadius: 'var(--radius-lg)',
-          marginBottom: 'var(--sp-6)',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 'var(--sp-4)'
-        }}>
-          <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'var(--fw-bold)', marginBottom: 0 }}>Log a Mistake</h3>
-          
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <label style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)', fontWeight: 'var(--fw-bold)' }}>Question *</label>
-            <textarea required value={question} onChange={e => setQuestion(e.target.value)} rows={2} style={{ background: 'var(--bg-primary)', border: '1px solid var(--border-subtle)', borderRadius: 4, padding: 8, color: 'var(--text-primary)' }} />
-          </div>
-
-          <div style={{ display: 'flex', gap: 'var(--sp-4)' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 4, flex: 1 }}>
-              <label style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)', fontWeight: 'var(--fw-bold)' }}>Your Answer *</label>
-              <input required value={myAnswer} onChange={e => setMyAnswer(e.target.value)} style={{ background: 'var(--bg-primary)', border: '1px solid var(--border-subtle)', borderRadius: 4, padding: 8, color: 'var(--text-primary)' }} />
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 4, flex: 1 }}>
-              <label style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)', fontWeight: 'var(--fw-bold)' }}>Correct Answer *</label>
-              <input required value={correctAnswer} onChange={e => setCorrectAnswer(e.target.value)} style={{ background: 'var(--bg-primary)', border: '1px solid var(--border-subtle)', borderRadius: 4, padding: 8, color: 'var(--text-primary)' }} />
-            </div>
-          </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <label style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)', fontWeight: 'var(--fw-bold)' }}>Explanation (Optional)</label>
-            <textarea value={explanation} onChange={e => setExplanation(e.target.value)} rows={2} style={{ background: 'var(--bg-primary)', border: '1px solid var(--border-subtle)', borderRadius: 4, padding: 8, color: 'var(--text-primary)' }} />
-          </div>
-
-          <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 8 }}>
-            <button type="submit" disabled={manualLoading} style={{
-              background: 'var(--accent-purple)',
-              color: 'white',
-              border: 'none',
-              padding: 'var(--sp-2) var(--sp-6)',
-              borderRadius: 'var(--radius-md)',
-              cursor: manualLoading ? 'not-allowed' : 'pointer',
-              fontWeight: 'var(--fw-bold)'
-            }}>
-              {manualLoading ? 'Diagnosing...' : 'Log & Diagnose Mistake'}
-            </button>
-          </div>
-        </form>
-      )}
 
       {/* Results */}
       {result ? (

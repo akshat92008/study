@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { createAdminClient } from '@/lib/supabase/admin';
 import { logger } from '@/lib/utils/logger';
 import { budgetedGenerateJSON } from '@/lib/ai/budgeted';
 import { ensureGoalForUser, ensureSessionGoalLink, ensureSessionBelongsToUser } from '@/lib/services/goal-context.service';
@@ -20,7 +19,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Question, your answer, and correct answer are required.' }, { status: 400 });
     }
 
-    const supabase = createAdminClient();
+    const supabase = userClient;
 
     if (goalId) await ensureGoalForUser(supabase, user.id, goalId);
     if (chatSessionId) {
@@ -62,14 +61,19 @@ Return ONLY a JSON object:
     // 1. Ensure concept exists
     let conceptId: string | null = null;
     if (classification.subject && classification.chapter && classification.topic) {
-      const { data: existingConcept } = await supabase
+      let conceptQuery = supabase
         .from('concepts')
         .select('id')
         .eq('user_id', user.id)
         .eq('subject', classification.subject)
         .eq('chapter', classification.chapter)
-        .eq('topic', classification.topic)
-        .maybeSingle();
+        .eq('topic', classification.topic);
+        
+      if (goalId) {
+        conceptQuery = conceptQuery.eq('goal_id', goalId);
+      }
+      
+      const { data: existingConcept } = await conceptQuery.maybeSingle();
 
       if (existingConcept) {
         conceptId = existingConcept.id;
@@ -82,9 +86,9 @@ Return ONLY a JSON object:
             chapter: classification.chapter,
             topic: classification.topic,
             name: classification.topic,
-            mastery_level: 0,
-            mastery_tier: 'unknown',
-            ...(goalId ? { goal_id: goalId } : {})
+            mastery: 'not_started',
+            ...(goalId ? { goal_id: goalId } : {}),
+            ...(chatSessionId ? { chat_session_id: chatSessionId } : {})
           })
           .select('id')
           .single();
@@ -103,7 +107,8 @@ Return ONLY a JSON object:
         marks_lost: 5,
         status: 'completed',
         completed_at: new Date().toISOString(),
-        ...(goalId ? { goal_id: goalId } : {})
+        ...(goalId ? { goal_id: goalId } : {}),
+        ...(chatSessionId ? { chat_session_id: chatSessionId } : {})
       })
       .select('id')
       .single();
@@ -122,12 +127,77 @@ Return ONLY a JSON object:
         marks_lost: 5,
         subject: classification.subject,
         chapter: classification.chapter,
-        ...(goalId ? { goal_id: goalId } : {})
+        ...(goalId ? { goal_id: goalId } : {}),
+        ...(chatSessionId ? { chat_session_id: chatSessionId } : {})
       })
       .select('id')
       .single();
 
     if (mistakeError) throw mistakeError;
+
+    // 4. Generate revision cards using AI
+    const cardsPrompt = `Generate 3 revision cards based on this mistake:
+Question: ${question}
+Student's Answer: ${myAnswer}
+Correct Answer: ${correctAnswer}
+Explanation: ${explanation || 'None'}
+Diagnosis: ${classification.diagnosis}
+Mistake Type: ${classification.category}
+
+Return ONLY a JSON object with this format:
+{
+  "cards": [
+    { "front": "...", "back": "...", "type": "mistake_concept" },
+    { "front": "...", "back": "...", "type": "error_pattern" },
+    { "front": "...", "back": "...", "type": "similar_trap" }
+  ],
+  "nextAction": "..."
+}`;
+
+    const cardsResult = await budgetedGenerateJSON<{ cards: any[], nextAction: string }>({
+      userId: user.id,
+      feature: 'autopsy',
+      route: '/api/autopsy/manual',
+      model: 'flash',
+      systemPrompt: 'You are an expert tutor generating flashcards for mistake revision. Return ONLY valid JSON.',
+      userPrompt: cardsPrompt,
+    });
+
+    let cardsCreated = 0;
+    if (cardsResult?.cards && Array.isArray(cardsResult.cards)) {
+      const cardsToInsert = cardsResult.cards.map((card) => ({
+        user_id: user.id,
+        concept_id: conceptId,
+        front: card.front,
+        back: card.back,
+        card_type: 'mistake',
+        state: 0, // 'new' represented by 0 integer
+        due: new Date().toISOString(),
+        source_type: 'manual_mistake_review',
+        metadata: {
+          mistakeId: mistake?.id,
+          category: classification.category,
+          generated_type: card.type,
+          question_snippet: question.substring(0, 100),
+        },
+        subject: classification.subject,
+        chapter: classification.chapter,
+        topic: classification.topic,
+        ...(goalId ? { goal_id: goalId } : {}),
+        ...(chatSessionId ? { chat_session_id: chatSessionId } : {})
+      }));
+
+      const { data: insertedCards, error: cardsError } = await supabase
+        .from('revision_cards')
+        .insert(cardsToInsert)
+        .select('id');
+        
+      if (!cardsError && insertedCards) {
+        cardsCreated = insertedCards.length;
+      } else if (cardsError) {
+        logger.warn('Failed to insert revision cards for manual mistake', { error: cardsError.message });
+      }
+    }
 
     // Emit event
     let mistakeId: string | null = null;
@@ -142,10 +212,16 @@ Return ONLY a JSON object:
       }
     });
 
-    return NextResponse.json({ success: true, mistakeId: mistake?.id, classification });
+    return NextResponse.json({ 
+      success: true, 
+      mistakeId: mistake?.id, 
+      classification,
+      cardsCreated,
+      nextAction: cardsResult?.nextAction
+    });
 
   } catch (error: any) {
     logger.error('Manual autopsy error', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: 'Unable to analyze this mistake right now. Try again in a moment.' }, { status: 500 });
   }
 }

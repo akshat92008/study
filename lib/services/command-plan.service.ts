@@ -61,7 +61,7 @@ export async function ensureCommandPlanForDate(input: {
 
   if (existing.length > 0) {
     const briefing = buildMorningBriefing(state, existing, input.date);
-    await persistDailyPlan(supabase, input.userId, input.date, existing, briefing, state, false);
+    await persistDailyPlan(supabase, input.userId, input.date, existing, briefing, state, false, input.goalId);
     return {
       date: input.date,
       tasks: existing,
@@ -463,18 +463,36 @@ async function persistDailyPlan(
 
   if (goalId) {
     payload.goal_id = goalId;
-  }
+    await supabase
+      .from('daily_plans')
+      .delete()
+      .eq('user_id', userId)
+      .eq('plan_date', date)
+      .eq('goal_id', goalId);
+      
+    const { error } = await supabase
+      .from('daily_plans')
+      .insert(payload);
 
-  const { error } = await supabase
-    .from('daily_plans')
-    .upsert(payload, { onConflict: 'user_id,plan_date' });
+    if (error) {
+      logger.warn('COMMAND failed to persist daily_plans row', {
+        userId,
+        date,
+        error: error.message,
+      });
+    }
+  } else {
+    const { error } = await supabase
+      .from('daily_plans')
+      .upsert(payload, { onConflict: 'user_id,plan_date' });
 
-  if (error) {
-    logger.warn('COMMAND failed to persist daily_plans row', {
-      userId,
-      date,
-      error: error.message,
-    });
+    if (error) {
+      logger.warn('COMMAND failed to persist daily_plans row', {
+        userId,
+        date,
+        error: error.message,
+      });
+    }
   }
 }
 
