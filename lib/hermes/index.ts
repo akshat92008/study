@@ -55,7 +55,13 @@ export { runHermesTraceAgent } from './agents/trace-agent';
 export { runHermesNextActionAgent } from './agents/next-action-agent';
 
 // DB Writer
-export { writeMistakeResult, writeSourceResult } from './adapters/cognition-db-writer';
+export {
+  writeMistakeResult,
+  writeSourceResult,
+  writeRevisionQualityResult,
+  writeTraceResult,
+  writeNextActionResult,
+} from './adapters/cognition-db-writer';
 
 // Event Adapter
 export {

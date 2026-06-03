@@ -842,18 +842,106 @@ export class EventWorkerService {
     }
 
     if (event.type === 'HERMES_SOURCE_PROCESS_REQUESTED') {
-      // Deferred source processing — only if featureFlag enabled
-      const { featureFlags: flags } = await import('@/lib/config/flags');
-      if (!flags.hermesSourceProcessing()) {
+      // Deferred source processing
+      const { getHermesConfig } = await import('@/lib/hermes');
+      if (!getHermesConfig().sourceProcessingEnabled) {
         return { status: 'SKIPPED_INTENTIONALLY', reason: 'Hermes source processing disabled' };
       }
-      // TODO: Implement source processing worker path
-      // Requires: load material chunks from storage, call runHermesSourceAgent, call writeSourceResult
-      return { status: 'SKIPPED_INTENTIONALLY', reason: 'Hermes source processing not yet implemented in worker' };
+      
+      try {
+        const { runHermesSourceAgent, writeSourceResult } = await import('@/lib/hermes');
+        const supabase = createAdminClient();
+        
+        // Load material context (first 10 chunks)
+        const { data: chunks } = await supabase
+          .from('study_material_chunks')
+          .select('content')
+          .eq('material_id', payload.materialId)
+          .order('chunk_index', { ascending: true })
+          .limit(10);
+          
+        const materialContent = (chunks ?? []).map(c => c.content).join('\n\n');
+        
+        const result = await runHermesSourceAgent({
+          userId: event.user_id,
+          materialId: payload.materialId,
+          title: payload.title ?? 'Untitled Material',
+          compactChunks: (chunks ?? []).map(c => c.content),
+        });
+        
+        await writeSourceResult(
+          supabase,
+          event.user_id,
+          payload.materialId,
+          payload.goalId ?? null,
+          result,
+          true
+        );
+        return { status: 'HANDLED' };
+      } catch (err: any) {
+        logger.warn('[hermes_worker] HERMES_SOURCE_PROCESS_REQUESTED failed', {
+          userId: event.user_id,
+          error: err.message,
+        });
+        return { status: 'RETRYABLE_FAILURE', reason: err.message };
+      }
+    }
+
+    if (event.type === 'HERMES_REVISION_QUALITY_REQUESTED') {
+      const { getHermesConfig } = await import('@/lib/hermes');
+      if (!getHermesConfig().revisionQualityEnabled) {
+        return { status: 'SKIPPED_INTENTIONALLY', reason: 'Hermes revision quality disabled' };
+      }
+      
+      try {
+        const supabase = createAdminClient();
+        const goalId = payload.goalId;
+        const batchSize = payload.batchSize ?? 5;
+        
+        const { data: cards } = await supabase
+          .from('revision_cards')
+          .select('id, front, back')
+          .eq('user_id', event.user_id)
+          .eq('goal_id', goalId)
+          .eq('state', 0)
+          .is('metadata->hermesImproved', null)
+          .is('metadata->hermesRejected', null)
+          .limit(batchSize);
+          
+        if (!cards || cards.length === 0) {
+          return { status: 'SKIPPED_INTENTIONALLY', reason: 'No cards to improve' };
+        }
+        
+        const { runHermesRevisionAgent, writeRevisionQualityResult } = await import('@/lib/hermes');
+        const result = await runHermesRevisionAgent({
+          userId: event.user_id,
+          goalId,
+          draftCards: cards.map(c => ({
+            cardId: c.id,
+            front: c.front,
+            back: c.back,
+            type: 'mistake_concept',
+            difficulty: 'medium'
+          })),
+          context: payload.context ?? '',
+        });
+        
+        await writeRevisionQualityResult(supabase, event.user_id, goalId, result);
+        return { status: 'HANDLED' };
+      } catch (err: any) {
+        logger.warn('[hermes_worker] HERMES_REVISION_QUALITY_REQUESTED failed', {
+          userId: event.user_id,
+          error: err.message,
+        });
+        return { status: 'RETRYABLE_FAILURE', reason: err.message };
+      }
     }
 
     if (event.type === 'HERMES_TRACE_REQUESTED') {
-      // Deferred trace analysis
+      const { getHermesConfig } = await import('@/lib/hermes');
+      if (!getHermesConfig().traceEnabled) {
+        return { status: 'SKIPPED_INTENTIONALLY', reason: 'Hermes trace disabled' };
+      }
       try {
         const supabase = createAdminClient();
         const goalId = payload.goalId;
@@ -861,7 +949,6 @@ export class EventWorkerService {
           return { status: 'PERMANENT_FAILURE', reason: 'HERMES_TRACE_REQUESTED missing goalId' };
         }
 
-        // Load recent mistakes for this goal
         const { data: mistakes } = await supabase
           .from('mistakes')
           .select('category, subject, chapter, topic')
@@ -884,8 +971,8 @@ export class EventWorkerService {
           .eq('goal_id', goalId)
           .in('mastery', ['not_started', 'exposed', 'developing']);
 
-        const { runHermesTraceAgent } = await import('@/lib/hermes');
-        await runHermesTraceAgent({
+        const { runHermesTraceAgent, writeTraceResult } = await import('@/lib/hermes');
+        const result = await runHermesTraceAgent({
           userId: event.user_id,
           goalId,
           recentMistakes: mistakes ?? [],
@@ -893,7 +980,8 @@ export class EventWorkerService {
           weakConceptsCount: (weakConcepts as any)?.count ?? 0,
           recentActivity: [],
         });
-        // Trace result is advisory — logged but not written to DB in current implementation
+        
+        await writeTraceResult(supabase, event.user_id, goalId, result);
         return { status: 'HANDLED' };
       } catch (err: any) {
         logger.warn('[hermes_worker] HERMES_TRACE_REQUESTED failed', {
@@ -901,6 +989,47 @@ export class EventWorkerService {
           error: err.message,
         });
         return { status: 'SKIPPED_INTENTIONALLY', reason: 'Trace agent failed — non-critical' };
+      }
+    }
+
+    if (event.type === 'HERMES_NEXT_ACTION_REQUESTED') {
+      const { getHermesConfig } = await import('@/lib/hermes');
+      if (!getHermesConfig().nextActionEnabled) {
+        return { status: 'SKIPPED_INTENTIONALLY', reason: 'Hermes next action disabled' };
+      }
+      try {
+        const supabase = createAdminClient();
+        const goalId = payload.goalId;
+        if (!goalId) {
+          return { status: 'PERMANENT_FAILURE', reason: 'HERMES_NEXT_ACTION_REQUESTED missing goalId' };
+        }
+        
+        const { data: goalData } = await supabase
+          .from('learning_goals')
+          .select('metadata')
+          .eq('id', goalId)
+          .single();
+          
+        const { runHermesNextActionAgent, writeNextActionResult } = await import('@/lib/hermes');
+        const result = await runHermesNextActionAgent({
+          userId: event.user_id,
+          goalId,
+          goalTitle: (goalData?.metadata as any)?.title ?? 'Untitled Goal',
+          weakConceptsCount: payload.weakConceptsCount ?? 0,
+          dueCardsCount: payload.dueCardsCount ?? 0,
+          recentMistakesCount: payload.recentMistakesCount ?? 0,
+          pendingTasksCount: payload.pendingTasksCount ?? 0,
+          recentSources: payload.recentSources ?? [],
+        });
+        
+        await writeNextActionResult(supabase, event.user_id, goalId, result);
+        return { status: 'HANDLED' };
+      } catch (err: any) {
+        logger.warn('[hermes_worker] HERMES_NEXT_ACTION_REQUESTED failed', {
+          userId: event.user_id,
+          error: err.message,
+        });
+        return { status: 'RETRYABLE_FAILURE', reason: err.message };
       }
     }
 

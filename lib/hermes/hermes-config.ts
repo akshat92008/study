@@ -17,7 +17,10 @@ export interface HermesConfig {
   useStrongForMedical: boolean;
   dryRun: boolean;
   logOutput: boolean;
-  sourceSandboxEnabled: boolean;
+  sourceProcessingEnabled: boolean;
+  revisionQualityEnabled: boolean;
+  traceEnabled: boolean;
+  nextActionEnabled: boolean;
   codingSandboxEnabled: boolean;
 }
 
@@ -52,7 +55,10 @@ export function getHermesConfig(): HermesConfig {
     useStrongForMedical: readBool('HERMES_USE_STRONG_FOR_MEDICAL', false),
     dryRun: readBool('HERMES_DRY_RUN', false),
     logOutput: readBool('HERMES_LOG_OUTPUT', false),
-    sourceSandboxEnabled: readBool('HERMES_SOURCE_PROCESSING_ENABLED', false),
+    sourceProcessingEnabled: readBool('HERMES_SOURCE_PROCESSING_ENABLED', false),
+    revisionQualityEnabled: readBool('HERMES_REVISION_QUALITY_ENABLED', true),
+    traceEnabled: readBool('HERMES_TRACE_ENABLED', false),
+    nextActionEnabled: readBool('HERMES_NEXT_ACTION_ENABLED', false),
     codingSandboxEnabled: readBool('HERMES_CODING_SANDBOX_ENABLED', false),
   };
 }

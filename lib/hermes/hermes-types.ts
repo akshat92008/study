@@ -155,8 +155,8 @@ export type HermesRevisionInput = {
 };
 
 export type HermesRevisionResult = {
-  improvedCards: HermesCard[];
-  rejectedCount: number;
+  improvedCards: Array<HermesCard & { cardId: string; improvementReason?: string }>;
+  rejectedCardIds: string[];
   reason: string;
 };
 

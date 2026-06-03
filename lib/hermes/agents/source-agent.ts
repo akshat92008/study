@@ -31,7 +31,7 @@ export async function runHermesSourceAgent(
   }
 
   const config = getHermesConfig();
-  if (!config.sourceSandboxEnabled) {
+  if (!config.sourceProcessingEnabled) {
     throw new HermesDisabledError();
   }
 

@@ -46,7 +46,9 @@ export const EventTypeSchema = z.enum([
   // Hermes internal worker events — never exposed to users
   'HERMES_MISTAKE_REVIEW_REQUESTED',
   'HERMES_SOURCE_PROCESS_REQUESTED',
+  'HERMES_REVISION_QUALITY_REQUESTED',
   'HERMES_TRACE_REQUESTED',
+  'HERMES_NEXT_ACTION_REQUESTED',
 ]);
 
 export type EventType = z.infer<typeof EventTypeSchema>;
@@ -314,7 +316,15 @@ export const EventPayloadSchemas: Partial<Record<EventType | string, z.ZodTypeAn
     goalId: z.string().uuid().nullable().optional(),
     title: z.string().optional(),
   }).passthrough(),
+  HERMES_REVISION_QUALITY_REQUESTED: z.object({
+    goalId: z.string().uuid(),
+    batchSize: z.number().int().positive().optional(),
+  }).passthrough(),
   HERMES_TRACE_REQUESTED: z.object({
+    goalId: z.string().uuid(),
+    reason: z.string().optional(),
+  }).passthrough(),
+  HERMES_NEXT_ACTION_REQUESTED: z.object({
     goalId: z.string().uuid(),
     reason: z.string().optional(),
   }).passthrough(),

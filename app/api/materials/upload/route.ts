@@ -222,6 +222,16 @@ export async function POST(req: NextRequest) {
       idempotency_key: `material_uploaded:${material.id}`,
     });
 
+    if (featureFlags.hermesSourceProcessing()) {
+      await EventDispatcher.publish({
+        user_id: user.id,
+        type: 'HERMES_SOURCE_PROCESS_REQUESTED',
+        data: { materialId: material.id, goalId, title },
+        metadata: { source: 'materials_upload' },
+        idempotency_key: `hermes_source_process:${material.id}`,
+      });
+    }
+
     logger.info('Upload accepted', { userId: user.id, materialId: material.id, mimeType, fileSize: file.size, requestId });
 
 

@@ -11,8 +11,68 @@
 // Supabase remains the source of truth. Hermes only computes.
 
 import type { SupabaseClient } from '@supabase/supabase-js';
-import type { HermesMistakeInput, HermesMistakeResult, WriteMistakeResultOutput } from '../hermes-types';
+import type { HermesMistakeInput, HermesMistakeResult, WriteMistakeResultOutput, HermesRevisionResult, HermesTraceResult, HermesNextActionResult } from '../hermes-types';
 import { hermesLogger } from '../hermes-logger';
+
+/**
+ * Validates that the provided user owns the specified resources.
+ * This is crucial because Hermes often runs in a worker context using an admin client.
+ */
+export async function assertHermesWriteScope(
+  supabase: SupabaseClient,
+  scope: {
+    userId: string;
+    goalId?: string | null;
+    chatSessionId?: string | null;
+    materialId?: string | null;
+    mistakeId?: string | null;
+    cardIds?: string[] | null;
+  }
+): Promise<void> {
+  const { userId, goalId, chatSessionId, materialId, mistakeId, cardIds } = scope;
+
+  if (goalId) {
+    const { data } = await supabase.from('learning_goals').select('id').eq('id', goalId).eq('user_id', userId).single();
+    if (!data) throw new Error(`assertHermesWriteScope: User ${userId} does not own goal ${goalId}`);
+  }
+
+  if (chatSessionId) {
+    const { data } = await supabase.from('chat_sessions').select('id, goal_id, is_global').eq('id', chatSessionId).eq('user_id', userId).single();
+    if (!data) throw new Error(`assertHermesWriteScope: User ${userId} does not own session ${chatSessionId}`);
+    if (goalId && !data.is_global && data.goal_id !== goalId) {
+      throw new Error(`assertHermesWriteScope: Session ${chatSessionId} does not belong to goal ${goalId}`);
+    }
+  }
+
+  if (materialId) {
+    const { data } = await supabase.from('study_materials').select('id, goal_id').eq('id', materialId).eq('user_id', userId).single();
+    if (!data) throw new Error(`assertHermesWriteScope: User ${userId} does not own material ${materialId}`);
+    if (goalId && data.goal_id !== goalId) {
+      throw new Error(`assertHermesWriteScope: Material ${materialId} does not belong to goal ${goalId}`);
+    }
+  }
+
+  if (mistakeId) {
+    const { data } = await supabase.from('mistakes').select('id, goal_id').eq('id', mistakeId).eq('user_id', userId).single();
+    if (!data) throw new Error(`assertHermesWriteScope: User ${userId} does not own mistake ${mistakeId}`);
+    if (goalId && data.goal_id !== goalId) {
+      throw new Error(`assertHermesWriteScope: Mistake ${mistakeId} does not belong to goal ${goalId}`);
+    }
+  }
+
+  if (cardIds && cardIds.length > 0) {
+    const { data, error } = await supabase.from('revision_cards').select('id, goal_id').in('id', cardIds).eq('user_id', userId);
+    if (error || !data || data.length !== cardIds.length) {
+      throw new Error(`assertHermesWriteScope: User ${userId} does not own all cards in [${cardIds.join(', ')}]`);
+    }
+    if (goalId) {
+      const mismatched = data.find(c => c.goal_id !== goalId);
+      if (mismatched) {
+        throw new Error(`assertHermesWriteScope: Card ${mismatched.id} does not belong to goal ${goalId}`);
+      }
+    }
+  }
+}
 
 /**
  * Write the full result of the Mistake Agent to Supabase.
@@ -34,6 +94,8 @@ export async function writeMistakeResult(
   mistakeInput: HermesMistakeInput,
   hermesResult: HermesMistakeResult
 ): Promise<WriteMistakeResultOutput> {
+  await assertHermesWriteScope(supabase, { userId, goalId, chatSessionId });
+
   // ── 1. Ensure/create concept scoped to goal ──────────────────────────────
   let conceptId: string | null = null;
   const wc = hermesResult.weakConcept;
@@ -241,6 +303,8 @@ export async function writeSourceResult(
   result: import('../hermes-types').HermesSourceResult,
   insertCards = false
 ): Promise<{ conceptCount: number; cardCount: number }> {
+  await assertHermesWriteScope(supabase, { userId, materialId, goalId });
+
   // Update material metadata
   await supabase
     .from('study_materials')
@@ -284,3 +348,185 @@ export async function writeSourceResult(
     cardCount,
   };
 }
+
+/**
+ * Write Hermes revision quality result to Supabase.
+ * Updates revision_cards metadata and flags rejected cards.
+ */
+export async function writeRevisionQualityResult(
+  supabase: SupabaseClient,
+  userId: string,
+  goalId: string | null | undefined,
+  result: HermesRevisionResult
+): Promise<void> {
+  const cardIdsToVerify = result.improvedCards.map(c => c.cardId).concat(result.rejectedCardIds);
+  if (cardIdsToVerify.length > 0) {
+    await assertHermesWriteScope(supabase, { userId, goalId, cardIds: cardIdsToVerify });
+  }
+
+  const timestamp = new Date().toISOString();
+
+  // 1. Update improved cards
+  for (const card of result.improvedCards) {
+    // Fetch original card to store old values
+    const { data: originalCard } = await supabase
+      .from('revision_cards')
+      .select('front, back, metadata')
+      .eq('id', card.cardId)
+      .single();
+
+    if (originalCard) {
+      await supabase
+        .from('revision_cards')
+        .update({
+          front: card.front,
+          back: card.back,
+          metadata: {
+            ...originalCard.metadata,
+            hermesImproved: true,
+            improvedAt: timestamp,
+            originalFront: originalCard.front,
+            originalBack: originalCard.back,
+            qualityReason: card.improvementReason,
+          },
+        })
+        .eq('id', card.cardId);
+    }
+  }
+
+  // 2. Update rejected cards
+  if (result.rejectedCardIds.length > 0) {
+    for (const cardId of result.rejectedCardIds) {
+      const { data: originalCard } = await supabase
+        .from('revision_cards')
+        .select('metadata')
+        .eq('id', cardId)
+        .single();
+      
+      if (originalCard) {
+        await supabase
+          .from('revision_cards')
+          .update({
+            state: -1, // Archived/suspended state
+            metadata: {
+              ...originalCard.metadata,
+              hermesImproved: false,
+              hermesRejected: true,
+              rejectedAt: timestamp,
+            }
+          })
+          .eq('id', cardId);
+      }
+    }
+  }
+
+  // 3. Emit audit event
+  if (result.improvedCards.length > 0 || result.rejectedCardIds.length > 0) {
+    await supabase.from('student_events').insert({
+      user_id: userId,
+      type: 'REVISION_CARDS_IMPROVED_BY_HERMES',
+      data: {
+        goalId: goalId ?? null,
+        improvedCount: result.improvedCards.length,
+        rejectedCount: result.rejectedCardIds.length,
+      }
+    });
+  }
+}
+
+/**
+ * Write Hermes cognitive trace result to Supabase.
+ * Stores trace in learning_goals.metadata.hermesTrace.
+ */
+export async function writeTraceResult(
+  supabase: SupabaseClient,
+  userId: string,
+  goalId: string,
+  result: HermesTraceResult
+): Promise<void> {
+  await assertHermesWriteScope(supabase, { userId, goalId });
+
+  const traceData = {
+    updatedAt: new Date().toISOString(),
+    repeatedWeaknesses: result.cognitiveTrace.repeatedWeaknesses,
+    avoidanceSignals: result.cognitiveTrace.avoidanceSignals,
+    forgettingRisks: result.cognitiveTrace.forgettingRisks,
+    improvementSignals: result.cognitiveTrace.improvementSignals,
+    recommendations: result.recommendations,
+  };
+
+  const { data: goalData } = await supabase
+    .from('learning_goals')
+    .select('metadata')
+    .eq('id', goalId)
+    .single();
+
+  if (goalData) {
+    await supabase
+      .from('learning_goals')
+      .update({
+        metadata: {
+          ...goalData.metadata,
+          hermesTrace: traceData,
+        }
+      })
+      .eq('id', goalId);
+  }
+
+  await supabase.from('student_events').insert({
+    user_id: userId,
+    type: 'HERMES_TRACE_UPDATED',
+    data: { goalId }
+  });
+}
+
+/**
+ * Write Hermes next action result to Supabase.
+ * Creates daily microtasks and updates daily_plans metadata.
+ */
+export async function writeNextActionResult(
+  supabase: SupabaseClient,
+  userId: string,
+  goalId: string,
+  result: HermesNextActionResult
+): Promise<void> {
+  await assertHermesWriteScope(supabase, { userId, goalId });
+
+  // 1. Store the top level next action in daily_plans if it exists for today
+  const today = new Date().toISOString().split('T')[0];
+  const { data: planData } = await supabase
+    .from('daily_plans')
+    .select('id, metadata')
+    .eq('user_id', userId)
+    .eq('goal_id', goalId)
+    .eq('plan_date', today)
+    .single();
+
+  if (planData) {
+    await supabase
+      .from('daily_plans')
+      .update({
+        metadata: {
+          ...planData.metadata,
+          hermesNextAction: result.nextAction,
+        }
+      })
+      .eq('id', planData.id);
+  }
+
+  // 2. Create microtasks
+  if (result.microtasks.length > 0) {
+    const tasksToInsert = result.microtasks.map(task => ({
+      user_id: userId,
+      goal_id: goalId,
+      task_type: task.type,
+      title: task.title,
+      description: task.title,
+      status: 'pending',
+      metadata: { generatedByHermes: true, estimatedMinutes: task.estimatedMinutes }
+    }));
+
+    await supabase.from('daily_microtasks').insert(tasksToInsert);
+  }
+}
+
