@@ -960,7 +960,13 @@ export async function buildChatFirstEngineResponse(input: {
   
   let policyIntent: 'direct_generation' | 'memory_query' | 'atlas_query' | 'planning_query' | 'autopsy_query' | 'normal_chat' = 'normal_chat';
 
-  if (/\b(generate mcq|make flashcards|give me flashcard|give flashcard|flashcards for|flashcard for|mcq for|mcqs|explain|formula sheet|make notes|teach me|revise|generate)\b/i.test(normalized)) {
+  if (
+    /\b(generate|make|create|give me|prepare|build)\b/i.test(normalized) ||
+    /\b(mcq|mcqs|quiz|practice questions|practice test|test me)\b/i.test(normalized) ||
+    /\b(flashcard|flashcards|active recall cards|anki cards)\b/i.test(normalized) ||
+    /\b(formula sheet|formula list|cheat sheet|revision sheet|quick revision|rapid revision)\b/i.test(normalized) ||
+    /\b(notes|study guide|learning document|study material|teach me|explain|revise)\b/i.test(normalized)
+  ) {
     policyIntent = 'direct_generation';
   } else if (/\b(what is due|show my due|show due|what should i revise from memory|due revision|due cards|memory queue|open memory|my saved revision cards)\b/i.test(normalized) || 
       (input.intent === 'FLASHCARDS' && !/\b(generate|make|create|give me|practice|revise|flashcard for|flashcards for)\b/i.test(normalized))) {

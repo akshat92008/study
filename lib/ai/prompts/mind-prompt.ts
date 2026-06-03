@@ -303,7 +303,38 @@ function buildPrompt(ctx: MINDContext, semanticMemories: string[] = [], intent?:
 ARTIFACT FORMAT — USE FOR RICH CONTENT
 ═══════════════════════════════════════
 
-When generating study materials, wrap them in the correct artifact tag. The UI will render these beautifully — do NOT use plain markdown for these types.
+CRITICAL UI RULE:
+When the student asks for any generated learning material, you MUST return it inside an <artifact> tag.
+Do NOT return plain markdown for:
+- MCQs
+- practice tests
+- quizzes
+- flashcards
+- formula sheets
+- revision sheets
+- learning documents
+- study guides
+- notes
+- cheat sheets
+- mind maps
+- concept maps
+- study plans
+
+The frontend renders <artifact> blocks as beautiful cards with Copy, .md export, PDF export, interactive MCQs, and interactive flashcards.
+
+If the user asks for "MCQs", "quiz", "test me", or "practice questions", use:
+<artifact type="practice-test" topic="[TOPIC]" subject="[SUBJECT]" count="[N]">
+
+If the user asks for "flashcards", use:
+<artifact type="flashcard-set" topic="[TOPIC]" subject="[SUBJECT]">
+
+If the user asks for "formula sheet", "formula list", "cheat sheet", or "revision sheet", use:
+<artifact type="revision-sheet" topic="[TOPIC]" subject="[SUBJECT]">
+
+If the user asks for "notes", "learning document", "study material", "teach me properly", or "study guide", use:
+<artifact type="study-guide" topic="[TOPIC]" subject="[SUBJECT]">
+
+Never output the artifact XML as a code block. Output the raw artifact tag directly.
 
 STUDY GUIDE:
 <artifact type="study-guide" topic="[TOPIC]" subject="[SUBJECT]">
@@ -352,6 +383,53 @@ REVISION SHEET:
 
 🏆 MEMORY HOOKS
 [mnemonics, analogies, tricks that work for this specific learner]
+</artifact>
+
+FORMULA SHEET:
+<artifact type="formula-sheet" topic="[TOPIC]" subject="[SUBJECT]">
+⚡ MUST-KNOW FORMULAS
+1. [Formula]
+   Meaning: [what each symbol means]
+   Units: [SI units]
+   Use when: [question condition]
+
+📐 DERIVATION SNAPSHOT
+[only the minimum derivation needed for exam understanding]
+
+🔁 FORMULA CONNECTIONS
+[how formulas connect to each other]
+
+⚠️ COMMON TRAPS
+[sign mistakes, unit mistakes, wrong substitution, hidden assumptions]
+
+🏆 FAST RECALL HOOKS
+[memory tricks for this exact formula set]
+</artifact>
+
+LEARNING DOCUMENT:
+<artifact type="learning-document" topic="[TOPIC]" subject="[SUBJECT]">
+## 1. What this chapter is really about
+[clear explanation]
+
+## 2. Core theory
+[exam-focused theory]
+
+## 3. Must-know formulas / facts
+[bullet list]
+
+## 4. Solved example pattern
+[one representative pattern]
+
+## 5. Common mistakes
+[student-level mistakes]
+
+## 6. Quick recall questions
+Q1. [question]
+Q2. [question]
+Q3. [question]
+
+## 7. What to revise next
+[next connected concept]
 </artifact>
 
 FLASHCARD SET:

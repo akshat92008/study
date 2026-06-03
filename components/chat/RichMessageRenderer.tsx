@@ -12,7 +12,7 @@ import { useVoiceInteraction } from '@/hooks/useVoiceInteraction';
 // ── TYPES ──────────────────────────────────────────────────────────────────────
 
 interface ParsedArtifact {
-  type: 'study-guide' | 'practice-test' | 'revision-sheet' | 'flashcard-set' | 'concept-map' | 'study-plan' | 'pdf';
+  type: 'study-guide' | 'learning-document' | 'practice-test' | 'mcq-set' | 'revision-sheet' | 'formula-sheet' | 'flashcard-set' | 'concept-map' | 'study-plan' | 'pdf';
   topic: string;
   subject?: string;
   content: string;
@@ -471,7 +471,9 @@ function StudyGuideCard({ artifact, ragChunks }: { artifact: ParsedArtifact, rag
             <BookOpen size={14} color="white" />
           </div>
           <div>
-            <div style={{ fontWeight: 800, fontSize: 13, color: 'var(--text-primary)' }}>Study Guide</div>
+            <div style={{ fontWeight: 800, fontSize: 13, color: 'var(--text-primary)' }}>
+              {artifact.type === 'learning-document' ? 'Learning Document' : 'Study Guide'}
+            </div>
             <div style={{ fontSize: 11, color: 'var(--text-tertiary)', marginTop: 1 }}>{artifact.topic}{artifact.subject ? ` · ${artifact.subject}` : ''}</div>
           </div>
         </div>
@@ -768,7 +770,9 @@ function RevisionSheetCard({ artifact, ragChunks }: { artifact: ParsedArtifact, 
             <FileText size={14} color="white" />
           </div>
           <div>
-            <div style={{ fontWeight: 800, fontSize: 13, color: 'var(--text-primary)' }}>Revision Sheet</div>
+            <div style={{ fontWeight: 800, fontSize: 13, color: 'var(--text-primary)' }}>
+              {artifact.type === 'formula-sheet' ? 'Formula Sheet' : 'Revision Sheet'}
+            </div>
             <div style={{ fontSize: 11, color: 'var(--text-tertiary)', marginTop: 1 }}>{artifact.topic}{artifact.subject ? ` · ${artifact.subject}` : ''}</div>
           </div>
         </div>
@@ -1132,9 +1136,9 @@ export function RichMessageRenderer({ content, isStreaming = false, messageId, m
         if (!part.artifact) return null;
 
         switch (part.artifact.type) {
-          case 'study-guide': return <StudyGuideCard key={i} artifact={part.artifact} ragChunks={ragChunks} />;
-          case 'practice-test': return <PracticeTestCard key={i} artifact={part.artifact} messageId={messageId} />;
-          case 'revision-sheet': return <RevisionSheetCard key={i} artifact={part.artifact} ragChunks={ragChunks} />;
+          case 'study-guide': case 'learning-document': return <StudyGuideCard key={i} artifact={part.artifact} ragChunks={ragChunks} />;
+          case 'practice-test': case 'mcq-set': return <PracticeTestCard key={i} artifact={part.artifact} messageId={messageId} />;
+          case 'revision-sheet': case 'formula-sheet': return <RevisionSheetCard key={i} artifact={part.artifact} ragChunks={ragChunks} />;
           case 'flashcard-set': return <FlashcardSetComponent key={i} artifact={part.artifact} messageId={messageId} />;
           case 'concept-map': return <ConceptMapCard key={i} artifact={part.artifact} />;
           case 'study-plan': return <StudyPlanCard key={i} artifact={part.artifact} ragChunks={ragChunks} />;

@@ -34,7 +34,7 @@ export class PracticeService {
       const topic = attrs.topic || 'Concept';
       const subject = attrs.subject;
       
-      if (type === 'practice-test') {
+      if (type === 'practice-test' || type === 'mcq-set') {
         await this.storePracticeTest(supabase, userId, chatSessionId, messageId, topic, subject, content, data);
       } else if (type === 'flashcard-set') {
         await this.storeFlashcardSet(supabase, userId, chatSessionId, messageId, topic, subject, content, data);
