@@ -361,6 +361,7 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
 export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
 
   chat: [
+    'nvidia',        // Preferred main provider
     'cerebras',      // Fastest. 1M tokens/day.
     'cerebras_fallback',
     'groq_compound', // Reliable. 14,400/day.
@@ -372,6 +373,7 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
   ],
 
   tutor: [
+    'nvidia',
     'cerebras',
     'cerebras_fallback',
     'groq_compound',
@@ -383,6 +385,7 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
   ],
 
   stream: [
+    'nvidia',
     'cerebras',
     'cerebras_fallback',
     'groq_compound',
@@ -394,6 +397,7 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
   ],
 
   json: [
+    'nvidia',
     'groq_compound', // Most reliable structured output.
     'cerebras',
     'cerebras_fallback',
@@ -405,6 +409,7 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
   ],
 
   classification: [
+    'nvidia',
     'groq_compound',
     'cerebras',
     'cerebras_fallback',
