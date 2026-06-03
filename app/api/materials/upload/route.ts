@@ -1,3 +1,4 @@
+export const maxDuration = 60;
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
@@ -11,7 +12,7 @@ import { featureFlags } from '@/lib/config/flags';
 
 function sanitizeFilename(value: string): string {
   return value
-    .replace(/[/\\?%*:|"<>]/g, '-')
+    .replace(/[/\?%*:|"<>]/g, '-')
     .replace(/\s+/g, ' ')
     .trim()
     .slice(0, 120) || 'material';
