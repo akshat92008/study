@@ -10,6 +10,7 @@ export type ProviderName =
   | 'google'          // LAST RESORT ONLY. Use when everything else is down.
   | 'openai'          // PAID FALLBACK
   | 'nvidia'          // NVIDIA NIM provider
+  | 'nvidia_router'   // NVIDIA NIM high reasoning fallback
   | 'anthropic';      // ANTHROPIC CLAUDE FALLBACK
 
 export type TaskType = 
@@ -91,6 +92,7 @@ export const REQUIRED_ENV_VARS: Record<ProviderName, string[]> = {
   groq_gemma: [], // No specific env vars
   openai: ['OPENAI_API_KEY'],
   nvidia: ['NVIDIA_API_KEY'],
+  nvidia_router: ['NVIDIA_ROUTER_API_KEY'],
   anthropic: ['ANTHROPIC_API_KEY'],
 };
 
@@ -306,7 +308,7 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
       baseUrl: 'https://integrate.api.nvidia.com/v1',
       apiKey: process.env.NVIDIA_API_KEY_2 || process.env.NVIDIA_API_KEY,
       models: {
-        quality: 'deepseek-ai/deepseek-r1', // best reasoning model
+        quality: 'meta/llama-3.3-70b-instruct', // best reasoning model
         fast: 'meta/llama-3.1-8b-instruct',   // faster, cheaper
       },
       capabilities: capabilities({
@@ -329,6 +331,33 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
       costTier: 'metered',
       embeddingModel: 'nvidia/nv-embedqa-e5-v5',
       embeddingDimensions: 1024,
+      authHeader: 'bearer',
+    },
+
+    nvidia_router: {
+      name: 'nvidia_router',
+      baseUrl: 'https://integrate.api.nvidia.com/v1',
+      apiKey: process.env.NVIDIA_ROUTER_API_KEY,
+      models: {
+        quality: 'deepseek-ai/deepseek-r1', // best reasoning model
+        fast: 'meta/llama-3.1-8b-instruct',   // faster, cheaper
+      },
+      capabilities: capabilities({
+        supportsVision: false,
+        supportsPdf: false,
+        supportsEmbeddings: false,
+        maxInputTokens: 128_000,
+        costTier: 'metered',
+      }),
+      supportsText: true,
+      supportsStreaming: true,
+      supportsJson: true,
+      supportsVision: false,
+      supportsPdf: false,
+      supportsEmbeddings: false,
+      supportsAudio: false,
+      maxInputTokens: 128_000,
+      costTier: 'metered',
       authHeader: 'bearer',
     },
 
@@ -396,6 +425,7 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
     'sambanova',     // Fast + free, lower priority to avoid rate limits.
     'google',        // LAST RESORT.
     'openai',        // PAID FALLBACK
+    'nvidia_router',
     'anthropic',
   ],
 
@@ -409,6 +439,7 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
     'sambanova',
     'google',
     'openai',
+    'nvidia_router',
     'anthropic',
   ],
 
@@ -422,6 +453,7 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
     'sambanova', // Lower priority for streaming.
     'google',
     'openai',
+    'nvidia_router',
     'anthropic',
   ],
 
@@ -435,6 +467,7 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
     'cloudflare',
     'google',
     'openai',
+    'nvidia_router',
     'anthropic',
   ],
 
@@ -448,6 +481,7 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
     'cloudflare',
     'google',
     'openai',
+    'nvidia_router',
     'anthropic',
   ],
 
@@ -457,6 +491,7 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
     'cloudflare',
     'google',
     'openai',
+    'nvidia_router',
     'anthropic',
   ],
 
@@ -471,6 +506,7 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
     'cloudflare',  // llama-3.2-11b-vision free.
     'google',      // gemini-2.0-flash vision — last resort.
     'openai',
+    'nvidia_router',
     'anthropic',
   ],
 
@@ -478,6 +514,7 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
     'google',
     'nvidia',
     'openai',
+    'nvidia_router',
     'anthropic',
   ],
 

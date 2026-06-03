@@ -40,6 +40,17 @@ const ULTRA_CHEAP_CAPS: Record<ProviderName, CapsTable> = {
     embedding: 700,
     pdf: 8000,
   },
+  nvidia_router: {
+    chat: 5000,
+    tutor: 6000,
+    stream: 5000,
+    json: 4500,
+    document_generation: 5000,
+    autopsy: 7000,
+    flashcards: 5000,
+    formula_sheet: 4500,
+    classification: 1500,
+  },
   cerebras: {
     chat: 3200,
     tutor: 3500,
@@ -149,6 +160,7 @@ const ULTRA_CHEAP_CAPS: Record<ProviderName, CapsTable> = {
 // For cheap/balanced/quality modes, caps are more generous
 const CHEAP_CAPS: Record<ProviderName, CapsTable> = {
   nvidia:           { ...ULTRA_CHEAP_CAPS.nvidia,          chat: 8000,  tutor: 9000,  json: 7000, autopsy: 10000 },
+  nvidia_router:    { ...ULTRA_CHEAP_CAPS.nvidia_router,   chat: 8000,  tutor: 9000,  json: 7000, autopsy: 10000 },
   cerebras:         { ...ULTRA_CHEAP_CAPS.cerebras,        chat: 5000,  tutor: 6000,  json: 5000 },
   cerebras_fallback:{ ...ULTRA_CHEAP_CAPS.cerebras_fallback, chat: 5000, tutor: 6000, json: 5000 },
   sambanova:        { ...ULTRA_CHEAP_CAPS.sambanova,       chat: 5000,  tutor: 6000,  json: 5000 },
@@ -179,6 +191,7 @@ const HIGH_CAPS: CapsTable = {
 
 const BALANCED_QUALITY_CAPS: Record<ProviderName, CapsTable> = {
   nvidia:            HIGH_CAPS,
+  nvidia_router:     HIGH_CAPS,
   cerebras:          HIGH_CAPS,
   cerebras_fallback: HIGH_CAPS,
   sambanova:         HIGH_CAPS,
