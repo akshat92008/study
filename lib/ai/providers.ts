@@ -1,11 +1,4 @@
-// lib/ai/providers.ts
-// Central registry of all free AI providers.
-// Tracks health state per provider so the router can skip broken ones.
-// Priority order: fastest/most generous free tier first, Google last.
-
-import { logger } from '@/lib/utils/logger';
-
-export type ProviderName = 
+export type ProviderName =
   | 'cerebras'        // Fastest inference alive. 1M tokens/day free.
   | 'cerebras_fallback' // Second Cerebras key.
   | 'sambanova'       // Fast + free inference.
@@ -13,7 +6,8 @@ export type ProviderName =
   | 'groq_gemma'      // Same Groq key, different model slot.
   | 'cloudflare'      // Free Workers AI. Vision capable.
   | 'google'          // LAST RESORT ONLY. Use when everything else is down.
-  | 'openai';         // PAID FALLBACK
+  | 'openai'          // PAID FALLBACK
+  | 'nvidia';         // NVIDIA NIM provider
 
 export type TaskType = 
   | 'chat'
@@ -93,6 +87,7 @@ export const REQUIRED_ENV_VARS: Record<ProviderName, string[]> = {
   groq_compound: [], // No specific env vars
   groq_gemma: [], // No specific env vars
   openai: ['OPENAI_API_KEY'],
+  nvidia: ['NVIDIA_API_KEY'],
 };
 
 
@@ -302,7 +297,37 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
       embeddingDimensions: 768,
       authHeader: 'bearer',
     },
-  };
+      nvidia: {
+      name: 'nvidia',
+      baseUrl: 'https://api.nvcf.nvidia.com/v2/nvcf/exec',
+      apiKey: process.env.NVIDIA_API_KEY,
+      models: {
+        quality: 'meta-llama-3.1-70b-instruct', // best reasoning model
+        fast: 'meta-llama-3.1-8b-instruct',   // faster, cheaper
+      },
+      capabilities: capabilities({
+        supportsVision: true,
+        supportsPdf: true,
+        supportsEmbeddings: true,
+        maxInputBytes: 20 * 1024 * 1024,
+        maxInputTokens: 1_000_000,
+        costTier: 'metered',
+      }),
+      supportsText: true,
+      supportsStreaming: true,
+      supportsJson: true,
+      supportsVision: true,
+      supportsPdf: true,
+      supportsEmbeddings: true,
+      supportsAudio: false,
+      maxInputBytes: 20 * 1024 * 1024,
+      maxInputTokens: 1_000_000,
+      costTier: 'metered',
+      embeddingModel: 'nvidia-embed-v1',
+      embeddingDimensions: 1536,
+      authHeader: 'bearer',
+    },
+};
 
     const config = configs[name];
   const required = REQUIRED_ENV_VARS[name] || [];
@@ -391,6 +416,7 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
   autopsy: [
     'groq_compound',
     'cloudflare',
+    'nvidia',
     'google',
     'openai',
   ],
@@ -410,6 +436,8 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
 
   pdf: [
     'google',
+    'nvidia',
+    'openai',
   ],
 
   audio: [

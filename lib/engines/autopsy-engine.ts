@@ -75,14 +75,15 @@ async function routeMultimodalExtraction(
   userId: string,
   prompt: string,
   fileData: { kind: 'inline'; mimeType: string; data: string }
-): Promise<any> {
-  return budgetedGenerateMultimodalJSON({
+): Promise<z.infer<typeof AutopsyPaperSchema>> {
+  return budgetedGenerateMultimodalJSON<z.infer<typeof AutopsyPaperSchema>>({
     userId,
     feature: 'autopsy',
     route: 'autopsy:extraction-multimodal',
     model: 'router:multimodal+pro',
     systemPrompt: 'You are a mock test extraction engine. Respond ONLY with JSON.',
     fileData: { mimeType: fileData.mimeType, data: fileData.data },
+    schema: AutopsyPaperSchema,
     maxOutputTokens: 2000
   });
 }
@@ -93,6 +94,21 @@ async function fastExtractionPass(
   subjectList: string,
   retries = 3
 ): Promise<z.infer<typeof AutopsyPaperSchema>> {
+  if (fileData.kind === 'inline' && fileData.mimeType === 'application/pdf') {
+    try {
+      const { default: pdfParse } = await import('pdf-parse');
+      const buffer = Buffer.from(fileData.data, 'base64');
+      const pdfData = await pdfParse(buffer);
+      if (pdfData.text && pdfData.text.trim().length > 100) {
+        fileData = { kind: 'text', text: pdfData.text };
+      }
+    } catch (e) {
+      import('@/lib/utils/logger').then(({ logger }) => {
+        logger.warn('Failed to parse PDF as text, falling back to multimodal', { error: String(e) });
+      });
+    }
+  }
+
   const extractionPrompt = `
 Extract all questions from this mock test submission. It may be a PDF, low-quality scan, OMR sheet, or handwritten.
 
@@ -116,13 +132,14 @@ Output strictly as JSON. No markdown.
       let rawResult: any;
 
       if (fileData.kind === 'text') {
-        rawResult = await budgetedGenerateJSON<any>({
+        rawResult = await budgetedGenerateJSON<z.infer<typeof AutopsyPaperSchema>>({
           userId,
           feature: 'autopsy',
           route: 'autopsy:extraction-text',
-          model: 'flash',
+          model: 'quality',
           systemPrompt: 'You are a mock test extraction engine. Respond ONLY with JSON.',
           userPrompt: `${extractionPrompt}\n\nTest Data:\n${fileData.text}`,
+          schema: AutopsyPaperSchema,
           maxOutputTokens: 2000
         });
       } else {
