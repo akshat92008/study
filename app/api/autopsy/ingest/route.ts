@@ -175,6 +175,16 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
       client: supabase,
     });
 
+    const { after } = await import('next/server');
+    after(async () => {
+      try {
+        const { EventWorkerService } = await import('@/lib/events/worker');
+        await EventWorkerService.processBatch(25, 5, 50_000, Date.now());
+      } catch (err) {
+        console.error('Failed to run background event worker for autopsy:', err);
+      }
+    });
+
     return NextResponse.json(
       {
         status: job.status,

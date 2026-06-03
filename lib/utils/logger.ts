@@ -14,7 +14,7 @@ export const logger = {
   error: (msg: string, err?: any, meta?: any) => {
     const cid = logger.correlationIdProvider();
     let errorStr = String(err);
-    let stackStr = undefined;
+    let stackStr: string | undefined = undefined;
     let extra = {};
 
     if (err instanceof Error) {

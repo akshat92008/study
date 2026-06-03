@@ -36,7 +36,10 @@ interface ParsedFlashcard {
 
 // ── ARTIFACT PARSER ────────────────────────────────────────────────────────────
 
-function parseArtifacts(content: string): Array<{ type: 'text' | 'artifact'; content: string; artifact?: ParsedArtifact }> {
+function parseArtifacts(rawContent: string): Array<{ type: 'text' | 'artifact'; content: string; artifact?: ParsedArtifact }> {
+  // Strip out markdown code blocks that are wrapping the artifact
+  const content = rawContent.replace(/```(?:xml|html|)\s*(<artifact[\s\S]*?<\/artifact>)\s*```/gi, '$1');
+
   const parts: Array<{ type: 'text' | 'artifact'; content: string; artifact?: ParsedArtifact }> = [];
   const artifactRegex = /<artifact([^>]*)>([\s\S]*?)<\/artifact>/g;
   let lastIndex = 0;

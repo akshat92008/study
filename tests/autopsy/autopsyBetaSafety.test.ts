@@ -40,6 +40,14 @@ vi.mock('@/lib/engines/autopsy-engine', () => ({
   AutopsyNeedsUserInputError: class {}
 }));
 
+vi.mock('next/server', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('next/server')>();
+  return {
+    ...actual,
+    after: vi.fn((fn) => fn()),
+  };
+});
+
 describe('Autopsy Beta Safety', () => {
   beforeEach(() => {
     vi.unstubAllEnvs();

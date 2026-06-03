@@ -1,5 +1,5 @@
 import { getEmbedding } from '@/lib/ai/provider-client';
-import { createClient } from '@/lib/supabase/server';
+import { createAdminClient } from '@/lib/supabase/admin';
 import { logger } from '@/lib/utils/logger';
 import { routeJSONGeneration } from '@/lib/ai/router';
 import {
@@ -84,7 +84,7 @@ export class ChatMemoryService {
     if (trimmed.length < 15 && !EMOTIONAL_MEMORY_PATTERN.test(trimmed)) return; // Immediate drop for short conversational noise, unless emotional
 
     try {
-      const supabase = await createClient();
+      const supabase = createAdminClient();
       if (options.sourceId) {
         const { data: existing } = await supabase
           .from('chat_memory')
@@ -198,7 +198,7 @@ Return ONLY valid JSON in this exact format:
     if (!trimmed) return [];
 
     try {
-      const supabase = await createClient();
+      const supabase = createAdminClient();
       const matchCount = Math.max(1, Math.min(limit, MAX_MEMORY_RESULTS));
 
       // Run semantic and keyword searches in parallel

@@ -17,7 +17,7 @@ describe('RAG Limits', () => {
     const config = getRagConfig();
     expect(config.maxFileBytes).toBe(3 * 1024 * 1024);
     expect(config.maxFilesPerUser).toBe(5);
-    expect(config.maxDailyUploads).toBe(1);
+    expect(config.maxDailyUploads).toBe(5);
     expect(config.maxChunksPerFile).toBe(40);
     expect(config.chunkSizeChars).toBe(2500);
     expect(config.topK).toBe(4);

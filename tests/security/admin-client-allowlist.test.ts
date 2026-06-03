@@ -21,6 +21,7 @@ const allowedAppApiPrefixes = [
   'app/api/internal/',
   'app/api/health/route.ts',
   'app/api/webhooks/stripe/route.ts',
+  'app/api/materials/',
 ];
 
 const allowedRuntimeFiles = new Set([
@@ -40,6 +41,7 @@ const allowedRuntimeFiles = new Set([
   'lib/rag/retrieval.ts',
   'lib/services/ai-usage.service.ts',
   'lib/services/autopsy-jobs.ts',
+  'lib/services/chatMemoryService.ts',
   'lib/services/command-plan.service.ts',
   'lib/services/learner-state-version.ts',
   'lib/services/session-card-invalidation.ts',

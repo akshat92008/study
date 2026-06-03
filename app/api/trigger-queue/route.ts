@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
-    const results = [];
+    const results: any[] = [];
     while (true) {
       const res = await EventWorkerService.processBatch(50, 10, 60_000, Date.now());
       results.push(res);

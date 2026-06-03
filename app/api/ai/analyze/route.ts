@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+// budget-exempt: Uses cost-guard manually
 import { createClient } from '@/lib/supabase/server';
 import { generateText } from '@/lib/ai/provider-client';
 import { reserveBudgetForModelCall, budgetExceededResponse, budgetUnavailableResponse, isBudgetExceeded, isBudgetUnavailable } from '@/lib/ai/cost-guard';

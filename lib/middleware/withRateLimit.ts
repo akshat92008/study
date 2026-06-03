@@ -24,24 +24,24 @@ export function withRateLimit(
 ) {
   return async (req: NextRequest, ...args: any[]): Promise<NextResponse> => {
     const requestId = getRequestId(req);
-    const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) {
-      return apiErrorResponse('unauthorized', {
-        status: 401,
-        message: 'Authentication is required.',
-        requestId,
-      });
-    }
-
-    const config = ROUTE_LIMITS[routeName];
-    const { allowed, remaining, resetAt } = await checkRateLimit({
-      identifier: user.id,
-      ...config,
-    });
-
-    if (!allowed) return rateLimitResponse(remaining, resetAt);
     try {
+      const supabase = await createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        return apiErrorResponse('unauthorized', {
+          status: 401,
+          message: 'Authentication is required.',
+          requestId,
+        });
+      }
+
+      const config = ROUTE_LIMITS[routeName];
+      const { allowed, remaining, resetAt } = await checkRateLimit({
+        identifier: user.id,
+        ...config,
+      });
+
+      if (!allowed) return rateLimitResponse(remaining, resetAt);
       return await handler(req, user.id, ...args);
     } catch (error) {
       return unexpectedApiErrorResponse(req, error, routeName, 'Request failed.');

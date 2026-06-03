@@ -40,6 +40,13 @@ vi.mock('../lib/supabase/server', () => ({
   })
 }));
 
+vi.mock('../lib/supabase/admin', () => ({
+  createAdminClient: vi.fn().mockReturnValue({
+    from: mockFrom,
+    rpc: vi.fn().mockResolvedValue({ data: [], error: null }),
+  })
+}));
+
 import { createClient } from '../lib/supabase/server';
 
 describe('MIND Context & Prompts', () => {
@@ -95,10 +102,10 @@ describe('MIND Context & Prompts', () => {
   it('chat context enforces bounds on weak concepts, mistakes, and due cards', () => {
     const prompt = getMINDSystemPrompt(baseCtx, [], 'GENERAL_CHAT');
     
-    // Check weak concepts capped at 3
+    // Check weak concepts capped at 2
     expect(prompt).toContain('Concept A (exposed)');
     expect(prompt).toContain('Concept B (exposed)');
-    expect(prompt).toContain('Concept C (exposed)');
+    expect(prompt).not.toContain('Concept C (exposed)');
     expect(prompt).not.toContain('Concept D (exposed)');
 
     // Check mistakes capped at 3

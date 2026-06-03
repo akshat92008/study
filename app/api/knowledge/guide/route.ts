@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+// budget-exempt: Uses cost-guard manually
 import { createClient } from '@/lib/supabase/server';
 import { generateText } from '@/lib/ai/provider-client';
 import { safeError, logger } from '@/lib/utils/logger';
