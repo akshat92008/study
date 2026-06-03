@@ -27,6 +27,11 @@ CREATE INDEX IF NOT EXISTS idx_daily_microtasks_session_card ON public.daily_mic
 ALTER TABLE public.daily_microtasks ENABLE ROW LEVEL SECURITY;
 
 -- RLS Policies
+DROP POLICY IF EXISTS "Users can view their own microtasks" ON public.daily_microtasks;
+DROP POLICY IF EXISTS "Users can insert their own microtasks" ON public.daily_microtasks;
+DROP POLICY IF EXISTS "Users can update their own microtasks" ON public.daily_microtasks;
+DROP POLICY IF EXISTS "Users can delete their own microtasks" ON public.daily_microtasks;
+
 CREATE POLICY "Users can view their own microtasks"
     ON public.daily_microtasks FOR SELECT
     USING (auth.uid() = user_id);
