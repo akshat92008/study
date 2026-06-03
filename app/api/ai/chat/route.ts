@@ -551,7 +551,7 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
       } catch (err) {
         if (isBudgetExceeded(err)) return budgetExceededResponse();
         if (isBudgetUnavailable(err)) return budgetUnavailableResponse();
-        answer = 'I encountered an issue processing that image. Please try again.';
+        answer = 'I could not generate that part right now. Try again in a moment.';
       }
 
       const stream = new ReadableStream({
@@ -771,7 +771,7 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
       } catch (err) {
         if (isBudgetExceeded(err)) return budgetExceededResponse();
         if (isBudgetUnavailable(err)) return budgetUnavailableResponse();
-        answer = 'I could not read that document reliably. If this is for Mistake Review, upload it with your answer key, student answers, OMR sheet, or result sheet. For explanation, paste the relevant text here.';
+        answer = 'I could not generate that part right now. Try again in a moment.';
       }
 
       const stream = new ReadableStream({
@@ -932,7 +932,7 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
         logger.error('Main AI generation failed', err);
         const fallbackStream = new ReadableStream({
           start(controller) {
-            controller.enqueue(encoder.encode("I'm currently unable to process your request due to a connection or configuration issue. Please try again in a moment."));
+            controller.enqueue(encoder.encode("I could not generate that part right now. Try again in a moment."));
             controller.close();
           }
         });
@@ -1014,7 +1014,7 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
 
         } catch (err: any) {
           logger.error('Chat stream error', err);
-          controller.enqueue(encoder.encode('\n\n[Error: Connection interrupted. Please try again.]'));
+          controller.enqueue(encoder.encode('\n\nI could not generate that part right now. Try again in a moment.'));
         } finally {
           controller.close();
         }

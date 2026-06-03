@@ -52,11 +52,12 @@ export function localDateAfter(days: number, now = new Date()): string {
 export async function ensureCommandPlanForDate(input: {
   userId: string;
   date: string;
+  goalId?: string | null;
   client?: SupabaseLike;
 }): Promise<CommandPlanResult> {
   const supabase = input.client ?? createAdminClient();
-  const existing = await loadExistingTasks(supabase, input.userId, input.date);
-  const state = await loadPlanState(supabase, input.userId);
+  const existing = await loadExistingTasks(supabase, input.userId, input.date, input.goalId);
+  const state = await loadPlanState(supabase, input.userId, input.goalId);
 
   if (existing.length > 0) {
     const briefing = buildMorningBriefing(state, existing, input.date);
@@ -70,7 +71,7 @@ export async function ensureCommandPlanForDate(input: {
     };
   }
 
-  const tasks = buildDeterministicPlan(input.userId, input.date, state);
+  const tasks = buildDeterministicPlan(input.userId, input.date, state, input.goalId);
   if (tasks.length > 0) {
     const { data, error } = await supabase
       .from('study_tasks')
@@ -88,7 +89,7 @@ export async function ensureCommandPlanForDate(input: {
 
     const persistedTasks = (data ?? tasks) as CommandPlanTask[];
     const briefing = buildMorningBriefing(state, persistedTasks, input.date);
-    await persistDailyPlan(supabase, input.userId, input.date, persistedTasks, briefing, state, true);
+    await persistDailyPlan(supabase, input.userId, input.date, persistedTasks, briefing, state, true, input.goalId);
     
     await recordAgentAction({
       userId: input.userId,
@@ -112,7 +113,7 @@ export async function ensureCommandPlanForDate(input: {
   }
 
   const briefing = buildMorningBriefing(state, [], input.date);
-  await persistDailyPlan(supabase, input.userId, input.date, [], briefing, state, false);
+  await persistDailyPlan(supabase, input.userId, input.date, [], briefing, state, false, input.goalId);
   return {
     date: input.date,
     tasks: [],
@@ -125,6 +126,7 @@ export async function ensureCommandPlanForDate(input: {
 export async function runDailySynthesisForUser(input: {
   userId: string;
   date: string;
+  goalId?: string | null;
   client?: SupabaseLike;
 }): Promise<CommandPlanResult> {
   return ensureCommandPlanForDate(input);
@@ -215,12 +217,18 @@ export function formatRevisionQueueForChat(input: {
   ].join('\n');
 }
 
-async function loadExistingTasks(supabase: SupabaseLike, userId: string, date: string): Promise<CommandPlanTask[]> {
-  const { data, error } = await supabase
+async function loadExistingTasks(supabase: SupabaseLike, userId: string, date: string, goalId?: string | null): Promise<CommandPlanTask[]> {
+  let query = supabase
     .from('study_tasks')
     .select('*')
     .eq('user_id', userId)
-    .eq('scheduled_date', date)
+    .eq('scheduled_date', date);
+    
+  if (goalId) {
+    query = query.eq('goal_id', goalId);
+  }
+
+  const { data, error } = await query
     .order('priority', { ascending: true })
     .order('created_at', { ascending: true });
 
@@ -231,8 +239,30 @@ async function loadExistingTasks(supabase: SupabaseLike, userId: string, date: s
   return (data ?? []) as CommandPlanTask[];
 }
 
-async function loadPlanState(supabase: SupabaseLike, userId: string): Promise<PlanState> {
+async function loadPlanState(supabase: SupabaseLike, userId: string, goalId?: string | null): Promise<PlanState> {
   const now = new Date().toISOString();
+  
+  let dueCardsQuery = supabase
+    .from('revision_cards')
+    .select('id, front, subject, chapter, difficulty, lapses, due')
+    .eq('user_id', userId)
+    .lte('due', now)
+    .neq('state', 4);
+  if (goalId) dueCardsQuery = dueCardsQuery.eq('goal_id', goalId);
+
+  let weakConceptsQuery = supabase
+    .from('concepts')
+    .select('id, name, subject, chapter, mastery, forgetting_probability')
+    .eq('user_id', userId)
+    .in('mastery', ['not_started', 'exposed', 'developing']);
+  if (goalId) weakConceptsQuery = weakConceptsQuery.eq('goal_id', goalId);
+
+  let mistakesQuery = supabase
+    .from('mistakes')
+    .select('id, subject, chapter, category, marks_lost, created_at')
+    .eq('user_id', userId);
+  if (goalId) mistakesQuery = mistakesQuery.eq('goal_id', goalId);
+
   const [
     profileRes,
     dueCardsRes,
@@ -245,25 +275,13 @@ async function loadPlanState(supabase: SupabaseLike, userId: string): Promise<Pl
       .select('exam_type, target_date, target_score, current_level, daily_hours, daily_hours_available, emotional_state, timezone')
       .eq('id', userId)
       .maybeSingle(),
-    supabase
-      .from('revision_cards')
-      .select('id, front, subject, chapter, difficulty, lapses, due')
-      .eq('user_id', userId)
-      .lte('due', now)
-      .neq('state', 4)
+    dueCardsQuery
       .order('due', { ascending: true })
       .limit(20),
-    supabase
-      .from('concepts')
-      .select('id, name, subject, chapter, mastery, forgetting_probability')
-      .eq('user_id', userId)
-      .in('mastery', ['not_started', 'exposed', 'developing'])
+    weakConceptsQuery
       .order('forgetting_probability', { ascending: false })
       .limit(10),
-    supabase
-      .from('mistakes')
-      .select('id, subject, chapter, category, marks_lost, created_at')
-      .eq('user_id', userId)
+    mistakesQuery
       .order('created_at', { ascending: false })
       .limit(10),
     supabase
@@ -291,7 +309,7 @@ async function loadPlanState(supabase: SupabaseLike, userId: string): Promise<Pl
   };
 }
 
-function buildDeterministicPlan(userId: string, date: string, state: PlanState): CommandPlanTask[] {
+function buildDeterministicPlan(userId: string, date: string, state: PlanState, goalId?: string | null): CommandPlanTask[] {
   const dailyHours = Number(
     state.profile?.daily_hours_available ??
     state.profile?.daily_hours ??
@@ -308,6 +326,7 @@ function buildDeterministicPlan(userId: string, date: string, state: PlanState):
       ...task,
       scheduled_date: date,
       is_completed: false,
+      ...(goalId ? { goal_id: goalId } : {}),
     });
     used += task.estimated_minutes;
   };
@@ -423,9 +442,10 @@ async function persistDailyPlan(
   tasks: CommandPlanTask[],
   briefing: string,
   state: PlanState,
-  created: boolean
+  created: boolean,
+  goalId?: string | null
 ) {
-  const payload = {
+  const payload: any = {
     user_id: userId,
     plan_date: date,
     status: 'completed',
@@ -440,6 +460,10 @@ async function persistDailyPlan(
     },
     updated_at: new Date().toISOString(),
   };
+
+  if (goalId) {
+    payload.goal_id = goalId;
+  }
 
   const { error } = await supabase
     .from('daily_plans')

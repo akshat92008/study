@@ -166,15 +166,20 @@ export async function GET(request?: Request): Promise<NextResponse> {
 
     const localDate = getLocalDate(profile?.timezone ?? null);
 
-    // ── 3. Check legacy cache only for global cards ─────────────────────────
-    const { data: cached } = goalId
-      ? { data: null as any }
-      : await supabase
-          .from('session_cards')
-          .select('*')
-          .eq('user_id', user.id)
-          .eq('date', localDate)
-          .maybeSingle();
+    // ── 3. Check legacy cache and goal cache ─────────────────────────
+    let cacheQuery = supabase
+      .from('session_cards')
+      .select('*')
+      .eq('user_id', user.id)
+      .eq('date', localDate);
+      
+    if (goalId) {
+      cacheQuery = cacheQuery.eq('goal_id', goalId);
+    } else {
+      cacheQuery = cacheQuery.is('goal_id', null);
+    }
+
+    const { data: cached } = await cacheQuery.maybeSingle();
 
     if (
       cached &&
@@ -476,11 +481,25 @@ export async function GET(request?: Request): Promise<NextResponse> {
       hasActiveGoal: Boolean(goalRes.data),
     };
 
-    const { error: upsertError } = goalId
-      ? { error: null as any }
-      : await supabase
-          .from('session_cards')
-          .upsert({ ...dbRow, goal_id: null }, { onConflict: 'user_id,date' });
+    let upsertError: any = null;
+    if (goalId) {
+      await supabase
+        .from('session_cards')
+        .delete()
+        .eq('user_id', user.id)
+        .eq('date', localDate)
+        .eq('goal_id', goalId);
+      
+      const { error } = await supabase
+        .from('session_cards')
+        .insert(dbRow);
+      upsertError = error;
+    } else {
+      const { error } = await supabase
+        .from('session_cards')
+        .upsert({ ...dbRow, goal_id: null }, { onConflict: 'user_id,date' });
+      upsertError = error;
+    }
 
     if (upsertError) {
       logger.warn('session-card: failed to upsert card to cache', {

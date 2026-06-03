@@ -9,6 +9,16 @@ alter table if exists public.chat_sessions
 alter table if exists public.chat_sessions
   drop constraint if exists chat_sessions_session_type_check;
 
+update public.chat_sessions
+set archived_at = coalesce(archived_at, now()),
+    session_type = 'thread',
+    is_global = false
+where session_type = 'archived';
+
+update public.chat_sessions
+set session_type = 'thread'
+where session_type not in ('global', 'thread', 'goal', 'quick', 'tutor', 'practice', 'onboarding');
+
 alter table if exists public.chat_sessions
   add constraint chat_sessions_session_type_check
   check (session_type in ('global', 'thread', 'goal', 'quick', 'tutor', 'practice', 'onboarding'));

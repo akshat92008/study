@@ -55,6 +55,10 @@ export interface InvalidateOptions {
    * Optional Supabase client. When omitted, an admin client is created.
    */
   client?: any;
+  /**
+   * Optional Goal ID to scope invalidation to a specific goal.
+   */
+  goalId?: string | null;
 }
 
 /**
@@ -99,11 +103,17 @@ export async function invalidateSessionCard(
     tomorrow.toISOString().split('T')[0],
   ];
 
-  const { error } = await supabase
+  let deleteQuery = supabase
     .from('session_cards')
     .delete()
     .eq('user_id', userId)
     .in('date', dates);
+
+  if (options.goalId) {
+    deleteQuery = deleteQuery.eq('goal_id', options.goalId);
+  }
+
+  const { error } = await deleteQuery;
 
   if (error) {
     logger.error('invalidateSessionCard: failed to delete session_cards rows', error, {

@@ -784,6 +784,7 @@ export class EventWorkerService {
     const plan = await runDailySynthesisForUser({
       userId: event.user_id,
       date,
+      goalId: payload.goalId || payload.goal_id,
       client: supabase,
     });
 
@@ -819,6 +820,7 @@ export class EventWorkerService {
       client: supabase,
       sourceEventId: event.id,
       skipVersionBump: true,
+      goalId: payload.goalId || payload.goal_id,
     });
 
     return {
