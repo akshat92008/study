@@ -48,7 +48,13 @@ export type BudgetFeature =
   | 'atlas'
   | 'onboarding'
   | 'chat-mentor'
-  | 'rag_flashcard';
+  | 'rag_flashcard'
+  // Hermes internal worker features — never user-facing
+  | 'hermes_mistake'
+  | 'hermes_source'
+  | 'hermes_revision'
+  | 'hermes_trace'
+  | 'hermes_next_action';
 
 export interface BudgetReservation {
   reservationId: string;
@@ -137,6 +143,12 @@ const COST_PER_1K_TOKENS: Record<BudgetFeature, number> = {
   onboarding:              0.00005,
   'chat-mentor':           0.0001,
   rag_flashcard:           0.00005,
+  // Hermes internal worker features — same cost tier as analyze/session-card
+  hermes_mistake:          0.00005,
+  hermes_source:           0.00005,
+  hermes_revision:         0.00005,
+  hermes_trace:            0.00005,
+  hermes_next_action:      0.00005,
 };
 
 const DAILY_BUDGET_USD = () => {

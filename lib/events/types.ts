@@ -43,6 +43,10 @@ export const EventTypeSchema = z.enum([
   'PRACTICE_ATTEMPT_RECORDED',
   'PRACTICE_ATTEMPT_SUBMITTED',
   'ONBOARDING_QUIZ_COMPLETE',
+  // Hermes internal worker events — never exposed to users
+  'HERMES_MISTAKE_REVIEW_REQUESTED',
+  'HERMES_SOURCE_PROCESS_REQUESTED',
+  'HERMES_TRACE_REQUESTED',
 ]);
 
 export type EventType = z.infer<typeof EventTypeSchema>;
@@ -294,6 +298,25 @@ export const EventPayloadSchemas: Partial<Record<EventType | string, z.ZodTypeAn
   ONBOARDING_QUIZ_COMPLETE: z.object({
     quizResults: z.array(z.any()).optional(),
     examType: z.string().optional(),
+  }).passthrough(),
+  // Hermes internal worker event payloads — never exposed to users
+  HERMES_MISTAKE_REVIEW_REQUESTED: z.object({
+    mistakeId: z.string().optional(),
+    goalId: z.string().uuid().nullable().optional(),
+    chatSessionId: z.string().uuid().nullable().optional(),
+    question: z.string().optional(),
+    myAnswer: z.string().optional(),
+    correctAnswer: z.string().optional(),
+    explanation: z.string().nullable().optional(),
+  }).passthrough(),
+  HERMES_SOURCE_PROCESS_REQUESTED: z.object({
+    materialId: z.string().uuid(),
+    goalId: z.string().uuid().nullable().optional(),
+    title: z.string().optional(),
+  }).passthrough(),
+  HERMES_TRACE_REQUESTED: z.object({
+    goalId: z.string().uuid(),
+    reason: z.string().optional(),
   }).passthrough(),
 };
 

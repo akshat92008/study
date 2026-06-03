@@ -26,6 +26,8 @@ export const HANDLED_EVENT_CONSUMERS = [
   'mind_agent',
   'autopsy_agent',
   'command_agent',
+  // Hermes internal worker — never user-facing
+  'hermes_worker',
 ] as const;
 
 
@@ -769,9 +771,140 @@ export class EventWorkerService {
           return this.handleCommandAgentEvent(event, payload);
         }
         break;
+      case 'hermes_worker':
+        return this.handleHermesWorkerEvent(event, payload);
     }
 
     return { status: 'PERMANENT_FAILURE', reason: `Event routing error: ${consumer} has no handler for ${event.type}` };
+  }
+
+  private static async handleHermesWorkerEvent(
+    event: any,
+    payload: Record<string, any>
+  ): Promise<ConsumerResult> {
+    const { featureFlags } = await import('@/lib/config/flags');
+    if (!featureFlags.hermesEnabled()) {
+      return { status: 'SKIPPED_INTENTIONALLY', reason: 'Hermes is disabled (HERMES_ENABLED=false)' };
+    }
+
+    const { isHermesError } = await import('@/lib/hermes');
+
+    if (event.type === 'HERMES_MISTAKE_REVIEW_REQUESTED') {
+      // Async Hermes mistake processing via event queue
+      // Only used if the route explicitly enqueues this event for deferred processing.
+      // The synchronous path in manual/route.ts handles mistakes directly.
+      try {
+        const { runHermesMistakeAgent, buildMistakeFallback, writeMistakeResult } = await import('@/lib/hermes');
+        const supabase = createAdminClient();
+
+        const input = {
+          userId: event.user_id,
+          goalId: payload.goalId ?? null,
+          chatSessionId: payload.chatSessionId ?? null,
+          question: payload.question ?? '',
+          myAnswer: payload.myAnswer ?? '',
+          correctAnswer: payload.correctAnswer ?? '',
+          explanation: payload.explanation ?? null,
+        };
+
+        let result;
+        try {
+          result = await runHermesMistakeAgent(input);
+        } catch (hermesErr) {
+          if (isHermesError(hermesErr)) {
+            logger.warn('[hermes_worker] Mistake agent failed, using fallback', {
+              userId: event.user_id,
+              eventId: event.id,
+            });
+            result = buildMistakeFallback(input);
+          } else {
+            throw hermesErr;
+          }
+        }
+
+        await writeMistakeResult(
+          supabase,
+          event.user_id,
+          payload.goalId ?? null,
+          payload.chatSessionId ?? null,
+          input,
+          result
+        );
+
+        return { status: 'HANDLED' };
+      } catch (err: any) {
+        logger.warn('[hermes_worker] HERMES_MISTAKE_REVIEW_REQUESTED failed', {
+          userId: event.user_id,
+          error: err.message,
+        });
+        return { status: 'RETRYABLE_FAILURE', reason: err.message };
+      }
+    }
+
+    if (event.type === 'HERMES_SOURCE_PROCESS_REQUESTED') {
+      // Deferred source processing — only if featureFlag enabled
+      const { featureFlags: flags } = await import('@/lib/config/flags');
+      if (!flags.hermesSourceProcessing()) {
+        return { status: 'SKIPPED_INTENTIONALLY', reason: 'Hermes source processing disabled' };
+      }
+      // TODO: Implement source processing worker path
+      // Requires: load material chunks from storage, call runHermesSourceAgent, call writeSourceResult
+      return { status: 'SKIPPED_INTENTIONALLY', reason: 'Hermes source processing not yet implemented in worker' };
+    }
+
+    if (event.type === 'HERMES_TRACE_REQUESTED') {
+      // Deferred trace analysis
+      try {
+        const supabase = createAdminClient();
+        const goalId = payload.goalId;
+        if (!goalId) {
+          return { status: 'PERMANENT_FAILURE', reason: 'HERMES_TRACE_REQUESTED missing goalId' };
+        }
+
+        // Load recent mistakes for this goal
+        const { data: mistakes } = await supabase
+          .from('mistakes')
+          .select('category, subject, chapter, topic')
+          .eq('user_id', event.user_id)
+          .eq('goal_id', goalId)
+          .order('created_at', { ascending: false })
+          .limit(10);
+
+        const { data: dueCards } = await supabase
+          .from('revision_cards')
+          .select('id', { count: 'exact', head: true })
+          .eq('user_id', event.user_id)
+          .eq('goal_id', goalId)
+          .lte('due', new Date().toISOString());
+
+        const { data: weakConcepts } = await supabase
+          .from('concepts')
+          .select('id', { count: 'exact', head: true })
+          .eq('user_id', event.user_id)
+          .eq('goal_id', goalId)
+          .in('mastery', ['not_started', 'exposed', 'developing']);
+
+        const { runHermesTraceAgent } = await import('@/lib/hermes');
+        await runHermesTraceAgent({
+          userId: event.user_id,
+          goalId,
+          recentMistakes: mistakes ?? [],
+          dueCardsCount: (dueCards as any)?.count ?? 0,
+          weakConceptsCount: (weakConcepts as any)?.count ?? 0,
+          recentActivity: [],
+        });
+        // Trace result is advisory — logged but not written to DB in current implementation
+        return { status: 'HANDLED' };
+      } catch (err: any) {
+        logger.warn('[hermes_worker] HERMES_TRACE_REQUESTED failed', {
+          userId: event.user_id,
+          error: err.message,
+        });
+        return { status: 'SKIPPED_INTENTIONALLY', reason: 'Trace agent failed — non-critical' };
+      }
+    }
+
+    return { status: 'SKIPPED_INTENTIONALLY', reason: `hermes_worker: no handler for ${event.type}` };
   }
 
   private static async handleCommandAgentEvent(event: any, payload: Record<string, any>): Promise<ConsumerResult> {

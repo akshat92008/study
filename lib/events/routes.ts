@@ -13,6 +13,8 @@ export const EVENT_CONSUMERS = [
   'planner_agent',
   'command_agent',
   'command_engine',
+  // Hermes internal worker consumer — never user-facing
+  'hermes_worker',
 ] as const;
 
 export type EventConsumer = typeof EVENT_CONSUMERS[number];
@@ -95,6 +97,10 @@ export const EVENT_CONSUMER_MATRIX = {
     'planner_agent',
   ],
   ONBOARDING_QUIZ_COMPLETE: ['learning_state_engine', 'planner_agent', 'command_agent'],
+  // Hermes internal worker events — only consumed by hermes_worker
+  HERMES_MISTAKE_REVIEW_REQUESTED: ['hermes_worker'],
+  HERMES_SOURCE_PROCESS_REQUESTED: ['hermes_worker'],
+  HERMES_TRACE_REQUESTED: ['hermes_worker'],
 } as const satisfies Record<string, readonly EventConsumer[]>;
 
 export type RoutedEventType = keyof typeof EVENT_CONSUMER_MATRIX;

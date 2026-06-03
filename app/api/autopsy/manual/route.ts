@@ -2,7 +2,15 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/utils/logger';
 import { budgetedGenerateJSON } from '@/lib/ai/budgeted';
-import { ensureGoalForUser, ensureSessionGoalLink, ensureSessionBelongsToUser } from '@/lib/services/goal-context.service';
+import { ensureGoalForUser, ensureSessionGoalLink, ensureSessionBelongsToUser, getActiveGoalContext } from '@/lib/services/goal-context.service';
+import {
+  runHermesMistakeAgent,
+  buildMistakeFallback,
+  writeMistakeResult,
+  isHermesEnabled,
+  isHermesError,
+  HermesDisabledError,
+} from '@/lib/hermes';
 
 export async function POST(req: NextRequest) {
   try {
@@ -21,7 +29,13 @@ export async function POST(req: NextRequest) {
 
     const supabase = userClient;
 
-    if (goalId) await ensureGoalForUser(supabase, user.id, goalId);
+    // ── Validate goal/session ownership ─────────────────────────────────────
+    let goalTitle: string | null = null;
+    let recentWeakConcepts: Array<{ subject?: string | null; chapter?: string | null; topic?: string | null; mastery?: string | null }> = [];
+
+    if (goalId) {
+      await ensureGoalForUser(supabase, user.id, goalId);
+    }
     if (chatSessionId) {
       const session = await ensureSessionBelongsToUser(supabase, user.id, chatSessionId);
       if (goalId && session.goal_id !== goalId && !session.is_global) {
@@ -29,8 +43,152 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // AI Classification
-    const prompt = `Analyze this student mistake:
+    // ── Load compact goal context for Hermes ────────────────────────────────
+    if (goalId) {
+      try {
+        const goalContext = await getActiveGoalContext(supabase, user.id, goalId);
+        goalTitle = goalContext.goal.title;
+
+        // Fetch up to 5 recent weak concepts for this goal
+        const { data: weakConcepts } = await supabase
+          .from('concepts')
+          .select('subject, chapter, topic, mastery')
+          .eq('user_id', user.id)
+          .eq('goal_id', goalId)
+          .in('mastery', ['not_started', 'exposed', 'developing'])
+          .order('updated_at', { ascending: false })
+          .limit(5);
+
+        if (weakConcepts) {
+          recentWeakConcepts = weakConcepts;
+        }
+      } catch {
+        // Non-fatal: proceed without context
+        logger.warn('Failed to load goal context for Hermes', { userId: user.id, goalId });
+      }
+    }
+
+    // ── Route: Hermes or deterministic fallback ──────────────────────────────
+    let hermesResult;
+    let usedHermes = false;
+
+    if (isHermesEnabled()) {
+      try {
+        hermesResult = await runHermesMistakeAgent({
+          userId: user.id,
+          goalId: goalId ?? null,
+          chatSessionId: chatSessionId ?? null,
+          question,
+          myAnswer,
+          correctAnswer,
+          explanation: explanation ?? null,
+          goalTitle,
+          recentWeakConcepts,
+        });
+        usedHermes = true;
+      } catch (hermesErr) {
+        // Hermes failed — log internally, fall through to deterministic path
+        if (hermesErr instanceof HermesDisabledError) {
+          logger.info('Hermes disabled, using deterministic fallback', { userId: user.id });
+        } else if (isHermesError(hermesErr)) {
+          logger.warn('Hermes mistake agent failed, using deterministic fallback', {
+            userId: user.id,
+            goalId,
+            code: (hermesErr as any).code,
+          });
+        } else {
+          logger.warn('Unknown error from Hermes, using deterministic fallback', {
+            userId: user.id,
+            goalId,
+          });
+        }
+        hermesResult = buildMistakeFallback({ question, myAnswer, correctAnswer, explanation });
+      }
+    } else {
+      // Hermes disabled — use deterministic classification path (original behavior)
+      hermesResult = await runDeterministicClassification(user.id, question, myAnswer, correctAnswer, explanation);
+    }
+
+    // ── Write results to Supabase via DB writer ──────────────────────────────
+    const dbResult = await writeMistakeResult(
+      supabase,
+      user.id,
+      goalId ?? null,
+      chatSessionId ?? null,
+      {
+        userId: user.id,
+        goalId: goalId ?? null,
+        chatSessionId: chatSessionId ?? null,
+        question,
+        myAnswer,
+        correctAnswer,
+        explanation: explanation ?? null,
+        goalTitle,
+        recentWeakConcepts,
+      },
+      hermesResult
+    );
+
+    // ── Return enriched response ─────────────────────────────────────────────
+    return NextResponse.json({
+      success: true,
+      mistakeId: dbResult.mistakeId,
+      concept: dbResult.conceptId ? {
+        id: dbResult.conceptId,
+        subject: hermesResult.subject,
+        chapter: hermesResult.chapter,
+        topic: hermesResult.topic,
+        name: hermesResult.weakConcept.name,
+      } : null,
+      // Structured diagnosis (new fields from Hermes)
+      category: hermesResult.category,
+      diagnosis: hermesResult.diagnosis,
+      whyMyAnswerWasWrong: hermesResult.whyMyAnswerWasWrong,
+      whyCorrectAnswerWorks: hermesResult.whyCorrectAnswerWorks,
+      keyMissedClue: hermesResult.keyMissedClue,
+      confidence: hermesResult.confidence,
+      safetyFlags: hermesResult.safetyFlags,
+      // Cards and action
+      cardsCreated: dbResult.cardIds.length,
+      nextAction: hermesResult.nextAction,
+      // Legacy compat fields
+      classification: {
+        category: hermesResult.category,
+        subject: hermesResult.subject,
+        chapter: hermesResult.chapter,
+        topic: hermesResult.topic,
+        diagnosis: hermesResult.diagnosis,
+      },
+      // Internal metadata (stripped by UI, used for debugging)
+      _meta: {
+        usedHermes,
+        cardIds: dbResult.cardIds,
+      },
+    });
+
+  } catch (error: any) {
+    logger.error('Manual autopsy error', error);
+    // Never return raw error.message to the user
+    return NextResponse.json(
+      { error: 'Unable to analyze this mistake right now. Try again in a moment.' },
+      { status: 500 }
+    );
+  }
+}
+
+/**
+ * Deterministic classification fallback used when HERMES_ENABLED=false.
+ * Preserves original behavior from before Hermes was added.
+ * Returns a HermesMistakeResult-shaped object for unified DB write path.
+ */
+async function runDeterministicClassification(
+  userId: string,
+  question: string,
+  myAnswer: string,
+  correctAnswer: string,
+  explanation?: string | null
+): Promise<import('@/lib/hermes').HermesMistakeResult> {
+  const classifyPrompt = `Analyze this student mistake:
 Question: ${question}
 Student's Answer: ${myAnswer}
 Correct Answer: ${correctAnswer}
@@ -38,113 +196,31 @@ Explanation: ${explanation || 'None'}
 
 Return ONLY a JSON object:
 {
-  "category": "conceptual_gap" | "silly_error" | "time_pressure" | "misread" | "formula_recall" | "application" | "speed" | "exam_strategy" | "unknown",
-  "subject": "Physics" | "Chemistry" | "Biology" | "Maths",
-  "chapter": "Name of the chapter",
-  "topic": "Specific topic",
+  "category": "conceptual_gap" | "silly_error" | "time_pressure" | "misread" | "formula_recall" | "application_error" | "speed" | "exam_strategy" | "unknown",
+  "subject": "Physics" | "Chemistry" | "Biology" | "Maths" | null,
+  "chapter": "Name of the chapter" | null,
+  "topic": "Specific topic" | null,
   "diagnosis": "Brief 1 sentence explanation of why they got it wrong"
 }`;
 
-    const classification = await budgetedGenerateJSON<any>({
-      userId: user.id,
-      feature: 'autopsy',
-      route: '/api/autopsy/manual',
-      model: 'flash',
-      systemPrompt: 'You are an expert tutor analyzing student mistakes. Return ONLY valid JSON.',
-      userPrompt: prompt,
-    });
+  const classification = await budgetedGenerateJSON<any>({
+    userId,
+    feature: 'autopsy',
+    route: '/api/autopsy/manual',
+    model: 'flash',
+    systemPrompt: 'You are an expert tutor analyzing student mistakes. Return ONLY valid JSON.',
+    userPrompt: classifyPrompt,
+  });
 
-    if (!classification || !classification.category) {
-      throw new Error('Failed to classify mistake');
-    }
-
-    // 1. Ensure concept exists
-    let conceptId: string | null = null;
-    if (classification.subject && classification.chapter && classification.topic) {
-      let conceptQuery = supabase
-        .from('concepts')
-        .select('id')
-        .eq('user_id', user.id)
-        .eq('subject', classification.subject)
-        .eq('chapter', classification.chapter)
-        .eq('topic', classification.topic);
-        
-      if (goalId) {
-        conceptQuery = conceptQuery.eq('goal_id', goalId);
-      }
-      
-      const { data: existingConcept } = await conceptQuery.maybeSingle();
-
-      if (existingConcept) {
-        conceptId = existingConcept.id;
-      } else {
-        const { data: newConcept } = await supabase
-          .from('concepts')
-          .insert({
-            user_id: user.id,
-            subject: classification.subject,
-            chapter: classification.chapter,
-            topic: classification.topic,
-            name: classification.topic,
-            mastery: 'not_started',
-            ...(goalId ? { goal_id: goalId } : {}),
-            ...(chatSessionId ? { chat_session_id: chatSessionId } : {})
-          })
-          .select('id')
-          .single();
-        if (newConcept) conceptId = newConcept.id;
-      }
-    }
-
-    // 2. Create mock autopsy dummy row
-    const { data: autopsy } = await supabase
-      .from('mock_autopsies')
-      .insert({
-        user_id: user.id,
-        test_name: 'Manual Mistake Review',
-        total_marks: 4,
-        marks_obtained: -1,
-        marks_lost: 5,
-        status: 'completed',
-        completed_at: new Date().toISOString(),
-        ...(goalId ? { goal_id: goalId } : {}),
-        ...(chatSessionId ? { chat_session_id: chatSessionId } : {})
-      })
-      .select('id')
-      .single();
-
-    // 3. Create mistake row
-    const { data: mistake, error: mistakeError } = await supabase
-      .from('mistakes')
-      .insert({
-        user_id: user.id,
-        autopsy_id: autopsy?.id,
-        concept_id: conceptId,
-        category: classification.category,
-        question_text: question,
-        user_answer: myAnswer,
-        correct_answer: correctAnswer,
-        marks_lost: 5,
-        subject: classification.subject,
-        chapter: classification.chapter,
-        ...(goalId ? { goal_id: goalId } : {}),
-        ...(chatSessionId ? { chat_session_id: chatSessionId } : {})
-      })
-      .select('id')
-      .single();
-
-    if (mistakeError) throw mistakeError;
-
-    // 4. Generate revision cards using AI
-    const cardsPrompt = `Generate 3 revision cards based on this mistake:
+  const cardsPrompt = `Generate 3 revision cards based on this mistake:
 Question: ${question}
 Student's Answer: ${myAnswer}
 Correct Answer: ${correctAnswer}
 Explanation: ${explanation || 'None'}
-Diagnosis: ${classification.diagnosis}
-Mistake Type: ${classification.category}
+Diagnosis: ${classification?.diagnosis || ''}
+Mistake Type: ${classification?.category || 'unknown'}
 
-Return ONLY a JSON object with this format:
+Return ONLY a JSON object:
 {
   "cards": [
     { "front": "...", "back": "...", "type": "mistake_concept" },
@@ -154,74 +230,60 @@ Return ONLY a JSON object with this format:
   "nextAction": "..."
 }`;
 
-    const cardsResult = await budgetedGenerateJSON<{ cards: any[], nextAction: string }>({
-      userId: user.id,
-      feature: 'autopsy',
-      route: '/api/autopsy/manual',
-      model: 'flash',
-      systemPrompt: 'You are an expert tutor generating flashcards for mistake revision. Return ONLY valid JSON.',
-      userPrompt: cardsPrompt,
+  const cardsResult = await budgetedGenerateJSON<{ cards: any[]; nextAction: string }>({
+    userId,
+    feature: 'autopsy',
+    route: '/api/autopsy/manual',
+    model: 'flash',
+    systemPrompt: 'You are an expert tutor generating flashcards for mistake revision. Return ONLY valid JSON.',
+    userPrompt: cardsPrompt,
+  });
+
+  // Map to HermesMistakeResult shape for unified DB write
+  const category = classification?.category ?? 'unknown';
+  const cards = (cardsResult?.cards ?? []).map((c: any) => ({
+    front: String(c.front ?? ''),
+    back: String(c.back ?? ''),
+    type: (c.type ?? 'mistake_concept') as import('@/lib/hermes').HermesCard['type'],
+    difficulty: 'medium' as const,
+  }));
+
+  if (cards.length === 0) {
+    // Ensure at least 1 card
+    cards.push({
+      front: `What is the correct answer to: ${question.slice(0, 100)}?`,
+      back: correctAnswer.slice(0, 500),
+      type: 'mistake_concept',
+      difficulty: 'medium',
     });
-
-    let cardsCreated = 0;
-    if (cardsResult?.cards && Array.isArray(cardsResult.cards)) {
-      const cardsToInsert = cardsResult.cards.map((card) => ({
-        user_id: user.id,
-        concept_id: conceptId,
-        front: card.front,
-        back: card.back,
-        card_type: 'mistake',
-        state: 0, // 'new' represented by 0 integer
-        due: new Date().toISOString(),
-        source_type: 'manual_mistake_review',
-        metadata: {
-          mistakeId: mistake?.id,
-          category: classification.category,
-          generated_type: card.type,
-          question_snippet: question.substring(0, 100),
-        },
-        subject: classification.subject,
-        chapter: classification.chapter,
-        topic: classification.topic,
-        ...(goalId ? { goal_id: goalId } : {}),
-        ...(chatSessionId ? { chat_session_id: chatSessionId } : {})
-      }));
-
-      const { data: insertedCards, error: cardsError } = await supabase
-        .from('revision_cards')
-        .insert(cardsToInsert)
-        .select('id');
-        
-      if (!cardsError && insertedCards) {
-        cardsCreated = insertedCards.length;
-      } else if (cardsError) {
-        logger.warn('Failed to insert revision cards for manual mistake', { error: cardsError.message });
-      }
-    }
-
-    // Emit event
-    let mistakeId: string | null = null;
-    if (mistake) mistakeId = mistake.id;
-    await supabase.from('student_events').insert({
-      user_id: user.id,
-      type: 'MISTAKE_LOGGED_MANUALLY',
-      data: {
-        mistakeId,
-        goalId,
-        chatSessionId,
-      }
-    });
-
-    return NextResponse.json({ 
-      success: true, 
-      mistakeId: mistake?.id, 
-      classification,
-      cardsCreated,
-      nextAction: cardsResult?.nextAction
-    });
-
-  } catch (error: any) {
-    logger.error('Manual autopsy error', error);
-    return NextResponse.json({ error: 'Unable to analyze this mistake right now. Try again in a moment.' }, { status: 500 });
   }
+
+  return {
+    category,
+    subject: classification?.subject ?? null,
+    chapter: classification?.chapter ?? null,
+    topic: classification?.topic ?? null,
+    diagnosis: classification?.diagnosis ?? 'No diagnosis available.',
+    whyMyAnswerWasWrong: `Your answer "${myAnswer.slice(0, 100)}" was not correct.`,
+    whyCorrectAnswerWorks: explanation ?? `The correct answer is: ${correctAnswer.slice(0, 300)}`,
+    keyMissedClue: null,
+    confidence: 'medium' as const,
+    weakConcept: {
+      subject: classification?.subject ?? null,
+      chapter: classification?.chapter ?? null,
+      topic: classification?.topic ?? null,
+      name: classification?.topic ?? 'Unknown concept',
+    },
+    cards,
+    nextAction: {
+      label: typeof cardsResult?.nextAction === 'string' ? cardsResult.nextAction : 'Review your revision cards',
+      rationale: 'Active recall helps retention after a mistake.',
+      estimatedMinutes: 5,
+      actionType: 'review_cards' as const,
+    },
+    safetyFlags: {
+      possibleHallucination: false,
+      needsHumanReview: false,
+    },
+  };
 }
