@@ -58,7 +58,7 @@ export function RealtimeProvider({ children }: { children: React.ReactNode }) {
             // Handle different event types dynamically
             switch (type) {
               case 'CONCEPT_DISCOVERED':
-                addToast('Knowledge gap detected. Adjusting Atlas mastery...', 'info');
+                addToast('Knowledge gap detected. Adjusting Progress...', 'info');
                 debouncedRefresh();
                 break;
               case 'AUTOPSY_MOCK_PROCESSED':

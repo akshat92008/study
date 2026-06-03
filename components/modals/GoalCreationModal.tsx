@@ -49,6 +49,7 @@ export default function GoalCreationModal({ onClose }: { onClose: () => void }) 
   const [learningStyle, setLearningStyle] = useState('read_write');
   const [dailyHours, setDailyHours] = useState(8);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showAdvanced, setShowAdvanced] = useState(false);
 
   const handleAddGoal = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -136,97 +137,109 @@ export default function GoalCreationModal({ onClose }: { onClose: () => void }) 
             />
           </div>
 
-          <div style={{ display: 'flex', gap: 'var(--sp-3)' }}>
-            <InputField
-              label="Subject"
-              value={subject}
-              onChange={setSubject}
-              placeholder="Physics, Math, Biology"
-            />
-            <InputField
-              label="Target Level"
-              value={targetLevel}
-              onChange={setTargetLevel}
-              placeholder="NEET, SAT, USMLE"
-            />
-          </div>
+          {showAdvanced && (
+            <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)', marginTop: 'var(--sp-2)' }}>
+              <div style={{ display: 'flex', gap: 'var(--sp-3)' }}>
+                <InputField
+                  label="Subject"
+                  value={subject}
+                  onChange={setSubject}
+                  placeholder="Physics, Math, Biology"
+                />
+                <InputField
+                  label="Target Level"
+                  value={targetLevel}
+                  onChange={setTargetLevel}
+                  placeholder="NEET, SAT, USMLE"
+                />
+              </div>
 
-          {/* Deadline */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-1)' }}>
-            <label style={{ fontSize: 'var(--fs-xs)', fontWeight: 'bold', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>
-              Target Date
-            </label>
-            <input
-              type="date"
-              value={deadline}
-              onChange={(e) => setDeadline(e.target.value)}
-              style={{
-                background: 'var(--bg-secondary)', border: '1px solid var(--border-default)',
-                borderRadius: 'var(--radius-md)', padding: '10px 12px', color: 'var(--text-primary)',
-                fontSize: 'var(--fs-sm)', outline: 'none', width: '100%'
-              }}
-              onFocus={e => e.currentTarget.style.borderColor = 'var(--accent-purple)'}
-              onBlur={e => e.currentTarget.style.borderColor = 'var(--border-default)'}
-            />
-          </div>
+              {/* Deadline */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-1)' }}>
+                <label style={{ fontSize: 'var(--fs-xs)', fontWeight: 'bold', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>
+                  Target Date
+                </label>
+                <input
+                  type="date"
+                  value={deadline}
+                  onChange={(e) => setDeadline(e.target.value)}
+                  style={{
+                    background: 'var(--bg-secondary)', border: '1px solid var(--border-default)',
+                    borderRadius: 'var(--radius-md)', padding: '10px 12px', color: 'var(--text-primary)',
+                    fontSize: 'var(--fs-sm)', outline: 'none', width: '100%'
+                  }}
+                  onFocus={e => e.currentTarget.style.borderColor = 'var(--accent-purple)'}
+                  onBlur={e => e.currentTarget.style.borderColor = 'var(--border-default)'}
+                />
+              </div>
 
-          {/* Level & Style Row */}
-          <div style={{ display: 'flex', gap: 'var(--sp-3)' }}>
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 'var(--sp-1)' }}>
-              <label style={{ fontSize: 'var(--fs-xs)', fontWeight: 'bold', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>
-                Current Level
-              </label>
-              <select
-                value={currentLevel}
-                onChange={(e) => setCurrentLevel(e.target.value)}
-                style={{
-                  background: 'var(--bg-secondary)', border: '1px solid var(--border-default)',
-                  borderRadius: 'var(--radius-md)', padding: '10px 12px', color: 'var(--text-primary)',
-                  fontSize: 'var(--fs-sm)', outline: 'none', width: '100%', cursor: 'pointer'
-                }}
-              >
-                <option value="beginner">Beginner</option>
-                <option value="intermediate">Intermediate</option>
-                <option value="advanced">Advanced</option>
-              </select>
-            </div>
+              {/* Level & Style Row */}
+              <div style={{ display: 'flex', gap: 'var(--sp-3)' }}>
+                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 'var(--sp-1)' }}>
+                  <label style={{ fontSize: 'var(--fs-xs)', fontWeight: 'bold', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>
+                    Current Level
+                  </label>
+                  <select
+                    value={currentLevel}
+                    onChange={(e) => setCurrentLevel(e.target.value)}
+                    style={{
+                      background: 'var(--bg-secondary)', border: '1px solid var(--border-default)',
+                      borderRadius: 'var(--radius-md)', padding: '10px 12px', color: 'var(--text-primary)',
+                      fontSize: 'var(--fs-sm)', outline: 'none', width: '100%', cursor: 'pointer'
+                    }}
+                  >
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                  </select>
+                </div>
 
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 'var(--sp-1)' }}>
-              <label style={{ fontSize: 'var(--fs-xs)', fontWeight: 'bold', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>
-                Learning Style
-              </label>
-              <select
-                value={learningStyle}
-                onChange={(e) => setLearningStyle(e.target.value)}
-                style={{
-                  background: 'var(--bg-secondary)', border: '1px solid var(--border-default)',
-                  borderRadius: 'var(--radius-md)', padding: '10px 12px', color: 'var(--text-primary)',
-                  fontSize: 'var(--fs-sm)', outline: 'none', width: '100%', cursor: 'pointer'
-                }}
-              >
-                <option value="read_write">Text & Writing</option>
-                <option value="visual">Visual diagrams</option>
-                <option value="auditory">Auditory & lectures</option>
-                <option value="kinesthetic">Practical projects</option>
-              </select>
-            </div>
-          </div>
+                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 'var(--sp-1)' }}>
+                  <label style={{ fontSize: 'var(--fs-xs)', fontWeight: 'bold', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>
+                    Learning Style
+                  </label>
+                  <select
+                    value={learningStyle}
+                    onChange={(e) => setLearningStyle(e.target.value)}
+                    style={{
+                      background: 'var(--bg-secondary)', border: '1px solid var(--border-default)',
+                      borderRadius: 'var(--radius-md)', padding: '10px 12px', color: 'var(--text-primary)',
+                      fontSize: 'var(--fs-sm)', outline: 'none', width: '100%', cursor: 'pointer'
+                    }}
+                  >
+                    <option value="read_write">Text & Writing</option>
+                    <option value="visual">Visual diagrams</option>
+                    <option value="auditory">Auditory & lectures</option>
+                    <option value="kinesthetic">Practical projects</option>
+                  </select>
+                </div>
+              </div>
 
-          {/* Daily Study Hours */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-1)' }}>
-            <label style={{ display: 'flex', justifyContent: 'space-between', fontSize: 'var(--fs-xs)', fontWeight: 'bold', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>
-              <span>Daily Hours Allocated</span>
-              <span style={{ color: 'var(--accent-purple)' }}>{dailyHours} hours/day</span>
-            </label>
-            <input
-              type="range"
-              min={1}
-              max={16}
-              value={dailyHours}
-              onChange={(e) => setDailyHours(Number(e.target.value))}
-              style={{ accentColor: 'var(--accent-purple)', cursor: 'pointer' }}
-            />
-          </div>
+              {/* Daily Study Hours */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-1)' }}>
+                <label style={{ display: 'flex', justifyContent: 'space-between', fontSize: 'var(--fs-xs)', fontWeight: 'bold', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>
+                  <span>Daily Hours Allocated</span>
+                  <span style={{ color: 'var(--accent-purple)' }}>{dailyHours} hours/day</span>
+                </label>
+                <input
+                  type="range"
+                  min={1}
+                  max={16}
+                  value={dailyHours}
+                  onChange={(e) => setDailyHours(Number(e.target.value))}
+                  style={{ accentColor: 'var(--accent-purple)', cursor: 'pointer' }}
+                />
+              </div>
+            </motion.div>
+          )}
+
+          <button
+            type="button"
+            onClick={() => setShowAdvanced(!showAdvanced)}
+            style={{ background: 'transparent', border: 'none', color: 'var(--text-tertiary)', fontSize: 'var(--fs-xs)', cursor: 'pointer', textAlign: 'left', marginTop: 'var(--sp-2)' }}
+          >
+            {showAdvanced ? 'Hide Advanced Options' : '+ Advanced Options (Optional)'}
+          </button>
 
           {/* Actions */}
           <div style={{ display: 'flex', gap: 'var(--sp-3)', marginTop: 'var(--sp-2)' }}>

@@ -19,11 +19,11 @@ export default function ShareCard({
   const cardRef = useRef<HTMLDivElement>(null);
 
   const handleShare = async () => {
-    const shareText = `🧠 ${examType} Mock Autopsy by Cognition OS\n\n📊 Score: ${currentScore}\n🎯 Potential: ${potentialScore}\n💚 Recoverable: +${recoverableMarks} marks\n\n"${mentorQuote}"\n\n#CognitionOS #${examType}`;
+    const shareText = `🧠 ${examType} Mistake Review by Cognition OS\n\n📊 Score: ${currentScore}\n🎯 Potential: ${potentialScore}\n💚 Recoverable: +${recoverableMarks} marks\n\n"${mentorQuote}"\n\n#CognitionOS #${examType}`;
 
     if (navigator.share) {
       try {
-        await navigator.share({ title: 'My Mock Autopsy — Cognition OS', text: shareText });
+        await navigator.share({ title: 'My Mistake Review — Cognition OS', text: shareText });
       } catch { /* user cancelled */ }
     } else {
       await navigator.clipboard.writeText(shareText);

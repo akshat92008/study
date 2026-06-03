@@ -500,7 +500,7 @@ export default function DailySessionFocus({
             </Card>
 
             <div style={{ marginTop: 'auto', textAlign: 'center', fontSize: '11px', color: 'var(--text-tertiary)' }}>
-              🤖 Auto-syncing memory queues...
+              🤖 Auto-syncing review queues...
             </div>
           </div>
         )}

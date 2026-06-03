@@ -828,7 +828,8 @@ export class EventWorkerService {
           payload.goalId ?? null,
           payload.chatSessionId ?? null,
           input,
-          result
+          result,
+          event.id
         );
 
         return { status: 'HANDLED' };
@@ -855,18 +856,18 @@ export class EventWorkerService {
         // Load material context (first 10 chunks)
         const { data: chunks } = await supabase
           .from('study_material_chunks')
-          .select('content')
+          .select('text')
           .eq('material_id', payload.materialId)
           .order('chunk_index', { ascending: true })
           .limit(10);
           
-        const materialContent = (chunks ?? []).map(c => c.content).join('\n\n');
+        const materialContent = (chunks ?? []).map(c => c.text).join('\n\n');
         
         const result = await runHermesSourceAgent({
           userId: event.user_id,
           materialId: payload.materialId,
           title: payload.title ?? 'Untitled Material',
-          compactChunks: (chunks ?? []).map(c => c.content),
+          compactChunks: (chunks ?? []).map(c => c.text),
         });
         
         await writeSourceResult(

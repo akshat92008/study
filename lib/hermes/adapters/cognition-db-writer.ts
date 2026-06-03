@@ -92,9 +92,34 @@ export async function writeMistakeResult(
   goalId: string | null | undefined,
   chatSessionId: string | null | undefined,
   mistakeInput: HermesMistakeInput,
-  hermesResult: HermesMistakeResult
+  hermesResult: HermesMistakeResult,
+  eventId?: string
 ): Promise<WriteMistakeResultOutput> {
   await assertHermesWriteScope(supabase, { userId, goalId, chatSessionId });
+
+  if (eventId) {
+    const { data: existing } = await supabase
+      .from('mistakes')
+      .select('id, concept_id')
+      .eq('user_id', userId)
+      .eq('metadata->>eventId', eventId)
+      .maybeSingle();
+
+    if (existing) {
+      const { data: cards } = await supabase
+        .from('revision_cards')
+        .select('id')
+        .eq('user_id', userId)
+        .eq('metadata->>eventId', eventId);
+
+      return {
+        mistakeId: existing.id,
+        conceptId: existing.concept_id,
+        cardIds: cards ? cards.map((c: any) => c.id) : [],
+        autopsyId: null,
+      };
+    }
+  }
 
   // ── 1. Ensure/create concept scoped to goal ──────────────────────────────
   let conceptId: string | null = null;
@@ -190,6 +215,7 @@ export async function writeMistakeResult(
         confidence: hermesResult.confidence,
         safetyFlags: hermesResult.safetyFlags,
         generatedByHermes: true,
+        ...(eventId ? { eventId } : {}),
       },
       ...(goalId ? { goal_id: goalId } : {}),
       ...(chatSessionId ? { chat_session_id: chatSessionId } : {}),
@@ -224,6 +250,7 @@ export async function writeMistakeResult(
         difficulty: card.difficulty,
         question_snippet: mistakeInput.question.substring(0, 100),
         generatedByHermes: true,
+        ...(eventId ? { eventId } : {}),
       },
       subject: hermesResult.subject,
       chapter: hermesResult.chapter,
@@ -519,11 +546,14 @@ export async function writeNextActionResult(
     const tasksToInsert = result.microtasks.map(task => ({
       user_id: userId,
       goal_id: goalId,
-      task_type: task.type,
+      task_date: today,
+      type: task.type,
       title: task.title,
-      description: task.title,
       status: 'pending',
-      metadata: { generatedByHermes: true, estimatedMinutes: task.estimatedMinutes }
+      priority: 'medium',
+      source: 'system',
+      estimated_minutes: task.estimatedMinutes,
+      metadata: { generatedByHermes: true }
     }));
 
     await supabase.from('daily_microtasks').insert(tasksToInsert);

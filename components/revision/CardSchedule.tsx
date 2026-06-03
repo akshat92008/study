@@ -110,7 +110,7 @@ export default function CardSchedule({ cards }: CardScheduleProps) {
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)', marginBottom: 'var(--sp-4)' }}>
           <Shield size={16} style={{ color: 'var(--success)' }} />
           <span style={{ fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-semibold)' }}>
-            Memory Stability Distribution
+            Review Stability Distribution
           </span>
         </div>
         <div style={{ display: 'flex', gap: 'var(--sp-3)' }}>

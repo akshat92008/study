@@ -241,7 +241,7 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)', paddingRight: '4px', overflowY: 'auto' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
-              <h2 style={{ fontSize: 'var(--fs-lg)', fontWeight: 'var(--fw-bold)' }}>Command Center</h2>
+              <h2 style={{ fontSize: 'var(--fs-lg)', fontWeight: 'var(--fw-bold)' }}>Today's Mission</h2>
               <p style={{ color: 'var(--text-tertiary)', fontSize: 'var(--fs-xs)' }}>Habit First, Intelligence Second</p>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 4, background: 'rgba(249, 115, 22, 0.12)', padding: '4px 10px', borderRadius: 'var(--radius-full)' }}>

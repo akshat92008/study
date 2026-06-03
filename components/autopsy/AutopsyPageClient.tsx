@@ -270,7 +270,50 @@ export default function AutopsyPageClient({ result: initialResult }: Props) {
 
       {/* Results */}
       {result ? (
-        <AutopsyDashboard result={result} />
+        result.diagnosis && !result.chapterLoss ? (
+          <div style={{ background: 'var(--bg-secondary)', padding: 'var(--sp-6)', borderRadius: 'var(--radius-lg)' }}>
+            <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 'var(--fw-bold)', marginBottom: 'var(--sp-4)' }}>Mistake Diagnosis</h3>
+            
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
+              <div>
+                <strong style={{ color: 'var(--danger)' }}>Why your answer was wrong:</strong>
+                <p style={{ marginTop: 4 }}>{result.whyMyAnswerWasWrong}</p>
+              </div>
+              
+              <div>
+                <strong style={{ color: 'var(--success)' }}>Why the correct answer works:</strong>
+                <p style={{ marginTop: 4 }}>{result.whyCorrectAnswerWorks}</p>
+              </div>
+
+              {result.keyMissedClue && (
+                <div>
+                  <strong style={{ color: 'var(--accent-purple)' }}>Key missed clue:</strong>
+                  <p style={{ marginTop: 4 }}>{result.keyMissedClue}</p>
+                </div>
+              )}
+
+              <div>
+                <strong style={{ color: 'var(--accent-cyan)' }}>Category:</strong>
+                <span style={{ marginLeft: 8, background: 'var(--bg-tertiary)', padding: '4px 8px', borderRadius: 4 }}>{result.category}</span>
+              </div>
+
+              {result.cardsCreated > 0 && (
+                <div style={{ marginTop: 'var(--sp-2)', fontSize: 'var(--fs-sm)', color: 'var(--success)' }}>
+                  ✓ Generated {result.cardsCreated} revision cards.
+                </div>
+              )}
+
+              {result.nextAction && (
+                <div style={{ background: 'var(--bg-tertiary)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', marginTop: 'var(--sp-2)' }}>
+                  <strong>Next Action:</strong> {result.nextAction.label}
+                  <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)', marginTop: 4 }}>{result.nextAction.rationale}</p>
+                </div>
+              )}
+            </div>
+          </div>
+        ) : (
+          <AutopsyDashboard result={result} />
+        )
       ) : (
         <div style={{ textAlign: 'center', padding: 'var(--sp-8)', color: 'var(--text-tertiary)' }}>
           <FileText size={48} style={{ marginBottom: 12, opacity: 0.3 }} />

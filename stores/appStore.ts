@@ -331,7 +331,12 @@ export const useAppStore = create<AppState>()(
               preferredLearningStyle: details?.preferredLearningStyle,
             }),
           });
-          if (!res.ok) return null;
+          if (!res.ok) {
+            const errText = await res.text();
+            console.error('Failed to create learning goal (API):', res.status, errText);
+            get().addToast(`Failed to create goal: ${res.status} ${errText}`, 'error');
+            return null;
+          }
           const apiRes = await res.json();
           const goalData = apiRes.goal as LearningGoal | null;
 
@@ -348,8 +353,9 @@ export const useAppStore = create<AppState>()(
             get().loadDashboardForActiveGoal();
             return goalData;
           }
-        } catch (err) {
+        } catch (err: any) {
           console.error('Failed to create learning goal:', err);
+          get().addToast(`Failed to create goal: ${err.message}`, 'error');
         }
         return null;
       },
