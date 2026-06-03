@@ -302,7 +302,7 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
       nvidia: {
       name: 'nvidia',
       baseUrl: 'https://integrate.api.nvidia.com/v1',
-      apiKey: process.env.NVIDIA_API_KEY,
+      apiKey: process.env.NVIDIA_API_KEY_2 || process.env.NVIDIA_API_KEY,
       models: {
         quality: 'meta/llama-3.3-70b-instruct', // best reasoning model
         fast: 'meta/llama-3.1-8b-instruct',   // faster, cheaper
