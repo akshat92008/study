@@ -12,11 +12,18 @@ export const MASTERY_WEIGHTS: Record<string, number> = {
   not_started: 0, exposed: 15, developing: 40, proficient: 70, mastered: 90, automated: 98,
 };
 
-export async function getCognitionGraph(userId: string) {
+export async function getCognitionGraph(userId: string, goalId?: string | null) {
   const supabase = await createClient();
 
+  let conceptsQuery = supabase
+    .from('concepts')
+    .select('*')
+    .eq('user_id', userId)
+    .order('subject', { ascending: true });
+  if (goalId) conceptsQuery = conceptsQuery.eq('goal_id', goalId);
+
   const [conceptsRes, linksRes] = await Promise.all([
-    supabase.from('concepts').select('*').eq('user_id', userId).order('subject', { ascending: true }),
+    conceptsQuery,
     supabase.from('concept_links').select('*').eq('user_id', userId)
   ]);
 
@@ -25,7 +32,9 @@ export async function getCognitionGraph(userId: string) {
 
   const grouped: Record<string, Record<string, Record<string, any[]>>> = {};
 
-  const { data: cards } = await supabase.from('revision_cards').select('concept_id, stability').eq('user_id', userId);
+  let cardsQuery = supabase.from('revision_cards').select('concept_id, stability').eq('user_id', userId);
+  if (goalId) cardsQuery = cardsQuery.eq('goal_id', goalId);
+  const { data: cards } = await cardsQuery;
   const stabilityMap: Record<string, number> = {};
   if (cards) {
     cards.forEach(c => {

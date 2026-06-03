@@ -1306,10 +1306,10 @@ export async function routeMultimodalJSONExtraction<T>(
   }
 
   if (!sawCapableProvider && isPdf) {
-    throw new Error('PDF AUTOPSY extraction requires a configured PDF-capable provider. Configure GEMINI_API_KEY or upload extracted text.');
+    throw new Error('PDF Mistake Review extraction requires a configured PDF-capable provider or extracted text.');
   }
 
-  throw new Error(`No configured provider could process ${fileData.mimeType} for AUTOPSY extraction.`);
+  throw new Error(`No configured provider could process ${fileData.mimeType} for Mistake Review extraction.`);
 }
 
 export async function routeAudioSynthesis(script: string): Promise<string | null> {

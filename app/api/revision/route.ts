@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { getDueCards, reviewCard } from '@/lib/engines/revision-engine';
+import { getDueCards, getRevisionStats, reviewCard } from '@/lib/engines/revision-engine';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
+import { ensureGoalForUser } from '@/lib/services/goal-context.service';
 
 export async function GET(request: NextRequest) {
   try {
@@ -27,8 +28,14 @@ export async function GET(request: NextRequest) {
     if (!allowed) return rateLimitResponse(remaining, resetAt);
 
     const userId = user.id;
-    const dueCards = await getDueCards(userId);
-    return NextResponse.json({ dueCards }, { headers: { 'x-request-id': requestId } });
+    const { searchParams } = new URL(request.url);
+    const goalId = searchParams.get('goalId');
+    if (goalId) await ensureGoalForUser(supabase, userId, goalId);
+    const [dueCards, stats] = await Promise.all([
+      getDueCards(userId, 75, goalId),
+      getRevisionStats(userId, goalId),
+    ]);
+    return NextResponse.json({ dueCards, stats }, { headers: { 'x-request-id': requestId } });
   } catch (error: any) {
     return unexpectedApiErrorResponse(request, error, 'revision', 'Unable to load revision cards.');
   }

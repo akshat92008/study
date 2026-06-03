@@ -9,6 +9,11 @@ import { validateMagicBytesArray } from '@/lib/utils/magicBytes';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { logger } from '@/lib/utils/logger';
 import { featureFlags } from '@/lib/config/flags';
+import {
+  ensureGoalForUser,
+  ensureSessionBelongsToUser,
+  ensureSessionGoalLink,
+} from '@/lib/services/goal-context.service';
 
 function sanitizeFilename(value: string): string {
   return value
@@ -49,6 +54,21 @@ export async function POST(req: NextRequest) {
 
     const config = getRagConfig();
     const formData = await req.formData();
+    const goalId = formString(formData.get('goalId'));
+    const chatSessionId = formString(formData.get('chatSessionId'));
+    if (goalId) await ensureGoalForUser(supabase, user.id, goalId);
+    if (chatSessionId) {
+      const session = await ensureSessionBelongsToUser(supabase, user.id, chatSessionId);
+      if (goalId && session.goal_id !== goalId && !session.is_global) {
+        await ensureSessionGoalLink(supabase, user.id, chatSessionId, goalId);
+      } else if (goalId && session.is_global) {
+        return apiErrorResponse('invalid_session', {
+          status: 400,
+          message: 'Use a goal-linked chat session for goal sources.',
+          requestId,
+        });
+      }
+    }
     const file = formData.get('file') as File | null;
     if (!file) {
       logger.warn('Upload rejected: no file provided', { userId: user.id, requestId });
@@ -119,8 +139,19 @@ export async function POST(req: NextRequest) {
       .neq('status', 'archived')
       .maybeSingle();
     if (duplicate) {
+      if (goalId || chatSessionId) {
+        await supabase
+          .from('study_materials')
+          .update({
+            goal_id: goalId,
+            chat_session_id: chatSessionId,
+            updated_at: new Date().toISOString(),
+          })
+          .eq('id', duplicate.id)
+          .eq('user_id', user.id);
+      }
       return NextResponse.json({
-        material: duplicate,
+        material: { ...duplicate, goal_id: goalId, chat_session_id: chatSessionId },
         duplicate: true,
       }, { status: 200, headers: { 'x-request-id': requestId } });
     }
@@ -153,6 +184,8 @@ export async function POST(req: NextRequest) {
         language: formString(formData.get('language')) || 'en',
         status: 'uploaded',
         content_hash: contentHash,
+        goal_id: goalId,
+        chat_session_id: chatSessionId,
       })
       .select('id, title, status')
       .single();
@@ -184,23 +217,13 @@ export async function POST(req: NextRequest) {
     await EventDispatcher.publish({
       user_id: user.id,
       type: 'MATERIAL_UPLOADED',
-      data: { materialId: material.id },
-      metadata: { source: 'materials_upload' },
+      data: { materialId: material.id, goalId, chatSessionId },
+      metadata: { source: 'materials_upload', goalId, chatSessionId },
       idempotency_key: `material_uploaded:${material.id}`,
     });
 
     logger.info('Upload accepted', { userId: user.id, materialId: material.id, mimeType, fileSize: file.size, requestId });
 
-    // Ensure the event queue gets processed in Vercel immediately
-    const { after } = await import('next/server');
-    after(async () => {
-      try {
-        const { EventWorkerService } = await import('@/lib/events/worker');
-        await EventWorkerService.processBatch(25, 5, 50_000, Date.now());
-      } catch (err) {
-        console.error('Failed to run background event worker:', err);
-      }
-    });
 
     return NextResponse.json({
       material: {

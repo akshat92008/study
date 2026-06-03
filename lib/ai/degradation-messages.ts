@@ -32,8 +32,8 @@ const MESSAGES: Record<DegradationContext, string[]> = {
     "The AI service needed for mock test generation is temporarily busy. Please try again shortly.",
   ],
   autopsy: [
-    "Test analysis (AUTOPSY) is temporarily unavailable. Your upload has been saved — it will be processed when the service recovers.",
-    "AUTOPSY is catching up with demand. Your test file is queued and will be analysed automatically.",
+    "Mistake Review is temporarily unavailable. Your upload has been saved and will be processed when the service recovers.",
+    "Mistake Review is catching up with demand. Your test file is queued and will be analyzed automatically.",
   ],
   pdf: [
     "I couldn't process that document right now. Please try again, or paste the key text directly in the chat.",

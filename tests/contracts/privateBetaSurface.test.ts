@@ -14,7 +14,7 @@ describe('private beta MVP surface', () => {
     const commandBar = read('components/ui/CommandBar.tsx');
     const navText = `${sidebar}\n${commandBar}`;
 
-    for (const label of ['Today', 'NotebookLM', 'MIND', 'Test Analysis', 'Progress']) {
+    for (const label of ['Today', 'Sources', 'AI Tutor', 'Mistake Review', 'Progress']) {
       expect(navText).toContain(label);
     }
     expect(navText).toContain("feature: 'ENABLE_KNOWLEDGE_UI'");

@@ -222,7 +222,7 @@ export async function processMockAutopsy(
 ): Promise<any> {
   if (fileData.kind === 'text' && textNeedsAnswerEvidence(fileData.text)) {
     throw new AutopsyNeedsUserInputError(
-      'AUTOPSY needs answer evidence before it can classify mistakes. Upload an answer key, student answers, OMR sheet, or result sheet with the question paper.'
+      'Mistake Review needs answer evidence before it can classify mistakes. Upload an answer key, student answers, OMR sheet, or result sheet with the question paper.'
     );
   }
 
@@ -258,7 +258,7 @@ export async function processMockAutopsy(
   if (allQuestions.length === 0) {
     if (/needs_user_input/i.test(paper.overallPaperQuality || '')) {
       throw new AutopsyNeedsUserInputError(
-        'AUTOPSY needs answer evidence before it can classify mistakes. Upload an answer key, student answers, OMR sheet, or result sheet with the question paper.'
+        'Mistake Review needs answer evidence before it can classify mistakes. Upload an answer key, student answers, OMR sheet, or result sheet with the question paper.'
       );
     }
     throw new AutopsyExtractionError(

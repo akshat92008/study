@@ -89,7 +89,7 @@ export function computeNextReview(
   return { nextDueAt, newStability: stability, newDifficulty: difficulty };
 }
 
-export async function getDueCards(userId: string, limit: number = 75) {
+export async function getDueCards(userId: string, limit: number = 75, goalId?: string | null) {
   const supabase = await createClient();
   const now = new Date().toISOString();
 
@@ -103,6 +103,7 @@ export async function getDueCards(userId: string, limit: number = 75) {
     .select('*')
     .eq('user_id', userId)
     .lte('due', now);
+  if (goalId) query = query.eq('goal_id', goalId);
 
   const { data } = await query
     .order('due', { ascending: true })
@@ -113,10 +114,12 @@ export async function getDueCards(userId: string, limit: number = 75) {
   return data || [];
 }
 
-export async function getRevisionStats(userId: string) {
+export async function getRevisionStats(userId: string, goalId?: string | null) {
   const supabase = await createClient();
 
-  const { data: cards } = await supabase.from('revision_cards').select('due, state, stability').eq('user_id', userId);
+  let query = supabase.from('revision_cards').select('due, state, stability').eq('user_id', userId);
+  if (goalId) query = query.eq('goal_id', goalId);
+  const { data: cards } = await query;
   if (!cards) return { total: 0, due: 0, new: 0, learning: 0, mature: 0, averageRetention: 0 };
 
   const due = cards.filter(c => new Date(c.due) <= new Date());
@@ -250,7 +253,7 @@ export async function reviewCard(cardId: string, rating: 1 | 2 | 3 | 4, response
           d.setDate(d.getDate() + 1); // schedule for tomorrow
           await supabase.from('study_tasks').insert({
             user_id: row.user_id,
-            title: `[Deep Review Required] Repeated failures on ${concept.chapter}. Trigger MIND Tutor session.`,
+            title: `[Deep Review Required] Repeated failures on ${concept.chapter}. Start an AI Tutor session.`,
             scheduled_date: d.toISOString(),
             estimated_minutes: 30,
             priority: 'critical',

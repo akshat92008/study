@@ -10,6 +10,11 @@ import { createAutopsyJob } from '@/lib/services/autopsy-jobs';
 import { logger } from '@/lib/utils/logger';
 import { withRateLimit } from '@/lib/middleware/withRateLimit';
 import { apiErrorResponse, getRequestId } from '@/lib/api/errors';
+import {
+  ensureGoalForUser,
+  ensureSessionBelongsToUser,
+  ensureSessionGoalLink,
+} from '@/lib/services/goal-context.service';
 
 import {
   consumeUsageLimit,
@@ -46,11 +51,15 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
     let mimeType = 'text/plain';
     let idempotencyKey = request.headers.get('Idempotency-Key');
     let asyncRequested = true; // Forced true for beta
+    let goalId: string | null = null;
+    let chatSessionId: string | null = null;
 
     if (contentType.includes('application/json')) {
       const body = await request.json();
       testName = body.testName || body.fileName || testName;
       requestedExamType = body.examType;
+      goalId = typeof body.goalId === 'string' && body.goalId.trim() ? body.goalId.trim() : null;
+      chatSessionId = typeof body.chatSessionId === 'string' && body.chatSessionId.trim() ? body.chatSessionId.trim() : null;
       asyncRequested = asyncRequested || body.async === true || body.processAsync === true;
       if (!idempotencyKey && typeof body.idempotencyKey === 'string') {
         idempotencyKey = body.idempotencyKey;
@@ -97,6 +106,10 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
       const formData = await request.formData();
       const file = formData.get('file') as File | null;
       testName = (formData.get('testName') as string) || testName;
+      const formGoalId = formData.get('goalId');
+      const formChatSessionId = formData.get('chatSessionId');
+      goalId = typeof formGoalId === 'string' && formGoalId.trim() ? formGoalId.trim() : null;
+      chatSessionId = typeof formChatSessionId === 'string' && formChatSessionId.trim() ? formChatSessionId.trim() : null;
       idempotencyKey = idempotencyKey || (formData.get('idempotencyKey') as string | null);
       asyncRequested = asyncRequested || formData.get('async') === 'true';
       const correctMarksStr = formData.get('correctMarks') as string;
@@ -139,6 +152,16 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
       return apiError('invalid_file', 'No upload content was provided.', 400);
     }
 
+    if (goalId) await ensureGoalForUser(supabase, userId, goalId);
+    if (chatSessionId) {
+      const session = await ensureSessionBelongsToUser(supabase, userId, chatSessionId);
+      if (goalId && session.goal_id !== goalId && !session.is_global) {
+        await ensureSessionGoalLink(supabase, userId, chatSessionId, goalId);
+      } else if (goalId && session.is_global) {
+        return apiError('invalid_session', 'Use a goal-linked chat session for Mistake Review uploads.', 400);
+      }
+    }
+
     if (fileData.kind === 'text') {
       const promptLength = validatePromptLength(fileData.text);
       if (!promptLength.allowed) return usageGateResponse(promptLength);
@@ -160,7 +183,7 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
     if (!featureFlags.autopsyProcessing()) {
       return apiErrorResponse('autopsy_disabled', {
         status: 503,
-        message: 'Test Analysis is temporarily disabled for beta stability.',
+        message: 'Mistake Review is temporarily disabled for beta stability.',
         requestId,
         feature: 'autopsy',
       });
@@ -172,20 +195,13 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
       testName,
       examType,
       customScoring,
+      goalId,
+      chatSessionId,
       idempotencyKey,
       source: 'autopsy_ingest',
       client: supabase,
     });
 
-    const { after } = await import('next/server');
-    after(async () => {
-      try {
-        const { EventWorkerService } = await import('@/lib/events/worker');
-        await EventWorkerService.processBatch(25, 5, 50_000, Date.now());
-      } catch (err) {
-        console.error('Failed to run background event worker for autopsy:', err);
-      }
-    });
 
     return NextResponse.json(
       {
@@ -216,9 +232,12 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
     }
 
     // AutopsyExtractionError: the file couldn't be parsed/extracted.
-    // Return 422 with a clear user-facing message. Critically: no ATLAS/MEMORY
+    // Return 422 with a clear user-facing message. Critically: no learner-state
     // mutations can have occurred because the error is thrown before the RPC call.
     if (error instanceof AutopsyExtractionError || error?.extractionFailed === true) {
+      const safeExtractionMessage = /api[_ -]?key|provider|model|gemini|openai|anthropic|vertex|stack|trace/i.test(error.message)
+        ? 'Mistake Review could not extract enough evidence from this file. Please upload a clearer file with answer key and student answers.'
+        : error.message;
       logger.warn('Autopsy extraction failed (user-safe)', {
         userId,
         requestId,
@@ -226,7 +245,7 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
       });
       return apiError(
         'extraction_failed',
-        error.message,
+        safeExtractionMessage,
         422,
         {
           extraction_failed: true,
@@ -241,8 +260,8 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
     return apiError(
       isPersistenceFailure ? 'persistence_failed' : 'internal_error',
       isPersistenceFailure
-        ? 'AUTOPSY extraction completed but persistence failed. No downstream learner update was trusted.'
-        : 'AUTOPSY failed unexpectedly.',
+        ? 'Mistake Review extraction completed but persistence failed. No downstream learner update was trusted.'
+        : 'Mistake Review failed unexpectedly.',
       500,
       {
         extraction_failed: false,

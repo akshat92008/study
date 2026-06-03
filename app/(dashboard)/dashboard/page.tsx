@@ -15,11 +15,13 @@ import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import CurrentTaskCard from '@/components/dashboard/CurrentTaskCard';
 import MicrotargetsCard from '@/components/dashboard/MicrotargetsCard';
+import GoalCreationModal from '@/components/modals/GoalCreationModal';
 
 export default function DashboardPage() {
   const {
     activeGoalId,
     learningGoals,
+    chatId,
     activeDrawer,
     setActiveDrawer,
     autopsyResult,
@@ -33,6 +35,7 @@ export default function DashboardPage() {
 
   const [dashboardData, setDashboardData] = useState<any>(null);
   const [masteryData, setMasteryData] = useState<any>(null);
+  const [showGoalModal, setShowGoalModal] = useState(false);
   const router = useRouter();
 
   // Local state for the drawer upload mechanism
@@ -42,9 +45,10 @@ export default function DashboardPage() {
   // 1. Initial Data Loading
   const loadTelemetry = useCallback(async () => {
     try {
+      const suffix = activeGoalId ? `?goalId=${activeGoalId}` : '';
       const [resDash, resMastery] = await Promise.all([
-        fetch('/api/dashboard'),
-        fetch('/api/atlas/mastery')
+        fetch(`/api/dashboard${suffix}`),
+        fetch(`/api/atlas/mastery${suffix}`)
       ]);
       if (resDash.ok) {
         const data = await resDash.json();
@@ -57,11 +61,12 @@ export default function DashboardPage() {
     } catch (e) {
       console.error('Failed to load dashboard data', e);
     }
-  }, []);
+  }, [activeGoalId]);
 
   const loadAutopsy = useCallback(async () => {
     try {
-      const res = await fetch('/api/autopsy');
+      const suffix = activeGoalId ? `?goalId=${activeGoalId}` : '';
+      const res = await fetch(`/api/autopsy${suffix}`);
       if (res.ok) {
         const data = await res.json();
         setAutopsyResult(data.result);
@@ -69,7 +74,7 @@ export default function DashboardPage() {
     } catch (e) {
       console.error('Failed to load autopsy data', e);
     }
-  }, [setAutopsyResult]);
+  }, [activeGoalId, setAutopsyResult]);
 
   useEffect(() => {
     loadTelemetry();
@@ -112,6 +117,8 @@ export default function DashboardPage() {
       const formData = new FormData();
       formData.append('file', fileToUpload);
       formData.append('testName', fileToUpload.name);
+      if (activeGoalId) formData.append('goalId', activeGoalId);
+      if (chatId) formData.append('chatSessionId', chatId);
 
       const res = await fetch('/api/autopsy/ingest', {
         method: 'POST',
@@ -119,11 +126,11 @@ export default function DashboardPage() {
       });
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Autopsy failed');
+      if (!res.ok) throw new Error(data.message || 'Mistake Review failed');
 
       if (data.status === 'completed') {
         setAutopsyResult(data);
-        addToast('Autopsy completed successfully!', 'success');
+        addToast('Mistake Review completed successfully!', 'success');
         loadTelemetry(); // refresh telemetry
       } else {
         // Start polling if pending/processing
@@ -144,19 +151,20 @@ export default function DashboardPage() {
           if (currentStatus === 'processing') {
              setUploadStatus('Processing upload...');
           } else if (currentStatus === 'needs_user_input' || currentStatus === 'needs_input') {
-             throw new Error(pollData.error || 'Autopsy needs user input.');
+             throw new Error(pollData.error || 'Mistake Review needs user input.');
           } else if (currentStatus === 'failed') {
-             throw new Error(pollData.error || 'Autopsy analysis failed.');
+             throw new Error(pollData.error || 'Mistake Review failed.');
           } else if (currentStatus === 'completed') {
              // We need to fetch the actual result if the job endpoint doesn't return the full autopsy
-             const resultRes = await fetch('/api/autopsy');
+             const suffix = activeGoalId ? `?goalId=${activeGoalId}` : '';
+             const resultRes = await fetch(`/api/autopsy${suffix}`);
              if (resultRes.ok) {
                const resultData = await resultRes.json();
                setAutopsyResult(resultData.result);
              } else {
                setAutopsyResult(pollData);
              }
-             addToast('Autopsy completed successfully!', 'success');
+             addToast('Mistake Review completed successfully!', 'success');
              loadTelemetry();
              break;
           }
@@ -164,7 +172,8 @@ export default function DashboardPage() {
         if (elapsed >= maxWait) throw new Error('Analysis timed out');
       }
     } catch (err: any) {
-      addToast(err.message, 'error');
+      console.error('Mistake Review upload failed', err);
+      addToast('Mistake Review failed. Please try again with a clearer upload.', 'error');
     } finally {
       clearInterval(interval);
       setIsUploadingMock(false);
@@ -177,7 +186,7 @@ export default function DashboardPage() {
 
   // Numeric Stats definitions
   const overallMastery = masteryData?.overallPct ?? dashboardData?.cognition?.stats?.overallMastery ?? dashboardData?.profile?.overall_mastery ?? 0;
-  const cardsDue = dashboardData?.revision?.dueCards?.length ?? 0;
+  const cardsDue = dashboardData?.revision?.due?.length ?? 0;
   const marksLost = autopsyResult?.recoverableMarks ?? 0;
 
   return (
@@ -215,12 +224,24 @@ export default function DashboardPage() {
             Today's Mission
           </h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', marginTop: 4, lineHeight: 1.5 }}>
-            Start with the mission, ask MIND for help, then use Test Analysis, Progress, and Revision Due to keep the next plan current.
+            {activeGoal
+              ? `Your mission for ${activeGoal.title}. Ask the AI Tutor for help, use Sources for grounding, and Review to lock it in.`
+              : 'Create or select a learning goal to start.'}
           </p>
         </div>
-        <CurrentTaskCard onSessionComplete={loadTelemetry} />
+        {!activeGoal ? (
+          <Card padding="lg" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)', textAlign: 'center' }}>
+            <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 800, marginBottom: 'var(--sp-2)' }}>Create or select a learning goal</h3>
+            <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', marginBottom: 'var(--sp-4)' }}>
+              Each goal gets its own mission, sources, AI tutor, review queue, progress, and mistake review.
+            </p>
+            <Button onClick={() => setShowGoalModal(true)}>Create Learning Goal</Button>
+          </Card>
+        ) : (
+          <CurrentTaskCard goalId={activeGoalId ?? undefined} onSessionComplete={loadTelemetry} />
+        )}
 
-        {dashboardData?.tasks && (
+        {activeGoal && dashboardData?.tasks && (
           <MicrotargetsCard tasks={dashboardData.tasks} />
         )}
         
@@ -247,7 +268,7 @@ export default function DashboardPage() {
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
                   <MessageSquare size={12} style={{ color: 'var(--accent-cyan)' }} />
-                  MIND
+                  AI Tutor
                 </div>
                 <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--accent-cyan)', marginTop: 4 }}>Chat</div>
               </button>
@@ -269,7 +290,7 @@ export default function DashboardPage() {
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
                   <Activity size={12} style={{ color: 'var(--danger)' }} />
-                  Test Analysis
+                  Mistake Review
                 </div>
                 <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--danger)', marginTop: 4 }}>{marksLost} mistakes found</div>
               </button>
@@ -330,7 +351,7 @@ export default function DashboardPage() {
             {activeDrawer === 'autopsy' && (
               <>
                 <Activity size={18} style={{ color: 'var(--danger)' }} />
-                <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)' }}>Test Analysis</span>
+                <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)' }}>Mistake Review</span>
               </>
             )}
             {activeDrawer === 'beats' && (
@@ -354,11 +375,11 @@ export default function DashboardPage() {
 
         {/* Drawer Body Scroll */}
         <div style={{ flex: 1, overflowY: 'auto', padding: 'var(--sp-5)' }}>
-          {/* A. ATLAS / Cognition Graph Drawer */}
+          {/* A. Progress Drawer */}
           {activeDrawer === 'cognition' && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
               {dashboardData?.cognition ? (
-                <ErrorBoundary fallback={<div className="text-sm text-muted-foreground p-4">Cognition graph unavailable</div>}>
+                <ErrorBoundary fallback={<div className="text-sm text-muted-foreground p-4">Progress map unavailable</div>}>
                   <CognitionDashboard data={dashboardData.cognition} />
                 </ErrorBoundary>
               ) : (
@@ -369,16 +390,16 @@ export default function DashboardPage() {
             </div>
           )}
 
-          {/* B. MEMORY / Revision Queue Drawer */}
+          {/* B. Review Queue Drawer */}
           {activeDrawer === 'revision' && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
               <ErrorBoundary fallback={<div className="text-sm text-muted-foreground p-4">Revision queue unavailable</div>}>
-                <RevisionQueue />
+                <RevisionQueue goalId={activeGoalId ?? undefined} />
               </ErrorBoundary>
             </div>
           )}
 
-          {/* C. AUTOPSY / Mock Ingester Drawer */}
+          {/* C. Mistake Review Drawer */}
           {activeDrawer === 'autopsy' && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
               
@@ -429,7 +450,7 @@ export default function DashboardPage() {
                         </div>
                       )}
                       <Button type="submit" disabled={!fileToUpload} size="sm" style={{ width: '100%', background: 'var(--accent-cyan)', color: 'var(--text-inverse)' }}>
-                        Run Diagnostic Autopsy
+                        Run Mistake Review
                       </Button>
                     </form>
                   </Card>
@@ -440,7 +461,7 @@ export default function DashboardPage() {
               {isUploadingMock && (
                 <Card padding="lg" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '260px' }}>
                   <Loader2 color="var(--accent-cyan)" size={32} className="animate-spin" style={{ marginBottom: 'var(--sp-4)' }} />
-                  <h4 style={{ fontSize: 'var(--fs-md)', fontWeight: 'var(--fw-bold)' }}>Extracting Mock Data...</h4>
+                  <h4 style={{ fontSize: 'var(--fs-md)', fontWeight: 'var(--fw-bold)' }}>Reading Test Data...</h4>
                   <p style={{ color: 'var(--accent-cyan)', fontFamily: 'var(--font-mono)', fontSize: 'var(--fs-xs)', marginTop: 8 }}>{uploadStatus}</p>
                 </Card>
               )}
@@ -448,7 +469,7 @@ export default function DashboardPage() {
               {/* Autopsy Results Dashboard */}
               {autopsyResult && !isUploadingMock && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
-                  <ErrorBoundary fallback={<div className="text-sm text-muted-foreground p-4">Autopsy analyzer unavailable</div>}>
+                  <ErrorBoundary fallback={<div className="text-sm text-muted-foreground p-4">Mistake Review unavailable</div>}>
                     <AutopsyDashboard result={autopsyResult} />
                   </ErrorBoundary>
                   <div style={{ display: 'flex', justifyContent: 'center', marginTop: 'var(--sp-4)' }}>
@@ -483,6 +504,8 @@ export default function DashboardPage() {
         </div>
 
       </div>
+
+      {showGoalModal && <GoalCreationModal onClose={() => setShowGoalModal(false)} />}
 
     </div>
   );

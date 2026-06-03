@@ -2,17 +2,36 @@
 
 import AutopsyDashboard from './AutopsyDashboard';
 import { Upload, FileText } from 'lucide-react';
-import { useState, useRef } from 'react';
+import { useCallback, useEffect, useState, useRef } from 'react';
+import { useAppStore } from '@/stores/appStore';
 
 interface Props {
   result: any;
 }
 
 export default function AutopsyPageClient({ result: initialResult }: Props) {
+  const { activeGoalId, chatId, learningGoals } = useAppStore();
   const [result, setResult] = useState(initialResult);
   const [uploading, setUploading] = useState(false);
   const [status, setStatus] = useState('');
   const fileRef = useRef<HTMLInputElement>(null);
+  const activeGoal = learningGoals.find(goal => goal.id === activeGoalId);
+
+  const latestResultUrl = useCallback(() => {
+    const query = activeGoalId ? `?goalId=${encodeURIComponent(activeGoalId)}` : '';
+    return `/api/autopsy${query}`;
+  }, [activeGoalId]);
+
+  const loadLatestResult = useCallback(async () => {
+    const response = await fetch(latestResultUrl());
+    if (!response.ok) return;
+    const data = await response.json();
+    setResult(data.result ?? null);
+  }, [latestResultUrl]);
+
+  useEffect(() => {
+    loadLatestResult().catch(() => {});
+  }, [loadLatestResult]);
 
   const handleUpload = async (file: File) => {
     setUploading(true);
@@ -23,12 +42,14 @@ export default function AutopsyPageClient({ result: initialResult }: Props) {
       form.append('file', file);
       form.append('testName', file.name);
       form.append('async', 'true');
+      if (activeGoalId) form.append('goalId', activeGoalId);
+      if (chatId) form.append('chatSessionId', chatId);
       
       const res = await fetch('/api/autopsy/ingest', { method: 'POST', body: form });
       const data = await res.json();
       
       if (!res.ok && res.status !== 202) {
-        setStatus('Upload failed — ' + (data.error || data.message || 'unknown error'));
+        setStatus('Upload failed. Please try again with a clearer file.');
         setUploading(false);
         return;
       }
@@ -55,13 +76,13 @@ export default function AutopsyPageClient({ result: initialResult }: Props) {
           const jobData = await pollRes.json();
           
           if (jobData.status === 'completed') {
-            const finalRes = await fetch('/api/autopsy');
+            const finalRes = await fetch(latestResultUrl());
             const finalData = await finalRes.json();
             setResult(finalData.result);
             setUploading(false);
             return;
           } else if (jobData.status === 'failed') {
-            setStatus('Analysis failed — ' + (jobData.error || 'unknown error'));
+            setStatus('Mistake Review failed. Please try again with a clearer file.');
             setUploading(false);
             return;
           } else if (jobData.status === 'processing') {
@@ -76,7 +97,7 @@ export default function AutopsyPageClient({ result: initialResult }: Props) {
           
           setTimeout(pollJob, 2000);
         } catch {
-          setStatus('Analysis polling failed. Please refresh the page.');
+            setStatus('Mistake Review polling failed. Please refresh the page.');
           setUploading(false);
         }
       };
@@ -99,10 +120,12 @@ export default function AutopsyPageClient({ result: initialResult }: Props) {
     <div style={{ padding: 'var(--sp-6)', maxWidth: 900, margin: '0 auto' }}>
       <div style={{ marginBottom: 'var(--sp-6)' }}>
         <h1 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', marginBottom: 4 }}>
-          Test Analysis
+          Mistake Review
         </h1>
         <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)' }}>
-          Upload a mock test or mistake sheet to find patterns and improve your weak areas, revision queue, and your next mission when verified.
+          {activeGoal
+            ? `Upload a mock test or mistake sheet for ${activeGoal.title}.`
+            : 'Upload a mock test or mistake sheet to find patterns and improve your weak areas, review queue, and next mission when verified.'}
         </p>
       </div>
 
@@ -151,7 +174,7 @@ export default function AutopsyPageClient({ result: initialResult }: Props) {
       ) : (
         <div style={{ textAlign: 'center', padding: 'var(--sp-8)', color: 'var(--text-tertiary)' }}>
           <FileText size={48} style={{ marginBottom: 12, opacity: 0.3 }} />
-          <p>No autopsy results yet. Upload a mock test above.</p>
+          <p>No mistake review results yet. Upload a mock test above.</p>
         </div>
       )}
     </div>

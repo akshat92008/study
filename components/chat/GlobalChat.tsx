@@ -20,6 +20,7 @@ export const GlobalChat = memo(function GlobalChat() {
     addChatMessage,
     clearChat,
     activeGoalId,
+    learningGoals,
     streakDays,
     chatId,
     loadChatFromSupabase,
@@ -27,6 +28,7 @@ export const GlobalChat = memo(function GlobalChat() {
     toggleAssistantExpanded,
     sessions,
   } = useAppStore();
+  const activeGoal = learningGoals.find(goal => goal.id === activeGoalId) || null;
 
   const [inputMessage, setInputMessage] = useState('');
   const [pendingFile, setPendingFile] = useState<File | null>(null);
@@ -56,7 +58,7 @@ export const GlobalChat = memo(function GlobalChat() {
   useEffect(() => {
     if (!user) return;
     loadChatFromSupabase();
-  }, [loadChatFromSupabase, user]);
+  }, [activeGoalId, loadChatFromSupabase, user]);
 
   // Scroll to bottom utility
   const scrollToBottom = () => {
@@ -227,15 +229,15 @@ export const GlobalChat = memo(function GlobalChat() {
     } catch (e: any) {
       console.error('Stream failed to complete', e);
       const status = e?.status;
-      let content = 'Something went wrong. Please try again.';
+      let content = 'I could not generate that part right now. Try again in a moment.';
       const backendMessage = e?.message?.replace(/^HTTP \d+: /, '');
 
       if (status === 400) content = backendMessage || 'I could not read that message. Please try again.';
       else if (status === 401) content = backendMessage || 'Your session has expired. Please log in again.';
       else if (status === 429) content = backendMessage || 'You are sending messages too quickly. Please slow down.';
       else if (status === 413) content = backendMessage || 'The attached file is too large.';
-      else if (status >= 500) content = backendMessage || `I encountered an internal server error (HTTP ${status}). Please try again.`;
-      else if (backendMessage && backendMessage !== 'Failed to fetch') content = backendMessage;
+      else if (status >= 500) content = 'I could not generate that part right now. Try again in a moment.';
+      else if (backendMessage && backendMessage !== 'Failed to fetch' && !/(api failed|nvidia|openai|anthropic|google|stack|404 page|http \d+)/i.test(backendMessage)) content = backendMessage;
 
       addChatMessage({
         role: 'assistant',
@@ -296,8 +298,8 @@ export const GlobalChat = memo(function GlobalChat() {
           </div>
           <div>
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 'var(--fw-semibold)', margin: 0, letterSpacing: '-0.01em' }}>
-                {sessions.find((s: any) => s.id === chatId)?.title || 'MIND'}
+              <h3 style={{ fontSize: '14px', fontWeight: 'var(--fw-semibold)', margin: 0, letterSpacing: 0 }}>
+                {activeGoal ? `${activeGoal.title} AI Tutor` : (sessions.find((s: any) => s.id === chatId)?.title || 'AI Tutor')}
               </h3>
               {streakDays > 0 && (
                 <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginLeft: '8px', padding: '2px 6px', background: 'rgba(251,146,60,0.12)', borderRadius: '12px', border: '1px solid rgba(251,146,60,0.25)' }}>
@@ -315,7 +317,9 @@ export const GlobalChat = memo(function GlobalChat() {
               <span style={{ fontSize: '11px', color: 'var(--text-tertiary)', fontWeight: 'var(--fw-medium)' }}>
                 {status === 'streaming' || status === 'connecting'
                   ? 'Loading mission and learner state...'
-                  : 'Using Today, Progress, Revision, and Test Analysis'}
+                  : activeGoal
+                    ? 'Using mission, sources, review, progress, and mistakes for this goal'
+                    : 'General learning assistant'}
               </span>
             </div>
           </div>

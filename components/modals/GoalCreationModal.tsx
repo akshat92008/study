@@ -6,12 +6,44 @@ import { motion } from 'framer-motion';
 import { X, Sparkles, Loader2 } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
 
+function InputField({
+  label,
+  value,
+  onChange,
+  placeholder,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  placeholder: string;
+}) {
+  return (
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 'var(--sp-1)' }}>
+      <label style={{ fontSize: 'var(--fs-xs)', fontWeight: 'bold', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>
+        {label}
+      </label>
+      <input
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        style={{
+          background: 'var(--bg-secondary)', border: '1px solid var(--border-default)',
+          borderRadius: 'var(--radius-md)', padding: '10px 12px', color: 'var(--text-primary)',
+          fontSize: 'var(--fs-sm)', outline: 'none', minWidth: 0
+        }}
+      />
+    </div>
+  );
+}
+
 export default function GoalCreationModal({ onClose }: { onClose: () => void }) {
   const router = useRouter();
   const pathname = usePathname();
   const { createLearningGoal } = useAppStore();
 
   const [newGoalTitle, setNewGoalTitle] = useState('');
+  const [subject, setSubject] = useState('');
+  const [targetLevel, setTargetLevel] = useState('');
   const [deadline, setDeadline] = useState('');
   const [currentLevel, setCurrentLevel] = useState('beginner');
   const [learningStyle, setLearningStyle] = useState('read_write');
@@ -20,11 +52,13 @@ export default function GoalCreationModal({ onClose }: { onClose: () => void }) 
 
   const handleAddGoal = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newGoalTitle.trim() || !deadline || isSubmitting) return;
+    if (!newGoalTitle.trim() || isSubmitting) return;
 
     setIsSubmitting(true);
     const created = await createLearningGoal(newGoalTitle.trim(), {
       deadline,
+      subject,
+      targetLevel,
       currentLevel,
       timeAvailable: dailyHours,
       preferredLearningStyle: learningStyle,
@@ -33,6 +67,8 @@ export default function GoalCreationModal({ onClose }: { onClose: () => void }) 
 
     if (created) {
       setNewGoalTitle('');
+      setSubject('');
+      setTargetLevel('');
       setDeadline('');
       setCurrentLevel('beginner');
       setLearningStyle('read_write');
@@ -67,7 +103,7 @@ export default function GoalCreationModal({ onClose }: { onClose: () => void }) 
           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
             <Sparkles size={18} style={{ color: 'var(--accent-purple)' }} />
             <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)', color: 'var(--text-primary)' }}>
-              Create New Learning Goal
+              Create Learning Goal
             </span>
           </div>
           <button 
@@ -83,12 +119,12 @@ export default function GoalCreationModal({ onClose }: { onClose: () => void }) 
           {/* Title */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-1)' }}>
             <label style={{ fontSize: 'var(--fs-xs)', fontWeight: 'bold', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>
-              What do you want to learn?
+              What are you working on?
             </label>
             <input
               value={newGoalTitle}
               onChange={(e) => setNewGoalTitle(e.target.value)}
-              placeholder="e.g. Machine Learning, NEET Chemistry, CFA Level 1"
+              placeholder="e.g. Kinematics, SAT Math, Machine Learning"
               required
               style={{
                 background: 'var(--bg-secondary)', border: '1px solid var(--border-default)',
@@ -100,16 +136,30 @@ export default function GoalCreationModal({ onClose }: { onClose: () => void }) 
             />
           </div>
 
+          <div style={{ display: 'flex', gap: 'var(--sp-3)' }}>
+            <InputField
+              label="Subject"
+              value={subject}
+              onChange={setSubject}
+              placeholder="Physics, Math, Biology"
+            />
+            <InputField
+              label="Target Level"
+              value={targetLevel}
+              onChange={setTargetLevel}
+              placeholder="NEET, SAT, USMLE"
+            />
+          </div>
+
           {/* Deadline */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-1)' }}>
             <label style={{ fontSize: 'var(--fs-xs)', fontWeight: 'bold', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>
-              Target Completion Date
+              Target Date
             </label>
             <input
               type="date"
               value={deadline}
               onChange={(e) => setDeadline(e.target.value)}
-              required
               style={{
                 background: 'var(--bg-secondary)', border: '1px solid var(--border-default)',
                 borderRadius: 'var(--radius-md)', padding: '10px 12px', color: 'var(--text-primary)',
@@ -193,7 +243,7 @@ export default function GoalCreationModal({ onClose }: { onClose: () => void }) 
             </button>
             <button
               type="submit"
-              disabled={isSubmitting || !newGoalTitle.trim() || !deadline}
+              disabled={isSubmitting || !newGoalTitle.trim()}
               style={{
                 flex: 1, padding: '10px 16px', background: 'var(--accent-purple)',
                 border: 'none', color: 'white', borderRadius: 'var(--radius-md)',
@@ -205,10 +255,10 @@ export default function GoalCreationModal({ onClose }: { onClose: () => void }) 
               {isSubmitting ? (
                 <>
                   <Loader2 size={14} className="animate-spin" />
-                  Generating Roadmap...
+                Creating Goal...
                 </>
               ) : (
-                'Generate Roadmap'
+                'Create Goal'
               )}
             </button>
           </div>

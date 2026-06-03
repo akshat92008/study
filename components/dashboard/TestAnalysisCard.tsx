@@ -17,6 +17,8 @@ export default function TestAnalysisCard({ onUploadSuccess }: { onUploadSuccess?
     uploadStatus,
     setUploadStatus,
     addToast,
+    activeGoalId,
+    chatId,
   } = useAppStore();
 
   const [fileToUpload, setFileToUpload] = useState<File | null>(null);
@@ -42,6 +44,8 @@ export default function TestAnalysisCard({ onUploadSuccess }: { onUploadSuccess?
       const formData = new FormData();
       formData.append('file', fileToUpload);
       formData.append('testName', fileToUpload.name);
+      if (activeGoalId) formData.append('goalId', activeGoalId);
+      if (chatId) formData.append('chatSessionId', chatId);
 
       const res = await fetch('/api/autopsy/ingest', {
         method: 'POST',
@@ -49,11 +53,11 @@ export default function TestAnalysisCard({ onUploadSuccess }: { onUploadSuccess?
       });
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Test Analysis failed');
+      if (!res.ok) throw new Error(data.message || 'Mistake Review failed');
 
       if (data.status === 'completed') {
         setAutopsyResult(data);
-        addToast('Mock Analysis completed successfully!', 'success');
+        addToast('Mistake Review completed successfully!', 'success');
         if (onUploadSuccess) onUploadSuccess();
       } else {
         // Start polling if pending/processing
@@ -74,18 +78,19 @@ export default function TestAnalysisCard({ onUploadSuccess }: { onUploadSuccess?
           if (currentStatus === 'processing') {
              setUploadStatus('Processing upload...');
           } else if (currentStatus === 'needs_user_input' || currentStatus === 'needs_input') {
-             throw new Error(pollData.error || 'Autopsy needs user input.');
+             throw new Error(pollData.error || 'Mistake Review needs user input.');
           } else if (currentStatus === 'failed') {
-             throw new Error(pollData.error || 'Autopsy analysis failed.');
+             throw new Error(pollData.error || 'Mistake Review failed.');
           } else if (currentStatus === 'completed') {
-             const resultRes = await fetch('/api/autopsy');
+             const query = activeGoalId ? `?goalId=${encodeURIComponent(activeGoalId)}` : '';
+             const resultRes = await fetch(`/api/autopsy${query}`);
              if (resultRes.ok) {
                const resultData = await resultRes.json();
                setAutopsyResult(resultData.result);
              } else {
                setAutopsyResult(pollData);
              }
-             addToast('Mock Analysis completed successfully!', 'success');
+             addToast('Mistake Review completed successfully!', 'success');
              if (onUploadSuccess) onUploadSuccess();
              break;
           }
@@ -93,7 +98,8 @@ export default function TestAnalysisCard({ onUploadSuccess }: { onUploadSuccess?
         if (elapsed >= maxWait) throw new Error('Analysis timed out');
       }
     } catch (err: any) {
-      addToast(err.message, 'error');
+      console.error('Mistake Review upload failed', err);
+      addToast('Mistake Review failed. Please try again with a clearer upload.', 'error');
     } finally {
       clearInterval(interval);
       setIsUploadingMock(false);
@@ -105,7 +111,7 @@ export default function TestAnalysisCard({ onUploadSuccess }: { onUploadSuccess?
     <Card padding="lg" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)', display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
         <Activity size={18} style={{ color: 'var(--danger)' }} />
-        <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'bold' }}>Test Analysis</h3>
+        <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'bold' }}>Mistake Review</h3>
       </div>
       
       {!autopsyResult && !isUploadingMock && (

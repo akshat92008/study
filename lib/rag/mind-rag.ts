@@ -8,17 +8,32 @@ export async function buildMindRagContext(input: {
   message: string;
   subject?: string | null;
   chapter?: string | null;
+  goalId?: string | null;
+  chatSessionId?: string | null;
 }): Promise<{
   ragContext: RagContext;
   ragPromptBlock: string;
 }> {
   const supabase = createAdminClient();
 
-  const { count } = await supabase
+  let readyQuery = supabase
     .from('study_materials')
     .select('id', { count: 'exact', head: true })
     .eq('user_id', input.userId)
     .eq('status', 'ready');
+
+  if (input.goalId) readyQuery = readyQuery.eq('goal_id', input.goalId);
+
+  let { count } = await readyQuery;
+
+  if ((count ?? 0) === 0 && input.goalId) {
+    const fallback = await supabase
+      .from('study_materials')
+      .select('id', { count: 'exact', head: true })
+      .eq('user_id', input.userId)
+      .eq('status', 'ready');
+    count = fallback.count;
+  }
 
   const hasReadyMaterials = (count ?? 0) > 0;
   const mode = inferRagMode(input.message, hasReadyMaterials);
@@ -29,6 +44,8 @@ export async function buildMindRagContext(input: {
     mode,
     subject: input.subject ?? undefined,
     chapter: input.chapter ?? undefined,
+    goalId: input.goalId,
+    chatSessionId: input.chatSessionId,
   });
 
   let ragPromptBlock = formatRagContextForPrompt(ragContext);

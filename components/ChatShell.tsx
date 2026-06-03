@@ -52,7 +52,7 @@ export default function ChatShell() {
         }}
       >
         <div style={{ fontSize: '18px', fontWeight: 600, color: 'var(--text-primary)' }}>
-          MIND
+          AI Tutor
         </div>
         <button
           onClick={handleToday}

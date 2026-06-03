@@ -36,7 +36,7 @@ export async function logMockTest(formData: FormData) {
   if (error) return { error: error.message };
 
   // Auto-generate AI insights about the test
-  const prompt = `${examType} Mock Test Analysis:
+  const prompt = `${examType} Mock Mistake Review:
 Score: ${testData.current_score}/${testData.total_marks}
 Correct: ${testData.correct_count}, Incorrect: ${testData.incorrect_count}, Unattempted: ${testData.unattempted_count}
 

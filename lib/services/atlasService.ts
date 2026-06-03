@@ -19,13 +19,16 @@ const MASTERY_TIER: Record<string, number> = {
   automated:   5,
 };
 
-export async function getSyllabusMastery(userId: string) {
+export async function getSyllabusMastery(userId: string, goalId?: string | null) {
   const supabase = await createClient();
 
-  const { data: concepts, error } = await supabase
+  let query = supabase
     .from('concepts')
     .select('subject, chapter, mastery')
     .eq('user_id', userId);
+  if (goalId) query = query.eq('goal_id', goalId);
+
+  const { data: concepts, error } = await query;
 
   if (error || !concepts || concepts.length === 0) return null;
 

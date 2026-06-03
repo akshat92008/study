@@ -219,7 +219,7 @@ export default function CognitionDashboard({ data }: Props) {
                   href={`/chat?topic=${encodeURIComponent(concept.name || concept.chapter || '')}`}
                   style={{ display: 'inline-flex', alignItems: 'center', gap: 6, flexShrink: 0, color: 'var(--accent-blue)', textDecoration: 'none', fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-bold)' }}
                 >
-                  <MessageCircle size={14} /> Ask MIND
+                  <MessageCircle size={14} /> Ask AI Tutor
                 </a>
               </div>
             ))}

@@ -26,6 +26,7 @@ export type FinalizeChatTurnInput = {
   supabase: any;
   userId: string;
   sessionId: string;
+  goalId?: string | null;
   userMessage: string;
   userMessageId?: string;
   assistantText: string;
@@ -118,6 +119,8 @@ export async function finalizeChatTurn(input: FinalizeChatTurnInput): Promise<Fi
       source: input.sourceType ?? 'global_chat',
       data: {
         sessionId: input.sessionId,
+        chatSessionId: input.sessionId,
+        goalId: input.goalId ?? null,
         message: input.userMessage,
         fullResponse: cleanAssistantText,
         emotion: input.emotion ?? 'neutral',
@@ -132,9 +135,10 @@ export async function finalizeChatTurn(input: FinalizeChatTurnInput): Promise<Fi
       },
       idempotency_key: eventIdempotencyKey,
       metadata: {
-        source: input.sourceType ?? 'global_chat',
-      },
-    });
+          source: input.sourceType ?? 'global_chat',
+          goalId: input.goalId ?? null,
+        },
+      });
 
     const detectedSubject = input.intent?.subject ?? input.metadata?.subject ?? null;
     const detectedChapter = input.intent?.chapter ?? input.metadata?.chapter ?? null;
@@ -147,6 +151,8 @@ export async function finalizeChatTurn(input: FinalizeChatTurnInput): Promise<Fi
         source: input.sourceType ?? 'global_chat',
         data: {
           conversationId: input.sessionId,
+          chatSessionId: input.sessionId,
+          goalId: input.goalId ?? null,
           messageId: assistant.id,
           detectedSubject,
           detectedChapter,
@@ -157,6 +163,7 @@ export async function finalizeChatTurn(input: FinalizeChatTurnInput): Promise<Fi
         idempotency_key: `${input.idempotencyKey}:chat-learning-signal`,
         metadata: {
           source: input.sourceType ?? 'global_chat',
+          goalId: input.goalId ?? null,
         },
       }).catch((err) => {
         logger.warn('Chat learning signal publish failed', {

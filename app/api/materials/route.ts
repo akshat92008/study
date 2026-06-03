@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
+import { ensureGoalForUser } from '@/lib/services/goal-context.service';
 
 export async function GET(req: NextRequest) {
   const requestId = getRequestId(req);
@@ -21,12 +22,24 @@ export async function GET(req: NextRequest) {
     });
     if (!allowed) return rateLimitResponse(remaining, resetAt);
 
-    const { data, error } = await supabase
+    const { searchParams } = new URL(req.url);
+    const goalId = searchParams.get('goalId');
+    const includeGlobal = searchParams.get('includeGlobal') === 'true';
+    if (goalId) await ensureGoalForUser(supabase, user.id, goalId);
+
+    let query = supabase
       .from('study_materials')
-      .select('id, title, original_filename, mime_type, source_type, exam_type, subject, chapter, topic, language, status, page_count, char_count, error_message, created_at, updated_at')
+      .select('id, title, original_filename, mime_type, source_type, goal_id, chat_session_id, exam_type, subject, chapter, topic, language, status, page_count, char_count, error_message, created_at, updated_at')
       .eq('user_id', user.id)
-      .neq('status', 'archived')
-      .order('created_at', { ascending: false });
+      .neq('status', 'archived');
+
+    if (goalId) {
+      query = includeGlobal
+        ? (query as any).or(`goal_id.eq.${goalId},goal_id.is.null`)
+        : query.eq('goal_id', goalId);
+    }
+
+    const { data, error } = await query.order('created_at', { ascending: false });
 
     if (error) throw error;
     return NextResponse.json({ materials: data || [] }, { headers: { 'x-request-id': requestId } });

@@ -4,10 +4,16 @@ import { createClient } from '@/lib/supabase/server';
 const AnalyzeMistakeSchema = z.object({ rootCause: z.string(), knowledgeGap: z.string(), remediation: z.string(), prevention: z.string() });
 const MarkLossReportSchema = z.object({ biggestLeak: z.string(), recoveryPlan: z.array(z.string()), estimatedImprovement: z.number(), overallAssessment: z.string() });
 
-export async function getMistakeAnalytics(userId: string) {
+export async function getMistakeAnalytics(userId: string, goalId?: string | null) {
   const supabase = await createClient();
 
-  const { data: mistakes } = await supabase.from('mistakes').select('*').eq('user_id', userId).order('created_at', { ascending: false });
+  let mistakesQuery = supabase
+    .from('mistakes')
+    .select('*')
+    .eq('user_id', userId)
+    .order('created_at', { ascending: false });
+  if (goalId) mistakesQuery = mistakesQuery.eq('goal_id', goalId);
+  const { data: mistakes } = await mistakesQuery;
   const { data: profile } = await supabase.from('profiles').select('exam_type').eq('id', userId).single();
   const examType = profile?.exam_type || 'General';
 

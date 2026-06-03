@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
+import { ensureGoalForUser } from '@/lib/services/goal-context.service';
 
 export async function GET(request: Request) {
   try {
@@ -26,14 +27,20 @@ export async function GET(request: Request) {
     });
     if (!allowed) return rateLimitResponse(remaining, resetAt);
 
-    // 1. Get latest autopsy
-    const { data: autopsy, error: autopsyErr } = await supabase
+    const { searchParams } = new URL(request.url);
+    const goalId = searchParams.get('goalId');
+    if (goalId) await ensureGoalForUser(supabase, user.id, goalId);
+
+    // 1. Get latest analysis
+    let autopsyQuery = supabase
       .from('mock_autopsies')
       .select('*')
       .eq('user_id', user.id)
       .order('created_at', { ascending: false })
-      .limit(1)
-      .maybeSingle();
+      .limit(1);
+    if (goalId) autopsyQuery = autopsyQuery.eq('goal_id', goalId);
+
+    const { data: autopsy, error: autopsyErr } = await autopsyQuery.maybeSingle();
 
     if (autopsyErr) throw autopsyErr;
     if (!autopsy) {
@@ -78,6 +85,6 @@ export async function GET(request: Request) {
 
     return NextResponse.json({ result }, { headers: { 'x-request-id': requestId } });
   } catch (error: any) {
-    return unexpectedApiErrorResponse(request, error, 'autopsy', 'Unable to load latest AUTOPSY result.');
+      return unexpectedApiErrorResponse(request, error, 'autopsy', 'Unable to load latest Mistake Review result.');
   }
 }

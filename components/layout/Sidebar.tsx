@@ -1,15 +1,16 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import {
-  MessageSquare, Zap, X, ChevronLeft, ChevronRight, LogOut,
-  Brain, RefreshCw, Activity, Home, CreditCard, Database, MessageCircle
+  Zap, X, ChevronLeft, ChevronRight, LogOut,
+  Brain, RefreshCw, Activity, Home, CreditCard, Database, MessageCircle, Plus, Target
 } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
 import { signOut } from '@/lib/actions/auth';
 import { isFeatureEnabled } from '@/lib/feature-flags';
+import GoalCreationModal from '@/components/modals/GoalCreationModal';
 
 interface SidebarProps {
   userName: string;
@@ -18,32 +19,45 @@ interface SidebarProps {
 
 export default function Sidebar({ userName, examType }: SidebarProps) {
   const pathname = usePathname();
+  const router = useRouter();
   const {
     isSidebarCollapsed,
     toggleSidebar,
     isMobileSidebarOpen,
     setMobileSidebarOpen,
+    learningGoals,
+    activeGoalId,
+    loadLearningGoals,
+    selectLearningGoal,
+    sessions,
+    loadSessions,
   } = useAppStore();
   const navItems = [
     { label: 'Today', href: '/dashboard', icon: Home },
-    { label: 'NotebookLM', href: '/knowledge', icon: Database, feature: 'ENABLE_KNOWLEDGE_UI' as const },
-    { label: 'MIND', href: '/chat', icon: MessageSquare, feature: 'ENABLE_CHAT' as const },
-    { label: 'Test Analysis', href: '/autopsy', icon: Activity, feature: 'ENABLE_AUTOPSY_UI' as const },
+    { label: 'Sources', href: '/knowledge', icon: Database, feature: 'ENABLE_KNOWLEDGE_UI' as const },
+    { label: 'Review', href: '/revision', icon: RefreshCw },
     { label: 'Progress', href: '/cognition', icon: Brain, feature: 'ENABLE_ATLAS_UI' as const },
+    { label: 'Mistake Review', href: '/autopsy', icon: Activity, feature: 'ENABLE_AUTOPSY_UI' as const },
   ].filter(item => !item.feature || isFeatureEnabled(item.feature));
 
-  const [sessions, setSessions] = useState<{ id: string; title: string; updated_at: string }[]>([]);
+  const [isGoalModalOpen, setIsGoalModalOpen] = useState(false);
 
   useEffect(() => {
-    fetch('/api/chat/sessions')
-      .then(res => res.json())
-      .then(data => {
-        if (data.sessions) {
-          setSessions(data.sessions);
-        }
-      })
-      .catch(console.error);
-  }, []);
+    loadLearningGoals();
+    loadSessions();
+  }, [loadLearningGoals, loadSessions]);
+
+  const recentChats = sessions
+    .filter((session: any) => !session.is_global && !session.is_primary_for_goal)
+    .slice(0, 5);
+
+  const handleSelectGoal = async (goalId: string) => {
+    await selectLearningGoal(goalId);
+    setMobileSidebarOpen(false);
+    if (!pathname.startsWith('/dashboard')) {
+      router.push('/dashboard');
+    }
+  };
 
   return (
     <aside
@@ -192,15 +206,128 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
           })}
         </div>
 
-        {/* Chat History Section */}
-        {sessions.length > 0 && (
+        {/* Learning Goals */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-1)', marginTop: 'var(--sp-2)' }}>
+          {!isSidebarCollapsed && (
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 var(--sp-3)', marginBottom: 4 }}>
+              <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-bold)', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)' }}>
+                Learning Goals
+              </span>
+              <button
+                onClick={() => setIsGoalModalOpen(true)}
+                title="New Goal"
+                style={{
+                  width: 24,
+                  height: 24,
+                  border: '1px solid var(--border-subtle)',
+                  borderRadius: 'var(--radius-sm)',
+                  background: 'var(--bg-secondary)',
+                  color: 'var(--text-secondary)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                }}
+              >
+                <Plus size={14} />
+              </button>
+            </div>
+          )}
+          {isSidebarCollapsed && (
+            <button
+              onClick={() => setIsGoalModalOpen(true)}
+              title="New Goal"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: 'var(--sp-3)',
+                borderRadius: 'var(--radius-md)',
+                border: 'none',
+                background: 'transparent',
+                color: 'var(--text-secondary)',
+                cursor: 'pointer',
+              }}
+            >
+              <Plus size={18} />
+            </button>
+          )}
+          {learningGoals.length === 0 && !isSidebarCollapsed && (
+            <button
+              onClick={() => setIsGoalModalOpen(true)}
+              style={{
+                textAlign: 'left',
+                padding: 'var(--sp-3)',
+                borderRadius: 'var(--radius-md)',
+                border: '1px dashed var(--border-strong)',
+                background: 'var(--bg-secondary)',
+                color: 'var(--text-secondary)',
+                cursor: 'pointer',
+                fontSize: 'var(--fs-xs)',
+              }}
+            >
+              Create a learning goal
+            </button>
+          )}
+          {learningGoals.map((goal) => {
+            const isActive = goal.id === activeGoalId;
+            const due = goal.counts?.dueCards ?? 0;
+            const sources = goal.counts?.sourcesReady ?? 0;
+            return (
+              <button
+                key={goal.id}
+                onClick={() => handleSelectGoal(goal.id)}
+                className="nav-link-base"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 'var(--sp-3)',
+                  padding: 'var(--sp-2) var(--sp-3)',
+                  borderRadius: 'var(--radius-md)',
+                  color: isActive ? 'var(--accent-blue)' : 'var(--text-secondary)',
+                  background: isActive ? 'var(--accent-blue-dim)' : 'transparent',
+                  border: 'none',
+                  textAlign: 'left',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s',
+                  width: '100%',
+                }}
+                title={isSidebarCollapsed ? goal.title : undefined}
+              >
+                <Target size={16} strokeWidth={isActive ? 2.5 : 2} style={{ flexShrink: 0 }} />
+                {!isSidebarCollapsed && (
+                  <span style={{ minWidth: 0, flex: 1 }}>
+                    <span style={{
+                      display: 'block',
+                      fontSize: 'var(--fs-xs)',
+                      fontWeight: isActive ? 'var(--fw-semibold)' : 'var(--fw-medium)',
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                    }}>
+                      {goal.title}
+                    </span>
+                    {(due > 0 || sources > 0) && (
+                      <span style={{ display: 'block', fontSize: '10px', color: 'var(--text-tertiary)', marginTop: 2 }}>
+                        {[sources ? `${sources} sources` : null, due ? `${due} due` : null].filter(Boolean).join(' · ')}
+                      </span>
+                    )}
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Recent Chat Section */}
+        {recentChats.length > 0 && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-1)', marginTop: 'var(--sp-2)' }}>
             {!isSidebarCollapsed && (
               <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-bold)', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)', padding: '0 var(--sp-3)', marginBottom: 4 }}>
-                Conversations
+                Recent Chats
               </span>
             )}
-            {sessions.map((session) => {
+            {recentChats.map((session: any) => {
               const isActive = pathname === `/chat/sessions/${session.id}`;
               return (
                 <Link
@@ -363,7 +490,7 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
         </button>
       </div>
 
-      {/* Goal Ingestion Modal removed for MVP */}
+      {isGoalModalOpen && <GoalCreationModal onClose={() => setIsGoalModalOpen(false)} />}
 
     </aside>
   );

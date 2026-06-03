@@ -38,11 +38,14 @@ import {
   isBudgetUnavailable,
 } from '@/lib/ai/cost-guard';
 import {
-  getOrCreateGlobalChatSession,
   loadRecentMessagesForClient,
   loadRecentMessages,
   persistChatMessage,
 } from '@/lib/services/chat-persistence';
+import {
+  resolveChatGoalContext,
+  type GoalContextGoal,
+} from '@/lib/services/goal-context.service';
 import { finalizeChatTurn } from '@/lib/services/chat-turn-finalizer';
 import { ChatTutorService } from '@/lib/services/chat-tutor.service';
 import { ChatPlannerService } from '@/lib/services/chat-planner.service';
@@ -85,30 +88,26 @@ export async function GET(request?: NextRequest) {
 
     const url = request ? new URL(request.url) : null;
     const chatId = url?.searchParams.get('chatId');
-
-    let sessionId = chatId;
-    if (!sessionId) {
-      sessionId = await getOrCreateGlobalChatSession(supabase, user.id);
-    } else {
-      const { data: sessionData, error: sessionError } = await supabase
-        .from('chat_sessions')
-        .select('id')
-        .eq('id', sessionId)
-        .eq('user_id', user.id)
-        .single();
-      if (sessionError || !sessionData) {
-        return apiErrorResponse('not_found', { status: 404, message: 'Chat session not found.', requestId });
-      }
-    }
+    const activeGoalId = url?.searchParams.get('activeGoalId');
+    const resolved = await resolveChatGoalContext(supabase, user.id, {
+      chatId,
+      goalId: activeGoalId,
+    });
+    const sessionId = resolved.sessionId;
 
     const messages = await loadRecentMessagesForClient(supabase, sessionId);
 
-    return NextResponse.json({ sessionId, messages }, { headers: { 'x-request-id': requestId } });
+    return NextResponse.json({
+      sessionId,
+      goalId: resolved.goalId,
+      goal: resolved.goal,
+      messages,
+    }, { headers: { 'x-request-id': requestId } });
   } catch (error) {
     logger.error('Failed to hydrate global chat', error, { requestId, feature: 'chat' });
     return apiErrorResponse('chat_hydration_failed', {
       status: 500,
-      message: 'Unable to load MIND chat history.',
+      message: 'Unable to load AI Tutor chat history.',
       requestId,
     });
   }
@@ -173,7 +172,7 @@ export async function POST(req: NextRequest) {
       });
       return apiErrorResponse('invalid_chat_payload', {
         status: 400,
-        message: 'MIND could not read the chat request payload.',
+        message: 'AI Tutor could not read the chat request payload.',
         requestId,
       });
     }
@@ -190,7 +189,7 @@ export async function POST(req: NextRequest) {
       });
       return NextResponse.json({
         error: 'invalid_chat_payload',
-        message: 'MIND could not read the chat request payload.',
+        message: 'AI Tutor could not read the chat request payload.',
         requestId,
       }, { status: 400 });
     }
@@ -209,31 +208,36 @@ export async function POST(req: NextRequest) {
     const documentBase64 = parsed.documentBase64 ?? undefined;
     const documentMimeType = parsed.documentMimeType ?? undefined;
     const chatId = parsed.chatId ?? undefined;
-    const activeGoalId = parsed.activeGoalId ?? undefined;
+    const requestedGoalId = parsed.activeGoalId ?? undefined;
     let sessionTurnsCount = parsed.sessionTurnsCount ?? 0;
     const promptVersion = getPromptVersion('mind');
     
-    let sessionId = chatId;
-    if (!sessionId) {
-      sessionId = await getOrCreateGlobalChatSession(supabase, user.id);
-    } else {
-      const { data: sessionData } = await supabase
-        .from('chat_sessions')
-        .select('id, title')
-        .eq('id', sessionId)
-        .eq('user_id', user.id)
-        .single();
-        
-      if (!sessionData) {
-        return apiErrorResponse('not_found', { status: 404, message: 'Chat session not found.', requestId });
-      }
+    let resolvedContext: Awaited<ReturnType<typeof resolveChatGoalContext>>;
+    try {
+      resolvedContext = await resolveChatGoalContext(supabase, user.id, {
+        chatId,
+        goalId: requestedGoalId,
+      });
+    } catch (err: any) {
+      const message = err?.message || 'Chat session not found.';
+      const status = /not found/i.test(message) ? 404 : 400;
+      return apiErrorResponse(status === 404 ? 'not_found' : 'invalid_chat_context', {
+        status,
+        message: status === 404 ? 'Chat session or learning goal not found.' : message,
+        requestId,
+      });
+    }
+
+    const sessionId = resolvedContext.sessionId;
+    const activeGoal: GoalContextGoal | null = resolvedContext.goal;
+    const activeGoalId = resolvedContext.goalId;
+    const sessionData = resolvedContext.session;
       
-      if (sessionData.title === 'New Chat') {
-        const titleContent = message || (parsed.imageBase64 ? 'Image question' : parsed.documentBase64 ? 'Document analysis' : 'New Chat');
-        const newTitle = titleContent.length > 30 ? titleContent.substring(0, 30) + '...' : titleContent;
-        if (newTitle !== 'New Chat') {
-          supabase.from('chat_sessions').update({ title: newTitle }).eq('id', sessionId).then();
-        }
+    if (sessionData.title === 'New Chat') {
+      const titleContent = activeGoal?.title || message || (parsed.imageBase64 ? 'Image question' : parsed.documentBase64 ? 'Document analysis' : 'New Chat');
+      const newTitle = titleContent.length > 44 ? titleContent.substring(0, 44) + '...' : titleContent;
+      if (newTitle !== 'New Chat') {
+        supabase.from('chat_sessions').update({ title: newTitle }).eq('id', sessionId).eq('user_id', user.id).then();
       }
     }
 
@@ -364,7 +368,17 @@ export async function POST(req: NextRequest) {
     const mindContextPromise = isSimpleMessage
       ? Promise.resolve({
           profile: profilePreview || { name: 'Student', examType: 'General Study' },
-          activeGoal: null,
+          activeGoal: activeGoal
+            ? {
+                id: activeGoal.id,
+                title: activeGoal.title,
+                subject: activeGoal.subject ?? null,
+                domain: activeGoal.domain ?? null,
+                targetLevel: activeGoal.target_level ?? null,
+                targetDate: activeGoal.target_date ?? activeGoal.deadline ?? null,
+                progress: activeGoal.progress ?? null,
+              }
+            : null,
           currentSessionCard: null,
           commandTasks: [],
           recentStudySessions: [],
@@ -385,7 +399,8 @@ export async function POST(req: NextRequest) {
           user.id,
           message,
           detectedIntent.topic || undefined,
-          detectedIntent.subject || undefined
+          detectedIntent.subject || undefined,
+          activeGoalId || undefined
         ).catch((err) => {
           logger.error('Failed to get MIND context', err);
           return null;
@@ -398,6 +413,8 @@ export async function POST(req: NextRequest) {
           message: message || '',
           subject: detectedIntent.subject || undefined,
           chapter: detectedIntent.topic || undefined,
+          goalId: activeGoalId,
+          chatSessionId: sessionId,
         }).catch((err) => {
           logger.error('Failed to get RAG context', err);
           return { ragContext: null, ragPromptBlock: '' };
@@ -427,6 +444,18 @@ export async function POST(req: NextRequest) {
       })),
       Promise.race([mindRagPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 2000))]).catch(() => ({ ragContext: null, ragPromptBlock: '' }))
     ]) as [string[], string[], any, any];
+
+    if (activeGoal && mindContext && !mindContext.activeGoal) {
+      mindContext.activeGoal = {
+        id: activeGoal.id,
+        title: activeGoal.title,
+        subject: activeGoal.subject ?? null,
+        domain: activeGoal.domain ?? null,
+        targetLevel: activeGoal.target_level ?? null,
+        targetDate: activeGoal.target_date ?? activeGoal.deadline ?? null,
+        progress: activeGoal.progress ?? null,
+      };
+    }
 
     const crossSessionMemories = [
       ...episodicMemories.map((memory) => `Episode: ${memory}`),
@@ -481,6 +510,7 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
       supabase,
       userId: user.id,
       sessionId,
+      goalId: activeGoalId,
       userMessage: input.userMessage ?? message ?? '',
       userMessageId,
       assistantText: input.assistantText,
@@ -568,16 +598,18 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
       const job = await createAutopsyJob({
         userId: user.id,
         fileData,
-        testName: 'MIND Chat Upload',
+        testName: 'AI Tutor Chat Upload',
         examType: profilePreview?.exam_type || 'General Study',
         idempotencyKey: `${messageRequestId}:autopsy`,
         source: 'chat_upload',
+        goalId: activeGoalId,
+        chatSessionId: sessionId,
         client: supabase,
       });
 
       const responseText = job.status === 'completed'
-        ? "I found an existing completed Test Analysis for this upload. Opening Test Analysis now so you can review the processed result."
-        : "I've queued this upload for Test Analysis. AUTOPSY will validate the file, classify only evidence-backed mistakes, update ATLAS and MEMORY through events, and I'll use the updated learner state on the next turn.";
+        ? "I found an existing completed Mistake Review for this upload. Opening Mistake Review now so you can review the processed result."
+        : "I've queued this upload for Mistake Review. I will validate the file, classify only evidence-backed mistakes, update this goal's progress and review queue, and use the updated learner state on the next turn.";
 
       const stream = new ReadableStream({
         async start(controller) {
@@ -635,7 +667,20 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
               .eq('content_hash', contentHash)
               .neq('status', 'archived')
               .maybeSingle();
-            if (duplicate) return true;
+            if (duplicate) {
+              if (activeGoalId || sessionId) {
+                await supabase
+                  .from('study_materials')
+                  .update({
+                    goal_id: activeGoalId,
+                    chat_session_id: sessionId,
+                    updated_at: new Date().toISOString(),
+                  })
+                  .eq('id', duplicate.id)
+                  .eq('user_id', user.id);
+              }
+              return true;
+            }
 
             let materialId: string | null = null;
             const originalFilename = `chat-upload-${contentHash.slice(0, 12)}`;
@@ -653,6 +698,8 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
               language: 'en',
               status: 'uploaded',
               content_hash: contentHash,
+              goal_id: activeGoalId,
+              chat_session_id: sessionId,
             }).select('id').single();
             if (materialError || !material) throw materialError || new Error('Material insert failed');
             materialId = material.id;
@@ -670,7 +717,7 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
               user_id: user.id,
               type: 'MATERIAL_UPLOADED',
               data: { materialId },
-              metadata: { source: 'chat_upload' },
+              metadata: { source: 'chat_upload', goalId: activeGoalId, chatSessionId: sessionId },
               idempotency_key: `material_uploaded:${materialId}`,
             });
 
@@ -684,7 +731,7 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
         if (isMaterialIndexing) {
            const queued = await ingestUploadedMaterial();
            const answer = queued
-             ? "Material uploaded and queued for indexing. You can check its status in the Study Materials panel."
+             ? "Source uploaded and queued for indexing. You can check its status in Sources."
              : "I could not queue that material for indexing. Please try uploading it again.";
            const stream = new ReadableStream({
              async start(controller) {
@@ -724,7 +771,7 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
       } catch (err) {
         if (isBudgetExceeded(err)) return budgetExceededResponse();
         if (isBudgetUnavailable(err)) return budgetUnavailableResponse();
-        answer = 'I could not read that document reliably. If this is for Test Analysis, upload it with your answer key, student answers, OMR sheet, or result sheet. For explanation, paste the relevant text here.';
+        answer = 'I could not read that document reliably. If this is for Mistake Review, upload it with your answer key, student answers, OMR sheet, or result sheet. For explanation, paste the relevant text here.';
       }
 
       const stream = new ReadableStream({
@@ -827,6 +874,7 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
       orchestratorIntent: orchestratorResult.intent,
       mindContext,
       supabase,
+      goalId: activeGoalId,
     });
 
     if (deterministicEngineResponse) {
@@ -993,6 +1041,7 @@ export async function buildChatFirstEngineResponse(input: {
   orchestratorIntent: string;
   mindContext: any;
   supabase: any;
+  goalId?: string | null;
 }): Promise<{ text: string; metadata: Record<string, any> } | null> {
   const normalized = input.message.toLowerCase();
   
@@ -1028,7 +1077,7 @@ export async function buildChatFirstEngineResponse(input: {
     try {
       const service = new DailyMicrotaskService(input.supabase);
       const today = new Date().toISOString().split('T')[0];
-      const currentTasks = await service.getMicrotasksForDate(input.userId, today);
+      const currentTasks = await service.getMicrotasksForDate(input.userId, today, input.goalId ?? undefined);
       
       const editPrompt = `You are a study plan editor. The user wants to edit their plan.
 User request: "${input.message}"
@@ -1080,7 +1129,8 @@ If they ask to update or generate targets generally, use "add" to create a few t
               estimated_minutes: action.estimated_minutes || 15,
               status: 'pending',
               priority: 'medium',
-              source: 'mind'
+              source: 'mind',
+              goal_id: input.goalId ?? null,
             });
           } else if (action.type === 'remove' && action.taskId) {
             await service.deleteMicrotask(action.taskId, input.userId);
@@ -1119,9 +1169,9 @@ If they ask to update or generate targets generally, use "add" to create a few t
     // Auto-expand session card into microtasks if none exist for today
     if (targetDate === new Date().toISOString().split('T')[0]) {
       try {
-        const service = new DailyMicrotaskService(input.supabase);
-        const existingMicrotasks = await service.getMicrotasksForDate(input.userId, targetDate);
-        if (existingMicrotasks.length === 0 && planResult.tasks.length > 0) {
+      const service = new DailyMicrotaskService(input.supabase);
+      const existingMicrotasks = await service.getMicrotasksForDate(input.userId, targetDate, input.goalId ?? undefined);
+      if (existingMicrotasks.length === 0 && planResult.tasks.length > 0) {
           for (const task of planResult.tasks) {
             await service.addMicrotask({
               user_id: input.userId,
@@ -1133,7 +1183,8 @@ If they ask to update or generate targets generally, use "add" to create a few t
               estimated_minutes: task.estimated_minutes,
               status: 'pending',
               priority: task.priority,
-              source: 'system'
+              source: 'system',
+              goal_id: input.goalId ?? null,
             });
           }
         }
@@ -1176,12 +1227,12 @@ If they ask to update or generate targets generally, use "add" to create a few t
   if (policyIntent === 'autopsy_query') {
     return {
       text: [
-        'AUTOPSY needs evidence before it can diagnose. Upload or paste one of these inside this chat:',
+        'Mistake Review needs evidence before it can diagnose. Upload or paste one of these inside this chat:',
         '1. answer key plus your answers',
         '2. OMR or response sheet',
         '3. score/subject breakdown',
         '4. mistake rows with question, correct answer, your answer, and chapter',
-        'I will only update ATLAS, MEMORY, and COMMAND from evidence-backed mistakes.',
+        'I will only update Progress, Review, and Today\'s Mission from evidence-backed mistakes.',
       ].join('\n'),
       metadata: {
         action: 'request_autopsy_evidence',

@@ -60,7 +60,7 @@ export interface LearnerStateSnapshot {
 
 export async function getLearnerStateSnapshot(
   userId: string,
-  options: { topic?: string; subject?: string; client?: SupabaseLike } = {}
+  options: { topic?: string; subject?: string; goalId?: string | null; client?: SupabaseLike } = {}
 ): Promise<LearnerStateSnapshot> {
   const supabase = options.client ?? (await createClient());
   const today = new Date().toISOString().split('T')[0];
@@ -75,6 +75,7 @@ export async function getLearnerStateSnapshot(
     .limit(5);
   if (options.subject) weakConceptsQuery = weakConceptsQuery.eq('subject', options.subject);
   if (options.topic) weakConceptsQuery = weakConceptsQuery.ilike('chapter', `%${options.topic}%`);
+  if (options.goalId) weakConceptsQuery = weakConceptsQuery.eq('goal_id', options.goalId);
 
   let mistakesQuery = supabase
     .from('mistakes')
@@ -85,6 +86,71 @@ export async function getLearnerStateSnapshot(
     .limit(5);
   if (options.subject) mistakesQuery = mistakesQuery.eq('subject', options.subject);
   if (options.topic) mistakesQuery = mistakesQuery.ilike('chapter', `%${options.topic}%`);
+  if (options.goalId) mistakesQuery = mistakesQuery.eq('goal_id', options.goalId);
+
+  let overdueQuery = supabase
+    .from('revision_cards')
+    .select('id, front', { count: 'exact' })
+    .eq('user_id', userId)
+    .lte('due', now)
+    .limit(5);
+  if (options.goalId) overdueQuery = overdueQuery.eq('goal_id', options.goalId);
+
+  let totalConceptsQuery = supabase
+    .from('concepts')
+    .select('id', { count: 'exact', head: true })
+    .eq('user_id', userId);
+  if (options.goalId) totalConceptsQuery = totalConceptsQuery.eq('goal_id', options.goalId);
+
+  let masteredConceptsQuery = supabase
+    .from('concepts')
+    .select('id', { count: 'exact', head: true })
+    .eq('user_id', userId)
+    .in('mastery', ['mastered', 'automated', 'proficient']);
+  if (options.goalId) masteredConceptsQuery = masteredConceptsQuery.eq('goal_id', options.goalId);
+
+  let sessionsQuery = supabase
+    .from('study_sessions')
+    .select('notes, started_at, subject, chapter, duration_minutes')
+    .eq('user_id', userId)
+    .not('notes', 'is', null)
+    .order('started_at', { ascending: false })
+    .limit(5);
+  if (options.goalId) sessionsQuery = sessionsQuery.eq('goal_id', options.goalId);
+
+  let goalQuery = supabase
+    .from('learning_goals')
+    .select('id, title, target_date, progress')
+    .eq('user_id', userId);
+  goalQuery = options.goalId
+    ? goalQuery.eq('id', options.goalId)
+    : goalQuery.eq('status', 'active').limit(1);
+
+  let missionQuery = supabase
+    .from('session_cards')
+    .select('"focusTopic", subject, "estimatedMinutes", rationale, learner_state_version')
+    .eq('user_id', userId)
+    .eq('date', today);
+  missionQuery = options.goalId
+    ? missionQuery.eq('goal_id', options.goalId)
+    : typeof (missionQuery as any).is === 'function'
+      ? (missionQuery as any).is('goal_id', null)
+      : missionQuery;
+
+  let needsReviewCountQuery = supabase
+    .from('autopsy_questions')
+    .select('id', { count: 'exact', head: true })
+    .eq('user_id', userId)
+    .in('evidence_status', ['needs_review', 'pending_review']);
+  if (options.goalId) needsReviewCountQuery = needsReviewCountQuery.eq('goal_id', options.goalId);
+
+  let lastAutopsyQuery = supabase
+    .from('mock_autopsies')
+    .select('test_name, current_score, potential_score, created_at')
+    .eq('user_id', userId)
+    .order('created_at', { ascending: false })
+    .limit(1);
+  if (options.goalId) lastAutopsyQuery = lastAutopsyQuery.eq('goal_id', options.goalId);
 
   const [
     profileRes,
@@ -111,46 +177,17 @@ export async function getLearnerStateSnapshot(
 
     mistakesQuery,
 
-    supabase
-      .from('revision_cards')
-      .select('id, front', { count: 'exact' })
-      .eq('user_id', userId)
-      .lte('due', now)
-      .limit(5),
+    overdueQuery,
 
-    supabase
-      .from('concepts')
-      .select('id', { count: 'exact', head: true })
-      .eq('user_id', userId),
+    totalConceptsQuery,
 
-    supabase
-      .from('concepts')
-      .select('id', { count: 'exact', head: true })
-      .eq('user_id', userId)
-      .in('mastery', ['mastered', 'automated', 'proficient']),
+    masteredConceptsQuery,
 
-    supabase
-      .from('study_sessions')
-      .select('notes, started_at, subject, chapter, duration_minutes')
-      .eq('user_id', userId)
-      .not('notes', 'is', null)
-      .order('started_at', { ascending: false })
-      .limit(5),
+    sessionsQuery,
 
-    supabase
-      .from('learning_goals')
-      .select('title, target_date, progress')
-      .eq('user_id', userId)
-      .eq('status', 'active')
-      .limit(1)
-      .maybeSingle(),
+    goalQuery.maybeSingle(),
 
-    supabase
-      .from('session_cards')
-      .select('"focusTopic", subject, "estimatedMinutes", rationale, learner_state_version')
-      .eq('user_id', userId)
-      .eq('date', today)
-      .maybeSingle(),
+    missionQuery.maybeSingle(),
 
     supabase
       .from('study_tasks')
@@ -169,19 +206,9 @@ export async function getLearnerStateSnapshot(
       .limit(1)
       .maybeSingle(),
 
-    supabase
-      .from('autopsy_questions')
-      .select('id', { count: 'exact', head: true })
-      .eq('user_id', userId)
-      .in('evidence_status', ['needs_review', 'pending_review']),
+    needsReviewCountQuery,
 
-    supabase
-      .from('mock_autopsies')
-      .select('test_name, current_score, potential_score, created_at')
-      .eq('user_id', userId)
-      .order('created_at', { ascending: false })
-      .limit(1)
-      .maybeSingle(),
+    lastAutopsyQuery.maybeSingle(),
   ]);
 
   const profile = profileRes.data;

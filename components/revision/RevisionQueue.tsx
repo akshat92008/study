@@ -6,7 +6,7 @@ import { Loader2, CheckCircle } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
 import { submitReview } from '@/lib/actions/revision';
 
-export default function RevisionQueue() {
+export default function RevisionQueue({ goalId }: { goalId?: string }) {
   const [queue, setQueue] = useState<any[]>([]);
   const [initialCount, setInitialCount] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -15,7 +15,8 @@ export default function RevisionQueue() {
   useEffect(() => {
     async function loadQueue() {
       try {
-        const res = await fetch('/api/revision');
+        const query = goalId ? `?goalId=${encodeURIComponent(goalId)}` : '';
+        const res = await fetch(`/api/revision${query}`);
         if (!res.ok) throw new Error('Failed to load queue');
         const data = await res.json();
         const dueCards = data.dueCards || [];
@@ -28,7 +29,7 @@ export default function RevisionQueue() {
       }
     }
     loadQueue();
-  }, [addToast]);
+  }, [addToast, goalId]);
 
   const handleRate = async (rating: string) => {
     const currentCard = queue[0];
@@ -80,7 +81,7 @@ export default function RevisionQueue() {
   const source = currentCard.source
     || (front.startsWith('[Mock Recovery]') ? 'mock recovery'
       : front.startsWith('[Mistake Recovery]') ? 'mistake recovery'
-        : front.startsWith('[Tutor Gap]') ? 'MIND session gap'
+        : front.startsWith('[Tutor Gap]') ? 'AI tutor session gap'
           : currentCard.chapter || currentCard.subject || null);
 
   return (

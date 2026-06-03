@@ -26,6 +26,8 @@ export interface CreateAutopsyJobInput {
   testName: string;
   examType: string;
   customScoring?: { correctMarks: number; negativeMarks: number };
+  goalId?: string | null;
+  chatSessionId?: string | null;
   idempotencyKey?: string | null;
   source?: string;
   client?: any;
@@ -71,7 +73,7 @@ export async function createAutopsyJob(input: CreateAutopsyJobInput): Promise<Au
     .maybeSingle();
 
   if (existingError) {
-    throw new Error(`Failed to check AUTOPSY job idempotency: ${existingError.message}`);
+    throw new Error(`Failed to check Mistake Review job idempotency: ${existingError.message}`);
   }
 
   if (existing?.id) {
@@ -96,21 +98,25 @@ export async function createAutopsyJob(input: CreateAutopsyJobInput): Promise<Au
         // instead of JSONB base64 to reduce row size, despite 20MB cap.
         fileData: input.fileData,
         customScoring: input.customScoring ?? null,
+        goalId: input.goalId ?? null,
+        chatSessionId: input.chatSessionId ?? null,
       },
+      goal_id: input.goalId ?? null,
+      chat_session_id: input.chatSessionId ?? null,
       source: input.source ?? 'autopsy_ingest',
     })
     .select('id, status, result_autopsy_id, error_message')
     .single();
 
   if (error || !created?.id) {
-    throw new Error(`Failed to create AUTOPSY job: ${error?.message ?? 'missing id'}`);
+    throw new Error(`Failed to create Mistake Review job: ${error?.message ?? 'missing id'}`);
   }
 
   await EventDispatcher.publish({
     user_id: input.userId,
     type: 'AUTOPSY_UPLOAD_RECEIVED',
-    data: { jobId: created.id },
-    metadata: { source: input.source ?? 'autopsy_ingest' },
+    data: { jobId: created.id, goalId: input.goalId ?? null, chatSessionId: input.chatSessionId ?? null },
+    metadata: { source: input.source ?? 'autopsy_ingest', goalId: input.goalId ?? null, chatSessionId: input.chatSessionId ?? null },
     idempotency_key: `autopsy_upload:${created.id}`,
   });
 
@@ -125,18 +131,18 @@ export async function createAutopsyJob(input: CreateAutopsyJobInput): Promise<Au
 
 export async function processAutopsyJob(userId: string, jobId: string): Promise<AutopsyJobRecord | null> {
   if (!jobId || typeof jobId !== 'string') {
-    throw new Error('AUTOPSY_UPLOAD_RECEIVED missing jobId');
+    throw new Error('Mistake Review upload event is missing jobId');
   }
 
   const supabase = createAdminClient();
   const { data: job, error } = await supabase
     .from('autopsy_jobs')
-    .select('id, user_id, status, test_name, exam_type, payload, idempotency_key, result_autopsy_id, error_message, retry_count')
+    .select('id, user_id, status, test_name, exam_type, payload, goal_id, chat_session_id, idempotency_key, result_autopsy_id, error_message, retry_count')
     .eq('id', jobId)
     .eq('user_id', userId)
     .maybeSingle();
 
-  if (error) throw new Error(`Failed to load AUTOPSY job: ${error.message}`);
+  if (error) throw new Error(`Failed to load Mistake Review job: ${error.message}`);
   if (!job) return null;
   if (job.status === 'completed' || job.status === 'needs_user_input') {
     return {
@@ -150,7 +156,7 @@ export async function processAutopsyJob(userId: string, jobId: string): Promise<
   const payload = job.payload ?? {};
   const fileData = payload.fileData as AutopsyJobFileData | undefined;
   if (!fileData || (fileData.kind !== 'text' && fileData.kind !== 'inline')) {
-    throw new Error('AUTOPSY job payload is missing fileData');
+    throw new Error('Mistake Review job payload is missing fileData');
   }
 
   await supabase
@@ -201,6 +207,28 @@ export async function processAutopsyJob(userId: string, jobId: string): Promise<
       job.idempotency_key
     );
 
+    const goalId = job.goal_id ?? payload.goalId ?? null;
+    const chatSessionId = job.chat_session_id ?? payload.chatSessionId ?? null;
+    if (goalId || chatSessionId) {
+      await Promise.all([
+        supabase
+          .from('mock_autopsies')
+          .update({ goal_id: goalId, chat_session_id: chatSessionId })
+          .eq('id', result.autopsyId)
+          .eq('user_id', userId),
+        supabase
+          .from('autopsy_questions')
+          .update({ goal_id: goalId, chat_session_id: chatSessionId })
+          .eq('autopsy_id', result.autopsyId)
+          .eq('user_id', userId),
+        supabase
+          .from('mistakes')
+          .update({ goal_id: goalId, chat_session_id: chatSessionId })
+          .eq('source_autopsy_id', result.autopsyId)
+          .eq('user_id', userId),
+      ]).catch((err) => logger.warn('Failed to attach goal context to Mistake Review rows', { userId, jobId: job.id, err }));
+    }
+
     await commitBudgetUsage(budgetReservation.reservationId, {
       promptTokens: estimatedPromptTokens,
       completionTokens: Math.ceil(JSON.stringify(result).length / 4),
@@ -215,6 +243,8 @@ export async function processAutopsyJob(userId: string, jobId: string): Promise<
       .update({
         status: 'completed',
         result_autopsy_id: result.autopsyId,
+        goal_id: goalId,
+        chat_session_id: chatSessionId,
         completed_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
         error_message: null,

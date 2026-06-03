@@ -8,16 +8,41 @@ import { submitReview } from '@/lib/actions/revision';
 import { RefreshCw, ChevronRight, RotateCcw, Check, Zap } from 'lucide-react';
 import CardSchedule from './CardSchedule';
 import { logStudentEvent } from '@/lib/utils/events';
+import { useAppStore } from '@/stores/appStore';
 
 export default function RevisionDashboard({ data }: { data: any }) {
+  const { activeGoalId, learningGoals } = useAppStore();
+  const [localData, setLocalData] = useState(data || {});
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const [reviewing, setReviewing] = useState(false);
 
   const [cardStartTime, setCardStartTime] = useState(0);
 
-  const { due = [], stats = {} } = data || {};
+  const { due = [], stats = {} } = localData || {};
   const currentCard = due[currentIndex];
+  const activeGoal = learningGoals.find(goal => goal.id === activeGoalId);
+
+  useEffect(() => {
+    let cancelled = false;
+    async function loadGoalQueue() {
+      const query = activeGoalId ? `?goalId=${encodeURIComponent(activeGoalId)}` : '';
+      const response = await fetch(`/api/revision${query}`);
+      if (!response.ok) return;
+      const json = await response.json();
+      if (cancelled) return;
+      setLocalData({
+        due: json.dueCards || [],
+        stats: json.stats || {},
+      });
+      setCurrentIndex(0);
+      setShowAnswer(false);
+    }
+    loadGoalQueue().catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [activeGoalId]);
 
   useEffect(() => {
     setCardStartTime(Date.now());
@@ -58,7 +83,7 @@ export default function RevisionDashboard({ data }: { data: any }) {
           Revision Due
         </h1>
         <p style={{ color: 'var(--text-secondary)', marginTop: 'var(--sp-1)' }}>
-          Your revision system. Review what is due before it fades.
+          {activeGoal ? `Cards due for ${activeGoal.title}.` : 'Your revision queue. Review what is due before it fades.'}
         </p>
       </div>
 
@@ -145,8 +170,8 @@ export default function RevisionDashboard({ data }: { data: any }) {
       )}
 
       {/* Per-Card Retention & Schedule Visualization */}
-      {(data?.allCards || []).length > 0 && (
-        <CardSchedule cards={data.allCards} />
+      {(localData?.allCards || []).length > 0 && (
+        <CardSchedule cards={localData.allCards} />
       )}
     </div>
   );

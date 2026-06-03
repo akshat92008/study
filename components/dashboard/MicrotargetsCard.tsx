@@ -70,7 +70,7 @@ export default function MicrotargetsCard({ tasks: initialTasks = [] }: { tasks?:
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: 'var(--sp-6)', textAlign: 'center', background: 'var(--bg-primary)', borderRadius: 'var(--radius-md)' }}>
           <ListTodo size={32} style={{ color: 'var(--text-tertiary)', marginBottom: 'var(--sp-2)' }} />
           <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)' }}>No specific tasks for today.</p>
-          <p style={{ color: 'var(--text-tertiary)', fontSize: 'var(--fs-xs)', marginTop: 4 }}>Ask MIND to create a study plan or generate tasks from your weak chapters.</p>
+          <p style={{ color: 'var(--text-tertiary)', fontSize: 'var(--fs-xs)', marginTop: 4 }}>Ask the AI Tutor to create a study plan or generate tasks from your weak chapters.</p>
         </div>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)' }}>

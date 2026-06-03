@@ -87,7 +87,7 @@ export default async function OnboardingPage() {
     <div style={{ padding: 'var(--sp-8)', maxWidth: 720, margin: '0 auto', width: '100%' }}>
       <h1 style={{ fontSize: 'var(--fs-2xl)', marginBottom: 'var(--sp-2)' }}>Set Up Your MVP Loop</h1>
       <p style={{ color: 'var(--text-secondary)', marginBottom: 'var(--sp-6)' }}>
-        Add the minimum learner context needed for Today, MIND, ATLAS, MEMORY, and AUTOPSY.
+        Add the minimum learner context needed for Today, AI Tutor, Progress, Review, and Mistake Review.
       </p>
 
       <form action={completeOnboarding} style={{ display: 'grid', gap: 'var(--sp-4)' }}>
@@ -173,7 +173,7 @@ export default async function OnboardingPage() {
           type="submit"
           style={{ marginTop: 'var(--sp-2)', padding: '12px 16px', borderRadius: 8, border: 'none', background: 'var(--accent-blue)', color: 'white', fontWeight: 700, cursor: 'pointer' }}
         >
-          Continue To MIND
+          Continue To AI Tutor
         </button>
       </form>
     </div>

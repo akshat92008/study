@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Brain, Zap, Target } from 'lucide-react';
+import { ArrowRight, Brain, Zap } from 'lucide-react';
 
 interface ScoreBridgeProps {
   currentScore: number;
@@ -34,13 +34,9 @@ export default function ScoreBridge({
       position: 'relative',
       overflow: 'hidden'
     }}>
-      {/* Background aesthetics */}
-      <div style={{ position: 'absolute', top: -50, right: -50, width: 150, height: 150, background: 'var(--accent-blue)', opacity: 0.1, filter: 'blur(50px)', borderRadius: '50%' }} />
-      <div style={{ position: 'absolute', bottom: -50, left: -50, width: 150, height: 150, background: 'var(--accent-purple)', opacity: 0.1, filter: 'blur(50px)', borderRadius: '50%' }} />
-
       <div style={{ textAlign: 'center', marginBottom: 'var(--sp-8)' }}>
         <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--accent-blue)', fontWeight: 'var(--fw-bold)', textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)', marginBottom: 'var(--sp-1)' }}>
-          {examType} Test Analysis
+          {examType} Mistake Review
         </div>
         <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-black)', color: 'var(--text-primary)' }}>
           Score Recovery Bridge

@@ -4,6 +4,7 @@ import { getCognitionGraph } from '@/lib/engines/cognition-graph';
 import { getRevisionStats, getDueCards } from '@/lib/engines/revision-engine';
 import { getMistakeAnalytics } from '@/lib/engines/mistake-engine';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
+import { ensureGoalForUser } from '@/lib/services/goal-context.service';
 
 export const dynamic = 'force-dynamic';
 
@@ -21,6 +22,27 @@ export async function GET(request: Request) {
     }
 
     const localDate = new Date().toISOString().split('T')[0];
+    const { searchParams } = new URL(request.url);
+    const goalId = searchParams.get('goalId');
+    const activeGoal = goalId ? await ensureGoalForUser(supabase, user.id, goalId) : null;
+
+    let allCardsQuery = supabase.from('revision_cards')
+      .select('id, due, stability, difficulty, state, subject, chapter')
+      .eq('user_id', user.id);
+    if (goalId) allCardsQuery = allCardsQuery.eq('goal_id', goalId);
+
+    let conceptsQuery = supabase.from('concepts').select('subject, chapter').eq('user_id', user.id);
+    if (goalId) conceptsQuery = conceptsQuery.eq('goal_id', goalId);
+
+    let tasksQuery = supabase.from('daily_microtasks')
+      .select('id, title, status, subject, topic, estimated_minutes')
+      .eq('user_id', user.id)
+      .eq('task_date', localDate);
+    tasksQuery = goalId
+      ? tasksQuery.eq('goal_id', goalId)
+      : typeof (tasksQuery as any).is === 'function'
+        ? (tasksQuery as any).is('goal_id', null)
+        : tasksQuery;
 
     const [
       profileRes,
@@ -33,19 +55,13 @@ export async function GET(request: Request) {
       tasksRes
     ] = await Promise.all([
       supabase.from('profiles').select('*').eq('id', user.id).single(),
-      getCognitionGraph(user.id),
-      getDueCards(user.id),
-      getRevisionStats(user.id),
-      supabase.from('revision_cards')
-        .select('id, due, stability, difficulty, state, subject, chapter')
-        .eq('user_id', user.id),
-      getMistakeAnalytics(user.id),
-      supabase.from('concepts').select('subject, chapter').eq('user_id', user.id),
-      supabase.from('daily_microtasks')
-        .select('id, title, status, subject, topic, estimated_minutes')
-        .eq('user_id', user.id)
-        .eq('task_date', localDate)
-        .order('priority', { ascending: true })
+      getCognitionGraph(user.id, goalId),
+      getDueCards(user.id, 75, goalId),
+      getRevisionStats(user.id, goalId),
+      allCardsQuery,
+      getMistakeAnalytics(user.id, goalId),
+      conceptsQuery,
+      tasksQuery.order('priority', { ascending: true })
     ]);
 
     const syllabus: Record<string, string[]> = {};
@@ -58,6 +74,7 @@ export async function GET(request: Request) {
 
     return NextResponse.json({
       profile: profileRes.data,
+      activeGoal,
       cognition,
       revision: { due: dueRes, stats: statsRes, allCards: allCardsRes.data || [] },
       mistakes: mistakeAnalytics ? { ...mistakeAnalytics, syllabus } : null,

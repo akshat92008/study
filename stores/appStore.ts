@@ -1,6 +1,5 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { createClient } from '@/lib/supabase/client';
 import { createChatSlice, type ChatSlice, type ChatMessage } from './slices/chatSlice';
 
 export type { ChatMessage };
@@ -15,16 +14,40 @@ export interface LearningGoal {
   id: string;
   title: string;
   user_id?: string;
+  subject?: string | null;
+  domain?: string | null;
+  exam_type?: string | null;
+  target_level?: string | null;
+  description?: string | null;
   status?: string | null;
   created_at?: string | null;
+  updated_at?: string | null;
+  target_date?: string | null;
   deadline?: string | null;
   current_level?: string | null;
   time_available?: string | null;
   preferred_learning_style?: string | null;
   confidence_score?: number | null;
+  progress?: number | null;
+  primary_chat_session_id?: string | null;
+  last_active_at?: string | null;
+  metadata?: Record<string, any> | null;
+  counts?: {
+    sourcesReady?: number;
+    sourcesProcessing?: number;
+    dueCards?: number;
+    weakConcepts?: number;
+    recentMistakes?: number;
+    microtasksPending?: number;
+  };
 }
 
 interface CreateLearningGoalDetails {
+  subject?: string;
+  domain?: string;
+  examType?: string;
+  targetLevel?: string;
+  description?: string;
   deadline?: string;
   currentLevel?: string;
   timeAvailable?: string | number;
@@ -85,9 +108,16 @@ export interface AppState extends ChatSlice {
   // Learning Goals
   learningGoals: LearningGoal[];
   activeGoalId: string | null;
+  activeGoalContext: any | null;
   setActiveGoalId: (id: string | null) => void;
   loadLearningGoals: () => Promise<void>;
+  loadGoalContext: (goalId?: string | null) => Promise<any | null>;
+  selectLearningGoal: (goalId: string | null) => Promise<void>;
+  ensureGoalSession: (goalId: string) => Promise<string | null>;
+  loadGoalLinkedSession: (goalId: string) => Promise<void>;
+  loadDashboardForActiveGoal: () => void;
   createLearningGoal: (title: string, details?: CreateLearningGoalDetails) => Promise<LearningGoal | null>;
+  createGoalWithSession: (title: string, details?: CreateLearningGoalDetails) => Promise<LearningGoal | null>;
 
   // Global drawer / UI states
   activeDrawer: 'cognition' | 'revision' | 'autopsy' | 'beats' | null;
@@ -113,11 +143,11 @@ export const useAppStore = create<AppState>()(
         get as unknown as any,
         api as unknown as any
       ),
-      
+
       isCommandBarOpen: false,
       setCommandBarOpen: (open) => set({ isCommandBarOpen: open }),
       toggleCommandBar: () => set((state) => ({ isCommandBarOpen: !state.isCommandBarOpen })),
-      
+
       isAssistantOpen: true,
       setAssistantOpen: (open) => set({ isAssistantOpen: open }),
       toggleAssistant: () => set((state) => ({ isAssistantOpen: !state.isAssistantOpen })),
@@ -183,72 +213,139 @@ export const useAppStore = create<AppState>()(
 
       learningGoals: [],
       activeGoalId: null,
+      activeGoalContext: null,
       setActiveGoalId: (id) => set({ activeGoalId: id }),
       
       loadLearningGoals: async () => {
         try {
-          const supabase = createClient();
-          const { data: { user } } = await supabase.auth.getUser();
-          if (!user) return;
-          const { data, error } = await supabase
-            .from('learning_goals')
-            .select('*')
-            .order('created_at', { ascending: false });
-          if (!error && data) {
-            set({ learningGoals: data as LearningGoal[] });
-            if (data.length > 0 && !get().activeGoalId) {
-              set({ activeGoalId: data[0].id });
-            }
+          const response = await fetch('/api/goals', { method: 'GET' });
+          if (!response.ok) return;
+          const data = await response.json();
+          const goals = Array.isArray(data.goals) ? data.goals as LearningGoal[] : [];
+          set({ learningGoals: goals });
+          const currentId = get().activeGoalId;
+          const currentStillExists = currentId && goals.some(goal => goal.id === currentId);
+          if (!currentStillExists && goals.length > 0) {
+            await get().selectLearningGoal(goals[0].id);
           }
         } catch (err) {
           console.error('Failed to load learning goals:', err);
         }
       },
-      
-      createLearningGoal: async (title, details) => {
-        try {
-          const supabase = createClient();
-          const { data: { user } } = await supabase.auth.getUser();
-          if (!user) return null;
 
-          let goalData: LearningGoal | null = null;
-          if (details) {
-            const res = await fetch('/api/goals', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                title,
-                deadline: details.deadline,
-                currentLevel: details.currentLevel,
-                timeAvailable: details.timeAvailable,
-                preferredLearningStyle: details.preferredLearningStyle,
-              }),
-            });
-            const apiRes = await res.json();
-            if (apiRes.success && apiRes.goalId) {
-              const { data } = await supabase
-                .from('learning_goals')
-                .select('*')
-                .eq('id', apiRes.goalId)
-                .single();
-              goalData = data;
-            }
-          } else {
-            const { data, error } = await supabase
-              .from('learning_goals')
-              .insert({ user_id: user.id, title, status: 'active' })
-              .select()
-              .single();
-            if (!error && data) {
-              goalData = data;
-            }
+      loadGoalContext: async (goalId) => {
+        const id = goalId ?? get().activeGoalId;
+        if (!id) {
+          set({ activeGoalContext: null });
+          return null;
+        }
+        try {
+          const response = await fetch(`/api/goals/${id}/context`, { method: 'GET' });
+          if (!response.ok) return null;
+          const context = await response.json();
+          set({ activeGoalContext: context });
+          if (context.goal) {
+            set((state) => ({
+              learningGoals: state.learningGoals.map(goal =>
+                goal.id === context.goal.id
+                  ? { ...goal, ...context.goal, counts: context.counts }
+                  : goal
+              ),
+            }));
           }
+          return context;
+        } catch (err) {
+          console.error('Failed to load goal context:', err);
+          return null;
+        }
+      },
+
+      ensureGoalSession: async (goalId) => {
+        try {
+          const response = await fetch('/api/chat/sessions', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ goalId, sessionType: 'goal' }),
+          });
+          if (!response.ok) return null;
+          const data = await response.json();
+          if (data.session?.id) {
+            await get().loadSessions();
+            return data.session.id as string;
+          }
+        } catch (err) {
+          console.error('Failed to ensure goal session:', err);
+        }
+        return null;
+      },
+
+      loadGoalLinkedSession: async (goalId) => {
+        const goal = get().learningGoals.find(g => g.id === goalId);
+        const sessionId = goal?.primary_chat_session_id || await get().ensureGoalSession(goalId);
+        if (sessionId) {
+          await get().selectSession(sessionId);
+        } else {
+          await get().loadChatFromSupabase(undefined);
+        }
+      },
+
+      selectLearningGoal: async (goalId) => {
+        set({ activeGoalId: goalId });
+        if (!goalId) {
+          set({ activeGoalContext: null });
+          await get().loadChatFromSupabase(undefined);
+          get().loadDashboardForActiveGoal();
+          return;
+        }
+
+        await get().loadGoalContext(goalId);
+        await get().loadGoalLinkedSession(goalId);
+        get().loadDashboardForActiveGoal();
+      },
+
+      loadDashboardForActiveGoal: () => {
+        if (typeof window !== 'undefined') {
+          window.dispatchEvent(new Event('refresh-dashboard'));
+          window.dispatchEvent(new Event('refresh-goal-context'));
+        }
+      },
+      createLearningGoal: async (title, details) => {
+        return get().createGoalWithSession(title, details);
+      },
+
+      createGoalWithSession: async (title, details) => {
+        try {
+          const res = await fetch('/api/goals', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              title,
+              subject: details?.subject,
+              domain: details?.domain,
+              examType: details?.examType,
+              targetLevel: details?.targetLevel,
+              description: details?.description,
+              deadline: details?.deadline,
+              currentLevel: details?.currentLevel,
+              timeAvailable: details?.timeAvailable,
+              preferredLearningStyle: details?.preferredLearningStyle,
+            }),
+          });
+          if (!res.ok) return null;
+          const apiRes = await res.json();
+          const goalData = apiRes.goal as LearningGoal | null;
 
           if (goalData) {
             set((state) => ({
-              learningGoals: [goalData, ...state.learningGoals],
+              learningGoals: [goalData, ...state.learningGoals.filter(goal => goal.id !== goalData.id)],
               activeGoalId: goalData.id,
             }));
+            if (apiRes.session?.id) {
+              await get().loadSessions();
+              await get().selectSession(apiRes.session.id);
+            }
+            await get().loadGoalContext(goalData.id);
+            get().loadDashboardForActiveGoal();
             return goalData;
           }
         } catch (err) {

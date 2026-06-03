@@ -43,7 +43,7 @@ describe('RAG Final Fixes', () => {
     
     expect(content).toContain('mat.status === \'failed\'');
     expect(content).toContain('mat.status === \'ready\'');
-    expect(content).toContain('Ask MIND: "answer from my uploaded notes."');
+    expect(content).toContain('Ask the AI Tutor: "answer from my uploaded notes."');
   });
 
   it('/api/materials/upload response fields match UI expectation', () => {

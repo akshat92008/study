@@ -53,7 +53,7 @@ export default function MistakeDashboard({ data }: { data: any }) {
         <div>
           <h1 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-bold)' }}>
             <Target size={28} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 'var(--sp-2)', color: 'var(--danger)' }} />
-            Test Analysis Findings
+            Mistake Review Findings
           </h1>
           <p style={{ color: 'var(--text-secondary)', marginTop: 'var(--sp-1)' }}>Log or review mistake patterns that can feed your weak areas, revision queue, and your next mission.</p>
         </div>

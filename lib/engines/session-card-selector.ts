@@ -5,12 +5,12 @@
  * The LLM is only allowed to phrase the card — never to pick the target.
  *
  * Priority (evaluated in order, first match wins):
- *   P1  Due / overdue MEMORY (FSRS revision) cards
- *   P2  Recent AUTOPSY mistakes (last 7 days)
- *   P3  Active COMMAND task (after urgent MEMORY/AUTOPSY signals)
+ *   P1  Due / overdue revision cards
+ *   P2  Recent mistakes (last 7 days)
+ *   P3  Active daily task (after urgent review/mistake signals)
  *   P4  Active LEARNING GOAL deadline pressure
  *   P5  Recently studied but low-mastery concepts
- *   P6  Weakest ATLAS concepts  (mastery ∈ {not_started, exposed, developing})
+ *   P6  Weakest concepts  (mastery ∈ {not_started, exposed, developing})
  *   P7  Fallback / onboarding  (no learner data at all)
  */
 
@@ -231,7 +231,7 @@ export function selectSessionCard(input: SelectorInput): SelectorOutput {
       targetConceptId: card.concept_id,
       priority: 'revision',
       reason:
-        `${input.overdueCardCount} MEMORY card${input.overdueCardCount > 1 ? 's are' : ' is'} due for review${lapseNote}. ` +
+        `${input.overdueCardCount} revision card${input.overdueCardCount > 1 ? 's are' : ' is'} due for review${lapseNote}. ` +
         `Reviewing before learning new material maximises long-term retention.`,
       estimatedMinutes: Math.min(focusMinutes, Math.ceil(input.overdueCardCount * 1.2) + 5),
       taskType: 'revision',
@@ -249,7 +249,7 @@ export function selectSessionCard(input: SelectorInput): SelectorOutput {
     };
   }
 
-  // ─── P2: Recent AUTOPSY mistakes ─────────────────────────────────────────
+  // ─── P2: Recent mistakes ─────────────────────────────────────────────────
   const cutoff = new Date(now.getTime() - MISTAKE_WINDOW_DAYS * 86_400_000);
   const freshMistakes = input.recentMistakes.filter(
     (m) => new Date(m.created_at) >= cutoff
@@ -272,7 +272,7 @@ export function selectSessionCard(input: SelectorInput): SelectorOutput {
       targetConceptId: topMistake.concept_id,
       priority: 'mistake_repair',
       reason:
-        `${freshMistakes.length} recent mistake${freshMistakes.length > 1 ? 's' : ''} identified in AUTOPSY. ` +
+        `${freshMistakes.length} recent mistake${freshMistakes.length > 1 ? 's' : ''} identified in Mistake Review. ` +
         `${topChapter} (${topSubject}) has the highest error rate — repair this gap now.`,
       estimatedMinutes: focusMinutes,
       taskType: 'mistake_repair',
@@ -290,7 +290,7 @@ export function selectSessionCard(input: SelectorInput): SelectorOutput {
     };
   }
 
-  // ─── P3: COMMAND active plan task ────────────────────────────────────────
+  // ─── P3: Active plan task ────────────────────────────────────────────────
   const commandTask = input.commandOpenTasks?.find((task) => task.type !== 'break');
   if (commandTask) {
     const commandPriority = mapCommandTaskType(commandTask.type);
@@ -298,7 +298,7 @@ export function selectSessionCard(input: SelectorInput): SelectorOutput {
       targetConceptId: null,
       priority: commandPriority.taskType,
       reason:
-        `COMMAND selected "${commandTask.title}" from the active daily plan. ` +
+        `Today's Mission selected "${commandTask.title}" from the active daily plan. ` +
         (commandTask.notes || 'This keeps today aligned with your latest learner-state evidence.'),
       estimatedMinutes: Math.min(
         focusMinutes,
@@ -386,7 +386,7 @@ export function selectSessionCard(input: SelectorInput): SelectorOutput {
     }
   }
 
-  // ─── P6: Weakest ATLAS concepts ──────────────────────────────────────────
+  // ─── P6: Weakest concepts ────────────────────────────────────────────────
   if (input.weakConcepts.length > 0) {
     // Sort: mastery asc → forgetting_probability desc → times_reviewed asc
     const sorted = [...input.weakConcepts].sort((a, b) => {
@@ -434,7 +434,7 @@ export function selectSessionCard(input: SelectorInput): SelectorOutput {
     priority: 'onboarding',
     reason:
       `No study history, overdue cards, or mapped concepts yet for ${examType}. ` +
-      `Start by mapping your knowledge in ATLAS or completing your first study session.`,
+      `Start by mapping your knowledge or completing your first study session.`,
     estimatedMinutes: focusMinutes,
     taskType: 'onboarding',
     resourceType: 'onboarding_prompt',

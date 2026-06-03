@@ -83,7 +83,11 @@ export const createChatSlice: StateCreator<
   loadChatFromSupabase: async (id?: string) => {
     set({ isChatLoading: true });
     try {
-      const url = id ? `/api/ai/chat?chatId=${id}` : '/api/ai/chat';
+      const activeGoalId = (get() as any).activeGoalId;
+      const params = new URLSearchParams();
+      if (id) params.set('chatId', id);
+      if (activeGoalId) params.set('activeGoalId', activeGoalId);
+      const url = `/api/ai/chat${params.toString() ? `?${params.toString()}` : ''}`;
       const response = await fetch(url, {
         method: 'GET',
         headers: { Accept: 'application/json' },
@@ -108,6 +112,9 @@ export const createChatSlice: StateCreator<
           metadata: m.metadata ?? {},
         })),
       });
+      if (data.goalId !== undefined) {
+        (set as any)({ activeGoalId: data.goalId ?? activeGoalId ?? null });
+      }
 
       // Initialize Realtime Sync
       get().subscribeToRealtime();
@@ -135,7 +142,14 @@ export const createChatSlice: StateCreator<
 
   createNewSession: async () => {
     try {
-      const response = await fetch('/api/chat/sessions', { method: 'POST', body: JSON.stringify({ title: 'New Chat' }) });
+      const activeGoalId = (get() as any).activeGoalId;
+      const response = await fetch('/api/chat/sessions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(activeGoalId
+          ? { title: 'New Chat', goalId: activeGoalId, sessionType: 'quick' }
+          : { title: 'New Chat' }),
+      });
       if (response.ok) {
         const data = await response.json();
         await get().loadSessions();

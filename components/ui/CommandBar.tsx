@@ -24,10 +24,10 @@ export default function CommandBar() {
 
   const actions = [
     { name: "Today's Mission", icon: Home, route: '/dashboard' },
-    { name: 'MIND', icon: MessageSquare, route: '/chat' },
-    { name: 'Test Analysis', icon: Activity, route: '/autopsy' },
+    { name: 'AI Tutor', icon: MessageSquare, route: '/chat' },
+    { name: 'Mistake Review', icon: Activity, route: '/autopsy' },
     { name: 'Progress', icon: Brain, route: '/cognition' },
-    { name: 'Revision Due', icon: RefreshCw, route: '/revision' }
+    { name: 'Review', icon: RefreshCw, route: '/revision' }
   ];
 
   const filtered = actions.filter(a => a.name.toLowerCase().includes(query.toLowerCase()));

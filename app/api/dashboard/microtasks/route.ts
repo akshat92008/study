@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { DailyMicrotaskService } from '@/lib/services/daily-microtask.service';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
+import { ensureGoalForUser } from '@/lib/services/goal-context.service';
 
 export async function GET(req: NextRequest) {
   const requestId = getRequestId(req);
@@ -15,9 +16,11 @@ export async function GET(req: NextRequest) {
 
     const { searchParams } = new URL(req.url);
     const date = searchParams.get('date') || new Date().toISOString().split('T')[0];
+    const goalId = searchParams.get('goalId');
+    if (goalId) await ensureGoalForUser(supabase, user.id, goalId);
 
     const service = new DailyMicrotaskService(supabase);
-    const tasks = await service.getMicrotasksForDate(user.id, date);
+    const tasks = await service.getMicrotasksForDate(user.id, date, goalId);
 
     return NextResponse.json({ tasks });
   } catch (error) {
@@ -45,10 +48,13 @@ export async function POST(req: NextRequest) {
 
     const body = await req.json();
     const service = new DailyMicrotaskService(supabase);
+    const goalId = typeof body.goalId === 'string' && body.goalId.trim() ? body.goalId.trim() : null;
+    if (goalId) await ensureGoalForUser(supabase, user.id, goalId);
 
     if (body.action === 'add') {
       const task = await service.addMicrotask({
         user_id: user.id,
+        goal_id: goalId,
         session_card_id: body.session_card_id,
         task_date: body.task_date || new Date().toISOString().split('T')[0],
         title: body.title,

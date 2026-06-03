@@ -5,6 +5,7 @@ export type DailyMicrotaskStatus = 'pending' | 'done' | 'skipped';
 export type DailyMicrotask = {
   id: string;
   user_id: string;
+  goal_id?: string | null;
   session_card_id?: string | null;
   task_date: string;
   title: string;
@@ -24,16 +25,23 @@ export type DailyMicrotask = {
 export class DailyMicrotaskService {
   constructor(private supabase: any) {}
 
-  async getMicrotasksForDate(userId: string, date: string): Promise<DailyMicrotask[]> {
-    const { data, error } = await this.supabase
+  async getMicrotasksForDate(userId: string, date: string, goalId?: string | null): Promise<DailyMicrotask[]> {
+    let query = this.supabase
       .from('daily_microtasks')
       .select('*')
       .eq('user_id', userId)
-      .eq('task_date', date)
-      .order('created_at', { ascending: true });
+      .eq('task_date', date);
+
+    query = goalId
+      ? query.eq('goal_id', goalId)
+      : typeof (query as any).is === 'function'
+        ? (query as any).is('goal_id', null)
+        : query;
+
+    const { data, error } = await query.order('created_at', { ascending: true });
 
     if (error) {
-      logger.error('Failed to get microtasks', { userId, date, error: error.message });
+      logger.error('Failed to get microtasks', { userId, date, goalId, error: error.message });
       throw new Error('Could not fetch daily microtasks.');
     }
     return data ?? [];
@@ -87,14 +95,22 @@ export class DailyMicrotaskService {
     }
   }
 
-  async replaceMicrotasks(userId: string, date: string, tasks: Omit<DailyMicrotask, 'id' | 'created_at' | 'completed_at'>[]): Promise<DailyMicrotask[]> {
+  async replaceMicrotasks(userId: string, date: string, tasks: Omit<DailyMicrotask, 'id' | 'created_at' | 'completed_at'>[], goalId?: string | null): Promise<DailyMicrotask[]> {
     // Soft-delete or hard-delete existing ones? Let's just delete pending tasks to replace the plan.
-    const { error: deleteError } = await this.supabase
+    let deleteQuery = this.supabase
       .from('daily_microtasks')
       .delete()
       .eq('user_id', userId)
       .eq('task_date', date)
       .eq('status', 'pending');
+
+    deleteQuery = goalId
+      ? deleteQuery.eq('goal_id', goalId)
+      : typeof (deleteQuery as any).is === 'function'
+        ? (deleteQuery as any).is('goal_id', null)
+        : deleteQuery;
+
+    const { error: deleteError } = await deleteQuery;
 
     if (deleteError) {
       logger.error('Failed to clear pending microtasks', { userId, date, error: deleteError.message });

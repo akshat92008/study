@@ -83,7 +83,7 @@ export async function ensureCommandPlanForDate(input: {
         date: input.date,
         error: error.message,
       });
-      throw new Error(`COMMAND daily plan failed: ${error.message}`);
+      throw new Error(`Daily plan failed: ${error.message}`);
     }
 
     const persistedTasks = (data ?? tasks) as CommandPlanTask[];
@@ -171,7 +171,7 @@ export function formatWeakAreasForChat(input: {
   const mistakes = input.recentMistakes ?? [];
 
   if (weak.length === 0 && mistakes.length === 0) {
-    return 'I do not have enough ATLAS or AUTOPSY evidence yet to name your weakest areas. Send a mock result, mistake list, or finish a few tutor sessions and I will rank them from real data.';
+    return 'I do not have enough progress or mistake-review evidence yet to name your weakest areas. Send a mock result, mistake list, or finish a few tutor sessions and I will rank them from real data.';
   }
 
   const lines = weak.map((concept, index) => {
@@ -183,11 +183,11 @@ export function formatWeakAreasForChat(input: {
   });
 
   const recentMistakeLine = mistakes.length > 0
-    ? `Recent AUTOPSY signal: ${mistakes.slice(0, 3).map((m) => `${m.subject || 'Subject'} / ${m.chapter || 'Chapter'}${m.category ? ` (${m.category})` : ''}`).join('; ')}.`
-    : 'Recent AUTOPSY signal: no verified mistakes recorded yet.';
+    ? `Recent Mistake Review signal: ${mistakes.slice(0, 3).map((m) => `${m.subject || 'Subject'} / ${m.chapter || 'Chapter'}${m.category ? ` (${m.category})` : ''}`).join('; ')}.`
+    : 'Recent Mistake Review signal: no verified mistakes recorded yet.';
 
   return [
-    `ATLAS currently puts your mastery at ${input.masteryPercent ?? 0}%.`,
+    `Progress currently puts your mastery at ${input.masteryPercent ?? 0}%.`,
     'Weakest areas:',
     ...lines,
     recentMistakeLine,
@@ -199,7 +199,7 @@ export function formatRevisionQueueForChat(input: {
   cards: Array<{ front?: string; subject?: string; chapter?: string }>;
 }): string {
   if (input.dueCount <= 0 || input.cards.length === 0) {
-    return 'MEMORY has no due revision cards right now. Best next move: do one focused practice block or upload your latest mock so I can create evidence-backed cards.';
+    return 'Review has no due cards right now. Best next move: do one focused practice block or upload your latest mock so I can create evidence-backed cards.';
   }
 
   const cards = input.cards.slice(0, 5).map((card, index) => {
@@ -208,7 +208,7 @@ export function formatRevisionQueueForChat(input: {
   });
 
   return [
-    `MEMORY has ${input.dueCount} card(s) due now.`,
+    `Review has ${input.dueCount} card(s) due now.`,
     'Revise these first:',
     ...cards,
     'Stop after the due queue or 25 minutes, whichever comes first.',
@@ -316,14 +316,14 @@ function buildDeterministicPlan(userId: string, date: string, state: PlanState):
     const first = state.dueCards[0];
     addTask({
       user_id: userId,
-      title: `Revise due MEMORY cards: ${first.chapter || first.subject || 'mixed topics'}`,
+      title: `Revise due cards: ${first.chapter || first.subject || 'mixed topics'}`,
       description: `Clear ${Math.min(state.dueCards.length, 30)} due spaced-repetition cards.`,
       type: 'revision',
       subject: first.subject ?? null,
       chapter: first.chapter ?? null,
       priority: 'critical',
       estimated_minutes: Math.min(30, focusBlock),
-      notes: 'COMMAND selected this because MEMORY has cards due now.',
+      notes: "Today's Mission selected this because Review has cards due now.",
     } as any);
   }
 
@@ -332,14 +332,14 @@ function buildDeterministicPlan(userId: string, date: string, state: PlanState):
   if (topMistake) {
     addTask({
       user_id: userId,
-      title: `Repair AUTOPSY gap: ${topMistake.chapter}`,
+      title: `Repair mistake-review gap: ${topMistake.chapter}`,
       description: `Redo mistakes and one similar set for ${topMistake.chapter}.`,
       type: 'practice',
       subject: topMistake.subject,
       chapter: topMistake.chapter,
       priority: tasks.length === 0 ? 'critical' : 'high',
       estimated_minutes: focusBlock,
-      notes: `COMMAND selected this from ${topMistake.count} verified mistake(s).`,
+      notes: `Today's Mission selected this from ${topMistake.count} verified mistake(s).`,
     } as any);
   }
 
@@ -351,14 +351,14 @@ function buildDeterministicPlan(userId: string, date: string, state: PlanState):
   if (weak) {
     addTask({
       user_id: userId,
-      title: `ATLAS weak-area block: ${weak.name || weak.chapter}`,
+      title: `Progress weak-area block: ${weak.name || weak.chapter}`,
       description: `Study the core idea, then solve targeted examples for ${weak.chapter}.`,
       type: 'study',
       subject: weak.subject,
       chapter: weak.chapter,
       priority: tasks.length === 0 ? 'critical' : 'high',
       estimated_minutes: focusBlock,
-      notes: `COMMAND selected this because ATLAS marks it as ${weak.mastery}.`,
+      notes: `Today's Mission selected this because Progress marks it as ${weak.mastery}.`,
     } as any);
   }
 
@@ -372,7 +372,7 @@ function buildDeterministicPlan(userId: string, date: string, state: PlanState):
       chapter: null,
       priority: 'medium',
       estimated_minutes: Math.min(45, focusBlock),
-      notes: 'COMMAND needs more evidence before it can personalize deeper.',
+      notes: "Today's Mission needs more evidence before it can personalize deeper.",
     } as any);
   }
 
@@ -386,7 +386,7 @@ function buildDeterministicPlan(userId: string, date: string, state: PlanState):
       chapter: null,
       priority: 'low',
       estimated_minutes: 10,
-      notes: 'COMMAND pacing guardrail.',
+      notes: "Today's Mission pacing guardrail.",
     } as any);
   }
 

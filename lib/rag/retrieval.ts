@@ -25,9 +25,19 @@ export async function retrieveRagContext(input: RagRetrieveInput): Promise<RagCo
   const topK = Math.max(1, Math.min(input.topK ?? RAG_CONFIG.topK, RAG_CONFIG.hardMaxTopK));
   const maxContextChars = input.maxContextChars ?? RAG_CONFIG.maxContextChars;
   const mode = input.mode ?? 'implicit';
+  let materialIds = input.materialIds;
 
   if (mode === 'off' || !input.query.trim()) {
     return emptyContext(mode);
+  }
+
+  if (!materialIds?.length && (input.goalId || input.chatSessionId)) {
+    materialIds = await getPreferredMaterialIds({
+      userId: input.userId,
+      goalId: input.goalId,
+      chatSessionId: input.chatSessionId,
+      limit: Math.max(topK * 4, 12),
+    });
   }
 
   const embedding = await embedRagText(input.query.slice(0, 2000), {
@@ -41,7 +51,7 @@ export async function retrieveRagContext(input: RagRetrieveInput): Promise<RagCo
       query_embedding: `[${embedding.join(',')}]`,
       match_user_id: input.userId,
       match_count: topK,
-      material_filter: input.materialIds ?? null,
+      material_filter: materialIds?.length ? materialIds : null,
       subject_filter: input.subject ?? null,
       chapter_filter: input.chapter ?? null,
       similarity_threshold: RAG_CONFIG.minSimilarity,
@@ -67,7 +77,41 @@ export async function retrieveRagContext(input: RagRetrieveInput): Promise<RagCo
   }
 
   if (chunks.length === 0) {
-    chunks = await keywordFallback(input, topK);
+    chunks = await keywordFallback({ ...input, materialIds }, topK);
+  }
+
+  if (chunks.length === 0 && materialIds?.length && (input.goalId || input.chatSessionId)) {
+    if (embedding && embedding.length > 0) {
+      const { data, error } = await supabase.rpc('match_study_material_chunks', {
+        query_embedding: `[${embedding.join(',')}]`,
+        match_user_id: input.userId,
+        match_count: topK,
+        material_filter: null,
+        subject_filter: input.subject ?? null,
+        chapter_filter: input.chapter ?? null,
+        similarity_threshold: RAG_CONFIG.minSimilarity,
+      });
+
+      if (!error && Array.isArray(data)) {
+        chunks = data.map((row: any) => ({
+          id: row.id,
+          materialId: row.material_id,
+          materialTitle: row.material_title ?? 'Uploaded material',
+          sourceType: row.source_type ?? null,
+          subject: row.subject ?? null,
+          chapter: row.chapter ?? null,
+          heading: row.heading ?? null,
+          pageStart: row.page_start ?? null,
+          pageEnd: row.page_end ?? null,
+          text: row.text,
+          score: Number(row.similarity ?? 0),
+        }));
+      }
+    }
+
+    if (chunks.length === 0) {
+      chunks = await keywordFallback({ ...input, materialIds: undefined }, topK);
+    }
   }
 
   const costMode = getAiCostMode();
@@ -92,7 +136,7 @@ export async function retrieveRagContext(input: RagRetrieveInput): Promise<RagCo
     await supabase.from('rag_query_logs').insert({
       user_id: input.userId,
       query: input.query.slice(0, 2000),
-      material_ids: input.materialIds ?? null,
+      material_ids: materialIds?.length ? materialIds : input.materialIds ?? null,
       retrieved_chunk_ids: chunks.map((chunk) => chunk.id),
       total_chunks: chunks.length,
       total_context_chars: context.totalContextChars,
@@ -104,6 +148,34 @@ export async function retrieveRagContext(input: RagRetrieveInput): Promise<RagCo
   }
 
   return context;
+}
+
+async function getPreferredMaterialIds(input: {
+  userId: string;
+  goalId?: string | null;
+  chatSessionId?: string | null;
+  limit: number;
+}): Promise<string[] | undefined> {
+  const supabase = createAdminClient();
+  let query = supabase
+    .from('study_materials')
+    .select('id')
+    .eq('user_id', input.userId)
+    .eq('status', 'ready')
+    .order('updated_at', { ascending: false })
+    .limit(input.limit);
+
+  if (input.goalId && input.chatSessionId) {
+    query = (query as any).or(`goal_id.eq.${input.goalId},chat_session_id.eq.${input.chatSessionId}`);
+  } else if (input.goalId) {
+    query = query.eq('goal_id', input.goalId);
+  } else if (input.chatSessionId) {
+    query = query.eq('chat_session_id', input.chatSessionId);
+  }
+
+  const { data, error } = await query;
+  if (error || !data?.length) return undefined;
+  return data.map((row: any) => row.id).filter(Boolean);
 }
 
 async function keywordFallback(input: RagRetrieveInput, topK: number): Promise<RagChunk[]> {

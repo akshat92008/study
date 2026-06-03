@@ -38,10 +38,10 @@ export default function AutopsyDashboard({ result }: AutopsyDashboardProps) {
   ];
 
   // Action for clicking a sprint task
-  const handleTackleInMIND = (task: any) => {
+  const handleTackleInTutor = (task: any) => {
     addChatMessage({
       role: 'user',
-      content: `I am executing my autopsy sprint plan. I need help with: ${task.subject} - ${task.action}. Can we review this?`,
+      content: `I am executing my mistake review sprint plan. I need help with: ${task.subject} - ${task.action}. Can we review this?`,
       timestamp: new Date().toISOString()
     });
     setAssistantOpen(true);
@@ -159,7 +159,7 @@ export default function AutopsyDashboard({ result }: AutopsyDashboardProps) {
           </h3>
           
           <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)', marginBottom: 'var(--sp-4)' }}>
-            Tackle these concepts in MIND to recover your lost marks. Check them off as you complete them.
+            Tackle these concepts with the AI tutor to recover your lost marks. Check them off as you complete them.
           </p>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-3)' }}>
@@ -238,9 +238,9 @@ export default function AutopsyDashboard({ result }: AutopsyDashboardProps) {
                       +{task.marksGain} marks
                     </div>
                     
-                    {/* Tackle in MIND button */}
+                    {/* Tackle with AI Tutor button */}
                     <button 
-                      onClick={() => handleTackleInMIND(task)}
+                      onClick={() => handleTackleInTutor(task)}
                       disabled={isChecked}
                       style={{
                         background: 'transparent',
@@ -268,7 +268,7 @@ export default function AutopsyDashboard({ result }: AutopsyDashboardProps) {
                       }}
                     >
                       <MessageCircle size={16} color="var(--accent-blue)" />
-                      <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-bold)' }}>Tackle in MIND</span>
+                      <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 'var(--fw-bold)' }}>Ask AI Tutor</span>
                     </button>
                   </div>
                 </div>

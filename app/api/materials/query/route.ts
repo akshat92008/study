@@ -3,10 +3,13 @@ import { z } from 'zod';
 import { createClient } from '@/lib/supabase/server';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import { retrieveRagContext } from '@/lib/rag/retrieval';
+import { ensureGoalForUser } from '@/lib/services/goal-context.service';
 
 const QuerySchema = z.object({
   query: z.string().min(2),
   materialIds: z.array(z.string().uuid()).optional(),
+  goalId: z.string().uuid().nullable().optional(),
+  chatSessionId: z.string().uuid().nullable().optional(),
   subject: z.string().optional(),
   chapter: z.string().optional(),
 });
@@ -22,11 +25,16 @@ export async function POST(req: NextRequest) {
     if (!parsed.success) {
       return apiErrorResponse('invalid_request', { status: 400, message: 'Invalid material query payload.', requestId });
     }
+    if (parsed.data.goalId) {
+      await ensureGoalForUser(supabase, user.id, parsed.data.goalId);
+    }
 
     const context = await retrieveRagContext({
       userId: user.id,
       query: parsed.data.query,
       materialIds: parsed.data.materialIds,
+      goalId: parsed.data.goalId,
+      chatSessionId: parsed.data.chatSessionId,
       subject: parsed.data.subject,
       chapter: parsed.data.chapter,
       mode: 'explicit',

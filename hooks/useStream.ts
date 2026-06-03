@@ -120,11 +120,18 @@ export function useStream(defaultUrl = '/api/ai/chat'): UseStreamReturn {
               parsedError = null;
             }
 
-            const safeMessage =
+            const rawMessage =
               parsedError?.message ||
               parsedError?.error ||
               errText ||
               `HTTP ${res.status}`;
+            const rawText = String(rawMessage);
+            const looksInternal =
+              res.status >= 500 ||
+              /api[_ -]?key|provider|model|gemini|openai|anthropic|vertex|supabase|postgres|sql|stack|trace|quota/i.test(rawText);
+            const safeMessage = looksInternal
+              ? 'The AI service is temporarily unavailable. Please try again.'
+              : rawText.slice(0, 240);
 
             throw Object.assign(new Error(`HTTP ${res.status}: ${safeMessage}`), {
               status: res.status,

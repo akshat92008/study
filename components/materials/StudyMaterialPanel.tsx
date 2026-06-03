@@ -48,13 +48,13 @@ export default function StudyMaterialPanel() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-3)', marginTop: 'var(--sp-4)' }}>
       <h3 style={{ fontSize: 'var(--fs-sm)', fontWeight: 'bold', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
-        <BookOpen size={16} /> Active Study Materials
+        <BookOpen size={16} /> Active Sources
       </h3>
       <p style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', marginTop: '-4px' }}>
-        MIND will automatically use these sources when answering questions.
+        The AI Tutor will automatically use these sources when answering questions.
       </p>
       <p style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', marginTop: '-6px' }}>
-        Ask MIND: "answer from my uploaded notes."
+        Ask the AI Tutor: "answer from my uploaded notes."
       </p>
       
       {materials.map(mat => (

@@ -40,21 +40,25 @@ export async function GET(
     if (!data) {
       return apiErrorResponse('not_found', {
         status: 404,
-        message: 'AUTOPSY job was not found.',
+        message: 'Mistake Review job was not found.',
         requestId,
       });
     }
+
+    const safeError = data.status === 'failed'
+      ? 'Mistake Review failed. Please try again with a clearer upload.'
+      : data.error_message;
 
     return NextResponse.json({
       jobId: data.id,
       status: data.status,
       autopsyId: data.result_autopsy_id,
-      error: data.error_message,
+      error: safeError,
       createdAt: data.created_at,
       updatedAt: data.updated_at,
       completedAt: data.completed_at,
     }, { headers: { 'x-request-id': requestId } });
   } catch (error) {
-    return unexpectedApiErrorResponse(req, error, 'autopsy-job-status', 'Unable to load AUTOPSY job.');
+    return unexpectedApiErrorResponse(req, error, 'autopsy-job-status', 'Unable to load Mistake Review job.');
   }
 }

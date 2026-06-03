@@ -10,6 +10,8 @@ export interface StudyMaterial {
   mime_type: string;
   storage_path: string | null;
   source_type: string;
+  goal_id?: string | null;
+  chat_session_id?: string | null;
   exam_type: string | null;
   subject: string | null;
   chapter: string | null;
@@ -54,6 +56,8 @@ export interface RagRetrieveInput {
   query: string;
   mode?: RagMode;
   materialIds?: string[];
+  goalId?: string | null;
+  chatSessionId?: string | null;
   subject?: string;
   chapter?: string;
   topK?: number;

@@ -71,10 +71,11 @@ describe('Chat Payload Schema Validation', () => {
       }),
     });
 
-    // It should pass schema validation and hit our mocked success sentinel, which is caught by the top-level error handler
+    // It should pass schema validation and continue into chat context resolution.
     const res = await POST(req);
-    expect(res.status).toBe(500);
+    expect(res.status).toBe(400);
     const json = await res.json();
-    expect(json.error).toBe('internal_error');
+    expect(json.error).toBe('invalid_chat_context');
+    expect(json.error).not.toBe('invalid_chat_payload');
   });
 });

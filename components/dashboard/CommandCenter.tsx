@@ -188,7 +188,7 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
         setMessages(prev => prev.map(m => m.id === fileMsgId ? { ...m, content: `❌ Upload Failed: ${data.error}`, type: 'text' } : m));
       } else {
         const textContent = uploadType === 'mock_test' 
-          ? `📊 Test Analysis Complete. Mistakes Found: **${data.autopsy?.marks_lost || 0}**. Sprint Scheduled.`
+          ? `Mistake Review complete. Mistakes found: **${data.autopsy?.marks_lost || 0}**. Sprint scheduled.`
           : data.material?.status === 'failed'
             ? `❌ Material indexing failed for **${file.name}**.`
             : data.material?.status === 'uploaded' && data.chunksProcessed === 0
@@ -332,7 +332,7 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
               <span style={{ fontSize: 'var(--sp-5)', fontWeight: 'var(--fw-black)', color: 'var(--accent-blue)' }}>{atlasMastery || 0}%</span>
             </Card>
             <Card style={{ padding: 'var(--sp-3)', display: 'flex', flexDirection: 'column', gap: 6 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}><span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Test Analysis</span><Target size={12} style={{ color: 'var(--danger)' }} /></div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}><span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Mistake Review</span><Target size={12} style={{ color: 'var(--danger)' }} /></div>
               <span style={{ fontSize: 'var(--sp-5)', fontWeight: 'var(--fw-black)', color: 'var(--danger)' }}>{autopsyLossPoints || 0} mistakes</span>
             </Card>
             <Card style={{ padding: 'var(--sp-3)', display: 'flex', flexDirection: 'column', gap: 6 }}>

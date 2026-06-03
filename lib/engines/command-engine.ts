@@ -107,7 +107,7 @@ export class CommandPlanner {
     `;
 
     const systemPrompt = `
-      You are COMMAND, the elite operations and planning engine of Cognition OS.
+      You are the Cognition OS planning engine.
       Generate a valid structured learning roadmap in JSON format matching the schema provided.
       Ensure concepts are grouped logically by subject and chapter.
     `;
@@ -125,7 +125,7 @@ export class CommandPlanner {
     });
 
     if (!roadmap || !roadmap.milestones) {
-      throw new Error('COMMAND failed to generate a valid roadmap JSON.');
+      throw new Error('Unable to generate a valid roadmap JSON.');
     }
 
     // 3. Update the goal with generated milestones JSON
@@ -565,7 +565,7 @@ export class CommandConsumer {
         estimated_minutes: 30,
         scheduled_date: tomorrow,
         is_completed: false,
-        notes: `Added by AUTOPSY — wrong answers detected in ${chapter}. Review concepts and redo similar questions.`,
+        notes: `Added by Mistake Review after wrong answers were detected in ${chapter}. Review concepts and redo similar questions.`,
       });
 
       inserted++;

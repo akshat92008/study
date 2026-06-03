@@ -37,6 +37,7 @@ import { getLearnerStateVersion } from '@/lib/services/learner-state-version';
 import { logger } from '@/lib/utils/logger';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
+import { ensureGoalForUser } from '@/lib/services/goal-context.service';
 
 // ─── Response contract ───────────────────────────────────────────────────────
 
@@ -147,6 +148,9 @@ export async function GET(request?: Request): Promise<NextResponse> {
     if (!allowed) return rateLimitResponse(remaining, resetAt);
 
     const generatedAt = new Date().toISOString();
+    const { searchParams } = request ? new URL(request.url) : { searchParams: new URLSearchParams() };
+    const goalId = searchParams.get('goalId');
+    const activeGoal = goalId ? await ensureGoalForUser(supabase, user.id, goalId) : null;
 
     // ── 1. Read learner_state_version from profile ──────────────────────────
     const learnerStateVersion = await getLearnerStateVersion(user.id, supabase);
@@ -162,13 +166,15 @@ export async function GET(request?: Request): Promise<NextResponse> {
 
     const localDate = getLocalDate(profile?.timezone ?? null);
 
-    // ── 3. Check cache ──────────────────────────────────────────────────────
-    const { data: cached } = await supabase
-      .from('session_cards')
-      .select('*')
-      .eq('user_id', user.id)
-      .eq('date', localDate)
-      .maybeSingle();
+    // ── 3. Check legacy cache only for global cards ─────────────────────────
+    const { data: cached } = goalId
+      ? { data: null as any }
+      : await supabase
+          .from('session_cards')
+          .select('*')
+          .eq('user_id', user.id)
+          .eq('date', localDate)
+          .maybeSingle();
 
     if (
       cached &&
@@ -197,6 +203,77 @@ export async function GET(request?: Request): Promise<NextResponse> {
 
     // ── 4. Fetch all learner signals in parallel ────────────────────────────
     const now = new Date().toISOString();
+    let overdueCountQuery = supabase
+      .from('revision_cards')
+      .select('id', { count: 'exact', head: true })
+      .eq('user_id', user.id)
+      .lte('due', now)
+      .neq('state', 4);
+    if (goalId) overdueCountQuery = overdueCountQuery.eq('goal_id', goalId);
+
+    let topDueCardQuery = supabase
+      .from('revision_cards')
+      .select('id, subject, chapter, concept_id, difficulty, lapses')
+      .eq('user_id', user.id)
+      .lte('due', now)
+      .neq('state', 4)
+      .order('due', { ascending: true })
+      .order('difficulty', { ascending: false })
+      .order('stability', { ascending: true })
+      .limit(1);
+    if (goalId) topDueCardQuery = topDueCardQuery.eq('goal_id', goalId);
+
+    let recentMistakesQuery = supabase
+      .from('mistakes')
+      .select('id, subject, chapter, category, concept_id, created_at')
+      .eq('user_id', user.id)
+      .gte(
+        'created_at',
+        new Date(Date.now() - 7 * 86_400_000).toISOString()
+      )
+      .order('created_at', { ascending: false })
+      .limit(20);
+    if (goalId) recentMistakesQuery = recentMistakesQuery.eq('goal_id', goalId);
+
+    let weakConceptsQuery = supabase
+      .from('concepts')
+      .select(
+        'id, name, subject, chapter, mastery, mastery_score, forgetting_probability, times_reviewed'
+      )
+      .eq('user_id', user.id)
+      .in('mastery', ['not_started', 'exposed', 'developing'])
+      .order('mastery')
+      .order('forgetting_probability', { ascending: false })
+      .limit(10);
+    if (goalId) weakConceptsQuery = weakConceptsQuery.eq('goal_id', goalId);
+
+    let totalConceptsQuery = supabase
+      .from('concepts')
+      .select('id', { count: 'exact', head: true })
+      .eq('user_id', user.id);
+    if (goalId) totalConceptsQuery = totalConceptsQuery.eq('goal_id', goalId);
+
+    let masteredConceptsQuery = supabase
+      .from('concepts')
+      .select('id', { count: 'exact', head: true })
+      .eq('user_id', user.id)
+      .in('mastery', ['mastered', 'automated', 'proficient']);
+    if (goalId) masteredConceptsQuery = masteredConceptsQuery.eq('goal_id', goalId);
+
+    let commandTasksQuery = supabase
+      .from('daily_microtasks')
+      .select('title, type, subject, topic, estimated_minutes, priority, source')
+      .eq('user_id', user.id)
+      .eq('task_date', localDate)
+      .eq('status', 'pending')
+      .order('priority', { ascending: true })
+      .order('created_at', { ascending: true })
+      .limit(5);
+    commandTasksQuery = goalId
+      ? commandTasksQuery.eq('goal_id', goalId)
+      : typeof (commandTasksQuery as any).is === 'function'
+        ? (commandTasksQuery as any).is('goal_id', null)
+        : commandTasksQuery;
 
     const [
       goalRes,
@@ -210,55 +287,24 @@ export async function GET(request?: Request): Promise<NextResponse> {
       masteredConceptsRes,
       commandTasksRes,
     ] = await Promise.all([
-      supabase
-        .from('learning_goals')
-        .select('id, title, target_date, progress')
-        .eq('user_id', user.id)
-        .eq('status', 'active')
-        .order('created_at', { ascending: false })
-        .limit(1)
-        .maybeSingle(),
+      activeGoal
+        ? Promise.resolve({ data: activeGoal })
+        : supabase
+            .from('learning_goals')
+            .select('id, title, target_date, progress')
+            .eq('user_id', user.id)
+            .eq('status', 'active')
+            .order('created_at', { ascending: false })
+            .limit(1)
+            .maybeSingle(),
 
-      supabase
-        .from('revision_cards')
-        .select('id', { count: 'exact', head: true })
-        .eq('user_id', user.id)
-        .lte('due', now)
-        .neq('state', 4),
+      overdueCountQuery,
 
-      supabase
-        .from('revision_cards')
-        .select('id, subject, chapter, concept_id, difficulty, lapses')
-        .eq('user_id', user.id)
-        .lte('due', now)
-        .neq('state', 4)
-        .order('due', { ascending: true })
-        .order('difficulty', { ascending: false })
-        .order('stability', { ascending: true })
-        .limit(1)
-        .maybeSingle(),
+      topDueCardQuery.maybeSingle(),
 
-      supabase
-        .from('mistakes')
-        .select('id, subject, chapter, category, concept_id, created_at')
-        .eq('user_id', user.id)
-        .gte(
-          'created_at',
-          new Date(Date.now() - 7 * 86_400_000).toISOString()
-        )
-        .order('created_at', { ascending: false })
-        .limit(20),
+      recentMistakesQuery,
 
-      supabase
-        .from('concepts')
-        .select(
-          'id, name, subject, chapter, mastery, mastery_score, forgetting_probability, times_reviewed'
-        )
-        .eq('user_id', user.id)
-        .in('mastery', ['not_started', 'exposed', 'developing'])
-        .order('mastery')
-        .order('forgetting_probability', { ascending: false })
-        .limit(10),
+      weakConceptsQuery,
 
       supabase
         .from('study_sessions')
@@ -271,26 +317,11 @@ export async function GET(request?: Request): Promise<NextResponse> {
         .eq('user_id', user.id)
         .maybeSingle(),
 
-      supabase
-        .from('concepts')
-        .select('id', { count: 'exact', head: true })
-        .eq('user_id', user.id),
+      totalConceptsQuery,
 
-      supabase
-        .from('concepts')
-        .select('id', { count: 'exact', head: true })
-        .eq('user_id', user.id)
-        .in('mastery', ['mastered', 'automated', 'proficient']),
+      masteredConceptsQuery,
 
-      supabase
-        .from('daily_microtasks')
-        .select('title, type, subject, topic, estimated_minutes, priority, source')
-        .eq('user_id', user.id)
-        .eq('task_date', localDate)
-        .eq('status', 'pending')
-        .order('priority', { ascending: true })
-        .order('created_at', { ascending: true })
-        .limit(5),
+      commandTasksQuery,
     ]);
 
     const overdueCardCount = overdueCountRes.count ?? 0;
@@ -313,7 +344,14 @@ export async function GET(request?: Request): Promise<NextResponse> {
             onboarding_complete: profile.onboarding_complete ?? false,
           }
         : null,
-      activeGoal: goalRes.data ?? null,
+      activeGoal: goalRes.data
+        ? {
+            id: goalRes.data.id,
+            title: goalRes.data.title,
+            target_date: goalRes.data.target_date ?? null,
+            progress: goalRes.data.progress ?? 0,
+          }
+        : null,
       overdueCardCount,
       topDueCard: topDueCardRes.data ?? null,
       recentMistakes: recentMistakesRes.data ?? [],
@@ -411,6 +449,7 @@ export async function GET(request?: Request): Promise<NextResponse> {
     // ── 8. Persist to session_cards (upsert) ─────────────────────────────────
     const dbRow = {
       user_id: user.id,
+      goal_id: goalId,
       date: localDate,
       learner_state_version: learnerStateVersion,
       // payload fields
@@ -437,9 +476,11 @@ export async function GET(request?: Request): Promise<NextResponse> {
       hasActiveGoal: Boolean(goalRes.data),
     };
 
-    const { error: upsertError } = await supabase
-      .from('session_cards')
-      .upsert(dbRow, { onConflict: 'user_id,date' });
+    const { error: upsertError } = goalId
+      ? { error: null as any }
+      : await supabase
+          .from('session_cards')
+          .upsert({ ...dbRow, goal_id: null }, { onConflict: 'user_id,date' });
 
     if (upsertError) {
       logger.warn('session-card: failed to upsert card to cache', {

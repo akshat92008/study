@@ -87,7 +87,7 @@ export class ChatTutorService {
     if (isSessionComplete && recentHistory.length > 0) {
       metadataPayload = { 
         action: 'session_closing_message', 
-        closingMessage: `Session recorded for ${subject} / ${topic}. I have enough turns to update your knowledge map now; ATLAS and MEMORY will use this exact exchange to adjust mastery and cards.`, 
+        closingMessage: `Session recorded for ${subject} / ${topic}. I have enough turns to update your progress map and review cards from this exact exchange.`,
         closingType: 'async_analysis', 
         sessionComplete: true,
         subject,

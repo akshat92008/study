@@ -13,7 +13,13 @@ import {
 } from '@/lib/dashboard/session-card-contract';
 import { CheckCircle2, Circle } from 'lucide-react';
 
-export default function CurrentTaskCard({ onSessionComplete }: { onSessionComplete?: () => void }) {
+export default function CurrentTaskCard({
+  goalId,
+  onSessionComplete,
+}: {
+  goalId?: string;
+  onSessionComplete?: () => void;
+}) {
   const [data, setData] = useState<ClientSessionCard | null>(null);
   const [microtasks, setMicrotasks] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -43,11 +49,12 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
   ];
   const [currentQuoteIdx, setCurrentQuoteIdx] = useState(0);
 
-  const fetchSessionCard = async () => {
+  const fetchSessionCard = useCallback(async () => {
     try {
       setLoading(true);
       setErrorMessage(null);
-      const res = await fetch('/api/dashboard/session-card');
+      const query = goalId ? `?goalId=${encodeURIComponent(goalId)}` : '';
+      const res = await fetch(`/api/dashboard/session-card${query}`);
       if (!res.ok) {
         const message = res.status === 401 ? 'Please sign in to load today\'s session.' : 'Unable to load today\'s session.';
         setData(null);
@@ -62,7 +69,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
       setErrorMessage(normalized.errorMessage ?? null);
 
       if (normalized.card) {
-        const tasksRes = await fetch('/api/dashboard/microtasks');
+        const tasksRes = await fetch(`/api/dashboard/microtasks${query}`);
         if (tasksRes.ok) {
           const tasksData = await tasksRes.json();
           setMicrotasks(tasksData.tasks || []);
@@ -76,7 +83,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
     } finally {
       setLoading(false);
     }
-  };
+  }, [goalId]);
 
   useEffect(() => {
     fetchSessionCard();
@@ -87,7 +94,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
     
     window.addEventListener('refresh-dashboard', handleRefresh);
     return () => window.removeEventListener('refresh-dashboard', handleRefresh);
-  }, []);
+  }, [fetchSessionCard]);
 
   // Listen to start-focus-session events from other components (like checklist)
   useEffect(() => {
@@ -158,7 +165,8 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
       let taskId = data.taskId || null;
       if (!taskId) {
         // Find matching task inside study_tasks if possible to complete it
-        const resTasks = await fetch(`/api/dashboard`);
+        const query = goalId ? `?goalId=${encodeURIComponent(goalId)}` : '';
+        const resTasks = await fetch(`/api/dashboard${query}`);
         if (resTasks.ok) {
           const dashData = await resTasks.json();
           const matchingTask = dashData?.tasks?.find(
@@ -179,6 +187,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
           subject: data.subject,
           chapter: data.focusTopic,
           durationMinutes: data.estimatedMinutes,
+          goalId: goalId ?? null,
         })
       });
       const resJson = await res.json().catch(() => ({}));
@@ -189,7 +198,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
       addToast(`Mission completed: ${data.focusTopic} saved.`, 'success');
       addChatMessage({
         role: 'assistant',
-        content: `**Session Complete.** ${resJson.closingMessage || `You completed ${data.focusTopic} for ${data.estimatedMinutes} minutes. ATLAS and MEMORY are updating from this session.`}`,
+        content: `**Session Complete.** ${resJson.closingMessage || `You completed ${data.focusTopic} for ${data.estimatedMinutes} minutes. Your progress and review queue are updating from this session.`}`,
         timestamp: new Date().toISOString()
       });
 
@@ -207,7 +216,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
       console.error('Failed to complete focus session', e);
       addToast(e?.message || 'Failed to complete focus session.', 'error');
     }
-  }, [addChatMessage, addToast, data]);
+  }, [addChatMessage, addToast, data, goalId]);
 
   // Countdown timer logic
   useEffect(() => {
@@ -332,7 +341,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
     const title = cardStatus === 'onboarding' ? 'Complete your profile' : 'No session card yet';
     const description = cardStatus === 'onboarding'
       ? 'Finish onboarding, complete a session, or upload a mock so we can generate one daily mission from your goals, weak areas, and revision state.'
-      : 'No daily mission is available yet. Ask MIND what to do now or upload a mock to create the first learner signal.';
+      : 'No daily mission is available yet. Ask the AI Tutor what to do now or upload a mock to create the first learner signal.';
     return (
       <Card style={{ 
         background: 'var(--bg-secondary)', 
@@ -379,20 +388,6 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
           color: 'var(--text-primary)',
           overflow: 'hidden'
         }}>
-          {/* Animated Background Orbs */}
-          <div style={{
-            position: 'absolute', width: '400px', height: '400px', borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%)',
-            top: '10%', left: '5%', filter: 'blur(80px)', pointerEvents: 'none',
-            animation: 'pulse 10s ease-in-out infinite alternate'
-          }} />
-          <div style={{
-            position: 'absolute', width: '450px', height: '450px', borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%)',
-            bottom: '10%', right: '5%', filter: 'blur(90px)', pointerEvents: 'none',
-            animation: 'pulse 12s ease-in-out infinite alternate-reverse'
-          }} />
-
           {/* Minimize / Escape button */}
           <button
             onClick={() => setIsMinimized(true)}
@@ -433,7 +428,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
               </svg>
               {/* Floating Digital readout inside circle */}
               <div style={{ position: 'absolute', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <span style={{ fontSize: '2.5rem', fontWeight: 900, fontFamily: 'var(--font-mono)', color: 'white', letterSpacing: '-0.02em' }}>
+                <span style={{ fontSize: '2.5rem', fontWeight: 900, fontFamily: 'var(--font-mono)', color: 'white', letterSpacing: 0 }}>
                   {formatTime(timeLeft)}
                 </span>
                 <span style={{ fontSize: '9px', textTransform: 'uppercase', color: 'var(--text-tertiary)', letterSpacing: '0.1em', marginTop: -2 }}>
@@ -651,7 +646,7 @@ export default function CurrentTaskCard({ onSessionComplete }: { onSessionComple
                     await fetch('/api/dashboard/microtasks', {
                       method: 'POST',
                       headers: { 'Content-Type': 'application/json' },
-                      body: JSON.stringify({ action: 'update_status', id: task.id, status: newStatus })
+                      body: JSON.stringify({ action: 'update_status', id: task.id, status: newStatus, goalId: goalId ?? null })
                     });
                   }}
                   style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', padding: 0 }}

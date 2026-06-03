@@ -55,7 +55,7 @@ export default function LandingClient() {
             }}>
               <Brain size={18} color="white" />
             </div>
-            <span style={{ fontWeight: 800, fontSize: 'var(--fs-lg)', letterSpacing: '-0.025em' }}>Cognition OS</span>
+            <span style={{ fontWeight: 800, fontSize: 'var(--fs-lg)', letterSpacing: 0 }}>Cognition OS</span>
           </div>
           
           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-4)' }}>
@@ -129,7 +129,7 @@ export default function LandingClient() {
             fontSize: 'clamp(2.5rem, 7vw, 4.5rem)',
             fontWeight: 900,
             lineHeight: 1.05,
-            letterSpacing: '-0.04em',
+            letterSpacing: 0,
             marginBottom: 'var(--sp-6)',
           }}
         >
@@ -169,7 +169,7 @@ export default function LandingClient() {
             { value: '$42B', label: 'AI in Education by 2030', sub: 'Growing at 40.9% CAGR' },
             { value: '$33B', label: 'India EdTech by 2034', sub: 'Second largest global market' },
             { value: '30.5%', label: 'AI Tutor CAGR', sub: 'From $2.75B today' },
-            { value: '4', label: 'Connected Learning Systems', sub: 'MIND guided by your progress, revision, and test analysis' }
+            { value: '4', label: 'Connected Learning Systems', sub: 'AI Tutor guided by your progress, review, and mistake review' }
           ].map((stat, i) => (
             <div key={i} style={{
               background: 'rgba(255, 255, 255, 0.02)',
@@ -200,7 +200,7 @@ export default function LandingClient() {
           <div style={{ color: '#00f0ff', fontSize: 'var(--fs-xs)', fontFamily: 'monospace', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>
             01 — The Problem
           </div>
-          <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, marginBottom: 'var(--sp-4)', letterSpacing: '-0.02em' }}>
+          <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, marginBottom: 'var(--sp-4)', letterSpacing: 0 }}>
             Every student is their own systems integrator.
           </h2>
           <p style={{ color: '#a1a1aa', fontSize: 'var(--fs-md)', lineHeight: 1.6, maxWidth: 800, marginBottom: 24 }}>
@@ -228,11 +228,11 @@ export default function LandingClient() {
           <div style={{ color: '#00f0ff', fontSize: 'var(--fs-xs)', fontFamily: 'monospace', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>
             02 — The Product
           </div>
-          <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, marginBottom: 'var(--sp-4)', letterSpacing: '-0.02em' }}>
+          <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, marginBottom: 'var(--sp-4)', letterSpacing: 0 }}>
             Two surfaces. One intelligence.
           </h2>
           <p style={{ color: '#a1a1aa', fontSize: 'var(--fs-md)', lineHeight: 1.6, maxWidth: 800, marginBottom: 40 }}>
-            Cognition OS is built around a simple loop: one daily mission, one MIND conversation, and learner state that updates from study sessions, revision, and mistakes.
+            Cognition OS is built around a simple loop: one daily mission, one AI Tutor conversation, and learner state that updates from study sessions, review, and mistakes.
           </p>
 
           <div style={{
@@ -253,7 +253,7 @@ export default function LandingClient() {
                 <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 800 }}>The Chat <span style={{ fontSize: 10, background: 'rgba(0, 240, 255, 0.1)', color: '#00f0ff', padding: '2px 8px', borderRadius: 4, marginLeft: 8 }}>PRIMARY</span></h3>
               </div>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12, color: '#a1a1aa', fontSize: 'var(--fs-sm)' }}>
-                {['Uses Today\'s Mission, progress, revision, and test analysis state', 'References saved mistakes, weak concepts, and due revision', 'Teaches Socratically, not passively', 'Generates study material inline when requested', 'Guides you to Test Analysis after a mock test', 'Tells you the next best study action'].map((item, idx) => (
+                {['Uses Today\'s Mission, progress, review, and mistake-review state', 'References saved mistakes, weak concepts, and due review', 'Teaches Socratically, not passively', 'Generates study material inline when requested', 'Guides you to Mistake Review after a mock test', 'Tells you the next best study action'].map((item, idx) => (
                   <li key={idx} style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
                     <span style={{ color: '#00f0ff' }}>→</span>
                     {item}
@@ -275,7 +275,7 @@ export default function LandingClient() {
                 <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 800 }}>The OS Dashboard <span style={{ fontSize: 10, background: 'rgba(168, 85, 247, 0.1)', color: '#a855f7', padding: '2px 8px', borderRadius: 4, marginLeft: 8 }}>DEPTH</span></h3>
               </div>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12, color: '#a1a1aa', fontSize: 'var(--fs-sm)' }}>
-                {['Today\'s Mission — the one study action to start with', 'Progress — concept mastery and weak areas', 'Revision Due — spaced-repetition revision queue', 'Test Analysis — mock and mistake diagnosis'].map((item, idx) => (
+                {['Today\'s Mission — the one study action to start with', 'Progress — concept mastery and weak areas', 'Review — spaced-repetition queue', 'Mistake Review — mock and mistake diagnosis'].map((item, idx) => (
                   <li key={idx} style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
                     <span style={{ color: '#a855f7' }}>→</span>
                     {item}
@@ -291,7 +291,7 @@ export default function LandingClient() {
           <div style={{ color: '#00f0ff', fontSize: 'var(--fs-xs)', fontFamily: 'monospace', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>
             03 — The Daily Habit
           </div>
-          <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, marginBottom: 'var(--sp-4)', letterSpacing: '-0.02em' }}>
+          <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, marginBottom: 'var(--sp-4)', letterSpacing: 0 }}>
             One session. Every day. Gets smarter each time.
           </h2>
           <p style={{ color: '#a1a1aa', fontSize: 'var(--fs-md)', lineHeight: 1.6, maxWidth: 800, marginBottom: 40 }}>
@@ -358,11 +358,11 @@ export default function LandingClient() {
           <div style={{ color: '#00f0ff', fontSize: 'var(--fs-xs)', fontFamily: 'monospace', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>
             04 — The Intelligence Engine
           </div>
-          <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, marginBottom: 'var(--sp-4)', letterSpacing: '-0.02em' }}>
+          <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, marginBottom: 'var(--sp-4)', letterSpacing: 0 }}>
             One mentor. Four connected learner systems.
           </h2>
           <p style={{ color: '#a1a1aa', fontSize: 'var(--fs-md)', lineHeight: 1.6, maxWidth: 800, marginBottom: 40 }}>
-            MIND is the front door. Progress, revision, and test analysis provide the state underneath so every session, doubt, and mistake can shape the next study action.
+            The AI Tutor is the front door. Progress, Review, and Mistake Review provide the state underneath so every session, doubt, and mistake can shape the next study action.
           </p>
 
           <div style={{
@@ -372,10 +372,10 @@ export default function LandingClient() {
             marginBottom: 40
           }}>
             {[
-              { icon: Brain, title: 'MIND', label: 'Persistent AI Mentor', desc: 'Uses your current mission, weak concepts, mistakes, revision backlog, and recent sessions to guide you.', color: '#a855f7' },
-              { icon: Microscope, title: 'Test Analysis', label: 'Mistake Diagnosis', desc: 'Upload tests or mistake sheets to find patterns and improve the next study plan.', color: '#ef4444' },
-              { icon: Network, title: 'Progress', label: 'Concept Mastery Map', desc: 'Tracks strong, weak, and risky areas based on sessions, mistakes, and test analysis.', color: '#00f0ff' },
-              { icon: Zap, title: 'Revision Due', label: 'Revision System', desc: 'Schedules what to review before you forget it, including cards from mistakes and weak concepts.', color: '#eab308' },
+              { icon: Brain, title: 'AI Tutor', label: 'Persistent AI Mentor', desc: 'Uses your current mission, weak concepts, mistakes, review backlog, and recent sessions to guide you.', color: '#a855f7' },
+              { icon: Microscope, title: 'Mistake Review', label: 'Mistake Diagnosis', desc: 'Upload tests or mistake sheets to find patterns and improve the next study plan.', color: '#ef4444' },
+              { icon: Network, title: 'Progress', label: 'Concept Mastery Map', desc: 'Tracks strong, weak, and risky areas based on sessions, mistakes, and mistake review.', color: '#00f0ff' },
+              { icon: Zap, title: 'Review', label: 'Revision System', desc: 'Schedules what to review before you forget it, including cards from mistakes and weak concepts.', color: '#eab308' },
             ].map((engine, idx) => (
               <div key={idx} style={{
                 background: 'rgba(255, 255, 255, 0.02)',
@@ -390,7 +390,7 @@ export default function LandingClient() {
                   width: 40,
                   height: 40,
                   borderRadius: 8,
-                  background: `rgba(${engine.title === 'MIND' ? '168,85,247' : engine.title === 'Test Analysis' ? '239,68,68' : engine.title === 'Progress' ? '0,240,255' : engine.title === 'Revision Due' ? '234,179,8' : '236,72,153'}, 0.1)`,
+                  background: `rgba(${engine.title === 'AI Tutor' ? '168,85,247' : engine.title === 'Mistake Review' ? '239,68,68' : engine.title === 'Progress' ? '0,240,255' : engine.title === 'Review' ? '234,179,8' : '236,72,153'}, 0.1)`,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -415,7 +415,7 @@ export default function LandingClient() {
             color: '#71717a',
             lineHeight: 1.5
           }}>
-            <strong>The loop:</strong> when a verified mock mistake is processed, <span style={{ color: '#ef4444' }}>Test Analysis</span> identifies the pattern, <span style={{ color: '#00f0ff' }}>Progress</span> can update weak areas, <span style={{ color: '#eab308' }}>Revision</span> can create revision, and <span style={{ color: '#a855f7' }}>MIND</span> uses that state on the next turn.
+            <strong>The loop:</strong> when a verified mock mistake is processed, <span style={{ color: '#ef4444' }}>Mistake Review</span> identifies the pattern, <span style={{ color: '#00f0ff' }}>Progress</span> can update weak areas, <span style={{ color: '#eab308' }}>Review</span> can create revision, and <span style={{ color: '#a855f7' }}>AI Tutor</span> uses that state on the next turn.
           </div>
         </section>
 
@@ -424,7 +424,7 @@ export default function LandingClient() {
           <div style={{ color: '#00f0ff', fontSize: 'var(--fs-xs)', fontFamily: 'monospace', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>
             05 — Beta Access
           </div>
-          <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, marginBottom: 'var(--sp-4)', letterSpacing: '-0.02em' }}>
+          <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, marginBottom: 'var(--sp-4)', letterSpacing: 0 }}>
             One full product while the learning loop is being proven.
           </h2>
           <div style={{
@@ -436,7 +436,7 @@ export default function LandingClient() {
             maxWidth: 720
           }}>
             <p style={{ color: '#a1a1aa', fontSize: 'var(--fs-md)', lineHeight: 1.6, margin: '0 0 20px' }}>
-              Monetisation is intentionally disabled for now. Every beta learner gets the MVP Cognition OS study loop: MIND, progress, revision, test analysis, uploads, and daily missions.
+              Monetisation is intentionally disabled for now. Every beta learner gets the MVP Cognition OS study loop: AI Tutor, Progress, Review, Mistake Review, uploads, and daily missions.
             </p>
             <NextLink href="/signup" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#0055ff', color: 'white', padding: '12px 18px', borderRadius: 8, fontSize: 'var(--fs-xs)', fontWeight: 700, textDecoration: 'none' }}>
               Start Free Beta <ArrowRight size={14} />

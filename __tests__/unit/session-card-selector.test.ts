@@ -227,24 +227,24 @@ describe('T3: User with recent autopsy mistakes → mistake_repair', () => {
 
 // ─── T3b: COMMAND active plan ───────────────────────────────────────────────
 
-describe('T3b: COMMAND active plan task → session card', () => {
-  it('uses the first open COMMAND task after urgent MEMORY/AUTOPSY signals', () => {
+describe('T3b: active plan task -> session card', () => {
+  it('uses the first open mission task after urgent review/mistake signals', () => {
     const result = selectSessionCard(
       makeInput({
         commandOpenTasks: [{
-          title: 'ATLAS weak-area block: Plant Transport',
+          title: 'Progress weak-area block: Plant Transport',
           type: 'study',
           subject: 'Biology',
           chapter: 'Plant Transport',
           estimated_minutes: 35,
           priority: 'high',
-          notes: 'COMMAND selected this because ATLAS marks it as exposed.',
+          notes: "Today's Mission selected this because Progress marks it as exposed.",
         }],
       })
     );
 
     expect(result.priority).toBe('concept_study');
-    expect(result.reason).toContain('COMMAND selected');
+    expect(result.reason).toContain("Today's Mission selected");
     expect(result.subject).toBe('Biology');
     expect(result.topic).toBe('Plant Transport');
     expect(result.estimatedMinutes).toBe(35);
@@ -606,7 +606,7 @@ describe('T9: Priority hierarchy', () => {
       topDueCard: null,
       recentMistakes: [],
       commandOpenTasks: [{
-        title: 'COMMAND priority block',
+        title: 'Mission priority block',
         type: 'practice',
         subject: 'Chemistry',
         chapter: 'Equilibrium',
@@ -616,7 +616,7 @@ describe('T9: Priority hierarchy', () => {
     };
 
     const result = selectSessionCard(withCommand);
-    expect(result.reason).toContain('COMMAND selected');
+    expect(result.reason).toContain("Today's Mission selected");
     expect(result.topic).toBe('Equilibrium');
   });
 });

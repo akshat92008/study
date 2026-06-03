@@ -16,7 +16,7 @@ describe('RAG durable route contracts', () => {
     expect(chatRoute).toContain("type: 'MATERIAL_UPLOADED'");
     expect(chatRoute).toContain(".from('rag_ingestion_jobs')");
     expect(chatRoute).toContain("onConflict: 'user_id,material_id,idempotency_key'");
-    expect(chatRoute).toContain('Material uploaded and queued for indexing');
+    expect(chatRoute).toContain('Source uploaded and queued for indexing');
   });
 
   it('queues user material reprocess instead of downloading and ingesting inline', () => {

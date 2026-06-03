@@ -59,7 +59,7 @@ export default function DailySessionFocus({
     // Emit event to the universal event bus
     logStudentEvent('session_start', { taskId, subject, chapter, estimatedMinutes });
 
-    const greetingPrompt = `You are MIND, the Socratic AI Tutor. Greet me for today's daily session on "${subject} > ${chapter}". Welcome me warmly, state the time commitment (${estimatedMinutes} minutes), and present an opening question or concept breakdown to kick off our Socratic study block. Make it direct and highly engaging.`;
+    const greetingPrompt = `You are the Cognition OS AI Tutor. Greet me for today's daily session on "${subject} > ${chapter}". Welcome me warmly, state the time commitment (${estimatedMinutes} minutes), and present an opening question or concept breakdown to kick off our Socratic study block. Make it direct and highly engaging.`;
 
     try {
       const res = await fetch('/api/ai/chat', {
@@ -236,7 +236,7 @@ export default function DailySessionFocus({
             </h2>
             <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', lineHeight: 'var(--lh-relaxed)' }}>
               You are about to start today's focus block on <strong style={{ color: 'var(--text-primary)' }}>{chapter}</strong>. 
-              MIND will tutor you Socratically to test your understanding.
+              The AI Tutor will coach you Socratically to test your understanding.
             </p>
           </div>
 
@@ -477,7 +477,7 @@ export default function DailySessionFocus({
             </div>
             
             <p style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)', lineHeight: 'var(--lh-relaxed)' }}>
-              A conceptual gap was identified by MIND. An FSRS spaced-repetition card has been seeded automatically.
+              A conceptual gap was identified by the AI Tutor. A spaced-repetition card has been seeded automatically.
             </p>
 
             <Card style={{

@@ -18,7 +18,7 @@ export const MindTutorOutputSchema = z.object({
   masteryUpdate: z.object({
     conceptId: z.string(),
     isMastered: z.boolean()
-  }).nullable().describe("Update to push to the ATLAS graph at the end of the session in SYNTHESIS state."),
+  }).nullable().describe("Update to push to the progress graph at the end of the session in SYNTHESIS state."),
   responseToStudent: z.string().describe("The actual text to stream back to the student. Use Markdown and LaTeX.")
 });
 
@@ -37,14 +37,14 @@ export interface MindTutorContext {
 }
 
 export function compileTutorSystemPrompt(context: MindTutorContext): string {
-  return `You are MIND, the elite Socratic AI Tutor of Cognition OS.
+  return `You are the Cognition OS AI Tutor.
 You are NOT a standard conversational agent. You are a highly structured, rigorous pedagogical state machine designed to force deep conceptual mastery through an 8 to 10 exchange learning flow.
 
 ## STUDENT TELEMETRY & CONTEXT
 Student: ${context.studentName}
 Exam Target: ${context.examType}
 Learning Style: ${context.learningStyle}
-ATLAS Mastery Level: ${context.masteryLevel}
+Progress Mastery Level: ${context.masteryLevel}
 Emotional State: ${context.emotionalState || 'neutral'}
 
 ## PAST MISTAKE HISTORY (CRITICAL)
@@ -82,7 +82,7 @@ PHASE 4: HARD_APPLICATION (Turn 8+)
 
 PHASE 5: HISTORICAL_CONNECTION & SYNTHESIS (Turns 9-10)
 - Connect to history. Look at the "PAST MISTAKE HISTORY" above. Reference a specific past mistake from the student's record. (e.g., "You got a similar concept wrong three weeks ago — do you remember the question about X? This is the same underlying idea.")
-- Transition to SYNTHESIS state only when they nail the hard application. Update their ATLAS mastery and generate flashcards.
+- Transition to SYNTHESIS state only when they nail the hard application. Update their progress mastery and generate flashcards.
 
 ════════════════════════════════════════
 ADAPTATION RULES

@@ -15,12 +15,12 @@ type ConceptGraphRow = {
   mastery: string;
 };
 
-export async function getMINDContext(userId: string, message?: string, topic?: string, subject?: string): Promise<MINDContext> {
+export async function getMINDContext(userId: string, message?: string, topic?: string, subject?: string, goalId?: string | null): Promise<MINDContext> {
   const startedAt = Date.now();
   try {
     logger.info('[MIND] context build started', { userId, feature: 'mind-context' });
     const supabase = await createClient();
-    const learnerState = await getLearnerStateSnapshot(userId, { topic, subject, client: supabase });
+    const learnerState = await getLearnerStateSnapshot(userId, { topic, subject, goalId, client: supabase });
     const outcomeSummary = await new OutcomeAnalyticsService(supabase)
       .getSummary(userId)
       .catch((err) => {
@@ -31,6 +31,7 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
     const conceptHistory = await getLongitudinalConceptHistory(userId, {
       topic,
       subject,
+      goalId,
       weakConcepts: learnerState.atlas.weakConcepts,
       client: supabase,
     });
@@ -55,6 +56,7 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
           query: message,
           subject,
           chapter: topic,
+          goalId: goalId ?? undefined,
         });
         const { formatCitation } = await import('@/lib/rag/citations');
         ragChunks = ragContext.chunks.slice(0, 5).map((chunk) => ({
@@ -95,7 +97,7 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       recentMistakes: learnerState.autopsy.recentMistakes.slice(0, 3),
       needsReviewCount: learnerState.autopsy.needsReviewCount,
       lastAutopsy: learnerState.autopsy.lastAutopsy,
-      recentPracticeStruggles: await getRecentPracticeStruggles(userId, supabase),
+      recentPracticeStruggles: await getRecentPracticeStruggles(userId, supabase, goalId),
       struggles: learnerState.autopsy.recentMistakes.slice(0, 3).map(m => ({ chapter: m.chapter, subject: m.subject })),
       masteryStats: learnerState.atlas.masterySummary,
       overdueCardsCount: learnerState.memory.dueCount,
@@ -208,6 +210,7 @@ async function getLongitudinalConceptHistory(
   options: {
     topic?: string;
     subject?: string;
+    goalId?: string | null;
     weakConcepts: Array<{ name: string; subject: string; chapter: string; mastery: string }>;
     client: any;
   }
@@ -232,6 +235,7 @@ async function getLongitudinalConceptHistory(
       .limit(8);
 
     if (targetSubject) conceptQuery = conceptQuery.eq('subject', targetSubject);
+    if (options.goalId) conceptQuery = conceptQuery.eq('goal_id', options.goalId);
     if (targetTopic) conceptQuery = conceptQuery.or(`chapter.ilike.%${targetTopic}%,name.ilike.%${targetTopic}%`);
 
     const { data: concepts } = await conceptQuery;
@@ -308,9 +312,9 @@ async function getLongitudinalConceptHistory(
   }
 }
 
-async function getRecentPracticeStruggles(userId: string, supabase: any) {
+async function getRecentPracticeStruggles(userId: string, supabase: any, goalId?: string | null) {
   try {
-    const { data } = await supabase
+    let query = supabase
       .from('mastery_events')
       .select('evidence, created_at, concepts(name, chapter, subject)')
       .eq('user_id', userId)
@@ -318,6 +322,12 @@ async function getRecentPracticeStruggles(userId: string, supabase: any) {
       .eq('evidence_type', 'practice_wrong')
       .order('created_at', { ascending: false })
       .limit(3);
+
+    if (goalId) {
+      query = query.eq('concepts.goal_id', goalId);
+    }
+
+    const { data } = await query;
     
     if (!data) return [];
     return data.map((d: any) => ({
@@ -337,13 +347,13 @@ function deriveCognitiveLoadSignal(learnerState: Awaited<ReturnType<typeof getLe
   const emotionalState = learnerState.profile.mindStateSignal;
 
   if (['overwhelmed', 'burnt_out', 'frustrated', 'anxious', 'stressed'].includes(emotionalState)) {
-    signals.push(`Current MIND state is ${emotionalState}.`);
+    signals.push(`Current emotional state is ${emotionalState}.`);
   }
   if (learnerState.memory.dueCount >= 40) {
     signals.push(`${learnerState.memory.dueCount} revision cards are due.`);
   }
   if (learnerState.atlas.weakConcepts.length >= 5) {
-    signals.push('Multiple weak ATLAS concepts are active.');
+    signals.push('Multiple weak concepts are active.');
   }
 
   return {

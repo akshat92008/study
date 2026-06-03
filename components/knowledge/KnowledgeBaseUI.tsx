@@ -1,21 +1,36 @@
 'use client';
 
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 import Badge from '@/components/ui/Badge';
-import { uploadNotes } from '@/lib/actions/knowledge';
 import { Database, Plus, FileText, Loader2, Sparkles, Headphones } from 'lucide-react';
 import { AudioPlayer } from './AudioPlayer';
+import { useAppStore } from '@/stores/appStore';
 
 export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials: any[] }) {
+  const { activeGoalId, chatId, learningGoals } = useAppStore();
   const [materials, setMaterials] = useState(initialMaterials);
   const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<{ type: 'error' | 'success', msg: string } | null>(null);
   const [audioResponse, setAudioResponse] = useState<{ script: string; audioDataUrl: string | null; materialTitle: string } | null>(null);
   const [generatingPodcastId, setGeneratingPodcastId] = useState<string | null>(null);
+  const activeGoal = learningGoals.find(goal => goal.id === activeGoalId);
+
+  const loadMaterials = useCallback(async () => {
+    const params = new URLSearchParams();
+    if (activeGoalId) params.set('goalId', activeGoalId);
+    const response = await fetch(`/api/materials${params.toString() ? `?${params.toString()}` : ''}`);
+    if (!response.ok) return;
+    const data = await response.json();
+    setMaterials(data.materials || []);
+  }, [activeGoalId]);
+
+  useEffect(() => {
+    loadMaterials().catch(() => {});
+  }, [loadMaterials]);
 
   async function handleGeneratePodcast(materialId: string) {
     setGeneratingPodcastId(materialId);
@@ -48,6 +63,8 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
     setLoading(true);
     setStatus(null);
     const formData = new FormData(e.currentTarget);
+    if (activeGoalId) formData.set('goalId', activeGoalId);
+    if (chatId) formData.set('chatSessionId', chatId);
     
     try {
       const response = await fetch('/api/materials/upload', {
@@ -73,9 +90,9 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
       } else if (res.material?.status === 'failed') {
         setStatus({ type: 'error', msg: 'Material indexing failed.' });
       } else {
-        setStatus({ type: 'success', msg: `Material indexed: ${res.chunksProcessed || 0} chunks ready.` });
+        setStatus({ type: 'success', msg: `Source ready: ${res.chunksProcessed || 0} chunks indexed.` });
         setShowForm(false);
-        window.location.reload(); 
+        await loadMaterials();
       }
     } catch (err: any) {
       setStatus({ type: 'error', msg: err.message || 'Network error occurred' });
@@ -90,14 +107,14 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
         <div>
           <h1 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-bold)', letterSpacing: 'var(--ls-tight)' }}>
             <Database size={28} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 'var(--sp-2)', color: 'var(--accent-cyan)' }} />
-            Progress Source Library
+            Sources
           </h1>
           <p style={{ color: 'var(--text-secondary)', marginTop: 'var(--sp-1)' }}>
-            Upload lecture notes so MIND can ground explanations in your own materials.
+            {activeGoal ? `Sources attached to ${activeGoal.title}.` : 'Upload lecture notes so the AI tutor can ground explanations in your materials.'}
           </p>
         </div>
         <Button onClick={() => setShowForm(!showForm)}>
-          <Plus size={16} /> Add Material
+          <Plus size={16} /> Add Source
         </Button>
       </div>
 
@@ -116,10 +133,10 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
       {showForm && (
         <Card padding="lg" variant="glow" className="animate-fade">
           <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'var(--fw-semibold)', marginBottom: 'var(--sp-4)' }}>
-            Add Study Material
+            Add Source
           </h3>
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
-            <Input name="title" label="Document Title" placeholder="e.g. Chapter 4: Thermodynamics Notes" required />
+            <Input name="title" label="Source Title" placeholder="e.g. Chapter 4: Thermodynamics Notes" required />
             
             <div>
               <label style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)', display: 'block', marginBottom: 'var(--sp-1)' }}>
@@ -142,7 +159,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
               <Button variant="ghost" type="button" onClick={() => setShowForm(false)}>Cancel</Button>
               <Button type="submit" disabled={loading} style={{ background: 'var(--accent-cyan)', color: '#000' }}>
                 {loading ? <Loader2 size={16} className="spin" /> : <Sparkles size={16} />}
-                {loading ? 'Processing...' : 'Process Material'}
+                {loading ? 'Processing...' : 'Process Source'}
               </Button>
             </div>
           </form>
@@ -160,13 +177,13 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
       {/* Uploaded Materials List */}
       <Card>
         <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'var(--fw-semibold)', marginBottom: 'var(--sp-4)' }}>
-          Ingested Brain Data
+          Uploaded Sources
         </h3>
         {materials.length === 0 ? (
           <div style={{ textAlign: 'center', padding: 'var(--sp-8)', color: 'var(--text-tertiary)' }}>
             <Database size={48} style={{ opacity: 0.2, margin: '0 auto var(--sp-4)' }} />
-            <p>Your personal knowledge base is empty.</p>
-            <p style={{ fontSize: 'var(--fs-sm)' }}>Paste notes above to train your AI.</p>
+            <p>No sources uploaded yet.</p>
+            <p style={{ fontSize: 'var(--fs-sm)' }}>Add notes to ground the AI tutor for this goal.</p>
           </div>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)' }}>
@@ -179,7 +196,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
                 <div style={{ flex: 1 }}>
                   <div style={{ fontWeight: 'var(--fw-medium)' }}>{mat.title}</div>
                   <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
-                    Ingested on {new Date(mat.created_at).toLocaleDateString()}
+                    Uploaded on {new Date(mat.created_at).toLocaleDateString()}
                   </div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
@@ -200,7 +217,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
                     )}
                   </Button>
                   <Badge color={mat.status === 'ready' ? 'cyan' : mat.status === 'failed' ? 'red' : 'yellow'}>
-                    {mat.status === 'ready' ? 'Vectorized' : mat.status === 'failed' ? 'Failed' : 'Processing'}
+                    {mat.status === 'ready' ? 'Ready' : mat.status === 'failed' ? 'Failed' : 'Processing'}
                   </Badge>
                 </div>
               </div>

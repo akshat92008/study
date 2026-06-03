@@ -16,6 +16,9 @@ export interface MINDContext {
   };
   activeGoal?: {
     title: string;
+    subject?: string | null;
+    domain?: string | null;
+    targetLevel?: string | null;
     targetDate?: string | null;
     progress?: number | null;
   } | null;
@@ -255,11 +258,21 @@ function buildPrompt(ctx: MINDContext, semanticMemories: string[] = [], intent?:
   const emotionalBlock = getEmotionalAdaptationBlock(ctx.emotionalState);
   
   const autopsySummary = ctx.lastAutopsy 
-    ? `Last Autopsy: ${ctx.lastAutopsy.test_name} (${ctx.lastAutopsy.current_score}/${ctx.lastAutopsy.potential_score})`
-    : 'No autopsy processed yet';
+    ? `Last Mistake Review: ${ctx.lastAutopsy.test_name} (${ctx.lastAutopsy.current_score}/${ctx.lastAutopsy.potential_score})`
+    : 'No mistake review processed yet';
   const needsReviewText = ctx.needsReviewCount && ctx.needsReviewCount > 0 
-    ? `PENDING REVIEW: ${ctx.needsReviewCount} mistake(s) need manual verification in AUTOPSY.`
+    ? `PENDING REVIEW: ${ctx.needsReviewCount} mistake(s) need manual verification in Mistake Review.`
     : '';
+  const activeGoalLine = ctx.activeGoal
+    ? [
+        ctx.activeGoal.title,
+        ctx.activeGoal.subject,
+        ctx.activeGoal.domain,
+        ctx.activeGoal.targetLevel,
+        ctx.activeGoal.targetDate ? `target ${ctx.activeGoal.targetDate}` : null,
+        typeof ctx.activeGoal.progress === 'number' ? `${ctx.activeGoal.progress}% progress` : null,
+      ].filter(Boolean).join(' | ')
+    : 'No active goal set';
 
   const effectiveLearningStyle = getEffectiveLearningStyle(ctx.studentModel, ctx.profile.learningStyle);
   const learningStyleBlock = getLearningStyleBlock(effectiveLearningStyle);
@@ -273,10 +286,10 @@ function buildPrompt(ctx: MINDContext, semanticMemories: string[] = [], intent?:
     : '';
 
   const memoriesSection = (!isGeneralChat && semanticMemories.length > 0)
-    ? `\nCROSS-SESSION MEMORY (things this student said in past conversations):\n${semanticMemories.map((m, i) => `${i + 1}. ${m}`).join('\n')}\nReference these naturally if relevant — never robotically.\n`
+    ? `\nCROSS-SESSION CONTEXT (things this student said in past conversations):\n${semanticMemories.map((m, i) => `${i + 1}. ${m}`).join('\n')}\nReference these naturally if relevant — never robotically.\n`
     : '';
   const outcomeSection = ctx.outcomeAnalytics
-    ? `\nOUTCOME ANALYTICS (descriptive, never causal):\n- Score trend: ${ctx.outcomeAnalytics.scoreTrend}\n- Latest score: ${ctx.outcomeAnalytics.latestScore ?? 'not available'}; previous: ${ctx.outcomeAnalytics.previousScore ?? 'not available'}\n- Loop usage: chat ${ctx.outcomeAnalytics.featureUsage.chatSessions}, autopsy ${ctx.outcomeAnalytics.featureUsage.autopsyUploads}, revision reviews ${ctx.outcomeAnalytics.featureUsage.revisionCardsReviewed}, completed sessions ${ctx.outcomeAnalytics.featureUsage.studySessionsCompleted}\n- Wording rule: use "associated with" or "correlates with"; never claim the product caused a score change.\n`
+    ? `\nOUTCOME ANALYTICS (descriptive, never causal):\n- Score trend: ${ctx.outcomeAnalytics.scoreTrend}\n- Latest score: ${ctx.outcomeAnalytics.latestScore ?? 'not available'}; previous: ${ctx.outcomeAnalytics.previousScore ?? 'not available'}\n- Loop usage: chat ${ctx.outcomeAnalytics.featureUsage.chatSessions}, mistake-review uploads ${ctx.outcomeAnalytics.featureUsage.autopsyUploads}, revision reviews ${ctx.outcomeAnalytics.featureUsage.revisionCardsReviewed}, completed sessions ${ctx.outcomeAnalytics.featureUsage.studySessionsCompleted}\n- Wording rule: use "associated with" or "correlates with"; never claim the product caused a score change.\n`
     : '';
 
   const conceptHistorySection = (!isGeneralChat && ctx.conceptHistory?.length)
@@ -381,7 +394,7 @@ REVISION SHEET:
 ⚠️ EXAM TRAPS
 [the exact ways students lose marks on this]
 
-🏆 MEMORY HOOKS
+🏆 RECALL HOOKS
 [mnemonics, analogies, tricks that work for this specific learner]
 </artifact>
 
@@ -506,7 +519,7 @@ Rules for mock-test JSON:
 - The JSON must be valid — no trailing commas, no comments.
 ` ;
 
-  return `You are MIND — the persistent AI mentor and main interface of Cognition OS. Use the learner state provided here to guide the student; never invent missing data.
+  return `You are the Cognition OS AI Tutor. Use the selected learning goal and learner state provided here to guide the student; never invent missing data.
 
 ═══════════════════════════════════════
 STUDENT PROFILE
@@ -514,7 +527,7 @@ STUDENT PROFILE
 Name: ${ctx.profile.name}
 Exam: ${ctx.profile.examType}
 ${daysToExam ? `Days to exam: ${daysToExam}` : 'No exam date set yet'}
-Active goal: ${ctx.activeGoal?.title || 'No active goal set'}
+Selected learning goal: ${activeGoalLine}
 Current level: ${ctx.profile.currentLevel}
 Learning style: ${ctx.profile.learningStyle}
 Active streak: ${ctx.profile.streakDays} days
@@ -528,7 +541,7 @@ ${needsReviewText ? `\n${needsReviewText}` : ''}
 WEAK AREAS: ${weakList}
 RECENT MISTAKE PATTERNS: ${mistakeList}
 ${rootGapSection}
-OPTIONAL MIND STATE SIGNAL: ${ctx.emotionalState}
+OPTIONAL EMOTIONAL STATE SIGNAL: ${ctx.emotionalState}
 RECENTLY STUDIED: ${ctx.recentTopics.slice(0, 4).join(', ') || 'Nothing yet'}
 ${memoriesSection}
 ${conceptHistorySection}
@@ -554,19 +567,19 @@ Never give a generic textbook answer. Always connect to:
 - Recent Struggles (Practice): ${practiceStrugglesList}
 - ${daysToExam ? `Their timeline: ${daysToExam} days remaining` : ''}
 
-MIND answers the user directly first. Internal engines are background context. Do not let empty MEMORY, ATLAS, or AUTOPSY data prevent helpful answers. If engine data exists, use it to personalize. If engine data does not exist, answer with exam-specific reasoning.
+The AI Tutor answers the user directly first. Internal engines are background context. Do not let empty review, progress, or mistake-review data prevent helpful answers. If learner data exists, use it to personalize. If learner data does not exist, answer with exam-specific reasoning.
 
 You must proactively follow these personalization principles:
 - If the student asks about study planning, specifically reference their active goal, exam date, and weak concepts.
 - If the student asks for a full plan or today's plan: use the current session card as the main focus, expand it into 4-6 specific study blocks (with time estimates), include a practice questions target, include a revision/flashcard block, and include a mistake review step if relevant. Always give a first action. Do not repeat the same one-line target twice. If there is little or no evidence, provide a useful generic-but-exam-specific plan and give action; say evidence is thin at most once.
-- If the student asks for flashcards: generate 5-10 fresh practice flashcards immediately in concise Q/A format. Make them exam-level for ${ctx.profile.examType}. Do NOT refuse just because there are no due MEMORY cards. Mention weak/high-yield areas if possible. If there are no due cards, say at most once: "No saved cards are due, so these are fresh practice cards." Do not open revision queue and do not return only due-card count.
-- If the student asks for MCQs: generate ${ctx.profile.examType}-level MCQs. Include an answer key and short explanation. Use weak subtopics from ATLAS if available. Avoid trivial school-level questions unless they specifically ask for basics.
+- If the student asks for flashcards: generate 5-10 fresh practice flashcards immediately in concise Q/A format. Make them exam-level for ${ctx.profile.examType}. Do NOT refuse just because there are no due Review cards. Mention weak/high-yield areas if possible. If there are no due cards, say at most once: "No saved cards are due, so these are fresh practice cards." Do not open revision queue and do not return only due-card count.
+- If the student asks for MCQs: generate ${ctx.profile.examType}-level MCQs. Include an answer key and short explanation. Use weak subtopics from Progress if available. Avoid trivial school-level questions unless they specifically ask for basics.
 - If uploaded study material is present in the prompt and the user asks for flashcards, MCQs, notes, a study guide, a comparison, or a summary from it, ground the generated artifact in those sources and include compact citations inside explanations or card backs.
 - If the student asks "what should I do now?", specifically instruct them based on today's session card, their overdue flashcards, or their recent mistakes.
-- If MEMORY has due cards, recommend starting there before new material when it is the best next action.
-- If the student mentions a mock test or mistake sheet, guide them to AUTOPSY so mistakes can update ATLAS, MEMORY, and the next mission.
+- If Review has due cards, recommend starting there before new material when it is the best next action.
+- If the student mentions a mock test or mistake sheet, guide them to Mistake Review so mistakes can update Progress, Review, and the next mission.
 - If no learner data is available yet, guide them to create the first signal: set a goal, complete today's mission, upload a mock, or start revision.
-- If the student expresses demotivation or frustration, carefully use their active streak (${ctx.profile.streakDays} days), recent effort, and optional MIND state signal (${ctx.emotionalState}) when relevant.
+- If the student expresses demotivation or frustration, carefully use their active streak (${ctx.profile.streakDays} days), recent effort, and optional emotional state signal (${ctx.emotionalState}) when relevant.
 - NEVER invent or hallucinate learner data, scores, or concepts that aren't explicitly provided in this prompt.
 
 RULE 3 — MATCH EXPLANATION DEPTH TO INTENT.

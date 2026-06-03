@@ -115,7 +115,7 @@ export class MindTutorService extends BaseService {
 
     const recentHistoryText = (history || [])
       .slice(-6)
-      .map((m: any) => `${m.role === 'user' ? 'Student' : 'MIND'}: ${m.content}`)
+      .map((m: any) => `${m.role === 'user' ? 'Student' : 'AI Tutor'}: ${m.content}`)
       .join('\n');
 
     const userPrompt = `${recentHistoryText}\nStudent: ${message}`;
@@ -191,7 +191,7 @@ export class MindTutorService extends BaseService {
     }
 
     const targetConceptId = previousState?.concept_id || output.masteryUpdate?.conceptId;
-    let subject = 'MIND Tutor';
+    let subject = 'AI Tutor';
     let chapter = 'Generated';
 
     if (targetConceptId) {
@@ -298,7 +298,7 @@ export class MindTutorService extends BaseService {
     - Concept: ${conceptName}
     - Gap Identified: ${gapIdentified || 'None, solid understanding.'}
     - Cards Added to FSRS Queue: ${cardsCount}
-    - Mastery Change in ATLAS: ${oldMastery.replace('_', ' ')} -> ${newMastery.replace('_', ' ')}
+    - Mastery Change in Progress: ${oldMastery.replace('_', ' ')} -> ${newMastery.replace('_', ' ')}
     - Related Past Mistake: ${pastMistake}
 
     RULES:
