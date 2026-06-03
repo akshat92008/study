@@ -62,9 +62,9 @@ import { EventDispatcher } from '@/lib/events/orchestrator';
 import { featureFlags } from '@/lib/config/flags';
 const encoder = new TextEncoder();
 const STUDY_MATERIAL_UPLOAD_RE =
-  /(use this|save this|upload this|index this|store this|add this|my notes|study material|ncert|textbook|chapter|pdf|source|answer from this|use later|prescribed material|according to this|make this my source)/i;
+  /\b(use this|save this|upload this|index this|store this|add this|my notes|study material|ncert|textbook|chapter|pdf|source|answer from this|use later|prescribed material|according to this|make this my source)\b/i;
 const EXPLICIT_READ =
-  /(read this|explain this document|summarize this document|what does this pdf say|extract this|explain this pdf|summarize this pdf)/i;
+  /\b(read this|explain this document|summarize this document|what does this pdf say|extract this|explain this pdf|summarize this pdf)\b/i;
 
 export async function GET(request?: NextRequest) {
   const requestId = getRequestId(request);
@@ -445,11 +445,7 @@ SOURCE-GROUNDED STUDY MATERIAL RULES:
 `;
 
     if (mindRag?.ragPromptBlock) {
-      systemPrompt += `
-
-${RAG_GROUNDING_RULES}
-
-${mindRag.ragPromptBlock}`;
+      systemPrompt += `\n\n${RAG_GROUNDING_RULES}\n\n${mindRag.ragPromptBlock}`;
       mindContext.ragContext = mindRag.ragContext;
       mindContext.ragChunks = mindRag.ragContext?.chunks || [];
     }
@@ -776,8 +772,7 @@ ${mindRag.ragPromptBlock}`;
         `**3. Do 5 flashcard reviews only.** Short. Familiar. It'll remind your brain it still knows things.`,
         ``,
         `Which one works for right now?`,
-      ].filter(Boolean).join('
-');
+      ].filter(Boolean).join('\n');
 
       const stream = new ReadableStream({
         async start(controller) {
@@ -922,10 +917,7 @@ ${mindRag.ragPromptBlock}`;
           metadataPayload = { ...(metadataPayload || {}), contextTrace };
 
           if (metadataPayload) {
-            controller.enqueue(encoder.encode(`
-
-===METADATA===
-${JSON.stringify(metadataPayload)}`));
+            controller.enqueue(encoder.encode(`\n\n===METADATA===\n${JSON.stringify(metadataPayload)}`));
           }
 
           await finalizeAssistantTurn({
@@ -937,9 +929,7 @@ ${JSON.stringify(metadataPayload)}`));
 
         } catch (err: any) {
           logger.error('Chat stream error', err);
-          controller.enqueue(encoder.encode('
-
-[Error: Connection interrupted. Please try again.]'));
+          controller.enqueue(encoder.encode('\n\n[Error: Connection interrupted. Please try again.]'));
         } finally {
           controller.close();
         }
@@ -972,30 +962,30 @@ export async function buildChatFirstEngineResponse(input: {
   let policyIntent: 'direct_generation' | 'memory_query' | 'atlas_query' | 'planning_query' | 'autopsy_query' | 'normal_chat' = 'normal_chat';
 
   if (
-    /(generate|make|create|give me|prepare|build)/i.test(normalized) ||
-    /(mcq|mcqs|quiz|practice questions|practice test|test me)/i.test(normalized) ||
-    /(flashcard|flashcards|active recall cards|anki cards)/i.test(normalized) ||
-    /(formula sheet|formula list|cheat sheet|revision sheet|quick revision|rapid revision)/i.test(normalized) ||
-    /(notes|study guide|learning document|study material|teach me|explain|revise)/i.test(normalized)
+    /\b(generate|make|create|give me|prepare|build)\b/i.test(normalized) ||
+    /\b(mcq|mcqs|quiz|practice questions|practice test|test me)\b/i.test(normalized) ||
+    /\b(flashcard|flashcards|active recall cards|anki cards)\b/i.test(normalized) ||
+    /\b(formula sheet|formula list|cheat sheet|revision sheet|quick revision|rapid revision)\b/i.test(normalized) ||
+    /\b(notes|study guide|learning document|study material|teach me|explain|revise)\b/i.test(normalized)
   ) {
     policyIntent = 'direct_generation';
-  } else if (/(what is due|show my due|show due|what should i revise from memory|due revision|due cards|memory queue|open memory|my saved revision cards)/i.test(normalized) || 
-      (input.intent === 'FLASHCARDS' && !/(generate|make|create|give me|practice|revise|flashcard for|flashcards for)/i.test(normalized))) {
+  } else if (/\b(what is due|show my due|show due|what should i revise from memory|due revision|due cards|memory queue|open memory|my saved revision cards)\b/i.test(normalized) || 
+      (input.intent === 'FLASHCARDS' && !/\b(generate|make|create|give me|practice|revise|flashcard for|flashcards for)\b/i.test(normalized))) {
     policyIntent = 'memory_query';
-  } else if (/(weakest areas|weak areas|weak chapters|where am i weak|what am i weak|what is my mastery|what should i improve|progress|mastery)/i.test(normalized) || 
+  } else if (/\b(weakest areas|weak areas|weak chapters|where am i weak|what am i weak|what is my mastery|what should i improve|progress|mastery)\b/i.test(normalized) || 
       input.intent === 'ATLAS') {
     policyIntent = 'atlas_query';
-  } else if (/(today'?s plan|full plan|study plan for tomorrow|plan tomorrow|what should i study tomorrow|targets|schedule|what should i study)/i.test(normalized) || 
-      (input.orchestratorIntent === 'planning' && !/(make|create|give me)/i.test(normalized))) {
+  } else if (/\b(today'?s plan|full plan|study plan for tomorrow|plan tomorrow|what should i study tomorrow|targets|schedule|what should i study)\b/i.test(normalized) || 
+      (input.orchestratorIntent === 'planning' && !/\b(make|create|give me)\b/i.test(normalized))) {
     policyIntent = 'planning_query';
-  } else if (/(analy[sz]e my test|check my mock|autopsy|test analysis|paper analysis|analyze mistakes|why did i lose marks|mistake analysis)/i.test(normalized) || 
-      (input.intent === 'AUTOPSY' && !/(make|create|generate)/i.test(normalized))) {
+  } else if (/\b(analy[sz]e my test|check my mock|autopsy|test analysis|paper analysis|analyze mistakes|why did i lose marks|mistake analysis)\b/i.test(normalized) || 
+      (input.intent === 'AUTOPSY' && !/\b(make|create|generate)\b/i.test(normalized))) {
     policyIntent = 'autopsy_query';
   }
 
   // Detect plan edits
-  const isPlanEdit = /(add|remove|change|shift|lighten|increase|mark|replace|update|create|generate|make)/i.test(normalized) && 
-                     /(plan|target|targets|task|tasks|microtask|microtasks|schedule|today|tomorrow)/i.test(normalized);
+  const isPlanEdit = /\b(add|remove|change|shift|lighten|increase|mark|replace|update|create|generate|make)\b/i.test(normalized) && 
+                     /\b(plan|target|targets|task|tasks|microtask|microtasks|schedule|today|tomorrow)\b/i.test(normalized);
 
   if (isPlanEdit) {
     try {
@@ -1082,7 +1072,7 @@ If they ask to update or generate targets generally, use "add" to create a few t
     // If the user is just asking for a plan, we return null to let the LLM generate a rich, expanded plan.
     // The LLM will read ctx.commandTasks and ctx.currentSessionCard to do this.
     // But we should ensure the DB has a plan generated for tomorrow/today if missing, just so the state is consistent.
-    const targetDate = localDateAfter(/tomorrow/i.test(normalized) ? 1 : 0);
+    const targetDate = localDateAfter(/\btomorrow\b/i.test(normalized) ? 1 : 0);
     const planResult = await ensureCommandPlanForDate({
       userId: input.userId,
       date: targetDate,
@@ -1155,8 +1145,7 @@ If they ask to update or generate targets generally, use "add" to create a few t
         '3. score/subject breakdown',
         '4. mistake rows with question, correct answer, your answer, and chapter',
         'I will only update ATLAS, MEMORY, and COMMAND from evidence-backed mistakes.',
-      ].join('
-'),
+      ].join('\n'),
       metadata: {
         action: 'request_autopsy_evidence',
       },

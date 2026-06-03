@@ -12,7 +12,7 @@ import { featureFlags } from '@/lib/config/flags';
 
 function sanitizeFilename(value: string): string {
   return value
-    .replace(/[/\?%*:|"<>]/g, '-')
+    .replace(/[/\\?%*:|"<>]/g, '-')
     .replace(/\s+/g, ' ')
     .trim()
     .slice(0, 120) || 'material';
