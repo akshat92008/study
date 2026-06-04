@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server';
 import { z } from 'zod';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
-import { EventDispatcher } from '@/lib/events/orchestrator';
+import { safePublishEvent } from '@/lib/events/safe-publish';
 import { classifyMistakeDeterministically } from '@/lib/autopsy-v3/mistake-classifier';
 import { jsonWithRequestId, requireAutopsyV3User } from '@/lib/autopsy-v3/permissions';
 
@@ -87,13 +87,13 @@ export async function POST(req: NextRequest, context: RouteContext) {
       .eq('id', assessmentId)
       .eq('user_id', user.id);
 
-    await EventDispatcher.publish({
+    await safePublishEvent({
       user_id: user.id,
       type: 'AUTOPSY_V3_REASONS_COLLECTED',
       data: { assessmentId, diagnosisCount: rows.length },
       metadata: { source: 'autopsy_v3_reasons', goalId: assessment.goal_id },
       idempotency_key: `autopsy_v3_reasons:${assessmentId}:${rows.length}:${Date.now()}`,
-    }).catch(() => undefined);
+    });
 
     return jsonWithRequestId({ diagnoses: data ?? [] }, requestId);
   } catch (error) {

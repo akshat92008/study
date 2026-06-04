@@ -2,7 +2,7 @@ import { NextRequest } from 'next/server';
 import { z } from 'zod';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import { ensureGoalForUser } from '@/lib/services/goal-context.service';
-import { EventDispatcher } from '@/lib/events/orchestrator';
+import { safePublishEvent } from '@/lib/events/safe-publish';
 import { enforceDailyTableCap, jsonWithRequestId, requireAutopsyV3User } from '@/lib/autopsy-v3/permissions';
 
 const CreateAssessmentSchema = z.object({
@@ -66,13 +66,13 @@ export async function POST(req: NextRequest) {
       .single();
     if (error) throw error;
 
-    await EventDispatcher.publish({
+    await safePublishEvent({
       user_id: user.id,
       type: 'AUTOPSY_V3_ASSESSMENT_CREATED',
       data: { assessmentId: data.id, goalId: data.goal_id },
       metadata: { source: 'autopsy_v3_assessments', goalId: data.goal_id },
       idempotency_key: `autopsy_v3_assessment_created:${data.id}`,
-    }).catch(() => undefined);
+    });
 
     return jsonWithRequestId({ assessment: data }, requestId, 201);
   } catch (error) {

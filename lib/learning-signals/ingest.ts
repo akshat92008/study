@@ -1,4 +1,5 @@
 import { EventDispatcher } from '@/lib/events/orchestrator';
+import { safePublishEvent } from '@/lib/events/safe-publish';
 import { normalizeLearningSignal } from './normalizer';
 import type { LearningSignalInput, NormalizedLearningSignal } from './types';
 
@@ -12,7 +13,7 @@ export async function ingestLearningSignal(
   if (error) throw error;
 
   if (options.publishEvent !== false) {
-    await EventDispatcher.publish({
+    await safePublishEvent({
       user_id: signal.user_id,
       type: 'LEARNING_SIGNAL_INGESTED',
       data: {
@@ -26,7 +27,7 @@ export async function ingestLearningSignal(
       },
       metadata: { source: 'learning_signals_ingest', goalId: signal.goal_id },
       idempotency_key: options.idempotencyKey ?? `learning_signal:${signal.user_id}:${signal.signal_type}:${signal.source_id ?? crypto.randomUUID()}`,
-    }).catch(() => undefined);
+    });
   }
 
   return signal;
@@ -44,7 +45,7 @@ export async function ingestLearningSignals(
 
   if (options.publishEvent !== false) {
     await Promise.all(signals.slice(0, 10).map((signal) =>
-      EventDispatcher.publish({
+      safePublishEvent({
         user_id: signal.user_id,
         type: 'LEARNING_SIGNAL_INGESTED',
         data: {
@@ -58,7 +59,7 @@ export async function ingestLearningSignals(
         },
         metadata: { source: 'learning_signals_ingest', goalId: signal.goal_id },
         idempotency_key: `learning_signal:${signal.user_id}:${signal.signal_type}:${signal.source_id ?? crypto.randomUUID()}`,
-      }).catch(() => undefined)
+      })
     ));
   }
 

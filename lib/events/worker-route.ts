@@ -71,6 +71,12 @@ export async function eventWorkerHealthRoute(req: NextRequest | Request) {
   try {
     const queue = await EventWorkerService.getHealthSummary();
 
+    if (queue.errors.length > 0) {
+      logger.error('Worker health check completed with errors', { errors: queue.errors, queueHealth: queue, requestId, feature: 'event-worker' });
+    } else {
+      logger.info('Worker health check completed', { queueHealth: queue, requestId, feature: 'event-worker' });
+    }
+
     return NextResponse.json({
       ok: queue.errors.length === 0,
       worker: 'event_worker',

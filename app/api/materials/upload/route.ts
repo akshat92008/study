@@ -9,6 +9,7 @@ import { validateMagicBytesArray } from '@/lib/utils/magicBytes';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { logger } from '@/lib/utils/logger';
 import { featureFlags } from '@/lib/config/flags';
+import { hermesRuntimeConfig } from '@/lib/hermes/hermes-runtime-config';
 import { ingestLearningSignal } from '@/lib/learning-signals/ingest';
 import {
   ensureGoalForUser,
@@ -275,7 +276,7 @@ export async function POST(req: NextRequest) {
       });
     });
 
-    if (featureFlags.hermesSourceProcessing()) {
+    if (hermesRuntimeConfig.hermesSourceProcessing()) {
       await EventDispatcher.publish({
         user_id: user.id,
         type: 'HERMES_SOURCE_PROCESS_REQUESTED',

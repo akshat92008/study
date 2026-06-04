@@ -18,20 +18,19 @@ vi.mock('@/lib/hermes', () => ({
   },
 }));
 
-vi.mock('@/lib/config/flags', () => ({
-  featureFlags: {
+vi.mock('@/lib/hermes/hermes-runtime-config', () => ({
+  hermesRuntimeConfig: {
     hermesEnabled: vi.fn(),
     hermesSourceProcessing: vi.fn(),
   },
 }));
 
 import * as hermesModule from '@/lib/hermes';
-import { featureFlags } from '@/lib/config/flags';
+import { hermesRuntimeConfig } from '@/lib/hermes/hermes-runtime-config';
 
 // A minimal mock of the hermes_worker handler (extracted from worker logic for isolation)
 async function callHermesWorkerHandler(event: any, payload: Record<string, any>) {
-  const { featureFlags: flags } = await import('@/lib/config/flags');
-  if (!flags.hermesEnabled()) {
+  if (!hermesRuntimeConfig.hermesEnabled()) {
     return { status: 'SKIPPED_INTENTIONALLY', reason: 'Hermes is disabled (HERMES_ENABLED=false)' };
   }
 
@@ -115,7 +114,7 @@ describe('Hermes Event Worker — hermes_worker consumer', () => {
   });
 
   it('returns SKIPPED when HERMES_ENABLED=false', async () => {
-    vi.mocked(featureFlags.hermesEnabled).mockReturnValue(false);
+    vi.mocked(hermesRuntimeConfig.hermesEnabled).mockReturnValue(false);
 
     const result = await callHermesWorkerHandler(MOCK_EVENT, MOCK_PAYLOAD);
     expect(result.status).toBe('SKIPPED_INTENTIONALLY');
@@ -123,7 +122,7 @@ describe('Hermes Event Worker — hermes_worker consumer', () => {
   });
 
   it('calls Hermes agent and writes DB result on success', async () => {
-    vi.mocked(featureFlags.hermesEnabled).mockReturnValue(true);
+    vi.mocked(hermesRuntimeConfig.hermesEnabled).mockReturnValue(true);
     vi.mocked(hermesModule.runHermesMistakeAgent).mockResolvedValue(MOCK_HERMES_RESULT as any);
     vi.mocked(hermesModule.writeMistakeResult).mockResolvedValue({
       autopsyId: 'a-1',
@@ -147,7 +146,7 @@ describe('Hermes Event Worker — hermes_worker consumer', () => {
   });
 
   it('uses fallback when Hermes agent throws a Hermes error', async () => {
-    vi.mocked(featureFlags.hermesEnabled).mockReturnValue(true);
+    vi.mocked(hermesRuntimeConfig.hermesEnabled).mockReturnValue(true);
     vi.mocked(hermesModule.runHermesMistakeAgent).mockRejectedValue(
       new hermesModule.HermesDisabledError()
     );
@@ -167,7 +166,7 @@ describe('Hermes Event Worker — hermes_worker consumer', () => {
   });
 
   it('returns RETRYABLE_FAILURE when DB write fails', async () => {
-    vi.mocked(featureFlags.hermesEnabled).mockReturnValue(true);
+    vi.mocked(hermesRuntimeConfig.hermesEnabled).mockReturnValue(true);
     vi.mocked(hermesModule.runHermesMistakeAgent).mockResolvedValue(MOCK_HERMES_RESULT as any);
     vi.mocked(hermesModule.isHermesError).mockReturnValue(false);
     vi.mocked(hermesModule.writeMistakeResult).mockRejectedValue(new Error('DB connection lost'));
@@ -179,7 +178,7 @@ describe('Hermes Event Worker — hermes_worker consumer', () => {
   });
 
   it('returns SKIPPED for unknown event type', async () => {
-    vi.mocked(featureFlags.hermesEnabled).mockReturnValue(true);
+    vi.mocked(hermesRuntimeConfig.hermesEnabled).mockReturnValue(true);
 
     const result = await callHermesWorkerHandler(
       { ...MOCK_EVENT, type: 'SOME_UNRELATED_EVENT' },
@@ -190,7 +189,7 @@ describe('Hermes Event Worker — hermes_worker consumer', () => {
   });
 
   it('never writes DB for wrong user (userId from event, not payload)', async () => {
-    vi.mocked(featureFlags.hermesEnabled).mockReturnValue(true);
+    vi.mocked(hermesRuntimeConfig.hermesEnabled).mockReturnValue(true);
     vi.mocked(hermesModule.runHermesMistakeAgent).mockResolvedValue(MOCK_HERMES_RESULT as any);
     vi.mocked(hermesModule.isHermesError).mockReturnValue(false);
     vi.mocked(hermesModule.writeMistakeResult).mockResolvedValue({

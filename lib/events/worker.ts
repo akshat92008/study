@@ -11,6 +11,7 @@ import { processChatSideEffects, type ChatSideEffectsInput } from '@/lib/ai/chat
 import { runAgenticConsumer } from '@/lib/agents/event-runner';
 import { runCheapAgenticCycle } from '@/lib/agents/orchestrator';
 import { featureFlags } from '@/lib/config/flags';
+import { hermesRuntimeConfig } from '@/lib/hermes/hermes-runtime-config';
 
 export const HANDLED_EVENT_CONSUMERS = [
   'learning_state_engine',
@@ -68,8 +69,6 @@ type QueueHealthSummary = {
   timestamp: string;
 };
 
-import { getRedisClientSafe } from './redisClient';
-
 export class EventWorkerService {
   /**
    * Processes a batch of events by acquiring a lease and routing to the respective consumer.
@@ -79,37 +78,20 @@ export class EventWorkerService {
     const workerId = crypto.randomUUID();
     const actualLimit = Math.min(limit, 50);
 
-    const redis = getRedisClientSafe();
     let leases: any[] = [];
 
-    const enableRedisQueue = process.env.ENABLE_REDIS_EVENT_QUEUE === 'true';
+    // 1. Acquire Leases from Postgres
+    const { data: dbLeases, error: leaseErr } = await supabase.rpc('acquire_event_leases', {
+      p_worker_id: workerId,
+      p_limit: actualLimit,
+      p_lease_timeout: `${leaseTimeoutMinutes} minutes`,
+    });
 
-    if (enableRedisQueue && redis) {
-      logger.warn('Redis event queue is enabled. This is deprecated for durable operations.', { feature: 'event-worker' });
-      for (let i = 0; i < actualLimit; i++) {
-        const item = await redis.rpop('cognition_events_queue');
-        if (item) {
-          const parsed = typeof item === 'string' ? JSON.parse(item) : item;
-          parsed._source = 'redis';
-          leases.push(parsed);
-        } else {
-          break;
-        }
-      }
-    } else {
-      // 1. Acquire Leases from Postgres
-      const { data: dbLeases, error: leaseErr } = await supabase.rpc('acquire_event_leases', {
-        p_worker_id: workerId,
-        p_limit: actualLimit,
-        p_lease_timeout: `${leaseTimeoutMinutes} minutes`,
-      });
-
-      if (leaseErr) {
-        logger.error('Failed to acquire event leases', { error: leaseErr });
-        throw leaseErr;
-      }
-      leases = (dbLeases || []).map((l: any) => ({ ...l, _source: 'postgres' }));
+    if (leaseErr) {
+      logger.error('Failed to acquire event leases', { error: leaseErr });
+      throw leaseErr;
     }
+    leases = (dbLeases || []).map((l: any) => ({ ...l, _source: 'postgres' }));
 
     if (!leases || leases.length === 0) {
       return {
@@ -486,16 +468,10 @@ export class EventWorkerService {
         nextRetryAt,
       });
 
-      const redis = getRedisClientSafe();
-      if (lease._source === 'redis' && redis) {
-        const payloadToPush = { ...lease, retry_count: newRetryCount };
-        delete payloadToPush._source;
-        await redis.lpush('cognition_events_queue', JSON.stringify(payloadToPush));
-      } else {
-        await supabase
-          .from('consumer_locks')
-          .update({
-            status: 'RETRY_SCHEDULED',
+      await supabase
+        .from('consumer_locks')
+        .update({
+          status: 'RETRY_SCHEDULED',
             retry_count: newRetryCount,
             next_retry_at: nextRetryAt,
             next_attempt_at: nextRetryAt,
@@ -506,7 +482,7 @@ export class EventWorkerService {
             updated_at: new Date().toISOString(),
           })
           .eq('id', lease.lock_id);
-      }
+
 
       await this.checkParentEventCompletion(lease.event_id);
     }
@@ -600,6 +576,9 @@ export class EventWorkerService {
             logger.warn('Daily synthesis: failed to invalidate session card', { userId: event.user_id, err })
           );
           return { status: 'HANDLED' };
+        }
+        if (['AUTOPSY_V3_REASONS_COLLECTED', 'AUTOPSY_V3_REPORT_READY', 'LEARNING_SIGNAL_INGESTED'].includes(event.type)) {
+          return { status: 'SKIPPED_INTENTIONALLY', reason: 'Event handled deterministically or is audit-only for learning_state_engine' };
         }
         const legacyType = this.mapToLegacyType(event.type);
         if (legacyType) {
@@ -710,6 +689,9 @@ export class EventWorkerService {
         if (event.type === 'MATERIAL_INGESTED' || event.type === 'ATLAS_MASTERY_UPDATE_REQUESTED') {
           return { status: 'SKIPPED_INTENTIONALLY', reason: 'ATLAS agent wrapper registered; concrete handler is pending product-specific evidence mapping' };
         }
+        if (event.type === 'LEARNING_SIGNAL_INGESTED') {
+          return { status: 'SKIPPED_INTENTIONALLY', reason: 'Event is audit-only for atlas_agent' };
+        }
         break;
       case 'memory_agent':
         if (event.type === 'AUTOPSY_MISTAKE_APPROVED') {
@@ -730,6 +712,9 @@ export class EventWorkerService {
         }
         if (event.type === 'REVISION_CARD_REVIEWED') {
           return { status: 'SKIPPED_INTENTIONALLY', reason: 'REVISION_CARD_REVIEWED handled elsewhere or audit-only for memory_agent' };
+        }
+        if (['AUTOPSY_V3_REPORT_READY', 'HERMES_MEMORY_UPDATED', 'LEARNING_SIGNAL_INGESTED'].includes(event.type)) {
+          return { status: 'SKIPPED_INTENTIONALLY', reason: 'Event handled deterministically or is audit-only for memory_agent' };
         }
         break;
       case 'planner_agent':
@@ -753,6 +738,9 @@ export class EventWorkerService {
           'PRACTICE_ATTEMPT_RECORDED',
           'PRACTICE_ATTEMPT_SUBMITTED',
           'ONBOARDING_QUIZ_COMPLETE',
+          'AUTOPSY_V3_REPORT_READY',
+          'HERMES_MEMORY_UPDATED',
+          'LEARNING_SIGNAL_INGESTED',
         ].includes(event.type)) {
           const { invalidateSessionCard } = await import('@/lib/services/session-card-invalidation');
           await invalidateSessionCard(event.user_id, 'LEARNER_STATE_UPDATED', {
@@ -781,8 +769,11 @@ export class EventWorkerService {
           'TEST_ANALYSIS_COMPLETED',
           'AUTOPSY_MISTAKE_EXTRACTED',
           'AUTOPSY_MISTAKE_REJECTED',
+          'AUTOPSY_V3_ASSESSMENT_CREATED',
+          'AUTOPSY_V3_QUESTIONS_UPSERTED',
+          'AUTOPSY_V3_REASONS_COLLECTED',
         ].includes(event.type)) {
-          return { status: 'SKIPPED_INTENTIONALLY', reason: 'AUTOPSY agent event acknowledged; state mutation happens only on approval' };
+          return { status: 'SKIPPED_INTENTIONALLY', reason: 'AUTOPSY agent event acknowledged; state mutation happens only on approval or via deterministic paths' };
         }
         break;
       case 'command_agent':
@@ -804,6 +795,8 @@ export class EventWorkerService {
           'PRACTICE_ATTEMPT_RECORDED',
           'PRACTICE_ATTEMPT_SUBMITTED',
           'ONBOARDING_QUIZ_COMPLETE',
+          'AUTOPSY_V3_REPORT_READY',
+          'LEARNING_SIGNAL_INGESTED',
         ].includes(event.type)) {
           return this.handleCommandAgentEvent(event, payload);
         }
@@ -820,7 +813,7 @@ export class EventWorkerService {
     payload: Record<string, any>
   ): Promise<ConsumerResult> {
     const { featureFlags } = await import('@/lib/config/flags');
-    if (!featureFlags.hermesEnabled()) {
+    if (!hermesRuntimeConfig.hermesEnabled()) {
       return { status: 'SKIPPED_INTENTIONALLY', reason: 'Hermes is disabled (HERMES_ENABLED=false)' };
     }
 
@@ -1070,6 +1063,10 @@ export class EventWorkerService {
         });
         return { status: 'RETRYABLE_FAILURE', reason: err.message };
       }
+    }
+
+    if (['AUTOPSY_V3_REASONS_COLLECTED', 'AUTOPSY_V3_REPORT_READY'].includes(event.type)) {
+      return { status: 'SKIPPED_INTENTIONALLY', reason: 'Event handled deterministically or is audit-only for hermes_worker' };
     }
 
     return { status: 'SKIPPED_INTENTIONALLY', reason: `hermes_worker: no handler for ${event.type}` };

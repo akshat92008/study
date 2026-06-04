@@ -18,6 +18,8 @@ export const EVENT_CONSUMERS = [
 
 export type EventConsumer = typeof EVENT_CONSUMERS[number];
 
+export type EventHandlingMode = "mutating" | "audit_only" | "disabled";
+
 export const EVENT_CONSUMER_MATRIX = {
   CHAT_MESSAGE_PROCESSED: ['chat_side_effect_engine', 'mind_agent'],
   CHAT_MESSAGE_CREATED: ['chat_side_effect_engine', 'mind_agent'],

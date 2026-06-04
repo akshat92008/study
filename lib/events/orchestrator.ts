@@ -5,7 +5,6 @@ import { getCorrelationId } from '@/lib/telemetry/correlation';
 import { logger } from '@/lib/utils/logger';
 import { validateEventEnvelope } from './schema';
 import { EVENT_CONSUMERS, getConsumersForEvent } from './routes';
-import { getRedisClientSafe } from './redisClient';
 export {
   EVENT_CONSUMERS,
   EVENT_CONSUMER_MATRIX,
@@ -125,37 +124,6 @@ export class EventDispatcher {
     }
 
     const eventId = crypto.randomUUID();
-    const redis = getRedisClientSafe();
-    
-    if (redis) {
-      const pipeline = redis.pipeline();
-      for (const consumer of consumers) {
-        const lockId = crypto.randomUUID();
-        const payload = {
-           lock_id: lockId,
-           event_id: eventId,
-           user_id: userId,
-           event_type: input.type,
-           consumer_name: consumer,
-           event_payload: data,
-           event_metadata: metadata,
-           retry_count: 0
-        };
-        pipeline.lpush('cognition_events_queue', payload);
-      }
-      await pipeline.exec();
-      
-      logger.info('Event enqueued to Redis', {
-        userId,
-        eventId,
-        type: input.type,
-        consumers,
-        feature: 'event-enqueue',
-        traceId: metadata.trace_id,
-      });
-      return eventId;
-    }
-
     // Use the RPC to atomically insert into event_queue and create consumer_locks
     const { data: dbEventId, error } = await supabase.rpc('create_event_with_consumers', {
       p_user_id: userId,

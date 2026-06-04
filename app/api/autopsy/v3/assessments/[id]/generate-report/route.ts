@@ -5,6 +5,7 @@ import { generateDeterministicAutopsyReport } from '@/lib/autopsy-v3/report-gene
 import { writeHermesMemories } from '@/lib/autopsy-v3/hermes-memory-writer';
 import { enforceDailyTableCap, jsonWithRequestId, requireAutopsyV3User } from '@/lib/autopsy-v3/permissions';
 import { ingestLearningSignals } from '@/lib/learning-signals/ingest';
+import { safePublishEvent } from '@/lib/events/safe-publish';
 
 type RouteContext = { params: Promise<{ id: string }> | { id: string } };
 
@@ -184,24 +185,28 @@ export async function POST(req: NextRequest, context: RouteContext) {
     ], { publishEvent: true }).catch(() => []);
 
     await Promise.all([
-      EventDispatcher.publish({
+      safePublishEvent({
         user_id: user.id,
         type: 'AUTOPSY_V3_REPORT_READY',
         data: { assessmentId, reportId: persistedReport.id, generatedBy: persistedReport.generated_by },
         metadata: { source: 'autopsy_v3_report', goalId: assessment.goal_id },
         idempotency_key: `autopsy_v3_report_ready:${persistedReport.id}`,
-      }).catch(() => undefined),
+      }),
       memoryRows.length > 0
-        ? EventDispatcher.publish({
+        ? safePublishEvent({
           user_id: user.id,
           type: 'HERMES_MEMORY_UPDATED',
           data: { assessmentId, memoryIds: memoryRows.map((row) => row.id).filter(Boolean) },
           metadata: { source: 'autopsy_v3_report', goalId: assessment.goal_id },
           idempotency_key: `hermes_memory_updated:${persistedReport.id}`,
-        }).catch(() => undefined)
+        })
         : Promise.resolve(),
-      createRevisionCandidates(supabase, user.id, assessment.goal_id, report, assessmentId, memoryRows).catch(() => undefined),
-      createRecoveryTask(supabase, user.id, assessment.goal_id, report, assessmentId).catch(() => undefined),
+      createRevisionCandidates(supabase, user.id, assessment.goal_id, report, assessmentId, memoryRows).catch((err) => {
+        console.error('Failed to create revision candidates', err);
+      }),
+      createRecoveryTask(supabase, user.id, assessment.goal_id, report, assessmentId).catch((err) => {
+        console.error('Failed to create recovery task', err);
+      }),
     ]);
 
     return jsonWithRequestId({ report: persistedReport, memoryRows, deterministicReport: report, hermes: hermesStatus }, requestId);
