@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { ArrowRight, FileText, RefreshCw, Sparkles } from 'lucide-react';
+import { ArrowRight, FileText, RefreshCw, Sparkles, Loader2 } from 'lucide-react';
 import AssessmentCreateStep from './AssessmentCreateStep';
 import UploadAssessmentStep from './UploadAssessmentStep';
 import QuestionTableEditor from './QuestionTableEditor';
@@ -275,7 +275,11 @@ export default function DeepAutopsyShell() {
           {assessment?.id && (
             <div style={{ display: 'flex', gap: 'var(--sp-3)', alignItems: 'center', flexWrap: 'wrap' }}>
               <button onClick={handleGenerateReport} disabled={saving || questions.length === 0} style={primaryButtonStyle}>
-                Generate Report <ArrowRight size={16} />
+                {saving && status === 'Generating report...' ? (
+                  <><Loader2 className="animate-spin" size={16} /> Generating...</>
+                ) : (
+                  <>Generate Report <ArrowRight size={16} /></>
+                )}
               </button>
               <span style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)' }}>
                 {wrongCount} wrong or skipped

@@ -689,9 +689,11 @@ export class EventWorkerService {
         break;
       case 'atlas_agent':
         if (event.type === 'AUTOPSY_MISTAKE_APPROVED') {
+          const rawMistakes = payload.wrongQuestions ?? [payload.mistake ?? payload];
+          const wrongQuestions = rawMistakes.map((m: any) => ({ ...m, status: 'verified_mistake', needsReview: false, extractionConfidence: 100, confidence: 100 }));
           await AtlasConsumer.handleAutopsyProcessed(event.user_id, {
             ...payload,
-            wrongQuestions: payload.wrongQuestions ?? [payload.mistake ?? payload],
+            wrongQuestions,
           });
           return { status: 'HANDLED' };
         }
@@ -708,9 +710,11 @@ export class EventWorkerService {
         break;
       case 'memory_agent':
         if (event.type === 'AUTOPSY_MISTAKE_APPROVED') {
+          const rawMistakes = payload.wrongQuestions ?? [payload.mistake ?? payload];
+          const wrongQuestions = rawMistakes.map((m: any) => ({ ...m, status: 'verified_mistake', needsReview: false, extractionConfidence: 100, confidence: 100 }));
           await MemoryConsumer.handleAutopsyProcessed(event.user_id, {
             ...payload,
-            wrongQuestions: payload.wrongQuestions ?? [payload.mistake ?? payload],
+            wrongQuestions,
           });
           return { status: 'HANDLED' };
         }

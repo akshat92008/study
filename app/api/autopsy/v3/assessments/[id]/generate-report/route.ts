@@ -79,20 +79,33 @@ export async function POST(req: NextRequest, context: RouteContext) {
     });
 
     let memoryRows: any[] = [];
+    let hermesStatus: any = { enabled: false, memories_created: 0, skipped_reason: null };
     let status: 'ready' | 'fallback_used' = 'ready';
+    
+    // We check both limits.hermesEnabled and that we aren't bypassing limits (unless testing).
     if (limits.hermesEnabled) {
+      hermesStatus.enabled = true;
       try {
+        const { getHermesConfig } = await import('@/lib/hermes/hermes-config');
+        const hermesConfig = getHermesConfig();
+        const maxWritesFromConfig = hermesConfig.maxDailyMemoryWritesPerUser;
+        const maxWrites = Math.min(limits.maxMemoryWritesPerReport || 5, maxWritesFromConfig || 30);
+        
         memoryRows = await writeHermesMemories({
           supabase,
           userId: user.id,
           goalId: assessment.goal_id,
           assessmentId,
           report,
-          maxWrites: limits.maxMemoryWritesPerReport,
+          maxWrites,
         });
-      } catch {
+        hermesStatus.memories_created = memoryRows.length;
+      } catch (err: any) {
         status = 'fallback_used';
+        hermesStatus.skipped_reason = err.message || 'Error writing memory';
       }
+    } else {
+      hermesStatus.skipped_reason = 'Hermes or Autopsy V3 Hermes disabled';
     }
 
     const { data: persistedReport, error: reportError } = await supabase
@@ -153,6 +166,21 @@ export async function POST(req: NextRequest, context: RouteContext) {
           severity: diagnosis.severity,
         },
       })),
+      ...memoryRows.map((memory: any) => ({
+        user_id: user.id,
+        goal_id: assessment.goal_id,
+        signal_type: 'autopsy_memory_created' as const,
+        source_type: 'hermes',
+        source_id: memory.id,
+        subject: memory.subject,
+        topic: memory.topic,
+        confidence: memory.confidence ?? 0.8,
+        evidence: {
+          assessmentId,
+          pattern: memory.pattern,
+          severity: memory.severity,
+        },
+      })),
     ], { publishEvent: true }).catch(() => []);
 
     await Promise.all([
@@ -172,30 +200,35 @@ export async function POST(req: NextRequest, context: RouteContext) {
           idempotency_key: `hermes_memory_updated:${persistedReport.id}`,
         }).catch(() => undefined)
         : Promise.resolve(),
-      createRevisionCandidates(supabase, user.id, assessment.goal_id, report, assessmentId).catch(() => undefined),
+      createRevisionCandidates(supabase, user.id, assessment.goal_id, report, assessmentId, memoryRows).catch(() => undefined),
       createRecoveryTask(supabase, user.id, assessment.goal_id, report, assessmentId).catch(() => undefined),
     ]);
 
-    return jsonWithRequestId({ report: persistedReport, memoryRows, deterministicReport: report }, requestId);
+    return jsonWithRequestId({ report: persistedReport, memoryRows, deterministicReport: report, hermes: hermesStatus }, requestId);
   } catch (error) {
     return unexpectedApiErrorResponse(req, error, 'autopsy_v3_generate_report', 'Unable to generate Deep Autopsy report.');
   }
 }
 
-async function createRevisionCandidates(supabase: any, userId: string, goalId: string | null, report: any, assessmentId: string) {
-  const rows = report.revisionActions.slice(0, 5).map((action: any) => ({
-    user_id: userId,
-    goal_id: goalId,
-    front: action.title,
-    back: action.reason,
-    card_type: 'autopsy_recovery',
-    source: 'autopsy_v3',
-    tags: ['autopsy-v3'],
-    subject: action.subject,
-    chapter: action.topic,
-    due: new Date().toISOString(),
-    metadata: { assessmentId },
-  }));
+async function createRevisionCandidates(supabase: any, userId: string, goalId: string | null, report: any, assessmentId: string, memoryRows: any[] = []) {
+  const rows = report.revisionActions.slice(0, 5).map((action: any, index: number) => {
+    // Try to link to a corresponding Hermes memory if available
+    const linkedMemory = memoryRows.find(m => m.topic === action.topic) || memoryRows[index % memoryRows.length];
+    return {
+      user_id: userId,
+      goal_id: goalId,
+      front: action.title,
+      back: action.reason,
+      card_type: 'autopsy_recovery',
+      source: linkedMemory ? 'hermes_autopsy_memory' : 'autopsy_v3',
+      source_id: linkedMemory ? linkedMemory.id : assessmentId,
+      tags: ['autopsy-v3'],
+      subject: action.subject,
+      chapter: action.topic,
+      due: new Date().toISOString(),
+      metadata: { assessmentId, hermesMemoryId: linkedMemory?.id },
+    };
+  });
   if (rows.length > 0) await supabase.from('revision_cards').insert(rows);
 }
 

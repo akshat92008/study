@@ -293,6 +293,15 @@ export async function GET(request?: Request): Promise<NextResponse> {
         ? (commandTasksQuery as any).is('goal_id', null)
         : commandTasksQuery;
 
+    let hermesMemoriesQuery = supabase
+      .from('hermes_learning_memories')
+      .select('id, concept, pattern, severity, action_type, subject, topic')
+      .eq('user_id', user.id)
+      .eq('status', 'active')
+      .order('created_at', { ascending: false })
+      .limit(3);
+    if (goalId) hermesMemoriesQuery = hermesMemoriesQuery.eq('goal_id', goalId);
+
     const [
       goalRes,
       overdueCountRes,
@@ -304,6 +313,7 @@ export async function GET(request?: Request): Promise<NextResponse> {
       totalConceptsRes,
       masteredConceptsRes,
       commandTasksRes,
+      hermesMemoriesRes,
     ] = await Promise.all([
       activeGoal
         ? Promise.resolve({ data: activeGoal })
@@ -340,6 +350,8 @@ export async function GET(request?: Request): Promise<NextResponse> {
       masteredConceptsQuery,
 
       commandTasksQuery,
+
+      hermesMemoriesQuery,
     ]);
 
     const overdueCardCount = overdueCountRes.count ?? 0;
@@ -385,6 +397,7 @@ export async function GET(request?: Request): Promise<NextResponse> {
         priority: t.priority,
         notes: t.source,
       })),
+      hermesMemories: hermesMemoriesRes.data ?? [],
       now: generatedAt,
     };
 

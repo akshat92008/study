@@ -97,6 +97,13 @@ export interface MINDContext {
     recentActions: Array<{ actionType: string; status: string; approvalStatus: string; createdAt: string; reason?: string | null }>;
     pendingApprovalCount: number;
   };
+  hermesMemories?: Array<{
+    concept: string;
+    pattern: string;
+    severity: string;
+    action_type: string;
+    createdAt?: string;
+  }>;
 }
 
 export function getEffectiveLearningStyle(
@@ -287,6 +294,9 @@ function buildPrompt(ctx: MINDContext, semanticMemories: string[] = [], intent?:
 
   const memoriesSection = (!isGeneralChat && semanticMemories.length > 0)
     ? `\nCROSS-SESSION CONTEXT (things this student said in past conversations):\n${semanticMemories.map((m, i) => `${i + 1}. ${m}`).join('\n')}\nReference these naturally if relevant — never robotically.\n`
+    : '';
+  const hermesMemoriesSection = (!isGeneralChat && ctx.hermesMemories && ctx.hermesMemories.length > 0)
+    ? `\nRELEVANT LEARNER MEMORIES (Cognition OS Hermes):\n${ctx.hermesMemories.map((m, i) => `${i + 1}. [${m.severity.toUpperCase()}] ${m.concept}: ${m.pattern} -> Next action: ${m.action_type}`).join('\n')}\nUse these structural memories to personalize your explanations and anticipate mistakes.\n`
     : '';
   const outcomeSection = ctx.outcomeAnalytics
     ? `\nOUTCOME ANALYTICS (descriptive, never causal):\n- Score trend: ${ctx.outcomeAnalytics.scoreTrend}\n- Latest score: ${ctx.outcomeAnalytics.latestScore ?? 'not available'}; previous: ${ctx.outcomeAnalytics.previousScore ?? 'not available'}\n- Loop usage: chat ${ctx.outcomeAnalytics.featureUsage.chatSessions}, mistake-review uploads ${ctx.outcomeAnalytics.featureUsage.autopsyUploads}, revision reviews ${ctx.outcomeAnalytics.featureUsage.revisionCardsReviewed}, completed sessions ${ctx.outcomeAnalytics.featureUsage.studySessionsCompleted}\n- Wording rule: use "associated with" or "correlates with"; never claim the product caused a score change.\n`
@@ -545,6 +555,7 @@ ${rootGapSection}
 OPTIONAL EMOTIONAL STATE SIGNAL: ${ctx.emotionalState}
 RECENTLY STUDIED: ${ctx.recentTopics.slice(0, 4).join(', ') || 'Nothing yet'}
 ${memoriesSection}
+${hermesMemoriesSection}
 ${conceptHistorySection}
 ${outcomeSection}
 ${ragSection}

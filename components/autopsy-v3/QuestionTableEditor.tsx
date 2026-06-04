@@ -1,6 +1,6 @@
 'use client';
 
-import { Save } from 'lucide-react';
+import { Save, Loader2 } from 'lucide-react';
 import Card from '@/components/ui/Card';
 
 export default function QuestionTableEditor({
@@ -35,8 +35,8 @@ export default function QuestionTableEditor({
         }}
       />
       <button onClick={onSave} disabled={saving} style={buttonStyle}>
-        <Save size={16} />
-        {saving ? 'Saving' : 'Save Questions'}
+        {saving ? <Loader2 className="animate-spin" size={16} /> : <Save size={16} />}
+        {saving ? 'Saving...' : 'Save Questions'}
       </button>
     </Card>
   );

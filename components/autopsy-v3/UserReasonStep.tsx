@@ -1,6 +1,6 @@
 'use client';
 
-import { BrainCircuit } from 'lucide-react';
+import { BrainCircuit, Loader2 } from 'lucide-react';
 import Card from '@/components/ui/Card';
 
 const OPTIONS = [
@@ -63,7 +63,8 @@ export default function UserReasonStep({
         </div>
       )}
       <button onClick={onSave} disabled={saving || targets.length === 0} style={buttonStyle}>
-        {saving ? 'Saving' : 'Save Reasons'}
+        {saving && <Loader2 className="animate-spin" size={16} style={{ display: 'inline', marginRight: 8, verticalAlign: 'middle' }} />}
+        {saving ? 'Saving...' : 'Save Reasons'}
       </button>
     </Card>
   );

@@ -5,8 +5,11 @@
 
 import type { AIModelTier } from '@/lib/ai/budgeted';
 
+export type HermesRuntimeMode = 'off' | 'lite' | 'full';
+
 export interface HermesConfig {
   enabled: boolean;
+  mode: HermesRuntimeMode;
   provider: 'internal' | 'mock';
   fastModel: AIModelTier;
   strongModel: AIModelTier;
@@ -22,6 +25,11 @@ export interface HermesConfig {
   traceEnabled: boolean;
   nextActionEnabled: boolean;
   codingSandboxEnabled: boolean;
+  agentLoopEnabled: boolean;
+  maxContextMemories: number;
+  maxDailyMemoryWritesPerUser: number;
+  maxAiCallsPerEvent: number;
+  autopsyV3Mode: HermesRuntimeMode;
 }
 
 function readBool(name: string, defaultValue: boolean): boolean {
@@ -43,8 +51,15 @@ function readModelTier(name: string, defaultValue: AIModelTier): AIModelTier {
 }
 
 export function getHermesConfig(): HermesConfig {
+  const modeStr = (process.env.HERMES_MODE || 'off').toLowerCase();
+  const mode: HermesRuntimeMode = modeStr === 'full' ? 'full' : (modeStr === 'lite' ? 'lite' : 'off');
+  
+  const autopsyModeStr = (process.env.HERMES_AUTOPSY_V3_MODE || 'off').toLowerCase();
+  const autopsyMode: HermesRuntimeMode = autopsyModeStr === 'full' ? 'full' : (autopsyModeStr === 'lite' ? 'lite' : 'off');
+
   return {
     enabled: readBool('HERMES_ENABLED', false),
+    mode,
     provider: 'internal',
     fastModel: readModelTier('HERMES_FAST_MODEL', 'flash'),
     strongModel: readModelTier('HERMES_STRONG_MODEL', 'balanced'),
@@ -60,10 +75,17 @@ export function getHermesConfig(): HermesConfig {
     traceEnabled: readBool('HERMES_TRACE_ENABLED', false),
     nextActionEnabled: readBool('HERMES_NEXT_ACTION_ENABLED', false),
     codingSandboxEnabled: readBool('HERMES_CODING_SANDBOX_ENABLED', false),
+    agentLoopEnabled: readBool('HERMES_AGENT_LOOP_ENABLED', false),
+    maxContextMemories: readInt('HERMES_MAX_CONTEXT_MEMORIES', 8),
+    maxDailyMemoryWritesPerUser: readInt('HERMES_MAX_DAILY_MEMORY_WRITES_PER_USER', 30),
+    maxAiCallsPerEvent: readInt('HERMES_MAX_AI_CALLS_PER_EVENT', 1),
+    autopsyV3Mode: autopsyMode,
   };
 }
 
 // Singleton for import convenience — re-read each call so tests can stub env
 export function isHermesEnabled(): boolean {
-  return readBool('HERMES_ENABLED', false);
+  if (!readBool('HERMES_ENABLED', false)) return false;
+  const mode = (process.env.HERMES_MODE || 'off').toLowerCase();
+  return mode === 'lite' || mode === 'full';
 }

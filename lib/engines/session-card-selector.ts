@@ -108,6 +108,17 @@ export interface SelectorInput {
     notes?: string | null;
   }>;
 
+  /** Hermes memories from Autopsy. */
+  hermesMemories?: Array<{
+    id: string;
+    concept: string;
+    pattern: string;
+    severity: string;
+    action_type: string;
+    subject?: string;
+    topic?: string;
+  }>;
+
   /** ISO timestamp of "now" (injectable for tests) */
   now?: string;
 }
@@ -283,6 +294,29 @@ export function selectSessionCard(input: SelectorInput): SelectorOutput {
       dueCardCount: input.overdueCardCount,
       mistakeCount: freshMistakes.length,
       questionTarget: topChapter ?? '',
+      revisionTarget: '',
+      needsOnboarding: false,
+      daysToExam,
+      isPeakHour,
+    };
+  }
+
+  // ─── P2.5: Hermes Learning Memories ──────────────────────────────────────
+  if (input.hermesMemories && input.hermesMemories.length > 0) {
+    const memory = input.hermesMemories[0]; // Already ordered by severity and date in SQL
+    return {
+      targetConceptId: null, // Memories aren't strictly bound to a concept_id yet
+      priority: 'mistake_repair', // Use same general task type as mistake repair
+      reason: `Autopsy identified a recurring mistake pattern in ${memory.topic || memory.concept}: "${memory.pattern}". Fixing structural gaps here is high yield.`,
+      estimatedMinutes: focusMinutes,
+      taskType: 'mistake_repair',
+      resourceType: 'practice_questions',
+      subject: memory.subject ?? examType,
+      topic: memory.topic ?? memory.concept,
+      masteryBefore: null,
+      dueCardCount: input.overdueCardCount,
+      mistakeCount: input.recentMistakes.length,
+      questionTarget: memory.topic ?? memory.concept,
       revisionTarget: '',
       needsOnboarding: false,
       daysToExam,

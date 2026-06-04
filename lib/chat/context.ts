@@ -60,6 +60,15 @@ export async function gatherChatContext({
       })
     : Promise.resolve([] as string[]);
 
+  const hermesMemoryPromise = (!isSimpleMessage)
+    ? import('@/lib/autopsy-v3/hermes-memory-writer')
+        .then(mod => mod.getRelevantHermesReminders({ supabase, userId, goalId: activeGoalId, limit: parseInt(process.env.HERMES_MAX_CONTEXT_MEMORIES || '8', 10) }))
+        .catch(err => {
+          logger.warn('Hermes memory retrieval failed', err);
+          return [];
+        })
+    : Promise.resolve([]);
+
   const mindContextPromise = isSimpleMessage
     ? Promise.resolve({
         profile: profilePreview || { name: 'Student', examType: 'General Study' },
@@ -115,9 +124,10 @@ export async function gatherChatContext({
         return { ragContext: null, ragPromptBlock: '' };
       });
 
-  const [semanticMemories, episodicMemories, mindContext, mindRag] = await Promise.all([
+  const [semanticMemories, episodicMemories, hermesMemories, mindContext, mindRag] = await Promise.all([
     Promise.race([memoryPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1000))]).catch(() => [] as string[]),
     Promise.race([episodicMemoryPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1000))]).catch(() => [] as string[]),
+    Promise.race([hermesMemoryPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1000))]).catch(() => []),
     Promise.race([mindContextPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1000))]).catch(() => ({
       profile: { name: 'Student', examType: 'General Study', examDate: null, currentLevel: 'intermediate', learningStyle: 'visual', streakDays: 0, timezone: 'UTC', learnerStateVersion: 0 },
       activeGoal: null,
@@ -138,7 +148,9 @@ export async function gatherChatContext({
       outcomeAnalytics: null,
     })),
     Promise.race([mindRagPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 2000))]).catch(() => ({ ragContext: null, ragPromptBlock: '' }))
-  ]) as [string[], string[], any, any];
+  ]) as [string[], string[], any[], any, any];
+
+  mindContext.hermesMemories = hermesMemories;
 
   if (activeGoal && mindContext && !mindContext.activeGoal) {
     mindContext.activeGoal = {
