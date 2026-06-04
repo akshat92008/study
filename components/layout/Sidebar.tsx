@@ -5,7 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import {
   Zap, X, ChevronLeft, ChevronRight, LogOut,
-  Brain, RefreshCw, Activity, Home, CreditCard, Database, MessageCircle, Plus, Target
+  Brain, RefreshCw, Activity, Home, CreditCard, Database, MessageCircle, Plus, Target, SearchCheck
 } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
 import { signOut } from '@/lib/actions/auth';
@@ -38,6 +38,7 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
     { label: 'Review', href: '/revision', icon: RefreshCw },
     { label: 'Progress', href: '/cognition', icon: Brain, feature: 'ENABLE_ATLAS_UI' as const },
     { label: 'Mistake Review', href: '/autopsy', icon: Activity, feature: 'ENABLE_AUTOPSY_UI' as const },
+    { label: 'Deep Autopsy', href: '/autopsy/deep', icon: SearchCheck },
   ].filter(item => !item.feature || isFeatureEnabled(item.feature));
 
   const [isGoalModalOpen, setIsGoalModalOpen] = useState(false);

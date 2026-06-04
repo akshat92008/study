@@ -44,6 +44,31 @@ export async function GET(request: Request) {
         ? (tasksQuery as any).is('goal_id', null)
         : tasksQuery;
 
+    let latestAssessmentQuery = supabase
+      .from('assessments')
+      .select('id, title, status, created_at')
+      .eq('user_id', user.id)
+      .order('created_at', { ascending: false })
+      .limit(1);
+    if (goalId) latestAssessmentQuery = latestAssessmentQuery.eq('goal_id', goalId);
+
+    let latestReportQuery = supabase
+      .from('autopsy_reports')
+      .select('id, assessment_id, summary_text, recoverable_marks_estimate, top_patterns, top_topics, status, generated_by, created_at')
+      .eq('user_id', user.id)
+      .order('created_at', { ascending: false })
+      .limit(1);
+    if (goalId) latestReportQuery = latestReportQuery.eq('goal_id', goalId);
+
+    let topMemoryQuery = supabase
+      .from('hermes_learning_memories')
+      .select('id, memory_type, subject, topic, pattern, evidence_count, severity, confidence, prevention_rule, last_seen_at')
+      .eq('user_id', user.id)
+      .eq('status', 'active')
+      .order('last_seen_at', { ascending: false })
+      .limit(1);
+    if (goalId) topMemoryQuery = topMemoryQuery.eq('goal_id', goalId);
+
     const [
       profileRes,
       cognition,
@@ -52,7 +77,10 @@ export async function GET(request: Request) {
       allCardsRes,
       mistakeAnalytics,
       conceptsRes,
-      tasksRes
+      tasksRes,
+      latestAssessmentRes,
+      latestReportRes,
+      topMemoryRes
     ] = await Promise.all([
       supabase.from('profiles').select('*').eq('id', user.id).single(),
       getCognitionGraph(user.id, goalId),
@@ -61,7 +89,10 @@ export async function GET(request: Request) {
       allCardsQuery,
       getMistakeAnalytics(user.id, goalId),
       conceptsQuery,
-      tasksQuery.order('priority', { ascending: true })
+      tasksQuery.order('priority', { ascending: true }),
+      latestAssessmentQuery.maybeSingle(),
+      latestReportQuery.maybeSingle(),
+      topMemoryQuery.maybeSingle()
     ]);
 
     const syllabus: Record<string, string[]> = {};
@@ -78,6 +109,11 @@ export async function GET(request: Request) {
       cognition,
       revision: { due: dueRes, stats: statsRes, allCards: allCardsRes.data || [] },
       mistakes: mistakeAnalytics ? { ...mistakeAnalytics, syllabus } : null,
+      deepAutopsy: {
+        latestAssessment: latestAssessmentRes.data ?? null,
+        latestReport: latestReportRes.data ?? null,
+        topMemory: topMemoryRes.data ?? null,
+      },
       tasks: (tasksRes.data || []).map((t: any) => ({
         id: t.id,
         title: t.title,

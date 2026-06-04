@@ -4,6 +4,7 @@ import { getDueCards, getRevisionStats, reviewCard } from '@/lib/engines/revisio
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import { ensureGoalForUser } from '@/lib/services/goal-context.service';
+import { ingestLearningSignal } from '@/lib/learning-signals/ingest';
 
 export async function GET(request: NextRequest) {
   try {
@@ -206,7 +207,7 @@ export async function POST(request: NextRequest) {
     // IDOR prevention: verify ownership before touching the card
     const { data: card } = await supabase
       .from('revision_cards')
-      .select('id, user_id')
+      .select('id, user_id, goal_id, subject, chapter')
       .eq('id', cardId)
       .eq('user_id', userId)
       .single();
@@ -220,6 +221,22 @@ export async function POST(request: NextRequest) {
     }
 
     const result = await reviewCard(cardId, rating as 1 | 2 | 3 | 4, responseTimeMs);
+    if (rating <= 2) {
+      await ingestLearningSignal(supabase, {
+        user_id: userId,
+        goal_id: card.goal_id ?? null,
+        signal_type: 'revision_review',
+        source_type: 'revision_card',
+        source_id: card.id,
+        subject: card.subject ?? null,
+        topic: card.chapter ?? null,
+        confidence: rating === 1 ? 0.75 : 0.62,
+        evidence: { rating, responseTimeMs: responseTimeMs ?? null },
+      }, {
+        publishEvent: true,
+        idempotencyKey: `revision_review_signal:${card.id}:${Date.now()}`,
+      }).catch(() => undefined);
+    }
     return NextResponse.json(result, { headers: { 'x-request-id': requestId } });
   } catch (error: any) {
     return unexpectedApiErrorResponse(request, error, 'revision', 'Unable to review revision card.');

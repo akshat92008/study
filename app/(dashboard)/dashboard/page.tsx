@@ -14,6 +14,7 @@ import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import CurrentTaskCard from '@/components/dashboard/CurrentTaskCard';
 import MicrotargetsCard from '@/components/dashboard/MicrotargetsCard';
+import DeepAutopsyCard from '@/components/dashboard/DeepAutopsyCard';
 import GoalCreationModal from '@/components/modals/GoalCreationModal';
 import GoalSettingsModal from '@/components/modals/GoalSettingsModal';
 import { createClient } from '@/lib/supabase/client';
@@ -303,6 +304,10 @@ export default function DashboardPage() {
 
         {activeGoal && dashboardData?.tasks && (
           <MicrotargetsCard tasks={dashboardData.tasks} />
+        )}
+
+        {activeGoal && (
+          <DeepAutopsyCard deepAutopsy={dashboardData?.deepAutopsy} />
         )}
         
         <Card padding="lg" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)' }}>

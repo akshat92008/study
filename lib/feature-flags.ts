@@ -5,7 +5,7 @@ export const FeatureFlags = {
   ENABLE_RAG_UPLOAD: true,
 
   // Disabled features (unbuilt or omitted from MVP)
-  ENABLE_AUTOPSY_UI: false,
+  ENABLE_AUTOPSY_UI: true,
   ENABLE_ANALYTICS_UI: false,
   ENABLE_ATLAS_UI: false,
   ENABLE_FLASHCARDS_UI: false,

@@ -9,6 +9,7 @@ import { validateMagicBytesArray } from '@/lib/utils/magicBytes';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { logger } from '@/lib/utils/logger';
 import { featureFlags } from '@/lib/config/flags';
+import { ingestLearningSignal } from '@/lib/learning-signals/ingest';
 import {
   ensureGoalForUser,
   ensureSessionBelongsToUser,
@@ -247,6 +248,31 @@ export async function POST(req: NextRequest) {
       data: { materialId: material.id, goalId, chatSessionId },
       metadata: { source: 'materials_upload', goalId, chatSessionId },
       idempotency_key: `material_uploaded:${material.id}`,
+    });
+
+    await ingestLearningSignal(supabase, {
+      user_id: user.id,
+      goal_id: goalId,
+      signal_type: 'source_upload',
+      source_type: 'study_material',
+      source_id: material.id,
+      subject: formString(formData.get('subject')),
+      topic: formString(formData.get('topic')) ?? formString(formData.get('chapter')),
+      confidence: 0.5,
+      evidence: {
+        title,
+        mimeType,
+        status: material.status,
+      },
+    }, {
+      publishEvent: true,
+      idempotencyKey: `source_upload_signal:${material.id}`,
+    }).catch((signalError) => {
+      logger.warn('Material learning signal failed', {
+        userId: user.id,
+        materialId: material.id,
+        error: signalError instanceof Error ? signalError.message : String(signalError),
+      });
     });
 
     if (featureFlags.hermesSourceProcessing()) {

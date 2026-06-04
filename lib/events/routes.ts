@@ -52,6 +52,12 @@ export const EVENT_CONSUMER_MATRIX = {
     'command_agent',
     'planner_agent',
   ],
+  AUTOPSY_V3_ASSESSMENT_CREATED: ['autopsy_agent'],
+  AUTOPSY_V3_QUESTIONS_UPSERTED: ['autopsy_agent'],
+  AUTOPSY_V3_REASONS_COLLECTED: ['autopsy_agent'],
+  AUTOPSY_V3_REPORT_READY: ['learning_state_engine', 'memory_agent', 'planner_agent', 'command_agent'],
+  HERMES_MEMORY_UPDATED: ['memory_agent', 'planner_agent'],
+  LEARNING_SIGNAL_INGESTED: ['learning_state_engine', 'atlas_agent', 'memory_agent', 'planner_agent', 'command_agent'],
   STUDY_SESSION_COMPLETED: [
     'atlas_engine',
     'memory_engine',

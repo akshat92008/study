@@ -6,6 +6,7 @@ import { EventDispatcher } from '@/lib/events/orchestrator';
 import { areMcqAnswersEquivalent } from '@/lib/practice/answer-normalization';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { checkIdempotency } from '@/lib/middleware/idempotency';
+import { ingestLearningSignals } from '@/lib/learning-signals/ingest';
 
 const AttemptsSchema = z.object({
   messageId: z.string().optional(),
@@ -180,6 +181,26 @@ export async function POST(req: NextRequest) {
       metadata: { source: 'mind_chat_mcq' },
       idempotency_key: `practice_attempt:${set.id}:${eventItems.map((item) => `${item.practiceItemId}:${item.isCorrect}`).sort().join('|')}`
     });
+
+    await ingestLearningSignals(supabase, eventItems
+      .filter((item) => item.isCorrect === false)
+      .slice(0, 25)
+      .map((item) => ({
+        user_id: user.id,
+        goal_id: set.goal_id ?? null,
+        signal_type: 'practice_attempt' as const,
+        source_type: 'practice_attempt',
+        source_id: item.attemptId ?? null,
+        subject: item.subject ?? null,
+        topic: item.topic ?? item.conceptName ?? null,
+        confidence: 0.68,
+        evidence: {
+          practiceSetId: set.id,
+          practiceItemId: item.practiceItemId,
+          selectedAnswer: item.selectedAnswer,
+          correctAnswer: item.correctAnswer,
+        },
+      })), { publishEvent: true }).catch(() => undefined);
 
     return NextResponse.json({
       success: true,

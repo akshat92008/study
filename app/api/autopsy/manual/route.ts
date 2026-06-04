@@ -11,6 +11,7 @@ import {
   isHermesError,
   HermesDisabledError,
 } from '@/lib/hermes';
+import { ingestLearningSignal } from '@/lib/learning-signals/ingest';
 
 export async function POST(req: NextRequest) {
   try {
@@ -128,6 +129,31 @@ export async function POST(req: NextRequest) {
       },
       hermesResult
     );
+
+    await ingestLearningSignal(supabase, {
+      user_id: user.id,
+      goal_id: goalId ?? null,
+      signal_type: 'manual_mistake',
+      source_type: 'autopsy_manual',
+      source_id: dbResult.mistakeId ?? null,
+      subject: hermesResult.subject ?? null,
+      topic: hermesResult.topic ?? null,
+      confidence: numericHermesConfidence(hermesResult.confidence),
+      evidence: {
+        category: hermesResult.category,
+        chapter: hermesResult.chapter,
+        questionPreview: question.slice(0, 500),
+      },
+    }, {
+      publishEvent: true,
+      idempotencyKey: `manual_mistake_signal:${dbResult.mistakeId ?? crypto.randomUUID()}`,
+    }).catch((signalError) => {
+      logger.warn('Manual autopsy learning signal failed', {
+        userId: user.id,
+        goalId,
+        error: signalError instanceof Error ? signalError.message : String(signalError),
+      });
+    });
 
     // ── Sanitize Text Fields ───────────────────────────────────────────────
     // Prevent leaking "Hermes" branding or raw JSON wrappers if the model hallucinated
@@ -307,4 +333,12 @@ Return ONLY a JSON object:
       needsHumanReview: false,
     },
   };
+}
+
+function numericHermesConfidence(value: 'low' | 'medium' | 'high' | number | undefined): number {
+  if (typeof value === 'number') return Math.max(0, Math.min(1, value));
+  if (value === 'high') return 0.85;
+  if (value === 'medium') return 0.65;
+  if (value === 'low') return 0.4;
+  return 0.65;
 }

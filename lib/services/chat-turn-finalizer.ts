@@ -9,6 +9,7 @@ import {
 } from '@/lib/ai/cost-guard';
 import { logger } from '@/lib/utils/logger';
 import { storeMessageCitations } from '@/lib/rag/citations';
+import { ingestLearningSignal } from '@/lib/learning-signals/ingest';
 
 type BudgetUsage = {
   promptTokens: number;
@@ -145,6 +146,33 @@ export async function finalizeChatTurn(input: FinalizeChatTurnInput): Promise<Fi
     const detectedTopic = input.intent?.topic ?? input.metadata?.topic ?? null;
     if (detectedSubject || detectedChapter || detectedTopic) {
       const signalType = inferSignalType(input.userMessage, cleanAssistantText);
+      if (signalType === 'confusion_detected' || signalType === 'doubt_asked') {
+        await ingestLearningSignal(input.supabase, {
+          user_id: input.userId,
+          goal_id: input.goalId ?? null,
+          signal_type: 'chat_confusion',
+          source_type: input.sourceType ?? 'global_chat',
+          source_id: assistant.id,
+          subject: detectedSubject,
+          topic: detectedTopic ?? detectedChapter,
+          confidence: signalType === 'confusion_detected' ? 0.68 : 0.58,
+          evidence: {
+            signalType,
+            conversationId: input.sessionId,
+            userMessagePreview: input.userMessage.slice(0, 600),
+          },
+        }, {
+          publishEvent: false,
+          idempotencyKey: `${input.idempotencyKey}:learning-signal-row`,
+        }).catch((err) => {
+          logger.warn('Chat learning signal persistence failed', {
+            userId: input.userId,
+            messageId: assistant.id,
+            error: err instanceof Error ? err.message : String(err),
+          });
+        });
+      }
+
       await publishEvent({
         user_id: input.userId,
         type: 'CHAT_LEARNING_SIGNAL',

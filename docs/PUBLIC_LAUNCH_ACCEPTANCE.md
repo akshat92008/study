@@ -25,3 +25,15 @@
 23. No raw provider errors shown to user.
 24. Cost mode defaults to ultra_cheap.
 25. Public beta gate can be enabled and disabled by env.
+
+## Autopsy V3 Acceptance
+
+1. Create manual assessment.
+2. Add answer key and user answers.
+3. Diagnose wrong questions.
+4. Generate report without AI.
+5. Generate report with Hermes fallback.
+6. Store Hermes Memory.
+7. Dashboard reminder appears.
+8. PDF extraction failure falls back to manual entry.
+9. Non-test self-reflection creates learning signal.

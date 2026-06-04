@@ -1,0 +1,75 @@
+import { NextRequest } from 'next/server';
+import { z } from 'zod';
+import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
+import { validateMagicBytesArray } from '@/lib/utils/magicBytes';
+import { extractSelectableTextFromPdf } from '@/lib/autopsy-v3/extraction/pdf-text-extractor';
+import { jsonWithRequestId, requireAutopsyV3User } from '@/lib/autopsy-v3/permissions';
+import { maxPdfBytes } from '@/lib/autopsy-v3/limits';
+
+const BodySchema = z.object({
+  assessmentId: z.string().uuid(),
+  pdfBase64: z.string().min(1),
+  fileName: z.string().max(160).optional(),
+});
+
+export async function POST(req: NextRequest) {
+  const requestId = getRequestId(req);
+  try {
+    const auth = await requireAutopsyV3User(requestId);
+    if (auth.error) return auth.error;
+    const { supabase, user } = auth;
+
+    const parsed = BodySchema.safeParse(await req.json().catch(() => ({})));
+    if (!parsed.success) {
+      return apiErrorResponse('invalid_request', { status: 400, message: 'Extraction payload is invalid.', requestId });
+    }
+
+    const buffer = Buffer.from(parsed.data.pdfBase64, 'base64');
+    if (buffer.byteLength > maxPdfBytes()) {
+      return apiErrorResponse('file_too_large', { status: 413, message: 'PDF exceeds the Deep Autopsy size cap.', requestId });
+    }
+    if (!validateMagicBytesArray(new Uint8Array(buffer.subarray(0, 12)), 'application/pdf')) {
+      return apiErrorResponse('invalid_file', { status: 422, message: 'File contents do not match a PDF.', requestId });
+    }
+
+    const { data: assessment, error: assessmentError } = await supabase
+      .from('assessments')
+      .select('id, metadata')
+      .eq('id', parsed.data.assessmentId)
+      .eq('user_id', user.id)
+      .maybeSingle();
+    if (assessmentError) throw assessmentError;
+    if (!assessment) return apiErrorResponse('not_found', { status: 404, message: 'Assessment not found.', requestId });
+
+    const extraction = await extractSelectableTextFromPdf(buffer);
+    const extractionStatus = extraction.confidence >= 0.55 ? 'needs_review' : 'manual_entry_required';
+    const { error } = await supabase
+      .from('assessments')
+      .update({
+        status: extraction.confidence >= 0.55 ? 'needs_review' : 'answers_pending',
+        extraction_status: extractionStatus,
+        extraction_confidence: extraction.confidence,
+        metadata: {
+          ...(assessment.metadata ?? {}),
+          fileName: parsed.data.fileName ?? null,
+          rawTextPreview: extraction.rawText.slice(0, 20000),
+          warnings: extraction.warnings,
+        },
+        updated_at: new Date().toISOString(),
+      })
+      .eq('id', parsed.data.assessmentId)
+      .eq('user_id', user.id);
+    if (error) throw error;
+
+    return jsonWithRequestId({
+      extraction: {
+        confidence: extraction.confidence,
+        warnings: extraction.warnings,
+        rawTextPreview: extraction.rawText.slice(0, 4000),
+        status: extractionStatus,
+      },
+    }, requestId);
+  } catch (error) {
+    return unexpectedApiErrorResponse(req, error, 'autopsy_v3_extract', 'Unable to extract selectable text from this PDF.');
+  }
+}

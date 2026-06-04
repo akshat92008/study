@@ -55,6 +55,15 @@ Public visitors can still use `/waitlist`.
 - For chat spam, lower `FREE_DAILY_CHAT_LIMIT` and `FREE_HOURLY_CHAT_LIMIT`.
 - For upload abuse, lower `RAG_MAX_DAILY_UPLOADS`, `RAG_MAX_FILES_PER_USER`, or `RAG_MAX_FILE_MB`.
 
+## Autopsy V3 Operations
+
+- Inspect failed Deep Autopsy reports in `autopsy_reports` where `status in ('fallback_used','failed')`.
+- Inspect PDF extraction failures in `assessments` where `extraction_status='manual_entry_required'`.
+- Disable Autopsy V3 with `AUTOPSY_V3_ENABLED=false`.
+- Disable Autopsy memory writes with `HERMES_AUTOPSY_V3_ENABLED=false`.
+- Lower caps with `AUTOPSY_DAILY_ASSESSMENTS_PER_USER`, `AUTOPSY_DAILY_PDF_UPLOADS_PER_USER`, `AUTOPSY_DAILY_REPORTS_PER_USER`, and `HERMES_AUTOPSY_MAX_MEMORY_WRITES_PER_REPORT`.
+- Retry a report manually by opening `/autopsy/deep`, loading the assessment, and generating the report again; the API upserts by `assessment_id`.
+
 ## Public Beta Go / No-Go
 
 Proceed only when:
