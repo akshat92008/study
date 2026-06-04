@@ -4,107 +4,69 @@ import { FileUp, FileText, Zap, Brain, Crosshair, Network, BarChart, MousePointe
 
 export function UploadSourcesSection() {
   return (
-    <section className="py-24 sm:py-32 relative overflow-hidden bg-[#030014]">
+    <section className="py-24 sm:py-32 relative overflow-hidden bg-transparent">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-16 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2 items-center">
           <motion.div 
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="lg:pr-8 lg:pt-4"
           >
             <div className="lg:max-w-lg">
-              <div className="h-12 w-12 flex items-center justify-center rounded-2xl bg-purple-500/10 border border-purple-500/20 mb-8 shadow-[0_0_30px_rgba(168,85,247,0.15)]">
-                <FileUp className="h-6 w-6 text-purple-400" />
+              <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-purple-500/10 border border-purple-500/20 mb-6">
+                <FileUp className="h-5 w-5 text-purple-300" />
               </div>
-              <h2 className="text-3xl font-display font-medium tracking-tight text-white sm:text-5xl leading-tight">Upload your <br/> scattered sources</h2>
-              <p className="mt-6 text-lg leading-relaxed text-neutral-400">
+              <h2 className="text-3xl font-display font-medium tracking-tight text-white sm:text-4xl leading-[1.1]">Upload your scattered sources</h2>
+              <p className="mt-6 text-lg leading-relaxed text-neutral-400 font-light">
                 Bring PDFs, notes, question papers, videos, and class material into one learning space. Cognition OS turns scattered resources into structured, interrogatable understanding.
               </p>
-              <div className="mt-8 flex gap-4">
-                <button className="rounded-full bg-[#1F2833] border border-white/10 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-white/10 hover:border-white/20 transition-all hover:scale-105 active:scale-95">
-                  View Demo
-                </button>
-              </div>
             </div>
           </motion.div>
           
           <motion.div 
-            initial={{ opacity: 0, y: 50, rotateX: 10 }}
-            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1, delay: 0.2, ease: [0.2, 0.65, 0.3, 0.9] }}
-            className="relative h-[450px] rounded-2xl bg-[#0B0C10]/80 backdrop-blur-xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden perspective-[1000px] group"
+            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="relative h-[400px] rounded-2xl bg-white/[0.02] border border-white/[0.06] shadow-2xl flex flex-col overflow-hidden"
           >
-            {/* OSX style window header */}
-            <div className="h-12 border-b border-white/5 bg-black/40 flex items-center px-4 gap-2">
-              <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-red-400/80" />
-                <div className="w-3 h-3 rounded-full bg-yellow-400/80" />
-                <div className="w-3 h-3 rounded-full bg-green-400/80" />
-              </div>
-              <div className="mx-auto px-4 py-1 rounded-md bg-white/5 border border-white/5 text-xs text-neutral-500 flex items-center font-mono">
-                app.cognition.os / sources
-              </div>
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.05] to-transparent pointer-events-none" />
             
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-900/10 via-transparent to-transparent pointer-events-none" />
-            
-            <div className="flex-1 p-6 relative flex flex-col items-center justify-center">
-               <div className="grid grid-cols-2 gap-4 w-full max-w-[300px] relative z-10">
+            <div className="flex-1 p-8 relative flex flex-col items-center justify-center">
+               <div className="flex flex-wrap justify-center gap-4 w-full max-w-[320px] relative z-10">
                  <motion.div
-                   animate={{ y: [0, -5, 0] }}
-                   transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                   className="p-4 rounded-xl bg-[#1F2833] border border-white/10 shadow-lg flex flex-col items-center gap-3 hover:border-blue-500/30 transition-colors"
+                   initial={{ opacity: 0, y: 10 }}
+                   whileInView={{ opacity: 1, y: 0 }}
+                   transition={{ duration: 0.6, delay: 0.4 }}
+                   className="px-4 py-3 rounded-lg bg-white/[0.04] border border-white/[0.08] shadow-sm flex items-center gap-3 backdrop-blur-sm"
                  >
-                   <FileText className="h-8 w-8 text-blue-400" />
-                   <span className="text-xs font-medium text-neutral-300">Physics_Notes.pdf</span>
+                   <FileText className="h-5 w-5 text-purple-300" />
+                   <span className="text-sm font-medium text-neutral-300">Physics_Notes.pdf</span>
                  </motion.div>
                  
                  <motion.div
-                   animate={{ y: [0, 5, 0] }}
-                   transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
-                   className="p-4 rounded-xl bg-[#1F2833] border border-white/10 shadow-lg flex flex-col items-center gap-3 hover:border-red-500/30 transition-colors"
+                   initial={{ opacity: 0, y: 10 }}
+                   whileInView={{ opacity: 1, y: 0 }}
+                   transition={{ duration: 0.6, delay: 0.5 }}
+                   className="px-4 py-3 rounded-lg bg-white/[0.04] border border-white/[0.08] shadow-sm flex items-center gap-3 backdrop-blur-sm"
                  >
-                   <Network className="h-8 w-8 text-red-400" />
-                   <span className="text-xs font-medium text-neutral-300">Thermo_Lec.mp4</span>
+                   <Network className="h-5 w-5 text-indigo-300" />
+                   <span className="text-sm font-medium text-neutral-300">Thermo_Lec.mp4</span>
                  </motion.div>
                </div>
 
-               {/* Simulated dropping zone */}
+               {/* Dropping zone */}
                <motion.div 
-                 initial={{ borderColor: 'rgba(255,255,255,0.1)' }}
-                 animate={{ borderColor: ['rgba(255,255,255,0.1)', 'rgba(168,85,247,0.5)', 'rgba(255,255,255,0.1)'] }}
-                 transition={{ repeat: Infinity, duration: 3, delay: 1.5 }}
-                 className="mt-6 w-full max-w-[300px] p-6 rounded-xl border-2 border-dashed bg-purple-500/5 text-center transition-colors"
+                 initial={{ opacity: 0 }}
+                 whileInView={{ opacity: 1 }}
+                 transition={{ duration: 0.8, delay: 0.8 }}
+                 className="mt-8 w-full max-w-[320px] py-8 rounded-xl border border-dashed border-white/[0.15] bg-white/[0.01] text-center"
                >
-                 <span className="text-sm text-purple-300/80 font-medium">Drop new sources here</span>
+                 <span className="text-sm text-neutral-400 font-light">Drop new sources here</span>
                </motion.div>
-
-               {/* Simulated Cursor */}
-               <motion.div
-                 initial={{ x: 50, y: 150, opacity: 0 }}
-                 animate={{ 
-                   x: [50, -50, -50, 50], 
-                   y: [150, 0, 0, 150],
-                   opacity: [0, 1, 1, 0]
-                 }}
-                 transition={{ repeat: Infinity, duration: 6, times: [0, 0.3, 0.7, 1] }}
-                 className="absolute z-50 pointer-events-none"
-               >
-                 <MousePointer2 className="h-6 w-6 text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] fill-black" />
-               </motion.div>
-               
-               {/* Click feedback simple ripple */}
-               <motion.div
-                 initial={{ scale: 0, opacity: 0 }}
-                 animate={{ scale: [0, 2], opacity: [0, 0.8, 0] }}
-                 transition={{ repeat: Infinity, duration: 6, times: [0, 1], delay: 1.8 }}
-                 className="absolute top-[40%] left-[30%] w-8 h-8 rounded-full bg-purple-500 -ml-4 -mt-4 pointer-events-none"
-               />
             </div>
-            <div className="absolute -inset-px rounded-2xl pointer-events-none border border-white/5 group-hover:border-purple-500/20 transition-colors duration-500" />
           </motion.div>
         </div>
       </div>
@@ -123,47 +85,46 @@ export function StudyIntelligenceSection() {
   ];
 
   return (
-    <section className="py-32 relative overflow-hidden bg-[#030014] border-y border-white/5">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[600px] bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none" />
+    <section className="py-24 relative overflow-hidden border-y border-white/[0.02]">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-[400px] bg-purple-500/5 blur-[100px] rounded-[100%] pointer-events-none" />
       
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
-        <div className="mx-auto max-w-2xl text-center mb-20">
+        <div className="mx-auto max-w-2xl text-center mb-16">
           <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="text-4xl font-display font-medium tracking-tight text-white sm:text-5xl"
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="text-3xl font-display font-medium tracking-tight text-white/90 sm:text-4xl"
           >
             Instant Study Intelligence
           </motion.h2>
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ delay: 0.1 }}
-            className="mt-6 text-lg text-neutral-400"
+            transition={{ delay: 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-4 text-lg text-neutral-400 font-light"
           >
             Generate study guides, flashcards, formula sheets, practice sets, and revision plans from your own material with one click.
           </motion.p>
         </div>
         
-        <div className="mx-auto grid max-w-5xl grid-cols-2 gap-6 sm:grid-cols-3 lg:gap-8">
+        <div className="mx-auto grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-3 lg:gap-6">
           {cards.map((card, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ delay: card.delay, type: "spring", stiffness: 100, damping: 20 }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="group relative rounded-3xl border border-white/10 bg-[#0B0C10] p-8 flex flex-col items-center text-center overflow-hidden shadow-xl hover:shadow-[0_20px_40px_rgba(168,85,247,0.15)] hover:border-purple-500/30 transition-all duration-300 cursor-pointer"
+              transition={{ delay: card.delay, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -4 }}
+              className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.01] p-6 flex flex-col items-center text-center overflow-hidden hover:bg-white/[0.03] transition-all duration-300 cursor-pointer"
             >
-              <div className="absolute inset-0 bg-gradient-to-b from-purple-500/0 to-purple-500/0 group-hover:from-purple-500/10 group-hover:to-transparent transition-all duration-500" />
-              
-              <div className="relative z-10 w-16 h-16 rounded-2xl bg-[#1F2833] border border-white/5 flex items-center justify-center mb-6 group-hover:bg-purple-500/10 group-hover:border-purple-500/30 transition-colors duration-300">
-                <card.icon className="h-8 w-8 text-neutral-400 group-hover:text-purple-400 transition-colors duration-300" />
+              <div className="relative z-10 w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center mb-4 group-hover:border-purple-500/20 transition-colors duration-300">
+                <card.icon className="h-5 w-5 text-neutral-400 group-hover:text-purple-300 transition-colors duration-300" />
               </div>
-              <h3 className="text-base font-medium text-white group-hover:text-purple-200 transition-colors">{card.title}</h3>
+              <h3 className="text-sm font-medium text-neutral-300 group-hover:text-purple-100 transition-colors">{card.title}</h3>
             </motion.div>
           ))}
         </div>
