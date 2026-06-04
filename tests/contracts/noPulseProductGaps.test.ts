@@ -11,10 +11,12 @@ function read(file: string): string {
 describe('no-PULSE product gap contracts', () => {
   it('wires lightweight emotional continuity without creating PULSE runtime paths', () => {
     const chatRoute = read('app/api/ai/chat/route.ts');
+    const chatContext = read('lib/chat/context.ts');
+    const combined = chatRoute + chatContext;
     const appApiFiles = fs.readdirSync(path.join(root, 'app/api'), { recursive: true }).join('\n').toLowerCase();
     const migration = read('supabase/migrations/20260531000011_no_pulse_product_gates_memory.sql').toLowerCase();
 
-    expect(chatRoute).toContain('inferAndUpdateEmotionalState');
+    expect(combined).toContain('inferAndUpdateEmotionalState');
     expect(appApiFiles).not.toContain('pulse');
     expect(migration).not.toMatch(/create\s+table[\s\S]{0,80}pulse/);
     expect(migration).not.toMatch(/alter\s+table[\s\S]{0,80}pulse/);

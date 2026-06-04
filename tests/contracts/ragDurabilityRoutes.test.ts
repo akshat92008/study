@@ -11,12 +11,14 @@ function read(file: string): string {
 describe('RAG durable route contracts', () => {
   it('keeps normal chat material upload off inline ingestion', () => {
     const chatRoute = read('app/api/ai/chat/route.ts');
+    const uploadsRoute = read('lib/chat/uploads.ts');
+    const combined = chatRoute + uploadsRoute;
 
-    expect(chatRoute).not.toContain('ingestStudyMaterial');
-    expect(chatRoute).toContain("type: 'MATERIAL_UPLOADED'");
-    expect(chatRoute).toContain(".from('rag_ingestion_jobs')");
-    expect(chatRoute).toContain("onConflict: 'user_id,material_id,idempotency_key'");
-    expect(chatRoute).toContain('Source uploaded and queued for indexing');
+    expect(combined).not.toContain('ingestStudyMaterial');
+    expect(combined).toContain("type: 'MATERIAL_UPLOADED'");
+    expect(combined).toContain(".from('rag_ingestion_jobs')");
+    expect(combined).toContain("onConflict: 'user_id,material_id,idempotency_key'");
+    expect(combined).toContain('Source uploaded and queued for indexing');
   });
 
   it('queues user material reprocess instead of downloading and ingesting inline', () => {
