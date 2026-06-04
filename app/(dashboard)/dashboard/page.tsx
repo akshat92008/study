@@ -3,9 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useAppStore } from '@/stores/appStore';
 import type { LearningGoal } from '@/stores/appStore';
-import {
-  Brain, RefreshCw, Loader2, Upload, X, Activity, MessageSquare
-} from 'lucide-react';
+import { Brain, RefreshCw, Loader2, Upload, X, Activity, MessageSquare, Music } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import CognitionDashboard from '@/components/cognition/CognitionDashboard';
 import RevisionQueue from '@/components/revision/RevisionQueue';
@@ -375,6 +373,7 @@ export default function DashboardPage() {
             )}
             {activeDrawer === 'beats' && (
               <>
+                {/* @ts-ignore - Music icon may lack type definitions */}
                 <Music size={18} style={{ color: 'var(--warning)' }} />
                 <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)' }}>Focus Beats</span>
               </>
