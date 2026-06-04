@@ -42,6 +42,7 @@
     "tests",
     "__tests__",
     "scripts",
-    "app/(educator)"
+    "app/(educator)",
+    "cognition-os"
   ]
 }

@@ -64,6 +64,7 @@
     "__tests__",
     "scripts",
     "*.config.ts",
-    "module5-session-card-hardening"
+    "module5-session-card-hardening",
+    "cognition-os"
   ]
 }
