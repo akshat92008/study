@@ -126,11 +126,6 @@ export async function POST(req: NextRequest) {
     const promptLength = validatePromptLength(userMessageForPersistence);
     if (!promptLength.allowed) throw new PipelineError(usageGateResponse(promptLength));
 
-    const usageGate = await consumeUsageLimit(user.id, 'chat_messages_daily');
-    if (!usageGate.allowed) throw new PipelineError(usageGateResponse(usageGate));
-    const hourlyGate = await consumeUsageLimit(user.id, 'chat_messages_hourly');
-    if (!hourlyGate.allowed) throw new PipelineError(usageGateResponse(hourlyGate));
-
     // 4. Persist User Message
     const userMessageId = await persistChatMessages(supabase, sessionId, user.id, userMessageForPersistence);
 
@@ -150,7 +145,11 @@ export async function POST(req: NextRequest) {
     const orchestratorResult = orchestrateFromIntent(detectedIntent, hasUploadedFile, message || '');
     
     // 8. Enqueue Side Effects
-    enqueueChatSideEffects(user.id, userMessageForPersistence, orchestratorResult);
+    try {
+      enqueueChatSideEffects(user.id, userMessageForPersistence, orchestratorResult);
+    } catch (e) {
+      logger.warn('[chat.side_effect_failed]', { error: e });
+    }
 
     const promptVersion = getPromptVersion('mind');
     const finalizeAssistantTurnFn = (input: any) => finalizeChatTurn({
@@ -165,6 +164,13 @@ export async function POST(req: NextRequest) {
     const uploadIntent = hasUploadedFile ? classifyChatUploadIntent({ message: message || '', mimeType: (imageMimeType || documentMimeType || undefined) as string | undefined }) : 'unsupported';
 
     // 9. Route Uploads (if any)
+    if (hasUploadedFile) {
+      const usageGate = await consumeUsageLimit(user.id, 'chat_messages_daily');
+      if (!usageGate.allowed) throw new PipelineError(usageGateResponse(usageGate));
+      const hourlyGate = await consumeUsageLimit(user.id, 'chat_messages_hourly');
+      if (!hourlyGate.allowed) throw new PipelineError(usageGateResponse(hourlyGate));
+    }
+
     const uploadResponse = await routeUploads({
       hasUploadedFile, imageBase64, imageMimeType, documentBase64, documentMimeType, orchestratorResult, uploadIntent, userId: user.id, message, profilePreview, messageRequestId, activeGoalId, sessionId, supabase, finalizeAssistantTurnFn, encoder, systemPrompt, requestId
     });
@@ -175,6 +181,13 @@ export async function POST(req: NextRequest) {
       userId: user.id, message, mindContext, detectedIntent, orchestratorResult, finalizeAssistantTurnFn, encoder
     });
     if (ruleResponse) return ruleResponse;
+
+    if (!hasUploadedFile) {
+      const usageGate = await consumeUsageLimit(user.id, 'chat_messages_daily');
+      if (!usageGate.allowed) throw new PipelineError(usageGateResponse(usageGate));
+      const hourlyGate = await consumeUsageLimit(user.id, 'chat_messages_hourly');
+      if (!hourlyGate.allowed) throw new PipelineError(usageGateResponse(hourlyGate));
+    }
 
     // 11. Call AI Provider (Deterministic or LLM Stream)
     const providerResponse = await callAiProvider({

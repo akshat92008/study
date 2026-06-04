@@ -82,7 +82,10 @@ export class EventWorkerService {
     const redis = getRedisClientSafe();
     let leases: any[] = [];
 
-    if (redis) {
+    const enableRedisQueue = process.env.ENABLE_REDIS_EVENT_QUEUE === 'true';
+
+    if (enableRedisQueue && redis) {
+      logger.warn('Redis event queue is enabled. This is deprecated for durable operations.', { feature: 'event-worker' });
       for (let i = 0; i < actualLimit; i++) {
         const item = await redis.rpop('cognition_events_queue');
         if (item) {

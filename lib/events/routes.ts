@@ -12,7 +12,6 @@ export const EVENT_CONSUMERS = [
   'autopsy_agent',
   'planner_agent',
   'command_agent',
-  'command_engine',
   // Hermes internal worker consumer — never user-facing
   'hermes_worker',
 ] as const;
@@ -54,8 +53,8 @@ export const EVENT_CONSUMER_MATRIX = {
   ],
   AUTOPSY_V3_ASSESSMENT_CREATED: ['autopsy_agent'],
   AUTOPSY_V3_QUESTIONS_UPSERTED: ['autopsy_agent'],
-  AUTOPSY_V3_REASONS_COLLECTED: ['autopsy_agent'],
-  AUTOPSY_V3_REPORT_READY: ['learning_state_engine', 'memory_agent', 'planner_agent', 'command_agent'],
+  AUTOPSY_V3_REASONS_COLLECTED: ['autopsy_agent', 'hermes_worker', 'learning_state_engine'],
+  AUTOPSY_V3_REPORT_READY: ['learning_state_engine', 'memory_agent', 'planner_agent', 'command_agent', 'hermes_worker'],
   HERMES_MEMORY_UPDATED: ['memory_agent', 'planner_agent'],
   LEARNING_SIGNAL_INGESTED: ['learning_state_engine', 'atlas_agent', 'memory_agent', 'planner_agent', 'command_agent'],
   STUDY_SESSION_COMPLETED: [

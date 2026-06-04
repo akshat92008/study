@@ -71,6 +71,7 @@ function learnerState(overrides: Record<string, any> = {}) {
       recentMistakes: [{ chapter: 'Motion', category: 'conceptual_gap', subject: 'Physics' }],
     },
     recentTopics: ['Motion'],
+    seededTopics: [],
     studentModel: null,
     lastUpdated: new Date().toISOString(),
     ...overrides,

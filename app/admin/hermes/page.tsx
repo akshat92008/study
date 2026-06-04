@@ -3,30 +3,43 @@ import { redirect } from 'next/navigation';
 import Card from '@/components/ui/Card';
 import { DatabaseZap, Activity, Info } from 'lucide-react';
 import { getHermesConfig } from '@/lib/hermes/hermes-config';
+import { requireAdmin } from '@/lib/auth/admin';
 
 export const dynamic = 'force-dynamic';
 
 export default async function HermesAdminPage() {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const { user, error, status } = await requireAdmin();
 
   if (!user) {
-    redirect('/auth/signin?next=/admin/hermes');
+    redirect('/login?next=/admin/hermes');
   }
 
-  // Validate admin
-  const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single();
-  if (profile?.role !== 'admin') {
+  if (status === 403) {
     redirect('/dashboard');
   }
 
+  const supabase = await createClient();
   const config = getHermesConfig();
   
   const { data: recentMemories } = await supabase
     .from('hermes_learning_memories')
-    .select('id, user_id, concept, pattern, severity, action_type, status, created_at')
+    .select(`
+      id,
+      user_id,
+      memory_type,
+      subject,
+      topic,
+      pattern,
+      evidence_count,
+      severity,
+      confidence,
+      prevention_rule,
+      next_reminder_condition,
+      status,
+      created_at
+    `)
     .order('created_at', { ascending: false })
-    .limit(50);
+    .limit(100);
 
   return (
     <div style={{ maxWidth: '1200px', margin: '0 auto', padding: 'var(--sp-6) var(--sp-4)' }}>
@@ -71,8 +84,8 @@ export default async function HermesAdminPage() {
             <Card key={memory.id} padding="md" style={{ borderLeft: `4px solid ${memory.severity === 'high' ? 'var(--status-error)' : 'var(--accent-purple)'}` }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--sp-2)' }}>
                 <div>
-                  <strong style={{ display: 'block', fontSize: 'var(--fs-sm)' }}>{memory.concept}</strong>
-                  <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>{new Date(memory.created_at).toLocaleString()} | User: {memory.user_id.slice(0, 8)}...</span>
+                  <strong style={{ display: 'block', fontSize: 'var(--fs-sm)' }}>{memory.topic}</strong>
+                  <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>{new Date(memory.created_at).toLocaleString()} | User: {memory.user_id.slice(0, 8)}... | Subject: {memory.subject}</span>
                 </div>
                 <div style={{ padding: '2px 8px', borderRadius: '12px', fontSize: '10px', fontWeight: 700, backgroundColor: 'var(--bg-main)', border: '1px solid var(--border-subtle)' }}>
                   {memory.severity.toUpperCase()}
@@ -80,8 +93,13 @@ export default async function HermesAdminPage() {
               </div>
               <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)', margin: '0 0 var(--sp-2)' }}>{memory.pattern}</p>
               <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--accent-blue)', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                <Activity size={12} /> Next action: {memory.action_type}
+                <Activity size={12} /> Status: {memory.status} | Evidence: {memory.evidence_count} | Confidence: {memory.confidence}
               </div>
+              {memory.prevention_rule && (
+                <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', marginTop: '4px' }}>
+                  <strong>Rule:</strong> {memory.prevention_rule}
+                </div>
+              )}
             </Card>
           ))}
         </div>

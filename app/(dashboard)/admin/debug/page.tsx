@@ -22,7 +22,7 @@ export default async function AdminDebugPage() {
     .limit(50);
 
   const { data: consumers } = await supabase
-    .from('event_consumers')
+    .from('consumer_locks')
     .select('*')
     .order('created_at', { ascending: false })
     .limit(50);

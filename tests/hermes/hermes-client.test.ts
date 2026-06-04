@@ -73,6 +73,7 @@ describe('runHermesJSON — Hermes enabled', () => {
   beforeEach(() => {
     vi.resetModules();
     process.env.HERMES_ENABLED = 'true';
+    process.env.HERMES_MODE = 'lite';
   });
 
   afterEach(() => {

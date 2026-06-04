@@ -58,6 +58,7 @@ const allowedRuntimeFiles = new Set([
   'lib/engines/learning-state-engine.ts',
   'lib/engines/mastery-updater.ts',
   'lib/engines/revision-engine.ts',
+  'lib/admin/audit.ts'
 ]);
 
 describe('admin client allowlist', () => {

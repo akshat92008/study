@@ -42,18 +42,26 @@ export async function POST(req: NextRequest) {
     if (!assessment) return apiErrorResponse('not_found', { status: 404, message: 'Assessment not found.', requestId });
 
     const extraction = await extractSelectableTextFromPdf(buffer);
-    const extractionStatus = extraction.confidence >= 0.55 ? 'needs_review' : 'manual_entry_required';
+    const isPoorExtraction = extraction.confidence < 0.55;
+    const extractionStatus = isPoorExtraction ? 'manual_entry_required' : 'needs_review';
+    const needsManualReview = isPoorExtraction;
+    
+    const warnings = [...extraction.warnings];
+    if (isPoorExtraction) {
+      warnings.push('The PDF appears to be scanned or contains very little text. OCR is not yet supported. Please manually enter questions.');
+    }
+
     const { error } = await supabase
       .from('assessments')
       .update({
-        status: extraction.confidence >= 0.55 ? 'needs_review' : 'answers_pending',
+        status: isPoorExtraction ? 'answers_pending' : 'needs_review',
         extraction_status: extractionStatus,
         extraction_confidence: extraction.confidence,
         metadata: {
           ...(assessment.metadata ?? {}),
           fileName: parsed.data.fileName ?? null,
           rawTextPreview: extraction.rawText.slice(0, 20000),
-          warnings: extraction.warnings,
+          warnings: warnings,
         },
         updated_at: new Date().toISOString(),
       })
@@ -61,12 +69,28 @@ export async function POST(req: NextRequest) {
       .eq('user_id', user.id);
     if (error) throw error;
 
+    const fileHash = require('crypto').createHash('sha256').update(buffer).digest('hex');
+    const { error: extractionError } = await supabase
+      .from('assessment_extractions')
+      .insert({
+        user_id: user.id,
+        file_hash: fileHash,
+        raw_text: extraction.rawText,
+        metadata: { assessment_id: parsed.data.assessmentId }
+      });
+    if (extractionError) {
+      console.error('Failed to store assessment extraction:', extractionError);
+      // Non-fatal, just log it and proceed for now, or maybe throw. We'll throw.
+      throw extractionError;
+    }
+
     return jsonWithRequestId({
       extraction: {
         confidence: extraction.confidence,
-        warnings: extraction.warnings,
+        warnings: warnings,
         rawTextPreview: extraction.rawText.slice(0, 4000),
         status: extractionStatus,
+        needsManualReview: needsManualReview,
       },
     }, requestId);
   } catch (error) {

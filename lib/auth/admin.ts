@@ -28,3 +28,8 @@ export function isUnlimitedUser(userId: string | null | undefined): boolean {
   const testIds = (process.env.TEST_ACCOUNT_USER_IDS || '').split(',').map(e => e.trim()).filter(Boolean);
   return adminIds.includes(userId) || testIds.includes(userId);
 }
+
+export async function requireAdminServer() {
+  return requireAdmin();
+}
+

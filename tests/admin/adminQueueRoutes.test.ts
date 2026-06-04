@@ -3,7 +3,7 @@ import { POST } from '@/app/api/admin/queue/process/route';
 import { NextRequest } from 'next/server';
 
 vi.mock('@/lib/auth/admin', () => ({
-  requireAdmin: vi.fn().mockResolvedValue({ error: null, status: 200 })
+  requireAdmin: vi.fn().mockResolvedValue({ user: { id: 'admin-123' }, error: null, status: 200 })
 }));
 
 vi.mock('@/lib/events/worker', () => ({

@@ -29,6 +29,18 @@ export async function POST(req: NextRequest) {
       await ensureGoalForUser(supabase, user.id, parsed.data.goalId);
     }
 
+    let processingWarning = false;
+    if (parsed.data.materialIds && parsed.data.materialIds.length > 0) {
+      const { data: mats } = await supabase
+        .from('study_materials')
+        .select('id, status')
+        .in('id', parsed.data.materialIds)
+        .eq('user_id', user.id);
+      if (mats && mats.some(m => m.status !== 'ready')) {
+        processingWarning = true;
+      }
+    }
+
     const context = await retrieveRagContext({
       userId: user.id,
       query: parsed.data.query,
@@ -39,6 +51,10 @@ export async function POST(req: NextRequest) {
       chapter: parsed.data.chapter,
       mode: 'explicit',
     });
+
+    if (processingWarning) {
+      context.warnings.push('Some of the requested study materials are still processing and their content may not be fully available yet.');
+    }
 
     return NextResponse.json({ rag: context }, { headers: { 'x-request-id': requestId } });
   } catch (error) {

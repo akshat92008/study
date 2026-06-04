@@ -23,8 +23,6 @@ describe('Event Routing Contract', () => {
     const handledConsumers = new Set(HANDLED_EVENT_CONSUMERS);
     const unusedInWorkerButDefined = EVENT_CONSUMERS.filter(c => !handledConsumers.has(c));
     
-    // command_engine is no longer in HANDLED_EVENT_CONSUMERS but might still be in EVENT_CONSUMERS.
-    // If it's not used in matrix, it's fine, but let's make sure it's not in the matrix as verified by previous test.
-    expect(unusedInWorkerButDefined).toContain('command_engine');
+    expect(unusedInWorkerButDefined).toEqual([]);
   });
 });

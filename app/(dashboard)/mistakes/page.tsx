@@ -7,7 +7,7 @@ export default function MistakesPage() {
       <div style={{ textAlign: 'center', padding: 'var(--sp-12)', background: 'var(--bg-secondary)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--border-default)' }}>
         <Microscope size={48} style={{ opacity: 0.3, margin: '0 auto var(--sp-4)', color: 'var(--text-secondary)' }} />
         <h2 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-bold)', marginBottom: 'var(--sp-2)' }}>No Mistakes Logged</h2>
-        <p style={{ color: 'var(--text-tertiary)', marginBottom: 'var(--sp-6)' }}>Upload mock tests or practice sheets, and your AI tutor will diagnose your mistakes here.</p>
+        <p style={{ color: 'var(--text-tertiary)', marginBottom: 'var(--sp-6)' }}>Upload assessments or practice sheets, and your AI tutor will diagnose your mistakes here.</p>
         <NextLink href="/autopsy" style={{
           padding: '12px 24px',
           background: 'var(--danger)',

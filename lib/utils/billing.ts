@@ -253,7 +253,7 @@ export async function checkUsageLimit(
     const supabase = createAdminClient();
     const { data, error } = await supabase
       .from('ai_usage_daily')
-      .select('chat_messages, tutor_messages, autopsy_uploads, ai_calls')
+      .select('chat_messages, chat_messages_hourly, tutor_messages, autopsy_uploads, ai_calls, expensive_operations')
       .eq('user_id', userId)
       .eq('usage_date', new Date().toISOString().split('T')[0])
       .maybeSingle();
