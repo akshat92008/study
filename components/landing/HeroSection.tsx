@@ -44,9 +44,9 @@ export function HeroSection() {
           
           <motion.h1 
             variants={itemVariants}
-            className="font-display text-5xl font-medium tracking-tight text-white sm:text-7xl leading-tight drop-shadow-2xl"
+            className="font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1] drop-shadow-2xl"
           >
-            Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-indigo-500 animate-gradient-x">AI Learning</span> <br/> Operating System
+            Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-indigo-500 animate-gradient-x">AI Learning</span> Operating System
           </motion.h1>
           <motion.p variants={itemVariants} className="mt-6 text-lg leading-8 text-neutral-300">
             Upload sources, study with an AI tutor, autopsy your mistakes, and turn every session into your next mission. Cognition OS connects scattered notes into one intelligent learning loop.

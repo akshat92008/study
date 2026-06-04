@@ -69,11 +69,11 @@ export function MissionLoopSection() {
           
           <div className="mt-16 flex flex-wrap justify-center items-center gap-4 text-sm font-medium text-neutral-300">
             <span className="px-4 py-2 rounded-full border border-white/10 bg-white/5">Upload</span>
-            <span className="text-neutral-600">â</span>
+            <span className="text-neutral-600 font-sans">→</span>
             <span className="px-4 py-2 rounded-full border border-white/10 bg-white/5">Practice</span>
-            <span className="text-neutral-600">â</span>
+            <span className="text-neutral-600 font-sans">→</span>
             <span className="px-4 py-2 rounded-full border border-orange-500/30 bg-orange-500/10 text-orange-200">Autopsy</span>
-            <span className="text-neutral-600">â</span>
+            <span className="text-neutral-600 font-sans">→</span>
             <span className="px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-200">Next Mission</span>
           </div>
         </motion.div>
@@ -146,11 +146,11 @@ export function Footer() {
            </div>
            <span className="font-display text-neutral-300">Cognition OS</span>
         </div>
-        <div className="flex gap-6">
-          <Link href="#" className="hover:text-neutral-300 transition-colors">Product</Link>
-          <Link href="#" className="hover:text-neutral-300 transition-colors">Privacy</Link>
-          <Link href="#" className="hover:text-neutral-300 transition-colors">Terms</Link>
-          <Link href="#" className="hover:text-neutral-300 transition-colors">Contact</Link>
+        <div className="flex flex-wrap justify-center">
+          <Link href="#" className="mx-3 text-neutral-400 hover:text-neutral-300 transition-colors">Product</Link>
+          <Link href="#" className="mx-3 text-neutral-400 hover:text-neutral-300 transition-colors">Privacy</Link>
+          <Link href="#" className="mx-3 text-neutral-400 hover:text-neutral-300 transition-colors">Terms</Link>
+          <Link href="#" className="mx-3 text-neutral-400 hover:text-neutral-300 transition-colors">Contact</Link>
         </div>
         <p>Built for serious learners.</p>
       </div>

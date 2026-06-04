@@ -94,7 +94,7 @@ export function AutopsyFeature() {
                     animate={{ opacity: 1, x: 0 }}
                     className="flex items-center gap-4 p-4 rounded-xl bg-red-500/10 border border-red-500/30"
                   >
-                    <div className="w-10 h-10 rounded-lg bg-black border border-red-500/40 flex items-center justify-center text-red-400 text-lg font-bold shadow-[0_0_15px_rgba(239,68,68,0.3)]">-120 kJ</div>
+                    <div className="px-4 py-2 min-w-[90px] h-10 rounded-lg bg-black border border-red-500/40 flex items-center justify-center text-red-400 text-sm font-bold shadow-[0_0_15px_rgba(239,68,68,0.3)] whitespace-nowrap">-120 kJ</div>
                     <span className="text-sm font-medium text-red-200">Your Answer (Incorrect)</span>
                   </motion.div>
                 </AnimatePresence>
@@ -106,7 +106,7 @@ export function AutopsyFeature() {
                     transition={{ delay: 0.5 }}
                     className="flex items-center gap-4 p-4 rounded-xl bg-green-500/5 border border-green-500/20 opacity-60"
                   >
-                    <div className="w-10 h-10 rounded-lg bg-black border border-green-500/20 flex items-center justify-center text-green-400 text-lg font-bold">-92.4 kJ</div>
+                    <div className="px-4 py-2 min-w-[90px] h-10 rounded-lg bg-black border border-green-500/20 flex items-center justify-center text-green-400 text-sm font-bold whitespace-nowrap">-92.4 kJ</div>
                     <span className="text-sm font-medium text-green-200/50">Correct Answer</span>
                   </motion.div>
                 )}
