@@ -97,6 +97,7 @@ export class PracticeService {
       subject,
       chapter: topic,
       topic,
+      concept_name: topic,
       source_material_id: artifactContext.sourceMaterialIds?.[0] ?? null,
       source_chunk_ids: artifactContext.sourceChunkIds ?? null,
       position: idx + 1
@@ -158,6 +159,7 @@ export class PracticeService {
       subject,
       chapter: topic,
       topic,
+      concept_name: topic,
       source_material_id: artifactContext.sourceMaterialIds?.[0] ?? null,
       source_chunk_ids: artifactContext.sourceChunkIds ?? null,
       position: idx + 1

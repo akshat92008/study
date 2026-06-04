@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { getOrCreatePrimaryGoalSession, GOAL_SELECT } from '@/lib/services/goal-context.service';
-import { seedTopicsForGoal } from '@/lib/topic-seeding/topic-seeder';
+import { seedTopicsForGoal } from '@/lib/topic-seeding';
 
 const SubjectSchema = z
   .string()
@@ -164,14 +164,30 @@ export async function completeOnboardingForUser({
   const session = await getOrCreatePrimaryGoalSession(supabase, user.id, goal.id);
 
   // Seed topics deterministically or fallback to AI
-  await seedTopicsForGoal(supabase, {
-    userId: user.id,
-    goalId: goal.id,
-    goalTitle: goal.title,
-    goalType: parsed.goalType,
-    presetId: goal.preset_id,
-    subjects: parsed.subjects,
-  });
+  let topicSeeding = null;
+  try {
+    topicSeeding = await seedTopicsForGoal(supabase, {
+      userId: user.id,
+      goalId: goal.id,
+      goalTitle: goal.title ?? input.goalTitle ?? input.exam ?? 'Custom Goal',
+      goalType: input.goalType ?? input.exam ?? input.domain ?? null,
+      presetId: goal.preset_id ?? input.presetId ?? input.preset_id ?? null,
+      subject: input.subject ?? null,
+      subjects: Array.isArray(input.subjects)
+        ? input.subjects
+        : input.subject
+          ? [input.subject]
+          : [],
+      chapter: input.chapter ?? null,
+      targetDate: input.targetDate ?? input.target_date ?? null,
+    });
+  } catch (error) {
+    console.warn('Onboarding topic seeding skipped', {
+      userId: user.id,
+      goalId: goal.id,
+      error,
+    });
+  }
 
   return {
     profile: {
@@ -183,6 +199,7 @@ export async function completeOnboardingForUser({
     goal,
     session,
     createdGoal: !existingGoal,
+    topicSeeding,
   };
 }
 

@@ -1,5 +1,6 @@
 import { NextRequest } from 'next/server';
 import { z } from 'zod';
+import { randomUUID } from 'crypto';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { computeQuestionStatus } from '@/lib/autopsy-v3/scoring';
@@ -70,7 +71,7 @@ export async function POST(req: NextRequest, context: RouteContext) {
     const rows = parsed.data.questions.map((question) => {
       const status = question.status ?? computeQuestionStatus(question.correctAnswer, question.userAnswer, question.options);
       return {
-        id: question.id,
+        id: question.id || randomUUID(),
         assessment_id: assessmentId,
         user_id: user.id,
         question_number: question.questionNumber,

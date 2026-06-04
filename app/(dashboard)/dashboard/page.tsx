@@ -14,7 +14,7 @@ import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import CurrentTaskCard from '@/components/dashboard/CurrentTaskCard';
 import MicrotargetsCard from '@/components/dashboard/MicrotargetsCard';
-import SeededTopicsCard from '@/components/dashboard/SeededTopicsCard';
+import { SeededTopicsCard } from '@/components/dashboard/SeededTopicsCard';
 import DeepAutopsyCard from '@/components/dashboard/DeepAutopsyCard';
 import GoalCreationModal from '@/components/modals/GoalCreationModal';
 import GoalSettingsModal from '@/components/modals/GoalSettingsModal';

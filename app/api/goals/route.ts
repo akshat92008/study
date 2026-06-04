@@ -8,7 +8,7 @@ import {
   SESSION_SELECT,
 } from '@/lib/services/goal-context.service';
 import { logger } from '@/lib/utils/logger';
-import { seedTopicsForGoal } from '@/lib/topic-seeding/topic-seeder';
+import { seedTopicsForGoal } from '@/lib/topic-seeding';
 
 function optionalString(value: unknown): string | null {
   return typeof value === 'string' && value.trim() ? value.trim() : null;
@@ -111,14 +111,30 @@ export async function POST(req: NextRequest) {
     const session = await getOrCreatePrimaryGoalSession(supabase, user.id, goal.id);
 
     // Seed topics deterministically or fallback to AI
-    await seedTopicsForGoal(supabase, {
-      userId: user.id,
-      goalId: goal.id,
-      goalTitle: goal.title,
-      goalType: optionalString(body.examType) || 'Custom Goal',
-      presetId: goal.preset_id,
-      subjects: body.subject ? [body.subject] : [],
-    });
+    let topicSeeding = null;
+    try {
+      topicSeeding = await seedTopicsForGoal(supabase, {
+        userId: user.id,
+        goalId: goal.id,
+        goalTitle: goal.title ?? body.title ?? body.goalTitle ?? 'Custom Goal',
+        goalType: body.goalType ?? body.examType ?? body.domain ?? null,
+        presetId: goal.preset_id ?? body.presetId ?? body.preset_id ?? null,
+        subject: body.subject ?? null,
+        subjects: Array.isArray(body.subjects)
+          ? body.subjects
+          : body.subject
+            ? [body.subject]
+            : [],
+        chapter: body.chapter ?? null,
+        targetDate: body.targetDate ?? body.target_date ?? null,
+      });
+    } catch (error) {
+      console.warn('Goal topic seeding skipped after goal creation', {
+        userId: user.id,
+        goalId: goal.id,
+        error,
+      });
+    }
 
     const { data: hydratedGoal } = await supabase
       .from('learning_goals')
@@ -140,6 +156,7 @@ export async function POST(req: NextRequest) {
       session: hydratedSession ?? session,
       goalId: goal.id,
       sessionId: session.id,
+      topicSeeding,
     }, { status: 201, headers: { 'x-request-id': requestId } });
   } catch (error) {
     return unexpectedApiErrorResponse(req, error, 'goals_post', 'Unable to create learning goal.');

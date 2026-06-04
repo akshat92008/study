@@ -1,0 +1,42 @@
+import type { SeedTemplate } from '../types';
+export const CODING_TEMPLATES: SeedTemplate[] = [
+  {
+    templateKey: 'coding_javascript_basics',
+    subject: 'Programming',
+    chapter: 'JavaScript Basics',
+    displayName: 'JavaScript Basics',
+    aliases: ['javascript', 'js', 'learn javascript', 'master javascript'],
+    topics: [
+      { orderIndex: 1, topic: 'Variables and data types', microtarget: 'Understand let, const, primitive types, and basic assignment.' },
+      { orderIndex: 2, topic: 'Operators and expressions', microtarget: 'Use arithmetic, comparison, logical, and assignment operators.' },
+      { orderIndex: 3, topic: 'Conditionals', microtarget: 'Write if, else-if, else, and switch logic.' },
+      { orderIndex: 4, topic: 'Loops', microtarget: 'Use for, while, and for-of loops correctly.' },
+      { orderIndex: 5, topic: 'Functions', microtarget: 'Define and call functions with parameters and return values.' },
+      { orderIndex: 6, topic: 'Arrays', microtarget: 'Create, access, update, and iterate arrays.' },
+      { orderIndex: 7, topic: 'Objects', microtarget: 'Use object properties and methods.' },
+      { orderIndex: 8, topic: 'DOM basics', microtarget: 'Select and update HTML elements using JavaScript.' },
+      { orderIndex: 9, topic: 'Events', microtarget: 'Handle user events like click, input, and submit.' },
+      { orderIndex: 10, topic: 'Async basics', microtarget: 'Understand promises, async/await, and simple fetch calls.' },
+      { orderIndex: 11, topic: 'Common JavaScript mistakes', microtarget: 'Avoid scope, equality, mutation, and async mistakes.' },
+    ],
+  },
+  {
+    templateKey: 'coding_python_basics',
+    subject: 'Programming',
+    chapter: 'Python Basics',
+    displayName: 'Python Basics',
+    aliases: ['python', 'learn python', 'master python'],
+    topics: [
+      { orderIndex: 1, topic: 'Variables and types', microtarget: 'Use Python variables, strings, numbers, booleans, and type conversion.' },
+      { orderIndex: 2, topic: 'Input and output', microtarget: 'Use input, print, and formatted strings.' },
+      { orderIndex: 3, topic: 'Conditionals', microtarget: 'Write if, elif, and else blocks.' },
+      { orderIndex: 4, topic: 'Loops', microtarget: 'Use for and while loops.' },
+      { orderIndex: 5, topic: 'Lists and tuples', microtarget: 'Create, index, slice, and loop through lists and tuples.' },
+      { orderIndex: 6, topic: 'Dictionaries and sets', microtarget: 'Use key-value data and unique collections.' },
+      { orderIndex: 7, topic: 'Functions', microtarget: 'Define functions with parameters, returns, and default values.' },
+      { orderIndex: 8, topic: 'Files', microtarget: 'Read and write text files safely.' },
+      { orderIndex: 9, topic: 'Errors and exceptions', microtarget: 'Use try-except and understand common errors.' },
+      { orderIndex: 10, topic: 'Common Python mistakes', microtarget: 'Avoid indentation, mutable default, and type errors.' },
+    ],
+  },
+];

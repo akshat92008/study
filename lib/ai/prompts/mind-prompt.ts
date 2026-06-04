@@ -248,6 +248,22 @@ STUDENT STATE: OVERWHELMED — COGNITIVE LOAD CRITICAL
 
 const MAX_SYSTEM_CHARS = 12000;
 
+function formatSeededTopicsForPrompt(seededTopics: any[] = []) {
+  if (!seededTopics.length) return '';
+  const lines = seededTopics
+    .slice(0, 10)
+    .map((item, index) => {
+      return `${index + 1}. ${item.chapter} → ${item.topic}: ${item.microtarget}`;
+    })
+    .join('\n');
+  return `
+SEEDED LEARNING MAP:
+${lines}
+Use this map when the user asks what to study next, what topics exist, or how to master their goal.
+Do not dump the full roadmap unless asked.
+`;
+}
+
 function buildPrompt(ctx: MINDContext, semanticMemories: string[] = [], intent?: string): string {
   const isGeneralChat = intent === 'GENERAL_CHAT';
   
@@ -264,9 +280,7 @@ function buildPrompt(ctx: MINDContext, semanticMemories: string[] = [], intent?:
     : 'No active card loaded';
   const dueCardsList = ctx.topOverdueCards?.length > 0 ? ctx.topOverdueCards.slice(0, 3).map(c => c.front).join(' | ') : 'No due cards';
   const emotionalBlock = getEmotionalAdaptationBlock(ctx.emotionalState);
-  const seededTopicsList = ctx.seededTopics && ctx.seededTopics.length > 0
-    ? `\nSEEDED LEARNING MAP (Next logical topics to study): ${ctx.seededTopics.map(t => `${t.topic} (${t.microtarget})`).join(' → ')}`
-    : '';
+  const seededTopicContext = formatSeededTopicsForPrompt(ctx.seededTopics ?? []);
   
   const autopsySummary = ctx.lastAutopsy 
     ? `Last Mistake Review: ${ctx.lastAutopsy.test_name} (${ctx.lastAutopsy.current_score}/${ctx.lastAutopsy.potential_score})`
@@ -565,7 +579,8 @@ WEAK AREAS: ${weakList}
 RECENT MISTAKE PATTERNS: ${mistakeList}
 ${rootGapSection}
 OPTIONAL EMOTIONAL STATE SIGNAL: ${ctx.emotionalState}
-RECENTLY STUDIED: ${ctx.recentTopics.slice(0, 4).join(', ') || 'Nothing yet'}${seededTopicsList}
+RECENTLY STUDIED: ${ctx.recentTopics.slice(0, 4).join(', ') || 'Nothing yet'}
+${seededTopicContext}
 ${memoriesSection}
 ${hermesMemoriesSection}
 ${conceptHistorySection}

@@ -1,87 +1,61 @@
-import React from 'react';
-import Card from '@/components/ui/Card';
-import { Target, CheckCircle2, PlayCircle, BookOpen } from 'lucide-react';
-
+'use client';
 interface SeededTopic {
-  id: string;
+  id?: string;
   subject: string;
   chapter: string;
   topic: string;
   microtarget: string;
-  status: string;
-  order_index: number;
+  order_index?: number;
+  status?: string;
 }
-
 interface SeededTopicsCardProps {
-  seededTopics: SeededTopic[];
-  onStartTopic?: (topic: SeededTopic) => void;
+  topics: SeededTopic[];
 }
-
-export default function SeededTopicsCard({ seededTopics, onStartTopic }: SeededTopicsCardProps) {
-  if (!seededTopics || seededTopics.length === 0) return null;
-
-  const activeTopic = seededTopics.find(t => t.status === 'active');
-  const completedCount = seededTopics.filter(t => t.status === 'mastered').length;
-  const progress = Math.round((completedCount / seededTopics.length) * 100);
-
+export function SeededTopicsCard({ topics }: SeededTopicsCardProps) {
+  if (!topics?.length) {
+    return (
+      <section className="rounded-2xl border bg-white p-4 shadow-sm">
+        <h2 className="text-lg font-semibold">Learning Map</h2>
+        <p className="mt-2 text-sm text-gray-600">
+          Create a goal or upload material to generate your first topic map.
+        </p>
+      </section>
+    );
+  }
+  const sorted = [...topics].sort((a, b) => (a.order_index ?? 0) - (b.order_index ?? 0));
+  const active = sorted.find((topic) => topic.status === 'active') ?? sorted[0];
+  const mastered = sorted.filter((topic) => topic.status === 'mastered').length;
   return (
-    <Card padding="lg" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)' }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 'var(--sp-4)' }}>
+    <section className="rounded-2xl border bg-white p-4 shadow-sm">
+      <div className="flex items-start justify-between gap-3">
         <div>
-          <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: 8 }}>
-            <Target size={18} color="var(--accent-purple)" />
-            Learning Path
-          </h3>
-          <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-xs)', marginTop: 4 }}>
-            {completedCount} of {seededTopics.length} topics mastered
+          <h2 className="text-lg font-semibold">Learning Map</h2>
+          <p className="mt-1 text-sm text-gray-600">
+            {active.chapter} · {mastered}/{sorted.length} topics mastered
           </p>
         </div>
-        <div style={{ background: 'var(--bg-tertiary)', padding: '2px 8px', borderRadius: '12px', fontSize: 'var(--fs-xs)', fontWeight: 'bold', color: 'var(--text-primary)' }}>
-          {progress}%
-        </div>
+        <span className="rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-700">
+          {active.subject}
+        </span>
       </div>
-
-      {/* Progress Bar */}
-      <div style={{ width: '100%', height: 6, background: 'var(--bg-tertiary)', borderRadius: 3, marginBottom: 'var(--sp-6)', overflow: 'hidden' }}>
-        <div style={{ height: '100%', width: `${progress}%`, background: 'var(--accent-purple)', transition: 'width 0.5s ease-out' }} />
+      <div className="mt-4 rounded-xl bg-gray-50 p-3">
+        <p className="text-xs font-medium uppercase tracking-wide text-gray-500">
+          Current microtarget
+        </p>
+        <h3 className="mt-1 font-semibold text-gray-900">{active.topic}</h3>
+        <p className="mt-1 text-sm text-gray-700">{active.microtarget}</p>
       </div>
-
-      {activeTopic ? (
-        <div style={{ background: 'var(--bg-primary)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div>
-            <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)', marginBottom: 2 }}>Current Focus</div>
-            <div style={{ fontSize: 'var(--fs-sm)', fontWeight: '600', color: 'var(--text-primary)' }}>{activeTopic.topic}</div>
-            <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', marginTop: 2, display: 'flex', alignItems: 'center', gap: 4 }}>
-              <BookOpen size={12} />
-              {activeTopic.microtarget}
+      <div className="mt-4 space-y-2">
+        {sorted.slice(0, 5).map((topic) => (
+          <div key={`${topic.topic}-${topic.microtarget}`} className="flex items-start gap-2 text-sm">
+            <span className="mt-1 h-2 w-2 rounded-full bg-gray-400" />
+            <div>
+              <p className="font-medium text-gray-900">{topic.topic}</p>
+              <p className="text-gray-600">{topic.microtarget}</p>
             </div>
           </div>
-          <button
-            onClick={() => onStartTopic?.(activeTopic)}
-            style={{ 
-              background: 'var(--accent-purple)', 
-              color: 'white', 
-              border: 'none', 
-              padding: '6px 12px', 
-              borderRadius: 'var(--radius-sm)', 
-              fontSize: 'var(--fs-xs)',
-              fontWeight: '600',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 6,
-              cursor: 'pointer'
-            }}
-          >
-            <PlayCircle size={14} />
-            Start
-          </button>
-        </div>
-      ) : (
-        <div style={{ background: 'var(--bg-primary)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)', display: 'flex', alignItems: 'center', gap: 8, color: 'var(--success)' }}>
-          <CheckCircle2 size={18} />
-          <span style={{ fontSize: 'var(--fs-sm)', fontWeight: '500' }}>All topics mastered!</span>
-        </div>
-      )}
-    </Card>
+        ))}
+      </div>
+    </section>
   );
 }

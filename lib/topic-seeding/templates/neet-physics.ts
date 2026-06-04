@@ -1,95 +1,98 @@
-export const NEET_PHYSICS_KINEMATICS = {
-  templateKey: 'neet_physics_kinematics',
-  subject: 'Physics',
-  chapter: 'Kinematics',
-  topics: [
-    {
-      topic: 'Physical quantities and units',
-      microtarget: 'Define distance and displacement with examples',
-    },
-    {
-      topic: 'Scalars and vectors basics',
-      microtarget: 'Distinguish speed and velocity',
-    },
-    {
-      topic: 'Rest and motion',
-      microtarget: 'Calculate acceleration from velocity change',
-    },
-    {
-      topic: 'Distance and displacement',
-      microtarget: 'Define distance and displacement with examples',
-    },
-    {
-      topic: 'Speed and velocity',
-      microtarget: 'Distinguish speed and velocity',
-    },
-    {
-      topic: 'Uniform and non-uniform motion',
-      microtarget: 'Calculate acceleration from velocity change',
-    },
-    {
-      topic: 'Acceleration',
-      microtarget: 'Calculate acceleration from velocity change',
-    },
-    {
-      topic: 'Equations of motion',
-      microtarget: 'Apply equations of motion only for constant acceleration',
-    },
-    {
-      topic: 'Motion graphs',
-      microtarget: 'Interpret slope of x-t graph',
-    },
-    {
-      topic: 'Motion graphs',
-      microtarget: 'Interpret slope and area of v-t graph',
-    },
-    {
-      topic: 'Free fall',
-      microtarget: 'Solve free fall using correct sign convention',
-    },
-    {
-      topic: 'Motion under gravity',
-      microtarget: 'Solve free fall using correct sign convention',
-    },
-    {
-      topic: 'Relative velocity in one dimension',
-      microtarget: 'Solve relative velocity problems',
-    },
-    {
-      topic: 'Motion in two dimensions',
-      microtarget: 'Split projectile motion into horizontal and vertical components',
-    },
-    {
-      topic: 'Vector resolution',
-      microtarget: 'Split projectile motion into horizontal and vertical components',
-    },
-    {
-      topic: 'Projectile motion',
-      microtarget: 'Calculate time of flight, range, and maximum height',
-    },
-    {
-      topic: 'Relative velocity in two dimensions',
-      microtarget: 'Solve relative velocity problems',
-    },
-    {
-      topic: 'Common formula application',
-      microtarget: 'Apply equations of motion only for constant acceleration',
-    },
-    {
-      topic: 'Common graph interpretation mistakes',
-      microtarget: 'Identify common traps in graph questions',
-    },
-    {
-      topic: 'Sign convention mistakes',
-      microtarget: 'Solve free fall using correct sign convention',
-    },
-    {
-      topic: 'Mixed NEET-level questions',
-      microtarget: 'Identify common traps in graph questions',
-    }
-  ]
-};
-
-export const TEMPLATES: Record<string, any> = {
-  'neet_physics_kinematics': NEET_PHYSICS_KINEMATICS
-};
+import type { SeedTemplate } from '../types';
+export const NEET_PHYSICS_TEMPLATES: SeedTemplate[] = [
+  {
+    templateKey: 'neet_physics_kinematics',
+    subject: 'Physics',
+    chapter: 'Kinematics',
+    displayName: 'Kinematics',
+    aliases: [
+      'kinematics',
+      'motion in straight line',
+      'motion in a plane',
+      'projectile motion',
+      'motion graphs',
+      'equations of motion',
+    ],
+    topics: [
+      { orderIndex: 1, topic: 'Physical quantities and units', microtarget: 'Identify physical quantities, SI units, and dimensional meaning in Kinematics questions.', tags: ['units', 'dimensions'] },
+      { orderIndex: 2, topic: 'Scalars and vectors basics', microtarget: 'Distinguish scalar and vector quantities used in motion problems.', tags: ['scalars', 'vectors'] },
+      { orderIndex: 3, topic: 'Rest and motion', microtarget: 'Understand frame of reference and decide whether a body is at rest or in motion.', tags: ['frame of reference'] },
+      { orderIndex: 4, topic: 'Distance and displacement', microtarget: 'Differentiate distance and displacement with direction, path, and magnitude.', tags: ['distance', 'displacement'] },
+      { orderIndex: 5, topic: 'Speed and velocity', microtarget: 'Distinguish speed, average speed, velocity, and average velocity.', tags: ['speed', 'velocity'] },
+      { orderIndex: 6, topic: 'Uniform and non-uniform motion', microtarget: 'Identify uniform and non-uniform motion from descriptions, data, and graphs.', tags: ['uniform motion'] },
+      { orderIndex: 7, topic: 'Acceleration', microtarget: 'Calculate acceleration from velocity change and interpret its sign.', tags: ['acceleration'] },
+      { orderIndex: 8, topic: 'Equations of motion', microtarget: 'Apply equations of motion only when acceleration is constant.', tags: ['suvat', 'constant acceleration'] },
+      { orderIndex: 9, topic: 'Motion graphs', microtarget: 'Interpret displacement-time, velocity-time, and acceleration-time graphs.', tags: ['x-t graph', 'v-t graph', 'slope', 'area'] },
+      { orderIndex: 10, topic: 'Free fall', microtarget: 'Solve free fall problems using correct sign convention and acceleration due to gravity.', tags: ['free fall', 'gravity'] },
+      { orderIndex: 11, topic: 'Motion under gravity', microtarget: 'Solve upward and downward motion under gravity using signs correctly.', tags: ['vertical motion'] },
+      { orderIndex: 12, topic: 'Relative velocity in one dimension', microtarget: 'Solve one-dimensional relative velocity problems for same and opposite directions.', tags: ['relative velocity'] },
+      { orderIndex: 13, topic: 'Motion in two dimensions', microtarget: 'Resolve two-dimensional motion into independent horizontal and vertical components.', tags: ['2d motion'] },
+      { orderIndex: 14, topic: 'Vector resolution', microtarget: 'Resolve vectors into x and y components and recombine components.', tags: ['components'] },
+      { orderIndex: 15, topic: 'Projectile motion', microtarget: 'Calculate time of flight, range, maximum height, and trajectory properties.', tags: ['projectile', 'range', 'time of flight'] },
+      { orderIndex: 16, topic: 'Relative velocity in two dimensions', microtarget: 'Solve two-dimensional relative velocity problems using vector subtraction.', tags: ['rain man', 'river boat'] },
+      { orderIndex: 17, topic: 'Common formula application', microtarget: 'Choose the correct formula based on known variables and constant acceleration condition.', tags: ['formula selection'] },
+      { orderIndex: 18, topic: 'Common graph interpretation mistakes', microtarget: 'Avoid common mistakes involving slope, area, sign, and graph shape.', tags: ['graph mistakes'] },
+      { orderIndex: 19, topic: 'Sign convention mistakes', microtarget: 'Avoid sign errors in acceleration, displacement, velocity, and gravity problems.', tags: ['sign convention'] },
+      { orderIndex: 20, topic: 'Mixed NEET-level questions', microtarget: 'Solve mixed Kinematics questions combining graphs, equations, free fall, and projectile motion.', tags: ['mixed questions'] },
+    ],
+  },
+  {
+    templateKey: 'neet_physics_laws_of_motion',
+    subject: 'Physics',
+    chapter: 'Laws of Motion',
+    displayName: 'Laws of Motion',
+    aliases: ['laws of motion', 'newtons laws', 'newton law', 'friction', 'pulley', 'inclined plane'],
+    topics: [
+      { orderIndex: 1, topic: 'Newton’s first law', microtarget: 'Understand inertia and identify cases of balanced and unbalanced forces.' },
+      { orderIndex: 2, topic: 'Newton’s second law', microtarget: 'Apply F = ma in one-dimensional and two-dimensional force problems.' },
+      { orderIndex: 3, topic: 'Newton’s third law', microtarget: 'Identify action-reaction force pairs correctly.' },
+      { orderIndex: 4, topic: 'Free body diagrams', microtarget: 'Draw correct free body diagrams for blocks, strings, pulleys, and inclined planes.' },
+      { orderIndex: 5, topic: 'Tension', microtarget: 'Solve tension problems involving strings and connected bodies.' },
+      { orderIndex: 6, topic: 'Normal reaction', microtarget: 'Calculate normal force on horizontal and inclined surfaces.' },
+      { orderIndex: 7, topic: 'Friction basics', microtarget: 'Distinguish static, limiting, and kinetic friction.' },
+      { orderIndex: 8, topic: 'Inclined plane', microtarget: 'Resolve forces and solve motion on inclined planes.' },
+      { orderIndex: 9, topic: 'Pulley systems', microtarget: 'Solve basic pulley and connected-body acceleration problems.' },
+      { orderIndex: 10, topic: 'Circular motion force', microtarget: 'Identify centripetal force requirement in circular motion situations.' },
+      { orderIndex: 11, topic: 'Pseudo force', microtarget: 'Use pseudo force in accelerated frames when required.' },
+      { orderIndex: 12, topic: 'Common mistakes in NLM', microtarget: 'Avoid sign errors, missing forces, and wrong action-reaction pairs.' },
+    ],
+  },
+  {
+    templateKey: 'neet_physics_work_energy_power',
+    subject: 'Physics',
+    chapter: 'Work, Energy and Power',
+    displayName: 'Work, Energy and Power',
+    aliases: ['work energy power', 'wep', 'work and energy', 'power', 'potential energy', 'kinetic energy'],
+    topics: [
+      { orderIndex: 1, topic: 'Work done by constant force', microtarget: 'Calculate work using force, displacement, and angle.' },
+      { orderIndex: 2, topic: 'Work done by variable force', microtarget: 'Use force-displacement graph area to calculate work.' },
+      { orderIndex: 3, topic: 'Kinetic energy', microtarget: 'Apply kinetic energy formula and relate it to motion.' },
+      { orderIndex: 4, topic: 'Work-energy theorem', microtarget: 'Use net work to find change in kinetic energy.' },
+      { orderIndex: 5, topic: 'Potential energy', microtarget: 'Understand gravitational and elastic potential energy.' },
+      { orderIndex: 6, topic: 'Conservation of mechanical energy', microtarget: 'Solve energy conservation problems without non-conservative losses.' },
+      { orderIndex: 7, topic: 'Power', microtarget: 'Calculate average and instantaneous power.' },
+      { orderIndex: 8, topic: 'Collision basics', microtarget: 'Use energy ideas carefully in collision-like situations.' },
+      { orderIndex: 9, topic: 'Common WEP mistakes', microtarget: 'Avoid wrong sign of work and misuse of conservation of energy.' },
+    ],
+  },
+  {
+    templateKey: 'neet_physics_electrostatics',
+    subject: 'Physics',
+    chapter: 'Electrostatics',
+    displayName: 'Electrostatics',
+    aliases: ['electrostatics', 'electric charge', 'electric field', 'electric potential', 'capacitance'],
+    topics: [
+      { orderIndex: 1, topic: 'Electric charge and conservation', microtarget: 'Understand charge, quantization, and conservation.' },
+      { orderIndex: 2, topic: 'Coulomb’s law', microtarget: 'Apply Coulomb’s law for point charges.' },
+      { orderIndex: 3, topic: 'Electric field', microtarget: 'Calculate and interpret electric field due to point charges.' },
+      { orderIndex: 4, topic: 'Electric field lines', microtarget: 'Use field-line rules to infer charge and field behavior.' },
+      { orderIndex: 5, topic: 'Electric dipole', microtarget: 'Understand dipole moment and field due to dipole.' },
+      { orderIndex: 6, topic: 'Gauss law', microtarget: 'Apply Gauss law in symmetric charge distributions.' },
+      { orderIndex: 7, topic: 'Electric potential', microtarget: 'Distinguish electric potential from electric field.' },
+      { orderIndex: 8, topic: 'Potential energy', microtarget: 'Calculate electric potential energy of charge systems.' },
+      { orderIndex: 9, topic: 'Capacitance basics', microtarget: 'Understand capacitance and parallel plate capacitors.' },
+      { orderIndex: 10, topic: 'Combination of capacitors', microtarget: 'Solve series and parallel capacitor combinations.' },
+      { orderIndex: 11, topic: 'Common electrostatics mistakes', microtarget: 'Avoid vector-scalar confusion between field and potential.' },
+    ],
+  },
+];

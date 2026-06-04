@@ -155,9 +155,9 @@ export async function getLearnerStateSnapshot(
 
   let seededTopicsQuery = supabase
     .from('seeded_topics')
-    .select('subject, chapter, topic, microtarget, order_index')
+    .select('subject, chapter, topic, microtarget, order_index, status')
     .eq('user_id', userId)
-    .eq('status', 'active')
+    .in('status', ['active', 'not_started', 'in_progress'])
     .order('order_index', { ascending: true })
     .limit(10);
   if (options.goalId) seededTopicsQuery = seededTopicsQuery.eq('goal_id', options.goalId);

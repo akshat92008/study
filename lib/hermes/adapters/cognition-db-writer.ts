@@ -13,6 +13,7 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
 import type { HermesMistakeInput, HermesMistakeResult, WriteMistakeResultOutput, HermesRevisionResult, HermesTraceResult, HermesNextActionResult } from '../hermes-types';
 import { hermesLogger } from '../hermes-logger';
+import { mapTextToSeededTopic } from '@/lib/topic-seeding';
 
 /**
  * Validates that the provided user owns the specified resources.
@@ -149,24 +150,42 @@ export async function writeMistakeResult(
         conceptId = existingConcept.id;
       } else {
         // Try to map to a seeded topic before creating a new concept
+        const mappedSeedTopicName =
+          mapTextToSeededTopic(
+            [
+              wc?.name,
+              wc?.topic,
+              wc?.chapter,
+              hermesResult?.topic,
+              hermesResult?.chapter,
+              hermesResult?.diagnosis,
+              hermesResult?.keyMissedClue,
+            ]
+              .filter(Boolean)
+              .join(' ')
+          ) || topic;
+
         let finalSubject = subject;
         let finalChapter = chapter;
-        let finalTopic = topic;
+        let finalTopic = mappedSeedTopicName || topic;
 
         if (goalId) {
-          const { data: seededTopic } = await supabase
+          const query: any = supabase
             .from('seeded_topics')
             .select('subject, chapter, topic')
             .eq('user_id', userId)
-            .eq('goal_id', goalId)
-            .ilike('topic', `%${topic}%`)
+            .eq('goal_id', goalId);
+          
+          const { data: seededTopic } = await query
+            .or(`topic.ilike.%${mappedSeedTopicName}%,microtarget.ilike.%${mappedSeedTopicName}%`)
+            .order('order_index', { ascending: true })
             .limit(1)
             .maybeSingle();
 
           if (seededTopic) {
-            finalSubject = seededTopic.subject;
-            finalChapter = seededTopic.chapter;
-            finalTopic = seededTopic.topic;
+            finalSubject = seededTopic.subject || subject;
+            finalChapter = seededTopic.chapter || chapter;
+            finalTopic = seededTopic.topic || mappedSeedTopicName || topic;
             
             // Check if concept already exists for this seeded topic
             const { data: mappedConcept } = await supabase
@@ -193,7 +212,7 @@ export async function writeMistakeResult(
               subject: finalSubject,
               chapter: finalChapter,
               topic: finalTopic,
-              name: wc.name || finalTopic,
+              name: finalTopic,
               mastery: 'not_started',
               ...(goalId ? { goal_id: goalId } : {}),
               ...(chatSessionId ? { chat_session_id: chatSessionId } : {}),

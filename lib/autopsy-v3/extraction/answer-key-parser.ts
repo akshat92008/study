@@ -10,8 +10,8 @@ export function parseAnswerKeyText(input: string): ParsedAnswerKeyItem[] {
 
   for (const line of lines) {
     const match =
-      line.match(/^(?:q(?:uestion)?\s*)?(\d{1,4})\s*[:.)-]?\s*([A-Da-d1-4])\b/) ||
-      line.match(/^(\d{1,4})\s+(.{1,80})$/);
+      line.match(/^(?:q(?:uestion)?\s*)?(\d{1,4})\s*[:.)-]?\s*([A-Da-d1-4])\b/i) ||
+      line.match(/^(\d{1,4})\s+(.{1,80})$/i);
     if (!match) continue;
 
     const questionNumber = Number(match[1]);
@@ -20,7 +20,7 @@ export function parseAnswerKeyText(input: string): ParsedAnswerKeyItem[] {
 
     results.set(questionNumber, {
       question_number: questionNumber,
-      correct_answer: answer,
+      correct_answer: answer.toUpperCase(),
       confidence: /^[A-Da-d1-4]$/.test(answer) ? 0.95 : 0.65,
     });
   }
