@@ -6,3 +6,8 @@ const envPath = fs.existsSync('.env.test') ? '.env.test' : '.env.local';
 dotenv.config({ path: envPath });
 
 (globalThis as any).jest = vi;
+
+vi.mock('@/lib/events/redisClient', () => ({
+  getRedisClient: () => null,
+  getRedisClientSafe: () => null
+}));

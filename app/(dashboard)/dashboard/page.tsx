@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useAppStore } from '@/stores/appStore';
 import type { LearningGoal } from '@/stores/appStore';
 import {
-  Brain, RefreshCw, Loader2, Upload, X, Activity, MessageSquare, Music
+  Brain, RefreshCw, Loader2, Upload, X, Activity, MessageSquare
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import CognitionDashboard from '@/components/cognition/CognitionDashboard';
@@ -16,6 +16,7 @@ import Card from '@/components/ui/Card';
 import CurrentTaskCard from '@/components/dashboard/CurrentTaskCard';
 import MicrotargetsCard from '@/components/dashboard/MicrotargetsCard';
 import GoalCreationModal from '@/components/modals/GoalCreationModal';
+import { createClient } from '@/lib/supabase/client';
 
 export default function DashboardPage() {
   const {
@@ -134,50 +135,79 @@ export default function DashboardPage() {
         loadTelemetry(); // refresh telemetry
       } else {
         // Start polling if pending/processing
-        let currentStatus = data.status;
-        let elapsed = 0;
+        const supabase = createClient();
+        
+        // Timeout handling
         const maxWait = 900000; // 15 min max
+        const timeoutId = setTimeout(() => {
+          supabase.removeChannel(channel);
+          setIsUploadingMock(false);
+          setUploadStatus('');
+          addToast('Analysis timed out', 'error');
+        }, maxWait);
 
-        while (currentStatus !== 'completed' && currentStatus !== 'failed' && currentStatus !== 'needs_user_input' && currentStatus !== 'needs_input' && elapsed < maxWait) {
-          await new Promise(r => setTimeout(r, 2000));
-          elapsed += 2000;
+        // Realtime Subscription
+        const channel = supabase.channel(`autopsy_job_${data.jobId}`)
+          .on(
+            'postgres_changes',
+            {
+              event: 'UPDATE',
+              schema: 'public',
+              table: 'autopsy_jobs',
+              filter: `id=eq.${data.jobId}`
+            },
+            async (payload) => {
+              const newStatus = payload.new.status;
+              
+              if (newStatus === 'processing') {
+                setUploadStatus('Processing upload...');
+              } else if (newStatus === 'needs_user_input' || newStatus === 'needs_input') {
+                supabase.removeChannel(channel);
+                clearTimeout(timeoutId);
+                setIsUploadingMock(false);
+                setUploadStatus('');
+                addToast(payload.new.error || 'Mistake Review needs user input.', 'error');
+              } else if (newStatus === 'failed') {
+                supabase.removeChannel(channel);
+                clearTimeout(timeoutId);
+                setIsUploadingMock(false);
+                setUploadStatus('');
+                addToast(payload.new.error || 'Mistake Review failed.', 'error');
+              } else if (newStatus === 'completed') {
+                supabase.removeChannel(channel);
+                clearTimeout(timeoutId);
+                
+                const suffix = activeGoalId ? `?goalId=${activeGoalId}` : '';
+                const resultRes = await fetch(`/api/autopsy${suffix}`);
+                if (resultRes.ok) {
+                  const resultData = await resultRes.json();
+                  setAutopsyResult(resultData.result);
+                } else {
+                  setAutopsyResult(payload.new);
+                }
+                
+                setIsUploadingMock(false);
+                setUploadStatus('');
+                addToast('Mistake Review completed successfully!', 'success');
+                loadTelemetry();
+              }
+            }
+          )
+          .subscribe();
           
-          const pollRes = await fetch(`/api/autopsy/jobs/${data.jobId}`);
-          if (!pollRes.ok) continue;
-          
-          const pollData = await pollRes.json();
-          currentStatus = pollData.status;
-
-          if (currentStatus === 'processing') {
-             setUploadStatus('Processing upload...');
-          } else if (currentStatus === 'needs_user_input' || currentStatus === 'needs_input') {
-             throw new Error(pollData.error || 'Mistake Review needs user input.');
-          } else if (currentStatus === 'failed') {
-             throw new Error(pollData.error || 'Mistake Review failed.');
-          } else if (currentStatus === 'completed') {
-             // We need to fetch the actual result if the job endpoint doesn't return the full autopsy
-             const suffix = activeGoalId ? `?goalId=${activeGoalId}` : '';
-             const resultRes = await fetch(`/api/autopsy${suffix}`);
-             if (resultRes.ok) {
-               const resultData = await resultRes.json();
-               setAutopsyResult(resultData.result);
-             } else {
-               setAutopsyResult(pollData);
-             }
-             addToast('Mistake Review completed successfully!', 'success');
-             loadTelemetry();
-             break;
-          }
-        }
-        if (elapsed >= maxWait) throw new Error('Analysis timed out');
+        // End of the successful try block, we don't clean up UI state here because
+        // we're waiting for the WebSocket event to complete it asynchronously.
+        // We do want to clear the interval though.
+        clearInterval(interval);
+        return; // Early return to avoid triggering the finally block
       }
     } catch (err: any) {
       console.error('Mistake Review upload failed', err);
       addToast('Mistake Review failed. Please try again with a clearer upload.', 'error');
-    } finally {
-      clearInterval(interval);
       setIsUploadingMock(false);
       setUploadStatus('');
+    } finally {
+      clearInterval(interval);
     }
   };
 
@@ -293,17 +323,6 @@ export default function DashboardPage() {
                   Mistake Review
                 </div>
                 <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--danger)', marginTop: 4 }}>{marksLost} mistakes found</div>
-              </button>
-
-              <button
-                onClick={() => setActiveDrawer(activeDrawer === 'beats' ? null : 'beats')}
-                style={{ textAlign: 'left', cursor: 'pointer', flex: '1 1 200px', background: activeDrawer === 'beats' ? 'var(--warning-dim)' : 'var(--bg-primary)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: `1px solid ${activeDrawer === 'beats' ? 'var(--warning)' : 'var(--border-subtle)'}`, transition: 'all 0.2s' }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
-                  <Music size={12} style={{ color: 'var(--warning)' }} />
-                  Focus Beats
-                </div>
-                <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--warning)', marginTop: 4 }}>Lofi Study</div>
               </button>
             </div>
           </Card>

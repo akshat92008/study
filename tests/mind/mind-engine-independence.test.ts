@@ -1,5 +1,5 @@
 import { expect, test, describe, vi } from 'vitest';
-import { buildChatFirstEngineResponse } from '@/app/api/ai/chat/route';
+import { buildChatFirstEngineResponse } from '@/lib/ai/chat/orchestration';
 
 // Mock dependencies
 vi.mock('@/lib/services/command-plan.service', () => ({

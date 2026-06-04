@@ -2144,7 +2144,7 @@ CREATE TABLE IF NOT EXISTS "public"."autopsy_jobs" (
     "completed_at" timestamp with time zone,
     "created_at" timestamp with time zone DEFAULT "now"() NOT NULL,
     "updated_at" timestamp with time zone DEFAULT "now"() NOT NULL,
-    CONSTRAINT "autopsy_jobs_status_check" CHECK (("status" = ANY (ARRAY['pending'::"text", 'processing'::"text", 'completed'::"text", 'needs_user_input'::"text", 'failed'::"text"])))
+    CONSTRAINT "autopsy_jobs_status_check" CHECK (("status" = ANY (ARRAY['queued'::"text", 'processing'::"text", 'completed'::"text", 'needs_user_input'::"text", 'failed'::"text", 'dead_letter'::"text"])))
 );
 
 

@@ -68,25 +68,44 @@ type QueueHealthSummary = {
   timestamp: string;
 };
 
+import { getRedisClientSafe } from './redisClient';
+
 export class EventWorkerService {
   /**
    * Processes a batch of events by acquiring a lease and routing to the respective consumer.
    */
-  static async processBatch(limit: number = 25, leaseTimeoutMinutes: number = 5, maxRuntimeMs: number = 8500, startTimeMs: number = Date.now()) {
+  static async processBatch(limit: number = 25, leaseTimeoutMinutes: number = 5, maxRuntimeMs: number = 45000, startTimeMs: number = Date.now()) {
     const supabase = createAdminClient();
     const workerId = crypto.randomUUID();
     const actualLimit = Math.min(limit, 50);
 
-    // 1. Acquire Leases
-    const { data: leases, error: leaseErr } = await supabase.rpc('acquire_event_leases', {
-      p_worker_id: workerId,
-      p_limit: actualLimit,
-      p_lease_timeout: `${leaseTimeoutMinutes} minutes`,
-    });
+    const redis = getRedisClientSafe();
+    let leases: any[] = [];
 
-    if (leaseErr) {
-      logger.error('Failed to acquire event leases', { error: leaseErr });
-      throw leaseErr;
+    if (redis) {
+      for (let i = 0; i < actualLimit; i++) {
+        const item = await redis.rpop('cognition_events_queue');
+        if (item) {
+          const parsed = typeof item === 'string' ? JSON.parse(item) : item;
+          parsed._source = 'redis';
+          leases.push(parsed);
+        } else {
+          break;
+        }
+      }
+    } else {
+      // 1. Acquire Leases from Postgres
+      const { data: dbLeases, error: leaseErr } = await supabase.rpc('acquire_event_leases', {
+        p_worker_id: workerId,
+        p_limit: actualLimit,
+        p_lease_timeout: `${leaseTimeoutMinutes} minutes`,
+      });
+
+      if (leaseErr) {
+        logger.error('Failed to acquire event leases', { error: leaseErr });
+        throw leaseErr;
+      }
+      leases = (dbLeases || []).map((l: any) => ({ ...l, _source: 'postgres' }));
     }
 
     if (!leases || leases.length === 0) {
@@ -289,16 +308,18 @@ export class EventWorkerService {
         throw new Error(result.reason || `Consumer returned ${result.status}`);
       }
 
-      await supabase
-        .from('consumer_locks')
-        .update({
-          status: 'COMPLETED',
-          locked_at: null,
-          locked_by: null,
-          lease_expires_at: null,
-          updated_at: new Date().toISOString(),
-        })
-        .eq('id', lease.lock_id);
+      if (lease._source === 'postgres') {
+        await supabase
+          .from('consumer_locks')
+          .update({
+            status: 'COMPLETED',
+            locked_at: null,
+            locked_by: null,
+            lease_expires_at: null,
+            updated_at: new Date().toISOString(),
+          })
+          .eq('id', lease.lock_id);
+      }
 
       if (attempt) {
         await supabase
@@ -430,19 +451,21 @@ export class EventWorkerService {
         retryCount: newRetryCount,
       });
 
-      // Update lock to DLQ
-      await supabase
-        .from('consumer_locks')
-        .update({
-          status: 'DLQ',
-          retry_count: newRetryCount,
-          last_error: errorMsg,
-          locked_at: null,
-          locked_by: null,
-          lease_expires_at: null,
-          updated_at: new Date().toISOString(),
-        })
-        .eq('id', lease.lock_id);
+      // Update lock to DLQ if from Postgres
+      if (lease._source === 'postgres') {
+        await supabase
+          .from('consumer_locks')
+          .update({
+            status: 'DLQ',
+            retry_count: newRetryCount,
+            last_error: errorMsg,
+            locked_at: null,
+            locked_by: null,
+            lease_expires_at: null,
+            updated_at: new Date().toISOString(),
+          })
+          .eq('id', lease.lock_id);
+      }
 
       // Check if this makes parent fail completely
       await this.checkParentEventCompletion(lease.event_id);
@@ -460,20 +483,27 @@ export class EventWorkerService {
         nextRetryAt,
       });
 
-      await supabase
-        .from('consumer_locks')
-        .update({
-          status: 'RETRY_SCHEDULED',
-          retry_count: newRetryCount,
-          next_retry_at: nextRetryAt,
-          next_attempt_at: nextRetryAt,
-          last_error: errorMsg,
-          locked_at: null,
-          locked_by: null,
-          lease_expires_at: null, // release lease
-          updated_at: new Date().toISOString(),
-        })
-        .eq('id', lease.lock_id);
+      const redis = getRedisClientSafe();
+      if (lease._source === 'redis' && redis) {
+        const payloadToPush = { ...lease, retry_count: newRetryCount };
+        delete payloadToPush._source;
+        await redis.lpush('cognition_events_queue', JSON.stringify(payloadToPush));
+      } else {
+        await supabase
+          .from('consumer_locks')
+          .update({
+            status: 'RETRY_SCHEDULED',
+            retry_count: newRetryCount,
+            next_retry_at: nextRetryAt,
+            next_attempt_at: nextRetryAt,
+            last_error: errorMsg,
+            locked_at: null,
+            locked_by: null,
+            lease_expires_at: null, // release lease
+            updated_at: new Date().toISOString(),
+          })
+          .eq('id', lease.lock_id);
+      }
 
       await this.checkParentEventCompletion(lease.event_id);
     }

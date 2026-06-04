@@ -36,7 +36,7 @@ describe('Runtime Table Usage Consistency', () => {
 
     for (const table of Array.from(usedTables)) {
       // Ignore some storage bucket references or other non-table things if any
-      if (['study-materials', 'documents', 'artifacts'].includes(table)) continue;
+      if (['study-materials', 'documents', 'artifacts', 'autopsy-evidence'].includes(table)) continue;
       
       // If a table is used, it must be known
       expect(knownTables.has(table), `Table ${table} used in runtime code but not known in test schema list.`).toBe(true);

@@ -215,7 +215,9 @@ describe('COMMAND plan service', () => {
     expect(first.briefing).toContain('Last time: Student confused oxidation potential');
     expect(state.daily_plans).toHaveLength(1);
     expect(state.study_tasks).toHaveLength(first.tasks.length);
-    expect(state.agent_actions).toEqual([]);
+    expect(state.agent_actions).toHaveLength(1);
+    expect(state.agent_actions[0].status).toBe('skipped');
+    expect(state.agent_actions[0].approval_status).toBe('rejected');
 
     const second = await ensureCommandPlanForDate({
       userId: USER_ID,

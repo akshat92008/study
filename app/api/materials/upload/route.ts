@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
-import { getRagConfig, SUPPORTED_MATERIAL_MIME_TYPES } from '@/lib/rag/config';
+import { getRagConfig, SUPPORTED_MATERIAL_MIME_TYPES, SUPPORTED_MATERIAL_EXTENSIONS } from '@/lib/rag/config';
 import { materialContentHash } from '@/lib/rag/ingest';
 import { validateMagicBytesArray } from '@/lib/utils/magicBytes';
 import { EventDispatcher } from '@/lib/events/orchestrator';
@@ -81,6 +81,17 @@ export async function POST(req: NextRequest) {
       return apiErrorResponse('unsupported_file_type', {
         status: 415,
         message: 'Use PDF, TXT, or Markdown study material.',
+        requestId,
+      });
+    }
+
+    const extensionMatch = file.name ? file.name.match(/\.[^/.]+$/) : null;
+    const extension = extensionMatch ? extensionMatch[0].toLowerCase() : '';
+    if (!SUPPORTED_MATERIAL_EXTENSIONS.has(extension)) {
+      logger.warn('Upload rejected: unsupported file extension', { userId: user.id, extension, requestId });
+      return apiErrorResponse('unsupported_file_extension', {
+        status: 415,
+        message: 'Use files with .pdf, .txt, or .md extensions.',
         requestId,
       });
     }

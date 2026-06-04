@@ -7,22 +7,56 @@ import { apiErrorResponse, getRequestId } from '@/lib/api/errors';
  * Vercel Cron sets the Authorization header with INTERNAL_CRON_SECRET.
  */
 export function validateCronRequest(req: NextRequest): NextResponse | null {
-  const secret = process.env.INTERNAL_CRON_SECRET || process.env.CRON_SECRET;
+  const cronSecret = process.env.INTERNAL_CRON_SECRET || process.env.CRON_SECRET;
+  const workerSecret = process.env.INTERNAL_WORKER_SECRET;
   const requestId = getRequestId(req);
+  
   const weakSecrets = new Set([
     'super_secret_cron_token_123',
+    'super_secret_worker_token_123',
     'test-secret',
     'changeme',
     'change-me',
     'secret',
     'cron_secret',
+    'worker_secret',
   ]);
-  
+
+  const providedWorkerSecret = req.headers.get('x-internal-worker-secret');
+  const providedAuthHeader = req.headers.get('authorization');
+
+  // If worker secret header is provided, validate against INTERNAL_WORKER_SECRET
+  if (providedWorkerSecret !== null) {
+    if (
+      !workerSecret ||
+      (process.env.NODE_ENV !== 'test' && (workerSecret.length < 32 || weakSecrets.has(workerSecret)))
+    ) {
+      console.error('[WorkerAuth] INTERNAL_WORKER_SECRET not configured safely!');
+      return apiErrorResponse('worker_not_configured', {
+        status: 500,
+        message: 'INTERNAL_WORKER_SECRET is not configured safely.',
+        requestId,
+      });
+    }
+
+    if (providedWorkerSecret !== workerSecret) {
+      console.warn('[WorkerAuth] Unauthorized worker access attempt');
+      return apiErrorResponse('unauthorized', {
+        status: 401,
+        message: 'Worker authentication is required.',
+        requestId,
+      });
+    }
+
+    return null; // Valid worker request
+  }
+
+  // Fallback to Vercel Cron auth
   if (
-    !secret ||
-    (process.env.NODE_ENV !== 'test' && (secret.length < 32 || weakSecrets.has(secret)))
+    !cronSecret ||
+    (process.env.NODE_ENV !== 'test' && (cronSecret.length < 32 || weakSecrets.has(cronSecret)))
   ) {
-    console.error('[CronAuth] INTERNAL_CRON_SECRET not configured or using default!');
+    console.error('[CronAuth] INTERNAL_CRON_SECRET not configured safely!');
     return apiErrorResponse('cron_not_configured', {
       status: 500,
       message: 'INTERNAL_CRON_SECRET is not configured safely.',
@@ -30,10 +64,8 @@ export function validateCronRequest(req: NextRequest): NextResponse | null {
     });
   }
 
-  const authHeader = req.headers.get('authorization');
-  const expected = `Bearer ${secret}`;
-  
-  if (authHeader !== expected) {
+  const expected = `Bearer ${cronSecret}`;
+  if (providedAuthHeader !== expected) {
     console.warn('[CronAuth] Unauthorized cron access attempt');
     return apiErrorResponse('unauthorized', {
       status: 401,
@@ -42,5 +74,5 @@ export function validateCronRequest(req: NextRequest): NextResponse | null {
     });
   }
   
-  return null; // valid
+  return null; // Valid cron request
 }

@@ -155,19 +155,14 @@ export async function recordAgentAction(
 ) {
   const parsed = AgentActionInputSchema.parse(input);
   const betaPolicy = assertBetaAgentActionAllowed(parsed.actionType);
-  if (!betaPolicy.allowed) {
-    logger.info('Agent action skipped by beta policy', {
+  const isBetaBlocked = !betaPolicy.allowed;
+
+  if (isBetaBlocked) {
+    logger.info('Agent action blocked by beta policy', {
       userId: parsed.userId,
       actionType: parsed.actionType,
       reason: betaPolicy.reason,
     });
-    return {
-      user_id: parsed.userId,
-      action_type: parsed.actionType,
-      status: 'SKIPPED_INTENTIONALLY',
-      reason: betaPolicy.reason,
-      idempotency_key: parsed.idempotencyKey,
-    };
   }
 
   const supabase = getClient(options.client);
@@ -195,10 +190,12 @@ export async function recordAgentAction(
     parsed.confidence ?? null,
     parsed.evidence
   );
-  const approvalStatus = parsed.approvalStatus
-    ?? (riskLevel === 'requires_approval' ? 'pending' : 'not_required');
-  const status = parsed.status
-    ?? (approvalStatus === 'pending' ? 'pending_approval' : 'proposed');
+  
+  const approvalStatus = isBetaBlocked ? 'rejected' : (parsed.approvalStatus
+    ?? (riskLevel === 'requires_approval' ? 'pending' : 'not_required'));
+  const status = isBetaBlocked ? 'skipped' : (parsed.status
+    ?? (approvalStatus === 'pending' ? 'pending_approval' : 'proposed'));
+  const reason = isBetaBlocked ? betaPolicy.reason : (parsed.reason ?? null);
   const createdAt = nowIso();
 
   const { data, error } = await supabase
@@ -215,7 +212,7 @@ export async function recordAgentAction(
       approval_status: approvalStatus,
       confidence: parsed.confidence ?? null,
       evidence: parsed.evidence,
-      reason: parsed.reason ?? null,
+      reason: reason,
       before_state: parsed.beforeState,
       after_state: parsed.afterState,
       idempotency_key: parsed.idempotencyKey,

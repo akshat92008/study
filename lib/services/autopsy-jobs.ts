@@ -35,7 +35,7 @@ export interface CreateAutopsyJobInput {
 
 export interface AutopsyJobRecord {
   id: string;
-  status: 'pending' | 'processing' | 'completed' | 'failed' | 'needs_user_input';
+  status: 'queued' | 'processing' | 'completed' | 'failed' | 'needs_user_input' | 'dead_letter';
   result_autopsy_id: string | null;
   error_message: string | null;
 }
@@ -89,14 +89,14 @@ export async function createAutopsyJob(input: CreateAutopsyJobInput): Promise<Au
     .from('autopsy_jobs')
     .insert({
       user_id: input.userId,
-      status: 'pending',
+      status: 'queued',
       test_name: input.testName,
       exam_type: input.examType,
       idempotency_key: idempotencyKey,
       payload: {
-        // TODO(production): Consider migrating fileData to Supabase Storage
-        // instead of JSONB base64 to reduce row size, despite 20MB cap.
-        fileData: input.fileData,
+        fileData: input.fileData.kind === 'inline'
+          ? { kind: 'storage', mimeType: input.fileData.mimeType, path: `autopsy-evidence/${input.userId}/${idempotencyKey.replace(/:/g, '_')}` }
+          : input.fileData,
         customScoring: input.customScoring ?? null,
         goalId: input.goalId ?? null,
         chatSessionId: input.chatSessionId ?? null,
@@ -110,6 +110,19 @@ export async function createAutopsyJob(input: CreateAutopsyJobInput): Promise<Au
 
   if (error || !created?.id) {
     throw new Error(`Failed to create Mistake Review job: ${error?.message ?? 'missing id'}`);
+  }
+
+  if (input.fileData.kind === 'inline') {
+    const storagePath = `${input.userId}/${idempotencyKey.replace(/:/g, '_')}`;
+    const buffer = Buffer.from(input.fileData.data, 'base64');
+    const { error: uploadError } = await supabase.storage.from('autopsy-evidence').upload(storagePath, buffer, {
+      contentType: input.fileData.mimeType,
+      upsert: true,
+    });
+    if (uploadError) {
+      logger.error('Failed to upload autopsy evidence to storage', uploadError);
+      throw new Error(`Failed to upload Mistake Review evidence: ${uploadError.message}`);
+    }
   }
 
   await EventDispatcher.publish({
@@ -154,9 +167,27 @@ export async function processAutopsyJob(userId: string, jobId: string): Promise<
   }
 
   const payload = job.payload ?? {};
-  const fileData = payload.fileData as AutopsyJobFileData | undefined;
-  if (!fileData || (fileData.kind !== 'text' && fileData.kind !== 'inline')) {
+  let fileData = payload.fileData as any;
+  if (!fileData) {
     throw new Error('Mistake Review job payload is missing fileData');
+  }
+
+  if (fileData.kind === 'storage') {
+    const storagePath = fileData.path.replace('autopsy-evidence/', '');
+    const { data: downloaded, error: downloadError } = await supabase.storage.from('autopsy-evidence').download(storagePath);
+    if (downloadError || !downloaded) {
+      throw new Error(`Failed to download Mistake Review evidence: ${downloadError?.message ?? 'missing file'}`);
+    }
+    const buffer = await downloaded.arrayBuffer();
+    fileData = {
+      kind: 'inline',
+      mimeType: fileData.mimeType,
+      data: Buffer.from(buffer).toString('base64'),
+    };
+  }
+
+  if (fileData.kind !== 'text' && fileData.kind !== 'inline') {
+    throw new Error('Mistake Review job payload has invalid fileData kind');
   }
 
   await supabase
@@ -309,18 +340,21 @@ export async function processAutopsyJob(userId: string, jobId: string): Promise<
       };
     }
 
+    const newRetryCount = (job.retry_count ?? 0) + 1;
+    const isDeadLetter = newRetryCount > 2;
+
     await supabase
       .from('autopsy_jobs')
       .update({
-        status: 'failed',
-        retry_count: (job.retry_count ?? 0) + 1,
+        status: isDeadLetter ? 'dead_letter' : 'failed',
+        retry_count: newRetryCount,
         error_message: message,
         updated_at: new Date().toISOString(),
       })
       .eq('id', job.id)
       .eq('user_id', userId);
 
-    logger.warn('Autopsy job failed', { userId, jobId: job.id, error: message });
+    logger.warn(`Autopsy job ${isDeadLetter ? 'dead_letter' : 'failed'}`, { userId, jobId: job.id, error: message });
     throw err;
   }
 }

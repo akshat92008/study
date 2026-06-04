@@ -1,5 +1,7 @@
-import { getAiCostMode, isPaidAiEnabled, isGoogleAiEnabled, getMaxRecentMessages } from '@/lib/ai/cost-mode';
+import { getAiCostMode, isPaidAiEnabled, isGoogleAiEnabled, getMaxRecentMessages, getMaxOutputTokens } from '@/lib/ai/cost-mode';
 import { getTokenBudget, enforceTokenBudget } from '@/lib/ai/token-budget';
+import { rateLimitResponse } from '@/lib/middleware/rateLimit';
+import { usageGateResponse } from '@/lib/utils/billing';
 import { sanitizeHistoryForPrompt } from '@/lib/ai/chat-history-sanitizer';
 import { willExceedProviderCap } from '@/lib/ai/provider-token-caps';
 import { getPrioritizedProviders } from '@/lib/ai/router';
@@ -26,6 +28,20 @@ describe('Cheap-First AI Architecture', () => {
     it('returns false for paid AI when unset', () => {
       delete process.env.ENABLE_PAID_AI_FALLBACK;
       expect(isPaidAiEnabled()).toBe(false);
+    });
+
+    it('returns false for paid AI in ultra_cheap even if enabled in env', () => {
+      process.env.AI_COST_MODE = 'ultra_cheap';
+      process.env.ENABLE_PAID_AI_FALLBACK = 'true';
+      expect(isPaidAiEnabled()).toBe(false);
+    });
+
+    it('passes output token caps according to mode', () => {
+      process.env.AI_COST_MODE = 'ultra_cheap';
+      expect(getMaxOutputTokens()).toBe(450);
+      
+      process.env.AI_COST_MODE = 'balanced';
+      expect(getMaxOutputTokens()).toBe(800);
     });
   });
 
@@ -150,6 +166,25 @@ describe('Cheap-First AI Architecture', () => {
       
       expect(res.handled).toBe(true);
       expect(res.shouldQueue).toBe(true);
+    });
+  });
+
+  describe('Error Responses', () => {
+    it('returns useful error for rate limit', async () => {
+      const res = rateLimitResponse(0, Date.now());
+      expect(res.status).toBe(429);
+      const json = await res.json();
+      expect(json).toHaveProperty('error', 'rate_limited');
+      expect(json).toHaveProperty('message');
+    });
+
+    it('returns useful error for budget exceeded', async () => {
+      const result = { allowed: false, remaining: 0, required: 10, code: 'limit_reached' as const, reason: 'Out of credits' };
+      const res = usageGateResponse(result);
+      expect(res.status).toBe(429);
+      const json = await res.json();
+      expect(json).toHaveProperty('error', 'limit_reached');
+      expect(json).toHaveProperty('message', 'Out of credits');
     });
   });
 });

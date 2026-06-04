@@ -41,3 +41,10 @@ export const SUPPORTED_MATERIAL_MIME_TYPES = new Set([
   'text/x-markdown',
   'application/markdown',
 ]);
+
+export const SUPPORTED_MATERIAL_EXTENSIONS = new Set([
+  '.pdf',
+  '.txt',
+  '.md',
+  '.markdown',
+]);

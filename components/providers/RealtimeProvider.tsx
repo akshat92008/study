@@ -66,7 +66,6 @@ export function RealtimeProvider({ children }: { children: React.ReactNode }) {
                 debouncedRefresh();
                 break;
               case 'STUDY_SESSION_COMPLETED':
-              case 'MIND_TUTOR_COMPLETED':
                 addToast('Study session recorded. Daily snapshot updated.', 'success');
                 debouncedRefresh();
                 break;

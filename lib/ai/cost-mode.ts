@@ -24,6 +24,7 @@ export function getAiCostMode(): AiCostMode {
  * Default: false. OpenAI must never be called unless this is true.
  */
 export function isPaidAiEnabled(): boolean {
+  if (getAiCostMode() === 'ultra_cheap') return false;
   return process.env.ENABLE_PAID_AI_FALLBACK === 'true';
 }
 
@@ -75,7 +76,7 @@ export function getMaxRecentMessages(): number {
   switch (mode) {
     case 'ultra_cheap': return 3;
     case 'cheap':       return 5;
-    case 'balanced':    return 8;
+    case 'balanced':    return 6;
     case 'quality':     return 12;
   }
 }
@@ -95,6 +96,38 @@ export function getMaxRagChunks(): number {
     case 'balanced':    return 3;
     case 'quality':     return 4;
   }
+}
+
+/**
+ * Max number of output tokens for AI responses.
+ * Reads MAX_OUTPUT_TOKENS env first, falls back to mode defaults.
+ */
+export function getMaxOutputTokens(): number {
+  const envVal = Number(process.env.MAX_OUTPUT_TOKENS);
+  if (Number.isFinite(envVal) && envVal > 0) return Math.floor(envVal);
+
+  const mode = getAiCostMode();
+  switch (mode) {
+    case 'ultra_cheap': return 450;
+    case 'cheap':       return 600;
+    case 'balanced':    return 800;
+    case 'quality':     return 1500;
+  }
+}
+
+/**
+ * Whether expensive vision models are enabled.
+ */
+export function isExpensiveVisionEnabled(): boolean {
+  if (process.env.ENABLE_EXPENSIVE_VISION === 'true') return true;
+  return getAiCostMode() !== 'ultra_cheap';
+}
+
+/**
+ * Whether autopsy should prefer deterministic extraction.
+ */
+export function isAutopsyDeterministicPreferred(): boolean {
+  return getAiCostMode() === 'ultra_cheap';
 }
 
 /**

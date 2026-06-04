@@ -167,7 +167,7 @@ describe('migration contracts', () => {
   it('runtime table and RPC references exist in active migrations', () => {
     const { tables, views, functions } = migrationObjects();
     const { refs, storageBuckets } = runtimeDbRefs();
-    const allowedStorageBuckets = new Set<string>(['study-materials']);
+    const allowedStorageBuckets = new Set<string>(['study-materials', 'autopsy-evidence']);
     const missing: string[] = [];
 
     for (const [name, files] of refs) {

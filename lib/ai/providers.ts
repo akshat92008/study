@@ -458,13 +458,13 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
   ],
 
   json: [
-    'nvidia',
     'groq_compound', // Most reliable structured output.
     'cerebras',
     'cerebras_fallback',
     'sambanova',
     'groq_gemma',
     'cloudflare',
+    'nvidia',
     'google',
     'openai',
     'nvidia_router',
@@ -472,13 +472,13 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
   ],
 
   classification: [
-    'nvidia',
     'groq_compound',
     'cerebras',
     'cerebras_fallback',
     'sambanova',
     'groq_gemma',
     'cloudflare',
+    'nvidia',
     'google',
     'openai',
     'nvidia_router',
@@ -486,9 +486,9 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
   ],
 
   autopsy: [
-    'nvidia',
     'groq_compound',
     'cloudflare',
+    'nvidia',
     'google',
     'openai',
     'nvidia_router',

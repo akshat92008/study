@@ -381,7 +381,7 @@ async function callGoogle(
 
 // ─── MAIN ROUTER FUNCTIONS ────────────────────────────────────────────────────
 
-import { isPaidAiEnabled, isGoogleAiEnabled, isAnthropicAiEnabled } from './cost-mode';
+import { isPaidAiEnabled, isGoogleAiEnabled, isAnthropicAiEnabled, getMaxOutputTokens } from './cost-mode';
 
 export async function getPrioritizedProviders(taskType: TaskType): Promise<ProviderName[]> {
   const base = TASK_PROVIDER_PRIORITY[taskType] || [];
@@ -406,7 +406,7 @@ export async function routeTextGeneration(
   systemPrompt: string,
   userPrompt: string,
   temperature = 0.7,
-  maxTokens = 2048,
+  maxTokens?: number,
   reservationId?: string,
   budgetMode: 'fast' | 'quality' = 'quality',
   skipCommit?: boolean
@@ -447,6 +447,7 @@ if (!config || !config.apiKey) {
 }
 
     const start = Date.now();
+    const finalMaxTokens = maxTokens ?? getMaxOutputTokens();
     try {
       let result: string;
       
@@ -460,12 +461,12 @@ if (!config || !config.apiKey) {
         ) as string;
       } else if (providerName === 'anthropic') {
         result = await callAnthropic(
-          config, config.models[budgetMode], messages, false, maxTokens
+          config, config.models[budgetMode], messages, false, finalMaxTokens
         ) as string;
       } else {
         result = await callOpenAICompatible(
           config, config.models[budgetMode], messages,
-          temperature, maxTokens, false
+          temperature, finalMaxTokens, false
         );
       }
 
@@ -556,6 +557,8 @@ if (!config || !config.apiKey) {
       try {
         let rawText: string;
 
+        const finalMaxTokens = getMaxOutputTokens();
+
         if (providerName === 'cloudflare') {
           rawText = await callCloudflare(
             config, config.models.fast, messages, false
@@ -566,12 +569,12 @@ if (!config || !config.apiKey) {
           ) as string;
         } else if (providerName === 'anthropic') {
           rawText = await callAnthropic(
-            config, config.models.fast, messages, false, 1024
+            config, config.models.fast, messages, false, finalMaxTokens
           ) as string;
         } else {
           rawText = await callOpenAICompatible(
             config, config.models.fast, messages,
-            temperature, 1024, false
+            temperature, finalMaxTokens, false
           );
         }
 
@@ -682,6 +685,7 @@ if (!config || !config.apiKey) {
 }
 
     const start = Date.now();
+    const finalMaxTokens = getMaxOutputTokens();
     try {
       let generator: AsyncGenerator<string>;
 
@@ -695,12 +699,12 @@ if (!config || !config.apiKey) {
         ) as AsyncGenerator<string>;
       } else if (providerName === 'anthropic') {
         generator = await callAnthropic(
-          config, config.models[budgetMode], messages, true, 2048
+          config, config.models[budgetMode], messages, true, finalMaxTokens
         ) as AsyncGenerator<string>;
       } else {
         generator = await callOpenAICompatible(
           config, config.models[budgetMode], messages,
-          temperature, 2048, true
+          temperature, finalMaxTokens, true
         ) as AsyncGenerator<string>;
       }
 
