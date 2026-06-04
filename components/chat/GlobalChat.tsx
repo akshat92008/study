@@ -320,7 +320,7 @@ export const GlobalChat = memo(function GlobalChat() {
                 {status === 'streaming' || status === 'connecting'
                   ? 'Loading mission and learner state...'
                   : activeGoal
-                    ? 'Using mission, sources, review, progress, and mistakes for this goal'
+                    ? `Context loaded: ${activeGoal.counts?.dueCards || 0} due cards, ${activeGoal.counts?.weakConcepts || 0} weak concepts, ${activeGoal.counts?.recentMistakes || 0} recent mistakes.`
                     : 'General learning assistant'}
               </span>
             </div>

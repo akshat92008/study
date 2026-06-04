@@ -11,7 +11,7 @@ import {
   type ClientSessionCard,
   type SessionCardUiStatus,
 } from '@/lib/dashboard/session-card-contract';
-import { CheckCircle2, Circle } from 'lucide-react';
+import { CheckCircle2, Circle, Activity } from 'lucide-react';
 
 export default function CurrentTaskCard({
   goalId,
@@ -341,7 +341,7 @@ export default function CurrentTaskCard({
     const title = cardStatus === 'onboarding' ? 'Complete your profile' : 'No session card yet';
     const description = cardStatus === 'onboarding'
       ? 'Finish onboarding, complete a session, or upload a mock so we can generate one daily mission from your goals, weak areas, and revision state.'
-      : 'No daily mission is available yet. Ask the AI Tutor what to do now or upload a mock to create the first learner signal.';
+      : 'Upload your first material or add your first mistake to generate a smarter daily session.';
     return (
       <Card style={{ 
         background: 'var(--bg-secondary)', 
@@ -607,9 +607,19 @@ export default function CurrentTaskCard({
           {data.focusTopic}
         </h3>
         
-        <p style={{ color: 'var(--accent-purple)', fontWeight: 600, fontSize: 'var(--fs-sm)', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
+        <p style={{ color: 'var(--accent-purple)', fontWeight: 600, fontSize: 'var(--fs-sm)', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
           <Brain size={14} style={{ color: 'var(--accent-purple)' }} />
-          {data.subject} · <Clock size={14} style={{ color: 'var(--text-secondary)' }} /> {data.estimatedMinutes || 45} mins
+          {data.subject} 
+          <span style={{ color: 'var(--text-tertiary)' }}>·</span> 
+          <Clock size={14} style={{ color: 'var(--text-secondary)' }} /> {data.estimatedMinutes || 45} mins
+          {data.overdueCards !== undefined && data.overdueCards > 0 && (
+            <>
+              <span style={{ color: 'var(--text-tertiary)' }}>·</span> 
+              <span style={{ color: 'var(--warning)', display: 'flex', alignItems: 'center', gap: 4 }}>
+                <Activity size={14} /> {data.overdueCards} cards due
+              </span>
+            </>
+          )}
         </p>
         
         {data.rationale && (

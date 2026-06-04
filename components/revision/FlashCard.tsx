@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Card from '@/components/ui/Card';
 import { RotateCcw, Pencil, Trash2, Flag } from 'lucide-react';
+import { RichMessageRenderer } from '@/components/chat/RichMessageRenderer';
 
 interface FlashCardProps {
   front: string;
@@ -80,10 +81,10 @@ export default function FlashCard({ front, back, cardId, cardIndex, totalCards, 
       ) : (
         /* The Card */
         <Card padding="lg" onClick={() => !flipped && setFlipped(true)} style={{ minHeight: 320, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', cursor: flipped ? 'default' : 'pointer', border: flipped ? '1px solid var(--accent-purple)' : '1px solid var(--border-default)' }}>
-          <div style={{ fontSize: 'var(--fs-lg)', textAlign: 'center' }}>
-            {flipped ? back : front}
+          <div style={{ fontSize: 'var(--fs-md)', textAlign: 'left', width: '100%', maxWidth: '100%' }}>
+            <RichMessageRenderer content={flipped ? back : front} isStreaming={false} />
           </div>
-          {!flipped && <div style={{ marginTop: 'var(--sp-6)', color: 'var(--text-tertiary)', fontSize: 'var(--fs-xs)' }}><RotateCcw size={12} style={{display:'inline'}}/> Tap to reveal</div>}
+          {!flipped && <div style={{ marginTop: 'var(--sp-6)', color: 'var(--text-tertiary)', fontSize: 'var(--fs-xs)', textAlign: 'center' }}><RotateCcw size={12} style={{display:'inline'}}/> Tap to reveal</div>}
         </Card>
       )}
 

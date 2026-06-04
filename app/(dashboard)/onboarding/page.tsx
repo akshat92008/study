@@ -11,6 +11,7 @@ import {
   completeOnboardingForUser,
   sanitizeSubjectList,
 } from '@/lib/services/onboarding.service';
+import SubmitButton from '@/components/onboarding/SubmitButton';
 
 async function completeOnboarding(formData: FormData) {
   'use server';
@@ -238,22 +239,7 @@ export default async function OnboardingPage() {
 
         <input type="hidden" name="timezone" defaultValue={profile?.timezone || 'UTC'} />
 
-        <button
-          type="submit"
-          style={{
-            marginTop: 'var(--sp-2)',
-            padding: '14px 16px',
-            borderRadius: 8,
-            border: 'none',
-            background: 'var(--accent-blue)',
-            color: 'white',
-            fontWeight: 700,
-            cursor: 'pointer',
-            fontSize: 'var(--fs-base)',
-          }}
-        >
-          Build My Learning OS →
-        </button>
+        <SubmitButton />
       </form>
     </div>
   );

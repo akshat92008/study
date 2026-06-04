@@ -159,7 +159,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
               <Button variant="ghost" type="button" onClick={() => setShowForm(false)}>Cancel</Button>
               <Button type="submit" disabled={loading} style={{ background: 'var(--accent-cyan)', color: '#000' }}>
                 {loading ? <Loader2 size={16} className="spin" /> : <Sparkles size={16} />}
-                {loading ? 'Processing...' : 'Process Source'}
+                {loading ? 'Uploading...' : 'Process Source'}
               </Button>
             </div>
           </form>
@@ -220,7 +220,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
                     )}
                   </Button>
                   <Badge color={mat.status === 'ready' ? 'cyan' : mat.status === 'failed' ? 'red' : 'yellow'}>
-                    {mat.status === 'ready' ? 'Ready' : mat.status === 'failed' ? 'Failed' : 'Processing'}
+                    {mat.status === 'ready' ? 'Ready' : mat.status === 'failed' ? 'Failed' : mat.status === 'uploaded' ? 'Uploaded' : mat.status === 'queued' ? 'Queued' : 'Processing'}
                   </Badge>
                 </div>
               </div>
