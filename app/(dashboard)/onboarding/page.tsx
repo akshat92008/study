@@ -16,14 +16,15 @@ async function completeOnboarding(formData: FormData) {
   if (!user) redirect('/login');
 
   const fullName = String(formData.get('fullName') || '').trim();
-  const examType = String(formData.get('examType') || 'General Study').trim();
+  // Universal: "goalType" replaces hardcoded "examType"
+  const goalType = String(formData.get('goalType') || 'General Study').trim();
   const targetDate = String(formData.get('targetDate') || '').trim();
   const targetScore = Number(formData.get('targetScore') || 0);
   const dailyHours = Number(formData.get('dailyHours') || 4);
   const currentLevel = String(formData.get('currentLevel') || 'intermediate').trim();
   const subjects = String(formData.get('subjects') || '')
     .split(',')
-    .map((subject) => subject.trim())
+    .map((s) => s.trim())
     .filter(Boolean);
 
   const { error } = await supabase
@@ -31,8 +32,8 @@ async function completeOnboarding(formData: FormData) {
     .upsert({
       id: user.id,
       email: user.email,
-      full_name: fullName || user.email || 'Student',
-      exam_type: examType || 'General Study',
+      full_name: fullName || user.email || 'Learner',
+      exam_type: goalType || 'General Study',   // kept for backward compat
       target_date: targetDate || null,
       target_score: Number.isFinite(targetScore) && targetScore > 0 ? targetScore : null,
       daily_hours_available: Number.isFinite(dailyHours) && dailyHours > 0 ? dailyHours : 4,
@@ -47,13 +48,13 @@ async function completeOnboarding(formData: FormData) {
     throw new Error(`Failed to complete onboarding: ${error.message}`);
   }
 
-  const seedResult = await seedOnboardingKnowledgeMap(user.id, examType, subjects)
+  const seedResult = await seedOnboardingKnowledgeMap(user.id, goalType, subjects)
     .catch((err) => {
       logger.warn('Onboarding ATLAS seed failed', { userId: user.id, err });
       return { skeletonCreated: 0, expansionQueued: 0 };
     });
 
-  await generateDay1Plan(user.id, examType).catch((err) => {
+  await generateDay1Plan(user.id, goalType).catch((err) => {
     logger.warn('Onboarding day-1 plan generation failed', { userId: user.id, err });
   });
 
@@ -83,36 +84,75 @@ export default async function OnboardingPage() {
     .eq('id', user.id)
     .maybeSingle();
 
+  const existingGoalType = profile?.exam_type || '';
+  const existingSubjects = Array.isArray(profile?.subjects) && profile.subjects.length
+    ? profile.subjects.join(', ')
+    : '';
+
   return (
-    <div style={{ padding: 'var(--sp-8)', maxWidth: 720, margin: '0 auto', width: '100%' }}>
-      <h1 style={{ fontSize: 'var(--fs-2xl)', marginBottom: 'var(--sp-2)' }}>Set Up Your MVP Loop</h1>
+    <div style={{ padding: 'var(--sp-8)', maxWidth: 640, margin: '0 auto', width: '100%' }}>
+      <h1 style={{ fontSize: 'var(--fs-2xl)', marginBottom: 'var(--sp-2)' }}>Set Up Your Learning OS</h1>
       <p style={{ color: 'var(--text-secondary)', marginBottom: 'var(--sp-6)' }}>
-        Add the minimum learner context needed for Today, AI Tutor, Progress, Review, and Mistake Review.
+        Tell Cognition OS what you are trying to learn. It will build your personalised mission, tutor, and study plan.
       </p>
 
       <form action={completeOnboarding} style={{ display: 'grid', gap: 'var(--sp-4)' }}>
+
+        {/* Name */}
         <label style={{ display: 'grid', gap: 'var(--sp-2)' }}>
-          <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>Name</span>
+          <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>Your Name</span>
           <input
             name="fullName"
             defaultValue={profile?.full_name || ''}
             required
+            placeholder="e.g. Priya Sharma"
             style={{ padding: '12px', borderRadius: 8, border: '1px solid var(--border-default)', background: 'var(--bg-secondary)', color: 'var(--text-primary)' }}
           />
         </label>
 
+        {/* Goal Type / Preset — universal dropdown */}
         <label style={{ display: 'grid', gap: 'var(--sp-2)' }}>
-          <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>Exam Or Goal</span>
-          <input
-            name="examType"
-            defaultValue={profile?.exam_type || 'NEET'}
+          <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>What are you preparing for or learning?</span>
+          <select
+            name="goalType"
+            defaultValue={existingGoalType || ''}
             required
             style={{ padding: '12px', borderRadius: 8, border: '1px solid var(--border-default)', background: 'var(--bg-secondary)', color: 'var(--text-primary)' }}
-          />
+          >
+            <option value="" disabled>Select your exam or goal...</option>
+            <optgroup label="Competitive Exams">
+              <option value="NEET">NEET UG (Medical Entrance)</option>
+              <option value="JEE Main">JEE Main (Engineering)</option>
+              <option value="JEE Advanced">JEE Advanced</option>
+              <option value="UPSC">UPSC Civil Services</option>
+              <option value="SAT">SAT</option>
+              <option value="MCAT">MCAT</option>
+              <option value="USMLE">USMLE</option>
+              <option value="Bar Exam">Bar Exam</option>
+              <option value="GMAT">GMAT</option>
+              <option value="GRE">GRE</option>
+              <option value="Other Competitive Exam">Other Competitive Exam</option>
+            </optgroup>
+            <optgroup label="Academic">
+              <option value="School Subject">School Subject / Board Exams</option>
+              <option value="College Course">College / University Course</option>
+            </optgroup>
+            <optgroup label="Skills">
+              <option value="Coding">Coding / Programming</option>
+              <option value="Data Science">Data Science / ML</option>
+              <option value="Language Learning">Language Learning</option>
+              <option value="Finance">Finance / CFA / CPA</option>
+              <option value="Professional Certification">Professional Certification</option>
+            </optgroup>
+            <optgroup label="Custom">
+              <option value="General Study">Custom / General Study</option>
+            </optgroup>
+          </select>
         </label>
 
+        {/* Target Date */}
         <label style={{ display: 'grid', gap: 'var(--sp-2)' }}>
-          <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>Target Date</span>
+          <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>Target Date (exam, deadline, or goal date)</span>
           <input
             name="targetDate"
             type="date"
@@ -121,19 +161,24 @@ export default async function OnboardingPage() {
           />
         </label>
 
+        {/* Target Score — universal, optional */}
         <label style={{ display: 'grid', gap: 'var(--sp-2)' }}>
-          <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>Target Score</span>
+          <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>
+            Target Score / Outcome <span style={{ opacity: 0.6 }}>(optional)</span>
+          </span>
           <input
             name="targetScore"
             type="number"
             min="0"
+            placeholder="e.g. 680 for NEET, 90 for GRE, or leave blank"
             defaultValue={profile?.target_score || ''}
             style={{ padding: '12px', borderRadius: 8, border: '1px solid var(--border-default)', background: 'var(--bg-secondary)', color: 'var(--text-primary)' }}
           />
         </label>
 
+        {/* Daily Hours */}
         <label style={{ display: 'grid', gap: 'var(--sp-2)' }}>
-          <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>Daily Available Hours</span>
+          <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>Daily Study Hours Available</span>
           <input
             name="dailyHours"
             type="number"
@@ -146,16 +191,20 @@ export default async function OnboardingPage() {
           />
         </label>
 
+        {/* Subjects / Topics — not NEET-hardcoded */}
         <label style={{ display: 'grid', gap: 'var(--sp-2)' }}>
-          <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>Subjects</span>
+          <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>
+            Subjects / Topics <span style={{ opacity: 0.6 }}>(comma-separated, optional)</span>
+          </span>
           <input
             name="subjects"
-            defaultValue={Array.isArray(profile?.subjects) && profile.subjects.length ? profile.subjects.join(', ') : 'Physics, Chemistry, Biology'}
-            required
+            defaultValue={existingSubjects}
+            placeholder="e.g. Physics, Chemistry, Biology  or  Calculus, Algorithms  or  leave blank"
             style={{ padding: '12px', borderRadius: 8, border: '1px solid var(--border-default)', background: 'var(--bg-secondary)', color: 'var(--text-primary)' }}
           />
         </label>
 
+        {/* Current Level */}
         <label style={{ display: 'grid', gap: 'var(--sp-2)' }}>
           <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>Current Level</span>
           <select
@@ -163,17 +212,27 @@ export default async function OnboardingPage() {
             defaultValue={profile?.current_level || 'intermediate'}
             style={{ padding: '12px', borderRadius: 8, border: '1px solid var(--border-default)', background: 'var(--bg-secondary)', color: 'var(--text-primary)' }}
           >
-            <option value="beginner">Beginner</option>
-            <option value="intermediate">Intermediate</option>
-            <option value="advanced">Advanced</option>
+            <option value="beginner">Beginner — starting fresh</option>
+            <option value="intermediate">Intermediate — some foundation</option>
+            <option value="advanced">Advanced — strong base, refining</option>
           </select>
         </label>
 
         <button
           type="submit"
-          style={{ marginTop: 'var(--sp-2)', padding: '12px 16px', borderRadius: 8, border: 'none', background: 'var(--accent-blue)', color: 'white', fontWeight: 700, cursor: 'pointer' }}
+          style={{
+            marginTop: 'var(--sp-2)',
+            padding: '14px 16px',
+            borderRadius: 8,
+            border: 'none',
+            background: 'var(--accent-blue)',
+            color: 'white',
+            fontWeight: 700,
+            cursor: 'pointer',
+            fontSize: 'var(--fs-base)',
+          }}
         >
-          Continue To AI Tutor
+          Build My Learning OS →
         </button>
       </form>
     </div>

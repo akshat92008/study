@@ -64,12 +64,13 @@ Rules:
 - Mark prerequisite concepts that must be mastered BEFORE this one can be understood
 - Importance: "core" = directly tested, "supporting" = needed to understand core, "advanced" = high difficulty, often differentiates toppers
 
-Examples of good micro-concepts for "Electrochemistry" (NEET Chemistry):
-- "Nernst equation and EMF calculation"
-- "Kohlrausch law and molar conductivity"
-- "Faraday's laws of electrolysis with numerical application"
+Examples of good micro-concepts:
+- For "Electrochemistry" (Chemistry): "Nernst equation and EMF calculation", "Kohlrausch law", "Faraday's laws with numerical application"
+- For "Binary Trees" (Algorithms): "BST insert and search", "Tree traversals (inorder, preorder, postorder)", "Balancing and rotation logic"
+- For "Past Tense" (Spanish Language): "Regular -ar verb conjugation in preterite", "Irregular stems (tener, saber, ir)", "Ser vs Estar in past tense"
 
 Return only valid JSON matching the schema.`;
+
 
   try {
     const result = await budgetedGenerateJSON<z.infer<typeof MicroConceptSchema>>({

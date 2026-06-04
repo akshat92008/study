@@ -125,7 +125,8 @@ export async function budgetedGenerateJSON<T = unknown>(
         0.3,
         args.schema,
         reservationId,
-        true // skipCommit since runWithBudget handles it
+        true, // skipCommit since runWithBudget handles it
+        args.userId
       )
 
       return {
@@ -186,7 +187,8 @@ export async function budgetedGenerateText(
         args.maxOutputTokens ?? 2048,
         reservationId,
         args.model as any,
-        true // skipCommit
+        true, // skipCommit
+        args.userId
       )
 
       return {
@@ -258,7 +260,8 @@ export async function budgetedStreamGeneration(
         0.7,
         reservation.reservationId,
         args.model === 'flash' ? 'fast' : 'quality',
-        true // skipCommit
+        true, // skipCommit
+        args.userId
       )
 
       let totalChars = 0

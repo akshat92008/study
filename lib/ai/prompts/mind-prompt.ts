@@ -472,9 +472,10 @@ TOTAL: [X] hours over [N] days
 Priority logic: [why this order]
 </artifact>
 
-MOCK TEST (NEET Full Exam — structured with status labels):
-Use ONLY when user asks for a "NEET mock test", "full mock", or "questions with correct/incorrect status".
+MOCK TEST (Exam-Style MCQ Format — structured with status labels):
+Use when user asks for a "mock test", "full exam practice", "questions with correct/incorrect status", or a "NEET/JEE/SAT/MCAT/exam practice test".
 Return strict JSON inside the artifact. No markdown wrapper. No prose. No code fences.
+The 'exam' field and 'subjects' array must match the student's actual learning goal (e.g. "NEET" → subjects: Physics/Chemistry/Biology; "GRE" → subjects: Verbal/Quantitative/Analytical; "MCAT" → subjects: Biology/Chemistry/Physics/Psychology). Example structure shown for NEET:
 
 <artifact type="mock-test" topic="[TOPIC]" exam="NEET">
 {

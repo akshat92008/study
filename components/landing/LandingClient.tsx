@@ -126,14 +126,14 @@ export default function LandingClient() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           style={{
-            fontSize: 'clamp(2.5rem, 7vw, 4.5rem)',
+            fontSize: 'clamp(2.5rem, 6vw, 4rem)',
             fontWeight: 900,
             lineHeight: 1.05,
             letterSpacing: 0,
             marginBottom: 'var(--sp-6)',
           }}
         >
-          Cognition OS
+          Your AI Co-Pilot for <br/> <span style={{ background: 'linear-gradient(135deg, #00f0ff, #a855f7)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>High-Stakes Exams</span>
         </motion.h1>
 
         <motion.p
@@ -144,11 +144,12 @@ export default function LandingClient() {
             fontSize: 'clamp(1.1rem, 2vw, 1.4rem)',
             color: '#a1a1aa',
             fontWeight: 400,
-            maxWidth: 600,
+            maxWidth: 700,
             margin: '0 auto var(--sp-8)',
+            lineHeight: 1.5,
           }}
         >
-          An AI mentor that uses your latest learning state.
+          Stop juggling PDFs, generic AI prompts, and disjointed trackers. Cognition OS analyzes your mock tests, finds your weak concepts, and builds a targeted daily mission to reach your goal score.
         </motion.p>
 
         {/* Global Market Data Grid */}
@@ -201,13 +202,13 @@ export default function LandingClient() {
             01 — The Problem
           </div>
           <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, marginBottom: 'var(--sp-4)', letterSpacing: 0 }}>
-            Every student is their own systems integrator.
+            Preparing for a major exam shouldn't require you to be a systems integrator.
           </h2>
           <p style={{ color: '#a1a1aa', fontSize: 'var(--fs-md)', lineHeight: 1.6, maxWidth: 800, marginBottom: 24 }}>
-            A student today wakes up and opens seven different apps. YouTube for lectures. ChatGPT for doubts. Anki for flashcards. Notion for notes. PDFs for tests. Excel to track mistakes. A timer app to manage sessions.
+            If you're studying for NEET, JEE, USMLE, or UPSC, you already know the struggle. You wake up and open seven different apps: YouTube for lectures, generic AI for doubts, Anki for flashcards, PDFs for mock tests, and Excel to track mistakes.
           </p>
           <p style={{ color: '#e4e4e7', fontWeight: 600, fontSize: 'var(--fs-md)', lineHeight: 1.6, maxWidth: 800, marginBottom: 24 }}>
-            None of these tools know each other. None of them know her. None of them know she spent three hours on thermodynamics yesterday and still doesn't understand Carnot cycles. None of them know she's been scoring 12% lower on Physics for three weeks.
+            None of these tools talk to each other. None of them know that you lost 15 marks in thermodynamics yesterday and still don't understand Carnot cycles.
           </p>
 
           <div style={{
@@ -455,10 +456,10 @@ export default function LandingClient() {
           marginTop: 60
         }}>
           <h2 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 900, marginBottom: 12 }}>
-            Start your daily streak today.
+            Get serious about your prep today.
           </h2>
           <p style={{ color: '#a1a1aa', maxWidth: 500, margin: '0 auto 32px', fontSize: 'var(--fs-md)' }}>
-            One session a day is all it takes to build a durable model of understanding.
+            Stop guessing what to study next. Let your mistakes dictate your daily mission and reach your target score faster.
           </p>
           <NextLink href="/signup" style={{
             padding: '16px 36px',

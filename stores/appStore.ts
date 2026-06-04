@@ -17,6 +17,7 @@ export interface LearningGoal {
   subject?: string | null;
   domain?: string | null;
   exam_type?: string | null;
+  preset_id?: string | null;
   target_level?: string | null;
   description?: string | null;
   status?: string | null;
@@ -46,6 +47,7 @@ interface CreateLearningGoalDetails {
   subject?: string;
   domain?: string;
   examType?: string;
+  presetId?: string;
   targetLevel?: string;
   description?: string;
   deadline?: string;
@@ -118,6 +120,7 @@ export interface AppState extends ChatSlice {
   loadDashboardForActiveGoal: () => void;
   createLearningGoal: (title: string, details?: CreateLearningGoalDetails) => Promise<LearningGoal | null>;
   createGoalWithSession: (title: string, details?: CreateLearningGoalDetails) => Promise<LearningGoal | null>;
+  updateLearningGoal: (goalId: string, updates: Partial<CreateLearningGoalDetails> & { title?: string }) => Promise<LearningGoal | null>;
 
   // Global drawer / UI states
   activeDrawer: 'cognition' | 'revision' | 'autopsy' | 'beats' | null;
@@ -323,6 +326,7 @@ export const useAppStore = create<AppState>()(
               subject: details?.subject,
               domain: details?.domain,
               examType: details?.examType,
+              presetId: details?.presetId,
               targetLevel: details?.targetLevel,
               description: details?.description,
               deadline: details?.deadline,
@@ -356,6 +360,40 @@ export const useAppStore = create<AppState>()(
         } catch (err: any) {
           console.error('Failed to create learning goal:', err);
           get().addToast(`Failed to create goal: ${err.message}`, 'error');
+        }
+        return null;
+      },
+
+      updateLearningGoal: async (goalId, updates) => {
+        try {
+          const res = await fetch(`/api/goals/${goalId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updates),
+          });
+          if (!res.ok) {
+            const errText = await res.text();
+            console.error('Failed to update learning goal (API):', res.status, errText);
+            get().addToast(`Failed to update goal: ${res.status} ${errText}`, 'error');
+            return null;
+          }
+          const apiRes = await res.json();
+          const goalData = apiRes.goal as LearningGoal | null;
+
+          if (goalData) {
+            set((state) => ({
+              learningGoals: state.learningGoals.map(g => g.id === goalData.id ? { ...g, ...goalData } : g),
+            }));
+            if (get().activeGoalId === goalData.id) {
+              await get().loadGoalContext(goalData.id);
+              get().loadDashboardForActiveGoal();
+            }
+            get().addToast('Goal updated successfully', 'success');
+            return goalData;
+          }
+        } catch (err: any) {
+          console.error('Failed to update learning goal:', err);
+          get().addToast(`Failed to update goal: ${err.message}`, 'error');
         }
         return null;
       },

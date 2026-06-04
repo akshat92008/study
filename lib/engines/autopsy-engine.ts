@@ -110,14 +110,14 @@ async function fastExtractionPass(
   }
 
   const extractionPrompt = `
-Extract all questions from this mock test submission. It may be a PDF, low-quality scan, OMR sheet, or handwritten.
+Extract all questions from this mock test submission. It may be a PDF, low-quality scan, OMR sheet, handwritten paper, code snippet, essay, or structured rubric.
 
 RULES:
 - Identify the question number.
 - Map to a subject: [${subjectList}] and its chapter.
-- Determine status: "Correct", "Incorrect", or "Unattempted" only from explicit evidence: answer key, student answer, OMR marks, score/result table, or visible correct/wrong markings.
-- If the upload only contains a question paper without answer key, student answers, OMR/result markings, or score data, return {"questions":[],"overallPaperQuality":"needs_user_input: answer key, student answers, OMR sheet, or result sheet required"}.
-- Do not infer or invent mistakes from question text alone.
+- Determine status: "Correct", "Incorrect", or "Unattempted" only from explicit evidence: answer key, student answer, OMR marks, score/result table, rubric feedback, grading notes, or visible correct/wrong markings.
+- If the upload only contains a question paper without answer key, student answers, OMR/result markings, rubric feedback, or score data, return {"questions":[],"overallPaperQuality":"needs_user_input: answer key, student answers, feedback, or result sheet required"}.
+- Do not infer or invent mistakes from question text alone. For non-MCQ questions (short answer, essays, code), treat the student's submission and grading feedback as the 'studentAnswer' and 'correctAnswer'.
 - Provide an "ocrConfidence" score (0-100).
 - Leave "mistakeCategory" and "reasoning" null for now.
 
@@ -167,7 +167,7 @@ function textNeedsAnswerEvidence(text: string): boolean {
   const sample = text.slice(0, 8000).toLowerCase();
   const evidencePatterns = [
     /\b(correct|incorrect|wrong|right|unattempted|attempted)\b/,
-    /\b(answer key|student answer|your answer|marked answer|omr|response sheet|result|score|marks)\b/,
+    /\b(answer key|student answer|your answer|marked answer|omr|response sheet|result|score|marks|feedback|rubric|points|grade|passed|failed|error|exception)\b/,
     /\b(ans|key)\s*[:=]/,
     /\b[abcd]\s*(?:->|=>|=)\s*[abcd]\b/,
   ];

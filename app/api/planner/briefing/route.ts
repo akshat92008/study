@@ -84,7 +84,8 @@ export async function GET() {
       mood: { state: mood, confidence, config: moodConfig },
       daysRemaining,
       streak: profile?.streak_days || 0,
-      examType: profile?.exam_type || 'General Study',
+      goalType: profile?.exam_type || 'General Study',  // universal label (DB field still 'exam_type')
+      examType: profile?.exam_type || 'General Study',  // legacy compat alias
       tasks: existingTasks,
       progress: { completed: completedCount, total: totalCount },
       revision: {

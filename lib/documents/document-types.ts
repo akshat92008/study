@@ -3,12 +3,25 @@
 // All AI-generated structured output is normalized into these types.
 
 export type DocumentKind =
-  | 'mock_test'
+  | 'mock_test'          // Full exam simulation (any domain)
+  | 'quiz'              // Short knowledge check
+  | 'assignment'        // Homework / coursework submission
   | 'mcq_flashcards'
   | 'formula_sheet'
-  | 'learning_notes';
+  | 'learning_notes'
+  | 'coding_challenge'  // Programming exercises
+  | 'essay'             // Written response
+  | 'custom';
 
-export type Subject = 'Physics' | 'Chemistry' | 'Biology' | 'General';
+/**
+ * Subject is deliberately an open string, not a closed union,
+ * so Cognition OS can handle any domain — not just NEET subjects.
+ * Backward-compat alias `NEETSubject` is preserved for legacy code.
+ */
+export type Subject = string;
+
+/** @deprecated Use Subject (string) instead */
+export type NEETSubject = 'Physics' | 'Chemistry' | 'Biology' | 'General';
 
 export type QuestionStatus = 'correct' | 'incorrect' | 'unattempted';
 

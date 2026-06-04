@@ -155,9 +155,9 @@ const CUSTOM_CONFIG: ExamConfig = {
   correctMarks: 2,
   negativeMarks: 0,
   durationMinutes: 60,
-  subjects: ['My Subject'],
+  subjects: ['Core Material'],
   chapters: {
-    'My Subject': ['Chapter 1', 'Chapter 2', 'Chapter 3'],
+    'Core Material': ['Foundations', 'Core Concepts', 'Advanced Applications'],
   },
 };
 

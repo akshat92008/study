@@ -94,19 +94,12 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
           >
             <Zap size={18} color="white" />
           </div>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              opacity: isSidebarCollapsed ? 0 : 1,
-              transition: 'opacity var(--duration-fast) var(--ease-out)',
-            }}
-          >
+          <div style={{ display: 'flex', flexDirection: 'column', opacity: isSidebarCollapsed ? 0 : 1, transition: 'opacity var(--duration-fast) var(--ease-out)' }}>
             <div style={{ fontSize: 'var(--fs-base)', fontWeight: 'var(--fw-bold)', letterSpacing: 'var(--ls-tight)' }}>
               Cognition <span style={{ color: 'var(--accent-blue)' }}>OS</span>
             </div>
             <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: 'var(--ls-ultra)' }}>
-              {examType} Mission Loop
+              {learningGoals.find(g => g.id === activeGoalId)?.title || examType} Mission Loop
             </div>
           </div>
         </div>

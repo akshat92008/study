@@ -217,10 +217,10 @@ Explanation: ${explanation || 'None'}
 
 Return ONLY a JSON object:
 {
-  "category": "conceptual_gap" | "silly_error" | "time_pressure" | "misread" | "formula_recall" | "application_error" | "speed" | "exam_strategy" | "unknown",
-  "subject": "Physics" | "Chemistry" | "Biology" | "Maths" | null,
-  "chapter": "Name of the chapter" | null,
-  "topic": "Specific topic" | null,
+  "category": "conceptual_gap" | "careless_error" | "time_pressure" | "misread_prompt" | "memory_gap" | "application_error" | "process_error" | "unknown",
+  "subject": "<the subject/domain this belongs to, or null if unclear>",
+  "chapter": "<chapter, module, or topic name, or null>",
+  "topic": "<specific subtopic, or null>",
   "diagnosis": "Brief 1 sentence explanation of why they got it wrong"
 }`;
 

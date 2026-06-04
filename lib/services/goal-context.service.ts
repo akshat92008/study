@@ -5,6 +5,7 @@ export type GoalContextGoal = {
   subject?: string | null;
   domain?: string | null;
   exam_type?: string | null;
+  preset_id?: string | null;
   target_level?: string | null;
   description?: string | null;
   target_date?: string | null;
@@ -30,7 +31,7 @@ export type GoalContextSession = {
 };
 
 export const GOAL_SELECT =
-  'id, user_id, title, subject, domain, exam_type, target_level, description, target_date, progress, status, primary_chat_session_id, last_active_at, metadata, created_at, updated_at';
+  'id, user_id, title, subject, domain, exam_type, preset_id, target_level, description, target_date, progress, status, primary_chat_session_id, last_active_at, metadata, created_at, updated_at';
 
 export const SESSION_SELECT =
   'id, user_id, title, goal_id, is_primary_for_goal, session_type, is_global, archived_at, created_at, updated_at';

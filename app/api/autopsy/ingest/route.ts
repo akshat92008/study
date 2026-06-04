@@ -43,7 +43,8 @@ export const POST = withRateLimit('autopsy', async (request, userId) => {
     const supabase = await createClient();
     const contentType = request.headers.get('content-type') || '';
 
-    let testName = 'Mock Test Autopsy';
+    let testName = 'Assessment Autopsy';  // Universal: not "Mock Test" by default
+
     let customScoring: { correctMarks: number; negativeMarks: number } | undefined;
     let fileData: { kind: 'text'; text: string } | { kind: 'inline'; mimeType: string; data: string } | null = null;
     let requestedExamType: string | undefined;

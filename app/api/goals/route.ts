@@ -93,6 +93,7 @@ export async function POST(req: NextRequest) {
         subject: optionalString(body.subject),
         domain: optionalString(body.domain),
         exam_type: optionalString(body.examType),
+        preset_id: optionalString(body.presetId),
         target_level: optionalString(body.targetLevel),
         description: optionalString(body.description),
         target_date: optionalString(body.deadline),

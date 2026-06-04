@@ -22,6 +22,7 @@ import { createAdminClient } from '@/lib/supabase/admin';
 import { logger } from '@/lib/utils/logger';
 import { NextResponse } from 'next/server';
 import { consumeUsageLimit } from '@/lib/utils/billing';
+import { isUnlimitedUser } from '@/lib/auth/admin';
 
 // ─── TYPES ───────────────────────────────────────────────────────────────────
 
@@ -206,7 +207,7 @@ export async function reserveBudgetForModelCall(
     estimatedOutputTokens,
   );
 
-  if (shouldBypassNetworkBudgetForTests()) {
+  if (shouldBypassNetworkBudgetForTests() || isUnlimitedUser(userId)) {
     return {
       reservationId: `${TEST_RESERVATION_PREFIX}${crypto.randomUUID()}`,
       estimatedCost,

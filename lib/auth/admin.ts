@@ -21,3 +21,10 @@ export async function requireAdmin() {
 
   return { user, error: null, status: 200 };
 }
+
+export function isUnlimitedUser(userId: string | null | undefined): boolean {
+  if (!userId) return false;
+  const adminIds = (process.env.ADMIN_USER_IDS || '').split(',').map(e => e.trim()).filter(Boolean);
+  const testIds = (process.env.TEST_ACCOUNT_USER_IDS || '').split(',').map(e => e.trim()).filter(Boolean);
+  return adminIds.includes(userId) || testIds.includes(userId);
+}

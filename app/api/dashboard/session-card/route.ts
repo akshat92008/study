@@ -181,11 +181,8 @@ export async function GET(request?: Request): Promise<NextResponse> {
 
     const { data: cached } = await cacheQuery.maybeSingle();
 
-    if (
-      cached &&
-      Number(cached.learner_state_version ?? 0) === learnerStateVersion
-    ) {
-      // Hit — card is still valid for today
+    if (cached) {
+      // Hit — card is valid for today (ignoring learner_state_version to keep it stable)
       const signals: SourceSignals = {
         overdueCardCount: cached.overdueCards ?? 0,
         recentMistakeCount: cached.mistakeCount ?? 0,
@@ -393,7 +390,8 @@ export async function GET(request?: Request): Promise<NextResponse> {
     // ── 6. LLM phrasing (optional polish — code drives structure) ───────────
     let llmProse: LLMCardProseType | null = null;
 
-    const prosePrompt = buildProsePrompt(selection, profile, masteryPercent);
+    const prosePrompt = buildProsePrompt(selection, profile, masteryPercent, goalRes.data?.title ?? null);
+
 
     try {
       const raw = await budgetedGenerateJSON<LLMCardProseType>({
@@ -565,9 +563,17 @@ function dbRowToPayload(row: any): SessionCardPayload {
 function buildProsePrompt(
   sel: SelectorOutput,
   profile: any,
-  masteryPercent: number
+  masteryPercent: number,
+  activeGoalTitle?: string | null
 ): string {
-  return `You are a study session coach for a ${profile?.exam_type ?? 'competitive exam'} student.
+  // Universal: use goal title if available, otherwise infer from exam_type, else generic
+  const learnerContext = activeGoalTitle
+    ? `"${activeGoalTitle}" goal`
+    : (profile?.exam_type && profile.exam_type !== 'General Study')
+      ? `${profile.exam_type} preparation`
+      : 'their learning goal';
+
+  return `You are a study session coach helping a learner with ${learnerContext}.
 
 The algorithm has ALREADY decided the following (do NOT change these):
 - Target topic: ${sel.topic}
@@ -585,7 +591,7 @@ Your ONLY job is to write friendly display text in JSON:
 }
 
 Rules:
-- focusTopic MUST be a real chapter or concept name — never "General Study", "null", or "N/A".
+- focusTopic MUST be a specific topic or concept name — never "General Study", "null", or "N/A".
 - If the topic is "${sel.topic}", keep it or make it more specific, never more vague.
 - rationale must mention the specific reason (${sel.priority.replace('_', ' ')}).
 - Return ONLY valid JSON. No markdown, no backticks, no preamble.`;

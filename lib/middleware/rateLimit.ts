@@ -117,7 +117,7 @@ export async function checkRateLimit(
   
   // Daily cap for heavy routes (abuse prevention)
   const isHeavy = ['chat', 'autopsy', 'planner', 'revision', 'atlas'].includes(opt.name);
-  const dailyLimiter = isHeavy ? getLimiter(`${opt.name}_daily`, 200, '86400 s') : null;
+  const dailyLimiter = isHeavy ? getLimiter(`${opt.name}_daily`, 500, '86400 s') : null;
 
   if (!limiter) {
     if (shouldFailClosed(opt.failClosed)) {
@@ -131,7 +131,7 @@ export async function checkRateLimit(
       const dailyRes = await dailyLimiter.limit(id);
       if (!dailyRes.success) {
         Metrics.rateLimitHit(`${opt.name}_daily`, id);
-        return { allowed: false, remaining: 0, resetAt: dailyRes.reset, limit: 200 };
+        return { allowed: false, remaining: 0, resetAt: dailyRes.reset, limit: 500 };
       }
     }
 

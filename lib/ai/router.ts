@@ -409,7 +409,8 @@ export async function routeTextGeneration(
   maxTokens?: number,
   reservationId?: string,
   budgetMode: 'fast' | 'quality' = 'quality',
-  skipCommit?: boolean
+  skipCommit?: boolean,
+  userId?: string
 ): Promise<string> {
   if (process.env.AI_DISABLED === 'true') {
     return 'AI features are temporarily paused for maintenance. Please check back shortly.';
@@ -425,6 +426,7 @@ export async function routeTextGeneration(
   const { messages } = budgetLLMMessages({
     route: `routeTextGeneration:${taskType}`,
     messages: rawMessages,
+    userId,
   });
 
   for (const providerName of providers) {
@@ -516,7 +518,8 @@ export async function routeJSONGeneration<T>(
   temperature = 0.3,
   schema?: any,
   reservationId?: string,
-  skipCommit?: boolean
+  skipCommit?: boolean,
+  userId?: string
 ): Promise<T> {
   if (process.env.AI_DISABLED === 'true') {
     throw new Error('AI features are temporarily paused for maintenance. Please check back shortly.');
@@ -542,6 +545,7 @@ if (!config || !config.apiKey) {
     const { messages } = budgetLLMMessages({
       route: 'routeJSONGeneration',
       messages: rawMessages,
+      userId,
     });
 
     const inputTokens = messages.reduce((sum, m) => sum + m.content.length, 0) / 4;
@@ -638,7 +642,8 @@ export async function* routeStreamGeneration(
   temperature = 0.7,
   reservationId?: string,
   budgetMode: 'fast' | 'quality' = 'quality',
-  skipCommit?: boolean
+  skipCommit?: boolean,
+  userId?: string
 ): AsyncGenerator<string> {
   if (process.env.AI_DISABLED === 'true') {
     yield 'AI features are temporarily paused for maintenance. Please check back shortly.';
@@ -661,6 +666,7 @@ export async function* routeStreamGeneration(
   const { messages } = budgetLLMMessages({
     route: 'routeStreamGeneration',
     messages: rawMessages,
+    userId,
   });
 
   const providerErrors: string[] = [];

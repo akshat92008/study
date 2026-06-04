@@ -180,10 +180,13 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
           Uploaded Sources
         </h3>
         {materials.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: 'var(--sp-8)', color: 'var(--text-tertiary)' }}>
-            <Database size={48} style={{ opacity: 0.2, margin: '0 auto var(--sp-4)' }} />
-            <p>No sources uploaded yet.</p>
-            <p style={{ fontSize: 'var(--fs-sm)' }}>Add notes to ground the AI tutor for this goal.</p>
+          <div style={{ textAlign: 'center', padding: 'var(--sp-12)', background: 'var(--bg-secondary)', borderRadius: 'var(--radius-lg)', border: '1px dashed var(--border-default)' }}>
+            <Database size={48} style={{ opacity: 0.3, margin: '0 auto var(--sp-4)', color: 'var(--text-secondary)' }} />
+            <h2 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-bold)', marginBottom: 'var(--sp-2)' }}>Start Here: Add Your First Source</h2>
+            <p style={{ color: 'var(--text-tertiary)', marginBottom: 'var(--sp-6)' }}>Upload notes or study materials to ground the AI tutor for this goal.</p>
+            <Button onClick={() => setShowForm(true)} style={{ background: 'var(--accent-cyan)', color: '#000', padding: '12px 24px' }}>
+              <Plus size={18} style={{ marginRight: 8 }} /> Upload Material
+            </Button>
           </div>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)' }}>

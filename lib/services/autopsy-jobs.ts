@@ -231,7 +231,8 @@ export async function processAutopsyJob(userId: string, jobId: string): Promise<
     const result = await processMockAutopsy(
       userId,
       fileData,
-      job.test_name ?? 'Mock Test Autopsy',
+      job.test_name ?? 'Assessment Autopsy',   // universal: not "Mock Test" by default
+
       job.exam_type ?? 'General Study',
       payload.customScoring ?? undefined,
       supabase,

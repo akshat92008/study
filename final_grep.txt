@@ -1,0 +1,172 @@
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/__tests__/integration/autopsy-pipeline.test.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/__tests__/mind-context.test.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/__tests__/unit/daily-microtask.test.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/__tests__/unit/session-card-api.test.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/__tests__/unit/session-card-selector.test.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/app/api/ai/chat/route.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/app/api/autopsy/[id]/route.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/app/api/autopsy/questions/[id]/route.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/app/api/cognition/route.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/app/api/dashboard/session-card/route.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/app/layout.tsx
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/components/analytics/AnalyticsDashboard.tsx
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/components/autopsy/ScoreBridge.tsx
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/components/autopsy/ShareCard.tsx
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/components/chat/RichMessageRenderer.tsx
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/components/chat/SessionTracker.tsx
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/components/cognition/CognitionDashboard.tsx
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/components/cognition/KnowledgeMap.tsx
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/components/dashboard/CommandCenter.tsx
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/components/dashboard/DailySessionFocus.tsx
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/components/knowledge/KnowledgeBaseUI.tsx
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/components/landing/LandingClient.tsx
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/components/layout/Header.tsx
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/components/layout/SessionTracker.tsx
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/components/layout/Sidebar.tsx
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/components/mentor/MentorChat.tsx
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/components/onboarding/WeakSpotCheck.tsx
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/components/planner/DailyBriefing.tsx
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/components/planner/PlannerDashboard.tsx
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/components/revision/CardSchedule.tsx
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/components/revision/FlashCard.tsx
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/eslint.config.mjs
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/actions/curriculum.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/actions/onboarding.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/actions/planner.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/ai/agents/planner.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/ai/prompts/mentor.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/ai/provider-client.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/ai/providers/GeminiProvider.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/ai/responseCache.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/ai/router.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/autopsy/classifier.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/engines/cognition-graph.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/engines/command-engine.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/engines/concept-expansion-engine.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/engines/concept-resolver.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/engines/learning-state-engine.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/engines/orchestrator.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/engines/rag-engine.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/engines/revision-engine.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/engines/session-closing.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/events/orchestrator.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/events/replay.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/middleware/rateLimit.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/services/ai-usage.service.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/services/autopsy.service.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/services/chatMemoryService.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/services/masteryService.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/services/mind-tutor.service.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/services/session-completion.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/lib/supabase/adminSafe.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/module5-session-card-hardening/__tests__/unit/session-card-api.test.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/module5-session-card-hardening/__tests__/unit/session-card-selector.test.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/module5-session-card-hardening/app/api/dashboard/session-card/route.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/scratch_apply_migration.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/scripts/verify-chat-idempotency.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/scripts/verify-db.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/tests/db/streak-rpc.test.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/tests/integration/agenticRls.test.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/tests/integration/agenticWiring.test.ts
+./verify-all.log:/Users/ashishsingh/Desktop/neetapp.nosync/types/zustand-shim.d.ts
+./verify-all.log: RUN  v1.6.1 /Users/ashishsingh/Desktop/neetapp.nosync
+./verify-all.log:    at DailyMicrotaskService.getMicrotasksForDate (/Users/ashishsingh/Desktop/neetapp.nosync/lib/services/daily-microtask.service.ts:29:8)
+./verify-all.log:    at Module.buildChatFirstEngineResponse (/Users/ashishsingh/Desktop/neetapp.nosync/app/api/ai/chat/route.ts:1115:50)
+./verify-all.log:    at /Users/ashishsingh/Desktop/neetapp.nosync/tests/mind/mind-intent-policy.test.ts:54:20
+./verify-all.log:    at runTest (file:///Users/ashishsingh/Desktop/neetapp.nosync/node_modules/@vitest/runner/dist/index.js:781:11)
+./verify-all.log:    at runSuite (file:///Users/ashishsingh/Desktop/neetapp.nosync/node_modules/@vitest/runner/dist/index.js:909:15)
+./verify-all.log:    at runSuite (file:///Users/ashishsingh/Desktop/neetapp.nosync/node_modules/@vitest/runner/dist/index.js:909:15)
+./verify-all.log:    at runFiles (file:///Users/ashishsingh/Desktop/neetapp.nosync/node_modules/@vitest/runner/dist/index.js:958:5)
+./verify-all.log:    at startTests (file:///Users/ashishsingh/Desktop/neetapp.nosync/node_modules/@vitest/runner/dist/index.js:967:3)
+./verify-all.log:    at file:///Users/ashishsingh/Desktop/neetapp.nosync/node_modules/vitest/dist/chunks/runtime-runBaseTests.oAvMKtQC.js:116:7
+./verify-all.log:    at withEnv (file:///Users/ashishsingh/Desktop/neetapp.nosync/node_modules/vitest/dist/chunks/runtime-runBaseTests.oAvMKtQC.js:83:5)
+./verify-all.log:    at DailyMicrotaskService.getMicrotasksForDate (/Users/ashishsingh/Desktop/neetapp.nosync/lib/services/daily-microtask.service.ts:29:8)
+./verify-all.log:    at Module.buildChatFirstEngineResponse (/Users/ashishsingh/Desktop/neetapp.nosync/app/api/ai/chat/route.ts:1115:50)
+./verify-all.log:    at /Users/ashishsingh/Desktop/neetapp.nosync/tests/mind/mind-engine-independence.test.ts:66:20
+./verify-all.log:    at runTest (file:///Users/ashishsingh/Desktop/neetapp.nosync/node_modules/@vitest/runner/dist/index.js:781:11)
+./verify-all.log:    at runSuite (file:///Users/ashishsingh/Desktop/neetapp.nosync/node_modules/@vitest/runner/dist/index.js:909:15)
+./verify-all.log:    at runSuite (file:///Users/ashishsingh/Desktop/neetapp.nosync/node_modules/@vitest/runner/dist/index.js:909:15)
+./verify-all.log:    at runFiles (file:///Users/ashishsingh/Desktop/neetapp.nosync/node_modules/@vitest/runner/dist/index.js:958:5)
+./verify-all.log:    at startTests (file:///Users/ashishsingh/Desktop/neetapp.nosync/node_modules/@vitest/runner/dist/index.js:967:3)
+./verify-all.log:    at file:///Users/ashishsingh/Desktop/neetapp.nosync/node_modules/vitest/dist/chunks/runtime-runBaseTests.oAvMKtQC.js:116:7
+./verify-all.log:    at withEnv (file:///Users/ashishsingh/Desktop/neetapp.nosync/node_modules/vitest/dist/chunks/runtime-runBaseTests.oAvMKtQC.js:83:5)
+./verify-all.log:{"level":"ERROR","msg":"chat_route_unhandled: unexpected API error","error":"SUCCESSFULLY_PASSED_SCHEMA_VALIDATION","stack":"Error: SUCCESSFULLY_PASSED_SCHEMA_VALIDATION\n    at Proxy.<anonymous> (/Users/ashishsingh/Desktop/neetapp.nosync/tests/chat/chatPayloadSchema.test.ts:15:11)\n    at Proxy.mockCall (file:///Users/ashishsingh/Desktop/neetapp.nosync/node_modules/@vitest/spy/dist/index.js:50:17)\n    at Proxy.spy (file:///Users/ashishsingh/Desktop/neetapp.nosync/node_modules/tinyspy/dist/index.js:42:80)\n    at POST (/Users/ashishsingh/Desktop/neetapp.nosync/app/api/ai/chat/route.ts:216:25)\n    at /Users/ashishsingh/Desktop/neetapp.nosync/tests/chat/chatPayloadSchema.test.ts:75:17\n    at runTest (file:///Users/ashishsingh/Desktop/neetapp.nosync/node_modules/@vitest/runner/dist/index.js:781:11)\n    at runSuite (file:///Users/ashishsingh/Desktop/neetapp.nosync/node_modules/@vitest/runner/dist/index.js:909:15)\n    at runSuite (file:///Users/ashishsingh/Desktop/neetapp.nosync/node_modules/@vitest/runner/dist/index.js:909:15)\n    at runFiles (file:///Users/ashishsingh/Desktop/neetapp.nosync/node_modules/@vitest/runner/dist/index.js:958:5)\n    at startTests (file:///Users/ashishsingh/Desktop/neetapp.nosync/node_modules/@vitest/runner/dist/index.js:967:3)","timestamp":"2026-06-02T03:23:43.108Z","requestId":"39631319-d0c9-4966-a687-130d03cc6378","feature":"chat_route_unhandled"}
+./verify-all.log:(node:86035) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/ashishsingh/Desktop/neetapp.nosync/scripts/verify-schema.ts is not specified and it doesn't parse as CommonJS.
+./verify-all.log:To eliminate this warning, add "type": "module" to /Users/ashishsingh/Desktop/neetapp.nosync/package.json.
+./verify-all.log:✅ Migrations exist at /Users/ashishsingh/Desktop/neetapp.nosync/supabase/migrations
+./verify-all.log:(node:86088) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/ashishsingh/Desktop/neetapp.nosync/scripts/mvp-smoke-check.ts is not specified and it doesn't parse as CommonJS.
+./verify-all.log:To eliminate this warning, add "type": "module" to /Users/ashishsingh/Desktop/neetapp.nosync/package.json.
+./verify-all.log:(node:86138) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/ashishsingh/Desktop/neetapp.nosync/scripts/agentic-smoke-check.ts is not specified and it doesn't parse as CommonJS.
+./verify-all.log:To eliminate this warning, add "type": "module" to /Users/ashishsingh/Desktop/neetapp.nosync/package.json.
+./verify-all.log:(node:86211) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/ashishsingh/Desktop/neetapp.nosync/scripts/beta100-smoke-check.ts is not specified and it doesn't parse as CommonJS.
+./verify-all.log:To eliminate this warning, add "type": "module" to /Users/ashishsingh/Desktop/neetapp.nosync/package.json.
+./types/supabase-js-shim.d.ts:    chapter: string;
+./types/supabase-js-shim.d.ts:    exam_type: string | null;
+./.env.local:SUPABASE_DB_PASSWORD=akshat720singh
+./app/api/materials/route.ts:      .select('id, title, original_filename, mime_type, source_type, goal_id, chat_session_id, exam_type, subject, chapter, topic, language, status, page_count, char_count, error_message, created_at, updated_at')
+./app/api/materials/query/route.ts:  chapter: z.string().optional(),
+./app/api/materials/query/route.ts:      chapter: parsed.data.chapter,
+./app/api/materials/[id]/route.ts:      .select('id, title, original_filename, mime_type, source_type, exam_type, subject, chapter, topic, language, status, page_count, char_count, error_message, created_at, updated_at, study_material_chunks(id, chunk_index, page_start, page_end, heading, token_estimate)')
+./app/api/materials/upload/route.ts:  return ['upload', 'ncert', 'notes', 'coaching', 'pyq', 'solution', 'other'].includes(sourceType)
+./app/api/materials/upload/route.ts:        exam_type: formString(formData.get('examType')),
+./app/api/materials/upload/route.ts:        chapter: formString(formData.get('chapter')),
+./app/api/goals/route.ts:        exam_type: optionalString(body.examType),
+./app/api/planner/replan/route.ts:          chapter: t.chapter || null,
+./app/api/planner/briefing/route.ts:      .select('exam_type, target_date, streak_days, emotional_state')
+./app/api/planner/briefing/route.ts:        .select('subject, chapter, mastery, forgetting_probability')
+./app/api/planner/briefing/route.ts:      examType: profile?.exam_type || 'General Study',
+./app/api/planner/briefing/route.ts:        chapter: c.chapter,
+./app/api/agents/actions/[id]/reject/route.ts:    if (action.action_type === 'uncertain_autopsy_mistake') {
+./app/api/agents/actions/[id]/approve/route.ts:const SUPPORTED_APPROVAL_ACTIONS = new Set(['uncertain_autopsy_mistake']);
+./app/api/agents/actions/[id]/approve/route.ts:    if (action.action_type === 'uncertain_autopsy_mistake') {
+./app/api/dashboard/session-card/route.ts:        'full_name, exam_type, target_date, streak_days, timezone, onboarding_complete, learner_state_version'
+./app/api/dashboard/session-card/route.ts:      .select('id, subject, chapter, concept_id, difficulty, lapses')
+./app/api/dashboard/session-card/route.ts:      .select('id, subject, chapter, category, concept_id, created_at')
+./app/api/dashboard/session-card/route.ts:        'id, name, subject, chapter, mastery, mastery_score, forgetting_probability, times_reviewed'
+./app/api/dashboard/session-card/route.ts:            exam_type: profile.exam_type ?? null,
+./app/api/dashboard/session-card/route.ts:        chapter: t.topic,
+./app/api/dashboard/session-card/route.ts:  return `You are a study session coach for a ${profile?.exam_type ?? 'competitive exam'} student.
+./app/api/dashboard/session-card/route.ts:- focusTopic MUST be a real chapter or concept name — never "General Study", "null", or "N/A".
+./app/api/dashboard/route.ts:      .select('id, due, stability, difficulty, state, subject, chapter')
+./app/api/dashboard/route.ts:    let conceptsQuery = supabase.from('concepts').select('subject, chapter').eq('user_id', user.id);
+./app/api/dashboard/route.ts:        if (!syllabus[c.subject].includes(c.chapter)) syllabus[c.subject].push(c.chapter);
+./app/api/dashboard/route.ts:        chapter: t.topic,
+./app/api/dashboard/complete-session/route.ts:      chapter: body.chapter ?? null,
+./app/api/dashboard/complete-session/route.ts:      conceptName: body.conceptName ?? body.chapter ?? null,
+./app/api/dashboard/complete-session/route.ts:      chapter: result.chapter,
+./app/api/ai/tutor/route.ts:          chapter: parsed.topic ?? null,
+./app/api/autopsy/ingest/route.ts:    let testName = 'Mock Test Autopsy';
+./app/api/autopsy/ingest/route.ts:      .select('exam_type')
+./app/api/autopsy/ingest/route.ts:    const examType = requestedExamType || profile?.exam_type || 'General Study';
+./app/api/autopsy/manual/route.ts:    let recentWeakConcepts: Array<{ subject?: string | null; chapter?: string | null; topic?: string | null; mastery?: string | null }> = [];
+./app/api/autopsy/manual/route.ts:          .select('subject, chapter, topic, mastery')
+./app/api/autopsy/manual/route.ts:        chapter: hermesResult.chapter,
+./app/api/autopsy/manual/route.ts:        chapter: hermesResult.chapter,
+./app/api/autopsy/manual/route.ts:  "subject": "Physics" | "Chemistry" | "Biology" | "Maths" | null,
+./app/api/autopsy/manual/route.ts:  "chapter": "Name of the chapter" | null,
+./app/api/autopsy/manual/route.ts:    chapter: classification?.chapter ?? null,
+./app/api/autopsy/manual/route.ts:      chapter: classification?.chapter ?? null,
+./app/api/autopsy/route.ts:    // 4. Calculate category breakdown and chapter losses
+./app/api/autopsy/route.ts:    const chapterMap: Record<string, number> = {};
+./app/api/autopsy/route.ts:      if (q.chapter) chapterMap[q.chapter] = (chapterMap[q.chapter] || 0) + (q.marks_lost || 0);
+./app/api/autopsy/route.ts:    const chapterLoss = Object.entries(chapterMap)
+./app/api/autopsy/route.ts:      .map(([chapter, marksLost]) => ({ chapter, marksLost }))
+./app/api/autopsy/route.ts:      examType: autopsy.exam_type,
+./app/api/autopsy/route.ts:      chapterLoss
+./app/api/autopsy/questions/[id]/route.ts:          chapter: question.chapter,
+./app/api/autopsy/questions/[id]/route.ts:        chapter: question.chapter,
+./app/api/documents/export-pdf/route.ts:  const validKinds = ['mock_test', 'formula_sheet', 'mcq_flashcards', 'learning_notes'];
+./app/api/practice/attempts/route.ts:        chapter: set.topic ?? null,
+./app/api/practice/attempts/route.ts:        chapter: set.topic ?? null,
+./app/(dashboard)/dashboard/page.tsx:              Cognition OS turns your sessions, doubts, mistakes, and mock tests into the next daily study mission.
+./app/(dashboard)/dashboard/page.tsx:                      Analyze Another Mock Test
+./app/(dashboard)/autopsy/page.tsx:  const chapterMap: Record<string, number> = {};
+./app/(dashboard)/autopsy/page.tsx:    if (q.chapter) chapterMap[q.chapter] = (chapterMap[q.chapter] || 0) + (q.marks_lost || 0);
+./app/(dashboard)/autopsy/page.tsx:    examType: autopsy.exam_type,
+./app/(dashboard)/autopsy/page.tsx:    chapterLoss: Object.entries(chapterMap)
+./app/(dashboard)/autopsy/page.tsx:      .map(([chapter, marksLost]) => ({ chapter, marksLost }))
+./app/(dashboard)/onboarding/page.tsx:      exam_type: examType || 'General Study',
+./app/(dashboard)/onboarding/page.tsx:    .select('full_name, exam_type, target_date, target_score, daily_hours_available, subjects, current_level')
+./app/(dashboard)/onboarding/page.tsx:    <div style={{ padding: 'var(--sp-8)', maxWidth: 720, margin: '0 auto', width: '100%' }}>
+./app/(dashboard)/onboarding/page.tsx:            defaultValue={profile?.exam_type || 'NEET'}
+./app/(dashboard)/onboarding/page.tsx:            defaultValue={Array.isArray(profile?.subjects) && profile.subjects.length ? profile.subjects.join(', ') : 'Physics, Chemistry, Biology'}

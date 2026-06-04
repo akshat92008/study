@@ -29,10 +29,25 @@ function formString(value: FormDataEntryValue | null): string | null {
 
 function sanitizeSourceType(value: FormDataEntryValue | null): string {
   const sourceType = formString(value) || 'upload';
-  return ['upload', 'ncert', 'notes', 'coaching', 'pyq', 'solution', 'other'].includes(sourceType)
-    ? sourceType
-    : 'other';
+  // Universal source types — not exam/NEET specific
+  const VALID_SOURCE_TYPES = new Set([
+    'upload',
+    'textbook',    // replaces 'ncert' — any textbook/reference book
+    'notes',
+    'coaching',
+    'pyq',          // previous year questions — valid for any exam
+    'solution',
+    'reference',    // general reference material
+    'article',
+    'other',
+    // Backward compat: accept 'ncert' but normalize to 'textbook'
+    'ncert',
+  ]);
+  if (!VALID_SOURCE_TYPES.has(sourceType)) return 'other';
+  if (sourceType === 'ncert') return 'textbook'; // normalize legacy value
+  return sourceType;
 }
+
 
 export async function POST(req: NextRequest) {
   const requestId = getRequestId(req);

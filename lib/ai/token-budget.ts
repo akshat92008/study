@@ -12,6 +12,7 @@
 
 import { logger } from '@/lib/utils/logger';
 import { getAiCostMode, type AiCostMode } from './cost-mode';
+import { isUnlimitedUser } from '@/lib/auth/admin';
 
 // ─── TYPES ────────────────────────────────────────────────────────────────────
 
@@ -298,6 +299,10 @@ export function budgetLLMMessages(input: {
   const originalChars = totalMessageChars(input.messages);
   const originalTokens = estimateTokensFromText(...input.messages.map(m => m.content));
   const fieldsTrimmed: string[] = [];
+
+  if (input.userId && isUnlimitedUser(input.userId)) {
+    return { messages: input.messages, trimmed: false, originalTokens, finalTokens: originalTokens, fieldsTrimmed };
+  }
 
   if (originalChars <= maxPromptChars) {
     return { messages: input.messages, trimmed: false, originalTokens, finalTokens: originalTokens, fieldsTrimmed };
