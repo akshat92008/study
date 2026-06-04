@@ -194,21 +194,22 @@ export async function writeMistakeResult(
               chapter: finalChapter,
               topic: finalTopic,
               name: wc.name || finalTopic,
-            mastery: 'not_started',
-            ...(goalId ? { goal_id: goalId } : {}),
-            ...(chatSessionId ? { chat_session_id: chatSessionId } : {}),
-          })
-          .select('id')
-          .single();
+              mastery: 'not_started',
+              ...(goalId ? { goal_id: goalId } : {}),
+              ...(chatSessionId ? { chat_session_id: chatSessionId } : {}),
+            })
+            .select('id')
+            .single();
 
-        if (conceptError) {
-          hermesLogger.warn('Failed to create concept', {
-            userId,
-            goalId,
-            error: conceptError.message,
-          });
-        } else if (newConcept) {
-          conceptId = newConcept.id;
+          if (conceptError) {
+            hermesLogger.warn('Failed to create concept', {
+              userId,
+              goalId,
+              error: conceptError.message,
+            });
+          } else if (newConcept) {
+            conceptId = newConcept.id;
+          }
         }
       }
     }

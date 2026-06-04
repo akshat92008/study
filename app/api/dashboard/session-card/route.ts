@@ -419,7 +419,14 @@ export async function GET(request?: Request): Promise<NextResponse> {
         subject: h.subject,
         topic: h.topic,
       })),
-      firstSeededTopic: firstSeededTopicRes.data ?? null,
+      firstSeededTopic: firstSeededTopicRes.data
+        ? {
+            subject: (firstSeededTopicRes.data as any).subject,
+            chapter: (firstSeededTopicRes.data as any).chapter,
+            topic: (firstSeededTopicRes.data as any).topic,
+            microtarget: (firstSeededTopicRes.data as any).microtarget,
+          }
+        : null,
       now: generatedAt,
     };
 
