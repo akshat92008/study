@@ -1,5 +1,5 @@
 'use client';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Quote, Link as LinkIcon, RefreshCcw, BookOpen, Atom, Code, Briefcase, Globe, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 

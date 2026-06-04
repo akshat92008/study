@@ -5,19 +5,20 @@ import { runAtlasRuleAgent } from './rule-agents/atlas-rule-agent';
 import { runAutopsyRuleAgent } from './rule-agents/autopsy-rule-agent';
 import { runCommandRuleAgent } from './rule-agents/command-rule-agent';
 import { runMemoryRuleAgent } from './rule-agents/memory-rule-agent';
-import { runPulseRuleAgent } from './rule-agents/pulse-rule-agent';
+// PULSE intentionally excluded from MVP runtime — import removed
 import { runRevisionRuleAgent } from './rule-agents/revision-rule-agent';
 import { isLearningSignal } from './rule-agents/helpers';
 
 type RuleAgent = (event: LearningEvent) => CheapAgentAction[];
 
+// PULSE is NOT included — it must not execute, route, or mutate learner state in MVP.
+// To re-enable PULSE after alpha, uncomment its import and registration.
 const RULE_AGENTS: Array<{ name: string; run: RuleAgent }> = [
   { name: 'MEMORY', run: runMemoryRuleAgent },
   { name: 'ATLAS', run: runAtlasRuleAgent },
   { name: 'AUTOPSY', run: runAutopsyRuleAgent },
   { name: 'REVISION', run: runRevisionRuleAgent },
   { name: 'COMMAND', run: runCommandRuleAgent },
-  { name: 'PULSE', run: runPulseRuleAgent },
 ];
 
 export type { LearningEvent };

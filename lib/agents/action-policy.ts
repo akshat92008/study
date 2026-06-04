@@ -19,7 +19,7 @@ const SAFE_AUTO = new Set<AgentActionType>([
   'invalidate_today_mission',
   'increase_topic_priority',
   'mark_concept_practiced',
-  'flag_student_risk',
+  // 'flag_student_risk', -- PULSE action, intentionally excluded from MVP runtime
   'create_revision_card_from_verified_mistake',
   'update_mastery_from_evidence',
   'invalidate_session_card',

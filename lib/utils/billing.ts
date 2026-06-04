@@ -31,8 +31,8 @@ export type UsageGateResult = {
 };
 
 const DEFAULT_LIMITS: Record<FeatureLimit, number> = {
-  chat_messages_daily: 80,
-  chat_messages_hourly: 20,
+  chat_messages_daily: 40,
+  chat_messages_hourly: 10,
   tutor_messages_daily: 60,
   autopsy_uploads_daily: 5,
   ai_calls_daily: 120,

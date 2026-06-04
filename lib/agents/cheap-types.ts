@@ -4,7 +4,7 @@ export type CheapAgentName =
   | 'AUTOPSY'
   | 'REVISION'
   | 'COMMAND'
-  | 'PULSE'
+  // | 'PULSE' -- intentionally excluded from MVP runtime
   | 'MIND';
 
 export type CheapAgentRiskLevel = 'safe' | 'medium' | 'high';

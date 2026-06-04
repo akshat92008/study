@@ -9,7 +9,7 @@ export const AgentNameSchema = z.enum([
   'revision',
   'planner',
   'command',
-  'pulse',
+  // 'pulse', -- intentionally excluded from MVP runtime
   'system',
 ]);
 export type AgentName = z.infer<typeof AgentNameSchema>;
@@ -94,7 +94,7 @@ export const AgentActionTypeSchema = z.enum([
   'invalidate_today_mission',
   'increase_topic_priority',
   'mark_concept_practiced',
-  'flag_student_risk',
+  // 'flag_student_risk', -- PULSE action, intentionally excluded from MVP runtime
   'replace_daily_plan',
   'create_revision_card_from_verified_mistake',
   'update_mastery_from_evidence',

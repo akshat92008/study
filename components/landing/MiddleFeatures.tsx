@@ -1,19 +1,16 @@
 'use client';
-import { motion, useScroll, useTransform, useInView } from 'motion/react';
+import { motion } from 'framer-motion';
 import { FileUp, FileText, Zap, Brain, Crosshair, Network, BarChart, MousePointer2 } from 'lucide-react';
-import { useRef } from 'react';
 
 export function UploadSourcesSection() {
-  const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
-
   return (
     <section className="py-24 sm:py-32 relative overflow-hidden bg-[#030014]">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8" ref={containerRef}>
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-16 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2 items-center">
           <motion.div 
             initial={{ opacity: 0, x: -40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="lg:pr-8 lg:pt-4"
           >
@@ -35,7 +32,8 @@ export function UploadSourcesSection() {
           
           <motion.div 
             initial={{ opacity: 0, y: 50, rotateX: 10 }}
-            animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : { opacity: 0, y: 50, rotateX: 10 }}
+            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1, delay: 0.2, ease: [0.2, 0.65, 0.3, 0.9] }}
             className="relative h-[450px] rounded-2xl bg-[#0B0C10]/80 backdrop-blur-xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden perspective-[1000px] group"
           >
@@ -115,9 +113,6 @@ export function UploadSourcesSection() {
 }
 
 export function StudyIntelligenceSection() {
-  const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
-
   const cards = [
     { title: "Study Guide", icon: FileText, delay: 0 },
     { title: "Flashcards", icon: Zap, delay: 0.1 },
@@ -131,18 +126,20 @@ export function StudyIntelligenceSection() {
     <section className="py-32 relative overflow-hidden bg-[#030014] border-y border-white/5">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[600px] bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none" />
       
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10" ref={containerRef}>
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
         <div className="mx-auto max-w-2xl text-center mb-20">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
             className="text-4xl font-display font-medium tracking-tight text-white sm:text-5xl"
           >
             Instant Study Intelligence
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
             transition={{ delay: 0.1 }}
             className="mt-6 text-lg text-neutral-400"
           >
@@ -155,7 +152,8 @@ export function StudyIntelligenceSection() {
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
               transition={{ delay: card.delay, type: "spring", stiffness: 100, damping: 20 }}
               whileHover={{ y: -8, scale: 1.02 }}
               className="group relative rounded-3xl border border-white/10 bg-[#0B0C10] p-8 flex flex-col items-center text-center overflow-hidden shadow-xl hover:shadow-[0_20px_40px_rgba(168,85,247,0.15)] hover:border-purple-500/30 transition-all duration-300 cursor-pointer"

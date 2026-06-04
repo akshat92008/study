@@ -40,6 +40,8 @@ function main() {
   const sql = readMigrationSql();
   const lowerSql = sql.toLowerCase();
   const routeText = fs.existsSync(routesPath) ? fs.readFileSync(routesPath, 'utf8') : '';
+  const orchestratorText = fs.readFileSync(path.join(root, 'lib/agents/orchestrator.ts'), 'utf8');
+  const actionExecutorText = fs.readFileSync(path.join(root, 'lib/agents/action-executor.ts'), 'utf8');
 
   const requiredTables = [
     'public.profiles',
@@ -181,6 +183,16 @@ function main() {
       name: 'SQL event routes include MVP events',
       ok: hasAll(sql, requiredEvents),
       detail: requiredEvents.filter((value) => !sql.includes(value)).join(', '),
+    },
+    {
+      name: 'PULSE is absent from active orchestrator runtime',
+      ok: !orchestratorText.includes('runPulseRuleAgent') && !/\{\s*name:\s*['"]PULSE['"]/.test(orchestratorText),
+      detail: 'PULSE must not be imported or registered in RULE_AGENTS',
+    },
+    {
+      name: 'PULSE source_type absent from action-executor',
+      ok: !actionExecutorText.includes("'pulse_rule_agent'") && !actionExecutorText.includes('"pulse_rule_agent"'),
+      detail: 'flagStudentRisk must not write pulse_rule_agent in MVP',
     },
   ];
 

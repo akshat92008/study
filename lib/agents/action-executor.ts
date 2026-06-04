@@ -16,7 +16,7 @@ const AGENT_NAME_MAP: Record<string, string> = {
   AUTOPSY: 'autopsy',
   REVISION: 'revision',
   COMMAND: 'command',
-  PULSE: 'pulse',
+  // PULSE: 'pulse', -- intentionally excluded from MVP runtime
   MIND: 'mind',
 };
 
@@ -167,8 +167,7 @@ export async function applySafeAction(action: CheapAgentAction, options: Execute
       return increaseTopicPriority(supabase, action);
     case 'mark_concept_practiced':
       return markConceptPracticed(supabase, action);
-    case 'flag_student_risk':
-      return flagStudentRisk(supabase, action);
+    // case 'flag_student_risk': -- PULSE action, intentionally excluded from MVP runtime
     default:
       throw new Error(`Unknown safe action: ${action.actionType}`);
   }
@@ -488,25 +487,15 @@ async function markConceptPracticed(supabase: SupabaseLike, action: CheapAgentAc
   });
 }
 
-async function flagStudentRisk(supabase: SupabaseLike, action: CheapAgentAction) {
-  const { data, error } = await supabase
-    .from('learning_evidence')
-    .insert({
-      user_id: action.userId,
-      source_type: 'pulse_rule_agent',
-      source_id: action.eventId ?? idempotencyKeyFor(action),
-      subject: stringOrNull(action.payload.subject),
-      chapter: stringOrNull(action.payload.chapter),
-      topic: stringOrNull(action.payload.topic),
-      evidence_type: stringOrNull(action.payload.riskType) ?? 'study_risk',
-      score: numberOrNull(action.payload.evidenceCount),
-      confidence: action.confidence,
-      payload: action.payload,
-    })
-    .select('id')
-    .single();
-  if (error) throw error;
-  return { learningEvidenceId: data?.id ?? null, riskType: action.payload.riskType };
+// flagStudentRisk is intentionally disabled for MVP.
+// PULSE must not execute, route, or mutate learner state during private alpha.
+// Re-enable post-alpha by:
+//   1. Restoring the case in applySafeAction
+//   2. Re-registering PULSE in orchestrator.ts RULE_AGENTS
+//   3. Re-adding 'PULSE' to AGENT_NAME_MAP
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+async function flagStudentRisk(_supabase: SupabaseLike, _action: CheapAgentAction) {
+  throw new Error('[PULSE disabled] flagStudentRisk must not be called in MVP runtime.');
 }
 
 async function applyApprovedDailyPlan(supabase: SupabaseLike, action: any) {

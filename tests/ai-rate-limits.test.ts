@@ -42,7 +42,7 @@ describe('AI Cost and Rate Limit Hardening', () => {
 
   describe('Billing Limits (billing.ts)', () => {
     it('returns the correct default hourly chat limit', () => {
-      expect(getLimit('chat_messages_hourly')).toBe(20);
+      expect(getLimit('chat_messages_hourly')).toBe(10);
     });
 
     it('returns the correct default daily expensive operations limit', () => {

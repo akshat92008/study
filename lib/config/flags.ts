@@ -26,6 +26,7 @@ export function getBudgetMode(): BudgetMode {
 export const featureFlags = {
   // ── Core RAG / Autopsy ──
   visionUploads: () => isEnabled('ENABLE_VISION_UPLOADS', false),
+  autopsyUploads: () => isEnabled('ENABLE_AUTOPSY_UPLOADS', true),
   ragIngestion: () => isEnabled('ENABLE_RAG_INGESTION', true),
   autopsyProcessing: () => isEnabled('ENABLE_AUTOPSY_PROCESSING', false),
   agentActions: () => isEnabled('ENABLE_AGENT_ACTIONS', false),

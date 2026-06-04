@@ -10,7 +10,7 @@ export function runPulseRuleAgent(event: LearningEvent): CheapAgentAction[] {
     actions.push({
       userId: event.userId,
       eventId: event.id ?? null,
-      agent: 'PULSE',
+      agent: 'PULSE' as any,
       actionType: 'flag_student_risk',
       riskLevel: 'safe',
       confidence: 0.74,
@@ -30,7 +30,7 @@ export function runPulseRuleAgent(event: LearningEvent): CheapAgentAction[] {
     actions.push({
       userId: event.userId,
       eventId: event.id ?? null,
-      agent: 'PULSE',
+      agent: 'PULSE' as any,
       actionType: 'flag_student_risk',
       riskLevel: 'safe',
       confidence: 0.7,
@@ -50,7 +50,7 @@ export function runPulseRuleAgent(event: LearningEvent): CheapAgentAction[] {
     actions.push({
       userId: event.userId,
       eventId: event.id ?? null,
-      agent: 'PULSE',
+      agent: 'PULSE' as any,
       actionType: 'flag_student_risk',
       riskLevel: 'safe',
       confidence: 0.72,

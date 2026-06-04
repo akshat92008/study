@@ -4,6 +4,7 @@ import { validateMagicBytesArray } from '@/lib/utils/magicBytes';
 import { extractSelectableTextFromPdf } from '@/lib/autopsy-v3/extraction/pdf-text-extractor';
 import { enforceDailyTableCap, jsonWithRequestId, requireAutopsyV3User } from '@/lib/autopsy-v3/permissions';
 import { maxPdfBytes } from '@/lib/autopsy-v3/limits';
+import { featureFlags } from '@/lib/config/flags';
 
 function formString(value: FormDataEntryValue | null): string | null {
   return typeof value === 'string' && value.trim() ? value.trim() : null;
@@ -19,6 +20,14 @@ export async function POST(req: NextRequest) {
     const auth = await requireAutopsyV3User(requestId);
     if (auth.error) return auth.error;
     const { supabase, user, limits } = auth;
+
+    if (!featureFlags.autopsyUploads()) {
+      return apiErrorResponse('feature_disabled', {
+        status: 403,
+        message: 'Autopsy uploads are currently disabled for the alpha.',
+        requestId,
+      });
+    }
 
     const formData = await req.formData();
     const file = formData.get('file') as File | null;

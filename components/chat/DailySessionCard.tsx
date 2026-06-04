@@ -86,9 +86,26 @@ export default function DailySessionCard({ onStartSession, onEndSession, isColla
     onStartSession(card.focusTopic, card.subject, card.estimatedMinutes);
   };
 
-  const handleEnd = () => {
+  const handleEnd = async () => {
+    if (sessionDone) return; // Prevent double clicks
     setSessionStarted(false);
     setSessionDone(true);
+    
+    try {
+      await fetch('/api/dashboard/complete-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          subject: card?.subject ?? null,
+          conceptName: card?.focusTopic ?? null,
+          durationMinutes: Math.max(1, Math.round(elapsed / 60)),
+          understood: true,
+        }),
+      });
+    } catch (e) {
+      console.error('[DailySessionCard] completion persist failed', e);
+    }
+    
     onEndSession?.();
   };
 
