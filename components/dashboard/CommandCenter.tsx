@@ -17,8 +17,7 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
   const router = useRouter();
   const {
     currentActiveTask, setCurrentActiveTask, activeTasksList, setActiveTasksList,
-    atlasMastery, setAtlasMastery,
-    memoryDueCount, setMemoryDueCount, autopsyLossPoints, setAutopsyLossPoints, addToast
+    addToast
   } = useAppStore();
 
   useEffect(() => {
@@ -38,10 +37,7 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
     }
   }, [tasks, setActiveTasksList, setCurrentActiveTask]);
 
-  // Sync server data to Zustand store for global telemetry
-  useEffect(() => { if (cognition?.stats?.overallMastery !== undefined) setAtlasMastery(cognition.stats.overallMastery); }, [cognition]);
-  useEffect(() => { if (revision?.stats?.due !== undefined) setMemoryDueCount(revision.stats.due); }, [revision]);
-  useEffect(() => { if (mistakes?.totalMarksLost !== undefined) setAutopsyLossPoints(mistakes.totalMarksLost); }, [mistakes]);
+  // Internal telemetry removed
 
   const [activeSession, setActiveSession] = useState<any>(null);
   const [messages, setMessages] = useState<any[]>([{
@@ -321,25 +317,6 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
             </AnimatePresence>
           </div>
 
-          {/* Core Telemetry Widgets */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--sp-3)', marginTop: 'auto' }}>
-            <Card style={{ padding: 'var(--sp-3)', display: 'flex', flexDirection: 'column', gap: 6 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}><span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Revision Due</span><RefreshCw size={12} style={{ color: memoryDueCount > 0 ? 'var(--warning)' : 'var(--text-tertiary)' }} /></div>
-              <span style={{ fontSize: 'var(--sp-5)', fontWeight: 'var(--fw-black)', color: memoryDueCount > 0 ? 'var(--warning)' : 'var(--success)' }}>{memoryDueCount || 0}</span>
-            </Card>
-            <Card style={{ padding: 'var(--sp-3)', display: 'flex', flexDirection: 'column', gap: 6 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}><span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Progress</span><Brain size={12} style={{ color: 'var(--accent-blue)' }} /></div>
-              <span style={{ fontSize: 'var(--sp-5)', fontWeight: 'var(--fw-black)', color: 'var(--accent-blue)' }}>{atlasMastery || 0}%</span>
-            </Card>
-            <Card style={{ padding: 'var(--sp-3)', display: 'flex', flexDirection: 'column', gap: 6 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}><span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Mistake Review</span><Target size={12} style={{ color: 'var(--danger)' }} /></div>
-              <span style={{ fontSize: 'var(--sp-5)', fontWeight: 'var(--fw-black)', color: 'var(--danger)' }}>{autopsyLossPoints || 0} mistakes</span>
-            </Card>
-            <Card style={{ padding: 'var(--sp-3)', display: 'flex', flexDirection: 'column', gap: 6 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}><span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>Daily Streak</span><Flame size={12} style={{ color: 'var(--warning)' }} /></div>
-              <span style={{ fontSize: 'var(--sp-5)', fontWeight: 'var(--fw-black)', color: 'var(--warning)' }}>{profile?.streak_days || 0}</span>
-            </Card>
-          </div>
           <StudyMaterialPanel />
         </div>
 
