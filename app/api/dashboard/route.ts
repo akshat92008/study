@@ -69,6 +69,14 @@ export async function GET(request: Request) {
       .limit(1);
     if (goalId) topMemoryQuery = topMemoryQuery.eq('goal_id', goalId);
 
+    let seededTopicsQuery = supabase
+      .from('seeded_topics')
+      .select('id, subject, chapter, topic, microtarget, status, order_index')
+      .eq('user_id', user.id)
+      .order('order_index', { ascending: true })
+      .limit(20);
+    if (goalId) seededTopicsQuery = seededTopicsQuery.eq('goal_id', goalId);
+
     const [
       profileRes,
       cognition,
@@ -80,7 +88,8 @@ export async function GET(request: Request) {
       tasksRes,
       latestAssessmentRes,
       latestReportRes,
-      topMemoryRes
+      topMemoryRes,
+      seededTopicsRes,
     ] = await Promise.all([
       supabase.from('profiles').select('*').eq('id', user.id).single(),
       getCognitionGraph(user.id, goalId),
@@ -92,7 +101,8 @@ export async function GET(request: Request) {
       tasksQuery.order('priority', { ascending: true }),
       latestAssessmentQuery.maybeSingle(),
       latestReportQuery.maybeSingle(),
-      topMemoryQuery.maybeSingle()
+      topMemoryQuery.maybeSingle(),
+      seededTopicsQuery,
     ]);
 
     const syllabus: Record<string, string[]> = {};
@@ -106,6 +116,7 @@ export async function GET(request: Request) {
     return NextResponse.json({
       profile: profileRes.data,
       activeGoal,
+      seededTopics: seededTopicsRes?.data ?? [],
       cognition,
       revision: { due: dueRes, stats: statsRes, allCards: allCardsRes.data || [] },
       mistakes: mistakeAnalytics ? { ...mistakeAnalytics, syllabus } : null,

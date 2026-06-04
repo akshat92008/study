@@ -14,6 +14,7 @@ import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import CurrentTaskCard from '@/components/dashboard/CurrentTaskCard';
 import MicrotargetsCard from '@/components/dashboard/MicrotargetsCard';
+import SeededTopicsCard from '@/components/dashboard/SeededTopicsCard';
 import DeepAutopsyCard from '@/components/dashboard/DeepAutopsyCard';
 import GoalCreationModal from '@/components/modals/GoalCreationModal';
 import GoalSettingsModal from '@/components/modals/GoalSettingsModal';
@@ -304,6 +305,13 @@ export default function DashboardPage() {
 
         {activeGoal && dashboardData?.tasks && (
           <MicrotargetsCard tasks={dashboardData.tasks} />
+        )}
+
+        {activeGoal && dashboardData?.seededTopics && dashboardData.seededTopics.length > 0 && (
+          <SeededTopicsCard 
+            seededTopics={dashboardData.seededTopics} 
+            onStartTopic={() => router.push('/chat')} 
+          />
         )}
 
         {activeGoal && (

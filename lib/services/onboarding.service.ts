@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { getOrCreatePrimaryGoalSession, GOAL_SELECT } from '@/lib/services/goal-context.service';
+import { seedTopicsForGoal } from '@/lib/topic-seeding/topic-seeder';
 
 const SubjectSchema = z
   .string()
@@ -161,6 +162,16 @@ export async function completeOnboardingForUser({
   }
 
   const session = await getOrCreatePrimaryGoalSession(supabase, user.id, goal.id);
+
+  // Seed topics deterministically or fallback to AI
+  await seedTopicsForGoal(supabase, {
+    userId: user.id,
+    goalId: goal.id,
+    goalTitle: goal.title,
+    goalType: parsed.goalType,
+    presetId: goal.preset_id,
+    subjects: parsed.subjects,
+  });
 
   return {
     profile: {

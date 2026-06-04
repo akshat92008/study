@@ -119,6 +119,14 @@ export interface SelectorInput {
     topic?: string;
   }>;
 
+  /** First unmastered seeded topic for fallback */
+  firstSeededTopic?: {
+    subject: string;
+    chapter: string;
+    topic: string;
+    microtarget: string;
+  } | null;
+
   /** ISO timestamp of "now" (injectable for tests) */
   now?: string;
 }
@@ -463,6 +471,28 @@ export function selectSessionCard(input: SelectorInput): SelectorOutput {
   }
 
   // ─── P7: Fallback – exam/default plan (no real learner data) ─────────────
+  if (input.firstSeededTopic) {
+    const { subject, chapter, topic, microtarget } = input.firstSeededTopic;
+    return {
+      targetConceptId: null,
+      priority: 'concept_study',
+      reason: `Start with ${topic} because these are the foundation of ${chapter}.`,
+      estimatedMinutes: Math.min(focusMinutes, 25),
+      taskType: 'concept_study',
+      resourceType: 'reading',
+      subject: subject ?? examType,
+      topic: `${chapter}: ${microtarget}`,
+      masteryBefore: null,
+      dueCardCount: 0,
+      mistakeCount: 0,
+      questionTarget: microtarget,
+      revisionTarget: '',
+      needsOnboarding: false,
+      daysToExam,
+      isPeakHour,
+    };
+  }
+
   return {
     targetConceptId: null,
     priority: 'concept_study',

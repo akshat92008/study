@@ -148,14 +148,52 @@ export async function writeMistakeResult(
       if (existingConcept) {
         conceptId = existingConcept.id;
       } else {
-        const { data: newConcept, error: conceptError } = await supabase
-          .from('concepts')
-          .insert({
-            user_id: userId,
-            subject,
-            chapter,
-            topic,
-            name: wc.name || topic,
+        // Try to map to a seeded topic before creating a new concept
+        let finalSubject = subject;
+        let finalChapter = chapter;
+        let finalTopic = topic;
+
+        if (goalId) {
+          const { data: seededTopic } = await supabase
+            .from('seeded_topics')
+            .select('subject, chapter, topic')
+            .eq('user_id', userId)
+            .eq('goal_id', goalId)
+            .ilike('topic', `%${topic}%`)
+            .limit(1)
+            .maybeSingle();
+
+          if (seededTopic) {
+            finalSubject = seededTopic.subject;
+            finalChapter = seededTopic.chapter;
+            finalTopic = seededTopic.topic;
+            
+            // Check if concept already exists for this seeded topic
+            const { data: mappedConcept } = await supabase
+              .from('concepts')
+              .select('id')
+              .eq('user_id', userId)
+              .eq('goal_id', goalId)
+              .eq('subject', finalSubject)
+              .eq('chapter', finalChapter)
+              .eq('topic', finalTopic)
+              .maybeSingle();
+              
+            if (mappedConcept) {
+              conceptId = mappedConcept.id;
+            }
+          }
+        }
+
+        if (!conceptId) {
+          const { data: newConcept, error: conceptError } = await supabase
+            .from('concepts')
+            .insert({
+              user_id: userId,
+              subject: finalSubject,
+              chapter: finalChapter,
+              topic: finalTopic,
+              name: wc.name || finalTopic,
             mastery: 'not_started',
             ...(goalId ? { goal_id: goalId } : {}),
             ...(chatSessionId ? { chat_session_id: chatSessionId } : {}),

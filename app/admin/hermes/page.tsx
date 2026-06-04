@@ -68,7 +68,7 @@ export default async function HermesAdminPage() {
       ) : (
         <div style={{ display: 'grid', gap: 'var(--sp-3)' }}>
           {recentMemories?.map((memory) => (
-            <Card key={memory.id} padding="md" style={{ borderLeft: \`4px solid \${memory.severity === 'high' ? 'var(--status-error)' : 'var(--accent-purple)'}\` }}>
+            <Card key={memory.id} padding="md" style={{ borderLeft: `4px solid ${memory.severity === 'high' ? 'var(--status-error)' : 'var(--accent-purple)'}` }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--sp-2)' }}>
                 <div>
                   <strong style={{ display: 'block', fontSize: 'var(--fs-sm)' }}>{memory.concept}</strong>

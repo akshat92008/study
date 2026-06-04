@@ -45,6 +45,7 @@ export interface MINDContext {
   topOverdueCards: Array<{ id: string; front: string }>;
   emotionalState: string;
   recentTopics: string[];
+  seededTopics?: Array<{ subject: string; chapter: string; topic: string; microtarget: string; order_index: number }>;
   conceptHistory?: Array<{
     conceptId?: string | null;
     conceptName: string;
@@ -263,6 +264,9 @@ function buildPrompt(ctx: MINDContext, semanticMemories: string[] = [], intent?:
     : 'No active card loaded';
   const dueCardsList = ctx.topOverdueCards?.length > 0 ? ctx.topOverdueCards.slice(0, 3).map(c => c.front).join(' | ') : 'No due cards';
   const emotionalBlock = getEmotionalAdaptationBlock(ctx.emotionalState);
+  const seededTopicsList = ctx.seededTopics && ctx.seededTopics.length > 0
+    ? `\nSEEDED LEARNING MAP (Next logical topics to study): ${ctx.seededTopics.map(t => `${t.topic} (${t.microtarget})`).join(' → ')}`
+    : '';
   
   const autopsySummary = ctx.lastAutopsy 
     ? `Last Mistake Review: ${ctx.lastAutopsy.test_name} (${ctx.lastAutopsy.current_score}/${ctx.lastAutopsy.potential_score})`
@@ -387,7 +391,13 @@ ANSWER: [X]
 EXPLANATION: [why, and why the wrong options are wrong]
 EXAM_RELEVANCE: [how this appears in ${ctx.profile.examType}]
 ---
-[repeat for each question — you MUST generate the EXACT number of questions requested by the user, default 5]
+Q2. [question text]
+(A) [option] (B) [option] (C) [option] (D) [option]
+ANSWER: [X]
+EXPLANATION: [why, and why the wrong options are wrong]
+EXAM_RELEVANCE: [how this appears in ${ctx.profile.examType}]
+---
+[Generate EXACTLY the number of questions requested, default 5. CRITICAL: Separate each question with exactly "---" on a new line.]
 </artifact>
 
 REVISION SHEET:
@@ -457,11 +467,13 @@ Q3. [question]
 
 FLASHCARD SET:
 <artifact type="flashcard-set" topic="[TOPIC]" subject="[SUBJECT]">
-CARD 1
-FRONT: [question or prompt — testable, specific]
-BACK: [complete answer]
+FRONT: [question or prompt 1 — testable, specific]
+BACK: [complete answer 1]
 ---
-[repeat — minimum 8 cards]
+FRONT: [question or prompt 2 — testable, specific]
+BACK: [complete answer 2]
+---
+[repeat — generate minimum 5 cards. CRITICAL: Separate each flashcard with exactly "---" on a new line.]
 </artifact>
 
 CONCEPT MAP:
@@ -553,7 +565,7 @@ WEAK AREAS: ${weakList}
 RECENT MISTAKE PATTERNS: ${mistakeList}
 ${rootGapSection}
 OPTIONAL EMOTIONAL STATE SIGNAL: ${ctx.emotionalState}
-RECENTLY STUDIED: ${ctx.recentTopics.slice(0, 4).join(', ') || 'Nothing yet'}
+RECENTLY STUDIED: ${ctx.recentTopics.slice(0, 4).join(', ') || 'Nothing yet'}${seededTopicsList}
 ${memoriesSection}
 ${hermesMemoriesSection}
 ${conceptHistorySection}
@@ -590,7 +602,7 @@ You must proactively follow these personalization principles:
 - If the student asks "what should I do now?", specifically instruct them based on today's session card, their overdue flashcards, or their recent mistakes.
 - If Review has due cards, recommend starting there before new material when it is the best next action.
 - If the student mentions a mock test or mistake sheet, guide them to Mistake Review so mistakes can update Progress, Review, and the next mission.
-- If no learner data is available yet, guide them to create the first signal: set a goal, complete today's mission, upload a mock, or start revision.
+- If no learner data is available yet, use their SEEDED LEARNING MAP to guide them to their first study topic.
 - If the student expresses demotivation or frustration, carefully use their active streak (${ctx.profile.streakDays} days), recent effort, and optional emotional state signal (${ctx.emotionalState}) when relevant.
 - NEVER invent or hallucinate learner data, scores, or concepts that aren't explicitly provided in this prompt.
 

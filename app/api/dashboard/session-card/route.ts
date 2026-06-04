@@ -302,6 +302,16 @@ export async function GET(request?: Request): Promise<NextResponse> {
       .limit(3);
     if (goalId) hermesMemoriesQuery = hermesMemoriesQuery.eq('goal_id', goalId);
 
+    let firstSeededTopicQuery = supabase
+      .from('seeded_topics')
+      .select('subject, chapter, topic, microtarget')
+      .eq('user_id', user.id)
+      .eq('status', 'active')
+      // Ideally order by sequence if available, id is fine for now
+      .order('id', { ascending: true })
+      .limit(1);
+    if (goalId) firstSeededTopicQuery = firstSeededTopicQuery.eq('goal_id', goalId);
+
     const [
       goalRes,
       overdueCountRes,
@@ -314,6 +324,7 @@ export async function GET(request?: Request): Promise<NextResponse> {
       masteredConceptsRes,
       commandTasksRes,
       hermesMemoriesRes,
+      firstSeededTopicRes,
     ] = await Promise.all([
       activeGoal
         ? Promise.resolve({ data: activeGoal })
@@ -352,6 +363,8 @@ export async function GET(request?: Request): Promise<NextResponse> {
       commandTasksQuery,
 
       hermesMemoriesQuery,
+
+      firstSeededTopicQuery.maybeSingle(),
     ]);
 
     const overdueCardCount = overdueCountRes.count ?? 0;
@@ -397,7 +410,16 @@ export async function GET(request?: Request): Promise<NextResponse> {
         priority: t.priority,
         notes: t.source,
       })),
-      hermesMemories: hermesMemoriesRes.data ?? [],
+      hermesMemories: (hermesMemoriesRes.data ?? []).map((h: any) => ({
+        id: h.id,
+        concept: h.concept,
+        pattern: h.pattern,
+        severity: h.severity,
+        action_type: h.action_type,
+        subject: h.subject,
+        topic: h.topic,
+      })),
+      firstSeededTopic: firstSeededTopicRes.data ?? null,
       now: generatedAt,
     };
 

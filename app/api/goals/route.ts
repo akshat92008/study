@@ -8,6 +8,7 @@ import {
   SESSION_SELECT,
 } from '@/lib/services/goal-context.service';
 import { logger } from '@/lib/utils/logger';
+import { seedTopicsForGoal } from '@/lib/topic-seeding/topic-seeder';
 
 function optionalString(value: unknown): string | null {
   return typeof value === 'string' && value.trim() ? value.trim() : null;
@@ -108,6 +109,17 @@ export async function POST(req: NextRequest) {
     if (goalError || !goal) throw goalError || new Error('Goal insert failed');
 
     const session = await getOrCreatePrimaryGoalSession(supabase, user.id, goal.id);
+
+    // Seed topics deterministically or fallback to AI
+    await seedTopicsForGoal(supabase, {
+      userId: user.id,
+      goalId: goal.id,
+      goalTitle: goal.title,
+      goalType: optionalString(body.examType) || 'Custom Goal',
+      presetId: goal.preset_id,
+      subjects: body.subject ? [body.subject] : [],
+    });
+
     const { data: hydratedGoal } = await supabase
       .from('learning_goals')
       .select(GOAL_SELECT)

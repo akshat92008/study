@@ -1123,7 +1123,8 @@ interface RichMessageRendererProps {
 }
 
 export function RichMessageRenderer({ content, isStreaming = false, messageId, metadata }: RichMessageRendererProps) {
-  const parts = parseArtifacts(content);
+  const cleanContent = content.split('===METADATA===')[0];
+  const parts = parseArtifacts(cleanContent);
   const ragChunks = metadata?.ragChunks;
   // Check if the message itself carries a pre-parsed generatedDocument in metadata
   const metadataDoc = metadata?.generatedDocument;

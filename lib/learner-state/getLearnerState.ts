@@ -34,6 +34,7 @@ export interface LearnerStateSnapshot {
       masteryPercent: number;
     };
   };
+  seededTopics: Array<{ subject: string; chapter: string; topic: string; microtarget: string; order_index: number }>;
   memory: {
     dueCount: number;
     topDueCards: Array<{ id: string; front: string }>;
@@ -152,6 +153,15 @@ export async function getLearnerStateSnapshot(
     .limit(1);
   if (options.goalId) lastAutopsyQuery = lastAutopsyQuery.eq('goal_id', options.goalId);
 
+  let seededTopicsQuery = supabase
+    .from('seeded_topics')
+    .select('subject, chapter, topic, microtarget, order_index')
+    .eq('user_id', userId)
+    .eq('status', 'active')
+    .order('order_index', { ascending: true })
+    .limit(10);
+  if (options.goalId) seededTopicsQuery = seededTopicsQuery.eq('goal_id', options.goalId);
+
   const [
     profileRes,
     weakConceptsRes,
@@ -166,6 +176,7 @@ export async function getLearnerStateSnapshot(
     studentModelRes,
     needsReviewCountRes,
     lastAutopsyRes,
+    seededTopicsRes,
   ] = await Promise.all([
     supabase
       .from('profiles')
@@ -209,6 +220,8 @@ export async function getLearnerStateSnapshot(
     needsReviewCountQuery,
 
     lastAutopsyQuery.maybeSingle(),
+
+    seededTopicsQuery,
   ]);
 
   const profile = profileRes.data;
@@ -259,6 +272,7 @@ export async function getLearnerStateSnapshot(
         masteryPercent: totalConcepts > 0 ? Math.round((masteredCount / totalConcepts) * 100) : 0,
       },
     },
+    seededTopics: (seededTopicsRes.data as any) || [],
     memory: {
       dueCount: overdueRes.count || 0,
       topDueCards: (overdueRes.data || []).map((card: any) => ({ id: card.id, front: card.front })),
