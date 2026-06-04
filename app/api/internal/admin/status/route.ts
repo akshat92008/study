@@ -1,6 +1,7 @@
 import { NextRequest } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { jsonWithRequestId } from '@/lib/autopsy-v3/permissions';
+import { validateCronRequest } from '@/lib/middleware/cronAuth';
 
 const supabaseAdmin = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL || '',
@@ -10,10 +11,8 @@ const supabaseAdmin = createClient(
 export async function GET(req: NextRequest) {
   const reqId = req.headers.get('x-request-id') || crypto.randomUUID();
   
-  const authHeader = req.headers.get('authorization');
-  if (!authHeader || authHeader !== `Bearer ${process.env.SUPABASE_SERVICE_ROLE_KEY}`) {
-    return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 });
-  }
+  const authError = validateCronRequest(req);
+  if (authError) return authError;
 
   try {
     // 1. Pending Events

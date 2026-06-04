@@ -45,8 +45,14 @@ async function reembedTable(
   const BATCH = 50;
   let totalUpdated = 0;
   let totalFailed = 0;
+  const MAX_ITERATIONS = 10000; // safety cap to avoid endless loops
+  let iteration = 0;
 
   while (true) {
+    if (iteration++ >= MAX_ITERATIONS) {
+      console.warn(`⚠️ Reembed loop reached max iterations (${MAX_ITERATIONS}). Exiting to avoid infinite run.`);
+      break;
+    }
     const { data: rows, error } = await supabase
       .from(tableName)
       .select(`${idCol}, ${contentCol}`)
