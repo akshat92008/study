@@ -130,7 +130,7 @@ export async function POST(req: NextRequest) {
       .from('study_materials')
       .select('id', { count: 'exact', head: true })
       .eq('user_id', user.id)
-      .in('status', ['uploaded', 'processing', 'ready']);
+      .in('status', ['uploaded', 'queued', 'processing', 'ready']);
     if (countError) throw countError;
     if ((count ?? 0) >= config.maxFilesPerUser) {
       return apiErrorResponse('material_limit_reached', {
@@ -208,7 +208,8 @@ export async function POST(req: NextRequest) {
         chapter: formString(formData.get('chapter')),
         topic: formString(formData.get('topic')),
         language: formString(formData.get('language')) || 'en',
-        status: 'uploaded',
+        status: featureFlags.ragIngestion() ? 'queued' : 'uploaded',
+        retryable: false,
         content_hash: contentHash,
         goal_id: goalId,
         chat_session_id: chatSessionId,
@@ -264,7 +265,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       material: {
         ...material,
-        status: 'queued',
+        status: featureFlags.ragIngestion() ? 'queued' : material.status,
       },
       chunksProcessed: 0,
       duplicate: false,

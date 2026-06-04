@@ -47,11 +47,15 @@ const LIMIT_ENV: Partial<Record<FeatureLimit, string>> = {
   chat_messages_hourly: 'FREE_HOURLY_CHAT_LIMIT',
   tutor_messages_daily: 'FREE_DAILY_TUTOR_LIMIT',
   autopsy_uploads_daily: 'FREE_DAILY_AUTOPSY_LIMIT',
-  ai_calls_daily: 'FREE_DAILY_AI_CALL_LIMIT',
+  ai_calls_daily: 'DAILY_USER_AI_REQUEST_LIMIT',
   document_uploads: 'FREE_DAILY_AUTOPSY_LIMIT',
   tutor_queries_daily: 'FREE_DAILY_TUTOR_LIMIT',
   autopsies_monthly: 'FREE_DAILY_AUTOPSY_LIMIT',
   expensive_operations_daily: 'FREE_DAILY_EXPENSIVE_LIMIT',
+};
+
+const LIMIT_ENV_FALLBACKS: Partial<Record<FeatureLimit, string[]>> = {
+  ai_calls_daily: ['FREE_DAILY_AI_CALL_LIMIT'],
 };
 
 const RPC_GATE_MAP: Record<FeatureLimit, string> = {
@@ -68,7 +72,11 @@ const RPC_GATE_MAP: Record<FeatureLimit, string> = {
 
 export function getLimit(feature: FeatureLimit): number {
   const envName = LIMIT_ENV[feature];
-  const configured = envName ? Number(process.env[envName]) : NaN;
+  const primary = envName ? Number(process.env[envName]) : NaN;
+  const fallback = (LIMIT_ENV_FALLBACKS[feature] ?? [])
+    .map((key) => Number(process.env[key]))
+    .find((value) => Number.isFinite(value));
+  const configured = Number.isFinite(primary) ? primary : (fallback ?? NaN);
   return Number.isFinite(configured) && configured >= 0
     ? Math.floor(configured)
     : DEFAULT_LIMITS[feature];

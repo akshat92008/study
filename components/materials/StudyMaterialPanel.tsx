@@ -4,11 +4,12 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
-import { FileText, Trash2, Loader2, BookOpen } from 'lucide-react';
+import { FileText, Trash2, Loader2, BookOpen, RotateCcw } from 'lucide-react';
 
 export default function StudyMaterialPanel() {
   const [materials, setMaterials] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [retryingId, setRetryingId] = useState<string | null>(null);
   const supabase = useMemo(() => createClient(), []);
 
   const fetchMaterials = useCallback(async () => {
@@ -20,7 +21,7 @@ export default function StudyMaterialPanel() {
 
     const { data } = await supabase
       .from('study_materials')
-      .select('id, title, status, subject, chapter, error_message')
+      .select('id, title, status, subject, chapter, error_message, retryable')
       .eq('user_id', user.id)
       .neq('status', 'archived')
       .order('created_at', { ascending: false })
@@ -41,6 +42,18 @@ export default function StudyMaterialPanel() {
   async function handleRemove(id: string) {
     setMaterials(prev => prev.filter(m => m.id !== id));
     await supabase.from('study_materials').update({ status: 'archived' }).eq('id', id);
+  }
+
+  async function handleRetry(id: string) {
+    setRetryingId(id);
+    try {
+      const response = await fetch(`/api/materials/${id}/reprocess`, { method: 'POST' });
+      if (response.ok) {
+        setMaterials(prev => prev.map(m => m.id === id ? { ...m, status: 'queued', retryable: false, error_message: null } : m));
+      }
+    } finally {
+      setRetryingId(null);
+    }
   }
 
   if (loading || materials.length === 0) return null;
@@ -84,11 +97,22 @@ export default function StudyMaterialPanel() {
             ) : mat.status === 'queued' ? (
               <Badge color="yellow">Queued</Badge>
             ) : mat.status === 'uploaded' ? (
-              <Badge color="gray">Disabled</Badge>
+              <Badge color="gray">Uploaded</Badge>
             ) : mat.status === 'failed' ? (
               <Badge color="red">Failed</Badge>
             ) : (
               <Badge color="cyan">Ready</Badge>
+            )}
+
+            {mat.status === 'failed' && mat.retryable !== false && (
+              <button
+                onClick={() => handleRetry(mat.id)}
+                disabled={retryingId === mat.id}
+                style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--text-tertiary)', padding: 4 }}
+                title="Retry indexing"
+              >
+                {retryingId === mat.id ? <Loader2 size={14} className="animate-spin" /> : <RotateCcw size={14} />}
+              </button>
             )}
             
             <button 

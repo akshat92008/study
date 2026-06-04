@@ -17,11 +17,12 @@ export interface StudyMaterial {
   chapter: string | null;
   topic: string | null;
   language: string;
-  status: 'uploaded' | 'processing' | 'ready' | 'failed' | 'archived';
+  status: 'uploaded' | 'queued' | 'processing' | 'ready' | 'failed' | 'retryable' | 'archived';
   page_count: number | null;
   char_count: number | null;
   content_hash: string | null;
   error_message: string | null;
+  retryable?: boolean | null;
   created_at: string;
   updated_at: string;
 }

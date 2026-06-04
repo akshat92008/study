@@ -41,7 +41,7 @@ export async function POST(req: NextRequest, context: RouteContext) {
 
     await supabase
       .from('study_materials')
-      .update({ status: 'uploaded', error_message: null, updated_at: new Date().toISOString() })
+      .update({ status: 'queued', retryable: false, error_message: null, updated_at: new Date().toISOString() })
       .eq('id', material.id)
       .eq('user_id', user.id);
 

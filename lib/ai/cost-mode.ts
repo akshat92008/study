@@ -69,7 +69,7 @@ export function isRuleFirstEnabled(): boolean {
  * Reads MAX_RECENT_MESSAGES env first, falls back to mode defaults.
  */
 export function getMaxRecentMessages(): number {
-  const envVal = Number(process.env.MAX_RECENT_MESSAGES);
+  const envVal = Number(process.env.MAX_CHAT_HISTORY_MESSAGES ?? process.env.MAX_RECENT_MESSAGES);
   if (Number.isFinite(envVal) && envVal > 0) return Math.floor(envVal);
 
   const mode = getAiCostMode();
@@ -103,7 +103,7 @@ export function getMaxRagChunks(): number {
  * Reads MAX_OUTPUT_TOKENS env first, falls back to mode defaults.
  */
 export function getMaxOutputTokens(): number {
-  const envVal = Number(process.env.MAX_OUTPUT_TOKENS);
+  const envVal = Number(process.env.MAX_AI_OUTPUT_TOKENS ?? process.env.MAX_OUTPUT_TOKENS);
   if (Number.isFinite(envVal) && envVal > 0) return Math.floor(envVal);
 
   const mode = getAiCostMode();

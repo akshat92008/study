@@ -431,21 +431,21 @@ export function selectSessionCard(input: SelectorInput): SelectorOutput {
   // ─── P7: Fallback – exam/default plan (no real learner data) ─────────────
   return {
     targetConceptId: null,
-    priority: 'onboarding',
+    priority: 'concept_study',
     reason:
-      `No study history, overdue cards, or mapped concepts yet for ${examType}. ` +
-      `Start by mapping your knowledge or completing your first study session.`,
-    estimatedMinutes: focusMinutes,
-    taskType: 'onboarding',
-    resourceType: 'onboarding_prompt',
+      `No study history, overdue cards, recent mistakes, or mapped concepts are available yet for ${examType}. ` +
+      `Start with a short focused session so Cognition OS has a real first signal.`,
+    estimatedMinutes: Math.min(focusMinutes, 25),
+    taskType: 'concept_study',
+    resourceType: 'reading',
     subject: examType,
-    topic: `${examType} Fundamentals`,
+    topic: 'Start with a 25-minute focused study session',
     masteryBefore: null,
     dueCardCount: 0,
     mistakeCount: 0,
     questionTarget: '',
     revisionTarget: '',
-    needsOnboarding: true,
+    needsOnboarding: false,
     daysToExam,
     isPeakHour,
   };

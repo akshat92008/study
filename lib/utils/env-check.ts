@@ -21,7 +21,8 @@ export function checkEnvironment(): void {
 
   const active = aiProviders.filter(k => !!process.env[k]);
   if (active.length === 0) {
-    throw new Error('[ENV] No AI provider configured. Add at least one of: ' + aiProviders.join(', '));
+    console.warn('[ENV] No AI provider configured. AI routes will use deterministic fallbacks where available.');
+    return;
   }
 
   console.log('[ENV] Active AI providers:', active.join(', '));

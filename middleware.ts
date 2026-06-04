@@ -1,7 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-const PUBLIC_ROUTES = ["/login", "/signup", "/", "/api/health", "/api/webhooks/stripe"];
+const PUBLIC_ROUTES = ["/login", "/signup", "/waitlist", "/", "/api/health", "/api/waitlist", "/api/webhooks/stripe"];
 const CRON_ROUTES = ["/api/cron", "/api/internal/workers/process-events", "/api/internal"];
 
 export async function middleware(request: NextRequest) {
@@ -14,14 +14,49 @@ export async function middleware(request: NextRequest) {
   // Cron routes need secret validation
   if (CRON_ROUTES.some(r => pathname.startsWith(r))) {
     const secret = process.env.INTERNAL_CRON_SECRET || process.env.CRON_SECRET;
+    const workerSecret = process.env.INTERNAL_WORKER_SECRET;
     const weakSecrets = new Set([
       "super_secret_cron_token_123",
+      "super_secret_worker_token_123",
       "test-secret",
       "changeme",
       "change-me",
       "secret",
       "cron_secret",
+      "worker_secret",
     ]);
+    const workerHeader = request.headers.get("x-internal-worker-secret");
+    const authHeader = request.headers.get("authorization");
+
+    if (workerHeader !== null) {
+      if (
+        !workerSecret ||
+        (process.env.NODE_ENV !== "test" && (workerSecret.length < 32 || weakSecrets.has(workerSecret)))
+      ) {
+        return NextResponse.json(
+          {
+            error: "worker_not_configured",
+            message: "Worker authentication is not configured.",
+            requestId,
+          },
+          { status: 500, headers: { "x-request-id": requestId } }
+        );
+      }
+
+      if (workerHeader !== workerSecret) {
+        return NextResponse.json(
+          {
+            error: "unauthorized",
+            message: "Worker authentication is required.",
+            requestId,
+          },
+          { status: 401, headers: { "x-request-id": requestId } }
+        );
+      }
+
+      return NextResponse.next();
+    }
+
     if (
       !secret ||
       (process.env.NODE_ENV !== "test" && (secret.length < 32 || weakSecrets.has(secret)))
@@ -35,7 +70,7 @@ export async function middleware(request: NextRequest) {
         { status: 500, headers: { "x-request-id": requestId } }
       );
     }
-    const authHeader = request.headers.get("authorization");
+
     if (authHeader !== `Bearer ${secret}`) {
       return NextResponse.json(
         {

@@ -1,5 +1,5 @@
 import { createAdminClient } from '@/lib/supabase/admin';
-import { inferRagMode, retrieveRagContext } from './retrieval';
+import { inferRagMode, isExplicitRagRequest, retrieveRagContext } from './retrieval';
 import { formatRagContextForPrompt } from './citations';
 import type { RagContext } from './types';
 
@@ -36,6 +36,33 @@ export async function buildMindRagContext(input: {
   }
 
   const hasReadyMaterials = (count ?? 0) > 0;
+  const explicitRequest = isExplicitRagRequest(input.message);
+
+  if (!hasReadyMaterials && explicitRequest) {
+    const processingCount = await countProcessingMaterials({
+      supabase,
+      userId: input.userId,
+      goalId: input.goalId,
+      chatSessionId: input.chatSessionId,
+    });
+
+    if (processingCount > 0) {
+      return {
+        ragContext: {
+          mode: 'explicit',
+          chunks: [],
+          materialIds: [],
+          chunkIds: [],
+          totalContextChars: 0,
+          grounded: false,
+          evidenceStrength: 'none',
+          warnings: ['Uploaded material is still processing.'],
+        },
+        ragPromptBlock: `\n\nSOURCE-GROUNDED MODE: EXPLICIT\nSTATUS: PROCESSING\nInstruct the AI to say exactly: "Your material is still processing. I can answer generally for now, or you can retry once it is ready." Do not invent citations or imply uploaded-source grounding.`,
+      };
+    }
+  }
+
   const mode = inferRagMode(input.message, hasReadyMaterials);
 
   const ragContext = await retrieveRagContext({
@@ -58,4 +85,29 @@ export async function buildMindRagContext(input: {
     ragContext,
     ragPromptBlock,
   };
+}
+
+async function countProcessingMaterials(input: {
+  supabase: any;
+  userId: string;
+  goalId?: string | null;
+  chatSessionId?: string | null;
+}): Promise<number> {
+  let query = input.supabase
+    .from('study_materials')
+    .select('id', { count: 'exact', head: true })
+    .eq('user_id', input.userId)
+    .in('status', ['uploaded', 'queued', 'processing']);
+
+  if (input.goalId && input.chatSessionId) {
+    query = (query as any).or(`goal_id.eq.${input.goalId},chat_session_id.eq.${input.chatSessionId}`);
+  } else if (input.goalId) {
+    query = query.eq('goal_id', input.goalId);
+  } else if (input.chatSessionId) {
+    query = query.eq('chat_session_id', input.chatSessionId);
+  }
+
+  const { count, error } = await query;
+  if (error) return 0;
+  return count ?? 0;
 }

@@ -7,6 +7,10 @@ import {
   seedOnboardingKnowledgeMap,
 } from '@/lib/actions/onboarding';
 import { logger } from '@/lib/utils/logger';
+import {
+  completeOnboardingForUser,
+  sanitizeSubjectList,
+} from '@/lib/services/onboarding.service';
 
 async function completeOnboarding(formData: FormData) {
   'use server';
@@ -16,37 +20,30 @@ async function completeOnboarding(formData: FormData) {
   if (!user) redirect('/login');
 
   const fullName = String(formData.get('fullName') || '').trim();
-  // Universal: "goalType" replaces hardcoded "examType"
+  const goalTitle = String(formData.get('goalTitle') || '').trim();
   const goalType = String(formData.get('goalType') || 'General Study').trim();
   const targetDate = String(formData.get('targetDate') || '').trim();
   const targetScore = Number(formData.get('targetScore') || 0);
   const dailyHours = Number(formData.get('dailyHours') || 4);
   const currentLevel = String(formData.get('currentLevel') || 'intermediate').trim();
-  const subjects = String(formData.get('subjects') || '')
-    .split(',')
-    .map((s) => s.trim())
-    .filter(Boolean);
+  const timezone = String(formData.get('timezone') || '').trim();
+  const subjects = sanitizeSubjectList(String(formData.get('subjects') || ''));
 
-  const { error } = await supabase
-    .from('profiles')
-    .upsert({
-      id: user.id,
-      email: user.email,
-      full_name: fullName || user.email || 'Learner',
-      exam_type: goalType || 'General Study',   // kept for backward compat
-      target_date: targetDate || null,
-      target_score: Number.isFinite(targetScore) && targetScore > 0 ? targetScore : null,
-      daily_hours_available: Number.isFinite(dailyHours) && dailyHours > 0 ? dailyHours : 4,
-      daily_hours: Number.isFinite(dailyHours) && dailyHours > 0 ? dailyHours : 4,
+  const completion = await completeOnboardingForUser({
+    supabase,
+    user,
+    input: {
+      fullName,
+      goalTitle: goalTitle || goalType,
+      goalType,
+      targetDate: targetDate || null,
+      targetScore: Number.isFinite(targetScore) && targetScore > 0 ? targetScore : null,
+      dailyHours: Number.isFinite(dailyHours) && dailyHours > 0 ? dailyHours : 4,
+      currentLevel: currentLevel as 'beginner' | 'intermediate' | 'advanced',
       subjects,
-      current_level: currentLevel || 'intermediate',
-      onboarding_complete: true,
-      updated_at: new Date().toISOString(),
-    }, { onConflict: 'id' });
-
-  if (error) {
-    throw new Error(`Failed to complete onboarding: ${error.message}`);
-  }
+      timezone,
+    },
+  });
 
   const seedResult = await seedOnboardingKnowledgeMap(user.id, goalType, subjects)
     .catch((err) => {
@@ -70,7 +67,7 @@ async function completeOnboarding(formData: FormData) {
     path: '/',
   });
 
-  redirect(`/dashboard?magic=true&firstTime=true&seeded=${seedResult.skeletonCreated}`);
+  redirect(`/dashboard?magic=true&firstTime=true&goalId=${completion.goal.id}&seeded=${seedResult.skeletonCreated}`);
 }
 
 export default async function OnboardingPage() {
@@ -80,8 +77,18 @@ export default async function OnboardingPage() {
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('full_name, exam_type, target_date, target_score, daily_hours_available, subjects, current_level')
+    .select('full_name, exam_type, target_date, target_score, daily_hours_available, subjects, current_level, timezone')
     .eq('id', user.id)
+    .maybeSingle();
+
+  const { data: existingGoal } = await supabase
+    .from('learning_goals')
+    .select('title')
+    .eq('user_id', user.id)
+    .eq('status', 'active')
+    .order('last_active_at', { ascending: false, nullsFirst: false })
+    .order('created_at', { ascending: false })
+    .limit(1)
     .maybeSingle();
 
   const existingGoalType = profile?.exam_type || '';
@@ -106,6 +113,17 @@ export default async function OnboardingPage() {
             defaultValue={profile?.full_name || ''}
             required
             placeholder="e.g. Priya Sharma"
+            style={{ padding: '12px', borderRadius: 8, border: '1px solid var(--border-default)', background: 'var(--bg-secondary)', color: 'var(--text-primary)' }}
+          />
+        </label>
+
+        <label style={{ display: 'grid', gap: 'var(--sp-2)' }}>
+          <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>Learning Goal</span>
+          <input
+            name="goalTitle"
+            defaultValue={existingGoal?.title || ''}
+            required
+            placeholder="e.g. Pass the SAT, learn Python for data analysis, master Organic Chemistry"
             style={{ padding: '12px', borderRadius: 8, border: '1px solid var(--border-default)', background: 'var(--bg-secondary)', color: 'var(--text-primary)' }}
           />
         </label>
@@ -217,6 +235,8 @@ export default async function OnboardingPage() {
             <option value="advanced">Advanced — strong base, refining</option>
           </select>
         </label>
+
+        <input type="hidden" name="timezone" defaultValue={profile?.timezone || 'UTC'} />
 
         <button
           type="submit"

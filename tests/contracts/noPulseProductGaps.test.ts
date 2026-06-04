@@ -12,7 +12,8 @@ describe('no-PULSE product gap contracts', () => {
   it('wires lightweight emotional continuity without creating PULSE runtime paths', () => {
     const chatRoute = read('app/api/ai/chat/route.ts');
     const chatContext = read('lib/chat/context.ts');
-    const combined = chatRoute + chatContext;
+    const chatPipeline = read('lib/chat/pipeline.ts');
+    const combined = chatRoute + chatContext + chatPipeline;
     const appApiFiles = fs.readdirSync(path.join(root, 'app/api'), { recursive: true }).join('\n').toLowerCase();
     const migration = read('supabase/migrations/20260531000011_no_pulse_product_gates_memory.sql').toLowerCase();
 

@@ -54,6 +54,7 @@ export default function SignupPage() {
           <Input id="signup-name" name="fullName" label="Full Name" placeholder="Your name" required />
           <Input id="signup-email" name="email" type="email" label="Email" placeholder="you@example.com" required />
           <Input id="signup-password" name="password" type="password" label="Password" placeholder="Min 8 characters" required minLength={8} />
+          <Input id="signup-invite" name="inviteCode" label="Invite Code" placeholder="Optional unless beta access is gated" />
           {error && <p style={{ color: 'var(--danger)', fontSize: 'var(--fs-sm)' }}>{error}</p>}
           <Button id="signup-submit" type="submit" isLoading={loading} style={{ width: '100%', marginTop: 'var(--sp-2)' }}>
             Create Account
@@ -77,6 +78,9 @@ export default function SignupPage() {
 
         <p style={{ textAlign: 'center', marginTop: 'var(--sp-6)', fontSize: 'var(--fs-sm)', color: 'var(--text-tertiary)' }}>
           Already have an account? <Link href="/login" style={{ color: 'var(--accent-blue)' }}>Sign in</Link>
+        </p>
+        <p style={{ textAlign: 'center', marginTop: 'var(--sp-3)', fontSize: 'var(--fs-sm)', color: 'var(--text-tertiary)' }}>
+          Waiting for access? <Link href="/waitlist" style={{ color: 'var(--accent-blue)' }}>Join the waitlist</Link>
         </p>
       </div>
     </div>

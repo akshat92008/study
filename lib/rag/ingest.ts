@@ -31,7 +31,7 @@ export async function ingestStudyMaterial(input: IngestStudyMaterialInput) {
 
   await supabase
     .from('study_materials')
-    .update({ status: 'processing', error_message: null, updated_at: new Date().toISOString() })
+    .update({ status: 'processing', retryable: false, error_message: null, updated_at: new Date().toISOString() })
     .eq('id', input.materialId)
     .eq('user_id', input.userId);
 
@@ -95,6 +95,7 @@ export async function ingestStudyMaterial(input: IngestStudyMaterialInput) {
       .from('study_materials')
       .update({
         status: 'ready',
+        retryable: false,
         page_count: extracted.pageCount,
         char_count: extracted.charCount,
         updated_at: new Date().toISOString(),
@@ -161,6 +162,7 @@ async function markMaterialFailed(materialId: string, userId: string, message: s
     .from('study_materials')
     .update({
       status: 'failed',
+      retryable: true,
       error_message: message.slice(0, 500),
       updated_at: new Date().toISOString(),
     })

@@ -13,6 +13,8 @@ type MockChain = {
   limit: ReturnType<typeof vi.fn>;
   match: ReturnType<typeof vi.fn>;
   in: ReturnType<typeof vi.fn>;
+  or: ReturnType<typeof vi.fn>;
+  contains: ReturnType<typeof vi.fn>;
   is: ReturnType<typeof vi.fn>;
   not: ReturnType<typeof vi.fn>;
   lt: ReturnType<typeof vi.fn>;
@@ -34,6 +36,8 @@ export const createMockSupabaseClient = () => {
     limit: vi.fn().mockReturnThis(),
     match: vi.fn().mockReturnThis(),
     in: vi.fn().mockReturnThis(),
+    or: vi.fn().mockReturnThis(),
+    contains: vi.fn().mockReturnThis(),
     is: vi.fn().mockReturnThis(),
     not: vi.fn().mockReturnThis(),
     lt: vi.fn().mockReturnThis(),

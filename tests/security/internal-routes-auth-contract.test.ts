@@ -39,8 +39,10 @@ describe('internal route auth contract', () => {
     const middleware = fs.readFileSync(path.join(root, 'middleware.ts'), 'utf8');
 
     expect(cronAuth).toContain("'super_secret_cron_token_123'");
-    expect(cronAuth).toContain('secret.length < 32');
-    expect(cronAuth).toContain('weakSecrets.has(secret)');
+    expect(cronAuth).toContain('cronSecret.length < 32');
+    expect(cronAuth).toContain('weakSecrets.has(cronSecret)');
+    expect(cronAuth).toContain('workerSecret.length < 32');
+    expect(cronAuth).toContain('weakSecrets.has(workerSecret)');
     expect(middleware).toContain('"super_secret_cron_token_123"');
     expect(middleware).toContain('secret.length < 32');
     expect(middleware).toContain('weakSecrets.has(secret)');

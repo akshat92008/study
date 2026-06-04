@@ -181,8 +181,8 @@ export async function GET(request?: Request): Promise<NextResponse> {
 
     const { data: cached } = await cacheQuery.maybeSingle();
 
-    if (cached) {
-      // Hit — card is valid for today (ignoring learner_state_version to keep it stable)
+    if (cached && cached.learner_state_version === learnerStateVersion) {
+      // Hit — card is valid for today and matches the current learner state.
       const signals: SourceSignals = {
         overdueCardCount: cached.overdueCards ?? 0,
         recentMistakeCount: cached.mistakeCount ?? 0,
@@ -201,6 +201,22 @@ export async function GET(request?: Request): Promise<NextResponse> {
         learnerStateVersion,
         needsOnboarding: false,
       } satisfies SessionCardResponse);
+    }
+
+    if (cached) {
+      let staleDelete = supabase
+        .from('session_cards')
+        .delete()
+        .eq('user_id', user.id)
+        .eq('date', localDate);
+
+      staleDelete = goalId
+        ? staleDelete.eq('goal_id', goalId)
+        : typeof (staleDelete as any).is === 'function'
+          ? (staleDelete as any).is('goal_id', null)
+          : staleDelete;
+
+      await staleDelete;
     }
 
     // ── 4. Fetch all learner signals in parallel ────────────────────────────

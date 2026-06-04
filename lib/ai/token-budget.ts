@@ -266,7 +266,7 @@ export function estimateTokensFromText(...parts: Array<string | null | undefined
 }
 
 export function getMaxPromptChars(): number {
-  const configured = Number(process.env.MAX_PROMPT_CHARS);
+  const configured = Number(process.env.MAX_AI_INPUT_CHARS ?? process.env.MAX_PROMPT_CHARS);
   return Number.isFinite(configured) && configured > 0 ? Math.floor(configured) : DEFAULT_MAX_PROMPT_CHARS;
 }
 

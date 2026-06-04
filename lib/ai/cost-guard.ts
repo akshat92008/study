@@ -215,6 +215,8 @@ export async function reserveBudgetForModelCall(
     };
   }
 
+  await enforceGlobalDailyAiRequestLimit(userId, feature);
+
   const expensiveCallGate = await consumeUsageLimit(userId, 'ai_calls_daily');
   if (!expensiveCallGate.allowed) {
     if (expensiveCallGate.code === 'limit_reached') {
@@ -301,6 +303,36 @@ export async function reserveBudgetForModelCall(
     estimatedCost,
     estimatedTokens,
   };
+}
+
+async function enforceGlobalDailyAiRequestLimit(userId: string, feature: BudgetFeature): Promise<void> {
+  const limitRaw = Number(process.env.DAILY_GLOBAL_AI_REQUEST_LIMIT ?? 1000);
+  if (!Number.isFinite(limitRaw) || limitRaw <= 0) return;
+
+  const dayStart = new Date();
+  dayStart.setUTCHours(0, 0, 0, 0);
+
+  try {
+    const supabase = createAdminClient();
+    const { count, error } = await supabase
+      .from('ai_usage_events')
+      .select('id', { count: 'exact', head: true })
+      .gte('created_at', dayStart.toISOString());
+
+    if (error) throw error;
+
+    if ((count ?? 0) >= Math.floor(limitRaw)) {
+      throw new AIBudgetExceededError(0, 0);
+    }
+  } catch (error) {
+    if (error instanceof AIBudgetExceededError) throw error;
+    logger.error('[BudgetGuard] global request cap check failed — failing closed', {
+      userId,
+      feature,
+      error: error instanceof Error ? error.message : String(error),
+    });
+    throw new BudgetSystemUnavailableError(error);
+  }
 }
 
 /**

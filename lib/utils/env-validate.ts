@@ -17,9 +17,9 @@ const ENV_VARS: EnvVar[] = [
   { key: 'SUPABASE_SERVICE_ROLE_KEY', required: true, description: 'Supabase service role key (server-side)' },
   { key: 'INTERNAL_CRON_SECRET', required: true, description: 'Secret for cron route auth — missing disables all overnight synthesis' },
   { key: 'ADMIN_EMAILS', required: true, description: 'Comma-separated list of admin emails' },
-  { key: 'GEMINI_API_KEY', required: true, description: 'Google Gemini API key — used for embeddings and fast generation' },
 
   // Recommended — graceful degradation possible but features degrade
+  { key: 'GEMINI_API_KEY', required: false, description: 'Google Gemini API key — optional; AI routes degrade when no provider is configured' },
   { key: 'UPSTASH_REDIS_REST_URL', required: false, description: 'Upstash Redis URL for rate limiting and cache' },
   { key: 'UPSTASH_REDIS_REST_TOKEN', required: false, description: 'Upstash Redis Token' },
   { key: 'CEREBRAS_API_KEY', required: false, description: 'Cerebras fastest inference (optional but recommended)' },

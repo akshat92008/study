@@ -78,14 +78,16 @@ describe('T1: New user — no learner data', () => {
 
   it('returns P6 fallback when profile is complete but no data exists', () => {
     const result = selectSessionCard(makeInput()); // all empty
-    expect(result.priority).toBe('onboarding');
-    expect(result.needsOnboarding).toBe(true);
+    expect(result.priority).toBe('concept_study');
+    expect(result.needsOnboarding).toBe(false);
     expect(result.reason).toMatch(/No study history/i);
   });
 
-  it('always includes examType in fallback topic', () => {
+  it('keeps examType context in the fallback subject and reason', () => {
     const result = selectSessionCard(makeInput());
-    expect(result.topic).toContain('NEET');
+    expect(result.subject).toBe('NEET');
+    expect(result.reason).toContain('NEET');
+    expect(result.topic).toContain('25-minute focused study');
   });
 });
 
@@ -220,8 +222,8 @@ describe('T3: User with recent autopsy mistakes → mistake_repair', () => {
         now: new Date().toISOString(),
       })
     );
-    // No overdue cards, no mistakes (old), no weak concepts → P6 fallback
-    expect(result.priority).toBe('onboarding');
+    // No overdue cards, no mistakes (old), no weak concepts -> first-session fallback
+    expect(result.priority).toBe('concept_study');
   });
 });
 
@@ -430,7 +432,7 @@ describe('T5: Priority transitions after learner state changes', () => {
       })
     );
     // Should fall to P6 since no other signals
-    expect(result.priority).toBe('onboarding');
+    expect(result.priority).toBe('concept_study');
   });
 });
 
@@ -731,7 +733,7 @@ describe('T12: P5 Reinforcement — recently studied, high forgetting probabilit
 
 describe('Full priority cascade snapshot', () => {
   const cases: [string, Partial<SelectorInput>, string][] = [
-    ['all-empty', {}, 'onboarding'],
+    ['all-empty', {}, 'concept_study'],
     [
       'overdue-only',
       {

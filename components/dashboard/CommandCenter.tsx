@@ -187,6 +187,8 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
           ? `Mistake Review complete. Mistakes found: **${data.autopsy?.marks_lost || 0}**. Sprint scheduled.`
           : data.material?.status === 'failed'
             ? `❌ Material indexing failed for **${file.name}**.`
+            : data.material?.status === 'queued' || data.material?.status === 'processing'
+              ? `📚 Source uploaded: **${file.name}**. It is queued for indexing and will be available to the AI Tutor when it shows Ready.`
             : data.material?.status === 'uploaded' && data.chunksProcessed === 0
               ? `📁 Material uploaded: **${file.name}**. Indexing is currently disabled for beta stability.`
               : `📚 Syllabus Ingested: **${file.name}**. Material indexed: ${data.chunksProcessed || 0} chunks ready.`;

@@ -12,6 +12,10 @@ const EXPLICIT_RAG_RE =
 const STUDY_RE =
   /\b(explain|summarize|summary|flashcards?|mcqs?|questions?|notes?|study guide|compare|chapter|topic|formula|neet|ncert|according)\b/i;
 
+export function isExplicitRagRequest(message: string): boolean {
+  return EXPLICIT_RAG_RE.test(message);
+}
+
 export function inferRagMode(message: string, hasReadyMaterials: boolean): RagMode {
   if (!hasReadyMaterials) return 'off';
   if (EXPLICIT_RAG_RE.test(message)) return 'explicit';
