@@ -876,7 +876,8 @@ export class EventWorkerService {
           payload.materialId,
           payload.goalId ?? null,
           result,
-          true
+          true,
+          event.id
         );
         return { status: 'HANDLED' };
       } catch (err: any) {
@@ -1023,7 +1024,7 @@ export class EventWorkerService {
           recentSources: payload.recentSources ?? [],
         });
         
-        await writeNextActionResult(supabase, event.user_id, goalId, result);
+        await writeNextActionResult(supabase, event.user_id, goalId, result, event.id);
         return { status: 'HANDLED' };
       } catch (err: any) {
         logger.warn('[hermes_worker] HERMES_NEXT_ACTION_REQUESTED failed', {

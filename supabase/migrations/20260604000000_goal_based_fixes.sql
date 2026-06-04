@@ -6,10 +6,10 @@ ALTER TABLE public.study_tasks
 -- Create index for faster lookups
 CREATE INDEX IF NOT EXISTS idx_study_tasks_user_goal_date ON public.study_tasks (user_id, goal_id, scheduled_date);
 
--- Update task_type enum to allow specific types
-ALTER TYPE public.task_type ADD VALUE IF NOT EXISTS 'revise';
-ALTER TYPE public.task_type ADD VALUE IF NOT EXISTS 'mock';
-ALTER TYPE public.task_type ADD VALUE IF NOT EXISTS 'autopsy_recovery';
+-- Update study_tasks type check constraint to allow specific types
+ALTER TABLE public.study_tasks DROP CONSTRAINT IF EXISTS study_tasks_type_check;
+ALTER TABLE public.study_tasks ADD CONSTRAINT study_tasks_type_check 
+  CHECK (type IN ('study', 'revise', 'practice', 'mock', 'break', 'autopsy_recovery', 'review', 'custom', 'concept'));
 
 -- session_cards goal-specific uniqueness
 ALTER TABLE public.session_cards

@@ -129,6 +129,27 @@ export async function POST(req: NextRequest) {
       hermesResult
     );
 
+    // ── Sanitize Text Fields ───────────────────────────────────────────────
+    // Prevent leaking "Hermes" branding or raw JSON wrappers if the model hallucinated
+    const sanitizeText = (text: string | null | undefined) => {
+      if (!text) return text;
+      let cleaned = text.replace(/hermes/ig, 'the AI tutor');
+      // Extremely basic un-JSON if the model returned `{"diagnosis":"..."}` inside a string field
+      if (cleaned.startsWith('{') && cleaned.endsWith('}')) {
+        try {
+          const parsed = JSON.parse(cleaned);
+          // Try to extract the first string value it finds
+          const values = Object.values(parsed);
+          if (values.length > 0 && typeof values[0] === 'string') {
+            cleaned = values[0];
+          }
+        } catch {
+          // not valid JSON, leave as is
+        }
+      }
+      return cleaned;
+    };
+
     // ── Return enriched response ─────────────────────────────────────────────
     return NextResponse.json({
       success: true,
@@ -142,10 +163,10 @@ export async function POST(req: NextRequest) {
       } : null,
       // Structured diagnosis (new fields from Hermes)
       category: hermesResult.category,
-      diagnosis: hermesResult.diagnosis,
-      whyMyAnswerWasWrong: hermesResult.whyMyAnswerWasWrong,
-      whyCorrectAnswerWorks: hermesResult.whyCorrectAnswerWorks,
-      keyMissedClue: hermesResult.keyMissedClue,
+      diagnosis: sanitizeText(hermesResult.diagnosis),
+      whyMyAnswerWasWrong: sanitizeText(hermesResult.whyMyAnswerWasWrong),
+      whyCorrectAnswerWorks: sanitizeText(hermesResult.whyCorrectAnswerWorks),
+      keyMissedClue: sanitizeText(hermesResult.keyMissedClue),
       confidence: hermesResult.confidence,
       safetyFlags: hermesResult.safetyFlags,
       // Cards and action

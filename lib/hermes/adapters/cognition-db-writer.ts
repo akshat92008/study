@@ -328,7 +328,8 @@ export async function writeSourceResult(
   materialId: string,
   goalId: string | null | undefined,
   result: import('../hermes-types').HermesSourceResult,
-  insertCards = false
+  insertCards = false,
+  eventId?: string
 ): Promise<{ conceptCount: number; cardCount: number }> {
   await assertHermesWriteScope(supabase, { userId, materialId, goalId });
 
@@ -342,6 +343,7 @@ export async function writeSourceResult(
         suggestedCardsCount: result.suggestedCards.length,
         processedByHermes: true,
         processedAt: new Date().toISOString(),
+        ...(eventId ? { sourceEventId: eventId } : {}),
       },
     })
     .eq('id', materialId)
@@ -350,24 +352,46 @@ export async function writeSourceResult(
   let cardCount = 0;
 
   if (insertCards && result.suggestedCards.length > 0 && goalId) {
-    const cardsToInsert = result.suggestedCards.slice(0, 5).map((card) => ({
-      user_id: userId,
-      goal_id: goalId,
-      front: card.front,
-      back: card.back,
-      card_type: 'source',
-      state: 0,
-      due: new Date().toISOString(),
-      source_type: 'hermes_source_processing',
-      metadata: { materialId, generatedByHermes: true },
-    }));
+    // Idempotency check: Don't insert cards if already inserted for this event
+    let shouldInsertCards = true;
+    if (eventId) {
+      const { data: existingCards } = await supabase
+        .from('revision_cards')
+        .select('id')
+        .eq('user_id', userId)
+        .eq('metadata->>eventId', eventId)
+        .limit(1);
+      
+      if (existingCards && existingCards.length > 0) {
+        shouldInsertCards = false;
+        cardCount = existingCards.length; // Approximate, but avoids re-insertion
+      }
+    }
 
-    const { data: inserted } = await supabase
-      .from('revision_cards')
-      .insert(cardsToInsert)
-      .select('id');
+    if (shouldInsertCards) {
+      const cardsToInsert = result.suggestedCards.slice(0, 5).map((card) => ({
+        user_id: userId,
+        goal_id: goalId,
+        front: card.front,
+        back: card.back,
+        card_type: 'source',
+        state: 0,
+        due: new Date().toISOString(),
+        source_type: 'hermes_source_processing',
+        metadata: { 
+          materialId, 
+          generatedByHermes: true,
+          ...(eventId ? { eventId } : {}),
+        },
+      }));
 
-    cardCount = inserted?.length ?? 0;
+      const { data: inserted } = await supabase
+        .from('revision_cards')
+        .insert(cardsToInsert)
+        .select('id');
+
+      cardCount = inserted?.length ?? 0;
+    }
   }
 
   return {
@@ -515,7 +539,8 @@ export async function writeNextActionResult(
   supabase: SupabaseClient,
   userId: string,
   goalId: string,
-  result: HermesNextActionResult
+  result: HermesNextActionResult,
+  eventId?: string
 ): Promise<void> {
   await assertHermesWriteScope(supabase, { userId, goalId });
 
@@ -536,6 +561,7 @@ export async function writeNextActionResult(
         metadata: {
           ...planData.metadata,
           hermesNextAction: result.nextAction,
+          ...(eventId ? { sourceEventId: eventId } : {}),
         }
       })
       .eq('id', planData.id);
@@ -543,20 +569,41 @@ export async function writeNextActionResult(
 
   // 2. Create microtasks
   if (result.microtasks.length > 0) {
-    const tasksToInsert = result.microtasks.map(task => ({
-      user_id: userId,
-      goal_id: goalId,
-      task_date: today,
-      type: task.type,
-      title: task.title,
-      status: 'pending',
-      priority: 'medium',
-      source: 'system',
-      estimated_minutes: task.estimatedMinutes,
-      metadata: { generatedByHermes: true }
-    }));
+    let shouldInsertTasks = true;
 
-    await supabase.from('daily_microtasks').insert(tasksToInsert);
+    // Idempotency check: Don't insert tasks if already inserted for this event
+    if (eventId) {
+      const { data: existingTasks } = await supabase
+        .from('daily_microtasks')
+        .select('id')
+        .eq('user_id', userId)
+        .eq('metadata->>eventId', eventId)
+        .limit(1);
+
+      if (existingTasks && existingTasks.length > 0) {
+        shouldInsertTasks = false;
+      }
+    }
+
+    if (shouldInsertTasks) {
+      const tasksToInsert = result.microtasks.map(task => ({
+        user_id: userId,
+        goal_id: goalId,
+        task_date: today,
+        type: task.type,
+        title: task.title,
+        status: 'pending',
+        priority: 'medium',
+        source: 'system',
+        estimated_minutes: task.estimatedMinutes,
+        metadata: { 
+          generatedByHermes: true,
+          ...(eventId ? { eventId } : {}),
+        }
+      }));
+
+      await supabase.from('daily_microtasks').insert(tasksToInsert);
+    }
   }
 }
 
