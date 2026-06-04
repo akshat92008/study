@@ -61,7 +61,7 @@ export async function upsertAtlasConcepts(
         name: row.topic,
         description: row.microtarget,
         mastery: 'not_started',
-        mastery_level: 0,
+        mastery_score: 0,
         mastery_tier: 'unknown',
         confidence: 'low',
         forgetting_probability: 1,

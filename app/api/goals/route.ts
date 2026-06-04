@@ -111,7 +111,7 @@ export async function POST(req: NextRequest) {
     const session = await getOrCreatePrimaryGoalSession(supabase, user.id, goal.id);
 
     // Seed topics deterministically or fallback to AI
-    let topicSeeding = null;
+    let topicSeeding: any = null;
     try {
       topicSeeding = await seedTopicsForGoal(supabase, {
         userId: user.id,

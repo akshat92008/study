@@ -308,10 +308,7 @@ export default function DashboardPage() {
         )}
 
         {activeGoal && dashboardData?.seededTopics && dashboardData.seededTopics.length > 0 && (
-          <SeededTopicsCard 
-            seededTopics={dashboardData.seededTopics} 
-            onStartTopic={() => router.push('/chat')} 
-          />
+          <SeededTopicsCard topics={dashboardData.seededTopics} />
         )}
 
         {activeGoal && (

@@ -164,22 +164,18 @@ export async function completeOnboardingForUser({
   const session = await getOrCreatePrimaryGoalSession(supabase, user.id, goal.id);
 
   // Seed topics deterministically or fallback to AI
-  let topicSeeding = null;
+  let topicSeeding: any = null;
   try {
     topicSeeding = await seedTopicsForGoal(supabase, {
       userId: user.id,
       goalId: goal.id,
-      goalTitle: goal.title ?? input.goalTitle ?? input.exam ?? 'Custom Goal',
-      goalType: input.goalType ?? input.exam ?? input.domain ?? null,
-      presetId: goal.preset_id ?? input.presetId ?? input.preset_id ?? null,
-      subject: input.subject ?? null,
-      subjects: Array.isArray(input.subjects)
-        ? input.subjects
-        : input.subject
-          ? [input.subject]
-          : [],
-      chapter: input.chapter ?? null,
-      targetDate: input.targetDate ?? input.target_date ?? null,
+      goalTitle: goal.title ?? input.goalTitle ?? 'Custom Goal',
+      goalType: input.goalType ?? null,
+      presetId: goal.preset_id ?? input.presetId ?? null,
+      subject: input.subjects?.[0] ?? null,
+      subjects: Array.isArray(input.subjects) ? input.subjects : [],
+      chapter: null,
+      targetDate: input.targetDate ?? null,
     });
   } catch (error) {
     console.warn('Onboarding topic seeding skipped', {
