@@ -12,7 +12,7 @@ import { resolveChatGoalContext } from '@/lib/services/goal-context.service';
 import { featureFlags } from '@/lib/config/flags';
 import { inferAndUpdateEmotionalState } from '@/lib/engines/emotional-state-updater';
 import { tryRuleFirstResponse } from '@/lib/ai/rule-first-responder';
-import { buildChatFirstEngineResponse } from '@/lib/ai/chat/orchestration';
+import { buildChatFirstEngineResponse } from '@/lib/ai/chat';
 import { gatherChatContext } from '@/lib/chat/context';
 import { handleVisionUpload, handleDocumentVisionUpload, handleAutopsyRedirect, processMaterialIngestion } from '@/lib/chat/uploads';
 import { handleMainStreaming } from '@/lib/chat/streaming';
