@@ -57,21 +57,27 @@ export async function middleware(request: NextRequest) {
       return NextResponse.next();
     }
 
+    const cronSecret = process.env.CRON_SECRET;
+    const internalCronSecret = process.env.INTERNAL_CRON_SECRET;
+    
+    const rawTokens = [cronSecret, internalCronSecret].filter(Boolean) as string[];
+    const validCronTokens = rawTokens.flatMap(t => [`Bearer ${t}`, t]);
+
     if (
-      !secret ||
-      (process.env.NODE_ENV !== "test" && (secret.length < 32 || weakSecrets.has(secret)))
+      rawTokens.length === 0 ||
+      (process.env.NODE_ENV !== "test" && rawTokens.every(t => t.length < 32 || weakSecrets.has(t)))
     ) {
       return NextResponse.json(
         {
           error: "cron_not_configured",
-          message: "Cron authentication is not configured.",
+          message: "Cron authentication is not configured or uses weak secrets.",
           requestId,
         },
         { status: 500, headers: { "x-request-id": requestId } }
       );
     }
 
-    if (authHeader !== `Bearer ${secret}`) {
+    if (!authHeader || !validCronTokens.includes(authHeader)) {
       return NextResponse.json(
         {
           error: "unauthorized",
