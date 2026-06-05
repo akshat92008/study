@@ -78,7 +78,7 @@ export class ChatPlannerService {
       userId,
       feature: 'chat',
       route: 'chat:planner',
-      model: 'pro',
+      model: 'flash',
       systemPrompt: artifactSystemPrompt,
       userPrompt: conversationMessages,
       maxOutputTokens: 1600,

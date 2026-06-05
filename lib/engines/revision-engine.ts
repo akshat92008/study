@@ -380,7 +380,7 @@ export async function generateCardsForConcept(
     userId,
     feature: 'rag_flashcard',
     route: 'rag:flashcard-generation',
-    model: 'pro',
+    model: 'flash',
     systemPrompt: 'You are an expert curriculum extraction engine.',
     userPrompt: prompt,
     schema: FlashcardBatchSchema,

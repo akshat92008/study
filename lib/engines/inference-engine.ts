@@ -78,7 +78,7 @@ Respond EXACTLY in this JSON format:
       userId,
       feature: 'session-analysis',
       route: 'inference:sync',
-      model: 'pro',
+      model: 'flash',
       systemPrompt: 'You are an elite behavioral analyst.',
       userPrompt: prompt,
       maxOutputTokens: 500,

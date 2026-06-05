@@ -1149,24 +1149,39 @@ export class EventWorkerService {
     if (material.status === 'processing') return { status: 'SKIPPED_INTENTIONALLY', reason: 'Material ingestion already in progress' };
     if (!material.storage_path) return { status: 'SKIPPED_INTENTIONALLY', reason: 'Material has no storage path' };
 
-    const { data: fileData, error: downloadError } = await supabase
-      .storage
-      .from('study-materials')
-      .download(material.storage_path);
+    try {
+      const { data: fileData, error: downloadError } = await supabase
+        .storage
+        .from('study-materials')
+        .download(material.storage_path);
 
-    if (downloadError || !fileData) {
-      throw new Error(`RAG material download failed: ${downloadError?.message ?? 'missing file data'}`);
+      if (downloadError || !fileData) {
+        throw new Error(`RAG material download failed: ${downloadError?.message ?? 'missing file data'}`);
+      }
+
+      const { ingestStudyMaterial } = await import('@/lib/rag/ingest');
+      await ingestStudyMaterial({
+        materialId,
+        userId,
+        buffer: Buffer.from(await fileData.arrayBuffer()),
+        mimeType: material.mime_type,
+      });
+
+      return { status: 'HANDLED' };
+    } catch (err: any) {
+      const message = err instanceof Error ? err.message : String(err);
+      await supabase
+        .from('study_materials')
+        .update({
+          status: 'failed',
+          retryable: true,
+          error_message: message.slice(0, 500),
+          updated_at: new Date().toISOString(),
+        })
+        .eq('id', materialId)
+        .eq('user_id', userId);
+      throw err;
     }
-
-    const { ingestStudyMaterial } = await import('@/lib/rag/ingest');
-    await ingestStudyMaterial({
-      materialId,
-      userId,
-      buffer: Buffer.from(await fileData.arrayBuffer()),
-      mimeType: material.mime_type,
-    });
-
-    return { status: 'HANDLED' };
   }
 
   private static buildChatSideEffectsInput(

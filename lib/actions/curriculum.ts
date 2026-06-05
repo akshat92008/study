@@ -31,7 +31,7 @@ Respond exactly as this JSON structure:
     userId: user.id,
     feature: 'onboarding',
     route: 'curriculum:generate',
-    model: 'pro',
+    model: 'flash',
     systemPrompt: 'You are an elite academic curriculum designer.',
     userPrompt: prompt,
     maxOutputTokens: 1000
