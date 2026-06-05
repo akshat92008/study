@@ -154,8 +154,8 @@ export async function getLearnerStateSnapshot(
   if (options.goalId) lastAutopsyQuery = lastAutopsyQuery.eq('goal_id', options.goalId);
 
   let seededTopicsQuery = supabase
-    .from('seeded_topics')
-    .select('subject, chapter, topic, microtarget, order_index, status')
+    .from('goal_curriculum_nodes')
+    .select('subject, chapter, title, description, order_index, status')
     .eq('user_id', userId)
     .in('status', ['active', 'not_started', 'in_progress'])
     .order('order_index', { ascending: true })
@@ -272,7 +272,14 @@ export async function getLearnerStateSnapshot(
         masteryPercent: totalConcepts > 0 ? Math.round((masteredCount / totalConcepts) * 100) : 0,
       },
     },
-    seededTopics: (seededTopicsRes.data as any) || [],
+    seededTopics: ((seededTopicsRes.data as any) || []).map((t: any) => ({
+      subject: t.subject,
+      chapter: t.chapter,
+      topic: t.title,
+      microtarget: t.description,
+      order_index: t.order_index,
+      status: t.status,
+    })),
     memory: {
       dueCount: overdueRes.count || 0,
       topDueCards: (overdueRes.data || []).map((card: any) => ({ id: card.id, front: card.front })),

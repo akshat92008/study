@@ -8,7 +8,9 @@ import {
   SESSION_SELECT,
 } from '@/lib/services/goal-context.service';
 import { logger } from '@/lib/utils/logger';
-import { seedTopicsForGoal } from '@/lib/topic-seeding';
+import { inferGoalDomain } from '@/lib/goals/goal-domain';
+import { resolveCurriculumForGoal, saveCurriculumNodes } from '@/lib/goals/curriculum-resolver';
+import { seedMicrotargetsForGoal } from '@/lib/goals/microtarget-seeder';
 
 function optionalString(value: unknown): string | null {
   return typeof value === 'string' && value.trim() ? value.trim() : null;
@@ -86,14 +88,20 @@ export async function POST(req: NextRequest) {
       preferredLearningStyle: optionalString(body.preferredLearningStyle),
     };
 
+    const domainResult = inferGoalDomain(title);
+
     const { data: goal, error: goalError } = await supabase
       .from('learning_goals')
       .insert({
         user_id: user.id,
         title,
-        subject: optionalString(body.subject),
-        domain: optionalString(body.domain),
-        exam_type: optionalString(body.examType),
+        subject: domainResult.subject || optionalString(body.subject),
+        domain: domainResult.domain || optionalString(body.domain),
+        exam: domainResult.exam || optionalString(body.examType),
+        grade: domainResult.grade,
+        confidence: domainResult.confidence,
+        needs_clarification: domainResult.needsClarification,
+        clarification_question: domainResult.clarificationQuestion,
         preset_id: optionalString(body.presetId),
         target_level: optionalString(body.targetLevel),
         description: optionalString(body.description),
@@ -108,28 +116,34 @@ export async function POST(req: NextRequest) {
 
     if (goalError || !goal) throw goalError || new Error('Goal insert failed');
 
+    // Return clarification state if needed without seeding unrelated defaults
+    if (domainResult.needsClarification) {
+      return NextResponse.json({
+        success: true,
+        goal,
+        needsClarification: true,
+        clarificationQuestion: domainResult.clarificationQuestion
+      }, { status: 201 });
+    }
+
     const session = await getOrCreatePrimaryGoalSession(supabase, user.id, goal.id);
 
-    // Seed topics deterministically or fallback to AI
-    let topicSeeding: any = null;
+    // Resolve Curriculum & Seed Microtargets dynamically
+    let resolvedCurriculum = null;
+    let seededMicrotargets = null;
     try {
-      topicSeeding = await seedTopicsForGoal(supabase, {
+      resolvedCurriculum = await resolveCurriculumForGoal(goal.title);
+      await saveCurriculumNodes(supabase, user.id, goal.id, resolvedCurriculum.goalDomain, resolvedCurriculum.nodes);
+      
+      seededMicrotargets = await seedMicrotargetsForGoal({
+        supabase,
         userId: user.id,
         goalId: goal.id,
-        goalTitle: goal.title ?? body.title ?? body.goalTitle ?? 'Custom Goal',
-        goalType: body.goalType ?? body.examType ?? body.domain ?? null,
-        presetId: goal.preset_id ?? body.presetId ?? body.preset_id ?? null,
-        subject: body.subject ?? null,
-        subjects: Array.isArray(body.subjects)
-          ? body.subjects
-          : body.subject
-            ? [body.subject]
-            : [],
-        chapter: body.chapter ?? null,
-        targetDate: body.targetDate ?? body.target_date ?? null,
+        curriculumNodes: resolvedCurriculum.nodes,
+        limit: 5
       });
     } catch (error) {
-      console.warn('Goal topic seeding skipped after goal creation', {
+      console.warn('Goal curriculum resolution/seeding skipped after goal creation', {
         userId: user.id,
         goalId: goal.id,
         error,
@@ -156,7 +170,8 @@ export async function POST(req: NextRequest) {
       session: hydratedSession ?? session,
       goalId: goal.id,
       sessionId: session.id,
-      topicSeeding,
+      curriculum: resolvedCurriculum,
+      microtargets: seededMicrotargets,
     }, { status: 201, headers: { 'x-request-id': requestId } });
   } catch (error) {
     return unexpectedApiErrorResponse(req, error, 'goals_post', 'Unable to create learning goal.');

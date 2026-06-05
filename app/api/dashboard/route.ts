@@ -70,8 +70,8 @@ export async function GET(request: Request) {
     if (goalId) topMemoryQuery = topMemoryQuery.eq('goal_id', goalId);
 
     let seededTopicsQuery = supabase
-      .from('seeded_topics')
-      .select('id, subject, chapter, topic, microtarget, status, order_index')
+      .from('goal_curriculum_nodes')
+      .select('id, subject, chapter, title, description, status, order_index')
       .eq('user_id', user.id)
       .order('order_index', { ascending: true })
       .limit(20);
@@ -116,7 +116,15 @@ export async function GET(request: Request) {
     return NextResponse.json({
       profile: profileRes.data,
       activeGoal,
-      seededTopics: seededTopicsRes?.data ?? [],
+      seededTopics: (seededTopicsRes?.data ?? []).map((t: any) => ({
+        id: t.id,
+        subject: t.subject,
+        chapter: t.chapter,
+        topic: t.title,
+        microtarget: t.description,
+        status: t.status,
+        order_index: t.order_index
+      })),
       cognition,
       revision: { due: dueRes, stats: statsRes, allCards: allCardsRes.data || [] },
       mistakes: mistakeAnalytics ? { ...mistakeAnalytics, syllabus } : null,
