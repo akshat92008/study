@@ -65,30 +65,40 @@ export async function ingestStudyMaterial(input: IngestStudyMaterialInput) {
       .eq('user_id', input.userId);
 
     await updateRagJob(job?.id, input.userId, 'embedding', { chunkCount: chunks.length });
-    for (const chunk of chunks) {
-      const embedding = await embedRagText(chunk.text, {
-        userId: input.userId,
-        route: 'rag-ingest',
-      });
+    
+    const BATCH_SIZE = 5;
+    for (let i = 0; i < chunks.length; i += BATCH_SIZE) {
+      const batch = chunks.slice(i, i + BATCH_SIZE);
+      const batchResults = await Promise.all(
+        batch.map(async (chunk) => {
+          const embedding = await embedRagText(chunk.text, {
+            userId: input.userId,
+            route: 'rag-ingest',
+          });
+          return { chunk, embedding };
+        })
+      );
 
-      const { error } = await supabase
-        .from('study_material_chunks')
-        .insert({
-          material_id: input.materialId,
-          user_id: input.userId,
-          chunk_index: chunk.chunkIndex,
-          page_start: chunk.pageStart,
-          page_end: chunk.pageEnd,
-          heading: chunk.heading,
-          text: chunk.text,
-          token_estimate: chunk.tokenEstimate,
-          content_hash: chunk.contentHash,
-          embedding: embedding.length ? `[${embedding.join(',')}]` : null,
-          embedding_provider: embedding.length ? 'router' : null,
-          embedding_model: embedding.length ? 'router:embedding' : null,
-        });
+      for (const { chunk, embedding } of batchResults) {
+        const { error } = await supabase
+          .from('study_material_chunks')
+          .insert({
+            material_id: input.materialId,
+            user_id: input.userId,
+            chunk_index: chunk.chunkIndex,
+            page_start: chunk.pageStart,
+            page_end: chunk.pageEnd,
+            heading: chunk.heading,
+            text: chunk.text,
+            token_estimate: chunk.tokenEstimate,
+            content_hash: chunk.contentHash,
+            embedding: embedding.length ? `[${embedding.join(',')}]` : null,
+            embedding_provider: embedding.length ? 'router' : null,
+            embedding_model: embedding.length ? 'router:embedding' : null,
+          });
 
-      if (error) throw error;
+        if (error) throw error;
+      }
     }
 
     const { error: updateError } = await supabase
