@@ -44,5 +44,5 @@ export const featureFlags = {
   /** Enable assessment autopsy (replaces "mock autopsy" naming in logic) */
   assessmentAutopsy: () => isEnabled('ENABLE_ASSESSMENT_AUTOPSY', true),
   /** Enable full agentic engine loop */
-  agentLoop: () => isEnabled('ENABLE_AGENT_LOOP', false),
+  agentLoop: () => isEnabled('ENABLE_AGENT_LOOP', true),
 }
