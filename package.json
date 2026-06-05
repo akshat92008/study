@@ -37,6 +37,8 @@
     "schema:check": "ts-node scripts/schema-sanity-check.ts",
     "schema:rls:beta": "tsx scripts/verify-rls-beta.ts",
     "schema:beta-contract": "tsx scripts/schema-beta-contract.ts",
+    "launch:manual-beta-local": "npm run schema:beta-contract && tsx scripts/verify-admin-beta-tools.ts && npm run smoke:beta100 -- --mode=local",
+    "launch:manual-beta-remote": "if [ -z \"$SUPABASE_URL\" ] || [[ \"$SUPABASE_URL\" == *\"127.0.0.1\"* ]] || [[ \"$SUPABASE_URL\" == *\"localhost\"* ]]; then echo 'Error: SUPABASE_URL must be a remote URL'; exit 1; fi && npm run schema:beta-contract && tsx scripts/verify-admin-beta-tools.ts && npm run smoke:beta100",
     "contract:check": "ts-node scripts/check-schema-contract.ts",
     "verify:local": "SKIP_ENV_VALIDATION=1 npm run typecheck && npm run lint && npm test && npm run build && SKIP_ENV_VALIDATION=1 npm run smoke:mvp -- --mode=local",
     "verify:db": "npx tsx scripts/verify-db.ts",

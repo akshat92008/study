@@ -8,6 +8,12 @@ dotenv.config(); // fallback
 
 async function main() {
   const connectionString = process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:54322/postgres';
+  if (process.env.SUPABASE_URL && process.env.SUPABASE_URL.includes('supabase.co')) {
+    if (!process.env.DATABASE_URL || process.env.DATABASE_URL.includes('localhost')) {
+      console.error('SUPABASE_URL is set to remote, but DATABASE_URL is missing or local.');
+      process.exit(1);
+    }
+  }
   
   console.log(`Connecting to database at: ${connectionString.split('@')[1] || connectionString}`);
   const client = new Client({ connectionString });
