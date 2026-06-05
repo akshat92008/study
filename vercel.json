@@ -2,7 +2,7 @@
   "crons": [
     {
       "path": "/api/internal/workers/process-events",
-      "schedule": "0 0 * * *"
+      "schedule": "* * * * *"
     }
   ]
 }
