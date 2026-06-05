@@ -127,6 +127,7 @@ async function callGET(): Promise<SessionCardResponse> {
 describe('Session Card API — Response Contract', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    delete process.env.SESSION_CARD_LLM_PROSE_ENABLED;
   });
 
   it('T_CONTRACT: response always has all required top-level fields', async () => {
@@ -217,7 +218,7 @@ describe('Session Card API — Response Contract', () => {
     expect(budgetedGenerateJSON).not.toHaveBeenCalled();
   });
 
-  it('T_STALE_CACHE: version mismatch → regeneration (LLM attempted)', async () => {
+  it('T_STALE_CACHE: version mismatch → regeneration without dashboard LLM by default', async () => {
     const { budgetedGenerateJSON } = await import('@/lib/ai/budgeted');
 
     stubFrom({
@@ -271,15 +272,16 @@ describe('Session Card API — Response Contract', () => {
     });
 
     const res = await callGET();
-    // Should regenerate (LLM is attempted, even if it fails → code fallback)
+    // Should regenerate from deterministic code without calling the LLM on dashboard load.
     expect(res.hasCard).toBe(true);
     expect(res.card?.focusTopic).not.toBe('Stale Topic'); // regenerated
-    expect(budgetedGenerateJSON).toHaveBeenCalled();
+    expect(budgetedGenerateJSON).not.toHaveBeenCalled();
     // Upsert should be called to store new card
     expect(mockUpsert).toHaveBeenCalled();
   });
 
-  it('T_LLM_FALLBACK: LLM failure → code-computed values used (no crash)', async () => {
+  it('T_LLM_FALLBACK: explicitly enabled LLM failure → code-computed values used (no crash)', async () => {
+    process.env.SESSION_CARD_LLM_PROSE_ENABLED = 'true';
     const { budgetedGenerateJSON } = await import('@/lib/ai/budgeted');
     vi.mocked(budgetedGenerateJSON).mockRejectedValue(new Error('Simulated LLM error'));
 
@@ -322,6 +324,7 @@ describe('Session Card API — Response Contract', () => {
     expect(['none', 'null', 'general', '']).not.toContain(
       res.card?.focusTopic?.toLowerCase()
     );
+    expect(budgetedGenerateJSON).toHaveBeenCalled();
   });
 
   it('T_OVERDUE_P1: overdue cards → revision card returned', async () => {
