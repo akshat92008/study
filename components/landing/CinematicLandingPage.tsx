@@ -228,20 +228,63 @@ function Reveal({
   children,
   className,
   delay = 0,
+  direction = 'up',
 }: {
   children: ReactNode;
   className?: string;
   delay?: number;
+  direction?: 'up' | 'left' | 'right' | 'none';
 }) {
   const reduceMotion = usePrefersReducedMotion();
+
+  const getInitial = () => {
+    if (reduceMotion || direction === 'none') return { opacity: 0.72 };
+    if (direction === 'up') return { opacity: 0.72, y: 24 };
+    if (direction === 'left') return { opacity: 0.72, x: 24 };
+    if (direction === 'right') return { opacity: 0.72, x: -24 };
+    return { opacity: 0.72 };
+  };
+
+  const getAnimate = () => {
+    if (reduceMotion || direction === 'none') return { opacity: 1 };
+    if (direction === 'up') return { opacity: 1, y: 0 };
+    if (direction === 'left') return { opacity: 1, x: 0 };
+    if (direction === 'right') return { opacity: 1, x: 0 };
+    return { opacity: 1 };
+  };
 
   return (
     <motion.div
       className={className}
-      initial={reduceMotion ? false : { opacity: 0.72, y: 18 }}
-      whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.65, ease: 'easeOut', delay }}
+      initial={reduceMotion ? false : getInitial()}
+      whileInView={reduceMotion ? undefined : getAnimate()}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1], delay }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function FadeIn({
+  children,
+  className,
+  delay = 0,
+  duration = 0.6,
+}: {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+  duration?: number;
+}) {
+  const reduceMotion = usePrefersReducedMotion();
+  return (
+    <motion.div
+      className={className}
+      initial={reduceMotion ? false : { opacity: 0 }}
+      whileInView={reduceMotion ? undefined : { opacity: 1 }}
+      viewport={{ once: true, margin: '-20px' }}
+      transition={{ duration, ease: 'easeOut', delay }}
     >
       {children}
     </motion.div>
@@ -428,21 +471,32 @@ function HeroSection() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <h1 className="mt-8 max-w-6xl font-display text-[3rem] font-semibold leading-[1] text-white sm:text-[4.45rem] lg:text-[5.55rem]">
-            Understand anything.
-            <span className="block bg-gradient-to-r from-white via-violet-100 to-cyan-100 bg-clip-text text-transparent">
+          <h1 className="mt-8 flex flex-col items-center max-w-6xl font-display text-[3rem] font-semibold leading-[1] text-white sm:text-[4.45rem] lg:text-[5.55rem]">
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            >
+              Understand anything.
+            </motion.span>
+            <motion.span
+              className="block bg-gradient-to-r from-white via-violet-100 to-cyan-100 bg-clip-text text-transparent"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            >
               Remember everything.
-            </span>
+            </motion.span>
           </h1>
         </Reveal>
 
-        <Reveal delay={0.16}>
+        <Reveal delay={0.24}>
           <p className="mx-auto mt-7 max-w-3xl text-[1.05rem] leading-8 text-white/68 sm:text-[1.22rem]">
             Cognition OS turns your goals, sources, mistakes, and reviews into a daily learning mission &mdash; guided by an AI tutor that knows your progress.
           </p>
         </Reveal>
 
-        <Reveal delay={0.24}>
+        <Reveal delay={0.32}>
           <div className="mt-9 flex w-full max-w-md [flex-direction:column] gap-3 sm:max-w-none sm:[flex-direction:row] sm:justify-center">
             <PrimaryButton href="/dashboard">Launch Cognition OS</PrimaryButton>
             <PrimaryButton href="/waitlist" variant="secondary">
@@ -451,11 +505,15 @@ function HeroSection() {
           </div>
         </Reveal>
 
-        <Reveal className="mt-14 w-full" delay={0.32}>
-          <div className="relative mx-auto w-full max-w-6xl">
+        <Reveal className="mt-14 w-full" delay={0.4}>
+          <motion.div
+            className="relative mx-auto w-full max-w-6xl"
+            animate={reduceMotion ? undefined : { y: [0, -12, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+          >
             <div className="absolute inset-x-6 -top-5 h-24 bg-gradient-to-r from-violet-500/20 via-cyan-400/14 to-violet-500/20 blur-3xl" />
             <ProductMockup mode="mission" />
-          </div>
+          </motion.div>
         </Reveal>
       </div>
     </section>
@@ -729,14 +787,33 @@ function ProductLoop() {
         <Reveal className="mt-12">
           <div className="relative grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6 lg:gap-3">
             <div className="absolute left-7 right-7 top-7 hidden h-px bg-gradient-to-r from-transparent via-violet-200/30 to-transparent lg:block" />
+            <motion.div
+              className="absolute left-7 right-7 top-7 hidden h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent lg:block"
+              initial={false}
+              whileInView={{
+                opacity: [0, 1, 0],
+                backgroundPosition: ['200% 0', '-200% 0']
+              }}
+              viewport={{ once: true }}
+              transition={{ duration: 3, ease: "easeInOut", delay: 0.5 }}
+              style={{ backgroundSize: '200% 100%' }}
+            />
             {loopSteps.map((step, index) => (
-              <div key={step.label} className="relative flex gap-4 lg:flex-col lg:items-center lg:text-center">
+              <motion.div
+                key={step.label}
+                className="relative flex gap-4 lg:flex-col lg:items-center lg:text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.5, delay: index * 0.15, ease: 'easeOut' }}
+                whileHover={{ y: -4, scale: 1.02, transition: { duration: 0.2 } }}
+              >
                 <div
                   className={cx(
-                    'relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border bg-[#090910] shadow-[0_0_24px_rgba(124,58,237,0.16)]',
+                    'relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border bg-[#090910] shadow-[0_0_24px_rgba(124,58,237,0.16)] transition-colors duration-300',
                     index === loopSteps.length - 1
-                      ? 'border-cyan-200/45 text-cyan-100'
-                      : 'border-violet-200/25 text-violet-100',
+                      ? 'border-cyan-200/45 text-cyan-100 group-hover:border-cyan-300'
+                      : 'border-violet-200/25 text-violet-100 group-hover:border-violet-300',
                   )}
                 >
                   <step.icon className="h-5 w-5" />
@@ -748,7 +825,7 @@ function ProductLoop() {
                   <p className="text-[0.9rem] font-semibold text-white">{step.label}</p>
                   <p className="mt-1 text-[0.76rem] leading-5 text-white/42">Step {index + 1}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </Reveal>
@@ -786,7 +863,10 @@ function FeatureVideoSection({
   return (
     <section className="relative z-10 overflow-hidden py-20 sm:py-24">
       <div className={cx(pageContainerClass, 'grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-14')}>
-        <Reveal className={cx(reverse && 'lg:order-2')}>
+        <Reveal 
+          className={cx(reverse && 'lg:order-2')}
+          direction={reverse ? 'right' : 'left'}
+        >
           <div className="mx-auto max-w-xl lg:mx-0">
             <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-lg border border-white/12 bg-white/[0.05] text-cyan-100">
               {feature.mock === 'goal' ? (
@@ -808,7 +888,11 @@ function FeatureVideoSection({
           </div>
         </Reveal>
 
-        <Reveal className={cx(reverse && 'lg:order-1')} delay={0.12}>
+        <Reveal 
+          className={cx(reverse && 'lg:order-1')} 
+          delay={0.12}
+          direction={reverse ? 'left' : 'right'}
+        >
           <VideoOrMock
             videoSrc={feature.videoSrc}
             kind={feature.mock}
@@ -927,20 +1011,45 @@ function FeatureMock({ kind }: { kind: FeatureMockKind }) {
       <div>
         <MockHeader label="Context tutor" />
         <div className="mt-7 rounded-lg border border-white/12 bg-black/24 p-4">
-          <div className="flex flex-wrap gap-2">
+          <motion.div 
+            className="flex flex-wrap gap-2"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.1 } }
+            }}
+          >
             {['Goal: electrostatics', 'Source: notes p.42', 'Weak: flux', 'Due: 8 cards'].map((chip) => (
-              <span key={chip} className="rounded-full border border-cyan-200/14 bg-cyan-300/[0.07] px-3 py-1 text-[0.72rem] text-cyan-50/78">
+              <motion.span 
+                key={chip} 
+                className="rounded-full border border-cyan-200/14 bg-cyan-300/[0.07] px-3 py-1 text-[0.72rem] text-cyan-50/78"
+                variants={{
+                  hidden: { opacity: 0, scale: 0.9 },
+                  visible: { opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 200, damping: 20 } }
+                }}
+              >
                 {chip}
-              </span>
+              </motion.span>
             ))}
-          </div>
+          </motion.div>
           <div className="mt-6 space-y-4">
-            <div className="ml-auto max-w-[82%] rounded-lg border border-white/10 bg-white/[0.06] p-4 text-[0.88rem] leading-6 text-white/72">
+            <motion.div 
+              className="ml-auto max-w-[82%] rounded-lg border border-white/10 bg-white/[0.06] p-4 text-[0.88rem] leading-6 text-white/72"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.5 }}
+            >
               Explain why the flux is zero here.
-            </div>
-            <div className="max-w-[88%] rounded-lg border border-violet-200/18 bg-violet-300/[0.08] p-4 text-[0.88rem] leading-6 text-white/82">
+            </motion.div>
+            <motion.div 
+              className="max-w-[88%] rounded-lg border border-violet-200/18 bg-violet-300/[0.08] p-4 text-[0.88rem] leading-6 text-white/82"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 1.2 }}
+            >
               Your source defines flux as field through a surface. Here the field is tangent, so no field line crosses the surface.
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -951,26 +1060,43 @@ function FeatureMock({ kind }: { kind: FeatureMockKind }) {
     return (
       <div>
         <MockHeader label="Mistake autopsy" />
-        <div className="mt-7 grid gap-4">
+        <motion.div 
+          className="mt-7 grid gap-4"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.25 } }
+          }}
+        >
           {[
             ['Concept gap', 'Mixed up condition with conclusion', 'violet'],
             ['Reasoning error', 'Skipped sign check before substitution', 'amber'],
             ['Next repair task', 'Solve 8 boundary-condition questions', 'cyan'],
           ].map(([title, copy, color]) => (
-            <div key={title} className="rounded-lg border border-white/12 bg-white/[0.05] p-4">
+            <motion.div 
+              key={title} 
+              className="rounded-lg border border-white/12 bg-white/[0.05] p-4"
+              variants={{
+                hidden: { opacity: 0, x: -10 },
+                visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: "easeOut" } }
+              }}
+            >
               <div className="flex items-center gap-3">
-                <span
+                <motion.span
                   className={cx(
                     'h-2.5 w-2.5 rounded-full',
-                    color === 'amber' ? 'bg-amber-300' : color === 'cyan' ? 'bg-cyan-200' : 'bg-violet-300',
+                    color === 'amber' ? 'bg-amber-300 shadow-[0_0_8px_rgba(252,211,77,0.8)]' : color === 'cyan' ? 'bg-cyan-200 shadow-[0_0_8px_rgba(165,243,252,0.8)]' : 'bg-violet-300 shadow-[0_0_8px_rgba(196,181,253,0.8)]',
                   )}
+                  animate={{ opacity: [0.6, 1, 0.6] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                 />
                 <p className="text-[0.86rem] font-semibold text-white">{title}</p>
               </div>
               <p className="mt-3 text-[0.82rem] leading-6 text-white/58">{copy}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     );
   }
@@ -986,16 +1112,31 @@ function FeatureMock({ kind }: { kind: FeatureMockKind }) {
           </div>
           <Compass className="h-8 w-8 text-cyan-100" />
         </div>
-        <div className="mt-7 space-y-3">
+        <motion.div 
+          className="mt-7 space-y-3"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.15 } }
+          }}
+        >
           {['Revise 12 source-backed cards', 'Solve 20 mixed questions', 'Autopsy anything below 70%', 'Ask tutor for one summary'].map((task, index) => (
-            <div key={task} className="flex items-center gap-3 rounded-lg border border-white/10 bg-black/20 p-3">
+            <motion.div 
+              key={task} 
+              className="flex items-center gap-3 rounded-lg border border-white/10 bg-black/20 p-3"
+              variants={{
+                hidden: { opacity: 0, y: 10 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.3 } }
+              }}
+            >
               <span className="flex h-7 w-7 items-center justify-center rounded-full bg-violet-300/[0.1] text-[0.75rem] font-semibold text-violet-100">
                 {index + 1}
               </span>
               <span className="text-[0.86rem] text-white/72">{task}</span>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );
