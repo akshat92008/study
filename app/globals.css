@@ -154,6 +154,7 @@ a:hover { text-decoration: underline; }
 ::selection { background: var(--accent-blue-dim); color: var(--text-primary); }
 
 /* --- UTILITY CLASSES --- */
+@layer utilities {
 .text-xs { font-size: var(--fs-xs); }
 .text-sm { font-size: var(--fs-sm); }
 .text-base { font-size: var(--fs-base); }
@@ -211,6 +212,7 @@ a:hover { text-decoration: underline; }
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-4); }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-4); }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-4); }
+}
 
 /* --- ANIMATIONS --- */
 @keyframes fadeIn {
