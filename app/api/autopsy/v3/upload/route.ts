@@ -5,6 +5,9 @@ import { extractSelectableTextFromPdf } from '@/lib/autopsy-v3/extraction/pdf-te
 import { enforceDailyTableCap, jsonWithRequestId, requireAutopsyV3User } from '@/lib/autopsy-v3/permissions';
 import { maxPdfBytes } from '@/lib/autopsy-v3/limits';
 import { featureFlags } from '@/lib/config/flags';
+import { featureDisabledResponse, isBetaFeatureEnabled } from '@/lib/config/beta-flags';
+import { getPlanLimits } from '@/lib/billing/plan-limits';
+import { consumeFeatureUsage, enforceFeatureLimit, featureLimitResponse } from '@/lib/usage/enforce-feature-limit';
 
 function formString(value: FormDataEntryValue | null): string | null {
   return typeof value === 'string' && value.trim() ? value.trim() : null;
@@ -19,14 +22,14 @@ export async function POST(req: NextRequest) {
   try {
     const auth = await requireAutopsyV3User(requestId);
     if (auth.error) return auth.error;
-    const { supabase, user, limits } = auth;
+    const { supabase, user, limits, access } = auth;
 
-    if (!featureFlags.autopsyUploads()) {
-      return apiErrorResponse('feature_disabled', {
-        status: 403,
-        message: 'Autopsy uploads are currently disabled for the alpha.',
-        requestId,
-      });
+    if (!featureFlags.autopsyUploads() || !isBetaFeatureEnabled('autopsy_upload')) return featureDisabledResponse(requestId);
+    try {
+      await enforceFeatureLimit(user.id, 'rag_upload');
+    } catch (limitError: any) {
+      if (limitError?.check) return featureLimitResponse(limitError.check, requestId);
+      throw limitError;
     }
 
     const formData = await req.formData();
@@ -43,11 +46,12 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    const maxBytes = maxPdfBytes();
+    const planLimits = getPlanLimits(access.plan);
+    const maxBytes = Math.min(maxPdfBytes(), planLimits.maxFileMb * 1024 * 1024);
     if (file.size > maxBytes) {
       return apiErrorResponse('file_too_large', {
         status: 413,
-        message: `Deep Autopsy PDFs are capped at ${limits.maxPdfMb}MB.`,
+        message: `Deep Autopsy PDFs are capped at ${Math.round(maxBytes / 1024 / 1024)}MB for your beta plan.`,
         requestId,
       });
     }
@@ -100,6 +104,13 @@ export async function POST(req: NextRequest) {
       .select('*')
       .single();
     if (error) throw error;
+
+    const usage = await consumeFeatureUsage(user.id, 'rag_upload', 1, {
+      assessmentId: assessment.id,
+      fileSize: file.size,
+      idempotencyKey: `autopsy_upload:${user.id}:${assessment.id}`,
+    });
+    if (!usage.allowed) return featureLimitResponse(usage, requestId);
 
     return jsonWithRequestId({
       assessment,

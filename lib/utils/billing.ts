@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { logger } from '@/lib/utils/logger';
 import { getMaxPromptChars, isPromptTooLarge } from '@/lib/ai/token-budget';
+import { getPlanLimits, normalizeManualPlan, type ManualPlan } from '@/lib/billing/plan-limits';
 
 export type FeatureLimit =
   | 'chat_messages_daily'
@@ -31,14 +32,14 @@ export type UsageGateResult = {
 };
 
 const DEFAULT_LIMITS: Record<FeatureLimit, number> = {
-  chat_messages_daily: 40,
+  chat_messages_daily: 3,
   chat_messages_hourly: 10,
-  tutor_messages_daily: 60,
-  autopsy_uploads_daily: 5,
-  ai_calls_daily: 120,
-  document_uploads: 20,
-  tutor_queries_daily: 60,
-  autopsies_monthly: 20,
+  tutor_messages_daily: 3,
+  autopsy_uploads_daily: 0,
+  ai_calls_daily: 3,
+  document_uploads: 0,
+  tutor_queries_daily: 3,
+  autopsies_monthly: 0,
   expensive_operations_daily: 10,
 };
 
@@ -107,7 +108,7 @@ export function usageGateResponse(result: UsageGateResult): NextResponse {
       limit: result.limit,
       used: result.used,
       remaining: result.remaining,
-      upgradeUrl: result.code === 'limit_reached' ? '/api/billing/checkout' : undefined,
+      upgradeUrl: result.code === 'limit_reached' ? '/access' : undefined,
     },
     { status }
   );
@@ -162,16 +163,7 @@ export async function consumeUsageLimit(
   const auth = enforceAuthenticatedUsage(userId);
   if (!auth.allowed) return auth;
 
-  const limit = getLimit(feature);
-  const subscriptionStatus = await getUserSubscriptionStatus(userId as string);
-  if (subscriptionStatus !== 'free') {
-    return {
-      allowed: true,
-      limit: Number.MAX_SAFE_INTEGER,
-      used: 0,
-      remaining: Number.MAX_SAFE_INTEGER,
-    };
-  }
+  const limit = await getEffectiveLegacyLimit(userId as string, feature);
 
   if (limit === 0) {
     const isHourly = feature === 'chat_messages_hourly';
@@ -262,9 +254,10 @@ export async function checkUsageLimit(
     const gate = RPC_GATE_MAP[feature];
     const row = data as Record<string, any> | null;
     const used = Number(row?.[gate] ?? 0);
+    const limit = await getEffectiveLegacyLimit(userId, feature);
     return {
-      allowed: used < getLimit(feature),
-      reason: used < getLimit(feature) ? undefined : 'limit_reached',
+      allowed: used < limit,
+      reason: used < limit ? undefined : 'limit_reached',
     };
   } catch (error: any) {
     logger.error('[UsageGate] read-only usage check failed', { userId, feature, error: error?.message });
@@ -273,22 +266,51 @@ export async function checkUsageLimit(
   }
 }
 
+function limitForManualPlan(plan: ManualPlan, feature: FeatureLimit): number {
+  const limits = getPlanLimits(plan);
+  switch (feature) {
+    case 'chat_messages_daily':
+    case 'tutor_messages_daily':
+    case 'tutor_queries_daily':
+      return limits.dailyChatMessages;
+    case 'ai_calls_daily':
+      return limits.dailyAiCalls;
+    case 'autopsy_uploads_daily':
+    case 'document_uploads':
+      return limits.dailyRagUploads;
+    case 'autopsies_monthly':
+    case 'expensive_operations_daily':
+      return limits.dailyAutopsyReports;
+    case 'chat_messages_hourly':
+      return Math.min(getLimit(feature), limits.dailyChatMessages);
+    default:
+      return getLimit(feature);
+  }
+}
+
+async function getEffectiveLegacyLimit(userId: string, feature: FeatureLimit): Promise<number> {
+  const plan = await getUserSubscriptionStatus(userId);
+  return plan === 'free' ? getLimit(feature) : limitForManualPlan(plan, feature);
+}
+
 export async function getUserSubscriptionStatus(
   userId: string
-): Promise<'free' | 'pro' | 'teams'> {
+): Promise<ManualPlan> {
   try {
     const supabase = createAdminClient();
     const { data, error } = await supabase
       .from('profiles')
-      .select('subscription_status')
+      .select('manual_plan, subscription_status')
       .eq('id', userId)
       .maybeSingle();
     if (error) throw error;
 
-    const status = String(data?.subscription_status || 'free').toLowerCase();
-    if (status === 'teams') return 'teams';
-    if (status === 'pro' || status === 'active' || status === 'trialing') return 'pro';
-    return 'free';
+    const manualPlan = normalizeManualPlan((data as any)?.manual_plan);
+    if (manualPlan !== 'free') return manualPlan;
+
+    const status = String((data as any)?.subscription_status || 'free').toLowerCase();
+    if (status === 'teams' || status === 'pro' || status === 'active' || status === 'trialing') return 'pro';
+    return manualPlan;
   } catch (error: any) {
     logger.warn('[Billing] subscription status unavailable; defaulting to free', {
       userId,

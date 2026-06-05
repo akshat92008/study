@@ -445,10 +445,10 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
                 {userName}
               </div>
               <a
-                href="/api/billing/checkout"
+                href="/access"
                 style={{ fontSize: 'var(--fs-xs)', color: 'var(--accent-blue)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 4 }}
               >
-                <CreditCard size={11} /> Upgrade
+                <CreditCard size={11} /> Access
               </a>
             </div>
           )}

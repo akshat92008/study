@@ -59,7 +59,7 @@ describe('Mistake Ingestion Tests', () => {
     expect(response.status).toBeGreaterThanOrEqual(400);
   });
 
-  it('correctly ingests valid mistakes and publishes event', async () => {
+  it('does not ingest through the deprecated legacy route', async () => {
     chain.single.mockResolvedValue({ data: { id: 'mistake-1' }, error: null });
 
     const req = createMockRequest(
@@ -75,10 +75,9 @@ describe('Mistake Ingestion Tests', () => {
     );
     const response = await POST(req);
 
-    // Depending on implementation, it may return 200 or 202
-    expect(response.status).toBeLessThan(300);
-    expect(EventDispatcher.publish).toHaveBeenCalledWith(expect.objectContaining({
-      type: 'AUTOPSY_UPLOAD_RECEIVED'
-    }));
+    expect(response.status).toBe(410);
+    const body = await response.json();
+    expect(body.error).toBe('legacy_autopsy_disabled');
+    expect(EventDispatcher.publish).not.toHaveBeenCalled();
   });
 });

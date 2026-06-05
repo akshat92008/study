@@ -812,9 +812,12 @@ export class EventWorkerService {
     event: any,
     payload: Record<string, any>
   ): Promise<ConsumerResult> {
-    const { featureFlags } = await import('@/lib/config/flags');
     if (!hermesRuntimeConfig.hermesEnabled()) {
       return { status: 'SKIPPED_INTENTIONALLY', reason: 'Hermes is disabled (HERMES_ENABLED=false)' };
+    }
+    const { getBetaFlags } = await import('@/lib/config/beta-flags');
+    if (!getBetaFlags().workerAiEnabled && event.type.startsWith('HERMES_')) {
+      return { status: 'SKIPPED_INTENTIONALLY', reason: 'Worker AI is disabled (WORKER_AI_ENABLED=false)' };
     }
 
     const { isHermesError } = await import('@/lib/hermes');

@@ -5,6 +5,8 @@ import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import { ensureGoalForUser } from '@/lib/services/goal-context.service';
 import { ingestLearningSignal } from '@/lib/learning-signals/ingest';
+import { betaAccessErrorResponse, requireActiveBetaUser } from '@/lib/access/beta-access';
+import { featureDisabledResponse, isBetaFeatureEnabled } from '@/lib/config/beta-flags';
 
 export async function GET(request: NextRequest) {
   try {
@@ -19,6 +21,16 @@ export async function GET(request: NextRequest) {
         requestId,
       });
     }
+    try {
+      await requireActiveBetaUser(user.id);
+    } catch (accessError) {
+      return betaAccessErrorResponse(accessError, requestId) ?? apiErrorResponse('beta_access_required', {
+        status: 403,
+        message: 'Cognition OS is currently in a limited beta. Ask the admin to activate your beta access.',
+        requestId,
+      });
+    }
+    if (!isBetaFeatureEnabled('revision')) return featureDisabledResponse(requestId);
 
     const { allowed, remaining, resetAt } = await checkRateLimit({
       identifier: user.id,
@@ -56,6 +68,16 @@ export async function PATCH(request: NextRequest) {
         requestId,
       });
     }
+    try {
+      await requireActiveBetaUser(user.id);
+    } catch (accessError) {
+      return betaAccessErrorResponse(accessError, requestId) ?? apiErrorResponse('beta_access_required', {
+        status: 403,
+        message: 'Cognition OS is currently in a limited beta. Ask the admin to activate your beta access.',
+        requestId,
+      });
+    }
+    if (!isBetaFeatureEnabled('revision')) return featureDisabledResponse(requestId);
 
     const { allowed, remaining, resetAt } = await checkRateLimit({
       identifier: user.id,
@@ -133,6 +155,16 @@ export async function DELETE(request: NextRequest) {
         requestId,
       });
     }
+    try {
+      await requireActiveBetaUser(user.id);
+    } catch (accessError) {
+      return betaAccessErrorResponse(accessError, requestId) ?? apiErrorResponse('beta_access_required', {
+        status: 403,
+        message: 'Cognition OS is currently in a limited beta. Ask the admin to activate your beta access.',
+        requestId,
+      });
+    }
+    if (!isBetaFeatureEnabled('revision')) return featureDisabledResponse(requestId);
 
     const { allowed, remaining, resetAt } = await checkRateLimit({
       identifier: user.id,
@@ -183,6 +215,16 @@ export async function POST(request: NextRequest) {
         requestId,
       });
     }
+    try {
+      await requireActiveBetaUser(user.id);
+    } catch (accessError) {
+      return betaAccessErrorResponse(accessError, requestId) ?? apiErrorResponse('beta_access_required', {
+        status: 403,
+        message: 'Cognition OS is currently in a limited beta. Ask the admin to activate your beta access.',
+        requestId,
+      });
+    }
+    if (!isBetaFeatureEnabled('revision')) return featureDisabledResponse(requestId);
 
     const { allowed, remaining, resetAt } = await checkRateLimit({
       identifier: user.id,

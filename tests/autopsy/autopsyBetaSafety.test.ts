@@ -62,12 +62,13 @@ describe('Autopsy Beta Safety', () => {
     });
     
     const res = await POST(req, 'user123');
-    expect(res.status).toBe(503);
+    expect(res.status).toBe(410);
     const body = await res.json();
-    expect(body.error).toBe('autopsy_disabled');
+    expect(body.error).toBe('legacy_autopsy_disabled');
+    expect(body.replacement).toBe('/api/autopsy/v3');
   });
 
-  it('queues job when autopsy is enabled without processing synchronously', async () => {
+  it('keeps legacy Autopsy ingest disabled even when old processing flag is enabled', async () => {
     vi.stubEnv('ENABLE_AUTOPSY_PROCESSING', 'true');
     const req = new NextRequest('http://localhost/api/autopsy/ingest', {
       method: 'POST',
@@ -76,9 +77,9 @@ describe('Autopsy Beta Safety', () => {
     });
     
     const res = await POST(req, 'user123');
-    expect(res.status).toBe(202);
+    expect(res.status).toBe(410);
     const body = await res.json();
-    expect(body.status).toBe('queued');
-    expect(body.jobId).toBe('123');
+    expect(body.error).toBe('legacy_autopsy_disabled');
+    expect(body.retryable).toBe(false);
   });
 });
