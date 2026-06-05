@@ -99,7 +99,7 @@ export async function GET(req: NextRequest) {
       sb.from('event_queue').select('created_at').eq('status', 'PENDING').order('created_at', { ascending: true }).limit(1).maybeSingle(),
       sb.from('event_attempts').select('finished_at').not('finished_at', 'is', null).order('finished_at', { ascending: false }).limit(1).maybeSingle(),
       sb.from('consumer_locks').select('consumer_name').in('status', ['FAILED', 'DLQ']).limit(500),
-      sb.from('autopsy_jobs').select('*', { count: 'exact', head: true }).eq('status', 'pending'),
+      sb.from('autopsy_jobs').select('*', { count: 'exact', head: true }).eq('status', 'queued'),
       sb.from('autopsy_jobs').select('*', { count: 'exact', head: true }).eq('status', 'processing'),
       sb.from('autopsy_jobs').select('*', { count: 'exact', head: true }).eq('status', 'failed'),
       sb.from('autopsy_jobs').select('*', { count: 'exact', head: true }).eq('status', 'needs_user_input'),

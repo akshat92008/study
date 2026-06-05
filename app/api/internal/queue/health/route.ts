@@ -20,7 +20,7 @@ export async function GET(req: NextRequest) {
       .in('status', ['PENDING', 'RETRY_SCHEDULED'])
       .order('created_at', { ascending: true })
       .limit(100),
-    supabase.from('autopsy_jobs').select('*', { count: 'exact', head: true }).eq('status', 'pending'),
+    supabase.from('autopsy_jobs').select('*', { count: 'exact', head: true }).eq('status', 'queued'),
     supabase.from('autopsy_jobs').select('*', { count: 'exact', head: true }).eq('status', 'processing'),
     supabase.from('autopsy_jobs').select('*', { count: 'exact', head: true }).eq('status', 'failed'),
   ]);

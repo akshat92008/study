@@ -20,6 +20,14 @@ async function main() {
   
   try {
     await client.connect();
+  } catch (error) {
+    console.error(`[FATAL] Failed to connect to database at ${connectionString.split('@')[1] || connectionString}.`);
+    console.error('If testing locally, ensure you ran "supabase start".');
+    console.error('If testing against staging/production, ensure DATABASE_URL is set in your environment.');
+    process.exit(1);
+  }
+
+  try {
     console.log('Connected successfully. Starting sanity checks...\n');
 
     const requiredTables = [

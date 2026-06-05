@@ -1,6 +1,8 @@
 import { z } from 'zod';
 import { getOrCreatePrimaryGoalSession, GOAL_SELECT } from '@/lib/services/goal-context.service';
-import { seedTopicsForGoal } from '@/lib/topic-seeding';
+import { inferGoalDomain } from '@/lib/goals/goal-domain';
+import { resolveCurriculumForGoal, saveCurriculumNodes } from '@/lib/goals/curriculum-resolver';
+import { seedMicrotargetsForGoal } from '@/lib/goals/microtarget-seeder';
 
 const SubjectSchema = z
   .string()
@@ -115,13 +117,18 @@ export async function completeOnboardingForUser({
   }
 
   const existingGoal = await loadExistingActiveGoal(supabase, user.id);
+  const domainResult = inferGoalDomain(parsed.goalTitle);
+  
   const goalPayload = {
     user_id: user.id,
     title: parsed.goalTitle,
-    subject: primarySubject,
-    domain: parsed.goalType,
-    exam_type: parsed.goalType,
-    goal_type: parsed.goalType,
+    subject: domainResult.subject || primarySubject,
+    domain: domainResult.domain || parsed.goalType,
+    exam: domainResult.exam || parsed.goalType,
+    grade: domainResult.grade,
+    confidence: domainResult.confidence,
+    needs_clarification: domainResult.needsClarification,
+    clarification_question: domainResult.clarificationQuestion,
     preset_id: parsed.presetId ?? presetIdForGoalType(parsed.goalType),
     target_level: parsed.currentLevel,
     description: `Primary onboarding goal for ${parsed.goalType}.`,
@@ -163,26 +170,28 @@ export async function completeOnboardingForUser({
 
   const session = await getOrCreatePrimaryGoalSession(supabase, user.id, goal.id);
 
-  // Seed topics deterministically or fallback to AI
-  let topicSeeding: any = null;
-  try {
-    topicSeeding = await seedTopicsForGoal(supabase, {
-      userId: user.id,
-      goalId: goal.id,
-      goalTitle: goal.title ?? input.goalTitle ?? 'Custom Goal',
-      goalType: input.goalType ?? null,
-      presetId: goal.preset_id ?? input.presetId ?? null,
-      subject: input.subjects?.[0] ?? null,
-      subjects: Array.isArray(input.subjects) ? input.subjects : [],
-      chapter: null,
-      targetDate: input.targetDate ?? null,
-    });
-  } catch (error) {
-    console.warn('Onboarding topic seeding skipped', {
-      userId: user.id,
-      goalId: goal.id,
-      error,
-    });
+  // Resolve Curriculum & Seed Microtargets dynamically
+  let resolvedCurriculum = null;
+  let seededMicrotargets = null;
+  if (!domainResult.needsClarification) {
+    try {
+      resolvedCurriculum = await resolveCurriculumForGoal(goal.title);
+      await saveCurriculumNodes(supabase, user.id, goal.id, resolvedCurriculum.goalDomain, resolvedCurriculum.nodes);
+      
+      seededMicrotargets = await seedMicrotargetsForGoal({
+        supabase,
+        userId: user.id,
+        goalId: goal.id,
+        curriculumNodes: resolvedCurriculum.nodes,
+        limit: 5
+      });
+    } catch (error) {
+      console.warn('Onboarding curriculum resolution/seeding skipped', {
+        userId: user.id,
+        goalId: goal.id,
+        error,
+      });
+    }
   }
 
   return {
@@ -195,7 +204,8 @@ export async function completeOnboardingForUser({
     goal,
     session,
     createdGoal: !existingGoal,
-    topicSeeding,
+    curriculum: resolvedCurriculum,
+    microtargets: seededMicrotargets,
   };
 }
 

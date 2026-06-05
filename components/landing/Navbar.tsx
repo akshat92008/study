@@ -8,9 +8,9 @@ export function Navbar() {
     <motion.nav 
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="fixed top-0 inset-x-0 z-50 border-b border-white/5 bg-[#030014]/60 backdrop-blur-xl"
+      className="fixed top-0 inset-x-0 z-50 border-b border-white/5 bg-[#030014]/60 backdrop-blur-xl flex justify-center"
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 flex h-16 items-center justify-between">
+      <div className="w-full max-w-7xl px-6 lg:px-8 flex h-16 items-center justify-between">
         <div className="flex items-center gap-2">
           <BrainCircuit className="h-6 w-6 text-purple-500" />
           <span className="font-display font-medium tracking-tight text-white">Cognition OS</span>

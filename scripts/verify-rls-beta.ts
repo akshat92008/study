@@ -12,6 +12,10 @@ if (process.env.SUPABASE_URL && process.env.SUPABASE_URL.includes('supabase.co')
   }
 }
 
+if (!process.env.DATABASE_URL && process.env.SUPABASE_URL) {
+  console.warn('[WARN] SUPABASE_URL is set but DATABASE_URL is missing. This script requires direct database connection via DATABASE_URL to check pg_class.');
+}
+
 const userOwnedTables = [
   'profiles',
   'chat_sessions',
@@ -93,7 +97,14 @@ async function hasUnsafePublicPolicy(client: Client, table: string) {
 
 async function main() {
   const client = new Client({ connectionString });
-  await client.connect();
+  try {
+    await client.connect();
+  } catch (error) {
+    console.error(`[FATAL] Failed to connect to database at ${connectionString.split('@')[1] || connectionString}.`);
+    console.error('If testing locally, ensure you ran "supabase start".');
+    console.error('If testing against staging/production, ensure DATABASE_URL is set in your environment.');
+    process.exit(1);
+  }
   let ok = true;
 
   try {
