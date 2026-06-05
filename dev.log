@@ -1,0 +1,31 @@
+
+> cognition-os@0.1.0 dev
+> next dev --turbo
+
+▲ Next.js 16.2.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.1.2:3000
+- Environments: .env.local
+✓ Ready in 569ms
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[ENV] Active AI providers: CEREBRAS_API_KEY, SAMBANOVA_API_KEY, GROQ_API_KEY, CF_API_TOKEN, GEMINI_API_KEY
+[OTel] Telemetry initialized successfully
+- Experiments (use with caution):
+  · clientTraceMetadata
+  · serverActions
+
+⚠ Found a change in next.config.ts. Restarting the server to apply the changes...
+▲ Next.js 16.2.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.1.2:3000
+- Environments: .env.local
+✓ Ready in 834ms
+⚠ `experimental.after` is no longer needed, because `after` is available by default. You can remove it from next.config.ts.
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[ENV] Active AI providers: CEREBRAS_API_KEY, SAMBANOVA_API_KEY, GROQ_API_KEY, CF_API_TOKEN, GEMINI_API_KEY
+[OTel] Telemetry initialized successfully
+- Experiments (use with caution):
+  ✓ after
+  · clientTraceMetadata
+  · serverActions
+
