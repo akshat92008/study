@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import { EventDispatcher } from '@/lib/events/orchestrator';
+import { EventWorkerService } from '@/lib/events/worker';
 
 type RouteContext = { params: Promise<{ id: string }> | { id: string } };
 
@@ -59,6 +60,15 @@ export async function POST(req: NextRequest, context: RouteContext) {
       data: { materialId: material.id },
       metadata: { source: 'materials_reprocess' },
       idempotency_key: `material_reprocess_requested:${material.id}`,
+    });
+
+    const { after } = await import('next/server');
+    after(async () => {
+      try {
+        await EventWorkerService.processBatch(25, 5, 50_000, Date.now());
+      } catch (workerError) {
+        console.error('Instant worker trigger failed', { error: workerError });
+      }
     });
 
     return NextResponse.json(
