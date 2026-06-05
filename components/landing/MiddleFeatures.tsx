@@ -4,9 +4,9 @@ import { FileUp, FileText, Zap, Brain, Crosshair, Network, BarChart } from 'luci
 
 export function UploadSourcesSection() {
   return (
-    <section className="py-24 sm:py-32 relative overflow-hidden bg-[#030014] border-t border-white/5">
+    <section className="py-16 sm:py-24 relative overflow-hidden bg-[#030014] border-t border-white/5">
       <div className="absolute top-0 right-1/3 w-[600px] h-[400px] bg-purple-600/10 rounded-[100%] blur-[120px] pointer-events-none -z-10" />
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col gap-y-12">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -42,10 +42,10 @@ export function StudyIntelligenceSection() {
   ];
 
   return (
-    <section className="py-24 sm:py-32 relative overflow-hidden bg-[#050608] border-y border-white/5">
+    <section className="py-16 sm:py-24 relative overflow-hidden bg-[#050608] border-y border-white/5">
       <div className="absolute bottom-0 left-1/3 w-[600px] h-[400px] bg-indigo-600/10 rounded-[100%] blur-[120px] pointer-events-none -z-10" />
       
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col gap-y-12">
         <div className="mx-auto max-w-3xl text-center mb-16">
           <motion.div 
             initial={{ opacity: 0, y: 15 }}

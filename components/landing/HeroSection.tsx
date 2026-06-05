@@ -18,7 +18,7 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative pb-32 overflow-hidden bg-[#050608]" style={{ paddingTop: '16rem' }}>
+    <section className="relative pb-16 sm:pb-24 lg:pb-32 overflow-hidden bg-[#050608]" style={{ paddingTop: '16rem' }}>
       <GlowBackground />
       
       {/* Background Soft Ambient Pulse */}
@@ -28,7 +28,7 @@ export function HeroSection() {
         className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-purple-600/10 rounded-[100%] blur-[120px] pointer-events-none -z-10"
       />
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center relative z-10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -55,7 +55,7 @@ export function HeroSection() {
           </motion.p>
           
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
-            <button className="w-full sm:w-auto group relative rounded-full bg-white text-black px-10 py-5 text-lg font-medium shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(168,85,247,0.3)] transition-all duration-300 flex items-center justify-center gap-3 hover:-translate-y-0.5">
+            <button className="w-full sm:w-auto group relative rounded-full bg-white text-black px-6 py-3 text-lg font-medium shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(168,85,247,0.3)] transition-all duration-300 flex items-center justify-center gap-3 hover:-translate-y-0.5">
               Start Learning
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </button>

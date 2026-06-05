@@ -52,12 +52,12 @@ export function AutopsyFeature() {
   ];
 
   return (
-    <section className="py-24 sm:py-32 relative overflow-hidden bg-[#050608]">
+    <section className="py-16 sm:py-24 relative overflow-hidden bg-[#050608]">
       {/* Background ambient light */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-orange-600/5 rounded-[100%] blur-[150px] pointer-events-none" />
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
-        <div className="mx-auto max-w-3xl text-center mb-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col gap-y-12">
+        <div className="mx-auto max-w-3xl text-center">
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
