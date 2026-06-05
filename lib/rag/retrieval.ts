@@ -7,7 +7,7 @@ import { getTokenBudget, type AiTask } from '@/lib/ai/token-budget';
 import { selectRagContext } from './token-aware-context';
 
 const EXPLICIT_RAG_RE =
-  /\b(from|according to|based on|use|using|in)\s+(my\s+)?(notes|material|pdf|document|source|ncert|textbook|uploaded|chapter)\b/i;
+  /\b(from|according to|based on|use|using|in|read|go through|analyze|summarize|extract|check)\s+(my\s+)?(notes?|materials?|pdfs?|documents?|sources?|ncert|textbooks?|uploaded|chapters?)\b/i;
 
 const STUDY_RE =
   /\b(explain|summarize|summary|flashcards?|mcqs?|questions?|notes?|study guide|compare|chapter|topic|formula|neet|ncert|according)\b/i;

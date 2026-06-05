@@ -171,9 +171,10 @@ export async function gatherChatContext({
 
   let systemPrompt = getMINDSystemPrompt(mindContext, crossSessionMemories, detectedIntent.intent);
 
-  const RAG_GROUNDING_RULES = `
+const RAG_GROUNDING_RULES = `
 SOURCE-GROUNDED STUDY MATERIAL RULES:
 - Uploaded sources are grounding evidence, not decoration.
+- NEVER claim you cannot read, access, or view uploaded files or PDFs. The system has already parsed them and provided the relevant text chunks to you below. Act as if you have read the relevant parts of the document.
 - If SOURCE-GROUNDED MODE is explicit, answer from the retrieved source chunks first.
 - If explicit mode has no chunks, say: "I could not find this in your uploaded material." Then optionally provide a general answer separately if helpful.
 - If SOURCE-GROUNDED MODE is implicit, use source chunks to improve accuracy when relevant, but answer naturally.
