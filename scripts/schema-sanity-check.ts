@@ -8,12 +8,24 @@ dotenv.config(); // fallback
 
 async function main() {
   const connectionString = process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:54322/postgres';
+
+  if (!process.env.DATABASE_URL && process.env.SUPABASE_URL) {
+    console.warn('[WARN] SUPABASE_URL is set but DATABASE_URL is missing. This script requires direct database connection via DATABASE_URL.');
+  }
   
   console.log(`Connecting to database at: ${connectionString.split('@')[1] || connectionString}`);
   const client = new Client({ connectionString });
   
   try {
     await client.connect();
+  } catch (error) {
+    console.error(`[FATAL] Failed to connect to database at ${connectionString.split('@')[1] || connectionString}.`);
+    console.error('If testing locally, ensure you ran "supabase start".');
+    console.error('If testing against staging/production, ensure DATABASE_URL is set in your environment.');
+    process.exit(1);
+  }
+
+  try {
     console.log('Connected successfully. Starting sanity checks...\n');
 
     const requiredTables = [
