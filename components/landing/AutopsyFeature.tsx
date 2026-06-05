@@ -63,9 +63,11 @@ export function AutopsyFeature() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
-            className="h-16 w-16 mx-auto flex items-center justify-center rounded-2xl bg-gradient-to-br from-[#1F2833] to-black border border-orange-500/30 mb-8 shadow-[0_0_40px_rgba(249,115,22,0.15)]"
+            className="flex justify-center w-full mb-8"
           >
-            <Stethoscope className="h-8 w-8 text-orange-400" />
+            <div className="h-16 w-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-[#1F2833] to-black border border-orange-500/30 shadow-[0_0_40px_rgba(249,115,22,0.15)]">
+              <Stethoscope className="h-8 w-8 text-orange-400" />
+            </div>
           </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}

@@ -62,8 +62,10 @@ export function MissionLoopSection() {
           viewport={{ once: true }}
           className="mx-auto max-w-3xl"
         >
-          <div className="h-16 w-16 mx-auto flex items-center justify-center rounded-2xl bg-indigo-500/10 border border-indigo-500/30 mb-8 shadow-[0_0_40px_rgba(99,102,241,0.2)]">
-            <RefreshCcw className="h-8 w-8 text-indigo-400" />
+          <div className="flex justify-center w-full mb-8">
+            <div className="h-16 w-16 flex items-center justify-center rounded-2xl bg-indigo-500/10 border border-indigo-500/30 shadow-[0_0_40px_rgba(99,102,241,0.2)]">
+              <RefreshCcw className="h-8 w-8 text-indigo-400" />
+            </div>
           </div>
           <h2 className="text-4xl font-display font-medium tracking-tight text-white sm:text-5xl leading-tight">Your daily mission loop</h2>
           <p className="mt-8 text-lg sm:text-xl text-neutral-400 font-light leading-relaxed">
@@ -95,7 +97,7 @@ export function SubjectsSection() {
     { name: "Languages", icon: Globe },
   ];
   return (
-    <section className="py-24 sm:py-32 relative overflow-hidden bg-[#030014] text-center border-t border-white/5">
+    <section className="pt-24 sm:pt-32 pb-48 relative overflow-hidden bg-[#030014] text-center border-t border-white/5">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
         <h2 className="text-3xl font-display font-medium text-white mb-12">Built for any subject</h2>
         <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
@@ -119,7 +121,7 @@ export function CTASection() {
   return (
     <section id="pricing" className="py-24 sm:py-32 relative bg-[#050608] border-t border-white/5">
       <div className="mx-auto max-w-5xl px-6 lg:px-8 relative z-10">
-        <div className="relative rounded-[2rem] border border-purple-500/20 bg-gradient-to-b from-purple-900/10 to-black/60 p-10 sm:p-20 text-center overflow-hidden shadow-2xl backdrop-blur-xl">
+        <div className="relative w-full max-w-4xl mx-auto rounded-[2rem] border border-purple-500/20 bg-gradient-to-b from-purple-900/10 to-black/60 p-10 sm:p-20 text-center overflow-hidden shadow-2xl backdrop-blur-xl">
            <div className="absolute inset-0 bg-gradient-to-b from-purple-600/10 to-transparent pointer-events-none" />
            <h2 className="relative z-10 text-4xl font-display font-medium tracking-tight text-white sm:text-6xl leading-tight">Build your comeback system</h2>
            <p className="relative z-10 mt-8 text-xl text-neutral-400 font-light max-w-2xl mx-auto leading-relaxed">

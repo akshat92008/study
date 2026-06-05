@@ -14,8 +14,10 @@ export function UploadSourcesSection() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mx-auto max-w-3xl text-center"
         >
-          <div className="h-16 w-16 mx-auto flex items-center justify-center rounded-2xl bg-purple-500/10 border border-purple-500/30 mb-8 shadow-[0_0_40px_rgba(168,85,247,0.2)]">
-            <FileUp className="h-8 w-8 text-purple-400" />
+          <div className="flex justify-center w-full mb-8">
+            <div className="h-16 w-16 flex items-center justify-center rounded-2xl bg-purple-500/10 border border-purple-500/30 shadow-[0_0_40px_rgba(168,85,247,0.2)]">
+              <FileUp className="h-8 w-8 text-purple-400" />
+            </div>
           </div>
           <h2 className="text-4xl font-display font-medium tracking-tight text-white sm:text-5xl leading-tight">
             Upload your scattered sources
@@ -50,9 +52,11 @@ export function StudyIntelligenceSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="h-16 w-16 mx-auto flex items-center justify-center rounded-2xl bg-indigo-500/10 border border-indigo-500/30 mb-8 shadow-[0_0_40px_rgba(99,102,241,0.2)]"
+            className="flex justify-center w-full mb-8"
           >
-             <Brain className="h-8 w-8 text-indigo-400" />
+            <div className="h-16 w-16 flex items-center justify-center rounded-2xl bg-indigo-500/10 border border-indigo-500/30 shadow-[0_0_40px_rgba(99,102,241,0.2)]">
+               <Brain className="h-8 w-8 text-indigo-400" />
+            </div>
           </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 15 }}
