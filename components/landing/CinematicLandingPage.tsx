@@ -899,7 +899,7 @@ function VideoFeatureCard({
   const [failed, setFailed] = useState(false);
 
   return (
-    <div className={cx('grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14')}>
+    <div className={cx('grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-14')}>
       <Reveal 
         className={cx(reverse && 'lg:order-2')}
         direction={reverse ? 'right' : 'left'}

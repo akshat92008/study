@@ -63,6 +63,7 @@ const allowedRuntimeFiles = new Set([
   'lib/admin/user-management.ts',
   'lib/auth/ownership.ts',
   'lib/observability/log-error.ts',
+  'lib/profiles/sync.ts',
   'lib/usage/enforce-feature-limit.ts',
 ]);
 

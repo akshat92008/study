@@ -15,7 +15,8 @@
  *
  * DETERMINISM RULES:
  *   - One card per (user_id, local_date) — enforced by DB unique constraint.
- *   - The LLM only writes `focusTopic` (display label) and `rationale` prose.
+ *   - LLM prose is disabled by default on dashboard load. If explicitly enabled,
+ *     the LLM may only write `focusTopic` (display label) and `rationale` prose.
  *   - All structural fields (target, duration, task type, etc.) are code-computed
  *     by selectSessionCard() before any LLM call.
  *   - Stale cards (learner_state_version mismatch) are deleted and regenerated.
@@ -122,6 +123,10 @@ function getLocalDate(timezone: string | null): string {
     // fall through
   }
   return new Date().toISOString().split('T')[0];
+}
+
+function shouldGenerateLLMProse(): boolean {
+  return process.env.SESSION_CARD_LLM_PROSE_ENABLED === 'true';
 }
 
 // ─── Route handler ───────────────────────────────────────────────────────────
@@ -474,39 +479,40 @@ export async function GET(request?: Request): Promise<NextResponse> {
     // ── 6. LLM phrasing (optional polish — code drives structure) ───────────
     let llmProse: LLMCardProseType | null = null;
 
-    const prosePrompt = buildProsePrompt(selection, profile, masteryPercent, goalRes.data?.title ?? null);
+    if (shouldGenerateLLMProse()) {
+      const prosePrompt = buildProsePrompt(selection, profile, masteryPercent, goalRes.data?.title ?? null);
 
-
-    try {
-      if (!isBetaFeatureEnabled('ai')) {
-        throw new Error('AI temporarily paused');
-      }
-      const raw = await budgetedGenerateJSON<LLMCardProseType>({
-        userId: user.id,
-        feature: 'session-card',
-        route: 'session-card:prose',
-        model: 'flash',
-        systemPrompt: 'You are a study coach. Return ONLY valid JSON, no markdown or explanation.',
-        userPrompt: prosePrompt,
-        schema: LLMCardProse,
-        maxOutputTokens: 200
-      });
-
-      if (raw) {
-        llmProse = raw;
-      }
-    } catch (err: any) {
-      if (err.message?.includes('budget') || err.message?.includes('exceeded')) {
-        logger.warn('session-card: LLM prose skipped by AI budget guard', {
+      try {
+        if (!isBetaFeatureEnabled('ai')) {
+          throw new Error('AI temporarily paused');
+        }
+        const raw = await budgetedGenerateJSON<LLMCardProseType>({
           userId: user.id,
+          feature: 'session-card',
+          route: 'session-card:prose',
+          model: 'flash',
+          systemPrompt: 'You are a study coach. Return ONLY valid JSON, no markdown or explanation.',
+          userPrompt: prosePrompt,
+          schema: LLMCardProse,
+          maxOutputTokens: 200
         });
-      } else {
-        logger.warn('session-card: LLM prose generation failed, using code fallback', {
-          userId: user.id,
-          error: err?.message,
-        });
+
+        if (raw) {
+          llmProse = raw;
+        }
+      } catch (err: any) {
+        if (err.message?.includes('budget') || err.message?.includes('exceeded')) {
+          logger.warn('session-card: LLM prose skipped by AI budget guard', {
+            userId: user.id,
+          });
+        } else {
+          logger.warn('session-card: LLM prose generation failed, using code fallback', {
+            userId: user.id,
+            error: err?.message,
+          });
+        }
+        // LLM failure is non-fatal — code values are the source of truth
       }
-      // LLM failure is non-fatal — code values are the source of truth
     }
 
     // ── 7. Build final card payload ──────────────────────────────────────────

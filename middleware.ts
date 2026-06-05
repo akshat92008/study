@@ -62,10 +62,13 @@ export async function middleware(request: NextRequest) {
     
     const rawTokens = [cronSecret, internalCronSecret].filter(Boolean) as string[];
     const validCronTokens = rawTokens.flatMap(t => [`Bearer ${t}`, t]);
+    const primarySecretIsWeak =
+      !secret ||
+      (process.env.NODE_ENV !== "test" && (secret.length < 32 || weakSecrets.has(secret)));
 
     if (
       rawTokens.length === 0 ||
-      (process.env.NODE_ENV !== "test" && rawTokens.every(t => t.length < 32 || weakSecrets.has(t)))
+      (primarySecretIsWeak && rawTokens.every(t => t.length < 32 || weakSecrets.has(t)))
     ) {
       return NextResponse.json(
         {

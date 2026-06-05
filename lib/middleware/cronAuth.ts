@@ -9,6 +9,7 @@ import { apiErrorResponse, getRequestId } from '@/lib/api/errors';
 export function validateCronRequest(req: NextRequest): NextResponse | null {
   const cronSecret = process.env.INTERNAL_CRON_SECRET || process.env.CRON_SECRET;
   const workerSecret = process.env.INTERNAL_WORKER_SECRET;
+  const nodeEnv = process.env['NODE_ENV'];
   const requestId = getRequestId(req);
   
   const weakSecrets = new Set([
@@ -29,7 +30,7 @@ export function validateCronRequest(req: NextRequest): NextResponse | null {
   if (providedWorkerSecret !== null) {
     if (
       !workerSecret ||
-      (process.env.NODE_ENV !== 'test' && (workerSecret.length < 32 || weakSecrets.has(workerSecret)))
+      (nodeEnv !== 'test' && (workerSecret.length < 32 || weakSecrets.has(workerSecret)))
     ) {
       console.error('[WorkerAuth] INTERNAL_WORKER_SECRET not configured safely!');
       return apiErrorResponse('worker_not_configured', {
@@ -53,8 +54,20 @@ export function validateCronRequest(req: NextRequest): NextResponse | null {
 
   // Fallback to Vercel Cron auth
   const cronSecrets = [process.env.INTERNAL_CRON_SECRET, process.env.CRON_SECRET].filter(Boolean) as string[];
-  
-  const validCronSecret = cronSecrets.find(s => process.env.NODE_ENV === 'test' || (s.length >= 32 && !weakSecrets.has(s)));
+
+  if (
+    !cronSecret ||
+    (nodeEnv !== 'test' && (cronSecret.length < 32 || weakSecrets.has(cronSecret)))
+  ) {
+    console.error('[CronAuth] No safe CRON_SECRET configured!');
+    return apiErrorResponse('cron_not_configured', {
+      status: 500,
+      message: 'CRON_SECRET is not configured safely.',
+      requestId,
+    });
+  }
+
+  const validCronSecret = cronSecrets.find(s => nodeEnv === 'test' || (s.length >= 32 && !weakSecrets.has(s)));
 
   if (!validCronSecret) {
     console.error('[CronAuth] No safe CRON_SECRET configured!');
