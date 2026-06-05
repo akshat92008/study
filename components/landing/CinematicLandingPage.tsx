@@ -202,6 +202,8 @@ const featureGrid = [
   },
 ];
 
+const pageContainerClass = 'mx-auto max-w-7xl px-4 sm:px-6 lg:px-8';
+
 function cx(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(' ');
 }
@@ -273,7 +275,7 @@ function PrimaryButton({
 
 export function CinematicLandingPage({ availableVideos = [] }: { availableVideos?: string[] }) {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#050509] text-white selection:bg-violet-500/30">
+    <main className="relative min-h-screen overflow-x-hidden bg-[#050509] text-white selection:bg-violet-500/30">
       <div className="pointer-events-none fixed inset-0 z-0 landing-grid opacity-70" />
       <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(180deg,rgba(124,58,237,0.18)_0%,rgba(5,5,9,0)_28%,rgba(5,5,9,0)_70%,rgba(34,211,238,0.08)_100%)]" />
       <LandingNav />
@@ -295,7 +297,7 @@ function LandingNav() {
 
   return (
     <nav className="sticky top-0 z-50 border-b border-white/10 bg-[#050509]/72 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className={cx(pageContainerClass, 'flex h-16 items-center justify-between')}>
         <Link href="/" className="flex items-center gap-3 text-white no-underline">
           <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-violet-300/25 bg-violet-400/10 shadow-[0_0_28px_rgba(124,58,237,0.22)]">
             <BrainCircuit className="h-5 w-5 text-violet-200" />
@@ -350,7 +352,7 @@ function LandingNav() {
             exit={{ opacity: 0, height: 0 }}
             className="overflow-hidden border-t border-white/10 bg-[#08080f]/95 md:hidden"
           >
-            <div className="mx-auto grid max-w-[1200px] gap-2 px-4 py-4">
+            <div className={cx(pageContainerClass, 'grid gap-2 py-4')}>
               {navItems.map((item) => (
                 <Link
                   key={item.href}
@@ -395,7 +397,7 @@ function HeroSection() {
   ];
 
   return (
-    <section className="relative z-10 overflow-hidden px-4 pb-20 pt-16 sm:px-6 sm:pb-24 sm:pt-20 lg:px-8">
+    <section className="relative z-10 overflow-hidden pb-20 pt-16 sm:pb-24 sm:pt-20">
       <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(124,58,237,0.16),rgba(5,5,9,0)_34%,rgba(34,211,238,0.12)_72%,rgba(5,5,9,0))]" />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-300/40 to-transparent" />
       {particles.map((position, index) => (
@@ -417,7 +419,7 @@ function HeroSection() {
         />
       ))}
 
-      <div className="relative mx-auto flex max-w-[1200px] flex-col items-center text-center">
+      <div className={cx(pageContainerClass, 'relative flex flex-col items-center text-center')}>
         <Reveal>
           <div className="inline-flex items-center gap-2 rounded-full border border-violet-300/20 bg-violet-300/[0.08] px-4 py-2 text-[0.85rem] font-medium text-violet-100 shadow-[0_0_30px_rgba(124,58,237,0.16)] backdrop-blur">
             <Sparkles className="h-4 w-4" />
@@ -450,7 +452,7 @@ function HeroSection() {
         </Reveal>
 
         <Reveal className="mt-14 w-full" delay={0.32}>
-          <div className="relative mx-auto max-w-6xl">
+          <div className="relative mx-auto w-full max-w-6xl">
             <div className="absolute inset-x-6 -top-5 h-24 bg-gradient-to-r from-violet-500/20 via-cyan-400/14 to-violet-500/20 blur-3xl" />
             <ProductMockup mode="mission" />
           </div>
@@ -502,7 +504,7 @@ function ProductMockup({ mode = 'mission' }: { mode?: ProductMode }) {
   const current = config[mode];
 
   return (
-    <div className="relative overflow-hidden rounded-lg border border-white/14 bg-[#0b0b13]/88 text-left shadow-[0_30px_100px_rgba(0,0,0,0.55)] backdrop-blur">
+    <div className="relative w-full max-w-full overflow-hidden rounded-lg border border-white/14 bg-[#0b0b13]/88 text-left shadow-[0_30px_100px_rgba(0,0,0,0.55)] backdrop-blur">
       <div className="flex h-11 items-center justify-between border-b border-white/10 bg-white/[0.035] px-4">
         <div className="flex items-center gap-2">
           <span className="h-2.5 w-2.5 rounded-full bg-red-300/70" />
@@ -663,7 +665,6 @@ function ProductMockup({ mode = 'mission' }: { mode?: ProductMode }) {
                     )}
                   >
                     <span className="relative z-10">{node}</span>
-                    {index < 7 ? <span className="absolute -right-3 top-1/2 hidden h-px w-3 bg-white/14 sm:block" /> : null}
                   </div>
                 ))}
               </div>
@@ -714,8 +715,8 @@ function MiniPanel({
 
 function ProductLoop() {
   return (
-    <section id="product" className="relative z-10 border-y border-white/10 bg-white/[0.02] px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-      <div className="mx-auto max-w-[1200px]">
+    <section id="product" className="relative z-10 overflow-hidden border-y border-white/10 bg-white/[0.02] py-16 sm:py-20">
+      <div className={pageContainerClass}>
         <Reveal className="mx-auto max-w-3xl text-center">
           <h2 className="font-display text-[2.25rem] font-semibold leading-tight text-white sm:text-[3.4rem]">
             One loop. Every day.
@@ -726,11 +727,10 @@ function ProductLoop() {
         </Reveal>
 
         <Reveal className="mt-12">
-          <div className="relative grid gap-4 md:grid-cols-6 md:gap-3">
-            <div className="absolute left-1/2 top-7 hidden h-px w-[83%] -translate-x-1/2 bg-gradient-to-r from-transparent via-violet-200/30 to-transparent md:block" />
-            <div className="absolute bottom-6 left-7 top-7 w-px bg-gradient-to-b from-cyan-200/30 via-violet-200/25 to-transparent md:hidden" />
+          <div className="relative grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6 lg:gap-3">
+            <div className="absolute left-7 right-7 top-7 hidden h-px bg-gradient-to-r from-transparent via-violet-200/30 to-transparent lg:block" />
             {loopSteps.map((step, index) => (
-              <div key={step.label} className="relative flex gap-4 md:flex-col md:items-center md:text-center">
+              <div key={step.label} className="relative flex gap-4 lg:flex-col lg:items-center lg:text-center">
                 <div
                   className={cx(
                     'relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border bg-[#090910] shadow-[0_0_24px_rgba(124,58,237,0.16)]',
@@ -759,18 +759,16 @@ function ProductLoop() {
 
 function FeatureVideoSections({ availableVideos }: { availableVideos: string[] }) {
   return (
-    <section className="relative z-10 px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
-      <div className="mx-auto max-w-[1200px] space-y-20 sm:space-y-24">
-        {featureVideos.map((feature, index) => (
-          <FeatureVideoSection
-            key={feature.title}
-            feature={feature}
-            index={index}
-            videoAvailable={availableVideos.includes(feature.videoSrc)}
-          />
-        ))}
-      </div>
-    </section>
+    <>
+      {featureVideos.map((feature, index) => (
+        <FeatureVideoSection
+          key={feature.title}
+          feature={feature}
+          index={index}
+          videoAvailable={availableVideos.includes(feature.videoSrc)}
+        />
+      ))}
+    </>
   );
 }
 
@@ -786,38 +784,40 @@ function FeatureVideoSection({
   const reverse = index % 2 === 1;
 
   return (
-    <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-      <Reveal className={cx(reverse && 'lg:order-2')}>
-        <div className="max-w-xl">
-          <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-lg border border-white/12 bg-white/[0.05] text-cyan-100">
-            {feature.mock === 'goal' ? (
-              <Target className="h-5 w-5" />
-            ) : feature.mock === 'sources' ? (
-              <FileStack className="h-5 w-5" />
-            ) : feature.mock === 'tutor' ? (
-              <MessageSquareText className="h-5 w-5" />
-            ) : feature.mock === 'autopsy' ? (
-              <SearchCheck className="h-5 w-5" />
-            ) : (
-              <Compass className="h-5 w-5" />
-            )}
+    <section className="relative z-10 overflow-hidden py-20 sm:py-24">
+      <div className={cx(pageContainerClass, 'grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-14')}>
+        <Reveal className={cx(reverse && 'lg:order-2')}>
+          <div className="mx-auto max-w-xl lg:mx-0">
+            <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-lg border border-white/12 bg-white/[0.05] text-cyan-100">
+              {feature.mock === 'goal' ? (
+                <Target className="h-5 w-5" />
+              ) : feature.mock === 'sources' ? (
+                <FileStack className="h-5 w-5" />
+              ) : feature.mock === 'tutor' ? (
+                <MessageSquareText className="h-5 w-5" />
+              ) : feature.mock === 'autopsy' ? (
+                <SearchCheck className="h-5 w-5" />
+              ) : (
+                <Compass className="h-5 w-5" />
+              )}
+            </div>
+            <h2 className="font-display text-[2.3rem] font-semibold leading-tight text-white sm:text-[3.5rem]">
+              {feature.title}
+            </h2>
+            <p className="mt-5 text-[1rem] leading-8 text-white/62 sm:text-[1.14rem]">{feature.copy}</p>
           </div>
-          <h2 className="font-display text-[2.3rem] font-semibold leading-tight text-white sm:text-[3.5rem]">
-            {feature.title}
-          </h2>
-          <p className="mt-5 text-[1rem] leading-8 text-white/62 sm:text-[1.14rem]">{feature.copy}</p>
-        </div>
-      </Reveal>
+        </Reveal>
 
-      <Reveal className={cx(reverse && 'lg:order-1')} delay={0.12}>
-        <VideoOrMock
-          videoSrc={feature.videoSrc}
-          kind={feature.mock}
-          title={feature.title}
-          videoAvailable={videoAvailable}
-        />
-      </Reveal>
-    </div>
+        <Reveal className={cx(reverse && 'lg:order-1')} delay={0.12}>
+          <VideoOrMock
+            videoSrc={feature.videoSrc}
+            kind={feature.mock}
+            title={feature.title}
+            videoAvailable={videoAvailable}
+          />
+        </Reveal>
+      </div>
+    </section>
   );
 }
 
@@ -835,9 +835,9 @@ function VideoOrMock({
   const [failed, setFailed] = useState(false);
 
   return (
-    <div className="relative min-h-[380px] overflow-hidden rounded-lg border border-white/14 bg-[#0b0b13] shadow-[0_24px_80px_rgba(0,0,0,0.42)] sm:min-h-[460px]">
+    <div className="relative mx-auto min-h-[360px] w-full max-w-2xl overflow-hidden rounded-lg border border-white/14 bg-[#0b0b13] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.42)] sm:min-h-[420px] sm:p-7">
       <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(124,58,237,0.16),transparent_42%,rgba(34,211,238,0.12))]" />
-      <div className="relative h-full min-h-[380px] sm:min-h-[460px]">
+      <div className="relative z-10">
         <FeatureMock kind={kind} />
         {videoAvailable && !failed ? (
           <video
@@ -859,7 +859,7 @@ function VideoOrMock({
 function FeatureMock({ kind }: { kind: FeatureMockKind }) {
   if (kind === 'goal') {
     return (
-      <div className="absolute inset-0 p-5 sm:p-7">
+      <div>
         <MockHeader label="Goal to roadmap" />
         <div className="mt-7 rounded-lg border border-white/12 bg-black/22 p-4">
           <p className="text-[0.76rem] text-white/44">Learning goal</p>
@@ -873,7 +873,7 @@ function FeatureMock({ kind }: { kind: FeatureMockKind }) {
             <motion.div
               key={node}
               className="rounded-lg border border-white/12 bg-white/[0.05] p-4"
-              animate={{ y: [0, index % 2 ? 4 : -4, 0] }}
+              animate={{ opacity: [0.9, 1, 0.9] }}
               transition={{ duration: 4 + index, repeat: Infinity, ease: 'easeInOut' }}
             >
               <p className="text-[0.86rem] font-medium text-white">{node}</p>
@@ -889,7 +889,7 @@ function FeatureMock({ kind }: { kind: FeatureMockKind }) {
 
   if (kind === 'sources') {
     return (
-      <div className="absolute inset-0 p-5 sm:p-7">
+      <div>
         <MockHeader label="Source memory" />
         <div className="mt-7 grid gap-3">
           {[
@@ -901,8 +901,8 @@ function FeatureMock({ kind }: { kind: FeatureMockKind }) {
             <motion.div
               key={title}
               className="flex items-center justify-between rounded-lg border border-white/12 bg-white/[0.05] p-4"
-              initial={{ opacity: 0.65, x: -8 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0.65 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: index * 0.12 }}
             >
               <div className="flex min-w-0 items-center gap-3">
@@ -924,7 +924,7 @@ function FeatureMock({ kind }: { kind: FeatureMockKind }) {
 
   if (kind === 'tutor') {
     return (
-      <div className="absolute inset-0 p-5 sm:p-7">
+      <div>
         <MockHeader label="Context tutor" />
         <div className="mt-7 rounded-lg border border-white/12 bg-black/24 p-4">
           <div className="flex flex-wrap gap-2">
@@ -949,7 +949,7 @@ function FeatureMock({ kind }: { kind: FeatureMockKind }) {
 
   if (kind === 'autopsy') {
     return (
-      <div className="absolute inset-0 p-5 sm:p-7">
+      <div>
         <MockHeader label="Mistake autopsy" />
         <div className="mt-7 grid gap-4">
           {[
@@ -976,7 +976,7 @@ function FeatureMock({ kind }: { kind: FeatureMockKind }) {
   }
 
   return (
-    <div className="absolute inset-0 p-5 sm:p-7">
+    <div>
       <MockHeader label="Daily mission" />
       <div className="mt-7 rounded-lg border border-white/12 bg-white/[0.05] p-5">
         <div className="flex items-center justify-between gap-4">
@@ -1021,35 +1021,9 @@ function MockHeader({ label }: { label: string }) {
 }
 
 function StickyStory() {
-  const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    const elements = Array.from(document.querySelectorAll<HTMLElement>('[data-story-step]'));
-    if (!elements.length) return undefined;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (visible?.target instanceof HTMLElement) {
-          const nextIndex = Number(visible.target.dataset.storyStep);
-          if (!Number.isNaN(nextIndex)) {
-            setActive(nextIndex);
-          }
-        }
-      },
-      { rootMargin: '-30% 0px -35% 0px', threshold: [0.25, 0.5, 0.75] },
-    );
-
-    elements.forEach((element) => observer.observe(element));
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section id="method" className="relative z-10 border-y border-white/10 bg-[#07070d] px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
-      <div className="mx-auto max-w-[1200px]">
+    <section id="method" className="relative z-10 overflow-hidden border-y border-white/10 bg-[#07070d] py-20 sm:py-24">
+      <div className={pageContainerClass}>
         <Reveal className="max-w-3xl">
           <h2 className="font-display text-[2.35rem] font-semibold leading-tight text-white sm:text-[3.6rem]">
             The system changes as you learn.
@@ -1059,25 +1033,24 @@ function StickyStory() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1.08fr)_minmax(320px,0.92fr)] lg:gap-14">
-          <div className="lg:sticky lg:top-24 lg:self-start">
-            <ProductMockup mode={storySteps[active]?.mode ?? 'mission'} />
+        <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-14">
+          <div className="mx-auto w-full max-w-2xl lg:mx-0">
+            <ProductMockup mode="mission" />
           </div>
 
           <div className="grid gap-4 lg:gap-8">
             {storySteps.map((step, index) => (
               <article
                 key={step.title}
-                data-story-step={index}
                 className={cx(
                   'rounded-lg border p-5 transition duration-300 lg:min-h-[220px] lg:p-6',
-                  active === index
+                  index === 0
                     ? 'border-cyan-200/28 bg-cyan-300/[0.07] shadow-[0_0_36px_rgba(34,211,238,0.08)]'
                     : 'border-white/10 bg-white/[0.035]',
                 )}
               >
                 <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-lg border border-white/12 bg-black/22">
-                  <step.icon className={cx('h-5 w-5', active === index ? 'text-cyan-100' : 'text-violet-100')} />
+                  <step.icon className={cx('h-5 w-5', index === 0 ? 'text-cyan-100' : 'text-violet-100')} />
                 </div>
                 <h3 className="font-display text-[1.45rem] font-semibold text-white sm:text-[1.75rem]">{step.title}</h3>
                 <p className="mt-3 text-[0.98rem] leading-7 text-white/58">{step.copy}</p>
@@ -1092,8 +1065,8 @@ function StickyStory() {
 
 function UniversalExamples() {
   return (
-    <section className="relative z-10 px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
-      <div className="mx-auto max-w-[1200px]">
+    <section className="relative z-10 overflow-hidden py-20 sm:py-24">
+      <div className={pageContainerClass}>
         <Reveal className="mx-auto max-w-3xl text-center">
           <h2 className="font-display text-[2.35rem] font-semibold leading-tight text-white sm:text-[3.55rem]">
             Built for any subject, exam, or skill.
@@ -1138,8 +1111,8 @@ function UniversalExamples() {
 
 function FeatureGrid() {
   return (
-    <section className="relative z-10 border-y border-white/10 bg-white/[0.02] px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
-      <div className="mx-auto max-w-[1200px]">
+    <section className="relative z-10 overflow-hidden border-y border-white/10 bg-white/[0.02] py-20 sm:py-24">
+      <div className={pageContainerClass}>
         <Reveal className="max-w-3xl">
           <h2 className="font-display text-[2.35rem] font-semibold leading-tight text-white sm:text-[3.55rem]">
             Everything your learning loop needs.
@@ -1184,8 +1157,8 @@ function FeatureGrid() {
 
 function PricingSection() {
   return (
-    <section id="pricing" className="relative z-10 px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
-      <div className="mx-auto max-w-[1200px]">
+    <section id="pricing" className="relative z-10 overflow-hidden py-20 sm:py-24">
+      <div className={pageContainerClass}>
         <Reveal className="mx-auto max-w-3xl text-center">
           <h2 className="font-display text-[2.35rem] font-semibold leading-tight text-white sm:text-[3.55rem]">
             Start in private beta.
@@ -1288,23 +1261,25 @@ function PricingCard({
 
 function FinalCTA() {
   return (
-    <section className="relative z-10 px-4 pb-16 pt-8 sm:px-6 sm:pb-20 lg:px-8">
+    <section className="relative z-10 overflow-hidden pb-16 pt-8 sm:pb-20">
       <Reveal>
-        <div className="mx-auto max-w-[1050px] overflow-hidden rounded-lg border border-white/14 bg-[linear-gradient(135deg,rgba(124,58,237,0.18),rgba(8,8,15,0.94)_48%,rgba(34,211,238,0.13))] p-7 text-center shadow-[0_24px_80px_rgba(0,0,0,0.42)] sm:p-12">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg border border-cyan-200/18 bg-cyan-300/[0.08]">
-            <ClipboardCheck className="h-6 w-6 text-cyan-100" />
-          </div>
-          <h2 className="mx-auto mt-6 max-w-3xl font-display text-[2.3rem] font-semibold leading-tight text-white sm:text-[4rem]">
-            Build your comeback system.
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-[1rem] leading-7 text-white/64 sm:text-[1.14rem]">
-            Start with one goal. Cognition OS builds the loop around it.
-          </p>
-          <div className="mt-8 flex [flex-direction:column] justify-center gap-3 sm:[flex-direction:row]">
-            <PrimaryButton href="/dashboard">Launch Cognition OS</PrimaryButton>
-            <PrimaryButton href="/waitlist" variant="secondary">
-              Join private beta
-            </PrimaryButton>
+        <div className={pageContainerClass}>
+          <div className="mx-auto max-w-5xl overflow-hidden rounded-lg border border-white/14 bg-[linear-gradient(135deg,rgba(124,58,237,0.18),rgba(8,8,15,0.94)_48%,rgba(34,211,238,0.13))] p-7 text-center shadow-[0_24px_80px_rgba(0,0,0,0.42)] sm:p-12">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg border border-cyan-200/18 bg-cyan-300/[0.08]">
+              <ClipboardCheck className="h-6 w-6 text-cyan-100" />
+            </div>
+            <h2 className="mx-auto mt-6 max-w-3xl font-display text-[2.3rem] font-semibold leading-tight text-white sm:text-[4rem]">
+              Build your comeback system.
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-[1rem] leading-7 text-white/64 sm:text-[1.14rem]">
+              Start with one goal. Cognition OS builds the loop around it.
+            </p>
+            <div className="mt-8 flex [flex-direction:column] justify-center gap-3 sm:[flex-direction:row]">
+              <PrimaryButton href="/dashboard">Launch Cognition OS</PrimaryButton>
+              <PrimaryButton href="/waitlist" variant="secondary">
+                Join private beta
+              </PrimaryButton>
+            </div>
           </div>
         </div>
       </Reveal>
@@ -1314,8 +1289,8 @@ function FinalCTA() {
 
 function LandingFooter() {
   return (
-    <footer className="relative z-10 border-t border-white/10 px-4 py-10 sm:px-6 lg:px-8">
-      <div className="mx-auto flex max-w-[1200px] [flex-direction:column] gap-6 sm:[flex-direction:row] sm:items-center sm:justify-between">
+    <footer className="relative z-10 border-t border-white/10 py-10">
+      <div className={cx(pageContainerClass, 'flex [flex-direction:column] gap-6 sm:[flex-direction:row] sm:items-center sm:justify-between')}>
         <Link href="/" className="flex items-center gap-3 text-white no-underline">
           <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-violet-300/20 bg-violet-300/[0.08]">
             <BrainCircuit className="h-5 w-5 text-violet-100" />
