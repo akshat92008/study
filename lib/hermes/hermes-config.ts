@@ -51,14 +51,14 @@ function readModelTier(name: string, defaultValue: AIModelTier): AIModelTier {
 }
 
 export function getHermesConfig(): HermesConfig {
-  const modeStr = (process.env.HERMES_MODE || 'off').toLowerCase();
+  const modeStr = (process.env.HERMES_MODE || 'full').toLowerCase();
   const mode: HermesRuntimeMode = modeStr === 'full' ? 'full' : (modeStr === 'lite' ? 'lite' : 'off');
   
   const autopsyModeStr = (process.env.HERMES_AUTOPSY_V3_MODE || 'off').toLowerCase();
   const autopsyMode: HermesRuntimeMode = autopsyModeStr === 'full' ? 'full' : (autopsyModeStr === 'lite' ? 'lite' : 'off');
 
   return {
-    enabled: readBool('HERMES_ENABLED', false),
+    enabled: readBool('HERMES_ENABLED', true),
     mode,
     provider: 'internal',
     fastModel: readModelTier('HERMES_FAST_MODEL', 'flash'),
@@ -70,7 +70,7 @@ export function getHermesConfig(): HermesConfig {
     useStrongForMedical: readBool('HERMES_USE_STRONG_FOR_MEDICAL', false),
     dryRun: readBool('HERMES_DRY_RUN', false),
     logOutput: readBool('HERMES_LOG_OUTPUT', false),
-    sourceProcessingEnabled: readBool('HERMES_SOURCE_PROCESSING_ENABLED', false),
+    sourceProcessingEnabled: readBool('HERMES_SOURCE_PROCESSING_ENABLED', true),
     revisionQualityEnabled: readBool('HERMES_REVISION_QUALITY_ENABLED', true),
     traceEnabled: readBool('HERMES_TRACE_ENABLED', false),
     nextActionEnabled: readBool('HERMES_NEXT_ACTION_ENABLED', false),
@@ -85,7 +85,7 @@ export function getHermesConfig(): HermesConfig {
 
 // Singleton for import convenience — re-read each call so tests can stub env
 export function isHermesEnabled(): boolean {
-  if (!readBool('HERMES_ENABLED', false)) return false;
-  const mode = (process.env.HERMES_MODE || 'off').toLowerCase();
+  if (!readBool('HERMES_ENABLED', true)) return false;
+  const mode = (process.env.HERMES_MODE || 'full').toLowerCase();
   return mode === 'lite' || mode === 'full';
 }
