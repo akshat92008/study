@@ -143,8 +143,8 @@ export function CTASection() {
 
 export function Footer() {
   return (
-    <footer className="mt-20 border-t border-white/5 py-16 text-center text-sm text-neutral-500 bg-[#030014]">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 flex flex-col items-center gap-8 relative z-10">
+    <footer className="mt-20 border-t border-white/5 py-16 text-center text-sm text-neutral-500 bg-[#030014] w-full flex justify-center">
+      <div className="w-full max-w-7xl px-6 lg:px-8 flex flex-col items-center gap-8 relative z-10">
         <div className="flex items-center gap-3">
            <div className="h-8 w-8 rounded-lg bg-purple-500/20 flex items-center justify-center border border-purple-500/30">
              <span className="text-purple-400 font-display font-bold text-sm">C</span>
