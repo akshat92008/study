@@ -258,6 +258,36 @@ a:hover { text-decoration: underline; }
   40% { transform: scale(1); opacity: 1; }
 }
 .animate-fade { animation: fadeIn var(--duration-normal) var(--ease-out) both; }
+
+/* Landing page motion utilities */
+.landing-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.35) 48%, transparent);
+}
+
+.landing-pulse-ring {
+  animation: landingPulseRing 2.8s ease-out infinite;
+}
+
+@keyframes landingPulseRing {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.65);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-pulse-ring {
+    animation: none;
+  }
+}
 .animate-slide { animation: slideInLeft var(--duration-slow) var(--ease-out) both; }
 .animate-pulse { animation: pulse 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
 
