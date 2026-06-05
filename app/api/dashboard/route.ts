@@ -75,7 +75,12 @@ export async function GET(request: Request) {
       .eq('user_id', user.id)
       .order('order_index', { ascending: true })
       .limit(20);
-    if (goalId) seededTopicsQuery = seededTopicsQuery.eq('goal_id', goalId);
+    
+    seededTopicsQuery = goalId 
+      ? seededTopicsQuery.eq('goal_id', goalId)
+      : typeof (seededTopicsQuery as any).is === 'function'
+        ? (seededTopicsQuery as any).is('goal_id', null)
+        : seededTopicsQuery;
 
     const [
       profileRes,

@@ -321,7 +321,12 @@ export async function GET(request?: Request): Promise<NextResponse> {
       .in('status', ['active', 'not_started', 'in_progress'])
       .order('order_index', { ascending: true })
       .limit(5);
-    if (goalId) firstSeededTopicQuery = firstSeededTopicQuery.eq('goal_id', goalId);
+
+    firstSeededTopicQuery = goalId
+      ? firstSeededTopicQuery.eq('goal_id', goalId)
+      : typeof (firstSeededTopicQuery as any).is === 'function'
+        ? (firstSeededTopicQuery as any).is('goal_id', null)
+        : firstSeededTopicQuery;
 
     const [
       goalRes,
@@ -664,7 +669,8 @@ Your ONLY job is to write friendly display text in JSON:
 
 Rules:
 - focusTopic MUST be a specific topic or concept name — never "General Study", "null", or "N/A".
-- If the topic is "${sel.topic}", keep it or make it more specific, never more vague.
+- If the target topic is just the name of an exam or goal (e.g. "NEET exam"), do NOT invent random subjects like "Biology Syllabus" unless it is explicitly specified. Use the target topic as given or rephrase it slightly.
+- If the topic is "${sel.topic}", keep it or make it more specific ONLY IF the context provides specifics, never more vague. Do NOT hallucinate new subjects.
 - rationale must mention the specific reason (${sel.priority.replace('_', ' ')}).
 - Return ONLY valid JSON. No markdown, no backticks, no preamble.`;
 }

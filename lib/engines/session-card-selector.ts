@@ -366,6 +366,9 @@ export function selectSessionCard(input: SelectorInput): SelectorOutput {
     const daysLeft = daysUntil(input.activeGoal.target_date, now);
     if (daysLeft <= 30 && daysLeft > 0) {
       const progress = Math.round((input.activeGoal.progress ?? 0) * 100);
+      const sprintTopic = input.firstSeededTopic ? input.firstSeededTopic.topic : input.activeGoal.title;
+      const sprintSubject = input.firstSeededTopic ? input.firstSeededTopic.subject : examType;
+      
       return {
         targetConceptId: null,
         priority: 'goal_sprint',
@@ -375,8 +378,8 @@ export function selectSessionCard(input: SelectorInput): SelectorOutput {
         estimatedMinutes: focusMinutes,
         taskType: 'goal_sprint',
         resourceType: 'practice_questions',
-        subject: examType,
-        topic: input.activeGoal.title,
+        subject: sprintSubject,
+        topic: sprintTopic,
         masteryBefore: null,
         dueCardCount: input.overdueCardCount,
         mistakeCount: 0,
