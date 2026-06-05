@@ -44,7 +44,7 @@ export function HeroSection() {
           
           <motion.h1 
             variants={itemVariants}
-            className="font-display text-5xl sm:text-7xl lg:text-[6rem] font-medium tracking-tight text-white/95 leading-tight sm:leading-[1.1] mb-6"
+            className="font-display text-5xl sm:text-6xl lg:text-[5rem] font-medium tracking-tight text-white/95 leading-tight sm:leading-[1.1] mb-6"
           >
             Understand <br className="hidden sm:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-indigo-300 to-purple-500">Anything</span>
