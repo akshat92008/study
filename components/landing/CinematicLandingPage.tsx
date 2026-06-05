@@ -33,7 +33,7 @@ import Link from 'next/link';
 import { useEffect, useState, type ReactNode } from 'react';
 
 type ProductMode = 'goal' | 'sources' | 'tutor' | 'autopsy' | 'review' | 'mission';
-type FeatureMockKind = 'goal' | 'sources' | 'tutor' | 'autopsy' | 'mission';
+type FeatureMockKind = 'goal-roadmap' | 'source-memory' | 'tutor-context' | 'autopsy' | 'review-memory' | 'daily-mission';
 
 const navItems = [
   { label: 'Product', href: '#product' },
@@ -51,40 +51,53 @@ const loopSteps: Array<{ label: string; icon: LucideIcon }> = [
 ];
 
 const featureVideos: Array<{
+  eyebrow: string;
   title: string;
   copy: string;
   videoSrc: string;
   mock: FeatureMockKind;
 }> = [
   {
+    eyebrow: 'Goal Intelligence',
     title: 'Start with any goal.',
-    copy: 'Class 10 History, NEET Biology, React Hooks, UPSC Polity, CFA Quant. Cognition OS turns the goal into a structured roadmap.',
-    videoSrc: '/landing/goal-roadmap.mp4',
-    mock: 'goal',
+    copy: 'Type what you want to master. Cognition OS turns it into a structured roadmap with starter targets and a first mission.',
+    videoSrc: '/landing/videos/goal-roadmap.mp4',
+    mock: 'goal-roadmap',
   },
   {
+    eyebrow: 'Source Library',
     title: 'Upload the chaos.',
-    copy: 'PDFs, notes, question papers, and class material become searchable source memory for your AI tutor.',
-    videoSrc: '/landing/source-memory.mp4',
-    mock: 'sources',
+    copy: 'PDFs, notes, question papers, and lecture material become searchable memory for your AI tutor.',
+    videoSrc: '/landing/videos/source-memory.mp4',
+    mock: 'source-memory',
   },
   {
+    eyebrow: 'AI Tutor',
     title: 'Ask with context.',
-    copy: 'The tutor answers from your goal, sources, weak areas, due reviews, and recent mistakes. Not an empty chat.',
-    videoSrc: '/landing/tutor-context.mp4',
-    mock: 'tutor',
+    copy: 'The tutor answers with your goal, sources, weak areas, due reviews, and recent mistakes already attached.',
+    videoSrc: '/landing/videos/tutor-context.mp4',
+    mock: 'tutor-context',
   },
   {
+    eyebrow: 'Mistake Intelligence',
     title: 'Autopsy every mistake.',
-    copy: "Don't just see what went wrong. Find the exact concept gap, reasoning error, and next repair task.",
-    videoSrc: '/landing/autopsy.mp4',
+    copy: 'Find the exact concept gap, reasoning error, and next repair task behind every wrong answer.',
+    videoSrc: '/landing/videos/autopsy.mp4',
     mock: 'autopsy',
   },
   {
-    title: 'Wake up to your next mission.',
-    copy: "Every session becomes tomorrow's plan: what to revise, what to solve, and what to fix.",
-    videoSrc: '/landing/daily-mission.mp4',
-    mock: 'mission',
+    eyebrow: 'Review Engine',
+    title: 'Review what matters.',
+    copy: 'Turn weak concepts, missed questions, and fragile facts into a review queue that keeps coming back at the right time.',
+    videoSrc: '/landing/videos/review-memory.mp4',
+    mock: 'review-memory',
+  },
+  {
+    eyebrow: 'Mission Loop',
+    title: 'Wake up to the next move.',
+    copy: 'Every source, question, mistake, and review updates tomorrow’s mission so you always know what to do next.',
+    videoSrc: '/landing/videos/daily-mission.mp4',
+    mock: 'daily-mission',
   },
 ];
 
@@ -836,146 +849,158 @@ function ProductLoop() {
 
 function FeatureVideoSections({ availableVideos }: { availableVideos: string[] }) {
   return (
-    <>
-      {featureVideos.map((feature, index) => (
-        <FeatureVideoSection
-          key={feature.title}
-          feature={feature}
-          index={index}
-          videoAvailable={availableVideos.includes(feature.videoSrc)}
-        />
-      ))}
-    </>
-  );
-}
-
-function FeatureVideoSection({
-  feature,
-  index,
-  videoAvailable,
-}: {
-  feature: (typeof featureVideos)[number];
-  index: number;
-  videoAvailable: boolean;
-}) {
-  const reverse = index % 2 === 1;
-
-  return (
     <section className="relative z-10 overflow-hidden py-20 sm:py-24">
-      <div className={cx(pageContainerClass, 'grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-14')}>
-        <Reveal 
-          className={cx(reverse && 'lg:order-2')}
-          direction={reverse ? 'right' : 'left'}
-        >
-          <div className="mx-auto max-w-xl lg:mx-0">
-            <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-lg border border-white/12 bg-white/[0.05] text-cyan-100">
-              {feature.mock === 'goal' ? (
-                <Target className="h-5 w-5" />
-              ) : feature.mock === 'sources' ? (
-                <FileStack className="h-5 w-5" />
-              ) : feature.mock === 'tutor' ? (
-                <MessageSquareText className="h-5 w-5" />
-              ) : feature.mock === 'autopsy' ? (
-                <SearchCheck className="h-5 w-5" />
-              ) : (
-                <Compass className="h-5 w-5" />
-              )}
-            </div>
-            <h2 className="font-display text-[2.3rem] font-semibold leading-tight text-white sm:text-[3.5rem]">
-              {feature.title}
-            </h2>
-            <p className="mt-5 text-[1rem] leading-8 text-white/62 sm:text-[1.14rem]">{feature.copy}</p>
-          </div>
+      <div className={pageContainerClass}>
+        <Reveal className="mx-auto max-w-3xl text-center mb-16 sm:mb-24">
+          <h2 className="font-display text-[2.35rem] font-semibold leading-tight text-white sm:text-[3.55rem]">
+            See the learning loop in motion.
+          </h2>
+          <p className="mt-5 text-[1rem] leading-8 text-white/62 sm:text-[1.14rem]">
+            Every feature is connected: goals become roadmaps, sources become memory, mistakes become repair tasks, and every session becomes tomorrow’s mission.
+          </p>
         </Reveal>
-
-        <Reveal 
-          className={cx(reverse && 'lg:order-1')} 
-          delay={0.12}
-          direction={reverse ? 'left' : 'right'}
-        >
-          <VideoOrMock
-            videoSrc={feature.videoSrc}
-            kind={feature.mock}
-            title={feature.title}
-            videoAvailable={videoAvailable}
-          />
-        </Reveal>
+        
+        <div className="grid gap-20 sm:gap-32">
+          {featureVideos.map((feature, index) => (
+            <VideoFeatureCard
+              key={feature.title}
+              title={feature.title}
+              eyebrow={feature.eyebrow}
+              description={feature.copy}
+              videoSrc={feature.videoSrc}
+              fallbackType={feature.mock}
+              reverse={index % 2 === 1}
+              videoAvailable={availableVideos.includes(feature.videoSrc)}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
-function VideoOrMock({
-  videoSrc,
-  kind,
+function VideoFeatureCard({
   title,
+  eyebrow,
+  description,
+  videoSrc,
+  fallbackType,
+  reverse,
   videoAvailable,
 }: {
-  videoSrc: string;
-  kind: FeatureMockKind;
   title: string;
+  eyebrow?: string;
+  description: string;
+  videoSrc: string;
+  fallbackType: FeatureMockKind;
+  reverse?: boolean;
   videoAvailable: boolean;
 }) {
   const [failed, setFailed] = useState(false);
 
   return (
-    <div className="relative mx-auto min-h-[360px] w-full max-w-2xl overflow-hidden rounded-lg border border-white/14 bg-[#0b0b13] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.42)] sm:min-h-[420px] sm:p-7">
-      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(124,58,237,0.16),transparent_42%,rgba(34,211,238,0.12))]" />
-      <div className="relative z-10">
-        <FeatureMock kind={kind} />
-        {videoAvailable && !failed ? (
-          <video
-            aria-label={title}
-            className="absolute inset-0 h-full w-full object-cover"
-            src={videoSrc}
-            muted
-            loop
-            playsInline
-            autoPlay
-            onError={() => setFailed(true)}
-          />
-        ) : null}
-      </div>
+    <div className={cx('grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14')}>
+      <Reveal 
+        className={cx(reverse && 'lg:order-2')}
+        direction={reverse ? 'right' : 'left'}
+      >
+        <div className="mx-auto max-w-xl lg:mx-0">
+          {eyebrow && (
+            <div className="mb-4 inline-flex items-center rounded-full border border-cyan-200/20 bg-cyan-300/[0.08] px-3 py-1 text-[0.78rem] font-medium text-cyan-100">
+              {eyebrow}
+            </div>
+          )}
+          <h3 className="font-display text-[2.1rem] font-semibold leading-tight text-white sm:text-[2.8rem]">
+            {title}
+          </h3>
+          <p className="mt-4 text-[1rem] leading-8 text-white/62 sm:text-[1.12rem]">
+            {description}
+          </p>
+        </div>
+      </Reveal>
+
+      <Reveal 
+        className={cx(reverse && 'lg:order-1', 'w-full')} 
+        delay={0.12}
+        direction={reverse ? 'left' : 'right'}
+      >
+        <motion.div 
+          className="group relative mx-auto min-h-[340px] w-full max-w-2xl overflow-hidden rounded-xl border border-white/12 bg-[#0b0b13] shadow-[0_20px_60px_rgba(0,0,0,0.5)] transition duration-500 hover:border-cyan-200/30 sm:min-h-[400px]"
+          whileHover={{ y: -4, transition: { duration: 0.3 } }}
+        >
+          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(124,58,237,0.08),transparent_42%,rgba(34,211,238,0.06))] opacity-0 transition duration-500 group-hover:opacity-100" />
+          <div className="relative z-10 h-full p-4 sm:p-6">
+            <FeatureMock kind={fallbackType} />
+            {videoAvailable && !failed ? (
+              <video
+                aria-label={title}
+                className="absolute inset-0 h-full w-full object-cover rounded-xl"
+                src={videoSrc}
+                muted
+                loop
+                playsInline
+                autoPlay
+                preload="metadata"
+                onError={() => setFailed(true)}
+              />
+            ) : null}
+          </div>
+        </motion.div>
+      </Reveal>
     </div>
   );
 }
 
 function FeatureMock({ kind }: { kind: FeatureMockKind }) {
-  if (kind === 'goal') {
+  if (kind === 'goal-roadmap') {
     return (
-      <div>
+      <div className="h-full flex flex-col justify-center min-h-[290px] sm:min-h-[350px]">
         <MockHeader label="Goal to roadmap" />
-        <div className="mt-7 rounded-lg border border-white/12 bg-black/22 p-4">
+        <div className="mt-6 rounded-lg border border-white/12 bg-black/22 p-4">
           <p className="text-[0.76rem] text-white/44">Learning goal</p>
           <div className="mt-3 flex items-center justify-between rounded-lg border border-violet-200/20 bg-violet-300/[0.08] px-4 py-3">
             <span className="text-[0.95rem] font-semibold text-white">Master React Hooks</span>
             <ChevronRight className="h-4 w-4 text-cyan-100" />
           </div>
         </div>
-        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+        <motion.div 
+          className="mt-6 grid gap-3 sm:grid-cols-2"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
+        >
           {['Mental model', 'Effect timing', 'Dependency traps', 'Custom hook fluency'].map((node, index) => (
             <motion.div
               key={node}
               className="rounded-lg border border-white/12 bg-white/[0.05] p-4"
-              animate={{ opacity: [0.9, 1, 0.9] }}
-              transition={{ duration: 4 + index, repeat: Infinity, ease: 'easeInOut' }}
+              variants={{
+                hidden: { opacity: 0, y: 10 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+              }}
             >
               <p className="text-[0.86rem] font-medium text-white">{node}</p>
               <div className="mt-3 h-1.5 rounded-full bg-white/10">
-                <div className="h-full w-2/3 rounded-full bg-gradient-to-r from-violet-300 to-cyan-200" />
+                <motion.div 
+                  className="h-full rounded-full bg-gradient-to-r from-violet-300 to-cyan-200" 
+                  initial={{ width: '0%' }}
+                  whileInView={{ width: '66%' }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.5, delay: 0.5 + index * 0.2, ease: "easeOut" }}
+                />
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     );
   }
 
-  if (kind === 'sources') {
+  if (kind === 'source-memory') {
     return (
-      <div>
+      <div className="h-full flex flex-col justify-center min-h-[290px] sm:min-h-[350px]">
         <MockHeader label="Source memory" />
-        <div className="mt-7 grid gap-3">
+        <div className="mt-6 grid gap-3">
           {[
             ['PDF', 'NCERT Polity Chapter 3', 'Indexed 92 passages'],
             ['Notes', 'Class board summary', 'Linked to 14 concepts'],
@@ -984,21 +1009,29 @@ function FeatureMock({ kind }: { kind: FeatureMockKind }) {
           ].map(([type, title, meta], index) => (
             <motion.div
               key={title}
-              className="flex items-center justify-between rounded-lg border border-white/12 bg-white/[0.05] p-4"
-              initial={{ opacity: 0.65 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: index * 0.12 }}
+              className="flex items-center justify-between rounded-lg border border-white/12 bg-white/[0.05] p-3 sm:p-4"
+              initial={{ opacity: 0, x: -15 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.15, ease: "easeOut" }}
             >
               <div className="flex min-w-0 items-center gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-cyan-200/18 bg-cyan-300/[0.08] text-[0.7rem] font-semibold text-cyan-100">
+                <span className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-lg border border-cyan-200/18 bg-cyan-300/[0.08] text-[0.65rem] sm:text-[0.7rem] font-semibold text-cyan-100">
                   {type}
                 </span>
                 <div className="min-w-0">
-                  <p className="truncate text-[0.9rem] font-semibold text-white">{title}</p>
-                  <p className="mt-1 text-[0.75rem] text-white/44">{meta}</p>
+                  <p className="truncate text-[0.85rem] sm:text-[0.9rem] font-semibold text-white">{title}</p>
+                  <p className="mt-1 text-[0.7rem] sm:text-[0.75rem] text-white/44">{meta}</p>
                 </div>
               </div>
-              <Check className="h-4 w-4 shrink-0 text-cyan-200" />
+              <motion.div
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.5 + index * 0.15 }}
+              >
+                <Check className="h-4 w-4 shrink-0 text-cyan-200" />
+              </motion.div>
             </motion.div>
           ))}
         </div>
@@ -1006,15 +1039,16 @@ function FeatureMock({ kind }: { kind: FeatureMockKind }) {
     );
   }
 
-  if (kind === 'tutor') {
+  if (kind === 'tutor-context') {
     return (
-      <div>
+      <div className="h-full flex flex-col justify-center min-h-[290px] sm:min-h-[350px]">
         <MockHeader label="Context tutor" />
-        <div className="mt-7 rounded-lg border border-white/12 bg-black/24 p-4">
+        <div className="mt-6 rounded-lg border border-white/12 bg-black/24 p-4 sm:p-5">
           <motion.div 
             className="flex flex-wrap gap-2"
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true }}
             variants={{
               hidden: {},
               visible: { transition: { staggerChildren: 0.1 } }
@@ -1023,7 +1057,7 @@ function FeatureMock({ kind }: { kind: FeatureMockKind }) {
             {['Goal: electrostatics', 'Source: notes p.42', 'Weak: flux', 'Due: 8 cards'].map((chip) => (
               <motion.span 
                 key={chip} 
-                className="rounded-full border border-cyan-200/14 bg-cyan-300/[0.07] px-3 py-1 text-[0.72rem] text-cyan-50/78"
+                className="rounded-full border border-cyan-200/14 bg-cyan-300/[0.07] px-3 py-1 text-[0.7rem] sm:text-[0.72rem] text-cyan-50/78"
                 variants={{
                   hidden: { opacity: 0, scale: 0.9 },
                   visible: { opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 200, damping: 20 } }
@@ -1035,18 +1069,20 @@ function FeatureMock({ kind }: { kind: FeatureMockKind }) {
           </motion.div>
           <div className="mt-6 space-y-4">
             <motion.div 
-              className="ml-auto max-w-[82%] rounded-lg border border-white/10 bg-white/[0.06] p-4 text-[0.88rem] leading-6 text-white/72"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.5 }}
+              className="ml-auto max-w-[85%] sm:max-w-[82%] rounded-lg border border-white/10 bg-white/[0.06] p-3 sm:p-4 text-[0.8rem] sm:text-[0.88rem] leading-6 text-white/72"
+              initial={{ opacity: 0, y: 10, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.6 }}
             >
               Explain why the flux is zero here.
             </motion.div>
             <motion.div 
-              className="max-w-[88%] rounded-lg border border-violet-200/18 bg-violet-300/[0.08] p-4 text-[0.88rem] leading-6 text-white/82"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 1.2 }}
+              className="max-w-[90%] sm:max-w-[88%] rounded-lg border border-violet-200/18 bg-violet-300/[0.08] p-3 sm:p-4 text-[0.8rem] sm:text-[0.88rem] leading-6 text-white/82"
+              initial={{ opacity: 0, y: 10, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 1.4 }}
             >
               Your source defines flux as field through a surface. Here the field is tangent, so no field line crosses the surface.
             </motion.div>
@@ -1058,12 +1094,13 @@ function FeatureMock({ kind }: { kind: FeatureMockKind }) {
 
   if (kind === 'autopsy') {
     return (
-      <div>
+      <div className="h-full flex flex-col justify-center min-h-[290px] sm:min-h-[350px]">
         <MockHeader label="Mistake autopsy" />
         <motion.div 
-          className="mt-7 grid gap-4"
+          className="mt-6 grid gap-3 sm:gap-4"
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true }}
           variants={{
             hidden: {},
             visible: { transition: { staggerChildren: 0.25 } }
@@ -1076,7 +1113,7 @@ function FeatureMock({ kind }: { kind: FeatureMockKind }) {
           ].map(([title, copy, color]) => (
             <motion.div 
               key={title} 
-              className="rounded-lg border border-white/12 bg-white/[0.05] p-4"
+              className="rounded-lg border border-white/12 bg-white/[0.05] p-3 sm:p-4"
               variants={{
                 hidden: { opacity: 0, x: -10 },
                 visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: "easeOut" } }
@@ -1091,9 +1128,9 @@ function FeatureMock({ kind }: { kind: FeatureMockKind }) {
                   animate={{ opacity: [0.6, 1, 0.6] }}
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                 />
-                <p className="text-[0.86rem] font-semibold text-white">{title}</p>
+                <p className="text-[0.8rem] sm:text-[0.86rem] font-semibold text-white">{title}</p>
               </div>
-              <p className="mt-3 text-[0.82rem] leading-6 text-white/58">{copy}</p>
+              <p className="mt-2 sm:mt-3 text-[0.78rem] sm:text-[0.82rem] leading-6 text-white/58">{copy}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -1101,21 +1138,69 @@ function FeatureMock({ kind }: { kind: FeatureMockKind }) {
     );
   }
 
-  return (
-    <div>
-      <MockHeader label="Daily mission" />
-      <div className="mt-7 rounded-lg border border-white/12 bg-white/[0.05] p-5">
-        <div className="flex items-center justify-between gap-4">
-          <div>
-            <p className="text-[0.78rem] text-cyan-100/70">Tomorrow</p>
-            <h3 className="mt-2 text-[1.5rem] font-semibold leading-tight text-white">Repair the exact weak link.</h3>
-          </div>
-          <Compass className="h-8 w-8 text-cyan-100" />
+  if (kind === 'review-memory') {
+    return (
+      <div className="h-full flex flex-col justify-center min-h-[290px] sm:min-h-[350px]">
+        <MockHeader label="Memory review" />
+        <div className="mt-6 rounded-lg border border-white/12 bg-black/24 p-5 text-center">
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, type: "spring", bounce: 0.4 }}
+          >
+            <p className="text-[0.8rem] text-cyan-100/70">Due right now</p>
+            <h3 className="mt-1 text-[2.5rem] font-bold text-white">14</h3>
+            <p className="text-[0.85rem] text-white/50">Cards ready for review</p>
+          </motion.div>
         </div>
         <motion.div 
-          className="mt-7 space-y-3"
+          className="mt-4 rounded-lg border border-white/10 bg-white/[0.04] p-5"
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <div className="h-2 w-16 rounded-full bg-white/10 mb-4 mx-auto" />
+          <p className="text-center text-[0.95rem] leading-relaxed text-white/80">
+            What is the primary difference between `useMemo` and `useEffect`?
+          </p>
+          <div className="mt-6 grid grid-cols-3 gap-3">
+            {['Hard', 'Good', 'Easy'].map((btn, i) => (
+              <motion.div 
+                key={btn}
+                className="rounded-lg border border-white/10 bg-white/[0.03] py-2 text-center text-[0.75rem] text-white/60"
+                whileHover={{ backgroundColor: 'rgba(255,255,255,0.1)', color: 'white' }}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.6 + i * 0.1 }}
+              >
+                {btn}
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="h-full flex flex-col justify-center min-h-[290px] sm:min-h-[350px]">
+      <MockHeader label="Daily mission" />
+      <div className="mt-6 rounded-lg border border-white/12 bg-white/[0.05] p-4 sm:p-5">
+        <div className="flex items-center justify-between gap-4">
+          <div>
+            <p className="text-[0.75rem] sm:text-[0.78rem] text-cyan-100/70">Tomorrow</p>
+            <h3 className="mt-1 sm:mt-2 text-[1.3rem] sm:text-[1.5rem] font-semibold leading-tight text-white">Repair the exact weak link.</h3>
+          </div>
+          <Compass className="h-6 w-6 sm:h-8 sm:w-8 text-cyan-100 shrink-0" />
+        </div>
+        <motion.div 
+          className="mt-6 space-y-3"
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true }}
           variants={{
             hidden: {},
             visible: { transition: { staggerChildren: 0.15 } }
@@ -1124,16 +1209,16 @@ function FeatureMock({ kind }: { kind: FeatureMockKind }) {
           {['Revise 12 source-backed cards', 'Solve 20 mixed questions', 'Autopsy anything below 70%', 'Ask tutor for one summary'].map((task, index) => (
             <motion.div 
               key={task} 
-              className="flex items-center gap-3 rounded-lg border border-white/10 bg-black/20 p-3"
+              className="flex items-center gap-3 rounded-lg border border-white/10 bg-black/20 p-2.5 sm:p-3"
               variants={{
                 hidden: { opacity: 0, y: 10 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.3 } }
               }}
             >
-              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-violet-300/[0.1] text-[0.75rem] font-semibold text-violet-100">
+              <span className="flex h-6 w-6 sm:h-7 sm:w-7 shrink-0 items-center justify-center rounded-full bg-violet-300/[0.1] text-[0.7rem] sm:text-[0.75rem] font-semibold text-violet-100">
                 {index + 1}
               </span>
-              <span className="text-[0.86rem] text-white/72">{task}</span>
+              <span className="text-[0.8rem] sm:text-[0.86rem] text-white/72">{task}</span>
             </motion.div>
           ))}
         </motion.div>
@@ -1146,16 +1231,19 @@ function MockHeader({ label }: { label: string }) {
   return (
     <div className="flex items-center justify-between border-b border-white/10 pb-4">
       <div className="flex items-center gap-3">
-        <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-violet-400/10">
+        <span className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-lg bg-violet-400/10">
           <BrainCircuit className="h-4 w-4 text-violet-100" />
         </span>
         <div>
-          <p className="text-[0.88rem] font-semibold text-white">{label}</p>
-          <p className="text-[0.72rem] text-white/42">Cognition OS</p>
+          <p className="text-[0.8rem] sm:text-[0.88rem] font-semibold text-white">{label}</p>
+          <div className="flex items-center gap-1.5 mt-0.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
+            <p className="text-[0.65rem] sm:text-[0.72rem] text-white/42">Live state</p>
+          </div>
         </div>
       </div>
-      <span className="rounded-full border border-cyan-200/18 bg-cyan-300/[0.07] px-3 py-1 text-[0.72rem] text-cyan-100">
-        Live state
+      <span className="hidden sm:inline-block rounded-full border border-cyan-200/18 bg-cyan-300/[0.07] px-3 py-1 text-[0.72rem] text-cyan-100">
+        Cognition OS
       </span>
     </div>
   );

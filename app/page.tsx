@@ -5,11 +5,12 @@ import { existsSync } from 'node:fs';
 import path from 'node:path';
 
 const landingVideoPaths = [
-  '/landing/goal-roadmap.mp4',
-  '/landing/source-memory.mp4',
-  '/landing/tutor-context.mp4',
-  '/landing/autopsy.mp4',
-  '/landing/daily-mission.mp4',
+  '/landing/videos/goal-roadmap.mp4',
+  '/landing/videos/source-memory.mp4',
+  '/landing/videos/tutor-context.mp4',
+  '/landing/videos/autopsy.mp4',
+  '/landing/videos/review-memory.mp4',
+  '/landing/videos/daily-mission.mp4',
 ];
 
 function getAvailableLandingVideos() {

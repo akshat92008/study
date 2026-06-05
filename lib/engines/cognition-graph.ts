@@ -594,6 +594,12 @@ export class AtlasConsumer {
       }
     }
     
+    // Trigger profile aggregate sync
+    const { syncProfileAggregates } = await import('@/lib/profiles/sync');
+    await syncProfileAggregates(userId).catch(err => {
+      logger.warn('Failed to sync profile aggregates after practice attempt', err);
+    });
+
     logger.info(`AtlasConsumer: processed practice attempt for ${items.length} items`, { userId, setType });
   }
 }

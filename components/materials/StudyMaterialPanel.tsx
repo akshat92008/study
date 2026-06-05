@@ -93,13 +93,19 @@ export default function StudyMaterialPanel() {
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
             {mat.status === 'processing' ? (
-              <Badge color="yellow"><Loader2 size={10} className="animate-spin" style={{ display: 'inline', marginRight: 4 }} />Processing</Badge>
+              <Badge color="yellow"><Loader2 size={10} className="animate-spin" style={{ display: 'inline', marginRight: 4 }} />Extracting text...</Badge>
+            ) : mat.status === 'parsed' ? (
+              <Badge color="yellow"><Loader2 size={10} className="animate-spin" style={{ display: 'inline', marginRight: 4 }} />Preparing chunks...</Badge>
+            ) : mat.status === 'embedding' ? (
+              <Badge color="yellow"><Loader2 size={10} className="animate-spin" style={{ display: 'inline', marginRight: 4 }} />Generating embeddings...</Badge>
             ) : mat.status === 'queued' ? (
-              <Badge color="yellow">Queued</Badge>
+              <Badge color="yellow">Waiting in queue...</Badge>
             ) : mat.status === 'uploaded' ? (
               <Badge color="gray">Uploaded</Badge>
             ) : mat.status === 'failed' ? (
               <Badge color="red">Failed</Badge>
+            ) : mat.status === 'needs_user_action' ? (
+              <Badge color="red">Action Required</Badge>
             ) : (
               <Badge color="cyan">Ready</Badge>
             )}

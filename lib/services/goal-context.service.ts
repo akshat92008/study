@@ -265,7 +265,7 @@ export async function getActiveGoalContext(
     nextAction,
   ] = await Promise.all([
     supabase.from('study_materials').select('id', { count: 'exact', head: true }).eq('user_id', userId).eq('goal_id', goalId).eq('status', 'ready'),
-    supabase.from('study_materials').select('id', { count: 'exact', head: true }).eq('user_id', userId).eq('goal_id', goalId).in('status', ['uploaded', 'processing']),
+    supabase.from('study_materials').select('id', { count: 'exact', head: true }).eq('user_id', userId).eq('goal_id', goalId).in('status', ['uploaded', 'queued', 'processing', 'parsed', 'embedding']),
     supabase.from('revision_cards').select('id', { count: 'exact', head: true }).eq('user_id', userId).eq('goal_id', goalId).lte('due', now),
     supabase.from('concepts').select('id', { count: 'exact', head: true }).eq('user_id', userId).eq('goal_id', goalId).in('mastery', ['not_started', 'exposed', 'developing']),
     supabase.from('mistakes').select('id', { count: 'exact', head: true }).eq('user_id', userId).eq('goal_id', goalId).gte('created_at', fourteenDaysAgo),

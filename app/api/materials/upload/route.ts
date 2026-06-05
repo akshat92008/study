@@ -235,6 +235,7 @@ export async function POST(req: NextRequest) {
         topic: formString(formData.get('topic')),
         language: formString(formData.get('language')) || 'en',
         status: featureFlags.ragIngestion() ? 'queued' : 'uploaded',
+        queued_at: featureFlags.ragIngestion() ? new Date().toISOString() : null,
         retryable: false,
         content_hash: contentHash,
         goal_id: goalId,
