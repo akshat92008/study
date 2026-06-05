@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { Navbar } from '@/components/landing/Navbar';
 import { Footer } from '@/components/landing/BottomSections';
 import { 
-  ArrowRight, Sparkles, BrainCircuit, FileUp, 
-  Zap, Brain, Network, Stethoscope, RefreshCw, BarChart 
+  ArrowRight, Sparkles, FileUp, 
+  Zap, Stethoscope, Network
 } from 'lucide-react';
 
 export default async function LandingPage() {
@@ -21,91 +21,96 @@ export default async function LandingPage() {
   }
 
   return (
-    <main className="relative bg-[#030014] min-h-screen text-slate-100 selection:bg-purple-500/30 font-sans overflow-hidden">
+    <main className="relative bg-[#000000] min-h-screen text-slate-100 selection:bg-indigo-500/30 font-sans overflow-hidden">
       <Navbar />
       
       {/* --- HERO SECTION --- */}
-      <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-32 w-full flex justify-center">
-        {/* Background glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[800px] h-[600px] bg-purple-600/15 rounded-full blur-[120px] pointer-events-none" />
+      <section className="relative pt-32 pb-24 sm:pt-48 sm:pb-36 w-full flex justify-center overflow-hidden">
+        {/* NotebookLM-style subtle aurora background glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/20 via-purple-900/10 to-transparent blur-[80px] pointer-events-none" />
         
-        <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center relative z-10">
-          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-purple-500/10 px-4 py-1.5 text-sm font-medium text-purple-200 backdrop-blur-md">
-            <Sparkles className="h-4 w-4" />
+        <div className="w-full max-w-5xl px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center relative z-10">
+          <div className="mb-10 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-neutral-300 backdrop-blur-md shadow-sm">
+            <Sparkles className="h-3.5 w-3.5 text-indigo-400" />
             <span>Cognition OS Beta is live</span>
           </div>
           
-          <h1 className="font-display text-5xl sm:text-7xl lg:text-[5.5rem] font-medium tracking-tight text-white leading-[1.1] mb-6">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-medium tracking-tight text-white leading-[1.1] mb-8 font-display">
             Understand <br className="hidden sm:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-indigo-300 to-purple-500">Anything</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-br from-indigo-300 via-white to-purple-300">Anything</span>
           </h1>
           
-          <p className="text-lg sm:text-xl leading-relaxed text-neutral-400 max-w-2xl mx-auto font-light mb-10">
-            Your AI learning operating system. Upload sources, study with an AI tutor, autopsy your mistakes, and turn every session into your next mission.
+          <p className="text-lg sm:text-xl text-neutral-400 max-w-2xl mx-auto font-light mb-12 leading-relaxed">
+            Your personalized AI learning operating system. Upload sources, study with an AI tutor, autopsy your mistakes, and turn every session into your next mission.
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center gap-4">
-            <Link href="/login" className="group relative rounded-full bg-white text-black px-8 py-4 text-lg font-medium shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(168,85,247,0.3)] transition-all duration-300 flex items-center gap-3 hover:-translate-y-0.5">
+          <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+            <Link href="/login" className="group w-full sm:w-auto rounded-full bg-white text-black px-8 py-3.5 text-sm font-medium hover:bg-neutral-200 transition-all duration-300 flex items-center justify-center gap-2">
               Start Learning
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* --- BENTO GRID FEATURES --- */}
-      <section id="features" className="py-20 w-full flex justify-center border-t border-white/5 relative bg-[#050608]">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/5 rounded-full blur-[100px] pointer-events-none" />
+      {/* --- REFINED BENTO GRID --- */}
+      <section id="features" className="py-24 sm:py-32 w-full flex justify-center border-t border-white/[0.04] relative bg-[#050505]">
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-[120px] pointer-events-none" />
         
-        <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-5xl font-display font-medium text-white mb-6">How it works</h2>
-            <p className="text-lg text-neutral-400">Everything you need to master complex subjects, integrated into one seamless workflow.</p>
+        <div className="w-full max-w-6xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <h2 className="text-3xl sm:text-4xl font-medium text-white mb-6 tracking-tight">How it works</h2>
+            <p className="text-lg text-neutral-400 font-light leading-relaxed">Everything you need to master complex subjects, elegantly integrated into one seamless workflow.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Grid Layout: 2 top (wider/narrower), 2 bottom (narrower/wider) */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6">
             
-            {/* Bento Item 1 */}
-            <div className="col-span-1 lg:col-span-2 rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent p-8 sm:p-10 backdrop-blur-md flex flex-col justify-between group hover:border-purple-500/30 transition-colors">
-              <div>
-                <div className="h-12 w-12 rounded-xl bg-purple-500/20 flex items-center justify-center border border-purple-500/30 mb-6">
-                  <FileUp className="h-6 w-6 text-purple-400" />
+            {/* Bento Item 1: Wide */}
+            <div className="md:col-span-7 rounded-[24px] border border-white/[0.06] bg-[#0A0A0A] p-8 sm:p-12 flex flex-col justify-between group hover:border-white/[0.12] transition-colors relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 rounded-full blur-[60px] group-hover:bg-indigo-500/10 transition-colors pointer-events-none" />
+              <div className="relative z-10">
+                <div className="h-10 w-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 mb-8">
+                  <FileUp className="h-5 w-5 text-indigo-300" />
                 </div>
-                <h3 className="text-2xl font-medium text-white mb-3">Upload your sources</h3>
-                <p className="text-neutral-400 leading-relaxed max-w-md">Bring PDFs, notes, question papers, and class material into one learning space. Cognition OS turns scattered resources into structured understanding.</p>
+                <h3 className="text-xl font-medium text-white mb-3">Upload your sources</h3>
+                <p className="text-neutral-400 leading-relaxed font-light text-sm sm:text-base">Bring PDFs, notes, question papers, and class material into one learning space. Cognition OS turns scattered resources into structured, searchable understanding.</p>
               </div>
             </div>
 
-            {/* Bento Item 2 */}
-            <div className="col-span-1 rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent p-8 sm:p-10 backdrop-blur-md flex flex-col justify-between group hover:border-indigo-500/30 transition-colors">
-              <div>
-                <div className="h-12 w-12 rounded-xl bg-indigo-500/20 flex items-center justify-center border border-indigo-500/30 mb-6">
-                  <Zap className="h-6 w-6 text-indigo-400" />
+            {/* Bento Item 2: Narrow */}
+            <div className="md:col-span-5 rounded-[24px] border border-white/[0.06] bg-[#0A0A0A] p-8 sm:p-12 flex flex-col justify-between group hover:border-white/[0.12] transition-colors relative overflow-hidden">
+               <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/5 rounded-full blur-[60px] group-hover:bg-purple-500/10 transition-colors pointer-events-none" />
+              <div className="relative z-10">
+                <div className="h-10 w-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 mb-8">
+                  <Zap className="h-5 w-5 text-purple-300" />
                 </div>
-                <h3 className="text-2xl font-medium text-white mb-3">Instant Intelligence</h3>
-                <p className="text-neutral-400 leading-relaxed">Generate study guides, flashcards, and practice sets with one click.</p>
+                <h3 className="text-xl font-medium text-white mb-3">Instant Intelligence</h3>
+                <p className="text-neutral-400 leading-relaxed font-light text-sm sm:text-base">Generate study guides, targeted flashcards, and personalized practice sets with a single click.</p>
               </div>
             </div>
 
-            {/* Bento Item 3 */}
-            <div className="col-span-1 rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent p-8 sm:p-10 backdrop-blur-md flex flex-col justify-between group hover:border-blue-500/30 transition-colors">
-              <div>
-                <div className="h-12 w-12 rounded-xl bg-blue-500/20 flex items-center justify-center border border-blue-500/30 mb-6">
-                  <Stethoscope className="h-6 w-6 text-blue-400" />
+            {/* Bento Item 3: Narrow */}
+            <div className="md:col-span-5 rounded-[24px] border border-white/[0.06] bg-[#0A0A0A] p-8 sm:p-12 flex flex-col justify-between group hover:border-white/[0.12] transition-colors relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-[60px] group-hover:bg-blue-500/10 transition-colors pointer-events-none" />
+              <div className="relative z-10">
+                <div className="h-10 w-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 mb-8">
+                  <Stethoscope className="h-5 w-5 text-blue-300" />
                 </div>
-                <h3 className="text-2xl font-medium text-white mb-3">Autopsy Mistakes</h3>
-                <p className="text-neutral-400 leading-relaxed">Cognition OS investigates mistakes to find the exact conceptual gap in your reasoning.</p>
+                <h3 className="text-xl font-medium text-white mb-3">Autopsy Mistakes</h3>
+                <p className="text-neutral-400 leading-relaxed font-light text-sm sm:text-base">Cognition OS rigorously investigates your mistakes to find the exact conceptual gap in your reasoning.</p>
               </div>
             </div>
 
-            {/* Bento Item 4 */}
-            <div className="col-span-1 lg:col-span-2 rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent p-8 sm:p-10 backdrop-blur-md flex flex-col justify-between group hover:border-teal-500/30 transition-colors">
-              <div>
-                <div className="h-12 w-12 rounded-xl bg-teal-500/20 flex items-center justify-center border border-teal-500/30 mb-6">
-                  <Network className="h-6 w-6 text-teal-400" />
+            {/* Bento Item 4: Wide */}
+            <div className="md:col-span-7 rounded-[24px] border border-white/[0.06] bg-[#0A0A0A] p-8 sm:p-12 flex flex-col justify-between group hover:border-white/[0.12] transition-colors relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-teal-500/5 rounded-full blur-[60px] group-hover:bg-teal-500/10 transition-colors pointer-events-none" />
+              <div className="relative z-10">
+                <div className="h-10 w-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 mb-8">
+                  <Network className="h-5 w-5 text-teal-300" />
                 </div>
-                <h3 className="text-2xl font-medium text-white mb-3">Daily Mission Loop</h3>
-                <p className="text-neutral-400 leading-relaxed max-w-md">The system knows what you studied, what you missed, and what you forgot. Every day, it dynamically generates your next learning mission.</p>
+                <h3 className="text-xl font-medium text-white mb-3">Daily Mission Loop</h3>
+                <p className="text-neutral-400 leading-relaxed font-light text-sm sm:text-base">The system maps what you studied, what you missed, and what you forgot. Every day, it dynamically generates your next precise learning mission.</p>
               </div>
             </div>
 
@@ -114,21 +119,21 @@ export default async function LandingPage() {
       </section>
 
       {/* --- CTA SECTION --- */}
-      <section id="pricing" className="py-24 w-full flex justify-center border-t border-white/5 bg-[#030014] relative">
-        <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="w-full rounded-[2rem] border border-purple-500/20 bg-gradient-to-b from-purple-900/20 to-black p-10 sm:p-16 flex flex-col items-center text-center shadow-2xl relative overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-600/20 via-transparent to-transparent pointer-events-none" />
+      <section id="pricing" className="py-24 sm:py-32 w-full flex justify-center border-t border-white/[0.04] bg-[#000000] relative">
+        <div className="w-full max-w-5xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="w-full rounded-[32px] border border-white/[0.08] bg-gradient-to-b from-white/[0.03] to-transparent p-12 sm:p-20 flex flex-col items-center text-center relative overflow-hidden">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[300px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-500/10 via-transparent to-transparent pointer-events-none" />
             
-            <h2 className="relative z-10 text-4xl sm:text-5xl font-display font-medium text-white mb-6">Build your comeback system</h2>
-            <p className="relative z-10 text-lg text-neutral-400 max-w-2xl mx-auto mb-10">
+            <h2 className="relative z-10 text-3xl sm:text-5xl font-medium text-white mb-6 tracking-tight">Build your comeback system</h2>
+            <p className="relative z-10 text-base sm:text-lg text-neutral-400 max-w-xl mx-auto mb-10 font-light leading-relaxed">
               Start with your first learning goal. Upload sources, ask questions, review mistakes, and let Cognition OS generate your next mission.
             </p>
             
-            <div className="relative z-10 flex flex-col sm:flex-row gap-4">
-              <Link href="/login" className="rounded-full bg-purple-600 px-8 py-4 text-base font-semibold text-white shadow-[0_0_30px_rgba(168,85,247,0.4)] hover:bg-purple-500 transition-all hover:-translate-y-0.5 whitespace-nowrap">
+            <div className="relative z-10 flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+              <Link href="/login" className="w-full sm:w-auto rounded-full bg-white text-black px-8 py-3.5 text-sm font-medium hover:bg-neutral-200 transition-all">
                 Launch Cognition OS
               </Link>
-              <Link href="/waitlist" className="rounded-full px-8 py-4 text-base font-semibold text-white border border-white/20 hover:bg-white/10 transition-all hover:-translate-y-0.5 whitespace-nowrap">
+              <Link href="/waitlist" className="w-full sm:w-auto rounded-full px-8 py-3.5 text-sm font-medium text-white border border-white/20 hover:bg-white/10 transition-all">
                 Join private beta
               </Link>
             </div>

@@ -153,64 +153,7 @@ a:hover { text-decoration: underline; }
 /* Selection */
 ::selection { background: var(--accent-blue-dim); color: var(--text-primary); }
 
-/* --- UTILITY CLASSES --- */
-.text-xs { font-size: var(--fs-xs); }
-.text-sm { font-size: var(--fs-sm); }
-.text-base { font-size: var(--fs-base); }
-.text-md { font-size: var(--fs-md); }
-.text-lg { font-size: var(--fs-lg); }
-.text-xl { font-size: var(--fs-xl); }
-.text-2xl { font-size: var(--fs-2xl); }
-.text-3xl { font-size: var(--fs-3xl); }
-
-.text-primary { color: var(--text-primary); }
-.text-secondary { color: var(--text-secondary); }
-.text-tertiary { color: var(--text-tertiary); }
-.text-success { color: var(--success); }
-.text-warning { color: var(--warning); }
-.text-danger { color: var(--danger); }
-.text-accent { color: var(--accent-blue); }
-
-.font-mono { font-family: var(--font-mono); }
-.font-medium { font-weight: var(--fw-medium); }
-.font-semibold { font-weight: var(--fw-semibold); }
-.font-bold { font-weight: var(--fw-bold); }
-.uppercase { text-transform: uppercase; letter-spacing: var(--ls-wide); }
-
-/* Concept highlight styling */
-.conceptHighlight {
-  background: hsla(220, 60%, 90%, 0.4);
-  border-radius: 4px;
-  padding: 2px 4px;
-  color: var(--accent-blue);
-}
-
-/* Exam trap callout box */
-.examTrapBox {
-  background: linear-gradient(135deg, hsl(0, 80%, 95%), hsl(0, 70%, 85%));
-  border: 1px solid hsl(0, 70%, 40%);
-  border-radius: 8px;
-  padding: 12px 16px;
-  margin: 12px 0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.label { text-transform: uppercase; letter-spacing: var(--ls-ultra); font-size: var(--fs-xs); font-weight: var(--fw-semibold); color: var(--text-tertiary); }
-
-.flex { display: flex; }
-.flex-col { display: flex; flex-direction: column; }
-.items-center { align-items: center; }
-.justify-between { justify-content: space-between; }
-.gap-1 { gap: var(--sp-1); }
-.gap-2 { gap: var(--sp-2); }
-.gap-3 { gap: var(--sp-3); }
-.gap-4 { gap: var(--sp-4); }
-.gap-6 { gap: var(--sp-6); }
-.gap-8 { gap: var(--sp-8); }
-
-.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-4); }
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-4); }
-.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-4); }
+/* --- CUSTOM UTILITIES (Removed to prevent Tailwind conflicts) --- */
 
 /* --- ANIMATIONS --- */
 @keyframes fadeIn {
