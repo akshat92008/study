@@ -16,9 +16,9 @@ export function Navbar() {
           <span className="font-display font-medium tracking-tight text-white">Cognition OS</span>
         </div>
         <div className="hidden md:flex items-center gap-8 text-sm font-medium">
-          <Link href="#features" className="text-neutral-400 hover:text-white transition-colors">Features</Link>
-          <Link href="#method" className="text-neutral-400 hover:text-white transition-colors">Method</Link>
-          <Link href="#pricing" className="text-neutral-400 hover:text-white transition-colors">Pricing</Link>
+          <Link href="#features" className="text-secondary hover:text-white transition-colors">Features</Link>
+          <Link href="#method" className="text-secondary hover:text-white transition-colors">Method</Link>
+          <Link href="#pricing" className="text-secondary hover:text-white transition-colors">Pricing</Link>
         </div>
         <div className="flex items-center gap-4">
           <Link href="/login" className="text-sm font-medium text-neutral-300 hover:text-white hidden sm:block">

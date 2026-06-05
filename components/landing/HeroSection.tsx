@@ -18,7 +18,7 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative pt-52 sm:pt-64 pb-32 overflow-hidden bg-[#050608]">
+    <section className="relative pb-32 overflow-hidden bg-[#050608]" style={{ paddingTop: '16rem' }}>
       <GlowBackground />
       
       {/* Background Soft Ambient Pulse */}
