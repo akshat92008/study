@@ -1,8 +1,7 @@
 import { z } from 'zod';
 import { getOrCreatePrimaryGoalSession, GOAL_SELECT } from '@/lib/services/goal-context.service';
 import { inferGoalDomain } from '@/lib/goals/goal-domain';
-import { resolveCurriculumForGoal, saveCurriculumNodes } from '@/lib/goals/curriculum-resolver';
-import { seedMicrotargetsForGoal } from '@/lib/goals/microtarget-seeder';
+import { seedTopicsForGoal } from '@/lib/topic-seeding';
 
 const SubjectSchema = z
   .string()
@@ -170,23 +169,27 @@ export async function completeOnboardingForUser({
 
   const session = await getOrCreatePrimaryGoalSession(supabase, user.id, goal.id);
 
-  // Resolve Curriculum & Seed Microtargets dynamically
-  let resolvedCurriculum = null;
-  let seededMicrotargets = null;
+  // Seed core topics dynamically
+  let seededTopics = null;
   if (!domainResult.needsClarification) {
     try {
-      resolvedCurriculum = await resolveCurriculumForGoal(goal.title);
-      await saveCurriculumNodes(supabase, user.id, goal.id, resolvedCurriculum.goalDomain, resolvedCurriculum.nodes);
-      
-      seededMicrotargets = await seedMicrotargetsForGoal({
-        supabase,
+      seededTopics = await seedTopicsForGoal(supabase, {
         userId: user.id,
         goalId: goal.id,
-        curriculumNodes: resolvedCurriculum.nodes,
-        limit: 5
+        goalTitle: goal.title,
+        goalType: parsed.goalType,
+        presetId: goal.preset_id,
+        subject: domainResult.subject || primarySubject,
+        subjects: parsed.subjects,
+        domain: domainResult.domain,
+        exam: domainResult.exam,
+        grade: domainResult.grade,
+        board: domainResult.board,
+        chapter: null,
+        targetDate,
       });
     } catch (error) {
-      console.warn('Onboarding curriculum resolution/seeding skipped', {
+      console.warn('Onboarding topic seeding skipped', {
         userId: user.id,
         goalId: goal.id,
         error,
@@ -204,8 +207,7 @@ export async function completeOnboardingForUser({
     goal,
     session,
     createdGoal: !existingGoal,
-    curriculum: resolvedCurriculum,
-    microtargets: seededMicrotargets,
+    topicSeeding: seededTopics,
   };
 }
 

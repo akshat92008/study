@@ -1,4 +1,4 @@
-import { GoalDomain, GoalDomainType } from "./goal-domain";
+import { GoalDomain } from "./goal-domain";
 
 export type CurriculumNode = {
   title: string;
@@ -17,7 +17,7 @@ export type CurriculumTemplate = {
     subject?: string | null;
     exam?: string | null;
     grade?: string | null;
-    domain?: GoalDomainType;
+    domain?: string | null;
   };
   title: string;
   nodes: CurriculumNode[];

@@ -43,3 +43,6 @@
  GET /api/test-after 200 in 233ms (next.js: 218ms, proxy.ts: 3ms, application-code: 12ms)
 Inside after block
 ✓ Compiled in 241ms
+✓ Compiled in 4ms
+✓ Compiled in 425ms
+✓ Compiled in 160ms
