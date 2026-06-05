@@ -3,8 +3,10 @@ import { syncProfileAggregates } from '../lib/profiles/sync';
 
 async function main() {
   const supabase = createAdminClient();
+  const shouldApply = process.argv.includes('--apply');
+  const mode = shouldApply ? 'apply' : 'dry';
 
-  console.log('Fetching all users to recompute profile aggregates...');
+  console.log(`Fetching all users to recompute profile aggregates (${mode} mode)...`);
   
   const { data: users, error } = await supabase
     .from('profiles')
@@ -20,7 +22,9 @@ async function main() {
   let count = 0;
   for (const user of users) {
     try {
-      await syncProfileAggregates(user.id);
+      if (shouldApply) {
+        await syncProfileAggregates(user.id);
+      }
       count++;
       if (count % 100 === 0) {
         console.log(`Processed ${count} / ${users.length} users...`);
@@ -30,7 +34,9 @@ async function main() {
     }
   }
 
-  console.log(`Successfully recomputed profiles for ${count} users.`);
+  console.log(shouldApply
+    ? `Successfully recomputed profiles for ${count} users.`
+    : `Dry run complete. ${count} users would be recomputed.`);
 }
 
 main().catch(err => {

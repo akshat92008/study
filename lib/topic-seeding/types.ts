@@ -22,6 +22,10 @@ export interface SeedTopicParams {
   presetId?: string | null;
   subjects?: string[] | null;
   subject?: string | null;
+  domain?: string | null;
+  exam?: string | null;
+  grade?: string | null;
+  board?: string | null;
   chapter?: string | null;
   targetDate?: string | null;
 }

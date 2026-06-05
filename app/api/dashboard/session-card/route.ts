@@ -40,6 +40,7 @@ import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { ensureGoalForUser } from '@/lib/services/goal-context.service';
 import { betaAccessErrorResponse, requireActiveBetaUser } from '@/lib/access/beta-access';
 import { featureDisabledResponse, isBetaFeatureEnabled } from '@/lib/config/beta-flags';
+import { getOrCreateGoalMission } from '@/lib/hermes/ui/mission-service';
 
 // ─── Response contract ───────────────────────────────────────────────────────
 
@@ -177,6 +178,15 @@ export async function GET(request?: Request): Promise<NextResponse> {
       .maybeSingle();
 
     const localDate = getLocalDate(profile?.timezone ?? null);
+    if (goalId) {
+      await getOrCreateGoalMission(supabase, user.id, goalId, localDate).catch((err) => {
+        logger.warn('session-card: mission self-heal skipped', {
+          userId: user.id,
+          goalId,
+          error: err?.message,
+        });
+      });
+    }
 
     // ── 3. Check legacy cache and goal cache ─────────────────────────
     let cacheQuery = supabase

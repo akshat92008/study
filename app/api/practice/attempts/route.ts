@@ -7,6 +7,7 @@ import { areMcqAnswersEquivalent } from '@/lib/practice/answer-normalization';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { checkIdempotency } from '@/lib/middleware/idempotency';
 import { ingestLearningSignals } from '@/lib/learning-signals/ingest';
+import { syncStudyProfileAfterPracticeAttempt } from '@/lib/services/study-profile-sync.service';
 
 const AttemptsSchema = z.object({
   messageId: z.string().optional(),
@@ -202,10 +203,27 @@ export async function POST(req: NextRequest) {
         },
       })), { publishEvent: true }).catch(() => undefined);
 
+    const profileSync = await syncStudyProfileAfterPracticeAttempt(supabase, {
+      userId: user.id,
+      goalId: set.goal_id ?? null,
+      practiceSetId: set.id,
+      metrics: {
+        correctCount,
+        wrongCount,
+        wrongConceptIds,
+        wrongConceptNames,
+      },
+      items: eventItems,
+    }).catch((error) => ({
+      error: 'profile_sync_failed',
+      message: error instanceof Error ? error.message : 'Profile sync failed.',
+    }));
+
     return NextResponse.json({
       success: true,
       attempts: persistedAttempts ?? [],
-      metrics: { correctCount, wrongCount, wrongConceptIds, wrongConceptNames }
+      metrics: { correctCount, wrongCount, wrongConceptIds, wrongConceptNames },
+      profileSync,
     });
   } catch (error) {
     const { unexpectedApiErrorResponse } = await import('@/lib/api/errors');

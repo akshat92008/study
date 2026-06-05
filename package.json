@@ -54,7 +54,9 @@
     "supabase:status": "supabase status",
     "supabase:pull": "supabase db pull",
     "supabase:push": "supabase db push",
-    "supabase:migration": "supabase migration new"
+    "supabase:migration": "supabase migration new",
+    "study-profile:recompute:dry": "tsx scripts/recompute-study-profile.ts",
+    "study-profile:recompute:apply": "tsx scripts/recompute-study-profile.ts --apply"
   },
   "dependencies": {
     "@google/genai": "^1.52.0",

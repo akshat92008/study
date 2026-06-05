@@ -3,12 +3,10 @@ import { createClient } from '@/lib/supabase/server';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import {
   getActiveGoalContext,
-  getOrCreatePrimaryGoalSession,
   GOAL_SELECT,
-  SESSION_SELECT,
 } from '@/lib/services/goal-context.service';
 import { logger } from '@/lib/utils/logger';
-import { seedTopicsForGoal } from '@/lib/topic-seeding';
+import { createResolvedLearningGoal } from '@/lib/goals/curriculum-resolver';
 
 function optionalString(value: unknown): string | null {
   return typeof value === 'string' && value.trim() ? value.trim() : null;
@@ -80,83 +78,45 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    const metadata = {
-      currentLevel: optionalString(body.currentLevel),
-      timeAvailable: body.timeAvailable ?? null,
-      preferredLearningStyle: optionalString(body.preferredLearningStyle),
-    };
-
-    const { data: goal, error: goalError } = await supabase
-      .from('learning_goals')
-      .insert({
-        user_id: user.id,
-        title,
+    const result = await createResolvedLearningGoal({
+      supabase,
+      userId: user.id,
+      title,
+      details: {
         subject: optionalString(body.subject),
         domain: optionalString(body.domain),
-        exam_type: optionalString(body.examType),
-        preset_id: optionalString(body.presetId),
-        target_level: optionalString(body.targetLevel),
+        examType: optionalString(body.examType),
+        presetId: optionalString(body.presetId),
+        targetLevel: optionalString(body.targetLevel),
         description: optionalString(body.description),
-        target_date: optionalString(body.deadline),
-        progress: 0,
-        status: 'active',
-        last_active_at: new Date().toISOString(),
-        metadata,
-      })
-      .select(GOAL_SELECT)
-      .single();
+        deadline: optionalString(body.deadline),
+        currentLevel: optionalString(body.currentLevel),
+        timeAvailable: body.timeAvailable ?? null,
+        preferredLearningStyle: optionalString(body.preferredLearningStyle),
+        goalType: optionalString(body.goalType),
+        targetDate: optionalString(body.targetDate ?? body.target_date),
+      },
+    });
 
-    if (goalError || !goal) throw goalError || new Error('Goal insert failed');
-
-    const session = await getOrCreatePrimaryGoalSession(supabase, user.id, goal.id);
-
-    // Seed topics deterministically or fallback to AI
-    let topicSeeding: any = null;
-    try {
-      topicSeeding = await seedTopicsForGoal(supabase, {
-        userId: user.id,
-        goalId: goal.id,
-        goalTitle: goal.title ?? body.title ?? body.goalTitle ?? 'Custom Goal',
-        goalType: body.goalType ?? body.examType ?? body.domain ?? null,
-        presetId: goal.preset_id ?? body.presetId ?? body.preset_id ?? null,
-        subject: body.subject ?? null,
-        subjects: Array.isArray(body.subjects)
-          ? body.subjects
-          : body.subject
-            ? [body.subject]
-            : [],
-        chapter: body.chapter ?? null,
-        targetDate: body.targetDate ?? body.target_date ?? null,
-      });
-    } catch (error) {
-      console.warn('Goal topic seeding skipped after goal creation', {
-        userId: user.id,
-        goalId: goal.id,
-        error,
-      });
+    if (!result.success) {
+      return NextResponse.json({
+        success: false,
+        error: 'needs_clarification',
+        message: result.clarificationQuestion,
+        domain: result.domain,
+        suggestions: result.suggestions,
+      }, { status: 409, headers: { 'x-request-id': requestId } });
     }
-
-    const { data: hydratedGoal } = await supabase
-      .from('learning_goals')
-      .select(GOAL_SELECT)
-      .eq('id', goal.id)
-      .eq('user_id', user.id)
-      .single();
-
-    const { data: hydratedSession } = await supabase
-      .from('chat_sessions')
-      .select(SESSION_SELECT)
-      .eq('id', session.id)
-      .eq('user_id', user.id)
-      .single();
 
     return NextResponse.json({
       success: true,
-      goal: hydratedGoal ?? goal,
-      session: hydratedSession ?? session,
-      goalId: goal.id,
-      sessionId: session.id,
-      topicSeeding,
+      goal: result.goal,
+      session: result.session,
+      goalId: result.goalId,
+      sessionId: result.sessionId,
+      topicSeeding: result.topicSeeding,
+      mission: result.mission,
+      domain: result.domain,
     }, { status: 201, headers: { 'x-request-id': requestId } });
   } catch (error) {
     return unexpectedApiErrorResponse(req, error, 'goals_post', 'Unable to create learning goal.');

@@ -40,10 +40,61 @@ function scoreTemplate(template: SeedTemplate, haystack: string, params: SeedTop
   }
   return score;
 }
+
+function subjectFamily(value: string | null | undefined): string | null {
+  const normalized = normalizeText(value);
+  if (!normalized) return null;
+  if (['physics', 'chemistry', 'biology'].includes(normalized)) return normalized;
+  if (['math', 'mathematics', 'algebra'].includes(normalized)) return 'mathematics';
+  if (['history', 'geography', 'civics', 'economics', 'political science'].includes(normalized)) return 'humanities';
+  if (['programming', 'coding', 'javascript', 'js', 'python', 'react'].includes(normalized)) return 'programming';
+  if (normalized.includes('general learning')) return 'general';
+  return normalized;
+}
+
+function isTemplateCompatible(template: SeedTemplate, params: SeedTopicParams): boolean {
+  const requestedSubject = subjectFamily(params.subject || params.subjects?.[0]);
+  const requestedSubjects = (params.subjects ?? []).map(subjectFamily).filter(Boolean);
+  const requestedDomain = normalizeText(params.domain || params.goalType);
+  const requestedExam = normalizeText(params.exam || params.goalType || params.presetId);
+  const templateSubject = subjectFamily(template.subject);
+  const templateKey = normalizeText(template.templateKey);
+
+  if (requestedDomain.includes('humanities') || requestedSubject === 'humanities') {
+    return templateSubject === 'humanities' || templateSubject === 'general';
+  }
+
+  if (requestedDomain.includes('programming') || requestedSubject === 'programming') {
+    return templateSubject === 'programming' || templateSubject === 'general';
+  }
+
+  if (requestedSubject && requestedSubject !== 'general') {
+    const compatible = templateSubject === requestedSubject
+      || (requestedSubject === 'mathematics' && templateSubject === 'mathematics')
+      || (requestedSubject === 'programming' && templateSubject === 'programming');
+    if (!compatible) return false;
+  }
+
+  if (requestedSubjects.length > 0 && !requestedSubjects.includes('general')) {
+    const compatible = requestedSubjects.includes(templateSubject);
+    if (!compatible) return false;
+  }
+
+  if (requestedExam.includes('neet') && templateKey.startsWith('neet')) {
+    if (requestedSubject && ['physics', 'chemistry', 'biology'].includes(requestedSubject)) {
+      return templateSubject === requestedSubject;
+    }
+    return ['physics', 'chemistry', 'biology'].includes(templateSubject ?? '');
+  }
+
+  return true;
+}
+
 export function selectSeedTemplate(params: SeedTopicParams): SelectedSeedTemplate {
   const haystack = buildGoalHaystack(params);
   let best: { template: SeedTemplate; score: number } | null = null;
   for (const template of ALL_SEED_TEMPLATES) {
+    if (!isTemplateCompatible(template, params)) continue;
     const score = scoreTemplate(template, haystack, params);
     if (!best || score > best.score) {
       best = { template, score };
