@@ -8,7 +8,6 @@ import { getPreset } from '@/lib/types/universal-domain';
 import { useRouter } from 'next/navigation';
 import CognitionDashboard from '@/components/cognition/CognitionDashboard';
 import RevisionQueue from '@/components/revision/RevisionQueue';
-import AutopsyDashboard from '@/components/autopsy/AutopsyDashboard';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
@@ -100,119 +99,7 @@ export default function DashboardPage() {
     }
   }, [setActiveDrawer]);
 
-  // 2. Mock Autopsy Ingest within Drawer
-  const handleMockUpload = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!fileToUpload) return addToast('Please select a mock paper', 'error');
-
-    setIsUploadingMock(true);
-    setUploadStatus('Uploading...');
-
-    const statuses = [
-      'Upload received. Waiting for the worker queue...',
-      'Queued for processing...',
-    ];
-    let i = 0;
-    const interval = setInterval(() => {
-      if (i < statuses.length) setUploadStatus(statuses[i++]);
-    }, 2500);
-
-    try {
-      const formData = new FormData();
-      formData.append('file', fileToUpload);
-      formData.append('testName', fileToUpload.name);
-      if (activeGoalId) formData.append('goalId', activeGoalId);
-      if (chatId) formData.append('chatSessionId', chatId);
-
-      const res = await fetch('/api/autopsy/ingest', {
-        method: 'POST',
-        body: formData,
-      });
-
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message || 'Mistake Review failed');
-
-      if (data.status === 'completed') {
-        setAutopsyResult(data);
-        addToast('Mistake Review completed successfully!', 'success');
-        loadTelemetry(); // refresh telemetry
-      } else {
-        // Start polling if pending/processing
-        const supabase = createClient();
-        
-        // Timeout handling
-        const maxWait = 900000; // 15 min max
-        const timeoutId = setTimeout(() => {
-          supabase.removeChannel(channel);
-          setIsUploadingMock(false);
-          setUploadStatus('');
-          addToast('Analysis timed out', 'error');
-        }, maxWait);
-
-        // Realtime Subscription
-        const channel = supabase.channel(`autopsy_job_${data.jobId}`)
-          .on(
-            'postgres_changes',
-            {
-              event: 'UPDATE',
-              schema: 'public',
-              table: 'autopsy_jobs',
-              filter: `id=eq.${data.jobId}`
-            },
-            async (payload) => {
-              const newStatus = payload.new.status;
-              
-              if (newStatus === 'processing') {
-                setUploadStatus('Processing upload...');
-              } else if (newStatus === 'needs_user_input' || newStatus === 'needs_input') {
-                supabase.removeChannel(channel);
-                clearTimeout(timeoutId);
-                setIsUploadingMock(false);
-                setUploadStatus('');
-                addToast(payload.new.error || 'Mistake Review needs user input.', 'error');
-              } else if (newStatus === 'failed') {
-                supabase.removeChannel(channel);
-                clearTimeout(timeoutId);
-                setIsUploadingMock(false);
-                setUploadStatus('');
-                addToast(payload.new.error || 'Mistake Review failed.', 'error');
-              } else if (newStatus === 'completed') {
-                supabase.removeChannel(channel);
-                clearTimeout(timeoutId);
-                
-                const suffix = activeGoalId ? `?goalId=${activeGoalId}` : '';
-                const resultRes = await fetch(`/api/autopsy${suffix}`);
-                if (resultRes.ok) {
-                  const resultData = await resultRes.json();
-                  setAutopsyResult(resultData.result);
-                } else {
-                  setAutopsyResult(payload.new);
-                }
-                
-                setIsUploadingMock(false);
-                setUploadStatus('');
-                addToast('Mistake Review completed successfully!', 'success');
-                loadTelemetry();
-              }
-            }
-          )
-          .subscribe();
-          
-        // End of the successful try block, we don't clean up UI state here because
-        // we're waiting for the WebSocket event to complete it asynchronously.
-        // We do want to clear the interval though.
-        clearInterval(interval);
-        return; // Early return to avoid triggering the finally block
-      }
-    } catch (err: any) {
-      console.error('Mistake Review upload failed', err);
-      addToast('Mistake Review failed. Please try again with a clearer upload.', 'error');
-      setIsUploadingMock(false);
-      setUploadStatus('');
-    } finally {
-      clearInterval(interval);
-    }
-  };
+  // 2. Legacy Mock Autopsy Ingest within Drawer removed. Use Autopsy V3 (/autopsy/deep).
 
   // Find active goal title
   const activeGoal = learningGoals.find((g: LearningGoal) => g.id === activeGoalId);
@@ -355,8 +242,8 @@ export default function DashboardPage() {
               </button>
               
               <button
-                onClick={() => setActiveDrawer(activeDrawer === 'autopsy' ? null : 'autopsy')}
-                style={{ textAlign: 'left', cursor: 'pointer', flex: '1 1 200px', background: activeDrawer === 'autopsy' ? 'var(--danger-glow)' : 'var(--bg-primary)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: `1px solid ${activeDrawer === 'autopsy' ? 'var(--danger)' : 'var(--border-subtle)'}`, transition: 'all 0.2s' }}
+                onClick={() => router.push('/autopsy/deep')}
+                style={{ textAlign: 'left', cursor: 'pointer', flex: '1 1 200px', background: 'var(--bg-primary)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: `1px solid var(--border-subtle)`, transition: 'all 0.2s' }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
                   <Activity size={12} style={{ color: 'var(--danger)' }} />
@@ -431,12 +318,7 @@ export default function DashboardPage() {
                 <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)' }}>Revision Due</span>
               </>
             )}
-            {activeDrawer === 'autopsy' && (
-              <>
-                <Activity size={18} style={{ color: 'var(--danger)' }} />
-                <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)' }}>Mistake Review</span>
-              </>
-            )}
+
             {activeDrawer === 'beats' && (
               <>
                 <Music size={18} style={{ color: 'var(--warning)' }} />
@@ -482,89 +364,7 @@ export default function DashboardPage() {
             </div>
           )}
 
-          {/* C. Mistake Review Drawer */}
-          {activeDrawer === 'autopsy' && (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
-              
-              {/* Autopsy Upload State */}
-              {!autopsyResult && !isUploadingMock && (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
-                  <Card
-                    padding="lg"
-                    onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
-                    onDragLeave={() => setDragging(false)}
-                    onDrop={(e) => {
-                      e.preventDefault(); setDragging(false);
-                      const file = e.dataTransfer.files?.[0];
-                      if (file) setFileToUpload(file);
-                    }}
-                    style={{
-                      borderStyle: 'dashed', borderWidth: '2px',
-                      borderColor: dragging ? 'var(--accent-cyan)' : 'var(--border-strong)',
-                      background: dragging ? 'var(--bg-secondary)' : 'var(--bg-primary)',
-                      display: 'flex', flexDirection: 'column', alignItems: 'center',
-                      justifyContent: 'center', minHeight: '260px', transition: 'all 0.25s'
-                    }}
-                  >
-                    <div style={{ background: 'var(--accent-cyan-dim)', padding: 'var(--sp-3)', borderRadius: 'var(--radius-full)', marginBottom: 'var(--sp-3)' }}>
-                      <Upload color="var(--accent-cyan)" size={24} />
-                    </div>
-                    <h4 style={{ fontSize: 'var(--fs-base)', fontWeight: 'var(--fw-semibold)', marginBottom: '4px' }}>
-                      {dragging ? 'Drop to upload' : 'Drag & Drop Mock Paper'}
-                    </h4>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-xs)', marginBottom: 'var(--sp-4)', textAlign: 'center' }}>
-                      Support PDF, TXT, MD, or Image up to 10MB
-                    </p>
 
-                    <form onSubmit={handleMockUpload} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--sp-3)', width: '100%', maxWidth: '16rem' }}>
-                      <input
-                        type="file"
-                        accept=".pdf,.txt,.md,image/*"
-                        onChange={(e) => setFileToUpload(e.target.files?.[0] || null)}
-                        style={{
-                          width: '100%', padding: '4px var(--sp-2)',
-                          border: '1px solid var(--border-default)', borderRadius: 'var(--radius-sm)',
-                          background: 'var(--bg-secondary)', color: 'var(--text-primary)', fontSize: 'var(--fs-xs)'
-                        }}
-                      />
-                      {fileToUpload && (
-                        <div style={{ fontSize: '11px', color: 'var(--accent-cyan)', textAlign: 'center', background: 'var(--accent-cyan-dim)', padding: '4px 10px', borderRadius: 'var(--radius-sm)', width: '100%' }}>
-                          Staged: <strong>{fileToUpload.name}</strong>
-                        </div>
-                      )}
-                      <Button type="submit" disabled={!fileToUpload} size="sm" style={{ width: '100%', background: 'var(--accent-cyan)', color: 'var(--text-inverse)' }}>
-                        Run Mistake Review
-                      </Button>
-                    </form>
-                  </Card>
-                </div>
-              )}
-
-              {/* Autopsy Loading State */}
-              {isUploadingMock && (
-                <Card padding="lg" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '260px' }}>
-                  <Loader2 color="var(--accent-cyan)" size={32} className="animate-spin" style={{ marginBottom: 'var(--sp-4)' }} />
-                  <h4 style={{ fontSize: 'var(--fs-md)', fontWeight: 'var(--fw-bold)' }}>Reading Test Data...</h4>
-                  <p style={{ color: 'var(--accent-cyan)', fontFamily: 'var(--font-mono)', fontSize: 'var(--fs-xs)', marginTop: 8 }}>{uploadStatus}</p>
-                </Card>
-              )}
-
-              {/* Autopsy Results Dashboard */}
-              {autopsyResult && !isUploadingMock && (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
-                  <ErrorBoundary fallback={<div className="text-sm text-muted-foreground p-4">Mistake Review unavailable</div>}>
-                    <AutopsyDashboard result={autopsyResult} />
-                  </ErrorBoundary>
-                  <div style={{ display: 'flex', justifyContent: 'center', marginTop: 'var(--sp-4)' }}>
-                    <Button variant="secondary" size="sm" onClick={() => { setAutopsyResult(null); setFileToUpload(null); }}>
-                      Analyze Another Assessment
-                    </Button>
-                  </div>
-                </div>
-              )}
-
-            </div>
-          )}
 
           {/* D. BEATS Drawer */}
           {activeDrawer === 'beats' && (

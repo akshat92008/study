@@ -51,7 +51,7 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [uploadType, setUploadType] = useState<'mock_test' | 'study_material'>('study_material');
+  const [uploadType, setUploadType] = useState<'study_material'>('study_material');
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -153,17 +153,15 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
     const fileMsgId = Math.random().toString(36).substring(7);
     setMessages(prev => [...prev, { id: fileMsgId, role: 'tutor', content: `Ingesting ${file.name} to neural core...`, type: 'upload_status', meta: { filename: file.name } }]);
 
-    const apiRoute = uploadType === 'mock_test' ? '/api/autopsy/ingest' : '/api/materials/upload';
+    const apiRoute = '/api/materials/upload';
 
     const formData = new FormData();
     formData.append('file', file);
     
-    if (uploadType !== 'mock_test') {
-      formData.append('sourceType', uploadType === 'study_material' ? 'upload' : 'upload');
-      formData.append('title', file.name);
-      if (currentActiveTask?.subject) formData.append('subject', currentActiveTask.subject);
-      if (currentActiveTask?.chapter) formData.append('chapter', currentActiveTask.chapter);
-    }
+    formData.append('sourceType', 'upload');
+    formData.append('title', file.name);
+    if (currentActiveTask?.subject) formData.append('subject', currentActiveTask.subject);
+    if (currentActiveTask?.chapter) formData.append('chapter', currentActiveTask.chapter);
 
     try {
       const res = await fetch(apiRoute, { method: 'POST', body: formData });
@@ -183,9 +181,7 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
       if (!res.ok) {
         setMessages(prev => prev.map(m => m.id === fileMsgId ? { ...m, content: `❌ Upload Failed: ${data.error}`, type: 'text' } : m));
       } else {
-        const textContent = uploadType === 'mock_test' 
-          ? `Mistake Review complete. Mistakes found: **${data.autopsy?.marks_lost || 0}**. Sprint scheduled.`
-          : data.material?.status === 'failed'
+        const textContent = data.material?.status === 'failed'
             ? `❌ Material indexing failed for **${file.name}**.`
             : data.material?.status === 'queued' || data.material?.status === 'processing'
               ? `📚 Source uploaded: **${file.name}**. It is queued for indexing and will be available to the AI Tutor when it shows Ready.`
@@ -193,12 +189,6 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
               ? `📁 Material uploaded: **${file.name}**. Indexing is currently disabled for beta stability.`
               : `📚 Syllabus Ingested: **${file.name}**. Material indexed: ${data.chunksProcessed || 0} chunks ready.`;
         setMessages(prev => prev.map(m => m.id === fileMsgId ? { ...m, content: textContent, type: 'text' } : m));
-        
-        if (uploadType === 'mock_test') {
-          const { setAutopsyResult, setActiveDrawer } = useAppStore.getState();
-          setAutopsyResult(data);
-          setActiveDrawer('autopsy');
-        }
       }
     } catch (err: any) {
       setMessages(prev => prev.map(m => m.id === fileMsgId ? { ...m, content: `❌ Connection error.`, type: 'text' } : m));
@@ -366,7 +356,7 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
                   position: 'absolute', bottom: 'calc(100% - 4px)', left: 'var(--sp-4)', background: 'var(--bg-secondary)',
                   border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: 6, display: 'flex', flexDirection: 'column', gap: 4, width: '240px'
                 }}>
-                  <button onClick={() => { setUploadType('mock_test'); setShowUploadMenu(false); fileInputRef.current?.click(); }} style={{ padding: '8px 12px', background: 'transparent', border: 'none', color: 'var(--text-primary)', textAlign: 'left', cursor: 'pointer' }}>
+                  <button onClick={() => { setShowUploadMenu(false); router.push('/autopsy/deep'); }} style={{ padding: '8px 12px', background: 'transparent', border: 'none', color: 'var(--text-primary)', textAlign: 'left', cursor: 'pointer' }}>
                     <span style={{ fontSize: 'var(--fs-sm)', fontWeight: 'bold', display: 'block' }}>Upload Mock Test</span>
                     <span style={{ fontSize: '9px', color: 'var(--text-tertiary)' }}>Extract marks lost and create revision sprints</span>
                   </button>
