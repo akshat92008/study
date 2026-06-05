@@ -1,5 +1,5 @@
 export const maxDuration = 60;
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse, after } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
@@ -7,6 +7,7 @@ import { getRagConfig, SUPPORTED_MATERIAL_MIME_TYPES, SUPPORTED_MATERIAL_EXTENSI
 import { materialContentHash } from '@/lib/rag/ingest';
 import { validateMagicBytesArray } from '@/lib/utils/magicBytes';
 import { EventDispatcher } from '@/lib/events/orchestrator';
+import { EventWorkerService } from '@/lib/events/worker';
 import { logger } from '@/lib/utils/logger';
 import { featureFlags } from '@/lib/config/flags';
 import { hermesRuntimeConfig } from '@/lib/hermes/hermes-runtime-config';
@@ -319,6 +320,16 @@ export async function POST(req: NextRequest) {
       idempotencyKey: `material_upload:${user.id}:${material.id}`,
     });
     if (!usage.allowed) return featureLimitResponse(usage, requestId);
+
+    // Fire the worker instantly in the background without blocking the HTTP response
+    after(async () => {
+      try {
+        logger.info('Instantly triggering background event worker for upload', { userId: user.id, materialId: material.id });
+        await EventWorkerService.processBatch(25, 5, 50_000, Date.now());
+      } catch (workerError) {
+        logger.error('Instant worker trigger failed', { error: workerError });
+      }
+    });
 
     return NextResponse.json({
       material: {
