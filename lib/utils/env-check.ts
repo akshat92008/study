@@ -42,7 +42,7 @@ export function checkEnvironment(): void {
   }
   console.log('[ENV] Active AI providers:', active.join(', '));
 
-  if (!process.env.INTERNAL_CRON_SECRET) {
+  if (!process.env.INTERNAL_CRON_SECRET && !isBuildPhase()) {
     console.warn('[ENV] INTERNAL_CRON_SECRET not set — daily synthesis cron is unprotected.');
   }
 }

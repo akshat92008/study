@@ -70,7 +70,7 @@ async function startTelemetry(): Promise<void> {
 
     await sdk.start();
     _sdkInitialized = true;
-    console.log('[OTel] Telemetry initialized →', process.env.OTEL_EXPORTER_OTLP_ENDPOINT);
+    console.log('[OTel] Telemetry initialized successfully');
 
     // Graceful shutdown
     process.on('SIGTERM', () => sdk.shutdown().catch(console.error));
