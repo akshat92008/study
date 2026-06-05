@@ -102,9 +102,14 @@ describe('event worker route auth', () => {
         pendingLocks: 0,
         processingLocks: 0,
       },
+      workerCaps: {
+        batchSize: 10,
+        maxRuntimeMs: 8000,
+        maxAiCallsPerRun: 3,
+      },
       nextRecommendedRunSeconds: 300,
     });
-    expect(processBatch).toHaveBeenCalledWith(25, 5, 50000, expect.any(Number));
+    expect(processBatch).toHaveBeenCalledWith(10, 5, 8000, expect.any(Number));
   });
 
   it('passes bounded env-configured runtime limits into the worker', async () => {
@@ -120,6 +125,13 @@ describe('event worker route auth', () => {
     }));
 
     expect(res.status).toBe(200);
+    expect(await res.json()).toMatchObject({
+      workerCaps: {
+        batchSize: 12,
+        maxRuntimeMs: 17000,
+        maxAiCallsPerRun: 3,
+      },
+    });
     expect(processBatch).toHaveBeenCalledWith(12, 3, 17000, expect.any(Number));
   });
 });

@@ -40,9 +40,11 @@ describe('no-PULSE product gap contracts', () => {
     expect(read('tsconfig.json')).not.toContain('"@/services/*"');
   });
 
-  it('schedules required background routes in vercel cron', () => {
-    const vercel = read('vercel.json');
-    expect(vercel).toContain('/api/internal/workers/process-events');
+  it('keeps Hobby cron scheduling on daily synthesis only', () => {
+    const vercel = JSON.parse(read('vercel.json')) as { crons?: Array<{ path: string; schedule: string }> };
+    expect(vercel.crons).toEqual([
+      { path: '/api/cron/daily-synthesis', schedule: '0 6 * * *' },
+    ]);
   });
 
   it('replaces schema-conditional semantic memory RPC with deterministic chat_memory lookup', () => {

@@ -11,9 +11,10 @@ export async function processEventWorkerRoute(req: NextRequest | Request) {
 
   try {
     const start = Date.now();
-    const batchSize = boundedInt(process.env.EVENT_WORKER_BATCH_SIZE, 25, 1, 50);
+    const batchSize = boundedInt(process.env.EVENT_WORKER_BATCH_SIZE, 10, 1, 50);
     const leaseMinutes = boundedInt(process.env.EVENT_WORKER_LEASE_MINUTES, 5, 1, 30);
-    const maxRuntimeMs = boundedInt(process.env.EVENT_WORKER_MAX_RUNTIME_MS, 50_000, 1_000, 3_600_000);
+    const maxRuntimeMs = boundedInt(process.env.EVENT_WORKER_MAX_RUNTIME_MS, 8_000, 1_000, 60_000);
+    const maxAiCallsPerRun = boundedInt(process.env.EVENT_WORKER_MAX_AI_CALLS_PER_RUN, 3, 0, 50);
     logger.info('Worker batch started', { requestId, feature: 'event-worker' });
     const {
       processed,
@@ -38,6 +39,11 @@ export async function processEventWorkerRoute(req: NextRequest | Request) {
       skipped,
       dlq: queue.dlqCount,
       durationMs: Date.now() - start,
+      workerCaps: {
+        batchSize,
+        maxRuntimeMs,
+        maxAiCallsPerRun,
+      },
       queueHealth: {
         pendingEvents: queue.pendingEvents,
         pendingLocks: queue.pendingLocks,

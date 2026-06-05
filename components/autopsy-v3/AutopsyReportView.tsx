@@ -5,7 +5,7 @@ import MistakeTypeBreakdown from './MistakeTypeBreakdown';
 import RepeatedPatternCard from './RepeatedPatternCard';
 import RecoverableMarksCard from './RecoverableMarksCard';
 import SevenDayProtocol from './SevenDayProtocol';
-import HermesMemoryPanel from './HermesMemoryPanel';
+import AmauraMemoryPanel from './AmauraMemoryPanel';
 
 export default function AutopsyReportView({ report, memories }: { report: any; memories: any[] }) {
   const body = report?.report_json ?? report;
@@ -40,7 +40,7 @@ export default function AutopsyReportView({ report, memories }: { report: any; m
       </div>
 
       <SevenDayProtocol days={body.sevenDayProtocol ?? []} />
-      <HermesMemoryPanel memories={memories} />
+      <AmauraMemoryPanel memories={memories} />
     </div>
   );
 }

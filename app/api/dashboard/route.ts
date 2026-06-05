@@ -1,10 +1,12 @@
-import { NextResponse } from 'next/server';
+import { after, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { getCognitionGraph } from '@/lib/engines/cognition-graph';
 import { getRevisionStats, getDueCards } from '@/lib/engines/revision-engine';
 import { getMistakeAnalytics } from '@/lib/engines/mistake-engine';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import { ensureGoalForUser } from '@/lib/services/goal-context.service';
+import { EventWorkerService } from '@/lib/events/worker';
+import { logger } from '@/lib/utils/logger';
 
 export const dynamic = 'force-dynamic';
 
@@ -61,8 +63,8 @@ export async function GET(request: Request) {
     if (goalId) latestReportQuery = latestReportQuery.eq('goal_id', goalId);
 
     let topMemoryQuery = supabase
-      .from('hermes_learning_memories')
-      .select('id, memory_type, subject, topic, pattern, evidence_count, severity, confidence, prevention_rule, last_seen_at')
+      .from('amaura_pattern_memories')
+      .select('id, pattern_type, subject, topic, pattern, occurrences, severity, confidence, evidence, last_seen_at')
       .eq('user_id', user.id)
       .eq('status', 'active')
       .order('last_seen_at', { ascending: false })
@@ -117,6 +119,15 @@ export async function GET(request: Request) {
         if (!syllabus[c.subject].includes(c.chapter)) syllabus[c.subject].push(c.chapter);
       });
     }
+
+    after(() => {
+      EventWorkerService.processSafeUserEvents(user.id, 2).catch((error) => {
+        logger.warn('Dashboard opportunistic event processing skipped', {
+          userId: user.id,
+          error: error instanceof Error ? error.message : String(error),
+        });
+      });
+    });
 
     return NextResponse.json({
       profile: profileRes.data,

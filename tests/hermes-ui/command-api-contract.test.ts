@@ -3,21 +3,19 @@ import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 const root = process.cwd();
-const source = fs.readFileSync(path.join(root, 'app/api/hermes/command/route.ts'), 'utf8');
+const commandRoute = path.join(root, 'app/api/hermes/command/route.ts');
+const dashboardSource = fs.readFileSync(path.join(root, 'app/(dashboard)/dashboard/page.tsx'), 'utf8');
+const chatSource = fs.readFileSync(path.join(root, 'components/chat/GlobalChat.tsx'), 'utf8');
 
-describe('Hermes command API contract', () => {
-  it('authenticates, rate limits, classifies, plans, and executes', () => {
-    expect(source).toContain('supabase.auth.getUser');
-    expect(source).toContain("bucket: 'hermes-command'");
-    expect(source).toContain('classifyHermesIntent');
-    expect(source).toContain('getHermesUserState');
-    expect(source).toContain('planHermesAction');
-    expect(source).toContain('executeHermesPlan');
+describe('Public Hermes command surface contract', () => {
+  it('removes the user-facing Hermes command route', () => {
+    expect(fs.existsSync(commandRoute)).toBe(false);
   });
 
-  it('returns card response fields', () => {
-    expect(source).toContain('cards: executed.cards');
-    expect(source).toContain('usedLLM: executed.usedLLM');
-    expect(source).toContain('costMode: executed.costMode');
+  it('does not call the deleted Hermes command API from active UI surfaces', () => {
+    expect(dashboardSource).not.toContain('HermesCommandCard');
+    expect(dashboardSource).toContain('AmauraNotificationFeed');
+    expect(chatSource).not.toContain('/api/hermes/command');
+    expect(chatSource).not.toContain('classifyHermesIntent');
   });
 });

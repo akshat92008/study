@@ -41,7 +41,7 @@ import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { ensureGoalForUser } from '@/lib/services/goal-context.service';
 import { betaAccessErrorResponse, requireActiveBetaUser } from '@/lib/access/beta-access';
 import { featureDisabledResponse, isBetaFeatureEnabled } from '@/lib/config/beta-flags';
-import { getOrCreateGoalMission } from '@/lib/hermes/ui/mission-service';
+import { getOrCreateGoalMission } from '@/lib/services/goal-mission.service';
 
 // ─── Response contract ───────────────────────────────────────────────────────
 
@@ -320,14 +320,14 @@ export async function GET(request?: Request): Promise<NextResponse> {
         ? (commandTasksQuery as any).is('goal_id', null)
         : commandTasksQuery;
 
-    let hermesMemoriesQuery = supabase
-      .from('hermes_learning_memories')
-      .select('id, concept, pattern, severity, action_type, subject, topic')
+    let patternMemoriesQuery = supabase
+      .from('amaura_pattern_memories')
+      .select('id, concept_id, pattern, severity, pattern_type, subject, topic')
       .eq('user_id', user.id)
       .eq('status', 'active')
       .order('created_at', { ascending: false })
       .limit(3);
-    if (goalId) hermesMemoriesQuery = hermesMemoriesQuery.eq('goal_id', goalId);
+    if (goalId) patternMemoriesQuery = patternMemoriesQuery.eq('goal_id', goalId);
 
     let firstSeededTopicQuery = supabase
       .from('goal_curriculum_nodes')
@@ -354,7 +354,7 @@ export async function GET(request?: Request): Promise<NextResponse> {
       totalConceptsRes,
       masteredConceptsRes,
       commandTasksRes,
-      hermesMemoriesRes,
+      patternMemoriesRes,
       firstSeededTopicRes,
     ] = await Promise.all([
       activeGoal
@@ -393,7 +393,7 @@ export async function GET(request?: Request): Promise<NextResponse> {
 
       commandTasksQuery,
 
-      hermesMemoriesQuery,
+      patternMemoriesQuery,
 
       firstSeededTopicQuery,
     ]);
@@ -441,12 +441,12 @@ export async function GET(request?: Request): Promise<NextResponse> {
         priority: t.priority,
         notes: t.source,
       })),
-      hermesMemories: (hermesMemoriesRes.data ?? []).map((h: any) => ({
+      patternMemories: (patternMemoriesRes.data ?? []).map((h: any) => ({
         id: h.id,
-        concept: h.concept,
+        concept: h.topic ?? h.pattern_type,
         pattern: h.pattern,
         severity: h.severity,
-        action_type: h.action_type,
+        action_type: h.pattern_type,
         subject: h.subject,
         topic: h.topic,
       })),

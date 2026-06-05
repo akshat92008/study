@@ -105,7 +105,7 @@ async function getLaunchMetrics() {
     ragUploadsToday: sumFeature('rag_upload') + sumFeature('material_upload'),
     materialQueriesToday: sumFeature('material_query'),
     revisionToday: sumFeature('revision_generation'),
-    hermesWritesToday: sumFeature('hermes_write'),
+    memoryWritesToday: sumFeature('hermes_write'),
     pendingQueue,
     processingQueue,
     failedQueue,
@@ -161,7 +161,7 @@ export default async function LaunchDashboardPage() {
         <Metric label="RAG uploads today" value={metrics.ragUploadsToday} />
         <Metric label="Material queries today" value={metrics.materialQueriesToday} />
         <Metric label="Revision generations today" value={metrics.revisionToday} />
-        <Metric label="Hermes writes today" value={metrics.hermesWritesToday} />
+        <Metric label="Memory writes today" value={metrics.memoryWritesToday} />
       </section>
 
       <section style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12, marginBottom: 28 }}>
@@ -180,7 +180,7 @@ export default async function LaunchDashboardPage() {
           <div>RAG uploads: {flags.ragUploadsEnabled ? 'enabled' : 'paused'}</div>
           <div>RAG queries: {flags.ragQueriesEnabled ? 'enabled' : 'paused'}</div>
           <div>Autopsy reports: {flags.autopsyReportsEnabled ? 'enabled' : 'paused'}</div>
-          <div>Hermes writes: {flags.hermesWritesEnabled ? 'enabled' : 'paused'}</div>
+          <div>Memory writes: {flags.hermesWritesEnabled ? 'enabled' : 'paused'}</div>
           <div>Worker AI: {flags.workerAiEnabled ? 'enabled' : 'off'}</div>
         </div>
       </section>

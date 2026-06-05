@@ -108,8 +108,8 @@ export interface SelectorInput {
     notes?: string | null;
   }>;
 
-  /** Hermes memories from Autopsy. */
-  hermesMemories?: Array<{
+  /** Native pattern memories from Amaura agents and Autopsy. */
+  patternMemories?: Array<{
     id: string;
     concept: string;
     pattern: string;
@@ -309,9 +309,9 @@ export function selectSessionCard(input: SelectorInput): SelectorOutput {
     };
   }
 
-  // ─── P2.5: Hermes Learning Memories ──────────────────────────────────────
-  if (input.hermesMemories && input.hermesMemories.length > 0) {
-    const memory = input.hermesMemories[0]; // Already ordered by severity and date in SQL
+  // ─── P2.5: Native Pattern Memories ───────────────────────────────────────
+  if (input.patternMemories && input.patternMemories.length > 0) {
+    const memory = input.patternMemories[0]; // Already ordered by severity and date in SQL
     return {
       targetConceptId: null, // Memories aren't strictly bound to a concept_id yet
       priority: 'mistake_repair', // Use same general task type as mistake repair

@@ -124,6 +124,7 @@ export async function completeOnboardingForUser({
     subject: domainResult.subject || primarySubject,
     domain: domainResult.domain || parsed.goalType,
     exam: domainResult.exam || parsed.goalType,
+    goal_type: parsed.goalType,
     grade: domainResult.grade,
     confidence: domainResult.confidence,
     needs_clarification: domainResult.needsClarification,
@@ -170,7 +171,7 @@ export async function completeOnboardingForUser({
   const session = await getOrCreatePrimaryGoalSession(supabase, user.id, goal.id);
 
   // Seed core topics dynamically
-  let seededTopics = null;
+  let seededTopics: Awaited<ReturnType<typeof seedTopicsForGoal>> | null = null;
   if (!domainResult.needsClarification) {
     try {
       seededTopics = await seedTopicsForGoal(supabase, {

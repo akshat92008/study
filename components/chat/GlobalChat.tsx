@@ -11,10 +11,8 @@ import { SessionClosingCard } from './SessionClosingCard';
 import { useSessionTimer } from '@/hooks/useSessionTimer';
 import { useRouter } from 'next/navigation';
 import { isAutopsyUploadIntent } from '@/lib/autopsy/upload-intent';
-import { classifyHermesIntent } from '@/lib/hermes/ui/intent';
-import type { HermesCard } from '@/lib/hermes/ui/types';
 
-const HERMES_QUICK_PROMPTS = [
+const MIND_QUICK_PROMPTS = [
   'What should I do now?',
   'Create a goal',
   'Generate a quiz',
@@ -22,34 +20,6 @@ const HERMES_QUICK_PROMPTS = [
   'Show weak areas',
   'Show source status',
 ];
-
-function summarizeHermesCards(cards: HermesCard[]): string {
-  if (cards.length === 0) return 'Hermes did not return any cards.';
-  const first = cards[0];
-  if (first.type === 'mission') return `**${first.title}**\n${first.tasks.map((task, index) => `${index + 1}. ${task.title}`).join('\n')}`;
-  if (first.type === 'source_status') return `**Source status**\n${first.sources.map(source => `- ${source.title}: ${source.label}`).join('\n') || 'No sources yet.'}`;
-  if (first.type === 'weak_areas') return `**Weak areas**\n${first.topics.map((topic: any) => `- ${topic.name ?? topic.topic ?? topic.chapter ?? 'Concept'}`).join('\n') || 'No weak areas found.'}`;
-  if (first.type === 'review_queue') return `**Review queue**\n${first.dueCount} cards due.`;
-  if (first.type === 'clarification') return `**Hermes needs one detail**\n${first.question}`;
-  if (first.type === 'roadmap') return `**${first.goalTitle} roadmap**\n${first.nodes.slice(0, 5).map((node, index) => `${index + 1}. ${node.title}`).join('\n')}`;
-  if (first.type === 'quiz') return `**${first.title}**\n${first.questions.length} questions ready.`;
-  if (first.type === 'flashcards') return `**${first.title}**\n${first.cards.length} cards ready.`;
-  if (first.type === 'autopsy') return `**${first.title}**\n${first.diagnosis}`;
-  if (first.type === 'progress_summary') return first.summary;
-  return first.text;
-}
-
-function HermesCardsInline({ cards }: { cards: HermesCard[] }) {
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-      {cards.map((card, index) => (
-        <div key={`${card.type}-${index}`} style={{ borderTop: index === 0 ? 'none' : '1px solid var(--border-subtle)', paddingTop: index === 0 ? 0 : 10 }}>
-          <RichMessageRenderer content={summarizeHermesCards([card])} isStreaming={false} metadata={{}} />
-        </div>
-      ))}
-    </div>
-  );
-}
 
 export const GlobalChat = memo(function GlobalChat() {
   const {
@@ -205,50 +175,6 @@ export const GlobalChat = memo(function GlobalChat() {
     setInputMessage('');
     setPendingFile(null);
     resetStatus();
-
-    const hermesIntent = classifyHermesIntent(content);
-    const shouldTryHermesCommand =
-      !pendingFile
-      && !imageBase64
-      && !documentBase64
-      && !extractedText
-      && hermesIntent.type !== 'unknown'
-      && hermesIntent.type !== 'explain_concept';
-
-    if (shouldTryHermesCommand) {
-      try {
-        const res = await fetch('/api/hermes/command', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            message: content,
-            goalId: activeGoalId ?? undefined,
-          }),
-        });
-        const data = await res.json();
-        if (res.ok && Array.isArray(data.cards) && data.cards.length > 0) {
-          addChatMessage({
-            role: 'assistant',
-            content: summarizeHermesCards(data.cards),
-            timestamp: new Date().toISOString(),
-            metadata: {
-              action: 'hermes_cards',
-              hermesCards: data.cards,
-              intent: data.intent?.type,
-              costMode: data.costMode,
-              usedLLM: data.usedLLM,
-            },
-          });
-          if (data.intent?.type === 'create_goal') {
-            await useAppStore.getState().loadLearningGoals();
-          }
-          window.dispatchEvent(new Event('refresh-dashboard'));
-          return;
-        }
-      } catch (err) {
-        console.warn('Hermes command path failed, falling back to chat', err);
-      }
-    }
 
     const sessionTurnsCount = chatMessages.filter(m => m.role === 'user').length;
 
@@ -496,11 +422,7 @@ export const GlobalChat = memo(function GlobalChat() {
                     tomorrowFocus={msg.metadata?.tomorrowFocus}
                   />
                 ) : (
-                  msg.metadata?.action === 'hermes_cards' && Array.isArray(msg.metadata?.hermesCards) ? (
-                    <HermesCardsInline cards={msg.metadata.hermesCards as HermesCard[]} />
-                  ) : (
-                    <RichMessageRenderer content={msg.content} isStreaming={false} messageId={msg.id} metadata={msg.metadata} />
-                  )
+                  <RichMessageRenderer content={msg.content} isStreaming={false} messageId={msg.id} metadata={msg.metadata} />
                 )}
               </div>
             </div>
@@ -527,7 +449,7 @@ export const GlobalChat = memo(function GlobalChat() {
         zIndex: 10,
       }}>
         <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 10 }}>
-          {HERMES_QUICK_PROMPTS.map((prompt) => (
+          {MIND_QUICK_PROMPTS.map((prompt) => (
             <button
               key={prompt}
               onClick={() => handleSendMessage(prompt)}

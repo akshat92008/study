@@ -158,10 +158,10 @@ export async function retrySourceProcessing(input: {
 
   await EventDispatcher.publish({
     user_id: input.userId,
-    type: 'HERMES_SOURCE_PROCESS_REQUESTED',
+    type: 'MATERIAL_INGESTION_REQUESTED',
     data: { materialId: input.sourceId, goalId: updated.goal_id ?? null },
-    metadata: { source: 'hermes_ui_source_retry', goalId: updated.goal_id ?? null },
-    idempotency_key: `hermes_source_retry:${input.userId}:${input.sourceId}:${retryCount + 1}`,
+    metadata: { source: 'source_retry', goalId: updated.goal_id ?? null },
+    idempotency_key: `source_retry:${input.userId}:${input.sourceId}:${retryCount + 1}`,
   }).catch(() => undefined);
 
   return toHermesSourceStatus(updated);

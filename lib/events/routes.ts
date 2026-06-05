@@ -12,8 +12,12 @@ export const EVENT_CONSUMERS = [
   'autopsy_agent',
   'planner_agent',
   'command_agent',
-  // Hermes internal worker consumer — never user-facing
-  'hermes_worker',
+  'amaura_practice_agent',
+  'amaura_session_agent',
+  'amaura_autopsy_cascade',
+  'amaura_forgetting_agent',
+  'amaura_stagnation_agent',
+  'amaura_pattern_memory',
 ] as const;
 
 export type EventConsumer = typeof EVENT_CONSUMERS[number];
@@ -55,9 +59,8 @@ export const EVENT_CONSUMER_MATRIX = {
   ],
   AUTOPSY_V3_ASSESSMENT_CREATED: ['autopsy_agent'],
   AUTOPSY_V3_QUESTIONS_UPSERTED: ['autopsy_agent'],
-  AUTOPSY_V3_REASONS_COLLECTED: ['autopsy_agent', 'hermes_worker', 'learning_state_engine'],
-  AUTOPSY_V3_REPORT_READY: ['learning_state_engine', 'memory_agent', 'planner_agent', 'command_agent', 'hermes_worker'],
-  HERMES_MEMORY_UPDATED: ['memory_agent', 'planner_agent'],
+  AUTOPSY_V3_REASONS_COLLECTED: ['autopsy_agent', 'learning_state_engine'],
+  AUTOPSY_V3_REPORT_READY: ['learning_state_engine', 'memory_agent', 'planner_agent', 'command_agent', 'amaura_autopsy_cascade'],
   LEARNING_SIGNAL_INGESTED: ['learning_state_engine', 'atlas_agent', 'memory_agent', 'planner_agent', 'command_agent'],
   STUDY_SESSION_COMPLETED: [
     'atlas_engine',
@@ -65,6 +68,7 @@ export const EVENT_CONSUMER_MATRIX = {
     'learning_state_engine',
     'command_agent',
     'planner_agent',
+    'amaura_session_agent',
   ],
   MIND_TUTOR_COMPLETED: [
     'atlas_engine',
@@ -88,13 +92,22 @@ export const EVENT_CONSUMER_MATRIX = {
   SESSION_RECOMMENDATION_CREATED: ['mind_agent'],
   LEARNER_STATE_CHANGED: ['planner_agent', 'mind_agent'],
   PLANNER_REPLAN_REQUESTED: ['planner_agent', 'command_agent'],
-  STUDENT_MODEL_SYNC_REQUESTED: ['learning_state_engine'],
+  STUDENT_MODEL_SYNC_REQUESTED: [
+    'learning_state_engine',
+    'amaura_forgetting_agent',
+    'amaura_stagnation_agent',
+    'amaura_pattern_memory',
+  ],
+  FORGETTING_SCAN_REQUESTED: ['amaura_forgetting_agent'],
+  STAGNATION_SCAN_REQUESTED: ['amaura_stagnation_agent'],
+  PATTERN_MEMORY_SCAN_REQUESTED: ['amaura_pattern_memory'],
   PRACTICE_ATTEMPT_RECORDED: [
     'atlas_engine',
     'memory_engine',
     'learning_state_engine',
     'command_agent',
     'planner_agent',
+    'amaura_practice_agent',
   ],
   PRACTICE_ATTEMPT_SUBMITTED: [
     'atlas_engine',
@@ -102,14 +115,9 @@ export const EVENT_CONSUMER_MATRIX = {
     'learning_state_engine',
     'command_agent',
     'planner_agent',
+    'amaura_practice_agent',
   ],
   ONBOARDING_QUIZ_COMPLETE: ['learning_state_engine', 'planner_agent', 'command_agent'],
-  // Hermes internal worker events — only consumed by hermes_worker
-  HERMES_MISTAKE_REVIEW_REQUESTED: ['hermes_worker'],
-  HERMES_SOURCE_PROCESS_REQUESTED: ['hermes_worker'],
-  HERMES_REVISION_QUALITY_REQUESTED: ['hermes_worker'],
-  HERMES_TRACE_REQUESTED: ['hermes_worker'],
-  HERMES_NEXT_ACTION_REQUESTED: ['hermes_worker'],
 } as const satisfies Record<string, readonly EventConsumer[]>;
 
 export type RoutedEventType = keyof typeof EVENT_CONSUMER_MATRIX;

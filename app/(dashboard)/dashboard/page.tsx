@@ -13,7 +13,7 @@ import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import CurrentTaskCard from '@/components/dashboard/CurrentTaskCard';
 import MicrotargetsCard from '@/components/dashboard/MicrotargetsCard';
-import HermesCommandCard from '@/components/dashboard/HermesCommandCard';
+import AmauraNotificationFeed from '@/components/dashboard/AmauraNotificationFeed';
 import { SeededTopicsCard } from '@/components/dashboard/SeededTopicsCard';
 import DeepAutopsyCard from '@/components/dashboard/DeepAutopsyCard';
 import GoalCreationModal from '@/components/modals/GoalCreationModal';
@@ -165,6 +165,7 @@ export default function DashboardPage() {
             Select or create a learning goal in the sidebar
           </div>
         )}
+        <AmauraNotificationFeed />
       </div>
 
       {/* Main Content Area */}
@@ -189,10 +190,6 @@ export default function DashboardPage() {
           </Card>
         ) : (
           <CurrentTaskCard goalId={activeGoalId ?? undefined} onSessionComplete={loadTelemetry} />
-        )}
-
-        {activeGoal && (
-          <HermesCommandCard goalId={activeGoalId} />
         )}
 
         {activeGoal && dashboardData?.tasks && (

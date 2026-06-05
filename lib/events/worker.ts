@@ -11,7 +11,8 @@ import { processChatSideEffects, type ChatSideEffectsInput } from '@/lib/ai/chat
 import { runAgenticConsumer } from '@/lib/agents/event-runner';
 import { runCheapAgenticCycle } from '@/lib/agents/orchestrator';
 import { featureFlags } from '@/lib/config/flags';
-import { hermesRuntimeConfig } from '@/lib/hermes/hermes-runtime-config';
+import { isAmauraConsumer } from '@/lib/amaura/agents/registry';
+import { runAmauraConsumerForLease } from '@/lib/amaura/agents/runtime';
 
 export const HANDLED_EVENT_CONSUMERS = [
   'learning_state_engine',
@@ -27,12 +28,16 @@ export const HANDLED_EVENT_CONSUMERS = [
   'mind_agent',
   'autopsy_agent',
   'command_agent',
-  // Hermes internal worker — never user-facing
-  'hermes_worker',
+  'amaura_practice_agent',
+  'amaura_session_agent',
+  'amaura_autopsy_cascade',
+  'amaura_forgetting_agent',
+  'amaura_stagnation_agent',
+  'amaura_pattern_memory',
 ] as const;
 
 
-const MAX_RETRIES = 2; // Equivalent to retry_count < 3
+const DEFAULT_MAX_RETRIES = 2; // Equivalent to retry_count < 3
 const DEFAULT_CONCURRENCY = 5;
 const MAX_CONCURRENCY = 10;
 
@@ -111,6 +116,54 @@ export class EventWorkerService {
     });
 
     return await this.processLeasesWithBoundedConcurrency(leases, workerId, maxRuntimeMs, startTimeMs);
+  }
+
+  static async processSafeUserEvents(userId: string, maxEvents: number = 2) {
+    const supabase = createAdminClient();
+    const workerId = `opportunistic:${crypto.randomUUID()}`;
+    const envCap = Number(process.env.EVENT_WORKER_MAX_EVENTS_PER_USER_PER_RUN ?? 3);
+    const actualLimit = Math.max(1, Math.min(Math.floor(maxEvents), Number.isFinite(envCap) ? Math.floor(envCap) : 3, 3));
+    const startTimeMs = Date.now();
+    const maxRuntimeMs = 1_500;
+
+    const { data: dbLeases, error } = await supabase.rpc('acquire_event_leases_for_user', {
+      p_user_id: userId,
+      p_worker_id: workerId,
+      p_limit: actualLimit,
+      p_lease_timeout: '2 minutes',
+    });
+
+    if (error) {
+      logger.warn('Opportunistic user event lease failed', {
+        userId,
+        error: error.message,
+        feature: 'event-worker',
+      });
+      return {
+        processed: 0,
+        failed: 0,
+        skipped: 0,
+        agentActionsApplied: 0,
+        agentActionsProposed: 0,
+        agentActionsSkipped: 0,
+        agentActionsFailed: 1,
+      };
+    }
+
+    const leases = (dbLeases || []).map((lease: any) => ({ ...lease, _source: 'postgres' }));
+    if (leases.length === 0) {
+      return {
+        processed: 0,
+        failed: 0,
+        skipped: 0,
+        agentActionsApplied: 0,
+        agentActionsProposed: 0,
+        agentActionsSkipped: 0,
+        agentActionsFailed: 0,
+      };
+    }
+
+    return this.processLeasesWithBoundedConcurrency(leases, workerId, maxRuntimeMs, startTimeMs);
   }
 
   static async getHealthSummary(): Promise<QueueHealthSummary> {
@@ -413,7 +466,7 @@ export class EventWorkerService {
     const newRetryCount = Number(lease.retry_count ?? 0) + 1;
     const nextAttemptAt = new Date(Date.now() + Math.pow(2, newRetryCount) * 10_000).toISOString();
 
-    if (isPermanent || newRetryCount > MAX_RETRIES) {
+    if (isPermanent || newRetryCount > getMaxRetriesPerJob()) {
       // Move to DLQ
       await supabase.from('event_dlq').insert({
         event_id: lease.event_id,
@@ -556,6 +609,10 @@ export class EventWorkerService {
       data: lease.event_payload,
       metadata: lease.event_metadata,
     };
+    if (isAmauraConsumer(consumer)) {
+      return runAmauraConsumerForLease(lease);
+    }
+
     const payload = {
       ...(event.metadata ?? {}),
       ...(event.data ?? {}),
@@ -713,7 +770,7 @@ export class EventWorkerService {
         if (event.type === 'REVISION_CARD_REVIEWED') {
           return { status: 'SKIPPED_INTENTIONALLY', reason: 'REVISION_CARD_REVIEWED handled elsewhere or audit-only for memory_agent' };
         }
-        if (['AUTOPSY_V3_REPORT_READY', 'HERMES_MEMORY_UPDATED', 'LEARNING_SIGNAL_INGESTED'].includes(event.type)) {
+        if (['AUTOPSY_V3_REPORT_READY', 'LEARNING_SIGNAL_INGESTED'].includes(event.type)) {
           return { status: 'SKIPPED_INTENTIONALLY', reason: 'Event handled deterministically or is audit-only for memory_agent' };
         }
         break;
@@ -739,7 +796,6 @@ export class EventWorkerService {
           'PRACTICE_ATTEMPT_SUBMITTED',
           'ONBOARDING_QUIZ_COMPLETE',
           'AUTOPSY_V3_REPORT_READY',
-          'HERMES_MEMORY_UPDATED',
           'LEARNING_SIGNAL_INGESTED',
         ].includes(event.type)) {
           const { invalidateSessionCard } = await import('@/lib/services/session-card-invalidation');
@@ -801,278 +857,9 @@ export class EventWorkerService {
           return this.handleCommandAgentEvent(event, payload);
         }
         break;
-      case 'hermes_worker':
-        return this.handleHermesWorkerEvent(event, payload);
     }
 
     return { status: 'PERMANENT_FAILURE', reason: `Event routing error: ${consumer} has no handler for ${event.type}` };
-  }
-
-  private static async handleHermesWorkerEvent(
-    event: any,
-    payload: Record<string, any>
-  ): Promise<ConsumerResult> {
-    if (!hermesRuntimeConfig.hermesEnabled()) {
-      return { status: 'SKIPPED_INTENTIONALLY', reason: 'Hermes is disabled (HERMES_ENABLED=false)' };
-    }
-    const { getBetaFlags } = await import('@/lib/config/beta-flags');
-    if (!getBetaFlags().workerAiEnabled && event.type.startsWith('HERMES_')) {
-      return { status: 'SKIPPED_INTENTIONALLY', reason: 'Worker AI is disabled (WORKER_AI_ENABLED=false)' };
-    }
-
-    const { isHermesError } = await import('@/lib/hermes');
-
-    if (event.type === 'HERMES_MISTAKE_REVIEW_REQUESTED') {
-      // Async Hermes mistake processing via event queue
-      // Only used if the route explicitly enqueues this event for deferred processing.
-      // The synchronous path in manual/route.ts handles mistakes directly.
-      try {
-        const { runHermesMistakeAgent, buildMistakeFallback, writeMistakeResult } = await import('@/lib/hermes');
-        const supabase = createAdminClient();
-
-        const input = {
-          userId: event.user_id,
-          goalId: payload.goalId ?? null,
-          chatSessionId: payload.chatSessionId ?? null,
-          question: payload.question ?? '',
-          myAnswer: payload.myAnswer ?? '',
-          correctAnswer: payload.correctAnswer ?? '',
-          explanation: payload.explanation ?? null,
-        };
-
-        let result;
-        try {
-          result = await runHermesMistakeAgent(input);
-        } catch (hermesErr) {
-          if (isHermesError(hermesErr)) {
-            logger.warn('[hermes_worker] Mistake agent failed, using fallback', {
-              userId: event.user_id,
-              eventId: event.id,
-            });
-            result = buildMistakeFallback(input);
-          } else {
-            throw hermesErr;
-          }
-        }
-
-        await writeMistakeResult(
-          supabase,
-          event.user_id,
-          payload.goalId ?? null,
-          payload.chatSessionId ?? null,
-          input,
-          result,
-          event.id
-        );
-
-        return { status: 'HANDLED' };
-      } catch (err: any) {
-        logger.warn('[hermes_worker] HERMES_MISTAKE_REVIEW_REQUESTED failed', {
-          userId: event.user_id,
-          error: err.message,
-        });
-        return { status: 'RETRYABLE_FAILURE', reason: err.message };
-      }
-    }
-
-    if (event.type === 'HERMES_SOURCE_PROCESS_REQUESTED') {
-      // Deferred source processing
-      const { getHermesConfig } = await import('@/lib/hermes');
-      if (!getHermesConfig().sourceProcessingEnabled) {
-        return { status: 'SKIPPED_INTENTIONALLY', reason: 'Hermes source processing disabled' };
-      }
-      
-      try {
-        const { runHermesSourceAgent, writeSourceResult } = await import('@/lib/hermes');
-        const supabase = createAdminClient();
-        
-        // Load material context (first 10 chunks)
-        const { data: chunks } = await supabase
-          .from('study_material_chunks')
-          .select('text')
-          .eq('material_id', payload.materialId)
-          .order('chunk_index', { ascending: true })
-          .limit(10);
-          
-        const materialContent = (chunks ?? []).map(c => c.text).join('\n\n');
-        
-        const result = await runHermesSourceAgent({
-          userId: event.user_id,
-          materialId: payload.materialId,
-          title: payload.title ?? 'Untitled Material',
-          compactChunks: (chunks ?? []).map(c => c.text),
-        });
-        
-        await writeSourceResult(
-          supabase,
-          event.user_id,
-          payload.materialId,
-          payload.goalId ?? null,
-          result,
-          true,
-          event.id
-        );
-        return { status: 'HANDLED' };
-      } catch (err: any) {
-        logger.warn('[hermes_worker] HERMES_SOURCE_PROCESS_REQUESTED failed', {
-          userId: event.user_id,
-          error: err.message,
-        });
-        return { status: 'RETRYABLE_FAILURE', reason: err.message };
-      }
-    }
-
-    if (event.type === 'HERMES_REVISION_QUALITY_REQUESTED') {
-      const { getHermesConfig } = await import('@/lib/hermes');
-      if (!getHermesConfig().revisionQualityEnabled) {
-        return { status: 'SKIPPED_INTENTIONALLY', reason: 'Hermes revision quality disabled' };
-      }
-      
-      try {
-        const supabase = createAdminClient();
-        const goalId = payload.goalId;
-        const batchSize = payload.batchSize ?? 5;
-        
-        const { data: cards } = await supabase
-          .from('revision_cards')
-          .select('id, front, back')
-          .eq('user_id', event.user_id)
-          .eq('goal_id', goalId)
-          .eq('state', 0)
-          .is('metadata->hermesImproved', null)
-          .is('metadata->hermesRejected', null)
-          .limit(batchSize);
-          
-        if (!cards || cards.length === 0) {
-          return { status: 'SKIPPED_INTENTIONALLY', reason: 'No cards to improve' };
-        }
-        
-        const { runHermesRevisionAgent, writeRevisionQualityResult } = await import('@/lib/hermes');
-        const result = await runHermesRevisionAgent({
-          userId: event.user_id,
-          goalId,
-          draftCards: cards.map(c => ({
-            cardId: c.id,
-            front: c.front,
-            back: c.back,
-            type: 'mistake_concept',
-            difficulty: 'medium'
-          })),
-          context: payload.context ?? '',
-        });
-        
-        await writeRevisionQualityResult(supabase, event.user_id, goalId, result);
-        return { status: 'HANDLED' };
-      } catch (err: any) {
-        logger.warn('[hermes_worker] HERMES_REVISION_QUALITY_REQUESTED failed', {
-          userId: event.user_id,
-          error: err.message,
-        });
-        return { status: 'RETRYABLE_FAILURE', reason: err.message };
-      }
-    }
-
-    if (event.type === 'HERMES_TRACE_REQUESTED') {
-      const { getHermesConfig } = await import('@/lib/hermes');
-      if (!getHermesConfig().traceEnabled) {
-        return { status: 'SKIPPED_INTENTIONALLY', reason: 'Hermes trace disabled' };
-      }
-      try {
-        const supabase = createAdminClient();
-        const goalId = payload.goalId;
-        if (!goalId) {
-          return { status: 'PERMANENT_FAILURE', reason: 'HERMES_TRACE_REQUESTED missing goalId' };
-        }
-
-        const { data: mistakes } = await supabase
-          .from('mistakes')
-          .select('category, subject, chapter, topic')
-          .eq('user_id', event.user_id)
-          .eq('goal_id', goalId)
-          .order('created_at', { ascending: false })
-          .limit(10);
-
-        const { data: dueCards } = await supabase
-          .from('revision_cards')
-          .select('id', { count: 'exact', head: true })
-          .eq('user_id', event.user_id)
-          .eq('goal_id', goalId)
-          .lte('due', new Date().toISOString());
-
-        const { data: weakConcepts } = await supabase
-          .from('concepts')
-          .select('id', { count: 'exact', head: true })
-          .eq('user_id', event.user_id)
-          .eq('goal_id', goalId)
-          .in('mastery', ['not_started', 'exposed', 'developing']);
-
-        const { runHermesTraceAgent, writeTraceResult } = await import('@/lib/hermes');
-        const result = await runHermesTraceAgent({
-          userId: event.user_id,
-          goalId,
-          recentMistakes: mistakes ?? [],
-          dueCardsCount: (dueCards as any)?.count ?? 0,
-          weakConceptsCount: (weakConcepts as any)?.count ?? 0,
-          recentActivity: [],
-        });
-        
-        await writeTraceResult(supabase, event.user_id, goalId, result);
-        return { status: 'HANDLED' };
-      } catch (err: any) {
-        logger.warn('[hermes_worker] HERMES_TRACE_REQUESTED failed', {
-          userId: event.user_id,
-          error: err.message,
-        });
-        return { status: 'SKIPPED_INTENTIONALLY', reason: 'Trace agent failed — non-critical' };
-      }
-    }
-
-    if (event.type === 'HERMES_NEXT_ACTION_REQUESTED') {
-      const { getHermesConfig } = await import('@/lib/hermes');
-      if (!getHermesConfig().nextActionEnabled) {
-        return { status: 'SKIPPED_INTENTIONALLY', reason: 'Hermes next action disabled' };
-      }
-      try {
-        const supabase = createAdminClient();
-        const goalId = payload.goalId;
-        if (!goalId) {
-          return { status: 'PERMANENT_FAILURE', reason: 'HERMES_NEXT_ACTION_REQUESTED missing goalId' };
-        }
-        
-        const { data: goalData } = await supabase
-          .from('learning_goals')
-          .select('metadata')
-          .eq('id', goalId)
-          .single();
-          
-        const { runHermesNextActionAgent, writeNextActionResult } = await import('@/lib/hermes');
-        const result = await runHermesNextActionAgent({
-          userId: event.user_id,
-          goalId,
-          goalTitle: (goalData?.metadata as any)?.title ?? 'Untitled Goal',
-          weakConceptsCount: payload.weakConceptsCount ?? 0,
-          dueCardsCount: payload.dueCardsCount ?? 0,
-          recentMistakesCount: payload.recentMistakesCount ?? 0,
-          pendingTasksCount: payload.pendingTasksCount ?? 0,
-          recentSources: payload.recentSources ?? [],
-        });
-        
-        await writeNextActionResult(supabase, event.user_id, goalId, result, event.id);
-        return { status: 'HANDLED' };
-      } catch (err: any) {
-        logger.warn('[hermes_worker] HERMES_NEXT_ACTION_REQUESTED failed', {
-          userId: event.user_id,
-          error: err.message,
-        });
-        return { status: 'RETRYABLE_FAILURE', reason: err.message };
-      }
-    }
-
-    if (['AUTOPSY_V3_REASONS_COLLECTED', 'AUTOPSY_V3_REPORT_READY'].includes(event.type)) {
-      return { status: 'SKIPPED_INTENTIONALLY', reason: 'Event handled deterministically or is audit-only for hermes_worker' };
-    }
-
-    return { status: 'SKIPPED_INTENTIONALLY', reason: `hermes_worker: no handler for ${event.type}` };
   }
 
   private static async handleCommandAgentEvent(event: any, payload: Record<string, any>): Promise<ConsumerResult> {
@@ -1253,4 +1040,10 @@ export class EventWorkerService {
         return type;
     }
   }
+}
+
+function getMaxRetriesPerJob() {
+  const configured = Number(process.env.MAX_AGENT_RETRIES_PER_JOB ?? DEFAULT_MAX_RETRIES);
+  if (!Number.isFinite(configured)) return DEFAULT_MAX_RETRIES;
+  return Math.max(0, Math.min(10, Math.floor(configured)));
 }

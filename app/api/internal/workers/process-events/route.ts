@@ -5,17 +5,19 @@
  * to process pending background tasks.
  * 
  * Usage:
- *   POST or GET /api/internal/workers/process-events
- *   Header: x-internal-worker-secret: $INTERNAL_WORKER_SECRET
+ *   POST /api/internal/workers/process-events
+ *   Header: Authorization: Bearer $INTERNAL_CRON_SECRET
+ *   or x-internal-worker-secret: $INTERNAL_WORKER_SECRET
  * 
- * Vercel Cron usage remains supported as a backup via the Authorization header.
+ * GET returns health only. Frequent execution is intended for external cron;
+ * Vercel cron is limited to the daily synthesis route on Hobby.
  */
 
 import { eventWorkerHealthRoute, processEventWorkerRoute } from '@/lib/events/worker-route';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
-export const maxDuration = 60; // Max execution time 60 seconds (adjust based on Vercel plan)
+export const maxDuration = 10;
 
 export async function POST(req: Request) {
   return processEventWorkerRoute(req);

@@ -1,7 +1,6 @@
 import { NextRequest } from 'next/server';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import { generateDeterministicAutopsyReport } from '@/lib/autopsy-v3/report-generator';
-import { writeHermesMemories } from '@/lib/autopsy-v3/hermes-memory-writer';
 import { enforceDailyTableCap, jsonWithRequestId, requireAutopsyV3User } from '@/lib/autopsy-v3/permissions';
 import { ingestLearningSignals } from '@/lib/learning-signals/ingest';
 import { safePublishEvent } from '@/lib/events/safe-publish';
@@ -55,7 +54,7 @@ export async function POST(req: NextRequest, context: RouteContext) {
       return apiErrorResponse('not_found', { status: 404, message: 'Assessment not found.', requestId });
     }
 
-    const [questionsRes, diagnosesRes, memoriesRes] = await Promise.all([
+    const [questionsRes, diagnosesRes] = await Promise.all([
       supabase
         .from('assessment_questions')
         .select('*')
@@ -67,16 +66,9 @@ export async function POST(req: NextRequest, context: RouteContext) {
         .select('*')
         .eq('assessment_id', assessmentId)
         .eq('user_id', user.id),
-      supabase
-        .from('hermes_learning_memories')
-        .select('*')
-        .eq('user_id', user.id)
-        .eq('status', 'active')
-        .limit(50),
     ]);
     if (questionsRes.error) throw questionsRes.error;
     if (diagnosesRes.error) throw diagnosesRes.error;
-    if (memoriesRes.error) throw memoriesRes.error;
 
     const questions = questionsRes.data ?? [];
     if (questions.length === 0) {
@@ -92,38 +84,11 @@ export async function POST(req: NextRequest, context: RouteContext) {
       assessment: assessment as any,
       questions: questions as any,
       diagnoses: diagnoses as any,
-      priorMemories: (memoriesRes.data ?? []) as any,
+      priorMemories: [],
     });
 
     let memoryRows: any[] = [];
-    let hermesStatus: any = { enabled: false, memories_created: 0, skipped_reason: null };
     let status: 'ready' | 'fallback_used' = 'ready';
-    
-    // We check both limits.hermesEnabled and that we aren't bypassing limits (unless testing).
-    if (limits.hermesEnabled) {
-      hermesStatus.enabled = true;
-      try {
-        const { getHermesConfig } = await import('@/lib/hermes/hermes-config');
-        const hermesConfig = getHermesConfig();
-        const maxWritesFromConfig = hermesConfig.maxDailyMemoryWritesPerUser;
-        const maxWrites = Math.min(limits.maxMemoryWritesPerReport || 5, maxWritesFromConfig || 30);
-        
-        memoryRows = await writeHermesMemories({
-          supabase,
-          userId: user.id,
-          goalId: assessment.goal_id,
-          assessmentId,
-          report,
-          maxWrites,
-        });
-        hermesStatus.memories_created = memoryRows.length;
-      } catch (err: any) {
-        status = 'fallback_used';
-        hermesStatus.skipped_reason = err.message || 'Error writing memory';
-      }
-    } else {
-      hermesStatus.skipped_reason = 'Hermes or Autopsy V3 Hermes disabled';
-    }
 
     const { data: persistedReport, error: reportError } = await supabase
       .from('autopsy_reports')
@@ -140,7 +105,7 @@ export async function POST(req: NextRequest, context: RouteContext) {
         top_patterns: report.repeatedPatterns.slice(0, 5),
         top_topics: report.highRiskTopics.slice(0, 5),
         status,
-        generated_by: limits.hermesEnabled && memoryRows.length > 0 ? 'mixed' : 'deterministic',
+        generated_by: 'deterministic',
         updated_at: new Date().toISOString(),
       }, { onConflict: 'assessment_id' })
       .select('*')
@@ -192,21 +157,6 @@ export async function POST(req: NextRequest, context: RouteContext) {
           severity: diagnosis.severity,
         },
       })),
-      ...memoryRows.map((memory: any) => ({
-        user_id: user.id,
-        goal_id: assessment.goal_id,
-        signal_type: 'autopsy_memory_created' as const,
-        source_type: 'hermes',
-        source_id: memory.id,
-        subject: memory.subject,
-        topic: memory.topic,
-        confidence: memory.confidence ?? 0.8,
-        evidence: {
-          assessmentId,
-          pattern: memory.pattern,
-          severity: memory.severity,
-        },
-      })),
     ], { publishEvent: true }).catch(() => []);
 
     await Promise.all([
@@ -217,15 +167,6 @@ export async function POST(req: NextRequest, context: RouteContext) {
         metadata: { source: 'autopsy_v3_report', goalId: assessment.goal_id },
         idempotency_key: `autopsy_v3_report_ready:${persistedReport.id}`,
       }),
-      memoryRows.length > 0
-        ? safePublishEvent({
-          user_id: user.id,
-          type: 'HERMES_MEMORY_UPDATED',
-          data: { assessmentId, memoryIds: memoryRows.map((row) => row.id).filter(Boolean) },
-          metadata: { source: 'autopsy_v3_report', goalId: assessment.goal_id },
-          idempotency_key: `hermes_memory_updated:${persistedReport.id}`,
-        })
-        : Promise.resolve(),
       createRevisionCandidates(supabase, user.id, assessment.goal_id, report, assessmentId, memoryRows, limits).catch((err) => {
         console.error('Failed to create revision candidates', err);
       }),
@@ -234,7 +175,7 @@ export async function POST(req: NextRequest, context: RouteContext) {
       }),
     ]);
 
-    return jsonWithRequestId({ report: persistedReport, memoryRows, deterministicReport: report, hermes: hermesStatus }, requestId);
+    return jsonWithRequestId({ report: persistedReport, memoryRows, deterministicReport: report, amaura: { cascade: 'queued' } }, requestId);
   } catch (error) {
     return unexpectedApiErrorResponse(req, error, 'autopsy_v3_generate_report', 'Unable to generate Deep Autopsy report.');
   }
@@ -250,7 +191,6 @@ async function createRevisionCandidates(supabase: any, userId: string, goalId: s
   if (!featureGate.allowed) return;
 
   const rows = report.revisionActions.slice(0, Math.min(20, limits.maxRevisionCardsPerReport ?? 20)).map((action: any, index: number) => {
-    // Try to link to a corresponding Hermes memory if available
     const linkedMemory = memoryRows.find(m => m.topic === action.topic) || memoryRows[index % memoryRows.length];
     return {
       user_id: userId,
@@ -258,14 +198,14 @@ async function createRevisionCandidates(supabase: any, userId: string, goalId: s
       front: action.title,
       back: action.reason,
       card_type: 'autopsy_recovery',
-      source: linkedMemory ? 'hermes_autopsy_memory' : 'autopsy_v3',
+      source: linkedMemory ? 'amaura_pattern_memory' : 'autopsy_v3',
       source_id: linkedMemory ? linkedMemory.id : assessmentId,
       tags: ['autopsy-v3'],
       subject: action.subject,
       chapter: action.topic,
       due: new Date().toISOString(),
       normalized_key: normalizedRevisionKey(userId, assessmentId, action, index),
-      metadata: { assessmentId, hermesMemoryId: linkedMemory?.id, idempotencyKey: `revision-card:${userId}:${assessmentId}:${index}` },
+      metadata: { assessmentId, patternMemoryId: linkedMemory?.id, idempotencyKey: `revision-card:${userId}:${assessmentId}:${index}` },
     };
   });
   if (rows.length === 0) return;

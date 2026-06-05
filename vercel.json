@@ -1,8 +1,8 @@
 {
   "crons": [
     {
-      "path": "/api/internal/workers/process-events",
-      "schedule": "*/5 * * * *"
+      "path": "/api/cron/daily-synthesis",
+      "schedule": "0 6 * * *"
     }
   ]
 }

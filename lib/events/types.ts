@@ -28,7 +28,6 @@ export const EventTypeSchema = z.enum([
   'AUTOPSY_V3_QUESTIONS_UPSERTED',
   'AUTOPSY_V3_REASONS_COLLECTED',
   'AUTOPSY_V3_REPORT_READY',
-  'HERMES_MEMORY_UPDATED',
   'LEARNING_SIGNAL_INGESTED',
   'ATLAS_MASTERY_UPDATE_REQUESTED',
   'ATLAS_MASTERY_UPDATED',
@@ -45,16 +44,13 @@ export const EventTypeSchema = z.enum([
   'INGESTION_DOCUMENT_PROCESSED',
   'LEARNER_STATE_CHANGED',
   'STUDENT_MODEL_SYNC_REQUESTED',
+  'FORGETTING_SCAN_REQUESTED',
+  'STAGNATION_SCAN_REQUESTED',
+  'PATTERN_MEMORY_SCAN_REQUESTED',
   'PLANNER_REPLAN_REQUESTED',
   'PRACTICE_ATTEMPT_RECORDED',
   'PRACTICE_ATTEMPT_SUBMITTED',
   'ONBOARDING_QUIZ_COMPLETE',
-  // Hermes internal worker events — never exposed to users
-  'HERMES_MISTAKE_REVIEW_REQUESTED',
-  'HERMES_SOURCE_PROCESS_REQUESTED',
-  'HERMES_REVISION_QUALITY_REQUESTED',
-  'HERMES_TRACE_REQUESTED',
-  'HERMES_NEXT_ACTION_REQUESTED',
 ]);
 
 export type EventType = z.infer<typeof EventTypeSchema>;
@@ -224,10 +220,6 @@ export const EventPayloadSchemas: Partial<Record<EventType | string, z.ZodTypeAn
     reportId: z.string().uuid().optional(),
     generatedBy: z.string().optional(),
   }).passthrough(),
-  HERMES_MEMORY_UPDATED: z.object({
-    assessmentId: z.string().uuid().optional(),
-    memoryIds: z.array(z.string().uuid()).optional(),
-  }).passthrough(),
   LEARNING_SIGNAL_INGESTED: z.object({
     signalType: z.string(),
     sourceType: z.string().optional(),
@@ -305,6 +297,21 @@ export const EventPayloadSchemas: Partial<Record<EventType | string, z.ZodTypeAn
   STUDENT_MODEL_SYNC_REQUESTED: z.object({
     reason: z.string().optional(),
   }).passthrough(),
+  FORGETTING_SCAN_REQUESTED: z.object({
+    reason: z.string().optional(),
+    goalId: MaybeUuid,
+    date: z.string().optional(),
+  }).passthrough(),
+  STAGNATION_SCAN_REQUESTED: z.object({
+    reason: z.string().optional(),
+    goalId: MaybeUuid,
+    date: z.string().optional(),
+  }).passthrough(),
+  PATTERN_MEMORY_SCAN_REQUESTED: z.object({
+    reason: z.string().optional(),
+    goalId: MaybeUuid,
+    date: z.string().optional(),
+  }).passthrough(),
   PLANNER_REPLAN_REQUESTED: z.object({
     reason: z.string().optional(),
     date: z.string().optional(),
@@ -336,33 +343,6 @@ export const EventPayloadSchemas: Partial<Record<EventType | string, z.ZodTypeAn
   ONBOARDING_QUIZ_COMPLETE: z.object({
     quizResults: z.array(z.any()).optional(),
     examType: z.string().optional(),
-  }).passthrough(),
-  // Hermes internal worker event payloads — never exposed to users
-  HERMES_MISTAKE_REVIEW_REQUESTED: z.object({
-    mistakeId: z.string().optional(),
-    goalId: z.string().uuid().nullable().optional(),
-    chatSessionId: z.string().uuid().nullable().optional(),
-    question: z.string().optional(),
-    myAnswer: z.string().optional(),
-    correctAnswer: z.string().optional(),
-    explanation: z.string().nullable().optional(),
-  }).passthrough(),
-  HERMES_SOURCE_PROCESS_REQUESTED: z.object({
-    materialId: z.string().uuid(),
-    goalId: z.string().uuid().nullable().optional(),
-    title: z.string().optional(),
-  }).passthrough(),
-  HERMES_REVISION_QUALITY_REQUESTED: z.object({
-    goalId: z.string().uuid(),
-    batchSize: z.number().int().positive().optional(),
-  }).passthrough(),
-  HERMES_TRACE_REQUESTED: z.object({
-    goalId: z.string().uuid(),
-    reason: z.string().optional(),
-  }).passthrough(),
-  HERMES_NEXT_ACTION_REQUESTED: z.object({
-    goalId: z.string().uuid(),
-    reason: z.string().optional(),
   }).passthrough(),
 };
 

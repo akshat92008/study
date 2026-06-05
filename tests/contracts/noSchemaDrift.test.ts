@@ -44,6 +44,9 @@ function migrationObjects() {
     for (const match of text.matchAll(/create\s+table\s+(?:if\s+not\s+exists\s+)?(?:public\.)?([a-zA-Z_][\w-]*)/gi)) {
       tables.add(match[1]);
     }
+    for (const match of text.matchAll(/create\s+table\s+(?:if\s+not\s+exists\s+)?"(?:public|auth)"\."([^"]+)"/gi)) {
+      tables.add(match[1]);
+    }
     for (const match of text.matchAll(/create\s+(?:or\s+replace\s+)?view\s+(?:public\.)?([a-zA-Z_][\w-]*)/gi)) {
       views.add(match[1]);
     }
