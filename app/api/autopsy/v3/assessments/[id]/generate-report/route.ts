@@ -1,11 +1,12 @@
 import { NextRequest } from 'next/server';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
-import { EventDispatcher } from '@/lib/events/orchestrator';
 import { generateDeterministicAutopsyReport } from '@/lib/autopsy-v3/report-generator';
 import { writeHermesMemories } from '@/lib/autopsy-v3/hermes-memory-writer';
 import { enforceDailyTableCap, jsonWithRequestId, requireAutopsyV3User } from '@/lib/autopsy-v3/permissions';
 import { ingestLearningSignals } from '@/lib/learning-signals/ingest';
 import { safePublishEvent } from '@/lib/events/safe-publish';
+import { checkFeatureLimit, consumeFeatureUsage, featureLimitResponse } from '@/lib/usage/enforce-feature-limit';
+import { featureDisabledResponse, isBetaFeatureEnabled } from '@/lib/config/beta-flags';
 
 type RouteContext = { params: Promise<{ id: string }> | { id: string } };
 
@@ -16,6 +17,21 @@ export async function POST(req: NextRequest, context: RouteContext) {
     if (auth.error) return auth.error;
     const { supabase, user, limits } = auth;
     const { id: assessmentId } = await context.params;
+    if (!isBetaFeatureEnabled('autopsy_report')) return featureDisabledResponse(requestId);
+
+    const { data: existingReport, error: existingReportError } = await supabase
+      .from('autopsy_reports')
+      .select('id')
+      .eq('assessment_id', assessmentId)
+      .eq('user_id', user.id)
+      .maybeSingle();
+    if (existingReportError) throw existingReportError;
+    const isReportRetry = !!existingReport?.id;
+
+    if (!isReportRetry) {
+      const featureGate = await checkFeatureLimit(user.id, 'autopsy_report');
+      if (!featureGate.allowed) return featureLimitResponse(featureGate, requestId);
+    }
 
     const cap = await enforceDailyTableCap({
       supabase,
@@ -131,6 +147,15 @@ export async function POST(req: NextRequest, context: RouteContext) {
       .single();
     if (reportError) throw reportError;
 
+    if (!isReportRetry) {
+      const usage = await consumeFeatureUsage(user.id, 'autopsy_report', 1, {
+        assessmentId,
+        reportId: persistedReport.id,
+        idempotencyKey: `autopsy_report:${user.id}:${assessmentId}`,
+      });
+      if (!usage.allowed) return featureLimitResponse(usage, requestId);
+    }
+
     await supabase
       .from('assessments')
       .update({
@@ -201,7 +226,7 @@ export async function POST(req: NextRequest, context: RouteContext) {
           idempotency_key: `hermes_memory_updated:${persistedReport.id}`,
         })
         : Promise.resolve(),
-      createRevisionCandidates(supabase, user.id, assessment.goal_id, report, assessmentId, memoryRows).catch((err) => {
+      createRevisionCandidates(supabase, user.id, assessment.goal_id, report, assessmentId, memoryRows, limits).catch((err) => {
         console.error('Failed to create revision candidates', err);
       }),
       createRecoveryTask(supabase, user.id, assessment.goal_id, report, assessmentId).catch((err) => {
@@ -215,8 +240,16 @@ export async function POST(req: NextRequest, context: RouteContext) {
   }
 }
 
-async function createRevisionCandidates(supabase: any, userId: string, goalId: string | null, report: any, assessmentId: string, memoryRows: any[] = []) {
-  const rows = report.revisionActions.slice(0, 5).map((action: any, index: number) => {
+function normalizedRevisionKey(userId: string, assessmentId: string, action: any, index: number) {
+  const seed = [userId, assessmentId, action.subject, action.topic, action.title, index].join(':').toLowerCase();
+  return `autopsy-v3:${seed.replace(/[^a-z0-9:]+/g, '-').slice(0, 180)}`;
+}
+
+async function createRevisionCandidates(supabase: any, userId: string, goalId: string | null, report: any, assessmentId: string, memoryRows: any[] = [], limits: any = {}) {
+  const featureGate = await checkFeatureLimit(userId, 'revision_generation');
+  if (!featureGate.allowed) return;
+
+  const rows = report.revisionActions.slice(0, Math.min(20, limits.maxRevisionCardsPerReport ?? 20)).map((action: any, index: number) => {
     // Try to link to a corresponding Hermes memory if available
     const linkedMemory = memoryRows.find(m => m.topic === action.topic) || memoryRows[index % memoryRows.length];
     return {
@@ -231,16 +264,48 @@ async function createRevisionCandidates(supabase: any, userId: string, goalId: s
       subject: action.subject,
       chapter: action.topic,
       due: new Date().toISOString(),
-      metadata: { assessmentId, hermesMemoryId: linkedMemory?.id },
+      normalized_key: normalizedRevisionKey(userId, assessmentId, action, index),
+      metadata: { assessmentId, hermesMemoryId: linkedMemory?.id, idempotencyKey: `revision-card:${userId}:${assessmentId}:${index}` },
     };
   });
-  if (rows.length > 0) await supabase.from('revision_cards').insert(rows);
+  if (rows.length === 0) return;
+
+  const keys = rows.map((row: any) => row.normalized_key);
+  const { data: existing, error: existingError } = await supabase
+    .from('revision_cards')
+    .select('normalized_key')
+    .eq('user_id', userId)
+    .in('normalized_key', keys);
+  if (existingError) throw existingError;
+
+  const existingKeys = new Set((existing ?? []).map((row: any) => row.normalized_key));
+  const missingRows = rows.filter((row: any) => !existingKeys.has(row.normalized_key));
+  if (missingRows.length > 0) {
+    await supabase.from('revision_cards').insert(missingRows);
+    await consumeFeatureUsage(userId, 'revision_generation', 1, {
+      assessmentId,
+      createdCards: missingRows.length,
+      idempotencyKey: `revision_generation:${userId}:${assessmentId}`,
+    });
+  }
 }
 
 async function createRecoveryTask(supabase: any, userId: string, goalId: string | null, report: any, assessmentId: string) {
   const action = report.revisionActions[0];
   if (!action) return;
   const tomorrow = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+  const metadata = { source: 'autopsy_v3', assessmentId, reason: action.reason };
+  const { data: existing, error: existingError } = await supabase
+    .from('daily_microtasks')
+    .select('id')
+    .eq('user_id', userId)
+    .eq('task_date', tomorrow)
+    .eq('type', 'autopsy')
+    .contains('metadata', { source: 'autopsy_v3', assessmentId })
+    .maybeSingle();
+  if (existingError) throw existingError;
+  if (existing) return;
+
   await supabase.from('daily_microtasks').insert({
     user_id: userId,
     goal_id: goalId,
@@ -253,6 +318,6 @@ async function createRecoveryTask(supabase: any, userId: string, goalId: string 
     priority: 'high',
     estimated_minutes: 25,
     source: 'system',
-    metadata: { source: 'autopsy_v3', assessmentId, reason: action.reason },
+    metadata,
   });
 }

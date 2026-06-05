@@ -1,13 +1,16 @@
-import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
+import { requireAdmin } from '@/lib/auth/admin';
 
 export default async function AdminDebugPage() {
+  const auth = await requireAdmin();
+  if (!auth.user) redirect('/login?next=/admin/debug');
+  if (auth.status === 403) redirect('/dashboard');
+
   const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) redirect('/login');
+  const user = auth.user;
 
   const { data: profile } = await supabase
     .from('profiles')

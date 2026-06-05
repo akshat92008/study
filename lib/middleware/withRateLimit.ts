@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
+import { betaAccessErrorResponse, requireActiveBetaUser } from '@/lib/access/beta-access';
 
 type RateLimitConfig = {
   bucket: string;
@@ -31,6 +32,16 @@ export function withRateLimit(
         return apiErrorResponse('unauthorized', {
           status: 401,
           message: 'Authentication is required.',
+          requestId,
+        });
+      }
+
+      try {
+        await requireActiveBetaUser(user.id);
+      } catch (accessError) {
+        return betaAccessErrorResponse(accessError, requestId) ?? apiErrorResponse('beta_access_required', {
+          status: 403,
+          message: 'Cognition OS is currently in a limited beta. Ask the admin to activate your beta access.',
           requestId,
         });
       }

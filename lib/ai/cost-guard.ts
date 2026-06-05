@@ -201,6 +201,10 @@ export async function reserveBudgetForModelCall(
   estimatedInputTokens: number,
   estimatedOutputTokens: number,
 ): Promise<BudgetReservation> {
+  if (process.env.AI_GLOBAL_KILL_SWITCH === 'true') {
+    throw new BudgetSystemUnavailableError('AI is temporarily paused during beta maintenance.');
+  }
+
   const { estimatedCost, estimatedTokens } = estimateCallCost(
     feature,
     estimatedInputTokens,
@@ -306,7 +310,7 @@ export async function reserveBudgetForModelCall(
 }
 
 async function enforceGlobalDailyAiRequestLimit(userId: string, feature: BudgetFeature): Promise<void> {
-  const limitRaw = Number(process.env.DAILY_GLOBAL_AI_REQUEST_LIMIT ?? 1000);
+  const limitRaw = Number(process.env.GLOBAL_DAILY_AI_REQUEST_LIMIT ?? process.env.DAILY_GLOBAL_AI_REQUEST_LIMIT ?? 2500);
   if (!Number.isFinite(limitRaw) || limitRaw <= 0) return;
 
   const dayStart = new Date();

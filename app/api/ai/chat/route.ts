@@ -33,6 +33,8 @@ import { classifyChatUploadIntent } from '@/lib/rag/upload-intent';
 import { orchestrateFromIntent } from '@/lib/engines/orchestrator';
 import { finalizeChatTurn } from '@/lib/services/chat-turn-finalizer';
 import { getPromptVersion } from '@/lib/ai/prompt-version';
+import { betaAccessErrorResponse, requireActiveBetaUser } from '@/lib/access/beta-access';
+import { featureDisabledResponse, isBetaFeatureEnabled } from '@/lib/config/beta-flags';
 
 const encoder = new TextEncoder();
 
@@ -43,6 +45,15 @@ export async function GET(request?: NextRequest) {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) {
       return apiErrorResponse('unauthorized', { status: 401, message: 'Authentication is required.', requestId });
+    }
+    try {
+      await requireActiveBetaUser(user.id);
+    } catch (accessError) {
+      return betaAccessErrorResponse(accessError, requestId) ?? apiErrorResponse('beta_access_required', {
+        status: 403,
+        message: 'Cognition OS is currently in a limited beta. Ask the admin to activate your beta access.',
+        requestId,
+      });
     }
 
     const url = request ? new URL(request.url) : null;
@@ -70,6 +81,13 @@ export async function POST(req: NextRequest) {
     
     // 1. Authenticate & Rate Limit
     const { supabase, user } = await authenticateChatUser(requestId);
+    try {
+      await requireActiveBetaUser(user.id);
+    } catch (accessError) {
+      const response = betaAccessErrorResponse(accessError, requestId);
+      if (response) throw new PipelineError(response);
+      throw accessError;
+    }
     logger.info('Chat request started', { userId: user.id, requestId, feature: 'chat' });
     await enforceChatRateLimit(user.id);
 
@@ -190,6 +208,9 @@ export async function POST(req: NextRequest) {
     }
 
     // 11. Call AI Provider (Deterministic or LLM Stream)
+    if (!isBetaFeatureEnabled('ai')) {
+      return featureDisabledResponse(requestId) as any;
+    }
     const providerResponse = await callAiProvider({
       userId: user.id, message, detectedIntent, orchestratorResult, mindContext, supabase, activeGoalId, finalizeAssistantTurnFn, encoder, sessionId, recentHistory, systemPrompt, isSimpleMessage, sessionTurnsCount, crossSessionMemories
     });

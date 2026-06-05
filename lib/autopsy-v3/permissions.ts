@@ -3,6 +3,8 @@ import { createClient } from '@/lib/supabase/server';
 import { apiErrorResponse } from '@/lib/api/errors';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { getAutopsyV3Limits, since24HoursIso } from './limits';
+import { betaAccessErrorResponse, requireActiveBetaUser } from '@/lib/access/beta-access';
+import { featureDisabledResponse, isBetaFeatureEnabled } from '@/lib/config/beta-flags';
 
 export async function requireAutopsyV3User(requestId: string) {
   const limits = getAutopsyV3Limits();
@@ -28,6 +30,21 @@ export async function requireAutopsyV3User(requestId: string) {
     };
   }
 
+  let access;
+  try {
+    access = await requireActiveBetaUser(user.id);
+  } catch (accessError) {
+    return { error: betaAccessErrorResponse(accessError, requestId) ?? apiErrorResponse('beta_access_required', {
+      status: 403,
+      message: 'Cognition OS is currently in a limited beta. Ask the admin to activate your beta access.',
+      requestId,
+    }) };
+  }
+
+  if (!isBetaFeatureEnabled('autopsy_upload') && !isBetaFeatureEnabled('autopsy_report')) {
+    return { error: featureDisabledResponse(requestId) };
+  }
+
   const rate = await checkRateLimit({
     identifier: user.id,
     bucket: 'autopsy-v3',
@@ -39,7 +56,7 @@ export async function requireAutopsyV3User(requestId: string) {
     return { error: rateLimitResponse(rate.remaining, rate.resetAt) };
   }
 
-  return { supabase, user, limits };
+  return { supabase, user, limits, access };
 }
 
 export async function enforceDailyTableCap(input: {

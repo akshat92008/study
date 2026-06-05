@@ -11,6 +11,10 @@ import { logger } from '@/lib/utils/logger';
 import { featureFlags } from '@/lib/config/flags';
 import { hermesRuntimeConfig } from '@/lib/hermes/hermes-runtime-config';
 import { ingestLearningSignal } from '@/lib/learning-signals/ingest';
+import { betaAccessErrorResponse, requireActiveBetaUser } from '@/lib/access/beta-access';
+import { featureDisabledResponse, isBetaFeatureEnabled } from '@/lib/config/beta-flags';
+import { getPlanLimits } from '@/lib/billing/plan-limits';
+import { consumeFeatureUsage, enforceFeatureLimit, featureLimitResponse } from '@/lib/usage/enforce-feature-limit';
 import {
   ensureGoalForUser,
   ensureSessionBelongsToUser,
@@ -59,6 +63,23 @@ export async function POST(req: NextRequest) {
     if (!user) {
       return apiErrorResponse('unauthorized', { status: 401, message: 'Authentication is required.', requestId });
     }
+    let access;
+    try {
+      access = await requireActiveBetaUser(user.id);
+    } catch (accessError) {
+      return betaAccessErrorResponse(accessError, requestId) ?? apiErrorResponse('beta_access_required', {
+        status: 403,
+        message: 'Cognition OS is currently in a limited beta. Ask the admin to activate your beta access.',
+        requestId,
+      });
+    }
+    if (!isBetaFeatureEnabled('rag_upload')) return featureDisabledResponse(requestId);
+    try {
+      await enforceFeatureLimit(user.id, 'material_upload');
+    } catch (limitError: any) {
+      if (limitError?.check) return featureLimitResponse(limitError.check, requestId);
+      throw limitError;
+    }
 
     const { allowed, remaining, resetAt } = await checkRateLimit({
       identifier: user.id,
@@ -70,6 +91,7 @@ export async function POST(req: NextRequest) {
     if (!allowed) return rateLimitResponse(remaining, resetAt);
 
     const config = getRagConfig();
+    const planLimits = getPlanLimits(access.plan);
     const formData = await req.formData();
     const goalId = formString(formData.get('goalId'));
     const chatSessionId = formString(formData.get('chatSessionId'));
@@ -113,11 +135,12 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    if (file.size > config.maxFileBytes) {
+    const maxFileBytes = Math.min(config.maxFileBytes, planLimits.maxFileMb * 1024 * 1024);
+    if (file.size > maxFileBytes) {
       logger.warn('Upload rejected: file too large', { userId: user.id, fileSize: file.size, requestId });
       return apiErrorResponse('file_too_large', {
         status: 413,
-        message: `Study material files are capped at ${Math.round(config.maxFileBytes / 1024 / 1024)}MB.`,
+        message: `Study material files are capped at ${Math.round(maxFileBytes / 1024 / 1024)}MB for your beta plan.`,
         requestId,
       });
     }
@@ -134,10 +157,11 @@ export async function POST(req: NextRequest) {
       .eq('user_id', user.id)
       .in('status', ['uploaded', 'queued', 'processing', 'ready']);
     if (countError) throw countError;
-    if ((count ?? 0) >= config.maxFilesPerUser) {
+    const maxFiles = Math.min(config.maxFilesPerUser, planLimits.maxMaterials);
+    if ((count ?? 0) >= maxFiles) {
       return apiErrorResponse('material_limit_reached', {
         status: 429,
-        message: `Private beta allows ${config.maxFilesPerUser} active study material files.`,
+        message: `Private beta allows ${maxFiles} active study material files for your plan.`,
         requestId,
       });
     }
@@ -288,6 +312,12 @@ export async function POST(req: NextRequest) {
 
     logger.info('Upload accepted', { userId: user.id, materialId: material.id, mimeType, fileSize: file.size, requestId });
 
+    const usage = await consumeFeatureUsage(user.id, 'material_upload', 1, {
+      materialId: material.id,
+      fileSize: file.size,
+      idempotencyKey: `material_upload:${user.id}:${material.id}`,
+    });
+    if (!usage.allowed) return featureLimitResponse(usage, requestId);
 
     return NextResponse.json({
       material: {

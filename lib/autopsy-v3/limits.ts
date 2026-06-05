@@ -24,6 +24,7 @@ export function getAutopsyV3Limits() {
     hermesEnabled: boolFromEnv('HERMES_AUTOPSY_V3_ENABLED', true),
     hermesMode: process.env.HERMES_AUTOPSY_V3_MODE || 'lite',
     maxMemoryWritesPerReport: intFromEnv('HERMES_AUTOPSY_MAX_MEMORY_WRITES_PER_REPORT', 10, 0, 50),
+    maxRevisionCardsPerReport: intFromEnv('AUTOPSY_MAX_REVISION_CARDS_PER_REPORT', 20, 0, 50),
     maxReminders: intFromEnv('HERMES_AUTOPSY_MAX_REMINDERS', 3, 1, 10),
   };
 }

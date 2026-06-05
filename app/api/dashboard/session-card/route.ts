@@ -38,6 +38,8 @@ import { logger } from '@/lib/utils/logger';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { ensureGoalForUser } from '@/lib/services/goal-context.service';
+import { betaAccessErrorResponse, requireActiveBetaUser } from '@/lib/access/beta-access';
+import { featureDisabledResponse, isBetaFeatureEnabled } from '@/lib/config/beta-flags';
 
 // ─── Response contract ───────────────────────────────────────────────────────
 
@@ -137,6 +139,16 @@ export async function GET(request?: Request): Promise<NextResponse> {
         requestId,
       });
     }
+    try {
+      await requireActiveBetaUser(user.id);
+    } catch (accessError) {
+      return betaAccessErrorResponse(accessError, requestId) ?? apiErrorResponse('beta_access_required', {
+        status: 403,
+        message: 'Cognition OS is currently in a limited beta. Ask the admin to activate your beta access.',
+        requestId,
+      });
+    }
+    if (!isBetaFeatureEnabled('session_card')) return featureDisabledResponse(requestId);
 
     const { allowed, remaining, resetAt } = await checkRateLimit({
       identifier: user.id,
@@ -451,6 +463,9 @@ export async function GET(request?: Request): Promise<NextResponse> {
 
 
     try {
+      if (!isBetaFeatureEnabled('ai')) {
+        throw new Error('AI temporarily paused');
+      }
       const raw = await budgetedGenerateJSON<LLMCardProseType>({
         userId: user.id,
         feature: 'session-card',
