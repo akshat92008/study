@@ -52,20 +52,24 @@ export function validateCronRequest(req: NextRequest): NextResponse | null {
   }
 
   // Fallback to Vercel Cron auth
-  if (
-    !cronSecret ||
-    (process.env.NODE_ENV !== 'test' && (cronSecret.length < 32 || weakSecrets.has(cronSecret)))
-  ) {
-    console.error('[CronAuth] INTERNAL_CRON_SECRET not configured safely!');
+  const cronSecrets = [process.env.INTERNAL_CRON_SECRET, process.env.CRON_SECRET].filter(Boolean) as string[];
+  
+  const validCronSecret = cronSecrets.find(s => process.env.NODE_ENV === 'test' || (s.length >= 32 && !weakSecrets.has(s)));
+
+  if (!validCronSecret) {
+    console.error('[CronAuth] No safe CRON_SECRET configured!');
     return apiErrorResponse('cron_not_configured', {
       status: 500,
-      message: 'INTERNAL_CRON_SECRET is not configured safely.',
+      message: 'CRON_SECRET is not configured safely.',
       requestId,
     });
   }
 
-  const expected = `Bearer ${cronSecret}`;
-  if (providedAuthHeader !== expected) {
+  const isValid = cronSecrets.some(secret => 
+    providedAuthHeader === `Bearer ${secret}` || providedAuthHeader === secret
+  );
+
+  if (!isValid) {
     console.warn('[CronAuth] Unauthorized cron access attempt');
     return apiErrorResponse('unauthorized', {
       status: 401,
