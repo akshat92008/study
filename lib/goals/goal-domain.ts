@@ -20,13 +20,17 @@ type GoalDomainInput = {
 };
 
 function normalize(value: string | null | undefined): string {
-  return (value ?? '').toLowerCase().replace(/[^a-z0-9+#.\s-]/g, ' ').replace(/\s+/g, ' ').trim();
+  return (value ?? '')
+    .toLowerCase()
+    .replace(/[^a-z0-9+#.\s-]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 function titleCase(value: string | null): string | null {
   if (!value) return value;
   return value
-    .split(/[_\s-]+/)
+    .split(/[ _\-]+/)
     .filter(Boolean)
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(' ');
@@ -129,9 +133,7 @@ export function inferGoalDomain(rawGoal: string, explicit: GoalDomainInput = {})
     board,
     confidence: Math.min(0.99, Number(confidence.toFixed(2))),
     needsClarification,
-    clarificationQuestion: needsClarification
-      ? 'What subject, exam, or class should this goal focus on?'
-      : null,
+    clarificationQuestion: needsClarification ? 'What subject, exam, or class should this goal focus on?' : null,
   };
 }
 
