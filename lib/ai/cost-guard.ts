@@ -165,7 +165,7 @@ function shouldBypassNetworkBudgetForTests(): boolean {
   return (
     (process.env.NODE_ENV === 'test' || process.env.VITEST === 'true') &&
     process.env.ENABLE_NETWORK_BUDGET_TESTS !== 'true'
-  );
+  ) || process.env.BYPASS_ALL_LIMITS === 'true';
 }
 
 function isTestReservation(reservationId: string): boolean {
@@ -310,6 +310,7 @@ export async function reserveBudgetForModelCall(
 }
 
 async function enforceGlobalDailyAiRequestLimit(userId: string, feature: BudgetFeature): Promise<void> {
+  if (process.env.BYPASS_ALL_LIMITS === 'true') return;
   const limitRaw = Number(process.env.GLOBAL_DAILY_AI_REQUEST_LIMIT ?? process.env.DAILY_GLOBAL_AI_REQUEST_LIMIT ?? 2500);
   if (!Number.isFinite(limitRaw) || limitRaw <= 0) return;
 

@@ -22,7 +22,7 @@ function shouldBypassNetworkRateLimitForTests(): boolean {
   return (
     (process.env.NODE_ENV === 'test' || process.env.VITEST === 'true') &&
     process.env.ENABLE_NETWORK_RATE_LIMIT_TESTS !== 'true'
-  );
+  ) || process.env.BYPASS_ALL_LIMITS === 'true';
 }
 
 function getRedis(): Redis | null {

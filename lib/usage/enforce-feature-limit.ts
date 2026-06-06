@@ -135,7 +135,10 @@ export async function checkFeatureLimit(
   const limits = getPlanLimits(access.plan);
   const limit = getFeatureLimit(access.plan, feature);
 
-  if (process.env.NODE_ENV === 'test' && process.env.ENABLE_FEATURE_USAGE_TESTS !== 'true') {
+  if (
+    (process.env.NODE_ENV === 'test' && process.env.ENABLE_FEATURE_USAGE_TESTS !== 'true') ||
+    process.env.BYPASS_ALL_LIMITS === 'true'
+  ) {
     return {
       allowed: true,
       userId,

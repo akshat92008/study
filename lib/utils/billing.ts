@@ -91,7 +91,11 @@ export function getMaxUploadBytes(): number {
 }
 
 function developmentMayFailOpen(): boolean {
-  return process.env.NODE_ENV !== 'production' && process.env.ALLOW_USAGE_GATE_FAIL_OPEN === 'true';
+  return (process.env.NODE_ENV !== 'production' && process.env.ALLOW_USAGE_GATE_FAIL_OPEN === 'true') || process.env.BYPASS_ALL_LIMITS === 'true';
+}
+
+function isTemporarilyUnrestricted(): boolean {
+  return process.env.BYPASS_ALL_LIMITS === 'true';
 }
 
 export function usageGateResponse(result: UsageGateResult): NextResponse {
@@ -164,6 +168,10 @@ export async function consumeUsageLimit(
   if (!auth.allowed) return auth;
 
   const limit = await getEffectiveLegacyLimit(userId as string, feature);
+
+  if (isTemporarilyUnrestricted()) {
+    return { allowed: true, limit, remaining: limit };
+  }
 
   if (limit === 0) {
     const isHourly = feature === 'chat_messages_hourly';
@@ -238,6 +246,7 @@ export async function checkUsageLimit(
   userId: string,
   feature: FeatureLimit
 ): Promise<{ allowed: boolean; reason?: string }> {
+  if (isTemporarilyUnrestricted()) return { allowed: true };
   const auth = enforceAuthenticatedUsage(userId);
   if (!auth.allowed) return { allowed: false, reason: auth.code };
 

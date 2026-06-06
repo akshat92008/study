@@ -68,6 +68,7 @@ export async function enforceDailyTableCap(input: {
   message: string;
   extra?: (query: any) => any;
 }) {
+  if (process.env.BYPASS_ALL_LIMITS === 'true') return null;
   if (input.limit <= 0) {
     return apiErrorResponse('daily_limit_reached', {
       status: 429,
