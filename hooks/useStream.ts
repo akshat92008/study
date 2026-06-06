@@ -162,8 +162,8 @@ export function useStream(defaultUrl = '/api/ai/chat'): UseStreamReturn {
             fullRaw += chunk;
 
             const now = Date.now();
-            // Memory backpressure: throttle React updates to max 30fps (~33ms) to prevent render churn
-            if (now - lastRenderTime > 33) {
+            // Memory backpressure: throttle React updates to ~16fps (60ms) to prevent render churn
+            if (now - lastRenderTime > 60) {
               const displayText = fullRaw
                 .split(META_SEP)[0]
                 .replace(DRAWER_RE, '')

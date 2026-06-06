@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef, memo, useCallback } from 'react';
+import React, { useState, useEffect, useRef, memo, useCallback, useMemo } from 'react';
 import { Bot, Maximize2, Minimize2, RefreshCw, Flame } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
 import { useStream } from '@/hooks/useStream';
@@ -23,28 +23,73 @@ const MIND_QUICK_PROMPTS = [
   'Show source status',
 ];
 
+const ChatMessage = memo(function ChatMessage({ msg }: { msg: any }) {
+  const isUser = msg.role === 'user';
+  const isClosingCard = msg.metadata?.action === 'session_closing_message';
+  return (
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: isUser ? 'flex-end' : 'flex-start',
+    }}>
+      <div style={{
+        maxWidth: isUser ? '85%' : '100%',
+        background: isUser ? '#8B5CF6' : 'transparent',
+        border: isUser ? 'none' : 'none',
+        borderLeft: (!isUser && !isClosingCard) ? '2px solid rgba(124, 102, 255, 0.3)' : 'none',
+        color: isUser ? 'white' : 'var(--text-primary)',
+        fontSize: '14px',
+        lineHeight: 'var(--lh-relaxed)',
+        wordBreak: 'break-word',
+        width: isClosingCard ? '100%' : (isUser ? 'fit-content' : '100%'),
+        animation: 'messageIn var(--duration-normal) var(--ease-out) forwards',
+        opacity: 0,
+        padding: isUser ? '12px 18px' : '8px 0 8px 16px',
+        borderRadius: isUser ? '20px' : '0',
+        boxShadow: isUser ? 'var(--shadow-sm)' : 'none',
+        fontFamily: 'var(--font-sans)'
+      }}>
+       {isClosingCard ? (
+         <SessionClosingCard
+           closingMessage={msg.metadata?.closingMessage || msg.content}
+           oldMastery={msg.metadata?.oldMastery}
+           newMastery={msg.metadata?.newMastery}
+           cardsCreated={msg.metadata?.cardsCreated}
+           tomorrowFocus={msg.metadata?.tomorrowFocus}
+         />
+       ) : (
+         <RichMessageRenderer content={msg.content} isStreaming={false} messageId={msg.id} metadata={msg.metadata} />
+       )}
+     </div>
+   </div>
+  );
+});
+
 export const GlobalChat = memo(function GlobalChat() {
-  const {
-    isAssistantOpen,
-    toggleAssistant,
-    chatMessages,
-    addChatMessage,
-    clearChat,
-    activeGoalId,
-    learningGoals,
-    streakDays,
-    chatId,
-    loadChatFromSupabase,
-    isAssistantExpanded,
-    toggleAssistantExpanded,
-    sessions,
-  } = useAppStore();
-  const activeGoal = learningGoals.find(goal => goal.id === activeGoalId) || null;
+  const isAssistantOpen = useAppStore(s => s.isAssistantOpen);
+  const toggleAssistant = useAppStore(s => s.toggleAssistant);
+  const chatMessages = useAppStore(s => s.chatMessages);
+  const addChatMessage = useAppStore(s => s.addChatMessage);
+  const clearChat = useAppStore(s => s.clearChat);
+  const activeGoalId = useAppStore(s => s.activeGoalId);
+  const learningGoals = useAppStore(s => s.learningGoals);
+  const streakDays = useAppStore(s => s.streakDays);
+  const chatId = useAppStore(s => s.chatId);
+  const loadChatFromSupabase = useAppStore(s => s.loadChatFromSupabase);
+  const isAssistantExpanded = useAppStore(s => s.isAssistantExpanded);
+  const toggleAssistantExpanded = useAppStore(s => s.toggleAssistantExpanded);
+  const sessions = useAppStore(s => s.sessions);
+
+  const activeGoal = useMemo(() => 
+    learningGoals.find(goal => goal.id === activeGoalId) || null,
+    [learningGoals, activeGoalId]
+  );
 
   const [inputMessage, setInputMessage] = useState('');
   const [pendingFile, setPendingFile] = useState<File | null>(null);
   const [isProcessingUpload, setIsProcessingUpload] = useState(false);
   const [thinkingLabel, setThinkingLabel] = useState('Amaura is thinking');
+  const thinkingTimersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
   const router = useRouter();
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -80,23 +125,25 @@ export const GlobalChat = memo(function GlobalChat() {
   const scrollToBottom = useCallback((behavior: ScrollBehavior = 'smooth') => {
     if (!messagesEndRef.current) return;
     
-    // If streaming, throttle scroll to 250ms to prevent jitter
+    // If streaming, throttle scroll to 300ms to prevent jitter
     if (status === 'streaming') {
       const now = Date.now();
-      if (now - lastScrollTimeRef.current < 250) return;
+      if (now - lastScrollTimeRef.current < 300) return;
       lastScrollTimeRef.current = now;
     }
     
-    messagesEndRef.current.scrollIntoView({ behavior, block: 'end' });
+    requestAnimationFrame(() => {
+      messagesEndRef.current?.scrollIntoView({ behavior, block: 'end' });
+    });
   }, [status]);
 
   useEffect(() => {
     // Check if user is near bottom before auto-scrolling
     const container = scrollContainerRef.current;
     if (container && status === 'streaming') {
-      const isNearBottom = container.scrollHeight - container.scrollTop - container.clientHeight < 150;
+      const isNearBottom = container.scrollHeight - container.scrollTop - container.clientHeight < 120;
       if (isNearBottom) {
-        scrollToBottom('smooth');
+        scrollToBottom('auto');
       }
     } else {
       scrollToBottom('smooth');
@@ -219,26 +266,16 @@ export const GlobalChat = memo(function GlobalChat() {
     resetStatus();
     setThinkingLabel('Amaura is thinking');
 
-    const timers: ReturnType<typeof setTimeout>[] = [];
-    timers.push(setTimeout(() => setThinkingLabel('Checking your goal context'), 1200));
-    timers.push(setTimeout(() => setThinkingLabel('Building the best answer'), 3000));
-    timers.push(setTimeout(() => setThinkingLabel('Still working — using fallback if needed'), 8000));
+    thinkingTimersRef.current.forEach(clearTimeout);
+    thinkingTimersRef.current = [
+      setTimeout(() => setThinkingLabel('Checking context'), 1500),
+      setTimeout(() => setThinkingLabel('Building answer'), 5000),
+    ];
 
     const sessionTurnsCount = chatMessages.filter(m => m.role === 'user').length;
 
     // Call the streaming engine
     try {
-      const requestBody: Record<string, unknown> = {
-        message: content,
-        history: chatMessages.slice(-10),
-        sessionTurnsCount: sessionTurnsCount + 1,
-      };
-
-      if (imageBase64) requestBody.imageBase64 = imageBase64;
-      if (imageMimeType) requestBody.imageMimeType = imageMimeType;
-      if (activeGoalId) requestBody.activeGoalId = activeGoalId;
-      if (chatId) requestBody.chatId = chatId;
-
       const result = await send({
         headers: {
           'Idempotency-Key': crypto.randomUUID(),
@@ -303,7 +340,8 @@ export const GlobalChat = memo(function GlobalChat() {
         timestamp: new Date().toISOString(),
       });
     } finally {
-      timers.forEach(clearTimeout);
+      thinkingTimersRef.current.forEach(clearTimeout);
+      thinkingTimersRef.current = [];
       setThinkingLabel('Amaura is thinking');
     }
   }, [
@@ -322,9 +360,11 @@ export const GlobalChat = memo(function GlobalChat() {
     status,
   ]);
 
-  const contextLine = activeGoal
+  const contextLine = useMemo(() => activeGoal
     ? `Context loaded: ${activeGoal.title} · ${activeGoal.counts?.sourcesReady || 0} sources ready · ${activeGoal.counts?.sourcesProcessing || 0} processing · ${activeGoal.counts?.microtasksPending || 0} targets · ${activeGoal.counts?.dueCards || 0} due cards · ${activeGoal.counts?.weakConcepts || 0} weak concepts · ${activeGoal.counts?.recentMistakes || 0} recent mistakes.`
-    : 'General assistant · create a goal to unlock missions.';
+    : 'General assistant · create a goal to unlock missions.',
+    [activeGoal]
+  );
 
    return (
      <div
@@ -440,47 +480,9 @@ export const GlobalChat = memo(function GlobalChat() {
         gap: '24px',
         scrollBehavior: 'smooth'
       }}>
-         {chatMessages.map((msg, idx) => {
-           const isUser = msg.role === 'user';
-           const isClosingCard = msg.metadata?.action === 'session_closing_message';
-           return (
-             <div key={idx} style={{
-               display: 'flex',
-               flexDirection: 'column',
-               alignItems: isUser ? 'flex-end' : 'flex-start',
-             }}>
-               <div style={{
-                 maxWidth: isUser ? '85%' : '100%',
-                 background: isUser ? '#8B5CF6' : 'transparent',
-                 border: isUser ? 'none' : 'none',
-                 borderLeft: (!isUser && !isClosingCard) ? '2px solid rgba(124, 102, 255, 0.3)' : 'none',
-                 color: isUser ? 'white' : 'var(--text-primary)',
-                 fontSize: '14px',
-                 lineHeight: 'var(--lh-relaxed)',
-                 wordBreak: 'break-word',
-                 width: isClosingCard ? '100%' : (isUser ? 'fit-content' : '100%'),
-                 animation: 'messageIn var(--duration-normal) var(--ease-out) forwards',
-                 opacity: 0,
-                 padding: isUser ? '12px 18px' : '8px 0 8px 16px',
-                 borderRadius: isUser ? '20px' : '0',
-                 boxShadow: isUser ? 'var(--shadow-sm)' : 'none',
-                 fontFamily: 'var(--font-sans)'
-               }}>
-                {isClosingCard ? (
-                  <SessionClosingCard
-                    closingMessage={msg.metadata?.closingMessage || msg.content}
-                    oldMastery={msg.metadata?.oldMastery}
-                    newMastery={msg.metadata?.newMastery}
-                    cardsCreated={msg.metadata?.cardsCreated}
-                    tomorrowFocus={msg.metadata?.tomorrowFocus}
-                  />
-                ) : (
-                  <RichMessageRenderer content={msg.content} isStreaming={false} messageId={msg.id} metadata={msg.metadata} />
-                )}
-              </div>
-            </div>
-          );
-        })}
+         {chatMessages.map((msg, idx) => (
+           <ChatMessage key={msg.id || idx} msg={msg} />
+         ))}
 
         {/* Live Streaming Message Bubble */}
         {(status === 'streaming' || status === 'connecting') && (

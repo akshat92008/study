@@ -1122,7 +1122,7 @@ interface RichMessageRendererProps {
   metadata?: Record<string, any>;
 }
 
-export function RichMessageRenderer({ content, isStreaming = false, messageId, metadata }: RichMessageRendererProps) {
+export const RichMessageRenderer = React.memo(function RichMessageRenderer({ content, isStreaming = false, messageId, metadata }: RichMessageRendererProps) {
   const cleanContent = content.split('===METADATA===')[0];
   const parts = parseArtifacts(cleanContent);
   const ragChunks = metadata?.ragChunks;
@@ -1193,4 +1193,4 @@ export function RichMessageRenderer({ content, isStreaming = false, messageId, m
       )}
     </div>
   );
-}
+});
