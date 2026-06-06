@@ -12,6 +12,58 @@ describe('inferGoalDomain', () => {
     expect(result.needsClarification).toBe(true);
   });
 
+  it('accepts NEET as a valid exam-level goal', () => {
+    const result = inferGoalDomain('neet');
+    expect(result.needsClarification).toBe(false);
+    expect(result.exam).toBe('neet');
+    expect(result.domain).toBe('medical_exam');
+    expect(result.confidence).toBeGreaterThanOrEqual(0.75);
+  });
+
+  it('accepts NEET 2026 as a valid exam-level goal', () => {
+    const result = inferGoalDomain('NEET 2026');
+    expect(result.needsClarification).toBe(false);
+    expect(result.exam).toBe('neet');
+    expect(result.domain).toBe('medical_exam');
+  });
+
+  it('accepts NEET Biology with subject', () => {
+    const result = inferGoalDomain('neet biology');
+    expect(result.needsClarification).toBe(false);
+    expect(result.exam).toBe('neet');
+    expect(result.subject).toBe('biology');
+    expect(result.domain).toBe('medical_exam');
+  });
+
+  it('accepts NEET Physics with subject', () => {
+    const result = inferGoalDomain('neet physics');
+    expect(result.needsClarification).toBe(false);
+    expect(result.exam).toBe('neet');
+    expect(result.subject).toBe('physics');
+    expect(result.domain).toBe('medical_exam');
+  });
+
+  it('accepts JEE as a valid exam-level goal', () => {
+    const result = inferGoalDomain('jee');
+    expect(result.needsClarification).toBe(false);
+    expect(result.exam).toBe('jee');
+    expect(result.domain).toBe('engineering_exam');
+  });
+
+  it('accepts SAT as a valid exam-level goal', () => {
+    const result = inferGoalDomain('sat');
+    expect(result.needsClarification).toBe(false);
+    expect(result.exam).toBe('sat');
+    expect(result.domain).toBe('standardized_exam');
+  });
+
+  it('still rejects vague generic goals', () => {
+    expect(inferGoalDomain('').needsClarification).toBe(true);
+    expect(inferGoalDomain('study').needsClarification).toBe(true);
+    expect(inferGoalDomain('learn').needsClarification).toBe(true);
+    expect(inferGoalDomain('exam').needsClarification).toBe(true);
+  });
+
   it('accepts "mechanical property of fluid" as physics', () => {
     const result = inferGoalDomain('mechanical property of fluid');
     expect(result.needsClarification).toBe(false);

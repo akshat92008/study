@@ -36,6 +36,18 @@ function titleCase(value: string | null): string | null {
     .join(' ');
 }
 
+const EXAM_MAP: Record<string, { exam: string; domain: string; confidence: number }> = {
+  neet: { exam: 'neet', domain: 'medical_exam', confidence: 0.86 },
+  jee: { exam: 'jee', domain: 'engineering_exam', confidence: 0.86 },
+  mcat: { exam: 'mcat', domain: 'medical_exam', confidence: 0.86 },
+  usmle: { exam: 'usmle', domain: 'medical_exam', confidence: 0.86 },
+  sat: { exam: 'sat', domain: 'standardized_exam', confidence: 0.82 },
+  act: { exam: 'act', domain: 'standardized_exam', confidence: 0.82 },
+  gate: { exam: 'gate', domain: 'engineering_exam', confidence: 0.82 },
+  upsc: { exam: 'upsc', domain: 'civil_services_exam', confidence: 0.82 },
+  cuet: { exam: 'cuet', domain: 'entrance_exam', confidence: 0.82 },
+};
+
 export function inferGoalDomain(rawGoal: string, explicit: GoalDomainInput = {}): GoalDomain {
   const normalizedGoal = normalize(rawGoal);
   const tokens = new Set(normalizedGoal.split(' ').filter(Boolean));
@@ -52,6 +64,31 @@ export function inferGoalDomain(rawGoal: string, explicit: GoalDomainInput = {})
   let board: string | null = explicitBoard || null;
   let confidence = explicitSubject || explicitDomain || explicitExam ? 0.82 : 0.2;
 
+  // 1. Check for specific exams in the title
+  const examEntry = Object.entries(EXAM_MAP).find(([key]) =>
+    new RegExp(`\\b${key}\\b`, 'i').test(normalizedGoal)
+  );
+
+  if (examEntry) {
+    const [, config] = examEntry;
+    exam = exam ?? config.exam;
+    domain = domain ?? config.domain;
+    confidence = Math.max(confidence, config.confidence);
+  }
+
+  // 2. Subject inference from keywords
+  if (!subject) {
+    if (/\b(biology|botany|zoology)\b/i.test(normalizedGoal)) subject = 'biology';
+    else if (/\bphysics\b/i.test(normalizedGoal)) subject = 'physics';
+    else if (/\bchemistry\b/i.test(normalizedGoal)) subject = 'chemistry';
+    else if (/\bmath(ematics)?\b/i.test(normalizedGoal)) subject = 'math';
+    
+    if (subject) {
+      confidence += 0.3;
+      domain = domain ?? (exam === 'neet' ? 'medical_exam' : 'school_science');
+    }
+  }
+
   // Generic rejection list
   const genericTerms = [
     'study', 'learn', 'prepare', 'revise', 'practice', 'exam', 'test', 'chapter',
@@ -62,13 +99,13 @@ export function inferGoalDomain(rawGoal: string, explicit: GoalDomainInput = {})
   if (!exam && /\bneet\b/.test(normalizedGoal)) {
     exam = 'neet';
     domain = domain ?? 'medical_exam';
-    confidence += 0.22;
+    confidence = Math.max(confidence, 0.42);
   }
 
   if (!exam && /\bjee\b/.test(normalizedGoal)) {
     exam = 'jee';
     domain = domain ?? 'engineering_exam';
-    confidence += 0.22;
+    confidence = Math.max(confidence, 0.42);
   }
 
   const gradeMatch = normalizedGoal.match(/\b(?:class|grade|std|standard)\s*(\d{1,2})\b/);
@@ -142,7 +179,7 @@ export function inferGoalDomain(rawGoal: string, explicit: GoalDomainInput = {})
 
   // A goal is vague if it's too short, is in the generic list, or has no subject/domain/exam identified
   const vague = isGeneric 
-    || normalizedGoal.length < 3
+    || normalizedGoal.length < 2
     || (!subject && !domain && !exam && normalizedGoal.split(' ').length < 2);
 
   const needsClarification = vague || confidence < 0.4;

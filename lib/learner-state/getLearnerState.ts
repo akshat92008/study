@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
+import { inferGoalDomain } from '@/lib/goals/goal-domain';
 
 type SupabaseLike = Awaited<ReturnType<typeof createClient>>;
 
@@ -19,6 +20,8 @@ export interface LearnerStateSnapshot {
     title: string;
     targetDate: string | null;
     progress: number | null;
+    subject: string | null;
+    domain: string | null;
   } | null;
   currentMission: {
     focusTopic: string | null;
@@ -121,7 +124,7 @@ export async function getLearnerStateSnapshot(
 
   let goalQuery = supabase
     .from('learning_goals')
-    .select('id, title, target_date, progress')
+    .select('id, title, target_date, progress, subject, domain')
     .eq('user_id', userId);
   goalQuery = options.goalId
     ? goalQuery.eq('id', options.goalId)
@@ -236,6 +239,19 @@ export async function getLearnerStateSnapshot(
   const needsReviewCount = needsReviewCountRes?.count ?? 0;
   const lastAutopsyData = lastAutopsyRes?.data ?? null;
 
+  const activeGoalData = goalRes.data;
+  let activeGoal: LearnerStateSnapshot['activeGoal'] = null;
+  if (activeGoalData) {
+    const inferred = inferGoalDomain(activeGoalData.title);
+    activeGoal = {
+      title: activeGoalData.title,
+      targetDate: activeGoalData.target_date ?? null,
+      progress: activeGoalData.progress ?? null,
+      subject: activeGoalData.subject ?? inferred.subject,
+      domain: activeGoalData.domain ?? inferred.domain,
+    };
+  }
+
   return {
     profile: {
       userId,
@@ -249,13 +265,7 @@ export async function getLearnerStateSnapshot(
       mindStateSignal: profile?.emotional_state || 'neutral',
       version: profileVersion,
     },
-    activeGoal: goalRes.data
-      ? {
-          title: goalRes.data.title,
-          targetDate: goalRes.data.target_date ?? null,
-          progress: goalRes.data.progress ?? null,
-        }
-      : null,
+    activeGoal,
     currentMission: currentMission
       ? {
           focusTopic: currentMission.focusTopic,
