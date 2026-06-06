@@ -38,10 +38,10 @@ describe('Cheap-First AI Architecture', () => {
 
     it('passes output token caps according to mode', () => {
       process.env.AI_COST_MODE = 'ultra_cheap';
-      expect(getMaxOutputTokens()).toBe(450);
+      expect(getMaxOutputTokens()).toBe(600);
       
       process.env.AI_COST_MODE = 'balanced';
-      expect(getMaxOutputTokens()).toBe(800);
+      expect(getMaxOutputTokens()).toBe(1000);
     });
   });
 

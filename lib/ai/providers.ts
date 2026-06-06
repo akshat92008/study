@@ -105,7 +105,7 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
       name: 'cerebras',
       baseUrl: 'https://api.cerebras.ai/v1',
       apiKey: process.env.CEREBRAS_API_KEY,
-      models: { quality: 'llama-3.3-70b', fast: 'llama3.1-8b' },
+      models: { quality: 'llama3.3-70b', fast: 'llama3.1-8b' },
       capabilities: capabilities({
         supportsStreaming: true,
         maxInputTokens: 8192,
@@ -127,7 +127,7 @@ export function getProviderConfig(name: ProviderName): ProviderConfig | null {
       name: 'cerebras_fallback',
       baseUrl: 'https://api.cerebras.ai/v1',
       apiKey: process.env.CEREBRAS_API_KEY_2 || process.env.CEREBRAS_API_KEY,
-      models: { quality: 'llama-3.3-70b', fast: 'llama3.1-8b' },
+      models: { quality: 'llama3.3-70b', fast: 'llama3.1-8b' },
       capabilities: capabilities({
         supportsStreaming: true,
         maxInputTokens: 8192,

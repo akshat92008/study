@@ -99,28 +99,43 @@ export async function gatherChatContext({
         studentModel: null,
         outcomeAnalytics: null,
       })
-    : getMINDContext(
-        userId,
-        message,
-        detectedIntent.topic || undefined,
-        detectedIntent.subject || undefined,
-        activeGoalId || undefined
-      ).catch((err) => {
-        logger.error('Failed to get MIND context', err);
-        return null;
+    : Promise.race([
+        getMINDContext(
+          userId,
+          message,
+          detectedIntent.topic || undefined,
+          detectedIntent.subject || undefined,
+          activeGoalId || undefined
+        ),
+        new Promise((_, r) => setTimeout(() => r(new Error('mind_context_timeout')), 6000))
+      ]).catch((err) => {
+        logger.error('Failed to get MIND context (or timeout)', err);
+        // Minimal fallback context
+        return {
+          profile: profilePreview || { name: 'Student', examType: 'General Study' },
+          activeGoal: activeGoal ? { id: activeGoal.id, title: activeGoal.title } : null,
+          weakConcepts: [], recentMistakes: [], struggles: [],
+          masteryStats: { totalConcepts: 0, masteredCount: 0, masteryPercent: 0 },
+          overdueCardsCount: 0, topOverdueCards: [], emotionalState: 'neutral', recentTopics: [],
+          conceptHistory: [], cognitiveLoad: { level: 'normal', signals: [] },
+          rootGapChains: [], currentSessionDurationMinutes: 0, sessionGoal: '', ragChunks: [],
+        };
       });
 
   const mindRagPromise = isSimpleMessage
     ? Promise.resolve({ ragContext: null, ragPromptBlock: '' })
-    : buildMindRagContext({
-        userId,
-        message: message || '',
-        subject: detectedIntent.subject || undefined,
-        chapter: detectedIntent.topic || undefined,
-        goalId: activeGoalId,
-        chatSessionId: sessionId,
-      }).catch((err) => {
-        logger.error('Failed to get RAG context', err);
+    : Promise.race([
+        buildMindRagContext({
+          userId,
+          message: message || '',
+          subject: detectedIntent.subject || undefined,
+          chapter: detectedIntent.topic || undefined,
+          goalId: activeGoalId,
+          chatSessionId: sessionId,
+        }),
+        new Promise((_, r) => setTimeout(() => r(new Error('mind_rag_timeout')), 3000))
+      ]).catch((err) => {
+        logger.error('Failed to get RAG context (or timeout)', err);
         return { ragContext: null, ragPromptBlock: '' };
       });
 
