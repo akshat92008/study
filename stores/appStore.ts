@@ -317,28 +317,41 @@ export const useAppStore = create<AppState>()(
       },
 
       createGoalWithSession: async (title, details) => {
+        const cleanTitle = typeof title === 'string' ? title.trim() : '';
+        if (!cleanTitle) {
+          get().addToast('Please enter a specific learning goal first.', 'error');
+          return null;
+        }
+
         try {
           const res = await fetch('/api/goals', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              title,
-              subject: details?.subject,
-              domain: details?.domain,
-              examType: details?.examType,
-              presetId: details?.presetId,
-              targetLevel: details?.targetLevel,
-              description: details?.description,
-              deadline: details?.deadline,
-              currentLevel: details?.currentLevel,
-              timeAvailable: details?.timeAvailable,
-              preferredLearningStyle: details?.preferredLearningStyle,
+              title: cleanTitle,
+              subject: details?.subject ?? null,
+              domain: details?.domain ?? null,
+              examType: details?.examType ?? details?.targetLevel ?? null,
+              presetId: details?.presetId ?? null,
+              targetLevel: details?.targetLevel ?? null,
+              description: details?.description ?? null,
+              deadline: details?.deadline ?? null,
+              currentLevel: details?.currentLevel ?? null,
+              timeAvailable: details?.timeAvailable ?? null,
+              preferredLearningStyle: details?.preferredLearningStyle ?? null,
             }),
           });
+
           if (!res.ok) {
             const errText = await res.text();
-            console.error('Failed to create learning goal (API):', res.status, errText);
-            get().addToast(`Failed to create goal: ${res.status} ${errText}`, 'error');
+            let message = `Failed to create goal: ${res.status}`;
+            try {
+              const parsed = JSON.parse(errText);
+              message = parsed?.message || parsed?.error || message;
+            } catch {
+              message = errText || message;
+            }
+            get().addToast(message, 'error');
             return null;
           }
           const apiRes = await res.json();

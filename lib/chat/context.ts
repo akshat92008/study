@@ -37,8 +37,8 @@ export async function gatherChatContext({
       );
 
   const [profileResult, intentResult] = await Promise.all([
-    Promise.race([profilePromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1500))]).catch(() => ({ data: null })),
-    Promise.race([intentPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1500))]).catch(() => ({
+    Promise.race([profilePromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1000))]).catch(() => ({ data: null })),
+    Promise.race([intentPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1200))]).catch(() => ({
       intent: { intent: 'GENERAL_CHAT' }, emotion: 'neutral', confidence: 0.5
     }))
   ]) as [any, any];
@@ -62,7 +62,7 @@ export async function gatherChatContext({
 
   const hermesMemoryPromise = (!isSimpleMessage)
     ? import('@/lib/autopsy-v3/hermes-memory-writer')
-        .then(mod => mod.getRelevantHermesReminders({ supabase, userId, goalId: activeGoalId, limit: parseInt(process.env.HERMES_MAX_CONTEXT_MEMORIES || '8', 10) }))
+        .then(mod => mod.getRelevantHermesReminders({ supabase, userId, goalId: activeGoalId, limit: 6 }))
         .catch(err => {
           logger.warn('Hermes memory retrieval failed', err);
           return [];
@@ -125,10 +125,10 @@ export async function gatherChatContext({
       });
 
   const [semanticMemories, episodicMemories, hermesMemories, mindContext, mindRag] = await Promise.all([
-    Promise.race([memoryPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1000))]).catch(() => [] as string[]),
-    Promise.race([episodicMemoryPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1000))]).catch(() => [] as string[]),
-    Promise.race([hermesMemoryPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1000))]).catch(() => []),
-    Promise.race([mindContextPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1000))]).catch(() => ({
+    Promise.race([memoryPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 800))]).catch(() => [] as string[]),
+    Promise.race([episodicMemoryPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 800))]).catch(() => [] as string[]),
+    Promise.race([hermesMemoryPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 800))]).catch(() => []),
+    Promise.race([mindContextPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 5000))]).catch(() => ({
       profile: { name: 'Student', examType: 'General Study', examDate: null, currentLevel: 'intermediate', learningStyle: 'visual', streakDays: 0, timezone: 'UTC', learnerStateVersion: 0 },
       activeGoal: null,
       currentSessionCard: null,
@@ -147,7 +147,7 @@ export async function gatherChatContext({
       studentModel: null,
       outcomeAnalytics: null,
     })),
-    Promise.race([mindRagPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 2000))]).catch(() => ({ ragContext: null, ragPromptBlock: '' }))
+    Promise.race([mindRagPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1500))]).catch(() => ({ ragContext: null, ragPromptBlock: '' }))
   ]) as [string[], string[], any[], any, any];
 
   mindContext.hermesMemories = hermesMemories;

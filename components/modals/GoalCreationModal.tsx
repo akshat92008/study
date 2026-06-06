@@ -39,7 +39,7 @@ function InputField({
 export default function GoalCreationModal({ onClose }: { onClose: () => void }) {
   const router = useRouter();
   const pathname = usePathname();
-  const { createLearningGoal } = useAppStore();
+  const { createLearningGoal, addToast } = useAppStore();
 
   const [newGoalTitle, setNewGoalTitle] = useState('');
   const [subject, setSubject] = useState('');
@@ -53,32 +53,41 @@ export default function GoalCreationModal({ onClose }: { onClose: () => void }) 
 
   const handleAddGoal = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newGoalTitle.trim() || isSubmitting) return;
+    const cleanTitle = newGoalTitle.trim();
+    if (!cleanTitle) {
+      addToast('Please enter a specific learning goal first.', 'error');
+      return;
+    }
+    if (isSubmitting) return;
 
     setIsSubmitting(true);
-    const created = await createLearningGoal(newGoalTitle.trim(), {
-      deadline,
-      subject,
-      targetLevel,
-      currentLevel,
-      timeAvailable: dailyHours,
-      preferredLearningStyle: learningStyle,
-    });
-    setIsSubmitting(false);
+    try {
+      const created = await createLearningGoal(cleanTitle, {
+        deadline,
+        subject,
+        targetLevel,
+        examType: targetLevel,
+        currentLevel,
+        timeAvailable: dailyHours,
+        preferredLearningStyle: learningStyle,
+      });
 
-    if (created) {
-      setNewGoalTitle('');
-      setSubject('');
-      setTargetLevel('');
-      setDeadline('');
-      setCurrentLevel('beginner');
-      setLearningStyle('read_write');
-      setDailyHours(8);
-      onClose();
-      // Automatically redirect to dashboard if not already there
-      if (pathname !== '/dashboard') {
-        router.push('/dashboard');
+      if (created) {
+        setNewGoalTitle('');
+        setSubject('');
+        setTargetLevel('');
+        setDeadline('');
+        setCurrentLevel('beginner');
+        setLearningStyle('read_write');
+        setDailyHours(8);
+        onClose();
+        // Automatically redirect to dashboard if not already there
+        if (pathname !== '/dashboard') {
+          router.push('/dashboard');
+        }
       }
+    } finally {
+      setIsSubmitting(false);
     }
   };
 

@@ -70,11 +70,19 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json().catch(() => ({}));
-    const title = optionalString(body.title);
+    const rawTitle =
+      typeof body?.title === 'string'
+        ? body.title
+        : typeof body?.goal === 'string'
+          ? body.goal
+          : typeof body?.name === 'string'
+            ? body.name
+            : '';
+    const title = rawTitle.trim();
     if (!title) {
       return apiErrorResponse('invalid_goal', {
         status: 400,
-        message: 'Learning goal title is required.',
+        message: 'Please enter a specific learning goal before creating it.',
         requestId,
       });
     }
@@ -103,8 +111,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({
         success: false,
         error: 'needs_clarification',
-        message: result.clarificationQuestion,
-        domain: result.domain,
+        message: result.clarificationQuestion || 'Please make the goal more specific, for example "solutions", "mechanical properties of fluids", or "NEET physics revision".',
+        inferred: result.domain,
         suggestions: result.suggestions,
       }, { status: 409, headers: { 'x-request-id': requestId } });
     }

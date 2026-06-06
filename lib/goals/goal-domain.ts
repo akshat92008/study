@@ -52,6 +52,13 @@ export function inferGoalDomain(rawGoal: string, explicit: GoalDomainInput = {})
   let board: string | null = explicitBoard || null;
   let confidence = explicitSubject || explicitDomain || explicitExam ? 0.82 : 0.2;
 
+  // Generic rejection list
+  const genericTerms = [
+    'study', 'learn', 'prepare', 'revise', 'practice', 'exam', 'test', 'chapter',
+    'subject', 'create goal', 'create a goal', 'goal', 'something', 'improve'
+  ];
+  const isGeneric = genericTerms.some(term => normalizedGoal === term || normalizedGoal === `learn ${term}` || normalizedGoal === `study ${term}`);
+
   if (!exam && /\bneet\b/.test(normalizedGoal)) {
     exam = 'neet';
     domain = domain ?? 'medical_exam';
@@ -86,6 +93,22 @@ export function inferGoalDomain(rawGoal: string, explicit: GoalDomainInput = {})
     ['programming', /\b(coding|programming|software|web development)\b/],
   ] as const;
 
+  // Specific Science Topic Mapping
+  const physicsTopics = /\b(kinematics|thermodynamics|optics|electrostatics|magnetism|fluids?|mechanics|ray optics|wave optics|units|measurement|motion|gravitation|solids?|waves|current|induction|atoms|nuclei|semiconductors)\b/i;
+  const chemistryTopics = /\b(solutions?|electrochemistry|bonding|periodicity|equilibrium|kinetics|thermodynamics|organic|inorganic|hydrocarbons|biomolecules|polymers|atoms|moles|redox|block|coordination)\b/i;
+  const biologyTopics = /\b(cells?|genetics|evolution|reproduction|physiology|diversity|biotechnology|ecology|human health|microbes|plants|animals)\b/i;
+
+  if (!subject) {
+    if (physicsTopics.test(normalizedGoal)) subject = 'physics';
+    else if (chemistryTopics.test(normalizedGoal)) subject = 'chemistry';
+    else if (biologyTopics.test(normalizedGoal)) subject = 'biology';
+    
+    if (subject) {
+      domain = domain ?? (exam === 'neet' ? 'medical_exam' : 'school_science');
+      confidence += 0.45;
+    }
+  }
+
   if (!subject) {
     const scienceMatch = scienceSubjects.find((candidate) => tokens.has(candidate));
     if (scienceMatch) {
@@ -117,11 +140,12 @@ export function inferGoalDomain(rawGoal: string, explicit: GoalDomainInput = {})
     domain = scienceSubjects.includes(subject) ? 'school_science' : null;
   }
 
-  const vague = /^(study|study better|learn|prepare|improve|do better|help me study)$/i.test(normalizedGoal)
-    || normalizedGoal.length < 8
-    || (!subject && !domain && !exam);
+  // A goal is vague if it's too short, is in the generic list, or has no subject/domain/exam identified
+  const vague = isGeneric 
+    || normalizedGoal.length < 3
+    || (!subject && !domain && !exam && normalizedGoal.split(' ').length < 2);
 
-  const needsClarification = vague || confidence < 0.45;
+  const needsClarification = vague || confidence < 0.4;
 
   return {
     rawGoal,
@@ -133,7 +157,7 @@ export function inferGoalDomain(rawGoal: string, explicit: GoalDomainInput = {})
     board,
     confidence: Math.min(0.99, Number(confidence.toFixed(2))),
     needsClarification,
-    clarificationQuestion: needsClarification ? 'What subject, exam, or class should this goal focus on?' : null,
+    clarificationQuestion: needsClarification ? 'What subject, exam, or class should this goal focus on? (e.g. Physics, NEET Biology, or Class 10 Math)' : null,
   };
 }
 

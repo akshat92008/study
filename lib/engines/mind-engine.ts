@@ -59,7 +59,8 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
           goalId: goalId ?? undefined,
         });
         const { formatCitation } = await import('@/lib/rag/citations');
-        ragChunks = ragContext.chunks.slice(0, 5).map((chunk) => ({
+        // Limit to 3 sources for faster response as per CHAT_CONTEXT_LIMITS
+        ragChunks = ragContext.chunks.slice(0, 3).map((chunk) => ({
           content: chunk.text,
           similarity: chunk.score,
           sourceTitle: chunk.materialTitle,
@@ -93,15 +94,15 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       currentSessionCard: learnerState.currentMission,
       commandTasks: learnerState.command.openTasks,
       recentStudySessions: learnerState.recentStudySessions,
-      weakConcepts: learnerState.atlas.weakConcepts.slice(0, 3),
-      recentMistakes: learnerState.autopsy.recentMistakes.slice(0, 3),
+      weakConcepts: learnerState.atlas.weakConcepts.slice(0, 5),
+      recentMistakes: learnerState.autopsy.recentMistakes.slice(0, 5),
       needsReviewCount: learnerState.autopsy.needsReviewCount,
       lastAutopsy: learnerState.autopsy.lastAutopsy,
       recentPracticeStruggles: await getRecentPracticeStruggles(userId, supabase, goalId),
-      struggles: learnerState.autopsy.recentMistakes.slice(0, 3).map(m => ({ chapter: m.chapter, subject: m.subject })),
+      struggles: learnerState.autopsy.recentMistakes.slice(0, 5).map(m => ({ chapter: m.chapter, subject: m.subject })),
       masteryStats: learnerState.atlas.masterySummary,
       overdueCardsCount: learnerState.memory.dueCount,
-      topOverdueCards: learnerState.memory.topDueCards.slice(0, 3),
+      topOverdueCards: learnerState.memory.topDueCards.slice(0, 5),
       emotionalState: learnerState.profile.mindStateSignal,
       recentTopics: learnerState.recentTopics.slice(0, 5),
       seededTopics: learnerState.seededTopics.slice(0, 5),

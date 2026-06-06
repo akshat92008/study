@@ -11,6 +11,7 @@ import { SessionClosingCard } from './SessionClosingCard';
 import { useSessionTimer } from '@/hooks/useSessionTimer';
 import { useRouter } from 'next/navigation';
 import { isAutopsyUploadIntent } from '@/lib/autopsy/upload-intent';
+import { ThinkingIndicator } from './ThinkingIndicator';
 
 const MIND_QUICK_PROMPTS = [
   'What should I do now?',
@@ -42,6 +43,7 @@ export const GlobalChat = memo(function GlobalChat() {
   const [inputMessage, setInputMessage] = useState('');
   const [pendingFile, setPendingFile] = useState<File | null>(null);
   const [isProcessingUpload, setIsProcessingUpload] = useState(false);
+  const [thinkingLabel, setThinkingLabel] = useState('Amaura is thinking');
   const router = useRouter();
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -77,7 +79,7 @@ export const GlobalChat = memo(function GlobalChat() {
 
   useEffect(() => {
     scrollToBottom();
-  }, [chatMessages, streamingText, isAssistantOpen]);
+  }, [chatMessages, streamingText, isAssistantOpen, status]);
 
   // Convert file to base64
   const fileToBase64 = useCallback((file: File): Promise<string> => {
@@ -99,9 +101,27 @@ export const GlobalChat = memo(function GlobalChat() {
   }, []);
 
   const handleSendMessage = useCallback(async (overrideMessage?: string) => {
-    const textToSend = typeof overrideMessage === 'string' ? overrideMessage : inputMessage.trim();
+    let textToSend = typeof overrideMessage === 'string' ? overrideMessage : inputMessage.trim();
     if (!textToSend && !pendingFile) return;
     if (status === 'streaming' || status === 'connecting' || isProcessingUpload) return;
+
+    // Special handling for 'Create a goal' quick action
+    if (textToSend === 'Create a goal') {
+      addChatMessage({
+        role: 'user',
+        content: textToSend,
+        timestamp: new Date().toISOString(),
+      });
+      setTimeout(() => {
+        addChatMessage({
+          role: 'assistant',
+          content: 'What specific learning goal should I create? For example: "mechanical properties of fluids", "solutions", or "NEET physics revision".',
+          timestamp: new Date().toISOString(),
+        });
+      }, 400);
+      setInputMessage('');
+      return;
+    }
 
     let imageBase64: string | null = null;
     let imageMimeType: string | null = null;
@@ -175,6 +195,12 @@ export const GlobalChat = memo(function GlobalChat() {
     setInputMessage('');
     setPendingFile(null);
     resetStatus();
+    setThinkingLabel('Amaura is thinking');
+
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    timers.push(setTimeout(() => setThinkingLabel('Checking your goal context'), 1200));
+    timers.push(setTimeout(() => setThinkingLabel('Building the best answer'), 3000));
+    timers.push(setTimeout(() => setThinkingLabel('Still working — using fallback if needed'), 8000));
 
     const sessionTurnsCount = chatMessages.filter(m => m.role === 'user').length;
 
@@ -254,6 +280,9 @@ export const GlobalChat = memo(function GlobalChat() {
         content,
         timestamp: new Date().toISOString(),
       });
+    } finally {
+      timers.forEach(clearTimeout);
+      setThinkingLabel('Amaura is thinking');
     }
   }, [
     activeGoalId,
@@ -431,10 +460,27 @@ export const GlobalChat = memo(function GlobalChat() {
 
         {/* Live Streaming Message Bubble */}
         {(status === 'streaming' || status === 'connecting') && (
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', padding: '12px 16px' }}>
-            <span className="typing-dot" />
-            <span className="typing-dot" />
-            <span className="typing-dot" />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {status === 'connecting' && (
+              <ThinkingIndicator label={thinkingLabel} />
+            )}
+            {streamingText && (
+               <div style={{
+                 maxWidth: '100%',
+                 background: 'transparent',
+                 border: 'none',
+                 borderLeft: '2px solid rgba(124, 102, 255, 0.3)',
+                 color: 'var(--text-primary)',
+                 fontSize: '14px',
+                 lineHeight: 'var(--lh-relaxed)',
+                 wordBreak: 'break-word',
+                 width: '100%',
+                 padding: '8px 0 8px 16px',
+                 fontFamily: 'var(--font-sans)'
+               }}>
+                <RichMessageRenderer content={streamingText} isStreaming={true} />
+              </div>
+            )}
           </div>
         )}
 
