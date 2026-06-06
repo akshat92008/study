@@ -1,9 +1,6 @@
 import {
-  AtlasAgent,
   AutopsyCascadeAgent,
   ForgettingAgent,
-  MemoryAgent,
-  MissionAgent,
   PatternMemoryAgent,
   PracticePatternAgent,
   SessionCloseAgent,
@@ -59,9 +56,6 @@ export function getAmauraRuntimeMap() {
     ForgettingAgent,
     StagnationAgent,
     PatternMemoryAgent,
-    MissionAgent,
-    MemoryAgent,
-    AtlasAgent,
     BudgetAgent,
   };
 }

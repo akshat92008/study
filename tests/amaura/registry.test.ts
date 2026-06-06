@@ -6,6 +6,7 @@ import {
   getEnabledAmauraAgents,
   isAmauraConsumer,
 } from '@/lib/amaura/agents/registry';
+import { hasAmauraStateVisibleOutcome } from '@/lib/amaura/agents/types';
 
 describe('Amaura native agent registry', () => {
   afterEach(() => {
@@ -35,12 +36,9 @@ describe('Amaura native agent registry', () => {
 
   it('exposes the full native runtime map while honoring the runtime kill switch', () => {
     expect(Object.keys(getAmauraRuntimeMap()).sort()).toEqual([
-      'AtlasAgent',
       'AutopsyCascadeAgent',
       'BudgetAgent',
       'ForgettingAgent',
-      'MemoryAgent',
-      'MissionAgent',
       'PatternMemoryAgent',
       'PracticePatternAgent',
       'SessionCloseAgent',
@@ -50,5 +48,50 @@ describe('Amaura native agent registry', () => {
     expect(getEnabledAmauraAgents().map((agent) => agent.name)).toContain('PracticePatternAgent');
     vi.stubEnv('ENABLE_AGENT_RUNTIME', 'false');
     expect(getEnabledAmauraAgents()).toEqual([]);
+  });
+
+  it('does not register noop placeholder agents as active Amaura agents', () => {
+    const agents = getEnabledAmauraAgents();
+
+    expect(agents.map((agent) => agent.name).sort()).toEqual([
+      'AutopsyCascadeAgent',
+      'ForgettingAgent',
+      'PatternMemoryAgent',
+      'PracticePatternAgent',
+      'SessionCloseAgent',
+      'StagnationAgent',
+    ].sort());
+
+    for (const agent of agents) {
+      expect(agent.handledEvents.length, `${agent.name} handles events`).toBeGreaterThan(0);
+      expect(agent.stateVisibleEffects.length, `${agent.name} declares state-visible effects`).toBeGreaterThan(0);
+      expect(agent.stateVisibleEffects, `${agent.name} cannot rely only on run logging`).not.toEqual(['admin_agent_run']);
+      expect(String(agent.run), `${agent.name} must not be the old placeholder implementation`)
+        .not.toContain('registered but has no autonomous write path');
+    }
+  });
+
+  it('treats zero-outcome non-skipped results as not complete', () => {
+    expect(hasAmauraStateVisibleOutcome({
+      actionsTaken: 0,
+      notificationsCreated: 0,
+      cardsCreated: 0,
+      conceptsUpdated: 0,
+      missionInvalidated: false,
+      skipped: false,
+      skipReason: null,
+      aiCallsUsed: 0,
+    })).toBe(false);
+
+    expect(hasAmauraStateVisibleOutcome({
+      actionsTaken: 1,
+      notificationsCreated: 0,
+      cardsCreated: 0,
+      conceptsUpdated: 0,
+      missionInvalidated: false,
+      skipped: false,
+      skipReason: null,
+      aiCallsUsed: 0,
+    })).toBe(true);
   });
 });

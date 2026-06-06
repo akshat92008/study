@@ -3,7 +3,12 @@ import { logger } from '@/lib/utils/logger';
 import { BudgetAgent, agentBackgroundJobsEnabled, agentRuntimeEnabled } from './budget';
 import { getAmauraAgentForConsumer } from './registry';
 import { hasCompletedAmauraRun } from './idempotency';
-import type { AmauraAgentContext, AmauraAgentDefinition, AmauraAgentResult } from './types';
+import {
+  hasAmauraStateVisibleOutcome,
+  type AmauraAgentContext,
+  type AmauraAgentDefinition,
+  type AmauraAgentResult,
+} from './types';
 
 type ConsumerResult = {
   status: 'HANDLED' | 'SKIPPED_INTENTIONALLY' | 'SKIPPED_STALE_ROUTE' | 'RETRYABLE_FAILURE' | 'PERMANENT_FAILURE';
@@ -85,6 +90,9 @@ export async function runAmauraConsumerForLease(
     const parsed = agent.outputSchema.safeParse(rawResult);
     if (!parsed.success) {
       throw new Error(`Invalid ${agent.name} output: ${parsed.error.message}`);
+    }
+    if (!parsed.data.skipped && !hasAmauraStateVisibleOutcome(parsed.data as AmauraAgentResult)) {
+      throw new Error(`${agent.name} completed without a state-visible outcome.`);
     }
     await finishAmauraRun(runId, parsed.data as AmauraAgentResult, options.client);
     return parsed.data.skipped

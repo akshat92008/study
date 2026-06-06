@@ -7,9 +7,6 @@ export const AmauraAgentNameSchema = z.enum([
   'ForgettingAgent',
   'StagnationAgent',
   'PatternMemoryAgent',
-  'MissionAgent',
-  'MemoryAgent',
-  'AtlasAgent',
 ]);
 
 export type AmauraAgentName = z.infer<typeof AmauraAgentNameSchema>;
@@ -23,6 +20,19 @@ export const AmauraNotificationPrioritySchema = z.enum([
 ]);
 
 export type AmauraNotificationPriority = z.infer<typeof AmauraNotificationPrioritySchema>;
+
+export const AmauraStateVisibleEffectSchema = z.enum([
+  'goal',
+  'task',
+  'observation',
+  'memory',
+  'session_card',
+  'notification',
+  'approval',
+  'admin_agent_run',
+]);
+
+export type AmauraStateVisibleEffect = z.infer<typeof AmauraStateVisibleEffectSchema>;
 
 export const AmauraAgentResultSchema = z.object({
   actionsTaken: z.number().int().nonnegative().default(0),
@@ -84,6 +94,7 @@ export type AmauraAgentContext = {
 export type AmauraAgentDefinition<TInput = unknown, TOutput = AmauraAgentResult> = {
   name: AmauraAgentName;
   handledEvents: readonly string[];
+  stateVisibleEffects: readonly AmauraStateVisibleEffect[];
   inputSchema: z.ZodTypeAny;
   outputSchema: z.ZodTypeAny;
   getDedupKey: (context: AmauraAgentContext, payload: TInput) => string;
@@ -117,4 +128,12 @@ export function skippedAmauraResult(skipReason: string): AmauraAgentResult {
   });
 }
 
-export const AnyPayloadSchema = z.record(z.unknown()).default({});
+export function hasAmauraStateVisibleOutcome(result: AmauraAgentResult): boolean {
+  return (
+    result.actionsTaken > 0 ||
+    result.notificationsCreated > 0 ||
+    result.cardsCreated > 0 ||
+    result.conceptsUpdated > 0 ||
+    result.missionInvalidated
+  );
+}

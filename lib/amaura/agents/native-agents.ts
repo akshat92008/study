@@ -27,11 +27,9 @@ import {
 } from './repositories';
 import {
   AmauraAgentResultSchema,
-  AnyPayloadSchema,
   emptyAmauraResult,
   skippedAmauraResult,
   type AmauraAgentDefinition,
-  type AmauraAgentName,
 } from './types';
 
 const PracticePayloadSchema = z.object({
@@ -94,6 +92,7 @@ type WeakConcept = {
 export const PracticePatternAgent: AmauraAgentDefinition<z.infer<typeof PracticePayloadSchema>> = {
   name: 'PracticePatternAgent',
   handledEvents: ['PRACTICE_ATTEMPT_SUBMITTED', 'PRACTICE_ATTEMPT_RECORDED'],
+  stateVisibleEffects: ['memory', 'session_card', 'notification'],
   inputSchema: PracticePayloadSchema,
   outputSchema: AmauraAgentResultSchema,
   getDedupKey: (context, payload) => eventDedupKey('PracticePatternAgent', context, payload),
@@ -216,6 +215,7 @@ export const PracticePatternAgent: AmauraAgentDefinition<z.infer<typeof Practice
 export const SessionCloseAgent: AmauraAgentDefinition<z.infer<typeof StudySessionPayloadSchema>> = {
   name: 'SessionCloseAgent',
   handledEvents: ['STUDY_SESSION_COMPLETED'],
+  stateVisibleEffects: ['memory', 'session_card', 'notification'],
   inputSchema: StudySessionPayloadSchema,
   outputSchema: AmauraAgentResultSchema,
   getDedupKey: (context, payload) => eventDedupKey('SessionCloseAgent', context, payload),
@@ -290,6 +290,7 @@ export const SessionCloseAgent: AmauraAgentDefinition<z.infer<typeof StudySessio
 export const AutopsyCascadeAgent: AmauraAgentDefinition<z.infer<typeof AutopsyReadyPayloadSchema>> = {
   name: 'AutopsyCascadeAgent',
   handledEvents: ['AUTOPSY_V3_REPORT_READY'],
+  stateVisibleEffects: ['task', 'memory', 'session_card', 'notification'],
   inputSchema: AutopsyReadyPayloadSchema,
   outputSchema: AmauraAgentResultSchema,
   getDedupKey: (context, payload) => eventDedupKey('AutopsyCascadeAgent', context, payload),
@@ -403,6 +404,7 @@ export const AutopsyCascadeAgent: AmauraAgentDefinition<z.infer<typeof AutopsyRe
 export const ForgettingAgent: AmauraAgentDefinition<z.infer<typeof DailyScanPayloadSchema>> = {
   name: 'ForgettingAgent',
   handledEvents: ['STUDENT_MODEL_SYNC_REQUESTED', 'FORGETTING_SCAN_REQUESTED'],
+  stateVisibleEffects: ['task', 'session_card', 'notification'],
   inputSchema: DailyScanPayloadSchema,
   outputSchema: AmauraAgentResultSchema,
   getDedupKey: (context, payload) => eventDedupKey('ForgettingAgent', context, payload),
@@ -472,6 +474,7 @@ export const ForgettingAgent: AmauraAgentDefinition<z.infer<typeof DailyScanPayl
 export const StagnationAgent: AmauraAgentDefinition<z.infer<typeof DailyScanPayloadSchema>> = {
   name: 'StagnationAgent',
   handledEvents: ['STUDENT_MODEL_SYNC_REQUESTED', 'STAGNATION_SCAN_REQUESTED'],
+  stateVisibleEffects: ['task', 'session_card', 'notification'],
   inputSchema: DailyScanPayloadSchema,
   outputSchema: AmauraAgentResultSchema,
   getDedupKey: (context, payload) => eventDedupKey('StagnationAgent', context, payload),
@@ -532,6 +535,7 @@ export const StagnationAgent: AmauraAgentDefinition<z.infer<typeof DailyScanPayl
 export const PatternMemoryAgent: AmauraAgentDefinition<z.infer<typeof DailyScanPayloadSchema>> = {
   name: 'PatternMemoryAgent',
   handledEvents: ['STUDENT_MODEL_SYNC_REQUESTED', 'PATTERN_MEMORY_SCAN_REQUESTED'],
+  stateVisibleEffects: ['memory', 'task', 'session_card', 'notification'],
   inputSchema: DailyScanPayloadSchema,
   outputSchema: AmauraAgentResultSchema,
   getDedupKey: (context, payload) => eventDedupKey('PatternMemoryAgent', context, payload),
@@ -614,10 +618,6 @@ export const PatternMemoryAgent: AmauraAgentDefinition<z.infer<typeof DailyScanP
   },
 };
 
-export const MissionAgent = noopAgent('MissionAgent', ['PLANNER_REPLAN_REQUESTED']);
-export const MemoryAgent = noopAgent('MemoryAgent', ['MEMORY_CARD_CREATE_REQUESTED']);
-export const AtlasAgent = noopAgent('AtlasAgent', ['ATLAS_MASTERY_UPDATE_REQUESTED']);
-
 export const NATIVE_AMAURA_AGENTS = [
   PracticePatternAgent,
   AutopsyCascadeAgent,
@@ -625,27 +625,7 @@ export const NATIVE_AMAURA_AGENTS = [
   ForgettingAgent,
   StagnationAgent,
   PatternMemoryAgent,
-  MissionAgent,
-  MemoryAgent,
-  AtlasAgent,
 ] as const;
-
-function noopAgent(name: AmauraAgentName, handledEvents: string[]): AmauraAgentDefinition<Record<string, unknown>> {
-  return {
-    name,
-    handledEvents,
-    inputSchema: AnyPayloadSchema,
-    outputSchema: AmauraAgentResultSchema,
-    getDedupKey: (context, payload) => eventDedupKey(name, context, payload),
-    budget: { maxAiCalls: 0, model: 'none', requireBudget: false },
-    idempotency: { scope: 'event' },
-    notification: { priority: 'silent' },
-    retry: { maxRetries: 0, retryable: false },
-    async run() {
-      return skippedAmauraResult(`${name} is registered but has no autonomous write path for this event.`);
-    },
-  };
-}
 
 function detectPracticeWeakness(items: PracticeEvidence[]) {
   const groups = new Map<string, {
