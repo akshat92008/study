@@ -47,6 +47,11 @@ async function getLaunchMetrics() {
     oldestPending,
     criticalErrors,
     topUsage,
+    pendingAmauraLocks,
+    completedAmauraRuns,
+    failedAmauraRuns,
+    skippedAmauraRuns,
+    lastAmauraFailures,
   ] = await Promise.all([
     countRows('profiles'),
     countRows('profiles', (q) => q.eq('beta_access', true)),
@@ -70,6 +75,11 @@ async function getLaunchMetrics() {
       .select('user_id,amount')
       .gte('created_at', today)
       .limit(500),
+    countRows('consumer_locks', (q) => q.eq('status', 'PENDING').like('consumer_name', 'amaura_%')),
+    countRows('amaura_agent_runs', (q) => q.eq('status', 'completed')),
+    countRows('amaura_agent_runs', (q) => q.eq('status', 'failed')),
+    countRows('amaura_agent_runs', (q) => q.eq('status', 'skipped')),
+    supabase.from('amaura_agent_runs').select('*').eq('status', 'failed').order('created_at', { ascending: false }).limit(20),
   ]);
 
   const rows = usageToday.data ?? [];
@@ -115,6 +125,14 @@ async function getLaunchMetrics() {
       : 0,
     criticalErrors,
     topUsers: Array.from(topUsers.entries()).sort((a, b) => b[1] - a[1]).slice(0, 10),
+    amauraMetrics: {
+      pendingLocks: pendingAmauraLocks,
+      completedRuns: completedAmauraRuns,
+      failedRuns: failedAmauraRuns,
+      skippedRuns: skippedAmauraRuns,
+      dailyAiCalls: sumFeature('worker_ai_call'),
+      lastFailures: lastAmauraFailures.data ?? [],
+    },
   };
 }
 
@@ -174,13 +192,38 @@ export default async function LaunchDashboardPage() {
       </section>
 
       <section style={{ border: '1px solid #d6dce5', borderRadius: 8, padding: 16, background: '#fff', marginBottom: 28 }}>
+        <h2 style={{ fontSize: 18, marginTop: 0 }}>Amaura Agent Runtime</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12 }}>
+          <Metric label="Pending Locks" value={metrics.amauraMetrics.pendingLocks} />
+          <Metric label="Completed Runs" value={metrics.amauraMetrics.completedRuns} />
+          <Metric label="Failed Runs" value={metrics.amauraMetrics.failedRuns} />
+          <Metric label="Skipped Runs" value={metrics.amauraMetrics.skippedRuns} />
+          <Metric label="Daily AI Calls" value={metrics.amauraMetrics.dailyAiCalls} />
+        </div>
+        {metrics.amauraMetrics.lastFailures.length > 0 && (
+          <div style={{ marginTop: 20 }}>
+            <h3 style={{ fontSize: 14, color: '#526071', marginBottom: 8 }}>Last {metrics.amauraMetrics.lastFailures.length} Failures</h3>
+            <ul style={{ margin: 0, paddingLeft: 22, fontSize: 13, color: '#334155' }}>
+              {metrics.amauraMetrics.lastFailures.map((failure: any) => (
+                <li key={failure.id} style={{ marginBottom: 4 }}>
+                  <strong>{failure.agent_name}</strong> - {new Date(failure.created_at).toLocaleString()}
+                  <br />
+                  <span style={{ color: '#ef4444' }}>{failure.error ?? 'Unknown error'}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </section>
+
+      <section style={{ border: '1px solid #d6dce5', borderRadius: 8, padding: 16, background: '#fff', marginBottom: 28 }}>
         <h2 style={{ fontSize: 18, marginTop: 0 }}>Kill Switches</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 8, color: '#334155' }}>
           <div>AI paused: {flags.aiGlobalKillSwitch ? 'yes' : 'no'}</div>
           <div>RAG uploads: {flags.ragUploadsEnabled ? 'enabled' : 'paused'}</div>
           <div>RAG queries: {flags.ragQueriesEnabled ? 'enabled' : 'paused'}</div>
           <div>Autopsy reports: {flags.autopsyReportsEnabled ? 'enabled' : 'paused'}</div>
-          <div>Memory writes: {flags.hermesWritesEnabled ? 'enabled' : 'paused'}</div>
+          <div>Amaura writes: {flags.hermesWritesEnabled ? 'enabled' : 'paused'}</div>
           <div>Worker AI: {flags.workerAiEnabled ? 'enabled' : 'off'}</div>
         </div>
       </section>

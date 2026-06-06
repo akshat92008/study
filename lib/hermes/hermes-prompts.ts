@@ -8,7 +8,7 @@
 //   - No motivational fluff
 //   - Never reveals to user that Hermes exists
 
-export const HERMES_MISTAKE_SYSTEM_PROMPT = `You are Hermes, an internal learning-reasoning worker for Cognition OS. You do not talk to users. You produce strict JSON for the application.
+export const HERMES_MISTAKE_SYSTEM_PROMPT = `You are Amaura, an internal learning-reasoning worker for Cognition OS. You do not talk to users. You produce strict JSON for the application.
 
 Your job:
 1. Diagnose WHY the learner chose the wrong answer (their reasoning failure, not just the correct answer).
@@ -72,7 +72,7 @@ Return JSON with this exact structure:
 }`;
 }
 
-export const HERMES_SOURCE_SYSTEM_PROMPT = `You are Hermes, an internal learning-reasoning worker. You process study materials and return structured learning metadata as strict JSON. No markdown. No explanation.`;
+export const HERMES_SOURCE_SYSTEM_PROMPT = `You are Amaura, an internal learning-reasoning worker. You process study materials and return structured learning metadata as strict JSON. No markdown. No explanation.`;
 
 export function buildSourceUserPrompt(params: {
   title: string;
@@ -90,7 +90,7 @@ ${content}
 Return JSON with: sourceSummary, extractedConcepts (subject/chapter/topic/importance), suggestedCards (front/back/type), suggestedPracticePrompts, nextAction (label/rationale/estimatedMinutes).`;
 }
 
-export const HERMES_TRACE_SYSTEM_PROMPT = `You are Hermes, an internal learning-reasoning worker. Analyze learning patterns and return a cognitive trace as strict JSON. No markdown. No explanation.`;
+export const HERMES_TRACE_SYSTEM_PROMPT = `You are Amaura, an internal learning-reasoning worker. Analyze learning patterns and return a cognitive trace as strict JSON. No markdown. No explanation.`;
 
 export function buildTraceUserPrompt(params: {
   goalTitle: string;
@@ -113,7 +113,7 @@ Weak concepts: ${params.weakConceptsCount}
 Return JSON with cognitiveTrace (repeatedWeaknesses, avoidanceSignals, forgettingRisks, improvementSignals) and recommendations (type/label/rationale).`;
 }
 
-export const HERMES_NEXT_ACTION_SYSTEM_PROMPT = `You are Hermes, an internal learning-reasoning worker. Return one concrete next action and up to 3 microtasks as strict JSON. No markdown.`;
+export const HERMES_NEXT_ACTION_SYSTEM_PROMPT = `You are Amaura, an internal learning-reasoning worker. Return one concrete next action and up to 3 microtasks as strict JSON. No markdown.`;
 
 export function buildNextActionUserPrompt(params: {
   goalTitle: string;

@@ -329,8 +329,14 @@ export class EventWorkerService {
       agentActionsSkipped: 0,
       agentActionsFailed: 0,
     };
+    
     try {
-      agentCounts = await this.runCheapAgenticCycleForLease(lease);
+      // Amaura consumers run on the native Amaura runtime and must NOT be
+      // mixed with the legacy cheap rule-agent cycle. Only non-Amaura legacy
+      // consumers may run the cheap cycle.
+      if (!isAmauraConsumer(String(lease.consumer_name))) {
+        agentCounts = await this.runCheapAgenticCycleForLease(lease);
+      }
 
       await withCorrelationId(traceId, async () => {
         result = await runAgenticConsumer(lease, () => this.routeToConsumer(lease));

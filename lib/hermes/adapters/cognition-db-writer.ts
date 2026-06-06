@@ -9,6 +9,8 @@
 // - Never allows agents to write directly to DB
 //
 // Supabase remains the source of truth. Hermes only computes.
+// Note: Legacy internal table names (like hermes_learning_memories) are kept for data integrity
+// and production continuity, but the system is branded as Amaura.
 
 import type { SupabaseClient } from '@supabase/supabase-js';
 import type { HermesMistakeInput, HermesMistakeResult, WriteMistakeResultOutput, HermesRevisionResult, HermesTraceResult, HermesNextActionResult } from '../hermes-types';

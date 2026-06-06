@@ -56,7 +56,7 @@ export default async function AccessPage() {
         <UsageRow label="Autopsy reports" used={used('autopsy_report')} limit={limits.dailyAutopsyReports} />
         <UsageRow label="RAG uploads" used={used('rag_upload') + used('material_upload')} limit={limits.dailyRagUploads} />
         <UsageRow label="Material queries" used={used('material_query')} limit={limits.dailyMaterialQueries} />
-        <UsageRow label="Memory writes" used={used('hermes_write')} limit={limits.dailyHermesWrites} />
+        <UsageRow label="Amaura writes" used={used('hermes_write')} limit={limits.dailyHermesWrites} />
         <UsageRow label="Revision generations" used={used('revision_generation')} limit={limits.dailyRevisionGenerations} />
       </section>
 

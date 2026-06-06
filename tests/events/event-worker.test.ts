@@ -1,10 +1,17 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { EventWorkerService } from '@/lib/events/worker';
+import { AMAURA_CONSUMERS } from '@/lib/amaura/events/event-matrix';
 import * as serverAdmin from '@/lib/supabase/admin';
 import * as eventRunner from '@/lib/agents/event-runner';
 
 vi.mock('@/lib/supabase/admin', () => ({
   createAdminClient: vi.fn(),
+}));
+vi.mock('@/lib/agents/orchestrator', () => ({
+  runCheapAgenticCycle: vi.fn().mockResolvedValue({ applied: 0, proposed: 0, skipped: 0, failed: 0 }),
+}));
+vi.mock('@/lib/agents/event-runner', () => ({
+  runAgenticConsumer: vi.fn(),
 }));
 vi.mock('@/lib/events/orchestrator', async (importOriginal) => {
   const actual = await importOriginal<typeof import('@/lib/events/orchestrator')>();
@@ -13,9 +20,6 @@ vi.mock('@/lib/events/orchestrator', async (importOriginal) => {
     getConsumersForEvent: vi.fn().mockReturnValue(['test-consumer']),
   };
 });
-vi.mock('@/lib/agents/event-runner', () => ({
-  runAgenticConsumer: vi.fn(),
-}));
 
 describe('Event Worker Tests', () => {
   const rpcMock = vi.fn();
@@ -56,8 +60,70 @@ describe('Event Worker Tests', () => {
       }
       return { error: null };
     });
-    
+
     const result = await EventWorkerService.processBatch(1, 1, 1000, Date.now());
     expect(result.failed + result.skipped).toBe(1);
+  });
+
+  it('does NOT run cheap agentic cycle for Amaura consumer leases', async () => {
+    const runAgenticConsumer = vi.mocked(eventRunner.runAgenticConsumer);
+    const runCheapAgenticCycle = await import('@/lib/agents/orchestrator').then(m => m.runCheapAgenticCycle);
+
+    runAgenticConsumer.mockResolvedValue({ status: 'HANDLED' });
+    vi.mocked(runCheapAgenticCycle).mockResolvedValue({ applied: 1, proposed: 0, skipped: 0, failed: 0 });
+
+    const amauraConsumer = AMAURA_CONSUMERS[0]; // e.g. 'amaura_goal_decomposer'
+    rpcMock.mockImplementation(async (method: string) => {
+      if (method === 'acquire_event_leases') {
+        return {
+          data: [{
+            lock_id: 'lock-3',
+            event_id: 'event-3',
+            event_type: 'STUDY_SESSION_COMPLETED',
+            event_payload: {},
+            consumer_name: amauraConsumer,
+            user_id: '00000000-0000-0000-0000-000000000001',
+          }],
+          error: null,
+        };
+      }
+      return { error: null };
+    });
+
+    await EventWorkerService.processBatch(1, 1, 1000, Date.now());
+
+    // The native Amaura runtime handles it; cheap rule-agent cycle must NOT be called
+    expect(runAgenticConsumer).toHaveBeenCalled();
+    expect(vi.mocked(runCheapAgenticCycle)).not.toHaveBeenCalled();
+  });
+
+  it('still runs cheap agentic cycle for non-Amaura legacy consumer leases', async () => {
+    const runAgenticConsumer = vi.mocked(eventRunner.runAgenticConsumer);
+    const runCheapAgenticCycle = await import('@/lib/agents/orchestrator').then(m => m.runCheapAgenticCycle);
+
+    runAgenticConsumer.mockResolvedValue({ status: 'HANDLED' });
+    vi.mocked(runCheapAgenticCycle).mockResolvedValue({ applied: 1, proposed: 0, skipped: 0, failed: 0 });
+
+    rpcMock.mockImplementation(async (method: string) => {
+      if (method === 'acquire_event_leases') {
+        return {
+          data: [{
+            lock_id: 'lock-4',
+            event_id: 'event-4',
+            event_type: 'PRACTICE_ATTEMPT_RECORDED',
+            event_payload: {},
+            consumer_name: 'test-consumer',
+            user_id: '00000000-0000-0000-0000-000000000001',
+          }],
+          error: null,
+        };
+      }
+      return { error: null };
+    });
+
+    await EventWorkerService.processBatch(1, 1, 1000, Date.now());
+
+    expect(runAgenticConsumer).toHaveBeenCalled();
+    expect(vi.mocked(runCheapAgenticCycle)).toHaveBeenCalled();
   });
 });

@@ -22,6 +22,10 @@ function sourceRef(assessmentId?: string | null, pattern?: RepeatedPattern) {
   };
 }
 
+/**
+ * Write learning memory candidates to the hermes_learning_memories table.
+ * Note: hermes_learning_memories is legacy internal memory storage, not the external Nous Hermes Agent.
+ */
 export async function writeHermesMemories(input: WriteHermesMemoriesInput): Promise<HermesLearningMemoryRecord[]> {
   const maxWrites = Math.max(0, input.maxWrites ?? 10);
   if (maxWrites === 0) return [];

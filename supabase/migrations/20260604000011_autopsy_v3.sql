@@ -84,6 +84,8 @@ create table if not exists public.mistake_diagnoses (
   updated_at timestamptz not null default now()
 );
 
+-- hermes_learning_memories: Legacy internal memory storage. 
+-- Note: This is NOT the external Nous Hermes Agent.
 create table if not exists public.hermes_learning_memories (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
