@@ -42,7 +42,6 @@ ALTER TABLE public.session_cards
   ADD COLUMN IF NOT EXISTS mistake_count      INT DEFAULT 0,
   ADD COLUMN IF NOT EXISTS weak_concept_count INT DEFAULT 0,
   ADD COLUMN IF NOT EXISTS has_active_goal    BOOLEAN DEFAULT FALSE;
-
 -- ---------------------------------------------------------------------------
 -- Step 2: camelCase aliases used by the JS ORM layer
 -- (The existing schema already has "dayNumber", "streakDays" etc. in quotes;
@@ -59,7 +58,6 @@ ALTER TABLE public.session_cards
   ADD COLUMN IF NOT EXISTS "mistakeCount"      INT DEFAULT 0,
   ADD COLUMN IF NOT EXISTS "weakConceptCount"  INT DEFAULT 0,
   ADD COLUMN IF NOT EXISTS "hasActiveGoal"     BOOLEAN DEFAULT FALSE;
-
 -- ---------------------------------------------------------------------------
 -- Step 3: Back-fill existing rows with sensible defaults
 -- ---------------------------------------------------------------------------
@@ -74,18 +72,15 @@ SET
   is_completed       = COALESCE(is_completed, FALSE),
   "isCompleted"      = COALESCE("isCompleted", FALSE)
 WHERE task_type IS NULL OR "taskType" IS NULL;
-
 -- ---------------------------------------------------------------------------
 -- Step 4: Index for fast completed-card lookups
 -- ---------------------------------------------------------------------------
 
 CREATE INDEX IF NOT EXISTS idx_session_cards_completed
   ON public.session_cards(user_id, date, "isCompleted");
-
 CREATE INDEX IF NOT EXISTS idx_session_cards_concept
   ON public.session_cards("targetConceptId")
   WHERE "targetConceptId" IS NOT NULL;
-
 -- ---------------------------------------------------------------------------
 -- Step 5: RPC — complete_daily_session_card
 -- Marks the session card as completed AND bumps learner_state_version atomically.
@@ -128,10 +123,8 @@ BEGIN
   );
 END;
 $$ LANGUAGE plpgsql VOLATILE SECURITY DEFINER SET search_path = public;
-
 REVOKE EXECUTE ON FUNCTION public.complete_daily_session_card(UUID, DATE) FROM PUBLIC;
 GRANT  EXECUTE ON FUNCTION public.complete_daily_session_card(UUID, DATE) TO authenticated;
-
 -- ---------------------------------------------------------------------------
 -- Step 6: RPC — invalidate_session_card
 -- Deletes today + tomorrow session_cards and bumps version.
@@ -168,10 +161,8 @@ BEGIN
   );
 END;
 $$ LANGUAGE plpgsql VOLATILE SECURITY DEFINER SET search_path = public;
-
 REVOKE EXECUTE ON FUNCTION public.invalidate_session_card(UUID, TEXT) FROM PUBLIC;
 GRANT  EXECUTE ON FUNCTION public.invalidate_session_card(UUID, TEXT) TO authenticated;
-
 -- ---------------------------------------------------------------------------
 -- Step 7: Ensure unique constraint on (user_id, date) — defensive
 -- (Already added in 20260529000004 but may be missing on older DBs)

@@ -1,10 +1,8 @@
 -- Add new statuses to study_materials
 alter table public.study_materials drop constraint if exists study_materials_status_check;
-
 alter table public.study_materials
   add constraint study_materials_status_check
   check (status in ('uploaded', 'queued', 'processing', 'parsed', 'embedding', 'ready', 'failed', 'needs_user_action', 'archived'));
-
 -- Add tracking columns
 alter table public.study_materials
   add column if not exists queued_at timestamptz,

@@ -1,7 +1,6 @@
 -- Source-grounded study material RAG for MIND.
 
 create extension if not exists vector;
-
 create table if not exists public.study_materials (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -25,7 +24,6 @@ create table if not exists public.study_materials (
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
-
 create table if not exists public.study_material_chunks (
   id uuid primary key default gen_random_uuid(),
   material_id uuid not null references public.study_materials(id) on delete cascade,
@@ -43,7 +41,6 @@ create table if not exists public.study_material_chunks (
   fts_vector tsvector generated always as (to_tsvector('english', coalesce(text, ''))) stored,
   created_at timestamptz not null default now()
 );
-
 create table if not exists public.rag_query_logs (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -56,14 +53,12 @@ create table if not exists public.rag_query_logs (
   grounded boolean not null default false,
   created_at timestamptz not null default now()
 );
-
 create index if not exists idx_study_materials_user on public.study_materials(user_id);
 create index if not exists idx_study_materials_user_status on public.study_materials(user_id, status);
 create index if not exists idx_study_materials_subject_chapter on public.study_materials(user_id, subject, chapter);
 create unique index if not exists idx_study_materials_user_content_hash_unique
   on public.study_materials(user_id, content_hash)
   where content_hash is not null and status <> 'archived';
-
 create index if not exists idx_study_material_chunks_user_material on public.study_material_chunks(user_id, material_id);
 create index if not exists idx_study_material_chunks_material_index on public.study_material_chunks(material_id, chunk_index);
 create unique index if not exists idx_study_material_chunks_material_hash_unique
@@ -73,47 +68,38 @@ create index if not exists idx_study_material_chunks_fts on public.study_materia
 create index if not exists idx_study_material_chunks_embedding_hnsw
   on public.study_material_chunks using hnsw (embedding vector_cosine_ops)
   where embedding is not null;
-
 alter table public.study_materials enable row level security;
 alter table public.study_material_chunks enable row level security;
 alter table public.rag_query_logs enable row level security;
-
 drop policy if exists "study_materials_select_own" on public.study_materials;
 create policy "study_materials_select_own"
 on public.study_materials for select
 using (auth.uid() = user_id);
-
 drop policy if exists "study_materials_insert_own" on public.study_materials;
 create policy "study_materials_insert_own"
 on public.study_materials for insert
 with check (auth.uid() = user_id);
-
 drop policy if exists "study_materials_update_own" on public.study_materials;
 create policy "study_materials_update_own"
 on public.study_materials for update
 using (auth.uid() = user_id)
 with check (auth.uid() = user_id);
-
 drop policy if exists "study_materials_delete_own" on public.study_materials;
 create policy "study_materials_delete_own"
 on public.study_materials for delete
 using (auth.uid() = user_id);
-
 drop policy if exists "study_material_chunks_select_own" on public.study_material_chunks;
 create policy "study_material_chunks_select_own"
 on public.study_material_chunks for select
 using (auth.uid() = user_id);
-
 drop policy if exists "rag_query_logs_select_own" on public.rag_query_logs;
 create policy "rag_query_logs_select_own"
 on public.rag_query_logs for select
 using (auth.uid() = user_id);
-
 drop policy if exists "rag_query_logs_insert_own" on public.rag_query_logs;
 create policy "rag_query_logs_insert_own"
 on public.rag_query_logs for insert
 with check (auth.uid() = user_id);
-
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
 values (
   'study-materials',
@@ -126,7 +112,6 @@ on conflict (id) do update set
   public = excluded.public,
   file_size_limit = excluded.file_size_limit,
   allowed_mime_types = excluded.allowed_mime_types;
-
 drop policy if exists "study_material_storage_select_own" on storage.objects;
 create policy "study_material_storage_select_own"
 on storage.objects for select
@@ -134,7 +119,6 @@ using (
   bucket_id = 'study-materials'
   and auth.uid()::text = split_part(name, '/', 1)
 );
-
 drop policy if exists "study_material_storage_insert_own" on storage.objects;
 create policy "study_material_storage_insert_own"
 on storage.objects for insert
@@ -142,7 +126,6 @@ with check (
   bucket_id = 'study-materials'
   and auth.uid()::text = split_part(name, '/', 1)
 );
-
 drop policy if exists "study_material_storage_delete_own" on storage.objects;
 create policy "study_material_storage_delete_own"
 on storage.objects for delete
@@ -150,21 +133,17 @@ using (
   bucket_id = 'study-materials'
   and auth.uid()::text = split_part(name, '/', 1)
 );
-
 alter table public.practice_items
   add column if not exists subject text null,
   add column if not exists chapter text null,
   add column if not exists topic text null,
   add column if not exists source_material_id uuid null references public.study_materials(id) on delete set null,
   add column if not exists source_chunk_ids uuid[] null;
-
 alter table public.practice_attempts drop constraint if exists practice_attempts_confidence_check;
 alter table public.practice_attempts
   add constraint practice_attempts_confidence_check
   check (confidence in ('easy', 'medium', 'hard', 'forgot', 'again', 'knew') or confidence is null);
-
 create index if not exists idx_practice_items_source_material on public.practice_items(source_material_id);
-
 drop function if exists public.match_study_material_chunks(vector(768), uuid, int, uuid[], text, text, float);
 create or replace function public.match_study_material_chunks(
   query_embedding vector(768),
@@ -222,7 +201,6 @@ begin
   limit least(greatest(match_count, 1), 8);
 end;
 $$;
-
 revoke execute on function public.match_study_material_chunks(vector(768), uuid, int, uuid[], text, text, float)
 from public, anon;
 grant execute on function public.match_study_material_chunks(vector(768), uuid, int, uuid[], text, text, float)

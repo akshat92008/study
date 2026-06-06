@@ -10,9 +10,7 @@ CREATE TABLE IF NOT EXISTS semantic_cache (
     last_accessed_at timestamp with time zone DEFAULT now(),
     access_count integer DEFAULT 0
 );
-
 CREATE INDEX IF NOT EXISTS semantic_cache_embedding_idx ON semantic_cache USING hnsw (embedding vector_cosine_ops);
-
 CREATE OR REPLACE FUNCTION match_semantic_cache(
   query_embedding vector(768),
   match_threshold float,
@@ -37,17 +35,14 @@ BEGIN
   LIMIT match_count;
 END;
 $$;
-
 -- Enable Row Level Security
 ALTER TABLE semantic_cache ENABLE ROW LEVEL SECURITY;
-
 -- Deny all direct access to authenticated users (only service_role or SECURITY DEFINER RPCs can access)
 CREATE POLICY "Deny all to semantic cache for authenticated users"
 ON semantic_cache
 FOR ALL
 TO authenticated
 USING (false);
-
 -- Create missing RPC for cache access increments
 CREATE OR REPLACE FUNCTION increment_cache_access(cache_id uuid)
 RETURNS void

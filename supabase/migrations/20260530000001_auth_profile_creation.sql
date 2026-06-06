@@ -16,14 +16,11 @@ BEGIN
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
-
 -- Drop trigger if it exists, then create
 DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
-
 CREATE TRIGGER on_auth_user_created
   AFTER INSERT ON auth.users
   FOR EACH ROW EXECUTE PROCEDURE public.handle_new_user();
-
 -- Backfill missing profiles
 INSERT INTO public.profiles (id, email, full_name, exam_type, streak_days, last_active_at)
 SELECT 

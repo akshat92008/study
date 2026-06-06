@@ -61,8 +61,9 @@ declare
   v_total_marks numeric;
   v_marks_lost numeric;
 begin
-  if auth.uid() is null or auth.uid() <> p_user_id then
-    raise exception 'unauthorized';
+  -- SECURITY: Only service_role can call this (prevents client-side score spoofing)
+  if current_setting('request.jwt.claim.role', true) <> 'service_role' then
+    raise exception 'unauthorized: mock autopsies must be processed via the backend AI engine';
   end if;
 
   -- ─── IDEMPOTENCY GUARD ────────────────────────────────────────────────────
@@ -396,49 +397,40 @@ exception when others then
   raise;
 end;
 $$ language plpgsql volatile security definer set search_path = public;
-
+-- Ensure only the backend service role can call this function
 revoke execute on function public.ingest_mock_autopsy(
   uuid, text, text, int, int, int, int, numeric, numeric, numeric,
   jsonb, text, uuid, numeric
-) from public, authenticated, service_role;
-
+) from public, authenticated;
 grant execute on function public.ingest_mock_autopsy(
   uuid, text, text, int, int, int, int, numeric, numeric, numeric,
   jsonb, text, uuid, numeric
-) to authenticated;
-
+) to service_role;
 -- ─── Schema hardening: ensure updated_at column exists on autopsy_questions ─
 -- (needed for the ON CONFLICT ... do update clause above)
 alter table public.autopsy_questions
   add column if not exists updated_at timestamptz default now();
-
 -- Ensure columns exist before creating indexes
 alter table public.mock_autopsies
   add column if not exists idempotency_key text,
   add column if not exists trace_id uuid;
-
 -- Ensure the unique index for idempotency on mock_autopsies exists
 create unique index if not exists idx_mock_autopsies_idempotency_key
   on public.mock_autopsies(idempotency_key)
   where idempotency_key is not null;
-
 -- Ensure the ON CONFLICT target index exists on autopsy_questions
 create unique index if not exists idx_autopsy_questions_autopsy_qnum
   on public.autopsy_questions(autopsy_id, question_number);
-
 -- Ensure the ON CONFLICT target partial unique index exists on mistakes
 create unique index if not exists idx_mistakes_dedup_source
   on public.mistakes(user_id, source_autopsy_id, source_question_number)
   where source_autopsy_id is not null and source_question_number is not null;
-
 -- Ensure evidence_status column exists with correct values
 alter table public.mistakes
   add column if not exists extraction_confidence numeric;
-
 -- Index to efficiently find pending_review items for the future review queue
 create index if not exists idx_mistakes_pending_review
   on public.mistakes(user_id, status)
   where status = 'pending_review';
-
 create index if not exists idx_autopsy_questions_evidence_status
   on public.autopsy_questions(autopsy_id, evidence_status);

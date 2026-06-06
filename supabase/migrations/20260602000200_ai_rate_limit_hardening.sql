@@ -5,7 +5,6 @@ alter table public.ai_usage_daily
   add column if not exists chat_messages_hourly int not null default 0,
   add column if not exists last_chat_hour timestamptz not null default date_trunc('hour', now()),
   add column if not exists expensive_operations int not null default 0;
-
 create or replace function public.check_and_increment_usage_gate(
   p_user_id uuid,
   p_gate text,

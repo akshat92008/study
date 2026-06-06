@@ -14,7 +14,6 @@ create table if not exists public.profiles (
   created_at timestamptz default now(),
   updated_at timestamptz default now()
 );
-
 create table if not exists public.learning_goals (
   id uuid primary key default uuid_generate_v4(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -26,7 +25,6 @@ create table if not exists public.learning_goals (
   status text default 'active',
   created_at timestamptz default now()
 );
-
 create table if not exists public.concepts (
   id uuid primary key default uuid_generate_v4(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -39,14 +37,12 @@ create table if not exists public.concepts (
   created_at timestamptz default now(),
   updated_at timestamptz default now()
 );
-
 create table if not exists public.concept_aliases (
   id uuid primary key default uuid_generate_v4(),
   concept_id uuid not null references public.concepts(id) on delete cascade,
   alias text not null,
   created_at timestamptz default now()
 );
-
 create table if not exists public.concept_links (
   id uuid primary key default uuid_generate_v4(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -56,7 +52,6 @@ create table if not exists public.concept_links (
   strength float default 1.0,
   created_at timestamptz default now()
 );
-
 create table if not exists public.mastery_events (
   id uuid primary key default uuid_generate_v4(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -67,7 +62,6 @@ create table if not exists public.mastery_events (
   confidence float,
   created_at timestamptz default now()
 );
-
 create table if not exists public.revision_cards (
   id uuid primary key default uuid_generate_v4(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -82,7 +76,6 @@ create table if not exists public.revision_cards (
   created_at timestamptz default now(),
   updated_at timestamptz default now()
 );
-
 create table if not exists public.chat_sessions (
   id uuid primary key default uuid_generate_v4(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -91,7 +84,6 @@ create table if not exists public.chat_sessions (
   created_at timestamptz default now(),
   updated_at timestamptz default now()
 );
-
 create table if not exists public.chat_messages (
   id uuid primary key default uuid_generate_v4(),
   session_id uuid not null references public.chat_sessions(id) on delete cascade,
@@ -101,7 +93,6 @@ create table if not exists public.chat_messages (
   metadata jsonb default '{}'::jsonb,
   created_at timestamptz default now()
 );
-
 create table if not exists public.study_sessions (
   id uuid primary key default uuid_generate_v4(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -112,7 +103,6 @@ create table if not exists public.study_sessions (
   metadata jsonb default '{}'::jsonb,
   created_at timestamptz default now()
 );
-
 create table if not exists public.session_cards (
   id uuid primary key default uuid_generate_v4(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -122,7 +112,6 @@ create table if not exists public.session_cards (
   metadata jsonb default '{}'::jsonb,
   created_at timestamptz default now()
 );
-
 create table if not exists public.learner_states (
   id uuid primary key default uuid_generate_v4(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -130,7 +119,6 @@ create table if not exists public.learner_states (
   state_value jsonb,
   created_at timestamptz default now()
 );
-
 create table if not exists public.event_queue (
   id uuid primary key default uuid_generate_v4(),
   user_id uuid references auth.users(id) on delete cascade,
@@ -141,14 +129,12 @@ create table if not exists public.event_queue (
   retry_count int default 0,
   created_at timestamptz default now()
 );
-
 create table if not exists public.consumer_locks (
   id text primary key,
   consumer_id text not null,
   locked_at timestamptz default now(),
   expires_at timestamptz not null
 );
-
 create table if not exists public.event_dlq (
   id uuid primary key default uuid_generate_v4(),
   event_id uuid not null,
@@ -158,7 +144,6 @@ create table if not exists public.event_dlq (
   error_message text not null,
   created_at timestamptz default now()
 );
-
 create table if not exists public.mock_autopsies (
   id uuid primary key default uuid_generate_v4(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -167,7 +152,6 @@ create table if not exists public.mock_autopsies (
   diagnosis jsonb,
   created_at timestamptz default now()
 );
-
 create table if not exists public.autopsy_questions (
   id uuid primary key default uuid_generate_v4(),
   autopsy_id uuid not null references public.mock_autopsies(id) on delete cascade,
@@ -176,7 +160,6 @@ create table if not exists public.autopsy_questions (
   category text,
   created_at timestamptz default now()
 );
-
 create table if not exists public.ai_usage_events (
   id uuid primary key default uuid_generate_v4(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -185,7 +168,6 @@ create table if not exists public.ai_usage_events (
   estimated_cost numeric,
   created_at timestamptz default now()
 );
-
 create table if not exists public.ai_budget_reservations (
   id uuid primary key default uuid_generate_v4(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -194,18 +176,15 @@ create table if not exists public.ai_budget_reservations (
   status text default 'pending',
   created_at timestamptz default now()
 );
-
 create table if not exists public.provider_health (
   provider text primary key,
   status text default 'healthy',
   last_check_at timestamptz default now()
 );
-
 create table if not exists public.worker_health (
   worker_id text primary key,
   last_heartbeat timestamptz default now()
 );
-
 -- 2. Foreign Key Hardening: Ensure references auth.users(id) on delete cascade
 -- Already handled by `references auth.users(id) on delete cascade` above,
 -- but we must alter existing tables if they reference profiles instead of auth.users
@@ -226,7 +205,6 @@ begin
     execute format('alter table public.%I enable row level security', t);
   end loop;
 end $$;
-
 -- 4. Establish Default Policies (Users access own rows)
 do $$
 declare
@@ -258,7 +236,6 @@ begin
     );
   end if;
 end $$;
-
 -- 5. Add critical indexes
 do $$
 declare
@@ -278,7 +255,6 @@ begin
 end $$;
 create index if not exists idx_event_queue_status on public.event_queue(status, next_attempt_at);
 create index if not exists idx_chat_messages_lookup on public.chat_messages(session_id, created_at desc);
-
 -- 6. Harden RPCs (search_path)
 do $$
 declare

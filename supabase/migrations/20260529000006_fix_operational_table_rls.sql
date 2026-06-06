@@ -10,7 +10,6 @@ BEGIN
     DROP POLICY "Service role full access consumers" ON public.event_consumer_tracking;
   END IF;
 END $$;
-
 -- authenticated users have no legitimate reason to query event_consumer_tracking directly
 -- The select policy added in rls_policies migration via the loop is also wrong here
 -- Drop it if it was created
@@ -24,7 +23,6 @@ BEGIN
     DROP POLICY "event_consumer_tracking_select_own" ON public.event_consumer_tracking;
   END IF;
 END $$;
-
 -- dlq_events: same fix
 DO $$
 BEGIN
@@ -36,6 +34,5 @@ BEGIN
     DROP POLICY "Service role full access dlq" ON public.dlq_events;
   END IF;
 END $$;
-
 -- No authenticated policies on either table.
--- service_role bypasses RLS entirely — EventDispatcher admin client is unaffected.
+-- service_role bypasses RLS entirely — EventDispatcher admin client is unaffected.;

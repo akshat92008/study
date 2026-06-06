@@ -2,7 +2,6 @@
 
 CREATE TYPE event_status AS ENUM ('PENDING', 'PROCESSING', 'COMPLETED', 'FAILED');
 CREATE TYPE consumer_lock_status AS ENUM ('PENDING', 'PROCESSING', 'COMPLETED', 'FAILED', 'RETRY_SCHEDULED', 'DLQ');
-
 CREATE TABLE IF NOT EXISTS event_queue (
     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id uuid NOT NULL,
@@ -14,7 +13,6 @@ CREATE TABLE IF NOT EXISTS event_queue (
     created_at timestamptz DEFAULT now(),
     updated_at timestamptz DEFAULT now()
 );
-
 CREATE TABLE IF NOT EXISTS consumer_locks (
     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
     event_id uuid REFERENCES event_queue(id) ON DELETE CASCADE,
@@ -28,11 +26,9 @@ CREATE TABLE IF NOT EXISTS consumer_locks (
     updated_at timestamptz DEFAULT now(),
     UNIQUE(event_id, consumer_name)
 );
-
 -- Index for efficient leasing query
 CREATE INDEX idx_consumer_locks_leasing 
 ON consumer_locks(status, next_retry_at, lease_expires_at);
-
 CREATE TABLE IF NOT EXISTS event_attempts (
     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
     consumer_lock_id uuid REFERENCES consumer_locks(id) ON DELETE CASCADE,
@@ -41,7 +37,6 @@ CREATE TABLE IF NOT EXISTS event_attempts (
     started_at timestamptz DEFAULT now(),
     finished_at timestamptz
 );
-
 CREATE TABLE IF NOT EXISTS event_dlq (
     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
     event_id uuid,
@@ -50,7 +45,6 @@ CREATE TABLE IF NOT EXISTS event_dlq (
     last_error text,
     created_at timestamptz DEFAULT now()
 );
-
 -- Postgres Function to atomically acquire leases
 CREATE OR REPLACE FUNCTION acquire_event_leases(
     p_worker_id text,
@@ -101,7 +95,6 @@ BEGIN
     JOIN event_queue eq ON eq.id = ul.event_id;
 END;
 $$ LANGUAGE plpgsql;
-
 -- Replace existing create_event_with_consumers to use new tables seamlessly
 CREATE OR REPLACE FUNCTION public.create_event_with_consumers(
     p_user_id uuid,

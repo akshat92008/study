@@ -18,32 +18,21 @@ CREATE TABLE IF NOT EXISTS public.daily_microtasks (
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     completed_at TIMESTAMPTZ
 );
-
 -- Indexes for performance
 CREATE INDEX IF NOT EXISTS idx_daily_microtasks_user_date ON public.daily_microtasks(user_id, task_date);
 CREATE INDEX IF NOT EXISTS idx_daily_microtasks_session_card ON public.daily_microtasks(session_card_id);
-
 -- Enable RLS
 ALTER TABLE public.daily_microtasks ENABLE ROW LEVEL SECURITY;
-
 -- RLS Policies
-DROP POLICY IF EXISTS "Users can view their own microtasks" ON public.daily_microtasks;
-DROP POLICY IF EXISTS "Users can insert their own microtasks" ON public.daily_microtasks;
-DROP POLICY IF EXISTS "Users can update their own microtasks" ON public.daily_microtasks;
-DROP POLICY IF EXISTS "Users can delete their own microtasks" ON public.daily_microtasks;
-
 CREATE POLICY "Users can view their own microtasks"
     ON public.daily_microtasks FOR SELECT
     USING (auth.uid() = user_id);
-
 CREATE POLICY "Users can insert their own microtasks"
     ON public.daily_microtasks FOR INSERT
     WITH CHECK (auth.uid() = user_id);
-
 CREATE POLICY "Users can update their own microtasks"
     ON public.daily_microtasks FOR UPDATE
     USING (auth.uid() = user_id);
-
 CREATE POLICY "Users can delete their own microtasks"
     ON public.daily_microtasks FOR DELETE
     USING (auth.uid() = user_id);

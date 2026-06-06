@@ -3,14 +3,12 @@
 
 create extension if not exists pgcrypto;
 create extension if not exists vector;
-
 do $$
 begin
   create type public.event_status as enum ('PENDING', 'PROCESSING', 'COMPLETED', 'FAILED');
 exception
   when duplicate_object then null;
 end $$;
-
 do $$
 begin
   alter type public.event_status add value if not exists 'PARTIAL_FAILED';
@@ -18,14 +16,12 @@ begin
 exception
   when undefined_object then null;
 end $$;
-
 do $$
 begin
   create type public.consumer_lock_status as enum ('PENDING', 'PROCESSING', 'COMPLETED', 'FAILED', 'RETRY_SCHEDULED', 'DLQ');
 exception
   when duplicate_object then null;
 end $$;
-
 create table if not exists public.profiles (
   id uuid primary key references auth.users(id) on delete cascade,
   email text,
@@ -44,7 +40,6 @@ create table if not exists public.profiles (
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
-
 alter table public.profiles
   add column if not exists target_date date,
   add column if not exists target_score numeric,
@@ -54,7 +49,6 @@ alter table public.profiles
   add column if not exists emotional_state text default 'neutral',
   add column if not exists overall_mastery numeric default 0,
   add column if not exists updated_at timestamptz not null default now();
-
 create table if not exists public.learning_goals (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -72,7 +66,6 @@ create table if not exists public.learning_goals (
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
-
 alter table public.learning_goals
   add column if not exists deadline text,
   add column if not exists current_level text,
@@ -81,7 +74,6 @@ alter table public.learning_goals
   add column if not exists confidence_score numeric,
   add column if not exists roadmap jsonb not null default '{}'::jsonb,
   add column if not exists updated_at timestamptz not null default now();
-
 create table if not exists public.concepts (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -99,7 +91,6 @@ create table if not exists public.concepts (
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
-
 alter table public.concepts
   add column if not exists topic text,
   add column if not exists name text,
@@ -109,7 +100,6 @@ alter table public.concepts
   add column if not exists confidence text not null default 'low',
   add column if not exists last_reviewed_at timestamptz,
   add column if not exists embedding vector(768);
-
 create table if not exists public.concept_aliases (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -118,17 +108,14 @@ create table if not exists public.concept_aliases (
   normalized_alias text,
   created_at timestamptz not null default now()
 );
-
 alter table public.concept_aliases
   add column if not exists user_id uuid references auth.users(id) on delete cascade,
   add column if not exists normalized_alias text;
-
 update public.concept_aliases ca
 set user_id = c.user_id
 from public.concepts c
 where ca.concept_id = c.id
   and ca.user_id is null;
-
 create table if not exists public.concept_links (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -138,7 +125,6 @@ create table if not exists public.concept_links (
   strength numeric not null default 1,
   created_at timestamptz not null default now()
 );
-
 create table if not exists public.mastery_events (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -154,14 +140,12 @@ create table if not exists public.mastery_events (
   confidence numeric,
   created_at timestamptz not null default now()
 );
-
 alter table public.mastery_events
   add column if not exists old_mastery text,
   add column if not exists new_mastery text,
   add column if not exists evidence text,
   add column if not exists source_event_id uuid,
   add column if not exists weight numeric;
-
 create table if not exists public.concept_mastery_events (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -173,7 +157,6 @@ create table if not exists public.concept_mastery_events (
   confidence numeric,
   created_at timestamptz not null default now()
 );
-
 create table if not exists public.revision_cards (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -191,7 +174,6 @@ create table if not exists public.revision_cards (
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
-
 alter table public.revision_cards
   add column if not exists subject text,
   add column if not exists chapter text,
@@ -201,7 +183,6 @@ alter table public.revision_cards
   add column if not exists difficulty numeric not null default 5,
   add column if not exists reps integer not null default 0,
   add column if not exists lapses integer not null default 0;
-
 create table if not exists public.chat_sessions (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -212,15 +193,12 @@ create table if not exists public.chat_sessions (
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
-
 alter table public.chat_sessions
   add column if not exists session_type text not null default 'global',
   add column if not exists is_global boolean not null default false;
-
 create unique index if not exists idx_chat_sessions_one_global
   on public.chat_sessions(user_id)
   where session_type = 'global';
-
 create table if not exists public.chat_messages (
   id uuid primary key default gen_random_uuid(),
   session_id uuid not null references public.chat_sessions(id) on delete cascade,
@@ -233,16 +211,13 @@ create table if not exists public.chat_messages (
   idempotency_key text,
   created_at timestamptz not null default now()
 );
-
 alter table public.chat_messages
   add column if not exists intent text,
   add column if not exists emotional_state text,
   add column if not exists idempotency_key text;
-
 create unique index if not exists idx_chat_messages_user_idempotency
   on public.chat_messages(user_id, idempotency_key)
   where idempotency_key is not null;
-
 create table if not exists public.study_sessions (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -263,7 +238,6 @@ create table if not exists public.study_sessions (
   metadata jsonb not null default '{}'::jsonb,
   created_at timestamptz not null default now()
 );
-
 alter table public.study_sessions
   add column if not exists topic text,
   add column if not exists concept_name text,
@@ -274,7 +248,6 @@ alter table public.study_sessions
   add column if not exists session_type text not null default 'study',
   add column if not exists is_completed boolean not null default false,
   add column if not exists metadata jsonb not null default '{}'::jsonb;
-
 create table if not exists public.session_cards (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -303,7 +276,6 @@ create table if not exists public.session_cards (
   created_at timestamptz not null default now(),
   unique(user_id, date)
 );
-
 alter table public.session_cards
   add column if not exists learner_state_version integer not null default 0,
   add column if not exists "taskType" text,
@@ -316,7 +288,6 @@ alter table public.session_cards
   add column if not exists "mistakeCount" integer not null default 0,
   add column if not exists "weakConceptCount" integer not null default 0,
   add column if not exists "hasActiveGoal" boolean not null default false;
-
 do $$
 begin
   if not exists (
@@ -327,13 +298,11 @@ begin
     alter table public.session_cards add constraint session_cards_user_id_date_key unique(user_id, date);
   end if;
 end $$;
-
 create table if not exists public.learner_state_versions (
   user_id uuid primary key references auth.users(id) on delete cascade,
   version integer not null default 0,
   updated_at timestamptz not null default now()
 );
-
 create table if not exists public.event_queue (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -350,14 +319,12 @@ create table if not exists public.event_queue (
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
-
 alter table public.event_queue
   add column if not exists retry_count integer not null default 0,
   add column if not exists next_attempt_at timestamptz not null default now(),
   add column if not exists locked_at timestamptz,
   add column if not exists locked_by text,
   add column if not exists last_error text;
-
 create table if not exists public.consumer_locks (
   id uuid primary key default gen_random_uuid(),
   event_id uuid not null references public.event_queue(id) on delete cascade,
@@ -375,13 +342,11 @@ create table if not exists public.consumer_locks (
   updated_at timestamptz not null default now(),
   unique(event_id, consumer_name)
 );
-
 alter table public.consumer_locks
   add column if not exists locked_at timestamptz,
   add column if not exists locked_by text,
   add column if not exists next_attempt_at timestamptz,
   add column if not exists last_error text;
-
 create table if not exists public.event_attempts (
   id uuid primary key default gen_random_uuid(),
   consumer_lock_id uuid references public.consumer_locks(id) on delete cascade,
@@ -394,13 +359,11 @@ create table if not exists public.event_attempts (
   started_at timestamptz not null default now(),
   finished_at timestamptz
 );
-
 alter table public.event_attempts
   add column if not exists event_id uuid references public.event_queue(id) on delete cascade,
   add column if not exists consumer_name text,
   add column if not exists result_status text,
   add column if not exists result_reason text;
-
 create table if not exists public.event_dlq (
   id uuid primary key default gen_random_uuid(),
   event_id uuid references public.event_queue(id) on delete set null,
@@ -415,7 +378,6 @@ create table if not exists public.event_dlq (
   resolved_at timestamptz,
   created_at timestamptz not null default now()
 );
-
 alter table public.event_dlq
   add column if not exists user_id uuid references auth.users(id) on delete cascade,
   add column if not exists event_type text,
@@ -423,7 +385,6 @@ alter table public.event_dlq
   add column if not exists attempts integer not null default 0,
   add column if not exists last_attempt_at timestamptz,
   add column if not exists resolved_at timestamptz;
-
 create table if not exists public.mock_autopsies (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -444,7 +405,6 @@ create table if not exists public.mock_autopsies (
   error_message text,
   created_at timestamptz not null default now()
 );
-
 alter table public.mock_autopsies
   add column if not exists test_name text,
   add column if not exists exam_type text,
@@ -460,7 +420,6 @@ alter table public.mock_autopsies
   add column if not exists metadata jsonb not null default '{}'::jsonb,
   add column if not exists completed_at timestamptz,
   add column if not exists error_message text;
-
 create table if not exists public.autopsy_questions (
   id uuid primary key default gen_random_uuid(),
   autopsy_id uuid not null references public.mock_autopsies(id) on delete cascade,
@@ -487,7 +446,6 @@ create table if not exists public.autopsy_questions (
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
-
 alter table public.autopsy_questions
   add column if not exists question_number integer,
   add column if not exists subtopic text,
@@ -505,7 +463,6 @@ alter table public.autopsy_questions
   add column if not exists trace_id uuid,
   add column if not exists trace_metadata jsonb not null default '{}'::jsonb,
   add column if not exists updated_at timestamptz not null default now();
-
 create table if not exists public.ai_usage_events (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -518,7 +475,6 @@ create table if not exists public.ai_usage_events (
   estimated_cost numeric,
   created_at timestamptz not null default now()
 );
-
 create table if not exists public.ai_budget_reservations (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -533,7 +489,6 @@ create table if not exists public.ai_budget_reservations (
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
-
 create table if not exists public.worker_health (
   worker_id text primary key,
   last_heartbeat timestamptz not null default now(),
@@ -541,7 +496,6 @@ create table if not exists public.worker_health (
   last_error text,
   metadata jsonb not null default '{}'::jsonb
 );
-
 -- RLS: user-owned MVP data is owner-scoped; operational queues are service-only.
 do $$
 declare
@@ -556,13 +510,11 @@ begin
     execute format('alter table public.%I enable row level security', t);
   end loop;
 end $$;
-
 drop policy if exists "users_all_own_profiles" on public.profiles;
 create policy "users_all_own_profiles"
   on public.profiles for all
   using (auth.uid() = id)
   with check (auth.uid() = id);
-
 do $$
 declare
   t text;
@@ -581,21 +533,18 @@ begin
     );
   end loop;
 end $$;
-
 alter table public.event_queue enable row level security;
 alter table public.consumer_locks enable row level security;
 alter table public.event_attempts enable row level security;
 alter table public.event_dlq enable row level security;
 alter table public.ai_budget_reservations enable row level security;
 alter table public.worker_health enable row level security;
-
 drop policy if exists "users_all_own_event_queue" on public.event_queue;
 drop policy if exists "Users access own event_queue" on public.event_queue;
 drop policy if exists "users_all_own_event_dlq" on public.event_dlq;
 drop policy if exists "Users access own event_dlq" on public.event_dlq;
 drop policy if exists "Users view own ai_budget_reservations" on public.ai_budget_reservations;
 drop policy if exists "users_all_own_ai_budget_reservations" on public.ai_budget_reservations;
-
 do $$
 declare
   t text;
@@ -612,7 +561,6 @@ begin
     );
   end loop;
 end $$;
-
 -- Correct per-event consumer routing. User request paths enqueue only; workers consume locks.
 create or replace function public.create_event_with_consumers(
   p_user_id uuid,
@@ -690,7 +638,6 @@ begin
   return v_event_id;
 end;
 $$ language plpgsql volatile security definer set search_path = public;
-
 create or replace function public.acquire_event_leases(
   p_worker_id text,
   p_limit int,
@@ -757,7 +704,6 @@ begin
   join public.event_queue eq on eq.id = ul.event_id;
 end;
 $$ language plpgsql volatile security definer set search_path = public;
-
 drop function if exists public.match_concepts cascade;
 create or replace function public.match_concepts(
   query_embedding vector(768),
@@ -793,22 +739,18 @@ begin
   limit match_count;
 end;
 $$ language plpgsql stable security definer set search_path = public;
-
 revoke execute on function public.create_event_with_consumers(uuid, text, jsonb, text, text, jsonb)
   from public, authenticated;
 grant execute on function public.create_event_with_consumers(uuid, text, jsonb, text, text, jsonb)
   to service_role;
-
 revoke execute on function public.acquire_event_leases(text, int, interval)
   from public, authenticated;
 grant execute on function public.acquire_event_leases(text, int, interval)
   to service_role;
-
 revoke execute on function public.match_concepts(vector(768), float, int, uuid)
   from public;
 grant execute on function public.match_concepts(vector(768), float, int, uuid)
   to authenticated;
-
 create index if not exists idx_profiles_updated
   on public.profiles(id, updated_at desc);
 create index if not exists idx_learning_goals_user_created

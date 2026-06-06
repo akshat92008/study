@@ -12,20 +12,16 @@ values (
 on conflict (id) do update set
   file_size_limit = EXCLUDED.file_size_limit,
   allowed_mime_types = EXCLUDED.allowed_mime_types;
-
 -- RLS for autopsy-evidence
 create policy "Users can upload their own autopsy evidence"
   on storage.objects for insert
   with check (bucket_id = 'autopsy-evidence' and auth.uid()::text = (storage.foldername(name))[1]);
-
 create policy "Users can read their own autopsy evidence"
   on storage.objects for select
   using (bucket_id = 'autopsy-evidence' and auth.uid()::text = (storage.foldername(name))[1]);
-
 create policy "Users can delete their own autopsy evidence"
   on storage.objects for delete
   using (bucket_id = 'autopsy-evidence' and auth.uid()::text = (storage.foldername(name))[1]);
-
 -- Missing Indexes for 1000 Users Scale
 create index if not exists idx_event_queue_user_id on event_queue(user_id);
 create index if not exists idx_event_queue_idempotency on event_queue(idempotency_key);
@@ -36,16 +32,13 @@ create index if not exists idx_chat_messages_idempotency on chat_messages(idempo
 create index if not exists idx_session_cards_user_id on session_cards(user_id);
 create index if not exists idx_mistakes_user_id on mistakes(user_id);
 create index if not exists idx_revision_cards_user_id on revision_cards(user_id);
-
 -- RLS for study_material_chunks
 create policy "study_material_chunks_insert_own"
   on public.study_material_chunks for insert
   with check (auth.uid() = user_id);
-
 create policy "study_material_chunks_update_own"
   on public.study_material_chunks for update
   using (auth.uid() = user_id);
-
 create policy "study_material_chunks_delete_own"
   on public.study_material_chunks for delete
   using (auth.uid() = user_id);

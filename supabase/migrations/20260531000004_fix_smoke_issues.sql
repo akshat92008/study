@@ -4,11 +4,9 @@
 -- 1. Add missing emotional_state column to chat_messages
 ALTER TABLE public.chat_messages
   ADD COLUMN IF NOT EXISTS emotional_state TEXT;
-
 -- 2. Fix the default value of exam_type to comply with the check constraint
 ALTER TABLE public.profiles
   ALTER COLUMN exam_type SET DEFAULT 'neet';
-
 -- Ensure any existing uppercase 'NEET' is fixed so check constraints pass
 UPDATE public.profiles
   SET exam_type = 'neet'

@@ -69,6 +69,5 @@ begin
   join public.event_queue eq on eq.id = ul.event_id;
 end;
 $$ language plpgsql volatile security definer set search_path = public;
-
 revoke execute on function public.acquire_event_leases(text, int, interval) from public, authenticated;
 grant execute on function public.acquire_event_leases(text, int, interval) to service_role;

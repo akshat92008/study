@@ -103,7 +103,7 @@ begin
   -- Create event atomically
   v_event_id := public.create_event_with_consumers(
     p_user_id,
-    'STUDY_SESSION_COMPLETED',
+    'COMMAND_SESSION_COMPLETED',
     jsonb_build_object(
       'sessionId', v_session_id,
       'taskId', coalesce(p_task_id::text, 'session-' || v_session_id::text),

@@ -16,29 +16,22 @@ CREATE TABLE IF NOT EXISTS "public"."seeded_topics" (
     "updated_at" timestamp with time zone DEFAULT "now"(),
     PRIMARY KEY ("id")
 );
-
 -- Idempotency constraint
 ALTER TABLE "public"."seeded_topics" 
     ADD CONSTRAINT "seeded_topics_user_goal_template_microtarget_key" 
     UNIQUE ("user_id", "goal_id", "template_key", "microtarget");
-
 ALTER TABLE "public"."seeded_topics" ENABLE ROW LEVEL SECURITY;
-
 CREATE POLICY "Users can insert their own seeded topics"
     ON "public"."seeded_topics" FOR INSERT
     WITH CHECK ("auth"."uid"() = "user_id");
-
 CREATE POLICY "Users can view their own seeded topics"
     ON "public"."seeded_topics" FOR SELECT
     USING ("auth"."uid"() = "user_id");
-
 CREATE POLICY "Users can update their own seeded topics"
     ON "public"."seeded_topics" FOR UPDATE
     USING ("auth"."uid"() = "user_id");
-
 CREATE POLICY "Users can delete their own seeded topics"
     ON "public"."seeded_topics" FOR DELETE
     USING ("auth"."uid"() = "user_id");
-
 CREATE INDEX "seeded_topics_user_id_idx" ON "public"."seeded_topics" ("user_id");
 CREATE INDEX "seeded_topics_goal_id_idx" ON "public"."seeded_topics" ("goal_id");

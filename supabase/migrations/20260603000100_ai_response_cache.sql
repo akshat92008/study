@@ -14,9 +14,7 @@ CREATE TABLE IF NOT EXISTS ai_response_cache (
   created_at timestamptz DEFAULT now(),
   expires_at timestamptz NOT NULL
 );
-
 CREATE INDEX IF NOT EXISTS ai_response_cache_expires_idx ON ai_response_cache (expires_at);
 CREATE INDEX IF NOT EXISTS ai_response_cache_task_hash_idx ON ai_response_cache (task, input_hash);
-
 ALTER TABLE ai_response_cache ENABLE ROW LEVEL SECURITY;
--- Only readable/writable by service role / admin (enforced by lack of public policies)
+-- Only readable/writable by service role / admin (enforced by lack of public policies);

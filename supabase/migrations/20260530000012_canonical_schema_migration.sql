@@ -6,7 +6,6 @@ alter table public.profiles
   add column if not exists exam_type text,
   add column if not exists streak_days int default 0,
   add column if not exists last_active_at timestamptz;
-
 do $$
 begin
   if exists (
@@ -16,12 +15,10 @@ begin
     execute 'update public.profiles set exam_type = coalesce(exam_type, exam)';
   end if;
 end $$;
-
 -- 2. Ensure canonical columns exist on concepts
 alter table public.concepts
   add column if not exists mastery text,
   add column if not exists forgetting float;
-
 do $$
 begin
   if exists (
@@ -45,11 +42,9 @@ begin
     execute 'update public.concepts set forgetting = coalesce(forgetting, forgetting_probability)';
   end if;
 end $$;
-
 -- 3. Ensure canonical columns exist on revision_cards
 alter table public.revision_cards
   add column if not exists due timestamptz;
-
 do $$
 begin
   if exists (
@@ -59,11 +54,9 @@ begin
     execute 'update public.revision_cards set due = coalesce(due, due_at)';
   end if;
 end $$;
-
 -- 4. Fix AI Usage Ledger
 alter table public.ai_usage_events
   add column if not exists metadata jsonb default '{}'::jsonb;
-
 create or replace function public.atomic_ai_budget_spend(
   p_user_id uuid,
   p_feature text,
@@ -134,11 +127,9 @@ begin
 
 end;
 $$ language plpgsql volatile security definer set search_path = public;
-
 -- Revoke and grant as needed
 revoke execute on function public.atomic_ai_budget_spend(uuid, text, text, numeric, int, int, text, numeric) from public, authenticated;
 grant execute on function public.atomic_ai_budget_spend(uuid, text, text, numeric, int, int, text, numeric) to service_role;
-
 -- 5. Strict RLS validations on 10 user-owned tables
 -- We re-enable RLS securely for each.
 do $$
@@ -153,7 +144,6 @@ begin
     execute format('alter table public.%I enable row level security', t);
   end loop;
 end $$;
-
 -- Setup basic "users access own data" policies for those that might be missing them
 do $$
 declare
@@ -174,9 +164,7 @@ begin
     end if;
   end loop;
 end $$;
-
 -- 6. Clean up legacy ai_usage_logs view or table, but only safely
 drop table if exists public.ai_usage_logs cascade;
 create or replace view public.ai_usage_logs as 
   select * from public.ai_usage_events;
-

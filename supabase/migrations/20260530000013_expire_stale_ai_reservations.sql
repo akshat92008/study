@@ -27,7 +27,6 @@ BEGIN
   END LOOP;
 END;
 $$;
-
 -- Revoke and grant as needed
 REVOKE EXECUTE ON FUNCTION public.expire_stale_ai_reservations() FROM public, authenticated;
 GRANT EXECUTE ON FUNCTION public.expire_stale_ai_reservations() TO service_role;

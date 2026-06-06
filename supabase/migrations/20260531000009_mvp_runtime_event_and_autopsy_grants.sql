@@ -20,12 +20,10 @@ begin
   end if;
 end
 $migration$;
-
 revoke execute on function public.ingest_mock_autopsy(
   uuid, text, text, int, int, int, int, numeric, numeric, numeric,
   jsonb, text, uuid, numeric
 ) from public, service_role;
-
 grant execute on function public.ingest_mock_autopsy(
   uuid, text, text, int, int, int, int, numeric, numeric, numeric,
   jsonb, text, uuid, numeric

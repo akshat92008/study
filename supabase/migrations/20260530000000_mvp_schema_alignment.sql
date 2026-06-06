@@ -11,7 +11,6 @@ alter table public.profiles
   add column if not exists last_active_at timestamptz,
   add column if not exists current_level text,
   add column if not exists timezone text default 'UTC';
-
 do $$
 begin
   if exists (
@@ -35,7 +34,6 @@ begin
     execute 'update public.profiles set last_active_at = coalesce(last_active_at, last_active_date::timestamptz)';
   end if;
 end $$;
-
 -- ---------------------------------------------------------------------------
 -- Learning goals
 -- ---------------------------------------------------------------------------
@@ -51,7 +49,6 @@ begin
     alter table public.study_goals rename to learning_goals;
   end if;
 end $$;
-
 create table if not exists public.learning_goals (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references public.profiles(id) on delete cascade,
@@ -69,7 +66,6 @@ create table if not exists public.learning_goals (
   created_at timestamptz default now(),
   updated_at timestamptz default now()
 );
-
 alter table public.learning_goals
   add column if not exists target_completion_date timestamptz,
   add column if not exists current_level text,
@@ -77,12 +73,9 @@ alter table public.learning_goals
   add column if not exists daily_hours_available int,
   add column if not exists milestones jsonb,
   add column if not exists updated_at timestamptz default now();
-
 create index if not exists idx_learning_goals_user_status
   on public.learning_goals(user_id, status);
-
 alter table public.learning_goals enable row level security;
-
 do $$
 begin
   if not exists (
@@ -95,7 +88,6 @@ begin
       with check (auth.uid() = user_id);
   end if;
 end $$;
-
 -- ---------------------------------------------------------------------------
 -- ATLAS concepts and links
 -- ---------------------------------------------------------------------------
@@ -108,7 +100,6 @@ alter table public.concepts
   add column if not exists times_correct float default 0,
   add column if not exists times_incorrect float default 0,
   add column if not exists version int default 1;
-
 do $$
 begin
   if exists (
@@ -118,7 +109,6 @@ begin
     execute 'alter table public.concepts alter column mastery type text using mastery::text';
   end if;
 end $$;
-
 do $$
 declare
   v_mastery_tier text;
@@ -172,12 +162,10 @@ begin
       confidence = coalesce(confidence, 'low')
   $sql$, v_exposure_count, v_correct_count);
 end $$;
-
 create index if not exists idx_concepts_user_mastery
   on public.concepts(user_id, mastery);
 create index if not exists idx_concepts_forgetting
   on public.concepts(user_id, forgetting_probability desc);
-
 create table if not exists public.mastery_events (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references public.profiles(id) on delete cascade,
@@ -189,14 +177,11 @@ create table if not exists public.mastery_events (
   evidence text,
   created_at timestamptz default now()
 );
-
 create index if not exists idx_mastery_events_user
   on public.mastery_events(user_id, created_at desc);
 create index if not exists idx_mastery_events_concept
   on public.mastery_events(concept_id, created_at desc);
-
 alter table public.mastery_events enable row level security;
-
 do $$
 begin
   if not exists (
@@ -209,12 +194,10 @@ begin
       with check (auth.uid() = user_id);
   end if;
 end $$;
-
 alter table public.concept_links
   add column if not exists goal_id uuid references public.learning_goals(id) on delete set null,
   add column if not exists source_concept_id uuid,
   add column if not exists target_concept_id uuid;
-
 do $$
 declare
   v_from_concept text;
@@ -237,7 +220,6 @@ begin
       target_concept_id = coalesce(target_concept_id, %2$s)
   $sql$, v_from_concept, v_to_concept);
 end $$;
-
 -- ---------------------------------------------------------------------------
 -- MEMORY revision cards
 -- ---------------------------------------------------------------------------
@@ -251,7 +233,6 @@ alter table public.revision_cards
   add column if not exists lapses int default 0,
   add column if not exists last_review timestamptz,
   add column if not exists forgetting_probability float default 1.0;
-
 do $$
 declare
   v_due_at text;
@@ -288,10 +269,7 @@ begin
       lapses = coalesce(lapses, %4$s, 0)
   $sql$, v_due_at, v_last_review_at, v_review_count, v_lapse_count);
 end $$;
-
 alter table public.revision_cards drop constraint if exists revision_cards_state_check;
-drop index if exists idx_revision_cards_due;
-
 do $$
 declare
   state_type text;
@@ -321,14 +299,12 @@ begin
     alter table public.revision_cards alter column state set default 0;
   end if;
 end $$;
-
 alter table public.revision_cards
   add constraint revision_cards_state_check check (state between 0 and 4);
-
+drop index if exists idx_revision_cards_due;
 create index if not exists idx_revision_cards_due
   on public.revision_cards(user_id, due)
   where state <> 4;
-
 create table if not exists public.revision_logs (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references public.profiles(id) on delete cascade,
@@ -341,7 +317,6 @@ create table if not exists public.revision_logs (
   review_duration_ms int,
   reviewed_at timestamptz default now()
 );
-
 do $$
 begin
   if exists (select 1 from information_schema.tables where table_schema = 'public' and table_name = 'revision_logs') then
@@ -353,7 +328,6 @@ begin
       add column if not exists created_at timestamptz default now();
   end if;
 end $$;
-
 -- ---------------------------------------------------------------------------
 -- AUTOPSY tables
 -- ---------------------------------------------------------------------------
@@ -366,7 +340,6 @@ alter table public.mock_autopsies
   add column if not exists current_score numeric default 0,
   add column if not exists recoverable_marks numeric default 0,
   add column if not exists potential_score numeric default 0;
-
 do $$
 begin
   if exists (
@@ -376,7 +349,6 @@ begin
     execute 'update public.mock_autopsies set exam_type = coalesce(exam_type, exam)';
   end if;
 end $$;
-
 create table if not exists public.autopsy_questions (
   id uuid primary key default gen_random_uuid(),
   autopsy_id uuid not null references public.mock_autopsies(id) on delete cascade,
@@ -396,7 +368,6 @@ create table if not exists public.autopsy_questions (
   ocr_confidence numeric,
   created_at timestamptz default now()
 );
-
 alter table public.autopsy_questions
   add column if not exists user_id uuid references public.profiles(id) on delete cascade,
   add column if not exists subject text,
@@ -412,14 +383,11 @@ alter table public.autopsy_questions
   add column if not exists marks_lost numeric default 0,
   add column if not exists ocr_confidence numeric,
   add column if not exists created_at timestamptz default now();
-
 create index if not exists idx_autopsy_questions_autopsy
   on public.autopsy_questions(autopsy_id, question_number);
 create index if not exists idx_autopsy_questions_user
   on public.autopsy_questions(user_id, created_at desc);
-
 alter table public.autopsy_questions enable row level security;
-
 do $$
 begin
   if not exists (
@@ -432,7 +400,6 @@ begin
       with check (auth.uid() = user_id);
   end if;
 end $$;
-
 alter table public.mistakes drop constraint if exists mistakes_category_check;
 alter table public.mistakes
   add column if not exists subject text,
@@ -444,14 +411,12 @@ alter table public.mistakes
   add column if not exists improvement_suggestion text,
   add column if not exists is_recurring boolean default false,
   add column if not exists occurrence_count int default 1;
-
 -- ---------------------------------------------------------------------------
 -- COMMAND study sessions and cards
 -- ---------------------------------------------------------------------------
 alter table public.study_sessions
   add column if not exists created_at timestamptz default now(),
   add column if not exists updated_at timestamptz default now();
-
 alter table public.study_sessions
   add column if not exists date date default current_date,
   add column if not exists completed_at timestamptz,
@@ -464,14 +429,11 @@ alter table public.study_sessions
   add column if not exists is_completed boolean default false,
   add column if not exists metadata jsonb default '{}'::jsonb,
   add column if not exists summary text;
-
 update public.study_sessions
 set date = coalesce(ended_at, started_at, created_at)::date
 where date is null;
-
 create index if not exists idx_study_sessions_user_date
   on public.study_sessions(user_id, date);
-
 -- ---------------------------------------------------------------------------
 -- MIND tutor session state
 -- ---------------------------------------------------------------------------
@@ -480,10 +442,8 @@ alter table public.tutor_sessions
   add column if not exists misconception_detected text,
   add column if not exists turns_count int default 0,
   add column if not exists is_completed boolean default false;
-
 create index if not exists idx_tutor_sessions_active
   on public.tutor_sessions(user_id, is_completed, created_at desc);
-
 -- ---------------------------------------------------------------------------
 -- Student model durability
 -- ---------------------------------------------------------------------------
@@ -493,7 +453,6 @@ alter table public.student_models
   add column if not exists peak_productivity_hour int default 10,
   add column if not exists last_updated timestamptz,
   add column if not exists last_updated_at timestamptz;
-
 do $$
 declare
   v_type text;
@@ -505,7 +464,6 @@ begin
     execute 'alter table public.student_models alter column chronic_weaknesses type jsonb using to_jsonb(chronic_weaknesses)';
   end if;
 end $$;
-
 do $$
 declare
   v_weaknesses text;
@@ -535,14 +493,12 @@ begin
       last_updated_at = coalesce(last_updated_at, last_updated, %2$s, %3$s)
   $sql$, v_weaknesses, v_last_inferred_at, v_updated_at);
 end $$;
-
 alter table public.learner_states
   add column if not exists state_type text default 'aggregate',
   add column if not exists overall_confidence numeric default 0.5,
   add column if not exists estimated_retention numeric default 0.5,
   add column if not exists weekly_velocity int default 0,
   add column if not exists updated_at timestamptz default now();
-
 with ranked as (
   select
     id,
@@ -553,10 +509,8 @@ delete from public.learner_states ls
 using ranked
 where ls.id = ranked.id
   and ranked.rn > 1;
-
 create unique index if not exists idx_learner_states_user_state_type_unique
   on public.learner_states(user_id, state_type);
-
 create or replace function public.update_learner_state_incrementally(
   p_user_id uuid,
   p_confidence_delta numeric,
@@ -592,17 +546,14 @@ begin
     updated_at = now();
 end;
 $$ language plpgsql security definer set search_path = public;
-
 -- ---------------------------------------------------------------------------
 -- Durable global chat and long-term memory
 -- ---------------------------------------------------------------------------
 alter table public.chat_sessions
   add column if not exists session_type text default 'global',
   add column if not exists is_global boolean default false;
-
 alter table public.chat_sessions
   drop constraint if exists chat_sessions_session_type_check;
-
 with ranked as (
   select
     id,
@@ -615,18 +566,14 @@ set session_type = 'archived'
 from ranked
 where cs.id = ranked.id
   and ranked.rn > 1;
-
 update public.chat_sessions
 set is_global = (session_type = 'global');
-
 create unique index if not exists idx_chat_sessions_one_global
   on public.chat_sessions(user_id)
   where session_type = 'global';
-
 alter table public.chat_messages
   add column if not exists token_count int,
   add column if not exists estimated_cost numeric default 0;
-
 alter table public.chat_memory drop constraint if exists chat_memory_memory_type_check;
 alter table public.chat_memory
   add column if not exists source text default 'chat',
@@ -649,7 +596,6 @@ alter table public.chat_memory
       'goal',
       'behavioral_pattern'
     ));
-
 -- ---------------------------------------------------------------------------
 -- Event locking/retry fields
 -- ---------------------------------------------------------------------------
@@ -659,23 +605,19 @@ alter table public.event_queue
   add column if not exists locked_at timestamptz,
   add column if not exists locked_by text,
   add column if not exists last_error text;
-
 alter table public.consumer_locks
   add column if not exists next_attempt_at timestamptz,
   add column if not exists locked_at timestamptz,
   add column if not exists locked_by text,
   add column if not exists last_error text;
-
 alter table public.event_dlq
   add column if not exists user_id uuid references public.profiles(id) on delete cascade,
   add column if not exists event_type text,
   add column if not exists event_metadata jsonb default '{}'::jsonb,
   add column if not exists resolved_at timestamptz,
   add column if not exists resolution_notes text;
-
 update public.consumer_locks
 set next_attempt_at = coalesce(next_attempt_at, next_retry_at);
-
 -- ---------------------------------------------------------------------------
 -- Daily AI usage accounting
 -- ---------------------------------------------------------------------------
@@ -694,9 +636,7 @@ create table if not exists public.ai_usage_daily (
   updated_at timestamptz default now(),
   unique(user_id, usage_date)
 );
-
 alter table public.ai_usage_daily enable row level security;
-
 do $$
 begin
   if not exists (
@@ -708,7 +648,6 @@ begin
       using (auth.uid() = user_id);
   end if;
 end $$;
-
 -- ---------------------------------------------------------------------------
 -- Canonical event enqueue and leasing functions
 -- ---------------------------------------------------------------------------
@@ -778,7 +717,6 @@ begin
   return v_event_id;
 end;
 $$ language plpgsql volatile security definer set search_path = public;
-
 create or replace function public.acquire_event_leases(
   p_worker_id text,
   p_limit int,

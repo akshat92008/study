@@ -10,7 +10,6 @@ begin
 exception
   when duplicate_object then null;
 end $$;
-
 -- Runtime support table for deterministic session-close UX.
 create table if not exists public.session_closing_messages (
   id uuid primary key default gen_random_uuid(),
@@ -20,7 +19,6 @@ create table if not exists public.session_closing_messages (
   type text not null default 'success',
   created_at timestamptz not null default now()
 );
-
 alter table public.session_closing_messages enable row level security;
 drop policy if exists "Users access own session_closing_messages" on public.session_closing_messages;
 create policy "Users access own session_closing_messages"
@@ -32,10 +30,8 @@ create policy "Service role manages session_closing_messages"
   on public.session_closing_messages for all
   using (current_setting('request.jwt.claim.role', true) = 'service_role')
   with check (current_setting('request.jwt.claim.role', true) = 'service_role');
-
 create index if not exists idx_session_closing_messages_user
   on public.session_closing_messages(user_id, created_at desc);
-
 -- Legacy mastery service support tables. Active ATLAS paths primarily update
 -- concepts/mastery_events, but these tables keep older service paths valid.
 create table if not exists public.concept_mastery (
@@ -48,7 +44,6 @@ create table if not exists public.concept_mastery (
   updated_at timestamptz not null default now(),
   unique (user_id, concept_id)
 );
-
 alter table public.concept_mastery enable row level security;
 drop policy if exists "Users access own concept_mastery" on public.concept_mastery;
 create policy "Users access own concept_mastery"
@@ -60,7 +55,6 @@ create policy "Service role manages concept_mastery"
   on public.concept_mastery for all
   using (current_setting('request.jwt.claim.role', true) = 'service_role')
   with check (current_setting('request.jwt.claim.role', true) = 'service_role');
-
 create table if not exists public.mastery_evidence_log (
   id uuid primary key default gen_random_uuid(),
   mastery_id uuid not null references public.concept_mastery(id) on delete cascade,
@@ -69,7 +63,6 @@ create table if not exists public.mastery_evidence_log (
   source_id text,
   created_at timestamptz not null default now()
 );
-
 alter table public.mastery_evidence_log enable row level security;
 drop policy if exists "Users view own mastery_evidence_log" on public.mastery_evidence_log;
 create policy "Users view own mastery_evidence_log"
@@ -96,7 +89,6 @@ create policy "Service role manages mastery_evidence_log"
   on public.mastery_evidence_log for all
   using (current_setting('request.jwt.claim.role', true) = 'service_role')
   with check (current_setting('request.jwt.claim.role', true) = 'service_role');
-
 create table if not exists public.mastery_confidence (
   id uuid primary key default gen_random_uuid(),
   mastery_id uuid not null references public.concept_mastery(id) on delete cascade,
@@ -104,7 +96,6 @@ create table if not exists public.mastery_confidence (
   reason text,
   created_at timestamptz not null default now()
 );
-
 alter table public.mastery_confidence enable row level security;
 drop policy if exists "Users view own mastery_confidence" on public.mastery_confidence;
 create policy "Users view own mastery_confidence"
@@ -131,14 +122,12 @@ create policy "Service role manages mastery_confidence"
   on public.mastery_confidence for all
   using (current_setting('request.jwt.claim.role', true) = 'service_role')
   with check (current_setting('request.jwt.claim.role', true) = 'service_role');
-
 create index if not exists idx_concept_mastery_user_concept
   on public.concept_mastery(user_id, concept_id);
 create index if not exists idx_mastery_evidence_log_mastery
   on public.mastery_evidence_log(mastery_id, created_at desc);
 create index if not exists idx_mastery_confidence_mastery
   on public.mastery_confidence(mastery_id, created_at desc);
-
 -- Shared concept template cache. It is non-user data; authenticated users may
 -- read cached templates, while backend service writes are unrestricted.
 create table if not exists public.concept_templates (
@@ -151,7 +140,6 @@ create table if not exists public.concept_templates (
   updated_at timestamptz not null default now(),
   unique (exam_type, subject, chapter)
 );
-
 alter table public.concept_templates enable row level security;
 drop policy if exists "Authenticated users read concept_templates" on public.concept_templates;
 create policy "Authenticated users read concept_templates"
@@ -162,7 +150,6 @@ create policy "Service role manages concept_templates"
   on public.concept_templates for all
   using (current_setting('request.jwt.claim.role', true) = 'service_role')
   with check (current_setting('request.jwt.claim.role', true) = 'service_role');
-
 -- Operational provider health is backend-only.
 create table if not exists public.provider_health (
   provider text primary key,
@@ -170,14 +157,12 @@ create table if not exists public.provider_health (
   last_checked timestamptz not null default now(),
   failure_reason text
 );
-
 alter table public.provider_health enable row level security;
 drop policy if exists "Service role manages provider_health" on public.provider_health;
 create policy "Service role manages provider_health"
   on public.provider_health for all
   using (current_setting('request.jwt.claim.role', true) = 'service_role')
   with check (current_setting('request.jwt.claim.role', true) = 'service_role');
-
 -- User-bound AUTOPSY RPC must be called with the authenticated request client.
 -- The API route derives p_user_id from supabase.auth.getUser(); browser clients
 -- cannot spoof another user because the RPC checks auth.uid() directly.
@@ -211,17 +196,14 @@ begin
   end if;
 end
 $migration$;
-
 revoke execute on function public.ingest_mock_autopsy(
   uuid, text, text, int, int, int, int, numeric, numeric, numeric,
   jsonb, text, uuid, numeric
 ) from public, authenticated, service_role;
-
 grant execute on function public.ingest_mock_autopsy(
   uuid, text, text, int, int, int, int, numeric, numeric, numeric,
   jsonb, text, uuid, numeric
 ) to authenticated;
-
 -- Document ingestion is outside the MVP. Keep the historical RPC name from
 -- referencing a missing documents table, but fail closed if anything calls it.
 create or replace function public.ingest_autopsy_document(
@@ -241,10 +223,8 @@ begin
   raise exception 'disabled_for_mvp';
 end;
 $$ language plpgsql volatile security definer set search_path = public;
-
 revoke execute on function public.ingest_autopsy_document(uuid, text, text, text, text, bigint, jsonb)
   from public, authenticated, service_role;
-
 -- Worker/backlog indexes used by health checks and cron processing.
 create index if not exists idx_event_queue_status_next_created
   on public.event_queue(status, next_attempt_at, created_at);

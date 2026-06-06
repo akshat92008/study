@@ -22,7 +22,6 @@ alter table learner_states enable row level security;
 alter table performance_snapshots enable row level security;
 alter table student_events enable row level security;
 alter table event_consumer_tracking enable row level security;
-
 -- ============================================================================
 -- GENERIC USER-OWNED POLICY GENERATOR
 -- ============================================================================
@@ -38,32 +37,6 @@ declare
   ];
 begin
   foreach t in array user_tables loop
-    if t = 'profiles' then
-      -- profiles is keyed directly by auth.users(id); it does not have user_id.
-      execute format('
-        create policy "%I_select_own" on %I
-        for select using (auth.uid() = id);
-      ', t, t);
-
-      execute format('
-        create policy "%I_insert_own" on %I
-        for insert with check (auth.uid() = id);
-      ', t, t);
-
-      execute format('
-        create policy "%I_update_own" on %I
-        for update using (auth.uid() = id)
-        with check (auth.uid() = id);
-      ', t, t);
-
-      execute format('
-        create policy "%I_delete_own" on %I
-        for delete using (auth.uid() = id);
-      ', t, t);
-
-      continue;
-    end if;
-
     -- SELECT
     execute format('
       create policy "%I_select_own" on %I
@@ -90,7 +63,6 @@ begin
     ', t, t);
   end loop;
 end$$;
-
 -- ============================================================================
 -- EVENT_CONSUMER_TRACKING — special policy (joins via student_events)
 -- ============================================================================
@@ -102,7 +74,6 @@ create policy "event_consumer_tracking_select_own" on event_consumer_tracking
       and student_events.user_id = auth.uid()
     )
   );
-
 -- ============================================================================
 -- HYBRID SEARCH RPC (SECURITY DEFINER — but checks user_id)
 -- ============================================================================
@@ -146,9 +117,7 @@ begin
   limit match_count;
 end;
 $$;
-
 grant execute on function match_chat_memory to authenticated;
-
 -- Similar for material_chunks
 create or replace function match_material_chunks(
   query_embedding vector(768),
@@ -185,5 +154,4 @@ begin
   limit match_count;
 end;
 $$;
-
 grant execute on function match_material_chunks to authenticated;

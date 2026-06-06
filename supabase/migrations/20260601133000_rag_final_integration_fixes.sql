@@ -2,10 +2,8 @@
 -- Fixes query log mode, source metadata return, and source-linked practice artifacts.
 
 create extension if not exists vector;
-
 alter table public.rag_query_logs
   add column if not exists mode text not null default 'implicit';
-
 do $$
 begin
   if not exists (
@@ -18,20 +16,16 @@ begin
       check (mode in ('explicit', 'implicit', 'off'));
   end if;
 end $$;
-
 alter table public.practice_items
   add column if not exists subject text,
   add column if not exists chapter text,
   add column if not exists topic text,
   add column if not exists source_material_id uuid references public.study_materials(id) on delete set null,
   add column if not exists source_chunk_ids uuid[];
-
 create index if not exists practice_items_source_material_idx
   on public.practice_items(source_material_id);
-
 create index if not exists rag_query_logs_mode_idx
   on public.rag_query_logs(user_id, mode, created_at desc);
-
 drop function if exists public.match_study_material_chunks(
   vector(768),
   uuid,
@@ -41,7 +35,6 @@ drop function if exists public.match_study_material_chunks(
   text,
   double precision
 );
-
 create or replace function public.match_study_material_chunks(
   query_embedding vector(768),
   match_user_id uuid,
@@ -98,7 +91,6 @@ as $$
   order by c.embedding <=> query_embedding
   limit greatest(1, least(match_count, 8));
 $$;
-
 grant execute on function public.match_study_material_chunks(
   vector(768), uuid, integer, uuid[], text, text, double precision
 ) to authenticated, service_role;

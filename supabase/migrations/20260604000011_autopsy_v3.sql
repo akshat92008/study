@@ -26,7 +26,6 @@ create table if not exists public.assessments (
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
-
 create table if not exists public.assessment_questions (
   id uuid primary key default gen_random_uuid(),
   assessment_id uuid not null references public.assessments(id) on delete cascade,
@@ -53,7 +52,6 @@ create table if not exists public.assessment_questions (
   updated_at timestamptz not null default now(),
   unique (assessment_id, question_number)
 );
-
 create table if not exists public.mistake_diagnoses (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -83,9 +81,6 @@ create table if not exists public.mistake_diagnoses (
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
-
--- hermes_learning_memories: Legacy internal memory storage. 
--- Note: This is NOT the external Nous Hermes Agent.
 create table if not exists public.hermes_learning_memories (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -110,7 +105,6 @@ create table if not exists public.hermes_learning_memories (
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
-
 create table if not exists public.autopsy_reports (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -126,7 +120,6 @@ create table if not exists public.autopsy_reports (
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
-
 create table if not exists public.learning_signals (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -145,19 +138,15 @@ create table if not exists public.learning_signals (
   processed_at timestamptz null,
   created_at timestamptz not null default now()
 );
-
 create index if not exists assessments_user_created_idx on public.assessments(user_id, created_at desc);
 create index if not exists assessments_user_status_idx on public.assessments(user_id, status);
 create index if not exists assessments_user_goal_idx on public.assessments(user_id, goal_id);
-
 create index if not exists assessment_questions_user_assessment_idx on public.assessment_questions(user_id, assessment_id);
 create index if not exists assessment_questions_user_status_idx on public.assessment_questions(user_id, status);
 create index if not exists assessment_questions_user_topic_idx on public.assessment_questions(user_id, subject, topic);
-
 create index if not exists mistake_diagnoses_user_assessment_idx on public.mistake_diagnoses(user_id, assessment_id);
 create index if not exists mistake_diagnoses_user_type_idx on public.mistake_diagnoses(user_id, mistake_type);
 create index if not exists mistake_diagnoses_user_topic_idx on public.mistake_diagnoses(user_id, subject, topic);
-
 create index if not exists hermes_learning_memories_user_idx on public.hermes_learning_memories(user_id);
 create index if not exists hermes_learning_memories_user_status_idx on public.hermes_learning_memories(user_id, status);
 create index if not exists hermes_learning_memories_user_subject_idx on public.hermes_learning_memories(user_id, subject);
@@ -165,41 +154,32 @@ create index if not exists hermes_learning_memories_user_topic_idx on public.her
 create index if not exists hermes_learning_memories_user_type_idx on public.hermes_learning_memories(user_id, memory_type);
 create index if not exists hermes_learning_memories_user_severity_idx on public.hermes_learning_memories(user_id, severity);
 create index if not exists hermes_learning_memories_user_last_seen_idx on public.hermes_learning_memories(user_id, last_seen_at desc);
-
 create index if not exists autopsy_reports_user_created_idx on public.autopsy_reports(user_id, created_at desc);
 create index if not exists autopsy_reports_user_assessment_idx on public.autopsy_reports(user_id, assessment_id);
-
 create index if not exists learning_signals_user_created_idx on public.learning_signals(user_id, created_at desc);
 create index if not exists learning_signals_user_type_idx on public.learning_signals(user_id, signal_type);
 create index if not exists learning_signals_user_topic_idx on public.learning_signals(user_id, subject, topic);
-
 drop trigger if exists assessments_updated_at on public.assessments;
 create trigger assessments_updated_at before update on public.assessments
   for each row execute function public.update_updated_at();
-
 drop trigger if exists assessment_questions_updated_at on public.assessment_questions;
 create trigger assessment_questions_updated_at before update on public.assessment_questions
   for each row execute function public.update_updated_at();
-
 drop trigger if exists mistake_diagnoses_updated_at on public.mistake_diagnoses;
 create trigger mistake_diagnoses_updated_at before update on public.mistake_diagnoses
   for each row execute function public.update_updated_at();
-
 drop trigger if exists hermes_learning_memories_updated_at on public.hermes_learning_memories;
 create trigger hermes_learning_memories_updated_at before update on public.hermes_learning_memories
   for each row execute function public.update_updated_at();
-
 drop trigger if exists autopsy_reports_updated_at on public.autopsy_reports;
 create trigger autopsy_reports_updated_at before update on public.autopsy_reports
   for each row execute function public.update_updated_at();
-
 alter table public.assessments enable row level security;
 alter table public.assessment_questions enable row level security;
 alter table public.mistake_diagnoses enable row level security;
 alter table public.hermes_learning_memories enable row level security;
 alter table public.autopsy_reports enable row level security;
 alter table public.learning_signals enable row level security;
-
 do $$
 declare
   table_name text;
@@ -222,7 +202,6 @@ begin
     execute format('create policy "%s_delete_own" on public.%I for delete using (auth.uid() = user_id)', table_name, table_name);
   end loop;
 end $$;
-
 create or replace function public.create_event_with_consumers(
   p_user_id uuid,
   p_type text,
@@ -337,7 +316,6 @@ begin
   return v_event_id;
 end;
 $$ language plpgsql volatile security definer set search_path = public;
-
 revoke execute on function public.create_event_with_consumers(uuid, text, jsonb, text, text, jsonb)
 from public, anon, authenticated;
 grant execute on function public.create_event_with_consumers(uuid, text, jsonb, text, text, jsonb)

@@ -41,10 +41,8 @@ begin
   );
 end;
 $$ language plpgsql volatile security definer set search_path = public;
-
 revoke execute on function public.complete_daily_session_card(uuid, date) from public;
 grant execute on function public.complete_daily_session_card(uuid, date) to authenticated;
-
 create or replace function public.invalidate_session_card(
   p_user_id uuid,
   p_reason text default 'manual_invalidation'
@@ -79,6 +77,5 @@ begin
   );
 end;
 $$ language plpgsql volatile security definer set search_path = public;
-
 revoke execute on function public.invalidate_session_card(uuid, text) from public;
 grant execute on function public.invalidate_session_card(uuid, text) to authenticated;

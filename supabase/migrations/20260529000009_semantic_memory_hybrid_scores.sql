@@ -10,7 +10,6 @@ BEGIN
     RAISE NOTICE 'Renamed chat_memory_embeddings → chat_memory';
   END IF;
 END $$;
-
 -- 2. Ensure chat_memory actually exists (fallback if initial schema somehow missed it)
 CREATE TABLE IF NOT EXISTS public.chat_memory (
   id uuid primary key default gen_random_uuid(),
@@ -23,7 +22,6 @@ CREATE TABLE IF NOT EXISTS public.chat_memory (
   memory_type text default 'episodic' check (memory_type in ('episodic','semantic','procedural')),
   created_at timestamptz default now()
 );
-
 -- 3. Add hybrid scoring columns
 ALTER TABLE public.chat_memory
 ADD COLUMN IF NOT EXISTS novelty_score numeric(4,2) DEFAULT 0,
@@ -31,4 +29,3 @@ ADD COLUMN IF NOT EXISTS emotional_score numeric(4,2) DEFAULT 0,
 ADD COLUMN IF NOT EXISTS learning_score numeric(4,2) DEFAULT 0,
 ADD COLUMN IF NOT EXISTS repetition_score numeric(4,2) DEFAULT 0,
 ADD COLUMN IF NOT EXISTS importance_score numeric(4,2) DEFAULT 0;
-

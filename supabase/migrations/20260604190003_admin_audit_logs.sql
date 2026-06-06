@@ -5,5 +5,4 @@ create table if not exists public.admin_audit_logs (
     details jsonb default '{}'::jsonb,
     created_at timestamp with time zone default now() not null
 );
-
 alter table public.admin_audit_logs enable row level security;

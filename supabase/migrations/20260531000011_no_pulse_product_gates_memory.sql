@@ -6,7 +6,6 @@ alter table public.ai_usage_daily
   add column if not exists tutor_messages int not null default 0,
   add column if not exists autopsy_uploads int not null default 0,
   add column if not exists ai_calls int not null default 0;
-
 create or replace function public.check_and_increment_usage_gate(
   p_user_id uuid,
   p_gate text,
@@ -64,26 +63,20 @@ begin
   );
 end;
 $$ language plpgsql security definer set search_path = public;
-
 revoke execute on function public.check_and_increment_usage_gate(uuid, text, int, int) from public, anon, authenticated;
 grant execute on function public.check_and_increment_usage_gate(uuid, text, int, int) to service_role;
-
 alter table public.chat_memory
   add column if not exists source_type text not null default 'global_chat',
   add column if not exists source_id text,
   add column if not exists role text,
   add column if not exists metadata jsonb not null default '{}'::jsonb;
-
 create unique index if not exists idx_chat_memory_source_dedupe
   on public.chat_memory(user_id, source_type, source_id, role)
   where source_id is not null;
-
 create index if not exists idx_chat_memory_source_lookup
   on public.chat_memory(user_id, source_type, created_at desc);
-
 drop function if exists public.match_chat_memory(vector, float, int, uuid);
 drop function if exists public.match_chat_memory(vector(768), float, int, uuid);
-
 create or replace function public.match_chat_memory(
   query_embedding vector(768),
   match_threshold float,
@@ -110,10 +103,8 @@ create or replace function public.match_chat_memory(
     cm.created_at desc
   limit match_count;
 $$;
-
 revoke execute on function public.match_chat_memory(vector(768), float, int, uuid) from public, anon;
 grant execute on function public.match_chat_memory(vector(768), float, int, uuid) to authenticated, service_role;
-
 create table if not exists public.episodic_memories (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references public.profiles(id) on delete cascade,
@@ -128,7 +119,6 @@ create table if not exists public.episodic_memories (
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
-
 alter table public.episodic_memories
   add column if not exists summary text not null default '',
   add column if not exists source_type text not null default 'system',
@@ -138,9 +128,7 @@ alter table public.episodic_memories
   add column if not exists retrieval_weight numeric(6,3) not null default 0,
   add column if not exists last_referenced_at timestamptz,
   add column if not exists metadata jsonb not null default '{}'::jsonb;
-
 alter table public.episodic_memories enable row level security;
-
 do $$
 begin
   if not exists (
@@ -155,20 +143,15 @@ begin
       with check (auth.uid() = user_id);
   end if;
 end $$;
-
 create unique index if not exists idx_episodic_memory_source_dedupe
   on public.episodic_memories(user_id, source_type, source_id)
   where source_id is not null;
-
 create index if not exists idx_episodic_memory_retrieval
   on public.episodic_memories(user_id, retrieval_weight desc, created_at desc);
-
 alter table public.chat_messages
   add column if not exists prompt_version text;
-
 alter table public.ai_usage_events
   add column if not exists prompt_version text;
-
 create table if not exists public.outcome_snapshots (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references public.profiles(id) on delete cascade,
@@ -182,7 +165,6 @@ create table if not exists public.outcome_snapshots (
   created_at timestamptz not null default now(),
   unique(user_id, snapshot_date)
 );
-
 create table if not exists public.feature_usage_daily (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references public.profiles(id) on delete cascade,
@@ -196,10 +178,8 @@ create table if not exists public.feature_usage_daily (
   updated_at timestamptz not null default now(),
   unique(user_id, usage_date)
 );
-
 alter table public.outcome_snapshots enable row level security;
 alter table public.feature_usage_daily enable row level security;
-
 do $$
 declare
   t text;

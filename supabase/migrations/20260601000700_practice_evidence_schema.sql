@@ -12,11 +12,9 @@ CREATE TABLE IF NOT EXISTS public.practice_sets (
     source TEXT NOT NULL DEFAULT 'mind',
     created_at TIMESTAMPTZ DEFAULT now()
 );
-
 -- Index for looking up sets by message_id
 CREATE INDEX IF NOT EXISTS idx_practice_sets_message_id ON public.practice_sets (message_id);
 CREATE INDEX IF NOT EXISTS idx_practice_sets_user_id ON public.practice_sets (user_id);
-
 CREATE TABLE IF NOT EXISTS public.practice_items (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     practice_set_id UUID NOT NULL REFERENCES public.practice_sets(id) ON DELETE CASCADE,
@@ -31,10 +29,8 @@ CREATE TABLE IF NOT EXISTS public.practice_items (
     position INT NOT NULL,
     created_at TIMESTAMPTZ DEFAULT now()
 );
-
 CREATE INDEX IF NOT EXISTS idx_practice_items_set_id ON public.practice_items (practice_set_id);
 CREATE INDEX IF NOT EXISTS idx_practice_items_user_id ON public.practice_items (user_id);
-
 CREATE TABLE IF NOT EXISTS public.practice_attempts (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
@@ -46,29 +42,24 @@ CREATE TABLE IF NOT EXISTS public.practice_attempts (
     time_taken_seconds INT NULL,
     created_at TIMESTAMPTZ DEFAULT now()
 );
-
 CREATE INDEX IF NOT EXISTS idx_practice_attempts_user_id ON public.practice_attempts (user_id);
 CREATE INDEX IF NOT EXISTS idx_practice_attempts_item_id ON public.practice_attempts (practice_item_id);
-
 -- Enable RLS
 ALTER TABLE public.practice_sets ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.practice_items ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.practice_attempts ENABLE ROW LEVEL SECURITY;
-
 -- Policies for practice_sets
 CREATE POLICY "Users can manage their own practice sets"
 ON public.practice_sets
 FOR ALL
 USING (auth.uid() = user_id)
 WITH CHECK (auth.uid() = user_id);
-
 -- Policies for practice_items
 CREATE POLICY "Users can manage their own practice items"
 ON public.practice_items
 FOR ALL
 USING (auth.uid() = user_id)
 WITH CHECK (auth.uid() = user_id);
-
 -- Policies for practice_attempts
 CREATE POLICY "Users can manage their own practice attempts"
 ON public.practice_attempts

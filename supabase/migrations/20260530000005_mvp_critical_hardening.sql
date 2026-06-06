@@ -8,7 +8,6 @@ drop policy if exists "profiles_select_own" on public.profiles;
 drop policy if exists "profiles_insert_own" on public.profiles;
 drop policy if exists "profiles_update_own" on public.profiles;
 drop policy if exists "profiles_delete_own" on public.profiles;
-
 create policy "profiles_select_own" on public.profiles
   for select using (auth.uid() = id);
 create policy "profiles_insert_own" on public.profiles
@@ -18,7 +17,6 @@ create policy "profiles_update_own" on public.profiles
   with check (auth.uid() = id);
 create policy "profiles_delete_own" on public.profiles
   for delete using (auth.uid() = id);
-
 -- ---------------------------------------------------------------------------
 -- Stronger duplicate prevention and provenance
 -- ---------------------------------------------------------------------------
@@ -29,65 +27,50 @@ alter table public.revision_cards
   add column if not exists verified boolean not null default false,
   add column if not exists confidence numeric,
   add column if not exists origin_event_id uuid;
-
 create unique index if not exists idx_revision_cards_unique_source
   on public.revision_cards(user_id, source_type, source_id, source_hash)
   where source_type is not null and source_id is not null and source_hash is not null;
-
 create unique index if not exists idx_study_sessions_completion_key
   on public.study_sessions(user_id, (metadata->>'completion_key'))
   where metadata ? 'completion_key' and nullif(metadata->>'completion_key', '') is not null;
-
 alter table public.mock_autopsies
   add column if not exists metadata jsonb not null default '{}'::jsonb,
   add column if not exists trace_id uuid;
-
 create unique index if not exists idx_mock_autopsies_user_idempotency
   on public.mock_autopsies(user_id, (metadata->>'idempotency_key'))
   where metadata ? 'idempotency_key';
-
 alter table public.autopsy_questions
   add column if not exists evidence_status text not null default 'ignored_or_unverified',
   add column if not exists source_hash text,
   add column if not exists trace_id uuid;
-
 alter table public.autopsy_questions
   drop constraint if exists autopsy_questions_evidence_status_check,
   add constraint autopsy_questions_evidence_status_check
     check (evidence_status in ('verified_mistake', 'needs_review', 'ignored_or_unverified', 'corrected_by_user'));
-
 alter table public.mistakes
   drop constraint if exists mistakes_status_check;
-
 alter table public.mistakes
   add constraint mistakes_status_check
     check (status in ('pending_review', 'verified_mistake', 'rejected', 'corrected_by_user'));
-
 create index if not exists idx_autopsy_questions_verified
   on public.autopsy_questions(user_id, evidence_status, extraction_confidence desc)
   where evidence_status = 'verified_mistake';
-
 create index if not exists idx_event_queue_polling
   on public.event_queue(status, next_attempt_at, created_at);
-
 create index if not exists idx_consumer_locks_polling
   on public.consumer_locks(status, next_attempt_at, lease_expires_at, created_at);
-
 alter table public.event_dlq
   add column if not exists attempts int default 0,
   add column if not exists last_attempt_at timestamptz;
-
 alter table public.event_attempts
   add column if not exists event_id uuid,
   add column if not exists consumer_name text;
-
 do $$
 begin
   if exists (select 1 from pg_type where typname = 'event_status') then
     alter type event_status add value if not exists 'DLQ';
   end if;
 end $$;
-
 -- ---------------------------------------------------------------------------
 -- Atomic AI budget reservation
 -- ---------------------------------------------------------------------------
@@ -95,7 +78,6 @@ alter table public.ai_usage_daily
   add column if not exists reserved_cost numeric not null default 0,
   add column if not exists reserved_tokens int not null default 0,
   add column if not exists committed_cost numeric not null default 0;
-
 create table if not exists public.ai_budget_reservations (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references public.profiles(id) on delete cascade,
@@ -111,20 +93,15 @@ create table if not exists public.ai_budget_reservations (
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
-
 create index if not exists idx_ai_budget_reservations_user_date
   on public.ai_budget_reservations(user_id, usage_date, status);
-
 alter table public.ai_budget_reservations enable row level security;
-
 drop policy if exists "Users view own ai_budget_reservations" on public.ai_budget_reservations;
 create policy "Users view own ai_budget_reservations"
   on public.ai_budget_reservations for select
   using (auth.uid() = user_id);
-
 alter table public.ai_usage_events
   add column if not exists reservation_id uuid references public.ai_budget_reservations(id) on delete set null;
-
 create or replace function public.reserve_ai_budget(
   p_user_id uuid,
   p_feature text,
@@ -186,7 +163,6 @@ begin
   return v_reserved_id;
 end;
 $$ language plpgsql volatile security definer set search_path = public;
-
 create or replace function public.commit_ai_usage(
   p_reservation_id uuid,
   p_actual_cost numeric,
@@ -266,7 +242,6 @@ begin
   );
 end;
 $$ language plpgsql volatile security definer set search_path = public;
-
 create or replace function public.release_ai_budget(
   p_reservation_id uuid
 ) returns void as $$
@@ -298,7 +273,6 @@ begin
   where user_id = v_reservation.user_id and usage_date = v_reservation.usage_date;
 end;
 $$ language plpgsql volatile security definer set search_path = public;
-
 -- ---------------------------------------------------------------------------
 -- Security-definer hardening and transactional MVP RPCs
 -- ---------------------------------------------------------------------------
@@ -449,7 +423,7 @@ begin
 
   v_event_id := public.create_event_with_consumers(
     p_user_id,
-    'STUDY_SESSION_COMPLETED',
+    'COMMAND_SESSION_COMPLETED',
     jsonb_build_object(
       'sessionId', v_session_id,
       'taskId', coalesce(p_task_id::text, 'session-' || v_session_id::text),
@@ -543,7 +517,6 @@ begin
   );
 end;
 $$ language plpgsql volatile security definer set search_path = public;
-
 create or replace function public.ingest_mock_autopsy(
   p_user_id uuid,
   p_test_name text,
@@ -824,7 +797,6 @@ exception when others then
   raise;
 end;
 $$ language plpgsql volatile security definer set search_path = public;
-
 create or replace function public.ingest_autopsy_document(
   p_user_id uuid,
   p_filename text,
@@ -864,27 +836,19 @@ begin
   return v_document_id;
 end;
 $$ language plpgsql volatile security definer set search_path = public;
-
 revoke execute on function public.create_event_with_consumers(uuid, text, jsonb, text, text, jsonb) from public, authenticated;
 grant execute on function public.create_event_with_consumers(uuid, text, jsonb, text, text, jsonb) to service_role;
-
 revoke execute on function public.acquire_event_leases(text, int, interval) from public, authenticated;
 grant execute on function public.acquire_event_leases(text, int, interval) to service_role;
-
 revoke execute on function public.reserve_ai_budget(uuid, text, text, numeric, int, numeric) from public, authenticated;
 grant execute on function public.reserve_ai_budget(uuid, text, text, numeric, int, numeric) to service_role;
-
 revoke execute on function public.commit_ai_usage(uuid, numeric, int, int, text) from public, authenticated;
 grant execute on function public.commit_ai_usage(uuid, numeric, int, int, text) to service_role;
-
 revoke execute on function public.release_ai_budget(uuid) from public, authenticated;
 grant execute on function public.release_ai_budget(uuid) to service_role;
-
 revoke execute on function public.complete_study_session(uuid, text, text, text, text, int, boolean, text, int, text, uuid, uuid, text, text) from public;
 grant execute on function public.complete_study_session(uuid, text, text, text, text, int, boolean, text, int, text, uuid, uuid, text, text) to authenticated;
-
 revoke execute on function public.ingest_mock_autopsy(uuid, text, text, int, int, int, int, numeric, numeric, numeric, jsonb, text, uuid, numeric) from public;
 grant execute on function public.ingest_mock_autopsy(uuid, text, text, int, int, int, int, numeric, numeric, numeric, jsonb, text, uuid, numeric) to authenticated;
-
 revoke execute on function public.ingest_autopsy_document(uuid, text, text, text, text, bigint, jsonb) from public;
 grant execute on function public.ingest_autopsy_document(uuid, text, text, text, text, bigint, jsonb) to authenticated;

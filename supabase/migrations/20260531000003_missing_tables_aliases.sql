@@ -3,6 +3,5 @@
 
 create or replace view public.semantic_memories as
 select * from public.chat_memory;
-
 create or replace view public.mistake_events as
 select * from public.mistakes;

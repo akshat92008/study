@@ -6,7 +6,6 @@
 create extension if not exists "uuid-ossp";
 create extension if not exists "vector";
 create extension if not exists "pg_trgm";
-
 -- ============================================================================
 -- USER PROFILES
 -- ============================================================================
@@ -28,7 +27,6 @@ create table if not exists profiles (
   created_at timestamptz default now(),
   updated_at timestamptz default now()
 );
-
 -- ============================================================================
 -- KNOWLEDGE GRAPH (ATLAS)
 -- ============================================================================
@@ -51,11 +49,9 @@ create table if not exists concepts (
   updated_at timestamptz default now(),
   unique(user_id, subject, chapter, topic, name)
 );
-
 create index idx_concepts_user on concepts(user_id);
 create index idx_concepts_chapter on concepts(user_id, chapter);
 create index idx_concepts_mastery on concepts(user_id, mastery_tier);
-
 create table if not exists concept_links (
   id uuid primary key default uuid_generate_v4(),
   user_id uuid not null references profiles(id) on delete cascade,
@@ -66,10 +62,8 @@ create table if not exists concept_links (
   created_at timestamptz default now(),
   unique(from_concept_id, to_concept_id, link_type)
 );
-
 create index idx_concept_links_from on concept_links(from_concept_id);
 create index idx_concept_links_to on concept_links(to_concept_id);
-
 -- ============================================================================
 -- REVISION / FSRS CARDS
 -- ============================================================================
@@ -99,10 +93,8 @@ create table if not exists revision_cards (
   created_at timestamptz default now(),
   updated_at timestamptz default now()
 );
-
 create index idx_revision_cards_due on revision_cards(user_id, due_at) where state != 'suspended';
 create index idx_revision_cards_state on revision_cards(user_id, state);
-
 create table if not exists revision_logs (
   id uuid primary key default uuid_generate_v4(),
   user_id uuid not null references profiles(id) on delete cascade,
@@ -115,9 +107,7 @@ create table if not exists revision_logs (
   review_duration_ms int,
   reviewed_at timestamptz default now()
 );
-
 create index idx_revision_logs_user on revision_logs(user_id, reviewed_at desc);
-
 -- ============================================================================
 -- MOCK TEST AUTOPSIES
 -- ============================================================================
@@ -139,9 +129,7 @@ create table if not exists mock_autopsies (
   created_at timestamptz default now(),
   completed_at timestamptz
 );
-
 create index idx_mock_autopsies_user on mock_autopsies(user_id, created_at desc);
-
 create table if not exists mistakes (
   id uuid primary key default uuid_generate_v4(),
   user_id uuid not null references profiles(id) on delete cascade,
@@ -159,10 +147,8 @@ create table if not exists mistakes (
   recovered_at timestamptz,
   created_at timestamptz default now()
 );
-
 create index idx_mistakes_user on mistakes(user_id, created_at desc);
 create index idx_mistakes_category on mistakes(user_id, category);
-
 -- ============================================================================
 -- STUDY PLANNER (COMMAND)
 -- ============================================================================
@@ -186,10 +172,8 @@ create table if not exists study_tasks (
   metadata jsonb default '{}'::jsonb,
   created_at timestamptz default now()
 );
-
 create index idx_study_tasks_user_date on study_tasks(user_id, scheduled_date);
 create index idx_study_tasks_incomplete on study_tasks(user_id, scheduled_date) where is_completed = false;
-
 create table if not exists study_goals (
   id uuid primary key default uuid_generate_v4(),
   user_id uuid not null references profiles(id) on delete cascade,
@@ -201,7 +185,6 @@ create table if not exists study_goals (
   status text default 'active' check (status in ('active','completed','paused','cancelled')),
   created_at timestamptz default now()
 );
-
 -- ============================================================================
 -- CHAT / MEMORY
 -- ============================================================================
@@ -214,9 +197,7 @@ create table if not exists chat_sessions (
   created_at timestamptz default now(),
   updated_at timestamptz default now()
 );
-
 create index idx_chat_sessions_user on chat_sessions(user_id, updated_at desc);
-
 create table if not exists chat_messages (
   id uuid primary key default uuid_generate_v4(),
   session_id uuid not null references chat_sessions(id) on delete cascade,
@@ -230,9 +211,7 @@ create table if not exists chat_messages (
   provider text,
   created_at timestamptz default now()
 );
-
 create index idx_chat_messages_session on chat_messages(session_id, created_at);
-
 create table if not exists chat_memory (
   id uuid primary key default uuid_generate_v4(),
   user_id uuid not null references profiles(id) on delete cascade,
@@ -244,10 +223,8 @@ create table if not exists chat_memory (
   memory_type text default 'episodic' check (memory_type in ('episodic','semantic','procedural')),
   created_at timestamptz default now()
 );
-
 create index idx_chat_memory_user on chat_memory(user_id);
 create index idx_chat_memory_embedding on chat_memory using ivfflat (embedding vector_cosine_ops) with (lists = 100);
-
 -- ============================================================================
 -- MATERIALS / RAG
 -- ============================================================================
@@ -263,7 +240,6 @@ create table if not exists materials (
   word_count int,
   created_at timestamptz default now()
 );
-
 create table if not exists material_chunks (
   id uuid primary key default uuid_generate_v4(),
   material_id uuid not null references materials(id) on delete cascade,
@@ -276,10 +252,8 @@ create table if not exists material_chunks (
   token_count int,
   created_at timestamptz default now()
 );
-
 create index idx_material_chunks_user on material_chunks(user_id);
 create index idx_material_chunks_embedding on material_chunks using ivfflat (embedding vector_cosine_ops) with (lists = 100);
-
 -- ============================================================================
 -- STUDENT MODEL / INFERENCE
 -- ============================================================================
@@ -297,7 +271,6 @@ create table if not exists student_models (
   created_at timestamptz default now(),
   updated_at timestamptz default now()
 );
-
 create table if not exists learner_states (
   id uuid primary key default uuid_generate_v4(),
   user_id uuid not null references profiles(id) on delete cascade,
@@ -307,9 +280,7 @@ create table if not exists learner_states (
   expires_at timestamptz,
   created_at timestamptz default now()
 );
-
 create index idx_learner_states_user on learner_states(user_id, state_type);
-
 create table if not exists performance_snapshots (
   id uuid primary key default uuid_generate_v4(),
   user_id uuid not null references profiles(id) on delete cascade,
@@ -318,7 +289,6 @@ create table if not exists performance_snapshots (
   created_at timestamptz default now(),
   unique(user_id, snapshot_date)
 );
-
 -- ============================================================================
 -- EVENT BUS (already exists as function — adding tables)
 -- ============================================================================
@@ -339,10 +309,8 @@ create table if not exists student_events (
   completed_at timestamptz,
   unique nulls not distinct (user_id, idempotency_key)
 );
-
 create index idx_student_events_status on student_events(status, created_at) where status in ('pending','processing');
 create index idx_student_events_user on student_events(user_id, created_at desc);
-
 create table if not exists event_consumer_tracking (
   event_id uuid not null references student_events(id) on delete cascade,
   consumer_name text not null,
@@ -353,9 +321,7 @@ create table if not exists event_consumer_tracking (
   updated_at timestamptz default now(),
   primary key (event_id, consumer_name)
 );
-
 create index idx_event_consumer_tracking_status on event_consumer_tracking(consumer_name, status);
-
 create table if not exists dlq_events (
   id uuid primary key default uuid_generate_v4(),
   event_id uuid not null,
@@ -370,9 +336,7 @@ create table if not exists dlq_events (
   resolved_at timestamptz,
   resolution_notes text
 );
-
 create index idx_dlq_events_unresolved on dlq_events(created_at) where resolved_at is null;
-
 -- ============================================================================
 -- TRIGGERS
 -- ============================================================================
@@ -383,7 +347,6 @@ begin
   return new;
 end;
 $$ language plpgsql;
-
 create trigger profiles_updated_at before update on profiles
   for each row execute function update_updated_at();
 create trigger concepts_updated_at before update on concepts

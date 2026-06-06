@@ -15,7 +15,6 @@ BEGIN
     RAISE NOTICE 'Renamed events → student_events';
   END IF;
 END $$;
-
 -- ── Fix 2: event_consumers → event_consumer_tracking ────────────────────────
 DO $$
 BEGIN
@@ -26,7 +25,6 @@ BEGIN
     RAISE NOTICE 'Renamed event_consumers → event_consumer_tracking';
   END IF;
 END $$;
-
 -- ── Fix 3: event_dead_letter → dlq_events ───────────────────────────────────
 DO $$
 BEGIN
@@ -37,7 +35,6 @@ BEGIN
     RAISE NOTICE 'Renamed event_dead_letter → dlq_events';
   END IF;
 END $$;
-
 -- ── Fix 4: study_tasks column renames ───────────────────────────────────────
 DO $$
 BEGIN
@@ -65,13 +62,11 @@ BEGIN
     RAISE NOTICE 'Renamed study_tasks.category → type';
   END IF;
 END $$;
-
 -- ── Fix 5: Add missing study_tasks columns if absent ────────────────────────
 ALTER TABLE public.study_tasks ADD COLUMN IF NOT EXISTS is_completed boolean default false;
 ALTER TABLE public.study_tasks ADD COLUMN IF NOT EXISTS subject text;
 ALTER TABLE public.study_tasks ADD COLUMN IF NOT EXISTS chapter text;
 ALTER TABLE public.study_tasks ADD COLUMN IF NOT EXISTS notes text;
-
 -- ── Fix 6: Add missing student_events columns ────────────────────────────────
 ALTER TABLE public.student_events ADD COLUMN IF NOT EXISTS retry_count int default 0;
 ALTER TABLE public.student_events ADD COLUMN IF NOT EXISTS idempotency_key text;
@@ -80,12 +75,10 @@ ALTER TABLE public.student_events ADD COLUMN IF NOT EXISTS version text default 
 ALTER TABLE public.student_events ADD COLUMN IF NOT EXISTS metadata jsonb default '{}'::jsonb;
 ALTER TABLE public.student_events ADD COLUMN IF NOT EXISTS last_error text;
 ALTER TABLE public.student_events ADD COLUMN IF NOT EXISTS status text default 'pending';
-
 -- ── Fix 7: Add missing event_consumer_tracking columns ───────────────────────
 ALTER TABLE public.event_consumer_tracking ADD COLUMN IF NOT EXISTS retry_count int default 0;
 ALTER TABLE public.event_consumer_tracking ADD COLUMN IF NOT EXISTS last_error text;
 ALTER TABLE public.event_consumer_tracking ADD COLUMN IF NOT EXISTS updated_at timestamptz default now();
-
 -- ── Fix 8: Create dlq_events if completely missing ───────────────────────────
 CREATE TABLE IF NOT EXISTS public.dlq_events (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -101,9 +94,7 @@ CREATE TABLE IF NOT EXISTS public.dlq_events (
   resolved_at timestamptz,
   resolution_notes text
 );
-
 ALTER TABLE public.dlq_events ENABLE ROW LEVEL SECURITY;
-
 DO $$
 BEGIN
   IF NOT EXISTS (
@@ -112,13 +103,11 @@ BEGIN
     CREATE POLICY "Service role full access dlq" ON public.dlq_events FOR ALL USING (true);
   END IF;
 END $$;
-
 -- ── Fix 9: match_chat_memory RPC — point to chat_memory not chat_memory_embeddings ──
 -- The runtime writes to `chat_memory` (chatMemoryService.ts) so the RPC must read from `chat_memory`.
 -- Drop old version that pointed to chat_memory_embeddings.
 DROP FUNCTION IF EXISTS public.match_chat_memory(vector, float, int, uuid);
 DROP FUNCTION IF EXISTS public.match_chat_memory(vector(768), float, int, uuid);
-
 CREATE OR REPLACE FUNCTION public.match_chat_memory(
   query_embedding vector(768),
   match_threshold float,
@@ -166,11 +155,9 @@ BEGIN
   END IF;
 END;
 $$;
-
 REVOKE EXECUTE ON FUNCTION public.match_chat_memory(vector(768), float, int, uuid) FROM anon;
 GRANT EXECUTE ON FUNCTION public.match_chat_memory(vector(768), float, int, uuid) TO authenticated;
 GRANT EXECUTE ON FUNCTION public.match_chat_memory(vector(768), float, int, uuid) TO service_role;
-
 -- ── Fix 10: Ensure event_consumer_tracking RLS exists ───────────────────────
 DO $$
 BEGIN

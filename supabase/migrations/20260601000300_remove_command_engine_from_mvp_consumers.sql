@@ -1,3 +1,7 @@
+-- 20260530000016_remove_command_engine_from_mvp_consumers.sql
+-- Remove command_engine from new event consumer locks.
+-- command_engine is removed from the MVP learning loop; existing locks are unaffected.
+
 create or replace function public.create_event_with_consumers(
   p_user_id uuid,
   p_type text,
@@ -8,32 +12,16 @@ create or replace function public.create_event_with_consumers(
 ) returns uuid as $$
 declare
   v_event_id uuid;
-  v_consumers text[];
 begin
-  v_consumers := case p_type
-    when 'CHAT_MESSAGE_PROCESSED' then array['chat_side_effect_engine']
-    when 'CHAT_SESSION_SUMMARIZE' then array['chat_side_effect_engine']
-    when 'AUTOPSY_UPLOAD_RECEIVED' then array['autopsy_engine']
-    when 'AUTOPSY_MOCK_PROCESSED' then array['atlas_engine', 'memory_engine', 'learning_state_engine']
-    when 'STUDY_SESSION_COMPLETED' then array['atlas_engine', 'memory_engine', 'learning_state_engine']
-    when 'MIND_TUTOR_COMPLETED' then array['atlas_engine', 'memory_engine', 'learning_state_engine']
-    when 'MEMORY_CARD_REVIEWED' then array['learning_state_engine', 'atlas_engine']
-    when 'ATLAS_MASTERY_UPDATED' then array['learning_state_engine']
-    when 'MEMORY_CARD_CREATED' then array['learning_state_engine']
-    when 'CONCEPT_DISCOVERED' then array['concept_expansion_engine']
-    when 'INGESTION_DOCUMENT_PROCESSED' then array['learning_state_engine']
-    when 'MIND_MESSAGE_CREATED' then array['learning_state_engine']
-    when 'STUDENT_MODEL_SYNC_REQUESTED' then array['learning_state_engine', 'command_engine']
-    else array[]::text[]
-  end;
-
-  if p_user_id is null or array_length(v_consumers, 1) is null then
-    raise exception 'unsupported_event_type';
-  end if;
-
   with inserted as (
     insert into public.event_queue (
-      user_id, type, payload, idempotency_key, metadata, status, next_attempt_at
+      user_id,
+      type,
+      payload,
+      idempotency_key,
+      metadata,
+      status,
+      next_attempt_at
     ) values (
       p_user_id,
       p_type,
@@ -64,7 +52,13 @@ begin
   )
   select
     v_event_id,
-    unnest(v_consumers),
+    unnest(array[
+      'learning_state_engine',
+      'atlas_engine',
+      'memory_engine',
+      'concept_expansion_engine',
+      'chat_side_effect_engine'
+    ]::text[]),
     'PENDING',
     now(),
     now()

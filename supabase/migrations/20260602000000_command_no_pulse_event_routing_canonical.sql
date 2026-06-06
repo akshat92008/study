@@ -4,26 +4,20 @@
 
 alter table if exists public.agent_runs
   drop constraint if exists agent_runs_agent_name_check;
-
 update public.agent_runs
 set agent_name = 'system'
 where agent_name = 'pulse';
-
 alter table if exists public.agent_runs
   add constraint agent_runs_agent_name_check
   check (agent_name in ('mind', 'rag', 'atlas', 'memory', 'autopsy', 'planner', 'command', 'system'));
-
 alter table if exists public.agent_actions
   drop constraint if exists agent_actions_agent_name_check;
-
 update public.agent_actions
 set agent_name = 'system'
 where agent_name = 'pulse';
-
 alter table if exists public.agent_actions
   add constraint agent_actions_agent_name_check
   check (agent_name in ('mind', 'rag', 'atlas', 'memory', 'autopsy', 'planner', 'command', 'system'));
-
 create or replace function public.create_event_with_consumers(
   p_user_id uuid,
   p_type text,
@@ -120,7 +114,6 @@ begin
   return v_event_id;
 end;
 $$ language plpgsql volatile security definer set search_path = public;
-
 revoke execute on function public.create_event_with_consumers(uuid, text, jsonb, text, text, jsonb)
 from public, anon, authenticated;
 grant execute on function public.create_event_with_consumers(uuid, text, jsonb, text, text, jsonb)

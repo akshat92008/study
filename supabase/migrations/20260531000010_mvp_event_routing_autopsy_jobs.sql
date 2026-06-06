@@ -5,14 +5,12 @@
 
 create extension if not exists pgcrypto;
 create extension if not exists unaccent;
-
 do $$
 begin
   alter type public.event_status add value if not exists 'PARTIAL_FAILED';
 exception
   when undefined_object then null;
 end $$;
-
 create or replace function public.normalize_academic_text(p_value text)
 returns text as $$
 declare
@@ -50,7 +48,6 @@ begin
   return nullif(v, '');
 end;
 $$ language plpgsql immutable set search_path = public;
-
 create or replace function public.normalize_academic_chapter(p_value text)
 returns text as $$
 declare
@@ -69,7 +66,6 @@ begin
   return v;
 end;
 $$ language plpgsql immutable set search_path = public;
-
 create or replace function public.normalize_academic_subject(p_value text)
 returns text as $$
 declare
@@ -85,13 +81,11 @@ begin
   return v;
 end;
 $$ language plpgsql immutable set search_path = public;
-
 alter table public.concepts
   add column if not exists normalized_subject text,
   add column if not exists normalized_chapter text,
   add column if not exists normalized_name text,
   add column if not exists concept_key text;
-
 update public.concepts
 set
   normalized_subject = public.normalize_academic_subject(subject),
@@ -107,7 +101,6 @@ where concept_key is null
    or normalized_subject is null
    or normalized_chapter is null
    or normalized_name is null;
-
 create or replace function public.set_concept_canonical_fields()
 returns trigger as $$
 begin
@@ -123,13 +116,11 @@ begin
   return new;
 end;
 $$ language plpgsql set search_path = public;
-
 drop trigger if exists trg_set_concept_canonical_fields on public.concepts;
 create trigger trg_set_concept_canonical_fields
 before insert or update of subject, chapter, topic, name
 on public.concepts
 for each row execute function public.set_concept_canonical_fields();
-
 do $$
 begin
   create unique index if not exists idx_concepts_user_concept_key_unique
@@ -139,10 +130,8 @@ exception
   when unique_violation then
     raise notice 'Skipping unique concept_key index until existing duplicate concepts are merged';
 end $$;
-
 alter table public.revision_cards
   add column if not exists normalized_key text;
-
 update public.revision_cards
 set normalized_key = encode(
   digest(
@@ -156,7 +145,6 @@ set normalized_key = encode(
   'hex'
 )
 where normalized_key is null;
-
 do $$
 begin
   create unique index if not exists idx_revision_cards_user_normalized_key_unique
@@ -166,7 +154,6 @@ exception
   when unique_violation then
     raise notice 'Skipping unique revision card normalized_key index until existing duplicates are merged';
 end $$;
-
 create table if not exists public.autopsy_jobs (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -186,7 +173,6 @@ create table if not exists public.autopsy_jobs (
   updated_at timestamptz not null default now(),
   unique (user_id, idempotency_key)
 );
-
 alter table public.autopsy_jobs enable row level security;
 drop policy if exists "users_all_own_autopsy_jobs" on public.autopsy_jobs;
 create policy "users_all_own_autopsy_jobs"
@@ -198,12 +184,10 @@ create policy "service_role_all_autopsy_jobs"
   on public.autopsy_jobs for all
   using (current_setting('request.jwt.claim.role', true) = 'service_role')
   with check (current_setting('request.jwt.claim.role', true) = 'service_role');
-
 create index if not exists idx_autopsy_jobs_status_created
   on public.autopsy_jobs(status, created_at);
 create index if not exists idx_autopsy_jobs_user_created
   on public.autopsy_jobs(user_id, created_at desc);
-
 create or replace function public.create_event_with_consumers(
   p_user_id uuid,
   p_type text,
@@ -279,15 +263,12 @@ begin
   return v_event_id;
 end;
 $$ language plpgsql volatile security definer set search_path = public;
-
 revoke execute on function public.create_event_with_consumers(uuid, text, jsonb, text, text, jsonb)
   from public, authenticated;
 grant execute on function public.create_event_with_consumers(uuid, text, jsonb, text, text, jsonb)
   to service_role;
-
 delete from public.consumer_locks
 where consumer_name = 'command_engine';
-
 do $migration$
 declare
   v_signature regprocedure := 'public.ingest_mock_autopsy(uuid,text,text,integer,integer,integer,integer,numeric,numeric,numeric,jsonb,text,uuid,numeric)'::regprocedure;
@@ -310,12 +291,10 @@ begin
   end if;
 end
 $migration$;
-
 revoke execute on function public.ingest_mock_autopsy(
   uuid, text, text, int, int, int, int, numeric, numeric, numeric,
   jsonb, text, uuid, numeric
 ) from public;
-
 grant execute on function public.ingest_mock_autopsy(
   uuid, text, text, int, int, int, int, numeric, numeric, numeric,
   jsonb, text, uuid, numeric

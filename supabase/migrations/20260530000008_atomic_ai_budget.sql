@@ -71,7 +71,6 @@ begin
 
 end;
 $$ language plpgsql volatile security definer set search_path = public;
-
 -- Revoke and grant as needed
 revoke execute on function public.atomic_ai_budget_spend(uuid, text, text, numeric, int, int, text, numeric) from public, authenticated;
 grant execute on function public.atomic_ai_budget_spend(uuid, text, text, numeric, int, int, text, numeric) to service_role;

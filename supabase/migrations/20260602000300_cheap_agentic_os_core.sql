@@ -15,7 +15,6 @@ create table if not exists public.learning_evidence (
   payload jsonb not null default '{}'::jsonb,
   created_at timestamptz not null default now()
 );
-
 alter table public.learning_evidence enable row level security;
 drop policy if exists "Users can read own learning evidence" on public.learning_evidence;
 create policy "Users can read own learning evidence"
@@ -29,7 +28,6 @@ create index if not exists learning_evidence_user_created_idx
   on public.learning_evidence(user_id, created_at desc);
 create index if not exists learning_evidence_user_topic_idx
   on public.learning_evidence(user_id, subject, chapter, topic);
-
 create table if not exists public.student_mastery (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -44,7 +42,6 @@ create table if not exists public.student_mastery (
   updated_at timestamptz not null default now(),
   unique(user_id, subject, chapter, topic)
 );
-
 alter table public.student_mastery enable row level security;
 drop policy if exists "Users can read own mastery" on public.student_mastery;
 create policy "Users can read own mastery"
@@ -52,7 +49,6 @@ create policy "Users can read own mastery"
   using (auth.uid() = user_id);
 create index if not exists student_mastery_user_updated_idx
   on public.student_mastery(user_id, updated_at desc);
-
 create table if not exists public.mistake_patterns (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -66,7 +62,6 @@ create table if not exists public.mistake_patterns (
   payload jsonb not null default '{}'::jsonb,
   unique(user_id, subject, chapter, topic, pattern_type)
 );
-
 alter table public.mistake_patterns enable row level security;
 drop policy if exists "Users can read own mistake patterns" on public.mistake_patterns;
 create policy "Users can read own mistake patterns"
@@ -74,32 +69,27 @@ create policy "Users can read own mistake patterns"
   using (auth.uid() = user_id);
 create index if not exists mistake_patterns_user_seen_idx
   on public.mistake_patterns(user_id, last_seen_at desc);
-
 alter table if exists public.practice_attempts
   add column if not exists idempotency_key text;
 create unique index if not exists practice_attempts_user_id_idempotency_key_idx
   on public.practice_attempts(user_id, idempotency_key)
   where idempotency_key is not null;
-
 alter table if exists public.agent_actions
   add column if not exists event_id uuid;
 create index if not exists idx_agent_actions_event_id
   on public.agent_actions(event_id);
 create index if not exists agent_actions_user_status_idx
   on public.agent_actions(user_id, status, created_at desc);
-
 alter table if exists public.agent_runs
   drop constraint if exists agent_runs_agent_name_check;
 alter table if exists public.agent_runs
   add constraint agent_runs_agent_name_check
   check (agent_name in ('mind', 'rag', 'atlas', 'memory', 'autopsy', 'revision', 'planner', 'command', 'pulse', 'system'));
-
 alter table if exists public.agent_actions
   drop constraint if exists agent_actions_agent_name_check;
 alter table if exists public.agent_actions
   add constraint agent_actions_agent_name_check
   check (agent_name in ('mind', 'rag', 'atlas', 'memory', 'autopsy', 'revision', 'planner', 'command', 'pulse', 'system'));
-
 create table if not exists public.daily_missions (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -112,7 +102,6 @@ create table if not exists public.daily_missions (
   updated_at timestamptz not null default now(),
   unique(user_id, mission_date)
 );
-
 alter table public.daily_missions enable row level security;
 drop policy if exists "Users can read own daily missions" on public.daily_missions;
 create policy "Users can read own daily missions"
@@ -120,7 +109,6 @@ create policy "Users can read own daily missions"
   using (auth.uid() = user_id);
 create index if not exists daily_missions_user_date_idx
   on public.daily_missions(user_id, mission_date desc);
-
 create or replace function public.create_event_with_consumers(
   p_user_id uuid,
   p_type text,
@@ -224,7 +212,6 @@ begin
   return v_event_id;
 end;
 $$ language plpgsql volatile security definer set search_path = public;
-
 revoke execute on function public.create_event_with_consumers(uuid, text, jsonb, text, text, jsonb)
 from public, anon, authenticated;
 grant execute on function public.create_event_with_consumers(uuid, text, jsonb, text, text, jsonb)

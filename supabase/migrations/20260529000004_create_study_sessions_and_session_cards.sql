@@ -13,7 +13,6 @@ CREATE TABLE IF NOT EXISTS study_sessions (
   breaks_taken INT DEFAULT 0,
   notes TEXT
 );
-
 -- Session Cards
 CREATE TABLE IF NOT EXISTS session_cards (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -32,12 +31,9 @@ CREATE TABLE IF NOT EXISTS session_cards (
   created_at TIMESTAMPTZ DEFAULT now(),
   UNIQUE(user_id, date)
 );
-
 CREATE INDEX IF NOT EXISTS idx_session_cards_user_date ON session_cards(user_id, date);
-
 -- RLS Policies
 ALTER TABLE study_sessions ENABLE ROW LEVEL SECURITY;
 ALTER TABLE session_cards ENABLE ROW LEVEL SECURITY;
-
 CREATE POLICY "Users access own study_sessions" ON study_sessions FOR ALL USING (auth.uid() = user_id);
 CREATE POLICY "Users access own session_cards" ON session_cards FOR ALL USING (auth.uid() = user_id);

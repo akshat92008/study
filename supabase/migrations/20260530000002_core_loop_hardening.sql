@@ -3,13 +3,10 @@
 
 alter table public.profiles
   add column if not exists learner_state_version int not null default 0;
-
 alter table public.session_cards
   add column if not exists learner_state_version int not null default 0;
-
 alter table public.concepts
   add column if not exists mastery_score numeric default 0;
-
 create table if not exists public.concept_aliases (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references public.profiles(id) on delete cascade,
@@ -19,12 +16,9 @@ create table if not exists public.concept_aliases (
   created_at timestamptz default now(),
   unique(user_id, normalized_alias)
 );
-
 create index if not exists idx_concept_aliases_concept
   on public.concept_aliases(concept_id);
-
 alter table public.concept_aliases enable row level security;
-
 do $$
 begin
   if not exists (
@@ -37,7 +31,6 @@ begin
       with check (auth.uid() = user_id);
   end if;
 end $$;
-
 create table if not exists public.unresolved_concept_mentions (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references public.profiles(id) on delete cascade,
@@ -54,12 +47,9 @@ create table if not exists public.unresolved_concept_mentions (
   reason text,
   created_at timestamptz default now()
 );
-
 create index if not exists idx_unresolved_concept_mentions_user
   on public.unresolved_concept_mentions(user_id, created_at desc);
-
 alter table public.unresolved_concept_mentions enable row level security;
-
 do $$
 begin
   if not exists (
@@ -72,7 +62,6 @@ begin
       with check (auth.uid() = user_id);
   end if;
 end $$;
-
 create table if not exists public.concept_resolution_logs (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references public.profiles(id) on delete cascade,
@@ -89,12 +78,9 @@ create table if not exists public.concept_resolution_logs (
   reason text,
   created_at timestamptz default now()
 );
-
 create index if not exists idx_concept_resolution_logs_user
   on public.concept_resolution_logs(user_id, created_at desc);
-
 alter table public.concept_resolution_logs enable row level security;
-
 do $$
 begin
   if not exists (
@@ -107,21 +93,17 @@ begin
       with check (auth.uid() = user_id);
   end if;
 end $$;
-
 alter table public.mastery_events
   add column if not exists evidence_type text,
   add column if not exists weight numeric,
   add column if not exists confidence numeric,
   add column if not exists source_event_id uuid;
-
 create unique index if not exists idx_mastery_events_idempotent_source
   on public.mastery_events(user_id, concept_id, evidence_type, source, source_id)
   where source_id is not null and evidence_type is not null;
-
 alter table public.event_attempts
   add column if not exists result_status text,
   add column if not exists result_reason text;
-
 create or replace function public.create_event_with_consumers(
   p_user_id uuid,
   p_type text,
@@ -204,7 +186,6 @@ begin
   return v_event_id;
 end;
 $$ language plpgsql volatile security definer set search_path = public;
-
 create or replace function public.update_learner_state_incrementally(
   p_user_id uuid,
   p_confidence_delta numeric,

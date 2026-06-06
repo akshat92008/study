@@ -4,7 +4,6 @@
 -- 0. Add status to mistakes for confidence gating
 alter table public.mistakes
   add column if not exists status text default 'pending_review' check (status in ('pending_review', 'verified_mistake', 'rejected'));
-
 -- 1. Study Session Completion RPC
 
 -- 1. Study Session Completion RPC
@@ -102,7 +101,6 @@ begin
   );
 end;
 $$ language plpgsql security definer set search_path = public;
-
 -- 2. Autopsy Ingestion RPC
 create or replace function public.ingest_autopsy_document(
   p_user_id uuid,

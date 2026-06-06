@@ -16,7 +16,6 @@ alter table public.autopsy_questions
   add column if not exists raw_evidence jsonb default '{}'::jsonb,
   add column if not exists reviewed_at timestamptz,
   add column if not exists reviewed_by uuid references auth.users(id) on delete set null;
-
 -- Add constraints to autopsy_questions (using DO block to catch if already exists)
 do $$
 begin
@@ -34,11 +33,9 @@ begin
       check (mistake_type in ('conceptual_gap', 'formula_recall', 'calculation_error', 'misread_question', 'option_trap', 'silly_mistake', 'time_pressure', 'forgot_fact', 'application_failure', 'low_confidence_guess', 'unattempted', 'ambiguous', 'out_of_syllabus', 'unknown'));
   end if;
 end $$;
-
 -- Indexes for autopsy_questions
 create index if not exists idx_autopsy_questions_user_evidence_status on public.autopsy_questions(user_id, evidence_status);
 create index if not exists idx_autopsy_questions_user_concept_id on public.autopsy_questions(user_id, concept_id);
-
 -- Add missing columns to mistakes safely
 alter table public.mistakes
   add column if not exists autopsy_question_id uuid references public.autopsy_questions(id) on delete set null,
@@ -47,7 +44,6 @@ alter table public.mistakes
   add column if not exists evidence_source text default 'autopsy',
   add column if not exists source text default 'autopsy',
   add column if not exists raw_evidence jsonb default '{}'::jsonb;
-
 -- Add constraints to mistakes (using DO block to catch if already exists)
 do $$
 begin
@@ -58,15 +54,12 @@ begin
       check (mistake_type in ('conceptual_gap', 'formula_recall', 'calculation_error', 'misread_question', 'option_trap', 'silly_mistake', 'time_pressure', 'forgot_fact', 'application_failure', 'low_confidence_guess', 'unattempted', 'ambiguous', 'out_of_syllabus', 'unknown'));
   end if;
 end $$;
-
 -- Indexes for mistakes
 create index if not exists idx_mistakes_user_concept on public.mistakes(user_id, concept_id);
 create index if not exists idx_mistakes_user_created_desc on public.mistakes(user_id, created_at desc);
-
 -- RLS check
 alter table public.autopsy_questions enable row level security;
 alter table public.mistakes enable row level security;
-
 -- ============================================================================
 -- OVERRIDE INGEST MOCK AUTOPSY RPC
 -- ============================================================================
@@ -444,12 +437,10 @@ exception when others then
   raise;
 end;
 $$ language plpgsql volatile security definer set search_path = public;
-
 revoke execute on function public.ingest_mock_autopsy(
   uuid, text, text, int, int, int, int, numeric, numeric, numeric,
   jsonb, text, uuid, numeric
 ) from public, authenticated, service_role;
-
 grant execute on function public.ingest_mock_autopsy(
   uuid, text, text, int, int, int, int, numeric, numeric, numeric,
   jsonb, text, uuid, numeric

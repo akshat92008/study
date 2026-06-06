@@ -3,7 +3,6 @@
 
 -- 1. Add a unique constraint on learning_goals to support the composite FK
 ALTER TABLE public.learning_goals ADD CONSTRAINT learning_goals_id_user_id_key UNIQUE (id, user_id);
-
 -- 2. Add composite foreign keys to all tables that have both goal_id and user_id
 DO $$
 DECLARE

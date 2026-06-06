@@ -10,11 +10,9 @@ CREATE TABLE IF NOT EXISTS chat_session_summaries (
   updated_at timestamptz DEFAULT now(),
   UNIQUE(user_id, session_id)
 );
-
 ALTER TABLE chat_session_summaries ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "Users own their session summaries"
   ON chat_session_summaries FOR ALL USING (user_id = auth.uid());
-
 -- Enrich ai_usage_events (additive, never destructive)
 DO $$ 
 BEGIN
@@ -43,7 +41,6 @@ BEGIN
     ALTER TABLE ai_usage_events ADD COLUMN tokens_saved_estimate int DEFAULT 0;
   END IF;
 END $$;
-
 -- Embedding deduplication
 CREATE UNIQUE INDEX IF NOT EXISTS study_material_chunks_content_hash_embedding_idx
   ON study_material_chunks (user_id, content_hash, embedding_model)

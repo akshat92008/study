@@ -12,46 +12,37 @@ BEGIN
         ALTER TABLE study_materials ADD COLUMN deleted_at timestamp with time zone;
     END IF;
 END $$;
-
 -- Enforce strict RLS on profiles and study_materials
 ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
 ALTER TABLE study_materials ENABLE ROW LEVEL SECURITY;
-
 -- Profile RLS
 DROP POLICY IF EXISTS "Users can read own profile" ON profiles;
 CREATE POLICY "Users can read own profile"
     ON profiles FOR SELECT
     USING (auth.uid() = id AND deleted_at IS NULL);
-
 DROP POLICY IF EXISTS "Users can update own profile" ON profiles;
 CREATE POLICY "Users can update own profile"
     ON profiles FOR UPDATE
     USING (auth.uid() = id AND deleted_at IS NULL)
     WITH CHECK (auth.uid() = id);
-
 -- Prevent hard deletes by users entirely
 DROP POLICY IF EXISTS "Users can delete own profile" ON profiles;
-
 -- Study Materials RLS
 DROP POLICY IF EXISTS "Users can read own study materials" ON study_materials;
 CREATE POLICY "Users can read own study materials"
     ON study_materials FOR SELECT
     USING (auth.uid() = user_id AND deleted_at IS NULL);
-
 DROP POLICY IF EXISTS "Users can insert own study materials" ON study_materials;
 CREATE POLICY "Users can insert own study materials"
     ON study_materials FOR INSERT
     WITH CHECK (auth.uid() = user_id);
-
 DROP POLICY IF EXISTS "Users can update own study materials" ON study_materials;
 CREATE POLICY "Users can update own study materials"
     ON study_materials FOR UPDATE
     USING (auth.uid() = user_id AND deleted_at IS NULL)
     WITH CHECK (auth.uid() = user_id);
-
 -- Soft delete for study materials instead of hard delete
 DROP POLICY IF EXISTS "Users can delete own study materials" ON study_materials;
-
 -- Trigger to prevent manual hard deletions of profiles (Guardrail)
 CREATE OR REPLACE FUNCTION prevent_profile_hard_delete()
 RETURNS trigger AS $$
@@ -64,7 +55,6 @@ BEGIN
     RAISE EXCEPTION 'Hard deletion of profiles is prevented. Use soft delete by setting deleted_at.';
 END;
 $$ LANGUAGE plpgsql;
-
 DROP TRIGGER IF EXISTS trg_prevent_profile_hard_delete ON profiles;
 CREATE TRIGGER trg_prevent_profile_hard_delete
     BEFORE DELETE ON profiles

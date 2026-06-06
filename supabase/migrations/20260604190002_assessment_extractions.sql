@@ -9,16 +9,12 @@ create table if not exists public.assessment_extractions (
   metadata jsonb default '{}'::jsonb not null,
   created_at timestamp with time zone default now() not null
 );
-
 create index if not exists idx_assessment_extractions_user on public.assessment_extractions(user_id);
 create index if not exists idx_assessment_extractions_hash on public.assessment_extractions(file_hash);
-
 alter table public.assessment_extractions enable row level security;
-
 create policy "Users can insert their own extractions"
   on public.assessment_extractions for insert
   with check (auth.uid() = user_id);
-
 create policy "Users can view their own extractions"
   on public.assessment_extractions for select
   using (auth.uid() = user_id);

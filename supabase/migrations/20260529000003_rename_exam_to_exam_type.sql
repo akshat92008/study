@@ -8,7 +8,6 @@ BEGIN
     EXECUTE 'ALTER TABLE public.profiles RENAME COLUMN exam TO exam_type;';
   END IF;
 END $$;
-
 DO $$
 BEGIN
   -- Always attempt to clean up the old constraint if it exists
