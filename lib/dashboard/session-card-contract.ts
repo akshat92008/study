@@ -11,6 +11,9 @@ export interface ClientSessionCard {
   taskType?: string;
   resourceType?: string;
   targetConceptId?: string | null;
+  targetMistakeId?: string | null;
+  targetRetestId?: string | null;
+  repairPhase?: 'immediate_repair' | 'delayed_retest' | null;
   priority?: string;
   isCompleted?: boolean;
   completedAt?: string | null;
@@ -68,6 +71,12 @@ function toClientCard(value: unknown): ClientSessionCard | null {
     taskType: stringOr(value.taskType, ''),
     resourceType: stringOr(value.resourceType, ''),
     targetConceptId: nullableString(value.targetConceptId),
+    targetMistakeId: nullableString(value.targetMistakeId),
+    targetRetestId: nullableString(value.targetRetestId),
+    repairPhase:
+      value.repairPhase === 'immediate_repair' || value.repairPhase === 'delayed_retest'
+        ? value.repairPhase
+        : null,
     priority: stringOr(value.priority, ''),
     isCompleted: value.isCompleted === true,
     completedAt: nullableString(value.completedAt),

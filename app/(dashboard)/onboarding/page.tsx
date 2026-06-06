@@ -99,9 +99,9 @@ export default async function OnboardingPage() {
 
   return (
     <div style={{ padding: 'var(--sp-8)', maxWidth: 640, margin: '0 auto', width: '100%' }}>
-      <h1 style={{ fontSize: 'var(--fs-2xl)', marginBottom: 'var(--sp-2)' }}>Set Up Your Learning OS</h1>
+      <h1 style={{ fontSize: 'var(--fs-2xl)', marginBottom: 'var(--sp-2)' }}>Give Cognition OS Something To Protect</h1>
       <p style={{ color: 'var(--text-secondary)', marginBottom: 'var(--sp-6)' }}>
-        Tell Cognition OS what you are trying to learn. It will build your personalised mission, tutor, and study plan.
+        Start with a goal, then paste wrong answers, upload mistakes, or take a diagnostic so tomorrow's plan protects marks you might lose again.
       </p>
 
       <form action={completeOnboarding} style={{ display: 'grid', gap: 'var(--sp-4)' }}>

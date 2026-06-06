@@ -5,18 +5,18 @@
  * The LLM is only allowed to phrase the card — never to pick the target.
  *
  * Priority (evaluated in order, first match wins):
- *   P1  Due / overdue revision cards
- *   P2  Recent mistakes (last 7 days)
- *   P3  Active daily task (after urgent review/mistake signals)
- *   P4  Active LEARNING GOAL deadline pressure
- *   P5  Recently studied but low-mastery concepts
- *   P6  Weakest concepts  (mastery ∈ {not_started, exposed, developing})
- *   P7  Fallback / onboarding  (no learner data at all)
+ *   P1  Due delayed retests
+ *   P2  Open / repairing high-severity mistakes
+ *   P3  Weak concepts below mastery threshold
+ *   P4  Due / overdue MEMORY cards
+ *   P5  Active daily task / goal progression
+ *   P6  Fallback / onboarding  (no learner data at all)
  */
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 
 export type SessionCardTaskType =
+  | 'retest'          // P1: prove a repaired mistake is actually repaired
   | 'revision'        // P1: work overdue FSRS cards
   | 'mistake_repair'  // P2: autopsy-identified gap
   | 'concept_study'   // P3: weak atlas concept
@@ -59,6 +59,7 @@ export interface SelectorInput {
    */
   topDueCard: {
     id: string;
+    source?: string | null;
     subject: string | null;
     chapter: string | null;
     concept_id: string | null;
@@ -66,13 +67,46 @@ export interface SelectorInput {
     lapses: number;
   } | null;
 
+  dueRetests?: Array<{
+    id: string;
+    mistake_id: string;
+    due_at: string;
+    question: string;
+    attempt_count: number;
+    mistake?: {
+      id: string;
+      subject: string | null;
+      topic: string | null;
+      chapter: string | null;
+      concept: string | null;
+      concept_id: string | null;
+      mistake_text: string;
+      correct_answer?: string | null;
+      why_wrong?: string | null;
+      exam_trap?: string | null;
+      severity?: number | null;
+      created_at?: string | null;
+      last_tested_at?: string | null;
+      next_retest_at?: string | null;
+    } | null;
+  }>;
+
   /** Mistakes from last 7 days, most recent first */
   recentMistakes: Array<{
     id: string;
+    source?: string | null;
     subject: string | null;
+    topic?: string | null;
     chapter: string | null;
+    concept?: string | null;
+    mistake_text?: string | null;
     category: string;
+    mistake_type?: string | null;
     concept_id: string | null;
+    severity?: number | null;
+    status?: string | null;
+    exam_trap?: string | null;
+    next_retest_at?: string | null;
     created_at: string;
   }>;
 
@@ -134,6 +168,9 @@ export interface SelectorInput {
 export interface SelectorOutput {
   /** The resolved concept UUID driving this card (null for onboarding) */
   targetConceptId: string | null;
+  targetMistakeId?: string | null;
+  targetRetestId?: string | null;
+  repairPhase?: 'immediate_repair' | 'delayed_retest' | null;
 
   /** Priority bucket that was selected */
   priority: SessionCardTaskType;
@@ -203,6 +240,27 @@ function masteryOrder(mastery: string | null): number {
   return MASTERY_LABEL_ORDER[mastery ?? 'not_started'] ?? 0;
 }
 
+function specificMistakeLabel(mistake: {
+  concept?: string | null;
+  topic?: string | null;
+  chapter?: string | null;
+  mistake_text?: string | null;
+}) {
+  return (
+    mistake.concept ||
+    mistake.topic ||
+    mistake.chapter ||
+    (mistake.mistake_text ? mistake.mistake_text.slice(0, 72) : null) ||
+    'the repeated mistake'
+  );
+}
+
+function masteryPercentFromScore(score: number | null | undefined) {
+  if (score === null || score === undefined || !Number.isFinite(Number(score))) return null;
+  const n = Number(score);
+  return n <= 1 ? Math.round(n * 100) : Math.round(n);
+}
+
 // ─── Core selector ───────────────────────────────────────────────────────────
 
 export function selectSessionCard(input: SelectorInput): SelectorOutput {
@@ -241,35 +299,95 @@ export function selectSessionCard(input: SelectorInput): SelectorOutput {
     };
   }
 
-  // ─── P1: Due / overdue MEMORY cards ──────────────────────────────────────
-  if (input.overdueCardCount > 0 && input.topDueCard) {
-    const card = input.topDueCard;
-    const lapseNote =
-      card.lapses > 0 ? ` (${card.lapses} previous lapse${card.lapses > 1 ? 's' : ''})` : '';
+  // ─── P1: Due delayed retests ──────────────────────────────────────────────
+  const dueRetests = (input.dueRetests ?? []).filter((retest) => {
+    return new Date(retest.due_at).getTime() <= now.getTime();
+  });
+
+  if (dueRetests.length > 0) {
+    const retest = dueRetests[0];
+    const mistake = retest.mistake ?? null;
+    const label = specificMistakeLabel(mistake ?? { mistake_text: retest.question });
+    const subject = mistake?.subject ?? examType;
     return {
-      targetConceptId: card.concept_id,
-      priority: 'revision',
+      targetConceptId: mistake?.concept_id ?? null,
+      targetMistakeId: retest.mistake_id,
+      targetRetestId: retest.id,
+      repairPhase: 'delayed_retest',
+      priority: 'retest',
       reason:
-        `${input.overdueCardCount} revision card${input.overdueCardCount > 1 ? 's are' : ' is'} due for review${lapseNote}. ` +
-        `Reviewing before learning new material maximises long-term retention.`,
-      estimatedMinutes: Math.min(focusMinutes, Math.ceil(input.overdueCardCount * 1.2) + 5),
-      taskType: 'revision',
-      resourceType: 'flashcard_review',
-      subject: card.subject ?? examType,
-      topic: card.chapter ?? 'Flashcard Review',
+        `Chosen because you repaired ${label}, but the delayed retest is due today. ` +
+        `Passing this is the proof step before the mark is considered safe.`,
+      estimatedMinutes: Math.min(focusMinutes, 18),
+      taskType: 'retest',
+      resourceType: 'practice_questions',
+      subject,
+      topic: `Retest: ${label}`,
       masteryBefore: null,
       dueCardCount: input.overdueCardCount,
       mistakeCount: input.recentMistakes.length,
-      questionTarget: card.chapter ?? '',
-      revisionTarget: card.id,
+      questionTarget: retest.question,
+      revisionTarget: '',
       needsOnboarding: false,
       daysToExam,
       isPeakHour,
     };
   }
 
-  // ─── P2: Recent mistakes ─────────────────────────────────────────────────
+  // ─── P2: Open / repairing mistakes ───────────────────────────────────────
   const cutoff = new Date(now.getTime() - MISTAKE_WINDOW_DAYS * 86_400_000);
+  const activeStatuses = new Set(['open', 'repairing', 'retest_due', 'verified_mistake', 'pending_review']);
+  const activeMistakes = input.recentMistakes
+    .filter((m) => {
+      if (!activeStatuses.has(m.status ?? 'open') && new Date(m.created_at) < cutoff) return false;
+      if (m.status === 'retest_due') {
+        return typeof m.next_retest_at === 'string' && new Date(m.next_retest_at).getTime() <= now.getTime();
+      }
+      return true;
+    })
+    .sort((a, b) => {
+      const sev = (b.severity ?? 1) - (a.severity ?? 1);
+      if (sev !== 0) return sev;
+      return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+    });
+
+  if (activeMistakes.length > 0) {
+    const topMistake = activeMistakes[0];
+    const label = specificMistakeLabel(topMistake);
+    const masteryPct = masteryPercentFromScore(
+      input.weakConcepts.find((c) => c.id === topMistake.concept_id)?.mastery_score
+    );
+    const reasonBits = [
+      `Chosen because you missed this in a recent ${topMistake.source ?? 'practice'} signal.`,
+      topMistake.next_retest_at ? 'A delayed retest is already scheduled.' : null,
+      masteryPct !== null ? `Mastery is ${masteryPct}%.` : null,
+      topMistake.exam_trap ? 'This is a common exam trap.' : null,
+    ].filter(Boolean);
+
+    return {
+      targetConceptId: topMistake.concept_id,
+      targetMistakeId: topMistake.id,
+      targetRetestId: null,
+      repairPhase: 'immediate_repair',
+      priority: 'mistake_repair',
+      reason: reasonBits.join(' '),
+      estimatedMinutes: Math.min(focusMinutes, Math.max(20, 12 + (topMistake.severity ?? 1) * 4)),
+      taskType: 'mistake_repair',
+      resourceType: 'practice_questions',
+      subject: topMistake.subject ?? examType,
+      topic: `Repair: ${label}`,
+      masteryBefore: null,
+      dueCardCount: input.overdueCardCount,
+      mistakeCount: activeMistakes.length,
+      questionTarget: topMistake.mistake_text ?? label,
+      revisionTarget: '',
+      needsOnboarding: false,
+      daysToExam,
+      isPeakHour,
+    };
+  }
+
+  // ─── Legacy P2: Recent mistakes without canonical fields ─────────────────
   const freshMistakes = input.recentMistakes.filter(
     (m) => new Date(m.created_at) >= cutoff
   );
@@ -303,6 +421,105 @@ export function selectSessionCard(input: SelectorInput): SelectorOutput {
       mistakeCount: freshMistakes.length,
       questionTarget: topChapter ?? '',
       revisionTarget: '',
+      needsOnboarding: false,
+      daysToExam,
+      isPeakHour,
+    };
+  }
+
+  // ─── P3: Weak concepts below mastery threshold ───────────────────────────
+  if (input.weakConcepts.length > 0) {
+    const decaying = [...input.weakConcepts]
+      .filter((c) => (c.times_reviewed ?? 0) > 0)
+      .sort(
+        (a, b) =>
+          (b.forgetting_probability ?? 1) - (a.forgetting_probability ?? 1)
+      );
+
+    if (decaying.length > 0) {
+      const target = decaying[0];
+      return {
+        targetConceptId: target.id,
+        priority: 'reinforcement',
+        reason:
+          `${target.name} (${target.subject}) is below the mastery threshold and memory is decaying ` +
+          `(${Math.round((target.forgetting_probability ?? 1) * 100)}% forgetting probability). Repair this before routine review.`,
+        estimatedMinutes: focusMinutes,
+        taskType: 'reinforcement',
+        resourceType: 'practice_questions',
+        subject: target.subject,
+        topic: `Fix: ${target.name}`,
+        masteryBefore: target.mastery,
+        dueCardCount: input.overdueCardCount,
+        mistakeCount: 0,
+        questionTarget: target.name,
+        revisionTarget: '',
+        needsOnboarding: false,
+        daysToExam,
+        isPeakHour,
+      };
+    }
+
+    const sorted = [...input.weakConcepts].sort((a, b) => {
+      const mDiff = masteryOrder(a.mastery) - masteryOrder(b.mastery);
+      if (mDiff !== 0) return mDiff;
+      const fpDiff =
+        (b.forgetting_probability ?? 1) - (a.forgetting_probability ?? 1);
+      if (Math.abs(fpDiff) > 0.05) return fpDiff;
+      return (a.times_reviewed ?? 0) - (b.times_reviewed ?? 0);
+    });
+
+    const weakest = sorted[0];
+    const masteryLabel = weakest.mastery ?? 'not_started';
+    const fpPct = weakest.forgetting_probability
+      ? Math.round(weakest.forgetting_probability * 100)
+      : null;
+
+    return {
+      targetConceptId: weakest.id,
+      priority: 'concept_study',
+      reason:
+        `${weakest.name} (${weakest.subject}) is your weakest mapped concept ` +
+        `(mastery: ${masteryLabel}${fpPct !== null ? `, ${fpPct}% forgetting probability` : ''}). ` +
+        `Strengthening it now reduces future mark loss.`,
+      estimatedMinutes: focusMinutes,
+      taskType: 'concept_study',
+      resourceType:
+        masteryLabel === 'not_started' ? 'reading' : 'practice_questions',
+      subject: weakest.subject,
+      topic: `Fix: ${weakest.name}`,
+      masteryBefore: weakest.mastery,
+      dueCardCount: input.overdueCardCount,
+      mistakeCount: freshMistakes.length,
+      questionTarget: weakest.name,
+      revisionTarget: '',
+      needsOnboarding: false,
+      daysToExam,
+      isPeakHour,
+    };
+  }
+
+  // ─── P4: Due / overdue MEMORY cards ──────────────────────────────────────
+  if (input.overdueCardCount > 0 && input.topDueCard) {
+    const card = input.topDueCard;
+    const lapseNote =
+      card.lapses > 0 ? ` (${card.lapses} previous lapse${card.lapses > 1 ? 's' : ''})` : '';
+    return {
+      targetConceptId: card.concept_id,
+      priority: 'revision',
+      reason:
+        `${input.overdueCardCount} MEMORY card${input.overdueCardCount > 1 ? 's are' : ' is'} due for recall${lapseNote}. ` +
+        `No higher-priority repair risk is open, so protect recall before moving on.`,
+      estimatedMinutes: Math.min(focusMinutes, Math.ceil(input.overdueCardCount * 1.2) + 5),
+      taskType: 'revision',
+      resourceType: 'flashcard_review',
+      subject: card.subject ?? examType,
+      topic: card.chapter ?? 'Flashcard Review',
+      masteryBefore: null,
+      dueCardCount: input.overdueCardCount,
+      mistakeCount: input.recentMistakes.length,
+      questionTarget: card.chapter ?? '',
+      revisionTarget: card.id,
       needsOnboarding: false,
       daysToExam,
       isPeakHour,

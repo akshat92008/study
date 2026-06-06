@@ -1,6 +1,7 @@
 import { invalidateSessionCard } from '@/lib/services/session-card-invalidation';
 import { recordMasteryEvidence } from '@/lib/engines/mastery-updater';
 import { notifyWeakConceptPlanChange, type WeakConceptPlanChange } from '@/lib/services/learning-plan-updates.service';
+import { upsertMistakeRisk } from '@/lib/services/repair-loop.service';
 
 type PracticeSyncItem = {
   attemptId?: string | null;
@@ -80,6 +81,8 @@ export async function syncStudyProfileAfterPracticeAttempt(
   const conceptsTouched = new Set<string>();
   const weakConcepts: WeakConceptPlanChange[] = [];
   let mistakesCreated = 0;
+  let repairCardsCreated = 0;
+  let retestsScheduled = 0;
 
   for (const item of input.items.slice(0, 50)) {
     const conceptId = await resolvePracticeConcept(supabase, {
@@ -120,47 +123,36 @@ export async function syncStudyProfileAfterPracticeAttempt(
 
     if (item.isCorrect) continue;
 
-    let mistakeQuery = supabase
-      .from('mistakes')
-      .select('id')
-      .eq('user_id', input.userId)
-      .eq('question_text', item.question ?? '');
-    mistakeQuery = input.goalId
-      ? mistakeQuery.eq('goal_id', input.goalId)
-      : typeof mistakeQuery.is === 'function'
-        ? mistakeQuery.is('goal_id', null)
-        : mistakeQuery;
-    const { data: existingMistake } = await mistakeQuery.maybeSingle();
-
-    if (existingMistake) {
-      await supabase
-        .from('mistakes')
-        .update({ status: 'verified_mistake' })
-        .eq('id', existingMistake.id)
-        .eq('user_id', input.userId);
-      continue;
-    }
-
-    const { error: mistakeError } = await supabase.from('mistakes').insert({
-      user_id: input.userId,
-      goal_id: input.goalId ?? null,
-      concept_id: conceptId,
-      category: 'conceptual_gap',
-      status: 'verified_mistake',
+    const repair = await upsertMistakeRisk(supabase, {
+      userId: input.userId,
+      goalId: input.goalId ?? null,
+      source: 'quiz',
       subject: item.subject ?? null,
-      chapter: item.chapter ?? item.topic ?? null,
       topic: item.topic ?? conceptName,
-      question_text: item.question ?? null,
-      user_answer: item.selectedAnswer ?? null,
-      correct_answer: item.correctAnswer ?? null,
-      marks_lost: 1,
-      total_marks: 1,
-      ai_analysis: null,
-      improvement_suggestion: 'Review this concept and retry a similar question.',
-      extraction_confidence: 1,
+      chapter: item.chapter ?? item.topic ?? null,
+      concept: conceptName,
+      conceptId,
+      mistakeText: item.question ?? `Wrong answer on ${conceptName}`,
+      questionText: item.question ?? null,
+      userAnswer: item.selectedAnswer ?? null,
+      correctAnswer: item.correctAnswer ?? null,
+      whyWrong: item.correctAnswer
+        ? `Selected ${item.selectedAnswer ?? 'an incorrect answer'}; correct answer is ${item.correctAnswer}.`
+        : 'Wrong practice answer.',
+      examTrap: 'This exact miss now needs immediate repair and a delayed retest.',
+      severity: 2,
+      category: 'conceptual_gap',
+      sourceId: item.attemptId ?? item.practiceItemId ?? input.practiceSetId,
+      metadata: {
+        practiceSetId: input.practiceSetId,
+        practiceItemId: item.practiceItemId,
+      },
+      invalidateSession: false,
     });
 
-    if (!mistakeError) mistakesCreated += 1;
+    if (repair.created) mistakesCreated += 1;
+    if (repair.revisionCardCreated) repairCardsCreated += 1;
+    if (repair.retestScheduled) retestsScheduled += 1;
   }
 
   const total = input.metrics.correctCount + input.metrics.wrongCount;
@@ -205,6 +197,8 @@ export async function syncStudyProfileAfterPracticeAttempt(
     wrongItems: wrongItems.length,
     conceptsTouched: conceptsTouched.size,
     mistakesCreated,
+    repairCardsCreated,
+    retestsScheduled,
     cardsCreated: planUpdate.cardsCreated,
     tasksCreated: planUpdate.tasksCreated,
     notificationSent: planUpdate.notified,

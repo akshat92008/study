@@ -1,8 +1,8 @@
 export const RAG_DEFAULTS = {
-  maxFileMb: 3,
+  maxFileMb: 10,
   maxFilesPerUser: 5,
   maxDailyUploads: 5,
-  maxChunksPerFile: 40,
+  maxChunksPerFile: 100,
   chunkSizeChars: 2500,
   chunkOverlapChars: 450,
   topK: 4,
@@ -30,6 +30,7 @@ export function getRagConfig() {
     maxContextChars: numberFromEnv('RAG_MAX_CONTEXT_CHARS', RAG_DEFAULTS.maxContextChars, 1000),
     minSimilarity: numberFromEnv('RAG_MIN_SIMILARITY', RAG_DEFAULTS.minSimilarity, 0),
     enableOcr: process.env.RAG_ENABLE_OCR === 'true',
+    ocrFallbackToVision: process.env.RAG_OCR_FALLBACK_VISION !== 'false', // default ON
     requireCitations: process.env.RAG_REQUIRE_CITATIONS !== 'false',
   };
 }

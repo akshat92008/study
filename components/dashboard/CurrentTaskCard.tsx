@@ -2,6 +2,7 @@
 
 import { useCallback, useRef, useState, useEffect } from 'react';
 import { useAppStore } from '@/stores/appStore';
+import { useRouter } from 'next/navigation';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
 import Button from '@/components/ui/Button';
@@ -26,6 +27,7 @@ export default function CurrentTaskCard({
   const [cardStatus, setCardStatus] = useState<SessionCardUiStatus>('empty');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const { addToast, addChatMessage } = useAppStore();
+  const router = useRouter();
 
   const [isSessionActive, setIsSessionActive] = useState(false);
   const [timeLeft, setTimeLeft] = useState(0);
@@ -218,6 +220,56 @@ export default function CurrentTaskCard({
     }
   }, [addChatMessage, addToast, data, goalId]);
 
+  const isRepairCard = Boolean(
+    data && (
+      data.taskType === 'mistake_repair' ||
+      data.priority === 'mistake_repair' ||
+      data.taskType === 'retest' ||
+      data.priority === 'retest' ||
+      data.repairPhase
+    )
+  );
+  const isDelayedRetest = data?.repairPhase === 'delayed_retest' || data?.taskType === 'retest' || data?.priority === 'retest';
+
+  const submitRepairProof = useCallback(async (passed: boolean) => {
+    if (!data?.targetMistakeId && !data?.targetRetestId) {
+      await completeFocusSession();
+      return;
+    }
+
+    try {
+      const res = await fetch('/api/repair/attempt', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: isDelayedRetest ? 'delayed' : 'immediate',
+          mistakeId: data.targetMistakeId ?? null,
+          retestId: data.targetRetestId ?? null,
+          passed,
+        }),
+      });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(json?.message || 'Repair update failed.');
+
+      const message = json?.transition?.message || (passed ? 'Repair progress saved.' : 'Repair remains open.');
+      addToast(message, passed ? 'success' : 'info');
+      addChatMessage({
+        role: 'assistant',
+        content: `**Repair update.** ${message}`,
+        timestamp: new Date().toISOString(),
+      });
+      localStorage.removeItem(`focus_session_end_${data.focusTopic}`);
+      setIsSessionActive(false);
+      setTimeLeft(0);
+      setSessionClosingMessage(message);
+      setShowCelebration(passed);
+      setCardStatus(passed ? 'completed' : 'ready');
+      window.dispatchEvent(new Event('refresh-dashboard'));
+    } catch (e: any) {
+      addToast(e?.message || 'Failed to save repair progress.', 'error');
+    }
+  }, [addChatMessage, addToast, completeFocusSession, data, isDelayedRetest]);
+
   // Countdown timer logic
   useEffect(() => {
     let timer: any;
@@ -235,8 +287,15 @@ export default function CurrentTaskCard({
     return () => clearInterval(timer);
   }, [isSessionActive, timeLeft]);
 
-  const startFocusSession = () => {
+  const startFocusSession = async () => {
     if (!data) return;
+    if (isRepairCard && data.targetMistakeId) {
+      await fetch('/api/repair/attempt', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'start', mistakeId: data.targetMistakeId }),
+      }).catch(() => undefined);
+    }
     const durationSeconds = (data.estimatedMinutes || 45) * 60;
     const endTime = Date.now() + durationSeconds * 1000;
     completionKeyRef.current = `session-card:${data.taskId || data.focusTopic}:${new Date().toISOString().slice(0, 10)}`;
@@ -246,7 +305,7 @@ export default function CurrentTaskCard({
     setIsMinimized(false);
     setShowCelebration(false);
     setSessionClosingMessage(null);
-    addToast(`Focus session started for ${data.focusTopic}!`, 'info');
+    addToast(`${isRepairCard ? 'Repair' : 'Focus'} session started for ${data.focusTopic}!`, 'info');
   };
 
   const cancelFocusSession = () => {
@@ -289,7 +348,7 @@ export default function CurrentTaskCard({
       }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--sp-2)' }}>
           <Loader2 className="animate-spin" size={24} style={{ color: 'var(--accent-blue)' }} />
-          <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)' }}>Loading your latest mission, weak concepts, due revision, and recent mistakes.</span>
+          <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)' }}>Finding the mark most at risk today.</span>
         </div>
       </Card>
     );
@@ -326,22 +385,24 @@ export default function CurrentTaskCard({
         flexDirection: 'column',
         gap: 'var(--sp-3)'
       }}>
-        <Badge color="green">Today's Session Complete</Badge>
+        <Badge color="green">{isRepairCard ? 'Repair Step Complete' : "Today's Session Complete"}</Badge>
         <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 800, color: 'var(--text-primary)', margin: 0 }}>
           {data?.focusTopic ?? 'Daily focus'}
         </h3>
         <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', margin: 0, lineHeight: 1.5 }}>
-          Your streak and study profile are saved. The next mission can adapt from updated weak areas and revision signals.
+          {isRepairCard
+            ? 'Repair progress is saved. The next plan adapts around any unresolved retest risk.'
+            : 'Your streak and study profile are saved. The next mission can adapt from updated weak areas and revision signals.'}
         </p>
       </Card>
     );
   }
 
   if (!data) {
-    const title = cardStatus === 'onboarding' ? 'Complete your profile' : 'No session card yet';
+    const title = cardStatus === 'onboarding' ? 'Start by giving Cognition OS something to protect' : 'No repair risk yet';
     const description = cardStatus === 'onboarding'
-      ? 'Finish onboarding, complete a session, or upload a mock so we can generate one daily mission from your goals, weak areas, and revision state.'
-      : 'Upload your first material or add your first mistake to generate a smarter daily session.';
+      ? 'Paste wrong answers, upload mistakes, or take a diagnostic quiz so the first session can protect marks you are likely to lose again.'
+      : 'Upload wrong answers or paste a mistake to create the first repair session.';
     return (
       <Card style={{ 
         background: 'var(--bg-secondary)', 
@@ -357,6 +418,10 @@ export default function CurrentTaskCard({
         <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', margin: 0, lineHeight: 1.5 }}>
           {description}
         </p>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--sp-2)', justifyContent: 'center' }}>
+          <Button onClick={() => router.push('/autopsy/deep')}>Upload mistakes</Button>
+          <Button variant="secondary" onClick={() => router.push('/chat')}>Take diagnostic quiz</Button>
+        </div>
       </Card>
     );
   }
@@ -409,7 +474,7 @@ export default function CurrentTaskCard({
             
             {/* Header Labels */}
             <div>
-              <Badge color="blue">Deep Focus Session</Badge>
+              <Badge color="blue">{isRepairCard ? (isDelayedRetest ? 'Delayed Retest' : 'Repair Session') : 'Deep Focus Session'}</Badge>
               <h1 style={{ fontSize: 'var(--fs-3xl)', fontWeight: 900, marginTop: 'var(--sp-3)', color: 'var(--text-primary)' }}>
                 {data.focusTopic}
               </h1>
@@ -455,23 +520,23 @@ export default function CurrentTaskCard({
             {/* Control Actions */}
             <div style={{ display: 'flex', gap: 'var(--sp-3)', width: '100%', marginTop: 'var(--sp-2)' }}>
               <Button
-                onClick={completeFocusSession}
+                onClick={() => isRepairCard ? submitRepairProof(true) : completeFocusSession()}
                 style={{
                   flex: 1.5, background: 'var(--success)', color: 'white', fontWeight: 'bold',
                   padding: '12px 0', fontSize: 'var(--fs-sm)', borderRadius: '6px',
                   boxShadow: 'var(--shadow-glow-success)'
                 }}
               >
-                Complete Study Session
+                {isRepairCard ? (isDelayedRetest ? 'Passed Retest' : 'Passed Immediate Recall') : 'Complete Study Session'}
               </Button>
               <Button
                 variant="secondary"
-                onClick={cancelFocusSession}
+                onClick={() => isRepairCard ? submitRepairProof(false) : cancelFocusSession()}
                 style={{
                   flex: 1, fontWeight: 'bold', padding: '12px 0', fontSize: 'var(--fs-sm)', borderRadius: '6px'
                 }}
               >
-                Give Up
+                {isRepairCard ? (isDelayedRetest ? 'Failed Retest' : 'Still Stuck') : 'Give Up'}
               </Button>
             </div>
 
@@ -548,10 +613,12 @@ export default function CurrentTaskCard({
                 </div>
               </div>
               <h2 style={{ fontSize: 'var(--fs-xl)', fontWeight: 900, color: 'var(--success)' }}>
-                Focus Session Complete!
+                {isRepairCard ? 'Repair Step Complete!' : 'Focus Session Complete!'}
               </h2>
               <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', marginTop: 8, lineHeight: 1.4 }}>
-                You successfully completed your study block and revised <strong style={{ color: 'var(--text-primary)' }}>{data.focusTopic}</strong>.
+                {isRepairCard
+                  ? <>You saved repair progress for <strong style={{ color: 'var(--text-primary)' }}>{data.focusTopic}</strong>.</>
+                  : <>You successfully completed your study block and revised <strong style={{ color: 'var(--text-primary)' }}>{data.focusTopic}</strong>.</>}
               </p>
               {sessionClosingMessage && (
                 <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', marginTop: 14, lineHeight: 1.55, textAlign: 'left', background: 'var(--bg-tertiary)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: 'var(--sp-3)' }}>
@@ -599,7 +666,7 @@ export default function CurrentTaskCard({
             DAY {data.dayNumber || 1} · {data.streakDays || 0}D STREAK
           </span>
           <Badge color={isSessionActive ? 'yellow' : 'cyan'}>
-            {isSessionActive ? 'Mission Active' : "Today's Mission"}
+            {isSessionActive ? (isRepairCard ? 'Repair Active' : 'Mission Active') : (isRepairCard ? (isDelayedRetest ? 'Retest Due' : "Today's Repair") : "Today's Mission")}
           </Badge>
         </div>
         
@@ -637,7 +704,7 @@ export default function CurrentTaskCard({
             gap: 6
           }}>
             <Sparkles size={12} style={{ color: 'var(--accent-cyan)', marginTop: 2, flexShrink: 0 }} />
-            <span><strong style={{ color: 'var(--text-primary)' }}>Why this mission:</strong> {data.rationale}</span>
+            <span><strong style={{ color: 'var(--text-primary)' }}>{isRepairCard ? 'Why now:' : 'Why this mission:'}</strong> {data.rationale}</span>
           </div>
         )}
 
@@ -680,20 +747,27 @@ export default function CurrentTaskCard({
 
         <div style={{ marginTop: 'var(--sp-3)' }}>
           {!isSessionActive ? (
-            <Button 
-              onClick={startFocusSession} 
-              style={{ 
-                background: 'var(--accent-blue)', 
-                color: 'white',
-                fontWeight: 'bold',
-                width: 'fit-content',
-                fontSize: 'var(--fs-sm)',
-                padding: '8px 16px',
-                borderRadius: '6px'
-              }}
-            >
-              Start Focus Session
-            </Button>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--sp-2)' }}>
+              <Button
+                onClick={startFocusSession}
+                style={{
+                  background: isRepairCard ? 'var(--danger)' : 'var(--accent-blue)',
+                  color: 'white',
+                  fontWeight: 'bold',
+                  width: 'fit-content',
+                  fontSize: 'var(--fs-sm)',
+                  padding: '8px 16px',
+                  borderRadius: '6px'
+                }}
+              >
+                {isRepairCard ? (isDelayedRetest ? 'Start retest' : 'Start repair') : 'Start Focus Session'}
+              </Button>
+              {isRepairCard && (
+                <Button variant="secondary" onClick={() => router.push('/autopsy/deep')}>
+                  Upload mistakes
+                </Button>
+              )}
+            </div>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-3)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)', fontSize: 'var(--fs-sm)', color: 'var(--warning)', fontWeight: 'bold' }}>
@@ -701,10 +775,10 @@ export default function CurrentTaskCard({
                 <span>Focus Active: <span style={{ fontFamily: 'monospace', color: 'white', fontSize: 'var(--fs-base)', background: 'var(--bg-tertiary)', padding: '2px 6px', borderRadius: '4px' }}>{formatTime(timeLeft)}</span> remaining</span>
               </div>
               <div style={{ display: 'flex', gap: 'var(--sp-2)' }}>
-                <Button 
+                <Button
                   onClick={() => setIsMinimized(false)}
-                  style={{ 
-                    background: 'var(--accent-blue)', 
+                  style={{
+                    background: 'var(--accent-blue)',
                     color: 'white',
                     fontWeight: 'bold',
                     fontSize: 'var(--fs-xs)',
@@ -714,10 +788,10 @@ export default function CurrentTaskCard({
                 >
                   <Maximize2 size={10} style={{ marginRight: 4 }} /> Maximize Focus
                 </Button>
-                <Button 
-                  onClick={completeFocusSession} 
-                  style={{ 
-                    background: 'var(--success)', 
+                <Button
+                  onClick={() => isRepairCard ? submitRepairProof(true) : completeFocusSession()}
+                  style={{
+                    background: 'var(--success)',
                     color: 'white',
                     fontWeight: 'bold',
                     fontSize: 'var(--fs-xs)',
@@ -725,19 +799,19 @@ export default function CurrentTaskCard({
                     borderRadius: '4px'
                   }}
                 >
-                  Complete Session
+                  {isRepairCard ? (isDelayedRetest ? 'Passed Retest' : 'Passed Recall') : 'Complete Session'}
                 </Button>
-                <Button 
+                <Button
                   variant="secondary"
-                  onClick={cancelFocusSession} 
-                  style={{ 
+                  onClick={() => isRepairCard ? submitRepairProof(false) : cancelFocusSession()}
+                  style={{
                     fontWeight: 'bold',
                     fontSize: 'var(--fs-xs)',
                     padding: '6px 12px',
                     borderRadius: '4px'
                   }}
                 >
-                  Cancel
+                  {isRepairCard ? (isDelayedRetest ? 'Failed Retest' : 'Still Stuck') : 'Cancel'}
                 </Button>
               </div>
             </div>

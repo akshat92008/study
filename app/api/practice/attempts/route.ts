@@ -340,12 +340,30 @@ export async function POST(req: NextRequest) {
       message: error instanceof Error ? error.message : 'Profile sync failed.',
     }));
 
+    const loopSummary = {
+      saved: true,
+      mistakesCreated: (profileSync as any)?.mistakesCreated ?? 0,
+      repairCardsCreated: (profileSync as any)?.repairCardsCreated ?? 0,
+      retestsScheduled: (profileSync as any)?.retestsScheduled ?? 0,
+      tomorrowSessionUpdated: (profileSync as any)?.sessionCardInvalidated === true,
+      message: wrongCount > 0
+        ? [
+            'Saved.',
+            `${(profileSync as any)?.mistakesCreated ?? wrongCount} mistake${((profileSync as any)?.mistakesCreated ?? wrongCount) === 1 ? '' : 's'} tracked.`,
+            `MEMORY: ${(profileSync as any)?.repairCardsCreated ?? 0} repair card${((profileSync as any)?.repairCardsCreated ?? 0) === 1 ? '' : 's'} created.`,
+            `Retest: ${(profileSync as any)?.retestsScheduled ?? 0} scheduled.`,
+            'Tomorrow/session updated around unresolved risk.',
+          ].join(' ')
+        : 'Saved. No new mistakes created from this submission.',
+    };
+
     return NextResponse.json({
       success: true,
       attempts: persistedAttempts ?? [],
       metrics: { correctCount, wrongCount, wrongConceptIds, wrongConceptNames },
       goalId: set.goal_id ?? goalId ?? null,
       profileSync,
+      loopSummary,
     });
   } catch (error) {
     const { unexpectedApiErrorResponse } = await import('@/lib/api/errors');

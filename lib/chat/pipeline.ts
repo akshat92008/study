@@ -131,8 +131,9 @@ export async function routeUploads(params: any) {
   }
 
   if (imageBase64 && imageMimeType && !documentBase64) {
-    return handleVisionUpload({ userId, message, imageBase64, imageMimeType, systemPrompt, finalizeAssistantTurn: finalizeAssistantTurnFn, encoder });
+    return handleVisionUpload({ userId, message, imageBase64, imageMimeType, systemPrompt, finalizeAssistantTurn: finalizeAssistantTurnFn, encoder, supabase, goalId: activeGoalId, sessionId, idempotencyKey: messageRequestId });
   }
+
 
   const shouldRouteUploadToAutopsy = hasUploadedFile && ((orchestratorResult.intent === 'mock_autopsy' && orchestratorResult.needsFileProcessing) || uploadIntent === 'autopsy_mock_analysis');
 

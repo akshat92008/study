@@ -43,7 +43,7 @@ export interface LearnerStateSnapshot {
     topDueCards: Array<{ id: string; front: string }>;
   };
   autopsy: {
-    recentMistakes: Array<{ chapter: string; category: string; mistake_type: string; subject: string; created_at?: string }>;
+  recentMistakes: Array<{ chapter: string; topic?: string | null; concept?: string | null; category: string; mistake_type: string; subject: string; status?: string | null; mistake_text?: string | null; created_at?: string }>;
     needsReviewCount: number;
     lastAutopsy: { test_name: string; current_score: number; potential_score: number; created_at: string } | null;
   };
@@ -83,9 +83,9 @@ export async function getLearnerStateSnapshot(
 
   let mistakesQuery = supabase
     .from('mistakes')
-    .select('chapter, category, mistake_type, subject, created_at')
+    .select('chapter, topic, concept, category, mistake_type, subject, status, mistake_text, created_at')
     .eq('user_id', userId)
-    .eq('status', 'verified_mistake')
+    .in('status', ['open', 'repairing', 'retest_due', 'verified_mistake', 'pending_review'])
     .order('created_at', { ascending: false })
     .limit(5);
   if (options.subject) mistakesQuery = mistakesQuery.eq('subject', options.subject);

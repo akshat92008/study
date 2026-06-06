@@ -7,6 +7,7 @@ import { sha256Hex } from '@/lib/rag/hash';
 import { logger } from '@/lib/utils/logger';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { recordAgentAction } from '@/lib/agents/agent-runtime';
+import { budgetedVisionCall } from '@/lib/ai/budgeted';
 
 export type IngestStudyMaterialInput = {
   materialId: string;
@@ -39,9 +40,56 @@ export async function ingestStudyMaterial(input: IngestStudyMaterialInput) {
     await updateRagJob(job?.id, input.userId, 'extracting');
     const extracted = await extractMaterialText(input.buffer, input.mimeType);
     if (extracted.ocrRequired && !config.enableOcr) {
-      await failRagJob(job?.id, input.userId, 'ocr_required', 'This file appears scanned or image-only. OCR is not enabled for private beta.');
-      await markMaterialFailed(input.materialId, input.userId, 'This file appears scanned or image-only. OCR is not enabled for private beta.');
-      return { status: 'failed' as const, chunks: 0 };
+      if (!config.ocrFallbackToVision) {
+        await failRagJob(job?.id, input.userId, 'ocr_required', 'This file appears scanned or image-only. OCR is not enabled. Enable RAG_OCR_FALLBACK_VISION or RAG_ENABLE_OCR to process scanned PDFs.');
+        await markMaterialFailed(input.materialId, input.userId, 'This file appears scanned or image-only. Enable OCR to process this file.');
+        return { status: 'failed' as const, chunks: 0 };
+      }
+
+      // Vision fallback: send the PDF buffer to vision AI and extract text
+      logger.info('RAG: OCR required, attempting vision-based text extraction', {
+        userId: input.userId,
+        materialId: input.materialId,
+        mimeType: input.mimeType,
+      });
+      try {
+        const imageBase64 = input.buffer.toString('base64');
+        const visionText = await budgetedVisionCall({
+          userId: input.userId,
+          feature: 'rag_ocr_fallback',
+          route: 'rag-ingest-vision',
+          systemPrompt: 'You are a document extraction engine. Extract all text from this image or scanned document exactly as it appears. Preserve headings, bullet points, formulas, and structure. Output only the extracted text with no commentary.',
+          userMessage: 'Extract all text from this scanned document for study material indexing.',
+          imageBase64,
+          imageMimeType: input.mimeType,
+          metadata: { source: 'rag_ocr_fallback', materialId: input.materialId },
+        });
+
+        if (!visionText || visionText.trim().length < 50) {
+          await failRagJob(job?.id, input.userId, 'ocr_vision_empty', 'Vision extraction returned no usable text from this file.');
+          await markMaterialFailed(input.materialId, input.userId, 'Could not extract text from this scanned file. Try uploading a clearer scan or a text-based PDF.');
+          return { status: 'failed' as const, chunks: 0 };
+        }
+
+        // Replace extracted pages with vision output and continue normal pipeline
+        extracted.pages = [{ pageNumber: 1, text: visionText.trim() }];
+        extracted.charCount = visionText.length;
+        extracted.ocrRequired = false;
+        logger.info('RAG: Vision OCR fallback succeeded', {
+          userId: input.userId,
+          materialId: input.materialId,
+          extractedChars: visionText.length,
+        });
+      } catch (visionErr) {
+        logger.warn('RAG: Vision OCR fallback failed', {
+          userId: input.userId,
+          materialId: input.materialId,
+          error: visionErr instanceof Error ? visionErr.message : String(visionErr),
+        });
+        await failRagJob(job?.id, input.userId, 'ocr_vision_failed', 'Vision extraction failed for this scanned file. Try a clearer scan or a text-based PDF.');
+        await markMaterialFailed(input.materialId, input.userId, 'Could not extract text from this scanned file via vision. Try uploading a clearer scan.');
+        return { status: 'failed' as const, chunks: 0 };
+      }
     }
 
     await updateRagJob(job?.id, input.userId, 'chunking');

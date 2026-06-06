@@ -12,7 +12,8 @@ export type MasterySource =
   | 'onboarding'
   | 'tutor_session'
   | 'practice'
-  | 'command';
+  | 'command'
+  | 'mistake_retest';
 
 export type MasteryEvidenceType =
   | 'autopsy_wrong_answer'

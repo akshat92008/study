@@ -1012,14 +1012,24 @@ function FlashcardSetComponent({ artifact, messageId }: { artifact: ParsedArtifa
                     position: parseInt(idx) + 1,
                     confidence
                   }));
-                  await fetch('/api/practice/reviews', {
+                  const syncKey = `flashcard_review:${messageId}:${Date.now()}`;
+                  const res = await fetch('/api/practice/reviews', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ messageId, reviews })
+                    headers: {
+                      'Content-Type': 'application/json',
+                      'Idempotency-Key': syncKey,
+                    },
+                    body: JSON.stringify({ messageId, reviews, idempotencyKey: syncKey })
                   });
+                  if (!res.ok) {
+                    const errData = await res.json().catch(() => null);
+                    throw new Error(errData?.message || `Sync failed (${res.status})`);
+                  }
                   setIsSubmitted(true);
                 } catch (e) {
                   console.error(e);
+                  // Show error inline — the button will remain visible so user can retry
+                  alert(e instanceof Error ? e.message : 'Could not sync flashcard progress. Please try again.');
                 }
                 setIsSubmitting(false);
               }}

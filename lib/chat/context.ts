@@ -6,6 +6,7 @@ import { buildMindRagContext } from '@/lib/rag/mind-rag';
 import { getMINDSystemPrompt } from '@/lib/ai/prompts/mind-prompt';
 import { classifyMessageCombined } from '@/lib/ai/chat-intent-with-emotion';
 import { logger } from '@/lib/utils/logger';
+import { getRepairSignals } from '@/lib/services/repair-loop.service';
 
 export async function gatherChatContext({
   supabase,
@@ -166,6 +167,13 @@ export async function gatherChatContext({
   ]) as [string[], string[], any[], any, any];
 
   mindContext.hermesMemories = hermesMemories;
+
+  const repairSignals = await Promise.race([
+    getRepairSignals(supabase, { userId, goalId: activeGoalId, limit: 5 }),
+    new Promise((_, r) => setTimeout(() => r(new Error('repair_context_timeout')), 1000)),
+  ]).catch(() => ({ dueRetests: [], activeMistakes: [] })) as any;
+  mindContext.dueRetests = repairSignals.dueRetests ?? [];
+  mindContext.openRepairMistakes = repairSignals.activeMistakes ?? [];
 
   if (activeGoal && mindContext && !mindContext.activeGoal) {
     mindContext.activeGoal = {

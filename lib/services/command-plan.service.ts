@@ -185,8 +185,8 @@ export function formatWeakAreasForChat(input: {
   });
 
   const recentMistakeLine = mistakes.length > 0
-    ? `Recent Mistake Review signal: ${mistakes.slice(0, 3).map((m) => `${m.subject || 'Subject'} / ${m.chapter || 'Chapter'}${m.category ? ` (${m.category})` : ''}`).join('; ')}.`
-    : 'Recent Mistake Review signal: no verified mistakes recorded yet.';
+    ? `Active repair risk: ${mistakes.slice(0, 3).map((m) => `${m.subject || 'Subject'} / ${m.chapter || 'Chapter'}${m.category ? ` (${m.category})` : ''}`).join('; ')}.`
+    : 'Active repair risk: no tracked mistakes are open yet.';
 
   return [
     `Progress currently puts your mastery at ${input.masteryPercent ?? 0}%.`,

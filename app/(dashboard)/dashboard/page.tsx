@@ -177,11 +177,11 @@ export default function DashboardPage() {
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
         <div>
           <h1 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--text-primary)', margin: 0 }}>
-            Today's Mission
+            Repair Command Center
           </h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', marginTop: 4, lineHeight: 1.5 }}>
             {activeGoal
-              ? `Your mission for ${activeGoal.title}. Ask the AI Tutor for help, use Sources for grounding, and Review to lock it in.`
+              ? `What mark are you at risk of losing again today? Cognition OS will repair that first, then use Progress and Review as support.`
               : 'Create or select a learning goal to start.'}
           </p>
         </div>
@@ -212,7 +212,7 @@ export default function DashboardPage() {
         <Card padding="lg" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)' }}>
           <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'bold', marginBottom: 'var(--sp-2)' }}>Study Profile</h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-xs)', marginBottom: 'var(--sp-4)' }}>
-              Cognition OS turns your sessions, doubts, mistakes, and assessments into the next daily study mission.
+              Progress and Review support the repair loop: weak concepts show what is fragile, MEMORY shows what must be recalled before forgetting.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--sp-4)' }}>
               <button

@@ -1,4 +1,4 @@
-import { budgetedVisionCall } from '@/lib/ai/budgeted';
+import { budgetedVisionCall, budgetedGenerateJSON } from '@/lib/ai/budgeted';
 import { isBudgetExceeded, isBudgetUnavailable, budgetExceededResponse, budgetUnavailableResponse } from '@/lib/ai/cost-guard';
 import { createAutopsyJob } from '@/lib/services/autopsy-jobs';
 import { ingestStudyMaterial, materialContentHash } from '@/lib/rag/ingest';
@@ -8,6 +8,8 @@ import { EventDispatcher } from '@/lib/events/orchestrator';
 import { logger } from '@/lib/utils/logger';
 import { apiErrorResponse } from '@/lib/api/errors';
 import { featureFlags } from '@/lib/config/flags';
+import { processLearningTransaction } from '@/lib/learning/learning-transaction';
+import { z } from 'zod';
 
 const INLINE_INGESTION_MAX_BYTES = 5 * 1024 * 1024;
 
@@ -38,6 +40,20 @@ export function visionUploadsDisabledResponse(encoder: TextEncoder): Response {
   );
 }
 
+// Zod schema for structured photo-doubt extraction (pass 2)
+const PhotoDoubtExtractionSchema = z.object({
+  topic: z.string().nullable().optional(),
+  subject: z.enum(['Physics', 'Chemistry', 'Biology', 'Mathematics', 'Other']).nullable().optional(),
+  conceptsTested: z.array(z.string()).optional(),
+  detectedMistake: z.string().nullable().optional(),
+  examRelevance: z.string().nullable().optional(),
+  nextAction: z.string().nullable().optional(),
+  isCorrect: z.boolean().nullable().optional(),
+  confidence: z.number().min(0).max(1).optional(),
+});
+
+type PhotoDoubtExtraction = z.infer<typeof PhotoDoubtExtractionSchema>;
+
 export async function handleVisionUpload({
   userId,
   message,
@@ -46,6 +62,10 @@ export async function handleVisionUpload({
   systemPrompt,
   finalizeAssistantTurn,
   encoder,
+  supabase,
+  goalId,
+  sessionId,
+  idempotencyKey,
 }: {
   userId: string;
   message: string;
@@ -54,10 +74,15 @@ export async function handleVisionUpload({
   systemPrompt: string;
   finalizeAssistantTurn: any;
   encoder: TextEncoder;
+  supabase?: any;
+  goalId?: string | null;
+  sessionId?: string | null;
+  idempotencyKey?: string;
 }): Promise<Response> {
-  let answer = '';
+  // ── Pass 1: Vision answer ─────────────────────────────────────────────────
+  let rawAnswer = '';
   try {
-    answer = await budgetedVisionCall({
+    rawAnswer = await budgetedVisionCall({
       userId,
       feature: 'chat_vision',
       route: '/api/ai/chat',
@@ -70,17 +95,109 @@ export async function handleVisionUpload({
   } catch (err) {
     if (isBudgetExceeded(err)) return budgetExceededResponse();
     if (isBudgetUnavailable(err)) return budgetUnavailableResponse();
-    answer = 'I could not generate that part right now. Try again in a moment.';
+    rawAnswer = 'I could not generate that part right now. Try again in a moment.';
   }
+
+  // ── Pass 2: Structured extraction (non-blocking, runs concurrently) ───────
+  let extraction: PhotoDoubtExtraction | null = null;
+  try {
+    extraction = await budgetedGenerateJSON<PhotoDoubtExtraction>({
+      userId,
+      feature: 'chat_vision',
+      route: '/api/ai/chat:photo-extract',
+      model: 'flash',
+      systemPrompt: `You are a NEET/JEE exam analysis engine. Given a student's question image and the AI answer, extract structured metadata.
+Return ONLY JSON matching the schema. No prose.`,
+      userPrompt: `Student question: "${message || 'Solve this'}"
+
+AI answer:
+${rawAnswer.slice(0, 1500)}
+
+Extract:
+- topic: the specific topic/concept in the question (e.g. "Photoelectric Effect", "Krebs Cycle")
+- subject: Physics | Chemistry | Biology | Mathematics | Other
+- conceptsTested: array of up to 4 specific concepts tested in this question
+- detectedMistake: if the student seems to have misunderstood something, state it concisely (or null)
+- examRelevance: one sentence on how this topic appears in NEET/JEE (or null)
+- nextAction: recommended next step for the student (e.g. "Practice 5 more questions on this")
+- isCorrect: was the student's question phrasing/attempt correct? (null if unclear)
+- confidence: 0-1 confidence in extraction`,
+      schema: PhotoDoubtExtractionSchema,
+      maxOutputTokens: 300,
+    });
+  } catch (extractErr) {
+    logger.warn('Photo-doubt structured extraction failed (non-blocking)', {
+      userId,
+      error: extractErr instanceof Error ? extractErr.message : String(extractErr),
+    });
+  }
+
+  // ── Build structured answer ────────────────────────────────────────────────
+  let formattedAnswer = rawAnswer;
+  if (extraction?.topic) {
+    const lines: string[] = [];
+    lines.push(`**${extraction.topic}** ${extraction.subject ? `(${extraction.subject})` : ''}\n`);
+    lines.push(rawAnswer.trim());
+    if (extraction.examRelevance) {
+      lines.push(`\n\n📌 **Exam Relevance:** ${extraction.examRelevance}`);
+    }
+    if (extraction.nextAction) {
+      lines.push(`\n\n➡️ **Next:** ${extraction.nextAction}`);
+    }
+    formattedAnswer = lines.join('');
+  }
+
+  // ── Learning transaction (fire-and-forget) ────────────────────────────────
+  let learningDelta = '';
+  if (supabase && extraction) {
+    try {
+      const txResult = await processLearningTransaction({
+        supabase,
+        userId,
+        source: 'photo_doubt',
+        idempotencyKey: idempotencyKey ?? `photo_${Date.now()}`,
+        sessionId,
+        goalId,
+        userText: message || null,
+        assistantText: rawAnswer,
+        imageMetadata: {
+          topic: extraction.topic ?? null,
+          subject: extraction.subject ?? null,
+          conceptsTested: extraction.conceptsTested ?? [],
+          detectedMistake: extraction.detectedMistake ?? null,
+          isCorrect: extraction.isCorrect ?? null,
+          confidence: extraction.confidence ?? 0.65,
+        },
+      });
+      learningDelta = txResult.learningSignalSummary;
+    } catch (txErr) {
+      logger.warn('Photo-doubt learning transaction failed (non-blocking)', {
+        userId,
+        error: txErr instanceof Error ? txErr.message : String(txErr),
+      });
+    }
+  }
+
+  const answerWithDelta = learningDelta
+    ? `${formattedAnswer}\n\n---\n*${learningDelta}*`
+    : formattedAnswer;
 
   const stream = new ReadableStream({
     async start(controller) {
-      controller.enqueue(encoder.encode(answer));
+      controller.enqueue(encoder.encode(answerWithDelta));
       try {
         await finalizeAssistantTurn({
-          assistantText: answer,
+          assistantText: answerWithDelta,
           userMessage: message || '[Image upload]',
           budgetReservationId: null,
+          metadata: {
+            source: 'photo_doubt',
+            topic: extraction?.topic ?? null,
+            subject: extraction?.subject ?? null,
+            conceptsTested: extraction?.conceptsTested ?? [],
+            detectedMistake: extraction?.detectedMistake ?? null,
+            learningDelta,
+          },
         });
       } catch (finalizeErr) {
         logger.error('Chat route [image]: finalization failed', finalizeErr);
@@ -90,6 +207,7 @@ export async function handleVisionUpload({
   });
   return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8', 'x-provider-routed': 'vision' } });
 }
+
 
 export async function handleDocumentVisionUpload({
   userId,

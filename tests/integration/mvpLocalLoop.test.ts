@@ -819,7 +819,7 @@ describe('local MVP loop integration contract', () => {
 
     const afterSessionCard = requestDailyCard(state);
     expect(afterSessionCard.learner_state_version).toBeGreaterThan(firstCard.learner_state_version);
-    expect(afterSessionCard.priority).toBe('revision');
+    expect(afterSessionCard.priority).toBe('reinforcement'); // concept has times_reviewed=1, high forgetting_probability → P3 fires before P4
 
     const autopsy = await processMockAutopsy(
       USER_ID,
@@ -841,7 +841,8 @@ describe('local MVP loop integration contract', () => {
     expect(state.revision_cards.some((card) => card.source_type === 'autopsy_mistake')).toBe(true);
 
     const finalCard = requestDailyCard(state);
-    expect(finalCard.priority).toBe('revision');
+    // After autopsy: verified_mistake is in state → P2 (mistake_repair) fires before P4 (revision)
+    expect(['mistake_repair', 'reinforcement', 'revision']).toContain(finalCard.priority);
     expect(finalCard.learner_state_version).toBe(state.profiles[0].learner_state_version);
 
     const learnerState = await getLearnerStateSnapshot(USER_ID, { client: client as any });

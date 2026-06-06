@@ -32,6 +32,29 @@ export interface MINDContext {
   recentStudySessions?: Array<{ subject?: string | null; chapter?: string | null; durationMinutes?: number | null }>;
   weakConcepts: Array<{ name: string; subject: string; chapter: string; mastery: string }>;
   recentMistakes: Array<{ chapter: string; category: string; mistake_type?: string; subject: string }>;
+  dueRetests?: Array<{
+    id: string;
+    mistake_id: string;
+    due_at: string;
+    question: string;
+    mistake?: {
+      concept?: string | null;
+      subject?: string | null;
+      topic?: string | null;
+      chapter?: string | null;
+      mistake_text?: string | null;
+      exam_trap?: string | null;
+    } | null;
+  }>;
+  openRepairMistakes?: Array<{
+    id: string;
+    concept?: string | null;
+    subject?: string | null;
+    topic?: string | null;
+    chapter?: string | null;
+    mistake_text?: string | null;
+    status?: string | null;
+  }>;
   needsReviewCount?: number;
   lastAutopsy?: { test_name: string; current_score: number; potential_score: number; created_at: string } | null;
   recentPracticeStruggles?: Array<{ conceptName: string; chapter: string; subject: string; evidence: string }>;
@@ -273,6 +296,11 @@ function buildPrompt(ctx: MINDContext, semanticMemories: string[] = [], intent?:
 
   const weakList = ctx.weakConcepts.slice(0, 3).map(c => `${c.name} (${c.mastery})`).join(', ') || 'None identified yet';
   const mistakeList = ctx.recentMistakes.slice(0, 3).map(m => `${m.chapter} — ${m.mistake_type || m.category}`).join('; ') || 'None recorded';
+  const dueRetestList = (ctx.dueRetests || []).slice(0, 3).map((r) => {
+    const m = r.mistake;
+    return `${m?.concept || m?.topic || m?.chapter || 'Due retest'} — ${r.question}`;
+  }).join('; ') || 'None due';
+  const openRepairList = (ctx.openRepairMistakes || []).slice(0, 3).map((m) => `${m.concept || m.topic || m.chapter || 'Open repair'} (${m.status || 'open'})`).join('; ') || 'None open';
   const practiceStrugglesList = (ctx.recentPracticeStruggles || []).slice(0, 3).map(p => `${p.conceptName} (${p.chapter}): ${p.evidence}`).join('; ') || 'None recorded';
   const commandTaskList = (ctx.commandTasks || []).slice(0, 3).map(t => `${t.title}${t.priority ? ` (${t.priority})` : ''}`).join('; ') || 'None queued';
   const sessionCard = ctx.currentSessionCard
@@ -577,6 +605,8 @@ ${needsReviewText ? `\n${needsReviewText}` : ''}
 
 WEAK AREAS: ${weakList}
 RECENT MISTAKE PATTERNS: ${mistakeList}
+DUE RETESTS: ${dueRetestList}
+OPEN REPAIR RISKS: ${openRepairList}
 ${rootGapSection}
 OPTIONAL EMOTIONAL STATE SIGNAL: ${ctx.emotionalState}
 RECENTLY STUDIED: ${ctx.recentTopics.slice(0, 4).join(', ') || 'Nothing yet'}
@@ -592,6 +622,10 @@ ${agentActivitySection}
 ═══════════════════════════════════════
 CORE BEHAVIOURAL RULES — NEVER VIOLATE
 ═══════════════════════════════════════
+
+RULE 0 — REPAIR RISK BEFORE NEW WORK.
+If DUE RETESTS is not "None due", briefly acknowledge the user's message, then recommend clearing the due retest first. Use wording like: "Before we continue, your [concept] retest is due. Answer this first." If the user explicitly says skip or later, allow it and continue.
+If OPEN REPAIR RISKS exists and the user asks what to do next, choose the repair risk over generic tutoring or goal progression.
 
 RULE 1 — ANSWER FIRST. ALWAYS.
 Never ask clarifying questions before answering. If additional context is needed, ask ONE question at the END of your response.

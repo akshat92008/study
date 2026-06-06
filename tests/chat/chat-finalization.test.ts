@@ -58,6 +58,7 @@ describe('finalizeChatTurn', () => {
       assistantMessageId: 'assistant-1',
       eventId: 'event-1',
       assistantAlreadyExisted: false,
+      learningSignalSummary: expect.any(String),
     });
     expect(persistAssistantMessage).toHaveBeenCalledOnce();
     expect(persistAssistantMessage.mock.calls[0][1]).toMatchObject({

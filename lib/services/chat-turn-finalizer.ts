@@ -4,6 +4,8 @@ import { ingestLearningSignal } from '@/lib/learning-signals/ingest';
 import { commitBudgetUsage, releaseBudgetReservation } from '@/lib/ai/cost-guard';
 import { persistChatMessage } from '@/lib/services/chat-persistence';
 import { captureSentryException } from '@/lib/telemetry/sentry-runtime';
+import { upsertMistakeRisk } from '@/lib/services/repair-loop.service';
+import { processLearningTransaction } from '@/lib/learning/learning-transaction';
 
 export interface ChatTurnFinalizerInput {
   supabase: SupabaseClient;
@@ -49,6 +51,8 @@ export interface ChatTurnFinalizerResult {
   assistantMessageId: string;
   eventId: string | null;
   assistantAlreadyExisted: boolean;
+  /** Learner-visible summary of what this turn produced (e.g. '2 weak signals logged · 1 retest scheduled'). Empty if nothing durable was produced. */
+  learningSignalSummary: string;
 }
 
 /**
@@ -128,30 +132,47 @@ export async function finalizeChatTurn(input: ChatTurnFinalizerInput): Promise<C
     const intentStr = typeof input.intent === 'string' ? input.intent : input.intent?.intent;
 
     const signalType = inferSignalType(input.userMessage, cleanAssistantText, intentStr);
-    if (
-      signalType === 'confusion_detected' ||
-      signalType === 'doubt_asked' ||
-      signalType === 'manual_mistake' ||
-      signalType === 'practice_requested' ||
-      signalType === 'concept_practiced' ||
-      signalType === 'self_reflection'
-    ) {
-      await ingestLearningSignal(input.supabase, {
-        user_id: input.userId,
-        goal_id: input.goalId ?? null,
-        signal_type: signalType as any,
-        source_type: input.sourceType ?? 'global_chat',
-        source_id: input.userMessageId ?? null,
+
+    // Always ingest — chat_confusion is now the valid fallback type (fixed BUG 1)
+    await ingestLearningSignal(input.supabase, {
+      user_id: input.userId,
+      goal_id: input.goalId ?? null,
+      signal_type: signalType as any,
+      source_type: input.sourceType ?? 'global_chat',
+      source_id: input.userMessageId ?? null,
+      subject: detectedSubject,
+      topic: detectedTopic ?? detectedChapter,
+      confidence: signalType === 'confusion_detected' ? 0.68 : signalType === 'doubt_asked' ? 0.65 : 0.55,
+      evidence: {
+        user_message: input.userMessage,
+        assistant_response: cleanAssistantText.slice(0, 1000),
+        detected_intent: intentStr,
+        assistant_message_id: persistedAssistant.id,
+      },
+    }, { idempotencyKey: `chat_signal:${requestId}:${signalType}` });
+
+    const explicitMistake = extractExplicitChatMistake(input.userMessage);
+    if (explicitMistake && (signalType === 'manual_mistake' || signalType === 'confusion_detected')) {
+      await upsertMistakeRisk(input.supabase, {
+        userId: input.userId,
+        goalId: input.goalId ?? null,
+        source: 'chat',
         subject: detectedSubject,
-        topic: detectedTopic ?? detectedChapter,
-        confidence: signalType === 'confusion_detected' ? 0.68 : 0.58,
-        evidence: {
-          user_message: input.userMessage,
-          assistant_response: cleanAssistantText.slice(0, 1000),
-          detected_intent: intentStr,
-          assistant_message_id: persistedAssistant.id,
+        topic: detectedTopic ?? detectedChapter ?? explicitMistake.concept,
+        chapter: detectedChapter ?? detectedTopic ?? null,
+        concept: explicitMistake.concept || detectedTopic || detectedChapter || 'Chat-detected mistake',
+        mistakeText: explicitMistake.mistakeText,
+        correctAnswer: explicitMistake.correctAnswer,
+        whyWrong: 'The learner explicitly admitted this confusion in chat.',
+        examTrap: 'MIND should clear this repair before moving too far into unrelated study.',
+        severity: 2,
+        category: 'conceptual_gap',
+        sourceId: input.userMessageId ?? persistedAssistant.id,
+        metadata: {
+          userMessage: input.userMessage.slice(0, 1200),
+          assistantMessageId: persistedAssistant.id,
         },
-      }, { idempotencyKey: `chat_signal:${requestId}:${signalType}` });
+      });
     }
   } catch (error) {
     captureSentryException(error, {
@@ -163,6 +184,29 @@ export async function finalizeChatTurn(input: ChatTurnFinalizerInput): Promise<C
       sessionId: input.sessionId,
       requestId,
       error: error instanceof Error ? error.message : String(error),
+    });
+  }
+
+  // ── Learning transaction: structured weak-area + concept detection ─────────
+  // Runs after signal ingest. Non-blocking: failures do not affect message delivery.
+  let learningSignalSummary = '';
+  try {
+    const txResult = await processLearningTransaction({
+      supabase: input.supabase,
+      userId: input.userId,
+      source: 'typed_doubt',
+      idempotencyKey: `lt_chat:${requestId}`,
+      sessionId: input.sessionId,
+      goalId: input.goalId ?? null,
+      userText: input.userMessage,
+      assistantText: cleanAssistantText,
+    });
+    learningSignalSummary = txResult.learningSignalSummary;
+  } catch (ltErr) {
+    logger.warn('Chat learning transaction failed (non-blocking)', {
+      userId: input.userId,
+      requestId,
+      error: ltErr instanceof Error ? ltErr.message : String(ltErr),
     });
   }
 
@@ -196,6 +240,23 @@ export async function finalizeChatTurn(input: ChatTurnFinalizerInput): Promise<C
     assistantMessageId: persistedAssistant.id,
     eventId,
     assistantAlreadyExisted,
+    learningSignalSummary,
+  };
+}
+
+function extractExplicitChatMistake(userMessage: string): { concept: string | null; mistakeText: string; correctAnswer?: string | null } | null {
+  const text = userMessage.trim();
+  if (text.length < 12) return null;
+  if (!/\b(my mistake|i got .*wrong|i answered .*wrong|wrong answer|i chose|i picked|i thought)\b/i.test(text)) {
+    return null;
+  }
+
+  const correctMatch = text.match(/\b(correct answer|answer should be|it should be)\s*[:=-]?\s*([^.;\n]{2,120})/i);
+  const conceptMatch = text.match(/\b(?:in|for|on)\s+([a-z0-9 ,:/()-]{3,80})\b/i);
+  return {
+    concept: conceptMatch?.[1]?.trim() ?? null,
+    mistakeText: text.slice(0, 1000),
+    correctAnswer: correctMatch?.[2]?.trim() ?? null,
   };
 }
 
@@ -211,5 +272,5 @@ function inferSignalType(userMessage: string, assistantText: string, intentStr?:
   if (/\b(confus|stuck|doubt|why|how)\b/i.test(userMessage)) return 'doubt_asked';
   if (/\b(practice|mcq|question|solve)\b/i.test(userMessage)) return 'concept_practiced';
   if (/\b(confus|mistake|stuck)\b/i.test(`${userMessage}\n${assistantText}`)) return 'confusion_detected';
-  return 'explanation_given';
+  return 'chat_confusion';
 }

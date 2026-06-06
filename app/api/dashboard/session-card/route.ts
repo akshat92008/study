@@ -42,6 +42,7 @@ import { ensureGoalForUser } from '@/lib/services/goal-context.service';
 import { betaAccessErrorResponse, requireActiveBetaUser } from '@/lib/access/beta-access';
 import { featureDisabledResponse, isBetaFeatureEnabled } from '@/lib/config/beta-flags';
 import { getOrCreateGoalMission } from '@/lib/services/goal-mission.service';
+import { getRepairSignals } from '@/lib/services/repair-loop.service';
 
 // ─── Response contract ───────────────────────────────────────────────────────
 
@@ -63,6 +64,9 @@ export interface SessionCardPayload {
   taskType: string;
   resourceType: string;
   targetConceptId: string | null;
+  targetMistakeId?: string | null;
+  targetRetestId?: string | null;
+  repairPhase?: 'immediate_repair' | 'delayed_retest' | null;
   priority: string;
   // Status
   isCompleted: boolean;
@@ -291,12 +295,9 @@ export async function GET(request?: Request): Promise<NextResponse> {
 
     let recentMistakesQuery = supabase
       .from('mistakes')
-      .select('id, subject, chapter, category, concept_id, created_at')
+      .select('id, source, subject, topic, chapter, concept, mistake_text, category, mistake_type, concept_id, severity, status, exam_trap, next_retest_at, created_at')
       .eq('user_id', user.id)
-      .gte(
-        'created_at',
-        new Date(Date.now() - 7 * 86_400_000).toISOString()
-      )
+      .in('status', ['open', 'repairing', 'retest_due', 'verified_mistake', 'pending_review'])
       .order('created_at', { ascending: false })
       .limit(20);
     if (goalId) recentMistakesQuery = recentMistakesQuery.eq('goal_id', goalId);
@@ -350,6 +351,13 @@ export async function GET(request?: Request): Promise<NextResponse> {
       .limit(3);
     if (goalId) patternMemoriesQuery = patternMemoriesQuery.eq('goal_id', goalId);
 
+    const repairSignalsPromise = getRepairSignals(supabase, {
+      userId: user.id,
+      goalId,
+      now,
+      limit: 20,
+    }).catch(() => ({ dueRetests: [], activeMistakes: [] }));
+
     let firstSeededTopicQuery = supabase
       .from('goal_curriculum_nodes')
       .select('id, subject, chapter, title, description, order_index, status')
@@ -377,6 +385,7 @@ export async function GET(request?: Request): Promise<NextResponse> {
       commandTasksRes,
       patternMemoriesRes,
       firstSeededTopicRes,
+      repairSignals,
     ] = await Promise.all([
       activeGoal
         ? Promise.resolve({ data: activeGoal })
@@ -417,6 +426,8 @@ export async function GET(request?: Request): Promise<NextResponse> {
       patternMemoriesQuery,
 
       firstSeededTopicQuery,
+
+      repairSignalsPromise,
     ]);
 
     const overdueCardCount = overdueCountRes.count ?? 0;
@@ -449,7 +460,8 @@ export async function GET(request?: Request): Promise<NextResponse> {
         : null,
       overdueCardCount,
       topDueCard: topDueCardRes.data ?? null,
-      recentMistakes: recentMistakesRes.data ?? [],
+      dueRetests: repairSignals.dueRetests ?? [],
+      recentMistakes: (repairSignals.activeMistakes?.length ? repairSignals.activeMistakes : recentMistakesRes.data) ?? [],
       weakConcepts: weakConceptsRes.data ?? [],
       sessionCount,
       studentModel: studentModelRes.data ?? null,
@@ -558,6 +570,9 @@ export async function GET(request?: Request): Promise<NextResponse> {
       taskType: selection.taskType,
       resourceType: selection.resourceType,
       targetConceptId: selection.targetConceptId,
+      targetMistakeId: selection.targetMistakeId ?? null,
+      targetRetestId: selection.targetRetestId ?? null,
+      repairPhase: selection.repairPhase ?? null,
       priority: selection.priority,
       isCompleted: false,
       completedAt: null,
@@ -583,6 +598,9 @@ export async function GET(request?: Request): Promise<NextResponse> {
       taskType: card.taskType,
       resourceType: card.resourceType,
       targetConceptId: card.targetConceptId,
+      targetMistakeId: card.targetMistakeId ?? null,
+      targetRetestId: card.targetRetestId ?? null,
+      repairPhase: card.repairPhase ?? null,
       priority: card.priority,
       isCompleted: false,
       completedAt: null,
@@ -669,6 +687,9 @@ function dbRowToPayload(row: any): SessionCardPayload {
     taskType: row.taskType ?? row.task_type ?? 'concept_study',
     resourceType: row.resourceType ?? row.resource_type ?? 'practice_questions',
     targetConceptId: row.targetConceptId ?? row.target_concept_id ?? null,
+    targetMistakeId: row.targetMistakeId ?? row.target_mistake_id ?? null,
+    targetRetestId: row.targetRetestId ?? row.target_retest_id ?? null,
+    repairPhase: row.repairPhase ?? row.repair_phase ?? null,
     priority: row.priority ?? 'concept_study',
     isCompleted: row.isCompleted ?? row.is_completed ?? false,
     completedAt: row.completedAt ?? row.completed_at ?? null,

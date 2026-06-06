@@ -28,7 +28,7 @@ export default function SubmitButton() {
       }}
     >
       {pending ? <Loader2 className="animate-spin" size={20} /> : null}
-      {pending ? 'Building...' : 'Build My Learning OS →'}
+      {pending ? 'Building...' : 'Protect My First Marks'}
     </button>
   );
 }

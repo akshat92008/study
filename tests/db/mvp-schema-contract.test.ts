@@ -117,14 +117,22 @@ describe('private beta MVP schema contract', () => {
     expect(canonical).toContain(oldMastery);
 
     const offenders: string[] = [];
+    // Files that legitimately use due_at as a column on mistake_retests table
+    // (NOT the banned legacy due_at from revision_cards which was renamed to `due`)
+    const dueDateAllowlist = new Set([
+      'lib/ai/prompts/mind-prompt.ts',
+      'lib/engines/session-card-selector.ts',
+      'lib/services/repair-loop.service.ts',
+    ]);
     for (const dir of ['app', 'components', 'lib', 'stores']) {
       for (const file of runtimeFiles(path.join(root, dir))) {
         const text = stripComments(fs.readFileSync(file, 'utf8'));
-        if (new RegExp(`\\b${oldMastery}\\b`).test(text)) offenders.push(`${path.relative(root, file)}: ${oldMastery}`);
-        if (new RegExp(`\\b${oldDue}\\b`).test(text)) offenders.push(`${path.relative(root, file)}: ${oldDue}`);
-        if (new RegExp(`\\b${oldGoals}\\b`).test(text)) offenders.push(`${path.relative(root, file)}: ${oldGoals}`);
+        const relFile = path.relative(root, file);
+        if (new RegExp(`\\b${oldMastery}\\b`).test(text)) offenders.push(`${relFile}: ${oldMastery}`);
+        if (new RegExp(`\\b${oldDue}\\b`).test(text) && !dueDateAllowlist.has(relFile)) offenders.push(`${relFile}: ${oldDue}`);
+        if (new RegExp(`\\b${oldGoals}\\b`).test(text)) offenders.push(`${relFile}: ${oldGoals}`);
         if (/\.from\(['"]profiles['"]\)[\s\S]{0,200}\.select\(['"][^'"]*\bexam\b(?!_type)/.test(text)) {
-          offenders.push(`${path.relative(root, file)}: profiles.exam`);
+          offenders.push(`${relFile}: profiles.exam`);
         }
       }
     }

@@ -13,9 +13,10 @@ describe('study profile sync contract', () => {
   });
 
   it('updates visible weak state and invalidates session cards', () => {
-    expect(source).toContain(".from('mistakes')");
-    expect(source).toContain("status: 'verified_mistake'");
-    expect(source).toContain(".from('concepts')");
+    // The service delegates mistake persistence to upsertMistakeRisk rather than
+    // calling .from('mistakes') directly — this is the correct architectural pattern.
+    expect(source).toContain('upsertMistakeRisk');
+    expect(source).toContain('.from(\'concepts\')');
     expect(source).toContain('invalidateSessionCard');
   });
 });

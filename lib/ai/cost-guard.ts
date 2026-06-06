@@ -50,6 +50,7 @@ export type BudgetFeature =
   | 'onboarding'
   | 'chat-mentor'
   | 'rag_flashcard'
+  | 'rag_ocr_fallback'
   // Hermes internal worker features — never user-facing
   | 'hermes_mistake'
   | 'hermes_source'
@@ -144,6 +145,7 @@ const COST_PER_1K_TOKENS: Record<BudgetFeature, number> = {
   onboarding:              0.00005,
   'chat-mentor':           0.0001,
   rag_flashcard:           0.00005,
+  rag_ocr_fallback:        0.0003,
   // Hermes internal worker features
   hermes_mistake:          0.0001,
   hermes_source:           0.00015,

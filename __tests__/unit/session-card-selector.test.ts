@@ -138,7 +138,7 @@ describe('T2: User with overdue MEMORY cards → revision priority', () => {
     expect(result.dueCardCount).toBe(7);
   });
 
-  it('P1 beats P2 (mistakes also present)', () => {
+  it('open repair risk beats MEMORY cards', () => {
     const combined = makeInput({
       overdueCardCount: 3,
       topDueCard: {
@@ -160,7 +160,7 @@ describe('T2: User with overdue MEMORY cards → revision priority', () => {
         },
       ],
     });
-    expect(selectSessionCard(combined).priority).toBe('revision');
+    expect(selectSessionCard(combined).priority).toBe('mistake_repair');
   });
 });
 
@@ -198,7 +198,7 @@ describe('T3: User with recent autopsy mistakes → mistake_repair', () => {
   });
 
   it('topic is the chapter with most mistakes', () => {
-    expect(selectSessionCard(mistakeSig).topic).toBe('Genetics');
+    expect(selectSessionCard(mistakeSig).topic).toBe('Repair: Genetics');
   });
 
   it('mistakeCount reflects recent mistakes', () => {
@@ -222,8 +222,8 @@ describe('T3: User with recent autopsy mistakes → mistake_repair', () => {
         now: new Date().toISOString(),
       })
     );
-    // No overdue cards, no mistakes (old), no weak concepts -> first-session fallback
-    expect(result.priority).toBe('concept_study');
+    // An unresolved mistake remains repair risk even when it is older than the recent window.
+    expect(result.priority).toBe('mistake_repair');
   });
 });
 
@@ -276,7 +276,7 @@ describe('T3b: active plan task -> session card', () => {
     );
 
     expect(result.priority).toBe('mistake_repair');
-    expect(result.topic).toBe('Rotational Motion');
+    expect(result.topic).toBe('Repair: Rotational Motion');
   });
 });
 
@@ -316,7 +316,7 @@ describe('T4: User with weak concept → concept_study', () => {
   it('picks the weakest concept (not_started over developing)', () => {
     const result = selectSessionCard(weakSig);
     expect(result.targetConceptId).toBe('concept-001');
-    expect(result.topic).toBe('Laws of Motion');
+    expect(result.topic).toBe('Fix: Newton\'s Laws of Motion');
   });
 
   it('masteryBefore reflects the concept mastery at selection time', () => {
@@ -582,8 +582,8 @@ describe('T9: Priority hierarchy', () => {
     ],
   });
 
-  it('P1 (overdue cards) beats P2 (mistakes) and P3 (weak concepts)', () => {
-    expect(selectSessionCard(allSignals).priority).toBe('revision');
+  it('open mistake risk beats MEMORY cards and weak concepts', () => {
+    expect(selectSessionCard(allSignals).priority).toBe('mistake_repair');
   });
 
   it('P2 beats P3 when no overdue cards', () => {
@@ -591,17 +591,15 @@ describe('T9: Priority hierarchy', () => {
     expect(selectSessionCard(noDue).priority).toBe('mistake_repair');
   });
 
-  it('P3 beats P6 when no overdue cards and no mistakes', () => {
+  it('weak concepts beat MEMORY when no mistakes are open', () => {
     const noMistakes = {
       ...allSignals,
-      overdueCardCount: 0,
-      topDueCard: null,
       recentMistakes: [],
     };
     expect(selectSessionCard(noMistakes).priority).toBe('concept_study');
   });
 
-  it('COMMAND beats generic weak concepts when urgent signals are absent', () => {
+  it('weak concepts beat COMMAND when urgent repair signals are absent', () => {
     const withCommand = {
       ...allSignals,
       overdueCardCount: 0,
@@ -618,8 +616,8 @@ describe('T9: Priority hierarchy', () => {
     };
 
     const result = selectSessionCard(withCommand);
-    expect(result.reason).toContain("Today's Mission selected");
-    expect(result.topic).toBe('Equilibrium');
+    expect(result.priority).toBe('concept_study');
+    expect(result.topic).toBe('Fix: Waves');
   });
 });
 

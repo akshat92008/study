@@ -21,6 +21,8 @@ const DAILY_STATS_RE = /\b(how many questions (today|did i do)|today'?s stats|my
 const REVISE_NOW_RE = /\b(what should i revise( now)?|overdue cards|pending revision)\b/i;
 const LARGE_MCQ_RE = /\b([2-9]\d|1\d{2,})\s+(mcq|question|flashcard)s?\b/i;
 const DEFINITION_RE = /^(what is|define) ([a-z0-9 ]{2,30})\??$/i;
+const SKIP_REPAIR_RE = /\b(skip|later|ignore|continue anyway|not now)\b/i;
+const REPAIR_RETEST_RE = /\b(retest|repair|mistake|wrong|answer this|start repair)\b/i;
 
 // ─── HANDLERS ────────────────────────────────────────────────────────────────
 
@@ -91,6 +93,22 @@ function handleReviseNow(mindContext: any): string | null {
   return `You have **${count} overdue flashcards** waiting for you.${topicList}\n\nWould you like to do a quick 10-card review session now?`;
 }
 
+function handleDueRetestFirst(message: string, mindContext: any): string | null {
+  const due = mindContext?.dueRetests || [];
+  if (due.length === 0 || SKIP_REPAIR_RE.test(message) || REPAIR_RETEST_RE.test(message)) return null;
+
+  const retest = due[0];
+  const mistake = retest.mistake || {};
+  const label = mistake.concept || mistake.topic || mistake.chapter || 'your due retest';
+  return [
+    `Before we continue, your **${label}** retest is due.`,
+    ``,
+    `Answer this first: ${retest.question}`,
+    ``,
+    `This is the proof step. If you pass it, the mistake can be marked repaired; if you want to skip, say "skip for now."`,
+  ].join('\n');
+}
+
 // ─── MAIN ORCHESTRATOR ────────────────────────────────────────────────────────
 
 /**
@@ -106,6 +124,12 @@ export async function tryRuleFirstResponse(
   }
 
   const trimmed = message.trim();
+
+  const retestFirst = handleDueRetestFirst(trimmed, mindContext);
+  if (retestFirst) {
+    logger.info('[RuleFirst] Prioritized due mistake retest', { userId });
+    return { handled: true, response: retestFirst, tokenSavedEstimate: 900 };
+  }
 
   // 1. Weak topics
   if (WEAK_TOPICS_RE.test(trimmed)) {
