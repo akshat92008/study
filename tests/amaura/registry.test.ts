@@ -25,6 +25,7 @@ describe('Amaura native agent registry', () => {
       'amaura_progress_evaluator',
       'amaura_next_action',
       'amaura_practice_agent',
+      'amaura_practice_generator',
       'amaura_session_agent',
       'amaura_autopsy_cascade',
       'amaura_forgetting_agent',
@@ -37,6 +38,7 @@ describe('Amaura native agent registry', () => {
     expect(getAmauraAgentForConsumer('amaura_progress_evaluator')?.name).toBe('ProgressEvaluatorAgent');
     expect(getAmauraAgentForConsumer('amaura_next_action')?.name).toBe('NextActionAgent');
     expect(getAmauraAgentForConsumer('amaura_practice_agent')?.name).toBe('PracticePatternAgent');
+    expect(getAmauraAgentForConsumer('amaura_practice_generator')?.name).toBe('PracticeGeneratorAgent');
     expect(getAmauraAgentForConsumer('amaura_session_agent')?.name).toBe('SessionCloseAgent');
     expect(getAmauraAgentForConsumer('amaura_autopsy_cascade')?.name).toBe('AutopsyCascadeAgent');
     expect(getAmauraAgentForConsumer('amaura_forgetting_agent')?.name).toBe('ForgettingAgent');
@@ -56,6 +58,7 @@ describe('Amaura native agent registry', () => {
       'NextActionAgent',
       'PatternMemoryAgent',
       'PlanAdapterAgent',
+      'PracticeGeneratorAgent',
       'PracticePatternAgent',
       'ProgressEvaluatorAgent',
       'SessionCloseAgent',
@@ -77,6 +80,7 @@ describe('Amaura native agent registry', () => {
       'NextActionAgent',
       'PatternMemoryAgent',
       'PlanAdapterAgent',
+      'PracticeGeneratorAgent',
       'PracticePatternAgent',
       'ProgressEvaluatorAgent',
       'SessionCloseAgent',

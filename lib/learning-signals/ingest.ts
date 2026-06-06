@@ -8,8 +8,16 @@ export async function ingestLearningSignal(
   input: LearningSignalInput,
   options: { publishEvent?: boolean; idempotencyKey?: string } = {}
 ): Promise<NormalizedLearningSignal> {
-  const signal = normalizeLearningSignal(input);
-  const { error } = await supabase.from('learning_signals').insert(signal);
+  const signal = {
+    ...normalizeLearningSignal(input),
+    idempotency_key: input.idempotency_key ?? options.idempotencyKey ?? null,
+  };
+  const query = signal.idempotency_key
+    ? supabase
+        .from('learning_signals')
+        .upsert(signal, { onConflict: 'user_id,idempotency_key', ignoreDuplicates: true })
+    : supabase.from('learning_signals').insert(signal);
+  const { error } = await query;
   if (error) throw error;
 
   if (options.publishEvent !== false) {

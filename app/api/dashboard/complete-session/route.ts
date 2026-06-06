@@ -38,6 +38,7 @@ export async function POST(req: NextRequest) {
       understood: body.understood ?? true,
       gapFound: body.gapFound ?? null,
       cardsCreated: body.cardsCreated ?? 0,
+      goalId: body.goalId ?? null,
       source: 'complete_session',
       idempotencyKey: req.headers.get('Idempotency-Key'),
       client: supabase,

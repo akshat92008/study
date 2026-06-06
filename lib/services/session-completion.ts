@@ -1,6 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import { resolveConcept } from '@/lib/engines/concept-resolver';
-import { computeAndUpdateStreak } from '@/lib/engines/streak-engine';
+import { recordMasteryEvidence } from '@/lib/engines/mastery-updater';
 import { logger } from '@/lib/utils/logger';
 
 export interface CompleteLearningSessionInput {
@@ -14,6 +14,7 @@ export interface CompleteLearningSessionInput {
   gapFound?: string | null;
   cardsCreated?: number | null;
   sessionType?: string | null;
+  goalId?: string | null;
   idempotencyKey?: string | null;
   source?: 'complete_session' | 'session_close' | 'chat' | 'system';
   client?: any;
@@ -28,6 +29,96 @@ export interface CompleteLearningSessionResult {
   chapter: string;
   understood: boolean;
   cardsCreated: number;
+}
+
+function getLocalDate(timezone?: string | null): string {
+  try {
+    if (timezone) {
+      return new Date().toLocaleDateString('en-CA', { timeZone: timezone });
+    }
+  } catch {
+    // Fall back to server date below.
+  }
+  return new Date().toISOString().slice(0, 10);
+}
+
+async function markCachedSessionCardCompleted(
+  supabase: any,
+  input: { userId: string; goalId?: string | null }
+) {
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('streak_days, learner_state_version, timezone')
+    .eq('id', input.userId)
+    .maybeSingle();
+
+  const localDate = getLocalDate(profile?.timezone ?? null);
+  const update: Record<string, unknown> = {
+    isCompleted: true,
+    completedAt: new Date().toISOString(),
+    is_completed: true,
+    completed_at: new Date().toISOString(),
+  };
+  if (typeof profile?.learner_state_version === 'number') {
+    update.learner_state_version = profile.learner_state_version;
+  }
+
+  let query = supabase
+    .from('session_cards')
+    .update(update)
+    .eq('user_id', input.userId)
+    .eq('date', localDate);
+
+  if (input.goalId) query = query.eq('goal_id', input.goalId);
+  await query;
+
+  return {
+    streakDays: Number(profile?.streak_days ?? 0),
+  };
+}
+
+async function recordSessionMasteryIfMissing(
+  supabase: any,
+  input: {
+    userId: string;
+    conceptId: string | null;
+    sessionId: string;
+    understood: boolean;
+    subject: string;
+    chapter: string;
+  }
+) {
+  if (!input.conceptId) return;
+
+  const { data: existing } = await supabase
+    .from('mastery_events')
+    .select('id')
+    .eq('user_id', input.userId)
+    .eq('concept_id', input.conceptId)
+    .eq('source_id', input.sessionId)
+    .limit(1)
+    .maybeSingle();
+  if (existing?.id) return;
+
+  await recordMasteryEvidence({
+    userId: input.userId,
+    conceptId: input.conceptId,
+    evidenceType: input.understood ? 'session_completed' : 'tutor_confused',
+    source: 'session_close',
+    sourceId: input.sessionId,
+    idempotencyKey: `session_mastery:${input.userId}:${input.sessionId}:${input.conceptId}`,
+    evidence: input.understood
+      ? `Completed a study session on ${input.subject} / ${input.chapter}.`
+      : `Completed a study session and flagged a gap in ${input.subject} / ${input.chapter}.`,
+    confidence: input.understood ? 0.65 : 0.76,
+    client: supabase,
+  }).catch((error) => {
+    logger.warn('Session mastery evidence write skipped', {
+      userId: input.userId,
+      sessionId: input.sessionId,
+      error: error instanceof Error ? error.message : String(error),
+    });
+  });
 }
 
 export async function completeLearningSession(
@@ -63,6 +154,10 @@ export async function completeLearningSession(
         .select('streak_days')
         .eq('id', input.userId)
         .maybeSingle();
+      await markCachedSessionCardCompleted(supabase, {
+        userId: input.userId,
+        goalId: input.goalId ?? null,
+      }).catch(() => undefined);
 
       return {
         sessionId: existing.id,
@@ -147,6 +242,26 @@ export async function completeLearningSession(
   }
 
   const sessionId = rpcResult.session_id;
+
+  await recordSessionMasteryIfMissing(supabase, {
+    userId: input.userId,
+    conceptId,
+    sessionId,
+    understood,
+    subject,
+    chapter,
+  });
+
+  await markCachedSessionCardCompleted(supabase, {
+    userId: input.userId,
+    goalId: input.goalId ?? null,
+  }).catch((error) => {
+    logger.warn('Session card completion marker skipped', {
+      userId: input.userId,
+      sessionId,
+      error: error instanceof Error ? error.message : String(error),
+    });
+  });
   
   const streakChanged = rpcResult.streak_changed ?? false;
   const newStreak = rpcResult.streak_days ?? 0;

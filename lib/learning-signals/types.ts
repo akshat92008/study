@@ -11,7 +11,8 @@ export type LearningSignalType =
   | 'autopsy_memory_created'
   | 'practice_requested'
   | 'confusion_detected'
-  | 'concept_practiced';
+  | 'concept_practiced'
+  | 'doubt_asked';
 
 export interface LearningSignalInput {
   user_id: string;
@@ -23,6 +24,7 @@ export interface LearningSignalInput {
   topic?: string | null;
   confidence?: number;
   evidence?: Record<string, unknown>;
+  idempotency_key?: string | null;
   created_at?: string;
 }
 
@@ -36,5 +38,6 @@ export interface NormalizedLearningSignal {
   topic: string | null;
   confidence: number;
   evidence: Record<string, unknown>;
+  idempotency_key?: string | null;
   created_at?: string;
 }

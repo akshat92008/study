@@ -553,6 +553,7 @@ function PracticeTestCard({ artifact, messageId }: { artifact: ParsedArtifact, m
   const questions = parseQuestions(artifact.content);
   const chatSessionId = useAppStore(s => s.chatId);
   const activeGoalId = useAppStore(s => s.activeGoalId);
+  const submissionKeyRef = React.useRef<string | null>(null);
   const [currentQ, setCurrentQ] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, string>>({});
   const [showExplanations, setShowExplanations] = useState<Record<number, boolean>>({});
@@ -567,6 +568,14 @@ function PracticeTestCard({ artifact, messageId }: { artifact: ParsedArtifact, m
   const isCorrect = selected === question?.answer;
 
   const score = Object.keys(selectedAnswers).filter(k => selectedAnswers[parseInt(k)] === questions[parseInt(k)]?.answer).length;
+
+  const getSubmissionKey = () => {
+    if (!submissionKeyRef.current) {
+      const randomId = globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+      submissionKeyRef.current = `practice:${messageId ?? artifact.topic}:${randomId}`;
+    }
+    return submissionKeyRef.current;
+  };
 
   const handleSelect = (option: string) => {
     if (selected) return;
@@ -733,10 +742,15 @@ function PracticeTestCard({ artifact, messageId }: { artifact: ParsedArtifact, m
                     `topic="${escapeArtifactAttribute(artifact.topic)}"`,
                     artifact.subject ? `subject="${escapeArtifactAttribute(artifact.subject)}"` : null,
                   ].filter(Boolean).join(' ');
+                  const idempotencyKey = getSubmissionKey();
                   const response = await fetch('/api/practice/attempts', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: {
+                      'Content-Type': 'application/json',
+                      'Idempotency-Key': idempotencyKey,
+                    },
                     body: JSON.stringify({
+                      idempotencyKey,
                       messageId,
                       messageContent: `<artifact ${artifactAttributes}>\n${artifact.content}\n</artifact>`,
                       chatSessionId,

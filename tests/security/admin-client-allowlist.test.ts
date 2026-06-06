@@ -65,6 +65,7 @@ const allowedRuntimeFiles = new Set([
   'lib/admin/user-management.ts',
   'lib/amaura/agents/budget.ts',
   'lib/amaura/agents/idempotency.ts',
+  'lib/amaura/agents/native-agents/practice-generator-agent.ts',
   'lib/amaura/agents/repositories.ts',
   'lib/amaura/agents/runtime.ts',
   'lib/amaura/goal-loop.ts',

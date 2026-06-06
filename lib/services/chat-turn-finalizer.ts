@@ -1,12 +1,8 @@
 import { SupabaseClient } from '@supabase/supabase-js';
-import { createAdminClient } from '@/lib/supabase/admin';
 import { logger } from '@/lib/utils/logger';
 import { ingestLearningSignal } from '@/lib/learning-signals/ingest';
-import { 
-  reserveBudgetForModelCall, 
-  commitBudgetUsage, 
-  releaseBudgetReservation 
-} from '@/lib/ai/cost-guard';
+import { commitBudgetUsage, releaseBudgetReservation } from '@/lib/ai/cost-guard';
+import { persistChatMessage } from '@/lib/services/chat-persistence';
 import { captureSentryException } from '@/lib/telemetry/sentry-runtime';
 
 export interface ChatTurnFinalizerInput {
@@ -30,6 +26,29 @@ export interface ChatTurnFinalizerInput {
   budgetUsage?: any;
   onBehalfOf?: string;
   onBudgetSettled?: (usage: any) => void;
+  persistAssistantMessage?: (
+    supabase: SupabaseClient,
+    message: {
+      sessionId: string;
+      userId: string;
+      role: 'assistant';
+      content: string;
+      metadata?: Record<string, any>;
+      intent?: string;
+      emotionalState?: string;
+      promptVersion?: string;
+      idempotencyKey: string;
+    }
+  ) => Promise<{ id: string; existed?: boolean }>;
+  publishEvent?: (event: Record<string, any>) => Promise<string | null>;
+  commitBudget?: (reservationId: string, usage: any) => Promise<void>;
+  releaseBudget?: (reservationId: string, reason: string) => Promise<void>;
+}
+
+export interface ChatTurnFinalizerResult {
+  assistantMessageId: string;
+  eventId: string | null;
+  assistantAlreadyExisted: boolean;
 }
 
 /**
@@ -40,95 +59,144 @@ export interface ChatTurnFinalizerInput {
  * 2. Ingests signals to durable event queue.
  * 3. Commits AI budget for the turn.
  * 
- * Safety: Failures in side-effects MUST NOT kill the assistant response stream.
- * They are wrapped in a top-level try/catch and logged/traced.
+ * Safety: learning-signal extraction is best effort, but core persistence,
+ * budget settlement, and event publication must be explicit and idempotent.
  */
-export async function finalizeChatTurn(input: ChatTurnFinalizerInput): Promise<void> {
-  let budgetReservationId: string | null = null;
+export async function finalizeChatTurn(input: ChatTurnFinalizerInput): Promise<ChatTurnFinalizerResult> {
   const requestId = input.idempotencyKey;
+  const assistantIdempotencyKey = `${requestId}:assistant`;
+  const processedEventKey = `${requestId}:chat-message-processed`;
+  const cleanAssistantText = input.assistantText
+    .replace(/\n\n===METADATA===\n[\s\S]*$/, '')
+    .replace(/\[ACTION:OPEN_DRAWER:\w+\]/g, '')
+    .trim();
+
+  const persistAssistantMessage = input.persistAssistantMessage ?? (async (supabase, message) => persistChatMessage(supabase, message));
+  const publishEvent = input.publishEvent ?? (async (event) => {
+    const { data, error } = await input.supabase.rpc('publish_event_with_consumers', {
+      p_user_id: event.user_id,
+      p_type: event.type,
+      p_data: event.data,
+      p_metadata: event.metadata,
+      p_idempotency_key: event.idempotency_key,
+    });
+    if (error) throw error;
+    return data ?? null;
+  });
+  const commitBudget = input.commitBudget ?? commitBudgetUsage;
+  const releaseBudget = input.releaseBudget ?? releaseBudgetReservation;
+
+  let persistedAssistant: { id: string; existed?: boolean };
 
   try {
-    // 1. Extract Signals
-    const cleanAssistantText = input.assistantText
-      .replace(/\n\n===METADATA===\n[\s\S]*$/, '')
-      .replace(/\[ACTION:OPEN_DRAWER:\w+\]/g, '')
-      .trim();
+    persistedAssistant = await persistAssistantMessage(input.supabase, {
+      sessionId: input.sessionId,
+      userId: input.userId,
+      role: 'assistant',
+      content: cleanAssistantText,
+      metadata: input.metadata ?? {},
+      intent: typeof input.intent === 'string' ? input.intent : input.intent?.intent,
+      emotionalState: input.emotion,
+      promptVersion: input.promptVersion,
+      idempotencyKey: assistantIdempotencyKey,
+    });
+  } catch (error) {
+    if (input.budgetReservationId) {
+      await releaseBudget(input.budgetReservationId, error instanceof Error ? error.message : 'assistant_persistence_failed');
+    }
+    throw error;
+  }
 
+  const assistantAlreadyExisted = Boolean(persistedAssistant.existed);
+  if (input.budgetReservationId) {
+    if (assistantAlreadyExisted) {
+      await releaseBudget(input.budgetReservationId, 'duplicate_chat_turn');
+    } else if (input.budgetUsage) {
+      await commitBudget(input.budgetReservationId, input.budgetUsage);
+      input.onBudgetSettled?.(input.budgetUsage);
+    } else {
+      await releaseBudget(input.budgetReservationId, 'missing_chat_budget_usage');
+    }
+  }
+
+  // Learning signals are stateful but non-blocking. The assistant response has
+  // already been persisted; event publication below remains the hard boundary.
+  try {
     const detectedSubject = input.intent?.subject ?? input.metadata?.subject ?? null;
     const detectedChapter = input.intent?.chapter ?? input.metadata?.chapter ?? null;
     const detectedTopic = input.intent?.topic ?? input.metadata?.topic ?? null;
     const intentStr = typeof input.intent === 'string' ? input.intent : input.intent?.intent;
 
-    if (detectedSubject || detectedChapter || detectedTopic || intentStr === 'MISTAKE_ADMITTED' || intentStr === 'CONCEPT_CONFUSION') {
-      const signalType = inferSignalType(input.userMessage, cleanAssistantText, intentStr);
-      if (
-        signalType === 'confusion_detected' || 
-        signalType === 'doubt_asked' || 
-        signalType === 'manual_mistake' || 
-        signalType === 'practice_requested' || 
-        signalType === 'concept_practiced' ||
-        signalType === 'self_reflection'
-      ) {
-        await ingestLearningSignal(input.supabase, {
-          user_id: input.userId,
-          goal_id: input.goalId ?? null,
-          signal_type: signalType as any,
-          source_type: input.sourceType ?? 'global_chat',
-          source_id: requestId, // Link to this specific turn
-          subject: detectedSubject,
-          topic: detectedTopic ?? detectedChapter,
-          confidence: signalType === 'confusion_detected' ? 0.68 : 0.58,
-          evidence: {
-            user_message: input.userMessage,
-            assistant_response: cleanAssistantText.slice(0, 1000),
-            detected_intent: intentStr,
-          },
-        });
-      }
+    const signalType = inferSignalType(input.userMessage, cleanAssistantText, intentStr);
+    if (
+      signalType === 'confusion_detected' ||
+      signalType === 'doubt_asked' ||
+      signalType === 'manual_mistake' ||
+      signalType === 'practice_requested' ||
+      signalType === 'concept_practiced' ||
+      signalType === 'self_reflection'
+    ) {
+      await ingestLearningSignal(input.supabase, {
+        user_id: input.userId,
+        goal_id: input.goalId ?? null,
+        signal_type: signalType as any,
+        source_type: input.sourceType ?? 'global_chat',
+        source_id: input.userMessageId ?? null,
+        subject: detectedSubject,
+        topic: detectedTopic ?? detectedChapter,
+        confidence: signalType === 'confusion_detected' ? 0.68 : 0.58,
+        evidence: {
+          user_message: input.userMessage,
+          assistant_response: cleanAssistantText.slice(0, 1000),
+          detected_intent: intentStr,
+          assistant_message_id: persistedAssistant.id,
+        },
+      }, { idempotencyKey: `chat_signal:${requestId}:${signalType}` });
     }
-
-    // 2. Publish CHAT_MESSAGE_PROCESSED event for background workers
-    const { data: eventId, error: eventError } = await input.supabase.rpc('publish_event_with_consumers', {
-      p_user_id: input.userId,
-      p_type: 'CHAT_MESSAGE_PROCESSED',
-      p_data: {
-        sessionId: input.sessionId,
-        userMessage: input.userMessage,
-        assistantText: cleanAssistantText,
-        intent: input.intent,
-        metadata: input.metadata,
-      },
-      p_metadata: {
-        requestId,
-        source: 'chat_finalizer',
-        goalId: input.goalId,
-      },
-      p_idempotency_key: `chat_finalized:${requestId}`,
-    });
-
-    if (eventError) {
-      logger.warn('Failed to publish CHAT_MESSAGE_PROCESSED', { error: eventError, requestId });
-    }
-
-    // 3. Commit AI Budget (if reservation was made in route)
-    // Note: The route should have made a reservation. Here we finalize it.
-    // If no reservation exists, this is a no-op or creates a direct commit.
-    await commitBudgetUsage(requestId, {
-      promptTokens: 500, // Reasonable default for commit
-      completionTokens: Math.ceil(cleanAssistantText.length / 4),
-    }).catch(err => logger.warn('Budget commit failed in finalizer', err));
-
   } catch (error) {
     captureSentryException(error, {
       tags: { feature: 'chat_finalizer', userId: input.userId },
       extra: { sessionId: input.sessionId, requestId }
     });
-    logger.error('FinalizeAssistantTurn failed', error, {
+    logger.warn('Chat learning-signal persistence failed', {
       userId: input.userId,
       sessionId: input.sessionId,
-      requestId
+      requestId,
+      error: error instanceof Error ? error.message : String(error),
     });
   }
+
+  const eventId = await publishEvent({
+    user_id: input.userId,
+    type: 'CHAT_MESSAGE_PROCESSED',
+    data: {
+      sessionId: input.sessionId,
+      message: input.userMessage,
+      fullResponse: cleanAssistantText,
+      emotion: input.emotion,
+      history: input.recentHistory,
+      sessionTurnsCount: input.sessionTurnsCount,
+      mindContext: input.mindContext,
+      intent: input.intent,
+      metadataPayload: input.metadata ?? {},
+      source_type: input.sourceType ?? 'global_chat',
+      user_message_id: input.userMessageId,
+      assistant_message_id: persistedAssistant.id,
+    },
+    metadata: {
+      requestId,
+      source: 'chat_finalizer',
+      goalId: input.goalId,
+      promptVersion: input.promptVersion,
+    },
+    idempotency_key: processedEventKey,
+  });
+
+  return {
+    assistantMessageId: persistedAssistant.id,
+    eventId,
+    assistantAlreadyExisted,
+  };
 }
 
 function inferSignalType(userMessage: string, assistantText: string, intentStr?: string) {

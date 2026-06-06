@@ -123,6 +123,7 @@ export const GlobalChat = memo(function GlobalChat() {
   const [pendingFile, setPendingFile] = useState<File | null>(null);
   const [isProcessingUpload, setIsProcessingUpload] = useState(false);
   const [thinkingLabel, setThinkingLabel] = useState('Amaura is thinking');
+  const [learningSignalSummary, setLearningSignalSummary] = useState<string | null>(null);
   const thinkingTimersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
   const router = useRouter();
 
@@ -176,6 +177,18 @@ export const GlobalChat = memo(function GlobalChat() {
       state.loadDashboardForActiveGoal();
 
       const wrongCount = Number(detail?.metrics?.wrongCount ?? detail?.profileSync?.wrongItems ?? 0);
+      const correctCount = Number(detail?.metrics?.correctCount ?? 0);
+      const total = correctCount + wrongCount;
+      const weakConceptNames = Array.isArray(detail?.metrics?.wrongConceptNames)
+        ? detail.metrics.wrongConceptNames.filter(Boolean)
+        : [];
+      if (total > 0) {
+        setLearningSignalSummary(
+          weakConceptNames.length > 0
+            ? `Quiz submitted: ${correctCount}/${total}. Weak area: ${weakConceptNames[0]}.`
+            : `Quiz submitted: ${correctCount}/${total}. No weak area flagged.`
+        );
+      }
       if (wrongCount > 0 || detail?.profileSync?.error) {
         addChatMessage({
           role: 'assistant',
@@ -441,14 +454,30 @@ export const GlobalChat = memo(function GlobalChat() {
     if (!activeGoal) return 'General assistant · Create a goal to activate Amaura.';
 
     const c = activeGoal.counts;
+    if (learningSignalSummary) {
+      return `Context: ${activeGoal.title} · ${learningSignalSummary}`;
+    }
+
+    const sessionSignals = chatMessages.filter(m => m.role === 'user').length;
     const hasEvidence = (c?.sourcesReady || 0) > 0 || (c?.dueCards || 0) > 0 || (c?.weakConcepts || 0) > 0 || (c?.recentMistakes || 0) > 0;
 
     if (!hasEvidence && (c?.sourcesProcessing || 0) === 0) {
-      return `Context: ${activeGoal.title} · No learning signals detected yet. Ask a doubt to start.`;
+      if (sessionSignals > 0) {
+        return `Context: ${activeGoal.title} · ${sessionSignals} learning signal${sessionSignals === 1 ? '' : 's'} captured from this session.`;
+      }
+      return `Context: ${activeGoal.title} · No learning signals yet. Ask a doubt or start today's mission.`;
     }
 
-    return `Context: ${activeGoal.title} · ${c?.sourcesReady || 0} sources ready · ${c?.sourcesProcessing || 0} processing · ${c?.dueCards || 0} due cards · ${c?.weakConcepts || 0} weak areas · ${c?.recentMistakes || 0} mistakes.`;
-  }, [activeGoal]);
+    const stateBits = [
+      (c?.weakConcepts || 0) > 0 ? `${c?.weakConcepts} weak area${c?.weakConcepts === 1 ? '' : 's'}` : null,
+      (c?.dueCards || 0) > 0 ? `${c?.dueCards} due card${c?.dueCards === 1 ? '' : 's'}` : null,
+      (c?.recentMistakes || 0) > 0 ? `${c?.recentMistakes} mistake${c?.recentMistakes === 1 ? '' : 's'}` : null,
+      (c?.sourcesReady || 0) > 0 ? `${c?.sourcesReady} source${c?.sourcesReady === 1 ? '' : 's'} ready` : null,
+      (c?.sourcesProcessing || 0) > 0 ? `${c?.sourcesProcessing} processing` : null,
+    ].filter(Boolean);
+
+    return `Context: ${activeGoal.title} · ${stateBits.join(' · ')}.`;
+  }, [activeGoal, chatMessages, learningSignalSummary]);
 
    return (
      <div

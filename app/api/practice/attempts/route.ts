@@ -11,6 +11,7 @@ import { syncStudyProfileAfterPracticeAttempt } from '@/lib/services/study-profi
 import { PracticeService } from '@/lib/services/practice.service';
 
 const AttemptsSchema = z.object({
+  idempotencyKey: z.string().min(8).optional(),
   messageId: z.string().optional(),
   practiceSetId: z.string().optional(),
   messageContent: z.string().optional(),
@@ -150,7 +151,14 @@ export async function POST(req: NextRequest) {
     });
     if (!allowed) return rateLimitResponse(remaining, resetAt);
 
-    const idempotencyKey = req.headers.get('Idempotency-Key');
+    const body = await req.json();
+    const parsed = AttemptsSchema.safeParse(body);
+    if (!parsed.success) {
+      return apiErrorResponse('invalid_request', { status: 400, message: 'Invalid payload', requestId });
+    }
+
+    const { idempotencyKey: bodyIdempotencyKey, messageId, practiceSetId, messageContent, chatSessionId, goalId, answers } = parsed.data;
+    const idempotencyKey = req.headers.get('Idempotency-Key') || bodyIdempotencyKey || null;
     const { isDuplicate, error: idempError } = await checkIdempotency(user.id, 'practice_attempt', idempotencyKey);
     if (idempError) {
       return apiErrorResponse('invalid_idempotency_key', { status: 400, message: idempError, requestId });
@@ -159,14 +167,6 @@ export async function POST(req: NextRequest) {
     // source of truth, so duplicate keys still flow through to fetch existing rows.
     void isDuplicate;
     const idempotencySeed = idempotencyKey ?? requestId;
-
-    const body = await req.json();
-    const parsed = AttemptsSchema.safeParse(body);
-    if (!parsed.success) {
-      return apiErrorResponse('invalid_request', { status: 400, message: 'Invalid payload', requestId });
-    }
-
-    const { messageId, practiceSetId, messageContent, chatSessionId, goalId, answers } = parsed.data;
 
     if (!practiceSetId && !messageId) {
       return apiErrorResponse('invalid_request', { status: 400, message: 'Either practiceSetId or messageId is required.', requestId });
@@ -282,6 +282,8 @@ export async function POST(req: NextRequest) {
       }
     }
 
+    const persistedEventItems = eventItems.filter((item) => item.attemptId && item.practiceItemId);
+
     await EventDispatcher.publish({
       user_id: user.id,
       type: 'PRACTICE_ATTEMPT_RECORDED',
@@ -296,13 +298,13 @@ export async function POST(req: NextRequest) {
           wrongConceptIds,
           wrongConceptNames,
         },
-        items: eventItems
+        items: persistedEventItems,
       },
-      metadata: { source: 'mind_chat_mcq' },
-      idempotency_key: `practice_attempt:${set.id}:${eventItems.map((item) => `${item.practiceItemId}:${item.isCorrect}`).sort().join('|')}`
+      metadata: { source: 'mind_chat_mcq', goalId: set.goal_id ?? null },
+      idempotency_key: `practice_attempt:${user.id}:${set.id}:${idempotencySeed}`
     });
 
-    await ingestLearningSignals(supabase, eventItems
+    await ingestLearningSignals(supabase, persistedEventItems
       .filter((item) => item.isCorrect === false)
       .slice(0, 25)
       .map((item) => ({
@@ -332,7 +334,7 @@ export async function POST(req: NextRequest) {
         wrongConceptIds,
         wrongConceptNames,
       },
-      items: eventItems,
+      items: persistedEventItems,
     }).catch((error) => ({
       error: 'profile_sync_failed',
       message: error instanceof Error ? error.message : 'Profile sync failed.',

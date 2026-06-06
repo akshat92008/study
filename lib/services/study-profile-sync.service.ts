@@ -16,6 +16,51 @@ type PracticeSyncItem = {
   correctAnswer?: string | null;
 };
 
+async function resolvePracticeConcept(
+  supabase: any,
+  input: {
+    userId: string;
+    goalId?: string | null;
+    item: PracticeSyncItem;
+  }
+) {
+  if (input.item.conceptId) return input.item.conceptId;
+
+  const conceptName = input.item.conceptName ?? input.item.topic ?? input.item.chapter ?? null;
+  if (!conceptName) return null;
+
+  let conceptQuery = supabase
+    .from('concepts')
+    .select('id')
+    .eq('user_id', input.userId)
+    .eq('name', conceptName);
+  conceptQuery = input.goalId
+    ? conceptQuery.eq('goal_id', input.goalId)
+    : typeof conceptQuery.is === 'function'
+      ? conceptQuery.is('goal_id', null)
+      : conceptQuery;
+
+  const { data: existing } = await conceptQuery.maybeSingle();
+  if (existing?.id) return existing.id;
+
+  const { data: created } = await supabase
+    .from('concepts')
+    .insert({
+      user_id: input.userId,
+      goal_id: input.goalId ?? null,
+      name: conceptName,
+      subject: input.item.subject ?? null,
+      chapter: input.item.chapter ?? input.item.topic ?? null,
+      topic: input.item.topic ?? conceptName,
+      mastery: input.item.isCorrect ? 'exposed' : 'developing',
+      mastery_score: input.item.isCorrect ? 12 : 25,
+    })
+    .select('id')
+    .single();
+
+  return created?.id ?? null;
+}
+
 export async function syncStudyProfileAfterPracticeAttempt(
   supabase: any,
   input: {
@@ -36,77 +81,44 @@ export async function syncStudyProfileAfterPracticeAttempt(
   const weakConcepts: WeakConceptPlanChange[] = [];
   let mistakesCreated = 0;
 
-  for (const item of wrongItems.slice(0, 25)) {
-    let conceptId = item.conceptId ?? null;
+  for (const item of input.items.slice(0, 50)) {
+    const conceptId = await resolvePracticeConcept(supabase, {
+      userId: input.userId,
+      goalId: input.goalId ?? null,
+      item,
+    });
     const conceptName = item.conceptName ?? item.topic ?? 'Practice mistake';
-
-    if (!conceptId && conceptName) {
-      let conceptQuery = supabase
-        .from('concepts')
-        .select('id')
-        .eq('user_id', input.userId)
-        .eq('name', conceptName);
-      conceptQuery = input.goalId
-        ? conceptQuery.eq('goal_id', input.goalId)
-        : typeof conceptQuery.is === 'function'
-          ? conceptQuery.is('goal_id', null)
-          : conceptQuery;
-      const { data: existing } = await conceptQuery.maybeSingle();
-
-      if (existing?.id) {
-        conceptId = existing.id;
-      } else {
-        const { data: created } = await supabase
-          .from('concepts')
-          .insert({
-            user_id: input.userId,
-            goal_id: input.goalId ?? null,
-            name: conceptName,
-            subject: item.subject ?? null,
-            chapter: item.chapter ?? item.topic ?? null,
-            topic: item.topic ?? conceptName,
-            mastery: 'developing',
-            mastery_score: 0.25,
-          })
-          .select('id')
-          .single();
-        conceptId = created?.id ?? null;
-      }
-    }
 
     if (conceptId) {
       conceptsTouched.add(conceptId);
-      await supabase
-        .from('concepts')
-        .update({
-          mastery: 'developing',
-          mastery_score: 0.25,
-          updated_at: new Date().toISOString(),
-        })
-        .eq('id', conceptId)
-        .eq('user_id', input.userId);
 
       await recordMasteryEvidence({
         userId: input.userId,
         conceptId,
-        evidenceType: 'practice_wrong',
+        evidenceType: item.isCorrect ? 'practice_correct' : 'practice_wrong',
         source: 'practice',
         sourceId: item.attemptId ?? item.practiceItemId ?? `${input.practiceSetId}:${conceptId}`,
-        evidence: `Wrong practice answer on ${conceptName}.`,
-        confidence: 0.8,
+        evidence: item.isCorrect
+          ? `Correct practice answer on ${conceptName}.`
+          : `Wrong practice answer on ${conceptName}.`,
+        confidence: item.isCorrect ? 0.7 : 0.8,
         client: supabase,
       }).catch(() => undefined);
 
-      weakConcepts.push({
-        conceptId,
-        conceptName,
-        subject: item.subject ?? null,
-        chapter: item.chapter ?? item.topic ?? null,
-        topic: item.topic ?? conceptName,
-        reason: 'wrong practice answer',
-        sourceId: item.attemptId ?? item.practiceItemId ?? input.practiceSetId,
-      });
+      if (!item.isCorrect) {
+        weakConcepts.push({
+          conceptId,
+          conceptName,
+          subject: item.subject ?? null,
+          chapter: item.chapter ?? item.topic ?? null,
+          topic: item.topic ?? conceptName,
+          reason: 'wrong practice answer',
+          sourceId: item.attemptId ?? item.practiceItemId ?? input.practiceSetId,
+        });
+      }
     }
+
+    if (item.isCorrect) continue;
 
     let mistakeQuery = supabase
       .from('mistakes')

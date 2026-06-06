@@ -7,9 +7,14 @@ const SIGNAL_TYPES = new Set([
   'chat_confusion',
   'revision_review',
   'practice_attempt',
+  'practice_requested',
+  'confusion_detected',
+  'concept_practiced',
+  'doubt_asked',
   'source_upload',
   'self_reflection',
   'task_completion',
+  'autopsy_memory_created',
 ]);
 
 export function normalizeLearningSignal(input: LearningSignalInput): NormalizedLearningSignal {
@@ -27,6 +32,7 @@ export function normalizeLearningSignal(input: LearningSignalInput): NormalizedL
     topic: cleanOptional(input.topic),
     confidence: clamp(input.confidence ?? 0.5),
     evidence: sanitizeEvidence(input.evidence ?? {}),
+    idempotency_key: input.idempotency_key ?? null,
     created_at: input.created_at,
   };
 }
