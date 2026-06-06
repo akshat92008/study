@@ -26,7 +26,15 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
     const response = await fetch(`/api/materials${params.toString() ? `?${params.toString()}` : ''}`);
     if (!response.ok) return;
     const data = await response.json();
-    setMaterials(data.materials || []);
+    setMaterials(prev => {
+      const newMaterials = data.materials || [];
+      const previouslyPending = prev.filter(m => !['ready', 'failed'].includes(m.status)).map(m => m.id);
+      const newlyReady = newMaterials.some((m: any) => m.status === 'ready' && previouslyPending.includes(m.id));
+      if (newlyReady) {
+        window.dispatchEvent(new Event('refresh-goal-context'));
+      }
+      return newMaterials;
+    });
   }, [activeGoalId]);
 
   useEffect(() => {
@@ -239,7 +247,16 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
             {materials.map((mat) => (
               <div key={mat.id} style={{
                 display: 'flex', alignItems: 'center', padding: 'var(--sp-3)',
-                background: 'var(--bg-tertiary)', borderRadius: 'var(--radius-md)', gap: 'var(--sp-3)'
+                background: 'var(--bg-tertiary)', borderRadius: 'var(--radius-md)', gap: 'var(--sp-3)',
+                transition: 'all 0.3s ease',
+                ...(mat.status === 'processing' || mat.status === 'queued' ? {
+                  background: 'linear-gradient(90deg, var(--bg-tertiary) 0%, rgba(139, 92, 246, 0.05) 50%, var(--bg-tertiary) 100%)',
+                  backgroundSize: '200% 100%',
+                  animation: 'shimmer 2s infinite linear'
+                } : {}),
+                ...(mat.status === 'ready' ? {
+                  boxShadow: '0 0 10px rgba(6, 182, 212, 0.15)'
+                } : {})
               }}>
                 <FileText size={18} style={{ color: 'var(--accent-cyan)' }} />
                 <div style={{ flex: 1 }}>

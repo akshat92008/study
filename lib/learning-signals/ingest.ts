@@ -13,21 +13,33 @@ export async function ingestLearningSignal(
   if (error) throw error;
 
   if (options.publishEvent !== false) {
+    const payload = {
+      signalType: signal.signal_type,
+      sourceType: signal.source_type,
+      sourceId: signal.source_id,
+      goalId: signal.goal_id,
+      subject: signal.subject,
+      topic: signal.topic,
+      confidence: signal.confidence,
+    };
+
     await safePublishEvent({
       user_id: signal.user_id,
       type: 'LEARNING_SIGNAL_INGESTED',
-      data: {
-        signalType: signal.signal_type,
-        sourceType: signal.source_type,
-        sourceId: signal.source_id,
-        goalId: signal.goal_id,
-        subject: signal.subject,
-        topic: signal.topic,
-        confidence: signal.confidence,
-      },
+      data: payload,
       metadata: { source: 'learning_signals_ingest', goalId: signal.goal_id },
       idempotency_key: options.idempotencyKey ?? `learning_signal:${signal.user_id}:${signal.signal_type}:${signal.source_id ?? crypto.randomUUID()}`,
     });
+
+    if (signal.signal_type === 'practice_requested') {
+      await safePublishEvent({
+        user_id: signal.user_id,
+        type: 'PRACTICE_REQUESTED',
+        data: payload,
+        metadata: { source: 'learning_signals_ingest', goalId: signal.goal_id },
+        idempotency_key: `practice_req:${signal.user_id}:${signal.source_id ?? crypto.randomUUID()}`,
+      });
+    }
   }
 
   return signal;

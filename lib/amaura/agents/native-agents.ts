@@ -4,6 +4,7 @@ import { GoalDecomposerAgent } from './native-agents/goal-decomposer-agent';
 import { NextActionAgent } from './native-agents/next-action-agent';
 import { PlanAdapterAgent } from './native-agents/plan-adapter-agent';
 import { ProgressEvaluatorAgent } from './native-agents/progress-evaluator-agent';
+import { PracticeGeneratorAgent } from './native-agents/practice-generator-agent';
 import {
   conceptWindowDedupKey,
   eventDedupKey,
@@ -634,6 +635,7 @@ export const NATIVE_AMAURA_AGENTS = [
   ForgettingAgent,
   StagnationAgent,
   PatternMemoryAgent,
+  PracticeGeneratorAgent,
 ] as const;
 
 export {
@@ -641,6 +643,7 @@ export {
   PlanAdapterAgent,
   ProgressEvaluatorAgent,
   NextActionAgent,
+  PracticeGeneratorAgent,
 };
 
 function detectPracticeWeakness(items: PracticeEvidence[]) {

@@ -11,6 +11,7 @@ export const AmauraAgentNameSchema = z.enum([
   'ForgettingAgent',
   'StagnationAgent',
   'PatternMemoryAgent',
+  'PracticeGeneratorAgent',
 ]);
 
 export type AmauraAgentName = z.infer<typeof AmauraAgentNameSchema>;

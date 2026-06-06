@@ -30,6 +30,12 @@ export default async function AdminDebugPage() {
     .order('created_at', { ascending: false })
     .limit(50);
 
+  const { data: actions } = await supabase
+    .from('agent_actions')
+    .select('*')
+    .order('created_at', { ascending: false })
+    .limit(50);
+
   return (
     <div style={{ padding: 'var(--sp-6)', maxWidth: 1120, margin: '0 auto', display: 'grid', gap: 'var(--sp-5)' }}>
       <header>
@@ -103,6 +109,37 @@ export default async function AdminDebugPage() {
                 </tr>
               ))}
               {!consumers?.length && <tr><td colSpan={4} style={{ padding: '16px', textAlign: 'center', color: 'var(--text-secondary)' }}>No consumers found.</td></tr>}
+            </tbody>
+          </table>
+        </div>
+      </Card>
+
+      <Card padding="lg">
+        <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 800, marginBottom: 'var(--sp-3)' }}>Agent Actions</h3>
+        <div style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse', fontSize: 'var(--fs-sm)' }}>
+            <thead>
+              <tr style={{ borderBottom: '1px solid var(--border-strong)', color: 'var(--text-secondary)' }}>
+                <th style={{ padding: '8px 4px' }}>Agent</th>
+                <th style={{ padding: '8px 4px' }}>Action</th>
+                <th style={{ padding: '8px 4px' }}>Status</th>
+                <th style={{ padding: '8px 4px' }}>Reason</th>
+              </tr>
+            </thead>
+            <tbody>
+              {actions?.map((a) => (
+                <tr key={a.id} style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                  <td style={{ padding: '8px 4px', fontWeight: 'bold' }}>{a.agent_name}</td>
+                  <td style={{ padding: '8px 4px' }}>{a.action_type}</td>
+                  <td style={{ padding: '8px 4px' }}>
+                    <Badge color={a.status === 'applied' ? 'green' : a.status === 'failed' ? 'red' : 'yellow'}>
+                      {a.status}
+                    </Badge>
+                  </td>
+                  <td style={{ padding: '8px 4px' }}>{a.reason}</td>
+                </tr>
+              ))}
+              {!actions?.length && <tr><td colSpan={4} style={{ padding: '16px', textAlign: 'center', color: 'var(--text-secondary)' }}>No actions found.</td></tr>}
             </tbody>
           </table>
         </div>

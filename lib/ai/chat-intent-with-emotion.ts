@@ -25,10 +25,13 @@ const VALID_EMOTIONS = new Set<EmotionalState>([
 ]);
 
 // Fast keyword pre-screens — skip the LLM call entirely for obvious cases
-const INTENT_KEYWORDS: Partial<Record<ChatIntent, RegExp>> = {
+const INTENT_KEYWORDS: Partial<Record<string, RegExp>> = {
   FLASHCARDS: /\b(revise|flashcard|quiz me|test me|spaced repetition)\b/i,
   CREATE_ARTIFACT: /\b(plan|schedule|today|timetable|what should i study|microtarget|planner|add task|add.*microtarget)\b/i,
   AUTOPSY: /\b(autopsy|mock test|analyze my test|paper analysis)\b/i,
+  PRACTICE_REQUESTED: /\b(generate.*mcq|give me practice|some questions on)\b/i,
+  MISTAKE_ADMITTED: /\b(i got it wrong|i confused|i made a mistake|i thought it was)\b/i,
+  CONCEPT_CONFUSION: /\b(i don'?t understand|i'm stuck on|explain.*again|not getting)\b/i,
 };
 
 const NEUTRAL_PATTERNS = [
@@ -44,9 +47,9 @@ export async function classifyMessageCombined(
 ): Promise<ClassificationResult> {
   // Try keyword shortcuts first
   for (const [intentStr, pattern] of Object.entries(INTENT_KEYWORDS)) {
-    if (pattern.test(message)) {
+    if (pattern && pattern.test(message)) {
       return {
-        intent: { intent: intentStr as ChatIntent, topic: null, subject: null, action: null },
+        intent: { intent: intentStr as any, topic: null, subject: null, action: null },
         emotion: 'neutral',
         confidence: 0.9,
       };
@@ -56,37 +59,39 @@ export async function classifyMessageCombined(
   // For short/neutral messages, skip LLM entirely
   if (message.length < 8 || NEUTRAL_PATTERNS.some((p) => p.test(message.trim()))) {
     return { 
-      intent: { intent: 'GENERAL_CHAT', topic: null, subject: null, action: null }, 
+      intent: { intent: 'GENERAL_CHAT' as any, topic: null, subject: null, action: null }, 
       emotion: 'neutral', 
       confidence: 0.8 
     };
   }
 
   const prompt = `Student is studying: ${examType || 'NEET/JEE'}
-Recent context: ${conversationContext ? conversationContext.slice(0, 200) : 'None'}
+  Recent context: ${conversationContext ? conversationContext.slice(0, 200) : 'None'}
 
-Current message: "${message.slice(0, 400)}"
+  Current message: "${message.slice(0, 400)}"
 
-Classify this student message and return ONLY valid JSON:
-{
-  "intent": "TUTOR_SESSION|PRACTICE|CREATE_ARTIFACT|AUTOPSY|ANALYTICS|ATLAS|FLASHCARDS|REPLAN|GENERAL_CHAT",
+  Classify this student message and return ONLY valid JSON:
+  {
+  "intent": "DOUBT_ASKED|CONCEPT_CONFUSION|PRACTICE_REQUESTED|PRACTICE_ATTEMPT_SUBMITTED|ANSWER_CHECK_REQUESTED|MISTAKE_ADMITTED|REVISION_REQUESTED|SOURCE_GROUNDED_QUERY|GOAL_PLANNING_REQUEST|REMEMBER_THIS|GENERAL_CHAT",
   "topic": "specific concept/chapter name or null",
   "subject": "subject name or null",
   "action": "reduce_tasks|lighten_intensity|add_break or null",
   "emotion": "focused|motivated|stressed|burnt_out|anxious|frustrated|confident|overwhelmed|bored|neutral",
   "confidence": number 0.0-1.0
-}
+  }
 
-Intent rules:
-- "explain", "what is", "how does", "I don't understand" → TUTOR_SESSION
-- "test me", "quiz me", "practice" → PRACTICE
-- "make a study guide", "revision sheet", "create flashcards", "write a plan" → CREATE_ARTIFACT
-- "I gave a test", "upload test", "check my mock" → AUTOPSY
-- "how am I doing", "my stats" → ANALYTICS
-- "knowledge map", "ATLAS" → ATLAS
-- "review cards", "due cards" → FLASHCARDS
-- "overwhelmed", "reduce tasks", "lighten" → REPLAN
-- Everything else → GENERAL_CHAT
+  Intent rules:
+  - "explain", "what is", "how does" → DOUBT_ASKED
+  - "I don't understand", "I'm stuck on X", "confused between X and Y" → CONCEPT_CONFUSION
+  - "generate 10 MCQs", "give me questions" → PRACTICE_REQUESTED
+  - "1A 2B 3C", "the answer is C" → PRACTICE_ATTEMPT_SUBMITTED
+  - "is this correct?", "did I solve this right" → ANSWER_CHECK_REQUESTED
+  - "I got Q4 wrong because", "I confused LH and FSH", "my mistake" → MISTAKE_ADMITTED
+  - "review cards", "due cards", "revise" → REVISION_REQUESTED
+  - "according to the uploaded PDF", "what does the document say" → SOURCE_GROUNDED_QUERY
+  - "make a study guide", "revision sheet", "what should I study today" → GOAL_PLANNING_REQUEST
+  - "remember this", "save this for review", "add to my cards" → REMEMBER_THIS
+  - Everything else → GENERAL_CHAT
 
 Emotion rules:
 - Only flag non-neutral if message CLEARLY signals it

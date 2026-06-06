@@ -16,6 +16,7 @@ export const AMAURA_EVENTS = {
 } as const;
 
 export const AMAURA_LEGACY_EVENTS = {
+  PRACTICE_REQUESTED: 'PRACTICE_REQUESTED',
   PRACTICE_ATTEMPT_SUBMITTED: 'PRACTICE_ATTEMPT_SUBMITTED',
   PRACTICE_ATTEMPT_RECORDED: 'PRACTICE_ATTEMPT_RECORDED',
   STUDY_SESSION_COMPLETED: 'STUDY_SESSION_COMPLETED',
@@ -34,6 +35,7 @@ export const AMAURA_CONSUMERS = [
   'amaura_progress_evaluator',
   'amaura_next_action',
   'amaura_practice_agent',
+  'amaura_practice_generator',
   'amaura_session_agent',
   'amaura_autopsy_cascade',
   'amaura_forgetting_agent',
@@ -49,6 +51,7 @@ export const SAFE_BOUNDED_CONSUMERS = [
   'amaura_progress_evaluator',
   'amaura_next_action',
   'amaura_practice_agent',
+  'amaura_practice_generator',
   'amaura_session_agent',
   'amaura_autopsy_cascade',
   'amaura_forgetting_agent',
@@ -117,6 +120,7 @@ export const AMAURA_EVENT_MATRIX = {
     'amaura_progress_evaluator',
     'amaura_next_action',
   ],
+  [AMAURA_LEGACY_EVENTS.PRACTICE_REQUESTED]: ['amaura_practice_generator'],
   [AMAURA_LEGACY_EVENTS.PRACTICE_ATTEMPT_SUBMITTED]: ['amaura_practice_agent'],
   [AMAURA_LEGACY_EVENTS.PRACTICE_ATTEMPT_RECORDED]: ['amaura_practice_agent'],
   [AMAURA_LEGACY_EVENTS.STUDY_SESSION_COMPLETED]: ['amaura_session_agent'],

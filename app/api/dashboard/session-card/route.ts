@@ -86,6 +86,11 @@ export interface SessionCardResponse {
   generatedAt: string;
   learnerStateVersion: number;
   needsOnboarding: boolean;
+  adaptationHistory?: Array<{
+    version: number;
+    reason: string;
+    createdAt: string;
+  }>;
 }
 
 // ─── Zod schema for LLM prose patch ─────────────────────────────────────────
@@ -208,6 +213,21 @@ export async function GET(request?: Request): Promise<NextResponse> {
 
     const { data: cached } = await cacheQuery.maybeSingle();
 
+    // 3b. Fetch adaptation history
+    const { data: historyData } = await supabase
+      .from('command_session_versions')
+      .select('version, adaptation_reason, created_at')
+      .eq('user_id', user.id)
+      .eq('goal_id', goalId)
+      .eq('session_date', localDate)
+      .order('version', { ascending: false });
+
+    const adaptationHistory = (historyData || []).map(h => ({
+      version: h.version,
+      reason: h.adaptation_reason || 'Unknown adaptation',
+      createdAt: h.created_at,
+    }));
+
     if (cached && cached.learner_state_version === learnerStateVersion) {
       // Hit — card is valid for today and matches the current learner state.
       const signals: SourceSignals = {
@@ -227,6 +247,7 @@ export async function GET(request?: Request): Promise<NextResponse> {
         generatedAt: cached.created_at ?? generatedAt,
         learnerStateVersion,
         needsOnboarding: false,
+        adaptationHistory,
       } satisfies SessionCardResponse);
     }
 
@@ -606,6 +627,7 @@ export async function GET(request?: Request): Promise<NextResponse> {
       generatedAt,
       learnerStateVersion,
       needsOnboarding: false,
+      adaptationHistory,
     };
 
     return NextResponse.json(response);

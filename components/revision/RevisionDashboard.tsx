@@ -9,6 +9,7 @@ import { RefreshCw, ChevronRight, RotateCcw, Check, Zap } from 'lucide-react';
 import CardSchedule from './CardSchedule';
 import { logStudentEvent } from '@/lib/utils/events';
 import { useAppStore } from '@/stores/appStore';
+import { PendingCards } from './PendingCards';
 
 export default function RevisionDashboard({ data }: { data: any }) {
   const { activeGoalId, learningGoals } = useAppStore();
@@ -86,6 +87,8 @@ export default function RevisionDashboard({ data }: { data: any }) {
           {activeGoal ? `Cards due for ${activeGoal.title}.` : 'Your revision queue. Review what is due before it fades.'}
         </p>
       </div>
+
+      <PendingCards goalId={activeGoalId} />
 
       {/* Stats */}
       <div className="grid-4 stagger">

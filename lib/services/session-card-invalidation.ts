@@ -95,7 +95,7 @@ export async function invalidateSessionCard(
     }
   }
 
-  // 2. Delete today + tomorrow cards
+  // 2. Archive current version before invalidation (for adaptation UI)
   const today = new Date();
   const tomorrow = new Date(Date.now() + 86_400_000);
   const dates = [
@@ -103,6 +103,45 @@ export async function invalidateSessionCard(
     tomorrow.toISOString().split('T')[0],
   ];
 
+  try {
+    const todayStr = dates[0];
+    const { data: currentCards } = await supabase
+      .from('session_cards')
+      .select('*')
+      .eq('user_id', userId)
+      .eq('date', todayStr);
+
+    if (currentCards && currentCards.length > 0) {
+      for (const card of currentCards) {
+        // Get current max version
+        const { data: maxVersion } = await supabase
+          .from('command_session_versions')
+          .select('version')
+          .eq('user_id', userId)
+          .eq('goal_id', card.goal_id)
+          .eq('session_date', todayStr)
+          .order('version', { ascending: false })
+          .limit(1)
+          .maybeSingle();
+
+        const nextVersion = (maxVersion?.version ?? 0) + 1;
+
+        await supabase.from('command_session_versions').insert({
+          user_id: userId,
+          goal_id: card.goal_id,
+          session_date: todayStr,
+          version: nextVersion,
+          content: card,
+          adaptation_reason: reason,
+          source_event_id: sourceEventId,
+        });
+      }
+    }
+  } catch (err) {
+    logger.warn('invalidateSessionCard: failed to archive version', { userId, err });
+  }
+
+  // 3. Delete today + tomorrow cards
   let deleteQuery = supabase
     .from('session_cards')
     .delete()

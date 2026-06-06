@@ -8,7 +8,10 @@ export type LearningSignalType =
   | 'source_upload'
   | 'self_reflection'
   | 'task_completion'
-  | 'autopsy_memory_created';
+  | 'autopsy_memory_created'
+  | 'practice_requested'
+  | 'confusion_detected'
+  | 'concept_practiced';
 
 export interface LearningSignalInput {
   user_id: string;

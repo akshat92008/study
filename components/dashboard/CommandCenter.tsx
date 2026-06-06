@@ -6,7 +6,7 @@ import Badge from '@/components/ui/Badge';
 import { useRouter } from 'next/navigation';
 import { 
   Brain, Target, RefreshCw, Flame, ArrowRight, CheckCircle2, Clock, Send, MessageCircle, 
-  Loader2, Paperclip, UploadCloud, BookOpen, Calendar, Check, Sliders, X
+  Loader2, Paperclip, UploadCloud, BookOpen, Calendar, Check, Sliders, X, Sparkles, Activity
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import DailySessionFocus from './DailySessionFocus';
@@ -19,6 +19,26 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
     currentActiveTask, setCurrentActiveTask, activeTasksList, setActiveTasksList,
     addToast
   } = useAppStore();
+
+  const [sessionCardData, setSessionCardData] = useState<any>(null);
+
+  useEffect(() => {
+    async function loadCard() {
+      try {
+        const goalId = useAppStore.getState().activeGoalId;
+        const res = await fetch(`/api/dashboard/session-card${goalId ? `?goalId=${goalId}` : ''}`);
+        if (res.ok) {
+          const data = await res.json();
+          setSessionCardData(data);
+        }
+      } catch (e) {
+        console.error('Failed to load session card', e);
+      }
+    }
+    loadCard();
+  }, [profile, onRefresh]);
+
+  const latestAdaptation = sessionCardData?.adaptationHistory?.[0];
 
   useEffect(() => {
     if (tasks) {
@@ -240,26 +260,61 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
 
           {/* THE "ONE CARD" APPROACH */}
           {activeSessionTask ? (
-            <motion.div whileHover={{ y: -4 }} style={{ width: '100%' }}>
+            <motion.div 
+              layout
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              whileHover={{ y: -4 }} 
+              style={{ width: '100%', position: 'relative' }}
+            >
+              {latestAdaptation && (
+                <div style={{
+                  position: 'absolute', top: -12, right: 12, zIndex: 10,
+                  background: 'var(--accent-purple)', color: 'white',
+                  padding: '2px 8px', borderRadius: '12px', fontSize: '10px',
+                  fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: 4,
+                  boxShadow: '0 4px 12px rgba(139, 92, 246, 0.4)',
+                }} className="animate-pulse">
+                  <Sparkles size={10} />
+                  Mission Adapted
+                </div>
+              )}
+
               <Card variant="glow" style={{
                 background: 'linear-gradient(135deg, #111115, #0a0a0d)',
-                border: '1px solid var(--accent-blue-dim)', padding: 'var(--sp-5)',
+                border: latestAdaptation ? '1px solid var(--accent-purple-dim)' : '1px solid var(--accent-blue-dim)', 
+                padding: 'var(--sp-5)',
                 display: 'flex', flexDirection: 'column', gap: 'var(--sp-3)', boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)'
               }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ color: 'var(--accent-blue)', fontFamily: 'monospace', fontSize: '10px', fontWeight: 'bold' }}>
+                  <span style={{ color: latestAdaptation ? 'var(--accent-purple)' : 'var(--accent-blue)', fontFamily: 'monospace', fontSize: '10px', fontWeight: 'bold' }}>
                     DAY {profile?.streak_days || 0}
                   </span>
-                  <Badge color="cyan">Today's Focus</Badge>
+                  <Badge color={latestAdaptation ? 'purple' : 'cyan'}>Today's Focus</Badge>
                 </div>
                 
                 <h3 style={{ fontSize: 'var(--fs-xl)', fontWeight: 900, marginBottom: 4, color: 'var(--text-primary)' }}>
                   {activeSessionTask.chapter || activeSessionTask.title}
                 </h3>
                 
-                <p style={{ color: 'var(--accent-purple)', fontWeight: 600, fontSize: 'var(--fs-sm)', marginBottom: 8 }}>
+                <p style={{ color: latestAdaptation ? 'var(--accent-purple)' : 'var(--accent-blue)', fontWeight: 600, fontSize: 'var(--fs-sm)', marginBottom: 8 }}>
                   {activeSessionTask.subject || 'General'} · {activeSessionTask.estimated_minutes || 25} mins
                 </p>
+
+                {latestAdaptation && (
+                  <div style={{ 
+                    background: 'rgba(139, 92, 246, 0.05)', 
+                    padding: '8px 12px', 
+                    borderRadius: '8px',
+                    border: '1px dashed var(--accent-purple-dim)',
+                    marginBottom: 12
+                  }}>
+                    <p style={{ fontSize: '11px', color: 'var(--accent-purple)', margin: 0, fontWeight: 500 }}>
+                      <Activity size={10} style={{ display: 'inline', marginRight: 4 }} />
+                      Amaura adapted your plan: "{latestAdaptation.reason.replace(/_/g, ' ')}"
+                    </p>
+                  </div>
+                )}
                 
                 <div style={{ 
                   background: 'rgba(255, 255, 255, 0.02)', border: '1px solid rgba(255, 255, 255, 0.05)', 

@@ -35,6 +35,8 @@ export type RevisionCardInput = {
   dueAt?: string | null;
   sourceType: string;
   sourceId: string;
+  origin?: 'manual' | 'chat' | 'autopsy' | 'practice' | 'source';
+  approvalStatus?: 'approved' | 'pending' | 'rejected';
   metadata?: Record<string, unknown>;
 };
 
@@ -132,6 +134,8 @@ export async function createRevisionCardsForUser(
     state: 0,
     source_type: card.sourceType,
     source_id: card.sourceId,
+    origin: card.origin ?? (card.sourceType?.startsWith('amaura_') ? 'chat' : 'manual'),
+    approval_status: card.approvalStatus ?? (card.sourceType?.startsWith('amaura_') ? 'pending' : 'approved'),
     metadata: card.metadata ?? {},
   }));
 

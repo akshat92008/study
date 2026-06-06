@@ -13,6 +13,8 @@ import { useRouter } from 'next/navigation';
 import { isAutopsyUploadIntent } from '@/lib/autopsy/upload-intent';
 import { ThinkingIndicator } from './ThinkingIndicator';
 
+import { AgentActivityFeed } from '@/components/amaura/AgentActivityFeed';
+
 const MIND_QUICK_PROMPTS = [
   'What should I do now?',
   'Continue',
@@ -148,7 +150,18 @@ export const GlobalChat = memo(function GlobalChat() {
     if (!chatId && !activeGoalId) {
       loadChatFromSupabase();
     }
-  }, [activeGoalId, chatId, loadChatFromSupabase, user]);
+  }, [user, chatId, activeGoalId, loadChatFromSupabase]);
+
+  // Listen for goal context refresh events (e.g. source ready)
+  useEffect(() => {
+    const handleContextRefresh = () => {
+      if (activeGoalId) {
+        useAppStore.getState().loadGoalContext(activeGoalId);
+      }
+    };
+    window.addEventListener('refresh-goal-context', handleContextRefresh);
+    return () => window.removeEventListener('refresh-goal-context', handleContextRefresh);
+  }, [activeGoalId]);
 
   useEffect(() => {
     const handleLearningProfileUpdated = async (event: Event) => {
@@ -326,11 +339,12 @@ export const GlobalChat = memo(function GlobalChat() {
     setInputMessage('');
     setPendingFile(null);
     resetStatus();
-    setThinkingLabel('Amaura is thinking');
+    setThinkingLabel('MIND observing learning signal');
+    window.dispatchEvent(new Event('amaura:agent-start'));
 
     thinkingTimersRef.current.forEach(clearTimeout);
     thinkingTimersRef.current = [
-      setTimeout(() => setThinkingLabel('Checking context'), 1500),
+      setTimeout(() => setThinkingLabel('Amaura analyzing'), 1500),
       setTimeout(() => setThinkingLabel('Building answer'), 5000),
     ];
 
@@ -405,6 +419,7 @@ export const GlobalChat = memo(function GlobalChat() {
       thinkingTimersRef.current.forEach(clearTimeout);
       thinkingTimersRef.current = [];
       setThinkingLabel('Amaura is thinking');
+      window.dispatchEvent(new Event('amaura:agent-stop'));
     }
   }, [
     activeGoalId,
@@ -422,11 +437,18 @@ export const GlobalChat = memo(function GlobalChat() {
     status,
   ]);
 
-  const contextLine = useMemo(() => activeGoal
-    ? `Context loaded: ${activeGoal.title} · ${activeGoal.counts?.sourcesReady || 0} sources ready · ${activeGoal.counts?.sourcesProcessing || 0} processing · ${activeGoal.counts?.microtasksPending || 0} targets · ${activeGoal.counts?.dueCards || 0} due cards · ${activeGoal.counts?.weakConcepts || 0} weak concepts · ${activeGoal.counts?.recentMistakes || 0} recent mistakes.`
-    : 'General assistant · create a goal to unlock missions.',
-    [activeGoal]
-  );
+  const contextLine = useMemo(() => {
+    if (!activeGoal) return 'General assistant · Create a goal to activate Amaura.';
+
+    const c = activeGoal.counts;
+    const hasEvidence = (c?.sourcesReady || 0) > 0 || (c?.dueCards || 0) > 0 || (c?.weakConcepts || 0) > 0 || (c?.recentMistakes || 0) > 0;
+
+    if (!hasEvidence && (c?.sourcesProcessing || 0) === 0) {
+      return `Context: ${activeGoal.title} · No learning signals detected yet. Ask a doubt to start.`;
+    }
+
+    return `Context: ${activeGoal.title} · ${c?.sourcesReady || 0} sources ready · ${c?.sourcesProcessing || 0} processing · ${c?.dueCards || 0} due cards · ${c?.weakConcepts || 0} weak areas · ${c?.recentMistakes || 0} mistakes.`;
+  }, [activeGoal]);
 
    return (
      <div

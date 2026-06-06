@@ -37,7 +37,13 @@ function learningSignalEvidence(signalType: string): {
     case 'manual_mistake':
       return { evidenceType: 'practice_wrong', source: 'practice', weak: true };
     case 'chat_confusion':
+    case 'confusion_detected':
       return { evidenceType: 'tutor_confused', source: 'tutor_session', weak: true };
+    case 'doubt_asked':
+      return { evidenceType: 'tutor_confused', source: 'tutor_session', weak: true, weight: -2 };
+    case 'practice_requested':
+    case 'concept_practiced':
+      return { evidenceType: 'tutor_session', source: 'tutor_session', weak: false, weight: 1 };
     case 'revision_review':
       return { evidenceType: 'revision_again', source: 'card_review', weak: true };
     case 'source_upload':
@@ -45,7 +51,7 @@ function learningSignalEvidence(signalType: string): {
     case 'task_completion':
       return { evidenceType: 'remediation_completed', source: 'command', weak: false };
     case 'self_reflection':
-      return { evidenceType: 'tutor_confused', source: 'tutor_session', weak: true, weight: -6 };
+      return { evidenceType: 'tutor_understood', source: 'tutor_session', weak: true, weight: 1 };
     default:
       return null;
   }
@@ -93,6 +99,27 @@ export async function projectLearningSignalToStudyState(input: {
   });
 
   if (!resolution.conceptId) {
+    await supabase.from('unresolved_concept_mentions').insert({
+      user_id: input.userId,
+      goal_id: goalId,
+      topic,
+      subject,
+      confidence,
+      source_type: signalType,
+      source_id: sourceId,
+      source_event_id: input.eventId,
+    }).catch(() => undefined);
+
+    await recordAgentAction({
+      userId: input.userId,
+      agentName: 'atlas',
+      actionType: 'tag_weak_topic',
+      status: 'skipped',
+      reason: `Could not resolve concept for topic: ${topic}. Captured as pending candidate.`,
+      evidence: { topic, signalType, resolution },
+      idempotencyKey: `atlas_unresolved:${input.userId}:${input.eventId ?? sourceId}`,
+    }, { client: supabase }).catch(() => undefined);
+
     return {
       conceptsUpdated: 0,
       cardsCreated: 0,
@@ -114,6 +141,16 @@ export async function projectLearningSignalToStudyState(input: {
     confidence,
     client: supabase,
   });
+
+  await recordAgentAction({
+    userId: input.userId,
+    agentName: 'atlas',
+    actionType: 'update_mastery_from_evidence',
+    status: 'applied',
+    reason: `Updated Atlas mastery for ${topic} based on ${signalType.replace(/_/g, ' ')}.`,
+    evidence: { conceptId: resolution.conceptId, topic, signalType, evidenceType: evidenceMapping.evidenceType },
+    idempotencyKey: `atlas_mastery_update:${input.userId}:${input.eventId ?? sourceId}`,
+  }, { client: supabase }).catch(() => undefined);
 
   let planUpdate = { cardsCreated: 0, tasksCreated: 0, notified: false };
   if (evidenceMapping.weak) {

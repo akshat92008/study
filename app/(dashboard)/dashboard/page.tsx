@@ -14,6 +14,7 @@ import Card from '@/components/ui/Card';
 import CurrentTaskCard from '@/components/dashboard/CurrentTaskCard';
 import MicrotargetsCard from '@/components/dashboard/MicrotargetsCard';
 import AmauraNotificationFeed from '@/components/dashboard/AmauraNotificationFeed';
+import { AgentActivityFeed } from '@/components/amaura/AgentActivityFeed';
 import { SeededTopicsCard } from '@/components/dashboard/SeededTopicsCard';
 import DeepAutopsyCard from '@/components/dashboard/DeepAutopsyCard';
 import GoalCreationModal from '@/components/modals/GoalCreationModal';
@@ -166,6 +167,10 @@ export default function DashboardPage() {
           </div>
         )}
         <AmauraNotificationFeed />
+      </div>
+
+      <div style={{ padding: '0 0 var(--sp-4) 0' }}>
+         <AgentActivityFeed />
       </div>
 
       {/* Main Content Area */}

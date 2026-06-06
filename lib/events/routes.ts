@@ -108,6 +108,7 @@ export const EVENT_CONSUMER_MATRIX = {
   FORGETTING_SCAN_REQUESTED: ['amaura_forgetting_agent'],
   STAGNATION_SCAN_REQUESTED: ['amaura_stagnation_agent'],
   PATTERN_MEMORY_SCAN_REQUESTED: ['amaura_pattern_memory'],
+  PRACTICE_REQUESTED: ['amaura_practice_agent'],
   PRACTICE_ATTEMPT_RECORDED: [
     'atlas_engine',
     'memory_engine',

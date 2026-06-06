@@ -24,6 +24,7 @@ export type MasteryEvidenceType =
   | 'revision_again'
   | 'tutor_understood'
   | 'tutor_confused'
+  | 'tutor_session'
   | 'practice_correct'
   | 'practice_wrong'
   | 'session_completed'
@@ -62,6 +63,7 @@ const EVIDENCE_WEIGHTS: Record<MasteryEvidenceType, number> = {
   revision_again: -12,
   tutor_understood: 6,
   tutor_confused: -8,
+  tutor_session: 4,
   practice_correct: 14,
   practice_wrong: -14,
   session_completed: 3,
