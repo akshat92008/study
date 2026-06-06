@@ -19,7 +19,7 @@ export function getAgentBudgetLimits(): AgentBudgetLimits {
 }
 
 export function agentRuntimeEnabled() {
-  return envBool('ENABLE_AGENT_RUNTIME', true);
+  return envBool('ENABLE_AMAURA_AGENTS', envBool('ENABLE_AGENT_RUNTIME', true));
 }
 
 export function agentBackgroundJobsEnabled() {

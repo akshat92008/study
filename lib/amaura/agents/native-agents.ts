@@ -1,4 +1,9 @@
 import { z } from 'zod';
+import { AMAURA_EVENTS } from '@/lib/amaura/events/event-matrix';
+import { GoalDecomposerAgent } from './native-agents/goal-decomposer-agent';
+import { NextActionAgent } from './native-agents/next-action-agent';
+import { PlanAdapterAgent } from './native-agents/plan-adapter-agent';
+import { ProgressEvaluatorAgent } from './native-agents/progress-evaluator-agent';
 import {
   conceptWindowDedupKey,
   eventDedupKey,
@@ -214,7 +219,7 @@ export const PracticePatternAgent: AmauraAgentDefinition<z.infer<typeof Practice
 
 export const SessionCloseAgent: AmauraAgentDefinition<z.infer<typeof StudySessionPayloadSchema>> = {
   name: 'SessionCloseAgent',
-  handledEvents: ['STUDY_SESSION_COMPLETED'],
+  handledEvents: ['STUDY_SESSION_COMPLETED', AMAURA_EVENTS.SESSION_CLOSED],
   stateVisibleEffects: ['memory', 'session_card', 'notification'],
   inputSchema: StudySessionPayloadSchema,
   outputSchema: AmauraAgentResultSchema,
@@ -403,7 +408,7 @@ export const AutopsyCascadeAgent: AmauraAgentDefinition<z.infer<typeof AutopsyRe
 
 export const ForgettingAgent: AmauraAgentDefinition<z.infer<typeof DailyScanPayloadSchema>> = {
   name: 'ForgettingAgent',
-  handledEvents: ['STUDENT_MODEL_SYNC_REQUESTED', 'FORGETTING_SCAN_REQUESTED'],
+  handledEvents: ['STUDENT_MODEL_SYNC_REQUESTED', 'FORGETTING_SCAN_REQUESTED', AMAURA_EVENTS.DAILY_AGENT_TICK],
   stateVisibleEffects: ['task', 'session_card', 'notification'],
   inputSchema: DailyScanPayloadSchema,
   outputSchema: AmauraAgentResultSchema,
@@ -473,7 +478,7 @@ export const ForgettingAgent: AmauraAgentDefinition<z.infer<typeof DailyScanPayl
 
 export const StagnationAgent: AmauraAgentDefinition<z.infer<typeof DailyScanPayloadSchema>> = {
   name: 'StagnationAgent',
-  handledEvents: ['STUDENT_MODEL_SYNC_REQUESTED', 'STAGNATION_SCAN_REQUESTED'],
+  handledEvents: ['STUDENT_MODEL_SYNC_REQUESTED', 'STAGNATION_SCAN_REQUESTED', AMAURA_EVENTS.DAILY_AGENT_TICK],
   stateVisibleEffects: ['task', 'session_card', 'notification'],
   inputSchema: DailyScanPayloadSchema,
   outputSchema: AmauraAgentResultSchema,
@@ -534,7 +539,7 @@ export const StagnationAgent: AmauraAgentDefinition<z.infer<typeof DailyScanPayl
 
 export const PatternMemoryAgent: AmauraAgentDefinition<z.infer<typeof DailyScanPayloadSchema>> = {
   name: 'PatternMemoryAgent',
-  handledEvents: ['STUDENT_MODEL_SYNC_REQUESTED', 'PATTERN_MEMORY_SCAN_REQUESTED'],
+  handledEvents: ['STUDENT_MODEL_SYNC_REQUESTED', 'PATTERN_MEMORY_SCAN_REQUESTED', AMAURA_EVENTS.DAILY_AGENT_TICK],
   stateVisibleEffects: ['memory', 'task', 'session_card', 'notification'],
   inputSchema: DailyScanPayloadSchema,
   outputSchema: AmauraAgentResultSchema,
@@ -619,6 +624,10 @@ export const PatternMemoryAgent: AmauraAgentDefinition<z.infer<typeof DailyScanP
 };
 
 export const NATIVE_AMAURA_AGENTS = [
+  GoalDecomposerAgent,
+  PlanAdapterAgent,
+  ProgressEvaluatorAgent,
+  NextActionAgent,
   PracticePatternAgent,
   AutopsyCascadeAgent,
   SessionCloseAgent,
@@ -626,6 +635,13 @@ export const NATIVE_AMAURA_AGENTS = [
   StagnationAgent,
   PatternMemoryAgent,
 ] as const;
+
+export {
+  GoalDecomposerAgent,
+  PlanAdapterAgent,
+  ProgressEvaluatorAgent,
+  NextActionAgent,
+};
 
 function detectPracticeWeakness(items: PracticeEvidence[]) {
   const groups = new Map<string, {

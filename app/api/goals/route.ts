@@ -7,6 +7,7 @@ import {
 } from '@/lib/services/goal-context.service';
 import { logger } from '@/lib/utils/logger';
 import { createResolvedLearningGoal } from '@/lib/goals/curriculum-resolver';
+import { createAmauraGoalLoopForExistingGoal } from '@/lib/amaura/goal-loop';
 
 function optionalString(value: unknown): string | null {
   return typeof value === 'string' && value.trim() ? value.trim() : null;
@@ -108,6 +109,21 @@ export async function POST(req: NextRequest) {
       }, { status: 409, headers: { 'x-request-id': requestId } });
     }
 
+    const agenticLoop = await createAmauraGoalLoopForExistingGoal({
+      userId: user.id,
+      goalId: result.goalId,
+      source: 'api.goals.create',
+      sourceEventId: requestId,
+    }).catch((err) => {
+      logger.warn('Amaura goal loop failed after goal creation', {
+        userId: user.id,
+        goalId: result.goalId,
+        requestId,
+        err: err instanceof Error ? err.message : String(err),
+      });
+      return null;
+    });
+
     return NextResponse.json({
       success: true,
       goal: result.goal,
@@ -116,6 +132,15 @@ export async function POST(req: NextRequest) {
       sessionId: result.sessionId,
       topicSeeding: result.topicSeeding,
       mission: result.mission,
+      amaura: agenticLoop ? {
+        tasksCreated: agenticLoop.tasks.length,
+        nextAction: agenticLoop.nextAction,
+        skipped: 'skipped' in agenticLoop ? agenticLoop.skipped : false,
+      } : {
+        tasksCreated: 0,
+        nextAction: null,
+        skipped: true,
+      },
       domain: result.domain,
     }, { status: 201, headers: { 'x-request-id': requestId } });
   } catch (error) {

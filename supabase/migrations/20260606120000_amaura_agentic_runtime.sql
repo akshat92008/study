@@ -2,6 +2,46 @@
 -- Keeps Vercel Hobby background work bounded by using the existing
 -- event_queue + consumer_locks durable queue.
 
+alter table if exists public.learning_goals
+  add column if not exists agentic_status text not null default 'active',
+  add column if not exists progress_percent numeric not null default 0,
+  add column if not exists risk_level text not null default 'unknown',
+  add column if not exists current_state jsonb not null default '{}'::jsonb,
+  add column if not exists desired_state jsonb not null default '{}'::jsonb,
+  add column if not exists constraints jsonb not null default '{}'::jsonb,
+  add column if not exists last_evaluated_at timestamptz null,
+  add column if not exists generated_by_agent text null,
+  add column if not exists updated_at timestamptz not null default now();
+
+alter table if exists public.daily_microtasks
+  add column if not exists goal_id uuid null references public.learning_goals(id) on delete cascade,
+  add column if not exists source_agent text null,
+  add column if not exists source_event_id text null,
+  add column if not exists dedup_key text null,
+  add column if not exists success_criteria jsonb not null default '{}'::jsonb,
+  add column if not exists result jsonb not null default '{}'::jsonb,
+  add column if not exists adaptation_reason text null,
+  add column if not exists scheduled_for timestamptz null,
+  add column if not exists due_at timestamptz null,
+  add column if not exists skipped_at timestamptz null,
+  add column if not exists updated_at timestamptz not null default now();
+
+create unique index if not exists daily_microtasks_user_dedup_unique
+  on public.daily_microtasks(user_id, dedup_key)
+  where dedup_key is not null;
+
+alter table if exists public.learning_evidence
+  add column if not exists goal_id uuid null references public.learning_goals(id) on delete cascade,
+  add column if not exists task_id uuid null references public.daily_microtasks(id) on delete set null,
+  add column if not exists source text null,
+  add column if not exists observation_type text null,
+  add column if not exists source_event_id text null,
+  add column if not exists dedup_key text null;
+
+create unique index if not exists learning_evidence_user_dedup_unique
+  on public.learning_evidence(user_id, dedup_key)
+  where dedup_key is not null;
+
 create table if not exists public.amaura_notifications (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -155,7 +195,7 @@ begin
     when 'AUTOPSY_V3_ASSESSMENT_CREATED' then array['autopsy_agent']
     when 'AUTOPSY_V3_QUESTIONS_UPSERTED' then array['autopsy_agent']
     when 'AUTOPSY_V3_REASONS_COLLECTED' then array['autopsy_agent', 'learning_state_engine']
-    when 'AUTOPSY_V3_REPORT_READY' then array['learning_state_engine', 'memory_agent', 'planner_agent', 'command_agent', 'amaura_autopsy_cascade']
+    when 'AUTOPSY_V3_REPORT_READY' then array['learning_state_engine', 'memory_agent', 'planner_agent', 'command_agent', 'amaura_autopsy_cascade', 'amaura_plan_adapter', 'amaura_progress_evaluator', 'amaura_next_action']
     when 'LEARNING_SIGNAL_INGESTED' then array['learning_state_engine', 'atlas_agent', 'memory_agent', 'planner_agent', 'command_agent']
     when 'STUDY_SESSION_COMPLETED' then array['atlas_engine', 'memory_engine', 'learning_state_engine', 'command_agent', 'planner_agent', 'amaura_session_agent']
     when 'MIND_TUTOR_COMPLETED' then array['atlas_engine', 'memory_engine', 'learning_state_engine', 'command_agent', 'planner_agent']
@@ -180,6 +220,18 @@ begin
     when 'PATTERN_MEMORY_SCAN_REQUESTED' then array['amaura_pattern_memory']
     when 'PRACTICE_ATTEMPT_RECORDED' then array['atlas_engine', 'memory_engine', 'learning_state_engine', 'command_agent', 'planner_agent', 'amaura_practice_agent']
     when 'PRACTICE_ATTEMPT_SUBMITTED' then array['atlas_engine', 'memory_engine', 'learning_state_engine', 'command_agent', 'planner_agent', 'amaura_practice_agent']
+    when 'AMAURA_GOAL_CREATED' then array['amaura_goal_decomposer', 'amaura_next_action']
+    when 'AMAURA_GOAL_UPDATED' then array['amaura_progress_evaluator', 'amaura_next_action']
+    when 'AMAURA_TASK_CREATED' then array['amaura_next_action']
+    when 'AMAURA_TASK_COMPLETED' then array['amaura_progress_evaluator', 'amaura_plan_adapter', 'amaura_next_action']
+    when 'AMAURA_TASK_SKIPPED' then array['amaura_progress_evaluator', 'amaura_plan_adapter', 'amaura_next_action']
+    when 'AMAURA_OBSERVATION_RECORDED' then array['amaura_progress_evaluator', 'amaura_plan_adapter', 'amaura_next_action']
+    when 'AMAURA_PLAN_ADAPTED' then array['amaura_next_action']
+    when 'AMAURA_GOAL_PROGRESS_EVALUATED' then array['amaura_next_action']
+    when 'MEMORY_REVIEW_COMPLETED' then array['amaura_progress_evaluator', 'amaura_next_action']
+    when 'ATLAS_CONCEPT_UPDATED' then array['amaura_plan_adapter', 'amaura_progress_evaluator', 'amaura_next_action']
+    when 'SESSION_CLOSED' then array['amaura_session_agent', 'amaura_progress_evaluator', 'amaura_next_action']
+    when 'DAILY_AGENT_TICK' then array['amaura_forgetting_agent', 'amaura_stagnation_agent', 'amaura_pattern_memory', 'amaura_progress_evaluator', 'amaura_next_action']
     when 'ONBOARDING_QUIZ_COMPLETE' then array['learning_state_engine', 'planner_agent', 'command_agent']
     else array[]::text[]
   end;
@@ -261,9 +313,14 @@ begin
       and cl.consumer_name in (
         'amaura_practice_agent',
         'amaura_session_agent',
+        'amaura_autopsy_cascade',
         'amaura_forgetting_agent',
         'amaura_stagnation_agent',
-        'amaura_pattern_memory'
+        'amaura_pattern_memory',
+        'amaura_goal_decomposer',
+        'amaura_plan_adapter',
+        'amaura_progress_evaluator',
+        'amaura_next_action'
       )
       and (
         (cl.status in ('PENDING', 'RETRY_SCHEDULED') and coalesce(cl.next_attempt_at, cl.next_retry_at, now()) <= now())

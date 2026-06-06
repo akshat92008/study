@@ -1,27 +1,31 @@
 import {
   AutopsyCascadeAgent,
   ForgettingAgent,
+  GoalDecomposerAgent,
+  NextActionAgent,
+  PlanAdapterAgent,
   PatternMemoryAgent,
   PracticePatternAgent,
+  ProgressEvaluatorAgent,
   SessionCloseAgent,
   StagnationAgent,
   NATIVE_AMAURA_AGENTS,
 } from './native-agents';
+import {
+  AMAURA_CONSUMERS,
+  type AmauraConsumer,
+} from '@/lib/amaura/events/event-matrix';
 import { BudgetAgent } from './budget';
 import type { AmauraAgentDefinition, AmauraAgentName } from './types';
 
-export const AMAURA_CONSUMERS = [
-  'amaura_practice_agent',
-  'amaura_session_agent',
-  'amaura_autopsy_cascade',
-  'amaura_forgetting_agent',
-  'amaura_stagnation_agent',
-  'amaura_pattern_memory',
-] as const;
-
-export type AmauraConsumer = typeof AMAURA_CONSUMERS[number];
+export { AMAURA_CONSUMERS };
+export type { AmauraConsumer };
 
 const CONSUMER_AGENT_MAP: Record<AmauraConsumer, AmauraAgentDefinition<any>> = {
+  amaura_goal_decomposer: GoalDecomposerAgent,
+  amaura_plan_adapter: PlanAdapterAgent,
+  amaura_progress_evaluator: ProgressEvaluatorAgent,
+  amaura_next_action: NextActionAgent,
   amaura_practice_agent: PracticePatternAgent,
   amaura_session_agent: SessionCloseAgent,
   amaura_autopsy_cascade: AutopsyCascadeAgent,
@@ -50,6 +54,10 @@ export function getAmauraAgentByName(name: AmauraAgentName) {
 
 export function getAmauraRuntimeMap() {
   return {
+    GoalDecomposerAgent,
+    PlanAdapterAgent,
+    ProgressEvaluatorAgent,
+    NextActionAgent,
     PracticePatternAgent,
     AutopsyCascadeAgent,
     SessionCloseAgent,

@@ -1,3 +1,6 @@
+import { agentRuntimeEnabled } from './agents/budget';
+import { createAdminClient } from '@/lib/supabase/admin';
+
 type SupabaseLike = {
   from: (table: string) => any;
 };
@@ -10,7 +13,7 @@ export type AmauraGoalLoopInput = {
 };
 
 export type AmauraTaskCompletionInput = {
-  client: SupabaseLike;
+  client?: SupabaseLike;
   userId: string;
   goalId: string;
   taskId: string;
@@ -23,6 +26,15 @@ export type AmauraTaskCompletionInput = {
   };
 };
 
+export type AmauraExistingGoalLoopInput = {
+  client?: SupabaseLike;
+  userId: string;
+  goalId: string;
+  now?: Date;
+  source?: string;
+  sourceEventId?: string | null;
+};
+
 type ParsedGoal = {
   focusTopic: string;
   subject: string;
@@ -30,6 +42,8 @@ type ParsedGoal = {
 };
 
 export async function createAmauraGoalLoop(input: AmauraGoalLoopInput) {
+  // Compatibility helper for tests and older API paths. The main architecture is
+  // now repositories + native agents + the Amaura event matrix.
   const now = input.now ?? new Date();
   const parsed = parseGoal(input.title, now);
   const goal = await getOrCreateGoal(input.client, {
@@ -90,18 +104,111 @@ export async function createAmauraGoalLoop(input: AmauraGoalLoopInput) {
   return { goal, tasks, notification, nextAction: primaryTask };
 }
 
+export async function createAmauraGoalLoopForExistingGoal(input: AmauraExistingGoalLoopInput) {
+  // Compatibility helper for real goal creation. It attaches decomposition to an
+  // existing canonical learning_goals row instead of creating a duplicate goal.
+  if (!agentRuntimeEnabled()) {
+    return {
+      skipped: true,
+      reason: 'Amaura agent runtime is disabled.',
+      goal: null,
+      tasks: [],
+      notification: null,
+      nextAction: null,
+    };
+  }
+
+  const now = input.now ?? new Date();
+  const loopClient = input.client ?? createAdminClient();
+  const goal = await loadGoal(loopClient, input.userId, input.goalId);
+  if (!goal) throw new Error('Amaura goal loop goal not found.');
+  const parsed = parseGoal(goal.title ?? 'Learning goal', now);
+
+  const tasks = await ensureInitialGoalTasks(loopClient, {
+    userId: input.userId,
+    goal,
+    parsed,
+    now,
+  });
+  const primaryTask = tasks.find((task: any) => task.status === 'pending') ?? tasks[0] ?? null;
+
+  if (primaryTask) {
+    await upsertSessionCard(loopClient, {
+      userId: input.userId,
+      goal,
+      task: primaryTask,
+      date: toDateKey(now),
+      reason: `Goal decomposer chose ${primaryTask.title} as the first mission.`,
+    });
+  }
+
+  const notification = await ensureNotification(loopClient, {
+    userId: input.userId,
+    goalId: goal.id,
+    type: 'goal_decomposed',
+    priority: 'normal',
+    title: 'Goal plan ready',
+    message: `I created the first tasks for ${goal.title}. Start with ${primaryTask?.title ?? parsed.focusTopic}.`,
+    actionType: 'open_goal',
+    actionLabel: 'Open goal',
+    dedupKey: `amaura:goal-decomposer:${goal.id}:v1`,
+    metadata: {
+      taskCount: tasks.length,
+      source: input.source ?? 'compatibility',
+      sourceEventId: input.sourceEventId ?? null,
+    },
+    now,
+  });
+
+  await recordAgentRun(loopClient, {
+    userId: input.userId,
+    goalId: goal.id,
+    agentName: 'GoalDecomposerAgent',
+    eventType: 'AMAURA_GOAL_CREATED',
+    dedupKey: `goal_decomposer:${goal.id}:v1`,
+    input: { goalId: goal.id, source: input.source ?? null, sourceEventId: input.sourceEventId ?? null },
+    output: {
+      actionsTaken: tasks.length + (notification ? 1 : 0) + (primaryTask ? 1 : 0),
+      tasksCreated: tasks.length,
+      notificationsCreated: notification ? 1 : 0,
+      sessionCardUpdated: Boolean(primaryTask),
+    },
+    now,
+  });
+
+  if (primaryTask) {
+    await recordAgentRun(loopClient, {
+      userId: input.userId,
+      goalId: goal.id,
+      agentName: 'NextActionAgent',
+      eventType: 'AMAURA_GOAL_CREATED',
+      dedupKey: `next_action:${goal.id}:v1`,
+      input: { goalId: goal.id },
+      output: {
+        actionsTaken: 1,
+        sessionCardUpdated: true,
+        nextActionId: primaryTask.id,
+      },
+      now,
+    });
+  }
+
+  return { goal, tasks, notification, nextAction: primaryTask };
+}
+
 export async function completeAmauraGoalLoopTask(input: AmauraTaskCompletionInput) {
   const now = input.now ?? new Date();
-  const task = await loadTask(input.client, input.userId, input.taskId);
+  const loopClient = input.client ?? createAdminClient();
+  const task = await loadTask(loopClient, input.userId, input.taskId);
   if (!task || task.goal_id !== input.goalId) {
     throw new Error('Amaura goal loop task not found.');
   }
 
   const completedTask = task.status === 'done'
     ? task
-    : await updateTaskStatus(input.client, input.userId, input.taskId, 'done', now);
+    : await updateTaskStatus(loopClient, input.userId, input.taskId, 'done', now);
 
-  const observation = await ensureLearningEvidence(input.client, {
+  const observation = await ensureLearningEvidence(loopClient, {
     userId: input.userId,
     goalId: input.goalId,
     task: completedTask,
@@ -109,10 +216,10 @@ export async function completeAmauraGoalLoopTask(input: AmauraTaskCompletionInpu
     now,
   });
 
-  const goal = await loadGoal(input.client, input.userId, input.goalId);
+  const goal = await loadGoal(loopClient, input.userId, input.goalId);
   if (!goal) throw new Error('Amaura goal loop goal not found.');
 
-  const allTasks = await listGoalTasks(input.client, input.userId, input.goalId);
+  const allTasks = await listGoalTasks(loopClient, input.userId, input.goalId);
   const completedCount = allTasks.filter((row: any) => row.status === 'done').length;
   const progressPercent = allTasks.length > 0
     ? Math.min(100, Math.round((completedCount / allTasks.length) * 100))
@@ -120,7 +227,7 @@ export async function completeAmauraGoalLoopTask(input: AmauraTaskCompletionInpu
 
   const weakTopic = input.outcome?.weakTopic?.trim() || null;
   const adaptedTask = weakTopic
-    ? await ensureAdaptedRepairTask(input.client, {
+    ? await ensureAdaptedRepairTask(loopClient, {
         userId: input.userId,
         goal,
         weakTopic,
@@ -129,8 +236,8 @@ export async function completeAmauraGoalLoopTask(input: AmauraTaskCompletionInpu
       })
     : null;
 
-  const nextAction = adaptedTask ?? await chooseNextPendingTask(input.client, input.userId, input.goalId);
-  await updateGoalProgress(input.client, {
+  const nextAction = adaptedTask ?? await chooseNextPendingTask(loopClient, input.userId, input.goalId);
+  await updateGoalProgress(loopClient, {
     userId: input.userId,
     goal,
     progressPercent,
@@ -140,7 +247,7 @@ export async function completeAmauraGoalLoopTask(input: AmauraTaskCompletionInpu
   });
 
   if (nextAction) {
-    await upsertSessionCard(input.client, {
+    await upsertSessionCard(loopClient, {
       userId: input.userId,
       goal,
       task: nextAction,
@@ -152,7 +259,7 @@ export async function completeAmauraGoalLoopTask(input: AmauraTaskCompletionInpu
   }
 
   const notification = adaptedTask
-    ? await ensureNotification(input.client, {
+    ? await ensureNotification(loopClient, {
         userId: input.userId,
         goalId: input.goalId,
         type: 'plan_adapted',
@@ -167,7 +274,7 @@ export async function completeAmauraGoalLoopTask(input: AmauraTaskCompletionInpu
       })
     : null;
 
-  await recordAgentRun(input.client, {
+  await recordAgentRun(loopClient, {
     userId: input.userId,
     goalId: input.goalId,
     agentName: 'ProgressEvaluatorAgent',
@@ -182,7 +289,7 @@ export async function completeAmauraGoalLoopTask(input: AmauraTaskCompletionInpu
     now,
   });
 
-  await recordAgentRun(input.client, {
+  await recordAgentRun(loopClient, {
     userId: input.userId,
     goalId: input.goalId,
     agentName: 'PlanAdapterAgent',
@@ -198,7 +305,7 @@ export async function completeAmauraGoalLoopTask(input: AmauraTaskCompletionInpu
     now,
   });
 
-  await recordAgentRun(input.client, {
+  await recordAgentRun(loopClient, {
     userId: input.userId,
     goalId: input.goalId,
     agentName: 'NextActionAgent',

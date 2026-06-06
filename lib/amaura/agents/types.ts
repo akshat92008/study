@@ -1,6 +1,10 @@
 import { z } from 'zod';
 
 export const AmauraAgentNameSchema = z.enum([
+  'GoalDecomposerAgent',
+  'PlanAdapterAgent',
+  'ProgressEvaluatorAgent',
+  'NextActionAgent',
   'PracticePatternAgent',
   'AutopsyCascadeAgent',
   'SessionCloseAgent',

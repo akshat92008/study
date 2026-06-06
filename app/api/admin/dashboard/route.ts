@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { requireAdmin } from '@/lib/auth/admin';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { EventWorkerService } from '@/lib/events/worker';
+import { SAFE_BOUNDED_CONSUMERS } from '@/lib/amaura/events/event-matrix';
 
 export const dynamic = 'force-dynamic';
 
@@ -119,13 +120,7 @@ export async function GET() {
 
 async function loadAgentRuntimeObservability(supabase: ReturnType<typeof createAdminClient>) {
   const since24h = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
-  const safeConsumers = [
-    'amaura_practice_agent',
-    'amaura_session_agent',
-    'amaura_forgetting_agent',
-    'amaura_stagnation_agent',
-    'amaura_pattern_memory',
-  ];
+  const safeConsumers = [...SAFE_BOUNDED_CONSUMERS];
 
   const [
     runs,

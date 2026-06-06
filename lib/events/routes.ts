@@ -1,3 +1,9 @@
+import {
+  AMAURA_CONSUMERS,
+  AMAURA_EVENT_MATRIX,
+  AMAURA_EVENTS,
+} from '@/lib/amaura/events/event-matrix';
+
 export const EVENT_CONSUMERS = [
   'learning_state_engine',
   'atlas_engine',
@@ -12,12 +18,7 @@ export const EVENT_CONSUMERS = [
   'autopsy_agent',
   'planner_agent',
   'command_agent',
-  'amaura_practice_agent',
-  'amaura_session_agent',
-  'amaura_autopsy_cascade',
-  'amaura_forgetting_agent',
-  'amaura_stagnation_agent',
-  'amaura_pattern_memory',
+  ...AMAURA_CONSUMERS,
 ] as const;
 
 export type EventConsumer = typeof EVENT_CONSUMERS[number];
@@ -60,7 +61,13 @@ export const EVENT_CONSUMER_MATRIX = {
   AUTOPSY_V3_ASSESSMENT_CREATED: ['autopsy_agent'],
   AUTOPSY_V3_QUESTIONS_UPSERTED: ['autopsy_agent'],
   AUTOPSY_V3_REASONS_COLLECTED: ['autopsy_agent', 'learning_state_engine'],
-  AUTOPSY_V3_REPORT_READY: ['learning_state_engine', 'memory_agent', 'planner_agent', 'command_agent', 'amaura_autopsy_cascade'],
+  AUTOPSY_V3_REPORT_READY: [
+    'learning_state_engine',
+    'memory_agent',
+    'planner_agent',
+    'command_agent',
+    ...AMAURA_EVENT_MATRIX[AMAURA_EVENTS.AUTOPSY_V3_REPORT_READY],
+  ],
   LEARNING_SIGNAL_INGESTED: ['learning_state_engine', 'atlas_agent', 'memory_agent', 'planner_agent', 'command_agent'],
   STUDY_SESSION_COMPLETED: [
     'atlas_engine',
@@ -118,6 +125,18 @@ export const EVENT_CONSUMER_MATRIX = {
     'amaura_practice_agent',
   ],
   ONBOARDING_QUIZ_COMPLETE: ['learning_state_engine', 'planner_agent', 'command_agent'],
+  AMAURA_GOAL_CREATED: AMAURA_EVENT_MATRIX[AMAURA_EVENTS.AMAURA_GOAL_CREATED],
+  AMAURA_GOAL_UPDATED: AMAURA_EVENT_MATRIX[AMAURA_EVENTS.AMAURA_GOAL_UPDATED],
+  AMAURA_TASK_CREATED: AMAURA_EVENT_MATRIX[AMAURA_EVENTS.AMAURA_TASK_CREATED],
+  AMAURA_TASK_COMPLETED: AMAURA_EVENT_MATRIX[AMAURA_EVENTS.AMAURA_TASK_COMPLETED],
+  AMAURA_TASK_SKIPPED: AMAURA_EVENT_MATRIX[AMAURA_EVENTS.AMAURA_TASK_SKIPPED],
+  AMAURA_OBSERVATION_RECORDED: AMAURA_EVENT_MATRIX[AMAURA_EVENTS.AMAURA_OBSERVATION_RECORDED],
+  AMAURA_PLAN_ADAPTED: AMAURA_EVENT_MATRIX[AMAURA_EVENTS.AMAURA_PLAN_ADAPTED],
+  AMAURA_GOAL_PROGRESS_EVALUATED: AMAURA_EVENT_MATRIX[AMAURA_EVENTS.AMAURA_GOAL_PROGRESS_EVALUATED],
+  MEMORY_REVIEW_COMPLETED: AMAURA_EVENT_MATRIX[AMAURA_EVENTS.MEMORY_REVIEW_COMPLETED],
+  ATLAS_CONCEPT_UPDATED: AMAURA_EVENT_MATRIX[AMAURA_EVENTS.ATLAS_CONCEPT_UPDATED],
+  SESSION_CLOSED: AMAURA_EVENT_MATRIX[AMAURA_EVENTS.SESSION_CLOSED],
+  DAILY_AGENT_TICK: AMAURA_EVENT_MATRIX[AMAURA_EVENTS.DAILY_AGENT_TICK],
 } as const satisfies Record<string, readonly EventConsumer[]>;
 
 export type RoutedEventType = keyof typeof EVENT_CONSUMER_MATRIX;

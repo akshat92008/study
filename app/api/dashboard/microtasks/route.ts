@@ -4,6 +4,10 @@ import { DailyMicrotaskService } from '@/lib/services/daily-microtask.service';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { ensureGoalForUser } from '@/lib/services/goal-context.service';
+import { completeAmauraGoalLoopTask } from '@/lib/amaura/goal-loop';
+import { computeGoalProgress, updateGoal } from '@/lib/amaura/goals/goal-repository';
+import { recordObservationIfNotExists } from '@/lib/amaura/observations/observation-repository';
+import { logger } from '@/lib/utils/logger';
 
 export async function GET(req: NextRequest) {
   const requestId = getRequestId(req);
@@ -70,6 +74,69 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ task });
     } else if (body.action === 'update_status') {
       const task = await service.updateMicrotaskStatus(body.id, user.id, body.status);
+      const linkedGoalId = task.goal_id ?? goalId;
+      if (linkedGoalId && body.status === 'done') {
+        await completeAmauraGoalLoopTask({
+          userId: user.id,
+          goalId: linkedGoalId,
+          taskId: task.id,
+          outcome: {
+            confidence: body.confidence,
+            weakTopic: typeof body.weakTopic === 'string' ? body.weakTopic : null,
+            score: typeof body.score === 'number' ? body.score : null,
+            notes: typeof body.notes === 'string' ? body.notes : null,
+          },
+        }).catch((err) => {
+          logger.warn('Amaura task completion loop failed', {
+            userId: user.id,
+            goalId: linkedGoalId,
+            taskId: task.id,
+            err: err instanceof Error ? err.message : String(err),
+          });
+        });
+      } else if (linkedGoalId && body.status === 'skipped') {
+        await recordObservationIfNotExists({
+          userId: user.id,
+          goalId: linkedGoalId,
+          taskId: task.id,
+          source: 'task',
+          observationType: 'skipped',
+          subject: task.subject ?? null,
+          topic: task.topic ?? null,
+          confidence: 0.7,
+          payload: {
+            taskTitle: task.title,
+            reason: typeof body.reason === 'string' ? body.reason : null,
+          },
+          sourceEventId: `daily_microtask:${task.id}:skipped`,
+        }).catch((err) => {
+          logger.warn('Amaura skipped-task observation failed', {
+            userId: user.id,
+            goalId: linkedGoalId,
+            taskId: task.id,
+            err: err instanceof Error ? err.message : String(err),
+          });
+        });
+        const progress = await computeGoalProgress(linkedGoalId, user.id).catch(() => null);
+        if (progress) {
+          await updateGoal(linkedGoalId, user.id, {
+            progressPercent: progress.progressPercent,
+            riskLevel: progress.skippedTasks > 1 ? 'high' : 'medium',
+            currentState: {
+              ...progress,
+              lastSkippedTaskId: task.id,
+            },
+            lastEvaluatedAt: new Date().toISOString(),
+          }).catch((err) => {
+            logger.warn('Amaura skipped-task progress update failed', {
+              userId: user.id,
+              goalId: linkedGoalId,
+              taskId: task.id,
+              err: err instanceof Error ? err.message : String(err),
+            });
+          });
+        }
+      }
       return NextResponse.json({ task });
     } else if (body.action === 'delete') {
       await service.deleteMicrotask(body.id, user.id);

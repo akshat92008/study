@@ -13,6 +13,7 @@ import { runCheapAgenticCycle } from '@/lib/agents/orchestrator';
 import { featureFlags } from '@/lib/config/flags';
 import { isAmauraConsumer } from '@/lib/amaura/agents/registry';
 import { runAmauraConsumerForLease } from '@/lib/amaura/agents/runtime';
+import { AMAURA_CONSUMERS } from '@/lib/amaura/events/event-matrix';
 
 export const HANDLED_EVENT_CONSUMERS = [
   'learning_state_engine',
@@ -28,12 +29,7 @@ export const HANDLED_EVENT_CONSUMERS = [
   'mind_agent',
   'autopsy_agent',
   'command_agent',
-  'amaura_practice_agent',
-  'amaura_session_agent',
-  'amaura_autopsy_cascade',
-  'amaura_forgetting_agent',
-  'amaura_stagnation_agent',
-  'amaura_pattern_memory',
+  ...AMAURA_CONSUMERS,
 ] as const;
 
 

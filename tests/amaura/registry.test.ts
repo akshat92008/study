@@ -6,6 +6,11 @@ import {
   getEnabledAmauraAgents,
   isAmauraConsumer,
 } from '@/lib/amaura/agents/registry';
+import {
+  SAFE_BOUNDED_CONSUMERS,
+  assertEventMatrixIntegrity,
+  getConsumersForEvent,
+} from '@/lib/amaura/events/event-matrix';
 import { hasAmauraStateVisibleOutcome } from '@/lib/amaura/agents/types';
 
 describe('Amaura native agent registry', () => {
@@ -15,6 +20,10 @@ describe('Amaura native agent registry', () => {
 
   it('maps each queue consumer to a native Amaura agent', () => {
     expect(AMAURA_CONSUMERS).toEqual([
+      'amaura_goal_decomposer',
+      'amaura_plan_adapter',
+      'amaura_progress_evaluator',
+      'amaura_next_action',
       'amaura_practice_agent',
       'amaura_session_agent',
       'amaura_autopsy_cascade',
@@ -23,6 +32,10 @@ describe('Amaura native agent registry', () => {
       'amaura_pattern_memory',
     ]);
 
+    expect(getAmauraAgentForConsumer('amaura_goal_decomposer')?.name).toBe('GoalDecomposerAgent');
+    expect(getAmauraAgentForConsumer('amaura_plan_adapter')?.name).toBe('PlanAdapterAgent');
+    expect(getAmauraAgentForConsumer('amaura_progress_evaluator')?.name).toBe('ProgressEvaluatorAgent');
+    expect(getAmauraAgentForConsumer('amaura_next_action')?.name).toBe('NextActionAgent');
     expect(getAmauraAgentForConsumer('amaura_practice_agent')?.name).toBe('PracticePatternAgent');
     expect(getAmauraAgentForConsumer('amaura_session_agent')?.name).toBe('SessionCloseAgent');
     expect(getAmauraAgentForConsumer('amaura_autopsy_cascade')?.name).toBe('AutopsyCascadeAgent');
@@ -39,8 +52,12 @@ describe('Amaura native agent registry', () => {
       'AutopsyCascadeAgent',
       'BudgetAgent',
       'ForgettingAgent',
+      'GoalDecomposerAgent',
+      'NextActionAgent',
       'PatternMemoryAgent',
+      'PlanAdapterAgent',
       'PracticePatternAgent',
+      'ProgressEvaluatorAgent',
       'SessionCloseAgent',
       'StagnationAgent',
     ].sort());
@@ -56,8 +73,12 @@ describe('Amaura native agent registry', () => {
     expect(agents.map((agent) => agent.name).sort()).toEqual([
       'AutopsyCascadeAgent',
       'ForgettingAgent',
+      'GoalDecomposerAgent',
+      'NextActionAgent',
       'PatternMemoryAgent',
+      'PlanAdapterAgent',
       'PracticePatternAgent',
+      'ProgressEvaluatorAgent',
       'SessionCloseAgent',
       'StagnationAgent',
     ].sort());
@@ -69,6 +90,17 @@ describe('Amaura native agent registry', () => {
       expect(String(agent.run), `${agent.name} must not be the old placeholder implementation`)
         .not.toContain('registered but has no autonomous write path');
     }
+  });
+
+  it('keeps the Amaura event matrix and safe consumer allowlist coherent', () => {
+    expect(assertEventMatrixIntegrity()).toBe(true);
+    expect(getConsumersForEvent('AMAURA_TASK_COMPLETED')).toEqual([
+      'amaura_progress_evaluator',
+      'amaura_plan_adapter',
+      'amaura_next_action',
+    ]);
+    expect(getConsumersForEvent('AUTOPSY_V3_REPORT_READY')).toContain('amaura_autopsy_cascade');
+    expect(SAFE_BOUNDED_CONSUMERS).toEqual(AMAURA_CONSUMERS);
   });
 
   it('treats zero-outcome non-skipped results as not complete', () => {
