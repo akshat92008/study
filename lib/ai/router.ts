@@ -503,7 +503,7 @@ export async function getPrioritizedProviders(taskType: TaskType, isDeep = false
 
   return base.filter(p => {
     if (p === 'openai' && !isPaidAiEnabled()) return false;
-    if (p === 'google' && !isGoogleAiEnabled()) return false;
+    if (p === 'google' && !isGoogleAiEnabled() && taskType !== 'vision' && taskType !== 'pdf') return false;
     if (p === 'anthropic' && !isAnthropicAiEnabled()) return false;
     return true;
   });
@@ -1095,7 +1095,8 @@ export async function routeVisionCall(
   imageMimeType: string,
   userMessage: string
 ): Promise<string> {
-  const providers = await getPrioritizedProviders('vision');
+  const providerTask: TaskType = imageMimeType === 'application/pdf' ? 'pdf' : 'vision';
+  const providers = await getPrioritizedProviders(providerTask);
 
   for (const providerName of providers) {
     if (await isProviderInCooldown(providerName)) continue;
@@ -1146,7 +1147,7 @@ if (!config || !config.apiKey || !config.supportsVision) {
 
         const data = await response.json();
         const result = data.result?.response || '';
-        Metrics.aiCall(providerName, 'vision', Date.now() - start, true);
+        Metrics.aiCall(providerName, providerTask, Date.now() - start, true);
         await recordProviderSuccess(providerName, Date.now() - start);
         await resetProviderHealth(providerName);
         return result;
@@ -1199,7 +1200,7 @@ if (!config || !config.apiKey || !config.supportsVision) {
 
         const data = await response.json();
         const result = data.choices?.[0]?.message?.content || '';
-        Metrics.aiCall(providerName, 'vision', Date.now() - start, true);
+        Metrics.aiCall(providerName, providerTask, Date.now() - start, true);
         await recordProviderSuccess(providerName, Date.now() - start);
         await resetProviderHealth(providerName);
         return result;
@@ -1235,14 +1236,14 @@ if (!config || !config.apiKey || !config.supportsVision) {
 
         const data = await response.json();
         const result = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
-        Metrics.aiCall(providerName, 'vision', Date.now() - start, true);
+        Metrics.aiCall(providerName, providerTask, Date.now() - start, true);
         await recordProviderSuccess(providerName, Date.now() - start);
         await resetProviderHealth(providerName);
         return result;
       }
 
     } catch (err: any) {
-      Metrics.aiCall(providerName, 'vision', Date.now() - start, false);
+      Metrics.aiCall(providerName, providerTask, Date.now() - start, false);
       const code = err.statusCode || 500;
       const cooldownMs = code === 429 || code === 401 ? 30_000 : code === 503 ? 20_000 : 15_000;
       await recordProviderFailure(providerName, cooldownMs);

@@ -30,6 +30,8 @@ export type RevisionCardInput = {
   conceptId?: string | null;
   front: string;
   back: string;
+  subject?: string | null;
+  chapter?: string | null;
   dueAt?: string | null;
   sourceType: string;
   sourceId: string;
@@ -124,6 +126,8 @@ export async function createRevisionCardsForUser(
     concept_id: card.conceptId ?? null,
     front: card.front,
     back: card.back,
+    subject: card.subject ?? null,
+    chapter: card.chapter ?? null,
     due: card.dueAt ?? now,
     state: 0,
     source_type: card.sourceType,

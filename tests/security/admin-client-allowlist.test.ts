@@ -48,6 +48,8 @@ const allowedRuntimeFiles = new Set([
   'lib/services/chatMemoryService.ts',
   'lib/services/command-plan.service.ts',
   'lib/services/learner-state-version.ts',
+  'lib/services/learning-event-projections.service.ts',
+  'lib/services/learning-plan-updates.service.ts',
   'lib/services/session-card-invalidation.ts',
   'lib/supabase/admin.ts',
   'lib/supabase/adminSafe.ts',

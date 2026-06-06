@@ -1,12 +1,42 @@
 import { budgetedVisionCall } from '@/lib/ai/budgeted';
 import { isBudgetExceeded, isBudgetUnavailable, budgetExceededResponse, budgetUnavailableResponse } from '@/lib/ai/cost-guard';
 import { createAutopsyJob } from '@/lib/services/autopsy-jobs';
-import { materialContentHash } from '@/lib/rag/ingest';
+import { ingestStudyMaterial, materialContentHash } from '@/lib/rag/ingest';
 import { getRagConfig, SUPPORTED_MATERIAL_MIME_TYPES } from '@/lib/rag/config';
 import { validateMagicBytesArray } from '@/lib/utils/magicBytes';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { logger } from '@/lib/utils/logger';
 import { apiErrorResponse } from '@/lib/api/errors';
+import { featureFlags } from '@/lib/config/flags';
+
+const INLINE_INGESTION_MAX_BYTES = 5 * 1024 * 1024;
+
+function streamTextResponse(
+  text: string,
+  encoder: TextEncoder,
+  headers: Record<string, string> = {}
+) {
+  const stream = new ReadableStream({
+    start(controller) {
+      controller.enqueue(encoder.encode(text));
+      controller.close();
+    }
+  });
+  return new Response(stream, {
+    headers: {
+      'Content-Type': 'text/plain; charset=utf-8',
+      ...headers,
+    },
+  });
+}
+
+export function visionUploadsDisabledResponse(encoder: TextEncoder): Response {
+  return streamTextResponse(
+    'Image and document questions are not enabled for this workspace yet. Enable vision uploads to answer image-based doubts and PDFs in chat.',
+    encoder,
+    { 'x-provider-routed': 'vision-disabled' }
+  );
+}
 
 export async function handleVisionUpload({
   userId,
@@ -58,7 +88,7 @@ export async function handleVisionUpload({
       controller.close();
     }
   });
-  return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+  return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8', 'x-provider-routed': 'vision' } });
 }
 
 export async function handleDocumentVisionUpload({
@@ -116,7 +146,7 @@ export async function handleDocumentVisionUpload({
       controller.close();
     }
   });
-  return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+  return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8', 'x-provider-routed': 'document-vision' } });
 }
 
 export async function handleAutopsyRedirect({
@@ -202,6 +232,10 @@ export async function processMaterialIngestion({
   finalizeAssistantTurn: any;
   encoder: TextEncoder;
 }): Promise<Response | null> {
+  if (!featureFlags.visionUploads()) {
+    return visionUploadsDisabledResponse(encoder);
+  }
+
   if (!SUPPORTED_MATERIAL_MIME_TYPES.has(documentMimeType)) return null;
 
   const ragConfig = getRagConfig();
@@ -225,7 +259,7 @@ export async function processMaterialIngestion({
 
   const contentHash = materialContentHash(buffer);
   
-  const ingestUploadedMaterial = async (): Promise<boolean> => {
+  const ingestUploadedMaterial = async (): Promise<{ accepted: boolean; status: 'ready' | 'queued' | 'uploaded' | 'failed' | 'duplicate'; chunks: number }> => {
     try {
       const { data: duplicate } = await supabase
         .from('study_materials')
@@ -247,13 +281,18 @@ export async function processMaterialIngestion({
             .eq('id', duplicate.id)
             .eq('user_id', userId);
         }
-        return true;
+        return { accepted: true, status: 'duplicate', chunks: 0 };
       }
 
       const originalFilename = `chat-upload-${contentHash.slice(0, 12)}`;
       const storagePath = `${userId}/${contentHash.slice(0, 12)}-${originalFilename}`;
       const upload = await supabase.storage.from('study-materials').upload(storagePath, buffer, { contentType: documentMimeType, upsert: false });
       if (upload.error) throw upload.error;
+
+      const ragEnabled = featureFlags.ragIngestion();
+      const shouldIngestInline =
+        ragEnabled &&
+        buffer.byteLength <= INLINE_INGESTION_MAX_BYTES;
 
       const { data: material, error: materialError } = await supabase.from('study_materials').insert({
         user_id: userId,
@@ -263,7 +302,8 @@ export async function processMaterialIngestion({
         storage_path: storagePath,
         source_type: 'upload',
         language: 'en',
-        status: 'uploaded',
+        status: !ragEnabled ? 'uploaded' : shouldIngestInline ? 'processing' : 'queued',
+        queued_at: ragEnabled && !shouldIngestInline ? new Date().toISOString() : null,
         content_hash: contentHash,
         goal_id: activeGoalId,
         chat_session_id: sessionId,
@@ -273,15 +313,17 @@ export async function processMaterialIngestion({
 
       const materialId = material.id;
 
-      const { error: jobError } = await supabase.from('rag_ingestion_jobs').upsert({
-        user_id: userId,
-        material_id: materialId,
-        status: 'queued',
-        idempotency_key: `rag_ingestion:${userId}:${materialId}`,
-        metadata: { mimeType: documentMimeType },
-      }, { onConflict: 'user_id,material_id,idempotency_key' });
-      
-      if (jobError) throw jobError;
+      if (ragEnabled && !shouldIngestInline) {
+        const { error: jobError } = await supabase.from('rag_ingestion_jobs').upsert({
+          user_id: userId,
+          material_id: materialId,
+          status: 'queued',
+          idempotency_key: `rag_ingestion:${userId}:${materialId}`,
+          metadata: { mimeType: documentMimeType },
+        }, { onConflict: 'user_id,material_id,idempotency_key' });
+
+        if (jobError) throw jobError;
+      }
 
       await EventDispatcher.publish({
         user_id: userId,
@@ -291,17 +333,37 @@ export async function processMaterialIngestion({
         idempotency_key: `material_uploaded:${materialId}`,
       });
 
-      return true;
+      if (shouldIngestInline) {
+        const result = await ingestStudyMaterial({
+          materialId,
+          userId,
+          buffer,
+          mimeType: documentMimeType,
+        });
+        return {
+          accepted: true,
+          status: result.status,
+          chunks: result.chunks,
+        };
+      }
+
+      return { accepted: true, status: ragEnabled ? 'queued' : 'uploaded', chunks: 0 };
     } catch (e) {
       logger.warn('Failed study material ingestion of chat upload', e);
-      return false;
+      return { accepted: false, status: 'failed', chunks: 0 };
     }
   };
 
   if (isMaterialIndexing) {
-    const queued = await ingestUploadedMaterial();
-    const answer = queued
-      ? "Source uploaded and queued for indexing. You can check its status in Sources."
+    const ingestion = await ingestUploadedMaterial();
+    const answer = ingestion.accepted
+      ? ingestion.status === 'ready'
+          ? `Source uploaded and indexed. I extracted ${ingestion.chunks} searchable chunk${ingestion.chunks === 1 ? '' : 's'} and can use it now.`
+          : ingestion.status === 'uploaded'
+            ? "Source uploaded. Source indexing is disabled right now, so I cannot use it for retrieval until RAG ingestion is enabled."
+          : ingestion.status === 'duplicate'
+            ? "Source already exists. I linked it to this chat so I can use it now."
+          : "Source uploaded and queued for indexing. You can check its status in Sources."
       : "I could not queue that material for indexing. Please try uploading it again.";
       
     const stream = new ReadableStream({
@@ -312,7 +374,7 @@ export async function processMaterialIngestion({
             assistantText: answer,
             userMessage: message || '[Document upload]',
           });
-        } catch (e) {}
+        } catch {}
         controller.close();
       }
     });
