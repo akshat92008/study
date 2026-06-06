@@ -15,6 +15,7 @@ import { ThinkingIndicator } from './ThinkingIndicator';
 
 const MIND_QUICK_PROMPTS = [
   'What should I do now?',
+  'Continue',
   'Create a goal',
   'Generate a quiz',
   'Autopsy a mistake',
@@ -72,14 +73,35 @@ export const GlobalChat = memo(function GlobalChat() {
     }
   }, [activeGoalId, chatId, loadChatFromSupabase, user]);
 
+  const lastScrollTimeRef = useRef(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
   // Scroll to bottom utility
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const scrollToBottom = useCallback((behavior: ScrollBehavior = 'smooth') => {
+    if (!messagesEndRef.current) return;
+    
+    // If streaming, throttle scroll to 250ms to prevent jitter
+    if (status === 'streaming') {
+      const now = Date.now();
+      if (now - lastScrollTimeRef.current < 250) return;
+      lastScrollTimeRef.current = now;
+    }
+    
+    messagesEndRef.current.scrollIntoView({ behavior, block: 'end' });
+  }, [status]);
 
   useEffect(() => {
-    scrollToBottom();
-  }, [chatMessages, streamingText, isAssistantOpen, status]);
+    // Check if user is near bottom before auto-scrolling
+    const container = scrollContainerRef.current;
+    if (container && status === 'streaming') {
+      const isNearBottom = container.scrollHeight - container.scrollTop - container.clientHeight < 150;
+      if (isNearBottom) {
+        scrollToBottom('smooth');
+      }
+    } else {
+      scrollToBottom('smooth');
+    }
+  }, [chatMessages.length, streamingText, isAssistantOpen, status, scrollToBottom]);
 
   // Convert file to base64
   const fileToBase64 = useCallback((file: File): Promise<string> => {
@@ -407,7 +429,9 @@ export const GlobalChat = memo(function GlobalChat() {
       </div>
 
       {/* Messages */}
-      <div style={{
+      <div 
+        ref={scrollContainerRef}
+        style={{
         flex: 1,
         overflowY: 'auto',
         padding: '24px 20px',

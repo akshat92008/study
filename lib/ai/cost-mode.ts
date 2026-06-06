@@ -108,10 +108,10 @@ export function getMaxOutputTokens(): number {
 
   const mode = getAiCostMode();
   switch (mode) {
-    case 'ultra_cheap': return 450;
-    case 'cheap':       return 600;
-    case 'balanced':    return 800;
-    case 'quality':     return 1500;
+    case 'ultra_cheap': return 600;
+    case 'cheap':       return 800;
+    case 'balanced':    return 1000;
+    case 'quality':     return 2000;
   }
 }
 

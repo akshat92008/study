@@ -132,10 +132,14 @@ export async function handleMainStreaming({
         metadataPayload = { ...(metadataPayload || {}), contextTrace };
 
         if (metadataPayload) {
-          controller.enqueue(encoder.encode(`\
-\
-===METADATA===\
-${JSON.stringify(metadataPayload)}`));
+          controller.enqueue(encoder.encode(`\n\n===METADATA===\n${JSON.stringify(metadataPayload)}`));
+        }
+
+        const { looksTruncated } = await import('@/lib/utils/text-completeness');
+        if (looksTruncated(fullResponse)) {
+          const truncationHint = '\n\n*The response may be incomplete. Say "continue" and I will finish it.*';
+          controller.enqueue(encoder.encode(truncationHint));
+          fullResponse += truncationHint;
         }
 
         await finalizeAssistantTurn({

@@ -69,7 +69,7 @@ async function callOpenAICompatible(
       max_tokens: maxTokens,
       stream,
     }),
-    signal: AbortSignal.timeout(30_000), // 30s timeout
+    signal: AbortSignal.timeout(45_000), // 45s timeout
   });
 
   if (!response.ok) {
@@ -136,7 +136,7 @@ async function callCloudflare(
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ messages, stream }),
-    signal: AbortSignal.timeout(30_000),
+    signal: AbortSignal.timeout(45_000),
   });
 
   if (!response.ok) {
@@ -241,7 +241,7 @@ async function callAnthropic(
       'anthropic-version': '2023-06-01',
     },
     body: JSON.stringify(body),
-    signal: AbortSignal.timeout(30_000),
+    signal: AbortSignal.timeout(45_000),
   });
 
   if (!response.ok) {
@@ -301,7 +301,8 @@ async function callGoogle(
   config: ProviderConfig,
   model: string,
   messages: Array<{ role: string; content: string }>,
-  stream: boolean
+  stream: boolean,
+  maxTokens?: number
 ): Promise<string | AsyncGenerator<string>> {
   // Convert OpenAI format to Google format
   const systemMsg = messages.find(m => m.role === 'system');
@@ -314,7 +315,7 @@ async function callGoogle(
 
   const body: any = {
     contents,
-    generationConfig: { temperature: 0.7, maxOutputTokens: 2048 },
+    generationConfig: { temperature: 0.7, maxOutputTokens: Math.max(2048, maxTokens ?? 2048) },
   };
   
   if (systemMsg) {
@@ -331,7 +332,7 @@ async function callGoogle(
       'x-goog-api-key': config.apiKey || '',
     } as Record<string, string>,
     body: JSON.stringify(body),
-    signal: AbortSignal.timeout(30_000),
+    signal: AbortSignal.timeout(45_000),
   });
 
   if (!response.ok) {
@@ -459,7 +460,7 @@ if (!config || !config.apiKey) {
         ) as string;
       } else if (providerName === 'google') {
         result = await callGoogle(
-          config, config.models[budgetMode], messages, false
+          config, config.models[budgetMode], messages, false, finalMaxTokens
         ) as string;
       } else if (providerName === 'anthropic') {
         result = await callAnthropic(
@@ -569,7 +570,7 @@ if (!config || !config.apiKey) {
           ) as string;
         } else if (providerName === 'google') {
           rawText = await callGoogle(
-            config, config.models.fast, messages, false
+            config, config.models.fast, messages, false, finalMaxTokens
           ) as string;
         } else if (providerName === 'anthropic') {
           rawText = await callAnthropic(
@@ -701,7 +702,7 @@ if (!config || !config.apiKey) {
         ) as AsyncGenerator<string>;
       } else if (providerName === 'google') {
         generator = await callGoogle(
-          config, config.models[budgetMode], messages, true
+          config, config.models[budgetMode], messages, true, finalMaxTokens
         ) as AsyncGenerator<string>;
       } else if (providerName === 'anthropic') {
         generator = await callAnthropic(
