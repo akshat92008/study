@@ -26,7 +26,6 @@ import {
 } from '@/lib/chat/pipeline';
 
 import { validateBase64Payload } from '@/lib/middleware/validateUpload';
-import { featureFlags } from '@/lib/config/flags';
 import { loadRecentMessages } from '@/lib/services/chat-persistence';
 import { consumeUsageLimit, usageGateResponse, validatePromptLength } from '@/lib/utils/billing';
 import { classifyChatUploadIntent } from '@/lib/rag/upload-intent';
@@ -118,10 +117,6 @@ export async function POST(req: NextRequest) {
       const docValidation = validateBase64Payload(documentBase64, documentMimeType);
       if (!docValidation.valid) throw new PipelineError(docValidation.error!);
     }
-    if ((imageBase64 || documentBase64) && !featureFlags.visionUploads()) {
-      throw new PipelineError(NextResponse.json({ error: 'Vision uploads are temporarily disabled for beta stability.' }, { status: 503 }));
-    }
-
     // Persisted History & Idempotency
     const persistedHistory = await loadRecentMessages(supabase, sessionId);
     const recentHistory = persistedHistory.slice(-50);

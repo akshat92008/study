@@ -14,7 +14,7 @@ import { inferAndUpdateEmotionalState } from '@/lib/engines/emotional-state-upda
 import { tryRuleFirstResponse } from '@/lib/ai/rule-first-responder';
 import { buildChatFirstEngineResponse } from '@/lib/ai/chat';
 import { gatherChatContext } from '@/lib/chat/context';
-import { handleVisionUpload, handleDocumentVisionUpload, handleAutopsyRedirect, processMaterialIngestion } from '@/lib/chat/uploads';
+import { handleVisionUpload, handleDocumentVisionUpload, handleAutopsyRedirect, processMaterialIngestion, visionUploadsDisabledResponse } from '@/lib/chat/uploads';
 import { handleMainStreaming } from '@/lib/chat/streaming';
 import { classifyChatUploadIntent } from '@/lib/rag/upload-intent';
 import { orchestrateFromIntent } from '@/lib/engines/orchestrator';
@@ -125,6 +125,10 @@ export function loadMemoryContext(contextResult: any) {
 
 export async function routeUploads(params: any) {
   const { hasUploadedFile, imageBase64, imageMimeType, documentBase64, documentMimeType, orchestratorResult, uploadIntent, userId, message, profilePreview, messageRequestId, activeGoalId, sessionId, supabase, finalizeAssistantTurnFn, encoder, systemPrompt, requestId } = params;
+
+  if (hasUploadedFile && !featureFlags.visionUploads()) {
+    return visionUploadsDisabledResponse(encoder);
+  }
 
   if (imageBase64 && imageMimeType && !documentBase64) {
     return handleVisionUpload({ userId, message, imageBase64, imageMimeType, systemPrompt, finalizeAssistantTurn: finalizeAssistantTurnFn, encoder });

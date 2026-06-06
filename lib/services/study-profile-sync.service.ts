@@ -1,4 +1,6 @@
 import { invalidateSessionCard } from '@/lib/services/session-card-invalidation';
+import { recordMasteryEvidence } from '@/lib/engines/mastery-updater';
+import { notifyWeakConceptPlanChange, type WeakConceptPlanChange } from '@/lib/services/learning-plan-updates.service';
 
 type PracticeSyncItem = {
   attemptId?: string | null;
@@ -31,6 +33,7 @@ export async function syncStudyProfileAfterPracticeAttempt(
 ) {
   const wrongItems = input.items.filter((item) => item.isCorrect === false);
   const conceptsTouched = new Set<string>();
+  const weakConcepts: WeakConceptPlanChange[] = [];
   let mistakesCreated = 0;
 
   for (const item of wrongItems.slice(0, 25)) {
@@ -82,6 +85,27 @@ export async function syncStudyProfileAfterPracticeAttempt(
         })
         .eq('id', conceptId)
         .eq('user_id', input.userId);
+
+      await recordMasteryEvidence({
+        userId: input.userId,
+        conceptId,
+        evidenceType: 'practice_wrong',
+        source: 'practice',
+        sourceId: item.attemptId ?? item.practiceItemId ?? `${input.practiceSetId}:${conceptId}`,
+        evidence: `Wrong practice answer on ${conceptName}.`,
+        confidence: 0.8,
+        client: supabase,
+      }).catch(() => undefined);
+
+      weakConcepts.push({
+        conceptId,
+        conceptName,
+        subject: item.subject ?? null,
+        chapter: item.chapter ?? item.topic ?? null,
+        topic: item.topic ?? conceptName,
+        reason: 'wrong practice answer',
+        sourceId: item.attemptId ?? item.practiceItemId ?? input.practiceSetId,
+      });
     }
 
     let mistakeQuery = supabase
@@ -145,10 +169,26 @@ export async function syncStudyProfileAfterPracticeAttempt(
     goalId: input.goalId ?? null,
   }).catch(() => undefined);
 
+  const planUpdate = await notifyWeakConceptPlanChange({
+    userId: input.userId,
+    goalId: input.goalId ?? null,
+    weakConcepts,
+    sourceType: 'practice_attempt',
+    sourceEventId: input.practiceSetId,
+    client: supabase,
+  }).catch(() => ({
+    cardsCreated: 0,
+    tasksCreated: 0,
+    notified: false,
+  }));
+
   return {
     wrongItems: wrongItems.length,
     conceptsTouched: conceptsTouched.size,
     mistakesCreated,
+    cardsCreated: planUpdate.cardsCreated,
+    tasksCreated: planUpdate.tasksCreated,
+    notificationSent: planUpdate.notified,
     progressScore: scorePct,
     sessionCardInvalidated: true,
   };

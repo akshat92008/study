@@ -1,4 +1,4 @@
-import { describe, expect, it, vi, beforeEach } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { execSync } from 'child_process';
 import path from 'path';
 
@@ -7,7 +7,7 @@ describe('Environment Preflight Hardening', () => {
 
   const runPreflight = (envOverrides: Record<string, string>) => {
     try {
-      const result = execSync(`npx ts-node ${scriptPath}`, {
+      const result = execSync(`npx tsx ${scriptPath}`, {
         env: { ...process.env, ...envOverrides, SKIP_ENV_VALIDATION: '0' },
         encoding: 'utf8',
         stdio: 'pipe',

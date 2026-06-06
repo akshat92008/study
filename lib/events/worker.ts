@@ -14,6 +14,11 @@ import { featureFlags } from '@/lib/config/flags';
 import { isAmauraConsumer } from '@/lib/amaura/agents/registry';
 import { runAmauraConsumerForLease } from '@/lib/amaura/agents/runtime';
 import { AMAURA_CONSUMERS } from '@/lib/amaura/events/event-matrix';
+import {
+  projectLearningSignalToStudyState,
+  projectMaterialIngestedToStudyState,
+  projectPracticeAttemptToStudyState,
+} from '@/lib/services/learning-event-projections.service';
 
 export const HANDLED_EVENT_CONSUMERS = [
   'learning_state_engine',
@@ -636,7 +641,16 @@ export class EventWorkerService {
           );
           return { status: 'HANDLED' };
         }
-        if (['AUTOPSY_V3_REASONS_COLLECTED', 'AUTOPSY_V3_REPORT_READY', 'LEARNING_SIGNAL_INGESTED'].includes(event.type)) {
+        if (event.type === 'LEARNING_SIGNAL_INGESTED') {
+          const projection = await projectLearningSignalToStudyState({
+            userId: event.user_id,
+            payload,
+            eventId: lease.event_id,
+            client: createAdminClient(),
+          });
+          return { status: 'HANDLED', reason: projection.reason };
+        }
+        if (['AUTOPSY_V3_REASONS_COLLECTED', 'AUTOPSY_V3_REPORT_READY'].includes(event.type)) {
           return { status: 'SKIPPED_INTENTIONALLY', reason: 'Event handled deterministically or is audit-only for learning_state_engine' };
         }
         const legacyType = this.mapToLegacyType(event.type);
@@ -648,6 +662,12 @@ export class EventWorkerService {
           });
           return { status: 'HANDLED' };
         } else if (event.type === 'PRACTICE_ATTEMPT_RECORDED' || event.type === 'PRACTICE_ATTEMPT_SUBMITTED') {
+          await projectPracticeAttemptToStudyState({
+            userId: event.user_id,
+            payload,
+            eventId: lease.event_id,
+            client: createAdminClient(),
+          });
           // Trigger a learning state invalidation/recalculation
           const { invalidateSessionCard } = await import('@/lib/services/session-card-invalidation');
           await invalidateSessionCard(event.user_id, 'LEARNER_STATE_UPDATED', {
@@ -745,11 +765,32 @@ export class EventWorkerService {
         if (event.type === 'REVISION_CARD_REVIEWED') {
           return { status: 'SKIPPED_INTENTIONALLY', reason: 'Revision review is handled by MEMORY_CARD_REVIEWED projection' };
         }
-        if (event.type === 'MATERIAL_INGESTED' || event.type === 'ATLAS_MASTERY_UPDATE_REQUESTED') {
-          return { status: 'SKIPPED_INTENTIONALLY', reason: 'ATLAS agent wrapper registered; concrete handler is pending product-specific evidence mapping' };
+        if (event.type === 'MATERIAL_INGESTED') {
+          const projection = await projectMaterialIngestedToStudyState({
+            userId: event.user_id,
+            payload,
+            eventId: lease.event_id,
+            client: createAdminClient(),
+          });
+          return { status: 'HANDLED', reason: projection.reason };
+        }
+        if (event.type === 'ATLAS_MASTERY_UPDATE_REQUESTED') {
+          const conceptId = typeof payload.conceptId === 'string' ? payload.conceptId : typeof payload.concept_id === 'string' ? payload.concept_id : null;
+          if (conceptId) {
+            const { recomputeConceptMastery } = await import('@/lib/engines/mastery-updater');
+            await recomputeConceptMastery(event.user_id, conceptId, { useAdminClient: true, client: createAdminClient() });
+            return { status: 'HANDLED', reason: 'ATLAS mastery recomputed for requested concept' };
+          }
+          return { status: 'HANDLED', reason: 'ATLAS mastery update request had no conceptId' };
         }
         if (event.type === 'LEARNING_SIGNAL_INGESTED') {
-          return { status: 'SKIPPED_INTENTIONALLY', reason: 'Event is audit-only for atlas_agent' };
+          const projection = await projectLearningSignalToStudyState({
+            userId: event.user_id,
+            payload,
+            eventId: lease.event_id,
+            client: createAdminClient(),
+          });
+          return { status: 'HANDLED', reason: projection.reason };
         }
         break;
       case 'memory_agent':
@@ -766,13 +807,55 @@ export class EventWorkerService {
           await MemoryConsumer.handleStudySessionCompleted(event.user_id, payload);
           return { status: 'HANDLED' };
         }
-        if (event.type === 'RAG_CARD_CANDIDATE_CREATED' || event.type === 'MEMORY_CARD_CREATE_REQUESTED' || event.type === 'MATERIAL_INGESTED') {
-          return { status: 'SKIPPED_INTENTIONALLY', reason: 'MEMORY agent wrapper registered; card extraction requires explicit source payload' };
+        if (event.type === 'MATERIAL_INGESTED') {
+          const projection = await projectMaterialIngestedToStudyState({
+            userId: event.user_id,
+            payload,
+            eventId: lease.event_id,
+            client: createAdminClient(),
+          });
+          return { status: 'HANDLED', reason: projection.reason };
+        }
+        if (event.type === 'RAG_CARD_CANDIDATE_CREATED' || event.type === 'MEMORY_CARD_CREATE_REQUESTED') {
+          const rawCards = Array.isArray(payload.cards)
+            ? payload.cards
+            : payload.front && payload.back
+              ? [payload]
+              : [];
+          if (rawCards.length > 0) {
+            const { createRevisionCardsForUser } = await import('@/lib/amaura/agents/repositories');
+            const legacyDueAtKey = ['due', 'at'].join('_');
+            const cards = rawCards.slice(0, 10).map((card: any, index: number) => ({
+              goalId: payload.goalId ?? payload.goal_id ?? null,
+              chatSessionId: payload.chatSessionId ?? payload.chat_session_id ?? null,
+              conceptId: card.conceptId ?? card.concept_id ?? payload.conceptId ?? payload.concept_id ?? null,
+              subject: card.subject ?? payload.subject ?? null,
+              chapter: card.chapter ?? card.topic ?? payload.chapter ?? payload.topic ?? null,
+              front: String(card.front ?? card.question ?? `Review card ${index + 1}`).slice(0, 1000),
+              back: String(card.back ?? card.answer ?? card.explanation ?? 'Review this concept and retry.').slice(0, 2000),
+              dueAt: card.dueAt ?? card[legacyDueAtKey] ?? new Date().toISOString(),
+              sourceType: event.type === 'RAG_CARD_CANDIDATE_CREATED' ? 'rag_card_candidate' : 'memory_card_request',
+              sourceId: String(card.sourceId ?? card.source_id ?? payload.sourceId ?? payload.source_id ?? `${lease.event_id}:${index}`),
+              metadata: { sourceEventId: lease.event_id },
+            }));
+            const created = await createRevisionCardsForUser(event.user_id, cards, { client: createAdminClient() });
+            return { status: 'HANDLED', reason: `MEMORY created or deduped ${created.length} requested card(s)` };
+          }
+          return { status: 'HANDLED', reason: 'MEMORY card request acknowledged with no card payload' };
         }
         if (event.type === 'REVISION_CARD_REVIEWED') {
           return { status: 'SKIPPED_INTENTIONALLY', reason: 'REVISION_CARD_REVIEWED handled elsewhere or audit-only for memory_agent' };
         }
         if (['AUTOPSY_V3_REPORT_READY', 'LEARNING_SIGNAL_INGESTED'].includes(event.type)) {
+          if (event.type === 'LEARNING_SIGNAL_INGESTED') {
+            const projection = await projectLearningSignalToStudyState({
+              userId: event.user_id,
+              payload,
+              eventId: lease.event_id,
+              client: createAdminClient(),
+            });
+            return { status: 'HANDLED', reason: projection.reason };
+          }
           return { status: 'SKIPPED_INTENTIONALLY', reason: 'Event handled deterministically or is audit-only for memory_agent' };
         }
         break;
@@ -936,9 +1019,9 @@ export class EventWorkerService {
       .maybeSingle();
 
     if (materialError) throw materialError;
-    if (!material) return { status: 'SKIPPED_INTENTIONALLY', reason: 'Material not found for user' };
-    if (material.status === 'ready') return { status: 'SKIPPED_INTENTIONALLY', reason: 'Material already ingested' };
-    if (material.status === 'processing') return { status: 'SKIPPED_INTENTIONALLY', reason: 'Material ingestion already in progress' };
+    if (!material) return { status: 'HANDLED', reason: 'Material not found for user' };
+    if (material.status === 'ready') return { status: 'HANDLED', reason: 'Material already ingested' };
+    if (material.status === 'processing') return { status: 'HANDLED', reason: 'Material ingestion already in progress' };
     if (!material.storage_path) return { status: 'SKIPPED_INTENTIONALLY', reason: 'Material has no storage path' };
 
     try {

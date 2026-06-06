@@ -3,11 +3,6 @@ import { createClient } from '@supabase/supabase-js';
 import { jsonWithRequestId } from '@/lib/autopsy-v3/permissions';
 import { validateCronRequest } from '@/lib/middleware/cronAuth';
 
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL || '',
-  process.env.SUPABASE_SERVICE_ROLE_KEY || ''
-);
-
 export async function GET(req: NextRequest) {
   const reqId = req.headers.get('x-request-id') || crypto.randomUUID();
   
@@ -15,6 +10,11 @@ export async function GET(req: NextRequest) {
   if (authError) return authError;
 
   try {
+    const supabaseAdmin = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+      process.env.SUPABASE_SERVICE_ROLE_KEY || ''
+    );
+
     // 1. Pending Events
     const { count: pendingEvents } = await supabaseAdmin
       .from('event_queue')

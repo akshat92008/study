@@ -101,11 +101,13 @@ describe('Upload Route Safety Contracts', () => {
     expect(routeCode).toContain('daily_upload_limit_reached');
   });
 
-  it('queues an ingestion job instead of blocking request', () => {
+  it('ingests small uploads inline and keeps a queued fallback', () => {
     const routeCode = read('app/api/materials/upload/route.ts');
+    expect(routeCode).toContain('INLINE_INGESTION_MAX_BYTES');
+    expect(routeCode).toContain('await ingestStudyMaterial({');
     expect(routeCode).toContain("from('rag_ingestion_jobs')");
     expect(routeCode).toContain('status: 202');
+    expect(routeCode).toContain("status: ingestionResult?.status === 'ready' ? 201 : 202");
     expect(routeCode).toContain("type: 'MATERIAL_UPLOADED'");
   });
 });
-

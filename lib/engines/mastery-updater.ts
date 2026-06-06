@@ -138,6 +138,13 @@ function hashKey(value: unknown): string {
     .slice(0, 32);
 }
 
+function uuidOrNull(value: string | undefined | null): string | null {
+  if (!value) return null;
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value)
+    ? value
+    : null;
+}
+
 export async function recomputeConceptMastery(
   userId: string,
   conceptId: string,
@@ -279,7 +286,7 @@ export async function recordMasteryEvidence(params: {
       new_mastery: oldMastery,
       source: params.source,
       source_id: params.sourceId ?? null,
-      source_event_id: params.sourceEventId ?? null,
+      source_event_id: uuidOrNull(params.sourceEventId),
       evidence: params.evidence ?? null,
       evidence_type: params.evidenceType,
       weight,
@@ -300,8 +307,8 @@ export async function recordMasteryEvidence(params: {
     user_id: params.userId,
     concept_id: params.conceptId,
     source_type: params.source,
-    source_id: params.sourceId ?? null,
-    source_event_id: params.sourceEventId ?? null,
+    source_id: uuidOrNull(params.sourceId),
+    source_event_id: uuidOrNull(params.sourceEventId),
     previous_mastery: result.oldScore,
     delta: result.delta,
     new_mastery: result.newScore,

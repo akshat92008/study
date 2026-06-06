@@ -34,11 +34,11 @@ describe('Autopsy Upload Gating Contracts', () => {
     }
   });
 
-  it('Chat route checks visionUploads flag, not autopsyUploads', () => {
-    const chatRoutePath = path.join(root, 'app', 'api', 'ai', 'chat', 'route.ts');
-    const chatRoute = fs.readFileSync(chatRoutePath, 'utf8');
+  it('Chat upload routing checks visionUploads flag, not autopsyUploads', () => {
+    const chatPipelinePath = path.join(root, 'lib', 'chat', 'pipeline.ts');
+    const chatPipeline = fs.readFileSync(chatPipelinePath, 'utf8');
     
-    expect(chatRoute).toContain('featureFlags.visionUploads()');
-    expect(chatRoute).not.toContain('featureFlags.autopsyUploads()');
+    expect(chatPipeline).toContain('featureFlags.visionUploads()');
+    expect(chatPipeline).not.toContain('featureFlags.autopsyUploads()');
   });
 });

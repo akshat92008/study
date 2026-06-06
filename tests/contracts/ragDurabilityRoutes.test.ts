@@ -9,15 +9,18 @@ function read(file: string): string {
 }
 
 describe('RAG durable route contracts', () => {
-  it('keeps normal chat material upload off inline ingestion', () => {
+  it('ingests small chat uploads inline while preserving queued fallback', () => {
     const chatRoute = read('app/api/ai/chat/route.ts');
     const uploadsRoute = read('lib/chat/uploads.ts');
     const combined = chatRoute + uploadsRoute;
 
-    expect(combined).not.toContain('ingestStudyMaterial');
+    expect(combined).toContain('INLINE_INGESTION_MAX_BYTES');
+    expect(combined).toContain('shouldIngestInline');
+    expect(combined).toContain('await ingestStudyMaterial({');
     expect(combined).toContain("type: 'MATERIAL_UPLOADED'");
     expect(combined).toContain(".from('rag_ingestion_jobs')");
     expect(combined).toContain("onConflict: 'user_id,material_id,idempotency_key'");
+    expect(combined).toContain('Source uploaded and indexed. I extracted');
     expect(combined).toContain('Source uploaded and queued for indexing');
   });
 
