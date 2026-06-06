@@ -5,7 +5,7 @@ import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 import Badge from '@/components/ui/Badge';
-import { Database, Plus, FileText, Loader2, Sparkles, Headphones } from 'lucide-react';
+import { Database, Plus, FileText, Loader2, Sparkles, Headphones, RefreshCw } from 'lucide-react';
 import { AudioPlayer } from './AudioPlayer';
 import { useAppStore } from '@/stores/appStore';
 
@@ -14,9 +14,10 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
   const [materials, setMaterials] = useState(initialMaterials);
   const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState<{ type: 'error' | 'success', msg: string } | null>(null);
+  const [status, setStatus] = useState<{ type: 'error' | 'success' | 'info', msg: string } | null>(null);
   const [audioResponse, setAudioResponse] = useState<{ script: string; audioDataUrl: string | null; materialTitle: string } | null>(null);
   const [generatingPodcastId, setGeneratingPodcastId] = useState<string | null>(null);
+  const [reprocessingId, setReprocessingId] = useState<string | null>(null);
   const activeGoal = learningGoals.find(goal => goal.id === activeGoalId);
 
   const loadMaterials = useCallback(async () => {
@@ -58,6 +59,37 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
     }
   }
 
+  async function handleReprocess(materialId: string) {
+    setReprocessingId(materialId);
+    setStatus(null);
+    try {
+      const response = await fetch(`/api/materials/${materialId}/reprocess`, {
+        method: 'POST',
+      });
+      const data = await response.json().catch(() => null);
+      if (!response.ok || data?.error) {
+        setStatus({ type: 'error', msg: data?.message || data?.error || 'Unable to process this source.' });
+        return;
+      }
+
+      if (data.status === 'ready') {
+        setStatus({ type: 'success', msg: `Source ready: ${data.chunksProcessed || 0} chunks indexed.` });
+      } else if (data.status === 'failed') {
+        setStatus({ type: 'error', msg: 'Material indexing failed. Try another file or re-upload this source.' });
+      } else {
+        setStatus({ type: 'info', msg: 'Source is queued for indexing. Amaura will use it once chunks are ready.' });
+      }
+
+      await loadMaterials();
+      window.dispatchEvent(new Event('refresh-dashboard'));
+      window.dispatchEvent(new Event('refresh-goal-context'));
+    } catch (err: any) {
+      setStatus({ type: 'error', msg: err.message || 'Error processing source' });
+    } finally {
+      setReprocessingId(null);
+    }
+  }
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
@@ -89,8 +121,12 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
         setStatus({ type: 'error', msg: res.error || 'Upload failed' });
       } else if (res.material?.status === 'failed') {
         setStatus({ type: 'error', msg: 'Material indexing failed.' });
-      } else {
+      } else if (res.material?.status === 'ready') {
         setStatus({ type: 'success', msg: `Source ready: ${res.chunksProcessed || 0} chunks indexed.` });
+        setShowForm(false);
+        await loadMaterials();
+      } else {
+        setStatus({ type: 'info', msg: 'Source uploaded and queued for indexing. Use Process now if it stays queued.' });
         setShowForm(false);
         await loadMaterials();
       }
@@ -119,14 +155,24 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
       </div>
 
       {status && (
+        (() => {
+          const palette = status.type === 'error'
+            ? { background: 'var(--danger-glow)', color: 'var(--danger)', border: 'var(--danger-dim)' }
+            : status.type === 'success'
+              ? { background: 'var(--success-glow)', color: 'var(--success)', border: 'var(--success-dim)' }
+              : { background: 'rgba(20,184,166,0.1)', color: 'var(--accent-cyan)', border: 'rgba(20,184,166,0.35)' };
+
+          return (
         <div style={{
           padding: 'var(--sp-3)', borderRadius: 'var(--radius-md)',
-          background: status.type === 'error' ? 'var(--danger-glow)' : 'var(--success-glow)',
-          color: status.type === 'error' ? 'var(--danger)' : 'var(--success)',
-          border: `1px solid ${status.type === 'error' ? 'var(--danger-dim)' : 'var(--success-dim)'}`
+          background: palette.background,
+          color: palette.color,
+          border: `1px solid ${palette.border}`
         }}>
           {status.msg}
         </div>
+          );
+        })()
       )}
 
       {/* Upload Form */}
@@ -219,6 +265,24 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
                       </>
                     )}
                   </Button>
+                  {mat.status !== 'ready' && (
+                    <Button
+                      size="sm"
+                      variant="secondary"
+                      disabled={reprocessingId !== null}
+                      onClick={() => handleReprocess(mat.id)}
+                    >
+                      {reprocessingId === mat.id ? (
+                        <>
+                          <Loader2 size={14} className="spin" style={{ animation: 'spin 1s linear infinite' }} /> Processing...
+                        </>
+                      ) : (
+                        <>
+                          <RefreshCw size={14} /> Process now
+                        </>
+                      )}
+                    </Button>
+                  )}
                   <Badge color={mat.status === 'ready' ? 'cyan' : mat.status === 'failed' ? 'red' : 'yellow'}>
                     {mat.status === 'ready' ? 'Ready' : mat.status === 'failed' ? 'Failed' : mat.status === 'uploaded' ? 'Uploaded' : mat.status === 'queued' ? 'Queued' : 'Processing'}
                   </Badge>

@@ -51,12 +51,14 @@ EXPLANATION: The nucleus stores DNA.
       fullResponse: text
     };
 
-    await PracticeService.extractAndStorePracticeArtifacts(mockSupabase, data);
+    const result = await PracticeService.extractAndStorePracticeArtifacts(mockSupabase, data);
+    expect(result.practiceSetIds).toEqual(['set-123']);
     
     expect(mockSupabase.from).toHaveBeenCalledWith('practice_sets');
     expect(mockSupabase.insert).toHaveBeenCalledWith({
       user_id: 'user-1',
       chat_session_id: 'session-1',
+      goal_id: null,
       message_id: 'msg-1',
       topic: 'Cell Biology',
       subject: 'Biology',
@@ -95,7 +97,8 @@ BACK: Nucleus
       fullResponse: text
     };
 
-    await PracticeService.extractAndStorePracticeArtifacts(mockSupabase, data);
+    const result = await PracticeService.extractAndStorePracticeArtifacts(mockSupabase, data);
+    expect(result.flashcardSetIds).toEqual(['set-123']);
     
     expect(mockSupabase.from).toHaveBeenCalledWith('practice_sets');
     expect(mockSupabase.insert).toHaveBeenCalledWith(expect.objectContaining({

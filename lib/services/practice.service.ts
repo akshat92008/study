@@ -4,6 +4,7 @@ import { logger } from '@/lib/utils/logger';
 export interface PracticeSetData {
   userId: string;
   chatSessionId?: string;
+  goalId?: string | null;
   messageId?: string;
   fullResponse: string;
   source?: 'mind' | 'rag';
@@ -11,9 +12,18 @@ export interface PracticeSetData {
   sourceChunkIds?: string[];
 }
 
+export interface PracticeExtractionResult {
+  practiceSetIds: string[];
+  flashcardSetIds: string[];
+}
+
 export class PracticeService {
-  static async extractAndStorePracticeArtifacts(supabase: SupabaseClient, data: PracticeSetData) {
+  static async extractAndStorePracticeArtifacts(supabase: SupabaseClient, data: PracticeSetData): Promise<PracticeExtractionResult> {
     const { userId, chatSessionId, messageId, fullResponse } = data;
+    const result: PracticeExtractionResult = {
+      practiceSetIds: [],
+      flashcardSetIds: [],
+    };
     
     // Regex for finding artifacts
     const artifactRegex = /<artifact([^>]*)>([\s\S]*?)<\/artifact>/g;
@@ -35,11 +45,15 @@ export class PracticeService {
       const subject = attrs.subject;
       
       if (type === 'practice-test' || type === 'mcq-set') {
-        await this.storePracticeTest(supabase, userId, chatSessionId, messageId, topic, subject, content, data);
+        const practiceSetId = await this.storePracticeTest(supabase, userId, chatSessionId, messageId, topic, subject, content, data);
+        if (practiceSetId) result.practiceSetIds.push(practiceSetId);
       } else if (type === 'flashcard-set') {
-        await this.storeFlashcardSet(supabase, userId, chatSessionId, messageId, topic, subject, content, data);
+        const flashcardSetId = await this.storeFlashcardSet(supabase, userId, chatSessionId, messageId, topic, subject, content, data);
+        if (flashcardSetId) result.flashcardSetIds.push(flashcardSetId);
       }
     }
+
+    return result;
   }
 
   private static async storePracticeTest(
@@ -51,20 +65,21 @@ export class PracticeService {
     subject: string | undefined, 
     content: string,
     artifactContext: PracticeSetData
-  ) {
+  ): Promise<string | null> {
     // Check if it already exists for this messageId to prevent duplicates on retries
     if (messageId) {
       const { data: existing } = await supabase
         .from('practice_sets')
         .select('id')
+        .eq('user_id', userId)
         .eq('message_id', messageId)
         .eq('set_type', 'mcq')
         .maybeSingle();
-      if (existing) return;
+      if (existing?.id) return existing.id;
     }
 
     const questions = this.parseQuestions(content);
-    if (questions.length === 0) return;
+    if (questions.length === 0) return null;
 
     // Create practice set
     const { data: practiceSet, error: setError } = await supabase
@@ -72,6 +87,7 @@ export class PracticeService {
       .insert({
         user_id: userId,
         chat_session_id: chatSessionId,
+        goal_id: artifactContext.goalId ?? null,
         message_id: messageId,
         topic,
         subject,
@@ -83,7 +99,7 @@ export class PracticeService {
 
     if (setError || !practiceSet) {
       logger.error('Failed to create practice set', setError);
-      return;
+      return null;
     }
 
     // Prepare items
@@ -107,6 +123,8 @@ export class PracticeService {
     if (itemsError) {
       logger.error('Failed to create practice items (mcq)', itemsError);
     }
+
+    return practiceSet.id;
   }
 
   private static async storeFlashcardSet(
@@ -118,25 +136,27 @@ export class PracticeService {
     subject: string | undefined, 
     content: string,
     artifactContext: PracticeSetData
-  ) {
+  ): Promise<string | null> {
     if (messageId) {
       const { data: existing } = await supabase
         .from('practice_sets')
         .select('id')
+        .eq('user_id', userId)
         .eq('message_id', messageId)
         .eq('set_type', 'flashcard')
         .maybeSingle();
-      if (existing) return;
+      if (existing?.id) return existing.id;
     }
 
     const cards = this.parseFlashcards(content);
-    if (cards.length === 0) return;
+    if (cards.length === 0) return null;
 
     const { data: practiceSet, error: setError } = await supabase
       .from('practice_sets')
       .insert({
         user_id: userId,
         chat_session_id: chatSessionId,
+        goal_id: artifactContext.goalId ?? null,
         message_id: messageId,
         topic,
         subject,
@@ -148,7 +168,7 @@ export class PracticeService {
 
     if (setError || !practiceSet) {
       logger.error('Failed to create flashcard set', setError);
-      return;
+      return null;
     }
 
     const items = cards.map((c, idx) => ({
@@ -169,6 +189,8 @@ export class PracticeService {
     if (itemsError) {
       logger.error('Failed to create practice items (flashcard)', itemsError);
     }
+
+    return practiceSet.id;
   }
 
   private static parseQuestions(content: string) {

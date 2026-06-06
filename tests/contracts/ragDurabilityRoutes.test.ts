@@ -24,13 +24,15 @@ describe('RAG durable route contracts', () => {
     expect(combined).toContain('Source uploaded and queued for indexing');
   });
 
-  it('queues user material reprocess instead of downloading and ingesting inline', () => {
+  it('ingests small user material reprocess inline with queued fallback', () => {
     const reprocessRoute = read('app/api/materials/[id]/reprocess/route.ts');
 
-    expect(reprocessRoute).not.toContain('ingestStudyMaterial');
-    expect(reprocessRoute).not.toContain(".download(");
+    expect(reprocessRoute).toContain('INLINE_REPROCESS_MAX_BYTES');
+    expect(reprocessRoute).toContain('ingestStudyMaterial');
+    expect(reprocessRoute).toContain(".download(");
     expect(reprocessRoute).toContain("type: 'MATERIAL_INGESTION_REQUESTED'");
     expect(reprocessRoute).toContain(".from('rag_ingestion_jobs')");
     expect(reprocessRoute).toContain('status: 202');
+    expect(reprocessRoute).toContain("result.status === 'ready' ? 200 : 202");
   });
 });

@@ -42,6 +42,7 @@ export interface ChatSideEffectsInput {
   assistant_message_id?: string;
   user_message_id?: string;
   source_type?: string;
+  goalId?: string | null;
 }
 
 export async function processChatSideEffects(input: ChatSideEffectsInput) {
@@ -59,6 +60,7 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
     assistant_message_id,
     user_message_id,
     source_type,
+    goalId,
   } = input;
 
   // ⚠️  INVARIANT: The route persists the assistant message before publishing this event.
@@ -152,6 +154,7 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
     await PracticeService.extractAndStorePracticeArtifacts(supabase, {
       userId,
       chatSessionId: sessionId,
+      goalId: goalId ?? mindContext?.activeGoal?.id ?? null,
       messageId: assistant_message_id,
       fullResponse,
       source: ragContext?.grounded ? 'rag' : 'mind',

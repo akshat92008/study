@@ -8,16 +8,129 @@ import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { checkIdempotency } from '@/lib/middleware/idempotency';
 import { ingestLearningSignals } from '@/lib/learning-signals/ingest';
 import { syncStudyProfileAfterPracticeAttempt } from '@/lib/services/study-profile-sync.service';
+import { PracticeService } from '@/lib/services/practice.service';
 
 const AttemptsSchema = z.object({
   messageId: z.string().optional(),
   practiceSetId: z.string().optional(),
+  messageContent: z.string().optional(),
+  chatSessionId: z.string().optional().nullable(),
+  goalId: z.string().optional().nullable(),
   answers: z.array(z.object({
     position: z.number().int().positive(),
     answer: z.string(),
     timeTakenSeconds: z.number().optional()
   }))
 });
+
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+async function findPracticeSet(
+  supabase: any,
+  userId: string,
+  identifiers: { practiceSetId?: string; messageId?: string }
+) {
+  if (identifiers.practiceSetId) {
+    const { data, error } = await supabase
+      .from('practice_sets')
+      .select('*')
+      .eq('id', identifiers.practiceSetId)
+      .eq('user_id', userId)
+      .maybeSingle();
+    if (error) throw error;
+    return data ?? null;
+  }
+
+  if (!identifiers.messageId || !UUID_RE.test(identifiers.messageId)) {
+    return null;
+  }
+
+  const { data, error } = await supabase
+    .from('practice_sets')
+    .select('*')
+    .eq('message_id', identifiers.messageId)
+    .eq('set_type', 'mcq')
+    .eq('user_id', userId)
+    .maybeSingle();
+  if (error) throw error;
+  return data ?? null;
+}
+
+async function materializePracticeSetFromChat(
+  supabase: any,
+  userId: string,
+  input: {
+    messageId?: string;
+    messageContent?: string;
+    chatSessionId?: string | null;
+    goalId?: string | null;
+  }
+) {
+  const safeMessageId = input.messageId && UUID_RE.test(input.messageId) ? input.messageId : undefined;
+  let fullResponse = input.messageContent?.trim() || '';
+  let chatSessionId = input.chatSessionId;
+  let goalId = input.goalId ?? null;
+  let source: 'mind' | 'rag' = 'mind';
+  let sourceMaterialIds: string[] = [];
+  let sourceChunkIds: string[] = [];
+
+  if (safeMessageId) {
+    const { data: message, error } = await supabase
+      .from('chat_messages')
+      .select('id, session_id, content, metadata')
+      .eq('id', safeMessageId)
+      .eq('user_id', userId)
+      .eq('role', 'assistant')
+      .maybeSingle();
+    if (error) throw error;
+
+    if (message?.content) {
+      fullResponse = message.content;
+      chatSessionId = message.session_id ?? chatSessionId;
+      const ragChunks = Array.isArray(message.metadata?.ragChunks) ? message.metadata.ragChunks : [];
+      source = ragChunks.length > 0 ? 'rag' : 'mind';
+      sourceMaterialIds = ragChunks.map((chunk: any) => chunk.materialId).filter(Boolean);
+      sourceChunkIds = ragChunks.map((chunk: any) => chunk.id).filter(Boolean);
+    }
+  }
+
+  if (!goalId && chatSessionId && UUID_RE.test(chatSessionId)) {
+    const { data: session, error } = await supabase
+      .from('chat_sessions')
+      .select('goal_id')
+      .eq('id', chatSessionId)
+      .eq('user_id', userId)
+      .maybeSingle();
+    if (error) throw error;
+    goalId = session?.goal_id ?? null;
+  }
+
+  if (!fullResponse || !/<artifact[^>]+type=["'](?:practice-test|mcq-set)["']/i.test(fullResponse)) {
+    return null;
+  }
+
+  const extraction = await PracticeService.extractAndStorePracticeArtifacts(supabase as any, {
+    userId,
+    chatSessionId: chatSessionId ?? undefined,
+    goalId,
+    messageId: safeMessageId,
+    fullResponse,
+    source,
+    sourceMaterialIds,
+    sourceChunkIds,
+  });
+
+  const practiceSetId = extraction.practiceSetIds[0];
+  if (practiceSetId) {
+    return findPracticeSet(supabase, userId, { practiceSetId });
+  }
+
+  if (safeMessageId) {
+    return findPracticeSet(supabase, userId, { messageId: safeMessageId });
+  }
+
+  return null;
+}
 
 export async function POST(req: NextRequest) {
   const requestId = getRequestId(req);
@@ -53,24 +166,30 @@ export async function POST(req: NextRequest) {
       return apiErrorResponse('invalid_request', { status: 400, message: 'Invalid payload', requestId });
     }
 
-    const { messageId, practiceSetId, answers } = parsed.data;
+    const { messageId, practiceSetId, messageContent, chatSessionId, goalId, answers } = parsed.data;
 
     if (!practiceSetId && !messageId) {
-      return apiErrorResponse('invalid_request', { status: 400, message: 'Either practiceSetId or messageId is required', requestId });
+      return apiErrorResponse('invalid_request', { status: 400, message: 'Either practiceSetId or messageId is required.', requestId });
     }
 
     // Resolve practice set
-    let set;
-    if (practiceSetId) {
-      const { data } = await supabase.from('practice_sets').select('*').eq('id', practiceSetId).eq('user_id', user.id).single();
-      set = data;
-    } else {
-      const { data } = await supabase.from('practice_sets').select('*').eq('message_id', messageId).eq('set_type', 'mcq').eq('user_id', user.id).single();
-      set = data;
+    let set = await findPracticeSet(supabase, user.id, { practiceSetId, messageId });
+
+    if (!set && messageId) {
+      set = await materializePracticeSetFromChat(supabase, user.id, {
+        messageId,
+        messageContent,
+        chatSessionId,
+        goalId,
+      });
     }
 
     if (!set) {
-      return apiErrorResponse('not_found', { status: 404, message: 'Practice set not found', requestId });
+      return apiErrorResponse('quiz_still_indexing', {
+        status: 409,
+        message: 'Amaura is still indexing this quiz. Wait a moment and submit again.',
+        requestId,
+      });
     }
 
     // Fetch items to check correctness
@@ -223,6 +342,7 @@ export async function POST(req: NextRequest) {
       success: true,
       attempts: persistedAttempts ?? [],
       metrics: { correctCount, wrongCount, wrongConceptIds, wrongConceptNames },
+      goalId: set.goal_id ?? goalId ?? null,
       profileSync,
     });
   } catch (error) {

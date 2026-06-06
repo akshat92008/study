@@ -26,12 +26,43 @@ const DEFINITION_RE = /^(what is|define) ([a-z0-9 ]{2,30})\??$/i;
 
 function handleWeakTopics(mindContext: any): string | null {
   const weak = mindContext?.weakConcepts || [];
-  if (!weak || weak.length === 0) {
-    return "You don't have any weak topics flagged right now. Keep practicing!";
+  const mistakes = mindContext?.recentMistakes || [];
+  const struggles = mindContext?.recentPracticeStruggles || [];
+  const dueCards = mindContext?.topOverdueCards || [];
+
+  if (weak?.length > 0) {
+    const list = weak.slice(0, 5).map((w: any) => `- **${w.name}** (${w.subject || 'Mixed'})`).join('\n');
+    return `Based on your saved mastery state, these are your weakest topics right now:\n\n${list}\n\nYour next session should start with one focused repair set on the first topic.`;
   }
 
-  const list = weak.slice(0, 5).map((w: any) => `- **${w.name}** (${w.subject || 'Mixed'})`).join('\n');
-  return `Based on your recent performance, here are your weakest topics right now:\n\n${list}\n\nWould you like me to generate some practice questions for one of these?`;
+  if (mistakes?.length > 0 || struggles?.length > 0) {
+    const mistakeTopics = mistakes
+      .map((m: any) => ({
+        name: m.topic || m.chapter || m.category || 'Recent mistake',
+        subject: m.subject || 'Mixed',
+      }));
+    const struggleTopics = struggles
+      .map((s: any) => ({
+        name: s.conceptName || s.chapter || 'Practice struggle',
+        subject: s.subject || 'Mixed',
+      }));
+    const list = [...mistakeTopics, ...struggleTopics]
+      .filter((item, index, all) => all.findIndex(other => other.name === item.name && other.subject === item.subject) === index)
+      .slice(0, 5)
+      .map((item) => `- **${item.name}** (${item.subject})`)
+      .join('\n');
+    return `I do not have a separate weak-concept projection saved yet, but your recent mistakes point to these weak areas:\n\n${list}\n\nI am treating these as the next repair targets.`;
+  }
+
+  if (dueCards?.length > 0) {
+    const list = dueCards
+      .slice(0, 5)
+      .map((card: any) => `- ${card.front || card.topic || 'Due review card'}`)
+      .join('\n');
+    return `No weak topics are flagged yet, but these review cards are due now:\n\n${list}\n\nStart here and I will update weak areas from your next answers.`;
+  }
+
+  return 'I do not have weak topics saved for this goal yet. Submit a quiz or upload a source, and I will update this from your actual mistakes instead of guessing.';
 }
 
 function handleDailyStats(mindContext: any): string | null {

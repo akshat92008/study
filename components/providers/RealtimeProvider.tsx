@@ -5,6 +5,17 @@ import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { useAppStore } from '@/stores/appStore';
 
+const LEARNING_STATE_EVENTS = new Set([
+  'MATERIAL_UPLOADED',
+  'MATERIAL_INGESTED',
+  'LEARNING_SIGNAL_INGESTED',
+  'PRACTICE_ATTEMPT_RECORDED',
+  'PRACTICE_ATTEMPT_SUBMITTED',
+  'STUDY_SESSION_COMPLETED',
+  'REVISION_COMPLETED',
+  'SESSION_CARD_COMPLETED',
+]);
+
 export function RealtimeProvider({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const addToast = useAppStore((state) => state.addToast);
@@ -24,6 +35,17 @@ export function RealtimeProvider({ children }: { children: React.ReactNode }) {
       refreshTimeoutRef.current = setTimeout(() => {
         if (isMounted) router.refresh();
       }, 5000); // 5-second debounce prevents refresh storms
+    };
+
+    const refreshLearningState = () => {
+      const state = useAppStore.getState();
+      const goalId = state.activeGoalId;
+      Promise.allSettled([
+        state.loadLearningGoals(),
+        goalId ? state.loadGoalContext(goalId) : Promise.resolve(null),
+      ]).then(() => {
+        if (isMounted) state.loadDashboardForActiveGoal();
+      }).catch(() => undefined);
     };
 
     const setupRealtime = async () => {
@@ -54,6 +76,10 @@ export function RealtimeProvider({ children }: { children: React.ReactNode }) {
             const row = payload.new as any;
             if (!row) return;
             const { type, status } = row;
+
+            if (LEARNING_STATE_EVENTS.has(type)) {
+              refreshLearningState();
+            }
             
             // Handle different event types dynamically
             switch (type) {
@@ -67,6 +93,17 @@ export function RealtimeProvider({ children }: { children: React.ReactNode }) {
                 break;
               case 'STUDY_SESSION_COMPLETED':
                 addToast('Study session recorded. Daily snapshot updated.', 'success');
+                debouncedRefresh();
+                break;
+              case 'MATERIAL_INGESTED':
+                addToast('Source indexed. Amaura can use it in chat now.', 'success');
+                debouncedRefresh();
+                break;
+              case 'PRACTICE_ATTEMPT_RECORDED':
+                addToast('Practice results updated your weak areas.', 'success');
+                debouncedRefresh();
+                break;
+              case 'LEARNING_SIGNAL_INGESTED':
                 debouncedRefresh();
                 break;
               case 'MEMORY_CARD_REVIEWED':

@@ -1087,6 +1087,9 @@ export class EventWorkerService {
         ? payload.intent
         : { intent: 'GENERAL_CHAT' },
       metadataPayload: payload.metadataPayload,
+      goalId: typeof payload.goalId === 'string'
+        ? payload.goalId
+        : null,
       assistant_message_id: typeof payload.assistant_message_id === 'string'
         ? payload.assistant_message_id
         : undefined,

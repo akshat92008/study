@@ -13,6 +13,13 @@ describe('practice attempt DB idempotency', () => {
     expect(route).toContain('persistedAttempts');
   });
 
+  it('self-heals practice artifact indexing before recording attempts', () => {
+    expect(route).toContain('messageContent');
+    expect(route).toContain('materializePracticeSetFromChat');
+    expect(route).toContain('PracticeService.extractAndStorePracticeArtifacts');
+    expect(route).toContain('quiz_still_indexing');
+  });
+
   it('has a DB unique index as the source of truth', () => {
     expect(migration).toContain('practice_attempts_user_id_idempotency_key_idx');
     expect(migration).toContain('on public.practice_attempts(user_id, idempotency_key)');

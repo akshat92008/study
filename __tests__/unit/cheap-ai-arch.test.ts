@@ -160,6 +160,18 @@ describe('Cheap-First AI Architecture', () => {
       expect(res.response).toContain('Newton Laws');
     });
 
+    it('falls back to recent mistakes for weak topics when projections lag', async () => {
+      const mindContext = {
+        weakConcepts: [],
+        recentMistakes: [{ chapter: 'Cell Transport', subject: 'Biology', category: 'conceptual_gap' }],
+      };
+      const res = await tryRuleFirstResponse('user1', 'hey what are my weak topics?', mindContext);
+
+      expect(res.handled).toBe(true);
+      expect(res.response).toContain('Cell Transport');
+      expect(res.response).not.toContain("don't have any weak topics");
+    });
+
     it('signals to queue large MCQ requests', async () => {
       const mindContext = {};
       const res = await tryRuleFirstResponse('user1', 'give me 50 mcqs', mindContext);

@@ -10,6 +10,7 @@ import {
 import { useVoiceInteraction } from '@/hooks/useVoiceInteraction';
 import { GeneratedDocumentCard } from '@/components/documents/GeneratedDocumentCard';
 import { parseGeneratedDocument, looksLikeGeneratedDocument } from '@/lib/documents/parse-generated-document';
+import { useAppStore } from '@/stores/appStore';
 
 // ── TYPES ──────────────────────────────────────────────────────────────────────
 
@@ -136,6 +137,10 @@ function stripLatex(text: string): string {
     .replace(/[{}]/g, '')
     .replace(/\s+/g, ' ')
     .trim();
+}
+
+function escapeArtifactAttribute(value: string): string {
+  return value.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
 }
 
 function renderMarkdownInline(text: string, ragChunks?: any[]): React.ReactNode {
@@ -546,11 +551,15 @@ function parseQuestions(content: string): ParsedQuestion[] {
 
 function PracticeTestCard({ artifact, messageId }: { artifact: ParsedArtifact, messageId?: string }) {
   const questions = parseQuestions(artifact.content);
+  const chatSessionId = useAppStore(s => s.chatId);
+  const activeGoalId = useAppStore(s => s.activeGoalId);
   const [currentQ, setCurrentQ] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, string>>({});
   const [showExplanations, setShowExplanations] = useState<Record<number, boolean>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitSummary, setSubmitSummary] = useState<string | null>(null);
 
   const question = questions[currentQ];
   const selected = selectedAnswers[currentQ];
@@ -713,21 +722,60 @@ function PracticeTestCard({ artifact, messageId }: { artifact: ParsedArtifact, m
               onClick={async () => {
                 if (!messageId || isSubmitting) return;
                 setIsSubmitting(true);
+                setSubmitError(null);
                 try {
                   const answers = Object.entries(selectedAnswers).map(([idx, ans]) => ({
                     position: parseInt(idx) + 1,
                     answer: ans
                   }));
-                  await fetch('/api/practice/attempts', {
+                  const artifactAttributes = [
+                    `type="${escapeArtifactAttribute(artifact.type)}"`,
+                    `topic="${escapeArtifactAttribute(artifact.topic)}"`,
+                    artifact.subject ? `subject="${escapeArtifactAttribute(artifact.subject)}"` : null,
+                  ].filter(Boolean).join(' ');
+                  const response = await fetch('/api/practice/attempts', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ messageId, answers })
+                    body: JSON.stringify({
+                      messageId,
+                      messageContent: `<artifact ${artifactAttributes}>\n${artifact.content}\n</artifact>`,
+                      chatSessionId,
+                      goalId: activeGoalId,
+                      answers
+                    })
                   });
+                  const data = await response.json().catch(() => null);
+                  if (!response.ok || data?.success !== true) {
+                    throw new Error(data?.message || data?.error || 'Amaura could not save this attempt yet.');
+                  }
                   setIsSubmitted(true);
+                  const sync = data.profileSync || {};
+                  const wrongCount = data.metrics?.wrongCount ?? 0;
+                  const conceptsTouched = sync.conceptsTouched ?? data.metrics?.wrongConceptNames?.length ?? 0;
+                  const cardsCreated = sync.cardsCreated ?? 0;
+                  const tasksCreated = sync.tasksCreated ?? 0;
+                  const summaryParts = [
+                    wrongCount > 0 ? `${wrongCount} weak signal${wrongCount === 1 ? '' : 's'} logged` : 'No weak signals logged',
+                    conceptsTouched > 0 ? `${conceptsTouched} concept${conceptsTouched === 1 ? '' : 's'} updated` : null,
+                    cardsCreated > 0 ? `${cardsCreated} review card${cardsCreated === 1 ? '' : 's'} due` : null,
+                    tasksCreated > 0 ? `${tasksCreated} next task${tasksCreated === 1 ? '' : 's'} adjusted` : null,
+                  ].filter(Boolean);
+                  setSubmitSummary(summaryParts.join(' · '));
+                  window.dispatchEvent(new CustomEvent('learning-profile-updated', {
+                    detail: {
+                      ...data,
+                      artifact: {
+                        topic: artifact.topic,
+                        subject: artifact.subject ?? null,
+                      },
+                    },
+                  }));
                 } catch (e) {
                   console.error(e);
+                  setSubmitError(e instanceof Error ? e.message : 'Amaura could not save this attempt yet.');
+                } finally {
+                  setIsSubmitting(false);
                 }
-                setIsSubmitting(false);
               }}
               disabled={isSubmitting || !messageId}
               style={{
@@ -741,9 +789,14 @@ function PracticeTestCard({ artifact, messageId }: { artifact: ParsedArtifact, m
             </button>
           </div>
         )}
+        {submitError && (
+          <div style={{ marginTop: 12, textAlign: 'center', fontSize: 12, color: 'var(--danger)' }}>
+            {submitError}
+          </div>
+        )}
         {isSubmitted && (
           <div style={{ marginTop: 20, textAlign: 'center', fontSize: 12, color: 'var(--success)' }}>
-            ✓ Results saved to your learning profile.
+            ✓ Results saved to your learning profile{submitSummary ? `: ${submitSummary}.` : '.'}
           </div>
         )}
       </div>

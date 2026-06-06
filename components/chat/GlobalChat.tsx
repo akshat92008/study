@@ -65,6 +65,38 @@ const ChatMessage = memo(function ChatMessage({ msg }: { msg: any }) {
   );
 });
 
+function buildPracticeUpdateMessage(detail: any) {
+  const metrics = detail?.metrics ?? {};
+  const sync = detail?.profileSync ?? {};
+  const wrongCount = Number(metrics.wrongCount ?? sync.wrongItems ?? 0);
+  const correctCount = Number(metrics.correctCount ?? 0);
+  const conceptNames = Array.isArray(metrics.wrongConceptNames) ? metrics.wrongConceptNames.filter(Boolean) : [];
+  const focus = conceptNames.length > 0
+    ? conceptNames.slice(0, 3).join(', ')
+    : detail?.artifact?.topic || 'the missed concepts';
+
+  if (sync.error) {
+    return `I saved the attempt, but my learning-profile sync hit a problem: ${sync.message || sync.error}. I will retry from the event log, and you can submit again safely if the dashboard does not update.`;
+  }
+
+  if (wrongCount <= 0) {
+    return `I logged this attempt: ${correctCount} correct and no new weak concepts. Your current plan stays steady.`;
+  }
+
+  const cards = Number(sync.cardsCreated ?? 0);
+  const tasks = Number(sync.tasksCreated ?? 0);
+  const mistakes = Number(sync.mistakesCreated ?? 0);
+  const concepts = Number(sync.conceptsTouched ?? conceptNames.length);
+  const planBits = [
+    mistakes > 0 ? `${mistakes} mistake${mistakes === 1 ? '' : 's'}` : null,
+    concepts > 0 ? `${concepts} weak concept${concepts === 1 ? '' : 's'}` : null,
+    cards > 0 ? `${cards} due review card${cards === 1 ? '' : 's'}` : null,
+    tasks > 0 ? `${tasks} next task${tasks === 1 ? '' : 's'}` : null,
+  ].filter(Boolean).join(', ');
+
+  return `I logged this attempt: ${correctCount} correct and ${wrongCount} missed. I updated ${planBits || 'your learner state'} and shifted your next study session toward ${focus}.`;
+}
+
 export const GlobalChat = memo(function GlobalChat() {
   const isAssistantOpen = useAppStore(s => s.isAssistantOpen);
   const toggleAssistant = useAppStore(s => s.toggleAssistant);
@@ -117,6 +149,36 @@ export const GlobalChat = memo(function GlobalChat() {
       loadChatFromSupabase();
     }
   }, [activeGoalId, chatId, loadChatFromSupabase, user]);
+
+  useEffect(() => {
+    const handleLearningProfileUpdated = async (event: Event) => {
+      const detail = (event as CustomEvent).detail ?? {};
+      const state = useAppStore.getState();
+      const goalId = detail.goalId ?? state.activeGoalId;
+
+      await Promise.allSettled([
+        state.loadLearningGoals(),
+        goalId ? state.loadGoalContext(goalId) : Promise.resolve(null),
+      ]);
+      state.loadDashboardForActiveGoal();
+
+      const wrongCount = Number(detail?.metrics?.wrongCount ?? detail?.profileSync?.wrongItems ?? 0);
+      if (wrongCount > 0 || detail?.profileSync?.error) {
+        addChatMessage({
+          role: 'assistant',
+          content: buildPracticeUpdateMessage(detail),
+          timestamp: new Date().toISOString(),
+          metadata: {
+            action: 'planner_adjusted',
+            profileSync: detail.profileSync,
+          },
+        });
+      }
+    };
+
+    window.addEventListener('learning-profile-updated', handleLearningProfileUpdated);
+    return () => window.removeEventListener('learning-profile-updated', handleLearningProfileUpdated);
+  }, [addChatMessage]);
 
   const lastScrollTimeRef = useRef(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);

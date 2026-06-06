@@ -3,8 +3,13 @@ import { createClient } from '@/lib/supabase/server';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { EventWorkerService } from '@/lib/events/worker';
+import { createAdminClient } from '@/lib/supabase/admin';
+import { featureFlags } from '@/lib/config/flags';
+import { ingestStudyMaterial } from '@/lib/rag/ingest';
 
 type RouteContext = { params: Promise<{ id: string }> | { id: string } };
+
+const INLINE_REPROCESS_MAX_BYTES = 5 * 1024 * 1024;
 
 export async function POST(req: NextRequest, context: RouteContext) {
   const requestId = getRequestId(req);
@@ -23,6 +28,57 @@ export async function POST(req: NextRequest, context: RouteContext) {
     if (error) throw error;
     if (!material?.storage_path) {
       return apiErrorResponse('not_found', { status: 404, message: 'Study material file was not found.', requestId });
+    }
+
+    if (featureFlags.ragIngestion()) {
+      const admin = createAdminClient();
+      const download = await admin.storage
+        .from('study-materials')
+        .download(material.storage_path);
+
+      if (download.error || !download.data) {
+        return apiErrorResponse('not_found', {
+          status: 404,
+          message: 'The stored source file could not be downloaded for indexing.',
+          requestId,
+        });
+      }
+
+      const arrayBuffer = await download.data.arrayBuffer();
+      if (arrayBuffer.byteLength <= INLINE_REPROCESS_MAX_BYTES) {
+        await supabase
+          .from('study_materials')
+          .update({
+            status: 'processing',
+            retryable: false,
+            error_message: null,
+            last_error: null,
+            next_retry_at: null,
+            updated_at: new Date().toISOString(),
+          })
+          .eq('id', material.id)
+          .eq('user_id', user.id);
+
+        await EventDispatcher.publish({
+          user_id: user.id,
+          type: 'MATERIAL_INGESTION_REQUESTED',
+          data: { materialId: material.id },
+          metadata: { source: 'materials_reprocess_inline' },
+          idempotency_key: `material_reprocess_requested:${material.id}`,
+        });
+
+        const result = await ingestStudyMaterial({
+          materialId: material.id,
+          userId: user.id,
+          buffer: Buffer.from(arrayBuffer),
+          mimeType: material.mime_type,
+        });
+
+        return NextResponse.json(
+          { status: result.status, chunksProcessed: result.chunks },
+          { status: result.status === 'ready' ? 200 : 202, headers: { 'x-request-id': requestId } }
+        );
+      }
     }
 
     const idempotencyKey = `rag_reprocess:${user.id}:${material.id}`;

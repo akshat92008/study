@@ -120,14 +120,21 @@ export async function syncStudyProfileAfterPracticeAttempt(
         : mistakeQuery;
     const { data: existingMistake } = await mistakeQuery.maybeSingle();
 
-    if (existingMistake) continue;
+    if (existingMistake) {
+      await supabase
+        .from('mistakes')
+        .update({ status: 'verified_mistake' })
+        .eq('id', existingMistake.id)
+        .eq('user_id', input.userId);
+      continue;
+    }
 
     const { error: mistakeError } = await supabase.from('mistakes').insert({
       user_id: input.userId,
       goal_id: input.goalId ?? null,
       concept_id: conceptId,
       category: 'conceptual_gap',
-      status: 'pending_review',
+      status: 'verified_mistake',
       subject: item.subject ?? null,
       chapter: item.chapter ?? item.topic ?? null,
       topic: item.topic ?? conceptName,

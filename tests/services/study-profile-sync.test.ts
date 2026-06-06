@@ -14,6 +14,7 @@ describe('study profile sync contract', () => {
 
   it('updates visible weak state and invalidates session cards', () => {
     expect(source).toContain(".from('mistakes')");
+    expect(source).toContain("status: 'verified_mistake'");
     expect(source).toContain(".from('concepts')");
     expect(source).toContain('invalidateSessionCard');
   });
