@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 // budget-exempt: Uses cost-guard manually
 import { createClient } from '@/lib/supabase/server';
 import { generateText } from '@/lib/ai/provider-client';
@@ -14,7 +14,7 @@ export const POST = withRateLimit('knowledge', async (req, userId) => {
     if (!materialId) return NextResponse.json({ error: 'materialId required' }, { status: 400 });
 
     const { data: material } = await supabase
-      .from('materials')
+      .from('study_materials')
       .select('*')
       .eq('id', materialId)
       .eq('user_id', userId) // RLS double-check
@@ -22,21 +22,21 @@ export const POST = withRateLimit('knowledge', async (req, userId) => {
 
     if (!material) return NextResponse.json({ error: 'Material not found' }, { status: 404 });
 
-    // FIX: was 'memory_chunks' — correct table is 'material_chunks'
     const { data: chunks } = await supabase
-      .from('material_chunks')
-      .select('chunk_text')
+      .from('study_material_chunks')
+      .select('text')
       .eq('material_id', materialId)
       .eq('user_id', userId)
-      .order('id', { ascending: true })
+      .order('chunk_index', { ascending: true })
       .limit(40); // cap to avoid token overflow
 
     if (!chunks || chunks.length === 0) {
       return NextResponse.json({ error: 'No content found for this material. Please re-upload.' }, { status: 400 });
     }
 
-    const fullText = chunks.map(c => c.chunk_text).join('\n\n');
+    const fullText = chunks.map(c => c.text).join('\n\n');
     const truncatedText = fullText.slice(0, 80000); // ~20k tokens safety cap
+
 
     let reservation;
     try {

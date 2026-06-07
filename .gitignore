@@ -34,6 +34,8 @@ next-env.d.ts
 
 # Development scratch
 scratch/
+hermes-agent-main/
+hermes-agent-main.zip
 *.local
 .env
 

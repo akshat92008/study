@@ -7,6 +7,8 @@ export default [
       '.next/**',
       'node_modules/**',
       'scratch/**',
+      'hermes-agent-main/**',
+      'cognition-os/**',
       'coverage/**',
       'next-env.d.ts',
     ],

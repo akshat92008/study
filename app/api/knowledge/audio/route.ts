@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 // budget-exempt: Uses cost-guard manually
 import { createClient } from '@/lib/supabase/server';
 import { generateText, synthesizeSpeech } from '@/lib/ai/provider-client';
@@ -72,7 +72,7 @@ export const POST = withRateLimit('knowledge', async (req, userId) => {
     // Fetch content chunks
     const { data: chunks, error: chunkErr } = await supabase
       .from('study_material_chunks')
-      .select('content')
+      .select('text')
       .eq('material_id', materialId)
       .eq('user_id', userId)
       .order('chunk_index', { ascending: true })
@@ -85,7 +85,7 @@ export const POST = withRateLimit('knowledge', async (req, userId) => {
       );
     }
 
-    const content = chunks.map(c => c.content).join('\n\n');
+    const content = chunks.map(c => c.text).join('\n\n');
 
     // Generate podcast script
     let script;
