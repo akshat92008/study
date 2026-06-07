@@ -661,7 +661,12 @@ export class EventWorkerService {
             data: payload,
           });
           return { status: 'HANDLED' };
-        } else if (event.type === 'PRACTICE_ATTEMPT_RECORDED' || event.type === 'PRACTICE_ATTEMPT_SUBMITTED') {
+        }
+        // Fix 9: If runtimeProcessed, skip duplicate projection for PRACTICE_ATTEMPT events
+        if (event.type === 'PRACTICE_ATTEMPT_RECORDED' || event.type === 'PRACTICE_ATTEMPT_SUBMITTED') {
+          if (event.metadata?.runtimeProcessed === true) {
+            return { status: 'SKIPPED_INTENTIONALLY', reason: 'already_processed_by_runtime' };
+          }
           await projectPracticeAttemptToStudyState({
             userId: event.user_id,
             payload,
@@ -690,6 +695,10 @@ export class EventWorkerService {
         } else if (event.type === 'MEMORY_CARD_REVIEWED') {
           return { status: 'SKIPPED_INTENTIONALLY', reason: 'Card review updates ATLAS through mastery evidence writer' };
         } else if (event.type === 'PRACTICE_ATTEMPT_RECORDED' || event.type === 'PRACTICE_ATTEMPT_SUBMITTED') {
+          // Fix 9: If runtimeProcessed, skip duplicate projection
+          if (event.metadata?.runtimeProcessed === true) {
+            return { status: 'SKIPPED_INTENTIONALLY', reason: 'already_processed_by_runtime' };
+          }
           await AtlasConsumer.handlePracticeAttempt(event.user_id, payload);
           return { status: 'HANDLED' };
         }
@@ -702,6 +711,10 @@ export class EventWorkerService {
           await MemoryConsumer.handleStudySessionCompleted(event.user_id, event.data);
           return { status: 'HANDLED' };
         } else if (event.type === 'PRACTICE_ATTEMPT_RECORDED' || event.type === 'PRACTICE_ATTEMPT_SUBMITTED') {
+          // Fix 9: If runtimeProcessed, skip duplicate projection
+          if (event.metadata?.runtimeProcessed === true) {
+            return { status: 'SKIPPED_INTENTIONALLY', reason: 'already_processed_by_runtime' };
+          }
           await MemoryConsumer.handlePracticeAttempt(event.user_id, payload);
           return { status: 'HANDLED' };
         }

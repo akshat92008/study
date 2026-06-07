@@ -1,12 +1,19 @@
 import type { AgentObservation, AgentToolContext, LearningSignal, RetrievedSourceChunk } from './types';
 import { logger } from '@/lib/utils/logger';
 
+/** Normalize a concept name to a canonical lookup key */
+function conceptKey(value: string): string {
+  return value.trim().toLowerCase().replace(/\s+/g, ' ');
+}
+
 export interface RuntimeState {
   conceptsByName: Map<string, string>;
   latestSignals: LearningSignal[];
   sourceChunks: RetrievedSourceChunk[];
   cardIds: string[];
   toolResults: any[];
+  /** Fix 7: Track executed call keys to prevent duplicate context/extraction calls */
+  executedCallKeys: Set<string>;
 }
 
 export interface CompileToolPlanInput {
@@ -60,17 +67,18 @@ export function compileToolPlan(input: CompileToolPlanInput): Array<{ name: stri
     }
 
     if (name === 'update_concept_mastery') {
-      // Only call after conceptId is known
+      // Fix 4 & Fix 8: Use normalized concept key; only compile when conceptId is known
       for (const signal of runtimeState.latestSignals) {
         const conceptName = signal.canonicalConcept ?? signal.concept;
-        if (conceptName && runtimeState.conceptsByName.has(conceptName)) {
-          const conceptId = runtimeState.conceptsByName.get(conceptName);
+        const key = conceptName ? conceptKey(conceptName) : null;
+        if (key && runtimeState.conceptsByName.has(key)) {
+          const conceptId = runtimeState.conceptsByName.get(key)!;
           compiledTools.push({
             name,
             args: {
               conceptId,
               signal,
-              evidenceRef: `${context.runId}:${conceptId}:${signal.type}`,
+              evidenceRef: `${context.runId ?? 'unknown'}:${conceptId}:${signal.type}`,
             },
           });
         }
@@ -79,16 +87,18 @@ export function compileToolPlan(input: CompileToolPlanInput): Array<{ name: stri
     }
 
     if (name === 'create_memory_card') {
+      // Fix 4 & Fix 8: Use normalized concept key; only compile when conceptId is known
       const validSignals = ['weak_area_detected', 'misconception_detected', 'revision_needed', 'practice_needed', 'session_completed'];
       for (const signal of runtimeState.latestSignals) {
         if (!validSignals.includes(signal.type)) continue;
 
         const conceptName = signal.canonicalConcept ?? signal.concept;
-        if (conceptName && runtimeState.conceptsByName.has(conceptName)) {
+        const key = conceptName ? conceptKey(conceptName) : null;
+        if (key && runtimeState.conceptsByName.has(key)) {
           compiledTools.push({
             name,
             args: {
-              conceptId: runtimeState.conceptsByName.get(conceptName),
+              conceptId: runtimeState.conceptsByName.get(key)!,
               signal,
               sourceMaterialId: runtimeState.sourceChunks[0]?.materialId ?? null,
               goalId: context.goalId,
@@ -100,14 +110,16 @@ export function compileToolPlan(input: CompileToolPlanInput): Array<{ name: stri
     }
 
     if (name === 'update_microtarget') {
+      // Fix 4 & Fix 8: Use normalized concept key; compile with null-safe conceptId
       for (const signal of runtimeState.latestSignals) {
         const conceptName = signal.canonicalConcept ?? signal.concept;
-        const conceptId = conceptName ? runtimeState.conceptsByName.get(conceptName) : null;
+        const key = conceptName ? conceptKey(conceptName) : null;
+        const conceptId = key ? runtimeState.conceptsByName.get(key) ?? null : null;
         compiledTools.push({
           name,
           args: {
             eventType: signal.type,
-            conceptId: conceptId ?? null,
+            conceptId,
             concept: conceptName ?? null,
             subject: signal.subject ?? null,
             topic: signal.topic ?? conceptName ?? null,
@@ -119,9 +131,11 @@ export function compileToolPlan(input: CompileToolPlanInput): Array<{ name: stri
     }
 
     if (name === 'write_learning_event') {
+      // Fix 4 & Fix 8: Use normalized concept key
       for (const signal of runtimeState.latestSignals) {
         const conceptName = signal.canonicalConcept ?? signal.concept;
-        const conceptId = conceptName ? runtimeState.conceptsByName.get(conceptName) : null;
+        const key = conceptName ? conceptKey(conceptName) : null;
+        const conceptId = key ? runtimeState.conceptsByName.get(key) ?? null : null;
         compiledTools.push({
           name,
           args: {

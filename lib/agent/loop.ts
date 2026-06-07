@@ -37,6 +37,11 @@ import { nextRecommendedActionFromMutations } from '@/lib/mission/sessionProgres
 import { applyResponseClaimGuard } from '@/lib/agent/guardrails/responseClaimGuard';
 import { compileToolPlan, RuntimeState } from '@/lib/agent/toolCompiler';
 
+/** Normalize a concept name to a canonical lookup key */
+function conceptKey(value: string): string {
+  return value.trim().toLowerCase().replace(/\s+/g, ' ');
+}
+
 function summarizeMutations(results: ToolResultRecord[]): MutationSummary {
   const summary: MutationSummary = {
     changed: results.some((result) => result.changed),
@@ -102,13 +107,14 @@ export async function runCognitionAgentLoop(input: {
   const allWarnings: string[] = [];
   let stepIdx = 0;
 
-  // Fix 7: Add runtimeState to loop for tool-output chaining
+  // Fix 7: Add executedCallKeys for deduplication
   const runtimeState: RuntimeState = {
     conceptsByName: new Map<string, string>(),
     latestSignals: [] as LearningSignal[],
     sourceChunks: [] as RetrievedSourceChunk[],
     cardIds: [] as string[],
     toolResults: [] as ToolResultRecord[],
+    executedCallKeys: new Set<string>(),
   };
 
   // Hooks: before agent run
@@ -129,6 +135,7 @@ export async function runCognitionAgentLoop(input: {
   }).catch((e: unknown) => logger.warn('recordAgentStep observe error', { error: String(e) }));
 
   // 2. CONTEXT (Initial deterministic fetch)
+  // Fix 7: Deduplicate context calls - skip already-executed identical calls
   const contextTools = [{ name: 'get_learner_context', args: {} }];
   if (observation.sourceRequested) {
     contextTools.push({ name: 'retrieve_source_chunks', args: { query: observation.userMessage } });
@@ -136,7 +143,19 @@ export async function runCognitionAgentLoop(input: {
   contextTools.push({ name: 'retrieve_agent_skills', args: {} });
   contextTools.push({ name: 'read_trajectory_context', args: { limit: 5 } });
 
-  const contextResults = await executeToolChain(contextTools, {
+  // Filter out already-executed calls (Fix 7)
+  const pendingContextTools = contextTools.filter(tool => {
+    const callKey = `${tool.name}:${JSON.stringify(tool.args)}`;
+    if (runtimeState.executedCallKeys.has(callKey)) {
+      logger.info('Skipping already-executed context tool', { tool: tool.name });
+      return false;
+    }
+    runtimeState.executedCallKeys.add(callKey);
+    return true;
+  });
+
+  const contextResults = pendingContextTools.length > 0
+    ? await executeToolChain(pendingContextTools, {
     supabase,
     userId: context.userId,
     channel,
@@ -145,7 +164,8 @@ export async function runCognitionAgentLoop(input: {
     iterationsBudget,
     hooks: hooksMgr,
     context, // Fix 4: Pass original context
-  });
+  })
+    : [];
 
   let contextSummary: JsonObject = {};
   let skills: JsonObject[] = [];
@@ -218,6 +238,11 @@ export async function runCognitionAgentLoop(input: {
         } as AgentPlanOutput;
       }
 
+      // Fix 1: Merge model/deterministic signals BEFORE compileToolPlan
+      if (latestPlan.learning_signals?.length) {
+        runtimeState.latestSignals.push(...latestPlan.learning_signals);
+      }
+
       // Filter required_tools against policy
       const requiredTools = latestPlan.required_tools.filter(t => allowedToolNames.has(t.name));
 
@@ -252,10 +277,6 @@ export async function runCognitionAgentLoop(input: {
         },
       }).catch((e: unknown) => logger.warn('recordAgentStep plan error', { error: String(e) }));
 
-      // Merge signals from plan into runtimeState
-      if (latestPlan.learning_signals?.length) {
-        runtimeState.latestSignals.push(...latestPlan.learning_signals);
-      }
       allWarnings.push(...latestPlan.risk_flags);
 
       // Break if no tools needed
@@ -281,22 +302,29 @@ export async function runCognitionAgentLoop(input: {
         }
       );
 
+      // Track if a concept was created this round (for second-phase signal tool compile)
+      let newConceptStored = false;
       for (const res of iterResults) {
         if (res.success && res.result) {
           runtimeState.toolResults.push(res.result);
-          
+
           // Fix 7 & Fix 5: Update runtimeState from tool results
           if (res.toolName === 'upsert_atlas_concept' && res.result.data?.conceptId) {
             // Fix 5: Robust concept name resolution
-            const conceptName = 
-              (res.result.data as any).concept?.name ?? 
-              (res.result.data as any).conceptName ?? 
-              (res.result.data as any).name ?? 
+            const conceptNameRaw =
+              (res.result.data as any).concept?.name ??
+              (res.result.data as any).conceptName ??
+              (res.result.data as any).name ??
               (res.result.data as any).concept;
 
-            if (conceptName && typeof conceptName === 'string') {
-              runtimeState.conceptsByName.set(conceptName, res.result.data.conceptId as string);
-              logger.info('Stored conceptId in runtimeState', { conceptName, conceptId: res.result.data.conceptId });
+            if (conceptNameRaw && typeof conceptNameRaw === 'string') {
+              // Fix 2 & Fix 3: Normalize concept key before storing
+              const key = conceptKey(conceptNameRaw);
+              if (!runtimeState.conceptsByName.has(key)) {
+                newConceptStored = true;
+              }
+              runtimeState.conceptsByName.set(key, res.result.data.conceptId as string);
+              logger.info('Stored conceptId in runtimeState', { conceptNameRaw, conceptId: res.result.data.conceptId });
             }
           }
           if (res.toolName === 'extract_learning_signals' && res.result.data?.signals) {
@@ -326,8 +354,63 @@ export async function runCognitionAgentLoop(input: {
         }
       }
 
+      // Fix 5: Second-phase compile after conceptId is known
+      // If upsert_atlas_concept stored a new conceptId this round, pending signal tools
+      // (update_concept_mastery, create_memory_card, update_microtarget, write_learning_event)
+      // can now be compiled and executed before the next plan/reason cycle.
+      if (newConceptStored) {
+        const signalTools = compileToolPlan({
+          plannedTools: [
+            { name: 'update_concept_mastery', input: {} },
+            { name: 'create_memory_card', input: {} },
+            { name: 'update_microtarget', input: {} },
+            { name: 'write_learning_event', input: {} },
+          ],
+          runtimeState,
+          context,
+          observation,
+          finalResponse: finalResponseInstruction,
+        });
+        if (signalTools.length > 0) {
+          const secondPhaseResults = await executeToolChain(signalTools, {
+            supabase,
+            userId: context.userId,
+            channel,
+            runId: trajectoryId,
+            toolCallsBudget,
+            iterationsBudget,
+            hooks: hooksMgr,
+            context,
+          });
+          for (const res of secondPhaseResults) {
+            if (res.success && res.result) {
+              runtimeState.toolResults.push(res.result);
+              logger.info('Second-phase signal tool executed', { toolName: res.result.toolName, changed: res.result.changed });
+              await recordAgentStep(supabase, {
+                runId: trajectoryId,
+                userId: context.userId,
+                stepIndex: stepIdx++,
+                stepType: 'tool_call',
+                content: { toolName: res.result.toolName, changed: res.result.changed, phase: 'second_compile' },
+              }).catch((e: unknown) => logger.warn('recordAgentStep second-phase error', { error: String(e) }));
+            } else if (!res.success) {
+              allWarnings.push(...res.warnings, res.error?.message ?? `Second-phase ${res.toolName} failed`);
+            }
+          }
+        }
+      }
+
       // REASON AGAIN - check if we should continue
-      if (!latestPlan?.pedagogical_next_step || (latestPlan.pedagogical_next_step as any)?.type !== 'continue') {
+      const pendingSignalMutations =
+        runtimeState.latestSignals.some(s => {
+          const ck = s.canonicalConcept ?? s.concept;
+          return ck && !runtimeState.conceptsByName.has(conceptKey(ck));
+        });
+      // Fix 6: Do not break if pending signal mutations remain
+      if (
+        (!latestPlan?.pedagogical_next_step || (latestPlan.pedagogical_next_step as any)?.type !== 'continue') &&
+        !pendingSignalMutations
+      ) {
         if ((latestPlan as any)?.final_response_instruction) {
           finalResponseInstruction = (latestPlan as any).final_response_instruction;
         }
