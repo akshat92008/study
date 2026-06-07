@@ -10,7 +10,7 @@
 import type { z } from 'zod';
 import { z as zod } from 'zod';
 import { logger } from '@/lib/utils/logger';
-import type { AgentChannel, JsonObject, LearningSignal } from './types';
+import type { AgentChannel, AgentObservation, JsonObject, LearningSignal } from './types';
 import { buildAgentPlan } from './planner';
 import { generateJSON, MODELS } from '@/lib/ai/provider-client';
 
@@ -71,6 +71,7 @@ export interface AgentPlanOutput {
 
 interface ModelPlannerInput {
   channel: AgentChannel;
+  observation: AgentObservation; // Fix 6: Pass real observation
   userMessage?: string;
   payload?: JsonObject;
   contextSummary?: JsonObject;
@@ -101,9 +102,28 @@ const TOOL_PROMPTS: Record<string, string> = {
   propose_next_action: 'propose_next_action - Propose next learning action',
 };
 
+function payloadSummary(channel: AgentChannel, payload?: JsonObject): string {
+  if (!payload) return '(no payload)';
+  
+  // Fix 5: Include specific payload details for critical channels
+  switch (channel) {
+    case 'practice':
+      return `Practice: SetId=${payload.practiceSetId}, Correct=${(payload.metrics as any)?.correctCount}, Wrong=${(payload.metrics as any)?.wrongCount}, Items=${(payload.items as any[])?.length || 0}`;
+    case 'session':
+      return `Session: SessionId=${payload.sessionId}, Concept=${payload.conceptName}, Subject=${payload.subject}, Understood=${payload.understood}`;
+    case 'autopsy':
+      return `Autopsy: ReportId=${payload.reportId}, HighRisk=${payload.highRiskTopics}, Patterns=${payload.repeatedPatterns}, Source=${payload.source}`;
+    case 'background':
+      return `Background: DueCards=${payload.dueCardCount}, WeakConcepts=${payload.weakConcepts}`;
+    default:
+      return JSON.stringify(payload).slice(0, 300);
+  }
+}
+
 function buildPlanningPrompt(input: ModelPlannerInput): string {
   const channel = input.channel;
   const tools = Object.entries(TOOL_PROMPTS)
+    .filter(([name]) => !input.allowedToolNames || input.allowedToolNames.includes(name))
     .map(([name, desc]) => `  - ${desc}`)
     .join('\n');
 
@@ -123,9 +143,10 @@ function buildPlanningPrompt(input: ModelPlannerInput): string {
 
 ## Current Context
 - Channel: ${channel}
-- User message: ${input.userMessage?.slice(0, 300) ?? '(no message)'}
+- User message: ${input.userMessage?.slice(0, 500) ?? '(no message)'}
+- Payload Summary: ${payloadSummary(channel, input.payload)}
 - Source chunks: ${chunkInfo}
-- ${input.contextSummary ? JSON.stringify(input.contextSummary).slice(0, 500) : 'Context not yet loaded'}
+- ${input.contextSummary ? JSON.stringify(input.contextSummary).slice(0, 700) : 'Context not yet loaded'}
 
 ## Active Learning Signals (from this turn)
 ${signalList}

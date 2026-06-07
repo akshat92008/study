@@ -286,6 +286,7 @@ export async function POST(req: NextRequest) {
 
     const persistedEventItems = eventItems.filter((item) => item.attemptId && item.practiceItemId);
 
+    // Keep old event publication for audit/background
     await EventDispatcher.publish({
       user_id: user.id,
       type: 'PRACTICE_ATTEMPT_RECORDED',
@@ -304,49 +305,9 @@ export async function POST(req: NextRequest) {
       },
       metadata: { source: 'mind_chat_mcq', goalId: set.goal_id ?? null },
       idempotency_key: `practice_attempt:${user.id}:${set.id}:${idempotencySeed}`
-    });
+    }).catch(() => undefined);
 
-    await ingestLearningSignals(supabase, persistedEventItems
-      .filter((item) => item.isCorrect === false)
-      .slice(0, 25)
-      .map((item) => ({
-        user_id: user.id,
-        goal_id: set.goal_id ?? null,
-        signal_type: 'practice_attempt' as const,
-        source_type: 'practice_attempt',
-        source_id: item.attemptId ?? null,
-        subject: item.subject ?? null,
-        topic: item.topic ?? item.conceptName ?? null,
-        confidence: 0.68,
-        evidence: {
-          practiceSetId: set.id,
-          practiceItemId: item.practiceItemId,
-          selectedAnswer: item.selectedAnswer,
-          correctAnswer: item.correctAnswer,
-        },
-      })), { publishEvent: true }).catch(() => undefined);
-
-    const profileSync = await syncStudyProfileAfterPracticeAttempt(supabase, {
-      userId: user.id,
-      goalId: set.goal_id ?? null,
-      practiceSetId: set.id,
-      metrics: {
-        correctCount,
-        wrongCount,
-        wrongConceptIds,
-        wrongConceptNames,
-      },
-      items: persistedEventItems,
-    }).catch((error) => ({
-      error: 'profile_sync_failed',
-      message: error instanceof Error ? error.message : 'Profile sync failed.',
-    }));
-
-    // Phase 7: Wire practice through agent runtime for ATLAS/MEMORY mutations
-    // The runtime's apply_practice_attempt tool processes already-saved practice attempts
-    // and updates ATLAS mastery, creates MEMORY cards, and updates microtargets.
-    // This runs in parallel with profileSync - both are idempotent but the runtime
-    // is the primary source of truth going forward for agent mutations.
+    // Fix 11: Call runtime exactly once in the route
     let agentLoopResult: any = null;
     try {
       agentLoopResult = await runCognitionAgentTurn({
@@ -378,12 +339,8 @@ export async function POST(req: NextRequest) {
         userId: user.id,
         practiceSetId: set.id,
         changed: agentLoopResult?.mutationSummary?.changed,
-        conceptsUpdated: agentLoopResult?.mutationSummary?.conceptsUpdated,
-        revisionCardsCreated: agentLoopResult?.mutationSummary?.revisionCardsCreated,
       });
     } catch (runtimeError) {
-      // Runtime failure should not fail the practice submit - runtime is for agent mutations
-      // We log the error but still return success since practice attempts were already saved
       logger.warn('Practice agent runtime failed (non-fatal)', {
         userId: user.id,
         practiceSetId: set.id,
@@ -391,9 +348,30 @@ export async function POST(req: NextRequest) {
       });
     }
 
+    // Pass the runtime result to profile sync to avoid duplicate calls
+    const profileSync = await syncStudyProfileAfterPracticeAttempt(supabase, {
+      userId: user.id,
+      goalId: set.goal_id ?? null,
+      practiceSetId: set.id,
+      metrics: {
+        correctCount,
+        wrongCount,
+        wrongConceptIds,
+        wrongConceptNames,
+      },
+      items: persistedEventItems,
+      runtimeOutput: agentLoopResult, // Use existing result
+    }).catch((error) => ({
+      error: 'profile_sync_failed',
+      message: error instanceof Error ? error.message : 'Profile sync failed.',
+    }));
+
+    // Fix 11: Removed redundant ingestLearningSignals and duplicate runCognitionAgentTurn blocks below
+    
     const loopSummary = {
       saved: true,
       mistakesCreated: (profileSync as any)?.mistakesCreated ?? 0,
+...
       repairCardsCreated: (profileSync as any)?.repairCardsCreated ?? 0,
       retestsScheduled: (profileSync as any)?.retestsScheduled ?? 0,
       tomorrowSessionUpdated: (profileSync as any)?.sessionCardInvalidated === true,

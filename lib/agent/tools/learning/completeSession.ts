@@ -1,15 +1,8 @@
-import type { AgentToolContext, AgentToolDefinition, LearningSignal } from '@/lib/agent/types';
+import type { AgentToolDefinition } from '@/lib/agent/types';
 import { CompleteSessionInputSchema, ToolResultSchema } from '@/lib/agent/tools/schemas';
 import { completeLearningSession } from '@/lib/services/session-completion';
 import { verifySessionCompletion } from '@/lib/agent/guardrails/sessionCompletionGuard';
-import { recordAgentActivity, stableKey, upsertConcept } from '@/lib/agent/tools/learning/common';
-import { createMemoryCardForSignal } from '@/lib/agent/tools/learning/createMemoryCard';
-
-// Extend the result to include memory card creation
-interface CompleteSessionExtendedResult extends ReturnType<typeof completeLearningSession> {
-  memoryCardCreated?: boolean;
-  memoryCardId?: string | null;
-}
+import { recordAgentActivity, stableKey } from '@/lib/agent/tools/learning/common';
 
 export const completeSessionTool: AgentToolDefinition<typeof CompleteSessionInputSchema, typeof ToolResultSchema> = {
   name: 'complete_session',
@@ -57,71 +50,13 @@ export const completeSessionTool: AgentToolDefinition<typeof CompleteSessionInpu
       idempotencyKey: stableKey([context.idempotencyKey, 'session-completed', result.sessionId]),
     });
 
-    // MEMORY card creation for completed session concept
-    // This ensures session completion always creates a durable review card
-    let memoryCardCreated = false;
-    let memoryCardId: string | null = null;
-
-    if (result.conceptId) {
-      // Ensure concept exists in ATLAS
-      const concept = await upsertConcept(context.supabase, {
-        userId: context.userId,
-        goalId: input.goalId ?? context.goalId ?? null,
-        concept: input.conceptName ?? input.chapter ?? 'Session Concept',
-        subject: input.subject ?? null,
-        chapter: input.chapter ?? input.conceptName ?? null,
-        topic: input.conceptName ?? input.chapter ?? null,
-      });
-
-      if (concept.conceptId) {
-        const sessionSignal: LearningSignal = {
-          type: 'session_completed',
-          concept: input.conceptName ?? input.chapter ?? 'Session Concept',
-          canonicalConcept: input.conceptName ?? input.chapter ?? 'Session Concept',
-          subject: input.subject ?? null,
-          chapter: input.chapter ?? null,
-          topic: input.conceptName ?? null,
-          confidence: 0.75,
-          source: 'session' as const,
-          correct: true,
-          evidence: `Completed a study session on ${input.subject ?? 'General'} / ${input.chapter ?? input.conceptName ?? 'Session'}.`,
-        };
-
-        const memoryResult = await createMemoryCardForSignal(context, {
-          conceptId: concept.conceptId,
-          signal: sessionSignal,
-          goalId: input.goalId ?? context.goalId ?? null,
-        });
-
-        memoryCardCreated = memoryResult.created;
-        memoryCardId = memoryResult.cardId;
-
-        if (memoryCardCreated) {
-          await recordAgentActivity(context.supabase, {
-            userId: context.userId,
-            runId: context.runId,
-            agentName: 'memory',
-            actionType: 'memory_card_created',
-            targetType: 'revision_card',
-            targetId: memoryCardId,
-            confidence: 0.75,
-            evidence: { conceptId: concept.conceptId, sessionId: result.sessionId },
-            reason: `MEMORY created a review card for completed session: ${input.conceptName ?? input.chapter ?? 'Session'}.`,
-            idempotencyKey: stableKey([context.idempotencyKey, 'memory-card-session', result.sessionId]),
-          });
-        }
-      }
-    }
-
     return {
       success: true,
       changed: true,
       entityType: 'study_session',
-      entityIds: [result.sessionId, ...(memoryCardId ? [memoryCardId] : [])],
-      summary: memoryCardCreated
-        ? `Session completion persisted and verified. MEMORY card created for ${input.conceptName ?? input.chapter ?? 'session'}.`
-        : 'Session completion persisted and verified.',
-      data: { ...result, verified: true, memoryCardCreated, memoryCardId },
+      entityIds: [result.sessionId],
+      summary: 'Session completion persisted and verified.',
+      data: { ...result, verified: true },
     };
   },
 };

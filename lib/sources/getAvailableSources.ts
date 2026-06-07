@@ -31,26 +31,38 @@ export async function getAvailableSources(
       .in('status', ['ready', 'READY', 'retrieval_available', 'RETRIEVAL_AVAILABLE']);
 
     if (error) {
-      logger.warn('Source relationship count failed; falling back to material list', { userId, error });
-      const { data: fallback, error: fallbackError } = await supabase
+      logger.warn('Source relationship count failed; falling back to explicit chunk counts', { userId, error });
+      
+      const { data: materials, error: mError } = await supabase
         .from('study_materials')
         .select('id, title, status, created_at')
         .eq('user_id', userId)
-        .in('status', ['ready', 'READY', 'retrieval_available', 'RETRIEVAL_AVAILABLE'])
-        .limit(50);
+        .in('status', ['ready', 'READY', 'retrieval_available', 'RETRIEVAL_AVAILABLE']);
 
-      if (fallbackError) {
-        logger.error('Failed to fetch available sources', { userId, error: fallbackError });
-        return [];
-      }
+      if (mError || !materials) return [];
 
-      return (fallback || []).map(m => ({
-        id: m.id,
-        title: m.title,
-        status: m.status,
-        created_at: m.created_at,
-        chunkCount: 1
-      }));
+      const { data: chunkCounts, error: cError } = await supabase
+        .from('study_material_chunks')
+        .select('material_id')
+        .eq('user_id', userId)
+        .in('material_id', materials.map(m => m.id));
+
+      if (cError) return [];
+
+      const counts = (chunkCounts || []).reduce((acc: Record<string, number>, c: any) => {
+        acc[c.material_id] = (acc[c.material_id] || 0) + 1;
+        return acc;
+      }, {});
+
+      return materials
+        .map(m => ({
+          id: m.id,
+          title: m.title,
+          status: m.status,
+          created_at: m.created_at,
+          chunkCount: counts[m.id] || 0
+        }))
+        .filter(m => m.chunkCount > 0);
     }
 
     return (data || [])

@@ -250,10 +250,10 @@ drop index if exists idx_agent_runs_goal_id;
 create index if not exists idx_agent_runs_goal_id
   on public.agent_runs(goal_id) where goal_id is not null;
 drop index if exists idx_agent_runs_channel;
-create index if exists idx_agent_runs_channel
+create index if not exists idx_agent_runs_channel
   on public.agent_runs(user_id, channel, created_at desc);
 drop index if exists idx_agent_runs_event_id;
-create index if exists idx_agent_runs_event_id
+create index if not exists idx_agent_runs_event_id
   on public.agent_runs(event_id) where event_id is not null;
 
 -- ============================================================
@@ -268,27 +268,22 @@ begin
     select 1 from information_schema.columns
     where table_name = 'study_material_chunks' and column_name = 'content'
   ) then
-    -- If text column exists, rename it to content
-    if exists (
-      select 1 from information_schema.columns
-      where table_name = 'study_material_chunks' and column_name = 'text'
-    ) then
-      alter table public.study_material_chunks rename column text to content;
-      raise notice 'Renamed study_material_chunks.text to content';
-    else
-      -- Neither exists, add content
-      alter table public.study_material_chunks add column content text null;
-      raise notice 'Added study_material_chunks.content column';
-    end if;
+    alter table public.study_material_chunks add column content text null;
+    raise notice 'Added study_material_chunks.content column';
+  end if;
+
+  -- Backfill content from text if content is null and text exists
+  if exists (
+    select 1 from information_schema.columns
+    where table_name = 'study_material_chunks' and column_name = 'text'
+  ) then
+    update public.study_material_chunks
+    set content = text
+    where content is null and text is not null;
+    raise notice 'Backfilled content from text in study_material_chunks';
   end if;
 end
 $$;
-
--- If content is null but text was migrated/renamed and some rows still have null content
--- Run a one-time backfill (will be slow on large tables but is safe idempotently)
-update public.study_material_chunks
-set content = 'placeholder_content_for_empty_chunk'
-where content is null and id is not null;
 
 -- ============================================================
 -- H. Service role for agent tables (for server-side operations)

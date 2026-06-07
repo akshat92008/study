@@ -174,6 +174,8 @@ export interface CognitionAgentTurnOutput {
   mutationSummary: MutationSummary;
   verification: VerificationResult;
   nextRecommendedAction?: JsonObject;
+  usedIterations?: number; // Added
+  usedToolCalls?: number; // Added
 }
 
 export interface AgentToolContext {

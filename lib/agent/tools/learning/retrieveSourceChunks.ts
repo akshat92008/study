@@ -20,6 +20,7 @@ async function keywordFallback(context: any, input: { query: string; materialIds
     .select(`
       id,
       material_id,
+      content,
       text,
       heading,
       page_start,
@@ -31,19 +32,26 @@ async function keywordFallback(context: any, input: { query: string; materialIds
     .limit(Math.max(input.limit * 4, 12));
   if (input.materialIds?.length) query = query.in('material_id', input.materialIds);
   if (input.goalId) query = query.eq('study_materials.goal_id', input.goalId);
-  if (terms.length > 0) query = query.or(terms.map((term) => `text.ilike.%${term}%`).join(','));
+  
+  // Fix 2: Standardize on content.ilike as canonical. Use text only as secondary or handled by backfill.
+  if (terms.length > 0) {
+    query = query.or(terms.map((term) => `content.ilike.%${term}%`).join(','));
+  }
+
   const { data, error } = await query;
   if (error || !Array.isArray(data)) return [];
   return data
     .map((row: any) => {
       const material = Array.isArray(row.study_materials) ? row.study_materials[0] : row.study_materials;
-      const lower = String(row.text ?? '').toLowerCase();
+      // Fix 2: Support legacy text through coalesce
+      const content = row.content || row.text || '';
+      const lower = content.toLowerCase();
       const hits = terms.length ? terms.filter((term) => lower.includes(term)).length : 1;
       return {
         id: row.id,
         materialId: row.material_id,
         title: material?.title ?? 'Uploaded material',
-        text: row.text,
+        text: content,
         score: terms.length ? hits / terms.length : 0.2,
         method: 'keyword' as const,
         subject: material?.subject ?? null,
@@ -56,6 +64,7 @@ async function keywordFallback(context: any, input: { query: string; materialIds
     .sort((a: RetrievedSourceChunk, b: RetrievedSourceChunk) => b.score - a.score)
     .slice(0, input.limit);
 }
+
 
 export const retrieveSourceChunksTool: AgentToolDefinition<typeof RetrieveSourceChunksInputSchema, typeof ToolResultSchema> = {
   name: 'retrieve_source_chunks',

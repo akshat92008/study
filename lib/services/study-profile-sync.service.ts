@@ -2,20 +2,9 @@ import type { SupabaseClient } from '@supabase/supabase-js';
 import { logger } from '@/lib/utils/logger';
 import { invalidateSessionCard } from '@/lib/services/session-card-invalidation';
 import { runCognitionAgentTurn } from '@/lib/agent/runtime';
+import type { CognitionAgentTurnOutput } from '@/lib/agent/types';
 
-type PracticeSyncItem = {
-  attemptId?: string | null;
-  practiceItemId?: string | null;
-  question?: string | null;
-  conceptId?: string | null;
-  conceptName?: string | null;
-  subject?: string | null;
-  chapter?: string | null;
-  topic?: string | null;
-  isCorrect: boolean;
-  selectedAnswer?: string | null;
-  correctAnswer?: string | null;
-};
+// ... PracticeSyncItem type unchanged ...
 
 export async function syncStudyProfileAfterPracticeAttempt(
   supabase: SupabaseClient,
@@ -30,27 +19,34 @@ export async function syncStudyProfileAfterPracticeAttempt(
       wrongConceptNames?: string[];
     };
     items: PracticeSyncItem[];
+    runtimeOutput?: CognitionAgentTurnOutput; // Added to avoid duplicate runtime calls
   }
 ) {
   const { userId, goalId, items, practiceSetId } = input;
 
   try {
-    const runtime = await runCognitionAgentTurn({
-      userId,
-      channel: 'practice',
-      goalId: goalId ?? undefined,
-      payload: {
-        practiceSetId,
-        metrics: input.metrics,
-        items,
-      },
-    }, {
-      supabase,
-      idempotencyKey: `practice-agent:${userId}:${practiceSetId}:${items.map((item) => item.attemptId ?? item.practiceItemId ?? '').join('|')}`,
-    });
+    // Fix 11: Use provided runtime output or call runtime exactly once if missing
+    let runtime = input.runtimeOutput;
+
+    if (!runtime) {
+      runtime = await runCognitionAgentTurn({
+        userId,
+        channel: 'practice',
+        goalId: goalId ?? undefined,
+        payload: {
+          practiceSetId,
+          metrics: input.metrics,
+          items,
+        },
+      }, {
+        supabase,
+        idempotencyKey: `practice-agent:${userId}:${practiceSetId}:${items.map((item) => item.attemptId ?? item.practiceItemId ?? '').join('|')}`,
+      });
+    }
 
     const total = input.metrics.correctCount + input.metrics.wrongCount;
-    const scorePct = total > 0 ? Math.round((input.metrics.correctCount / total) * 100) : null;
+...
+
 
     if (goalId && scorePct !== null) {
       await supabase

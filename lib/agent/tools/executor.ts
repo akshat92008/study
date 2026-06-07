@@ -11,7 +11,7 @@
  */
 import { randomUUID } from 'node:crypto';
 import type { SupabaseClient } from '@supabase/supabase-js';
-import type { AgentToolDefinition, JsonObject, ToolResultRecord } from '@/lib/agent/types';
+import type { AgentToolContext, AgentToolDefinition, JsonObject, ToolResultRecord } from '@/lib/agent/types';
 import { getLearningTool, listLearningTools } from '@/lib/agent/tools/registry';
 import { ToolCallBudget, IterationBudget } from '@/lib/agent/budget';
 import { getChannelPolicy } from '@/lib/agent/policy';
@@ -30,6 +30,7 @@ export interface DurableExecuteOptions {
   iterationsBudget: IterationBudget;
   hooks?: HooksManager;
   dryRun?: boolean;
+  context?: AgentToolContext;
 }
 
 export interface DurableExecuteResult {
@@ -53,11 +54,10 @@ export async function executeDurableTool(
   args: JsonObject,
   options: DurableExecuteOptions
 ): Promise<DurableExecuteResult> {
-  const { supabase, userId, channel, runId, stepId, toolCallsBudget, hooks, dryRun } = options;
-  const now = new Date();
+  const { supabase, userId, channel, runId, stepId, toolCallsBudget, hooks, dryRun, context } = options;
+  const now = context?.now ?? new Date();
   const startedAt = now.toISOString();
   const warnings: string[] = [];
-  let stepIndex = 0;
 
   // 1. Get tool definition
   const tool = getLearningTool(toolName);
@@ -189,19 +189,24 @@ export async function executeDurableTool(
       // Validate input
       const parsedArgs = tool.inputSchema.parse(args);
 
-      // Set context for the tool
-      const toolContext = {
-        supabase,
-        userId,
-        channel: channel as any,
-        conversationId: null,
-        sessionId: null,
-        goalId: null,
-        runId,
-        idempotencyKey: `${runId}:${toolName}:${startedAt}`,
-        now,
-        observation: {} as any,
-      };
+      // Set context for the tool - PRESERVE ORIGINAL CONTEXT IF PROVIDED
+      const toolContext: AgentToolContext = context
+        ? {
+            ...context,
+            idempotencyKey: `${runId}:${toolName}:${startedAt}`,
+          }
+        : {
+            supabase,
+            userId,
+            channel: channel as any,
+            conversationId: null,
+            sessionId: null,
+            goalId: null,
+            runId,
+            idempotencyKey: `${runId}:${toolName}:${startedAt}`,
+            now,
+            observation: {} as any,
+          };
 
       // Execute handler
       const handlerOutput = await tool.handler(parsedArgs, toolContext);
@@ -242,9 +247,7 @@ export async function executeDurableTool(
   // 7. Update agent_tool_calls row AFTER execution
   const status = result?.success === false
     ? 'failed'
-    : result?.changed
-      ? 'success'
-      : 'success';
+    : 'success';
 
   const updateRow: Record<string, unknown> = {
     status,
@@ -300,6 +303,7 @@ export async function executeDurableTool(
   };
 }
 
+
 /**
  * Execute multiple tools in sequence, stopping on budget exhaustion.
  * Returns all results (including failed/blocked).
@@ -326,7 +330,10 @@ export async function executeToolChain(
       break;
     }
 
-    const result = await executeDurableTool(toolCall.name, toolCall.args, options);
+    const result = await executeDurableTool(toolCall.name, toolCall.args, {
+      ...options,
+      context: options.context,
+    });
     results.push(result);
 
     // If tool failed, continue anyway but log warning

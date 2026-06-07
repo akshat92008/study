@@ -209,7 +209,7 @@ export async function projectMaterialIngestedToStudyState(input: {
 
   const { data: chunks } = await supabase
     .from('study_material_chunks')
-    .select('id, text, heading, page_start')
+    .select('id, content, text, heading, page_start')
     .eq('material_id', materialId)
     .eq('user_id', input.userId)
     .order('chunk_index', { ascending: true })
@@ -244,7 +244,7 @@ export async function projectMaterialIngestedToStudyState(input: {
     conceptsUpdated = result.changed ? 1 : 0;
   }
 
-  const firstText = asString(chunks?.[0]?.text)?.slice(0, 700);
+  const firstText = asString(chunks?.[0]?.content ?? chunks?.[0]?.text)?.slice(0, 700);
   const cards = firstText
     ? await createRevisionCardsForUser(
         input.userId,

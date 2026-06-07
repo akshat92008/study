@@ -9,8 +9,8 @@ export const AgentNameSchema = z.enum([
   'revision',
   'planner',
   'command',
-  // 'pulse', -- intentionally excluded from MVP runtime
   'system',
+  'cognition_runtime',
 ]);
 export type AgentName = z.infer<typeof AgentNameSchema>;
 

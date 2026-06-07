@@ -2,6 +2,8 @@ import { createClient } from '@/lib/supabase/server';
 import { resolveConcept } from '@/lib/engines/concept-resolver';
 import { recordMasteryEvidence } from '@/lib/engines/mastery-updater';
 import { logger } from '@/lib/utils/logger';
+import { createRevisionCardsForUser } from '@/lib/amaura/agents/repositories';
+import { generateMemoryCard } from '@/lib/memory/cardGenerator';
 
 export interface CompleteLearningSessionInput {
   userId: string;
@@ -251,6 +253,37 @@ export async function completeLearningSession(
     subject,
     chapter,
   });
+
+  // Fix 12: Create/reuse one MEMORY card for conceptId directly
+  // This ensures dashboard completion closes the loop deterministically
+  if (conceptId) {
+    try {
+      const signal = {
+        type: 'session_completed' as const,
+        concept: conceptName,
+        canonicalConcept: conceptName,
+        subject,
+        chapter,
+        confidence: 0.75,
+        evidence: `Completed session on ${subject} / ${chapter}.`,
+      };
+      const generated = generateMemoryCard(signal as any);
+      await createRevisionCardsForUser(input.userId, [{
+        goalId: input.goalId ?? null,
+        conceptId,
+        front: generated.front,
+        back: generated.back,
+        subject,
+        chapter,
+        sourceType: 'session_completed',
+        sourceId: sessionId,
+        origin: 'chat',
+        metadata: { sessionId, signal },
+      }], { client: supabase });
+    } catch (err) {
+      logger.warn('Durable session memory card failed (non-fatal)', { sessionId, error: err });
+    }
+  }
 
   await markCachedSessionCardCompleted(supabase, {
     userId: input.userId,

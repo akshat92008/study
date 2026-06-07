@@ -96,9 +96,19 @@ export async function runCognitionAgentLoop(input: {
 
   const iterationsBudget = new IterationBudget(channel);
   const toolCallsBudget = new ToolCallBudget(channel, maxToolCalls);
+  const policy = getChannelPolicy(channel);
 
   const allWarnings: string[] = [];
   let stepIdx = 0;
+
+  // Fix 7: Add runtimeState to loop for tool-output chaining
+  const runtimeState = {
+    conceptsByName: new Map<string, string>(),
+    latestSignals: [] as LearningSignal[],
+    sourceChunks: [] as RetrievedSourceChunk[],
+    cardIds: [] as string[],
+    toolResults: [] as ToolResultRecord[],
+  };
 
   // Hooks: before agent run
   await hooksMgr.execute('beforeAgentRun', {
@@ -133,21 +143,20 @@ export async function runCognitionAgentLoop(input: {
     toolCallsBudget,
     iterationsBudget,
     hooks: hooksMgr,
+    context, // Fix 4: Pass original context
   });
 
   let contextSummary: JsonObject = {};
-  let sourceChunks: RetrievedSourceChunk[] = [];
   let skills: JsonObject[] = [];
-  let allToolResults: ToolResultRecord[] = [];
 
   for (const res of contextResults) {
     if (res.success && res.result) {
-      allToolResults.push(res.result);
+      runtimeState.toolResults.push(res.result);
       if (res.toolName === 'get_learner_context' && res.result.data) {
         contextSummary = res.result.data;
       }
       if (res.toolName === 'retrieve_source_chunks' && res.result.data?.chunks) {
-        sourceChunks = res.result.data.chunks as RetrievedSourceChunk[];
+        runtimeState.sourceChunks = res.result.data.chunks as RetrievedSourceChunk[];
       }
       if (res.toolName === 'retrieve_agent_skills' && res.result.data?.skills) {
         skills = res.result.data.skills as JsonObject[];
@@ -156,6 +165,10 @@ export async function runCognitionAgentLoop(input: {
       allWarnings.push(...res.warnings, res.error?.message ?? `Failed to execute ${res.toolName}`);
     }
   }
+
+  // Update context with retrieved chunks for subsequent tools
+  context.sourceChunks = runtimeState.sourceChunks;
+  context.contextSummary = contextSummary as any;
 
   // Record context step
   await recordAgentStep(supabase, {
@@ -168,7 +181,6 @@ export async function runCognitionAgentLoop(input: {
 
   const allowedToolNames = new Set(getAllowedToolNames(channel, TOOL_CONFIGS));
   let finalResponseInstruction = finalResponse;
-  const allSignals: LearningSignal[] = [];
   let latestPlan: AgentPlan | AgentPlanOutput | null = null;
   let hasFatalError = false;
 
@@ -178,19 +190,46 @@ export async function runCognitionAgentLoop(input: {
 
     try {
       // PLAN
-      latestPlan = await buildModelPlan({
-        channel,
-        userMessage: observation.userMessage,
-        payload: observation.payload,
-        contextSummary,
-        sourceChunks: sourceChunks as any,
-        learningSignals: allSignals,
-        skills,
-        allowedToolNames: Array.from(allowedToolNames),
-      });
+      // Fix 6: Enforce allowModelPlanning policy. If false, use deterministic fallback directly.
+      if (policy.allowModelPlanning) {
+        latestPlan = await buildModelPlan({
+          channel,
+          observation, // Fix 6: Pass real observation
+          userMessage: observation.userMessage,
+          payload: observation.payload,
+          contextSummary,
+          sourceChunks: runtimeState.sourceChunks as any,
+          learningSignals: runtimeState.latestSignals,
+          skills,
+          allowedToolNames: Array.from(allowedToolNames),
+        });
+      } else {
+        logger.info('Using deterministic plan due to policy', { channel });
+        const deterministic = buildAgentPlan({
+          observation,
+          signals: runtimeState.latestSignals,
+          sourceChunks: runtimeState.sourceChunks,
+        });
+        latestPlan = {
+          ...deterministic,
+          plan_source: 'deterministic',
+          observations: [],
+        } as AgentPlanOutput;
+      }
 
       // Filter required_tools against policy
       const requiredTools = latestPlan.required_tools.filter(t => allowedToolNames.has(t.name));
+
+      // Fix 7: Tool-output chaining - Resolve concept IDs from runtimeState before execution
+      for (const tool of requiredTools) {
+        if ((tool.name === 'update_concept_mastery' || tool.name === 'create_memory_card') && !tool.input.conceptId) {
+          const conceptName = (tool.input as any).conceptName || (tool.input as any).concept || (tool.input as any).topic;
+          if (conceptName && runtimeState.conceptsByName.has(conceptName)) {
+            tool.input.conceptId = runtimeState.conceptsByName.get(conceptName);
+            logger.info('Resolved conceptId from runtimeState', { toolName: tool.name, conceptName, conceptId: tool.input.conceptId });
+          }
+        }
+      }
 
       await hooksMgr.execute('afterModelPlan', {
         runId: trajectoryId,
@@ -214,7 +253,10 @@ export async function runCognitionAgentLoop(input: {
         },
       }).catch((e: unknown) => logger.warn('recordAgentStep plan error', { error: String(e) }));
 
-      allSignals.push(...latestPlan.learning_signals);
+      // Merge signals from plan into runtimeState
+      if (latestPlan.learning_signals?.length) {
+        runtimeState.latestSignals.push(...latestPlan.learning_signals);
+      }
       allWarnings.push(...latestPlan.risk_flags);
 
       // Break if no tools needed
@@ -236,12 +278,27 @@ export async function runCognitionAgentLoop(input: {
           toolCallsBudget,
           iterationsBudget,
           hooks: hooksMgr,
+          context, // Fix 4: Pass original context
         }
       );
 
       for (const res of iterResults) {
         if (res.success && res.result) {
-          allToolResults.push(res.result);
+          runtimeState.toolResults.push(res.result);
+          
+          // Fix 7: Update runtimeState from tool results
+          if (res.toolName === 'upsert_atlas_concept' && res.result.data?.conceptId) {
+            const conceptName = (res.result.data as any).name || (res.result.data as any).concept;
+            if (conceptName) runtimeState.conceptsByName.set(conceptName, res.result.data.conceptId as string);
+          }
+          if (res.toolName === 'extract_learning_signals' && res.result.data?.signals) {
+            runtimeState.latestSignals.push(...(res.result.data.signals as LearningSignal[]));
+          }
+          if (res.toolName === 'retrieve_source_chunks' && res.result.data?.chunks) {
+            runtimeState.sourceChunks = res.result.data.chunks as RetrievedSourceChunk[];
+            context.sourceChunks = runtimeState.sourceChunks;
+          }
+
           await recordAgentStep(supabase, {
             runId: trajectoryId,
             userId: context.userId,
@@ -277,15 +334,16 @@ export async function runCognitionAgentLoop(input: {
   const verification = await verifyAgentTurn({
     supabase,
     userId: context.userId,
+    runId: trajectoryId, // Fix 9: Pass runId
     observation,
-    sourceChunks,
-    toolResults: allToolResults,
+    sourceChunks: runtimeState.sourceChunks,
+    toolResults: runtimeState.toolResults,
   });
 
   if (verification.warnings?.length) allWarnings.push(...verification.warnings);
   if (verification.errors?.length) allWarnings.push(...verification.errors.map(e => `verification_error: ${e}`));
 
-  const mutationSummary = summarizeMutations(allToolResults);
+  const mutationSummary = summarizeMutations(runtimeState.toolResults);
   mutationSummary.warnings = allWarnings;
 
   // 7. RESPOND & 8. REMEMBER/ADAPT
@@ -325,14 +383,14 @@ export async function runCognitionAgentLoop(input: {
     trajectoryId,
     verificationOk: verification.ok,
     mutationsChanged: mutationSummary.changed,
-    toolsExecuted: allToolResults.length,
+    toolsExecuted: runtimeState.toolResults.length,
     iterationsUsed: iterationsBudget.used,
   });
 
   const agentPlan = latestPlan ?? {
     answer_intent: 'fallback',
     observations: [],
-    learning_signals: allSignals,
+    learning_signals: runtimeState.latestSignals,
     required_tools: [],
     expected_mutations: [],
     pedagogical_next_step: { type: 'continue' },
@@ -365,16 +423,19 @@ export async function runCognitionAgentLoop(input: {
     contextSummary: contextSummary as any,
     sourceRetrievalSummary: {
       requested: observation.sourceRequested,
-      chunkCount: sourceChunks.length,
-      chunkIds: sourceChunks.map(c => c.id),
+      chunkCount: runtimeState.sourceChunks.length,
+      chunkIds: runtimeState.sourceChunks.map(c => c.id),
       verified: true
     },
     agentPlan: agentPlan as AgentPlan,
-    toolCalls: allToolResults.map(r => ({ id: r.id, name: r.toolName, input: {}, startedAt: r.startedAt })),
-    toolResults: allToolResults,
-    learningSignals: allSignals,
+    toolCalls: runtimeState.toolResults.map(r => ({ id: r.id, name: r.toolName, input: {}, startedAt: r.startedAt })),
+    toolResults: runtimeState.toolResults,
+    learningSignals: runtimeState.latestSignals,
     mutationSummary,
     verification,
     nextRecommendedAction,
+    usedIterations: iterationsBudget.used, // Fix 10: Populate usage stats
+    usedToolCalls: runtimeState.toolResults.length, // Fix 10: Populate usage stats
   };
 }
+
