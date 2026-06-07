@@ -251,6 +251,7 @@ export async function runCognitionAgentLoop(input: {
   const verification = await verifyAgentTurn({
     supabase: input.context.supabase,
     userId: input.context.userId,
+    runId: input.trajectoryId,
     observation,
     sourceChunks,
     toolResults: state.results,

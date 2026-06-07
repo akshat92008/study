@@ -21,7 +21,6 @@ async function keywordFallback(context: any, input: { query: string; materialIds
       id,
       material_id,
       content,
-      text,
       heading,
       page_start,
       page_end,
@@ -43,8 +42,8 @@ async function keywordFallback(context: any, input: { query: string; materialIds
   return data
     .map((row: any) => {
       const material = Array.isArray(row.study_materials) ? row.study_materials[0] : row.study_materials;
-      // Fix 2: Support legacy text through coalesce
-      const content = row.content || row.text || '';
+      // Fix 2: Standardize on content. Legacy handled by migration.
+      const content = row.content || '';
       const lower = content.toLowerCase();
       const hits = terms.length ? terms.filter((term) => lower.includes(term)).length : 1;
       return {

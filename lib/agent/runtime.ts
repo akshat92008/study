@@ -5,6 +5,7 @@ import type { AgentToolContext, CognitionAgentRuntimeOptions, CognitionAgentTurn
 import { buildObservation } from '@/lib/agent/planner';
 import { runCognitionAgentLoop } from '@/lib/agent/loop';
 import { writeTrajectory } from '@/lib/agent/tracing/writeTrajectory';
+import { logger } from '@/lib/utils/logger';
 
 function hashTurn(input: CognitionAgentTurnInput) {
   return createHash('sha256')
@@ -87,6 +88,8 @@ export async function runCognitionAgentTurn(
       supabase,
       userId: input.userId,
       runId: run.id,
+      turn: input,
+      observation,
       output,
       errors: output.verification.errors,
     });

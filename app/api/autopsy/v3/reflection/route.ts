@@ -62,6 +62,7 @@ export async function POST(req: NextRequest) {
           topic: parsed.data.topic,
           memoryId: memory?.id,
           source: 'autopsy_v3_reflection',
+          alreadyProjected: true, // Fix 9: Prevent duplicate autopsy mutations
         },
         sessionId: undefined,
       }, { supabase: supabase as any });

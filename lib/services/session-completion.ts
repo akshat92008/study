@@ -31,6 +31,8 @@ export interface CompleteLearningSessionResult {
   chapter: string;
   understood: boolean;
   cardsCreated: number;
+  memoryCardId?: string | null;
+  warning?: string;
 }
 
 function getLocalDate(timezone?: string | null): string {
@@ -256,6 +258,9 @@ export async function completeLearningSession(
 
   // Fix 12: Create/reuse one MEMORY card for conceptId directly
   // This ensures dashboard completion closes the loop deterministically
+  let memoryCardId: string | null = null;
+  let cardsCreatedResult = cardsCreated;
+
   if (conceptId) {
     try {
       const signal = {
@@ -268,7 +273,7 @@ export async function completeLearningSession(
         evidence: `Completed session on ${subject} / ${chapter}.`,
       };
       const generated = generateMemoryCard(signal as any);
-      await createRevisionCardsForUser(input.userId, [{
+      const [card] = await createRevisionCardsForUser(input.userId, [{
         goalId: input.goalId ?? null,
         conceptId,
         front: generated.front,
@@ -280,6 +285,11 @@ export async function completeLearningSession(
         origin: 'chat',
         metadata: { sessionId, signal },
       }], { client: supabase });
+      
+      if (card?.id) {
+        memoryCardId = card.id;
+        cardsCreatedResult = Math.max(cardsCreatedResult, 1);
+      }
     } catch (err) {
       logger.warn('Durable session memory card failed (non-fatal)', { sessionId, error: err });
     }
@@ -312,10 +322,11 @@ export async function completeLearningSession(
     sessionId,
     conceptId,
     streakDays: newStreak,
-    streakChanged,
+    streakChanged: streakChanged,
     subject,
     chapter,
     understood,
-    cardsCreated,
+    cardsCreated: cardsCreatedResult,
+    memoryCardId,
   };
 }

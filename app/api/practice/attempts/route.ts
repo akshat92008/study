@@ -303,7 +303,11 @@ export async function POST(req: NextRequest) {
         },
         items: persistedEventItems,
       },
-      metadata: { source: 'mind_chat_mcq', goalId: set.goal_id ?? null },
+      metadata: { 
+        source: 'mind_chat_mcq', 
+        goalId: set.goal_id ?? null,
+        runtimeProcessed: true // Fix 8: Prevent duplicate ATLAS/MEMORY projection
+      },
       idempotency_key: `practice_attempt:${user.id}:${set.id}:${idempotencySeed}`
     }).catch(() => undefined);
 
@@ -371,7 +375,6 @@ export async function POST(req: NextRequest) {
     const loopSummary = {
       saved: true,
       mistakesCreated: (profileSync as any)?.mistakesCreated ?? 0,
-...
       repairCardsCreated: (profileSync as any)?.repairCardsCreated ?? 0,
       retestsScheduled: (profileSync as any)?.retestsScheduled ?? 0,
       tomorrowSessionUpdated: (profileSync as any)?.sessionCardInvalidated === true,

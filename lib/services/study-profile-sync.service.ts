@@ -4,7 +4,19 @@ import { invalidateSessionCard } from '@/lib/services/session-card-invalidation'
 import { runCognitionAgentTurn } from '@/lib/agent/runtime';
 import type { CognitionAgentTurnOutput } from '@/lib/agent/types';
 
-// ... PracticeSyncItem type unchanged ...
+type PracticeSyncItem = {
+  attemptId?: string | null;
+  practiceItemId?: string | null;
+  question?: string | null;
+  conceptId?: string | null;
+  conceptName?: string | null;
+  subject?: string | null;
+  chapter?: string | null;
+  topic?: string | null;
+  isCorrect: boolean;
+  selectedAnswer?: string | null;
+  correctAnswer?: string | null;
+};
 
 export async function syncStudyProfileAfterPracticeAttempt(
   supabase: SupabaseClient,
@@ -44,8 +56,9 @@ export async function syncStudyProfileAfterPracticeAttempt(
       });
     }
 
-    const total = input.metrics.correctCount + input.metrics.wrongCount;
-...
+    const { correctCount, wrongCount } = input.metrics;
+    const total = correctCount + wrongCount;
+    const scorePct = total > 0 ? Math.round((correctCount / total) * 100) : null;
 
 
     if (goalId && scorePct !== null) {

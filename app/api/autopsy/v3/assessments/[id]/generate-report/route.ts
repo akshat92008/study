@@ -197,6 +197,7 @@ export async function POST(req: NextRequest, context: RouteContext) {
           highRiskTopics: report.highRiskTopics,
           diagnosesCount: diagnoses.length,
           source: 'autopsy_v3_generate_report',
+          alreadyProjected: true, // Fix 9: Prevent duplicate autopsy mutations
         },
         sessionId: undefined,
       }, { supabase: supabase as any });

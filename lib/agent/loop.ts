@@ -24,17 +24,18 @@ import type {
   AgentPlan,
   ToolResultRecord,
 } from '@/lib/agent/types';
-import { buildObservation } from '@/lib/agent/planner';
+import { buildObservation, buildAgentPlan } from '@/lib/agent/planner';
 import { HooksManager, createDefaultHooksManager } from '@/lib/agent/hooks';
 import { executeDurableTool, executeToolChain, recordAgentStep } from '@/lib/agent/tools/executor';
 import { logger } from '@/lib/utils/logger';
 import { ToolCallBudget, IterationBudget } from '@/lib/agent/budget';
 import { buildModelPlan, AgentPlanOutput } from '@/lib/agent/modelPlanner';
 import { verifyAgentTurn } from '@/lib/agent/verifier';
-import { getAllowedToolNames } from '@/lib/agent/policy';
+import { getAllowedToolNames, getChannelPolicy } from '@/lib/agent/policy';
 import { TOOL_CONFIGS } from '@/lib/agent/tools/toolsets';
 import { nextRecommendedActionFromMutations } from '@/lib/mission/sessionProgressEngine';
 import { applyResponseClaimGuard } from '@/lib/agent/guardrails/responseClaimGuard';
+import { compileToolPlan, RuntimeState } from '@/lib/agent/toolCompiler';
 
 function summarizeMutations(results: ToolResultRecord[]): MutationSummary {
   const summary: MutationSummary = {
@@ -102,7 +103,7 @@ export async function runCognitionAgentLoop(input: {
   let stepIdx = 0;
 
   // Fix 7: Add runtimeState to loop for tool-output chaining
-  const runtimeState = {
+  const runtimeState: RuntimeState = {
     conceptsByName: new Map<string, string>(),
     latestSignals: [] as LearningSignal[],
     sourceChunks: [] as RetrievedSourceChunk[],
@@ -220,16 +221,14 @@ export async function runCognitionAgentLoop(input: {
       // Filter required_tools against policy
       const requiredTools = latestPlan.required_tools.filter(t => allowedToolNames.has(t.name));
 
-      // Fix 7: Tool-output chaining - Resolve concept IDs from runtimeState before execution
-      for (const tool of requiredTools) {
-        if ((tool.name === 'update_concept_mastery' || tool.name === 'create_memory_card') && !tool.input.conceptId) {
-          const conceptName = (tool.input as any).conceptName || (tool.input as any).concept || (tool.input as any).topic;
-          if (conceptName && runtimeState.conceptsByName.has(conceptName)) {
-            tool.input.conceptId = runtimeState.conceptsByName.get(conceptName);
-            logger.info('Resolved conceptId from runtimeState', { toolName: tool.name, conceptName, conceptId: tool.input.conceptId });
-          }
-        }
-      }
+      // Fix 4: Compile semantic placeholders into concrete valid tool calls
+      const compiledTools = compileToolPlan({
+        plannedTools: requiredTools,
+        runtimeState,
+        context,
+        observation,
+        finalResponse: finalResponseInstruction,
+      });
 
       await hooksMgr.execute('afterModelPlan', {
         runId: trajectoryId,
@@ -269,7 +268,7 @@ export async function runCognitionAgentLoop(input: {
 
       // ACT
       const iterResults = await executeToolChain(
-        requiredTools.map(t => ({ name: t.name, args: t.input })),
+        compiledTools, // Fix 4: Use compiled tools
         {
           supabase,
           userId: context.userId,
@@ -286,10 +285,19 @@ export async function runCognitionAgentLoop(input: {
         if (res.success && res.result) {
           runtimeState.toolResults.push(res.result);
           
-          // Fix 7: Update runtimeState from tool results
+          // Fix 7 & Fix 5: Update runtimeState from tool results
           if (res.toolName === 'upsert_atlas_concept' && res.result.data?.conceptId) {
-            const conceptName = (res.result.data as any).name || (res.result.data as any).concept;
-            if (conceptName) runtimeState.conceptsByName.set(conceptName, res.result.data.conceptId as string);
+            // Fix 5: Robust concept name resolution
+            const conceptName = 
+              (res.result.data as any).concept?.name ?? 
+              (res.result.data as any).conceptName ?? 
+              (res.result.data as any).name ?? 
+              (res.result.data as any).concept;
+
+            if (conceptName && typeof conceptName === 'string') {
+              runtimeState.conceptsByName.set(conceptName, res.result.data.conceptId as string);
+              logger.info('Stored conceptId in runtimeState', { conceptName, conceptId: res.result.data.conceptId });
+            }
           }
           if (res.toolName === 'extract_learning_signals' && res.result.data?.signals) {
             runtimeState.latestSignals.push(...(res.result.data.signals as LearningSignal[]));
@@ -297,6 +305,9 @@ export async function runCognitionAgentLoop(input: {
           if (res.toolName === 'retrieve_source_chunks' && res.result.data?.chunks) {
             runtimeState.sourceChunks = res.result.data.chunks as RetrievedSourceChunk[];
             context.sourceChunks = runtimeState.sourceChunks;
+          }
+          if (res.toolName === 'create_memory_card' && res.result.entityIds?.[0]) {
+            runtimeState.cardIds.push(res.result.entityIds[0]);
           }
 
           await recordAgentStep(supabase, {

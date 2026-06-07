@@ -39,24 +39,31 @@ export async function verifyAgentTurn(input: {
     checks.push(check);
     
     // Fix 9: Write agent_verifications row for mutating tools
-    await input.supabase.from('agent_verifications').insert({
-      run_id: input.runId,
-      tool_call_id: result.id,
-      user_id: input.userId,
-      verification_type: table,
-      entity_type: entityType,
-      entity_id: id,
-      expected: { exists: true },
-      actual: { exists: verified.ok, message: verified.message },
-      success: verified.ok,
-      summary: `${result.toolName} verified against ${table}`,
-    }).catch(e => console.warn('Failed to write agent_verification', e));
+    try {
+      await input.supabase.from('agent_verifications').insert({
+        run_id: input.runId,
+        tool_call_id: result.id,
+        user_id: input.userId,
+        verification_type: table,
+        entity_type: entityType,
+        entity_id: id,
+        expected: { exists: true },
+        actual: { exists: verified.ok, message: verified.message },
+        success: verified.ok,
+        summary: `${result.toolName} verified against ${table}`,
+      });
+    } catch (e) {
+      console.warn('Failed to write agent_verification', e);
+    }
 
     // Update agent_tool_calls row with verification status
-    await input.supabase.from('agent_tool_calls')
-      .update({ verification: check })
-      .eq('id', result.id)
-      .catch(e => console.warn('Failed to update agent_tool_call verification', e));
+    try {
+      await input.supabase.from('agent_tool_calls')
+        .update({ verification: check })
+        .eq('id', result.id);
+    } catch (e) {
+      console.warn('Failed to update agent_tool_call verification', e);
+    }
 
     if (!verified.ok) errors.push(`${result.toolName}: could not verify ${entityType} ${id}`);
   }

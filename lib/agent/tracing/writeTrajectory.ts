@@ -1,16 +1,18 @@
 import { completeAgentRun, createAgentSnapshot } from '@/lib/agents/agent-runtime';
-import type { CognitionAgentTurnOutput, JsonObject } from '@/lib/agent/types';
+import type { AgentObservation, CognitionAgentTurnInput, CognitionAgentTurnOutput, JsonObject } from '@/lib/agent/types';
 import type { SupabaseClient } from '@supabase/supabase-js';
 
 export async function writeTrajectory(input: {
   supabase: SupabaseClient;
   userId: string;
   runId: string;
+  turn: CognitionAgentTurnInput;
+  observation: AgentObservation;
   output: CognitionAgentTurnOutput;
   errors?: string[];
 }) {
   const snapshot = {
-    channel: input.output.agentPlan.answer_intent,
+    channel: input.turn.channel,
     contextSummary: input.output.contextSummary,
     sourceRetrievalSummary: input.output.sourceRetrievalSummary,
     agentPlan: input.output.agentPlan,
@@ -32,11 +34,11 @@ export async function writeTrajectory(input: {
 
   // Fix 10: Populate agent_runs canonical columns
   const updateData: any = {
-    channel: input.output.contextSummary.profile?.channel as string || 'chat',
-    goal_id: (input.output.contextSummary.activeGoal as any)?.id || null,
-    conversation_id: input.output.trajectoryId,
-    session_id: (input.output.contextSummary as any)?.sessionId || null,
-    observation: input.output.observation as any,
+    channel: input.turn.channel,
+    goal_id: input.turn.goalId ?? null,
+    conversation_id: input.turn.conversationId ?? null,
+    session_id: input.turn.sessionId ?? null,
+    observation: input.observation as any,
     context_summary: input.output.contextSummary as any,
     source_summary: input.output.sourceRetrievalSummary as any,
     plan: input.output.agentPlan as any,

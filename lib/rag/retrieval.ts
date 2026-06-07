@@ -206,7 +206,6 @@ async function keywordFallback(input: RagRetrieveInput, topK: number): Promise<R
       page_end,
       heading,
       content,
-      text,
       study_materials!inner(title, source_type, subject, chapter, status)
     `)
     .eq('user_id', input.userId)
@@ -230,7 +229,7 @@ async function keywordFallback(input: RagRetrieveInput, topK: number): Promise<R
 
   return data
     .map((row: any) => {
-      const content = row.content || row.text || '';
+      const content = row.content || '';
       const score = keywordScore(content, terms);
       const material = Array.isArray(row.study_materials)
         ? row.study_materials[0]

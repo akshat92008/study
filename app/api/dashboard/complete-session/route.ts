@@ -80,6 +80,7 @@ export async function POST(req: NextRequest) {
           gapFound: body.gapFound ?? null,
           cardsCreated: result.cardsCreated,
           source: 'complete_session',
+          alreadyCompleted: true, // Fix 7: Tell runtime this session is already saved
         },
         sessionId: undefined,
       }, { supabase: supabase as any });

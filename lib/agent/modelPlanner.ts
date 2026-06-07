@@ -329,19 +329,7 @@ export async function buildModelPlan(input: ModelPlannerInput): Promise<AgentPla
   // Fallback to deterministic planning
   logger.info('Using deterministic fallback plan', { channel: input.channel });
   const deterministicPlan = buildAgentPlan({
-    observation: {
-      channel: input.channel,
-      userMessage: input.userMessage ?? '',
-      payload: input.payload ?? {},
-      conversationId: null,
-      sessionId: null,
-      goalId: input.contextSummary ? (input.contextSummary as any)?.goalId : null,
-      sourceRequested: false,
-      confusionLikely: false,
-      practicePayload: false,
-      autopsyPayload: false,
-      sessionCompletionRequested: false,
-    },
+    observation: input.observation,
     signals: input.learningSignals ?? [],
     sourceChunks: (input.sourceChunks ?? []) as any[],
   });
