@@ -37,6 +37,7 @@
   "exclude": [
     "node_modules",
     "scratch",
+    "hermes-agent-main",
     ".next/dev",
     "temp_neetapp",
     "tests",
