@@ -1,0 +1,357 @@
+/**
+ * Model Planner - LLM-based planning for the agent runtime.
+ *
+ * The model planner produces a JSON plan that selects tools from the registry.
+ * It uses the app's configured AI provider, inheriting from existing config.
+ *
+ * If the model is unavailable or the plan is invalid, it falls back to
+ * deterministic planning using buildAgentPlan.
+ */
+import type { z } from 'zod';
+import { z as zod } from 'zod';
+import { logger } from '@/lib/utils/logger';
+import type { AgentChannel, JsonObject, LearningSignal } from './types';
+import { buildAgentPlan } from './planner';
+import { generateJSON, MODELS } from '@/lib/ai/provider-client';
+
+// Plan schema - must match what the model produces
+export const ModelPlanSchema = zod.object({
+  answer_intent: zod.string(),
+  observations: zod.array(zod.object({
+    type: zod.enum([
+      'confusion', 'misconception', 'source_request', 'practice_result',
+      'revision_need', 'session_completion', 'autopsy_mistake', 'general'
+    ]),
+    summary: zod.string(),
+    confidence: zod.number().min(0).max(1),
+  })).default([]),
+  learning_signals: zod.array(zod.object({
+    signal_type: zod.enum([
+      'weak_area_detected', 'misconception_detected', 'concept_understood',
+      'source_used', 'revision_needed', 'practice_needed',
+      'explanation_generated', 'session_should_adapt'
+    ]),
+    concept_name: zod.string().nullable(),
+    confidence: zod.number().min(0).max(1),
+    evidence: zod.string(),
+  })).default([]),
+  required_tools: zod.array(zod.object({
+    tool_name: zod.string(),
+    reason: zod.string(),
+    input: zod.record(zod.unknown()),
+    priority: zod.number().min(1).max(10),
+    expected_mutation: zod.boolean(),
+  })).default([]),
+  expected_mutations: zod.array(zod.object({
+    entity_type: zod.string(),
+    action: zod.string(),
+    reason: zod.string(),
+  })).default([]),
+  risk_flags: zod.array(zod.string()).default([]),
+  should_continue_after_tools: zod.boolean(),
+  final_response_instruction: zod.string(),
+  confidence: zod.number().min(0).max(1),
+});
+
+type ModelPlanType = z.infer<typeof ModelPlanSchema>;
+
+export type ModelPlan = ModelPlanType;
+
+export interface AgentPlanOutput {
+  answer_intent: string;
+  observations: Array<{ type: string; summary: string; confidence: number }>;
+  learning_signals: LearningSignal[];
+  required_tools: Array<{ name: string; input: JsonObject }>;
+  expected_mutations: string[];
+  pedagogical_next_step: JsonObject;
+  confidence: number;
+  risk_flags: string[];
+  plan_source: 'model' | 'deterministic';
+}
+
+interface ModelPlannerInput {
+  channel: AgentChannel;
+  userMessage?: string;
+  payload?: JsonObject;
+  contextSummary?: JsonObject;
+  sourceChunks?: JsonObject[];
+  learningSignals?: LearningSignal[];
+  skills?: JsonObject[];
+  allowedToolNames?: string[];
+}
+
+const TOOL_PROMPTS: Record<string, string> = {
+  get_learner_context: 'get_learner_context - Load learner profile, goal, mission, ATLAS concepts, MEMORY cards, and sources',
+  retrieve_source_chunks: 'retrieve_source_chunks - Fetch relevant source chunks for a topic',
+  extract_learning_signals: 'extract_learning_signals - Analyze message for learning signals',
+  diagnose_weak_areas: 'diagnose_weak_areas - Infer related weak concepts',
+  upsert_atlas_concept: 'upsert_atlas_concept - Create or update a concept in ATLAS',
+  update_concept_mastery: 'update_concept_mastery - Update mastery for a concept',
+  create_memory_card: 'create_memory_card - Create a MEMORY revision card',
+  update_microtarget: 'update_microtarget - Update daily microtarget progress',
+  write_learning_event: 'write_learning_event - Log a learning event',
+  apply_practice_attempt: 'apply_practice_attempt - Process a practice attempt',
+  complete_session: 'complete_session - Complete a study session',
+  adapt_daily_plan: 'adapt_daily_plan - Adapt the daily learning plan',
+  record_autopsy_mistake: 'record_autopsy_mistake - Record a mistake from autopsy',
+  verify_weak_area_state: 'verify_weak_area_state - Verify ATLAS/MEMORY state',
+  read_trajectory_context: 'read_trajectory_context - Load recent trajectory context',
+  create_agent_skill: 'create_agent_skill - Create a durable agent skill',
+  mark_skill_used: 'mark_skill_used - Mark a skill as used',
+  propose_next_action: 'propose_next_action - Propose next learning action',
+};
+
+function buildPlanningPrompt(input: ModelPlannerInput): string {
+  const channel = input.channel;
+  const tools = Object.entries(TOOL_PROMPTS)
+    .map(([name, desc]) => `  - ${desc}`)
+    .join('\n');
+
+  const signalList = input.learningSignals
+    ?.map(s => `  - [${s.type}] ${s.concept ?? 'unknown'}: ${s.evidence ?? ''}`)
+    .join('\n') ?? '  None detected yet';
+
+  const skillList = input.skills
+    ?.map((s: any) => `  - ${s.name}: ${s.description}`)
+    .join('\n') ?? '  None active';
+
+  const chunkInfo = input.sourceChunks?.length
+    ? `${input.sourceChunks.length} source chunk(s) retrieved`
+    : 'No source chunks retrieved';
+
+  return `You are a learning agent planning the next actions for a student in a medical exam preparation platform (Cognition OS).
+
+## Current Context
+- Channel: ${channel}
+- User message: ${input.userMessage?.slice(0, 300) ?? '(no message)'}
+- Source chunks: ${chunkInfo}
+- ${input.contextSummary ? JSON.stringify(input.contextSummary).slice(0, 500) : 'Context not yet loaded'}
+
+## Active Learning Signals (from this turn)
+${signalList}
+
+## Relevant Skills (if any)
+${skillList}
+
+## Available Tools
+You may ONLY choose from this list:
+${tools}
+
+## Task
+Based on the context above, produce a JSON plan with:
+1. "answer_intent": What the response should accomplish
+2. "observations": What you observed about the user's state
+3. "learning_signals": Learning signal types and concepts detected
+4. "required_tools": List of tools to call (MUST be from the allowed list above)
+5. "expected_mutations": What state changes will result
+6. "risk_flags": Any concerns about the plan
+7. "should_continue_after_tools": Whether to continue after tool calls
+8. "final_response_instruction": Instruction for the final response
+9. "confidence": High (0.8+) if confident about plan, lower if uncertain
+
+## Rules
+- Only use tools from the allowed list above
+- For mutating tools (upsert_atlas_concept, update_concept_mastery, create_memory_card, etc.), confidence must be 0.65+
+- Do not invent tool names or state changes not supported
+- If source was requested but not retrieved, flag risk_flags
+- Output ONLY valid JSON - no markdown, no explanation
+
+Respond with a JSON object matching this schema:
+{
+  "answer_intent": string,
+  "observations": [{type, summary, confidence}],
+  "learning_signals": [{signal_type, concept_name, confidence, evidence}],
+  "required_tools": [{tool_name, reason, input, priority, expected_mutation}],
+  "expected_mutations": [{entity_type, action, reason}],
+  "risk_flags": string[],
+  "should_continue_after_tools": boolean,
+  "final_response_instruction": string,
+  "confidence": number
+}`;
+}
+
+async function callModelForPlan(
+  prompt: string,
+  modelTier?: 'fast' | 'strong'
+): Promise<string> {
+  try {
+    // Use the 'flash' model for fast planning (fast tier) or 'pro' for stronger
+    const modelKey = modelTier === 'strong' ? 'pro' : 'flash';
+
+    const result = await generateJSON(
+      modelKey,
+      'You are a JSON-only planner. Output ONLY valid JSON, no markdown or explanation.',
+      prompt,
+      ModelPlanSchema,
+      0.3
+    );
+
+    return JSON.stringify(result);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    logger.warn('Model planning failed, will use deterministic fallback', { error: message });
+    throw error;
+  }
+}
+
+async function repairPlan(
+  prompt: string,
+  errors: string[],
+  attemptNumber: number
+): Promise<ModelPlan | null> {
+  const repairPrompt = `${prompt}\n\n## Validation Errors
+Your previous plan had these errors:
+${errors.map(e => `- ${e}`).join('\n')}
+
+Please fix these and output ONLY valid JSON.`;
+
+  try {
+    const result = await callModelForPlan(repairPrompt, 'fast');
+    return JSON.parse(result) as ModelPlan;
+  } catch {
+    logger.warn(`Plan repair attempt ${attemptNumber} failed`);
+    return null;
+  }
+}
+
+/**
+ * Build a plan using the model, with fallback to deterministic planning.
+ */
+export async function buildModelPlan(input: ModelPlannerInput): Promise<AgentPlanOutput> {
+  const prompt = buildPlanningPrompt(input);
+  const maxRetries = 1;
+
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      const rawResult = await callModelForPlan(prompt, 'fast');
+      const parsed = ModelPlanSchema.safeParse(JSON.parse(rawResult));
+
+      if (parsed.success) {
+        const plan = parsed.data;
+        logger.info('Model plan generated', {
+          channel: input.channel,
+          toolCount: plan.required_tools.length,
+          confidence: plan.confidence,
+        });
+
+        return {
+          answer_intent: plan.answer_intent,
+          observations: plan.observations,
+          learning_signals: plan.learning_signals.map((ls: any) => ({
+            type: ls.signal_type,
+            concept: ls.concept_name ?? null,
+            confidence: ls.confidence,
+            evidence: ls.evidence,
+          })),
+          required_tools: plan.required_tools.map((t: any) => ({
+            name: t.tool_name,
+            input: t.input,
+          })),
+          expected_mutations: plan.expected_mutations.map((m: any) => `${m.entity_type}:${m.action}`),
+          pedagogical_next_step: {
+            type: plan.should_continue_after_tools ? 'continue' : 'final',
+            risk_flags: plan.risk_flags,
+          },
+          confidence: plan.confidence,
+          risk_flags: plan.risk_flags,
+          plan_source: 'model',
+        };
+      } else {
+        const errors = parsed.error.issues.map((i: any) => `${i.path.join('.')}: ${i.message}`);
+        logger.warn('Model plan validation failed', { errors, attempt });
+
+        if (attempt === 0) {
+          const repaired = await repairPlan(prompt, errors, attempt + 1);
+          if (repaired) {
+            const recheck = ModelPlanSchema.safeParse(repaired);
+            if (recheck.success) {
+              const plan = recheck.data;
+              return {
+                answer_intent: plan.answer_intent,
+                observations: plan.observations,
+                learning_signals: plan.learning_signals.map((ls: any) => ({
+                  type: ls.signal_type,
+                  concept: ls.concept_name ?? null,
+                  confidence: ls.confidence,
+                  evidence: ls.evidence,
+                })),
+                required_tools: plan.required_tools.map((t: any) => ({
+                  name: t.tool_name,
+                  input: t.input,
+                })),
+                expected_mutations: plan.expected_mutations.map((m: any) => `${m.entity_type}:${m.action}`),
+                pedagogical_next_step: {
+                  type: plan.should_continue_after_tools ? 'continue' : 'final',
+                  risk_flags: plan.risk_flags,
+                },
+                confidence: plan.confidence,
+                risk_flags: plan.risk_flags,
+                plan_source: 'model',
+              };
+            }
+          }
+        }
+
+        logger.info('Model planning failed validation, using deterministic fallback');
+        break;
+      }
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      logger.warn(`Model planning attempt ${attempt + 1} failed: ${message}`);
+      if (attempt === maxRetries) {
+        logger.info('Model planning exhausted, using deterministic fallback');
+        break;
+      }
+    }
+  }
+
+  // Fallback to deterministic planning
+  logger.info('Using deterministic fallback plan', { channel: input.channel });
+  const deterministicPlan = buildAgentPlan({
+    observation: {
+      channel: input.channel,
+      userMessage: input.userMessage ?? '',
+      payload: input.payload ?? {},
+      conversationId: null,
+      sessionId: null,
+      goalId: input.contextSummary ? (input.contextSummary as any)?.goalId : null,
+      sourceRequested: false,
+      confusionLikely: false,
+      practicePayload: false,
+      autopsyPayload: false,
+      sessionCompletionRequested: false,
+    },
+    signals: input.learningSignals ?? [],
+    sourceChunks: (input.sourceChunks ?? []) as any[],
+  });
+
+  return {
+    answer_intent: deterministicPlan.answer_intent,
+    observations: [],
+    learning_signals: deterministicPlan.learning_signals,
+    required_tools: deterministicPlan.required_tools.map((t) => ({ name: t.name, input: t.input })),
+    expected_mutations: deterministicPlan.expected_mutations,
+    pedagogical_next_step: deterministicPlan.pedagogical_next_step,
+    confidence: deterministicPlan.confidence,
+    risk_flags: deterministicPlan.risk_flags,
+    plan_source: 'deterministic',
+  };
+}
+
+/**
+ * Validate that required tools in a plan exist in the registry
+ */
+export function validatePlanTools(plan: AgentPlanOutput, allowedToolNames: Set<string>): { valid: boolean; invalidTools: string[] } {
+  const invalidTools: string[] = [];
+
+  for (const tool of plan.required_tools) {
+    if (!allowedToolNames.has(tool.name)) {
+      invalidTools.push(tool.name);
+    }
+  }
+
+  return {
+    valid: invalidTools.length === 0,
+    invalidTools,
+  };
+}

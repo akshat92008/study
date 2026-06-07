@@ -4,6 +4,8 @@ import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/li
 import { ingestLearningSignal } from '@/lib/learning-signals/ingest';
 import { jsonWithRequestId, requireAutopsyV3User } from '@/lib/autopsy-v3/permissions';
 import { writePatternMemoryForUser } from '@/lib/amaura/agents/repositories';
+import { runCognitionAgentTurn } from '@/lib/agent/runtime';
+import { logger } from '@/lib/utils/logger';
 
 const BodySchema = z.object({
   goalId: z.string().uuid().nullable().optional(),
@@ -47,7 +49,35 @@ export async function POST(req: NextRequest) {
       sourceRefs: [{ source_type: 'self_reflection', at: new Date().toISOString() }],
     });
 
-    return jsonWithRequestId({ signal, memory }, requestId, 201);
+    // Phase 7: Wire reflection through agent runtime for ATLAS/MEMORY mutations
+    let agentLoopResult: any = null;
+    try {
+      agentLoopResult = await runCognitionAgentTurn({
+        userId: user.id,
+        channel: 'autopsy',
+        goalId: parsed.data.goalId ?? undefined,
+        payload: {
+          reflection: parsed.data.reflection,
+          subject: parsed.data.subject,
+          topic: parsed.data.topic,
+          memoryId: memory?.id,
+          source: 'autopsy_v3_reflection',
+        },
+        sessionId: undefined,
+      }, { supabase: supabase as any });
+
+      logger.info('Reflection agent runtime completed', {
+        userId: user.id,
+        changed: agentLoopResult?.mutationSummary?.changed,
+      });
+    } catch (runtimeError) {
+      logger.warn('Reflection agent runtime failed (non-fatal)', {
+        userId: user.id,
+        error: runtimeError instanceof Error ? runtimeError.message : String(runtimeError),
+      });
+    }
+
+    return jsonWithRequestId({ signal, memory, agentMutationSummary: agentLoopResult?.mutationSummary ?? null }, requestId, 201);
   } catch (error) {
     return unexpectedApiErrorResponse(req, error, 'autopsy_v3_reflection', 'Unable to save this reflection.');
   }

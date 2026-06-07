@@ -9,6 +9,8 @@ import { checkIdempotency } from '@/lib/middleware/idempotency';
 import { ingestLearningSignals } from '@/lib/learning-signals/ingest';
 import { syncStudyProfileAfterPracticeAttempt } from '@/lib/services/study-profile-sync.service';
 import { PracticeService } from '@/lib/services/practice.service';
+import { runCognitionAgentTurn } from '@/lib/agent/runtime';
+import { logger } from '@/lib/utils/logger';
 
 const AttemptsSchema = z.object({
   idempotencyKey: z.string().min(8).optional(),
@@ -340,6 +342,55 @@ export async function POST(req: NextRequest) {
       message: error instanceof Error ? error.message : 'Profile sync failed.',
     }));
 
+    // Phase 7: Wire practice through agent runtime for ATLAS/MEMORY mutations
+    // The runtime's apply_practice_attempt tool processes already-saved practice attempts
+    // and updates ATLAS mastery, creates MEMORY cards, and updates microtargets.
+    // This runs in parallel with profileSync - both are idempotent but the runtime
+    // is the primary source of truth going forward for agent mutations.
+    let agentLoopResult: any = null;
+    try {
+      agentLoopResult = await runCognitionAgentTurn({
+        userId: user.id,
+        channel: 'practice',
+        goalId: set.goal_id ?? goalId ?? undefined,
+        payload: {
+          practiceSetId: set.id,
+          items: persistedEventItems.slice(0, 50).map((item: any) => ({
+            attemptId: item.attemptId,
+            practiceItemId: item.practiceItemId,
+            conceptId: item.conceptId,
+            conceptName: item.conceptName,
+            topic: item.topic,
+            chapter: item.chapter,
+            subject: item.subject,
+            question: item.question,
+            isCorrect: item.isCorrect,
+            selectedAnswer: item.selectedAnswer,
+            correctAnswer: item.correctAnswer,
+          })),
+          metrics: { correctCount, wrongCount, wrongConceptIds, wrongConceptNames },
+          source: 'practice_attempt_channel',
+        },
+        sessionId: chatSessionId ?? undefined,
+      }, { supabase: supabase as any });
+
+      logger.info('Practice agent runtime completed', {
+        userId: user.id,
+        practiceSetId: set.id,
+        changed: agentLoopResult?.mutationSummary?.changed,
+        conceptsUpdated: agentLoopResult?.mutationSummary?.conceptsUpdated,
+        revisionCardsCreated: agentLoopResult?.mutationSummary?.revisionCardsCreated,
+      });
+    } catch (runtimeError) {
+      // Runtime failure should not fail the practice submit - runtime is for agent mutations
+      // We log the error but still return success since practice attempts were already saved
+      logger.warn('Practice agent runtime failed (non-fatal)', {
+        userId: user.id,
+        practiceSetId: set.id,
+        error: runtimeError instanceof Error ? runtimeError.message : String(runtimeError),
+      });
+    }
+
     const loopSummary = {
       saved: true,
       mistakesCreated: (profileSync as any)?.mistakesCreated ?? 0,
@@ -363,6 +414,7 @@ export async function POST(req: NextRequest) {
       metrics: { correctCount, wrongCount, wrongConceptIds, wrongConceptNames },
       goalId: set.goal_id ?? goalId ?? null,
       profileSync,
+      agentMutationSummary: agentLoopResult?.mutationSummary ?? null,
       loopSummary,
     });
   } catch (error) {

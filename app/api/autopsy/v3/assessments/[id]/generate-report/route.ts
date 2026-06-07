@@ -6,6 +6,8 @@ import { ingestLearningSignals } from '@/lib/learning-signals/ingest';
 import { safePublishEvent } from '@/lib/events/safe-publish';
 import { checkFeatureLimit, consumeFeatureUsage, featureLimitResponse } from '@/lib/usage/enforce-feature-limit';
 import { featureDisabledResponse, isBetaFeatureEnabled } from '@/lib/config/beta-flags';
+import { runCognitionAgentTurn } from '@/lib/agent/runtime';
+import { logger } from '@/lib/utils/logger';
 
 type RouteContext = { params: Promise<{ id: string }> | { id: string } };
 
@@ -175,7 +177,48 @@ export async function POST(req: NextRequest, context: RouteContext) {
       }),
     ]);
 
-    return jsonWithRequestId({ report: persistedReport, memoryRows, deterministicReport: report, amaura: { cascade: 'queued' } }, requestId);
+    // Phase 7: Wire autopsy through agent runtime for ATLAS/MEMORY mutations
+    // The runtime processes autopsy results and creates MEMORY cards, updates ATLAS mastery
+    let agentLoopResult: any = null;
+    try {
+      agentLoopResult = await runCognitionAgentTurn({
+        userId: user.id,
+        channel: 'autopsy',
+        goalId: assessment.goal_id ?? undefined,
+        payload: {
+          assessmentId,
+          reportId: persistedReport.id,
+          subject: assessment.subject ?? null,
+          topic: assessment.title ?? null,
+          overview: report.overview,
+          recoverableMarks: report.recoverableMarks,
+          revisionActions: report.revisionActions.slice(0, 20),
+          repeatedPatterns: report.repeatedPatterns,
+          highRiskTopics: report.highRiskTopics,
+          diagnosesCount: diagnoses.length,
+          source: 'autopsy_v3_generate_report',
+        },
+        sessionId: undefined,
+      }, { supabase: supabase as any });
+
+      logger.info('Autopsy agent runtime completed', {
+        userId: user.id,
+        assessmentId,
+        reportId: persistedReport.id,
+        changed: agentLoopResult?.mutationSummary?.changed,
+        conceptsUpdated: agentLoopResult?.mutationSummary?.conceptsUpdated,
+        revisionCardsCreated: agentLoopResult?.mutationSummary?.revisionCardsCreated,
+      });
+    } catch (runtimeError) {
+      // Runtime failure should not fail report generation
+      logger.warn('Autopsy agent runtime failed (non-fatal)', {
+        userId: user.id,
+        assessmentId,
+        error: runtimeError instanceof Error ? runtimeError.message : String(runtimeError),
+      });
+    }
+
+    return jsonWithRequestId({ report: persistedReport, memoryRows, deterministicReport: report, agentMutationSummary: agentLoopResult?.mutationSummary ?? null, amaura: { cascade: 'queued' } }, requestId);
   } catch (error) {
     return unexpectedApiErrorResponse(req, error, 'autopsy_v3_generate_report', 'Unable to generate Deep Autopsy report.');
   }

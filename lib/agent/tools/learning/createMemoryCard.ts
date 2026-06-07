@@ -21,7 +21,7 @@ export async function createMemoryCardForSignal(
     await assertMaterialOwned(context.supabase, { userId: context.userId, materialId: input.sourceMaterialId });
   }
 
-  if (!['weak_area_detected', 'misconception_detected', 'revision_needed', 'practice_needed'].includes(input.signal.type)) {
+  if (!['weak_area_detected', 'misconception_detected', 'revision_needed', 'practice_needed', 'session_completed'].includes(input.signal.type)) {
     return { created: false, cardId: null, skipped: true, reason: 'Signal does not require a durable revision card.' };
   }
 

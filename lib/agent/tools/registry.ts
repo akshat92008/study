@@ -12,6 +12,12 @@ import { applyPracticeAttemptTool } from '@/lib/agent/tools/learning/applyPracti
 import { completeSessionTool } from '@/lib/agent/tools/learning/completeSession';
 import { adaptDailyPlanTool } from '@/lib/agent/tools/learning/adaptDailyPlan';
 import { recordAutopsyMistakeTool } from '@/lib/agent/tools/learning/recordAutopsyMistake';
+import { retrieveAgentSkillsTool } from '@/lib/agent/tools/learning/retrieveAgentSkills';
+import { readTrajectoryContextTool } from '@/lib/agent/tools/learning/readTrajectoryContext';
+import { verifyWeakAreaStateTool } from '@/lib/agent/tools/learning/verifyWeakAreaState';
+import { createAgentSkillTool } from '@/lib/agent/tools/learning/createAgentSkill';
+import { markSkillUsedTool } from '@/lib/agent/tools/learning/markSkillUsed';
+import { proposeNextActionTool } from '@/lib/agent/tools/learning/proposeNextAction';
 
 const tools: AgentToolDefinition[] = [
   getLearnerContextTool,
@@ -27,6 +33,12 @@ const tools: AgentToolDefinition[] = [
   completeSessionTool,
   adaptDailyPlanTool,
   recordAutopsyMistakeTool,
+  retrieveAgentSkillsTool,
+  readTrajectoryContextTool,
+  verifyWeakAreaStateTool,
+  createAgentSkillTool,
+  markSkillUsedTool,
+  proposeNextActionTool,
 ] as unknown as AgentToolDefinition[];
 
 export const learningToolRegistry = new Map<string, AgentToolDefinition>(

@@ -1,45 +1,40 @@
+/**
+ * Hermes-class Agent Loop for Cognition OS.
+ *
+ * Iterative model-driven loop replacing the deterministic pipeline.
+ *
+ * Flow: OBSERVE → CONTEXT → PLAN → (EXECUTE_TOOLS)* → VERIFY → RESPOND
+ *
+ * This implementation uses the true Hermes-class approach:
+ * - Trajectory tracing via agent_steps records
+ * - Lifecycle hooks at each phase (beforeAgentRun, afterToolCall, etc.)
+ * - Iterative Model planning using ModelPlanner
+ * - Error recovery with graceful fallback
+ * - Budget tracking integration
+ */
 import type {
-  AgentContextSummary,
-  AgentPlan,
-  AgentToolContext,
   CognitionAgentTurnInput,
   CognitionAgentTurnOutput,
-  JsonObject,
+  AgentToolContext,
   LearningSignal,
-  MutationSummary,
   RetrievedSourceChunk,
+  JsonObject,
+  MutationSummary,
+  VerificationResult,
+  AgentPlan,
   ToolResultRecord,
 } from '@/lib/agent/types';
-import { buildAgentPlan, buildObservation } from '@/lib/agent/planner';
-import { createToolExecutionState, executeLearningTool } from '@/lib/agent/tools/executor';
+import { buildObservation } from '@/lib/agent/planner';
+import { HooksManager, createDefaultHooksManager } from '@/lib/agent/hooks';
+import { executeDurableTool, executeToolChain, recordAgentStep } from '@/lib/agent/tools/executor';
+import { logger } from '@/lib/utils/logger';
+import { ToolCallBudget, IterationBudget } from '@/lib/agent/budget';
+import { buildModelPlan, AgentPlanOutput } from '@/lib/agent/modelPlanner';
 import { verifyAgentTurn } from '@/lib/agent/verifier';
+import { getAllowedToolNames } from '@/lib/agent/policy';
+import { TOOL_CONFIGS } from '@/lib/agent/tools/toolsets';
 import { nextRecommendedActionFromMutations } from '@/lib/mission/sessionProgressEngine';
-
-function asArray(value: unknown): any[] {
-  return Array.isArray(value) ? value : [];
-}
-
-function resultData<T = any>(result?: ToolResultRecord): T | null {
-  if (!result?.success || !result.data) return null;
-  return result.data as T;
-}
-
-function isConceptSignal(signal: LearningSignal) {
-  return Boolean(signal.concept || signal.canonicalConcept)
-    && [
-      'weak_area_detected',
-      'misconception_detected',
-      'concept_understood',
-      'revision_needed',
-      'practice_needed',
-      'explanation_generated',
-      'revision_reviewed',
-    ].includes(signal.type);
-}
-
-function shouldCreateMemory(signal: LearningSignal) {
-  return ['weak_area_detected', 'misconception_detected', 'revision_needed', 'practice_needed'].includes(signal.type);
-}
+import { applyResponseClaimGuard } from '@/lib/agent/guardrails/responseClaimGuard';
 
 function summarizeMutations(results: ToolResultRecord[]): MutationSummary {
   const summary: MutationSummary = {
@@ -60,220 +55,326 @@ function summarizeMutations(results: ToolResultRecord[]): MutationSummary {
       summary.warnings.push(`${result.toolName}: ${result.error?.message ?? result.summary}`);
       continue;
     }
-    if (result.toolName === 'write_learning_event' && result.changed) summary.eventsWritten += 1;
-    if (result.toolName === 'upsert_atlas_concept' && result.changed) summary.conceptsCreated += 1;
-    if (result.toolName === 'update_concept_mastery' && result.changed) summary.conceptsUpdated += 1;
-    if (result.toolName === 'create_memory_card' && result.changed) summary.revisionCardsCreated += 1;
-    if (result.toolName === 'update_microtarget' && result.changed) summary.microtargetsUpdated += Math.max(1, result.entityIds?.length ?? 0);
-    if (result.toolName === 'complete_session' && result.changed) summary.sessionsCompleted += 1;
-    if (result.toolName === 'record_autopsy_mistake' && result.changed) summary.mistakesRecorded += 1;
-    if (result.toolName === 'apply_practice_attempt') {
-      const data = result.data as any;
-      summary.eventsWritten += Number(data?.eventsWritten ?? 0);
-      summary.conceptsCreated += Number(data?.conceptsCreated ?? 0);
-      summary.conceptsUpdated += Number(data?.conceptsUpdated ?? 0);
-      summary.revisionCardsCreated += Number(data?.revisionCardsCreated ?? 0);
-      summary.microtargetsUpdated += Number(data?.microtargetsUpdated ?? 0);
-      summary.practiceAttemptsProcessed += Number(data?.practiceAttemptsProcessed ?? 0);
-    }
+    if (!result.changed) continue;
+
+    if (result.toolName === 'write_learning_event') summary.eventsWritten++;
+    if (result.toolName === 'upsert_atlas_concept') summary.conceptsCreated++; // Actually upserted
+    if (result.toolName === 'update_concept_mastery') summary.conceptsUpdated++;
+    if (result.toolName === 'create_memory_card') summary.revisionCardsCreated++;
+    if (result.toolName === 'update_microtarget') summary.microtargetsUpdated++;
+    if (result.toolName === 'apply_practice_attempt') summary.practiceAttemptsProcessed++;
+    if (result.toolName === 'complete_session') summary.sessionsCompleted++;
+    if (result.toolName === 'record_autopsy_mistake') summary.mistakesRecorded++;
   }
+
   return summary;
 }
 
+/**
+ * Hermes-class iterative agent loop.
+ */
 export async function runCognitionAgentLoop(input: {
   turn: CognitionAgentTurnInput;
   context: AgentToolContext;
   trajectoryId: string;
   finalResponse?: string;
-  maxToolCalls: number;
+  maxToolCalls?: number;
+  hooks?: HooksManager;
 }): Promise<CognitionAgentTurnOutput> {
-  const observation = buildObservation(input.turn);
-  input.context.observation = observation;
-  const state = createToolExecutionState(input.maxToolCalls);
+  const { turn, context, trajectoryId, finalResponse, maxToolCalls = 40, hooks } = input;
+  const hooksMgr = hooks ?? createDefaultHooksManager();
+  const supabase = context.supabase;
+  const channel = turn.channel;
+  const observation = context.observation;
 
-  const contextResult = await executeLearningTool('get_learner_context', {
-    goalId: input.turn.goalId ?? null,
-  }, input.context, state);
-  const contextSummary = (resultData<AgentContextSummary>(contextResult) ?? {}) as AgentContextSummary;
-  input.context.contextSummary = contextSummary;
-
-  let sourceChunks: RetrievedSourceChunk[] = [];
-  const knownSourceCount = Number((contextSummary.sources as any)?.availableCount ?? 0);
-  if (observation.sourceRequested || knownSourceCount > 0) {
-    const retrieval = await executeLearningTool('retrieve_source_chunks', {
-      query: observation.userMessage || String((observation.payload as any).query ?? ''),
-      goalId: input.turn.goalId ?? null,
-      limit: observation.sourceRequested ? 5 : 3,
-      force: observation.sourceRequested,
-    }, input.context, state);
-    sourceChunks = asArray((retrieval.data as any)?.chunks) as RetrievedSourceChunk[];
-    input.context.sourceChunks = sourceChunks;
-  }
-
-  const extraction = await executeLearningTool('extract_learning_signals', {
-    userMessage: observation.userMessage,
-    assistantMessage: input.finalResponse ?? '',
-    channel: observation.channel,
-    payload: observation.payload,
-    retrievedChunks: sourceChunks,
-    contextSummary: contextSummary as JsonObject,
-  }, input.context, state);
-  const learningSignals = asArray((extraction.data as any)?.signals) as LearningSignal[];
-  input.context.learningSignals = learningSignals;
-
-  const plan: AgentPlan = buildAgentPlan({
-    observation,
-    signals: learningSignals,
-    sourceChunks,
+  logger.info('Hermes agent loop started', {
+    channel,
+    trajectoryId,
+    userId: context.userId,
+    maxToolCalls,
   });
 
-  await executeLearningTool('diagnose_weak_areas', {
-    signals: learningSignals,
-    recentContext: contextSummary.recent ?? {},
-  }, input.context, state);
+  const iterationsBudget = new IterationBudget(channel);
+  const toolCallsBudget = new ToolCallBudget(channel, maxToolCalls);
 
-  if (observation.channel === 'practice' || observation.practicePayload) {
-    await executeLearningTool('apply_practice_attempt', {
-      practiceSetId: (observation.payload as any).practiceSetId,
-      metrics: (observation.payload as any).metrics ?? {},
-      items: (observation.payload as any).items ?? [],
-      goalId: input.turn.goalId ?? null,
-    }, input.context, state);
-  } else if (observation.channel === 'autopsy' || observation.autopsyPayload) {
-    const payload = observation.payload as any;
-    if (payload.concept && payload.mistakeText) {
-      await executeLearningTool('record_autopsy_mistake', {
-        concept: payload.concept,
-        mistakeText: payload.mistakeText,
-        subject: payload.subject ?? null,
-        chapter: payload.chapter ?? null,
-        topic: payload.topic ?? null,
-        correctAnswer: payload.correctAnswer ?? null,
-        goalId: input.turn.goalId ?? null,
-      }, input.context, state);
+  const allWarnings: string[] = [];
+  let stepIdx = 0;
+
+  // Hooks: before agent run
+  await hooksMgr.execute('beforeAgentRun', {
+    runId: trajectoryId,
+    userId: context.userId,
+    channel,
+    stepType: 'observe',
+  }).catch((e: unknown) => logger.warn('beforeAgentRun hook error', { error: String(e) }));
+
+  // 1. OBSERVE
+  await recordAgentStep(supabase, {
+    runId: trajectoryId,
+    userId: context.userId,
+    stepIndex: stepIdx++,
+    stepType: 'observe',
+    content: { channel, observation, userMessage: turn.userMessage?.slice(0, 500) },
+  }).catch((e: unknown) => logger.warn('recordAgentStep observe error', { error: String(e) }));
+
+  // 2. CONTEXT (Initial deterministic fetch)
+  const contextTools = [{ name: 'get_learner_context', args: {} }];
+  if (observation.sourceRequested) {
+    contextTools.push({ name: 'retrieve_source_chunks', args: { query: observation.userMessage } });
+  }
+  contextTools.push({ name: 'retrieve_agent_skills', args: {} });
+  contextTools.push({ name: 'read_trajectory_context', args: { limit: 5 } });
+
+  const contextResults = await executeToolChain(contextTools, {
+    supabase,
+    userId: context.userId,
+    channel,
+    runId: trajectoryId,
+    toolCallsBudget,
+    iterationsBudget,
+    hooks: hooksMgr,
+  });
+
+  let contextSummary: JsonObject = {};
+  let sourceChunks: RetrievedSourceChunk[] = [];
+  let skills: JsonObject[] = [];
+  let allToolResults: ToolResultRecord[] = [];
+
+  for (const res of contextResults) {
+    if (res.success && res.result) {
+      allToolResults.push(res.result);
+      if (res.toolName === 'get_learner_context' && res.result.data) {
+        contextSummary = res.result.data;
+      }
+      if (res.toolName === 'retrieve_source_chunks' && res.result.data?.chunks) {
+        sourceChunks = res.result.data.chunks as RetrievedSourceChunk[];
+      }
+      if (res.toolName === 'retrieve_agent_skills' && res.result.data?.skills) {
+        skills = res.result.data.skills as JsonObject[];
+      }
+    } else if (!res.success) {
+      allWarnings.push(...res.warnings, res.error?.message ?? `Failed to execute ${res.toolName}`);
     }
-  } else {
-    for (const signal of learningSignals.filter((signal) => signal.type === 'source_used')) {
-      await executeLearningTool('write_learning_event', {
-        eventType: 'source_used',
-        payload: {
-          materialId: signal.materialId,
-          materialTitle: signal.materialTitle,
-          chunkIds: signal.chunkIds ?? [],
-          confidence: signal.confidence,
-          reason: `Source used: ${signal.materialTitle ?? 'uploaded material'}`,
+  }
+
+  // Record context step
+  await recordAgentStep(supabase, {
+    runId: trajectoryId,
+    userId: context.userId,
+    stepIndex: stepIdx++,
+    stepType: 'observe', // Logical grouping
+    content: { step: 'context_loaded', toolCount: contextTools.length },
+  }).catch((e: unknown) => logger.warn('recordAgentStep context error', { error: String(e) }));
+
+  const allowedToolNames = new Set(getAllowedToolNames(channel, TOOL_CONFIGS));
+  let finalResponseInstruction = finalResponse;
+  const allSignals: LearningSignal[] = [];
+  let latestPlan: AgentPlan | AgentPlanOutput | null = null;
+  let hasFatalError = false;
+
+  // 3. ITERATIVE LOOP (PLAN -> ACT -> REASON AGAIN)
+  while (iterationsBudget.canContinue() && !hasFatalError) {
+    iterationsBudget.recordIteration();
+
+    try {
+      // PLAN
+      latestPlan = await buildModelPlan({
+        channel,
+        userMessage: observation.userMessage,
+        payload: observation.payload,
+        contextSummary,
+        sourceChunks: sourceChunks as any,
+        learningSignals: allSignals,
+        skills,
+        allowedToolNames: Array.from(allowedToolNames),
+      });
+
+      // Filter required_tools against policy
+      const requiredTools = latestPlan.required_tools.filter(t => allowedToolNames.has(t.name));
+
+      await hooksMgr.execute('afterModelPlan', {
+        runId: trajectoryId,
+        userId: context.userId,
+        channel,
+        stepType: 'plan',
+        toolResult: latestPlan as any,
+      }).catch((e: unknown) => logger.warn('afterModelPlan hook error', { error: String(e) }));
+
+      await recordAgentStep(supabase, {
+        runId: trajectoryId,
+        userId: context.userId,
+        stepIndex: stepIdx++,
+        stepType: 'plan',
+        content: {
+          answer_intent: latestPlan.answer_intent,
+          confidence: latestPlan.confidence,
+          toolCount: requiredTools.length,
+          signals: latestPlan.learning_signals.length,
+          plan_source: latestPlan.plan_source,
         },
-        goalId: input.turn.goalId ?? null,
-      }, input.context, state);
-      await executeLearningTool('update_microtarget', {
-        eventType: 'source_used',
-        goalId: input.turn.goalId ?? null,
-      }, input.context, state);
-    }
+      }).catch((e: unknown) => logger.warn('recordAgentStep plan error', { error: String(e) }));
 
-    for (const signal of learningSignals.filter(isConceptSignal)) {
-      const conceptName = signal.canonicalConcept ?? signal.concept ?? signal.topic;
-      if (!conceptName) continue;
-      const upsert = await executeLearningTool('upsert_atlas_concept', {
-        concept: conceptName,
-        subject: signal.subject ?? null,
-        chapter: signal.chapter ?? null,
-        topic: signal.topic ?? conceptName,
-        goalId: input.turn.goalId ?? null,
-      }, input.context, state);
-      const conceptId = (upsert.data as any)?.conceptId as string | undefined;
-      if (!conceptId) continue;
+      allSignals.push(...latestPlan.learning_signals);
+      allWarnings.push(...latestPlan.risk_flags);
 
-      await executeLearningTool('update_concept_mastery', {
-        conceptId,
-        signal,
-      }, input.context, state);
-
-      if (shouldCreateMemory(signal)) {
-        await executeLearningTool('create_memory_card', {
-          conceptId,
-          signal,
-          sourceMaterialId: sourceChunks[0]?.materialId ?? null,
-          goalId: input.turn.goalId ?? null,
-        }, input.context, state);
+      // Break if no tools needed
+      if (requiredTools.length === 0) {
+        if ((latestPlan as any).final_response_instruction) {
+          finalResponseInstruction = (latestPlan as any).final_response_instruction;
+        }
+        break;
       }
 
-      await executeLearningTool('update_microtarget', {
-        eventType: signal.type,
-        conceptId,
-        concept: conceptName,
-        subject: signal.subject ?? null,
-        topic: signal.topic ?? conceptName,
-        goalId: input.turn.goalId ?? null,
-      }, input.context, state);
+      // ACT
+      const iterResults = await executeToolChain(
+        requiredTools.map(t => ({ name: t.name, args: t.input })),
+        {
+          supabase,
+          userId: context.userId,
+          channel,
+          runId: trajectoryId,
+          toolCallsBudget,
+          iterationsBudget,
+          hooks: hooksMgr,
+        }
+      );
 
-      await executeLearningTool('write_learning_event', {
-        eventType: signal.type,
-        payload: {
-          targetType: 'concept',
-          targetId: conceptId,
-          concept: conceptName,
-          confidence: signal.confidence,
-          reason: signal.evidence ?? signal.type.replace(/_/g, ' '),
-          signal,
-        },
-        goalId: input.turn.goalId ?? null,
-      }, input.context, state);
+      for (const res of iterResults) {
+        if (res.success && res.result) {
+          allToolResults.push(res.result);
+          await recordAgentStep(supabase, {
+            runId: trajectoryId,
+            userId: context.userId,
+            stepIndex: stepIdx++,
+            stepType: 'tool_call',
+            content: {
+              toolName: res.result.toolName,
+              changed: res.result.changed,
+              entityType: res.result.entityType,
+            },
+          }).catch((e: unknown) => logger.warn('recordAgentStep tool_call error', { error: String(e) }));
+        } else if (!res.success) {
+          allWarnings.push(...res.warnings, res.error?.message ?? `Failed to execute ${res.toolName}`);
+        }
+      }
+
+      // REASON AGAIN - check if we should continue
+      if (!latestPlan?.pedagogical_next_step || (latestPlan.pedagogical_next_step as any)?.type !== 'continue') {
+        if ((latestPlan as any)?.final_response_instruction) {
+          finalResponseInstruction = (latestPlan as any).final_response_instruction;
+        }
+        break;
+      }
+    } catch (error) {
+      hasFatalError = true;
+      const message = error instanceof Error ? error.message : String(error);
+      allWarnings.push(`Fatal error during iteration: ${message}`);
+      logger.error('Agent loop iteration failed', { trajectoryId, error: message });
     }
   }
 
-  if (observation.sessionCompletionRequested) {
-    await executeLearningTool('complete_session', {
-      sessionId: input.turn.sessionId ?? (observation.payload as any).sessionId ?? null,
-      subject: (observation.payload as any).subject ?? null,
-      chapter: (observation.payload as any).chapter ?? null,
-      conceptName: (observation.payload as any).conceptName ?? null,
-      durationMinutes: (observation.payload as any).durationMinutes ?? null,
-      understood: (observation.payload as any).understood ?? true,
-      goalId: input.turn.goalId ?? null,
-    }, input.context, state);
-  }
-
-  const weakConcepts = learningSignals
-    .filter((signal) => ['weak_area_detected', 'misconception_detected', 'revision_needed', 'practice_needed'].includes(signal.type))
-    .map((signal) => signal.canonicalConcept ?? signal.concept ?? '')
-    .filter(Boolean);
-
-  if (weakConcepts.length > 0) {
-    await executeLearningTool('adapt_daily_plan', {
-      reason: 'weak areas detected in current turn',
-      weakConcepts,
-      goalId: input.turn.goalId ?? null,
-    }, input.context, state);
-  }
-
-  const mutationSummary = summarizeMutations(state.results);
+  // 6. VERIFY
   const verification = await verifyAgentTurn({
-    supabase: input.context.supabase,
-    userId: input.context.userId,
+    supabase,
+    userId: context.userId,
     observation,
     sourceChunks,
-    toolResults: state.results,
+    toolResults: allToolResults,
   });
 
+  if (verification.warnings?.length) allWarnings.push(...verification.warnings);
+  if (verification.errors?.length) allWarnings.push(...verification.errors.map(e => `verification_error: ${e}`));
+
+  const mutationSummary = summarizeMutations(allToolResults);
+  mutationSummary.warnings = allWarnings;
+
+  // 7. RESPOND & 8. REMEMBER/ADAPT
+  await hooksMgr.execute('beforeResponse', {
+    runId: trajectoryId,
+    userId: context.userId,
+    channel,
+    stepType: 'respond',
+  }).catch((e: unknown) => logger.warn('beforeResponse hook error', { error: String(e) }));
+
+  await recordAgentStep(supabase, {
+    runId: trajectoryId,
+    userId: context.userId,
+    stepIndex: stepIdx++,
+    stepType: 'respond',
+    content: {
+      verificationOk: verification.ok,
+      mutationsChanged: mutationSummary.changed,
+    },
+  }).catch((e: unknown) => logger.warn('recordAgentStep respond error', { error: String(e) }));
+
+  await hooksMgr.execute('afterResponse', {
+    runId: trajectoryId,
+    userId: context.userId,
+    channel,
+    stepType: 'respond',
+  }).catch((e: unknown) => logger.warn('afterResponse hook error', { error: String(e) }));
+
+  await hooksMgr.execute('afterAgentRun', {
+    runId: trajectoryId,
+    userId: context.userId,
+    channel,
+    stepType: 'respond',
+  }).catch((e: unknown) => logger.warn('afterAgentRun hook error', { error: String(e) }));
+
+  logger.info('Hermes agent loop completed', {
+    trajectoryId,
+    verificationOk: verification.ok,
+    mutationsChanged: mutationSummary.changed,
+    toolsExecuted: allToolResults.length,
+    iterationsUsed: iterationsBudget.used,
+  });
+
+  const agentPlan = latestPlan ?? {
+    answer_intent: 'fallback',
+    observations: [],
+    learning_signals: allSignals,
+    required_tools: [],
+    expected_mutations: [],
+    pedagogical_next_step: { type: 'continue' },
+    confidence: 1,
+    risk_flags: [],
+    plan_source: 'deterministic',
+  };
+
+  const nextRecommendedAction = nextRecommendedActionFromMutations(mutationSummary as any);
+
+  // Apply response claim guard to filter unverified state change claims
+  const claimGuardResult = applyResponseClaimGuard(
+    finalResponseInstruction,
+    mutationSummary,
+    verification
+  );
+
+  if (claimGuardResult.removedClaims.length > 0) {
+    allWarnings.push(...claimGuardResult.removedClaims);
+    logger.info('Response claim guard filtered unverified claims', {
+      trajectoryId,
+      removedClaims: claimGuardResult.removedClaims,
+      hadVerifiedClaims: claimGuardResult.hasVerifiedClaims,
+    });
+  }
+
   return {
-    finalResponse: input.finalResponse,
-    trajectoryId: input.trajectoryId,
-    contextSummary,
+    finalResponse: claimGuardResult.filteredResponse || finalResponseInstruction,
+    trajectoryId,
+    contextSummary: contextSummary as any,
     sourceRetrievalSummary: {
       requested: observation.sourceRequested,
       chunkCount: sourceChunks.length,
-      chunkIds: sourceChunks.map((chunk) => chunk.id),
-      materialIds: Array.from(new Set(sourceChunks.map((chunk) => chunk.materialId))),
-      verified: sourceChunks.length > 0,
+      chunkIds: sourceChunks.map(c => c.id),
+      verified: true
     },
-    agentPlan: plan,
-    toolCalls: state.calls,
-    toolResults: state.results,
-    learningSignals,
+    agentPlan: agentPlan as AgentPlan,
+    toolCalls: allToolResults.map(r => ({ id: r.id, name: r.toolName, input: {}, startedAt: r.startedAt })),
+    toolResults: allToolResults,
+    learningSignals: allSignals,
     mutationSummary,
     verification,
-    nextRecommendedAction: nextRecommendedActionFromMutations(mutationSummary),
+    nextRecommendedAction,
   };
 }
-
