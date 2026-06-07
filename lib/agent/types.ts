@@ -3,7 +3,7 @@ import type { z } from 'zod';
 
 export type JsonObject = Record<string, unknown>;
 
-export type AgentChannel = 'chat' | 'practice' | 'autopsy' | 'revision' | 'session';
+export type AgentChannel = 'chat' | 'practice' | 'autopsy' | 'revision' | 'session' | 'background';
 
 export interface CognitionAgentTurnInput {
   userId: string;
@@ -90,6 +90,10 @@ export interface AgentPlan {
   pedagogical_next_step: JsonObject;
   confidence: number;
   risk_flags: string[];
+  // Hermes-class additions
+  observations?: Array<{ type: string; summary: string; confidence: number }>;
+  plan_source?: 'model' | 'deterministic';
+  final_response_instruction?: string;
 }
 
 export interface AgentToolResult {
@@ -199,4 +203,3 @@ export interface AgentToolDefinition<Input extends z.ZodTypeAny = z.ZodTypeAny, 
   requiresAuth: boolean;
   handler: (input: z.infer<Input>, context: AgentToolContext) => Promise<z.infer<Output>>;
 }
-
