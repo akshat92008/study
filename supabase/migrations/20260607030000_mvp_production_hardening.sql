@@ -192,7 +192,7 @@ begin
       page_end int,
       text text,
       similarity float
-    ) as $$
+    ) as $func$
     begin
       return query
       select
@@ -218,7 +218,7 @@ begin
       order by smc.updated_at desc
       limit match_count;
     end;
-    $$ language plpgsql volatile security definer;
+    $func$ language plpgsql volatile security definer;
   end if;
 end $$;
 

@@ -45,6 +45,7 @@ Output only the script. Start immediately with ALEX: or PRIYA:`,
 }
 
 export const POST = withRateLimit('knowledge', async (req, userId) => {
+  let capturedMaterialId: string | null = null;
   try {
     const supabase = await createClient();
 
@@ -53,6 +54,8 @@ export const POST = withRateLimit('knowledge', async (req, userId) => {
     if (!materialId) {
       return NextResponse.json({ error: 'materialId is required' }, { status: 400 });
     }
+
+    capturedMaterialId = materialId;
 
     // Fetch material — RLS guarantees this is the user's own
     const { data: material, error: matErr } = await supabase
@@ -109,7 +112,7 @@ export const POST = withRateLimit('knowledge', async (req, userId) => {
     const err = error instanceof Error ? error : new Error(String(error));
     logger.error('[audio] generation failed', {
       userId,
-      materialId: body?.materialId ?? null,
+      materialId: capturedMaterialId ?? null,
       error: {
         message: err.message,
         code: error?.code,

@@ -55,17 +55,20 @@ alter table public.revision_cards
 create table if not exists public.unresolved_concept_mentions (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
-  goal_id uuid references public.learning_goals(id) on delete cascade,
-  topic text not null,
-  subject text,
-  confidence numeric,
-  source_type text,
-  source_id uuid,
-  source_event_id uuid,
-  status text not null default 'pending' check (status in ('pending', 'resolved', 'ignored')),
-  resolved_concept_id uuid references public.concepts(id) on delete set null,
+  topic text not null default '',
   created_at timestamptz not null default now()
 );
+
+alter table public.unresolved_concept_mentions
+  add column if not exists goal_id uuid references public.learning_goals(id) on delete cascade,
+  add column if not exists topic text not null default '',
+  add column if not exists subject text,
+  add column if not exists confidence numeric,
+  add column if not exists source_type text,
+  add column if not exists source_id uuid,
+  add column if not exists source_event_id uuid,
+  add column if not exists status text not null default 'pending' check (status in ('pending', 'resolved', 'ignored')),
+  add column if not exists resolved_concept_id uuid references public.concepts(id) on delete set null;
 
 create index if not exists idx_unresolved_mentions_user_status
   on public.unresolved_concept_mentions(user_id, status);

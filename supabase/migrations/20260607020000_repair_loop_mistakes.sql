@@ -13,40 +13,78 @@ alter table if exists public.mistakes
   add column if not exists updated_at timestamptz not null default now(),
   add column if not exists normalized_key text;
 
-update public.mistakes
-set
-  concept = coalesce(nullif(concept, ''), nullif(topic, ''), nullif(chapter, ''), nullif(category, ''), 'Unclassified concept'),
-  mistake_text = coalesce(nullif(mistake_text, ''), nullif(question_text, ''), nullif(ai_analysis, ''), 'Unspecified mistake'),
-  why_wrong = coalesce(nullif(why_wrong, ''), nullif(ai_analysis, ''), nullif(improvement_suggestion, '')),
-  severity = greatest(coalesce(severity, 1), 1),
-  status = case
-    when status in ('corrected_by_user') or recovered = true then 'repaired'
-    when status in ('rejected') then 'ignored'
-    when status in ('pending_review', 'verified_mistake') or status is null then 'open'
-    else status
-  end,
-  repaired_at = case
-    when repaired_at is not null then repaired_at
-    when recovered_at is not null then recovered_at
-    when recovered = true then now()
-    else null
-  end,
-  updated_at = coalesce(updated_at, created_at, now()),
-  normalized_key = coalesce(
-    normalized_key,
-    encode(
-      digest(
-        coalesce(public.normalize_academic_text(coalesce(concept, topic, chapter, category, '')), '') || chr(10) ||
-        coalesce(public.normalize_academic_text(coalesce(mistake_text, question_text, ai_analysis, '')), ''),
-        'sha256'
-      ),
-      'hex'
-    )
-  )
-where concept is null
-   or mistake_text is null
-   or status in ('pending_review', 'verified_mistake', 'rejected', 'corrected_by_user')
-   or normalized_key is null;
+do $$
+declare
+  v_sql text;
+  v_has_topic boolean;
+  v_has_chapter boolean;
+  v_has_category boolean;
+  v_has_question_text boolean;
+  v_has_ai_analysis boolean;
+  v_has_improvement boolean;
+  v_has_recovered boolean;
+  v_has_recovered_at boolean;
+begin
+  select exists (select 1 from information_schema.columns where table_name = 'mistakes' and column_name = 'topic') into v_has_topic;
+  select exists (select 1 from information_schema.columns where table_name = 'mistakes' and column_name = 'chapter') into v_has_chapter;
+  select exists (select 1 from information_schema.columns where table_name = 'mistakes' and column_name = 'category') into v_has_category;
+  select exists (select 1 from information_schema.columns where table_name = 'mistakes' and column_name = 'question_text') into v_has_question_text;
+  select exists (select 1 from information_schema.columns where table_name = 'mistakes' and column_name = 'ai_analysis') into v_has_ai_analysis;
+  select exists (select 1 from information_schema.columns where table_name = 'mistakes' and column_name = 'improvement_suggestion') into v_has_improvement;
+  select exists (select 1 from information_schema.columns where table_name = 'mistakes' and column_name = 'recovered') into v_has_recovered;
+  select exists (select 1 from information_schema.columns where table_name = 'mistakes' and column_name = 'recovered_at') into v_has_recovered_at;
+
+  v_sql := 'update public.mistakes set ' ||
+    'concept = coalesce(nullif(concept, ''''), ' ||
+    (case when v_has_topic then 'nullif(topic, ''''), ' else '' end) ||
+    (case when v_has_chapter then 'nullif(chapter, ''''), ' else '' end) ||
+    (case when v_has_category then 'nullif(category::text, ''''), ' else '' end) ||
+    '''Unclassified concept''), ' ||
+    
+    'mistake_text = coalesce(nullif(mistake_text, ''''), ' ||
+    (case when v_has_question_text then 'nullif(question_text, ''''), ' else '' end) ||
+    (case when v_has_ai_analysis then 'nullif(ai_analysis, ''''), ' else '' end) ||
+    '''Unspecified mistake''), ' ||
+    
+    'why_wrong = coalesce(nullif(why_wrong, ''''), ' ||
+    (case when v_has_ai_analysis then 'nullif(ai_analysis, ''''), ' else '' end) ||
+    (case when v_has_improvement then 'nullif(improvement_suggestion, ''''), ' else '' end) ||
+    'null), ' ||
+    
+    'severity = greatest(coalesce(severity, 1), 1), ' ||
+    
+    'status = case ' ||
+    'when status in (''corrected_by_user'') ' ||
+    (case when v_has_recovered then 'or recovered = true ' else '' end) ||
+    'then ''repaired'' ' ||
+    'when status in (''rejected'') then ''ignored'' ' ||
+    'when status in (''pending_review'', ''verified_mistake'') or status is null then ''open'' ' ||
+    'else status end, ' ||
+    
+    'repaired_at = case ' ||
+    'when repaired_at is not null then repaired_at ' ||
+    (case when v_has_recovered_at then 'when recovered_at is not null then recovered_at ' else '' end) ||
+    (case when v_has_recovered then 'when recovered = true then now() ' else '' end) ||
+    'else null end, ' ||
+    
+    'updated_at = coalesce(updated_at, created_at, now()), ' ||
+    
+    'normalized_key = coalesce(normalized_key, encode(digest(coalesce(public.normalize_academic_text(concept), '''') || chr(10) || coalesce(public.normalize_academic_text(mistake_text), ''''), ''sha256''), ''hex'')) ' ||
+    
+    'where concept is null or mistake_text is null or status in (''pending_review'', ''verified_mistake'', ''rejected'', ''corrected_by_user'') or normalized_key is null';
+
+  execute v_sql;
+exception
+  when others then
+    -- Absolute fallback
+    update public.mistakes
+    set
+      concept = coalesce(concept, 'Unclassified concept'),
+      mistake_text = coalesce(mistake_text, 'Unspecified mistake'),
+      status = coalesce(status, 'open'),
+      updated_at = coalesce(updated_at, now())
+    where concept is null or mistake_text is null or status is null;
+end $$;
 
 alter table if exists public.mistakes
   alter column concept set not null,
