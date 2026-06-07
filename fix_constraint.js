@@ -9,7 +9,7 @@ const client = new Client({
 async function run() {
   try {
     await client.connect();
-    console.log("Connected to DB");
+  console.log("Connected to DB");
     
     // Drop the old constraint
     await client.query(`ALTER TABLE public.event_consumer_tracking DROP CONSTRAINT IF EXISTS event_consumer_tracking_status_check`);

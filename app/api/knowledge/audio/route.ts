@@ -56,7 +56,7 @@ export const POST = withRateLimit('knowledge', async (req, userId) => {
 
     // Fetch material — RLS guarantees this is the user's own
     const { data: material, error: matErr } = await supabase
-      .from('materials')
+      .from('study_materials')
       .select('id, title')
       .eq('id', materialId)
       .eq('user_id', userId)
@@ -68,11 +68,11 @@ export const POST = withRateLimit('knowledge', async (req, userId) => {
 
     // Fetch content chunks
     const { data: chunks, error: chunkErr } = await supabase
-      .from('material_chunks')
-      .select('chunk_text')
+      .from('study_material_chunks')
+      .select('content')
       .eq('material_id', materialId)
       .eq('user_id', userId)
-      .order('id', { ascending: true })
+      .order('chunk_index', { ascending: true })
       .limit(25);
 
     if (chunkErr || !chunks || chunks.length === 0) {
@@ -82,7 +82,7 @@ export const POST = withRateLimit('knowledge', async (req, userId) => {
       );
     }
 
-    const content = chunks.map(c => c.chunk_text).join('\n\n');
+    const content = chunks.map(c => c.content).join('\n\n');
 
     // Generate podcast script
     let script;
@@ -106,7 +106,17 @@ export const POST = withRateLimit('knowledge', async (req, userId) => {
     });
 
   } catch (error: any) {
-    logger.error('Audio generation failed', error);
-    return NextResponse.json(safeError(error), { status: 500 });
+    const err = error instanceof Error ? error : new Error(String(error));
+    logger.error('[audio] generation failed', {
+      userId,
+      materialId: body?.materialId ?? null,
+      error: {
+        message: err.message,
+        code: error?.code,
+        details: error?.details,
+        hint: error?.hint,
+      },
+    });
+    return NextResponse.json({ error: safeError(error) }, { status: 500 });
   }
 });
