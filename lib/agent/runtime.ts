@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 import { createClient } from '@/lib/supabase/server';
 import { failAgentRun, startAgentRun } from '@/lib/agents/agent-runtime';
-import type { AgentToolContext, CognitionAgentRuntimeOptions, CognitionAgentTurnInput, CognitionAgentTurnOutput } from '@/lib/agent/types';
+import type { AgentToolContext, AgentPlan, CognitionAgentRuntimeOptions, CognitionAgentTurnInput, CognitionAgentTurnOutput, LearningSignal, MutationSummary, VerificationResult } from '@/lib/agent/types';
 import { buildObservation } from '@/lib/agent/planner';
 import { runCognitionAgentLoop } from '@/lib/agent/loop';
 import { writeTrajectory } from '@/lib/agent/tracing/writeTrajectory';
@@ -56,11 +56,42 @@ export async function runCognitionAgentTurn(
       .eq('run_id', run.id)
       .eq('snapshot_type', 'cognition_agent_trajectory')
       .maybeSingle();
-    
+
     if (snapshot?.snapshot) {
       logger.info('Returning existing completed agent run trajectory', { runId: run.id });
       return snapshot.snapshot as unknown as CognitionAgentTurnOutput;
     }
+    // Fix 9: Completed run exists but snapshot missing - do NOT rerun tools on same run ID
+    // Return a minimal reconstructed output instead
+    logger.warn('Returning existing_completed_run_missing_snapshot error', { runId: run.id });
+    const existingRun = await supabase
+      .from('agent_runs')
+      .select('final_response_summary, mutation_summary, verification, learning_signals')
+      .eq('id', run.id)
+      .single();
+    return {
+      finalResponse: existingRun.data?.final_response_summary ?? 'Session already processed.',
+      trajectoryId: run.id,
+      contextSummary: {},
+      sourceRetrievalSummary: { requested: false, chunkCount: 0, chunkIds: [], verified: false },
+      agentPlan: {
+        answer_intent: 'recovered',
+        learning_signals: [],
+        required_tools: [],
+        expected_mutations: [],
+        pedagogical_next_step: {},
+        confidence: 0,
+        risk_flags: [],
+      } as AgentPlan,
+      toolCalls: [],
+      toolResults: [],
+      learningSignals: (existingRun.data?.learning_signals as LearningSignal[]) ?? [],
+      mutationSummary: (existingRun.data?.mutation_summary as MutationSummary) ?? { changed: false, eventsWritten: 0, conceptsCreated: 0, conceptsUpdated: 0, revisionCardsCreated: 0, microtargetsUpdated: 0, practiceAttemptsProcessed: 0, sessionsCompleted: 0, mistakesRecorded: 0, warnings: [] },
+      verification: (existingRun.data?.verification as VerificationResult) ?? { ok: true, checks: [], warnings: [], errors: [] },
+      nextRecommendedAction: undefined,
+      usedIterations: 0,
+      usedToolCalls: 0,
+    };
   }
 
   const context: AgentToolContext = {

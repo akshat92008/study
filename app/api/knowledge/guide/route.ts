@@ -24,7 +24,7 @@ export const POST = withRateLimit('knowledge', async (req, userId) => {
 
     const { data: chunks } = await supabase
       .from('study_material_chunks')
-      .select('text')
+      .select('content')
       .eq('material_id', materialId)
       .eq('user_id', userId)
       .order('chunk_index', { ascending: true })
@@ -34,7 +34,7 @@ export const POST = withRateLimit('knowledge', async (req, userId) => {
       return NextResponse.json({ error: 'No content found for this material. Please re-upload.' }, { status: 400 });
     }
 
-    const fullText = chunks.map(c => c.text).join('\n\n');
+    const fullText = chunks.map(c => c.content).join('\n\n');
     const truncatedText = fullText.slice(0, 80000); // ~20k tokens safety cap
 
 

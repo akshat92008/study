@@ -70,7 +70,7 @@ async function cleanupAll() {
       await supabase.from('mastery_events').delete().eq('user_id', uid);
       await supabase.from('revision_cards').delete().eq('user_id', uid);
       await supabase.from('concepts').delete().eq('user_id', uid);
-      await supabase.from('learning_events').delete().eq('user_id', uid);
+      await supabase.from('learner_events').delete().eq('user_id', uid);
       await supabase.from('agent_verifications').delete().eq('user_id', uid);
       await supabase.from('agent_runs').delete().eq('user_id', uid);
       await supabase.from('profiles').delete().eq('id', uid);
@@ -146,12 +146,14 @@ async function run() {
     log('5. Verify agent_runs exist');
     const { data: runs } = await supabase
       .from('agent_runs')
-      .select('id, trajectory_id, channel, status, final_response')
+      .select('id, channel, status, final_response_summary, verification, mutation_summary, created_at')
       .eq('user_id', userId)
       .order('created_at', { ascending: false })
       .limit(3);
     if (!runs?.length) fail('no agent_runs found');
     pass(`${runs.length} agent_run(s)`);
+    const run = runs[0];
+    const trajectoryId = run.id;
 
     // 6. Check concept was upserted
     log('6. Verify Tachycardia concept was upserted');
@@ -185,10 +187,10 @@ async function run() {
     if (!cards?.length) fail('no revision card for Tachycardia');
     pass(`card ${cards[0].id}: "${cards[0].front?.slice(0, 60)}"`);
 
-    // 9. Check learning event
-    log('9. Verify write_learning_event produced a learning_event row');
+    // 9. Check learner event
+    log('9. Verify write_learning_event produced a learner_event row');
     const { data: learningEvts } = await supabase
-      .from('learning_events')
+      .from('learner_events')
       .select('id, event_type, user_id')
       .eq('user_id', userId);
     if (!learningEvts?.length) fail('no learning_event rows');
@@ -198,43 +200,41 @@ async function run() {
     log('10. Verify agent_verifications rows exist');
     const { data: verifications } = await supabase
       .from('agent_verifications')
-      .select('id, user_id, status, check_name')
+      .select('id, tool_call_id, success, verification_type, entity_type, entity_id, summary')
       .eq('user_id', userId)
       .order('created_at', { ascending: false })
       .limit(5);
     if (!verifications?.length) fail('no agent_verifications found');
-    pass(`${verifications.length} verification(s): ${verifications.map(v => v.check_name).join(', ')}`);
+    pass(`${verifications.length} verification(s) — success: ${verifications.filter(v => v.success).length}, failed: ${verifications.filter(v => !v.success).length}`);
 
-    // 11. Check tool audit - ensure no tool used { from: "signals" }
-    log('11. Verify no tool calls used { from: "signals" }');
-    const { data: toolCalls } = await supabase
-      .from('agent_runs')
-      .select('trajectory_id')
-      .eq('user_id', userId)
-      .order('created_at', { ascending: false })
-      .limit(1)
-      .single();
-    if (!toolCalls) fail('no agent run to check');
-    const trajectoryId = toolCalls.trajectory_id;
-
-    const { data: steps } = await supabase
-      .from('agent_steps')
-      .select('step_type, content')
+    // 11. Check tool inputs — ensure no compiled tool argument used raw { from: "signals" }
+    log('11. Ensure no signal tool compiled with { from: "signals" } placeholder');
+    const { data: toolInputRows } = await supabase
+      .from('agent_tool_calls')
+      .select('id, tool_name, args, result')
       .eq('run_id', trajectoryId)
-      .eq('step_type', 'tool_call');
-    const badSteps = (steps ?? []).filter((s: any) => {
-      const c = s.content;
-      return c && typeof c === 'object' && (c as any).toolName &&
-        typeof (c as any).toolInput === 'object' && (c as any).toolInput?.from === 'signals';
-    });
-    if (badSteps.length) fail(`${badSteps.length} tool_call(s) still use { from: "signals" }`);
-    pass('no tool uses { from: "signals" }');
+      .in('tool_name', ['update_concept_mastery', 'create_memory_card', 'update_microtarget', 'write_learning_event']);
+
+    const badInputs: string[] = [];
+    for (const row of (toolInputRows ?? []) as any[]) {
+      const input = row.args as any;
+      // Any input that still carries the legacy { from: "signals" } hint is a bug
+      if (input && (input.from === 'signals' || (input.concept && (input.concept as any).from === 'signals'))) {
+        badInputs.push(`${row.tool_name}: ${JSON.stringify(input)}`);
+      }
+      // Also check result for the same pattern (tool may serialize it back)
+      const resultData = row.result as any;
+      if (resultData?.data && (resultData.data as any).from === 'signals') {
+        badInputs.push(`${row.tool_name} result: ${JSON.stringify(resultData)}`);
+      }
+    }
+    if (badInputs.length) fail(`bad input(s) found: ${badInputs.join('; ')}`);
+    pass(`checked ${toolInputRows?.length ?? 0} signal-tool call inputs — clean`);
 
     // 12. Check response claim guard
     log('12. Verify final response does not overclaim unverified progress');
-    const run = runs[0];
-    if (run.final_response) {
-      const FR = run.final_response.toLowerCase();
+    if (run.final_response_summary) {
+      const FR = run.final_response_summary.toLowerCase();
       const overclaiming =
         (FR.includes('saved') || FR.includes('progress') || FR.includes('recorded')) &&
         !FR.includes('help');

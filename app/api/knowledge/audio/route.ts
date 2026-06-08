@@ -72,7 +72,7 @@ export const POST = withRateLimit('knowledge', async (req, userId) => {
     // Fetch content chunks
     const { data: chunks, error: chunkErr } = await supabase
       .from('study_material_chunks')
-      .select('text')
+      .select('content')
       .eq('material_id', materialId)
       .eq('user_id', userId)
       .order('chunk_index', { ascending: true })
@@ -85,7 +85,7 @@ export const POST = withRateLimit('knowledge', async (req, userId) => {
       );
     }
 
-    const content = chunks.map(c => c.text).join('\n\n');
+    const content = chunks.map(c => c.content).join('\n\n');
 
     // Generate podcast script
     let script;

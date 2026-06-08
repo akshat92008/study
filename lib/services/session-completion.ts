@@ -32,7 +32,9 @@ export interface CompleteLearningSessionResult {
   understood: boolean;
   cardsCreated: number;
   memoryCardId?: string | null;
-  warning?: string;
+  memoryCardCreated: boolean;
+  memoryCardReused: boolean;
+  memoryWarning?: string;
 }
 
 function getLocalDate(timezone?: string | null): string {
@@ -172,6 +174,9 @@ export async function completeLearningSession(
         chapter: existing.chapter || chapter,
         understood,
         cardsCreated,
+        memoryCardId: null,
+        memoryCardCreated: false,
+        memoryCardReused: false,
       };
     }
   }
@@ -234,6 +239,8 @@ export async function completeLearningSession(
           chapter: existing.chapter || chapter,
           understood,
           cardsCreated,
+          memoryCardCreated: false,
+          memoryCardReused: false,
         };
       }
     }
@@ -260,37 +267,58 @@ export async function completeLearningSession(
   // This ensures dashboard completion closes the loop deterministically
   let memoryCardId: string | null = null;
   let cardsCreatedResult = cardsCreated;
+  let memoryCardCreated = false;
+  let memoryCardReused = false;
+  let memoryWarning: string | undefined;
 
   if (conceptId) {
     try {
-      const signal = {
-        type: 'session_completed' as const,
-        concept: conceptName,
-        canonicalConcept: conceptName,
-        subject,
-        chapter,
-        confidence: 0.75,
-        evidence: `Completed session on ${subject} / ${chapter}.`,
-      };
-      const generated = generateMemoryCard(signal as any);
-      const [card] = await createRevisionCardsForUser(input.userId, [{
-        goalId: input.goalId ?? null,
-        conceptId,
-        front: generated.front,
-        back: generated.back,
-        subject,
-        chapter,
-        sourceType: 'session_completed',
-        sourceId: sessionId,
-        origin: 'chat',
-        metadata: { sessionId, signal },
-      }], { client: supabase });
-      
-      if (card?.id) {
-        memoryCardId = card.id;
-        cardsCreatedResult = Math.max(cardsCreatedResult, 1);
+      // Check if a card already exists for this concept to avoid duplicates
+      const { data: existingCards } = await supabase
+        .from('revision_cards')
+        .select('id')
+        .eq('user_id', input.userId)
+        .eq('concept_id', conceptId)
+        .eq('status', 'active')
+        .limit(1)
+        .maybeSingle();
+
+      if (existingCards?.id) {
+        memoryCardId = existingCards.id;
+        memoryCardReused = true;
+      } else {
+        // Only create a new card if one doesn't exist
+        const signal = {
+          type: 'session_completed' as const,
+          concept: conceptName,
+          canonicalConcept: conceptName,
+          subject,
+          chapter,
+          confidence: 0.75,
+          evidence: `Completed session on ${subject} / ${chapter}.`,
+        };
+        const generated = generateMemoryCard(signal as any);
+        const [card] = await createRevisionCardsForUser(input.userId, [{
+          goalId: input.goalId ?? null,
+          conceptId,
+          front: generated.front,
+          back: generated.back,
+          subject,
+          chapter,
+          sourceType: 'session_completed',
+          sourceId: sessionId,
+          origin: 'chat',
+          metadata: { sessionId, signal },
+        }], { client: supabase });
+
+        if (card?.id) {
+          memoryCardId = card.id;
+          memoryCardCreated = true;
+          cardsCreatedResult = Math.max(cardsCreatedResult, 1);
+        }
       }
     } catch (err) {
+      memoryWarning = 'MEMORY card could not be created';
       logger.warn('Durable session memory card failed (non-fatal)', { sessionId, error: err });
     }
   }
@@ -328,5 +356,8 @@ export async function completeLearningSession(
     understood,
     cardsCreated: cardsCreatedResult,
     memoryCardId,
+    memoryCardCreated,
+    memoryCardReused,
+    memoryWarning,
   };
 }

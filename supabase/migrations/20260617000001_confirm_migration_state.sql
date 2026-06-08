@@ -1,0 +1,1 @@
+-- Confirm migration state after repair\n-- This migration does nothing but ensures the migration system recognizes the current state

@@ -57,10 +57,21 @@ export async function verifyAgentTurn(input: {
     }
 
     // Update agent_tool_calls row with verification status
+    // Fix 8: Downgrade status to 'failed' if verification fails
     try {
-      await input.supabase.from('agent_tool_calls')
-        .update({ verification: check })
-        .eq('id', result.id);
+      if (!verified.ok) {
+        await input.supabase.from('agent_tool_calls')
+          .update({
+            verification: check,
+            status: 'failed',
+            changed: false,
+          })
+          .eq('id', result.id);
+      } else {
+        await input.supabase.from('agent_tool_calls')
+          .update({ verification: check })
+          .eq('id', result.id);
+      }
     } catch (e) {
       console.warn('Failed to update agent_tool_call verification', e);
     }

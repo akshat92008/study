@@ -42,6 +42,49 @@ function conceptKey(value: string): string {
   return value.trim().toLowerCase().replace(/\s+/g, ' ');
 }
 
+/**
+ * Check if a signal is actionable (has concept + sufficient confidence).
+ */
+function isActionableSignal(signal: LearningSignal): boolean {
+  const conceptName = signal.canonicalConcept ?? signal.concept;
+  if (!conceptName) return false;
+  // Actionable signal types
+  const actionableTypes = [
+    'weak_area_detected',
+    'misconception_detected',
+    'revision_needed',
+    'practice_needed',
+    'wrong_answer',
+    'session_completed',
+    'autopsy_mistake',
+    'source_used',
+  ];
+  if (!actionableTypes.includes(signal.type)) return false;
+  // concept_understood only counts at higher confidence
+  if (signal.type === 'concept_understood' && signal.confidence < 0.8) return false;
+  // Default confidence threshold 0.55
+  if (signal.confidence < 0.55) return false;
+  return true;
+}
+
+/**
+ * Returns true if there are signals that require mutation tools but those tools
+ * are not yet in the requiredTools list. Used to force signal cascade injection.
+ */
+function needsSignalCascadeInjection(signals: LearningSignal[], requiredTools: Array<{ name: string }>): boolean {
+  const hasActionable = signals.some(isActionableSignal);
+  if (!hasActionable) return false;
+  const signalMutatingTools = [
+    'upsert_atlas_concept',
+    'update_concept_mastery',
+    'create_memory_card',
+    'update_microtarget',
+    'write_learning_event',
+  ];
+  const hasMutationTools = requiredTools.some(t => signalMutatingTools.includes(t.name));
+  return !hasMutationTools;
+}
+
 function summarizeMutations(results: ToolResultRecord[]): MutationSummary {
   const summary: MutationSummary = {
     changed: results.some((result) => result.changed),
@@ -74,6 +117,28 @@ function summarizeMutations(results: ToolResultRecord[]): MutationSummary {
   }
 
   return summary;
+}
+
+/**
+ * Stable JSON string for call-key deduplication.
+ * Recursively sorts keys so {b:1, a:2} and {a:2, b:1} produce the same string.
+ */
+function stableStringify(value: unknown): string {
+  if (value === null || value === undefined) return 'null';
+  if (typeof value !== 'object') return JSON.stringify(value);
+  if (Array.isArray(value)) {
+    return `[${value.map(stableStringify).join(',')}]`;
+  }
+  const keys = Object.keys(value as Record<string, unknown>).sort();
+  const parts = keys.map(k => `${JSON.stringify(k)}:${stableStringify((value as Record<string, unknown>)[k])}`);
+  return `{${parts.join(',')}}`;
+}
+
+/**
+ * Generate a stable call key for deduplication.
+ */
+function stableCallKey(tool: { name: string; args: unknown }): string {
+  return `${tool.name}:${stableStringify(tool.args ?? {})}`;
 }
 
 /**
@@ -279,6 +344,22 @@ export async function runCognitionAgentLoop(input: {
 
       allWarnings.push(...latestPlan.risk_flags);
 
+      // Fix 4: Force signal cascade injection if model forgot mutation tools but actionable signals exist
+      if (needsSignalCascadeInjection(runtimeState.latestSignals, requiredTools)) {
+        logger.info('Injecting missing signal cascade tools — model omitted mutation tools', {
+          signalCount: runtimeState.latestSignals.filter(isActionableSignal).length,
+        });
+        // upsert_atlas_concept can run immediately (creates conceptId for dependents)
+        // The rest will be second-phased after conceptId exists
+        requiredTools.push(
+          { name: 'upsert_atlas_concept', input: { from: 'signals' } },
+          { name: 'update_concept_mastery', input: {} },
+          { name: 'create_memory_card', input: {} },
+          { name: 'update_microtarget', input: {} },
+          { name: 'write_learning_event', input: {} },
+        );
+      }
+
       // Break if no tools needed
       if (requiredTools.length === 0) {
         if ((latestPlan as any).final_response_instruction) {
@@ -288,19 +369,32 @@ export async function runCognitionAgentLoop(input: {
       }
 
       // ACT
-      const iterResults = await executeToolChain(
-        compiledTools, // Fix 4: Use compiled tools
-        {
-          supabase,
-          userId: context.userId,
-          channel,
-          runId: trajectoryId,
-          toolCallsBudget,
-          iterationsBudget,
-          hooks: hooksMgr,
-          context, // Fix 4: Pass original context
+      // Fix 6 Phase: Dedupe compiled tools before execution
+      const pendingCompiledTools = compiledTools.filter(tool => {
+        const callKey = stableCallKey(tool);
+        if (runtimeState.executedCallKeys.has(callKey)) {
+          logger.info('Skipping already-executed compiled tool', { tool: tool.name, callKey });
+          return false;
         }
-      );
+        runtimeState.executedCallKeys.add(callKey);
+        return true;
+      });
+
+      const iterResults = pendingCompiledTools.length > 0
+        ? await executeToolChain(
+            pendingCompiledTools, // Fix 6: Dedupe before execute
+            {
+              supabase,
+              userId: context.userId,
+              channel,
+              runId: trajectoryId,
+              toolCallsBudget,
+              iterationsBudget,
+              hooks: hooksMgr,
+              context, // Fix 4: Pass original context
+            }
+          )
+        : [];
 
       // Track if a concept was created this round (for second-phase signal tool compile)
       let newConceptStored = false;
@@ -334,8 +428,21 @@ export async function runCognitionAgentLoop(input: {
             runtimeState.sourceChunks = res.result.data.chunks as RetrievedSourceChunk[];
             context.sourceChunks = runtimeState.sourceChunks;
           }
-          if (res.toolName === 'create_memory_card' && res.result.entityIds?.[0]) {
-            runtimeState.cardIds.push(res.result.entityIds[0]);
+          if (res.toolName === 'create_memory_card') {
+            // Fix 7: Handle multiple card ID patterns
+            const cardId = res.result.entityIds?.[0]
+              ?? (res.result.data as any)?.cardId
+              ?? (Array.isArray((res.result.data as any)?.cards) ? (res.result.data as any).cards[0]?.id : null)
+              ?? (Array.isArray((res.result.data as any)?.cardIds) ? (res.result.data as any).cardIds[0] : null);
+            if (cardId) runtimeState.cardIds.push(cardId);
+          }
+          // Fix 7 & Phase 7: Merge signals from apply_practice_attempt, complete_session, record_autopsy_mistake
+          if (
+            (res.toolName === 'apply_practice_attempt' || res.toolName === 'complete_session' || res.toolName === 'record_autopsy_mistake') &&
+            (res.result.data as any)?.signals
+          ) {
+            const signals = (res.result.data as any).signals as LearningSignal[];
+            runtimeState.latestSignals.push(...signals);
           }
 
           await recordAgentStep(supabase, {
@@ -372,16 +479,29 @@ export async function runCognitionAgentLoop(input: {
           finalResponse: finalResponseInstruction,
         });
         if (signalTools.length > 0) {
-          const secondPhaseResults = await executeToolChain(signalTools, {
-            supabase,
-            userId: context.userId,
-            channel,
-            runId: trajectoryId,
-            toolCallsBudget,
-            iterationsBudget,
-            hooks: hooksMgr,
-            context,
+          // Fix 6 Phase: Dedupe second-phase tools before execution
+          const pendingSecondPhase = signalTools.filter(tool => {
+            const callKey = stableCallKey(tool);
+            if (runtimeState.executedCallKeys.has(callKey)) {
+              logger.info('Skipping already-executed second-phase tool', { tool: tool.name });
+              return false;
+            }
+            runtimeState.executedCallKeys.add(callKey);
+            return true;
           });
+
+          const secondPhaseResults = pendingSecondPhase.length > 0
+            ? await executeToolChain(pendingSecondPhase, {
+                supabase,
+                userId: context.userId,
+                channel,
+                runId: trajectoryId,
+                toolCallsBudget,
+                iterationsBudget,
+                hooks: hooksMgr,
+                context,
+              })
+            : [];
           for (const res of secondPhaseResults) {
             if (res.success && res.result) {
               runtimeState.toolResults.push(res.result);

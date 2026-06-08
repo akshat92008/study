@@ -172,6 +172,15 @@ export function compileToolPlan(input: CompileToolPlanInput): Array<{ name: stri
       }
     }
 
+    // Fix 12: Block ATLAS/MEMORY mutations when autopsy already projected
+    if ((observation.payload as any)?.alreadyProjected === true && observation.channel === 'autopsy') {
+      const blockedTools = ['upsert_atlas_concept', 'update_concept_mastery', 'create_memory_card'];
+      if (blockedTools.includes(name)) {
+        logger.info(`Skipping ${name} as autopsy is already projected and mutation would duplicate ATLAS/MEMORY`);
+        continue;
+      }
+    }
+
     // Fallback: use planned input if no specific compilation rule
     compiledTools.push({ name, args: plannedInput });
   }
