@@ -157,7 +157,7 @@ export async function recomputeConceptMastery(
 
   const { data: concept, error: conceptErr } = await supabase
     .from('concepts')
-    .select('mastery, mastery_score')
+    .select('mastery, mastery_score, times_reviewed')
     .eq('id', conceptId)
     .eq('user_id', userId)
     .maybeSingle();
@@ -210,6 +210,7 @@ export async function recomputeConceptMastery(
       confidence: confidence >= 0.8 ? 'high' : confidence >= 0.5 ? 'medium' : 'low',
       forgetting_probability: forgettingProbability,
       last_reviewed_at: new Date().toISOString(),
+      times_reviewed: (concept.times_reviewed || 0) + 1,
       updated_at: new Date().toISOString(),
     })
     .eq('id', conceptId)

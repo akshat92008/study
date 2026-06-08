@@ -57,6 +57,9 @@ function learningSignalEvidence(signalType: string): {
   }
 }
 
+import { projectLearningSignal } from '@/lib/learner-state/projector';
+import type { LearningSignal } from '@/lib/agent/types';
+
 export async function projectLearningSignalToStudyState(input: {
   userId: string;
   payload: Record<string, any>;
@@ -65,128 +68,45 @@ export async function projectLearningSignalToStudyState(input: {
 }) {
   const supabase = input.client ?? createAdminClient();
   const signalType = asString(input.payload.signalType ?? input.payload.signal_type) ?? 'unknown';
-  const evidenceMapping = learningSignalEvidence(signalType);
-  const subject = asString(input.payload.subject) ?? 'General';
   const topic = asString(input.payload.topic ?? input.payload.conceptName ?? input.payload.chapter);
   const sourceId = asString(input.payload.sourceId ?? input.payload.source_id) ?? input.eventId ?? `${signalType}:${Date.now()}`;
   const goalId = asString(input.payload.goalId ?? input.payload.goal_id);
   const confidence = numberOr(input.payload.confidence, 0.75);
 
-  if (!evidenceMapping || !topic) {
-    await invalidateSessionCard(input.userId, 'LEARNER_STATE_UPDATED', {
-      client: supabase,
-      goalId,
-      sourceEventId: input.eventId ?? null,
-      skipVersionBump: true,
-    }).catch(() => undefined);
-    return {
-      conceptsUpdated: 0,
-      cardsCreated: 0,
-      tasksCreated: 0,
-      notificationSent: false,
-      reason: !evidenceMapping ? 'unsupported_signal_type' : 'missing_topic',
-    };
+  if (!topic) {
+    return { conceptsUpdated: 0, cardsCreated: 0, tasksCreated: 0, reason: 'missing_topic' };
   }
 
-  const resolution = await resolveConcept({
-    userId: input.userId,
-    subject,
+  // Map legacy payload to new LearningSignal
+  const signal: LearningSignal = {
+    type: signalType as any,
+    concept: topic,
+    canonicalConcept: topic,
+    subject: asString(input.payload.subject) || 'General',
     chapter: topic,
     topic,
-    sourceType: 'ingest',
-    confidence: Math.max(confidence, evidenceMapping.weak ? 0.93 : 0.9),
-    client: supabase,
-  });
-
-  if (!resolution.conceptId) {
-    await supabase.from('unresolved_concept_mentions').insert({
-      user_id: input.userId,
-      goal_id: goalId,
-      topic,
-      subject,
-      confidence,
-      source_type: signalType,
-      source_id: sourceId,
-      source_event_id: input.eventId,
-    }).catch(() => undefined);
-
-    await recordAgentAction({
-      userId: input.userId,
-      agentName: 'atlas',
-      actionType: 'tag_weak_topic',
-      status: 'skipped',
-      reason: `Could not resolve concept for topic: ${topic}. Captured as pending candidate.`,
-      evidence: { topic, signalType, resolution },
-      idempotencyKey: `atlas_unresolved:${input.userId}:${input.eventId ?? sourceId}`,
-    }, { client: supabase }).catch(() => undefined);
-
-    return {
-      conceptsUpdated: 0,
-      cardsCreated: 0,
-      tasksCreated: 0,
-      notificationSent: false,
-      reason: 'concept_unresolved',
-    };
-  }
-
-  const result = await recordMasteryEvidence({
-    userId: input.userId,
-    conceptId: resolution.conceptId,
-    evidenceType: evidenceMapping.evidenceType,
-    source: evidenceMapping.source,
-    sourceId,
-    sourceEventId: input.eventId ?? undefined,
-    evidence: `${signalType} signal for ${topic}`,
-    weight: evidenceMapping.weight,
     confidence,
-    client: supabase,
-  });
-
-  await recordAgentAction({
-    userId: input.userId,
-    agentName: 'atlas',
-    actionType: 'update_mastery_from_evidence',
-    status: 'applied',
-    reason: `Updated Atlas mastery for ${topic} based on ${signalType.replace(/_/g, ' ')}.`,
-    evidence: { conceptId: resolution.conceptId, topic, signalType, evidenceType: evidenceMapping.evidenceType },
-    idempotencyKey: `atlas_mastery_update:${input.userId}:${input.eventId ?? sourceId}`,
-  }, { client: supabase }).catch(() => undefined);
-
-  let planUpdate = { cardsCreated: 0, tasksCreated: 0, notified: false };
-  if (evidenceMapping.weak) {
-    const weakConcept: WeakConceptPlanChange = {
-      conceptId: resolution.conceptId,
-      conceptName: topic,
-      subject,
-      chapter: topic,
-      topic,
-      reason: signalType.replace(/_/g, ' '),
+    source: (input.payload.source as any) || 'background',
+    evidence: input.payload.evidence || `${signalType} signal for ${topic}`,
+    metadata: {
+      ...input.payload,
+      idempotencyKey: input.eventId || undefined,
       sourceId,
-    };
-    planUpdate = await notifyWeakConceptPlanChange({
-      userId: input.userId,
       goalId,
-      weakConcepts: [weakConcept],
-      sourceType: signalType,
-      sourceEventId: input.eventId ?? sourceId,
-      client: supabase,
-    });
-  } else {
-    await invalidateSessionCard(input.userId, 'LEARNER_STATE_UPDATED', {
-      client: supabase,
-      goalId,
-      sourceEventId: input.eventId ?? null,
-    }).catch(() => undefined);
-  }
+    },
+  };
+
+  const result = await projectLearningSignal(supabase, input.userId, signal, { goalId });
 
   return {
-    conceptsUpdated: result.changed ? 1 : 0,
-    cardsCreated: planUpdate.cardsCreated,
-    tasksCreated: planUpdate.tasksCreated,
-    notificationSent: planUpdate.notified,
-    reason: 'projected_learning_signal',
+    conceptsUpdated: result.masteryUpdated ? 1 : 0,
+    cardsCreated: result.cardsCreated,
+    tasksCreated: result.mistakeRecorded ? 1 : 0,
+    notificationSent: result.cardsCreated > 0,
+    reason: 'projected_via_central_projector',
   };
 }
+
 
 export async function projectMaterialIngestedToStudyState(input: {
   userId: string;

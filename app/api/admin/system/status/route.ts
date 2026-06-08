@@ -39,11 +39,15 @@ export async function GET(req: NextRequest) {
       dbStatus = 'failed';
     }
 
-    // 3. Env config check
+    // 3. Env config check (Safe reveal: only show status, not values)
     const requiredEnv = [
       'NEXT_PUBLIC_SUPABASE_URL',
       'NEXT_PUBLIC_SUPABASE_ANON_KEY',
       'SUPABASE_SERVICE_ROLE_KEY',
+      'OPENAI_API_KEY',
+      'ANTHROPIC_API_KEY',
+      'MISTRAL_API_KEY',
+      'GEMINI_API_KEY',
     ];
     const missingEnv = requiredEnv.filter((key) => !process.env[key]);
     const envStatus = missingEnv.length === 0 ? 'ok' : 'missing';

@@ -21,7 +21,7 @@
     "test:worker": "vitest run tests/worker.test.ts tests/workers tests/events/event-worker.test.ts tests/events/workerRouteAuth.test.ts",
     "test:mvp": "vitest run __tests__/integration/mvp-smoke.test.ts __tests__/integration/autopsy-pipeline.test.ts __tests__/integration/autopsy-event-loop.test.ts tests/integration/coreLoop.test.ts tests/integration/mvpLocalLoop.test.ts tests/contracts/noSchemaDrift.test.ts tests/rls.test.ts tests/events/autopsyEvidence.test.ts tests/workers/eventWorker.test.ts tests/workers/eventWorkerChatSideEffects.test.ts tests/chat/chatPersistence.test.ts",
     "test:watch": "vitest",
-    "verify:agentic-loop": "tsx scripts/verify-agentic-loop.ts",
+    "verify:agentic-loop": "NODE_OPTIONS='-r ./scripts/mock-server-only.js' tsx scripts/verify-agentic-loop.ts",
     "test:integration": "vitest --project integration",
     "test:coverage": "vitest --coverage",
     "evals": "node scripts/run-evals.js",

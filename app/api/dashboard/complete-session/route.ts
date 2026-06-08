@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
       gapFound: body.gapFound ?? null,
       cardsCreated: body.cardsCreated ?? 0,
       goalId: body.goalId ?? null,
-      source: 'complete_session',
+      source: 'session',
       idempotencyKey: req.headers.get('Idempotency-Key'),
       client: supabase,
     });
@@ -49,8 +49,8 @@ export async function POST(req: NextRequest) {
     const closing = await generateSessionClosingMessage({
       userId: user.id,
       conceptId: result.conceptId,
-      subject: result.subject,
-      chapter: result.chapter,
+      subject: result.subject || 'General',
+      chapter: result.chapter || 'General',
       gapFound: body.gapFound ?? null,
       gapAnswer: null,
       understood: result.understood,

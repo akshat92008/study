@@ -98,6 +98,8 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       recentMistakes: learnerState.autopsy.recentMistakes.slice(0, 5),
       needsReviewCount: learnerState.autopsy.needsReviewCount,
       lastAutopsy: learnerState.autopsy.lastAutopsy,
+      dueRetests: learnerState.autopsy.dueRetests,
+      openRepairMistakes: learnerState.autopsy.openRepairMistakes,
       recentPracticeStruggles: await getRecentPracticeStruggles(userId, supabase, goalId),
       struggles: learnerState.autopsy.recentMistakes.slice(0, 5).map(m => ({ chapter: m.chapter, subject: m.subject })),
       masteryStats: learnerState.atlas.masterySummary,
@@ -117,6 +119,7 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       studentModel: learnerState.studentModel,
       outcomeAnalytics: outcomeSummary,
       agentActivity,
+      hermesMemories: learnerState.hermesMemories,
     };
     logger.info('[MIND] context build completed', {
       userId,

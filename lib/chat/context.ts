@@ -140,10 +140,9 @@ export async function gatherChatContext({
         return { ragContext: null, ragPromptBlock: '' };
       });
 
-  const [semanticMemories, episodicMemories, hermesMemories, mindContext, mindRag] = await Promise.all([
+  const [semanticMemories, episodicMemories, mindContext, mindRag] = await Promise.all([
     Promise.race([memoryPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 800))]).catch(() => [] as string[]),
     Promise.race([episodicMemoryPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 800))]).catch(() => [] as string[]),
-    Promise.race([hermesMemoryPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 800))]).catch(() => []),
     Promise.race([mindContextPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 5000))]).catch(() => ({
       profile: { name: 'Student', examType: 'General Study', examDate: null, currentLevel: 'intermediate', learningStyle: 'visual', streakDays: 0, timezone: 'UTC', learnerStateVersion: 0 },
       activeGoal: null,
@@ -164,16 +163,7 @@ export async function gatherChatContext({
       outcomeAnalytics: null,
     })),
     Promise.race([mindRagPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1500))]).catch(() => ({ ragContext: null, ragPromptBlock: '' }))
-  ]) as [string[], string[], any[], any, any];
-
-  mindContext.hermesMemories = hermesMemories;
-
-  const repairSignals = await Promise.race([
-    getRepairSignals(supabase, { userId, goalId: activeGoalId, limit: 5 }),
-    new Promise((_, r) => setTimeout(() => r(new Error('repair_context_timeout')), 1000)),
-  ]).catch(() => ({ dueRetests: [], activeMistakes: [] })) as any;
-  mindContext.dueRetests = repairSignals.dueRetests ?? [];
-  mindContext.openRepairMistakes = repairSignals.activeMistakes ?? [];
+  ]) as [string[], string[], any, any];
 
   if (activeGoal && mindContext && !mindContext.activeGoal) {
     mindContext.activeGoal = {

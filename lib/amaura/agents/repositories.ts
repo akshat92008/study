@@ -35,8 +35,10 @@ export type RevisionCardInput = {
   dueAt?: string | null;
   sourceType: string;
   sourceId: string;
+  cardType?: string | null;
   origin?: 'manual' | 'chat' | 'autopsy' | 'practice' | 'source';
   approvalStatus?: 'approved' | 'pending' | 'rejected';
+  normalizedKey?: string | null;
   metadata?: Record<string, unknown>;
 };
 
@@ -132,16 +134,18 @@ export async function createRevisionCardsForUser(
     chapter: card.chapter ?? null,
     due: card.dueAt ?? now,
     state: 0,
+    card_type: card.cardType ?? 'autopsy_recovery',
     source_type: card.sourceType,
     source_id: card.sourceId,
     origin: card.origin ?? (card.sourceType?.startsWith('amaura_') ? 'chat' : 'manual'),
-    approval_status: card.approvalStatus ?? (card.sourceType?.startsWith('amaura_') ? 'pending' : 'approved'),
+    approval_status: card.approvalStatus ?? ((card.origin === 'chat' || card.sourceType?.startsWith('amaura_')) ? 'pending' : 'approved'),
+    normalized_key: card.normalizedKey ?? null,
     metadata: card.metadata ?? {},
   }));
 
   const { data, error } = await supabase
     .from('revision_cards')
-    .upsert(rows, { onConflict: 'user_id,source_type,source_id', ignoreDuplicates: true })
+    .upsert(rows, { onConflict: 'user_id,normalized_key', ignoreDuplicates: true })
     .select('id, concept_id, source_id');
 
   if (error) throw error;

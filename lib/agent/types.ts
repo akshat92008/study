@@ -49,7 +49,9 @@ export interface LearningSignal {
     | 'session_should_adapt'
     | 'practice_attempt_submitted'
     | 'revision_reviewed'
-    | 'session_completed';
+    | 'session_completed'
+    | 'autopsy_mistake_detected'
+    | 'concept_practiced';
   concept?: string;
   canonicalConcept?: string;
   subject?: string | null;

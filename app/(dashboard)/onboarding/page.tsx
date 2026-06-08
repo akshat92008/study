@@ -78,9 +78,13 @@ export default async function OnboardingPage() {
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('full_name, exam_type, target_date, target_score, daily_hours_available, subjects, current_level, timezone')
+    .select('onboarding_complete, full_name, exam_type, target_date, target_score, daily_hours_available, subjects, current_level, timezone')
     .eq('id', user.id)
     .maybeSingle();
+
+  if (profile?.onboarding_complete) {
+    redirect('/dashboard');
+  }
 
   const { data: existingGoal } = await supabase
     .from('learning_goals')

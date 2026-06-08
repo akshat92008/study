@@ -1,363 +1,134 @@
 import { createClient } from '@/lib/supabase/server';
 import { resolveConcept } from '@/lib/engines/concept-resolver';
-import { recordMasteryEvidence } from '@/lib/engines/mastery-updater';
 import { logger } from '@/lib/utils/logger';
-import { createRevisionCardsForUser } from '@/lib/amaura/agents/repositories';
-import { generateMemoryCard } from '@/lib/memory/cardGenerator';
+import { projectLearningSignal } from '@/lib/learner-state/projector';
+import type { LearningSignal, AgentChannel } from '@/lib/agent/types';
 
-export interface CompleteLearningSessionInput {
+/**
+ * Deterministically completes a study session.
+ * Updates streak, mastery, revision cards, and invalidates session-card via central projector.
+ */
+export async function completeLearningSession(input: {
   userId: string;
+  sessionId?: string | null;
   taskId?: string | null;
+  goalId?: string | null;
   subject?: string | null;
   chapter?: string | null;
   conceptName?: string | null;
-  durationMinutes?: number | null;
-  understood?: boolean | null;
-  gapFound?: string | null;
-  cardsCreated?: number | null;
-  sessionType?: string | null;
-  goalId?: string | null;
-  idempotencyKey?: string | null;
-  source?: 'complete_session' | 'session_close' | 'chat' | 'system';
-  client?: any;
-}
-
-export interface CompleteLearningSessionResult {
-  sessionId: string;
-  conceptId: string | null;
-  streakDays: number;
-  streakChanged: boolean;
-  subject: string;
-  chapter: string;
+  durationMinutes: number;
   understood: boolean;
-  cardsCreated: number;
-  memoryCardId?: string | null;
-  memoryCardCreated: boolean;
-  memoryCardReused: boolean;
-  memoryWarning?: string;
-}
+  gapFound?: boolean | null;
+  cardsCreated?: number;
+  source?: AgentChannel | 'source';
+  idempotencyKey?: string | null;
+  client?: any;
+}) {
+  const supabase = input.client || await createClient();
+  const sessionId = input.sessionId || input.taskId;
+  
+  const durationMinutes = input.durationMinutes;
+  const understood = input.understood;
+  const completionKey = input.idempotencyKey || `session_complete:${input.userId}:${sessionId || Date.now()}`;
 
-function getLocalDate(timezone?: string | null): string {
-  try {
-    if (timezone) {
-      return new Date().toLocaleDateString('en-CA', { timeZone: timezone });
+  // 1. Fetch session context if not provided
+  let subject = input.subject;
+  let chapter = input.chapter;
+  let conceptName = input.conceptName;
+  let conceptId = null;
+
+  if (sessionId && (!subject || !chapter || !conceptName)) {
+    const { data: session, error: sessionErr } = await supabase
+      .from('study_sessions')
+      .select('id, subject, chapter, concept_name, concept_id')
+      .eq('id', sessionId)
+      .maybeSingle();
+
+    if (!sessionErr && session) {
+      subject = subject || session.subject;
+      chapter = chapter || session.chapter;
+      conceptName = conceptName || session.concept_name;
+      conceptId = session.concept_id;
     }
-  } catch {
-    // Fall back to server date below.
   }
-  return new Date().toISOString().slice(0, 10);
+
+  if (!subject || !chapter) {
+    throw new Error('Subject and Chapter are required if no valid Session ID is provided');
+  }
+
+  // 2. Atomic RPC for session record completion & streak update
+  const { data: rpcResult, error: rpcError } = await supabase.rpc('complete_study_session', {
+    p_user_id: input.userId,
+    p_subject: subject || 'General',
+    p_chapter: chapter || 'General',
+    p_topic: conceptName || 'General',
+    p_concept_name: conceptName || 'General',
+    p_duration_minutes: durationMinutes,
+    p_understood: understood,
+    p_gap_found: input.gapFound ? String(input.gapFound) : null,
+    p_cards_created: input.cardsCreated || 0,
+    p_session_type: 'study',
+    p_task_id: input.taskId && /^[0-9a-f-]{36}$/i.test(input.taskId) ? input.taskId : null,
+    p_concept_id: conceptId && /^[0-9a-f-]{36}$/i.test(conceptId) ? conceptId : null,
+    p_completion_key: completionKey,
+    p_source: input.source || 'session',
+  });
+
+  if (rpcError) {
+    logger.error('Failed to complete study session via RPC', { sessionId, error: rpcError });
+    throw rpcError;
+  }
+
+  const finalSessionId = rpcResult.session_id || sessionId;
+
+  // 3. Centralized Projection (Fix: Unified Path)
+  const sessionSignal: LearningSignal = {
+    type: 'session_completed',
+    concept: conceptName || 'General Session',
+    canonicalConcept: conceptName || 'General Session',
+    subject: subject || 'General',
+    chapter: chapter || 'General',
+    topic: conceptName || 'General',
+    confidence: 1.0,
+    source: input.source || 'session',
+    evidence: `Completed session on ${subject} / ${chapter} for ${durationMinutes} mins.`,
+    metadata: {
+      userId: input.userId,
+      sessionId: finalSessionId,
+      subject,
+      chapter,
+      conceptName,
+      conceptId,
+      durationMinutes,
+      understood,
+      gapFound: input.gapFound ?? null,
+      idempotencyKey: completionKey,
+    },
+  };
+
+  const projection = await projectLearningSignal(supabase, input.userId, sessionSignal, {
+    goalId: input.goalId,
+  });
+
+  return {
+    success: true,
+    streakChanged: rpcResult.streak_changed ?? false,
+    newStreak: rpcResult.new_streak ?? 0,
+    streakDays: rpcResult.new_streak ?? 0,
+    sessionId: finalSessionId,
+    conceptId,
+    subject,
+    chapter,
+    understood,
+    cardsCreated: projection.cardsCreated || input.cardsCreated || 0,
+    projection,
+  };
 }
 
 async function markCachedSessionCardCompleted(
   supabase: any,
   input: { userId: string; goalId?: string | null }
 ) {
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('streak_days, learner_state_version, timezone')
-    .eq('id', input.userId)
-    .maybeSingle();
-
-  const localDate = getLocalDate(profile?.timezone ?? null);
-  const update: Record<string, unknown> = {
-    isCompleted: true,
-    completedAt: new Date().toISOString(),
-    is_completed: true,
-    completed_at: new Date().toISOString(),
-  };
-  if (typeof profile?.learner_state_version === 'number') {
-    update.learner_state_version = profile.learner_state_version;
-  }
-
-  let query = supabase
-    .from('session_cards')
-    .update(update)
-    .eq('user_id', input.userId)
-    .eq('date', localDate);
-
-  if (input.goalId) query = query.eq('goal_id', input.goalId);
-  await query;
-
-  return {
-    streakDays: Number(profile?.streak_days ?? 0),
-  };
-}
-
-async function recordSessionMasteryIfMissing(
-  supabase: any,
-  input: {
-    userId: string;
-    conceptId: string | null;
-    sessionId: string;
-    understood: boolean;
-    subject: string;
-    chapter: string;
-  }
-) {
-  if (!input.conceptId) return;
-
-  const { data: existing } = await supabase
-    .from('mastery_events')
-    .select('id')
-    .eq('user_id', input.userId)
-    .eq('concept_id', input.conceptId)
-    .eq('source_id', input.sessionId)
-    .limit(1)
-    .maybeSingle();
-  if (existing?.id) return;
-
-  await recordMasteryEvidence({
-    userId: input.userId,
-    conceptId: input.conceptId,
-    evidenceType: input.understood ? 'session_completed' : 'tutor_confused',
-    source: 'session_close',
-    sourceId: input.sessionId,
-    idempotencyKey: `session_mastery:${input.userId}:${input.sessionId}:${input.conceptId}`,
-    evidence: input.understood
-      ? `Completed a study session on ${input.subject} / ${input.chapter}.`
-      : `Completed a study session and flagged a gap in ${input.subject} / ${input.chapter}.`,
-    confidence: input.understood ? 0.65 : 0.76,
-    client: supabase,
-  }).catch((error) => {
-    logger.warn('Session mastery evidence write skipped', {
-      userId: input.userId,
-      sessionId: input.sessionId,
-      error: error instanceof Error ? error.message : String(error),
-    });
-  });
-}
-
-export async function completeLearningSession(
-  input: CompleteLearningSessionInput
-): Promise<CompleteLearningSessionResult> {
-  const startedAt = Date.now();
-  const supabase = input.client ?? (await createClient());
-  const source = input.source ?? 'complete_session';
-  const subject = (input.subject || 'General').trim() || 'General';
-  const chapter = (input.chapter || input.conceptName || 'Session').trim() || 'Session';
-  const conceptName = (input.conceptName || chapter).trim();
-  const durationMinutes = Math.max(1, Number(input.durationMinutes || 25));
-  const understood = input.understood ?? true;
-  const cardsCreated = Number(input.cardsCreated || 0);
-  const completionKey = input.idempotencyKey || (input.taskId ? `${source}:task:${input.taskId}` : null);
-
-  if (completionKey) {
-    const { data: existing } = await supabase
-      .from('study_sessions')
-      .select('id, subject, chapter, metadata')
-      .eq('user_id', input.userId)
-      .eq('metadata->>completion_key', completionKey)
-      .maybeSingle();
-
-    if (existing?.id) {
-      logger.info('Session completion idempotency hit', {
-        userId: input.userId,
-        feature: 'session-completion',
-        sessionId: existing.id,
-      });
-      const { data: profile } = await supabase
-        .from('profiles')
-        .select('streak_days')
-        .eq('id', input.userId)
-        .maybeSingle();
-      await markCachedSessionCardCompleted(supabase, {
-        userId: input.userId,
-        goalId: input.goalId ?? null,
-      }).catch(() => undefined);
-
-      return {
-        sessionId: existing.id,
-        conceptId: existing.metadata?.conceptId ?? null,
-        streakDays: Number(profile?.streak_days ?? 0),
-        streakChanged: false,
-        subject: existing.subject || subject,
-        chapter: existing.chapter || chapter,
-        understood,
-        cardsCreated,
-        memoryCardId: null,
-        memoryCardCreated: false,
-        memoryCardReused: false,
-      };
-    }
-  }
-
-  const resolution = await resolveConcept({
-    userId: input.userId,
-    subject,
-    chapter,
-    topic: conceptName,
-    sourceType: 'session',
-    confidence: 0.94,
-    client: supabase,
-  });
-  const conceptId = resolution.conceptId;
-  
-  const { data: rpcResult, error: sessionError } = await supabase.rpc('complete_study_session', {
-    p_user_id: input.userId,
-    p_subject: subject,
-    p_chapter: chapter,
-    p_topic: conceptName,
-    p_concept_name: conceptName,
-    p_duration_minutes: durationMinutes,
-    p_understood: understood,
-    p_gap_found: input.gapFound ?? null,
-    p_cards_created: cardsCreated,
-    p_session_type: input.sessionType || 'study',
-    p_task_id: input.taskId ?? null,
-    p_concept_id: conceptId,
-    p_completion_key: completionKey,
-    p_source: source
-  });
-
-  if (sessionError || !rpcResult?.session_id) {
-    // If it's a unique constraint violation on the completion key, handle it as idempotency hit due to a race condition
-    if (sessionError?.code === '23505' && completionKey) {
-      logger.info('Session completion idempotency hit via race condition constraint', {
-        userId: input.userId,
-        feature: 'session-completion',
-      });
-      const { data: existing } = await supabase
-        .from('study_sessions')
-        .select('id, subject, chapter, metadata')
-        .eq('user_id', input.userId)
-        .eq('metadata->>completion_key', completionKey)
-        .maybeSingle();
-
-      if (existing?.id) {
-        const { data: profile } = await supabase
-          .from('profiles')
-          .select('streak_days')
-          .eq('id', input.userId)
-          .maybeSingle();
-
-        return {
-          sessionId: existing.id,
-          conceptId: existing.metadata?.conceptId ?? null,
-          streakDays: Number(profile?.streak_days ?? 0),
-          streakChanged: false,
-          subject: existing.subject || subject,
-          chapter: existing.chapter || chapter,
-          understood,
-          cardsCreated,
-          memoryCardCreated: false,
-          memoryCardReused: false,
-        };
-      }
-    }
-
-    logger.error('Session completion RPC failed', sessionError, {
-      userId: input.userId,
-      feature: 'session-completion',
-    });
-    throw new Error(sessionError?.message || 'Failed to save study session via RPC');
-  }
-
-  const sessionId = rpcResult.session_id;
-
-  await recordSessionMasteryIfMissing(supabase, {
-    userId: input.userId,
-    conceptId,
-    sessionId,
-    understood,
-    subject,
-    chapter,
-  });
-
-  // Fix 12: Create/reuse one MEMORY card for conceptId directly
-  // This ensures dashboard completion closes the loop deterministically
-  let memoryCardId: string | null = null;
-  let cardsCreatedResult = cardsCreated;
-  let memoryCardCreated = false;
-  let memoryCardReused = false;
-  let memoryWarning: string | undefined;
-
-  if (conceptId) {
-    try {
-      // Check if a card already exists for this concept to avoid duplicates
-      const { data: existingCards } = await supabase
-        .from('revision_cards')
-        .select('id')
-        .eq('user_id', input.userId)
-        .eq('concept_id', conceptId)
-        .eq('status', 'active')
-        .limit(1)
-        .maybeSingle();
-
-      if (existingCards?.id) {
-        memoryCardId = existingCards.id;
-        memoryCardReused = true;
-      } else {
-        // Only create a new card if one doesn't exist
-        const signal = {
-          type: 'session_completed' as const,
-          concept: conceptName,
-          canonicalConcept: conceptName,
-          subject,
-          chapter,
-          confidence: 0.75,
-          evidence: `Completed session on ${subject} / ${chapter}.`,
-        };
-        const generated = generateMemoryCard(signal as any);
-        const [card] = await createRevisionCardsForUser(input.userId, [{
-          goalId: input.goalId ?? null,
-          conceptId,
-          front: generated.front,
-          back: generated.back,
-          subject,
-          chapter,
-          sourceType: 'session_completed',
-          sourceId: sessionId,
-          origin: 'chat',
-          metadata: { sessionId, signal },
-        }], { client: supabase });
-
-        if (card?.id) {
-          memoryCardId = card.id;
-          memoryCardCreated = true;
-          cardsCreatedResult = Math.max(cardsCreatedResult, 1);
-        }
-      }
-    } catch (err) {
-      memoryWarning = 'MEMORY card could not be created';
-      logger.warn('Durable session memory card failed (non-fatal)', { sessionId, error: err });
-    }
-  }
-
-  await markCachedSessionCardCompleted(supabase, {
-    userId: input.userId,
-    goalId: input.goalId ?? null,
-  }).catch((error) => {
-    logger.warn('Session card completion marker skipped', {
-      userId: input.userId,
-      sessionId,
-      error: error instanceof Error ? error.message : String(error),
-    });
-  });
-  
-  const streakChanged = rpcResult.streak_changed ?? false;
-  const newStreak = rpcResult.streak_days ?? 0;
-
-  logger.info('Session completion persisted', {
-    userId: input.userId,
-    feature: 'session-completion',
-    sessionId,
-    conceptId,
-    durationMs: Date.now() - startedAt,
-    streakChanged,
-  });
-
-  return {
-    sessionId,
-    conceptId,
-    streakDays: newStreak,
-    streakChanged: streakChanged,
-    subject,
-    chapter,
-    understood,
-    cardsCreated: cardsCreatedResult,
-    memoryCardId,
-    memoryCardCreated,
-    memoryCardReused,
-    memoryWarning,
-  };
+  // This is now handled by projectLearningSignal -> invalidateSessionCard
+  return { success: true };
 }

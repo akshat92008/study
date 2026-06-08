@@ -1,8 +1,34 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
+import { FeatureFlags } from "@/lib/feature-flags";
 
 const PUBLIC_ROUTES = ["/login", "/signup", "/waitlist", "/", "/api/ping", "/api/health", "/api/waitlist", "/api/webhooks/stripe"];
 const CRON_ROUTES = ["/api/cron", "/api/internal/workers/process-events", "/api/internal"];
+
+// MVP Route Policy: Block non-MVP user-facing routes
+const MVP_RESTRICTIONS: Array<{ path: string; flag?: keyof typeof FeatureFlags; redirect?: string }> = [
+  { path: "/planner", flag: undefined, redirect: "/dashboard" },
+  { path: "/mentor", flag: undefined, redirect: "/dashboard" },
+  { path: "/tutor", flag: undefined, redirect: "/dashboard" },
+  { path: "/analytics", flag: "ENABLE_ANALYTICS_UI", redirect: "/dashboard" },
+  { path: "/cognition", flag: "ENABLE_ATLAS_UI", redirect: "/dashboard" },
+  { path: "/health", flag: undefined, redirect: "/dashboard" },
+  { path: "/autopsy/deep", flag: undefined, redirect: "/autopsy" },
+  { path: "/onboarding", flag: undefined, redirect: "/dashboard" },
+  { path: "/pulse", flag: undefined, redirect: "/dashboard" },
+  { path: "/admin", flag: undefined, redirect: "/dashboard" }, // Admin pages handled below
+];
+
+const PROTECTED_APIS: Array<{ path: string; redirect?: string }> = [
+  { path: "/api/planner" },
+  { path: "/api/mentor" },
+  { path: "/api/tutor" },
+  { path: "/api/analytics" },
+  { path: "/api/internal" },
+  { path: "/api/health" },
+];
+
+const ADMIN_ROUTES = ["/admin", "/api/admin", "/(dashboard)/admin"];
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -10,6 +36,14 @@ export async function middleware(request: NextRequest) {
     request.headers.get("x-request-id") ||
     request.headers.get("x-correlation-id") ||
     crypto.randomUUID();
+
+  // MVP API Protection (Block non-MVP APIs)
+  if (PROTECTED_APIS.some(r => pathname.startsWith(r.path))) {
+    // Check if it's a cron/worker request first (already handled by CRON_ROUTES)
+    if (!CRON_ROUTES.some(r => pathname.startsWith(r))) {
+      return NextResponse.json({ error: "forbidden", message: "This API is restricted in MVP." }, { status: 403 });
+    }
+  }
 
   // Cron routes need secret validation
   if (CRON_ROUTES.some(r => pathname.startsWith(r))) {
@@ -129,6 +163,32 @@ export async function middleware(request: NextRequest) {
       );
     }
     return NextResponse.redirect(new URL("/login", request.url));
+  }
+
+  // MVP Route Gating
+  for (const restriction of MVP_RESTRICTIONS) {
+    if (pathname.startsWith(restriction.path)) {
+      const isEnabled = restriction.flag ? FeatureFlags[restriction.flag] : false;
+      if (!isEnabled) {
+        return NextResponse.redirect(new URL(restriction.redirect || "/dashboard", request.url));
+      }
+    }
+  }
+
+  // Admin Route Protection (Simple server-gate)
+  if (ADMIN_ROUTES.some(r => pathname.startsWith(r))) {
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("subscription_status")
+      .eq("id", user.id)
+      .maybeSingle();
+
+    if (profile?.subscription_status !== "admin") {
+      if (pathname.startsWith("/api/")) {
+        return NextResponse.json({ error: "forbidden", message: "Admin access required." }, { status: 403 });
+      }
+      return NextResponse.redirect(new URL("/dashboard", request.url));
+    }
   }
 
   return response;

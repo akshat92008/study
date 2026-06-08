@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useAppStore } from '@/stores/appStore';
 import type { LearningGoal } from '@/stores/appStore';
-import { Loader2, Brain, MessageSquare, Activity, RefreshCw, Upload, X, Music } from 'lucide-react';
+import { Loader2, Brain, MessageSquare, Activity, RefreshCw, Upload, X } from 'lucide-react';
 import { getPreset } from '@/lib/types/universal-domain';
 import { useRouter } from 'next/navigation';
 import CognitionDashboard from '@/components/cognition/CognitionDashboard';
@@ -325,13 +325,6 @@ export default function DashboardPage() {
                 <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)' }}>Revision Due</span>
               </>
             )}
-
-            {activeDrawer === 'beats' && (
-              <>
-                <Music size={18} style={{ color: 'var(--warning)' }} />
-                <span style={{ fontWeight: 'bold', fontSize: 'var(--fs-md)' }}>Focus Beats</span>
-              </>
-            )}
           </div>
           <button
             onClick={() => setActiveDrawer(null)}
@@ -368,27 +361,6 @@ export default function DashboardPage() {
               <ErrorBoundary fallback={<div className="text-sm text-muted-foreground p-4">Revision queue unavailable</div>}>
                 <RevisionQueue goalId={activeGoalId ?? undefined} />
               </ErrorBoundary>
-            </div>
-          )}
-
-
-
-          {/* D. BEATS Drawer */}
-          {activeDrawer === 'beats' && (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)', height: '100%' }}>
-              <iframe
-                width="100%"
-                height="315"
-                src="https://www.youtube.com/embed/jfKfPfyJRdk"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                style={{ borderRadius: 'var(--radius-lg)', border: 'none' }}
-              ></iframe>
-              <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', textAlign: 'center' }}>
-                Lofi beats to relax/study to.
-              </p>
             </div>
           )}
         </div>

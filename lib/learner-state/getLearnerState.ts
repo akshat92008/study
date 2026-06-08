@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import { inferGoalDomain } from '@/lib/goals/goal-domain';
+import { getRepairSignals } from '@/lib/services/repair-loop.service';
 
 type SupabaseLike = Awaited<ReturnType<typeof createClient>>;
 
@@ -28,6 +29,7 @@ export interface LearnerStateSnapshot {
     subject: string | null;
     estimatedMinutes: number | null;
     rationale: string | null;
+    isCompleted?: boolean;
   } | null;
   atlas: {
     weakConcepts: Array<{ name: string; subject: string; chapter: string; mastery: string }>;
@@ -46,8 +48,10 @@ export interface LearnerStateSnapshot {
   recentMistakes: Array<{ chapter: string; topic?: string | null; concept?: string | null; category: string; mistake_type: string; subject: string; status?: string | null; mistake_text?: string | null; created_at?: string }>;
     needsReviewCount: number;
     lastAutopsy: { test_name: string; current_score: number; potential_score: number; created_at: string } | null;
+    dueRetests: any[];
+    openRepairMistakes: any[];
   };
-  recentStudySessions: Array<{ subject?: string | null; chapter?: string | null; durationMinutes?: number | null }>;
+  recentStudySessions: Array<{ subject?: string | null; chapter?: string | null; durationMinutes?: number | null; notes?: string | null; isCompleted?: boolean }>;
   command: {
     openTasks: Array<{ title: string; subject?: string | null; chapter?: string | null; priority?: string | null }>;
   };
@@ -58,6 +62,13 @@ export interface LearnerStateSnapshot {
     behavioral_traps?: string[];
     last_updated_at: string;
   } | null;
+  hermesMemories?: Array<{
+    concept: string;
+    pattern: string;
+    severity: string;
+    action_type: string;
+    createdAt?: string;
+  }>;
   recentTopics: string[];
   lastUpdated: string;
 }
@@ -132,14 +143,17 @@ export async function getLearnerStateSnapshot(
 
   let missionQuery = supabase
     .from('session_cards')
-    .select('"focusTopic", subject, "estimatedMinutes", rationale, learner_state_version')
+    .select('"focusTopic", subject, "estimatedMinutes", rationale, learner_state_version, is_completed, "isCompleted", completed_at, "completedAt"')
     .eq('user_id', userId)
     .eq('date', today);
-  missionQuery = options.goalId
-    ? missionQuery.eq('goal_id', options.goalId)
-    : typeof (missionQuery as any).is === 'function'
-      ? (missionQuery as any).is('goal_id', null)
-      : missionQuery;
+  
+  if (options.goalId) {
+    missionQuery = missionQuery.eq('goal_id', options.goalId);
+  } else {
+    // If no goalId, prioritize any active mission for today.
+    // We don't filter by goal_id is null anymore to avoid fragmentation.
+    missionQuery = missionQuery.order('updated_at', { ascending: false }).limit(1);
+  }
 
   let needsReviewCountQuery = supabase
     .from('autopsy_questions')
@@ -180,6 +194,8 @@ export async function getLearnerStateSnapshot(
     needsReviewCountRes,
     lastAutopsyRes,
     seededTopicsRes,
+    hermesMemoriesRes,
+    repairSignals,
   ] = await Promise.all([
     supabase
       .from('profiles')
@@ -197,7 +213,12 @@ export async function getLearnerStateSnapshot(
 
     masteredConceptsQuery,
 
-    sessionsQuery,
+    supabase
+      .from('study_sessions')
+      .select('notes, started_at, subject, chapter, duration_minutes, is_completed')
+      .eq('user_id', userId)
+      .order('started_at', { ascending: false })
+      .limit(5),
 
     goalQuery.maybeSingle(),
 
@@ -225,19 +246,51 @@ export async function getLearnerStateSnapshot(
     lastAutopsyQuery.maybeSingle(),
 
     seededTopicsQuery,
+
+    supabase
+      .from('hermes_learning_memories')
+      .select('subject, topic, pattern, severity, created_at, next_reminder_condition')
+      .eq('user_id', userId)
+      .eq('status', 'active')
+      .order('last_seen_at', { ascending: false })
+      .limit(5),
+
+    getRepairSignals(supabase, { userId, goalId: options.goalId, limit: 5 }),
   ]);
 
   const profile = profileRes.data;
   const profileVersion = Number(profile?.learner_state_version ?? 0);
-  const missionVersion = Number(missionRes.data?.learner_state_version ?? -1);
-  const currentMission = missionRes.data && missionVersion === profileVersion
-    ? missionRes.data
-    : null;
+  
+  // Mission hydration: we show the card even if version is old, but we note it.
+  // This ensures "next chat after session completion" sees the card (likely completed).
+  const missionData = missionRes.data;
+  const currentMission = missionData ? {
+    focusTopic: missionData.focusTopic,
+    subject: missionData.subject,
+    estimatedMinutes: missionData.estimatedMinutes,
+    rationale: missionData.rationale,
+    isCompleted: Boolean(missionData.is_completed || missionData.isCompleted || missionData.completed_at || missionData.completedAt)
+  } : null;
+
   const totalConcepts = totalConceptsRes.count ?? 0;
   const masteredCount = masteredConceptsRes.count ?? 0;
-  const sessions = sessionsRes.data ?? [];
+  const sessions = (sessionsRes.data ?? []).map((s: any) => ({
+    subject: s.subject,
+    chapter: s.chapter,
+    durationMinutes: s.duration_minutes,
+    notes: s.notes,
+    isCompleted: s.is_completed,
+    startedAt: s.started_at,
+  }));
   const needsReviewCount = needsReviewCountRes?.count ?? 0;
   const lastAutopsyData = lastAutopsyRes?.data ?? null;
+  const hermesMemories = (hermesMemoriesRes.data ?? []).map((m: any) => ({
+    concept: m.topic || m.subject || 'General',
+    pattern: m.pattern,
+    severity: m.severity,
+    action_type: m.next_reminder_condition || 'Review before next session',
+    createdAt: m.created_at,
+  }));
 
   const activeGoalData = goalRes.data;
   let activeGoal: LearnerStateSnapshot['activeGoal'] = null;
@@ -272,6 +325,7 @@ export async function getLearnerStateSnapshot(
           subject: currentMission.subject,
           estimatedMinutes: currentMission.estimatedMinutes,
           rationale: currentMission.rationale,
+          isCompleted: currentMission.isCompleted,
         }
       : null,
     atlas: {
@@ -303,12 +357,17 @@ export async function getLearnerStateSnapshot(
         potential_score: lastAutopsyData.potential_score,
         created_at: lastAutopsyData.created_at,
       } : null,
+      dueRetests: repairSignals.dueRetests || [],
+      openRepairMistakes: repairSignals.activeMistakes || [],
     },
     recentStudySessions: sessions.map((session: any) => ({
       subject: session.subject,
       chapter: session.chapter,
-      durationMinutes: session.duration_minutes ?? null,
+      durationMinutes: session.durationMinutes ?? null,
+      notes: session.notes,
+      isCompleted: session.isCompleted,
     })),
+    hermesMemories,
     command: {
       openTasks: taskRes.data || [],
     },

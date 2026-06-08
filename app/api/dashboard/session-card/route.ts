@@ -578,7 +578,7 @@ export async function GET(request?: Request): Promise<NextResponse> {
       completedAt: null,
     };
 
-    // ── 8. Persist to session_cards (upsert) ─────────────────────────────────
+    // ── 8. Persist to session_cards (canonical atomic upsert) ───────────────
     const dbRow = {
       user_id: user.id,
       goal_id: goalId,
@@ -595,44 +595,40 @@ export async function GET(request?: Request): Promise<NextResponse> {
       overdueCards: card.overdueCards,
       masteryPercent: card.masteryPercent,
       closingMessage: card.closingMessage ?? null,
+      task_type: card.taskType,
+      resource_type: card.resourceType,
+      target_concept_id: card.targetConceptId,
+      priority: card.priority,
+      // camelCase aliases for backward compatibility
       taskType: card.taskType,
       resourceType: card.resourceType,
       targetConceptId: card.targetConceptId,
-      targetMistakeId: card.targetMistakeId ?? null,
-      targetRetestId: card.targetRetestId ?? null,
-      repairPhase: card.repairPhase ?? null,
-      priority: card.priority,
-      isCompleted: false,
-      completedAt: null,
-      // source signals (stored for cache re-hydration)
       selectionReason: selection.reason,
       mistakeCount: selection.mistakeCount,
       weakConceptCount: weakConceptsRes.data?.length ?? 0,
       hasActiveGoal: Boolean(goalRes.data),
+      // structural fields
+      selection_reason: selection.reason,
+      mistake_count: selection.mistakeCount,
+      weak_concept_count: weakConceptsRes.data?.length ?? 0,
+      has_active_goal: Boolean(goalRes.data),
+      source_signals: {
+        overdueCardCount: selection.dueCardCount,
+        recentMistakeCount: selection.mistakeCount,
+        weakConceptCount: weakConceptsRes.data?.length ?? 0,
+        hasActiveGoal: Boolean(goalRes.data),
+        daysToExam: selection.daysToExam,
+        priorityBucket: selection.priority,
+        selectionReason: selection.reason,
+      },
     };
 
-    let upsertError: any = null;
-    if (goalId) {
-      await supabase
-        .from('session_cards')
-        .delete()
-        .eq('user_id', user.id)
-        .eq('date', localDate)
-        .eq('goal_id', goalId);
-      
-      const { error } = await supabase
-        .from('session_cards')
-        .insert(dbRow);
-      upsertError = error;
-    } else {
-      const { error } = await supabase
-        .from('session_cards')
-        .upsert({ ...dbRow, goal_id: null }, { onConflict: 'user_id,date' });
-      upsertError = error;
-    }
+    const { error: upsertError } = await supabase.rpc('upsert_session_card', {
+      p_row: dbRow,
+    });
 
     if (upsertError) {
-      logger.warn('session-card: failed to upsert card to cache', {
+      logger.warn('session-card: failed to upsert card via RPC', {
         userId: user.id,
         error: upsertError.message,
       });

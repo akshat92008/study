@@ -35,9 +35,9 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
   const navItems = [
     { label: 'Today', href: '/dashboard', icon: Home },
     { label: 'Sources', href: '/knowledge', icon: Database, feature: 'ENABLE_KNOWLEDGE_UI' as const },
-    { label: 'Review', href: '/revision', icon: RefreshCw },
+    { label: 'Review', href: '/revision', icon: RefreshCw, feature: 'ENABLE_FLASHCARDS_UI' as const },
+    { label: 'Mistake Review', href: '/autopsy', icon: Activity, feature: 'ENABLE_AUTOPSY_UI' as const },
     { label: 'Progress', href: '/cognition', icon: Brain, feature: 'ENABLE_ATLAS_UI' as const },
-    { label: 'Mistake Review', href: '/autopsy/deep', icon: Activity, feature: 'ENABLE_AUTOPSY_UI' as const },
   ].filter(item => !item.feature || isFeatureEnabled(item.feature));
 
   const [isGoalModalOpen, setIsGoalModalOpen] = useState(false);

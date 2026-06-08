@@ -9,17 +9,29 @@ export async function requireAdmin() {
     return { user: null, error: 'Unauthorized', status: 401 };
   }
 
+  // 1. Check env-based admins (highest trust)
   const adminEmails = (process.env.ADMIN_EMAILS || '').split(',').map(e => e.trim()).filter(Boolean);
   const adminUserIds = (process.env.ADMIN_USER_IDS || '').split(',').map(e => e.trim()).filter(Boolean);
 
   const isEmailAdmin = user.email && adminEmails.includes(user.email);
   const isIdAdmin = adminUserIds.includes(user.id);
 
-  if (!isEmailAdmin && !isIdAdmin) {
-    return { user, error: 'Forbidden', status: 403 };
+  if (isEmailAdmin || isIdAdmin) {
+    return { user, error: null, status: 200 };
   }
 
-  return { user, error: null, status: 200 };
+  // 2. Check DB-based role (trusted server source)
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('subscription_status')
+    .eq('id', user.id)
+    .maybeSingle();
+
+  if (profile?.subscription_status === 'admin') {
+    return { user, error: null, status: 200 };
+  }
+
+  return { user, error: 'Forbidden', status: 403 };
 }
 
 export function isUnlimitedUser(userId: string | null | undefined): boolean {

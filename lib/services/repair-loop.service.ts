@@ -258,13 +258,6 @@ export async function upsertMistakeRisk(
     .eq('id', mistake.id)
     .eq('user_id', input.userId);
 
-  if (input.invalidateSession !== false) {
-    await invalidateSessionCard(input.userId, 'LEARNER_STATE_UPDATED', {
-      client: supabase,
-      goalId: input.goalId ?? mistake.goal_id ?? null,
-    }).catch(() => undefined);
-  }
-
   return {
     mistake: { ...mistake, next_retest_at: retest?.due_at ?? mistake.next_retest_at },
     created,

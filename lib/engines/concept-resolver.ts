@@ -16,7 +16,9 @@ export type ConceptResolutionSource =
   | 'revision'
   | 'command'
   | 'onboarding'
-  | 'ingest';
+  | 'ingest'
+  | 'practice'
+  | 'background';
 
 export type ConceptResolutionMethod =
   | 'exact'

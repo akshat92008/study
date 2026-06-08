@@ -84,12 +84,13 @@ export function compileToolPlan(input: CompileToolPlanInput): Array<{ name: stri
         const key = conceptName ? conceptKey(conceptName) : null;
         if (key && runtimeState.conceptsByName.has(key)) {
           const conceptId = runtimeState.conceptsByName.get(key)!;
+          const sessionId = signal.metadata?.sessionId as string | undefined;
           compiledTools.push({
             name,
             args: {
               conceptId,
               signal,
-              evidenceRef: `${context.runId ?? 'unknown'}:${conceptId}:${signal.type}`,
+              evidenceRef: sessionId ?? `${context.runId ?? 'unknown'}:${conceptId}:${signal.type}`,
             },
           });
         }

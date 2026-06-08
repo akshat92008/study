@@ -8,7 +8,7 @@ export const FeatureFlags = {
   ENABLE_AUTOPSY_UI: true,
   ENABLE_ANALYTICS_UI: false,
   ENABLE_ATLAS_UI: false,
-  ENABLE_FLASHCARDS_UI: false,
+  ENABLE_FLASHCARDS_UI: true, // Re-enabled for MVP (Revision)
   ENABLE_VOICE_CHAT: false,
   ENABLE_KNOWLEDGE_UI: true,
 };

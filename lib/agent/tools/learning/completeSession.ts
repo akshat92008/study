@@ -20,13 +20,13 @@ export const completeSessionTool: AgentToolDefinition<typeof CompleteSessionInpu
       subject: input.subject ?? null,
       chapter: input.chapter ?? input.conceptName ?? null,
       conceptName: input.conceptName ?? input.chapter ?? null,
-      durationMinutes: input.durationMinutes ?? null,
+      durationMinutes: input.durationMinutes ?? 25,
       understood: input.understood ?? true,
-      gapFound: input.gapFound ?? null,
+      gapFound: typeof input.gapFound === 'boolean' ? input.gapFound : input.gapFound === 'true',
       cardsCreated: input.cardsCreated ?? 0,
       goalId: input.goalId ?? context.goalId ?? null,
       idempotencyKey: stableKey([context.idempotencyKey, 'complete-session', input.sessionId ?? context.sessionId]),
-      source: 'complete_session',
+      source: 'session',
       client: context.supabase,
     });
 

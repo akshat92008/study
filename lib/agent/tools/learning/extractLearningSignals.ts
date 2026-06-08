@@ -62,6 +62,31 @@ function practiceSignals(payload: any): LearningSignal[] {
   return signals;
 }
 
+function sessionSignals(payload: any): LearningSignal[] {
+  if (!payload?.sessionId || !payload?.conceptName) return [];
+  const concept = payload.conceptName;
+  const canonical = canonicalConceptName({ raw: concept }) ?? concept;
+  
+  return [{
+    type: 'session_completed',
+    concept,
+    canonicalConcept: canonical,
+    subject: payload.subject ?? inferSubjectForConcept(canonical),
+    chapter: payload.chapter ?? inferChapterForConcept(canonical),
+    topic: payload.topic ?? canonical,
+    confidence: 1.0,
+    source: 'session',
+    evidence: `Completed session on ${payload.subject} / ${payload.chapter} for ${payload.durationMinutes} mins.`,
+    metadata: {
+      sessionId: payload.sessionId,
+      durationMinutes: payload.durationMinutes,
+      understood: payload.understood,
+      gapFound: payload.gapFound,
+      cardsCreated: payload.cardsCreated,
+    },
+  }];
+}
+
 export const extractLearningSignalsTool: AgentToolDefinition<typeof ExtractLearningSignalsInputSchema, typeof ToolResultSchema> = {
   name: 'extract_learning_signals',
   description: 'Extract structured learning signals from chat, practice, autopsy, revision, and session evidence.',
@@ -77,6 +102,10 @@ export const extractLearningSignalsTool: AgentToolDefinition<typeof ExtractLearn
 
     if (input.channel === 'practice') {
       signals.push(...practiceSignals(input.payload));
+    }
+
+    if (input.channel === 'session') {
+      signals.push(...sessionSignals(input.payload));
     }
 
     const userText = input.userMessage ?? '';

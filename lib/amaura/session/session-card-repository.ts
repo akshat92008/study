@@ -2,6 +2,7 @@ import { createAdminClient } from '@/lib/supabase/admin';
 
 type SupabaseLike = {
   from: (table: string) => any;
+  rpc: (name: string, params?: any) => Promise<{ data: any; error: any }>;
 };
 
 type RepositoryOptions = {
@@ -38,32 +39,15 @@ export async function getTodaySessionCard(userId: string, options: RepositoryOpt
 export async function upsertTodayMission(input: TodayMissionInput, options: RepositoryOptions = {}) {
   const supabase = client(options);
   const date = input.date ?? new Date().toISOString().slice(0, 10);
-  const existing = await supabase
-    .from('session_cards')
-    .select('*')
-    .eq('user_id', input.userId)
-    .eq('goal_id', input.goalId ?? input.task.goal_id ?? null)
-    .eq('date', date)
-    .maybeSingle();
-
-  if (existing.error) throw existing.error;
-
   const row = toSessionCardRow(input, date);
-  const result = existing.data
-    ? await supabase
-        .from('session_cards')
-        .update(row)
-        .eq('id', existing.data.id)
-        .select('*')
-        .single()
-    : await supabase
-        .from('session_cards')
-        .insert(row)
-        .select('*')
-        .single();
 
-  if (result.error) throw result.error;
-  return result.data;
+  // Use canonical atomic RPC
+  const { data, error } = await supabase.rpc('upsert_session_card', {
+    p_row: row,
+  });
+
+  if (error) throw error;
+  return data;
 }
 
 export async function updateMissionFromTask(input: TodayMissionInput, options: RepositoryOptions = {}) {

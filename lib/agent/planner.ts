@@ -60,7 +60,12 @@ export function buildAgentPlan(input: {
   requiredTools.push({ name: 'extract_learning_signals', input: { channel: input.observation.channel } });
 
   if (input.observation.practicePayload) requiredTools.push({ name: 'apply_practice_attempt', input: { payload: input.observation.payload } });
-  if (input.observation.sessionCompletionRequested) requiredTools.push({ name: 'complete_session', input: input.observation.payload });
+  if (input.observation.sessionCompletionRequested) {
+    const alreadyCompleted = (input.observation.payload as any)?.alreadyCompleted === true;
+    if (!alreadyCompleted) {
+      requiredTools.push({ name: 'complete_session', input: input.observation.payload });
+    }
+  }
   if (input.observation.autopsyPayload) requiredTools.push({ name: 'record_autopsy_mistake', input: input.observation.payload });
 
   const hasConceptSignal = input.signals.some((signal) => signal.concept || signal.canonicalConcept);
@@ -70,7 +75,7 @@ export function buildAgentPlan(input: {
       { name: 'update_concept_mastery', input: { from: 'signals' } }
     );
   }
-  if (input.signals.some((signal) => ['weak_area_detected', 'misconception_detected', 'revision_needed', 'practice_needed'].includes(signal.type))) {
+  if (input.signals.some((signal) => ['weak_area_detected', 'misconception_detected', 'revision_needed', 'practice_needed', 'session_completed'].includes(signal.type))) {
     requiredTools.push({ name: 'create_memory_card', input: { from: 'signals' } });
   }
   if (input.signals.length > 0) {

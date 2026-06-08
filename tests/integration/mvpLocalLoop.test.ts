@@ -197,11 +197,12 @@ function makeState(): MvpState {
     chat_sessions: [],
     chat_messages: [],
     event_queue: [],
+    learner_events: [],
   };
 }
 
 class MemoryQuery {
-  private op: 'select' | 'insert' | 'update' | 'delete' = 'select';
+  private op: 'select' | 'insert' | 'update' | 'delete' | 'upsert' = 'select';
   private filters: Array<{ op: string; field: string; value: any; extra?: any }> = [];
   private orderings: Array<{ field: string; ascending: boolean }> = [];
   private limitCount: number | null = null;
@@ -217,6 +218,12 @@ class MemoryQuery {
 
   insert(payload: any) {
     this.op = 'insert';
+    this.payload = payload;
+    return this;
+  }
+
+  upsert(payload: any, options?: { onConflict?: string }) {
+    this.op = 'upsert';
     this.payload = payload;
     return this;
   }
@@ -294,7 +301,7 @@ class MemoryQuery {
   private async execute() {
     this.state[this.table] ||= [];
 
-    if (this.op === 'insert') {
+    if (this.op === 'insert' || this.op === 'upsert') {
       const rows = (Array.isArray(this.payload) ? this.payload : [this.payload]).map((row) => ({
         id: row.id ?? `${this.table}-${this.state[this.table].length + 1}`,
         created_at: row.created_at ?? isoNow(),
@@ -302,20 +309,26 @@ class MemoryQuery {
         ...row,
       }));
 
-      if (this.table === 'chat_messages') {
-        const duplicate = rows.find((row) =>
-          row.idempotency_key &&
-          this.state.chat_messages.some((existing) =>
-            existing.user_id === row.user_id &&
-            existing.idempotency_key === row.idempotency_key
-          )
-        );
-        if (duplicate) {
-          return { data: null, error: { code: '23505', message: 'duplicate idempotency key' }, count: null };
+      if (this.table === 'chat_messages' || this.op === 'upsert') {
+        const onConflictField = this.table === 'chat_messages' ? 'idempotency_key' : 'idempotency_key'; // default for upsert in tests
+        
+        for (const row of rows) {
+          if (row[onConflictField]) {
+            const existingIdx = this.state[this.table].findIndex((r) => r[onConflictField] === row[onConflictField]);
+            if (existingIdx >= 0) {
+              if (this.op === 'upsert') {
+                this.state[this.table][existingIdx] = { ...this.state[this.table][existingIdx], ...row, updated_at: isoNow() };
+                continue;
+              } else {
+                return { data: null, error: { code: '23505', message: 'duplicate key' }, count: null };
+              }
+            }
+          }
+          this.state[this.table].push(row);
         }
+      } else {
+        this.state[this.table].push(...rows);
       }
-
-      this.state[this.table].push(...rows);
       return { data: rows, error: null, count: rows.length };
     }
 

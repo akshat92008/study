@@ -5,6 +5,8 @@ import CommandBar from '@/components/ui/CommandBar';
 import ToastContainer from '@/components/ui/Toast';
 import { RealtimeProvider } from '@/components/providers/RealtimeProvider';
 
+export const dynamic = 'force-dynamic';
+
 export default async function DashboardLayout({
   children,
 }: {
