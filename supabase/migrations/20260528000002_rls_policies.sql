@@ -25,11 +25,17 @@ alter table event_consumer_tracking enable row level security;
 -- ============================================================================
 -- GENERIC USER-OWNED POLICY GENERATOR
 -- ============================================================================
+-- Explicitly handle profiles (uses 'id' instead of 'user_id')
+create policy "profiles_select_own" on profiles for select using (auth.uid() = id);
+create policy "profiles_insert_own" on profiles for insert with check (auth.uid() = id);
+create policy "profiles_update_own" on profiles for update using (auth.uid() = id) with check (auth.uid() = id);
+create policy "profiles_delete_own" on profiles for delete using (auth.uid() = id);
+
 do $$
 declare
   t text;
   user_tables text[] := array[
-    'profiles','concepts','concept_links','revision_cards','revision_logs',
+    'concepts','concept_links','revision_cards','revision_logs',
     'mock_autopsies','mistakes','study_tasks','study_goals',
     'chat_sessions','chat_messages','chat_memory',
     'materials','material_chunks',

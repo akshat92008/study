@@ -18,6 +18,8 @@
 import { createClient } from '@supabase/supabase-js';
 import dotenv from 'dotenv';
 import { randomUUID } from 'crypto';
+import { runCognitionAgentTurn } from '@/lib/agent/runtime';
+import type { CognitionAgentTurnInput } from '@/lib/agent/types';
 
 dotenv.config({ path: '.env.local' });
 dotenv.config();
@@ -120,30 +122,24 @@ async function run() {
     ]);
     pass('chat context created');
 
-    // 3. Fire the agent via the chat_message_processed event
-    const { data: eventsData, error: evErr } = await supabase.rpc('create_event_with_consumers', {
-      p_user_id: userId,
-      p_type: 'CHAT_MESSAGE_PROCESSED',
-      p_data: {
-        sessionId,
+    // 3. Run agent directly (no background worker)
+    log('3. Call runCognitionAgentTurn directly');
+    const turnInput: CognitionAgentTurnInput = {
+      userId,
+      channel: 'chat',
+      userMessage: "I still don't understand tachycardia",
+      sessionId,
+      payload: {
         message: "I still don't understand tachycardia",
         fullResponse: 'Tachycardia is an elevated heart rate exceeding 100 bpm at rest.',
       },
-      p_idempotency_key: `tachycardia:${runId}`,
-      p_source: 'verify-agentic-loop',
-      p_metadata: { runtimeProcessed: false, trace_id: runId },
-    });
-    if (evErr) fail(`create event: ${evErr.message}`);
-    const eventId = (eventsData as string) ?? fail('no event id');
-    cleanup.eventIds.push(eventId);
-    pass(`event ${eventId}`);
+    };
+    const agentOutput = await runCognitionAgentTurn(turnInput, { supabase: supabase as any });
+    pass(`agent completed — trajectory ${agentOutput.trajectoryId}`);
+    const trajectoryId = agentOutput.trajectoryId;
 
-    // 4. Wait for event workers to process
-    log('4. Wait for event processing (5s)');
-    await new Promise(r => setTimeout(r, 5000));
-
-    // 5. Check agent_runs records
-    log('5. Verify agent_runs exist');
+    // 4. Query agent_runs record
+    log('4. Verify agent_runs record exists');
     const { data: runs } = await supabase
       .from('agent_runs')
       .select('id, channel, status, final_response_summary, verification, mutation_summary, created_at')
@@ -153,7 +149,6 @@ async function run() {
     if (!runs?.length) fail('no agent_runs found');
     pass(`${runs.length} agent_run(s)`);
     const run = runs[0];
-    const trajectoryId = run.id;
 
     // 6. Check concept was upserted
     log('6. Verify Tachycardia concept was upserted');
@@ -239,7 +234,7 @@ async function run() {
         (FR.includes('saved') || FR.includes('progress') || FR.includes('recorded')) &&
         !FR.includes('help');
       if (overclaiming) {
-        fail(`response appears to overclaim: ${run.final_response.slice(0, 100)}`);
+        fail(`response appears to overclaim: ${run.final_response_summary?.slice(0, 100)}`);
       }
     }
     pass('response does not overclaim unverified progress');

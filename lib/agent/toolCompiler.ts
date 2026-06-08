@@ -12,8 +12,10 @@ export interface RuntimeState {
   sourceChunks: RetrievedSourceChunk[];
   cardIds: string[];
   toolResults: any[];
-  /** Fix 7: Track executed call keys to prevent duplicate context/extraction calls */
+  /** Track executed call keys to prevent duplicate context/extraction calls */
   executedCallKeys: Set<string>;
+  /** Track completed signal mutations (conceptKey + ':' + toolName) */
+  completedSignalMutations: Set<string>;
 }
 
 export interface CompileToolPlanInput {
@@ -30,6 +32,15 @@ export function compileToolPlan(input: CompileToolPlanInput): Array<{ name: stri
 
   for (const planned of plannedTools) {
     const { name, input: plannedInput } = planned;
+
+    // Fix 3: Block ATLAS/MEMORY mutations when autopsy already projected — run at top of per-tool loop
+    if (observation.channel === 'autopsy' && (observation.payload as any)?.alreadyProjected === true) {
+      const blockedTools = ['update_concept_mastery', 'create_memory_card', 'record_autopsy_mistake'];
+      if (blockedTools.includes(name)) {
+        logger.info(`Skipping ${name} as autopsy already projected — prevents duplicate ATLAS/MEMORY writes`);
+        continue;
+      }
+    }
 
     // Handle semantic placeholders or incomplete inputs
     if (name === 'extract_learning_signals') {
@@ -159,24 +170,6 @@ export function compileToolPlan(input: CompileToolPlanInput): Array<{ name: stri
       const alreadyCompleted = (observation.payload as any)?.alreadyCompleted === true;
       if (alreadyCompleted) {
         logger.info('Skipping complete_session tool as session is already marked completed');
-        continue;
-      }
-    }
-
-    // Fix 9: Autopsy double-mutation prevention
-    if (name === 'record_autopsy_mistake') {
-      const alreadyProjected = (observation.payload as any)?.alreadyProjected === true;
-      if (alreadyProjected) {
-        logger.info('Skipping record_autopsy_mistake tool as autopsy is already projected');
-        continue;
-      }
-    }
-
-    // Fix 12: Block ATLAS/MEMORY mutations when autopsy already projected
-    if ((observation.payload as any)?.alreadyProjected === true && observation.channel === 'autopsy') {
-      const blockedTools = ['upsert_atlas_concept', 'update_concept_mastery', 'create_memory_card'];
-      if (blockedTools.includes(name)) {
-        logger.info(`Skipping ${name} as autopsy is already projected and mutation would duplicate ATLAS/MEMORY`);
         continue;
       }
     }

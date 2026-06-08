@@ -172,7 +172,7 @@ export async function runCognitionAgentLoop(input: {
   const allWarnings: string[] = [];
   let stepIdx = 0;
 
-  // Fix 7: Add executedCallKeys for deduplication
+  // Fix 2 & Fix 7: Add executedCallKeys and completedSignalMutations for deduplication + mutation tracking
   const runtimeState: RuntimeState = {
     conceptsByName: new Map<string, string>(),
     latestSignals: [] as LearningSignal[],
@@ -180,6 +180,7 @@ export async function runCognitionAgentLoop(input: {
     cardIds: [] as string[],
     toolResults: [] as ToolResultRecord[],
     executedCallKeys: new Set<string>(),
+    completedSignalMutations: new Set<string>(),
   };
 
   // Hooks: before agent run
@@ -311,7 +312,21 @@ export async function runCognitionAgentLoop(input: {
       // Filter required_tools against policy
       const requiredTools = latestPlan.required_tools.filter(t => allowedToolNames.has(t.name));
 
-      // Fix 4: Compile semantic placeholders into concrete valid tool calls
+      // Fix 1: Force signal cascade injection BEFORE compileToolPlan so injected tools are included in requiredTools
+      if (needsSignalCascadeInjection(runtimeState.latestSignals, requiredTools)) {
+        logger.info('Injecting missing signal cascade tools — model omitted mutation tools', {
+          signalCount: runtimeState.latestSignals.filter(isActionableSignal).length,
+        });
+        requiredTools.push(
+          { name: 'upsert_atlas_concept', input: { from: 'signals' } },
+          { name: 'update_concept_mastery', input: {} },
+          { name: 'create_memory_card', input: {} },
+          { name: 'update_microtarget', input: {} },
+          { name: 'write_learning_event', input: {} },
+        );
+      }
+
+      // Now compile AFTER injection so injected tools are included
       const compiledTools = compileToolPlan({
         plannedTools: requiredTools,
         runtimeState,
@@ -343,22 +358,6 @@ export async function runCognitionAgentLoop(input: {
       }).catch((e: unknown) => logger.warn('recordAgentStep plan error', { error: String(e) }));
 
       allWarnings.push(...latestPlan.risk_flags);
-
-      // Fix 4: Force signal cascade injection if model forgot mutation tools but actionable signals exist
-      if (needsSignalCascadeInjection(runtimeState.latestSignals, requiredTools)) {
-        logger.info('Injecting missing signal cascade tools — model omitted mutation tools', {
-          signalCount: runtimeState.latestSignals.filter(isActionableSignal).length,
-        });
-        // upsert_atlas_concept can run immediately (creates conceptId for dependents)
-        // The rest will be second-phased after conceptId exists
-        requiredTools.push(
-          { name: 'upsert_atlas_concept', input: { from: 'signals' } },
-          { name: 'update_concept_mastery', input: {} },
-          { name: 'create_memory_card', input: {} },
-          { name: 'update_microtarget', input: {} },
-          { name: 'write_learning_event', input: {} },
-        );
-      }
 
       // Break if no tools needed
       if (requiredTools.length === 0) {
@@ -445,6 +444,35 @@ export async function runCognitionAgentLoop(input: {
             runtimeState.latestSignals.push(...signals);
           }
 
+          // Fix 2: Track completed signal mutations (conceptKey + ':' + toolName)
+          // Build reverse lookup: conceptId -> conceptKey (for first phase)
+          const conceptIdToKey = new Map<string, string>();
+          for (const [k, id] of runtimeState.conceptsByName) {
+            conceptIdToKey.set(id, k);
+          }
+          const mutationTools = ['update_concept_mastery', 'create_memory_card', 'update_microtarget', 'write_learning_event'];
+          if (mutationTools.includes(res.toolName) && res.result.changed) {
+            // Find conceptKey: either from result conceptId or from the signal's concept name
+            let conceptKeyForMutation: string | null = null;
+            if ((res.result.data as any)?.conceptId && conceptIdToKey.has((res.result.data as any).conceptId)) {
+              conceptKeyForMutation = conceptIdToKey.get((res.result.data as any).conceptId) ?? null;
+            } else {
+              // Fall back: find the first actionable signal with a known concept
+              for (const sig of runtimeState.latestSignals) {
+                const cn = sig.canonicalConcept ?? sig.concept;
+                const ck = cn ? conceptKey(cn) : null;
+                if (ck && runtimeState.conceptsByName.has(ck) && isActionableSignal(sig)) {
+                  conceptKeyForMutation = ck;
+                  break;
+                }
+              }
+            }
+            if (conceptKeyForMutation) {
+              runtimeState.completedSignalMutations.add(`${conceptKeyForMutation}:${res.toolName}`);
+              logger.info('Marked signal mutation complete', { mutation: `${conceptKeyForMutation}:${res.toolName}` });
+            }
+          }
+
           await recordAgentStep(supabase, {
             runId: trajectoryId,
             userId: context.userId,
@@ -506,6 +534,33 @@ export async function runCognitionAgentLoop(input: {
             if (res.success && res.result) {
               runtimeState.toolResults.push(res.result);
               logger.info('Second-phase signal tool executed', { toolName: res.result.toolName, changed: res.result.changed });
+
+              // Fix 2: Track completed signal mutations for second-phase tools
+              const conceptIdToKey = new Map<string, string>();
+              for (const [k, id] of runtimeState.conceptsByName) {
+                conceptIdToKey.set(id, k);
+              }
+              const mutationTools = ['update_concept_mastery', 'create_memory_card', 'update_microtarget', 'write_learning_event'];
+              if (mutationTools.includes(res.toolName) && res.result.changed) {
+                let conceptKeyForMutation: string | null = null;
+                if ((res.result.data as any)?.conceptId && conceptIdToKey.has((res.result.data as any).conceptId)) {
+                  conceptKeyForMutation = conceptIdToKey.get((res.result.data as any).conceptId) ?? null;
+                } else {
+                  for (const sig of runtimeState.latestSignals) {
+                    const cn = sig.canonicalConcept ?? sig.concept;
+                    const ck = cn ? conceptKey(cn) : null;
+                    if (ck && runtimeState.conceptsByName.has(ck) && isActionableSignal(sig)) {
+                      conceptKeyForMutation = ck;
+                      break;
+                    }
+                  }
+                }
+                if (conceptKeyForMutation) {
+                  runtimeState.completedSignalMutations.add(`${conceptKeyForMutation}:${res.toolName}`);
+                  logger.info('Marked second-phase signal mutation complete', { mutation: `${conceptKeyForMutation}:${res.toolName}` });
+                }
+              }
+
               await recordAgentStep(supabase, {
                 runId: trajectoryId,
                 userId: context.userId,
@@ -521,11 +576,18 @@ export async function runCognitionAgentLoop(input: {
       }
 
       // REASON AGAIN - check if we should continue
-      const pendingSignalMutations =
-        runtimeState.latestSignals.some(s => {
-          const ck = s.canonicalConcept ?? s.concept;
-          return ck && !runtimeState.conceptsByName.has(conceptKey(ck));
-        });
+      // Fix 2: Check pending mutations by whether required mutation tools succeeded, not only conceptId existence
+      const pendingSignalMutations = runtimeState.latestSignals.some(s => {
+        const conceptName = s.canonicalConcept ?? s.concept;
+        if (!conceptName) return false;
+        if (!isActionableSignal(s)) return false;
+        const key = conceptKey(conceptName);
+        // If conceptId not yet stored, mutation tools cannot run
+        if (!runtimeState.conceptsByName.has(key)) return true;
+        // conceptId exists — check if all required mutation tools succeeded
+        const requiredMutations = ['update_concept_mastery', 'create_memory_card', 'write_learning_event'];
+        return requiredMutations.some(m => !runtimeState.completedSignalMutations.has(`${key}:${m}`));
+      });
       // Fix 6: Do not break if pending signal mutations remain
       if (
         (!latestPlan?.pedagogical_next_step || (latestPlan.pedagogical_next_step as any)?.type !== 'continue') &&

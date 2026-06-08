@@ -269,42 +269,28 @@ begin
       lapses = coalesce(lapses, %4$s, 0)
   $sql$, v_due_at, v_last_review_at, v_review_count, v_lapse_count);
 end $$;
-alter table public.revision_cards drop constraint if exists revision_cards_state_check;
-do $$
-declare
-  state_type text;
-begin
-  select data_type into state_type
-  from information_schema.columns
-  where table_schema = 'public' and table_name = 'revision_cards' and column_name = 'state';
 
-  if state_type <> 'integer' then
-    execute $sql$
-      alter table public.revision_cards
-        alter column state drop default,
-        alter column state type int using (
-          case
-            when state ~ '^[0-9]+$' then state::int
-            when state = 'new' then 0
-            when state = 'learning' then 1
-            when state = 'review' then 2
-            when state = 'relearning' then 3
-            when state = 'suspended' then 4
-            else 0
-          end
-        ),
-        alter column state set default 0
-    $sql$;
-  else
-    alter table public.revision_cards alter column state set default 0;
-  end if;
-end $$;
+alter table public.revision_cards drop constraint if exists revision_cards_state_check;
+alter table public.revision_cards alter column state drop default;
+alter table public.revision_cards alter column state type int using (
+  case
+    when state::text ~ '^[0-9]+$' then state::text::int
+    when state::text = 'new' then 0
+    when state::text = 'learning' then 1
+    when state::text = 'review' then 2
+    when state::text = 'relearning' then 3
+    when state::text = 'suspended' then 4
+    else 0
+  end
+);
+alter table public.revision_cards alter column state set default 0;
 alter table public.revision_cards
   add constraint revision_cards_state_check check (state between 0 and 4);
+
 drop index if exists idx_revision_cards_due;
 create index if not exists idx_revision_cards_due
   on public.revision_cards(user_id, due)
-  where state <> 4;
+  where state != 4;
 create table if not exists public.revision_logs (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references public.profiles(id) on delete cascade,
@@ -460,7 +446,7 @@ begin
   select data_type into v_type from information_schema.columns
   where table_schema = 'public' and table_name = 'student_models' and column_name = 'chronic_weaknesses';
   
-  if v_type is not null and v_type <> 'jsonb' then
+  if v_type is not null and v_type != 'jsonb' then
     execute 'alter table public.student_models alter column chronic_weaknesses type jsonb using to_jsonb(chronic_weaknesses)';
   end if;
 end $$;
