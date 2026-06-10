@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
 import { signOut } from '@/lib/actions/auth';
-import { isFeatureEnabled } from '@/lib/feature-flags';
+import { isFeatureEnabled } from '@/lib/feature-registry';
 import GoalCreationModal from '@/components/modals/GoalCreationModal';
 
 interface SidebarProps {
@@ -34,11 +34,11 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
   } = useAppStore();
   const navItems = [
     { label: 'Today', href: '/dashboard', icon: Home },
-    { label: 'Sources', href: '/knowledge', icon: Database, feature: 'ENABLE_KNOWLEDGE_UI' as const },
-    { label: 'Review', href: '/revision', icon: RefreshCw, feature: 'ENABLE_FLASHCARDS_UI' as const },
-    { label: 'Mistake Review', href: '/autopsy', icon: Activity, feature: 'ENABLE_AUTOPSY_UI' as const },
-    { label: 'Progress', href: '/cognition', icon: Brain, feature: 'ENABLE_ATLAS_UI' as const },
-  ].filter(item => !item.feature || isFeatureEnabled(item.feature));
+    { label: 'Sources', href: '/knowledge', icon: Database, feature: 'knowledge_ui' },
+    { label: 'Review', href: '/revision', icon: RefreshCw, feature: 'flashcards_ui' },
+    { label: 'Mistake Review', href: '/autopsy', icon: Activity, feature: 'autopsy_ui' },
+    { label: 'Progress', href: '/cognition', icon: Brain, feature: 'atlas_ui' },
+  ].filter(item => !item.feature || isFeatureEnabled(item.feature as any));
 
   const [isGoalModalOpen, setIsGoalModalOpen] = useState(false);
 

@@ -4,7 +4,7 @@ import { apiErrorResponse } from '@/lib/api/errors';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { getAutopsyV3Limits, since24HoursIso } from './limits';
 import { betaAccessErrorResponse, requireActiveBetaUser } from '@/lib/access/beta-access';
-import { featureDisabledResponse, isBetaFeatureEnabled } from '@/lib/config/beta-flags';
+import { featureDisabledResponse, isFeatureEnabled } from '@/lib/feature-registry';
 
 export async function requireAutopsyV3User(requestId: string) {
   const limits = getAutopsyV3Limits();
@@ -41,7 +41,7 @@ export async function requireAutopsyV3User(requestId: string) {
     }) };
   }
 
-  if (!isBetaFeatureEnabled('autopsy_upload') && !isBetaFeatureEnabled('autopsy_report')) {
+  if (!isFeatureEnabled('autopsy_upload') && !isFeatureEnabled('autopsy_report')) {
     return { error: featureDisabledResponse(requestId) };
   }
 

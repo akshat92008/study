@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import { requireAdmin } from '@/lib/auth/admin';
 import { createAdminClient } from '@/lib/supabase/admin';
-import { getBetaFlags } from '@/lib/config/beta-flags';
+import { isFeatureEnabled } from '@/lib/feature-registry';
 
 export const dynamic = 'force-dynamic';
 
@@ -151,8 +151,7 @@ export default async function LaunchDashboardPage() {
   if (auth.status === 403) redirect('/dashboard');
 
   const metrics = await getLaunchMetrics();
-  const flags = getBetaFlags();
-
+  
   return (
     <main style={{ maxWidth: 1180, margin: '0 auto', padding: '32px 18px', background: '#f8fafc', minHeight: '100vh' }}>
       <header style={{ marginBottom: 24 }}>
@@ -219,12 +218,12 @@ export default async function LaunchDashboardPage() {
       <section style={{ border: '1px solid #d6dce5', borderRadius: 8, padding: 16, background: '#fff', marginBottom: 28 }}>
         <h2 style={{ fontSize: 18, marginTop: 0 }}>Kill Switches</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 8, color: '#334155' }}>
-          <div>AI paused: {flags.aiGlobalKillSwitch ? 'yes' : 'no'}</div>
-          <div>RAG uploads: {flags.ragUploadsEnabled ? 'enabled' : 'paused'}</div>
-          <div>RAG queries: {flags.ragQueriesEnabled ? 'enabled' : 'paused'}</div>
-          <div>Autopsy reports: {flags.autopsyReportsEnabled ? 'enabled' : 'paused'}</div>
-          <div>Amaura writes: {flags.hermesWritesEnabled ? 'enabled' : 'paused'}</div>
-          <div>Worker AI: {flags.workerAiEnabled ? 'enabled' : 'off'}</div>
+          <div>AI paused: {!isFeatureEnabled('ai_global') ? 'yes' : 'no'}</div>
+          <div>RAG uploads: {isFeatureEnabled('rag_upload') ? 'enabled' : 'paused'}</div>
+          <div>RAG queries: {isFeatureEnabled('rag_query') ? 'enabled' : 'paused'}</div>
+          <div>Autopsy reports: {isFeatureEnabled('autopsy_report') ? 'enabled' : 'paused'}</div>
+          <div>Amaura writes: {isFeatureEnabled('hermes_write') ? 'enabled' : 'paused'}</div>
+          <div>Worker AI: {isFeatureEnabled('worker_ai') ? 'enabled' : 'off'}</div>
         </div>
       </section>
 

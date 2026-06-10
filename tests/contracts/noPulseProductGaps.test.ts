@@ -44,6 +44,7 @@ describe('no-PULSE product gap contracts', () => {
     const vercel = JSON.parse(read('vercel.json')) as { crons?: Array<{ path: string; schedule: string }> };
     expect(vercel.crons).toEqual([
       { path: '/api/cron/daily-synthesis', schedule: '0 6 * * *' },
+      { path: '/api/cron/daily-background-review', schedule: '0 3 * * *' },
     ]);
   });
 

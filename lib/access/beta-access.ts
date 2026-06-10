@@ -2,7 +2,7 @@ import 'server-only';
 
 import { NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
-import { getBetaFlags, isBetaFeatureEnabled, type BetaFeature } from '@/lib/config/beta-flags';
+import { isFeatureEnabled, type AppFeature } from '@/lib/feature-registry';
 import type { ManualPlan } from '@/lib/billing/plan-limits';
 import { normalizeManualPlan } from '@/lib/billing/plan-limits';
 import type { FeatureName } from '@/lib/usage/enforce-feature-limit';
@@ -47,10 +47,10 @@ function betaUntilIsActive(value: string | null | undefined): boolean {
   return Number.isFinite(timestamp) && timestamp > Date.now();
 }
 
-function featureToFlag(feature: FeatureName): BetaFeature | null {
+function featureToFlag(feature: FeatureName): AppFeature | null {
   switch (feature) {
     case 'ai_call':
-      return 'ai';
+      return 'ai_global';
     case 'worker_ai_call':
       return 'worker_ai';
     case 'autopsy_report':
@@ -167,14 +167,14 @@ export async function getUserAccessState(userId: string | null | undefined): Pro
   return {
     userId,
     isAdmin,
-    hasBetaAccess: !getBetaFlags().paidBetaGateEnabled,
+    hasBetaAccess: !isFeatureEnabled('paid_gate'),
     plan: manualPlan,
     accessSource: 'free',
     betaAccessUntil,
     blockedReason:
       profile.beta_access === true && !betaUntilIsActive(betaAccessUntil)
         ? 'beta_access_expired'
-        : getBetaFlags().paidBetaGateEnabled
+        : isFeatureEnabled('paid_gate')
           ? 'beta_access_required'
           : undefined,
   };
@@ -223,7 +223,7 @@ export async function assertFeatureAccess(
 ): Promise<AccessState> {
   const access = await requireBetaAccess(userId);
   const flag = featureToFlag(feature);
-  if (flag && !isBetaFeatureEnabled(flag)) {
+  if (flag && !isFeatureEnabled(flag)) {
     throw new BetaAccessError(
       'feature_temporarily_disabled',
       'This feature is temporarily paused during beta maintenance.',

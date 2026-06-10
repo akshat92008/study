@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { checkUsageLimit, getLimit } from '../../lib/utils/billing';
 import { createAdminClient } from '../../lib/supabase/admin';
 
@@ -7,6 +7,10 @@ vi.mock('../../lib/supabase/admin', () => ({
 }));
 
 describe('Usage Limits', () => {
+  beforeEach(() => {
+    delete process.env.BYPASS_ALL_LIMITS;
+  });
+
   it('handles missing usage row safely', async () => {
     const mockSupabase = {
       from: vi.fn().mockReturnThis(),

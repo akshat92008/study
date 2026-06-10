@@ -3,7 +3,7 @@ import 'server-only';
 import { NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { assertFeatureAccess } from '@/lib/access/beta-access';
-import { getBetaFlags } from '@/lib/config/beta-flags';
+import { getFeatureLimits } from '@/lib/feature-registry';
 import { getFeatureLimit, getPlanLimits, type ManualPlan } from '@/lib/billing/plan-limits';
 import { logger } from '@/lib/utils/logger';
 
@@ -96,7 +96,7 @@ async function loadMonthlyAiUsage(userId: string): Promise<any[]> {
 }
 
 async function checkGlobalLimits(feature: FeatureName): Promise<{ allowed: boolean; message?: string }> {
-  const flags = getBetaFlags();
+  const flags = getFeatureLimits();
   const supabase = createAdminClient();
   const since = dayStartIso();
 

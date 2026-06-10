@@ -23,6 +23,7 @@ describe('AI usage budget enforcement', () => {
     mockSelect.mockClear();
     mockEq.mockClear();
     process.env.AI_DAILY_USER_BUDGET_USD = '0.01';
+    delete process.env.BYPASS_ALL_LIMITS;
   });
 
   it('allows requests within the configured daily budget', async () => {

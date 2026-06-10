@@ -5,7 +5,7 @@ import { extractSelectableTextFromPdf } from '@/lib/autopsy-v3/extraction/pdf-te
 import { enforceDailyTableCap, jsonWithRequestId, requireAutopsyV3User } from '@/lib/autopsy-v3/permissions';
 import { maxPdfBytes } from '@/lib/autopsy-v3/limits';
 import { featureFlags } from '@/lib/config/flags';
-import { featureDisabledResponse, isBetaFeatureEnabled } from '@/lib/config/beta-flags';
+import { featureDisabledResponse, isFeatureEnabled } from '@/lib/feature-registry';
 import { getPlanLimits } from '@/lib/billing/plan-limits';
 import { consumeFeatureUsage, enforceFeatureLimit, featureLimitResponse } from '@/lib/usage/enforce-feature-limit';
 
@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
     if (auth.error) return auth.error;
     const { supabase, user, limits, access } = auth;
 
-    if (!featureFlags.autopsyUploads() || !isBetaFeatureEnabled('autopsy_upload')) return featureDisabledResponse(requestId);
+    if (!featureFlags.autopsyUploads() || !isFeatureEnabled('autopsy_upload')) return featureDisabledResponse(requestId);
     try {
       await enforceFeatureLimit(user.id, 'rag_upload');
     } catch (limitError: any) {

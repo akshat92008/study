@@ -64,8 +64,8 @@ describe('Autopsy Beta Safety', () => {
     const res = await POST(req, 'user123');
     expect(res.status).toBe(410);
     const body = await res.json();
-    expect(body.error).toBe('legacy_autopsy_disabled');
-    expect(body.replacement).toBe('/api/autopsy/v3');
+    expect(body.error).toBe('Legacy autopsy ingest is disabled. Use the new Deep Autopsy V3 flow.');
+    expect(body.replacement).toBe('/dashboard/autopsy');
   });
 
   it('keeps legacy Autopsy ingest disabled even when old processing flag is enabled', async () => {
@@ -79,7 +79,7 @@ describe('Autopsy Beta Safety', () => {
     const res = await POST(req, 'user123');
     expect(res.status).toBe(410);
     const body = await res.json();
-    expect(body.error).toBe('legacy_autopsy_disabled');
-    expect(body.retryable).toBe(false);
+    expect(body.error).toBe('Legacy autopsy ingest is disabled. Use the new Deep Autopsy V3 flow.');
+    expect(body.retryable).toBeUndefined();
   });
 });

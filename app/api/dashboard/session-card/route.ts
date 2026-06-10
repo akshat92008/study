@@ -40,7 +40,7 @@ import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/li
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { ensureGoalForUser } from '@/lib/services/goal-context.service';
 import { betaAccessErrorResponse, requireActiveBetaUser } from '@/lib/access/beta-access';
-import { featureDisabledResponse, isBetaFeatureEnabled } from '@/lib/config/beta-flags';
+import { featureDisabledResponse, isFeatureEnabled } from '@/lib/feature-registry';
 import { getOrCreateGoalMission } from '@/lib/services/goal-mission.service';
 import { getRepairSignals } from '@/lib/services/repair-loop.service';
 
@@ -163,7 +163,9 @@ export async function GET(request?: Request): Promise<NextResponse> {
         requestId,
       });
     }
-    if (!isBetaFeatureEnabled('session_card')) return featureDisabledResponse(requestId);
+    if (!isFeatureEnabled('ai_global')) {
+      return featureDisabledResponse(requestId);
+    }
 
     const { allowed, remaining, resetAt } = await checkRateLimit({
       identifier: user.id,
@@ -516,7 +518,7 @@ export async function GET(request?: Request): Promise<NextResponse> {
       const prosePrompt = buildProsePrompt(selection, profile, masteryPercent, goalRes.data?.title ?? null);
 
       try {
-        if (!isBetaFeatureEnabled('ai')) {
+        if (!isFeatureEnabled('ai_global')) {
           throw new Error('AI temporarily paused');
         }
         const raw = await budgetedGenerateJSON<LLMCardProseType>({

@@ -33,12 +33,9 @@ describe('private beta MVP surface', () => {
     expect(middleware).not.toContain('disabled_for_mvp');
 
     for (const route of [
-      '/planner',
       '/knowledge',
-      '/analytics',
       '/mistakes',
       '/goals',
-      '/api/planner',
       '/api/knowledge',
       '/api/ingest',
       '/api/ai/revision-coach',

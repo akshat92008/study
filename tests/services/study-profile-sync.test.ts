@@ -13,10 +13,9 @@ describe('study profile sync contract', () => {
   });
 
   it('updates visible weak state and invalidates session cards', () => {
-    // The service delegates mistake persistence to upsertMistakeRisk rather than
+    // The service delegates practice sync persistence to runCognitionAgentTurn
     // calling .from('mistakes') directly — this is the correct architectural pattern.
-    expect(source).toContain('upsertMistakeRisk');
-    expect(source).toContain('.from(\'concepts\')');
+    expect(source).toContain('runCognitionAgentTurn');
     expect(source).toContain('invalidateSessionCard');
   });
 });

@@ -276,8 +276,8 @@ describe('Session Card API — Response Contract', () => {
     expect(res.hasCard).toBe(true);
     expect(res.card?.focusTopic).not.toBe('Stale Topic'); // regenerated
     expect(budgetedGenerateJSON).not.toHaveBeenCalled();
-    // Upsert should be called to store new card
-    expect(mockUpsert).toHaveBeenCalled();
+    // Upsert should be called to store new card via RPC
+    expect(supabaseMock.rpc).toHaveBeenCalledWith('upsert_session_card', expect.any(Object));
   });
 
   it('T_LLM_FALLBACK: explicitly enabled LLM failure → code-computed values used (no crash)', async () => {
@@ -411,8 +411,8 @@ describe('Session Card API — Response Contract', () => {
     });
 
     await callGET();
-    // Upsert should be called exactly once (no duplicate rows)
-    const upsertCalls = mockUpsert.mock.calls.length;
+    // Upsert should be called exactly once via RPC (no duplicate rows)
+    const upsertCalls = supabaseMock.rpc.mock.calls.filter((c: any) => c[0] === 'upsert_session_card').length;
     expect(upsertCalls).toBeLessThanOrEqual(1);
   });
 });

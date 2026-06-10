@@ -6,7 +6,7 @@ import { projectAutopsyV3Results } from '@/lib/autopsy-v3/projection';
 import { ingestLearningSignals } from '@/lib/learning-signals/ingest';
 import { safePublishEvent } from '@/lib/events/safe-publish';
 import { checkFeatureLimit, consumeFeatureUsage, featureLimitResponse } from '@/lib/usage/enforce-feature-limit';
-import { featureDisabledResponse, isBetaFeatureEnabled } from '@/lib/config/beta-flags';
+import { featureDisabledResponse, isFeatureEnabled } from '@/lib/feature-registry';
 import { runCognitionAgentTurn } from '@/lib/agent/runtime';
 import { logger } from '@/lib/utils/logger';
 
@@ -19,7 +19,7 @@ export async function POST(req: NextRequest, context: RouteContext) {
     if (auth.error) return auth.error;
     const { supabase, user, limits } = auth;
     const { id: assessmentId } = await context.params;
-    if (!isBetaFeatureEnabled('autopsy_report')) return featureDisabledResponse(requestId);
+    if (!isFeatureEnabled('autopsy_report')) return featureDisabledResponse(requestId);
 
     const { data: existingReport, error: existingReportError } = await supabase
       .from('autopsy_reports')

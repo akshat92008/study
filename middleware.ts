@@ -1,17 +1,17 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
-import { FeatureFlags } from "@/lib/feature-flags";
+import { isFeatureEnabled, type AppFeature } from '@/lib/feature-registry';
 
 const PUBLIC_ROUTES = ["/login", "/signup", "/waitlist", "/", "/api/ping", "/api/health", "/api/waitlist", "/api/webhooks/stripe"];
 const CRON_ROUTES = ["/api/cron", "/api/internal/workers/process-events", "/api/internal"];
 
 // MVP Route Policy: Block non-MVP user-facing routes
-const MVP_RESTRICTIONS: Array<{ path: string; flag?: keyof typeof FeatureFlags; redirect?: string }> = [
+const MVP_RESTRICTIONS: Array<{ path: string; flag?: AppFeature; redirect?: string }> = [
   { path: "/planner", flag: undefined, redirect: "/dashboard" },
   { path: "/mentor", flag: undefined, redirect: "/dashboard" },
   { path: "/tutor", flag: undefined, redirect: "/dashboard" },
-  { path: "/analytics", flag: "ENABLE_ANALYTICS_UI", redirect: "/dashboard" },
-  { path: "/cognition", flag: "ENABLE_ATLAS_UI", redirect: "/dashboard" },
+  { path: "/analytics", flag: 'analytics_ui', redirect: "/dashboard" },
+  { path: "/cognition", flag: 'atlas_ui', redirect: "/dashboard" },
   { path: "/health", flag: undefined, redirect: "/dashboard" },
   { path: "/autopsy/deep", flag: undefined, redirect: "/autopsy" },
   { path: "/onboarding", flag: undefined, redirect: "/dashboard" },
@@ -168,7 +168,7 @@ export async function middleware(request: NextRequest) {
   // MVP Route Gating
   for (const restriction of MVP_RESTRICTIONS) {
     if (pathname.startsWith(restriction.path)) {
-      const isEnabled = restriction.flag ? FeatureFlags[restriction.flag] : false;
+      const isEnabled = restriction.flag ? isFeatureEnabled(restriction.flag) : false;
       if (!isEnabled) {
         return NextResponse.redirect(new URL(restriction.redirect || "/dashboard", request.url));
       }
@@ -189,6 +189,10 @@ export async function middleware(request: NextRequest) {
       }
       return NextResponse.redirect(new URL("/dashboard", request.url));
     }
+  }
+
+  if (pathname === '/chat' && !isFeatureEnabled('chat')) {
+    return NextResponse.redirect(new URL('/dashboard', request.url));
   }
 
   return response;

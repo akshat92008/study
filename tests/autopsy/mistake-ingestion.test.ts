@@ -77,7 +77,7 @@ describe('Mistake Ingestion Tests', () => {
 
     expect(response.status).toBe(410);
     const body = await response.json();
-    expect(body.error).toBe('legacy_autopsy_disabled');
+    expect(body.error).toBe('Legacy autopsy ingest is disabled. Use the new Deep Autopsy V3 flow.');
     expect(EventDispatcher.publish).not.toHaveBeenCalled();
   });
 });

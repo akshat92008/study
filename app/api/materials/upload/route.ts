@@ -12,7 +12,7 @@ import { logger } from '@/lib/utils/logger';
 import { featureFlags } from '@/lib/config/flags';
 import { ingestLearningSignal } from '@/lib/learning-signals/ingest';
 import { betaAccessErrorResponse, requireActiveBetaUser } from '@/lib/access/beta-access';
-import { featureDisabledResponse, isBetaFeatureEnabled } from '@/lib/config/beta-flags';
+import { featureDisabledResponse, isFeatureEnabled } from '@/lib/feature-registry';
 import { getPlanLimits } from '@/lib/billing/plan-limits';
 import { consumeFeatureUsage, enforceFeatureLimit, featureLimitResponse } from '@/lib/usage/enforce-feature-limit';
 import {
@@ -75,7 +75,7 @@ export async function POST(req: NextRequest) {
         requestId,
       });
     }
-    if (!isBetaFeatureEnabled('rag_upload')) return featureDisabledResponse(requestId);
+    if (!isFeatureEnabled('rag_upload')) return featureDisabledResponse(requestId);
     try {
       await enforceFeatureLimit(user.id, 'material_upload');
     } catch (limitError: any) {

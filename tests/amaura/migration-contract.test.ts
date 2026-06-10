@@ -65,6 +65,7 @@ describe('Amaura agentic runtime migration contract', () => {
 
     expect(config.crons).toEqual([
       { path: '/api/cron/daily-synthesis', schedule: '0 6 * * *' },
+      { path: '/api/cron/daily-background-review', schedule: '0 3 * * *' },
     ]);
   });
 });

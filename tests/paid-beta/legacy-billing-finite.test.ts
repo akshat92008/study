@@ -7,7 +7,10 @@ vi.mock('@/lib/supabase/admin', () => ({
 }));
 
 describe('legacy billing compatibility', () => {
-  beforeEach(() => vi.clearAllMocks());
+  beforeEach(() => {
+    vi.clearAllMocks();
+    delete process.env.BYPASS_ALL_LIMITS;
+  });
 
   it('uses finite manual plan limits for pro users', async () => {
     const profileChain = {

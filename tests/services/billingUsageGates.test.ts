@@ -33,6 +33,7 @@ describe('closed-beta usage gates', () => {
     process.env.MAX_UPLOAD_BYTES = '100';
     process.env.MAX_PROMPT_CHARS = '50';
     delete process.env.ALLOW_USAGE_GATE_FAIL_OPEN;
+    delete process.env.BYPASS_ALL_LIMITS;
   });
 
   it('allows and increments usage while under limit', async () => {

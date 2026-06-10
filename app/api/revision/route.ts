@@ -6,7 +6,7 @@ import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/li
 import { ensureGoalForUser } from '@/lib/services/goal-context.service';
 import { ingestLearningSignal } from '@/lib/learning-signals/ingest';
 import { betaAccessErrorResponse, requireActiveBetaUser } from '@/lib/access/beta-access';
-import { featureDisabledResponse, isBetaFeatureEnabled } from '@/lib/config/beta-flags';
+import { featureDisabledResponse, isFeatureEnabled } from '@/lib/feature-registry';
 
 export async function GET(request: NextRequest) {
   try {
@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
         requestId,
       });
     }
-    if (!isBetaFeatureEnabled('revision')) return featureDisabledResponse(requestId);
+    if (!isFeatureEnabled('revision')) return featureDisabledResponse(requestId);
 
     const { allowed, remaining, resetAt } = await checkRateLimit({
       identifier: user.id,
@@ -77,7 +77,7 @@ export async function PATCH(request: NextRequest) {
         requestId,
       });
     }
-    if (!isBetaFeatureEnabled('revision')) return featureDisabledResponse(requestId);
+    if (!isFeatureEnabled('revision')) return featureDisabledResponse(requestId);
 
     const { allowed, remaining, resetAt } = await checkRateLimit({
       identifier: user.id,
@@ -164,7 +164,7 @@ export async function DELETE(request: NextRequest) {
         requestId,
       });
     }
-    if (!isBetaFeatureEnabled('revision')) return featureDisabledResponse(requestId);
+    if (!isFeatureEnabled('revision')) return featureDisabledResponse(requestId);
 
     const { allowed, remaining, resetAt } = await checkRateLimit({
       identifier: user.id,
@@ -224,7 +224,7 @@ export async function POST(request: NextRequest) {
         requestId,
       });
     }
-    if (!isBetaFeatureEnabled('revision')) return featureDisabledResponse(requestId);
+    if (!isFeatureEnabled('revision')) return featureDisabledResponse(requestId);
 
     const { allowed, remaining, resetAt } = await checkRateLimit({
       identifier: user.id,

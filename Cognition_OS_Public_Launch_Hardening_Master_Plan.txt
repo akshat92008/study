@@ -1,0 +1,1355 @@
+Cognition OS
+Public Launch Hardening Master Plan
+Final-product deployment command document for the current uploaded codebase
+
+Mission
+Turn the current Cognition OS codebase into a public, paid, deployment-ready product that can acquire users, charge them, onboard them, deliver the core learning OS experience, monitor itself, and fail safely while the founder is unavailable for active testing.
+Operating constraint
+The founder will not be available for active product testing for 10-15 days. Therefore every module below must be implemented with automated verification, deterministic scripts, clear acceptance criteria, and production-grade observability. Do not rely on founder walkthroughs as a quality gate.
+Base artifact
+Codebase facts observed
+Uploaded ZIP
+study-main (51).zip
+Stack
+Next.js 16, React 19, Supabase, Stripe dependency present, OpenAI/Gemini providers, Sentry, Upstash
+Scale
+143 app files, 109 API route files, 108 Supabase migrations, 150+ test files
+Current posture
+Large beta-stage product with final-product ambitions; not yet public paid launch-ready
+Main blockers
+npm ci lockfile drift, manual beta billing, onboarding/admin middleware conflict, session/streak bugs, idempotency gaps, schema drift risk, public launch security and monitoring gaps
+
+How this document must be used
+Treat this as a boss-to-engineering execution order. The team should not reinterpret the target as MVP. The target is public deployment readiness.
+Treat the current repository as the base. Do not rewrite the whole app unless a module explicitly says a subsystem must be consolidated.
+Do not add new visible features until install, build, billing, onboarding, security, and learning-loop correctness are stable.
+Every module must end with automated tests. Manual clicking is allowed only as a final smoke check, not as the proof of correctness.
+Every visible user-facing feature must be either fully working, clearly gated by plan, admin-only, or hidden. No orphaned routes or broken claims.
+Every expensive feature must have rate limits, plan limits, abuse limits, cost monitoring, and graceful upgrade messaging.
+Every mutating route must be idempotent where browser retries, double-clicks, payment webhooks, or worker retries are possible.
+Launch command principles
+Principle
+Engineering instruction
+No founder QA dependency
+Replace founder testing with Playwright/Vitest/Supabase integration tests and scripted launch smoke checks.
+Revenue before polish
+Self-serve billing, entitlement sync, plan limits, and upgrade paths are mandatory before public traffic.
+One canonical path
+For each core behavior, choose one code path. Delete or hard-flag old route duplicates and experimental variants.
+Fail safely
+If persistence, auth, billing, usage, or projection fails, show a recoverable error. Never pretend success.
+Observable by default
+Every critical request has requestId, Sentry event, structured log, and admin-visible status.
+Launch only what works
+Experimental Command/Hermes/Amaura/PULSE-style systems can exist internally only behind hard flags and tests.
+Master execution sequence
+Order
+Module
+Why this order is mandatory
+0
+Repository reproducibility and CI
+Nothing else is trustworthy until a clean install/build/test path works.
+1
+Production environment and feature-mode contract
+The app must know whether it is beta, public-free, public-paid, or admin mode.
+2
+Public access, auth, onboarding, routing
+Users must be able to land, sign up, onboard, and reach dashboard without founder help.
+3
+Billing, subscriptions, entitlements, pricing
+Public product must charge and provision users automatically.
+4
+Database schema and migration stabilization
+The runtime and DB must agree. Fresh install and existing DB upgrade must both work.
+5
+Daily mission/session lifecycle
+The core habit loop must be correct: one card, one completion, one streak update.
+6
+MIND global chat
+The main product surface must persist context and respect limits.
+7
+RAG/source materials
+Uploaded materials must be safe, limited, queryable, and cited.
+8
+Autopsy V3
+Mistake analysis must reliably update ATLAS and MEMORY without duplicate side effects.
+9
+ATLAS mastery engine
+Concept state must be accurate, explainable, and debuggable.
+10
+MEMORY revision engine
+Revision cards must appear, schedule, review, and adapt correctly.
+11
+Agent/event/worker runtime
+Background intelligence must be bounded, idempotent, observable, and recoverable.
+12
+Admin, support, and operations console
+Founder absence requires admin dashboards and recovery tools.
+13
+Security, privacy, compliance
+Public launch requires RLS, service-role isolation, storage security, legal pages, data deletion/export.
+14
+Observability, cost control, reliability
+The system must alert and protect itself.
+15
+Frontend product coherence and UX polish
+Every visible page must match final-product claims.
+16
+Automated QA and launch certification
+No launch without scripted end-to-end proof.
+17
+Deployment runbook and go/no-go gate
+Final production push must be repeatable and reversible.
+Non-negotiable launch gates
+Clean checkout must pass npm ci. Current codebase fails this due to package-lock/package.json drift around OpenTelemetry packages.
+npm run typecheck, npm run lint, npm test, and npm run build must pass in CI and locally without hidden dependencies.
+A new public user must be able to sign up, pay or use free plan, complete onboarding, reach dashboard, use chat, complete a session, upload/enter Autopsy, and see learning state update.
+Stripe checkout, webhook, billing portal, subscription status, and plan limit enforcement must be active in production mode.
+Onboarding cannot be blocked by middleware. Admin cannot be blocked by MVP restrictions before admin authorization runs.
+Session completion must be truly idempotent and must return the same streak value the database stores.
+Session card persistence failure must fail the API, not return a ghost card.
+Autopsy report retries must not duplicate mistakes, revision cards, mastery events, or reminders.
+All production cron/worker routes must require strong secrets and have alerting on failure.
+Every user-data table must have verified RLS and storage policies. Service-role client must never leak into client bundle.
+
+Module 0: Repository Reproducibility, Dependency Lock, and CI Truth
+Objective
+Make the repository reproducible from a clean checkout and turn CI into the single source of launch truth. No engineer is allowed to claim a module is complete if the repository cannot clean-install, typecheck, test, and build.
+Owner
+Current codebase state
+Launch target
+Platform / Build Engineer
+Current clean npm ci fails because package.json and package-lock.json are out of sync; CI scripts exist but cannot be trusted until install is fixed.
+Public deployment-ready; no founder manual testing required.
+Target files and systems
+package.json
+package-lock.json
+.github/workflows/ci.yml
+tsconfig.typecheck.json
+jest.config.ts
+vitest config files
+scripts/checkTypeTime.js
+scripts/env-preflight.ts
+Phase 0.1 — Repair dependency lockfile
+Instruction
+Do this first. Do not edit product behavior until this is green.
+Run npm install once from a clean checkout to regenerate package-lock.json according to package.json.
+Inspect the diff. Confirm OpenTelemetry versions are internally consistent; do not allow mixed 0.52.0 and 0.218.0 transitive expectations without explanation.
+Run npm ci after deleting node_modules to prove reproducibility.
+Commit only package-lock/package metadata required for install. Do not hide app-code changes inside this commit.
+Commands / checks
+rm -rf node_modules npm install --no-audit --no-fund rm -rf node_modules npm ci --no-audit --no-fund 
+Phase 0.2 — Establish CI launch pipeline
+Instruction
+CI must fail if the app is not launch-safe. Existing scripts are useful but need a public-launch wrapper.
+Create npm script verify:public-launch that runs environment validation in strict mode, typecheck, lint, tests, build, schema checks, and smoke tests.
+Separate fast PR checks from full release checks. PR checks can run unit tests; release checks must run integration and E2E.
+Make skipped integration tests visible. If Supabase env is absent, CI must mark the release job failed, not silently skip launch-critical coverage.
+Add a CI artifact upload for test logs, Playwright traces, schema reports, and migration diffs.
+Commands / checks
+npm run typecheck npm run lint npm test npm run build npm run schema:check npm run verify:db 
+Phase 0.3 — Repository hygiene freeze
+Instruction
+Stop uncontrolled growth while hardening for public launch.
+Create a launch branch named public-launch-hardening.
+Disallow feature work on this branch unless it directly serves launch readiness.
+Add CODEOWNERS or review labels for database, billing, auth, AI-cost, and worker changes.
+Create a launch blocker issue list from this document and map every PR to a blocker.
+Acceptance tests
+Clean npm ci passes on a fresh checkout without manually editing node_modules.
+CI fails if npm ci fails, if typecheck fails, if build fails, or if any launch-critical integration test is skipped.
+verify:public-launch exists and is documented in README/DEPLOYMENT_CHECKLIST.
+A new engineer can clone and run one command to validate the product.
+Definition of done
+No dependency drift remains.
+CI is green from a clean environment.
+Every future module can rely on automated verification.
+
+Module 1: Production Environment Contract and Launch Modes
+Objective
+Replace beta/manual ambiguity with a strict launch-mode contract. The app must behave differently in local, staging, public-free, public-paid, and admin modes, and this must be enforced by code and environment validation.
+Owner
+Current codebase state
+Launch target
+Platform Engineer + Product Lead
+.env.example is still beta/manual by default: PUBLIC_BETA_MODE=true, REQUIRE_INVITE_CODE=true, PAID_BETA_GATE_ENABLED=true, MANUAL_BETA_ACCESS_ONLY=true. env validation does not require all public launch services.
+Public deployment-ready; no founder manual testing required.
+Target files and systems
+.env.example
+.env.local.example
+lib/utils/env-validate.ts
+lib/config/beta-flags.ts
+lib/feature-flags.ts
+scripts/env-preflight.ts
+DEPLOYMENT_CHECKLIST.md
+Phase 1.1 — Define explicit launch modes
+Instruction
+No more hidden beta assumptions. Create one canonical mode enum and make all access/billing/feature logic read from it.
+Introduce APP_LAUNCH_MODE with allowed values: local, staging, private_beta, public_free, public_paid, maintenance.
+Deprecate MANUAL_BETA_ACCESS_ONLY as a production default. It can remain only for private_beta.
+Make public_paid require Stripe, Upstash, AI keys, Sentry, cron secrets, app URL, support email, legal URLs, and Supabase service role.
+Make staging require Stripe test keys and test webhook secret.
+Make env-preflight print a launch-mode summary and fail hard when mode requirements are missing.
+Phase 1.2 — Consolidate feature flags
+Instruction
+There are two flag systems: lib/feature-flags.ts and lib/config/beta-flags.ts. Consolidate or clearly separate UI flags from operational kill switches.
+Create a single feature registry with fields: key, owner, default per launch mode, env var, user-facing visible?, paid-gated?, cost-bearing?, kill-switch?.
+Map existing flags including ENABLE_ANALYTICS_UI, ENABLE_ATLAS_UI, RAG_UPLOADS_ENABLED, AUTOPSY_REPORTS_ENABLED, WORKER_AI_ENABLED, SESSION_CARD_ENABLED, REVISION_ENABLED, ATLAS_ENABLED.
+Remove stale MVP wording from comments where final product mode is intended.
+Add test that public_paid mode exposes only production-approved features.
+Phase 1.3 — Environment templates for deployment
+Instruction
+An engineer should be able to configure Vercel and Supabase without asking the founder.
+Rewrite .env.example into sections: Required all modes, Required public_paid, Required staging, Optional experimental, Kill switches, Cost caps.
+Add comments for every variable explaining who owns it and what failure looks like if absent.
+Add .env.production.example and .env.staging.example.
+Add scripts/print-launch-config.ts that redacts secrets and prints current launch mode and feature status.
+Acceptance tests
+APP_LAUNCH_MODE=public_paid npm run preflight:env fails if Stripe, Upstash, Sentry, cron, AI, app URL, or support/legal env is missing.
+APP_LAUNCH_MODE=private_beta preserves manual access behavior.
+Unit tests prove no public_paid code path returns manual_beta_access_only.
+Snapshot test verifies feature registry defaults for local/staging/public_paid.
+Definition of done
+The product has one clear operating mode at runtime.
+Public paid mode cannot accidentally boot as manual beta.
+Every kill switch is documented and test-covered.
+
+Module 2: Public Auth, Routing, Onboarding, and First-Run Journey
+Objective
+Make the public user journey unbreakable: landing page -> signup/login -> payment or free access -> onboarding -> dashboard -> first value moment. Remove middleware conflicts and route ambiguity.
+Owner
+Current codebase state
+Launch target
+Auth/Routing Engineer + Frontend Engineer
+middleware.ts blocks /onboarding and /admin inside MVP_RESTRICTIONS. app/page.tsx redirects incomplete users to /onboarding, creating a conflict. Admin authorization also differs between middleware and lib/auth/admin.ts.
+Public deployment-ready; no founder manual testing required.
+Target files and systems
+middleware.ts
+app/page.tsx
+app/(dashboard)/onboarding/page.tsx
+app/api/onboarding/complete/route.ts
+lib/services/onboarding.service.ts
+lib/auth/admin.ts
+lib/access/beta-access.ts
+app/login
+app/signup
+app/access
+Phase 2.1 — Fix route policy order
+Instruction
+Onboarding and admin cannot be treated as disabled MVP routes in the final product.
+Remove /onboarding from MVP_RESTRICTIONS. Onboarding is mandatory core product infrastructure.
+Remove /admin from MVP_RESTRICTIONS and let admin protection run through canonical admin auth.
+Move route gating after explicit exceptions for onboarding, billing, support, legal, auth, and webhooks.
+Write a route policy table in code comments and tests.
+Phase 2.2 — Canonicalize first-run redirects
+Instruction
+A new user must never bounce between dashboard and onboarding.
+Define redirect rules: unauthenticated -> login/signup; authenticated without profile -> onboarding; authenticated incomplete onboarding -> onboarding; authenticated complete -> dashboard; suspended -> suspended page; payment required -> pricing/access page.
+Centralize these rules in a server utility. Do not duplicate in page.tsx, middleware, and layouts.
+Update app/page.tsx and dashboard layout to use the same utility.
+Add a loading/error path for profile unavailable.
+Phase 2.3 — Harden onboarding service
+Instruction
+Onboarding must create the minimum durable state required for the rest of the OS.
+Ensure onboarding completion creates/updates profile, active learning goal, default chat session, first session card seed signal, and initial concept scaffold.
+Make onboarding idempotent by user id and goal id. Re-submitting onboarding should update target state, not duplicate goals/chats.
+Persist onboarding version and source so future onboarding changes can migrate users.
+Return dashboard-ready payload from /api/onboarding/complete.
+Phase 2.4 — Anonymous/guest policy decision
+Instruction
+Guest sign-in is risky for paid launch unless tied to a conversion strategy.
+Decide: either remove guest mode from public_paid or allow a limited anonymous trial.
+If allowed, make guest data conversion to permanent account explicit and tested.
+If removed, delete or hide guest entry points in signup and landing.
+Enforce no paid billing on anonymous accounts unless converted.
+Acceptance tests
+Playwright: new email signup -> onboarding form -> complete -> dashboard.
+Playwright: incomplete user visiting /dashboard is redirected to /onboarding.
+Playwright: completed user visiting /onboarding can edit profile or is safely redirected according to product decision.
+Middleware unit tests for /onboarding, /admin, /api/admin, /pricing, /billing, /api/webhooks/stripe.
+Onboarding API idempotency test: two submissions create one active goal unless user intentionally adds a new goal.
+Definition of done
+No first-run route loop.
+Onboarding is reachable and durable.
+Admin is protected by canonical admin auth, not accidentally blocked.
+A new public user can reach the first dashboard without founder intervention.
+
+Module 3: Billing, Subscriptions, Entitlements, Pricing, and Revenue Flow
+Objective
+Enable self-serve revenue. A public user must be able to choose a plan, pay, receive entitlements automatically, manage billing, and be gracefully limited or downgraded.
+Owner
+Current codebase state
+Launch target
+Payments Engineer + Backend Engineer
+app/api/billing/checkout/route.ts and app/api/webhooks/stripe/route.ts intentionally return manual_beta_access_only. Plan-limit code exists but is tied to manual_plan/beta access.
+Public deployment-ready; no founder manual testing required.
+Target files and systems
+app/api/billing/checkout/route.ts
+app/api/webhooks/stripe/route.ts
+app/api/billing/portal/route.ts (new)
+lib/billing/plan-limits.ts
+lib/utils/billing.ts
+lib/usage/enforce-feature-limit.ts
+lib/access/beta-access.ts
+supabase/migrations/*billing*
+app/pricing or app/access pages
+Phase 3.1 — Define commercial plans
+Instruction
+Do not let engineering invent billing behavior ad hoc. Define product plans first.
+Create a plan matrix: Free, Founding, Pro, Admin/Internal. Include price, daily chat, autopsy, RAG uploads, material count, AI budget, revision generation, support level.
+Map each plan to Stripe product and price IDs via env variables.
+Keep manual_plan only as admin override; subscription_status must be derived from Stripe unless admin override exists.
+Define grace-period behavior for failed payments.
+Phase 3.2 — Implement Stripe checkout
+Instruction
+Replace manualBetaResponse in checkout route with real Stripe Checkout.
+Authenticate user. If no profile email, load from Supabase auth user.
+Validate requested plan against server-side allowed plans; never trust client price IDs.
+Create Stripe customer if missing; persist stripe_customer_id on profile.
+Create checkout session with success_url and cancel_url.
+Attach metadata: userId, plan, environment, requestId.
+Return session URL or redirect for GET mode.
+Handle duplicate checkout attempts safely.
+Phase 3.3 — Implement Stripe webhook
+Instruction
+Webhook is the source of truth for paid entitlements. It must be idempotent and signature-verified.
+Verify Stripe-Signature with STRIPE_WEBHOOK_SECRET.
+Handle checkout.session.completed, customer.subscription.created/updated/deleted, invoice.payment_succeeded, invoice.payment_failed.
+Upsert subscription row keyed by stripe_subscription_id.
+Update profile effective plan only through one entitlement sync function.
+Store raw event id and processed_at in stripe_events table to prevent duplicate processing.
+Never fail after partially mutating without an audit row.
+Phase 3.4 — Billing portal and account page
+Instruction
+Users must self-manage payment method, invoices, cancellation, and plan changes.
+Add /api/billing/portal route.
+Add Billing section in settings/account page.
+Show current plan, limits, usage, renewal date, and portal button.
+For free users show upgrade CTA; for paid users show manage subscription.
+Phase 3.5 — Entitlement and usage enforcement
+Instruction
+Every paid feature must use one canonical entitlement check.
+Unify legacy consumeUsageLimit and newer enforce-feature-limit paths or clearly wrap legacy calls through the canonical feature usage system.
+Make limit responses user-friendly and include upgradeUrl to pricing.
+Ensure free plan cannot use paid-only Autopsy reports/RAG uploads unless intentionally allowed.
+Add usage metering rows for chat, AI calls, autopsy reports, RAG uploads, material queries, revision generations, worker AI.
+Acceptance tests
+Stripe CLI test: checkout.session.completed grants the correct plan.
+Webhook idempotency test: same Stripe event processed twice mutates once.
+Subscription deletion downgrades user according to grace rules.
+Failed payment moves user to past_due and shows billing recovery UI.
+Free user hitting a paid feature receives upgrade prompt, not a generic 403.
+Paid user limits match plan-limits.ts.
+No public_paid billing route returns manual_beta_access_only.
+Definition of done
+Self-serve payment works in Stripe test mode and production mode.
+Entitlements update automatically from webhooks.
+Plan limits are enforced consistently.
+Founder does not need to manually activate paying users.
+
+Module 4: Database Schema, Migrations, RLS, and Data Contract Stabilization
+Objective
+Make database state deterministic. Fresh deployment and existing deployment upgrade must both produce a schema that runtime code expects. Remove drift between SQL, TypeScript, tests, and dump files.
+Owner
+Current codebase state
+Launch target
+Database Engineer
+108 migrations and dump.sql exist. Multiple migrations redefine session cards, completion RPCs, learner events, and beta/billing state. Runtime supports both camelCase and snake_case in places.
+Public deployment-ready; no founder manual testing required.
+Target files and systems
+supabase/migrations/*
+dump.sql
+lib/db/*
+scripts/schema-sanity-check.ts
+scripts/check-schema-contract.ts
+tests/contracts/noSchemaDrift.test.ts
+types/database.types.ts if present
+Phase 4.1 — Create schema inventory
+Instruction
+Before editing, know the real final schema after all migrations.
+Run migrations into a fresh local Supabase database.
+Dump final schema only, not data.
+Compare final schema to dump.sql and runtime expectations.
+List every table, primary key, unique index, RLS state, policy count, trigger, function, and grant.
+Mark tables as core, billing, admin, experimental, deprecated, or internal.
+Phase 4.2 — Canonical migration baseline
+Instruction
+Stop schema archaeology from blocking launch.
+If fresh migrations pass, keep them but add a final reconciliation migration that fixes all launch-critical inconsistencies.
+If fresh migrations fail or produce contradictory structures, create a clean production baseline migration for new deployments and a separate upgrade path for existing DB.
+Do not delete historical migrations unless the deployment strategy explicitly starts from a new Supabase project.
+Make migration order deterministic and remove future-date confusion where possible.
+Phase 4.3 — Runtime contract generation
+Instruction
+TypeScript must know the DB shape.
+Generate Supabase database types from final schema.
+Replace any any-typed Supabase rows in core services with generated types or local zod schemas.
+Add contract tests for required columns: profiles.exam_type, profiles.streak_days, profiles.last_active_at, profiles.learner_state_version, concepts.mastery_score/mastery, revision_cards.normalized_key, session_cards.goal_key, study_sessions.completion_key.
+Add tests for required RPCs: complete_study_session, upsert_session_card, check_and_increment_usage_gate.
+Phase 4.4 — RLS and grants audit
+Instruction
+Public launch requires strict data isolation.
+Verify RLS is enabled on every user-data table.
+Force RLS where necessary.
+Remove anon execute grants from mutating RPCs unless explicitly required and auth.uid() guarded.
+Verify service_role usage only happens in server-only modules.
+Add storage bucket policy audit for material uploads, autopsy uploads, generated exports, and avatars if any.
+Acceptance tests
+Fresh Supabase reset + migrations completes successfully.
+schema:check passes with zero drift.
+RLS audit returns zero unprotected user-data tables.
+Anonymous user cannot read or mutate another user’s data.
+Authenticated user A cannot access user B rows across profiles, goals, sessions, materials, autopsy, concepts, revision cards, chat messages.
+Mutating RPCs reject unauthenticated calls.
+Definition of done
+One final schema contract exists.
+Runtime and DB agree.
+RLS is verified, not assumed.
+Deployment can create or upgrade DB safely.
+
+Module 5: Daily Mission, Session Card, Study Completion, and Streak Correctness
+Objective
+Make the daily learning loop deterministic and trustworthy. The user sees one daily mission, completes it once, gets one streak update, and the next recommendation adapts without ghost cards or duplicate side effects.
+Owner
+Current codebase state
+Launch target
+Learning Loop Engineer
+session-card route persists via upsert_session_card but only warns on persistence failure. completeLearningSession reads rpcResult.new_streak while latest SQL returns streak_days. invalidateSessionCard deletes today/tomorrow cards after state changes, which can regenerate a new card after completion.
+Public deployment-ready; no founder manual testing required.
+Target files and systems
+app/api/dashboard/session-card/route.ts
+app/api/dashboard/complete-session/route.ts
+lib/services/session-completion.ts
+lib/services/session-card-invalidation.ts
+lib/learner-state/projector.ts
+supabase/migrations/*complete_study_session*
+components/CurrentTaskCard.tsx or dashboard task components
+Phase 5.1 — Define session-card state machine
+Instruction
+Stop treating session cards as cache rows only. They are user-visible commitments.
+Define statuses: pending, in_progress, completed, skipped, replaced.
+Add/confirm columns: status, completed_at, started_at, replaced_by_card_id, learner_state_version_at_generation, goal_id, local_date, idempotency_key/completion_key.
+Rule: completed card must not silently disappear. Autopsy may adapt tomorrow; today only changes if current card is still pending.
+Document one-card-per-user-goal-local-date uniqueness.
+Phase 5.2 — Fix completion response bug
+Instruction
+Streak shown to the user must match the DB.
+Update lib/services/session-completion.ts to read rpcResult.streak_days ?? rpcResult.new_streak.
+Return both streakDays and newStreak from the same normalized value.
+Add regression test that mocks RPC returning streak_days only and asserts API returns streakDays > 0.
+Phase 5.3 — True completion idempotency
+Instruction
+Double-clicks, browser retries, and worker retries must not duplicate study sessions.
+Add/confirm study_sessions.completion_key column.
+Create unique index on (user_id, completion_key) where completion_key is not null.
+Update complete_study_session RPC to check existing completion key first and return prior result.
+Ensure projection idempotency uses the same stable sessionId/completionKey.
+Frontend completion key should include persisted session_card.id or goalId + localDate + card stable key, not only topic text.
+Phase 5.4 — Persist-or-fail session card
+Instruction
+Never show a card that is not saved.
+In app/api/dashboard/session-card/route.ts, if upsert_session_card fails, return 500 with requestId.
+Show a recoverable dashboard error state with retry button.
+Log Sentry event and structured log with userId, goalId, date, selector result.
+Phase 5.5 — Complete not invalidate today
+Instruction
+Completion must mark current card done and adapt future cards.
+Change completeLearningSession to call markSessionCardCompleted or complete_daily_session_card after successful RPC.
+Change invalidateSessionCard behavior: for session_completed, mark today completed and invalidate tomorrow; for autopsy_mistake_detected, invalidate today only if current card not completed.
+Ensure learner_state_version still increments so future recommendations adapt.
+Acceptance tests
+DB test: same completion_key creates exactly one study_sessions row.
+API test: /api/dashboard/complete-session returns streakDays equal to profile.streak_days.
+API test: two same completion calls return same sessionId and no duplicate mastery/revision events.
+Session-card test: failed upsert returns 500 and no ghost card.
+E2E: user completes today card; dashboard reload shows completed state, not a new pending card.
+Timezone test for Asia/Kolkata and UTC boundaries: local date remains correct around midnight.
+Definition of done
+One authoritative daily card exists per goal/date.
+Completing a session is idempotent.
+Streak response is correct.
+No silent card regeneration after completion.
+
+Module 6: MIND Global Chat: Persistence, Context, Cost, and Reliability
+Objective
+Make chat the stable product center. MIND must persist, remember context, respect plan limits, cite source material, handle retries, and never leave the user in a broken half-message state.
+Owner
+Current codebase state
+Launch target
+AI/Chat Engineer
+app/api/ai/chat/route.ts has auth, beta gate, rate limit, persistence, RAG/memory context, rule-first responses, and AI provider abstraction. User message persistence happens after idempotency but before all response guarantees; duplicate idempotency returns 409 rather than replay.
+Public deployment-ready; no founder manual testing required.
+Target files and systems
+app/api/ai/chat/route.ts
+lib/chat/pipeline/*
+lib/services/chat-persistence.ts
+lib/services/chat-turn-finalizer.ts
+lib/ai/*
+lib/rag/*
+lib/usage/enforce-feature-limit.ts
+Phase 6.1 — Chat request transaction contract
+Instruction
+A chat turn is a product-visible transaction. It needs a durable state machine.
+Define turn statuses: pending_user_saved, assistant_streaming, assistant_saved, failed_usage, failed_provider, failed_internal.
+Persist user message and assistant result with shared turn_id/idempotency key.
+If provider fails after user message save, persist a system-visible failure state or allow clean retry using same key.
+Return previous completed response on duplicate idempotency key when possible; otherwise return structured retry state.
+Phase 6.2 — Context quality and limits
+Instruction
+MIND must know the learner without exceeding token/cost limits.
+Audit gather/load context: profile, active goal, recent messages, semantic memories, RAG chunks, concept mastery, due cards, recent mistakes.
+Set hard budgets for each context bucket.
+Add context debug metadata available only to admin/debug mode.
+Ensure simple greetings do not trigger expensive context or AI calls where rule-first response is enough.
+Phase 6.3 — Cost and provider failover
+Instruction
+Public chat can bankrupt the product if uncontrolled.
+Require feature usage reservation before expensive AI call.
+Commit usage only after successful provider response; cancel reservation on failure.
+Add provider timeout and fallback policy.
+Expose AI_GLOBAL_KILL_SWITCH and provider-specific kill switches in admin system status.
+Log estimated tokens/cost for every AI call.
+Phase 6.4 — Chat UX completeness
+Instruction
+The UI must handle every server response gracefully.
+Handle 401, 403 beta/plan, 409 duplicate, 413 prompt too large, 429 limits, 503 usage unavailable, 500 provider failure.
+Show upgrade CTA for plan-limited responses.
+Show retry button for provider/internal failures.
+Preserve unsent text on failure.
+Ensure chat hydrate GET works after refresh and across sessions.
+Acceptance tests
+Unit: duplicate idempotency key returns previous turn or structured duplicate state.
+Integration: chat persists user and assistant messages and hydrates after refresh.
+Integration: usage limit is checked before expensive provider call.
+Provider failure test: user sees recoverable error and no corrupted session.
+RAG context test: answer cites uploaded material when relevant.
+E2E: 10-turn conversation remembers prior topic and active goal.
+Definition of done
+MIND is reliable enough to be the product center.
+Chat cannot silently lose turns.
+Costs are bounded.
+Plan and error states are user-friendly.
+
+Module 7: RAG, Source Materials, Uploads, and Citation Grounding
+Objective
+Make study material upload and retrieval safe, useful, limited, and explainable. Uploaded notes/PDFs must improve MIND without creating security, cost, or hallucination risk.
+Owner
+Current codebase state
+Launch target
+RAG/Knowledge Engineer
+Routes exist for materials upload/query/reprocess and internal RAG ingestion. Env flags include RAG_UPLOADS_ENABLED and RAG_QUERIES_ENABLED. Prior reports claim private-beta readiness but public launch requires stricter policies.
+Public deployment-ready; no founder manual testing required.
+Target files and systems
+app/api/materials/upload/route.ts
+app/api/materials/query/route.ts
+app/api/materials/[id]/route.ts
+app/api/internal/rag/ingest/route.ts
+lib/rag/*
+lib/materials/*
+supabase/migrations/*source_material*
+storage policies
+Phase 7.1 — Upload policy and validation
+Instruction
+File upload is an abuse surface. Treat it like production infrastructure.
+Define allowed file types: PDF with selectable text, TXT, Markdown, images only if OCR explicitly enabled.
+Enforce MIME and magic-byte validation.
+Enforce per-plan file size, file count, daily upload count, and total storage limits.
+Virus scanning is ideal; if not available, document risk and restrict supported types.
+Strip or ignore embedded scripts/active content.
+Phase 7.2 — Ingestion reliability
+Instruction
+Upload response should not lie about ingestion state.
+Use material statuses: uploaded, queued, processing, ready, failed, deleted.
+Move heavy parsing/embedding into worker where possible.
+Expose ingestion status in UI.
+Make reprocess idempotent and admin/user safe.
+Log ingestion errors with material id and requestId.
+Phase 7.3 — Retrieval and citations
+Instruction
+MIND must distinguish source-backed answers from general AI answers.
+Return chunk IDs, material IDs, page numbers where available, and relevance scores.
+Require source citation UI for source-backed answers.
+When no source context is found, MIND must say it is answering from general knowledge unless product policy disallows it.
+Add grounding tests for material query.
+Phase 7.4 — Storage privacy and deletion
+Instruction
+Student materials are sensitive.
+Ensure storage objects are user-scoped and private.
+Deleting a material must delete metadata, chunks, embeddings, and storage object or mark for cleanup.
+Account deletion must remove materials and derived chunks.
+Admin access to material content must be explicit and audited.
+Acceptance tests
+Upload rejects unsupported MIME and oversized files.
+Free/founding/pro upload limits match plan.
+Uploaded PDF transitions to ready or failed with visible status.
+Material query returns only current user materials.
+User A cannot access User B material by ID or storage path.
+Deleting material removes it from future RAG answers.
+Definition of done
+RAG is safe for public users.
+Material upload status is honest.
+Source-backed answers are cited.
+Storage privacy is verified.
+
+Module 8: Autopsy V3: Mistake Diagnosis, Reports, Projection, and Retry Safety
+Objective
+Make Autopsy a launch-grade differentiator: students can upload or enter assessment data, get a clear report, and have mistakes reliably update ATLAS and MEMORY without duplicates.
+Owner
+Current codebase state
+Launch target
+Autopsy Engineer + Learning Engine Engineer
+Autopsy V3 routes exist and include upload, extract, questions, generate-report, reasons, reflection, reminders. Projection creates a new server Supabase client internally and report generation performs multiple side effects in one request.
+Public deployment-ready; no founder manual testing required.
+Target files and systems
+app/api/autopsy/v3/*
+lib/autopsy-v3/*
+lib/learner-state/projector.ts
+lib/events/*
+tests/autopsy-v3/*
+supabase/migrations/*autopsy*
+Phase 8.1 — Autopsy user flow contract
+Instruction
+Define the exact public flow before changing code.
+Supported inputs: manual questions, answer key, selectable-text PDF. Scanned OCR only if explicitly enabled.
+Flow: create assessment -> upload/extract or manual entry -> verify questions -> answer key/reasons -> generate report -> projection -> review recommendations.
+Every assessment has status: draft, extracting, ready_for_review, report_generating, report_ready, failed.
+UI must show clear next action for each status.
+Phase 8.2 — Projection client and idempotency fix
+Instruction
+Projection must use the authenticated route client and stable keys.
+Change projectAutopsyV3Results to accept supabase client in input.
+Remove internal createClient call from projection.
+Add stable idempotency key per diagnosis: autopsy_v3:diagnosis:{assessmentId}:{questionId}:{canonicalConcept}.
+Ensure each mistake row, learner event, mastery update, and revision card uses stable dedupe keys.
+Do not include Date.now() in any idempotency key.
+Phase 8.3 — Side-effect orchestration
+Instruction
+Report generation must be retry-safe.
+Persist report first with generation status and report version.
+Project mistakes through an outbox/event queue or transactional service.
+If projection fails, report remains visible with projection_failed status and retry action.
+Avoid running central projection, learning-signal ingestion, event publish, and agent runtime all independently without dedupe.
+Admin should be able to retry failed projection from report id.
+Phase 8.4 — Report quality and user trust
+Instruction
+Autopsy must explain mistakes clearly and actionably.
+Report must include score, top weak concepts, mistake categories, specific question-level feedback, next session recommendation, and revision cards generated.
+Do not overclaim AI certainty. Include confidence where low.
+Show source of diagnosis: answer mismatch, student reason, AI analysis, manual flag.
+Allow user to correct a diagnosis, which should update future projections.
+Acceptance tests
+Autopsy manual flow E2E creates assessment, questions, report, mistakes, mastery updates, and revision cards.
+Retry generate-report twice does not duplicate rows.
+Projection receives route Supabase client in unit test.
+Two mistakes on same concept but different questions both persist correctly while deduping exact duplicates.
+User A cannot access User B assessment/report/questions.
+Plan limit test: free/founding/pro autopsy report limits enforced.
+Definition of done
+Autopsy V3 is a reliable paid feature.
+Report generation is retry-safe.
+ATLAS and MEMORY update from mistakes.
+Users can trust and correct outputs.
+
+Module 9: ATLAS Concept Mastery Engine and Progress Visualization
+Objective
+Make ATLAS the source of truth for what the learner knows, not a decorative graph. Every mastery value must come from explainable signals and be visible in a useful way.
+Owner
+Current codebase state
+Launch target
+Learning Science Engineer + Frontend Engineer
+Concept mastery tables and projection logic exist. UI flag ENABLE_ATLAS_UI is false in lib/feature-flags.ts while beta flags include ATLAS_ENABLED=true. Runtime uses concepts, mistakes, sessions, and autopsy signals.
+Public deployment-ready; no founder manual testing required.
+Target files and systems
+lib/learner-state/projector.ts
+lib/engines/concept-resolver.ts
+app/api/atlas/mastery/route.ts
+app/(dashboard)/atlas or cognition UI
+components/atlas/*
+supabase/migrations/*concept*
+Phase 9.1 — Canonical mastery model
+Instruction
+Define what mastery means and how each signal changes it.
+Document signal types: session_completed, autopsy_mistake_detected, concept_practiced, revision_reviewed, chat_concept_mentioned.
+Define weights, decay, confidence, and source precedence.
+Resolve column naming: mastery vs mastery_score. Runtime must use one canonical field or a compatibility layer.
+Store last_updated_reason and evidence count for admin/debug.
+Phase 9.2 — Concept resolution and syllabus growth
+Instruction
+Avoid duplicate concepts like “Thermodynamics”, “thermodynamics”, and “Thermo”.
+Normalize canonicalConcept using stable slug, subject, chapter, exam/goal context.
+Add unique key for user/goal/subject/canonical concept.
+When a new concept appears from chat/autopsy, resolve against existing concept before inserting.
+Seed common concepts during onboarding for supported exams but allow generic user goals.
+Phase 9.3 — ATLAS UI for public product
+Instruction
+Expose mastery simply; avoid overwhelming graph complexity.
+Dashboard shows top weak concepts, improving concepts, and ready-for-practice concepts.
+Detailed ATLAS page shows subjects/chapters/concepts with mastery, confidence, evidence, last practiced.
+If graph UI is not stable, use a list/table first.
+Upgrade copy: paid users see deeper analytics; free users see limited preview if plan requires.
+Phase 9.4 — Explainability
+Instruction
+Users should understand why ATLAS thinks they are weak at something.
+For each concept, show recent evidence: session, autopsy mistake, revision lapse, chat doubt.
+Add “Why this?” drawer.
+Allow user correction: mark concept as known/not relevant. Corrections should create auditable events, not direct hidden edits.
+Acceptance tests
+Concept resolver dedupes case/spacing/synonym variants.
+Mastery updates after session completion and autopsy mistake.
+Revision review changes mastery according to policy.
+ATLAS route returns only user-owned concepts.
+UI shows weak concept after Autopsy projection.
+No code path writes both mastery and mastery_score inconsistently.
+Definition of done
+ATLAS is visible or intentionally gated in public product.
+Mastery is explainable and test-covered.
+Concept duplicates are controlled.
+
+Module 10: MEMORY Revision Cards, FSRS Scheduling, and Review Loop
+Objective
+Make MEMORY a dependable spaced-repetition layer. Cards are generated from learning events, shown when due, reviewed by the learner, and fed back into ATLAS and future missions.
+Owner
+Current codebase state
+Launch target
+Revision/Memory Engineer
+revision_cards table and generation paths exist. PLAN_LIMITS includes revision_generation. Feature flags include revision. Need to ensure cards are visible, deduped, due, reviewed, and projected back into learner state.
+Public deployment-ready; no founder manual testing required.
+Target files and systems
+app/api/revision/*
+app/api/revision/pending/*
+lib/engines/revision*
+lib/learner-state/projector.ts
+components/revision/*
+supabase/migrations/*revision*
+Phase 10.1 — Card lifecycle definition
+Instruction
+Define exact card states and dedupe behavior.
+Card statuses: active, suspended, archived, duplicate, needs_approval if human approval required.
+Cards generated from Autopsy/session/chat must include source_event_id, concept_id, normalized_key, question, answer, explanation, difficulty, due_at.
+normalized_key must be non-null for generated cards. If missing, reject or compute before insert.
+Unique index should prevent duplicate active card for same user/goal/concept/key.
+Phase 10.2 — Scheduling and review
+Instruction
+Reviews must actually move due dates and mastery.
+Confirm FSRS or chosen scheduler is used consistently.
+Review endpoint accepts rating and computes next_due_at, interval, stability/difficulty if using FSRS.
+Review result publishes learning signal to ATLAS and may adapt session card.
+Repeated failures create targeted repair/revision tasks, not endless duplicate cards.
+Phase 10.3 — UI integration
+Instruction
+MEMORY must be usable from dashboard and chat.
+Dashboard shows due count and first due cards.
+Review page supports keyboard/mobile flow.
+MIND can mention due cards contextually and generate mini-quizzes.
+Empty state explains how cards are created from Autopsy and study sessions.
+Phase 10.4 — Plan and abuse limits
+Instruction
+AI-generated cards can cost money and clutter user accounts.
+Enforce revision_generation limits by plan.
+Cap cards per concept/day/report.
+Allow users to archive bad cards.
+Admin can inspect card generation stats.
+Acceptance tests
+Autopsy mistake creates expected revision card with non-null normalized_key.
+Duplicate projection does not create duplicate card.
+Reviewing card updates due_at and creates learner signal.
+Due-card query returns only due active cards for current user.
+Dashboard due count matches API.
+Free/pro limits enforced for generation.
+Definition of done
+MEMORY is a complete loop, not just card insertion.
+Review outcomes influence future learning state.
+Duplicate and low-quality cards are controlled.
+
+Module 11: Agent Runtime, Event Queue, Workers, Cron, and Background Intelligence
+Objective
+Make background systems production-safe. Events must process idempotently, fail into a recoverable queue, respect cost limits, and never silently corrupt learning state.
+Owner
+Current codebase state
+Launch target
+Backend/Platform Engineer
+lib/events/routes.ts routes many event types to mind_agent, rag_agent, atlas_agent, memory_agent, autopsy_agent, planner_agent, command_agent, and Amaura agents. Worker routes and admin queue routes exist. Several features are experimental or disabled by env flags.
+Public deployment-ready; no founder manual testing required.
+Target files and systems
+lib/events/*
+app/api/internal/workers/process-events/route.ts
+app/api/internal/workers/queue-status/route.ts
+app/api/cron/*
+app/api/admin/queue/*
+lib/agent/*
+lib/amaura/*
+lib/hermes/*
+Phase 11.1 — Public-launch event routing policy
+Instruction
+Do not run every experimental agent in production by accident.
+Classify every consumer: required launch, optional paid, experimental internal, disabled.
+For public launch, required consumers likely: atlas_agent, memory_agent, autopsy_agent, rag_agent where needed, mind side effects.
+Command/Hermes/Amaura/PULSE-style consumers must be either production-hardened or hard-disabled behind env flags.
+Add test that public_paid event routing excludes disabled consumers.
+Phase 11.2 — Idempotent processing contract
+Instruction
+Workers retry. Every consumer must be safe under retry.
+Every event has idempotency_key and unique constraint.
+Every consumer writes side effects with deterministic keys.
+Consumer checkpoints must not mark event done before durable side effects complete.
+Failed events move to retry with attempt count, next_run_at, last_error.
+After max attempts, event moves to DLQ with admin retry option.
+Phase 11.3 — Worker security and schedule
+Instruction
+Cron routes must be secure and not duplicated.
+Keep strong INTERNAL_CRON_SECRET and INTERNAL_WORKER_SECRET mandatory in production.
+Remove weak fallback tokens and fail on secrets under 32 chars outside test.
+Consolidate cron schedule: one worker drain route, one queue status route, one daily cleanup route.
+Document Vercel cron or external scheduler configuration.
+Phase 11.4 — Cost and runtime controls
+Instruction
+Workers must not spend money while nobody watches.
+Enforce EVENT_WORKER_MAX_RUNTIME_MS, batch size, concurrency, daily event limit, worker AI flag, and AI budget.
+Require worker_ai_call usage reservations for AI-consuming consumers.
+Add circuit breaker if error rate crosses threshold or daily budget exceeded.
+Expose queue depth, DLQ count, oldest event age, processing rate, and worker last success in admin.
+Acceptance tests
+Event duplicate idempotency test.
+Worker retry test: transient failure retries and then succeeds once.
+DLQ test: permanent failure reaches failed-events admin endpoint.
+Cron auth tests reject missing/weak/wrong secrets.
+Public-paid routing test excludes disabled experimental consumers.
+Cost test blocks worker AI when budget or flag disabled.
+Definition of done
+Event system is predictable under retry.
+Experimental consumers cannot surprise public users.
+Admin can see and recover worker failures.
+Workers cannot run uncontrolled AI spend.
+
+Module 12: Admin, Support, User Management, and Operations Console
+Objective
+Enable founder-light operations. Admin must be able to inspect users, plans, errors, queues, costs, feature flags, and failed projections without database spelunking.
+Owner
+Current codebase state
+Launch target
+Internal Tools Engineer
+Admin API routes exist for dashboard, users, queue, AI telemetry, cost status, system status, launch readiness. Middleware currently can block /admin before admin protection. Admin auth differs across code paths.
+Public deployment-ready; no founder manual testing required.
+Target files and systems
+app/admin/*
+app/(dashboard)/admin/*
+app/api/admin/*
+lib/auth/admin.ts
+middleware.ts
+components/admin/*
+Phase 12.1 — Canonical admin auth
+Instruction
+One admin check everywhere.
+Make lib/auth/admin.ts the only source of admin truth.
+Middleware should call the same logic or a lightweight equivalent using ADMIN_EMAILS, ADMIN_USER_IDS, and profile admin plan.
+Audit every /api/admin route for requireAdmin.
+Add audit log for admin actions: set plan, grant/revoke beta, suspend/unsuspend, retry queue, backfill embeddings.
+Phase 12.2 — Operations dashboard
+Instruction
+Admin homepage should answer: is the product healthy right now?
+Show total users, active users today, paid users, free users, suspended users.
+Show errors last 24h, queue depth, DLQ count, AI spend, Stripe webhook status, Supabase health, Upstash health.
+Show feature flags and launch mode.
+Show last successful cron/worker run.
+Phase 12.3 — User support console
+Instruction
+Support should resolve user issues without SQL.
+Search user by email/id.
+View profile, plan, subscription, usage, onboarding state, goals, recent sessions, chat sessions metadata, autopsy reports, materials, due cards.
+Actions: grant plan override, revoke override, suspend, unsuspend, reset onboarding, retry failed projections, delete user data according to policy.
+Every action must require confirmation and log admin id/reason.
+Phase 12.4 — Launch readiness admin page
+Instruction
+Before deployment, admin should show red/green checks.
+Implement checks for env, billing, webhooks, queue, AI provider, DB schema, RLS, rate limit, storage, legal URLs.
+Expose actionable error text.
+Do not show secrets.
+Make /api/admin/launch-readiness power a UI page and a CI check.
+Acceptance tests
+Non-admin cannot access /admin or /api/admin.
+ADMIN_EMAILS user can access admin consistently through middleware and API.
+Admin actions write audit log.
+Launch readiness endpoint fails when Stripe webhook secret missing in public_paid mode.
+Queue retry from admin processes failed event once.
+Definition of done
+Admin tools are usable during founder absence.
+Support actions are audited.
+Launch status is visible without reading logs.
+
+Module 13: Security, Privacy, Abuse Prevention, and Legal Readiness
+Objective
+Public users will upload sensitive learning material and personal study data. The product must protect accounts, data, payments, uploads, and AI surfaces before launch.
+Owner
+Current codebase state
+Launch target
+Security Engineer + Product/Legal Owner
+Some RLS and rate limits exist. Middleware protects cron secrets. CSP includes unsafe-inline and unsafe-eval. Public legal/compliance surfaces are not final.
+Public deployment-ready; no founder manual testing required.
+Target files and systems
+middleware.ts
+next.config.ts
+lib/supabase/admin.ts
+lib/supabase/server.ts
+supabase/migrations/*policies*
+storage policies
+app/privacy
+app/terms
+app/refund
+app/support
+app/api/account/delete
+app/api/account/export
+Phase 13.1 — Data isolation audit
+Instruction
+No user can access another user’s learning data.
+Audit every table with user_id, owner_id, profile_id, goal_id linkage.
+Write RLS policies for select/insert/update/delete.
+Write tests for User A vs User B access for every core table.
+Ensure admin/service-role routes never expose arbitrary data to non-admin.
+Phase 13.2 — Service-role and secret isolation
+Instruction
+Service role is production-dangerous if imported into client bundle.
+Mark admin client module with server-only.
+Static scan imports of createAdminClient; fail if imported by client components or shared client code.
+Keep service role only in API routes, server actions, workers, admin routes.
+Do not expose internal secrets in error responses.
+Phase 13.3 — Upload and prompt abuse protection
+Instruction
+AI/upload endpoints are high-risk.
+Rate-limit chat, autopsy, upload, material query, AI provider calls, and worker drains.
+Validate base64 uploads, MIME, magic bytes, size, question count, text length, prompt length.
+Prevent prompt injection from RAG chunks controlling system prompt.
+Add content safety policy for abusive/illegal requests if relevant to student product.
+Phase 13.4 — Privacy/legal product surfaces
+Instruction
+A paid public SaaS needs basic legal pages and data rights.
+Add Terms of Service, Privacy Policy, Refund/Cancellation Policy, Contact/Support page.
+Add account deletion request flow.
+Add data export for profile/goals/sessions/cards/material metadata where feasible.
+Document AI limitations: educational support, not guaranteed exam outcome.
+Add cookie/analytics disclosure if analytics tools are used.
+Phase 13.5 — Harden headers and CSP
+Instruction
+Improve browser security without breaking Next.
+Review next.config.ts security headers.
+Remove unsafe-eval in production if possible; if not, document why and scope it.
+Set frame-ancestors, object-src none, base-uri self, form-action self/Stripe where needed.
+Ensure Stripe checkout and Sentry domains are allowed only as needed.
+Acceptance tests
+RLS cross-user test suite passes for every core table.
+Static test: createAdminClient is not imported by client components.
+Upload abuse tests reject invalid MIME, oversized payload, too many questions, too-long prompts.
+Cron/internal routes reject missing/wrong/weak secrets.
+Legal pages return 200 and are linked in footer/pricing/signup.
+Definition of done
+Data isolation is verified.
+Public legal surfaces exist.
+Abuse and upload protections are enforced.
+Secrets are server-only.
+
+Module 14: Observability, Error Handling, Cost Monitoring, and Reliability
+Objective
+The product must tell the team when it is broken, expensive, or degraded. Founder absence requires alerts, dashboards, and safe fallbacks.
+Owner
+Current codebase state
+Launch target
+Platform/SRE Engineer
+Sentry, OpenTelemetry dependencies, rate-limit fail-closed behavior, logs, admin AI telemetry routes, and health routes exist, but config is optional and install currently fails due OpenTelemetry lock drift.
+Public deployment-ready; no founder manual testing required.
+Target files and systems
+instrumentation.ts
+next.config.ts
+lib/utils/logger.ts
+lib/middleware/rateLimit.ts
+app/api/health/route.ts
+app/api/admin/system/status/route.ts
+app/api/admin/ai-cost/status/route.ts
+lib/ai/*cost*
+scripts/env-preflight.ts
+Phase 14.1 — Structured logging contract
+Instruction
+Every critical action should be traceable by requestId.
+Ensure requestId is attached to auth, billing, chat, session completion, autopsy, RAG, worker, admin actions.
+Use structured JSON logs in production.
+Never log raw secrets, full student documents, full chat content, or payment details.
+Log only necessary snippets/hashes for debugging.
+Phase 14.2 — Sentry and error boundaries
+Instruction
+Users should see recoverable states; engineers should see errors.
+Require SENTRY_DSN in public_paid mode.
+Add frontend error boundaries for dashboard, chat, autopsy, materials, revision.
+Capture API exceptions with requestId, userId hash, route, feature, plan, and severity.
+Add alert rules for payment failures, chat provider errors, worker DLQ growth, DB/RLS failures, high 500 rate.
+Phase 14.3 — Health and readiness
+Instruction
+There is a difference between alive and ready.
+/api/health returns basic alive.
+/api/internal/health or admin readiness checks Supabase, Upstash, Stripe config, AI provider, worker secret, schema version, storage bucket, Sentry.
+Public health must not leak sensitive config.
+Admin health must be detailed.
+Phase 14.4 — Cost dashboards and kill switches
+Instruction
+AI costs must be controlled while unattended.
+Track AI requests, provider, tokens, estimated cost, feature, user plan.
+Add global daily/hourly budget enforcement.
+Add per-user monthly AI budget enforcement.
+Expose kill switches: AI_GLOBAL_KILL_SWITCH, WORKER_AI_ENABLED, RAG_UPLOADS_ENABLED, AUTOPSY_REPORTS_ENABLED.
+Admin page shows spend today/month and top cost features.
+Acceptance tests
+Sentry test event works in staging.
+Health readiness fails if Upstash or Stripe missing in public_paid.
+AI budget test blocks calls after configured threshold.
+Rate-limit fail-closed behavior is tested in production mode.
+API 500 responses include requestId and do not leak internals.
+Definition of done
+Engineers can detect and diagnose failures remotely.
+AI spend is bounded.
+Users see graceful errors.
+Launch readiness includes observability checks.
+
+Module 15: Frontend Product Coherence, Final UX, Copy, and Conversion
+Objective
+Make the visible product feel like one final public product, not a beta dashboard with hidden modules. Every screen must match what is actually working and paid.
+Owner
+Current codebase state
+Launch target
+Frontend/Product Engineer + Designer
+Product vision describes six modules and a chat-first OS. The code has dashboard, session card, chat, autopsy, materials, admin, analytics/planner/tutor/mentor routes, and several hidden/blocked routes. Some copy still references Command Center/beta/MVP.
+Public deployment-ready; no founder manual testing required.
+Target files and systems
+app/page.tsx
+app/(dashboard)/*
+components/*
+app/pricing
+app/access
+app/settings
+app/dashboard
+app/autopsy
+app/materials
+app/revision
+app/atlas or cognition pages
+middleware.ts
+Phase 15.1 — Public surface inventory
+Instruction
+List every route the user can see or guess.
+Generate route inventory from app directory.
+Classify each route: public, authenticated free, authenticated paid, admin, hidden, removed.
+For hidden routes, block with 404 or feature-unavailable, not misleading redirects.
+Remove MVP/beta-only copy from public-paid product.
+Phase 15.2 — Landing and pricing conversion
+Instruction
+The app must explain value and convert users.
+Landing page states one clear promise: AI companion that knows your materials, mistakes, weak spots, and daily plan.
+Show product screenshots or realistic UI panels for MIND, Daily Mission, Autopsy, ATLAS, MEMORY.
+Pricing page maps plan limits clearly.
+CTA flow: Start free, Upgrade, Sign in.
+Do not claim features that are hidden or disabled.
+Phase 15.3 — Dashboard final composition
+Instruction
+Dashboard should prioritize the student’s next action.
+Top: daily mission/session card with clear status.
+Second: MIND chat entry or embedded chat.
+Third: weak concepts/ATLAS summary.
+Fourth: MEMORY due cards.
+Fifth: Autopsy/material upload CTAs.
+Admin/debug/agent feeds should not appear to normal users unless they are user-facing and polished.
+Phase 15.4 — Error, empty, and limit states
+Instruction
+Public product quality is mostly edge states.
+Design empty states for no goal, no materials, no due cards, no autopsy reports, no chat history.
+Design usage limit states with upgrade CTA.
+Design failed ingestion/report/session-card states with retry.
+Design offline/loading skeletons and mobile layouts.
+Phase 15.5 — Mobile and performance pass
+Instruction
+Students will use phones.
+Test dashboard, chat, upload, autopsy report, review cards on mobile widths.
+Ensure file upload progress and errors work on mobile.
+Reduce unnecessary initial JS and heavy graph components.
+Lazy-load admin/debug/graph-heavy components.
+Acceptance tests
+Playwright route audit: no normal user reaches disabled or broken route.
+Landing CTA -> signup -> onboarding flow works.
+Pricing checkout button creates Stripe checkout in staging.
+Mobile viewport E2E covers chat, session card, autopsy, revision.
+No visible copy says MVP, manual beta, or private beta in public_paid mode.
+All empty/error/limit states have visible user guidance.
+Definition of done
+The product feels coherent and launchable.
+Every visible promise maps to working code.
+Users understand plans and next actions.
+Mobile usage is acceptable.
+
+Module 16: Automated QA, E2E Journey Tests, Load Tests, and Launch Certification
+Objective
+Replace founder manual testing with automated proof. The team must be able to run one certification suite and know whether the product can launch.
+Owner
+Current codebase state
+Launch target
+QA Automation Engineer
+Many Vitest tests and smoke scripts exist, but integration tests may skip when env is absent. There is no single public-launch certification suite covering paid signup-to-learning-to-billing journey.
+Public deployment-ready; no founder manual testing required.
+Target files and systems
+tests/*
+__tests__/*
+scripts/*smoke*
+scripts/*verify*
+playwright.config.ts (new if absent)
+.github/workflows/*
+README/DEPLOYMENT_CHECKLIST
+Phase 16.1 — Define launch journeys
+Instruction
+Test user outcomes, not only functions.
+Journey A: free user signup -> onboarding -> chat limit -> upgrade CTA.
+Journey B: paid user checkout -> webhook -> onboarding -> dashboard -> chat -> session completion -> streak update.
+Journey C: paid user upload material -> ask source-backed question -> cited answer.
+Journey D: paid user Autopsy -> report -> ATLAS weak concept -> MEMORY due card.
+Journey E: admin views launch readiness, user support, queue health.
+Journey F: payment failure/downgrade and limit behavior.
+Phase 16.2 — Test environment and seeded data
+Instruction
+Tests need deterministic users and data.
+Create Supabase test project or local DB reset path.
+Create seed script for exam goal, concepts, materials, and test users.
+Use Stripe test mode and Stripe CLI fixtures.
+Mock AI providers for deterministic tests; run a smaller real-provider smoke separately.
+Phase 16.3 — Build Playwright E2E suite
+Instruction
+Browser tests catch routing/onboarding/billing/frontend failures that unit tests miss.
+Add Playwright with auth helpers.
+Record traces on failure.
+Use stable test selectors.
+Run mobile and desktop viewports for critical flows.
+Integrate into CI release job.
+Phase 16.4 — Load and abuse tests
+Instruction
+Public launch needs basic capacity confidence.
+Run lightweight load tests for chat, session-card, dashboard, autopsy report generation, material query.
+Test rate-limit behavior under burst.
+Test worker queue drain with 1000 synthetic events.
+Test storage/upload limits.
+Document expected capacity and throttle settings.
+Phase 16.5 — Launch certification report
+Instruction
+Every release candidate gets a signed report.
+Create script that outputs JSON and Markdown report: commit, env mode, test results, schema version, launch readiness checks, known risks.
+Fail certification on any P0/P1 open blocker.
+Store report as CI artifact.
+Attach report to release PR.
+Acceptance tests
+verify:public-launch runs and produces a report.
+Playwright journeys A-E pass in staging.
+Integration tests fail, not skip, when required launch env is absent.
+Synthetic load test confirms rate limits and no unbounded cost.
+Release PR cannot merge without certification artifact.
+Definition of done
+Founder does not need to click through the app to know if it works.
+Critical public journeys are automated.
+Release readiness is documented per commit.
+
+Module 17: Deployment Infrastructure, Release Runbook, Rollback, and Go/No-Go
+Objective
+Make deployment boring. The team should be able to deploy to staging, certify, promote to production, monitor, and rollback without improvisation.
+Owner
+Current codebase state
+Launch target
+Release Engineer / Tech Lead
+Deployment checklists and beta runbooks exist, but they are private-beta/MVP oriented and do not match public paid launch requirements.
+Public deployment-ready; no founder manual testing required.
+Target files and systems
+DEPLOYMENT_CHECKLIST.md
+MANUAL_BETA_LAUNCH_RUNBOOK.md
+PRIVATE_BETA_*
+.github/workflows/*
+scripts/env-preflight.ts
+scripts/verify-public-launch.ts
+Vercel config
+Supabase project config
+Phase 17.1 — Staging environment
+Instruction
+Production must never be the first place a launch candidate runs.
+Create staging Vercel project and staging Supabase project.
+Use Stripe test mode in staging.
+Use reduced AI budgets.
+Run all migrations and seed scripts.
+Run verify:public-launch against staging.
+Phase 17.2 — Production environment
+Instruction
+Production secrets and settings must match public_paid mode.
+Configure Vercel env vars from .env.production.example.
+Configure Supabase auth URLs, storage buckets, RLS, service role, and edge settings.
+Configure Stripe products/prices/webhook endpoint.
+Configure Upstash Redis.
+Configure Sentry project and alert channels.
+Configure cron schedule and worker secrets.
+Phase 17.3 — Release checklist
+Instruction
+Every deployment follows the same sequence.
+Freeze code.
+Run clean npm ci.
+Run verify:public-launch locally or CI.
+Deploy to staging.
+Run staging E2E and Stripe webhook tests.
+Review launch readiness admin page.
+Deploy to production.
+Run production smoke tests with test/internal account.
+Monitor dashboards for 60 minutes after launch.
+Phase 17.4 — Rollback and kill-switch plan
+Instruction
+If something fails while founder is unavailable, the team must know what to do.
+Document Vercel rollback steps.
+Document DB migration rollback or forward-fix policy.
+Document kill switches for AI, workers, autopsy, RAG, billing checkout, public signup.
+Create maintenance mode page.
+Define incident severity levels and escalation contacts.
+Phase 17.5 — Go/no-go meeting rules
+Instruction
+No emotional launch decisions.
+Go only if all P0/P1 blockers closed.
+Go only if public launch certification passes.
+Go only if billing test purchase and webhook provisioning pass.
+Go only if one full new-user journey passes in production with a controlled account.
+No-go if data isolation, billing, onboarding, or clean build fails.
+Acceptance tests
+Staging deployment from clean CI succeeds.
+Stripe test checkout and webhook provision staging user.
+Production smoke account can sign up, onboard, chat, complete session, and access billing portal.
+Kill switch disables AI without crashing dashboard.
+Rollback procedure tested at least once in staging.
+Definition of done
+Deployment is repeatable.
+Rollback is documented.
+Public launch has objective go/no-go gates.
+
+Module 18: 10-15 Day Autonomous Execution Protocol
+Objective
+Define how the engineering agent/team should work while the founder is unavailable. This prevents drift, half-finished features, and false readiness claims.
+Owner
+Current codebase state
+Launch target
+Tech Lead / Autonomous Build Agent
+Founder will not actively test for 10-15 days. The codebase has many existing reports claiming readiness for beta/MVP, but the new target is final public paid launch.
+Public deployment-ready; no founder manual testing required.
+Target files and systems
+GitHub issues/project board
+PUBLIC_LAUNCH_STATUS.md (new)
+CHANGELOG.md
+docs/launch/*
+CI artifacts
+Phase 18.1 — Daily execution rhythm
+Instruction
+Keep work moving without requiring founder decisions.
+Day starts by running verify:public-launch or the largest passing subset.
+Work only on highest-order failing module from this document.
+End every day by updating PUBLIC_LAUNCH_STATUS.md with completed work, failing tests, open blockers, and next day plan.
+Never mark a module complete without tests.
+Never add a visible feature unless it is in this plan or required to complete a launch blocker.
+Phase 18.2 — Decision rules when blocked
+Instruction
+Do not wait for founder unless absolutely necessary.
+If a choice affects revenue/pricing, use conservative defaults and document as configurable.
+If a feature is unstable, hide it behind a flag rather than leaving it half-visible.
+If a migration path is risky, prefer staging proof and backup before production.
+If AI cost is uncertain, default to stricter limits.
+If legal copy is missing, add baseline pages with conservative wording and mark for later legal review.
+Phase 18.3 — Documentation requirements
+Instruction
+Founder should return to a clear status, not a mystery repo.
+Maintain a launch tracker with modules: Not started, In progress, Blocked, Ready, Certified.
+For every PR, include affected files, tests run, risks, rollback notes.
+For every env variable added, update env templates and preflight validation.
+For every route made visible, add it to route inventory and E2E coverage.
+Phase 18.4 — End-of-sprint handoff package
+Instruction
+When founder returns, they should see objective readiness.
+Produce FINAL_PUBLIC_LAUNCH_REPORT.md with what is ready, what is not, test evidence, deployment steps, and risks.
+Attach CI certification report.
+Attach staging URL, admin login instructions, Stripe test result, Sentry dashboard, Supabase schema report.
+List any human decisions still needed: pricing, legal approval, final copy, launch date.
+Acceptance tests
+PUBLIC_LAUNCH_STATUS.md exists and is updated after each work day.
+Every completed module has linked tests.
+No route changes without route inventory update.
+Final handoff includes certification report and known-risk list.
+Definition of done
+Work can continue without founder testing.
+Founder returns to an objective launch packet.
+No false “ready” claim without evidence.
+
+Final Product Definition of Ready
+Deployment-ready means
+A random public user can discover the product, create an account, pay or use a free tier, onboard, receive a daily mission, chat with MIND, use their material, run Autopsy, see ATLAS and MEMORY update, manage billing, hit fair limits, recover from errors, and trust that their data is private.
+Category
+Ready condition
+Build
+Clean npm ci, typecheck, lint, tests, build pass in CI.
+Auth
+Signup/login/onboarding/dashboard flow works without route loops.
+Billing
+Stripe checkout, webhook, entitlement sync, portal, plan limits active.
+Learning loop
+Daily card, completion, streak, mastery, revision all idempotent and tested.
+Autopsy
+Report generation and projection are retry-safe and paid-plan limited.
+RAG
+Uploads are private, limited, queryable, deletable, and cited.
+Security
+RLS, storage, secrets, admin, cron, upload validation verified.
+Observability
+Sentry/logs/health/admin readiness/cost dashboards active.
+UX
+No MVP/beta/manual-copy leaks in public_paid. All visible routes work.
+Operations
+Admin can inspect users, billing, queue, errors, costs, and retry failures.
+Immediate first five orders to give the engineer
+Fix package-lock drift and prove npm ci passes from a clean checkout. Do not touch product behavior before this is green.
+Create APP_LAUNCH_MODE and make public_paid mode fail preflight unless Stripe, Upstash, Sentry, Supabase, AI, cron, support, and legal config are present.
+Fix middleware route policy: remove /onboarding and /admin from MVP_RESTRICTIONS; centralize admin authorization.
+Replace manual billing routes with Stripe checkout, webhook, entitlement sync, and billing portal in staging first.
+Fix session completion correctness: streak_days response, true completion idempotency, persisted session-card completion, and no ghost cards.
+Appendix A — Critical file evidence from current codebase
+Finding
+Current file evidence
+Required action
+Clean install blocker
+package.json and package-lock.json dependency mismatch around OpenTelemetry packages.
+Regenerate lockfile and prove npm ci.
+Manual billing only
+app/api/billing/checkout/route.ts returns manual_beta_access_only.
+Implement Stripe checkout.
+Webhook disabled
+app/api/webhooks/stripe/route.ts returns ignored: true, reason: manual_beta_access_only.
+Verify signature and sync subscriptions.
+Onboarding blocked
+middleware.ts includes /onboarding inside MVP_RESTRICTIONS.
+Remove from restrictions and test first-run flow.
+Admin blocked/inconsistent
+middleware.ts includes /admin in restrictions and checks only subscription_status=admin.
+Use canonical admin auth with ADMIN_EMAILS/IDS and profile admin.
+Streak response bug
+lib/services/session-completion.ts reads rpcResult.new_streak, while SQL returns streak_days.
+Normalize streakDays from streak_days.
+Ghost card risk
+app/api/dashboard/session-card/route.ts logs upsert error but still returns card.
+Return 500 if authoritative card cannot persist.
+Completion/regeneration conflict
+invalidateSessionCard deletes today and tomorrow rows; markSessionCardCompleted is not clearly used by completion.
+Mark completed card; adapt future card.
+Autopsy client risk
+lib/autopsy-v3/projection.ts creates new server client internally.
+Pass route Supabase client to projection.
+Broad event consumers
+lib/events/routes.ts routes to command_agent and Amaura consumers.
+Classify and hard-flag experimental consumers.
+Appendix B — Suggested public launch scripts
+"verify:public-launch": "npm ci && npm run preflight:env -- --mode=public_paid && npm run typecheck && npm run lint && npm test && npm run build && npm run schema:check && npm run test:e2e && npm run smoke:public-launch", "test:e2e": "playwright test", "smoke:public-launch": "tsx scripts/smoke-public-launch.ts", "schema:rls:public": "tsx scripts/verify-rls-public.ts", "launch:certify": "tsx scripts/certify-public-launch.ts" 
+Appendix C — Absolute no-launch conditions
+npm ci fails.
+Stripe checkout or webhook is disabled or manual-only in public_paid mode.
+New user cannot complete onboarding.
+Session completion can duplicate rows or return wrong streak.
+User A can access User B data anywhere.
+Admin is inaccessible or unprotected.
+Autopsy retry duplicates mistakes/cards/events.
+Worker queue can grow/fail without admin visibility.
+AI cost limits are missing or unenforced.
+Public pages claim features that are hidden, disabled, or untested.

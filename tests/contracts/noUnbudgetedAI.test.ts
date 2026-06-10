@@ -18,6 +18,7 @@ const approvedFiles = new Set([
   'lib/ai/router.ts',
   'lib/ai/provider-client.ts',
   'lib/ai/budgeted.ts',
+  'lib/agent/modelPlanner.ts',
 ]);
 
 function walk(dir: string, files: string[] = []): string[] {

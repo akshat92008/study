@@ -5,7 +5,7 @@ import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/li
 import { retrieveRagContext } from '@/lib/rag/retrieval';
 import { ensureGoalForUser } from '@/lib/services/goal-context.service';
 import { betaAccessErrorResponse, requireActiveBetaUser } from '@/lib/access/beta-access';
-import { featureDisabledResponse, isBetaFeatureEnabled } from '@/lib/config/beta-flags';
+import { featureDisabledResponse, isFeatureEnabled } from '@/lib/feature-registry';
 import { consumeFeatureUsage, enforceFeatureLimit, featureLimitResponse } from '@/lib/usage/enforce-feature-limit';
 
 const QuerySchema = z.object({
@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
         requestId,
       });
     }
-    if (!isBetaFeatureEnabled('rag_query')) return featureDisabledResponse(requestId);
+    if (!isFeatureEnabled('rag_query')) return featureDisabledResponse(requestId);
     try {
       await enforceFeatureLimit(user.id, 'material_query');
     } catch (limitError: any) {

@@ -6,20 +6,17 @@ dotenv.config({ path: path.join(process.cwd(), '.env.local') });
 dotenv.config();
 
 const modeArg = process.argv.find((arg) => arg.startsWith('--mode='));
-const mode = modeArg?.split('=')[1] || (process.env.NODE_ENV === 'production' ? 'production' : 'local');
-const isProductionMode = mode === 'production';
+const mode = modeArg?.split('=')[1] || process.env.APP_LAUNCH_MODE || (process.env.NODE_ENV === 'production' ? 'public_paid' : 'local');
 
-// Critical requirements for Beta
+// Critical requirements for all environments
 const required = [
   'NEXT_PUBLIC_SUPABASE_URL',
   'NEXT_PUBLIC_SUPABASE_ANON_KEY',
   'SUPABASE_SERVICE_ROLE_KEY',
   'INTERNAL_CRON_SECRET',
-  'AI_DAILY_BUDGET_USD',
-  'AI_MONTHLY_BUDGET_USD',
 ];
 
-if (process.env.SKIP_ENV_VALIDATION === '1' && !isProductionMode) {
+if (process.env.SKIP_ENV_VALIDATION === '1' && mode !== 'public_paid') {
   console.log('Skipping environment validation due to SKIP_ENV_VALIDATION=1');
   process.exit(0);
 }
@@ -36,8 +33,9 @@ const aiProviders = [
 
 let ok = true;
 
-// 1. Missing Critical Envs
 console.log('--- Environment Preflight ---');
+console.log(`Launch Mode: ${mode}`);
+
 for (const key of required) {
   if (!process.env[key]) {
     console.error(`[ERROR] Missing required env var: ${key}`);
@@ -45,15 +43,7 @@ for (const key of required) {
   }
 }
 
-// 2. Admin Protection Configured
-if (!process.env.ADMIN_EMAILS && !process.env.ADMIN_USER_IDS) {
-  console.error(`[ERROR] Admin protection not configured. Must set ADMIN_EMAILS or ADMIN_USER_IDS.`);
-  ok = false;
-} else {
-  console.log(`[OK] Admin protection configured.`);
-}
-
-// 3. Provider Availability
+// Provider Availability
 const activeProviders = aiProviders.filter((key) => Boolean(process.env[key]));
 if (activeProviders.length === 0) {
   console.error(`[ERROR] At least one AI provider env var is required.`);
@@ -62,11 +52,6 @@ if (activeProviders.length === 0) {
   console.log(`[OK] Active AI providers: ${activeProviders.length}`);
 }
 
-if (process.env.NEXT_PUBLIC_SUPABASE_URL) {
-  console.log(`[OK] Supabase URL present.`);
-}
-
-// 4. Weak Secret Warnings
 function checkWeakSecret(name: string, value: string | undefined) {
   if (!value) return;
   const lower = value.toLowerCase();
@@ -74,8 +59,8 @@ function checkWeakSecret(name: string, value: string | undefined) {
     console.error(`[ERROR] ${name} uses a known weak value.`);
     ok = false;
   }
-  if (isProductionMode && value.length < 32) {
-    console.error(`[ERROR] ${name} is too short (< 32 chars) for production.`);
+  if (mode === 'public_paid' && value.length < 32) {
+    console.error(`[ERROR] ${name} is too short (< 32 chars) for public_paid mode.`);
     ok = false;
   }
 }
@@ -83,35 +68,29 @@ function checkWeakSecret(name: string, value: string | undefined) {
 checkWeakSecret('INTERNAL_CRON_SECRET', process.env.INTERNAL_CRON_SECRET);
 checkWeakSecret('SUPABASE_SERVICE_ROLE_KEY', process.env.SUPABASE_SERVICE_ROLE_KEY);
 
-// 5. Beta Feature Flag State
-console.log('--- Beta Feature Flags ---');
-console.log(`ENABLE_AGENT_ACTIONS: ${process.env.ENABLE_AGENT_ACTIONS || 'false'}`);
-console.log(`ENABLE_AI_ESCALATION: ${process.env.ENABLE_AI_ESCALATION || 'true'}`);
-console.log(`ENABLE_RAG_INGESTION: ${process.env.ENABLE_RAG_INGESTION || 'true'}`);
-console.log(`ENABLE_AUTOPSY_PROCESSING: ${process.env.ENABLE_AUTOPSY_PROCESSING || 'false'}`);
-console.log(`ENABLE_VISION_UPLOADS: ${process.env.ENABLE_VISION_UPLOADS || 'false'}`);
+if (mode === 'public_paid') {
+  const publicPaidRequired = [
+    'STRIPE_SECRET_KEY',
+    'STRIPE_WEBHOOK_SECRET',
+    'UPSTASH_REDIS_REST_URL',
+    'UPSTASH_REDIS_REST_TOKEN',
+    'SENTRY_DSN',
+    'NEXT_PUBLIC_APP_URL',
+    'SUPPORT_EMAIL',
+    'TERMS_URL',
+    'PRIVACY_URL'
+  ];
 
-// 6. Budget State
-console.log('--- Budget State ---');
-console.log(`AI_DAILY_BUDGET_USD: ${process.env.AI_DAILY_BUDGET_USD}`);
-console.log(`AI_MONTHLY_BUDGET_USD: ${process.env.AI_MONTHLY_BUDGET_USD}`);
-
-// 7. Worker State
-console.log('--- Worker State ---');
-console.log(`EVENT_WORKER_BATCH_SIZE: ${process.env.EVENT_WORKER_BATCH_SIZE || 25}`);
-console.log(`EVENT_WORKER_CONCURRENCY: ${process.env.EVENT_WORKER_CONCURRENCY || 5}`);
-console.log(`EVENT_WORKER_MAX_RUNTIME_MS: ${process.env.EVENT_WORKER_MAX_RUNTIME_MS || 45000}`);
-
-if (isProductionMode) {
-  for (const key of ['UPSTASH_REDIS_REST_URL', 'UPSTASH_REDIS_REST_TOKEN']) {
+  for (const key of publicPaidRequired) {
     if (!process.env[key]) {
-      console.error(`[ERROR] Missing production env var: ${key}`);
+      console.error(`[ERROR] Missing public_paid env var: ${key}`);
       ok = false;
     }
   }
 
-  if (!process.env.NEXT_PUBLIC_APP_URL && !process.env.VERCEL_PROJECT_PRODUCTION_URL && !process.env.VERCEL_URL) {
-    console.error('[ERROR] Missing production URL/domain env var: NEXT_PUBLIC_APP_URL, VERCEL_PROJECT_PRODUCTION_URL, or VERCEL_URL');
+  // Enforce HTTPS in production URL
+  if (process.env.NEXT_PUBLIC_APP_URL && !process.env.NEXT_PUBLIC_APP_URL.startsWith('https://')) {
+    console.error(`[ERROR] NEXT_PUBLIC_APP_URL must use https:// in public_paid mode.`);
     ok = false;
   }
 }
@@ -123,7 +102,8 @@ if (!fs.existsSync(migrationsDir) || fs.readdirSync(migrationsDir).filter((f) =>
 }
 
 if (!ok) {
-  console.error('Environment preflight failed.');
+  console.error(`Environment preflight failed for mode: ${mode}`);
   process.exit(1);
 }
-console.log(`Environment preflight passed (${mode}).`);
+
+console.log(`Environment preflight passed for mode: ${mode}`);

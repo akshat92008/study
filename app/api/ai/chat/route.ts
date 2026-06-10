@@ -33,7 +33,7 @@ import { orchestrateFromIntent } from '@/lib/engines/orchestrator';
 import { finalizeChatTurn } from '@/lib/services/chat-turn-finalizer';
 import { getPromptVersion } from '@/lib/ai/prompt-version';
 import { betaAccessErrorResponse, requireActiveBetaUser } from '@/lib/access/beta-access';
-import { featureDisabledResponse, isBetaFeatureEnabled } from '@/lib/config/beta-flags';
+import { featureDisabledResponse, isFeatureEnabled } from '@/lib/feature-registry';
 
 const encoder = new TextEncoder();
 
@@ -203,8 +203,8 @@ export async function POST(req: NextRequest) {
     }
 
     // 11. Call AI Provider (Deterministic or LLM Stream)
-    if (!isBetaFeatureEnabled('ai')) {
-      return featureDisabledResponse(requestId) as any;
+    if (!isFeatureEnabled('ai_global')) {
+      return featureDisabledResponse(requestId);
     }
     const providerResponse = await callAiProvider({
       userId: user.id, message, detectedIntent, orchestratorResult, mindContext, supabase, activeGoalId, finalizeAssistantTurnFn, encoder, sessionId, recentHistory, systemPrompt, isSimpleMessage, sessionTurnsCount, crossSessionMemories
