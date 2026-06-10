@@ -4,12 +4,14 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
-import { FileText, Trash2, Loader2, BookOpen, RotateCcw } from 'lucide-react';
+import { FileText, Trash2, Loader2, BookOpen, RotateCcw, LayoutDashboard } from 'lucide-react';
+import SourceDashboardModal from './SourceDashboardModal';
 
 export default function StudyMaterialPanel() {
   const [materials, setMaterials] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [retryingId, setRetryingId] = useState<string | null>(null);
+  const [selectedMaterial, setSelectedMaterial] = useState<any | null>(null);
   const supabase = useMemo(() => createClient(), []);
 
   const fetchMaterials = useCallback(async () => {
@@ -21,7 +23,7 @@ export default function StudyMaterialPanel() {
 
     const { data } = await supabase
       .from('study_materials')
-      .select('id, title, status, subject, chapter, error_message, retryable')
+      .select('id, title, status, subject, chapter, error_message, retryable, deep_processing_status, briefing_doc, podcast_transcript')
       .eq('user_id', user.id)
       .neq('status', 'archived')
       .order('created_at', { ascending: false })
@@ -110,6 +112,16 @@ export default function StudyMaterialPanel() {
               <Badge color="cyan">Ready</Badge>
             )}
 
+            {mat.deep_processing_status === 'completed' && (
+              <button
+                onClick={() => setSelectedMaterial(mat)}
+                style={{ background: 'transparent', border: '1px solid var(--accent-purple)', borderRadius: '4px', cursor: 'pointer', color: 'var(--accent-purple)', padding: '2px 8px', fontSize: '10px', display: 'flex', alignItems: 'center', gap: '4px' }}
+                title="View Deep Dive"
+              >
+                <LayoutDashboard size={12} /> Deep Dive
+              </button>
+            )}
+
             {mat.status === 'failed' && mat.retryable !== false && (
               <button
                 onClick={() => handleRetry(mat.id)}
@@ -131,6 +143,13 @@ export default function StudyMaterialPanel() {
           </div>
         </Card>
       ))}
+
+      {selectedMaterial && (
+        <SourceDashboardModal 
+          material={selectedMaterial} 
+          onClose={() => setSelectedMaterial(null)} 
+        />
+      )}
     </div>
   );
 }

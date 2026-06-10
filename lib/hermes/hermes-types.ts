@@ -143,6 +143,15 @@ export type HermesSourceResult = {
     rationale: string;
     estimatedMinutes: number;
   };
+  briefingDoc?: {
+    executiveSummary: string;
+    faqs: Array<{ question: string; answer: string }>;
+    keyEntities: string[];
+  };
+  podcastTranscript?: Array<{
+    speaker: 'Host 1' | 'Host 2';
+    text: string;
+  }>;
 };
 
 // ─── REVISION AGENT ──────────────────────────────────────────────────────────

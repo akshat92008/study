@@ -87,7 +87,7 @@ Goal: ${params.goalTitle || 'General study'}
 Content:
 ${content}
 
-Return JSON with: sourceSummary, extractedConcepts (subject/chapter/topic/importance), suggestedCards (front/back/type), suggestedPracticePrompts, nextAction (label/rationale/estimatedMinutes).`;
+Return JSON with: sourceSummary, extractedConcepts (subject/chapter/topic/importance), suggestedCards (front/back/type), suggestedPracticePrompts, nextAction (label/rationale/estimatedMinutes), briefingDoc (executiveSummary/faqs/keyEntities), and podcastTranscript (conversational transcript between Host 1 and Host 2 exploring the document).`;
 }
 
 export const HERMES_TRACE_SYSTEM_PROMPT = `You are Amaura, an internal learning-reasoning worker. Analyze learning patterns and return a cognitive trace as strict JSON. No markdown. No explanation.`;

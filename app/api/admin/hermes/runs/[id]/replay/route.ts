@@ -4,7 +4,7 @@ import { runHermesTurn, runHermesEvent } from '@/lib/agent/runtime';
 import { getRequestId, apiErrorResponse } from '@/lib/api/errors';
 import { requireAdmin } from '@/lib/auth/admin';
 
-export async function POST(req: NextRequest, { params }: { params: { id: string } }) {
+export async function POST(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const requestId = getRequestId(req);
   try {
     const auth = await requireAdmin();
@@ -12,7 +12,8 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
       return NextResponse.json({ error: auth.error }, { status: auth.status });
     }
 
-    const runId = params.id;
+    const resolvedParams = await params;
+    const runId = resolvedParams.id;
     if (!runId) {
       return apiErrorResponse('bad_request', { status: 400, message: 'Missing run id', requestId });
     }

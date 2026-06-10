@@ -12,6 +12,7 @@ import { runAgenticConsumer } from '@/lib/agents/event-runner';
 import { runCheapAgenticCycle } from '@/lib/agents/orchestrator';
 import { featureFlags } from '@/lib/config/flags';
 import { isAmauraConsumer } from '@/lib/amaura/agents/registry';
+import { SourceDeepProcessingWorker } from '@/lib/workers/source-deep-processing-worker';
 import { runAmauraConsumerForLease } from '@/lib/amaura/agents/runtime';
 import { AMAURA_CONSUMERS } from '@/lib/amaura/events/event-matrix';
 import {
@@ -85,6 +86,11 @@ export class EventWorkerService {
     const actualLimit = Math.min(limit, 50);
 
     let leases: any[] = [];
+    
+    // Opportunistically run deep processing workers for NotebookLM features
+    SourceDeepProcessingWorker.processBatch(2).catch(err => {
+      logger.error('Background deep processing failed', { error: err instanceof Error ? err.message : String(err) });
+    });
 
     // 1. Acquire Leases from Postgres
     const { data: dbLeases, error: leaseErr } = await supabase.rpc('acquire_event_leases', {

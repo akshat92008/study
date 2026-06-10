@@ -182,7 +182,7 @@ Instruction: say clearly that you could not find enough evidence in their upload
 The following excerpts are from the student's own uploaded materials and are directly relevant to their current question. Prioritize grounding your explanation in this material before adding your own context.
 
 Citation rules:
-- Cite source-backed claims with compact brackets like [Source 1] or [NCERT Biology, p. 42].
+- Cite source-backed claims with compact brackets like [1] or [NCERT Biology, p. 42].
 - Never invent citations or cite facts not supported by these excerpts.
 - If the user asked for NCERT/uploaded material and the evidence is weak, say what was not found before giving general context.
 - Use short quotes only when necessary; otherwise paraphrase.

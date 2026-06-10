@@ -24,6 +24,18 @@ export const HermesSourceResultSchema = z.object({
     rationale: z.string().min(1).max(500),
     estimatedMinutes: z.number().int().min(1).max(120),
   }),
+  briefingDoc: z.object({
+    executiveSummary: z.string().min(1).max(2000),
+    faqs: z.array(z.object({
+      question: z.string().min(1).max(300),
+      answer: z.string().min(1).max(1000)
+    })).max(10),
+    keyEntities: z.array(z.string()).max(20)
+  }).optional(),
+  podcastTranscript: z.array(z.object({
+    speaker: z.enum(['Host 1', 'Host 2']),
+    text: z.string().min(1).max(1000)
+  })).max(50).optional(),
 });
 
 export type HermesSourceResultSchema = z.infer<typeof HermesSourceResultSchema>;
