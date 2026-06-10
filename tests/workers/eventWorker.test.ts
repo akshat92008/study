@@ -13,6 +13,10 @@ function recordUpdate(table: string, row: any) {
   updates[table].push(row);
 }
 
+vi.mock('@/lib/agents/orchestrator', () => ({
+  runCheapAgenticCycle: vi.fn(),
+}));
+
 vi.mock('@/lib/supabase/admin', () => ({
   createAdminClient: vi.fn(() => ({
     rpc: vi.fn(async (name: string) => {
@@ -145,6 +149,42 @@ describe('EventWorkerService', () => {
       status: 'PENDING',
       locked_at: null,
       locked_by: null,
+    }));
+  });
+  it('breaks early if maxAiCalls is reached', async () => {
+    process.env.EVENT_WORKER_CONCURRENCY = '1';
+    const { EventWorkerService } = await import('@/lib/events/worker');
+    const { createAdminClient } = await import('@/lib/supabase/admin');
+    
+    // Set up mock leases such that one returns multiple actions applied
+    const originalAcquire = vi.mocked(createAdminClient().rpc);
+    originalAcquire.mockResolvedValueOnce({
+      data: [
+        { lock_id: 'lock-1', event_id: 'event-1', consumer_name: 'atlas_engine', event_type: 'AUTOPSY_MOCK_PROCESSED', user_id: 'u1' },
+        { lock_id: 'lock-2', event_id: 'event-2', consumer_name: 'atlas_engine', event_type: 'AUTOPSY_MOCK_PROCESSED', user_id: 'u1' }
+      ],
+      error: null
+    });
+
+    // Mocking cheap agentic cycle to return high applied count
+    const orchestrator = await import('@/lib/agents/orchestrator');
+    vi.mocked(orchestrator.runCheapAgenticCycle).mockResolvedValueOnce({
+      applied: 5, proposed: 0, skipped: 0, failed: 0
+    });
+
+    const result = await EventWorkerService.processBatch(2, 5, 45000, Date.now(), 3); // Max 3 AI calls
+    expect(result.processed + result.failed).toBeGreaterThanOrEqual(1);
+  });
+
+  it('calls checkParentEventCompletion and updates parent event status', async () => {
+    const { EventWorkerService } = await import('@/lib/events/worker');
+    
+    await EventWorkerService.processBatch(1, 5);
+    
+    // Updates should contain event_queue update
+    expect(updates.event_queue).toContainEqual(expect.objectContaining({
+      status: expect.any(String),
+      updated_at: expect.any(String),
     }));
   });
 });

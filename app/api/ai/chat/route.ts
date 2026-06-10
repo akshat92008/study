@@ -104,7 +104,9 @@ export async function POST(req: NextRequest) {
       const titleContent = activeGoal?.title || message || (imageBase64 ? 'Image question' : documentBase64 ? 'Document analysis' : 'New Chat');
       const newTitle = titleContent.length > 44 ? titleContent.substring(0, 44) + '...' : titleContent;
       if (newTitle !== 'New Chat') {
-        supabase.from('chat_sessions').update({ title: newTitle }).eq('id', sessionId).eq('user_id', user.id).then();
+        void supabase.from('chat_sessions').update({ title: newTitle }).eq('id', sessionId).eq('user_id', user.id).then(({ error }) => {
+          if (error) logger.warn('Chat title update failed', { error, sessionId });
+        });
       }
     }
 

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
+import type { SupabaseClient } from '@supabase/supabase-js';
 import { z } from 'zod';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { logger } from '@/lib/utils/logger';
@@ -86,7 +87,7 @@ export async function enforceChatRateLimit(userId: string) {
   }
 }
 
-export async function resolveActiveGoal(supabase: any, userId: string, chatId?: string, requestedGoalId?: string, requestId?: string) {
+export async function resolveActiveGoal(supabase: SupabaseClient, userId: string, chatId?: string, requestedGoalId?: string, requestId?: string) {
   try {
     const resolvedContext = await resolveChatGoalContext(supabase, userId, { chatId, goalId: requestedGoalId });
     return resolvedContext;
@@ -101,7 +102,7 @@ export async function resolveActiveGoal(supabase: any, userId: string, chatId?: 
 // But wait, the route.ts currently imports gatherChatContext which internally does all three.
 // The user asked for them as minimum modules. I will export them as distinct steps, though 
 // internally they might still call gatherChatContext or I'll just structure them to satisfy the requirement.
-export async function loadChatContext(supabase: any, userId: string, message: string, recentHistory: any[], isSimpleMessage: boolean, activeGoal: any, activeGoalId?: string | null, sessionId?: string | null) {
+export async function loadChatContext(supabase: SupabaseClient, userId: string, message: string, recentHistory: any[], isSimpleMessage: boolean, activeGoal: any, activeGoalId?: string | null, sessionId?: string | null) {
   // We'll wrap gatherChatContext here for simplicity to maintain exact compatibility, 
   // but logically separate the output for the pipeline.
   return gatherChatContext({ supabase, userId, message, recentHistory, isSimpleMessage, activeGoal, activeGoalId: activeGoalId || undefined, sessionId: sessionId || '' });
@@ -123,7 +124,28 @@ export function loadMemoryContext(contextResult: any) {
   };
 }
 
-export async function routeUploads(params: any) {
+export interface RouteUploadsParams {
+  hasUploadedFile: boolean;
+  imageBase64?: string;
+  imageMimeType?: string;
+  documentBase64?: string;
+  documentMimeType?: string;
+  orchestratorResult: any;
+  uploadIntent: string;
+  userId: string;
+  message?: string;
+  profilePreview: any;
+  messageRequestId: string;
+  activeGoalId?: string;
+  sessionId: string;
+  supabase: SupabaseClient;
+  finalizeAssistantTurnFn: (input: any) => Promise<any>;
+  encoder: TextEncoder;
+  systemPrompt: string;
+  requestId: string;
+}
+
+export async function routeUploads(params: RouteUploadsParams) {
   const { hasUploadedFile, imageBase64, imageMimeType, documentBase64, documentMimeType, orchestratorResult, uploadIntent, userId, message, profilePreview, messageRequestId, activeGoalId, sessionId, supabase, finalizeAssistantTurnFn, encoder, systemPrompt, requestId } = params;
 
   if (hasUploadedFile && !featureFlags.visionUploads()) {
@@ -159,7 +181,17 @@ export async function routeUploads(params: any) {
   return null;
 }
 
-export async function maybeUseRuleFirstResponse(params: any) {
+export interface RuleFirstParams {
+  userId: string;
+  message?: string;
+  mindContext: any;
+  detectedIntent: any;
+  orchestratorResult: any;
+  finalizeAssistantTurnFn: (input: any) => Promise<any>;
+  encoder: TextEncoder;
+}
+
+export async function maybeUseRuleFirstResponse(params: RuleFirstParams) {
   const { userId, message, mindContext, detectedIntent, orchestratorResult, finalizeAssistantTurnFn, encoder } = params;
 
   if (mindContext?.emotionalState === 'overwhelmed' && ['TUTOR_SESSION', 'PRACTICE'].includes(orchestratorResult.intent)) {
@@ -213,7 +245,25 @@ export async function maybeUseRuleFirstResponse(params: any) {
   return null;
 }
 
-export async function callAiProvider(params: any) {
+export interface CallAiProviderParams {
+  userId: string;
+  message?: string;
+  detectedIntent: any;
+  orchestratorResult: any;
+  mindContext: any;
+  supabase: SupabaseClient;
+  activeGoalId?: string;
+  finalizeAssistantTurnFn: (input: any) => Promise<any>;
+  encoder: TextEncoder;
+  sessionId: string;
+  recentHistory: any[];
+  systemPrompt: string;
+  isSimpleMessage: boolean;
+  sessionTurnsCount: number;
+  crossSessionMemories: any;
+}
+
+export async function callAiProvider(params: CallAiProviderParams) {
   const { userId, message, detectedIntent, orchestratorResult, mindContext, supabase, activeGoalId, finalizeAssistantTurnFn, encoder, sessionId, recentHistory, systemPrompt, isSimpleMessage, sessionTurnsCount, crossSessionMemories } = params;
 
   const deterministicEngineResponse = await buildChatFirstEngineResponse({
@@ -239,7 +289,7 @@ export async function callAiProvider(params: any) {
   });
 }
 
-export async function persistChatMessages(supabase: any, sessionId: string, userId: string, message: string) {
+export async function persistChatMessages(supabase: SupabaseClient, sessionId: string, userId: string, message: string) {
   const { id: userMessageId } = await dbPersistChatMessage(supabase, { sessionId, userId, role: 'user', content: message });
   return userMessageId;
 }
