@@ -6,7 +6,7 @@
     },
     {
       "path": "/api/internal/workers/process-events",
-      "schedule": "* * * * *"
+      "schedule": "0 4 * * *"
     }
   ]
 }
