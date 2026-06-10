@@ -25,6 +25,12 @@ export interface ChatTurnFinalizerInput {
   budgetUsage?: any;
   onBehalfOf?: string;
   onBudgetSettled?: (usage: any) => void;
+  /**
+   * Turn status to persist on the assistant message.
+   * Defaults to 'assistant_saved' (success path).
+   * Pass 'failed_provider' or 'failed_internal' when finalizing an error turn.
+   */
+  turnStatus?: 'assistant_saved' | 'failed_provider' | 'failed_internal' | 'completed';
   persistAssistantMessage?: (
     supabase: SupabaseClient,
     message: {
@@ -37,6 +43,7 @@ export interface ChatTurnFinalizerInput {
       emotionalState?: string;
       promptVersion?: string;
       idempotencyKey: string;
+      turnStatus?: string;
     }
   ) => Promise<{ id: string; existed?: boolean }>;
   publishEvent?: (event: Record<string, any>) => Promise<string | null>;
@@ -100,8 +107,17 @@ export async function finalizeChatTurn(input: ChatTurnFinalizerInput): Promise<C
       emotionalState: input.emotion,
       promptVersion: input.promptVersion,
       idempotencyKey: assistantIdempotencyKey,
+      turnStatus: input.turnStatus ?? 'assistant_saved',
     });
   } catch (error) {
+    // Mark the user message as provider-failed so the UI can show retry
+    if (input.userMessageId) {
+      await input.supabase
+        .from('chat_messages')
+        .update({ turn_status: 'failed_provider' })
+        .eq('id', input.userMessageId)
+        .then(() => {}); // best-effort, non-blocking
+    }
     if (input.budgetReservationId) {
       await releaseBudget(input.budgetReservationId, error instanceof Error ? error.message : 'assistant_persistence_failed');
     }
