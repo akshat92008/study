@@ -79,6 +79,7 @@ const allowedRuntimeFiles = new Set([
   'lib/observability/log-error.ts',
   'lib/profiles/sync.ts',
   'lib/usage/enforce-feature-limit.ts',
+  'lib/workers/source-deep-processing-worker.ts',
 ]);
 
 describe('admin client allowlist', () => {
