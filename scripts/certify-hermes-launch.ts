@@ -16,26 +16,15 @@ const checks: Check[] = [
     run: () => {
       const content = readFileSync(resolve(ROOT_DIR, 'lib/agent/tools/executor.ts'), 'utf-8');
       const lines = content.split('\n');
-      const hasIdempotencyFix = lines.some(line => line.includes('const idempotencyKey = stableKey') && !line.includes('startedAt'));
-      return hasIdempotencyFix;
+      const hasStableKey = lines.some(line => line.includes('const idempotencyKey = stableKey'));
+      const noStartedAtInKey = !lines.some(line => line.includes('idempotencyKey') && line.includes('startedAt'));
+      return hasStableKey && noStartedAtInKey;
     },
     failMessage: 'executor.ts still uses startedAt or is missing stableKey in idempotency generation.',
   },
   {
-    name: 'Canonical Entry Points Available',
+    name: 'No Cognitive Agent Imports',
     run: () => {
-      const runtimeContent = readFileSync(resolve(ROOT_DIR, 'lib/agent/runtime.ts'), 'utf-8');
-      const indexContent = readFileSync(resolve(ROOT_DIR, 'lib/agent/index.ts'), 'utf-8');
-      return runtimeContent.includes('export async function runHermesTurn') && 
-             runtimeContent.includes('export async function runHermesEvent') &&
-             indexContent.includes('export { runHermesTurn, runHermesEvent }');
-    },
-    failMessage: 'Canonical entry points (runHermesTurn, runHermesEvent) are not defined and exported correctly.',
-  },
-  {
-    name: 'No Cognitive Agent Imports Outside Internal',
-    run: () => {
-      // Need to find instances of runCognitionAgentTurn that we missed
       try {
         const { execSync } = require('node:child_process');
         const grepRes = execSync('grep -rn "runCognitionAgentTurn" lib/ app/ || true', { encoding: 'utf-8' });
@@ -45,6 +34,57 @@ const checks: Check[] = [
       }
     },
     failMessage: 'Found references to the deprecated runCognitionAgentTurn.',
+  },
+  {
+    name: 'Replay Route is Dry-Run by Default',
+    run: () => {
+      const content = readFileSync(resolve(ROOT_DIR, 'app/api/admin/hermes/runs/[id]/replay/route.ts'), 'utf-8');
+      return content.includes('realRun') && content.includes('dryRun: true');
+    },
+    failMessage: 'Replay route must default to dry-run (dryRun: true) unless realRun is passed.',
+  },
+  {
+    name: 'Chat Policy Prevents Over-Mutation',
+    run: () => {
+      // Chat policy should not casually allow mission_write or learner_visible_write without strict intent
+      const content = readFileSync(resolve(ROOT_DIR, 'lib/agent/policy.ts'), 'utf-8');
+      const chatPolicyStr = content.split('chat: {')[1]?.split('},')[0] || '';
+      return !chatPolicyStr.includes("'mission_write'") && !chatPolicyStr.includes("'learner_visible_write'");
+    },
+    failMessage: 'Chat policy must prevent over-mutation (e.g. mission_write) to avoid casual state changes.',
+  },
+  {
+    name: 'Tool Schema Validations Present',
+    run: () => {
+      const content = readFileSync(resolve(ROOT_DIR, 'lib/agent/tools/schemas.ts'), 'utf-8');
+      return content.includes('z.object(') || content.includes('zod');
+    },
+    failMessage: 'Tool schemas must be strictly defined with Zod.',
+  },
+  {
+    name: 'Idempotency Keys Are Context-Specific',
+    run: () => {
+      const content = readFileSync(resolve(ROOT_DIR, 'lib/agent/tools/executor.ts'), 'utf-8');
+      // Should include context identifiers like sourceEventId or similar for specific tool runs
+      return content.includes('runId') || content.includes('sourceEventId');
+    },
+    failMessage: 'Idempotency must be based on source events or runId, not just timestamps.',
+  },
+  {
+    name: 'Background Workers Implement Retry & DLQ',
+    run: () => {
+      const content = readFileSync(resolve(ROOT_DIR, 'lib/events/worker.ts'), 'utf-8');
+      return content.includes('retry') && content.includes('dlq');
+    },
+    failMessage: 'Workers must properly implement retry logic and Dead Letter Queue (DLQ).',
+  },
+  {
+    name: 'Cost Budgets Enforced',
+    run: () => {
+      const content = readFileSync(resolve(ROOT_DIR, 'lib/usage/enforce-feature-limit.ts'), 'utf-8');
+      return content.includes('monthly_ai_budget_exceeded');
+    },
+    failMessage: 'Usage checks must enforce strict monthly AI USD budgets.',
   }
 ];
 

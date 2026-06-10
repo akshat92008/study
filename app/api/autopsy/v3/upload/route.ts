@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
 
     if (!featureFlags.autopsyUploads() || !isFeatureEnabled('autopsy_upload')) return featureDisabledResponse(requestId);
     try {
-      await enforceFeatureLimit(user.id, 'rag_upload');
+      await enforceFeatureLimit(user.id, 'autopsy_upload');
     } catch (limitError: any) {
       if (limitError?.check) return featureLimitResponse(limitError.check, requestId);
       throw limitError;
@@ -105,7 +105,7 @@ export async function POST(req: NextRequest) {
       .single();
     if (error) throw error;
 
-    const usage = await consumeFeatureUsage(user.id, 'rag_upload', 1, {
+    const usage = await consumeFeatureUsage(user.id, 'autopsy_upload', 1, {
       assessmentId: assessment.id,
       fileSize: file.size,
       idempotencyKey: `autopsy_upload:${user.id}:${assessment.id}`,

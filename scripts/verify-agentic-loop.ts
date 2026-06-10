@@ -18,7 +18,7 @@
 import { createClient } from '@supabase/supabase-js';
 import dotenv from 'dotenv';
 import { randomUUID } from 'crypto';
-import { runCognitionAgentTurn } from '@/lib/agent/runtime';
+import { runHermesTurn } from '@/lib/agent/runtime';
 import type { CognitionAgentTurnInput } from '@/lib/agent/types';
 
 dotenv.config({ path: '.env.local' });
@@ -123,7 +123,7 @@ async function run() {
     pass('chat context created');
 
     // 3. Run agent directly (no background worker)
-    log('3. Call runCognitionAgentTurn directly');
+    log('3. Call runHermesTurn directly');
     const turnInput: CognitionAgentTurnInput = {
       userId,
       channel: 'chat',
@@ -134,7 +134,7 @@ async function run() {
         fullResponse: 'Tachycardia is an elevated heart rate exceeding 100 bpm at rest.',
       },
     };
-    const agentOutput = await runCognitionAgentTurn(turnInput, { supabase: supabase as any });
+    const agentOutput = await runHermesTurn(turnInput, { supabase: supabase as any });
     pass(`agent completed — trajectory ${agentOutput.trajectoryId}`);
     const trajectoryId = agentOutput.trajectoryId;
 

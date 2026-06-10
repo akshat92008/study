@@ -56,7 +56,15 @@ export async function POST(req: NextRequest) {
 
         await supabase
           .from('profiles')
-          .update({ subscription_status: tier })
+          .update({ 
+            subscription_status: tier,
+            stripe_subscription_id: subscription.id,
+            stripe_price_id: priceId,
+            subscription_provider_status: status,
+            subscription_current_period_end: new Date((subscription as any).current_period_end * 1000).toISOString(),
+            subscription_cancel_at_period_end: (subscription as any).cancel_at_period_end,
+            billing_updated_at: new Date().toISOString()
+          })
           .eq('stripe_customer_id', customerId);
         break;
       }
@@ -66,7 +74,11 @@ export async function POST(req: NextRequest) {
 
         await supabase
           .from('profiles')
-          .update({ subscription_status: 'free' })
+          .update({ 
+            subscription_status: 'free',
+            subscription_provider_status: subscription.status,
+            billing_updated_at: new Date().toISOString()
+          })
           .eq('stripe_customer_id', customerId);
         break;
       }

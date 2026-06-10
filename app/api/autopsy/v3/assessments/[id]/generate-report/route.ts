@@ -154,6 +154,7 @@ export async function POST(req: NextRequest, context: RouteContext) {
 
       // Canonical Deterministic Projection (Fix 1-5)
       const projection = await projectAutopsyV3Results({
+        supabase,
         userId: user.id,
         assessmentId,
         reportId: persistedReport.id,

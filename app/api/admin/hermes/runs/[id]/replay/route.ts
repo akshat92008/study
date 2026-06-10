@@ -18,6 +18,9 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
       return apiErrorResponse('bad_request', { status: 400, message: 'Missing run id', requestId });
     }
 
+    const body = await req.json().catch(() => ({}));
+    const realRun = body.realRun === true;
+
     const supabase = createAdminClient();
     const { data: run, error } = await supabase
       .from('agent_runs')
@@ -41,6 +44,9 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
     const userId = run.user_id;
 
     if (channel === 'background' && input_snapshot.payload?.eventType) {
+      if (!realRun) {
+        return NextResponse.json({ success: true, newRunId: 'dry-run', output: { dryRun: true, snapshot: input_snapshot } });
+      }
       const output = await runHermesEvent(
         userId,
         input_snapshot.payload.eventType,
@@ -49,6 +55,9 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
       );
       return NextResponse.json({ success: true, newRunId: output.trajectoryId, output });
     } else {
+      if (!realRun) {
+        return NextResponse.json({ success: true, newRunId: 'dry-run', output: { dryRun: true, snapshot: input_snapshot } });
+      }
       const output = await runHermesTurn(
         {
           userId,

@@ -6,6 +6,7 @@ export type PlanLimits = {
   dailyChatMessages: number;
   dailyAiCalls: number;
   dailyAutopsyReports: number;
+  dailyAutopsyUploads: number;
   dailyRagUploads: number;
   dailyMaterialQueries: number;
   dailyHermesWrites: number;
@@ -21,6 +22,7 @@ export const PLAN_LIMITS: Record<SubscriptionTier, PlanLimits> = {
     dailyChatMessages: 3,
     dailyAiCalls: 3,
     dailyAutopsyReports: 0,
+    dailyAutopsyUploads: 0,
     dailyRagUploads: 0,
     dailyMaterialQueries: 3,
     dailyHermesWrites: 0,
@@ -34,6 +36,7 @@ export const PLAN_LIMITS: Record<SubscriptionTier, PlanLimits> = {
     dailyChatMessages: 40,
     dailyAiCalls: 25,
     dailyAutopsyReports: 2,
+    dailyAutopsyUploads: 2,
     dailyRagUploads: 2,
     dailyMaterialQueries: 20,
     dailyHermesWrites: 20,
@@ -47,6 +50,7 @@ export const PLAN_LIMITS: Record<SubscriptionTier, PlanLimits> = {
     dailyChatMessages: 80,
     dailyAiCalls: 50,
     dailyAutopsyReports: 4,
+    dailyAutopsyUploads: 4,
     dailyRagUploads: 4,
     dailyMaterialQueries: 50,
     dailyHermesWrites: 40,
@@ -60,6 +64,7 @@ export const PLAN_LIMITS: Record<SubscriptionTier, PlanLimits> = {
     dailyChatMessages: 150,
     dailyAiCalls: 150,
     dailyAutopsyReports: 20,
+    dailyAutopsyUploads: 20,
     dailyRagUploads: 50,
     dailyMaterialQueries: 500,
     dailyHermesWrites: 500,
@@ -85,6 +90,8 @@ export function getFeatureLimit(plan: SubscriptionTier | string | null | undefin
       return limits.dailyAiCalls;
     case 'autopsy_report':
       return limits.dailyAutopsyReports;
+    case 'autopsy_upload':
+      return limits.dailyAutopsyUploads;
     case 'rag_upload':
     case 'material_upload':
       return limits.dailyRagUploads;

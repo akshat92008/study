@@ -12,6 +12,7 @@ export type FeatureName =
   | 'chat_message'
   | 'ai_call'
   | 'autopsy_report'
+  | 'autopsy_upload'
   | 'rag_upload'
   | 'material_query'
   | 'material_upload'
