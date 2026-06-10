@@ -110,11 +110,15 @@ export async function completeLearningSession(input: {
     goalId: input.goalId,
   });
 
+  // Normalize streak: SQL currently returns streak_days, old SQL returned new_streak.
+  // Always read streak_days first to match the DB column name.
+  const normalizedStreak = rpcResult.streak_days ?? rpcResult.new_streak ?? 0;
+
   return {
     success: true,
     streakChanged: rpcResult.streak_changed ?? false,
-    newStreak: rpcResult.new_streak ?? 0,
-    streakDays: rpcResult.new_streak ?? 0,
+    newStreak: normalizedStreak,
+    streakDays: normalizedStreak,
     sessionId: finalSessionId,
     conceptId,
     subject,

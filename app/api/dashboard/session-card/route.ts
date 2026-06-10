@@ -630,9 +630,17 @@ export async function GET(request?: Request): Promise<NextResponse> {
     });
 
     if (upsertError) {
-      logger.warn('session-card: failed to upsert card via RPC', {
+      logger.error('session-card: FATAL failed to persist card via RPC — returning 500', {
         userId: user.id,
+        goalId,
+        localDate,
         error: upsertError.message,
+        requestId,
+      });
+      return apiErrorResponse('session_card_persist_failed', {
+        status: 500,
+        message: 'Failed to persist your session card. Please retry.',
+        requestId,
       });
     }
 

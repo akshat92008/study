@@ -4,7 +4,7 @@ import { recordMasteryEvidence } from '@/lib/engines/mastery-updater';
 import { resolveConcept } from '@/lib/engines/concept-resolver';
 import { createRevisionCardsForUser } from '@/lib/amaura/agents/repositories';
 import { generateMemoryCard } from '@/lib/memory/cardGenerator';
-import { invalidateSessionCard } from '@/lib/services/session-card-invalidation';
+import { invalidateSessionCard, markSessionCardCompleted } from '@/lib/services/session-card-invalidation';
 import { logger } from '@/lib/utils/logger';
 import { stableKey, recordAgentActivity } from '@/lib/agent/tools/learning/common';
 import { upsertMistakeRisk } from '@/lib/services/repair-loop.service';
@@ -222,19 +222,54 @@ export async function projectLearningSignal(
       }
     }
 
-    // 6. Session Card Invalidation
-    const shouldInvalidate = ['session_completed', 'autopsy_mistake_detected', 'concept_practiced'].includes(signal.type);
-    if (shouldInvalidate) {
+    // 6. Session Card Invalidation (Phase 5.5: complete not invalidate today)
+    const shouldAct = ['session_completed', 'autopsy_mistake_detected', 'concept_practiced'].includes(signal.type);
+    if (shouldAct) {
       try {
-        const reason = signal.type === 'session_completed' ? 'SESSION_COMPLETED' : 'AUTOPSY_COMPLETED';
-        await invalidateSessionCard(userId, reason as any, {
-          goalId,
-          sourceEventId: idempotencyKey,
-          client: supabase,
-        });
-        result.invalidationTriggered = true;
+        const localDate = now.toISOString().split('T')[0];
+        if (signal.type === 'session_completed') {
+          // Mark today's card as completed (preserves history), then invalidate only tomorrow
+          await markSessionCardCompleted(userId, localDate, { client: supabase });
+          // Only delete tomorrow's card so future recommendations adapt
+          const tomorrow = new Date(Date.now() + 86_400_000).toISOString().split('T')[0];
+          let tomorrowDelete = (supabase as any).from('session_cards').delete().eq('user_id', userId).eq('date', tomorrow);
+          if (goalId) tomorrowDelete = tomorrowDelete.eq('goal_id', goalId);
+          await tomorrowDelete;
+          result.invalidationTriggered = true;
+        } else if (signal.type === 'autopsy_mistake_detected') {
+          // For autopsy: only invalidate today if card is NOT already completed
+          const { data: todayCard } = await (supabase as any)
+            .from('session_cards')
+            .select('is_completed, isCompleted')
+            .eq('user_id', userId)
+            .eq('date', localDate)
+            .maybeSingle();
+          const isAlreadyCompleted = todayCard?.is_completed || todayCard?.isCompleted;
+          if (!isAlreadyCompleted) {
+            await invalidateSessionCard(userId, 'AUTOPSY_COMPLETED' as any, {
+              goalId,
+              sourceEventId: idempotencyKey,
+              client: supabase,
+            });
+          } else {
+            // Card done — only invalidate tomorrow
+            const tomorrow = new Date(Date.now() + 86_400_000).toISOString().split('T')[0];
+            let tomorrowDelete = (supabase as any).from('session_cards').delete().eq('user_id', userId).eq('date', tomorrow);
+            if (goalId) tomorrowDelete = tomorrowDelete.eq('goal_id', goalId);
+            await tomorrowDelete;
+          }
+          result.invalidationTriggered = true;
+        } else {
+          // concept_practiced — invalidate normally
+          await invalidateSessionCard(userId, 'STUDY_SESSION_COMPLETED' as any, {
+            goalId,
+            sourceEventId: idempotencyKey,
+            client: supabase,
+          });
+          result.invalidationTriggered = true;
+        }
       } catch (invErr) {
-        logger.warn('Projector: failed to invalidate session card', { userId, signalType: signal.type, error: invErr });
+        logger.warn('Projector: failed to invalidate/complete session card', { userId, signalType: signal.type, error: invErr });
       }
     }
 
