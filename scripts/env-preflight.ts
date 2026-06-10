@@ -101,6 +101,14 @@ if (!fs.existsSync(migrationsDir) || fs.readdirSync(migrationsDir).filter((f) =>
   ok = false;
 }
 
+// Admin protection: at least one of ADMIN_EMAILS or ADMIN_USER_IDS must be configured
+const adminEmails = (process.env.ADMIN_EMAILS ?? '').trim();
+const adminUserIds = (process.env.ADMIN_USER_IDS ?? '').trim();
+if (!adminEmails && !adminUserIds) {
+  console.error('[ERROR] Admin protection not configured — set ADMIN_EMAILS or ADMIN_USER_IDS.');
+  ok = false;
+}
+
 if (!ok) {
   console.error(`Environment preflight failed for mode: ${mode}`);
   process.exit(1);

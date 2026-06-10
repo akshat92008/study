@@ -23,6 +23,7 @@ import type {
   VerificationResult,
   AgentPlan,
   ToolResultRecord,
+  CognitionAgentRuntimeOptions,
 } from '@/lib/agent/types';
 import { buildObservation, buildAgentPlan } from '@/lib/agent/planner';
 import { HooksManager, createDefaultHooksManager } from '@/lib/agent/hooks';
@@ -151,8 +152,9 @@ export async function runCognitionAgentLoop(input: {
   finalResponse?: string;
   maxToolCalls?: number;
   hooks?: HooksManager;
+  options?: CognitionAgentRuntimeOptions;
 }): Promise<CognitionAgentTurnOutput> {
-  const { turn, context, trajectoryId, finalResponse, maxToolCalls = 40, hooks } = input;
+  const { turn, context, trajectoryId, finalResponse, maxToolCalls = 40, hooks, options } = input;
   const hooksMgr = hooks ?? createDefaultHooksManager();
   const supabase = context.supabase;
   const channel = turn.channel;
@@ -271,8 +273,16 @@ export async function runCognitionAgentLoop(input: {
   let latestPlan: AgentPlan | AgentPlanOutput | null = null;
   let hasFatalError = false;
 
+  const startTimeMs = Date.now();
+  const maxRuntimeMs = options?.maxRuntimeMs ?? 60000;
+
   // 3. ITERATIVE LOOP (PLAN -> ACT -> REASON AGAIN)
   while (iterationsBudget.canContinue() && !hasFatalError) {
+    if (Date.now() - startTimeMs > maxRuntimeMs) {
+      allWarnings.push(`Agent loop reached maxRuntimeMs (${maxRuntimeMs}ms). Terminating gracefully.`);
+      logger.warn('Agent loop reached maxRuntimeMs', { maxRuntimeMs, trajectoryId });
+      break;
+    }
     iterationsBudget.recordIteration();
 
     try {

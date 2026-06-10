@@ -13,9 +13,9 @@ describe('study profile sync contract', () => {
   });
 
   it('updates visible weak state and invalidates session cards', () => {
-    // The service delegates practice sync persistence to runCognitionAgentTurn
+    // The service delegates practice sync persistence to runHermesTurn
     // calling .from('mistakes') directly — this is the correct architectural pattern.
-    expect(source).toContain('runCognitionAgentTurn');
+    expect(source).toContain('runHermesTurn');
     expect(source).toContain('invalidateSessionCard');
   });
 });

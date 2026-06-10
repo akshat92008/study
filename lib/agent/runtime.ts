@@ -22,7 +22,7 @@ function hashTurn(input: CognitionAgentTurnInput) {
     .slice(0, 32);
 }
 
-export async function runCognitionAgentTurn(
+export async function runHermesTurn(
   input: CognitionAgentTurnInput,
   options: CognitionAgentRuntimeOptions = {}
 ): Promise<CognitionAgentTurnOutput> {
@@ -114,6 +114,7 @@ export async function runCognitionAgentTurn(
       trajectoryId: run.id,
       finalResponse: options.finalResponse,
       maxToolCalls: options.maxToolCalls ?? 40,
+      options,
     });
     await writeTrajectory({
       supabase,
@@ -129,5 +130,18 @@ export async function runCognitionAgentTurn(
     await failAgentRun(run.id, error, { client: supabase as any, errorCode: 'cognition_agent_turn_failed' }).catch(() => undefined);
     throw error;
   }
+}
+
+export async function runHermesEvent(
+  userId: string,
+  eventType: string,
+  eventData: Record<string, unknown>,
+  options: CognitionAgentRuntimeOptions = {}
+): Promise<CognitionAgentTurnOutput> {
+  return runHermesTurn({
+    userId,
+    channel: 'background',
+    payload: { eventType, eventData },
+  }, options);
 }
 

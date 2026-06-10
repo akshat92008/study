@@ -169,7 +169,7 @@ function makeState(): MvpState {
     concepts: [{
       id: 'concept-motion',
       user_id: USER_ID,
-      name: 'Acceleration Definition',
+      name: 'Motion',
       subject: 'Physics',
       chapter: 'Motion',
       topic: 'Motion',
@@ -246,6 +246,11 @@ class MemoryQuery {
 
   neq(field: string, value: any) {
     this.filters.push({ op: 'neq', field, value });
+    return this;
+  }
+
+  is(field: string, value: any) {
+    this.filters.push({ op: 'is', field, value });
     return this;
   }
 
@@ -365,6 +370,10 @@ class MemoryQuery {
       const actual = valueFor(row, filter.field);
       if (filter.op === 'eq') return actual === filter.value;
       if (filter.op === 'neq') return actual !== filter.value;
+      if (filter.op === 'is') {
+        if (filter.value === null) return actual === null || actual === undefined;
+        return actual === filter.value;
+      }
       if (filter.op === 'in') return filter.value.includes(actual);
       if (filter.op === 'lte') return String(actual) <= String(filter.value);
       if (filter.op === 'gte') return String(actual) >= String(filter.value);

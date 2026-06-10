@@ -7,7 +7,7 @@ import { ingestLearningSignals } from '@/lib/learning-signals/ingest';
 import { safePublishEvent } from '@/lib/events/safe-publish';
 import { checkFeatureLimit, consumeFeatureUsage, featureLimitResponse } from '@/lib/usage/enforce-feature-limit';
 import { featureDisabledResponse, isFeatureEnabled } from '@/lib/feature-registry';
-import { runCognitionAgentTurn } from '@/lib/agent/runtime';
+import { runHermesTurn } from '@/lib/agent/runtime';
 import { logger } from '@/lib/utils/logger';
 
 type RouteContext = { params: Promise<{ id: string }> | { id: string } };
@@ -202,7 +202,7 @@ export async function POST(req: NextRequest, context: RouteContext) {
       // Phase 7: Wire autopsy through agent runtime
       let agentLoopResult: any = null;
       try {
-        agentLoopResult = await runCognitionAgentTurn({
+        agentLoopResult = await runHermesTurn({
           userId: user.id,
           channel: 'autopsy',
           goalId: assessment.goal_id ?? undefined,

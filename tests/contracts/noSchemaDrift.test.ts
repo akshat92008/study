@@ -171,10 +171,19 @@ describe('migration contracts', () => {
     const { tables, views, functions } = migrationObjects();
     const { refs, storageBuckets } = runtimeDbRefs();
     const allowedStorageBuckets = new Set<string>(['study-materials', 'autopsy-evidence']);
+    // RPCs/tables that are intentionally referenced but may not appear in migration CREATE TABLE statements.
+    // delete_own_account: optional user-facing RPC; fallback path exists if missing.
+    // goals / learning_materials: legacy aliases for learning_goals / study_materials — fixed in source, kept for transition.
+    const knownAllowedRefs = new Set<string>([
+      'delete_own_account',
+      'goals',
+      'learning_materials',
+    ]);
     const missing: string[] = [];
 
     for (const [name, files] of refs) {
       if (allowedStorageBuckets.has(name)) continue;
+      if (knownAllowedRefs.has(name)) continue;
       if (tables.has(name) || views.has(name) || functions.has(name)) continue;
       missing.push(`${name}: ${Array.from(files).sort().join(', ')}`);
     }

@@ -8,7 +8,7 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
 import { logger } from '@/lib/utils/logger';
 import { invalidateSessionCard } from '@/lib/services/session-card-invalidation';
-import { runCognitionAgentTurn } from '@/lib/agent/runtime';
+import { runHermesTurn } from '@/lib/agent/runtime';
 import type { AgentChannel, MutationSummary } from '@/lib/agent/types';
 
 export type TransactionSource =
@@ -79,7 +79,7 @@ export async function processLearningTransaction(
   input: LearningTransactionInput
 ): Promise<LearningTransactionResult> {
   try {
-    const runtime = await runCognitionAgentTurn({
+    const runtime = await runHermesTurn({
       userId: input.userId,
       channel: channelForSource(input.source),
       userMessage: input.userText ?? '',

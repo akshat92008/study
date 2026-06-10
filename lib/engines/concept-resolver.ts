@@ -158,7 +158,7 @@ export async function resolveConcept(input: ResolveConceptInput): Promise<Concep
   }
 
   if (conceptKey) {
-    const query = supabase
+    let query = supabase
       .from('concepts')
       .select('id')
       .eq('user_id', input.userId)
@@ -166,9 +166,9 @@ export async function resolveConcept(input: ResolveConceptInput): Promise<Concep
       .limit(1);
       
     if (input.goalId) {
-      query.eq('goal_id', input.goalId);
+      query = query.eq('goal_id', input.goalId);
     } else {
-      query.is('goal_id', null);
+      query = query.is('goal_id', null);
     }
     
     const { data: canonicalMatch, error: canonicalError } = await query.maybeSingle();
@@ -198,21 +198,21 @@ export async function resolveConcept(input: ResolveConceptInput): Promise<Concep
     }
   }
 
-  const exactQuery = supabase
+  let exactQuery = supabase
     .from('concepts')
     .select('id')
     .eq('user_id', input.userId)
     .limit(1);
     
   if (input.goalId) {
-    exactQuery.eq('goal_id', input.goalId);
+    exactQuery = exactQuery.eq('goal_id', input.goalId);
   } else {
-    exactQuery.is('goal_id', null);
+    exactQuery = exactQuery.is('goal_id', null);
   }
 
-  if (normalizedSubject) exactQuery.ilike('subject', normalizedSubject);
-  if (normalizedChapter) exactQuery.ilike('chapter', normalizedChapter);
-  if (normalizedTopic) exactQuery.ilike('topic', normalizedTopic);
+  if (normalizedSubject) exactQuery = exactQuery.ilike('subject', normalizedSubject);
+  if (normalizedChapter) exactQuery = exactQuery.ilike('chapter', normalizedChapter);
+  if (normalizedTopic) exactQuery = exactQuery.ilike('topic', normalizedTopic);
 
   const { data: exact } = await exactQuery.maybeSingle();
   if (exact?.id) {
@@ -258,20 +258,20 @@ export async function resolveConcept(input: ResolveConceptInput): Promise<Concep
     }
   }
 
-  const normalizedQuery = supabase
+  let normalizedQuery = supabase
     .from('concepts')
     .select('id, subject, chapter, topic, name')
     .eq('user_id', input.userId)
     .limit(1);
 
   if (input.goalId) {
-    normalizedQuery.eq('goal_id', input.goalId);
+    normalizedQuery = normalizedQuery.eq('goal_id', input.goalId);
   } else {
-    normalizedQuery.is('goal_id', null);
+    normalizedQuery = normalizedQuery.is('goal_id', null);
   }
 
-  if (normalizedSubject) normalizedQuery.ilike('subject', `%${normalizedSubject}%`);
-  if (normalizedChapter) normalizedQuery.ilike('chapter', `%${normalizedChapter}%`);
+  if (normalizedSubject) normalizedQuery = normalizedQuery.ilike('subject', `%${normalizedSubject}%`);
+  if (normalizedChapter) normalizedQuery = normalizedQuery.ilike('chapter', `%${normalizedChapter}%`);
 
   const { data: normalizedMatch } = await normalizedQuery.maybeSingle();
   if (normalizedMatch?.id) {

@@ -1,5 +1,5 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
-import { runCognitionAgentTurn } from '@/lib/agent/runtime';
+import { runHermesTurn } from '@/lib/agent/runtime';
 
 export async function reviewRecentConversation(input: {
   supabase: SupabaseClient;
@@ -17,7 +17,7 @@ export async function reviewRecentConversation(input: {
     .limit(10);
 
   const text = (messages ?? []).reverse().map((message: any) => `${message.role}: ${message.content}`).join('\n');
-  return runCognitionAgentTurn({
+  return runHermesTurn({
     userId: input.userId,
     channel: 'chat',
     userMessage: text || 'Review recent conversation',

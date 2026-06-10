@@ -1,7 +1,7 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
 import { logger } from '@/lib/utils/logger';
 import { invalidateSessionCard } from '@/lib/services/session-card-invalidation';
-import { runCognitionAgentTurn } from '@/lib/agent/runtime';
+import { runHermesTurn } from '@/lib/agent/runtime';
 import type { CognitionAgentTurnOutput } from '@/lib/agent/types';
 
 type PracticeSyncItem = {
@@ -41,7 +41,7 @@ export async function syncStudyProfileAfterPracticeAttempt(
     let runtime = input.runtimeOutput;
 
     if (!runtime) {
-      runtime = await runCognitionAgentTurn({
+      runtime = await runHermesTurn({
         userId,
         channel: 'practice',
         goalId: goalId ?? undefined,

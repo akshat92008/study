@@ -85,24 +85,21 @@ describe('EventDispatcher', () => {
     expect(firstKey).toMatch(/^event:MATERIAL_UPLOADED:/);
   });
 
-  it('routes MVP events to connected learner-state engines including COMMAND', async () => {
+  it('routes MVP events to connected learner-state engines (stable consumers only)', async () => {
     const { getConsumersForEvent } = await import('@/lib/events/orchestrator');
 
     expect(getConsumersForEvent('AUTOPSY_MOCK_PROCESSED')).toEqual([
       'atlas_engine',
       'memory_engine',
       'learning_state_engine',
-      'command_agent',
-      'planner_agent',
     ]);
     expect(getConsumersForEvent('CHAT_MESSAGE_PROCESSED')).toEqual(['chat_side_effect_engine', 'mind_agent']);
     expect(getConsumersForEvent('AUTOPSY_UPLOAD_RECEIVED')).toEqual(['autopsy_engine']);
     expect(getConsumersForEvent('MATERIAL_UPLOADED')).toEqual(['rag_agent']);
+    // With experimental agents off, command_agent and planner_agent are filtered
     expect(getConsumersForEvent('AUTOPSY_MISTAKE_APPROVED')).toEqual([
       'atlas_agent',
       'memory_agent',
-      'planner_agent',
-      'command_agent',
     ]);
     expect(getConsumersForEvent('STUDENT_MODEL_SYNC_REQUESTED')).toContain('learning_state_engine');
   });

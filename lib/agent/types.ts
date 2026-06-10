@@ -21,6 +21,9 @@ export interface CognitionAgentRuntimeOptions {
   finalResponse?: string;
   maxToolCalls?: number;
   now?: Date;
+  // Hermes v1 Policy Layer
+  maxRuntimeMs?: number;
+  maxCostUsd?: number;
 }
 
 export interface AgentObservation {
@@ -67,6 +70,7 @@ export interface LearningSignal {
   correct?: boolean;
   misconception?: string;
   correction?: string;
+  evidenceLevel?: 0 | 1 | 2 | 3 | 4 | 5 | 6; // Hermes v1 Evidence Level (0: Explicit User Tell, 6: Extrapolated Correlation)
   metadata?: JsonObject;
 }
 

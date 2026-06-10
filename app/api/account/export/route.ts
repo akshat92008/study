@@ -31,9 +31,9 @@ export async function GET(req: NextRequest) {
     { data: materials }
   ] = await Promise.all([
     supabase.from('profiles').select('*').eq('id', user.id).single(),
-    supabase.from('goals').select('*').eq('user_id', user.id),
+    supabase.from('learning_goals').select('*').eq('user_id', user.id),
     supabase.from('study_sessions').select('*').eq('user_id', user.id),
-    supabase.from('learning_materials').select('id, title, status, format, created_at').eq('user_id', user.id)
+    supabase.from('study_materials').select('id, title, status, created_at').eq('user_id', user.id)
   ]);
 
   const exportData = {

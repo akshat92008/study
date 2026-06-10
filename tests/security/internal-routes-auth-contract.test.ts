@@ -22,7 +22,7 @@ describe('internal route auth contract', () => {
       path.join(root, 'app/api/internal'),
     ];
     const files = protectedRoots.flatMap((dir) => routeFiles(dir));
-    files.push(path.join(root, 'app/api/health/route.ts'));
+    // Note: app/api/health/route.ts is intentionally public for uptime monitors — excluded from this check.
 
     const offenders = files.filter((file) => {
       const text = fs.readFileSync(file, 'utf8');

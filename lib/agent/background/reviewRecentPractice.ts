@@ -1,5 +1,5 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
-import { runCognitionAgentTurn } from '@/lib/agent/runtime';
+import { runHermesTurn } from '@/lib/agent/runtime';
 
 export async function reviewRecentPractice(input: {
   supabase: SupabaseClient;
@@ -12,7 +12,7 @@ export async function reviewRecentPractice(input: {
     .eq('user_id', input.userId)
     .order('created_at', { ascending: false })
     .limit(20);
-  return runCognitionAgentTurn({
+  return runHermesTurn({
     userId: input.userId,
     channel: 'practice',
     goalId: input.goalId ?? undefined,

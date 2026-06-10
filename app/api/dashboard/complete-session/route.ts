@@ -4,7 +4,7 @@ import { completeLearningSession } from '@/lib/services/session-completion';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { generateSessionClosingMessage } from '@/lib/engines/session-closing';
-import { runCognitionAgentTurn } from '@/lib/agent/runtime';
+import { runHermesTurn } from '@/lib/agent/runtime';
 import { logger } from '@/lib/utils/logger';
 
 export async function POST(req: NextRequest) {
@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
     // The runtime processes session completion, creates MEMORY cards, and updates ATLAS mastery
     let agentLoopResult: any = null;
     try {
-      agentLoopResult = await runCognitionAgentTurn({
+      agentLoopResult = await runHermesTurn({
         userId: user.id,
         channel: 'session',
         goalId: body.goalId ?? undefined,

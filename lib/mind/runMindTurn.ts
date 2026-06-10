@@ -1,5 +1,5 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
-import { runCognitionAgentTurn } from '@/lib/agent/runtime';
+import { runHermesTurn } from '@/lib/agent/runtime';
 import type { CognitionAgentTurnOutput, JsonObject, MutationSummary } from '@/lib/agent/types';
 
 export interface RunMindTurnInput {
@@ -24,7 +24,7 @@ export interface RunMindTurnResult {
 }
 
 export async function runMindTurn(input: RunMindTurnInput): Promise<RunMindTurnResult> {
-  const runtime = await runCognitionAgentTurn({
+  const runtime = await runHermesTurn({
     userId: input.userId,
     channel: 'chat',
     userMessage: input.userMessage,

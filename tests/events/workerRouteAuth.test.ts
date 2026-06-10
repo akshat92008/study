@@ -109,7 +109,7 @@ describe('event worker route auth', () => {
       },
       nextRecommendedRunSeconds: 300,
     });
-    expect(processBatch).toHaveBeenCalledWith(10, 5, 8000, expect.any(Number));
+    expect(processBatch).toHaveBeenCalledWith(10, 5, 8000, expect.any(Number), expect.any(Number));
   });
 
   it('passes bounded env-configured runtime limits into the worker', async () => {
@@ -132,6 +132,6 @@ describe('event worker route auth', () => {
         maxAiCallsPerRun: 3,
       },
     });
-    expect(processBatch).toHaveBeenCalledWith(12, 3, 17000, expect.any(Number));
+    expect(processBatch).toHaveBeenCalledWith(12, 3, 17000, expect.any(Number), expect.any(Number));
   });
 });

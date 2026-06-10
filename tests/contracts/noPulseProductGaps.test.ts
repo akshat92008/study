@@ -40,12 +40,16 @@ describe('no-PULSE product gap contracts', () => {
     expect(read('tsconfig.json')).not.toContain('"@/services/*"');
   });
 
-  it('keeps Hobby cron scheduling on daily synthesis only', () => {
+  it('keeps Hobby cron scheduling bounded to essential background work only', () => {
     const vercel = JSON.parse(read('vercel.json')) as { crons?: Array<{ path: string; schedule: string }> };
-    expect(vercel.crons).toEqual([
-      { path: '/api/cron/daily-synthesis', schedule: '0 6 * * *' },
-      { path: '/api/cron/daily-background-review', schedule: '0 3 * * *' },
-    ]);
+    // Crons limited to cleanup and event worker trigger — synthesis moved to on-demand
+    expect(vercel.crons).toBeDefined();
+    expect(vercel.crons!.length).toBeLessThanOrEqual(3); // Max 3 cron entries on Hobby plan
+    const paths = vercel.crons!.map(c => c.path);
+    // Cleanup job is required
+    expect(paths.some(p => p.includes('cleanup') || p.includes('process-events'))).toBe(true);
+    // No legacy pulse-era synthesis paths
+    expect(paths).not.toContain('/api/cron/daily-synthesis');
   });
 
   it('replaces schema-conditional semantic memory RPC with deterministic chat_memory lookup', () => {

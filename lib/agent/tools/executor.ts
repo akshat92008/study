@@ -19,6 +19,7 @@ import { getToolConfig } from '@/lib/agent/tools/toolsets';
 import { ToolExecutionError, GuardrailBlockedError } from '@/lib/agent/errors';
 import { HooksManager } from '@/lib/agent/hooks';
 import { logger } from '@/lib/utils/logger';
+import { stableKey } from '@/lib/agent/tools/learning/common';
 
 export interface DurableExecuteOptions {
   supabase: SupabaseClient;
@@ -190,10 +191,11 @@ export async function executeDurableTool(
       const parsedArgs = tool.inputSchema.parse(args);
 
       // Set context for the tool - PRESERVE ORIGINAL CONTEXT IF PROVIDED
+      const idempotencyKey = stableKey(['tool-exec', runId, toolName, JSON.stringify(args)]);
       const toolContext: AgentToolContext = context
         ? {
             ...context,
-            idempotencyKey: `${runId}:${toolName}:${startedAt}`,
+            idempotencyKey,
           }
         : {
             supabase,
@@ -203,7 +205,7 @@ export async function executeDurableTool(
             sessionId: null,
             goalId: null,
             runId,
-            idempotencyKey: `${runId}:${toolName}:${startedAt}`,
+            idempotencyKey,
             now,
             observation: {} as any,
           };
@@ -429,6 +431,7 @@ export async function executeLearningTool(
 
   try {
     const parsed = tool.inputSchema.parse(args);
+    const idempotencyKey = stableKey(['tool-exec', runId, toolName, JSON.stringify(parsed)]);
     const toolContext = {
       supabase: context.supabase,
       userId: context.userId,
@@ -437,7 +440,7 @@ export async function executeLearningTool(
       sessionId: null,
       goalId: context.goalId ?? null,
       runId,
-      idempotencyKey: `${runId}:${toolName}`,
+      idempotencyKey,
       now: new Date(),
       observation: context.observation as any,
     };

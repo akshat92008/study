@@ -42,9 +42,9 @@ describe('Environment Preflight Hardening', () => {
   it('rejects missing admin config', () => {
     const res = runPreflight({
       NEXT_PUBLIC_SUPABASE_URL: 'http://localhost:54321',
-      NEXT_PUBLIC_SUPABASE_ANON_KEY: 'test',
-      SUPABASE_SERVICE_ROLE_KEY: 'test',
-      INTERNAL_CRON_SECRET: 'strong-secret-value',
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: 'test-anon-key',
+      SUPABASE_SERVICE_ROLE_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.test-service-role-key-value',
+      INTERNAL_CRON_SECRET: 'strong-secret-for-admin-check',
       ADMIN_EMAILS: '',
       ADMIN_USER_IDS: '',
       AI_DAILY_BUDGET_USD: '10',

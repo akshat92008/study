@@ -17,7 +17,7 @@ describe('private beta MVP surface', () => {
     for (const label of ['Today', 'Sources', 'AI Tutor', 'Mistake Review', 'Progress']) {
       expect(navText).toContain(label);
     }
-    expect(navText).toContain("feature: 'ENABLE_KNOWLEDGE_UI'");
+    expect(navText).toContain("feature: 'knowledge_ui'");
 
     for (const disabled of ['/planner', '/analytics', '/mistakes', '/mentor', '/tutor']) {
       expect(navText).not.toContain(`route: '${disabled}'`);

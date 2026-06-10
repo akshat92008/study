@@ -4,7 +4,7 @@ import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/li
 import { ingestLearningSignal } from '@/lib/learning-signals/ingest';
 import { jsonWithRequestId, requireAutopsyV3User } from '@/lib/autopsy-v3/permissions';
 import { writePatternMemoryForUser } from '@/lib/amaura/agents/repositories';
-import { runCognitionAgentTurn } from '@/lib/agent/runtime';
+import { runHermesTurn } from '@/lib/agent/runtime';
 import { logger } from '@/lib/utils/logger';
 
 const BodySchema = z.object({
@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
     // Phase 7: Wire reflection through agent runtime for ATLAS/MEMORY mutations
     let agentLoopResult: any = null;
     try {
-      agentLoopResult = await runCognitionAgentTurn({
+      agentLoopResult = await runHermesTurn({
         userId: user.id,
         channel: 'autopsy',
         goalId: parsed.data.goalId ?? undefined,

@@ -122,6 +122,19 @@ export async function projectLearningSignal(
               reason: `Mastery updated for ${conceptName} based on ${signal.type}`,
               idempotencyKey: stableKey([idempotencyKey, 'mastery-act']),
             });
+
+            // Hermes v1 Audit Trail
+            await supabase.from('learning_state_changes').insert({
+              user_id: userId,
+              run_id: options.context.runId,
+              tool_name: 'projectLearningSignal',
+              event_type: 'atlas_mastery_updated',
+              concept_id: resolution.conceptId,
+              before_state: { mastery: masteryRes.oldMastery, score: masteryRes.oldScore },
+              after_state: { mastery: masteryRes.newMastery, score: masteryRes.newScore },
+              diff_summary: { delta: masteryRes.delta, signal: signal.type, reason: `Mastery updated for ${conceptName}` },
+              policy_decision: 'auto_approved_by_projector',
+            });
           }
         } catch (masteryErr) {
           logger.warn('Projector: failed to update mastery', { userId, signalType: signal.type, error: masteryErr });
@@ -167,6 +180,18 @@ export async function projectLearningSignal(
               evidence: { signal, cardId: card.id },
               reason: `Revision card created for ${signal.concept} based on ${signal.type}`,
               idempotencyKey: stableKey([idempotencyKey, 'card-act']),
+            });
+
+            // Hermes v1 Audit Trail
+            await supabase.from('learning_state_changes').insert({
+              user_id: userId,
+              run_id: options.context.runId,
+              tool_name: 'projectLearningSignal',
+              event_type: 'memory_card_created',
+              before_state: null,
+              after_state: { card_id: card.id, front: generated.front, back: generated.back },
+              diff_summary: { signal: signal.type, reason: `Revision card created for ${signal.concept}` },
+              policy_decision: 'auto_approved_by_projector',
             });
           }
         }
@@ -214,6 +239,19 @@ export async function projectLearningSignal(
               evidence: { signal, mistakeId: mistakeRes.mistake.id },
               reason: `Mistake recorded for ${signal.concept} based on ${signal.type}`,
               idempotencyKey: stableKey([idempotencyKey, 'mistake-act']),
+            });
+
+            // Hermes v1 Audit Trail
+            await supabase.from('learning_state_changes').insert({
+              user_id: userId,
+              run_id: options.context.runId,
+              tool_name: 'projectLearningSignal',
+              event_type: 'mistake_recorded',
+              concept_id: mistakeRes.mistake.concept_id || null,
+              before_state: null,
+              after_state: { mistake_id: mistakeRes.mistake.id, mistake_text: mistakeRes.mistake.mistake_text },
+              diff_summary: { signal: signal.type, severity: mistakeRes.mistake.severity, reason: `Mistake recorded for ${signal.concept}` },
+              policy_decision: 'auto_approved_by_projector',
             });
           }
         }

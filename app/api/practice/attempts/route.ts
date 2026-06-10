@@ -9,7 +9,7 @@ import { checkIdempotency } from '@/lib/middleware/idempotency';
 import { ingestLearningSignals } from '@/lib/learning-signals/ingest';
 import { syncStudyProfileAfterPracticeAttempt } from '@/lib/services/study-profile-sync.service';
 import { PracticeService } from '@/lib/services/practice.service';
-import { runCognitionAgentTurn } from '@/lib/agent/runtime';
+import { runHermesTurn } from '@/lib/agent/runtime';
 import { logger } from '@/lib/utils/logger';
 
 const AttemptsSchema = z.object({
@@ -314,7 +314,7 @@ export async function POST(req: NextRequest) {
     // Fix 11: Call runtime exactly once in the route
     let agentLoopResult: any = null;
     try {
-      agentLoopResult = await runCognitionAgentTurn({
+      agentLoopResult = await runHermesTurn({
         userId: user.id,
         channel: 'practice',
         goalId: set.goal_id ?? goalId ?? undefined,
@@ -370,7 +370,7 @@ export async function POST(req: NextRequest) {
       message: error instanceof Error ? error.message : 'Profile sync failed.',
     }));
 
-    // Fix 11: Removed redundant ingestLearningSignals and duplicate runCognitionAgentTurn blocks below
+    // Fix 11: Removed redundant ingestLearningSignals and duplicate runHermesTurn blocks below
     
     const loopSummary = {
       saved: true,

@@ -24,10 +24,10 @@ export default async function AdminUserDetailPage({ params }: { params: Promise<
   ] = await Promise.all([
     supabase.from('profiles').select('*').eq('id', userId).single(),
     supabase.from('study_sessions').select('*', { count: 'exact', head: true }).eq('user_id', userId),
-    supabase.from('goals').select('*', { count: 'exact', head: true }).eq('user_id', userId),
+    supabase.from('learning_goals').select('*', { count: 'exact', head: true }).eq('user_id', userId),
     supabase.from('chat_sessions').select('*', { count: 'exact', head: true }).eq('user_id', userId),
     supabase.from('autopsy_jobs').select('*', { count: 'exact', head: true }).eq('user_id', userId),
-    supabase.from('revision_cards').select('*', { count: 'exact', head: true }).eq('user_id', userId).lte('due_at', new Date().toISOString()),
+    supabase.from('revision_cards').select('*', { count: 'exact', head: true }).eq('user_id', userId).lte('due', new Date().toISOString()),
     supabase.from('study_sessions').select('id, created_at, status, streak_days').eq('user_id', userId).order('created_at', { ascending: false }).limit(5)
   ]);
 

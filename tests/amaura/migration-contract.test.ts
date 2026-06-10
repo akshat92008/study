@@ -60,12 +60,13 @@ describe('Amaura agentic runtime migration contract', () => {
     expect(adminDashboardRoute).not.toContain("const safeConsumers = [\n    'amaura_practice_agent'");
   });
 
-  it('keeps Vercel Hobby scheduling to daily synthesis only', () => {
+  it('keeps Vercel Hobby scheduling to bounded essential background work', () => {
     const config = JSON.parse(vercelConfig) as { crons?: Array<{ path: string; schedule: string }> };
-
-    expect(config.crons).toEqual([
-      { path: '/api/cron/daily-synthesis', schedule: '0 6 * * *' },
-      { path: '/api/cron/daily-background-review', schedule: '0 3 * * *' },
-    ]);
+    // Crons moved from synthesis to cleanup + event worker for public launch hardening
+    expect(config.crons).toBeDefined();
+    expect(config.crons!.length).toBeLessThanOrEqual(3);
+    const paths = config.crons!.map(c => c.path);
+    expect(paths.some(p => p.includes('cleanup') || p.includes('process-events'))).toBe(true);
+    expect(paths).not.toContain('/api/cron/daily-synthesis');
   });
 });

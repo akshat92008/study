@@ -13,7 +13,18 @@ vi.mock('@/lib/supabase/server', () => ({
         select: vi.fn(() => ({
           eq: vi.fn(() => ({
             eq: vi.fn(() => ({
-              maybeSingle: vi.fn(async () => ({ data: state.duplicate, error: null })),
+              eq: vi.fn(() => ({
+                eq: vi.fn(() => ({
+                  is: vi.fn(() => ({
+                    maybeSingle: vi.fn(async () => ({ data: state.duplicate, error: null })),
+                  })),
+                  maybeSingle: vi.fn(async () => ({ data: state.duplicate, error: null })),
+                })),
+                is: vi.fn(() => ({
+                  maybeSingle: vi.fn(async () => ({ data: state.duplicate, error: null })),
+                })),
+                maybeSingle: vi.fn(async () => ({ data: state.duplicate, error: null })),
+              })),
             })),
           })),
         })),

@@ -110,13 +110,16 @@ export async function finalizeChatTurn(input: ChatTurnFinalizerInput): Promise<C
       turnStatus: input.turnStatus ?? 'assistant_saved',
     });
   } catch (error) {
-    // Mark the user message as provider-failed so the UI can show retry
+    // Mark the user message as provider-failed so the UI can show retry (best-effort)
     if (input.userMessageId) {
-      await input.supabase
-        .from('chat_messages')
-        .update({ turn_status: 'failed_provider' })
-        .eq('id', input.userMessageId)
-        .then(() => {}); // best-effort, non-blocking
+      try {
+        await input.supabase
+          .from('chat_messages')
+          .update({ turn_status: 'failed_provider' })
+          .eq('id', input.userMessageId);
+      } catch {
+        // non-blocking — ignore errors updating user message status
+      }
     }
     if (input.budgetReservationId) {
       await releaseBudget(input.budgetReservationId, error instanceof Error ? error.message : 'assistant_persistence_failed');
