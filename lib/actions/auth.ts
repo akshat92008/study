@@ -44,6 +44,11 @@ export async function signOut() {
 }
 
 export async function signInAsGuest() {
+  const { getAppLaunchMode } = await import('@/lib/feature-registry');
+  if (getAppLaunchMode() === 'public_paid') {
+    return { error: 'Guest access is disabled in the public release. Please sign up for an account.' };
+  }
+
   const supabase = await createClient();
   
   const { data, error } = await supabase.auth.signInAnonymously();

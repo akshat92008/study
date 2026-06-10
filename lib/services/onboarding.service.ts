@@ -139,6 +139,7 @@ export async function completeOnboardingForUser({
     metadata: {
       ...(existingGoal?.metadata ?? {}),
       source: 'onboarding',
+      version: 1,
       subjects: parsed.subjects,
       dailyHours: parsed.dailyHours,
       currentLevel: parsed.currentLevel,

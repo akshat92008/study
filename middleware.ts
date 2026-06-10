@@ -14,9 +14,7 @@ const MVP_RESTRICTIONS: Array<{ path: string; flag?: AppFeature; redirect?: stri
   { path: "/cognition", flag: 'atlas_ui', redirect: "/dashboard" },
   { path: "/health", flag: undefined, redirect: "/dashboard" },
   { path: "/autopsy/deep", flag: undefined, redirect: "/autopsy" },
-  { path: "/onboarding", flag: undefined, redirect: "/dashboard" },
   { path: "/pulse", flag: undefined, redirect: "/dashboard" },
-  { path: "/admin", flag: undefined, redirect: "/dashboard" }, // Admin pages handled below
 ];
 
 const PROTECTED_APIS: Array<{ path: string; redirect?: string }> = [
@@ -148,6 +146,8 @@ export async function middleware(request: NextRequest) {
       },
     }
   );
+
+  response.headers.set("x-pathname", pathname);
 
   const { data: { user } } = await supabase.auth.getUser();
 

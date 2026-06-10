@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
+import { getAuthRedirectUrl } from '@/lib/auth/redirects';
 import { CinematicLandingPage } from '@/components/landing/CinematicLandingPage';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
@@ -22,13 +23,15 @@ function getAvailableLandingVideos() {
 export default async function LandingPage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
-  if (user) {
-    const { data: profile } = await supabase
-      .from('profiles')
-      .select('onboarding_complete')
-      .eq('id', user.id)
-      .maybeSingle();
-    redirect(profile?.onboarding_complete ? '/dashboard' : '/onboarding');
+  const { data: profile } = user ? await supabase
+    .from('profiles')
+    .select('onboarding_complete')
+    .eq('id', user.id)
+    .maybeSingle() : { data: null };
+
+  const redirectUrl = await getAuthRedirectUrl(user, profile, '/');
+  if (redirectUrl) {
+    redirect(redirectUrl);
   }
 
   return <CinematicLandingPage availableVideos={getAvailableLandingVideos()} />;
