@@ -3,15 +3,16 @@ import 'server-only';
 import { NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { isFeatureEnabled, type AppFeature } from '@/lib/feature-registry';
-import type { ManualPlan } from '@/lib/billing/plan-limits';
-import { normalizeManualPlan } from '@/lib/billing/plan-limits';
+import type { SubscriptionTier } from '@/lib/billing/tiers';
+import { normalizeSubscriptionTier } from '@/lib/billing/tiers';
 import type { FeatureName } from '@/lib/usage/enforce-feature-limit';
+import { getAppLaunchMode } from '@/lib/feature-registry';
 
 export type AccessState = {
   userId: string;
   isAdmin: boolean;
   hasBetaAccess: boolean;
-  plan: ManualPlan;
+  plan: SubscriptionTier;
   accessSource: 'admin' | 'manual_beta' | 'manual_plan' | 'free';
   betaAccessUntil: string | null;
   blockedReason?: string;
@@ -19,9 +20,9 @@ export type AccessState = {
 
 export class BetaAccessError extends Error {
   constructor(
-    readonly code: 'unauthorized' | 'beta_access_required' | 'account_suspended' | 'feature_temporarily_disabled',
+    readonly code: 'unauthorized' | 'beta_access_required' | 'account_suspended' | 'feature_temporarily_disabled' | 'payment_required',
     message: string,
-    readonly status = code === 'unauthorized' ? 401 : code === 'feature_temporarily_disabled' ? 503 : 403,
+    readonly status = code === 'unauthorized' ? 401 : code === 'feature_temporarily_disabled' ? 503 : code === 'payment_required' ? 402 : 403,
     readonly accessState?: AccessState,
   ) {
     super(message);
@@ -113,7 +114,7 @@ export async function getUserAccessState(userId: string | null | undefined): Pro
   }
 
   const profile = (data ?? {}) as Record<string, any>;
-  const manualPlan = normalizeManualPlan(profile.manual_plan ?? profile.subscription_status);
+  const manualPlan = normalizeSubscriptionTier(profile.manual_plan ?? profile.subscription_status);
   const isAdmin = isConfiguredAdmin(userId, profile.email) || manualPlan === 'admin';
   const betaAccessUntil = profile.beta_access_until ?? null;
   const hasManualPlan = manualPlan === 'founding' || manualPlan === 'pro' || manualPlan === 'admin';
@@ -174,9 +175,11 @@ export async function getUserAccessState(userId: string | null | undefined): Pro
     blockedReason:
       profile.beta_access === true && !betaUntilIsActive(betaAccessUntil)
         ? 'beta_access_expired'
-        : isFeatureEnabled('paid_gate')
-          ? 'beta_access_required'
-          : undefined,
+        : getAppLaunchMode() === 'public_paid'
+          ? 'payment_required'
+          : isFeatureEnabled('paid_gate')
+            ? 'beta_access_required'
+            : undefined,
   };
 }
 
@@ -194,6 +197,14 @@ export async function requireBetaAccess(userId: string | null | undefined): Prom
     );
   }
   if (!access.hasBetaAccess) {
+    if (access.blockedReason === 'payment_required' || getAppLaunchMode() === 'public_paid') {
+      throw new BetaAccessError(
+        'payment_required',
+        'An active subscription is required to access this feature.',
+        402,
+        access,
+      );
+    }
     throw new BetaAccessError(
       'beta_access_required',
       'Cognition OS is currently in a limited beta. Ask the admin to activate your beta access.',

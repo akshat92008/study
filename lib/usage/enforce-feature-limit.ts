@@ -3,8 +3,9 @@ import 'server-only';
 import { NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { assertFeatureAccess } from '@/lib/access/beta-access';
-import { getFeatureLimits } from '@/lib/feature-registry';
-import { getFeatureLimit, getPlanLimits, type ManualPlan } from '@/lib/billing/plan-limits';
+import { getFeatureLimits, getAppLaunchMode } from '@/lib/feature-registry';
+import { getFeatureLimit, getPlanLimits } from '@/lib/billing/plan-limits';
+import { type SubscriptionTier } from '@/lib/billing/tiers';
 import { logger } from '@/lib/utils/logger';
 
 export type FeatureName =
@@ -23,7 +24,7 @@ export type FeatureLimitCheck = {
   allowed: boolean;
   userId: string;
   feature: FeatureName;
-  plan: ManualPlan;
+  plan: SubscriptionTier;
   limit: number;
   used: number;
   remaining: number;
@@ -358,16 +359,24 @@ export async function getAdminUsageSnapshot() {
 }
 
 export function featureLimitResponse(check: FeatureLimitCheck, requestId?: string): NextResponse {
+  const isPublicPaid = getAppLaunchMode() === 'public_paid';
+  const shouldRequireUpgrade = isPublicPaid && check.plan === 'free' && check.code !== 'usage_system_unavailable';
+  
   return NextResponse.json(
     {
-      error: check.code ?? 'usage_limit_exceeded',
-      message: check.message ?? 'Your beta usage limit for this feature has been reached.',
+      error: shouldRequireUpgrade ? 'payment_required' : (check.code ?? 'usage_limit_exceeded'),
+      message: shouldRequireUpgrade 
+        ? 'Upgrade to a paid plan to continue using this feature.' 
+        : (check.message ?? 'Your beta usage limit for this feature has been reached.'),
       limit: check.limit,
       used: check.used,
       remaining: check.remaining,
       plan: check.plan,
       ...(requestId ? { requestId } : {}),
     },
-    { status: check.code === 'usage_system_unavailable' ? 503 : 429, headers: requestId ? { 'x-request-id': requestId } : undefined },
+    { 
+      status: check.code === 'usage_system_unavailable' ? 503 : shouldRequireUpgrade ? 402 : 429, 
+      headers: requestId ? { 'x-request-id': requestId } : undefined 
+    },
   );
 }

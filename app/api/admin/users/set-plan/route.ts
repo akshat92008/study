@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { requireAdmin } from '@/lib/auth/admin';
-import { setManualPlan } from '@/lib/admin/user-management';
+import { setSubscriptionTier } from '@/lib/admin/user-management';
 import { readAdminUserRequest, requireTargetUserId } from '../_request';
 
 export async function POST(req: NextRequest) {
@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await readAdminUserRequest(req);
-    await setManualPlan(auth.user.id, requireTargetUserId(body), String(body.plan || 'free'));
+    await setSubscriptionTier(auth.user.id, requireTargetUserId(body), String(body.plan || 'free'));
     return NextResponse.json({ ok: true });
   } catch (error: any) {
     return NextResponse.json({ error: 'admin_action_failed', message: error.message }, { status: 400 });

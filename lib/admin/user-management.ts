@@ -1,7 +1,7 @@
 import 'server-only';
 
 import { createAdminClient } from '@/lib/supabase/admin';
-import { normalizeManualPlan, type ManualPlan } from '@/lib/billing/plan-limits';
+import { normalizeSubscriptionTier, type SubscriptionTier } from '@/lib/billing/tiers';
 import { logAdminAction } from '@/lib/admin/audit';
 
 export async function grantBetaAccess(adminUserId: string, targetUserId: string, betaAccessUntil?: string | null) {
@@ -35,8 +35,8 @@ export async function revokeBetaAccess(adminUserId: string, targetUserId: string
   await logAdminAction(adminUserId, 'revoke_beta_access', { targetUserId });
 }
 
-export async function setManualPlan(adminUserId: string, targetUserId: string, plan: string) {
-  const manualPlan: ManualPlan = normalizeManualPlan(plan);
+export async function setSubscriptionTier(adminUserId: string, targetUserId: string, plan: string) {
+  const manualPlan: SubscriptionTier = normalizeSubscriptionTier(plan);
   const supabase = createAdminClient();
   const { error } = await supabase
     .from('profiles')

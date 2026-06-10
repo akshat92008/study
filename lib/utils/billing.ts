@@ -2,7 +2,8 @@ import { NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { logger } from '@/lib/utils/logger';
 import { getMaxPromptChars, isPromptTooLarge } from '@/lib/ai/token-budget';
-import { getPlanLimits, normalizeManualPlan, type ManualPlan } from '@/lib/billing/plan-limits';
+import { normalizeSubscriptionTier, type SubscriptionTier } from '@/lib/billing/tiers';
+import { getPlanLimits } from '@/lib/billing/plan-limits';
 
 export type FeatureLimit =
   | 'chat_messages_daily'
@@ -275,7 +276,7 @@ export async function checkUsageLimit(
   }
 }
 
-function limitForManualPlan(plan: ManualPlan, feature: FeatureLimit): number {
+function limitForSubscriptionTier(plan: SubscriptionTier, feature: FeatureLimit): number {
   const limits = getPlanLimits(plan);
   switch (feature) {
     case 'chat_messages_daily':
@@ -299,12 +300,12 @@ function limitForManualPlan(plan: ManualPlan, feature: FeatureLimit): number {
 
 async function getEffectiveLegacyLimit(userId: string, feature: FeatureLimit): Promise<number> {
   const plan = await getUserSubscriptionStatus(userId);
-  return plan === 'free' ? getLimit(feature) : limitForManualPlan(plan, feature);
+  return plan === 'free' ? getLimit(feature) : limitForSubscriptionTier(plan, feature);
 }
 
 export async function getUserSubscriptionStatus(
   userId: string
-): Promise<ManualPlan> {
+): Promise<SubscriptionTier> {
   try {
     const supabase = createAdminClient();
     const { data, error } = await supabase
@@ -314,7 +315,7 @@ export async function getUserSubscriptionStatus(
       .maybeSingle();
     if (error) throw error;
 
-    const manualPlan = normalizeManualPlan((data as any)?.manual_plan);
+    const manualPlan = normalizeSubscriptionTier((data as any)?.manual_plan);
     if (manualPlan !== 'free') return manualPlan;
 
     const status = String((data as any)?.subscription_status || 'free').toLowerCase();

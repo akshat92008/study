@@ -1,7 +1,6 @@
 import type { FeatureName } from '@/lib/usage/enforce-feature-limit';
 import { getUserAccessState } from '@/lib/access/beta-access';
-
-export type ManualPlan = 'free' | 'founding' | 'pro' | 'admin';
+import { type SubscriptionTier, normalizeSubscriptionTier } from './tiers';
 
 export type PlanLimits = {
   dailyChatMessages: number;
@@ -17,7 +16,7 @@ export type PlanLimits = {
   monthlyAiBudgetUsd: number;
 };
 
-export const PLAN_LIMITS: Record<ManualPlan, PlanLimits> = {
+export const PLAN_LIMITS: Record<SubscriptionTier, PlanLimits> = {
   free: {
     dailyChatMessages: 3,
     dailyAiCalls: 3,
@@ -72,17 +71,11 @@ export const PLAN_LIMITS: Record<ManualPlan, PlanLimits> = {
   },
 };
 
-export function normalizeManualPlan(value: unknown): ManualPlan {
-  const plan = String(value || 'free').toLowerCase();
-  if (plan === 'founding' || plan === 'pro' || plan === 'admin') return plan;
-  return 'free';
+export function getPlanLimits(plan: SubscriptionTier | string | null | undefined): PlanLimits {
+  return PLAN_LIMITS[normalizeSubscriptionTier(plan)];
 }
 
-export function getPlanLimits(plan: ManualPlan | string | null | undefined): PlanLimits {
-  return PLAN_LIMITS[normalizeManualPlan(plan)];
-}
-
-export function getFeatureLimit(plan: ManualPlan | string | null | undefined, feature: FeatureName): number {
+export function getFeatureLimit(plan: SubscriptionTier | string | null | undefined, feature: FeatureName): number {
   const limits = getPlanLimits(plan);
   switch (feature) {
     case 'chat_message':
@@ -108,7 +101,7 @@ export function getFeatureLimit(plan: ManualPlan | string | null | undefined, fe
   }
 }
 
-export async function getUserEffectivePlan(userId: string): Promise<ManualPlan> {
+export async function getUserEffectivePlan(userId: string): Promise<SubscriptionTier> {
   const access = await getUserAccessState(userId);
   return access.plan;
 }
