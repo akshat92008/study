@@ -1,7 +1,6 @@
 import { redirect } from 'next/navigation';
-import Link from 'next/link';
 import { requireAdmin } from '@/lib/auth/admin';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
+import { AdminCard } from './AdminCard';
 
 const adminSections = [
   {
@@ -94,59 +93,13 @@ export default async function AdminRootPage() {
         gap: 'var(--sp-5)',
       }}>
         {adminSections.map((section) => (
-          <Link
+          <AdminCard
             key={section.title}
+            title={section.title}
+            description={section.description}
             href={section.href}
-            style={{ textDecoration: 'none' }}
-          >
-            <div
-              style={{
-                cursor: 'pointer',
-                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-              }}
-              onMouseEnter={(e) => {
-                const card = e.currentTarget.querySelector('[data-card]');
-                if (card) {
-                  (card as HTMLElement).style.transform = 'translateY(-4px)';
-                  (card as HTMLElement).style.boxShadow = 'var(--shadow-glow-blue)';
-                }
-              }}
-              onMouseLeave={(e) => {
-                const card = e.currentTarget.querySelector('[data-card]');
-                if (card) {
-                  (card as HTMLElement).style.transform = 'translateY(0)';
-                  (card as HTMLElement).style.boxShadow = 'var(--shadow-sm)';
-                }
-              }}
-            >
-              <Card
-                variant="glass"
-                data-card="true"
-                style={{
-                  transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                }}
-              >
-                <CardHeader>
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 'var(--sp-3)',
-                    color: 'var(--accent-blue)',
-                  }}>
-                    {section.icon}
-                  </div>
-                  <CardTitle style={{ marginTop: 'var(--sp-3)' }}>{section.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p style={{
-                    margin: 0,
-                    color: 'var(--text-secondary)',
-                    fontSize: '0.875rem',
-                  }}>{section.description}</p>
-                </CardContent>
-              </Card>
-            </div>
-          </Link>
+            icon={section.icon}
+          />
         ))}
       </div>
     </main>
