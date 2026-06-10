@@ -6,7 +6,8 @@ import type { LearningGoal } from '@/stores/appStore';
 import { Loader2, Brain, MessageSquare, Activity, RefreshCw, Upload, X } from 'lucide-react';
 import { getPreset } from '@/lib/types/universal-domain';
 import { useRouter } from 'next/navigation';
-import CognitionDashboard from '@/components/cognition/CognitionDashboard';
+import dynamic from 'next/dynamic';
+const CognitionDashboard = dynamic(() => import('@/components/cognition/CognitionDashboard'), { ssr: false, loading: () => <div className="p-12 flex justify-center"><Loader2 className="animate-spin text-purple-500" /></div> });
 import RevisionQueue from '@/components/revision/RevisionQueue';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import Button from '@/components/ui/Button';
@@ -177,7 +178,7 @@ export default function DashboardPage() {
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
         <div>
           <h1 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--text-primary)', margin: 0 }}>
-            Repair Command Center
+            Cognition Dashboard
           </h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', marginTop: 4, lineHeight: 1.5 }}>
             {activeGoal

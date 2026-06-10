@@ -79,7 +79,7 @@ export class EventWorkerService {
   /**
    * Processes a batch of events by acquiring a lease and routing to the respective consumer.
    */
-  static async processBatch(limit: number = 25, leaseTimeoutMinutes: number = 5, maxRuntimeMs: number = 45000, startTimeMs: number = Date.now()) {
+  static async processBatch(limit: number = 25, leaseTimeoutMinutes: number = 5, maxRuntimeMs: number = 45000, startTimeMs: number = Date.now(), maxAiCalls: number = 3) {
     const supabase = createAdminClient();
     const workerId = crypto.randomUUID();
     const actualLimit = Math.min(limit, 50);
@@ -116,7 +116,7 @@ export class EventWorkerService {
       leaseCount: leases.length,
     });
 
-    return await this.processLeasesWithBoundedConcurrency(leases, workerId, maxRuntimeMs, startTimeMs);
+    return await this.processLeasesWithBoundedConcurrency(leases, workerId, maxRuntimeMs, startTimeMs, maxAiCalls);
   }
 
   static async processSafeUserEvents(userId: string, maxEvents: number = 2) {
@@ -164,7 +164,7 @@ export class EventWorkerService {
       };
     }
 
-    return this.processLeasesWithBoundedConcurrency(leases, workerId, maxRuntimeMs, startTimeMs);
+    return this.processLeasesWithBoundedConcurrency(leases, workerId, maxRuntimeMs, startTimeMs, 2);
   }
 
   static async getHealthSummary(): Promise<QueueHealthSummary> {
@@ -231,7 +231,7 @@ export class EventWorkerService {
     };
   }
 
-  private static async processLeasesWithBoundedConcurrency(leases: any[], workerId: string, maxRuntimeMs: number, startTimeMs: number) {
+  private static async processLeasesWithBoundedConcurrency(leases: any[], workerId: string, maxRuntimeMs: number, startTimeMs: number, maxAiCalls: number = 3) {
     const concurrency = this.getConcurrencyLimit();
     let nextIndex = 0;
     
@@ -249,6 +249,10 @@ export class EventWorkerService {
       while (nextIndex < leases.length) {
         if (Date.now() - startTimeMs >= maxRuntimeMs) {
           break; // Let the loop exit, we will skip the rest
+        }
+        if (agentActionsApplied + agentActionsProposed + agentActionsFailed >= maxAiCalls) {
+          logger.info('Event worker reached max AI calls per run, breaking early', { feature: 'event-worker', maxAiCalls });
+          break;
         }
 
         const lease = leases[nextIndex++];

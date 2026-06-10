@@ -143,7 +143,20 @@ export const EVENT_CONSUMER_MATRIX = {
 export type RoutedEventType = keyof typeof EVENT_CONSUMER_MATRIX;
 
 export function getConsumersForEvent(type: string): readonly EventConsumer[] {
-  return EVENT_CONSUMER_MATRIX[type as RoutedEventType] ?? [];
+  const consumers = EVENT_CONSUMER_MATRIX[type as RoutedEventType] ?? [];
+  if (process.env.ENABLE_EXPERIMENTAL_AGENTS === 'true') {
+    return consumers;
+  }
+  
+  // Public Launch Routing Policy (Phase 11.1)
+  const experimentalConsumers = new Set<string>([
+    'concept_expansion_engine',
+    'planner_agent',
+    'command_agent',
+    ...AMAURA_CONSUMERS,
+  ]);
+  
+  return consumers.filter(c => !experimentalConsumers.has(c));
 }
 
 export function assertEventConsumerRoute(type: string, consumer: string): asserts consumer is EventConsumer {

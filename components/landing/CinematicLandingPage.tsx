@@ -479,7 +479,7 @@ function HeroSection() {
         <Reveal>
           <div className="inline-flex items-center gap-2 rounded-full border border-violet-300/20 bg-violet-300/[0.08] px-4 py-2 text-[0.85rem] font-medium text-violet-100 shadow-[0_0_30px_rgba(124,58,237,0.16)] backdrop-blur">
             <Sparkles className="h-4 w-4" />
-            Private beta for serious learners
+            Designed for serious learners
           </div>
         </Reveal>
 
@@ -505,15 +505,15 @@ function HeroSection() {
 
         <Reveal delay={0.24}>
           <p className="mx-auto mt-7 max-w-3xl text-[1.05rem] leading-8 text-white/68 sm:text-[1.22rem]">
-            Cognition OS turns your goals, sources, mistakes, and reviews into a daily learning mission &mdash; guided by an AI tutor that knows your progress.
+            An AI companion that knows your materials, mistakes, weak spots, and daily plan.
           </p>
         </Reveal>
 
         <Reveal delay={0.32}>
           <div className="mt-9 flex w-full max-w-md [flex-direction:column] gap-3 sm:max-w-none sm:[flex-direction:row] sm:justify-center">
             <PrimaryButton href="/dashboard">Launch Cognition OS</PrimaryButton>
-            <PrimaryButton href="/waitlist" variant="secondary">
-              Join private beta
+            <PrimaryButton href="/signup" variant="secondary">
+              Get Started
             </PrimaryButton>
           </div>
         </Reveal>
@@ -1390,12 +1390,12 @@ function PricingSection() {
       <div className={pageContainerClass}>
         <Reveal className="mx-auto max-w-3xl text-center">
           <h2 className="font-display text-[2.35rem] font-semibold leading-tight text-white sm:text-[3.55rem]">
-            Start in private beta.
+            Start learning today.
           </h2>
         </Reveal>
         <div className="mx-auto mt-12 grid max-w-5xl gap-4 md:grid-cols-2">
           <PricingCard
-            title="Free Beta"
+            title="Basic"
             icon={Rocket}
             highlighted
             items={[
@@ -1405,11 +1405,11 @@ function PricingSection() {
               'Review memory cards',
               'Generate daily missions',
             ]}
-            cta="Join private beta"
-            href="/waitlist"
+            cta="Get Started"
+            href="/signup"
           />
           <PricingCard
-            title="Pro Coming Soon"
+            title="Pro"
             icon={CircleDollarSign}
             items={[
               'Larger source memory',
@@ -1418,7 +1418,7 @@ function PricingSection() {
               'More review intelligence',
               'Priority limits',
             ]}
-            cta="Launch app"
+            cta="Subscribe"
             href="/dashboard"
           />
         </div>
@@ -1505,8 +1505,8 @@ function FinalCTA() {
             </p>
             <div className="mt-8 flex [flex-direction:column] justify-center gap-3 sm:[flex-direction:row]">
               <PrimaryButton href="/dashboard">Launch Cognition OS</PrimaryButton>
-              <PrimaryButton href="/waitlist" variant="secondary">
-                Join private beta
+              <PrimaryButton href="/signup" variant="secondary">
+                Sign up
               </PrimaryButton>
             </div>
           </div>

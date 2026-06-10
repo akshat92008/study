@@ -54,7 +54,7 @@ export default function SignupPage() {
           <Input id="signup-name" name="fullName" label="Full Name" placeholder="Your name" required />
           <Input id="signup-email" name="email" type="email" label="Email" placeholder="you@example.com" required />
           <Input id="signup-password" name="password" type="password" label="Password" placeholder="Min 8 characters" required minLength={8} />
-          <Input id="signup-invite" name="inviteCode" label="Invite Code" placeholder="Optional unless beta access is gated" />
+          <Input id="signup-invite" name="inviteCode" label="Invite Code" placeholder="Optional" />
           {error && <p style={{ color: 'var(--danger)', fontSize: 'var(--fs-sm)' }}>{error}</p>}
           <Button id="signup-submit" type="submit" isLoading={loading} style={{ width: '100%', marginTop: 'var(--sp-2)' }}>
             Create Account

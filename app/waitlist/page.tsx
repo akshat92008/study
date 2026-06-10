@@ -59,7 +59,7 @@ export default function WaitlistPage() {
           Join the Cognition OS Waitlist
         </h1>
         <p style={{ color: 'var(--text-tertiary)', fontSize: 'var(--fs-sm)', marginBottom: 'var(--sp-6)' }}>
-          Public beta seats are capped so the product stays stable and affordable.
+          Access is rolling out in cohorts to ensure stability and quality.
         </p>
 
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>

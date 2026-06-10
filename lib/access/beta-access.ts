@@ -191,7 +191,7 @@ export async function requireBetaAccess(userId: string | null | undefined): Prom
   if (access.blockedReason === 'account_suspended') {
     throw new BetaAccessError(
       'account_suspended',
-      'Your beta access is currently paused. Contact support.',
+      'Your account is currently paused. Contact support.',
       403,
       access,
     );
@@ -207,7 +207,7 @@ export async function requireBetaAccess(userId: string | null | undefined): Prom
     }
     throw new BetaAccessError(
       'beta_access_required',
-      'Cognition OS is currently in a limited beta. Ask the admin to activate your beta access.',
+      'An active subscription is required to access this feature.',
       403,
       access,
     );

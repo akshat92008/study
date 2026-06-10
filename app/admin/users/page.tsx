@@ -4,6 +4,8 @@ import { createAdminClient } from '@/lib/supabase/admin';
 
 export const dynamic = 'force-dynamic';
 
+import { UserActionForms } from './UserActionForms';
+
 type SearchParams = Promise<{ q?: string }> | { q?: string };
 
 const profileColumns = 'id,email,full_name,beta_access,beta_access_until,manual_plan,suspended,suspended_reason,created_at';
@@ -33,41 +35,6 @@ async function findProfiles(q?: string) {
     for (const profile of result.data ?? []) profiles.set(profile.id, profile);
   }
   return Array.from(profiles.values()).slice(0, 25);
-}
-
-function UserActionForms({ userId }: { userId: string }) {
-  const input = <input type="hidden" name="targetUserId" value={userId} />;
-  return (
-    <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-      <form method="post" action="/api/admin/users/grant-beta">
-        {input}
-        <button type="submit">Grant beta</button>
-      </form>
-      <form method="post" action="/api/admin/users/revoke-beta">
-        {input}
-        <button type="submit">Revoke</button>
-      </form>
-      <form method="post" action="/api/admin/users/suspend">
-        {input}
-        <input name="reason" placeholder="Pause reason" style={{ width: 120 }} />
-        <button type="submit">Suspend</button>
-      </form>
-      <form method="post" action="/api/admin/users/unsuspend">
-        {input}
-        <button type="submit">Unsuspend</button>
-      </form>
-      <form method="post" action="/api/admin/users/set-plan">
-        {input}
-        <select name="plan" defaultValue="free">
-          <option value="free">free</option>
-          <option value="founding">founding</option>
-          <option value="pro">pro</option>
-          <option value="admin">admin</option>
-        </select>
-        <button type="submit">Set plan</button>
-      </form>
-    </div>
-  );
 }
 
 export default async function AdminUsersPage({ searchParams }: { searchParams: SearchParams }) {
@@ -101,7 +68,11 @@ export default async function AdminUsersPage({ searchParams }: { searchParams: S
           <section key={profile.id} style={{ border: '1px solid #d6dce5', borderRadius: 8, background: '#fff', padding: 14 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap', marginBottom: 12 }}>
               <div>
-                <div style={{ fontWeight: 700 }}>{profile.email || profile.full_name || 'Unknown user'}</div>
+                <div style={{ fontWeight: 700 }}>
+                  <a href={`/admin/users/${profile.id}`} style={{ textDecoration: 'none', color: '#2563eb' }}>
+                    {profile.email || profile.full_name || 'Unknown user'}
+                  </a>
+                </div>
                 <code style={{ color: '#526071' }}>{profile.id}</code>
               </div>
               <div style={{ color: '#334155' }}>

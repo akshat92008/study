@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-06-10T07:56:54.529Z",
+  "commit": "9576c14b8331794d2bb260ea219c40fb8eb0a7da",
+  "branch": "public-launch-hardening",
+  "envMode": "unknown",
+  "nodeVersion": "v26.0.0",
+  "checks": {
+    "typecheck": "FAIL",
+    "unitTests": "FAIL",
+    "envPreflight": "PASS"
+  },
+  "risks": [
+    "Typecheck failed. Build is unsafe.",
+    "Unit tests failed."
+  ],
+  "schemaVersion": "20260617000002_mvp_schema_reconciliation.sql",
+  "readiness": "NOT_READY"
+}

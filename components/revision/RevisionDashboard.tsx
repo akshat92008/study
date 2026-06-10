@@ -76,6 +76,28 @@ export default function RevisionDashboard({ data }: { data: any }) {
     }
   }
 
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (reviewing) return;
+      if (!currentCard) return;
+
+      if (!showAnswer) {
+        if (e.code === 'Space' || e.code === 'Enter') {
+          e.preventDefault();
+          setShowAnswer(true);
+        }
+      } else {
+        if (e.key === '1') { e.preventDefault(); handleRating(1); }
+        if (e.key === '2') { e.preventDefault(); handleRating(2); }
+        if (e.key === '3') { e.preventDefault(); handleRating(3); }
+        if (e.key === '4') { e.preventDefault(); handleRating(4); }
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentCard, showAnswer, reviewing]);
+
   return (
     <div className="animate-fade" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-6)' }}>
       <div>

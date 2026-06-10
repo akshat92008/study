@@ -24,7 +24,7 @@ export async function processEventWorkerRoute(req: NextRequest | Request) {
       agentActionsProposed,
       agentActionsSkipped,
       agentActionsFailed,
-    } = await EventWorkerService.processBatch(batchSize, leaseMinutes, maxRuntimeMs, start);
+    } = await EventWorkerService.processBatch(batchSize, leaseMinutes, maxRuntimeMs, start, maxAiCallsPerRun);
     logger.info('Worker batch completed', { processed, failed, skipped, durationMs: Date.now() - start, requestId, feature: 'event-worker' });
     const queue = await EventWorkerService.getHealthSummary();
 

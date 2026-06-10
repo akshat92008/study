@@ -76,6 +76,27 @@ export async function GET() {
       supabase.from('admin_audit').select('*', { count: 'exact', head: true }).eq('action', 'unauthorized_attempt'),
     ]);
     const agentRuntime = await loadAgentRuntimeObservability(supabase);
+    
+    // User metrics
+    const dayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
+    const [totalUsers, activeUsers, paidUsers, suspendedUsers] = await Promise.all([
+      supabase.from('profiles').select('*', { count: 'exact', head: true }),
+      supabase.from('profiles').select('*', { count: 'exact', head: true }).gte('last_active_at', dayAgo),
+      supabase.from('profiles').select('*', { count: 'exact', head: true }).not('subscription_status', 'in', '("free", "admin")'),
+      supabase.from('profiles').select('*', { count: 'exact', head: true }).eq('suspended', true),
+    ]);
+    const totalCount = totalUsers.count || 0;
+    const paidCount = paidUsers.count || 0;
+    const freeCount = Math.max(0, totalCount - paidCount);
+
+    const featureFlags = {
+      mode: process.env.APP_LAUNCH_MODE || 'development',
+      flags: Object.fromEntries(
+        Object.entries(process.env)
+          .filter(([k]) => k.startsWith('ENABLE_') || k.startsWith('NEXT_PUBLIC_ENABLE_'))
+          .map(([k, v]) => [k, v === 'true'])
+      )
+    };
 
     return NextResponse.json({
       systemHealth: {
@@ -110,6 +131,14 @@ export async function GET() {
         rejectedUploads: rejectedUploads?.count || 0,
         unauthorizedAdminAttempts: unauthorizedAdminAttempts?.count || 0,
       },
+      users: {
+        total: totalCount,
+        active24h: activeUsers.count || 0,
+        paid: paidCount,
+        free: freeCount,
+        suspended: suspendedUsers.count || 0,
+      },
+      featureFlags,
       agentRuntime,
       timestamp: new Date().toISOString(),
     });

@@ -14,7 +14,7 @@ WITH ranked_cards AS (
   SELECT id,
          ROW_NUMBER() OVER (
            PARTITION BY user_id, date, goal_key 
-           ORDER BY updated_at DESC, created_at DESC
+           ORDER BY created_at DESC
          ) as rn
   FROM public.session_cards
 )
@@ -64,7 +64,7 @@ BEGIN
     weak_concept_count, has_active_goal, "selectionReason",
     "mistakeCount", "weakConceptCount", "hasActiveGoal",
     "targetMistakeId", "targetRetestId", "repairPhase",
-    source_signals, updated_at
+    source_signals, created_at
   )
   VALUES (
     v_user_id, v_date, v_goal_id, (p_row->>'learner_state_version')::INT,
@@ -110,7 +110,7 @@ BEGIN
     "targetRetestId" = EXCLUDED."targetRetestId",
     "repairPhase" = EXCLUDED."repairPhase",
     source_signals = EXCLUDED.source_signals,
-    updated_at = NOW()
+    created_at = NOW()
   RETURNING to_jsonb(public.session_cards.*) INTO v_result;
 
   RETURN v_result;
@@ -147,7 +147,7 @@ BEGIN
     "completedAt"  = NOW(),
     is_completed   = TRUE,
     completed_at   = NOW(),
-    updated_at     = NOW()
+    created_at     = NOW()
   WHERE user_id = p_user_id
     AND date    = p_date
     AND goal_key = v_goal_key
@@ -159,7 +159,7 @@ BEGIN
   UPDATE public.profiles
   SET
     learner_state_version = COALESCE(learner_state_version, 0) + 1,
-    updated_at = NOW()
+    created_at = NOW()
   WHERE id = p_user_id
   RETURNING learner_state_version INTO v_version;
 
@@ -207,7 +207,7 @@ BEGIN
   UPDATE public.profiles
   SET
     learner_state_version = COALESCE(learner_state_version, 0) + 1,
-    updated_at = NOW()
+    created_at = NOW()
   WHERE id = p_user_id
   RETURNING learner_state_version INTO v_version;
 

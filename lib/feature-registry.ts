@@ -85,7 +85,7 @@ export function isFeatureEnabled(feature: AppFeature): boolean {
     debug_page: boolFromEnv('DEBUG_PAGES_ENABLED', false),
     autopsy_ui: true,
     analytics_ui: false,
-    atlas_ui: false,
+    atlas_ui: true,
     flashcards_ui: true,
     voice_chat: false,
     knowledge_ui: true,
@@ -99,7 +99,7 @@ export function isFeatureEnabled(feature: AppFeature): boolean {
     features.debug_page = false;
     features.worker_ai = false; // Turn off worker AI if it's not production ready
     features.analytics_ui = false;
-    features.atlas_ui = false; // Turn off Atlas UI if it's still experimental
+    // features.atlas_ui = false; // Turn off Atlas UI if it's still experimental
     features.voice_chat = false;
   }
 

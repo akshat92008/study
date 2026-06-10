@@ -142,7 +142,7 @@ export async function POST(req: NextRequest) {
       logger.warn('Upload rejected: file too large', { userId: user.id, fileSize: file.size, requestId });
       return apiErrorResponse('file_too_large', {
         status: 413,
-        message: `Study material files are capped at ${Math.round(maxFileBytes / 1024 / 1024)}MB for your beta plan.`,
+        message: `Study material files are capped at ${Math.round(maxFileBytes / 1024 / 1024)}MB for your plan.`,
         requestId,
       });
     }
@@ -163,7 +163,7 @@ export async function POST(req: NextRequest) {
     if ((count ?? 0) >= maxFiles) {
       return apiErrorResponse('material_limit_reached', {
         status: 429,
-        message: `Private beta allows ${maxFiles} active study material files for your plan.`,
+        message: `Your current plan allows ${maxFiles} active study material files.`,
         requestId,
       });
     }

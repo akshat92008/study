@@ -32,7 +32,7 @@ export default async function AccessPage() {
       <header>
         <h1 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 900, margin: 0 }}>Access</h1>
         <p style={{ color: 'var(--text-secondary)', marginTop: 8 }}>
-          Cognition OS is in controlled beta. Access is manually activated for beta users.
+          Cognition OS is currently invite-only. Access is manually activated.
         </p>
       </header>
 
@@ -40,7 +40,7 @@ export default async function AccessPage() {
         <h2 style={{ fontSize: 'var(--fs-lg)', marginTop: 0 }}>Current State</h2>
         <div style={{ display: 'grid', gap: 8, color: 'var(--text-secondary)' }}>
           <div>Plan: <strong style={{ color: 'var(--text-primary)' }}>{access.plan}</strong></div>
-          <div>Beta access: <strong style={{ color: 'var(--text-primary)' }}>{access.hasBetaAccess ? 'active' : 'not active'}</strong></div>
+          <div>Access status: <strong style={{ color: 'var(--text-primary)' }}>{access.hasBetaAccess ? 'active' : 'not active'}</strong></div>
           <div>Access source: <strong style={{ color: 'var(--text-primary)' }}>{access.accessSource}</strong></div>
           <div>Expiry: <strong style={{ color: 'var(--text-primary)' }}>{access.betaAccessUntil || 'none'}</strong></div>
           {access.blockedReason && (
@@ -61,9 +61,9 @@ export default async function AccessPage() {
       </section>
 
       <section style={{ border: '1px solid var(--border-default)', borderRadius: 8, padding: 'var(--sp-5)', background: 'var(--bg-elevated)' }}>
-        <h2 style={{ fontSize: 'var(--fs-lg)', marginTop: 0 }}>Beta Access</h2>
+        <h2 style={{ fontSize: 'var(--fs-lg)', marginTop: 0 }}>Account Access</h2>
         <p style={{ color: 'var(--text-secondary)', marginBottom: 0 }}>
-          Access is manually activated for beta users. Contact admin/support to activate founding access.
+          Access is manually activated. Contact support for assistance.
         </p>
       </section>
     </main>

@@ -11,6 +11,7 @@ import { recordMasteryEvidence } from '@/lib/engines/mastery-updater';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { isVerifiedAutopsyMistake } from '@/lib/events/autopsy-evidence';
 import { recordAgentAction } from '@/lib/agents/agent-runtime';
+import { enforceFeatureLimit, consumeFeatureUsage } from '@/lib/usage/enforce-feature-limit';
 
 // Custom FSRS-5 Configuration and Implementation
 const FSRS_WEIGHTS = [
@@ -245,8 +246,8 @@ export async function reviewCard(cardId: string, rating: 1 | 2 | 3 | 4, response
       try {
         const { data: concept } = await supabase.from('concepts').select('subject, chapter').eq('id', row.concept_id).single();
         if (concept) {
-          // Suspend card or flag it (using 4 for suspended)
-          await supabase.from('revision_cards').update({ state: 4 }).eq('id', cardId);
+          // Suspend card using status field
+          await supabase.from('revision_cards').update({ status: 'suspended' }).eq('id', cardId);
           
           // Inject a deep review task for tomorrow's session-card selector
           const d = new Date();
@@ -344,7 +345,10 @@ export async function generateCardsForConcept(
 ) {
   const supabase = await createClient();
   
-  // 1. Fetch Context from Student's Uploaded Materials via RAG
+  // 1. Enforce Plan Limits
+  await enforceFeatureLimit(userId, 'revision_generation');
+  
+  // 2. Fetch Context from Student's Uploaded Materials via RAG
   const searchQuery = `${subject} ${chapter} core concepts and formulas`;
   const ragResult = await retrieveRagContext({
     userId,
@@ -412,6 +416,7 @@ export async function generateCardsForConcept(
     reps: emptyCard.reps,
     lapses: emptyCard.lapses,
     state: emptyCard.state,
+    status: 'active',
   }));
 
   const { data, error } = await supabase.from('revision_cards').insert(rows).select();
@@ -420,6 +425,9 @@ export async function generateCardsForConcept(
   await invalidateSessionCards(userId, supabase, 'revision_cards_generated').catch(err =>
     logger.warn('Failed to invalidate session cards after generated cards', err)
   );
+  
+  await consumeFeatureUsage(userId, 'revision_generation');
+  
   logger.info(`Auto-generated ${rows.length} cards via RAG`, { conceptId });
   return data;
 }
@@ -451,6 +459,7 @@ export async function createCardFromMistake(
     reps: emptyCard.reps,
     lapses: emptyCard.lapses,
     state: emptyCard.state,
+    status: 'active',
   });
 
   if (error) {
@@ -477,6 +486,7 @@ export async function createSingleCard(
     verified?: boolean;
     confidence?: number;
     originEventId?: string | null;
+    goalId?: string | null;
   }
 ) {
   const supabase = client ?? (await createClient());
@@ -502,12 +512,20 @@ export async function createSingleCard(
     return null;
   }
 
-  const { data: duplicate } = await supabase
+  let query = supabase
     .from('revision_cards')
     .select('id')
     .eq('user_id', userId)
     .eq('normalized_key', normalizedKey)
-    .maybeSingle();
+    .eq('status', 'active');
+    
+  if (source?.goalId) {
+    query = query.eq('goal_id', source.goalId);
+  } else {
+    query = query.is('goal_id', null);
+  }
+
+  const { data: duplicate } = await query.maybeSingle();
 
   if (duplicate?.id) {
     logger.info('Revision card dedupe skip', {
@@ -541,6 +559,9 @@ export async function createSingleCard(
     verified: source?.verified ?? false,
     confidence: source?.confidence ?? null,
     origin_event_id: source?.originEventId ?? null,
+    source_event_id: source?.originEventId ?? null,
+    goal_id: source?.goalId ?? null,
+    status: 'active',
   }).select().single();
   
   if (error) {
@@ -597,7 +618,7 @@ export async function getExamModeCards(userId: string, subject: string, limit: n
     .select('*')
     .eq('user_id', userId)
     .ilike('subject', `%${subject}%`)
-    .neq('state', 4) // Exclude suspended cards (state = 4)
+    .neq('status', 'suspended') // Exclude suspended cards
     .order('stability', { ascending: true }) // Weakest memories first
     .limit(limit);
 

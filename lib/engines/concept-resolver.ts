@@ -31,6 +31,7 @@ export type ConceptResolutionMethod =
 
 export interface ResolveConceptInput {
   userId: string;
+  goalId?: string | null;
   examType?: string | null;
   subject?: string | null;
   chapter?: string | null;
@@ -157,13 +158,20 @@ export async function resolveConcept(input: ResolveConceptInput): Promise<Concep
   }
 
   if (conceptKey) {
-    const { data: canonicalMatch, error: canonicalError } = await supabase
+    const query = supabase
       .from('concepts')
       .select('id')
       .eq('user_id', input.userId)
       .eq('concept_key', conceptKey)
-      .limit(1)
-      .maybeSingle();
+      .limit(1);
+      
+    if (input.goalId) {
+      query.eq('goal_id', input.goalId);
+    } else {
+      query.is('goal_id', null);
+    }
+    
+    const { data: canonicalMatch, error: canonicalError } = await query.maybeSingle();
 
     if (canonicalMatch?.id) {
       return finishResolution(
@@ -195,6 +203,12 @@ export async function resolveConcept(input: ResolveConceptInput): Promise<Concep
     .select('id')
     .eq('user_id', input.userId)
     .limit(1);
+    
+  if (input.goalId) {
+    exactQuery.eq('goal_id', input.goalId);
+  } else {
+    exactQuery.is('goal_id', null);
+  }
 
   if (normalizedSubject) exactQuery.ilike('subject', normalizedSubject);
   if (normalizedChapter) exactQuery.ilike('chapter', normalizedChapter);
@@ -249,6 +263,12 @@ export async function resolveConcept(input: ResolveConceptInput): Promise<Concep
     .select('id, subject, chapter, topic, name')
     .eq('user_id', input.userId)
     .limit(1);
+
+  if (input.goalId) {
+    normalizedQuery.eq('goal_id', input.goalId);
+  } else {
+    normalizedQuery.is('goal_id', null);
+  }
 
   if (normalizedSubject) normalizedQuery.ilike('subject', `%${normalizedSubject}%`);
   if (normalizedChapter) normalizedQuery.ilike('chapter', `%${normalizedChapter}%`);
@@ -332,6 +352,7 @@ export async function resolveConcept(input: ResolveConceptInput): Promise<Concep
       .from('concepts')
       .insert({
         user_id: input.userId,
+        goal_id: input.goalId ?? null,
         name: topic,
         subject,
         chapter,
@@ -389,10 +410,12 @@ export async function resolveConceptByName(
   userId: string,
   subject: string,
   chapter: string,
-  client?: any
+  client?: any,
+  goalId?: string | null
 ): Promise<string | null> {
   const result = await resolveConcept({
     userId,
+    goalId,
     subject,
     chapter,
     topic: chapter,

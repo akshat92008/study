@@ -89,10 +89,14 @@ export function validateEnvironment(): void {
 
   const sentryDsn = process.env.SENTRY_DSN;
   if (!sentryDsn || sentryDsn === 'YOUR_SENTRY_DSN_HERE') {
-    console.error(
-      '\n⚠️  COGNITION OS — SENTRY_DSN is not configured.\n' +
+    const sentryMsg = '\n⚠️  COGNITION OS — SENTRY_DSN is not configured.\n' +
       '   You will be COMPLETELY BLIND to production errors.\n' +
-      '   Get a free DSN at https://sentry.io and set it in your environment.\n'
-    );
+      '   Get a free DSN at https://sentry.io and set it in your environment.\n';
+    
+    if (process.env.NODE_ENV === 'production' && process.env.PUBLIC_PAID_MODE === 'true') {
+       throw new Error('SENTRY_DSN is strictly required in public_paid mode to ensure observability.');
+    } else {
+       console.error(sentryMsg);
+    }
   }
 }

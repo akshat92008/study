@@ -23,12 +23,16 @@ export async function POST(req: NextRequest, context: RouteContext) {
 
     const { data: existingReport, error: existingReportError } = await supabase
       .from('autopsy_reports')
-      .select('id')
+      .select('id, status')
       .eq('assessment_id', assessmentId)
       .eq('user_id', user.id)
       .maybeSingle();
     if (existingReportError) throw existingReportError;
     const isReportRetry = !!existingReport?.id;
+
+    if (existingReport?.status === 'generating') {
+      return apiErrorResponse('conflict', { status: 409, message: 'Report is already generating.', requestId });
+    }
 
     if (!isReportRetry) {
       const featureGate = await checkFeatureLimit(user.id, 'autopsy_report');
@@ -83,67 +87,81 @@ export async function POST(req: NextRequest, context: RouteContext) {
     }
 
     const diagnoses = diagnosesRes.data ?? [];
-    const report = generateDeterministicAutopsyReport({
-      assessment: assessment as any,
-      questions: questions as any,
-      diagnoses: diagnoses as any,
-      priorMemories: [],
-    });
 
-    let status: 'ready' | 'fallback_used' = 'ready';
-
-    const { data: persistedReport, error: reportError } = await supabase
+    // Phase 8.3: Write empty report record with 'generating' status before expensive work
+    const { data: pendingReport, error: pendingError } = await supabase
       .from('autopsy_reports')
       .upsert({
         user_id: user.id,
         assessment_id: assessmentId,
         goal_id: assessment.goal_id,
-        report_json: report,
-        summary_text: report.summaryText,
-        recoverable_marks_estimate:
-          report.recoverableMarks.immediately_recoverable +
-          report.recoverableMarks.short_term_recoverable +
-          report.recoverableMarks.long_term_recoverable,
-        top_patterns: report.repeatedPatterns.slice(0, 5),
-        top_topics: report.highRiskTopics.slice(0, 5),
-        status,
+        status: 'generating',
         generated_by: 'deterministic',
         updated_at: new Date().toISOString(),
       }, { onConflict: 'assessment_id' })
-      .select('*')
+      .select('id')
       .single();
-    if (reportError) throw reportError;
+    if (pendingError) throw pendingError;
 
     if (!isReportRetry) {
       const usage = await consumeFeatureUsage(user.id, 'autopsy_report', 1, {
         assessmentId,
-        reportId: persistedReport.id,
+        reportId: pendingReport.id,
         idempotencyKey: `autopsy_report:${user.id}:${assessmentId}`,
       });
       if (!usage.allowed) return featureLimitResponse(usage, requestId);
     }
 
-    await supabase
-      .from('assessments')
-      .update({
-        status: 'report_ready',
-        scored_marks: report.overview.score,
-        total_marks: report.overview.totalMarks,
-        updated_at: new Date().toISOString(),
-      })
-      .eq('id', assessmentId)
-      .eq('user_id', user.id);
+    try {
+      const report = generateDeterministicAutopsyReport({
+        assessment: assessment as any,
+        questions: questions as any,
+        diagnoses: diagnoses as any,
+        priorMemories: [],
+      });
 
-    // Canonical Deterministic Projection (Fix 1-5)
-    const projection = await projectAutopsyV3Results({
-      userId: user.id,
-      assessmentId,
-      reportId: persistedReport.id,
-      report,
-      diagnoses,
-      goalId: assessment.goal_id,
-      subject: assessment.subject,
-    });
+      let status: 'ready' | 'fallback_used' = 'ready';
+
+      const { data: persistedReport, error: reportError } = await supabase
+        .from('autopsy_reports')
+        .update({
+          report_json: report,
+          summary_text: report.summaryText,
+          recoverable_marks_estimate:
+            report.recoverableMarks.immediately_recoverable +
+            report.recoverableMarks.short_term_recoverable +
+            report.recoverableMarks.long_term_recoverable,
+          top_patterns: report.repeatedPatterns.slice(0, 5),
+          top_topics: report.highRiskTopics.slice(0, 5),
+          status,
+          updated_at: new Date().toISOString(),
+        })
+        .eq('id', pendingReport.id)
+        .select('*')
+        .single();
+      if (reportError) throw reportError;
+
+      await supabase
+        .from('assessments')
+        .update({
+          status: 'report_ready',
+          scored_marks: report.overview.score,
+          total_marks: report.overview.totalMarks,
+          updated_at: new Date().toISOString(),
+        })
+        .eq('id', assessmentId)
+        .eq('user_id', user.id);
+
+      // Canonical Deterministic Projection (Fix 1-5)
+      const projection = await projectAutopsyV3Results({
+        userId: user.id,
+        assessmentId,
+        reportId: persistedReport.id,
+        report,
+        diagnoses,
+        goalId: assessment.goal_id,
+        subject: assessment.subject,
+      });
 
     // Write signals for agent visibility (Fix 2)
     await ingestLearningSignals(supabase, [
@@ -181,34 +199,43 @@ export async function POST(req: NextRequest, context: RouteContext) {
       idempotency_key: `autopsy_v3_report_ready:${persistedReport.id}`,
     });
 
-    // Phase 7: Wire autopsy through agent runtime
-    let agentLoopResult: any = null;
-    try {
-      agentLoopResult = await runCognitionAgentTurn({
-        userId: user.id,
-        channel: 'autopsy',
-        goalId: assessment.goal_id ?? undefined,
-        payload: {
-          assessmentId,
-          reportId: persistedReport.id,
-          subject: assessment.subject ?? null,
-          topic: assessment.title ?? null,
-          overview: report.overview,
-          recoverableMarks: report.recoverableMarks,
-          revisionActions: report.revisionActions.slice(0, 20),
-          repeatedPatterns: report.repeatedPatterns,
-          highRiskTopics: report.highRiskTopics,
-          diagnosesCount: diagnoses.length,
-          source: 'autopsy_v3_generate_report',
-          alreadyProjected: true, // Prevent agent from duplicating ATLAS/MEMORY updates
-        },
-        sessionId: undefined,
-      }, { supabase: supabase as any });
-    } catch (runtimeError) {
-      logger.warn('Autopsy agent runtime failed (non-fatal)', { userId: user.id, error: runtimeError });
-    }
+      // Phase 7: Wire autopsy through agent runtime
+      let agentLoopResult: any = null;
+      try {
+        agentLoopResult = await runCognitionAgentTurn({
+          userId: user.id,
+          channel: 'autopsy',
+          goalId: assessment.goal_id ?? undefined,
+          payload: {
+            assessmentId,
+            reportId: persistedReport.id,
+            subject: assessment.subject ?? null,
+            topic: assessment.title ?? null,
+            overview: report.overview,
+            recoverableMarks: report.recoverableMarks,
+            revisionActions: report.revisionActions.slice(0, 20),
+            repeatedPatterns: report.repeatedPatterns,
+            highRiskTopics: report.highRiskTopics,
+            diagnosesCount: diagnoses.length,
+            source: 'autopsy_v3_generate_report',
+            alreadyProjected: true, // Prevent agent from duplicating ATLAS/MEMORY updates
+          },
+          sessionId: undefined,
+        }, { supabase: supabase as any });
+      } catch (runtimeError) {
+        logger.warn('Autopsy agent runtime failed (non-fatal)', { userId: user.id, error: runtimeError });
+      }
 
-    return jsonWithRequestId({ report: persistedReport, deterministicReport: report, projection, agentMutationSummary: agentLoopResult?.mutationSummary ?? null }, requestId);
+      return jsonWithRequestId({ report: persistedReport, deterministicReport: report, projection, agentMutationSummary: agentLoopResult?.mutationSummary ?? null }, requestId);
+    } catch (err) {
+      // Phase 8.3: Mark status as failed if projection or generation fails
+      await supabase
+        .from('autopsy_reports')
+        .update({ status: 'failed', updated_at: new Date().toISOString() })
+        .eq('assessment_id', assessmentId);
+      
+      throw err;
+    }
   } catch (error) {
     return unexpectedApiErrorResponse(req, error, 'autopsy_v3_generate_report', 'Unable to generate Deep Autopsy report.');
   }

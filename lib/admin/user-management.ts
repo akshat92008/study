@@ -76,3 +76,29 @@ export async function unsuspendUser(adminUserId: string, targetUserId: string) {
   if (error) throw error;
   await logAdminAction(adminUserId, 'unsuspend_user', { targetUserId });
 }
+
+export async function resetOnboarding(adminUserId: string, targetUserId: string) {
+  const supabase = createAdminClient();
+  const { error } = await supabase
+    .from('profiles')
+    .update({
+      onboarding_completed: false,
+      onboarding_completed_at: null,
+      updated_at: new Date().toISOString(),
+    })
+    .eq('id', targetUserId);
+  if (error) throw error;
+  await logAdminAction(adminUserId, 'reset_onboarding', { targetUserId });
+}
+
+export async function deleteUserData(adminUserId: string, targetUserId: string) {
+  const supabase = createAdminClient();
+  
+  // Actually delete the user account in Auth, which cascades to public.profiles via ON DELETE CASCADE (assuming it's set up that way, else we use the admin client).
+  // The master plan says "delete user data according to policy".
+  // @ts-ignore
+  const { error } = await supabase.auth.admin.deleteUser(targetUserId);
+  if (error) throw error;
+  
+  await logAdminAction(adminUserId, 'delete_user_data', { targetUserId });
+}

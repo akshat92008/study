@@ -72,9 +72,9 @@ export async function projectLearningSignal(
     if (signal.concept || signal.canonicalConcept) {
       const conceptName = (signal.canonicalConcept || signal.concept) as string;
       
-      // Resolve concept ID first
       const resolution = await resolveConcept({
         userId,
+        goalId,
         subject: signal.subject || null,
         chapter: signal.chapter || null,
         topic: signal.topic || conceptName,

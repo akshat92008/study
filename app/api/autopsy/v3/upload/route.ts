@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
     if (file.size > maxBytes) {
       return apiErrorResponse('file_too_large', {
         status: 413,
-        message: `Deep Autopsy PDFs are capped at ${Math.round(maxBytes / 1024 / 1024)}MB for your beta plan.`,
+        message: `Deep Autopsy PDFs are capped at ${Math.round(maxBytes / 1024 / 1024)}MB for your plan.`,
         requestId,
       });
     }

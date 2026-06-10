@@ -211,6 +211,8 @@ export async function recomputeConceptMastery(
       forgetting_probability: forgettingProbability,
       last_reviewed_at: new Date().toISOString(),
       times_reviewed: (concept.times_reviewed || 0) + 1,
+      evidence_count: evidenceCount,
+      last_updated_reason: events?.length ? `Recomputed from ${evidenceCount} events (latest: ${events[events.length - 1].evidence_type})` : 'No evidence',
       updated_at: new Date().toISOString(),
     })
     .eq('id', conceptId)

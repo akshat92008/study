@@ -177,13 +177,23 @@ export async function middleware(request: NextRequest) {
 
   // Admin Route Protection (Simple server-gate)
   if (ADMIN_ROUTES.some(r => pathname.startsWith(r))) {
-    const { data: profile } = await supabase
-      .from("profiles")
-      .select("subscription_status")
-      .eq("id", user.id)
-      .maybeSingle();
+    const adminEmails = (process.env.ADMIN_EMAILS || '').split(',').map(e => e.trim()).filter(Boolean);
+    const adminUserIds = (process.env.ADMIN_USER_IDS || '').split(',').map(e => e.trim()).filter(Boolean);
+    const isEmailAdmin = user.email && adminEmails.includes(user.email);
+    const isIdAdmin = adminUserIds.includes(user.id);
 
-    if (profile?.subscription_status !== "admin") {
+    let isAdmin = isEmailAdmin || isIdAdmin;
+
+    if (!isAdmin) {
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("subscription_status")
+        .eq("id", user.id)
+        .maybeSingle();
+      isAdmin = profile?.subscription_status === "admin";
+    }
+
+    if (!isAdmin) {
       if (pathname.startsWith("/api/")) {
         return NextResponse.json({ error: "forbidden", message: "Admin access required." }, { status: 403 });
       }
