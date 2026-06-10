@@ -21,13 +21,13 @@ export async function requireAdmin() {
   }
 
   // 2. Check DB-based role (trusted server source)
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('subscription_status')
-    .eq('id', user.id)
+  const { data: adminUser } = await supabase
+    .from('admin_users')
+    .select('role')
+    .eq('user_id', user.id)
     .maybeSingle();
 
-  if (profile?.subscription_status === 'admin') {
+  if (adminUser) {
     return { user, error: null, status: 200 };
   }
 

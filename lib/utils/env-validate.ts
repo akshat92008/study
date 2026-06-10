@@ -74,14 +74,9 @@ export function validateEnvironment(): void {
     ].join('\n');
     console.error(message);
     
-    // Don't crash during build steps so we can successfully deploy to Vercel
-    if (
-      process.env.npm_lifecycle_event === 'build' ||
-      process.env.NEXT_PHASE === 'phase-production-build' ||
-      process.env.SKIP_ENV_VALIDATION === '1' ||
-      process.env.SKIP_ENV_VALIDATION === 'true'
-    ) {
-      console.warn('⚠️  Skipping critical environment validation crash because we are in a build step or validation is explicitly skipped.');
+    // Do not skip crash during build steps; require valid environment for production builds
+    if (process.env.SKIP_ENV_VALIDATION === '1' || process.env.SKIP_ENV_VALIDATION === 'true') {
+      console.warn('⚠️  Skipping critical environment validation crash because SKIP_ENV_VALIDATION is set.');
     } else {
       throw new Error('Critical environment variables missing. See console for details.');
     }
@@ -93,8 +88,8 @@ export function validateEnvironment(): void {
       '   You will be COMPLETELY BLIND to production errors.\n' +
       '   Get a free DSN at https://sentry.io and set it in your environment.\n';
     
-    if (process.env.NODE_ENV === 'production' && process.env.PUBLIC_PAID_MODE === 'true') {
-       throw new Error('SENTRY_DSN is strictly required in public_paid mode to ensure observability.');
+    if (process.env.NODE_ENV === 'production') {
+       throw new Error('SENTRY_DSN is strictly required in production to ensure observability.');
     } else {
        console.error(sentryMsg);
     }

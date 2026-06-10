@@ -23,7 +23,6 @@ const PROTECTED_APIS: Array<{ path: string; redirect?: string }> = [
   { path: "/api/tutor" },
   { path: "/api/analytics" },
   { path: "/api/internal" },
-  { path: "/api/health" },
 ];
 
 const ADMIN_ROUTES = ["/admin", "/api/admin", "/(dashboard)/admin"];
@@ -185,12 +184,12 @@ export async function middleware(request: NextRequest) {
     let isAdmin = isEmailAdmin || isIdAdmin;
 
     if (!isAdmin) {
-      const { data: profile } = await supabase
-        .from("profiles")
-        .select("subscription_status")
-        .eq("id", user.id)
+      const { data: adminUser } = await supabase
+        .from("admin_users")
+        .select("role")
+        .eq("user_id", user.id)
         .maybeSingle();
-      isAdmin = profile?.subscription_status === "admin";
+      isAdmin = !!adminUser;
     }
 
     if (!isAdmin) {

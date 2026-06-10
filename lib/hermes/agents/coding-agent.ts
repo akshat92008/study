@@ -36,14 +36,8 @@ export async function runHermesCodingAgent(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   _input: HermesCodingInput
 ): Promise<HermesCodingResult> {
-  const sandboxEnabled =
-    process.env.HERMES_CODING_SANDBOX_ENABLED === 'true' ||
-    process.env.HERMES_CODING_SANDBOX_ENABLED === '1';
-
-  if (!sandboxEnabled) {
-    hermesLogger.warn('Coding agent called but HERMES_CODING_SANDBOX_ENABLED is not set');
-    throw new HermesDisabledError();
-  }
+  hermesLogger.warn('Coding agent called but it is hard-disabled for production launch.');
+  throw new HermesDisabledError();
 
   // TODO: Implement isolated sandbox execution
   // Requirements before enabling:

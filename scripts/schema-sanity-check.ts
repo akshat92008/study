@@ -61,11 +61,11 @@ async function main() {
       'profiles': ['id'],
       'chat_sessions': ['id', 'user_id'],
       'chat_messages': ['id', 'session_id', 'role', 'content'],
-      'event_queue': ['id', 'event_type', 'payload', 'status'],
-      'consumer_locks': ['event_id', 'consumer_id'],
+      'event_queue': ['id', 'type', 'payload', 'status'],
+      'consumer_locks': ['event_id', 'consumer_name'],
       'study_materials': ['id', 'user_id', 'content_hash'],
       'mock_autopsies': ['id', 'user_id'],
-      'ai_budget_reservations': ['id', 'user_id', 'status', 'feature', 'reserved_at', 'expires_at'],
+      'ai_budget_reservations': ['id', 'user_id', 'status', 'feature', 'created_at', 'updated_at'],
       'ai_usage_events': ['id', 'user_id', 'feature', 'prompt_tokens', 'completion_tokens']
     };
 

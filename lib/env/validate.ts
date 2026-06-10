@@ -16,7 +16,7 @@ export function validateEnv() {
     console.warn('⚠️ Missing required environment variables: ' + missing.join(', '));
     // In production, we might want to throw an error, but warning is safer to prevent unexpected crash loops
     if (process.env.NODE_ENV === 'production') {
-      console.error('CRITICAL: Production environment is missing required variables.');
+      throw new Error(`CRITICAL: Production environment is missing required variables: ${missing.join(', ')}`);
     }
   }
 }
