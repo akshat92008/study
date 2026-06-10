@@ -187,3 +187,171 @@ describe('migration contracts', () => {
     expect(missing.sort()).toEqual([]);
   });
 });
+
+// ============================================================
+// Module 4: Static RLS Audit
+// ============================================================
+describe('rls audit', () => {
+  const CORE_USER_TABLES = [
+    'profiles',
+    'learning_goals',
+    'study_sessions',
+    'session_cards',
+    'chat_sessions',
+    'chat_messages',
+    'study_materials',
+    'mock_autopsies',
+    'autopsy_reports',
+    'concepts',
+    'revision_cards',
+    'mistakes',
+    'ai_usage_daily',
+    'agent_runs',
+  ] as const;
+
+  function getMigrationContent(): string {
+    const migrationsDir = path.join(root, 'supabase', 'migrations');
+    return fs.readdirSync(migrationsDir)
+      .filter(f => f.endsWith('.sql'))
+      .map(f => fs.readFileSync(path.join(migrationsDir, f), 'utf8'))
+      .join('\n');
+  }
+
+  it('all core user-data tables have RLS enabled in migrations', () => {
+    const content = getMigrationContent().toLowerCase();
+    const missing: string[] = [];
+
+    for (const table of CORE_USER_TABLES) {
+      const hasRls = content.includes(`alter table public.${table} enable row level security`) ||
+                     content.includes(`alter table ${table} enable row level security`) ||
+                     content.includes(`alter table "public"."${table}" enable row level security`);
+      if (!hasRls) {
+        missing.push(table);
+      }
+    }
+
+    expect(missing).toEqual([]);
+  });
+
+  it('all core user-data tables have FORCE ROW LEVEL SECURITY in latest hardening migration', () => {
+    const hardeningMigration = fs.readFileSync(
+      path.join(root, 'supabase', 'migrations', '20260610000000_public_launch_rls_hardening.sql'),
+      'utf8'
+    ).toLowerCase();
+
+    const missing: string[] = [];
+    for (const table of CORE_USER_TABLES) {
+      if (!hardeningMigration.includes(`alter table public.${table} force row level security`)) {
+        missing.push(table);
+      }
+    }
+
+    expect(missing).toEqual([]);
+  });
+
+  it('no RLS policy references the deprecated auth.email() function', () => {
+    const content = getMigrationContent();
+    const offenders: string[] = [];
+
+    const migrationsDir = path.join(root, 'supabase', 'migrations');
+    for (const file of fs.readdirSync(migrationsDir)) {
+      if (!file.endsWith('.sql')) continue;
+      const text = fs.readFileSync(path.join(migrationsDir, file), 'utf8');
+      if (text.includes('auth.email()')) {
+        offenders.push(file);
+      }
+    }
+
+    // auth.email() is deprecated in Supabase — should use auth.jwt() instead
+    expect(offenders).toEqual([]);
+  });
+});
+
+// ============================================================
+// Module 4: Launch-Critical Column Contracts (static)
+// ============================================================
+describe('launch-critical schema columns', () => {
+  const REQUIRED_COLUMNS: Record<string, string[]> = {
+    profiles: [
+      'exam_type',
+      'streak_days',
+      'last_active_at',
+      'learner_state_version',
+      'stripe_customer_id',
+      'subscription_status',
+      'manual_plan',
+      'onboarding_complete',
+      'timezone',
+    ],
+    revision_cards: ['normalized_key'],
+    session_cards: ['goal_key'],
+    concepts: ['mastery_score', 'mastery', 'concept_key'],
+    mistakes: ['idempotency_key'],
+    learner_events: ['idempotency_key'],
+    agent_runs: ['goal_id', 'channel', 'plan', 'mutation_summary'],
+    autopsy_reports: ['status', 'generated_by'],
+  };
+
+  function getMigrationContent(): string {
+    const migrationsDir = path.join(root, 'supabase', 'migrations');
+    return fs.readdirSync(migrationsDir)
+      .filter(f => f.endsWith('.sql'))
+      .map(f => fs.readFileSync(path.join(migrationsDir, f), 'utf8'))
+      .join('\n')
+      .toLowerCase();
+  }
+
+  it('all launch-critical columns are declared in migrations', () => {
+    const content = getMigrationContent();
+    const missing: string[] = [];
+
+    for (const [table, columns] of Object.entries(REQUIRED_COLUMNS)) {
+      for (const column of columns) {
+        const colLower = column.toLowerCase();
+        const tableAndCol = content.includes(`"${table}"`) || content.includes(table);
+        const declared =
+          content.includes(`add column if not exists ${colLower}`) ||
+          content.includes(`add column ${colLower}`) ||
+          // Column might be in CREATE TABLE
+          (content.includes(`create table`) && content.includes(colLower));
+
+        if (!declared || !tableAndCol) {
+          missing.push(`${table}.${column}`);
+        }
+      }
+    }
+
+    expect(missing).toEqual([]);
+  });
+});
+
+// ============================================================
+// Module 4: Required RPC Contracts
+// ============================================================
+describe('required rpc contracts', () => {
+  const REQUIRED_RPCS = [
+    'complete_study_session',
+    'upsert_session_card',
+    'check_and_increment_usage_gate',
+    'create_event_with_consumers',
+  ] as const;
+
+  it('all required RPCs are defined in migrations', () => {
+    const migrationsDir = path.join(root, 'supabase', 'migrations');
+    const content = fs.readdirSync(migrationsDir)
+      .filter(f => f.endsWith('.sql'))
+      .map(f => fs.readFileSync(path.join(migrationsDir, f), 'utf8'))
+      .join('\n')
+      .toLowerCase();
+
+    const missing: string[] = [];
+    for (const rpc of REQUIRED_RPCS) {
+      if (!content.includes(`function ${rpc}`) && !content.includes(`function public.${rpc}`)) {
+        missing.push(rpc);
+      }
+    }
+
+    expect(missing).toEqual([]);
+  });
+});
+
