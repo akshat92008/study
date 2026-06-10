@@ -30,6 +30,7 @@ export function UserActionForms({ userId }: { userId: string }) {
           <option value="founding">founding</option>
           <option value="pro">pro</option>
           <option value="admin">admin</option>
+          <option value="unlimited">unlimited</option>
         </select>
         <button type="submit">Set plan</button>
       </form>

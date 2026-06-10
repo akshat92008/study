@@ -74,6 +74,20 @@ export const PLAN_LIMITS: Record<SubscriptionTier, PlanLimits> = {
     maxFileMb: 1000,
     monthlyAiBudgetUsd: 100,
   },
+  unlimited: {
+    dailyChatMessages: 9999999,
+    dailyAiCalls: 9999999,
+    dailyAutopsyReports: 9999999,
+    dailyAutopsyUploads: 9999999,
+    dailyRagUploads: 9999999,
+    dailyMaterialQueries: 9999999,
+    dailyHermesWrites: 9999999,
+    dailyRevisionGenerations: 9999999,
+    maxMaterials: 9999999,
+    maxAssessments: 9999999,
+    maxFileMb: 10000,
+    monthlyAiBudgetUsd: 99999,
+  },
 };
 
 export function getPlanLimits(plan: SubscriptionTier | string | null | undefined): PlanLimits {
