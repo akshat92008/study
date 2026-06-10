@@ -609,20 +609,11 @@ export async function GET(request?: Request): Promise<NextResponse> {
       mistakeCount: selection.mistakeCount,
       weakConceptCount: weakConceptsRes.data?.length ?? 0,
       hasActiveGoal: Boolean(goalRes.data),
-      // structural fields
+      // structural fields (snake_case)
       selection_reason: selection.reason,
       mistake_count: selection.mistakeCount,
       weak_concept_count: weakConceptsRes.data?.length ?? 0,
       has_active_goal: Boolean(goalRes.data),
-      source_signals: {
-        overdueCardCount: selection.dueCardCount,
-        recentMistakeCount: selection.mistakeCount,
-        weakConceptCount: weakConceptsRes.data?.length ?? 0,
-        hasActiveGoal: Boolean(goalRes.data),
-        daysToExam: selection.daysToExam,
-        priorityBucket: selection.priority,
-        selectionReason: selection.reason,
-      },
     };
 
     const { error: upsertError } = await supabase.rpc('upsert_session_card', {
