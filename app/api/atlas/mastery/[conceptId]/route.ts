@@ -6,7 +6,8 @@ import { createClient } from '@/lib/supabase/server';
 export const GET = withRateLimit('atlas', async (req, userId, { params }) => {
   const requestId = getRequestId(req);
   const supabase = await createClient();
-  const conceptId = params?.conceptId;
+  const resolvedParams = await params;
+  const conceptId = resolvedParams?.conceptId;
 
   if (!conceptId || typeof conceptId !== 'string') {
     return apiErrorResponse('bad_request', {
