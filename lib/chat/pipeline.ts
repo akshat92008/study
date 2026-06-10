@@ -153,7 +153,7 @@ export async function routeUploads(params: RouteUploadsParams) {
   }
 
   if (imageBase64 && imageMimeType && !documentBase64) {
-    return handleVisionUpload({ userId, message, imageBase64, imageMimeType, systemPrompt, finalizeAssistantTurn: finalizeAssistantTurnFn, encoder, supabase, goalId: activeGoalId, sessionId, idempotencyKey: messageRequestId });
+    return handleVisionUpload({ userId, message: message || '', imageBase64, imageMimeType, systemPrompt, finalizeAssistantTurn: finalizeAssistantTurnFn, encoder, supabase, goalId: activeGoalId, sessionId, idempotencyKey: messageRequestId });
   }
 
 
@@ -165,17 +165,17 @@ export async function routeUploads(params: RouteUploadsParams) {
       : documentMimeType?.startsWith('text/')
         ? { kind: 'text' as const, text: Buffer.from(documentBase64!, 'base64').toString('utf8') }
         : { kind: 'inline' as const, mimeType: documentMimeType!, data: documentBase64! };
-    return handleAutopsyRedirect({ userId, message, fileData, profilePreview, messageRequestId, activeGoalId, sessionId, supabase, finalizeAssistantTurn: finalizeAssistantTurnFn, encoder });
+    return handleAutopsyRedirect({ userId, message: message || '', fileData, profilePreview, messageRequestId, activeGoalId, sessionId, supabase, finalizeAssistantTurn: finalizeAssistantTurnFn, encoder });
   }
 
   const isMaterialIndexing = (message && /\\b(use this|save this|upload this|index this|store this|add this|my notes|study material|ncert|textbook|chapter|pdf|source|answer from this|use later|prescribed material|according to this|make this my source)\\b/i.test(message) && uploadIntent === 'study_material_index') || uploadIntent === 'study_material_index';
   const isExplicitDocumentRead = Boolean(message && /\\b(read this|explain this document|summarize this document|what does this pdf say|extract this|explain this pdf|summarize this pdf)\\b/i.test(message));
 
   if (documentBase64 && documentMimeType) {
-    const ingestResponse = await processMaterialIngestion({ userId, documentBase64, documentMimeType, message, isMaterialIndexing, activeGoalId, sessionId, requestId, supabase, finalizeAssistantTurn: finalizeAssistantTurnFn, encoder });
+    const ingestResponse = await processMaterialIngestion({ userId, documentBase64, documentMimeType, message: message || '', isMaterialIndexing, activeGoalId, sessionId, requestId, supabase, finalizeAssistantTurn: finalizeAssistantTurnFn, encoder });
     if (ingestResponse) return ingestResponse;
 
-    return handleDocumentVisionUpload({ userId, message, documentBase64, documentMimeType, isExplicitDocumentRead, systemPrompt, finalizeAssistantTurn: finalizeAssistantTurnFn, encoder });
+    return handleDocumentVisionUpload({ userId, message: message || '', documentBase64, documentMimeType, isExplicitDocumentRead, systemPrompt, finalizeAssistantTurn: finalizeAssistantTurnFn, encoder });
   }
 
   return null;
@@ -284,7 +284,7 @@ export async function callAiProvider(params: CallAiProviderParams) {
   }
 
   return await handleMainStreaming({
-    userId, sessionId, message, recentHistory, intent: detectedIntent, orchestratorResult, systemPrompt,
+    userId, sessionId, message: message || '', recentHistory, intent: detectedIntent, orchestratorResult, systemPrompt,
     isSimpleMessage, sessionTurnsCount, mindContext, crossSessionMemories, finalizeAssistantTurn: finalizeAssistantTurnFn, encoder, supabase
   });
 }

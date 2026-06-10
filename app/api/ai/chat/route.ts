@@ -193,7 +193,7 @@ export async function POST(req: NextRequest) {
     }
 
     const uploadResponse = await routeUploads({
-      hasUploadedFile, imageBase64, imageMimeType, documentBase64, documentMimeType, orchestratorResult, uploadIntent, userId: user.id, message, profilePreview, messageRequestId, activeGoalId, sessionId, supabase, finalizeAssistantTurnFn, encoder, systemPrompt, requestId
+      hasUploadedFile, imageBase64, imageMimeType, documentBase64, documentMimeType, orchestratorResult, uploadIntent, userId: user.id, message, profilePreview, messageRequestId, activeGoalId: activeGoalId ?? undefined, sessionId, supabase, finalizeAssistantTurnFn, encoder, systemPrompt, requestId
     });
     if (uploadResponse) return uploadResponse;
 
@@ -214,7 +214,7 @@ export async function POST(req: NextRequest) {
       return featureDisabledResponse(requestId);
     }
     const providerResponse = await callAiProvider({
-      userId: user.id, message, detectedIntent, orchestratorResult, mindContext, supabase, activeGoalId, finalizeAssistantTurnFn, encoder, sessionId, recentHistory, systemPrompt, isSimpleMessage, sessionTurnsCount, crossSessionMemories
+      userId: user.id, message, detectedIntent, orchestratorResult, mindContext, supabase, activeGoalId: activeGoalId ?? undefined, finalizeAssistantTurnFn, encoder, sessionId, recentHistory, systemPrompt, isSimpleMessage, sessionTurnsCount, crossSessionMemories
     });
 
     // 12. Format & Return Stream Response
