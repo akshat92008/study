@@ -96,7 +96,7 @@ export async function deleteUserData(adminUserId: string, targetUserId: string) 
   
   // Actually delete the user account in Auth, which cascades to public.profiles via ON DELETE CASCADE (assuming it's set up that way, else we use the admin client).
   // The master plan says "delete user data according to policy".
-  // @ts-ignore
+  // @ts-expect-error - deleteUser type signature mismatch on admin client
   const { error } = await supabase.auth.admin.deleteUser(targetUserId);
   if (error) throw error;
   

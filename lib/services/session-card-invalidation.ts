@@ -177,11 +177,14 @@ export async function markSessionCardCompleted(
 ): Promise<void> {
   const supabase = options.client ?? createAdminClient();
 
+  const now = new Date().toISOString();
   const { error } = await supabase
     .from('session_cards')
     .update({
       isCompleted: true,
-      completedAt: new Date().toISOString(),
+      completedAt: now,
+      is_completed: true,
+      completed_at: now,
     })
     .eq('user_id', userId)
     .eq('date', localDate)

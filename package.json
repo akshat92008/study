@@ -113,6 +113,7 @@
     "@types/react-dom": "^19",
     "@vitest/coverage-v8": "^1.6.0",
     "autoprefixer": "^10.5.0",
+    "baseline-browser-mapping": "^2.10.35",
     "eslint": "^9.0.0",
     "eslint-config-next": "16.2.6",
     "jest": "^29.7.0",

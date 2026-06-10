@@ -29,8 +29,22 @@ export async function POST(req: NextRequest) {
       .eq('id', user.id)
       .single();
 
-    const body = await req.json().catch(() => ({}));
-    const priceId: string | undefined = body.priceId;
+    const contentType = req.headers.get('content-type') || '';
+    let rawPriceId: string | undefined;
+
+    if (contentType.includes('application/x-www-form-urlencoded') || contentType.includes('multipart/form-data')) {
+      const formData = await req.formData().catch(() => new FormData());
+      rawPriceId = formData.get('priceId')?.toString();
+    } else {
+      const body = await req.json().catch(() => ({}));
+      rawPriceId = body.priceId;
+    }
+
+    let priceId: string | undefined;
+    if (rawPriceId === 'pro_monthly') priceId = STRIPE_PRICES.pro.monthly;
+    else if (rawPriceId === 'pro_yearly') priceId = STRIPE_PRICES.pro.yearly;
+    else if (rawPriceId === 'founding_lifetime') priceId = STRIPE_PRICES.founding.lifetime;
+    else priceId = rawPriceId;
 
     const validPrices = [
       ...Object.values(STRIPE_PRICES.pro),
@@ -63,16 +77,21 @@ export async function POST(req: NextRequest) {
     }
 
     const origin = req.nextUrl.origin;
+    const isFounding = priceId === STRIPE_PRICES.founding.lifetime;
     const session = await stripe.checkout.sessions.create({
       customer: customerId,
       line_items: [{ price: priceId, quantity: 1 }],
-      mode: 'subscription',
+      mode: isFounding ? 'payment' : 'subscription',
       success_url: `${origin}/dashboard?checkout=success&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/access?checkout=canceled`,
       metadata: {
         userId: user.id,
       },
     });
+
+    if (contentType.includes('application/x-www-form-urlencoded') || contentType.includes('multipart/form-data')) {
+      return NextResponse.redirect(session.url!);
+    }
 
     return NextResponse.json(
       { url: session.url },

@@ -45,6 +45,11 @@ export async function POST(req: NextRequest) {
       return_url: `${origin}/access`,
     });
 
+    const contentType = req.headers.get('content-type') || '';
+    if (contentType.includes('application/x-www-form-urlencoded') || contentType.includes('multipart/form-data')) {
+      return NextResponse.redirect(session.url!);
+    }
+
     return NextResponse.json(
       { url: session.url },
       { headers: { 'x-request-id': requestId } }

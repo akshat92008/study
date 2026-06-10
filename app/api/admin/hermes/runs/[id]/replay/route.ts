@@ -20,6 +20,8 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
 
     const body = await req.json().catch(() => ({}));
     const realRun = body.realRun === true;
+    const adminConfirmed = body.adminConfirmed === true;
+    const adminReason = body.adminReason;
 
     const supabase = createAdminClient();
     const { data: run, error } = await supabase
@@ -37,7 +39,13 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
       return apiErrorResponse('bad_request', { status: 400, message: 'No input snapshot available for replay', requestId });
     }
 
-    const newIdempotencyKey = `replay:${run.idempotency_key}:${Date.now()}`;
+    if (realRun && (!adminConfirmed || !adminReason)) {
+      return apiErrorResponse('bad_request', { status: 400, message: 'Real replay requires admin confirmation and a reason.', requestId });
+    }
+
+    const newIdempotencyKey = realRun 
+      ? `replay:${run.idempotency_key}:${adminReason}`
+      : `dry-run:${run.idempotency_key}`;
     
     // Check if it's an event or turn
     const channel = input_snapshot.channel || run.trigger_source || 'background';

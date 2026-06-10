@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS public.learning_state_changes (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
-  run_id uuid references public.amaura_agent_runs(id) on delete set null,
+  agent_run_id uuid references public.agent_runs(id) on delete set null,
   tool_name text,
   event_type text,
   concept_id uuid references public.concepts(id) on delete set null,

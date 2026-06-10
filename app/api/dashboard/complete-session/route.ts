@@ -61,46 +61,6 @@ export async function POST(req: NextRequest) {
       sessionId: result.sessionId,
     }).catch(() => null);
 
-    // Phase 7: Wire session through agent runtime for ATLAS/MEMORY mutations
-    // The runtime processes session completion, creates MEMORY cards, and updates ATLAS mastery
-    let agentLoopResult: any = null;
-    try {
-      agentLoopResult = await runHermesTurn({
-        userId: user.id,
-        channel: 'session',
-        goalId: body.goalId ?? undefined,
-        payload: {
-          sessionId: result.sessionId,
-          conceptId: result.conceptId,
-          subject: result.subject,
-          chapter: result.chapter,
-          conceptName: body.conceptName ?? body.chapter ?? null,
-          durationMinutes: body.durationMinutes ?? 25,
-          understood: result.understood,
-          gapFound: body.gapFound ?? null,
-          cardsCreated: result.cardsCreated,
-          source: 'complete_session',
-          alreadyCompleted: true, // Fix 7: Tell runtime this session is already saved
-        },
-        sessionId: undefined,
-      }, { supabase: supabase as any });
-
-      logger.info('Session agent runtime completed', {
-        userId: user.id,
-        sessionId: result.sessionId,
-        changed: agentLoopResult?.mutationSummary?.changed,
-        conceptsUpdated: agentLoopResult?.mutationSummary?.conceptsUpdated,
-        revisionCardsCreated: agentLoopResult?.mutationSummary?.revisionCardsCreated,
-      });
-    } catch (runtimeError) {
-      // Runtime failure should not fail session close - runtime is for agent mutations
-      logger.warn('Session agent runtime failed (non-fatal)', {
-        userId: user.id,
-        sessionId: result.sessionId,
-        error: runtimeError instanceof Error ? runtimeError.message : String(runtimeError),
-      });
-    }
-
     return NextResponse.json({
       success: true,
       streakDays: result.streakDays,
@@ -109,7 +69,6 @@ export async function POST(req: NextRequest) {
       conceptId: result.conceptId,
       closingMessage: closing?.text ?? null,
       closingType: closing?.type ?? null,
-      agentMutationSummary: agentLoopResult?.mutationSummary ?? null,
     }, { headers: { 'x-request-id': requestId } });
   } catch (error: any) {
     return unexpectedApiErrorResponse(req, error, 'complete-session', 'Session completion failed.');

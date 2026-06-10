@@ -191,7 +191,8 @@ export async function executeDurableTool(
       const parsedArgs = tool.inputSchema.parse(args);
 
       // Set context for the tool - PRESERVE ORIGINAL CONTEXT IF PROVIDED
-      const idempotencyKey = stableKey(['tool-exec', runId, toolName, JSON.stringify(args)]);
+      const idempotencyBase = context?.sourceEventId ?? runId;
+      const idempotencyKey = context?.idempotencyKey ?? stableKey(['tool-exec', idempotencyBase, toolName, JSON.stringify(args)]);
       const toolContext: AgentToolContext = context
         ? {
             ...context,
@@ -431,7 +432,8 @@ export async function executeLearningTool(
 
   try {
     const parsed = tool.inputSchema.parse(args);
-    const idempotencyKey = stableKey(['tool-exec', runId, toolName, JSON.stringify(parsed)]);
+    const idempotencyBase = context.sourceEventId ?? runId;
+    const idempotencyKey = context.idempotencyKey ?? stableKey(['tool-exec', idempotencyBase, toolName, JSON.stringify(parsed)]);
     const toolContext = {
       supabase: context.supabase,
       userId: context.userId,

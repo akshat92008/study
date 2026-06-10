@@ -1,8 +1,9 @@
 #!/usr/bin/env bun
 import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { execSync } from 'node:child_process';
 
-const ROOT_DIR = resolve(__dirname, '..');
+const ROOT_DIR = process.cwd();
 
 interface Check {
   name: string;
@@ -16,7 +17,7 @@ const checks: Check[] = [
     run: () => {
       const content = readFileSync(resolve(ROOT_DIR, 'lib/agent/tools/executor.ts'), 'utf-8');
       const lines = content.split('\n');
-      const hasStableKey = lines.some(line => line.includes('const idempotencyKey = stableKey'));
+      const hasStableKey = lines.some(line => line.includes('stableKey') && line.includes('idempotencyKey'));
       const noStartedAtInKey = !lines.some(line => line.includes('idempotencyKey') && line.includes('startedAt'));
       return hasStableKey && noStartedAtInKey;
     },
@@ -26,7 +27,6 @@ const checks: Check[] = [
     name: 'No Cognitive Agent Imports',
     run: () => {
       try {
-        const { execSync } = require('node:child_process');
         const grepRes = execSync('grep -rn "runCognitionAgentTurn" lib/ app/ || true', { encoding: 'utf-8' });
         return grepRes.trim() === '';
       } catch (e) {
@@ -36,12 +36,12 @@ const checks: Check[] = [
     failMessage: 'Found references to the deprecated runCognitionAgentTurn.',
   },
   {
-    name: 'Replay Route is Dry-Run by Default',
+    name: 'Replay Route is Dry-Run by Default and Requires Approval',
     run: () => {
       const content = readFileSync(resolve(ROOT_DIR, 'app/api/admin/hermes/runs/[id]/replay/route.ts'), 'utf-8');
-      return content.includes('realRun') && content.includes('dryRun: true');
+      return content.includes('realRun') && content.includes('dryRun: true') && content.includes('adminConfirmed') && !content.includes('Date.now()');
     },
-    failMessage: 'Replay route must default to dry-run (dryRun: true) unless realRun is passed.',
+    failMessage: 'Replay route must default to dry-run, require admin confirmation, and not use Date.now() for idempotency.',
   },
   {
     name: 'Chat Policy Prevents Over-Mutation',
@@ -66,7 +66,7 @@ const checks: Check[] = [
     run: () => {
       const content = readFileSync(resolve(ROOT_DIR, 'lib/agent/tools/executor.ts'), 'utf-8');
       // Should include context identifiers like sourceEventId or similar for specific tool runs
-      return content.includes('runId') || content.includes('sourceEventId');
+      return content.includes('sourceEventId');
     },
     failMessage: 'Idempotency must be based on source events or runId, not just timestamps.',
   },

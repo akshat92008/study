@@ -1,18 +1,15 @@
 {
-  "timestamp": "2026-06-10T07:56:54.529Z",
-  "commit": "9576c14b8331794d2bb260ea219c40fb8eb0a7da",
-  "branch": "public-launch-hardening",
+  "timestamp": "2026-06-10T16:48:01.345Z",
+  "commit": "5276c62c3f53f2e42f908c64e65f7d87b2164f44",
+  "branch": "main",
   "envMode": "unknown",
   "nodeVersion": "v26.0.0",
   "checks": {
-    "typecheck": "FAIL",
-    "unitTests": "FAIL",
+    "typecheck": "PASS",
+    "unitTests": "PASS",
     "envPreflight": "PASS"
   },
-  "risks": [
-    "Typecheck failed. Build is unsafe.",
-    "Unit tests failed."
-  ],
-  "schemaVersion": "20260617000002_mvp_schema_reconciliation.sql",
-  "readiness": "NOT_READY"
+  "risks": [],
+  "schemaVersion": "20260618000003_stripe_subscription_persistence.sql",
+  "readiness": "READY"
 }

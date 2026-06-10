@@ -139,6 +139,16 @@ export async function POST(req: NextRequest) {
     const promptLength = validatePromptLength(userMessageForPersistence);
     if (!promptLength.allowed) throw new PipelineError(usageGateResponse(promptLength));
 
+    const { enforceFeatureLimit, featureLimitResponse } = await import('@/lib/usage/enforce-feature-limit');
+    try {
+      await enforceFeatureLimit(user.id, 'chat_message');
+    } catch (err: any) {
+      if (err.check) {
+        throw new PipelineError(featureLimitResponse(err.check, requestId));
+      }
+      throw err;
+    }
+
     // 4. Persist User Message
     const userMessageId = await persistChatMessages(supabase, sessionId, user.id, userMessageForPersistence);
 
@@ -178,10 +188,6 @@ export async function POST(req: NextRequest) {
 
     // 9. Route Uploads (if any)
     if (hasUploadedFile) {
-      const usageGate = await consumeUsageLimit(user.id, 'chat_messages_daily');
-      if (!usageGate.allowed) throw new PipelineError(usageGateResponse(usageGate));
-      const hourlyGate = await consumeUsageLimit(user.id, 'chat_messages_hourly');
-      if (!hourlyGate.allowed) throw new PipelineError(usageGateResponse(hourlyGate));
     }
 
     const uploadResponse = await routeUploads({
@@ -196,11 +202,10 @@ export async function POST(req: NextRequest) {
     if (ruleResponse) return ruleResponse;
 
     if (!hasUploadedFile) {
-      const usageGate = await consumeUsageLimit(user.id, 'chat_messages_daily');
-      if (!usageGate.allowed) throw new PipelineError(usageGateResponse(usageGate));
-      const hourlyGate = await consumeUsageLimit(user.id, 'chat_messages_hourly');
-      if (!hourlyGate.allowed) throw new PipelineError(usageGateResponse(hourlyGate));
     }
+
+    const { consumeFeatureUsage } = await import('@/lib/usage/enforce-feature-limit');
+    await consumeFeatureUsage(user.id, 'chat_message', 1, { idempotencyKey: messageRequestId });
 
     // 11. Call AI Provider (Deterministic or LLM Stream)
     if (!isFeatureEnabled('ai_global')) {

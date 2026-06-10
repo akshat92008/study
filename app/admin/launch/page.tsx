@@ -162,7 +162,7 @@ async function getLaunchReadiness() {
   // 5. Storage (Check if bucket exists)
   let storageOk = false;
   try {
-    // @ts-ignore
+    // @ts-expect-error - storage client listBuckets is not type-safe in this environment
     const { data: buckets } = await supabase.storage.listBuckets();
     storageOk = !!buckets && buckets.length > 0;
   } catch (e) {

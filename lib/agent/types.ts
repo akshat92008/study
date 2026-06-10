@@ -192,6 +192,7 @@ export interface AgentToolContext {
   sessionId?: string | null;
   goalId?: string | null;
   runId?: string | null;
+  sourceEventId?: string | null;
   idempotencyKey: string;
   now: Date;
   observation: AgentObservation;
