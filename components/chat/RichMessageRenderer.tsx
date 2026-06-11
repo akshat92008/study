@@ -572,7 +572,7 @@ function PracticeTestCard({ artifact, messageId, practiceSetId }: { artifact: Pa
   const getSubmissionKey = () => {
     if (!submissionKeyRef.current) {
       const randomId = globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2)}`;
-      submissionKeyRef.current = `practice:${practiceSetId || messageId ?? artifact.topic}:${randomId}`;
+      submissionKeyRef.current = `practice:${(practiceSetId || messageId) ?? artifact.topic}:${randomId}`;
     }
     return submissionKeyRef.current;
   };
