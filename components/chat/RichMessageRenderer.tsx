@@ -1257,6 +1257,27 @@ export const RichMessageRenderer = React.memo(function RichMessageRenderer({ con
         }} />
       )}
 
+      {/* Phase 5: Source grounding indicator — visible when RAG chunks were used */}
+      {!isStreaming && ragChunks && ragChunks.length > 0 && (
+        <div style={{
+          marginTop: 8, padding: '6px 10px',
+          background: 'rgba(20,184,166,0.06)',
+          border: '1px solid rgba(20,184,166,0.2)',
+          borderRadius: 8, display: 'flex', alignItems: 'center', gap: 6,
+          fontSize: 11, color: 'var(--accent-cyan)',
+        }}>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+            <polyline points="14 2 14 8 20 8"/>
+          </svg>
+          <span>
+            Used from your sources
+            {ragChunks[0]?.materialTitle ? `: ${ragChunks[0].materialTitle}` : ''}
+            {ragChunks.length > 1 ? ` +${ragChunks.length - 1} more` : ''}
+          </span>
+        </div>
+      )}
+
       {!isStreaming && isSynthesisSupported && (
         <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 4 }}>
           <button onClick={() => isSpeaking ? stopSpeaking() : speak(content)} style={{

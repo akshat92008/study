@@ -4,8 +4,8 @@ import { redirect } from 'next/navigation';
 import { requireAdmin } from '@/lib/auth/admin';
 
 export const metadata: Metadata = {
-  title: 'Admin Hermes Cockpit | Cognition OS',
-  description: 'Management and replay cockpit for Hermes v1 runtime.',
+  title: 'Admin Amaura Runtime | Cognition OS',
+  description: 'Management and replay cockpit for Amaura Runtime.',
 };
 
 export default async function AdminHermesPage() {

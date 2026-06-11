@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { z } from 'zod';
 import { apiErrorResponse, getRequestId } from '@/lib/api/errors';
 import { EventDispatcher } from '@/lib/events/orchestrator';
+import { PracticeService } from '@/lib/services/practice.service';
 
 const ReviewsSchema = z.object({
   messageId: z.string().optional(),
@@ -40,18 +41,81 @@ export async function POST(req: NextRequest) {
       const { data } = await supabase.from('practice_sets').select('*').eq('id', practiceSetId).eq('user_id', user.id).single();
       set = data;
     } else {
-      const { data } = await supabase.from('practice_sets').select('*').eq('message_id', messageId).eq('set_type', 'flashcard').eq('user_id', user.id).single();
+      // Look up by messageId first
+      const { data } = await supabase
+        .from('practice_sets')
+        .select('*')
+        .eq('message_id', messageId!)
+        .eq('set_type', 'flashcard')
+        .eq('user_id', user.id)
+        .maybeSingle();
       set = data;
+
+      // Phase 2 fix: If practice_set doesn't exist yet (background worker hasn't run),
+      // attempt lazy on-demand creation from the assistant message content.
+      if (!set && messageId) {
+        const { data: msgRow } = await supabase
+          .from('chat_messages')
+          .select('content, session_id, metadata')
+          .eq('id', messageId)
+          .eq('user_id', user.id)
+          .maybeSingle();
+
+        if (msgRow?.content) {
+          // Extract session's goal if available
+          let goalId: string | null = null;
+          if (msgRow.session_id) {
+            const { data: sessionRow } = await supabase
+              .from('chat_sessions')
+              .select('goal_id')
+              .eq('id', msgRow.session_id)
+              .maybeSingle();
+            goalId = sessionRow?.goal_id ?? null;
+          }
+
+          // Try to create practice set on-demand (lazy creation)
+          const extraction = await PracticeService.extractAndStorePracticeArtifacts(supabase as any, {
+            userId: user.id,
+            chatSessionId: msgRow.session_id,
+            goalId,
+            messageId,
+            fullResponse: msgRow.content,
+            source: 'mind',
+          });
+
+          if (extraction.flashcardSetIds.length > 0) {
+            // Re-query the newly created set
+            const { data: newSet } = await supabase
+              .from('practice_sets')
+              .select('*')
+              .eq('id', extraction.flashcardSetIds[0])
+              .eq('user_id', user.id)
+              .single();
+            set = newSet;
+          }
+        }
+      }
     }
 
     if (!set) {
-      return apiErrorResponse('not_found', { status: 404, message: 'Practice set not found', requestId });
+      // Practice set not found and could not be created on-demand.
+      // This can happen if the message had no flashcard artifact, or the message doesn't exist.
+      return apiErrorResponse('not_found', {
+        status: 404,
+        message: 'Practice set not found. The flashcard session may not have been saved correctly — please generate a new set.',
+        requestId
+      });
     }
 
     // Fetch items
     const positions = reviews.map(r => r.position);
-    const { data: items } = await supabase.from('practice_items').select('id, concept_id, concept_name, position').eq('practice_set_id', set.id).in('position', positions);
-    if (!items) {
+    const { data: items } = await supabase
+      .from('practice_items')
+      .select('id, concept_id, concept_name, position')
+      .eq('practice_set_id', set.id)
+      .in('position', positions);
+
+    if (!items || items.length === 0) {
       return apiErrorResponse('not_found', { status: 404, message: 'Practice items not found', requestId });
     }
 
@@ -79,6 +143,10 @@ export async function POST(req: NextRequest) {
       };
     }).filter(a => a !== null);
 
+    if (attemptsToInsert.length === 0) {
+      return apiErrorResponse('not_found', { status: 404, message: 'No matching practice items for the given positions', requestId });
+    }
+
     const { error: insertError } = await supabase.from('practice_attempts').insert(attemptsToInsert);
     if (insertError) {
       throw insertError;
@@ -101,7 +169,8 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      metrics: { reviewedCount }
+      metrics: { reviewedCount },
+      practiceSetId: set.id,
     });
   } catch (error) {
     const { unexpectedApiErrorResponse } = await import('@/lib/api/errors');

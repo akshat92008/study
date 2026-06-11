@@ -128,34 +128,44 @@ export default function QueueDashboard() {
           </div>
         </div>
       ) : status ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <StatCard
-            title="Pending Events"
-            value={status.pendingEvents}
-            icon={<Clock className="h-6 w-6 text-blue-500" />}
-            subtitle={`Oldest: ${status.oldestPendingAgeSeconds}s ago`}
-          />
-          <StatCard
-            title="Processing Events"
-            value={status.processingEvents}
-            icon={<Activity className="h-6 w-6 text-green-500" />}
-            subtitle={`Locks: ${status.processingLocks}`}
-          />
-          <StatCard
-            title="Failed Events"
-            value={status.failedEvents}
-            icon={<AlertTriangle className="h-6 w-6 text-red-500" />}
-            subtitle={`Locks FAILED: ${status.failedLocks}`}
-            alert={status.failedEvents > 0}
-          />
-          <StatCard
-            title="DLQ Events"
-            value={status.dlqCount}
-            icon={<AlertTriangle className="h-6 w-6 text-amber-500" />}
-            subtitle="Requires manual retry"
-            alert={status.dlqCount > 0}
-          />
-        </div>
+        <>
+          {!status.workerAvailable && (
+            <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-4 flex items-center gap-3">
+              <AlertTriangle className="h-5 w-5 text-amber-500 flex-shrink-0" />
+              <p className="text-amber-800 dark:text-amber-300 text-sm">
+                Worker health summary unavailable — event_queue table may not exist or worker service is unreachable.
+              </p>
+            </div>
+          )}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <StatCard
+              title="Pending Events"
+              value={status.pendingEvents ?? 0}
+              icon={<Clock className="h-6 w-6 text-blue-500" />}
+              subtitle={status.oldestPendingAgeSeconds != null ? `Oldest: ${status.oldestPendingAgeSeconds}s ago` : 'No pending events'}
+            />
+            <StatCard
+              title="Processing Events"
+              value={status.processingEvents ?? 0}
+              icon={<Activity className="h-6 w-6 text-green-500" />}
+              subtitle={`Locks: ${status.processingLocks ?? 0}`}
+            />
+            <StatCard
+              title="Failed Events"
+              value={status.failedEvents ?? 0}
+              icon={<AlertTriangle className="h-6 w-6 text-red-500" />}
+              subtitle={`Locks FAILED: ${status.failedLocks ?? 0}`}
+              alert={(status.failedEvents ?? 0) > 0}
+            />
+            <StatCard
+              title="DLQ Events"
+              value={status.dlqCount ?? 0}
+              icon={<AlertTriangle className="h-6 w-6 text-amber-500" />}
+              subtitle="Requires manual retry"
+              alert={(status.dlqCount ?? 0) > 0}
+            />
+          </div>
+        </>
       ) : null}
 
       {status?.errors && status.errors.length > 0 && (

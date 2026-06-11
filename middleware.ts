@@ -2,7 +2,7 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 import { isFeatureEnabled, type AppFeature } from '@/lib/feature-registry';
 
-const PUBLIC_ROUTES = ["/login", "/signup", "/waitlist", "/", "/api/ping", "/api/health", "/api/waitlist", "/api/webhooks/stripe"];
+const PUBLIC_ROUTES = ["/login", "/signup", "/waitlist", "/", "/api/ping", "/api/health", "/api/waitlist", "/api/webhooks/stripe", "/privacy", "/terms", "/refund", "/support"];
 const CRON_ROUTES = ["/api/cron", "/api/internal/workers/process-events", "/api/internal"];
 
 // MVP Route Policy: Block non-MVP user-facing routes

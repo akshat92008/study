@@ -66,7 +66,7 @@ export default function HermesDashboard() {
         <div>
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
             <Activity className="h-8 w-8 text-indigo-500" />
-            Hermes v1 Cockpit
+            Amaura Runtime Cockpit
           </h1>
           <p className="text-gray-500 dark:text-gray-400 mt-1">
             Production Grade Agent Runtime Monitoring & Replay

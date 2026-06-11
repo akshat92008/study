@@ -19,47 +19,66 @@ export async function GET() {
       countJobs('autopsy_jobs'),
     ]);
 
+    // Flat response shape matched to QueueDashboard component expectations
+    const pendingEvents = summary?.pendingEvents ?? 0;
+    const processingEvents = summary?.processingEvents ?? 0;
+    const failedEvents = summary?.failedEvents ?? 0;
+    const dlqCount = summary?.dlqCount ?? 0;
+    const oldestPendingAgeSeconds = summary?.oldestPendingAgeSeconds ?? null;
+    const processingLocks = summary?.processingLocks ?? 0;
+    const failedLocks = summary?.failedLocks ?? 0;
+    const pendingLocks = summary?.pendingLocks ?? 0;
+
+    // Compute completed24h counts separately (non-blocking)
+    const [completedEventCount, completedLockCount] = await Promise.all([
+      countRows('event_queue', (q) => q.eq('status', 'COMPLETED').gte('updated_at', since24h())).catch(() => 0),
+      countRows('consumer_locks', (q) => q.eq('status', 'COMPLETED').gte('updated_at', since24h())).catch(() => 0),
+    ]);
+
+    // Health signal: flag if queue is unhealthy
+    const isHealthy = pendingEvents === 0 || (oldestPendingAgeSeconds !== null && oldestPendingAgeSeconds < 300);
+    const hasErrors = failedEvents > 0 || dlqCount > 0;
+
     return NextResponse.json({
-      eventQueue: await eventQueueStatus(summary),
-      consumerLocks: await consumerLocksStatus(summary),
+      // Flat fields for QueueDashboard
+      pendingEvents,
+      processingEvents,
+      failedEvents,
+      dlqCount,
+      oldestPendingAgeSeconds,
+      processingLocks,
+      failedLocks,
+      pendingLocks,
+      completedEvents24h: completedEventCount,
+      completedLocks24h: completedLockCount,
+      isHealthy,
+      hasErrors,
+      workerAvailable: summary !== null,
+
+      // Nested details for future admin features
       agentActions,
       ragJobs,
       autopsyJobs,
     });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message, unavailable: true }, { status: 200 });
-  }
-}
-
-async function eventQueueStatus(summary: Awaited<ReturnType<typeof EventWorkerService.getHealthSummary>> | null) {
-  if (!summary) return { unavailable: true };
-
-  try {
-    return {
-      pending: summary.pendingEvents,
-      processing: summary.processingEvents,
-      completed24h: await countRows('event_queue', (query) => query.eq('status', 'COMPLETED').gte('updated_at', since24h())),
-      failed: summary.failedEvents,
-      deadLetter: summary.dlqCount,
-      oldestPendingAgeSeconds: summary.oldestPendingAgeSeconds || null,
-    };
-  } catch {
-    return { unavailable: true };
-  }
-}
-
-async function consumerLocksStatus(summary: Awaited<ReturnType<typeof EventWorkerService.getHealthSummary>> | null) {
-  if (!summary) return { unavailable: true };
-
-  try {
-    return {
-      pending: summary.pendingLocks,
-      processing: summary.processingLocks,
-      completed24h: await countRows('consumer_locks', (query) => query.eq('status', 'COMPLETED').gte('updated_at', since24h())),
-      failed: summary.failedLocks,
-    };
-  } catch {
-    return { unavailable: true };
+    return NextResponse.json({
+      // Return zeroed flat shape so UI doesn't show undefined
+      pendingEvents: 0,
+      processingEvents: 0,
+      failedEvents: 0,
+      dlqCount: 0,
+      oldestPendingAgeSeconds: null,
+      processingLocks: 0,
+      failedLocks: 0,
+      pendingLocks: 0,
+      completedEvents24h: 0,
+      completedLocks24h: 0,
+      isHealthy: false,
+      hasErrors: true,
+      workerAvailable: false,
+      error: err.message,
+      unavailable: true,
+    }, { status: 200 });
   }
 }
 

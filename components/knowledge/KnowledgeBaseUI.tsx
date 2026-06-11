@@ -80,8 +80,10 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
         return;
       }
 
-      if (data.status === 'ready') {
-        setStatus({ type: 'success', msg: `Source ready: ${data.chunksProcessed || 0} chunks indexed.` });
+      if (data.status === 'ready' && (data.chunksProcessed ?? 0) > 0) {
+        setStatus({ type: 'success', msg: `Source ready: ${data.chunksProcessed} chunks indexed.` });
+      } else if (data.status === 'ready' && (data.chunksProcessed ?? 0) === 0) {
+        setStatus({ type: 'error', msg: 'Source processed but no searchable text was found. This source may be a scanned image. Try a text-based PDF or re-upload with OCR.' });
       } else if (data.status === 'failed') {
         setStatus({ type: 'error', msg: 'Material indexing failed. Try another file or re-upload this source.' });
       } else {
@@ -129,10 +131,12 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
         setStatus({ type: 'error', msg: res.error || 'Upload failed' });
       } else if (res.material?.status === 'failed') {
         setStatus({ type: 'error', msg: 'Material indexing failed.' });
-      } else if (res.material?.status === 'ready') {
-        setStatus({ type: 'success', msg: `Source ready: ${res.chunksProcessed || 0} chunks indexed.` });
+      } else if (res.material?.status === 'ready' && (res.chunksProcessed ?? 0) > 0) {
+        setStatus({ type: 'success', msg: `Source ready: ${res.chunksProcessed} chunks indexed.` });
         setShowForm(false);
         await loadMaterials();
+      } else if (res.material?.status === 'ready' && (res.chunksProcessed ?? 0) === 0) {
+        setStatus({ type: 'error', msg: 'Source uploaded but no searchable text was found. This may be a scanned image. Try a text-based PDF.' });
       } else {
         setStatus({ type: 'info', msg: 'Source uploaded and queued for indexing. Use Process now if it stays queued.' });
         setShowForm(false);
