@@ -56,6 +56,27 @@ export async function completeLearningSession(input: {
     throw new Error('Subject and Chapter are required if no valid Session ID is provided');
   }
 
+  // 1b. Resolve concept ID if missing but name is provided
+  if (!conceptId && conceptName) {
+    try {
+      const resolved = await resolveConcept({
+        userId: input.userId,
+        goalId: input.goalId,
+        subject,
+        chapter,
+        topic: conceptName,
+        sourceType: 'session',
+        confidence: 0.9,
+        client: supabase,
+      });
+      if (resolved?.conceptId) {
+        conceptId = resolved.conceptId;
+      }
+    } catch (err) {
+      logger.warn('Failed to resolve conceptId during session completion', { userId: input.userId, conceptName, error: err });
+    }
+  }
+
   // 2. Atomic RPC for session record completion & streak update
   const { data: rpcResult, error: rpcError } = await supabase.rpc('complete_study_session', {
     p_user_id: input.userId,

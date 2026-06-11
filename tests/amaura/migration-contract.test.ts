@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 
 const root = process.cwd();
 const migration = fs.readFileSync(
-  path.join(root, 'supabase/migrations/20260606120000_amaura_agentic_runtime.sql'),
+  path.join(root, 'supabase/migrations/archived_legacy/20260606120000_amaura_agentic_runtime.sql'),
   'utf8'
 );
 const vercelConfig = fs.readFileSync(path.join(root, 'vercel.json'), 'utf8');

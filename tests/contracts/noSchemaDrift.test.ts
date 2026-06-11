@@ -244,7 +244,7 @@ describe('rls audit', () => {
 
   it('all core user-data tables have FORCE ROW LEVEL SECURITY in latest hardening migration', () => {
     const hardeningMigration = fs.readFileSync(
-      path.join(root, 'supabase', 'migrations', '20260610000000_public_launch_rls_hardening.sql'),
+      path.join(root, 'supabase', 'migrations', 'archived_legacy', '20260610000000_public_launch_rls_hardening.sql'),
       'utf8'
     ).toLowerCase();
 

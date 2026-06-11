@@ -46,7 +46,7 @@ function expectColumn(sql: string, table: string, column: string) {
 describe('private beta MVP schema contract', () => {
   const sql = readAllMigrations();
   const canonical = fs.readFileSync(
-    path.join(migrationsDir, '20260601000100_private_beta_mvp_schema_canonicalization.sql'),
+    path.join(migrationsDir, 'archived_legacy', '20260601000100_private_beta_mvp_schema_canonicalization.sql'),
     'utf8'
   );
 

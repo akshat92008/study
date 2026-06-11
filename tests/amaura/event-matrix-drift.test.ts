@@ -9,7 +9,7 @@ describe('Amaura event matrix drift protection', () => {
   it('verifies that every Amaura event and consumer in TS exists in SQL', () => {
     const migrationPath = path.join(
       root,
-      'supabase/migrations/20260606120000_amaura_agentic_runtime.sql'
+      'supabase/migrations/archived_legacy/20260606120000_amaura_agentic_runtime.sql'
     );
     const sqlContent = fs.readFileSync(migrationPath, 'utf8');
 
@@ -66,7 +66,7 @@ describe('Amaura event matrix drift protection', () => {
       // This is a bonus check to ensure they are in sync
       const migrationPath = path.join(
         root,
-        'supabase/migrations/20260606120000_amaura_agentic_runtime.sql'
+        'supabase/migrations/archived_legacy/20260606120000_amaura_agentic_runtime.sql'
       );
       const sqlContent = fs.readFileSync(migrationPath, 'utf8');
   

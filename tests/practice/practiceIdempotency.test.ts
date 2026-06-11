@@ -6,7 +6,7 @@ const root = process.cwd();
 const route = fs.readFileSync(path.join(root, 'app/api/practice/attempts/route.ts'), 'utf8');
 const renderer = fs.readFileSync(path.join(root, 'components/chat/RichMessageRenderer.tsx'), 'utf8');
 const streamHook = fs.readFileSync(path.join(root, 'hooks/useStream.ts'), 'utf8');
-const migration = fs.readFileSync(path.join(root, 'supabase/migrations/20260602000400_practice_attempts_idempotency.sql'), 'utf8');
+const migration = fs.readFileSync(path.join(root, 'supabase/migrations/archived_legacy/20260602000400_practice_attempts_idempotency.sql'), 'utf8');
 
 describe('practice attempt DB idempotency', () => {
   it('stores per-answer idempotency keys and returns persisted attempts', () => {

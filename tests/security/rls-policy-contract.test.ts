@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 
 const root = process.cwd();
 const canonical = fs.readFileSync(
-  path.join(root, 'supabase/migrations/20260601000100_private_beta_mvp_schema_canonicalization.sql'),
+  path.join(root, 'supabase/migrations/archived_legacy/20260601000100_private_beta_mvp_schema_canonicalization.sql'),
   'utf8'
 );
 

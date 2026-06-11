@@ -26,7 +26,7 @@ function readMigrations(): string {
 
 describe('Module 6 — Phase 6.1: chat turn_status state machine', () => {
   it('chat_turn_status migration exists', () => {
-    const migrationPath = path.join(root, 'supabase', 'migrations', '20260610000001_chat_turn_status.sql');
+    const migrationPath = path.join(root, 'supabase', 'migrations', 'archived_legacy', '20260610000001_chat_turn_status.sql');
     expect(fs.existsSync(migrationPath)).toBe(true);
   });
 
@@ -37,7 +37,7 @@ describe('Module 6 — Phase 6.1: chat turn_status state machine', () => {
   });
 
   it('turn_status migration includes required states', () => {
-    const migrationContent = readFile('supabase/migrations/20260610000001_chat_turn_status.sql').toLowerCase();
+    const migrationContent = readFile('supabase/migrations/archived_legacy/20260610000001_chat_turn_status.sql').toLowerCase();
     const requiredStates = [
       'assistant_saved',
       'failed_provider',
@@ -50,7 +50,7 @@ describe('Module 6 — Phase 6.1: chat turn_status state machine', () => {
   });
 
   it('idempotency_key unique index declared for chat_messages', () => {
-    const migrationContent = readFile('supabase/migrations/20260610000001_chat_turn_status.sql').toLowerCase();
+    const migrationContent = readFile('supabase/migrations/archived_legacy/20260610000001_chat_turn_status.sql').toLowerCase();
     expect(migrationContent).toContain('unique index');
     expect(migrationContent).toContain('idempotency_key');
   });

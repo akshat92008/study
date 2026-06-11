@@ -13,7 +13,6 @@ const MVP_RESTRICTIONS: Array<{ path: string; flag?: AppFeature; redirect?: stri
   { path: "/analytics", flag: 'analytics_ui', redirect: "/dashboard" },
   { path: "/cognition", flag: 'atlas_ui', redirect: "/dashboard" },
   { path: "/health", flag: undefined, redirect: "/dashboard" },
-  { path: "/autopsy/deep", flag: undefined, redirect: "/autopsy" },
   { path: "/pulse", flag: undefined, redirect: "/dashboard" },
 ];
 

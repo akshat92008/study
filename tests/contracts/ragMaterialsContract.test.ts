@@ -146,24 +146,24 @@ describe('Module 7 — Phase 7.4: Storage privacy and deletion cascade', () => {
   });
 
   it('deletion cascade migration exists', () => {
-    const migPath = path.join(root, 'supabase', 'migrations', '20260610000002_rag_material_deletion_cascade.sql');
+    const migPath = path.join(root, 'supabase', 'migrations', 'archived_legacy', '20260610000002_rag_material_deletion_cascade.sql');
     expect(fs.existsSync(migPath)).toBe(true);
   });
 
   it('deletion migration adds deleted_at soft-delete column', () => {
-    const content = readFile('supabase/migrations/20260610000002_rag_material_deletion_cascade.sql').toLowerCase();
+    const content = readFile('supabase/migrations/archived_legacy/20260610000002_rag_material_deletion_cascade.sql').toLowerCase();
     expect(content).toContain('deleted_at');
     expect(content).toContain('study_materials');
   });
 
   it('deletion migration cascades to orphan chunks', () => {
-    const content = readFile('supabase/migrations/20260610000002_rag_material_deletion_cascade.sql').toLowerCase();
+    const content = readFile('supabase/migrations/archived_legacy/20260610000002_rag_material_deletion_cascade.sql').toLowerCase();
     expect(content).toContain('orphaned_at');
     expect(content).toContain('study_material_chunks') || expect(content).toContain('material_chunks');
   });
 
   it('deletion migration creates a trigger for cascade orphaning', () => {
-    const content = readFile('supabase/migrations/20260610000002_rag_material_deletion_cascade.sql').toLowerCase();
+    const content = readFile('supabase/migrations/archived_legacy/20260610000002_rag_material_deletion_cascade.sql').toLowerCase();
     expect(content).toContain('create trigger') || expect(content).toContain('create or replace trigger');
     expect(content).toContain('cascade_orphan_chunks');
   });

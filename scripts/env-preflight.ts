@@ -93,6 +93,20 @@ if (mode === 'public_paid') {
     console.error(`[ERROR] NEXT_PUBLIC_APP_URL must use https:// in public_paid mode.`);
     ok = false;
   }
+
+  // Reject dangerous flags
+  const dangerousFlags = [
+    'BYPASS_ALL_LIMITS',
+    'ALLOW_USAGE_GATE_FAIL_OPEN',
+    'SKIP_ENV_VALIDATION',
+    'DISABLE_EMBEDDINGS'
+  ];
+  for (const flag of dangerousFlags) {
+    if (process.env[flag] === 'true' || process.env[flag] === '1') {
+      console.error(`[ERROR] Dangerous flag ${flag} is not allowed in public_paid mode.`);
+      ok = false;
+    }
+  }
 }
 
 const migrationsDir = path.join(process.cwd(), 'supabase', 'migrations');

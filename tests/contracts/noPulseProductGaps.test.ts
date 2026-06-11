@@ -15,7 +15,7 @@ describe('no-PULSE product gap contracts', () => {
     const chatPipeline = read('lib/chat/pipeline.ts');
     const combined = chatRoute + chatContext + chatPipeline;
     const appApiFiles = fs.readdirSync(path.join(root, 'app/api'), { recursive: true }).join('\n').toLowerCase();
-    const migration = read('supabase/migrations/20260531000011_no_pulse_product_gates_memory.sql').toLowerCase();
+    const migration = read('supabase/migrations/archived_legacy/20260531000011_no_pulse_product_gates_memory.sql').toLowerCase();
 
     expect(combined).toContain('inferAndUpdateEmotionalState');
     expect(appApiFiles).not.toContain('pulse');
@@ -53,7 +53,7 @@ describe('no-PULSE product gap contracts', () => {
   });
 
   it('replaces schema-conditional semantic memory RPC with deterministic chat_memory lookup', () => {
-    const migration = read('supabase/migrations/20260531000011_no_pulse_product_gates_memory.sql');
+    const migration = read('supabase/migrations/archived_legacy/20260531000011_no_pulse_product_gates_memory.sql');
     const functionBody = migration.slice(migration.indexOf('create or replace function public.match_chat_memory'));
 
     expect(functionBody).toContain('from public.chat_memory cm');
