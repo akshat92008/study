@@ -46,6 +46,7 @@ export default function RevisionQueue({ goalId }: { goalId?: string }) {
 
     try {
       await submitReview(currentCard.id, ratingMap[rating] || 3);
+      window.dispatchEvent(new Event('refresh-dashboard'));
     } catch (err: any) {
       setQueue(q => [currentCard, ...q]);
       addToast(err.message || 'Failed to save review', 'error');

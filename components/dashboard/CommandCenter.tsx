@@ -207,7 +207,10 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
               ? `📚 Source uploaded: **${file.name}**. It is queued for indexing and will be available to the AI Tutor when it shows Ready.`
             : data.material?.status === 'uploaded' && data.chunksProcessed === 0
               ? `📁 Material uploaded: **${file.name}**. Indexing is currently disabled for beta stability.`
+            : data.material?.status === 'ready' && data.chunksProcessed === 0
+              ? `📚 Source uploaded: **${file.name}** (awaiting background vectorization)`
               : `📚 Syllabus Ingested: **${file.name}**. Material indexed: ${data.chunksProcessed || 0} chunks ready.`;
+
         setMessages(prev => prev.map(m => m.id === fileMsgId ? { ...m, content: textContent, type: 'text' } : m));
       }
     } catch (err: any) {

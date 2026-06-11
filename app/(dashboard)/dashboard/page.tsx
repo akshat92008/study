@@ -88,6 +88,7 @@ export default function DashboardPage() {
 
     const handleRefresh = () => {
       loadTelemetry();
+      loadAutopsy();
     };
     window.addEventListener('refresh-dashboard', handleRefresh);
     return () => window.removeEventListener('refresh-dashboard', handleRefresh);
