@@ -142,6 +142,29 @@ export async function handleMainStreaming({
           }
         }
 
+        if (fullResponse.includes('<artifact type="practice-test"') || fullResponse.includes('<artifact type="mcq-set"') || fullResponse.includes('<artifact type="flashcard-set"')) {
+          const { PracticeService } = await import('@/lib/services/practice.service');
+          try {
+            const extraction = await PracticeService.extractAndStorePracticeArtifacts(await supabaseObj, {
+              userId,
+              chatSessionId: sessionId,
+              goalId: mindContext?.activeGoal?.id ?? null,
+              messageId: undefined, // Message is not persisted yet
+              fullResponse,
+              source: mindContext?.ragContext?.grounded ? 'rag' : 'mind',
+              sourceMaterialIds: mindContext?.ragContext?.materialIds,
+              sourceChunkIds: mindContext?.ragContext?.chunkIds,
+            });
+            if (extraction.practiceSetIds.length > 0) {
+              metadataPayload = { ...(metadataPayload || {}), practiceSetId: extraction.practiceSetIds[0] };
+            } else if (extraction.flashcardSetIds.length > 0) {
+              metadataPayload = { ...(metadataPayload || {}), practiceSetId: extraction.flashcardSetIds[0] };
+            }
+          } catch (e) {
+            logger.warn('Failed to synchronously extract practice set', e);
+          }
+        }
+
         const contextTrace = {
           learner_state_version: mindContext?.profile?.learnerStateVersion || 0,
           memory_count: crossSessionMemories.length,

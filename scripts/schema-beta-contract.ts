@@ -28,7 +28,7 @@ function main() {
     assertIncludes(usage, feature, 'usage enforcement');
   }
 
-  const migration = assertFile('supabase/migrations/20260605090000_manual_beta_hardening.sql');
+  const migration = assertFile('supabase/migrations/archived_legacy/20260605090000_manual_beta_hardening.sql');
   for (const table of ['feature_usage_events', 'app_error_events', 'admin_audit_log']) {
     assertIncludes(migration, table, 'manual beta migration');
   }

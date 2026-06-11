@@ -549,7 +549,7 @@ function parseQuestions(content: string): ParsedQuestion[] {
   return questions;
 }
 
-function PracticeTestCard({ artifact, messageId }: { artifact: ParsedArtifact, messageId?: string }) {
+function PracticeTestCard({ artifact, messageId, practiceSetId }: { artifact: ParsedArtifact, messageId?: string, practiceSetId?: string }) {
   const questions = parseQuestions(artifact.content);
   const chatSessionId = useAppStore(s => s.chatId);
   const activeGoalId = useAppStore(s => s.activeGoalId);
@@ -572,7 +572,7 @@ function PracticeTestCard({ artifact, messageId }: { artifact: ParsedArtifact, m
   const getSubmissionKey = () => {
     if (!submissionKeyRef.current) {
       const randomId = globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2)}`;
-      submissionKeyRef.current = `practice:${messageId ?? artifact.topic}:${randomId}`;
+      submissionKeyRef.current = `practice:${practiceSetId || messageId ?? artifact.topic}:${randomId}`;
     }
     return submissionKeyRef.current;
   };
@@ -729,7 +729,7 @@ function PracticeTestCard({ artifact, messageId }: { artifact: ParsedArtifact, m
           <div style={{ marginTop: 20, display: 'flex', justifyContent: 'center' }}>
             <button
               onClick={async () => {
-                if (!messageId || isSubmitting) return;
+                if ((!messageId && !practiceSetId) || isSubmitting) return;
                 setIsSubmitting(true);
                 setSubmitError(null);
                 try {
@@ -752,6 +752,7 @@ function PracticeTestCard({ artifact, messageId }: { artifact: ParsedArtifact, m
                     body: JSON.stringify({
                       idempotencyKey,
                       messageId,
+                      practiceSetId,
                       messageContent: `<artifact ${artifactAttributes}>\n${artifact.content}\n</artifact>`,
                       chatSessionId,
                       goalId: activeGoalId,
@@ -791,15 +792,18 @@ function PracticeTestCard({ artifact, messageId }: { artifact: ParsedArtifact, m
                   setIsSubmitting(false);
                 }
               }}
-              disabled={isSubmitting || !messageId}
+              disabled={isSubmitting || (!messageId && !practiceSetId)}
               style={{
                 padding: '8px 24px', background: 'var(--accent-purple)',
-                color: 'white', border: 'none', borderRadius: 8,
-                fontSize: 13, fontWeight: 700, cursor: isSubmitting || !messageId ? 'not-allowed' : 'pointer',
-                opacity: isSubmitting || !messageId ? 0.7 : 1
+                color: 'white', border: 'none', borderRadius: 8
               }}
             >
-              {isSubmitting ? 'Saving...' : 'Submit Answers to Learning Profile'}
+              <span style={{ 
+                fontSize: 13, fontWeight: 700, cursor: isSubmitting || (!messageId && !practiceSetId) ? 'not-allowed' : 'pointer',
+                opacity: isSubmitting || (!messageId && !practiceSetId) ? 0.7 : 1
+              }}>
+                {isSubmitting ? 'Saving...' : 'Submit Answers to Learning Profile'}
+              </span>
             </button>
           </div>
         )}
@@ -894,7 +898,7 @@ function parseFlashcards(content: string): ParsedFlashcard[] {
   return cards;
 }
 
-function FlashcardSetComponent({ artifact, messageId }: { artifact: ParsedArtifact, messageId?: string }) {
+function FlashcardSetComponent({ artifact, messageId, practiceSetId }: { artifact: ParsedArtifact, messageId?: string, practiceSetId?: string }) {
   const cards = parseFlashcards(artifact.content);
   const [currentIdx, setCurrentIdx] = useState(0);
   const [flipped, setFlipped] = useState(false);
@@ -1005,21 +1009,21 @@ function FlashcardSetComponent({ artifact, messageId }: { artifact: ParsedArtifa
           <div style={{ marginTop: 12, display: 'flex', justifyContent: 'center' }}>
             <button
               onClick={async () => {
-                if (!messageId || isSubmitting) return;
+                if ((!messageId && !practiceSetId) || isSubmitting) return;
                 setIsSubmitting(true);
                 try {
                   const reviews = Object.entries(pendingReviews).map(([idx, confidence]) => ({
                     position: parseInt(idx) + 1,
                     confidence
                   }));
-                  const syncKey = `flashcard_review:${messageId}:${Date.now()}`;
+                  const syncKey = `flashcard_review:${practiceSetId || messageId}:${Date.now()}`;
                   const res = await fetch('/api/practice/reviews', {
                     method: 'POST',
                     headers: {
                       'Content-Type': 'application/json',
                       'Idempotency-Key': syncKey,
                     },
-                    body: JSON.stringify({ messageId, reviews, idempotencyKey: syncKey })
+                    body: JSON.stringify({ messageId, practiceSetId, reviews, idempotencyKey: syncKey })
                   });
                   if (!res.ok) {
                     const errData = await res.json().catch(() => null);
@@ -1033,15 +1037,18 @@ function FlashcardSetComponent({ artifact, messageId }: { artifact: ParsedArtifa
                 }
                 setIsSubmitting(false);
               }}
-              disabled={isSubmitting || !messageId}
+              disabled={isSubmitting || (!messageId && !practiceSetId)}
               style={{
                 padding: '6px 16px', background: 'var(--accent-purple)',
-                color: 'white', border: 'none', borderRadius: 8,
-                fontSize: 12, fontWeight: 700, cursor: isSubmitting || !messageId ? 'not-allowed' : 'pointer',
-                opacity: isSubmitting || !messageId ? 0.7 : 1
+                color: 'white', border: 'none', borderRadius: 8
               }}
             >
-              {isSubmitting ? 'Saving...' : 'Sync Progress'}
+              <span style={{ 
+                fontSize: 12, fontWeight: 700, cursor: isSubmitting || (!messageId && !practiceSetId) ? 'not-allowed' : 'pointer',
+                opacity: isSubmitting || (!messageId && !practiceSetId) ? 0.7 : 1
+              }}>
+                {isSubmitting ? 'Saving...' : 'Sync Progress'}
+              </span>
             </button>
           </div>
         )}
@@ -1200,6 +1207,7 @@ interface RichMessageRendererProps {
 }
 
 export const RichMessageRenderer = React.memo(function RichMessageRenderer({ content, isStreaming = false, messageId, metadata }: RichMessageRendererProps) {
+  const practiceSetId = metadata?.practiceSetId;
   const cleanContent = content.split('===METADATA===')[0];
   const parts = parseArtifacts(cleanContent);
   const ragChunks = metadata?.ragChunks;
@@ -1227,9 +1235,9 @@ export const RichMessageRenderer = React.memo(function RichMessageRenderer({ con
 
         switch (part.artifact.type) {
           case 'study-guide': case 'learning-document': return <StudyGuideCard key={i} artifact={part.artifact} ragChunks={ragChunks} />;
-          case 'practice-test': case 'mcq-set': return <PracticeTestCard key={i} artifact={part.artifact} messageId={messageId} />;
+          case 'practice-test': case 'mcq-set': return <PracticeTestCard key={i} artifact={part.artifact} messageId={messageId} practiceSetId={practiceSetId} />;
           case 'revision-sheet': case 'formula-sheet': return <RevisionSheetCard key={i} artifact={part.artifact} ragChunks={ragChunks} />;
-          case 'flashcard-set': return <FlashcardSetComponent key={i} artifact={part.artifact} messageId={messageId} />;
+          case 'flashcard-set': return <FlashcardSetComponent key={i} artifact={part.artifact} messageId={messageId} practiceSetId={practiceSetId} />;
           case 'concept-map': return <ConceptMapCard key={i} artifact={part.artifact} />;
           case 'study-plan': return <StudyPlanCard key={i} artifact={part.artifact} ragChunks={ragChunks} />;
           case 'pdf': return <PdfCard key={i} artifact={part.artifact} ragChunks={ragChunks} />;

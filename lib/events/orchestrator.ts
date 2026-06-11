@@ -132,6 +132,7 @@ export class EventDispatcher {
       p_idempotency_key: idempotencyKey,
       p_source: metadata.source,
       p_metadata: metadata,
+      p_consumers: consumers,
     });
 
     if (error) {

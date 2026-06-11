@@ -8,6 +8,7 @@ import { PracticeService } from '@/lib/services/practice.service';
 const ReviewsSchema = z.object({
   messageId: z.string().optional(),
   practiceSetId: z.string().optional(),
+  idempotencyKey: z.string().optional(),
   reviews: z.array(z.object({
     position: z.number().int().positive(),
     confidence: z.enum(['easy', 'medium', 'hard', 'forgot', 'again', 'knew'])
@@ -139,7 +140,8 @@ export async function POST(req: NextRequest) {
         user_id: user.id,
         practice_set_id: set.id,
         practice_item_id: item.id,
-        confidence: rev.confidence
+        confidence: rev.confidence,
+        idempotency_key: parsed.data.idempotencyKey ? `${parsed.data.idempotencyKey}:${item.id}` : undefined
       };
     }).filter(a => a !== null);
 
@@ -147,7 +149,7 @@ export async function POST(req: NextRequest) {
       return apiErrorResponse('not_found', { status: 404, message: 'No matching practice items for the given positions', requestId });
     }
 
-    const { error: insertError } = await supabase.from('practice_attempts').insert(attemptsToInsert);
+    const { error: insertError } = await supabase.from('practice_attempts').upsert(attemptsToInsert, { onConflict: 'user_id, idempotency_key' });
     if (insertError) {
       throw insertError;
     }

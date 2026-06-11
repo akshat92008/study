@@ -152,11 +152,6 @@ export async function routeUploads(params: RouteUploadsParams) {
     return visionUploadsDisabledResponse(encoder);
   }
 
-  if (imageBase64 && imageMimeType && !documentBase64) {
-    return handleVisionUpload({ userId, message: message || '', imageBase64, imageMimeType, systemPrompt, finalizeAssistantTurn: finalizeAssistantTurnFn, encoder, supabase, goalId: activeGoalId, sessionId, idempotencyKey: messageRequestId });
-  }
-
-
   const shouldRouteUploadToAutopsy = hasUploadedFile && ((orchestratorResult.intent === 'mock_autopsy' && orchestratorResult.needsFileProcessing) || uploadIntent === 'autopsy_mock_analysis');
 
   if (shouldRouteUploadToAutopsy && ((imageBase64 && imageMimeType) || (documentBase64 && documentMimeType))) {
@@ -166,6 +161,10 @@ export async function routeUploads(params: RouteUploadsParams) {
         ? { kind: 'text' as const, text: Buffer.from(documentBase64!, 'base64').toString('utf8') }
         : { kind: 'inline' as const, mimeType: documentMimeType!, data: documentBase64! };
     return handleAutopsyRedirect({ userId, message: message || '', fileData, profilePreview, messageRequestId, activeGoalId, sessionId, supabase, finalizeAssistantTurn: finalizeAssistantTurnFn, encoder });
+  }
+
+  if (imageBase64 && imageMimeType && !documentBase64) {
+    return handleVisionUpload({ userId, message: message || '', imageBase64, imageMimeType, systemPrompt, finalizeAssistantTurn: finalizeAssistantTurnFn, encoder, supabase, goalId: activeGoalId, sessionId, idempotencyKey: messageRequestId });
   }
 
   const isMaterialIndexing = (message && /\\b(use this|save this|upload this|index this|store this|add this|my notes|study material|ncert|textbook|chapter|pdf|source|answer from this|use later|prescribed material|according to this|make this my source)\\b/i.test(message) && uploadIntent === 'study_material_index') || uploadIntent === 'study_material_index';

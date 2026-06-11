@@ -148,23 +148,7 @@ export async function processChatSideEffects(input: ChatSideEffectsInput) {
     captureSentryException(err, { tags: { context: 'emotion_state_update' } });
   }
 
-  // 4.5. Practice Artifact Storage
-  try {
-    const ragContext = mindContext?.ragContext;
-    await PracticeService.extractAndStorePracticeArtifacts(supabase, {
-      userId,
-      chatSessionId: sessionId,
-      goalId: goalId ?? mindContext?.activeGoal?.id ?? null,
-      messageId: assistant_message_id,
-      fullResponse,
-      source: ragContext?.grounded ? 'rag' : 'mind',
-      sourceMaterialIds: ragContext?.materialIds ?? [],
-      sourceChunkIds: ragContext?.chunkIds ?? [],
-    });
-  } catch (err) {
-    logger.warn('SideEffect: Practice artifact extraction failed', err);
-    captureSentryException(err, { tags: { context: 'practice_artifact_storage' } });
-  }
+  // 4.5. Practice Artifact Storage (MOVED to synchronous extraction in streaming.ts to return practiceSetId)
 
   // 5. Downstream Event Derivation (MIND_TUTOR_COMPLETED + concept expansion)
   try {

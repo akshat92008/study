@@ -498,7 +498,6 @@ export async function processMaterialIngestion({
     });
     return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
   } else {
-    await ingestUploadedMaterial();
     return null;
   }
 }

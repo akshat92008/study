@@ -101,29 +101,13 @@ export function AgentActivityFeed() {
         </div>
         {isThinking && (
           <span style={{ fontSize: '12px', color: 'var(--accent-primary, #8b5cf6)', display: 'flex', alignItems: 'center', gap: 4 }}>
-            <span className="thinking-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: 'currentColor' }} />
+            <span className={styles.thinkingDot} style={{ width: 6, height: 6, borderRadius: '50%', background: 'currentColor' }} />
             Amaura is thinking...
           </span>
         )}
       </div>
 
-      <style jsx>{`
-        @keyframes slideIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes pulse {
-          0% { opacity: 1; }
-          50% { opacity: 0.5; }
-          100% { opacity: 1; }
-        }
-        .activity-item {
-          animation: slideIn 0.3s ease-out forwards;
-        }
-        .thinking-dot {
-          animation: pulse 2s infinite;
-        }
-      `}</style>
+
       <div style={{ padding: '8px', overflowY: 'auto', flex: 1 }}>
         {activities.length === 0 ? (
           <div style={{ padding: '24px 16px', textAlign: 'center', color: 'var(--text-tertiary)', fontSize: '13px' }}>
@@ -132,7 +116,7 @@ export function AgentActivityFeed() {
         ) : (
           <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
             {activities.map((activity, index) => (
-              <li key={activity.id} className="activity-item" style={{
+              <li key={activity.id} className={styles.activityItem} style={{
                 padding: '12px',
                 borderRadius: '6px',
                 background: 'var(--bg-primary)',

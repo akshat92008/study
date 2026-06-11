@@ -189,8 +189,12 @@ CREATE OR REPLACE FUNCTION public.create_event_with_consumers(
     p_data jsonb,
     p_idempotency_key text,
     p_source text,
-    p_metadata jsonb
-) RETURNS uuid AS $$
+    p_metadata jsonb,
+    p_consumers text[]
+) RETURNS uuid 
+SECURITY DEFINER
+SET search_path = public
+AS $$
 DECLARE
     v_event_id uuid;
 BEGIN
@@ -218,7 +222,7 @@ BEGIN
 
     -- Insert locks for consumers
     INSERT INTO consumer_locks (event_id, consumer_name, status)
-    SELECT v_event_id, unnest(ARRAY['learning_state_engine','atlas_engine','memory_engine','command_engine','concept_expansion_engine']::text[]), 'PENDING';
+    SELECT v_event_id, unnest(p_consumers), 'PENDING';
 
     RETURN v_event_id;
 END;

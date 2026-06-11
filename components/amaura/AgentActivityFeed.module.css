@@ -1,0 +1,15 @@
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+.activityItem {
+  animation: slideIn 0.3s ease-out forwards;
+}
+.thinkingDot {
+  animation: pulse 2s infinite;
+}
