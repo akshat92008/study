@@ -228,8 +228,16 @@ export const useAppStore = create<AppState>()(
           set({ learningGoals: goals });
           const currentId = get().activeGoalId;
           const currentStillExists = currentId && goals.some(goal => goal.id === currentId);
-          if (!currentStillExists && goals.length > 0) {
+          
+          // Only auto-select first goal if current goal is definitively missing AND we have goals available
+          if (currentId && !currentStillExists && goals.length > 0) {
             await get().selectLearningGoal(goals[0].id);
+          } else if (!currentId && goals.length > 0) {
+            // Or if no goal was ever selected
+            await get().selectLearningGoal(goals[0].id);
+          } else if (currentId && !currentStillExists && goals.length === 0) {
+            // If we have an ID but the server returned 0 goals, clear the ID
+            set({ activeGoalId: null, activeGoalContext: null });
           }
         } catch (err) {
           console.error('Failed to load learning goals:', err);

@@ -40,6 +40,7 @@ describe('EventDispatcher', () => {
     expect(rpc).toHaveBeenCalledWith('create_event_with_consumers', {
       p_user_id: '00000000-0000-0000-0000-000000000001',
       p_type: 'AUTOPSY_MOCK_PROCESSED',
+      p_consumers: ['atlas_engine', 'memory_engine'],
       p_data: { autopsyId: 'autopsy-test', incorrectCount: 2 },
       p_idempotency_key: 'autopsy-test',
       p_source: 'test',
@@ -91,7 +92,6 @@ describe('EventDispatcher', () => {
     expect(getConsumersForEvent('AUTOPSY_MOCK_PROCESSED')).toEqual([
       'atlas_engine',
       'memory_engine',
-      'learning_state_engine',
     ]);
     expect(getConsumersForEvent('CHAT_MESSAGE_PROCESSED')).toEqual(['chat_side_effect_engine', 'mind_agent']);
     expect(getConsumersForEvent('AUTOPSY_UPLOAD_RECEIVED')).toEqual(['autopsy_engine']);
@@ -101,7 +101,6 @@ describe('EventDispatcher', () => {
       'atlas_agent',
       'memory_agent',
     ]);
-    expect(getConsumersForEvent('STUDENT_MODEL_SYNC_REQUESTED')).toContain('learning_state_engine');
   });
 
   it('allows every parent event status used by the worker', async () => {

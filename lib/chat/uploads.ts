@@ -1,6 +1,6 @@
 import { budgetedVisionCall, budgetedGenerateJSON } from '@/lib/ai/budgeted';
 import { isBudgetExceeded, isBudgetUnavailable, budgetExceededResponse, budgetUnavailableResponse } from '@/lib/ai/cost-guard';
-import { createAutopsyJob } from '@/lib/services/autopsy-jobs';
+// import { createAutopsyJob } from '@/lib/services/autopsy-jobs';
 import { ingestStudyMaterial, materialContentHash } from '@/lib/rag/ingest';
 import { getRagConfig, SUPPORTED_MATERIAL_MIME_TYPES } from '@/lib/rag/config';
 import { validateMagicBytesArray } from '@/lib/utils/magicBytes';
@@ -8,6 +8,7 @@ import { EventDispatcher } from '@/lib/events/orchestrator';
 import { logger } from '@/lib/utils/logger';
 import { apiErrorResponse } from '@/lib/api/errors';
 import { featureFlags } from '@/lib/config/flags';
+import { consumeFeatureUsage, enforceFeatureLimit, featureLimitResponse } from '@/lib/usage/enforce-feature-limit';
 import { processLearningTransaction } from '@/lib/learning/learning-transaction';
 import { z } from 'zod';
 
@@ -290,21 +291,7 @@ export async function handleAutopsyRedirect({
   finalizeAssistantTurn: any;
   encoder: TextEncoder;
 }): Promise<Response> {
-  const job = await createAutopsyJob({
-    userId,
-    fileData,
-    testName: 'AI Tutor Chat Upload',
-    examType: profilePreview?.exam_type || 'General Study',
-    idempotencyKey: `${messageRequestId}:autopsy`,
-    source: 'chat_upload',
-    goalId: activeGoalId,
-    chatSessionId: sessionId,
-    client: supabase,
-  });
-
-  const responseText = job.status === 'completed'
-    ? "I found an existing completed Mistake Review for this upload. Opening Mistake Review now so you can review the processed result."
-    : "I've queued this upload for Mistake Review. I will validate the file, classify only evidence-backed mistakes, update this goal's progress and review queue, and use the updated learner state on the next turn.";
+  const responseText = "To process your mistakes, update your ATLAS concept mastery, and sync revision cards, please upload your test/autopsy files directly through the Autopsy page at /dashboard/autopsy.";
 
   const stream = new ReadableStream({
     async start(controller) {
@@ -313,7 +300,7 @@ export async function handleAutopsyRedirect({
         await finalizeAssistantTurn({
           assistantText: responseText,
           userMessage: message || '[Autopsy upload]',
-          metadata: { action: 'run_autopsy', jobId: job.id, status: job.status },
+          metadata: { action: 'autopsy_upload_redirect' },
         });
       } catch (finalizeErr) {
         logger.error('Chat route [autopsy-redirect]: finalization failed', finalizeErr);
@@ -355,6 +342,15 @@ export async function processMaterialIngestion({
   }
 
   if (!SUPPORTED_MATERIAL_MIME_TYPES.has(documentMimeType)) return null;
+
+  if (isMaterialIndexing) {
+    try {
+      await enforceFeatureLimit(userId, 'material_upload');
+    } catch (limitError: any) {
+      if (limitError?.check) return featureLimitResponse(limitError.check, requestId);
+      throw limitError;
+    }
+  }
 
   const ragConfig = getRagConfig();
   const buffer = Buffer.from(documentBase64, 'base64');
@@ -474,6 +470,15 @@ export async function processMaterialIngestion({
 
   if (isMaterialIndexing) {
     const ingestion = await ingestUploadedMaterial();
+    if (ingestion.accepted && ingestion.status !== 'duplicate' && ingestion.status !== 'failed') {
+      try {
+        await consumeFeatureUsage(userId, 'material_upload', 1, {
+          idempotencyKey: `material_upload_chat:${userId}:${contentHash.slice(0, 12)}`,
+        });
+      } catch (usageErr) {
+        logger.error('Failed to consume material_upload usage in chat', usageErr);
+      }
+    }
     const answer = ingestion.accepted
       ? ingestion.status === 'ready'
           ? `Source uploaded and indexed. I extracted ${ingestion.chunks} searchable chunk${ingestion.chunks === 1 ? '' : 's'} and can use it now.`

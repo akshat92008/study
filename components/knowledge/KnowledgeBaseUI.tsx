@@ -264,7 +264,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
               }}>
                 <FileText size={18} style={{ color: 'var(--accent-cyan)' }} />
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontWeight: 'var(--fw-medium)' }}>{mat.title}</div>
+                  <div style={{ fontWeight: 'var(--fw-medium)' }}>{mat.original_filename || mat.title}</div>
                   <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
                     Uploaded on {new Date(mat.created_at).toLocaleDateString()}
                   </div>
@@ -307,6 +307,12 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
                   <Badge color={mat.status === 'ready' ? 'cyan' : mat.status === 'failed' ? 'red' : 'yellow'}>
                     {mat.status === 'ready' ? 'Ready' : mat.status === 'failed' ? 'Failed' : mat.status === 'uploaded' ? 'Uploaded' : mat.status === 'queued' ? 'Queued' : 'Processing'}
                   </Badge>
+                  <Badge color="gray">
+                    {mat.source_type?.toUpperCase() || (mat.mime_type?.includes('pdf') ? 'PDF' : 'TXT')}
+                  </Badge>
+                  {mat.study_material_chunks?.[0]?.count > 0 && (
+                    <Badge color="purple">{mat.study_material_chunks[0].count} chunks</Badge>
+                  )}
                 </div>
               </div>
             ))}

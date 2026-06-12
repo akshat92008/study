@@ -69,6 +69,7 @@ export async function projectLearningSignal(
     }
 
     // 3. ATLAS Concept Mastery
+    let resolvedConceptId: string | null = null;
     if (signal.concept || signal.canonicalConcept) {
       const conceptName = (signal.canonicalConcept || signal.concept) as string;
       
@@ -83,6 +84,7 @@ export async function projectLearningSignal(
       });
 
       if (resolution.conceptId) {
+        resolvedConceptId = resolution.conceptId;
         // Map signal type to mastery evidence type
         let evidenceType: 'practice_correct' | 'practice_wrong' | 'tutor_understood' | 'tutor_confused' | 'session_completed' = 'tutor_understood';
         
@@ -154,6 +156,7 @@ export async function projectLearningSignal(
         const generated = generateMemoryCard(signal as any);
         const [card] = await createRevisionCardsForUser(userId, [{
           goalId,
+          conceptId: resolvedConceptId,
           front: generated.front,
           back: generated.back,
           subject: signal.subject || 'General',
@@ -267,21 +270,30 @@ export async function projectLearningSignal(
         const localDate = now.toISOString().split('T')[0];
         if (signal.type === 'session_completed') {
           // Mark today's card as completed (preserves history), then invalidate only tomorrow
-          await markSessionCardCompleted(userId, localDate, { client: supabase });
+          await markSessionCardCompleted(userId, localDate, goalId, { client: supabase });
           // Only delete tomorrow's card so future recommendations adapt
           const tomorrow = new Date(Date.now() + 86_400_000).toISOString().split('T')[0];
-          let tomorrowDelete = (supabase as any).from('session_cards').delete().eq('user_id', userId).eq('date', tomorrow);
-          if (goalId) tomorrowDelete = tomorrowDelete.eq('goal_id', goalId);
+          let tomorrowDelete = supabase.from('session_cards').delete().eq('user_id', userId).eq('date', tomorrow);
+          if (goalId) {
+            tomorrowDelete = tomorrowDelete.eq('goal_id', goalId);
+          } else {
+            tomorrowDelete = tomorrowDelete.is('goal_id', null);
+          }
           await tomorrowDelete;
           result.invalidationTriggered = true;
         } else if (signal.type === 'autopsy_mistake_detected') {
           // For autopsy: only invalidate today if card is NOT already completed
-          const { data: todayCard } = await (supabase as any)
+          let todayCardQuery = supabase
             .from('session_cards')
             .select('is_completed, isCompleted')
             .eq('user_id', userId)
-            .eq('date', localDate)
-            .maybeSingle();
+            .eq('date', localDate);
+          if (goalId) {
+            todayCardQuery = todayCardQuery.eq('goal_id', goalId);
+          } else {
+            todayCardQuery = todayCardQuery.is('goal_id', null);
+          }
+          const { data: todayCard } = await todayCardQuery.maybeSingle();
           const isAlreadyCompleted = todayCard?.is_completed || todayCard?.isCompleted;
           if (!isAlreadyCompleted) {
             await invalidateSessionCard(userId, 'AUTOPSY_COMPLETED' as any, {
@@ -292,8 +304,12 @@ export async function projectLearningSignal(
           } else {
             // Card done — only invalidate tomorrow
             const tomorrow = new Date(Date.now() + 86_400_000).toISOString().split('T')[0];
-            let tomorrowDelete = (supabase as any).from('session_cards').delete().eq('user_id', userId).eq('date', tomorrow);
-            if (goalId) tomorrowDelete = tomorrowDelete.eq('goal_id', goalId);
+            let tomorrowDelete = supabase.from('session_cards').delete().eq('user_id', userId).eq('date', tomorrow);
+            if (goalId) {
+              tomorrowDelete = tomorrowDelete.eq('goal_id', goalId);
+            } else {
+              tomorrowDelete = tomorrowDelete.is('goal_id', null);
+            }
             await tomorrowDelete;
           }
           result.invalidationTriggered = true;

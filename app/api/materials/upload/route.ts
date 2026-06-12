@@ -14,7 +14,7 @@ import { ingestLearningSignal } from '@/lib/learning-signals/ingest';
 import { betaAccessErrorResponse, requireActiveBetaUser } from '@/lib/access/beta-access';
 import { featureDisabledResponse, isFeatureEnabled } from '@/lib/feature-registry';
 import { getPlanLimits } from '@/lib/billing/plan-limits';
-import { consumeFeatureUsage, enforceFeatureLimit, featureLimitResponse } from '@/lib/usage/enforce-feature-limit';
+import { reserveUsage, commitUsage, releaseUsage, FeatureLimitError, featureLimitResponse } from '@/lib/usage/enforce-feature-limit';
 import {
   ensureGoalForUser,
   ensureSessionBelongsToUser,
@@ -76,12 +76,6 @@ export async function POST(req: NextRequest) {
       });
     }
     if (!isFeatureEnabled('rag_upload')) return featureDisabledResponse(requestId);
-    try {
-      await enforceFeatureLimit(user.id, 'material_upload');
-    } catch (limitError: any) {
-      if (limitError?.check) return featureLimitResponse(limitError.check, requestId);
-      throw limitError;
-    }
 
     const { allowed, remaining, resetAt } = await checkRateLimit({
       identifier: user.id,
@@ -231,6 +225,16 @@ export async function POST(req: NextRequest) {
         ? 'processing'
         : 'queued';
 
+    let reservationId: string | null = null;
+    try {
+      reservationId = await reserveUsage(user.id, 'material_upload', 1, {
+        fileSize: file.size,
+      });
+    } catch (error: any) {
+      if (error instanceof FeatureLimitError) return featureLimitResponse(error.check, requestId);
+      throw error;
+    }
+
     const { data: material, error: insertError } = await supabase
       .from('study_materials')
       .insert({
@@ -255,7 +259,18 @@ export async function POST(req: NextRequest) {
       .select('id, title, status')
       .single();
 
-    if (insertError || !material) throw insertError || new Error('Material insert failed');
+    if (insertError || !material) {
+      if (reservationId) await releaseUsage(reservationId).catch(() => {});
+      throw insertError || new Error('Material insert failed');
+    }
+
+    if (reservationId) {
+      await commitUsage(reservationId, {
+        materialId: material.id,
+        fileSize: file.size,
+        idempotencyKey: `material_upload:${user.id}:${material.id}`,
+      }).catch(() => {});
+    }
 
     if (!featureFlags.ragIngestion()) {
       logger.info('Upload accepted without ingestion; RAG disabled', { userId: user.id, materialId: material.id, requestId });
@@ -314,12 +329,6 @@ export async function POST(req: NextRequest) {
       });
     });
 
-    const usage = await consumeFeatureUsage(user.id, 'material_upload', 1, {
-      materialId: material.id,
-      fileSize: file.size,
-      idempotencyKey: `material_upload:${user.id}:${material.id}`,
-    });
-    if (!usage.allowed) return featureLimitResponse(usage, requestId);
 
     let ingestionResult: Awaited<ReturnType<typeof ingestStudyMaterial>> | null = null;
     if (shouldIngestInline) {

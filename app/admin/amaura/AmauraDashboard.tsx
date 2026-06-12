@@ -12,7 +12,7 @@ export default function HermesDashboard() {
   const fetchRuns = async () => {
     try {
       setLoading(true);
-      const res = await fetch('/api/admin/hermes/runs');
+      const res = await fetch('/api/admin/amaura/runs');
       if (!res.ok) {
         if (res.status === 401 || res.status === 403) {
           throw new Error('Unauthorized or Forbidden. Are you an admin?');

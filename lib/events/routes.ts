@@ -5,7 +5,7 @@ import {
 } from '@/lib/amaura/events/event-matrix';
 
 export const EVENT_CONSUMERS = [
-  'learning_state_engine',
+  
   'atlas_engine',
   'memory_engine',
   'autopsy_engine',
@@ -28,7 +28,7 @@ export type EventHandlingMode = "mutating" | "audit_only" | "disabled";
 export const EVENT_CONSUMER_MATRIX = {
   CHAT_MESSAGE_PROCESSED: ['chat_side_effect_engine', 'mind_agent'],
   CHAT_MESSAGE_CREATED: ['chat_side_effect_engine', 'mind_agent'],
-  CHAT_LEARNING_SIGNAL: ['learning_state_engine', 'atlas_agent', 'memory_agent', 'command_agent', 'planner_agent'],
+  CHAT_LEARNING_SIGNAL: [ 'atlas_agent', 'memory_agent', 'command_agent', 'planner_agent'],
   CHAT_SESSION_SUMMARIZE: ['chat_side_effect_engine'],
   MATERIAL_UPLOADED: ['rag_agent'],
   MATERIAL_INGESTION_REQUESTED: ['rag_agent'],
@@ -47,32 +47,32 @@ export const EVENT_CONSUMER_MATRIX = {
   AUTOPSY_MOCK_PROCESSED: [
     'atlas_engine',
     'memory_engine',
-    'learning_state_engine',
+    
     'command_agent',
     'planner_agent',
   ],
   MOCK_TEST_ANALYZED: [
     'atlas_engine',
     'memory_engine',
-    'learning_state_engine',
+    
     'command_agent',
     'planner_agent',
   ],
   AUTOPSY_V3_ASSESSMENT_CREATED: ['autopsy_agent'],
   AUTOPSY_V3_QUESTIONS_UPSERTED: ['autopsy_agent'],
-  AUTOPSY_V3_REASONS_COLLECTED: ['autopsy_agent', 'learning_state_engine'],
+  AUTOPSY_V3_REASONS_COLLECTED: ['autopsy_agent'],
   AUTOPSY_V3_REPORT_READY: [
-    'learning_state_engine',
+    
     'memory_agent',
     'planner_agent',
     'command_agent',
     ...AMAURA_EVENT_MATRIX[AMAURA_EVENTS.AUTOPSY_V3_REPORT_READY],
   ],
-  LEARNING_SIGNAL_INGESTED: ['learning_state_engine', 'atlas_agent', 'memory_agent', 'planner_agent', 'command_agent'],
+  LEARNING_SIGNAL_INGESTED: [ 'atlas_agent', 'memory_agent', 'planner_agent', 'command_agent'],
   STUDY_SESSION_COMPLETED: [
     'atlas_engine',
     'memory_engine',
-    'learning_state_engine',
+    
     'command_agent',
     'planner_agent',
     'amaura_session_agent',
@@ -80,27 +80,27 @@ export const EVENT_CONSUMER_MATRIX = {
   MIND_TUTOR_COMPLETED: [
     'atlas_engine',
     'memory_engine',
-    'learning_state_engine',
+    
     'command_agent',
     'planner_agent',
   ],
-  MEMORY_CARD_REVIEWED: ['learning_state_engine', 'atlas_engine', 'command_agent', 'planner_agent'],
+  MEMORY_CARD_REVIEWED: [ 'atlas_engine', 'command_agent', 'planner_agent'],
   REVISION_CARD_REVIEWED: ['memory_agent', 'atlas_agent', 'planner_agent'],
   REVISION_COMPLETED: ['memory_agent', 'atlas_agent', 'planner_agent', 'command_agent'],
   MEMORY_CARD_CREATE_REQUESTED: ['memory_agent'],
-  ATLAS_MASTERY_UPDATED: ['learning_state_engine', 'command_agent', 'planner_agent'],
+  ATLAS_MASTERY_UPDATED: [ 'command_agent', 'planner_agent'],
   ATLAS_MASTERY_UPDATE_REQUESTED: ['atlas_agent'],
-  MEMORY_CARD_CREATED: ['learning_state_engine', 'command_agent', 'planner_agent'],
+  MEMORY_CARD_CREATED: [ 'command_agent', 'planner_agent'],
   CONCEPT_DISCOVERED: ['concept_expansion_engine'],
-  INGESTION_DOCUMENT_PROCESSED: ['learning_state_engine'],
-  MIND_MESSAGE_CREATED: ['learning_state_engine'],
+  INGESTION_DOCUMENT_PROCESSED: [],
+  MIND_MESSAGE_CREATED: [],
   SESSION_CARD_COMPLETED: ['atlas_agent', 'memory_agent', 'planner_agent', 'command_agent'],
   SESSION_RECOMMENDATION_REQUESTED: ['planner_agent'],
   SESSION_RECOMMENDATION_CREATED: ['mind_agent'],
   LEARNER_STATE_CHANGED: ['planner_agent', 'mind_agent'],
   PLANNER_REPLAN_REQUESTED: ['planner_agent', 'command_agent'],
   STUDENT_MODEL_SYNC_REQUESTED: [
-    'learning_state_engine',
+    
     'amaura_forgetting_agent',
     'amaura_stagnation_agent',
     'amaura_pattern_memory',
@@ -112,7 +112,7 @@ export const EVENT_CONSUMER_MATRIX = {
   PRACTICE_ATTEMPT_RECORDED: [
     'atlas_engine',
     'memory_engine',
-    'learning_state_engine',
+    
     'command_agent',
     'planner_agent',
     'amaura_practice_agent',
@@ -120,12 +120,12 @@ export const EVENT_CONSUMER_MATRIX = {
   PRACTICE_ATTEMPT_SUBMITTED: [
     'atlas_engine',
     'memory_engine',
-    'learning_state_engine',
+    
     'command_agent',
     'planner_agent',
     'amaura_practice_agent',
   ],
-  ONBOARDING_QUIZ_COMPLETE: ['learning_state_engine', 'planner_agent', 'command_agent'],
+  ONBOARDING_QUIZ_COMPLETE: [ 'planner_agent', 'command_agent'],
   AMAURA_GOAL_CREATED: AMAURA_EVENT_MATRIX[AMAURA_EVENTS.AMAURA_GOAL_CREATED],
   AMAURA_GOAL_UPDATED: AMAURA_EVENT_MATRIX[AMAURA_EVENTS.AMAURA_GOAL_UPDATED],
   AMAURA_TASK_CREATED: AMAURA_EVENT_MATRIX[AMAURA_EVENTS.AMAURA_TASK_CREATED],

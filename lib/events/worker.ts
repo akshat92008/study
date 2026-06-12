@@ -638,63 +638,7 @@ export class EventWorkerService {
     };
 
     switch (consumer) {
-      case 'learning_state_engine': {
-        if (event.type === 'STUDENT_MODEL_SYNC_REQUESTED') {
-          const { syncStudentModel } = await import('@/lib/engines/inference-engine');
-          await syncStudentModel(event.user_id, Boolean(payload.isInitialFingerprint), createAdminClient());
-          const { invalidateSessionCard } = await import('@/lib/services/session-card-invalidation');
-          await invalidateSessionCard(event.user_id, 'LEARNER_STATE_UPDATED', {
-            skipVersionBump: false,
-            client: createAdminClient(),
-          }).catch((err: any) =>
-            logger.warn('Daily synthesis: failed to invalidate session card', { userId: event.user_id, err })
-          );
-          return { status: 'HANDLED' };
-        }
-        if (event.type === 'LEARNING_SIGNAL_INGESTED') {
-          const projection = await projectLearningSignalToStudyState({
-            userId: event.user_id,
-            payload,
-            eventId: lease.event_id,
-            client: createAdminClient(),
-          });
-          return { status: 'HANDLED', reason: projection.reason };
-        }
-        if (['AUTOPSY_V3_REASONS_COLLECTED', 'AUTOPSY_V3_REPORT_READY'].includes(event.type)) {
-          return { status: 'SKIPPED_INTENTIONALLY', reason: 'Event handled deterministically or is audit-only for learning_state_engine' };
-        }
-        const legacyType = this.mapToLegacyType(event.type);
-        if (legacyType) {
-          await LearningStateEngine.processLegacyEvent({
-            userId: event.user_id,
-            type: legacyType as any,
-            data: payload,
-          });
-          return { status: 'HANDLED' };
-        }
-        // Fix 9: If runtimeProcessed, skip duplicate projection for PRACTICE_ATTEMPT events
-        if (event.type === 'PRACTICE_ATTEMPT_RECORDED' || event.type === 'PRACTICE_ATTEMPT_SUBMITTED') {
-          if (event.metadata?.runtimeProcessed === true) {
-            return { status: 'SKIPPED_INTENTIONALLY', reason: 'already_processed_by_runtime' };
-          }
-          await projectPracticeAttemptToStudyState({
-            userId: event.user_id,
-            payload,
-            eventId: lease.event_id,
-            client: createAdminClient(),
-          });
-          // Trigger a learning state invalidation/recalculation
-          const { invalidateSessionCard } = await import('@/lib/services/session-card-invalidation');
-          await invalidateSessionCard(event.user_id, 'LEARNER_STATE_UPDATED', {
-            skipVersionBump: false,
-            client: createAdminClient(),
-          }).catch((err: any) =>
-            logger.warn('Practice attempt: failed to invalidate session card', { userId: event.user_id, err })
-          );
-          return { status: 'HANDLED' };
-        }
-        return { status: 'SKIPPED_INTENTIONALLY', reason: 'No learning-state projection for this event yet' };
-      }
+
       case 'atlas_engine':
         if (event.type === 'AUTOPSY_MOCK_PROCESSED' || event.type === 'MOCK_TEST_ANALYZED') {
           await AtlasConsumer.handleAutopsyProcessed(event.user_id, payload);
@@ -1140,17 +1084,7 @@ export class EventWorkerService {
     return value;
   }
 
-  private static mapToLegacyType(type: string): string | null {
-    switch (type) {
-      case 'MIND_TUTOR_COMPLETED':
-      case 'STUDY_SESSION_COMPLETED':
-        return 'SESSION_COMPLETED';
-      case 'MEMORY_CARD_REVIEWED':
-        return 'CARD_REVIEWED';
-      default:
-        return type;
-    }
-  }
+
 }
 
 function getMaxRetriesPerJob() {

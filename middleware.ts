@@ -24,7 +24,8 @@ const PROTECTED_APIS: Array<{ path: string; redirect?: string }> = [
   { path: "/api/internal" },
 ];
 
-const ADMIN_ROUTES = ["/admin", "/api/admin", "/(dashboard)/admin"];
+// Admin routes — use real URL paths (not Next.js route-group notation)
+const ADMIN_ROUTES = ["/admin", "/api/admin"];
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -173,7 +174,7 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  // Admin Route Protection (Simple server-gate)
+  // Admin Route Protection — server-side gate (defense in depth, middleware is primary guard)
   if (ADMIN_ROUTES.some(r => pathname.startsWith(r))) {
     const adminEmails = (process.env.ADMIN_EMAILS || '').split(',').map(e => e.trim()).filter(Boolean);
     const adminUserIds = (process.env.ADMIN_USER_IDS || '').split(',').map(e => e.trim()).filter(Boolean);
@@ -192,12 +193,20 @@ export async function middleware(request: NextRequest) {
     }
 
     if (!isAdmin) {
+      // Log unauthorized admin access attempt for security auditing
+      console.warn(`[SECURITY] Unauthorized admin access attempt by user ${user.id} on ${pathname}`);
       if (pathname.startsWith("/api/")) {
-        return NextResponse.json({ error: "forbidden", message: "Admin access required." }, { status: 403 });
+        // Return 403 for API routes (not 404 — caller should know they're unauthorized)
+        return NextResponse.json(
+          { error: "forbidden", message: "Admin access required.", requestId },
+          { status: 403, headers: { "x-request-id": requestId } }
+        );
       }
-      return NextResponse.redirect(new URL("/dashboard", request.url));
+      // Return 404 for page routes — do not reveal that the admin section exists
+      return new NextResponse(null, { status: 404 });
     }
   }
+
 
   if (pathname === '/chat' && !isFeatureEnabled('chat')) {
     return NextResponse.redirect(new URL('/dashboard', request.url));

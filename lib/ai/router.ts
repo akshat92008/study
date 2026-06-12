@@ -888,7 +888,8 @@ if (!config || !config.apiKey) {
   }
 
   const debugInfo = providerErrors.length > 0 ? ` (Debug: ${providerErrors.join(' | ')})` : '';
-  yield `${getDegradationMessage('chat')}${debugInfo}`;
+  logger.error(`All stream providers failed${debugInfo}`);
+  yield getDegradationMessage('chat');
 }
 
 const embeddingCache = new Map<string, number[]>();

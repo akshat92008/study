@@ -159,7 +159,7 @@ export default async function AccessPage() {
             
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <UsageRow label="Chat Messages" used={used('chat_message')} limit={limits.dailyChatMessages} />
-              <UsageRow label="Hermes AI Decisions" used={used('ai_call')} limit={limits.dailyAiCalls} />
+              <UsageRow label="Amaura AI Decisions" used={used('ai_call')} limit={limits.dailyAiCalls} />
               <UsageRow label="Deep Autopsies" used={used('autopsy_report')} limit={limits.dailyAutopsyReports} />
               <UsageRow label="Document Uploads" used={used('rag_upload') + used('material_upload') + used('autopsy_upload')} limit={limits.dailyRagUploads} />
               <UsageRow label="Knowledge Queries" used={used('material_query')} limit={limits.dailyMaterialQueries} />

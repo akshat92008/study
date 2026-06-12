@@ -67,12 +67,17 @@ export async function getMindContext(
     const { data: goal } = await activeGoalQuery.maybeSingle();
 
     // 3. Fetch Daily Mission (Session Card)
-    const { data: sessionCard } = await supabase
+    let cardQuery = supabase
       .from('session_cards')
       .select('*')
       .eq('user_id', userId)
-      .eq('date', today)
-      .maybeSingle();
+      .eq('date', today);
+    if (goalId) {
+      cardQuery = cardQuery.eq('goal_id', goalId);
+    } else {
+      cardQuery = cardQuery.is('goal_id', null);
+    }
+    const { data: sessionCard } = await cardQuery.maybeSingle();
 
     // 4. Fetch Available Sources
     const sources = await getAvailableSources(supabase, userId);

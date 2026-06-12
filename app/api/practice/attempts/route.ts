@@ -201,7 +201,7 @@ export async function POST(req: NextRequest) {
       .select('id, correct_answer, options, concept_id, concept_name, position, question')
       .eq('practice_set_id', set.id)
       .in('position', positions);
-    if (!items) {
+    if (!items || items.length === 0) {
       return apiErrorResponse('not_found', { status: 404, message: 'Practice items not found', requestId });
     }
 

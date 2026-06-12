@@ -2,6 +2,7 @@
 
 import { BrainCircuit, Loader2 } from 'lucide-react';
 import Card from '@/components/ui/Card';
+import Badge from '@/components/ui/Badge';
 
 const OPTIONS = [
   ['concept_gap', 'I did not know the concept'],
@@ -32,6 +33,7 @@ export default function UserReasonStep({
   return (
     <Card padding="lg" style={{ display: 'grid', gap: 'var(--sp-4)' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
+        <Badge color="purple">Step 4</Badge>
         <BrainCircuit size={18} color="var(--accent-purple)" />
         <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 800, margin: 0 }}>Why It Went Wrong</h3>
       </div>

@@ -7,7 +7,7 @@ import { maxPdfBytes } from '@/lib/autopsy-v3/limits';
 import { featureFlags } from '@/lib/config/flags';
 import { featureDisabledResponse, isFeatureEnabled } from '@/lib/feature-registry';
 import { getPlanLimits } from '@/lib/billing/plan-limits';
-import { consumeFeatureUsage, enforceFeatureLimit, featureLimitResponse } from '@/lib/usage/enforce-feature-limit';
+import { reserveUsage, commitUsage, releaseUsage, FeatureLimitError, featureLimitResponse } from '@/lib/usage/enforce-feature-limit';
 
 function formString(value: FormDataEntryValue | null): string | null {
   return typeof value === 'string' && value.trim() ? value.trim() : null;
@@ -25,12 +25,6 @@ export async function POST(req: NextRequest) {
     const { supabase, user, limits, access } = auth;
 
     if (!featureFlags.autopsyUploads() || !isFeatureEnabled('autopsy_upload')) return featureDisabledResponse(requestId);
-    try {
-      await enforceFeatureLimit(user.id, 'autopsy_upload');
-    } catch (limitError: any) {
-      if (limitError?.check) return featureLimitResponse(limitError.check, requestId);
-      throw limitError;
-    }
 
     const formData = await req.formData();
     const file = formData.get('file') as File | null;
@@ -79,8 +73,26 @@ export async function POST(req: NextRequest) {
     const title = formString(formData.get('title')) || sanitizeFilename(file.name).replace(/\.pdf$/i, '');
     const goalId = formString(formData.get('goalId'));
     const extraction = await extractSelectableTextFromPdf(buffer);
-    const extractionStatus = extraction.confidence >= 0.55 ? 'needs_review' : 'manual_entry_required';
-    const status = extraction.confidence >= 0.55 ? 'needs_review' : 'answers_pending';
+    let extractionStatus = 'manual_entry_required';
+    let status = 'answers_pending';
+
+    if (extraction.confidence >= 0.55) {
+      extractionStatus = 'needs_review';
+      status = 'needs_review';
+    } else if (extraction.confidence === 0 || !extraction.rawText.trim()) {
+      extractionStatus = 'failed';
+      status = 'parsing_failed';
+    }
+
+    let reservationId: string | null = null;
+    try {
+      reservationId = await reserveUsage(user.id, 'autopsy_upload', 1, {
+        fileSize: file.size,
+      });
+    } catch (error: any) {
+      if (error instanceof FeatureLimitError) return featureLimitResponse(error.check, requestId);
+      throw error;
+    }
 
     const { data: assessment, error } = await supabase
       .from('assessments')
@@ -103,14 +115,26 @@ export async function POST(req: NextRequest) {
       })
       .select('*')
       .single();
-    if (error) throw error;
+      
+    if (error) {
+      if (reservationId) await releaseUsage(reservationId).catch(() => {});
+      throw error;
+    }
 
-    const usage = await consumeFeatureUsage(user.id, 'autopsy_upload', 1, {
-      assessmentId: assessment.id,
-      fileSize: file.size,
-      idempotencyKey: `autopsy_upload:${user.id}:${assessment.id}`,
-    });
-    if (!usage.allowed) return featureLimitResponse(usage, requestId);
+    if (reservationId) {
+      await commitUsage(reservationId, {
+        assessmentId: assessment.id,
+        fileSize: file.size,
+        idempotencyKey: `autopsy_upload:${user.id}:${assessment.id}`,
+      }).catch(() => {});
+    }
+
+    let message = 'Selectable text was extracted. Please review it before generating a report.';
+    if (status === 'parsing_failed') {
+      message = 'Failed to extract text from this PDF. Please proceed with manual entry.';
+    } else if (extraction.confidence < 0.55) {
+      message = 'We could not reliably read this PDF. You can still continue with manual entry.';
+    }
 
     return jsonWithRequestId({
       assessment,
@@ -120,9 +144,7 @@ export async function POST(req: NextRequest) {
         rawTextPreview: extraction.rawText.slice(0, 4000),
         manualEntryRequired: extraction.confidence < 0.55,
       },
-      message: extraction.confidence < 0.55
-        ? 'We could not reliably read this PDF. You can still continue with manual entry.'
-        : 'Selectable text was extracted. Please review it before generating a report.',
+      message,
     }, requestId, 201);
   } catch (error) {
     return unexpectedApiErrorResponse(req, error, 'autopsy_v3_upload', 'Unable to upload Deep Autopsy PDF.');

@@ -409,3 +409,110 @@ BEGIN
     CREATE INDEX IF NOT EXISTS idx_practice_attempts_item_id ON public.practice_attempts (practice_item_id);
   END IF;
 END $$;
+
+-- Enable RLS and create policies for tables created in this fallback migration
+DO $$
+DECLARE
+  t text;
+BEGIN
+  FOR t IN SELECT unnest(ARRAY[
+    'study_sessions', 
+    'mastery_events', 
+    'chat_sessions', 
+    'hermes_learning_memories', 
+    'autopsy_jobs', 
+    'practice_sets', 
+    'practice_items', 
+    'practice_attempts'
+  ])
+  LOOP
+    EXECUTE format('ALTER TABLE public.%I ENABLE ROW LEVEL SECURITY;', t);
+    
+    -- Drop policy if exists to make it idempotent
+    EXECUTE format('DROP POLICY IF EXISTS "Users can manage their own %I" ON public.%I;', t, t);
+    
+    EXECUTE format('CREATE POLICY "Users can manage their own %I" ON public.%I FOR ALL TO authenticated USING (auth.uid() = user_id) WITH CHECK (auth.uid() = user_id);', t, t);
+  END LOOP;
+END
+$$;
+
+-- System tables should only be accessible by service_role
+DO $$
+DECLARE
+  t text;
+BEGIN
+  FOR t IN SELECT unnest(ARRAY[
+    'event_queue', 
+    'consumer_locks', 
+    'event_attempts', 
+    'event_dlq'
+  ])
+  LOOP
+    EXECUTE format('ALTER TABLE public.%I ENABLE ROW LEVEL SECURITY;', t);
+    EXECUTE format('DROP POLICY IF EXISTS "Service role full access for %I" ON public.%I;', t, t);
+    -- No policy for authenticated users means they can't access it. Service role bypasses RLS.
+  END LOOP;
+END
+$$;
+
+-- Harden acquire_event_leases
+REVOKE EXECUTE ON FUNCTION public.acquire_event_leases(text, int, interval) FROM public, authenticated;
+GRANT EXECUTE ON FUNCTION public.acquire_event_leases(text, int, interval) TO service_role;
+
+-- Harden create_event_with_consumers if needed
+REVOKE EXECUTE ON FUNCTION public.create_event_with_consumers(uuid, text, jsonb, text, text, jsonb, text[]) FROM public, authenticated;
+GRANT EXECUTE ON FUNCTION public.create_event_with_consumers(uuid, text, jsonb, text, text, jsonb, text[]) TO service_role, authenticated;
+
+-- Ensure acquire_event_leases uses SECURITY DEFINER
+CREATE OR REPLACE FUNCTION public.acquire_event_leases(
+    p_worker_id text,
+    p_limit int,
+    p_lease_timeout interval
+) RETURNS TABLE (
+    lock_id uuid,
+    event_id uuid,
+    consumer_name text,
+    event_type text,
+    event_payload jsonb,
+    event_metadata jsonb,
+    user_id uuid,
+    retry_count int
+) 
+SECURITY DEFINER
+SET search_path = public
+AS $$
+BEGIN
+    RETURN QUERY
+    WITH available_locks AS (
+        SELECT cl.id
+        FROM consumer_locks cl
+        WHERE cl.status IN ('PENDING', 'RETRY_SCHEDULED')
+          AND cl.next_retry_at <= now()
+          AND (cl.lease_expires_at IS NULL OR cl.lease_expires_at < now())
+        ORDER BY cl.created_at ASC
+        LIMIT p_limit
+        FOR UPDATE SKIP LOCKED
+    ),
+    updated_locks AS (
+        UPDATE consumer_locks cl
+        SET status = 'PROCESSING',
+            worker_id = p_worker_id,
+            lease_expires_at = now() + p_lease_timeout,
+            updated_at = now()
+        FROM available_locks al
+        WHERE cl.id = al.id
+        RETURNING cl.id, cl.event_id, cl.consumer_name, cl.retry_count
+    )
+    SELECT 
+        ul.id, 
+        ul.event_id, 
+        ul.consumer_name, 
+        eq.type, 
+        eq.payload, 
+        eq.metadata, 
+        eq.user_id, 
+        ul.retry_count
+    FROM updated_locks ul
+    JOIN event_queue eq ON eq.id = ul.event_id;
+END;
+$$ LANGUAGE plpgsql;

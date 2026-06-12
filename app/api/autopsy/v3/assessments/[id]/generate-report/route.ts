@@ -141,10 +141,12 @@ export async function POST(req: NextRequest, context: RouteContext) {
         .single();
       if (reportError) throw reportError;
 
+      const assessmentStatus = (diagnoses.length === 0) ? 'completed_clean' : 'report_ready';
+
       await supabase
         .from('assessments')
         .update({
-          status: 'report_ready',
+          status: assessmentStatus,
           scored_marks: report.overview.score,
           total_marks: report.overview.totalMarks,
           updated_at: new Date().toISOString(),

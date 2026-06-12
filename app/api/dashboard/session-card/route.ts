@@ -163,7 +163,7 @@ export async function GET(request?: Request): Promise<NextResponse> {
         requestId,
       });
     }
-    if (!isFeatureEnabled('ai_global')) {
+    if (!isFeatureEnabled('session_card')) {
       return featureDisabledResponse(requestId);
     }
 
@@ -220,13 +220,19 @@ export async function GET(request?: Request): Promise<NextResponse> {
     const { data: cached } = await cacheQuery.maybeSingle();
 
     // 3b. Fetch adaptation history
-    const { data: historyData } = await supabase
+    let historyQuery = supabase
       .from('command_session_versions')
       .select('version, adaptation_reason, created_at')
       .eq('user_id', user.id)
-      .eq('goal_id', goalId)
-      .eq('session_date', localDate)
-      .order('version', { ascending: false });
+      .eq('session_date', localDate);
+
+    if (goalId) {
+      historyQuery = historyQuery.eq('goal_id', goalId);
+    } else {
+      historyQuery = historyQuery.is('goal_id', null);
+    }
+
+    const { data: historyData } = await historyQuery.order('version', { ascending: false });
 
     const adaptationHistory = (historyData || []).map(h => ({
       version: h.version,
@@ -264,11 +270,11 @@ export async function GET(request?: Request): Promise<NextResponse> {
         .eq('user_id', user.id)
         .eq('date', localDate);
 
-      staleDelete = goalId
-        ? staleDelete.eq('goal_id', goalId)
-        : typeof (staleDelete as any).is === 'function'
-          ? (staleDelete as any).is('goal_id', null)
-          : staleDelete;
+      if (goalId) {
+        staleDelete = staleDelete.eq('goal_id', goalId);
+      } else {
+        staleDelete = staleDelete.is('goal_id', null);
+      }
 
       await staleDelete;
     }
@@ -630,7 +636,7 @@ export async function GET(request?: Request): Promise<NextResponse> {
     });
 
     if (upsertError) {
-      logger.error('session-card: FATAL failed to persist card via RPC — returning 500', {
+      logger.error('session-card: failed to persist card via RPC', {
         userId: user.id,
         goalId,
         localDate,
@@ -639,7 +645,7 @@ export async function GET(request?: Request): Promise<NextResponse> {
       });
       return apiErrorResponse('session_card_persist_failed', {
         status: 500,
-        message: 'Failed to persist your session card. Please retry.',
+        message: 'Unable to save today\'s session card.',
         requestId,
       });
     }

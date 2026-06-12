@@ -20,6 +20,8 @@ export interface ProjectAutopsyV3Input {
   supabase?: SupabaseClient;
 }
 
+const INVALID_TOPICS = new Set(['unknown', 'n/a', 'not applicable', 'none']);
+
 /**
  * Project Autopsy V3 results via the central projector.
  * Ensures consistent ATLAS, MEMORY, and event state.
@@ -51,6 +53,11 @@ export async function projectAutopsyV3Results(input: ProjectAutopsyV3Input) {
   const results: ProjectionResult[] = [];
   for (const diagnosis of diagnoses) {
     const canonicalConcept = (diagnosis.topic || 'unknown').trim().toLowerCase();
+
+    if (INVALID_TOPICS.has(canonicalConcept)) {
+      logger.info('Skipping projection for invalid topic', { topic: diagnosis.topic, assessmentId });
+      continue;
+    }
 
     // Phase 8.2: Stable idempotency key — never includes Date.now()
     const diagnosisIdempotencyKey = stableKey([

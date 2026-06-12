@@ -3,6 +3,7 @@ import { logger } from '@/lib/utils/logger';
 import { commitBudgetUsage, releaseBudgetReservation } from '@/lib/ai/cost-guard';
 import { persistChatMessage } from '@/lib/services/chat-persistence';
 import { runMindTurn } from '@/lib/mind/runMindTurn';
+import { EventDispatcher } from '@/lib/events/orchestrator';
 
 export interface ChatTurnFinalizerInput {
   supabase: SupabaseClient;
@@ -46,7 +47,7 @@ export interface ChatTurnFinalizerInput {
       turnStatus?: string;
     }
   ) => Promise<{ id: string; existed?: boolean }>;
-  publishEvent?: (event: Record<string, any>) => Promise<string | null>;
+  publishEvent?: (event: any) => Promise<string | null>;
   commitBudget?: (reservationId: string, usage: any) => Promise<void>;
   releaseBudget?: (reservationId: string, reason: string) => Promise<void>;
 }
@@ -81,15 +82,7 @@ export async function finalizeChatTurn(input: ChatTurnFinalizerInput): Promise<C
 
   const persistAssistantMessage = input.persistAssistantMessage ?? (async (supabase, message) => persistChatMessage(supabase, message));
   const publishEvent = input.publishEvent ?? (async (event) => {
-    const { data, error } = await input.supabase.rpc('publish_event_with_consumers', {
-      p_user_id: event.user_id,
-      p_type: event.type,
-      p_data: event.data,
-      p_metadata: event.metadata,
-      p_idempotency_key: event.idempotency_key,
-    });
-    if (error) throw error;
-    return data ?? null;
+    return EventDispatcher.publish(event);
   });
   const commitBudget = input.commitBudget ?? commitBudgetUsage;
   const releaseBudget = input.releaseBudget ?? releaseBudgetReservation;
@@ -163,31 +156,39 @@ export async function finalizeChatTurn(input: ChatTurnFinalizerInput): Promise<C
     });
   }
 
-  const eventId = await publishEvent({
-    user_id: input.userId,
-    type: 'CHAT_MESSAGE_PROCESSED',
-    data: {
-      sessionId: input.sessionId,
-      message: input.userMessage,
-      fullResponse: cleanAssistantText,
-      emotion: input.emotion,
-      history: input.recentHistory,
-      sessionTurnsCount: input.sessionTurnsCount,
-      mindContext: input.mindContext,
-      intent: input.intent,
-      metadataPayload: input.metadata ?? {},
-      source_type: input.sourceType ?? 'global_chat',
-      user_message_id: input.userMessageId,
-      assistant_message_id: persistedAssistant.id,
-    },
-    metadata: {
+  let eventId: string | null = null;
+  try {
+    eventId = await publishEvent({
+      user_id: input.userId,
+      type: 'CHAT_MESSAGE_PROCESSED',
+      data: {
+        sessionId: input.sessionId,
+        message: input.userMessage,
+        fullResponse: cleanAssistantText,
+        emotion: input.emotion,
+        history: input.recentHistory,
+        sessionTurnsCount: input.sessionTurnsCount,
+        mindContext: input.mindContext,
+        intent: input.intent,
+        metadataPayload: input.metadata ?? {},
+        source_type: input.sourceType ?? 'global_chat',
+        user_message_id: input.userMessageId,
+        assistant_message_id: persistedAssistant.id,
+      },
+      metadata: {
+        requestId,
+        source: 'chat_finalizer',
+        goalId: input.goalId,
+        promptVersion: input.promptVersion,
+      },
+      idempotency_key: processedEventKey,
+    });
+  } catch (publishErr) {
+    logger.error('finalizeChatTurn: event publishing failed', publishErr, {
+      userId: input.userId,
       requestId,
-      source: 'chat_finalizer',
-      goalId: input.goalId,
-      promptVersion: input.promptVersion,
-    },
-    idempotency_key: processedEventKey,
-  });
+    });
+  }
 
   return {
     assistantMessageId: persistedAssistant.id,

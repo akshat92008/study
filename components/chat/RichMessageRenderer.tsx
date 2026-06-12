@@ -270,11 +270,36 @@ function renderMarkdownBlock(text: string, ragChunks?: any[]): React.ReactNode {
     if (line.startsWith('### ')) { flushList(); elements.push(<h4 key={idx} style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-primary)', margin: '14px 0 6px', borderBottom: '1px solid var(--border-subtle)', paddingBottom: 4 }}>{renderMarkdownInline(line.slice(4), ragChunks)}</h4>); return; }
     if (line.startsWith('## ')) { flushList(); elements.push(<h3 key={idx} style={{ fontSize: 15, fontWeight: 800, color: 'var(--text-primary)', margin: '16px 0 8px' }}>{renderMarkdownInline(line.slice(3), ragChunks)}</h3>); return; }
     if (line.startsWith('# ')) { flushList(); elements.push(<h2 key={idx} style={{ fontSize: 17, fontWeight: 900, color: 'var(--text-primary)', margin: '16px 0 8px' }}>{renderMarkdownInline(line.slice(2), ragChunks)}</h2>); return; }
+    
+    // MCQ option formatting
+    if (line.match(/^\([A-Da-d]\)\s/)) { 
+      flushList(); 
+      elements.push(
+        <div key={idx} style={{ 
+          margin: '4px 0 4px 16px', padding: '6px 12px',
+          background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)',
+          borderRadius: 6, fontSize: 13, color: 'var(--text-primary)',
+          display: 'flex', gap: '8px'
+        }}>
+          <span style={{ fontWeight: 800, color: 'var(--accent-purple)' }}>{line.slice(0, 3)}</span>
+          <span>{renderMarkdownInline(line.slice(3).trim(), ragChunks)}</span>
+        </div>
+      ); 
+      return; 
+    }
+    
     if (line.match(/^[-•*⚡📐🔗⚠️🏆✓▪▸►→]\s/)) { listItems.push(<li key={idx} style={{ color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.6, padding: '2px 0' }}>{renderMarkdownInline(line.replace(/^[-•*⚡📐🔗⚠️🏆✓▪▸►→]\s+/, ''), ragChunks)}</li>); return; }
     if (line.match(/^\d+\.\s/)) { listItems.push(<li key={idx} style={{ color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.6, padding: '2px 0', listStyleType: 'decimal' }}>{renderMarkdownInline(line.replace(/^\d+\.\s/, ''), ragChunks)}</li>); return; }
 
     flushList();
     if (line.trim() === '') { elements.push(<div key={idx} style={{ height: 8 }} />); return; }
+    
+    // Check if it's a Q-format question line
+    if (line.match(/^Q\d+[:.]/)) {
+      elements.push(<p key={idx} style={{ margin: '8px 0 4px', color: 'var(--text-primary)', fontWeight: 600, fontSize: 14, lineHeight: 1.65 }}>{renderMarkdownInline(line, ragChunks)}</p>);
+      return;
+    }
+    
     elements.push(<p key={idx} style={{ margin: '3px 0', color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.65 }}>{renderMarkdownInline(line, ragChunks)}</p>);
   });
 
@@ -354,6 +379,7 @@ function markdownToHtml(markdown: string) {
     .replace(/(<li>.*<\/li>\n?)+/g, (m) => `<ul>${m}</ul>`)
     // Q&A for practice tests
     .replace(/^(Q\d+[:.])\s+(.+)$/gm, '<p class="question"><strong>$1</strong> $2</p>')
+    .replace(/^\([A-Da-d]\)\s+(.+)$/gm, '<p class="mcq-option">$1</p>')
     .replace(/^(ANSWER[:.])\s+(.+)$/gm, '<p class="answer"><strong>$1</strong> $2</p>')
     .replace(/^(EXPLANATION[:.])\s+(.+)$/gm, '<p class="explanation">$2</p>')
     // Flashcard delimiters
@@ -560,7 +586,10 @@ function PracticeTestCard({ artifact, messageId, practiceSetId }: { artifact: Pa
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitErrorCode, setSubmitErrorCode] = useState<string | null>(null);
   const [submitSummary, setSubmitSummary] = useState<string | null>(null);
+  const [retryCountdown, setRetryCountdown] = useState<number | null>(null);
+  const retryTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const question = questions[currentQ];
   const selected = selectedAnswers[currentQ];
@@ -732,6 +761,9 @@ function PracticeTestCard({ artifact, messageId, practiceSetId }: { artifact: Pa
                 if ((!messageId && !practiceSetId) || isSubmitting) return;
                 setIsSubmitting(true);
                 setSubmitError(null);
+                setSubmitErrorCode(null);
+                if (retryTimerRef.current) clearTimeout(retryTimerRef.current);
+                setRetryCountdown(null);
                 try {
                   const answers = Object.entries(selectedAnswers).map(([idx, ans]) => ({
                     position: parseInt(idx) + 1,
@@ -761,7 +793,38 @@ function PracticeTestCard({ artifact, messageId, practiceSetId }: { artifact: Pa
                   });
                   const data = await response.json().catch(() => null);
                   if (!response.ok || data?.success !== true) {
-                    throw new Error(data?.message || data?.error || 'Amaura could not save this attempt yet.');
+                    const errorCode = data?.error || 'unknown_error';
+                    setSubmitErrorCode(errorCode);
+                    // Map known error codes to user-friendly messages
+                    const errorMessages: Record<string, string> = {
+                      quiz_still_indexing: 'Amaura is still indexing this quiz. Retrying in 4 seconds…',
+                      not_found: 'Quiz data not found. Try refreshing the page.',
+                      invalid_request: 'There was a problem with your submission. Please try again.',
+                      rate_limit_exceeded: 'Too many submissions. Please wait a moment and try again.',
+                      unauthorized: 'Your session expired. Please refresh the page.',
+                    };
+                    const friendlyMessage = errorMessages[errorCode] || (data?.message ?? 'Could not save your answers. Please try again.');
+                    setSubmitError(friendlyMessage);
+                    // Auto-retry for indexing errors
+                    if (errorCode === 'quiz_still_indexing') {
+                      let countdown = 4;
+                      setRetryCountdown(countdown);
+                      const tick = () => {
+                        countdown--;
+                        if (countdown <= 0) {
+                          setRetryCountdown(null);
+                          setSubmitError(null);
+                          setSubmitErrorCode(null);
+                          // Trigger re-click programmatically via state reset
+                          setIsSubmitting(false);
+                        } else {
+                          setRetryCountdown(countdown);
+                          retryTimerRef.current = setTimeout(tick, 1000);
+                        }
+                      };
+                      retryTimerRef.current = setTimeout(tick, 1000);
+                    }
+                    return;
                   }
                   setIsSubmitted(true);
                   const sync = data.profileSync || {};
@@ -785,9 +848,11 @@ function PracticeTestCard({ artifact, messageId, practiceSetId }: { artifact: Pa
                       },
                     },
                   }));
+                  window.dispatchEvent(new Event('refresh-dashboard'));
                 } catch (e) {
-                  console.error(e);
-                  setSubmitError(e instanceof Error ? e.message : 'Amaura could not save this attempt yet.');
+                  console.error('[PracticeTestCard] submit error:', e);
+                  setSubmitError('Could not reach the server. Check your connection and try again.');
+                  setSubmitErrorCode('network_error');
                 } finally {
                   setIsSubmitting(false);
                 }
@@ -795,21 +860,39 @@ function PracticeTestCard({ artifact, messageId, practiceSetId }: { artifact: Pa
               disabled={isSubmitting || (!messageId && !practiceSetId)}
               style={{
                 padding: '8px 24px', background: 'var(--accent-purple)',
-                color: 'white', border: 'none', borderRadius: 8
+                color: 'white', border: 'none', borderRadius: 8,
+                cursor: isSubmitting || (!messageId && !practiceSetId) ? 'not-allowed' : 'pointer',
+                opacity: isSubmitting || (!messageId && !practiceSetId) ? 0.7 : 1,
               }}
             >
-              <span style={{ 
-                fontSize: 13, fontWeight: 700, cursor: isSubmitting || (!messageId && !practiceSetId) ? 'not-allowed' : 'pointer',
-                opacity: isSubmitting || (!messageId && !practiceSetId) ? 0.7 : 1
-              }}>
-                {isSubmitting ? 'Saving...' : 'Submit Answers to Learning Profile'}
+              <span style={{ fontSize: 13, fontWeight: 700 }}>
+                {isSubmitting ? 'Saving…' : 'Submit Answers to Learning Profile'}
               </span>
             </button>
           </div>
         )}
         {submitError && (
-          <div style={{ marginTop: 12, textAlign: 'center', fontSize: 12, color: 'var(--danger)' }}>
-            {submitError}
+          <div style={{ marginTop: 12, textAlign: 'center', fontSize: 12 }}>
+            <span style={{ color: submitErrorCode === 'quiz_still_indexing' ? 'var(--warning, #f59e0b)' : 'var(--danger)' }}>
+              {submitError}
+            </span>
+            {retryCountdown !== null && (
+              <span style={{ color: 'var(--text-tertiary)', marginLeft: 6 }}>
+                (retrying in {retryCountdown}s)
+              </span>
+            )}
+            {submitErrorCode && submitErrorCode !== 'quiz_still_indexing' && submitErrorCode !== 'network_error' && (
+              <button
+                onClick={() => { setSubmitError(null); setSubmitErrorCode(null); }}
+                style={{
+                  marginLeft: 10, padding: '2px 10px', fontSize: 11, cursor: 'pointer',
+                  background: 'var(--bg-tertiary)', border: '1px solid var(--border-subtle)',
+                  borderRadius: 4, color: 'var(--text-secondary)'
+                }}
+              >
+                Retry
+              </button>
+            )}
           </div>
         )}
         {isSubmitted && (
@@ -1016,7 +1099,9 @@ function FlashcardSetComponent({ artifact, messageId, practiceSetId }: { artifac
                     position: parseInt(idx) + 1,
                     confidence
                   }));
-                  const syncKey = `flashcard_review:${practiceSetId || messageId}:${Date.now()}`;
+                  // Generate a stable idempotency key for this exact set of reviews
+                  const reviewKeys = Object.keys(pendingReviews).sort().join(',');
+                  const syncKey = `flashcard_review:${practiceSetId || messageId}:${reviewKeys}`;
                   const res = await fetch('/api/practice/reviews', {
                     method: 'POST',
                     headers: {

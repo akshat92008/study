@@ -58,8 +58,8 @@ describe('Module 7 — Phase 7.1: Upload validation', () => {
     expect(uploadRoute).toContain('daily_upload_limit_reached');
   });
 
-  it('upload route enforces feature usage gate (billing)', () => {
-    expect(uploadRoute).toContain('enforceFeatureLimit');
+  it('upload route enforces feature usage gate (billing) atomically', () => {
+    expect(uploadRoute).toContain('reserveUsage');
     expect(uploadRoute).toContain('material_upload');
   });
 

@@ -150,9 +150,7 @@ export async function getLearnerStateSnapshot(
   if (options.goalId) {
     missionQuery = missionQuery.eq('goal_id', options.goalId);
   } else {
-    // If no goalId, prioritize any active mission for today.
-    // We don't filter by goal_id is null anymore to avoid fragmentation.
-    missionQuery = missionQuery.order('updated_at', { ascending: false }).limit(1);
+    missionQuery = missionQuery.is('goal_id', null);
   }
 
   let needsReviewCountQuery = supabase

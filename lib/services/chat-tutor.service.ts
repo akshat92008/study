@@ -50,11 +50,14 @@ export class ChatTutorService {
       }
     }
 
-    const tutorSystemPrompt = `${systemPrompt}\n\nACTIVE TUTOR SESSION:\nTopic: ${subject} > ${topic}\nPast Mistakes Here: ${mistakes?.map((m: any) => m.ai_analysis).join('; ') || 'None'}${pastSessionCtx}\n\nYou are now in active teaching mode for this topic. Apply RULE 3 (Learning Mode) — Socratic method, minimum ${MIN_MIND_TUTOR_COVERAGE_TURNS}-10 exchanges before the concept is considered covered.`;
+    const tutorSystemPrompt = `${systemPrompt}\n\nACTIVE TUTOR SESSION:\nTopic: ${subject} > ${topic}\nPast Mistakes Here: ${mistakes?.map((m: any) => m.ai_analysis).join('; ') || 'None'}${pastSessionCtx}\n\nYou are now in active teaching mode for this topic. Apply RULE 3 (Learning Mode) — Socratic method, minimum ${MIN_MIND_TUTOR_COVERAGE_TURNS}-10 exchanges before the concept is considered covered.\n\nCRITICAL: Review the conversation history before replying. Do NOT repeat concepts, questions, or analogies you have already used in this session. If the user understands the current sub-topic, move on to the next related sub-topic or increase the difficulty.`;
     const conversationMessages = buildConversationMessages(recentHistory, message);
     const hasUserSpecificContext = (mistakes && mistakes.length > 0) || (pastSessionCtx && pastSessionCtx.length > 0) || (oldMasteryScore !== null);
     const canCache = isCacheable({ intent: intent.intent, hasUserContext: hasUserSpecificContext });
-    const cached = canCache && message ? await checkSemanticCache(message, userId) : null;
+    
+    // Disable caching for tutor sessions if we are deep into the session, as it needs to be highly contextual
+    const isDeepSession = (recentHistory?.length || 0) > 4;
+    const cached = canCache && !isDeepSession && message ? await checkSemanticCache(message, userId) : null;
 
     let fullResponse = '';
 

@@ -2,6 +2,7 @@
 
 import { FileUp, Loader2 } from 'lucide-react';
 import Card from '@/components/ui/Card';
+import Badge from '@/components/ui/Badge';
 
 export default function UploadAssessmentStep({
   uploading,
@@ -15,8 +16,9 @@ export default function UploadAssessmentStep({
   return (
     <Card padding="lg" style={{ display: 'grid', gap: 'var(--sp-3)' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
+        <Badge color="purple">Step 2</Badge>
         <FileUp size={18} color="var(--accent-blue)" />
-        <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 800, margin: 0 }}>PDF</h3>
+        <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 800, margin: 0 }}>PDF Upload</h3>
       </div>
       <label style={{
         border: '1px dashed var(--border-strong)',

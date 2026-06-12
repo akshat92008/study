@@ -2,6 +2,7 @@
 
 import { KeyRound } from 'lucide-react';
 import Card from '@/components/ui/Card';
+import Badge from '@/components/ui/Badge';
 
 export default function AnswerKeyInput({
   value,
@@ -15,6 +16,7 @@ export default function AnswerKeyInput({
   return (
     <Card padding="lg" style={{ display: 'grid', gap: 'var(--sp-3)' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
+        <Badge color="purple">Step 3</Badge>
         <KeyRound size={18} color="var(--warning)" />
         <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 800, margin: 0 }}>Answer Key</h3>
       </div>

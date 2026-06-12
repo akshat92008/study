@@ -140,7 +140,7 @@ describe('finalizeChatTurn', () => {
     const commitBudget = vi.fn(async () => undefined);
     const releaseBudget = vi.fn(async () => undefined);
 
-    await expect(finalizeChatTurn(baseInput({
+    await finalizeChatTurn(baseInput({
       budgetReservationId: 'reservation-committed',
       budgetUsage: {
         promptTokens: 10,
@@ -151,7 +151,7 @@ describe('finalizeChatTurn', () => {
       publishEvent,
       commitBudget,
       releaseBudget,
-    }))).rejects.toThrow('event unavailable');
+    }));
 
     expect(commitBudget).toHaveBeenCalledOnce();
     expect(releaseBudget).not.toHaveBeenCalled();

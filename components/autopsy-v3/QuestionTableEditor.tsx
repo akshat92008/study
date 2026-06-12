@@ -1,7 +1,8 @@
 'use client';
 
-import { Save, Loader2 } from 'lucide-react';
+import { Save, Loader2, Table } from 'lucide-react';
 import Card from '@/components/ui/Card';
+import Badge from '@/components/ui/Badge';
 
 export default function QuestionTableEditor({
   csvText,
@@ -16,7 +17,11 @@ export default function QuestionTableEditor({
 }) {
   return (
     <Card padding="lg" style={{ display: 'grid', gap: 'var(--sp-3)' }}>
-      <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 800, margin: 0 }}>Question Table</h3>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
+        <Badge color="purple">Step 2</Badge>
+        <Table size={18} color="var(--accent-purple)" />
+        <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 800, margin: 0 }}>Manual CSV (Fallback)</h3>
+      </div>
       <textarea
         value={csvText}
         onChange={(event) => onChange(event.target.value)}

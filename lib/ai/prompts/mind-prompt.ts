@@ -87,7 +87,7 @@ export interface MINDContext {
   currentSessionDurationMinutes: number;
   sessionGoal: string;
   ragChunks?: {
-    content: string;
+    text: string;
     similarity: number;
     sourceTitle: string;
     citation?: string;
@@ -148,7 +148,7 @@ export function getEffectiveLearningStyle(
 
 export function buildRagSection(
   ragChunks?: {
-    content: string;
+    text: string;
     similarity: number;
     sourceTitle: string;
     citation?: string;
@@ -173,7 +173,7 @@ Instruction: say clearly that you could not find enough evidence in their upload
   const formatted = ragChunks
     .map((c, i) => {
       const label = c.citation || c.sourceTitle;
-      return `[Source ${i + 1}: ${label}]\n${c.content}`;
+      return `[Source ${i + 1}: ${label}]\n${c.text}`;
     })
     .join('\n\n');
 

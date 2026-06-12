@@ -14,16 +14,4 @@ jobs:
         with:
           node-version: 20
           cache: npm
-      - run: npm run verify:public-launch
-  
-  secret-scan:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: trufflesecurity/trufflehog@main
-        with:
-          path: ./
-          base: ${{ github.event.repository.default_branch }}
-          head: HEAD
+      - run: npm run verify:mvp

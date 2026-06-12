@@ -209,6 +209,14 @@ export async function POST(req: NextRequest) {
     const { consumeFeatureUsage } = await import('@/lib/usage/enforce-feature-limit');
     await consumeFeatureUsage(user.id, 'chat_message', 1, { idempotencyKey: messageRequestId });
 
+    if (mindContext?.ragChunks?.length > 0) {
+      await consumeFeatureUsage(user.id, 'material_query', 1, {
+        idempotencyKey: `rag_query_chat:${messageRequestId}`,
+      }).catch(err => {
+        logger.error('Failed to consume material_query usage in chat', err);
+      });
+    }
+
     // 11. Call AI Provider (Deterministic or LLM Stream)
     if (!isFeatureEnabled('ai_global')) {
       return featureDisabledResponse(requestId);

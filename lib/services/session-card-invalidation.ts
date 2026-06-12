@@ -105,11 +105,19 @@ export async function invalidateSessionCard(
 
   try {
     const todayStr = dates[0];
-    const { data: currentCards } = await supabase
+    let todayCardsQuery = supabase
       .from('session_cards')
       .select('*')
       .eq('user_id', userId)
       .eq('date', todayStr);
+
+    if (options.goalId) {
+      todayCardsQuery = todayCardsQuery.eq('goal_id', options.goalId);
+    } else {
+      todayCardsQuery = todayCardsQuery.is('goal_id', null);
+    }
+
+    const { data: currentCards } = await todayCardsQuery;
 
     if (currentCards && currentCards.length > 0) {
       for (const card of currentCards) {
@@ -150,6 +158,8 @@ export async function invalidateSessionCard(
 
   if (options.goalId) {
     deleteQuery = deleteQuery.eq('goal_id', options.goalId);
+  } else {
+    deleteQuery = deleteQuery.is('goal_id', null);
   }
 
   const { error } = await deleteQuery;
@@ -173,12 +183,13 @@ export async function invalidateSessionCard(
 export async function markSessionCardCompleted(
   userId: string,
   localDate: string,
+  goalId?: string | null,
   options: { client?: any } = {}
 ): Promise<void> {
   const supabase = options.client ?? createAdminClient();
 
   const now = new Date().toISOString();
-  const { error } = await supabase
+  let query = supabase
     .from('session_cards')
     .update({
       isCompleted: true,
@@ -190,8 +201,16 @@ export async function markSessionCardCompleted(
     .eq('date', localDate)
     .eq('isCompleted', false); // idempotent: only update if not already done
 
+  if (goalId) {
+    query = query.eq('goal_id', goalId);
+  } else {
+    query = query.is('goal_id', null);
+  }
+
+  const { error } = await query;
+
   if (error) {
-    logger.warn('markSessionCardCompleted: failed', { userId, localDate, error: error.message });
+    logger.warn('markSessionCardCompleted: failed', { userId, localDate, goalId, error: error.message });
     // Non-fatal — don't throw
   }
 }

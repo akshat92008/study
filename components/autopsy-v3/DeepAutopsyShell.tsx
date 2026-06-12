@@ -1,6 +1,5 @@
 'use client';
 
-import { useMemo, useState } from 'react';
 import { ArrowRight, FileText, RefreshCw, Sparkles, Loader2 } from 'lucide-react';
 import AssessmentCreateStep from './AssessmentCreateStep';
 import UploadAssessmentStep from './UploadAssessmentStep';
@@ -10,7 +9,9 @@ import UserReasonStep from './UserReasonStep';
 import AutopsyReportView from './AutopsyReportView';
 import ManualEntryFallback from './ManualEntryFallback';
 import Card from '@/components/ui/Card';
+import Badge from '@/components/ui/Badge';
 import { useAppStore } from '@/stores/appStore';
+import { useMemo, useState } from 'react';
 
 const DEFAULT_ROWS = [
   'question_number,subject,topic,correct_answer,user_answer',
@@ -117,7 +118,15 @@ export default function DeepAutopsyShell() {
       body: JSON.stringify({ assessmentId: assessment?.id, text: answerKeyText }),
     });
     const data = await response.json();
-    setStatus(response.ok ? `Parsed ${data.answers?.length ?? 0} answers.` : data.message || 'Answer key parse failed.');
+    if (response.ok) {
+      setStatus(`Parsed ${data.answers?.length ?? 0} answers.`);
+    } else {
+      setStatus(data.message || 'Answer key parse failed.');
+      // Add format examples from backend if available
+      if (data.details?.formatExamples?.length) {
+        setAnswerKeyText((prev) => `${prev}\n\n// Format examples:\n// ${data.details.formatExamples.join('\n// ')}`);
+      }
+    }
   }
 
   function handleReasonChange(id: string, value: { userReasonCategory?: string; userReason?: string }) {
@@ -159,6 +168,10 @@ export default function DeepAutopsyShell() {
 
   async function handleGenerateReport() {
     if (!assessment?.id) return;
+    const wrongCount = questions.filter((q) => ['incorrect', 'skipped', 'unattempted'].includes(q.status)).length;
+    if (wrongCount === 0) {
+      if (!window.confirm('No wrong answers detected. Are you sure you want to generate a report?')) return;
+    }
     setSaving(true);
     setStatus('Generating report...');
     try {
@@ -199,7 +212,7 @@ export default function DeepAutopsyShell() {
     <main style={{ padding: 'var(--sp-6)', maxWidth: 1120, margin: '0 auto', display: 'grid', gap: 'var(--sp-5)' }}>
       <header style={{ display: 'flex', justifyContent: 'space-between', gap: 'var(--sp-4)', alignItems: 'flex-start', flexWrap: 'wrap' }}>
         <div>
-          <h1 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 900, margin: 0 }}>Performance Autopsy</h1>
+          <h1 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 900, margin: 0 }}>Deep Autopsy</h1>
           <p style={{ color: 'var(--text-secondary)', margin: '6px 0 0', maxWidth: 680 }}>
             Diagnose missed marks, store durable mistake memory, and turn the report into today&apos;s recovery loop.
           </p>
@@ -244,9 +257,17 @@ export default function DeepAutopsyShell() {
 
           {questions.length > 0 && (
             <Card padding="lg" style={{ display: 'grid', gap: 'var(--sp-3)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
                 <FileText size={18} color="var(--accent-cyan)" />
                 <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 900, margin: 0 }}>Review</h3>
+                {assessment && (
+                  <>
+                    <Badge color="gray">{assessment.source?.toUpperCase() || 'MANUAL'}</Badge>
+                    {assessment.metadata?.originalFilename && (
+                      <Badge color="blue">{assessment.metadata.originalFilename}</Badge>
+                    )}
+                  </>
+                )}
               </div>
               <div style={{ display: 'grid', gap: 8 }}>
                 {questions.slice(0, 12).map((question) => (

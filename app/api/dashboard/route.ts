@@ -97,6 +97,8 @@ export async function GET(request: Request) {
       latestReportRes,
       topMemoryRes,
       seededTopicsRes,
+      mistakeCountRes,
+      masteryAggRes,
     ] = await Promise.all([
       supabase.from('profiles').select('*').eq('id', user.id).single(),
       getCognitionGraph(user.id, goalId),
@@ -110,7 +112,15 @@ export async function GET(request: Request) {
       latestReportQuery.maybeSingle(),
       topMemoryQuery.maybeSingle(),
       seededTopicsQuery,
+      supabase.from('mistake_diagnoses').select('id', { count: 'exact', head: true }).eq('user_id', user.id).eq('status', 'active').then(res => res.count ?? 0),
+      supabase.from('concepts').select('mastery_level').eq('user_id', user.id)
     ]);
+
+    let overallMastery = profileRes.data?.overall_mastery ?? 0;
+    if (masteryAggRes.data && masteryAggRes.data.length > 0) {
+      const sum = masteryAggRes.data.reduce((acc: number, c: any) => acc + (c.mastery_level ?? 0), 0);
+      overallMastery = Math.round((sum / masteryAggRes.data.length) * 100) / 100;
+    }
 
     const syllabus: Record<string, string[]> = {};
     if (conceptsRes.data) {
@@ -131,6 +141,11 @@ export async function GET(request: Request) {
 
     return NextResponse.json({
       profile: profileRes.data,
+      learnerProfile: {
+        overallMastery,
+        mistakeCount: mistakeCountRes,
+        conceptCount: masteryAggRes.data?.length ?? 0,
+      },
       activeGoal,
       seededTopics: (seededTopicsRes?.data ?? []).map((t: any) => ({
         id: t.id,

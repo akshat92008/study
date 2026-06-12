@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { apiErrorResponse, getRequestId } from '@/lib/api/errors';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { PracticeService } from '@/lib/services/practice.service';
+import { logger } from '@/lib/utils/logger';
 
 const ReviewsSchema = z.object({
   messageId: z.string().optional(),
@@ -38,10 +39,12 @@ export async function POST(req: NextRequest) {
 
     // Resolve practice set
     let set;
+    const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+    
     if (practiceSetId) {
       const { data } = await supabase.from('practice_sets').select('*').eq('id', practiceSetId).eq('user_id', user.id).single();
       set = data;
-    } else {
+    } else if (messageId && UUID_RE.test(messageId)) {
       // Look up by messageId first
       const { data } = await supabase
         .from('practice_sets')
@@ -154,6 +157,39 @@ export async function POST(req: NextRequest) {
       throw insertError;
     }
 
+    // Prepare metrics for sync
+    let correctCount = 0;
+    let wrongCount = 0;
+    const wrongConceptIds: string[] = [];
+    const wrongConceptNames: string[] = [];
+
+    for (const item of eventItems) {
+      if (['forgot', 'again', 'hard'].includes(item.confidence)) {
+        wrongCount++;
+        if (item.conceptId) wrongConceptIds.push(item.conceptId);
+        if (item.conceptName) wrongConceptNames.push(item.conceptName);
+      } else {
+        correctCount++;
+      }
+    }
+
+    const { syncStudyProfileAfterPracticeAttempt } = await import('@/lib/services/study-profile-sync.service');
+    const profileSync = await syncStudyProfileAfterPracticeAttempt(supabase, {
+      userId: user.id,
+      goalId: set.goal_id ?? null,
+      practiceSetId: set.id,
+      metrics: {
+        correctCount,
+        wrongCount,
+        wrongConceptIds,
+        wrongConceptNames,
+      },
+      items: eventItems,
+    }).catch((error) => {
+      logger.error('Failed to sync profile after review', error);
+      return { error: 'profile_sync_failed' };
+    });
+
     await EventDispatcher.publish({
       user_id: user.id,
       type: 'PRACTICE_ATTEMPT_RECORDED',
@@ -173,6 +209,7 @@ export async function POST(req: NextRequest) {
       success: true,
       metrics: { reviewedCount },
       practiceSetId: set.id,
+      profileSync,
     });
   } catch (error) {
     const { unexpectedApiErrorResponse } = await import('@/lib/api/errors');

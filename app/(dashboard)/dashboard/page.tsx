@@ -109,9 +109,9 @@ export default function DashboardPage() {
   const activeGoal = learningGoals.find((g: LearningGoal) => g.id === activeGoalId);
 
   // Numeric Stats definitions
-  const overallMastery = masteryData?.overallPct ?? dashboardData?.cognition?.stats?.overallMastery ?? dashboardData?.profile?.overall_mastery ?? 0;
+  const overallMastery = dashboardData?.learnerProfile?.overallMastery ?? masteryData?.overallPct ?? dashboardData?.cognition?.stats?.overallMastery ?? dashboardData?.profile?.overall_mastery ?? 0;
   const cardsDue = dashboardData?.revision?.due?.length ?? 0;
-  const marksLost = autopsyResult?.recoverableMarks ?? 0;
+  const marksLost = dashboardData?.learnerProfile?.mistakeCount ?? autopsyResult?.recoverableMarks ?? 0;
 
   // Use preset scoring model for display
   const preset = activeGoal ? getPreset(activeGoal.preset_id) : getPreset('custom_learning_goal');

@@ -34,8 +34,14 @@ export default function DeepAutopsyCard({ deepAutopsy }: { deepAutopsy?: any }) 
             </div>
           )}
           <div style={{ display: 'flex', gap: 'var(--sp-3)', flexWrap: 'wrap', color: 'var(--text-secondary)', fontSize: 'var(--fs-xs)' }}>
-            <span>Recoverable: {Math.round(Number(report?.recoverable_marks_estimate ?? 0) * 10) / 10}</span>
-            <span>{report?.summary_text || 'Recovery action ready.'}</span>
+            {latest?.status === 'parsing_failed' ? (
+              <span style={{ color: 'var(--danger)' }}>Extraction failed. Manual entry required.</span>
+            ) : (
+              <>
+                <span>Recoverable: {Math.round(Number(report?.recoverable_marks_estimate ?? 0) * 10) / 10}</span>
+                <span>{report?.summary_text || (Number(report?.recoverable_marks_estimate ?? 0) > 0 ? 'Recovery action ready.' : 'No recovery needed.')}</span>
+              </>
+            )}
           </div>
         </div>
       ) : (

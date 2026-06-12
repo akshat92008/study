@@ -23,7 +23,7 @@ export default function StudyMaterialPanel() {
 
     const { data } = await supabase
       .from('study_materials')
-      .select('id, title, status, subject, chapter, error_message, retryable, deep_processing_status, briefing_doc, podcast_transcript')
+      .select('id, title, status, subject, chapter, error_message, retryable, deep_processing_status, briefing_doc, podcast_transcript, original_filename, mime_type, source_type, study_material_chunks(count)')
       .eq('user_id', user.id)
       .neq('status', 'archived')
       .order('created_at', { ascending: false })
@@ -81,7 +81,7 @@ export default function StudyMaterialPanel() {
           
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ fontSize: 'var(--fs-sm)', fontWeight: 'bold', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-              {mat.title}
+              {mat.original_filename || mat.title}
             </div>
             {(mat.subject || mat.chapter) && (
               <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
@@ -110,6 +110,14 @@ export default function StudyMaterialPanel() {
               <Badge color="red">Action Required</Badge>
             ) : (
               <Badge color="cyan">Ready</Badge>
+            )}
+
+            <Badge color="gray">
+              {mat.source_type?.toUpperCase() || (mat.mime_type?.includes('pdf') ? 'PDF' : 'TXT')}
+            </Badge>
+
+            {mat.study_material_chunks?.[0]?.count > 0 && (
+              <Badge color="purple">{mat.study_material_chunks[0].count} chunks</Badge>
             )}
 
             {mat.deep_processing_status === 'completed' && (

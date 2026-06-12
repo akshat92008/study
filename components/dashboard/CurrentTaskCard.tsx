@@ -52,11 +52,14 @@ export default function CurrentTaskCard({
   const [currentQuoteIdx, setCurrentQuoteIdx] = useState(0);
 
   const fetchSessionCard = useCallback(async () => {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000);
     try {
       setLoading(true);
       setErrorMessage(null);
       const query = goalId ? `?goalId=${encodeURIComponent(goalId)}` : '';
-      const res = await fetch(`/api/dashboard/session-card${query}`);
+      const res = await fetch(`/api/dashboard/session-card${query}`, { signal: controller.signal });
+      clearTimeout(timeoutId);
       if (!res.ok) {
         const message = res.status === 401 ? 'Please sign in to load today\'s session.' : 'Unable to load today\'s session.';
         setData(null);

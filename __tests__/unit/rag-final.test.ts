@@ -23,7 +23,7 @@ describe('RAG Final Fixes', () => {
     const routePath = path.resolve(__dirname, '../../lib/chat/uploads.ts');
     const content = fs.readFileSync(routePath, 'utf8');
     
-    expect(content).toContain('createAutopsyJob({');
+    expect(content).toContain('autopsy_upload_redirect');
   });
 
   it('rag query logging failure does not fail retrieval', () => {

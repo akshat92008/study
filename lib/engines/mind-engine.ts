@@ -39,7 +39,7 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
     const cognitiveLoad = deriveCognitiveLoadSignal(learnerState);
 
     let ragChunks: {
-      content: string;
+      text: string;
       similarity: number;
       sourceTitle: string;
       citation?: string;
@@ -61,7 +61,7 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
         const { formatCitation } = await import('@/lib/rag/citations');
         // Limit to 3 sources for faster response as per CHAT_CONTEXT_LIMITS
         ragChunks = ragContext.chunks.slice(0, 3).map((chunk) => ({
-          content: chunk.text,
+          text: chunk.text,
           similarity: chunk.score,
           sourceTitle: chunk.materialTitle,
           citation: formatCitation({

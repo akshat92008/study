@@ -22,7 +22,24 @@ export async function POST(req: NextRequest) {
     }
 
     const answers = parseAnswerKeyText(parsed.data.text);
-    if (!parsed.data.assessmentId || answers.length === 0) {
+    
+    // Fix 3: Hard gating on 0 parsed answers
+    if (answers.length === 0) {
+      return apiErrorResponse('parse_failed', {
+        status: 422,
+        message: 'No answers could be parsed from the provided text.',
+        requestId,
+        details: {
+          formatExamples: [
+            '"1 A" or "1. A" (one per line)',
+            '"1 A, 2 B, 3 C" (comma separated)',
+            '"| 1 | A | 2 | B |" (table format)',
+          ]
+        }
+      });
+    }
+
+    if (!parsed.data.assessmentId) {
       return jsonWithRequestId({ answers }, requestId);
     }
 

@@ -13,7 +13,6 @@ describe('Event Routing Matrix', () => {
 
   it('routes STUDENT_MODEL_SYNC_REQUESTED only to valid consumers', () => {
     expect(EVENT_CONSUMER_MATRIX.STUDENT_MODEL_SYNC_REQUESTED).toEqual([
-      'learning_state_engine',
       'amaura_forgetting_agent',
       'amaura_stagnation_agent',
       'amaura_pattern_memory',
@@ -22,7 +21,6 @@ describe('Event Routing Matrix', () => {
 
   it('routes AUTOPSY_V3_REASONS_COLLECTED to native autopsy and learner-state consumers', () => {
     expect(EVENT_CONSUMER_MATRIX.AUTOPSY_V3_REASONS_COLLECTED).toContain('autopsy_agent');
-    expect(EVENT_CONSUMER_MATRIX.AUTOPSY_V3_REASONS_COLLECTED).toContain('learning_state_engine');
   });
 
   it('routes native Amaura agents without hermes_worker', () => {
