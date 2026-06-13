@@ -1,8 +1,9 @@
 import { createClient } from '@/lib/supabase/server';
 import { resolveConcept } from '@/lib/engines/concept-resolver';
 import { logger } from '@/lib/utils/logger';
-import { projectLearningSignal } from '@/lib/learner-state/projector';
-import type { LearningSignal, AgentChannel } from '@/lib/agent/types';
+import { applyLearningEvent } from '@/lib/learner-state/apply-learning-event';
+import type { AgentChannel } from '@/lib/agent/types';
+import { CognitionError } from '@/lib/errors/cognition-errors';
 
 /**
  * Deterministically completes a study session.
@@ -102,34 +103,33 @@ export async function completeLearningSession(input: {
 
   const finalSessionId = rpcResult.session_id || sessionId;
 
-  // 3. Centralized Projection (Fix: Unified Path)
-  const sessionSignal: LearningSignal = {
-    type: 'session_completed',
-    concept: conceptName || 'General Session',
-    canonicalConcept: conceptName || 'General Session',
-    subject: subject || 'General',
-    chapter: chapter || 'General',
-    topic: conceptName || 'General',
-    confidence: 1.0,
-    source: input.source || 'session',
-    evidence: `Completed session on ${subject} / ${chapter} for ${durationMinutes} mins.`,
+  const projection = await applyLearningEvent(supabase, {
+    userId: input.userId,
+    goalId: input.goalId ?? null,
+    source: 'focus_session',
+    concept: {
+      conceptId: conceptId ?? undefined,
+      canonicalName: conceptName ?? undefined,
+      subject: subject ?? undefined,
+      chapter: chapter ?? undefined,
+      topic: conceptName ?? undefined,
+    },
+    result: {
+      outcome: 'completed',
+      confidence: 1,
+      explanation: `Completed session on ${subject} / ${chapter} for ${durationMinutes} minutes.`,
+    },
+    artifact: { sessionCardId: finalSessionId ?? undefined },
     metadata: {
-      userId: input.userId,
-      sessionId: finalSessionId,
-      subject,
-      chapter,
-      conceptName,
-      conceptId,
       durationMinutes,
       understood,
       gapFound: input.gapFound ?? null,
       idempotencyKey: completionKey,
     },
-  };
-
-  const projection = await projectLearningSignal(supabase, input.userId, sessionSignal, {
-    goalId: input.goalId,
   });
+  if (!projection.ok) {
+    throw new CognitionError('SESSION_COMPLETION_FAILED', projection.message, projection.recoverable, projection.traceId);
+  }
 
   // Normalize streak: SQL currently returns streak_days, old SQL returned new_streak.
   // Always read streak_days first to match the DB column name.
@@ -145,7 +145,7 @@ export async function completeLearningSession(input: {
     subject,
     chapter,
     understood,
-    cardsCreated: projection.cardsCreated || input.cardsCreated || 0,
+    cardsCreated: projection.revisionCardIds.length || input.cardsCreated || 0,
     projection,
   };
 }

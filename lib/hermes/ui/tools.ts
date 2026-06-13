@@ -4,6 +4,7 @@ import { budgetedGenerateJSON, budgetedGenerateText } from '@/lib/ai/budgeted';
 import { createResolvedLearningGoal } from '@/lib/goals/curriculum-resolver';
 import { ensureGoalForUser } from '@/lib/services/goal-context.service';
 import { invalidateSessionCard } from '@/lib/services/session-card-invalidation';
+import { resolveConcept } from '@/lib/engines/concept-resolver';
 import { getOrCreateGoalMission, toHermesTasks } from './mission-service';
 import { getSourceStatusesForGoal, retrySourceProcessing as retrySourceProcessingService } from '@/lib/services/source-status.service';
 import { runHermesMistakeAgent, buildMistakeFallback } from '@/lib/hermes/agents/mistake-agent';
@@ -300,9 +301,24 @@ export async function createFlashcardsFromTopic(ctx: ToolContext, args: Record<s
   });
 
   const empty = createEmptyCard();
+  const goalId = ctx.goalId ?? ctx.state.activeGoal?.id ?? null;
+  const conceptResolution = await resolveConcept({
+    userId: ctx.userId,
+    goalId,
+    subject,
+    chapter: topic,
+    topic,
+    sourceType: 'revision',
+    confidence: 0.85,
+    client: ctx.supabase,
+  });
+  if (!conceptResolution.conceptId) {
+    throw new Error('Flashcards could not be linked to a canonical concept.');
+  }
   const rows = result.cards.map((card) => ({
     user_id: ctx.userId,
-    goal_id: ctx.goalId ?? ctx.state.activeGoal?.id ?? null,
+    goal_id: goalId,
+    concept_id: conceptResolution.conceptId,
     front: card.front,
     back: card.back,
     subject,
@@ -317,15 +333,12 @@ export async function createFlashcardsFromTopic(ctx: ToolContext, args: Record<s
     state: empty.state,
     source_type: 'hermes_ui',
   }));
-  try {
-    await ctx.supabase.from('revision_cards').insert(rows);
-  } catch {
-    // Non-fatal: Hermes can still return generated cards for the current command.
-  }
+  const { error: cardError } = await ctx.supabase.from('revision_cards').insert(rows);
+  if (cardError) throw cardError;
   await invalidateSessionCard(ctx.userId, 'revision_cards_generated', {
     client: ctx.supabase,
-    goalId: ctx.goalId ?? ctx.state.activeGoal?.id ?? null,
-  }).catch(() => undefined);
+    goalId,
+  });
 
   return {
     cards: [{ type: 'flashcards', title: `Flashcards: ${topic}`, cards: result.cards, actions: [{ id: 'open-review', label: 'Open review', type: 'open_review' }] }],

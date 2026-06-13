@@ -9,6 +9,12 @@ import {
 import { processMockAutopsy } from '@/lib/engines/autopsy-engine';
 import { getLearnerStateSnapshot } from '@/lib/learner-state/getLearnerState';
 
+const adminClientRef = vi.hoisted(() => ({ current: null as any }));
+
+vi.mock('@/lib/supabase/admin', () => ({
+  createAdminClient: vi.fn(() => adminClientRef.current),
+}));
+
 vi.mock('@/lib/ai/provider-client', () => ({
   getEmbedding: vi.fn(async () => []),
   generateMultimodalJSON: vi.fn(),
@@ -769,6 +775,7 @@ describe('local MVP loop integration contract', () => {
   it('walks the daily card, global MIND chat, session completion, worker effects, AUTOPSY, and learner-state context', async () => {
     const state = makeState();
     const client = makeClient(state);
+    adminClientRef.current = client;
 
     const firstCard = requestDailyCard(state);
     expect(firstCard.priority).toBe('concept_study');

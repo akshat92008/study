@@ -38,7 +38,7 @@ import { getLearnerStateVersion } from '@/lib/services/learner-state-version';
 import { logger } from '@/lib/utils/logger';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
-import { ensureGoalForUser } from '@/lib/services/goal-context.service';
+import { resolveActiveGoalForUser } from '@/lib/goals/resolve-active-goal';
 import { betaAccessErrorResponse, requireActiveBetaUser } from '@/lib/access/beta-access';
 import { featureDisabledResponse, isFeatureEnabled } from '@/lib/feature-registry';
 import { getOrCreateGoalMission } from '@/lib/services/goal-mission.service';
@@ -178,8 +178,10 @@ export async function GET(request?: Request): Promise<NextResponse> {
 
     const generatedAt = new Date().toISOString();
     const { searchParams } = request ? new URL(request.url) : { searchParams: new URLSearchParams() };
-    const goalId = searchParams.get('goalId');
-    const activeGoal = goalId ? await ensureGoalForUser(supabase, user.id, goalId) : null;
+    const requestedGoalId = searchParams.get('goalId');
+    const activeGoalResolution = await resolveActiveGoalForUser(supabase, user.id, requestedGoalId);
+    const goalId = activeGoalResolution.goalId;
+    const activeGoal = activeGoalResolution.goal;
 
     // ── 1. Read learner_state_version from profile ──────────────────────────
     const learnerStateVersion = await getLearnerStateVersion(user.id, supabase);

@@ -75,6 +75,7 @@ function summarizeMutations(results: ToolResultRecord[]): MutationSummary {
       summary.revisionCardsCreated += Number(data?.revisionCardsCreated ?? 0);
       summary.microtargetsUpdated += Number(data?.microtargetsUpdated ?? 0);
       summary.practiceAttemptsProcessed += Number(data?.practiceAttemptsProcessed ?? 0);
+      summary.mistakesRecorded += Number(data?.mistakesRecorded ?? 0);
     }
   }
   return summary;
@@ -207,18 +208,7 @@ export async function runCognitionAgentLoop(input: {
         goalId: input.turn.goalId ?? null,
       }, input.context, state);
 
-      await executeLearningTool('write_learning_event', {
-        eventType: signal.type,
-        payload: {
-          targetType: 'concept',
-          targetId: conceptId,
-          concept: conceptName,
-          confidence: signal.confidence,
-          reason: signal.evidence ?? signal.type.replace(/_/g, ' '),
-          signal,
-        },
-        goalId: input.turn.goalId ?? null,
-      }, input.context, state);
+      // update_concept_mastery applies the single canonical learning event.
     }
   }
 

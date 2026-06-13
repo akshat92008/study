@@ -1,8 +1,8 @@
 import { SupabaseClient } from '@supabase/supabase-js';
-import { projectLearningSignal, type ProjectionResult } from '@/lib/learner-state/projector';
 import { logger } from '@/lib/utils/logger';
 import { stableKey } from '@/lib/agent/tools/learning/common';
-import type { LearningSignal } from '@/lib/agent/types';
+import { applyLearningEvent, type LearningEventResult } from '@/lib/learner-state/apply-learning-event';
+import { CognitionError } from '@/lib/errors/cognition-errors';
 
 export interface ProjectAutopsyV3Input {
   userId: string;
@@ -45,12 +45,16 @@ export async function projectAutopsyV3Results(input: ProjectAutopsyV3Input) {
     });
   }
 
-  const { userId, assessmentId, reportId, report, diagnoses, goalId, subject } = input;
+  const { userId, assessmentId, reportId, diagnoses, goalId, subject } = input;
 
   logger.info('Projecting Autopsy V3 results via central projector', { userId, assessmentId, reportId });
 
+  if (diagnoses.length === 0) {
+    throw new CognitionError('AUTOPSY_PROJECTION_FAILED', 'Autopsy cannot be projected without at least one diagnosis.');
+  }
+
   // 1. Project individual mistakes with stable, dedupe-safe idempotency keys
-  const results: ProjectionResult[] = [];
+  const results: LearningEventResult[] = [];
   for (const diagnosis of diagnoses) {
     const canonicalConcept = (diagnosis.topic || 'unknown').trim().toLowerCase();
 
@@ -68,20 +72,27 @@ export async function projectAutopsyV3Results(input: ProjectAutopsyV3Input) {
       canonicalConcept,
     ]);
 
-    const mistakeSignal: LearningSignal = {
-      type: 'autopsy_mistake_detected',
-      concept: diagnosis.topic,
-      canonicalConcept,
-      subject: diagnosis.subject || subject || 'General',
-      chapter: diagnosis.topic,
-      topic: diagnosis.topic,
-      confidence: diagnosis.confidence || 0.8,
+    const res = await applyLearningEvent(supabase, {
+      userId,
+      goalId: goalId ?? null,
       source: 'autopsy',
-      evidence: diagnosis.ai_analysis || `Autopsy mistake: ${diagnosis.mistake_type} on ${diagnosis.topic}`,
-      metadata: {
-        assessmentId,
-        questionId: diagnosis.question_id,
+      concept: {
+        canonicalName: diagnosis.topic,
+        subject: diagnosis.subject || subject || undefined,
+        chapter: diagnosis.topic,
+        topic: diagnosis.topic,
+      },
+      result: {
+        outcome: diagnosis.status === 'skipped' ? 'skipped' : 'incorrect',
+        confidence: diagnosis.confidence || 0.8,
         mistakeType: diagnosis.mistake_type,
+        explanation: diagnosis.ai_analysis || `Autopsy mistake: ${diagnosis.mistake_type} on ${diagnosis.topic}`,
+      },
+      artifact: {
+        autopsyAssessmentId: assessmentId,
+        autopsyQuestionId: diagnosis.question_id,
+      },
+      metadata: {
         severity: diagnosis.severity === 'high' ? 5 : diagnosis.severity === 'medium' ? 3 : 1,
         mistakeText: diagnosis.ai_analysis || diagnosis.mistake_type,
         questionText: diagnosis.question_text,
@@ -89,39 +100,18 @@ export async function projectAutopsyV3Results(input: ProjectAutopsyV3Input) {
         correctAnswer: diagnosis.correct_answer,
         whyWrong: diagnosis.ai_analysis,
         goalId,
-        // Pass stable key so projector can use it for idempotency
         idempotencyKey: diagnosisIdempotencyKey,
       },
-    };
-
-    const res = await projectLearningSignal(supabase, userId, mistakeSignal, { goalId });
+    });
+    if (!res.ok) {
+      throw new CognitionError('AUTOPSY_PROJECTION_FAILED', res.message, res.recoverable, res.traceId);
+    }
     results.push(res);
   }
 
-  // 2. Project overall assessment result signal with stable key
-  const assessmentIdempotencyKey = stableKey([
-    'autopsy_v3',
-    'assessment_complete',
-    assessmentId,
-    reportId,
-  ]);
-
-  const assessmentSignal: LearningSignal = {
-    type: 'concept_practiced', // General progress signal
-    confidence: 0.9,
-    source: 'autopsy',
-    evidence: `Completed Deep Autopsy assessment: ${report.summaryText || report.overview?.summaryText || ''}`,
-    metadata: {
-      assessmentId,
-      reportId,
-      score: report.overview?.score,
-      totalMarks: report.overview?.totalMarks,
-      goalId,
-      idempotencyKey: assessmentIdempotencyKey,
-    },
-  };
-
-  await projectLearningSignal(supabase, userId, assessmentSignal, { goalId });
+  if (results.length === 0) {
+    throw new CognitionError('AUTOPSY_PROJECTION_FAILED', 'Autopsy contained no classified, recoverable diagnoses.');
+  }
 
   return {
     mistakesProjected: results.length,

@@ -231,6 +231,45 @@ export async function resolveConcept(input: ResolveConceptInput): Promise<Concep
     );
   }
 
+  // Adopt an owned legacy unscoped concept into the resolved active goal.
+  // This preserves pre-goal learner history while preventing cross-goal reads.
+  if (input.goalId) {
+    let legacyQuery = supabase
+      .from('concepts')
+      .select('id')
+      .eq('user_id', input.userId)
+      .is('goal_id', null)
+      .limit(1);
+    if (normalizedSubject) legacyQuery = legacyQuery.ilike('subject', normalizedSubject);
+    if (normalizedChapter) legacyQuery = legacyQuery.ilike('chapter', normalizedChapter);
+    if (normalizedTopic) legacyQuery = legacyQuery.ilike('topic', normalizedTopic);
+    const { data: legacyMatch } = await legacyQuery.maybeSingle();
+    if (legacyMatch?.id) {
+      const { error: adoptError } = await supabase
+        .from('concepts')
+        .update({ goal_id: input.goalId, updated_at: new Date().toISOString() })
+        .eq('id', legacyMatch.id)
+        .eq('user_id', input.userId)
+        .is('goal_id', null);
+      if (!adoptError) {
+        return finishResolution(
+          supabase,
+          input,
+          {
+            conceptId: legacyMatch.id,
+            confidence: Math.max(0.94, extractionConfidence),
+            method: 'normalized',
+            normalizedSubject,
+            normalizedChapter,
+            normalizedTopic,
+            reason: 'Adopted an owned legacy unscoped concept into the active goal',
+          },
+          raw
+        );
+      }
+    }
+  }
+
   const aliasCandidates = [normalizedTopic, normalizedChapter, normalizedSubject].filter(Boolean) as string[];
   if (aliasCandidates.length > 0) {
     const { data: alias } = await supabase

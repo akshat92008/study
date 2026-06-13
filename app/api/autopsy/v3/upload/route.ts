@@ -76,12 +76,12 @@ export async function POST(req: NextRequest) {
     let extractionStatus = 'manual_entry_required';
     let status = 'answers_pending';
 
-    if (extraction.confidence >= 0.55) {
-      extractionStatus = 'needs_review';
-      status = 'needs_review';
-    } else if (extraction.confidence === 0 || !extraction.rawText.trim()) {
+    if (extraction.confidence === 0 || !extraction.rawText.trim()) {
       extractionStatus = 'failed';
       status = 'parsing_failed';
+    } else if (extraction.confidence >= 0.55) {
+      extractionStatus = 'ready';
+      status = 'answers_pending';
     }
 
     let reservationId: string | null = null;
@@ -129,7 +129,7 @@ export async function POST(req: NextRequest) {
       }).catch(() => {});
     }
 
-    let message = 'Selectable text was extracted. Please review it before generating a report.';
+    let message = 'Selectable text was extracted. Add or confirm questions and answers before generating a report.';
     if (status === 'parsing_failed') {
       message = 'Failed to extract text from this PDF. Please proceed with manual entry.';
     } else if (extraction.confidence < 0.55) {

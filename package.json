@@ -60,7 +60,16 @@
     "supabase:push": "supabase db push",
     "supabase:migration": "supabase migration new",
     "study-profile:recompute:dry": "tsx scripts/recompute-study-profile.ts",
-    "study-profile:recompute:apply": "tsx scripts/recompute-study-profile.ts --apply"
+    "study-profile:recompute:apply": "tsx scripts/recompute-study-profile.ts --apply",
+    "verify:core-loop-contracts": "tsx scripts/verify-core-loop-contracts.ts",
+    "test:invariants": "vitest run tests/invariants",
+    "test:security": "vitest run tests/security tests/rls.test.ts tests/ownership",
+    "eval:mind": "vitest run tests/evals/mind-agent.eval.test.ts tests/mind",
+    "smoke:core-loop": "tsx scripts/smoke-core-loop.ts",
+    "repair:core-loop:dry": "tsx scripts/repair-stuck-core-loop.ts",
+    "repair:core-loop": "tsx scripts/repair-stuck-core-loop.ts --repair",
+    "report:launch-blockers": "tsx scripts/generate-launch-blockers-report.ts",
+    "verify:real-mvp": "npm run typecheck && npm run lint && npm test && npm run verify:core-loop-contracts && npm run test:invariants && npm run eval:mind && npm run smoke:core-loop && npm run schema:check && npm run test:security && npm run build"
   },
   "dependencies": {
     "@google/genai": "^1.52.0",

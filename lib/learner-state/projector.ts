@@ -8,6 +8,12 @@ import { invalidateSessionCard, markSessionCardCompleted } from '@/lib/services/
 import { logger } from '@/lib/utils/logger';
 import { stableKey, recordAgentActivity } from '@/lib/agent/tools/learning/common';
 import { upsertMistakeRisk } from '@/lib/services/repair-loop.service';
+import { CognitionError, toCognitionError } from '@/lib/errors/cognition-errors';
+
+export interface ProjectionError {
+  code: string;
+  message: string;
+}
 
 export interface ProjectionResult {
   success: boolean;
@@ -16,6 +22,13 @@ export interface ProjectionResult {
   cardsCreated: number;
   invalidationTriggered: boolean;
   mistakeRecorded: boolean;
+  learningEventId: string | null;
+  conceptId: string | null;
+  masteryBefore: number | null;
+  masteryAfter: number | null;
+  revisionCardIds: string[];
+  mistakeIds: string[];
+  errors: ProjectionError[];
 }
 
 /**
@@ -37,6 +50,13 @@ export async function projectLearningSignal(
     cardsCreated: 0,
     invalidationTriggered: false,
     mistakeRecorded: false,
+    learningEventId: null,
+    conceptId: null,
+    masteryBefore: null,
+    masteryAfter: null,
+    revisionCardIds: [],
+    mistakeIds: [],
+    errors: [],
   };
 
   const sessionId = signal.metadata?.sessionId as string | undefined;
@@ -58,14 +78,21 @@ export async function projectLearningSignal(
       updated_at: now.toISOString(),
     }, { onConflict: 'idempotency_key' });
 
-    if (!eventError) result.eventsWritten++;
+    if (eventError) {
+      throw new CognitionError('EVENT_WRITE_FAILED', `Learning event could not be written: ${eventError.message}`, true);
+    }
+    result.eventsWritten++;
+    result.learningEventId = idempotencyKey;
 
     // 2. Profile Streak / Activity
     if (signal.type === 'session_completed' || signal.type === 'concept_practiced' || signal.type === 'revision_reviewed') {
-      await supabase.from('profiles').update({
+      const { error: profileError } = await supabase.from('profiles').update({
         last_active_at: now.toISOString(),
         updated_at: now.toISOString(),
       }).eq('id', userId);
+      if (profileError) {
+        throw new CognitionError('SESSION_UPDATE_FAILED', `Learner activity could not be updated: ${profileError.message}`, true);
+      }
     }
 
     // 3. ATLAS Concept Mastery
@@ -85,6 +112,7 @@ export async function projectLearningSignal(
 
       if (resolution.conceptId) {
         resolvedConceptId = resolution.conceptId;
+        result.conceptId = resolution.conceptId;
         // Map signal type to mastery evidence type
         let evidenceType: 'practice_correct' | 'practice_wrong' | 'tutor_understood' | 'tutor_confused' | 'session_completed' = 'tutor_understood';
         
@@ -110,6 +138,8 @@ export async function projectLearningSignal(
             client: supabase,
           });
           result.masteryUpdated = true;
+          result.masteryBefore = masteryRes.oldScore ?? null;
+          result.masteryAfter = masteryRes.newScore ?? null;
 
           if (options.context && masteryRes.changed) {
             await recordAgentActivity(supabase, {
@@ -139,14 +169,26 @@ export async function projectLearningSignal(
             });
           }
         } catch (masteryErr) {
-          logger.warn('Projector: failed to update mastery', { userId, signalType: signal.type, error: masteryErr });
+          throw new CognitionError(
+            'MASTERY_UPDATE_FAILED',
+            masteryErr instanceof Error ? masteryErr.message : 'Concept mastery could not be updated.',
+            true,
+            undefined,
+            masteryErr
+          );
         }
+      } else {
+        throw new CognitionError('CONCEPT_RESOLUTION_FAILED', `Concept could not be resolved for ${conceptName}.`, true);
       }
     }
 
     // 4. MEMORY Revision Cards
-    const shouldCreateCard = ['weak_area_detected', 'misconception_detected', 'autopsy_mistake_detected', 'session_completed', 'concept_practiced'].includes(signal.type);
+    const shouldCreateCard = ['weak_area_detected', 'misconception_detected', 'autopsy_mistake_detected', 'revision_needed'].includes(signal.type)
+      || (signal.type === 'concept_practiced' && signal.correct === false);
     if (shouldCreateCard && signal.concept) {
+      if (!resolvedConceptId) {
+        throw new CognitionError('CONCEPT_RESOLUTION_FAILED', 'A revision card requires a resolved concept.', true);
+      }
       try {
         const isMistakeSignal = ['weak_area_detected', 'misconception_detected', 'autopsy_mistake_detected'].includes(signal.type);
         const normalizedKey = isMistakeSignal 
@@ -171,6 +213,7 @@ export async function projectLearningSignal(
 
         if (card) {
           result.cardsCreated++;
+          result.revisionCardIds.push(card.id);
           if (options.context) {
             await recordAgentActivity(supabase, {
               userId,
@@ -199,7 +242,13 @@ export async function projectLearningSignal(
           }
         }
       } catch (cardErr) {
-        logger.warn('Projector: failed to create revision card', { userId, signalType: signal.type, error: cardErr });
+        throw new CognitionError(
+          'MEMORY_UPDATE_FAILED',
+          cardErr instanceof Error ? cardErr.message : 'Revision memory could not be updated.',
+          true,
+          undefined,
+          cardErr
+        );
       }
     }
 
@@ -216,8 +265,8 @@ export async function projectLearningSignal(
           subject: signal.subject || null,
           topic: signal.topic || signal.concept || null,
           concept: signal.concept || null,
-          conceptId: (signal.metadata?.conceptId as string) || null,
-          mistakeText: (signal.metadata?.mistakeText as string) || signal.evidence || 'Unknown mistake',
+          conceptId: resolvedConceptId || (signal.metadata?.conceptId as string) || null,
+          mistakeText: (signal.metadata?.mistakeText as string) || signal.evidence || 'Mistake evidence was not provided.',
           questionText: (signal.metadata?.questionText as string) || null,
           correctAnswer: (signal.metadata?.correctAnswer as string) || null,
           userAnswer: (signal.metadata?.userAnswer as string) || null,
@@ -230,6 +279,7 @@ export async function projectLearningSignal(
 
         if (mistakeRes.mistake) {
           result.mistakeRecorded = true;
+          result.mistakeIds.push(mistakeRes.mistake.id);
           if (options.context) {
             await recordAgentActivity(supabase, {
               userId,
@@ -259,7 +309,13 @@ export async function projectLearningSignal(
           }
         }
       } catch (mistakeErr) {
-        logger.warn('Projector: failed to upsert mistake risk', { userId, signalType: signal.type, error: mistakeErr });
+        throw new CognitionError(
+          'MISTAKE_WRITE_FAILED',
+          mistakeErr instanceof Error ? mistakeErr.message : 'Mistake state could not be updated.',
+          true,
+          undefined,
+          mistakeErr
+        );
       }
     }
 
@@ -323,11 +379,18 @@ export async function projectLearningSignal(
           result.invalidationTriggered = true;
         }
       } catch (invErr) {
-        logger.warn('Projector: failed to invalidate/complete session card', { userId, signalType: signal.type, error: invErr });
+        throw new CognitionError(
+          'SESSION_UPDATE_FAILED',
+          invErr instanceof Error ? invErr.message : 'Session state could not be updated.',
+          true,
+          undefined,
+          invErr
+        );
       }
     }
 
   } catch (err: any) {
+    const cognitionError = toCognitionError(err, 'LEARNING_EVENT_FAILED', 'Learner state projection failed.');
     logger.error('Projector: fatal error projecting signal', { 
       userId, 
       signalType: signal.type, 
@@ -335,6 +398,7 @@ export async function projectLearningSignal(
       details: err 
     });
     result.success = false;
+    result.errors.push({ code: cognitionError.code, message: cognitionError.message });
   }
 
   return result;

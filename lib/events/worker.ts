@@ -867,6 +867,8 @@ export class EventWorkerService {
           'MIND_CONTEXT_REFRESHED',
           'SESSION_RECOMMENDATION_CREATED',
           'LEARNER_STATE_CHANGED',
+          'PRACTICE_SET_CREATED',
+          'LEARNING_EVENT_APPLIED',
         ].includes(event.type)) {
           return { status: 'SKIPPED_INTENTIONALLY', reason: 'MIND context refresh is request-time; event is audited by agent runtime' };
         }

@@ -111,7 +111,7 @@ export default function CommandCenter({ profile, cognition, revision, mistakes, 
         body: JSON.stringify({
           message: textToSend,
           history: historyForApi,
-          activeGoalId: null,
+          activeGoalId: useAppStore.getState().activeGoalId,
         }),
       });
 

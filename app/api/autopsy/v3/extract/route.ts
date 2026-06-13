@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
 
     const extraction = await extractSelectableTextFromPdf(buffer);
     const isPoorExtraction = extraction.confidence < 0.55;
-    const extractionStatus = isPoorExtraction ? 'manual_entry_required' : 'needs_review';
+    const extractionStatus = isPoorExtraction ? 'manual_entry_required' : 'ready';
     const needsManualReview = isPoorExtraction;
     
     const warnings = [...extraction.warnings];
@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
     const { error } = await supabase
       .from('assessments')
       .update({
-        status: isPoorExtraction ? 'answers_pending' : 'needs_review',
+        status: 'answers_pending',
         extraction_status: extractionStatus,
         extraction_confidence: extraction.confidence,
         metadata: {

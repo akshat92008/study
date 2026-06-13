@@ -100,12 +100,13 @@ export async function processLearningTransaction(
       finalResponse: input.assistantText ?? undefined,
     });
 
-    await invalidateSessionCard(input.userId, 'LEARNER_STATE_UPDATED', {
-      client: input.supabase,
-      goalId: input.goalId ?? null,
-    }).catch(() => undefined);
-
     const verified = runtime.verification.ok;
+    if (verified) {
+      await invalidateSessionCard(input.userId, 'LEARNER_STATE_UPDATED', {
+        client: input.supabase,
+        goalId: input.goalId ?? null,
+      });
+    }
     return {
       ok: verified,
       mutationSummary: runtime.mutationSummary,

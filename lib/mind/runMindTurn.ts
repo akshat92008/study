@@ -1,6 +1,8 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
 import { runHermesTurn } from '@/lib/agent/runtime';
 import type { CognitionAgentTurnOutput, JsonObject, MutationSummary } from '@/lib/agent/types';
+import { getMindStateSnapshot } from '@/lib/mind/get-mind-state-snapshot';
+import { decideMindAction, type MindDecision } from '@/lib/mind/decision-policy';
 
 export interface RunMindTurnInput {
   supabase: SupabaseClient;
@@ -21,9 +23,17 @@ export interface RunMindTurnResult {
   learningSignalSummary: string;
   trajectoryId: string;
   runtime: CognitionAgentTurnOutput;
+  decision: MindDecision;
 }
 
 export async function runMindTurn(input: RunMindTurnInput): Promise<RunMindTurnResult> {
+  const snapshot = await getMindStateSnapshot(input.supabase, {
+    userId: input.userId,
+    goalId: input.goalId,
+    sessionId: input.sessionId,
+    message: input.userMessage,
+  });
+  const decision = decideMindAction({ message: input.userMessage, snapshot });
   const runtime = await runHermesTurn({
     userId: input.userId,
     channel: 'chat',
@@ -34,6 +44,8 @@ export async function runMindTurn(input: RunMindTurnInput): Promise<RunMindTurnR
     payload: {
       ...(input.metadata ?? {}),
       retrievedChunks: input.retrievedChunks ?? [],
+      mindDecision: decision,
+      mindSnapshot: snapshot as unknown as JsonObject,
     },
   }, {
     supabase: input.supabase,
@@ -47,6 +59,7 @@ export async function runMindTurn(input: RunMindTurnInput): Promise<RunMindTurnR
     learningSignalSummary: buildMindSummary(runtime.mutationSummary, runtime.verification.ok),
     trajectoryId: runtime.trajectoryId,
     runtime,
+    decision,
   };
 }
 

@@ -86,7 +86,29 @@ export async function POST(req: NextRequest, context: RouteContext) {
       });
     }
 
+    const answeredQuestions = questions.filter((question: any) => String(question.user_answer ?? '').trim().length > 0);
+    if (answeredQuestions.length === 0) {
+      await supabase
+        .from('assessments')
+        .update({ status: 'parsing_failed', updated_at: new Date().toISOString() })
+        .eq('id', assessmentId)
+        .eq('user_id', user.id);
+      return apiErrorResponse('AUTOPSY_PARSE_FAILED', {
+        status: 422,
+        message: 'Autopsy could not parse any learner answers. Add answers before generating a report.',
+        requestId,
+      });
+    }
+
     const diagnoses = diagnosesRes.data ?? [];
+    const wrongOrSkipped = questions.filter((question: any) => ['incorrect', 'skipped'].includes(question.status));
+    if (wrongOrSkipped.length > 0 && diagnoses.length === 0) {
+      return apiErrorResponse('AUTOPSY_DIAGNOSIS_FAILED', {
+        status: 409,
+        message: 'Wrong or skipped answers must be diagnosed before learner-state projection.',
+        requestId,
+      });
+    }
 
     // Phase 8.3: Write empty report record with 'generating' status before expensive work
     const { data: pendingReport, error: pendingError } = await supabase
@@ -112,6 +134,7 @@ export async function POST(req: NextRequest, context: RouteContext) {
       if (!usage.allowed) return featureLimitResponse(usage, requestId);
     }
 
+    let projectionStarted = false;
     try {
       const report = generateDeterministicAutopsyReport({
         assessment: assessment as any,
@@ -155,16 +178,30 @@ export async function POST(req: NextRequest, context: RouteContext) {
         .eq('user_id', user.id);
 
       // Canonical Deterministic Projection (Fix 1-5)
-      const projection = await projectAutopsyV3Results({
-        supabase,
-        userId: user.id,
-        assessmentId,
-        reportId: persistedReport.id,
-        report,
-        diagnoses,
-        goalId: assessment.goal_id,
-        subject: assessment.subject,
-      });
+      const projection = diagnoses.length > 0
+        ? await (async () => {
+            projectionStarted = true;
+            return projectAutopsyV3Results({
+            supabase,
+            userId: user.id,
+            assessmentId,
+            reportId: persistedReport.id,
+            report,
+            diagnoses,
+            goalId: assessment.goal_id,
+            subject: assessment.subject,
+            });
+          })()
+        : { mistakesProjected: 0, success: true };
+
+      if (diagnoses.length > 0) {
+        const { error: projectedStatusError } = await supabase
+          .from('assessments')
+          .update({ status: 'projected', updated_at: new Date().toISOString() })
+          .eq('id', assessmentId)
+          .eq('user_id', user.id);
+        if (projectedStatusError) throw projectedStatusError;
+      }
 
     // Write signals for agent visibility (Fix 2)
     await ingestLearningSignals(supabase, [
@@ -236,6 +273,14 @@ export async function POST(req: NextRequest, context: RouteContext) {
         .from('autopsy_reports')
         .update({ status: 'failed', updated_at: new Date().toISOString() })
         .eq('assessment_id', assessmentId);
+      await supabase
+        .from('assessments')
+        .update({
+          status: projectionStarted ? 'projection_failed' : 'failed',
+          updated_at: new Date().toISOString(),
+        })
+        .eq('id', assessmentId)
+        .eq('user_id', user.id);
       
       throw err;
     }

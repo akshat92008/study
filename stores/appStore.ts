@@ -236,8 +236,8 @@ export const useAppStore = create<AppState>()(
             // Or if no goal was ever selected
             await get().selectLearningGoal(goals[0].id);
           } else if (currentId && !currentStillExists && goals.length === 0) {
-            // If we have an ID but the server returned 0 goals, clear the ID
-            set({ activeGoalId: null, activeGoalContext: null });
+            // Preserve the cached ID until the server explicitly resolves the active goal.
+            set({ activeGoalContext: null });
           }
         } catch (err) {
           console.error('Failed to load learning goals:', err);

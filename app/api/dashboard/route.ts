@@ -4,9 +4,9 @@ import { getCognitionGraph } from '@/lib/engines/cognition-graph';
 import { getRevisionStats, getDueCards } from '@/lib/engines/revision-engine';
 import { getMistakeAnalytics } from '@/lib/engines/mistake-engine';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
-import { ensureGoalForUser } from '@/lib/services/goal-context.service';
 import { EventWorkerService } from '@/lib/events/worker';
 import { logger } from '@/lib/utils/logger';
+import { resolveActiveGoalForUser } from '@/lib/goals/resolve-active-goal';
 
 export const dynamic = 'force-dynamic';
 
@@ -25,8 +25,10 @@ export async function GET(request: Request) {
 
     const localDate = new Date().toISOString().split('T')[0];
     const { searchParams } = new URL(request.url);
-    const goalId = searchParams.get('goalId');
-    const activeGoal = goalId ? await ensureGoalForUser(supabase, user.id, goalId) : null;
+    const requestedGoalId = searchParams.get('goalId');
+    const activeGoalResolution = await resolveActiveGoalForUser(supabase, user.id, requestedGoalId);
+    const goalId = activeGoalResolution.goalId;
+    const activeGoal = activeGoalResolution.goal;
 
     let allCardsQuery = supabase.from('revision_cards')
       .select('id, due, stability, difficulty, state, subject, chapter')
@@ -84,6 +86,19 @@ export async function GET(request: Request) {
         ? (seededTopicsQuery as any).is('goal_id', null)
         : seededTopicsQuery;
 
+    let mistakeCountQuery = supabase
+      .from('mistake_diagnoses')
+      .select('id', { count: 'exact', head: true })
+      .eq('user_id', user.id)
+      .eq('status', 'active');
+    if (goalId) mistakeCountQuery = mistakeCountQuery.eq('goal_id', goalId);
+
+    let masteryAggQuery = supabase
+      .from('concepts')
+      .select('mastery_score')
+      .eq('user_id', user.id);
+    if (goalId) masteryAggQuery = masteryAggQuery.eq('goal_id', goalId);
+
     const [
       profileRes,
       cognition,
@@ -112,13 +127,13 @@ export async function GET(request: Request) {
       latestReportQuery.maybeSingle(),
       topMemoryQuery.maybeSingle(),
       seededTopicsQuery,
-      supabase.from('mistake_diagnoses').select('id', { count: 'exact', head: true }).eq('user_id', user.id).eq('status', 'active').then(res => res.count ?? 0),
-      supabase.from('concepts').select('mastery_level').eq('user_id', user.id)
+      mistakeCountQuery.then(res => res.count ?? 0),
+      masteryAggQuery,
     ]);
 
     let overallMastery = profileRes.data?.overall_mastery ?? 0;
     if (masteryAggRes.data && masteryAggRes.data.length > 0) {
-      const sum = masteryAggRes.data.reduce((acc: number, c: any) => acc + (c.mastery_level ?? 0), 0);
+      const sum = masteryAggRes.data.reduce((acc: number, c: any) => acc + Number(c.mastery_score ?? 0), 0);
       overallMastery = Math.round((sum / masteryAggRes.data.length) * 100) / 100;
     }
 

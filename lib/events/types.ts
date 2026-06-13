@@ -48,8 +48,10 @@ export const EventTypeSchema = z.enum([
   'STAGNATION_SCAN_REQUESTED',
   'PATTERN_MEMORY_SCAN_REQUESTED',
   'PLANNER_REPLAN_REQUESTED',
+  'PRACTICE_SET_CREATED',
   'PRACTICE_ATTEMPT_RECORDED',
   'PRACTICE_ATTEMPT_SUBMITTED',
+  'LEARNING_EVENT_APPLIED',
   'ONBOARDING_QUIZ_COMPLETE',
 ]);
 
@@ -316,6 +318,11 @@ export const EventPayloadSchemas: Partial<Record<EventType | string, z.ZodTypeAn
     reason: z.string().optional(),
     date: z.string().optional(),
   }).passthrough(),
+  PRACTICE_SET_CREATED: z.object({
+    practiceSetId: z.string().min(1),
+    goalId: z.string().min(1).optional().nullable(),
+    count: z.number().int().positive(),
+  }).passthrough(),
   PRACTICE_ATTEMPT_RECORDED: z.object({
     practiceSetId: z.string().uuid(),
     setType: z.enum(['mcq', 'flashcard']),
@@ -339,6 +346,13 @@ export const EventPayloadSchemas: Partial<Record<EventType | string, z.ZodTypeAn
     setType: z.enum(['mcq', 'flashcard']).optional(),
     metrics: z.any().optional(),
     items: z.array(z.any()).optional(),
+  }).passthrough(),
+  LEARNING_EVENT_APPLIED: z.object({
+    learningEventId: z.string().min(1),
+    goalId: z.string().min(1).optional().nullable(),
+    conceptId: z.string().min(1).optional().nullable(),
+    source: z.enum(['chat_practice', 'focus_session', 'autopsy', 'manual_review', 'revision']),
+    outcome: z.enum(['correct', 'incorrect', 'partial', 'skipped', 'reviewed', 'completed']),
   }).passthrough(),
   ONBOARDING_QUIZ_COMPLETE: z.object({
     quizResults: z.array(z.any()).optional(),

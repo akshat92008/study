@@ -1,3 +1,5 @@
+import { resolveActiveGoalForUser } from '@/lib/goals/resolve-active-goal';
+
 export type GoalContextGoal = {
   id: string;
   user_id: string;
@@ -221,9 +223,10 @@ export async function resolveChatGoalContext(
     if (input.goalId && input.goalId !== session.goal_id) {
       throw new Error('Selected chat does not belong to the selected learning goal.');
     }
-    goal = await ensureGoalForUser(supabase, userId, session.goal_id);
+    goal = (await resolveActiveGoalForUser(supabase, userId, session.goal_id)).goal;
   } else if (input.goalId) {
-    goal = await ensureGoalForUser(supabase, userId, input.goalId);
+    goal = (await resolveActiveGoalForUser(supabase, userId, input.goalId)).goal;
+    if (!goal) throw new Error('Learning goal not found.');
     if (session && !session.is_global) {
       session = await ensureSessionGoalLink(supabase, userId, session.id, goal.id);
     } else {
@@ -231,10 +234,19 @@ export async function resolveChatGoalContext(
     }
   }
 
+  if (!goal) {
+    const active = await resolveActiveGoalForUser(supabase, userId);
+    goal = active.goal;
+  }
+
   if (!session) {
-    const { getOrCreateGlobalChatSession } = await import('@/lib/services/chat-persistence');
-    const sessionId = await getOrCreateGlobalChatSession(supabase, userId);
-    session = await ensureSessionBelongsToUser(supabase, userId, sessionId);
+    if (goal) {
+      session = await getOrCreatePrimaryGoalSession(supabase, userId, goal.id);
+    } else {
+      const { getOrCreateGlobalChatSession } = await import('@/lib/services/chat-persistence');
+      const sessionId = await getOrCreateGlobalChatSession(supabase, userId);
+      session = await ensureSessionBelongsToUser(supabase, userId, sessionId);
+    }
   }
 
   return {

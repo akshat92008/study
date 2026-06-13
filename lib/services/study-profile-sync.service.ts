@@ -75,7 +75,7 @@ export async function syncStudyProfileAfterPracticeAttempt(
     await invalidateSessionCard(userId, 'LEARNER_STATE_UPDATED', {
       client: supabase,
       goalId: goalId ?? null,
-    }).catch(() => undefined);
+    });
 
     return {
       success: runtime.verification.ok,

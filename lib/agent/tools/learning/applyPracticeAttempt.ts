@@ -1,71 +1,9 @@
 import type { AgentToolContext, AgentToolDefinition, LearningSignal } from '@/lib/agent/types';
 import { ApplyPracticeAttemptInputSchema, ToolResultSchema } from '@/lib/agent/tools/schemas';
-import { computeMasteryUpdate } from '@/lib/atlas/masteryEngine';
-import { createMemoryCardForSignal } from '@/lib/agent/tools/learning/createMemoryCard';
-import { insertLearningSignal, recordAgentActivity, stableKey, upsertConcept } from '@/lib/agent/tools/learning/common';
+import { recordAgentActivity, stableKey } from '@/lib/agent/tools/learning/common';
 import { updateOrCreateMicrotarget } from '@/lib/mission/microtargetEngine';
 import { inferChapterForConcept, inferSubjectForConcept } from '@/lib/atlas/conceptResolver';
-
-async function updatePracticeConceptMastery(
-  context: AgentToolContext,
-  input: { conceptId: string; signal: LearningSignal; evidenceRef: string }
-) {
-  const { data: concept, error: readError } = await context.supabase
-    .from('concepts')
-    .select('id, name, mastery, mastery_score')
-    .eq('id', input.conceptId)
-    .eq('user_id', context.userId)
-    .maybeSingle();
-  if (readError) throw readError;
-  if (!concept?.id) throw new Error('Concept missing during practice mastery update.');
-
-  const update = computeMasteryUpdate({
-    previousScore: Number(concept.mastery_score ?? 0),
-    previousStatus: concept.mastery ?? null,
-    signal: input.signal,
-  });
-
-  const existing = await context.supabase
-    .from('mastery_events')
-    .select('id')
-    .eq('user_id', context.userId)
-    .eq('concept_id', input.conceptId)
-    .eq('source_id', input.evidenceRef)
-    .limit(1)
-    .maybeSingle();
-  if (existing.error) throw existing.error;
-
-  if (!existing.data?.id) {
-    const { error: eventError } = await context.supabase.from('mastery_events').insert({
-      user_id: context.userId,
-      concept_id: input.conceptId,
-      old_mastery: update.previousStatus,
-      new_mastery: update.newStatus,
-      source: 'practice',
-      source_id: input.evidenceRef,
-      evidence: input.signal.evidence ?? 'Practice attempt evidence',
-      evidence_type: input.signal.correct ? 'practice_correct' : 'practice_wrong',
-      weight: update.newScore - update.previousScore,
-      confidence: input.signal.confidence,
-    });
-    if (eventError) throw eventError;
-  }
-
-  const { error: updateError } = await context.supabase
-    .from('concepts')
-    .update({
-      mastery: update.newStatus,
-      mastery_score: update.newScore,
-      confidence: input.signal.confidence >= 0.8 ? 'high' : 'medium',
-      last_reviewed_at: context.now.toISOString(),
-      updated_at: context.now.toISOString(),
-    })
-    .eq('id', input.conceptId)
-    .eq('user_id', context.userId);
-  if (updateError) throw updateError;
-
-  return update;
-}
+import { applyLearningEvent } from '@/lib/learner-state/apply-learning-event';
 
 export const applyPracticeAttemptTool: AgentToolDefinition<typeof ApplyPracticeAttemptInputSchema, typeof ToolResultSchema> = {
   name: 'apply_practice_attempt',
@@ -84,9 +22,11 @@ export const applyPracticeAttemptTool: AgentToolDefinition<typeof ApplyPracticeA
     let conceptsUpdated = 0;
     let eventsWritten = 0;
     let microtargetsUpdated = 0;
+    let mistakesRecorded = 0;
 
     for (const item of items.slice(0, 50)) {
-      const conceptName = String(item.conceptName ?? item.topic ?? item.chapter ?? 'Practice Concept');
+      const conceptName = String(item.conceptName ?? item.topic ?? item.chapter ?? '').trim();
+      if (!conceptName) throw new Error('Practice item is missing a canonical concept.');
       const subject = typeof item.subject === 'string' ? item.subject : inferSubjectForConcept(conceptName);
       const chapter = typeof item.chapter === 'string' ? item.chapter : inferChapterForConcept(conceptName);
       const topic = typeof item.topic === 'string' ? item.topic : conceptName;
@@ -111,17 +51,6 @@ export const applyPracticeAttemptTool: AgentToolDefinition<typeof ApplyPracticeA
         },
       };
 
-      const concept = await upsertConcept(context.supabase, {
-        userId: context.userId,
-        goalId: input.goalId ?? context.goalId ?? null,
-        concept: conceptName,
-        subject,
-        chapter,
-        topic,
-      });
-      if (concept.created) conceptsCreated += 1;
-      changedConceptIds.add(concept.conceptId);
-
       const evidenceRef = stableKey([
         context.idempotencyKey,
         'practice',
@@ -130,37 +59,54 @@ export const applyPracticeAttemptTool: AgentToolDefinition<typeof ApplyPracticeA
           ? item.attemptId
           : typeof item.practiceItemId === 'string'
             ? item.practiceItemId
-            : concept.conceptId,
+            : conceptName,
         correct ? 'correct' : 'wrong',
       ]);
-      const mastery = await updatePracticeConceptMastery(context, {
-        conceptId: concept.conceptId,
-        signal,
-        evidenceRef,
+      const projection = await applyLearningEvent(context.supabase, {
+        userId: context.userId,
+        goalId: input.goalId ?? context.goalId ?? null,
+        source: 'chat_practice',
+        concept: {
+          conceptId: typeof item.conceptId === 'string' ? item.conceptId : undefined,
+          canonicalName: conceptName,
+          subject: subject ?? undefined,
+          chapter: chapter ?? undefined,
+          topic,
+        },
+        result: {
+          outcome: correct ? 'correct' : 'incorrect',
+          confidence: signal.confidence,
+          explanation: signal.evidence,
+        },
+        artifact: {
+          practiceSetId: typeof input.practiceSetId === 'string' ? input.practiceSetId : undefined,
+          practiceItemId: typeof item.practiceItemId === 'string' ? item.practiceItemId : undefined,
+        },
+        metadata: {
+          attemptId: typeof item.attemptId === 'string' ? item.attemptId : null,
+          questionText: item.question,
+          userAnswer: item.selectedAnswer,
+          correctAnswer: item.correctAnswer,
+          idempotencyKey: evidenceRef,
+        },
       });
-      if (mastery.changed) conceptsUpdated += 1;
-
-      await insertLearningSignal(context.supabase, context, {
-        signal,
-        sourceId: typeof item.attemptId === 'string' ? item.attemptId : null,
-        idempotencyKey: `${evidenceRef}:signal`,
-      });
-      eventsWritten += 1;
-
-      if (!correct) {
-        const card = await createMemoryCardForSignal(context, {
-          conceptId: concept.conceptId,
-          signal,
-          goalId: input.goalId ?? context.goalId ?? null,
-        });
-        if (card.cardId) cardIds.push(card.cardId);
+      if (!projection.ok) {
+        const error = new Error(projection.message) as Error & { code?: string };
+        error.code = projection.code;
+        throw error;
       }
+
+      eventsWritten += 1;
+      if (projection.conceptId) changedConceptIds.add(projection.conceptId);
+      if (projection.masteryBefore !== projection.masteryAfter) conceptsUpdated += 1;
+      cardIds.push(...projection.revisionCardIds);
+      mistakesRecorded += projection.mistakeIds.length;
 
       const micro = await updateOrCreateMicrotarget(context.supabase, {
         userId: context.userId,
         goalId: input.goalId ?? context.goalId ?? null,
         eventType: 'practice_attempt_submitted',
-        conceptId: concept.conceptId,
+        conceptId: projection.conceptId,
         concept: conceptName,
         subject,
         topic,
@@ -200,6 +146,7 @@ export const applyPracticeAttemptTool: AgentToolDefinition<typeof ApplyPracticeA
         microtargetsUpdated,
         eventsWritten,
         practiceAttemptsProcessed: items.length,
+        mistakesRecorded,
         agentActionId: actionId,
         conceptIds: Array.from(changedConceptIds),
         cardIds,

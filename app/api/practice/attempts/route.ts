@@ -6,11 +6,11 @@ import { EventDispatcher } from '@/lib/events/orchestrator';
 import { areMcqAnswersEquivalent } from '@/lib/practice/answer-normalization';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { checkIdempotency } from '@/lib/middleware/idempotency';
-import { ingestLearningSignals } from '@/lib/learning-signals/ingest';
-import { syncStudyProfileAfterPracticeAttempt } from '@/lib/services/study-profile-sync.service';
 import { PracticeService } from '@/lib/services/practice.service';
 import { runHermesTurn } from '@/lib/agent/runtime';
 import { logger } from '@/lib/utils/logger';
+import { resolveActiveGoalForUser } from '@/lib/goals/resolve-active-goal';
+import { syncStudyProfileAfterPracticeAttempt } from '@/lib/services/study-profile-sync.service';
 
 const AttemptsSchema = z.object({
   idempotencyKey: z.string().min(8).optional(),
@@ -194,6 +194,28 @@ export async function POST(req: NextRequest) {
       });
     }
 
+    const goalResolution = await resolveActiveGoalForUser(supabase, user.id, set.goal_id ?? goalId ?? null);
+    const resolvedGoalId = goalResolution.goalId;
+    if (!resolvedGoalId) {
+      return NextResponse.json({
+        ok: false,
+        code: 'ACTIVE_GOAL_MISSING',
+        message: 'Select an active learning goal before submitting practice.',
+        retryable: false,
+        traceId: requestId,
+        attemptSaved: false,
+      }, { status: 409 });
+    }
+    if (!set.goal_id) {
+      const { error: setGoalError } = await supabase
+        .from('practice_sets')
+        .update({ goal_id: resolvedGoalId })
+        .eq('id', set.id)
+        .eq('user_id', user.id);
+      if (setGoalError) throw setGoalError;
+      set.goal_id = resolvedGoalId;
+    }
+
     // Fetch items to check correctness
     const positions = answers.map(a => a.position);
     const { data: items } = await supabase
@@ -260,6 +282,15 @@ export async function POST(req: NextRequest) {
       return apiErrorResponse('invalid_request', { status: 400, message: 'No matching practice items found', requestId });
     }
 
+    const { data: existingAttempts, error: existingAttemptsError } = await supabase
+      .from('practice_attempts')
+      .select('idempotency_key')
+      .eq('user_id', user.id)
+      .in('idempotency_key', attemptKeys);
+    if (existingAttemptsError) throw existingAttemptsError;
+    const existingAttemptKeys = new Set((existingAttempts ?? []).map((attempt: any) => attempt.idempotency_key));
+    const newAttemptKeys = attemptKeys.filter((key) => !existingAttemptKeys.has(key));
+
     const { error: insertError } = await supabase
       .from('practice_attempts')
       .upsert(attemptsToInsert, {
@@ -286,38 +317,12 @@ export async function POST(req: NextRequest) {
 
     const persistedEventItems = eventItems.filter((item) => item.attemptId && item.practiceItemId);
 
-    // Keep old event publication for audit/background
-    await EventDispatcher.publish({
-      user_id: user.id,
-      type: 'PRACTICE_ATTEMPT_RECORDED',
-      data: {
-        practiceSetId: set.id,
-        setType: 'mcq',
-        subject: set.subject ?? null,
-        chapter: set.topic ?? null,
-        metrics: {
-          correctCount,
-          wrongCount,
-          wrongConceptIds,
-          wrongConceptNames,
-        },
-        items: persistedEventItems,
-      },
-      metadata: { 
-        source: 'mind_chat_mcq', 
-        goalId: set.goal_id ?? null,
-        runtimeProcessed: true // Fix 8: Prevent duplicate ATLAS/MEMORY projection
-      },
-      idempotency_key: `practice_attempt:${user.id}:${set.id}:${idempotencySeed}`
-    }).catch(() => undefined);
-
-    // Fix 11: Call runtime exactly once in the route
-    let agentLoopResult: any = null;
+    let agentLoopResult: any;
     try {
       agentLoopResult = await runHermesTurn({
         userId: user.id,
         channel: 'practice',
-        goalId: set.goal_id ?? goalId ?? undefined,
+        goalId: resolvedGoalId,
         payload: {
           practiceSetId: set.id,
           items: persistedEventItems.slice(0, 50).map((item: any) => ({
@@ -337,7 +342,14 @@ export async function POST(req: NextRequest) {
           source: 'practice_attempt_channel',
         },
         sessionId: chatSessionId ?? undefined,
-      }, { supabase: supabase as any });
+      }, {
+        supabase: supabase as any,
+        idempotencyKey: `practice-agent:${user.id}:${set.id}:${idempotencySeed}`,
+      });
+
+      if (!agentLoopResult.verification?.ok) {
+        throw new Error(agentLoopResult.verification?.errors?.join('; ') || 'Learner-state verification failed.');
+      }
 
       logger.info('Practice agent runtime completed', {
         userId: user.id,
@@ -345,32 +357,75 @@ export async function POST(req: NextRequest) {
         changed: agentLoopResult?.mutationSummary?.changed,
       });
     } catch (runtimeError) {
-      logger.warn('Practice agent runtime failed (non-fatal)', {
+      if (newAttemptKeys.length > 0) {
+        await supabase
+          .from('practice_attempts')
+          .delete()
+          .eq('user_id', user.id)
+          .in('idempotency_key', newAttemptKeys);
+      }
+      logger.error('Practice learner-state projection failed', runtimeError, {
         userId: user.id,
         practiceSetId: set.id,
-        error: runtimeError instanceof Error ? runtimeError.message : String(runtimeError),
       });
+      return NextResponse.json({
+        ok: false,
+        code: 'PRACTICE_PROJECTION_FAILED',
+        message: 'Answer was graded, but learner state could not be updated.',
+        retryable: true,
+        traceId: requestId,
+        attemptSaved: false,
+      }, { status: 500 });
     }
 
-    // Pass the runtime result to profile sync to avoid duplicate calls
-    const profileSync = await syncStudyProfileAfterPracticeAttempt(supabase, {
-      userId: user.id,
-      goalId: set.goal_id ?? null,
-      practiceSetId: set.id,
-      metrics: {
-        correctCount,
-        wrongCount,
-        wrongConceptIds,
-        wrongConceptNames,
-      },
-      items: persistedEventItems,
-      runtimeOutput: agentLoopResult, // Use existing result
-    }).catch((error) => ({
-      error: 'profile_sync_failed',
-      message: error instanceof Error ? error.message : 'Profile sync failed.',
-    }));
+    let profileSync;
+    try {
+      profileSync = await syncStudyProfileAfterPracticeAttempt(supabase, {
+        userId: user.id,
+        goalId: resolvedGoalId,
+        practiceSetId: set.id,
+        metrics: { correctCount, wrongCount, wrongConceptIds, wrongConceptNames },
+        items: persistedEventItems,
+        runtimeOutput: agentLoopResult,
+      });
+    } catch (profileError) {
+      if (newAttemptKeys.length > 0) {
+        await supabase.from('practice_attempts').delete().eq('user_id', user.id).in('idempotency_key', newAttemptKeys);
+      }
+      logger.error('Practice profile synchronization failed', profileError, {
+        userId: user.id,
+        practiceSetId: set.id,
+      });
+      return NextResponse.json({
+        ok: false,
+        code: 'PRACTICE_PROJECTION_FAILED',
+        message: 'Answer was graded, but learner profile synchronization failed.',
+        retryable: true,
+        traceId: requestId,
+        attemptSaved: false,
+      }, { status: 500 });
+    }
 
-    // Fix 11: Removed redundant ingestLearningSignals and duplicate runHermesTurn blocks below
+    await EventDispatcher.publish({
+      user_id: user.id,
+      type: 'PRACTICE_ATTEMPT_RECORDED',
+      data: {
+        practiceSetId: set.id,
+        setType: 'mcq',
+        subject: set.subject ?? null,
+        chapter: set.topic ?? null,
+        metrics: { correctCount, wrongCount, wrongConceptIds, wrongConceptNames },
+        items: persistedEventItems,
+      },
+      metadata: { source: 'mind_chat_mcq', goalId: resolvedGoalId, runtimeProcessed: true },
+      idempotency_key: `practice_attempt:${user.id}:${set.id}:${idempotencySeed}`,
+    }).catch((eventError) => {
+      logger.warn('Practice audit event publish failed after verified projection', {
+        userId: user.id,
+        practiceSetId: set.id,
+        error: eventError instanceof Error ? eventError.message : String(eventError),
+      });
+    });
     
     const loopSummary = {
       saved: true,
@@ -390,6 +445,7 @@ export async function POST(req: NextRequest) {
     };
 
     return NextResponse.json({
+      ok: true,
       success: true,
       attempts: persistedAttempts ?? [],
       metrics: { correctCount, wrongCount, wrongConceptIds, wrongConceptNames },

@@ -109,6 +109,7 @@ export const EVENT_CONSUMER_MATRIX = {
   STAGNATION_SCAN_REQUESTED: ['amaura_stagnation_agent'],
   PATTERN_MEMORY_SCAN_REQUESTED: ['amaura_pattern_memory'],
   PRACTICE_REQUESTED: ['amaura_practice_agent'],
+  PRACTICE_SET_CREATED: ['mind_agent'],
   PRACTICE_ATTEMPT_RECORDED: [
     'atlas_engine',
     'memory_engine',
@@ -125,6 +126,7 @@ export const EVENT_CONSUMER_MATRIX = {
     'planner_agent',
     'amaura_practice_agent',
   ],
+  LEARNING_EVENT_APPLIED: ['mind_agent'],
   ONBOARDING_QUIZ_COMPLETE: [ 'planner_agent', 'command_agent'],
   AMAURA_GOAL_CREATED: AMAURA_EVENT_MATRIX[AMAURA_EVENTS.AMAURA_GOAL_CREATED],
   AMAURA_GOAL_UPDATED: AMAURA_EVENT_MATRIX[AMAURA_EVENTS.AMAURA_GOAL_UPDATED],

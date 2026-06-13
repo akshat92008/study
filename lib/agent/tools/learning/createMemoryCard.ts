@@ -1,25 +1,22 @@
 import type { AgentToolDefinition, AgentToolContext, LearningSignal } from '@/lib/agent/types';
 import { CreateMemoryCardInputSchema, ToolResultSchema } from '@/lib/agent/tools/schemas';
 import { assertConceptOwned } from '@/lib/agent/guardrails/mutationGuardrails';
-import { projectLearningSignal } from '@/lib/learner-state/projector';
+
+async function findConceptCards(context: AgentToolContext, conceptId: string): Promise<string[]> {
+  const { data, error } = await context.supabase
+    .from('revision_cards')
+    .select('id')
+    .eq('user_id', context.userId)
+    .eq('concept_id', conceptId)
+    .order('created_at', { ascending: false })
+    .limit(5);
+  if (error) throw error;
+  return (data ?? []).map((row: { id: string }) => row.id);
+}
 
 export async function createMemoryCardForSignal(context: AgentToolContext, input: { conceptId: string; signal: LearningSignal; goalId?: string | null }) {
-  const result = await projectLearningSignal(context.supabase, context.userId, {
-    ...input.signal,
-    metadata: {
-      ...input.signal.metadata,
-      conceptId: input.conceptId,
-    }
-  }, {
-    goalId: input.goalId ?? context.goalId,
-    context,
-  });
-
-  // Return structure matching old expectations if needed
-  return { 
-    success: result.success, 
-    cardId: result.cardsCreated > 0 ? `card-${input.conceptId}` : null // placeholder if exact ID not available
-  };
+  const cardIds = await findConceptCards(context, input.conceptId);
+  return { success: cardIds.length > 0, cardId: cardIds[0] ?? null };
 }
 
 export const createMemoryCardTool: AgentToolDefinition<typeof CreateMemoryCardInputSchema, typeof ToolResultSchema> = {
@@ -34,26 +31,17 @@ export const createMemoryCardTool: AgentToolDefinition<typeof CreateMemoryCardIn
   async handler(input, context) {
     await assertConceptOwned(context.supabase, { userId: context.userId, conceptId: input.conceptId });
     
-    // Fix: Unify mutation path via central projector
-    const result = await projectLearningSignal(context.supabase, context.userId, {
-      ...input.signal,
-      metadata: {
-        ...input.signal.metadata,
-        conceptId: input.conceptId,
-      }
-    }, {
-      goalId: context.goalId,
-      context,
-    });
+    const cardIds = await findConceptCards(context, input.conceptId);
 
     return {
-      success: result.success,
-      changed: result.cardsCreated > 0,
+      success: cardIds.length > 0,
+      changed: false,
       entityType: 'revision_card',
-      summary: result.cardsCreated > 0 
-        ? `Revision card created for concept based on ${input.signal.type}.`
-        : `Revision card already exists or not needed for this signal.`,
-      data: result as any,
+      entityIds: cardIds,
+      summary: cardIds.length > 0
+        ? 'Verified the canonical learner event created a revision card for this concept.'
+        : 'No revision card exists for this concept after projection.',
+      data: { cardIds },
     };
   },
 };
