@@ -1096,6 +1096,7 @@ export async function routeVisionCall(
   imageMimeType: string,
   userMessage: string
 ): Promise<string> {
+  const cleanBase64 = imageBase64.replace(/^data:[^;]+;base64,/, '');
   const providerTask: TaskType = imageMimeType === 'application/pdf' ? 'pdf' : 'vision';
   const providers = await getPrioritizedProviders(providerTask);
 
@@ -1119,7 +1120,7 @@ if (!config || !config.apiKey || !config.supportsVision) {
             content: [
               {
                 type: 'image_url',
-                image_url: { url: `data:${imageMimeType};base64,${imageBase64}` },
+                image_url: { url: `data:${imageMimeType};base64,${cleanBase64}` },
               },
               {
                 type: 'text',
@@ -1171,7 +1172,7 @@ if (!config || !config.apiKey || !config.supportsVision) {
               },
               {
                 type: 'image_url',
-                image_url: { url: `data:${imageMimeType};base64,${imageBase64}` },
+                image_url: { url: `data:${imageMimeType};base64,${cleanBase64}` },
               },
             ],
           },
@@ -1220,7 +1221,7 @@ if (!config || !config.apiKey || !config.supportsVision) {
               contents: [{
                 parts: [
                   { text: `${systemPrompt}\n\n${userMessage || 'Solve this question completely.'}` },
-                  { inlineData: { mimeType: imageMimeType, data: imageBase64 } },
+                  { inlineData: { mimeType: imageMimeType, data: cleanBase64 } },
                 ],
               }],
             }),
@@ -1254,7 +1255,7 @@ if (!config || !config.apiKey || !config.supportsVision) {
 
   // All vision providers failed – attempt OCR fallback using local Tesseract
   try {
-    const ocrText = await runOCR(imageBase64, imageMimeType);
+    const ocrText = await runOCR(cleanBase64, imageMimeType);
     if (ocrText?.trim()) {
       logger.info('OCR fallback succeeded');
       return ocrText.trim();

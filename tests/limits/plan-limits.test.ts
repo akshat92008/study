@@ -12,16 +12,16 @@ describe('manual beta plan limits', () => {
   });
 
   it('uses the requested beta plan caps', () => {
-    expect(getPlanLimits('free').dailyChatMessages).toBe(3);
-    expect(getPlanLimits('founding').dailyAutopsyReports).toBe(2);
-    expect(getPlanLimits('pro').monthlyAiBudgetUsd).toBe(3);
+    expect(getPlanLimits('free').dailyChatMessages).toBe(100);
+    expect(getPlanLimits('founding').dailyAutopsyReports).toBe(20);
+    expect(getPlanLimits('pro').monthlyAiBudgetUsd).toBe(30);
     expect(getPlanLimits('admin').dailyAiCalls).toBe(150);
   });
 
   it('maps feature names to finite limits', () => {
-    expect(getFeatureLimit('founding', 'chat_message')).toBe(40);
-    expect(getFeatureLimit('founding', 'material_upload')).toBe(2);
-    expect(getFeatureLimit('pro', 'worker_ai_call')).toBe(50);
+    expect(getFeatureLimit('founding', 'chat_message')).toBe(400);
+    expect(getFeatureLimit('founding', 'material_upload')).toBe(100);
+    expect(getFeatureLimit('pro', 'worker_ai_call')).toBe(500);
     expect(getFeatureLimit('admin', 'assessment_create')).toBe(500);
   });
 });

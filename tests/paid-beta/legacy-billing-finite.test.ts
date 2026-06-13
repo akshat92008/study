@@ -20,15 +20,15 @@ describe('legacy billing compatibility', () => {
     };
     const client = {
       from: vi.fn(() => profileChain),
-      rpc: vi.fn().mockResolvedValue({ data: { allowed: true, used: 1, remaining: 79, limit: 80 }, error: null }),
+      rpc: vi.fn().mockResolvedValue({ data: { allowed: true, used: 1, remaining: 799, limit: 800 }, error: null }),
     };
     (createAdminClient as any).mockReturnValue(client);
 
     const result = await consumeUsageLimit('user-1', 'chat_messages_daily');
 
-    expect(result).toMatchObject({ allowed: true, limit: 80 });
+    expect(result).toMatchObject({ allowed: true, limit: 800 });
     expect(client.rpc).toHaveBeenCalledWith('check_and_increment_usage_gate', expect.objectContaining({
-      p_limit: 80,
+      p_limit: 800,
     }));
   });
 });

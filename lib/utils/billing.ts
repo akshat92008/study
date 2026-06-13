@@ -88,7 +88,7 @@ export function getMaxUploadBytes(): number {
   const configured = Number(process.env.MAX_UPLOAD_BYTES);
   return Number.isFinite(configured) && configured > 0
     ? Math.floor(configured)
-    : 20 * 1024 * 1024;
+    : 200 * 1024 * 1024;
 }
 
 function developmentMayFailOpen(): boolean {

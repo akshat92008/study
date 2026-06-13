@@ -93,7 +93,8 @@ export function validateBase64Payload(base64: string, mimeType?: string): Upload
   }
 
   if (mimeType) {
-    const buffer = Buffer.from(base64, 'base64');
+    const cleanBase64 = base64.replace(/^data:[^;]+;base64,/, '');
+    const buffer = Buffer.from(cleanBase64, 'base64');
     if (!validateMagicBytesArray(new Uint8Array(buffer.subarray(0, 12)), mimeType)) {
       return {
         valid: false,

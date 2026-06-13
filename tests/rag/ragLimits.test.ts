@@ -15,10 +15,10 @@ describe('RAG Limits', () => {
     vi.stubEnv('RAG_TOP_K', '');
     vi.stubEnv('RAG_MAX_CONTEXT_CHARS', '');
     const config = getRagConfig();
-    expect(config.maxFileBytes).toBe(10 * 1024 * 1024); // raised from 3MB beta cap to 10MB
-    expect(config.maxFilesPerUser).toBe(5);
-    expect(config.maxDailyUploads).toBe(5);
-    expect(config.maxChunksPerFile).toBe(100); // raised from 40 beta cap to 100
+    expect(config.maxFileBytes).toBe(1000 * 1024 * 1024); // raised from 3MB beta cap to 10MB
+    expect(config.maxFilesPerUser).toBe(500);
+    expect(config.maxDailyUploads).toBe(500);
+    expect(config.maxChunksPerFile).toBe(5000); // raised from 40 beta cap to 100
     expect(config.chunkSizeChars).toBe(2500);
     expect(config.topK).toBe(4);
     expect(config.maxContextChars).toBe(6000);
