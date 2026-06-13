@@ -98,14 +98,21 @@ export function useStream(defaultUrl = '/api/ai/chat'): UseStreamReturn {
           // On retry, seed the streaming text with whatever we already have
           setStreamingText(resumeFrom);
 
+          const headers: Record<string, string> = {
+            'Content-Type': 'application/json',
+            ...opts.headers,
+          };
+          if (resumeFrom) {
+            headers['X-Stream-Resume-From'] = String(resumeFrom.length);
+          }
+          if (attempt > 0 && headers['Idempotency-Key']) {
+            // Generate a fresh idempotency key for retries so we don't hit 409
+            headers['Idempotency-Key'] = crypto.randomUUID();
+          }
+
           const res = await fetch(url, {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              ...opts.headers,
-              ...(opts.headers?.['Idempotency-Key'] ? { 'Idempotency-Key': opts.headers['Idempotency-Key'] } : {}),
-              ...(resumeFrom ? { 'X-Stream-Resume-From': String(resumeFrom.length) } : {}),
-            },
+            headers,
             body: JSON.stringify(body),
             signal: controller.signal,
           });
