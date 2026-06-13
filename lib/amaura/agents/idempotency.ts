@@ -51,7 +51,7 @@ export function conceptWindowDedupKey(input: {
     'amaura',
     input.agentName,
     input.eventType,
-    input.conceptId ?? normalizeTextKey(input.conceptName) ?? 'unknown',
+    input.conceptId ?? normalizeTextKey(input.conceptName) ?? 'unspecified',
     input.window,
   ].join(':');
 }

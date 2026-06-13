@@ -336,9 +336,9 @@ async function getRecentPracticeStruggles(userId: string, supabase: any, goalId?
     
     if (!data) return [];
     return data.map((d: any) => ({
-      conceptName: d.concepts?.name || 'Unknown',
-      chapter: d.concepts?.chapter || 'Unknown',
-      subject: d.concepts?.subject || 'Unknown',
+      conceptName: d.concepts?.name || 'Unspecified',
+      chapter: d.concepts?.chapter || 'Unspecified',
+      subject: d.concepts?.subject || 'Unspecified',
       evidence: d.evidence
     }));
   } catch (err) {

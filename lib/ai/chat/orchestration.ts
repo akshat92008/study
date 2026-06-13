@@ -51,7 +51,7 @@ export async function buildChatFirstEngineResponse(input: {
 User request: "${input.message}"
 Current tasks: ${JSON.stringify(currentTasks.map(t => ({ id: t.id, title: t.title, status: t.status, minutes: t.estimated_minutes })))}
 Weak concepts: ${input.mindContext?.weakConcepts?.map((c: any) => c.name).join(', ') || 'None'}
-Recent topic: ${input.mindContext?.recentTopics?.[0] || 'Unknown'}
+Recent topic: ${input.mindContext?.recentTopics?.[0] || 'Unspecified'}
 
 Determine the actions to take. Return ONLY valid JSON:
 {

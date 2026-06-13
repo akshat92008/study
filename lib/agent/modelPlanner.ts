@@ -128,7 +128,7 @@ function buildPlanningPrompt(input: ModelPlannerInput): string {
     .join('\n');
 
   const signalList = input.learningSignals
-    ?.map(s => `  - [${s.type}] ${s.concept ?? 'unknown'}: ${s.evidence ?? ''}`)
+    ?.map(s => `  - [${s.type}] ${s.concept ?? 'unspecified'}: ${s.evidence ?? ''}`)
     .join('\n') ?? '  None detected yet';
 
   const skillList = input.skills

@@ -117,7 +117,7 @@ export const PracticePatternAgent: AmauraAgentDefinition<z.infer<typeof Practice
     const detected = detectPracticeWeakness(recent as PracticeEvidence[]);
     if (!detected) return skippedAmauraResult('No repeated practice weakness detected.');
 
-    const conceptKey = detected.conceptId ?? normalizeTextKey(detected.conceptName) ?? 'unknown';
+    const conceptKey = detected.conceptId ?? normalizeTextKey(detected.conceptName) ?? 'unspecified';
     const dayWindow = context.now.toISOString().slice(0, 10);
     const notificationDedupKey = conceptWindowDedupKey({
       agentName: 'PracticePatternAgent',

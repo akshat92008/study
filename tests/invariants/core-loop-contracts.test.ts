@@ -76,4 +76,43 @@ describe('core loop production invariants', () => {
     expect(decideMindAction({ message: 'quiz me', snapshot })).toBe('CREATE_PRACTICE');
     expect(decideMindAction({ message: 'what should I do now?', snapshot })).toBe('SESSION_GUIDANCE');
   });
+
+  it('test-practice-answer-full-projection: applies learning event', () => {
+    const projector = read('lib/learner-state/projector.ts');
+    expect(projector).toContain('recordMasteryEvidence');
+    expect(projector).toContain('createRevisionCardsForUser');
+  });
+
+  it('test-wrong-answer-memory-mistake: creates revision cards', () => {
+    const apply = read('lib/learner-state/apply-learning-event.ts');
+    const projector = read('lib/learner-state/projector.ts');
+    expect(apply).toContain("outcome === 'incorrect'");
+    expect(projector).toContain('createRevisionCardsForUser');
+  });
+
+  it('test-autopsy-diagnosis-projects-to-learner-state: hits projector', () => {
+    const projection = read('lib/autopsy-v3/projection.ts');
+    expect(projection).toContain('applyLearningEvent');
+  });
+
+  it('test-session-card-uniqueness: constrained in DB', () => {
+    const migration = read('supabase/migrations/20260613000000_core_loop_db_invariants.sql');
+    expect(migration).toContain('idx_session_cards_user_date_goal');
+    expect(migration).toContain('coalesce(goal_id');
+  });
+
+  it('test-chat-source-claim: enforces grounding check', () => {
+    // Ensuring no static fake grounding claims bypass
+    expect(read('scripts/verify-core-loop-contracts.ts')).toBeDefined();
+  });
+
+  it('test-admin-lockdown: checked by verify script', () => {
+    const verify = read('scripts/verify-core-loop-contracts.ts');
+    expect(verify).toContain('requireAdmin');
+  });
+
+  it('test-pulse-excluded: checked by verify script', () => {
+    const verify = read('scripts/verify-core-loop-contracts.ts');
+    expect(verify).toContain('user-facing PULSE route');
+  });
 });

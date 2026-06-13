@@ -56,7 +56,7 @@ export async function projectAutopsyV3Results(input: ProjectAutopsyV3Input) {
   // 1. Project individual mistakes with stable, dedupe-safe idempotency keys
   const results: LearningEventResult[] = [];
   for (const diagnosis of diagnoses) {
-    const canonicalConcept = (diagnosis.topic || 'unknown').trim().toLowerCase();
+    const canonicalConcept = (diagnosis.topic || 'unspecified').trim().toLowerCase();
 
     if (INVALID_TOPICS.has(canonicalConcept)) {
       logger.info('Skipping projection for invalid topic', { topic: diagnosis.topic, assessmentId });

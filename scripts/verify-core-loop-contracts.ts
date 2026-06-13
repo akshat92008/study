@@ -22,6 +22,8 @@ const forbidden = [
   ['legacy task increment RPC', /increment_daily_tasks_completed/g],
   ['legacy mastery field', /\.select\([^\n]*mastery_level|\bmastery_level\b/g],
   ['user-facing PULSE route', /href\s*=\s*["']\/pulse|router\.push\(["']\/pulse/g],
+  ['recovery_ready without recoverable count check', /status\s*:\s*['"]recovery_ready['"].*?(?!recoverable)/g],
+  ['needs_review without parsed answers/diagnoses', /status\s*:\s*['"]needs_review['"].*?(?!parsed_answers|diagnoses)/g],
 ];
 
 for (const file of files) {
@@ -39,6 +41,18 @@ for (const file of files) {
   }
   if (/from\(['"]revision_cards['"]\)\.insert/.test(text) && !/concept_id|conceptId/.test(text)) {
     violations.push(`${relative}: revision card insert lacks concept linkage`);
+  }
+  if (/app\/admin\/.*page\.tsx|app\/api\/admin\/.*route\.ts/.test(relative) && !/requireAdmin/.test(text)) {
+    violations.push(`${relative}: direct admin route export without requireAdmin`);
+  }
+  if (/(?:applyLearningEvent|projectLearningSignal|createRevisionCardsForUser)[^}]*catch\s*\([^)]*\)\s*\{\s*console\.(?:warn|error)/.test(text) && !/(?:throw|return \{)/.test(text)) {
+    violations.push(`${relative}: swallowed core error`);
+  }
+  const lines = text.split('\n');
+  for (const line of lines) {
+    if (/((?:concept|topic)[a-zA-Z0-9_]*\s*(?:\|\||\?\?)\s*['"]unknown['"])|(?:\b(?:concept|topic)\b[^,;{}]*(?:\|\||\?\?)\s*['"]unknown['"])/i.test(line) && !/INVALID_TOPICS/.test(line)) {
+      violations.push(`${relative}: concept fallback to "unknown"`);
+    }
   }
 }
 
