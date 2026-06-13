@@ -215,7 +215,7 @@ export async function POST(req: NextRequest) {
 
     const upload = await supabase.storage
       .from('study-materials')
-      .upload(storagePath, buffer, {
+      .upload(storagePath, file, {
         contentType: mimeType,
         upsert: false,
       });
