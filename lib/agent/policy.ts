@@ -57,7 +57,7 @@ export const ChannelPolicies: Record<AgentChannel, ChannelPolicy> = {
     ],
     allowedRiskLevels: ['safe_read', 'safe_write', 'learner_visible_write'],
     maxToolsPerTurn: 10,
-    allowModelPlanning: true,
+    allowModelPlanning: false,
   },
   autopsy: {
     allowedToolsets: [
