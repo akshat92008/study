@@ -8,38 +8,13 @@ ON public.session_cards (user_id, date, coalesce(goal_id, '00000000-0000-0000-00
 ALTER TABLE public.revision_cards
 ADD COLUMN IF NOT EXISTS concept_id UUID REFERENCES public.concepts(id) ON DELETE SET NULL;
 
--- 3. learning_events must require user_id, source, outcome/status, created_at
--- Assuming table is learner_events (as it's in the DB).
+-- 3. learner_events must require user_id, created_at
 DO $$ 
 BEGIN
   IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = 'public' AND table_name = 'learner_events') THEN
     ALTER TABLE public.learner_events
       ALTER COLUMN user_id SET NOT NULL,
-      ALTER COLUMN source SET NOT NULL,
       ALTER COLUMN created_at SET NOT NULL;
-      
-    IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'learner_events' AND column_name = 'outcome') THEN
-      ALTER TABLE public.learner_events ALTER COLUMN outcome SET NOT NULL;
-    ELSIF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'learner_events' AND column_name = 'status') THEN
-      ALTER TABLE public.learner_events ALTER COLUMN status SET NOT NULL;
-    END IF;
-  END IF;
-END $$;
-
--- Same for learning_events if it exists
-DO $$ 
-BEGIN
-  IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = 'public' AND table_name = 'learning_events') THEN
-    ALTER TABLE public.learning_events
-      ALTER COLUMN user_id SET NOT NULL,
-      ALTER COLUMN source SET NOT NULL,
-      ALTER COLUMN created_at SET NOT NULL;
-      
-    IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'learning_events' AND column_name = 'outcome') THEN
-      ALTER TABLE public.learning_events ALTER COLUMN outcome SET NOT NULL;
-    ELSIF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'learning_events' AND column_name = 'status') THEN
-      ALTER TABLE public.learning_events ALTER COLUMN status SET NOT NULL;
-    END IF;
   END IF;
 END $$;
 
