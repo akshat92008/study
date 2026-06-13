@@ -184,22 +184,27 @@ export async function POST(req: NextRequest) {
       .select('id, title, status, error_message')
       .eq('user_id', user.id)
       .eq('content_hash', contentHash)
-      .neq('status', 'archived')
       .maybeSingle();
+
     if (duplicate) {
+      const updates: any = {};
       if (goalId || chatSessionId) {
+        updates.goal_id = goalId;
+        updates.chat_session_id = chatSessionId;
+      }
+      if (duplicate.status === 'archived') {
+        updates.status = 'uploaded'; // restore from archive
+      }
+      if (Object.keys(updates).length > 0) {
+        updates.updated_at = new Date().toISOString();
         await supabase
           .from('study_materials')
-          .update({
-            goal_id: goalId,
-            chat_session_id: chatSessionId,
-            updated_at: new Date().toISOString(),
-          })
+          .update(updates)
           .eq('id', duplicate.id)
           .eq('user_id', user.id);
       }
       return NextResponse.json({
-        material: { ...duplicate, goal_id: goalId, chat_session_id: chatSessionId },
+        material: { ...duplicate, ...updates, goal_id: goalId, chat_session_id: chatSessionId },
         duplicate: true,
       }, { status: 200, headers: { 'x-request-id': requestId } });
     }
