@@ -9,6 +9,22 @@ import { logger } from '@/lib/utils/logger';
 import { getRepairSignals } from '@/lib/services/repair-loop.service';
 import { isExplicitRagRequest } from '@/lib/rag/retrieval';
 
+function withTimeout<T>(promise: Promise<T>, timeoutMs: number, errorName: string = 'timeout'): Promise<T> {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error(errorName)), timeoutMs);
+    promise.then(
+      (value) => {
+        clearTimeout(timer);
+        resolve(value);
+      },
+      (err) => {
+        clearTimeout(timer);
+        reject(err);
+      }
+    );
+  });
+}
+
 export async function gatherChatContext({
   supabase,
   userId,
@@ -42,8 +58,8 @@ export async function gatherChatContext({
       );
 
   const [profileResult, intentResult] = await Promise.all([
-    Promise.race([profilePromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1000))]).catch(() => ({ data: null })),
-    Promise.race([intentPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1200))]).catch(() => ({
+    withTimeout(profilePromise, 1000).catch(() => ({ data: null })),
+    withTimeout(intentPromise, 1200).catch(() => ({
       intent: { intent: 'GENERAL_CHAT' }, emotion: 'neutral', confidence: 0.5
     }))
   ]) as [any, any];
@@ -104,7 +120,7 @@ export async function gatherChatContext({
         studentModel: null,
         outcomeAnalytics: null,
       })
-    : Promise.race([
+    : withTimeout(
         getMINDContext(
           userId,
           message,
@@ -112,8 +128,9 @@ export async function gatherChatContext({
           detectedIntent.subject || undefined,
           activeGoalId || undefined
         ),
-        new Promise((_, r) => setTimeout(() => r(new Error('mind_context_timeout')), 6000))
-      ]).catch((err) => {
+        6000,
+        'mind_context_timeout'
+      ).catch((err) => {
         logger.error('Failed to get MIND context (or timeout)', err);
         // Minimal fallback context
         return {
@@ -129,7 +146,7 @@ export async function gatherChatContext({
 
   const mindRagPromise = isSimpleMessage
     ? Promise.resolve({ ragContext: null, ragPromptBlock: '' })
-    : Promise.race([
+    : withTimeout(
         buildMindRagContext({
           userId,
           message: message || '',
@@ -139,16 +156,17 @@ export async function gatherChatContext({
           chatSessionId: sessionId,
           selectedMaterialIds,
         }),
-        new Promise((_, r) => setTimeout(() => r(new Error('mind_rag_timeout')), explicitSourceRequest ? 12_000 : 3000))
-      ]).catch((err) => {
+        explicitSourceRequest ? 15_000 : 8000,
+        'mind_rag_timeout'
+      ).catch((err) => {
         logger.error('Failed to get RAG context (or timeout)', err);
         return { ragContext: null, ragPromptBlock: '' };
       });
 
   const [semanticMemories, episodicMemories, mindContext, mindRag] = await Promise.all([
-    Promise.race([memoryPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 800))]).catch(() => [] as string[]),
-    Promise.race([episodicMemoryPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 800))]).catch(() => [] as string[]),
-    Promise.race([mindContextPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 5000))]).catch(() => ({
+    withTimeout(memoryPromise, 1500).catch(() => [] as string[]),
+    withTimeout(episodicMemoryPromise, 1500).catch(() => [] as string[]),
+    withTimeout(mindContextPromise, 6000).catch(() => ({
       profile: { name: 'Student', examType: 'General Study', examDate: null, currentLevel: 'intermediate', learningStyle: 'visual', streakDays: 0, timezone: 'UTC', learnerStateVersion: 0 },
       activeGoal: null,
       currentSessionCard: null,
@@ -167,7 +185,7 @@ export async function gatherChatContext({
       studentModel: null,
       outcomeAnalytics: null,
     })),
-    Promise.race([mindRagPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), explicitSourceRequest ? 12_000 : 3000))]).catch(() => ({ ragContext: null, ragPromptBlock: '' }))
+    withTimeout(mindRagPromise, explicitSourceRequest ? 15_000 : 8000).catch(() => ({ ragContext: null, ragPromptBlock: '' }))
   ]) as [string[], string[], any, any];
 
   if (activeGoal && mindContext && !mindContext.activeGoal) {

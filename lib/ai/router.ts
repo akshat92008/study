@@ -1081,6 +1081,48 @@ if (!config || !config.apiKey || !config.supportsEmbeddings) {
         return embedding;
       }
 
+      if (providerName === 'openai' || providerName === 'nvidia') {
+        const payload: any = {
+          model: config.embeddingModel,
+          input: text.slice(0, 8192),
+        };
+        if (providerName === 'openai') {
+          payload.dimensions = 768;
+        }
+
+        const response = await fetch(`${config.baseUrl}/embeddings`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${config.apiKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+          signal: AbortSignal.timeout(TIMEOUTS.EMBEDDING),
+        });
+
+        if (!response.ok) {
+          throw Object.assign(
+            new Error(`${providerName} embedding failed: ${response.status}`),
+            { statusCode: response.status }
+          );
+        }
+
+        const data = await response.json();
+        const embedding: number[] = data.data?.[0]?.embedding || [];
+        const truncated = embedding.slice(0, 768);
+        Metrics.embeddingGenerated(1, config.embeddingModel || 'unknown');
+        Metrics.aiCall(providerName, 'embedding', Date.now() - start, true);
+        await resetProviderHealth(providerName);
+        if (reservationId) {
+          await commitBudgetUsage(reservationId, {
+            promptTokens: Math.max(1, Math.ceil(text.length / 4)),
+            completionTokens: 0,
+            route: budgetOptions?.route ?? 'embedding',
+          });
+        }
+        return truncated;
+      }
+
     } catch (err: any) {
       Metrics.aiCall(providerName, 'embedding', Date.now() - start, false);
       const code = err.statusCode || 500;

@@ -499,6 +499,7 @@ export const TASK_PROVIDER_PRIORITY: Record<TaskType, ProviderName[]> = {
     'cloudflare',  // Free bge-base.
     'google',      // Last resort embedding.
     'openai',
+    'nvidia',
   ],
 
   vision: [
