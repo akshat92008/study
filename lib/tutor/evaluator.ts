@@ -1,6 +1,5 @@
-import { generateObject } from 'ai';
+import { generateJSON } from '@/lib/ai/gemini';
 import { z } from 'zod';
-import { getModel } from '@/lib/ai/models';
 
 export type AnswerEvaluation = {
   status: 'correct' | 'partial' | 'incorrect';
@@ -13,8 +12,6 @@ export async function evaluateTutorAnswer(
   question: string,
   userAnswer: string
 ): Promise<AnswerEvaluation> {
-  const model = getModel('flash');
-  
   const prompt = `
 You are an expert tutor evaluating a student's answer.
 Context: ${systemPromptContext}
@@ -33,16 +30,17 @@ Return JSON with:
 `;
 
   try {
-    const { object } = await generateObject({
-      model,
-      schema: z.object({
+    const object = await generateJSON<AnswerEvaluation>(
+      'flash',
+      'You are a strict, helpful AI tutor. You analyze answers mathematically, logically, and factually.',
+      prompt,
+      z.object({
         status: z.enum(['correct', 'partial', 'incorrect']),
         feedback: z.string(),
         identifiedGaps: z.array(z.string()),
       }),
-      prompt,
-      temperature: 0.2,
-    });
+      0.2
+    );
     
     return object;
   } catch (error) {

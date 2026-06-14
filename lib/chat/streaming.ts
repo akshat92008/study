@@ -131,7 +131,7 @@ export async function handleMainStreaming({
           void maybeUpdateSessionSummary(userId, sessionId, recentHistory).catch(() => {});
 
           const artifactResult = await ChatPlannerService.handleCreateArtifact(
-            await supabaseObj, userId, systemPrompt, sanitizedHistory, message || '', controller, encoder
+            await supabaseObj, userId, mindContext, systemPrompt, sanitizedHistory, message || '', controller, encoder
           );
           fullResponse = artifactResult.fullResponse;
           metadataPayload = artifactResult.metadataPayload;

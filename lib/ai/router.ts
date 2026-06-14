@@ -633,7 +633,7 @@ export async function routeTextGeneration(
   }
 
   // Final deterministic fallback
-  return getDegradationMessage('chat');
+  return getDegradationMessage('provider_overloaded');
 }
 
 export async function routeJSONGeneration<T>(
@@ -889,7 +889,7 @@ if (!config || !config.apiKey) {
 
   const debugInfo = providerErrors.length > 0 ? ` (Debug: ${providerErrors.join(' | ')})` : '';
   logger.error(`All stream providers failed${debugInfo}`);
-  yield getDegradationMessage('chat');
+  yield getDegradationMessage('provider_overloaded');
 }
 
 const embeddingCache = new Map<string, number[]>();

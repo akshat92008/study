@@ -37,6 +37,7 @@ export class RAGEngine {
     subject?: string | null;
     chapter?: string | null;
     chatSessionId?: string | null;
+    goalId?: string | null;
     mode?: 'explicit' | 'implicit' | 'off';
   }) {
     return retrieveRagContext({
