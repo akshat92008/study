@@ -15,7 +15,7 @@ function explicitlyChangesTopic(message: string): boolean {
     || /\bask me (about|on)\b/i.test(message);
 }
 
-function streamText(
+function enqueueTextToStream(
   controller: ReadableStreamDefaultController,
   encoder: TextEncoder,
   text: string
@@ -44,7 +44,7 @@ export class ChatTutorService {
 
     if (!tutorContext.activeGoalId) {
       const response = 'Create or select a learning goal first, then I can keep every question and progress update tied to it.';
-      streamText(controller, encoder, response);
+      enqueueTextToStream(controller, encoder, response);
       return { fullResponse: response, metadataPayload: { tutorMode: 'goal_required' } };
     }
 
@@ -58,17 +58,17 @@ export class ChatTutorService {
         const sourceState = getSourceGroundingState(tutorContext.sourceStatuses.map((source) => source.status));
         if (sourceState === 'failed') {
           const response = 'Your source failed to process. Reprocess it from Sources.';
-          streamText(controller, encoder, response);
+          enqueueTextToStream(controller, encoder, response);
           return { fullResponse: response, metadataPayload: { tutorMode: 'source_failed' } };
         }
         if (sourceState === 'processing') {
           const response = 'Your source is still processing. I can continue from built-in chapter memory for now.';
-          streamText(controller, encoder, response);
+          enqueueTextToStream(controller, encoder, response);
           return { fullResponse: response, metadataPayload: { tutorMode: 'source_processing' } };
         }
         if (!mindContext?.ragContext?.grounded) {
           const response = 'I could not find this in your uploaded material. Ask a more specific source-based question or reprocess the source.';
-          streamText(controller, encoder, response);
+          enqueueTextToStream(controller, encoder, response);
           return { fullResponse: response, metadataPayload: { tutorMode: 'source_not_found' } };
         }
       }
@@ -138,7 +138,7 @@ export class ChatTutorService {
         evaluation?.feedback,
         nextQuestion?.question,
       ].filter(Boolean).join('\n\n');
-      streamText(controller, encoder, response);
+      enqueueTextToStream(controller, encoder, response);
 
       logger.info('tutor_question_generated', {
         userId,
@@ -176,7 +176,7 @@ export class ChatTutorService {
         maxOutputTokens: 1000,
       });
       for await (const chunk of generator) {
-        streamText(controller, encoder, chunk);
+        enqueueTextToStream(controller, encoder, chunk);
         fullResponse += chunk;
       }
     } catch (error) {
@@ -189,7 +189,7 @@ export class ChatTutorService {
       fullResponse = fallback
         ? `Using offline tutor mode for this turn.\n\n${fallback.question}`
         : getDegradationMessage('provider_overloaded');
-      streamText(controller, encoder, fullResponse);
+      enqueueTextToStream(controller, encoder, fullResponse);
       logger.info('offline_tutor_fallback_used', { userId, goalId: tutorContext.activeGoalId });
     }
 

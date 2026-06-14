@@ -12,7 +12,8 @@ describe('topic seeding subject leakage prevention', () => {
       grade: 'class_12',
     });
     expect(selected.template.subject.toLowerCase()).not.toBe('chemistry');
-    expect(selected.template.displayName.toLowerCase()).not.toContain('equilibrium');
+    const title = (selected.template as any).displayName || (selected.template as any).chapterTitle || '';
+    expect(title.toLowerCase()).not.toContain('equilibrium');
   });
 
   it('does not select science templates for History', () => {

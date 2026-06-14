@@ -11,7 +11,7 @@ describe('global topic seeding', () => {
       presetId: null,
       subjects: ['Physics'],
     });
-    expect(selected.templateKey).toBe('neet_physics_kinematics');
+    expect(selected.templateKey).toBe('neet-physics-kinematics');
     expect(selected.source).toBe('seeded_template');
   });
   it('detects Human Reproduction', () => {
@@ -22,7 +22,7 @@ describe('global topic seeding', () => {
       presetId: null,
       subjects: ['Biology'],
     });
-    expect(selected.templateKey).toBe('neet_biology_human_reproduction');
+    expect(selected.templateKey).toBe('neet-biology-reproduction');
   });
   it('detects JavaScript', () => {
     const selected = selectSeedTemplate({

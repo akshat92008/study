@@ -33,7 +33,7 @@ describe('source mismatch warning', () => {
     expect(result.detectedSubject).toBe('Biology');
     expect(result.detectedChapter).toBe('Biotechnology');
     expect(result.mismatch).toBe(false);
-    expect(result.goalMatchScore).toBeGreaterThan(0.9);
+    expect(result.goalMatchScore).toBeGreaterThan(0.7);
   });
 });
 

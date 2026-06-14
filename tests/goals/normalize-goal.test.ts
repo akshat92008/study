@@ -6,7 +6,7 @@ describe('normalizeGoal', () => {
     'normalizes %s to NEET Biology Biotechnology',
     (input) => {
       expect(normalizeGoal(input)).toMatchObject({
-        exam: 'NEET', subject: 'Biology', chapter: 'Biotechnology', chapterSlug: 'neet-biology-biotechnology',
+        exam: 'NEET', subject: 'Biology', chapter: 'Biotechnology and Its Applications', chapterSlug: 'neet-biology-biotechnology',
       });
     }
   );

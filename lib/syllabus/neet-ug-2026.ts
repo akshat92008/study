@@ -70,7 +70,7 @@ export const NEET_UG_2026_UNITS: NeetUgUnit[] = [
   { subject: 'Biology', unitNumber: 6, unitTitle: 'Reproduction', chapterSlug: 'reproduction', aliases: ['sexual reproduction in flowering plants', 'human reproduction', 'reproductive health'], ncertMapping: ['Sexual Reproduction in Flowering Plants', 'Human Reproduction', 'Reproductive Health'], classLevel: '12', keywords: ['reproduction', 'flower', 'pollination', 'human reproduction', 'menstrual cycle', 'reproductive health', 'birth control'] },
   { subject: 'Biology', unitNumber: 7, unitTitle: 'Genetics and Evolution', chapterSlug: 'genetics-and-evolution', aliases: ['principles of inheritance and variation', 'molecular basis of inheritance', 'evolution'], ncertMapping: ['Principles of Inheritance and Variation', 'Molecular Basis of Inheritance', 'Evolution'], classLevel: '12', keywords: ['genetics', 'inheritance', 'mendel', 'molecular basis', 'dna', 'rna', 'transcription', 'translation', 'evolution', 'darwin', 'hardy-weinberg'] },
   { subject: 'Biology', unitNumber: 8, unitTitle: 'Biology and Human Welfare', chapterSlug: 'biology-and-human-welfare', aliases: ['human health and disease', 'microbes in human welfare'], ncertMapping: ['Human Health and Disease', 'Microbes in Human Welfare'], classLevel: '12', keywords: ['human welfare', 'health', 'disease', 'immunity', 'hiv', 'cancer', 'drugs', 'microbes', 'sewage'] },
-  { subject: 'Biology', unitNumber: 9, unitTitle: 'Biotechnology and Its Applications', chapterSlug: 'biotechnology', aliases: ['biotechnology principles and processes', 'biotechnology and its applications', 'biotech'], ncertMapping: ['Biotechnology: Principles and Processes', 'Biotechnology and its Applications'], classLevel: '12', keywords: ['biotechnology', 'recombinant dna', 'restriction enzyme', 'pcr', 'cloning vector', 'bt cotton', 'rnai', 'gene therapy'] },
+  { subject: 'Biology', unitNumber: 9, unitTitle: 'Biotechnology and Its Applications', chapterSlug: 'biotechnology', aliases: ['biotechnology principles and processes', 'biotechnology and its applications', 'biotech'], ncertMapping: ['Biotechnology: Principles and Processes', 'Biotechnology and its Applications'], classLevel: '12', keywords: ['biotechnology', 'recombinant dna', 'rdna', 'restriction enzyme', 'pcr', 'cloning vector', 'bt cotton', 'rnai', 'gene therapy'] },
   { subject: 'Biology', unitNumber: 10, unitTitle: 'Ecology and Environment', chapterSlug: 'ecology-and-environment', aliases: ['organisms and populations', 'ecosystem', 'biodiversity and conservation', 'environmental issues', 'ecology'], ncertMapping: ['Organisms and Populations', 'Ecosystem', 'Biodiversity and Conservation', 'Environmental Issues'], classLevel: '12', keywords: ['ecology', 'environment', 'population', 'ecosystem', 'biodiversity', 'conservation', 'pollution', 'succession'] }
 ];
 
@@ -173,7 +173,7 @@ export function normalizeNeetGoal(rawTitle: string, activeSubjectContext?: strin
       subject: matchedUnit.subject,
       classLevel: matchedUnit.classLevel === 'mixed' ? null : matchedUnit.classLevel,
       chapter: matchedUnit.unitTitle,
-      chapterSlug: matchedUnit.chapterSlug,
+      chapterSlug: `neet-${matchedUnit.subject.toLowerCase()}-${matchedUnit.chapterSlug}`,
       mode: resolvedMode,
       confidence: 0.99,
     };

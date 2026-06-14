@@ -33,7 +33,7 @@ function weakTags(input: NextQuestionInput['weakAreas']): string[] {
   });
 }
 
-function getAllQuestionsForChapter(chapterSlug: string): DeterministicTutorQuestion[] {
+export function getAllQuestionsForChapter(chapterSlug: string): DeterministicTutorQuestion[] {
   const normSlug = normalize(chapterSlug);
   // Match exact slug or fallback to biotechnology check for backward compat
   const chapter = ALL_NEET_CHAPTER_SEEDS.find(c => normalize(c.chapterSlug) === normSlug) 

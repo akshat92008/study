@@ -4,7 +4,7 @@ import { createClient } from '@/lib/supabase/server';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { getRagConfig, SUPPORTED_MATERIAL_MIME_TYPES, SUPPORTED_MATERIAL_EXTENSIONS } from '@/lib/rag/config';
-import { materialContentHash } from '@/lib/rag/ingest';
+import { materialContentHash, ingestStudyMaterial } from '@/lib/rag/ingest';
 import { validateMagicBytesArray } from '@/lib/utils/magicBytes';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { EventWorkerService } from '@/lib/events/worker';
@@ -240,7 +240,8 @@ export async function POST(req: NextRequest) {
       });
     if (upload.error) throw upload.error;
 
-    const shouldIngestInline = false;
+    const INLINE_INGESTION_MAX_BYTES = 50 * 1024; // 50KB
+    const shouldIngestInline = featureFlags.ragIngestion() && file.size <= INLINE_INGESTION_MAX_BYTES;
     const initialStatus = !featureFlags.ragIngestion()
       ? 'uploaded'
       : shouldIngestInline
@@ -307,6 +308,7 @@ export async function POST(req: NextRequest) {
       }, { status: 202, headers: { 'x-request-id': requestId } });
     }
 
+    let ingestionResult: any = null;
     if (!shouldIngestInline) {
       const adminClient = await import('@/lib/supabase/admin').then(m => m.createAdminClient());
       const { error: jobError } = await adminClient
@@ -320,6 +322,14 @@ export async function POST(req: NextRequest) {
         }, { onConflict: 'user_id,material_id,idempotency_key' });
 
       if (jobError) throw jobError;
+    } else {
+      ingestionResult = await ingestStudyMaterial({
+        materialId: material.id,
+        userId: user.id,
+        buffer,
+        mimeType,
+      });
+      material.status = ingestionResult?.status === 'failed' ? 'failed' : 'ready';
     }
 
     await EventDispatcher.publish({
@@ -358,14 +368,23 @@ export async function POST(req: NextRequest) {
 
     after(async () => {
       try {
-        logger.info('Instantly triggering background event worker for upload', { userId: user.id, materialId: material.id });
-        await EventWorkerService.processBatch(25, 5, 50_000, Date.now());
+        if (!shouldIngestInline) {
+          logger.info('Instantly triggering background event worker for upload', { userId: user.id, materialId: material.id });
+          await EventWorkerService.processBatch(25, 5, 50_000, Date.now());
+        }
       } catch (workerError) {
         logger.error('Instant worker trigger failed', { error: workerError });
       }
     });
 
-    const responseStatus = featureFlags.ragIngestion() ? 'queued' : material.status;
+    let responseStatus = 'uploaded';
+    if (featureFlags.ragIngestion()) {
+      if (shouldIngestInline) {
+        responseStatus = ingestionResult?.status === 'ready' ? 'ready' : 'failed';
+      } else {
+        responseStatus = 'queued';
+      }
+    }
 
     logger.info('Upload accepted', {
       userId: user.id,
@@ -382,10 +401,10 @@ export async function POST(req: NextRequest) {
         ...material,
         status: responseStatus,
       },
-      chunksProcessed: 0,
+      chunksProcessed: ingestionResult?.chunks ?? 0,
       duplicate: false,
       classification,
-    }, { status: 202, headers: { 'x-request-id': requestId } });
+    }, { status: ingestionResult?.status === 'ready' ? 201 : 202, headers: { 'x-request-id': requestId } });
   } catch (error) {
     return unexpectedApiErrorResponse(req, error, 'materials_upload_unhandled', 'Unable to upload study material.');
   }

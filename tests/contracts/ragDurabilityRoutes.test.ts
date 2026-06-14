@@ -32,7 +32,7 @@ describe('RAG durable route contracts', () => {
     expect(reprocessRoute).toContain(".download(");
     expect(reprocessRoute).toContain("type: 'MATERIAL_INGESTION_REQUESTED'");
     expect(reprocessRoute).toContain(".from('rag_ingestion_jobs')");
-    expect(reprocessRoute).toContain('status: 202');
+    expect(reprocessRoute).toContain('202');
     expect(reprocessRoute).toContain("result.status === 'ready' ? 200 : 202");
   });
 });

@@ -25,7 +25,15 @@ describe('MIND Intent Policy Engine', () => {
       overdueCardsCount: 0,
       topOverdueCards: []
     },
-    supabase: {}
+    supabase: {
+      from: vi.fn().mockReturnThis(),
+      select: vi.fn().mockReturnThis(),
+      eq: vi.fn().mockReturnThis(),
+      is: vi.fn().mockReturnThis(),
+      in: vi.fn().mockReturnThis(),
+      limit: vi.fn().mockReturnThis(),
+      order: vi.fn().mockResolvedValue({ data: [], error: null })
+    }
   };
 
   test('flashcard request with no due MEMORY cards still generates flashcards (returns null to let LLM handle it)', async () => {

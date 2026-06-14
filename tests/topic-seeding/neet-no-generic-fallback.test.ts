@@ -14,7 +14,7 @@ describe('NEET Topic Seeding - No Generic Fallback', () => {
 
     const selected = selectSeedTemplate(params);
     expect(selected.source).toBe('seeded_template');
-    expect(selected.templateKey).toBe('thermodynamics');
+    expect(selected.templateKey).toBe('neet-physics-thermodynamics');
     expect(selected.confidence).toBe(0.99);
   });
 
@@ -30,6 +30,6 @@ describe('NEET Topic Seeding - No Generic Fallback', () => {
 
     const selected = selectSeedTemplate(params);
     expect(selected.source).toBe('seeded_template');
-    expect(selected.templateKey).toBe('chemical-kinetics');
+    expect(selected.templateKey).toBe('neet-chemistry-chemical-kinetics');
   });
 });

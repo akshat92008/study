@@ -185,9 +185,9 @@ describe('private beta chat-first loop contract', () => {
     });
     const commandAnswer = formatCommandPlanForChat(plan);
     const atlasAnswer = formatWeakAreasForChat({
-      weakConcepts: state.concepts,
-      recentMistakes: state.mistakes,
-      masteryPercent: 0,
+      weakAreas: state.concepts.map(c => ({ displayPath: [c.subject, c.chapter, c.name], evidenceCount: 1 })),
+      chapterSummary: [],
+      summary: 'Summary of weak areas.',
     });
     const memoryAnswer = formatRevisionQueueForChat({
       dueCount: state.revision_cards.length,

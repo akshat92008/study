@@ -1,20 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { generateText } from '@/lib/ai/provider-client';
+import { budgetedGenerateText } from '@/lib/ai/budgeted';
 import { safeError, logger } from '@/lib/utils/logger';
-import { reserveBudgetForModelCall, budgetExceededResponse, budgetUnavailableResponse, isBudgetExceeded, isBudgetUnavailable } from '@/lib/ai/cost-guard';
+import { budgetExceededResponse, budgetUnavailableResponse, isBudgetExceeded, isBudgetUnavailable } from '@/lib/ai/cost-guard';
 
 async function generateSourceGuide(
   userId: string,
   materialTitle: string,
   content: string
 ): Promise<any> {
-  const reservation = await reserveBudgetForModelCall(userId, 'knowledge-guide', 'quality', 1500, 500);
-
-  const text = await generateText(
-    'flash',
-    'You are a study guide generator. You must return ONLY a raw JSON object.',
-    `You are generating a Source Guide for the following study material.
+  const text = await budgetedGenerateText({
+    userId,
+    feature: 'knowledge-guide',
+    model: 'flash',
+    systemPrompt: 'You are a study guide generator. You must return ONLY a raw JSON object.',
+    userPrompt: `You are generating a Source Guide for the following study material.
 The guide must contain a summary, 3-5 key concepts, and 3-5 frequently asked questions.
 
 Material Title: ${materialTitle}
@@ -34,9 +34,8 @@ You must return EXACTLY and ONLY a valid JSON object matching this schema:
 }
 
 DO NOT include markdown formatting like \`\`\`json. Output ONLY the raw JSON object.`,
-    0.3,
-    reservation.reservationId
-  );
+    maxOutputTokens: 500
+  });
 
   if (!text?.trim()) throw new Error('Empty guide generated');
   

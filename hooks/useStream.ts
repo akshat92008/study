@@ -101,13 +101,10 @@ export function useStream(defaultUrl = '/api/ai/chat'): UseStreamReturn {
           const headers: Record<string, string> = {
             'Content-Type': 'application/json',
             ...opts.headers,
+            ...(opts.headers && opts.headers['Idempotency-Key'] ? { 'Idempotency-Key': opts.headers['Idempotency-Key'] } : {})
           };
           if (resumeFrom) {
             headers['X-Stream-Resume-From'] = String(resumeFrom.length);
-          }
-          if (attempt > 0 && headers['Idempotency-Key']) {
-            // Generate a fresh idempotency key for retries so we don't hit 409
-            headers['Idempotency-Key'] = crypto.randomUUID();
           }
 
           const res = await fetch(url, {

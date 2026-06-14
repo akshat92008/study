@@ -48,7 +48,7 @@ export function classifySource(input: {
   }
 
   const goalSubject = goal.subject ?? input.activeGoal?.subject ?? null;
-  const goalChapter = goal.chapter ?? null;
+  const goalChapter = goal.chapter ?? goal.chapterSlug?.replace(/^neet-[a-z]+-/, '').replace(/-/g, ' ') ?? null;
   let goalMatchScore = 0.5;
   if (detectedSubject && goalSubject && normalize(detectedSubject) !== normalize(goalSubject)) {
     goalMatchScore = 0.05;

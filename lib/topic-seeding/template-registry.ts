@@ -32,7 +32,7 @@ export function getSeedForGoal(goalText: string, activeGoalContext?: string | nu
     if (seed) {
       return {
         template: seed,
-        templateKey: seed.chapterSlug,
+        templateKey: `neet-${unit.subject.toLowerCase()}-${unit.chapterSlug}`,
         source: 'seeded_template',
         confidence: 0.99,
       };

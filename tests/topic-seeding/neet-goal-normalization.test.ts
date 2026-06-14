@@ -6,7 +6,7 @@ describe('NEET Goal Normalization', () => {
     const goal = normalizeGoal('master kinematics');
     expect(goal.exam).toBe('NEET');
     expect(goal.subject).toBe('Physics');
-    expect(goal.chapterSlug).toBe('kinematics');
+    expect(goal.chapterSlug).toBe('neet-physics-kinematics');
     expect(goal.mode).toBe('mastery');
   });
 
@@ -16,23 +16,23 @@ describe('NEET Goal Normalization', () => {
     // It should pick plant physiology based on the disambiguation logic if "plant" is in the text, 
     // or if the alias specifically maps. Actually "respiration in plants" is the alias.
     const explicitPlantGoal = normalizeGoal('respiration in plants');
-    expect(explicitPlantGoal.chapterSlug).toBe('plant-physiology');
+    expect(explicitPlantGoal.chapterSlug).toBe('neet-biology-plant-physiology');
     
     const humanGoal = normalizeGoal('breathing and exchange of gases');
-    expect(humanGoal.chapterSlug).toBe('human-physiology');
+    expect(humanGoal.chapterSlug).toBe('neet-biology-human-physiology');
   });
 
   it('should resolve common aliases correctly', () => {
     const pBlock = normalizeGoal('p block elements');
-    expect(pBlock.chapterSlug).toBe('p-block-elements');
+    expect(pBlock.chapterSlug).toBe('neet-chemistry-p-block-elements');
     expect(pBlock.subject).toBe('Chemistry');
 
     const solutions = normalizeGoal('revise solutions');
-    expect(solutions.chapterSlug).toBe('solutions');
+    expect(solutions.chapterSlug).toBe('neet-chemistry-solutions');
     expect(solutions.mode).toBe('revision');
     
     const nlm = normalizeGoal('newton laws');
-    expect(nlm.chapterSlug).toBe('laws-of-motion');
+    expect(nlm.chapterSlug).toBe('neet-physics-laws-of-motion');
   });
 
   it('should fall back gracefully for non-NEET goals', () => {
