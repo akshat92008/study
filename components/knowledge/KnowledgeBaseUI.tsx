@@ -8,7 +8,7 @@ import Badge from '@/components/ui/Badge';
 import { Database, Plus, FileText, Loader2, Sparkles, Headphones, RefreshCw, Trash2 } from 'lucide-react';
 import { AudioPlayer } from './AudioPlayer';
 import { useAppStore } from '@/stores/appStore';
-import { ClassifyResult, classifySource } from '@/lib/materials/classify-source';
+import { classifySource } from '@/lib/materials/classify-source';
 
 export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials: any[] }) {
   const { activeGoalId, chatId, learningGoals, selectedMaterialIds, toggleSelectedMaterial } = useAppStore();
@@ -605,8 +605,8 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
           background: 'rgba(0,0,0,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center',
           zIndex: 100, padding: 'var(--sp-4)'
         }}>
-          <Card padding="xl" style={{ maxWidth: '600px', width: '100%', maxHeight: '80vh', overflowY: 'auto' }}>
-            <h2 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-bold)', marginBottom: 'var(--sp-4)' }}>
+          <Card padding="lg" style={{ maxWidth: '600px', width: '100%', maxHeight: '80vh', overflowY: 'auto' }}>
+            <h2 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-bold)', marginBottom: 'var(--sp-4)', color: 'var(--text-primary)' }}>
               Source Guide: {guideData.title}
             </h2>
             
