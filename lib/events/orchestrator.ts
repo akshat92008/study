@@ -4,14 +4,12 @@ import { createAdminClient } from '@/lib/supabase/admin';
 import { getCorrelationId } from '@/lib/telemetry/correlation';
 import { logger } from '@/lib/utils/logger';
 import { validateEventEnvelope } from './schema';
-import { EVENT_CONSUMERS, getConsumersForEvent } from './routes';
+import { getConsumersForEvent } from './routes';
 export {
   EVENT_CONSUMERS,
-  EVENT_CONSUMER_MATRIX,
   assertEventConsumerRoute,
   getConsumersForEvent,
   type EventConsumer,
-  type RoutedEventType,
 } from './routes';
 
 type PublishInput = {

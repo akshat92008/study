@@ -465,3 +465,62 @@ export async function resolveConceptByName(
 
   return result.conceptId;
 }
+
+export interface ResolvePracticeItemConceptInput {
+  userId: string;
+  goalId?: string | null;
+  questionId?: string;
+  artifactId?: string;
+  subject?: string | null;
+  chapter?: string | null;
+  topic?: string | null;
+  subtopic?: string | null;
+  conceptName?: string | null;
+  microskill?: string | null;
+  tags?: string[];
+  client?: any;
+}
+
+export async function resolvePracticeItemConcept(input: ResolvePracticeItemConceptInput): Promise<ConceptResolution> {
+  const supabase = input.client ?? (await createClient());
+  const raw = {
+    subject: input.subject ?? null,
+    chapter: input.chapter ?? null,
+    topic: input.conceptName ?? input.microskill ?? input.subtopic ?? input.topic ?? null,
+  };
+
+  const normalizedSubject = normalizeSubject(input.subject);
+  const normalizedChapter = normalizeChapter(input.chapter);
+  const normalizedTopic = normalizeConceptName(raw.topic);
+
+  const unresolvedBase = {
+    conceptId: null,
+    confidence: 0,
+    method: 'unresolved' as const,
+    normalizedSubject,
+    normalizedChapter,
+    normalizedTopic,
+  };
+
+  if (!normalizedTopic) {
+    // DO NOT fall back to chapter
+    return finishResolution(
+      supabase,
+      { ...input, sourceType: 'practice' },
+      { ...unresolvedBase, reason: 'No fine-grained concept, subtopic, or microskill provided; ignoring chapter fallback for strict resolution' },
+      raw
+    );
+  }
+
+  // Call the base resolveConcept but ensuring topic is NOT just the chapter
+  return resolveConcept({
+    userId: input.userId,
+    goalId: input.goalId,
+    subject: input.subject,
+    chapter: input.chapter,
+    topic: raw.topic,
+    sourceType: 'practice',
+    confidence: 0.9,
+    client: supabase,
+  });
+}

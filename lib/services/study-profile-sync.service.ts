@@ -1,6 +1,5 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
 import { logger } from '@/lib/utils/logger';
-import { invalidateSessionCard } from '@/lib/services/session-card-invalidation';
 import { runHermesTurn } from '@/lib/agent/runtime';
 import type { CognitionAgentTurnOutput } from '@/lib/agent/types';
 
@@ -72,11 +71,7 @@ export async function syncStudyProfileAfterPracticeAttempt(
         .eq('user_id', userId);
     }
 
-    await invalidateSessionCard(userId, 'LEARNER_STATE_UPDATED', {
-      client: supabase,
-      goalId: goalId ?? null,
-    });
-
+    // session_cards invalidation is now handled atomically inside the core loop projection RPC
     return {
       success: runtime.verification.ok,
       mutationSummary: runtime.mutationSummary,

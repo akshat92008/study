@@ -291,12 +291,32 @@ export async function POST(req: NextRequest) {
     const existingAttemptKeys = new Set((existingAttempts ?? []).map((attempt: any) => attempt.idempotency_key));
     const newAttemptKeys = attemptKeys.filter((key) => !existingAttemptKeys.has(key));
 
-    const { error: insertError } = await supabase
-      .from('practice_attempts')
-      .upsert(attemptsToInsert, {
-        onConflict: 'user_id,idempotency_key',
-        ignoreDuplicates: true,
-      });
+    const { data: rpcResult, error: insertError } = await supabase.rpc('apply_core_loop_projection', {
+      payload: {
+        user_id: user.id,
+        goal_id: resolvedGoalId,
+        idempotency_key: idempotencySeed,
+        local_date: new Date().toISOString().split('T')[0], // The RPC will safely ignore if not applying session invalidations
+        practice_attempts: attemptsToInsert,
+        outbox: {
+          type: 'PRACTICE_ATTEMPT_RECORDED',
+          data: {
+            practiceSetId: set.id,
+            setType: 'mcq',
+            subject: set.subject ?? null,
+            chapter: set.topic ?? null,
+            metrics: { correctCount, wrongCount, wrongConceptIds, wrongConceptNames },
+            items: eventItems,
+          },
+          metadata: { source: 'mind_chat_mcq', goalId: resolvedGoalId, idempotencyKey: idempotencySeed }
+        },
+        trace: { action: 'practice_attempt_recorded', trace_id: requestId }
+      }
+    });
+    if (insertError) throw insertError;
+    if (!rpcResult?.ok) {
+       throw new Error(`RPC failed: ${rpcResult?.message}`);
+    }
     if (insertError) throw insertError;
 
     const { data: persistedAttempts, error: fetchAttemptsError } = await supabase
@@ -406,27 +426,8 @@ export async function POST(req: NextRequest) {
       }, { status: 500 });
     }
 
-    await EventDispatcher.publish({
-      user_id: user.id,
-      type: 'PRACTICE_ATTEMPT_RECORDED',
-      data: {
-        practiceSetId: set.id,
-        setType: 'mcq',
-        subject: set.subject ?? null,
-        chapter: set.topic ?? null,
-        metrics: { correctCount, wrongCount, wrongConceptIds, wrongConceptNames },
-        items: persistedEventItems,
-      },
-      metadata: { source: 'mind_chat_mcq', goalId: resolvedGoalId, runtimeProcessed: true },
-      idempotency_key: `practice_attempt:${user.id}:${set.id}:${idempotencySeed}`,
-    }).catch((eventError) => {
-      logger.warn('Practice audit event publish failed after verified projection', {
-        userId: user.id,
-        practiceSetId: set.id,
-        error: eventError instanceof Error ? eventError.message : String(eventError),
-      });
-    });
-    
+    // EventDispatcher publish is now handled by the outbox inside apply_core_loop_projection
+
     const loopSummary = {
       saved: true,
       mistakesCreated: (profileSync as any)?.mistakesCreated ?? 0,

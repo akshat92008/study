@@ -1,14 +1,12 @@
 import { SupabaseClient } from '@supabase/supabase-js';
 import { LearningSignal, AgentToolContext } from '@/lib/agent/types';
-import { recordMasteryEvidence } from '@/lib/engines/mastery-updater';
-import { resolveConcept } from '@/lib/engines/concept-resolver';
-import { createRevisionCardsForUser } from '@/lib/amaura/agents/repositories';
+import { resolvePracticeItemConcept, resolveConcept } from '@/lib/engines/concept-resolver';
 import { generateMemoryCard } from '@/lib/memory/cardGenerator';
-import { invalidateSessionCard, markSessionCardCompleted } from '@/lib/services/session-card-invalidation';
 import { logger } from '@/lib/utils/logger';
-import { stableKey, recordAgentActivity } from '@/lib/agent/tools/learning/common';
-import { upsertMistakeRisk } from '@/lib/services/repair-loop.service';
+import { stableKey } from '@/lib/agent/tools/learning/common';
 import { CognitionError, toCognitionError } from '@/lib/errors/cognition-errors';
+import { simulateMasteryUpdate } from '@/lib/engines/mastery-updater';
+import { getUserLearningDate } from '@/lib/utils/local-date';
 
 export interface ProjectionError {
   code: string;
@@ -33,7 +31,7 @@ export interface ProjectionResult {
 
 /**
  * Central deterministic projector for all learner-state changes.
- * Ensures idempotency via signal metadata and stable keys.
+ * Uses a single atomic Postgres RPC for strict integrity.
  */
 export async function projectLearningSignal(
   supabase: SupabaseClient,
@@ -43,6 +41,7 @@ export async function projectLearningSignal(
 ): Promise<ProjectionResult> {
   const now = options.now || new Date();
   const goalId = options.goalId || (signal.metadata?.goalId as string | undefined) || null;
+  
   const result: ProjectionResult = {
     success: true,
     eventsWritten: 0,
@@ -66,329 +65,154 @@ export async function projectLearningSignal(
     || stableKey(['proj', userId, signal.type, signal.concept || 'global', String(sessionId || assessmentId || now.toISOString())]);
 
   try {
-    // 1. Write learning_event (Deterministic log)
-    const { error: eventError } = await supabase.from('learner_events').upsert({
+    const localDate = await getUserLearningDate(userId, supabase, now);
+    
+    // 1. Initialize Payload
+    const payload: any = {
       user_id: userId,
-      event_type: signal.type,
-      event_data: {
-        ...signal,
-        projected_at: now.toISOString(),
-      },
+      goal_id: goalId,
+      local_date: localDate,
       idempotency_key: idempotencyKey,
-      updated_at: now.toISOString(),
-    }, { onConflict: 'idempotency_key' });
+      learner_event: { type: signal.type, data: { ...signal, projected_at: now.toISOString() } },
+      outbox: { type: signal.type, data: signal, metadata: { ...signal.metadata, idempotencyKey } },
+      trace: { action: signal.type, trace_id: options.context?.runId },
+    };
 
-    if (eventError) {
-      throw new CognitionError('EVENT_WRITE_FAILED', `Learning event could not be written: ${eventError.message}`, true);
-    }
-    result.eventsWritten++;
-    result.learningEventId = idempotencyKey;
-
-    // 2. Profile Streak / Activity
-    if (signal.type === 'session_completed' || signal.type === 'concept_practiced' || signal.type === 'revision_reviewed') {
-      const { error: profileError } = await supabase.from('profiles').update({
-        last_active_at: now.toISOString(),
-        updated_at: now.toISOString(),
-      }).eq('id', userId);
-      if (profileError) {
-        throw new CognitionError('SESSION_UPDATE_FAILED', `Learner activity could not be updated: ${profileError.message}`, true);
-      }
-    }
-
-    // 3. ATLAS Concept Mastery
     let resolvedConceptId: string | null = null;
-    if (signal.concept || signal.canonicalConcept) {
-      const conceptName = (signal.canonicalConcept || signal.concept) as string;
-      
-      const resolution = await resolveConcept({
-        userId,
-        goalId,
-        subject: signal.subject || null,
-        chapter: signal.chapter || null,
-        topic: signal.topic || conceptName,
-        sourceType: (signal.source === 'source' ? 'chat' : signal.source) || 'chat',
-        client: supabase,
-      });
+    let conceptName = (signal.canonicalConcept || signal.concept) as string;
 
-      if (resolution.conceptId) {
-        resolvedConceptId = resolution.conceptId;
-        result.conceptId = resolution.conceptId;
-        // Map signal type to mastery evidence type
-        let evidenceType: 'practice_correct' | 'practice_wrong' | 'tutor_understood' | 'tutor_confused' | 'session_completed' = 'tutor_understood';
-        
-        if (signal.type === 'concept_understood' || (signal.type === 'concept_practiced' && signal.correct)) {
-          evidenceType = 'practice_correct';
-        } else if (signal.type === 'weak_area_detected' || signal.type === 'autopsy_mistake_detected' || (signal.type === 'concept_practiced' && !signal.correct)) {
-          evidenceType = 'practice_wrong';
-        } else if (signal.type === 'session_completed') {
-          evidenceType = 'session_completed';
-        } else if (signal.type === 'misconception_detected') {
-          evidenceType = 'tutor_confused';
-        }
-
-        try {
-          const masteryRes = await recordMasteryEvidence({
-            userId,
-            conceptId: resolution.conceptId,
-            evidenceType,
-            source: (signal.source as any) || 'agent',
-            sourceId: String(sessionId || assessmentId || idempotencyKey),
-            evidence: signal.evidence || `Signal: ${signal.type}`,
-            confidence: signal.confidence,
-            client: supabase,
+    // 2. Strict Concept Resolution
+    if (conceptName) {
+      const resolution = signal.source === 'practice' 
+        ? await resolvePracticeItemConcept({
+            userId, goalId, subject: signal.subject, chapter: signal.chapter, conceptName,
+            subtopic: signal.metadata?.subtopic as string, 
+            microskill: signal.metadata?.microskill as string,
+            client: supabase
+          })
+        : await resolveConcept({
+            userId, goalId, subject: signal.subject || null, chapter: signal.chapter || null,
+            topic: signal.topic || conceptName, sourceType: (signal.source as any) || 'chat',
+            client: supabase
           });
-          result.masteryUpdated = true;
-          result.masteryBefore = masteryRes.oldScore ?? null;
-          result.masteryAfter = masteryRes.newScore ?? null;
 
-          if (options.context && masteryRes.changed) {
-            await recordAgentActivity(supabase, {
-              userId,
-              runId: options.context.runId,
-              agentName: 'atlas',
-              actionType: 'atlas_mastery_updated',
-              targetType: 'concept',
-              targetId: resolution.conceptId,
-              confidence: signal.confidence,
-              evidence: { signal, masteryRes },
-              reason: `Mastery updated for ${conceptName} based on ${signal.type}`,
-              idempotencyKey: stableKey([idempotencyKey, 'mastery-act']),
-            });
-
-            // Hermes v1 Audit Trail
-            await supabase.from('learning_state_changes').insert({
-              user_id: userId,
-              run_id: options.context.runId,
-              tool_name: 'projectLearningSignal',
-              event_type: 'atlas_mastery_updated',
-              concept_id: resolution.conceptId,
-              before_state: { mastery: masteryRes.oldMastery, score: masteryRes.oldScore },
-              after_state: { mastery: masteryRes.newMastery, score: masteryRes.newScore },
-              diff_summary: { delta: masteryRes.delta, signal: signal.type, reason: `Mastery updated for ${conceptName}` },
-              policy_decision: 'auto_approved_by_projector',
-            });
-          }
-        } catch (masteryErr) {
-          throw new CognitionError(
-            'MASTERY_UPDATE_FAILED',
-            masteryErr instanceof Error ? masteryErr.message : 'Concept mastery could not be updated.',
-            true,
-            undefined,
-            masteryErr
-          );
-        }
-      } else {
+      if (!resolution.conceptId && signal.source === 'practice') {
+        throw new CognitionError('CONCEPT_RESOLUTION_REQUIRED', `Concept could not be resolved strictly for practice item ${conceptName}.`, true);
+      } else if (!resolution.conceptId) {
         throw new CognitionError('CONCEPT_RESOLUTION_FAILED', `Concept could not be resolved for ${conceptName}.`, true);
       }
+      
+      resolvedConceptId = resolution.conceptId;
+      result.conceptId = resolution.conceptId;
+
+      // 3. Compute Mastery Delta (Dry-Run)
+      let evidenceType: any = 'tutor_understood';
+      if (signal.type === 'concept_understood' || (signal.type === 'concept_practiced' && signal.correct)) {
+        evidenceType = 'practice_correct';
+      } else if (signal.type === 'weak_area_detected' || signal.type === 'autopsy_mistake_detected' || (signal.type === 'concept_practiced' && !signal.correct)) {
+        evidenceType = 'practice_wrong';
+      } else if (signal.type === 'session_completed') {
+        evidenceType = 'session_completed';
+      } else if (signal.type === 'misconception_detected') {
+        evidenceType = 'tutor_confused';
+      }
+
+      const sim = await simulateMasteryUpdate({
+        userId, conceptId: resolvedConceptId, evidenceType, confidence: signal.confidence, client: supabase
+      });
+      
+      payload.mastery = {
+        concept_id: resolvedConceptId,
+        old_mastery: sim.oldMastery,
+        new_mastery: sim.newMastery,
+        old_score: sim.oldScore,
+        new_score: sim.newScore,
+        delta: sim.delta,
+        forgetting_probability: sim.forgettingProbability,
+        confidence: sim.confidence,
+        source: signal.source || 'agent',
+        source_id: sessionId || assessmentId || idempotencyKey,
+        evidence_type: evidenceType,
+        evidence: signal.evidence || `Signal: ${signal.type}`,
+        weight: sim.weight,
+        event_confidence: signal.confidence || 1.0,
+      };
+      
+      result.masteryUpdated = true;
+      result.masteryBefore = sim.oldScore;
+      result.masteryAfter = sim.newScore;
     }
 
     // 4. MEMORY Revision Cards
     const shouldCreateCard = ['weak_area_detected', 'misconception_detected', 'autopsy_mistake_detected', 'revision_needed'].includes(signal.type)
       || (signal.type === 'concept_practiced' && signal.correct === false);
-    if (shouldCreateCard && signal.concept) {
-      if (!resolvedConceptId) {
-        throw new CognitionError('CONCEPT_RESOLUTION_FAILED', 'A revision card requires a resolved concept.', true);
-      }
-      try {
-        const isMistakeSignal = ['weak_area_detected', 'misconception_detected', 'autopsy_mistake_detected'].includes(signal.type);
-        const normalizedKey = isMistakeSignal 
-          ? `mistake-repair:${stableKey([userId, signal.concept, String(signal.metadata?.questionId || signal.evidence || '')])}`
-          : `proj-mem:${userId}:${signal.type}:${stableKey([signal.concept, String(sessionId || assessmentId || '')])}`;
-        
-        const generated = generateMemoryCard(signal as any);
-        const [card] = await createRevisionCardsForUser(userId, [{
-          goalId,
-          conceptId: resolvedConceptId,
-          front: generated.front,
-          back: generated.back,
-          subject: signal.subject || 'General',
-          chapter: signal.chapter || signal.topic || 'General',
-          sourceType: isMistakeSignal ? 'mistake' : signal.type,
-          sourceId: String(sessionId || assessmentId || idempotencyKey),
-          origin: 'chat',
-          cardType: isMistakeSignal ? 'mistake_repair' : 'autopsy_recovery',
-          normalizedKey,
-          metadata: { ...signal.metadata, signalType: signal.type },
-        }], { client: supabase });
-
-        if (card) {
-          result.cardsCreated++;
-          result.revisionCardIds.push(card.id);
-          if (options.context) {
-            await recordAgentActivity(supabase, {
-              userId,
-              runId: options.context.runId,
-              agentName: 'memory',
-              actionType: 'memory_card_created',
-              targetType: 'revision_card',
-              targetId: card.id,
-              confidence: signal.confidence,
-              evidence: { signal, cardId: card.id },
-              reason: `Revision card created for ${signal.concept} based on ${signal.type}`,
-              idempotencyKey: stableKey([idempotencyKey, 'card-act']),
-            });
-
-            // Hermes v1 Audit Trail
-            await supabase.from('learning_state_changes').insert({
-              user_id: userId,
-              run_id: options.context.runId,
-              tool_name: 'projectLearningSignal',
-              event_type: 'memory_card_created',
-              before_state: null,
-              after_state: { card_id: card.id, front: generated.front, back: generated.back },
-              diff_summary: { signal: signal.type, reason: `Revision card created for ${signal.concept}` },
-              policy_decision: 'auto_approved_by_projector',
-            });
-          }
-        }
-      } catch (cardErr) {
-        throw new CognitionError(
-          'MEMORY_UPDATE_FAILED',
-          cardErr instanceof Error ? cardErr.message : 'Revision memory could not be updated.',
-          true,
-          undefined,
-          cardErr
-        );
-      }
+      
+    if (shouldCreateCard && resolvedConceptId) {
+      const isMistakeSignal = ['weak_area_detected', 'misconception_detected', 'autopsy_mistake_detected'].includes(signal.type);
+      const normalizedKey = isMistakeSignal 
+        ? `mistake-repair:${stableKey([userId, conceptName, String(signal.metadata?.questionId || signal.evidence || '')])}`
+        : `proj-mem:${userId}:${signal.type}:${stableKey([conceptName, String(sessionId || assessmentId || '')])}`;
+      
+      const generated = generateMemoryCard(signal as any);
+      payload.revision_cards = [{
+        concept_id: resolvedConceptId,
+        front: generated.front,
+        back: generated.back,
+        subject: signal.subject || 'General',
+        chapter: signal.chapter || signal.topic || 'General',
+        source_type: isMistakeSignal ? 'mistake' : signal.type,
+        source_id: String(sessionId || assessmentId || idempotencyKey),
+        card_type: isMistakeSignal ? 'mistake_repair' : 'autopsy_recovery',
+        normalized_key: normalizedKey,
+        metadata: { ...signal.metadata, signalType: signal.type },
+      }];
+      result.cardsCreated++;
     }
 
-    // 5. Autopsy & Practice Mistakes (via Repair Loop)
-    const questionId = signal.metadata?.questionId as string | undefined;
+    // 5. Autopsy & Mistakes
     const isMistake = ['autopsy_mistake_detected', 'weak_area_detected', 'misconception_detected'].includes(signal.type);
+    if (isMistake && resolvedConceptId) {
+      payload.mistakes = [{
+        concept_id: resolvedConceptId,
+        subject: signal.subject || null,
+        topic: signal.topic || conceptName || null,
+        mistake_text: (signal.metadata?.mistakeText as string) || signal.evidence || 'Mistake evidence was not provided.',
+        question_text: (signal.metadata?.questionText as string) || null,
+        correct_answer: (signal.metadata?.correctAnswer as string) || null,
+        user_answer: (signal.metadata?.userAnswer as string) || null,
+        why_wrong: (signal.metadata?.whyWrong as string) || null,
+        severity: (signal.metadata?.severity as number) || (signal.type === 'misconception_detected' ? 4 : 3),
+        source: signal.source || 'autopsy',
+        source_id: String(sessionId || assessmentId || idempotencyKey),
+        metadata: { ...signal.metadata, idempotencyKey },
+      }];
+      result.mistakeRecorded = true;
+    }
+
+    // 6. Session Card Invalidation
+    if (signal.type === 'session_completed') {
+      payload.session_card = { action: 'complete_today' };
+      result.invalidationTriggered = true;
+    } else if (signal.type === 'autopsy_mistake_detected' || signal.type === 'concept_practiced') {
+      payload.session_card = { action: 'invalidate_today' };
+      result.invalidationTriggered = true;
+    }
+
+    // 7. Atomic RPC Execution
+    const { data: rpcResult, error: rpcError } = await supabase.rpc('apply_core_loop_projection', { payload });
     
-    if (isMistake) {
-      try {
-        const mistakeRes = await upsertMistakeRisk(supabase, {
-          userId,
-          goalId,
-          source: (signal.source as any) || 'autopsy',
-          subject: signal.subject || null,
-          topic: signal.topic || signal.concept || null,
-          concept: signal.concept || null,
-          conceptId: resolvedConceptId || (signal.metadata?.conceptId as string) || null,
-          mistakeText: (signal.metadata?.mistakeText as string) || signal.evidence || 'Mistake evidence was not provided.',
-          questionText: (signal.metadata?.questionText as string) || null,
-          correctAnswer: (signal.metadata?.correctAnswer as string) || null,
-          userAnswer: (signal.metadata?.userAnswer as string) || null,
-          whyWrong: (signal.metadata?.whyWrong as string) || null,
-          severity: (signal.metadata?.severity as number) || (signal.type === 'misconception_detected' ? 4 : 3),
-          sourceId: String(sessionId || assessmentId || idempotencyKey),
-          invalidateSession: false, // We handle invalidation separately in step 6
-          metadata: { ...signal.metadata, idempotencyKey },
-        });
-
-        if (mistakeRes.mistake) {
-          result.mistakeRecorded = true;
-          result.mistakeIds.push(mistakeRes.mistake.id);
-          if (options.context) {
-            await recordAgentActivity(supabase, {
-              userId,
-              runId: options.context.runId,
-              agentName: 'autopsy',
-              actionType: 'mistake_recorded',
-              targetType: 'mistake',
-              targetId: mistakeRes.mistake.id,
-              confidence: signal.confidence,
-              evidence: { signal, mistakeId: mistakeRes.mistake.id },
-              reason: `Mistake recorded for ${signal.concept} based on ${signal.type}`,
-              idempotencyKey: stableKey([idempotencyKey, 'mistake-act']),
-            });
-
-            // Hermes v1 Audit Trail
-            await supabase.from('learning_state_changes').insert({
-              user_id: userId,
-              run_id: options.context.runId,
-              tool_name: 'projectLearningSignal',
-              event_type: 'mistake_recorded',
-              concept_id: mistakeRes.mistake.concept_id || null,
-              before_state: null,
-              after_state: { mistake_id: mistakeRes.mistake.id, mistake_text: mistakeRes.mistake.mistake_text },
-              diff_summary: { signal: signal.type, severity: mistakeRes.mistake.severity, reason: `Mistake recorded for ${signal.concept}` },
-              policy_decision: 'auto_approved_by_projector',
-            });
-          }
-        }
-      } catch (mistakeErr) {
-        throw new CognitionError(
-          'MISTAKE_WRITE_FAILED',
-          mistakeErr instanceof Error ? mistakeErr.message : 'Mistake state could not be updated.',
-          true,
-          undefined,
-          mistakeErr
-        );
-      }
+    if (rpcError) {
+      throw new CognitionError('CORE_LOOP_PROJECTION_FAILED', `RPC failed: ${rpcError.message}`, true, undefined, rpcError);
+    }
+    if (!rpcResult?.ok) {
+      throw new CognitionError('CORE_LOOP_PROJECTION_REJECTED', `RPC rejected: ${rpcResult?.message}`, true, undefined, rpcResult);
     }
 
-    // 6. Session Card Invalidation (Phase 5.5: complete not invalidate today)
-    const shouldAct = ['session_completed', 'autopsy_mistake_detected', 'concept_practiced'].includes(signal.type);
-    if (shouldAct) {
-      try {
-        const localDate = now.toISOString().split('T')[0];
-        if (signal.type === 'session_completed') {
-          // Mark today's card as completed (preserves history), then invalidate only tomorrow
-          await markSessionCardCompleted(userId, localDate, goalId, { client: supabase });
-          // Only delete tomorrow's card so future recommendations adapt
-          const tomorrow = new Date(Date.now() + 86_400_000).toISOString().split('T')[0];
-          let tomorrowDelete = supabase.from('session_cards').delete().eq('user_id', userId).eq('date', tomorrow);
-          if (goalId) {
-            tomorrowDelete = tomorrowDelete.eq('goal_id', goalId);
-          } else {
-            tomorrowDelete = tomorrowDelete.is('goal_id', null);
-          }
-          await tomorrowDelete;
-          result.invalidationTriggered = true;
-        } else if (signal.type === 'autopsy_mistake_detected') {
-          // For autopsy: only invalidate today if card is NOT already completed
-          let todayCardQuery = supabase
-            .from('session_cards')
-            .select('is_completed, isCompleted')
-            .eq('user_id', userId)
-            .eq('date', localDate);
-          if (goalId) {
-            todayCardQuery = todayCardQuery.eq('goal_id', goalId);
-          } else {
-            todayCardQuery = todayCardQuery.is('goal_id', null);
-          }
-          const { data: todayCard } = await todayCardQuery.maybeSingle();
-          const isAlreadyCompleted = todayCard?.is_completed || todayCard?.isCompleted;
-          if (!isAlreadyCompleted) {
-            await invalidateSessionCard(userId, 'AUTOPSY_COMPLETED' as any, {
-              goalId,
-              sourceEventId: idempotencyKey,
-              client: supabase,
-            });
-          } else {
-            // Card done — only invalidate tomorrow
-            const tomorrow = new Date(Date.now() + 86_400_000).toISOString().split('T')[0];
-            let tomorrowDelete = supabase.from('session_cards').delete().eq('user_id', userId).eq('date', tomorrow);
-            if (goalId) {
-              tomorrowDelete = tomorrowDelete.eq('goal_id', goalId);
-            } else {
-              tomorrowDelete = tomorrowDelete.is('goal_id', null);
-            }
-            await tomorrowDelete;
-          }
-          result.invalidationTriggered = true;
-        } else {
-          // concept_practiced — invalidate normally
-          await invalidateSessionCard(userId, 'STUDY_SESSION_COMPLETED' as any, {
-            goalId,
-            sourceEventId: idempotencyKey,
-            client: supabase,
-          });
-          result.invalidationTriggered = true;
-        }
-      } catch (invErr) {
-        throw new CognitionError(
-          'SESSION_UPDATE_FAILED',
-          invErr instanceof Error ? invErr.message : 'Session state could not be updated.',
-          true,
-          undefined,
-          invErr
-        );
-      }
-    }
-
+    result.learningEventId = rpcResult.learning_event_id || idempotencyKey;
+    if (rpcResult.revision_card_ids) result.revisionCardIds = rpcResult.revision_card_ids;
+    if (rpcResult.mistake_ids) result.mistakeIds = rpcResult.mistake_ids;
+    result.eventsWritten = 1;
+    
   } catch (err: any) {
     const cognitionError = toCognitionError(err, 'LEARNING_EVENT_FAILED', 'Learner state projection failed.');
     logger.error('Projector: fatal error projecting signal', { 

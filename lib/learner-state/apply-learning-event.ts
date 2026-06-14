@@ -2,7 +2,6 @@ import type { SupabaseClient } from '@supabase/supabase-js';
 import type { AgentChannel, LearningSignal } from '@/lib/agent/types';
 import { projectLearningSignal } from '@/lib/learner-state/projector';
 import { resolveActiveGoalForUser } from '@/lib/goals/resolve-active-goal';
-import { EventDispatcher } from '@/lib/events/orchestrator';
 import { stableKey } from '@/lib/agent/tools/learning/common';
 import { CognitionError, type CognitionErrorCode, toCognitionError } from '@/lib/errors/cognition-errors';
 import {
@@ -187,25 +186,7 @@ export async function applyLearningEvent(
       },
     });
 
-    try {
-      await EventDispatcher.publish({
-        user_id: input.userId,
-        type: 'LEARNING_EVENT_APPLIED',
-        data: {
-          learningEventId: projection.learningEventId,
-          goalId,
-          conceptId: projection.conceptId,
-          source: input.source,
-          outcome: input.result.outcome,
-        },
-        metadata: { traceId: trace.traceId, runtimeProcessed: true },
-        idempotency_key: `${idempotencyKey}:published`,
-      });
-      recordCoreLoopStep(trace, { name: 'publish_event', status: 'success' });
-    } catch (error) {
-      throw new CognitionError('EVENT_PUBLISH_FAILED', 'Learner state changed, but its audit event could not be published.', true, trace.traceId, error);
-    }
-
+    // Event publishing is now handled atomically via the Outbox pattern in the projection RPC.
     const result: LearningEventResult = {
       ok: true,
       learningEventId: projection.learningEventId ?? idempotencyKey,

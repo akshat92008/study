@@ -418,3 +418,36 @@ export async function applyMasteryUpdate(params: {
 
   return { oldMastery, changed: result.changed };
 }
+
+export async function simulateMasteryUpdate(params: {
+  userId: string;
+  conceptId: string;
+  evidenceType: MasteryEvidenceType;
+  weight?: number;
+  confidence?: number;
+  client: any;
+}) {
+  const supabase = params.client;
+  const { data: concept } = await supabase.from('concepts').select('mastery, mastery_score, times_reviewed').eq('id', params.conceptId).eq('user_id', params.userId).maybeSingle();
+  const oldScore = concept?.mastery_score || 0;
+  const oldMastery = (concept?.mastery as MasteryLevel) || 'not_started';
+  
+  const { data: events } = await supabase.from('mastery_events').select('evidence_type, weight').eq('user_id', params.userId).eq('concept_id', params.conceptId).limit(200);
+  
+  const baseScore = (events || []).reduce((sum: number, event: any) => sum + Number(event.weight ?? (EVIDENCE_WEIGHTS[event.evidence_type as MasteryEvidenceType] ?? 0)), 0);
+  const newWeight = params.weight ?? EVIDENCE_WEIGHTS[params.evidenceType];
+  const finalScore = Math.min(100, Math.max(0, baseScore + newWeight));
+  
+  const evidenceCount = (events?.length || 0) + 1;
+  const confidence = Math.max(0.1, Math.min(1, 0.2 + evidenceCount * 0.08));
+  const forgettingProbability = Math.max(0, Math.min(1, 1 - confidence + (finalScore < 25 ? 0.15 : 0)));
+  const newMastery = masteryFromScore(finalScore);
+
+  return {
+    oldMastery, newMastery,
+    oldScore, newScore: finalScore, delta: finalScore - oldScore,
+    forgettingProbability, confidence,
+    changed: oldMastery !== newMastery,
+    weight: newWeight
+  };
+}

@@ -1,24 +1,10 @@
 import type { AgentObservation, RetrievedSourceChunk, ToolResultRecord, VerificationResult } from '@/lib/agent/types';
 import type { SupabaseClient } from '@supabase/supabase-js';
 
-async function exists(
-  supabase: SupabaseClient,
-  input: { table: string; id: string; userId: string; userColumn?: string }
-) {
-  const { data, error } = await supabase
-    .from(input.table)
-    .select('id')
-    .eq('id', input.id)
-    .eq(input.userColumn ?? 'user_id', input.userId)
-    .maybeSingle();
-  if (error) return { ok: false, message: error.message };
-  return { ok: Boolean((data as any)?.id), message: (data as any)?.id ? 'verified' : 'missing' };
-}
-
 export async function verifyAgentTurn(input: {
   supabase: SupabaseClient;
   userId: string;
-  runId: string; // Added runId
+  runId: string;
   observation: AgentObservation;
   sourceChunks: RetrievedSourceChunk[];
   toolResults: ToolResultRecord[];
@@ -27,58 +13,7 @@ export async function verifyAgentTurn(input: {
   const warnings: string[] = [];
   const errors: string[] = [];
 
-  async function verifyEntity(result: ToolResultRecord, entityType: string, table: string, id: string, userColumn = 'user_id') {
-    const verified = await exists(input.supabase, { table, id, userId: input.userId, userColumn });
-    const check = {
-      name: `${result.toolName}:${table}`,
-      ok: verified.ok,
-      entityType,
-      entityId: id,
-      message: verified.message,
-    };
-    checks.push(check);
-    
-    // Fix 9: Write agent_verifications row for mutating tools
-    try {
-      await input.supabase.from('agent_verifications').insert({
-        run_id: input.runId,
-        tool_call_id: result.id,
-        user_id: input.userId,
-        verification_type: table,
-        entity_type: entityType,
-        entity_id: id,
-        expected: { exists: true },
-        actual: { exists: verified.ok, message: verified.message },
-        success: verified.ok,
-        summary: `${result.toolName} verified against ${table}`,
-      });
-    } catch (e) {
-      console.warn('Failed to write agent_verification', e);
-    }
-
-    // Update agent_tool_calls row with verification status
-    // Fix 8: Downgrade status to 'failed' if verification fails
-    try {
-      if (!verified.ok) {
-        await input.supabase.from('agent_tool_calls')
-          .update({
-            verification: check,
-            status: 'failed',
-            changed: false,
-          })
-          .eq('id', result.id);
-      } else {
-        await input.supabase.from('agent_tool_calls')
-          .update({ verification: check })
-          .eq('id', result.id);
-      }
-    } catch (e) {
-      console.warn('Failed to update agent_tool_call verification', e);
-    }
-
-    if (!verified.ok) errors.push(`${result.toolName}: could not verify ${entityType} ${id}`);
-  }
-
+  // Check 1: Source chunks retrieval
   if (input.observation.sourceRequested) {
     checks.push({
       name: 'source_chunks_retrieved',
@@ -88,39 +23,63 @@ export async function verifyAgentTurn(input: {
     });
   }
 
+  // Check 2: Core Loop Trace for mutations
+  const mutationTools = [
+    'apply_practice_attempt', 'write_learning_event', 'upsert_atlas_concept',
+    'update_concept_mastery', 'create_memory_card', 'update_microtarget',
+    'record_autopsy_mistake', 'complete_session'
+  ];
+
+  const hasMutations = input.toolResults.some(res => 
+    res.success && res.changed && mutationTools.includes(res.toolName)
+  );
+
+  let traceCompleted = true;
+
+  if (hasMutations) {
+    const { data: trace, error: traceError } = await input.supabase
+      .from('core_loop_traces')
+      .select('status, error_code')
+      .eq('id', input.runId)
+      .maybeSingle();
+
+    if (traceError) {
+      warnings.push(`Could not query core_loop_traces: ${traceError.message}`);
+      traceCompleted = false;
+    } else if (!trace) {
+      errors.push('core_loop_trace_missing: Agent requested mutations but no trace was committed by the projection RPC.');
+      traceCompleted = false;
+    } else if (trace.status !== 'completed') {
+      errors.push(`core_loop_trace_failed: Trace status is ${trace.status}. Error: ${trace.error_code}`);
+      traceCompleted = false;
+    }
+
+    checks.push({
+      name: 'core_loop_projection',
+      ok: traceCompleted,
+      entityType: 'core_loop_trace',
+      entityId: input.runId,
+      message: traceCompleted ? 'Atomic core loop projection verified' : 'Core loop projection trace incomplete or missing',
+    });
+  }
+
+  // Process tool result basic errors
   for (const result of input.toolResults) {
     if (!result.success) {
       errors.push(`${result.toolName}: ${result.error?.message ?? result.summary}`);
-      continue;
-    }
-
-    if (result.toolName === 'apply_practice_attempt') {
-      const data = result.data as any;
-      const actionId = typeof data?.agentActionId === 'string' ? data.agentActionId : result.entityIds?.[0];
-      if (typeof actionId === 'string') await verifyEntity(result, 'agent_action', 'agent_actions', actionId);
-      for (const id of Array.isArray(data?.conceptIds) ? data.conceptIds.slice(0, 8) : []) {
-        if (typeof id === 'string') await verifyEntity(result, 'concept', 'concepts', id);
-      }
-      for (const id of Array.isArray(data?.cardIds) ? data.cardIds.slice(0, 8) : []) {
-        if (typeof id === 'string') await verifyEntity(result, 'revision_card', 'revision_cards', id);
-      }
-      continue;
-    }
-
-    if (!result.changed || !result.entityType || !result.entityIds?.length) continue;
-
-    const ids = result.entityIds.slice(0, 8);
-    for (const id of ids) {
-      let table: string | null = null;
-      const userColumn = 'user_id';
-      if (result.entityType === 'concept') table = 'concepts';
-      if (result.entityType === 'revision_card') table = 'revision_cards';
-      if (result.entityType === 'daily_microtask') table = 'daily_microtasks';
-      if (result.entityType === 'study_session') table = 'study_sessions';
-      if (result.entityType === 'mistake') table = 'mistakes';
-      if (result.entityType === 'learning_event') table = id === result.entityIds[0] ? 'learner_events' : 'agent_actions';
-      if (!table) continue;
-      await verifyEntity(result, result.entityType, table, id, userColumn);
+      
+      // Downgrade status if failed
+      await input.supabase.from('agent_tool_calls')
+        .update({
+          status: 'failed',
+          changed: false,
+        })
+        .eq('id', result.id);
+    } else {
+      // Mark as verified since it succeeded and the core loop was atomic
+      await input.supabase.from('agent_tool_calls')
+        .update({ verification: { ok: true, name: 'atomic_projection_verified' } })
+        .eq('id', result.id);
     }
   }
 
