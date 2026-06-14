@@ -16,7 +16,9 @@ export async function POST(req: NextRequest, context: RouteContext) {
   try {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return apiErrorResponse('unauthorized', { status: 401, message: 'Authentication is required.', requestId });
+    if (!user) {
+      return NextResponse.json({ ok: false, errorCode: 'unauthorized', message: 'Authentication is required.', requestId, retryable: false }, { status: 401 });
+    }
 
     const params = await context.params;
     const { data: material, error } = await supabase
@@ -25,9 +27,11 @@ export async function POST(req: NextRequest, context: RouteContext) {
       .eq('id', params.id)
       .eq('user_id', user.id)
       .maybeSingle();
+    
     if (error) throw error;
+    
     if (!material?.storage_path) {
-      return apiErrorResponse('not_found', { status: 404, message: 'Study material file was not found.', requestId });
+      return NextResponse.json({ ok: false, errorCode: 'not_found', message: 'Study material file was not found.', requestId, retryable: false }, { status: 404 });
     }
 
     if (featureFlags.ragIngestion()) {
@@ -37,11 +41,7 @@ export async function POST(req: NextRequest, context: RouteContext) {
         .download(material.storage_path);
 
       if (download.error || !download.data) {
-        return apiErrorResponse('not_found', {
-          status: 404,
-          message: 'The stored source file could not be downloaded for indexing.',
-          requestId,
-        });
+        return NextResponse.json({ ok: false, errorCode: 'download_failed', message: 'The stored source file could not be downloaded for indexing.', requestId, retryable: true }, { status: 404 });
       }
 
       const arrayBuffer = await download.data.arrayBuffer();
@@ -75,7 +75,7 @@ export async function POST(req: NextRequest, context: RouteContext) {
         });
 
         return NextResponse.json(
-          { status: result.status, chunksProcessed: result.chunks },
+          { ok: true, materialId: material.id, status: result.status, jobId: `inline-${requestId}`, requestId, chunksProcessed: result.chunks },
           { status: result.status === 'ready' ? 200 : 202, headers: { 'x-request-id': requestId } }
         );
       }
@@ -93,8 +93,12 @@ export async function POST(req: NextRequest, context: RouteContext) {
           mimeType: material.mime_type,
           requestedBy: 'user_reprocess',
         },
-      }, { onConflict: 'user_id,material_id,idempotency_key' });
+      }, { onConflict: 'user_id,material_id,idempotency_key' })
+      .select('id')
+      .single();
+    
     if (jobError) throw jobError;
+    const jobId = (jobError as any)?.id || `job-${requestId}`; // Fallback if insert didn't return id
 
     await supabase
       .from('study_materials')
@@ -128,10 +132,11 @@ export async function POST(req: NextRequest, context: RouteContext) {
     });
 
     return NextResponse.json(
-      { status: 'queued', chunksProcessed: 0 },
+      { ok: true, materialId: material.id, status: 'queued', jobId, requestId },
       { status: 202, headers: { 'x-request-id': requestId } }
     );
   } catch (error) {
-    return unexpectedApiErrorResponse(req, error, 'material_reprocess_unhandled', 'Unable to reprocess study material.');
+    console.error('Reprocess route error:', error);
+    return NextResponse.json({ ok: false, errorCode: 'internal_error', message: 'Unable to reprocess study material.', requestId, retryable: true }, { status: 500 });
   }
 }

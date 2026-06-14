@@ -265,16 +265,28 @@ export async function budgetedStreamGeneration(
       )
 
       let totalChars = 0
+      let fullResponseBuffer = ''
       for await (const chunk of generator) {
         totalChars += chunk.length
+        fullResponseBuffer += chunk
         yield chunk
       }
 
-      await commitBudgetUsage(reservation.reservationId, {
-        promptTokens: estimatedInput,
-        completionTokens: Math.ceil(totalChars / 4),
-        route: args.route,
-      })
+      const isDegraded = fullResponseBuffer.includes('temporarily unavailable') || 
+                         fullResponseBuffer.includes('at capacity') || 
+                         fullResponseBuffer.includes('catching up with demand') ||
+                         fullResponseBuffer.includes('I could not generate that part right now') ||
+                         fullResponseBuffer.includes('temporarily paused');
+
+      if (!isDegraded) {
+        await commitBudgetUsage(reservation.reservationId, {
+          promptTokens: estimatedInput,
+          completionTokens: Math.ceil(totalChars / 4),
+          route: args.route,
+        })
+      } else {
+        await releaseBudgetReservation(reservation.reservationId, 'degraded_response').catch(() => null)
+      }
       budgetSettled = true
 
     } catch (error) {

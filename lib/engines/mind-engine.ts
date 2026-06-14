@@ -50,6 +50,8 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
     let ragContext: RagContext | null = null;
     if (message && message.trim().length > 15) {
       try {
+        const { isExplicitRagRequest } = await import('@/lib/rag/retrieval');
+        const ragMode = isExplicitRagRequest(message) ? 'explicit' : 'implicit';
         const ragEngine = new RAGEngine();
         ragContext = await ragEngine.retrieve({
           userId,
@@ -57,6 +59,7 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
           subject,
           chapter: topic,
           goalId: goalId ?? undefined,
+          mode: ragMode,
         });
         const { formatCitation } = await import('@/lib/rag/citations');
         // Limit to 3 sources for faster response as per CHAT_CONTEXT_LIMITS
@@ -74,7 +77,10 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
           pageEnd: chunk.pageEnd,
           heading: chunk.heading,
         }));
-      } catch (err) {
+      } catch (err: any) {
+        if (err.message === 'RAG_SOURCE_PROCESSING') {
+          throw err;
+        }
         logger.warn('[MIND] RAG search failed, continuing without:', err);
       }
     }

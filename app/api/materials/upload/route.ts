@@ -260,6 +260,9 @@ export async function POST(req: NextRequest) {
         content_hash: contentHash,
         goal_id: goalId,
         chat_session_id: chatSessionId,
+        detected_subject: formString(formData.get('detectedSubject')),
+        mismatch_warning_acknowledged: formData.get('mismatchWarningAcknowledged') === 'true',
+        goal_match_score: formData.get('mismatchWarningAcknowledged') === 'true' ? 0 : null,
       })
       .select('id, title, status')
       .single();

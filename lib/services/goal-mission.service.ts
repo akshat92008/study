@@ -93,17 +93,31 @@ export async function getOrCreateGoalMission(
   }
 
   let seededTopics = await loadSeededTopics(supabase, userId, goalId);
-  if (seededTopics.length === 0) {
-    const domain = inferGoalDomain(goal.title, {
-      subject: goal.subject,
+  const hasOnlyFallback = seededTopics.every((t: any) => t.source === 'custom_seed' || t.source === 'amaura_mission_fallback');
+
+  if (seededTopics.length === 0 || hasOnlyFallback) {
+    const { data: materials } = await supabase
+      .from('study_materials')
+      .select('title, detected_subject')
+      .eq('user_id', userId)
+      .eq('goal_id', goalId)
+      .order('created_at', { ascending: false })
+      .limit(1);
+
+    const material = materials?.[0];
+    const seedingTitle = material?.title ?? goal.title;
+    
+    const domain = inferGoalDomain(seedingTitle, {
+      subject: material?.detected_subject ?? goal.subject,
       domain: goal.domain,
       exam: goal.exam_type,
       grade: goal.target_level,
     });
-    await seedTopicsForGoal(supabase, {
+    
+    const result = await seedTopicsForGoal(supabase, {
       userId,
       goalId,
-      goalTitle: goal.title,
+      goalTitle: seedingTitle,
       goalType: domain.exam ?? domain.domain,
       subject: domain.subject ?? goal.subject ?? null,
       subjects: domain.subject ? [domain.subject] : goal.subject ? [goal.subject] : [],
@@ -112,6 +126,16 @@ export async function getOrCreateGoalMission(
       grade: domain.grade,
       board: domain.board,
     }).catch(() => null);
+
+    if (result && !result.skipped && result.source !== 'custom_seed' && seededTopics.length > 0) {
+      await supabase
+        .from('seeded_topics')
+        .delete()
+        .eq('user_id', userId)
+        .eq('goal_id', goalId)
+        .eq('source', 'custom_seed');
+    }
+
     seededTopics = await loadSeededTopics(supabase, userId, goalId);
   }
 

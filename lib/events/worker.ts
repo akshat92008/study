@@ -1014,12 +1014,24 @@ export class EventWorkerService {
       return { status: 'HANDLED' };
     } catch (err: any) {
       const message = err instanceof Error ? err.message : String(err);
+      
+      const { data: current } = await supabase
+        .from('study_materials')
+        .select('retry_count')
+        .eq('id', materialId)
+        .eq('user_id', userId)
+        .single();
+      
       await supabase
         .from('study_materials')
         .update({
           status: 'failed',
           retryable: true,
           error_message: message.slice(0, 500),
+          last_error: message.slice(0, 500),
+          last_error_code: 'download_failed',
+          retry_count: (current?.retry_count ?? 0) + 1,
+          processing_finished_at: new Date().toISOString(),
           updated_at: new Date().toISOString(),
         })
         .eq('id', materialId)

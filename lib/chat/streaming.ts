@@ -189,18 +189,28 @@ export async function handleMainStreaming({
           fullResponse += truncationHint;
         }
 
+        const isDegraded = fullResponse.includes('temporarily unavailable') || 
+                           fullResponse.includes('at capacity') || 
+                           fullResponse.includes('catching up with demand') ||
+                           fullResponse.includes('I could not generate that part right now') ||
+                           fullResponse.includes('temporarily paused');
+
         await finalizeAssistantTurn({
           assistantText: fullResponse,
           intent,
           metadata: metadataPayload ?? {},
           budgetReservationId: null,
+          turnStatus: isDegraded ? 'failed_provider' : 'assistant_saved',
         });
 
       } catch (err: any) {
         logger.error('Chat stream error', err);
-        controller.enqueue(encoder.encode('\
-\
-I could not generate that part right now. Try again in a moment.'));
+        const { getDegradationMessage } = await import('@/lib/ai/degradation-messages');
+        const fallbackMsg = err.message === 'RAG_SOURCE_PROCESSING' 
+          ? getDegradationMessage('source_processing') 
+          : getDegradationMessage('default');
+        
+        controller.enqueue(encoder.encode(`\n\n*${fallbackMsg}*`));
       } finally {
         controller.close();
       }

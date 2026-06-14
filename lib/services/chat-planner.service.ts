@@ -64,6 +64,7 @@ export class ChatPlannerService {
   static async handleCreateArtifact(
     supabase: SupabaseClient,
     userId: string,
+    mindContext: any,
     systemPrompt: string,
     recentHistory: any[],
     message: string,
@@ -71,7 +72,34 @@ export class ChatPlannerService {
     encoder: TextEncoder
   ) {
     let fullResponse = '';
-    const artifactSystemPrompt = `${systemPrompt}\n\nYou are in ARTIFACT CREATION mode. The learner has asked you to create a study plan, planner, revision sheet, or similar artifact.\n\nRules:\n- If they mention an upcoming test or deadline date, build a day-by-day study plan from today until that date.\n- Cover all weak areas from their Progress profile first, then fill remaining days with stronger subjects/topics.\n- Format the plan clearly with days, topics, and time estimates.\n- If the user simply asks to add a specific topic to their planner, output a short 1-day plan with just that task.\n- If they say "full syllabus" or "all subjects", cover all subjects/topics from their learning goal.\n- Be specific and actionable. Not generic.\n- End with one motivating line about what hitting this plan will accomplish.\n- IMPORTANT: Do NOT wrap the <artifact> tags in markdown code blocks (like \`\`\`xml). Output the raw <artifact> tags directly.`;
+    
+    const timezone = mindContext?.profile?.timezone || 'UTC';
+    // Use an offset trick to get the date string in the target timezone
+    const todayDate = new Date(new Date().toLocaleString("en-US", {timeZone: timezone}));
+    // Format YYYY-MM-DD safely
+    const yyyy = todayDate.getFullYear();
+    const mm = String(todayDate.getMonth() + 1).padStart(2, '0');
+    const dd = String(todayDate.getDate()).padStart(2, '0');
+    const todayStr = `${yyyy}-${mm}-${dd}`;
+    const todayDisplay = todayDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+    const activeGoalContext = mindContext?.activeGoal?.title ? `\nActive Goal: ${mindContext.activeGoal.title}` : '';
+    const examDateContext = mindContext?.profile?.examDate ? `\nExam Date: ${mindContext.profile.examDate}` : '';
+
+    const artifactSystemPrompt = `${systemPrompt}\n\nYou are in ARTIFACT CREATION mode. The learner has asked you to create a study plan, planner, revision sheet, or similar artifact.
+    
+SERVER CONTEXT:
+Current Date: ${todayDisplay} (Timezone: ${timezone})${activeGoalContext}${examDateContext}
+
+Rules:
+- If they mention an upcoming test or deadline date, build a day-by-day study plan from today (${todayDisplay}) until that date.
+- Cover all weak areas from their Progress profile first, then fill remaining days with stronger subjects/topics.
+- Format the plan clearly with real dates (e.g. ${todayStr}), topics, and time estimates.
+- If the user simply asks to add a specific topic to their planner, output a short 1-day plan with just that task for today (${todayStr}).
+- If they say "full syllabus" or "all subjects", cover all subjects/topics from their learning goal.
+- Be specific and actionable. Not generic. Anchor 4-hour plans to real dates and realistic time allocations.
+- End with one motivating line about what hitting this plan will accomplish.
+- IMPORTANT: Do NOT wrap the <artifact> tags in markdown code blocks (like \`\`\`xml). Output the raw <artifact> tags directly.`;
     const conversationMessages = buildConversationMessages(recentHistory, message);
     
     const generator = await budgetedStreamGeneration({
@@ -92,7 +120,6 @@ export class ChatPlannerService {
     fullResponse += '\n\n*Scheduling microtargets to your dashboard...*';
 
     try {
-      const todayStr = new Date().toISOString().split('T')[0];
       const extractPrompt = `You are a structured operational planner for Cognition OS.\nExtract a list of specific study tasks from this study plan to schedule in the learner's database.\nIf a task does not have a specific date mentioned, schedule it for today (${todayStr}).\n\nStudy Plan Text:\n${fullResponse}\n\nReturn ONLY valid JSON matching this schema:\n{\n  "tasks": [\n    {\n      "title": "Short title of the task (e.g. Study Newton's Laws, Revise Spanish Verbs, Practice Binary Trees)",\n      "subject": "<subject or domain inferred from context, e.g. Physics, Spanish, Algorithms>",\n      "chapter": "<chapter, module, or topic name>",\n      "estimated_minutes": 45,\n      "scheduled_date": "YYYY-MM-DD"\n    }\n  ]\n}`;
       const taskListSchema = z.object({
         tasks: z.array(z.object({

@@ -36,8 +36,8 @@ export class RAGEngine {
     materialIds?: string[];
     subject?: string | null;
     chapter?: string | null;
-    goalId?: string | null;
     chatSessionId?: string | null;
+    mode?: 'explicit' | 'implicit' | 'off';
   }) {
     return retrieveRagContext({
       userId: input.userId,
@@ -47,6 +47,7 @@ export class RAGEngine {
       chapter: input.chapter || undefined,
       goalId: input.goalId,
       chatSessionId: input.chatSessionId,
+      mode: input.mode,
     });
   }
 

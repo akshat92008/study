@@ -56,4 +56,23 @@ export const NEET_BIOLOGY_TEMPLATES: SeedTemplate[] = [
       { orderIndex: 9, topic: 'Common genetics mistakes', microtarget: 'Avoid ratio, pedigree, and dominance interpretation errors.' },
     ],
   },
+  {
+    templateKey: 'neet_biology_biotechnology',
+    subject: 'Biology',
+    chapter: 'Biotechnology: Principles and Processes',
+    displayName: 'Biotechnology',
+    aliases: ['biotechnology', 'biotech', 'biotechnology principles and processes', 'biotechnology and its applications', 'recombinant dna technology', 'r-dna technology', 'genetic engineering'],
+    topics: [
+      { orderIndex: 1, topic: 'Restriction enzymes', microtarget: 'Understand source, recognition site, sticky/blunt ends, and nomenclature.' },
+      { orderIndex: 2, topic: 'Cloning vectors', microtarget: 'Understand ori, selectable marker, cloning sites, and pBR322.' },
+      { orderIndex: 3, topic: 'Polymerase Chain Reaction (PCR)', microtarget: 'Master denaturation, annealing, extension, and Taq polymerase role.' },
+      { orderIndex: 4, topic: 'Gel electrophoresis', microtarget: 'Understand DNA movement, EtBr staining, UV exposure, and elution.' },
+      { orderIndex: 5, topic: 'Bioreactors', microtarget: 'Identify parts and conditions of simple and sparged stirred-tank bioreactors.' },
+      { orderIndex: 6, topic: 'Downstream processing', microtarget: 'Understand separation and purification of products.' },
+      { orderIndex: 7, topic: 'Bt cotton', microtarget: 'Understand cry gene, protoxin, and alkaline gut activation.' },
+      { orderIndex: 8, topic: 'Gene therapy', microtarget: 'Revise ADA deficiency example and retroviral vectors.' },
+      { orderIndex: 9, topic: 'ELISA and Diagnostics', microtarget: 'Understand antigen-antibody interaction principle and PCR in early diagnosis.' },
+      { orderIndex: 10, topic: 'RNA interference (RNAi)', microtarget: 'Understand nematode resistance in tobacco plants via RNAi.' },
+    ],
+  },
 ];

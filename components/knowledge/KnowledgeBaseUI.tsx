@@ -18,6 +18,8 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
   const [audioResponse, setAudioResponse] = useState<{ script: string; audioDataUrl: string | null; materialTitle: string } | null>(null);
   const [generatingPodcastId, setGeneratingPodcastId] = useState<string | null>(null);
   const [reprocessingId, setReprocessingId] = useState<string | null>(null);
+  const [mismatchWarning, setMismatchWarning] = useState<{title: string, file: File, activeGoalTitle: string, fileSub: string, goalSub: string} | null>(null);
+  const [pendingFormData, setPendingFormData] = useState<FormData | null>(null);
   const activeGoal = learningGoals.find(goal => goal.id === activeGoalId);
 
   const loadMaterials = useCallback(async () => {
@@ -40,6 +42,15 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
   useEffect(() => {
     loadMaterials().catch(() => {});
   }, [loadMaterials]);
+
+  useEffect(() => {
+    const hasPending = materials.some(m => m.status === 'queued' || m.status === 'processing');
+    if (!hasPending) return;
+    const interval = setInterval(() => {
+      loadMaterials().catch(() => {});
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [materials, loadMaterials]);
 
   async function handleGeneratePodcast(materialId: string) {
     setGeneratingPodcastId(materialId);
@@ -107,7 +118,36 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
     const formData = new FormData(e.currentTarget);
     if (activeGoalId) formData.set('goalId', activeGoalId);
     if (chatId) formData.set('chatSessionId', chatId);
+
+    if (activeGoal) {
+      const title = formData.get('title') as string || '';
+      const file = formData.get('file') as File;
+      const fileText = (title + ' ' + (file?.name || '')).toLowerCase();
+      const goalText = activeGoal.title.toLowerCase();
+      
+      const detectSubject = (text: string) => {
+        if (text.includes('physics')) return 'Physics';
+        if (text.includes('chemistry')) return 'Chemistry';
+        if (text.includes('biology') || text.includes('biotech') || text.includes('botany') || text.includes('zoology')) return 'Biology';
+        return null;
+      };
+
+      const fileSub = detectSubject(fileText);
+      const goalSub = detectSubject(goalText);
+
+      if (fileSub && goalSub && fileSub !== goalSub) {
+        setMismatchWarning({ title: title || file.name, file, activeGoalTitle: activeGoal.title, fileSub, goalSub });
+        setPendingFormData(formData);
+        setLoading(false);
+        return;
+      }
+    }
     
+    await processUpload(formData);
+  }
+
+  async function processUpload(formData: FormData) {
+    setLoading(true);
     try {
       const response = await fetch('/api/materials/upload', {
         method: 'POST',
@@ -165,6 +205,36 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
           <Plus size={16} /> Add Source
         </Button>
       </div>
+
+      {mismatchWarning && (
+        <div style={{
+          padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)',
+          background: 'rgba(245, 158, 11, 0.1)', color: 'var(--warning)',
+          border: '1px solid rgba(245, 158, 11, 0.35)', marginBottom: 'var(--sp-4)'
+        }}>
+          <h4 style={{ fontWeight: 'var(--fw-bold)', marginBottom: 'var(--sp-2)' }}>Potential Subject Mismatch</h4>
+          <p style={{ marginBottom: 'var(--sp-3)' }}>
+            This source appears to be related to <strong>Physics/Chemistry/Biology</strong>, but your active goal is <strong>{mismatchWarning.activeGoalTitle}</strong>.
+            Are you sure you want to attach it?
+          </p>
+          <div style={{ display: 'flex', gap: 'var(--sp-3)' }}>
+            <Button variant="ghost" onClick={() => { setMismatchWarning(null); setPendingFormData(null); }}>
+              Cancel
+            </Button>
+            <Button style={{ background: 'var(--warning)', color: '#000' }} onClick={() => {
+              if (pendingFormData) {
+                pendingFormData.set('detectedSubject', mismatchWarning.fileSub);
+                pendingFormData.set('detectedGoalSubject', mismatchWarning.goalSub);
+                pendingFormData.set('mismatchWarningAcknowledged', 'true');
+                processUpload(pendingFormData);
+              }
+              setMismatchWarning(null);
+            }}>
+              Attach Anyway
+            </Button>
+          </div>
+        </div>
+      )}
 
       {status && (
         (() => {
@@ -249,7 +319,8 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)' }}>
             {materials.map((mat) => (
-              <div key={mat.id} style={{
+              <div key={mat.id} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)' }}>
+              <div style={{
                 display: 'flex', alignItems: 'center', padding: 'var(--sp-3)',
                 background: 'var(--bg-tertiary)', borderRadius: 'var(--radius-md)', gap: 'var(--sp-3)',
                 transition: 'all 0.3s ease',
@@ -314,6 +385,15 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
                     <Badge color="purple">{mat.study_material_chunks[0].count} chunks</Badge>
                   )}
                 </div>
+              </div>
+              {mat.status === 'failed' && (mat.error_message || mat.last_error) && (
+                <div style={{ padding: 'var(--sp-2) var(--sp-3)', background: 'rgba(239, 68, 68, 0.1)', color: 'var(--danger)', fontSize: 'var(--fs-sm)', borderRadius: 'var(--radius-md)' }}>
+                  <strong>Error:</strong> {mat.error_message || mat.last_error}
+                  <div style={{ fontSize: 'var(--fs-xs)', opacity: 0.8, marginTop: '2px' }}>
+                    Retryable: {mat.retryable ? 'Yes' : 'No'} {mat.next_retry_at ? `| Next Retry: ${new Date(mat.next_retry_at).toLocaleString()}` : ''}
+                  </div>
+                </div>
+              )}
               </div>
             ))}
           </div>

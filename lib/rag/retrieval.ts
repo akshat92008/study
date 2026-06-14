@@ -36,12 +36,16 @@ export async function retrieveRagContext(input: RagRetrieveInput): Promise<RagCo
   }
 
   if (!materialIds?.length && (input.goalId || input.chatSessionId)) {
-    materialIds = await getPreferredMaterialIds({
+    const prefResult = await getPreferredMaterialIds({
       userId: input.userId,
       goalId: input.goalId,
       chatSessionId: input.chatSessionId,
       limit: Math.max(topK * 4, 12),
     });
+    materialIds = prefResult?.materialIds;
+    if (mode === 'explicit' && prefResult?.hasProcessing) {
+      throw new Error('RAG_SOURCE_PROCESSING');
+    }
   }
 
   const embedding = await embedRagText(input.query.slice(0, 2000), {
@@ -161,13 +165,12 @@ async function getPreferredMaterialIds(input: {
   goalId?: string | null;
   chatSessionId?: string | null;
   limit: number;
-}): Promise<string[] | undefined> {
+}): Promise<{ materialIds: string[]; hasProcessing: boolean } | undefined> {
   const supabase = createAdminClient();
   let query = supabase
     .from('study_materials')
-    .select('id')
+    .select('id, status')
     .eq('user_id', input.userId)
-    .eq('status', 'ready')
     .order('updated_at', { ascending: false })
     .limit(input.limit);
 
@@ -181,7 +184,11 @@ async function getPreferredMaterialIds(input: {
 
   const { data, error } = await query;
   if (error || !data?.length) return undefined;
-  return data.map((row: any) => row.id).filter(Boolean);
+  
+  const hasProcessing = data.some((row: any) => ['queued', 'processing', 'embedding', 'parsed', 'uploaded'].includes(row.status));
+  const materialIds = data.filter((row: any) => row.status === 'ready').map((row: any) => row.id).filter(Boolean);
+  
+  return { materialIds, hasProcessing };
 }
 
 async function keywordFallback(input: RagRetrieveInput, topK: number): Promise<RagChunk[]> {
@@ -206,6 +213,7 @@ async function keywordFallback(input: RagRetrieveInput, topK: number): Promise<R
       page_end,
       heading,
       content,
+      text,
       study_materials!inner(title, source_type, subject, chapter, status)
     `)
     .eq('user_id', input.userId)
@@ -217,7 +225,7 @@ async function keywordFallback(input: RagRetrieveInput, topK: number): Promise<R
   }
 
   // Fix 2: Standardize on content.ilike
-  const orFilter = terms.map((term) => `content.ilike.%${term}%`).join(',');
+  const orFilter = terms.map((term) => `content.ilike.%${term}%,text.ilike.%${term}%`).join(',');
   query = query.or(orFilter);
 
   const { data, error } = await query;
