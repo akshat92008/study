@@ -43,6 +43,15 @@ function markProviderCoolingDown(provider: string, reason: string, cooldownMs: n
   logger.warn(`[AI] Provider ${provider} cooling down (${reason}) for ${cooldownMs}ms`);
 }
 
+function getCooldownDuration(statusCode: number): number {
+  if (statusCode === 404) return 600_000; // 10m for invalid model endpoint
+  if (statusCode === 401 || statusCode === 403) return 120_000; // 2m for auth errors
+  if (statusCode === 429) return 30_000; // 30s for rate limits
+  if (statusCode === 408) return 15_000; // 15s for timeouts
+  if (statusCode >= 500) return 20_000; // 20s for server errors
+  return 15_000; // Default 15s
+}
+
 /**
  * Task complexity classifier to adjust timeouts and provider priority.
  */
@@ -555,7 +564,11 @@ export async function routeTextGeneration(
       break;
     }
 
-    if (await isProviderInCooldown(providerName) || isProviderCoolingDown(providerName)) {
+    const targetId = `${providerName}:${taskType}`;
+    if (
+      await isProviderInCooldown(providerName) || isProviderCoolingDown(providerName) ||
+      await isProviderInCooldown(targetId) || isProviderCoolingDown(targetId)
+    ) {
       logger.info(`Skipping ${providerName} — in cooldown`);
       continue;
     }
@@ -604,7 +617,9 @@ export async function routeTextGeneration(
       }
 
       Metrics.aiCall(providerName, taskType, Date.now() - callStart, true);
-      await recordProviderSuccess(providerName, Date.now() - callStart);
+      const targetId = `${providerName}:${taskType}`;
+      await recordProviderSuccess(targetId, Date.now() - callStart);
+      await resetProviderHealth(targetId);
       await resetProviderHealth(providerName);
       if (reservationId && !skipCommit) {
         const inputChars = messages.reduce((sum, m) => sum + m.content.length, 0);
@@ -626,9 +641,12 @@ export async function routeTextGeneration(
       else if (code === 408) cooldownMs = 120_000; // 2m for timeout
       else if (code >= 500) cooldownMs = 120_000; // 2m for server error
       
-      await recordProviderFailure(providerName, cooldownMs);
-      markProviderCoolingDown(providerName, `${code}`, cooldownMs);
-      logger.warn(`${providerName} failed (${code}), trying next provider`);
+      const isGlobal = code === 401 || code === 429;
+      const targetId = isGlobal ? providerName : `${providerName}:${taskType}`;
+      
+      await recordProviderFailure(targetId, cooldownMs);
+      markProviderCoolingDown(targetId, `${code}`, cooldownMs);
+      logger.warn(`${providerName} failed (${code}) [${isGlobal ? 'global' : 'task'}], trying next provider`);
     }
   }
 
@@ -659,10 +677,23 @@ export async function routeJSONGeneration<T>(
   const fullSystem = systemPrompt + SECURITY_BOUNDARY + 
     '\n\nIMPORTANT: Respond ONLY with valid JSON. No markdown. No explanation. No code fences.';
 
-  for (const providerName of providers) {
-    if (await isProviderInCooldown(providerName) || isProviderCoolingDown(providerName)) continue;
+  let ignoreCooldowns = false;
+  for (let pass = 1; pass <= 2; pass++) {
+    ignoreCooldowns = pass === 2;
+    let anyTried = false;
 
-    const config = getProviderConfig(providerName);
+    for (const providerName of (ignoreCooldowns ? providers.slice(0, 2) : providers)) {
+      const targetId = `${providerName}:json`;
+      if (!ignoreCooldowns && (
+        await isProviderInCooldown(providerName) || isProviderCoolingDown(providerName) ||
+        await isProviderInCooldown(targetId) || isProviderCoolingDown(targetId)
+      )) {
+        if (pass === 1) logger.info(`Skipping ${providerName} — in cooldown`);
+        continue;
+      }
+      anyTried = true;
+
+      const config = getProviderConfig(providerName);
 if (!config || !config.apiKey) {
   logger.info(`Skipping ${providerName} — missing env vars or API key`);
   continue;
@@ -729,13 +760,16 @@ if (!config || !config.apiKey) {
           });
         }
 
+        const targetId = `${providerName}:json`;
         if (schema) {
           const validated = schema.parse(parsed);
-          await recordProviderSuccess(providerName, Date.now() - start);
+          await recordProviderSuccess(targetId, Date.now() - start);
+          await resetProviderHealth(targetId);
           await resetProviderHealth(providerName);
           return validated;
         }
-        await recordProviderSuccess(providerName, Date.now() - start);
+        await recordProviderSuccess(targetId, Date.now() - start);
+        await resetProviderHealth(targetId);
         await resetProviderHealth(providerName);
         return parsed as T;
 
@@ -745,14 +779,19 @@ if (!config || !config.apiKey) {
         if (err.statusCode) {
           const code = err.statusCode;
           const cooldownMs = code === 404 ? 600_000 : 30_000;
-          await recordProviderFailure(providerName, cooldownMs);
-          markProviderCoolingDown(providerName, `${code}`, cooldownMs);
+          const isGlobal = code === 401 || code === 429;
+          const targetId = isGlobal ? providerName : `${providerName}:json`;
+          await recordProviderFailure(targetId, cooldownMs);
+          markProviderCoolingDown(targetId, `${code}`, cooldownMs);
           break;
         }
         if (attempt >= 2) break;
         await new Promise(r => setTimeout(r, 300 * attempt));
       }
     }
+  }
+  if (anyTried) break;
+  logger.warn(`Pass ${pass} completed. All JSON providers were skipped or failed.`);
   }
 
   if (reservationId) {
@@ -798,15 +837,25 @@ export async function* routeStreamGeneration(
   const providerErrors: string[] = [];
   const startTime = Date.now();
 
-  for (const providerName of providers) {
-    if (Date.now() - startTime > TIMEOUTS.TOTAL_ROUTE_BUDGET) break;
+  let ignoreCooldowns = false;
+  for (let pass = 1; pass <= 2; pass++) {
+    ignoreCooldowns = pass === 2;
+    let anyTried = false;
 
-    if (await isProviderInCooldown(providerName) || isProviderCoolingDown(providerName)) {
-      providerErrors.push(`${providerName}: skipped (cooldown)`);
-      continue;
-    }
+    for (const providerName of (ignoreCooldowns ? providers.slice(0, 2) : providers)) {
+      if (Date.now() - startTime > TIMEOUTS.TOTAL_ROUTE_BUDGET) break;
 
-    const inputTokens = messages.reduce((sum, m) => sum + m.content.length, 0) / 4;
+      const targetId = `${providerName}:stream`;
+      if (!ignoreCooldowns && (
+        await isProviderInCooldown(providerName) || isProviderCoolingDown(providerName) ||
+        await isProviderInCooldown(targetId) || isProviderCoolingDown(targetId)
+      )) {
+        if (pass === 1) providerErrors.push(`${providerName}: skipped (cooldown)`);
+        continue;
+      }
+      anyTried = true;
+
+      const inputTokens = messages.reduce((sum, m) => sum + m.content.length, 0) / 4;
     if (willExceedProviderCap(providerName, 'stream', inputTokens)) {
       const cap = getProviderCap(providerName, 'stream');
       logTokenSkip(providerName, 'stream', inputTokens, cap);
@@ -865,7 +914,9 @@ if (!config || !config.apiKey) {
 
         Metrics.tokenUsage(config.models.quality, estimatedInputTokens, estimatedOutputTokens);
         Metrics.aiCall(providerName, 'stream', Date.now() - callStart, true);
-        await recordProviderSuccess(providerName, Date.now() - callStart);
+        const targetId = `${providerName}:stream`;
+        await recordProviderSuccess(targetId, Date.now() - callStart);
+        await resetProviderHealth(targetId);
         await resetProviderHealth(providerName);
 
         
@@ -881,12 +932,17 @@ if (!config || !config.apiKey) {
     } catch (err: any) {
       Metrics.aiCall(providerName, 'stream', Date.now() - callStart, false);
       const code = err.statusCode || 500;
-      const cooldownMs = code === 404 ? 600_000 : code === 408 ? 120_000 : 30_000;
-      await recordProviderFailure(providerName, cooldownMs);
-      markProviderCoolingDown(providerName, `${code}`, cooldownMs);
-      logger.warn(`${providerName} stream failed (${code}), trying next`);
+      const cooldownMs = getCooldownDuration(code);
+      const isGlobal = code === 401 || code === 429;
+      const targetId = isGlobal ? providerName : `${providerName}:stream`;
+      await recordProviderFailure(targetId, cooldownMs);
+      markProviderCoolingDown(targetId, `${code}`, cooldownMs);
+      logger.warn(`${providerName} stream failed (${code}) [${isGlobal ? 'global' : 'task'}], trying next`);
       providerErrors.push(`${providerName}: ${code}`);
     }
+  }
+  if (anyTried) break;
+  logger.warn(`Pass ${pass} completed. All stream providers were skipped or failed.`);
   }
 
   if (reservationId) {
@@ -956,10 +1012,23 @@ async function _routeEmbedding(
     reservationId = reservation.reservationId;
   }
 
-  for (const providerName of providersToTry) {
-    if (await isProviderInCooldown(providerName) || isProviderCoolingDown(providerName)) continue;
+  let ignoreCooldowns = false;
+  for (let pass = 1; pass <= 2; pass++) {
+    let ignoreCooldowns = pass === 2;
+    let anyTried = false;
 
-    const config = getProviderConfig(providerName);
+    for (const providerName of (ignoreCooldowns ? providersToTry.slice(0, 2) : providersToTry)) {
+      const targetId = `${providerName}:embedding`;
+      if (!ignoreCooldowns && (
+        await isProviderInCooldown(providerName) || isProviderCoolingDown(providerName) ||
+        await isProviderInCooldown(targetId) || isProviderCoolingDown(targetId)
+      )) {
+        if (pass === 1) logger.info(`Skipping ${providerName} — in cooldown`);
+        continue;
+      }
+      anyTried = true;
+
+      const config = getProviderConfig(providerName);
 if (!config || !config.apiKey || !config.supportsEmbeddings) {
   logger.info(`Skipping ${providerName} — missing env vars, API key, or embeddings not supported`);
   continue;
@@ -993,6 +1062,9 @@ if (!config || !config.apiKey || !config.supportsEmbeddings) {
         const truncated = embedding.slice(0, 768);
         Metrics.embeddingGenerated(1, config.embeddingModel || 'unknown');
         Metrics.aiCall(providerName, 'embedding', Date.now() - start, true);
+        const targetId = `${providerName}:embedding`;
+        await recordProviderSuccess(targetId, Date.now() - start);
+        await resetProviderHealth(targetId);
         await resetProviderHealth(providerName);
         if (reservationId) {
           await commitBudgetUsage(reservationId, {
@@ -1030,6 +1102,9 @@ if (!config || !config.apiKey || !config.supportsEmbeddings) {
         const embedding: number[] = data.result?.data?.[0] || [];
         Metrics.embeddingGenerated(1, config.embeddingModel || 'unknown');
         Metrics.aiCall(providerName, 'embedding', Date.now() - start, true);
+        const targetId = `${providerName}:embedding`;
+        await recordProviderSuccess(targetId, Date.now() - start);
+        await resetProviderHealth(targetId);
         await resetProviderHealth(providerName);
         if (reservationId) {
           await commitBudgetUsage(reservationId, {
@@ -1070,6 +1145,9 @@ if (!config || !config.apiKey || !config.supportsEmbeddings) {
         const embedding: number[] = data.embedding?.values || [];
         Metrics.embeddingGenerated(1, config.embeddingModel || 'unknown');
         Metrics.aiCall(providerName, 'embedding', Date.now() - start, true);
+        const targetId = `${providerName}:embedding`;
+        await recordProviderSuccess(targetId, Date.now() - start);
+        await resetProviderHealth(targetId);
         await resetProviderHealth(providerName);
         if (reservationId) {
           await commitBudgetUsage(reservationId, {
@@ -1126,9 +1204,16 @@ if (!config || !config.apiKey || !config.supportsEmbeddings) {
     } catch (err: any) {
       Metrics.aiCall(providerName, 'embedding', Date.now() - start, false);
       const code = err.statusCode || 500;
-      if (code === 404) markProviderCoolingDown(providerName, '404', 600_000);
-      logger.warn(`${providerName} embedding failed (${code}), trying next`);
+      const isGlobal = code === 401 || code === 429;
+      const targetId = isGlobal ? providerName : `${providerName}:embedding`;
+      if (code === 404) markProviderCoolingDown(targetId, '404', 600_000);
+      else markProviderCoolingDown(targetId, `${code}`, 30_000);
+      await recordProviderFailure(targetId, code === 404 ? 600_000 : 30_000);
+      logger.warn(`${providerName} embedding failed (${code}) [${isGlobal ? 'global' : 'task'}], trying next`);
     }
+  }
+  if (anyTried) break;
+  logger.warn(`Pass ${pass} completed. All embedding providers were skipped or failed.`);
   }
 
   if (reservationId) {
@@ -1148,10 +1233,23 @@ export async function routeVisionCall(
   const providerTask: TaskType = imageMimeType === 'application/pdf' ? 'pdf' : 'vision';
   const providers = await getPrioritizedProviders(providerTask);
 
-  for (const providerName of providers) {
-    if (await isProviderInCooldown(providerName)) continue;
+  let ignoreCooldowns = false;
+  for (let pass = 1; pass <= 2; pass++) {
+    ignoreCooldowns = pass === 2;
+    let anyTried = false;
 
-    const config = getProviderConfig(providerName);
+    for (const providerName of (ignoreCooldowns ? providers.slice(0, 2) : providers)) {
+      const targetId = `${providerName}:${providerTask}`;
+      if (!ignoreCooldowns && (
+        await isProviderInCooldown(providerName) || isProviderCoolingDown(providerName) ||
+        await isProviderInCooldown(targetId) || isProviderCoolingDown(targetId)
+      )) {
+        if (pass === 1) logger.info(`Skipping ${providerName} — in cooldown`);
+        continue;
+      }
+      anyTried = true;
+
+      const config = getProviderConfig(providerName);
 if (!config || !config.apiKey || !config.supportsVision) {
   logger.info(`Skipping ${providerName} — missing env vars, API key, or vision not supported`);
   continue;
@@ -1198,7 +1296,9 @@ if (!config || !config.apiKey || !config.supportsVision) {
         const data = await response.json();
         const result = data.result?.response || '';
         Metrics.aiCall(providerName, providerTask, Date.now() - start, true);
-        await recordProviderSuccess(providerName, Date.now() - start);
+        const targetId = `${providerName}:${providerTask}`;
+        await recordProviderSuccess(targetId, Date.now() - start);
+        await resetProviderHealth(targetId);
         await resetProviderHealth(providerName);
         return result;
       }
@@ -1251,7 +1351,9 @@ if (!config || !config.apiKey || !config.supportsVision) {
         const data = await response.json();
         const result = data.choices?.[0]?.message?.content || '';
         Metrics.aiCall(providerName, providerTask, Date.now() - start, true);
-        await recordProviderSuccess(providerName, Date.now() - start);
+        const targetId = `${providerName}:${providerTask}`;
+        await recordProviderSuccess(targetId, Date.now() - start);
+        await resetProviderHealth(targetId);
         await resetProviderHealth(providerName);
         return result;
       }
@@ -1287,7 +1389,9 @@ if (!config || !config.apiKey || !config.supportsVision) {
         const data = await response.json();
         const result = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
         Metrics.aiCall(providerName, providerTask, Date.now() - start, true);
-        await recordProviderSuccess(providerName, Date.now() - start);
+        const targetId = `${providerName}:${providerTask}`;
+        await recordProviderSuccess(targetId, Date.now() - start);
+        await resetProviderHealth(targetId);
         await resetProviderHealth(providerName);
         return result;
       }
@@ -1296,9 +1400,15 @@ if (!config || !config.apiKey || !config.supportsVision) {
       Metrics.aiCall(providerName, providerTask, Date.now() - start, false);
       const code = err.statusCode || 500;
       const cooldownMs = code === 429 || code === 401 ? 30_000 : code === 503 ? 20_000 : 15_000;
-      await recordProviderFailure(providerName, cooldownMs);
-      logger.warn(`${providerName} vision failed (${code}), trying next`);
+      const isGlobal = code === 401 || code === 429;
+      const targetId = isGlobal ? providerName : `${providerName}:${providerTask}`;
+      await recordProviderFailure(targetId, cooldownMs);
+      markProviderCoolingDown(targetId, `${code}`, cooldownMs);
+      logger.warn(`${providerName} vision failed (${code}) [${isGlobal ? 'global' : 'task'}], trying next`);
     }
+  }
+  if (anyTried) break;
+  logger.warn(`Pass ${pass} completed. All vision providers were skipped or failed.`);
   }
 
   // All vision providers failed – attempt OCR fallback using local Tesseract
@@ -1326,7 +1436,11 @@ export async function routeMultimodalJSONExtraction<T>(
   let sawCapableProvider = false;
 
   for (const providerName of providers) {
-    if (await isProviderInCooldown(providerName)) continue;
+    const targetId = `${providerName}:${taskType}`;
+    if (
+      await isProviderInCooldown(providerName) || isProviderCoolingDown(providerName) ||
+      await isProviderInCooldown(targetId) || isProviderCoolingDown(targetId)
+    ) continue;
 
     const config = getProviderConfig(providerName);
     const supportsFile =
@@ -1463,7 +1577,9 @@ export async function routeMultimodalJSONExtraction<T>(
       const parsed = parseJSONPayload<T>(rawText);
       const validated = schema ? schema.parse(parsed) : parsed;
       Metrics.aiCall(providerName, taskType, Date.now() - start, true);
-      await recordProviderSuccess(providerName, Date.now() - start);
+      const targetId = `${providerName}:${taskType}`;
+      await recordProviderSuccess(targetId, Date.now() - start);
+      await resetProviderHealth(targetId);
       await resetProviderHealth(providerName);
       logger.info('Multimodal extraction routed through provider', {
         provider: providerName,
@@ -1475,7 +1591,10 @@ export async function routeMultimodalJSONExtraction<T>(
       Metrics.aiCall(providerName, taskType, Date.now() - start, false);
       const code = err.statusCode || 500;
       const cooldownMs = code === 429 || code === 401 ? 30_000 : code === 503 ? 20_000 : 15_000;
-      await recordProviderFailure(providerName, cooldownMs);
+      const isGlobal = code === 401 || code === 429;
+      const targetId = isGlobal ? providerName : `${providerName}:${taskType}`;
+      await recordProviderFailure(targetId, cooldownMs);
+      markProviderCoolingDown(targetId, `${code}`, cooldownMs);
       logger.warn(`${providerName} multimodal extraction failed (${code}), trying next`, {
         providerName,
         taskType,

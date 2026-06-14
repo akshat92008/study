@@ -149,10 +149,18 @@ export async function finalizeChatTurn(input: ChatTurnFinalizerInput): Promise<C
     });
     learningSignalSummary = mindResult.learningSignalSummary;
   } catch (ltErr) {
+    let errorStr: string;
+    if (ltErr instanceof Error) {
+      errorStr = ltErr.message;
+    } else if (typeof ltErr === 'object' && ltErr !== null) {
+      errorStr = JSON.stringify(ltErr, Object.getOwnPropertyNames(ltErr));
+    } else {
+      errorStr = String(ltErr);
+    }
     logger.warn('MIND chat turn failed (non-blocking)', {
       userId: input.userId,
       requestId,
-      error: ltErr instanceof Error ? ltErr.message : String(ltErr),
+      error: errorStr,
     });
   }
 
