@@ -111,6 +111,9 @@ export interface AppState extends ChatSlice {
   learningGoals: LearningGoal[];
   activeGoalId: string | null;
   activeGoalContext: any | null;
+  selectedMaterialIds: string[];
+  toggleSelectedMaterial: (id: string) => void;
+  clearSelectedMaterials: () => void;
   setActiveGoalId: (id: string | null) => void;
   loadLearningGoals: () => Promise<void>;
   loadGoalContext: (goalId?: string | null) => Promise<any | null>;
@@ -217,7 +220,14 @@ export const useAppStore = create<AppState>()(
       learningGoals: [],
       activeGoalId: null,
       activeGoalContext: null,
-      setActiveGoalId: (id) => set({ activeGoalId: id }),
+      selectedMaterialIds: [],
+      toggleSelectedMaterial: (id) => set((state) => ({
+        selectedMaterialIds: state.selectedMaterialIds.includes(id)
+          ? state.selectedMaterialIds.filter(m => m !== id)
+          : [...state.selectedMaterialIds, id]
+      })),
+      clearSelectedMaterials: () => set({ selectedMaterialIds: [] }),
+      setActiveGoalId: (id) => set({ activeGoalId: id, selectedMaterialIds: [] }),
       
       loadLearningGoals: async () => {
         try {

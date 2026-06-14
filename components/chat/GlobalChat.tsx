@@ -379,6 +379,7 @@ export const GlobalChat = memo(function GlobalChat() {
           documentMimeType,
           activeGoalId,
           chatId,
+          selectedMaterialIds: useAppStore.getState().selectedMaterialIds,
         }
       });
 

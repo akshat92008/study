@@ -157,8 +157,9 @@ export async function POST(req: NextRequest) {
     // 5. Load Core Context
     const cleanMsg = (message || '').trim().toLowerCase();
     const isSimpleMessage = cleanMsg === 'hi' || cleanMsg === 'hello' || cleanMsg === 'hey' || cleanMsg === 'ok' || cleanMsg === 'thanks' || cleanMsg === 'thank you';
+    const { selectedMaterialIds } = parsedRequest;
     
-    const contextResult = await loadChatContext(supabase, user.id, message, recentHistory, isSimpleMessage, activeGoal, activeGoalId, sessionId);
+    const contextResult = await loadChatContext(supabase, user.id, message, recentHistory, isSimpleMessage, activeGoal, activeGoalId, sessionId, selectedMaterialIds);
     const { profilePreview, detectedIntent, emotion, mindContext, systemPrompt } = contextResult;
     
     // 6. Load Specialized Contexts

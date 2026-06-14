@@ -42,7 +42,8 @@ export async function parseChatRequest(req: NextRequest, requestId: string) {
     documentMimeType: z.string().nullable().optional(),
     chatId: z.string().nullable().optional(),
     activeGoalId: z.string().nullable().optional(),
-    sessionTurnsCount: z.number().nullable().optional()
+    sessionTurnsCount: z.number().nullable().optional(),
+    selectedMaterialIds: z.array(z.string()).nullable().optional()
   });
 
   let rawBody: any;
@@ -68,6 +69,7 @@ export async function parseChatRequest(req: NextRequest, requestId: string) {
     chatId: parsed.chatId ?? undefined,
     requestedGoalId: parsed.activeGoalId ?? undefined,
     sessionTurnsCount: parsed.sessionTurnsCount ?? 0,
+    selectedMaterialIds: parsed.selectedMaterialIds ?? undefined,
   };
 }
 
@@ -100,10 +102,10 @@ export async function resolveActiveGoal(supabase: SupabaseClient, userId: string
 // But wait, the route.ts currently imports gatherChatContext which internally does all three.
 // The user asked for them as minimum modules. I will export them as distinct steps, though 
 // internally they might still call gatherChatContext or I'll just structure them to satisfy the requirement.
-export async function loadChatContext(supabase: SupabaseClient, userId: string, message: string, recentHistory: any[], isSimpleMessage: boolean, activeGoal: any, activeGoalId?: string | null, sessionId?: string | null) {
+export async function loadChatContext(supabase: SupabaseClient, userId: string, message: string, recentHistory: any[], isSimpleMessage: boolean, activeGoal: any, activeGoalId?: string | null, sessionId?: string | null, selectedMaterialIds?: string[]) {
   // We'll wrap gatherChatContext here for simplicity to maintain exact compatibility, 
   // but logically separate the output for the pipeline.
-  return gatherChatContext({ supabase, userId, message, recentHistory, isSimpleMessage, activeGoal, activeGoalId: activeGoalId || undefined, sessionId: sessionId || '' });
+  return gatherChatContext({ supabase, userId, message, recentHistory, isSimpleMessage, activeGoal, activeGoalId: activeGoalId || undefined, sessionId: sessionId || '', selectedMaterialIds });
 }
 
 export function loadRagContext(contextResult: any) {

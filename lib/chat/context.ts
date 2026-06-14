@@ -18,6 +18,7 @@ export async function gatherChatContext({
   activeGoal,
   activeGoalId,
   sessionId,
+  selectedMaterialIds,
 }: {
   supabase: any;
   userId: string;
@@ -27,6 +28,7 @@ export async function gatherChatContext({
   activeGoal: any;
   activeGoalId?: string;
   sessionId: string;
+  selectedMaterialIds?: string[];
 }) {
   const profilePromise = supabase.from('profiles').select('exam_type').eq('id', userId).maybeSingle();
   const explicitSourceRequest = isExplicitRagRequest(message || '');
@@ -135,6 +137,7 @@ export async function gatherChatContext({
           chapter: detectedIntent.topic || undefined,
           goalId: activeGoalId,
           chatSessionId: sessionId,
+          selectedMaterialIds,
         }),
         new Promise((_, r) => setTimeout(() => r(new Error('mind_rag_timeout')), explicitSourceRequest ? 12_000 : 3000))
       ]).catch((err) => {

@@ -5,7 +5,7 @@ import {
   BookOpen, CheckCircle, XCircle, ChevronDown, ChevronUp,
   Download, Copy, Check, Brain, Zap, AlertTriangle,
   FileText, Layout, List, Map, Calendar, RotateCcw,
-  ChevronRight, ChevronLeft, Eye, EyeOff, Volume2, VolumeX
+  ChevronRight, ChevronLeft, Eye, EyeOff, Volume2, VolumeX, Bookmark, BookmarkCheck
 } from 'lucide-react';
 import { useVoiceInteraction } from '@/hooks/useVoiceInteraction';
 import { GeneratedDocumentCard } from '@/components/documents/GeneratedDocumentCard';
@@ -143,6 +143,73 @@ function escapeArtifactAttribute(value: string): string {
   return value.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
 }
 
+function CitationChip({ chunk, idx }: { chunk: any, idx: number }) {
+  const [showPopover, setShowPopover] = useState(false);
+
+  return (
+    <span
+      style={{ position: 'relative', display: 'inline-block' }}
+      onMouseEnter={() => setShowPopover(true)}
+      onMouseLeave={() => setShowPopover(false)}
+    >
+      <span style={{
+        cursor: chunk ? 'help' : 'default',
+        background: 'var(--accent-cyan-dim)',
+        color: 'var(--accent-cyan)',
+        padding: '2px 6px',
+        borderRadius: '4px',
+        fontSize: '0.85em',
+        marginLeft: '4px',
+        border: '1px solid var(--accent-cyan)',
+        fontWeight: 600
+      }}>
+        [{idx + 1}]
+      </span>
+      {showPopover && chunk && (
+        <div style={{
+          position: 'absolute',
+          bottom: '100%',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          marginBottom: '8px',
+          width: '320px',
+          background: 'var(--bg-primary)',
+          border: '1px solid var(--border-subtle)',
+          borderRadius: '8px',
+          padding: '12px',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
+          zIndex: 1000,
+          color: 'var(--text-primary)',
+          fontSize: '12px',
+          fontWeight: 400,
+          lineHeight: 1.5,
+          textAlign: 'left'
+        }}>
+          <div style={{ fontWeight: 600, marginBottom: '6px', color: 'var(--accent-cyan)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '240px' }}>
+              {chunk.materialTitle}
+            </span>
+            {chunk.pageStart && <span style={{ flexShrink: 0 }}>Pg {chunk.pageStart}</span>}
+          </div>
+          <div style={{ maxHeight: '150px', overflowY: 'auto', marginBottom: '8px', color: 'var(--text-secondary)', fontSize: '11px', fontStyle: 'italic', padding: '6px', background: 'var(--bg-secondary)', borderRadius: '4px' }}>
+            "{chunk.text}"
+          </div>
+          <a href={`/documents/${chunk.materialId}${chunk.pageStart ? `?page=${chunk.pageStart}` : ''}`} target="_blank" rel="noopener noreferrer" style={{
+            color: 'var(--accent-purple)',
+            textDecoration: 'none',
+            fontWeight: 600,
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '4px'
+          }}>
+            <FileText size={12} /> View Document
+          </a>
+        </div>
+      )}
+    </span>
+  );
+}
+
 function renderMarkdownInline(text: string, ragChunks?: any[]): React.ReactNode {
   if (!text) return null;
   // Strip latex before processing
@@ -158,21 +225,7 @@ function renderMarkdownInline(text: string, ragChunks?: any[]): React.ReactNode 
     if (citationMatch) {
       const idx = parseInt(citationMatch[1], 10) - 1;
       const chunk = ragChunks?.[idx];
-      return (
-        <span key={i} className="citation-tooltip" title={chunk?.text || `Source ${idx + 1}`} style={{
-          cursor: chunk ? 'help' : 'default',
-          background: 'var(--accent-cyan-dim)',
-          color: 'var(--accent-cyan)',
-          padding: '2px 6px',
-          borderRadius: '4px',
-          fontSize: '0.85em',
-          marginLeft: '4px',
-          border: '1px solid var(--accent-cyan)',
-          fontWeight: 600
-        }}>
-          [{idx + 1}]
-        </span>
-      );
+      return <CitationChip key={i} chunk={chunk} idx={idx} />;
     }
     return part;
   });
@@ -325,6 +378,42 @@ function CopyButton({ text, label = 'Copy' }: { text: string; label?: string }) 
       transition: 'all 0.15s'
     }}>
       {copied ? <><Check size={11} style={{ color: '#4ade80' }} /> Copied</> : <><Copy size={11} /> {label}</>}
+    </button>
+  );
+}
+
+// ── PIN TO NOTES BUTTON ────────────────────────────────────────────────────────
+
+function PinToNotesButton({ text, label = 'Pin' }: { text: string; label?: string }) {
+  const [pinned, setPinned] = useState(false);
+  const activeGoalId = useAppStore(s => s.activeGoalId);
+  
+  const handlePin = async () => {
+    if (pinned) return;
+    try {
+      const res = await fetch('/api/notes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content: text, goalId: activeGoalId })
+      });
+      if (res.ok) {
+        setPinned(true);
+        setTimeout(() => setPinned(false), 2000);
+        window.dispatchEvent(new Event('refresh-notes'));
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  return (
+    <button onClick={handlePin} style={{
+      display: 'flex', alignItems: 'center', gap: 4, padding: '4px 10px',
+      background: 'var(--bg-tertiary)', border: '1px solid var(--border-subtle)',
+      borderRadius: 6, cursor: 'pointer', fontSize: 11, color: 'var(--text-secondary)',
+      transition: 'all 0.15s'
+    }}>
+      {pinned ? <><BookmarkCheck size={11} style={{ color: '#14b8a6' }} /> Saved</> : <><Bookmark size={11} /> {label}</>}
     </button>
   );
 }
@@ -514,6 +603,7 @@ function StudyGuideCard({ artifact, ragChunks }: { artifact: ParsedArtifact, rag
           </div>
         </div>
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          <PinToNotesButton text={artifact.content} />
           <CopyButton text={artifact.content} label="Copy" />
           <DownloadMdButton text={artifact.content} filename={artifact.topic || 'study-guide'} />
           <DownloadPdfButton text={artifact.content} filename={artifact.topic || 'study-guide'} />
@@ -648,6 +738,7 @@ function PracticeTestCard({ artifact, messageId, practiceSetId }: { artifact: Pa
               {score}/{questions.length}
             </div>
           )}
+          <PinToNotesButton text={artifact.content} />
           <CopyButton text={artifact.content} label="Copy" />
           <DownloadMdButton text={artifact.content} filename={artifact.topic || 'practice-test'} />
           <DownloadPdfButton text={artifact.content} filename={artifact.topic || 'practice-test'} />
@@ -936,6 +1027,7 @@ function RevisionSheetCard({ artifact, ragChunks }: { artifact: ParsedArtifact, 
           </div>
         </div>
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          <PinToNotesButton text={artifact.content} />
           <CopyButton text={artifact.content} label="Copy" />
           <DownloadMdButton text={artifact.content} filename={artifact.topic || 'revision-sheet'} />
           <DownloadPdfButton text={artifact.content} filename={artifact.topic || 'revision-sheet'} />
@@ -1026,6 +1118,7 @@ function FlashcardSetComponent({ artifact, messageId, practiceSetId }: { artifac
           <div style={{ fontSize: 11, color: 'var(--text-tertiary)', background: 'var(--bg-tertiary)', padding: '3px 8px', borderRadius: 6 }}>
             {currentIdx + 1}/{cards.length}
           </div>
+          <PinToNotesButton text={artifact.content} />
           <CopyButton text={artifact.content} label="Copy" />
           <DownloadMdButton text={artifact.content} filename={artifact.topic || 'flashcards'} />
           <DownloadPdfButton text={artifact.content} filename={artifact.topic || 'flashcards'} />
@@ -1172,6 +1265,7 @@ function ConceptMapCard({ artifact }: { artifact: ParsedArtifact }) {
           </div>
         </div>
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          <PinToNotesButton text={artifact.content} />
           <CopyButton text={artifact.content} />
           <DownloadMdButton text={artifact.content} filename={artifact.topic || 'concept-map'} />
           <DownloadPdfButton text={artifact.content} filename={artifact.topic || 'concept-map'} />
@@ -1224,6 +1318,7 @@ function PdfCard({ artifact, ragChunks }: { artifact: ParsedArtifact, ragChunks?
           </div>
         </div>
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          <PinToNotesButton text={artifact.content} />
           <CopyButton text={artifact.content} label="Copy" />
           <DownloadMdButton text={artifact.content} filename={artifact.topic || 'document'} />
           <DownloadPdfButton text={artifact.content} filename={artifact.topic || 'document'} />
@@ -1265,6 +1360,7 @@ function StudyPlanCard({ artifact, ragChunks }: { artifact: ParsedArtifact, ragC
           </div>
         </div>
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          <PinToNotesButton text={artifact.content} />
           <CopyButton text={artifact.content} label="Copy" />
           <DownloadMdButton text={artifact.content} filename={artifact.topic || 'study-plan'} />
           <DownloadPdfButton text={artifact.content} filename={artifact.topic || 'study-plan'} />

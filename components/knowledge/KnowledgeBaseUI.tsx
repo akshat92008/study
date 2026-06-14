@@ -5,22 +5,26 @@ import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 import Badge from '@/components/ui/Badge';
-import { Database, Plus, FileText, Loader2, Sparkles, Headphones, RefreshCw } from 'lucide-react';
+import { Database, Plus, FileText, Loader2, Sparkles, Headphones, RefreshCw, Trash2 } from 'lucide-react';
 import { AudioPlayer } from './AudioPlayer';
 import { useAppStore } from '@/stores/appStore';
-import { classifySource } from '@/lib/materials/classify-source';
+import { ClassifyResult, classifySource } from '@/lib/materials/classify-source';
 
 export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials: any[] }) {
-  const { activeGoalId, chatId, learningGoals } = useAppStore();
+  const { activeGoalId, chatId, learningGoals, selectedMaterialIds, toggleSelectedMaterial } = useAppStore();
   const [materials, setMaterials] = useState(initialMaterials);
   const [showForm, setShowForm] = useState(false);
+  const [showUrlForm, setShowUrlForm] = useState(false);
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<{ type: 'error' | 'success' | 'info', msg: string } | null>(null);
   const [audioResponse, setAudioResponse] = useState<{ script: string; audioDataUrl: string | null; materialTitle: string } | null>(null);
   const [generatingPodcastId, setGeneratingPodcastId] = useState<string | null>(null);
+  const [generatingGuideId, setGeneratingGuideId] = useState<string | null>(null);
+  const [guideData, setGuideData] = useState<{ title: string; guide: any } | null>(null);
   const [reprocessingId, setReprocessingId] = useState<string | null>(null);
   const [mismatchWarning, setMismatchWarning] = useState<{title: string, file: File, activeGoalTitle: string, fileSub: string, fileChapter: string | null, goalSub: string, message: string} | null>(null);
   const [pendingFormData, setPendingFormData] = useState<FormData | null>(null);
+  const [notes, setNotes] = useState<any[]>([]);
   const activeGoal = learningGoals.find(goal => goal.id === activeGoalId);
 
   const loadMaterials = useCallback(async () => {
@@ -40,9 +44,22 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
     });
   }, [activeGoalId]);
 
+  const loadNotes = useCallback(async () => {
+    const params = new URLSearchParams();
+    if (activeGoalId) params.set('goalId', activeGoalId);
+    const response = await fetch(`/api/notes${params.toString() ? `?${params.toString()}` : ''}`);
+    if (!response.ok) return;
+    const data = await response.json();
+    setNotes(data.notes || []);
+  }, [activeGoalId]);
+
   useEffect(() => {
     loadMaterials().catch(() => {});
-  }, [loadMaterials]);
+    loadNotes().catch(() => {});
+    const handleRefreshNotes = () => loadNotes().catch(() => {});
+    window.addEventListener('refresh-notes', handleRefreshNotes);
+    return () => window.removeEventListener('refresh-notes', handleRefreshNotes);
+  }, [loadMaterials, loadNotes]);
 
   useEffect(() => {
     const hasPending = materials.some(m => ['uploaded', 'queued', 'processing'].includes(m.status));
@@ -79,6 +96,24 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
     }
   }
 
+  async function handleGenerateGuide(materialId: string, title: string) {
+    setGeneratingGuideId(materialId);
+    setStatus(null);
+    try {
+      const response = await fetch(`/api/materials/${materialId}/guide`);
+      const data = await response.json();
+      if (!response.ok || data.error) {
+        setStatus({ type: 'error', msg: data.error || 'Failed to generate guide' });
+      } else {
+        setGuideData({ title, guide: data.guide });
+      }
+    } catch (err: any) {
+      setStatus({ type: 'error', msg: err.message || 'Error generating guide' });
+    } finally {
+      setGeneratingGuideId(null);
+    }
+  }
+
   async function handleReprocess(materialId: string) {
     setReprocessingId(materialId);
     setStatus(null);
@@ -109,6 +144,15 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
       setStatus({ type: 'error', msg: err.message || 'Error processing source' });
     } finally {
       setReprocessingId(null);
+    }
+  }
+
+  async function handleDeleteNote(id: string) {
+    try {
+      await fetch(`/api/notes?id=${id}`, { method: 'DELETE' });
+      await loadNotes();
+    } catch (e) {
+      console.error(e);
     }
   }
 
@@ -196,9 +240,39 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
         await loadMaterials();
       }
     } catch (err: any) {
-      setStatus({ type: 'error', msg: err.message || 'Network error occurred' });
+      setStatus({ type: 'error', msg: err.message || 'Error uploading file' });
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
+  }
+
+  async function handleUrlSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setLoading(true);
+    setStatus(null);
+    const formData = new FormData(e.currentTarget);
+    const url = formData.get('url') as string;
+    const title = formData.get('title') as string;
+
+    try {
+      const response = await fetch('/api/materials/ingest-url', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url, title, goalId: activeGoalId }),
+      });
+      const data = await response.json();
+      if (!response.ok || data.error) {
+        setStatus({ type: 'error', msg: data.error || 'Failed to ingest URL' });
+      } else {
+        setStatus({ type: 'success', msg: 'URL added successfully! It is being processed.' });
+        setShowUrlForm(false);
+        await loadMaterials();
+      }
+    } catch (err: any) {
+      setStatus({ type: 'error', msg: err.message || 'Error ingesting URL' });
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -214,9 +288,14 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
             {activeGoal ? `Sources attached to ${activeGoal.title}.` : 'Upload lecture notes so the AI tutor can ground explanations in your materials.'}
           </p>
         </div>
-        <Button onClick={() => setShowForm(!showForm)}>
-          <Plus size={16} /> Add Source
-        </Button>
+        <div style={{ display: 'flex', gap: 'var(--sp-2)' }}>
+          <Button variant="secondary" onClick={() => { setShowForm(!showForm); setShowUrlForm(false); }}>
+            <Plus size={16} /> Add File
+          </Button>
+          <Button variant="secondary" onClick={() => { setShowUrlForm(!showUrlForm); setShowForm(false); }}>
+            <Plus size={16} /> Add Link
+          </Button>
+        </div>
       </div>
 
       {mismatchWarning && (
@@ -307,6 +386,47 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
         </Card>
       )}
 
+      {showUrlForm && (
+        <Card>
+          <form onSubmit={handleUrlSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
+            <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'var(--fw-semibold)' }}>Add Web Link</h3>
+            
+            <div>
+              <label style={{ display: 'block', fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-medium)', marginBottom: 'var(--sp-2)', color: 'var(--text-secondary)' }}>
+                URL *
+              </label>
+              <Input
+                name="url"
+                type="url"
+                placeholder="https://example.com/article"
+                required
+                style={{ width: '100%' }}
+              />
+            </div>
+
+            <div>
+              <label style={{ display: 'block', fontSize: 'var(--fs-sm)', fontWeight: 'var(--fw-medium)', marginBottom: 'var(--sp-2)', color: 'var(--text-secondary)' }}>
+                Title (Optional)
+              </label>
+              <Input
+                name="title"
+                placeholder="Custom title for this link"
+                style={{ width: '100%' }}
+              />
+            </div>
+
+            <div style={{ display: 'flex', gap: 'var(--sp-3)', justifyContent: 'flex-end', marginTop: 'var(--sp-2)' }}>
+              <Button type="button" variant="ghost" onClick={() => setShowUrlForm(false)}>
+                Cancel
+              </Button>
+              <Button type="submit" variant="primary" disabled={loading}>
+                {loading ? <Loader2 size={16} className="animate-spin" /> : 'Ingest Link'}
+              </Button>
+            </div>
+          </form>
+        </Card>
+      )}
+
       {audioResponse && (
         <AudioPlayer
           script={audioResponse.script}
@@ -319,6 +439,9 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
       <Card>
         <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'var(--fw-semibold)', marginBottom: 'var(--sp-4)' }}>
           Uploaded Sources
+          <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 'normal', color: 'var(--text-tertiary)', marginLeft: '8px' }}>
+            {selectedMaterialIds.length > 0 ? `${selectedMaterialIds.length} selected for chat` : 'All ready sources included in chat'}
+          </span>
         </h3>
         {materials.length === 0 ? (
           <div style={{ textAlign: 'center', padding: 'var(--sp-12)', background: 'var(--bg-secondary)', borderRadius: 'var(--radius-lg)', border: '1px dashed var(--border-default)' }}>
@@ -343,10 +466,20 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
                   animation: 'shimmer 2s infinite linear'
                 } : {}),
                 ...(mat.status === 'ready' ? {
-                  boxShadow: '0 0 10px rgba(6, 182, 212, 0.15)'
+                  boxShadow: selectedMaterialIds.includes(mat.id) ? '0 0 10px rgba(6, 182, 212, 0.3)' : '0 0 10px rgba(6, 182, 212, 0.05)',
+                  border: selectedMaterialIds.includes(mat.id) ? '1px solid var(--accent-cyan)' : '1px solid transparent'
                 } : {})
               }}>
-                <FileText size={18} style={{ color: 'var(--accent-cyan)' }} />
+                {mat.status === 'ready' && (
+                  <input
+                    type="checkbox"
+                    checked={selectedMaterialIds.includes(mat.id)}
+                    onChange={() => toggleSelectedMaterial(mat.id)}
+                    style={{ width: '18px', height: '18px', cursor: 'pointer', accentColor: 'var(--accent-cyan)' }}
+                    title="Include in AI Chat context"
+                  />
+                )}
+                <FileText size={18} style={{ color: mat.status === 'ready' && selectedMaterialIds.includes(mat.id) ? 'var(--accent-cyan)' : 'var(--text-tertiary)' }} />
                 <div style={{ flex: 1 }}>
                   <div style={{ fontWeight: 'var(--fw-medium)' }}>{mat.original_filename || mat.title}</div>
                   <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
@@ -365,6 +498,22 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
                   </div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
+                  <Button
+                    size="sm"
+                    variant="secondary"
+                    disabled={generatingGuideId !== null || mat.status !== 'ready'}
+                    onClick={() => handleGenerateGuide(mat.id, mat.original_filename || mat.title)}
+                  >
+                    {generatingGuideId === mat.id ? (
+                      <>
+                        <Loader2 size={14} className="spin" style={{ animation: 'spin 1s linear infinite' }} /> Generating...
+                      </>
+                    ) : (
+                      <>
+                        <FileText size={14} /> Guide
+                      </>
+                    )}
+                  </Button>
                   <Button
                     size="sm"
                     variant="secondary"
@@ -423,6 +572,70 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
           </div>
         )}
       </Card>
+
+      {/* Saved Notes List */}
+      <Card>
+        <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'var(--fw-semibold)', marginBottom: 'var(--sp-4)' }}>
+          Saved Notes
+        </h3>
+        {notes.length === 0 ? (
+          <div style={{ textAlign: 'center', padding: 'var(--sp-6)', color: 'var(--text-tertiary)' }}>
+            No saved notes yet. You can pin important concepts from the AI chat.
+          </div>
+        ) : (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-3)' }}>
+            {notes.map(note => (
+              <div key={note.id} style={{ padding: 'var(--sp-3)', background: 'var(--bg-tertiary)', borderRadius: 'var(--radius-md)', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)', whiteSpace: 'pre-wrap', lineHeight: 1.5, flex: 1, paddingRight: 'var(--sp-3)' }}>
+                  {note.content}
+                </div>
+                <Button variant="ghost" size="sm" onClick={() => handleDeleteNote(note.id)} style={{ color: 'var(--danger)' }}>
+                  <Trash2 size={14} />
+                </Button>
+              </div>
+            ))}
+          </div>
+        )}
+      </Card>
+
+      {/* Guide Modal */}
+      {guideData && (
+        <div style={{
+          position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+          background: 'rgba(0,0,0,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center',
+          zIndex: 100, padding: 'var(--sp-4)'
+        }}>
+          <Card padding="xl" style={{ maxWidth: '600px', width: '100%', maxHeight: '80vh', overflowY: 'auto' }}>
+            <h2 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-bold)', marginBottom: 'var(--sp-4)' }}>
+              Source Guide: {guideData.title}
+            </h2>
+            
+            <h3 style={{ fontSize: 'var(--fs-lg)', color: 'var(--accent-cyan)', marginBottom: 'var(--sp-2)' }}>Summary</h3>
+            <p style={{ marginBottom: 'var(--sp-4)' }}>{guideData.guide.summary}</p>
+            
+            <h3 style={{ fontSize: 'var(--fs-lg)', color: 'var(--accent-cyan)', marginBottom: 'var(--sp-2)' }}>Key Concepts</h3>
+            <ul style={{ marginBottom: 'var(--sp-4)', paddingLeft: 'var(--sp-4)' }}>
+              {guideData.guide.keyConcepts?.map((kc: any, i: number) => (
+                <li key={i} style={{ marginBottom: 'var(--sp-2)' }}>
+                  <strong>{kc.term}</strong>: {kc.definition}
+                </li>
+              ))}
+            </ul>
+            
+            <h3 style={{ fontSize: 'var(--fs-lg)', color: 'var(--accent-cyan)', marginBottom: 'var(--sp-2)' }}>FAQs</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-3)', marginBottom: 'var(--sp-4)' }}>
+              {guideData.guide.faqs?.map((faq: any, i: number) => (
+                <div key={i} style={{ padding: 'var(--sp-3)', background: 'var(--bg-tertiary)', borderRadius: 'var(--radius-md)' }}>
+                  <p style={{ fontWeight: 'var(--fw-bold)', marginBottom: 'var(--sp-1)' }}>Q: {faq.question}</p>
+                  <p>A: {faq.answer}</p>
+                </div>
+              ))}
+            </div>
+
+            <Button onClick={() => setGuideData(null)} style={{ width: '100%' }}>Close Guide</Button>
+          </Card>
+        </div>
+      )}
     </div>
   );
 }

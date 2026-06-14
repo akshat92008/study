@@ -24,8 +24,7 @@ export function normalizeChunkText(row: { text?: string | null; content?: string
 export function inferRagMode(message: string, hasReadyMaterials: boolean): RagMode {
   if (!hasReadyMaterials) return 'off';
   if (EXPLICIT_RAG_RE.test(message)) return 'explicit';
-  if (message.length >= 16 && STUDY_RE.test(message)) return 'implicit';
-  return 'off';
+  return 'implicit';
 }
 
 export async function retrieveRagContext(input: RagRetrieveInput): Promise<RagContext> {

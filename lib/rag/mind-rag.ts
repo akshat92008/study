@@ -10,6 +10,7 @@ export async function buildMindRagContext(input: {
   chapter?: string | null;
   goalId?: string | null;
   chatSessionId?: string | null;
+  selectedMaterialIds?: string[];
 }): Promise<{
   ragContext: RagContext;
   ragPromptBlock: string;
@@ -22,7 +23,13 @@ export async function buildMindRagContext(input: {
     .eq('user_id', input.userId)
     .eq('status', 'ready');
 
-  if (input.goalId) readyQuery = readyQuery.eq('goal_id', input.goalId);
+  if (input.goalId && input.chatSessionId) {
+    readyQuery = (readyQuery as any).or(`goal_id.eq.${input.goalId},chat_session_id.eq.${input.chatSessionId}`);
+  } else if (input.goalId) {
+    readyQuery = readyQuery.eq('goal_id', input.goalId);
+  } else if (input.chatSessionId) {
+    readyQuery = readyQuery.eq('chat_session_id', input.chatSessionId);
+  }
 
   let { count } = await readyQuery;
 
@@ -89,6 +96,7 @@ export async function buildMindRagContext(input: {
     chapter: input.chapter ?? undefined,
     goalId: input.goalId,
     chatSessionId: input.chatSessionId,
+    materialIds: input.selectedMaterialIds,
   });
 
   let ragPromptBlock = formatRagContextForPrompt(ragContext);
