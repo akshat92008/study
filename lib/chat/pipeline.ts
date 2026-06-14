@@ -81,10 +81,8 @@ export async function authenticateChatUser(requestId: string) {
 }
 
 export async function enforceChatRateLimit(userId: string) {
-  const { allowed, remaining, resetAt } = await checkRateLimit({ identifier: userId, bucket: 'chat', maxTokens: 30, windowSeconds: 60, failClosed: true });
-  if (!allowed) {
-    throw new PipelineError(rateLimitResponse(remaining, resetAt));
-  }
+  // Bypassed as per user request: "For now dont put limit on chats and uploads"
+  return;
 }
 
 export async function resolveActiveGoal(supabase: SupabaseClient, userId: string, chatId?: string, requestedGoalId?: string, requestId?: string) {
