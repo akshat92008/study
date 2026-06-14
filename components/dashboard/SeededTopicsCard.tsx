@@ -10,8 +10,14 @@ interface SeededTopic {
 }
 interface SeededTopicsCardProps {
   topics: SeededTopic[];
+  adaptation?: {
+    activeWeakAreas?: Array<{ concept_tag: string; severity: string; missing_points?: string[] }>;
+    masteryPercentage?: number;
+    nextRecommendedMicrotarget?: string | null;
+    lastPracticedAt?: string | null;
+  };
 }
-export function SeededTopicsCard({ topics }: SeededTopicsCardProps) {
+export function SeededTopicsCard({ topics, adaptation }: SeededTopicsCardProps) {
   if (!topics?.length) {
     return (
       <section className="rounded-2xl border bg-white p-4 shadow-sm">
@@ -46,7 +52,7 @@ export function SeededTopicsCard({ topics }: SeededTopicsCardProps) {
         <p className="mt-1 text-sm text-gray-700">{active.microtarget}</p>
       </div>
       <div className="mt-4 space-y-2">
-        {sorted.slice(0, 5).map((topic) => (
+        {sorted.map((topic) => (
           <div key={`${topic.topic}-${topic.microtarget}`} className="flex items-start gap-2 text-sm">
             <span className="mt-1 h-2 w-2 rounded-full bg-gray-400" />
             <div>
@@ -56,6 +62,26 @@ export function SeededTopicsCard({ topics }: SeededTopicsCardProps) {
           </div>
         ))}
       </div>
+      {adaptation?.activeWeakAreas && adaptation.activeWeakAreas.length > 0 && (
+        <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-3">
+          <p className="text-xs font-medium uppercase tracking-wide text-amber-700">Active weak areas</p>
+          <div className="mt-2 space-y-1 text-sm text-amber-950">
+            {adaptation.activeWeakAreas.map((area) => (
+              <p key={area.concept_tag}>
+                <strong>{area.concept_tag.replace(/_/g, ' ')}</strong>
+                {area.missing_points?.length ? `: missing ${area.missing_points.join(', ')}` : ''}
+                {area.severity === 'urgent' ? ' (urgent)' : ''}
+              </p>
+            ))}
+          </div>
+        </div>
+      )}
+      {adaptation?.nextRecommendedMicrotarget && (
+        <div className="mt-4 rounded-xl bg-violet-50 p-3 text-sm text-violet-950">
+          <p className="text-xs font-medium uppercase tracking-wide text-violet-700">Next recommended task</p>
+          <p className="mt-1 font-medium">{adaptation.nextRecommendedMicrotarget}</p>
+        </div>
+      )}
     </section>
   );
 }

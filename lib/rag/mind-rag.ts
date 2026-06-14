@@ -58,7 +58,23 @@ export async function buildMindRagContext(input: {
           evidenceStrength: 'none',
           warnings: ['Uploaded material is still processing.'],
         },
-        ragPromptBlock: `\n\nSOURCE-GROUNDED MODE: EXPLICIT\nSTATUS: PROCESSING\nInstruct the AI to say exactly: "Your material is still processing. I can answer generally for now, or you can retry once it is ready." Do not invent citations or imply uploaded-source grounding.`,
+        ragPromptBlock: `\n\nSOURCE-GROUNDED MODE: EXPLICIT\nSTATUS: PROCESSING\nSay exactly: "Your source is still processing. I can continue from built-in chapter memory for now." Do not imply uploaded-source grounding.`,
+      };
+    }
+
+    const failedCount = await countFailedMaterials({
+      supabase,
+      userId: input.userId,
+      goalId: input.goalId,
+      chatSessionId: input.chatSessionId,
+    });
+    if (failedCount > 0) {
+      return {
+        ragContext: {
+          mode: 'explicit', chunks: [], materialIds: [], chunkIds: [], totalContextChars: 0,
+          grounded: false, evidenceStrength: 'none', warnings: ['Uploaded material failed to process.'],
+        },
+        ragPromptBlock: `\n\nSOURCE-GROUNDED MODE: EXPLICIT\nSTATUS: FAILED\nSay exactly: "Your source failed to process. Reprocess it from Sources."`,
       };
     }
   }
@@ -85,6 +101,24 @@ export async function buildMindRagContext(input: {
     ragContext,
     ragPromptBlock,
   };
+}
+
+async function countFailedMaterials(input: {
+  supabase: any;
+  userId: string;
+  goalId?: string | null;
+  chatSessionId?: string | null;
+}): Promise<number> {
+  let query = input.supabase
+    .from('study_materials')
+    .select('id', { count: 'exact', head: true })
+    .eq('user_id', input.userId)
+    .in('status', ['failed', 'retryable_failed']);
+  if (input.goalId && input.chatSessionId) query = (query as any).or(`goal_id.eq.${input.goalId},chat_session_id.eq.${input.chatSessionId}`);
+  else if (input.goalId) query = query.eq('goal_id', input.goalId);
+  else if (input.chatSessionId) query = query.eq('chat_session_id', input.chatSessionId);
+  const { count, error } = await query;
+  return error ? 0 : count ?? 0;
 }
 
 async function countProcessingMaterials(input: {

@@ -29,7 +29,7 @@ export async function GET(req: NextRequest) {
 
     let query = supabase
       .from('study_materials')
-      .select('id, title, original_filename, mime_type, source_type, goal_id, chat_session_id, exam_type, subject, chapter, topic, language, status, page_count, char_count, error_message, last_error, next_retry_at, retryable, created_at, updated_at, study_material_chunks(count)')
+      .select('id, title, original_filename, mime_type, source_type, goal_id, chat_session_id, exam_type, subject, chapter, topic, language, status, page_count, char_count, error_message, last_error, last_error_code, next_retry_at, retryable, retry_count, chunk_count, embedding_count, last_processed_at, processing_started_at, processing_finished_at, detected_subject, detected_chapter, goal_match_score, mismatch_warning_acknowledged, created_at, updated_at, study_material_chunks(count)')
       .eq('user_id', user.id)
       .neq('status', 'archived');
 

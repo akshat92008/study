@@ -2,6 +2,8 @@ import { getOrCreatePrimaryGoalSession, GOAL_SELECT, SESSION_SELECT } from '@/li
 import { seedTopicsForGoal } from '@/lib/topic-seeding';
 import { getOrCreateGoalMission } from '@/lib/hermes/ui/mission-service';
 import { inferGoalDomain, type GoalDomain } from './goal-domain';
+import { normalizeGoal, type NormalizedGoal } from './normalize-goal';
+import { logger } from '@/lib/utils/logger';
 
 type OptionalGoalDetails = {
   subject?: string | null;
@@ -29,6 +31,7 @@ export type CreateResolvedLearningGoalResult =
       domain: GoalDomain;
       topicSeeding: any;
       mission: any;
+      normalizedGoal: NormalizedGoal;
     }
   | {
       success: false;
@@ -59,11 +62,20 @@ export async function createResolvedLearningGoal(input: {
   details?: OptionalGoalDetails;
 }): Promise<CreateResolvedLearningGoalResult> {
   const details = input.details ?? {};
+  const normalizedGoal = normalizeGoal(input.title);
   const domain = inferGoalDomain(input.title, {
     subject: details.subject ?? null,
     domain: details.domain ?? details.goalType ?? null,
     exam: details.examType ?? null,
     grade: details.targetLevel ?? null,
+  });
+
+  logger.info('goal_normalized', {
+    userId: input.userId,
+    rawTitle: input.title,
+    normalizedTitle: normalizedGoal.normalizedTitle,
+    chapterSlug: normalizedGoal.chapterSlug,
+    confidence: normalizedGoal.confidence,
   });
 
   if (domain.needsClarification && !explicitDomainProvided(details)) {
@@ -86,18 +98,19 @@ export async function createResolvedLearningGoal(input: {
     timeAvailable: details.timeAvailable ?? null,
     preferredLearningStyle: optionalString(details.preferredLearningStyle),
     domain,
+    normalizedGoal,
   };
 
   const { data: goal, error: goalError } = await input.supabase
     .from('learning_goals')
     .insert({
       user_id: input.userId,
-      title: input.title,
-      subject: optionalString(details.subject) ?? domain.subject,
+      title: normalizedGoal.chapter ? normalizedGoal.normalizedTitle : input.title,
+      subject: optionalString(details.subject) ?? normalizedGoal.subject ?? domain.subject,
       domain: optionalString(details.domain) ?? domain.domain,
-      exam_type: optionalString(details.examType) ?? domain.exam,
+      exam_type: optionalString(details.examType) ?? normalizedGoal.exam ?? domain.exam,
       preset_id: optionalString(details.presetId),
-      target_level: optionalString(details.targetLevel) ?? domain.grade,
+      target_level: optionalString(details.targetLevel) ?? normalizedGoal.classLevel ?? domain.grade,
       description: optionalString(details.description),
       target_date: optionalString(details.deadline) ?? optionalString(details.targetDate),
       progress: 0,
@@ -126,7 +139,7 @@ export async function createResolvedLearningGoal(input: {
       exam: domain.exam,
       grade: domain.grade,
       board: domain.board,
-      chapter: null,
+      chapter: normalizedGoal.chapter,
       targetDate: details.targetDate ?? details.deadline ?? null,
     });
   } catch (error) {
@@ -169,5 +182,6 @@ export async function createResolvedLearningGoal(input: {
     domain,
     topicSeeding,
     mission,
+    normalizedGoal,
   };
 }

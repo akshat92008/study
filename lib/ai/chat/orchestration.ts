@@ -160,15 +160,18 @@ If they ask to update or generate targets generally, use "add" to create a few t
   }
 
   if (policyIntent === 'atlas_query') {
+    const { getWeakAreasForUser } = await import('@/lib/weak-areas/get-weak-areas');
+    const weakData = await getWeakAreasForUser(input.supabase, { userId: input.userId, goalId: input.goalId || '' });
+
     return {
       text: formatWeakAreasForChat({
-        weakConcepts: input.mindContext?.weakConcepts ?? [],
-        recentMistakes: input.mindContext?.recentMistakes ?? [],
-        masteryPercent: input.mindContext?.masteryStats?.masteryPercent ?? 0,
+        weakAreas: weakData.weakAreas,
+        chapterSummary: weakData.chapterSummary,
+        summary: weakData.summary,
       }),
       metadata: {
         action: 'answer_atlas_inline',
-        weakConceptCount: input.mindContext?.weakConcepts?.length ?? 0,
+        weakConceptCount: weakData.weakAreas.length,
         mistakeCount: input.mindContext?.recentMistakes?.length ?? 0,
       },
     };

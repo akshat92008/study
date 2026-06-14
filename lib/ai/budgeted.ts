@@ -274,6 +274,8 @@ export async function budgetedStreamGeneration(
 
       const isDegraded = fullResponseBuffer.includes('temporarily unavailable') || 
                          fullResponseBuffer.includes('at capacity') || 
+                         fullResponseBuffer.includes('offline tutor mode') ||
+                         fullResponseBuffer.includes('live tutor is unavailable') ||
                          fullResponseBuffer.includes('catching up with demand') ||
                          fullResponseBuffer.includes('I could not generate that part right now') ||
                          fullResponseBuffer.includes('temporarily paused');

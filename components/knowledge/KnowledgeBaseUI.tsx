@@ -8,6 +8,7 @@ import Badge from '@/components/ui/Badge';
 import { Database, Plus, FileText, Loader2, Sparkles, Headphones, RefreshCw } from 'lucide-react';
 import { AudioPlayer } from './AudioPlayer';
 import { useAppStore } from '@/stores/appStore';
+import { classifySource } from '@/lib/materials/classify-source';
 
 export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials: any[] }) {
   const { activeGoalId, chatId, learningGoals } = useAppStore();
@@ -18,7 +19,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
   const [audioResponse, setAudioResponse] = useState<{ script: string; audioDataUrl: string | null; materialTitle: string } | null>(null);
   const [generatingPodcastId, setGeneratingPodcastId] = useState<string | null>(null);
   const [reprocessingId, setReprocessingId] = useState<string | null>(null);
-  const [mismatchWarning, setMismatchWarning] = useState<{title: string, file: File, activeGoalTitle: string, fileSub: string, goalSub: string} | null>(null);
+  const [mismatchWarning, setMismatchWarning] = useState<{title: string, file: File, activeGoalTitle: string, fileSub: string, fileChapter: string | null, goalSub: string, message: string} | null>(null);
   const [pendingFormData, setPendingFormData] = useState<FormData | null>(null);
   const activeGoal = learningGoals.find(goal => goal.id === activeGoalId);
 
@@ -44,7 +45,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
   }, [loadMaterials]);
 
   useEffect(() => {
-    const hasPending = materials.some(m => m.status === 'queued' || m.status === 'processing');
+    const hasPending = materials.some(m => ['uploaded', 'queued', 'processing'].includes(m.status));
     if (!hasPending) return;
     const interval = setInterval(() => {
       loadMaterials().catch(() => {});
@@ -86,8 +87,8 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
         method: 'POST',
       });
       const data = await response.json().catch(() => null);
-      if (!response.ok || data?.error) {
-        setStatus({ type: 'error', msg: data?.message || data?.error || 'Unable to process this source.' });
+      if (!response.ok || data?.ok === false) {
+        setStatus({ type: 'error', msg: `${data?.message || 'Unable to process this source.'}${data?.errorCode ? ` (${data.errorCode})` : ''}` });
         return;
       }
 
@@ -122,21 +123,19 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
     if (activeGoal) {
       const title = formData.get('title') as string || '';
       const file = formData.get('file') as File;
-      const fileText = (title + ' ' + (file?.name || '')).toLowerCase();
-      const goalText = activeGoal.title.toLowerCase();
-      
-      const detectSubject = (text: string) => {
-        if (text.includes('physics')) return 'Physics';
-        if (text.includes('chemistry')) return 'Chemistry';
-        if (text.includes('biology') || text.includes('biotech') || text.includes('botany') || text.includes('zoology')) return 'Biology';
-        return null;
-      };
+      const classification = classifySource({ filename: file?.name, title, activeGoal });
+      const goalSub = classification.mismatch ? (activeGoal.subject || 'Biology') : null;
 
-      const fileSub = detectSubject(fileText);
-      const goalSub = detectSubject(goalText);
-
-      if (fileSub && goalSub && fileSub !== goalSub) {
-        setMismatchWarning({ title: title || file.name, file, activeGoalTitle: activeGoal.title, fileSub, goalSub });
+      if (classification.mismatch && classification.detectedSubject && goalSub) {
+        setMismatchWarning({
+          title: title || file.name,
+          file,
+          activeGoalTitle: activeGoal.title,
+          fileSub: classification.detectedSubject,
+          fileChapter: classification.detectedChapter,
+          goalSub,
+          message: classification.warningMessage || 'This source may not match the active goal.',
+        });
         setPendingFormData(formData);
         setLoading(false);
         return;
@@ -168,7 +167,21 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
       }
       
       if (!response.ok || res.error) {
-        setStatus({ type: 'error', msg: res.error || 'Upload failed' });
+        if (res.errorCode === 'source_goal_mismatch' && res.classification) {
+          const file = formData.get('file') as File;
+          setPendingFormData(formData);
+          setMismatchWarning({
+            title: String(formData.get('title') || file.name),
+            file,
+            activeGoalTitle: activeGoal?.title || 'active goal',
+            fileSub: res.classification.detectedSubject,
+            fileChapter: res.classification.detectedChapter,
+            goalSub: activeGoal?.subject || 'Biology',
+            message: res.message,
+          });
+        } else {
+          setStatus({ type: 'error', msg: res.message || res.error || 'Upload failed' });
+        }
       } else if (res.material?.status === 'failed') {
         setStatus({ type: 'error', msg: 'Material indexing failed.' });
       } else if (res.material?.status === 'ready' && (res.chunksProcessed ?? 0) > 0) {
@@ -214,8 +227,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
         }}>
           <h4 style={{ fontWeight: 'var(--fw-bold)', marginBottom: 'var(--sp-2)' }}>Potential Subject Mismatch</h4>
           <p style={{ marginBottom: 'var(--sp-3)' }}>
-            This source appears to be related to <strong>Physics/Chemistry/Biology</strong>, but your active goal is <strong>{mismatchWarning.activeGoalTitle}</strong>.
-            Are you sure you want to attach it?
+            {mismatchWarning.message}
           </p>
           <div style={{ display: 'flex', gap: 'var(--sp-3)' }}>
             <Button variant="ghost" onClick={() => { setMismatchWarning(null); setPendingFormData(null); }}>
@@ -224,6 +236,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
             <Button style={{ background: 'var(--warning)', color: '#000' }} onClick={() => {
               if (pendingFormData) {
                 pendingFormData.set('detectedSubject', mismatchWarning.fileSub);
+                if (mismatchWarning.fileChapter) pendingFormData.set('detectedChapter', mismatchWarning.fileChapter);
                 pendingFormData.set('detectedGoalSubject', mismatchWarning.goalSub);
                 pendingFormData.set('mismatchWarningAcknowledged', 'true');
                 processUpload(pendingFormData);
@@ -339,6 +352,17 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
                   <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
                     Uploaded on {new Date(mat.created_at).toLocaleDateString()}
                   </div>
+                  {(mat.detected_subject || mat.detected_chapter) && (
+                    <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)', marginTop: 2 }}>
+                      Detected: {[mat.detected_subject, mat.detected_chapter].filter(Boolean).join(' / ')}
+                    </div>
+                  )}
+                  <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', marginTop: 2 }}>
+                    {mat.chunk_count ?? mat.study_material_chunks?.[0]?.count ?? 0} chunks
+                    {' · '}{mat.embedding_count ?? 0} embeddings
+                    {' · '}retry {mat.retry_count ?? 0}
+                    {mat.last_processed_at ? ` · processed ${new Date(mat.last_processed_at).toLocaleString()}` : ''}
+                  </div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
                   <Button
@@ -357,7 +381,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
                       </>
                     )}
                   </Button>
-                  {mat.status !== 'ready' && (
+                  {!['ready', 'processing', 'queued'].includes(mat.status) && (
                     <Button
                       size="sm"
                       variant="secondary"
@@ -375,8 +399,8 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
                       )}
                     </Button>
                   )}
-                  <Badge color={mat.status === 'ready' ? 'cyan' : mat.status === 'failed' ? 'red' : 'yellow'}>
-                    {mat.status === 'ready' ? 'Ready' : mat.status === 'failed' ? 'Failed' : mat.status === 'uploaded' ? 'Uploaded' : mat.status === 'queued' ? 'Queued' : 'Processing'}
+                  <Badge color={mat.status === 'ready' ? 'cyan' : ['failed', 'retryable_failed'].includes(mat.status) ? 'red' : 'yellow'}>
+                    {mat.status === 'ready' ? 'Ready' : mat.status === 'failed' ? 'Failed' : mat.status === 'retryable_failed' ? 'Retry available' : mat.status === 'uploaded' ? 'Uploaded' : mat.status === 'queued' ? 'Queued' : 'Processing'}
                   </Badge>
                   <Badge color="gray">
                     {mat.source_type?.toUpperCase() || (mat.mime_type?.includes('pdf') ? 'PDF' : 'TXT')}
@@ -386,9 +410,9 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
                   )}
                 </div>
               </div>
-              {mat.status === 'failed' && (mat.error_message || mat.last_error) && (
+              {['failed', 'retryable_failed'].includes(mat.status) && (mat.error_message || mat.last_error) && (
                 <div style={{ padding: 'var(--sp-2) var(--sp-3)', background: 'rgba(239, 68, 68, 0.1)', color: 'var(--danger)', fontSize: 'var(--fs-sm)', borderRadius: 'var(--radius-md)' }}>
-                  <strong>Error:</strong> {mat.error_message || mat.last_error}
+                  <strong>Error{mat.last_error_code ? ` (${mat.last_error_code})` : ''}:</strong> {mat.error_message || mat.last_error}
                   <div style={{ fontSize: 'var(--fs-xs)', opacity: 0.8, marginTop: '2px' }}>
                     Retryable: {mat.retryable ? 'Yes' : 'No'} {mat.next_retry_at ? `| Next Retry: ${new Date(mat.next_retry_at).toLocaleString()}` : ''}
                   </div>

@@ -4,7 +4,7 @@ import { createClient } from '@/lib/supabase/server';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { getRagConfig, SUPPORTED_MATERIAL_MIME_TYPES, SUPPORTED_MATERIAL_EXTENSIONS } from '@/lib/rag/config';
-import { ingestStudyMaterial, materialContentHash } from '@/lib/rag/ingest';
+import { materialContentHash } from '@/lib/rag/ingest';
 import { validateMagicBytesArray } from '@/lib/utils/magicBytes';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { EventWorkerService } from '@/lib/events/worker';
@@ -20,8 +20,7 @@ import {
   ensureSessionBelongsToUser,
   ensureSessionGoalLink,
 } from '@/lib/services/goal-context.service';
-
-const INLINE_INGESTION_MAX_BYTES = 5 * 1024 * 1024;
+import { classifySource } from '@/lib/materials/classify-source';
 
 function sanitizeFilename(value: string): string {
   return value
@@ -91,7 +90,7 @@ export async function POST(req: NextRequest) {
     const formData = await req.formData();
     const goalId = formString(formData.get('goalId'));
     const chatSessionId = formString(formData.get('chatSessionId'));
-    if (goalId) await ensureGoalForUser(supabase, user.id, goalId);
+    const activeGoal = goalId ? await ensureGoalForUser(supabase, user.id, goalId) : null;
     if (chatSessionId) {
       const session = await ensureSessionBelongsToUser(supabase, user.id, chatSessionId);
       if (goalId && session.goal_id !== goalId && !session.is_global) {
@@ -145,6 +144,26 @@ export async function POST(req: NextRequest) {
     if (!validateMagicBytesArray(new Uint8Array(buffer.subarray(0, 12)), mimeType)) {
       logger.warn('Upload rejected: magic byte mismatch', { userId: user.id, mimeType, requestId });
       return apiErrorResponse('invalid_file', { status: 422, message: 'File contents do not match the declared MIME type.', requestId });
+    }
+
+    const classification = classifySource({
+      filename: file.name,
+      title: formString(formData.get('title')),
+      firstPageText: mimeType === 'text/plain' || mimeType === 'text/markdown'
+        ? buffer.toString('utf8', 0, Math.min(buffer.length, 12_000))
+        : null,
+      activeGoal,
+    });
+    const mismatchAcknowledged = formData.get('mismatchWarningAcknowledged') === 'true';
+    if (classification.mismatch && !mismatchAcknowledged) {
+      return NextResponse.json({
+        ok: false,
+        errorCode: 'source_goal_mismatch',
+        message: classification.warningMessage,
+        requestId,
+        retryable: false,
+        classification,
+      }, { status: 409, headers: { 'x-request-id': requestId } });
     }
 
     const { count, error: countError } = await supabase
@@ -221,9 +240,7 @@ export async function POST(req: NextRequest) {
       });
     if (upload.error) throw upload.error;
 
-    const shouldIngestInline =
-      featureFlags.ragIngestion() &&
-      buffer.byteLength <= INLINE_INGESTION_MAX_BYTES;
+    const shouldIngestInline = false;
     const initialStatus = !featureFlags.ragIngestion()
       ? 'uploaded'
       : shouldIngestInline
@@ -260,9 +277,10 @@ export async function POST(req: NextRequest) {
         content_hash: contentHash,
         goal_id: goalId,
         chat_session_id: chatSessionId,
-        detected_subject: formString(formData.get('detectedSubject')),
-        mismatch_warning_acknowledged: formData.get('mismatchWarningAcknowledged') === 'true',
-        goal_match_score: formData.get('mismatchWarningAcknowledged') === 'true' ? 0 : null,
+        detected_subject: classification.detectedSubject,
+        detected_chapter: classification.detectedChapter,
+        mismatch_warning_acknowledged: classification.mismatch && mismatchAcknowledged,
+        goal_match_score: classification.goalMatchScore,
       })
       .select('id, title, status')
       .single();
@@ -338,33 +356,16 @@ export async function POST(req: NextRequest) {
     });
 
 
-    let ingestionResult: Awaited<ReturnType<typeof ingestStudyMaterial>> | null = null;
-    if (shouldIngestInline) {
-      ingestionResult = await ingestStudyMaterial({
-        materialId: material.id,
-        userId: user.id,
-        buffer,
-        mimeType,
-      });
-    } else {
-      // Fire the worker instantly in the background without blocking the HTTP response.
-      after(async () => {
-        try {
-          logger.info('Instantly triggering background event worker for upload', { userId: user.id, materialId: material.id });
-          await EventWorkerService.processBatch(25, 5, 50_000, Date.now());
-        } catch (workerError) {
-          logger.error('Instant worker trigger failed', { error: workerError });
-        }
-      });
-    }
+    after(async () => {
+      try {
+        logger.info('Instantly triggering background event worker for upload', { userId: user.id, materialId: material.id });
+        await EventWorkerService.processBatch(25, 5, 50_000, Date.now());
+      } catch (workerError) {
+        logger.error('Instant worker trigger failed', { error: workerError });
+      }
+    });
 
-    const responseStatus = ingestionResult?.status === 'ready'
-      ? 'ready'
-      : ingestionResult?.status === 'failed'
-        ? 'failed'
-        : featureFlags.ragIngestion()
-          ? 'queued'
-          : material.status;
+    const responseStatus = featureFlags.ragIngestion() ? 'queued' : material.status;
 
     logger.info('Upload accepted', {
       userId: user.id,
@@ -372,7 +373,7 @@ export async function POST(req: NextRequest) {
       mimeType,
       fileSize: file.size,
       status: responseStatus,
-      chunksProcessed: ingestionResult?.chunks ?? 0,
+      chunksProcessed: 0,
       requestId,
     });
 
@@ -381,9 +382,10 @@ export async function POST(req: NextRequest) {
         ...material,
         status: responseStatus,
       },
-      chunksProcessed: ingestionResult?.chunks ?? 0,
+      chunksProcessed: 0,
       duplicate: false,
-    }, { status: ingestionResult?.status === 'ready' ? 201 : 202, headers: { 'x-request-id': requestId } });
+      classification,
+    }, { status: 202, headers: { 'x-request-id': requestId } });
   } catch (error) {
     return unexpectedApiErrorResponse(req, error, 'materials_upload_unhandled', 'Unable to upload study material.');
   }

@@ -1,3 +1,5 @@
+import { normalizeGoal } from './normalize-goal';
+
 export type GoalDomain = {
   rawGoal: string;
   normalizedGoal: string;
@@ -9,6 +11,9 @@ export type GoalDomain = {
   confidence: number;
   needsClarification: boolean;
   clarificationQuestion: string | null;
+  chapter?: string | null;
+  chapterSlug?: string | null;
+  mode?: 'mastery' | 'revision' | 'practice' | 'unknown';
 };
 
 type GoalDomainInput = {
@@ -49,6 +54,7 @@ const EXAM_MAP: Record<string, { exam: string; domain: string; confidence: numbe
 };
 
 export function inferGoalDomain(rawGoal: string, explicit: GoalDomainInput = {}): GoalDomain {
+  const canonical = normalizeGoal(rawGoal);
   const normalizedGoal = normalize(rawGoal);
   const tokens = new Set(normalizedGoal.split(' ').filter(Boolean));
   const explicitSubject = normalize(explicit.subject);
@@ -63,6 +69,14 @@ export function inferGoalDomain(rawGoal: string, explicit: GoalDomainInput = {})
   let grade: string | null = explicitGrade || null;
   let board: string | null = explicitBoard || null;
   let confidence = explicitSubject || explicitDomain || explicitExam ? 0.82 : 0.2;
+
+  if (canonical.chapterSlug === 'neet-biology-biotechnology') {
+    subject = explicitSubject || 'biology';
+    domain = explicitDomain || 'medical_exam';
+    exam = explicitExam || 'neet';
+    grade = explicitGrade || 'class_12';
+    confidence = Math.max(confidence, canonical.confidence);
+  }
 
   // 1. Check for specific exams in the title
   const examEntry = Object.entries(EXAM_MAP).find(([key]) =>
@@ -195,6 +209,9 @@ export function inferGoalDomain(rawGoal: string, explicit: GoalDomainInput = {})
     confidence: Math.min(0.99, Number(confidence.toFixed(2))),
     needsClarification,
     clarificationQuestion: needsClarification ? 'What subject, exam, or class should this goal focus on? (e.g. Physics, NEET Biology, or Class 10 Math)' : null,
+    chapter: canonical.chapter,
+    chapterSlug: canonical.chapterSlug,
+    mode: canonical.mode,
   };
 }
 

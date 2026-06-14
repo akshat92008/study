@@ -2,13 +2,58 @@ import type { SeedTemplate, SeedTopicParams, SeedTopicResult, SeedSource } from 
 import { selectSeedTemplate } from './template-registry';
 import { slugify } from './text-utils';
 import { upsertAtlasConcepts } from './concept-upserter';
+import { logger } from '@/lib/utils/logger';
 type SupabaseLike = any;
+import { ChapterSeed, MicrotargetSeed } from './types';
+
+function isChapterSeed(template: SeedTemplate | ChapterSeed): template is ChapterSeed {
+  return 'missions' in template;
+}
+
 function buildSeededTopicRows(
   params: SeedTopicParams,
-  template: SeedTemplate,
+  template: SeedTemplate | ChapterSeed,
   templateKey: string,
   source: SeedSource
 ) {
+  if (isChapterSeed(template)) {
+    const rows: any[] = [];
+    let globalIndex = 1;
+
+    for (const mission of template.missions) {
+      for (const mt of mission.microtargets) {
+        rows.push({
+          user_id: params.userId,
+          goal_id: params.goalId,
+          subject: template.subject,
+          chapter: template.chapterTitle,
+          topic: mission.title,
+          microtarget: mt.title,
+          order_index: globalIndex,
+          topic_slug: slugify(mission.title),
+          microtarget_slug: slugify(mt.title),
+          template_key: templateKey,
+          source,
+          status: globalIndex === 1 ? 'active' : 'not_started',
+          mastery_score: 0,
+          confidence: 'low',
+          metadata: {
+            displayName: template.chapterTitle,
+            aliases: template.aliases,
+            tags: mt.conceptTags ?? [],
+            difficulty: mt.difficulty ?? 'medium',
+            microtargets: [],
+            missionId: mission.id,
+            microtargetId: mt.id,
+            seededBy: 'neet-chapter-seeder-v1',
+          },
+        });
+        globalIndex++;
+      }
+    }
+    return rows;
+  }
+
   return template.topics.map((item, idx) => {
     const orderIndex = Number.isFinite(item.orderIndex) ? item.orderIndex : idx + 1;
     return {
@@ -31,6 +76,7 @@ function buildSeededTopicRows(
         aliases: template.aliases,
         tags: item.tags ?? [],
         difficulty: item.difficulty ?? 'medium',
+        microtargets: item.microtargets ?? [],
         seededBy: 'global-topic-seeder-v1',
       },
     };
@@ -51,6 +97,19 @@ export async function seedTopicsForGoal(
     };
   }
   const selected = selectSeedTemplate(params);
+  logger.info('mission_template_selected', {
+    userId: params.userId,
+    goalId: params.goalId,
+    templateKey: selected.templateKey,
+    source: selected.source,
+  });
+  if (selected.source === 'custom_seed') {
+    logger.warn('mission_fallback_used', {
+      userId: params.userId,
+      goalId: params.goalId,
+      goalTitle: params.goalTitle,
+    });
+  }
   const rows = buildSeededTopicRows(params, selected.template, selected.templateKey, selected.source);
   const { error: upsertError } = await supabase
     .from('seeded_topics')

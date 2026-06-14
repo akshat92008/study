@@ -150,6 +150,7 @@ export async function POST(req: NextRequest) {
         skipped: true,
       },
       domain: result.domain,
+      normalizedGoal: result.normalizedGoal,
     }, { status: 201, headers: { 'x-request-id': requestId } });
   } catch (error) {
     return unexpectedApiErrorResponse(req, error, 'goals_post', 'Unable to create learning goal.');

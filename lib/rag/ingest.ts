@@ -44,13 +44,19 @@ export async function ingestStudyMaterial(input: IngestStudyMaterialInput) {
     .eq('id', input.materialId)
     .eq('user_id', input.userId);
 
+  logger.info('material_processing_started', {
+    userId: input.userId,
+    materialId: input.materialId,
+    jobId: job?.id ?? null,
+  });
+
   try {
     await updateRagJob(job?.id, input.userId, 'extracting');
     const extracted = await extractMaterialText(input.buffer, input.mimeType);
     if (extracted.ocrRequired && !config.enableOcr) {
       if (!config.ocrFallbackToVision) {
         await failRagJob(job?.id, input.userId, 'ocr_required', 'This file appears scanned or image-only. OCR is not enabled. Enable RAG_OCR_FALLBACK_VISION or RAG_ENABLE_OCR to process scanned PDFs.');
-        await markMaterialFailed(input.materialId, input.userId, 'This file appears scanned or image-only. Enable OCR to process this file.', 'ocr_required');
+        await markMaterialFailed(input.materialId, input.userId, 'This file appears scanned or image-only. Enable OCR to process this file.', 'ocr_required', false);
         return { status: 'failed' as const, chunks: 0 };
       }
 
@@ -75,7 +81,7 @@ export async function ingestStudyMaterial(input: IngestStudyMaterialInput) {
 
         if (!visionText || visionText.trim().length < 50) {
           await failRagJob(job?.id, input.userId, 'ocr_vision_empty', 'Vision extraction returned no usable text from this file.');
-          await markMaterialFailed(input.materialId, input.userId, 'Could not extract text from this scanned file. Try uploading a clearer scan or a text-based PDF.', 'ocr_vision_empty');
+          await markMaterialFailed(input.materialId, input.userId, 'Could not extract text from this scanned file. Try uploading a clearer scan or a text-based PDF.', 'ocr_vision_empty', false);
           return { status: 'failed' as const, chunks: 0 };
         }
 
@@ -95,7 +101,7 @@ export async function ingestStudyMaterial(input: IngestStudyMaterialInput) {
           error: visionErr instanceof Error ? visionErr.message : String(visionErr),
         });
         await failRagJob(job?.id, input.userId, 'ocr_vision_failed', 'Vision extraction failed for this scanned file. Try a clearer scan or a text-based PDF.');
-        await markMaterialFailed(input.materialId, input.userId, 'Could not extract text from this scanned file via vision. Try uploading a clearer scan.', 'ocr_vision_failed');
+        await markMaterialFailed(input.materialId, input.userId, 'Could not extract text from this scanned file via vision. Try uploading a clearer scan.', 'ocr_vision_failed', true);
         return { status: 'failed' as const, chunks: 0 };
       }
     }
@@ -110,7 +116,7 @@ export async function ingestStudyMaterial(input: IngestStudyMaterialInput) {
 
     if (chunks.length === 0) {
       await failRagJob(job?.id, input.userId, 'chunking_empty', 'No text chunks could be extracted from this material.');
-      await markMaterialFailed(input.materialId, input.userId, 'Could not extract any readable text from this file.', 'chunking_empty');
+      await markMaterialFailed(input.materialId, input.userId, 'Could not extract any readable text from this file.', 'chunking_empty', false);
       return { status: 'failed' as const, chunks: 0 };
     }
 
@@ -123,6 +129,7 @@ export async function ingestStudyMaterial(input: IngestStudyMaterialInput) {
     await updateRagJob(job?.id, input.userId, 'embedding', { chunkCount: chunks.length });
     
     const BATCH_SIZE = 5;
+    let embeddingCount = 0;
     for (let i = 0; i < chunks.length; i += BATCH_SIZE) {
       const batch = chunks.slice(i, i + BATCH_SIZE);
       const batchResults = await Promise.all(
@@ -136,6 +143,7 @@ export async function ingestStudyMaterial(input: IngestStudyMaterialInput) {
       );
 
       for (const { chunk, embedding } of batchResults) {
+        if (embedding.length > 0) embeddingCount += 1;
         const { error } = await supabase
           .from('study_material_chunks')
           .insert({
@@ -166,15 +174,25 @@ export async function ingestStudyMaterial(input: IngestStudyMaterialInput) {
         page_count: extracted.pageCount,
         char_count: extracted.charCount,
         chunk_count: chunks.length,
-        embedding_count: chunks.length,
+        embedding_count: embeddingCount,
         processing_finished_at: new Date().toISOString(),
         last_processed_at: new Date().toISOString(),
+        error_message: null,
+        last_error: null,
+        last_error_code: null,
+        next_retry_at: null,
         updated_at: new Date().toISOString(),
       })
       .eq('id', input.materialId)
       .eq('user_id', input.userId);
 
     if (updateError) throw updateError;
+    logger.info('material_processing_succeeded', {
+      userId: input.userId,
+      materialId: input.materialId,
+      chunkCount: chunks.length,
+      embeddingCount,
+    });
     await completeRagJob(job?.id, input.userId, { chunks: chunks.length, pageCount: extracted.pageCount });
     
     await recordAgentAction({
@@ -222,38 +240,48 @@ export async function ingestStudyMaterial(input: IngestStudyMaterialInput) {
       input.materialId,
       input.userId,
       error instanceof Error ? error.message : 'Material ingestion failed',
-      'ingestion_failed'
+      'ingestion_failed',
+      true
     );
     return { status: 'failed' as const, chunks: 0 };
   }
 }
 
-async function markMaterialFailed(materialId: string, userId: string, message: string, errorCode: string = 'ingestion_failed') {
+async function markMaterialFailed(
+  materialId: string,
+  userId: string,
+  message: string,
+  errorCode: string = 'ingestion_failed',
+  retryable = true
+) {
   const supabase = createAdminClient();
-  // Fetch current retry_count to increment it
-  const { data: current } = await supabase
-    .from('study_materials')
-    .select('retry_count')
-    .eq('id', materialId)
-    .eq('user_id', userId)
-    .single();
-
-  const nextRetryCount = (current?.retry_count ?? 0) + 1;
+  const nextRetryAt = retryable
+    ? new Date(Date.now() + 5 * 60_000).toISOString()
+    : null;
 
   await supabase
     .from('study_materials')
     .update({
-      status: 'failed',
-      retryable: true,
+      status: retryable ? 'retryable_failed' : 'failed',
+      retryable,
       error_message: message.slice(0, 500),
       last_error: message.slice(0, 500),
       last_error_code: errorCode,
-      retry_count: nextRetryCount,
+      next_retry_at: nextRetryAt,
       processing_finished_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     })
     .eq('id', materialId)
     .eq('user_id', userId);
+
+  logger.warn('material_processing_failed', {
+    userId,
+    materialId,
+    errorCode,
+    retryable,
+    nextRetryAt,
+    error: message,
+  });
 }
 
 export function materialContentHash(buffer: Buffer): string {

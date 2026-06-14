@@ -74,8 +74,8 @@ export async function GET(request: Request) {
     if (goalId) topMemoryQuery = topMemoryQuery.eq('goal_id', goalId);
 
     let seededTopicsQuery = supabase
-      .from('goal_curriculum_nodes')
-      .select('id, subject, chapter, title, description, status, order_index')
+      .from('seeded_topics')
+      .select('id, subject, chapter, topic, microtarget, status, order_index, metadata')
       .eq('user_id', user.id)
       .order('order_index', { ascending: true })
       .limit(20);
@@ -99,6 +99,12 @@ export async function GET(request: Request) {
       .eq('user_id', user.id);
     if (goalId) masteryAggQuery = masteryAggQuery.eq('goal_id', goalId);
 
+    let tutorMasteryQuery = supabase
+      .from('concept_mastery')
+      .select('concept_tag, mastery_score, correct_count, partial_count, incorrect_count, last_practiced_at, last_result')
+      .eq('user_id', user.id);
+    if (goalId) tutorMasteryQuery = tutorMasteryQuery.eq('goal_id', goalId);
+
     const [
       profileRes,
       cognition,
@@ -114,6 +120,7 @@ export async function GET(request: Request) {
       seededTopicsRes,
       mistakeCountRes,
       masteryAggRes,
+      tutorMasteryRes,
     ] = await Promise.all([
       supabase.from('profiles').select('*').eq('id', user.id).single(),
       getCognitionGraph(user.id, goalId),
@@ -129,6 +136,7 @@ export async function GET(request: Request) {
       seededTopicsQuery,
       mistakeCountQuery.then(res => res.count ?? 0),
       masteryAggQuery,
+      tutorMasteryQuery,
     ]);
 
     let overallMastery = profileRes.data?.overall_mastery ?? 0;
@@ -136,6 +144,21 @@ export async function GET(request: Request) {
       const sum = masteryAggRes.data.reduce((acc: number, c: any) => acc + Number(c.mastery_score ?? 0), 0);
       overallMastery = Math.round((sum / masteryAggRes.data.length) * 100) / 100;
     }
+
+    const tutorMastery = tutorMasteryRes.data ?? [];
+    if (tutorMastery.length > 0) {
+      const sum = tutorMastery.reduce((acc: number, item: any) => acc + Number(item.mastery_score ?? 0), 0);
+      overallMastery = Math.round((sum / tutorMastery.length) * 100);
+    }
+
+    const { getWeakAreasForUser } = await import('@/lib/weak-areas/get-weak-areas');
+    const weakData = await getWeakAreasForUser(supabase, { userId: user.id, goalId: goalId || '' });
+    const activeWeakAreas = weakData.weakAreas;
+
+    const weakPaths = activeWeakAreas.map((area: any) => area.displayPath.join(' / '));
+    const nextRecommendedMicrotarget = weakPaths.length > 0
+      ? `Repair ${weakPaths[0]} with active recall.`
+      : (seededTopicsRes.data?.find((topic: any) => topic.status === 'active')?.microtarget ?? null);
 
     const syllabus: Record<string, string[]> = {};
     if (conceptsRes.data) {
@@ -166,11 +189,19 @@ export async function GET(request: Request) {
         id: t.id,
         subject: t.subject,
         chapter: t.chapter,
-        topic: t.title,
-        microtarget: t.description,
+        topic: t.topic,
+        microtarget: t.microtarget,
         status: t.status,
-        order_index: t.order_index
+        order_index: t.order_index,
+        metadata: t.metadata,
       })),
+      learningAdaptation: {
+        activeWeakAreas,
+        masteryPercentage: overallMastery,
+        completedMicrotargets: (seededTopicsRes.data ?? []).filter((topic: any) => ['mastered', 'completed'].includes(topic.status)).length,
+        lastPracticedAt: tutorMastery.map((item: any) => item.last_practiced_at).filter(Boolean).sort().at(-1) ?? null,
+        nextRecommendedMicrotarget,
+      },
       cognition,
       revision: { due: dueRes, stats: statsRes, allCards: allCardsRes.data || [] },
       mistakes: mistakeAnalytics ? { ...mistakeAnalytics, syllabus } : null,

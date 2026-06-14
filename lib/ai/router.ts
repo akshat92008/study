@@ -633,6 +633,12 @@ export async function routeTextGeneration(
   }
 
   // Final deterministic fallback
+  if (reservationId) {
+    throw Object.assign(new Error('All text generation providers failed.'), {
+      code: 'provider_overloaded',
+      retryable: true,
+    });
+  }
   return getDegradationMessage('provider_overloaded');
 }
 

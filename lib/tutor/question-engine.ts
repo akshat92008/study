@@ -1,48 +1,126 @@
-import { logger } from '@/lib/utils/logger';
+import { ALL_NEET_CHAPTER_SEEDS } from '../topic-seeding/templates/neet';
+import type { QuestionSeed } from '../topic-seeding/types';
 
-export interface DeterministicQuestion {
+export type TutorDifficulty = 'easy' | 'medium' | 'hard';
+
+export type DeterministicTutorQuestion = {
+  questionId: string;
   question: string;
-  expectedConcepts: string[];
-}
-
-// In a real production system, this would be backed by the database or a JSON curriculum registry.
-// For now, we extract the hardcoded map and expand it to be structured.
-const CHAPTER_MAPS: Record<string, DeterministicQuestion[]> = {
-  'Biotechnology': [
-    { question: "Why are plasmids useful as cloning vectors?", expectedConcepts: ["origin of replication", "independent replication"] },
-    { question: "What is the role of ori?", expectedConcepts: ["origin of replication", "copy number control"] },
-    { question: "Why is selectable marker needed?", expectedConcepts: ["identify transformants", "eliminate non-transformants"] },
-    { question: "Difference between exonuclease and endonuclease?", expectedConcepts: ["ends of DNA", "specific positions within DNA"] },
-    { question: "Why does restriction enzyme cut palindromic DNA?", expectedConcepts: ["recognition sequence", "overhanging sticky ends"] },
-    { question: "What is insertional inactivation?", expectedConcepts: ["recombinant selection", "beta-galactosidase"] },
-    { question: "Why is Taq polymerase used in PCR?", expectedConcepts: ["thermostable", "high temperature extension"] },
-    { question: "Why does DNA move towards anode in gel electrophoresis?", expectedConcepts: ["negatively charged", "phosphate backbone"] },
-    { question: "What is downstream processing?", expectedConcepts: ["separation", "purification", "clinical trials"] },
-    { question: "Why is Bt toxin inactive inside Bacillus?", expectedConcepts: ["protoxin", "alkaline pH of insect gut"] }
-  ]
+  expectedAnswerPoints: string[];
+  conceptTags: string[];
+  difficulty: TutorDifficulty;
+  source: 'deterministic_template';
 };
 
+export type NextQuestionInput = {
+  chapterSlug?: string | null;
+  currentMicrotargetId?: string | null;
+  weakAreas?: Array<string | { conceptTag?: string; concept_tag?: string; severity?: string }>;
+  recentQuestions?: string[];
+  difficulty?: TutorDifficulty;
+  mode?: string | null;
+};
+
+function normalize(value: string): string {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
+function weakTags(input: NextQuestionInput['weakAreas']): string[] {
+  return (input ?? []).flatMap((item) => {
+    if (typeof item === 'string') return [normalize(item).replace(/\s+/g, '_')];
+    const tag = item.conceptTag ?? item.concept_tag;
+    return tag ? [normalize(tag).replace(/\s+/g, '_')] : [];
+  });
+}
+
+function getAllQuestionsForChapter(chapterSlug: string): DeterministicTutorQuestion[] {
+  const normSlug = normalize(chapterSlug);
+  // Match exact slug or fallback to biotechnology check for backward compat
+  const chapter = ALL_NEET_CHAPTER_SEEDS.find(c => normalize(c.chapterSlug) === normSlug) 
+    || (normSlug.includes('biotechnology') ? ALL_NEET_CHAPTER_SEEDS.find(c => c.chapterSlug === 'biotechnology') : null);
+    
+  if (!chapter) return [];
+
+  const questions: DeterministicTutorQuestion[] = [];
+  for (const mission of chapter.missions) {
+    for (const mt of mission.microtargets) {
+      if (mt.activeRecallQuestions) {
+        for (const q of mt.activeRecallQuestions) {
+          questions.push({
+            questionId: q.id,
+            question: q.question,
+            expectedAnswerPoints: q.expectedAnswerPoints,
+            conceptTags: q.conceptTags,
+            difficulty: q.difficulty,
+            source: 'deterministic_template',
+          });
+        }
+      }
+    }
+  }
+  return questions;
+}
+
+export function getNextQuestion(input: NextQuestionInput): DeterministicTutorQuestion | null {
+  const chapter = input.chapterSlug;
+  if (!chapter) return null;
+
+  const availableQuestions = getAllQuestionsForChapter(chapter);
+  if (availableQuestions.length === 0) return null;
+
+  const recent = new Set((input.recentQuestions ?? []).map(normalize));
+  const available = availableQuestions.filter((item) => (
+    !recent.has(normalize(item.questionId)) && !recent.has(normalize(item.question))
+  ));
+  if (available.length === 0) return availableQuestions[0];
+
+  const weak = weakTags(input.weakAreas);
+  if (weak.length > 0) {
+    const weakMatch = available.find((item) => item.conceptTags.some((tag) => weak.includes(tag)));
+    if (weakMatch) return weakMatch;
+  }
+
+  if (input.difficulty) {
+    const difficultyMatch = available.find((item) => item.difficulty === input.difficulty);
+    if (difficultyMatch) return difficultyMatch;
+  }
+
+  return available[0];
+}
+
+export function findQuestionByText(questionText: string, chapterSlug?: string): DeterministicTutorQuestion | null {
+  const normalized = normalize(questionText);
+  if (chapterSlug) {
+    const questions = getAllQuestionsForChapter(chapterSlug);
+    return questions.find((item) => (
+      normalized.includes(normalize(item.question)) || normalize(item.question).includes(normalized)
+    )) ?? null;
+  }
+  
+  // Very expensive fallback if no chapter provided
+  for (const chapter of ALL_NEET_CHAPTER_SEEDS) {
+    const match = getAllQuestionsForChapter(chapter.chapterSlug).find((item) => (
+      normalized.includes(normalize(item.question)) || normalize(item.question).includes(normalized)
+    ));
+    if (match) return match;
+  }
+  return null;
+}
+
 export class QuestionEngine {
-  /**
-   * Returns a deterministic question for the given chapter/topic and turn number.
-   * If the session is deeper than the mapped questions, returns null (allowing LLM fallback).
-   */
-  static getDeterministicQuestion(topic: string, currentTurn: number): DeterministicQuestion | null {
-    // Normalize topic check
-    let matchedChapter: string | null = null;
-    if (topic.toLowerCase().includes('biotechnology')) {
-      matchedChapter = 'Biotechnology';
-    }
-
-    if (!matchedChapter) {
-      return null;
-    }
-
-    const chapterQuestions = CHAPTER_MAPS[matchedChapter] || [];
-    if (currentTurn < chapterQuestions.length) {
-      return chapterQuestions[currentTurn];
-    }
-
-    return null;
+  static getDeterministicQuestion(topic: string, currentTurn: number) {
+    const allQ = getAllQuestionsForChapter(topic);
+    const recent = allQ.slice(0, currentTurn).map((item) => item.questionId);
+    
+    const question = getNextQuestion({
+      chapterSlug: topic,
+      recentQuestions: recent,
+    });
+    if (!question) return null;
+    return {
+      ...question,
+      expectedConcepts: question.expectedAnswerPoints,
+    };
   }
 }
+

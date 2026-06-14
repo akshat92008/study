@@ -1,15 +1,26 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { after, NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
+import { getRequestId } from '@/lib/api/errors';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { EventWorkerService } from '@/lib/events/worker';
-import { createAdminClient } from '@/lib/supabase/admin';
 import { featureFlags } from '@/lib/config/flags';
-import { ingestStudyMaterial } from '@/lib/rag/ingest';
+import { logger } from '@/lib/utils/logger';
+import { nextRetryCount, reprocessJobKey, shouldQueueReprocess } from '@/lib/materials/reprocess-state';
 
 type RouteContext = { params: Promise<{ id: string }> | { id: string } };
 
-const INLINE_REPROCESS_MAX_BYTES = 5 * 1024 * 1024;
+function errorResponse(input: {
+  status: number;
+  errorCode: string;
+  message: string;
+  requestId: string;
+  retryable: boolean;
+}) {
+  return NextResponse.json({ ok: false, ...input }, {
+    status: input.status,
+    headers: { 'x-request-id': input.requestId },
+  });
+}
 
 export async function POST(req: NextRequest, context: RouteContext) {
   const requestId = getRequestId(req);
@@ -17,126 +28,118 @@ export async function POST(req: NextRequest, context: RouteContext) {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) {
-      return NextResponse.json({ ok: false, errorCode: 'unauthorized', message: 'Authentication is required.', requestId, retryable: false }, { status: 401 });
+      return errorResponse({ status: 401, errorCode: 'unauthorized', message: 'Authentication is required.', requestId, retryable: false });
+    }
+    if (!featureFlags.ragIngestion()) {
+      return errorResponse({ status: 503, errorCode: 'rag_unavailable', message: 'Source processing is currently disabled.', requestId, retryable: true });
     }
 
-    const params = await context.params;
+    const { id: materialId } = await context.params;
+    const body = await req.json().catch(() => ({}));
+    const force = body?.force === true || new URL(req.url).searchParams.get('force') === 'true';
     const { data: material, error } = await supabase
       .from('study_materials')
-      .select('id, user_id, mime_type, storage_path')
-      .eq('id', params.id)
+      .select('id, user_id, mime_type, storage_path, status, retry_count')
+      .eq('id', materialId)
       .eq('user_id', user.id)
       .maybeSingle();
-    
+
     if (error) throw error;
-    
-    if (!material?.storage_path) {
-      return NextResponse.json({ ok: false, errorCode: 'not_found', message: 'Study material file was not found.', requestId, retryable: false }, { status: 404 });
+    if (!material) {
+      return errorResponse({ status: 404, errorCode: 'not_found', message: 'Study material was not found.', requestId, retryable: false });
+    }
+    if (!material.storage_path) {
+      return errorResponse({ status: 422, errorCode: 'missing_storage_file', message: 'The original source file is unavailable. Upload it again.', requestId, retryable: false });
     }
 
-    if (featureFlags.ragIngestion()) {
-      const admin = createAdminClient();
-      const download = await admin.storage
-        .from('study-materials')
-        .download(material.storage_path);
-
-      if (download.error || !download.data) {
-        return NextResponse.json({ ok: false, errorCode: 'download_failed', message: 'The stored source file could not be downloaded for indexing.', requestId, retryable: true }, { status: 404 });
-      }
-
-      const arrayBuffer = await download.data.arrayBuffer();
-      if (arrayBuffer.byteLength <= INLINE_REPROCESS_MAX_BYTES) {
-        await supabase
-          .from('study_materials')
-          .update({
-            status: 'processing',
-            retryable: false,
-            error_message: null,
-            last_error: null,
-            next_retry_at: null,
-            updated_at: new Date().toISOString(),
-          })
-          .eq('id', material.id)
-          .eq('user_id', user.id);
-
-        await EventDispatcher.publish({
-          user_id: user.id,
-          type: 'MATERIAL_INGESTION_REQUESTED',
-          data: { materialId: material.id },
-          metadata: { source: 'materials_reprocess_inline' },
-          idempotency_key: `material_reprocess_requested:${material.id}`,
-        });
-
-        const result = await ingestStudyMaterial({
-          materialId: material.id,
-          userId: user.id,
-          buffer: Buffer.from(arrayBuffer),
-          mimeType: material.mime_type,
-        });
-
-        return NextResponse.json(
-          { ok: true, materialId: material.id, status: result.status, jobId: `inline-${requestId}`, requestId, chunksProcessed: result.chunks },
-          { status: result.status === 'ready' ? 200 : 202, headers: { 'x-request-id': requestId } }
-        );
-      }
+    if (!shouldQueueReprocess(material.status, force)) {
+      return NextResponse.json({
+        ok: true,
+        materialId: material.id,
+        status: 'processing',
+        jobId: null,
+        requestId,
+        duplicate: true,
+      }, { status: 200, headers: { 'x-request-id': requestId } });
     }
 
-    const idempotencyKey = `rag_reprocess:${user.id}:${material.id}`;
-    const { error: jobError } = await supabase
+    const retryCount = nextRetryCount(material.status, Number(material.retry_count ?? 0));
+    const idempotencyKey = reprocessJobKey(user.id, material.id);
+    const { data: job, error: jobError } = await supabase
       .from('rag_ingestion_jobs')
       .upsert({
         user_id: user.id,
         material_id: material.id,
         status: 'queued',
         idempotency_key: idempotencyKey,
-        metadata: {
-          mimeType: material.mime_type,
-          requestedBy: 'user_reprocess',
-        },
+        attempt_count: retryCount,
+        error: null,
+        error_code: null,
+        started_at: null,
+        completed_at: null,
+        metadata: { mimeType: material.mime_type, requestedBy: 'user_reprocess', requestId },
+        updated_at: new Date().toISOString(),
       }, { onConflict: 'user_id,material_id,idempotency_key' })
       .select('id')
       .single();
-    
-    if (jobError) throw jobError;
-    const jobId = (jobError as any)?.id || `job-${requestId}`; // Fallback if insert didn't return id
+    if (jobError || !job) throw jobError ?? new Error('Unable to create source processing job.');
 
-    await supabase
+    const { error: updateError } = await supabase
       .from('study_materials')
-      .update({ 
-        status: 'queued', 
+      .update({
+        status: 'queued',
         queued_at: new Date().toISOString(),
-        retryable: false, 
-        error_message: null, 
+        retry_count: retryCount,
+        retryable: false,
+        error_message: null,
         last_error: null,
+        last_error_code: null,
         next_retry_at: null,
-        updated_at: new Date().toISOString() 
+        processing_started_at: null,
+        processing_finished_at: null,
+        updated_at: new Date().toISOString(),
       })
       .eq('id', material.id)
       .eq('user_id', user.id);
+    if (updateError) throw updateError;
 
     await EventDispatcher.publish({
       user_id: user.id,
       type: 'MATERIAL_INGESTION_REQUESTED',
-      data: { materialId: material.id },
-      metadata: { source: 'materials_reprocess' },
-      idempotency_key: `material_reprocess_requested:${material.id}`,
+      data: { materialId: material.id, force },
+      metadata: { source: 'materials_reprocess', requestId },
+      idempotency_key: `material_reprocess_requested:${material.id}:${requestId}`,
     });
 
-    const { after } = await import('next/server');
+    logger.info('material_reprocess_requested', {
+      requestId,
+      userId: user.id,
+      materialId: material.id,
+      jobId: job.id,
+      retryCount,
+    });
+
     after(async () => {
-      try {
-        await EventWorkerService.processBatch(25, 5, 50_000, Date.now());
-      } catch (workerError) {
-        console.error('Instant worker trigger failed', { error: workerError });
-      }
+      await EventWorkerService.processBatch(25, 5, 50_000, Date.now()).catch((workerError) => {
+        logger.error('material_reprocess_worker_trigger_failed', workerError, { requestId, materialId: material.id });
+      });
     });
 
-    return NextResponse.json(
-      { ok: true, materialId: material.id, status: 'queued', jobId, requestId },
-      { status: 202, headers: { 'x-request-id': requestId } }
-    );
+    return NextResponse.json({
+      ok: true,
+      materialId: material.id,
+      status: 'queued',
+      jobId: job.id,
+      requestId,
+    }, { status: 202, headers: { 'x-request-id': requestId } });
   } catch (error) {
-    console.error('Reprocess route error:', error);
-    return NextResponse.json({ ok: false, errorCode: 'internal_error', message: 'Unable to reprocess study material.', requestId, retryable: true }, { status: 500 });
+    logger.error('material_reprocess_failed', error, { requestId });
+    return errorResponse({
+      status: 500,
+      errorCode: 'material_reprocess_failed',
+      message: error instanceof Error ? error.message : 'Unable to reprocess study material.',
+      requestId,
+      retryable: true,
+    });
   }
 }

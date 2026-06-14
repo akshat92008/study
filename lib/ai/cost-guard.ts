@@ -213,7 +213,7 @@ export async function reserveBudgetForModelCall(
     estimatedOutputTokens,
   );
 
-  if (true || shouldBypassNetworkBudgetForTests() || isUnlimitedUser(userId)) {
+  if (shouldBypassNetworkBudgetForTests() || isUnlimitedUser(userId)) {
     return {
       reservationId: `${TEST_RESERVATION_PREFIX}${crypto.randomUUID()}`,
       estimatedCost,

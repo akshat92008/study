@@ -14,7 +14,7 @@ export async function GET(req: NextRequest, context: RouteContext) {
     const params = await context.params;
     const { data, error } = await supabase
       .from('study_materials')
-      .select('id, title, original_filename, mime_type, source_type, exam_type, subject, chapter, topic, language, status, page_count, char_count, error_message, created_at, updated_at, study_material_chunks(id, chunk_index, page_start, page_end, heading, token_estimate)')
+      .select('id, title, original_filename, mime_type, source_type, exam_type, subject, chapter, topic, language, status, page_count, char_count, error_message, last_error, last_error_code, retry_count, next_retry_at, chunk_count, embedding_count, last_processed_at, detected_subject, detected_chapter, goal_match_score, mismatch_warning_acknowledged, created_at, updated_at, study_material_chunks(id, chunk_index, page_start, page_end, heading, token_estimate)')
       .eq('id', params.id)
       .eq('user_id', user.id)
       .maybeSingle();

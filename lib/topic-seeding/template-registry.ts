@@ -1,18 +1,46 @@
-import type { SeedTemplate, SeedTopicParams, SelectedSeedTemplate } from './types';
+import type { SeedTemplate, SeedTopicParams, SelectedSeedTemplate, ChapterSeed } from './types';
 import { buildGoalHaystack, normalizeText } from './text-utils';
 import { buildFallbackTemplate } from './fallback-template';
-import { NEET_PHYSICS_TEMPLATES } from './templates/neet-physics';
-import { NEET_CHEMISTRY_TEMPLATES } from './templates/neet-chemistry';
-import { NEET_BIOLOGY_TEMPLATES } from './templates/neet-biology';
 import { CODING_TEMPLATES } from './templates/coding';
 import { GENERAL_ACADEMIC_TEMPLATES } from './templates/general-academic';
+import { ALL_NEET_CHAPTER_SEEDS } from './templates/neet';
+import { findNeetUnitByGoalText } from '../syllabus/neet-ug-2026';
+import { logger } from '@/lib/utils/logger';
+
 export const ALL_SEED_TEMPLATES: SeedTemplate[] = [
-  ...NEET_PHYSICS_TEMPLATES,
-  ...NEET_CHEMISTRY_TEMPLATES,
-  ...NEET_BIOLOGY_TEMPLATES,
   ...CODING_TEMPLATES,
   ...GENERAL_ACADEMIC_TEMPLATES,
 ];
+
+export function getNeetSeedBySlug(chapterSlug: string): ChapterSeed | null {
+  return ALL_NEET_CHAPTER_SEEDS.find(seed => seed.chapterSlug === chapterSlug) || null;
+}
+
+export function getNeetSeedsBySubject(subject: string): ChapterSeed[] {
+  const norm = normalizeText(subject);
+  return ALL_NEET_CHAPTER_SEEDS.filter(seed => normalizeText(seed.subject) === norm);
+}
+
+export function getAllNeetSeeds(): ChapterSeed[] {
+  return ALL_NEET_CHAPTER_SEEDS;
+}
+
+export function getSeedForGoal(goalText: string, activeGoalContext?: string | null): SelectedSeedTemplate | null {
+  const unit = findNeetUnitByGoalText(goalText, activeGoalContext);
+  if (unit) {
+    const seed = getNeetSeedBySlug(unit.chapterSlug);
+    if (seed) {
+      return {
+        template: seed,
+        templateKey: seed.chapterSlug,
+        source: 'seeded_template',
+        confidence: 0.99,
+      };
+    }
+  }
+  return null;
+}
+
 function scoreTemplate(template: SeedTemplate, haystack: string, params: SeedTopicParams): number {
   let score = 0;
   const normalizedHaystack = normalizeText(haystack);
@@ -30,8 +58,6 @@ function scoreTemplate(template: SeedTemplate, haystack: string, params: SeedTop
   if (normalizedHaystack.includes(normalizeText(template.displayName))) score += 50;
   if (subject && normalizeText(template.subject).includes(subject)) score += 15;
   if (subject && subject.includes(normalizeText(template.subject))) score += 15;
-  if (preset.includes('neet') && template.templateKey.startsWith('neet_')) score += 20;
-  if (goalType.includes('neet') && template.templateKey.startsWith('neet_')) score += 20;
   if (
     template.templateKey.includes('coding') &&
     ['coding', 'programming', 'javascript', 'python'].some((term) => normalizedHaystack.includes(term))
@@ -56,9 +82,7 @@ function isTemplateCompatible(template: SeedTemplate, params: SeedTopicParams): 
   const requestedSubject = subjectFamily(params.subject || params.subjects?.[0]);
   const requestedSubjects = (params.subjects ?? []).map(subjectFamily).filter(Boolean);
   const requestedDomain = normalizeText(params.domain || params.goalType);
-  const requestedExam = normalizeText(params.exam || params.goalType || params.presetId);
   const templateSubject = subjectFamily(template.subject);
-  const templateKey = normalizeText(template.templateKey);
 
   if (requestedDomain.includes('humanities') || requestedSubject === 'humanities') {
     return templateSubject === 'humanities' || templateSubject === 'general';
@@ -80,18 +104,23 @@ function isTemplateCompatible(template: SeedTemplate, params: SeedTopicParams): 
     if (!compatible) return false;
   }
 
-  if (requestedExam.includes('neet') && templateKey.startsWith('neet')) {
-    if (requestedSubject && ['physics', 'chemistry', 'biology'].includes(requestedSubject)) {
-      return templateSubject === requestedSubject;
-    }
-    return ['physics', 'chemistry', 'biology'].includes(templateSubject ?? '');
-  }
-
   return true;
 }
 
 export function selectSeedTemplate(params: SeedTopicParams): SelectedSeedTemplate {
   const haystack = buildGoalHaystack(params);
+  
+  // First attempt rigorous NEET detection
+  const isNeetContext = (params.exam || params.presetId || params.goalType)?.toLowerCase().includes('neet') || false;
+  if (isNeetContext || haystack) {
+     const neetSeed = getSeedForGoal(haystack, params.subject);
+     if (neetSeed) {
+       logger.info('mission_template_selected', { goalText: haystack, matchedSlug: neetSeed.templateKey, confidence: 0.99 });
+       return neetSeed;
+     }
+  }
+
+  // Fallback to older generic matching for coding/academics
   let best: { template: SeedTemplate; score: number } | null = null;
   for (const template of ALL_SEED_TEMPLATES) {
     if (!isTemplateCompatible(template, params)) continue;
@@ -100,7 +129,9 @@ export function selectSeedTemplate(params: SeedTopicParams): SelectedSeedTemplat
       best = { template, score };
     }
   }
+  
   if (best && best.score >= 45) {
+    logger.info('mission_template_selected', { goalText: haystack, matchedSlug: best.template.templateKey, confidence: best.score });
     return {
       template: best.template,
       templateKey: best.template.templateKey,
@@ -108,6 +139,8 @@ export function selectSeedTemplate(params: SeedTopicParams): SelectedSeedTemplat
       confidence: best.score,
     };
   }
+  
+  logger.warn('mission_fallback_used', { goalText: haystack, confidence: 10 });
   const fallback = buildFallbackTemplate(params);
   return {
     template: fallback,

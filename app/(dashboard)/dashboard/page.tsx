@@ -204,7 +204,7 @@ export default function DashboardPage() {
         )}
 
         {activeGoal && dashboardData?.seededTopics && dashboardData.seededTopics.length > 0 && (
-          <SeededTopicsCard topics={dashboardData.seededTopics} />
+          <SeededTopicsCard topics={dashboardData.seededTopics} adaptation={dashboardData.learningAdaptation} />
         )}
 
         {activeGoal && (

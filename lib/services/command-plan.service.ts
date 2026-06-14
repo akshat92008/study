@@ -165,34 +165,23 @@ export function formatCommandPlanForChat(plan: CommandPlanResult): string {
 }
 
 export function formatWeakAreasForChat(input: {
-  weakConcepts: Array<{ name?: string; subject?: string; chapter?: string; mastery?: string }>;
-  recentMistakes?: Array<{ subject?: string; chapter?: string; category?: string }>;
-  masteryPercent?: number;
+  weakAreas: Array<any>;
+  chapterSummary: Array<any>;
+  summary: string;
 }): string {
-  const weak = input.weakConcepts.slice(0, 5);
-  const mistakes = input.recentMistakes ?? [];
-
-  if (weak.length === 0 && mistakes.length === 0) {
-    return 'I do not have enough progress or mistake-review evidence yet to name your weakest areas. Send a mock result, mistake list, or finish a few tutor sessions and I will rank them from real data.';
+  if (input.weakAreas.length === 0) {
+    return input.summary;
   }
 
-  const lines = weak.map((concept, index) => {
-    const label = concept.name || concept.chapter || 'Unknown area';
-    const subject = concept.subject ? ` (${concept.subject})` : '';
-    const chapter = concept.chapter && concept.chapter !== concept.name ? ` - ${concept.chapter}` : '';
-    const mastery = concept.mastery ? ` - ${concept.mastery}` : '';
-    return `${index + 1}. ${label}${subject}${chapter}${mastery}`;
+  const lines = input.weakAreas.slice(0, 5).map((area, index) => {
+    const path = area.displayPath.join(' / ');
+    return `${index + 1}. ${path} (${area.evidenceCount} mistakes)`;
   });
 
-  const recentMistakeLine = mistakes.length > 0
-    ? `Active repair risk: ${mistakes.slice(0, 3).map((m) => `${m.subject || 'Subject'} / ${m.chapter || 'Chapter'}${m.category ? ` (${m.category})` : ''}`).join('; ')}.`
-    : 'Active repair risk: no tracked mistakes are open yet.';
-
   return [
-    `Progress currently puts your mastery at ${input.masteryPercent ?? 0}%.`,
-    'Weakest areas:',
+    input.summary,
+    'Top weakest concepts:',
     ...lines,
-    recentMistakeLine,
   ].join('\n');
 }
 

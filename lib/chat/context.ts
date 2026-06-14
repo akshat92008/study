@@ -7,6 +7,7 @@ import { getMINDSystemPrompt } from '@/lib/ai/prompts/mind-prompt';
 import { classifyMessageCombined } from '@/lib/ai/chat-intent-with-emotion';
 import { logger } from '@/lib/utils/logger';
 import { getRepairSignals } from '@/lib/services/repair-loop.service';
+import { isExplicitRagRequest } from '@/lib/rag/retrieval';
 
 export async function gatherChatContext({
   supabase,
@@ -28,6 +29,7 @@ export async function gatherChatContext({
   sessionId: string;
 }) {
   const profilePromise = supabase.from('profiles').select('exam_type').eq('id', userId).maybeSingle();
+  const explicitSourceRequest = isExplicitRagRequest(message || '');
   const intentPromise = isSimpleMessage 
     ? Promise.resolve({ intent: { intent: 'GENERAL_CHAT' }, emotion: 'neutral', confidence: 1.0 })
     : classifyMessageCombined(
@@ -134,7 +136,7 @@ export async function gatherChatContext({
           goalId: activeGoalId,
           chatSessionId: sessionId,
         }),
-        new Promise((_, r) => setTimeout(() => r(new Error('mind_rag_timeout')), 3000))
+        new Promise((_, r) => setTimeout(() => r(new Error('mind_rag_timeout')), explicitSourceRequest ? 12_000 : 3000))
       ]).catch((err) => {
         logger.error('Failed to get RAG context (or timeout)', err);
         return { ragContext: null, ragPromptBlock: '' };
@@ -162,7 +164,7 @@ export async function gatherChatContext({
       studentModel: null,
       outcomeAnalytics: null,
     })),
-    Promise.race([mindRagPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1500))]).catch(() => ({ ragContext: null, ragPromptBlock: '' }))
+    Promise.race([mindRagPromise, new Promise((_, r) => setTimeout(() => r(new Error('timeout')), explicitSourceRequest ? 12_000 : 3000))]).catch(() => ({ ragContext: null, ragPromptBlock: '' }))
   ]) as [string[], string[], any, any];
 
   if (activeGoal && mindContext && !mindContext.activeGoal) {
