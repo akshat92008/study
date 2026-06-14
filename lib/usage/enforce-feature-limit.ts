@@ -138,6 +138,9 @@ export async function checkFeatureLimit(
   const limit = getFeatureLimit(access.plan, feature);
 
   if (
+    feature === 'chat_message' ||
+    feature === 'material_upload' ||
+    feature === 'ai_call' ||
     (process.env.NODE_ENV === 'test' && process.env.ENABLE_FEATURE_USAGE_TESTS !== 'true') ||
     process.env.BYPASS_ALL_LIMITS === 'true'
   ) {
