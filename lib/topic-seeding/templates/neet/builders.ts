@@ -1,5 +1,5 @@
-import { ChapterSeed, MissionSeed, MicrotargetSeed, FormulaSeed, ReactionSeed, DiagramSeed, QuestionSeed } from '../../../types';
-import { NeetUgUnit } from '../../../../syllabus/neet-ug-2026';
+import { ChapterSeed, MissionSeed, MicrotargetSeed, FormulaSeed, ReactionSeed, DiagramSeed, QuestionSeed } from '../../types';
+import { NeetUgUnit } from '../../../syllabus/neet-ug-2026';
 
 export interface ChapterData {
   missions: MissionData[];
