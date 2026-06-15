@@ -1,0 +1,3816 @@
+{
+  "missions": [
+    {
+      "id": "m-reproduction-1",
+      "title": "Reproduction - Section 1",
+      "description": "Comprehensive analysis covering flower structure, microsporogenesis, megasporogenesis and more.",
+      "conceptTags": [
+        "reproduction",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-reproduction-flower-structure",
+          "title": "Flower structure",
+          "conceptTags": [
+            "reproduction",
+            "flower-structure"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Flower structure"
+          ],
+          "mustKnowFacts": [
+            "Flower structure is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Flower structure for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing flower structure",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of flower structure",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in flower structure"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Flower structure during complex MCQs.",
+            "Failing to apply the correct logic for Flower structure."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Flower structure."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Flower structure."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-flower-structure-1",
+              "question": "Explain the core concept behind Flower structure.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "flower-structure"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "flower-structure",
+                "conceptSlug": "core-flower-structure",
+                "microskillSlug": "understand-flower-structure",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-flower-structure-2",
+              "question": "What is a common trap associated with Flower structure?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "flower-structure",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "flower-structure",
+                "conceptSlug": "trap-flower-structure",
+                "microskillSlug": "avoid-flower-structure",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-microsporogenesis",
+          "title": "Microsporogenesis",
+          "conceptTags": [
+            "reproduction",
+            "microsporogenesis"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Microsporogenesis"
+          ],
+          "mustKnowFacts": [
+            "Microsporogenesis is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Microsporogenesis for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing microsporogenesis",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of microsporogenesis",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in microsporogenesis"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Microsporogenesis during complex MCQs.",
+            "Failing to apply the correct logic for Microsporogenesis."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Microsporogenesis."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Microsporogenesis."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-microsporogenesis-1",
+              "question": "Explain the core concept behind Microsporogenesis.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "microsporogenesis"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "microsporogenesis",
+                "conceptSlug": "core-microsporogenesis",
+                "microskillSlug": "understand-microsporogenesis",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-microsporogenesis-2",
+              "question": "What is a common trap associated with Microsporogenesis?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "microsporogenesis",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "microsporogenesis",
+                "conceptSlug": "trap-microsporogenesis",
+                "microskillSlug": "avoid-microsporogenesis",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-megasporogenesis",
+          "title": "Megasporogenesis",
+          "conceptTags": [
+            "reproduction",
+            "megasporogenesis"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Megasporogenesis"
+          ],
+          "mustKnowFacts": [
+            "Megasporogenesis is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Megasporogenesis for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing megasporogenesis",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of megasporogenesis",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in megasporogenesis"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Megasporogenesis during complex MCQs.",
+            "Failing to apply the correct logic for Megasporogenesis."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Megasporogenesis."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Megasporogenesis."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-megasporogenesis-1",
+              "question": "Explain the core concept behind Megasporogenesis.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "megasporogenesis"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "megasporogenesis",
+                "conceptSlug": "core-megasporogenesis",
+                "microskillSlug": "understand-megasporogenesis",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-megasporogenesis-2",
+              "question": "What is a common trap associated with Megasporogenesis?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "megasporogenesis",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "megasporogenesis",
+                "conceptSlug": "trap-megasporogenesis",
+                "microskillSlug": "avoid-megasporogenesis",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-male-gametophyte",
+          "title": "Male gametophyte",
+          "conceptTags": [
+            "reproduction",
+            "male-gametophyte"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Male gametophyte"
+          ],
+          "mustKnowFacts": [
+            "Male gametophyte is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Male gametophyte for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing male gametophyte",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of male gametophyte",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in male gametophyte"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Male gametophyte during complex MCQs.",
+            "Failing to apply the correct logic for Male gametophyte."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Male gametophyte."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Male gametophyte."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-male-gametophyte-1",
+              "question": "Explain the core concept behind Male gametophyte.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "male-gametophyte"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "male-gametophyte",
+                "conceptSlug": "core-male-gametophyte",
+                "microskillSlug": "understand-male-gametophyte",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-male-gametophyte-2",
+              "question": "What is a common trap associated with Male gametophyte?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "male-gametophyte",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "male-gametophyte",
+                "conceptSlug": "trap-male-gametophyte",
+                "microskillSlug": "avoid-male-gametophyte",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-female-gametophyte",
+          "title": "Female gametophyte",
+          "conceptTags": [
+            "reproduction",
+            "female-gametophyte"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Female gametophyte"
+          ],
+          "mustKnowFacts": [
+            "Female gametophyte is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Female gametophyte for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing female gametophyte",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of female gametophyte",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in female gametophyte"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Female gametophyte during complex MCQs.",
+            "Failing to apply the correct logic for Female gametophyte."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Female gametophyte."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Female gametophyte."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-female-gametophyte-1",
+              "question": "Explain the core concept behind Female gametophyte.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "female-gametophyte"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "female-gametophyte",
+                "conceptSlug": "core-female-gametophyte",
+                "microskillSlug": "understand-female-gametophyte",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-female-gametophyte-2",
+              "question": "What is a common trap associated with Female gametophyte?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "female-gametophyte",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "female-gametophyte",
+                "conceptSlug": "trap-female-gametophyte",
+                "microskillSlug": "avoid-female-gametophyte",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-pollination-types",
+          "title": "Pollination types",
+          "conceptTags": [
+            "reproduction",
+            "pollination-types"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Pollination types"
+          ],
+          "mustKnowFacts": [
+            "Pollination types is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Pollination types for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing pollination types",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of pollination types",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in pollination types"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Pollination types during complex MCQs.",
+            "Failing to apply the correct logic for Pollination types."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Pollination types."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Pollination types."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-pollination-types-1",
+              "question": "Explain the core concept behind Pollination types.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "pollination-types"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "pollination-types",
+                "conceptSlug": "core-pollination-types",
+                "microskillSlug": "understand-pollination-types",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-pollination-types-2",
+              "question": "What is a common trap associated with Pollination types?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "pollination-types",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "pollination-types",
+                "conceptSlug": "trap-pollination-types",
+                "microskillSlug": "avoid-pollination-types",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-agents-examples",
+          "title": "Agents/examples",
+          "conceptTags": [
+            "reproduction",
+            "agents-examples"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Agents/examples"
+          ],
+          "mustKnowFacts": [
+            "Agents/examples is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Agents/examples for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing agents/examples",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of agents/examples",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in agents/examples"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Agents/examples during complex MCQs.",
+            "Failing to apply the correct logic for Agents/examples."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Agents/examples."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Agents/examples."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-agents-examples-1",
+              "question": "Explain the core concept behind Agents/examples.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "agents-examples"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "agents-examples",
+                "conceptSlug": "core-agents-examples",
+                "microskillSlug": "understand-agents-examples",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-agents-examples-2",
+              "question": "What is a common trap associated with Agents/examples?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "agents-examples",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "agents-examples",
+                "conceptSlug": "trap-agents-examples",
+                "microskillSlug": "avoid-agents-examples",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-outbreeding-devices",
+          "title": "Outbreeding devices",
+          "conceptTags": [
+            "reproduction",
+            "outbreeding-devices"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Outbreeding devices"
+          ],
+          "mustKnowFacts": [
+            "Outbreeding devices is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Outbreeding devices for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing outbreeding devices",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of outbreeding devices",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in outbreeding devices"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Outbreeding devices during complex MCQs.",
+            "Failing to apply the correct logic for Outbreeding devices."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Outbreeding devices."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Outbreeding devices."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-outbreeding-devices-1",
+              "question": "Explain the core concept behind Outbreeding devices.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "outbreeding-devices"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "outbreeding-devices",
+                "conceptSlug": "core-outbreeding-devices",
+                "microskillSlug": "understand-outbreeding-devices",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-outbreeding-devices-2",
+              "question": "What is a common trap associated with Outbreeding devices?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "outbreeding-devices",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "outbreeding-devices",
+                "conceptSlug": "trap-outbreeding-devices",
+                "microskillSlug": "avoid-outbreeding-devices",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-pollen-pistil-interaction",
+          "title": "Pollen-pistil interaction",
+          "conceptTags": [
+            "reproduction",
+            "pollen-pistil-interaction"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Pollen-pistil interaction"
+          ],
+          "mustKnowFacts": [
+            "Pollen-pistil interaction is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Pollen-pistil interaction for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing pollen-pistil interaction",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of pollen-pistil interaction",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in pollen-pistil interaction"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Pollen-pistil interaction during complex MCQs.",
+            "Failing to apply the correct logic for Pollen-pistil interaction."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Pollen-pistil interaction."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Pollen-pistil interaction."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-pollen-pistil-interaction-1",
+              "question": "Explain the core concept behind Pollen-pistil interaction.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "pollen-pistil-interaction"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "pollen-pistil-interaction",
+                "conceptSlug": "core-pollen-pistil-interaction",
+                "microskillSlug": "understand-pollen-pistil-interaction",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-pollen-pistil-interaction-2",
+              "question": "What is a common trap associated with Pollen-pistil interaction?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "pollen-pistil-interaction",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "pollen-pistil-interaction",
+                "conceptSlug": "trap-pollen-pistil-interaction",
+                "microskillSlug": "avoid-pollen-pistil-interaction",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-double-fertilisation",
+          "title": "Double fertilisation",
+          "conceptTags": [
+            "reproduction",
+            "double-fertilisation"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Double fertilisation"
+          ],
+          "mustKnowFacts": [
+            "Double fertilisation is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Double fertilisation for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing double fertilisation",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of double fertilisation",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in double fertilisation"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Double fertilisation during complex MCQs.",
+            "Failing to apply the correct logic for Double fertilisation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Double fertilisation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Double fertilisation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-double-fertilisation-1",
+              "question": "Explain the core concept behind Double fertilisation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "double-fertilisation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "double-fertilisation",
+                "conceptSlug": "core-double-fertilisation",
+                "microskillSlug": "understand-double-fertilisation",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-double-fertilisation-2",
+              "question": "What is a common trap associated with Double fertilisation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "double-fertilisation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "double-fertilisation",
+                "conceptSlug": "trap-double-fertilisation",
+                "microskillSlug": "avoid-double-fertilisation",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-reproduction-2",
+      "title": "Reproduction - Section 2",
+      "description": "Comprehensive analysis covering endosperm, embryo, seed and more.",
+      "conceptTags": [
+        "reproduction",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-reproduction-endosperm",
+          "title": "Endosperm",
+          "conceptTags": [
+            "reproduction",
+            "endosperm"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Endosperm"
+          ],
+          "mustKnowFacts": [
+            "Endosperm is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Endosperm for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing endosperm",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of endosperm",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in endosperm"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Endosperm during complex MCQs.",
+            "Failing to apply the correct logic for Endosperm."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Endosperm."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Endosperm."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-endosperm-1",
+              "question": "Explain the core concept behind Endosperm.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "endosperm"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "endosperm",
+                "conceptSlug": "core-endosperm",
+                "microskillSlug": "understand-endosperm",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-endosperm-2",
+              "question": "What is a common trap associated with Endosperm?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "endosperm",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "endosperm",
+                "conceptSlug": "trap-endosperm",
+                "microskillSlug": "avoid-endosperm",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-embryo",
+          "title": "Embryo",
+          "conceptTags": [
+            "reproduction",
+            "embryo"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Embryo"
+          ],
+          "mustKnowFacts": [
+            "Embryo is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Embryo for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing embryo",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of embryo",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in embryo"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Embryo during complex MCQs.",
+            "Failing to apply the correct logic for Embryo."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Embryo."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Embryo."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-embryo-1",
+              "question": "Explain the core concept behind Embryo.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "embryo"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "embryo",
+                "conceptSlug": "core-embryo",
+                "microskillSlug": "understand-embryo",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-embryo-2",
+              "question": "What is a common trap associated with Embryo?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "embryo",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "embryo",
+                "conceptSlug": "trap-embryo",
+                "microskillSlug": "avoid-embryo",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-seed",
+          "title": "Seed",
+          "conceptTags": [
+            "reproduction",
+            "seed"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Seed"
+          ],
+          "mustKnowFacts": [
+            "Seed is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Seed for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing seed",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of seed",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in seed"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Seed during complex MCQs.",
+            "Failing to apply the correct logic for Seed."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Seed."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Seed."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-seed-1",
+              "question": "Explain the core concept behind Seed.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "seed"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "seed",
+                "conceptSlug": "core-seed",
+                "microskillSlug": "understand-seed",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-seed-2",
+              "question": "What is a common trap associated with Seed?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "seed",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "seed",
+                "conceptSlug": "trap-seed",
+                "microskillSlug": "avoid-seed",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-fruit",
+          "title": "Fruit",
+          "conceptTags": [
+            "reproduction",
+            "fruit"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Fruit"
+          ],
+          "mustKnowFacts": [
+            "Fruit is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Fruit for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing fruit",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of fruit",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in fruit"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Fruit during complex MCQs.",
+            "Failing to apply the correct logic for Fruit."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Fruit."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Fruit."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-fruit-1",
+              "question": "Explain the core concept behind Fruit.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "fruit"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "fruit",
+                "conceptSlug": "core-fruit",
+                "microskillSlug": "understand-fruit",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-fruit-2",
+              "question": "What is a common trap associated with Fruit?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "fruit",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "fruit",
+                "conceptSlug": "trap-fruit",
+                "microskillSlug": "avoid-fruit",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-apomixis",
+          "title": "Apomixis",
+          "conceptTags": [
+            "reproduction",
+            "apomixis"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Apomixis"
+          ],
+          "mustKnowFacts": [
+            "Apomixis is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Apomixis for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing apomixis",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of apomixis",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in apomixis"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Apomixis during complex MCQs.",
+            "Failing to apply the correct logic for Apomixis."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Apomixis."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Apomixis."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-apomixis-1",
+              "question": "Explain the core concept behind Apomixis.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "apomixis"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "apomixis",
+                "conceptSlug": "core-apomixis",
+                "microskillSlug": "understand-apomixis",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-apomixis-2",
+              "question": "What is a common trap associated with Apomixis?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "apomixis",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "apomixis",
+                "conceptSlug": "trap-apomixis",
+                "microskillSlug": "avoid-apomixis",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-parthenocarpy",
+          "title": "Parthenocarpy",
+          "conceptTags": [
+            "reproduction",
+            "parthenocarpy"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Parthenocarpy"
+          ],
+          "mustKnowFacts": [
+            "Parthenocarpy is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Parthenocarpy for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing parthenocarpy",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of parthenocarpy",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in parthenocarpy"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Parthenocarpy during complex MCQs.",
+            "Failing to apply the correct logic for Parthenocarpy."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Parthenocarpy."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Parthenocarpy."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-parthenocarpy-1",
+              "question": "Explain the core concept behind Parthenocarpy.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "parthenocarpy"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "parthenocarpy",
+                "conceptSlug": "core-parthenocarpy",
+                "microskillSlug": "understand-parthenocarpy",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-parthenocarpy-2",
+              "question": "What is a common trap associated with Parthenocarpy?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "parthenocarpy",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "parthenocarpy",
+                "conceptSlug": "trap-parthenocarpy",
+                "microskillSlug": "avoid-parthenocarpy",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-polyembryony",
+          "title": "Polyembryony",
+          "conceptTags": [
+            "reproduction",
+            "polyembryony"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Polyembryony"
+          ],
+          "mustKnowFacts": [
+            "Polyembryony is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Polyembryony for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing polyembryony",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of polyembryony",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in polyembryony"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Polyembryony during complex MCQs.",
+            "Failing to apply the correct logic for Polyembryony."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Polyembryony."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Polyembryony."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-polyembryony-1",
+              "question": "Explain the core concept behind Polyembryony.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "polyembryony"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "polyembryony",
+                "conceptSlug": "core-polyembryony",
+                "microskillSlug": "understand-polyembryony",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-polyembryony-2",
+              "question": "What is a common trap associated with Polyembryony?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "polyembryony",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "polyembryony",
+                "conceptSlug": "trap-polyembryony",
+                "microskillSlug": "avoid-polyembryony",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-male-reproductive-system",
+          "title": "Male reproductive system",
+          "conceptTags": [
+            "reproduction",
+            "male-reproductive-system"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Male reproductive system"
+          ],
+          "mustKnowFacts": [
+            "Male reproductive system is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Male reproductive system for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing male reproductive system",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of male reproductive system",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in male reproductive system"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Male reproductive system during complex MCQs.",
+            "Failing to apply the correct logic for Male reproductive system."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Male reproductive system."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Male reproductive system."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-male-reproductive-system-1",
+              "question": "Explain the core concept behind Male reproductive system.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "male-reproductive-system"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "male-reproductive-system",
+                "conceptSlug": "core-male-reproductive-system",
+                "microskillSlug": "understand-male-reproductive-system",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-male-reproductive-system-2",
+              "question": "What is a common trap associated with Male reproductive system?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "male-reproductive-system",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "male-reproductive-system",
+                "conceptSlug": "trap-male-reproductive-system",
+                "microskillSlug": "avoid-male-reproductive-system",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-female-reproductive-system",
+          "title": "Female reproductive system",
+          "conceptTags": [
+            "reproduction",
+            "female-reproductive-system"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Female reproductive system"
+          ],
+          "mustKnowFacts": [
+            "Female reproductive system is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Female reproductive system for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing female reproductive system",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of female reproductive system",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in female reproductive system"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Female reproductive system during complex MCQs.",
+            "Failing to apply the correct logic for Female reproductive system."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Female reproductive system."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Female reproductive system."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-female-reproductive-system-1",
+              "question": "Explain the core concept behind Female reproductive system.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "female-reproductive-system"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "female-reproductive-system",
+                "conceptSlug": "core-female-reproductive-system",
+                "microskillSlug": "understand-female-reproductive-system",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-female-reproductive-system-2",
+              "question": "What is a common trap associated with Female reproductive system?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "female-reproductive-system",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "female-reproductive-system",
+                "conceptSlug": "trap-female-reproductive-system",
+                "microskillSlug": "avoid-female-reproductive-system",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-testis-ovary-histology",
+          "title": "Testis/ovary histology",
+          "conceptTags": [
+            "reproduction",
+            "testis-ovary-histology"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Testis/ovary histology"
+          ],
+          "mustKnowFacts": [
+            "Testis/ovary histology is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Testis/ovary histology for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing testis/ovary histology",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of testis/ovary histology",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in testis/ovary histology"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Testis/ovary histology during complex MCQs.",
+            "Failing to apply the correct logic for Testis/ovary histology."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Testis/ovary histology."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Testis/ovary histology."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-testis-ovary-histology-1",
+              "question": "Explain the core concept behind Testis/ovary histology.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "testis-ovary-histology"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "testis-ovary-histology",
+                "conceptSlug": "core-testis-ovary-histology",
+                "microskillSlug": "understand-testis-ovary-histology",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-testis-ovary-histology-2",
+              "question": "What is a common trap associated with Testis/ovary histology?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "testis-ovary-histology",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "testis-ovary-histology",
+                "conceptSlug": "trap-testis-ovary-histology",
+                "microskillSlug": "avoid-testis-ovary-histology",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-reproduction-3",
+      "title": "Reproduction - Section 3",
+      "description": "Comprehensive analysis covering spermatogenesis, oogenesis, menstrual cycle and more.",
+      "conceptTags": [
+        "reproduction",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-reproduction-spermatogenesis",
+          "title": "Spermatogenesis",
+          "conceptTags": [
+            "reproduction",
+            "spermatogenesis"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Spermatogenesis"
+          ],
+          "mustKnowFacts": [
+            "Spermatogenesis is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Spermatogenesis for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing spermatogenesis",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of spermatogenesis",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in spermatogenesis"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Spermatogenesis during complex MCQs.",
+            "Failing to apply the correct logic for Spermatogenesis."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Spermatogenesis."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Spermatogenesis."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-spermatogenesis-1",
+              "question": "Explain the core concept behind Spermatogenesis.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "spermatogenesis"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "spermatogenesis",
+                "conceptSlug": "core-spermatogenesis",
+                "microskillSlug": "understand-spermatogenesis",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-spermatogenesis-2",
+              "question": "What is a common trap associated with Spermatogenesis?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "spermatogenesis",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "spermatogenesis",
+                "conceptSlug": "trap-spermatogenesis",
+                "microskillSlug": "avoid-spermatogenesis",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-oogenesis",
+          "title": "Oogenesis",
+          "conceptTags": [
+            "reproduction",
+            "oogenesis"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Oogenesis"
+          ],
+          "mustKnowFacts": [
+            "Oogenesis is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Oogenesis for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing oogenesis",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of oogenesis",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in oogenesis"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Oogenesis during complex MCQs.",
+            "Failing to apply the correct logic for Oogenesis."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Oogenesis."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Oogenesis."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-oogenesis-1",
+              "question": "Explain the core concept behind Oogenesis.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "oogenesis"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "oogenesis",
+                "conceptSlug": "core-oogenesis",
+                "microskillSlug": "understand-oogenesis",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-oogenesis-2",
+              "question": "What is a common trap associated with Oogenesis?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "oogenesis",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "oogenesis",
+                "conceptSlug": "trap-oogenesis",
+                "microskillSlug": "avoid-oogenesis",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-menstrual-cycle",
+          "title": "Menstrual cycle",
+          "conceptTags": [
+            "reproduction",
+            "menstrual-cycle"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Menstrual cycle"
+          ],
+          "mustKnowFacts": [
+            "Menstrual cycle is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Menstrual cycle for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing menstrual cycle",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of menstrual cycle",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in menstrual cycle"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Menstrual cycle during complex MCQs.",
+            "Failing to apply the correct logic for Menstrual cycle."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Menstrual cycle."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Menstrual cycle."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-menstrual-cycle-1",
+              "question": "Explain the core concept behind Menstrual cycle.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "menstrual-cycle"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "menstrual-cycle",
+                "conceptSlug": "core-menstrual-cycle",
+                "microskillSlug": "understand-menstrual-cycle",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-menstrual-cycle-2",
+              "question": "What is a common trap associated with Menstrual cycle?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "menstrual-cycle",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "menstrual-cycle",
+                "conceptSlug": "trap-menstrual-cycle",
+                "microskillSlug": "avoid-menstrual-cycle",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-fertilisation",
+          "title": "Fertilisation",
+          "conceptTags": [
+            "reproduction",
+            "fertilisation"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Fertilisation"
+          ],
+          "mustKnowFacts": [
+            "Fertilisation is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Fertilisation for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing fertilisation",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of fertilisation",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in fertilisation"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Fertilisation during complex MCQs.",
+            "Failing to apply the correct logic for Fertilisation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Fertilisation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Fertilisation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-fertilisation-1",
+              "question": "Explain the core concept behind Fertilisation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "fertilisation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "fertilisation",
+                "conceptSlug": "core-fertilisation",
+                "microskillSlug": "understand-fertilisation",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-fertilisation-2",
+              "question": "What is a common trap associated with Fertilisation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "fertilisation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "fertilisation",
+                "conceptSlug": "trap-fertilisation",
+                "microskillSlug": "avoid-fertilisation",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-cleavage",
+          "title": "Cleavage",
+          "conceptTags": [
+            "reproduction",
+            "cleavage"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Cleavage"
+          ],
+          "mustKnowFacts": [
+            "Cleavage is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Cleavage for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing cleavage",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of cleavage",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in cleavage"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Cleavage during complex MCQs.",
+            "Failing to apply the correct logic for Cleavage."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Cleavage."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Cleavage."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-cleavage-1",
+              "question": "Explain the core concept behind Cleavage.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "cleavage"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "cleavage",
+                "conceptSlug": "core-cleavage",
+                "microskillSlug": "understand-cleavage",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-cleavage-2",
+              "question": "What is a common trap associated with Cleavage?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "cleavage",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "cleavage",
+                "conceptSlug": "trap-cleavage",
+                "microskillSlug": "avoid-cleavage",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-blastocyst",
+          "title": "Blastocyst",
+          "conceptTags": [
+            "reproduction",
+            "blastocyst"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Blastocyst"
+          ],
+          "mustKnowFacts": [
+            "Blastocyst is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Blastocyst for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing blastocyst",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of blastocyst",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in blastocyst"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Blastocyst during complex MCQs.",
+            "Failing to apply the correct logic for Blastocyst."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Blastocyst."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Blastocyst."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-blastocyst-1",
+              "question": "Explain the core concept behind Blastocyst.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "blastocyst"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "blastocyst",
+                "conceptSlug": "core-blastocyst",
+                "microskillSlug": "understand-blastocyst",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-blastocyst-2",
+              "question": "What is a common trap associated with Blastocyst?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "blastocyst",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "blastocyst",
+                "conceptSlug": "trap-blastocyst",
+                "microskillSlug": "avoid-blastocyst",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-implantation",
+          "title": "Implantation",
+          "conceptTags": [
+            "reproduction",
+            "implantation"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Implantation"
+          ],
+          "mustKnowFacts": [
+            "Implantation is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Implantation for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing implantation",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of implantation",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in implantation"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Implantation during complex MCQs.",
+            "Failing to apply the correct logic for Implantation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Implantation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Implantation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-implantation-1",
+              "question": "Explain the core concept behind Implantation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "implantation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "implantation",
+                "conceptSlug": "core-implantation",
+                "microskillSlug": "understand-implantation",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-implantation-2",
+              "question": "What is a common trap associated with Implantation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "implantation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "implantation",
+                "conceptSlug": "trap-implantation",
+                "microskillSlug": "avoid-implantation",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-placenta",
+          "title": "Placenta",
+          "conceptTags": [
+            "reproduction",
+            "placenta"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Placenta"
+          ],
+          "mustKnowFacts": [
+            "Placenta is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Placenta for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing placenta",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of placenta",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in placenta"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Placenta during complex MCQs.",
+            "Failing to apply the correct logic for Placenta."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Placenta."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Placenta."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-placenta-1",
+              "question": "Explain the core concept behind Placenta.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "placenta"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "placenta",
+                "conceptSlug": "core-placenta",
+                "microskillSlug": "understand-placenta",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-placenta-2",
+              "question": "What is a common trap associated with Placenta?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "placenta",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "placenta",
+                "conceptSlug": "trap-placenta",
+                "microskillSlug": "avoid-placenta",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-pregnancy",
+          "title": "Pregnancy",
+          "conceptTags": [
+            "reproduction",
+            "pregnancy"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Pregnancy"
+          ],
+          "mustKnowFacts": [
+            "Pregnancy is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Pregnancy for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing pregnancy",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of pregnancy",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in pregnancy"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Pregnancy during complex MCQs.",
+            "Failing to apply the correct logic for Pregnancy."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Pregnancy."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Pregnancy."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-pregnancy-1",
+              "question": "Explain the core concept behind Pregnancy.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "pregnancy"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "pregnancy",
+                "conceptSlug": "core-pregnancy",
+                "microskillSlug": "understand-pregnancy",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-pregnancy-2",
+              "question": "What is a common trap associated with Pregnancy?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "pregnancy",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "pregnancy",
+                "conceptSlug": "trap-pregnancy",
+                "microskillSlug": "avoid-pregnancy",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-parturition",
+          "title": "Parturition",
+          "conceptTags": [
+            "reproduction",
+            "parturition"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Parturition"
+          ],
+          "mustKnowFacts": [
+            "Parturition is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Parturition for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing parturition",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of parturition",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in parturition"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Parturition during complex MCQs.",
+            "Failing to apply the correct logic for Parturition."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Parturition."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Parturition."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-parturition-1",
+              "question": "Explain the core concept behind Parturition.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "parturition"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "parturition",
+                "conceptSlug": "core-parturition",
+                "microskillSlug": "understand-parturition",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-parturition-2",
+              "question": "What is a common trap associated with Parturition?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "parturition",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "parturition",
+                "conceptSlug": "trap-parturition",
+                "microskillSlug": "avoid-parturition",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-reproduction-4",
+      "title": "Reproduction - Section 4",
+      "description": "Comprehensive analysis covering lactation, reproductive health, STDs and more.",
+      "conceptTags": [
+        "reproduction",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-reproduction-lactation",
+          "title": "Lactation",
+          "conceptTags": [
+            "reproduction",
+            "lactation"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Lactation"
+          ],
+          "mustKnowFacts": [
+            "Lactation is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Lactation for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing lactation",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of lactation",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in lactation"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Lactation during complex MCQs.",
+            "Failing to apply the correct logic for Lactation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Lactation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Lactation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-lactation-1",
+              "question": "Explain the core concept behind Lactation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "lactation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "lactation",
+                "conceptSlug": "core-lactation",
+                "microskillSlug": "understand-lactation",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-lactation-2",
+              "question": "What is a common trap associated with Lactation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "lactation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "lactation",
+                "conceptSlug": "trap-lactation",
+                "microskillSlug": "avoid-lactation",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-reproductive-health",
+          "title": "Reproductive health",
+          "conceptTags": [
+            "reproduction",
+            "reproductive-health"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Reproductive health"
+          ],
+          "mustKnowFacts": [
+            "Reproductive health is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Reproductive health for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing reproductive health",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of reproductive health",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in reproductive health"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Reproductive health during complex MCQs.",
+            "Failing to apply the correct logic for Reproductive health."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Reproductive health."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Reproductive health."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-reproductive-health-1",
+              "question": "Explain the core concept behind Reproductive health.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "reproductive-health"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "reproductive-health",
+                "conceptSlug": "core-reproductive-health",
+                "microskillSlug": "understand-reproductive-health",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-reproductive-health-2",
+              "question": "What is a common trap associated with Reproductive health?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "reproductive-health",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "reproductive-health",
+                "conceptSlug": "trap-reproductive-health",
+                "microskillSlug": "avoid-reproductive-health",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-stds",
+          "title": "STDs",
+          "conceptTags": [
+            "reproduction",
+            "stds"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, STDs"
+          ],
+          "mustKnowFacts": [
+            "STDs is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing STDs for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing STDs",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of STDs",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in STDs"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret STDs during complex MCQs.",
+            "Failing to apply the correct logic for STDs."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to STDs."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about STDs."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-stds-1",
+              "question": "Explain the core concept behind STDs.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "stds"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "stds",
+                "conceptSlug": "core-stds",
+                "microskillSlug": "understand-stds",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-stds-2",
+              "question": "What is a common trap associated with STDs?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "stds",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "stds",
+                "conceptSlug": "trap-stds",
+                "microskillSlug": "avoid-stds",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-contraceception",
+          "title": "Contraceception",
+          "conceptTags": [
+            "reproduction",
+            "contraceception"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Contraceception"
+          ],
+          "mustKnowFacts": [
+            "Contraceception is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Contraceception for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing contraceception",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of contraceception",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in contraceception"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Contraceception during complex MCQs.",
+            "Failing to apply the correct logic for Contraceception."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Contraceception."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Contraceception."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-contraceception-1",
+              "question": "Explain the core concept behind Contraceception.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "contraceception"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "contraceception",
+                "conceptSlug": "core-contraceception",
+                "microskillSlug": "understand-contraceception",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-contraceception-2",
+              "question": "What is a common trap associated with Contraceception?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "contraceception",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "contraceception",
+                "conceptSlug": "trap-contraceception",
+                "microskillSlug": "avoid-contraceception",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-mtp",
+          "title": "MTP",
+          "conceptTags": [
+            "reproduction",
+            "mtp"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, MTP"
+          ],
+          "mustKnowFacts": [
+            "MTP is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing MTP for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing MTP",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of MTP",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in MTP"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret MTP during complex MCQs.",
+            "Failing to apply the correct logic for MTP."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to MTP."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about MTP."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-mtp-1",
+              "question": "Explain the core concept behind MTP.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "mtp"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "mtp",
+                "conceptSlug": "core-mtp",
+                "microskillSlug": "understand-mtp",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-mtp-2",
+              "question": "What is a common trap associated with MTP?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "mtp",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "mtp",
+                "conceptSlug": "trap-mtp",
+                "microskillSlug": "avoid-mtp",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-amniocentesis",
+          "title": "Amniocentesis",
+          "conceptTags": [
+            "reproduction",
+            "amniocentesis"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Amniocentesis"
+          ],
+          "mustKnowFacts": [
+            "Amniocentesis is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Amniocentesis for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing amniocentesis",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of amniocentesis",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in amniocentesis"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Amniocentesis during complex MCQs.",
+            "Failing to apply the correct logic for Amniocentesis."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Amniocentesis."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Amniocentesis."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-amniocentesis-1",
+              "question": "Explain the core concept behind Amniocentesis.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "amniocentesis"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "amniocentesis",
+                "conceptSlug": "core-amniocentesis",
+                "microskillSlug": "understand-amniocentesis",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-amniocentesis-2",
+              "question": "What is a common trap associated with Amniocentesis?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "amniocentesis",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "amniocentesis",
+                "conceptSlug": "trap-amniocentesis",
+                "microskillSlug": "avoid-amniocentesis",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-infertility",
+          "title": "Infertility",
+          "conceptTags": [
+            "reproduction",
+            "infertility"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Infertility"
+          ],
+          "mustKnowFacts": [
+            "Infertility is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing Infertility for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing infertility",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of infertility",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in infertility"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Infertility during complex MCQs.",
+            "Failing to apply the correct logic for Infertility."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Infertility."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Infertility."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-infertility-1",
+              "question": "Explain the core concept behind Infertility.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "infertility"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "infertility",
+                "conceptSlug": "core-infertility",
+                "microskillSlug": "understand-infertility",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-infertility-2",
+              "question": "What is a common trap associated with Infertility?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "infertility",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "infertility",
+                "conceptSlug": "trap-infertility",
+                "microskillSlug": "avoid-infertility",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-ivf",
+          "title": "IVF",
+          "conceptTags": [
+            "reproduction",
+            "ivf"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, IVF"
+          ],
+          "mustKnowFacts": [
+            "IVF is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing IVF for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing IVF",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of IVF",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in IVF"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret IVF during complex MCQs.",
+            "Failing to apply the correct logic for IVF."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to IVF."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about IVF."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-ivf-1",
+              "question": "Explain the core concept behind IVF.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "ivf"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "ivf",
+                "conceptSlug": "core-ivf",
+                "microskillSlug": "understand-ivf",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-ivf-2",
+              "question": "What is a common trap associated with IVF?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "ivf",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "ivf",
+                "conceptSlug": "trap-ivf",
+                "microskillSlug": "avoid-ivf",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-zift",
+          "title": "ZIFT",
+          "conceptTags": [
+            "reproduction",
+            "zift"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, ZIFT"
+          ],
+          "mustKnowFacts": [
+            "ZIFT is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing ZIFT for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing ZIFT",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of ZIFT",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in ZIFT"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret ZIFT during complex MCQs.",
+            "Failing to apply the correct logic for ZIFT."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to ZIFT."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about ZIFT."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-zift-1",
+              "question": "Explain the core concept behind ZIFT.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "zift"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "zift",
+                "conceptSlug": "core-zift",
+                "microskillSlug": "understand-zift",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-zift-2",
+              "question": "What is a common trap associated with ZIFT?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "zift",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "zift",
+                "conceptSlug": "trap-zift",
+                "microskillSlug": "avoid-zift",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-reproduction-gift",
+          "title": "GIFT",
+          "conceptTags": [
+            "reproduction",
+            "gift"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, GIFT"
+          ],
+          "mustKnowFacts": [
+            "GIFT is a fundamental subtopic of Reproduction.",
+            "Crucial to understand the principles governing GIFT for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing GIFT",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of GIFT",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in GIFT"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret GIFT during complex MCQs.",
+            "Failing to apply the correct logic for GIFT."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to GIFT."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about GIFT."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "reproduction-q-gift-1",
+              "question": "Explain the core concept behind GIFT.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "gift"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "gift",
+                "conceptSlug": "core-gift",
+                "microskillSlug": "understand-gift",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            },
+            {
+              "id": "reproduction-q-gift-2",
+              "question": "What is a common trap associated with GIFT?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "gift",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "reproduction",
+                "subtopicSlug": "gift",
+                "conceptSlug": "trap-gift",
+                "microskillSlug": "avoid-gift",
+                "subject": "Biology",
+                "unitSlug": "reproduction",
+                "chapterSlug": "reproduction"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

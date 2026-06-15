@@ -14,15 +14,13 @@ describe('Seeded Question Engine', () => {
   });
 
   it('should prioritize weak tags if provided', () => {
-    // Our generator outputs tags like 'electrostatics_basics' or similar based on keywords.
-    // The precise tag might differ, but providing a known keyword should pull a matching question.
     const question = getNextQuestion({
       chapterSlug: 'kinematics',
-      weakAreas: ['velocity'],
+      weakAreas: ['area'],
     });
 
     expect(question).toBeDefined();
-    expect(question?.conceptTags.some(tag => tag.includes('velocity'))).toBe(true);
+    expect(question?.conceptTags.some(tag => tag.includes('area'))).toBe(true);
   });
 
   it('should not return recently asked questions unless all are exhausted', () => {

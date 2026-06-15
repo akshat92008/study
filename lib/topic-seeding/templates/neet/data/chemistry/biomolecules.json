@@ -1,0 +1,1946 @@
+{
+  "missions": [
+    {
+      "id": "m-biomolecules-1",
+      "title": "Biomolecules - Section 1",
+      "description": "Comprehensive analysis covering carbohydrates, aldoses/ketoses, glucose and more.",
+      "conceptTags": [
+        "biomolecules",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-biomolecules-carbohydrates",
+          "title": "Carbohydrates",
+          "conceptTags": [
+            "biomolecules",
+            "carbohydrates"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Carbohydrates"
+          ],
+          "mustKnowFacts": [
+            "Carbohydrates is a fundamental subtopic of Biomolecules.",
+            "Crucial to understand the principles governing Carbohydrates for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for carbohydrates",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving carbohydrates",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Carbohydrates during complex MCQs.",
+            "Failing to apply the correct logic for Carbohydrates."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Carbohydrates."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Carbohydrates."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biomolecules-q-carbohydrates-1",
+              "question": "Explain the core concept behind Carbohydrates.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "carbohydrates"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "carbohydrates",
+                "conceptSlug": "core-carbohydrates",
+                "microskillSlug": "understand-carbohydrates",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            },
+            {
+              "id": "biomolecules-q-carbohydrates-2",
+              "question": "What is a common trap associated with Carbohydrates?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "carbohydrates",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "carbohydrates",
+                "conceptSlug": "trap-carbohydrates",
+                "microskillSlug": "avoid-carbohydrates",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biomolecules-aldoses-ketoses",
+          "title": "Aldoses/ketoses",
+          "conceptTags": [
+            "biomolecules",
+            "aldoses-ketoses"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Aldoses/ketoses"
+          ],
+          "mustKnowFacts": [
+            "Aldoses/ketoses is a fundamental subtopic of Biomolecules.",
+            "Crucial to understand the principles governing Aldoses/ketoses for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for aldoses/ketoses",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving aldoses/ketoses",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Aldoses/ketoses during complex MCQs.",
+            "Failing to apply the correct logic for Aldoses/ketoses."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Aldoses/ketoses."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Aldoses/ketoses."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biomolecules-q-aldoses-ketoses-1",
+              "question": "Explain the core concept behind Aldoses/ketoses.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "aldoses-ketoses"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "aldoses-ketoses",
+                "conceptSlug": "core-aldoses-ketoses",
+                "microskillSlug": "understand-aldoses-ketoses",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            },
+            {
+              "id": "biomolecules-q-aldoses-ketoses-2",
+              "question": "What is a common trap associated with Aldoses/ketoses?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "aldoses-ketoses",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "aldoses-ketoses",
+                "conceptSlug": "trap-aldoses-ketoses",
+                "microskillSlug": "avoid-aldoses-ketoses",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biomolecules-glucose",
+          "title": "Glucose",
+          "conceptTags": [
+            "biomolecules",
+            "glucose"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Glucose"
+          ],
+          "mustKnowFacts": [
+            "Glucose is a fundamental subtopic of Biomolecules.",
+            "Crucial to understand the principles governing Glucose for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for glucose",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving glucose",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Glucose during complex MCQs.",
+            "Failing to apply the correct logic for Glucose."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Glucose."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Glucose."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biomolecules-q-glucose-1",
+              "question": "Explain the core concept behind Glucose.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "glucose"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "glucose",
+                "conceptSlug": "core-glucose",
+                "microskillSlug": "understand-glucose",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            },
+            {
+              "id": "biomolecules-q-glucose-2",
+              "question": "What is a common trap associated with Glucose?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "glucose",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "glucose",
+                "conceptSlug": "trap-glucose",
+                "microskillSlug": "avoid-glucose",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biomolecules-fructose",
+          "title": "Fructose",
+          "conceptTags": [
+            "biomolecules",
+            "fructose"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Fructose"
+          ],
+          "mustKnowFacts": [
+            "Fructose is a fundamental subtopic of Biomolecules.",
+            "Crucial to understand the principles governing Fructose for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for fructose",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving fructose",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Fructose during complex MCQs.",
+            "Failing to apply the correct logic for Fructose."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Fructose."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Fructose."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biomolecules-q-fructose-1",
+              "question": "Explain the core concept behind Fructose.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "fructose"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "fructose",
+                "conceptSlug": "core-fructose",
+                "microskillSlug": "understand-fructose",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            },
+            {
+              "id": "biomolecules-q-fructose-2",
+              "question": "What is a common trap associated with Fructose?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "fructose",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "fructose",
+                "conceptSlug": "trap-fructose",
+                "microskillSlug": "avoid-fructose",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biomolecules-sucrose",
+          "title": "Sucrose",
+          "conceptTags": [
+            "biomolecules",
+            "sucrose"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Sucrose"
+          ],
+          "mustKnowFacts": [
+            "Sucrose is a fundamental subtopic of Biomolecules.",
+            "Crucial to understand the principles governing Sucrose for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for sucrose",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving sucrose",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Sucrose during complex MCQs.",
+            "Failing to apply the correct logic for Sucrose."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Sucrose."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Sucrose."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biomolecules-q-sucrose-1",
+              "question": "Explain the core concept behind Sucrose.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "sucrose"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "sucrose",
+                "conceptSlug": "core-sucrose",
+                "microskillSlug": "understand-sucrose",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            },
+            {
+              "id": "biomolecules-q-sucrose-2",
+              "question": "What is a common trap associated with Sucrose?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "sucrose",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "sucrose",
+                "conceptSlug": "trap-sucrose",
+                "microskillSlug": "avoid-sucrose",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-biomolecules-2",
+      "title": "Biomolecules - Section 2",
+      "description": "Comprehensive analysis covering maltose, lactose, reducing/non-reducing sugars and more.",
+      "conceptTags": [
+        "biomolecules",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-biomolecules-maltose",
+          "title": "Maltose",
+          "conceptTags": [
+            "biomolecules",
+            "maltose"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Maltose"
+          ],
+          "mustKnowFacts": [
+            "Maltose is a fundamental subtopic of Biomolecules.",
+            "Crucial to understand the principles governing Maltose for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for maltose",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving maltose",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Maltose during complex MCQs.",
+            "Failing to apply the correct logic for Maltose."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Maltose."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Maltose."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biomolecules-q-maltose-1",
+              "question": "Explain the core concept behind Maltose.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "maltose"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "maltose",
+                "conceptSlug": "core-maltose",
+                "microskillSlug": "understand-maltose",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            },
+            {
+              "id": "biomolecules-q-maltose-2",
+              "question": "What is a common trap associated with Maltose?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "maltose",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "maltose",
+                "conceptSlug": "trap-maltose",
+                "microskillSlug": "avoid-maltose",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biomolecules-lactose",
+          "title": "Lactose",
+          "conceptTags": [
+            "biomolecules",
+            "lactose"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Lactose"
+          ],
+          "mustKnowFacts": [
+            "Lactose is a fundamental subtopic of Biomolecules.",
+            "Crucial to understand the principles governing Lactose for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for lactose",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving lactose",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Lactose during complex MCQs.",
+            "Failing to apply the correct logic for Lactose."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Lactose."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Lactose."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biomolecules-q-lactose-1",
+              "question": "Explain the core concept behind Lactose.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "lactose"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "lactose",
+                "conceptSlug": "core-lactose",
+                "microskillSlug": "understand-lactose",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            },
+            {
+              "id": "biomolecules-q-lactose-2",
+              "question": "What is a common trap associated with Lactose?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "lactose",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "lactose",
+                "conceptSlug": "trap-lactose",
+                "microskillSlug": "avoid-lactose",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biomolecules-reducing-non-reducing-sugars",
+          "title": "Reducing/non-reducing sugars",
+          "conceptTags": [
+            "biomolecules",
+            "reducing-non-reducing-sugars"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Reducing/non-reducing sugars"
+          ],
+          "mustKnowFacts": [
+            "Reducing/non-reducing sugars is a fundamental subtopic of Biomolecules.",
+            "Crucial to understand the principles governing Reducing/non-reducing sugars for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for reducing/non-reducing sugars",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving reducing/non-reducing sugars",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Reducing/non-reducing sugars during complex MCQs.",
+            "Failing to apply the correct logic for Reducing/non-reducing sugars."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Reducing/non-reducing sugars."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Reducing/non-reducing sugars."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biomolecules-q-reducing-non-reducing-sugars-1",
+              "question": "Explain the core concept behind Reducing/non-reducing sugars.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "reducing-non-reducing-sugars"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "reducing-non-reducing-sugars",
+                "conceptSlug": "core-reducing-non-reducing-sugars",
+                "microskillSlug": "understand-reducing-non-reducing-sugars",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            },
+            {
+              "id": "biomolecules-q-reducing-non-reducing-sugars-2",
+              "question": "What is a common trap associated with Reducing/non-reducing sugars?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "reducing-non-reducing-sugars",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "reducing-non-reducing-sugars",
+                "conceptSlug": "trap-reducing-non-reducing-sugars",
+                "microskillSlug": "avoid-reducing-non-reducing-sugars",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biomolecules-proteins",
+          "title": "Proteins",
+          "conceptTags": [
+            "biomolecules",
+            "proteins"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Proteins"
+          ],
+          "mustKnowFacts": [
+            "Proteins is a fundamental subtopic of Biomolecules.",
+            "Crucial to understand the principles governing Proteins for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for proteins",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving proteins",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Proteins during complex MCQs.",
+            "Failing to apply the correct logic for Proteins."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Proteins."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Proteins."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biomolecules-q-proteins-1",
+              "question": "Explain the core concept behind Proteins.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "proteins"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "proteins",
+                "conceptSlug": "core-proteins",
+                "microskillSlug": "understand-proteins",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            },
+            {
+              "id": "biomolecules-q-proteins-2",
+              "question": "What is a common trap associated with Proteins?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "proteins",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "proteins",
+                "conceptSlug": "trap-proteins",
+                "microskillSlug": "avoid-proteins",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biomolecules-amino-acids",
+          "title": "Amino acids",
+          "conceptTags": [
+            "biomolecules",
+            "amino-acids"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Amino acids"
+          ],
+          "mustKnowFacts": [
+            "Amino acids is a fundamental subtopic of Biomolecules.",
+            "Crucial to understand the principles governing Amino acids for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for amino acids",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving amino acids",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Amino acids during complex MCQs.",
+            "Failing to apply the correct logic for Amino acids."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Amino acids."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Amino acids."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biomolecules-q-amino-acids-1",
+              "question": "Explain the core concept behind Amino acids.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "amino-acids"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "amino-acids",
+                "conceptSlug": "core-amino-acids",
+                "microskillSlug": "understand-amino-acids",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            },
+            {
+              "id": "biomolecules-q-amino-acids-2",
+              "question": "What is a common trap associated with Amino acids?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "amino-acids",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "amino-acids",
+                "conceptSlug": "trap-amino-acids",
+                "microskillSlug": "avoid-amino-acids",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-biomolecules-3",
+      "title": "Biomolecules - Section 3",
+      "description": "Comprehensive analysis covering peptide bond, protein structures, denaturation and more.",
+      "conceptTags": [
+        "biomolecules",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-biomolecules-peptide-bond",
+          "title": "Peptide bond",
+          "conceptTags": [
+            "biomolecules",
+            "peptide-bond"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Peptide bond"
+          ],
+          "mustKnowFacts": [
+            "Peptide bond is a fundamental subtopic of Biomolecules.",
+            "Crucial to understand the principles governing Peptide bond for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for peptide bond",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving peptide bond",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Peptide bond during complex MCQs.",
+            "Failing to apply the correct logic for Peptide bond."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Peptide bond."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Peptide bond."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biomolecules-q-peptide-bond-1",
+              "question": "Explain the core concept behind Peptide bond.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "peptide-bond"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "peptide-bond",
+                "conceptSlug": "core-peptide-bond",
+                "microskillSlug": "understand-peptide-bond",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            },
+            {
+              "id": "biomolecules-q-peptide-bond-2",
+              "question": "What is a common trap associated with Peptide bond?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "peptide-bond",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "peptide-bond",
+                "conceptSlug": "trap-peptide-bond",
+                "microskillSlug": "avoid-peptide-bond",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biomolecules-protein-structures",
+          "title": "Protein structures",
+          "conceptTags": [
+            "biomolecules",
+            "protein-structures"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Protein structures"
+          ],
+          "mustKnowFacts": [
+            "Protein structures is a fundamental subtopic of Biomolecules.",
+            "Crucial to understand the principles governing Protein structures for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for protein structures",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving protein structures",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Protein structures during complex MCQs.",
+            "Failing to apply the correct logic for Protein structures."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Protein structures."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Protein structures."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biomolecules-q-protein-structures-1",
+              "question": "Explain the core concept behind Protein structures.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "protein-structures"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "protein-structures",
+                "conceptSlug": "core-protein-structures",
+                "microskillSlug": "understand-protein-structures",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            },
+            {
+              "id": "biomolecules-q-protein-structures-2",
+              "question": "What is a common trap associated with Protein structures?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "protein-structures",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "protein-structures",
+                "conceptSlug": "trap-protein-structures",
+                "microskillSlug": "avoid-protein-structures",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biomolecules-denaturation",
+          "title": "Denaturation",
+          "conceptTags": [
+            "biomolecules",
+            "denaturation"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Denaturation"
+          ],
+          "mustKnowFacts": [
+            "Denaturation is a fundamental subtopic of Biomolecules.",
+            "Crucial to understand the principles governing Denaturation for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for denaturation",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving denaturation",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Denaturation during complex MCQs.",
+            "Failing to apply the correct logic for Denaturation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Denaturation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Denaturation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biomolecules-q-denaturation-1",
+              "question": "Explain the core concept behind Denaturation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "denaturation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "denaturation",
+                "conceptSlug": "core-denaturation",
+                "microskillSlug": "understand-denaturation",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            },
+            {
+              "id": "biomolecules-q-denaturation-2",
+              "question": "What is a common trap associated with Denaturation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "denaturation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "denaturation",
+                "conceptSlug": "trap-denaturation",
+                "microskillSlug": "avoid-denaturation",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biomolecules-enzymes",
+          "title": "Enzymes",
+          "conceptTags": [
+            "biomolecules",
+            "enzymes"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Enzymes"
+          ],
+          "mustKnowFacts": [
+            "Enzymes is a fundamental subtopic of Biomolecules.",
+            "Crucial to understand the principles governing Enzymes for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for enzymes",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving enzymes",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Enzymes during complex MCQs.",
+            "Failing to apply the correct logic for Enzymes."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Enzymes."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Enzymes."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biomolecules-q-enzymes-1",
+              "question": "Explain the core concept behind Enzymes.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "enzymes"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "enzymes",
+                "conceptSlug": "core-enzymes",
+                "microskillSlug": "understand-enzymes",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            },
+            {
+              "id": "biomolecules-q-enzymes-2",
+              "question": "What is a common trap associated with Enzymes?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "enzymes",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "enzymes",
+                "conceptSlug": "trap-enzymes",
+                "microskillSlug": "avoid-enzymes",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biomolecules-vitamins",
+          "title": "Vitamins",
+          "conceptTags": [
+            "biomolecules",
+            "vitamins"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Vitamins"
+          ],
+          "mustKnowFacts": [
+            "Vitamins is a fundamental subtopic of Biomolecules.",
+            "Crucial to understand the principles governing Vitamins for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for vitamins",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving vitamins",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Vitamins during complex MCQs.",
+            "Failing to apply the correct logic for Vitamins."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Vitamins."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Vitamins."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biomolecules-q-vitamins-1",
+              "question": "Explain the core concept behind Vitamins.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "vitamins"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "vitamins",
+                "conceptSlug": "core-vitamins",
+                "microskillSlug": "understand-vitamins",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            },
+            {
+              "id": "biomolecules-q-vitamins-2",
+              "question": "What is a common trap associated with Vitamins?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "vitamins",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "vitamins",
+                "conceptSlug": "trap-vitamins",
+                "microskillSlug": "avoid-vitamins",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-biomolecules-4",
+      "title": "Biomolecules - Section 4",
+      "description": "Comprehensive analysis covering nucleic acids, DNA/RNA constitution, hormones basic introduction and more.",
+      "conceptTags": [
+        "biomolecules",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-biomolecules-nucleic-acids",
+          "title": "Nucleic acids",
+          "conceptTags": [
+            "biomolecules",
+            "nucleic-acids"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Nucleic acids"
+          ],
+          "mustKnowFacts": [
+            "Nucleic acids is a fundamental subtopic of Biomolecules.",
+            "Crucial to understand the principles governing Nucleic acids for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for nucleic acids",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving nucleic acids",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Nucleic acids during complex MCQs.",
+            "Failing to apply the correct logic for Nucleic acids."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Nucleic acids."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Nucleic acids."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biomolecules-q-nucleic-acids-1",
+              "question": "Explain the core concept behind Nucleic acids.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "nucleic-acids"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "nucleic-acids",
+                "conceptSlug": "core-nucleic-acids",
+                "microskillSlug": "understand-nucleic-acids",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            },
+            {
+              "id": "biomolecules-q-nucleic-acids-2",
+              "question": "What is a common trap associated with Nucleic acids?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "nucleic-acids",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "nucleic-acids",
+                "conceptSlug": "trap-nucleic-acids",
+                "microskillSlug": "avoid-nucleic-acids",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biomolecules-dna-rna-constitution",
+          "title": "DNA/RNA constitution",
+          "conceptTags": [
+            "biomolecules",
+            "dna-rna-constitution"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, DNA/RNA constitution"
+          ],
+          "mustKnowFacts": [
+            "DNA/RNA constitution is a fundamental subtopic of Biomolecules.",
+            "Crucial to understand the principles governing DNA/RNA constitution for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for DNA/RNA constitution",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving DNA/RNA constitution",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret DNA/RNA constitution during complex MCQs.",
+            "Failing to apply the correct logic for DNA/RNA constitution."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to DNA/RNA constitution."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about DNA/RNA constitution."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biomolecules-q-dna-rna-constitution-1",
+              "question": "Explain the core concept behind DNA/RNA constitution.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "dna-rna-constitution"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "dna-rna-constitution",
+                "conceptSlug": "core-dna-rna-constitution",
+                "microskillSlug": "understand-dna-rna-constitution",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            },
+            {
+              "id": "biomolecules-q-dna-rna-constitution-2",
+              "question": "What is a common trap associated with DNA/RNA constitution?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "dna-rna-constitution",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "dna-rna-constitution",
+                "conceptSlug": "trap-dna-rna-constitution",
+                "microskillSlug": "avoid-dna-rna-constitution",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biomolecules-hormones-basic-introduction",
+          "title": "Hormones basic introduction",
+          "conceptTags": [
+            "biomolecules",
+            "hormones-basic-introduction"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Hormones basic introduction"
+          ],
+          "mustKnowFacts": [
+            "Hormones basic introduction is a fundamental subtopic of Biomolecules.",
+            "Crucial to understand the principles governing Hormones basic introduction for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for hormones basic introduction",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving hormones basic introduction",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Hormones basic introduction during complex MCQs.",
+            "Failing to apply the correct logic for Hormones basic introduction."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Hormones basic introduction."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Hormones basic introduction."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biomolecules-q-hormones-basic-introduction-1",
+              "question": "Explain the core concept behind Hormones basic introduction.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "hormones-basic-introduction"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "hormones-basic-introduction",
+                "conceptSlug": "core-hormones-basic-introduction",
+                "microskillSlug": "understand-hormones-basic-introduction",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            },
+            {
+              "id": "biomolecules-q-hormones-basic-introduction-2",
+              "question": "What is a common trap associated with Hormones basic introduction?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "hormones-basic-introduction",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biomolecules",
+                "subtopicSlug": "hormones-basic-introduction",
+                "conceptSlug": "trap-hormones-basic-introduction",
+                "microskillSlug": "avoid-hormones-basic-introduction",
+                "subject": "Chemistry",
+                "unitSlug": "biomolecules",
+                "chapterSlug": "biomolecules"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

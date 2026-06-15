@@ -1,0 +1,2218 @@
+{
+  "missions": [
+    {
+      "id": "m-diversity-in-living-world-1",
+      "title": "Diversity in Living World - Section 1",
+      "description": "Comprehensive analysis covering what is living, biodiversity, classification need and more.",
+      "conceptTags": [
+        "diversity-in-living-world",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-diversity-in-living-world-what-is-living",
+          "title": "What is living",
+          "conceptTags": [
+            "diversity-in-living-world",
+            "what-is-living"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, What is living"
+          ],
+          "mustKnowFacts": [
+            "What is living is a fundamental subtopic of Diversity in Living World.",
+            "Crucial to understand the principles governing What is living for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing what is living",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of what is living",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in what is living"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret What is living during complex MCQs.",
+            "Failing to apply the correct logic for What is living."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to What is living."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about What is living."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "diversity-in-living-world-q-what-is-living-1",
+              "question": "Explain the core concept behind What is living.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "what-is-living"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "what-is-living",
+                "conceptSlug": "core-what-is-living",
+                "microskillSlug": "understand-what-is-living",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            },
+            {
+              "id": "diversity-in-living-world-q-what-is-living-2",
+              "question": "What is a common trap associated with What is living?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "what-is-living",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "what-is-living",
+                "conceptSlug": "trap-what-is-living",
+                "microskillSlug": "avoid-what-is-living",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-diversity-in-living-world-biodiversity",
+          "title": "Biodiversity",
+          "conceptTags": [
+            "diversity-in-living-world",
+            "biodiversity"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Biodiversity"
+          ],
+          "mustKnowFacts": [
+            "Biodiversity is a fundamental subtopic of Diversity in Living World.",
+            "Crucial to understand the principles governing Biodiversity for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing biodiversity",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of biodiversity",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in biodiversity"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Biodiversity during complex MCQs.",
+            "Failing to apply the correct logic for Biodiversity."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Biodiversity."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Biodiversity."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "diversity-in-living-world-q-biodiversity-1",
+              "question": "Explain the core concept behind Biodiversity.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "biodiversity"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "biodiversity",
+                "conceptSlug": "core-biodiversity",
+                "microskillSlug": "understand-biodiversity",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            },
+            {
+              "id": "diversity-in-living-world-q-biodiversity-2",
+              "question": "What is a common trap associated with Biodiversity?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "biodiversity",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "biodiversity",
+                "conceptSlug": "trap-biodiversity",
+                "microskillSlug": "avoid-biodiversity",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-diversity-in-living-world-classification-need",
+          "title": "Classification need",
+          "conceptTags": [
+            "diversity-in-living-world",
+            "classification-need"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Classification need"
+          ],
+          "mustKnowFacts": [
+            "Classification need is a fundamental subtopic of Diversity in Living World.",
+            "Crucial to understand the principles governing Classification need for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing classification need",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of classification need",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in classification need"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Classification need during complex MCQs.",
+            "Failing to apply the correct logic for Classification need."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Classification need."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Classification need."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "diversity-in-living-world-q-classification-need-1",
+              "question": "Explain the core concept behind Classification need.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "classification-need"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "classification-need",
+                "conceptSlug": "core-classification-need",
+                "microskillSlug": "understand-classification-need",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            },
+            {
+              "id": "diversity-in-living-world-q-classification-need-2",
+              "question": "What is a common trap associated with Classification need?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "classification-need",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "classification-need",
+                "conceptSlug": "trap-classification-need",
+                "microskillSlug": "avoid-classification-need",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-diversity-in-living-world-taxonomy",
+          "title": "Taxonomy",
+          "conceptTags": [
+            "diversity-in-living-world",
+            "taxonomy"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Taxonomy"
+          ],
+          "mustKnowFacts": [
+            "Taxonomy is a fundamental subtopic of Diversity in Living World.",
+            "Crucial to understand the principles governing Taxonomy for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing taxonomy",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of taxonomy",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in taxonomy"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Taxonomy during complex MCQs.",
+            "Failing to apply the correct logic for Taxonomy."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Taxonomy."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Taxonomy."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "diversity-in-living-world-q-taxonomy-1",
+              "question": "Explain the core concept behind Taxonomy.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "taxonomy"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "taxonomy",
+                "conceptSlug": "core-taxonomy",
+                "microskillSlug": "understand-taxonomy",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            },
+            {
+              "id": "diversity-in-living-world-q-taxonomy-2",
+              "question": "What is a common trap associated with Taxonomy?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "taxonomy",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "taxonomy",
+                "conceptSlug": "trap-taxonomy",
+                "microskillSlug": "avoid-taxonomy",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-diversity-in-living-world-systematics",
+          "title": "Systematics",
+          "conceptTags": [
+            "diversity-in-living-world",
+            "systematics"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Systematics"
+          ],
+          "mustKnowFacts": [
+            "Systematics is a fundamental subtopic of Diversity in Living World.",
+            "Crucial to understand the principles governing Systematics for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing systematics",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of systematics",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in systematics"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Systematics during complex MCQs.",
+            "Failing to apply the correct logic for Systematics."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Systematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Systematics."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "diversity-in-living-world-q-systematics-1",
+              "question": "Explain the core concept behind Systematics.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "systematics"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "systematics",
+                "conceptSlug": "core-systematics",
+                "microskillSlug": "understand-systematics",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            },
+            {
+              "id": "diversity-in-living-world-q-systematics-2",
+              "question": "What is a common trap associated with Systematics?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "systematics",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "systematics",
+                "conceptSlug": "trap-systematics",
+                "microskillSlug": "avoid-systematics",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-diversity-in-living-world-species-concept",
+          "title": "Species concept",
+          "conceptTags": [
+            "diversity-in-living-world",
+            "species-concept"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Species concept"
+          ],
+          "mustKnowFacts": [
+            "Species concept is a fundamental subtopic of Diversity in Living World.",
+            "Crucial to understand the principles governing Species concept for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing species concept",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of species concept",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in species concept"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Species concept during complex MCQs.",
+            "Failing to apply the correct logic for Species concept."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Species concept."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Species concept."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "diversity-in-living-world-q-species-concept-1",
+              "question": "Explain the core concept behind Species concept.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "species-concept"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "species-concept",
+                "conceptSlug": "core-species-concept",
+                "microskillSlug": "understand-species-concept",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            },
+            {
+              "id": "diversity-in-living-world-q-species-concept-2",
+              "question": "What is a common trap associated with Species concept?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "species-concept",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "species-concept",
+                "conceptSlug": "trap-species-concept",
+                "microskillSlug": "avoid-species-concept",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-diversity-in-living-world-2",
+      "title": "Diversity in Living World - Section 2",
+      "description": "Comprehensive analysis covering hierarchy, binomial nomenclature, five kingdom classification and more.",
+      "conceptTags": [
+        "diversity-in-living-world",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-diversity-in-living-world-hierarchy",
+          "title": "Hierarchy",
+          "conceptTags": [
+            "diversity-in-living-world",
+            "hierarchy"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Hierarchy"
+          ],
+          "mustKnowFacts": [
+            "Hierarchy is a fundamental subtopic of Diversity in Living World.",
+            "Crucial to understand the principles governing Hierarchy for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing hierarchy",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of hierarchy",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in hierarchy"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Hierarchy during complex MCQs.",
+            "Failing to apply the correct logic for Hierarchy."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Hierarchy."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Hierarchy."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "diversity-in-living-world-q-hierarchy-1",
+              "question": "Explain the core concept behind Hierarchy.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "hierarchy"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "hierarchy",
+                "conceptSlug": "core-hierarchy",
+                "microskillSlug": "understand-hierarchy",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            },
+            {
+              "id": "diversity-in-living-world-q-hierarchy-2",
+              "question": "What is a common trap associated with Hierarchy?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "hierarchy",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "hierarchy",
+                "conceptSlug": "trap-hierarchy",
+                "microskillSlug": "avoid-hierarchy",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-diversity-in-living-world-binomial-nomenclature",
+          "title": "Binomial nomenclature",
+          "conceptTags": [
+            "diversity-in-living-world",
+            "binomial-nomenclature"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Binomial nomenclature"
+          ],
+          "mustKnowFacts": [
+            "Binomial nomenclature is a fundamental subtopic of Diversity in Living World.",
+            "Crucial to understand the principles governing Binomial nomenclature for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing binomial nomenclature",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of binomial nomenclature",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in binomial nomenclature"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Binomial nomenclature during complex MCQs.",
+            "Failing to apply the correct logic for Binomial nomenclature."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Binomial nomenclature."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Binomial nomenclature."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "diversity-in-living-world-q-binomial-nomenclature-1",
+              "question": "Explain the core concept behind Binomial nomenclature.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "binomial-nomenclature"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "binomial-nomenclature",
+                "conceptSlug": "core-binomial-nomenclature",
+                "microskillSlug": "understand-binomial-nomenclature",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            },
+            {
+              "id": "diversity-in-living-world-q-binomial-nomenclature-2",
+              "question": "What is a common trap associated with Binomial nomenclature?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "binomial-nomenclature",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "binomial-nomenclature",
+                "conceptSlug": "trap-binomial-nomenclature",
+                "microskillSlug": "avoid-binomial-nomenclature",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-diversity-in-living-world-five-kingdom-classification",
+          "title": "Five kingdom classification",
+          "conceptTags": [
+            "diversity-in-living-world",
+            "five-kingdom-classification"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Five kingdom classification"
+          ],
+          "mustKnowFacts": [
+            "Five kingdom classification is a fundamental subtopic of Diversity in Living World.",
+            "Crucial to understand the principles governing Five kingdom classification for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing five kingdom classification",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of five kingdom classification",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in five kingdom classification"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Five kingdom classification during complex MCQs.",
+            "Failing to apply the correct logic for Five kingdom classification."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Five kingdom classification."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Five kingdom classification."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "diversity-in-living-world-q-five-kingdom-classification-1",
+              "question": "Explain the core concept behind Five kingdom classification.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "five-kingdom-classification"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "five-kingdom-classification",
+                "conceptSlug": "core-five-kingdom-classification",
+                "microskillSlug": "understand-five-kingdom-classification",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            },
+            {
+              "id": "diversity-in-living-world-q-five-kingdom-classification-2",
+              "question": "What is a common trap associated with Five kingdom classification?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "five-kingdom-classification",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "five-kingdom-classification",
+                "conceptSlug": "trap-five-kingdom-classification",
+                "microskillSlug": "avoid-five-kingdom-classification",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-diversity-in-living-world-monera",
+          "title": "Monera",
+          "conceptTags": [
+            "diversity-in-living-world",
+            "monera"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Monera"
+          ],
+          "mustKnowFacts": [
+            "Monera is a fundamental subtopic of Diversity in Living World.",
+            "Crucial to understand the principles governing Monera for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing Monera",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of Monera",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in Monera"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Monera during complex MCQs.",
+            "Failing to apply the correct logic for Monera."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Monera."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Monera."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "diversity-in-living-world-q-monera-1",
+              "question": "Explain the core concept behind Monera.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "monera"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "monera",
+                "conceptSlug": "core-monera",
+                "microskillSlug": "understand-monera",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            },
+            {
+              "id": "diversity-in-living-world-q-monera-2",
+              "question": "What is a common trap associated with Monera?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "monera",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "monera",
+                "conceptSlug": "trap-monera",
+                "microskillSlug": "avoid-monera",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-diversity-in-living-world-protista",
+          "title": "Protista",
+          "conceptTags": [
+            "diversity-in-living-world",
+            "protista"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Protista"
+          ],
+          "mustKnowFacts": [
+            "Protista is a fundamental subtopic of Diversity in Living World.",
+            "Crucial to understand the principles governing Protista for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing Protista",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of Protista",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in Protista"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Protista during complex MCQs.",
+            "Failing to apply the correct logic for Protista."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Protista."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Protista."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "diversity-in-living-world-q-protista-1",
+              "question": "Explain the core concept behind Protista.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "protista"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "protista",
+                "conceptSlug": "core-protista",
+                "microskillSlug": "understand-protista",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            },
+            {
+              "id": "diversity-in-living-world-q-protista-2",
+              "question": "What is a common trap associated with Protista?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "protista",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "protista",
+                "conceptSlug": "trap-protista",
+                "microskillSlug": "avoid-protista",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-diversity-in-living-world-fungi",
+          "title": "Fungi",
+          "conceptTags": [
+            "diversity-in-living-world",
+            "fungi"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Fungi"
+          ],
+          "mustKnowFacts": [
+            "Fungi is a fundamental subtopic of Diversity in Living World.",
+            "Crucial to understand the principles governing Fungi for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing Fungi",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of Fungi",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in Fungi"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Fungi during complex MCQs.",
+            "Failing to apply the correct logic for Fungi."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Fungi."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Fungi."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "diversity-in-living-world-q-fungi-1",
+              "question": "Explain the core concept behind Fungi.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "fungi"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "fungi",
+                "conceptSlug": "core-fungi",
+                "microskillSlug": "understand-fungi",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            },
+            {
+              "id": "diversity-in-living-world-q-fungi-2",
+              "question": "What is a common trap associated with Fungi?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "fungi",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "fungi",
+                "conceptSlug": "trap-fungi",
+                "microskillSlug": "avoid-fungi",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-diversity-in-living-world-3",
+      "title": "Diversity in Living World - Section 3",
+      "description": "Comprehensive analysis covering lichens, viruses, viroids and more.",
+      "conceptTags": [
+        "diversity-in-living-world",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-diversity-in-living-world-lichens",
+          "title": "Lichens",
+          "conceptTags": [
+            "diversity-in-living-world",
+            "lichens"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Lichens"
+          ],
+          "mustKnowFacts": [
+            "Lichens is a fundamental subtopic of Diversity in Living World.",
+            "Crucial to understand the principles governing Lichens for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing lichens",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of lichens",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in lichens"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Lichens during complex MCQs.",
+            "Failing to apply the correct logic for Lichens."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Lichens."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Lichens."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "diversity-in-living-world-q-lichens-1",
+              "question": "Explain the core concept behind Lichens.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "lichens"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "lichens",
+                "conceptSlug": "core-lichens",
+                "microskillSlug": "understand-lichens",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            },
+            {
+              "id": "diversity-in-living-world-q-lichens-2",
+              "question": "What is a common trap associated with Lichens?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "lichens",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "lichens",
+                "conceptSlug": "trap-lichens",
+                "microskillSlug": "avoid-lichens",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-diversity-in-living-world-viruses",
+          "title": "Viruses",
+          "conceptTags": [
+            "diversity-in-living-world",
+            "viruses"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Viruses"
+          ],
+          "mustKnowFacts": [
+            "Viruses is a fundamental subtopic of Diversity in Living World.",
+            "Crucial to understand the principles governing Viruses for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing viruses",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of viruses",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in viruses"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Viruses during complex MCQs.",
+            "Failing to apply the correct logic for Viruses."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Viruses."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Viruses."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "diversity-in-living-world-q-viruses-1",
+              "question": "Explain the core concept behind Viruses.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "viruses"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "viruses",
+                "conceptSlug": "core-viruses",
+                "microskillSlug": "understand-viruses",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            },
+            {
+              "id": "diversity-in-living-world-q-viruses-2",
+              "question": "What is a common trap associated with Viruses?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "viruses",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "viruses",
+                "conceptSlug": "trap-viruses",
+                "microskillSlug": "avoid-viruses",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-diversity-in-living-world-viroids",
+          "title": "Viroids",
+          "conceptTags": [
+            "diversity-in-living-world",
+            "viroids"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Viroids"
+          ],
+          "mustKnowFacts": [
+            "Viroids is a fundamental subtopic of Diversity in Living World.",
+            "Crucial to understand the principles governing Viroids for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing viroids",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of viroids",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in viroids"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Viroids during complex MCQs.",
+            "Failing to apply the correct logic for Viroids."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Viroids."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Viroids."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "diversity-in-living-world-q-viroids-1",
+              "question": "Explain the core concept behind Viroids.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "viroids"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "viroids",
+                "conceptSlug": "core-viroids",
+                "microskillSlug": "understand-viroids",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            },
+            {
+              "id": "diversity-in-living-world-q-viroids-2",
+              "question": "What is a common trap associated with Viroids?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "viroids",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "viroids",
+                "conceptSlug": "trap-viroids",
+                "microskillSlug": "avoid-viroids",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-diversity-in-living-world-algae",
+          "title": "Algae",
+          "conceptTags": [
+            "diversity-in-living-world",
+            "algae"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Algae"
+          ],
+          "mustKnowFacts": [
+            "Algae is a fundamental subtopic of Diversity in Living World.",
+            "Crucial to understand the principles governing Algae for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing algae",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of algae",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in algae"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Algae during complex MCQs.",
+            "Failing to apply the correct logic for Algae."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Algae."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Algae."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "diversity-in-living-world-q-algae-1",
+              "question": "Explain the core concept behind Algae.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "algae"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "algae",
+                "conceptSlug": "core-algae",
+                "microskillSlug": "understand-algae",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            },
+            {
+              "id": "diversity-in-living-world-q-algae-2",
+              "question": "What is a common trap associated with Algae?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "algae",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "algae",
+                "conceptSlug": "trap-algae",
+                "microskillSlug": "avoid-algae",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-diversity-in-living-world-bryophytes",
+          "title": "Bryophytes",
+          "conceptTags": [
+            "diversity-in-living-world",
+            "bryophytes"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Bryophytes"
+          ],
+          "mustKnowFacts": [
+            "Bryophytes is a fundamental subtopic of Diversity in Living World.",
+            "Crucial to understand the principles governing Bryophytes for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing bryophytes",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of bryophytes",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in bryophytes"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Bryophytes during complex MCQs.",
+            "Failing to apply the correct logic for Bryophytes."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Bryophytes."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Bryophytes."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "diversity-in-living-world-q-bryophytes-1",
+              "question": "Explain the core concept behind Bryophytes.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "bryophytes"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "bryophytes",
+                "conceptSlug": "core-bryophytes",
+                "microskillSlug": "understand-bryophytes",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            },
+            {
+              "id": "diversity-in-living-world-q-bryophytes-2",
+              "question": "What is a common trap associated with Bryophytes?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "bryophytes",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "bryophytes",
+                "conceptSlug": "trap-bryophytes",
+                "microskillSlug": "avoid-bryophytes",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-diversity-in-living-world-pteridophytes",
+          "title": "Pteridophytes",
+          "conceptTags": [
+            "diversity-in-living-world",
+            "pteridophytes"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Pteridophytes"
+          ],
+          "mustKnowFacts": [
+            "Pteridophytes is a fundamental subtopic of Diversity in Living World.",
+            "Crucial to understand the principles governing Pteridophytes for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing pteridophytes",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of pteridophytes",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in pteridophytes"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Pteridophytes during complex MCQs.",
+            "Failing to apply the correct logic for Pteridophytes."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Pteridophytes."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Pteridophytes."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "diversity-in-living-world-q-pteridophytes-1",
+              "question": "Explain the core concept behind Pteridophytes.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "pteridophytes"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "pteridophytes",
+                "conceptSlug": "core-pteridophytes",
+                "microskillSlug": "understand-pteridophytes",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            },
+            {
+              "id": "diversity-in-living-world-q-pteridophytes-2",
+              "question": "What is a common trap associated with Pteridophytes?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "pteridophytes",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "pteridophytes",
+                "conceptSlug": "trap-pteridophytes",
+                "microskillSlug": "avoid-pteridophytes",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-diversity-in-living-world-4",
+      "title": "Diversity in Living World - Section 4",
+      "description": "Comprehensive analysis covering gymnosperms, angiosperms, non-chordates up to phyla and more.",
+      "conceptTags": [
+        "diversity-in-living-world",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-diversity-in-living-world-gymnosperms",
+          "title": "Gymnosperms",
+          "conceptTags": [
+            "diversity-in-living-world",
+            "gymnosperms"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Gymnosperms"
+          ],
+          "mustKnowFacts": [
+            "Gymnosperms is a fundamental subtopic of Diversity in Living World.",
+            "Crucial to understand the principles governing Gymnosperms for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing gymnosperms",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of gymnosperms",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in gymnosperms"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Gymnosperms during complex MCQs.",
+            "Failing to apply the correct logic for Gymnosperms."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Gymnosperms."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Gymnosperms."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "diversity-in-living-world-q-gymnosperms-1",
+              "question": "Explain the core concept behind Gymnosperms.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "gymnosperms"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "gymnosperms",
+                "conceptSlug": "core-gymnosperms",
+                "microskillSlug": "understand-gymnosperms",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            },
+            {
+              "id": "diversity-in-living-world-q-gymnosperms-2",
+              "question": "What is a common trap associated with Gymnosperms?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "gymnosperms",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "gymnosperms",
+                "conceptSlug": "trap-gymnosperms",
+                "microskillSlug": "avoid-gymnosperms",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-diversity-in-living-world-angiosperms",
+          "title": "Angiosperms",
+          "conceptTags": [
+            "diversity-in-living-world",
+            "angiosperms"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Angiosperms"
+          ],
+          "mustKnowFacts": [
+            "Angiosperms is a fundamental subtopic of Diversity in Living World.",
+            "Crucial to understand the principles governing Angiosperms for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing angiosperms",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of angiosperms",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in angiosperms"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Angiosperms during complex MCQs.",
+            "Failing to apply the correct logic for Angiosperms."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Angiosperms."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Angiosperms."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "diversity-in-living-world-q-angiosperms-1",
+              "question": "Explain the core concept behind Angiosperms.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "angiosperms"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "angiosperms",
+                "conceptSlug": "core-angiosperms",
+                "microskillSlug": "understand-angiosperms",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            },
+            {
+              "id": "diversity-in-living-world-q-angiosperms-2",
+              "question": "What is a common trap associated with Angiosperms?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "angiosperms",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "angiosperms",
+                "conceptSlug": "trap-angiosperms",
+                "microskillSlug": "avoid-angiosperms",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-diversity-in-living-world-non-chordates-up-to-phyla",
+          "title": "Non-chordates up to phyla",
+          "conceptTags": [
+            "diversity-in-living-world",
+            "non-chordates-up-to-phyla"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Non-chordates up to phyla"
+          ],
+          "mustKnowFacts": [
+            "Non-chordates up to phyla is a fundamental subtopic of Diversity in Living World.",
+            "Crucial to understand the principles governing Non-chordates up to phyla for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing non-chordates up to phyla",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of non-chordates up to phyla",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in non-chordates up to phyla"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Non-chordates up to phyla during complex MCQs.",
+            "Failing to apply the correct logic for Non-chordates up to phyla."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Non-chordates up to phyla."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Non-chordates up to phyla."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "diversity-in-living-world-q-non-chordates-up-to-phyla-1",
+              "question": "Explain the core concept behind Non-chordates up to phyla.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "non-chordates-up-to-phyla"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "non-chordates-up-to-phyla",
+                "conceptSlug": "core-non-chordates-up-to-phyla",
+                "microskillSlug": "understand-non-chordates-up-to-phyla",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            },
+            {
+              "id": "diversity-in-living-world-q-non-chordates-up-to-phyla-2",
+              "question": "What is a common trap associated with Non-chordates up to phyla?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "non-chordates-up-to-phyla",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "non-chordates-up-to-phyla",
+                "conceptSlug": "trap-non-chordates-up-to-phyla",
+                "microskillSlug": "avoid-non-chordates-up-to-phyla",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-diversity-in-living-world-chordates-up-to-classes",
+          "title": "Chordates up to classes",
+          "conceptTags": [
+            "diversity-in-living-world",
+            "chordates-up-to-classes"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Chordates up to classes"
+          ],
+          "mustKnowFacts": [
+            "Chordates up to classes is a fundamental subtopic of Diversity in Living World.",
+            "Crucial to understand the principles governing Chordates up to classes for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing chordates up to classes",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of chordates up to classes",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in chordates up to classes"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Chordates up to classes during complex MCQs.",
+            "Failing to apply the correct logic for Chordates up to classes."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Chordates up to classes."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Chordates up to classes."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "diversity-in-living-world-q-chordates-up-to-classes-1",
+              "question": "Explain the core concept behind Chordates up to classes.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "chordates-up-to-classes"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "chordates-up-to-classes",
+                "conceptSlug": "core-chordates-up-to-classes",
+                "microskillSlug": "understand-chordates-up-to-classes",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            },
+            {
+              "id": "diversity-in-living-world-q-chordates-up-to-classes-2",
+              "question": "What is a common trap associated with Chordates up to classes?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "chordates-up-to-classes",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "chordates-up-to-classes",
+                "conceptSlug": "trap-chordates-up-to-classes",
+                "microskillSlug": "avoid-chordates-up-to-classes",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-diversity-in-living-world-examples-and-distinguishing-features",
+          "title": "Examples and distinguishing features",
+          "conceptTags": [
+            "diversity-in-living-world",
+            "examples-and-distinguishing-features"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Examples and distinguishing features"
+          ],
+          "mustKnowFacts": [
+            "Examples and distinguishing features is a fundamental subtopic of Diversity in Living World.",
+            "Crucial to understand the principles governing Examples and distinguishing features for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing examples and distinguishing features",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of examples and distinguishing features",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in examples and distinguishing features"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Examples and distinguishing features during complex MCQs.",
+            "Failing to apply the correct logic for Examples and distinguishing features."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Examples and distinguishing features."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Examples and distinguishing features."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "diversity-in-living-world-q-examples-and-distinguishing-features-1",
+              "question": "Explain the core concept behind Examples and distinguishing features.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "examples-and-distinguishing-features"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "examples-and-distinguishing-features",
+                "conceptSlug": "core-examples-and-distinguishing-features",
+                "microskillSlug": "understand-examples-and-distinguishing-features",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            },
+            {
+              "id": "diversity-in-living-world-q-examples-and-distinguishing-features-2",
+              "question": "What is a common trap associated with Examples and distinguishing features?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "examples-and-distinguishing-features",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "diversity-in-living-world",
+                "subtopicSlug": "examples-and-distinguishing-features",
+                "conceptSlug": "trap-examples-and-distinguishing-features",
+                "microskillSlug": "avoid-examples-and-distinguishing-features",
+                "subject": "Biology",
+                "unitSlug": "diversity-in-living-world",
+                "chapterSlug": "diversity-in-living-world"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

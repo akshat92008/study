@@ -1,0 +1,1736 @@
+{
+  "missions": [
+    {
+      "id": "m-periodicity-1",
+      "title": "Classification of Elements and Periodicity in Properties - Section 1",
+      "description": "Comprehensive analysis covering modern periodic law, long form periodic table, s/p/d/f blocks and more.",
+      "conceptTags": [
+        "periodicity",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-periodicity-modern-periodic-law",
+          "title": "Modern periodic law",
+          "conceptTags": [
+            "periodicity",
+            "modern-periodic-law"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Modern periodic law"
+          ],
+          "mustKnowFacts": [
+            "Modern periodic law is a fundamental subtopic of Classification of Elements and Periodicity in Properties.",
+            "Crucial to understand the principles governing Modern periodic law for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for modern periodic law",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving modern periodic law",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Modern periodic law during complex MCQs.",
+            "Failing to apply the correct logic for Modern periodic law."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Modern periodic law."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Modern periodic law."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "periodicity-q-modern-periodic-law-1",
+              "question": "Explain the core concept behind Modern periodic law.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "modern-periodic-law"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "modern-periodic-law",
+                "conceptSlug": "core-modern-periodic-law",
+                "microskillSlug": "understand-modern-periodic-law",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            },
+            {
+              "id": "periodicity-q-modern-periodic-law-2",
+              "question": "What is a common trap associated with Modern periodic law?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "modern-periodic-law",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "modern-periodic-law",
+                "conceptSlug": "trap-modern-periodic-law",
+                "microskillSlug": "avoid-modern-periodic-law",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-periodicity-long-form-periodic-table",
+          "title": "Long form periodic table",
+          "conceptTags": [
+            "periodicity",
+            "long-form-periodic-table"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Long form periodic table"
+          ],
+          "mustKnowFacts": [
+            "Long form periodic table is a fundamental subtopic of Classification of Elements and Periodicity in Properties.",
+            "Crucial to understand the principles governing Long form periodic table for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for long form periodic table",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving long form periodic table",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Long form periodic table during complex MCQs.",
+            "Failing to apply the correct logic for Long form periodic table."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Long form periodic table."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Long form periodic table."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "periodicity-q-long-form-periodic-table-1",
+              "question": "Explain the core concept behind Long form periodic table.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "long-form-periodic-table"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "long-form-periodic-table",
+                "conceptSlug": "core-long-form-periodic-table",
+                "microskillSlug": "understand-long-form-periodic-table",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            },
+            {
+              "id": "periodicity-q-long-form-periodic-table-2",
+              "question": "What is a common trap associated with Long form periodic table?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "long-form-periodic-table",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "long-form-periodic-table",
+                "conceptSlug": "trap-long-form-periodic-table",
+                "microskillSlug": "avoid-long-form-periodic-table",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-periodicity-s-p-d-f-blocks",
+          "title": "S/p/d/f blocks",
+          "conceptTags": [
+            "periodicity",
+            "s-p-d-f-blocks"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, S/p/d/f blocks"
+          ],
+          "mustKnowFacts": [
+            "S/p/d/f blocks is a fundamental subtopic of Classification of Elements and Periodicity in Properties.",
+            "Crucial to understand the principles governing S/p/d/f blocks for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for s/p/d/f blocks",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving s/p/d/f blocks",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret S/p/d/f blocks during complex MCQs.",
+            "Failing to apply the correct logic for S/p/d/f blocks."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to S/p/d/f blocks."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about S/p/d/f blocks."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "periodicity-q-s-p-d-f-blocks-1",
+              "question": "Explain the core concept behind S/p/d/f blocks.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "s-p-d-f-blocks"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "s-p-d-f-blocks",
+                "conceptSlug": "core-s-p-d-f-blocks",
+                "microskillSlug": "understand-s-p-d-f-blocks",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            },
+            {
+              "id": "periodicity-q-s-p-d-f-blocks-2",
+              "question": "What is a common trap associated with S/p/d/f blocks?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "s-p-d-f-blocks",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "s-p-d-f-blocks",
+                "conceptSlug": "trap-s-p-d-f-blocks",
+                "microskillSlug": "avoid-s-p-d-f-blocks",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-periodicity-effective-nuclear-charge",
+          "title": "Effective nuclear charge",
+          "conceptTags": [
+            "periodicity",
+            "effective-nuclear-charge"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Effective nuclear charge"
+          ],
+          "mustKnowFacts": [
+            "Effective nuclear charge is a fundamental subtopic of Classification of Elements and Periodicity in Properties.",
+            "Crucial to understand the principles governing Effective nuclear charge for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for effective nuclear charge",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving effective nuclear charge",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Effective nuclear charge during complex MCQs.",
+            "Failing to apply the correct logic for Effective nuclear charge."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Effective nuclear charge."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Effective nuclear charge."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "periodicity-q-effective-nuclear-charge-1",
+              "question": "Explain the core concept behind Effective nuclear charge.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "effective-nuclear-charge"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "effective-nuclear-charge",
+                "conceptSlug": "core-effective-nuclear-charge",
+                "microskillSlug": "understand-effective-nuclear-charge",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            },
+            {
+              "id": "periodicity-q-effective-nuclear-charge-2",
+              "question": "What is a common trap associated with Effective nuclear charge?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "effective-nuclear-charge",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "effective-nuclear-charge",
+                "conceptSlug": "trap-effective-nuclear-charge",
+                "microskillSlug": "avoid-effective-nuclear-charge",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-periodicity-2",
+      "title": "Classification of Elements and Periodicity in Properties - Section 2",
+      "description": "Comprehensive analysis covering shielding, atomic radius, ionic radius and more.",
+      "conceptTags": [
+        "periodicity",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-periodicity-shielding",
+          "title": "Shielding",
+          "conceptTags": [
+            "periodicity",
+            "shielding"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Shielding"
+          ],
+          "mustKnowFacts": [
+            "Shielding is a fundamental subtopic of Classification of Elements and Periodicity in Properties.",
+            "Crucial to understand the principles governing Shielding for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for shielding",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving shielding",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Shielding during complex MCQs.",
+            "Failing to apply the correct logic for Shielding."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Shielding."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Shielding."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "periodicity-q-shielding-1",
+              "question": "Explain the core concept behind Shielding.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "shielding"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "shielding",
+                "conceptSlug": "core-shielding",
+                "microskillSlug": "understand-shielding",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            },
+            {
+              "id": "periodicity-q-shielding-2",
+              "question": "What is a common trap associated with Shielding?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "shielding",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "shielding",
+                "conceptSlug": "trap-shielding",
+                "microskillSlug": "avoid-shielding",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-periodicity-atomic-radius",
+          "title": "Atomic radius",
+          "conceptTags": [
+            "periodicity",
+            "atomic-radius"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Atomic radius"
+          ],
+          "mustKnowFacts": [
+            "Atomic radius is a fundamental subtopic of Classification of Elements and Periodicity in Properties.",
+            "Crucial to understand the principles governing Atomic radius for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for atomic radius",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving atomic radius",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Atomic radius during complex MCQs.",
+            "Failing to apply the correct logic for Atomic radius."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Atomic radius."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Atomic radius."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "periodicity-q-atomic-radius-1",
+              "question": "Explain the core concept behind Atomic radius.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "atomic-radius"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "atomic-radius",
+                "conceptSlug": "core-atomic-radius",
+                "microskillSlug": "understand-atomic-radius",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            },
+            {
+              "id": "periodicity-q-atomic-radius-2",
+              "question": "What is a common trap associated with Atomic radius?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "atomic-radius",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "atomic-radius",
+                "conceptSlug": "trap-atomic-radius",
+                "microskillSlug": "avoid-atomic-radius",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-periodicity-ionic-radius",
+          "title": "Ionic radius",
+          "conceptTags": [
+            "periodicity",
+            "ionic-radius"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Ionic radius"
+          ],
+          "mustKnowFacts": [
+            "Ionic radius is a fundamental subtopic of Classification of Elements and Periodicity in Properties.",
+            "Crucial to understand the principles governing Ionic radius for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for ionic radius",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving ionic radius",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Ionic radius during complex MCQs.",
+            "Failing to apply the correct logic for Ionic radius."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Ionic radius."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Ionic radius."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "periodicity-q-ionic-radius-1",
+              "question": "Explain the core concept behind Ionic radius.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "ionic-radius"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "ionic-radius",
+                "conceptSlug": "core-ionic-radius",
+                "microskillSlug": "understand-ionic-radius",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            },
+            {
+              "id": "periodicity-q-ionic-radius-2",
+              "question": "What is a common trap associated with Ionic radius?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "ionic-radius",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "ionic-radius",
+                "conceptSlug": "trap-ionic-radius",
+                "microskillSlug": "avoid-ionic-radius",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-periodicity-ionisation-enthalpy",
+          "title": "Ionisation enthalpy",
+          "conceptTags": [
+            "periodicity",
+            "ionisation-enthalpy"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Ionisation enthalpy"
+          ],
+          "mustKnowFacts": [
+            "Ionisation enthalpy is a fundamental subtopic of Classification of Elements and Periodicity in Properties.",
+            "Crucial to understand the principles governing Ionisation enthalpy for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for ionisation enthalpy",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving ionisation enthalpy",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Ionisation enthalpy during complex MCQs.",
+            "Failing to apply the correct logic for Ionisation enthalpy."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Ionisation enthalpy."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Ionisation enthalpy."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "periodicity-q-ionisation-enthalpy-1",
+              "question": "Explain the core concept behind Ionisation enthalpy.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "ionisation-enthalpy"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "ionisation-enthalpy",
+                "conceptSlug": "core-ionisation-enthalpy",
+                "microskillSlug": "understand-ionisation-enthalpy",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            },
+            {
+              "id": "periodicity-q-ionisation-enthalpy-2",
+              "question": "What is a common trap associated with Ionisation enthalpy?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "ionisation-enthalpy",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "ionisation-enthalpy",
+                "conceptSlug": "trap-ionisation-enthalpy",
+                "microskillSlug": "avoid-ionisation-enthalpy",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-periodicity-3",
+      "title": "Classification of Elements and Periodicity in Properties - Section 3",
+      "description": "Comprehensive analysis covering electron gain enthalpy, electronegativity, valence and more.",
+      "conceptTags": [
+        "periodicity",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-periodicity-electron-gain-enthalpy",
+          "title": "Electron gain enthalpy",
+          "conceptTags": [
+            "periodicity",
+            "electron-gain-enthalpy"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Electron gain enthalpy"
+          ],
+          "mustKnowFacts": [
+            "Electron gain enthalpy is a fundamental subtopic of Classification of Elements and Periodicity in Properties.",
+            "Crucial to understand the principles governing Electron gain enthalpy for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for electron gain enthalpy",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving electron gain enthalpy",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Electron gain enthalpy during complex MCQs.",
+            "Failing to apply the correct logic for Electron gain enthalpy."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Electron gain enthalpy."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Electron gain enthalpy."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "periodicity-q-electron-gain-enthalpy-1",
+              "question": "Explain the core concept behind Electron gain enthalpy.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "electron-gain-enthalpy"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "electron-gain-enthalpy",
+                "conceptSlug": "core-electron-gain-enthalpy",
+                "microskillSlug": "understand-electron-gain-enthalpy",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            },
+            {
+              "id": "periodicity-q-electron-gain-enthalpy-2",
+              "question": "What is a common trap associated with Electron gain enthalpy?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "electron-gain-enthalpy",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "electron-gain-enthalpy",
+                "conceptSlug": "trap-electron-gain-enthalpy",
+                "microskillSlug": "avoid-electron-gain-enthalpy",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-periodicity-electronegativity",
+          "title": "Electronegativity",
+          "conceptTags": [
+            "periodicity",
+            "electronegativity"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Electronegativity"
+          ],
+          "mustKnowFacts": [
+            "Electronegativity is a fundamental subtopic of Classification of Elements and Periodicity in Properties.",
+            "Crucial to understand the principles governing Electronegativity for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for electronegativity",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving electronegativity",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Electronegativity during complex MCQs.",
+            "Failing to apply the correct logic for Electronegativity."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Electronegativity."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Electronegativity."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "periodicity-q-electronegativity-1",
+              "question": "Explain the core concept behind Electronegativity.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "electronegativity"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "electronegativity",
+                "conceptSlug": "core-electronegativity",
+                "microskillSlug": "understand-electronegativity",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            },
+            {
+              "id": "periodicity-q-electronegativity-2",
+              "question": "What is a common trap associated with Electronegativity?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "electronegativity",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "electronegativity",
+                "conceptSlug": "trap-electronegativity",
+                "microskillSlug": "avoid-electronegativity",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-periodicity-valence",
+          "title": "Valence",
+          "conceptTags": [
+            "periodicity",
+            "valence"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Valence"
+          ],
+          "mustKnowFacts": [
+            "Valence is a fundamental subtopic of Classification of Elements and Periodicity in Properties.",
+            "Crucial to understand the principles governing Valence for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for valence",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving valence",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Valence during complex MCQs.",
+            "Failing to apply the correct logic for Valence."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Valence."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Valence."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "periodicity-q-valence-1",
+              "question": "Explain the core concept behind Valence.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "valence"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "valence",
+                "conceptSlug": "core-valence",
+                "microskillSlug": "understand-valence",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            },
+            {
+              "id": "periodicity-q-valence-2",
+              "question": "What is a common trap associated with Valence?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "valence",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "valence",
+                "conceptSlug": "trap-valence",
+                "microskillSlug": "avoid-valence",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-periodicity-oxidation-states",
+          "title": "Oxidation states",
+          "conceptTags": [
+            "periodicity",
+            "oxidation-states"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Oxidation states"
+          ],
+          "mustKnowFacts": [
+            "Oxidation states is a fundamental subtopic of Classification of Elements and Periodicity in Properties.",
+            "Crucial to understand the principles governing Oxidation states for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for oxidation states",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving oxidation states",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Oxidation states during complex MCQs.",
+            "Failing to apply the correct logic for Oxidation states."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Oxidation states."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Oxidation states."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "periodicity-q-oxidation-states-1",
+              "question": "Explain the core concept behind Oxidation states.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "oxidation-states"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "oxidation-states",
+                "conceptSlug": "core-oxidation-states",
+                "microskillSlug": "understand-oxidation-states",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            },
+            {
+              "id": "periodicity-q-oxidation-states-2",
+              "question": "What is a common trap associated with Oxidation states?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "oxidation-states",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "oxidation-states",
+                "conceptSlug": "trap-oxidation-states",
+                "microskillSlug": "avoid-oxidation-states",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-periodicity-4",
+      "title": "Classification of Elements and Periodicity in Properties - Section 4",
+      "description": "Comprehensive analysis covering metallic/nonmetallic character, chemical reactivity trends, diagonal relationship and more.",
+      "conceptTags": [
+        "periodicity",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-periodicity-metallic-nonmetallic-character",
+          "title": "Metallic/nonmetallic character",
+          "conceptTags": [
+            "periodicity",
+            "metallic-nonmetallic-character"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Metallic/nonmetallic character"
+          ],
+          "mustKnowFacts": [
+            "Metallic/nonmetallic character is a fundamental subtopic of Classification of Elements and Periodicity in Properties.",
+            "Crucial to understand the principles governing Metallic/nonmetallic character for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for metallic/nonmetallic character",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving metallic/nonmetallic character",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Metallic/nonmetallic character during complex MCQs.",
+            "Failing to apply the correct logic for Metallic/nonmetallic character."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Metallic/nonmetallic character."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Metallic/nonmetallic character."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "periodicity-q-metallic-nonmetallic-character-1",
+              "question": "Explain the core concept behind Metallic/nonmetallic character.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "metallic-nonmetallic-character"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "metallic-nonmetallic-character",
+                "conceptSlug": "core-metallic-nonmetallic-character",
+                "microskillSlug": "understand-metallic-nonmetallic-character",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            },
+            {
+              "id": "periodicity-q-metallic-nonmetallic-character-2",
+              "question": "What is a common trap associated with Metallic/nonmetallic character?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "metallic-nonmetallic-character",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "metallic-nonmetallic-character",
+                "conceptSlug": "trap-metallic-nonmetallic-character",
+                "microskillSlug": "avoid-metallic-nonmetallic-character",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-periodicity-chemical-reactivity-trends",
+          "title": "Chemical reactivity trends",
+          "conceptTags": [
+            "periodicity",
+            "chemical-reactivity-trends"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Chemical reactivity trends"
+          ],
+          "mustKnowFacts": [
+            "Chemical reactivity trends is a fundamental subtopic of Classification of Elements and Periodicity in Properties.",
+            "Crucial to understand the principles governing Chemical reactivity trends for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for chemical reactivity trends",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving chemical reactivity trends",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Chemical reactivity trends during complex MCQs.",
+            "Failing to apply the correct logic for Chemical reactivity trends."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Chemical reactivity trends."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Chemical reactivity trends."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "periodicity-q-chemical-reactivity-trends-1",
+              "question": "Explain the core concept behind Chemical reactivity trends.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "chemical-reactivity-trends"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "chemical-reactivity-trends",
+                "conceptSlug": "core-chemical-reactivity-trends",
+                "microskillSlug": "understand-chemical-reactivity-trends",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            },
+            {
+              "id": "periodicity-q-chemical-reactivity-trends-2",
+              "question": "What is a common trap associated with Chemical reactivity trends?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "chemical-reactivity-trends",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "chemical-reactivity-trends",
+                "conceptSlug": "trap-chemical-reactivity-trends",
+                "microskillSlug": "avoid-chemical-reactivity-trends",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-periodicity-diagonal-relationship",
+          "title": "Diagonal relationship",
+          "conceptTags": [
+            "periodicity",
+            "diagonal-relationship"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Diagonal relationship"
+          ],
+          "mustKnowFacts": [
+            "Diagonal relationship is a fundamental subtopic of Classification of Elements and Periodicity in Properties.",
+            "Crucial to understand the principles governing Diagonal relationship for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for diagonal relationship",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving diagonal relationship",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Diagonal relationship during complex MCQs.",
+            "Failing to apply the correct logic for Diagonal relationship."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Diagonal relationship."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Diagonal relationship."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "periodicity-q-diagonal-relationship-1",
+              "question": "Explain the core concept behind Diagonal relationship.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "diagonal-relationship"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "diagonal-relationship",
+                "conceptSlug": "core-diagonal-relationship",
+                "microskillSlug": "understand-diagonal-relationship",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            },
+            {
+              "id": "periodicity-q-diagonal-relationship-2",
+              "question": "What is a common trap associated with Diagonal relationship?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "diagonal-relationship",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "diagonal-relationship",
+                "conceptSlug": "trap-diagonal-relationship",
+                "microskillSlug": "avoid-diagonal-relationship",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-periodicity-anomalies",
+          "title": "Anomalies",
+          "conceptTags": [
+            "periodicity",
+            "anomalies"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Anomalies"
+          ],
+          "mustKnowFacts": [
+            "Anomalies is a fundamental subtopic of Classification of Elements and Periodicity in Properties.",
+            "Crucial to understand the principles governing Anomalies for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for anomalies",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving anomalies",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Anomalies during complex MCQs.",
+            "Failing to apply the correct logic for Anomalies."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Anomalies."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Anomalies."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "periodicity-q-anomalies-1",
+              "question": "Explain the core concept behind Anomalies.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "anomalies"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "anomalies",
+                "conceptSlug": "core-anomalies",
+                "microskillSlug": "understand-anomalies",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            },
+            {
+              "id": "periodicity-q-anomalies-2",
+              "question": "What is a common trap associated with Anomalies?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "anomalies",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "periodicity",
+                "subtopicSlug": "anomalies",
+                "conceptSlug": "trap-anomalies",
+                "microskillSlug": "avoid-anomalies",
+                "subject": "Chemistry",
+                "unitSlug": "periodicity",
+                "chapterSlug": "periodicity"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2366 @@
+{
+  "missions": [
+    {
+      "id": "m-equilibrium-1",
+      "title": "Equilibrium - Section 1",
+      "description": "Comprehensive analysis covering physical equilibrium, dynamic equilibrium, Henry law and more.",
+      "conceptTags": [
+        "equilibrium",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-equilibrium-physical-equilibrium",
+          "title": "Physical equilibrium",
+          "conceptTags": [
+            "equilibrium",
+            "physical-equilibrium"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Physical equilibrium"
+          ],
+          "mustKnowFacts": [
+            "Physical equilibrium is a fundamental subtopic of Equilibrium.",
+            "Crucial to understand the principles governing Physical equilibrium for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for physical equilibrium",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving physical equilibrium",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Physical equilibrium during complex MCQs.",
+            "Failing to apply the correct logic for Physical equilibrium."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Physical equilibrium."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Physical equilibrium."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "equilibrium-q-physical-equilibrium-1",
+              "question": "Explain the core concept behind Physical equilibrium.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "physical-equilibrium"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "physical-equilibrium",
+                "conceptSlug": "core-physical-equilibrium",
+                "microskillSlug": "understand-physical-equilibrium",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            },
+            {
+              "id": "equilibrium-q-physical-equilibrium-2",
+              "question": "What is a common trap associated with Physical equilibrium?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "physical-equilibrium",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "physical-equilibrium",
+                "conceptSlug": "trap-physical-equilibrium",
+                "microskillSlug": "avoid-physical-equilibrium",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-equilibrium-dynamic-equilibrium",
+          "title": "Dynamic equilibrium",
+          "conceptTags": [
+            "equilibrium",
+            "dynamic-equilibrium"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Dynamic equilibrium"
+          ],
+          "mustKnowFacts": [
+            "Dynamic equilibrium is a fundamental subtopic of Equilibrium.",
+            "Crucial to understand the principles governing Dynamic equilibrium for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for dynamic equilibrium",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving dynamic equilibrium",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Dynamic equilibrium during complex MCQs.",
+            "Failing to apply the correct logic for Dynamic equilibrium."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Dynamic equilibrium."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Dynamic equilibrium."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "equilibrium-q-dynamic-equilibrium-1",
+              "question": "Explain the core concept behind Dynamic equilibrium.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "dynamic-equilibrium"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "dynamic-equilibrium",
+                "conceptSlug": "core-dynamic-equilibrium",
+                "microskillSlug": "understand-dynamic-equilibrium",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            },
+            {
+              "id": "equilibrium-q-dynamic-equilibrium-2",
+              "question": "What is a common trap associated with Dynamic equilibrium?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "dynamic-equilibrium",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "dynamic-equilibrium",
+                "conceptSlug": "trap-dynamic-equilibrium",
+                "microskillSlug": "avoid-dynamic-equilibrium",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-equilibrium-henry-law",
+          "title": "Henry law",
+          "conceptTags": [
+            "equilibrium",
+            "henry-law"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Henry law"
+          ],
+          "mustKnowFacts": [
+            "Henry law is a fundamental subtopic of Equilibrium.",
+            "Crucial to understand the principles governing Henry law for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Henry law",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Henry law",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Henry law during complex MCQs.",
+            "Failing to apply the correct logic for Henry law."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Henry law."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Henry law."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "equilibrium-q-henry-law-1",
+              "question": "Explain the core concept behind Henry law.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "henry-law"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "henry-law",
+                "conceptSlug": "core-henry-law",
+                "microskillSlug": "understand-henry-law",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            },
+            {
+              "id": "equilibrium-q-henry-law-2",
+              "question": "What is a common trap associated with Henry law?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "henry-law",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "henry-law",
+                "conceptSlug": "trap-henry-law",
+                "microskillSlug": "avoid-henry-law",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-equilibrium-chemical-equilibrium",
+          "title": "Chemical equilibrium",
+          "conceptTags": [
+            "equilibrium",
+            "chemical-equilibrium"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Chemical equilibrium"
+          ],
+          "mustKnowFacts": [
+            "Chemical equilibrium is a fundamental subtopic of Equilibrium.",
+            "Crucial to understand the principles governing Chemical equilibrium for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for chemical equilibrium",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving chemical equilibrium",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Chemical equilibrium during complex MCQs.",
+            "Failing to apply the correct logic for Chemical equilibrium."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Chemical equilibrium."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Chemical equilibrium."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "equilibrium-q-chemical-equilibrium-1",
+              "question": "Explain the core concept behind Chemical equilibrium.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "chemical-equilibrium"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "chemical-equilibrium",
+                "conceptSlug": "core-chemical-equilibrium",
+                "microskillSlug": "understand-chemical-equilibrium",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            },
+            {
+              "id": "equilibrium-q-chemical-equilibrium-2",
+              "question": "What is a common trap associated with Chemical equilibrium?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "chemical-equilibrium",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "chemical-equilibrium",
+                "conceptSlug": "trap-chemical-equilibrium",
+                "microskillSlug": "avoid-chemical-equilibrium",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-equilibrium-kc",
+          "title": "Kc",
+          "conceptTags": [
+            "equilibrium",
+            "kc"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Kc"
+          ],
+          "mustKnowFacts": [
+            "Kc is a fundamental subtopic of Equilibrium.",
+            "Crucial to understand the principles governing Kc for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Kc",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Kc",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Kc during complex MCQs.",
+            "Failing to apply the correct logic for Kc."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Kc."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Kc."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "equilibrium-q-kc-1",
+              "question": "Explain the core concept behind Kc.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "kc"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "kc",
+                "conceptSlug": "core-kc",
+                "microskillSlug": "understand-kc",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            },
+            {
+              "id": "equilibrium-q-kc-2",
+              "question": "What is a common trap associated with Kc?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "kc",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "kc",
+                "conceptSlug": "trap-kc",
+                "microskillSlug": "avoid-kc",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-equilibrium-kp",
+          "title": "Kp",
+          "conceptTags": [
+            "equilibrium",
+            "kp"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Kp"
+          ],
+          "mustKnowFacts": [
+            "Kp is a fundamental subtopic of Equilibrium.",
+            "Crucial to understand the principles governing Kp for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Kp",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Kp",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Kp during complex MCQs.",
+            "Failing to apply the correct logic for Kp."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Kp."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Kp."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "equilibrium-q-kp-1",
+              "question": "Explain the core concept behind Kp.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "kp"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "kp",
+                "conceptSlug": "core-kp",
+                "microskillSlug": "understand-kp",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            },
+            {
+              "id": "equilibrium-q-kp-2",
+              "question": "What is a common trap associated with Kp?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "kp",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "kp",
+                "conceptSlug": "trap-kp",
+                "microskillSlug": "avoid-kp",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-equilibrium-2",
+      "title": "Equilibrium - Section 2",
+      "description": "Comprehensive analysis covering relation Kp-Kc, reaction quotient, Le Chatelier principle and more.",
+      "conceptTags": [
+        "equilibrium",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-equilibrium-relation-kp-kc",
+          "title": "Relation Kp-Kc",
+          "conceptTags": [
+            "equilibrium",
+            "relation-kp-kc"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Relation Kp-Kc"
+          ],
+          "mustKnowFacts": [
+            "Relation Kp-Kc is a fundamental subtopic of Equilibrium.",
+            "Crucial to understand the principles governing Relation Kp-Kc for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for relation Kp-Kc",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving relation Kp-Kc",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Relation Kp-Kc during complex MCQs.",
+            "Failing to apply the correct logic for Relation Kp-Kc."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Relation Kp-Kc."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Relation Kp-Kc."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "equilibrium-q-relation-kp-kc-1",
+              "question": "Explain the core concept behind Relation Kp-Kc.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "relation-kp-kc"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "relation-kp-kc",
+                "conceptSlug": "core-relation-kp-kc",
+                "microskillSlug": "understand-relation-kp-kc",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            },
+            {
+              "id": "equilibrium-q-relation-kp-kc-2",
+              "question": "What is a common trap associated with Relation Kp-Kc?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "relation-kp-kc",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "relation-kp-kc",
+                "conceptSlug": "trap-relation-kp-kc",
+                "microskillSlug": "avoid-relation-kp-kc",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-equilibrium-reaction-quotient",
+          "title": "Reaction quotient",
+          "conceptTags": [
+            "equilibrium",
+            "reaction-quotient"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Reaction quotient"
+          ],
+          "mustKnowFacts": [
+            "Reaction quotient is a fundamental subtopic of Equilibrium.",
+            "Crucial to understand the principles governing Reaction quotient for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for reaction quotient",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving reaction quotient",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Reaction quotient during complex MCQs.",
+            "Failing to apply the correct logic for Reaction quotient."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Reaction quotient."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Reaction quotient."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "equilibrium-q-reaction-quotient-1",
+              "question": "Explain the core concept behind Reaction quotient.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "reaction-quotient"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "reaction-quotient",
+                "conceptSlug": "core-reaction-quotient",
+                "microskillSlug": "understand-reaction-quotient",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            },
+            {
+              "id": "equilibrium-q-reaction-quotient-2",
+              "question": "What is a common trap associated with Reaction quotient?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "reaction-quotient",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "reaction-quotient",
+                "conceptSlug": "trap-reaction-quotient",
+                "microskillSlug": "avoid-reaction-quotient",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-equilibrium-le-chatelier-principle",
+          "title": "Le Chatelier principle",
+          "conceptTags": [
+            "equilibrium",
+            "le-chatelier-principle"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Le Chatelier principle"
+          ],
+          "mustKnowFacts": [
+            "Le Chatelier principle is a fundamental subtopic of Equilibrium.",
+            "Crucial to understand the principles governing Le Chatelier principle for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Le Chatelier principle",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Le Chatelier principle",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Le Chatelier principle during complex MCQs.",
+            "Failing to apply the correct logic for Le Chatelier principle."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Le Chatelier principle."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Le Chatelier principle."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "equilibrium-q-le-chatelier-principle-1",
+              "question": "Explain the core concept behind Le Chatelier principle.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "le-chatelier-principle"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "le-chatelier-principle",
+                "conceptSlug": "core-le-chatelier-principle",
+                "microskillSlug": "understand-le-chatelier-principle",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            },
+            {
+              "id": "equilibrium-q-le-chatelier-principle-2",
+              "question": "What is a common trap associated with Le Chatelier principle?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "le-chatelier-principle",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "le-chatelier-principle",
+                "conceptSlug": "trap-le-chatelier-principle",
+                "microskillSlug": "avoid-le-chatelier-principle",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-equilibrium-effect-of-concentration-pressure-temperature-catalyst",
+          "title": "Effect of concentration/pressure/temperature/catalyst",
+          "conceptTags": [
+            "equilibrium",
+            "effect-of-concentration-pressure-temperature-catalyst"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Effect of concentration/pressure/temperature/catalyst"
+          ],
+          "mustKnowFacts": [
+            "Effect of concentration/pressure/temperature/catalyst is a fundamental subtopic of Equilibrium.",
+            "Crucial to understand the principles governing Effect of concentration/pressure/temperature/catalyst for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for effect of concentration/pressure/temperature/catalyst",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving effect of concentration/pressure/temperature/catalyst",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Effect of concentration/pressure/temperature/catalyst during complex MCQs.",
+            "Failing to apply the correct logic for Effect of concentration/pressure/temperature/catalyst."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Effect of concentration/pressure/temperature/catalyst."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Effect of concentration/pressure/temperature/catalyst."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "equilibrium-q-effect-of-concentration-pressure-temperature-catalyst-1",
+              "question": "Explain the core concept behind Effect of concentration/pressure/temperature/catalyst.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "effect-of-concentration-pressure-temperature-catalyst"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "effect-of-concentration-pressure-temperature-catalyst",
+                "conceptSlug": "core-effect-of-concentration-pressure-temperature-catalyst",
+                "microskillSlug": "understand-effect-of-concentration-pressure-temperature-catalyst",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            },
+            {
+              "id": "equilibrium-q-effect-of-concentration-pressure-temperature-catalyst-2",
+              "question": "What is a common trap associated with Effect of concentration/pressure/temperature/catalyst?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "effect-of-concentration-pressure-temperature-catalyst",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "effect-of-concentration-pressure-temperature-catalyst",
+                "conceptSlug": "trap-effect-of-concentration-pressure-temperature-catalyst",
+                "microskillSlug": "avoid-effect-of-concentration-pressure-temperature-catalyst",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-equilibrium-ionic-equilibrium",
+          "title": "Ionic equilibrium",
+          "conceptTags": [
+            "equilibrium",
+            "ionic-equilibrium"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Ionic equilibrium"
+          ],
+          "mustKnowFacts": [
+            "Ionic equilibrium is a fundamental subtopic of Equilibrium.",
+            "Crucial to understand the principles governing Ionic equilibrium for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for ionic equilibrium",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving ionic equilibrium",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Ionic equilibrium during complex MCQs.",
+            "Failing to apply the correct logic for Ionic equilibrium."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Ionic equilibrium."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Ionic equilibrium."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "equilibrium-q-ionic-equilibrium-1",
+              "question": "Explain the core concept behind Ionic equilibrium.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "ionic-equilibrium"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "ionic-equilibrium",
+                "conceptSlug": "core-ionic-equilibrium",
+                "microskillSlug": "understand-ionic-equilibrium",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            },
+            {
+              "id": "equilibrium-q-ionic-equilibrium-2",
+              "question": "What is a common trap associated with Ionic equilibrium?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "ionic-equilibrium",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "ionic-equilibrium",
+                "conceptSlug": "trap-ionic-equilibrium",
+                "microskillSlug": "avoid-ionic-equilibrium",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-equilibrium-strong-weak-electrolytes",
+          "title": "Strong/weak electrolytes",
+          "conceptTags": [
+            "equilibrium",
+            "strong-weak-electrolytes"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Strong/weak electrolytes"
+          ],
+          "mustKnowFacts": [
+            "Strong/weak electrolytes is a fundamental subtopic of Equilibrium.",
+            "Crucial to understand the principles governing Strong/weak electrolytes for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for strong/weak electrolytes",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving strong/weak electrolytes",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Strong/weak electrolytes during complex MCQs.",
+            "Failing to apply the correct logic for Strong/weak electrolytes."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Strong/weak electrolytes."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Strong/weak electrolytes."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "equilibrium-q-strong-weak-electrolytes-1",
+              "question": "Explain the core concept behind Strong/weak electrolytes.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "strong-weak-electrolytes"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "strong-weak-electrolytes",
+                "conceptSlug": "core-strong-weak-electrolytes",
+                "microskillSlug": "understand-strong-weak-electrolytes",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            },
+            {
+              "id": "equilibrium-q-strong-weak-electrolytes-2",
+              "question": "What is a common trap associated with Strong/weak electrolytes?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "strong-weak-electrolytes",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "strong-weak-electrolytes",
+                "conceptSlug": "trap-strong-weak-electrolytes",
+                "microskillSlug": "avoid-strong-weak-electrolytes",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-equilibrium-3",
+      "title": "Equilibrium - Section 3",
+      "description": "Comprehensive analysis covering Arrhenius/Bronsted/Lewis acid-base, Ka/Kb, multistage ionisation and more.",
+      "conceptTags": [
+        "equilibrium",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-equilibrium-arrhenius-bronsted-lewis-acid-base",
+          "title": "Arrhenius/Bronsted/Lewis acid-base",
+          "conceptTags": [
+            "equilibrium",
+            "arrhenius-bronsted-lewis-acid-base"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Arrhenius/Bronsted/Lewis acid-base"
+          ],
+          "mustKnowFacts": [
+            "Arrhenius/Bronsted/Lewis acid-base is a fundamental subtopic of Equilibrium.",
+            "Crucial to understand the principles governing Arrhenius/Bronsted/Lewis acid-base for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Arrhenius/Bronsted/Lewis acid-base",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Arrhenius/Bronsted/Lewis acid-base",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Arrhenius/Bronsted/Lewis acid-base during complex MCQs.",
+            "Failing to apply the correct logic for Arrhenius/Bronsted/Lewis acid-base."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Arrhenius/Bronsted/Lewis acid-base."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Arrhenius/Bronsted/Lewis acid-base."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "equilibrium-q-arrhenius-bronsted-lewis-acid-base-1",
+              "question": "Explain the core concept behind Arrhenius/Bronsted/Lewis acid-base.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "arrhenius-bronsted-lewis-acid-base"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "arrhenius-bronsted-lewis-acid-base",
+                "conceptSlug": "core-arrhenius-bronsted-lewis-acid-base",
+                "microskillSlug": "understand-arrhenius-bronsted-lewis-acid-base",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            },
+            {
+              "id": "equilibrium-q-arrhenius-bronsted-lewis-acid-base-2",
+              "question": "What is a common trap associated with Arrhenius/Bronsted/Lewis acid-base?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "arrhenius-bronsted-lewis-acid-base",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "arrhenius-bronsted-lewis-acid-base",
+                "conceptSlug": "trap-arrhenius-bronsted-lewis-acid-base",
+                "microskillSlug": "avoid-arrhenius-bronsted-lewis-acid-base",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-equilibrium-ka-kb",
+          "title": "Ka/Kb",
+          "conceptTags": [
+            "equilibrium",
+            "ka-kb"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Ka/Kb"
+          ],
+          "mustKnowFacts": [
+            "Ka/Kb is a fundamental subtopic of Equilibrium.",
+            "Crucial to understand the principles governing Ka/Kb for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Ka/Kb",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Ka/Kb",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Ka/Kb during complex MCQs.",
+            "Failing to apply the correct logic for Ka/Kb."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Ka/Kb."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Ka/Kb."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "equilibrium-q-ka-kb-1",
+              "question": "Explain the core concept behind Ka/Kb.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "ka-kb"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "ka-kb",
+                "conceptSlug": "core-ka-kb",
+                "microskillSlug": "understand-ka-kb",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            },
+            {
+              "id": "equilibrium-q-ka-kb-2",
+              "question": "What is a common trap associated with Ka/Kb?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "ka-kb",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "ka-kb",
+                "conceptSlug": "trap-ka-kb",
+                "microskillSlug": "avoid-ka-kb",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-equilibrium-multistage-ionisation",
+          "title": "Multistage ionisation",
+          "conceptTags": [
+            "equilibrium",
+            "multistage-ionisation"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Multistage ionisation"
+          ],
+          "mustKnowFacts": [
+            "Multistage ionisation is a fundamental subtopic of Equilibrium.",
+            "Crucial to understand the principles governing Multistage ionisation for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for multistage ionisation",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving multistage ionisation",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Multistage ionisation during complex MCQs.",
+            "Failing to apply the correct logic for Multistage ionisation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Multistage ionisation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Multistage ionisation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "equilibrium-q-multistage-ionisation-1",
+              "question": "Explain the core concept behind Multistage ionisation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "multistage-ionisation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "multistage-ionisation",
+                "conceptSlug": "core-multistage-ionisation",
+                "microskillSlug": "understand-multistage-ionisation",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            },
+            {
+              "id": "equilibrium-q-multistage-ionisation-2",
+              "question": "What is a common trap associated with Multistage ionisation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "multistage-ionisation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "multistage-ionisation",
+                "conceptSlug": "trap-multistage-ionisation",
+                "microskillSlug": "avoid-multistage-ionisation",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-equilibrium-ionic-product-of-water",
+          "title": "Ionic product of water",
+          "conceptTags": [
+            "equilibrium",
+            "ionic-product-of-water"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Ionic product of water"
+          ],
+          "mustKnowFacts": [
+            "Ionic product of water is a fundamental subtopic of Equilibrium.",
+            "Crucial to understand the principles governing Ionic product of water for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for ionic product of water",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving ionic product of water",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Ionic product of water during complex MCQs.",
+            "Failing to apply the correct logic for Ionic product of water."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Ionic product of water."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Ionic product of water."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "equilibrium-q-ionic-product-of-water-1",
+              "question": "Explain the core concept behind Ionic product of water.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "ionic-product-of-water"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "ionic-product-of-water",
+                "conceptSlug": "core-ionic-product-of-water",
+                "microskillSlug": "understand-ionic-product-of-water",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            },
+            {
+              "id": "equilibrium-q-ionic-product-of-water-2",
+              "question": "What is a common trap associated with Ionic product of water?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "ionic-product-of-water",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "ionic-product-of-water",
+                "conceptSlug": "trap-ionic-product-of-water",
+                "microskillSlug": "avoid-ionic-product-of-water",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-equilibrium-ph",
+          "title": "PH",
+          "conceptTags": [
+            "equilibrium",
+            "ph"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, PH"
+          ],
+          "mustKnowFacts": [
+            "PH is a fundamental subtopic of Equilibrium.",
+            "Crucial to understand the principles governing PH for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for pH",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving pH",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret PH during complex MCQs.",
+            "Failing to apply the correct logic for PH."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to PH."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about PH."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "equilibrium-q-ph-1",
+              "question": "Explain the core concept behind PH.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "ph"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "ph",
+                "conceptSlug": "core-ph",
+                "microskillSlug": "understand-ph",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            },
+            {
+              "id": "equilibrium-q-ph-2",
+              "question": "What is a common trap associated with PH?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "ph",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "ph",
+                "conceptSlug": "trap-ph",
+                "microskillSlug": "avoid-ph",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-equilibrium-hydrolysis-of-salts",
+          "title": "Hydrolysis of salts",
+          "conceptTags": [
+            "equilibrium",
+            "hydrolysis-of-salts"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Hydrolysis of salts"
+          ],
+          "mustKnowFacts": [
+            "Hydrolysis of salts is a fundamental subtopic of Equilibrium.",
+            "Crucial to understand the principles governing Hydrolysis of salts for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for hydrolysis of salts",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving hydrolysis of salts",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Hydrolysis of salts during complex MCQs.",
+            "Failing to apply the correct logic for Hydrolysis of salts."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Hydrolysis of salts."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Hydrolysis of salts."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "equilibrium-q-hydrolysis-of-salts-1",
+              "question": "Explain the core concept behind Hydrolysis of salts.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "hydrolysis-of-salts"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "hydrolysis-of-salts",
+                "conceptSlug": "core-hydrolysis-of-salts",
+                "microskillSlug": "understand-hydrolysis-of-salts",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            },
+            {
+              "id": "equilibrium-q-hydrolysis-of-salts-2",
+              "question": "What is a common trap associated with Hydrolysis of salts?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "hydrolysis-of-salts",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "hydrolysis-of-salts",
+                "conceptSlug": "trap-hydrolysis-of-salts",
+                "microskillSlug": "avoid-hydrolysis-of-salts",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-equilibrium-4",
+      "title": "Equilibrium - Section 4",
+      "description": "Comprehensive analysis covering buffer, common ion effect, Ksp and more.",
+      "conceptTags": [
+        "equilibrium",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-equilibrium-buffer",
+          "title": "Buffer",
+          "conceptTags": [
+            "equilibrium",
+            "buffer"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Buffer"
+          ],
+          "mustKnowFacts": [
+            "Buffer is a fundamental subtopic of Equilibrium.",
+            "Crucial to understand the principles governing Buffer for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for buffer",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving buffer",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Buffer during complex MCQs.",
+            "Failing to apply the correct logic for Buffer."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Buffer."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Buffer."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "equilibrium-q-buffer-1",
+              "question": "Explain the core concept behind Buffer.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "buffer"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "buffer",
+                "conceptSlug": "core-buffer",
+                "microskillSlug": "understand-buffer",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            },
+            {
+              "id": "equilibrium-q-buffer-2",
+              "question": "What is a common trap associated with Buffer?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "buffer",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "buffer",
+                "conceptSlug": "trap-buffer",
+                "microskillSlug": "avoid-buffer",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-equilibrium-common-ion-effect",
+          "title": "Common ion effect",
+          "conceptTags": [
+            "equilibrium",
+            "common-ion-effect"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Common ion effect"
+          ],
+          "mustKnowFacts": [
+            "Common ion effect is a fundamental subtopic of Equilibrium.",
+            "Crucial to understand the principles governing Common ion effect for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for common ion effect",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving common ion effect",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Common ion effect during complex MCQs.",
+            "Failing to apply the correct logic for Common ion effect."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Common ion effect."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Common ion effect."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "equilibrium-q-common-ion-effect-1",
+              "question": "Explain the core concept behind Common ion effect.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "common-ion-effect"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "common-ion-effect",
+                "conceptSlug": "core-common-ion-effect",
+                "microskillSlug": "understand-common-ion-effect",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            },
+            {
+              "id": "equilibrium-q-common-ion-effect-2",
+              "question": "What is a common trap associated with Common ion effect?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "common-ion-effect",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "common-ion-effect",
+                "conceptSlug": "trap-common-ion-effect",
+                "microskillSlug": "avoid-common-ion-effect",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-equilibrium-ksp",
+          "title": "Ksp",
+          "conceptTags": [
+            "equilibrium",
+            "ksp"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Ksp"
+          ],
+          "mustKnowFacts": [
+            "Ksp is a fundamental subtopic of Equilibrium.",
+            "Crucial to understand the principles governing Ksp for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Ksp",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Ksp",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Ksp during complex MCQs.",
+            "Failing to apply the correct logic for Ksp."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Ksp."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Ksp."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "equilibrium-q-ksp-1",
+              "question": "Explain the core concept behind Ksp.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "ksp"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "ksp",
+                "conceptSlug": "core-ksp",
+                "microskillSlug": "understand-ksp",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            },
+            {
+              "id": "equilibrium-q-ksp-2",
+              "question": "What is a common trap associated with Ksp?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "ksp",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "ksp",
+                "conceptSlug": "trap-ksp",
+                "microskillSlug": "avoid-ksp",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-equilibrium-precipitation",
+          "title": "Precipitation",
+          "conceptTags": [
+            "equilibrium",
+            "precipitation"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Precipitation"
+          ],
+          "mustKnowFacts": [
+            "Precipitation is a fundamental subtopic of Equilibrium.",
+            "Crucial to understand the principles governing Precipitation for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for precipitation",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving precipitation",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Precipitation during complex MCQs.",
+            "Failing to apply the correct logic for Precipitation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Precipitation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Precipitation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "equilibrium-q-precipitation-1",
+              "question": "Explain the core concept behind Precipitation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "precipitation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "precipitation",
+                "conceptSlug": "core-precipitation",
+                "microskillSlug": "understand-precipitation",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            },
+            {
+              "id": "equilibrium-q-precipitation-2",
+              "question": "What is a common trap associated with Precipitation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "precipitation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "equilibrium",
+                "subtopicSlug": "precipitation",
+                "conceptSlug": "trap-precipitation",
+                "microskillSlug": "avoid-precipitation",
+                "subject": "Chemistry",
+                "unitSlug": "equilibrium",
+                "chapterSlug": "equilibrium"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

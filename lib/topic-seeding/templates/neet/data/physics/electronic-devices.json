@@ -1,0 +1,1421 @@
+{
+  "missions": [
+    {
+      "id": "m-electronic-devices-1",
+      "title": "Electronic Devices - Section 1",
+      "description": "Comprehensive analysis covering intrinsic semiconductor, extrinsic semiconductor, n-type and more.",
+      "conceptTags": [
+        "electronic-devices",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-electronic-devices-intrinsic-semiconductor",
+          "title": "Intrinsic semiconductor",
+          "conceptTags": [
+            "electronic-devices",
+            "intrinsic-semiconductor"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Intrinsic semiconductor"
+          ],
+          "mustKnowFacts": [
+            "Intrinsic semiconductor is a fundamental subtopic of Electronic Devices.",
+            "Crucial to understand the principles governing Intrinsic semiconductor for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for intrinsic semiconductor",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Intrinsic semiconductor during complex MCQs.",
+            "Failing to apply the correct logic for Intrinsic semiconductor."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Intrinsic semiconductor."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Intrinsic semiconductor."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electronic-devices-q-intrinsic-semiconductor-1",
+              "question": "Explain the core concept behind Intrinsic semiconductor.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "intrinsic-semiconductor"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "intrinsic-semiconductor",
+                "conceptSlug": "core-intrinsic-semiconductor",
+                "microskillSlug": "understand-intrinsic-semiconductor",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            },
+            {
+              "id": "electronic-devices-q-intrinsic-semiconductor-2",
+              "question": "What is a common trap associated with Intrinsic semiconductor?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "intrinsic-semiconductor",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "intrinsic-semiconductor",
+                "conceptSlug": "trap-intrinsic-semiconductor",
+                "microskillSlug": "avoid-intrinsic-semiconductor",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electronic-devices-extrinsic-semiconductor",
+          "title": "Extrinsic semiconductor",
+          "conceptTags": [
+            "electronic-devices",
+            "extrinsic-semiconductor"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Extrinsic semiconductor"
+          ],
+          "mustKnowFacts": [
+            "Extrinsic semiconductor is a fundamental subtopic of Electronic Devices.",
+            "Crucial to understand the principles governing Extrinsic semiconductor for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for extrinsic semiconductor",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Extrinsic semiconductor during complex MCQs.",
+            "Failing to apply the correct logic for Extrinsic semiconductor."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Extrinsic semiconductor."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Extrinsic semiconductor."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electronic-devices-q-extrinsic-semiconductor-1",
+              "question": "Explain the core concept behind Extrinsic semiconductor.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "extrinsic-semiconductor"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "extrinsic-semiconductor",
+                "conceptSlug": "core-extrinsic-semiconductor",
+                "microskillSlug": "understand-extrinsic-semiconductor",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            },
+            {
+              "id": "electronic-devices-q-extrinsic-semiconductor-2",
+              "question": "What is a common trap associated with Extrinsic semiconductor?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "extrinsic-semiconductor",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "extrinsic-semiconductor",
+                "conceptSlug": "trap-extrinsic-semiconductor",
+                "microskillSlug": "avoid-extrinsic-semiconductor",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electronic-devices-n-type",
+          "title": "N-type",
+          "conceptTags": [
+            "electronic-devices",
+            "n-type"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, N-type"
+          ],
+          "mustKnowFacts": [
+            "N-type is a fundamental subtopic of Electronic Devices.",
+            "Crucial to understand the principles governing N-type for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for n-type",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret N-type during complex MCQs.",
+            "Failing to apply the correct logic for N-type."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to N-type."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about N-type."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electronic-devices-q-n-type-1",
+              "question": "Explain the core concept behind N-type.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "n-type"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "n-type",
+                "conceptSlug": "core-n-type",
+                "microskillSlug": "understand-n-type",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            },
+            {
+              "id": "electronic-devices-q-n-type-2",
+              "question": "What is a common trap associated with N-type?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "n-type",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "n-type",
+                "conceptSlug": "trap-n-type",
+                "microskillSlug": "avoid-n-type",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electronic-devices-p-type",
+          "title": "P-type",
+          "conceptTags": [
+            "electronic-devices",
+            "p-type"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, P-type"
+          ],
+          "mustKnowFacts": [
+            "P-type is a fundamental subtopic of Electronic Devices.",
+            "Crucial to understand the principles governing P-type for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for p-type",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret P-type during complex MCQs.",
+            "Failing to apply the correct logic for P-type."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to P-type."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about P-type."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electronic-devices-q-p-type-1",
+              "question": "Explain the core concept behind P-type.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "p-type"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "p-type",
+                "conceptSlug": "core-p-type",
+                "microskillSlug": "understand-p-type",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            },
+            {
+              "id": "electronic-devices-q-p-type-2",
+              "question": "What is a common trap associated with P-type?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "p-type",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "p-type",
+                "conceptSlug": "trap-p-type",
+                "microskillSlug": "avoid-p-type",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-electronic-devices-2",
+      "title": "Electronic Devices - Section 2",
+      "description": "Comprehensive analysis covering p-n junction, depletion region, forward/reverse bias and more.",
+      "conceptTags": [
+        "electronic-devices",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-electronic-devices-p-n-junction",
+          "title": "P-n junction",
+          "conceptTags": [
+            "electronic-devices",
+            "p-n-junction"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, P-n junction"
+          ],
+          "mustKnowFacts": [
+            "P-n junction is a fundamental subtopic of Electronic Devices.",
+            "Crucial to understand the principles governing P-n junction for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for p-n junction",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret P-n junction during complex MCQs.",
+            "Failing to apply the correct logic for P-n junction."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to P-n junction."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about P-n junction."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electronic-devices-q-p-n-junction-1",
+              "question": "Explain the core concept behind P-n junction.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "p-n-junction"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "p-n-junction",
+                "conceptSlug": "core-p-n-junction",
+                "microskillSlug": "understand-p-n-junction",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            },
+            {
+              "id": "electronic-devices-q-p-n-junction-2",
+              "question": "What is a common trap associated with P-n junction?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "p-n-junction",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "p-n-junction",
+                "conceptSlug": "trap-p-n-junction",
+                "microskillSlug": "avoid-p-n-junction",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electronic-devices-depletion-region",
+          "title": "Depletion region",
+          "conceptTags": [
+            "electronic-devices",
+            "depletion-region"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Depletion region"
+          ],
+          "mustKnowFacts": [
+            "Depletion region is a fundamental subtopic of Electronic Devices.",
+            "Crucial to understand the principles governing Depletion region for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for depletion region",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Depletion region during complex MCQs.",
+            "Failing to apply the correct logic for Depletion region."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Depletion region."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Depletion region."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electronic-devices-q-depletion-region-1",
+              "question": "Explain the core concept behind Depletion region.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "depletion-region"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "depletion-region",
+                "conceptSlug": "core-depletion-region",
+                "microskillSlug": "understand-depletion-region",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            },
+            {
+              "id": "electronic-devices-q-depletion-region-2",
+              "question": "What is a common trap associated with Depletion region?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "depletion-region",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "depletion-region",
+                "conceptSlug": "trap-depletion-region",
+                "microskillSlug": "avoid-depletion-region",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electronic-devices-forward-reverse-bias",
+          "title": "Forward/reverse bias",
+          "conceptTags": [
+            "electronic-devices",
+            "forward-reverse-bias"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Forward/reverse bias"
+          ],
+          "mustKnowFacts": [
+            "Forward/reverse bias is a fundamental subtopic of Electronic Devices.",
+            "Crucial to understand the principles governing Forward/reverse bias for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for forward/reverse bias",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Forward/reverse bias during complex MCQs.",
+            "Failing to apply the correct logic for Forward/reverse bias."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Forward/reverse bias."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Forward/reverse bias."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electronic-devices-q-forward-reverse-bias-1",
+              "question": "Explain the core concept behind Forward/reverse bias.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "forward-reverse-bias"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "forward-reverse-bias",
+                "conceptSlug": "core-forward-reverse-bias",
+                "microskillSlug": "understand-forward-reverse-bias",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            },
+            {
+              "id": "electronic-devices-q-forward-reverse-bias-2",
+              "question": "What is a common trap associated with Forward/reverse bias?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "forward-reverse-bias",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "forward-reverse-bias",
+                "conceptSlug": "trap-forward-reverse-bias",
+                "microskillSlug": "avoid-forward-reverse-bias",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electronic-devices-diode-characteristics",
+          "title": "Diode characteristics",
+          "conceptTags": [
+            "electronic-devices",
+            "diode-characteristics"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Diode characteristics"
+          ],
+          "mustKnowFacts": [
+            "Diode characteristics is a fundamental subtopic of Electronic Devices.",
+            "Crucial to understand the principles governing Diode characteristics for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for diode characteristics",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Diode characteristics during complex MCQs.",
+            "Failing to apply the correct logic for Diode characteristics."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Diode characteristics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Diode characteristics."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electronic-devices-q-diode-characteristics-1",
+              "question": "Explain the core concept behind Diode characteristics.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "diode-characteristics"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "diode-characteristics",
+                "conceptSlug": "core-diode-characteristics",
+                "microskillSlug": "understand-diode-characteristics",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            },
+            {
+              "id": "electronic-devices-q-diode-characteristics-2",
+              "question": "What is a common trap associated with Diode characteristics?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "diode-characteristics",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "diode-characteristics",
+                "conceptSlug": "trap-diode-characteristics",
+                "microskillSlug": "avoid-diode-characteristics",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-electronic-devices-3",
+      "title": "Electronic Devices - Section 3",
+      "description": "Comprehensive analysis covering rectifier, Zener diode, LED/photodiode/solar cell and more.",
+      "conceptTags": [
+        "electronic-devices",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-electronic-devices-rectifier",
+          "title": "Rectifier",
+          "conceptTags": [
+            "electronic-devices",
+            "rectifier"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Rectifier"
+          ],
+          "mustKnowFacts": [
+            "Rectifier is a fundamental subtopic of Electronic Devices.",
+            "Crucial to understand the principles governing Rectifier for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for rectifier",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Rectifier during complex MCQs.",
+            "Failing to apply the correct logic for Rectifier."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Rectifier."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Rectifier."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electronic-devices-q-rectifier-1",
+              "question": "Explain the core concept behind Rectifier.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "rectifier"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "rectifier",
+                "conceptSlug": "core-rectifier",
+                "microskillSlug": "understand-rectifier",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            },
+            {
+              "id": "electronic-devices-q-rectifier-2",
+              "question": "What is a common trap associated with Rectifier?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "rectifier",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "rectifier",
+                "conceptSlug": "trap-rectifier",
+                "microskillSlug": "avoid-rectifier",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electronic-devices-zener-diode",
+          "title": "Zener diode",
+          "conceptTags": [
+            "electronic-devices",
+            "zener-diode"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Zener diode"
+          ],
+          "mustKnowFacts": [
+            "Zener diode is a fundamental subtopic of Electronic Devices.",
+            "Crucial to understand the principles governing Zener diode for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for Zener diode",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Zener diode during complex MCQs.",
+            "Failing to apply the correct logic for Zener diode."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Zener diode."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Zener diode."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electronic-devices-q-zener-diode-1",
+              "question": "Explain the core concept behind Zener diode.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "zener-diode"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "zener-diode",
+                "conceptSlug": "core-zener-diode",
+                "microskillSlug": "understand-zener-diode",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            },
+            {
+              "id": "electronic-devices-q-zener-diode-2",
+              "question": "What is a common trap associated with Zener diode?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "zener-diode",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "zener-diode",
+                "conceptSlug": "trap-zener-diode",
+                "microskillSlug": "avoid-zener-diode",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electronic-devices-led-photodiode-solar-cell",
+          "title": "LED/photodiode/solar cell",
+          "conceptTags": [
+            "electronic-devices",
+            "led-photodiode-solar-cell"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, LED/photodiode/solar cell"
+          ],
+          "mustKnowFacts": [
+            "LED/photodiode/solar cell is a fundamental subtopic of Electronic Devices.",
+            "Crucial to understand the principles governing LED/photodiode/solar cell for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for LED/photodiode/solar cell",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret LED/photodiode/solar cell during complex MCQs.",
+            "Failing to apply the correct logic for LED/photodiode/solar cell."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to LED/photodiode/solar cell."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about LED/photodiode/solar cell."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electronic-devices-q-led-photodiode-solar-cell-1",
+              "question": "Explain the core concept behind LED/photodiode/solar cell.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "led-photodiode-solar-cell"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "led-photodiode-solar-cell",
+                "conceptSlug": "core-led-photodiode-solar-cell",
+                "microskillSlug": "understand-led-photodiode-solar-cell",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            },
+            {
+              "id": "electronic-devices-q-led-photodiode-solar-cell-2",
+              "question": "What is a common trap associated with LED/photodiode/solar cell?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "led-photodiode-solar-cell",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "led-photodiode-solar-cell",
+                "conceptSlug": "trap-led-photodiode-solar-cell",
+                "microskillSlug": "avoid-led-photodiode-solar-cell",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electronic-devices-transistor-basics",
+          "title": "Transistor basics",
+          "conceptTags": [
+            "electronic-devices",
+            "transistor-basics"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Transistor basics"
+          ],
+          "mustKnowFacts": [
+            "Transistor basics is a fundamental subtopic of Electronic Devices.",
+            "Crucial to understand the principles governing Transistor basics for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for transistor basics",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Transistor basics during complex MCQs.",
+            "Failing to apply the correct logic for Transistor basics."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Transistor basics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Transistor basics."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electronic-devices-q-transistor-basics-1",
+              "question": "Explain the core concept behind Transistor basics.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "transistor-basics"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "transistor-basics",
+                "conceptSlug": "core-transistor-basics",
+                "microskillSlug": "understand-transistor-basics",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            },
+            {
+              "id": "electronic-devices-q-transistor-basics-2",
+              "question": "What is a common trap associated with Transistor basics?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "transistor-basics",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "transistor-basics",
+                "conceptSlug": "trap-transistor-basics",
+                "microskillSlug": "avoid-transistor-basics",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-electronic-devices-4",
+      "title": "Electronic Devices - Section 4",
+      "description": "Comprehensive analysis covering logic gates, energy bands in solids, conductors/insulators/semiconductors comparison and more.",
+      "conceptTags": [
+        "electronic-devices",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-electronic-devices-logic-gates",
+          "title": "Logic gates",
+          "conceptTags": [
+            "electronic-devices",
+            "logic-gates"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Logic gates"
+          ],
+          "mustKnowFacts": [
+            "Logic gates is a fundamental subtopic of Electronic Devices.",
+            "Crucial to understand the principles governing Logic gates for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for logic gates",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Logic gates during complex MCQs.",
+            "Failing to apply the correct logic for Logic gates."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Logic gates."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Logic gates."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electronic-devices-q-logic-gates-1",
+              "question": "Explain the core concept behind Logic gates.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "logic-gates"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "logic-gates",
+                "conceptSlug": "core-logic-gates",
+                "microskillSlug": "understand-logic-gates",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            },
+            {
+              "id": "electronic-devices-q-logic-gates-2",
+              "question": "What is a common trap associated with Logic gates?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "logic-gates",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "logic-gates",
+                "conceptSlug": "trap-logic-gates",
+                "microskillSlug": "avoid-logic-gates",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electronic-devices-energy-bands-in-solids",
+          "title": "Energy bands in solids",
+          "conceptTags": [
+            "electronic-devices",
+            "energy-bands-in-solids"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Energy bands in solids"
+          ],
+          "mustKnowFacts": [
+            "Energy bands in solids is a fundamental subtopic of Electronic Devices.",
+            "Crucial to understand the principles governing Energy bands in solids for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for energy bands in solids",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Energy bands in solids during complex MCQs.",
+            "Failing to apply the correct logic for Energy bands in solids."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Energy bands in solids."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Energy bands in solids."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electronic-devices-q-energy-bands-in-solids-1",
+              "question": "Explain the core concept behind Energy bands in solids.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "energy-bands-in-solids"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "energy-bands-in-solids",
+                "conceptSlug": "core-energy-bands-in-solids",
+                "microskillSlug": "understand-energy-bands-in-solids",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            },
+            {
+              "id": "electronic-devices-q-energy-bands-in-solids-2",
+              "question": "What is a common trap associated with Energy bands in solids?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "energy-bands-in-solids",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "energy-bands-in-solids",
+                "conceptSlug": "trap-energy-bands-in-solids",
+                "microskillSlug": "avoid-energy-bands-in-solids",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electronic-devices-conductors-insulators-semiconductors-comparison",
+          "title": "Conductors/insulators/semiconductors comparison",
+          "conceptTags": [
+            "electronic-devices",
+            "conductors-insulators-semiconductors-comparison"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Conductors/insulators/semiconductors comparison"
+          ],
+          "mustKnowFacts": [
+            "Conductors/insulators/semiconductors comparison is a fundamental subtopic of Electronic Devices.",
+            "Crucial to understand the principles governing Conductors/insulators/semiconductors comparison for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for conductors/insulators/semiconductors comparison",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Conductors/insulators/semiconductors comparison during complex MCQs.",
+            "Failing to apply the correct logic for Conductors/insulators/semiconductors comparison."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Conductors/insulators/semiconductors comparison."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Conductors/insulators/semiconductors comparison."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electronic-devices-q-conductors-insulators-semiconductors-comparison-1",
+              "question": "Explain the core concept behind Conductors/insulators/semiconductors comparison.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "conductors-insulators-semiconductors-comparison"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "conductors-insulators-semiconductors-comparison",
+                "conceptSlug": "core-conductors-insulators-semiconductors-comparison",
+                "microskillSlug": "understand-conductors-insulators-semiconductors-comparison",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            },
+            {
+              "id": "electronic-devices-q-conductors-insulators-semiconductors-comparison-2",
+              "question": "What is a common trap associated with Conductors/insulators/semiconductors comparison?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "conductors-insulators-semiconductors-comparison",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "conductors-insulators-semiconductors-comparison",
+                "conceptSlug": "trap-conductors-insulators-semiconductors-comparison",
+                "microskillSlug": "avoid-conductors-insulators-semiconductors-comparison",
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

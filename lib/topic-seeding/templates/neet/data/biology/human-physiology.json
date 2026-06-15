@@ -1,0 +1,5320 @@
+{
+  "missions": [
+    {
+      "id": "m-human-physiology-1",
+      "title": "Human Physiology - Section 1",
+      "description": "Comprehensive analysis covering respiratory organs, human respiratory system, breathing mechanism and more.",
+      "conceptTags": [
+        "human-physiology",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-human-physiology-respiratory-organs",
+          "title": "Respiratory organs",
+          "conceptTags": [
+            "human-physiology",
+            "respiratory-organs"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Respiratory organs"
+          ],
+          "mustKnowFacts": [
+            "Respiratory organs is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Respiratory organs for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing respiratory organs",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of respiratory organs",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in respiratory organs"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Respiratory organs during complex MCQs.",
+            "Failing to apply the correct logic for Respiratory organs."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Respiratory organs."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Respiratory organs."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-respiratory-organs-1",
+              "question": "Explain the core concept behind Respiratory organs.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "respiratory-organs"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "respiratory-organs",
+                "conceptSlug": "core-respiratory-organs",
+                "microskillSlug": "understand-respiratory-organs",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-respiratory-organs-2",
+              "question": "What is a common trap associated with Respiratory organs?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "respiratory-organs",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "respiratory-organs",
+                "conceptSlug": "trap-respiratory-organs",
+                "microskillSlug": "avoid-respiratory-organs",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-human-respiratory-system",
+          "title": "Human respiratory system",
+          "conceptTags": [
+            "human-physiology",
+            "human-respiratory-system"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Human respiratory system"
+          ],
+          "mustKnowFacts": [
+            "Human respiratory system is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Human respiratory system for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing human respiratory system",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of human respiratory system",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in human respiratory system"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Human respiratory system during complex MCQs.",
+            "Failing to apply the correct logic for Human respiratory system."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Human respiratory system."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Human respiratory system."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-human-respiratory-system-1",
+              "question": "Explain the core concept behind Human respiratory system.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "human-respiratory-system"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "human-respiratory-system",
+                "conceptSlug": "core-human-respiratory-system",
+                "microskillSlug": "understand-human-respiratory-system",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-human-respiratory-system-2",
+              "question": "What is a common trap associated with Human respiratory system?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "human-respiratory-system",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "human-respiratory-system",
+                "conceptSlug": "trap-human-respiratory-system",
+                "microskillSlug": "avoid-human-respiratory-system",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-breathing-mechanism",
+          "title": "Breathing mechanism",
+          "conceptTags": [
+            "human-physiology",
+            "breathing-mechanism"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Breathing mechanism"
+          ],
+          "mustKnowFacts": [
+            "Breathing mechanism is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Breathing mechanism for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing breathing mechanism",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of breathing mechanism",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in breathing mechanism"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Breathing mechanism during complex MCQs.",
+            "Failing to apply the correct logic for Breathing mechanism."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Breathing mechanism."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Breathing mechanism."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-breathing-mechanism-1",
+              "question": "Explain the core concept behind Breathing mechanism.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "breathing-mechanism"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "breathing-mechanism",
+                "conceptSlug": "core-breathing-mechanism",
+                "microskillSlug": "understand-breathing-mechanism",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-breathing-mechanism-2",
+              "question": "What is a common trap associated with Breathing mechanism?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "breathing-mechanism",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "breathing-mechanism",
+                "conceptSlug": "trap-breathing-mechanism",
+                "microskillSlug": "avoid-breathing-mechanism",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-exchange-of-gases",
+          "title": "Exchange of gases",
+          "conceptTags": [
+            "human-physiology",
+            "exchange-of-gases"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Exchange of gases"
+          ],
+          "mustKnowFacts": [
+            "Exchange of gases is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Exchange of gases for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing exchange of gases",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of exchange of gases",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in exchange of gases"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Exchange of gases during complex MCQs.",
+            "Failing to apply the correct logic for Exchange of gases."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Exchange of gases."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Exchange of gases."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-exchange-of-gases-1",
+              "question": "Explain the core concept behind Exchange of gases.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "exchange-of-gases"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "exchange-of-gases",
+                "conceptSlug": "core-exchange-of-gases",
+                "microskillSlug": "understand-exchange-of-gases",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-exchange-of-gases-2",
+              "question": "What is a common trap associated with Exchange of gases?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "exchange-of-gases",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "exchange-of-gases",
+                "conceptSlug": "trap-exchange-of-gases",
+                "microskillSlug": "avoid-exchange-of-gases",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-transport-of-gases",
+          "title": "Transport of gases",
+          "conceptTags": [
+            "human-physiology",
+            "transport-of-gases"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Transport of gases"
+          ],
+          "mustKnowFacts": [
+            "Transport of gases is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Transport of gases for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing transport of gases",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of transport of gases",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in transport of gases"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Transport of gases during complex MCQs.",
+            "Failing to apply the correct logic for Transport of gases."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Transport of gases."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Transport of gases."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-transport-of-gases-1",
+              "question": "Explain the core concept behind Transport of gases.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "transport-of-gases"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "transport-of-gases",
+                "conceptSlug": "core-transport-of-gases",
+                "microskillSlug": "understand-transport-of-gases",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-transport-of-gases-2",
+              "question": "What is a common trap associated with Transport of gases?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "transport-of-gases",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "transport-of-gases",
+                "conceptSlug": "trap-transport-of-gases",
+                "microskillSlug": "avoid-transport-of-gases",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-oxygen-dissociation-curve",
+          "title": "Oxygen dissociation curve",
+          "conceptTags": [
+            "human-physiology",
+            "oxygen-dissociation-curve"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Oxygen dissociation curve"
+          ],
+          "mustKnowFacts": [
+            "Oxygen dissociation curve is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Oxygen dissociation curve for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing oxygen dissociation curve",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of oxygen dissociation curve",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in oxygen dissociation curve"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Oxygen dissociation curve during complex MCQs.",
+            "Failing to apply the correct logic for Oxygen dissociation curve."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Oxygen dissociation curve."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Oxygen dissociation curve."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-oxygen-dissociation-curve-1",
+              "question": "Explain the core concept behind Oxygen dissociation curve.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "oxygen-dissociation-curve"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "oxygen-dissociation-curve",
+                "conceptSlug": "core-oxygen-dissociation-curve",
+                "microskillSlug": "understand-oxygen-dissociation-curve",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-oxygen-dissociation-curve-2",
+              "question": "What is a common trap associated with Oxygen dissociation curve?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "oxygen-dissociation-curve",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "oxygen-dissociation-curve",
+                "conceptSlug": "trap-oxygen-dissociation-curve",
+                "microskillSlug": "avoid-oxygen-dissociation-curve",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-regulation-of-respiration",
+          "title": "Regulation of respiration",
+          "conceptTags": [
+            "human-physiology",
+            "regulation-of-respiration"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Regulation of respiration"
+          ],
+          "mustKnowFacts": [
+            "Regulation of respiration is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Regulation of respiration for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing regulation of respiration",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of regulation of respiration",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in regulation of respiration"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Regulation of respiration during complex MCQs.",
+            "Failing to apply the correct logic for Regulation of respiration."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Regulation of respiration."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Regulation of respiration."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-regulation-of-respiration-1",
+              "question": "Explain the core concept behind Regulation of respiration.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "regulation-of-respiration"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "regulation-of-respiration",
+                "conceptSlug": "core-regulation-of-respiration",
+                "microskillSlug": "understand-regulation-of-respiration",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-regulation-of-respiration-2",
+              "question": "What is a common trap associated with Regulation of respiration?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "regulation-of-respiration",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "regulation-of-respiration",
+                "conceptSlug": "trap-regulation-of-respiration",
+                "microskillSlug": "avoid-regulation-of-respiration",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-respiratory-volumes",
+          "title": "Respiratory volumes",
+          "conceptTags": [
+            "human-physiology",
+            "respiratory-volumes"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Respiratory volumes"
+          ],
+          "mustKnowFacts": [
+            "Respiratory volumes is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Respiratory volumes for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing respiratory volumes",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of respiratory volumes",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in respiratory volumes"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Respiratory volumes during complex MCQs.",
+            "Failing to apply the correct logic for Respiratory volumes."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Respiratory volumes."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Respiratory volumes."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-respiratory-volumes-1",
+              "question": "Explain the core concept behind Respiratory volumes.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "respiratory-volumes"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "respiratory-volumes",
+                "conceptSlug": "core-respiratory-volumes",
+                "microskillSlug": "understand-respiratory-volumes",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-respiratory-volumes-2",
+              "question": "What is a common trap associated with Respiratory volumes?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "respiratory-volumes",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "respiratory-volumes",
+                "conceptSlug": "trap-respiratory-volumes",
+                "microskillSlug": "avoid-respiratory-volumes",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-asthma-emphysema-occupational-disorders",
+          "title": "Asthma/emphysema/occupational disorders",
+          "conceptTags": [
+            "human-physiology",
+            "asthma-emphysema-occupational-disorders"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Asthma/emphysema/occupational disorders"
+          ],
+          "mustKnowFacts": [
+            "Asthma/emphysema/occupational disorders is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Asthma/emphysema/occupational disorders for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing asthma/emphysema/occupational disorders",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of asthma/emphysema/occupational disorders",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in asthma/emphysema/occupational disorders"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Asthma/emphysema/occupational disorders during complex MCQs.",
+            "Failing to apply the correct logic for Asthma/emphysema/occupational disorders."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Asthma/emphysema/occupational disorders."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Asthma/emphysema/occupational disorders."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-asthma-emphysema-occupational-disorders-1",
+              "question": "Explain the core concept behind Asthma/emphysema/occupational disorders.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "asthma-emphysema-occupational-disorders"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "asthma-emphysema-occupational-disorders",
+                "conceptSlug": "core-asthma-emphysema-occupational-disorders",
+                "microskillSlug": "understand-asthma-emphysema-occupational-disorders",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-asthma-emphysema-occupational-disorders-2",
+              "question": "What is a common trap associated with Asthma/emphysema/occupational disorders?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "asthma-emphysema-occupational-disorders",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "asthma-emphysema-occupational-disorders",
+                "conceptSlug": "trap-asthma-emphysema-occupational-disorders",
+                "microskillSlug": "avoid-asthma-emphysema-occupational-disorders",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-blood-composition",
+          "title": "Blood composition",
+          "conceptTags": [
+            "human-physiology",
+            "blood-composition"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Blood composition"
+          ],
+          "mustKnowFacts": [
+            "Blood composition is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Blood composition for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing blood composition",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of blood composition",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in blood composition"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Blood composition during complex MCQs.",
+            "Failing to apply the correct logic for Blood composition."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Blood composition."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Blood composition."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-blood-composition-1",
+              "question": "Explain the core concept behind Blood composition.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "blood-composition"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "blood-composition",
+                "conceptSlug": "core-blood-composition",
+                "microskillSlug": "understand-blood-composition",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-blood-composition-2",
+              "question": "What is a common trap associated with Blood composition?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "blood-composition",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "blood-composition",
+                "conceptSlug": "trap-blood-composition",
+                "microskillSlug": "avoid-blood-composition",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-blood-groups",
+          "title": "Blood groups",
+          "conceptTags": [
+            "human-physiology",
+            "blood-groups"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Blood groups"
+          ],
+          "mustKnowFacts": [
+            "Blood groups is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Blood groups for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing blood groups",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of blood groups",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in blood groups"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Blood groups during complex MCQs.",
+            "Failing to apply the correct logic for Blood groups."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Blood groups."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Blood groups."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-blood-groups-1",
+              "question": "Explain the core concept behind Blood groups.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "blood-groups"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "blood-groups",
+                "conceptSlug": "core-blood-groups",
+                "microskillSlug": "understand-blood-groups",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-blood-groups-2",
+              "question": "What is a common trap associated with Blood groups?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "blood-groups",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "blood-groups",
+                "conceptSlug": "trap-blood-groups",
+                "microskillSlug": "avoid-blood-groups",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-clotting",
+          "title": "Clotting",
+          "conceptTags": [
+            "human-physiology",
+            "clotting"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Clotting"
+          ],
+          "mustKnowFacts": [
+            "Clotting is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Clotting for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing clotting",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of clotting",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in clotting"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Clotting during complex MCQs.",
+            "Failing to apply the correct logic for Clotting."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Clotting."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Clotting."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-clotting-1",
+              "question": "Explain the core concept behind Clotting.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "clotting"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "clotting",
+                "conceptSlug": "core-clotting",
+                "microskillSlug": "understand-clotting",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-clotting-2",
+              "question": "What is a common trap associated with Clotting?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "clotting",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "clotting",
+                "conceptSlug": "trap-clotting",
+                "microskillSlug": "avoid-clotting",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-lymph",
+          "title": "Lymph",
+          "conceptTags": [
+            "human-physiology",
+            "lymph"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Lymph"
+          ],
+          "mustKnowFacts": [
+            "Lymph is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Lymph for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing lymph",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of lymph",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in lymph"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Lymph during complex MCQs.",
+            "Failing to apply the correct logic for Lymph."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Lymph."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Lymph."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-lymph-1",
+              "question": "Explain the core concept behind Lymph.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "lymph"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "lymph",
+                "conceptSlug": "core-lymph",
+                "microskillSlug": "understand-lymph",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-lymph-2",
+              "question": "What is a common trap associated with Lymph?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "lymph",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "lymph",
+                "conceptSlug": "trap-lymph",
+                "microskillSlug": "avoid-lymph",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-heart-structure",
+          "title": "Heart structure",
+          "conceptTags": [
+            "human-physiology",
+            "heart-structure"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Heart structure"
+          ],
+          "mustKnowFacts": [
+            "Heart structure is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Heart structure for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing heart structure",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of heart structure",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in heart structure"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Heart structure during complex MCQs.",
+            "Failing to apply the correct logic for Heart structure."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Heart structure."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Heart structure."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-heart-structure-1",
+              "question": "Explain the core concept behind Heart structure.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "heart-structure"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "heart-structure",
+                "conceptSlug": "core-heart-structure",
+                "microskillSlug": "understand-heart-structure",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-heart-structure-2",
+              "question": "What is a common trap associated with Heart structure?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "heart-structure",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "heart-structure",
+                "conceptSlug": "trap-heart-structure",
+                "microskillSlug": "avoid-heart-structure",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-human-physiology-2",
+      "title": "Human Physiology - Section 2",
+      "description": "Comprehensive analysis covering cardiac cycle, cardiac output, ECG and more.",
+      "conceptTags": [
+        "human-physiology",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-human-physiology-cardiac-cycle",
+          "title": "Cardiac cycle",
+          "conceptTags": [
+            "human-physiology",
+            "cardiac-cycle"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Cardiac cycle"
+          ],
+          "mustKnowFacts": [
+            "Cardiac cycle is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Cardiac cycle for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing cardiac cycle",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of cardiac cycle",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in cardiac cycle"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Cardiac cycle during complex MCQs.",
+            "Failing to apply the correct logic for Cardiac cycle."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Cardiac cycle."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Cardiac cycle."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-cardiac-cycle-1",
+              "question": "Explain the core concept behind Cardiac cycle.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "cardiac-cycle"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "cardiac-cycle",
+                "conceptSlug": "core-cardiac-cycle",
+                "microskillSlug": "understand-cardiac-cycle",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-cardiac-cycle-2",
+              "question": "What is a common trap associated with Cardiac cycle?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "cardiac-cycle",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "cardiac-cycle",
+                "conceptSlug": "trap-cardiac-cycle",
+                "microskillSlug": "avoid-cardiac-cycle",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-cardiac-output",
+          "title": "Cardiac output",
+          "conceptTags": [
+            "human-physiology",
+            "cardiac-output"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Cardiac output"
+          ],
+          "mustKnowFacts": [
+            "Cardiac output is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Cardiac output for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing cardiac output",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of cardiac output",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in cardiac output"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Cardiac output during complex MCQs.",
+            "Failing to apply the correct logic for Cardiac output."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Cardiac output."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Cardiac output."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-cardiac-output-1",
+              "question": "Explain the core concept behind Cardiac output.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "cardiac-output"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "cardiac-output",
+                "conceptSlug": "core-cardiac-output",
+                "microskillSlug": "understand-cardiac-output",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-cardiac-output-2",
+              "question": "What is a common trap associated with Cardiac output?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "cardiac-output",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "cardiac-output",
+                "conceptSlug": "trap-cardiac-output",
+                "microskillSlug": "avoid-cardiac-output",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-ecg",
+          "title": "ECG",
+          "conceptTags": [
+            "human-physiology",
+            "ecg"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, ECG"
+          ],
+          "mustKnowFacts": [
+            "ECG is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing ECG for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing ECG",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of ECG",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in ECG"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret ECG during complex MCQs.",
+            "Failing to apply the correct logic for ECG."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to ECG."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about ECG."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-ecg-1",
+              "question": "Explain the core concept behind ECG.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "ecg"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "ecg",
+                "conceptSlug": "core-ecg",
+                "microskillSlug": "understand-ecg",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-ecg-2",
+              "question": "What is a common trap associated with ECG?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "ecg",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "ecg",
+                "conceptSlug": "trap-ecg",
+                "microskillSlug": "avoid-ecg",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-double-circulation",
+          "title": "Double circulation",
+          "conceptTags": [
+            "human-physiology",
+            "double-circulation"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Double circulation"
+          ],
+          "mustKnowFacts": [
+            "Double circulation is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Double circulation for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing double circulation",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of double circulation",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in double circulation"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Double circulation during complex MCQs.",
+            "Failing to apply the correct logic for Double circulation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Double circulation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Double circulation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-double-circulation-1",
+              "question": "Explain the core concept behind Double circulation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "double-circulation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "double-circulation",
+                "conceptSlug": "core-double-circulation",
+                "microskillSlug": "understand-double-circulation",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-double-circulation-2",
+              "question": "What is a common trap associated with Double circulation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "double-circulation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "double-circulation",
+                "conceptSlug": "trap-double-circulation",
+                "microskillSlug": "avoid-double-circulation",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-regulation",
+          "title": "Regulation",
+          "conceptTags": [
+            "human-physiology",
+            "regulation"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Regulation"
+          ],
+          "mustKnowFacts": [
+            "Regulation is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Regulation for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing regulation",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of regulation",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in regulation"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Regulation during complex MCQs.",
+            "Failing to apply the correct logic for Regulation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Regulation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Regulation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-regulation-1",
+              "question": "Explain the core concept behind Regulation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "regulation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "regulation",
+                "conceptSlug": "core-regulation",
+                "microskillSlug": "understand-regulation",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-regulation-2",
+              "question": "What is a common trap associated with Regulation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "regulation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "regulation",
+                "conceptSlug": "trap-regulation",
+                "microskillSlug": "avoid-regulation",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-hypertension",
+          "title": "Hypertension",
+          "conceptTags": [
+            "human-physiology",
+            "hypertension"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Hypertension"
+          ],
+          "mustKnowFacts": [
+            "Hypertension is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Hypertension for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing hypertension",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of hypertension",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in hypertension"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Hypertension during complex MCQs.",
+            "Failing to apply the correct logic for Hypertension."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Hypertension."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Hypertension."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-hypertension-1",
+              "question": "Explain the core concept behind Hypertension.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "hypertension"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "hypertension",
+                "conceptSlug": "core-hypertension",
+                "microskillSlug": "understand-hypertension",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-hypertension-2",
+              "question": "What is a common trap associated with Hypertension?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "hypertension",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "hypertension",
+                "conceptSlug": "trap-hypertension",
+                "microskillSlug": "avoid-hypertension",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-cad",
+          "title": "CAD",
+          "conceptTags": [
+            "human-physiology",
+            "cad"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, CAD"
+          ],
+          "mustKnowFacts": [
+            "CAD is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing CAD for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing CAD",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of CAD",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in CAD"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret CAD during complex MCQs.",
+            "Failing to apply the correct logic for CAD."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to CAD."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about CAD."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-cad-1",
+              "question": "Explain the core concept behind CAD.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "cad"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "cad",
+                "conceptSlug": "core-cad",
+                "microskillSlug": "understand-cad",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-cad-2",
+              "question": "What is a common trap associated with CAD?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "cad",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "cad",
+                "conceptSlug": "trap-cad",
+                "microskillSlug": "avoid-cad",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-angina",
+          "title": "Angina",
+          "conceptTags": [
+            "human-physiology",
+            "angina"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Angina"
+          ],
+          "mustKnowFacts": [
+            "Angina is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Angina for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing angina",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of angina",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in angina"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Angina during complex MCQs.",
+            "Failing to apply the correct logic for Angina."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Angina."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Angina."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-angina-1",
+              "question": "Explain the core concept behind Angina.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "angina"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "angina",
+                "conceptSlug": "core-angina",
+                "microskillSlug": "understand-angina",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-angina-2",
+              "question": "What is a common trap associated with Angina?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "angina",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "angina",
+                "conceptSlug": "trap-angina",
+                "microskillSlug": "avoid-angina",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-heart-failure",
+          "title": "Heart failure",
+          "conceptTags": [
+            "human-physiology",
+            "heart-failure"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Heart failure"
+          ],
+          "mustKnowFacts": [
+            "Heart failure is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Heart failure for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing heart failure",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of heart failure",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in heart failure"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Heart failure during complex MCQs.",
+            "Failing to apply the correct logic for Heart failure."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Heart failure."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Heart failure."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-heart-failure-1",
+              "question": "Explain the core concept behind Heart failure.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "heart-failure"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "heart-failure",
+                "conceptSlug": "core-heart-failure",
+                "microskillSlug": "understand-heart-failure",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-heart-failure-2",
+              "question": "What is a common trap associated with Heart failure?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "heart-failure",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "heart-failure",
+                "conceptSlug": "trap-heart-failure",
+                "microskillSlug": "avoid-heart-failure",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-modes-of-excretion",
+          "title": "Modes of excretion",
+          "conceptTags": [
+            "human-physiology",
+            "modes-of-excretion"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Modes of excretion"
+          ],
+          "mustKnowFacts": [
+            "Modes of excretion is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Modes of excretion for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing modes of excretion",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of modes of excretion",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in modes of excretion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Modes of excretion during complex MCQs.",
+            "Failing to apply the correct logic for Modes of excretion."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Modes of excretion."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Modes of excretion."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-modes-of-excretion-1",
+              "question": "Explain the core concept behind Modes of excretion.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "modes-of-excretion"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "modes-of-excretion",
+                "conceptSlug": "core-modes-of-excretion",
+                "microskillSlug": "understand-modes-of-excretion",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-modes-of-excretion-2",
+              "question": "What is a common trap associated with Modes of excretion?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "modes-of-excretion",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "modes-of-excretion",
+                "conceptSlug": "trap-modes-of-excretion",
+                "microskillSlug": "avoid-modes-of-excretion",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-nephron",
+          "title": "Nephron",
+          "conceptTags": [
+            "human-physiology",
+            "nephron"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Nephron"
+          ],
+          "mustKnowFacts": [
+            "Nephron is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Nephron for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing nephron",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of nephron",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in nephron"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Nephron during complex MCQs.",
+            "Failing to apply the correct logic for Nephron."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Nephron."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Nephron."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-nephron-1",
+              "question": "Explain the core concept behind Nephron.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "nephron"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "nephron",
+                "conceptSlug": "core-nephron",
+                "microskillSlug": "understand-nephron",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-nephron-2",
+              "question": "What is a common trap associated with Nephron?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "nephron",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "nephron",
+                "conceptSlug": "trap-nephron",
+                "microskillSlug": "avoid-nephron",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-urine-formation",
+          "title": "Urine formation",
+          "conceptTags": [
+            "human-physiology",
+            "urine-formation"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Urine formation"
+          ],
+          "mustKnowFacts": [
+            "Urine formation is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Urine formation for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing urine formation",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of urine formation",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in urine formation"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Urine formation during complex MCQs.",
+            "Failing to apply the correct logic for Urine formation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Urine formation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Urine formation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-urine-formation-1",
+              "question": "Explain the core concept behind Urine formation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "urine-formation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "urine-formation",
+                "conceptSlug": "core-urine-formation",
+                "microskillSlug": "understand-urine-formation",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-urine-formation-2",
+              "question": "What is a common trap associated with Urine formation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "urine-formation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "urine-formation",
+                "conceptSlug": "trap-urine-formation",
+                "microskillSlug": "avoid-urine-formation",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-counter-current-mechanism",
+          "title": "Counter-current mechanism",
+          "conceptTags": [
+            "human-physiology",
+            "counter-current-mechanism"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Counter-current mechanism"
+          ],
+          "mustKnowFacts": [
+            "Counter-current mechanism is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Counter-current mechanism for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing counter-current mechanism",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of counter-current mechanism",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in counter-current mechanism"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Counter-current mechanism during complex MCQs.",
+            "Failing to apply the correct logic for Counter-current mechanism."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Counter-current mechanism."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Counter-current mechanism."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-counter-current-mechanism-1",
+              "question": "Explain the core concept behind Counter-current mechanism.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "counter-current-mechanism"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "counter-current-mechanism",
+                "conceptSlug": "core-counter-current-mechanism",
+                "microskillSlug": "understand-counter-current-mechanism",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-counter-current-mechanism-2",
+              "question": "What is a common trap associated with Counter-current mechanism?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "counter-current-mechanism",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "counter-current-mechanism",
+                "conceptSlug": "trap-counter-current-mechanism",
+                "microskillSlug": "avoid-counter-current-mechanism",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-osmoregulation",
+          "title": "Osmoregulation",
+          "conceptTags": [
+            "human-physiology",
+            "osmoregulation"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Osmoregulation"
+          ],
+          "mustKnowFacts": [
+            "Osmoregulation is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Osmoregulation for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing osmoregulation",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of osmoregulation",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in osmoregulation"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Osmoregulation during complex MCQs.",
+            "Failing to apply the correct logic for Osmoregulation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Osmoregulation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Osmoregulation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-osmoregulation-1",
+              "question": "Explain the core concept behind Osmoregulation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "osmoregulation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "osmoregulation",
+                "conceptSlug": "core-osmoregulation",
+                "microskillSlug": "understand-osmoregulation",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-osmoregulation-2",
+              "question": "What is a common trap associated with Osmoregulation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "osmoregulation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "osmoregulation",
+                "conceptSlug": "trap-osmoregulation",
+                "microskillSlug": "avoid-osmoregulation",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-human-physiology-3",
+      "title": "Human Physiology - Section 3",
+      "description": "Comprehensive analysis covering RAAS, ADH, ANF and more.",
+      "conceptTags": [
+        "human-physiology",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-human-physiology-raas",
+          "title": "RAAS",
+          "conceptTags": [
+            "human-physiology",
+            "raas"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, RAAS"
+          ],
+          "mustKnowFacts": [
+            "RAAS is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing RAAS for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing RAAS",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of RAAS",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in RAAS"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret RAAS during complex MCQs.",
+            "Failing to apply the correct logic for RAAS."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to RAAS."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about RAAS."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-raas-1",
+              "question": "Explain the core concept behind RAAS.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "raas"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "raas",
+                "conceptSlug": "core-raas",
+                "microskillSlug": "understand-raas",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-raas-2",
+              "question": "What is a common trap associated with RAAS?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "raas",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "raas",
+                "conceptSlug": "trap-raas",
+                "microskillSlug": "avoid-raas",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-adh",
+          "title": "ADH",
+          "conceptTags": [
+            "human-physiology",
+            "adh"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, ADH"
+          ],
+          "mustKnowFacts": [
+            "ADH is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing ADH for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing ADH",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of ADH",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in ADH"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret ADH during complex MCQs.",
+            "Failing to apply the correct logic for ADH."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to ADH."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about ADH."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-adh-1",
+              "question": "Explain the core concept behind ADH.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "adh"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "adh",
+                "conceptSlug": "core-adh",
+                "microskillSlug": "understand-adh",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-adh-2",
+              "question": "What is a common trap associated with ADH?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "adh",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "adh",
+                "conceptSlug": "trap-adh",
+                "microskillSlug": "avoid-adh",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-anf",
+          "title": "ANF",
+          "conceptTags": [
+            "human-physiology",
+            "anf"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, ANF"
+          ],
+          "mustKnowFacts": [
+            "ANF is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing ANF for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing ANF",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of ANF",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in ANF"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret ANF during complex MCQs.",
+            "Failing to apply the correct logic for ANF."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to ANF."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about ANF."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-anf-1",
+              "question": "Explain the core concept behind ANF.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "anf"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "anf",
+                "conceptSlug": "core-anf",
+                "microskillSlug": "understand-anf",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-anf-2",
+              "question": "What is a common trap associated with ANF?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "anf",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "anf",
+                "conceptSlug": "trap-anf",
+                "microskillSlug": "avoid-anf",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-excretory-disorders",
+          "title": "Excretory disorders",
+          "conceptTags": [
+            "human-physiology",
+            "excretory-disorders"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Excretory disorders"
+          ],
+          "mustKnowFacts": [
+            "Excretory disorders is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Excretory disorders for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing excretory disorders",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of excretory disorders",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in excretory disorders"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Excretory disorders during complex MCQs.",
+            "Failing to apply the correct logic for Excretory disorders."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Excretory disorders."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Excretory disorders."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-excretory-disorders-1",
+              "question": "Explain the core concept behind Excretory disorders.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "excretory-disorders"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "excretory-disorders",
+                "conceptSlug": "core-excretory-disorders",
+                "microskillSlug": "understand-excretory-disorders",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-excretory-disorders-2",
+              "question": "What is a common trap associated with Excretory disorders?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "excretory-disorders",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "excretory-disorders",
+                "conceptSlug": "trap-excretory-disorders",
+                "microskillSlug": "avoid-excretory-disorders",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-dialysis",
+          "title": "Dialysis",
+          "conceptTags": [
+            "human-physiology",
+            "dialysis"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Dialysis"
+          ],
+          "mustKnowFacts": [
+            "Dialysis is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Dialysis for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing dialysis",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of dialysis",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in dialysis"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Dialysis during complex MCQs.",
+            "Failing to apply the correct logic for Dialysis."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Dialysis."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Dialysis."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-dialysis-1",
+              "question": "Explain the core concept behind Dialysis.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "dialysis"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "dialysis",
+                "conceptSlug": "core-dialysis",
+                "microskillSlug": "understand-dialysis",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-dialysis-2",
+              "question": "What is a common trap associated with Dialysis?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "dialysis",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "dialysis",
+                "conceptSlug": "trap-dialysis",
+                "microskillSlug": "avoid-dialysis",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-movement-types",
+          "title": "Movement types",
+          "conceptTags": [
+            "human-physiology",
+            "movement-types"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Movement types"
+          ],
+          "mustKnowFacts": [
+            "Movement types is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Movement types for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing movement types",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of movement types",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in movement types"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Movement types during complex MCQs.",
+            "Failing to apply the correct logic for Movement types."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Movement types."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Movement types."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-movement-types-1",
+              "question": "Explain the core concept behind Movement types.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "movement-types"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "movement-types",
+                "conceptSlug": "core-movement-types",
+                "microskillSlug": "understand-movement-types",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-movement-types-2",
+              "question": "What is a common trap associated with Movement types?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "movement-types",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "movement-types",
+                "conceptSlug": "trap-movement-types",
+                "microskillSlug": "avoid-movement-types",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-locomotion",
+          "title": "Locomotion",
+          "conceptTags": [
+            "human-physiology",
+            "locomotion"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Locomotion"
+          ],
+          "mustKnowFacts": [
+            "Locomotion is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Locomotion for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing locomotion",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of locomotion",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in locomotion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Locomotion during complex MCQs.",
+            "Failing to apply the correct logic for Locomotion."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Locomotion."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Locomotion."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-locomotion-1",
+              "question": "Explain the core concept behind Locomotion.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "locomotion"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "locomotion",
+                "conceptSlug": "core-locomotion",
+                "microskillSlug": "understand-locomotion",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-locomotion-2",
+              "question": "What is a common trap associated with Locomotion?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "locomotion",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "locomotion",
+                "conceptSlug": "trap-locomotion",
+                "microskillSlug": "avoid-locomotion",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-skeletal-muscle",
+          "title": "Skeletal muscle",
+          "conceptTags": [
+            "human-physiology",
+            "skeletal-muscle"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Skeletal muscle"
+          ],
+          "mustKnowFacts": [
+            "Skeletal muscle is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Skeletal muscle for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing skeletal muscle",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of skeletal muscle",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in skeletal muscle"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Skeletal muscle during complex MCQs.",
+            "Failing to apply the correct logic for Skeletal muscle."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Skeletal muscle."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Skeletal muscle."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-skeletal-muscle-1",
+              "question": "Explain the core concept behind Skeletal muscle.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "skeletal-muscle"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "skeletal-muscle",
+                "conceptSlug": "core-skeletal-muscle",
+                "microskillSlug": "understand-skeletal-muscle",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-skeletal-muscle-2",
+              "question": "What is a common trap associated with Skeletal muscle?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "skeletal-muscle",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "skeletal-muscle",
+                "conceptSlug": "trap-skeletal-muscle",
+                "microskillSlug": "avoid-skeletal-muscle",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-sliding-filament-theory",
+          "title": "Sliding filament theory",
+          "conceptTags": [
+            "human-physiology",
+            "sliding-filament-theory"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Sliding filament theory"
+          ],
+          "mustKnowFacts": [
+            "Sliding filament theory is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Sliding filament theory for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing sliding filament theory",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of sliding filament theory",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in sliding filament theory"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Sliding filament theory during complex MCQs.",
+            "Failing to apply the correct logic for Sliding filament theory."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Sliding filament theory."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Sliding filament theory."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-sliding-filament-theory-1",
+              "question": "Explain the core concept behind Sliding filament theory.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "sliding-filament-theory"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "sliding-filament-theory",
+                "conceptSlug": "core-sliding-filament-theory",
+                "microskillSlug": "understand-sliding-filament-theory",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-sliding-filament-theory-2",
+              "question": "What is a common trap associated with Sliding filament theory?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "sliding-filament-theory",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "sliding-filament-theory",
+                "conceptSlug": "trap-sliding-filament-theory",
+                "microskillSlug": "avoid-sliding-filament-theory",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-skeletal-system",
+          "title": "Skeletal system",
+          "conceptTags": [
+            "human-physiology",
+            "skeletal-system"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Skeletal system"
+          ],
+          "mustKnowFacts": [
+            "Skeletal system is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Skeletal system for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing skeletal system",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of skeletal system",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in skeletal system"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Skeletal system during complex MCQs.",
+            "Failing to apply the correct logic for Skeletal system."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Skeletal system."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Skeletal system."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-skeletal-system-1",
+              "question": "Explain the core concept behind Skeletal system.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "skeletal-system"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "skeletal-system",
+                "conceptSlug": "core-skeletal-system",
+                "microskillSlug": "understand-skeletal-system",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-skeletal-system-2",
+              "question": "What is a common trap associated with Skeletal system?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "skeletal-system",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "skeletal-system",
+                "conceptSlug": "trap-skeletal-system",
+                "microskillSlug": "avoid-skeletal-system",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-joints",
+          "title": "Joints",
+          "conceptTags": [
+            "human-physiology",
+            "joints"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Joints"
+          ],
+          "mustKnowFacts": [
+            "Joints is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Joints for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing joints",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of joints",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in joints"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Joints during complex MCQs.",
+            "Failing to apply the correct logic for Joints."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Joints."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Joints."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-joints-1",
+              "question": "Explain the core concept behind Joints.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "joints"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "joints",
+                "conceptSlug": "core-joints",
+                "microskillSlug": "understand-joints",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-joints-2",
+              "question": "What is a common trap associated with Joints?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "joints",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "joints",
+                "conceptSlug": "trap-joints",
+                "microskillSlug": "avoid-joints",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-skeletal-disorders",
+          "title": "Skeletal disorders",
+          "conceptTags": [
+            "human-physiology",
+            "skeletal-disorders"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Skeletal disorders"
+          ],
+          "mustKnowFacts": [
+            "Skeletal disorders is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Skeletal disorders for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing skeletal disorders",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of skeletal disorders",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in skeletal disorders"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Skeletal disorders during complex MCQs.",
+            "Failing to apply the correct logic for Skeletal disorders."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Skeletal disorders."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Skeletal disorders."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-skeletal-disorders-1",
+              "question": "Explain the core concept behind Skeletal disorders.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "skeletal-disorders"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "skeletal-disorders",
+                "conceptSlug": "core-skeletal-disorders",
+                "microskillSlug": "understand-skeletal-disorders",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-skeletal-disorders-2",
+              "question": "What is a common trap associated with Skeletal disorders?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "skeletal-disorders",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "skeletal-disorders",
+                "conceptSlug": "trap-skeletal-disorders",
+                "microskillSlug": "avoid-skeletal-disorders",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-neuron",
+          "title": "Neuron",
+          "conceptTags": [
+            "human-physiology",
+            "neuron"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Neuron"
+          ],
+          "mustKnowFacts": [
+            "Neuron is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Neuron for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing neuron",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of neuron",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in neuron"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Neuron during complex MCQs.",
+            "Failing to apply the correct logic for Neuron."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Neuron."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Neuron."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-neuron-1",
+              "question": "Explain the core concept behind Neuron.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "neuron"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "neuron",
+                "conceptSlug": "core-neuron",
+                "microskillSlug": "understand-neuron",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-neuron-2",
+              "question": "What is a common trap associated with Neuron?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "neuron",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "neuron",
+                "conceptSlug": "trap-neuron",
+                "microskillSlug": "avoid-neuron",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-nerve-impulse",
+          "title": "Nerve impulse",
+          "conceptTags": [
+            "human-physiology",
+            "nerve-impulse"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Nerve impulse"
+          ],
+          "mustKnowFacts": [
+            "Nerve impulse is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Nerve impulse for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing nerve impulse",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of nerve impulse",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in nerve impulse"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Nerve impulse during complex MCQs.",
+            "Failing to apply the correct logic for Nerve impulse."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Nerve impulse."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Nerve impulse."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-nerve-impulse-1",
+              "question": "Explain the core concept behind Nerve impulse.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "nerve-impulse"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "nerve-impulse",
+                "conceptSlug": "core-nerve-impulse",
+                "microskillSlug": "understand-nerve-impulse",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-nerve-impulse-2",
+              "question": "What is a common trap associated with Nerve impulse?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "nerve-impulse",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "nerve-impulse",
+                "conceptSlug": "trap-nerve-impulse",
+                "microskillSlug": "avoid-nerve-impulse",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-human-physiology-4",
+      "title": "Human Physiology - Section 4",
+      "description": "Comprehensive analysis covering synapse, CNS/PNS/ANS, endocrine glands and more.",
+      "conceptTags": [
+        "human-physiology",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-human-physiology-synapse",
+          "title": "Synapse",
+          "conceptTags": [
+            "human-physiology",
+            "synapse"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Synapse"
+          ],
+          "mustKnowFacts": [
+            "Synapse is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Synapse for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing synapse",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of synapse",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in synapse"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Synapse during complex MCQs.",
+            "Failing to apply the correct logic for Synapse."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Synapse."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Synapse."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-synapse-1",
+              "question": "Explain the core concept behind Synapse.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "synapse"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "synapse",
+                "conceptSlug": "core-synapse",
+                "microskillSlug": "understand-synapse",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-synapse-2",
+              "question": "What is a common trap associated with Synapse?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "synapse",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "synapse",
+                "conceptSlug": "trap-synapse",
+                "microskillSlug": "avoid-synapse",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-cns-pns-ans",
+          "title": "CNS/PNS/ANS",
+          "conceptTags": [
+            "human-physiology",
+            "cns-pns-ans"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, CNS/PNS/ANS"
+          ],
+          "mustKnowFacts": [
+            "CNS/PNS/ANS is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing CNS/PNS/ANS for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing CNS/PNS/ANS",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of CNS/PNS/ANS",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in CNS/PNS/ANS"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret CNS/PNS/ANS during complex MCQs.",
+            "Failing to apply the correct logic for CNS/PNS/ANS."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to CNS/PNS/ANS."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about CNS/PNS/ANS."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-cns-pns-ans-1",
+              "question": "Explain the core concept behind CNS/PNS/ANS.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "cns-pns-ans"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "cns-pns-ans",
+                "conceptSlug": "core-cns-pns-ans",
+                "microskillSlug": "understand-cns-pns-ans",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-cns-pns-ans-2",
+              "question": "What is a common trap associated with CNS/PNS/ANS?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "cns-pns-ans",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "cns-pns-ans",
+                "conceptSlug": "trap-cns-pns-ans",
+                "microskillSlug": "avoid-cns-pns-ans",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-endocrine-glands",
+          "title": "Endocrine glands",
+          "conceptTags": [
+            "human-physiology",
+            "endocrine-glands"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Endocrine glands"
+          ],
+          "mustKnowFacts": [
+            "Endocrine glands is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Endocrine glands for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing endocrine glands",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of endocrine glands",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in endocrine glands"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Endocrine glands during complex MCQs.",
+            "Failing to apply the correct logic for Endocrine glands."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Endocrine glands."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Endocrine glands."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-endocrine-glands-1",
+              "question": "Explain the core concept behind Endocrine glands.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "endocrine-glands"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "endocrine-glands",
+                "conceptSlug": "core-endocrine-glands",
+                "microskillSlug": "understand-endocrine-glands",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-endocrine-glands-2",
+              "question": "What is a common trap associated with Endocrine glands?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "endocrine-glands",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "endocrine-glands",
+                "conceptSlug": "trap-endocrine-glands",
+                "microskillSlug": "avoid-endocrine-glands",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-hypothalamus",
+          "title": "Hypothalamus",
+          "conceptTags": [
+            "human-physiology",
+            "hypothalamus"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Hypothalamus"
+          ],
+          "mustKnowFacts": [
+            "Hypothalamus is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Hypothalamus for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing hypothalamus",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of hypothalamus",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in hypothalamus"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Hypothalamus during complex MCQs.",
+            "Failing to apply the correct logic for Hypothalamus."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Hypothalamus."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Hypothalamus."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-hypothalamus-1",
+              "question": "Explain the core concept behind Hypothalamus.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "hypothalamus"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "hypothalamus",
+                "conceptSlug": "core-hypothalamus",
+                "microskillSlug": "understand-hypothalamus",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-hypothalamus-2",
+              "question": "What is a common trap associated with Hypothalamus?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "hypothalamus",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "hypothalamus",
+                "conceptSlug": "trap-hypothalamus",
+                "microskillSlug": "avoid-hypothalamus",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-pituitary",
+          "title": "Pituitary",
+          "conceptTags": [
+            "human-physiology",
+            "pituitary"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Pituitary"
+          ],
+          "mustKnowFacts": [
+            "Pituitary is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Pituitary for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing pituitary",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of pituitary",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in pituitary"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Pituitary during complex MCQs.",
+            "Failing to apply the correct logic for Pituitary."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Pituitary."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Pituitary."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-pituitary-1",
+              "question": "Explain the core concept behind Pituitary.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "pituitary"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "pituitary",
+                "conceptSlug": "core-pituitary",
+                "microskillSlug": "understand-pituitary",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-pituitary-2",
+              "question": "What is a common trap associated with Pituitary?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "pituitary",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "pituitary",
+                "conceptSlug": "trap-pituitary",
+                "microskillSlug": "avoid-pituitary",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-pineal",
+          "title": "Pineal",
+          "conceptTags": [
+            "human-physiology",
+            "pineal"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Pineal"
+          ],
+          "mustKnowFacts": [
+            "Pineal is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Pineal for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing pineal",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of pineal",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in pineal"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Pineal during complex MCQs.",
+            "Failing to apply the correct logic for Pineal."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Pineal."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Pineal."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-pineal-1",
+              "question": "Explain the core concept behind Pineal.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "pineal"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "pineal",
+                "conceptSlug": "core-pineal",
+                "microskillSlug": "understand-pineal",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-pineal-2",
+              "question": "What is a common trap associated with Pineal?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "pineal",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "pineal",
+                "conceptSlug": "trap-pineal",
+                "microskillSlug": "avoid-pineal",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-thyroid",
+          "title": "Thyroid",
+          "conceptTags": [
+            "human-physiology",
+            "thyroid"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Thyroid"
+          ],
+          "mustKnowFacts": [
+            "Thyroid is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Thyroid for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing thyroid",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of thyroid",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in thyroid"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Thyroid during complex MCQs.",
+            "Failing to apply the correct logic for Thyroid."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Thyroid."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Thyroid."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-thyroid-1",
+              "question": "Explain the core concept behind Thyroid.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "thyroid"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "thyroid",
+                "conceptSlug": "core-thyroid",
+                "microskillSlug": "understand-thyroid",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-thyroid-2",
+              "question": "What is a common trap associated with Thyroid?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "thyroid",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "thyroid",
+                "conceptSlug": "trap-thyroid",
+                "microskillSlug": "avoid-thyroid",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-parathyroid",
+          "title": "Parathyroid",
+          "conceptTags": [
+            "human-physiology",
+            "parathyroid"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Parathyroid"
+          ],
+          "mustKnowFacts": [
+            "Parathyroid is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Parathyroid for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing parathyroid",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of parathyroid",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in parathyroid"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Parathyroid during complex MCQs.",
+            "Failing to apply the correct logic for Parathyroid."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Parathyroid."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Parathyroid."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-parathyroid-1",
+              "question": "Explain the core concept behind Parathyroid.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "parathyroid"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "parathyroid",
+                "conceptSlug": "core-parathyroid",
+                "microskillSlug": "understand-parathyroid",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-parathyroid-2",
+              "question": "What is a common trap associated with Parathyroid?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "parathyroid",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "parathyroid",
+                "conceptSlug": "trap-parathyroid",
+                "microskillSlug": "avoid-parathyroid",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-adrenal",
+          "title": "Adrenal",
+          "conceptTags": [
+            "human-physiology",
+            "adrenal"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Adrenal"
+          ],
+          "mustKnowFacts": [
+            "Adrenal is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Adrenal for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing adrenal",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of adrenal",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in adrenal"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Adrenal during complex MCQs.",
+            "Failing to apply the correct logic for Adrenal."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Adrenal."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Adrenal."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-adrenal-1",
+              "question": "Explain the core concept behind Adrenal.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "adrenal"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "adrenal",
+                "conceptSlug": "core-adrenal",
+                "microskillSlug": "understand-adrenal",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-adrenal-2",
+              "question": "What is a common trap associated with Adrenal?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "adrenal",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "adrenal",
+                "conceptSlug": "trap-adrenal",
+                "microskillSlug": "avoid-adrenal",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-pancreas",
+          "title": "Pancreas",
+          "conceptTags": [
+            "human-physiology",
+            "pancreas"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Pancreas"
+          ],
+          "mustKnowFacts": [
+            "Pancreas is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Pancreas for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing pancreas",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of pancreas",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in pancreas"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Pancreas during complex MCQs.",
+            "Failing to apply the correct logic for Pancreas."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Pancreas."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Pancreas."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-pancreas-1",
+              "question": "Explain the core concept behind Pancreas.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "pancreas"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "pancreas",
+                "conceptSlug": "core-pancreas",
+                "microskillSlug": "understand-pancreas",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-pancreas-2",
+              "question": "What is a common trap associated with Pancreas?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "pancreas",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "pancreas",
+                "conceptSlug": "trap-pancreas",
+                "microskillSlug": "avoid-pancreas",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-gonads",
+          "title": "Gonads",
+          "conceptTags": [
+            "human-physiology",
+            "gonads"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Gonads"
+          ],
+          "mustKnowFacts": [
+            "Gonads is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Gonads for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing gonads",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of gonads",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in gonads"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Gonads during complex MCQs.",
+            "Failing to apply the correct logic for Gonads."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Gonads."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Gonads."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-gonads-1",
+              "question": "Explain the core concept behind Gonads.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "gonads"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "gonads",
+                "conceptSlug": "core-gonads",
+                "microskillSlug": "understand-gonads",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-gonads-2",
+              "question": "What is a common trap associated with Gonads?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "gonads",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "gonads",
+                "conceptSlug": "trap-gonads",
+                "microskillSlug": "avoid-gonads",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-hormone-action",
+          "title": "Hormone action",
+          "conceptTags": [
+            "human-physiology",
+            "hormone-action"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Hormone action"
+          ],
+          "mustKnowFacts": [
+            "Hormone action is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Hormone action for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing hormone action",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of hormone action",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in hormone action"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Hormone action during complex MCQs.",
+            "Failing to apply the correct logic for Hormone action."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Hormone action."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Hormone action."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-hormone-action-1",
+              "question": "Explain the core concept behind Hormone action.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "hormone-action"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "hormone-action",
+                "conceptSlug": "core-hormone-action",
+                "microskillSlug": "understand-hormone-action",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-hormone-action-2",
+              "question": "What is a common trap associated with Hormone action?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "hormone-action",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "hormone-action",
+                "conceptSlug": "trap-hormone-action",
+                "microskillSlug": "avoid-hormone-action",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-hormones",
+          "title": "Hormones",
+          "conceptTags": [
+            "human-physiology",
+            "hormones"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Hormones"
+          ],
+          "mustKnowFacts": [
+            "Hormones is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Hormones for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing hormones",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of hormones",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in hormones"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Hormones during complex MCQs.",
+            "Failing to apply the correct logic for Hormones."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Hormones."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Hormones."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-hormones-1",
+              "question": "Explain the core concept behind Hormones.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "hormones"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "hormones",
+                "conceptSlug": "core-hormones",
+                "microskillSlug": "understand-hormones",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-hormones-2",
+              "question": "What is a common trap associated with Hormones?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "hormones",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "hormones",
+                "conceptSlug": "trap-hormones",
+                "microskillSlug": "avoid-hormones",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-human-physiology-endocrine-disorders",
+          "title": "Endocrine disorders",
+          "conceptTags": [
+            "human-physiology",
+            "endocrine-disorders"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Endocrine disorders"
+          ],
+          "mustKnowFacts": [
+            "Endocrine disorders is a fundamental subtopic of Human Physiology.",
+            "Crucial to understand the principles governing Endocrine disorders for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing endocrine disorders",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of endocrine disorders",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in endocrine disorders"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Endocrine disorders during complex MCQs.",
+            "Failing to apply the correct logic for Endocrine disorders."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Endocrine disorders."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Endocrine disorders."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "human-physiology-q-endocrine-disorders-1",
+              "question": "Explain the core concept behind Endocrine disorders.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "endocrine-disorders"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "endocrine-disorders",
+                "conceptSlug": "core-endocrine-disorders",
+                "microskillSlug": "understand-endocrine-disorders",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            },
+            {
+              "id": "human-physiology-q-endocrine-disorders-2",
+              "question": "What is a common trap associated with Endocrine disorders?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "endocrine-disorders",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "human-physiology",
+                "subtopicSlug": "endocrine-disorders",
+                "conceptSlug": "trap-endocrine-disorders",
+                "microskillSlug": "avoid-endocrine-disorders",
+                "subject": "Biology",
+                "unitSlug": "human-physiology",
+                "chapterSlug": "human-physiology"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

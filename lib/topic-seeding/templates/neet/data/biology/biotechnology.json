@@ -1,0 +1,2030 @@
+{
+  "missions": [
+    {
+      "id": "m-biotechnology-1",
+      "title": "Biotechnology and Its Applications - Section 1",
+      "description": "Comprehensive analysis covering principles of biotechnology, genetic engineering, restriction enzymes and more.",
+      "conceptTags": [
+        "biotechnology",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-biotechnology-principles-of-biotechnology",
+          "title": "Principles of biotechnology",
+          "conceptTags": [
+            "biotechnology",
+            "principles-of-biotechnology"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Principles of biotechnology"
+          ],
+          "mustKnowFacts": [
+            "Principles of biotechnology is a fundamental subtopic of Biotechnology and Its Applications.",
+            "Crucial to understand the principles governing Principles of biotechnology for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing principles of biotechnology",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of principles of biotechnology",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in principles of biotechnology"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Principles of biotechnology during complex MCQs.",
+            "Failing to apply the correct logic for Principles of biotechnology."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Principles of biotechnology."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Principles of biotechnology."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biotechnology-q-principles-of-biotechnology-1",
+              "question": "Explain the core concept behind Principles of biotechnology.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "principles-of-biotechnology"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "principles-of-biotechnology",
+                "conceptSlug": "core-principles-of-biotechnology",
+                "microskillSlug": "understand-principles-of-biotechnology",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            },
+            {
+              "id": "biotechnology-q-principles-of-biotechnology-2",
+              "question": "What is a common trap associated with Principles of biotechnology?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "principles-of-biotechnology",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "principles-of-biotechnology",
+                "conceptSlug": "trap-principles-of-biotechnology",
+                "microskillSlug": "avoid-principles-of-biotechnology",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biotechnology-genetic-engineering",
+          "title": "Genetic engineering",
+          "conceptTags": [
+            "biotechnology",
+            "genetic-engineering"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Genetic engineering"
+          ],
+          "mustKnowFacts": [
+            "Genetic engineering is a fundamental subtopic of Biotechnology and Its Applications.",
+            "Crucial to understand the principles governing Genetic engineering for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing genetic engineering",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of genetic engineering",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in genetic engineering"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Genetic engineering during complex MCQs.",
+            "Failing to apply the correct logic for Genetic engineering."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Genetic engineering."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Genetic engineering."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biotechnology-q-genetic-engineering-1",
+              "question": "Explain the core concept behind Genetic engineering.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "genetic-engineering"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "genetic-engineering",
+                "conceptSlug": "core-genetic-engineering",
+                "microskillSlug": "understand-genetic-engineering",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            },
+            {
+              "id": "biotechnology-q-genetic-engineering-2",
+              "question": "What is a common trap associated with Genetic engineering?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "genetic-engineering",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "genetic-engineering",
+                "conceptSlug": "trap-genetic-engineering",
+                "microskillSlug": "avoid-genetic-engineering",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biotechnology-restriction-enzymes",
+          "title": "Restriction enzymes",
+          "conceptTags": [
+            "biotechnology",
+            "restriction-enzymes"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Restriction enzymes"
+          ],
+          "mustKnowFacts": [
+            "Restriction enzymes is a fundamental subtopic of Biotechnology and Its Applications.",
+            "Crucial to understand the principles governing Restriction enzymes for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing restriction enzymes",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of restriction enzymes",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in restriction enzymes"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Restriction enzymes during complex MCQs.",
+            "Failing to apply the correct logic for Restriction enzymes."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Restriction enzymes."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Restriction enzymes."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biotechnology-q-restriction-enzymes-1",
+              "question": "Explain the core concept behind Restriction enzymes.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "restriction-enzymes"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "restriction-enzymes",
+                "conceptSlug": "core-restriction-enzymes",
+                "microskillSlug": "understand-restriction-enzymes",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            },
+            {
+              "id": "biotechnology-q-restriction-enzymes-2",
+              "question": "What is a common trap associated with Restriction enzymes?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "restriction-enzymes",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "restriction-enzymes",
+                "conceptSlug": "trap-restriction-enzymes",
+                "microskillSlug": "avoid-restriction-enzymes",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biotechnology-cloning-vectors",
+          "title": "Cloning vectors",
+          "conceptTags": [
+            "biotechnology",
+            "cloning-vectors"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Cloning vectors"
+          ],
+          "mustKnowFacts": [
+            "Cloning vectors is a fundamental subtopic of Biotechnology and Its Applications.",
+            "Crucial to understand the principles governing Cloning vectors for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing cloning vectors",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of cloning vectors",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in cloning vectors"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Cloning vectors during complex MCQs.",
+            "Failing to apply the correct logic for Cloning vectors."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Cloning vectors."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Cloning vectors."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biotechnology-q-cloning-vectors-1",
+              "question": "Explain the core concept behind Cloning vectors.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "cloning-vectors"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "cloning-vectors",
+                "conceptSlug": "core-cloning-vectors",
+                "microskillSlug": "understand-cloning-vectors",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            },
+            {
+              "id": "biotechnology-q-cloning-vectors-2",
+              "question": "What is a common trap associated with Cloning vectors?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "cloning-vectors",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "cloning-vectors",
+                "conceptSlug": "trap-cloning-vectors",
+                "microskillSlug": "avoid-cloning-vectors",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biotechnology-plasmid",
+          "title": "Plasmid",
+          "conceptTags": [
+            "biotechnology",
+            "plasmid"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Plasmid"
+          ],
+          "mustKnowFacts": [
+            "Plasmid is a fundamental subtopic of Biotechnology and Its Applications.",
+            "Crucial to understand the principles governing Plasmid for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing plasmid",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of plasmid",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in plasmid"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Plasmid during complex MCQs.",
+            "Failing to apply the correct logic for Plasmid."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Plasmid."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Plasmid."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biotechnology-q-plasmid-1",
+              "question": "Explain the core concept behind Plasmid.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "plasmid"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "plasmid",
+                "conceptSlug": "core-plasmid",
+                "microskillSlug": "understand-plasmid",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            },
+            {
+              "id": "biotechnology-q-plasmid-2",
+              "question": "What is a common trap associated with Plasmid?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "plasmid",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "plasmid",
+                "conceptSlug": "trap-plasmid",
+                "microskillSlug": "avoid-plasmid",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biotechnology-bacteriophage",
+          "title": "Bacteriophage",
+          "conceptTags": [
+            "biotechnology",
+            "bacteriophage"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Bacteriophage"
+          ],
+          "mustKnowFacts": [
+            "Bacteriophage is a fundamental subtopic of Biotechnology and Its Applications.",
+            "Crucial to understand the principles governing Bacteriophage for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing bacteriophage",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of bacteriophage",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in bacteriophage"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Bacteriophage during complex MCQs.",
+            "Failing to apply the correct logic for Bacteriophage."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Bacteriophage."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Bacteriophage."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biotechnology-q-bacteriophage-1",
+              "question": "Explain the core concept behind Bacteriophage.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "bacteriophage"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "bacteriophage",
+                "conceptSlug": "core-bacteriophage",
+                "microskillSlug": "understand-bacteriophage",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            },
+            {
+              "id": "biotechnology-q-bacteriophage-2",
+              "question": "What is a common trap associated with Bacteriophage?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "bacteriophage",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "bacteriophage",
+                "conceptSlug": "trap-bacteriophage",
+                "microskillSlug": "avoid-bacteriophage",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-biotechnology-2",
+      "title": "Biotechnology and Its Applications - Section 2",
+      "description": "Comprehensive analysis covering competent host, PCR, gel electrophoresis and more.",
+      "conceptTags": [
+        "biotechnology",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-biotechnology-competent-host",
+          "title": "Competent host",
+          "conceptTags": [
+            "biotechnology",
+            "competent-host"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Competent host"
+          ],
+          "mustKnowFacts": [
+            "Competent host is a fundamental subtopic of Biotechnology and Its Applications.",
+            "Crucial to understand the principles governing Competent host for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing competent host",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of competent host",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in competent host"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Competent host during complex MCQs.",
+            "Failing to apply the correct logic for Competent host."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Competent host."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Competent host."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biotechnology-q-competent-host-1",
+              "question": "Explain the core concept behind Competent host.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "competent-host"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "competent-host",
+                "conceptSlug": "core-competent-host",
+                "microskillSlug": "understand-competent-host",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            },
+            {
+              "id": "biotechnology-q-competent-host-2",
+              "question": "What is a common trap associated with Competent host?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "competent-host",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "competent-host",
+                "conceptSlug": "trap-competent-host",
+                "microskillSlug": "avoid-competent-host",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biotechnology-pcr",
+          "title": "PCR",
+          "conceptTags": [
+            "biotechnology",
+            "pcr"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, PCR"
+          ],
+          "mustKnowFacts": [
+            "PCR is a fundamental subtopic of Biotechnology and Its Applications.",
+            "Crucial to understand the principles governing PCR for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing PCR",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of PCR",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in PCR"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret PCR during complex MCQs.",
+            "Failing to apply the correct logic for PCR."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to PCR."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about PCR."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biotechnology-q-pcr-1",
+              "question": "Explain the core concept behind PCR.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "pcr"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "pcr",
+                "conceptSlug": "core-pcr",
+                "microskillSlug": "understand-pcr",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            },
+            {
+              "id": "biotechnology-q-pcr-2",
+              "question": "What is a common trap associated with PCR?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "pcr",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "pcr",
+                "conceptSlug": "trap-pcr",
+                "microskillSlug": "avoid-pcr",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biotechnology-gel-electrophoresis",
+          "title": "Gel electrophoresis",
+          "conceptTags": [
+            "biotechnology",
+            "gel-electrophoresis"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Gel electrophoresis"
+          ],
+          "mustKnowFacts": [
+            "Gel electrophoresis is a fundamental subtopic of Biotechnology and Its Applications.",
+            "Crucial to understand the principles governing Gel electrophoresis for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing gel electrophoresis",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of gel electrophoresis",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in gel electrophoresis"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Gel electrophoresis during complex MCQs.",
+            "Failing to apply the correct logic for Gel electrophoresis."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Gel electrophoresis."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Gel electrophoresis."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biotechnology-q-gel-electrophoresis-1",
+              "question": "Explain the core concept behind Gel electrophoresis.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "gel-electrophoresis"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "gel-electrophoresis",
+                "conceptSlug": "core-gel-electrophoresis",
+                "microskillSlug": "understand-gel-electrophoresis",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            },
+            {
+              "id": "biotechnology-q-gel-electrophoresis-2",
+              "question": "What is a common trap associated with Gel electrophoresis?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "gel-electrophoresis",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "gel-electrophoresis",
+                "conceptSlug": "trap-gel-electrophoresis",
+                "microskillSlug": "avoid-gel-electrophoresis",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biotechnology-recombinant-dna-process",
+          "title": "Recombinant DNA process",
+          "conceptTags": [
+            "biotechnology",
+            "recombinant-dna-process"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Recombinant DNA process"
+          ],
+          "mustKnowFacts": [
+            "Recombinant DNA process is a fundamental subtopic of Biotechnology and Its Applications.",
+            "Crucial to understand the principles governing Recombinant DNA process for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing recombinant DNA process",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of recombinant DNA process",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in recombinant DNA process"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Recombinant DNA process during complex MCQs.",
+            "Failing to apply the correct logic for Recombinant DNA process."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Recombinant DNA process."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Recombinant DNA process."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biotechnology-q-recombinant-dna-process-1",
+              "question": "Explain the core concept behind Recombinant DNA process.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "recombinant-dna-process"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "recombinant-dna-process",
+                "conceptSlug": "core-recombinant-dna-process",
+                "microskillSlug": "understand-recombinant-dna-process",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            },
+            {
+              "id": "biotechnology-q-recombinant-dna-process-2",
+              "question": "What is a common trap associated with Recombinant DNA process?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "recombinant-dna-process",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "recombinant-dna-process",
+                "conceptSlug": "trap-recombinant-dna-process",
+                "microskillSlug": "avoid-recombinant-dna-process",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biotechnology-bioreactors",
+          "title": "Bioreactors",
+          "conceptTags": [
+            "biotechnology",
+            "bioreactors"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Bioreactors"
+          ],
+          "mustKnowFacts": [
+            "Bioreactors is a fundamental subtopic of Biotechnology and Its Applications.",
+            "Crucial to understand the principles governing Bioreactors for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing bioreactors",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of bioreactors",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in bioreactors"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Bioreactors during complex MCQs.",
+            "Failing to apply the correct logic for Bioreactors."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Bioreactors."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Bioreactors."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biotechnology-q-bioreactors-1",
+              "question": "Explain the core concept behind Bioreactors.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "bioreactors"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "bioreactors",
+                "conceptSlug": "core-bioreactors",
+                "microskillSlug": "understand-bioreactors",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            },
+            {
+              "id": "biotechnology-q-bioreactors-2",
+              "question": "What is a common trap associated with Bioreactors?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "bioreactors",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "bioreactors",
+                "conceptSlug": "trap-bioreactors",
+                "microskillSlug": "avoid-bioreactors",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biotechnology-downstream-processing",
+          "title": "Downstream processing",
+          "conceptTags": [
+            "biotechnology",
+            "downstream-processing"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Downstream processing"
+          ],
+          "mustKnowFacts": [
+            "Downstream processing is a fundamental subtopic of Biotechnology and Its Applications.",
+            "Crucial to understand the principles governing Downstream processing for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing downstream processing",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of downstream processing",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in downstream processing"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Downstream processing during complex MCQs.",
+            "Failing to apply the correct logic for Downstream processing."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Downstream processing."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Downstream processing."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biotechnology-q-downstream-processing-1",
+              "question": "Explain the core concept behind Downstream processing.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "downstream-processing"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "downstream-processing",
+                "conceptSlug": "core-downstream-processing",
+                "microskillSlug": "understand-downstream-processing",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            },
+            {
+              "id": "biotechnology-q-downstream-processing-2",
+              "question": "What is a common trap associated with Downstream processing?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "downstream-processing",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "downstream-processing",
+                "conceptSlug": "trap-downstream-processing",
+                "microskillSlug": "avoid-downstream-processing",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-biotechnology-3",
+      "title": "Biotechnology and Its Applications - Section 3",
+      "description": "Comprehensive analysis covering insulin production, vaccines, gene therapy and more.",
+      "conceptTags": [
+        "biotechnology",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-biotechnology-insulin-production",
+          "title": "Insulin production",
+          "conceptTags": [
+            "biotechnology",
+            "insulin-production"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Insulin production"
+          ],
+          "mustKnowFacts": [
+            "Insulin production is a fundamental subtopic of Biotechnology and Its Applications.",
+            "Crucial to understand the principles governing Insulin production for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing insulin production",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of insulin production",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in insulin production"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Insulin production during complex MCQs.",
+            "Failing to apply the correct logic for Insulin production."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Insulin production."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Insulin production."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biotechnology-q-insulin-production-1",
+              "question": "Explain the core concept behind Insulin production.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "insulin-production"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "insulin-production",
+                "conceptSlug": "core-insulin-production",
+                "microskillSlug": "understand-insulin-production",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            },
+            {
+              "id": "biotechnology-q-insulin-production-2",
+              "question": "What is a common trap associated with Insulin production?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "insulin-production",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "insulin-production",
+                "conceptSlug": "trap-insulin-production",
+                "microskillSlug": "avoid-insulin-production",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biotechnology-vaccines",
+          "title": "Vaccines",
+          "conceptTags": [
+            "biotechnology",
+            "vaccines"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Vaccines"
+          ],
+          "mustKnowFacts": [
+            "Vaccines is a fundamental subtopic of Biotechnology and Its Applications.",
+            "Crucial to understand the principles governing Vaccines for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing vaccines",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of vaccines",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in vaccines"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Vaccines during complex MCQs.",
+            "Failing to apply the correct logic for Vaccines."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Vaccines."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Vaccines."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biotechnology-q-vaccines-1",
+              "question": "Explain the core concept behind Vaccines.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "vaccines"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "vaccines",
+                "conceptSlug": "core-vaccines",
+                "microskillSlug": "understand-vaccines",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            },
+            {
+              "id": "biotechnology-q-vaccines-2",
+              "question": "What is a common trap associated with Vaccines?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "vaccines",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "vaccines",
+                "conceptSlug": "trap-vaccines",
+                "microskillSlug": "avoid-vaccines",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biotechnology-gene-therapy",
+          "title": "Gene therapy",
+          "conceptTags": [
+            "biotechnology",
+            "gene-therapy"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Gene therapy"
+          ],
+          "mustKnowFacts": [
+            "Gene therapy is a fundamental subtopic of Biotechnology and Its Applications.",
+            "Crucial to understand the principles governing Gene therapy for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing gene therapy",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of gene therapy",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in gene therapy"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Gene therapy during complex MCQs.",
+            "Failing to apply the correct logic for Gene therapy."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Gene therapy."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Gene therapy."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biotechnology-q-gene-therapy-1",
+              "question": "Explain the core concept behind Gene therapy.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "gene-therapy"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "gene-therapy",
+                "conceptSlug": "core-gene-therapy",
+                "microskillSlug": "understand-gene-therapy",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            },
+            {
+              "id": "biotechnology-q-gene-therapy-2",
+              "question": "What is a common trap associated with Gene therapy?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "gene-therapy",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "gene-therapy",
+                "conceptSlug": "trap-gene-therapy",
+                "microskillSlug": "avoid-gene-therapy",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biotechnology-bt-crops",
+          "title": "Bt crops",
+          "conceptTags": [
+            "biotechnology",
+            "bt-crops"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Bt crops"
+          ],
+          "mustKnowFacts": [
+            "Bt crops is a fundamental subtopic of Biotechnology and Its Applications.",
+            "Crucial to understand the principles governing Bt crops for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing Bt crops",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of Bt crops",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in Bt crops"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Bt crops during complex MCQs.",
+            "Failing to apply the correct logic for Bt crops."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Bt crops."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Bt crops."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biotechnology-q-bt-crops-1",
+              "question": "Explain the core concept behind Bt crops.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "bt-crops"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "bt-crops",
+                "conceptSlug": "core-bt-crops",
+                "microskillSlug": "understand-bt-crops",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            },
+            {
+              "id": "biotechnology-q-bt-crops-2",
+              "question": "What is a common trap associated with Bt crops?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "bt-crops",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "bt-crops",
+                "conceptSlug": "trap-bt-crops",
+                "microskillSlug": "avoid-bt-crops",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biotechnology-gmos",
+          "title": "GMOs",
+          "conceptTags": [
+            "biotechnology",
+            "gmos"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, GMOs"
+          ],
+          "mustKnowFacts": [
+            "GMOs is a fundamental subtopic of Biotechnology and Its Applications.",
+            "Crucial to understand the principles governing GMOs for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing GMOs",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of GMOs",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in GMOs"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret GMOs during complex MCQs.",
+            "Failing to apply the correct logic for GMOs."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to GMOs."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about GMOs."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biotechnology-q-gmos-1",
+              "question": "Explain the core concept behind GMOs.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "gmos"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "gmos",
+                "conceptSlug": "core-gmos",
+                "microskillSlug": "understand-gmos",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            },
+            {
+              "id": "biotechnology-q-gmos-2",
+              "question": "What is a common trap associated with GMOs?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "gmos",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "gmos",
+                "conceptSlug": "trap-gmos",
+                "microskillSlug": "avoid-gmos",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biotechnology-transgenic-animals",
+          "title": "Transgenic animals",
+          "conceptTags": [
+            "biotechnology",
+            "transgenic-animals"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Transgenic animals"
+          ],
+          "mustKnowFacts": [
+            "Transgenic animals is a fundamental subtopic of Biotechnology and Its Applications.",
+            "Crucial to understand the principles governing Transgenic animals for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing transgenic animals",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of transgenic animals",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in transgenic animals"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Transgenic animals during complex MCQs.",
+            "Failing to apply the correct logic for Transgenic animals."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Transgenic animals."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Transgenic animals."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biotechnology-q-transgenic-animals-1",
+              "question": "Explain the core concept behind Transgenic animals.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "transgenic-animals"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "transgenic-animals",
+                "conceptSlug": "core-transgenic-animals",
+                "microskillSlug": "understand-transgenic-animals",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            },
+            {
+              "id": "biotechnology-q-transgenic-animals-2",
+              "question": "What is a common trap associated with Transgenic animals?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "transgenic-animals",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "transgenic-animals",
+                "conceptSlug": "trap-transgenic-animals",
+                "microskillSlug": "avoid-transgenic-animals",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-biotechnology-4",
+      "title": "Biotechnology and Its Applications - Section 4",
+      "description": "Comprehensive analysis covering biosafety, biopiracy, patents and more.",
+      "conceptTags": [
+        "biotechnology",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-biotechnology-biosafety",
+          "title": "Biosafety",
+          "conceptTags": [
+            "biotechnology",
+            "biosafety"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Biosafety"
+          ],
+          "mustKnowFacts": [
+            "Biosafety is a fundamental subtopic of Biotechnology and Its Applications.",
+            "Crucial to understand the principles governing Biosafety for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing biosafety",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of biosafety",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in biosafety"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Biosafety during complex MCQs.",
+            "Failing to apply the correct logic for Biosafety."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Biosafety."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Biosafety."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biotechnology-q-biosafety-1",
+              "question": "Explain the core concept behind Biosafety.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "biosafety"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "biosafety",
+                "conceptSlug": "core-biosafety",
+                "microskillSlug": "understand-biosafety",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            },
+            {
+              "id": "biotechnology-q-biosafety-2",
+              "question": "What is a common trap associated with Biosafety?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "biosafety",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "biosafety",
+                "conceptSlug": "trap-biosafety",
+                "microskillSlug": "avoid-biosafety",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biotechnology-biopiracy",
+          "title": "Biopiracy",
+          "conceptTags": [
+            "biotechnology",
+            "biopiracy"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Biopiracy"
+          ],
+          "mustKnowFacts": [
+            "Biopiracy is a fundamental subtopic of Biotechnology and Its Applications.",
+            "Crucial to understand the principles governing Biopiracy for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing biopiracy",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of biopiracy",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in biopiracy"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Biopiracy during complex MCQs.",
+            "Failing to apply the correct logic for Biopiracy."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Biopiracy."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Biopiracy."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biotechnology-q-biopiracy-1",
+              "question": "Explain the core concept behind Biopiracy.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "biopiracy"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "biopiracy",
+                "conceptSlug": "core-biopiracy",
+                "microskillSlug": "understand-biopiracy",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            },
+            {
+              "id": "biotechnology-q-biopiracy-2",
+              "question": "What is a common trap associated with Biopiracy?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "biopiracy",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "biopiracy",
+                "conceptSlug": "trap-biopiracy",
+                "microskillSlug": "avoid-biopiracy",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biotechnology-patents",
+          "title": "Patents",
+          "conceptTags": [
+            "biotechnology",
+            "patents"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Patents"
+          ],
+          "mustKnowFacts": [
+            "Patents is a fundamental subtopic of Biotechnology and Its Applications.",
+            "Crucial to understand the principles governing Patents for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing patents",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of patents",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in patents"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Patents during complex MCQs.",
+            "Failing to apply the correct logic for Patents."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Patents."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Patents."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biotechnology-q-patents-1",
+              "question": "Explain the core concept behind Patents.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "patents"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "patents",
+                "conceptSlug": "core-patents",
+                "microskillSlug": "understand-patents",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            },
+            {
+              "id": "biotechnology-q-patents-2",
+              "question": "What is a common trap associated with Patents?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "patents",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biotechnology",
+                "subtopicSlug": "patents",
+                "conceptSlug": "trap-patents",
+                "microskillSlug": "avoid-patents",
+                "subject": "Biology",
+                "unitSlug": "biotechnology",
+                "chapterSlug": "biotechnology"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

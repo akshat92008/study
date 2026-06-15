@@ -1,0 +1,2331 @@
+{
+  "missions": [
+    {
+      "id": "m-oscillations-and-waves-1",
+      "title": "Oscillations and Waves - Section 1",
+      "description": "Comprehensive analysis covering periodic motion, SHM equation, amplitude and more.",
+      "conceptTags": [
+        "oscillations-and-waves",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-oscillations-and-waves-periodic-motion",
+          "title": "Periodic motion",
+          "conceptTags": [
+            "oscillations-and-waves",
+            "periodic-motion"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Periodic motion"
+          ],
+          "mustKnowFacts": [
+            "Periodic motion is a fundamental subtopic of Oscillations and Waves.",
+            "Crucial to understand the principles governing Periodic motion for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for periodic motion",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Periodic motion during complex MCQs.",
+            "Failing to apply the correct logic for Periodic motion."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Periodic motion."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Periodic motion."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "oscillations-and-waves-q-periodic-motion-1",
+              "question": "Explain the core concept behind Periodic motion.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "periodic-motion"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "periodic-motion",
+                "conceptSlug": "core-periodic-motion",
+                "microskillSlug": "understand-periodic-motion",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            },
+            {
+              "id": "oscillations-and-waves-q-periodic-motion-2",
+              "question": "What is a common trap associated with Periodic motion?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "periodic-motion",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "periodic-motion",
+                "conceptSlug": "trap-periodic-motion",
+                "microskillSlug": "avoid-periodic-motion",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-oscillations-and-waves-shm-equation",
+          "title": "SHM equation",
+          "conceptTags": [
+            "oscillations-and-waves",
+            "shm-equation"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, SHM equation"
+          ],
+          "mustKnowFacts": [
+            "SHM equation is a fundamental subtopic of Oscillations and Waves.",
+            "Crucial to understand the principles governing SHM equation for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for SHM equation",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret SHM equation during complex MCQs.",
+            "Failing to apply the correct logic for SHM equation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to SHM equation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about SHM equation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "oscillations-and-waves-q-shm-equation-1",
+              "question": "Explain the core concept behind SHM equation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "shm-equation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "shm-equation",
+                "conceptSlug": "core-shm-equation",
+                "microskillSlug": "understand-shm-equation",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            },
+            {
+              "id": "oscillations-and-waves-q-shm-equation-2",
+              "question": "What is a common trap associated with SHM equation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "shm-equation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "shm-equation",
+                "conceptSlug": "trap-shm-equation",
+                "microskillSlug": "avoid-shm-equation",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-oscillations-and-waves-amplitude",
+          "title": "Amplitude",
+          "conceptTags": [
+            "oscillations-and-waves",
+            "amplitude"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Amplitude"
+          ],
+          "mustKnowFacts": [
+            "Amplitude is a fundamental subtopic of Oscillations and Waves.",
+            "Crucial to understand the principles governing Amplitude for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for amplitude",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Amplitude during complex MCQs.",
+            "Failing to apply the correct logic for Amplitude."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Amplitude."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Amplitude."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "oscillations-and-waves-q-amplitude-1",
+              "question": "Explain the core concept behind Amplitude.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "amplitude"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "amplitude",
+                "conceptSlug": "core-amplitude",
+                "microskillSlug": "understand-amplitude",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            },
+            {
+              "id": "oscillations-and-waves-q-amplitude-2",
+              "question": "What is a common trap associated with Amplitude?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "amplitude",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "amplitude",
+                "conceptSlug": "trap-amplitude",
+                "microskillSlug": "avoid-amplitude",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-oscillations-and-waves-phase",
+          "title": "Phase",
+          "conceptTags": [
+            "oscillations-and-waves",
+            "phase"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Phase"
+          ],
+          "mustKnowFacts": [
+            "Phase is a fundamental subtopic of Oscillations and Waves.",
+            "Crucial to understand the principles governing Phase for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for phase",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Phase during complex MCQs.",
+            "Failing to apply the correct logic for Phase."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Phase."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Phase."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "oscillations-and-waves-q-phase-1",
+              "question": "Explain the core concept behind Phase.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "phase"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "phase",
+                "conceptSlug": "core-phase",
+                "microskillSlug": "understand-phase",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            },
+            {
+              "id": "oscillations-and-waves-q-phase-2",
+              "question": "What is a common trap associated with Phase?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "phase",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "phase",
+                "conceptSlug": "trap-phase",
+                "microskillSlug": "avoid-phase",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-oscillations-and-waves-angular-frequency",
+          "title": "Angular frequency",
+          "conceptTags": [
+            "oscillations-and-waves",
+            "angular-frequency"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Angular frequency"
+          ],
+          "mustKnowFacts": [
+            "Angular frequency is a fundamental subtopic of Oscillations and Waves.",
+            "Crucial to understand the principles governing Angular frequency for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for angular frequency",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Angular frequency during complex MCQs.",
+            "Failing to apply the correct logic for Angular frequency."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Angular frequency."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Angular frequency."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "oscillations-and-waves-q-angular-frequency-1",
+              "question": "Explain the core concept behind Angular frequency.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "angular-frequency"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "angular-frequency",
+                "conceptSlug": "core-angular-frequency",
+                "microskillSlug": "understand-angular-frequency",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            },
+            {
+              "id": "oscillations-and-waves-q-angular-frequency-2",
+              "question": "What is a common trap associated with Angular frequency?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "angular-frequency",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "angular-frequency",
+                "conceptSlug": "trap-angular-frequency",
+                "microskillSlug": "avoid-angular-frequency",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-oscillations-and-waves-time-period",
+          "title": "Time period",
+          "conceptTags": [
+            "oscillations-and-waves",
+            "time-period"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Time period"
+          ],
+          "mustKnowFacts": [
+            "Time period is a fundamental subtopic of Oscillations and Waves.",
+            "Crucial to understand the principles governing Time period for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for time period",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Time period during complex MCQs.",
+            "Failing to apply the correct logic for Time period."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Time period."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Time period."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "oscillations-and-waves-q-time-period-1",
+              "question": "Explain the core concept behind Time period.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "time-period"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "time-period",
+                "conceptSlug": "core-time-period",
+                "microskillSlug": "understand-time-period",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            },
+            {
+              "id": "oscillations-and-waves-q-time-period-2",
+              "question": "What is a common trap associated with Time period?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "time-period",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "time-period",
+                "conceptSlug": "trap-time-period",
+                "microskillSlug": "avoid-time-period",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-oscillations-and-waves-frequency",
+          "title": "Frequency",
+          "conceptTags": [
+            "oscillations-and-waves",
+            "frequency"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Frequency"
+          ],
+          "mustKnowFacts": [
+            "Frequency is a fundamental subtopic of Oscillations and Waves.",
+            "Crucial to understand the principles governing Frequency for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for frequency",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Frequency during complex MCQs.",
+            "Failing to apply the correct logic for Frequency."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Frequency."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Frequency."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "oscillations-and-waves-q-frequency-1",
+              "question": "Explain the core concept behind Frequency.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "frequency"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "frequency",
+                "conceptSlug": "core-frequency",
+                "microskillSlug": "understand-frequency",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            },
+            {
+              "id": "oscillations-and-waves-q-frequency-2",
+              "question": "What is a common trap associated with Frequency?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "frequency",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "frequency",
+                "conceptSlug": "trap-frequency",
+                "microskillSlug": "avoid-frequency",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-oscillations-and-waves-2",
+      "title": "Oscillations and Waves - Section 2",
+      "description": "Comprehensive analysis covering velocity in SHM, acceleration in SHM, energy in SHM and more.",
+      "conceptTags": [
+        "oscillations-and-waves",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-oscillations-and-waves-velocity-in-shm",
+          "title": "Velocity in SHM",
+          "conceptTags": [
+            "oscillations-and-waves",
+            "velocity-in-shm"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Velocity in SHM"
+          ],
+          "mustKnowFacts": [
+            "Velocity in SHM is a fundamental subtopic of Oscillations and Waves.",
+            "Crucial to understand the principles governing Velocity in SHM for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for velocity in SHM",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Velocity in SHM during complex MCQs.",
+            "Failing to apply the correct logic for Velocity in SHM."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Velocity in SHM."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Velocity in SHM."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "oscillations-and-waves-q-velocity-in-shm-1",
+              "question": "Explain the core concept behind Velocity in SHM.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "velocity-in-shm"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "velocity-in-shm",
+                "conceptSlug": "core-velocity-in-shm",
+                "microskillSlug": "understand-velocity-in-shm",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            },
+            {
+              "id": "oscillations-and-waves-q-velocity-in-shm-2",
+              "question": "What is a common trap associated with Velocity in SHM?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "velocity-in-shm",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "velocity-in-shm",
+                "conceptSlug": "trap-velocity-in-shm",
+                "microskillSlug": "avoid-velocity-in-shm",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-oscillations-and-waves-acceleration-in-shm",
+          "title": "Acceleration in SHM",
+          "conceptTags": [
+            "oscillations-and-waves",
+            "acceleration-in-shm"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Acceleration in SHM"
+          ],
+          "mustKnowFacts": [
+            "Acceleration in SHM is a fundamental subtopic of Oscillations and Waves.",
+            "Crucial to understand the principles governing Acceleration in SHM for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for acceleration in SHM",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Acceleration in SHM during complex MCQs.",
+            "Failing to apply the correct logic for Acceleration in SHM."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Acceleration in SHM."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Acceleration in SHM."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "oscillations-and-waves-q-acceleration-in-shm-1",
+              "question": "Explain the core concept behind Acceleration in SHM.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "acceleration-in-shm"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "acceleration-in-shm",
+                "conceptSlug": "core-acceleration-in-shm",
+                "microskillSlug": "understand-acceleration-in-shm",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            },
+            {
+              "id": "oscillations-and-waves-q-acceleration-in-shm-2",
+              "question": "What is a common trap associated with Acceleration in SHM?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "acceleration-in-shm",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "acceleration-in-shm",
+                "conceptSlug": "trap-acceleration-in-shm",
+                "microskillSlug": "avoid-acceleration-in-shm",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-oscillations-and-waves-energy-in-shm",
+          "title": "Energy in SHM",
+          "conceptTags": [
+            "oscillations-and-waves",
+            "energy-in-shm"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Energy in SHM"
+          ],
+          "mustKnowFacts": [
+            "Energy in SHM is a fundamental subtopic of Oscillations and Waves.",
+            "Crucial to understand the principles governing Energy in SHM for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for energy in SHM",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Energy in SHM during complex MCQs.",
+            "Failing to apply the correct logic for Energy in SHM."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Energy in SHM."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Energy in SHM."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "oscillations-and-waves-q-energy-in-shm-1",
+              "question": "Explain the core concept behind Energy in SHM.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "energy-in-shm"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "energy-in-shm",
+                "conceptSlug": "core-energy-in-shm",
+                "microskillSlug": "understand-energy-in-shm",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            },
+            {
+              "id": "oscillations-and-waves-q-energy-in-shm-2",
+              "question": "What is a common trap associated with Energy in SHM?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "energy-in-shm",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "energy-in-shm",
+                "conceptSlug": "trap-energy-in-shm",
+                "microskillSlug": "avoid-energy-in-shm",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-oscillations-and-waves-spring-oscillator",
+          "title": "Spring oscillator",
+          "conceptTags": [
+            "oscillations-and-waves",
+            "spring-oscillator"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Spring oscillator"
+          ],
+          "mustKnowFacts": [
+            "Spring oscillator is a fundamental subtopic of Oscillations and Waves.",
+            "Crucial to understand the principles governing Spring oscillator for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for spring oscillator",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Spring oscillator during complex MCQs.",
+            "Failing to apply the correct logic for Spring oscillator."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Spring oscillator."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Spring oscillator."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "oscillations-and-waves-q-spring-oscillator-1",
+              "question": "Explain the core concept behind Spring oscillator.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "spring-oscillator"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "spring-oscillator",
+                "conceptSlug": "core-spring-oscillator",
+                "microskillSlug": "understand-spring-oscillator",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            },
+            {
+              "id": "oscillations-and-waves-q-spring-oscillator-2",
+              "question": "What is a common trap associated with Spring oscillator?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "spring-oscillator",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "spring-oscillator",
+                "conceptSlug": "trap-spring-oscillator",
+                "microskillSlug": "avoid-spring-oscillator",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-oscillations-and-waves-simple-pendulum",
+          "title": "Simple pendulum",
+          "conceptTags": [
+            "oscillations-and-waves",
+            "simple-pendulum"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Simple pendulum"
+          ],
+          "mustKnowFacts": [
+            "Simple pendulum is a fundamental subtopic of Oscillations and Waves.",
+            "Crucial to understand the principles governing Simple pendulum for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for simple pendulum",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Simple pendulum during complex MCQs.",
+            "Failing to apply the correct logic for Simple pendulum."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Simple pendulum."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Simple pendulum."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "oscillations-and-waves-q-simple-pendulum-1",
+              "question": "Explain the core concept behind Simple pendulum.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "simple-pendulum"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "simple-pendulum",
+                "conceptSlug": "core-simple-pendulum",
+                "microskillSlug": "understand-simple-pendulum",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            },
+            {
+              "id": "oscillations-and-waves-q-simple-pendulum-2",
+              "question": "What is a common trap associated with Simple pendulum?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "simple-pendulum",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "simple-pendulum",
+                "conceptSlug": "trap-simple-pendulum",
+                "microskillSlug": "avoid-simple-pendulum",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-oscillations-and-waves-damped-forced-resonance-basics",
+          "title": "Damped/forced resonance basics",
+          "conceptTags": [
+            "oscillations-and-waves",
+            "damped-forced-resonance-basics"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Damped/forced resonance basics"
+          ],
+          "mustKnowFacts": [
+            "Damped/forced resonance basics is a fundamental subtopic of Oscillations and Waves.",
+            "Crucial to understand the principles governing Damped/forced resonance basics for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for damped/forced resonance basics",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Damped/forced resonance basics during complex MCQs.",
+            "Failing to apply the correct logic for Damped/forced resonance basics."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Damped/forced resonance basics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Damped/forced resonance basics."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "oscillations-and-waves-q-damped-forced-resonance-basics-1",
+              "question": "Explain the core concept behind Damped/forced resonance basics.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "damped-forced-resonance-basics"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "damped-forced-resonance-basics",
+                "conceptSlug": "core-damped-forced-resonance-basics",
+                "microskillSlug": "understand-damped-forced-resonance-basics",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            },
+            {
+              "id": "oscillations-and-waves-q-damped-forced-resonance-basics-2",
+              "question": "What is a common trap associated with Damped/forced resonance basics?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "damped-forced-resonance-basics",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "damped-forced-resonance-basics",
+                "conceptSlug": "trap-damped-forced-resonance-basics",
+                "microskillSlug": "avoid-damped-forced-resonance-basics",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-oscillations-and-waves-wave-motion",
+          "title": "Wave motion",
+          "conceptTags": [
+            "oscillations-and-waves",
+            "wave-motion"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Wave motion"
+          ],
+          "mustKnowFacts": [
+            "Wave motion is a fundamental subtopic of Oscillations and Waves.",
+            "Crucial to understand the principles governing Wave motion for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for wave motion",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Wave motion during complex MCQs.",
+            "Failing to apply the correct logic for Wave motion."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Wave motion."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Wave motion."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "oscillations-and-waves-q-wave-motion-1",
+              "question": "Explain the core concept behind Wave motion.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "wave-motion"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "wave-motion",
+                "conceptSlug": "core-wave-motion",
+                "microskillSlug": "understand-wave-motion",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            },
+            {
+              "id": "oscillations-and-waves-q-wave-motion-2",
+              "question": "What is a common trap associated with Wave motion?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "wave-motion",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "wave-motion",
+                "conceptSlug": "trap-wave-motion",
+                "microskillSlug": "avoid-wave-motion",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-oscillations-and-waves-3",
+      "title": "Oscillations and Waves - Section 3",
+      "description": "Comprehensive analysis covering longitudinal/transverse waves, wave speed, progressive wave equation and more.",
+      "conceptTags": [
+        "oscillations-and-waves",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-oscillations-and-waves-longitudinal-transverse-waves",
+          "title": "Longitudinal/transverse waves",
+          "conceptTags": [
+            "oscillations-and-waves",
+            "longitudinal-transverse-waves"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Longitudinal/transverse waves"
+          ],
+          "mustKnowFacts": [
+            "Longitudinal/transverse waves is a fundamental subtopic of Oscillations and Waves.",
+            "Crucial to understand the principles governing Longitudinal/transverse waves for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for longitudinal/transverse waves",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Longitudinal/transverse waves during complex MCQs.",
+            "Failing to apply the correct logic for Longitudinal/transverse waves."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Longitudinal/transverse waves."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Longitudinal/transverse waves."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "oscillations-and-waves-q-longitudinal-transverse-waves-1",
+              "question": "Explain the core concept behind Longitudinal/transverse waves.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "longitudinal-transverse-waves"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "longitudinal-transverse-waves",
+                "conceptSlug": "core-longitudinal-transverse-waves",
+                "microskillSlug": "understand-longitudinal-transverse-waves",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            },
+            {
+              "id": "oscillations-and-waves-q-longitudinal-transverse-waves-2",
+              "question": "What is a common trap associated with Longitudinal/transverse waves?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "longitudinal-transverse-waves",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "longitudinal-transverse-waves",
+                "conceptSlug": "trap-longitudinal-transverse-waves",
+                "microskillSlug": "avoid-longitudinal-transverse-waves",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-oscillations-and-waves-wave-speed",
+          "title": "Wave speed",
+          "conceptTags": [
+            "oscillations-and-waves",
+            "wave-speed"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Wave speed"
+          ],
+          "mustKnowFacts": [
+            "Wave speed is a fundamental subtopic of Oscillations and Waves.",
+            "Crucial to understand the principles governing Wave speed for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for wave speed",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Wave speed during complex MCQs.",
+            "Failing to apply the correct logic for Wave speed."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Wave speed."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Wave speed."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "oscillations-and-waves-q-wave-speed-1",
+              "question": "Explain the core concept behind Wave speed.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "wave-speed"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "wave-speed",
+                "conceptSlug": "core-wave-speed",
+                "microskillSlug": "understand-wave-speed",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            },
+            {
+              "id": "oscillations-and-waves-q-wave-speed-2",
+              "question": "What is a common trap associated with Wave speed?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "wave-speed",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "wave-speed",
+                "conceptSlug": "trap-wave-speed",
+                "microskillSlug": "avoid-wave-speed",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-oscillations-and-waves-progressive-wave-equation",
+          "title": "Progressive wave equation",
+          "conceptTags": [
+            "oscillations-and-waves",
+            "progressive-wave-equation"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Progressive wave equation"
+          ],
+          "mustKnowFacts": [
+            "Progressive wave equation is a fundamental subtopic of Oscillations and Waves.",
+            "Crucial to understand the principles governing Progressive wave equation for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for progressive wave equation",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Progressive wave equation during complex MCQs.",
+            "Failing to apply the correct logic for Progressive wave equation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Progressive wave equation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Progressive wave equation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "oscillations-and-waves-q-progressive-wave-equation-1",
+              "question": "Explain the core concept behind Progressive wave equation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "progressive-wave-equation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "progressive-wave-equation",
+                "conceptSlug": "core-progressive-wave-equation",
+                "microskillSlug": "understand-progressive-wave-equation",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            },
+            {
+              "id": "oscillations-and-waves-q-progressive-wave-equation-2",
+              "question": "What is a common trap associated with Progressive wave equation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "progressive-wave-equation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "progressive-wave-equation",
+                "conceptSlug": "trap-progressive-wave-equation",
+                "microskillSlug": "avoid-progressive-wave-equation",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-oscillations-and-waves-superposition",
+          "title": "Superposition",
+          "conceptTags": [
+            "oscillations-and-waves",
+            "superposition"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Superposition"
+          ],
+          "mustKnowFacts": [
+            "Superposition is a fundamental subtopic of Oscillations and Waves.",
+            "Crucial to understand the principles governing Superposition for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for superposition",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Superposition during complex MCQs.",
+            "Failing to apply the correct logic for Superposition."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Superposition."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Superposition."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "oscillations-and-waves-q-superposition-1",
+              "question": "Explain the core concept behind Superposition.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "superposition"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "superposition",
+                "conceptSlug": "core-superposition",
+                "microskillSlug": "understand-superposition",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            },
+            {
+              "id": "oscillations-and-waves-q-superposition-2",
+              "question": "What is a common trap associated with Superposition?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "superposition",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "superposition",
+                "conceptSlug": "trap-superposition",
+                "microskillSlug": "avoid-superposition",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-oscillations-and-waves-reflection",
+          "title": "Reflection",
+          "conceptTags": [
+            "oscillations-and-waves",
+            "reflection"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Reflection"
+          ],
+          "mustKnowFacts": [
+            "Reflection is a fundamental subtopic of Oscillations and Waves.",
+            "Crucial to understand the principles governing Reflection for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for reflection",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Reflection during complex MCQs.",
+            "Failing to apply the correct logic for Reflection."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Reflection."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Reflection."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "oscillations-and-waves-q-reflection-1",
+              "question": "Explain the core concept behind Reflection.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "reflection"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "reflection",
+                "conceptSlug": "core-reflection",
+                "microskillSlug": "understand-reflection",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            },
+            {
+              "id": "oscillations-and-waves-q-reflection-2",
+              "question": "What is a common trap associated with Reflection?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "reflection",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "reflection",
+                "conceptSlug": "trap-reflection",
+                "microskillSlug": "avoid-reflection",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-oscillations-and-waves-standing-waves",
+          "title": "Standing waves",
+          "conceptTags": [
+            "oscillations-and-waves",
+            "standing-waves"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Standing waves"
+          ],
+          "mustKnowFacts": [
+            "Standing waves is a fundamental subtopic of Oscillations and Waves.",
+            "Crucial to understand the principles governing Standing waves for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for standing waves",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Standing waves during complex MCQs.",
+            "Failing to apply the correct logic for Standing waves."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Standing waves."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Standing waves."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "oscillations-and-waves-q-standing-waves-1",
+              "question": "Explain the core concept behind Standing waves.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "standing-waves"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "standing-waves",
+                "conceptSlug": "core-standing-waves",
+                "microskillSlug": "understand-standing-waves",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            },
+            {
+              "id": "oscillations-and-waves-q-standing-waves-2",
+              "question": "What is a common trap associated with Standing waves?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "standing-waves",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "standing-waves",
+                "conceptSlug": "trap-standing-waves",
+                "microskillSlug": "avoid-standing-waves",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-oscillations-and-waves-strings",
+          "title": "Strings",
+          "conceptTags": [
+            "oscillations-and-waves",
+            "strings"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Strings"
+          ],
+          "mustKnowFacts": [
+            "Strings is a fundamental subtopic of Oscillations and Waves.",
+            "Crucial to understand the principles governing Strings for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for strings",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Strings during complex MCQs.",
+            "Failing to apply the correct logic for Strings."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Strings."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Strings."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "oscillations-and-waves-q-strings-1",
+              "question": "Explain the core concept behind Strings.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "strings"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "strings",
+                "conceptSlug": "core-strings",
+                "microskillSlug": "understand-strings",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            },
+            {
+              "id": "oscillations-and-waves-q-strings-2",
+              "question": "What is a common trap associated with Strings?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "strings",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "strings",
+                "conceptSlug": "trap-strings",
+                "microskillSlug": "avoid-strings",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-oscillations-and-waves-4",
+      "title": "Oscillations and Waves - Section 4",
+      "description": "Comprehensive analysis covering organ pipes, harmonics, beats and more.",
+      "conceptTags": [
+        "oscillations-and-waves",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-oscillations-and-waves-organ-pipes",
+          "title": "Organ pipes",
+          "conceptTags": [
+            "oscillations-and-waves",
+            "organ-pipes"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Organ pipes"
+          ],
+          "mustKnowFacts": [
+            "Organ pipes is a fundamental subtopic of Oscillations and Waves.",
+            "Crucial to understand the principles governing Organ pipes for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for organ pipes",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Organ pipes during complex MCQs.",
+            "Failing to apply the correct logic for Organ pipes."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Organ pipes."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Organ pipes."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "oscillations-and-waves-q-organ-pipes-1",
+              "question": "Explain the core concept behind Organ pipes.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "organ-pipes"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "organ-pipes",
+                "conceptSlug": "core-organ-pipes",
+                "microskillSlug": "understand-organ-pipes",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            },
+            {
+              "id": "oscillations-and-waves-q-organ-pipes-2",
+              "question": "What is a common trap associated with Organ pipes?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "organ-pipes",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "organ-pipes",
+                "conceptSlug": "trap-organ-pipes",
+                "microskillSlug": "avoid-organ-pipes",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-oscillations-and-waves-harmonics",
+          "title": "Harmonics",
+          "conceptTags": [
+            "oscillations-and-waves",
+            "harmonics"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Harmonics"
+          ],
+          "mustKnowFacts": [
+            "Harmonics is a fundamental subtopic of Oscillations and Waves.",
+            "Crucial to understand the principles governing Harmonics for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for harmonics",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Harmonics during complex MCQs.",
+            "Failing to apply the correct logic for Harmonics."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Harmonics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Harmonics."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "oscillations-and-waves-q-harmonics-1",
+              "question": "Explain the core concept behind Harmonics.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "harmonics"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "harmonics",
+                "conceptSlug": "core-harmonics",
+                "microskillSlug": "understand-harmonics",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            },
+            {
+              "id": "oscillations-and-waves-q-harmonics-2",
+              "question": "What is a common trap associated with Harmonics?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "harmonics",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "harmonics",
+                "conceptSlug": "trap-harmonics",
+                "microskillSlug": "avoid-harmonics",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-oscillations-and-waves-beats",
+          "title": "Beats",
+          "conceptTags": [
+            "oscillations-and-waves",
+            "beats"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Beats"
+          ],
+          "mustKnowFacts": [
+            "Beats is a fundamental subtopic of Oscillations and Waves.",
+            "Crucial to understand the principles governing Beats for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for beats",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Beats during complex MCQs.",
+            "Failing to apply the correct logic for Beats."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Beats."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Beats."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "oscillations-and-waves-q-beats-1",
+              "question": "Explain the core concept behind Beats.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "beats"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "beats",
+                "conceptSlug": "core-beats",
+                "microskillSlug": "understand-beats",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            },
+            {
+              "id": "oscillations-and-waves-q-beats-2",
+              "question": "What is a common trap associated with Beats?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "beats",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "beats",
+                "conceptSlug": "trap-beats",
+                "microskillSlug": "avoid-beats",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-oscillations-and-waves-doppler-effect",
+          "title": "Doppler effect",
+          "conceptTags": [
+            "oscillations-and-waves",
+            "doppler-effect"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Doppler effect"
+          ],
+          "mustKnowFacts": [
+            "Doppler effect is a fundamental subtopic of Oscillations and Waves.",
+            "Crucial to understand the principles governing Doppler effect for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for Doppler effect",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Doppler effect during complex MCQs.",
+            "Failing to apply the correct logic for Doppler effect."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Doppler effect."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Doppler effect."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "oscillations-and-waves-q-doppler-effect-1",
+              "question": "Explain the core concept behind Doppler effect.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "doppler-effect"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "doppler-effect",
+                "conceptSlug": "core-doppler-effect",
+                "microskillSlug": "understand-doppler-effect",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            },
+            {
+              "id": "oscillations-and-waves-q-doppler-effect-2",
+              "question": "What is a common trap associated with Doppler effect?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "doppler-effect",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "oscillations-and-waves",
+                "subtopicSlug": "doppler-effect",
+                "conceptSlug": "trap-doppler-effect",
+                "microskillSlug": "avoid-doppler-effect",
+                "subject": "Physics",
+                "unitSlug": "oscillations-and-waves",
+                "chapterSlug": "oscillations-and-waves"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

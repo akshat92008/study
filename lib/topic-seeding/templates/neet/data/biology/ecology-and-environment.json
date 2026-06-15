@@ -1,0 +1,3158 @@
+{
+  "missions": [
+    {
+      "id": "m-ecology-and-environment-1",
+      "title": "Ecology and Environment - Section 1",
+      "description": "Comprehensive analysis covering organism and environment, major abiotic factors, adaptations and more.",
+      "conceptTags": [
+        "ecology-and-environment",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-ecology-and-environment-organism-and-environment",
+          "title": "Organism and environment",
+          "conceptTags": [
+            "ecology-and-environment",
+            "organism-and-environment"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Organism and environment"
+          ],
+          "mustKnowFacts": [
+            "Organism and environment is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Organism and environment for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing organism and environment",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of organism and environment",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in organism and environment"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Organism and environment during complex MCQs.",
+            "Failing to apply the correct logic for Organism and environment."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Organism and environment."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Organism and environment."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-organism-and-environment-1",
+              "question": "Explain the core concept behind Organism and environment.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "organism-and-environment"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "organism-and-environment",
+                "conceptSlug": "core-organism-and-environment",
+                "microskillSlug": "understand-organism-and-environment",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-organism-and-environment-2",
+              "question": "What is a common trap associated with Organism and environment?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "organism-and-environment",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "organism-and-environment",
+                "conceptSlug": "trap-organism-and-environment",
+                "microskillSlug": "avoid-organism-and-environment",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-major-abiotic-factors",
+          "title": "Major abiotic factors",
+          "conceptTags": [
+            "ecology-and-environment",
+            "major-abiotic-factors"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Major abiotic factors"
+          ],
+          "mustKnowFacts": [
+            "Major abiotic factors is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Major abiotic factors for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing major abiotic factors",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of major abiotic factors",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in major abiotic factors"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Major abiotic factors during complex MCQs.",
+            "Failing to apply the correct logic for Major abiotic factors."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Major abiotic factors."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Major abiotic factors."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-major-abiotic-factors-1",
+              "question": "Explain the core concept behind Major abiotic factors.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "major-abiotic-factors"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "major-abiotic-factors",
+                "conceptSlug": "core-major-abiotic-factors",
+                "microskillSlug": "understand-major-abiotic-factors",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-major-abiotic-factors-2",
+              "question": "What is a common trap associated with Major abiotic factors?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "major-abiotic-factors",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "major-abiotic-factors",
+                "conceptSlug": "trap-major-abiotic-factors",
+                "microskillSlug": "avoid-major-abiotic-factors",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-adaptations",
+          "title": "Adaptations",
+          "conceptTags": [
+            "ecology-and-environment",
+            "adaptations"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Adaptations"
+          ],
+          "mustKnowFacts": [
+            "Adaptations is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Adaptations for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing adaptations",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of adaptations",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in adaptations"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Adaptations during complex MCQs.",
+            "Failing to apply the correct logic for Adaptations."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Adaptations."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Adaptations."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-adaptations-1",
+              "question": "Explain the core concept behind Adaptations.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "adaptations"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "adaptations",
+                "conceptSlug": "core-adaptations",
+                "microskillSlug": "understand-adaptations",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-adaptations-2",
+              "question": "What is a common trap associated with Adaptations?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "adaptations",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "adaptations",
+                "conceptSlug": "trap-adaptations",
+                "microskillSlug": "avoid-adaptations",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-population-attributes",
+          "title": "Population attributes",
+          "conceptTags": [
+            "ecology-and-environment",
+            "population-attributes"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Population attributes"
+          ],
+          "mustKnowFacts": [
+            "Population attributes is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Population attributes for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing population attributes",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of population attributes",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in population attributes"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Population attributes during complex MCQs.",
+            "Failing to apply the correct logic for Population attributes."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Population attributes."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Population attributes."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-population-attributes-1",
+              "question": "Explain the core concept behind Population attributes.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "population-attributes"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "population-attributes",
+                "conceptSlug": "core-population-attributes",
+                "microskillSlug": "understand-population-attributes",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-population-attributes-2",
+              "question": "What is a common trap associated with Population attributes?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "population-attributes",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "population-attributes",
+                "conceptSlug": "trap-population-attributes",
+                "microskillSlug": "avoid-population-attributes",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-growth-models",
+          "title": "Growth models",
+          "conceptTags": [
+            "ecology-and-environment",
+            "growth-models"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Growth models"
+          ],
+          "mustKnowFacts": [
+            "Growth models is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Growth models for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing growth models",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of growth models",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in growth models"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Growth models during complex MCQs.",
+            "Failing to apply the correct logic for Growth models."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Growth models."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Growth models."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-growth-models-1",
+              "question": "Explain the core concept behind Growth models.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "growth-models"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "growth-models",
+                "conceptSlug": "core-growth-models",
+                "microskillSlug": "understand-growth-models",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-growth-models-2",
+              "question": "What is a common trap associated with Growth models?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "growth-models",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "growth-models",
+                "conceptSlug": "trap-growth-models",
+                "microskillSlug": "avoid-growth-models",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-birth-death-rate",
+          "title": "Birth/death rate",
+          "conceptTags": [
+            "ecology-and-environment",
+            "birth-death-rate"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Birth/death rate"
+          ],
+          "mustKnowFacts": [
+            "Birth/death rate is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Birth/death rate for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing birth/death rate",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of birth/death rate",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in birth/death rate"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Birth/death rate during complex MCQs.",
+            "Failing to apply the correct logic for Birth/death rate."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Birth/death rate."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Birth/death rate."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-birth-death-rate-1",
+              "question": "Explain the core concept behind Birth/death rate.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "birth-death-rate"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "birth-death-rate",
+                "conceptSlug": "core-birth-death-rate",
+                "microskillSlug": "understand-birth-death-rate",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-birth-death-rate-2",
+              "question": "What is a common trap associated with Birth/death rate?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "birth-death-rate",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "birth-death-rate",
+                "conceptSlug": "trap-birth-death-rate",
+                "microskillSlug": "avoid-birth-death-rate",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-age-distribution",
+          "title": "Age distribution",
+          "conceptTags": [
+            "ecology-and-environment",
+            "age-distribution"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Age distribution"
+          ],
+          "mustKnowFacts": [
+            "Age distribution is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Age distribution for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing age distribution",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of age distribution",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in age distribution"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Age distribution during complex MCQs.",
+            "Failing to apply the correct logic for Age distribution."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Age distribution."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Age distribution."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-age-distribution-1",
+              "question": "Explain the core concept behind Age distribution.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "age-distribution"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "age-distribution",
+                "conceptSlug": "core-age-distribution",
+                "microskillSlug": "understand-age-distribution",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-age-distribution-2",
+              "question": "What is a common trap associated with Age distribution?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "age-distribution",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "age-distribution",
+                "conceptSlug": "trap-age-distribution",
+                "microskillSlug": "avoid-age-distribution",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-population-interactions",
+          "title": "Population interactions",
+          "conceptTags": [
+            "ecology-and-environment",
+            "population-interactions"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Population interactions"
+          ],
+          "mustKnowFacts": [
+            "Population interactions is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Population interactions for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing population interactions",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of population interactions",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in population interactions"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Population interactions during complex MCQs.",
+            "Failing to apply the correct logic for Population interactions."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Population interactions."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Population interactions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-population-interactions-1",
+              "question": "Explain the core concept behind Population interactions.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "population-interactions"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "population-interactions",
+                "conceptSlug": "core-population-interactions",
+                "microskillSlug": "understand-population-interactions",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-population-interactions-2",
+              "question": "What is a common trap associated with Population interactions?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "population-interactions",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "population-interactions",
+                "conceptSlug": "trap-population-interactions",
+                "microskillSlug": "avoid-population-interactions",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-mutualism",
+          "title": "Mutualism",
+          "conceptTags": [
+            "ecology-and-environment",
+            "mutualism"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Mutualism"
+          ],
+          "mustKnowFacts": [
+            "Mutualism is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Mutualism for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing mutualism",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of mutualism",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in mutualism"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Mutualism during complex MCQs.",
+            "Failing to apply the correct logic for Mutualism."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Mutualism."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Mutualism."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-mutualism-1",
+              "question": "Explain the core concept behind Mutualism.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "mutualism"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "mutualism",
+                "conceptSlug": "core-mutualism",
+                "microskillSlug": "understand-mutualism",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-mutualism-2",
+              "question": "What is a common trap associated with Mutualism?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "mutualism",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "mutualism",
+                "conceptSlug": "trap-mutualism",
+                "microskillSlug": "avoid-mutualism",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-ecology-and-environment-2",
+      "title": "Ecology and Environment - Section 2",
+      "description": "Comprehensive analysis covering competition, predation, parasitism and more.",
+      "conceptTags": [
+        "ecology-and-environment",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-ecology-and-environment-competition",
+          "title": "Competition",
+          "conceptTags": [
+            "ecology-and-environment",
+            "competition"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Competition"
+          ],
+          "mustKnowFacts": [
+            "Competition is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Competition for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing competition",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of competition",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in competition"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Competition during complex MCQs.",
+            "Failing to apply the correct logic for Competition."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Competition."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Competition."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-competition-1",
+              "question": "Explain the core concept behind Competition.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "competition"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "competition",
+                "conceptSlug": "core-competition",
+                "microskillSlug": "understand-competition",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-competition-2",
+              "question": "What is a common trap associated with Competition?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "competition",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "competition",
+                "conceptSlug": "trap-competition",
+                "microskillSlug": "avoid-competition",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-predation",
+          "title": "Predation",
+          "conceptTags": [
+            "ecology-and-environment",
+            "predation"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Predation"
+          ],
+          "mustKnowFacts": [
+            "Predation is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Predation for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing predation",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of predation",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in predation"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Predation during complex MCQs.",
+            "Failing to apply the correct logic for Predation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Predation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Predation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-predation-1",
+              "question": "Explain the core concept behind Predation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "predation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "predation",
+                "conceptSlug": "core-predation",
+                "microskillSlug": "understand-predation",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-predation-2",
+              "question": "What is a common trap associated with Predation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "predation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "predation",
+                "conceptSlug": "trap-predation",
+                "microskillSlug": "avoid-predation",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-parasitism",
+          "title": "Parasitism",
+          "conceptTags": [
+            "ecology-and-environment",
+            "parasitism"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Parasitism"
+          ],
+          "mustKnowFacts": [
+            "Parasitism is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Parasitism for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing parasitism",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of parasitism",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in parasitism"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Parasitism during complex MCQs.",
+            "Failing to apply the correct logic for Parasitism."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Parasitism."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Parasitism."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-parasitism-1",
+              "question": "Explain the core concept behind Parasitism.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "parasitism"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "parasitism",
+                "conceptSlug": "core-parasitism",
+                "microskillSlug": "understand-parasitism",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-parasitism-2",
+              "question": "What is a common trap associated with Parasitism?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "parasitism",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "parasitism",
+                "conceptSlug": "trap-parasitism",
+                "microskillSlug": "avoid-parasitism",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-ecosystem-components",
+          "title": "Ecosystem components",
+          "conceptTags": [
+            "ecology-and-environment",
+            "ecosystem-components"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Ecosystem components"
+          ],
+          "mustKnowFacts": [
+            "Ecosystem components is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Ecosystem components for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing ecosystem components",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of ecosystem components",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in ecosystem components"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Ecosystem components during complex MCQs.",
+            "Failing to apply the correct logic for Ecosystem components."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Ecosystem components."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Ecosystem components."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-ecosystem-components-1",
+              "question": "Explain the core concept behind Ecosystem components.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "ecosystem-components"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "ecosystem-components",
+                "conceptSlug": "core-ecosystem-components",
+                "microskillSlug": "understand-ecosystem-components",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-ecosystem-components-2",
+              "question": "What is a common trap associated with Ecosystem components?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "ecosystem-components",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "ecosystem-components",
+                "conceptSlug": "trap-ecosystem-components",
+                "microskillSlug": "avoid-ecosystem-components",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-productivity",
+          "title": "Productivity",
+          "conceptTags": [
+            "ecology-and-environment",
+            "productivity"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Productivity"
+          ],
+          "mustKnowFacts": [
+            "Productivity is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Productivity for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing productivity",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of productivity",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in productivity"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Productivity during complex MCQs.",
+            "Failing to apply the correct logic for Productivity."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Productivity."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Productivity."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-productivity-1",
+              "question": "Explain the core concept behind Productivity.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "productivity"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "productivity",
+                "conceptSlug": "core-productivity",
+                "microskillSlug": "understand-productivity",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-productivity-2",
+              "question": "What is a common trap associated with Productivity?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "productivity",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "productivity",
+                "conceptSlug": "trap-productivity",
+                "microskillSlug": "avoid-productivity",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-decomposition",
+          "title": "Decomposition",
+          "conceptTags": [
+            "ecology-and-environment",
+            "decomposition"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Decomposition"
+          ],
+          "mustKnowFacts": [
+            "Decomposition is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Decomposition for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing decomposition",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of decomposition",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in decomposition"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Decomposition during complex MCQs.",
+            "Failing to apply the correct logic for Decomposition."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Decomposition."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Decomposition."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-decomposition-1",
+              "question": "Explain the core concept behind Decomposition.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "decomposition"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "decomposition",
+                "conceptSlug": "core-decomposition",
+                "microskillSlug": "understand-decomposition",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-decomposition-2",
+              "question": "What is a common trap associated with Decomposition?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "decomposition",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "decomposition",
+                "conceptSlug": "trap-decomposition",
+                "microskillSlug": "avoid-decomposition",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-energy-flow",
+          "title": "Energy flow",
+          "conceptTags": [
+            "ecology-and-environment",
+            "energy-flow"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Energy flow"
+          ],
+          "mustKnowFacts": [
+            "Energy flow is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Energy flow for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing energy flow",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of energy flow",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in energy flow"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Energy flow during complex MCQs.",
+            "Failing to apply the correct logic for Energy flow."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Energy flow."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Energy flow."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-energy-flow-1",
+              "question": "Explain the core concept behind Energy flow.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "energy-flow"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "energy-flow",
+                "conceptSlug": "core-energy-flow",
+                "microskillSlug": "understand-energy-flow",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-energy-flow-2",
+              "question": "What is a common trap associated with Energy flow?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "energy-flow",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "energy-flow",
+                "conceptSlug": "trap-energy-flow",
+                "microskillSlug": "avoid-energy-flow",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-food-chain",
+          "title": "Food chain",
+          "conceptTags": [
+            "ecology-and-environment",
+            "food-chain"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Food chain"
+          ],
+          "mustKnowFacts": [
+            "Food chain is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Food chain for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing food chain",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of food chain",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in food chain"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Food chain during complex MCQs.",
+            "Failing to apply the correct logic for Food chain."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Food chain."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Food chain."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-food-chain-1",
+              "question": "Explain the core concept behind Food chain.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "food-chain"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "food-chain",
+                "conceptSlug": "core-food-chain",
+                "microskillSlug": "understand-food-chain",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-food-chain-2",
+              "question": "What is a common trap associated with Food chain?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "food-chain",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "food-chain",
+                "conceptSlug": "trap-food-chain",
+                "microskillSlug": "avoid-food-chain",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-food-web",
+          "title": "Food web",
+          "conceptTags": [
+            "ecology-and-environment",
+            "food-web"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Food web"
+          ],
+          "mustKnowFacts": [
+            "Food web is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Food web for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing food web",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of food web",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in food web"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Food web during complex MCQs.",
+            "Failing to apply the correct logic for Food web."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Food web."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Food web."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-food-web-1",
+              "question": "Explain the core concept behind Food web.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "food-web"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "food-web",
+                "conceptSlug": "core-food-web",
+                "microskillSlug": "understand-food-web",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-food-web-2",
+              "question": "What is a common trap associated with Food web?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "food-web",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "food-web",
+                "conceptSlug": "trap-food-web",
+                "microskillSlug": "avoid-food-web",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-ecology-and-environment-3",
+      "title": "Ecology and Environment - Section 3",
+      "description": "Comprehensive analysis covering ecological pyramids, nutrient cycling, succession and more.",
+      "conceptTags": [
+        "ecology-and-environment",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-ecology-and-environment-ecological-pyramids",
+          "title": "Ecological pyramids",
+          "conceptTags": [
+            "ecology-and-environment",
+            "ecological-pyramids"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Ecological pyramids"
+          ],
+          "mustKnowFacts": [
+            "Ecological pyramids is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Ecological pyramids for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing ecological pyramids",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of ecological pyramids",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in ecological pyramids"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Ecological pyramids during complex MCQs.",
+            "Failing to apply the correct logic for Ecological pyramids."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Ecological pyramids."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Ecological pyramids."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-ecological-pyramids-1",
+              "question": "Explain the core concept behind Ecological pyramids.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "ecological-pyramids"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "ecological-pyramids",
+                "conceptSlug": "core-ecological-pyramids",
+                "microskillSlug": "understand-ecological-pyramids",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-ecological-pyramids-2",
+              "question": "What is a common trap associated with Ecological pyramids?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "ecological-pyramids",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "ecological-pyramids",
+                "conceptSlug": "trap-ecological-pyramids",
+                "microskillSlug": "avoid-ecological-pyramids",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-nutrient-cycling",
+          "title": "Nutrient cycling",
+          "conceptTags": [
+            "ecology-and-environment",
+            "nutrient-cycling"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Nutrient cycling"
+          ],
+          "mustKnowFacts": [
+            "Nutrient cycling is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Nutrient cycling for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing nutrient cycling",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of nutrient cycling",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in nutrient cycling"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Nutrient cycling during complex MCQs.",
+            "Failing to apply the correct logic for Nutrient cycling."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Nutrient cycling."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Nutrient cycling."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-nutrient-cycling-1",
+              "question": "Explain the core concept behind Nutrient cycling.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "nutrient-cycling"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "nutrient-cycling",
+                "conceptSlug": "core-nutrient-cycling",
+                "microskillSlug": "understand-nutrient-cycling",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-nutrient-cycling-2",
+              "question": "What is a common trap associated with Nutrient cycling?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "nutrient-cycling",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "nutrient-cycling",
+                "conceptSlug": "trap-nutrient-cycling",
+                "microskillSlug": "avoid-nutrient-cycling",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-succession",
+          "title": "Succession",
+          "conceptTags": [
+            "ecology-and-environment",
+            "succession"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Succession"
+          ],
+          "mustKnowFacts": [
+            "Succession is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Succession for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing succession",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of succession",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in succession"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Succession during complex MCQs.",
+            "Failing to apply the correct logic for Succession."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Succession."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Succession."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-succession-1",
+              "question": "Explain the core concept behind Succession.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "succession"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "succession",
+                "conceptSlug": "core-succession",
+                "microskillSlug": "understand-succession",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-succession-2",
+              "question": "What is a common trap associated with Succession?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "succession",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "succession",
+                "conceptSlug": "trap-succession",
+                "microskillSlug": "avoid-succession",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-biodiversity-levels",
+          "title": "Biodiversity levels",
+          "conceptTags": [
+            "ecology-and-environment",
+            "biodiversity-levels"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Biodiversity levels"
+          ],
+          "mustKnowFacts": [
+            "Biodiversity levels is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Biodiversity levels for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing biodiversity levels",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of biodiversity levels",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in biodiversity levels"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Biodiversity levels during complex MCQs.",
+            "Failing to apply the correct logic for Biodiversity levels."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Biodiversity levels."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Biodiversity levels."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-biodiversity-levels-1",
+              "question": "Explain the core concept behind Biodiversity levels.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "biodiversity-levels"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "biodiversity-levels",
+                "conceptSlug": "core-biodiversity-levels",
+                "microskillSlug": "understand-biodiversity-levels",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-biodiversity-levels-2",
+              "question": "What is a common trap associated with Biodiversity levels?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "biodiversity-levels",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "biodiversity-levels",
+                "conceptSlug": "trap-biodiversity-levels",
+                "microskillSlug": "avoid-biodiversity-levels",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-patterns",
+          "title": "Patterns",
+          "conceptTags": [
+            "ecology-and-environment",
+            "patterns"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Patterns"
+          ],
+          "mustKnowFacts": [
+            "Patterns is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Patterns for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing patterns",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of patterns",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in patterns"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Patterns during complex MCQs.",
+            "Failing to apply the correct logic for Patterns."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Patterns."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Patterns."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-patterns-1",
+              "question": "Explain the core concept behind Patterns.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "patterns"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "patterns",
+                "conceptSlug": "core-patterns",
+                "microskillSlug": "understand-patterns",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-patterns-2",
+              "question": "What is a common trap associated with Patterns?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "patterns",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "patterns",
+                "conceptSlug": "trap-patterns",
+                "microskillSlug": "avoid-patterns",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-importance",
+          "title": "Importance",
+          "conceptTags": [
+            "ecology-and-environment",
+            "importance"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Importance"
+          ],
+          "mustKnowFacts": [
+            "Importance is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Importance for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing importance",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of importance",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in importance"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Importance during complex MCQs.",
+            "Failing to apply the correct logic for Importance."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Importance."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Importance."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-importance-1",
+              "question": "Explain the core concept behind Importance.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "importance"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "importance",
+                "conceptSlug": "core-importance",
+                "microskillSlug": "understand-importance",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-importance-2",
+              "question": "What is a common trap associated with Importance?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "importance",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "importance",
+                "conceptSlug": "trap-importance",
+                "microskillSlug": "avoid-importance",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-loss",
+          "title": "Loss",
+          "conceptTags": [
+            "ecology-and-environment",
+            "loss"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Loss"
+          ],
+          "mustKnowFacts": [
+            "Loss is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Loss for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing loss",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of loss",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in loss"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Loss during complex MCQs.",
+            "Failing to apply the correct logic for Loss."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Loss."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Loss."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-loss-1",
+              "question": "Explain the core concept behind Loss.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "loss"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "loss",
+                "conceptSlug": "core-loss",
+                "microskillSlug": "understand-loss",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-loss-2",
+              "question": "What is a common trap associated with Loss?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "loss",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "loss",
+                "conceptSlug": "trap-loss",
+                "microskillSlug": "avoid-loss",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-extinction",
+          "title": "Extinction",
+          "conceptTags": [
+            "ecology-and-environment",
+            "extinction"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Extinction"
+          ],
+          "mustKnowFacts": [
+            "Extinction is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Extinction for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing extinction",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of extinction",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in extinction"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Extinction during complex MCQs.",
+            "Failing to apply the correct logic for Extinction."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Extinction."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Extinction."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-extinction-1",
+              "question": "Explain the core concept behind Extinction.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "extinction"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "extinction",
+                "conceptSlug": "core-extinction",
+                "microskillSlug": "understand-extinction",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-extinction-2",
+              "question": "What is a common trap associated with Extinction?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "extinction",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "extinction",
+                "conceptSlug": "trap-extinction",
+                "microskillSlug": "avoid-extinction",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-hotspots",
+          "title": "Hotspots",
+          "conceptTags": [
+            "ecology-and-environment",
+            "hotspots"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Hotspots"
+          ],
+          "mustKnowFacts": [
+            "Hotspots is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Hotspots for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing hotspots",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of hotspots",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in hotspots"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Hotspots during complex MCQs.",
+            "Failing to apply the correct logic for Hotspots."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Hotspots."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Hotspots."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-hotspots-1",
+              "question": "Explain the core concept behind Hotspots.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "hotspots"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "hotspots",
+                "conceptSlug": "core-hotspots",
+                "microskillSlug": "understand-hotspots",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-hotspots-2",
+              "question": "What is a common trap associated with Hotspots?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "hotspots",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "hotspots",
+                "conceptSlug": "trap-hotspots",
+                "microskillSlug": "avoid-hotspots",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-ecology-and-environment-4",
+      "title": "Ecology and Environment - Section 4",
+      "description": "Comprehensive analysis covering endangered organisms, Red Data Book, biosphere reserves and more.",
+      "conceptTags": [
+        "ecology-and-environment",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-ecology-and-environment-endangered-organisms",
+          "title": "Endangered organisms",
+          "conceptTags": [
+            "ecology-and-environment",
+            "endangered-organisms"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Endangered organisms"
+          ],
+          "mustKnowFacts": [
+            "Endangered organisms is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Endangered organisms for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing endangered organisms",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of endangered organisms",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in endangered organisms"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Endangered organisms during complex MCQs.",
+            "Failing to apply the correct logic for Endangered organisms."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Endangered organisms."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Endangered organisms."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-endangered-organisms-1",
+              "question": "Explain the core concept behind Endangered organisms.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "endangered-organisms"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "endangered-organisms",
+                "conceptSlug": "core-endangered-organisms",
+                "microskillSlug": "understand-endangered-organisms",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-endangered-organisms-2",
+              "question": "What is a common trap associated with Endangered organisms?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "endangered-organisms",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "endangered-organisms",
+                "conceptSlug": "trap-endangered-organisms",
+                "microskillSlug": "avoid-endangered-organisms",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-red-data-book",
+          "title": "Red Data Book",
+          "conceptTags": [
+            "ecology-and-environment",
+            "red-data-book"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Red Data Book"
+          ],
+          "mustKnowFacts": [
+            "Red Data Book is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Red Data Book for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing Red Data Book",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of Red Data Book",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in Red Data Book"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Red Data Book during complex MCQs.",
+            "Failing to apply the correct logic for Red Data Book."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Red Data Book."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Red Data Book."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-red-data-book-1",
+              "question": "Explain the core concept behind Red Data Book.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "red-data-book"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "red-data-book",
+                "conceptSlug": "core-red-data-book",
+                "microskillSlug": "understand-red-data-book",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-red-data-book-2",
+              "question": "What is a common trap associated with Red Data Book?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "red-data-book",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "red-data-book",
+                "conceptSlug": "trap-red-data-book",
+                "microskillSlug": "avoid-red-data-book",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-biosphere-reserves",
+          "title": "Biosphere reserves",
+          "conceptTags": [
+            "ecology-and-environment",
+            "biosphere-reserves"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Biosphere reserves"
+          ],
+          "mustKnowFacts": [
+            "Biosphere reserves is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Biosphere reserves for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing biosphere reserves",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of biosphere reserves",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in biosphere reserves"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Biosphere reserves during complex MCQs.",
+            "Failing to apply the correct logic for Biosphere reserves."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Biosphere reserves."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Biosphere reserves."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-biosphere-reserves-1",
+              "question": "Explain the core concept behind Biosphere reserves.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "biosphere-reserves"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "biosphere-reserves",
+                "conceptSlug": "core-biosphere-reserves",
+                "microskillSlug": "understand-biosphere-reserves",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-biosphere-reserves-2",
+              "question": "What is a common trap associated with Biosphere reserves?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "biosphere-reserves",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "biosphere-reserves",
+                "conceptSlug": "trap-biosphere-reserves",
+                "microskillSlug": "avoid-biosphere-reserves",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-national-parks",
+          "title": "National parks",
+          "conceptTags": [
+            "ecology-and-environment",
+            "national-parks"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, National parks"
+          ],
+          "mustKnowFacts": [
+            "National parks is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing National parks for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing national parks",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of national parks",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in national parks"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret National parks during complex MCQs.",
+            "Failing to apply the correct logic for National parks."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to National parks."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about National parks."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-national-parks-1",
+              "question": "Explain the core concept behind National parks.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "national-parks"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "national-parks",
+                "conceptSlug": "core-national-parks",
+                "microskillSlug": "understand-national-parks",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-national-parks-2",
+              "question": "What is a common trap associated with National parks?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "national-parks",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "national-parks",
+                "conceptSlug": "trap-national-parks",
+                "microskillSlug": "avoid-national-parks",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-sanctuaries",
+          "title": "Sanctuaries",
+          "conceptTags": [
+            "ecology-and-environment",
+            "sanctuaries"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Sanctuaries"
+          ],
+          "mustKnowFacts": [
+            "Sanctuaries is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Sanctuaries for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing sanctuaries",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of sanctuaries",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in sanctuaries"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Sanctuaries during complex MCQs.",
+            "Failing to apply the correct logic for Sanctuaries."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Sanctuaries."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Sanctuaries."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-sanctuaries-1",
+              "question": "Explain the core concept behind Sanctuaries.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "sanctuaries"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "sanctuaries",
+                "conceptSlug": "core-sanctuaries",
+                "microskillSlug": "understand-sanctuaries",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-sanctuaries-2",
+              "question": "What is a common trap associated with Sanctuaries?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "sanctuaries",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "sanctuaries",
+                "conceptSlug": "trap-sanctuaries",
+                "microskillSlug": "avoid-sanctuaries",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-ecology-and-environment-sacred-groves",
+          "title": "Sacred groves",
+          "conceptTags": [
+            "ecology-and-environment",
+            "sacred-groves"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Sacred groves"
+          ],
+          "mustKnowFacts": [
+            "Sacred groves is a fundamental subtopic of Ecology and Environment.",
+            "Crucial to understand the principles governing Sacred groves for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing sacred groves",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of sacred groves",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in sacred groves"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Sacred groves during complex MCQs.",
+            "Failing to apply the correct logic for Sacred groves."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Sacred groves."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Sacred groves."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "ecology-and-environment-q-sacred-groves-1",
+              "question": "Explain the core concept behind Sacred groves.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "sacred-groves"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "sacred-groves",
+                "conceptSlug": "core-sacred-groves",
+                "microskillSlug": "understand-sacred-groves",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            },
+            {
+              "id": "ecology-and-environment-q-sacred-groves-2",
+              "question": "What is a common trap associated with Sacred groves?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "sacred-groves",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "ecology-and-environment",
+                "subtopicSlug": "sacred-groves",
+                "conceptSlug": "trap-sacred-groves",
+                "microskillSlug": "avoid-sacred-groves",
+                "subject": "Biology",
+                "unitSlug": "ecology-and-environment",
+                "chapterSlug": "ecology-and-environment"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

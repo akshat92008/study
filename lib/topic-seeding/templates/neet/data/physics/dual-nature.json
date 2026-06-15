@@ -1,0 +1,1421 @@
+{
+  "missions": [
+    {
+      "id": "m-dual-nature-1",
+      "title": "Dual Nature of Matter and Radiation - Section 1",
+      "description": "Comprehensive analysis covering electron emission, photoelectric effect, stopping potential and more.",
+      "conceptTags": [
+        "dual-nature",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-dual-nature-electron-emission",
+          "title": "Electron emission",
+          "conceptTags": [
+            "dual-nature",
+            "electron-emission"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Electron emission"
+          ],
+          "mustKnowFacts": [
+            "Electron emission is a fundamental subtopic of Dual Nature of Matter and Radiation.",
+            "Crucial to understand the principles governing Electron emission for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for electron emission",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Electron emission during complex MCQs.",
+            "Failing to apply the correct logic for Electron emission."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Electron emission."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Electron emission."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "dual-nature-q-electron-emission-1",
+              "question": "Explain the core concept behind Electron emission.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "electron-emission"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "electron-emission",
+                "conceptSlug": "core-electron-emission",
+                "microskillSlug": "understand-electron-emission",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            },
+            {
+              "id": "dual-nature-q-electron-emission-2",
+              "question": "What is a common trap associated with Electron emission?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "electron-emission",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "electron-emission",
+                "conceptSlug": "trap-electron-emission",
+                "microskillSlug": "avoid-electron-emission",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-dual-nature-photoelectric-effect",
+          "title": "Photoelectric effect",
+          "conceptTags": [
+            "dual-nature",
+            "photoelectric-effect"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Photoelectric effect"
+          ],
+          "mustKnowFacts": [
+            "Photoelectric effect is a fundamental subtopic of Dual Nature of Matter and Radiation.",
+            "Crucial to understand the principles governing Photoelectric effect for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for photoelectric effect",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Photoelectric effect during complex MCQs.",
+            "Failing to apply the correct logic for Photoelectric effect."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Photoelectric effect."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Photoelectric effect."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "dual-nature-q-photoelectric-effect-1",
+              "question": "Explain the core concept behind Photoelectric effect.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "photoelectric-effect"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "photoelectric-effect",
+                "conceptSlug": "core-photoelectric-effect",
+                "microskillSlug": "understand-photoelectric-effect",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            },
+            {
+              "id": "dual-nature-q-photoelectric-effect-2",
+              "question": "What is a common trap associated with Photoelectric effect?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "photoelectric-effect",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "photoelectric-effect",
+                "conceptSlug": "trap-photoelectric-effect",
+                "microskillSlug": "avoid-photoelectric-effect",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-dual-nature-stopping-potential",
+          "title": "Stopping potential",
+          "conceptTags": [
+            "dual-nature",
+            "stopping-potential"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Stopping potential"
+          ],
+          "mustKnowFacts": [
+            "Stopping potential is a fundamental subtopic of Dual Nature of Matter and Radiation.",
+            "Crucial to understand the principles governing Stopping potential for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for stopping potential",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Stopping potential during complex MCQs.",
+            "Failing to apply the correct logic for Stopping potential."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Stopping potential."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Stopping potential."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "dual-nature-q-stopping-potential-1",
+              "question": "Explain the core concept behind Stopping potential.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "stopping-potential"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "stopping-potential",
+                "conceptSlug": "core-stopping-potential",
+                "microskillSlug": "understand-stopping-potential",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            },
+            {
+              "id": "dual-nature-q-stopping-potential-2",
+              "question": "What is a common trap associated with Stopping potential?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "stopping-potential",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "stopping-potential",
+                "conceptSlug": "trap-stopping-potential",
+                "microskillSlug": "avoid-stopping-potential",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-dual-nature-threshold-frequency",
+          "title": "Threshold frequency",
+          "conceptTags": [
+            "dual-nature",
+            "threshold-frequency"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Threshold frequency"
+          ],
+          "mustKnowFacts": [
+            "Threshold frequency is a fundamental subtopic of Dual Nature of Matter and Radiation.",
+            "Crucial to understand the principles governing Threshold frequency for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for threshold frequency",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Threshold frequency during complex MCQs.",
+            "Failing to apply the correct logic for Threshold frequency."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Threshold frequency."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Threshold frequency."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "dual-nature-q-threshold-frequency-1",
+              "question": "Explain the core concept behind Threshold frequency.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "threshold-frequency"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "threshold-frequency",
+                "conceptSlug": "core-threshold-frequency",
+                "microskillSlug": "understand-threshold-frequency",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            },
+            {
+              "id": "dual-nature-q-threshold-frequency-2",
+              "question": "What is a common trap associated with Threshold frequency?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "threshold-frequency",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "threshold-frequency",
+                "conceptSlug": "trap-threshold-frequency",
+                "microskillSlug": "avoid-threshold-frequency",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-dual-nature-2",
+      "title": "Dual Nature of Matter and Radiation - Section 2",
+      "description": "Comprehensive analysis covering work function, Einstein photoelectric equation, intensity vs frequency effects and more.",
+      "conceptTags": [
+        "dual-nature",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-dual-nature-work-function",
+          "title": "Work function",
+          "conceptTags": [
+            "dual-nature",
+            "work-function"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Work function"
+          ],
+          "mustKnowFacts": [
+            "Work function is a fundamental subtopic of Dual Nature of Matter and Radiation.",
+            "Crucial to understand the principles governing Work function for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for work function",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Work function during complex MCQs.",
+            "Failing to apply the correct logic for Work function."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Work function."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Work function."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "dual-nature-q-work-function-1",
+              "question": "Explain the core concept behind Work function.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "work-function"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "work-function",
+                "conceptSlug": "core-work-function",
+                "microskillSlug": "understand-work-function",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            },
+            {
+              "id": "dual-nature-q-work-function-2",
+              "question": "What is a common trap associated with Work function?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "work-function",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "work-function",
+                "conceptSlug": "trap-work-function",
+                "microskillSlug": "avoid-work-function",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-dual-nature-einstein-photoelectric-equation",
+          "title": "Einstein photoelectric equation",
+          "conceptTags": [
+            "dual-nature",
+            "einstein-photoelectric-equation"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Einstein photoelectric equation"
+          ],
+          "mustKnowFacts": [
+            "Einstein photoelectric equation is a fundamental subtopic of Dual Nature of Matter and Radiation.",
+            "Crucial to understand the principles governing Einstein photoelectric equation for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for Einstein photoelectric equation",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Einstein photoelectric equation during complex MCQs.",
+            "Failing to apply the correct logic for Einstein photoelectric equation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Einstein photoelectric equation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Einstein photoelectric equation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "dual-nature-q-einstein-photoelectric-equation-1",
+              "question": "Explain the core concept behind Einstein photoelectric equation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "einstein-photoelectric-equation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "einstein-photoelectric-equation",
+                "conceptSlug": "core-einstein-photoelectric-equation",
+                "microskillSlug": "understand-einstein-photoelectric-equation",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            },
+            {
+              "id": "dual-nature-q-einstein-photoelectric-equation-2",
+              "question": "What is a common trap associated with Einstein photoelectric equation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "einstein-photoelectric-equation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "einstein-photoelectric-equation",
+                "conceptSlug": "trap-einstein-photoelectric-equation",
+                "microskillSlug": "avoid-einstein-photoelectric-equation",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-dual-nature-intensity-vs-frequency-effects",
+          "title": "Intensity vs frequency effects",
+          "conceptTags": [
+            "dual-nature",
+            "intensity-vs-frequency-effects"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Intensity vs frequency effects"
+          ],
+          "mustKnowFacts": [
+            "Intensity vs frequency effects is a fundamental subtopic of Dual Nature of Matter and Radiation.",
+            "Crucial to understand the principles governing Intensity vs frequency effects for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for intensity vs frequency effects",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Intensity vs frequency effects during complex MCQs.",
+            "Failing to apply the correct logic for Intensity vs frequency effects."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Intensity vs frequency effects."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Intensity vs frequency effects."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "dual-nature-q-intensity-vs-frequency-effects-1",
+              "question": "Explain the core concept behind Intensity vs frequency effects.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "intensity-vs-frequency-effects"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "intensity-vs-frequency-effects",
+                "conceptSlug": "core-intensity-vs-frequency-effects",
+                "microskillSlug": "understand-intensity-vs-frequency-effects",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            },
+            {
+              "id": "dual-nature-q-intensity-vs-frequency-effects-2",
+              "question": "What is a common trap associated with Intensity vs frequency effects?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "intensity-vs-frequency-effects",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "intensity-vs-frequency-effects",
+                "conceptSlug": "trap-intensity-vs-frequency-effects",
+                "microskillSlug": "avoid-intensity-vs-frequency-effects",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-dual-nature-de-broglie-wavelength",
+          "title": "De Broglie wavelength",
+          "conceptTags": [
+            "dual-nature",
+            "de-broglie-wavelength"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, De Broglie wavelength"
+          ],
+          "mustKnowFacts": [
+            "De Broglie wavelength is a fundamental subtopic of Dual Nature of Matter and Radiation.",
+            "Crucial to understand the principles governing De Broglie wavelength for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for de Broglie wavelength",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret De Broglie wavelength during complex MCQs.",
+            "Failing to apply the correct logic for De Broglie wavelength."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to De Broglie wavelength."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about De Broglie wavelength."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "dual-nature-q-de-broglie-wavelength-1",
+              "question": "Explain the core concept behind De Broglie wavelength.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "de-broglie-wavelength"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "de-broglie-wavelength",
+                "conceptSlug": "core-de-broglie-wavelength",
+                "microskillSlug": "understand-de-broglie-wavelength",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            },
+            {
+              "id": "dual-nature-q-de-broglie-wavelength-2",
+              "question": "What is a common trap associated with De Broglie wavelength?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "de-broglie-wavelength",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "de-broglie-wavelength",
+                "conceptSlug": "trap-de-broglie-wavelength",
+                "microskillSlug": "avoid-de-broglie-wavelength",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-dual-nature-3",
+      "title": "Dual Nature of Matter and Radiation - Section 3",
+      "description": "Comprehensive analysis covering Davisson-Germer experiment, matter wave traps, photon theory of light and more.",
+      "conceptTags": [
+        "dual-nature",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-dual-nature-davisson-germer-experiment",
+          "title": "Davisson-Germer experiment",
+          "conceptTags": [
+            "dual-nature",
+            "davisson-germer-experiment"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Davisson-Germer experiment"
+          ],
+          "mustKnowFacts": [
+            "Davisson-Germer experiment is a fundamental subtopic of Dual Nature of Matter and Radiation.",
+            "Crucial to understand the principles governing Davisson-Germer experiment for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for Davisson-Germer experiment",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Davisson-Germer experiment during complex MCQs.",
+            "Failing to apply the correct logic for Davisson-Germer experiment."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Davisson-Germer experiment."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Davisson-Germer experiment."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "dual-nature-q-davisson-germer-experiment-1",
+              "question": "Explain the core concept behind Davisson-Germer experiment.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "davisson-germer-experiment"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "davisson-germer-experiment",
+                "conceptSlug": "core-davisson-germer-experiment",
+                "microskillSlug": "understand-davisson-germer-experiment",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            },
+            {
+              "id": "dual-nature-q-davisson-germer-experiment-2",
+              "question": "What is a common trap associated with Davisson-Germer experiment?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "davisson-germer-experiment",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "davisson-germer-experiment",
+                "conceptSlug": "trap-davisson-germer-experiment",
+                "microskillSlug": "avoid-davisson-germer-experiment",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-dual-nature-matter-wave-traps",
+          "title": "Matter wave traps",
+          "conceptTags": [
+            "dual-nature",
+            "matter-wave-traps"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Matter wave traps"
+          ],
+          "mustKnowFacts": [
+            "Matter wave traps is a fundamental subtopic of Dual Nature of Matter and Radiation.",
+            "Crucial to understand the principles governing Matter wave traps for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for matter wave traps",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Matter wave traps during complex MCQs.",
+            "Failing to apply the correct logic for Matter wave traps."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Matter wave traps."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Matter wave traps."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "dual-nature-q-matter-wave-traps-1",
+              "question": "Explain the core concept behind Matter wave traps.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "matter-wave-traps"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "matter-wave-traps",
+                "conceptSlug": "core-matter-wave-traps",
+                "microskillSlug": "understand-matter-wave-traps",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            },
+            {
+              "id": "dual-nature-q-matter-wave-traps-2",
+              "question": "What is a common trap associated with Matter wave traps?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "matter-wave-traps",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "matter-wave-traps",
+                "conceptSlug": "trap-matter-wave-traps",
+                "microskillSlug": "avoid-matter-wave-traps",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-dual-nature-photon-theory-of-light",
+          "title": "Photon theory of light",
+          "conceptTags": [
+            "dual-nature",
+            "photon-theory-of-light"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Photon theory of light"
+          ],
+          "mustKnowFacts": [
+            "Photon theory of light is a fundamental subtopic of Dual Nature of Matter and Radiation.",
+            "Crucial to understand the principles governing Photon theory of light for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for photon theory of light",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Photon theory of light during complex MCQs.",
+            "Failing to apply the correct logic for Photon theory of light."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Photon theory of light."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Photon theory of light."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "dual-nature-q-photon-theory-of-light-1",
+              "question": "Explain the core concept behind Photon theory of light.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "photon-theory-of-light"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "photon-theory-of-light",
+                "conceptSlug": "core-photon-theory-of-light",
+                "microskillSlug": "understand-photon-theory-of-light",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            },
+            {
+              "id": "dual-nature-q-photon-theory-of-light-2",
+              "question": "What is a common trap associated with Photon theory of light?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "photon-theory-of-light",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "photon-theory-of-light",
+                "conceptSlug": "trap-photon-theory-of-light",
+                "microskillSlug": "avoid-photon-theory-of-light",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-dual-nature-particle-nature-of-light",
+          "title": "Particle nature of light",
+          "conceptTags": [
+            "dual-nature",
+            "particle-nature-of-light"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Particle nature of light"
+          ],
+          "mustKnowFacts": [
+            "Particle nature of light is a fundamental subtopic of Dual Nature of Matter and Radiation.",
+            "Crucial to understand the principles governing Particle nature of light for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for particle nature of light",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Particle nature of light during complex MCQs.",
+            "Failing to apply the correct logic for Particle nature of light."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Particle nature of light."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Particle nature of light."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "dual-nature-q-particle-nature-of-light-1",
+              "question": "Explain the core concept behind Particle nature of light.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "particle-nature-of-light"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "particle-nature-of-light",
+                "conceptSlug": "core-particle-nature-of-light",
+                "microskillSlug": "understand-particle-nature-of-light",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            },
+            {
+              "id": "dual-nature-q-particle-nature-of-light-2",
+              "question": "What is a common trap associated with Particle nature of light?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "particle-nature-of-light",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "particle-nature-of-light",
+                "conceptSlug": "trap-particle-nature-of-light",
+                "microskillSlug": "avoid-particle-nature-of-light",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-dual-nature-4",
+      "title": "Dual Nature of Matter and Radiation - Section 4",
+      "description": "Comprehensive analysis covering wave nature of matter, Heisenberg uncertainty principle relation, X-ray production basics and more.",
+      "conceptTags": [
+        "dual-nature",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-dual-nature-wave-nature-of-matter",
+          "title": "Wave nature of matter",
+          "conceptTags": [
+            "dual-nature",
+            "wave-nature-of-matter"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Wave nature of matter"
+          ],
+          "mustKnowFacts": [
+            "Wave nature of matter is a fundamental subtopic of Dual Nature of Matter and Radiation.",
+            "Crucial to understand the principles governing Wave nature of matter for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for wave nature of matter",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Wave nature of matter during complex MCQs.",
+            "Failing to apply the correct logic for Wave nature of matter."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Wave nature of matter."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Wave nature of matter."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "dual-nature-q-wave-nature-of-matter-1",
+              "question": "Explain the core concept behind Wave nature of matter.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "wave-nature-of-matter"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "wave-nature-of-matter",
+                "conceptSlug": "core-wave-nature-of-matter",
+                "microskillSlug": "understand-wave-nature-of-matter",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            },
+            {
+              "id": "dual-nature-q-wave-nature-of-matter-2",
+              "question": "What is a common trap associated with Wave nature of matter?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "wave-nature-of-matter",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "wave-nature-of-matter",
+                "conceptSlug": "trap-wave-nature-of-matter",
+                "microskillSlug": "avoid-wave-nature-of-matter",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-dual-nature-heisenberg-uncertainty-principle-relation",
+          "title": "Heisenberg uncertainty principle relation",
+          "conceptTags": [
+            "dual-nature",
+            "heisenberg-uncertainty-principle-relation"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Heisenberg uncertainty principle relation"
+          ],
+          "mustKnowFacts": [
+            "Heisenberg uncertainty principle relation is a fundamental subtopic of Dual Nature of Matter and Radiation.",
+            "Crucial to understand the principles governing Heisenberg uncertainty principle relation for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for Heisenberg uncertainty principle relation",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Heisenberg uncertainty principle relation during complex MCQs.",
+            "Failing to apply the correct logic for Heisenberg uncertainty principle relation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Heisenberg uncertainty principle relation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Heisenberg uncertainty principle relation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "dual-nature-q-heisenberg-uncertainty-principle-relation-1",
+              "question": "Explain the core concept behind Heisenberg uncertainty principle relation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "heisenberg-uncertainty-principle-relation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "heisenberg-uncertainty-principle-relation",
+                "conceptSlug": "core-heisenberg-uncertainty-principle-relation",
+                "microskillSlug": "understand-heisenberg-uncertainty-principle-relation",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            },
+            {
+              "id": "dual-nature-q-heisenberg-uncertainty-principle-relation-2",
+              "question": "What is a common trap associated with Heisenberg uncertainty principle relation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "heisenberg-uncertainty-principle-relation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "heisenberg-uncertainty-principle-relation",
+                "conceptSlug": "trap-heisenberg-uncertainty-principle-relation",
+                "microskillSlug": "avoid-heisenberg-uncertainty-principle-relation",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-dual-nature-x-ray-production-basics",
+          "title": "X-ray production basics",
+          "conceptTags": [
+            "dual-nature",
+            "x-ray-production-basics"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, X-ray production basics"
+          ],
+          "mustKnowFacts": [
+            "X-ray production basics is a fundamental subtopic of Dual Nature of Matter and Radiation.",
+            "Crucial to understand the principles governing X-ray production basics for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for X-ray production basics",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret X-ray production basics during complex MCQs.",
+            "Failing to apply the correct logic for X-ray production basics."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to X-ray production basics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about X-ray production basics."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "dual-nature-q-x-ray-production-basics-1",
+              "question": "Explain the core concept behind X-ray production basics.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "x-ray-production-basics"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "x-ray-production-basics",
+                "conceptSlug": "core-x-ray-production-basics",
+                "microskillSlug": "understand-x-ray-production-basics",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            },
+            {
+              "id": "dual-nature-q-x-ray-production-basics-2",
+              "question": "What is a common trap associated with X-ray production basics?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "x-ray-production-basics",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "dual-nature",
+                "subtopicSlug": "x-ray-production-basics",
+                "conceptSlug": "trap-x-ray-production-basics",
+                "microskillSlug": "avoid-x-ray-production-basics",
+                "subject": "Physics",
+                "unitSlug": "dual-nature",
+                "chapterSlug": "dual-nature"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

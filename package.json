@@ -72,6 +72,7 @@
     "verify:real-mvp": "npm run typecheck && npm run lint && npm test && npm run verify:core-loop-contracts && npm run test:invariants && npm run eval:mind && npm run smoke:core-loop && npm run schema:check && npm run test:security && npm run build"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.104.1",
     "@google/genai": "^1.52.0",
     "@opentelemetry/api": "^1.9.0",
     "@opentelemetry/exporter-prometheus": "^0.218.0",
@@ -113,6 +114,7 @@
     "stripe": "^22.2.0",
     "ts-fsrs": "^4.7.1",
     "zod": "^3.23.0",
+    "zod-to-json-schema": "^3.25.2",
     "zustand": "^5.0.13"
   },
   "devDependencies": {

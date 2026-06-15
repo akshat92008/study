@@ -71,7 +71,7 @@ describe('global topic seeding', () => {
   it('maps autopsy text to seeded topics', () => {
     expect(mapTextToSeededTopic('I made a v-t graph slope mistake')).toBe('Motion graphs');
     expect(mapTextToSeededTopic('I used wrong range formula in projectile')).toBe('Projectile motion');
-    expect(mapTextToSeededTopic('I confused hormone phases in menstrual cycle')).toBe('Menstrual cycle');
-    expect(mapTextToSeededTopic('I got VSEPR shape wrong')).toBe('VSEPR theory');
+    expect(mapTextToSeededTopic('I confused hormone phases in menstrual cycle')).toBe('Menstrual cycle/gametogenesis');
+    expect(mapTextToSeededTopic('I got VSEPR shape wrong')).toBe('VSEPR/hybridisation/MOT');
   });
 });

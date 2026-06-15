@@ -1,0 +1,2156 @@
+{
+  "missions": [
+    {
+      "id": "m-coordination-compounds-1",
+      "title": "Coordination Compounds - Section 1",
+      "description": "Comprehensive analysis covering Werner theory, coordination entity, central atom and more.",
+      "conceptTags": [
+        "coordination-compounds",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-coordination-compounds-werner-theory",
+          "title": "Werner theory",
+          "conceptTags": [
+            "coordination-compounds",
+            "werner-theory"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Werner theory"
+          ],
+          "mustKnowFacts": [
+            "Werner theory is a fundamental subtopic of Coordination Compounds.",
+            "Crucial to understand the principles governing Werner theory for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Werner theory",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Werner theory",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Werner theory during complex MCQs.",
+            "Failing to apply the correct logic for Werner theory."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Werner theory."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Werner theory."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "coordination-compounds-q-werner-theory-1",
+              "question": "Explain the core concept behind Werner theory.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "werner-theory"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "werner-theory",
+                "conceptSlug": "core-werner-theory",
+                "microskillSlug": "understand-werner-theory",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            },
+            {
+              "id": "coordination-compounds-q-werner-theory-2",
+              "question": "What is a common trap associated with Werner theory?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "werner-theory",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "werner-theory",
+                "conceptSlug": "trap-werner-theory",
+                "microskillSlug": "avoid-werner-theory",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-coordination-compounds-coordination-entity",
+          "title": "Coordination entity",
+          "conceptTags": [
+            "coordination-compounds",
+            "coordination-entity"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Coordination entity"
+          ],
+          "mustKnowFacts": [
+            "Coordination entity is a fundamental subtopic of Coordination Compounds.",
+            "Crucial to understand the principles governing Coordination entity for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for coordination entity",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving coordination entity",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Coordination entity during complex MCQs.",
+            "Failing to apply the correct logic for Coordination entity."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Coordination entity."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Coordination entity."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "coordination-compounds-q-coordination-entity-1",
+              "question": "Explain the core concept behind Coordination entity.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "coordination-entity"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "coordination-entity",
+                "conceptSlug": "core-coordination-entity",
+                "microskillSlug": "understand-coordination-entity",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            },
+            {
+              "id": "coordination-compounds-q-coordination-entity-2",
+              "question": "What is a common trap associated with Coordination entity?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "coordination-entity",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "coordination-entity",
+                "conceptSlug": "trap-coordination-entity",
+                "microskillSlug": "avoid-coordination-entity",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-coordination-compounds-central-atom",
+          "title": "Central atom",
+          "conceptTags": [
+            "coordination-compounds",
+            "central-atom"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Central atom"
+          ],
+          "mustKnowFacts": [
+            "Central atom is a fundamental subtopic of Coordination Compounds.",
+            "Crucial to understand the principles governing Central atom for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for central atom",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving central atom",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Central atom during complex MCQs.",
+            "Failing to apply the correct logic for Central atom."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Central atom."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Central atom."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "coordination-compounds-q-central-atom-1",
+              "question": "Explain the core concept behind Central atom.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "central-atom"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "central-atom",
+                "conceptSlug": "core-central-atom",
+                "microskillSlug": "understand-central-atom",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            },
+            {
+              "id": "coordination-compounds-q-central-atom-2",
+              "question": "What is a common trap associated with Central atom?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "central-atom",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "central-atom",
+                "conceptSlug": "trap-central-atom",
+                "microskillSlug": "avoid-central-atom",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-coordination-compounds-ligands",
+          "title": "Ligands",
+          "conceptTags": [
+            "coordination-compounds",
+            "ligands"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Ligands"
+          ],
+          "mustKnowFacts": [
+            "Ligands is a fundamental subtopic of Coordination Compounds.",
+            "Crucial to understand the principles governing Ligands for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for ligands",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving ligands",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Ligands during complex MCQs.",
+            "Failing to apply the correct logic for Ligands."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Ligands."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Ligands."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "coordination-compounds-q-ligands-1",
+              "question": "Explain the core concept behind Ligands.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "ligands"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "ligands",
+                "conceptSlug": "core-ligands",
+                "microskillSlug": "understand-ligands",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            },
+            {
+              "id": "coordination-compounds-q-ligands-2",
+              "question": "What is a common trap associated with Ligands?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "ligands",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "ligands",
+                "conceptSlug": "trap-ligands",
+                "microskillSlug": "avoid-ligands",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-coordination-compounds-denticity",
+          "title": "Denticity",
+          "conceptTags": [
+            "coordination-compounds",
+            "denticity"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Denticity"
+          ],
+          "mustKnowFacts": [
+            "Denticity is a fundamental subtopic of Coordination Compounds.",
+            "Crucial to understand the principles governing Denticity for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for denticity",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving denticity",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Denticity during complex MCQs.",
+            "Failing to apply the correct logic for Denticity."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Denticity."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Denticity."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "coordination-compounds-q-denticity-1",
+              "question": "Explain the core concept behind Denticity.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "denticity"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "denticity",
+                "conceptSlug": "core-denticity",
+                "microskillSlug": "understand-denticity",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            },
+            {
+              "id": "coordination-compounds-q-denticity-2",
+              "question": "What is a common trap associated with Denticity?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "denticity",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "denticity",
+                "conceptSlug": "trap-denticity",
+                "microskillSlug": "avoid-denticity",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-coordination-compounds-2",
+      "title": "Coordination Compounds - Section 2",
+      "description": "Comprehensive analysis covering chelation, coordination number, oxidation number and more.",
+      "conceptTags": [
+        "coordination-compounds",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-coordination-compounds-chelation",
+          "title": "Chelation",
+          "conceptTags": [
+            "coordination-compounds",
+            "chelation"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Chelation"
+          ],
+          "mustKnowFacts": [
+            "Chelation is a fundamental subtopic of Coordination Compounds.",
+            "Crucial to understand the principles governing Chelation for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for chelation",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving chelation",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Chelation during complex MCQs.",
+            "Failing to apply the correct logic for Chelation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Chelation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Chelation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "coordination-compounds-q-chelation-1",
+              "question": "Explain the core concept behind Chelation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "chelation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "chelation",
+                "conceptSlug": "core-chelation",
+                "microskillSlug": "understand-chelation",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            },
+            {
+              "id": "coordination-compounds-q-chelation-2",
+              "question": "What is a common trap associated with Chelation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "chelation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "chelation",
+                "conceptSlug": "trap-chelation",
+                "microskillSlug": "avoid-chelation",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-coordination-compounds-coordination-number",
+          "title": "Coordination number",
+          "conceptTags": [
+            "coordination-compounds",
+            "coordination-number"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Coordination number"
+          ],
+          "mustKnowFacts": [
+            "Coordination number is a fundamental subtopic of Coordination Compounds.",
+            "Crucial to understand the principles governing Coordination number for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for coordination number",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving coordination number",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Coordination number during complex MCQs.",
+            "Failing to apply the correct logic for Coordination number."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Coordination number."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Coordination number."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "coordination-compounds-q-coordination-number-1",
+              "question": "Explain the core concept behind Coordination number.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "coordination-number"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "coordination-number",
+                "conceptSlug": "core-coordination-number",
+                "microskillSlug": "understand-coordination-number",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            },
+            {
+              "id": "coordination-compounds-q-coordination-number-2",
+              "question": "What is a common trap associated with Coordination number?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "coordination-number",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "coordination-number",
+                "conceptSlug": "trap-coordination-number",
+                "microskillSlug": "avoid-coordination-number",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-coordination-compounds-oxidation-number",
+          "title": "Oxidation number",
+          "conceptTags": [
+            "coordination-compounds",
+            "oxidation-number"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Oxidation number"
+          ],
+          "mustKnowFacts": [
+            "Oxidation number is a fundamental subtopic of Coordination Compounds.",
+            "Crucial to understand the principles governing Oxidation number for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for oxidation number",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving oxidation number",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Oxidation number during complex MCQs.",
+            "Failing to apply the correct logic for Oxidation number."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Oxidation number."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Oxidation number."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "coordination-compounds-q-oxidation-number-1",
+              "question": "Explain the core concept behind Oxidation number.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "oxidation-number"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "oxidation-number",
+                "conceptSlug": "core-oxidation-number",
+                "microskillSlug": "understand-oxidation-number",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            },
+            {
+              "id": "coordination-compounds-q-oxidation-number-2",
+              "question": "What is a common trap associated with Oxidation number?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "oxidation-number",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "oxidation-number",
+                "conceptSlug": "trap-oxidation-number",
+                "microskillSlug": "avoid-oxidation-number",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-coordination-compounds-iupac-naming",
+          "title": "IUPAC naming",
+          "conceptTags": [
+            "coordination-compounds",
+            "iupac-naming"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, IUPAC naming"
+          ],
+          "mustKnowFacts": [
+            "IUPAC naming is a fundamental subtopic of Coordination Compounds.",
+            "Crucial to understand the principles governing IUPAC naming for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for IUPAC naming",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving IUPAC naming",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret IUPAC naming during complex MCQs.",
+            "Failing to apply the correct logic for IUPAC naming."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to IUPAC naming."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about IUPAC naming."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "coordination-compounds-q-iupac-naming-1",
+              "question": "Explain the core concept behind IUPAC naming.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "iupac-naming"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "iupac-naming",
+                "conceptSlug": "core-iupac-naming",
+                "microskillSlug": "understand-iupac-naming",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            },
+            {
+              "id": "coordination-compounds-q-iupac-naming-2",
+              "question": "What is a common trap associated with IUPAC naming?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "iupac-naming",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "iupac-naming",
+                "conceptSlug": "trap-iupac-naming",
+                "microskillSlug": "avoid-iupac-naming",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-coordination-compounds-isomerism",
+          "title": "Isomerism",
+          "conceptTags": [
+            "coordination-compounds",
+            "isomerism"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Isomerism"
+          ],
+          "mustKnowFacts": [
+            "Isomerism is a fundamental subtopic of Coordination Compounds.",
+            "Crucial to understand the principles governing Isomerism for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for isomerism",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving isomerism",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Isomerism during complex MCQs.",
+            "Failing to apply the correct logic for Isomerism."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Isomerism."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Isomerism."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "coordination-compounds-q-isomerism-1",
+              "question": "Explain the core concept behind Isomerism.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "isomerism"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "isomerism",
+                "conceptSlug": "core-isomerism",
+                "microskillSlug": "understand-isomerism",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            },
+            {
+              "id": "coordination-compounds-q-isomerism-2",
+              "question": "What is a common trap associated with Isomerism?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "isomerism",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "isomerism",
+                "conceptSlug": "trap-isomerism",
+                "microskillSlug": "avoid-isomerism",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-coordination-compounds-3",
+      "title": "Coordination Compounds - Section 3",
+      "description": "Comprehensive analysis covering structural isomerism, stereoisomerism, VBT and more.",
+      "conceptTags": [
+        "coordination-compounds",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-coordination-compounds-structural-isomerism",
+          "title": "Structural isomerism",
+          "conceptTags": [
+            "coordination-compounds",
+            "structural-isomerism"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Structural isomerism"
+          ],
+          "mustKnowFacts": [
+            "Structural isomerism is a fundamental subtopic of Coordination Compounds.",
+            "Crucial to understand the principles governing Structural isomerism for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for structural isomerism",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving structural isomerism",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Structural isomerism during complex MCQs.",
+            "Failing to apply the correct logic for Structural isomerism."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Structural isomerism."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Structural isomerism."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "coordination-compounds-q-structural-isomerism-1",
+              "question": "Explain the core concept behind Structural isomerism.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "structural-isomerism"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "structural-isomerism",
+                "conceptSlug": "core-structural-isomerism",
+                "microskillSlug": "understand-structural-isomerism",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            },
+            {
+              "id": "coordination-compounds-q-structural-isomerism-2",
+              "question": "What is a common trap associated with Structural isomerism?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "structural-isomerism",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "structural-isomerism",
+                "conceptSlug": "trap-structural-isomerism",
+                "microskillSlug": "avoid-structural-isomerism",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-coordination-compounds-stereoisomerism",
+          "title": "Stereoisomerism",
+          "conceptTags": [
+            "coordination-compounds",
+            "stereoisomerism"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Stereoisomerism"
+          ],
+          "mustKnowFacts": [
+            "Stereoisomerism is a fundamental subtopic of Coordination Compounds.",
+            "Crucial to understand the principles governing Stereoisomerism for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for stereoisomerism",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving stereoisomerism",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Stereoisomerism during complex MCQs.",
+            "Failing to apply the correct logic for Stereoisomerism."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Stereoisomerism."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Stereoisomerism."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "coordination-compounds-q-stereoisomerism-1",
+              "question": "Explain the core concept behind Stereoisomerism.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "stereoisomerism"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "stereoisomerism",
+                "conceptSlug": "core-stereoisomerism",
+                "microskillSlug": "understand-stereoisomerism",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            },
+            {
+              "id": "coordination-compounds-q-stereoisomerism-2",
+              "question": "What is a common trap associated with Stereoisomerism?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "stereoisomerism",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "stereoisomerism",
+                "conceptSlug": "trap-stereoisomerism",
+                "microskillSlug": "avoid-stereoisomerism",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-coordination-compounds-vbt",
+          "title": "VBT",
+          "conceptTags": [
+            "coordination-compounds",
+            "vbt"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, VBT"
+          ],
+          "mustKnowFacts": [
+            "VBT is a fundamental subtopic of Coordination Compounds.",
+            "Crucial to understand the principles governing VBT for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for VBT",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving VBT",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret VBT during complex MCQs.",
+            "Failing to apply the correct logic for VBT."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to VBT."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about VBT."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "coordination-compounds-q-vbt-1",
+              "question": "Explain the core concept behind VBT.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "vbt"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "vbt",
+                "conceptSlug": "core-vbt",
+                "microskillSlug": "understand-vbt",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            },
+            {
+              "id": "coordination-compounds-q-vbt-2",
+              "question": "What is a common trap associated with VBT?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "vbt",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "vbt",
+                "conceptSlug": "trap-vbt",
+                "microskillSlug": "avoid-vbt",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-coordination-compounds-hybridisation-in-complexes",
+          "title": "Hybridisation in complexes",
+          "conceptTags": [
+            "coordination-compounds",
+            "hybridisation-in-complexes"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Hybridisation in complexes"
+          ],
+          "mustKnowFacts": [
+            "Hybridisation in complexes is a fundamental subtopic of Coordination Compounds.",
+            "Crucial to understand the principles governing Hybridisation in complexes for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for hybridisation in complexes",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving hybridisation in complexes",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Hybridisation in complexes during complex MCQs.",
+            "Failing to apply the correct logic for Hybridisation in complexes."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Hybridisation in complexes."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Hybridisation in complexes."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "coordination-compounds-q-hybridisation-in-complexes-1",
+              "question": "Explain the core concept behind Hybridisation in complexes.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "hybridisation-in-complexes"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "hybridisation-in-complexes",
+                "conceptSlug": "core-hybridisation-in-complexes",
+                "microskillSlug": "understand-hybridisation-in-complexes",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            },
+            {
+              "id": "coordination-compounds-q-hybridisation-in-complexes-2",
+              "question": "What is a common trap associated with Hybridisation in complexes?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "hybridisation-in-complexes",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "hybridisation-in-complexes",
+                "conceptSlug": "trap-hybridisation-in-complexes",
+                "microskillSlug": "avoid-hybridisation-in-complexes",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-coordination-compounds-cft-basics",
+          "title": "CFT basics",
+          "conceptTags": [
+            "coordination-compounds",
+            "cft-basics"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, CFT basics"
+          ],
+          "mustKnowFacts": [
+            "CFT basics is a fundamental subtopic of Coordination Compounds.",
+            "Crucial to understand the principles governing CFT basics for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for CFT basics",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving CFT basics",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret CFT basics during complex MCQs.",
+            "Failing to apply the correct logic for CFT basics."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to CFT basics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about CFT basics."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "coordination-compounds-q-cft-basics-1",
+              "question": "Explain the core concept behind CFT basics.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "cft-basics"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "cft-basics",
+                "conceptSlug": "core-cft-basics",
+                "microskillSlug": "understand-cft-basics",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            },
+            {
+              "id": "coordination-compounds-q-cft-basics-2",
+              "question": "What is a common trap associated with CFT basics?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "cft-basics",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "cft-basics",
+                "conceptSlug": "trap-cft-basics",
+                "microskillSlug": "avoid-cft-basics",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-coordination-compounds-4",
+      "title": "Coordination Compounds - Section 4",
+      "description": "Comprehensive analysis covering crystal field splitting, high spin/low spin, colour and more.",
+      "conceptTags": [
+        "coordination-compounds",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-coordination-compounds-crystal-field-splitting",
+          "title": "Crystal field splitting",
+          "conceptTags": [
+            "coordination-compounds",
+            "crystal-field-splitting"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Crystal field splitting"
+          ],
+          "mustKnowFacts": [
+            "Crystal field splitting is a fundamental subtopic of Coordination Compounds.",
+            "Crucial to understand the principles governing Crystal field splitting for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for crystal field splitting",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving crystal field splitting",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Crystal field splitting during complex MCQs.",
+            "Failing to apply the correct logic for Crystal field splitting."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Crystal field splitting."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Crystal field splitting."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "coordination-compounds-q-crystal-field-splitting-1",
+              "question": "Explain the core concept behind Crystal field splitting.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "crystal-field-splitting"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "crystal-field-splitting",
+                "conceptSlug": "core-crystal-field-splitting",
+                "microskillSlug": "understand-crystal-field-splitting",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            },
+            {
+              "id": "coordination-compounds-q-crystal-field-splitting-2",
+              "question": "What is a common trap associated with Crystal field splitting?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "crystal-field-splitting",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "crystal-field-splitting",
+                "conceptSlug": "trap-crystal-field-splitting",
+                "microskillSlug": "avoid-crystal-field-splitting",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-coordination-compounds-high-spin-low-spin",
+          "title": "High spin/low spin",
+          "conceptTags": [
+            "coordination-compounds",
+            "high-spin-low-spin"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, High spin/low spin"
+          ],
+          "mustKnowFacts": [
+            "High spin/low spin is a fundamental subtopic of Coordination Compounds.",
+            "Crucial to understand the principles governing High spin/low spin for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for high spin/low spin",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving high spin/low spin",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret High spin/low spin during complex MCQs.",
+            "Failing to apply the correct logic for High spin/low spin."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to High spin/low spin."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about High spin/low spin."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "coordination-compounds-q-high-spin-low-spin-1",
+              "question": "Explain the core concept behind High spin/low spin.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "high-spin-low-spin"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "high-spin-low-spin",
+                "conceptSlug": "core-high-spin-low-spin",
+                "microskillSlug": "understand-high-spin-low-spin",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            },
+            {
+              "id": "coordination-compounds-q-high-spin-low-spin-2",
+              "question": "What is a common trap associated with High spin/low spin?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "high-spin-low-spin",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "high-spin-low-spin",
+                "conceptSlug": "trap-high-spin-low-spin",
+                "microskillSlug": "avoid-high-spin-low-spin",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-coordination-compounds-colour",
+          "title": "Colour",
+          "conceptTags": [
+            "coordination-compounds",
+            "colour"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Colour"
+          ],
+          "mustKnowFacts": [
+            "Colour is a fundamental subtopic of Coordination Compounds.",
+            "Crucial to understand the principles governing Colour for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for colour",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving colour",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Colour during complex MCQs.",
+            "Failing to apply the correct logic for Colour."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Colour."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Colour."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "coordination-compounds-q-colour-1",
+              "question": "Explain the core concept behind Colour.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "colour"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "colour",
+                "conceptSlug": "core-colour",
+                "microskillSlug": "understand-colour",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            },
+            {
+              "id": "coordination-compounds-q-colour-2",
+              "question": "What is a common trap associated with Colour?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "colour",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "colour",
+                "conceptSlug": "trap-colour",
+                "microskillSlug": "avoid-colour",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-coordination-compounds-magnetic-properties",
+          "title": "Magnetic properties",
+          "conceptTags": [
+            "coordination-compounds",
+            "magnetic-properties"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Magnetic properties"
+          ],
+          "mustKnowFacts": [
+            "Magnetic properties is a fundamental subtopic of Coordination Compounds.",
+            "Crucial to understand the principles governing Magnetic properties for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for magnetic properties",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving magnetic properties",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Magnetic properties during complex MCQs.",
+            "Failing to apply the correct logic for Magnetic properties."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Magnetic properties."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Magnetic properties."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "coordination-compounds-q-magnetic-properties-1",
+              "question": "Explain the core concept behind Magnetic properties.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "magnetic-properties"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "magnetic-properties",
+                "conceptSlug": "core-magnetic-properties",
+                "microskillSlug": "understand-magnetic-properties",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            },
+            {
+              "id": "coordination-compounds-q-magnetic-properties-2",
+              "question": "What is a common trap associated with Magnetic properties?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "magnetic-properties",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "magnetic-properties",
+                "conceptSlug": "trap-magnetic-properties",
+                "microskillSlug": "avoid-magnetic-properties",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-coordination-compounds-importance-in-qualitative-analysis-metallurgy-biology",
+          "title": "Importance in qualitative analysis/metallurgy/biology",
+          "conceptTags": [
+            "coordination-compounds",
+            "importance-in-qualitative-analysis-metallurgy-biology"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Importance in qualitative analysis/metallurgy/biology"
+          ],
+          "mustKnowFacts": [
+            "Importance in qualitative analysis/metallurgy/biology is a fundamental subtopic of Coordination Compounds.",
+            "Crucial to understand the principles governing Importance in qualitative analysis/metallurgy/biology for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for importance in qualitative analysis/metallurgy/biology",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving importance in qualitative analysis/metallurgy/biology",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Importance in qualitative analysis/metallurgy/biology during complex MCQs.",
+            "Failing to apply the correct logic for Importance in qualitative analysis/metallurgy/biology."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Importance in qualitative analysis/metallurgy/biology."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Importance in qualitative analysis/metallurgy/biology."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "coordination-compounds-q-importance-in-qualitative-analysis-metallurgy-biology-1",
+              "question": "Explain the core concept behind Importance in qualitative analysis/metallurgy/biology.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "importance-in-qualitative-analysis-metallurgy-biology"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "importance-in-qualitative-analysis-metallurgy-biology",
+                "conceptSlug": "core-importance-in-qualitative-analysis-metallurgy-biology",
+                "microskillSlug": "understand-importance-in-qualitative-analysis-metallurgy-biology",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            },
+            {
+              "id": "coordination-compounds-q-importance-in-qualitative-analysis-metallurgy-biology-2",
+              "question": "What is a common trap associated with Importance in qualitative analysis/metallurgy/biology?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "importance-in-qualitative-analysis-metallurgy-biology",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "coordination-compounds",
+                "subtopicSlug": "importance-in-qualitative-analysis-metallurgy-biology",
+                "conceptSlug": "trap-importance-in-qualitative-analysis-metallurgy-biology",
+                "microskillSlug": "avoid-importance-in-qualitative-analysis-metallurgy-biology",
+                "subject": "Chemistry",
+                "unitSlug": "coordination-compounds",
+                "chapterSlug": "coordination-compounds"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

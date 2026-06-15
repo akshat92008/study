@@ -1,0 +1,2051 @@
+{
+  "missions": [
+    {
+      "id": "m-atomic-structure-1",
+      "title": "Atomic Structure - Section 1",
+      "description": "Comprehensive analysis covering electromagnetic radiation, photoelectric effect, hydrogen spectrum and more.",
+      "conceptTags": [
+        "atomic-structure",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-atomic-structure-electromagnetic-radiation",
+          "title": "Electromagnetic radiation",
+          "conceptTags": [
+            "atomic-structure",
+            "electromagnetic-radiation"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Electromagnetic radiation"
+          ],
+          "mustKnowFacts": [
+            "Electromagnetic radiation is a fundamental subtopic of Atomic Structure.",
+            "Crucial to understand the principles governing Electromagnetic radiation for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for electromagnetic radiation",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving electromagnetic radiation",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Electromagnetic radiation during complex MCQs.",
+            "Failing to apply the correct logic for Electromagnetic radiation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Electromagnetic radiation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Electromagnetic radiation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atomic-structure-q-electromagnetic-radiation-1",
+              "question": "Explain the core concept behind Electromagnetic radiation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "electromagnetic-radiation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "electromagnetic-radiation",
+                "conceptSlug": "core-electromagnetic-radiation",
+                "microskillSlug": "understand-electromagnetic-radiation",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            },
+            {
+              "id": "atomic-structure-q-electromagnetic-radiation-2",
+              "question": "What is a common trap associated with Electromagnetic radiation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "electromagnetic-radiation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "electromagnetic-radiation",
+                "conceptSlug": "trap-electromagnetic-radiation",
+                "microskillSlug": "avoid-electromagnetic-radiation",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atomic-structure-photoelectric-effect",
+          "title": "Photoelectric effect",
+          "conceptTags": [
+            "atomic-structure",
+            "photoelectric-effect"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Photoelectric effect"
+          ],
+          "mustKnowFacts": [
+            "Photoelectric effect is a fundamental subtopic of Atomic Structure.",
+            "Crucial to understand the principles governing Photoelectric effect for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for photoelectric effect",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving photoelectric effect",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Photoelectric effect during complex MCQs.",
+            "Failing to apply the correct logic for Photoelectric effect."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Photoelectric effect."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Photoelectric effect."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atomic-structure-q-photoelectric-effect-1",
+              "question": "Explain the core concept behind Photoelectric effect.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "photoelectric-effect"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "photoelectric-effect",
+                "conceptSlug": "core-photoelectric-effect",
+                "microskillSlug": "understand-photoelectric-effect",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            },
+            {
+              "id": "atomic-structure-q-photoelectric-effect-2",
+              "question": "What is a common trap associated with Photoelectric effect?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "photoelectric-effect",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "photoelectric-effect",
+                "conceptSlug": "trap-photoelectric-effect",
+                "microskillSlug": "avoid-photoelectric-effect",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atomic-structure-hydrogen-spectrum",
+          "title": "Hydrogen spectrum",
+          "conceptTags": [
+            "atomic-structure",
+            "hydrogen-spectrum"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Hydrogen spectrum"
+          ],
+          "mustKnowFacts": [
+            "Hydrogen spectrum is a fundamental subtopic of Atomic Structure.",
+            "Crucial to understand the principles governing Hydrogen spectrum for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for hydrogen spectrum",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving hydrogen spectrum",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Hydrogen spectrum during complex MCQs.",
+            "Failing to apply the correct logic for Hydrogen spectrum."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Hydrogen spectrum."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Hydrogen spectrum."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atomic-structure-q-hydrogen-spectrum-1",
+              "question": "Explain the core concept behind Hydrogen spectrum.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "hydrogen-spectrum"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "hydrogen-spectrum",
+                "conceptSlug": "core-hydrogen-spectrum",
+                "microskillSlug": "understand-hydrogen-spectrum",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            },
+            {
+              "id": "atomic-structure-q-hydrogen-spectrum-2",
+              "question": "What is a common trap associated with Hydrogen spectrum?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "hydrogen-spectrum",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "hydrogen-spectrum",
+                "conceptSlug": "trap-hydrogen-spectrum",
+                "microskillSlug": "avoid-hydrogen-spectrum",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atomic-structure-bohr-model",
+          "title": "Bohr model",
+          "conceptTags": [
+            "atomic-structure",
+            "bohr-model"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Bohr model"
+          ],
+          "mustKnowFacts": [
+            "Bohr model is a fundamental subtopic of Atomic Structure.",
+            "Crucial to understand the principles governing Bohr model for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Bohr model",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Bohr model",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Bohr model during complex MCQs.",
+            "Failing to apply the correct logic for Bohr model."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Bohr model."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Bohr model."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atomic-structure-q-bohr-model-1",
+              "question": "Explain the core concept behind Bohr model.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "bohr-model"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "bohr-model",
+                "conceptSlug": "core-bohr-model",
+                "microskillSlug": "understand-bohr-model",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            },
+            {
+              "id": "atomic-structure-q-bohr-model-2",
+              "question": "What is a common trap associated with Bohr model?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "bohr-model",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "bohr-model",
+                "conceptSlug": "trap-bohr-model",
+                "microskillSlug": "avoid-bohr-model",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atomic-structure-radius-energy-formulas",
+          "title": "Radius/energy formulas",
+          "conceptTags": [
+            "atomic-structure",
+            "radius-energy-formulas"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Radius/energy formulas"
+          ],
+          "mustKnowFacts": [
+            "Radius/energy formulas is a fundamental subtopic of Atomic Structure.",
+            "Crucial to understand the principles governing Radius/energy formulas for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for radius/energy formulas",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving radius/energy formulas",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Radius/energy formulas during complex MCQs.",
+            "Failing to apply the correct logic for Radius/energy formulas."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Radius/energy formulas."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Radius/energy formulas."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atomic-structure-q-radius-energy-formulas-1",
+              "question": "Explain the core concept behind Radius/energy formulas.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "radius-energy-formulas"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "radius-energy-formulas",
+                "conceptSlug": "core-radius-energy-formulas",
+                "microskillSlug": "understand-radius-energy-formulas",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            },
+            {
+              "id": "atomic-structure-q-radius-energy-formulas-2",
+              "question": "What is a common trap associated with Radius/energy formulas?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "radius-energy-formulas",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "radius-energy-formulas",
+                "conceptSlug": "trap-radius-energy-formulas",
+                "microskillSlug": "avoid-radius-energy-formulas",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-atomic-structure-2",
+      "title": "Atomic Structure - Section 2",
+      "description": "Comprehensive analysis covering limitations, de Broglie relation, Heisenberg uncertainty and more.",
+      "conceptTags": [
+        "atomic-structure",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-atomic-structure-limitations",
+          "title": "Limitations",
+          "conceptTags": [
+            "atomic-structure",
+            "limitations"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Limitations"
+          ],
+          "mustKnowFacts": [
+            "Limitations is a fundamental subtopic of Atomic Structure.",
+            "Crucial to understand the principles governing Limitations for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for limitations",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving limitations",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Limitations during complex MCQs.",
+            "Failing to apply the correct logic for Limitations."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Limitations."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Limitations."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atomic-structure-q-limitations-1",
+              "question": "Explain the core concept behind Limitations.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "limitations"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "limitations",
+                "conceptSlug": "core-limitations",
+                "microskillSlug": "understand-limitations",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            },
+            {
+              "id": "atomic-structure-q-limitations-2",
+              "question": "What is a common trap associated with Limitations?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "limitations",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "limitations",
+                "conceptSlug": "trap-limitations",
+                "microskillSlug": "avoid-limitations",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atomic-structure-de-broglie-relation",
+          "title": "De Broglie relation",
+          "conceptTags": [
+            "atomic-structure",
+            "de-broglie-relation"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, De Broglie relation"
+          ],
+          "mustKnowFacts": [
+            "De Broglie relation is a fundamental subtopic of Atomic Structure.",
+            "Crucial to understand the principles governing De Broglie relation for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for de Broglie relation",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving de Broglie relation",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret De Broglie relation during complex MCQs.",
+            "Failing to apply the correct logic for De Broglie relation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to De Broglie relation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about De Broglie relation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atomic-structure-q-de-broglie-relation-1",
+              "question": "Explain the core concept behind De Broglie relation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "de-broglie-relation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "de-broglie-relation",
+                "conceptSlug": "core-de-broglie-relation",
+                "microskillSlug": "understand-de-broglie-relation",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            },
+            {
+              "id": "atomic-structure-q-de-broglie-relation-2",
+              "question": "What is a common trap associated with De Broglie relation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "de-broglie-relation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "de-broglie-relation",
+                "conceptSlug": "trap-de-broglie-relation",
+                "microskillSlug": "avoid-de-broglie-relation",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atomic-structure-heisenberg-uncertainty",
+          "title": "Heisenberg uncertainty",
+          "conceptTags": [
+            "atomic-structure",
+            "heisenberg-uncertainty"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Heisenberg uncertainty"
+          ],
+          "mustKnowFacts": [
+            "Heisenberg uncertainty is a fundamental subtopic of Atomic Structure.",
+            "Crucial to understand the principles governing Heisenberg uncertainty for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Heisenberg uncertainty",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Heisenberg uncertainty",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Heisenberg uncertainty during complex MCQs.",
+            "Failing to apply the correct logic for Heisenberg uncertainty."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Heisenberg uncertainty."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Heisenberg uncertainty."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atomic-structure-q-heisenberg-uncertainty-1",
+              "question": "Explain the core concept behind Heisenberg uncertainty.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "heisenberg-uncertainty"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "heisenberg-uncertainty",
+                "conceptSlug": "core-heisenberg-uncertainty",
+                "microskillSlug": "understand-heisenberg-uncertainty",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            },
+            {
+              "id": "atomic-structure-q-heisenberg-uncertainty-2",
+              "question": "What is a common trap associated with Heisenberg uncertainty?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "heisenberg-uncertainty",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "heisenberg-uncertainty",
+                "conceptSlug": "trap-heisenberg-uncertainty",
+                "microskillSlug": "avoid-heisenberg-uncertainty",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atomic-structure-quantum-mechanical-model",
+          "title": "Quantum mechanical model",
+          "conceptTags": [
+            "atomic-structure",
+            "quantum-mechanical-model"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Quantum mechanical model"
+          ],
+          "mustKnowFacts": [
+            "Quantum mechanical model is a fundamental subtopic of Atomic Structure.",
+            "Crucial to understand the principles governing Quantum mechanical model for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for quantum mechanical model",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving quantum mechanical model",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Quantum mechanical model during complex MCQs.",
+            "Failing to apply the correct logic for Quantum mechanical model."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Quantum mechanical model."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Quantum mechanical model."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atomic-structure-q-quantum-mechanical-model-1",
+              "question": "Explain the core concept behind Quantum mechanical model.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "quantum-mechanical-model"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "quantum-mechanical-model",
+                "conceptSlug": "core-quantum-mechanical-model",
+                "microskillSlug": "understand-quantum-mechanical-model",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            },
+            {
+              "id": "atomic-structure-q-quantum-mechanical-model-2",
+              "question": "What is a common trap associated with Quantum mechanical model?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "quantum-mechanical-model",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "quantum-mechanical-model",
+                "conceptSlug": "trap-quantum-mechanical-model",
+                "microskillSlug": "avoid-quantum-mechanical-model",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atomic-structure-orbitals",
+          "title": "Orbitals",
+          "conceptTags": [
+            "atomic-structure",
+            "orbitals"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Orbitals"
+          ],
+          "mustKnowFacts": [
+            "Orbitals is a fundamental subtopic of Atomic Structure.",
+            "Crucial to understand the principles governing Orbitals for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for orbitals",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving orbitals",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Orbitals during complex MCQs.",
+            "Failing to apply the correct logic for Orbitals."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Orbitals."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Orbitals."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atomic-structure-q-orbitals-1",
+              "question": "Explain the core concept behind Orbitals.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "orbitals"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "orbitals",
+                "conceptSlug": "core-orbitals",
+                "microskillSlug": "understand-orbitals",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            },
+            {
+              "id": "atomic-structure-q-orbitals-2",
+              "question": "What is a common trap associated with Orbitals?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "orbitals",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "orbitals",
+                "conceptSlug": "trap-orbitals",
+                "microskillSlug": "avoid-orbitals",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-atomic-structure-3",
+      "title": "Atomic Structure - Section 3",
+      "description": "Comprehensive analysis covering psi/psi2, quantum numbers, shapes of s/p/d and more.",
+      "conceptTags": [
+        "atomic-structure",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-atomic-structure-psi-psi2",
+          "title": "Psi/psi2",
+          "conceptTags": [
+            "atomic-structure",
+            "psi-psi2"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Psi/psi2"
+          ],
+          "mustKnowFacts": [
+            "Psi/psi2 is a fundamental subtopic of Atomic Structure.",
+            "Crucial to understand the principles governing Psi/psi2 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for psi/psi2",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving psi/psi2",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Psi/psi2 during complex MCQs.",
+            "Failing to apply the correct logic for Psi/psi2."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Psi/psi2."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Psi/psi2."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atomic-structure-q-psi-psi2-1",
+              "question": "Explain the core concept behind Psi/psi2.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "psi-psi2"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "psi-psi2",
+                "conceptSlug": "core-psi-psi2",
+                "microskillSlug": "understand-psi-psi2",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            },
+            {
+              "id": "atomic-structure-q-psi-psi2-2",
+              "question": "What is a common trap associated with Psi/psi2?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "psi-psi2",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "psi-psi2",
+                "conceptSlug": "trap-psi-psi2",
+                "microskillSlug": "avoid-psi-psi2",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atomic-structure-quantum-numbers",
+          "title": "Quantum numbers",
+          "conceptTags": [
+            "atomic-structure",
+            "quantum-numbers"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Quantum numbers"
+          ],
+          "mustKnowFacts": [
+            "Quantum numbers is a fundamental subtopic of Atomic Structure.",
+            "Crucial to understand the principles governing Quantum numbers for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for quantum numbers",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving quantum numbers",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Quantum numbers during complex MCQs.",
+            "Failing to apply the correct logic for Quantum numbers."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Quantum numbers."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Quantum numbers."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atomic-structure-q-quantum-numbers-1",
+              "question": "Explain the core concept behind Quantum numbers.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "quantum-numbers"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "quantum-numbers",
+                "conceptSlug": "core-quantum-numbers",
+                "microskillSlug": "understand-quantum-numbers",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            },
+            {
+              "id": "atomic-structure-q-quantum-numbers-2",
+              "question": "What is a common trap associated with Quantum numbers?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "quantum-numbers",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "quantum-numbers",
+                "conceptSlug": "trap-quantum-numbers",
+                "microskillSlug": "avoid-quantum-numbers",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atomic-structure-shapes-of-s-p-d",
+          "title": "Shapes of s/p/d",
+          "conceptTags": [
+            "atomic-structure",
+            "shapes-of-s-p-d"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Shapes of s/p/d"
+          ],
+          "mustKnowFacts": [
+            "Shapes of s/p/d is a fundamental subtopic of Atomic Structure.",
+            "Crucial to understand the principles governing Shapes of s/p/d for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for shapes of s/p/d",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving shapes of s/p/d",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Shapes of s/p/d during complex MCQs.",
+            "Failing to apply the correct logic for Shapes of s/p/d."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Shapes of s/p/d."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Shapes of s/p/d."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atomic-structure-q-shapes-of-s-p-d-1",
+              "question": "Explain the core concept behind Shapes of s/p/d.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "shapes-of-s-p-d"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "shapes-of-s-p-d",
+                "conceptSlug": "core-shapes-of-s-p-d",
+                "microskillSlug": "understand-shapes-of-s-p-d",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            },
+            {
+              "id": "atomic-structure-q-shapes-of-s-p-d-2",
+              "question": "What is a common trap associated with Shapes of s/p/d?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "shapes-of-s-p-d",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "shapes-of-s-p-d",
+                "conceptSlug": "trap-shapes-of-s-p-d",
+                "microskillSlug": "avoid-shapes-of-s-p-d",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atomic-structure-spin",
+          "title": "Spin",
+          "conceptTags": [
+            "atomic-structure",
+            "spin"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Spin"
+          ],
+          "mustKnowFacts": [
+            "Spin is a fundamental subtopic of Atomic Structure.",
+            "Crucial to understand the principles governing Spin for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for spin",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving spin",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Spin during complex MCQs.",
+            "Failing to apply the correct logic for Spin."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Spin."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Spin."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atomic-structure-q-spin-1",
+              "question": "Explain the core concept behind Spin.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "spin"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "spin",
+                "conceptSlug": "core-spin",
+                "microskillSlug": "understand-spin",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            },
+            {
+              "id": "atomic-structure-q-spin-2",
+              "question": "What is a common trap associated with Spin?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "spin",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "spin",
+                "conceptSlug": "trap-spin",
+                "microskillSlug": "avoid-spin",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atomic-structure-aufbau",
+          "title": "Aufbau",
+          "conceptTags": [
+            "atomic-structure",
+            "aufbau"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Aufbau"
+          ],
+          "mustKnowFacts": [
+            "Aufbau is a fundamental subtopic of Atomic Structure.",
+            "Crucial to understand the principles governing Aufbau for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Aufbau",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Aufbau",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Aufbau during complex MCQs.",
+            "Failing to apply the correct logic for Aufbau."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Aufbau."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Aufbau."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atomic-structure-q-aufbau-1",
+              "question": "Explain the core concept behind Aufbau.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "aufbau"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "aufbau",
+                "conceptSlug": "core-aufbau",
+                "microskillSlug": "understand-aufbau",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            },
+            {
+              "id": "atomic-structure-q-aufbau-2",
+              "question": "What is a common trap associated with Aufbau?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "aufbau",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "aufbau",
+                "conceptSlug": "trap-aufbau",
+                "microskillSlug": "avoid-aufbau",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-atomic-structure-4",
+      "title": "Atomic Structure - Section 4",
+      "description": "Comprehensive analysis covering Pauli, Hund, electronic configuration and more.",
+      "conceptTags": [
+        "atomic-structure",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-atomic-structure-pauli",
+          "title": "Pauli",
+          "conceptTags": [
+            "atomic-structure",
+            "pauli"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Pauli"
+          ],
+          "mustKnowFacts": [
+            "Pauli is a fundamental subtopic of Atomic Structure.",
+            "Crucial to understand the principles governing Pauli for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Pauli",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Pauli",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Pauli during complex MCQs.",
+            "Failing to apply the correct logic for Pauli."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Pauli."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Pauli."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atomic-structure-q-pauli-1",
+              "question": "Explain the core concept behind Pauli.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "pauli"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "pauli",
+                "conceptSlug": "core-pauli",
+                "microskillSlug": "understand-pauli",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            },
+            {
+              "id": "atomic-structure-q-pauli-2",
+              "question": "What is a common trap associated with Pauli?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "pauli",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "pauli",
+                "conceptSlug": "trap-pauli",
+                "microskillSlug": "avoid-pauli",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atomic-structure-hund",
+          "title": "Hund",
+          "conceptTags": [
+            "atomic-structure",
+            "hund"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Hund"
+          ],
+          "mustKnowFacts": [
+            "Hund is a fundamental subtopic of Atomic Structure.",
+            "Crucial to understand the principles governing Hund for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Hund",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Hund",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Hund during complex MCQs.",
+            "Failing to apply the correct logic for Hund."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Hund."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Hund."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atomic-structure-q-hund-1",
+              "question": "Explain the core concept behind Hund.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "hund"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "hund",
+                "conceptSlug": "core-hund",
+                "microskillSlug": "understand-hund",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            },
+            {
+              "id": "atomic-structure-q-hund-2",
+              "question": "What is a common trap associated with Hund?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "hund",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "hund",
+                "conceptSlug": "trap-hund",
+                "microskillSlug": "avoid-hund",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atomic-structure-electronic-configuration",
+          "title": "Electronic configuration",
+          "conceptTags": [
+            "atomic-structure",
+            "electronic-configuration"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Electronic configuration"
+          ],
+          "mustKnowFacts": [
+            "Electronic configuration is a fundamental subtopic of Atomic Structure.",
+            "Crucial to understand the principles governing Electronic configuration for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for electronic configuration",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving electronic configuration",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Electronic configuration during complex MCQs.",
+            "Failing to apply the correct logic for Electronic configuration."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Electronic configuration."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Electronic configuration."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atomic-structure-q-electronic-configuration-1",
+              "question": "Explain the core concept behind Electronic configuration.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "electronic-configuration"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "electronic-configuration",
+                "conceptSlug": "core-electronic-configuration",
+                "microskillSlug": "understand-electronic-configuration",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            },
+            {
+              "id": "atomic-structure-q-electronic-configuration-2",
+              "question": "What is a common trap associated with Electronic configuration?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "electronic-configuration",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "electronic-configuration",
+                "conceptSlug": "trap-electronic-configuration",
+                "microskillSlug": "avoid-electronic-configuration",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atomic-structure-half-filled-full-filled-stability",
+          "title": "Half-filled/full-filled stability",
+          "conceptTags": [
+            "atomic-structure",
+            "half-filled-full-filled-stability"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Half-filled/full-filled stability"
+          ],
+          "mustKnowFacts": [
+            "Half-filled/full-filled stability is a fundamental subtopic of Atomic Structure.",
+            "Crucial to understand the principles governing Half-filled/full-filled stability for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for half-filled/full-filled stability",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving half-filled/full-filled stability",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Half-filled/full-filled stability during complex MCQs.",
+            "Failing to apply the correct logic for Half-filled/full-filled stability."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Half-filled/full-filled stability."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Half-filled/full-filled stability."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atomic-structure-q-half-filled-full-filled-stability-1",
+              "question": "Explain the core concept behind Half-filled/full-filled stability.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "half-filled-full-filled-stability"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "half-filled-full-filled-stability",
+                "conceptSlug": "core-half-filled-full-filled-stability",
+                "microskillSlug": "understand-half-filled-full-filled-stability",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            },
+            {
+              "id": "atomic-structure-q-half-filled-full-filled-stability-2",
+              "question": "What is a common trap associated with Half-filled/full-filled stability?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "half-filled-full-filled-stability",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atomic-structure",
+                "subtopicSlug": "half-filled-full-filled-stability",
+                "conceptSlug": "trap-half-filled-full-filled-stability",
+                "microskillSlug": "avoid-half-filled-full-filled-stability",
+                "subject": "Chemistry",
+                "unitSlug": "atomic-structure",
+                "chapterSlug": "atomic-structure"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

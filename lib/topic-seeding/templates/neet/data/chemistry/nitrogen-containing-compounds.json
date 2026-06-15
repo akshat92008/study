@@ -1,0 +1,3206 @@
+{
+  "missions": [
+    {
+      "id": "m-nitrogen-containing-compounds-1",
+      "title": "Organic Compounds Containing Nitrogen - Section 1",
+      "description": "Comprehensive analysis covering Generic subtopic 0, Generic subtopic 1, Generic subtopic 2 and more.",
+      "conceptTags": [
+        "nitrogen-containing-compounds",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-0",
+          "title": "Generic subtopic 0",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-0"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 0"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 0 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 0 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 0",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 0",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 0 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 0."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 0."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 0."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-0-1",
+              "question": "Explain the core concept behind Generic subtopic 0.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-0"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-0",
+                "conceptSlug": "core-generic-subtopic-0",
+                "microskillSlug": "understand-generic-subtopic-0",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-0-2",
+              "question": "What is a common trap associated with Generic subtopic 0?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-0",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-0",
+                "conceptSlug": "trap-generic-subtopic-0",
+                "microskillSlug": "avoid-generic-subtopic-0",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-1",
+          "title": "Generic subtopic 1",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-1"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 1"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 1 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 1 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 1",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 1",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 1 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 1."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 1."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 1."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-1-1",
+              "question": "Explain the core concept behind Generic subtopic 1.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-1"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-1",
+                "conceptSlug": "core-generic-subtopic-1",
+                "microskillSlug": "understand-generic-subtopic-1",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-1-2",
+              "question": "What is a common trap associated with Generic subtopic 1?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-1",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-1",
+                "conceptSlug": "trap-generic-subtopic-1",
+                "microskillSlug": "avoid-generic-subtopic-1",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-2",
+          "title": "Generic subtopic 2",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-2"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 2"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 2 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 2 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 2",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 2",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 2 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 2."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 2."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 2."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-2-1",
+              "question": "Explain the core concept behind Generic subtopic 2.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-2"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-2",
+                "conceptSlug": "core-generic-subtopic-2",
+                "microskillSlug": "understand-generic-subtopic-2",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-2-2",
+              "question": "What is a common trap associated with Generic subtopic 2?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-2",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-2",
+                "conceptSlug": "trap-generic-subtopic-2",
+                "microskillSlug": "avoid-generic-subtopic-2",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-3",
+          "title": "Generic subtopic 3",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-3"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 3"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 3 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 3 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 3",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 3",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 3 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 3."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 3."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 3."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-3-1",
+              "question": "Explain the core concept behind Generic subtopic 3.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-3"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-3",
+                "conceptSlug": "core-generic-subtopic-3",
+                "microskillSlug": "understand-generic-subtopic-3",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-3-2",
+              "question": "What is a common trap associated with Generic subtopic 3?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-3",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-3",
+                "conceptSlug": "trap-generic-subtopic-3",
+                "microskillSlug": "avoid-generic-subtopic-3",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-4",
+          "title": "Generic subtopic 4",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-4"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 4"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 4 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 4 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 4",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 4",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 4 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 4."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 4."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 4."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-4-1",
+              "question": "Explain the core concept behind Generic subtopic 4.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-4"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-4",
+                "conceptSlug": "core-generic-subtopic-4",
+                "microskillSlug": "understand-generic-subtopic-4",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-4-2",
+              "question": "What is a common trap associated with Generic subtopic 4?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-4",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-4",
+                "conceptSlug": "trap-generic-subtopic-4",
+                "microskillSlug": "avoid-generic-subtopic-4",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-5",
+          "title": "Generic subtopic 5",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-5"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 5"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 5 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 5 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 5",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 5",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 5 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 5."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 5."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 5."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-5-1",
+              "question": "Explain the core concept behind Generic subtopic 5.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-5"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-5",
+                "conceptSlug": "core-generic-subtopic-5",
+                "microskillSlug": "understand-generic-subtopic-5",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-5-2",
+              "question": "What is a common trap associated with Generic subtopic 5?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-5",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-5",
+                "conceptSlug": "trap-generic-subtopic-5",
+                "microskillSlug": "avoid-generic-subtopic-5",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-6",
+          "title": "Generic subtopic 6",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-6"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 6"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 6 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 6 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 6",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 6",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 6 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 6."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 6."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 6."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-6-1",
+              "question": "Explain the core concept behind Generic subtopic 6.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-6"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-6",
+                "conceptSlug": "core-generic-subtopic-6",
+                "microskillSlug": "understand-generic-subtopic-6",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-6-2",
+              "question": "What is a common trap associated with Generic subtopic 6?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-6",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-6",
+                "conceptSlug": "trap-generic-subtopic-6",
+                "microskillSlug": "avoid-generic-subtopic-6",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-7",
+          "title": "Generic subtopic 7",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-7"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 7"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 7 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 7 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 7",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 7",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 7 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 7."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 7."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 7."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-7-1",
+              "question": "Explain the core concept behind Generic subtopic 7.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-7"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-7",
+                "conceptSlug": "core-generic-subtopic-7",
+                "microskillSlug": "understand-generic-subtopic-7",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-7-2",
+              "question": "What is a common trap associated with Generic subtopic 7?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-7",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-7",
+                "conceptSlug": "trap-generic-subtopic-7",
+                "microskillSlug": "avoid-generic-subtopic-7",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-nitrogen-containing-compounds-2",
+      "title": "Organic Compounds Containing Nitrogen - Section 2",
+      "description": "Comprehensive analysis covering Generic subtopic 8, Generic subtopic 9, Generic subtopic 10 and more.",
+      "conceptTags": [
+        "nitrogen-containing-compounds",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-8",
+          "title": "Generic subtopic 8",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-8"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 8"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 8 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 8 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 8",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 8",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 8 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 8."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 8."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 8."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-8-1",
+              "question": "Explain the core concept behind Generic subtopic 8.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-8"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-8",
+                "conceptSlug": "core-generic-subtopic-8",
+                "microskillSlug": "understand-generic-subtopic-8",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-8-2",
+              "question": "What is a common trap associated with Generic subtopic 8?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-8",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-8",
+                "conceptSlug": "trap-generic-subtopic-8",
+                "microskillSlug": "avoid-generic-subtopic-8",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-9",
+          "title": "Generic subtopic 9",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-9"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 9"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 9 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 9 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 9",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 9",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 9 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 9."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 9."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 9."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-9-1",
+              "question": "Explain the core concept behind Generic subtopic 9.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-9"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-9",
+                "conceptSlug": "core-generic-subtopic-9",
+                "microskillSlug": "understand-generic-subtopic-9",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-9-2",
+              "question": "What is a common trap associated with Generic subtopic 9?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-9",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-9",
+                "conceptSlug": "trap-generic-subtopic-9",
+                "microskillSlug": "avoid-generic-subtopic-9",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-10",
+          "title": "Generic subtopic 10",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-10"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 10"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 10 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 10 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 10",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 10",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 10 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 10."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 10."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 10."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-10-1",
+              "question": "Explain the core concept behind Generic subtopic 10.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-10"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-10",
+                "conceptSlug": "core-generic-subtopic-10",
+                "microskillSlug": "understand-generic-subtopic-10",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-10-2",
+              "question": "What is a common trap associated with Generic subtopic 10?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-10",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-10",
+                "conceptSlug": "trap-generic-subtopic-10",
+                "microskillSlug": "avoid-generic-subtopic-10",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-11",
+          "title": "Generic subtopic 11",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-11"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 11"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 11 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 11 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 11",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 11",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 11 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 11."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 11."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 11."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-11-1",
+              "question": "Explain the core concept behind Generic subtopic 11.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-11"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-11",
+                "conceptSlug": "core-generic-subtopic-11",
+                "microskillSlug": "understand-generic-subtopic-11",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-11-2",
+              "question": "What is a common trap associated with Generic subtopic 11?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-11",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-11",
+                "conceptSlug": "trap-generic-subtopic-11",
+                "microskillSlug": "avoid-generic-subtopic-11",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-12",
+          "title": "Generic subtopic 12",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-12"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 12"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 12 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 12 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 12",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 12",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 12 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 12."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 12."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 12."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-12-1",
+              "question": "Explain the core concept behind Generic subtopic 12.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-12"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-12",
+                "conceptSlug": "core-generic-subtopic-12",
+                "microskillSlug": "understand-generic-subtopic-12",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-12-2",
+              "question": "What is a common trap associated with Generic subtopic 12?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-12",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-12",
+                "conceptSlug": "trap-generic-subtopic-12",
+                "microskillSlug": "avoid-generic-subtopic-12",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-13",
+          "title": "Generic subtopic 13",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-13"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 13"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 13 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 13 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 13",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 13",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 13 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 13."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 13."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 13."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-13-1",
+              "question": "Explain the core concept behind Generic subtopic 13.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-13"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-13",
+                "conceptSlug": "core-generic-subtopic-13",
+                "microskillSlug": "understand-generic-subtopic-13",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-13-2",
+              "question": "What is a common trap associated with Generic subtopic 13?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-13",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-13",
+                "conceptSlug": "trap-generic-subtopic-13",
+                "microskillSlug": "avoid-generic-subtopic-13",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-14",
+          "title": "Generic subtopic 14",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-14"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 14"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 14 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 14 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 14",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 14",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 14 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 14."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 14."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 14."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-14-1",
+              "question": "Explain the core concept behind Generic subtopic 14.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-14"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-14",
+                "conceptSlug": "core-generic-subtopic-14",
+                "microskillSlug": "understand-generic-subtopic-14",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-14-2",
+              "question": "What is a common trap associated with Generic subtopic 14?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-14",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-14",
+                "conceptSlug": "trap-generic-subtopic-14",
+                "microskillSlug": "avoid-generic-subtopic-14",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-15",
+          "title": "Generic subtopic 15",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-15"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 15"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 15 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 15 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 15",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 15",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 15 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 15."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 15."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 15."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-15-1",
+              "question": "Explain the core concept behind Generic subtopic 15.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-15"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-15",
+                "conceptSlug": "core-generic-subtopic-15",
+                "microskillSlug": "understand-generic-subtopic-15",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-15-2",
+              "question": "What is a common trap associated with Generic subtopic 15?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-15",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-15",
+                "conceptSlug": "trap-generic-subtopic-15",
+                "microskillSlug": "avoid-generic-subtopic-15",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-nitrogen-containing-compounds-3",
+      "title": "Organic Compounds Containing Nitrogen - Section 3",
+      "description": "Comprehensive analysis covering Generic subtopic 16, Generic subtopic 17, Generic subtopic 18 and more.",
+      "conceptTags": [
+        "nitrogen-containing-compounds",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-16",
+          "title": "Generic subtopic 16",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-16"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 16"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 16 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 16 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 16",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 16",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 16 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 16."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 16."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 16."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-16-1",
+              "question": "Explain the core concept behind Generic subtopic 16.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-16"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-16",
+                "conceptSlug": "core-generic-subtopic-16",
+                "microskillSlug": "understand-generic-subtopic-16",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-16-2",
+              "question": "What is a common trap associated with Generic subtopic 16?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-16",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-16",
+                "conceptSlug": "trap-generic-subtopic-16",
+                "microskillSlug": "avoid-generic-subtopic-16",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-17",
+          "title": "Generic subtopic 17",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-17"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 17"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 17 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 17 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 17",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 17",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 17 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 17."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 17."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 17."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-17-1",
+              "question": "Explain the core concept behind Generic subtopic 17.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-17"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-17",
+                "conceptSlug": "core-generic-subtopic-17",
+                "microskillSlug": "understand-generic-subtopic-17",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-17-2",
+              "question": "What is a common trap associated with Generic subtopic 17?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-17",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-17",
+                "conceptSlug": "trap-generic-subtopic-17",
+                "microskillSlug": "avoid-generic-subtopic-17",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-18",
+          "title": "Generic subtopic 18",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-18"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 18"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 18 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 18 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 18",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 18",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 18 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 18."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 18."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 18."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-18-1",
+              "question": "Explain the core concept behind Generic subtopic 18.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-18"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-18",
+                "conceptSlug": "core-generic-subtopic-18",
+                "microskillSlug": "understand-generic-subtopic-18",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-18-2",
+              "question": "What is a common trap associated with Generic subtopic 18?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-18",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-18",
+                "conceptSlug": "trap-generic-subtopic-18",
+                "microskillSlug": "avoid-generic-subtopic-18",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-19",
+          "title": "Generic subtopic 19",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-19"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 19"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 19 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 19 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 19",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 19",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 19 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 19."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 19."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 19."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-19-1",
+              "question": "Explain the core concept behind Generic subtopic 19.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-19"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-19",
+                "conceptSlug": "core-generic-subtopic-19",
+                "microskillSlug": "understand-generic-subtopic-19",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-19-2",
+              "question": "What is a common trap associated with Generic subtopic 19?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-19",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-19",
+                "conceptSlug": "trap-generic-subtopic-19",
+                "microskillSlug": "avoid-generic-subtopic-19",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-20",
+          "title": "Generic subtopic 20",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-20"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 20"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 20 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 20 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 20",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 20",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 20 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 20."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 20."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 20."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-20-1",
+              "question": "Explain the core concept behind Generic subtopic 20.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-20"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-20",
+                "conceptSlug": "core-generic-subtopic-20",
+                "microskillSlug": "understand-generic-subtopic-20",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-20-2",
+              "question": "What is a common trap associated with Generic subtopic 20?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-20",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-20",
+                "conceptSlug": "trap-generic-subtopic-20",
+                "microskillSlug": "avoid-generic-subtopic-20",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-21",
+          "title": "Generic subtopic 21",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-21"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 21"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 21 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 21 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 21",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 21",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 21 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 21."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 21."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 21."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-21-1",
+              "question": "Explain the core concept behind Generic subtopic 21.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-21"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-21",
+                "conceptSlug": "core-generic-subtopic-21",
+                "microskillSlug": "understand-generic-subtopic-21",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-21-2",
+              "question": "What is a common trap associated with Generic subtopic 21?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-21",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-21",
+                "conceptSlug": "trap-generic-subtopic-21",
+                "microskillSlug": "avoid-generic-subtopic-21",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-22",
+          "title": "Generic subtopic 22",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-22"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 22"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 22 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 22 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 22",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 22",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 22 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 22."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 22."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 22."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-22-1",
+              "question": "Explain the core concept behind Generic subtopic 22.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-22"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-22",
+                "conceptSlug": "core-generic-subtopic-22",
+                "microskillSlug": "understand-generic-subtopic-22",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-22-2",
+              "question": "What is a common trap associated with Generic subtopic 22?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-22",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-22",
+                "conceptSlug": "trap-generic-subtopic-22",
+                "microskillSlug": "avoid-generic-subtopic-22",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-23",
+          "title": "Generic subtopic 23",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-23"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 23"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 23 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 23 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 23",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 23",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 23 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 23."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 23."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 23."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-23-1",
+              "question": "Explain the core concept behind Generic subtopic 23.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-23"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-23",
+                "conceptSlug": "core-generic-subtopic-23",
+                "microskillSlug": "understand-generic-subtopic-23",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-23-2",
+              "question": "What is a common trap associated with Generic subtopic 23?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-23",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-23",
+                "conceptSlug": "trap-generic-subtopic-23",
+                "microskillSlug": "avoid-generic-subtopic-23",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-nitrogen-containing-compounds-4",
+      "title": "Organic Compounds Containing Nitrogen - Section 4",
+      "description": "Comprehensive analysis covering Generic subtopic 24, Generic subtopic 25, Generic subtopic 26 and more.",
+      "conceptTags": [
+        "nitrogen-containing-compounds",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-24",
+          "title": "Generic subtopic 24",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-24"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 24"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 24 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 24 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 24",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 24",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 24 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 24."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 24."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 24."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-24-1",
+              "question": "Explain the core concept behind Generic subtopic 24.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-24"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-24",
+                "conceptSlug": "core-generic-subtopic-24",
+                "microskillSlug": "understand-generic-subtopic-24",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-24-2",
+              "question": "What is a common trap associated with Generic subtopic 24?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-24",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-24",
+                "conceptSlug": "trap-generic-subtopic-24",
+                "microskillSlug": "avoid-generic-subtopic-24",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-25",
+          "title": "Generic subtopic 25",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-25"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 25"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 25 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 25 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 25",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 25",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 25 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 25."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 25."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 25."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-25-1",
+              "question": "Explain the core concept behind Generic subtopic 25.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-25"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-25",
+                "conceptSlug": "core-generic-subtopic-25",
+                "microskillSlug": "understand-generic-subtopic-25",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-25-2",
+              "question": "What is a common trap associated with Generic subtopic 25?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-25",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-25",
+                "conceptSlug": "trap-generic-subtopic-25",
+                "microskillSlug": "avoid-generic-subtopic-25",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-26",
+          "title": "Generic subtopic 26",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-26"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 26"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 26 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 26 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 26",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 26",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 26 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 26."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 26."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 26."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-26-1",
+              "question": "Explain the core concept behind Generic subtopic 26.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-26"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-26",
+                "conceptSlug": "core-generic-subtopic-26",
+                "microskillSlug": "understand-generic-subtopic-26",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-26-2",
+              "question": "What is a common trap associated with Generic subtopic 26?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-26",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-26",
+                "conceptSlug": "trap-generic-subtopic-26",
+                "microskillSlug": "avoid-generic-subtopic-26",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-27",
+          "title": "Generic subtopic 27",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-27"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 27"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 27 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 27 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 27",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 27",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 27 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 27."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 27."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 27."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-27-1",
+              "question": "Explain the core concept behind Generic subtopic 27.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-27"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-27",
+                "conceptSlug": "core-generic-subtopic-27",
+                "microskillSlug": "understand-generic-subtopic-27",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-27-2",
+              "question": "What is a common trap associated with Generic subtopic 27?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-27",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-27",
+                "conceptSlug": "trap-generic-subtopic-27",
+                "microskillSlug": "avoid-generic-subtopic-27",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-28",
+          "title": "Generic subtopic 28",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-28"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 28"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 28 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 28 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 28",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 28",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 28 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 28."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 28."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 28."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-28-1",
+              "question": "Explain the core concept behind Generic subtopic 28.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-28"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-28",
+                "conceptSlug": "core-generic-subtopic-28",
+                "microskillSlug": "understand-generic-subtopic-28",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-28-2",
+              "question": "What is a common trap associated with Generic subtopic 28?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-28",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-28",
+                "conceptSlug": "trap-generic-subtopic-28",
+                "microskillSlug": "avoid-generic-subtopic-28",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-nitrogen-containing-compounds-generic-subtopic-29",
+          "title": "Generic subtopic 29",
+          "conceptTags": [
+            "nitrogen-containing-compounds",
+            "generic-subtopic-29"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Generic subtopic 29"
+          ],
+          "mustKnowFacts": [
+            "Generic subtopic 29 is a fundamental subtopic of Organic Compounds Containing Nitrogen.",
+            "Crucial to understand the principles governing Generic subtopic 29 for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Generic subtopic 29",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Generic subtopic 29",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Generic subtopic 29 during complex MCQs.",
+            "Failing to apply the correct logic for Generic subtopic 29."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Generic subtopic 29."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Generic subtopic 29."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-29-1",
+              "question": "Explain the core concept behind Generic subtopic 29.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "generic-subtopic-29"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-29",
+                "conceptSlug": "core-generic-subtopic-29",
+                "microskillSlug": "understand-generic-subtopic-29",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            },
+            {
+              "id": "nitrogen-containing-compounds-q-generic-subtopic-29-2",
+              "question": "What is a common trap associated with Generic subtopic 29?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "generic-subtopic-29",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "nitrogen-containing-compounds",
+                "subtopicSlug": "generic-subtopic-29",
+                "conceptSlug": "trap-generic-subtopic-29",
+                "microskillSlug": "avoid-generic-subtopic-29",
+                "subject": "Chemistry",
+                "unitSlug": "nitrogen-containing-compounds",
+                "chapterSlug": "nitrogen-containing-compounds"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

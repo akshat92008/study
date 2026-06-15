@@ -1,0 +1,3158 @@
+{
+  "missions": [
+    {
+      "id": "m-cell-structure-and-function-1",
+      "title": "Cell Structure and Function - Section 1",
+      "description": "Comprehensive analysis covering cell theory, prokaryotic cell, eukaryotic cell and more.",
+      "conceptTags": [
+        "cell-structure-and-function",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-cell-structure-and-function-cell-theory",
+          "title": "Cell theory",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "cell-theory"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Cell theory"
+          ],
+          "mustKnowFacts": [
+            "Cell theory is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Cell theory for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing cell theory",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of cell theory",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in cell theory"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Cell theory during complex MCQs.",
+            "Failing to apply the correct logic for Cell theory."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Cell theory."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Cell theory."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-cell-theory-1",
+              "question": "Explain the core concept behind Cell theory.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "cell-theory"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "cell-theory",
+                "conceptSlug": "core-cell-theory",
+                "microskillSlug": "understand-cell-theory",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-cell-theory-2",
+              "question": "What is a common trap associated with Cell theory?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "cell-theory",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "cell-theory",
+                "conceptSlug": "trap-cell-theory",
+                "microskillSlug": "avoid-cell-theory",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-prokaryotic-cell",
+          "title": "Prokaryotic cell",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "prokaryotic-cell"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Prokaryotic cell"
+          ],
+          "mustKnowFacts": [
+            "Prokaryotic cell is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Prokaryotic cell for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing prokaryotic cell",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of prokaryotic cell",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in prokaryotic cell"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Prokaryotic cell during complex MCQs.",
+            "Failing to apply the correct logic for Prokaryotic cell."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Prokaryotic cell."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Prokaryotic cell."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-prokaryotic-cell-1",
+              "question": "Explain the core concept behind Prokaryotic cell.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "prokaryotic-cell"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "prokaryotic-cell",
+                "conceptSlug": "core-prokaryotic-cell",
+                "microskillSlug": "understand-prokaryotic-cell",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-prokaryotic-cell-2",
+              "question": "What is a common trap associated with Prokaryotic cell?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "prokaryotic-cell",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "prokaryotic-cell",
+                "conceptSlug": "trap-prokaryotic-cell",
+                "microskillSlug": "avoid-prokaryotic-cell",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-eukaryotic-cell",
+          "title": "Eukaryotic cell",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "eukaryotic-cell"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Eukaryotic cell"
+          ],
+          "mustKnowFacts": [
+            "Eukaryotic cell is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Eukaryotic cell for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing eukaryotic cell",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of eukaryotic cell",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in eukaryotic cell"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Eukaryotic cell during complex MCQs.",
+            "Failing to apply the correct logic for Eukaryotic cell."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Eukaryotic cell."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Eukaryotic cell."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-eukaryotic-cell-1",
+              "question": "Explain the core concept behind Eukaryotic cell.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "eukaryotic-cell"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "eukaryotic-cell",
+                "conceptSlug": "core-eukaryotic-cell",
+                "microskillSlug": "understand-eukaryotic-cell",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-eukaryotic-cell-2",
+              "question": "What is a common trap associated with Eukaryotic cell?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "eukaryotic-cell",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "eukaryotic-cell",
+                "conceptSlug": "trap-eukaryotic-cell",
+                "microskillSlug": "avoid-eukaryotic-cell",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-plant-vs-animal-cell",
+          "title": "Plant vs animal cell",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "plant-vs-animal-cell"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Plant vs animal cell"
+          ],
+          "mustKnowFacts": [
+            "Plant vs animal cell is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Plant vs animal cell for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing plant vs animal cell",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of plant vs animal cell",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in plant vs animal cell"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Plant vs animal cell during complex MCQs.",
+            "Failing to apply the correct logic for Plant vs animal cell."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Plant vs animal cell."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Plant vs animal cell."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-plant-vs-animal-cell-1",
+              "question": "Explain the core concept behind Plant vs animal cell.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "plant-vs-animal-cell"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "plant-vs-animal-cell",
+                "conceptSlug": "core-plant-vs-animal-cell",
+                "microskillSlug": "understand-plant-vs-animal-cell",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-plant-vs-animal-cell-2",
+              "question": "What is a common trap associated with Plant vs animal cell?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "plant-vs-animal-cell",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "plant-vs-animal-cell",
+                "conceptSlug": "trap-plant-vs-animal-cell",
+                "microskillSlug": "avoid-plant-vs-animal-cell",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-cell-membrane",
+          "title": "Cell membrane",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "cell-membrane"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Cell membrane"
+          ],
+          "mustKnowFacts": [
+            "Cell membrane is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Cell membrane for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing cell membrane",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of cell membrane",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in cell membrane"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Cell membrane during complex MCQs.",
+            "Failing to apply the correct logic for Cell membrane."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Cell membrane."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Cell membrane."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-cell-membrane-1",
+              "question": "Explain the core concept behind Cell membrane.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "cell-membrane"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "cell-membrane",
+                "conceptSlug": "core-cell-membrane",
+                "microskillSlug": "understand-cell-membrane",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-cell-membrane-2",
+              "question": "What is a common trap associated with Cell membrane?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "cell-membrane",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "cell-membrane",
+                "conceptSlug": "trap-cell-membrane",
+                "microskillSlug": "avoid-cell-membrane",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-cell-wall",
+          "title": "Cell wall",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "cell-wall"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Cell wall"
+          ],
+          "mustKnowFacts": [
+            "Cell wall is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Cell wall for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing cell wall",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of cell wall",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in cell wall"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Cell wall during complex MCQs.",
+            "Failing to apply the correct logic for Cell wall."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Cell wall."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Cell wall."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-cell-wall-1",
+              "question": "Explain the core concept behind Cell wall.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "cell-wall"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "cell-wall",
+                "conceptSlug": "core-cell-wall",
+                "microskillSlug": "understand-cell-wall",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-cell-wall-2",
+              "question": "What is a common trap associated with Cell wall?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "cell-wall",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "cell-wall",
+                "conceptSlug": "trap-cell-wall",
+                "microskillSlug": "avoid-cell-wall",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-cell-envelope",
+          "title": "Cell envelope",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "cell-envelope"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Cell envelope"
+          ],
+          "mustKnowFacts": [
+            "Cell envelope is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Cell envelope for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing cell envelope",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of cell envelope",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in cell envelope"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Cell envelope during complex MCQs.",
+            "Failing to apply the correct logic for Cell envelope."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Cell envelope."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Cell envelope."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-cell-envelope-1",
+              "question": "Explain the core concept behind Cell envelope.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "cell-envelope"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "cell-envelope",
+                "conceptSlug": "core-cell-envelope",
+                "microskillSlug": "understand-cell-envelope",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-cell-envelope-2",
+              "question": "What is a common trap associated with Cell envelope?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "cell-envelope",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "cell-envelope",
+                "conceptSlug": "trap-cell-envelope",
+                "microskillSlug": "avoid-cell-envelope",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-er",
+          "title": "ER",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "er"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, ER"
+          ],
+          "mustKnowFacts": [
+            "ER is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing ER for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing ER",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of ER",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in ER"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret ER during complex MCQs.",
+            "Failing to apply the correct logic for ER."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to ER."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about ER."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-er-1",
+              "question": "Explain the core concept behind ER.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "er"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "er",
+                "conceptSlug": "core-er",
+                "microskillSlug": "understand-er",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-er-2",
+              "question": "What is a common trap associated with ER?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "er",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "er",
+                "conceptSlug": "trap-er",
+                "microskillSlug": "avoid-er",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-golgi",
+          "title": "Golgi",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "golgi"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Golgi"
+          ],
+          "mustKnowFacts": [
+            "Golgi is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Golgi for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing Golgi",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of Golgi",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in Golgi"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Golgi during complex MCQs.",
+            "Failing to apply the correct logic for Golgi."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Golgi."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Golgi."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-golgi-1",
+              "question": "Explain the core concept behind Golgi.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "golgi"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "golgi",
+                "conceptSlug": "core-golgi",
+                "microskillSlug": "understand-golgi",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-golgi-2",
+              "question": "What is a common trap associated with Golgi?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "golgi",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "golgi",
+                "conceptSlug": "trap-golgi",
+                "microskillSlug": "avoid-golgi",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-cell-structure-and-function-2",
+      "title": "Cell Structure and Function - Section 2",
+      "description": "Comprehensive analysis covering lysosomes, vacuoles, mitochondria and more.",
+      "conceptTags": [
+        "cell-structure-and-function",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-cell-structure-and-function-lysosomes",
+          "title": "Lysosomes",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "lysosomes"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Lysosomes"
+          ],
+          "mustKnowFacts": [
+            "Lysosomes is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Lysosomes for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing lysosomes",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of lysosomes",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in lysosomes"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Lysosomes during complex MCQs.",
+            "Failing to apply the correct logic for Lysosomes."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Lysosomes."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Lysosomes."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-lysosomes-1",
+              "question": "Explain the core concept behind Lysosomes.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "lysosomes"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "lysosomes",
+                "conceptSlug": "core-lysosomes",
+                "microskillSlug": "understand-lysosomes",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-lysosomes-2",
+              "question": "What is a common trap associated with Lysosomes?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "lysosomes",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "lysosomes",
+                "conceptSlug": "trap-lysosomes",
+                "microskillSlug": "avoid-lysosomes",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-vacuoles",
+          "title": "Vacuoles",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "vacuoles"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Vacuoles"
+          ],
+          "mustKnowFacts": [
+            "Vacuoles is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Vacuoles for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing vacuoles",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of vacuoles",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in vacuoles"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Vacuoles during complex MCQs.",
+            "Failing to apply the correct logic for Vacuoles."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Vacuoles."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Vacuoles."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-vacuoles-1",
+              "question": "Explain the core concept behind Vacuoles.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "vacuoles"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "vacuoles",
+                "conceptSlug": "core-vacuoles",
+                "microskillSlug": "understand-vacuoles",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-vacuoles-2",
+              "question": "What is a common trap associated with Vacuoles?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "vacuoles",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "vacuoles",
+                "conceptSlug": "trap-vacuoles",
+                "microskillSlug": "avoid-vacuoles",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-mitochondria",
+          "title": "Mitochondria",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "mitochondria"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Mitochondria"
+          ],
+          "mustKnowFacts": [
+            "Mitochondria is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Mitochondria for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing mitochondria",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of mitochondria",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in mitochondria"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Mitochondria during complex MCQs.",
+            "Failing to apply the correct logic for Mitochondria."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Mitochondria."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Mitochondria."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-mitochondria-1",
+              "question": "Explain the core concept behind Mitochondria.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "mitochondria"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "mitochondria",
+                "conceptSlug": "core-mitochondria",
+                "microskillSlug": "understand-mitochondria",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-mitochondria-2",
+              "question": "What is a common trap associated with Mitochondria?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "mitochondria",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "mitochondria",
+                "conceptSlug": "trap-mitochondria",
+                "microskillSlug": "avoid-mitochondria",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-plastids",
+          "title": "Plastids",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "plastids"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Plastids"
+          ],
+          "mustKnowFacts": [
+            "Plastids is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Plastids for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing plastids",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of plastids",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in plastids"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Plastids during complex MCQs.",
+            "Failing to apply the correct logic for Plastids."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Plastids."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Plastids."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-plastids-1",
+              "question": "Explain the core concept behind Plastids.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "plastids"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "plastids",
+                "conceptSlug": "core-plastids",
+                "microskillSlug": "understand-plastids",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-plastids-2",
+              "question": "What is a common trap associated with Plastids?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "plastids",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "plastids",
+                "conceptSlug": "trap-plastids",
+                "microskillSlug": "avoid-plastids",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-ribosomes",
+          "title": "Ribosomes",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "ribosomes"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Ribosomes"
+          ],
+          "mustKnowFacts": [
+            "Ribosomes is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Ribosomes for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing ribosomes",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of ribosomes",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in ribosomes"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Ribosomes during complex MCQs.",
+            "Failing to apply the correct logic for Ribosomes."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Ribosomes."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Ribosomes."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-ribosomes-1",
+              "question": "Explain the core concept behind Ribosomes.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "ribosomes"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "ribosomes",
+                "conceptSlug": "core-ribosomes",
+                "microskillSlug": "understand-ribosomes",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-ribosomes-2",
+              "question": "What is a common trap associated with Ribosomes?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "ribosomes",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "ribosomes",
+                "conceptSlug": "trap-ribosomes",
+                "microskillSlug": "avoid-ribosomes",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-microbodies",
+          "title": "Microbodies",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "microbodies"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Microbodies"
+          ],
+          "mustKnowFacts": [
+            "Microbodies is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Microbodies for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing microbodies",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of microbodies",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in microbodies"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Microbodies during complex MCQs.",
+            "Failing to apply the correct logic for Microbodies."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Microbodies."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Microbodies."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-microbodies-1",
+              "question": "Explain the core concept behind Microbodies.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "microbodies"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "microbodies",
+                "conceptSlug": "core-microbodies",
+                "microskillSlug": "understand-microbodies",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-microbodies-2",
+              "question": "What is a common trap associated with Microbodies?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "microbodies",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "microbodies",
+                "conceptSlug": "trap-microbodies",
+                "microskillSlug": "avoid-microbodies",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-cytoskeleton",
+          "title": "Cytoskeleton",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "cytoskeleton"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Cytoskeleton"
+          ],
+          "mustKnowFacts": [
+            "Cytoskeleton is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Cytoskeleton for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing cytoskeleton",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of cytoskeleton",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in cytoskeleton"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Cytoskeleton during complex MCQs.",
+            "Failing to apply the correct logic for Cytoskeleton."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Cytoskeleton."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Cytoskeleton."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-cytoskeleton-1",
+              "question": "Explain the core concept behind Cytoskeleton.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "cytoskeleton"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "cytoskeleton",
+                "conceptSlug": "core-cytoskeleton",
+                "microskillSlug": "understand-cytoskeleton",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-cytoskeleton-2",
+              "question": "What is a common trap associated with Cytoskeleton?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "cytoskeleton",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "cytoskeleton",
+                "conceptSlug": "trap-cytoskeleton",
+                "microskillSlug": "avoid-cytoskeleton",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-cilia",
+          "title": "Cilia",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "cilia"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Cilia"
+          ],
+          "mustKnowFacts": [
+            "Cilia is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Cilia for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing cilia",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of cilia",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in cilia"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Cilia during complex MCQs.",
+            "Failing to apply the correct logic for Cilia."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Cilia."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Cilia."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-cilia-1",
+              "question": "Explain the core concept behind Cilia.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "cilia"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "cilia",
+                "conceptSlug": "core-cilia",
+                "microskillSlug": "understand-cilia",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-cilia-2",
+              "question": "What is a common trap associated with Cilia?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "cilia",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "cilia",
+                "conceptSlug": "trap-cilia",
+                "microskillSlug": "avoid-cilia",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-flagella",
+          "title": "Flagella",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "flagella"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Flagella"
+          ],
+          "mustKnowFacts": [
+            "Flagella is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Flagella for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing flagella",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of flagella",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in flagella"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Flagella during complex MCQs.",
+            "Failing to apply the correct logic for Flagella."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Flagella."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Flagella."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-flagella-1",
+              "question": "Explain the core concept behind Flagella.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "flagella"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "flagella",
+                "conceptSlug": "core-flagella",
+                "microskillSlug": "understand-flagella",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-flagella-2",
+              "question": "What is a common trap associated with Flagella?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "flagella",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "flagella",
+                "conceptSlug": "trap-flagella",
+                "microskillSlug": "avoid-flagella",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-cell-structure-and-function-3",
+      "title": "Cell Structure and Function - Section 3",
+      "description": "Comprehensive analysis covering centrioles, nucleus, chromatin and more.",
+      "conceptTags": [
+        "cell-structure-and-function",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-cell-structure-and-function-centrioles",
+          "title": "Centrioles",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "centrioles"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Centrioles"
+          ],
+          "mustKnowFacts": [
+            "Centrioles is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Centrioles for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing centrioles",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of centrioles",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in centrioles"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Centrioles during complex MCQs.",
+            "Failing to apply the correct logic for Centrioles."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Centrioles."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Centrioles."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-centrioles-1",
+              "question": "Explain the core concept behind Centrioles.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "centrioles"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "centrioles",
+                "conceptSlug": "core-centrioles",
+                "microskillSlug": "understand-centrioles",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-centrioles-2",
+              "question": "What is a common trap associated with Centrioles?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "centrioles",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "centrioles",
+                "conceptSlug": "trap-centrioles",
+                "microskillSlug": "avoid-centrioles",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-nucleus",
+          "title": "Nucleus",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "nucleus"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Nucleus"
+          ],
+          "mustKnowFacts": [
+            "Nucleus is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Nucleus for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing nucleus",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of nucleus",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in nucleus"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Nucleus during complex MCQs.",
+            "Failing to apply the correct logic for Nucleus."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Nucleus."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Nucleus."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-nucleus-1",
+              "question": "Explain the core concept behind Nucleus.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "nucleus"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "nucleus",
+                "conceptSlug": "core-nucleus",
+                "microskillSlug": "understand-nucleus",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-nucleus-2",
+              "question": "What is a common trap associated with Nucleus?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "nucleus",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "nucleus",
+                "conceptSlug": "trap-nucleus",
+                "microskillSlug": "avoid-nucleus",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-chromatin",
+          "title": "Chromatin",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "chromatin"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Chromatin"
+          ],
+          "mustKnowFacts": [
+            "Chromatin is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Chromatin for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing chromatin",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of chromatin",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in chromatin"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Chromatin during complex MCQs.",
+            "Failing to apply the correct logic for Chromatin."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Chromatin."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Chromatin."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-chromatin-1",
+              "question": "Explain the core concept behind Chromatin.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "chromatin"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "chromatin",
+                "conceptSlug": "core-chromatin",
+                "microskillSlug": "understand-chromatin",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-chromatin-2",
+              "question": "What is a common trap associated with Chromatin?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "chromatin",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "chromatin",
+                "conceptSlug": "trap-chromatin",
+                "microskillSlug": "avoid-chromatin",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-nucleolus",
+          "title": "Nucleolus",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "nucleolus"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Nucleolus"
+          ],
+          "mustKnowFacts": [
+            "Nucleolus is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Nucleolus for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing nucleolus",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of nucleolus",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in nucleolus"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Nucleolus during complex MCQs.",
+            "Failing to apply the correct logic for Nucleolus."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Nucleolus."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Nucleolus."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-nucleolus-1",
+              "question": "Explain the core concept behind Nucleolus.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "nucleolus"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "nucleolus",
+                "conceptSlug": "core-nucleolus",
+                "microskillSlug": "understand-nucleolus",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-nucleolus-2",
+              "question": "What is a common trap associated with Nucleolus?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "nucleolus",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "nucleolus",
+                "conceptSlug": "trap-nucleolus",
+                "microskillSlug": "avoid-nucleolus",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-biomolecules",
+          "title": "Biomolecules",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "biomolecules"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Biomolecules"
+          ],
+          "mustKnowFacts": [
+            "Biomolecules is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Biomolecules for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing biomolecules",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of biomolecules",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in biomolecules"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Biomolecules during complex MCQs.",
+            "Failing to apply the correct logic for Biomolecules."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Biomolecules."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Biomolecules."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-biomolecules-1",
+              "question": "Explain the core concept behind Biomolecules.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "biomolecules"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "biomolecules",
+                "conceptSlug": "core-biomolecules",
+                "microskillSlug": "understand-biomolecules",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-biomolecules-2",
+              "question": "What is a common trap associated with Biomolecules?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "biomolecules",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "biomolecules",
+                "conceptSlug": "trap-biomolecules",
+                "microskillSlug": "avoid-biomolecules",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-carbohydrates",
+          "title": "Carbohydrates",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "carbohydrates"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Carbohydrates"
+          ],
+          "mustKnowFacts": [
+            "Carbohydrates is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Carbohydrates for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing carbohydrates",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of carbohydrates",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in carbohydrates"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Carbohydrates during complex MCQs.",
+            "Failing to apply the correct logic for Carbohydrates."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Carbohydrates."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Carbohydrates."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-carbohydrates-1",
+              "question": "Explain the core concept behind Carbohydrates.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "carbohydrates"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "carbohydrates",
+                "conceptSlug": "core-carbohydrates",
+                "microskillSlug": "understand-carbohydrates",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-carbohydrates-2",
+              "question": "What is a common trap associated with Carbohydrates?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "carbohydrates",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "carbohydrates",
+                "conceptSlug": "trap-carbohydrates",
+                "microskillSlug": "avoid-carbohydrates",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-lipids",
+          "title": "Lipids",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "lipids"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Lipids"
+          ],
+          "mustKnowFacts": [
+            "Lipids is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Lipids for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing lipids",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of lipids",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in lipids"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Lipids during complex MCQs.",
+            "Failing to apply the correct logic for Lipids."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Lipids."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Lipids."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-lipids-1",
+              "question": "Explain the core concept behind Lipids.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "lipids"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "lipids",
+                "conceptSlug": "core-lipids",
+                "microskillSlug": "understand-lipids",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-lipids-2",
+              "question": "What is a common trap associated with Lipids?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "lipids",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "lipids",
+                "conceptSlug": "trap-lipids",
+                "microskillSlug": "avoid-lipids",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-proteins",
+          "title": "Proteins",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "proteins"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Proteins"
+          ],
+          "mustKnowFacts": [
+            "Proteins is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Proteins for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing proteins",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of proteins",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in proteins"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Proteins during complex MCQs.",
+            "Failing to apply the correct logic for Proteins."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Proteins."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Proteins."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-proteins-1",
+              "question": "Explain the core concept behind Proteins.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "proteins"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "proteins",
+                "conceptSlug": "core-proteins",
+                "microskillSlug": "understand-proteins",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-proteins-2",
+              "question": "What is a common trap associated with Proteins?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "proteins",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "proteins",
+                "conceptSlug": "trap-proteins",
+                "microskillSlug": "avoid-proteins",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-nucleic-acids",
+          "title": "Nucleic acids",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "nucleic-acids"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Nucleic acids"
+          ],
+          "mustKnowFacts": [
+            "Nucleic acids is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Nucleic acids for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing nucleic acids",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of nucleic acids",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in nucleic acids"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Nucleic acids during complex MCQs.",
+            "Failing to apply the correct logic for Nucleic acids."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Nucleic acids."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Nucleic acids."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-nucleic-acids-1",
+              "question": "Explain the core concept behind Nucleic acids.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "nucleic-acids"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "nucleic-acids",
+                "conceptSlug": "core-nucleic-acids",
+                "microskillSlug": "understand-nucleic-acids",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-nucleic-acids-2",
+              "question": "What is a common trap associated with Nucleic acids?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "nucleic-acids",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "nucleic-acids",
+                "conceptSlug": "trap-nucleic-acids",
+                "microskillSlug": "avoid-nucleic-acids",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-cell-structure-and-function-4",
+      "title": "Cell Structure and Function - Section 4",
+      "description": "Comprehensive analysis covering enzymes, enzyme properties, cell cycle and more.",
+      "conceptTags": [
+        "cell-structure-and-function",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-cell-structure-and-function-enzymes",
+          "title": "Enzymes",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "enzymes"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Enzymes"
+          ],
+          "mustKnowFacts": [
+            "Enzymes is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Enzymes for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing enzymes",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of enzymes",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in enzymes"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Enzymes during complex MCQs.",
+            "Failing to apply the correct logic for Enzymes."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Enzymes."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Enzymes."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-enzymes-1",
+              "question": "Explain the core concept behind Enzymes.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "enzymes"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "enzymes",
+                "conceptSlug": "core-enzymes",
+                "microskillSlug": "understand-enzymes",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-enzymes-2",
+              "question": "What is a common trap associated with Enzymes?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "enzymes",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "enzymes",
+                "conceptSlug": "trap-enzymes",
+                "microskillSlug": "avoid-enzymes",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-enzyme-properties",
+          "title": "Enzyme properties",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "enzyme-properties"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Enzyme properties"
+          ],
+          "mustKnowFacts": [
+            "Enzyme properties is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Enzyme properties for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing enzyme properties",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of enzyme properties",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in enzyme properties"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Enzyme properties during complex MCQs.",
+            "Failing to apply the correct logic for Enzyme properties."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Enzyme properties."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Enzyme properties."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-enzyme-properties-1",
+              "question": "Explain the core concept behind Enzyme properties.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "enzyme-properties"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "enzyme-properties",
+                "conceptSlug": "core-enzyme-properties",
+                "microskillSlug": "understand-enzyme-properties",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-enzyme-properties-2",
+              "question": "What is a common trap associated with Enzyme properties?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "enzyme-properties",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "enzyme-properties",
+                "conceptSlug": "trap-enzyme-properties",
+                "microskillSlug": "avoid-enzyme-properties",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-cell-cycle",
+          "title": "Cell cycle",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "cell-cycle"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Cell cycle"
+          ],
+          "mustKnowFacts": [
+            "Cell cycle is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Cell cycle for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing cell cycle",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of cell cycle",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in cell cycle"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Cell cycle during complex MCQs.",
+            "Failing to apply the correct logic for Cell cycle."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Cell cycle."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Cell cycle."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-cell-cycle-1",
+              "question": "Explain the core concept behind Cell cycle.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "cell-cycle"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "cell-cycle",
+                "conceptSlug": "core-cell-cycle",
+                "microskillSlug": "understand-cell-cycle",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-cell-cycle-2",
+              "question": "What is a common trap associated with Cell cycle?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "cell-cycle",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "cell-cycle",
+                "conceptSlug": "trap-cell-cycle",
+                "microskillSlug": "avoid-cell-cycle",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-mitosis",
+          "title": "Mitosis",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "mitosis"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Mitosis"
+          ],
+          "mustKnowFacts": [
+            "Mitosis is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Mitosis for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing mitosis",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of mitosis",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in mitosis"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Mitosis during complex MCQs.",
+            "Failing to apply the correct logic for Mitosis."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Mitosis."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Mitosis."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-mitosis-1",
+              "question": "Explain the core concept behind Mitosis.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "mitosis"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "mitosis",
+                "conceptSlug": "core-mitosis",
+                "microskillSlug": "understand-mitosis",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-mitosis-2",
+              "question": "What is a common trap associated with Mitosis?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "mitosis",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "mitosis",
+                "conceptSlug": "trap-mitosis",
+                "microskillSlug": "avoid-mitosis",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-meiosis",
+          "title": "Meiosis",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "meiosis"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Meiosis"
+          ],
+          "mustKnowFacts": [
+            "Meiosis is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Meiosis for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing meiosis",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of meiosis",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in meiosis"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Meiosis during complex MCQs.",
+            "Failing to apply the correct logic for Meiosis."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Meiosis."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Meiosis."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-meiosis-1",
+              "question": "Explain the core concept behind Meiosis.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "meiosis"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "meiosis",
+                "conceptSlug": "core-meiosis",
+                "microskillSlug": "understand-meiosis",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-meiosis-2",
+              "question": "What is a common trap associated with Meiosis?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "meiosis",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "meiosis",
+                "conceptSlug": "trap-meiosis",
+                "microskillSlug": "avoid-meiosis",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-cell-structure-and-function-significance",
+          "title": "Significance",
+          "conceptTags": [
+            "cell-structure-and-function",
+            "significance"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Significance"
+          ],
+          "mustKnowFacts": [
+            "Significance is a fundamental subtopic of Cell Structure and Function.",
+            "Crucial to understand the principles governing Significance for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing significance",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of significance",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in significance"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Significance during complex MCQs.",
+            "Failing to apply the correct logic for Significance."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Significance."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Significance."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "cell-structure-and-function-q-significance-1",
+              "question": "Explain the core concept behind Significance.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "significance"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "significance",
+                "conceptSlug": "core-significance",
+                "microskillSlug": "understand-significance",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            },
+            {
+              "id": "cell-structure-and-function-q-significance-2",
+              "question": "What is a common trap associated with Significance?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "significance",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "cell-structure-and-function",
+                "subtopicSlug": "significance",
+                "conceptSlug": "trap-significance",
+                "microskillSlug": "avoid-significance",
+                "subject": "Biology",
+                "unitSlug": "cell-structure-and-function",
+                "chapterSlug": "cell-structure-and-function"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3064 @@
+{
+  "missions": [
+    {
+      "id": "m-biology-and-human-welfare-1",
+      "title": "Biology and Human Welfare - Section 1",
+      "description": "Comprehensive analysis covering health, disease, pathogens and more.",
+      "conceptTags": [
+        "biology-and-human-welfare",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-biology-and-human-welfare-health",
+          "title": "Health",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "health"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Health"
+          ],
+          "mustKnowFacts": [
+            "Health is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Health for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing health",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of health",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in health"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Health during complex MCQs.",
+            "Failing to apply the correct logic for Health."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Health."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Health."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-health-1",
+              "question": "Explain the core concept behind Health.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "health"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "health",
+                "conceptSlug": "core-health",
+                "microskillSlug": "understand-health",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-health-2",
+              "question": "What is a common trap associated with Health?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "health",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "health",
+                "conceptSlug": "trap-health",
+                "microskillSlug": "avoid-health",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-disease",
+          "title": "Disease",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "disease"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Disease"
+          ],
+          "mustKnowFacts": [
+            "Disease is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Disease for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing disease",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of disease",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in disease"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Disease during complex MCQs.",
+            "Failing to apply the correct logic for Disease."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Disease."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Disease."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-disease-1",
+              "question": "Explain the core concept behind Disease.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "disease"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "disease",
+                "conceptSlug": "core-disease",
+                "microskillSlug": "understand-disease",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-disease-2",
+              "question": "What is a common trap associated with Disease?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "disease",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "disease",
+                "conceptSlug": "trap-disease",
+                "microskillSlug": "avoid-disease",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-pathogens",
+          "title": "Pathogens",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "pathogens"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Pathogens"
+          ],
+          "mustKnowFacts": [
+            "Pathogens is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Pathogens for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing pathogens",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of pathogens",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in pathogens"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Pathogens during complex MCQs.",
+            "Failing to apply the correct logic for Pathogens."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Pathogens."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Pathogens."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-pathogens-1",
+              "question": "Explain the core concept behind Pathogens.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "pathogens"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "pathogens",
+                "conceptSlug": "core-pathogens",
+                "microskillSlug": "understand-pathogens",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-pathogens-2",
+              "question": "What is a common trap associated with Pathogens?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "pathogens",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "pathogens",
+                "conceptSlug": "trap-pathogens",
+                "microskillSlug": "avoid-pathogens",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-immunity",
+          "title": "Immunity",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "immunity"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Immunity"
+          ],
+          "mustKnowFacts": [
+            "Immunity is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Immunity for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing immunity",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of immunity",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in immunity"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Immunity during complex MCQs.",
+            "Failing to apply the correct logic for Immunity."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Immunity."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Immunity."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-immunity-1",
+              "question": "Explain the core concept behind Immunity.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "immunity"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "immunity",
+                "conceptSlug": "core-immunity",
+                "microskillSlug": "understand-immunity",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-immunity-2",
+              "question": "What is a common trap associated with Immunity?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "immunity",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "immunity",
+                "conceptSlug": "trap-immunity",
+                "microskillSlug": "avoid-immunity",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-innate-immunity",
+          "title": "Innate immunity",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "innate-immunity"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Innate immunity"
+          ],
+          "mustKnowFacts": [
+            "Innate immunity is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Innate immunity for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing innate immunity",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of innate immunity",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in innate immunity"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Innate immunity during complex MCQs.",
+            "Failing to apply the correct logic for Innate immunity."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Innate immunity."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Innate immunity."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-innate-immunity-1",
+              "question": "Explain the core concept behind Innate immunity.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "innate-immunity"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "innate-immunity",
+                "conceptSlug": "core-innate-immunity",
+                "microskillSlug": "understand-innate-immunity",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-innate-immunity-2",
+              "question": "What is a common trap associated with Innate immunity?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "innate-immunity",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "innate-immunity",
+                "conceptSlug": "trap-innate-immunity",
+                "microskillSlug": "avoid-innate-immunity",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-acquired-immunity",
+          "title": "Acquired immunity",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "acquired-immunity"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Acquired immunity"
+          ],
+          "mustKnowFacts": [
+            "Acquired immunity is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Acquired immunity for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing acquired immunity",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of acquired immunity",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in acquired immunity"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Acquired immunity during complex MCQs.",
+            "Failing to apply the correct logic for Acquired immunity."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Acquired immunity."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Acquired immunity."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-acquired-immunity-1",
+              "question": "Explain the core concept behind Acquired immunity.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "acquired-immunity"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "acquired-immunity",
+                "conceptSlug": "core-acquired-immunity",
+                "microskillSlug": "understand-acquired-immunity",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-acquired-immunity-2",
+              "question": "What is a common trap associated with Acquired immunity?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "acquired-immunity",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "acquired-immunity",
+                "conceptSlug": "trap-acquired-immunity",
+                "microskillSlug": "avoid-acquired-immunity",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-active-passive-immunity",
+          "title": "Active/passive immunity",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "active-passive-immunity"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Active/passive immunity"
+          ],
+          "mustKnowFacts": [
+            "Active/passive immunity is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Active/passive immunity for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing active/passive immunity",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of active/passive immunity",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in active/passive immunity"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Active/passive immunity during complex MCQs.",
+            "Failing to apply the correct logic for Active/passive immunity."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Active/passive immunity."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Active/passive immunity."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-active-passive-immunity-1",
+              "question": "Explain the core concept behind Active/passive immunity.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "active-passive-immunity"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "active-passive-immunity",
+                "conceptSlug": "core-active-passive-immunity",
+                "microskillSlug": "understand-active-passive-immunity",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-active-passive-immunity-2",
+              "question": "What is a common trap associated with Active/passive immunity?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "active-passive-immunity",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "active-passive-immunity",
+                "conceptSlug": "trap-active-passive-immunity",
+                "microskillSlug": "avoid-active-passive-immunity",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-vaccines",
+          "title": "Vaccines",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "vaccines"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Vaccines"
+          ],
+          "mustKnowFacts": [
+            "Vaccines is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Vaccines for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing vaccines",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of vaccines",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in vaccines"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Vaccines during complex MCQs.",
+            "Failing to apply the correct logic for Vaccines."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Vaccines."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Vaccines."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-vaccines-1",
+              "question": "Explain the core concept behind Vaccines.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "vaccines"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "vaccines",
+                "conceptSlug": "core-vaccines",
+                "microskillSlug": "understand-vaccines",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-vaccines-2",
+              "question": "What is a common trap associated with Vaccines?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "vaccines",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "vaccines",
+                "conceptSlug": "trap-vaccines",
+                "microskillSlug": "avoid-vaccines",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-biology-and-human-welfare-2",
+      "title": "Biology and Human Welfare - Section 2",
+      "description": "Comprehensive analysis covering allergies, autoimmunity, malaria and more.",
+      "conceptTags": [
+        "biology-and-human-welfare",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-biology-and-human-welfare-allergies",
+          "title": "Allergies",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "allergies"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Allergies"
+          ],
+          "mustKnowFacts": [
+            "Allergies is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Allergies for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing allergies",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of allergies",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in allergies"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Allergies during complex MCQs.",
+            "Failing to apply the correct logic for Allergies."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Allergies."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Allergies."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-allergies-1",
+              "question": "Explain the core concept behind Allergies.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "allergies"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "allergies",
+                "conceptSlug": "core-allergies",
+                "microskillSlug": "understand-allergies",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-allergies-2",
+              "question": "What is a common trap associated with Allergies?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "allergies",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "allergies",
+                "conceptSlug": "trap-allergies",
+                "microskillSlug": "avoid-allergies",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-autoimmunity",
+          "title": "Autoimmunity",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "autoimmunity"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Autoimmunity"
+          ],
+          "mustKnowFacts": [
+            "Autoimmunity is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Autoimmunity for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing autoimmunity",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of autoimmunity",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in autoimmunity"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Autoimmunity during complex MCQs.",
+            "Failing to apply the correct logic for Autoimmunity."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Autoimmunity."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Autoimmunity."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-autoimmunity-1",
+              "question": "Explain the core concept behind Autoimmunity.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "autoimmunity"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "autoimmunity",
+                "conceptSlug": "core-autoimmunity",
+                "microskillSlug": "understand-autoimmunity",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-autoimmunity-2",
+              "question": "What is a common trap associated with Autoimmunity?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "autoimmunity",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "autoimmunity",
+                "conceptSlug": "trap-autoimmunity",
+                "microskillSlug": "avoid-autoimmunity",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-malaria",
+          "title": "Malaria",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "malaria"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Malaria"
+          ],
+          "mustKnowFacts": [
+            "Malaria is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Malaria for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing malaria",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of malaria",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in malaria"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Malaria during complex MCQs.",
+            "Failing to apply the correct logic for Malaria."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Malaria."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Malaria."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-malaria-1",
+              "question": "Explain the core concept behind Malaria.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "malaria"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "malaria",
+                "conceptSlug": "core-malaria",
+                "microskillSlug": "understand-malaria",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-malaria-2",
+              "question": "What is a common trap associated with Malaria?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "malaria",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "malaria",
+                "conceptSlug": "trap-malaria",
+                "microskillSlug": "avoid-malaria",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-filariasis",
+          "title": "Filariasis",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "filariasis"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Filariasis"
+          ],
+          "mustKnowFacts": [
+            "Filariasis is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Filariasis for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing filariasis",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of filariasis",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in filariasis"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Filariasis during complex MCQs.",
+            "Failing to apply the correct logic for Filariasis."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Filariasis."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Filariasis."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-filariasis-1",
+              "question": "Explain the core concept behind Filariasis.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "filariasis"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "filariasis",
+                "conceptSlug": "core-filariasis",
+                "microskillSlug": "understand-filariasis",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-filariasis-2",
+              "question": "What is a common trap associated with Filariasis?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "filariasis",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "filariasis",
+                "conceptSlug": "trap-filariasis",
+                "microskillSlug": "avoid-filariasis",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-ascariasis",
+          "title": "Ascariasis",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "ascariasis"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Ascariasis"
+          ],
+          "mustKnowFacts": [
+            "Ascariasis is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Ascariasis for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing ascariasis",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of ascariasis",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in ascariasis"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Ascariasis during complex MCQs.",
+            "Failing to apply the correct logic for Ascariasis."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Ascariasis."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Ascariasis."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-ascariasis-1",
+              "question": "Explain the core concept behind Ascariasis.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "ascariasis"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "ascariasis",
+                "conceptSlug": "core-ascariasis",
+                "microskillSlug": "understand-ascariasis",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-ascariasis-2",
+              "question": "What is a common trap associated with Ascariasis?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "ascariasis",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "ascariasis",
+                "conceptSlug": "trap-ascariasis",
+                "microskillSlug": "avoid-ascariasis",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-typhoid",
+          "title": "Typhoid",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "typhoid"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Typhoid"
+          ],
+          "mustKnowFacts": [
+            "Typhoid is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Typhoid for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing typhoid",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of typhoid",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in typhoid"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Typhoid during complex MCQs.",
+            "Failing to apply the correct logic for Typhoid."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Typhoid."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Typhoid."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-typhoid-1",
+              "question": "Explain the core concept behind Typhoid.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "typhoid"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "typhoid",
+                "conceptSlug": "core-typhoid",
+                "microskillSlug": "understand-typhoid",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-typhoid-2",
+              "question": "What is a common trap associated with Typhoid?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "typhoid",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "typhoid",
+                "conceptSlug": "trap-typhoid",
+                "microskillSlug": "avoid-typhoid",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-pneumonia",
+          "title": "Pneumonia",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "pneumonia"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Pneumonia"
+          ],
+          "mustKnowFacts": [
+            "Pneumonia is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Pneumonia for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing pneumonia",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of pneumonia",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in pneumonia"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Pneumonia during complex MCQs.",
+            "Failing to apply the correct logic for Pneumonia."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Pneumonia."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Pneumonia."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-pneumonia-1",
+              "question": "Explain the core concept behind Pneumonia.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "pneumonia"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "pneumonia",
+                "conceptSlug": "core-pneumonia",
+                "microskillSlug": "understand-pneumonia",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-pneumonia-2",
+              "question": "What is a common trap associated with Pneumonia?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "pneumonia",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "pneumonia",
+                "conceptSlug": "trap-pneumonia",
+                "microskillSlug": "avoid-pneumonia",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-common-cold",
+          "title": "Common cold",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "common-cold"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Common cold"
+          ],
+          "mustKnowFacts": [
+            "Common cold is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Common cold for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing common cold",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of common cold",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in common cold"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Common cold during complex MCQs.",
+            "Failing to apply the correct logic for Common cold."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Common cold."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Common cold."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-common-cold-1",
+              "question": "Explain the core concept behind Common cold.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "common-cold"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "common-cold",
+                "conceptSlug": "core-common-cold",
+                "microskillSlug": "understand-common-cold",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-common-cold-2",
+              "question": "What is a common trap associated with Common cold?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "common-cold",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "common-cold",
+                "conceptSlug": "trap-common-cold",
+                "microskillSlug": "avoid-common-cold",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-biology-and-human-welfare-3",
+      "title": "Biology and Human Welfare - Section 3",
+      "description": "Comprehensive analysis covering amoebiasis, ringworm, dengue and more.",
+      "conceptTags": [
+        "biology-and-human-welfare",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-biology-and-human-welfare-amoebiasis",
+          "title": "Amoebiasis",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "amoebiasis"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Amoebiasis"
+          ],
+          "mustKnowFacts": [
+            "Amoebiasis is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Amoebiasis for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing amoebiasis",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of amoebiasis",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in amoebiasis"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Amoebiasis during complex MCQs.",
+            "Failing to apply the correct logic for Amoebiasis."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Amoebiasis."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Amoebiasis."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-amoebiasis-1",
+              "question": "Explain the core concept behind Amoebiasis.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "amoebiasis"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "amoebiasis",
+                "conceptSlug": "core-amoebiasis",
+                "microskillSlug": "understand-amoebiasis",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-amoebiasis-2",
+              "question": "What is a common trap associated with Amoebiasis?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "amoebiasis",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "amoebiasis",
+                "conceptSlug": "trap-amoebiasis",
+                "microskillSlug": "avoid-amoebiasis",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-ringworm",
+          "title": "Ringworm",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "ringworm"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Ringworm"
+          ],
+          "mustKnowFacts": [
+            "Ringworm is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Ringworm for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing ringworm",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of ringworm",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in ringworm"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Ringworm during complex MCQs.",
+            "Failing to apply the correct logic for Ringworm."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Ringworm."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Ringworm."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-ringworm-1",
+              "question": "Explain the core concept behind Ringworm.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "ringworm"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "ringworm",
+                "conceptSlug": "core-ringworm",
+                "microskillSlug": "understand-ringworm",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-ringworm-2",
+              "question": "What is a common trap associated with Ringworm?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "ringworm",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "ringworm",
+                "conceptSlug": "trap-ringworm",
+                "microskillSlug": "avoid-ringworm",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-dengue",
+          "title": "Dengue",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "dengue"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Dengue"
+          ],
+          "mustKnowFacts": [
+            "Dengue is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Dengue for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing dengue",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of dengue",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in dengue"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Dengue during complex MCQs.",
+            "Failing to apply the correct logic for Dengue."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Dengue."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Dengue."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-dengue-1",
+              "question": "Explain the core concept behind Dengue.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "dengue"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "dengue",
+                "conceptSlug": "core-dengue",
+                "microskillSlug": "understand-dengue",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-dengue-2",
+              "question": "What is a common trap associated with Dengue?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "dengue",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "dengue",
+                "conceptSlug": "trap-dengue",
+                "microskillSlug": "avoid-dengue",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-chikungunya",
+          "title": "Chikungunya",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "chikungunya"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Chikungunya"
+          ],
+          "mustKnowFacts": [
+            "Chikungunya is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Chikungunya for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing chikungunya",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of chikungunya",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in chikungunya"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Chikungunya during complex MCQs.",
+            "Failing to apply the correct logic for Chikungunya."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Chikungunya."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Chikungunya."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-chikungunya-1",
+              "question": "Explain the core concept behind Chikungunya.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "chikungunya"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "chikungunya",
+                "conceptSlug": "core-chikungunya",
+                "microskillSlug": "understand-chikungunya",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-chikungunya-2",
+              "question": "What is a common trap associated with Chikungunya?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "chikungunya",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "chikungunya",
+                "conceptSlug": "trap-chikungunya",
+                "microskillSlug": "avoid-chikungunya",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-cancer",
+          "title": "Cancer",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "cancer"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Cancer"
+          ],
+          "mustKnowFacts": [
+            "Cancer is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Cancer for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing cancer",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of cancer",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in cancer"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Cancer during complex MCQs.",
+            "Failing to apply the correct logic for Cancer."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Cancer."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Cancer."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-cancer-1",
+              "question": "Explain the core concept behind Cancer.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "cancer"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "cancer",
+                "conceptSlug": "core-cancer",
+                "microskillSlug": "understand-cancer",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-cancer-2",
+              "question": "What is a common trap associated with Cancer?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "cancer",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "cancer",
+                "conceptSlug": "trap-cancer",
+                "microskillSlug": "avoid-cancer",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-hiv-aids",
+          "title": "HIV/AIDS",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "hiv-aids"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, HIV/AIDS"
+          ],
+          "mustKnowFacts": [
+            "HIV/AIDS is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing HIV/AIDS for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing HIV/AIDS",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of HIV/AIDS",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in HIV/AIDS"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret HIV/AIDS during complex MCQs.",
+            "Failing to apply the correct logic for HIV/AIDS."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to HIV/AIDS."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about HIV/AIDS."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-hiv-aids-1",
+              "question": "Explain the core concept behind HIV/AIDS.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "hiv-aids"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "hiv-aids",
+                "conceptSlug": "core-hiv-aids",
+                "microskillSlug": "understand-hiv-aids",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-hiv-aids-2",
+              "question": "What is a common trap associated with HIV/AIDS?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "hiv-aids",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "hiv-aids",
+                "conceptSlug": "trap-hiv-aids",
+                "microskillSlug": "avoid-hiv-aids",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-adolescence",
+          "title": "Adolescence",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "adolescence"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Adolescence"
+          ],
+          "mustKnowFacts": [
+            "Adolescence is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Adolescence for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing adolescence",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of adolescence",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in adolescence"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Adolescence during complex MCQs.",
+            "Failing to apply the correct logic for Adolescence."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Adolescence."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Adolescence."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-adolescence-1",
+              "question": "Explain the core concept behind Adolescence.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "adolescence"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "adolescence",
+                "conceptSlug": "core-adolescence",
+                "microskillSlug": "understand-adolescence",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-adolescence-2",
+              "question": "What is a common trap associated with Adolescence?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "adolescence",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "adolescence",
+                "conceptSlug": "trap-adolescence",
+                "microskillSlug": "avoid-adolescence",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-drug-alcohol-abuse",
+          "title": "Drug/alcohol abuse",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "drug-alcohol-abuse"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Drug/alcohol abuse"
+          ],
+          "mustKnowFacts": [
+            "Drug/alcohol abuse is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Drug/alcohol abuse for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing drug/alcohol abuse",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of drug/alcohol abuse",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in drug/alcohol abuse"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Drug/alcohol abuse during complex MCQs.",
+            "Failing to apply the correct logic for Drug/alcohol abuse."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Drug/alcohol abuse."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Drug/alcohol abuse."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-drug-alcohol-abuse-1",
+              "question": "Explain the core concept behind Drug/alcohol abuse.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "drug-alcohol-abuse"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "drug-alcohol-abuse",
+                "conceptSlug": "core-drug-alcohol-abuse",
+                "microskillSlug": "understand-drug-alcohol-abuse",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-drug-alcohol-abuse-2",
+              "question": "What is a common trap associated with Drug/alcohol abuse?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "drug-alcohol-abuse",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "drug-alcohol-abuse",
+                "conceptSlug": "trap-drug-alcohol-abuse",
+                "microskillSlug": "avoid-drug-alcohol-abuse",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-biology-and-human-welfare-4",
+      "title": "Biology and Human Welfare - Section 4",
+      "description": "Comprehensive analysis covering tobacco abuse, microbes in household products, industrial production and more.",
+      "conceptTags": [
+        "biology-and-human-welfare",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-biology-and-human-welfare-tobacco-abuse",
+          "title": "Tobacco abuse",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "tobacco-abuse"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Tobacco abuse"
+          ],
+          "mustKnowFacts": [
+            "Tobacco abuse is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Tobacco abuse for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing tobacco abuse",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of tobacco abuse",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in tobacco abuse"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Tobacco abuse during complex MCQs.",
+            "Failing to apply the correct logic for Tobacco abuse."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Tobacco abuse."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Tobacco abuse."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-tobacco-abuse-1",
+              "question": "Explain the core concept behind Tobacco abuse.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "tobacco-abuse"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "tobacco-abuse",
+                "conceptSlug": "core-tobacco-abuse",
+                "microskillSlug": "understand-tobacco-abuse",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-tobacco-abuse-2",
+              "question": "What is a common trap associated with Tobacco abuse?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "tobacco-abuse",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "tobacco-abuse",
+                "conceptSlug": "trap-tobacco-abuse",
+                "microskillSlug": "avoid-tobacco-abuse",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-microbes-in-household-products",
+          "title": "Microbes in household products",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "microbes-in-household-products"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Microbes in household products"
+          ],
+          "mustKnowFacts": [
+            "Microbes in household products is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Microbes in household products for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing microbes in household products",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of microbes in household products",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in microbes in household products"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Microbes in household products during complex MCQs.",
+            "Failing to apply the correct logic for Microbes in household products."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Microbes in household products."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Microbes in household products."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-microbes-in-household-products-1",
+              "question": "Explain the core concept behind Microbes in household products.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "microbes-in-household-products"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "microbes-in-household-products",
+                "conceptSlug": "core-microbes-in-household-products",
+                "microskillSlug": "understand-microbes-in-household-products",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-microbes-in-household-products-2",
+              "question": "What is a common trap associated with Microbes in household products?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "microbes-in-household-products",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "microbes-in-household-products",
+                "conceptSlug": "trap-microbes-in-household-products",
+                "microskillSlug": "avoid-microbes-in-household-products",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-industrial-production",
+          "title": "Industrial production",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "industrial-production"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Industrial production"
+          ],
+          "mustKnowFacts": [
+            "Industrial production is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Industrial production for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing industrial production",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of industrial production",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in industrial production"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Industrial production during complex MCQs.",
+            "Failing to apply the correct logic for Industrial production."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Industrial production."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Industrial production."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-industrial-production-1",
+              "question": "Explain the core concept behind Industrial production.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "industrial-production"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "industrial-production",
+                "conceptSlug": "core-industrial-production",
+                "microskillSlug": "understand-industrial-production",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-industrial-production-2",
+              "question": "What is a common trap associated with Industrial production?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "industrial-production",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "industrial-production",
+                "conceptSlug": "trap-industrial-production",
+                "microskillSlug": "avoid-industrial-production",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-antibiotics",
+          "title": "Antibiotics",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "antibiotics"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Antibiotics"
+          ],
+          "mustKnowFacts": [
+            "Antibiotics is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Antibiotics for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing antibiotics",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of antibiotics",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in antibiotics"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Antibiotics during complex MCQs.",
+            "Failing to apply the correct logic for Antibiotics."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Antibiotics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Antibiotics."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-antibiotics-1",
+              "question": "Explain the core concept behind Antibiotics.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "antibiotics"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "antibiotics",
+                "conceptSlug": "core-antibiotics",
+                "microskillSlug": "understand-antibiotics",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-antibiotics-2",
+              "question": "What is a common trap associated with Antibiotics?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "antibiotics",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "antibiotics",
+                "conceptSlug": "trap-antibiotics",
+                "microskillSlug": "avoid-antibiotics",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-sewage-treatment",
+          "title": "Sewage treatment",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "sewage-treatment"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Sewage treatment"
+          ],
+          "mustKnowFacts": [
+            "Sewage treatment is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Sewage treatment for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing sewage treatment",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of sewage treatment",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in sewage treatment"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Sewage treatment during complex MCQs.",
+            "Failing to apply the correct logic for Sewage treatment."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Sewage treatment."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Sewage treatment."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-sewage-treatment-1",
+              "question": "Explain the core concept behind Sewage treatment.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "sewage-treatment"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "sewage-treatment",
+                "conceptSlug": "core-sewage-treatment",
+                "microskillSlug": "understand-sewage-treatment",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-sewage-treatment-2",
+              "question": "What is a common trap associated with Sewage treatment?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "sewage-treatment",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "sewage-treatment",
+                "conceptSlug": "trap-sewage-treatment",
+                "microskillSlug": "avoid-sewage-treatment",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-biogas",
+          "title": "Biogas",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "biogas"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Biogas"
+          ],
+          "mustKnowFacts": [
+            "Biogas is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Biogas for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing biogas",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of biogas",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in biogas"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Biogas during complex MCQs.",
+            "Failing to apply the correct logic for Biogas."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Biogas."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Biogas."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-biogas-1",
+              "question": "Explain the core concept behind Biogas.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "biogas"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "biogas",
+                "conceptSlug": "core-biogas",
+                "microskillSlug": "understand-biogas",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-biogas-2",
+              "question": "What is a common trap associated with Biogas?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "biogas",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "biogas",
+                "conceptSlug": "trap-biogas",
+                "microskillSlug": "avoid-biogas",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-biocontrol-agents",
+          "title": "Biocontrol agents",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "biocontrol-agents"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Biocontrol agents"
+          ],
+          "mustKnowFacts": [
+            "Biocontrol agents is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Biocontrol agents for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing biocontrol agents",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of biocontrol agents",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in biocontrol agents"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Biocontrol agents during complex MCQs.",
+            "Failing to apply the correct logic for Biocontrol agents."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Biocontrol agents."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Biocontrol agents."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-biocontrol-agents-1",
+              "question": "Explain the core concept behind Biocontrol agents.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "biocontrol-agents"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "biocontrol-agents",
+                "conceptSlug": "core-biocontrol-agents",
+                "microskillSlug": "understand-biocontrol-agents",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-biocontrol-agents-2",
+              "question": "What is a common trap associated with Biocontrol agents?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "biocontrol-agents",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "biocontrol-agents",
+                "conceptSlug": "trap-biocontrol-agents",
+                "microskillSlug": "avoid-biocontrol-agents",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-biology-and-human-welfare-biofertilisers",
+          "title": "Biofertilisers",
+          "conceptTags": [
+            "biology-and-human-welfare",
+            "biofertilisers"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Biofertilisers"
+          ],
+          "mustKnowFacts": [
+            "Biofertilisers is a fundamental subtopic of Biology and Human Welfare.",
+            "Crucial to understand the principles governing Biofertilisers for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing biofertilisers",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of biofertilisers",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in biofertilisers"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Biofertilisers during complex MCQs.",
+            "Failing to apply the correct logic for Biofertilisers."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Biofertilisers."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Biofertilisers."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "biology-and-human-welfare-q-biofertilisers-1",
+              "question": "Explain the core concept behind Biofertilisers.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "biofertilisers"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "biofertilisers",
+                "conceptSlug": "core-biofertilisers",
+                "microskillSlug": "understand-biofertilisers",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            },
+            {
+              "id": "biology-and-human-welfare-q-biofertilisers-2",
+              "question": "What is a common trap associated with Biofertilisers?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "biofertilisers",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "biology-and-human-welfare",
+                "subtopicSlug": "biofertilisers",
+                "conceptSlug": "trap-biofertilisers",
+                "microskillSlug": "avoid-biofertilisers",
+                "subject": "Biology",
+                "unitSlug": "biology-and-human-welfare",
+                "chapterSlug": "biology-and-human-welfare"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

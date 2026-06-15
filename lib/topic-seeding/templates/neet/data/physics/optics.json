@@ -1,0 +1,2331 @@
+{
+  "missions": [
+    {
+      "id": "m-optics-1",
+      "title": "Optics - Section 1",
+      "description": "Comprehensive analysis covering reflection, spherical mirrors, mirror formula and more.",
+      "conceptTags": [
+        "optics",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-optics-reflection",
+          "title": "Reflection",
+          "conceptTags": [
+            "optics",
+            "reflection"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Reflection"
+          ],
+          "mustKnowFacts": [
+            "Reflection is a fundamental subtopic of Optics.",
+            "Crucial to understand the principles governing Reflection for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for reflection",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Reflection during complex MCQs.",
+            "Failing to apply the correct logic for Reflection."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Reflection."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Reflection."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-reflection-1",
+              "question": "Explain the core concept behind Reflection.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "reflection"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "reflection",
+                "conceptSlug": "core-reflection",
+                "microskillSlug": "understand-reflection",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            },
+            {
+              "id": "optics-q-reflection-2",
+              "question": "What is a common trap associated with Reflection?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "reflection",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "reflection",
+                "conceptSlug": "trap-reflection",
+                "microskillSlug": "avoid-reflection",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-optics-spherical-mirrors",
+          "title": "Spherical mirrors",
+          "conceptTags": [
+            "optics",
+            "spherical-mirrors"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Spherical mirrors"
+          ],
+          "mustKnowFacts": [
+            "Spherical mirrors is a fundamental subtopic of Optics.",
+            "Crucial to understand the principles governing Spherical mirrors for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for spherical mirrors",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Spherical mirrors during complex MCQs.",
+            "Failing to apply the correct logic for Spherical mirrors."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Spherical mirrors."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Spherical mirrors."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-spherical-mirrors-1",
+              "question": "Explain the core concept behind Spherical mirrors.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "spherical-mirrors"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "spherical-mirrors",
+                "conceptSlug": "core-spherical-mirrors",
+                "microskillSlug": "understand-spherical-mirrors",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            },
+            {
+              "id": "optics-q-spherical-mirrors-2",
+              "question": "What is a common trap associated with Spherical mirrors?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "spherical-mirrors",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "spherical-mirrors",
+                "conceptSlug": "trap-spherical-mirrors",
+                "microskillSlug": "avoid-spherical-mirrors",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-optics-mirror-formula",
+          "title": "Mirror formula",
+          "conceptTags": [
+            "optics",
+            "mirror-formula"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Mirror formula"
+          ],
+          "mustKnowFacts": [
+            "Mirror formula is a fundamental subtopic of Optics.",
+            "Crucial to understand the principles governing Mirror formula for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for mirror formula",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Mirror formula during complex MCQs.",
+            "Failing to apply the correct logic for Mirror formula."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Mirror formula."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Mirror formula."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-mirror-formula-1",
+              "question": "Explain the core concept behind Mirror formula.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "mirror-formula"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "mirror-formula",
+                "conceptSlug": "core-mirror-formula",
+                "microskillSlug": "understand-mirror-formula",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            },
+            {
+              "id": "optics-q-mirror-formula-2",
+              "question": "What is a common trap associated with Mirror formula?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "mirror-formula",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "mirror-formula",
+                "conceptSlug": "trap-mirror-formula",
+                "microskillSlug": "avoid-mirror-formula",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-optics-magnification",
+          "title": "Magnification",
+          "conceptTags": [
+            "optics",
+            "magnification"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Magnification"
+          ],
+          "mustKnowFacts": [
+            "Magnification is a fundamental subtopic of Optics.",
+            "Crucial to understand the principles governing Magnification for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for magnification",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Magnification during complex MCQs.",
+            "Failing to apply the correct logic for Magnification."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Magnification."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Magnification."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-magnification-1",
+              "question": "Explain the core concept behind Magnification.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "magnification"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "magnification",
+                "conceptSlug": "core-magnification",
+                "microskillSlug": "understand-magnification",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            },
+            {
+              "id": "optics-q-magnification-2",
+              "question": "What is a common trap associated with Magnification?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "magnification",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "magnification",
+                "conceptSlug": "trap-magnification",
+                "microskillSlug": "avoid-magnification",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-optics-refraction",
+          "title": "Refraction",
+          "conceptTags": [
+            "optics",
+            "refraction"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Refraction"
+          ],
+          "mustKnowFacts": [
+            "Refraction is a fundamental subtopic of Optics.",
+            "Crucial to understand the principles governing Refraction for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for refraction",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Refraction during complex MCQs.",
+            "Failing to apply the correct logic for Refraction."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Refraction."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Refraction."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-refraction-1",
+              "question": "Explain the core concept behind Refraction.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "refraction"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "refraction",
+                "conceptSlug": "core-refraction",
+                "microskillSlug": "understand-refraction",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            },
+            {
+              "id": "optics-q-refraction-2",
+              "question": "What is a common trap associated with Refraction?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "refraction",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "refraction",
+                "conceptSlug": "trap-refraction",
+                "microskillSlug": "avoid-refraction",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-optics-snell-law",
+          "title": "Snell law",
+          "conceptTags": [
+            "optics",
+            "snell-law"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Snell law"
+          ],
+          "mustKnowFacts": [
+            "Snell law is a fundamental subtopic of Optics.",
+            "Crucial to understand the principles governing Snell law for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for Snell law",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Snell law during complex MCQs.",
+            "Failing to apply the correct logic for Snell law."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Snell law."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Snell law."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-snell-law-1",
+              "question": "Explain the core concept behind Snell law.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "snell-law"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "snell-law",
+                "conceptSlug": "core-snell-law",
+                "microskillSlug": "understand-snell-law",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            },
+            {
+              "id": "optics-q-snell-law-2",
+              "question": "What is a common trap associated with Snell law?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "snell-law",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "snell-law",
+                "conceptSlug": "trap-snell-law",
+                "microskillSlug": "avoid-snell-law",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-optics-total-internal-reflection",
+          "title": "Total internal reflection",
+          "conceptTags": [
+            "optics",
+            "total-internal-reflection"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Total internal reflection"
+          ],
+          "mustKnowFacts": [
+            "Total internal reflection is a fundamental subtopic of Optics.",
+            "Crucial to understand the principles governing Total internal reflection for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for total internal reflection",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Total internal reflection during complex MCQs.",
+            "Failing to apply the correct logic for Total internal reflection."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Total internal reflection."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Total internal reflection."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-total-internal-reflection-1",
+              "question": "Explain the core concept behind Total internal reflection.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "total-internal-reflection"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "total-internal-reflection",
+                "conceptSlug": "core-total-internal-reflection",
+                "microskillSlug": "understand-total-internal-reflection",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            },
+            {
+              "id": "optics-q-total-internal-reflection-2",
+              "question": "What is a common trap associated with Total internal reflection?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "total-internal-reflection",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "total-internal-reflection",
+                "conceptSlug": "trap-total-internal-reflection",
+                "microskillSlug": "avoid-total-internal-reflection",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-optics-2",
+      "title": "Optics - Section 2",
+      "description": "Comprehensive analysis covering critical angle, optical fibre, refraction at spherical surface and more.",
+      "conceptTags": [
+        "optics",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-optics-critical-angle",
+          "title": "Critical angle",
+          "conceptTags": [
+            "optics",
+            "critical-angle"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Critical angle"
+          ],
+          "mustKnowFacts": [
+            "Critical angle is a fundamental subtopic of Optics.",
+            "Crucial to understand the principles governing Critical angle for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for critical angle",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Critical angle during complex MCQs.",
+            "Failing to apply the correct logic for Critical angle."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Critical angle."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Critical angle."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-critical-angle-1",
+              "question": "Explain the core concept behind Critical angle.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "critical-angle"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "critical-angle",
+                "conceptSlug": "core-critical-angle",
+                "microskillSlug": "understand-critical-angle",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            },
+            {
+              "id": "optics-q-critical-angle-2",
+              "question": "What is a common trap associated with Critical angle?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "critical-angle",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "critical-angle",
+                "conceptSlug": "trap-critical-angle",
+                "microskillSlug": "avoid-critical-angle",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-optics-optical-fibre",
+          "title": "Optical fibre",
+          "conceptTags": [
+            "optics",
+            "optical-fibre"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Optical fibre"
+          ],
+          "mustKnowFacts": [
+            "Optical fibre is a fundamental subtopic of Optics.",
+            "Crucial to understand the principles governing Optical fibre for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for optical fibre",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Optical fibre during complex MCQs.",
+            "Failing to apply the correct logic for Optical fibre."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Optical fibre."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Optical fibre."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-optical-fibre-1",
+              "question": "Explain the core concept behind Optical fibre.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "optical-fibre"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "optical-fibre",
+                "conceptSlug": "core-optical-fibre",
+                "microskillSlug": "understand-optical-fibre",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            },
+            {
+              "id": "optics-q-optical-fibre-2",
+              "question": "What is a common trap associated with Optical fibre?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "optical-fibre",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "optical-fibre",
+                "conceptSlug": "trap-optical-fibre",
+                "microskillSlug": "avoid-optical-fibre",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-optics-refraction-at-spherical-surface",
+          "title": "Refraction at spherical surface",
+          "conceptTags": [
+            "optics",
+            "refraction-at-spherical-surface"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Refraction at spherical surface"
+          ],
+          "mustKnowFacts": [
+            "Refraction at spherical surface is a fundamental subtopic of Optics.",
+            "Crucial to understand the principles governing Refraction at spherical surface for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for refraction at spherical surface",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Refraction at spherical surface during complex MCQs.",
+            "Failing to apply the correct logic for Refraction at spherical surface."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Refraction at spherical surface."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Refraction at spherical surface."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-refraction-at-spherical-surface-1",
+              "question": "Explain the core concept behind Refraction at spherical surface.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "refraction-at-spherical-surface"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "refraction-at-spherical-surface",
+                "conceptSlug": "core-refraction-at-spherical-surface",
+                "microskillSlug": "understand-refraction-at-spherical-surface",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            },
+            {
+              "id": "optics-q-refraction-at-spherical-surface-2",
+              "question": "What is a common trap associated with Refraction at spherical surface?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "refraction-at-spherical-surface",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "refraction-at-spherical-surface",
+                "conceptSlug": "trap-refraction-at-spherical-surface",
+                "microskillSlug": "avoid-refraction-at-spherical-surface",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-optics-lens-formula",
+          "title": "Lens formula",
+          "conceptTags": [
+            "optics",
+            "lens-formula"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Lens formula"
+          ],
+          "mustKnowFacts": [
+            "Lens formula is a fundamental subtopic of Optics.",
+            "Crucial to understand the principles governing Lens formula for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for lens formula",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Lens formula during complex MCQs.",
+            "Failing to apply the correct logic for Lens formula."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Lens formula."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Lens formula."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-lens-formula-1",
+              "question": "Explain the core concept behind Lens formula.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "lens-formula"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "lens-formula",
+                "conceptSlug": "core-lens-formula",
+                "microskillSlug": "understand-lens-formula",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            },
+            {
+              "id": "optics-q-lens-formula-2",
+              "question": "What is a common trap associated with Lens formula?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "lens-formula",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "lens-formula",
+                "conceptSlug": "trap-lens-formula",
+                "microskillSlug": "avoid-lens-formula",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-optics-lens-maker-formula",
+          "title": "Lens maker formula",
+          "conceptTags": [
+            "optics",
+            "lens-maker-formula"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Lens maker formula"
+          ],
+          "mustKnowFacts": [
+            "Lens maker formula is a fundamental subtopic of Optics.",
+            "Crucial to understand the principles governing Lens maker formula for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for lens maker formula",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Lens maker formula during complex MCQs.",
+            "Failing to apply the correct logic for Lens maker formula."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Lens maker formula."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Lens maker formula."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-lens-maker-formula-1",
+              "question": "Explain the core concept behind Lens maker formula.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "lens-maker-formula"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "lens-maker-formula",
+                "conceptSlug": "core-lens-maker-formula",
+                "microskillSlug": "understand-lens-maker-formula",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            },
+            {
+              "id": "optics-q-lens-maker-formula-2",
+              "question": "What is a common trap associated with Lens maker formula?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "lens-maker-formula",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "lens-maker-formula",
+                "conceptSlug": "trap-lens-maker-formula",
+                "microskillSlug": "avoid-lens-maker-formula",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-optics-power-of-lens",
+          "title": "Power of lens",
+          "conceptTags": [
+            "optics",
+            "power-of-lens"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Power of lens"
+          ],
+          "mustKnowFacts": [
+            "Power of lens is a fundamental subtopic of Optics.",
+            "Crucial to understand the principles governing Power of lens for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for power of lens",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Power of lens during complex MCQs.",
+            "Failing to apply the correct logic for Power of lens."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Power of lens."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Power of lens."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-power-of-lens-1",
+              "question": "Explain the core concept behind Power of lens.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "power-of-lens"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "power-of-lens",
+                "conceptSlug": "core-power-of-lens",
+                "microskillSlug": "understand-power-of-lens",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            },
+            {
+              "id": "optics-q-power-of-lens-2",
+              "question": "What is a common trap associated with Power of lens?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "power-of-lens",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "power-of-lens",
+                "conceptSlug": "trap-power-of-lens",
+                "microskillSlug": "avoid-power-of-lens",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-optics-combination-of-lenses",
+          "title": "Combination of lenses",
+          "conceptTags": [
+            "optics",
+            "combination-of-lenses"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Combination of lenses"
+          ],
+          "mustKnowFacts": [
+            "Combination of lenses is a fundamental subtopic of Optics.",
+            "Crucial to understand the principles governing Combination of lenses for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for combination of lenses",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Combination of lenses during complex MCQs.",
+            "Failing to apply the correct logic for Combination of lenses."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Combination of lenses."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Combination of lenses."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-combination-of-lenses-1",
+              "question": "Explain the core concept behind Combination of lenses.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "combination-of-lenses"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "combination-of-lenses",
+                "conceptSlug": "core-combination-of-lenses",
+                "microskillSlug": "understand-combination-of-lenses",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            },
+            {
+              "id": "optics-q-combination-of-lenses-2",
+              "question": "What is a common trap associated with Combination of lenses?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "combination-of-lenses",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "combination-of-lenses",
+                "conceptSlug": "trap-combination-of-lenses",
+                "microskillSlug": "avoid-combination-of-lenses",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-optics-3",
+      "title": "Optics - Section 3",
+      "description": "Comprehensive analysis covering prism, dispersion, microscope and more.",
+      "conceptTags": [
+        "optics",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-optics-prism",
+          "title": "Prism",
+          "conceptTags": [
+            "optics",
+            "prism"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Prism"
+          ],
+          "mustKnowFacts": [
+            "Prism is a fundamental subtopic of Optics.",
+            "Crucial to understand the principles governing Prism for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for prism",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Prism during complex MCQs.",
+            "Failing to apply the correct logic for Prism."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Prism."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Prism."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-prism-1",
+              "question": "Explain the core concept behind Prism.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "prism"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "prism",
+                "conceptSlug": "core-prism",
+                "microskillSlug": "understand-prism",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            },
+            {
+              "id": "optics-q-prism-2",
+              "question": "What is a common trap associated with Prism?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "prism",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "prism",
+                "conceptSlug": "trap-prism",
+                "microskillSlug": "avoid-prism",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-optics-dispersion",
+          "title": "Dispersion",
+          "conceptTags": [
+            "optics",
+            "dispersion"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Dispersion"
+          ],
+          "mustKnowFacts": [
+            "Dispersion is a fundamental subtopic of Optics.",
+            "Crucial to understand the principles governing Dispersion for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for dispersion",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Dispersion during complex MCQs.",
+            "Failing to apply the correct logic for Dispersion."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Dispersion."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Dispersion."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-dispersion-1",
+              "question": "Explain the core concept behind Dispersion.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "dispersion"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "dispersion",
+                "conceptSlug": "core-dispersion",
+                "microskillSlug": "understand-dispersion",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            },
+            {
+              "id": "optics-q-dispersion-2",
+              "question": "What is a common trap associated with Dispersion?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "dispersion",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "dispersion",
+                "conceptSlug": "trap-dispersion",
+                "microskillSlug": "avoid-dispersion",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-optics-microscope",
+          "title": "Microscope",
+          "conceptTags": [
+            "optics",
+            "microscope"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Microscope"
+          ],
+          "mustKnowFacts": [
+            "Microscope is a fundamental subtopic of Optics.",
+            "Crucial to understand the principles governing Microscope for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for microscope",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Microscope during complex MCQs.",
+            "Failing to apply the correct logic for Microscope."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Microscope."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Microscope."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-microscope-1",
+              "question": "Explain the core concept behind Microscope.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "microscope"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "microscope",
+                "conceptSlug": "core-microscope",
+                "microskillSlug": "understand-microscope",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            },
+            {
+              "id": "optics-q-microscope-2",
+              "question": "What is a common trap associated with Microscope?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "microscope",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "microscope",
+                "conceptSlug": "trap-microscope",
+                "microskillSlug": "avoid-microscope",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-optics-telescope",
+          "title": "Telescope",
+          "conceptTags": [
+            "optics",
+            "telescope"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Telescope"
+          ],
+          "mustKnowFacts": [
+            "Telescope is a fundamental subtopic of Optics.",
+            "Crucial to understand the principles governing Telescope for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for telescope",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Telescope during complex MCQs.",
+            "Failing to apply the correct logic for Telescope."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Telescope."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Telescope."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-telescope-1",
+              "question": "Explain the core concept behind Telescope.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "telescope"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "telescope",
+                "conceptSlug": "core-telescope",
+                "microskillSlug": "understand-telescope",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            },
+            {
+              "id": "optics-q-telescope-2",
+              "question": "What is a common trap associated with Telescope?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "telescope",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "telescope",
+                "conceptSlug": "trap-telescope",
+                "microskillSlug": "avoid-telescope",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-optics-wavefront",
+          "title": "Wavefront",
+          "conceptTags": [
+            "optics",
+            "wavefront"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Wavefront"
+          ],
+          "mustKnowFacts": [
+            "Wavefront is a fundamental subtopic of Optics.",
+            "Crucial to understand the principles governing Wavefront for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for wavefront",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Wavefront during complex MCQs.",
+            "Failing to apply the correct logic for Wavefront."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Wavefront."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Wavefront."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-wavefront-1",
+              "question": "Explain the core concept behind Wavefront.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "wavefront"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "wavefront",
+                "conceptSlug": "core-wavefront",
+                "microskillSlug": "understand-wavefront",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            },
+            {
+              "id": "optics-q-wavefront-2",
+              "question": "What is a common trap associated with Wavefront?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "wavefront",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "wavefront",
+                "conceptSlug": "trap-wavefront",
+                "microskillSlug": "avoid-wavefront",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-optics-huygens-principle",
+          "title": "Huygens principle",
+          "conceptTags": [
+            "optics",
+            "huygens-principle"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Huygens principle"
+          ],
+          "mustKnowFacts": [
+            "Huygens principle is a fundamental subtopic of Optics.",
+            "Crucial to understand the principles governing Huygens principle for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for Huygens principle",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Huygens principle during complex MCQs.",
+            "Failing to apply the correct logic for Huygens principle."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Huygens principle."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Huygens principle."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-huygens-principle-1",
+              "question": "Explain the core concept behind Huygens principle.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "huygens-principle"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "huygens-principle",
+                "conceptSlug": "core-huygens-principle",
+                "microskillSlug": "understand-huygens-principle",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            },
+            {
+              "id": "optics-q-huygens-principle-2",
+              "question": "What is a common trap associated with Huygens principle?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "huygens-principle",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "huygens-principle",
+                "conceptSlug": "trap-huygens-principle",
+                "microskillSlug": "avoid-huygens-principle",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-optics-ydse",
+          "title": "YDSE",
+          "conceptTags": [
+            "optics",
+            "ydse"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, YDSE"
+          ],
+          "mustKnowFacts": [
+            "YDSE is a fundamental subtopic of Optics.",
+            "Crucial to understand the principles governing YDSE for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for YDSE",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret YDSE during complex MCQs.",
+            "Failing to apply the correct logic for YDSE."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to YDSE."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about YDSE."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-ydse-1",
+              "question": "Explain the core concept behind YDSE.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "ydse"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "ydse",
+                "conceptSlug": "core-ydse",
+                "microskillSlug": "understand-ydse",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            },
+            {
+              "id": "optics-q-ydse-2",
+              "question": "What is a common trap associated with YDSE?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "ydse",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "ydse",
+                "conceptSlug": "trap-ydse",
+                "microskillSlug": "avoid-ydse",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-optics-4",
+      "title": "Optics - Section 4",
+      "description": "Comprehensive analysis covering fringe width, coherent sources, diffraction and more.",
+      "conceptTags": [
+        "optics",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-optics-fringe-width",
+          "title": "Fringe width",
+          "conceptTags": [
+            "optics",
+            "fringe-width"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Fringe width"
+          ],
+          "mustKnowFacts": [
+            "Fringe width is a fundamental subtopic of Optics.",
+            "Crucial to understand the principles governing Fringe width for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for fringe width",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Fringe width during complex MCQs.",
+            "Failing to apply the correct logic for Fringe width."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Fringe width."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Fringe width."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-fringe-width-1",
+              "question": "Explain the core concept behind Fringe width.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "fringe-width"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "fringe-width",
+                "conceptSlug": "core-fringe-width",
+                "microskillSlug": "understand-fringe-width",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            },
+            {
+              "id": "optics-q-fringe-width-2",
+              "question": "What is a common trap associated with Fringe width?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "fringe-width",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "fringe-width",
+                "conceptSlug": "trap-fringe-width",
+                "microskillSlug": "avoid-fringe-width",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-optics-coherent-sources",
+          "title": "Coherent sources",
+          "conceptTags": [
+            "optics",
+            "coherent-sources"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Coherent sources"
+          ],
+          "mustKnowFacts": [
+            "Coherent sources is a fundamental subtopic of Optics.",
+            "Crucial to understand the principles governing Coherent sources for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for coherent sources",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Coherent sources during complex MCQs.",
+            "Failing to apply the correct logic for Coherent sources."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Coherent sources."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Coherent sources."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-coherent-sources-1",
+              "question": "Explain the core concept behind Coherent sources.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "coherent-sources"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "coherent-sources",
+                "conceptSlug": "core-coherent-sources",
+                "microskillSlug": "understand-coherent-sources",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            },
+            {
+              "id": "optics-q-coherent-sources-2",
+              "question": "What is a common trap associated with Coherent sources?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "coherent-sources",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "coherent-sources",
+                "conceptSlug": "trap-coherent-sources",
+                "microskillSlug": "avoid-coherent-sources",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-optics-diffraction",
+          "title": "Diffraction",
+          "conceptTags": [
+            "optics",
+            "diffraction"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Diffraction"
+          ],
+          "mustKnowFacts": [
+            "Diffraction is a fundamental subtopic of Optics.",
+            "Crucial to understand the principles governing Diffraction for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for diffraction",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Diffraction during complex MCQs.",
+            "Failing to apply the correct logic for Diffraction."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Diffraction."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Diffraction."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-diffraction-1",
+              "question": "Explain the core concept behind Diffraction.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "diffraction"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "diffraction",
+                "conceptSlug": "core-diffraction",
+                "microskillSlug": "understand-diffraction",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            },
+            {
+              "id": "optics-q-diffraction-2",
+              "question": "What is a common trap associated with Diffraction?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "diffraction",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "diffraction",
+                "conceptSlug": "trap-diffraction",
+                "microskillSlug": "avoid-diffraction",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-optics-polarisation",
+          "title": "Polarisation",
+          "conceptTags": [
+            "optics",
+            "polarisation"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Polarisation"
+          ],
+          "mustKnowFacts": [
+            "Polarisation is a fundamental subtopic of Optics.",
+            "Crucial to understand the principles governing Polarisation for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for polarisation",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Polarisation during complex MCQs.",
+            "Failing to apply the correct logic for Polarisation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Polarisation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Polarisation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-polarisation-1",
+              "question": "Explain the core concept behind Polarisation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "polarisation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "polarisation",
+                "conceptSlug": "core-polarisation",
+                "microskillSlug": "understand-polarisation",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            },
+            {
+              "id": "optics-q-polarisation-2",
+              "question": "What is a common trap associated with Polarisation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "polarisation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "optics",
+                "subtopicSlug": "polarisation",
+                "conceptSlug": "trap-polarisation",
+                "microskillSlug": "avoid-polarisation",
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

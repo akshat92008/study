@@ -1,0 +1,1421 @@
+{
+  "missions": [
+    {
+      "id": "m-electromagnetic-waves-1",
+      "title": "Electromagnetic Waves - Section 1",
+      "description": "Comprehensive analysis covering displacement current, Maxwell correction idea, EM wave characteristics and more.",
+      "conceptTags": [
+        "electromagnetic-waves",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-electromagnetic-waves-displacement-current",
+          "title": "Displacement current",
+          "conceptTags": [
+            "electromagnetic-waves",
+            "displacement-current"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Displacement current"
+          ],
+          "mustKnowFacts": [
+            "Displacement current is a fundamental subtopic of Electromagnetic Waves.",
+            "Crucial to understand the principles governing Displacement current for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for displacement current",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Displacement current during complex MCQs.",
+            "Failing to apply the correct logic for Displacement current."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Displacement current."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Displacement current."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electromagnetic-waves-q-displacement-current-1",
+              "question": "Explain the core concept behind Displacement current.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "displacement-current"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "displacement-current",
+                "conceptSlug": "core-displacement-current",
+                "microskillSlug": "understand-displacement-current",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            },
+            {
+              "id": "electromagnetic-waves-q-displacement-current-2",
+              "question": "What is a common trap associated with Displacement current?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "displacement-current",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "displacement-current",
+                "conceptSlug": "trap-displacement-current",
+                "microskillSlug": "avoid-displacement-current",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electromagnetic-waves-maxwell-correction-idea",
+          "title": "Maxwell correction idea",
+          "conceptTags": [
+            "electromagnetic-waves",
+            "maxwell-correction-idea"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Maxwell correction idea"
+          ],
+          "mustKnowFacts": [
+            "Maxwell correction idea is a fundamental subtopic of Electromagnetic Waves.",
+            "Crucial to understand the principles governing Maxwell correction idea for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for Maxwell correction idea",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Maxwell correction idea during complex MCQs.",
+            "Failing to apply the correct logic for Maxwell correction idea."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Maxwell correction idea."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Maxwell correction idea."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electromagnetic-waves-q-maxwell-correction-idea-1",
+              "question": "Explain the core concept behind Maxwell correction idea.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "maxwell-correction-idea"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "maxwell-correction-idea",
+                "conceptSlug": "core-maxwell-correction-idea",
+                "microskillSlug": "understand-maxwell-correction-idea",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            },
+            {
+              "id": "electromagnetic-waves-q-maxwell-correction-idea-2",
+              "question": "What is a common trap associated with Maxwell correction idea?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "maxwell-correction-idea",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "maxwell-correction-idea",
+                "conceptSlug": "trap-maxwell-correction-idea",
+                "microskillSlug": "avoid-maxwell-correction-idea",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electromagnetic-waves-em-wave-characteristics",
+          "title": "EM wave characteristics",
+          "conceptTags": [
+            "electromagnetic-waves",
+            "em-wave-characteristics"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, EM wave characteristics"
+          ],
+          "mustKnowFacts": [
+            "EM wave characteristics is a fundamental subtopic of Electromagnetic Waves.",
+            "Crucial to understand the principles governing EM wave characteristics for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for EM wave characteristics",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret EM wave characteristics during complex MCQs.",
+            "Failing to apply the correct logic for EM wave characteristics."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to EM wave characteristics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about EM wave characteristics."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electromagnetic-waves-q-em-wave-characteristics-1",
+              "question": "Explain the core concept behind EM wave characteristics.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "em-wave-characteristics"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "em-wave-characteristics",
+                "conceptSlug": "core-em-wave-characteristics",
+                "microskillSlug": "understand-em-wave-characteristics",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            },
+            {
+              "id": "electromagnetic-waves-q-em-wave-characteristics-2",
+              "question": "What is a common trap associated with EM wave characteristics?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "em-wave-characteristics",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "em-wave-characteristics",
+                "conceptSlug": "trap-em-wave-characteristics",
+                "microskillSlug": "avoid-em-wave-characteristics",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electromagnetic-waves-transverse-nature",
+          "title": "Transverse nature",
+          "conceptTags": [
+            "electromagnetic-waves",
+            "transverse-nature"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Transverse nature"
+          ],
+          "mustKnowFacts": [
+            "Transverse nature is a fundamental subtopic of Electromagnetic Waves.",
+            "Crucial to understand the principles governing Transverse nature for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for transverse nature",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Transverse nature during complex MCQs.",
+            "Failing to apply the correct logic for Transverse nature."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Transverse nature."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Transverse nature."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electromagnetic-waves-q-transverse-nature-1",
+              "question": "Explain the core concept behind Transverse nature.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "transverse-nature"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "transverse-nature",
+                "conceptSlug": "core-transverse-nature",
+                "microskillSlug": "understand-transverse-nature",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            },
+            {
+              "id": "electromagnetic-waves-q-transverse-nature-2",
+              "question": "What is a common trap associated with Transverse nature?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "transverse-nature",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "transverse-nature",
+                "conceptSlug": "trap-transverse-nature",
+                "microskillSlug": "avoid-transverse-nature",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-electromagnetic-waves-2",
+      "title": "Electromagnetic Waves - Section 2",
+      "description": "Comprehensive analysis covering speed, energy/momentum basics, EM spectrum and more.",
+      "conceptTags": [
+        "electromagnetic-waves",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-electromagnetic-waves-speed",
+          "title": "Speed",
+          "conceptTags": [
+            "electromagnetic-waves",
+            "speed"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Speed"
+          ],
+          "mustKnowFacts": [
+            "Speed is a fundamental subtopic of Electromagnetic Waves.",
+            "Crucial to understand the principles governing Speed for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for speed",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Speed during complex MCQs.",
+            "Failing to apply the correct logic for Speed."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Speed."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Speed."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electromagnetic-waves-q-speed-1",
+              "question": "Explain the core concept behind Speed.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "speed"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "speed",
+                "conceptSlug": "core-speed",
+                "microskillSlug": "understand-speed",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            },
+            {
+              "id": "electromagnetic-waves-q-speed-2",
+              "question": "What is a common trap associated with Speed?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "speed",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "speed",
+                "conceptSlug": "trap-speed",
+                "microskillSlug": "avoid-speed",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electromagnetic-waves-energy-momentum-basics",
+          "title": "Energy/momentum basics",
+          "conceptTags": [
+            "electromagnetic-waves",
+            "energy-momentum-basics"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Energy/momentum basics"
+          ],
+          "mustKnowFacts": [
+            "Energy/momentum basics is a fundamental subtopic of Electromagnetic Waves.",
+            "Crucial to understand the principles governing Energy/momentum basics for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for energy/momentum basics",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Energy/momentum basics during complex MCQs.",
+            "Failing to apply the correct logic for Energy/momentum basics."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Energy/momentum basics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Energy/momentum basics."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electromagnetic-waves-q-energy-momentum-basics-1",
+              "question": "Explain the core concept behind Energy/momentum basics.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "energy-momentum-basics"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "energy-momentum-basics",
+                "conceptSlug": "core-energy-momentum-basics",
+                "microskillSlug": "understand-energy-momentum-basics",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            },
+            {
+              "id": "electromagnetic-waves-q-energy-momentum-basics-2",
+              "question": "What is a common trap associated with Energy/momentum basics?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "energy-momentum-basics",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "energy-momentum-basics",
+                "conceptSlug": "trap-energy-momentum-basics",
+                "microskillSlug": "avoid-energy-momentum-basics",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electromagnetic-waves-em-spectrum",
+          "title": "EM spectrum",
+          "conceptTags": [
+            "electromagnetic-waves",
+            "em-spectrum"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, EM spectrum"
+          ],
+          "mustKnowFacts": [
+            "EM spectrum is a fundamental subtopic of Electromagnetic Waves.",
+            "Crucial to understand the principles governing EM spectrum for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for EM spectrum",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret EM spectrum during complex MCQs.",
+            "Failing to apply the correct logic for EM spectrum."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to EM spectrum."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about EM spectrum."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electromagnetic-waves-q-em-spectrum-1",
+              "question": "Explain the core concept behind EM spectrum.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "em-spectrum"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "em-spectrum",
+                "conceptSlug": "core-em-spectrum",
+                "microskillSlug": "understand-em-spectrum",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            },
+            {
+              "id": "electromagnetic-waves-q-em-spectrum-2",
+              "question": "What is a common trap associated with EM spectrum?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "em-spectrum",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "em-spectrum",
+                "conceptSlug": "trap-em-spectrum",
+                "microskillSlug": "avoid-em-spectrum",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electromagnetic-waves-radio",
+          "title": "Radio",
+          "conceptTags": [
+            "electromagnetic-waves",
+            "radio"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Radio"
+          ],
+          "mustKnowFacts": [
+            "Radio is a fundamental subtopic of Electromagnetic Waves.",
+            "Crucial to understand the principles governing Radio for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for radio",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Radio during complex MCQs.",
+            "Failing to apply the correct logic for Radio."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Radio."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Radio."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electromagnetic-waves-q-radio-1",
+              "question": "Explain the core concept behind Radio.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "radio"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "radio",
+                "conceptSlug": "core-radio",
+                "microskillSlug": "understand-radio",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            },
+            {
+              "id": "electromagnetic-waves-q-radio-2",
+              "question": "What is a common trap associated with Radio?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "radio",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "radio",
+                "conceptSlug": "trap-radio",
+                "microskillSlug": "avoid-radio",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-electromagnetic-waves-3",
+      "title": "Electromagnetic Waves - Section 3",
+      "description": "Comprehensive analysis covering microwave, IR, visible and more.",
+      "conceptTags": [
+        "electromagnetic-waves",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-electromagnetic-waves-microwave",
+          "title": "Microwave",
+          "conceptTags": [
+            "electromagnetic-waves",
+            "microwave"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Microwave"
+          ],
+          "mustKnowFacts": [
+            "Microwave is a fundamental subtopic of Electromagnetic Waves.",
+            "Crucial to understand the principles governing Microwave for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for microwave",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Microwave during complex MCQs.",
+            "Failing to apply the correct logic for Microwave."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Microwave."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Microwave."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electromagnetic-waves-q-microwave-1",
+              "question": "Explain the core concept behind Microwave.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "microwave"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "microwave",
+                "conceptSlug": "core-microwave",
+                "microskillSlug": "understand-microwave",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            },
+            {
+              "id": "electromagnetic-waves-q-microwave-2",
+              "question": "What is a common trap associated with Microwave?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "microwave",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "microwave",
+                "conceptSlug": "trap-microwave",
+                "microskillSlug": "avoid-microwave",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electromagnetic-waves-ir",
+          "title": "IR",
+          "conceptTags": [
+            "electromagnetic-waves",
+            "ir"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, IR"
+          ],
+          "mustKnowFacts": [
+            "IR is a fundamental subtopic of Electromagnetic Waves.",
+            "Crucial to understand the principles governing IR for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for IR",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret IR during complex MCQs.",
+            "Failing to apply the correct logic for IR."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to IR."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about IR."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electromagnetic-waves-q-ir-1",
+              "question": "Explain the core concept behind IR.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "ir"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "ir",
+                "conceptSlug": "core-ir",
+                "microskillSlug": "understand-ir",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            },
+            {
+              "id": "electromagnetic-waves-q-ir-2",
+              "question": "What is a common trap associated with IR?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "ir",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "ir",
+                "conceptSlug": "trap-ir",
+                "microskillSlug": "avoid-ir",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electromagnetic-waves-visible",
+          "title": "Visible",
+          "conceptTags": [
+            "electromagnetic-waves",
+            "visible"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Visible"
+          ],
+          "mustKnowFacts": [
+            "Visible is a fundamental subtopic of Electromagnetic Waves.",
+            "Crucial to understand the principles governing Visible for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for visible",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Visible during complex MCQs.",
+            "Failing to apply the correct logic for Visible."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Visible."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Visible."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electromagnetic-waves-q-visible-1",
+              "question": "Explain the core concept behind Visible.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "visible"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "visible",
+                "conceptSlug": "core-visible",
+                "microskillSlug": "understand-visible",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            },
+            {
+              "id": "electromagnetic-waves-q-visible-2",
+              "question": "What is a common trap associated with Visible?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "visible",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "visible",
+                "conceptSlug": "trap-visible",
+                "microskillSlug": "avoid-visible",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electromagnetic-waves-uv",
+          "title": "UV",
+          "conceptTags": [
+            "electromagnetic-waves",
+            "uv"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, UV"
+          ],
+          "mustKnowFacts": [
+            "UV is a fundamental subtopic of Electromagnetic Waves.",
+            "Crucial to understand the principles governing UV for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for UV",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret UV during complex MCQs.",
+            "Failing to apply the correct logic for UV."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to UV."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about UV."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electromagnetic-waves-q-uv-1",
+              "question": "Explain the core concept behind UV.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "uv"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "uv",
+                "conceptSlug": "core-uv",
+                "microskillSlug": "understand-uv",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            },
+            {
+              "id": "electromagnetic-waves-q-uv-2",
+              "question": "What is a common trap associated with UV?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "uv",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "uv",
+                "conceptSlug": "trap-uv",
+                "microskillSlug": "avoid-uv",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-electromagnetic-waves-4",
+      "title": "Electromagnetic Waves - Section 4",
+      "description": "Comprehensive analysis covering X-rays, gamma rays, uses and more.",
+      "conceptTags": [
+        "electromagnetic-waves",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-electromagnetic-waves-x-rays",
+          "title": "X-rays",
+          "conceptTags": [
+            "electromagnetic-waves",
+            "x-rays"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, X-rays"
+          ],
+          "mustKnowFacts": [
+            "X-rays is a fundamental subtopic of Electromagnetic Waves.",
+            "Crucial to understand the principles governing X-rays for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for X-rays",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret X-rays during complex MCQs.",
+            "Failing to apply the correct logic for X-rays."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to X-rays."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about X-rays."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electromagnetic-waves-q-x-rays-1",
+              "question": "Explain the core concept behind X-rays.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "x-rays"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "x-rays",
+                "conceptSlug": "core-x-rays",
+                "microskillSlug": "understand-x-rays",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            },
+            {
+              "id": "electromagnetic-waves-q-x-rays-2",
+              "question": "What is a common trap associated with X-rays?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "x-rays",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "x-rays",
+                "conceptSlug": "trap-x-rays",
+                "microskillSlug": "avoid-x-rays",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electromagnetic-waves-gamma-rays",
+          "title": "Gamma rays",
+          "conceptTags": [
+            "electromagnetic-waves",
+            "gamma-rays"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Gamma rays"
+          ],
+          "mustKnowFacts": [
+            "Gamma rays is a fundamental subtopic of Electromagnetic Waves.",
+            "Crucial to understand the principles governing Gamma rays for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for gamma rays",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Gamma rays during complex MCQs.",
+            "Failing to apply the correct logic for Gamma rays."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Gamma rays."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Gamma rays."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electromagnetic-waves-q-gamma-rays-1",
+              "question": "Explain the core concept behind Gamma rays.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "gamma-rays"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "gamma-rays",
+                "conceptSlug": "core-gamma-rays",
+                "microskillSlug": "understand-gamma-rays",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            },
+            {
+              "id": "electromagnetic-waves-q-gamma-rays-2",
+              "question": "What is a common trap associated with Gamma rays?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "gamma-rays",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "gamma-rays",
+                "conceptSlug": "trap-gamma-rays",
+                "microskillSlug": "avoid-gamma-rays",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electromagnetic-waves-uses",
+          "title": "Uses",
+          "conceptTags": [
+            "electromagnetic-waves",
+            "uses"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Uses"
+          ],
+          "mustKnowFacts": [
+            "Uses is a fundamental subtopic of Electromagnetic Waves.",
+            "Crucial to understand the principles governing Uses for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for uses",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Uses during complex MCQs.",
+            "Failing to apply the correct logic for Uses."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Uses."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Uses."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electromagnetic-waves-q-uses-1",
+              "question": "Explain the core concept behind Uses.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "uses"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "uses",
+                "conceptSlug": "core-uses",
+                "microskillSlug": "understand-uses",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            },
+            {
+              "id": "electromagnetic-waves-q-uses-2",
+              "question": "What is a common trap associated with Uses?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "uses",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "electromagnetic-waves",
+                "subtopicSlug": "uses",
+                "conceptSlug": "trap-uses",
+                "microskillSlug": "avoid-uses",
+                "subject": "Physics",
+                "unitSlug": "electromagnetic-waves",
+                "chapterSlug": "electromagnetic-waves"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1512 @@
+{
+  "missions": [
+    {
+      "id": "m-gravitation-1",
+      "title": "Gravitation - Section 1",
+      "description": "Comprehensive analysis covering universal law, gravitational field, acceleration due to gravity and more.",
+      "conceptTags": [
+        "gravitation",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-gravitation-universal-law",
+          "title": "Universal law",
+          "conceptTags": [
+            "gravitation",
+            "universal-law"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Universal law"
+          ],
+          "mustKnowFacts": [
+            "Universal law is a fundamental subtopic of Gravitation.",
+            "Crucial to understand the principles governing Universal law for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for universal law",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Universal law during complex MCQs.",
+            "Failing to apply the correct logic for Universal law."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Universal law."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Universal law."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "gravitation-q-universal-law-1",
+              "question": "Explain the core concept behind Universal law.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "universal-law"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "universal-law",
+                "conceptSlug": "core-universal-law",
+                "microskillSlug": "understand-universal-law",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            },
+            {
+              "id": "gravitation-q-universal-law-2",
+              "question": "What is a common trap associated with Universal law?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "universal-law",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "universal-law",
+                "conceptSlug": "trap-universal-law",
+                "microskillSlug": "avoid-universal-law",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-gravitation-gravitational-field",
+          "title": "Gravitational field",
+          "conceptTags": [
+            "gravitation",
+            "gravitational-field"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Gravitational field"
+          ],
+          "mustKnowFacts": [
+            "Gravitational field is a fundamental subtopic of Gravitation.",
+            "Crucial to understand the principles governing Gravitational field for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for gravitational field",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Gravitational field during complex MCQs.",
+            "Failing to apply the correct logic for Gravitational field."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Gravitational field."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Gravitational field."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "gravitation-q-gravitational-field-1",
+              "question": "Explain the core concept behind Gravitational field.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "gravitational-field"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "gravitational-field",
+                "conceptSlug": "core-gravitational-field",
+                "microskillSlug": "understand-gravitational-field",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            },
+            {
+              "id": "gravitation-q-gravitational-field-2",
+              "question": "What is a common trap associated with Gravitational field?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "gravitational-field",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "gravitational-field",
+                "conceptSlug": "trap-gravitational-field",
+                "microskillSlug": "avoid-gravitational-field",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-gravitation-acceleration-due-to-gravity",
+          "title": "Acceleration due to gravity",
+          "conceptTags": [
+            "gravitation",
+            "acceleration-due-to-gravity"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Acceleration due to gravity"
+          ],
+          "mustKnowFacts": [
+            "Acceleration due to gravity is a fundamental subtopic of Gravitation.",
+            "Crucial to understand the principles governing Acceleration due to gravity for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for acceleration due to gravity",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Acceleration due to gravity during complex MCQs.",
+            "Failing to apply the correct logic for Acceleration due to gravity."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Acceleration due to gravity."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Acceleration due to gravity."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "gravitation-q-acceleration-due-to-gravity-1",
+              "question": "Explain the core concept behind Acceleration due to gravity.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "acceleration-due-to-gravity"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "acceleration-due-to-gravity",
+                "conceptSlug": "core-acceleration-due-to-gravity",
+                "microskillSlug": "understand-acceleration-due-to-gravity",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            },
+            {
+              "id": "gravitation-q-acceleration-due-to-gravity-2",
+              "question": "What is a common trap associated with Acceleration due to gravity?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "acceleration-due-to-gravity",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "acceleration-due-to-gravity",
+                "conceptSlug": "trap-acceleration-due-to-gravity",
+                "microskillSlug": "avoid-acceleration-due-to-gravity",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-gravitation-variation-with-altitude",
+          "title": "Variation with altitude",
+          "conceptTags": [
+            "gravitation",
+            "variation-with-altitude"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Variation with altitude"
+          ],
+          "mustKnowFacts": [
+            "Variation with altitude is a fundamental subtopic of Gravitation.",
+            "Crucial to understand the principles governing Variation with altitude for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for variation with altitude",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Variation with altitude during complex MCQs.",
+            "Failing to apply the correct logic for Variation with altitude."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Variation with altitude."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Variation with altitude."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "gravitation-q-variation-with-altitude-1",
+              "question": "Explain the core concept behind Variation with altitude.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "variation-with-altitude"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "variation-with-altitude",
+                "conceptSlug": "core-variation-with-altitude",
+                "microskillSlug": "understand-variation-with-altitude",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            },
+            {
+              "id": "gravitation-q-variation-with-altitude-2",
+              "question": "What is a common trap associated with Variation with altitude?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "variation-with-altitude",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "variation-with-altitude",
+                "conceptSlug": "trap-variation-with-altitude",
+                "microskillSlug": "avoid-variation-with-altitude",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-gravitation-2",
+      "title": "Gravitation - Section 2",
+      "description": "Comprehensive analysis covering depth, latitude/rotation, gravitational potential and more.",
+      "conceptTags": [
+        "gravitation",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-gravitation-depth",
+          "title": "Depth",
+          "conceptTags": [
+            "gravitation",
+            "depth"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Depth"
+          ],
+          "mustKnowFacts": [
+            "Depth is a fundamental subtopic of Gravitation.",
+            "Crucial to understand the principles governing Depth for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for depth",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Depth during complex MCQs.",
+            "Failing to apply the correct logic for Depth."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Depth."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Depth."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "gravitation-q-depth-1",
+              "question": "Explain the core concept behind Depth.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "depth"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "depth",
+                "conceptSlug": "core-depth",
+                "microskillSlug": "understand-depth",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            },
+            {
+              "id": "gravitation-q-depth-2",
+              "question": "What is a common trap associated with Depth?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "depth",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "depth",
+                "conceptSlug": "trap-depth",
+                "microskillSlug": "avoid-depth",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-gravitation-latitude-rotation",
+          "title": "Latitude/rotation",
+          "conceptTags": [
+            "gravitation",
+            "latitude-rotation"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Latitude/rotation"
+          ],
+          "mustKnowFacts": [
+            "Latitude/rotation is a fundamental subtopic of Gravitation.",
+            "Crucial to understand the principles governing Latitude/rotation for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for latitude/rotation",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Latitude/rotation during complex MCQs.",
+            "Failing to apply the correct logic for Latitude/rotation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Latitude/rotation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Latitude/rotation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "gravitation-q-latitude-rotation-1",
+              "question": "Explain the core concept behind Latitude/rotation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "latitude-rotation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "latitude-rotation",
+                "conceptSlug": "core-latitude-rotation",
+                "microskillSlug": "understand-latitude-rotation",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            },
+            {
+              "id": "gravitation-q-latitude-rotation-2",
+              "question": "What is a common trap associated with Latitude/rotation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "latitude-rotation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "latitude-rotation",
+                "conceptSlug": "trap-latitude-rotation",
+                "microskillSlug": "avoid-latitude-rotation",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-gravitation-gravitational-potential",
+          "title": "Gravitational potential",
+          "conceptTags": [
+            "gravitation",
+            "gravitational-potential"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Gravitational potential"
+          ],
+          "mustKnowFacts": [
+            "Gravitational potential is a fundamental subtopic of Gravitation.",
+            "Crucial to understand the principles governing Gravitational potential for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for gravitational potential",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Gravitational potential during complex MCQs.",
+            "Failing to apply the correct logic for Gravitational potential."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Gravitational potential."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Gravitational potential."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "gravitation-q-gravitational-potential-1",
+              "question": "Explain the core concept behind Gravitational potential.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "gravitational-potential"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "gravitational-potential",
+                "conceptSlug": "core-gravitational-potential",
+                "microskillSlug": "understand-gravitational-potential",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            },
+            {
+              "id": "gravitation-q-gravitational-potential-2",
+              "question": "What is a common trap associated with Gravitational potential?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "gravitational-potential",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "gravitational-potential",
+                "conceptSlug": "trap-gravitational-potential",
+                "microskillSlug": "avoid-gravitational-potential",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-gravitation-gravitational-potential-energy",
+          "title": "Gravitational potential energy",
+          "conceptTags": [
+            "gravitation",
+            "gravitational-potential-energy"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Gravitational potential energy"
+          ],
+          "mustKnowFacts": [
+            "Gravitational potential energy is a fundamental subtopic of Gravitation.",
+            "Crucial to understand the principles governing Gravitational potential energy for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for gravitational potential energy",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Gravitational potential energy during complex MCQs.",
+            "Failing to apply the correct logic for Gravitational potential energy."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Gravitational potential energy."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Gravitational potential energy."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "gravitation-q-gravitational-potential-energy-1",
+              "question": "Explain the core concept behind Gravitational potential energy.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "gravitational-potential-energy"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "gravitational-potential-energy",
+                "conceptSlug": "core-gravitational-potential-energy",
+                "microskillSlug": "understand-gravitational-potential-energy",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            },
+            {
+              "id": "gravitation-q-gravitational-potential-energy-2",
+              "question": "What is a common trap associated with Gravitational potential energy?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "gravitational-potential-energy",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "gravitational-potential-energy",
+                "conceptSlug": "trap-gravitational-potential-energy",
+                "microskillSlug": "avoid-gravitational-potential-energy",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-gravitation-3",
+      "title": "Gravitation - Section 3",
+      "description": "Comprehensive analysis covering escape velocity, orbital velocity, satellite time period and more.",
+      "conceptTags": [
+        "gravitation",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-gravitation-escape-velocity",
+          "title": "Escape velocity",
+          "conceptTags": [
+            "gravitation",
+            "escape-velocity"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Escape velocity"
+          ],
+          "mustKnowFacts": [
+            "Escape velocity is a fundamental subtopic of Gravitation.",
+            "Crucial to understand the principles governing Escape velocity for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for escape velocity",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Escape velocity during complex MCQs.",
+            "Failing to apply the correct logic for Escape velocity."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Escape velocity."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Escape velocity."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "gravitation-q-escape-velocity-1",
+              "question": "Explain the core concept behind Escape velocity.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "escape-velocity"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "escape-velocity",
+                "conceptSlug": "core-escape-velocity",
+                "microskillSlug": "understand-escape-velocity",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            },
+            {
+              "id": "gravitation-q-escape-velocity-2",
+              "question": "What is a common trap associated with Escape velocity?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "escape-velocity",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "escape-velocity",
+                "conceptSlug": "trap-escape-velocity",
+                "microskillSlug": "avoid-escape-velocity",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-gravitation-orbital-velocity",
+          "title": "Orbital velocity",
+          "conceptTags": [
+            "gravitation",
+            "orbital-velocity"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Orbital velocity"
+          ],
+          "mustKnowFacts": [
+            "Orbital velocity is a fundamental subtopic of Gravitation.",
+            "Crucial to understand the principles governing Orbital velocity for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for orbital velocity",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Orbital velocity during complex MCQs.",
+            "Failing to apply the correct logic for Orbital velocity."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Orbital velocity."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Orbital velocity."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "gravitation-q-orbital-velocity-1",
+              "question": "Explain the core concept behind Orbital velocity.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "orbital-velocity"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "orbital-velocity",
+                "conceptSlug": "core-orbital-velocity",
+                "microskillSlug": "understand-orbital-velocity",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            },
+            {
+              "id": "gravitation-q-orbital-velocity-2",
+              "question": "What is a common trap associated with Orbital velocity?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "orbital-velocity",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "orbital-velocity",
+                "conceptSlug": "trap-orbital-velocity",
+                "microskillSlug": "avoid-orbital-velocity",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-gravitation-satellite-time-period",
+          "title": "Satellite time period",
+          "conceptTags": [
+            "gravitation",
+            "satellite-time-period"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Satellite time period"
+          ],
+          "mustKnowFacts": [
+            "Satellite time period is a fundamental subtopic of Gravitation.",
+            "Crucial to understand the principles governing Satellite time period for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for satellite time period",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Satellite time period during complex MCQs.",
+            "Failing to apply the correct logic for Satellite time period."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Satellite time period."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Satellite time period."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "gravitation-q-satellite-time-period-1",
+              "question": "Explain the core concept behind Satellite time period.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "satellite-time-period"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "satellite-time-period",
+                "conceptSlug": "core-satellite-time-period",
+                "microskillSlug": "understand-satellite-time-period",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            },
+            {
+              "id": "gravitation-q-satellite-time-period-2",
+              "question": "What is a common trap associated with Satellite time period?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "satellite-time-period",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "satellite-time-period",
+                "conceptSlug": "trap-satellite-time-period",
+                "microskillSlug": "avoid-satellite-time-period",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-gravitation-total-energy-of-satellite",
+          "title": "Total energy of satellite",
+          "conceptTags": [
+            "gravitation",
+            "total-energy-of-satellite"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Total energy of satellite"
+          ],
+          "mustKnowFacts": [
+            "Total energy of satellite is a fundamental subtopic of Gravitation.",
+            "Crucial to understand the principles governing Total energy of satellite for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for total energy of satellite",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Total energy of satellite during complex MCQs.",
+            "Failing to apply the correct logic for Total energy of satellite."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Total energy of satellite."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Total energy of satellite."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "gravitation-q-total-energy-of-satellite-1",
+              "question": "Explain the core concept behind Total energy of satellite.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "total-energy-of-satellite"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "total-energy-of-satellite",
+                "conceptSlug": "core-total-energy-of-satellite",
+                "microskillSlug": "understand-total-energy-of-satellite",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            },
+            {
+              "id": "gravitation-q-total-energy-of-satellite-2",
+              "question": "What is a common trap associated with Total energy of satellite?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "total-energy-of-satellite",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "total-energy-of-satellite",
+                "conceptSlug": "trap-total-energy-of-satellite",
+                "microskillSlug": "avoid-total-energy-of-satellite",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-gravitation-4",
+      "title": "Gravitation - Section 4",
+      "description": "Comprehensive analysis covering Kepler laws, geostationary satellite, weightlessness and more.",
+      "conceptTags": [
+        "gravitation",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-gravitation-kepler-laws",
+          "title": "Kepler laws",
+          "conceptTags": [
+            "gravitation",
+            "kepler-laws"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Kepler laws"
+          ],
+          "mustKnowFacts": [
+            "Kepler laws is a fundamental subtopic of Gravitation.",
+            "Crucial to understand the principles governing Kepler laws for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for Kepler laws",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Kepler laws during complex MCQs.",
+            "Failing to apply the correct logic for Kepler laws."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Kepler laws."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Kepler laws."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "gravitation-q-kepler-laws-1",
+              "question": "Explain the core concept behind Kepler laws.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "kepler-laws"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "kepler-laws",
+                "conceptSlug": "core-kepler-laws",
+                "microskillSlug": "understand-kepler-laws",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            },
+            {
+              "id": "gravitation-q-kepler-laws-2",
+              "question": "What is a common trap associated with Kepler laws?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "kepler-laws",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "kepler-laws",
+                "conceptSlug": "trap-kepler-laws",
+                "microskillSlug": "avoid-kepler-laws",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-gravitation-geostationary-satellite",
+          "title": "Geostationary satellite",
+          "conceptTags": [
+            "gravitation",
+            "geostationary-satellite"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Geostationary satellite"
+          ],
+          "mustKnowFacts": [
+            "Geostationary satellite is a fundamental subtopic of Gravitation.",
+            "Crucial to understand the principles governing Geostationary satellite for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for geostationary satellite",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Geostationary satellite during complex MCQs.",
+            "Failing to apply the correct logic for Geostationary satellite."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Geostationary satellite."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Geostationary satellite."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "gravitation-q-geostationary-satellite-1",
+              "question": "Explain the core concept behind Geostationary satellite.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "geostationary-satellite"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "geostationary-satellite",
+                "conceptSlug": "core-geostationary-satellite",
+                "microskillSlug": "understand-geostationary-satellite",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            },
+            {
+              "id": "gravitation-q-geostationary-satellite-2",
+              "question": "What is a common trap associated with Geostationary satellite?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "geostationary-satellite",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "geostationary-satellite",
+                "conceptSlug": "trap-geostationary-satellite",
+                "microskillSlug": "avoid-geostationary-satellite",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-gravitation-weightlessness",
+          "title": "Weightlessness",
+          "conceptTags": [
+            "gravitation",
+            "weightlessness"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Weightlessness"
+          ],
+          "mustKnowFacts": [
+            "Weightlessness is a fundamental subtopic of Gravitation.",
+            "Crucial to understand the principles governing Weightlessness for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for weightlessness",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Weightlessness during complex MCQs.",
+            "Failing to apply the correct logic for Weightlessness."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Weightlessness."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Weightlessness."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "gravitation-q-weightlessness-1",
+              "question": "Explain the core concept behind Weightlessness.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "weightlessness"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "weightlessness",
+                "conceptSlug": "core-weightlessness",
+                "microskillSlug": "understand-weightlessness",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            },
+            {
+              "id": "gravitation-q-weightlessness-2",
+              "question": "What is a common trap associated with Weightlessness?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "weightlessness",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "weightlessness",
+                "conceptSlug": "trap-weightlessness",
+                "microskillSlug": "avoid-weightlessness",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-gravitation-binding-energy-idea",
+          "title": "Binding energy idea",
+          "conceptTags": [
+            "gravitation",
+            "binding-energy-idea"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Binding energy idea"
+          ],
+          "mustKnowFacts": [
+            "Binding energy idea is a fundamental subtopic of Gravitation.",
+            "Crucial to understand the principles governing Binding energy idea for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for binding energy idea",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Binding energy idea during complex MCQs.",
+            "Failing to apply the correct logic for Binding energy idea."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Binding energy idea."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Binding energy idea."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "gravitation-q-binding-energy-idea-1",
+              "question": "Explain the core concept behind Binding energy idea.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "binding-energy-idea"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "binding-energy-idea",
+                "conceptSlug": "core-binding-energy-idea",
+                "microskillSlug": "understand-binding-energy-idea",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            },
+            {
+              "id": "gravitation-q-binding-energy-idea-2",
+              "question": "What is a common trap associated with Binding energy idea?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "binding-energy-idea",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "gravitation",
+                "subtopicSlug": "binding-energy-idea",
+                "conceptSlug": "trap-binding-energy-idea",
+                "microskillSlug": "avoid-binding-energy-idea",
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

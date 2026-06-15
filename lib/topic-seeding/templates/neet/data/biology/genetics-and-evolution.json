@@ -1,0 +1,4004 @@
+{
+  "missions": [
+    {
+      "id": "m-genetics-and-evolution-1",
+      "title": "Genetics and Evolution - Section 1",
+      "description": "Comprehensive analysis covering Mendel laws, monohybrid, dihybrid and more.",
+      "conceptTags": [
+        "genetics-and-evolution",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-genetics-and-evolution-mendel-laws",
+          "title": "Mendel laws",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "mendel-laws"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Mendel laws"
+          ],
+          "mustKnowFacts": [
+            "Mendel laws is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Mendel laws for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing Mendel laws",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of Mendel laws",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in Mendel laws"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Mendel laws during complex MCQs.",
+            "Failing to apply the correct logic for Mendel laws."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Mendel laws."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Mendel laws."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-mendel-laws-1",
+              "question": "Explain the core concept behind Mendel laws.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "mendel-laws"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "mendel-laws",
+                "conceptSlug": "core-mendel-laws",
+                "microskillSlug": "understand-mendel-laws",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-mendel-laws-2",
+              "question": "What is a common trap associated with Mendel laws?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "mendel-laws",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "mendel-laws",
+                "conceptSlug": "trap-mendel-laws",
+                "microskillSlug": "avoid-mendel-laws",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-monohybrid",
+          "title": "Monohybrid",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "monohybrid"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Monohybrid"
+          ],
+          "mustKnowFacts": [
+            "Monohybrid is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Monohybrid for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing monohybrid",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of monohybrid",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in monohybrid"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Monohybrid during complex MCQs.",
+            "Failing to apply the correct logic for Monohybrid."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Monohybrid."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Monohybrid."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-monohybrid-1",
+              "question": "Explain the core concept behind Monohybrid.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "monohybrid"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "monohybrid",
+                "conceptSlug": "core-monohybrid",
+                "microskillSlug": "understand-monohybrid",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-monohybrid-2",
+              "question": "What is a common trap associated with Monohybrid?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "monohybrid",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "monohybrid",
+                "conceptSlug": "trap-monohybrid",
+                "microskillSlug": "avoid-monohybrid",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-dihybrid",
+          "title": "Dihybrid",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "dihybrid"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Dihybrid"
+          ],
+          "mustKnowFacts": [
+            "Dihybrid is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Dihybrid for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing dihybrid",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of dihybrid",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in dihybrid"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Dihybrid during complex MCQs.",
+            "Failing to apply the correct logic for Dihybrid."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Dihybrid."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Dihybrid."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-dihybrid-1",
+              "question": "Explain the core concept behind Dihybrid.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "dihybrid"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "dihybrid",
+                "conceptSlug": "core-dihybrid",
+                "microskillSlug": "understand-dihybrid",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-dihybrid-2",
+              "question": "What is a common trap associated with Dihybrid?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "dihybrid",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "dihybrid",
+                "conceptSlug": "trap-dihybrid",
+                "microskillSlug": "avoid-dihybrid",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-test-cross",
+          "title": "Test cross",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "test-cross"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Test cross"
+          ],
+          "mustKnowFacts": [
+            "Test cross is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Test cross for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing test cross",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of test cross",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in test cross"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Test cross during complex MCQs.",
+            "Failing to apply the correct logic for Test cross."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Test cross."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Test cross."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-test-cross-1",
+              "question": "Explain the core concept behind Test cross.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "test-cross"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "test-cross",
+                "conceptSlug": "core-test-cross",
+                "microskillSlug": "understand-test-cross",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-test-cross-2",
+              "question": "What is a common trap associated with Test cross?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "test-cross",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "test-cross",
+                "conceptSlug": "trap-test-cross",
+                "microskillSlug": "avoid-test-cross",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-incomplete-dominance",
+          "title": "Incomplete dominance",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "incomplete-dominance"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Incomplete dominance"
+          ],
+          "mustKnowFacts": [
+            "Incomplete dominance is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Incomplete dominance for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing incomplete dominance",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of incomplete dominance",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in incomplete dominance"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Incomplete dominance during complex MCQs.",
+            "Failing to apply the correct logic for Incomplete dominance."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Incomplete dominance."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Incomplete dominance."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-incomplete-dominance-1",
+              "question": "Explain the core concept behind Incomplete dominance.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "incomplete-dominance"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "incomplete-dominance",
+                "conceptSlug": "core-incomplete-dominance",
+                "microskillSlug": "understand-incomplete-dominance",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-incomplete-dominance-2",
+              "question": "What is a common trap associated with Incomplete dominance?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "incomplete-dominance",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "incomplete-dominance",
+                "conceptSlug": "trap-incomplete-dominance",
+                "microskillSlug": "avoid-incomplete-dominance",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-codominance",
+          "title": "Codominance",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "codominance"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Codominance"
+          ],
+          "mustKnowFacts": [
+            "Codominance is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Codominance for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing codominance",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of codominance",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in codominance"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Codominance during complex MCQs.",
+            "Failing to apply the correct logic for Codominance."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Codominance."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Codominance."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-codominance-1",
+              "question": "Explain the core concept behind Codominance.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "codominance"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "codominance",
+                "conceptSlug": "core-codominance",
+                "microskillSlug": "understand-codominance",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-codominance-2",
+              "question": "What is a common trap associated with Codominance?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "codominance",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "codominance",
+                "conceptSlug": "trap-codominance",
+                "microskillSlug": "avoid-codominance",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-multiple-alleles",
+          "title": "Multiple alleles",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "multiple-alleles"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Multiple alleles"
+          ],
+          "mustKnowFacts": [
+            "Multiple alleles is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Multiple alleles for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing multiple alleles",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of multiple alleles",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in multiple alleles"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Multiple alleles during complex MCQs.",
+            "Failing to apply the correct logic for Multiple alleles."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Multiple alleles."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Multiple alleles."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-multiple-alleles-1",
+              "question": "Explain the core concept behind Multiple alleles.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "multiple-alleles"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "multiple-alleles",
+                "conceptSlug": "core-multiple-alleles",
+                "microskillSlug": "understand-multiple-alleles",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-multiple-alleles-2",
+              "question": "What is a common trap associated with Multiple alleles?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "multiple-alleles",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "multiple-alleles",
+                "conceptSlug": "trap-multiple-alleles",
+                "microskillSlug": "avoid-multiple-alleles",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-blood-groups",
+          "title": "Blood groups",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "blood-groups"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Blood groups"
+          ],
+          "mustKnowFacts": [
+            "Blood groups is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Blood groups for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing blood groups",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of blood groups",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in blood groups"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Blood groups during complex MCQs.",
+            "Failing to apply the correct logic for Blood groups."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Blood groups."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Blood groups."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-blood-groups-1",
+              "question": "Explain the core concept behind Blood groups.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "blood-groups"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "blood-groups",
+                "conceptSlug": "core-blood-groups",
+                "microskillSlug": "understand-blood-groups",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-blood-groups-2",
+              "question": "What is a common trap associated with Blood groups?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "blood-groups",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "blood-groups",
+                "conceptSlug": "trap-blood-groups",
+                "microskillSlug": "avoid-blood-groups",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-pleiotropy",
+          "title": "Pleiotropy",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "pleiotropy"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Pleiotropy"
+          ],
+          "mustKnowFacts": [
+            "Pleiotropy is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Pleiotropy for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing pleiotropy",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of pleiotropy",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in pleiotropy"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Pleiotropy during complex MCQs.",
+            "Failing to apply the correct logic for Pleiotropy."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Pleiotropy."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Pleiotropy."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-pleiotropy-1",
+              "question": "Explain the core concept behind Pleiotropy.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "pleiotropy"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "pleiotropy",
+                "conceptSlug": "core-pleiotropy",
+                "microskillSlug": "understand-pleiotropy",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-pleiotropy-2",
+              "question": "What is a common trap associated with Pleiotropy?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "pleiotropy",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "pleiotropy",
+                "conceptSlug": "trap-pleiotropy",
+                "microskillSlug": "avoid-pleiotropy",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-polygenic-inheritance",
+          "title": "Polygenic inheritance",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "polygenic-inheritance"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Polygenic inheritance"
+          ],
+          "mustKnowFacts": [
+            "Polygenic inheritance is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Polygenic inheritance for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing polygenic inheritance",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of polygenic inheritance",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in polygenic inheritance"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Polygenic inheritance during complex MCQs.",
+            "Failing to apply the correct logic for Polygenic inheritance."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Polygenic inheritance."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Polygenic inheritance."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-polygenic-inheritance-1",
+              "question": "Explain the core concept behind Polygenic inheritance.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "polygenic-inheritance"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "polygenic-inheritance",
+                "conceptSlug": "core-polygenic-inheritance",
+                "microskillSlug": "understand-polygenic-inheritance",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-polygenic-inheritance-2",
+              "question": "What is a common trap associated with Polygenic inheritance?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "polygenic-inheritance",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "polygenic-inheritance",
+                "conceptSlug": "trap-polygenic-inheritance",
+                "microskillSlug": "avoid-polygenic-inheritance",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-chromosome-theory",
+          "title": "Chromosome theory",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "chromosome-theory"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Chromosome theory"
+          ],
+          "mustKnowFacts": [
+            "Chromosome theory is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Chromosome theory for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing chromosome theory",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of chromosome theory",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in chromosome theory"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Chromosome theory during complex MCQs.",
+            "Failing to apply the correct logic for Chromosome theory."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Chromosome theory."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Chromosome theory."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-chromosome-theory-1",
+              "question": "Explain the core concept behind Chromosome theory.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "chromosome-theory"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "chromosome-theory",
+                "conceptSlug": "core-chromosome-theory",
+                "microskillSlug": "understand-chromosome-theory",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-chromosome-theory-2",
+              "question": "What is a common trap associated with Chromosome theory?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "chromosome-theory",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "chromosome-theory",
+                "conceptSlug": "trap-chromosome-theory",
+                "microskillSlug": "avoid-chromosome-theory",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-genetics-and-evolution-2",
+      "title": "Genetics and Evolution - Section 2",
+      "description": "Comprehensive analysis covering linkage, crossing over, sex determination and more.",
+      "conceptTags": [
+        "genetics-and-evolution",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-genetics-and-evolution-linkage",
+          "title": "Linkage",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "linkage"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Linkage"
+          ],
+          "mustKnowFacts": [
+            "Linkage is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Linkage for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing linkage",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of linkage",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in linkage"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Linkage during complex MCQs.",
+            "Failing to apply the correct logic for Linkage."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Linkage."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Linkage."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-linkage-1",
+              "question": "Explain the core concept behind Linkage.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "linkage"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "linkage",
+                "conceptSlug": "core-linkage",
+                "microskillSlug": "understand-linkage",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-linkage-2",
+              "question": "What is a common trap associated with Linkage?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "linkage",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "linkage",
+                "conceptSlug": "trap-linkage",
+                "microskillSlug": "avoid-linkage",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-crossing-over",
+          "title": "Crossing over",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "crossing-over"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Crossing over"
+          ],
+          "mustKnowFacts": [
+            "Crossing over is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Crossing over for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing crossing over",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of crossing over",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in crossing over"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Crossing over during complex MCQs.",
+            "Failing to apply the correct logic for Crossing over."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Crossing over."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Crossing over."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-crossing-over-1",
+              "question": "Explain the core concept behind Crossing over.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "crossing-over"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "crossing-over",
+                "conceptSlug": "core-crossing-over",
+                "microskillSlug": "understand-crossing-over",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-crossing-over-2",
+              "question": "What is a common trap associated with Crossing over?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "crossing-over",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "crossing-over",
+                "conceptSlug": "trap-crossing-over",
+                "microskillSlug": "avoid-crossing-over",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-sex-determination",
+          "title": "Sex determination",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "sex-determination"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Sex determination"
+          ],
+          "mustKnowFacts": [
+            "Sex determination is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Sex determination for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing sex determination",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of sex determination",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in sex determination"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Sex determination during complex MCQs.",
+            "Failing to apply the correct logic for Sex determination."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Sex determination."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Sex determination."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-sex-determination-1",
+              "question": "Explain the core concept behind Sex determination.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "sex-determination"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "sex-determination",
+                "conceptSlug": "core-sex-determination",
+                "microskillSlug": "understand-sex-determination",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-sex-determination-2",
+              "question": "What is a common trap associated with Sex determination?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "sex-determination",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "sex-determination",
+                "conceptSlug": "trap-sex-determination",
+                "microskillSlug": "avoid-sex-determination",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-sex-linked-inheritance",
+          "title": "Sex-linked inheritance",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "sex-linked-inheritance"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Sex-linked inheritance"
+          ],
+          "mustKnowFacts": [
+            "Sex-linked inheritance is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Sex-linked inheritance for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing sex-linked inheritance",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of sex-linked inheritance",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in sex-linked inheritance"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Sex-linked inheritance during complex MCQs.",
+            "Failing to apply the correct logic for Sex-linked inheritance."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Sex-linked inheritance."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Sex-linked inheritance."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-sex-linked-inheritance-1",
+              "question": "Explain the core concept behind Sex-linked inheritance.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "sex-linked-inheritance"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "sex-linked-inheritance",
+                "conceptSlug": "core-sex-linked-inheritance",
+                "microskillSlug": "understand-sex-linked-inheritance",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-sex-linked-inheritance-2",
+              "question": "What is a common trap associated with Sex-linked inheritance?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "sex-linked-inheritance",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "sex-linked-inheritance",
+                "conceptSlug": "trap-sex-linked-inheritance",
+                "microskillSlug": "avoid-sex-linked-inheritance",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-mendelian-disorders",
+          "title": "Mendelian disorders",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "mendelian-disorders"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Mendelian disorders"
+          ],
+          "mustKnowFacts": [
+            "Mendelian disorders is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Mendelian disorders for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing Mendelian disorders",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of Mendelian disorders",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in Mendelian disorders"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Mendelian disorders during complex MCQs.",
+            "Failing to apply the correct logic for Mendelian disorders."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Mendelian disorders."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Mendelian disorders."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-mendelian-disorders-1",
+              "question": "Explain the core concept behind Mendelian disorders.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "mendelian-disorders"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "mendelian-disorders",
+                "conceptSlug": "core-mendelian-disorders",
+                "microskillSlug": "understand-mendelian-disorders",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-mendelian-disorders-2",
+              "question": "What is a common trap associated with Mendelian disorders?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "mendelian-disorders",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "mendelian-disorders",
+                "conceptSlug": "trap-mendelian-disorders",
+                "microskillSlug": "avoid-mendelian-disorders",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-chromosomal-disorders",
+          "title": "Chromosomal disorders",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "chromosomal-disorders"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Chromosomal disorders"
+          ],
+          "mustKnowFacts": [
+            "Chromosomal disorders is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Chromosomal disorders for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing chromosomal disorders",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of chromosomal disorders",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in chromosomal disorders"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Chromosomal disorders during complex MCQs.",
+            "Failing to apply the correct logic for Chromosomal disorders."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Chromosomal disorders."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Chromosomal disorders."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-chromosomal-disorders-1",
+              "question": "Explain the core concept behind Chromosomal disorders.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "chromosomal-disorders"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "chromosomal-disorders",
+                "conceptSlug": "core-chromosomal-disorders",
+                "microskillSlug": "understand-chromosomal-disorders",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-chromosomal-disorders-2",
+              "question": "What is a common trap associated with Chromosomal disorders?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "chromosomal-disorders",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "chromosomal-disorders",
+                "conceptSlug": "trap-chromosomal-disorders",
+                "microskillSlug": "avoid-chromosomal-disorders",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-dna-as-genetic-material",
+          "title": "DNA as genetic material",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "dna-as-genetic-material"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, DNA as genetic material"
+          ],
+          "mustKnowFacts": [
+            "DNA as genetic material is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing DNA as genetic material for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing DNA as genetic material",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of DNA as genetic material",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in DNA as genetic material"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret DNA as genetic material during complex MCQs.",
+            "Failing to apply the correct logic for DNA as genetic material."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to DNA as genetic material."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about DNA as genetic material."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-dna-as-genetic-material-1",
+              "question": "Explain the core concept behind DNA as genetic material.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "dna-as-genetic-material"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "dna-as-genetic-material",
+                "conceptSlug": "core-dna-as-genetic-material",
+                "microskillSlug": "understand-dna-as-genetic-material",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-dna-as-genetic-material-2",
+              "question": "What is a common trap associated with DNA as genetic material?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "dna-as-genetic-material",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "dna-as-genetic-material",
+                "conceptSlug": "trap-dna-as-genetic-material",
+                "microskillSlug": "avoid-dna-as-genetic-material",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-hershey-chase",
+          "title": "Hershey-Chase",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "hershey-chase"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Hershey-Chase"
+          ],
+          "mustKnowFacts": [
+            "Hershey-Chase is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Hershey-Chase for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing Hershey-Chase",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of Hershey-Chase",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in Hershey-Chase"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Hershey-Chase during complex MCQs.",
+            "Failing to apply the correct logic for Hershey-Chase."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Hershey-Chase."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Hershey-Chase."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-hershey-chase-1",
+              "question": "Explain the core concept behind Hershey-Chase.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "hershey-chase"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "hershey-chase",
+                "conceptSlug": "core-hershey-chase",
+                "microskillSlug": "understand-hershey-chase",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-hershey-chase-2",
+              "question": "What is a common trap associated with Hershey-Chase?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "hershey-chase",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "hershey-chase",
+                "conceptSlug": "trap-hershey-chase",
+                "microskillSlug": "avoid-hershey-chase",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-dna-rna-structure",
+          "title": "DNA/RNA structure",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "dna-rna-structure"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, DNA/RNA structure"
+          ],
+          "mustKnowFacts": [
+            "DNA/RNA structure is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing DNA/RNA structure for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing DNA/RNA structure",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of DNA/RNA structure",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in DNA/RNA structure"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret DNA/RNA structure during complex MCQs.",
+            "Failing to apply the correct logic for DNA/RNA structure."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to DNA/RNA structure."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about DNA/RNA structure."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-dna-rna-structure-1",
+              "question": "Explain the core concept behind DNA/RNA structure.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "dna-rna-structure"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "dna-rna-structure",
+                "conceptSlug": "core-dna-rna-structure",
+                "microskillSlug": "understand-dna-rna-structure",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-dna-rna-structure-2",
+              "question": "What is a common trap associated with DNA/RNA structure?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "dna-rna-structure",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "dna-rna-structure",
+                "conceptSlug": "trap-dna-rna-structure",
+                "microskillSlug": "avoid-dna-rna-structure",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-dna-packaging",
+          "title": "DNA packaging",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "dna-packaging"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, DNA packaging"
+          ],
+          "mustKnowFacts": [
+            "DNA packaging is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing DNA packaging for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing DNA packaging",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of DNA packaging",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in DNA packaging"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret DNA packaging during complex MCQs.",
+            "Failing to apply the correct logic for DNA packaging."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to DNA packaging."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about DNA packaging."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-dna-packaging-1",
+              "question": "Explain the core concept behind DNA packaging.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "dna-packaging"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "dna-packaging",
+                "conceptSlug": "core-dna-packaging",
+                "microskillSlug": "understand-dna-packaging",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-dna-packaging-2",
+              "question": "What is a common trap associated with DNA packaging?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "dna-packaging",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "dna-packaging",
+                "conceptSlug": "trap-dna-packaging",
+                "microskillSlug": "avoid-dna-packaging",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-replication",
+          "title": "Replication",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "replication"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Replication"
+          ],
+          "mustKnowFacts": [
+            "Replication is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Replication for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing replication",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of replication",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in replication"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Replication during complex MCQs.",
+            "Failing to apply the correct logic for Replication."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Replication."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Replication."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-replication-1",
+              "question": "Explain the core concept behind Replication.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "replication"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "replication",
+                "conceptSlug": "core-replication",
+                "microskillSlug": "understand-replication",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-replication-2",
+              "question": "What is a common trap associated with Replication?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "replication",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "replication",
+                "conceptSlug": "trap-replication",
+                "microskillSlug": "avoid-replication",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-genetics-and-evolution-3",
+      "title": "Genetics and Evolution - Section 3",
+      "description": "Comprehensive analysis covering central dogma, transcription, genetic code and more.",
+      "conceptTags": [
+        "genetics-and-evolution",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-genetics-and-evolution-central-dogma",
+          "title": "Central dogma",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "central-dogma"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Central dogma"
+          ],
+          "mustKnowFacts": [
+            "Central dogma is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Central dogma for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing central dogma",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of central dogma",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in central dogma"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Central dogma during complex MCQs.",
+            "Failing to apply the correct logic for Central dogma."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Central dogma."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Central dogma."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-central-dogma-1",
+              "question": "Explain the core concept behind Central dogma.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "central-dogma"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "central-dogma",
+                "conceptSlug": "core-central-dogma",
+                "microskillSlug": "understand-central-dogma",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-central-dogma-2",
+              "question": "What is a common trap associated with Central dogma?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "central-dogma",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "central-dogma",
+                "conceptSlug": "trap-central-dogma",
+                "microskillSlug": "avoid-central-dogma",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-transcription",
+          "title": "Transcription",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "transcription"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Transcription"
+          ],
+          "mustKnowFacts": [
+            "Transcription is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Transcription for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing transcription",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of transcription",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in transcription"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Transcription during complex MCQs.",
+            "Failing to apply the correct logic for Transcription."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Transcription."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Transcription."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-transcription-1",
+              "question": "Explain the core concept behind Transcription.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "transcription"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "transcription",
+                "conceptSlug": "core-transcription",
+                "microskillSlug": "understand-transcription",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-transcription-2",
+              "question": "What is a common trap associated with Transcription?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "transcription",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "transcription",
+                "conceptSlug": "trap-transcription",
+                "microskillSlug": "avoid-transcription",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-genetic-code",
+          "title": "Genetic code",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "genetic-code"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Genetic code"
+          ],
+          "mustKnowFacts": [
+            "Genetic code is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Genetic code for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing genetic code",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of genetic code",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in genetic code"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Genetic code during complex MCQs.",
+            "Failing to apply the correct logic for Genetic code."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Genetic code."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Genetic code."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-genetic-code-1",
+              "question": "Explain the core concept behind Genetic code.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "genetic-code"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "genetic-code",
+                "conceptSlug": "core-genetic-code",
+                "microskillSlug": "understand-genetic-code",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-genetic-code-2",
+              "question": "What is a common trap associated with Genetic code?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "genetic-code",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "genetic-code",
+                "conceptSlug": "trap-genetic-code",
+                "microskillSlug": "avoid-genetic-code",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-translation",
+          "title": "Translation",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "translation"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Translation"
+          ],
+          "mustKnowFacts": [
+            "Translation is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Translation for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing translation",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of translation",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in translation"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Translation during complex MCQs.",
+            "Failing to apply the correct logic for Translation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Translation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Translation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-translation-1",
+              "question": "Explain the core concept behind Translation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "translation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "translation",
+                "conceptSlug": "core-translation",
+                "microskillSlug": "understand-translation",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-translation-2",
+              "question": "What is a common trap associated with Translation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "translation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "translation",
+                "conceptSlug": "trap-translation",
+                "microskillSlug": "avoid-translation",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-lac-operon",
+          "title": "Lac operon",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "lac-operon"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Lac operon"
+          ],
+          "mustKnowFacts": [
+            "Lac operon is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Lac operon for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing lac operon",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of lac operon",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in lac operon"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Lac operon during complex MCQs.",
+            "Failing to apply the correct logic for Lac operon."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Lac operon."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Lac operon."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-lac-operon-1",
+              "question": "Explain the core concept behind Lac operon.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "lac-operon"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "lac-operon",
+                "conceptSlug": "core-lac-operon",
+                "microskillSlug": "understand-lac-operon",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-lac-operon-2",
+              "question": "What is a common trap associated with Lac operon?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "lac-operon",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "lac-operon",
+                "conceptSlug": "trap-lac-operon",
+                "microskillSlug": "avoid-lac-operon",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-hgp",
+          "title": "HGP",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "hgp"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, HGP"
+          ],
+          "mustKnowFacts": [
+            "HGP is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing HGP for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing HGP",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of HGP",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in HGP"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret HGP during complex MCQs.",
+            "Failing to apply the correct logic for HGP."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to HGP."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about HGP."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-hgp-1",
+              "question": "Explain the core concept behind HGP.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "hgp"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "hgp",
+                "conceptSlug": "core-hgp",
+                "microskillSlug": "understand-hgp",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-hgp-2",
+              "question": "What is a common trap associated with HGP?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "hgp",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "hgp",
+                "conceptSlug": "trap-hgp",
+                "microskillSlug": "avoid-hgp",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-dna-fingerprinting",
+          "title": "DNA fingerprinting",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "dna-fingerprinting"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, DNA fingerprinting"
+          ],
+          "mustKnowFacts": [
+            "DNA fingerprinting is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing DNA fingerprinting for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing DNA fingerprinting",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of DNA fingerprinting",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in DNA fingerprinting"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret DNA fingerprinting during complex MCQs.",
+            "Failing to apply the correct logic for DNA fingerprinting."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to DNA fingerprinting."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about DNA fingerprinting."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-dna-fingerprinting-1",
+              "question": "Explain the core concept behind DNA fingerprinting.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "dna-fingerprinting"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "dna-fingerprinting",
+                "conceptSlug": "core-dna-fingerprinting",
+                "microskillSlug": "understand-dna-fingerprinting",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-dna-fingerprinting-2",
+              "question": "What is a common trap associated with DNA fingerprinting?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "dna-fingerprinting",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "dna-fingerprinting",
+                "conceptSlug": "trap-dna-fingerprinting",
+                "microskillSlug": "avoid-dna-fingerprinting",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-origin-of-life",
+          "title": "Origin of life",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "origin-of-life"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Origin of life"
+          ],
+          "mustKnowFacts": [
+            "Origin of life is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Origin of life for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing origin of life",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of origin of life",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in origin of life"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Origin of life during complex MCQs.",
+            "Failing to apply the correct logic for Origin of life."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Origin of life."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Origin of life."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-origin-of-life-1",
+              "question": "Explain the core concept behind Origin of life.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "origin-of-life"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "origin-of-life",
+                "conceptSlug": "core-origin-of-life",
+                "microskillSlug": "understand-origin-of-life",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-origin-of-life-2",
+              "question": "What is a common trap associated with Origin of life?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "origin-of-life",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "origin-of-life",
+                "conceptSlug": "trap-origin-of-life",
+                "microskillSlug": "avoid-origin-of-life",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-miller-experiment",
+          "title": "Miller experiment",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "miller-experiment"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Miller experiment"
+          ],
+          "mustKnowFacts": [
+            "Miller experiment is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Miller experiment for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing Miller experiment",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of Miller experiment",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in Miller experiment"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Miller experiment during complex MCQs.",
+            "Failing to apply the correct logic for Miller experiment."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Miller experiment."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Miller experiment."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-miller-experiment-1",
+              "question": "Explain the core concept behind Miller experiment.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "miller-experiment"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "miller-experiment",
+                "conceptSlug": "core-miller-experiment",
+                "microskillSlug": "understand-miller-experiment",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-miller-experiment-2",
+              "question": "What is a common trap associated with Miller experiment?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "miller-experiment",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "miller-experiment",
+                "conceptSlug": "trap-miller-experiment",
+                "microskillSlug": "avoid-miller-experiment",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-evidences",
+          "title": "Evidences",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "evidences"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Evidences"
+          ],
+          "mustKnowFacts": [
+            "Evidences is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Evidences for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing evidences",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of evidences",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in evidences"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Evidences during complex MCQs.",
+            "Failing to apply the correct logic for Evidences."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Evidences."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Evidences."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-evidences-1",
+              "question": "Explain the core concept behind Evidences.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "evidences"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "evidences",
+                "conceptSlug": "core-evidences",
+                "microskillSlug": "understand-evidences",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-evidences-2",
+              "question": "What is a common trap associated with Evidences?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "evidences",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "evidences",
+                "conceptSlug": "trap-evidences",
+                "microskillSlug": "avoid-evidences",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-darwinism",
+          "title": "Darwinism",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "darwinism"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Darwinism"
+          ],
+          "mustKnowFacts": [
+            "Darwinism is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Darwinism for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing Darwinism",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of Darwinism",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in Darwinism"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Darwinism during complex MCQs.",
+            "Failing to apply the correct logic for Darwinism."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Darwinism."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Darwinism."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-darwinism-1",
+              "question": "Explain the core concept behind Darwinism.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "darwinism"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "darwinism",
+                "conceptSlug": "core-darwinism",
+                "microskillSlug": "understand-darwinism",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-darwinism-2",
+              "question": "What is a common trap associated with Darwinism?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "darwinism",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "darwinism",
+                "conceptSlug": "trap-darwinism",
+                "microskillSlug": "avoid-darwinism",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-genetics-and-evolution-4",
+      "title": "Genetics and Evolution - Section 4",
+      "description": "Comprehensive analysis covering modern synthetic theory, mutation, recombination and more.",
+      "conceptTags": [
+        "genetics-and-evolution",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-genetics-and-evolution-modern-synthetic-theory",
+          "title": "Modern synthetic theory",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "modern-synthetic-theory"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Modern synthetic theory"
+          ],
+          "mustKnowFacts": [
+            "Modern synthetic theory is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Modern synthetic theory for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing modern synthetic theory",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of modern synthetic theory",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in modern synthetic theory"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Modern synthetic theory during complex MCQs.",
+            "Failing to apply the correct logic for Modern synthetic theory."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Modern synthetic theory."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Modern synthetic theory."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-modern-synthetic-theory-1",
+              "question": "Explain the core concept behind Modern synthetic theory.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "modern-synthetic-theory"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "modern-synthetic-theory",
+                "conceptSlug": "core-modern-synthetic-theory",
+                "microskillSlug": "understand-modern-synthetic-theory",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-modern-synthetic-theory-2",
+              "question": "What is a common trap associated with Modern synthetic theory?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "modern-synthetic-theory",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "modern-synthetic-theory",
+                "conceptSlug": "trap-modern-synthetic-theory",
+                "microskillSlug": "avoid-modern-synthetic-theory",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-mutation",
+          "title": "Mutation",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "mutation"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Mutation"
+          ],
+          "mustKnowFacts": [
+            "Mutation is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Mutation for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing mutation",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of mutation",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in mutation"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Mutation during complex MCQs.",
+            "Failing to apply the correct logic for Mutation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Mutation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Mutation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-mutation-1",
+              "question": "Explain the core concept behind Mutation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "mutation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "mutation",
+                "conceptSlug": "core-mutation",
+                "microskillSlug": "understand-mutation",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-mutation-2",
+              "question": "What is a common trap associated with Mutation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "mutation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "mutation",
+                "conceptSlug": "trap-mutation",
+                "microskillSlug": "avoid-mutation",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-recombination",
+          "title": "Recombination",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "recombination"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Recombination"
+          ],
+          "mustKnowFacts": [
+            "Recombination is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Recombination for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing recombination",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of recombination",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in recombination"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Recombination during complex MCQs.",
+            "Failing to apply the correct logic for Recombination."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Recombination."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Recombination."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-recombination-1",
+              "question": "Explain the core concept behind Recombination.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "recombination"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "recombination",
+                "conceptSlug": "core-recombination",
+                "microskillSlug": "understand-recombination",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-recombination-2",
+              "question": "What is a common trap associated with Recombination?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "recombination",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "recombination",
+                "conceptSlug": "trap-recombination",
+                "microskillSlug": "avoid-recombination",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-natural-selection-types",
+          "title": "Natural selection types",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "natural-selection-types"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Natural selection types"
+          ],
+          "mustKnowFacts": [
+            "Natural selection types is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Natural selection types for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing natural selection types",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of natural selection types",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in natural selection types"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Natural selection types during complex MCQs.",
+            "Failing to apply the correct logic for Natural selection types."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Natural selection types."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Natural selection types."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-natural-selection-types-1",
+              "question": "Explain the core concept behind Natural selection types.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "natural-selection-types"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "natural-selection-types",
+                "conceptSlug": "core-natural-selection-types",
+                "microskillSlug": "understand-natural-selection-types",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-natural-selection-types-2",
+              "question": "What is a common trap associated with Natural selection types?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "natural-selection-types",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "natural-selection-types",
+                "conceptSlug": "trap-natural-selection-types",
+                "microskillSlug": "avoid-natural-selection-types",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-gene-flow",
+          "title": "Gene flow",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "gene-flow"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Gene flow"
+          ],
+          "mustKnowFacts": [
+            "Gene flow is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Gene flow for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing gene flow",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of gene flow",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in gene flow"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Gene flow during complex MCQs.",
+            "Failing to apply the correct logic for Gene flow."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Gene flow."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Gene flow."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-gene-flow-1",
+              "question": "Explain the core concept behind Gene flow.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "gene-flow"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "gene-flow",
+                "conceptSlug": "core-gene-flow",
+                "microskillSlug": "understand-gene-flow",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-gene-flow-2",
+              "question": "What is a common trap associated with Gene flow?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "gene-flow",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "gene-flow",
+                "conceptSlug": "trap-gene-flow",
+                "microskillSlug": "avoid-gene-flow",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-genetic-drift",
+          "title": "Genetic drift",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "genetic-drift"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Genetic drift"
+          ],
+          "mustKnowFacts": [
+            "Genetic drift is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Genetic drift for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing genetic drift",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of genetic drift",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in genetic drift"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Genetic drift during complex MCQs.",
+            "Failing to apply the correct logic for Genetic drift."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Genetic drift."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Genetic drift."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-genetic-drift-1",
+              "question": "Explain the core concept behind Genetic drift.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "genetic-drift"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "genetic-drift",
+                "conceptSlug": "core-genetic-drift",
+                "microskillSlug": "understand-genetic-drift",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-genetic-drift-2",
+              "question": "What is a common trap associated with Genetic drift?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "genetic-drift",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "genetic-drift",
+                "conceptSlug": "trap-genetic-drift",
+                "microskillSlug": "avoid-genetic-drift",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-hardy-weinberg",
+          "title": "Hardy-Weinberg",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "hardy-weinberg"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Hardy-Weinberg"
+          ],
+          "mustKnowFacts": [
+            "Hardy-Weinberg is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Hardy-Weinberg for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing Hardy-Weinberg",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of Hardy-Weinberg",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in Hardy-Weinberg"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Hardy-Weinberg during complex MCQs.",
+            "Failing to apply the correct logic for Hardy-Weinberg."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Hardy-Weinberg."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Hardy-Weinberg."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-hardy-weinberg-1",
+              "question": "Explain the core concept behind Hardy-Weinberg.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "hardy-weinberg"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "hardy-weinberg",
+                "conceptSlug": "core-hardy-weinberg",
+                "microskillSlug": "understand-hardy-weinberg",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-hardy-weinberg-2",
+              "question": "What is a common trap associated with Hardy-Weinberg?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "hardy-weinberg",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "hardy-weinberg",
+                "conceptSlug": "trap-hardy-weinberg",
+                "microskillSlug": "avoid-hardy-weinberg",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-adaptive-radiation",
+          "title": "Adaptive radiation",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "adaptive-radiation"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Adaptive radiation"
+          ],
+          "mustKnowFacts": [
+            "Adaptive radiation is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Adaptive radiation for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing adaptive radiation",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of adaptive radiation",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in adaptive radiation"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Adaptive radiation during complex MCQs.",
+            "Failing to apply the correct logic for Adaptive radiation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Adaptive radiation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Adaptive radiation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-adaptive-radiation-1",
+              "question": "Explain the core concept behind Adaptive radiation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "adaptive-radiation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "adaptive-radiation",
+                "conceptSlug": "core-adaptive-radiation",
+                "microskillSlug": "understand-adaptive-radiation",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-adaptive-radiation-2",
+              "question": "What is a common trap associated with Adaptive radiation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "adaptive-radiation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "adaptive-radiation",
+                "conceptSlug": "trap-adaptive-radiation",
+                "microskillSlug": "avoid-adaptive-radiation",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-genetics-and-evolution-human-evolution",
+          "title": "Human evolution",
+          "conceptTags": [
+            "genetics-and-evolution",
+            "human-evolution"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 12, Human evolution"
+          ],
+          "mustKnowFacts": [
+            "Human evolution is a fundamental subtopic of Genetics and Evolution.",
+            "Crucial to understand the principles governing Human evolution for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing human evolution",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of human evolution",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in human evolution"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Human evolution during complex MCQs.",
+            "Failing to apply the correct logic for Human evolution."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Human evolution."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Human evolution."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "genetics-and-evolution-q-human-evolution-1",
+              "question": "Explain the core concept behind Human evolution.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "human-evolution"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "human-evolution",
+                "conceptSlug": "core-human-evolution",
+                "microskillSlug": "understand-human-evolution",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            },
+            {
+              "id": "genetics-and-evolution-q-human-evolution-2",
+              "question": "What is a common trap associated with Human evolution?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "human-evolution",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "genetics-and-evolution",
+                "subtopicSlug": "human-evolution",
+                "conceptSlug": "trap-human-evolution",
+                "microskillSlug": "avoid-human-evolution",
+                "subject": "Biology",
+                "unitSlug": "genetics-and-evolution",
+                "chapterSlug": "genetics-and-evolution"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

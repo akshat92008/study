@@ -1,0 +1,2312 @@
+{
+  "missions": [
+    {
+      "id": "m-structural-organisation-1",
+      "title": "Structural Organisation in Animals and Plants - Section 1",
+      "description": "Comprehensive analysis covering root morphology, stem morphology, leaf morphology and more.",
+      "conceptTags": [
+        "structural-organisation",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-structural-organisation-root-morphology",
+          "title": "Root morphology",
+          "conceptTags": [
+            "structural-organisation",
+            "root-morphology"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Root morphology"
+          ],
+          "mustKnowFacts": [
+            "Root morphology is a fundamental subtopic of Structural Organisation in Animals and Plants.",
+            "Crucial to understand the principles governing Root morphology for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing root morphology",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of root morphology",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in root morphology"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Root morphology during complex MCQs.",
+            "Failing to apply the correct logic for Root morphology."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Root morphology."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Root morphology."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "structural-organisation-q-root-morphology-1",
+              "question": "Explain the core concept behind Root morphology.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "root-morphology"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "root-morphology",
+                "conceptSlug": "core-root-morphology",
+                "microskillSlug": "understand-root-morphology",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            },
+            {
+              "id": "structural-organisation-q-root-morphology-2",
+              "question": "What is a common trap associated with Root morphology?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "root-morphology",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "root-morphology",
+                "conceptSlug": "trap-root-morphology",
+                "microskillSlug": "avoid-root-morphology",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-structural-organisation-stem-morphology",
+          "title": "Stem morphology",
+          "conceptTags": [
+            "structural-organisation",
+            "stem-morphology"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Stem morphology"
+          ],
+          "mustKnowFacts": [
+            "Stem morphology is a fundamental subtopic of Structural Organisation in Animals and Plants.",
+            "Crucial to understand the principles governing Stem morphology for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing stem morphology",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of stem morphology",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in stem morphology"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Stem morphology during complex MCQs.",
+            "Failing to apply the correct logic for Stem morphology."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Stem morphology."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Stem morphology."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "structural-organisation-q-stem-morphology-1",
+              "question": "Explain the core concept behind Stem morphology.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "stem-morphology"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "stem-morphology",
+                "conceptSlug": "core-stem-morphology",
+                "microskillSlug": "understand-stem-morphology",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            },
+            {
+              "id": "structural-organisation-q-stem-morphology-2",
+              "question": "What is a common trap associated with Stem morphology?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "stem-morphology",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "stem-morphology",
+                "conceptSlug": "trap-stem-morphology",
+                "microskillSlug": "avoid-stem-morphology",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-structural-organisation-leaf-morphology",
+          "title": "Leaf morphology",
+          "conceptTags": [
+            "structural-organisation",
+            "leaf-morphology"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Leaf morphology"
+          ],
+          "mustKnowFacts": [
+            "Leaf morphology is a fundamental subtopic of Structural Organisation in Animals and Plants.",
+            "Crucial to understand the principles governing Leaf morphology for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing leaf morphology",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of leaf morphology",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in leaf morphology"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Leaf morphology during complex MCQs.",
+            "Failing to apply the correct logic for Leaf morphology."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Leaf morphology."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Leaf morphology."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "structural-organisation-q-leaf-morphology-1",
+              "question": "Explain the core concept behind Leaf morphology.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "leaf-morphology"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "leaf-morphology",
+                "conceptSlug": "core-leaf-morphology",
+                "microskillSlug": "understand-leaf-morphology",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            },
+            {
+              "id": "structural-organisation-q-leaf-morphology-2",
+              "question": "What is a common trap associated with Leaf morphology?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "leaf-morphology",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "leaf-morphology",
+                "conceptSlug": "trap-leaf-morphology",
+                "microskillSlug": "avoid-leaf-morphology",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-structural-organisation-inflorescence",
+          "title": "Inflorescence",
+          "conceptTags": [
+            "structural-organisation",
+            "inflorescence"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Inflorescence"
+          ],
+          "mustKnowFacts": [
+            "Inflorescence is a fundamental subtopic of Structural Organisation in Animals and Plants.",
+            "Crucial to understand the principles governing Inflorescence for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing inflorescence",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of inflorescence",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in inflorescence"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Inflorescence during complex MCQs.",
+            "Failing to apply the correct logic for Inflorescence."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Inflorescence."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Inflorescence."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "structural-organisation-q-inflorescence-1",
+              "question": "Explain the core concept behind Inflorescence.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "inflorescence"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "inflorescence",
+                "conceptSlug": "core-inflorescence",
+                "microskillSlug": "understand-inflorescence",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            },
+            {
+              "id": "structural-organisation-q-inflorescence-2",
+              "question": "What is a common trap associated with Inflorescence?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "inflorescence",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "inflorescence",
+                "conceptSlug": "trap-inflorescence",
+                "microskillSlug": "avoid-inflorescence",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-structural-organisation-flower",
+          "title": "Flower",
+          "conceptTags": [
+            "structural-organisation",
+            "flower"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Flower"
+          ],
+          "mustKnowFacts": [
+            "Flower is a fundamental subtopic of Structural Organisation in Animals and Plants.",
+            "Crucial to understand the principles governing Flower for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing flower",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of flower",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in flower"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Flower during complex MCQs.",
+            "Failing to apply the correct logic for Flower."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Flower."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Flower."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "structural-organisation-q-flower-1",
+              "question": "Explain the core concept behind Flower.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "flower"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "flower",
+                "conceptSlug": "core-flower",
+                "microskillSlug": "understand-flower",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            },
+            {
+              "id": "structural-organisation-q-flower-2",
+              "question": "What is a common trap associated with Flower?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "flower",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "flower",
+                "conceptSlug": "trap-flower",
+                "microskillSlug": "avoid-flower",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-structural-organisation-fruit",
+          "title": "Fruit",
+          "conceptTags": [
+            "structural-organisation",
+            "fruit"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Fruit"
+          ],
+          "mustKnowFacts": [
+            "Fruit is a fundamental subtopic of Structural Organisation in Animals and Plants.",
+            "Crucial to understand the principles governing Fruit for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing fruit",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of fruit",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in fruit"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Fruit during complex MCQs.",
+            "Failing to apply the correct logic for Fruit."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Fruit."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Fruit."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "structural-organisation-q-fruit-1",
+              "question": "Explain the core concept behind Fruit.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "fruit"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "fruit",
+                "conceptSlug": "core-fruit",
+                "microskillSlug": "understand-fruit",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            },
+            {
+              "id": "structural-organisation-q-fruit-2",
+              "question": "What is a common trap associated with Fruit?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "fruit",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "fruit",
+                "conceptSlug": "trap-fruit",
+                "microskillSlug": "avoid-fruit",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-structural-organisation-2",
+      "title": "Structural Organisation in Animals and Plants - Section 2",
+      "description": "Comprehensive analysis covering seed, modifications, plant tissues and more.",
+      "conceptTags": [
+        "structural-organisation",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-structural-organisation-seed",
+          "title": "Seed",
+          "conceptTags": [
+            "structural-organisation",
+            "seed"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Seed"
+          ],
+          "mustKnowFacts": [
+            "Seed is a fundamental subtopic of Structural Organisation in Animals and Plants.",
+            "Crucial to understand the principles governing Seed for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing seed",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of seed",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in seed"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Seed during complex MCQs.",
+            "Failing to apply the correct logic for Seed."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Seed."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Seed."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "structural-organisation-q-seed-1",
+              "question": "Explain the core concept behind Seed.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "seed"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "seed",
+                "conceptSlug": "core-seed",
+                "microskillSlug": "understand-seed",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            },
+            {
+              "id": "structural-organisation-q-seed-2",
+              "question": "What is a common trap associated with Seed?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "seed",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "seed",
+                "conceptSlug": "trap-seed",
+                "microskillSlug": "avoid-seed",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-structural-organisation-modifications",
+          "title": "Modifications",
+          "conceptTags": [
+            "structural-organisation",
+            "modifications"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Modifications"
+          ],
+          "mustKnowFacts": [
+            "Modifications is a fundamental subtopic of Structural Organisation in Animals and Plants.",
+            "Crucial to understand the principles governing Modifications for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing modifications",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of modifications",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in modifications"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Modifications during complex MCQs.",
+            "Failing to apply the correct logic for Modifications."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Modifications."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Modifications."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "structural-organisation-q-modifications-1",
+              "question": "Explain the core concept behind Modifications.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "modifications"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "modifications",
+                "conceptSlug": "core-modifications",
+                "microskillSlug": "understand-modifications",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            },
+            {
+              "id": "structural-organisation-q-modifications-2",
+              "question": "What is a common trap associated with Modifications?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "modifications",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "modifications",
+                "conceptSlug": "trap-modifications",
+                "microskillSlug": "avoid-modifications",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-structural-organisation-plant-tissues",
+          "title": "Plant tissues",
+          "conceptTags": [
+            "structural-organisation",
+            "plant-tissues"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Plant tissues"
+          ],
+          "mustKnowFacts": [
+            "Plant tissues is a fundamental subtopic of Structural Organisation in Animals and Plants.",
+            "Crucial to understand the principles governing Plant tissues for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing plant tissues",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of plant tissues",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in plant tissues"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Plant tissues during complex MCQs.",
+            "Failing to apply the correct logic for Plant tissues."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Plant tissues."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Plant tissues."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "structural-organisation-q-plant-tissues-1",
+              "question": "Explain the core concept behind Plant tissues.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "plant-tissues"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "plant-tissues",
+                "conceptSlug": "core-plant-tissues",
+                "microskillSlug": "understand-plant-tissues",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            },
+            {
+              "id": "structural-organisation-q-plant-tissues-2",
+              "question": "What is a common trap associated with Plant tissues?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "plant-tissues",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "plant-tissues",
+                "conceptSlug": "trap-plant-tissues",
+                "microskillSlug": "avoid-plant-tissues",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-structural-organisation-anatomy-of-root",
+          "title": "Anatomy of root",
+          "conceptTags": [
+            "structural-organisation",
+            "anatomy-of-root"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Anatomy of root"
+          ],
+          "mustKnowFacts": [
+            "Anatomy of root is a fundamental subtopic of Structural Organisation in Animals and Plants.",
+            "Crucial to understand the principles governing Anatomy of root for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing anatomy of root",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of anatomy of root",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in anatomy of root"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Anatomy of root during complex MCQs.",
+            "Failing to apply the correct logic for Anatomy of root."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Anatomy of root."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Anatomy of root."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "structural-organisation-q-anatomy-of-root-1",
+              "question": "Explain the core concept behind Anatomy of root.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "anatomy-of-root"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "anatomy-of-root",
+                "conceptSlug": "core-anatomy-of-root",
+                "microskillSlug": "understand-anatomy-of-root",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            },
+            {
+              "id": "structural-organisation-q-anatomy-of-root-2",
+              "question": "What is a common trap associated with Anatomy of root?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "anatomy-of-root",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "anatomy-of-root",
+                "conceptSlug": "trap-anatomy-of-root",
+                "microskillSlug": "avoid-anatomy-of-root",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-structural-organisation-stem",
+          "title": "Stem",
+          "conceptTags": [
+            "structural-organisation",
+            "stem"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Stem"
+          ],
+          "mustKnowFacts": [
+            "Stem is a fundamental subtopic of Structural Organisation in Animals and Plants.",
+            "Crucial to understand the principles governing Stem for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing stem",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of stem",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in stem"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Stem during complex MCQs.",
+            "Failing to apply the correct logic for Stem."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Stem."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Stem."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "structural-organisation-q-stem-1",
+              "question": "Explain the core concept behind Stem.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "stem"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "stem",
+                "conceptSlug": "core-stem",
+                "microskillSlug": "understand-stem",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            },
+            {
+              "id": "structural-organisation-q-stem-2",
+              "question": "What is a common trap associated with Stem?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "stem",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "stem",
+                "conceptSlug": "trap-stem",
+                "microskillSlug": "avoid-stem",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-structural-organisation-leaf",
+          "title": "Leaf",
+          "conceptTags": [
+            "structural-organisation",
+            "leaf"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Leaf"
+          ],
+          "mustKnowFacts": [
+            "Leaf is a fundamental subtopic of Structural Organisation in Animals and Plants.",
+            "Crucial to understand the principles governing Leaf for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing leaf",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of leaf",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in leaf"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Leaf during complex MCQs.",
+            "Failing to apply the correct logic for Leaf."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Leaf."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Leaf."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "structural-organisation-q-leaf-1",
+              "question": "Explain the core concept behind Leaf.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "leaf"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "leaf",
+                "conceptSlug": "core-leaf",
+                "microskillSlug": "understand-leaf",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            },
+            {
+              "id": "structural-organisation-q-leaf-2",
+              "question": "What is a common trap associated with Leaf?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "leaf",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "leaf",
+                "conceptSlug": "trap-leaf",
+                "microskillSlug": "avoid-leaf",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-structural-organisation-3",
+      "title": "Structural Organisation in Animals and Plants - Section 3",
+      "description": "Comprehensive analysis covering families Malvaceae/Cruciferae/Leguminosae/Compositae/Gramineae, animal tissues, epithelial and more.",
+      "conceptTags": [
+        "structural-organisation",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-structural-organisation-families-malvaceae-cruciferae-leguminosae-compositae-gramineae",
+          "title": "Families Malvaceae/Cruciferae/Leguminosae/Compositae/Gramineae",
+          "conceptTags": [
+            "structural-organisation",
+            "families-malvaceae-cruciferae-leguminosae-compositae-gramineae"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Families Malvaceae/Cruciferae/Leguminosae/Compositae/Gramineae"
+          ],
+          "mustKnowFacts": [
+            "Families Malvaceae/Cruciferae/Leguminosae/Compositae/Gramineae is a fundamental subtopic of Structural Organisation in Animals and Plants.",
+            "Crucial to understand the principles governing Families Malvaceae/Cruciferae/Leguminosae/Compositae/Gramineae for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing families Malvaceae/Cruciferae/Leguminosae/Compositae/Gramineae",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of families Malvaceae/Cruciferae/Leguminosae/Compositae/Gramineae",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in families Malvaceae/Cruciferae/Leguminosae/Compositae/Gramineae"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Families Malvaceae/Cruciferae/Leguminosae/Compositae/Gramineae during complex MCQs.",
+            "Failing to apply the correct logic for Families Malvaceae/Cruciferae/Leguminosae/Compositae/Gramineae."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Families Malvaceae/Cruciferae/Leguminosae/Compositae/Gramineae."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Families Malvaceae/Cruciferae/Leguminosae/Compositae/Gramineae."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "structural-organisation-q-families-malvaceae-cruciferae-leguminosae-compositae-gramineae-1",
+              "question": "Explain the core concept behind Families Malvaceae/Cruciferae/Leguminosae/Compositae/Gramineae.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "families-malvaceae-cruciferae-leguminosae-compositae-gramineae"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "families-malvaceae-cruciferae-leguminosae-compositae-gramineae",
+                "conceptSlug": "core-families-malvaceae-cruciferae-leguminosae-compositae-gramineae",
+                "microskillSlug": "understand-families-malvaceae-cruciferae-leguminosae-compositae-gramineae",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            },
+            {
+              "id": "structural-organisation-q-families-malvaceae-cruciferae-leguminosae-compositae-gramineae-2",
+              "question": "What is a common trap associated with Families Malvaceae/Cruciferae/Leguminosae/Compositae/Gramineae?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "families-malvaceae-cruciferae-leguminosae-compositae-gramineae",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "families-malvaceae-cruciferae-leguminosae-compositae-gramineae",
+                "conceptSlug": "trap-families-malvaceae-cruciferae-leguminosae-compositae-gramineae",
+                "microskillSlug": "avoid-families-malvaceae-cruciferae-leguminosae-compositae-gramineae",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-structural-organisation-animal-tissues",
+          "title": "Animal tissues",
+          "conceptTags": [
+            "structural-organisation",
+            "animal-tissues"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Animal tissues"
+          ],
+          "mustKnowFacts": [
+            "Animal tissues is a fundamental subtopic of Structural Organisation in Animals and Plants.",
+            "Crucial to understand the principles governing Animal tissues for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing animal tissues",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of animal tissues",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in animal tissues"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Animal tissues during complex MCQs.",
+            "Failing to apply the correct logic for Animal tissues."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Animal tissues."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Animal tissues."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "structural-organisation-q-animal-tissues-1",
+              "question": "Explain the core concept behind Animal tissues.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "animal-tissues"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "animal-tissues",
+                "conceptSlug": "core-animal-tissues",
+                "microskillSlug": "understand-animal-tissues",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            },
+            {
+              "id": "structural-organisation-q-animal-tissues-2",
+              "question": "What is a common trap associated with Animal tissues?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "animal-tissues",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "animal-tissues",
+                "conceptSlug": "trap-animal-tissues",
+                "microskillSlug": "avoid-animal-tissues",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-structural-organisation-epithelial",
+          "title": "Epithelial",
+          "conceptTags": [
+            "structural-organisation",
+            "epithelial"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Epithelial"
+          ],
+          "mustKnowFacts": [
+            "Epithelial is a fundamental subtopic of Structural Organisation in Animals and Plants.",
+            "Crucial to understand the principles governing Epithelial for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing epithelial",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of epithelial",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in epithelial"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Epithelial during complex MCQs.",
+            "Failing to apply the correct logic for Epithelial."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Epithelial."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Epithelial."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "structural-organisation-q-epithelial-1",
+              "question": "Explain the core concept behind Epithelial.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "epithelial"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "epithelial",
+                "conceptSlug": "core-epithelial",
+                "microskillSlug": "understand-epithelial",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            },
+            {
+              "id": "structural-organisation-q-epithelial-2",
+              "question": "What is a common trap associated with Epithelial?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "epithelial",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "epithelial",
+                "conceptSlug": "trap-epithelial",
+                "microskillSlug": "avoid-epithelial",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-structural-organisation-connective",
+          "title": "Connective",
+          "conceptTags": [
+            "structural-organisation",
+            "connective"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Connective"
+          ],
+          "mustKnowFacts": [
+            "Connective is a fundamental subtopic of Structural Organisation in Animals and Plants.",
+            "Crucial to understand the principles governing Connective for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing connective",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of connective",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in connective"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Connective during complex MCQs.",
+            "Failing to apply the correct logic for Connective."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Connective."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Connective."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "structural-organisation-q-connective-1",
+              "question": "Explain the core concept behind Connective.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "connective"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "connective",
+                "conceptSlug": "core-connective",
+                "microskillSlug": "understand-connective",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            },
+            {
+              "id": "structural-organisation-q-connective-2",
+              "question": "What is a common trap associated with Connective?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "connective",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "connective",
+                "conceptSlug": "trap-connective",
+                "microskillSlug": "avoid-connective",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-structural-organisation-muscular",
+          "title": "Muscular",
+          "conceptTags": [
+            "structural-organisation",
+            "muscular"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Muscular"
+          ],
+          "mustKnowFacts": [
+            "Muscular is a fundamental subtopic of Structural Organisation in Animals and Plants.",
+            "Crucial to understand the principles governing Muscular for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing muscular",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of muscular",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in muscular"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Muscular during complex MCQs.",
+            "Failing to apply the correct logic for Muscular."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Muscular."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Muscular."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "structural-organisation-q-muscular-1",
+              "question": "Explain the core concept behind Muscular.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "muscular"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "muscular",
+                "conceptSlug": "core-muscular",
+                "microskillSlug": "understand-muscular",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            },
+            {
+              "id": "structural-organisation-q-muscular-2",
+              "question": "What is a common trap associated with Muscular?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "muscular",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "muscular",
+                "conceptSlug": "trap-muscular",
+                "microskillSlug": "avoid-muscular",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-structural-organisation-neural",
+          "title": "Neural",
+          "conceptTags": [
+            "structural-organisation",
+            "neural"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Neural"
+          ],
+          "mustKnowFacts": [
+            "Neural is a fundamental subtopic of Structural Organisation in Animals and Plants.",
+            "Crucial to understand the principles governing Neural for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing neural",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of neural",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in neural"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Neural during complex MCQs.",
+            "Failing to apply the correct logic for Neural."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Neural."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Neural."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "structural-organisation-q-neural-1",
+              "question": "Explain the core concept behind Neural.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "neural"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "neural",
+                "conceptSlug": "core-neural",
+                "microskillSlug": "understand-neural",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            },
+            {
+              "id": "structural-organisation-q-neural-2",
+              "question": "What is a common trap associated with Neural?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "neural",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "neural",
+                "conceptSlug": "trap-neural",
+                "microskillSlug": "avoid-neural",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-structural-organisation-4",
+      "title": "Structural Organisation in Animals and Plants - Section 4",
+      "description": "Comprehensive analysis covering frog morphology, frog digestive system, circulatory system and more.",
+      "conceptTags": [
+        "structural-organisation",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-structural-organisation-frog-morphology",
+          "title": "Frog morphology",
+          "conceptTags": [
+            "structural-organisation",
+            "frog-morphology"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Frog morphology"
+          ],
+          "mustKnowFacts": [
+            "Frog morphology is a fundamental subtopic of Structural Organisation in Animals and Plants.",
+            "Crucial to understand the principles governing Frog morphology for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing frog morphology",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of frog morphology",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in frog morphology"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Frog morphology during complex MCQs.",
+            "Failing to apply the correct logic for Frog morphology."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Frog morphology."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Frog morphology."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "structural-organisation-q-frog-morphology-1",
+              "question": "Explain the core concept behind Frog morphology.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "frog-morphology"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "frog-morphology",
+                "conceptSlug": "core-frog-morphology",
+                "microskillSlug": "understand-frog-morphology",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            },
+            {
+              "id": "structural-organisation-q-frog-morphology-2",
+              "question": "What is a common trap associated with Frog morphology?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "frog-morphology",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "frog-morphology",
+                "conceptSlug": "trap-frog-morphology",
+                "microskillSlug": "avoid-frog-morphology",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-structural-organisation-frog-digestive-system",
+          "title": "Frog digestive system",
+          "conceptTags": [
+            "structural-organisation",
+            "frog-digestive-system"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Frog digestive system"
+          ],
+          "mustKnowFacts": [
+            "Frog digestive system is a fundamental subtopic of Structural Organisation in Animals and Plants.",
+            "Crucial to understand the principles governing Frog digestive system for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing frog digestive system",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of frog digestive system",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in frog digestive system"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Frog digestive system during complex MCQs.",
+            "Failing to apply the correct logic for Frog digestive system."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Frog digestive system."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Frog digestive system."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "structural-organisation-q-frog-digestive-system-1",
+              "question": "Explain the core concept behind Frog digestive system.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "frog-digestive-system"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "frog-digestive-system",
+                "conceptSlug": "core-frog-digestive-system",
+                "microskillSlug": "understand-frog-digestive-system",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            },
+            {
+              "id": "structural-organisation-q-frog-digestive-system-2",
+              "question": "What is a common trap associated with Frog digestive system?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "frog-digestive-system",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "frog-digestive-system",
+                "conceptSlug": "trap-frog-digestive-system",
+                "microskillSlug": "avoid-frog-digestive-system",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-structural-organisation-circulatory-system",
+          "title": "Circulatory system",
+          "conceptTags": [
+            "structural-organisation",
+            "circulatory-system"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Circulatory system"
+          ],
+          "mustKnowFacts": [
+            "Circulatory system is a fundamental subtopic of Structural Organisation in Animals and Plants.",
+            "Crucial to understand the principles governing Circulatory system for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing circulatory system",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of circulatory system",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in circulatory system"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Circulatory system during complex MCQs.",
+            "Failing to apply the correct logic for Circulatory system."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Circulatory system."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Circulatory system."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "structural-organisation-q-circulatory-system-1",
+              "question": "Explain the core concept behind Circulatory system.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "circulatory-system"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "circulatory-system",
+                "conceptSlug": "core-circulatory-system",
+                "microskillSlug": "understand-circulatory-system",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            },
+            {
+              "id": "structural-organisation-q-circulatory-system-2",
+              "question": "What is a common trap associated with Circulatory system?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "circulatory-system",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "circulatory-system",
+                "conceptSlug": "trap-circulatory-system",
+                "microskillSlug": "avoid-circulatory-system",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-structural-organisation-respiratory-system",
+          "title": "Respiratory system",
+          "conceptTags": [
+            "structural-organisation",
+            "respiratory-system"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Respiratory system"
+          ],
+          "mustKnowFacts": [
+            "Respiratory system is a fundamental subtopic of Structural Organisation in Animals and Plants.",
+            "Crucial to understand the principles governing Respiratory system for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing respiratory system",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of respiratory system",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in respiratory system"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Respiratory system during complex MCQs.",
+            "Failing to apply the correct logic for Respiratory system."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Respiratory system."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Respiratory system."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "structural-organisation-q-respiratory-system-1",
+              "question": "Explain the core concept behind Respiratory system.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "respiratory-system"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "respiratory-system",
+                "conceptSlug": "core-respiratory-system",
+                "microskillSlug": "understand-respiratory-system",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            },
+            {
+              "id": "structural-organisation-q-respiratory-system-2",
+              "question": "What is a common trap associated with Respiratory system?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "respiratory-system",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "respiratory-system",
+                "conceptSlug": "trap-respiratory-system",
+                "microskillSlug": "avoid-respiratory-system",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-structural-organisation-nervous-system",
+          "title": "Nervous system",
+          "conceptTags": [
+            "structural-organisation",
+            "nervous-system"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Nervous system"
+          ],
+          "mustKnowFacts": [
+            "Nervous system is a fundamental subtopic of Structural Organisation in Animals and Plants.",
+            "Crucial to understand the principles governing Nervous system for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing nervous system",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of nervous system",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in nervous system"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Nervous system during complex MCQs.",
+            "Failing to apply the correct logic for Nervous system."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Nervous system."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Nervous system."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "structural-organisation-q-nervous-system-1",
+              "question": "Explain the core concept behind Nervous system.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "nervous-system"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "nervous-system",
+                "conceptSlug": "core-nervous-system",
+                "microskillSlug": "understand-nervous-system",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            },
+            {
+              "id": "structural-organisation-q-nervous-system-2",
+              "question": "What is a common trap associated with Nervous system?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "nervous-system",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "nervous-system",
+                "conceptSlug": "trap-nervous-system",
+                "microskillSlug": "avoid-nervous-system",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-structural-organisation-reproductive-system",
+          "title": "Reproductive system",
+          "conceptTags": [
+            "structural-organisation",
+            "reproductive-system"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Reproductive system"
+          ],
+          "mustKnowFacts": [
+            "Reproductive system is a fundamental subtopic of Structural Organisation in Animals and Plants.",
+            "Crucial to understand the principles governing Reproductive system for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing reproductive system",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of reproductive system",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in reproductive system"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Reproductive system during complex MCQs.",
+            "Failing to apply the correct logic for Reproductive system."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Reproductive system."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Reproductive system."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "structural-organisation-q-reproductive-system-1",
+              "question": "Explain the core concept behind Reproductive system.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "reproductive-system"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "reproductive-system",
+                "conceptSlug": "core-reproductive-system",
+                "microskillSlug": "understand-reproductive-system",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            },
+            {
+              "id": "structural-organisation-q-reproductive-system-2",
+              "question": "What is a common trap associated with Reproductive system?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "reproductive-system",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "structural-organisation",
+                "subtopicSlug": "reproductive-system",
+                "conceptSlug": "trap-reproductive-system",
+                "microskillSlug": "avoid-reproductive-system",
+                "subject": "Biology",
+                "unitSlug": "structural-organisation",
+                "chapterSlug": "structural-organisation"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

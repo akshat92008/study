@@ -1,0 +1,1526 @@
+{
+  "missions": [
+    {
+      "id": "m-practical-chemistry-1",
+      "title": "Principles Related to Practical Chemistry - Section 1",
+      "description": "Comprehensive analysis covering detection of N/S/halogens, functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine, Mohr salt and more.",
+      "conceptTags": [
+        "practical-chemistry",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-practical-chemistry-detection-of-n-s-halogens",
+          "title": "Detection of N/S/halogens",
+          "conceptTags": [
+            "practical-chemistry",
+            "detection-of-n-s-halogens"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Detection of N/S/halogens"
+          ],
+          "mustKnowFacts": [
+            "Detection of N/S/halogens is a fundamental subtopic of Principles Related to Practical Chemistry.",
+            "Crucial to understand the principles governing Detection of N/S/halogens for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for detection of N/S/halogens",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving detection of N/S/halogens",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Detection of N/S/halogens during complex MCQs.",
+            "Failing to apply the correct logic for Detection of N/S/halogens."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Detection of N/S/halogens."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Detection of N/S/halogens."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "practical-chemistry-q-detection-of-n-s-halogens-1",
+              "question": "Explain the core concept behind Detection of N/S/halogens.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "detection-of-n-s-halogens"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "detection-of-n-s-halogens",
+                "conceptSlug": "core-detection-of-n-s-halogens",
+                "microskillSlug": "understand-detection-of-n-s-halogens",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            },
+            {
+              "id": "practical-chemistry-q-detection-of-n-s-halogens-2",
+              "question": "What is a common trap associated with Detection of N/S/halogens?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "detection-of-n-s-halogens",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "detection-of-n-s-halogens",
+                "conceptSlug": "trap-detection-of-n-s-halogens",
+                "microskillSlug": "avoid-detection-of-n-s-halogens",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-practical-chemistry-functional-group-tests-for-alcohol-phenol-aldehyde-ketone-carboxylic-acid-amine",
+          "title": "Functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine",
+          "conceptTags": [
+            "practical-chemistry",
+            "functional-group-tests-for-alcohol-phenol-aldehyde-ketone-carboxylic-acid-amine"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine"
+          ],
+          "mustKnowFacts": [
+            "Functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine is a fundamental subtopic of Principles Related to Practical Chemistry.",
+            "Crucial to understand the principles governing Functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine during complex MCQs.",
+            "Failing to apply the correct logic for Functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "practical-chemistry-q-functional-group-tests-for-alcohol-phenol-aldehyde-ketone-carboxylic-acid-amine-1",
+              "question": "Explain the core concept behind Functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "functional-group-tests-for-alcohol-phenol-aldehyde-ketone-carboxylic-acid-amine"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "functional-group-tests-for-alcohol-phenol-aldehyde-ketone-carboxylic-acid-amine",
+                "conceptSlug": "core-functional-group-tests-for-alcohol-phenol-aldehyde-ketone-carboxylic-acid-amine",
+                "microskillSlug": "understand-functional-group-tests-for-alcohol-phenol-aldehyde-ketone-carboxylic-acid-amine",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            },
+            {
+              "id": "practical-chemistry-q-functional-group-tests-for-alcohol-phenol-aldehyde-ketone-carboxylic-acid-amine-2",
+              "question": "What is a common trap associated with Functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "functional-group-tests-for-alcohol-phenol-aldehyde-ketone-carboxylic-acid-amine",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "functional-group-tests-for-alcohol-phenol-aldehyde-ketone-carboxylic-acid-amine",
+                "conceptSlug": "trap-functional-group-tests-for-alcohol-phenol-aldehyde-ketone-carboxylic-acid-amine",
+                "microskillSlug": "avoid-functional-group-tests-for-alcohol-phenol-aldehyde-ketone-carboxylic-acid-amine",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-practical-chemistry-mohr-salt",
+          "title": "Mohr salt",
+          "conceptTags": [
+            "practical-chemistry",
+            "mohr-salt"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Mohr salt"
+          ],
+          "mustKnowFacts": [
+            "Mohr salt is a fundamental subtopic of Principles Related to Practical Chemistry.",
+            "Crucial to understand the principles governing Mohr salt for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Mohr salt",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Mohr salt",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Mohr salt during complex MCQs.",
+            "Failing to apply the correct logic for Mohr salt."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Mohr salt."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Mohr salt."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "practical-chemistry-q-mohr-salt-1",
+              "question": "Explain the core concept behind Mohr salt.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "mohr-salt"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "mohr-salt",
+                "conceptSlug": "core-mohr-salt",
+                "microskillSlug": "understand-mohr-salt",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            },
+            {
+              "id": "practical-chemistry-q-mohr-salt-2",
+              "question": "What is a common trap associated with Mohr salt?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "mohr-salt",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "mohr-salt",
+                "conceptSlug": "trap-mohr-salt",
+                "microskillSlug": "avoid-mohr-salt",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-practical-chemistry-potash-alum",
+          "title": "Potash alum",
+          "conceptTags": [
+            "practical-chemistry",
+            "potash-alum"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Potash alum"
+          ],
+          "mustKnowFacts": [
+            "Potash alum is a fundamental subtopic of Principles Related to Practical Chemistry.",
+            "Crucial to understand the principles governing Potash alum for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for potash alum",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving potash alum",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Potash alum during complex MCQs.",
+            "Failing to apply the correct logic for Potash alum."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Potash alum."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Potash alum."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "practical-chemistry-q-potash-alum-1",
+              "question": "Explain the core concept behind Potash alum.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "potash-alum"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "potash-alum",
+                "conceptSlug": "core-potash-alum",
+                "microskillSlug": "understand-potash-alum",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            },
+            {
+              "id": "practical-chemistry-q-potash-alum-2",
+              "question": "What is a common trap associated with Potash alum?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "potash-alum",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "potash-alum",
+                "conceptSlug": "trap-potash-alum",
+                "microskillSlug": "avoid-potash-alum",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-practical-chemistry-2",
+      "title": "Principles Related to Practical Chemistry - Section 2",
+      "description": "Comprehensive analysis covering acetanilide, p-nitroacetanilide, aniline yellow and more.",
+      "conceptTags": [
+        "practical-chemistry",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-practical-chemistry-acetanilide",
+          "title": "Acetanilide",
+          "conceptTags": [
+            "practical-chemistry",
+            "acetanilide"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Acetanilide"
+          ],
+          "mustKnowFacts": [
+            "Acetanilide is a fundamental subtopic of Principles Related to Practical Chemistry.",
+            "Crucial to understand the principles governing Acetanilide for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for acetanilide",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving acetanilide",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Acetanilide during complex MCQs.",
+            "Failing to apply the correct logic for Acetanilide."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Acetanilide."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Acetanilide."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "practical-chemistry-q-acetanilide-1",
+              "question": "Explain the core concept behind Acetanilide.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "acetanilide"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "acetanilide",
+                "conceptSlug": "core-acetanilide",
+                "microskillSlug": "understand-acetanilide",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            },
+            {
+              "id": "practical-chemistry-q-acetanilide-2",
+              "question": "What is a common trap associated with Acetanilide?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "acetanilide",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "acetanilide",
+                "conceptSlug": "trap-acetanilide",
+                "microskillSlug": "avoid-acetanilide",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-practical-chemistry-p-nitroacetanilide",
+          "title": "P-nitroacetanilide",
+          "conceptTags": [
+            "practical-chemistry",
+            "p-nitroacetanilide"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, P-nitroacetanilide"
+          ],
+          "mustKnowFacts": [
+            "P-nitroacetanilide is a fundamental subtopic of Principles Related to Practical Chemistry.",
+            "Crucial to understand the principles governing P-nitroacetanilide for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for p-nitroacetanilide",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving p-nitroacetanilide",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret P-nitroacetanilide during complex MCQs.",
+            "Failing to apply the correct logic for P-nitroacetanilide."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to P-nitroacetanilide."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about P-nitroacetanilide."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "practical-chemistry-q-p-nitroacetanilide-1",
+              "question": "Explain the core concept behind P-nitroacetanilide.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "p-nitroacetanilide"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "p-nitroacetanilide",
+                "conceptSlug": "core-p-nitroacetanilide",
+                "microskillSlug": "understand-p-nitroacetanilide",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            },
+            {
+              "id": "practical-chemistry-q-p-nitroacetanilide-2",
+              "question": "What is a common trap associated with P-nitroacetanilide?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "p-nitroacetanilide",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "p-nitroacetanilide",
+                "conceptSlug": "trap-p-nitroacetanilide",
+                "microskillSlug": "avoid-p-nitroacetanilide",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-practical-chemistry-aniline-yellow",
+          "title": "Aniline yellow",
+          "conceptTags": [
+            "practical-chemistry",
+            "aniline-yellow"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Aniline yellow"
+          ],
+          "mustKnowFacts": [
+            "Aniline yellow is a fundamental subtopic of Principles Related to Practical Chemistry.",
+            "Crucial to understand the principles governing Aniline yellow for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for aniline yellow",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving aniline yellow",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Aniline yellow during complex MCQs.",
+            "Failing to apply the correct logic for Aniline yellow."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Aniline yellow."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Aniline yellow."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "practical-chemistry-q-aniline-yellow-1",
+              "question": "Explain the core concept behind Aniline yellow.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "aniline-yellow"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "aniline-yellow",
+                "conceptSlug": "core-aniline-yellow",
+                "microskillSlug": "understand-aniline-yellow",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            },
+            {
+              "id": "practical-chemistry-q-aniline-yellow-2",
+              "question": "What is a common trap associated with Aniline yellow?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "aniline-yellow",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "aniline-yellow",
+                "conceptSlug": "trap-aniline-yellow",
+                "microskillSlug": "avoid-aniline-yellow",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-practical-chemistry-iodoform",
+          "title": "Iodoform",
+          "conceptTags": [
+            "practical-chemistry",
+            "iodoform"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Iodoform"
+          ],
+          "mustKnowFacts": [
+            "Iodoform is a fundamental subtopic of Principles Related to Practical Chemistry.",
+            "Crucial to understand the principles governing Iodoform for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for iodoform",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving iodoform",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Iodoform during complex MCQs.",
+            "Failing to apply the correct logic for Iodoform."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Iodoform."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Iodoform."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "practical-chemistry-q-iodoform-1",
+              "question": "Explain the core concept behind Iodoform.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "iodoform"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "iodoform",
+                "conceptSlug": "core-iodoform",
+                "microskillSlug": "understand-iodoform",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            },
+            {
+              "id": "practical-chemistry-q-iodoform-2",
+              "question": "What is a common trap associated with Iodoform?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "iodoform",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "iodoform",
+                "conceptSlug": "trap-iodoform",
+                "microskillSlug": "avoid-iodoform",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-practical-chemistry-3",
+      "title": "Principles Related to Practical Chemistry - Section 3",
+      "description": "Comprehensive analysis covering acid-base titration, KMnO4 titration, salt analysis cations/anions and more.",
+      "conceptTags": [
+        "practical-chemistry",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-practical-chemistry-acid-base-titration",
+          "title": "Acid-base titration",
+          "conceptTags": [
+            "practical-chemistry",
+            "acid-base-titration"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Acid-base titration"
+          ],
+          "mustKnowFacts": [
+            "Acid-base titration is a fundamental subtopic of Principles Related to Practical Chemistry.",
+            "Crucial to understand the principles governing Acid-base titration for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for acid-base titration",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving acid-base titration",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Acid-base titration during complex MCQs.",
+            "Failing to apply the correct logic for Acid-base titration."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Acid-base titration."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Acid-base titration."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "practical-chemistry-q-acid-base-titration-1",
+              "question": "Explain the core concept behind Acid-base titration.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "acid-base-titration"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "acid-base-titration",
+                "conceptSlug": "core-acid-base-titration",
+                "microskillSlug": "understand-acid-base-titration",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            },
+            {
+              "id": "practical-chemistry-q-acid-base-titration-2",
+              "question": "What is a common trap associated with Acid-base titration?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "acid-base-titration",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "acid-base-titration",
+                "conceptSlug": "trap-acid-base-titration",
+                "microskillSlug": "avoid-acid-base-titration",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-practical-chemistry-kmno4-titration",
+          "title": "KMnO4 titration",
+          "conceptTags": [
+            "practical-chemistry",
+            "kmno4-titration"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, KMnO4 titration"
+          ],
+          "mustKnowFacts": [
+            "KMnO4 titration is a fundamental subtopic of Principles Related to Practical Chemistry.",
+            "Crucial to understand the principles governing KMnO4 titration for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for KMnO4 titration",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving KMnO4 titration",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret KMnO4 titration during complex MCQs.",
+            "Failing to apply the correct logic for KMnO4 titration."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to KMnO4 titration."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about KMnO4 titration."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "practical-chemistry-q-kmno4-titration-1",
+              "question": "Explain the core concept behind KMnO4 titration.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "kmno4-titration"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "kmno4-titration",
+                "conceptSlug": "core-kmno4-titration",
+                "microskillSlug": "understand-kmno4-titration",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            },
+            {
+              "id": "practical-chemistry-q-kmno4-titration-2",
+              "question": "What is a common trap associated with KMnO4 titration?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "kmno4-titration",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "kmno4-titration",
+                "conceptSlug": "trap-kmno4-titration",
+                "microskillSlug": "avoid-kmno4-titration",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-practical-chemistry-salt-analysis-cations-anions",
+          "title": "Salt analysis cations/anions",
+          "conceptTags": [
+            "practical-chemistry",
+            "salt-analysis-cations-anions"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Salt analysis cations/anions"
+          ],
+          "mustKnowFacts": [
+            "Salt analysis cations/anions is a fundamental subtopic of Principles Related to Practical Chemistry.",
+            "Crucial to understand the principles governing Salt analysis cations/anions for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for salt analysis cations/anions",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving salt analysis cations/anions",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Salt analysis cations/anions during complex MCQs.",
+            "Failing to apply the correct logic for Salt analysis cations/anions."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Salt analysis cations/anions."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Salt analysis cations/anions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "practical-chemistry-q-salt-analysis-cations-anions-1",
+              "question": "Explain the core concept behind Salt analysis cations/anions.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "salt-analysis-cations-anions"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "salt-analysis-cations-anions",
+                "conceptSlug": "core-salt-analysis-cations-anions",
+                "microskillSlug": "understand-salt-analysis-cations-anions",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            },
+            {
+              "id": "practical-chemistry-q-salt-analysis-cations-anions-2",
+              "question": "What is a common trap associated with Salt analysis cations/anions?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "salt-analysis-cations-anions",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "salt-analysis-cations-anions",
+                "conceptSlug": "trap-salt-analysis-cations-anions",
+                "microskillSlug": "avoid-salt-analysis-cations-anions",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-practical-chemistry-enthalpy-experiments",
+          "title": "Enthalpy experiments",
+          "conceptTags": [
+            "practical-chemistry",
+            "enthalpy-experiments"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Enthalpy experiments"
+          ],
+          "mustKnowFacts": [
+            "Enthalpy experiments is a fundamental subtopic of Principles Related to Practical Chemistry.",
+            "Crucial to understand the principles governing Enthalpy experiments for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for enthalpy experiments",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving enthalpy experiments",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Enthalpy experiments during complex MCQs.",
+            "Failing to apply the correct logic for Enthalpy experiments."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Enthalpy experiments."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Enthalpy experiments."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "practical-chemistry-q-enthalpy-experiments-1",
+              "question": "Explain the core concept behind Enthalpy experiments.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "enthalpy-experiments"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "enthalpy-experiments",
+                "conceptSlug": "core-enthalpy-experiments",
+                "microskillSlug": "understand-enthalpy-experiments",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            },
+            {
+              "id": "practical-chemistry-q-enthalpy-experiments-2",
+              "question": "What is a common trap associated with Enthalpy experiments?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "enthalpy-experiments",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "enthalpy-experiments",
+                "conceptSlug": "trap-enthalpy-experiments",
+                "microskillSlug": "avoid-enthalpy-experiments",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-practical-chemistry-4",
+      "title": "Principles Related to Practical Chemistry - Section 4",
+      "description": "Comprehensive analysis covering sols, kinetic experiment and more.",
+      "conceptTags": [
+        "practical-chemistry",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-practical-chemistry-sols",
+          "title": "Sols",
+          "conceptTags": [
+            "practical-chemistry",
+            "sols"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Sols"
+          ],
+          "mustKnowFacts": [
+            "Sols is a fundamental subtopic of Principles Related to Practical Chemistry.",
+            "Crucial to understand the principles governing Sols for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for sols",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving sols",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Sols during complex MCQs.",
+            "Failing to apply the correct logic for Sols."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Sols."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Sols."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "practical-chemistry-q-sols-1",
+              "question": "Explain the core concept behind Sols.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "sols"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "sols",
+                "conceptSlug": "core-sols",
+                "microskillSlug": "understand-sols",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            },
+            {
+              "id": "practical-chemistry-q-sols-2",
+              "question": "What is a common trap associated with Sols?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "sols",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "sols",
+                "conceptSlug": "trap-sols",
+                "microskillSlug": "avoid-sols",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-practical-chemistry-kinetic-experiment",
+          "title": "Kinetic experiment",
+          "conceptTags": [
+            "practical-chemistry",
+            "kinetic-experiment"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Kinetic experiment"
+          ],
+          "mustKnowFacts": [
+            "Kinetic experiment is a fundamental subtopic of Principles Related to Practical Chemistry.",
+            "Crucial to understand the principles governing Kinetic experiment for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for kinetic experiment",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving kinetic experiment",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Kinetic experiment during complex MCQs.",
+            "Failing to apply the correct logic for Kinetic experiment."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Kinetic experiment."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Kinetic experiment."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "practical-chemistry-q-kinetic-experiment-1",
+              "question": "Explain the core concept behind Kinetic experiment.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "kinetic-experiment"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "kinetic-experiment",
+                "conceptSlug": "core-kinetic-experiment",
+                "microskillSlug": "understand-kinetic-experiment",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            },
+            {
+              "id": "practical-chemistry-q-kinetic-experiment-2",
+              "question": "What is a common trap associated with Kinetic experiment?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "kinetic-experiment",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "kinetic-experiment",
+                "conceptSlug": "trap-kinetic-experiment",
+                "microskillSlug": "avoid-kinetic-experiment",
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2261 @@
+{
+  "missions": [
+    {
+      "id": "m-chemical-bonding-1",
+      "title": "Chemical Bonding and Molecular Structure - Section 1",
+      "description": "Comprehensive analysis covering Lewis structures, octet rule exceptions, ionic bond and more.",
+      "conceptTags": [
+        "chemical-bonding",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-chemical-bonding-lewis-structures",
+          "title": "Lewis structures",
+          "conceptTags": [
+            "chemical-bonding",
+            "lewis-structures"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Lewis structures"
+          ],
+          "mustKnowFacts": [
+            "Lewis structures is a fundamental subtopic of Chemical Bonding and Molecular Structure.",
+            "Crucial to understand the principles governing Lewis structures for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Lewis structures",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Lewis structures",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Lewis structures during complex MCQs.",
+            "Failing to apply the correct logic for Lewis structures."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Lewis structures."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Lewis structures."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-bonding-q-lewis-structures-1",
+              "question": "Explain the core concept behind Lewis structures.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "lewis-structures"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "lewis-structures",
+                "conceptSlug": "core-lewis-structures",
+                "microskillSlug": "understand-lewis-structures",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            },
+            {
+              "id": "chemical-bonding-q-lewis-structures-2",
+              "question": "What is a common trap associated with Lewis structures?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "lewis-structures",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "lewis-structures",
+                "conceptSlug": "trap-lewis-structures",
+                "microskillSlug": "avoid-lewis-structures",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-chemical-bonding-octet-rule-exceptions",
+          "title": "Octet rule exceptions",
+          "conceptTags": [
+            "chemical-bonding",
+            "octet-rule-exceptions"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Octet rule exceptions"
+          ],
+          "mustKnowFacts": [
+            "Octet rule exceptions is a fundamental subtopic of Chemical Bonding and Molecular Structure.",
+            "Crucial to understand the principles governing Octet rule exceptions for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for octet rule exceptions",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving octet rule exceptions",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Octet rule exceptions during complex MCQs.",
+            "Failing to apply the correct logic for Octet rule exceptions."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Octet rule exceptions."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Octet rule exceptions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-bonding-q-octet-rule-exceptions-1",
+              "question": "Explain the core concept behind Octet rule exceptions.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "octet-rule-exceptions"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "octet-rule-exceptions",
+                "conceptSlug": "core-octet-rule-exceptions",
+                "microskillSlug": "understand-octet-rule-exceptions",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            },
+            {
+              "id": "chemical-bonding-q-octet-rule-exceptions-2",
+              "question": "What is a common trap associated with Octet rule exceptions?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "octet-rule-exceptions",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "octet-rule-exceptions",
+                "conceptSlug": "trap-octet-rule-exceptions",
+                "microskillSlug": "avoid-octet-rule-exceptions",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-chemical-bonding-ionic-bond",
+          "title": "Ionic bond",
+          "conceptTags": [
+            "chemical-bonding",
+            "ionic-bond"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Ionic bond"
+          ],
+          "mustKnowFacts": [
+            "Ionic bond is a fundamental subtopic of Chemical Bonding and Molecular Structure.",
+            "Crucial to understand the principles governing Ionic bond for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for ionic bond",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving ionic bond",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Ionic bond during complex MCQs.",
+            "Failing to apply the correct logic for Ionic bond."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Ionic bond."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Ionic bond."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-bonding-q-ionic-bond-1",
+              "question": "Explain the core concept behind Ionic bond.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "ionic-bond"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "ionic-bond",
+                "conceptSlug": "core-ionic-bond",
+                "microskillSlug": "understand-ionic-bond",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            },
+            {
+              "id": "chemical-bonding-q-ionic-bond-2",
+              "question": "What is a common trap associated with Ionic bond?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "ionic-bond",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "ionic-bond",
+                "conceptSlug": "trap-ionic-bond",
+                "microskillSlug": "avoid-ionic-bond",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-chemical-bonding-lattice-enthalpy",
+          "title": "Lattice enthalpy",
+          "conceptTags": [
+            "chemical-bonding",
+            "lattice-enthalpy"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Lattice enthalpy"
+          ],
+          "mustKnowFacts": [
+            "Lattice enthalpy is a fundamental subtopic of Chemical Bonding and Molecular Structure.",
+            "Crucial to understand the principles governing Lattice enthalpy for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for lattice enthalpy",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving lattice enthalpy",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Lattice enthalpy during complex MCQs.",
+            "Failing to apply the correct logic for Lattice enthalpy."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Lattice enthalpy."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Lattice enthalpy."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-bonding-q-lattice-enthalpy-1",
+              "question": "Explain the core concept behind Lattice enthalpy.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "lattice-enthalpy"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "lattice-enthalpy",
+                "conceptSlug": "core-lattice-enthalpy",
+                "microskillSlug": "understand-lattice-enthalpy",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            },
+            {
+              "id": "chemical-bonding-q-lattice-enthalpy-2",
+              "question": "What is a common trap associated with Lattice enthalpy?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "lattice-enthalpy",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "lattice-enthalpy",
+                "conceptSlug": "trap-lattice-enthalpy",
+                "microskillSlug": "avoid-lattice-enthalpy",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-chemical-bonding-covalent-bond",
+          "title": "Covalent bond",
+          "conceptTags": [
+            "chemical-bonding",
+            "covalent-bond"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Covalent bond"
+          ],
+          "mustKnowFacts": [
+            "Covalent bond is a fundamental subtopic of Chemical Bonding and Molecular Structure.",
+            "Crucial to understand the principles governing Covalent bond for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for covalent bond",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving covalent bond",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Covalent bond during complex MCQs.",
+            "Failing to apply the correct logic for Covalent bond."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Covalent bond."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Covalent bond."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-bonding-q-covalent-bond-1",
+              "question": "Explain the core concept behind Covalent bond.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "covalent-bond"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "covalent-bond",
+                "conceptSlug": "core-covalent-bond",
+                "microskillSlug": "understand-covalent-bond",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            },
+            {
+              "id": "chemical-bonding-q-covalent-bond-2",
+              "question": "What is a common trap associated with Covalent bond?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "covalent-bond",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "covalent-bond",
+                "conceptSlug": "trap-covalent-bond",
+                "microskillSlug": "avoid-covalent-bond",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-chemical-bonding-electronegativity",
+          "title": "Electronegativity",
+          "conceptTags": [
+            "chemical-bonding",
+            "electronegativity"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Electronegativity"
+          ],
+          "mustKnowFacts": [
+            "Electronegativity is a fundamental subtopic of Chemical Bonding and Molecular Structure.",
+            "Crucial to understand the principles governing Electronegativity for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for electronegativity",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving electronegativity",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Electronegativity during complex MCQs.",
+            "Failing to apply the correct logic for Electronegativity."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Electronegativity."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Electronegativity."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-bonding-q-electronegativity-1",
+              "question": "Explain the core concept behind Electronegativity.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "electronegativity"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "electronegativity",
+                "conceptSlug": "core-electronegativity",
+                "microskillSlug": "understand-electronegativity",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            },
+            {
+              "id": "chemical-bonding-q-electronegativity-2",
+              "question": "What is a common trap associated with Electronegativity?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "electronegativity",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "electronegativity",
+                "conceptSlug": "trap-electronegativity",
+                "microskillSlug": "avoid-electronegativity",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-chemical-bonding-2",
+      "title": "Chemical Bonding and Molecular Structure - Section 2",
+      "description": "Comprehensive analysis covering Fajan rule, dipole moment, VSEPR shapes and more.",
+      "conceptTags": [
+        "chemical-bonding",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-chemical-bonding-fajan-rule",
+          "title": "Fajan rule",
+          "conceptTags": [
+            "chemical-bonding",
+            "fajan-rule"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Fajan rule"
+          ],
+          "mustKnowFacts": [
+            "Fajan rule is a fundamental subtopic of Chemical Bonding and Molecular Structure.",
+            "Crucial to understand the principles governing Fajan rule for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Fajan rule",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Fajan rule",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Fajan rule during complex MCQs.",
+            "Failing to apply the correct logic for Fajan rule."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Fajan rule."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Fajan rule."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-bonding-q-fajan-rule-1",
+              "question": "Explain the core concept behind Fajan rule.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "fajan-rule"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "fajan-rule",
+                "conceptSlug": "core-fajan-rule",
+                "microskillSlug": "understand-fajan-rule",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            },
+            {
+              "id": "chemical-bonding-q-fajan-rule-2",
+              "question": "What is a common trap associated with Fajan rule?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "fajan-rule",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "fajan-rule",
+                "conceptSlug": "trap-fajan-rule",
+                "microskillSlug": "avoid-fajan-rule",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-chemical-bonding-dipole-moment",
+          "title": "Dipole moment",
+          "conceptTags": [
+            "chemical-bonding",
+            "dipole-moment"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Dipole moment"
+          ],
+          "mustKnowFacts": [
+            "Dipole moment is a fundamental subtopic of Chemical Bonding and Molecular Structure.",
+            "Crucial to understand the principles governing Dipole moment for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for dipole moment",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving dipole moment",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Dipole moment during complex MCQs.",
+            "Failing to apply the correct logic for Dipole moment."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Dipole moment."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Dipole moment."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-bonding-q-dipole-moment-1",
+              "question": "Explain the core concept behind Dipole moment.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "dipole-moment"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "dipole-moment",
+                "conceptSlug": "core-dipole-moment",
+                "microskillSlug": "understand-dipole-moment",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            },
+            {
+              "id": "chemical-bonding-q-dipole-moment-2",
+              "question": "What is a common trap associated with Dipole moment?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "dipole-moment",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "dipole-moment",
+                "conceptSlug": "trap-dipole-moment",
+                "microskillSlug": "avoid-dipole-moment",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-chemical-bonding-vsepr-shapes",
+          "title": "VSEPR shapes",
+          "conceptTags": [
+            "chemical-bonding",
+            "vsepr-shapes"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, VSEPR shapes"
+          ],
+          "mustKnowFacts": [
+            "VSEPR shapes is a fundamental subtopic of Chemical Bonding and Molecular Structure.",
+            "Crucial to understand the principles governing VSEPR shapes for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for VSEPR shapes",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving VSEPR shapes",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret VSEPR shapes during complex MCQs.",
+            "Failing to apply the correct logic for VSEPR shapes."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to VSEPR shapes."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about VSEPR shapes."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-bonding-q-vsepr-shapes-1",
+              "question": "Explain the core concept behind VSEPR shapes.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "vsepr-shapes"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "vsepr-shapes",
+                "conceptSlug": "core-vsepr-shapes",
+                "microskillSlug": "understand-vsepr-shapes",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            },
+            {
+              "id": "chemical-bonding-q-vsepr-shapes-2",
+              "question": "What is a common trap associated with VSEPR shapes?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "vsepr-shapes",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "vsepr-shapes",
+                "conceptSlug": "trap-vsepr-shapes",
+                "microskillSlug": "avoid-vsepr-shapes",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-chemical-bonding-hybridisation",
+          "title": "Hybridisation",
+          "conceptTags": [
+            "chemical-bonding",
+            "hybridisation"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Hybridisation"
+          ],
+          "mustKnowFacts": [
+            "Hybridisation is a fundamental subtopic of Chemical Bonding and Molecular Structure.",
+            "Crucial to understand the principles governing Hybridisation for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for hybridisation",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving hybridisation",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Hybridisation during complex MCQs.",
+            "Failing to apply the correct logic for Hybridisation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Hybridisation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Hybridisation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-bonding-q-hybridisation-1",
+              "question": "Explain the core concept behind Hybridisation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "hybridisation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "hybridisation",
+                "conceptSlug": "core-hybridisation",
+                "microskillSlug": "understand-hybridisation",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            },
+            {
+              "id": "chemical-bonding-q-hybridisation-2",
+              "question": "What is a common trap associated with Hybridisation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "hybridisation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "hybridisation",
+                "conceptSlug": "trap-hybridisation",
+                "microskillSlug": "avoid-hybridisation",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-chemical-bonding-resonance",
+          "title": "Resonance",
+          "conceptTags": [
+            "chemical-bonding",
+            "resonance"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Resonance"
+          ],
+          "mustKnowFacts": [
+            "Resonance is a fundamental subtopic of Chemical Bonding and Molecular Structure.",
+            "Crucial to understand the principles governing Resonance for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for resonance",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving resonance",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Resonance during complex MCQs.",
+            "Failing to apply the correct logic for Resonance."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Resonance."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Resonance."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-bonding-q-resonance-1",
+              "question": "Explain the core concept behind Resonance.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "resonance"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "resonance",
+                "conceptSlug": "core-resonance",
+                "microskillSlug": "understand-resonance",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            },
+            {
+              "id": "chemical-bonding-q-resonance-2",
+              "question": "What is a common trap associated with Resonance?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "resonance",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "resonance",
+                "conceptSlug": "trap-resonance",
+                "microskillSlug": "avoid-resonance",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-chemical-bonding-valence-bond-theory",
+          "title": "Valence bond theory",
+          "conceptTags": [
+            "chemical-bonding",
+            "valence-bond-theory"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Valence bond theory"
+          ],
+          "mustKnowFacts": [
+            "Valence bond theory is a fundamental subtopic of Chemical Bonding and Molecular Structure.",
+            "Crucial to understand the principles governing Valence bond theory for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for valence bond theory",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving valence bond theory",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Valence bond theory during complex MCQs.",
+            "Failing to apply the correct logic for Valence bond theory."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Valence bond theory."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Valence bond theory."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-bonding-q-valence-bond-theory-1",
+              "question": "Explain the core concept behind Valence bond theory.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "valence-bond-theory"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "valence-bond-theory",
+                "conceptSlug": "core-valence-bond-theory",
+                "microskillSlug": "understand-valence-bond-theory",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            },
+            {
+              "id": "chemical-bonding-q-valence-bond-theory-2",
+              "question": "What is a common trap associated with Valence bond theory?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "valence-bond-theory",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "valence-bond-theory",
+                "conceptSlug": "trap-valence-bond-theory",
+                "microskillSlug": "avoid-valence-bond-theory",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-chemical-bonding-3",
+      "title": "Chemical Bonding and Molecular Structure - Section 3",
+      "description": "Comprehensive analysis covering sigma/pi bonds, MOT, bonding/antibonding orbitals and more.",
+      "conceptTags": [
+        "chemical-bonding",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-chemical-bonding-sigma-pi-bonds",
+          "title": "Sigma/pi bonds",
+          "conceptTags": [
+            "chemical-bonding",
+            "sigma-pi-bonds"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Sigma/pi bonds"
+          ],
+          "mustKnowFacts": [
+            "Sigma/pi bonds is a fundamental subtopic of Chemical Bonding and Molecular Structure.",
+            "Crucial to understand the principles governing Sigma/pi bonds for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for sigma/pi bonds",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving sigma/pi bonds",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Sigma/pi bonds during complex MCQs.",
+            "Failing to apply the correct logic for Sigma/pi bonds."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Sigma/pi bonds."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Sigma/pi bonds."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-bonding-q-sigma-pi-bonds-1",
+              "question": "Explain the core concept behind Sigma/pi bonds.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "sigma-pi-bonds"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "sigma-pi-bonds",
+                "conceptSlug": "core-sigma-pi-bonds",
+                "microskillSlug": "understand-sigma-pi-bonds",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            },
+            {
+              "id": "chemical-bonding-q-sigma-pi-bonds-2",
+              "question": "What is a common trap associated with Sigma/pi bonds?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "sigma-pi-bonds",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "sigma-pi-bonds",
+                "conceptSlug": "trap-sigma-pi-bonds",
+                "microskillSlug": "avoid-sigma-pi-bonds",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-chemical-bonding-mot",
+          "title": "MOT",
+          "conceptTags": [
+            "chemical-bonding",
+            "mot"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, MOT"
+          ],
+          "mustKnowFacts": [
+            "MOT is a fundamental subtopic of Chemical Bonding and Molecular Structure.",
+            "Crucial to understand the principles governing MOT for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for MOT",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving MOT",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret MOT during complex MCQs.",
+            "Failing to apply the correct logic for MOT."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to MOT."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about MOT."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-bonding-q-mot-1",
+              "question": "Explain the core concept behind MOT.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "mot"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "mot",
+                "conceptSlug": "core-mot",
+                "microskillSlug": "understand-mot",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            },
+            {
+              "id": "chemical-bonding-q-mot-2",
+              "question": "What is a common trap associated with MOT?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "mot",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "mot",
+                "conceptSlug": "trap-mot",
+                "microskillSlug": "avoid-mot",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-chemical-bonding-bonding-antibonding-orbitals",
+          "title": "Bonding/antibonding orbitals",
+          "conceptTags": [
+            "chemical-bonding",
+            "bonding-antibonding-orbitals"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Bonding/antibonding orbitals"
+          ],
+          "mustKnowFacts": [
+            "Bonding/antibonding orbitals is a fundamental subtopic of Chemical Bonding and Molecular Structure.",
+            "Crucial to understand the principles governing Bonding/antibonding orbitals for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for bonding/antibonding orbitals",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving bonding/antibonding orbitals",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Bonding/antibonding orbitals during complex MCQs.",
+            "Failing to apply the correct logic for Bonding/antibonding orbitals."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Bonding/antibonding orbitals."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Bonding/antibonding orbitals."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-bonding-q-bonding-antibonding-orbitals-1",
+              "question": "Explain the core concept behind Bonding/antibonding orbitals.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "bonding-antibonding-orbitals"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "bonding-antibonding-orbitals",
+                "conceptSlug": "core-bonding-antibonding-orbitals",
+                "microskillSlug": "understand-bonding-antibonding-orbitals",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            },
+            {
+              "id": "chemical-bonding-q-bonding-antibonding-orbitals-2",
+              "question": "What is a common trap associated with Bonding/antibonding orbitals?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "bonding-antibonding-orbitals",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "bonding-antibonding-orbitals",
+                "conceptSlug": "trap-bonding-antibonding-orbitals",
+                "microskillSlug": "avoid-bonding-antibonding-orbitals",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-chemical-bonding-bond-order",
+          "title": "Bond order",
+          "conceptTags": [
+            "chemical-bonding",
+            "bond-order"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Bond order"
+          ],
+          "mustKnowFacts": [
+            "Bond order is a fundamental subtopic of Chemical Bonding and Molecular Structure.",
+            "Crucial to understand the principles governing Bond order for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for bond order",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving bond order",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Bond order during complex MCQs.",
+            "Failing to apply the correct logic for Bond order."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Bond order."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Bond order."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-bonding-q-bond-order-1",
+              "question": "Explain the core concept behind Bond order.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "bond-order"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "bond-order",
+                "conceptSlug": "core-bond-order",
+                "microskillSlug": "understand-bond-order",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            },
+            {
+              "id": "chemical-bonding-q-bond-order-2",
+              "question": "What is a common trap associated with Bond order?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "bond-order",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "bond-order",
+                "conceptSlug": "trap-bond-order",
+                "microskillSlug": "avoid-bond-order",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-chemical-bonding-magnetic-character",
+          "title": "Magnetic character",
+          "conceptTags": [
+            "chemical-bonding",
+            "magnetic-character"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Magnetic character"
+          ],
+          "mustKnowFacts": [
+            "Magnetic character is a fundamental subtopic of Chemical Bonding and Molecular Structure.",
+            "Crucial to understand the principles governing Magnetic character for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for magnetic character",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving magnetic character",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Magnetic character during complex MCQs.",
+            "Failing to apply the correct logic for Magnetic character."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Magnetic character."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Magnetic character."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-bonding-q-magnetic-character-1",
+              "question": "Explain the core concept behind Magnetic character.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "magnetic-character"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "magnetic-character",
+                "conceptSlug": "core-magnetic-character",
+                "microskillSlug": "understand-magnetic-character",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            },
+            {
+              "id": "chemical-bonding-q-magnetic-character-2",
+              "question": "What is a common trap associated with Magnetic character?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "magnetic-character",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "magnetic-character",
+                "conceptSlug": "trap-magnetic-character",
+                "microskillSlug": "avoid-magnetic-character",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-chemical-bonding-bond-length",
+          "title": "Bond length",
+          "conceptTags": [
+            "chemical-bonding",
+            "bond-length"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Bond length"
+          ],
+          "mustKnowFacts": [
+            "Bond length is a fundamental subtopic of Chemical Bonding and Molecular Structure.",
+            "Crucial to understand the principles governing Bond length for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for bond length",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving bond length",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Bond length during complex MCQs.",
+            "Failing to apply the correct logic for Bond length."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Bond length."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Bond length."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-bonding-q-bond-length-1",
+              "question": "Explain the core concept behind Bond length.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "bond-length"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "bond-length",
+                "conceptSlug": "core-bond-length",
+                "microskillSlug": "understand-bond-length",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            },
+            {
+              "id": "chemical-bonding-q-bond-length-2",
+              "question": "What is a common trap associated with Bond length?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "bond-length",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "bond-length",
+                "conceptSlug": "trap-bond-length",
+                "microskillSlug": "avoid-bond-length",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-chemical-bonding-4",
+      "title": "Chemical Bonding and Molecular Structure - Section 4",
+      "description": "Comprehensive analysis covering bond energy, metallic bonding, hydrogen bonding and more.",
+      "conceptTags": [
+        "chemical-bonding",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-chemical-bonding-bond-energy",
+          "title": "Bond energy",
+          "conceptTags": [
+            "chemical-bonding",
+            "bond-energy"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Bond energy"
+          ],
+          "mustKnowFacts": [
+            "Bond energy is a fundamental subtopic of Chemical Bonding and Molecular Structure.",
+            "Crucial to understand the principles governing Bond energy for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for bond energy",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving bond energy",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Bond energy during complex MCQs.",
+            "Failing to apply the correct logic for Bond energy."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Bond energy."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Bond energy."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-bonding-q-bond-energy-1",
+              "question": "Explain the core concept behind Bond energy.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "bond-energy"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "bond-energy",
+                "conceptSlug": "core-bond-energy",
+                "microskillSlug": "understand-bond-energy",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            },
+            {
+              "id": "chemical-bonding-q-bond-energy-2",
+              "question": "What is a common trap associated with Bond energy?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "bond-energy",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "bond-energy",
+                "conceptSlug": "trap-bond-energy",
+                "microskillSlug": "avoid-bond-energy",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-chemical-bonding-metallic-bonding",
+          "title": "Metallic bonding",
+          "conceptTags": [
+            "chemical-bonding",
+            "metallic-bonding"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Metallic bonding"
+          ],
+          "mustKnowFacts": [
+            "Metallic bonding is a fundamental subtopic of Chemical Bonding and Molecular Structure.",
+            "Crucial to understand the principles governing Metallic bonding for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for metallic bonding",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving metallic bonding",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Metallic bonding during complex MCQs.",
+            "Failing to apply the correct logic for Metallic bonding."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Metallic bonding."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Metallic bonding."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-bonding-q-metallic-bonding-1",
+              "question": "Explain the core concept behind Metallic bonding.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "metallic-bonding"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "metallic-bonding",
+                "conceptSlug": "core-metallic-bonding",
+                "microskillSlug": "understand-metallic-bonding",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            },
+            {
+              "id": "chemical-bonding-q-metallic-bonding-2",
+              "question": "What is a common trap associated with Metallic bonding?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "metallic-bonding",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "metallic-bonding",
+                "conceptSlug": "trap-metallic-bonding",
+                "microskillSlug": "avoid-metallic-bonding",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-chemical-bonding-hydrogen-bonding",
+          "title": "Hydrogen bonding",
+          "conceptTags": [
+            "chemical-bonding",
+            "hydrogen-bonding"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Hydrogen bonding"
+          ],
+          "mustKnowFacts": [
+            "Hydrogen bonding is a fundamental subtopic of Chemical Bonding and Molecular Structure.",
+            "Crucial to understand the principles governing Hydrogen bonding for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for hydrogen bonding",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving hydrogen bonding",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Hydrogen bonding during complex MCQs.",
+            "Failing to apply the correct logic for Hydrogen bonding."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Hydrogen bonding."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Hydrogen bonding."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-bonding-q-hydrogen-bonding-1",
+              "question": "Explain the core concept behind Hydrogen bonding.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "hydrogen-bonding"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "hydrogen-bonding",
+                "conceptSlug": "core-hydrogen-bonding",
+                "microskillSlug": "understand-hydrogen-bonding",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            },
+            {
+              "id": "chemical-bonding-q-hydrogen-bonding-2",
+              "question": "What is a common trap associated with Hydrogen bonding?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "hydrogen-bonding",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "chemical-bonding",
+                "subtopicSlug": "hydrogen-bonding",
+                "conceptSlug": "trap-hydrogen-bonding",
+                "microskillSlug": "avoid-hydrogen-bonding",
+                "subject": "Chemistry",
+                "unitSlug": "chemical-bonding",
+                "chapterSlug": "chemical-bonding"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

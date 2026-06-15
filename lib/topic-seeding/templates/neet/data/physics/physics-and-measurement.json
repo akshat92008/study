@@ -1,0 +1,1967 @@
+{
+  "missions": [
+    {
+      "id": "m-physics-and-measurement-1",
+      "title": "Physics and Measurement - Section 1",
+      "description": "Comprehensive analysis covering SI units, fundamental units, derived units and more.",
+      "conceptTags": [
+        "physics-and-measurement",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-physics-and-measurement-si-units",
+          "title": "SI units",
+          "conceptTags": [
+            "physics-and-measurement",
+            "si-units"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, SI units"
+          ],
+          "mustKnowFacts": [
+            "SI units is a fundamental subtopic of Physics and Measurement.",
+            "Crucial to understand the principles governing SI units for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for SI units",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret SI units during complex MCQs.",
+            "Failing to apply the correct logic for SI units."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to SI units."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about SI units."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "physics-and-measurement-q-si-units-1",
+              "question": "Explain the core concept behind SI units.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "si-units"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "si-units",
+                "conceptSlug": "core-si-units",
+                "microskillSlug": "understand-si-units",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            },
+            {
+              "id": "physics-and-measurement-q-si-units-2",
+              "question": "What is a common trap associated with SI units?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "si-units",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "si-units",
+                "conceptSlug": "trap-si-units",
+                "microskillSlug": "avoid-si-units",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-physics-and-measurement-fundamental-units",
+          "title": "Fundamental units",
+          "conceptTags": [
+            "physics-and-measurement",
+            "fundamental-units"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Fundamental units"
+          ],
+          "mustKnowFacts": [
+            "Fundamental units is a fundamental subtopic of Physics and Measurement.",
+            "Crucial to understand the principles governing Fundamental units for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for fundamental units",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Fundamental units during complex MCQs.",
+            "Failing to apply the correct logic for Fundamental units."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Fundamental units."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Fundamental units."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "physics-and-measurement-q-fundamental-units-1",
+              "question": "Explain the core concept behind Fundamental units.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "fundamental-units"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "fundamental-units",
+                "conceptSlug": "core-fundamental-units",
+                "microskillSlug": "understand-fundamental-units",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            },
+            {
+              "id": "physics-and-measurement-q-fundamental-units-2",
+              "question": "What is a common trap associated with Fundamental units?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "fundamental-units",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "fundamental-units",
+                "conceptSlug": "trap-fundamental-units",
+                "microskillSlug": "avoid-fundamental-units",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-physics-and-measurement-derived-units",
+          "title": "Derived units",
+          "conceptTags": [
+            "physics-and-measurement",
+            "derived-units"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Derived units"
+          ],
+          "mustKnowFacts": [
+            "Derived units is a fundamental subtopic of Physics and Measurement.",
+            "Crucial to understand the principles governing Derived units for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for derived units",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Derived units during complex MCQs.",
+            "Failing to apply the correct logic for Derived units."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Derived units."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Derived units."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "physics-and-measurement-q-derived-units-1",
+              "question": "Explain the core concept behind Derived units.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "derived-units"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "derived-units",
+                "conceptSlug": "core-derived-units",
+                "microskillSlug": "understand-derived-units",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            },
+            {
+              "id": "physics-and-measurement-q-derived-units-2",
+              "question": "What is a common trap associated with Derived units?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "derived-units",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "derived-units",
+                "conceptSlug": "trap-derived-units",
+                "microskillSlug": "avoid-derived-units",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-physics-and-measurement-dimensions",
+          "title": "Dimensions",
+          "conceptTags": [
+            "physics-and-measurement",
+            "dimensions"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Dimensions"
+          ],
+          "mustKnowFacts": [
+            "Dimensions is a fundamental subtopic of Physics and Measurement.",
+            "Crucial to understand the principles governing Dimensions for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for dimensions",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Dimensions during complex MCQs.",
+            "Failing to apply the correct logic for Dimensions."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Dimensions."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Dimensions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "physics-and-measurement-q-dimensions-1",
+              "question": "Explain the core concept behind Dimensions.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "dimensions"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "dimensions",
+                "conceptSlug": "core-dimensions",
+                "microskillSlug": "understand-dimensions",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            },
+            {
+              "id": "physics-and-measurement-q-dimensions-2",
+              "question": "What is a common trap associated with Dimensions?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "dimensions",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "dimensions",
+                "conceptSlug": "trap-dimensions",
+                "microskillSlug": "avoid-dimensions",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-physics-and-measurement-dimensional-formula",
+          "title": "Dimensional formula",
+          "conceptTags": [
+            "physics-and-measurement",
+            "dimensional-formula"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Dimensional formula"
+          ],
+          "mustKnowFacts": [
+            "Dimensional formula is a fundamental subtopic of Physics and Measurement.",
+            "Crucial to understand the principles governing Dimensional formula for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for dimensional formula",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Dimensional formula during complex MCQs.",
+            "Failing to apply the correct logic for Dimensional formula."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Dimensional formula."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Dimensional formula."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "physics-and-measurement-q-dimensional-formula-1",
+              "question": "Explain the core concept behind Dimensional formula.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "dimensional-formula"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "dimensional-formula",
+                "conceptSlug": "core-dimensional-formula",
+                "microskillSlug": "understand-dimensional-formula",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            },
+            {
+              "id": "physics-and-measurement-q-dimensional-formula-2",
+              "question": "What is a common trap associated with Dimensional formula?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "dimensional-formula",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "dimensional-formula",
+                "conceptSlug": "trap-dimensional-formula",
+                "microskillSlug": "avoid-dimensional-formula",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-physics-and-measurement-homogeneity",
+          "title": "Homogeneity",
+          "conceptTags": [
+            "physics-and-measurement",
+            "homogeneity"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Homogeneity"
+          ],
+          "mustKnowFacts": [
+            "Homogeneity is a fundamental subtopic of Physics and Measurement.",
+            "Crucial to understand the principles governing Homogeneity for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for homogeneity",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Homogeneity during complex MCQs.",
+            "Failing to apply the correct logic for Homogeneity."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Homogeneity."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Homogeneity."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "physics-and-measurement-q-homogeneity-1",
+              "question": "Explain the core concept behind Homogeneity.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "homogeneity"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "homogeneity",
+                "conceptSlug": "core-homogeneity",
+                "microskillSlug": "understand-homogeneity",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            },
+            {
+              "id": "physics-and-measurement-q-homogeneity-2",
+              "question": "What is a common trap associated with Homogeneity?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "homogeneity",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "homogeneity",
+                "conceptSlug": "trap-homogeneity",
+                "microskillSlug": "avoid-homogeneity",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-physics-and-measurement-2",
+      "title": "Physics and Measurement - Section 2",
+      "description": "Comprehensive analysis covering dimensional analysis applications, limitations, least count and more.",
+      "conceptTags": [
+        "physics-and-measurement",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-physics-and-measurement-dimensional-analysis-applications",
+          "title": "Dimensional analysis applications",
+          "conceptTags": [
+            "physics-and-measurement",
+            "dimensional-analysis-applications"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Dimensional analysis applications"
+          ],
+          "mustKnowFacts": [
+            "Dimensional analysis applications is a fundamental subtopic of Physics and Measurement.",
+            "Crucial to understand the principles governing Dimensional analysis applications for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for dimensional analysis applications",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Dimensional analysis applications during complex MCQs.",
+            "Failing to apply the correct logic for Dimensional analysis applications."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Dimensional analysis applications."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Dimensional analysis applications."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "physics-and-measurement-q-dimensional-analysis-applications-1",
+              "question": "Explain the core concept behind Dimensional analysis applications.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "dimensional-analysis-applications"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "dimensional-analysis-applications",
+                "conceptSlug": "core-dimensional-analysis-applications",
+                "microskillSlug": "understand-dimensional-analysis-applications",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            },
+            {
+              "id": "physics-and-measurement-q-dimensional-analysis-applications-2",
+              "question": "What is a common trap associated with Dimensional analysis applications?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "dimensional-analysis-applications",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "dimensional-analysis-applications",
+                "conceptSlug": "trap-dimensional-analysis-applications",
+                "microskillSlug": "avoid-dimensional-analysis-applications",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-physics-and-measurement-limitations",
+          "title": "Limitations",
+          "conceptTags": [
+            "physics-and-measurement",
+            "limitations"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Limitations"
+          ],
+          "mustKnowFacts": [
+            "Limitations is a fundamental subtopic of Physics and Measurement.",
+            "Crucial to understand the principles governing Limitations for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for limitations",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Limitations during complex MCQs.",
+            "Failing to apply the correct logic for Limitations."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Limitations."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Limitations."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "physics-and-measurement-q-limitations-1",
+              "question": "Explain the core concept behind Limitations.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "limitations"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "limitations",
+                "conceptSlug": "core-limitations",
+                "microskillSlug": "understand-limitations",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            },
+            {
+              "id": "physics-and-measurement-q-limitations-2",
+              "question": "What is a common trap associated with Limitations?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "limitations",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "limitations",
+                "conceptSlug": "trap-limitations",
+                "microskillSlug": "avoid-limitations",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-physics-and-measurement-least-count",
+          "title": "Least count",
+          "conceptTags": [
+            "physics-and-measurement",
+            "least-count"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Least count"
+          ],
+          "mustKnowFacts": [
+            "Least count is a fundamental subtopic of Physics and Measurement.",
+            "Crucial to understand the principles governing Least count for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for least count",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Least count during complex MCQs.",
+            "Failing to apply the correct logic for Least count."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Least count."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Least count."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "physics-and-measurement-q-least-count-1",
+              "question": "Explain the core concept behind Least count.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "least-count"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "least-count",
+                "conceptSlug": "core-least-count",
+                "microskillSlug": "understand-least-count",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            },
+            {
+              "id": "physics-and-measurement-q-least-count-2",
+              "question": "What is a common trap associated with Least count?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "least-count",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "least-count",
+                "conceptSlug": "trap-least-count",
+                "microskillSlug": "avoid-least-count",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-physics-and-measurement-significant-figures",
+          "title": "Significant figures",
+          "conceptTags": [
+            "physics-and-measurement",
+            "significant-figures"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Significant figures"
+          ],
+          "mustKnowFacts": [
+            "Significant figures is a fundamental subtopic of Physics and Measurement.",
+            "Crucial to understand the principles governing Significant figures for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for significant figures",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Significant figures during complex MCQs.",
+            "Failing to apply the correct logic for Significant figures."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Significant figures."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Significant figures."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "physics-and-measurement-q-significant-figures-1",
+              "question": "Explain the core concept behind Significant figures.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "significant-figures"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "significant-figures",
+                "conceptSlug": "core-significant-figures",
+                "microskillSlug": "understand-significant-figures",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            },
+            {
+              "id": "physics-and-measurement-q-significant-figures-2",
+              "question": "What is a common trap associated with Significant figures?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "significant-figures",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "significant-figures",
+                "conceptSlug": "trap-significant-figures",
+                "microskillSlug": "avoid-significant-figures",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-physics-and-measurement-absolute-error",
+          "title": "Absolute error",
+          "conceptTags": [
+            "physics-and-measurement",
+            "absolute-error"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Absolute error"
+          ],
+          "mustKnowFacts": [
+            "Absolute error is a fundamental subtopic of Physics and Measurement.",
+            "Crucial to understand the principles governing Absolute error for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for absolute error",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Absolute error during complex MCQs.",
+            "Failing to apply the correct logic for Absolute error."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Absolute error."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Absolute error."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "physics-and-measurement-q-absolute-error-1",
+              "question": "Explain the core concept behind Absolute error.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "absolute-error"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "absolute-error",
+                "conceptSlug": "core-absolute-error",
+                "microskillSlug": "understand-absolute-error",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            },
+            {
+              "id": "physics-and-measurement-q-absolute-error-2",
+              "question": "What is a common trap associated with Absolute error?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "absolute-error",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "absolute-error",
+                "conceptSlug": "trap-absolute-error",
+                "microskillSlug": "avoid-absolute-error",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-physics-and-measurement-relative-error",
+          "title": "Relative error",
+          "conceptTags": [
+            "physics-and-measurement",
+            "relative-error"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Relative error"
+          ],
+          "mustKnowFacts": [
+            "Relative error is a fundamental subtopic of Physics and Measurement.",
+            "Crucial to understand the principles governing Relative error for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for relative error",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Relative error during complex MCQs.",
+            "Failing to apply the correct logic for Relative error."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Relative error."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Relative error."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "physics-and-measurement-q-relative-error-1",
+              "question": "Explain the core concept behind Relative error.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "relative-error"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "relative-error",
+                "conceptSlug": "core-relative-error",
+                "microskillSlug": "understand-relative-error",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            },
+            {
+              "id": "physics-and-measurement-q-relative-error-2",
+              "question": "What is a common trap associated with Relative error?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "relative-error",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "relative-error",
+                "conceptSlug": "trap-relative-error",
+                "microskillSlug": "avoid-relative-error",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-physics-and-measurement-3",
+      "title": "Physics and Measurement - Section 3",
+      "description": "Comprehensive analysis covering percentage error, propagation of errors, precision and more.",
+      "conceptTags": [
+        "physics-and-measurement",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-physics-and-measurement-percentage-error",
+          "title": "Percentage error",
+          "conceptTags": [
+            "physics-and-measurement",
+            "percentage-error"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Percentage error"
+          ],
+          "mustKnowFacts": [
+            "Percentage error is a fundamental subtopic of Physics and Measurement.",
+            "Crucial to understand the principles governing Percentage error for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for percentage error",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Percentage error during complex MCQs.",
+            "Failing to apply the correct logic for Percentage error."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Percentage error."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Percentage error."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "physics-and-measurement-q-percentage-error-1",
+              "question": "Explain the core concept behind Percentage error.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "percentage-error"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "percentage-error",
+                "conceptSlug": "core-percentage-error",
+                "microskillSlug": "understand-percentage-error",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            },
+            {
+              "id": "physics-and-measurement-q-percentage-error-2",
+              "question": "What is a common trap associated with Percentage error?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "percentage-error",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "percentage-error",
+                "conceptSlug": "trap-percentage-error",
+                "microskillSlug": "avoid-percentage-error",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-physics-and-measurement-propagation-of-errors",
+          "title": "Propagation of errors",
+          "conceptTags": [
+            "physics-and-measurement",
+            "propagation-of-errors"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Propagation of errors"
+          ],
+          "mustKnowFacts": [
+            "Propagation of errors is a fundamental subtopic of Physics and Measurement.",
+            "Crucial to understand the principles governing Propagation of errors for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for propagation of errors",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Propagation of errors during complex MCQs.",
+            "Failing to apply the correct logic for Propagation of errors."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Propagation of errors."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Propagation of errors."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "physics-and-measurement-q-propagation-of-errors-1",
+              "question": "Explain the core concept behind Propagation of errors.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "propagation-of-errors"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "propagation-of-errors",
+                "conceptSlug": "core-propagation-of-errors",
+                "microskillSlug": "understand-propagation-of-errors",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            },
+            {
+              "id": "physics-and-measurement-q-propagation-of-errors-2",
+              "question": "What is a common trap associated with Propagation of errors?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "propagation-of-errors",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "propagation-of-errors",
+                "conceptSlug": "trap-propagation-of-errors",
+                "microskillSlug": "avoid-propagation-of-errors",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-physics-and-measurement-precision",
+          "title": "Precision",
+          "conceptTags": [
+            "physics-and-measurement",
+            "precision"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Precision"
+          ],
+          "mustKnowFacts": [
+            "Precision is a fundamental subtopic of Physics and Measurement.",
+            "Crucial to understand the principles governing Precision for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for precision",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Precision during complex MCQs.",
+            "Failing to apply the correct logic for Precision."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Precision."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Precision."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "physics-and-measurement-q-precision-1",
+              "question": "Explain the core concept behind Precision.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "precision"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "precision",
+                "conceptSlug": "core-precision",
+                "microskillSlug": "understand-precision",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            },
+            {
+              "id": "physics-and-measurement-q-precision-2",
+              "question": "What is a common trap associated with Precision?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "precision",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "precision",
+                "conceptSlug": "trap-precision",
+                "microskillSlug": "avoid-precision",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-physics-and-measurement-accuracy",
+          "title": "Accuracy",
+          "conceptTags": [
+            "physics-and-measurement",
+            "accuracy"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Accuracy"
+          ],
+          "mustKnowFacts": [
+            "Accuracy is a fundamental subtopic of Physics and Measurement.",
+            "Crucial to understand the principles governing Accuracy for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for accuracy",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Accuracy during complex MCQs.",
+            "Failing to apply the correct logic for Accuracy."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Accuracy."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Accuracy."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "physics-and-measurement-q-accuracy-1",
+              "question": "Explain the core concept behind Accuracy.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "accuracy"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "accuracy",
+                "conceptSlug": "core-accuracy",
+                "microskillSlug": "understand-accuracy",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            },
+            {
+              "id": "physics-and-measurement-q-accuracy-2",
+              "question": "What is a common trap associated with Accuracy?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "accuracy",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "accuracy",
+                "conceptSlug": "trap-accuracy",
+                "microskillSlug": "avoid-accuracy",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-physics-and-measurement-vernier-calipers",
+          "title": "Vernier calipers",
+          "conceptTags": [
+            "physics-and-measurement",
+            "vernier-calipers"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Vernier calipers"
+          ],
+          "mustKnowFacts": [
+            "Vernier calipers is a fundamental subtopic of Physics and Measurement.",
+            "Crucial to understand the principles governing Vernier calipers for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for Vernier calipers",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Vernier calipers during complex MCQs.",
+            "Failing to apply the correct logic for Vernier calipers."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Vernier calipers."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Vernier calipers."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "physics-and-measurement-q-vernier-calipers-1",
+              "question": "Explain the core concept behind Vernier calipers.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "vernier-calipers"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "vernier-calipers",
+                "conceptSlug": "core-vernier-calipers",
+                "microskillSlug": "understand-vernier-calipers",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            },
+            {
+              "id": "physics-and-measurement-q-vernier-calipers-2",
+              "question": "What is a common trap associated with Vernier calipers?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "vernier-calipers",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "vernier-calipers",
+                "conceptSlug": "trap-vernier-calipers",
+                "microskillSlug": "avoid-vernier-calipers",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-physics-and-measurement-screw-gauge",
+          "title": "Screw gauge",
+          "conceptTags": [
+            "physics-and-measurement",
+            "screw-gauge"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Screw gauge"
+          ],
+          "mustKnowFacts": [
+            "Screw gauge is a fundamental subtopic of Physics and Measurement.",
+            "Crucial to understand the principles governing Screw gauge for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for screw gauge",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Screw gauge during complex MCQs.",
+            "Failing to apply the correct logic for Screw gauge."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Screw gauge."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Screw gauge."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "physics-and-measurement-q-screw-gauge-1",
+              "question": "Explain the core concept behind Screw gauge.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "screw-gauge"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "screw-gauge",
+                "conceptSlug": "core-screw-gauge",
+                "microskillSlug": "understand-screw-gauge",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            },
+            {
+              "id": "physics-and-measurement-q-screw-gauge-2",
+              "question": "What is a common trap associated with Screw gauge?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "screw-gauge",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "screw-gauge",
+                "conceptSlug": "trap-screw-gauge",
+                "microskillSlug": "avoid-screw-gauge",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-physics-and-measurement-4",
+      "title": "Physics and Measurement - Section 4",
+      "description": "Comprehensive analysis covering graph slope/intercept usage, order of magnitude, unit conversion and more.",
+      "conceptTags": [
+        "physics-and-measurement",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-physics-and-measurement-graph-slope-intercept-usage",
+          "title": "Graph slope/intercept usage",
+          "conceptTags": [
+            "physics-and-measurement",
+            "graph-slope-intercept-usage"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Graph slope/intercept usage"
+          ],
+          "mustKnowFacts": [
+            "Graph slope/intercept usage is a fundamental subtopic of Physics and Measurement.",
+            "Crucial to understand the principles governing Graph slope/intercept usage for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for graph slope/intercept usage",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Graph slope/intercept usage during complex MCQs.",
+            "Failing to apply the correct logic for Graph slope/intercept usage."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Graph slope/intercept usage."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Graph slope/intercept usage."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "physics-and-measurement-q-graph-slope-intercept-usage-1",
+              "question": "Explain the core concept behind Graph slope/intercept usage.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "graph-slope-intercept-usage"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "graph-slope-intercept-usage",
+                "conceptSlug": "core-graph-slope-intercept-usage",
+                "microskillSlug": "understand-graph-slope-intercept-usage",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            },
+            {
+              "id": "physics-and-measurement-q-graph-slope-intercept-usage-2",
+              "question": "What is a common trap associated with Graph slope/intercept usage?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "graph-slope-intercept-usage",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "graph-slope-intercept-usage",
+                "conceptSlug": "trap-graph-slope-intercept-usage",
+                "microskillSlug": "avoid-graph-slope-intercept-usage",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-physics-and-measurement-order-of-magnitude",
+          "title": "Order of magnitude",
+          "conceptTags": [
+            "physics-and-measurement",
+            "order-of-magnitude"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Order of magnitude"
+          ],
+          "mustKnowFacts": [
+            "Order of magnitude is a fundamental subtopic of Physics and Measurement.",
+            "Crucial to understand the principles governing Order of magnitude for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for order of magnitude",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Order of magnitude during complex MCQs.",
+            "Failing to apply the correct logic for Order of magnitude."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Order of magnitude."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Order of magnitude."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "physics-and-measurement-q-order-of-magnitude-1",
+              "question": "Explain the core concept behind Order of magnitude.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "order-of-magnitude"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "order-of-magnitude",
+                "conceptSlug": "core-order-of-magnitude",
+                "microskillSlug": "understand-order-of-magnitude",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            },
+            {
+              "id": "physics-and-measurement-q-order-of-magnitude-2",
+              "question": "What is a common trap associated with Order of magnitude?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "order-of-magnitude",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "order-of-magnitude",
+                "conceptSlug": "trap-order-of-magnitude",
+                "microskillSlug": "avoid-order-of-magnitude",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-physics-and-measurement-unit-conversion",
+          "title": "Unit conversion",
+          "conceptTags": [
+            "physics-and-measurement",
+            "unit-conversion"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Unit conversion"
+          ],
+          "mustKnowFacts": [
+            "Unit conversion is a fundamental subtopic of Physics and Measurement.",
+            "Crucial to understand the principles governing Unit conversion for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for unit conversion",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Unit conversion during complex MCQs.",
+            "Failing to apply the correct logic for Unit conversion."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Unit conversion."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Unit conversion."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "physics-and-measurement-q-unit-conversion-1",
+              "question": "Explain the core concept behind Unit conversion.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "unit-conversion"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "unit-conversion",
+                "conceptSlug": "core-unit-conversion",
+                "microskillSlug": "understand-unit-conversion",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            },
+            {
+              "id": "physics-and-measurement-q-unit-conversion-2",
+              "question": "What is a common trap associated with Unit conversion?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "unit-conversion",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "physics-and-measurement",
+                "subtopicSlug": "unit-conversion",
+                "conceptSlug": "trap-unit-conversion",
+                "microskillSlug": "avoid-unit-conversion",
+                "subject": "Physics",
+                "unitSlug": "physics-and-measurement",
+                "chapterSlug": "physics-and-measurement"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

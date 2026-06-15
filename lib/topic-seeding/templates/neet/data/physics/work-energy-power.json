@@ -1,0 +1,1694 @@
+{
+  "missions": [
+    {
+      "id": "m-work-energy-power-1",
+      "title": "Work, Energy and Power - Section 1",
+      "description": "Comprehensive analysis covering work by constant force, work by variable force, work from F-x graph and more.",
+      "conceptTags": [
+        "work-energy-power",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-work-energy-power-work-by-constant-force",
+          "title": "Work by constant force",
+          "conceptTags": [
+            "work-energy-power",
+            "work-by-constant-force"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Work by constant force"
+          ],
+          "mustKnowFacts": [
+            "Work by constant force is a fundamental subtopic of Work, Energy and Power.",
+            "Crucial to understand the principles governing Work by constant force for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for work by constant force",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Work by constant force during complex MCQs.",
+            "Failing to apply the correct logic for Work by constant force."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Work by constant force."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Work by constant force."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "work-energy-power-q-work-by-constant-force-1",
+              "question": "Explain the core concept behind Work by constant force.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "work-by-constant-force"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "work-by-constant-force",
+                "conceptSlug": "core-work-by-constant-force",
+                "microskillSlug": "understand-work-by-constant-force",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            },
+            {
+              "id": "work-energy-power-q-work-by-constant-force-2",
+              "question": "What is a common trap associated with Work by constant force?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "work-by-constant-force",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "work-by-constant-force",
+                "conceptSlug": "trap-work-by-constant-force",
+                "microskillSlug": "avoid-work-by-constant-force",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-work-energy-power-work-by-variable-force",
+          "title": "Work by variable force",
+          "conceptTags": [
+            "work-energy-power",
+            "work-by-variable-force"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Work by variable force"
+          ],
+          "mustKnowFacts": [
+            "Work by variable force is a fundamental subtopic of Work, Energy and Power.",
+            "Crucial to understand the principles governing Work by variable force for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for work by variable force",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Work by variable force during complex MCQs.",
+            "Failing to apply the correct logic for Work by variable force."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Work by variable force."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Work by variable force."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "work-energy-power-q-work-by-variable-force-1",
+              "question": "Explain the core concept behind Work by variable force.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "work-by-variable-force"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "work-by-variable-force",
+                "conceptSlug": "core-work-by-variable-force",
+                "microskillSlug": "understand-work-by-variable-force",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            },
+            {
+              "id": "work-energy-power-q-work-by-variable-force-2",
+              "question": "What is a common trap associated with Work by variable force?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "work-by-variable-force",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "work-by-variable-force",
+                "conceptSlug": "trap-work-by-variable-force",
+                "microskillSlug": "avoid-work-by-variable-force",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-work-energy-power-work-from-f-x-graph",
+          "title": "Work from F-x graph",
+          "conceptTags": [
+            "work-energy-power",
+            "work-from-f-x-graph"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Work from F-x graph"
+          ],
+          "mustKnowFacts": [
+            "Work from F-x graph is a fundamental subtopic of Work, Energy and Power.",
+            "Crucial to understand the principles governing Work from F-x graph for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for work from F-x graph",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Work from F-x graph during complex MCQs.",
+            "Failing to apply the correct logic for Work from F-x graph."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Work from F-x graph."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Work from F-x graph."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "work-energy-power-q-work-from-f-x-graph-1",
+              "question": "Explain the core concept behind Work from F-x graph.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "work-from-f-x-graph"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "work-from-f-x-graph",
+                "conceptSlug": "core-work-from-f-x-graph",
+                "microskillSlug": "understand-work-from-f-x-graph",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            },
+            {
+              "id": "work-energy-power-q-work-from-f-x-graph-2",
+              "question": "What is a common trap associated with Work from F-x graph?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "work-from-f-x-graph",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "work-from-f-x-graph",
+                "conceptSlug": "trap-work-from-f-x-graph",
+                "microskillSlug": "avoid-work-from-f-x-graph",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-work-energy-power-kinetic-energy",
+          "title": "Kinetic energy",
+          "conceptTags": [
+            "work-energy-power",
+            "kinetic-energy"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Kinetic energy"
+          ],
+          "mustKnowFacts": [
+            "Kinetic energy is a fundamental subtopic of Work, Energy and Power.",
+            "Crucial to understand the principles governing Kinetic energy for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for kinetic energy",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Kinetic energy during complex MCQs.",
+            "Failing to apply the correct logic for Kinetic energy."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Kinetic energy."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Kinetic energy."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "work-energy-power-q-kinetic-energy-1",
+              "question": "Explain the core concept behind Kinetic energy.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "kinetic-energy"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "kinetic-energy",
+                "conceptSlug": "core-kinetic-energy",
+                "microskillSlug": "understand-kinetic-energy",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            },
+            {
+              "id": "work-energy-power-q-kinetic-energy-2",
+              "question": "What is a common trap associated with Kinetic energy?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "kinetic-energy",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "kinetic-energy",
+                "conceptSlug": "trap-kinetic-energy",
+                "microskillSlug": "avoid-kinetic-energy",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-work-energy-power-work-energy-theorem",
+          "title": "Work-energy theorem",
+          "conceptTags": [
+            "work-energy-power",
+            "work-energy-theorem"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Work-energy theorem"
+          ],
+          "mustKnowFacts": [
+            "Work-energy theorem is a fundamental subtopic of Work, Energy and Power.",
+            "Crucial to understand the principles governing Work-energy theorem for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for work-energy theorem",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Work-energy theorem during complex MCQs.",
+            "Failing to apply the correct logic for Work-energy theorem."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Work-energy theorem."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Work-energy theorem."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "work-energy-power-q-work-energy-theorem-1",
+              "question": "Explain the core concept behind Work-energy theorem.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "work-energy-theorem"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "work-energy-theorem",
+                "conceptSlug": "core-work-energy-theorem",
+                "microskillSlug": "understand-work-energy-theorem",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            },
+            {
+              "id": "work-energy-power-q-work-energy-theorem-2",
+              "question": "What is a common trap associated with Work-energy theorem?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "work-energy-theorem",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "work-energy-theorem",
+                "conceptSlug": "trap-work-energy-theorem",
+                "microskillSlug": "avoid-work-energy-theorem",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-work-energy-power-2",
+      "title": "Work, Energy and Power - Section 2",
+      "description": "Comprehensive analysis covering potential energy, conservative force, non-conservative force and more.",
+      "conceptTags": [
+        "work-energy-power",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-work-energy-power-potential-energy",
+          "title": "Potential energy",
+          "conceptTags": [
+            "work-energy-power",
+            "potential-energy"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Potential energy"
+          ],
+          "mustKnowFacts": [
+            "Potential energy is a fundamental subtopic of Work, Energy and Power.",
+            "Crucial to understand the principles governing Potential energy for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for potential energy",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Potential energy during complex MCQs.",
+            "Failing to apply the correct logic for Potential energy."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Potential energy."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Potential energy."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "work-energy-power-q-potential-energy-1",
+              "question": "Explain the core concept behind Potential energy.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "potential-energy"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "potential-energy",
+                "conceptSlug": "core-potential-energy",
+                "microskillSlug": "understand-potential-energy",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            },
+            {
+              "id": "work-energy-power-q-potential-energy-2",
+              "question": "What is a common trap associated with Potential energy?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "potential-energy",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "potential-energy",
+                "conceptSlug": "trap-potential-energy",
+                "microskillSlug": "avoid-potential-energy",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-work-energy-power-conservative-force",
+          "title": "Conservative force",
+          "conceptTags": [
+            "work-energy-power",
+            "conservative-force"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Conservative force"
+          ],
+          "mustKnowFacts": [
+            "Conservative force is a fundamental subtopic of Work, Energy and Power.",
+            "Crucial to understand the principles governing Conservative force for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for conservative force",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Conservative force during complex MCQs.",
+            "Failing to apply the correct logic for Conservative force."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Conservative force."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Conservative force."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "work-energy-power-q-conservative-force-1",
+              "question": "Explain the core concept behind Conservative force.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "conservative-force"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "conservative-force",
+                "conceptSlug": "core-conservative-force",
+                "microskillSlug": "understand-conservative-force",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            },
+            {
+              "id": "work-energy-power-q-conservative-force-2",
+              "question": "What is a common trap associated with Conservative force?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "conservative-force",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "conservative-force",
+                "conceptSlug": "trap-conservative-force",
+                "microskillSlug": "avoid-conservative-force",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-work-energy-power-non-conservative-force",
+          "title": "Non-conservative force",
+          "conceptTags": [
+            "work-energy-power",
+            "non-conservative-force"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Non-conservative force"
+          ],
+          "mustKnowFacts": [
+            "Non-conservative force is a fundamental subtopic of Work, Energy and Power.",
+            "Crucial to understand the principles governing Non-conservative force for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for non-conservative force",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Non-conservative force during complex MCQs.",
+            "Failing to apply the correct logic for Non-conservative force."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Non-conservative force."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Non-conservative force."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "work-energy-power-q-non-conservative-force-1",
+              "question": "Explain the core concept behind Non-conservative force.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "non-conservative-force"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "non-conservative-force",
+                "conceptSlug": "core-non-conservative-force",
+                "microskillSlug": "understand-non-conservative-force",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            },
+            {
+              "id": "work-energy-power-q-non-conservative-force-2",
+              "question": "What is a common trap associated with Non-conservative force?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "non-conservative-force",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "non-conservative-force",
+                "conceptSlug": "trap-non-conservative-force",
+                "microskillSlug": "avoid-non-conservative-force",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-work-energy-power-spring-potential-energy",
+          "title": "Spring potential energy",
+          "conceptTags": [
+            "work-energy-power",
+            "spring-potential-energy"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Spring potential energy"
+          ],
+          "mustKnowFacts": [
+            "Spring potential energy is a fundamental subtopic of Work, Energy and Power.",
+            "Crucial to understand the principles governing Spring potential energy for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for spring potential energy",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Spring potential energy during complex MCQs.",
+            "Failing to apply the correct logic for Spring potential energy."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Spring potential energy."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Spring potential energy."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "work-energy-power-q-spring-potential-energy-1",
+              "question": "Explain the core concept behind Spring potential energy.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "spring-potential-energy"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "spring-potential-energy",
+                "conceptSlug": "core-spring-potential-energy",
+                "microskillSlug": "understand-spring-potential-energy",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            },
+            {
+              "id": "work-energy-power-q-spring-potential-energy-2",
+              "question": "What is a common trap associated with Spring potential energy?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "spring-potential-energy",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "spring-potential-energy",
+                "conceptSlug": "trap-spring-potential-energy",
+                "microskillSlug": "avoid-spring-potential-energy",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-work-energy-power-mechanical-energy-conservation",
+          "title": "Mechanical energy conservation",
+          "conceptTags": [
+            "work-energy-power",
+            "mechanical-energy-conservation"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Mechanical energy conservation"
+          ],
+          "mustKnowFacts": [
+            "Mechanical energy conservation is a fundamental subtopic of Work, Energy and Power.",
+            "Crucial to understand the principles governing Mechanical energy conservation for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for mechanical energy conservation",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Mechanical energy conservation during complex MCQs.",
+            "Failing to apply the correct logic for Mechanical energy conservation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Mechanical energy conservation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Mechanical energy conservation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "work-energy-power-q-mechanical-energy-conservation-1",
+              "question": "Explain the core concept behind Mechanical energy conservation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "mechanical-energy-conservation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "mechanical-energy-conservation",
+                "conceptSlug": "core-mechanical-energy-conservation",
+                "microskillSlug": "understand-mechanical-energy-conservation",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            },
+            {
+              "id": "work-energy-power-q-mechanical-energy-conservation-2",
+              "question": "What is a common trap associated with Mechanical energy conservation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "mechanical-energy-conservation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "mechanical-energy-conservation",
+                "conceptSlug": "trap-mechanical-energy-conservation",
+                "microskillSlug": "avoid-mechanical-energy-conservation",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-work-energy-power-3",
+      "title": "Work, Energy and Power - Section 3",
+      "description": "Comprehensive analysis covering power, collision terminology, elastic collision 1D and more.",
+      "conceptTags": [
+        "work-energy-power",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-work-energy-power-power",
+          "title": "Power",
+          "conceptTags": [
+            "work-energy-power",
+            "power"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Power"
+          ],
+          "mustKnowFacts": [
+            "Power is a fundamental subtopic of Work, Energy and Power.",
+            "Crucial to understand the principles governing Power for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for power",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Power during complex MCQs.",
+            "Failing to apply the correct logic for Power."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Power."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Power."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "work-energy-power-q-power-1",
+              "question": "Explain the core concept behind Power.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "power"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "power",
+                "conceptSlug": "core-power",
+                "microskillSlug": "understand-power",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            },
+            {
+              "id": "work-energy-power-q-power-2",
+              "question": "What is a common trap associated with Power?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "power",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "power",
+                "conceptSlug": "trap-power",
+                "microskillSlug": "avoid-power",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-work-energy-power-collision-terminology",
+          "title": "Collision terminology",
+          "conceptTags": [
+            "work-energy-power",
+            "collision-terminology"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Collision terminology"
+          ],
+          "mustKnowFacts": [
+            "Collision terminology is a fundamental subtopic of Work, Energy and Power.",
+            "Crucial to understand the principles governing Collision terminology for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for collision terminology",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Collision terminology during complex MCQs.",
+            "Failing to apply the correct logic for Collision terminology."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Collision terminology."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Collision terminology."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "work-energy-power-q-collision-terminology-1",
+              "question": "Explain the core concept behind Collision terminology.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "collision-terminology"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "collision-terminology",
+                "conceptSlug": "core-collision-terminology",
+                "microskillSlug": "understand-collision-terminology",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            },
+            {
+              "id": "work-energy-power-q-collision-terminology-2",
+              "question": "What is a common trap associated with Collision terminology?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "collision-terminology",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "collision-terminology",
+                "conceptSlug": "trap-collision-terminology",
+                "microskillSlug": "avoid-collision-terminology",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-work-energy-power-elastic-collision-1d",
+          "title": "Elastic collision 1D",
+          "conceptTags": [
+            "work-energy-power",
+            "elastic-collision-1d"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Elastic collision 1D"
+          ],
+          "mustKnowFacts": [
+            "Elastic collision 1D is a fundamental subtopic of Work, Energy and Power.",
+            "Crucial to understand the principles governing Elastic collision 1D for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for elastic collision 1D",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Elastic collision 1D during complex MCQs.",
+            "Failing to apply the correct logic for Elastic collision 1D."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Elastic collision 1D."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Elastic collision 1D."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "work-energy-power-q-elastic-collision-1d-1",
+              "question": "Explain the core concept behind Elastic collision 1D.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "elastic-collision-1d"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "elastic-collision-1d",
+                "conceptSlug": "core-elastic-collision-1d",
+                "microskillSlug": "understand-elastic-collision-1d",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            },
+            {
+              "id": "work-energy-power-q-elastic-collision-1d-2",
+              "question": "What is a common trap associated with Elastic collision 1D?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "elastic-collision-1d",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "elastic-collision-1d",
+                "conceptSlug": "trap-elastic-collision-1d",
+                "microskillSlug": "avoid-elastic-collision-1d",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-work-energy-power-inelastic-collision",
+          "title": "Inelastic collision",
+          "conceptTags": [
+            "work-energy-power",
+            "inelastic-collision"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Inelastic collision"
+          ],
+          "mustKnowFacts": [
+            "Inelastic collision is a fundamental subtopic of Work, Energy and Power.",
+            "Crucial to understand the principles governing Inelastic collision for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for inelastic collision",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Inelastic collision during complex MCQs.",
+            "Failing to apply the correct logic for Inelastic collision."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Inelastic collision."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Inelastic collision."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "work-energy-power-q-inelastic-collision-1",
+              "question": "Explain the core concept behind Inelastic collision.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "inelastic-collision"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "inelastic-collision",
+                "conceptSlug": "core-inelastic-collision",
+                "microskillSlug": "understand-inelastic-collision",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            },
+            {
+              "id": "work-energy-power-q-inelastic-collision-2",
+              "question": "What is a common trap associated with Inelastic collision?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "inelastic-collision",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "inelastic-collision",
+                "conceptSlug": "trap-inelastic-collision",
+                "microskillSlug": "avoid-inelastic-collision",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-work-energy-power-coefficient-of-restitution",
+          "title": "Coefficient of restitution",
+          "conceptTags": [
+            "work-energy-power",
+            "coefficient-of-restitution"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Coefficient of restitution"
+          ],
+          "mustKnowFacts": [
+            "Coefficient of restitution is a fundamental subtopic of Work, Energy and Power.",
+            "Crucial to understand the principles governing Coefficient of restitution for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for coefficient of restitution",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Coefficient of restitution during complex MCQs.",
+            "Failing to apply the correct logic for Coefficient of restitution."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Coefficient of restitution."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Coefficient of restitution."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "work-energy-power-q-coefficient-of-restitution-1",
+              "question": "Explain the core concept behind Coefficient of restitution.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "coefficient-of-restitution"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "coefficient-of-restitution",
+                "conceptSlug": "core-coefficient-of-restitution",
+                "microskillSlug": "understand-coefficient-of-restitution",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            },
+            {
+              "id": "work-energy-power-q-coefficient-of-restitution-2",
+              "question": "What is a common trap associated with Coefficient of restitution?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "coefficient-of-restitution",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "coefficient-of-restitution",
+                "conceptSlug": "trap-coefficient-of-restitution",
+                "microskillSlug": "avoid-coefficient-of-restitution",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-work-energy-power-4",
+      "title": "Work, Energy and Power - Section 4",
+      "description": "Comprehensive analysis covering collision in 2D basics, vertical circle, minimum speed conditions and more.",
+      "conceptTags": [
+        "work-energy-power",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-work-energy-power-collision-in-2d-basics",
+          "title": "Collision in 2D basics",
+          "conceptTags": [
+            "work-energy-power",
+            "collision-in-2d-basics"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Collision in 2D basics"
+          ],
+          "mustKnowFacts": [
+            "Collision in 2D basics is a fundamental subtopic of Work, Energy and Power.",
+            "Crucial to understand the principles governing Collision in 2D basics for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for collision in 2D basics",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Collision in 2D basics during complex MCQs.",
+            "Failing to apply the correct logic for Collision in 2D basics."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Collision in 2D basics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Collision in 2D basics."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "work-energy-power-q-collision-in-2d-basics-1",
+              "question": "Explain the core concept behind Collision in 2D basics.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "collision-in-2d-basics"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "collision-in-2d-basics",
+                "conceptSlug": "core-collision-in-2d-basics",
+                "microskillSlug": "understand-collision-in-2d-basics",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            },
+            {
+              "id": "work-energy-power-q-collision-in-2d-basics-2",
+              "question": "What is a common trap associated with Collision in 2D basics?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "collision-in-2d-basics",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "collision-in-2d-basics",
+                "conceptSlug": "trap-collision-in-2d-basics",
+                "microskillSlug": "avoid-collision-in-2d-basics",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-work-energy-power-vertical-circle",
+          "title": "Vertical circle",
+          "conceptTags": [
+            "work-energy-power",
+            "vertical-circle"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Vertical circle"
+          ],
+          "mustKnowFacts": [
+            "Vertical circle is a fundamental subtopic of Work, Energy and Power.",
+            "Crucial to understand the principles governing Vertical circle for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for vertical circle",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Vertical circle during complex MCQs.",
+            "Failing to apply the correct logic for Vertical circle."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Vertical circle."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Vertical circle."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "work-energy-power-q-vertical-circle-1",
+              "question": "Explain the core concept behind Vertical circle.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "vertical-circle"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "vertical-circle",
+                "conceptSlug": "core-vertical-circle",
+                "microskillSlug": "understand-vertical-circle",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            },
+            {
+              "id": "work-energy-power-q-vertical-circle-2",
+              "question": "What is a common trap associated with Vertical circle?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "vertical-circle",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "vertical-circle",
+                "conceptSlug": "trap-vertical-circle",
+                "microskillSlug": "avoid-vertical-circle",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-work-energy-power-minimum-speed-conditions",
+          "title": "Minimum speed conditions",
+          "conceptTags": [
+            "work-energy-power",
+            "minimum-speed-conditions"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Minimum speed conditions"
+          ],
+          "mustKnowFacts": [
+            "Minimum speed conditions is a fundamental subtopic of Work, Energy and Power.",
+            "Crucial to understand the principles governing Minimum speed conditions for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for minimum speed conditions",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Minimum speed conditions during complex MCQs.",
+            "Failing to apply the correct logic for Minimum speed conditions."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Minimum speed conditions."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Minimum speed conditions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "work-energy-power-q-minimum-speed-conditions-1",
+              "question": "Explain the core concept behind Minimum speed conditions.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "minimum-speed-conditions"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "minimum-speed-conditions",
+                "conceptSlug": "core-minimum-speed-conditions",
+                "microskillSlug": "understand-minimum-speed-conditions",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            },
+            {
+              "id": "work-energy-power-q-minimum-speed-conditions-2",
+              "question": "What is a common trap associated with Minimum speed conditions?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "minimum-speed-conditions",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "work-energy-power",
+                "subtopicSlug": "minimum-speed-conditions",
+                "conceptSlug": "trap-minimum-speed-conditions",
+                "microskillSlug": "avoid-minimum-speed-conditions",
+                "subject": "Physics",
+                "unitSlug": "work-energy-power",
+                "chapterSlug": "work-energy-power"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

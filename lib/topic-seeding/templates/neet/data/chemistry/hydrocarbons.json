@@ -1,0 +1,2471 @@
+{
+  "missions": [
+    {
+      "id": "m-hydrocarbons-1",
+      "title": "Hydrocarbons - Section 1",
+      "description": "Comprehensive analysis covering alkane nomenclature, alkane preparation, alkane reactions and more.",
+      "conceptTags": [
+        "hydrocarbons",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-hydrocarbons-alkane-nomenclature",
+          "title": "Alkane nomenclature",
+          "conceptTags": [
+            "hydrocarbons",
+            "alkane-nomenclature"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Alkane nomenclature"
+          ],
+          "mustKnowFacts": [
+            "Alkane nomenclature is a fundamental subtopic of Hydrocarbons.",
+            "Crucial to understand the principles governing Alkane nomenclature for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for alkane nomenclature",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving alkane nomenclature",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Alkane nomenclature during complex MCQs.",
+            "Failing to apply the correct logic for Alkane nomenclature."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Alkane nomenclature."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Alkane nomenclature."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "hydrocarbons-q-alkane-nomenclature-1",
+              "question": "Explain the core concept behind Alkane nomenclature.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "alkane-nomenclature"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "alkane-nomenclature",
+                "conceptSlug": "core-alkane-nomenclature",
+                "microskillSlug": "understand-alkane-nomenclature",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            },
+            {
+              "id": "hydrocarbons-q-alkane-nomenclature-2",
+              "question": "What is a common trap associated with Alkane nomenclature?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "alkane-nomenclature",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "alkane-nomenclature",
+                "conceptSlug": "trap-alkane-nomenclature",
+                "microskillSlug": "avoid-alkane-nomenclature",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-hydrocarbons-alkane-preparation",
+          "title": "Alkane preparation",
+          "conceptTags": [
+            "hydrocarbons",
+            "alkane-preparation"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Alkane preparation"
+          ],
+          "mustKnowFacts": [
+            "Alkane preparation is a fundamental subtopic of Hydrocarbons.",
+            "Crucial to understand the principles governing Alkane preparation for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for alkane preparation",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving alkane preparation",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Alkane preparation during complex MCQs.",
+            "Failing to apply the correct logic for Alkane preparation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Alkane preparation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Alkane preparation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "hydrocarbons-q-alkane-preparation-1",
+              "question": "Explain the core concept behind Alkane preparation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "alkane-preparation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "alkane-preparation",
+                "conceptSlug": "core-alkane-preparation",
+                "microskillSlug": "understand-alkane-preparation",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            },
+            {
+              "id": "hydrocarbons-q-alkane-preparation-2",
+              "question": "What is a common trap associated with Alkane preparation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "alkane-preparation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "alkane-preparation",
+                "conceptSlug": "trap-alkane-preparation",
+                "microskillSlug": "avoid-alkane-preparation",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-hydrocarbons-alkane-reactions",
+          "title": "Alkane reactions",
+          "conceptTags": [
+            "hydrocarbons",
+            "alkane-reactions"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Alkane reactions"
+          ],
+          "mustKnowFacts": [
+            "Alkane reactions is a fundamental subtopic of Hydrocarbons.",
+            "Crucial to understand the principles governing Alkane reactions for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for alkane reactions",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving alkane reactions",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Alkane reactions during complex MCQs.",
+            "Failing to apply the correct logic for Alkane reactions."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Alkane reactions."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Alkane reactions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "hydrocarbons-q-alkane-reactions-1",
+              "question": "Explain the core concept behind Alkane reactions.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "alkane-reactions"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "alkane-reactions",
+                "conceptSlug": "core-alkane-reactions",
+                "microskillSlug": "understand-alkane-reactions",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            },
+            {
+              "id": "hydrocarbons-q-alkane-reactions-2",
+              "question": "What is a common trap associated with Alkane reactions?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "alkane-reactions",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "alkane-reactions",
+                "conceptSlug": "trap-alkane-reactions",
+                "microskillSlug": "avoid-alkane-reactions",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-hydrocarbons-free-radical-halogenation-mechanism",
+          "title": "Free radical halogenation mechanism",
+          "conceptTags": [
+            "hydrocarbons",
+            "free-radical-halogenation-mechanism"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Free radical halogenation mechanism"
+          ],
+          "mustKnowFacts": [
+            "Free radical halogenation mechanism is a fundamental subtopic of Hydrocarbons.",
+            "Crucial to understand the principles governing Free radical halogenation mechanism for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for free radical halogenation mechanism",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving free radical halogenation mechanism",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Free radical halogenation mechanism during complex MCQs.",
+            "Failing to apply the correct logic for Free radical halogenation mechanism."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Free radical halogenation mechanism."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Free radical halogenation mechanism."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "hydrocarbons-q-free-radical-halogenation-mechanism-1",
+              "question": "Explain the core concept behind Free radical halogenation mechanism.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "free-radical-halogenation-mechanism"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "free-radical-halogenation-mechanism",
+                "conceptSlug": "core-free-radical-halogenation-mechanism",
+                "microskillSlug": "understand-free-radical-halogenation-mechanism",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            },
+            {
+              "id": "hydrocarbons-q-free-radical-halogenation-mechanism-2",
+              "question": "What is a common trap associated with Free radical halogenation mechanism?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "free-radical-halogenation-mechanism",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "free-radical-halogenation-mechanism",
+                "conceptSlug": "trap-free-radical-halogenation-mechanism",
+                "microskillSlug": "avoid-free-radical-halogenation-mechanism",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-hydrocarbons-conformations",
+          "title": "Conformations",
+          "conceptTags": [
+            "hydrocarbons",
+            "conformations"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Conformations"
+          ],
+          "mustKnowFacts": [
+            "Conformations is a fundamental subtopic of Hydrocarbons.",
+            "Crucial to understand the principles governing Conformations for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for conformations",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving conformations",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Conformations during complex MCQs.",
+            "Failing to apply the correct logic for Conformations."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Conformations."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Conformations."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "hydrocarbons-q-conformations-1",
+              "question": "Explain the core concept behind Conformations.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "conformations"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "conformations",
+                "conceptSlug": "core-conformations",
+                "microskillSlug": "understand-conformations",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            },
+            {
+              "id": "hydrocarbons-q-conformations-2",
+              "question": "What is a common trap associated with Conformations?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "conformations",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "conformations",
+                "conceptSlug": "trap-conformations",
+                "microskillSlug": "avoid-conformations",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-hydrocarbons-newman-projection",
+          "title": "Newman projection",
+          "conceptTags": [
+            "hydrocarbons",
+            "newman-projection"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Newman projection"
+          ],
+          "mustKnowFacts": [
+            "Newman projection is a fundamental subtopic of Hydrocarbons.",
+            "Crucial to understand the principles governing Newman projection for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Newman projection",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Newman projection",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Newman projection during complex MCQs.",
+            "Failing to apply the correct logic for Newman projection."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Newman projection."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Newman projection."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "hydrocarbons-q-newman-projection-1",
+              "question": "Explain the core concept behind Newman projection.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "newman-projection"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "newman-projection",
+                "conceptSlug": "core-newman-projection",
+                "microskillSlug": "understand-newman-projection",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            },
+            {
+              "id": "hydrocarbons-q-newman-projection-2",
+              "question": "What is a common trap associated with Newman projection?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "newman-projection",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "newman-projection",
+                "conceptSlug": "trap-newman-projection",
+                "microskillSlug": "avoid-newman-projection",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-hydrocarbons-2",
+      "title": "Hydrocarbons - Section 2",
+      "description": "Comprehensive analysis covering sawhorse projection, alkene nomenclature, alkene preparation and more.",
+      "conceptTags": [
+        "hydrocarbons",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-hydrocarbons-sawhorse-projection",
+          "title": "Sawhorse projection",
+          "conceptTags": [
+            "hydrocarbons",
+            "sawhorse-projection"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Sawhorse projection"
+          ],
+          "mustKnowFacts": [
+            "Sawhorse projection is a fundamental subtopic of Hydrocarbons.",
+            "Crucial to understand the principles governing Sawhorse projection for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for sawhorse projection",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving sawhorse projection",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Sawhorse projection during complex MCQs.",
+            "Failing to apply the correct logic for Sawhorse projection."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Sawhorse projection."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Sawhorse projection."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "hydrocarbons-q-sawhorse-projection-1",
+              "question": "Explain the core concept behind Sawhorse projection.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "sawhorse-projection"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "sawhorse-projection",
+                "conceptSlug": "core-sawhorse-projection",
+                "microskillSlug": "understand-sawhorse-projection",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            },
+            {
+              "id": "hydrocarbons-q-sawhorse-projection-2",
+              "question": "What is a common trap associated with Sawhorse projection?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "sawhorse-projection",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "sawhorse-projection",
+                "conceptSlug": "trap-sawhorse-projection",
+                "microskillSlug": "avoid-sawhorse-projection",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-hydrocarbons-alkene-nomenclature",
+          "title": "Alkene nomenclature",
+          "conceptTags": [
+            "hydrocarbons",
+            "alkene-nomenclature"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Alkene nomenclature"
+          ],
+          "mustKnowFacts": [
+            "Alkene nomenclature is a fundamental subtopic of Hydrocarbons.",
+            "Crucial to understand the principles governing Alkene nomenclature for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for alkene nomenclature",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving alkene nomenclature",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Alkene nomenclature during complex MCQs.",
+            "Failing to apply the correct logic for Alkene nomenclature."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Alkene nomenclature."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Alkene nomenclature."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "hydrocarbons-q-alkene-nomenclature-1",
+              "question": "Explain the core concept behind Alkene nomenclature.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "alkene-nomenclature"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "alkene-nomenclature",
+                "conceptSlug": "core-alkene-nomenclature",
+                "microskillSlug": "understand-alkene-nomenclature",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            },
+            {
+              "id": "hydrocarbons-q-alkene-nomenclature-2",
+              "question": "What is a common trap associated with Alkene nomenclature?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "alkene-nomenclature",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "alkene-nomenclature",
+                "conceptSlug": "trap-alkene-nomenclature",
+                "microskillSlug": "avoid-alkene-nomenclature",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-hydrocarbons-alkene-preparation",
+          "title": "Alkene preparation",
+          "conceptTags": [
+            "hydrocarbons",
+            "alkene-preparation"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Alkene preparation"
+          ],
+          "mustKnowFacts": [
+            "Alkene preparation is a fundamental subtopic of Hydrocarbons.",
+            "Crucial to understand the principles governing Alkene preparation for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for alkene preparation",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving alkene preparation",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Alkene preparation during complex MCQs.",
+            "Failing to apply the correct logic for Alkene preparation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Alkene preparation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Alkene preparation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "hydrocarbons-q-alkene-preparation-1",
+              "question": "Explain the core concept behind Alkene preparation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "alkene-preparation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "alkene-preparation",
+                "conceptSlug": "core-alkene-preparation",
+                "microskillSlug": "understand-alkene-preparation",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            },
+            {
+              "id": "hydrocarbons-q-alkene-preparation-2",
+              "question": "What is a common trap associated with Alkene preparation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "alkene-preparation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "alkene-preparation",
+                "conceptSlug": "trap-alkene-preparation",
+                "microskillSlug": "avoid-alkene-preparation",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-hydrocarbons-electrophilic-addition-mechanism",
+          "title": "Electrophilic addition mechanism",
+          "conceptTags": [
+            "hydrocarbons",
+            "electrophilic-addition-mechanism"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Electrophilic addition mechanism"
+          ],
+          "mustKnowFacts": [
+            "Electrophilic addition mechanism is a fundamental subtopic of Hydrocarbons.",
+            "Crucial to understand the principles governing Electrophilic addition mechanism for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for electrophilic addition mechanism",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving electrophilic addition mechanism",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Electrophilic addition mechanism during complex MCQs.",
+            "Failing to apply the correct logic for Electrophilic addition mechanism."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Electrophilic addition mechanism."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Electrophilic addition mechanism."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "hydrocarbons-q-electrophilic-addition-mechanism-1",
+              "question": "Explain the core concept behind Electrophilic addition mechanism.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "electrophilic-addition-mechanism"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "electrophilic-addition-mechanism",
+                "conceptSlug": "core-electrophilic-addition-mechanism",
+                "microskillSlug": "understand-electrophilic-addition-mechanism",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            },
+            {
+              "id": "hydrocarbons-q-electrophilic-addition-mechanism-2",
+              "question": "What is a common trap associated with Electrophilic addition mechanism?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "electrophilic-addition-mechanism",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "electrophilic-addition-mechanism",
+                "conceptSlug": "trap-electrophilic-addition-mechanism",
+                "microskillSlug": "avoid-electrophilic-addition-mechanism",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-hydrocarbons-markovnikov-rule",
+          "title": "Markovnikov rule",
+          "conceptTags": [
+            "hydrocarbons",
+            "markovnikov-rule"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Markovnikov rule"
+          ],
+          "mustKnowFacts": [
+            "Markovnikov rule is a fundamental subtopic of Hydrocarbons.",
+            "Crucial to understand the principles governing Markovnikov rule for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Markovnikov rule",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Markovnikov rule",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Markovnikov rule during complex MCQs.",
+            "Failing to apply the correct logic for Markovnikov rule."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Markovnikov rule."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Markovnikov rule."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "hydrocarbons-q-markovnikov-rule-1",
+              "question": "Explain the core concept behind Markovnikov rule.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "markovnikov-rule"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "markovnikov-rule",
+                "conceptSlug": "core-markovnikov-rule",
+                "microskillSlug": "understand-markovnikov-rule",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            },
+            {
+              "id": "hydrocarbons-q-markovnikov-rule-2",
+              "question": "What is a common trap associated with Markovnikov rule?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "markovnikov-rule",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "markovnikov-rule",
+                "conceptSlug": "trap-markovnikov-rule",
+                "microskillSlug": "avoid-markovnikov-rule",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-hydrocarbons-peroxide-effect",
+          "title": "Peroxide effect",
+          "conceptTags": [
+            "hydrocarbons",
+            "peroxide-effect"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Peroxide effect"
+          ],
+          "mustKnowFacts": [
+            "Peroxide effect is a fundamental subtopic of Hydrocarbons.",
+            "Crucial to understand the principles governing Peroxide effect for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for peroxide effect",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving peroxide effect",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Peroxide effect during complex MCQs.",
+            "Failing to apply the correct logic for Peroxide effect."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Peroxide effect."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Peroxide effect."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "hydrocarbons-q-peroxide-effect-1",
+              "question": "Explain the core concept behind Peroxide effect.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "peroxide-effect"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "peroxide-effect",
+                "conceptSlug": "core-peroxide-effect",
+                "microskillSlug": "understand-peroxide-effect",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            },
+            {
+              "id": "hydrocarbons-q-peroxide-effect-2",
+              "question": "What is a common trap associated with Peroxide effect?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "peroxide-effect",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "peroxide-effect",
+                "conceptSlug": "trap-peroxide-effect",
+                "microskillSlug": "avoid-peroxide-effect",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-hydrocarbons-3",
+      "title": "Hydrocarbons - Section 3",
+      "description": "Comprehensive analysis covering ozonolysis, polymerisation, alkyne acidity and more.",
+      "conceptTags": [
+        "hydrocarbons",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-hydrocarbons-ozonolysis",
+          "title": "Ozonolysis",
+          "conceptTags": [
+            "hydrocarbons",
+            "ozonolysis"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Ozonolysis"
+          ],
+          "mustKnowFacts": [
+            "Ozonolysis is a fundamental subtopic of Hydrocarbons.",
+            "Crucial to understand the principles governing Ozonolysis for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for ozonolysis",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving ozonolysis",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Ozonolysis during complex MCQs.",
+            "Failing to apply the correct logic for Ozonolysis."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Ozonolysis."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Ozonolysis."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "hydrocarbons-q-ozonolysis-1",
+              "question": "Explain the core concept behind Ozonolysis.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "ozonolysis"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "ozonolysis",
+                "conceptSlug": "core-ozonolysis",
+                "microskillSlug": "understand-ozonolysis",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            },
+            {
+              "id": "hydrocarbons-q-ozonolysis-2",
+              "question": "What is a common trap associated with Ozonolysis?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "ozonolysis",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "ozonolysis",
+                "conceptSlug": "trap-ozonolysis",
+                "microskillSlug": "avoid-ozonolysis",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-hydrocarbons-polymerisation",
+          "title": "Polymerisation",
+          "conceptTags": [
+            "hydrocarbons",
+            "polymerisation"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Polymerisation"
+          ],
+          "mustKnowFacts": [
+            "Polymerisation is a fundamental subtopic of Hydrocarbons.",
+            "Crucial to understand the principles governing Polymerisation for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for polymerisation",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving polymerisation",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Polymerisation during complex MCQs.",
+            "Failing to apply the correct logic for Polymerisation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Polymerisation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Polymerisation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "hydrocarbons-q-polymerisation-1",
+              "question": "Explain the core concept behind Polymerisation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "polymerisation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "polymerisation",
+                "conceptSlug": "core-polymerisation",
+                "microskillSlug": "understand-polymerisation",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            },
+            {
+              "id": "hydrocarbons-q-polymerisation-2",
+              "question": "What is a common trap associated with Polymerisation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "polymerisation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "polymerisation",
+                "conceptSlug": "trap-polymerisation",
+                "microskillSlug": "avoid-polymerisation",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-hydrocarbons-alkyne-acidity",
+          "title": "Alkyne acidity",
+          "conceptTags": [
+            "hydrocarbons",
+            "alkyne-acidity"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Alkyne acidity"
+          ],
+          "mustKnowFacts": [
+            "Alkyne acidity is a fundamental subtopic of Hydrocarbons.",
+            "Crucial to understand the principles governing Alkyne acidity for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for alkyne acidity",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving alkyne acidity",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Alkyne acidity during complex MCQs.",
+            "Failing to apply the correct logic for Alkyne acidity."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Alkyne acidity."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Alkyne acidity."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "hydrocarbons-q-alkyne-acidity-1",
+              "question": "Explain the core concept behind Alkyne acidity.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "alkyne-acidity"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "alkyne-acidity",
+                "conceptSlug": "core-alkyne-acidity",
+                "microskillSlug": "understand-alkyne-acidity",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            },
+            {
+              "id": "hydrocarbons-q-alkyne-acidity-2",
+              "question": "What is a common trap associated with Alkyne acidity?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "alkyne-acidity",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "alkyne-acidity",
+                "conceptSlug": "trap-alkyne-acidity",
+                "microskillSlug": "avoid-alkyne-acidity",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-hydrocarbons-alkyne-preparation-reactions",
+          "title": "Alkyne preparation/reactions",
+          "conceptTags": [
+            "hydrocarbons",
+            "alkyne-preparation-reactions"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Alkyne preparation/reactions"
+          ],
+          "mustKnowFacts": [
+            "Alkyne preparation/reactions is a fundamental subtopic of Hydrocarbons.",
+            "Crucial to understand the principles governing Alkyne preparation/reactions for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for alkyne preparation/reactions",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving alkyne preparation/reactions",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Alkyne preparation/reactions during complex MCQs.",
+            "Failing to apply the correct logic for Alkyne preparation/reactions."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Alkyne preparation/reactions."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Alkyne preparation/reactions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "hydrocarbons-q-alkyne-preparation-reactions-1",
+              "question": "Explain the core concept behind Alkyne preparation/reactions.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "alkyne-preparation-reactions"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "alkyne-preparation-reactions",
+                "conceptSlug": "core-alkyne-preparation-reactions",
+                "microskillSlug": "understand-alkyne-preparation-reactions",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            },
+            {
+              "id": "hydrocarbons-q-alkyne-preparation-reactions-2",
+              "question": "What is a common trap associated with Alkyne preparation/reactions?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "alkyne-preparation-reactions",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "alkyne-preparation-reactions",
+                "conceptSlug": "trap-alkyne-preparation-reactions",
+                "microskillSlug": "avoid-alkyne-preparation-reactions",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-hydrocarbons-benzene-structure",
+          "title": "Benzene structure",
+          "conceptTags": [
+            "hydrocarbons",
+            "benzene-structure"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Benzene structure"
+          ],
+          "mustKnowFacts": [
+            "Benzene structure is a fundamental subtopic of Hydrocarbons.",
+            "Crucial to understand the principles governing Benzene structure for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for benzene structure",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving benzene structure",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Benzene structure during complex MCQs.",
+            "Failing to apply the correct logic for Benzene structure."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Benzene structure."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Benzene structure."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "hydrocarbons-q-benzene-structure-1",
+              "question": "Explain the core concept behind Benzene structure.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "benzene-structure"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "benzene-structure",
+                "conceptSlug": "core-benzene-structure",
+                "microskillSlug": "understand-benzene-structure",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            },
+            {
+              "id": "hydrocarbons-q-benzene-structure-2",
+              "question": "What is a common trap associated with Benzene structure?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "benzene-structure",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "benzene-structure",
+                "conceptSlug": "trap-benzene-structure",
+                "microskillSlug": "avoid-benzene-structure",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-hydrocarbons-aromaticity",
+          "title": "Aromaticity",
+          "conceptTags": [
+            "hydrocarbons",
+            "aromaticity"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Aromaticity"
+          ],
+          "mustKnowFacts": [
+            "Aromaticity is a fundamental subtopic of Hydrocarbons.",
+            "Crucial to understand the principles governing Aromaticity for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for aromaticity",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving aromaticity",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Aromaticity during complex MCQs.",
+            "Failing to apply the correct logic for Aromaticity."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Aromaticity."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Aromaticity."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "hydrocarbons-q-aromaticity-1",
+              "question": "Explain the core concept behind Aromaticity.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "aromaticity"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "aromaticity",
+                "conceptSlug": "core-aromaticity",
+                "microskillSlug": "understand-aromaticity",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            },
+            {
+              "id": "hydrocarbons-q-aromaticity-2",
+              "question": "What is a common trap associated with Aromaticity?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "aromaticity",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "aromaticity",
+                "conceptSlug": "trap-aromaticity",
+                "microskillSlug": "avoid-aromaticity",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-hydrocarbons-4",
+      "title": "Hydrocarbons - Section 4",
+      "description": "Comprehensive analysis covering electrophilic aromatic substitution, nitration, halogenation and more.",
+      "conceptTags": [
+        "hydrocarbons",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-hydrocarbons-electrophilic-aromatic-substitution",
+          "title": "Electrophilic aromatic substitution",
+          "conceptTags": [
+            "hydrocarbons",
+            "electrophilic-aromatic-substitution"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Electrophilic aromatic substitution"
+          ],
+          "mustKnowFacts": [
+            "Electrophilic aromatic substitution is a fundamental subtopic of Hydrocarbons.",
+            "Crucial to understand the principles governing Electrophilic aromatic substitution for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for electrophilic aromatic substitution",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving electrophilic aromatic substitution",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Electrophilic aromatic substitution during complex MCQs.",
+            "Failing to apply the correct logic for Electrophilic aromatic substitution."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Electrophilic aromatic substitution."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Electrophilic aromatic substitution."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "hydrocarbons-q-electrophilic-aromatic-substitution-1",
+              "question": "Explain the core concept behind Electrophilic aromatic substitution.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "electrophilic-aromatic-substitution"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "electrophilic-aromatic-substitution",
+                "conceptSlug": "core-electrophilic-aromatic-substitution",
+                "microskillSlug": "understand-electrophilic-aromatic-substitution",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            },
+            {
+              "id": "hydrocarbons-q-electrophilic-aromatic-substitution-2",
+              "question": "What is a common trap associated with Electrophilic aromatic substitution?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "electrophilic-aromatic-substitution",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "electrophilic-aromatic-substitution",
+                "conceptSlug": "trap-electrophilic-aromatic-substitution",
+                "microskillSlug": "avoid-electrophilic-aromatic-substitution",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-hydrocarbons-nitration",
+          "title": "Nitration",
+          "conceptTags": [
+            "hydrocarbons",
+            "nitration"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Nitration"
+          ],
+          "mustKnowFacts": [
+            "Nitration is a fundamental subtopic of Hydrocarbons.",
+            "Crucial to understand the principles governing Nitration for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for nitration",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving nitration",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Nitration during complex MCQs.",
+            "Failing to apply the correct logic for Nitration."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Nitration."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Nitration."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "hydrocarbons-q-nitration-1",
+              "question": "Explain the core concept behind Nitration.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "nitration"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "nitration",
+                "conceptSlug": "core-nitration",
+                "microskillSlug": "understand-nitration",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            },
+            {
+              "id": "hydrocarbons-q-nitration-2",
+              "question": "What is a common trap associated with Nitration?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "nitration",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "nitration",
+                "conceptSlug": "trap-nitration",
+                "microskillSlug": "avoid-nitration",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-hydrocarbons-halogenation",
+          "title": "Halogenation",
+          "conceptTags": [
+            "hydrocarbons",
+            "halogenation"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Halogenation"
+          ],
+          "mustKnowFacts": [
+            "Halogenation is a fundamental subtopic of Hydrocarbons.",
+            "Crucial to understand the principles governing Halogenation for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for halogenation",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving halogenation",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Halogenation during complex MCQs.",
+            "Failing to apply the correct logic for Halogenation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Halogenation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Halogenation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "hydrocarbons-q-halogenation-1",
+              "question": "Explain the core concept behind Halogenation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "halogenation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "halogenation",
+                "conceptSlug": "core-halogenation",
+                "microskillSlug": "understand-halogenation",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            },
+            {
+              "id": "hydrocarbons-q-halogenation-2",
+              "question": "What is a common trap associated with Halogenation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "halogenation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "halogenation",
+                "conceptSlug": "trap-halogenation",
+                "microskillSlug": "avoid-halogenation",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-hydrocarbons-friedel-crafts-alkylation-acylation",
+          "title": "Friedel-Crafts alkylation/acylation",
+          "conceptTags": [
+            "hydrocarbons",
+            "friedel-crafts-alkylation-acylation"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Friedel-Crafts alkylation/acylation"
+          ],
+          "mustKnowFacts": [
+            "Friedel-Crafts alkylation/acylation is a fundamental subtopic of Hydrocarbons.",
+            "Crucial to understand the principles governing Friedel-Crafts alkylation/acylation for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for Friedel-Crafts alkylation/acylation",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving Friedel-Crafts alkylation/acylation",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Friedel-Crafts alkylation/acylation during complex MCQs.",
+            "Failing to apply the correct logic for Friedel-Crafts alkylation/acylation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Friedel-Crafts alkylation/acylation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Friedel-Crafts alkylation/acylation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "hydrocarbons-q-friedel-crafts-alkylation-acylation-1",
+              "question": "Explain the core concept behind Friedel-Crafts alkylation/acylation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "friedel-crafts-alkylation-acylation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "friedel-crafts-alkylation-acylation",
+                "conceptSlug": "core-friedel-crafts-alkylation-acylation",
+                "microskillSlug": "understand-friedel-crafts-alkylation-acylation",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            },
+            {
+              "id": "hydrocarbons-q-friedel-crafts-alkylation-acylation-2",
+              "question": "What is a common trap associated with Friedel-Crafts alkylation/acylation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "friedel-crafts-alkylation-acylation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "friedel-crafts-alkylation-acylation",
+                "conceptSlug": "trap-friedel-crafts-alkylation-acylation",
+                "microskillSlug": "avoid-friedel-crafts-alkylation-acylation",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-hydrocarbons-directing-effects",
+          "title": "Directing effects",
+          "conceptTags": [
+            "hydrocarbons",
+            "directing-effects"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Directing effects"
+          ],
+          "mustKnowFacts": [
+            "Directing effects is a fundamental subtopic of Hydrocarbons.",
+            "Crucial to understand the principles governing Directing effects for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Relation for directing effects",
+              "expression": "PV = nRT",
+              "variables": [
+                "P",
+                "V",
+                "n",
+                "R",
+                "T"
+              ]
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Reaction involving directing effects",
+              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "reagentConditions": [
+                "Heat"
+              ],
+              "mechanismTags": [
+                "combustion"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Directing effects during complex MCQs.",
+            "Failing to apply the correct logic for Directing effects."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Directing effects."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Directing effects."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "hydrocarbons-q-directing-effects-1",
+              "question": "Explain the core concept behind Directing effects.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "directing-effects"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "directing-effects",
+                "conceptSlug": "core-directing-effects",
+                "microskillSlug": "understand-directing-effects",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            },
+            {
+              "id": "hydrocarbons-q-directing-effects-2",
+              "question": "What is a common trap associated with Directing effects?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "directing-effects",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "hydrocarbons",
+                "subtopicSlug": "directing-effects",
+                "conceptSlug": "trap-directing-effects",
+                "microskillSlug": "avoid-directing-effects",
+                "subject": "Chemistry",
+                "unitSlug": "hydrocarbons",
+                "chapterSlug": "hydrocarbons"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

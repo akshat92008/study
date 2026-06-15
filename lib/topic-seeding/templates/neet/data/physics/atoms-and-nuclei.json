@@ -1,0 +1,1603 @@
+{
+  "missions": [
+    {
+      "id": "m-atoms-and-nuclei-1",
+      "title": "Atoms and Nuclei - Section 1",
+      "description": "Comprehensive analysis covering Rutherford model, alpha scattering, Bohr postulates and more.",
+      "conceptTags": [
+        "atoms-and-nuclei",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-atoms-and-nuclei-rutherford-model",
+          "title": "Rutherford model",
+          "conceptTags": [
+            "atoms-and-nuclei",
+            "rutherford-model"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Rutherford model"
+          ],
+          "mustKnowFacts": [
+            "Rutherford model is a fundamental subtopic of Atoms and Nuclei.",
+            "Crucial to understand the principles governing Rutherford model for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for Rutherford model",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Rutherford model during complex MCQs.",
+            "Failing to apply the correct logic for Rutherford model."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Rutherford model."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Rutherford model."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atoms-and-nuclei-q-rutherford-model-1",
+              "question": "Explain the core concept behind Rutherford model.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "rutherford-model"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "rutherford-model",
+                "conceptSlug": "core-rutherford-model",
+                "microskillSlug": "understand-rutherford-model",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            },
+            {
+              "id": "atoms-and-nuclei-q-rutherford-model-2",
+              "question": "What is a common trap associated with Rutherford model?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "rutherford-model",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "rutherford-model",
+                "conceptSlug": "trap-rutherford-model",
+                "microskillSlug": "avoid-rutherford-model",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atoms-and-nuclei-alpha-scattering",
+          "title": "Alpha scattering",
+          "conceptTags": [
+            "atoms-and-nuclei",
+            "alpha-scattering"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Alpha scattering"
+          ],
+          "mustKnowFacts": [
+            "Alpha scattering is a fundamental subtopic of Atoms and Nuclei.",
+            "Crucial to understand the principles governing Alpha scattering for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for alpha scattering",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Alpha scattering during complex MCQs.",
+            "Failing to apply the correct logic for Alpha scattering."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Alpha scattering."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Alpha scattering."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atoms-and-nuclei-q-alpha-scattering-1",
+              "question": "Explain the core concept behind Alpha scattering.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "alpha-scattering"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "alpha-scattering",
+                "conceptSlug": "core-alpha-scattering",
+                "microskillSlug": "understand-alpha-scattering",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            },
+            {
+              "id": "atoms-and-nuclei-q-alpha-scattering-2",
+              "question": "What is a common trap associated with Alpha scattering?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "alpha-scattering",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "alpha-scattering",
+                "conceptSlug": "trap-alpha-scattering",
+                "microskillSlug": "avoid-alpha-scattering",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atoms-and-nuclei-bohr-postulates",
+          "title": "Bohr postulates",
+          "conceptTags": [
+            "atoms-and-nuclei",
+            "bohr-postulates"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Bohr postulates"
+          ],
+          "mustKnowFacts": [
+            "Bohr postulates is a fundamental subtopic of Atoms and Nuclei.",
+            "Crucial to understand the principles governing Bohr postulates for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for Bohr postulates",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Bohr postulates during complex MCQs.",
+            "Failing to apply the correct logic for Bohr postulates."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Bohr postulates."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Bohr postulates."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atoms-and-nuclei-q-bohr-postulates-1",
+              "question": "Explain the core concept behind Bohr postulates.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "bohr-postulates"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "bohr-postulates",
+                "conceptSlug": "core-bohr-postulates",
+                "microskillSlug": "understand-bohr-postulates",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            },
+            {
+              "id": "atoms-and-nuclei-q-bohr-postulates-2",
+              "question": "What is a common trap associated with Bohr postulates?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "bohr-postulates",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "bohr-postulates",
+                "conceptSlug": "trap-bohr-postulates",
+                "microskillSlug": "avoid-bohr-postulates",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atoms-and-nuclei-energy-levels",
+          "title": "Energy levels",
+          "conceptTags": [
+            "atoms-and-nuclei",
+            "energy-levels"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Energy levels"
+          ],
+          "mustKnowFacts": [
+            "Energy levels is a fundamental subtopic of Atoms and Nuclei.",
+            "Crucial to understand the principles governing Energy levels for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for energy levels",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Energy levels during complex MCQs.",
+            "Failing to apply the correct logic for Energy levels."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Energy levels."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Energy levels."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atoms-and-nuclei-q-energy-levels-1",
+              "question": "Explain the core concept behind Energy levels.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "energy-levels"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "energy-levels",
+                "conceptSlug": "core-energy-levels",
+                "microskillSlug": "understand-energy-levels",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            },
+            {
+              "id": "atoms-and-nuclei-q-energy-levels-2",
+              "question": "What is a common trap associated with Energy levels?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "energy-levels",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "energy-levels",
+                "conceptSlug": "trap-energy-levels",
+                "microskillSlug": "avoid-energy-levels",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atoms-and-nuclei-radius",
+          "title": "Radius",
+          "conceptTags": [
+            "atoms-and-nuclei",
+            "radius"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Radius"
+          ],
+          "mustKnowFacts": [
+            "Radius is a fundamental subtopic of Atoms and Nuclei.",
+            "Crucial to understand the principles governing Radius for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for radius",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Radius during complex MCQs.",
+            "Failing to apply the correct logic for Radius."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Radius."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Radius."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atoms-and-nuclei-q-radius-1",
+              "question": "Explain the core concept behind Radius.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "radius"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "radius",
+                "conceptSlug": "core-radius",
+                "microskillSlug": "understand-radius",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            },
+            {
+              "id": "atoms-and-nuclei-q-radius-2",
+              "question": "What is a common trap associated with Radius?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "radius",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "radius",
+                "conceptSlug": "trap-radius",
+                "microskillSlug": "avoid-radius",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-atoms-and-nuclei-2",
+      "title": "Atoms and Nuclei - Section 2",
+      "description": "Comprehensive analysis covering spectral series, hydrogen spectrum, nuclear composition and more.",
+      "conceptTags": [
+        "atoms-and-nuclei",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-atoms-and-nuclei-spectral-series",
+          "title": "Spectral series",
+          "conceptTags": [
+            "atoms-and-nuclei",
+            "spectral-series"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Spectral series"
+          ],
+          "mustKnowFacts": [
+            "Spectral series is a fundamental subtopic of Atoms and Nuclei.",
+            "Crucial to understand the principles governing Spectral series for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for spectral series",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Spectral series during complex MCQs.",
+            "Failing to apply the correct logic for Spectral series."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Spectral series."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Spectral series."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atoms-and-nuclei-q-spectral-series-1",
+              "question": "Explain the core concept behind Spectral series.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "spectral-series"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "spectral-series",
+                "conceptSlug": "core-spectral-series",
+                "microskillSlug": "understand-spectral-series",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            },
+            {
+              "id": "atoms-and-nuclei-q-spectral-series-2",
+              "question": "What is a common trap associated with Spectral series?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "spectral-series",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "spectral-series",
+                "conceptSlug": "trap-spectral-series",
+                "microskillSlug": "avoid-spectral-series",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atoms-and-nuclei-hydrogen-spectrum",
+          "title": "Hydrogen spectrum",
+          "conceptTags": [
+            "atoms-and-nuclei",
+            "hydrogen-spectrum"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Hydrogen spectrum"
+          ],
+          "mustKnowFacts": [
+            "Hydrogen spectrum is a fundamental subtopic of Atoms and Nuclei.",
+            "Crucial to understand the principles governing Hydrogen spectrum for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for hydrogen spectrum",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Hydrogen spectrum during complex MCQs.",
+            "Failing to apply the correct logic for Hydrogen spectrum."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Hydrogen spectrum."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Hydrogen spectrum."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atoms-and-nuclei-q-hydrogen-spectrum-1",
+              "question": "Explain the core concept behind Hydrogen spectrum.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "hydrogen-spectrum"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "hydrogen-spectrum",
+                "conceptSlug": "core-hydrogen-spectrum",
+                "microskillSlug": "understand-hydrogen-spectrum",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            },
+            {
+              "id": "atoms-and-nuclei-q-hydrogen-spectrum-2",
+              "question": "What is a common trap associated with Hydrogen spectrum?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "hydrogen-spectrum",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "hydrogen-spectrum",
+                "conceptSlug": "trap-hydrogen-spectrum",
+                "microskillSlug": "avoid-hydrogen-spectrum",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atoms-and-nuclei-nuclear-composition",
+          "title": "Nuclear composition",
+          "conceptTags": [
+            "atoms-and-nuclei",
+            "nuclear-composition"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Nuclear composition"
+          ],
+          "mustKnowFacts": [
+            "Nuclear composition is a fundamental subtopic of Atoms and Nuclei.",
+            "Crucial to understand the principles governing Nuclear composition for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for nuclear composition",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Nuclear composition during complex MCQs.",
+            "Failing to apply the correct logic for Nuclear composition."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Nuclear composition."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Nuclear composition."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atoms-and-nuclei-q-nuclear-composition-1",
+              "question": "Explain the core concept behind Nuclear composition.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "nuclear-composition"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "nuclear-composition",
+                "conceptSlug": "core-nuclear-composition",
+                "microskillSlug": "understand-nuclear-composition",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            },
+            {
+              "id": "atoms-and-nuclei-q-nuclear-composition-2",
+              "question": "What is a common trap associated with Nuclear composition?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "nuclear-composition",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "nuclear-composition",
+                "conceptSlug": "trap-nuclear-composition",
+                "microskillSlug": "avoid-nuclear-composition",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atoms-and-nuclei-isotopes-isobars-isotones",
+          "title": "Isotopes/isobars/isotones",
+          "conceptTags": [
+            "atoms-and-nuclei",
+            "isotopes-isobars-isotones"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Isotopes/isobars/isotones"
+          ],
+          "mustKnowFacts": [
+            "Isotopes/isobars/isotones is a fundamental subtopic of Atoms and Nuclei.",
+            "Crucial to understand the principles governing Isotopes/isobars/isotones for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for isotopes/isobars/isotones",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Isotopes/isobars/isotones during complex MCQs.",
+            "Failing to apply the correct logic for Isotopes/isobars/isotones."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Isotopes/isobars/isotones."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Isotopes/isobars/isotones."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atoms-and-nuclei-q-isotopes-isobars-isotones-1",
+              "question": "Explain the core concept behind Isotopes/isobars/isotones.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "isotopes-isobars-isotones"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "isotopes-isobars-isotones",
+                "conceptSlug": "core-isotopes-isobars-isotones",
+                "microskillSlug": "understand-isotopes-isobars-isotones",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            },
+            {
+              "id": "atoms-and-nuclei-q-isotopes-isobars-isotones-2",
+              "question": "What is a common trap associated with Isotopes/isobars/isotones?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "isotopes-isobars-isotones",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "isotopes-isobars-isotones",
+                "conceptSlug": "trap-isotopes-isobars-isotones",
+                "microskillSlug": "avoid-isotopes-isobars-isotones",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atoms-and-nuclei-mass-defect",
+          "title": "Mass defect",
+          "conceptTags": [
+            "atoms-and-nuclei",
+            "mass-defect"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Mass defect"
+          ],
+          "mustKnowFacts": [
+            "Mass defect is a fundamental subtopic of Atoms and Nuclei.",
+            "Crucial to understand the principles governing Mass defect for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for mass defect",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Mass defect during complex MCQs.",
+            "Failing to apply the correct logic for Mass defect."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Mass defect."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Mass defect."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atoms-and-nuclei-q-mass-defect-1",
+              "question": "Explain the core concept behind Mass defect.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "mass-defect"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "mass-defect",
+                "conceptSlug": "core-mass-defect",
+                "microskillSlug": "understand-mass-defect",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            },
+            {
+              "id": "atoms-and-nuclei-q-mass-defect-2",
+              "question": "What is a common trap associated with Mass defect?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "mass-defect",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "mass-defect",
+                "conceptSlug": "trap-mass-defect",
+                "microskillSlug": "avoid-mass-defect",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-atoms-and-nuclei-3",
+      "title": "Atoms and Nuclei - Section 3",
+      "description": "Comprehensive analysis covering binding energy, radioactivity, alpha/beta/gamma decay and more.",
+      "conceptTags": [
+        "atoms-and-nuclei",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-atoms-and-nuclei-binding-energy",
+          "title": "Binding energy",
+          "conceptTags": [
+            "atoms-and-nuclei",
+            "binding-energy"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Binding energy"
+          ],
+          "mustKnowFacts": [
+            "Binding energy is a fundamental subtopic of Atoms and Nuclei.",
+            "Crucial to understand the principles governing Binding energy for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for binding energy",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Binding energy during complex MCQs.",
+            "Failing to apply the correct logic for Binding energy."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Binding energy."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Binding energy."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atoms-and-nuclei-q-binding-energy-1",
+              "question": "Explain the core concept behind Binding energy.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "binding-energy"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "binding-energy",
+                "conceptSlug": "core-binding-energy",
+                "microskillSlug": "understand-binding-energy",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            },
+            {
+              "id": "atoms-and-nuclei-q-binding-energy-2",
+              "question": "What is a common trap associated with Binding energy?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "binding-energy",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "binding-energy",
+                "conceptSlug": "trap-binding-energy",
+                "microskillSlug": "avoid-binding-energy",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atoms-and-nuclei-radioactivity",
+          "title": "Radioactivity",
+          "conceptTags": [
+            "atoms-and-nuclei",
+            "radioactivity"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Radioactivity"
+          ],
+          "mustKnowFacts": [
+            "Radioactivity is a fundamental subtopic of Atoms and Nuclei.",
+            "Crucial to understand the principles governing Radioactivity for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for radioactivity",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Radioactivity during complex MCQs.",
+            "Failing to apply the correct logic for Radioactivity."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Radioactivity."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Radioactivity."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atoms-and-nuclei-q-radioactivity-1",
+              "question": "Explain the core concept behind Radioactivity.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "radioactivity"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "radioactivity",
+                "conceptSlug": "core-radioactivity",
+                "microskillSlug": "understand-radioactivity",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            },
+            {
+              "id": "atoms-and-nuclei-q-radioactivity-2",
+              "question": "What is a common trap associated with Radioactivity?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "radioactivity",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "radioactivity",
+                "conceptSlug": "trap-radioactivity",
+                "microskillSlug": "avoid-radioactivity",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atoms-and-nuclei-alpha-beta-gamma-decay",
+          "title": "Alpha/beta/gamma decay",
+          "conceptTags": [
+            "atoms-and-nuclei",
+            "alpha-beta-gamma-decay"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Alpha/beta/gamma decay"
+          ],
+          "mustKnowFacts": [
+            "Alpha/beta/gamma decay is a fundamental subtopic of Atoms and Nuclei.",
+            "Crucial to understand the principles governing Alpha/beta/gamma decay for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for alpha/beta/gamma decay",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Alpha/beta/gamma decay during complex MCQs.",
+            "Failing to apply the correct logic for Alpha/beta/gamma decay."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Alpha/beta/gamma decay."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Alpha/beta/gamma decay."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atoms-and-nuclei-q-alpha-beta-gamma-decay-1",
+              "question": "Explain the core concept behind Alpha/beta/gamma decay.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "alpha-beta-gamma-decay"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "alpha-beta-gamma-decay",
+                "conceptSlug": "core-alpha-beta-gamma-decay",
+                "microskillSlug": "understand-alpha-beta-gamma-decay",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            },
+            {
+              "id": "atoms-and-nuclei-q-alpha-beta-gamma-decay-2",
+              "question": "What is a common trap associated with Alpha/beta/gamma decay?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "alpha-beta-gamma-decay",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "alpha-beta-gamma-decay",
+                "conceptSlug": "trap-alpha-beta-gamma-decay",
+                "microskillSlug": "avoid-alpha-beta-gamma-decay",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atoms-and-nuclei-half-life",
+          "title": "Half-life",
+          "conceptTags": [
+            "atoms-and-nuclei",
+            "half-life"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Half-life"
+          ],
+          "mustKnowFacts": [
+            "Half-life is a fundamental subtopic of Atoms and Nuclei.",
+            "Crucial to understand the principles governing Half-life for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for half-life",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Half-life during complex MCQs.",
+            "Failing to apply the correct logic for Half-life."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Half-life."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Half-life."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atoms-and-nuclei-q-half-life-1",
+              "question": "Explain the core concept behind Half-life.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "half-life"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "half-life",
+                "conceptSlug": "core-half-life",
+                "microskillSlug": "understand-half-life",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            },
+            {
+              "id": "atoms-and-nuclei-q-half-life-2",
+              "question": "What is a common trap associated with Half-life?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "half-life",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "half-life",
+                "conceptSlug": "trap-half-life",
+                "microskillSlug": "avoid-half-life",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atoms-and-nuclei-mean-life",
+          "title": "Mean life",
+          "conceptTags": [
+            "atoms-and-nuclei",
+            "mean-life"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Mean life"
+          ],
+          "mustKnowFacts": [
+            "Mean life is a fundamental subtopic of Atoms and Nuclei.",
+            "Crucial to understand the principles governing Mean life for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for mean life",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Mean life during complex MCQs.",
+            "Failing to apply the correct logic for Mean life."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Mean life."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Mean life."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atoms-and-nuclei-q-mean-life-1",
+              "question": "Explain the core concept behind Mean life.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "mean-life"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "mean-life",
+                "conceptSlug": "core-mean-life",
+                "microskillSlug": "understand-mean-life",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            },
+            {
+              "id": "atoms-and-nuclei-q-mean-life-2",
+              "question": "What is a common trap associated with Mean life?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "mean-life",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "mean-life",
+                "conceptSlug": "trap-mean-life",
+                "microskillSlug": "avoid-mean-life",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-atoms-and-nuclei-4",
+      "title": "Atoms and Nuclei - Section 4",
+      "description": "Comprehensive analysis covering nuclear fission, nuclear fusion and more.",
+      "conceptTags": [
+        "atoms-and-nuclei",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-atoms-and-nuclei-nuclear-fission",
+          "title": "Nuclear fission",
+          "conceptTags": [
+            "atoms-and-nuclei",
+            "nuclear-fission"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Nuclear fission"
+          ],
+          "mustKnowFacts": [
+            "Nuclear fission is a fundamental subtopic of Atoms and Nuclei.",
+            "Crucial to understand the principles governing Nuclear fission for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for nuclear fission",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Nuclear fission during complex MCQs.",
+            "Failing to apply the correct logic for Nuclear fission."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Nuclear fission."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Nuclear fission."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atoms-and-nuclei-q-nuclear-fission-1",
+              "question": "Explain the core concept behind Nuclear fission.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "nuclear-fission"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "nuclear-fission",
+                "conceptSlug": "core-nuclear-fission",
+                "microskillSlug": "understand-nuclear-fission",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            },
+            {
+              "id": "atoms-and-nuclei-q-nuclear-fission-2",
+              "question": "What is a common trap associated with Nuclear fission?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "nuclear-fission",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "nuclear-fission",
+                "conceptSlug": "trap-nuclear-fission",
+                "microskillSlug": "avoid-nuclear-fission",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atoms-and-nuclei-nuclear-fusion",
+          "title": "Nuclear fusion",
+          "conceptTags": [
+            "atoms-and-nuclei",
+            "nuclear-fusion"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Nuclear fusion"
+          ],
+          "mustKnowFacts": [
+            "Nuclear fusion is a fundamental subtopic of Atoms and Nuclei.",
+            "Crucial to understand the principles governing Nuclear fusion for NEET."
+          ],
+          "formulas": [
+            {
+              "name": "Formula for nuclear fusion",
+              "expression": "F = m a",
+              "variables": [
+                "F",
+                "m",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Nuclear fusion during complex MCQs.",
+            "Failing to apply the correct logic for Nuclear fusion."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Nuclear fusion."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Nuclear fusion."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atoms-and-nuclei-q-nuclear-fusion-1",
+              "question": "Explain the core concept behind Nuclear fusion.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "nuclear-fusion"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "nuclear-fusion",
+                "conceptSlug": "core-nuclear-fusion",
+                "microskillSlug": "understand-nuclear-fusion",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            },
+            {
+              "id": "atoms-and-nuclei-q-nuclear-fusion-2",
+              "question": "What is a common trap associated with Nuclear fusion?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "nuclear-fusion",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "nuclear-fusion",
+                "conceptSlug": "trap-nuclear-fusion",
+                "microskillSlug": "avoid-nuclear-fusion",
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

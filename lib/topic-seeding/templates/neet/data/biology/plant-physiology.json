@@ -1,0 +1,2782 @@
+{
+  "missions": [
+    {
+      "id": "m-plant-physiology-1",
+      "title": "Plant Physiology - Section 1",
+      "description": "Comprehensive analysis covering photosynthesis site, pigments, light reaction and more.",
+      "conceptTags": [
+        "plant-physiology",
+        "section-1"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-plant-physiology-photosynthesis-site",
+          "title": "Photosynthesis site",
+          "conceptTags": [
+            "plant-physiology",
+            "photosynthesis-site"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Photosynthesis site"
+          ],
+          "mustKnowFacts": [
+            "Photosynthesis site is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing Photosynthesis site for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing photosynthesis site",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of photosynthesis site",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in photosynthesis site"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Photosynthesis site during complex MCQs.",
+            "Failing to apply the correct logic for Photosynthesis site."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Photosynthesis site."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Photosynthesis site."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-photosynthesis-site-1",
+              "question": "Explain the core concept behind Photosynthesis site.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "photosynthesis-site"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "photosynthesis-site",
+                "conceptSlug": "core-photosynthesis-site",
+                "microskillSlug": "understand-photosynthesis-site",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-photosynthesis-site-2",
+              "question": "What is a common trap associated with Photosynthesis site?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "photosynthesis-site",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "photosynthesis-site",
+                "conceptSlug": "trap-photosynthesis-site",
+                "microskillSlug": "avoid-photosynthesis-site",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-plant-physiology-pigments",
+          "title": "Pigments",
+          "conceptTags": [
+            "plant-physiology",
+            "pigments"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Pigments"
+          ],
+          "mustKnowFacts": [
+            "Pigments is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing Pigments for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing pigments",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of pigments",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in pigments"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Pigments during complex MCQs.",
+            "Failing to apply the correct logic for Pigments."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Pigments."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Pigments."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-pigments-1",
+              "question": "Explain the core concept behind Pigments.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "pigments"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "pigments",
+                "conceptSlug": "core-pigments",
+                "microskillSlug": "understand-pigments",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-pigments-2",
+              "question": "What is a common trap associated with Pigments?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "pigments",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "pigments",
+                "conceptSlug": "trap-pigments",
+                "microskillSlug": "avoid-pigments",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-plant-physiology-light-reaction",
+          "title": "Light reaction",
+          "conceptTags": [
+            "plant-physiology",
+            "light-reaction"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Light reaction"
+          ],
+          "mustKnowFacts": [
+            "Light reaction is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing Light reaction for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing light reaction",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of light reaction",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in light reaction"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Light reaction during complex MCQs.",
+            "Failing to apply the correct logic for Light reaction."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Light reaction."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Light reaction."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-light-reaction-1",
+              "question": "Explain the core concept behind Light reaction.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "light-reaction"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "light-reaction",
+                "conceptSlug": "core-light-reaction",
+                "microskillSlug": "understand-light-reaction",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-light-reaction-2",
+              "question": "What is a common trap associated with Light reaction?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "light-reaction",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "light-reaction",
+                "conceptSlug": "trap-light-reaction",
+                "microskillSlug": "avoid-light-reaction",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-plant-physiology-cyclic-photophosphorylation",
+          "title": "Cyclic photophosphorylation",
+          "conceptTags": [
+            "plant-physiology",
+            "cyclic-photophosphorylation"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Cyclic photophosphorylation"
+          ],
+          "mustKnowFacts": [
+            "Cyclic photophosphorylation is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing Cyclic photophosphorylation for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing cyclic photophosphorylation",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of cyclic photophosphorylation",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in cyclic photophosphorylation"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Cyclic photophosphorylation during complex MCQs.",
+            "Failing to apply the correct logic for Cyclic photophosphorylation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Cyclic photophosphorylation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Cyclic photophosphorylation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-cyclic-photophosphorylation-1",
+              "question": "Explain the core concept behind Cyclic photophosphorylation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "cyclic-photophosphorylation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "cyclic-photophosphorylation",
+                "conceptSlug": "core-cyclic-photophosphorylation",
+                "microskillSlug": "understand-cyclic-photophosphorylation",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-cyclic-photophosphorylation-2",
+              "question": "What is a common trap associated with Cyclic photophosphorylation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "cyclic-photophosphorylation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "cyclic-photophosphorylation",
+                "conceptSlug": "trap-cyclic-photophosphorylation",
+                "microskillSlug": "avoid-cyclic-photophosphorylation",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-plant-physiology-non-cyclic-photophosphorylation",
+          "title": "Non-cyclic photophosphorylation",
+          "conceptTags": [
+            "plant-physiology",
+            "non-cyclic-photophosphorylation"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Non-cyclic photophosphorylation"
+          ],
+          "mustKnowFacts": [
+            "Non-cyclic photophosphorylation is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing Non-cyclic photophosphorylation for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing non-cyclic photophosphorylation",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of non-cyclic photophosphorylation",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in non-cyclic photophosphorylation"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Non-cyclic photophosphorylation during complex MCQs.",
+            "Failing to apply the correct logic for Non-cyclic photophosphorylation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Non-cyclic photophosphorylation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Non-cyclic photophosphorylation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-non-cyclic-photophosphorylation-1",
+              "question": "Explain the core concept behind Non-cyclic photophosphorylation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "non-cyclic-photophosphorylation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "non-cyclic-photophosphorylation",
+                "conceptSlug": "core-non-cyclic-photophosphorylation",
+                "microskillSlug": "understand-non-cyclic-photophosphorylation",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-non-cyclic-photophosphorylation-2",
+              "question": "What is a common trap associated with Non-cyclic photophosphorylation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "non-cyclic-photophosphorylation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "non-cyclic-photophosphorylation",
+                "conceptSlug": "trap-non-cyclic-photophosphorylation",
+                "microskillSlug": "avoid-non-cyclic-photophosphorylation",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-plant-physiology-chemiosmosis",
+          "title": "Chemiosmosis",
+          "conceptTags": [
+            "plant-physiology",
+            "chemiosmosis"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Chemiosmosis"
+          ],
+          "mustKnowFacts": [
+            "Chemiosmosis is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing Chemiosmosis for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing chemiosmosis",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of chemiosmosis",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in chemiosmosis"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Chemiosmosis during complex MCQs.",
+            "Failing to apply the correct logic for Chemiosmosis."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Chemiosmosis."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Chemiosmosis."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-chemiosmosis-1",
+              "question": "Explain the core concept behind Chemiosmosis.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "chemiosmosis"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "chemiosmosis",
+                "conceptSlug": "core-chemiosmosis",
+                "microskillSlug": "understand-chemiosmosis",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-chemiosmosis-2",
+              "question": "What is a common trap associated with Chemiosmosis?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "chemiosmosis",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "chemiosmosis",
+                "conceptSlug": "trap-chemiosmosis",
+                "microskillSlug": "avoid-chemiosmosis",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-plant-physiology-calvin-cycle",
+          "title": "Calvin cycle",
+          "conceptTags": [
+            "plant-physiology",
+            "calvin-cycle"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Calvin cycle"
+          ],
+          "mustKnowFacts": [
+            "Calvin cycle is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing Calvin cycle for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing Calvin cycle",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of Calvin cycle",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in Calvin cycle"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Calvin cycle during complex MCQs.",
+            "Failing to apply the correct logic for Calvin cycle."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Calvin cycle."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Calvin cycle."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-calvin-cycle-1",
+              "question": "Explain the core concept behind Calvin cycle.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "calvin-cycle"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "calvin-cycle",
+                "conceptSlug": "core-calvin-cycle",
+                "microskillSlug": "understand-calvin-cycle",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-calvin-cycle-2",
+              "question": "What is a common trap associated with Calvin cycle?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "calvin-cycle",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "calvin-cycle",
+                "conceptSlug": "trap-calvin-cycle",
+                "microskillSlug": "avoid-calvin-cycle",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-plant-physiology-photorespiration",
+          "title": "Photorespiration",
+          "conceptTags": [
+            "plant-physiology",
+            "photorespiration"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Photorespiration"
+          ],
+          "mustKnowFacts": [
+            "Photorespiration is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing Photorespiration for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing photorespiration",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of photorespiration",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in photorespiration"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Photorespiration during complex MCQs.",
+            "Failing to apply the correct logic for Photorespiration."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Photorespiration."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Photorespiration."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-photorespiration-1",
+              "question": "Explain the core concept behind Photorespiration.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "photorespiration"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "photorespiration",
+                "conceptSlug": "core-photorespiration",
+                "microskillSlug": "understand-photorespiration",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-photorespiration-2",
+              "question": "What is a common trap associated with Photorespiration?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "photorespiration",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "photorespiration",
+                "conceptSlug": "trap-photorespiration",
+                "microskillSlug": "avoid-photorespiration",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-plant-physiology-2",
+      "title": "Plant Physiology - Section 2",
+      "description": "Comprehensive analysis covering C3/C4 pathways, factors affecting photosynthesis, glycolysis and more.",
+      "conceptTags": [
+        "plant-physiology",
+        "section-2"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-plant-physiology-c3-c4-pathways",
+          "title": "C3/C4 pathways",
+          "conceptTags": [
+            "plant-physiology",
+            "c3-c4-pathways"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, C3/C4 pathways"
+          ],
+          "mustKnowFacts": [
+            "C3/C4 pathways is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing C3/C4 pathways for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing C3/C4 pathways",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of C3/C4 pathways",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in C3/C4 pathways"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret C3/C4 pathways during complex MCQs.",
+            "Failing to apply the correct logic for C3/C4 pathways."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to C3/C4 pathways."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about C3/C4 pathways."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-c3-c4-pathways-1",
+              "question": "Explain the core concept behind C3/C4 pathways.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "c3-c4-pathways"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "c3-c4-pathways",
+                "conceptSlug": "core-c3-c4-pathways",
+                "microskillSlug": "understand-c3-c4-pathways",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-c3-c4-pathways-2",
+              "question": "What is a common trap associated with C3/C4 pathways?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "c3-c4-pathways",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "c3-c4-pathways",
+                "conceptSlug": "trap-c3-c4-pathways",
+                "microskillSlug": "avoid-c3-c4-pathways",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-plant-physiology-factors-affecting-photosynthesis",
+          "title": "Factors affecting photosynthesis",
+          "conceptTags": [
+            "plant-physiology",
+            "factors-affecting-photosynthesis"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Factors affecting photosynthesis"
+          ],
+          "mustKnowFacts": [
+            "Factors affecting photosynthesis is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing Factors affecting photosynthesis for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing factors affecting photosynthesis",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of factors affecting photosynthesis",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in factors affecting photosynthesis"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Factors affecting photosynthesis during complex MCQs.",
+            "Failing to apply the correct logic for Factors affecting photosynthesis."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Factors affecting photosynthesis."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Factors affecting photosynthesis."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-factors-affecting-photosynthesis-1",
+              "question": "Explain the core concept behind Factors affecting photosynthesis.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "factors-affecting-photosynthesis"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "factors-affecting-photosynthesis",
+                "conceptSlug": "core-factors-affecting-photosynthesis",
+                "microskillSlug": "understand-factors-affecting-photosynthesis",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-factors-affecting-photosynthesis-2",
+              "question": "What is a common trap associated with Factors affecting photosynthesis?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "factors-affecting-photosynthesis",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "factors-affecting-photosynthesis",
+                "conceptSlug": "trap-factors-affecting-photosynthesis",
+                "microskillSlug": "avoid-factors-affecting-photosynthesis",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-plant-physiology-glycolysis",
+          "title": "Glycolysis",
+          "conceptTags": [
+            "plant-physiology",
+            "glycolysis"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Glycolysis"
+          ],
+          "mustKnowFacts": [
+            "Glycolysis is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing Glycolysis for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing glycolysis",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of glycolysis",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in glycolysis"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Glycolysis during complex MCQs.",
+            "Failing to apply the correct logic for Glycolysis."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Glycolysis."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Glycolysis."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-glycolysis-1",
+              "question": "Explain the core concept behind Glycolysis.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "glycolysis"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "glycolysis",
+                "conceptSlug": "core-glycolysis",
+                "microskillSlug": "understand-glycolysis",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-glycolysis-2",
+              "question": "What is a common trap associated with Glycolysis?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "glycolysis",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "glycolysis",
+                "conceptSlug": "trap-glycolysis",
+                "microskillSlug": "avoid-glycolysis",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-plant-physiology-fermentation",
+          "title": "Fermentation",
+          "conceptTags": [
+            "plant-physiology",
+            "fermentation"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Fermentation"
+          ],
+          "mustKnowFacts": [
+            "Fermentation is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing Fermentation for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing fermentation",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of fermentation",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in fermentation"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Fermentation during complex MCQs.",
+            "Failing to apply the correct logic for Fermentation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Fermentation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Fermentation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-fermentation-1",
+              "question": "Explain the core concept behind Fermentation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "fermentation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "fermentation",
+                "conceptSlug": "core-fermentation",
+                "microskillSlug": "understand-fermentation",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-fermentation-2",
+              "question": "What is a common trap associated with Fermentation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "fermentation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "fermentation",
+                "conceptSlug": "trap-fermentation",
+                "microskillSlug": "avoid-fermentation",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-plant-physiology-tca-cycle",
+          "title": "TCA cycle",
+          "conceptTags": [
+            "plant-physiology",
+            "tca-cycle"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, TCA cycle"
+          ],
+          "mustKnowFacts": [
+            "TCA cycle is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing TCA cycle for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing TCA cycle",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of TCA cycle",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in TCA cycle"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret TCA cycle during complex MCQs.",
+            "Failing to apply the correct logic for TCA cycle."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to TCA cycle."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about TCA cycle."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-tca-cycle-1",
+              "question": "Explain the core concept behind TCA cycle.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "tca-cycle"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "tca-cycle",
+                "conceptSlug": "core-tca-cycle",
+                "microskillSlug": "understand-tca-cycle",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-tca-cycle-2",
+              "question": "What is a common trap associated with TCA cycle?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "tca-cycle",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "tca-cycle",
+                "conceptSlug": "trap-tca-cycle",
+                "microskillSlug": "avoid-tca-cycle",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-plant-physiology-ets",
+          "title": "ETS",
+          "conceptTags": [
+            "plant-physiology",
+            "ets"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, ETS"
+          ],
+          "mustKnowFacts": [
+            "ETS is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing ETS for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing ETS",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of ETS",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in ETS"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret ETS during complex MCQs.",
+            "Failing to apply the correct logic for ETS."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to ETS."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about ETS."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-ets-1",
+              "question": "Explain the core concept behind ETS.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "ets"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "ets",
+                "conceptSlug": "core-ets",
+                "microskillSlug": "understand-ets",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-ets-2",
+              "question": "What is a common trap associated with ETS?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "ets",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "ets",
+                "conceptSlug": "trap-ets",
+                "microskillSlug": "avoid-ets",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-plant-physiology-atp-yield",
+          "title": "ATP yield",
+          "conceptTags": [
+            "plant-physiology",
+            "atp-yield"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, ATP yield"
+          ],
+          "mustKnowFacts": [
+            "ATP yield is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing ATP yield for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing ATP yield",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of ATP yield",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in ATP yield"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret ATP yield during complex MCQs.",
+            "Failing to apply the correct logic for ATP yield."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to ATP yield."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about ATP yield."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-atp-yield-1",
+              "question": "Explain the core concept behind ATP yield.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "atp-yield"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "atp-yield",
+                "conceptSlug": "core-atp-yield",
+                "microskillSlug": "understand-atp-yield",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-atp-yield-2",
+              "question": "What is a common trap associated with ATP yield?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "atp-yield",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "atp-yield",
+                "conceptSlug": "trap-atp-yield",
+                "microskillSlug": "avoid-atp-yield",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-plant-physiology-amphibolic-pathway",
+          "title": "Amphibolic pathway",
+          "conceptTags": [
+            "plant-physiology",
+            "amphibolic-pathway"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Amphibolic pathway"
+          ],
+          "mustKnowFacts": [
+            "Amphibolic pathway is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing Amphibolic pathway for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing amphibolic pathway",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of amphibolic pathway",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in amphibolic pathway"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Amphibolic pathway during complex MCQs.",
+            "Failing to apply the correct logic for Amphibolic pathway."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Amphibolic pathway."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Amphibolic pathway."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-amphibolic-pathway-1",
+              "question": "Explain the core concept behind Amphibolic pathway.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "amphibolic-pathway"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "amphibolic-pathway",
+                "conceptSlug": "core-amphibolic-pathway",
+                "microskillSlug": "understand-amphibolic-pathway",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-amphibolic-pathway-2",
+              "question": "What is a common trap associated with Amphibolic pathway?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "amphibolic-pathway",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "amphibolic-pathway",
+                "conceptSlug": "trap-amphibolic-pathway",
+                "microskillSlug": "avoid-amphibolic-pathway",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-plant-physiology-3",
+      "title": "Plant Physiology - Section 3",
+      "description": "Comprehensive analysis covering respiratory quotient, seed germination, phases of growth and more.",
+      "conceptTags": [
+        "plant-physiology",
+        "section-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-plant-physiology-respiratory-quotient",
+          "title": "Respiratory quotient",
+          "conceptTags": [
+            "plant-physiology",
+            "respiratory-quotient"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Respiratory quotient"
+          ],
+          "mustKnowFacts": [
+            "Respiratory quotient is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing Respiratory quotient for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing respiratory quotient",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of respiratory quotient",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in respiratory quotient"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Respiratory quotient during complex MCQs.",
+            "Failing to apply the correct logic for Respiratory quotient."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Respiratory quotient."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Respiratory quotient."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-respiratory-quotient-1",
+              "question": "Explain the core concept behind Respiratory quotient.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "respiratory-quotient"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "respiratory-quotient",
+                "conceptSlug": "core-respiratory-quotient",
+                "microskillSlug": "understand-respiratory-quotient",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-respiratory-quotient-2",
+              "question": "What is a common trap associated with Respiratory quotient?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "respiratory-quotient",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "respiratory-quotient",
+                "conceptSlug": "trap-respiratory-quotient",
+                "microskillSlug": "avoid-respiratory-quotient",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-plant-physiology-seed-germination",
+          "title": "Seed germination",
+          "conceptTags": [
+            "plant-physiology",
+            "seed-germination"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Seed germination"
+          ],
+          "mustKnowFacts": [
+            "Seed germination is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing Seed germination for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing seed germination",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of seed germination",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in seed germination"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Seed germination during complex MCQs.",
+            "Failing to apply the correct logic for Seed germination."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Seed germination."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Seed germination."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-seed-germination-1",
+              "question": "Explain the core concept behind Seed germination.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "seed-germination"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "seed-germination",
+                "conceptSlug": "core-seed-germination",
+                "microskillSlug": "understand-seed-germination",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-seed-germination-2",
+              "question": "What is a common trap associated with Seed germination?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "seed-germination",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "seed-germination",
+                "conceptSlug": "trap-seed-germination",
+                "microskillSlug": "avoid-seed-germination",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-plant-physiology-phases-of-growth",
+          "title": "Phases of growth",
+          "conceptTags": [
+            "plant-physiology",
+            "phases-of-growth"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Phases of growth"
+          ],
+          "mustKnowFacts": [
+            "Phases of growth is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing Phases of growth for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing phases of growth",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of phases of growth",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in phases of growth"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Phases of growth during complex MCQs.",
+            "Failing to apply the correct logic for Phases of growth."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Phases of growth."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Phases of growth."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-phases-of-growth-1",
+              "question": "Explain the core concept behind Phases of growth.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "phases-of-growth"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "phases-of-growth",
+                "conceptSlug": "core-phases-of-growth",
+                "microskillSlug": "understand-phases-of-growth",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-phases-of-growth-2",
+              "question": "What is a common trap associated with Phases of growth?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "phases-of-growth",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "phases-of-growth",
+                "conceptSlug": "trap-phases-of-growth",
+                "microskillSlug": "avoid-phases-of-growth",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-plant-physiology-growth-rate",
+          "title": "Growth rate",
+          "conceptTags": [
+            "plant-physiology",
+            "growth-rate"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Growth rate"
+          ],
+          "mustKnowFacts": [
+            "Growth rate is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing Growth rate for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing growth rate",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of growth rate",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in growth rate"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Growth rate during complex MCQs.",
+            "Failing to apply the correct logic for Growth rate."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Growth rate."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Growth rate."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-growth-rate-1",
+              "question": "Explain the core concept behind Growth rate.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "growth-rate"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "growth-rate",
+                "conceptSlug": "core-growth-rate",
+                "microskillSlug": "understand-growth-rate",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-growth-rate-2",
+              "question": "What is a common trap associated with Growth rate?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "growth-rate",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "growth-rate",
+                "conceptSlug": "trap-growth-rate",
+                "microskillSlug": "avoid-growth-rate",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-plant-physiology-differentiation",
+          "title": "Differentiation",
+          "conceptTags": [
+            "plant-physiology",
+            "differentiation"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Differentiation"
+          ],
+          "mustKnowFacts": [
+            "Differentiation is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing Differentiation for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing differentiation",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of differentiation",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in differentiation"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Differentiation during complex MCQs.",
+            "Failing to apply the correct logic for Differentiation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Differentiation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Differentiation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-differentiation-1",
+              "question": "Explain the core concept behind Differentiation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "differentiation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "differentiation",
+                "conceptSlug": "core-differentiation",
+                "microskillSlug": "understand-differentiation",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-differentiation-2",
+              "question": "What is a common trap associated with Differentiation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "differentiation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "differentiation",
+                "conceptSlug": "trap-differentiation",
+                "microskillSlug": "avoid-differentiation",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-plant-physiology-dedifferentiation",
+          "title": "Dedifferentiation",
+          "conceptTags": [
+            "plant-physiology",
+            "dedifferentiation"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Dedifferentiation"
+          ],
+          "mustKnowFacts": [
+            "Dedifferentiation is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing Dedifferentiation for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing dedifferentiation",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of dedifferentiation",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in dedifferentiation"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Dedifferentiation during complex MCQs.",
+            "Failing to apply the correct logic for Dedifferentiation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Dedifferentiation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Dedifferentiation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-dedifferentiation-1",
+              "question": "Explain the core concept behind Dedifferentiation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "dedifferentiation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "dedifferentiation",
+                "conceptSlug": "core-dedifferentiation",
+                "microskillSlug": "understand-dedifferentiation",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-dedifferentiation-2",
+              "question": "What is a common trap associated with Dedifferentiation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "dedifferentiation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "dedifferentiation",
+                "conceptSlug": "trap-dedifferentiation",
+                "microskillSlug": "avoid-dedifferentiation",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-plant-physiology-redifferentiation",
+          "title": "Redifferentiation",
+          "conceptTags": [
+            "plant-physiology",
+            "redifferentiation"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Redifferentiation"
+          ],
+          "mustKnowFacts": [
+            "Redifferentiation is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing Redifferentiation for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing redifferentiation",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of redifferentiation",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in redifferentiation"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Redifferentiation during complex MCQs.",
+            "Failing to apply the correct logic for Redifferentiation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Redifferentiation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Redifferentiation."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-redifferentiation-1",
+              "question": "Explain the core concept behind Redifferentiation.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "redifferentiation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "redifferentiation",
+                "conceptSlug": "core-redifferentiation",
+                "microskillSlug": "understand-redifferentiation",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-redifferentiation-2",
+              "question": "What is a common trap associated with Redifferentiation?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "redifferentiation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "redifferentiation",
+                "conceptSlug": "trap-redifferentiation",
+                "microskillSlug": "avoid-redifferentiation",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-plant-physiology-plant-growth-regulators",
+          "title": "Plant growth regulators",
+          "conceptTags": [
+            "plant-physiology",
+            "plant-growth-regulators"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Plant growth regulators"
+          ],
+          "mustKnowFacts": [
+            "Plant growth regulators is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing Plant growth regulators for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing plant growth regulators",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of plant growth regulators",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in plant growth regulators"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Plant growth regulators during complex MCQs.",
+            "Failing to apply the correct logic for Plant growth regulators."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Plant growth regulators."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Plant growth regulators."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-plant-growth-regulators-1",
+              "question": "Explain the core concept behind Plant growth regulators.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "plant-growth-regulators"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "plant-growth-regulators",
+                "conceptSlug": "core-plant-growth-regulators",
+                "microskillSlug": "understand-plant-growth-regulators",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-plant-growth-regulators-2",
+              "question": "What is a common trap associated with Plant growth regulators?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "plant-growth-regulators",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "plant-growth-regulators",
+                "conceptSlug": "trap-plant-growth-regulators",
+                "microskillSlug": "avoid-plant-growth-regulators",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-plant-physiology-4",
+      "title": "Plant Physiology - Section 4",
+      "description": "Comprehensive analysis covering auxin, gibberellin, cytokinin and more.",
+      "conceptTags": [
+        "plant-physiology",
+        "section-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-plant-physiology-auxin",
+          "title": "Auxin",
+          "conceptTags": [
+            "plant-physiology",
+            "auxin"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Auxin"
+          ],
+          "mustKnowFacts": [
+            "Auxin is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing Auxin for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing auxin",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of auxin",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in auxin"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Auxin during complex MCQs.",
+            "Failing to apply the correct logic for Auxin."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Auxin."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Auxin."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-auxin-1",
+              "question": "Explain the core concept behind Auxin.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "auxin"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "auxin",
+                "conceptSlug": "core-auxin",
+                "microskillSlug": "understand-auxin",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-auxin-2",
+              "question": "What is a common trap associated with Auxin?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "auxin",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "auxin",
+                "conceptSlug": "trap-auxin",
+                "microskillSlug": "avoid-auxin",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-plant-physiology-gibberellin",
+          "title": "Gibberellin",
+          "conceptTags": [
+            "plant-physiology",
+            "gibberellin"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Gibberellin"
+          ],
+          "mustKnowFacts": [
+            "Gibberellin is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing Gibberellin for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing gibberellin",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of gibberellin",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in gibberellin"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Gibberellin during complex MCQs.",
+            "Failing to apply the correct logic for Gibberellin."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Gibberellin."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Gibberellin."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-gibberellin-1",
+              "question": "Explain the core concept behind Gibberellin.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "gibberellin"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "gibberellin",
+                "conceptSlug": "core-gibberellin",
+                "microskillSlug": "understand-gibberellin",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-gibberellin-2",
+              "question": "What is a common trap associated with Gibberellin?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "gibberellin",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "gibberellin",
+                "conceptSlug": "trap-gibberellin",
+                "microskillSlug": "avoid-gibberellin",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-plant-physiology-cytokinin",
+          "title": "Cytokinin",
+          "conceptTags": [
+            "plant-physiology",
+            "cytokinin"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Cytokinin"
+          ],
+          "mustKnowFacts": [
+            "Cytokinin is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing Cytokinin for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing cytokinin",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of cytokinin",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in cytokinin"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Cytokinin during complex MCQs.",
+            "Failing to apply the correct logic for Cytokinin."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Cytokinin."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Cytokinin."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-cytokinin-1",
+              "question": "Explain the core concept behind Cytokinin.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "cytokinin"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "cytokinin",
+                "conceptSlug": "core-cytokinin",
+                "microskillSlug": "understand-cytokinin",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-cytokinin-2",
+              "question": "What is a common trap associated with Cytokinin?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "cytokinin",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "cytokinin",
+                "conceptSlug": "trap-cytokinin",
+                "microskillSlug": "avoid-cytokinin",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-plant-physiology-ethylene",
+          "title": "Ethylene",
+          "conceptTags": [
+            "plant-physiology",
+            "ethylene"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, Ethylene"
+          ],
+          "mustKnowFacts": [
+            "Ethylene is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing Ethylene for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing ethylene",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of ethylene",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in ethylene"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret Ethylene during complex MCQs.",
+            "Failing to apply the correct logic for Ethylene."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to Ethylene."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about Ethylene."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-ethylene-1",
+              "question": "Explain the core concept behind Ethylene.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "ethylene"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "ethylene",
+                "conceptSlug": "core-ethylene",
+                "microskillSlug": "understand-ethylene",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-ethylene-2",
+              "question": "What is a common trap associated with Ethylene?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "ethylene",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "ethylene",
+                "conceptSlug": "trap-ethylene",
+                "microskillSlug": "avoid-ethylene",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-plant-physiology-aba",
+          "title": "ABA",
+          "conceptTags": [
+            "plant-physiology",
+            "aba"
+          ],
+          "ncertAnchors": [
+            "NCERT Biology Class 11, ABA"
+          ],
+          "mustKnowFacts": [
+            "ABA is a fundamental subtopic of Plant Physiology.",
+            "Crucial to understand the principles governing ABA for NEET."
+          ],
+          "diagrams": [
+            {
+              "name": "Diagram showing ABA",
+              "labels": [
+                "Part A",
+                "Part B",
+                "Part C"
+              ],
+              "provesOrShows": "Structure of ABA",
+              "commonLabelTraps": [
+                "Confusing Part A with Part B in ABA"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Students often misinterpret ABA during complex MCQs.",
+            "Failing to apply the correct logic for ABA."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify structures related to ABA."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently ask about ABA."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "plant-physiology-q-aba-1",
+              "question": "Explain the core concept behind ABA.",
+              "expectedAnswerPoints": [
+                "Key principle 1",
+                "Key principle 2"
+              ],
+              "acceptedSynonyms": [
+                "principle",
+                "concept"
+              ],
+              "conceptTags": [
+                "aba"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "aba",
+                "conceptSlug": "core-aba",
+                "microskillSlug": "understand-aba",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            },
+            {
+              "id": "plant-physiology-q-aba-2",
+              "question": "What is a common trap associated with ABA?",
+              "expectedAnswerPoints": [
+                "Misinterpreting the principle",
+                "Calculation error"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake"
+              ],
+              "conceptTags": [
+                "aba",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "topicSlug": "plant-physiology",
+                "subtopicSlug": "aba",
+                "conceptSlug": "trap-aba",
+                "microskillSlug": "avoid-aba",
+                "subject": "Biology",
+                "unitSlug": "plant-physiology",
+                "chapterSlug": "plant-physiology"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
