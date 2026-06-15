@@ -97,6 +97,7 @@ export async function handleMainStreaming({
     async start(controller) {
       let fullResponse = '';
       let metadataPayload: any = null;
+      const bufferedController = { enqueue: () => undefined } as unknown as ReadableStreamDefaultController<Uint8Array>;
 
       try {
         const { getMaxRecentMessages } = await import('@/lib/ai/cost-mode');
@@ -115,14 +116,14 @@ export async function handleMainStreaming({
             sanitizedHistory,
             message || '',
             sessionTurnsCount,
-            controller,
+            bufferedController,
             encoder
           );
           fullResponse = tutorResult.fullResponse;
           metadataPayload = tutorResult.metadataPayload;
         } else if (intent.intent === 'REPLAN') {
           const replanResult = await ChatPlannerService.handleReplan(
-            await supabaseObj, userId, intent.action || 'reduce_tasks', controller, encoder
+            await supabaseObj, userId, intent.action || 'reduce_tasks', bufferedController, encoder
           );
           fullResponse = replanResult.fullResponse;
           metadataPayload = replanResult.metadataPayload;
@@ -131,13 +132,12 @@ export async function handleMainStreaming({
           void maybeUpdateSessionSummary(userId, sessionId, recentHistory).catch(() => {});
 
           const artifactResult = await ChatPlannerService.handleCreateArtifact(
-            await supabaseObj, userId, mindContext, systemPrompt, sanitizedHistory, message || '', controller, encoder
+            await supabaseObj, userId, mindContext, systemPrompt, sanitizedHistory, message || '', bufferedController, encoder
           );
           fullResponse = artifactResult.fullResponse;
           metadataPayload = artifactResult.metadataPayload;
         } else if (mainGenerator) {
           for await (const chunk of mainGenerator) {
-            controller.enqueue(encoder.encode(chunk));
             fullResponse += chunk;
           }
         }
@@ -178,14 +178,9 @@ export async function handleMainStreaming({
         };
         metadataPayload = { ...(metadataPayload || {}), contextTrace };
 
-        if (metadataPayload) {
-          controller.enqueue(encoder.encode(`\n\n===METADATA===\n${JSON.stringify(metadataPayload)}`));
-        }
-
         const { looksTruncated } = await import('@/lib/utils/text-completeness');
         if (looksTruncated(fullResponse)) {
           const truncationHint = '\n\n*The response may be incomplete. Say "continue" and I will finish it.*';
-          controller.enqueue(encoder.encode(truncationHint));
           fullResponse += truncationHint;
         }
 
@@ -195,13 +190,17 @@ export async function handleMainStreaming({
                            fullResponse.includes('I could not generate that part right now') ||
                            fullResponse.includes('temporarily paused');
 
-        await finalizeAssistantTurn({
+        const finalized = await finalizeAssistantTurn({
           assistantText: fullResponse,
           intent,
           metadata: metadataPayload ?? {},
           budgetReservationId: null,
           turnStatus: isDegraded ? 'failed_provider' : 'assistant_saved',
         });
+        controller.enqueue(encoder.encode(finalized.assistantText));
+        if (metadataPayload) {
+          controller.enqueue(encoder.encode(`\n\n===METADATA===\n${JSON.stringify(metadataPayload)}`));
+        }
 
       } catch (err: any) {
         logger.error('Chat stream error', err);

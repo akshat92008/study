@@ -1,14 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/utils/logger';
+import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 
 export async function GET(req: NextRequest) {
+  const requestId = getRequestId(req);
   try {
     const supabase = await createClient();
     const { data: { user }, error: authError } = await supabase.auth.getUser();
 
     if (authError || !user) {
-      return NextResponse.json({ activity: [] });
+      return apiErrorResponse('unauthorized', {
+        status: 401,
+        message: 'Authentication is required.',
+        requestId,
+      });
     }
 
     const { searchParams } = new URL(req.url);
@@ -21,9 +27,9 @@ export async function GET(req: NextRequest) {
     // Do NOT select 'title' - production DB may not have it yet (add via migration).
     const { data, error } = await supabase
       .from('agent_actions')
-      .select('id, agent_name, action_type, status, reason, target_type, created_at, evidence')
+      .select('id, agent_name, action_type, status, reason, target_type, target_id, created_at, evidence, error, error_code')
       .eq('user_id', user.id)
-      .in('status', ['applied', 'failed'])
+      .in('status', ['applied', 'skipped', 'failed'])
       .order('created_at', { ascending: false })
       .limit(limit);
 
@@ -37,8 +43,7 @@ export async function GET(req: NextRequest) {
           hint: error.hint,
         },
       });
-      // Never 500 for normal empty-state or missing-column conditions
-      return NextResponse.json({ activity: [] });
+      throw error;
     }
 
     // Derive title in code to avoid DB column dependency.
@@ -47,7 +52,7 @@ export async function GET(req: NextRequest) {
       title: titleForAction(item.action_type, item.agent_name),
     }));
 
-    return NextResponse.json({ activity });
+    return NextResponse.json({ activity }, { headers: { 'x-request-id': requestId } });
   } catch (error: any) {
     const err = error instanceof Error ? error : new Error(String(error));
     logger.error('[amaura:activity] unexpected error', {
@@ -59,8 +64,7 @@ export async function GET(req: NextRequest) {
         hint: error?.hint,
       },
     });
-    // Never let this endpoint 500 for normal use - return empty activity.
-    return NextResponse.json({ activity: [] });
+    return unexpectedApiErrorResponse(req, error, 'amaura_activity_get_unhandled', 'Unable to load Amaura activity.');
   }
 }
 
@@ -89,6 +93,10 @@ function titleForAction(actionType?: string | null, agentName?: string | null) {
       return 'Daily plan adapted';
     case 'autopsy_mistake_recorded':
       return 'Autopsy mistake recorded';
+    case 'autopsy_mistake_detected':
+      return 'Autopsy repair created';
+    case 'revision_reviewed':
+      return 'Repair evidence recorded';
     default:
       return agentName === 'mind' ? 'MIND observation' :
         agentName === 'atlas' ? 'ATLAS map update' :

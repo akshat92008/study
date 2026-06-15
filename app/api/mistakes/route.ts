@@ -3,7 +3,8 @@ import { z } from 'zod';
 import { createClient } from '@/lib/supabase/server';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import { ensureGoalForUser } from '@/lib/services/goal-context.service';
-import { upsertMistakeRisk } from '@/lib/services/repair-loop.service';
+import { applyLearningEvent } from '@/lib/learner-state/apply-learning-event';
+import { stableKey } from '@/lib/agent/tools/learning/common';
 
 const ManualMistakeSchema = z.object({
   goalId: z.string().uuid().nullable().optional(),
@@ -68,37 +69,66 @@ export async function POST(req: NextRequest) {
     }
     if (parsed.data.goalId) await ensureGoalForUser(supabase, user.id, parsed.data.goalId);
 
-    const repair = await upsertMistakeRisk(supabase, {
+    const concept = parsed.data.concept ?? parsed.data.topic ?? parsed.data.chapter;
+    if (!concept) {
+      return apiErrorResponse('invalid_request', {
+        status: 400,
+        message: 'A concept, topic, or chapter is required so this mistake can update learner state.',
+        requestId,
+      });
+    }
+
+    const projection = await applyLearningEvent(supabase, {
       userId: user.id,
       goalId: parsed.data.goalId ?? null,
-      source: 'manual',
-      subject: parsed.data.subject ?? null,
-      topic: parsed.data.topic ?? parsed.data.chapter ?? parsed.data.concept ?? null,
-      chapter: parsed.data.chapter ?? parsed.data.topic ?? null,
-      concept: parsed.data.concept ?? parsed.data.topic ?? parsed.data.chapter ?? null,
-      mistakeText: parsed.data.mistakeText,
-      correctAnswer: parsed.data.correctAnswer ?? null,
-      whyWrong: parsed.data.whyWrong ?? null,
-      examTrap: parsed.data.examTrap ?? null,
-      severity: parsed.data.severity ?? 2,
-      category: 'conceptual_gap',
-      metadata: { entry: 'manual_paste' },
+      source: 'manual_review',
+      concept: {
+        canonicalName: concept,
+        subject: parsed.data.subject ?? undefined,
+        chapter: parsed.data.chapter ?? undefined,
+        topic: parsed.data.topic ?? concept,
+      },
+      result: {
+        outcome: 'incorrect',
+        confidence: 0.9,
+        mistakeType: 'conceptual_gap',
+        explanation: parsed.data.whyWrong ?? parsed.data.mistakeText,
+      },
+      metadata: {
+        mistakeText: parsed.data.mistakeText,
+        correctAnswer: parsed.data.correctAnswer ?? null,
+        whyWrong: parsed.data.whyWrong ?? null,
+        examTrap: parsed.data.examTrap ?? null,
+        severity: parsed.data.severity ?? 2,
+        entry: 'manual_paste',
+        idempotencyKey: stableKey(['manual-mistake', user.id, concept, parsed.data.mistakeText]),
+      },
     });
+    if (!projection.ok) {
+      return apiErrorResponse('learner_state_update_failed', {
+        status: 500,
+        message: projection.message,
+        requestId,
+      });
+    }
+
+    const mistakeId = projection.mistakeIds[0] ?? null;
+    const { data: mistake } = mistakeId
+      ? await supabase.from('mistakes').select('*').eq('id', mistakeId).eq('user_id', user.id).maybeSingle()
+      : { data: null };
 
     return NextResponse.json({
       success: true,
-      mistake: repair.mistake,
-      created: repair.created,
+      mistake,
+      created: Boolean(mistakeId),
       loopSummary: {
-        message: repair.created
-          ? `Saved. 1 mistake added: ${repair.mistake.concept}. MEMORY: ${repair.revisionCardCreated ? 1 : 0} card created. Retest: due tomorrow.`
-          : `Saved. Existing mistake updated: ${repair.mistake.concept}. Retest remains scheduled.`,
-        mistakesCreated: repair.created ? 1 : 0,
-        repairCardsCreated: repair.revisionCardCreated ? 1 : 0,
-        retestsScheduled: repair.retestScheduled ? 1 : 0,
+        message: `Saved and verified. ${projection.mistakeIds.length} mistake projected for ${concept}; ${projection.revisionCardIds.length} repair card ready and delayed retest scheduled.`,
+        mistakesCreated: projection.mistakeIds.length,
+        repairCardsCreated: projection.revisionCardIds.length,
+        retestsScheduled: projection.mistakeIds.length,
         tomorrowSessionUpdated: true,
       },
-    }, { status: repair.created ? 201 : 200, headers: { 'x-request-id': requestId } });
+    }, { status: 201, headers: { 'x-request-id': requestId } });
   } catch (error) {
     return unexpectedApiErrorResponse(req, error, 'mistakes_post', 'Unable to save this mistake.');
   }

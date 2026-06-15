@@ -143,7 +143,6 @@ export function compileToolPlan(input: CompileToolPlanInput): Array<{ name: stri
     }
 
     if (name === 'write_learning_event') {
-      // Fix 4 & Fix 8: Use normalized concept key
       for (const signal of runtimeState.latestSignals) {
         const conceptName = signal.canonicalConcept ?? signal.concept;
         const key = conceptName ? conceptKey(conceptName) : null;
@@ -155,11 +154,19 @@ export function compileToolPlan(input: CompileToolPlanInput): Array<{ name: stri
             payload: {
               concept: conceptName,
               conceptId: conceptId,
+              subject: signal.subject,
+              chapter: signal.chapter,
+              topic: signal.topic,
               evidence: signal.evidence,
               confidence: signal.confidence,
+              correct: signal.correct,
+              mistakeType: signal.metadata?.mistakeType,
+              materialId: signal.materialId,
+              ...signal.metadata,
               runId: context.runId,
             },
             goalId: context.goalId,
+            idempotencyKey: `${context.idempotencyKey}:signal:${signal.type}:${conceptName ?? signal.materialId ?? 'global'}`,
           },
         });
       }

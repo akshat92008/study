@@ -1,17 +1,7 @@
 import type { AgentToolDefinition } from '@/lib/agent/types';
 import { ToolResultSchema, WriteLearningEventInputSchema } from '@/lib/agent/tools/schemas';
-import { assertGoalOwned } from '@/lib/agent/guardrails/mutationGuardrails';
-import { insertLearningSignal, recordAgentActivity, stableKey } from '@/lib/agent/tools/learning/common';
-
-function agentForEvent(eventType: string): 'mind' | 'rag' | 'atlas' | 'memory' | 'planner' | 'command' | 'autopsy' {
-  if (eventType === 'source_used') return 'rag';
-  if (eventType.includes('mastery') || eventType.includes('weak') || eventType.includes('misconception')) return 'atlas';
-  if (eventType.includes('memory') || eventType.includes('revision_card')) return 'memory';
-  if (eventType.includes('mission') || eventType.includes('microtarget')) return 'command';
-  if (eventType.includes('plan') || eventType.includes('session')) return 'planner';
-  if (eventType.includes('autopsy') || eventType.includes('mistake')) return 'autopsy';
-  return 'mind';
-}
+import { stableKey } from '@/lib/agent/tools/learning/common';
+import { applyLearningEvent } from '@/lib/learner-state/apply-learning-event';
 
 export const writeLearningEventTool: AgentToolDefinition<typeof WriteLearningEventInputSchema, typeof ToolResultSchema> = {
   name: 'write_learning_event',
@@ -24,79 +14,80 @@ export const writeLearningEventTool: AgentToolDefinition<typeof WriteLearningEve
   requiresAuth: true,
   async handler(input, context) {
     const goalId = input.goalId ?? context.goalId ?? null;
-    await assertGoalOwned(context.supabase, { userId: context.userId, goalId });
     const idempotencyKey = input.idempotencyKey ?? stableKey([context.idempotencyKey, 'learning-event', input.eventType, JSON.stringify(input.payload).slice(0, 80)]);
+    const concept = stringValue(input.payload.concept) ?? stringValue(input.payload.topic);
+    const outcome = outcomeForEvent(input.eventType, input.payload);
+    const projection = await applyLearningEvent(context.supabase, {
+      userId: context.userId,
+      goalId,
+      source: context.channel === 'autopsy'
+        ? 'autopsy'
+        : context.channel === 'revision'
+          ? 'revision'
+          : context.channel === 'session'
+            ? 'focus_session'
+            : 'chat_practice',
+      concept: {
+        conceptId: stringValue(input.payload.conceptId),
+        canonicalName: concept,
+        subject: stringValue(input.payload.subject),
+        chapter: stringValue(input.payload.chapter),
+        topic: stringValue(input.payload.topic) ?? concept,
+      },
+      result: {
+        outcome,
+        confidence: numberValue(input.payload.confidence) ?? 0.8,
+        mistakeType: stringValue(input.payload.mistakeType),
+        explanation: stringValue(input.payload.evidence) ?? input.eventType.replace(/_/g, ' '),
+      },
+      artifact: {
+        sourceMaterialId: stringValue(input.payload.materialId),
+        sessionCardId: context.sessionId ?? undefined,
+      },
+      metadata: { ...input.payload, idempotencyKey },
+    }, { context });
 
-    const { data: existingAction, error: existingActionError } = await context.supabase
-      .from('agent_actions')
-      .select('id')
-      .eq('user_id', context.userId)
-      .eq('action_type', input.eventType)
-      .eq('idempotency_key', idempotencyKey)
-      .maybeSingle();
-    if (existingActionError) throw existingActionError;
-    if (existingAction?.id) {
+    if (!projection.ok) {
       return {
-        success: true,
+        success: false,
         changed: false,
         entityType: 'learning_event',
-        entityIds: [existingAction.id],
-        summary: `Learning event ${input.eventType} was already recorded.`,
-        data: { agentActionId: existingAction.id, idempotencyKey, duplicate: true },
+        entityIds: [],
+        summary: projection.message,
+        error: { code: projection.code, message: projection.message },
+        data: { traceId: projection.traceId },
       };
-    }
-
-    const { data: learnerEvent, error: learnerEventError } = await context.supabase
-      .from('learner_events')
-      .insert({
-        user_id: context.userId,
-        event_type: input.eventType,
-        event_data: {
-          ...input.payload,
-          goalId,
-          runId: context.runId ?? null,
-          idempotencyKey,
-        },
-      })
-      .select('id')
-      .single();
-    if (learnerEventError) throw learnerEventError;
-
-    const agentActionId = await recordAgentActivity(context.supabase, {
-      userId: context.userId,
-      runId: context.runId,
-      agentName: agentForEvent(input.eventType),
-      actionType: input.eventType,
-      targetType: typeof input.payload.targetType === 'string' ? input.payload.targetType : null,
-      targetId: typeof input.payload.targetId === 'string' ? input.payload.targetId : null,
-      confidence: typeof input.payload.confidence === 'number' ? input.payload.confidence : 0.8,
-      evidence: input.payload,
-      reason: typeof input.payload.reason === 'string' ? input.payload.reason : input.eventType.replace(/_/g, ' '),
-      idempotencyKey,
-    });
-
-    if (input.eventType === 'source_used' && typeof input.payload.materialId === 'string') {
-      await insertLearningSignal(context.supabase, context, {
-        signal: {
-          type: 'source_used',
-          materialId: input.payload.materialId,
-          materialTitle: typeof input.payload.materialTitle === 'string' ? input.payload.materialTitle : undefined,
-          chunkIds: Array.isArray(input.payload.chunkIds) ? input.payload.chunkIds.filter((id): id is string => typeof id === 'string') : [],
-          confidence: 0.95,
-          source: 'source',
-          evidence: 'Source chunks retrieved and used.',
-        },
-        idempotencyKey: `${idempotencyKey}:signal`,
-      });
     }
 
     return {
       success: true,
       changed: true,
       entityType: 'learning_event',
-      entityIds: [learnerEvent.id, agentActionId],
-      summary: `Wrote learner event ${input.eventType}.`,
-      data: { learnerEventId: learnerEvent.id, agentActionId, idempotencyKey },
+      entityIds: [projection.learningEventId, ...projection.revisionCardIds, ...projection.mistakeIds],
+      summary: `Projected learner event ${input.eventType}.`,
+      data: {
+        ...projection,
+        eventsWritten: 1,
+        conceptsUpdated: projection.masteryBefore !== projection.masteryAfter ? 1 : 0,
+        revisionCardsCreated: projection.revisionCardIds.length,
+        mistakesRecorded: projection.mistakeIds.length,
+      },
     };
   },
 };
+
+function stringValue(value: unknown) {
+  return typeof value === 'string' && value.trim() ? value.trim() : undefined;
+}
+
+function numberValue(value: unknown) {
+  return typeof value === 'number' && Number.isFinite(value) ? value : undefined;
+}
+
+function outcomeForEvent(eventType: string, payload: Record<string, unknown>) {
+  if (payload.correct === true || eventType === 'concept_understood') return 'correct' as const;
+  if (eventType === 'revision_reviewed') return 'reviewed' as const;
+  if (eventType === 'session_completed') return 'completed' as const;
+  if (eventType === 'explanation_generated') return 'partial' as const;
+  return 'incorrect' as const;
+}

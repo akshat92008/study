@@ -70,19 +70,10 @@ export function buildAgentPlan(input: {
 
   const hasConceptSignal = input.signals.some((signal) => signal.concept || signal.canonicalConcept);
   if (hasConceptSignal) {
-    requiredTools.push(
-      { name: 'upsert_atlas_concept', input: { from: 'signals' } },
-      { name: 'update_concept_mastery', input: { from: 'signals' } }
-    );
-  }
-  if (input.signals.some((signal) => ['weak_area_detected', 'misconception_detected', 'revision_needed', 'practice_needed', 'session_completed'].includes(signal.type))) {
-    requiredTools.push({ name: 'create_memory_card', input: { from: 'signals' } });
+    requiredTools.push({ name: 'write_learning_event', input: { from: 'signals' } });
   }
   if (input.signals.length > 0) {
-    requiredTools.push(
-      { name: 'update_microtarget', input: { from: 'signals' } },
-      { name: 'write_learning_event', input: { from: 'signals' } }
-    );
+    requiredTools.push({ name: 'update_microtarget', input: { from: 'signals' } });
   }
 
   const riskFlags: string[] = [];
@@ -101,4 +92,3 @@ export function buildAgentPlan(input: {
     risk_flags: riskFlags,
   };
 }
-

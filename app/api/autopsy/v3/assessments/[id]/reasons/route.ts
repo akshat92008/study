@@ -4,8 +4,8 @@ import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/li
 import { safePublishEvent } from '@/lib/events/safe-publish';
 import { classifyMistakeDeterministically } from '@/lib/autopsy-v3/mistake-classifier';
 import { jsonWithRequestId, requireAutopsyV3User } from '@/lib/autopsy-v3/permissions';
-import { upsertMistakeRisk } from '@/lib/services/repair-loop.service';
-import { invalidateSessionCard } from '@/lib/services/session-card-invalidation';
+import { applyLearningEvent } from '@/lib/learner-state/apply-learning-event';
+import { stableKey } from '@/lib/agent/tools/learning/common';
 
 type RouteContext = { params: Promise<{ id: string }> | { id: string } };
 
@@ -91,34 +91,49 @@ export async function POST(req: NextRequest, context: RouteContext) {
       const question = diagnosis.question_id ? questionById.get(diagnosis.question_id) : null;
       if (!question || !['incorrect', 'skipped', 'unattempted'].includes(question.status)) continue;
 
-      const repair = await upsertMistakeRisk(supabase, {
+      const concept = diagnosis.topic ?? question.topic ?? question.subtopic ?? 'Autopsy mistake';
+      const projection = await applyLearningEvent(supabase, {
         userId: user.id,
         goalId: assessment.goal_id ?? null,
         source: 'autopsy',
-        subject: diagnosis.subject ?? question.subject ?? null,
-        topic: diagnosis.topic ?? question.topic ?? question.subtopic ?? null,
-        chapter: question.topic ?? question.subtopic ?? null,
-        concept: diagnosis.topic ?? question.topic ?? question.subtopic ?? 'Autopsy mistake',
-        mistakeText: question.question_text ?? `Question ${question.question_number}: ${diagnosis.final_root_cause}`,
-        questionText: question.question_text ?? null,
-        userAnswer: question.user_answer ?? null,
-        correctAnswer: question.correct_answer ?? null,
-        whyWrong: diagnosis.final_root_cause ?? diagnosis.user_reason ?? null,
-        examTrap: diagnosis.prevention_rule ?? null,
-        severity: diagnosis.severity === 'critical' ? 5 : diagnosis.severity === 'high' ? 4 : 2,
-        category: diagnosis.mistake_type,
-        sourceId: diagnosis.question_id ?? assessmentId,
+        concept: {
+          canonicalName: concept,
+          subject: diagnosis.subject ?? question.subject ?? undefined,
+          chapter: question.topic ?? question.subtopic ?? undefined,
+          topic: concept,
+        },
+        result: {
+          outcome: 'incorrect',
+          confidence: diagnosis.confidence ?? 0.8,
+          mistakeType: diagnosis.mistake_type,
+          explanation: diagnosis.final_root_cause ?? diagnosis.user_reason ?? 'Autopsy mistake approved.',
+        },
+        artifact: {
+          autopsyAssessmentId: assessmentId,
+          autopsyQuestionId: diagnosis.question_id ?? undefined,
+        },
         metadata: {
-          assessmentId,
-          diagnosisStatus: diagnosis.status,
+          mistakeText: question.question_text ?? `Question ${question.question_number}: ${diagnosis.final_root_cause}`,
+          questionText: question.question_text ?? null,
+          userAnswer: question.user_answer ?? null,
+          correctAnswer: question.correct_answer ?? null,
+          whyWrong: diagnosis.final_root_cause ?? diagnosis.user_reason ?? null,
+          severity: diagnosis.severity === 'critical' ? 5 : diagnosis.severity === 'high' ? 4 : 2,
           mistakeType: diagnosis.mistake_type,
           fixStrategy: diagnosis.fix_strategy,
+          idempotencyKey: stableKey([
+            'autopsy_v3',
+            'diagnosis',
+            assessmentId,
+            String(diagnosis.question_id || 'no_qid'),
+            concept.trim().toLowerCase(),
+          ]),
         },
-        invalidateSession: false,
       });
-      if (repair.created) repairMistakesCreated += 1;
-      if (repair.revisionCardCreated) repairCardsCreated += 1;
-      if (repair.retestScheduled) retestsScheduled += 1;
+      if (!projection.ok) throw new Error(projection.message);
+      repairMistakesCreated += projection.mistakeIds.length;
+      repairCardsCreated += projection.revisionCardIds.length;
+      retestsScheduled += projection.mistakeIds.length;
     }
 
     await supabase
@@ -126,13 +141,6 @@ export async function POST(req: NextRequest, context: RouteContext) {
       .update({ status: 'diagnosis_pending', updated_at: new Date().toISOString() })
       .eq('id', assessmentId)
       .eq('user_id', user.id);
-
-    if (rows.length > 0) {
-      await invalidateSessionCard(user.id, 'AUTOPSY_COMPLETED', {
-        client: supabase,
-        goalId: assessment.goal_id ?? null,
-      }).catch(() => undefined);
-    }
 
     await safePublishEvent({
       user_id: user.id,
@@ -146,8 +154,8 @@ export async function POST(req: NextRequest, context: RouteContext) {
       diagnoses: data ?? [],
       loopSummary: {
         message: repairMistakesCreated > 0
-          ? `Saved. ${repairMistakesCreated} mistake${repairMistakesCreated === 1 ? '' : 's'} added from Autopsy. MEMORY: ${repairCardsCreated} card${repairCardsCreated === 1 ? '' : 's'} created. Retest: ${retestsScheduled} scheduled.`
-          : 'Saved. Existing repair risks were updated from Autopsy.',
+          ? `Saved and verified. ${repairMistakesCreated} autopsy mistake${repairMistakesCreated === 1 ? '' : 's'} projected. ${repairCardsCreated} repair card${repairCardsCreated === 1 ? '' : 's'} ready; ${retestsScheduled} delayed retest${retestsScheduled === 1 ? '' : 's'} scheduled.`
+          : 'Saved and verified. Existing autopsy evidence was already projected.',
         mistakesCreated: repairMistakesCreated,
         repairCardsCreated,
         retestsScheduled,

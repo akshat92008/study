@@ -28,6 +28,7 @@ export const completeSessionTool: AgentToolDefinition<typeof CompleteSessionInpu
       idempotencyKey: stableKey([context.idempotencyKey, 'complete-session', input.sessionId ?? context.sessionId]),
       source: 'session',
       client: context.supabase,
+      agentContext: context,
     });
 
     const verified = await verifySessionCompletion(context.supabase, {

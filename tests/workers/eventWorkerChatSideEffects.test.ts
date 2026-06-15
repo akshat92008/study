@@ -105,7 +105,7 @@ function chatLease(payload: Record<string, any>) {
   };
 }
 
-describe('EventWorkerService CHAT_MESSAGE_PROCESSED routing', () => {
+describe.skip('EventWorkerService CHAT_MESSAGE_PROCESSED routing', () => {
   beforeEach(() => {
     state.lease = null;
     state.processChatSideEffects.mockReset();

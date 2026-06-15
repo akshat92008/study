@@ -86,9 +86,6 @@ const TOOL_PROMPTS: Record<string, string> = {
   retrieve_source_chunks: 'retrieve_source_chunks - Fetch relevant source chunks for a topic',
   extract_learning_signals: 'extract_learning_signals - Analyze message for learning signals',
   diagnose_weak_areas: 'diagnose_weak_areas - Infer related weak concepts',
-  upsert_atlas_concept: 'upsert_atlas_concept - Create or update a concept in ATLAS',
-  update_concept_mastery: 'update_concept_mastery - Update mastery for a concept',
-  create_memory_card: 'create_memory_card - Create a MEMORY revision card',
   update_microtarget: 'update_microtarget - Update daily microtarget progress',
   write_learning_event: 'write_learning_event - Log a learning event',
   apply_practice_attempt: 'apply_practice_attempt - Process a practice attempt',
@@ -172,7 +169,7 @@ Based on the context above, produce a JSON plan with:
 
 ## Rules
 - Only use tools from the allowed list above
-- For mutating tools (upsert_atlas_concept, update_concept_mastery, create_memory_card, etc.), confidence must be 0.65+
+- For mutating tools, confidence must be 0.65+
 - Do not invent tool names or state changes not supported
 - If source was requested but not retrieved, flag risk_flags
 - Output ONLY valid JSON - no markdown, no explanation

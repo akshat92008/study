@@ -218,8 +218,10 @@ export async function maybeUseRuleFirstResponse(params: RuleFirstParams) {
 
     const stream = new ReadableStream({
       async start(controller) {
-        controller.enqueue(encoder.encode(groundingMessage));
-        try { await finalizeAssistantTurnFn({ assistantText: groundingMessage, intent: detectedIntent }); } 
+        try {
+          const finalized = await finalizeAssistantTurnFn({ assistantText: groundingMessage, intent: detectedIntent });
+          controller.enqueue(encoder.encode(finalized.assistantText));
+        }
         catch (e) { logger.error('Chat route [grounding]: finalization failed', e); }
         controller.close();
       }
@@ -232,8 +234,10 @@ export async function maybeUseRuleFirstResponse(params: RuleFirstParams) {
     const responseText = ruleFirst.response || "Handled deterministically.";
     const stream = new ReadableStream({
       async start(controller) {
-        controller.enqueue(encoder.encode(responseText));
-        try { await finalizeAssistantTurnFn({ assistantText: responseText, intent: detectedIntent, metadata: { ruleFirst: true } }); } 
+        try {
+          const finalized = await finalizeAssistantTurnFn({ assistantText: responseText, intent: detectedIntent, metadata: { ruleFirst: true } });
+          controller.enqueue(encoder.encode(finalized.assistantText));
+        }
         catch (e) { logger.error('Chat route [rule-first]: finalization failed', e); }
         controller.close();
       },

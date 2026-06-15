@@ -339,6 +339,17 @@ export async function executeToolChain(
     });
     results.push(result);
 
+    if (
+      ['write_learning_event', 'apply_practice_attempt', 'complete_session', 'record_autopsy_mistake'].includes(toolCall.name) &&
+      (!result.success || result.result?.success === false)
+    ) {
+      logger.warn('Stopping derived tool execution after canonical projection failure', {
+        toolName: toolCall.name,
+        error: result.error ?? result.result?.error,
+      });
+      break;
+    }
+
     // If tool failed, continue anyway but log warning
     if (!result.success && !result.blocked) {
       logger.warn('Tool execution failed', { toolName: toolCall.name, error: result.error });

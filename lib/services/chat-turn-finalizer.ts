@@ -4,6 +4,8 @@ import { commitBudgetUsage, releaseBudgetReservation } from '@/lib/ai/cost-guard
 import { persistChatMessage } from '@/lib/services/chat-persistence';
 import { runMindTurn } from '@/lib/mind/runMindTurn';
 import { EventDispatcher } from '@/lib/events/orchestrator';
+import { applyResponseClaimGuard } from '@/lib/agent/guardrails/responseClaimGuard';
+import type { MutationSummary, VerificationResult } from '@/lib/agent/types';
 
 export interface ChatTurnFinalizerInput {
   supabase: SupabaseClient;
@@ -58,7 +60,29 @@ export interface ChatTurnFinalizerResult {
   assistantAlreadyExisted: boolean;
   /** Learner-visible summary of what this turn produced. Empty if nothing durable was produced. */
   learningSignalSummary: string;
+  /** The only assistant text safe to persist or send to the learner. */
+  assistantText: string;
 }
+
+const EMPTY_MUTATION_SUMMARY: MutationSummary = {
+  changed: false,
+  eventsWritten: 0,
+  conceptsCreated: 0,
+  conceptsUpdated: 0,
+  revisionCardsCreated: 0,
+  microtargetsUpdated: 0,
+  practiceAttemptsProcessed: 0,
+  sessionsCompleted: 0,
+  mistakesRecorded: 0,
+  warnings: [],
+};
+
+const FAILED_VERIFICATION: VerificationResult = {
+  ok: false,
+  checks: [],
+  warnings: ['Learner-state verification did not complete.'],
+  errors: [],
+};
 
 /**
  * CHAT TURN FINALIZER
@@ -88,13 +112,49 @@ export async function finalizeChatTurn(input: ChatTurnFinalizerInput): Promise<C
   const releaseBudget = input.releaseBudget ?? releaseBudgetReservation;
 
   let persistedAssistant: { id: string; existed?: boolean };
+  let learningSignalSummary = '';
+  let visibleAssistantText = cleanAssistantText;
+
+  // Resolve and verify learner-state mutations before the response becomes visible.
+  try {
+    const mindResult = await runMindTurn({
+      supabase: input.supabase,
+      userId: input.userId,
+      sessionId: input.sessionId,
+      conversationId: input.sessionId,
+      goalId: input.goalId ?? null,
+      userMessage: input.userMessage,
+      assistantText: cleanAssistantText,
+      retrievedChunks: input.metadata?.ragChunks || [],
+      metadata: input.metadata ?? {},
+      idempotencyKey: `mind_chat:${requestId}`,
+    });
+    learningSignalSummary = mindResult.learningSignalSummary;
+    visibleAssistantText = mindResult.runtime.finalResponse?.trim() || cleanAssistantText;
+  } catch (ltErr) {
+    const errorStr = ltErr instanceof Error
+      ? ltErr.message
+      : typeof ltErr === 'object' && ltErr !== null
+        ? JSON.stringify(ltErr, Object.getOwnPropertyNames(ltErr))
+        : String(ltErr);
+    logger.warn('MIND chat turn failed before response delivery', {
+      userId: input.userId,
+      requestId,
+      error: errorStr,
+    });
+    visibleAssistantText = applyResponseClaimGuard(
+      cleanAssistantText,
+      EMPTY_MUTATION_SUMMARY,
+      FAILED_VERIFICATION
+    ).filteredResponse || cleanAssistantText;
+  }
 
   try {
     persistedAssistant = await persistAssistantMessage(input.supabase, {
       sessionId: input.sessionId,
       userId: input.userId,
       role: 'assistant',
-      content: cleanAssistantText,
+      content: visibleAssistantText,
       metadata: input.metadata ?? {},
       intent: typeof input.intent === 'string' ? input.intent : input.intent?.intent,
       emotionalState: input.emotion,
@@ -132,38 +192,6 @@ export async function finalizeChatTurn(input: ChatTurnFinalizerInput): Promise<C
     }
   }
 
-  // Structured MIND turn: source grounding, weak-area detection, and durable state updates.
-  let learningSignalSummary = '';
-  try {
-    const mindResult = await runMindTurn({
-      supabase: input.supabase,
-      userId: input.userId,
-      sessionId: input.sessionId,
-      conversationId: input.sessionId,
-      goalId: input.goalId ?? null,
-      userMessage: input.userMessage,
-      assistantText: cleanAssistantText,
-      retrievedChunks: input.metadata?.ragChunks || [],
-      metadata: input.metadata ?? {},
-      idempotencyKey: `mind_chat:${requestId}`,
-    });
-    learningSignalSummary = mindResult.learningSignalSummary;
-  } catch (ltErr) {
-    let errorStr: string;
-    if (ltErr instanceof Error) {
-      errorStr = ltErr.message;
-    } else if (typeof ltErr === 'object' && ltErr !== null) {
-      errorStr = JSON.stringify(ltErr, Object.getOwnPropertyNames(ltErr));
-    } else {
-      errorStr = String(ltErr);
-    }
-    logger.warn('MIND chat turn failed (non-blocking)', {
-      userId: input.userId,
-      requestId,
-      error: errorStr,
-    });
-  }
-
   let eventId: string | null = null;
   try {
     eventId = await publishEvent({
@@ -172,7 +200,7 @@ export async function finalizeChatTurn(input: ChatTurnFinalizerInput): Promise<C
       data: {
         sessionId: input.sessionId,
         message: input.userMessage,
-        fullResponse: cleanAssistantText,
+        fullResponse: visibleAssistantText,
         emotion: input.emotion,
         history: input.recentHistory,
         sessionTurnsCount: input.sessionTurnsCount,
@@ -203,5 +231,6 @@ export async function finalizeChatTurn(input: ChatTurnFinalizerInput): Promise<C
     eventId,
     assistantAlreadyExisted,
     learningSignalSummary,
+    assistantText: visibleAssistantText,
   };
 }

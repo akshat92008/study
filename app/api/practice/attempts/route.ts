@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { z } from 'zod';
 import { apiErrorResponse, getRequestId } from '@/lib/api/errors';
-import { EventDispatcher } from '@/lib/events/orchestrator';
 import { areMcqAnswersEquivalent } from '@/lib/practice/answer-normalization';
 import { checkRateLimit, rateLimitResponse } from '@/lib/middleware/rateLimit';
 import { checkIdempotency } from '@/lib/middleware/idempotency';
@@ -291,32 +290,12 @@ export async function POST(req: NextRequest) {
     const existingAttemptKeys = new Set((existingAttempts ?? []).map((attempt: any) => attempt.idempotency_key));
     const newAttemptKeys = attemptKeys.filter((key) => !existingAttemptKeys.has(key));
 
-    const { data: rpcResult, error: insertError } = await supabase.rpc('apply_core_loop_projection', {
-      payload: {
-        user_id: user.id,
-        goal_id: resolvedGoalId,
-        idempotency_key: idempotencySeed,
-        local_date: new Date().toISOString().split('T')[0], // The RPC will safely ignore if not applying session invalidations
-        practice_attempts: attemptsToInsert,
-        outbox: {
-          type: 'PRACTICE_ATTEMPT_RECORDED',
-          data: {
-            practiceSetId: set.id,
-            setType: 'mcq',
-            subject: set.subject ?? null,
-            chapter: set.topic ?? null,
-            metrics: { correctCount, wrongCount, wrongConceptIds, wrongConceptNames },
-            items: eventItems,
-          },
-          metadata: { source: 'mind_chat_mcq', goalId: resolvedGoalId, idempotencyKey: idempotencySeed }
-        },
-        trace: { action: 'practice_attempt_recorded', trace_id: requestId }
-      }
-    });
-    if (insertError) throw insertError;
-    if (!rpcResult?.ok) {
-       throw new Error(`RPC failed: ${rpcResult?.message}`);
-    }
+    const { error: insertError } = await supabase
+      .from('practice_attempts')
+      .upsert(attemptsToInsert, {
+        onConflict: 'user_id,idempotency_key',
+        ignoreDuplicates: true,
+      });
     if (insertError) throw insertError;
 
     const { data: persistedAttempts, error: fetchAttemptsError } = await supabase
@@ -425,8 +404,6 @@ export async function POST(req: NextRequest) {
         attemptSaved: false,
       }, { status: 500 });
     }
-
-    // EventDispatcher publish is now handled by the outbox inside apply_core_loop_projection
 
     const loopSummary = {
       saved: true,

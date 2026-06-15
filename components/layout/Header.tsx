@@ -1,7 +1,8 @@
 'use client';
 
-import { Flame, Search, Bell, Menu } from 'lucide-react';
+import { Flame, Search, Menu } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
+import AmauraNotificationFeed from '@/components/dashboard/AmauraNotificationFeed';
 
 interface HeaderProps {
   userName: string;
@@ -157,23 +158,7 @@ export default function Header({ userName, streakDays }: HeaderProps) {
           </span>
         </div>
 
-        {/* Notifications */}
-        <button
-          style={{
-            width: 34,
-            height: 34,
-            borderRadius: 'var(--radius-md)',
-            background: 'transparent',
-            border: '1px solid var(--border-subtle)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-            color: 'var(--text-secondary)',
-          }}
-        >
-          <Bell size={16} />
-        </button>
+        <AmauraNotificationFeed />
       </div>
     </header>
   );

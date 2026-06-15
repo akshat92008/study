@@ -63,6 +63,11 @@ function createFakeSupabase(initial: Record<string, Row[]> = {}) {
       this.rowsForInsert = Array.isArray(rowOrRows) ? rowOrRows : [rowOrRows];
       return this;
     }
+    upsert(rowOrRows: Row | Row[]) {
+      this.mode = 'insert';
+      this.rowsForInsert = Array.isArray(rowOrRows) ? rowOrRows : [rowOrRows];
+      return this;
+    }
     update(patch: Row) {
       this.mode = 'update';
       this.patch = patch;

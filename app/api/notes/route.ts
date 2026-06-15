@@ -56,9 +56,36 @@ export async function POST(req: NextRequest) {
 
     if (error) throw error;
 
-    return NextResponse.json({ success: true, note });
+    return NextResponse.json({ success: true, note, learningImpact: 'non_learning_activity' });
   } catch (error: any) {
     logger.error('Failed to save note', { error: safeError(error) });
+    return NextResponse.json({ error: safeError(error) }, { status: 500 });
+  }
+}
+
+export async function PATCH(req: NextRequest) {
+  try {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+    const body = await req.json().catch(() => ({}));
+    if (typeof body.id !== 'string' || typeof body.content !== 'string' || !body.content.trim()) {
+      return NextResponse.json({ error: 'Note ID and content are required' }, { status: 400 });
+    }
+
+    const { data: note, error } = await supabase
+      .from('saved_notes')
+      .update({ content: body.content.trim(), updated_at: new Date().toISOString() })
+      .eq('id', body.id)
+      .eq('user_id', user.id)
+      .select('*')
+      .single();
+    if (error) throw error;
+
+    return NextResponse.json({ success: true, note, learningImpact: 'non_learning_activity' });
+  } catch (error: any) {
+    logger.error('Failed to update note', { error: safeError(error) });
     return NextResponse.json({ error: safeError(error) }, { status: 500 });
   }
 }

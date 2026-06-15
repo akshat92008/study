@@ -3,11 +3,13 @@ import { withCorrelationId } from '@/lib/telemetry/correlation';
 import { logger } from '@/lib/utils/logger';
 import { Metrics } from '@/lib/observability/metrics';
 import { EventConsumer, getConsumersForEvent } from './orchestrator';
-// Mutations removed: Learner state projection is now handled synchronously in the core loop.
+import { isAmauraConsumer } from '@/lib/amaura/agents/registry';
+import { runAmauraConsumerForLease } from '@/lib/amaura/agents/runtime';
+import { AMAURA_CONSUMERS } from '@/lib/amaura/events/event-matrix';
 
 export const HANDLED_EVENT_CONSUMERS = [
-  'downstream_publisher_kafka',
-  'downstream_publisher_qstash'
+  'downstream_publisher_qstash',
+  ...AMAURA_CONSUMERS,
 ] as const;
 
 
@@ -524,7 +526,18 @@ export class EventWorkerService {
   }
 
   private static async routeToConsumer(lease: any): Promise<ConsumerResult> {
-    const consumer = lease.consumer_name;
+    const consumer = lease.consumer_name as EventConsumer;
+    if (!getConsumersForEvent(lease.event_type).includes(consumer)) {
+      return {
+        status: 'SKIPPED_STALE_ROUTE',
+        reason: `${lease.consumer_name} is no longer registered for ${lease.event_type}`,
+      };
+    }
+
+    if (isAmauraConsumer(consumer)) {
+      return runAmauraConsumerForLease(lease);
+    }
+
     const event = {
       id: lease.event_id,
       user_id: lease.user_id,
@@ -533,9 +546,6 @@ export class EventWorkerService {
       metadata: lease.event_metadata,
     };
 
-    // Strict Domain Event Publisher
-    // Learner-state mutations are handled synchronously by the atomic RPC outbox.
-    // The worker strictly publishes domain events to downstream systems.
     try {
       const qstashToken = process.env.QSTASH_TOKEN;
       if (qstashToken) {
@@ -548,7 +558,7 @@ export class EventWorkerService {
           body: JSON.stringify(event),
         });
       } else {
-        // Mock QStash publish
+        return { status: 'SKIPPED_INTENTIONALLY', reason: 'QStash is not configured.' };
       }
       return { status: 'HANDLED' };
     } catch (err) {

@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { withRateLimit } from '@/lib/middleware/withRateLimit';
 import { apiErrorResponse, getRequestId } from '@/lib/api/errors';
 import { createClient } from '@/lib/supabase/server';
-import { projectLearningSignal } from '@/lib/learner-state/projector';
+import { applyLearningEvent } from '@/lib/learner-state/apply-learning-event';
 
 export const POST = withRateLimit('atlas', async (req, userId, { params }) => {
   const requestId = getRequestId(req);
@@ -21,10 +21,10 @@ export const POST = withRateLimit('atlas', async (req, userId, { params }) => {
   const body = await req.json().catch(() => ({}));
   const { action, reason } = body;
 
-  if (!action || !['mark_known', 'mark_irrelevant', 'reset'].includes(action)) {
+  if (action !== 'mark_known') {
     return apiErrorResponse('bad_request', {
-      status: 400,
-      message: 'Valid action (mark_known, mark_irrelevant, reset) is required',
+      status: 409,
+      message: 'Only verified mark_known evidence is currently delivered. Reset and irrelevant states are hidden until they have canonical learner-state semantics.',
       requestId,
     });
   }
@@ -45,33 +45,39 @@ export const POST = withRateLimit('atlas', async (req, userId, { params }) => {
     });
   }
 
-  // Determine mastery based on action
-  let newMastery: 'mastered' | 'not_started' | 'exposed' = 'not_started';
-  if (action === 'mark_known') {
-    newMastery = 'mastered';
-  } else if (action === 'mark_irrelevant') {
-    newMastery = 'not_started'; // We might want a different state for irrelevant, but this works for now
-  } else if (action === 'reset') {
-    newMastery = 'not_started';
-  }
-
-  // Auditable correction event via projection
-  await projectLearningSignal(supabase, userId, {
-    source: 'autopsy',
-    type: 'concept_understood',
-    subject: concept.subject,
-    chapter: concept.chapter,
-    concept: concept.topic,
-    confidence: 1.0,
+  const projection = await applyLearningEvent(supabase, {
+    userId,
+    goalId: null,
+    source: 'manual_review',
+    concept: {
+      conceptId,
+      canonicalName: concept.topic,
+      subject: concept.subject,
+      chapter: concept.chapter,
+      topic: concept.topic,
+    },
+    result: {
+      outcome: 'correct',
+      confidence: 1,
+      explanation: reason || 'User confirmed this concept as known.',
+    },
     metadata: {
-      mastery: newMastery,
       evidenceType: 'user_correction',
-      reason: reason || `User manually corrected status to ${newMastery}`,
-    }
+      reason: reason || 'User confirmed this concept as known.',
+      idempotencyKey: `manual-mastery:${userId}:${conceptId}:${requestId}`,
+    },
   });
+  if (!projection.ok) {
+    return apiErrorResponse('learner_state_update_failed', {
+      status: 500,
+      message: projection.message,
+      requestId,
+    });
+  }
 
   return NextResponse.json({
     success: true,
-    message: `Concept corrected to ${newMastery}`,
+    message: 'Verified mastery evidence was recorded.',
+    projection,
   }, { headers: { 'x-request-id': requestId } });
 });

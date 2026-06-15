@@ -60,34 +60,11 @@ export const TOOL_CONFIGS: ToolConfig[] = [
 
   // atlas_write tools
   {
-    name: 'upsert_atlas_concept',
-    toolset: 'atlas_write',
-    riskLevel: 'learner_visible_write',
-    mutating: true,
-    description: 'Create or update a concept in ATLAS',
-  },
-  {
-    name: 'update_concept_mastery',
-    toolset: 'atlas_write',
-    riskLevel: 'learner_visible_write',
-    mutating: true,
-    description: 'Update mastery score for a concept',
-  },
-  {
     name: 'verify_weak_area_state',
     toolset: 'atlas_write',
     riskLevel: 'safe_read',
     mutating: false,
     description: 'Verify ATLAS concept state after mutations',
-  },
-
-  // memory_write tools
-  {
-    name: 'create_memory_card',
-    toolset: 'memory_write',
-    riskLevel: 'learner_visible_write',
-    mutating: true,
-    description: 'Create a MEMORY revision card linked to a concept',
   },
 
   // mission_write tools
@@ -119,7 +96,7 @@ export const TOOL_CONFIGS: ToolConfig[] = [
     toolset: 'activity_write',
     riskLevel: 'safe_write',
     mutating: true,
-    description: 'Write a learning event to the activity feed',
+    description: 'Atomically project learning evidence into learner state, repair, cards, activity, and notifications',
   },
 
   // practice_write tools

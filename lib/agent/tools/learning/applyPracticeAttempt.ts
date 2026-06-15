@@ -89,7 +89,7 @@ export const applyPracticeAttemptTool: AgentToolDefinition<typeof ApplyPracticeA
           correctAnswer: item.correctAnswer,
           idempotencyKey: evidenceRef,
         },
-      });
+      }, { context });
       if (!projection.ok) {
         const error = new Error(projection.message) as Error & { code?: string };
         error.code = projection.code;

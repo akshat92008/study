@@ -24,9 +24,7 @@ import {
   loadProfileForUser,
   loadRecentPracticeEvidenceForUser,
   readPatternMemoriesForUser,
-  updateConceptMasteryForUser,
   updatePatternMemoryForUser,
-  updateProfileStreakForUser,
   writePatternMemoryForUser,
   type DailyMicrotaskInput,
   type RevisionCardInput,
@@ -163,13 +161,6 @@ export const PracticePatternAgent: AmauraAgentDefinition<z.infer<typeof Practice
       cardsCreated = created.length;
     }
 
-    const concept = await updateConceptMasteryForUser(context.userId, detected.conceptId, {
-      mastery: 'developing',
-      masteryScore: 35,
-      confidence: 'medium',
-      forgettingProbability: 0.82,
-    });
-
     await writePatternMemoryForUser(context.userId, {
       goalId,
       conceptId: detected.conceptId,
@@ -194,24 +185,36 @@ export const PracticePatternAgent: AmauraAgentDefinition<z.infer<typeof Practice
       sourceEventId: context.eventId,
     });
 
+    const tasks = await createDailyMicrotasksForUser(context.userId, [{
+      goalId,
+      conceptId: detected.conceptId,
+      title: `Repair repeated misses: ${detected.conceptName}`,
+      subject: detected.subject,
+      topic: detected.topic ?? detected.conceptName,
+      type: 'pattern_recovery',
+      estimatedMinutes: 15,
+      priority: 'high',
+      metadata: { agent: 'PracticePatternAgent', eventId: context.eventId },
+    }]);
+
     const notification = await createNotificationForUser(context.userId, {
       goalId,
       type: 'practice_pattern',
       priority: 'normal',
       title: 'Practice pattern found',
-      message: `I noticed you missed ${detected.conceptName} ${detected.wrongCount} times. I created targeted revision and moved it into today's mission. Do the new cards next.`,
-      actionLabel: 'Review cards',
-      actionType: 'open_revision',
+      message: `I noticed you missed ${detected.conceptName} ${detected.wrongCount} times. I added a focused repair task${cardsCreated > 0 ? ` and ${cardsCreated} extra revision card${cardsCreated === 1 ? '' : 's'}` : ''}. Do the repair task next.`,
+      actionLabel: 'Open repair',
+      actionType: 'open_repair',
       actionPayload: { conceptId: detected.conceptId ?? null, conceptName: detected.conceptName },
       dedupKey: notificationDedupKey,
       metadata: { conceptKey, eventId: context.eventId },
     });
 
     return emptyAmauraResult({
-      actionsTaken: 3 + cardsCreated,
+      actionsTaken: 2 + cardsCreated + tasks.length,
       notificationsCreated: notification ? 1 : 0,
       cardsCreated,
-      conceptsUpdated: concept ? 1 : 0,
+      conceptsUpdated: 0,
       missionInvalidated: true,
       aiCallsUsed: context.budget.aiCallsUsed,
     });
@@ -232,8 +235,6 @@ export const SessionCloseAgent: AmauraAgentDefinition<z.infer<typeof StudySessio
   async run(context, payload) {
     const goalId = context.goalId ?? stringOrNull(payload.goalId ?? payload.goal_id);
     const topics = normalizeSessionTopics(payload);
-    await updateProfileStreakForUser(context.userId, { now: context.now });
-
     const cards: RevisionCardInput[] = [];
     for (const topic of topics.slice(0, 5)) {
       const active = await hasActiveRevisionCardsForConcept(context.userId, {
@@ -355,12 +356,6 @@ export const AutopsyCascadeAgent: AmauraAgentDefinition<z.infer<typeof AutopsyRe
           });
         }
       }
-      await updateConceptMasteryForUser(context.userId, concept.conceptId, {
-        mastery: 'developing',
-        masteryScore: 30,
-        confidence: 'medium',
-        forgettingProbability: 0.86,
-      });
       await writePatternMemoryForUser(context.userId, {
         goalId,
         conceptId: concept.conceptId,
@@ -400,7 +395,7 @@ export const AutopsyCascadeAgent: AmauraAgentDefinition<z.infer<typeof AutopsyRe
       actionsTaken: weakConcepts.length + createdCards.length + createdTasks.length,
       notificationsCreated: notification ? 1 : 0,
       cardsCreated: createdCards.length,
-      conceptsUpdated: weakConcepts.filter((concept) => concept.conceptId).length,
+      conceptsUpdated: 0,
       missionInvalidated: true,
       aiCallsUsed: context.budget.aiCallsUsed,
     });

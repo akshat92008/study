@@ -20,6 +20,36 @@ interface ClaimRedaction {
 
 const UNVERIFIED_CLAIM_PATTERNS: ClaimRedaction[] = [
   {
+    pattern: /i\s+(have\s+)?updated\s+your\s+(mastery|learner\s+model)/gi,
+    replacement: '',
+    reason: 'unverified_mastery_claim',
+  },
+  {
+    pattern: /i\s+(have\s+)?found\s+(your\s+)?weak\s+areas?/gi,
+    replacement: '',
+    reason: 'unverified_weak_area_claim',
+  },
+  {
+    pattern: /i\s+(have\s+)?scheduled\s+(a\s+)?(repair|retest|revision)/gi,
+    replacement: '',
+    reason: 'unverified_repair_claim',
+  },
+  {
+    pattern: /i\s+(have\s+)?completed\s+(your\s+|the\s+)?session/gi,
+    replacement: '',
+    reason: 'unverified_session_claim',
+  },
+  {
+    pattern: /i\s+(have\s+)?saved\s+(this|it)\s+(to|in)\s+(your\s+)?memory/gi,
+    replacement: '',
+    reason: 'unverified_memory_claim',
+  },
+  {
+    pattern: /i\s+(have\s+)?adapted\s+(your\s+)?tomorrow(?:'s)?\s+(plan|session)/gi,
+    replacement: '',
+    reason: 'unverified_plan_adapt_claim',
+  },
+  {
     pattern: /i\s+(saved?|created?|added?|updated?|recorded?|tracked?|built?|made?)\s+this/gi,
     replacement: '',
     reason: 'unverified_save_claim',
@@ -134,9 +164,16 @@ export function applyResponseClaimGuard(
     .replace(/[.,;]\s*\./g, '.')
     .trim();
 
-  // If we removed claims but response still needs a safe fallback
-  if (!filteredResponse && removedClaims.length > 0 && hasMutations && !verified) {
-    filteredResponse = 'Your feedback has been noted. The learning system will update when changes are confirmed.';
+  if (removedClaims.length > 0 && !verified) {
+    const verificationText = [...verification.errors, ...verification.warnings].join(' ');
+    const fallback = /concept.*resolution|resolution.*concept/i.test(verificationText)
+      ? 'Concept resolution is needed before this can affect weak areas.'
+      : hasMutations
+        ? 'I analyzed this, but could not update your learner model.'
+        : 'This was saved as activity, but mastery was not updated.';
+    filteredResponse = filteredResponse
+      ? `${filteredResponse}\n\n${fallback}`
+      : fallback;
   }
 
   return {
@@ -176,11 +213,5 @@ export function sanitizeResponseForChannel(
   mutationSummary: MutationSummary,
   verification: VerificationResult
 ): string {
-  // For read-only channels (general chat with no mutations), be more permissive
-  if (!mutationSummary.changed) {
-    return response ?? '';
-  }
-
-  // For mutation channels, apply full claim guard
   return applyResponseClaimGuard(response, mutationSummary, verification).filteredResponse;
 }

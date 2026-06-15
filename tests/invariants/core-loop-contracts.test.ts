@@ -79,15 +79,20 @@ describe('core loop production invariants', () => {
 
   it('test-practice-answer-full-projection: applies learning event', () => {
     const projector = read('lib/learner-state/projector.ts');
-    expect(projector).toContain('recordMasteryEvidence');
-    expect(projector).toContain('createRevisionCardsForUser');
+    expect(projector).toContain("rpc('apply_core_loop_projection'");
+    expect(projector).toContain('payload.mastery');
+    expect(projector).toContain('payload.revision_cards');
+    expect(projector).not.toContain('recordMasteryEvidence');
+    expect(projector).not.toContain('createRevisionCardsForUser');
   });
 
   it('test-wrong-answer-memory-mistake: creates revision cards', () => {
     const apply = read('lib/learner-state/apply-learning-event.ts');
     const projector = read('lib/learner-state/projector.ts');
     expect(apply).toContain("outcome === 'incorrect'");
-    expect(projector).toContain('createRevisionCardsForUser');
+    expect(projector).toContain('shouldCreateCard');
+    expect(projector).toContain('payload.revision_cards');
+    expect(projector).toContain('payload.mistakes');
   });
 
   it('test-autopsy-diagnosis-projects-to-learner-state: hits projector', () => {

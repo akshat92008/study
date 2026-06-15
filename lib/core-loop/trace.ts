@@ -64,7 +64,7 @@ export async function finishCoreLoopTrace(
   else logger.info('Core loop action completed', logContext);
 
   if (supabase) {
-    const { error } = await supabase.from('core_loop_traces').insert({
+    const { error } = await supabase.from('core_loop_traces').upsert({
       id: trace.traceId,
       user_id: trace.userId,
       goal_id: trace.goalId,
@@ -74,7 +74,7 @@ export async function finishCoreLoopTrace(
       steps: trace.steps,
       result,
       status: failed ? 'failed' : 'success',
-    });
+    }, { onConflict: 'id' });
     if (error) {
       logger.warn('Core loop trace persistence failed', {
         traceId: trace.traceId,

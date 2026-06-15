@@ -26,15 +26,22 @@ export default function AmauraNotificationFeed() {
   const [loading, setLoading] = useState(false);
   const [notifications, setNotifications] = useState<AmauraNotification[]>([]);
   const [unreadCount, setUnreadCount] = useState(0);
+  const [error, setError] = useState<string | null>(null);
+  const [offline, setOffline] = useState(false);
 
   const load = useCallback(async () => {
     setLoading(true);
     try {
       const res = await fetch('/api/amaura/notifications?limit=10', { cache: 'no-store' });
-      if (!res.ok) return;
+      if (!res.ok) throw new Error('Notifications are temporarily unavailable.');
       const data = await res.json();
       setNotifications(Array.isArray(data.notifications) ? data.notifications : []);
       setUnreadCount(Number(data.unreadCount ?? 0));
+      setError(null);
+      setOffline(false);
+    } catch (cause) {
+      setOffline(typeof navigator !== 'undefined' && !navigator.onLine);
+      setError(cause instanceof Error ? cause.message : 'Unable to load notifications.');
     } finally {
       setLoading(false);
     }
@@ -42,7 +49,7 @@ export default function AmauraNotificationFeed() {
 
   useEffect(() => {
     load();
-    const id = window.setInterval(load, 60_000);
+    const id = window.setInterval(load, 15_000);
     return () => window.clearInterval(id);
   }, [load]);
 
@@ -59,11 +66,21 @@ export default function AmauraNotificationFeed() {
     const action = notification.action_type;
     if (action === 'open_revision') {
       setActiveDrawer('revision');
+      router.push('/dashboard');
+    } else if (action === 'open_repair') {
+      router.push('/mistakes');
     } else if (action === 'open_mission') {
       router.push('/dashboard');
       window.dispatchEvent(new Event('refresh-dashboard'));
     } else if (action === 'open_autopsy') {
       router.push('/autopsy/deep');
+    } else if (action === 'open_session') {
+      router.push('/dashboard');
+    } else if (action === 'open_practice') {
+      router.push('/chat?intent=practice');
+    } else if (action === 'open_atlas_concept') {
+      const conceptId = notification.action_payload?.conceptId;
+      router.push(typeof conceptId === 'string' ? `/cognition?conceptId=${conceptId}` : '/cognition');
     }
     await markRead({ id: notification.id });
     setOpen(false);
@@ -162,9 +179,13 @@ export default function AmauraNotificationFeed() {
           </div>
 
           <div style={{ maxHeight: 420, overflowY: 'auto' }}>
-            {notifications.length === 0 ? (
+            {error ? (
+              <div role="alert" style={{ padding: '18px 14px', color: 'var(--danger)', fontSize: 'var(--fs-sm)' }}>
+                {offline ? 'You are offline. Notifications will refresh when the connection returns.' : error}
+              </div>
+            ) : notifications.length === 0 ? (
               <div style={{ padding: '18px 14px', color: 'var(--text-tertiary)', fontSize: 'var(--fs-sm)' }}>
-                No updates right now.
+                No updates yet. Important repair, autopsy, material, and session changes will appear here.
               </div>
             ) : notifications.map((notification) => (
               <div

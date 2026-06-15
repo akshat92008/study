@@ -9,7 +9,6 @@ import { logger } from '@/lib/utils/logger';
 import { apiErrorResponse } from '@/lib/api/errors';
 import { featureFlags } from '@/lib/config/flags';
 import { consumeFeatureUsage, enforceFeatureLimit, featureLimitResponse } from '@/lib/usage/enforce-feature-limit';
-import { processLearningTransaction } from '@/lib/learning/learning-transaction';
 import { z } from 'zod';
 
 const INLINE_INGESTION_MAX_BYTES = 5 * 1024 * 1024;
@@ -148,47 +147,11 @@ Extract:
     formattedAnswer = lines.join('');
   }
 
-  // ── Learning transaction (fire-and-forget) ────────────────────────────────
-  let learningDelta = '';
-  if (supabase && extraction) {
-    try {
-      const txResult = await processLearningTransaction({
-        supabase,
-        userId,
-        source: 'photo_doubt',
-        idempotencyKey: idempotencyKey ?? `photo_${Date.now()}`,
-        sessionId,
-        goalId,
-        userText: message || null,
-        assistantText: rawAnswer,
-        imageMetadata: {
-          topic: extraction.topic ?? null,
-          subject: extraction.subject ?? null,
-          conceptsTested: extraction.conceptsTested ?? [],
-          detectedMistake: extraction.detectedMistake ?? null,
-          isCorrect: extraction.isCorrect ?? null,
-          confidence: extraction.confidence ?? 0.65,
-        },
-      });
-      learningDelta = txResult.learningSignalSummary;
-    } catch (txErr) {
-      logger.warn('Photo-doubt learning transaction failed (non-blocking)', {
-        userId,
-        error: txErr instanceof Error ? txErr.message : String(txErr),
-      });
-    }
-  }
-
-  const answerWithDelta = learningDelta
-    ? `${formattedAnswer}\n\n---\n*${learningDelta}*`
-    : formattedAnswer;
-
   const stream = new ReadableStream({
     async start(controller) {
-      controller.enqueue(encoder.encode(answerWithDelta));
       try {
-        await finalizeAssistantTurn({
-          assistantText: answerWithDelta,
+        const finalized = await finalizeAssistantTurn({
+          assistantText: formattedAnswer,
           userMessage: message || '[Image upload]',
           budgetReservationId: null,
           metadata: {
@@ -197,9 +160,14 @@ Extract:
             subject: extraction?.subject ?? null,
             conceptsTested: extraction?.conceptsTested ?? [],
             detectedMistake: extraction?.detectedMistake ?? null,
-            learningDelta,
+            isCorrect: extraction?.isCorrect ?? null,
+            confidence: extraction?.confidence ?? 0.65,
+            idempotencyKey,
+            sessionId,
+            goalId,
           },
         });
+        controller.enqueue(encoder.encode(finalized.assistantText));
       } catch (finalizeErr) {
         logger.error('Chat route [image]: finalization failed', finalizeErr);
       }
@@ -252,13 +220,13 @@ export async function handleDocumentVisionUpload({
 
   const stream = new ReadableStream({
     async start(controller) {
-      controller.enqueue(encoder.encode(answer));
       try {
-        await finalizeAssistantTurn({
+        const finalized = await finalizeAssistantTurn({
           assistantText: answer,
           userMessage: message || '[Document upload]',
           budgetReservationId: null,
         });
+        controller.enqueue(encoder.encode(finalized.assistantText));
       } catch (finalizeErr) {
         logger.error('Chat route [document]: finalization failed', finalizeErr);
       }
@@ -295,13 +263,13 @@ export async function handleAutopsyRedirect({
 
   const stream = new ReadableStream({
     async start(controller) {
-      controller.enqueue(encoder.encode(responseText));
       try {
-        await finalizeAssistantTurn({
+        const finalized = await finalizeAssistantTurn({
           assistantText: responseText,
           userMessage: message || '[Autopsy upload]',
           metadata: { action: 'autopsy_upload_redirect' },
         });
+        controller.enqueue(encoder.encode(finalized.assistantText));
       } catch (finalizeErr) {
         logger.error('Chat route [autopsy-redirect]: finalization failed', finalizeErr);
       }
@@ -491,12 +459,12 @@ export async function processMaterialIngestion({
       
     const stream = new ReadableStream({
       async start(controller) {
-        controller.enqueue(encoder.encode(answer));
         try {
-          await finalizeAssistantTurn({
+          const finalized = await finalizeAssistantTurn({
             assistantText: answer,
             userMessage: message || '[Document upload]',
           });
+          controller.enqueue(encoder.encode(finalized.assistantText));
         } catch {}
         controller.close();
       }

@@ -104,12 +104,14 @@ function normalizeErrorCode(code: CognitionErrorCode): LearningEventError['code'
 
 export async function applyLearningEvent(
   supabase: SupabaseClient,
-  input: LearningEventInput
+  input: LearningEventInput,
+  options: { context?: import('@/lib/agent/types').AgentToolContext; traceId?: string } = {}
 ): Promise<LearningEventResult | LearningEventError> {
   const trace = createCoreLoopTrace({
     userId: input.userId,
     goalId: input.goalId,
     action: `apply_learning_event:${input.source}`,
+    traceId: options.traceId ?? options.context?.runId ?? undefined,
   });
 
   try {
@@ -163,7 +165,11 @@ export async function applyLearningEvent(
       },
     };
 
-    const projection = await projectLearningSignal(supabase, input.userId, signal, { goalId });
+    const projection = await projectLearningSignal(supabase, input.userId, signal, {
+      goalId,
+      context: options.context,
+      traceId: trace.traceId,
+    });
     if (!projection.success) {
       const first = projection.errors?.[0];
       throw new CognitionError(

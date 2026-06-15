@@ -12,24 +12,28 @@ type AgentAction = {
   status: 'applied' | 'skipped' | 'failed';
   reason?: string;
   target_type?: string;
+  target_id?: string;
   created_at: string;
   evidence?: any;
+  error?: string | null;
+  error_code?: string | null;
 };
 
 export function AgentActivityFeed() {
   const [activities, setActivities] = useState<AgentAction[]>([]);
   const [loading, setLoading] = useState(true);
-  const [isThinking, setIsThinking] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const fetchActivity = useCallback(async () => {
     try {
-      const res = await fetch('/api/amaura/activity?limit=10');
-      if (res.ok) {
-        const data = await res.json();
-        setActivities(data.activity || []);
-      }
+      const res = await fetch('/api/amaura/activity?limit=10', { cache: 'no-store' });
+      if (!res.ok) throw new Error('Amaura activity is temporarily unavailable.');
+      const data = await res.json();
+      setActivities(data.activity || []);
+      setError(null);
     } catch (e) {
       console.error('Failed to fetch agent activity', e);
+      setError(e instanceof Error ? e.message : 'Unable to load Amaura activity.');
     } finally {
       setLoading(false);
     }
@@ -41,27 +45,18 @@ export function AgentActivityFeed() {
     return () => clearInterval(interval);
   }, [fetchActivity]);
 
-  // Listen for local events to trigger "thinking" state
-  useEffect(() => {
-    const onStart = () => setIsThinking(true);
-    const onStop = () => {
-      setIsThinking(false);
-      fetchActivity(); // Refresh immediately
-    };
-    
-    window.addEventListener('amaura:agent-start', onStart);
-    window.addEventListener('amaura:agent-stop', onStop);
-    
-    return () => {
-      window.removeEventListener('amaura:agent-start', onStart);
-      window.removeEventListener('amaura:agent-stop', onStop);
-    };
-  }, [fetchActivity]);
-
   const getAgentLabel = (activity: AgentAction) => {
     if (activity.title) return activity.title;
-    const formattedName = activity.agent_name.toUpperCase();
-    return `${formattedName} ${activity.action_type.replace(/_/g, ' ')}`;
+    const subsystem: Record<string, string> = {
+      mind: 'Amaura Runtime',
+      atlas: 'Practice Loop',
+      autopsy: 'Autopsy Loop',
+      memory: 'Memory Loop',
+      planner: 'Session Planner',
+      command: 'Session Planner',
+      system: 'Amaura Runtime',
+    };
+    return `${subsystem[activity.agent_name] ?? 'Amaura Runtime'}: ${activity.action_type.replace(/_/g, ' ')}`;
   };
 
   const getStatusIcon = (status: string) => {
@@ -99,19 +94,18 @@ export function AgentActivityFeed() {
           <Activity size={18} color="var(--accent-primary, #8b5cf6)" />
           <h3 style={{ fontSize: '14px', fontWeight: 600, margin: 0 }}>Amaura Activity</h3>
         </div>
-        {isThinking && (
-          <span style={{ fontSize: '12px', color: 'var(--accent-primary, #8b5cf6)', display: 'flex', alignItems: 'center', gap: 4 }}>
-            <span className={styles.thinkingDot} style={{ width: 6, height: 6, borderRadius: '50%', background: 'currentColor' }} />
-            Amaura is thinking...
-          </span>
-        )}
+        <span style={{ fontSize: '11px', color: 'var(--text-tertiary)' }}>Real learner-state changes</span>
       </div>
 
 
       <div style={{ padding: '8px', overflowY: 'auto', flex: 1 }}>
-        {activities.length === 0 ? (
+        {error ? (
+          <div role="alert" style={{ padding: '20px 16px', textAlign: 'center', color: 'var(--danger)', fontSize: '13px' }}>
+            {error}
+          </div>
+        ) : activities.length === 0 ? (
           <div style={{ padding: '24px 16px', textAlign: 'center', color: 'var(--text-tertiary)', fontSize: '13px' }}>
-            Ask a doubt or complete practice to activate Amaura.
+            Amaura activity will appear after you study, practice, or upload a test.
           </div>
         ) : (
           <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -140,6 +134,12 @@ export function AgentActivityFeed() {
                       <p style={{ margin: 0, color: 'var(--text-secondary)', lineHeight: 1.4, fontSize: '12px' }}>
                         {activity.reason}
                       </p>
+                    )}
+                    {(activity.target_type || activity.error_code) && (
+                      <div style={{ marginTop: 6, color: activity.status === 'failed' ? 'var(--danger)' : 'var(--text-tertiary)', fontSize: '10px' }}>
+                        {activity.target_type ? `Target: ${activity.target_type}` : ''}
+                        {activity.error_code ? ` Failure: ${activity.error_code}` : ''}
+                      </div>
                     )}
                   </div>
                 </div>

@@ -76,10 +76,6 @@ function needsSignalCascadeInjection(signals: LearningSignal[], requiredTools: A
   const hasActionable = signals.some(isActionableSignal);
   if (!hasActionable) return false;
   const signalMutatingTools = [
-    'upsert_atlas_concept',
-    'update_concept_mastery',
-    'create_memory_card',
-    'update_microtarget',
     'write_learning_event',
   ];
   const hasMutationTools = requiredTools.some(t => signalMutatingTools.includes(t.name));
@@ -107,12 +103,23 @@ function summarizeMutations(results: ToolResultRecord[]): MutationSummary {
     }
     if (!result.changed) continue;
 
-    if (result.toolName === 'write_learning_event') summary.eventsWritten++;
+    if (result.toolName === 'write_learning_event') {
+      summary.eventsWritten += Number((result.data as any)?.eventsWritten ?? 1);
+      summary.conceptsUpdated += Number((result.data as any)?.conceptsUpdated ?? 0);
+      summary.revisionCardsCreated += Number((result.data as any)?.revisionCardsCreated ?? 0);
+      summary.mistakesRecorded += Number((result.data as any)?.mistakesRecorded ?? 0);
+    }
     if (result.toolName === 'upsert_atlas_concept') summary.conceptsCreated++; // Actually upserted
     if (result.toolName === 'update_concept_mastery') summary.conceptsUpdated++;
     if (result.toolName === 'create_memory_card') summary.revisionCardsCreated++;
     if (result.toolName === 'update_microtarget') summary.microtargetsUpdated++;
-    if (result.toolName === 'apply_practice_attempt') summary.practiceAttemptsProcessed++;
+    if (result.toolName === 'apply_practice_attempt') {
+      summary.practiceAttemptsProcessed += Number((result.data as any)?.practiceAttemptsProcessed ?? 1);
+      summary.eventsWritten += Number((result.data as any)?.eventsWritten ?? 0);
+      summary.conceptsUpdated += Number((result.data as any)?.conceptsUpdated ?? 0);
+      summary.revisionCardsCreated += Number((result.data as any)?.revisionCardsCreated ?? 0);
+      summary.mistakesRecorded += Number((result.data as any)?.mistakesRecorded ?? 0);
+    }
     if (result.toolName === 'complete_session') summary.sessionsCompleted++;
     if (result.toolName === 'record_autopsy_mistake') summary.mistakesRecorded++;
   }
@@ -320,21 +327,33 @@ export async function runCognitionAgentLoop(input: {
       }
 
       // Filter required_tools against policy
-      const requiredTools = latestPlan.required_tools.filter(t => allowedToolNames.has(t.name));
+      let requiredTools = latestPlan.required_tools.filter(t => allowedToolNames.has(t.name));
+
+      if (runtimeState.latestSignals.some(isActionableSignal)) {
+        const duplicateProjectionTools = new Set([
+          'upsert_atlas_concept',
+          'update_concept_mastery',
+          'create_memory_card',
+        ]);
+        requiredTools = requiredTools.filter((tool) => !duplicateProjectionTools.has(tool.name));
+        if (!requiredTools.some((tool) => tool.name === 'write_learning_event')) {
+          requiredTools.push({ name: 'write_learning_event', input: { from: 'signals' } });
+        }
+      }
 
       // Fix 1: Force signal cascade injection BEFORE compileToolPlan so injected tools are included in requiredTools
       if (needsSignalCascadeInjection(runtimeState.latestSignals, requiredTools)) {
         logger.info('Injecting missing signal cascade tools — model omitted mutation tools', {
           signalCount: runtimeState.latestSignals.filter(isActionableSignal).length,
         });
-        requiredTools.push(
-          { name: 'upsert_atlas_concept', input: { from: 'signals' } },
-          { name: 'update_concept_mastery', input: {} },
-          { name: 'create_memory_card', input: {} },
-          { name: 'update_microtarget', input: {} },
-          { name: 'write_learning_event', input: {} },
-        );
+        requiredTools.push({ name: 'write_learning_event', input: { from: 'signals' } });
       }
+
+      requiredTools.sort((a, b) => {
+        if (a.name === 'write_learning_event') return -1;
+        if (b.name === 'write_learning_event') return 1;
+        return 0;
+      });
 
       // Now compile AFTER injection so injected tools are included
       const compiledTools = compileToolPlan({
@@ -499,23 +518,11 @@ export async function runCognitionAgentLoop(input: {
         }
       }
 
-      // Fix 5: Second-phase compile after conceptId is known
-      // If upsert_atlas_concept stored a new conceptId this round, pending signal tools
-      // (update_concept_mastery, create_memory_card, update_microtarget, write_learning_event)
-      // can now be compiled and executed before the next plan/reason cycle.
+      // Legacy second-phase projection is intentionally disabled. Concept
+      // resolution, mastery, repair, cards, activity, and notifications are
+      // committed together by write_learning_event.
       if (newConceptStored) {
-        const signalTools = compileToolPlan({
-          plannedTools: [
-            { name: 'update_concept_mastery', input: {} },
-            { name: 'create_memory_card', input: {} },
-            { name: 'update_microtarget', input: {} },
-            { name: 'write_learning_event', input: {} },
-          ],
-          runtimeState,
-          context,
-          observation,
-          finalResponse: finalResponseInstruction,
-        });
+        const signalTools: Array<{ name: string; args: JsonObject }> = [];
         if (signalTools.length > 0) {
           // Fix 6 Phase: Dedupe second-phase tools before execution
           const pendingSecondPhase = signalTools.filter(tool => {
@@ -595,7 +602,7 @@ export async function runCognitionAgentLoop(input: {
         // If conceptId not yet stored, mutation tools cannot run
         if (!runtimeState.conceptsByName.has(key)) return true;
         // conceptId exists — check if all required mutation tools succeeded
-        const requiredMutations = ['update_concept_mastery', 'create_memory_card', 'write_learning_event'];
+        const requiredMutations = ['write_learning_event'];
         return requiredMutations.some(m => !runtimeState.completedSignalMutations.has(`${key}:${m}`));
       });
       // Fix 6: Do not break if pending signal mutations remain
@@ -704,7 +711,7 @@ export async function runCognitionAgentLoop(input: {
   }
 
   return {
-    finalResponse: claimGuardResult.filteredResponse || finalResponseInstruction,
+    finalResponse: claimGuardResult.filteredResponse,
     trajectoryId,
     contextSummary: contextSummary as any,
     sourceRetrievalSummary: {
@@ -724,4 +731,3 @@ export async function runCognitionAgentLoop(input: {
     usedToolCalls: runtimeState.toolResults.length, // Fix 10: Populate usage stats
   };
 }
-

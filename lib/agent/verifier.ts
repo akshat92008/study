@@ -49,7 +49,7 @@ export async function verifyAgentTurn(input: {
     } else if (!trace) {
       errors.push('core_loop_trace_missing: Agent requested mutations but no trace was committed by the projection RPC.');
       traceCompleted = false;
-    } else if (trace.status !== 'completed') {
+    } else if (!['success', 'completed'].includes(trace.status)) {
       errors.push(`core_loop_trace_failed: Trace status is ${trace.status}. Error: ${trace.error_code}`);
       traceCompleted = false;
     }

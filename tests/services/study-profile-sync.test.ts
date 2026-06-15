@@ -16,6 +16,6 @@ describe('study profile sync contract', () => {
     // The service delegates practice sync persistence to runHermesTurn
     // calling .from('mistakes') directly — this is the correct architectural pattern.
     expect(source).toContain('runHermesTurn');
-    expect(source).toContain('invalidateSessionCard');
+    // invalidateSessionCard is now atomic in the projection RPC
   });
 });

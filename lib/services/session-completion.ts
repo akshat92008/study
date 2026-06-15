@@ -4,6 +4,7 @@ import { logger } from '@/lib/utils/logger';
 import { applyLearningEvent } from '@/lib/learner-state/apply-learning-event';
 import type { AgentChannel } from '@/lib/agent/types';
 import { CognitionError } from '@/lib/errors/cognition-errors';
+import type { AgentToolContext } from '@/lib/agent/types';
 
 /**
  * Deterministically completes a study session.
@@ -24,6 +25,7 @@ export async function completeLearningSession(input: {
   source?: AgentChannel | 'source';
   idempotencyKey?: string | null;
   client?: any;
+  agentContext?: AgentToolContext;
 }) {
   const supabase = input.client || await createClient();
   const sessionId = input.sessionId || input.taskId;
@@ -126,7 +128,7 @@ export async function completeLearningSession(input: {
       gapFound: input.gapFound ?? null,
       idempotencyKey: completionKey,
     },
-  });
+  }, { context: input.agentContext });
   if (!projection.ok) {
     throw new CognitionError('SESSION_COMPLETION_FAILED', projection.message, projection.recoverable, projection.traceId);
   }

@@ -14,7 +14,6 @@ import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import CurrentTaskCard from '@/components/dashboard/CurrentTaskCard';
 import MicrotargetsCard from '@/components/dashboard/MicrotargetsCard';
-import AmauraNotificationFeed from '@/components/dashboard/AmauraNotificationFeed';
 import { AgentActivityFeed } from '@/components/amaura/AgentActivityFeed';
 import { SeededTopicsCard } from '@/components/dashboard/SeededTopicsCard';
 import DeepAutopsyCard from '@/components/dashboard/DeepAutopsyCard';
@@ -168,7 +167,6 @@ export default function DashboardPage() {
             Select or create a learning goal in the sidebar
           </div>
         )}
-        <AmauraNotificationFeed />
       </div>
 
       <div style={{ padding: '0 0 var(--sp-4) 0' }}>

@@ -42,7 +42,7 @@ export const updateConceptMasteryTool: AgentToolDefinition<typeof UpdateConceptM
         ...input.signal.metadata,
         idempotencyKey: input.evidenceRef ?? `${context.idempotencyKey}:mastery:${input.conceptId}`,
       },
-    });
+    }, { context });
 
     return {
       success: result.ok,

@@ -5,12 +5,13 @@ import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import {
   Zap, X, ChevronLeft, ChevronRight, LogOut,
-  Brain, RefreshCw, Activity, Home, CreditCard, Database, MessageCircle, Plus, Target, SearchCheck
+  Brain, RefreshCw, Activity, Home, CreditCard, Database, MessageCircle, Plus, Target, Wrench, Settings, BookOpenCheck
 } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
 import { signOut } from '@/lib/actions/auth';
 import { isFeatureEnabled } from '@/lib/feature-registry';
 import GoalCreationModal from '@/components/modals/GoalCreationModal';
+import { isDeliveredModule } from '@/lib/features/deliveryStatus';
 
 interface SidebarProps {
   userName: string;
@@ -34,10 +35,13 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
   } = useAppStore();
   const navItems = [
     { label: 'Today', href: '/dashboard', icon: Home },
+    ...(isDeliveredModule('practice_sets') ? [{ label: 'Practice', href: '/chat?intent=practice', icon: BookOpenCheck }] : []),
+    ...(isDeliveredModule('repair') ? [{ label: 'Repair', href: '/mistakes', icon: Wrench }] : []),
     { label: 'Sources', href: '/knowledge', icon: Database, feature: 'knowledge_ui' },
     { label: 'Review', href: '/revision', icon: RefreshCw, feature: 'flashcards_ui' },
     { label: 'Mistake Review', href: '/autopsy', icon: Activity, feature: 'autopsy_ui' },
     { label: 'Progress', href: '/cognition', icon: Brain, feature: 'atlas_ui' },
+    { label: 'Settings', href: '/settings', icon: Settings },
   ].filter(item => !item.feature || isFeatureEnabled(item.feature as any));
 
   const [isGoalModalOpen, setIsGoalModalOpen] = useState(false);

@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 import { invalidateSessionCard } from '@/lib/services/session-card-invalidation';
-import { recordMasteryEvidence } from '@/lib/engines/mastery-updater';
+import { applyLearningEvent } from '@/lib/learner-state/apply-learning-event';
 
 export type RepairSource = 'quiz' | 'autopsy' | 'chat' | 'manual' | 'diagnostic';
 export type RepairStatus = 'open' | 'repairing' | 'retest_due' | 'repaired' | 'ignored';
@@ -369,6 +369,12 @@ export async function submitImmediateRepair(
   if (readError) throw readError;
   if (!mistake) throw new Error('Mistake not found');
 
+  await projectRepairEvidence(supabase, mistake, {
+    passed: input.passed,
+    phase: 'immediate',
+    idempotencyKey: `repair:immediate:${mistake.id}:${input.passed ? 'pass' : 'fail'}`,
+  });
+
   if (!input.passed) {
     await supabase
       .from('mistakes')
@@ -431,6 +437,12 @@ export async function submitDelayedRetest(
   if (mistakeError) throw mistakeError;
   if (!mistake) throw new Error('Mistake not found');
 
+  await projectRepairEvidence(supabase, mistake, {
+    passed: input.passed,
+    phase: 'delayed',
+    idempotencyKey: `repair:delayed:${retest.id}:${Number(retest.attempt_count ?? 0) + 1}:${input.passed ? 'pass' : 'fail'}`,
+  });
+
   await supabase
     .from('mistake_retests')
     .update({
@@ -466,7 +478,6 @@ export async function submitDelayedRetest(
     };
   }
 
-  await penalizeConceptMastery(supabase, mistake);
   await supabase
     .from('mistakes')
     .update({
@@ -487,40 +498,48 @@ export async function submitDelayedRetest(
 
   return {
     status: 'repairing' as RepairStatus,
-    message: 'Retest failed. The mistake is reopened for repair and mastery has been decreased.',
+      message: 'Retest failed. The mistake is reopened, a new repair step is scheduled, and mastery evidence was updated.',
   };
 }
 
-async function penalizeConceptMastery(supabase: any, mistake: any) {
-  if (!mistake.concept_id) return;
-  const { data: concept } = await supabase
-    .from('concepts')
-    .select('mastery_score')
-    .eq('id', mistake.concept_id)
-    .eq('user_id', mistake.user_id)
-    .maybeSingle();
-  const score = Number(concept?.mastery_score ?? 0);
-  const delta = score > 1 ? 8 : 0.08;
-  await supabase
-    .from('concepts')
-    .update({
-      mastery_score: Math.max(0, score - delta),
-      mastery: score - delta <= 0.2 ? 'exposed' : 'developing',
-      updated_at: new Date().toISOString(),
-    })
-    .eq('id', mistake.concept_id)
-    .eq('user_id', mistake.user_id);
+async function projectRepairEvidence(
+  supabase: any,
+  mistake: any,
+  input: { passed: boolean; phase: 'immediate' | 'delayed'; idempotencyKey: string }
+) {
+  const concept = mistake.concept || mistake.topic || mistake.chapter;
+  if (!concept) throw new Error('Repair task is missing a resolvable concept.');
 
-  await recordMasteryEvidence({
+  const projection = await applyLearningEvent(supabase, {
     userId: mistake.user_id,
-    conceptId: mistake.concept_id,
-    evidenceType: 'practice_wrong',
-    source: 'mistake_retest',
-    sourceId: `mistake_retest_failed:${mistake.id}:${mistake.last_tested_at ?? Date.now()}`,
-    evidence: `Failed delayed retest for ${mistake.concept || mistake.topic || 'mistake repair'}.`,
-    confidence: 0.82,
-    client: supabase,
-  }).catch(() => undefined);
+    goalId: mistake.goal_id ?? null,
+    source: 'revision',
+    concept: {
+      conceptId: mistake.concept_id ?? undefined,
+      canonicalName: concept,
+      subject: mistake.subject ?? undefined,
+      chapter: mistake.chapter ?? undefined,
+      topic: mistake.topic ?? concept,
+    },
+    result: {
+      outcome: input.passed ? (input.phase === 'delayed' ? 'correct' : 'reviewed') : 'incorrect',
+      confidence: input.phase === 'delayed' ? 0.95 : 0.85,
+      mistakeType: mistake.mistake_type ?? mistake.category ?? undefined,
+      explanation: `${input.phase} repair ${input.passed ? 'passed' : 'failed'} for ${concept}.`,
+    },
+    metadata: {
+      mistakeId: mistake.id,
+      mistakeText: mistake.mistake_text,
+      questionText: mistake.question_text,
+      userAnswer: mistake.user_answer,
+      correctAnswer: mistake.correct_answer,
+      whyWrong: mistake.why_wrong,
+      repairPhase: input.phase,
+      idempotencyKey: input.idempotencyKey,
+    },
+  });
+  if (!projection.ok) throw new Error(projection.message);
+  return projection;
 }
 
 export async function getRepairSignals(

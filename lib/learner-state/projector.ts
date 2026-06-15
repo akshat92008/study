@@ -37,7 +37,7 @@ export async function projectLearningSignal(
   supabase: SupabaseClient,
   userId: string,
   signal: LearningSignal,
-  options: { goalId?: string | null; now?: Date; context?: AgentToolContext } = {}
+  options: { goalId?: string | null; now?: Date; context?: AgentToolContext; traceId?: string } = {}
 ): Promise<ProjectionResult> {
   const now = options.now || new Date();
   const goalId = options.goalId || (signal.metadata?.goalId as string | undefined) || null;
@@ -73,13 +73,28 @@ export async function projectLearningSignal(
       goal_id: goalId,
       local_date: localDate,
       idempotency_key: idempotencyKey,
-      learner_event: { type: signal.type, data: { ...signal, projected_at: now.toISOString() } },
-      outbox: { type: signal.type, data: signal, metadata: { ...signal.metadata, idempotencyKey } },
-      trace: { action: signal.type, trace_id: options.context?.runId },
+      learner_event: {
+        type: signal.type,
+        data: {
+          ...signal,
+          runId: options.context?.runId ?? null,
+          projected_at: now.toISOString(),
+        },
+      },
+      outbox: {
+        type: 'LEARNER_STATE_CHANGED',
+        data: { signalType: signal.type, signal },
+        metadata: { ...signal.metadata, idempotencyKey, source: 'core_loop_projection' },
+      },
+      trace: {
+        action: signal.type,
+        trace_id: options.traceId ?? options.context?.runId ?? null,
+        trace_data: { runId: options.context?.runId ?? null, channel: options.context?.channel ?? signal.source ?? null },
+      },
     };
 
     let resolvedConceptId: string | null = null;
-    let conceptName = (signal.canonicalConcept || signal.concept) as string;
+    const conceptName = (signal.canonicalConcept || signal.concept) as string;
 
     // 2. Strict Concept Resolution
     if (conceptName) {
@@ -134,6 +149,8 @@ export async function projectLearningSignal(
         source_id: sessionId || assessmentId || idempotencyKey,
         evidence_type: evidenceType,
         evidence: signal.evidence || `Signal: ${signal.type}`,
+        evidence_payload: { signal, metadata: signal.metadata ?? {} },
+        reason: signal.evidence || `Signal: ${signal.type}`,
         weight: sim.weight,
         event_confidence: signal.confidence || 1.0,
       };
@@ -160,6 +177,7 @@ export async function projectLearningSignal(
         back: generated.back,
         subject: signal.subject || 'General',
         chapter: signal.chapter || signal.topic || 'General',
+        topic: signal.topic || conceptName || 'General',
         source_type: isMistakeSignal ? 'mistake' : signal.type,
         source_id: String(sessionId || assessmentId || idempotencyKey),
         card_type: isMistakeSignal ? 'mistake_repair' : 'autopsy_recovery',
@@ -182,18 +200,34 @@ export async function projectLearningSignal(
         user_answer: (signal.metadata?.userAnswer as string) || null,
         why_wrong: (signal.metadata?.whyWrong as string) || null,
         severity: (signal.metadata?.severity as number) || (signal.type === 'misconception_detected' ? 4 : 3),
-        source: signal.source || 'autopsy',
+        source: mistakeSourceForSignal(signal.source),
         source_id: String(sessionId || assessmentId || idempotencyKey),
         metadata: { ...signal.metadata, idempotencyKey },
       }];
       result.mistakeRecorded = true;
     }
 
+    payload.activity = activityForSignal({
+      signal,
+      conceptId: resolvedConceptId,
+      conceptName,
+      runId: options.context?.runId ?? null,
+      idempotencyKey,
+    });
+
+    const notification = notificationForSignal({ signal, conceptId: resolvedConceptId, conceptName, idempotencyKey });
+    if (notification) payload.notification = notification;
+
     // 6. Session Card Invalidation
     if (signal.type === 'session_completed') {
       payload.session_card = { action: 'complete_today' };
       result.invalidationTriggered = true;
-    } else if (signal.type === 'autopsy_mistake_detected' || signal.type === 'concept_practiced') {
+    } else if (
+      signal.type === 'autopsy_mistake_detected' ||
+      signal.type === 'concept_practiced' ||
+      signal.type === 'weak_area_detected' ||
+      signal.type === 'misconception_detected'
+    ) {
       payload.session_card = { action: 'invalidate_today' };
       result.invalidationTriggered = true;
     }
@@ -226,4 +260,85 @@ export async function projectLearningSignal(
   }
 
   return result;
+}
+
+function mistakeSourceForSignal(source: LearningSignal['source']) {
+  if (source === 'practice') return 'quiz';
+  if (source === 'autopsy') return 'autopsy';
+  if (source === 'chat') return 'chat';
+  return 'manual';
+}
+
+function activityForSignal(input: {
+  signal: LearningSignal;
+  conceptId: string | null;
+  conceptName?: string;
+  runId: string | null;
+  idempotencyKey: string;
+}) {
+  const subsystem = input.signal.source === 'practice'
+    ? 'atlas'
+    : input.signal.source === 'autopsy'
+      ? 'autopsy'
+      : input.signal.type === 'session_completed'
+        ? 'planner'
+        : input.signal.type === 'revision_reviewed'
+          ? 'memory'
+          : 'mind';
+  return {
+    run_id: input.runId,
+    agent_name: subsystem,
+    action_type: input.signal.type,
+    target_type: input.conceptId ? 'concept' : 'learner_state',
+    target_id: input.conceptId,
+    confidence: input.signal.confidence,
+    reason: readableActivitySummary(input.signal, input.conceptName),
+    evidence: { signal: input.signal },
+    idempotency_key: `${input.idempotencyKey}:activity`,
+  };
+}
+
+function notificationForSignal(input: {
+  signal: LearningSignal;
+  conceptId: string | null;
+  conceptName?: string;
+  idempotencyKey: string;
+}) {
+  const concept = input.conceptName || input.signal.topic || 'this concept';
+  if (['weak_area_detected', 'misconception_detected', 'autopsy_mistake_detected'].includes(input.signal.type)) {
+    return {
+      type: 'repair_due',
+      priority: input.signal.type === 'autopsy_mistake_detected' ? 'important' : 'normal',
+      title: 'Mistake ready to repair',
+      message: `Amaura added a repair step for ${concept}.`,
+      action_label: 'Open repair',
+      action_type: 'open_repair',
+      action_payload: { conceptId: input.conceptId },
+      dedup_key: `${input.idempotencyKey}:repair-notification`,
+    };
+  }
+  if (input.signal.type === 'session_completed') {
+    return {
+      type: 'session_completed',
+      priority: 'low',
+      title: 'Session completed',
+      message: 'Your learner state and next session recommendation were refreshed.',
+      action_label: 'View dashboard',
+      action_type: 'open_session',
+      action_payload: {},
+      dedup_key: `${input.idempotencyKey}:session-notification`,
+    };
+  }
+  return null;
+}
+
+function readableActivitySummary(signal: LearningSignal, conceptName?: string) {
+  const concept = conceptName || signal.topic || 'your learner state';
+  if (signal.type === 'concept_understood') return `Mastery evidence was updated for ${concept}.`;
+  if (signal.type === 'weak_area_detected') return `A weak area and repair task were created for ${concept}.`;
+  if (signal.type === 'misconception_detected') return `A misconception was recorded for ${concept}.`;
+  if (signal.type === 'autopsy_mistake_detected') return `Autopsy evidence created a repair task for ${concept}.`;
+  if (signal.type === 'revision_reviewed') return `Revision progress was recorded for ${concept}.`;
+  if (signal.type === 'session_completed') return 'The session was completed and the next plan was refreshed.';
+  return `${signal.type.replace(/_/g, ' ')} was recorded for ${concept}.`;
 }
