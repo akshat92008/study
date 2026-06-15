@@ -423,6 +423,11 @@ export async function POST(req: NextRequest) {
     };
 
     return NextResponse.json({
+      attemptSaved: true,
+      weakAreaUpdated: Boolean((profileSync as any)?.mistakesCreated > 0 || agentLoopResult?.mutationSummary?.conceptsCreated > 0 || agentLoopResult?.mutationSummary?.conceptsUpdated > 0),
+      memoryCardCreated: Boolean((profileSync as any)?.repairCardsCreated > 0 || agentLoopResult?.mutationSummary?.revisionCardsCreated > 0),
+      repairTaskCreated: Boolean((profileSync as any)?.retestsScheduled > 0 || agentLoopResult?.mutationSummary?.microtargetsUpdated > 0),
+      nextMicrotargetChanged: Boolean((profileSync as any)?.sessionCardInvalidated),
       ok: true,
       success: true,
       attempts: persistedAttempts ?? [],

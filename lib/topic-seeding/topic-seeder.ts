@@ -54,6 +54,9 @@ function buildSeededTopicRows(
             pyqPatterns: mt.pyqPatterns,
             commonTraps: mt.commonTraps,
             masteryCriteria: mt.masteryCriteria,
+            activeRecallQuestions: mt.activeRecallQuestions,
+            taxonomyPath: mt.activeRecallQuestions?.[0]?.taxonomyPath,
+            estimatedMinutes: mt.estimatedMinutes,
             seededBy: 'neet-curated-seeder-v2',
           },
         });

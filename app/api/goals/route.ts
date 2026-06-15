@@ -117,20 +117,23 @@ export async function POST(req: NextRequest) {
       }, { status: 409, headers: { 'x-request-id': requestId } });
     }
 
-    const agenticLoop = await createAmauraGoalLoopForExistingGoal({
-      userId: user.id,
-      goalId: result.goalId,
-      source: 'api.goals.create',
-      sourceEventId: requestId,
-    }).catch((err) => {
-      logger.warn('Amaura goal loop failed after goal creation', {
+    let agenticLoop = null;
+    if (!result.topicSeeding.templateKey?.startsWith('neet-')) {
+      agenticLoop = await createAmauraGoalLoopForExistingGoal({
         userId: user.id,
         goalId: result.goalId,
-        requestId,
-        err: err instanceof Error ? err.message : String(err),
+        source: 'api.goals.create',
+        sourceEventId: requestId,
+      }).catch((err) => {
+        logger.warn('Amaura goal loop failed after goal creation', {
+          userId: user.id,
+          goalId: result.goalId,
+          requestId,
+          err: err instanceof Error ? err.message : String(err),
+        });
+        return null;
       });
-      return null;
-    });
+    }
 
     return NextResponse.json({
       success: true,
