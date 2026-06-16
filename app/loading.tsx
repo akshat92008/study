@@ -15,7 +15,7 @@ export default function Loading() {
         <Skeleton height="180px" width="100%" />
       </Card>
       <div style={{ textAlign: 'center', marginTop: 'var(--sp-4)', color: 'var(--danger)', fontSize: 'var(--fs-sm)' }}>
-        v3.0.1 (Hard Timeout)
+        v3.0.2 (Error Failsafe)
       </div>
     </div>
   );
