@@ -4,17 +4,18 @@ import { cookies } from 'next/headers';
 const fetchWithTimeout = async (input: RequestInfo | URL, init?: RequestInit) => {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 5000);
-  try {
-    const response = await fetch(input, { ...init, signal: controller.signal });
-    return response;
-  } catch (error: any) {
-    if (error.name === 'AbortError') {
-      throw new Error('Supabase API timed out after 5 seconds. Your project might be asleep or unavailable.');
-    }
-    throw error;
-  } finally {
-    clearTimeout(timeoutId);
-  }
+  
+  return Promise.race([
+    fetch(input, { ...init, signal: controller.signal }).catch(err => {
+      if (err.name === 'AbortError') {
+        throw new Error('Supabase API timed out after 5 seconds. Your project might be asleep or unavailable.');
+      }
+      throw err;
+    }).finally(() => clearTimeout(timeoutId)),
+    new Promise<Response>((_, reject) => 
+      setTimeout(() => reject(new Error('Supabase API timed out after 5 seconds. Your project might be asleep or unavailable.')), 5000)
+    )
+  ]);
 };
 
 export async function createClient() {
