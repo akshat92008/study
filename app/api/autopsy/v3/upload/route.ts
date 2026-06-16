@@ -4,7 +4,7 @@ import { validateMagicBytesArray } from '@/lib/utils/magicBytes';
 import { extractSelectableTextFromPdf } from '@/lib/autopsy-v3/extraction/pdf-text-extractor';
 import { enforceDailyTableCap, jsonWithRequestId, requireAutopsyV3User } from '@/lib/autopsy-v3/permissions';
 import { maxPdfBytes } from '@/lib/autopsy-v3/limits';
-import { featureFlags } from '@/lib/config/flags';
+import { featureFlags } from '@/lib/feature-registry';
 import { featureDisabledResponse, isFeatureEnabled } from '@/lib/feature-registry';
 import { getPlanLimits } from '@/lib/billing/plan-limits';
 import { reserveUsage, commitUsage, releaseUsage, FeatureLimitError, featureLimitResponse } from '@/lib/usage/enforce-feature-limit';

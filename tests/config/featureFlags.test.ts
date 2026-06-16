@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { featureFlags, isEnabled } from '@/lib/config/flags';
+import { featureFlags, isEnabled } from '@/lib/feature-registry';
 
 describe('feature flags', () => {
   afterEach(() => vi.unstubAllEnvs());

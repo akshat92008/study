@@ -1,4 +1,4 @@
-import { featureFlags } from '@/lib/config/flags';
+import { featureFlags } from '@/lib/feature-registry';
 import type { AgentActionType, AgentRiskLevel, JsonRecord } from './types';
 
 // For the Private Beta, we are EXTREMELY conservative with autonomous agent actions.

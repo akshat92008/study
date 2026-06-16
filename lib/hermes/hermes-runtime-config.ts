@@ -1,4 +1,4 @@
-import { isEnabled } from '@/lib/config/flags';
+import { isEnabled } from '@/lib/feature-registry';
 
 export const hermesRuntimeConfig = {
   // ── Hermes internal worker flags (never user-facing) ──

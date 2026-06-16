@@ -6,7 +6,7 @@ import { materialContentHash } from '@/lib/rag/ingest';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { EventWorkerService } from '@/lib/events/worker';
 import { logger } from '@/lib/utils/logger';
-import { featureFlags } from '@/lib/config/flags';
+import { featureFlags } from '@/lib/feature-registry';
 import { ensureGoalForUser } from '@/lib/services/goal-context.service';
 
 export async function POST(req: NextRequest) {

@@ -1,4 +1,4 @@
-import { featureFlags } from '@/lib/config/flags';
+import { featureFlags } from '@/lib/feature-registry';
 import type { CheapAgentAction, CheapAgentRiskLevel } from './cheap-types';
 import { ALLOWED_BETA_ACTIONS } from './beta-policy';
 

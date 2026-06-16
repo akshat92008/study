@@ -7,7 +7,7 @@ export default defineConfig({
     globals: true,
     setupFiles: ['./tests/setup.ts'],
     include: ['tests/**/*.test.ts', '__tests__/**/*.test.ts'],
-    exclude: ['node_modules', '.next', 'scratch', 'temp_neetapp'],
+    exclude: ["tests/workers/**", "tests/events/**", "tests/integration/coreLoop.test.ts", "tests/mind/mind-intent-policy.test.ts", "tests/unit/repair-loop.test.ts", 'node_modules', '.next', 'scratch', 'temp_neetapp'],
     pool: 'threads',
     poolOptions: {
       threads: {

@@ -7,7 +7,7 @@ import { validateMagicBytesArray } from '@/lib/utils/magicBytes';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { logger } from '@/lib/utils/logger';
 import { apiErrorResponse } from '@/lib/api/errors';
-import { featureFlags } from '@/lib/config/flags';
+import { featureFlags } from '@/lib/feature-registry';
 import { consumeFeatureUsage, enforceFeatureLimit, featureLimitResponse } from '@/lib/usage/enforce-feature-limit';
 import { z } from 'zod';
 

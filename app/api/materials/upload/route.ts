@@ -9,7 +9,7 @@ import { validateMagicBytesArray } from '@/lib/utils/magicBytes';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { EventWorkerService } from '@/lib/events/worker';
 import { logger } from '@/lib/utils/logger';
-import { featureFlags } from '@/lib/config/flags';
+import { featureFlags } from '@/lib/feature-registry';
 import { ingestLearningSignal } from '@/lib/learning-signals/ingest';
 import { betaAccessErrorResponse, requireActiveBetaUser } from '@/lib/access/beta-access';
 import { featureDisabledResponse, isFeatureEnabled } from '@/lib/feature-registry';

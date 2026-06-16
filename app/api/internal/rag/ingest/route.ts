@@ -3,7 +3,7 @@ import { createAdminClient } from '@/lib/supabase/admin';
 import { ingestStudyMaterial } from '@/lib/rag/ingest';
 import { logger } from '@/lib/utils/logger';
 import { validateCronRequest } from '@/lib/middleware/cronAuth';
-import { featureFlags } from '@/lib/config/flags';
+import { featureFlags } from '@/lib/feature-registry';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';

@@ -7,7 +7,7 @@ import { createMockSupabaseClient } from '@/tests/utils/supabase-mock';
 import * as serverSupabase from '@/lib/supabase/server';
 import * as rateLimit from '@/lib/middleware/rateLimit';
 
-import * as featureFlags from '@/lib/config/flags';
+import * as featureFlags from '@/lib/feature-registry';
 
 vi.mock('@/lib/supabase/server', () => ({
   createClient: vi.fn(),
@@ -27,7 +27,7 @@ vi.mock('@/lib/events/orchestrator', () => ({
   EventDispatcher: { publish: vi.fn() }
 }));
 
-vi.mock('@/lib/config/flags', () => ({
+vi.mock('@/lib/feature-registry', () => ({
   featureFlags: {
     autopsyProcessing: vi.fn().mockReturnValue(true),
     aiTutorMode: vi.fn().mockReturnValue(true),

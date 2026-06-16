@@ -3,7 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { getRequestId } from '@/lib/api/errors';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { EventWorkerService } from '@/lib/events/worker';
-import { featureFlags } from '@/lib/config/flags';
+import { featureFlags } from '@/lib/feature-registry';
 import { logger } from '@/lib/utils/logger';
 import { nextRetryCount, reprocessJobKey, shouldQueueReprocess } from '@/lib/materials/reprocess-state';
 

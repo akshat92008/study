@@ -5,7 +5,7 @@
 
 import { createAdminClient } from '../lib/supabase/admin';
 import { EventWorkerService } from '../lib/events/worker';
-import { featureFlags } from '../lib/config/flags';
+import { featureFlags } from '../lib/feature-registry';
 import path from 'path';
 import dotenv from 'dotenv';
 

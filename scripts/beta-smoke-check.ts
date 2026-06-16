@@ -1,7 +1,7 @@
 import path from 'path';
 import dotenv from 'dotenv';
 import { getRagConfig } from '../lib/rag/config';
-import { featureFlags } from '../lib/config/flags';
+import { featureFlags } from '../lib/feature-registry';
 
 dotenv.config({ path: path.join(process.cwd(), '.env.local') });
 dotenv.config();

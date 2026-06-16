@@ -10,7 +10,7 @@ import { consumeUsageLimit, usageGateResponse, validatePromptLength } from '@/li
 import { getPromptVersion } from '@/lib/ai/prompt-version';
 import { loadRecentMessages, persistChatMessage as dbPersistChatMessage } from '@/lib/services/chat-persistence';
 import { resolveChatGoalContext } from '@/lib/services/goal-context.service';
-import { featureFlags } from '@/lib/config/flags';
+import { featureFlags } from '@/lib/feature-registry';
 import { inferAndUpdateEmotionalState } from '@/lib/engines/emotional-state-updater';
 import { tryRuleFirstResponse } from '@/lib/ai/rule-first-responder';
 import { buildChatFirstEngineResponse } from '@/lib/ai/chat';
