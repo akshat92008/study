@@ -41,7 +41,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Concept of force."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Concept of force.",
+            "Understands and can apply concepts of Concept of force.",
             "Successfully avoids common pitfalls when Concept of force is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -139,7 +139,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Inertia of rest."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Inertia of rest.",
+            "Understands and can apply concepts of Inertia of rest.",
             "Successfully avoids common pitfalls when Inertia of rest is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -237,7 +237,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Inertia of motion."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Inertia of motion.",
+            "Understands and can apply concepts of Inertia of motion.",
             "Successfully avoids common pitfalls when Inertia of motion is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -335,7 +335,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Newton’s first law."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Newton’s first law.",
+            "Understands and can apply concepts of Newton’s first law.",
             "Successfully avoids common pitfalls when Newton’s first law is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -434,7 +434,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Momentum definition."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Momentum definition.",
+            "Understands and can apply concepts of Momentum definition.",
             "Successfully avoids common pitfalls when Momentum definition is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -532,7 +532,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Impulse and impulsive force."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Impulse and impulsive force.",
+            "Understands and can apply concepts of Impulse and impulsive force.",
             "Successfully avoids common pitfalls when Impulse and impulsive force is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -643,7 +643,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Newton’s second law."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Newton’s second law.",
+            "Understands and can apply concepts of Newton’s second law.",
             "Successfully avoids common pitfalls when Newton’s second law is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -741,7 +741,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Newton’s third law."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Newton’s third law.",
+            "Understands and can apply concepts of Newton’s third law.",
             "Successfully avoids common pitfalls when Newton’s third law is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -839,7 +839,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Free body diagram/Newton laws."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Free body diagram/Newton laws.",
+            "Understands and can apply concepts of Free body diagram/Newton laws.",
             "Successfully avoids common pitfalls when Free body diagram/Newton laws is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -937,7 +937,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Conservation of linear momentum."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Conservation of linear momentum.",
+            "Understands and can apply concepts of Conservation of linear momentum.",
             "Successfully avoids common pitfalls when Conservation of linear momentum is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -1036,7 +1036,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Recoil of gun."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Recoil of gun.",
+            "Understands and can apply concepts of Recoil of gun.",
             "Successfully avoids common pitfalls when Recoil of gun is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -1134,7 +1134,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Equilibrium of concurrent forces."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Equilibrium of concurrent forces.",
+            "Understands and can apply concepts of Equilibrium of concurrent forces.",
             "Successfully avoids common pitfalls when Equilibrium of concurrent forces is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -1246,7 +1246,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Types of friction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Types of friction.",
+            "Understands and can apply concepts of Types of friction.",
             "Successfully avoids common pitfalls when Types of friction is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -1345,7 +1345,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Limiting friction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Limiting friction.",
+            "Understands and can apply concepts of Limiting friction.",
             "Successfully avoids common pitfalls when Limiting friction is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -1444,7 +1444,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Static friction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Static friction.",
+            "Understands and can apply concepts of Static friction.",
             "Successfully avoids common pitfalls when Static friction is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -1543,7 +1543,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Kinetic friction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Kinetic friction.",
+            "Understands and can apply concepts of Kinetic friction.",
             "Successfully avoids common pitfalls when Kinetic friction is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -1642,7 +1642,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Coefficient of friction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Coefficient of friction.",
+            "Understands and can apply concepts of Coefficient of friction.",
             "Successfully avoids common pitfalls when Coefficient of friction is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -1741,7 +1741,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Angle of friction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Angle of friction.",
+            "Understands and can apply concepts of Angle of friction.",
             "Successfully avoids common pitfalls when Angle of friction is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -1853,7 +1853,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Angle of repose."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Angle of repose.",
+            "Understands and can apply concepts of Angle of repose.",
             "Successfully avoids common pitfalls when Angle of repose is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -1952,7 +1952,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Rolling friction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Rolling friction.",
+            "Understands and can apply concepts of Rolling friction.",
             "Successfully avoids common pitfalls when Rolling friction is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -2051,7 +2051,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Motion of connected bodies."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Motion of connected bodies.",
+            "Understands and can apply concepts of Motion of connected bodies.",
             "Successfully avoids common pitfalls when Motion of connected bodies is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -2150,7 +2150,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Pulley systems."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Pulley systems.",
+            "Understands and can apply concepts of Pulley systems.",
             "Successfully avoids common pitfalls when Pulley systems is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -2248,7 +2248,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Pseudo force applications."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Pseudo force applications.",
+            "Understands and can apply concepts of Pseudo force applications.",
             "Successfully avoids common pitfalls when Pseudo force applications is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -2347,7 +2347,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Circular motion dynamics."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Circular motion dynamics.",
+            "Understands and can apply concepts of Circular motion dynamics.",
             "Successfully avoids common pitfalls when Circular motion dynamics is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -2459,7 +2459,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Vehicle on level circular road."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Vehicle on level circular road.",
+            "Understands and can apply concepts of Vehicle on level circular road.",
             "Successfully avoids common pitfalls when Vehicle on level circular road is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -2558,7 +2558,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Banking of roads."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Banking of roads.",
+            "Understands and can apply concepts of Banking of roads.",
             "Successfully avoids common pitfalls when Banking of roads is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
@@ -2657,7 +2657,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Bending of cyclist."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Bending of cyclist.",
+            "Understands and can apply concepts of Bending of cyclist.",
             "Successfully avoids common pitfalls when Bending of cyclist is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [

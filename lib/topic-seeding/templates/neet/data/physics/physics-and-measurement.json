@@ -42,7 +42,7 @@
             "Failing to recall the exact conditions or sign conventions associated with SI units."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to SI units.",
+            "Understands and can apply concepts of SI units.",
             "Successfully avoids common pitfalls when SI units is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
@@ -141,7 +141,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Fundamental units."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Fundamental units.",
+            "Understands and can apply concepts of Fundamental units.",
             "Successfully avoids common pitfalls when Fundamental units is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
@@ -240,7 +240,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Derived units."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Derived units.",
+            "Understands and can apply concepts of Derived units.",
             "Successfully avoids common pitfalls when Derived units is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
@@ -339,7 +339,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Dimensions."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Dimensions.",
+            "Understands and can apply concepts of Dimensions.",
             "Successfully avoids common pitfalls when Dimensions is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
@@ -438,7 +438,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Dimensional formula of mechanical quantities."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Dimensional formula of mechanical quantities.",
+            "Understands and can apply concepts of Dimensional formula of mechanical quantities.",
             "Successfully avoids common pitfalls when Dimensional formula of mechanical quantities is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
@@ -550,7 +550,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Dimensional formula of electromagnetic quantities."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Dimensional formula of electromagnetic quantities.",
+            "Understands and can apply concepts of Dimensional formula of electromagnetic quantities.",
             "Successfully avoids common pitfalls when Dimensional formula of electromagnetic quantities is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
@@ -649,7 +649,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Dimensional analysis applications."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Dimensional analysis applications.",
+            "Understands and can apply concepts of Dimensional analysis applications.",
             "Successfully avoids common pitfalls when Dimensional analysis applications is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
@@ -748,7 +748,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Limitations of dimensional analysis."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Limitations of dimensional analysis.",
+            "Understands and can apply concepts of Limitations of dimensional analysis.",
             "Successfully avoids common pitfalls when Limitations of dimensional analysis is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
@@ -847,7 +847,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Least count."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Least count.",
+            "Understands and can apply concepts of Least count.",
             "Successfully avoids common pitfalls when Least count is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
@@ -946,7 +946,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Significant figures rules."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Significant figures rules.",
+            "Understands and can apply concepts of Significant figures rules.",
             "Successfully avoids common pitfalls when Significant figures rules is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
@@ -1058,7 +1058,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Rounding off rules."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Rounding off rules.",
+            "Understands and can apply concepts of Rounding off rules.",
             "Successfully avoids common pitfalls when Rounding off rules is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
@@ -1157,7 +1157,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Absolute error calculation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Absolute error calculation.",
+            "Understands and can apply concepts of Absolute error calculation.",
             "Successfully avoids common pitfalls when Absolute error calculation is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
@@ -1256,7 +1256,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Relative error."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Relative error.",
+            "Understands and can apply concepts of Relative error.",
             "Successfully avoids common pitfalls when Relative error is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
@@ -1355,7 +1355,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Percentage error."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Percentage error.",
+            "Understands and can apply concepts of Percentage error.",
             "Successfully avoids common pitfalls when Percentage error is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
@@ -1454,7 +1454,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Propagation of errors in addition."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Propagation of errors in addition.",
+            "Understands and can apply concepts of Propagation of errors in addition.",
             "Successfully avoids common pitfalls when Propagation of errors in addition is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
@@ -1566,7 +1566,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Propagation of errors in multiplication."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Propagation of errors in multiplication.",
+            "Understands and can apply concepts of Propagation of errors in multiplication.",
             "Successfully avoids common pitfalls when Propagation of errors in multiplication is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
@@ -1665,7 +1665,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Precision vs accuracy."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Precision vs accuracy.",
+            "Understands and can apply concepts of Precision vs accuracy.",
             "Successfully avoids common pitfalls when Precision vs accuracy is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
@@ -1764,7 +1764,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Vernier calipers principle."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Vernier calipers principle.",
+            "Understands and can apply concepts of Vernier calipers principle.",
             "Successfully avoids common pitfalls when Vernier calipers principle is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
@@ -1863,7 +1863,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Vernier calipers zero error."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Vernier calipers zero error.",
+            "Understands and can apply concepts of Vernier calipers zero error.",
             "Successfully avoids common pitfalls when Vernier calipers zero error is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
@@ -1962,7 +1962,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Screw gauge principle."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Screw gauge principle.",
+            "Understands and can apply concepts of Screw gauge principle.",
             "Successfully avoids common pitfalls when Screw gauge principle is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
@@ -2074,7 +2074,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Screw gauge zero error."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Screw gauge zero error.",
+            "Understands and can apply concepts of Screw gauge zero error.",
             "Successfully avoids common pitfalls when Screw gauge zero error is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
@@ -2174,7 +2174,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Graph slope usage."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Graph slope usage.",
+            "Understands and can apply concepts of Graph slope usage.",
             "Successfully avoids common pitfalls when Graph slope usage is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
@@ -2275,7 +2275,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Graph intercept usage."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Graph intercept usage.",
+            "Understands and can apply concepts of Graph intercept usage.",
             "Successfully avoids common pitfalls when Graph intercept usage is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
@@ -2374,7 +2374,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Order of magnitude."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Order of magnitude.",
+            "Understands and can apply concepts of Order of magnitude.",
             "Successfully avoids common pitfalls when Order of magnitude is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
@@ -2473,7 +2473,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Unit conversion techniques."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Unit conversion techniques.",
+            "Understands and can apply concepts of Unit conversion techniques.",
             "Successfully avoids common pitfalls when Unit conversion techniques is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [

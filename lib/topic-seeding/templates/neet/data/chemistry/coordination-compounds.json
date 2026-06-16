@@ -30,7 +30,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Werner’s theory of coordination compounds."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Werner’s theory of coordination compounds.",
+            "Understands and can apply concepts of Werner’s theory of coordination compounds.",
             "Successfully avoids common pitfalls when Werner’s theory of coordination compounds is integrated with other concepts in Coordination Compounds."
           ],
           "pyqPatterns": [
@@ -117,7 +117,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Coordination entity and central atom."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Coordination entity and central atom.",
+            "Understands and can apply concepts of Coordination entity and central atom.",
             "Successfully avoids common pitfalls when Coordination entity and central atom is integrated with other concepts in Coordination Compounds."
           ],
           "pyqPatterns": [
@@ -204,7 +204,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Ligands types and denticity."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Ligands types and denticity.",
+            "Understands and can apply concepts of Ligands types and denticity.",
             "Successfully avoids common pitfalls when Ligands types and denticity is integrated with other concepts in Coordination Compounds."
           ],
           "pyqPatterns": [
@@ -291,7 +291,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Chelation effect."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Chelation effect.",
+            "Understands and can apply concepts of Chelation effect.",
             "Successfully avoids common pitfalls when Chelation effect is integrated with other concepts in Coordination Compounds."
           ],
           "pyqPatterns": [
@@ -391,7 +391,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Coordination number."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Coordination number.",
+            "Understands and can apply concepts of Coordination number.",
             "Successfully avoids common pitfalls when Coordination number is integrated with other concepts in Coordination Compounds."
           ],
           "pyqPatterns": [
@@ -478,7 +478,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Oxidation number of central atom."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Oxidation number of central atom.",
+            "Understands and can apply concepts of Oxidation number of central atom.",
             "Successfully avoids common pitfalls when Oxidation number of central atom is integrated with other concepts in Coordination Compounds."
           ],
           "pyqPatterns": [
@@ -565,7 +565,7 @@
             "Failing to recall the exact conditions or sign conventions associated with IUPAC nomenclature of mononuclear coordination compounds."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to IUPAC nomenclature of mononuclear coordination compounds.",
+            "Understands and can apply concepts of IUPAC nomenclature of mononuclear coordination compounds.",
             "Successfully avoids common pitfalls when IUPAC nomenclature of mononuclear coordination compounds is integrated with other concepts in Coordination Compounds."
           ],
           "pyqPatterns": [
@@ -652,7 +652,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Structural isomerism in complexes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Structural isomerism in complexes.",
+            "Understands and can apply concepts of Structural isomerism in complexes.",
             "Successfully avoids common pitfalls when Structural isomerism in complexes is integrated with other concepts in Coordination Compounds."
           ],
           "pyqPatterns": [
@@ -752,7 +752,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Stereoisomerism in complexes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Stereoisomerism in complexes.",
+            "Understands and can apply concepts of Stereoisomerism in complexes.",
             "Successfully avoids common pitfalls when Stereoisomerism in complexes is integrated with other concepts in Coordination Compounds."
           ],
           "pyqPatterns": [
@@ -839,7 +839,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Valence bond theory (VBT) in coordination compounds."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Valence bond theory (VBT) in coordination compounds.",
+            "Understands and can apply concepts of Valence bond theory (VBT) in coordination compounds.",
             "Successfully avoids common pitfalls when Valence bond theory (VBT) in coordination compounds is integrated with other concepts in Coordination Compounds."
           ],
           "pyqPatterns": [
@@ -926,7 +926,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Hybridisation and magnetic properties of complexes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Hybridisation and magnetic properties of complexes.",
+            "Understands and can apply concepts of Hybridisation and magnetic properties of complexes.",
             "Successfully avoids common pitfalls when Hybridisation and magnetic properties of complexes is integrated with other concepts in Coordination Compounds."
           ],
           "pyqPatterns": [
@@ -1013,7 +1013,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Crystal field theory (CFT) basics."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Crystal field theory (CFT) basics.",
+            "Understands and can apply concepts of Crystal field theory (CFT) basics.",
             "Successfully avoids common pitfalls when Crystal field theory (CFT) basics is integrated with other concepts in Coordination Compounds."
           ],
           "pyqPatterns": [
@@ -1113,7 +1113,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Crystal field splitting in octahedral complexes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Crystal field splitting in octahedral complexes.",
+            "Understands and can apply concepts of Crystal field splitting in octahedral complexes.",
             "Successfully avoids common pitfalls when Crystal field splitting in octahedral complexes is integrated with other concepts in Coordination Compounds."
           ],
           "pyqPatterns": [
@@ -1200,7 +1200,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Crystal field splitting in tetrahedral complexes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Crystal field splitting in tetrahedral complexes.",
+            "Understands and can apply concepts of Crystal field splitting in tetrahedral complexes.",
             "Successfully avoids common pitfalls when Crystal field splitting in tetrahedral complexes is integrated with other concepts in Coordination Compounds."
           ],
           "pyqPatterns": [
@@ -1287,7 +1287,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Spectrochemical series."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Spectrochemical series.",
+            "Understands and can apply concepts of Spectrochemical series.",
             "Successfully avoids common pitfalls when Spectrochemical series is integrated with other concepts in Coordination Compounds."
           ],
           "pyqPatterns": [
@@ -1374,7 +1374,7 @@
             "Failing to recall the exact conditions or sign conventions associated with High spin and low spin complexes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to High spin and low spin complexes.",
+            "Understands and can apply concepts of High spin and low spin complexes.",
             "Successfully avoids common pitfalls when High spin and low spin complexes is integrated with other concepts in Coordination Compounds."
           ],
           "pyqPatterns": [
@@ -1474,7 +1474,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Colour in coordination compounds."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Colour in coordination compounds.",
+            "Understands and can apply concepts of Colour in coordination compounds.",
             "Successfully avoids common pitfalls when Colour in coordination compounds is integrated with other concepts in Coordination Compounds."
           ],
           "pyqPatterns": [
@@ -1561,7 +1561,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Stability of coordination compounds."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Stability of coordination compounds.",
+            "Understands and can apply concepts of Stability of coordination compounds.",
             "Successfully avoids common pitfalls when Stability of coordination compounds is integrated with other concepts in Coordination Compounds."
           ],
           "pyqPatterns": [
@@ -1648,7 +1648,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Importance of coordination compounds in biology."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Importance of coordination compounds in biology.",
+            "Understands and can apply concepts of Importance of coordination compounds in biology.",
             "Successfully avoids common pitfalls when Importance of coordination compounds in biology is integrated with other concepts in Coordination Compounds."
           ],
           "pyqPatterns": [
@@ -1735,7 +1735,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Applications of coordination compounds in metallurgy."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Applications of coordination compounds in metallurgy.",
+            "Understands and can apply concepts of Applications of coordination compounds in metallurgy.",
             "Successfully avoids common pitfalls when Applications of coordination compounds in metallurgy is integrated with other concepts in Coordination Compounds."
           ],
           "pyqPatterns": [

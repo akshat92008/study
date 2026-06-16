@@ -41,7 +41,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Energy bands in solids."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Energy bands in solids.",
+            "Understands and can apply concepts of Energy bands in solids.",
             "Successfully avoids common pitfalls when Energy bands in solids is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
@@ -140,7 +140,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Conductors insulators semiconductors."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Conductors insulators semiconductors.",
+            "Understands and can apply concepts of Conductors insulators semiconductors.",
             "Successfully avoids common pitfalls when Conductors insulators semiconductors is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
@@ -239,7 +239,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Band gap."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Band gap.",
+            "Understands and can apply concepts of Band gap.",
             "Successfully avoids common pitfalls when Band gap is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
@@ -338,7 +338,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Intrinsic semiconductors."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Intrinsic semiconductors.",
+            "Understands and can apply concepts of Intrinsic semiconductors.",
             "Successfully avoids common pitfalls when Intrinsic semiconductors is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
@@ -450,7 +450,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Extrinsic semiconductors."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Extrinsic semiconductors.",
+            "Understands and can apply concepts of Extrinsic semiconductors.",
             "Successfully avoids common pitfalls when Extrinsic semiconductors is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
@@ -549,7 +549,7 @@
             "Failing to recall the exact conditions or sign conventions associated with N-type and p-type doping."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to N-type and p-type doping.",
+            "Understands and can apply concepts of N-type and p-type doping.",
             "Successfully avoids common pitfalls when N-type and p-type doping is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
@@ -648,7 +648,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Semiconductor diode/logic gates."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Semiconductor diode/logic gates.",
+            "Understands and can apply concepts of Semiconductor diode/logic gates.",
             "Successfully avoids common pitfalls when Semiconductor diode/logic gates is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
@@ -747,7 +747,7 @@
             "Failing to recall the exact conditions or sign conventions associated with P-n junction formation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to P-n junction formation.",
+            "Understands and can apply concepts of P-n junction formation.",
             "Successfully avoids common pitfalls when P-n junction formation is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
@@ -859,7 +859,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Depletion region."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Depletion region.",
+            "Understands and can apply concepts of Depletion region.",
             "Successfully avoids common pitfalls when Depletion region is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
@@ -958,7 +958,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Forward and reverse bias."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Forward and reverse bias.",
+            "Understands and can apply concepts of Forward and reverse bias.",
             "Successfully avoids common pitfalls when Forward and reverse bias is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
@@ -1057,7 +1057,7 @@
             "Failing to recall the exact conditions or sign conventions associated with V-I characteristics of p-n junction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to V-I characteristics of p-n junction.",
+            "Understands and can apply concepts of V-I characteristics of p-n junction.",
             "Successfully avoids common pitfalls when V-I characteristics of p-n junction is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
@@ -1155,7 +1155,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Half wave rectifier."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Half wave rectifier.",
+            "Understands and can apply concepts of Half wave rectifier.",
             "Successfully avoids common pitfalls when Half wave rectifier is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
@@ -1266,7 +1266,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Full wave rectifier."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Full wave rectifier.",
+            "Understands and can apply concepts of Full wave rectifier.",
             "Successfully avoids common pitfalls when Full wave rectifier is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
@@ -1365,7 +1365,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Zener diode as voltage regulator."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Zener diode as voltage regulator.",
+            "Understands and can apply concepts of Zener diode as voltage regulator.",
             "Successfully avoids common pitfalls when Zener diode as voltage regulator is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
@@ -1464,7 +1464,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Light emitting diode."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Light emitting diode.",
+            "Understands and can apply concepts of Light emitting diode.",
             "Successfully avoids common pitfalls when Light emitting diode is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
@@ -1563,7 +1563,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Photodiode."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Photodiode.",
+            "Understands and can apply concepts of Photodiode.",
             "Successfully avoids common pitfalls when Photodiode is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
@@ -1675,7 +1675,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Solar cell."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Solar cell.",
+            "Understands and can apply concepts of Solar cell.",
             "Successfully avoids common pitfalls when Solar cell is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
@@ -1774,7 +1774,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Logic gate OR AND NOT."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Logic gate OR AND NOT.",
+            "Understands and can apply concepts of Logic gate OR AND NOT.",
             "Successfully avoids common pitfalls when Logic gate OR AND NOT is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
@@ -1873,7 +1873,7 @@
             "Failing to recall the exact conditions or sign conventions associated with NAND and NOR gates."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to NAND and NOR gates.",
+            "Understands and can apply concepts of NAND and NOR gates.",
             "Successfully avoids common pitfalls when NAND and NOR gates is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
@@ -1972,7 +1972,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Integrated circuits basics."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Integrated circuits basics.",
+            "Understands and can apply concepts of Integrated circuits basics.",
             "Successfully avoids common pitfalls when Integrated circuits basics is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [

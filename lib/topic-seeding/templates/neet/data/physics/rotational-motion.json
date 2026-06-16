@@ -42,7 +42,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Centre of mass definition."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Centre of mass definition.",
+            "Understands and can apply concepts of Centre of mass definition.",
             "Successfully avoids common pitfalls when Centre of mass definition is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
@@ -141,7 +141,7 @@
             "Failing to recall the exact conditions or sign conventions associated with COM of two particle system."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to COM of two particle system.",
+            "Understands and can apply concepts of COM of two particle system.",
             "Successfully avoids common pitfalls when COM of two particle system is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
@@ -240,7 +240,7 @@
             "Failing to recall the exact conditions or sign conventions associated with COM of continuous bodies."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to COM of continuous bodies.",
+            "Understands and can apply concepts of COM of continuous bodies.",
             "Successfully avoids common pitfalls when COM of continuous bodies is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
@@ -338,7 +338,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Torque definition and formula."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Torque definition and formula.",
+            "Understands and can apply concepts of Torque definition and formula.",
             "Successfully avoids common pitfalls when Torque definition and formula is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
@@ -437,7 +437,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Moment arm."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Moment arm.",
+            "Understands and can apply concepts of Moment arm.",
             "Successfully avoids common pitfalls when Moment arm is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
@@ -549,7 +549,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Angular momentum."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Angular momentum.",
+            "Understands and can apply concepts of Angular momentum.",
             "Successfully avoids common pitfalls when Angular momentum is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
@@ -647,7 +647,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Conservation of angular momentum."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Conservation of angular momentum.",
+            "Understands and can apply concepts of Conservation of angular momentum.",
             "Successfully avoids common pitfalls when Conservation of angular momentum is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
@@ -745,7 +745,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Moment of inertia/torque."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Moment of inertia/torque.",
+            "Understands and can apply concepts of Moment of inertia/torque.",
             "Successfully avoids common pitfalls when Moment of inertia/torque is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
@@ -844,7 +844,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Radius of gyration."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Radius of gyration.",
+            "Understands and can apply concepts of Radius of gyration.",
             "Successfully avoids common pitfalls when Radius of gyration is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
@@ -943,7 +943,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Parallel axis theorem."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Parallel axis theorem.",
+            "Understands and can apply concepts of Parallel axis theorem.",
             "Successfully avoids common pitfalls when Parallel axis theorem is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
@@ -1055,7 +1055,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Perpendicular axis theorem."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Perpendicular axis theorem.",
+            "Understands and can apply concepts of Perpendicular axis theorem.",
             "Successfully avoids common pitfalls when Perpendicular axis theorem is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
@@ -1154,7 +1154,7 @@
             "Failing to recall the exact conditions or sign conventions associated with MI of ring and disc."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to MI of ring and disc.",
+            "Understands and can apply concepts of MI of ring and disc.",
             "Successfully avoids common pitfalls when MI of ring and disc is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
@@ -1253,7 +1253,7 @@
             "Failing to recall the exact conditions or sign conventions associated with MI of cylinder and sphere."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to MI of cylinder and sphere.",
+            "Understands and can apply concepts of MI of cylinder and sphere.",
             "Successfully avoids common pitfalls when MI of cylinder and sphere is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
@@ -1352,7 +1352,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Angular displacement."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Angular displacement.",
+            "Understands and can apply concepts of Angular displacement.",
             "Successfully avoids common pitfalls when Angular displacement is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
@@ -1450,7 +1450,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Angular velocity and acceleration."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Angular velocity and acceleration.",
+            "Understands and can apply concepts of Angular velocity and acceleration.",
             "Successfully avoids common pitfalls when Angular velocity and acceleration is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
@@ -1561,7 +1561,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Rotational kinematic equations."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Rotational kinematic equations.",
+            "Understands and can apply concepts of Rotational kinematic equations.",
             "Successfully avoids common pitfalls when Rotational kinematic equations is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
@@ -1659,7 +1659,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Rotational kinetic energy."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Rotational kinetic energy.",
+            "Understands and can apply concepts of Rotational kinetic energy.",
             "Successfully avoids common pitfalls when Rotational kinetic energy is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
@@ -1758,7 +1758,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Pure rolling motion."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Pure rolling motion.",
+            "Understands and can apply concepts of Pure rolling motion.",
             "Successfully avoids common pitfalls when Pure rolling motion is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
@@ -1857,7 +1857,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Rolling motion on incline."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Rolling motion on incline.",
+            "Understands and can apply concepts of Rolling motion on incline.",
             "Successfully avoids common pitfalls when Rolling motion on incline is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
@@ -1956,7 +1956,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Friction in rolling."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Friction in rolling.",
+            "Understands and can apply concepts of Friction in rolling.",
             "Successfully avoids common pitfalls when Friction in rolling is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
@@ -2068,7 +2068,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Equilibrium of rigid body."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Equilibrium of rigid body.",
+            "Understands and can apply concepts of Equilibrium of rigid body.",
             "Successfully avoids common pitfalls when Equilibrium of rigid body is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
@@ -2166,7 +2166,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Comparison of linear and rotational."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Comparison of linear and rotational.",
+            "Understands and can apply concepts of Comparison of linear and rotational.",
             "Successfully avoids common pitfalls when Comparison of linear and rotational is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [

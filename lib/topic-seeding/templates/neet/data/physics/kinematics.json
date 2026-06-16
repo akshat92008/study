@@ -42,7 +42,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Frame of reference."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Frame of reference.",
+            "Understands and can apply concepts of Frame of reference.",
             "Successfully avoids common pitfalls when Frame of reference is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -141,7 +141,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Rest and motion."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Rest and motion.",
+            "Understands and can apply concepts of Rest and motion.",
             "Successfully avoids common pitfalls when Rest and motion is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -240,7 +240,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Position vector."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Position vector.",
+            "Understands and can apply concepts of Position vector.",
             "Successfully avoids common pitfalls when Position vector is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -339,7 +339,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Path length vs distance."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Path length vs distance.",
+            "Understands and can apply concepts of Path length vs distance.",
             "Successfully avoids common pitfalls when Path length vs distance is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -438,7 +438,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Displacement definition."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Displacement definition.",
+            "Understands and can apply concepts of Displacement definition.",
             "Successfully avoids common pitfalls when Displacement definition is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -537,7 +537,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Average speed calculation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Average speed calculation.",
+            "Understands and can apply concepts of Average speed calculation.",
             "Successfully avoids common pitfalls when Average speed calculation is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -635,7 +635,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Average velocity calculation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Average velocity calculation.",
+            "Understands and can apply concepts of Average velocity calculation.",
             "Successfully avoids common pitfalls when Average velocity calculation is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -734,7 +734,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Instantaneous speed."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Instantaneous speed.",
+            "Understands and can apply concepts of Instantaneous speed.",
             "Successfully avoids common pitfalls when Instantaneous speed is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -845,7 +845,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Instantaneous velocity."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Instantaneous velocity.",
+            "Understands and can apply concepts of Instantaneous velocity.",
             "Successfully avoids common pitfalls when Instantaneous velocity is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -943,7 +943,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Acceleration."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Acceleration.",
+            "Understands and can apply concepts of Acceleration.",
             "Successfully avoids common pitfalls when Acceleration is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -1042,7 +1042,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Retardation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Retardation.",
+            "Understands and can apply concepts of Retardation.",
             "Successfully avoids common pitfalls when Retardation is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -1142,7 +1142,7 @@
             "Failing to recall the exact conditions or sign conventions associated with X-t graph slope."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to X-t graph slope.",
+            "Understands and can apply concepts of X-t graph slope.",
             "Successfully avoids common pitfalls when X-t graph slope is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -1244,7 +1244,7 @@
             "Failing to recall the exact conditions or sign conventions associated with V-t graph slope."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to V-t graph slope.",
+            "Understands and can apply concepts of V-t graph slope.",
             "Successfully avoids common pitfalls when V-t graph slope is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -1345,7 +1345,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Velocity-time graph area."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Velocity-time graph area.",
+            "Understands and can apply concepts of Velocity-time graph area.",
             "Successfully avoids common pitfalls when Velocity-time graph area is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -1447,7 +1447,7 @@
             "Failing to recall the exact conditions or sign conventions associated with A-t graph area."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to A-t graph area.",
+            "Understands and can apply concepts of A-t graph area.",
             "Successfully avoids common pitfalls when A-t graph area is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -1548,7 +1548,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Uniform motion."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Uniform motion.",
+            "Understands and can apply concepts of Uniform motion.",
             "Successfully avoids common pitfalls when Uniform motion is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -1660,7 +1660,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Non-uniform motion."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Non-uniform motion.",
+            "Understands and can apply concepts of Non-uniform motion.",
             "Successfully avoids common pitfalls when Non-uniform motion is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -1759,7 +1759,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Equations of motion."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Equations of motion.",
+            "Understands and can apply concepts of Equations of motion.",
             "Successfully avoids common pitfalls when Equations of motion is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -1858,7 +1858,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Free fall."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Free fall.",
+            "Understands and can apply concepts of Free fall.",
             "Successfully avoids common pitfalls when Free fall is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -1957,7 +1957,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Vertical motion sign convention."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Vertical motion sign convention.",
+            "Understands and can apply concepts of Vertical motion sign convention.",
             "Successfully avoids common pitfalls when Vertical motion sign convention is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -2056,7 +2056,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Scalar vs vector."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Scalar vs vector.",
+            "Understands and can apply concepts of Scalar vs vector.",
             "Successfully avoids common pitfalls when Scalar vs vector is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -2155,7 +2155,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Vector addition rules."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Vector addition rules.",
+            "Understands and can apply concepts of Vector addition rules.",
             "Successfully avoids common pitfalls when Vector addition rules is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -2254,7 +2254,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Vector subtraction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Vector subtraction.",
+            "Understands and can apply concepts of Vector subtraction.",
             "Successfully avoids common pitfalls when Vector subtraction is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -2353,7 +2353,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Unit vectors and resolution."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Unit vectors and resolution.",
+            "Understands and can apply concepts of Unit vectors and resolution.",
             "Successfully avoids common pitfalls when Unit vectors and resolution is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -2465,7 +2465,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Dot product."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Dot product.",
+            "Understands and can apply concepts of Dot product.",
             "Successfully avoids common pitfalls when Dot product is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -2564,7 +2564,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Cross product."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Cross product.",
+            "Understands and can apply concepts of Cross product.",
             "Successfully avoids common pitfalls when Cross product is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -2662,7 +2662,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Relative velocity in 1D."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Relative velocity in 1D.",
+            "Understands and can apply concepts of Relative velocity in 1D.",
             "Successfully avoids common pitfalls when Relative velocity in 1D is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -2760,7 +2760,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Relative velocity in 2D."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Relative velocity in 2D.",
+            "Understands and can apply concepts of Relative velocity in 2D.",
             "Successfully avoids common pitfalls when Relative velocity in 2D is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -2859,7 +2859,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Projectile motion parameters."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Projectile motion parameters.",
+            "Understands and can apply concepts of Projectile motion parameters.",
             "Successfully avoids common pitfalls when Projectile motion parameters is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -2958,7 +2958,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Time of flight."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Time of flight.",
+            "Understands and can apply concepts of Time of flight.",
             "Successfully avoids common pitfalls when Time of flight is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -3057,7 +3057,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Range."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Range.",
+            "Understands and can apply concepts of Range.",
             "Successfully avoids common pitfalls when Range is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -3156,7 +3156,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Maximum height."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Maximum height.",
+            "Understands and can apply concepts of Maximum height.",
             "Successfully avoids common pitfalls when Maximum height is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -3268,7 +3268,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Projectile motion trajectory."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Projectile motion trajectory.",
+            "Understands and can apply concepts of Projectile motion trajectory.",
             "Successfully avoids common pitfalls when Projectile motion trajectory is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -3367,7 +3367,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Uniform circular motion."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Uniform circular motion.",
+            "Understands and can apply concepts of Uniform circular motion.",
             "Successfully avoids common pitfalls when Uniform circular motion is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -3465,7 +3465,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Angular velocity."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Angular velocity.",
+            "Understands and can apply concepts of Angular velocity.",
             "Successfully avoids common pitfalls when Angular velocity is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -3563,7 +3563,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Centripetal acceleration."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Centripetal acceleration.",
+            "Understands and can apply concepts of Centripetal acceleration.",
             "Successfully avoids common pitfalls when Centripetal acceleration is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
@@ -3661,7 +3661,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Tangential acceleration."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Tangential acceleration.",
+            "Understands and can apply concepts of Tangential acceleration.",
             "Successfully avoids common pitfalls when Tangential acceleration is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [

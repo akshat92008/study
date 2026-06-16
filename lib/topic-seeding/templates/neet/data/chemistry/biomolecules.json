@@ -30,7 +30,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Carbohydrates classification."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Carbohydrates classification.",
+            "Understands and can apply concepts of Carbohydrates classification.",
             "Successfully avoids common pitfalls when Carbohydrates classification is integrated with other concepts in Biomolecules."
           ],
           "pyqPatterns": [
@@ -117,7 +117,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Monosaccharides glucose and fructose."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Monosaccharides glucose and fructose.",
+            "Understands and can apply concepts of Monosaccharides glucose and fructose.",
             "Successfully avoids common pitfalls when Monosaccharides glucose and fructose is integrated with other concepts in Biomolecules."
           ],
           "pyqPatterns": [
@@ -204,7 +204,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Structure of glucose."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Structure of glucose.",
+            "Understands and can apply concepts of Structure of glucose.",
             "Successfully avoids common pitfalls when Structure of glucose is integrated with other concepts in Biomolecules."
           ],
           "pyqPatterns": [
@@ -291,7 +291,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Cyclic structure of glucose."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Cyclic structure of glucose.",
+            "Understands and can apply concepts of Cyclic structure of glucose.",
             "Successfully avoids common pitfalls when Cyclic structure of glucose is integrated with other concepts in Biomolecules."
           ],
           "pyqPatterns": [
@@ -391,7 +391,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Disaccharides sucrose maltose lactose."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Disaccharides sucrose maltose lactose.",
+            "Understands and can apply concepts of Disaccharides sucrose maltose lactose.",
             "Successfully avoids common pitfalls when Disaccharides sucrose maltose lactose is integrated with other concepts in Biomolecules."
           ],
           "pyqPatterns": [
@@ -478,7 +478,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Polysaccharides starch cellulose glycogen."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Polysaccharides starch cellulose glycogen.",
+            "Understands and can apply concepts of Polysaccharides starch cellulose glycogen.",
             "Successfully avoids common pitfalls when Polysaccharides starch cellulose glycogen is integrated with other concepts in Biomolecules."
           ],
           "pyqPatterns": [
@@ -565,7 +565,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Reducing and non-reducing sugars."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Reducing and non-reducing sugars.",
+            "Understands and can apply concepts of Reducing and non-reducing sugars.",
             "Successfully avoids common pitfalls when Reducing and non-reducing sugars is integrated with other concepts in Biomolecules."
           ],
           "pyqPatterns": [
@@ -652,7 +652,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Amino acids classification and zwitter ion."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Amino acids classification and zwitter ion.",
+            "Understands and can apply concepts of Amino acids classification and zwitter ion.",
             "Successfully avoids common pitfalls when Amino acids classification and zwitter ion is integrated with other concepts in Biomolecules."
           ],
           "pyqPatterns": [
@@ -752,7 +752,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Peptide bond and polypeptides."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Peptide bond and polypeptides.",
+            "Understands and can apply concepts of Peptide bond and polypeptides.",
             "Successfully avoids common pitfalls when Peptide bond and polypeptides is integrated with other concepts in Biomolecules."
           ],
           "pyqPatterns": [
@@ -839,7 +839,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Primary structure of proteins."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Primary structure of proteins.",
+            "Understands and can apply concepts of Primary structure of proteins.",
             "Successfully avoids common pitfalls when Primary structure of proteins is integrated with other concepts in Biomolecules."
           ],
           "pyqPatterns": [
@@ -926,7 +926,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Secondary structure of proteins (alpha helix beta sheet)."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Secondary structure of proteins (alpha helix beta sheet).",
+            "Understands and can apply concepts of Secondary structure of proteins (alpha helix beta sheet).",
             "Successfully avoids common pitfalls when Secondary structure of proteins (alpha helix beta sheet) is integrated with other concepts in Biomolecules."
           ],
           "pyqPatterns": [
@@ -1013,7 +1013,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Tertiary and quaternary structure of proteins."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Tertiary and quaternary structure of proteins.",
+            "Understands and can apply concepts of Tertiary and quaternary structure of proteins.",
             "Successfully avoids common pitfalls when Tertiary and quaternary structure of proteins is integrated with other concepts in Biomolecules."
           ],
           "pyqPatterns": [
@@ -1113,7 +1113,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Denaturation of proteins."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Denaturation of proteins.",
+            "Understands and can apply concepts of Denaturation of proteins.",
             "Successfully avoids common pitfalls when Denaturation of proteins is integrated with other concepts in Biomolecules."
           ],
           "pyqPatterns": [
@@ -1200,7 +1200,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Enzymes biological catalysts."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Enzymes biological catalysts.",
+            "Understands and can apply concepts of Enzymes biological catalysts.",
             "Successfully avoids common pitfalls when Enzymes biological catalysts is integrated with other concepts in Biomolecules."
           ],
           "pyqPatterns": [
@@ -1287,7 +1287,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Vitamins classification and deficiency diseases."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Vitamins classification and deficiency diseases.",
+            "Understands and can apply concepts of Vitamins classification and deficiency diseases.",
             "Successfully avoids common pitfalls when Vitamins classification and deficiency diseases is integrated with other concepts in Biomolecules."
           ],
           "pyqPatterns": [
@@ -1374,7 +1374,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Nucleic acids chemical composition."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Nucleic acids chemical composition.",
+            "Understands and can apply concepts of Nucleic acids chemical composition.",
             "Successfully avoids common pitfalls when Nucleic acids chemical composition is integrated with other concepts in Biomolecules."
           ],
           "pyqPatterns": [
@@ -1474,7 +1474,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Structure of DNA double helix."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Structure of DNA double helix.",
+            "Understands and can apply concepts of Structure of DNA double helix.",
             "Successfully avoids common pitfalls when Structure of DNA double helix is integrated with other concepts in Biomolecules."
           ],
           "pyqPatterns": [
@@ -1561,7 +1561,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Structure and types of RNA."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Structure and types of RNA.",
+            "Understands and can apply concepts of Structure and types of RNA.",
             "Successfully avoids common pitfalls when Structure and types of RNA is integrated with other concepts in Biomolecules."
           ],
           "pyqPatterns": [
@@ -1648,7 +1648,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Biological functions of nucleic acids."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Biological functions of nucleic acids.",
+            "Understands and can apply concepts of Biological functions of nucleic acids.",
             "Successfully avoids common pitfalls when Biological functions of nucleic acids is integrated with other concepts in Biomolecules."
           ],
           "pyqPatterns": [
@@ -1735,7 +1735,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Hormones brief introduction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Hormones brief introduction.",
+            "Understands and can apply concepts of Hormones brief introduction.",
             "Successfully avoids common pitfalls when Hormones brief introduction is integrated with other concepts in Biomolecules."
           ],
           "pyqPatterns": [

@@ -42,7 +42,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Magnetic flux definition."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Magnetic flux definition.",
+            "Understands and can apply concepts of Magnetic flux definition.",
             "Successfully avoids common pitfalls when Magnetic flux definition is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
@@ -141,7 +141,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Electromagnetic induction (Lenz law)."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Electromagnetic induction (Lenz law).",
+            "Understands and can apply concepts of Electromagnetic induction (Lenz law).",
             "Successfully avoids common pitfalls when Electromagnetic induction (Lenz law) is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
@@ -240,7 +240,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Motional emf."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Motional emf.",
+            "Understands and can apply concepts of Motional emf.",
             "Successfully avoids common pitfalls when Motional emf is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
@@ -338,7 +338,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Induced current calculation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Induced current calculation.",
+            "Understands and can apply concepts of Induced current calculation.",
             "Successfully avoids common pitfalls when Induced current calculation is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
@@ -436,7 +436,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Eddy currents."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Eddy currents.",
+            "Understands and can apply concepts of Eddy currents.",
             "Successfully avoids common pitfalls when Eddy currents is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
@@ -548,7 +548,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Self inductance."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Self inductance.",
+            "Understands and can apply concepts of Self inductance.",
             "Successfully avoids common pitfalls when Self inductance is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
@@ -647,7 +647,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Mutual inductance."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Mutual inductance.",
+            "Understands and can apply concepts of Mutual inductance.",
             "Successfully avoids common pitfalls when Mutual inductance is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
@@ -745,7 +745,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Energy stored in inductor."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Energy stored in inductor.",
+            "Understands and can apply concepts of Energy stored in inductor.",
             "Successfully avoids common pitfalls when Energy stored in inductor is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
@@ -843,7 +843,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Alternating current basics."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Alternating current basics.",
+            "Understands and can apply concepts of Alternating current basics.",
             "Successfully avoids common pitfalls when Alternating current basics is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
@@ -942,7 +942,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Peak value of AC."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Peak value of AC.",
+            "Understands and can apply concepts of Peak value of AC.",
             "Successfully avoids common pitfalls when Peak value of AC is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
@@ -1054,7 +1054,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Rms value of AC."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Rms value of AC.",
+            "Understands and can apply concepts of Rms value of AC.",
             "Successfully avoids common pitfalls when Rms value of AC is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
@@ -1153,7 +1153,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Average value of AC."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Average value of AC.",
+            "Understands and can apply concepts of Average value of AC.",
             "Successfully avoids common pitfalls when Average value of AC is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
@@ -1252,7 +1252,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Inductive reactance."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Inductive reactance.",
+            "Understands and can apply concepts of Inductive reactance.",
             "Successfully avoids common pitfalls when Inductive reactance is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
@@ -1351,7 +1351,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Capacitive reactance."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Capacitive reactance.",
+            "Understands and can apply concepts of Capacitive reactance.",
             "Successfully avoids common pitfalls when Capacitive reactance is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
@@ -1450,7 +1450,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Impedance in AC."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Impedance in AC.",
+            "Understands and can apply concepts of Impedance in AC.",
             "Successfully avoids common pitfalls when Impedance in AC is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
@@ -1562,7 +1562,7 @@
             "Failing to recall the exact conditions or sign conventions associated with AC resonance/LCR."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to AC resonance/LCR.",
+            "Understands and can apply concepts of AC resonance/LCR.",
             "Successfully avoids common pitfalls when AC resonance/LCR is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
@@ -1661,7 +1661,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Power in AC circuits."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Power in AC circuits.",
+            "Understands and can apply concepts of Power in AC circuits.",
             "Successfully avoids common pitfalls when Power in AC circuits is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
@@ -1760,7 +1760,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Power factor."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Power factor.",
+            "Understands and can apply concepts of Power factor.",
             "Successfully avoids common pitfalls when Power factor is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
@@ -1858,7 +1858,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Wattless current."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Wattless current.",
+            "Understands and can apply concepts of Wattless current.",
             "Successfully avoids common pitfalls when Wattless current is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
@@ -1957,7 +1957,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Transformer principle."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Transformer principle.",
+            "Understands and can apply concepts of Transformer principle.",
             "Successfully avoids common pitfalls when Transformer principle is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
@@ -2069,7 +2069,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Step-up and step-down transformers."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Step-up and step-down transformers.",
+            "Understands and can apply concepts of Step-up and step-down transformers.",
             "Successfully avoids common pitfalls when Step-up and step-down transformers is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
@@ -2168,7 +2168,7 @@
             "Failing to recall the exact conditions or sign conventions associated with AC generator."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to AC generator.",
+            "Understands and can apply concepts of AC generator.",
             "Successfully avoids common pitfalls when AC generator is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [

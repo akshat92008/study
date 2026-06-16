@@ -42,7 +42,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Rutherford alpha scattering."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Rutherford alpha scattering.",
+            "Understands and can apply concepts of Rutherford alpha scattering.",
             "Successfully avoids common pitfalls when Rutherford alpha scattering is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
@@ -141,7 +141,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Rutherford model limitations."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Rutherford model limitations.",
+            "Understands and can apply concepts of Rutherford model limitations.",
             "Successfully avoids common pitfalls when Rutherford model limitations is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
@@ -240,7 +240,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Bohr model/hydrogen spectrum."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Bohr model/hydrogen spectrum.",
+            "Understands and can apply concepts of Bohr model/hydrogen spectrum.",
             "Successfully avoids common pitfalls when Bohr model/hydrogen spectrum is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
@@ -338,7 +338,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Energy levels in hydrogen."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Energy levels in hydrogen.",
+            "Understands and can apply concepts of Energy levels in hydrogen.",
             "Successfully avoids common pitfalls when Energy levels in hydrogen is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
@@ -450,7 +450,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Radius of Bohr orbit."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Radius of Bohr orbit.",
+            "Understands and can apply concepts of Radius of Bohr orbit.",
             "Successfully avoids common pitfalls when Radius of Bohr orbit is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
@@ -549,7 +549,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Spectral series."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Spectral series.",
+            "Understands and can apply concepts of Spectral series.",
             "Successfully avoids common pitfalls when Spectral series is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
@@ -648,7 +648,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Nuclear composition."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Nuclear composition.",
+            "Understands and can apply concepts of Nuclear composition.",
             "Successfully avoids common pitfalls when Nuclear composition is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
@@ -747,7 +747,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Isotopes isobars isotones."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Isotopes isobars isotones.",
+            "Understands and can apply concepts of Isotopes isobars isotones.",
             "Successfully avoids common pitfalls when Isotopes isobars isotones is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
@@ -859,7 +859,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Nuclear size and density."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Nuclear size and density.",
+            "Understands and can apply concepts of Nuclear size and density.",
             "Successfully avoids common pitfalls when Nuclear size and density is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
@@ -958,7 +958,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Mass defect."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Mass defect.",
+            "Understands and can apply concepts of Mass defect.",
             "Successfully avoids common pitfalls when Mass defect is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
@@ -1056,7 +1056,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Nuclear binding energy per nucleon."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Nuclear binding energy per nucleon.",
+            "Understands and can apply concepts of Nuclear binding energy per nucleon.",
             "Successfully avoids common pitfalls when Nuclear binding energy per nucleon is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
@@ -1155,7 +1155,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Radioactivity laws."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Radioactivity laws.",
+            "Understands and can apply concepts of Radioactivity laws.",
             "Successfully avoids common pitfalls when Radioactivity laws is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
@@ -1267,7 +1267,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Alpha decay."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Alpha decay.",
+            "Understands and can apply concepts of Alpha decay.",
             "Successfully avoids common pitfalls when Alpha decay is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
@@ -1366,7 +1366,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Beta decay."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Beta decay.",
+            "Understands and can apply concepts of Beta decay.",
             "Successfully avoids common pitfalls when Beta decay is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
@@ -1465,7 +1465,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Gamma decay."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Gamma decay.",
+            "Understands and can apply concepts of Gamma decay.",
             "Successfully avoids common pitfalls when Gamma decay is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
@@ -1564,7 +1564,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Half-life definition."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Half-life definition.",
+            "Understands and can apply concepts of Half-life definition.",
             "Successfully avoids common pitfalls when Half-life definition is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
@@ -1676,7 +1676,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Mean life."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Mean life.",
+            "Understands and can apply concepts of Mean life.",
             "Successfully avoids common pitfalls when Mean life is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
@@ -1775,7 +1775,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Nuclear fission."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Nuclear fission.",
+            "Understands and can apply concepts of Nuclear fission.",
             "Successfully avoids common pitfalls when Nuclear fission is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
@@ -1874,7 +1874,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Nuclear fusion."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Nuclear fusion.",
+            "Understands and can apply concepts of Nuclear fusion.",
             "Successfully avoids common pitfalls when Nuclear fusion is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
@@ -1972,7 +1972,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Stellar energy source."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Stellar energy source.",
+            "Understands and can apply concepts of Stellar energy source.",
             "Successfully avoids common pitfalls when Stellar energy source is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [

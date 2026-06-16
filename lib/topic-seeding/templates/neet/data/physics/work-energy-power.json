@@ -41,7 +41,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Work done by constant force."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Work done by constant force.",
+            "Understands and can apply concepts of Work done by constant force.",
             "Successfully avoids common pitfalls when Work done by constant force is integrated with other concepts in Work, Energy and Power."
           ],
           "pyqPatterns": [
@@ -139,7 +139,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Work done by variable force."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Work done by variable force.",
+            "Understands and can apply concepts of Work done by variable force.",
             "Successfully avoids common pitfalls when Work done by variable force is integrated with other concepts in Work, Energy and Power."
           ],
           "pyqPatterns": [
@@ -237,7 +237,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Work calculation from F-x graph."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Work calculation from F-x graph.",
+            "Understands and can apply concepts of Work calculation from F-x graph.",
             "Successfully avoids common pitfalls when Work calculation from F-x graph is integrated with other concepts in Work, Energy and Power."
           ],
           "pyqPatterns": [
@@ -335,7 +335,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Kinetic energy formula."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Kinetic energy formula.",
+            "Understands and can apply concepts of Kinetic energy formula.",
             "Successfully avoids common pitfalls when Kinetic energy formula is integrated with other concepts in Work, Energy and Power."
           ],
           "pyqPatterns": [
@@ -446,7 +446,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Work-energy theorem."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Work-energy theorem.",
+            "Understands and can apply concepts of Work-energy theorem.",
             "Successfully avoids common pitfalls when Work-energy theorem is integrated with other concepts in Work, Energy and Power."
           ],
           "pyqPatterns": [
@@ -544,7 +544,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Potential energy of conservative force."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Potential energy of conservative force.",
+            "Understands and can apply concepts of Potential energy of conservative force.",
             "Successfully avoids common pitfalls when Potential energy of conservative force is integrated with other concepts in Work, Energy and Power."
           ],
           "pyqPatterns": [
@@ -642,7 +642,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Conservative vs non-conservative force."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Conservative vs non-conservative force.",
+            "Understands and can apply concepts of Conservative vs non-conservative force.",
             "Successfully avoids common pitfalls when Conservative vs non-conservative force is integrated with other concepts in Work, Energy and Power."
           ],
           "pyqPatterns": [
@@ -740,7 +740,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Spring potential energy."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Spring potential energy.",
+            "Understands and can apply concepts of Spring potential energy.",
             "Successfully avoids common pitfalls when Spring potential energy is integrated with other concepts in Work, Energy and Power."
           ],
           "pyqPatterns": [
@@ -851,7 +851,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Mechanical energy conservation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Mechanical energy conservation.",
+            "Understands and can apply concepts of Mechanical energy conservation.",
             "Successfully avoids common pitfalls when Mechanical energy conservation is integrated with other concepts in Work, Energy and Power."
           ],
           "pyqPatterns": [
@@ -950,7 +950,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Power definition and units."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Power definition and units.",
+            "Understands and can apply concepts of Power definition and units.",
             "Successfully avoids common pitfalls when Power definition and units is integrated with other concepts in Work, Energy and Power."
           ],
           "pyqPatterns": [
@@ -1049,7 +1049,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Collision terminology."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Collision terminology.",
+            "Understands and can apply concepts of Collision terminology.",
             "Successfully avoids common pitfalls when Collision terminology is integrated with other concepts in Work, Energy and Power."
           ],
           "pyqPatterns": [
@@ -1148,7 +1148,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Elastic collision in 1D."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Elastic collision in 1D.",
+            "Understands and can apply concepts of Elastic collision in 1D.",
             "Successfully avoids common pitfalls when Elastic collision in 1D is integrated with other concepts in Work, Energy and Power."
           ],
           "pyqPatterns": [
@@ -1260,7 +1260,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Inelastic collision."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Inelastic collision.",
+            "Understands and can apply concepts of Inelastic collision.",
             "Successfully avoids common pitfalls when Inelastic collision is integrated with other concepts in Work, Energy and Power."
           ],
           "pyqPatterns": [
@@ -1359,7 +1359,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Coefficient of restitution."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Coefficient of restitution.",
+            "Understands and can apply concepts of Coefficient of restitution.",
             "Successfully avoids common pitfalls when Coefficient of restitution is integrated with other concepts in Work, Energy and Power."
           ],
           "pyqPatterns": [
@@ -1458,7 +1458,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Perfectly inelastic collision."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Perfectly inelastic collision.",
+            "Understands and can apply concepts of Perfectly inelastic collision.",
             "Successfully avoids common pitfalls when Perfectly inelastic collision is integrated with other concepts in Work, Energy and Power."
           ],
           "pyqPatterns": [
@@ -1557,7 +1557,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Collision in 2D basics."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Collision in 2D basics.",
+            "Understands and can apply concepts of Collision in 2D basics.",
             "Successfully avoids common pitfalls when Collision in 2D basics is integrated with other concepts in Work, Energy and Power."
           ],
           "pyqPatterns": [
@@ -1669,7 +1669,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Vertical circle dynamics."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Vertical circle dynamics.",
+            "Understands and can apply concepts of Vertical circle dynamics.",
             "Successfully avoids common pitfalls when Vertical circle dynamics is integrated with other concepts in Work, Energy and Power."
           ],
           "pyqPatterns": [
@@ -1768,7 +1768,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Minimum speed at highest point."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Minimum speed at highest point.",
+            "Understands and can apply concepts of Minimum speed at highest point.",
             "Successfully avoids common pitfalls when Minimum speed at highest point is integrated with other concepts in Work, Energy and Power."
           ],
           "pyqPatterns": [
@@ -1867,7 +1867,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Minimum speed at lowest point."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Minimum speed at lowest point.",
+            "Understands and can apply concepts of Minimum speed at lowest point.",
             "Successfully avoids common pitfalls when Minimum speed at lowest point is integrated with other concepts in Work, Energy and Power."
           ],
           "pyqPatterns": [
@@ -1965,7 +1965,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Energy in vertical circle."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Energy in vertical circle.",
+            "Understands and can apply concepts of Energy in vertical circle.",
             "Successfully avoids common pitfalls when Energy in vertical circle is integrated with other concepts in Work, Energy and Power."
           ],
           "pyqPatterns": [

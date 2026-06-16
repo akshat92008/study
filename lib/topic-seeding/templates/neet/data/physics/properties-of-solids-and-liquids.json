@@ -42,7 +42,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Stress types."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Stress types.",
+            "Understands and can apply concepts of Stress types.",
             "Successfully avoids common pitfalls when Stress types is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -141,7 +141,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Strain types."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Strain types.",
+            "Understands and can apply concepts of Strain types.",
             "Successfully avoids common pitfalls when Strain types is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -240,7 +240,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Hooke’s law."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Hooke’s law.",
+            "Understands and can apply concepts of Hooke’s law.",
             "Successfully avoids common pitfalls when Hooke’s law is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -339,7 +339,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Young modulus."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Young modulus.",
+            "Understands and can apply concepts of Young modulus.",
             "Successfully avoids common pitfalls when Young modulus is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -438,7 +438,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Bulk modulus."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Bulk modulus.",
+            "Understands and can apply concepts of Bulk modulus.",
             "Successfully avoids common pitfalls when Bulk modulus is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -537,7 +537,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Shear modulus."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Shear modulus.",
+            "Understands and can apply concepts of Shear modulus.",
             "Successfully avoids common pitfalls when Shear modulus is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -636,7 +636,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Stress-strain curve."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Stress-strain curve.",
+            "Understands and can apply concepts of Stress-strain curve.",
             "Successfully avoids common pitfalls when Stress-strain curve is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -735,7 +735,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Elastic after effect."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Elastic after effect.",
+            "Understands and can apply concepts of Elastic after effect.",
             "Successfully avoids common pitfalls when Elastic after effect is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -847,7 +847,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Elastic hysteresis."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Elastic hysteresis.",
+            "Understands and can apply concepts of Elastic hysteresis.",
             "Successfully avoids common pitfalls when Elastic hysteresis is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -946,7 +946,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Pressure in fluid."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Pressure in fluid.",
+            "Understands and can apply concepts of Pressure in fluid.",
             "Successfully avoids common pitfalls when Pressure in fluid is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -1045,7 +1045,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Pascal’s law."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Pascal’s law.",
+            "Understands and can apply concepts of Pascal’s law.",
             "Successfully avoids common pitfalls when Pascal’s law is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -1144,7 +1144,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Hydraulic lift."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Hydraulic lift.",
+            "Understands and can apply concepts of Hydraulic lift.",
             "Successfully avoids common pitfalls when Hydraulic lift is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -1243,7 +1243,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Buoyancy and upthrust."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Buoyancy and upthrust.",
+            "Understands and can apply concepts of Buoyancy and upthrust.",
             "Successfully avoids common pitfalls when Buoyancy and upthrust is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -1342,7 +1342,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Archimedes principle."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Archimedes principle.",
+            "Understands and can apply concepts of Archimedes principle.",
             "Successfully avoids common pitfalls when Archimedes principle is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -1441,7 +1441,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Fluid flow types."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Fluid flow types.",
+            "Understands and can apply concepts of Fluid flow types.",
             "Successfully avoids common pitfalls when Fluid flow types is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -1540,7 +1540,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Streamline and turbulent flow."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Streamline and turbulent flow.",
+            "Understands and can apply concepts of Streamline and turbulent flow.",
             "Successfully avoids common pitfalls when Streamline and turbulent flow is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -1651,7 +1651,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Critical velocity."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Critical velocity.",
+            "Understands and can apply concepts of Critical velocity.",
             "Successfully avoids common pitfalls when Critical velocity is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -1750,7 +1750,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Viscosity coefficient."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Viscosity coefficient.",
+            "Understands and can apply concepts of Viscosity coefficient.",
             "Successfully avoids common pitfalls when Viscosity coefficient is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -1849,7 +1849,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Stokes law."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Stokes law.",
+            "Understands and can apply concepts of Stokes law.",
             "Successfully avoids common pitfalls when Stokes law is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -1947,7 +1947,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Terminal velocity derivation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Terminal velocity derivation.",
+            "Understands and can apply concepts of Terminal velocity derivation.",
             "Successfully avoids common pitfalls when Terminal velocity derivation is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -2046,7 +2046,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Bernoulli principle."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Bernoulli principle.",
+            "Understands and can apply concepts of Bernoulli principle.",
             "Successfully avoids common pitfalls when Bernoulli principle is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -2145,7 +2145,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Torricelli theorem."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Torricelli theorem.",
+            "Understands and can apply concepts of Torricelli theorem.",
             "Successfully avoids common pitfalls when Torricelli theorem is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -2244,7 +2244,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Surface tension phenomenon."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Surface tension phenomenon.",
+            "Understands and can apply concepts of Surface tension phenomenon.",
             "Successfully avoids common pitfalls when Surface tension phenomenon is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -2342,7 +2342,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Surface energy."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Surface energy.",
+            "Understands and can apply concepts of Surface energy.",
             "Successfully avoids common pitfalls when Surface energy is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -2454,7 +2454,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Angle of contact."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Angle of contact.",
+            "Understands and can apply concepts of Angle of contact.",
             "Successfully avoids common pitfalls when Angle of contact is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -2553,7 +2553,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Capillary rise formula."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Capillary rise formula.",
+            "Understands and can apply concepts of Capillary rise formula.",
             "Successfully avoids common pitfalls when Capillary rise formula is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -2652,7 +2652,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Excess pressure in liquid drop."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Excess pressure in liquid drop.",
+            "Understands and can apply concepts of Excess pressure in liquid drop.",
             "Successfully avoids common pitfalls when Excess pressure in liquid drop is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -2751,7 +2751,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Excess pressure in soap bubble."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Excess pressure in soap bubble.",
+            "Understands and can apply concepts of Excess pressure in soap bubble.",
             "Successfully avoids common pitfalls when Excess pressure in soap bubble is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -2850,7 +2850,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Thermal expansion of solids."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Thermal expansion of solids.",
+            "Understands and can apply concepts of Thermal expansion of solids.",
             "Successfully avoids common pitfalls when Thermal expansion of solids is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -2949,7 +2949,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Thermal expansion of liquids."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Thermal expansion of liquids.",
+            "Understands and can apply concepts of Thermal expansion of liquids.",
             "Successfully avoids common pitfalls when Thermal expansion of liquids is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -3048,7 +3048,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Calorimetry principle."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Calorimetry principle.",
+            "Understands and can apply concepts of Calorimetry principle.",
             "Successfully avoids common pitfalls when Calorimetry principle is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -3147,7 +3147,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Specific heat capacity."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Specific heat capacity.",
+            "Understands and can apply concepts of Specific heat capacity.",
             "Successfully avoids common pitfalls when Specific heat capacity is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -3259,7 +3259,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Latent heat of fusion."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Latent heat of fusion.",
+            "Understands and can apply concepts of Latent heat of fusion.",
             "Successfully avoids common pitfalls when Latent heat of fusion is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -3358,7 +3358,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Latent heat of vaporisation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Latent heat of vaporisation.",
+            "Understands and can apply concepts of Latent heat of vaporisation.",
             "Successfully avoids common pitfalls when Latent heat of vaporisation is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -3457,7 +3457,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Heat transfer conduction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Heat transfer conduction.",
+            "Understands and can apply concepts of Heat transfer conduction.",
             "Successfully avoids common pitfalls when Heat transfer conduction is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -3556,7 +3556,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Convection."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Convection.",
+            "Understands and can apply concepts of Convection.",
             "Successfully avoids common pitfalls when Convection is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
@@ -3655,7 +3655,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Radiation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Radiation.",
+            "Understands and can apply concepts of Radiation.",
             "Successfully avoids common pitfalls when Radiation is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [

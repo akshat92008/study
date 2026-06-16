@@ -42,7 +42,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Thermal equilibrium."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Thermal equilibrium.",
+            "Understands and can apply concepts of Thermal equilibrium.",
             "Successfully avoids common pitfalls when Thermal equilibrium is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
@@ -140,7 +140,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Zeroth law of thermodynamics."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Zeroth law of thermodynamics.",
+            "Understands and can apply concepts of Zeroth law of thermodynamics.",
             "Successfully avoids common pitfalls when Zeroth law of thermodynamics is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
@@ -239,7 +239,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Concept of temperature."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Concept of temperature.",
+            "Understands and can apply concepts of Concept of temperature.",
             "Successfully avoids common pitfalls when Concept of temperature is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
@@ -337,7 +337,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Heat and work as path functions."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Heat and work as path functions.",
+            "Understands and can apply concepts of Heat and work as path functions.",
             "Successfully avoids common pitfalls when Heat and work as path functions is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
@@ -435,7 +435,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Internal energy as state function."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Internal energy as state function.",
+            "Understands and can apply concepts of Internal energy as state function.",
             "Successfully avoids common pitfalls when Internal energy as state function is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
@@ -546,7 +546,7 @@
             "Failing to recall the exact conditions or sign conventions associated with First law of thermodynamics."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to First law of thermodynamics.",
+            "Understands and can apply concepts of First law of thermodynamics.",
             "Successfully avoids common pitfalls when First law of thermodynamics is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
@@ -644,7 +644,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Thermodynamic sign convention."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Thermodynamic sign convention.",
+            "Understands and can apply concepts of Thermodynamic sign convention.",
             "Successfully avoids common pitfalls when Thermodynamic sign convention is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
@@ -743,7 +743,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Isothermal process."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Isothermal process.",
+            "Understands and can apply concepts of Isothermal process.",
             "Successfully avoids common pitfalls when Isothermal process is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
@@ -842,7 +842,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Adiabatic process."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Adiabatic process.",
+            "Understands and can apply concepts of Adiabatic process.",
             "Successfully avoids common pitfalls when Adiabatic process is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
@@ -941,7 +941,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Isochoric process."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Isochoric process.",
+            "Understands and can apply concepts of Isochoric process.",
             "Successfully avoids common pitfalls when Isochoric process is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
@@ -1053,7 +1053,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Isobaric process."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Isobaric process.",
+            "Understands and can apply concepts of Isobaric process.",
             "Successfully avoids common pitfalls when Isobaric process is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
@@ -1152,7 +1152,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Cyclic process."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Cyclic process.",
+            "Understands and can apply concepts of Cyclic process.",
             "Successfully avoids common pitfalls when Cyclic process is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
@@ -1250,7 +1250,7 @@
             "Failing to recall the exact conditions or sign conventions associated with PV graph work calculation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to PV graph work calculation.",
+            "Understands and can apply concepts of PV graph work calculation.",
             "Successfully avoids common pitfalls when PV graph work calculation is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
@@ -1349,7 +1349,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Heat engine efficiency."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Heat engine efficiency.",
+            "Understands and can apply concepts of Heat engine efficiency.",
             "Successfully avoids common pitfalls when Heat engine efficiency is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
@@ -1448,7 +1448,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Refrigerator coefficient of performance."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Refrigerator coefficient of performance.",
+            "Understands and can apply concepts of Refrigerator coefficient of performance.",
             "Successfully avoids common pitfalls when Refrigerator coefficient of performance is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
@@ -1559,7 +1559,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Second law of thermodynamics statements."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Second law of thermodynamics statements.",
+            "Understands and can apply concepts of Second law of thermodynamics statements.",
             "Successfully avoids common pitfalls when Second law of thermodynamics statements is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
@@ -1658,7 +1658,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Reversible and irreversible processes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Reversible and irreversible processes.",
+            "Understands and can apply concepts of Reversible and irreversible processes.",
             "Successfully avoids common pitfalls when Reversible and irreversible processes is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
@@ -1757,7 +1757,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Carnot cycle steps."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Carnot cycle steps.",
+            "Understands and can apply concepts of Carnot cycle steps.",
             "Successfully avoids common pitfalls when Carnot cycle steps is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
@@ -1856,7 +1856,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Carnot efficiency formula."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Carnot efficiency formula.",
+            "Understands and can apply concepts of Carnot efficiency formula.",
             "Successfully avoids common pitfalls when Carnot efficiency formula is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
@@ -1955,7 +1955,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Specific heat of gases relation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Specific heat of gases relation.",
+            "Understands and can apply concepts of Specific heat of gases relation.",
             "Successfully avoids common pitfalls when Specific heat of gases relation is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
@@ -2067,7 +2067,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Heat pump principle."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Heat pump principle.",
+            "Understands and can apply concepts of Heat pump principle.",
             "Successfully avoids common pitfalls when Heat pump principle is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [

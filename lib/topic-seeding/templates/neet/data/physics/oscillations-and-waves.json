@@ -42,7 +42,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Periodic motion."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Periodic motion.",
+            "Understands and can apply concepts of Periodic motion.",
             "Successfully avoids common pitfalls when Periodic motion is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -141,7 +141,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Simple harmonic motion equation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Simple harmonic motion equation.",
+            "Understands and can apply concepts of Simple harmonic motion equation.",
             "Successfully avoids common pitfalls when Simple harmonic motion equation is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -240,7 +240,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Amplitude and phase."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Amplitude and phase.",
+            "Understands and can apply concepts of Amplitude and phase.",
             "Successfully avoids common pitfalls when Amplitude and phase is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -339,7 +339,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Angular frequency."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Angular frequency.",
+            "Understands and can apply concepts of Angular frequency.",
             "Successfully avoids common pitfalls when Angular frequency is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -438,7 +438,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Time period and frequency."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Time period and frequency.",
+            "Understands and can apply concepts of Time period and frequency.",
             "Successfully avoids common pitfalls when Time period and frequency is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -536,7 +536,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Velocity in SHM."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Velocity in SHM.",
+            "Understands and can apply concepts of Velocity in SHM.",
             "Successfully avoids common pitfalls when Velocity in SHM is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -647,7 +647,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Acceleration in SHM."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Acceleration in SHM.",
+            "Understands and can apply concepts of Acceleration in SHM.",
             "Successfully avoids common pitfalls when Acceleration in SHM is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -745,7 +745,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Kinetic and potential energy in SHM."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Kinetic and potential energy in SHM.",
+            "Understands and can apply concepts of Kinetic and potential energy in SHM.",
             "Successfully avoids common pitfalls when Kinetic and potential energy in SHM is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -844,7 +844,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Spring oscillator time period."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Spring oscillator time period.",
+            "Understands and can apply concepts of Spring oscillator time period.",
             "Successfully avoids common pitfalls when Spring oscillator time period is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -943,7 +943,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Simple pendulum time period."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Simple pendulum time period.",
+            "Understands and can apply concepts of Simple pendulum time period.",
             "Successfully avoids common pitfalls when Simple pendulum time period is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -1043,7 +1043,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Damped oscillations basics."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Damped oscillations basics.",
+            "Understands and can apply concepts of Damped oscillations basics.",
             "Successfully avoids common pitfalls when Damped oscillations basics is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -1141,7 +1141,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Forced oscillations."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Forced oscillations.",
+            "Understands and can apply concepts of Forced oscillations.",
             "Successfully avoids common pitfalls when Forced oscillations is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -1253,7 +1253,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Resonance condition."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Resonance condition.",
+            "Understands and can apply concepts of Resonance condition.",
             "Successfully avoids common pitfalls when Resonance condition is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -1351,7 +1351,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Wave motion definition."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Wave motion definition.",
+            "Understands and can apply concepts of Wave motion definition.",
             "Successfully avoids common pitfalls when Wave motion definition is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -1449,7 +1449,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Longitudinal waves."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Longitudinal waves.",
+            "Understands and can apply concepts of Longitudinal waves.",
             "Successfully avoids common pitfalls when Longitudinal waves is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -1547,7 +1547,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Transverse waves."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Transverse waves.",
+            "Understands and can apply concepts of Transverse waves.",
             "Successfully avoids common pitfalls when Transverse waves is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -1645,7 +1645,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Wave speed formula."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Wave speed formula.",
+            "Understands and can apply concepts of Wave speed formula.",
             "Successfully avoids common pitfalls when Wave speed formula is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -1743,7 +1743,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Progressive wave equation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Progressive wave equation.",
+            "Understands and can apply concepts of Progressive wave equation.",
             "Successfully avoids common pitfalls when Progressive wave equation is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -1855,7 +1855,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Superposition principle."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Superposition principle.",
+            "Understands and can apply concepts of Superposition principle.",
             "Successfully avoids common pitfalls when Superposition principle is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -1953,7 +1953,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Reflection of waves."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Reflection of waves.",
+            "Understands and can apply concepts of Reflection of waves.",
             "Successfully avoids common pitfalls when Reflection of waves is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -2051,7 +2051,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Standing waves formation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Standing waves formation.",
+            "Understands and can apply concepts of Standing waves formation.",
             "Successfully avoids common pitfalls when Standing waves formation is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -2149,7 +2149,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Standing waves in strings."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Standing waves in strings.",
+            "Understands and can apply concepts of Standing waves in strings.",
             "Successfully avoids common pitfalls when Standing waves in strings is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -2247,7 +2247,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Standing waves in closed organ pipes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Standing waves in closed organ pipes.",
+            "Understands and can apply concepts of Standing waves in closed organ pipes.",
             "Successfully avoids common pitfalls when Standing waves in closed organ pipes is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -2345,7 +2345,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Standing waves in open organ pipes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Standing waves in open organ pipes.",
+            "Understands and can apply concepts of Standing waves in open organ pipes.",
             "Successfully avoids common pitfalls when Standing waves in open organ pipes is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -2457,7 +2457,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Harmonics and overtones."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Harmonics and overtones.",
+            "Understands and can apply concepts of Harmonics and overtones.",
             "Successfully avoids common pitfalls when Harmonics and overtones is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -2556,7 +2556,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Beats frequency."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Beats frequency.",
+            "Understands and can apply concepts of Beats frequency.",
             "Successfully avoids common pitfalls when Beats frequency is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
@@ -2655,7 +2655,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Doppler effect in sound."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Doppler effect in sound.",
+            "Understands and can apply concepts of Doppler effect in sound.",
             "Successfully avoids common pitfalls when Doppler effect in sound is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [

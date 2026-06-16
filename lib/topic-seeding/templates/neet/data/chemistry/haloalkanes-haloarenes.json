@@ -42,7 +42,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Classification of haloalkanes and haloarenes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Classification of haloalkanes and haloarenes.",
+            "Understands and can apply concepts of Classification of haloalkanes and haloarenes.",
             "Successfully avoids common pitfalls when Classification of haloalkanes and haloarenes is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
@@ -129,7 +129,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Nature of C-X bond."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Nature of C-X bond.",
+            "Understands and can apply concepts of Nature of C-X bond.",
             "Successfully avoids common pitfalls when Nature of C-X bond is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
@@ -228,7 +228,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Preparation of haloalkanes from alcohols."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Preparation of haloalkanes from alcohols.",
+            "Understands and can apply concepts of Preparation of haloalkanes from alcohols.",
             "Successfully avoids common pitfalls when Preparation of haloalkanes from alcohols is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
@@ -327,7 +327,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Preparation of haloalkanes from hydrocarbons."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Preparation of haloalkanes from hydrocarbons.",
+            "Understands and can apply concepts of Preparation of haloalkanes from hydrocarbons.",
             "Successfully avoids common pitfalls when Preparation of haloalkanes from hydrocarbons is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
@@ -439,7 +439,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Preparation of haloarenes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Preparation of haloarenes.",
+            "Understands and can apply concepts of Preparation of haloarenes.",
             "Successfully avoids common pitfalls when Preparation of haloarenes is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
@@ -538,7 +538,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Physical properties of haloalkanes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Physical properties of haloalkanes.",
+            "Understands and can apply concepts of Physical properties of haloalkanes.",
             "Successfully avoids common pitfalls when Physical properties of haloalkanes is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
@@ -639,7 +639,7 @@
             "Failing to recall the exact conditions or sign conventions associated with SN1 mechanism."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to SN1 mechanism.",
+            "Understands and can apply concepts of SN1 mechanism.",
             "Successfully avoids common pitfalls when SN1 mechanism is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
@@ -742,7 +742,7 @@
             "Failing to recall the exact conditions or sign conventions associated with SN2 mechanism."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to SN2 mechanism.",
+            "Understands and can apply concepts of SN2 mechanism.",
             "Successfully avoids common pitfalls when SN2 mechanism is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
@@ -844,7 +844,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Stereochemical aspects of nucleophilic substitution."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Stereochemical aspects of nucleophilic substitution.",
+            "Understands and can apply concepts of Stereochemical aspects of nucleophilic substitution.",
             "Successfully avoids common pitfalls when Stereochemical aspects of nucleophilic substitution is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
@@ -931,7 +931,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Elimination reactions (Saytzeff rule)."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Elimination reactions (Saytzeff rule).",
+            "Understands and can apply concepts of Elimination reactions (Saytzeff rule).",
             "Successfully avoids common pitfalls when Elimination reactions (Saytzeff rule) is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
@@ -1018,7 +1018,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Reaction with metals (Grignard reagent)."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Reaction with metals (Grignard reagent).",
+            "Understands and can apply concepts of Reaction with metals (Grignard reagent).",
             "Successfully avoids common pitfalls when Reaction with metals (Grignard reagent) is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
@@ -1117,7 +1117,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Nucleophilic substitution in haloarenes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Nucleophilic substitution in haloarenes.",
+            "Understands and can apply concepts of Nucleophilic substitution in haloarenes.",
             "Successfully avoids common pitfalls when Nucleophilic substitution in haloarenes is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
@@ -1229,7 +1229,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Electrophilic substitution in haloarenes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Electrophilic substitution in haloarenes.",
+            "Understands and can apply concepts of Electrophilic substitution in haloarenes.",
             "Successfully avoids common pitfalls when Electrophilic substitution in haloarenes is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
@@ -1328,7 +1328,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Polyhalogen compounds uses and environmental effects."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Polyhalogen compounds uses and environmental effects.",
+            "Understands and can apply concepts of Polyhalogen compounds uses and environmental effects.",
             "Successfully avoids common pitfalls when Polyhalogen compounds uses and environmental effects is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
@@ -1415,7 +1415,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Dichloromethane and trichloromethane."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Dichloromethane and trichloromethane.",
+            "Understands and can apply concepts of Dichloromethane and trichloromethane.",
             "Successfully avoids common pitfalls when Dichloromethane and trichloromethane is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
@@ -1502,7 +1502,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Iodoform and freons."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Iodoform and freons.",
+            "Understands and can apply concepts of Iodoform and freons.",
             "Successfully avoids common pitfalls when Iodoform and freons is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
@@ -1602,7 +1602,7 @@
             "Failing to recall the exact conditions or sign conventions associated with DDT structure and impact."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to DDT structure and impact.",
+            "Understands and can apply concepts of DDT structure and impact.",
             "Successfully avoids common pitfalls when DDT structure and impact is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
@@ -1689,7 +1689,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Swarts and Finkelstein reactions."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Swarts and Finkelstein reactions.",
+            "Understands and can apply concepts of Swarts and Finkelstein reactions.",
             "Successfully avoids common pitfalls when Swarts and Finkelstein reactions is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
@@ -1788,7 +1788,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Organic Compounds Containing Halogens Specific Application 18."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Organic Compounds Containing Halogens Specific Application 18.",
+            "Understands and can apply concepts of Organic Compounds Containing Halogens Specific Application 18.",
             "Successfully avoids common pitfalls when Organic Compounds Containing Halogens Specific Application 18 is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
@@ -1887,7 +1887,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Organic Compounds Containing Halogens Specific Application 19."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Organic Compounds Containing Halogens Specific Application 19.",
+            "Understands and can apply concepts of Organic Compounds Containing Halogens Specific Application 19.",
             "Successfully avoids common pitfalls when Organic Compounds Containing Halogens Specific Application 19 is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [

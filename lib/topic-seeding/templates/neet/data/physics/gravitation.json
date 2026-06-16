@@ -43,7 +43,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Universal law of gravitation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Universal law of gravitation.",
+            "Understands and can apply concepts of Universal law of gravitation.",
             "Successfully avoids common pitfalls when Universal law of gravitation is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
@@ -143,7 +143,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Gravitational constant."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Gravitational constant.",
+            "Understands and can apply concepts of Gravitational constant.",
             "Successfully avoids common pitfalls when Gravitational constant is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
@@ -243,7 +243,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Gravitational field intensity."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Gravitational field intensity.",
+            "Understands and can apply concepts of Gravitational field intensity.",
             "Successfully avoids common pitfalls when Gravitational field intensity is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
@@ -341,7 +341,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Acceleration due to gravity formula."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Acceleration due to gravity formula.",
+            "Understands and can apply concepts of Acceleration due to gravity formula.",
             "Successfully avoids common pitfalls when Acceleration due to gravity formula is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
@@ -440,7 +440,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Variation of g with altitude."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Variation of g with altitude.",
+            "Understands and can apply concepts of Variation of g with altitude.",
             "Successfully avoids common pitfalls when Variation of g with altitude is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
@@ -552,7 +552,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Variation of g with depth."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Variation of g with depth.",
+            "Understands and can apply concepts of Variation of g with depth.",
             "Successfully avoids common pitfalls when Variation of g with depth is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
@@ -651,7 +651,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Variation of g with latitude/rotation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Variation of g with latitude/rotation.",
+            "Understands and can apply concepts of Variation of g with latitude/rotation.",
             "Successfully avoids common pitfalls when Variation of g with latitude/rotation is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
@@ -751,7 +751,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Gravitational potential."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Gravitational potential.",
+            "Understands and can apply concepts of Gravitational potential.",
             "Successfully avoids common pitfalls when Gravitational potential is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
@@ -849,7 +849,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Gravitational potential energy."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Gravitational potential energy.",
+            "Understands and can apply concepts of Gravitational potential energy.",
             "Successfully avoids common pitfalls when Gravitational potential energy is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
@@ -947,7 +947,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Escape velocity derivation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Escape velocity derivation.",
+            "Understands and can apply concepts of Escape velocity derivation.",
             "Successfully avoids common pitfalls when Escape velocity derivation is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
@@ -1058,7 +1058,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Orbital velocity."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Orbital velocity.",
+            "Understands and can apply concepts of Orbital velocity.",
             "Successfully avoids common pitfalls when Orbital velocity is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
@@ -1157,7 +1157,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Satellite time period."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Satellite time period.",
+            "Understands and can apply concepts of Satellite time period.",
             "Successfully avoids common pitfalls when Satellite time period is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
@@ -1255,7 +1255,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Total energy of orbiting satellite."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Total energy of orbiting satellite.",
+            "Understands and can apply concepts of Total energy of orbiting satellite.",
             "Successfully avoids common pitfalls when Total energy of orbiting satellite is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
@@ -1354,7 +1354,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Kepler’s first law."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Kepler’s first law.",
+            "Understands and can apply concepts of Kepler’s first law.",
             "Successfully avoids common pitfalls when Kepler’s first law is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
@@ -1453,7 +1453,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Kepler’s second law."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Kepler’s second law.",
+            "Understands and can apply concepts of Kepler’s second law.",
             "Successfully avoids common pitfalls when Kepler’s second law is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
@@ -1565,7 +1565,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Kepler’s third law."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Kepler’s third law.",
+            "Understands and can apply concepts of Kepler’s third law.",
             "Successfully avoids common pitfalls when Kepler’s third law is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
@@ -1664,7 +1664,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Geostationary satellite."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Geostationary satellite.",
+            "Understands and can apply concepts of Geostationary satellite.",
             "Successfully avoids common pitfalls when Geostationary satellite is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
@@ -1763,7 +1763,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Polar satellite."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Polar satellite.",
+            "Understands and can apply concepts of Polar satellite.",
             "Successfully avoids common pitfalls when Polar satellite is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
@@ -1862,7 +1862,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Weightlessness condition."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Weightlessness condition.",
+            "Understands and can apply concepts of Weightlessness condition.",
             "Successfully avoids common pitfalls when Weightlessness condition is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
@@ -1960,7 +1960,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Binding energy of satellite."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Binding energy of satellite.",
+            "Understands and can apply concepts of Binding energy of satellite.",
             "Successfully avoids common pitfalls when Binding energy of satellite is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
@@ -2071,7 +2071,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Gravitational mass vs inertial mass."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Gravitational mass vs inertial mass.",
+            "Understands and can apply concepts of Gravitational mass vs inertial mass.",
             "Successfully avoids common pitfalls when Gravitational mass vs inertial mass is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [

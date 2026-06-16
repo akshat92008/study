@@ -43,7 +43,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Equilibrium in physical processes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Equilibrium in physical processes.",
+            "Understands and can apply concepts of Equilibrium in physical processes.",
             "Successfully avoids common pitfalls when Equilibrium in physical processes is integrated with other concepts in Equilibrium."
           ],
           "pyqPatterns": [
@@ -143,7 +143,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Dynamic nature of chemical equilibrium."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Dynamic nature of chemical equilibrium.",
+            "Understands and can apply concepts of Dynamic nature of chemical equilibrium.",
             "Successfully avoids common pitfalls when Dynamic nature of chemical equilibrium is integrated with other concepts in Equilibrium."
           ],
           "pyqPatterns": [
@@ -243,7 +243,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Law of chemical equilibrium."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Law of chemical equilibrium.",
+            "Understands and can apply concepts of Law of chemical equilibrium.",
             "Successfully avoids common pitfalls when Law of chemical equilibrium is integrated with other concepts in Equilibrium."
           ],
           "pyqPatterns": [
@@ -343,7 +343,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Equilibrium constant Kc."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Equilibrium constant Kc.",
+            "Understands and can apply concepts of Equilibrium constant Kc.",
             "Successfully avoids common pitfalls when Equilibrium constant Kc is integrated with other concepts in Equilibrium."
           ],
           "pyqPatterns": [
@@ -443,7 +443,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Equilibrium constant Kp."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Equilibrium constant Kp.",
+            "Understands and can apply concepts of Equilibrium constant Kp.",
             "Successfully avoids common pitfalls when Equilibrium constant Kp is integrated with other concepts in Equilibrium."
           ],
           "pyqPatterns": [
@@ -543,7 +543,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Relation between Kp and Kc."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Relation between Kp and Kc.",
+            "Understands and can apply concepts of Relation between Kp and Kc.",
             "Successfully avoids common pitfalls when Relation between Kp and Kc is integrated with other concepts in Equilibrium."
           ],
           "pyqPatterns": [
@@ -630,7 +630,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Reaction quotient Q."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Reaction quotient Q.",
+            "Understands and can apply concepts of Reaction quotient Q.",
             "Successfully avoids common pitfalls when Reaction quotient Q is integrated with other concepts in Equilibrium."
           ],
           "pyqPatterns": [
@@ -717,7 +717,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Le Chatelier principle."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Le Chatelier principle.",
+            "Understands and can apply concepts of Le Chatelier principle.",
             "Successfully avoids common pitfalls when Le Chatelier principle is integrated with other concepts in Equilibrium."
           ],
           "pyqPatterns": [
@@ -817,7 +817,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Effect of concentration change on equilibrium."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Effect of concentration change on equilibrium.",
+            "Understands and can apply concepts of Effect of concentration change on equilibrium.",
             "Successfully avoids common pitfalls when Effect of concentration change on equilibrium is integrated with other concepts in Equilibrium."
           ],
           "pyqPatterns": [
@@ -917,7 +917,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Effect of pressure change on equilibrium."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Effect of pressure change on equilibrium.",
+            "Understands and can apply concepts of Effect of pressure change on equilibrium.",
             "Successfully avoids common pitfalls when Effect of pressure change on equilibrium is integrated with other concepts in Equilibrium."
           ],
           "pyqPatterns": [
@@ -1030,7 +1030,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Effect of temperature change on equilibrium."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Effect of temperature change on equilibrium.",
+            "Understands and can apply concepts of Effect of temperature change on equilibrium.",
             "Successfully avoids common pitfalls when Effect of temperature change on equilibrium is integrated with other concepts in Equilibrium."
           ],
           "pyqPatterns": [
@@ -1130,7 +1130,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Ionic equilibrium basics."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Ionic equilibrium basics.",
+            "Understands and can apply concepts of Ionic equilibrium basics.",
             "Successfully avoids common pitfalls when Ionic equilibrium basics is integrated with other concepts in Equilibrium."
           ],
           "pyqPatterns": [
@@ -1217,7 +1217,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Strong and weak electrolytes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Strong and weak electrolytes.",
+            "Understands and can apply concepts of Strong and weak electrolytes.",
             "Successfully avoids common pitfalls when Strong and weak electrolytes is integrated with other concepts in Equilibrium."
           ],
           "pyqPatterns": [
@@ -1304,7 +1304,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Arrhenius concept of acids and bases."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Arrhenius concept of acids and bases.",
+            "Understands and can apply concepts of Arrhenius concept of acids and bases.",
             "Successfully avoids common pitfalls when Arrhenius concept of acids and bases is integrated with other concepts in Equilibrium."
           ],
           "pyqPatterns": [
@@ -1391,7 +1391,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Bronsted-Lowry concept."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Bronsted-Lowry concept.",
+            "Understands and can apply concepts of Bronsted-Lowry concept.",
             "Successfully avoids common pitfalls when Bronsted-Lowry concept is integrated with other concepts in Equilibrium."
           ],
           "pyqPatterns": [
@@ -1491,7 +1491,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Lewis concept of acids and bases."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Lewis concept of acids and bases.",
+            "Understands and can apply concepts of Lewis concept of acids and bases.",
             "Successfully avoids common pitfalls when Lewis concept of acids and bases is integrated with other concepts in Equilibrium."
           ],
           "pyqPatterns": [
@@ -1578,7 +1578,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Ionisation of weak acids Ka."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Ionisation of weak acids Ka.",
+            "Understands and can apply concepts of Ionisation of weak acids Ka.",
             "Successfully avoids common pitfalls when Ionisation of weak acids Ka is integrated with other concepts in Equilibrium."
           ],
           "pyqPatterns": [
@@ -1665,7 +1665,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Ionisation of weak bases Kb."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Ionisation of weak bases Kb.",
+            "Understands and can apply concepts of Ionisation of weak bases Kb.",
             "Successfully avoids common pitfalls when Ionisation of weak bases Kb is integrated with other concepts in Equilibrium."
           ],
           "pyqPatterns": [
@@ -1752,7 +1752,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Ionic product of water Kw."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Ionic product of water Kw.",
+            "Understands and can apply concepts of Ionic product of water Kw.",
             "Successfully avoids common pitfalls when Ionic product of water Kw is integrated with other concepts in Equilibrium."
           ],
           "pyqPatterns": [
@@ -1839,7 +1839,7 @@
             "Failing to recall the exact conditions or sign conventions associated with PH scale and calculations."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to PH scale and calculations.",
+            "Understands and can apply concepts of PH scale and calculations.",
             "Successfully avoids common pitfalls when PH scale and calculations is integrated with other concepts in Equilibrium."
           ],
           "pyqPatterns": [
@@ -1939,7 +1939,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Hydrolysis of salts."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Hydrolysis of salts.",
+            "Understands and can apply concepts of Hydrolysis of salts.",
             "Successfully avoids common pitfalls when Hydrolysis of salts is integrated with other concepts in Equilibrium."
           ],
           "pyqPatterns": [
@@ -2026,7 +2026,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Henderson-Hasselbalch/buffer action."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Henderson-Hasselbalch/buffer action.",
+            "Understands and can apply concepts of Henderson-Hasselbalch/buffer action.",
             "Successfully avoids common pitfalls when Henderson-Hasselbalch/buffer action is integrated with other concepts in Equilibrium."
           ],
           "pyqPatterns": [
@@ -2113,7 +2113,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Solubility product."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Solubility product.",
+            "Understands and can apply concepts of Solubility product.",
             "Successfully avoids common pitfalls when Solubility product is integrated with other concepts in Equilibrium."
           ],
           "pyqPatterns": [
@@ -2200,7 +2200,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Common ion effect in precipitation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Common ion effect in precipitation.",
+            "Understands and can apply concepts of Common ion effect in precipitation.",
             "Successfully avoids common pitfalls when Common ion effect in precipitation is integrated with other concepts in Equilibrium."
           ],
           "pyqPatterns": [

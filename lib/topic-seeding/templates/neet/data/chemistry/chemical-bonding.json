@@ -30,7 +30,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Kossel-Lewis approach to bonding."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Kossel-Lewis approach to bonding.",
+            "Understands and can apply concepts of Kossel-Lewis approach to bonding.",
             "Successfully avoids common pitfalls when Kossel-Lewis approach to bonding is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
@@ -117,7 +117,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Lewis dot structures."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Lewis dot structures.",
+            "Understands and can apply concepts of Lewis dot structures.",
             "Successfully avoids common pitfalls when Lewis dot structures is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
@@ -204,7 +204,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Formal charge calculation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Formal charge calculation.",
+            "Understands and can apply concepts of Formal charge calculation.",
             "Successfully avoids common pitfalls when Formal charge calculation is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
@@ -291,7 +291,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Octet rule exceptions."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Octet rule exceptions.",
+            "Understands and can apply concepts of Octet rule exceptions.",
             "Successfully avoids common pitfalls when Octet rule exceptions is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
@@ -378,7 +378,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Ionic bond formation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Ionic bond formation.",
+            "Understands and can apply concepts of Ionic bond formation.",
             "Successfully avoids common pitfalls when Ionic bond formation is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
@@ -478,7 +478,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Lattice enthalpy."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Lattice enthalpy.",
+            "Understands and can apply concepts of Lattice enthalpy.",
             "Successfully avoids common pitfalls when Lattice enthalpy is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
@@ -565,7 +565,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Covalent bond parameters."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Covalent bond parameters.",
+            "Understands and can apply concepts of Covalent bond parameters.",
             "Successfully avoids common pitfalls when Covalent bond parameters is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
@@ -652,7 +652,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Electronegativity and bond polarity."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Electronegativity and bond polarity.",
+            "Understands and can apply concepts of Electronegativity and bond polarity.",
             "Successfully avoids common pitfalls when Electronegativity and bond polarity is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
@@ -739,7 +739,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Fajan’s rule for covalent character."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Fajan’s rule for covalent character.",
+            "Understands and can apply concepts of Fajan’s rule for covalent character.",
             "Successfully avoids common pitfalls when Fajan’s rule for covalent character is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
@@ -826,7 +826,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Dipole moment applications."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Dipole moment applications.",
+            "Understands and can apply concepts of Dipole moment applications.",
             "Successfully avoids common pitfalls when Dipole moment applications is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
@@ -926,7 +926,7 @@
             "Failing to recall the exact conditions or sign conventions associated with VSEPR/hybridisation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to VSEPR/hybridisation.",
+            "Understands and can apply concepts of VSEPR/hybridisation.",
             "Successfully avoids common pitfalls when VSEPR/hybridisation is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
@@ -1024,7 +1024,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Geometry of molecules without lone pairs."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Geometry of molecules without lone pairs.",
+            "Understands and can apply concepts of Geometry of molecules without lone pairs.",
             "Successfully avoids common pitfalls when Geometry of molecules without lone pairs is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
@@ -1122,7 +1122,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Geometry of molecules with lone pairs."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Geometry of molecules with lone pairs.",
+            "Understands and can apply concepts of Geometry of molecules with lone pairs.",
             "Successfully avoids common pitfalls when Geometry of molecules with lone pairs is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
@@ -1209,7 +1209,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Hybridisation types sp sp2 sp3."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Hybridisation types sp sp2 sp3.",
+            "Understands and can apply concepts of Hybridisation types sp sp2 sp3.",
             "Successfully avoids common pitfalls when Hybridisation types sp sp2 sp3 is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
@@ -1296,7 +1296,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Hybridisation involving d orbitals."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Hybridisation involving d orbitals.",
+            "Understands and can apply concepts of Hybridisation involving d orbitals.",
             "Successfully avoids common pitfalls when Hybridisation involving d orbitals is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
@@ -1396,7 +1396,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Resonance structures and stability."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Resonance structures and stability.",
+            "Understands and can apply concepts of Resonance structures and stability.",
             "Successfully avoids common pitfalls when Resonance structures and stability is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
@@ -1483,7 +1483,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Valence bond theory postulates."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Valence bond theory postulates.",
+            "Understands and can apply concepts of Valence bond theory postulates.",
             "Successfully avoids common pitfalls when Valence bond theory postulates is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
@@ -1570,7 +1570,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Sigma and pi bond formation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Sigma and pi bond formation.",
+            "Understands and can apply concepts of Sigma and pi bond formation.",
             "Successfully avoids common pitfalls when Sigma and pi bond formation is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
@@ -1668,7 +1668,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Molecular orbital theory."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Molecular orbital theory.",
+            "Understands and can apply concepts of Molecular orbital theory.",
             "Successfully avoids common pitfalls when Molecular orbital theory is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
@@ -1766,7 +1766,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Bonding and antibonding molecular orbitals."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Bonding and antibonding molecular orbitals.",
+            "Understands and can apply concepts of Bonding and antibonding molecular orbitals.",
             "Successfully avoids common pitfalls when Bonding and antibonding molecular orbitals is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
@@ -1866,7 +1866,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Bond order calculation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Bond order calculation.",
+            "Understands and can apply concepts of Bond order calculation.",
             "Successfully avoids common pitfalls when Bond order calculation is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
@@ -1953,7 +1953,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Magnetic character from MOT."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Magnetic character from MOT.",
+            "Understands and can apply concepts of Magnetic character from MOT.",
             "Successfully avoids common pitfalls when Magnetic character from MOT is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
@@ -2040,7 +2040,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Hydrogen bonding types and effects."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Hydrogen bonding types and effects.",
+            "Understands and can apply concepts of Hydrogen bonding types and effects.",
             "Successfully avoids common pitfalls when Hydrogen bonding types and effects is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [

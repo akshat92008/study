@@ -30,7 +30,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Rate of a chemical reaction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Rate of a chemical reaction.",
+            "Understands and can apply concepts of Rate of a chemical reaction.",
             "Successfully avoids common pitfalls when Rate of a chemical reaction is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
@@ -117,7 +117,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Average and instantaneous rate."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Average and instantaneous rate.",
+            "Understands and can apply concepts of Average and instantaneous rate.",
             "Successfully avoids common pitfalls when Average and instantaneous rate is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
@@ -204,7 +204,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Factors affecting reaction rate."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Factors affecting reaction rate.",
+            "Understands and can apply concepts of Factors affecting reaction rate.",
             "Successfully avoids common pitfalls when Factors affecting reaction rate is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
@@ -291,7 +291,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Elementary and complex reactions."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Elementary and complex reactions.",
+            "Understands and can apply concepts of Elementary and complex reactions.",
             "Successfully avoids common pitfalls when Elementary and complex reactions is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
@@ -391,7 +391,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Order of a reaction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Order of a reaction.",
+            "Understands and can apply concepts of Order of a reaction.",
             "Successfully avoids common pitfalls when Order of a reaction is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
@@ -489,7 +489,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Molecularity of a reaction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Molecularity of a reaction.",
+            "Understands and can apply concepts of Molecularity of a reaction.",
             "Successfully avoids common pitfalls when Molecularity of a reaction is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
@@ -576,7 +576,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Rate law expression."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Rate law expression.",
+            "Understands and can apply concepts of Rate law expression.",
             "Successfully avoids common pitfalls when Rate law expression is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
@@ -663,7 +663,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Rate constant and its units."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Rate constant and its units.",
+            "Understands and can apply concepts of Rate constant and its units.",
             "Successfully avoids common pitfalls when Rate constant and its units is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
@@ -763,7 +763,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Integrated rate equation for zero order."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Integrated rate equation for zero order.",
+            "Understands and can apply concepts of Integrated rate equation for zero order.",
             "Successfully avoids common pitfalls when Integrated rate equation for zero order is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
@@ -850,7 +850,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Integrated rate equation for first order."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Integrated rate equation for first order.",
+            "Understands and can apply concepts of Integrated rate equation for first order.",
             "Successfully avoids common pitfalls when Integrated rate equation for first order is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
@@ -937,7 +937,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Half-life of a reaction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Half-life of a reaction.",
+            "Understands and can apply concepts of Half-life of a reaction.",
             "Successfully avoids common pitfalls when Half-life of a reaction is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
@@ -1024,7 +1024,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Pseudo-first order reactions."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Pseudo-first order reactions.",
+            "Understands and can apply concepts of Pseudo-first order reactions.",
             "Successfully avoids common pitfalls when Pseudo-first order reactions is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
@@ -1124,7 +1124,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Temperature dependence of rate."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Temperature dependence of rate.",
+            "Understands and can apply concepts of Temperature dependence of rate.",
             "Successfully avoids common pitfalls when Temperature dependence of rate is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
@@ -1211,7 +1211,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Arrhenius equation applications."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Arrhenius equation applications.",
+            "Understands and can apply concepts of Arrhenius equation applications.",
             "Successfully avoids common pitfalls when Arrhenius equation applications is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
@@ -1298,7 +1298,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Activation energy concept."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Activation energy concept.",
+            "Understands and can apply concepts of Activation energy concept.",
             "Successfully avoids common pitfalls when Activation energy concept is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
@@ -1397,7 +1397,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Collision theory of chemical kinetics."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Collision theory of chemical kinetics.",
+            "Understands and can apply concepts of Collision theory of chemical kinetics.",
             "Successfully avoids common pitfalls when Collision theory of chemical kinetics is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
@@ -1497,7 +1497,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Effect of catalyst on reaction rate."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Effect of catalyst on reaction rate.",
+            "Understands and can apply concepts of Effect of catalyst on reaction rate.",
             "Successfully avoids common pitfalls when Effect of catalyst on reaction rate is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
@@ -1584,7 +1584,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Graphical analysis of zero order."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Graphical analysis of zero order.",
+            "Understands and can apply concepts of Graphical analysis of zero order.",
             "Successfully avoids common pitfalls when Graphical analysis of zero order is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
@@ -1671,7 +1671,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Graphical analysis of first order."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Graphical analysis of first order.",
+            "Understands and can apply concepts of Graphical analysis of first order.",
             "Successfully avoids common pitfalls when Graphical analysis of first order is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
@@ -1758,7 +1758,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Integrated rate graphs for complex reactions."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Integrated rate graphs for complex reactions.",
+            "Understands and can apply concepts of Integrated rate graphs for complex reactions.",
             "Successfully avoids common pitfalls when Integrated rate graphs for complex reactions is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [

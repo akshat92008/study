@@ -30,7 +30,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Purification by crystallisation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Purification by crystallisation.",
+            "Understands and can apply concepts of Purification by crystallisation.",
             "Successfully avoids common pitfalls when Purification by crystallisation is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
@@ -117,7 +117,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Purification by sublimation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Purification by sublimation.",
+            "Understands and can apply concepts of Purification by sublimation.",
             "Successfully avoids common pitfalls when Purification by sublimation is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
@@ -204,7 +204,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Simple distillation technique."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Simple distillation technique.",
+            "Understands and can apply concepts of Simple distillation technique.",
             "Successfully avoids common pitfalls when Simple distillation technique is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
@@ -291,7 +291,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Fractional distillation technique."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Fractional distillation technique.",
+            "Understands and can apply concepts of Fractional distillation technique.",
             "Successfully avoids common pitfalls when Fractional distillation technique is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
@@ -391,7 +391,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Steam distillation technique."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Steam distillation technique.",
+            "Understands and can apply concepts of Steam distillation technique.",
             "Successfully avoids common pitfalls when Steam distillation technique is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
@@ -478,7 +478,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Distillation under reduced pressure."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Distillation under reduced pressure.",
+            "Understands and can apply concepts of Distillation under reduced pressure.",
             "Successfully avoids common pitfalls when Distillation under reduced pressure is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
@@ -565,7 +565,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Differential extraction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Differential extraction.",
+            "Understands and can apply concepts of Differential extraction.",
             "Successfully avoids common pitfalls when Differential extraction is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
@@ -652,7 +652,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Chromatography principles."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Chromatography principles.",
+            "Understands and can apply concepts of Chromatography principles.",
             "Successfully avoids common pitfalls when Chromatography principles is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
@@ -752,7 +752,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Lassaigne’s test for nitrogen."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Lassaigne’s test for nitrogen.",
+            "Understands and can apply concepts of Lassaigne’s test for nitrogen.",
             "Successfully avoids common pitfalls when Lassaigne’s test for nitrogen is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
@@ -839,7 +839,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Lassaigne’s test for sulphur."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Lassaigne’s test for sulphur.",
+            "Understands and can apply concepts of Lassaigne’s test for sulphur.",
             "Successfully avoids common pitfalls when Lassaigne’s test for sulphur is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
@@ -938,7 +938,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Lassaigne’s test for halogens."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Lassaigne’s test for halogens.",
+            "Understands and can apply concepts of Lassaigne’s test for halogens.",
             "Successfully avoids common pitfalls when Lassaigne’s test for halogens is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
@@ -1025,7 +1025,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Test for phosphorus."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Test for phosphorus.",
+            "Understands and can apply concepts of Test for phosphorus.",
             "Successfully avoids common pitfalls when Test for phosphorus is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
@@ -1125,7 +1125,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Dumas method for nitrogen estimation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Dumas method for nitrogen estimation.",
+            "Understands and can apply concepts of Dumas method for nitrogen estimation.",
             "Successfully avoids common pitfalls when Dumas method for nitrogen estimation is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
@@ -1212,7 +1212,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Kjeldahl method for nitrogen estimation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Kjeldahl method for nitrogen estimation.",
+            "Understands and can apply concepts of Kjeldahl method for nitrogen estimation.",
             "Successfully avoids common pitfalls when Kjeldahl method for nitrogen estimation is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
@@ -1311,7 +1311,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Carius method for halogen estimation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Carius method for halogen estimation.",
+            "Understands and can apply concepts of Carius method for halogen estimation.",
             "Successfully avoids common pitfalls when Carius method for halogen estimation is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
@@ -1398,7 +1398,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Estimation of sulphur."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Estimation of sulphur.",
+            "Understands and can apply concepts of Estimation of sulphur.",
             "Successfully avoids common pitfalls when Estimation of sulphur is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
@@ -1498,7 +1498,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Estimation of phosphorus."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Estimation of phosphorus.",
+            "Understands and can apply concepts of Estimation of phosphorus.",
             "Successfully avoids common pitfalls when Estimation of phosphorus is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
@@ -1585,7 +1585,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Estimation of oxygen."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Estimation of oxygen.",
+            "Understands and can apply concepts of Estimation of oxygen.",
             "Successfully avoids common pitfalls when Estimation of oxygen is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
@@ -1672,7 +1672,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Calculation of empirical formula."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Calculation of empirical formula.",
+            "Understands and can apply concepts of Calculation of empirical formula.",
             "Successfully avoids common pitfalls when Calculation of empirical formula is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
@@ -1770,7 +1770,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Calculation of molecular formula."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Calculation of molecular formula.",
+            "Understands and can apply concepts of Calculation of molecular formula.",
             "Successfully avoids common pitfalls when Calculation of molecular formula is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [

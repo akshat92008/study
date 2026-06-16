@@ -41,7 +41,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Magnetic force on moving charge."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Magnetic force on moving charge.",
+            "Understands and can apply concepts of Magnetic force on moving charge.",
             "Successfully avoids common pitfalls when Magnetic force on moving charge is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
@@ -139,7 +139,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Lorentz force equation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Lorentz force equation.",
+            "Understands and can apply concepts of Lorentz force equation.",
             "Successfully avoids common pitfalls when Lorentz force equation is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
@@ -238,7 +238,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Circular motion in magnetic field."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Circular motion in magnetic field.",
+            "Understands and can apply concepts of Circular motion in magnetic field.",
             "Successfully avoids common pitfalls when Circular motion in magnetic field is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
@@ -337,7 +337,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Helical path in magnetic field."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Helical path in magnetic field.",
+            "Understands and can apply concepts of Helical path in magnetic field.",
             "Successfully avoids common pitfalls when Helical path in magnetic field is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
@@ -435,7 +435,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Velocity selector."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Velocity selector.",
+            "Understands and can apply concepts of Velocity selector.",
             "Successfully avoids common pitfalls when Velocity selector is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
@@ -547,7 +547,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Cyclotron principle."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Cyclotron principle.",
+            "Understands and can apply concepts of Cyclotron principle.",
             "Successfully avoids common pitfalls when Cyclotron principle is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
@@ -646,7 +646,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Biot-Savart law."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Biot-Savart law.",
+            "Understands and can apply concepts of Biot-Savart law.",
             "Successfully avoids common pitfalls when Biot-Savart law is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
@@ -745,7 +745,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Magnetic field of circular loop."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Magnetic field of circular loop.",
+            "Understands and can apply concepts of Magnetic field of circular loop.",
             "Successfully avoids common pitfalls when Magnetic field of circular loop is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
@@ -844,7 +844,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Ampere’s circuital law."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Ampere’s circuital law.",
+            "Understands and can apply concepts of Ampere’s circuital law.",
             "Successfully avoids common pitfalls when Ampere’s circuital law is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
@@ -943,7 +943,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Magnetic field of straight wire."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Magnetic field of straight wire.",
+            "Understands and can apply concepts of Magnetic field of straight wire.",
             "Successfully avoids common pitfalls when Magnetic field of straight wire is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
@@ -1055,7 +1055,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Magnetic field of solenoid."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Magnetic field of solenoid.",
+            "Understands and can apply concepts of Magnetic field of solenoid.",
             "Successfully avoids common pitfalls when Magnetic field of solenoid is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
@@ -1154,7 +1154,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Magnetic field of toroid."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Magnetic field of toroid.",
+            "Understands and can apply concepts of Magnetic field of toroid.",
             "Successfully avoids common pitfalls when Magnetic field of toroid is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
@@ -1252,7 +1252,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Force on current-carrying conductor."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Force on current-carrying conductor.",
+            "Understands and can apply concepts of Force on current-carrying conductor.",
             "Successfully avoids common pitfalls when Force on current-carrying conductor is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
@@ -1350,7 +1350,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Force between parallel currents."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Force between parallel currents.",
+            "Understands and can apply concepts of Force between parallel currents.",
             "Successfully avoids common pitfalls when Force between parallel currents is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
@@ -1448,7 +1448,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Torque on current loop."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Torque on current loop.",
+            "Understands and can apply concepts of Torque on current loop.",
             "Successfully avoids common pitfalls when Torque on current loop is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
@@ -1560,7 +1560,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Magnetic dipole moment."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Magnetic dipole moment.",
+            "Understands and can apply concepts of Magnetic dipole moment.",
             "Successfully avoids common pitfalls when Magnetic dipole moment is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
@@ -1659,7 +1659,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Moving coil galvanometer."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Moving coil galvanometer.",
+            "Understands and can apply concepts of Moving coil galvanometer.",
             "Successfully avoids common pitfalls when Moving coil galvanometer is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
@@ -1758,7 +1758,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Bar magnet properties."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Bar magnet properties.",
+            "Understands and can apply concepts of Bar magnet properties.",
             "Successfully avoids common pitfalls when Bar magnet properties is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
@@ -1857,7 +1857,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Magnetic field lines."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Magnetic field lines.",
+            "Understands and can apply concepts of Magnetic field lines.",
             "Successfully avoids common pitfalls when Magnetic field lines is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
@@ -1956,7 +1956,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Earth magnetism elements."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Earth magnetism elements.",
+            "Understands and can apply concepts of Earth magnetism elements.",
             "Successfully avoids common pitfalls when Earth magnetism elements is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
@@ -2068,7 +2068,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Diamagnetism."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Diamagnetism.",
+            "Understands and can apply concepts of Diamagnetism.",
             "Successfully avoids common pitfalls when Diamagnetism is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
@@ -2167,7 +2167,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Paramagnetism."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Paramagnetism.",
+            "Understands and can apply concepts of Paramagnetism.",
             "Successfully avoids common pitfalls when Paramagnetism is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
@@ -2266,7 +2266,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Ferromagnetism."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Ferromagnetism.",
+            "Understands and can apply concepts of Ferromagnetism.",
             "Successfully avoids common pitfalls when Ferromagnetism is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [

@@ -30,7 +30,7 @@
             "Failing to recall the exact conditions or sign conventions associated with System and surroundings."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to System and surroundings.",
+            "Understands and can apply concepts of System and surroundings.",
             "Successfully avoids common pitfalls when System and surroundings is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
@@ -129,7 +129,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Types of thermodynamic systems."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Types of thermodynamic systems.",
+            "Understands and can apply concepts of Types of thermodynamic systems.",
             "Successfully avoids common pitfalls when Types of thermodynamic systems is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
@@ -216,7 +216,7 @@
             "Failing to recall the exact conditions or sign conventions associated with State functions vs path functions."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to State functions vs path functions.",
+            "Understands and can apply concepts of State functions vs path functions.",
             "Successfully avoids common pitfalls when State functions vs path functions is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
@@ -303,7 +303,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Extensive and intensive properties."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Extensive and intensive properties.",
+            "Understands and can apply concepts of Extensive and intensive properties.",
             "Successfully avoids common pitfalls when Extensive and intensive properties is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
@@ -402,7 +402,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Thermodynamic processes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Thermodynamic processes.",
+            "Understands and can apply concepts of Thermodynamic processes.",
             "Successfully avoids common pitfalls when Thermodynamic processes is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
@@ -502,7 +502,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Work done in expansion/compression."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Work done in expansion/compression.",
+            "Understands and can apply concepts of Work done in expansion/compression.",
             "Successfully avoids common pitfalls when Work done in expansion/compression is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
@@ -589,7 +589,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Heat and internal energy."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Heat and internal energy.",
+            "Understands and can apply concepts of Heat and internal energy.",
             "Successfully avoids common pitfalls when Heat and internal energy is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
@@ -688,7 +688,7 @@
             "Failing to recall the exact conditions or sign conventions associated with First law of thermodynamics chemistry."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to First law of thermodynamics chemistry.",
+            "Understands and can apply concepts of First law of thermodynamics chemistry.",
             "Successfully avoids common pitfalls when First law of thermodynamics chemistry is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
@@ -775,7 +775,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Heat capacity and specific heat."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Heat capacity and specific heat.",
+            "Understands and can apply concepts of Heat capacity and specific heat.",
             "Successfully avoids common pitfalls when Heat capacity and specific heat is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
@@ -862,7 +862,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Relation between Cp and Cv."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Relation between Cp and Cv.",
+            "Understands and can apply concepts of Relation between Cp and Cv.",
             "Successfully avoids common pitfalls when Relation between Cp and Cv is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
@@ -962,7 +962,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Enthalpy change."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Enthalpy change.",
+            "Understands and can apply concepts of Enthalpy change.",
             "Successfully avoids common pitfalls when Enthalpy change is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
@@ -1049,7 +1049,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Hess’s law of constant heat summation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Hess’s law of constant heat summation.",
+            "Understands and can apply concepts of Hess’s law of constant heat summation.",
             "Successfully avoids common pitfalls when Hess’s law of constant heat summation is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
@@ -1136,7 +1136,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Standard enthalpy of formation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Standard enthalpy of formation.",
+            "Understands and can apply concepts of Standard enthalpy of formation.",
             "Successfully avoids common pitfalls when Standard enthalpy of formation is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
@@ -1223,7 +1223,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Enthalpy of combustion."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Enthalpy of combustion.",
+            "Understands and can apply concepts of Enthalpy of combustion.",
             "Successfully avoids common pitfalls when Enthalpy of combustion is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
@@ -1310,7 +1310,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Bond dissociation enthalpy."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Bond dissociation enthalpy.",
+            "Understands and can apply concepts of Bond dissociation enthalpy.",
             "Successfully avoids common pitfalls when Bond dissociation enthalpy is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
@@ -1410,7 +1410,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Enthalpy of atomisation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Enthalpy of atomisation.",
+            "Understands and can apply concepts of Enthalpy of atomisation.",
             "Successfully avoids common pitfalls when Enthalpy of atomisation is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
@@ -1497,7 +1497,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Enthalpy of phase transition."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Enthalpy of phase transition.",
+            "Understands and can apply concepts of Enthalpy of phase transition.",
             "Successfully avoids common pitfalls when Enthalpy of phase transition is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
@@ -1584,7 +1584,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Entropy concept."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Entropy concept.",
+            "Understands and can apply concepts of Entropy concept.",
             "Successfully avoids common pitfalls when Entropy concept is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
@@ -1671,7 +1671,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Gibbs free energy change."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Gibbs free energy change.",
+            "Understands and can apply concepts of Gibbs free energy change.",
             "Successfully avoids common pitfalls when Gibbs free energy change is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
@@ -1770,7 +1770,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Thermodynamics signs/Gibbs free energy."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Thermodynamics signs/Gibbs free energy.",
+            "Understands and can apply concepts of Thermodynamics signs/Gibbs free energy.",
             "Successfully avoids common pitfalls when Thermodynamics signs/Gibbs free energy is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
@@ -1870,7 +1870,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Spontaneity criteria."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Spontaneity criteria.",
+            "Understands and can apply concepts of Spontaneity criteria.",
             "Successfully avoids common pitfalls when Spontaneity criteria is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [

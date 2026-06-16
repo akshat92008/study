@@ -42,7 +42,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Alkanes nomenclature and isomerism."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Alkanes nomenclature and isomerism.",
+            "Understands and can apply concepts of Alkanes nomenclature and isomerism.",
             "Successfully avoids common pitfalls when Alkanes nomenclature and isomerism is integrated with other concepts in Hydrocarbons."
           ],
           "pyqPatterns": [
@@ -141,7 +141,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Preparation of alkanes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Preparation of alkanes.",
+            "Understands and can apply concepts of Preparation of alkanes.",
             "Successfully avoids common pitfalls when Preparation of alkanes is integrated with other concepts in Hydrocarbons."
           ],
           "pyqPatterns": [
@@ -240,7 +240,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Physical properties of alkanes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Physical properties of alkanes.",
+            "Understands and can apply concepts of Physical properties of alkanes.",
             "Successfully avoids common pitfalls when Physical properties of alkanes is integrated with other concepts in Hydrocarbons."
           ],
           "pyqPatterns": [
@@ -339,7 +339,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Free radical halogenation of alkanes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Free radical halogenation of alkanes.",
+            "Understands and can apply concepts of Free radical halogenation of alkanes.",
             "Successfully avoids common pitfalls when Free radical halogenation of alkanes is integrated with other concepts in Hydrocarbons."
           ],
           "pyqPatterns": [
@@ -426,7 +426,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Conformations of ethane."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Conformations of ethane.",
+            "Understands and can apply concepts of Conformations of ethane.",
             "Successfully avoids common pitfalls when Conformations of ethane is integrated with other concepts in Hydrocarbons."
           ],
           "pyqPatterns": [
@@ -526,7 +526,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Newman and sawhorse projections."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Newman and sawhorse projections.",
+            "Understands and can apply concepts of Newman and sawhorse projections.",
             "Successfully avoids common pitfalls when Newman and sawhorse projections is integrated with other concepts in Hydrocarbons."
           ],
           "pyqPatterns": [
@@ -625,7 +625,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Alkenes nomenclature and isomerism."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Alkenes nomenclature and isomerism.",
+            "Understands and can apply concepts of Alkenes nomenclature and isomerism.",
             "Successfully avoids common pitfalls when Alkenes nomenclature and isomerism is integrated with other concepts in Hydrocarbons."
           ],
           "pyqPatterns": [
@@ -724,7 +724,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Preparation of alkenes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Preparation of alkenes.",
+            "Understands and can apply concepts of Preparation of alkenes.",
             "Successfully avoids common pitfalls when Preparation of alkenes is integrated with other concepts in Hydrocarbons."
           ],
           "pyqPatterns": [
@@ -823,7 +823,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Markovnikov addition."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Markovnikov addition.",
+            "Understands and can apply concepts of Markovnikov addition.",
             "Successfully avoids common pitfalls when Markovnikov addition is integrated with other concepts in Hydrocarbons."
           ],
           "pyqPatterns": [
@@ -922,7 +922,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Anti-Markovnikov addition."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Anti-Markovnikov addition.",
+            "Understands and can apply concepts of Anti-Markovnikov addition.",
             "Successfully avoids common pitfalls when Anti-Markovnikov addition is integrated with other concepts in Hydrocarbons."
           ],
           "pyqPatterns": [
@@ -1034,7 +1034,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Ozonolysis of alkenes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Ozonolysis of alkenes.",
+            "Understands and can apply concepts of Ozonolysis of alkenes.",
             "Successfully avoids common pitfalls when Ozonolysis of alkenes is integrated with other concepts in Hydrocarbons."
           ],
           "pyqPatterns": [
@@ -1133,7 +1133,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Alkynes nomenclature and isomerism."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Alkynes nomenclature and isomerism.",
+            "Understands and can apply concepts of Alkynes nomenclature and isomerism.",
             "Successfully avoids common pitfalls when Alkynes nomenclature and isomerism is integrated with other concepts in Hydrocarbons."
           ],
           "pyqPatterns": [
@@ -1232,7 +1232,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Preparation of alkynes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Preparation of alkynes.",
+            "Understands and can apply concepts of Preparation of alkynes.",
             "Successfully avoids common pitfalls when Preparation of alkynes is integrated with other concepts in Hydrocarbons."
           ],
           "pyqPatterns": [
@@ -1331,7 +1331,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Acidic character of alkynes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Acidic character of alkynes.",
+            "Understands and can apply concepts of Acidic character of alkynes.",
             "Successfully avoids common pitfalls when Acidic character of alkynes is integrated with other concepts in Hydrocarbons."
           ],
           "pyqPatterns": [
@@ -1430,7 +1430,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Addition reactions of alkynes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Addition reactions of alkynes.",
+            "Understands and can apply concepts of Addition reactions of alkynes.",
             "Successfully avoids common pitfalls when Addition reactions of alkynes is integrated with other concepts in Hydrocarbons."
           ],
           "pyqPatterns": [
@@ -1530,7 +1530,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Benzene structure and resonance."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Benzene structure and resonance.",
+            "Understands and can apply concepts of Benzene structure and resonance.",
             "Successfully avoids common pitfalls when Benzene structure and resonance is integrated with other concepts in Hydrocarbons."
           ],
           "pyqPatterns": [
@@ -1617,7 +1617,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Aromaticity Huckel rule."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Aromaticity Huckel rule.",
+            "Understands and can apply concepts of Aromaticity Huckel rule.",
             "Successfully avoids common pitfalls when Aromaticity Huckel rule is integrated with other concepts in Hydrocarbons."
           ],
           "pyqPatterns": [
@@ -1717,7 +1717,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Electrophilic aromatic substitution mechanism."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Electrophilic aromatic substitution mechanism.",
+            "Understands and can apply concepts of Electrophilic aromatic substitution mechanism.",
             "Successfully avoids common pitfalls when Electrophilic aromatic substitution mechanism is integrated with other concepts in Hydrocarbons."
           ],
           "pyqPatterns": [
@@ -1818,7 +1818,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Nitration and halogenation of benzene."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Nitration and halogenation of benzene.",
+            "Understands and can apply concepts of Nitration and halogenation of benzene.",
             "Successfully avoids common pitfalls when Nitration and halogenation of benzene is integrated with other concepts in Hydrocarbons."
           ],
           "pyqPatterns": [
@@ -1917,7 +1917,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Friedel-Crafts alkylation and acylation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Friedel-Crafts alkylation and acylation.",
+            "Understands and can apply concepts of Friedel-Crafts alkylation and acylation.",
             "Successfully avoids common pitfalls when Friedel-Crafts alkylation and acylation is integrated with other concepts in Hydrocarbons."
           ],
           "pyqPatterns": [
@@ -2017,7 +2017,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Directive influence of functional groups."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Directive influence of functional groups.",
+            "Understands and can apply concepts of Directive influence of functional groups.",
             "Successfully avoids common pitfalls when Directive influence of functional groups is integrated with other concepts in Hydrocarbons."
           ],
           "pyqPatterns": [

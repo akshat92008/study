@@ -42,7 +42,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Electron emission types."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Electron emission types.",
+            "Understands and can apply concepts of Electron emission types.",
             "Successfully avoids common pitfalls when Electron emission types is integrated with other concepts in Dual Nature of Matter and Radiation."
           ],
           "pyqPatterns": [
@@ -141,7 +141,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Photoelectric effect."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Photoelectric effect.",
+            "Understands and can apply concepts of Photoelectric effect.",
             "Successfully avoids common pitfalls when Photoelectric effect is integrated with other concepts in Dual Nature of Matter and Radiation."
           ],
           "pyqPatterns": [
@@ -240,7 +240,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Stopping potential."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Stopping potential.",
+            "Understands and can apply concepts of Stopping potential.",
             "Successfully avoids common pitfalls when Stopping potential is integrated with other concepts in Dual Nature of Matter and Radiation."
           ],
           "pyqPatterns": [
@@ -339,7 +339,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Threshold frequency."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Threshold frequency.",
+            "Understands and can apply concepts of Threshold frequency.",
             "Successfully avoids common pitfalls when Threshold frequency is integrated with other concepts in Dual Nature of Matter and Radiation."
           ],
           "pyqPatterns": [
@@ -450,7 +450,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Work function."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Work function.",
+            "Understands and can apply concepts of Work function.",
             "Successfully avoids common pitfalls when Work function is integrated with other concepts in Dual Nature of Matter and Radiation."
           ],
           "pyqPatterns": [
@@ -549,7 +549,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Einstein photoelectric equation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Einstein photoelectric equation.",
+            "Understands and can apply concepts of Einstein photoelectric equation.",
             "Successfully avoids common pitfalls when Einstein photoelectric equation is integrated with other concepts in Dual Nature of Matter and Radiation."
           ],
           "pyqPatterns": [
@@ -647,7 +647,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Effect of intensity on photocurrent."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Effect of intensity on photocurrent.",
+            "Understands and can apply concepts of Effect of intensity on photocurrent.",
             "Successfully avoids common pitfalls when Effect of intensity on photocurrent is integrated with other concepts in Dual Nature of Matter and Radiation."
           ],
           "pyqPatterns": [
@@ -745,7 +745,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Effect of frequency on photocurrent."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Effect of frequency on photocurrent.",
+            "Understands and can apply concepts of Effect of frequency on photocurrent.",
             "Successfully avoids common pitfalls when Effect of frequency on photocurrent is integrated with other concepts in Dual Nature of Matter and Radiation."
           ],
           "pyqPatterns": [
@@ -856,7 +856,7 @@
             "Failing to recall the exact conditions or sign conventions associated with De Broglie wavelength."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to De Broglie wavelength.",
+            "Understands and can apply concepts of De Broglie wavelength.",
             "Successfully avoids common pitfalls when De Broglie wavelength is integrated with other concepts in Dual Nature of Matter and Radiation."
           ],
           "pyqPatterns": [
@@ -955,7 +955,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Davisson-Germer experiment."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Davisson-Germer experiment.",
+            "Understands and can apply concepts of Davisson-Germer experiment.",
             "Successfully avoids common pitfalls when Davisson-Germer experiment is integrated with other concepts in Dual Nature of Matter and Radiation."
           ],
           "pyqPatterns": [
@@ -1054,7 +1054,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Photon theory of light."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Photon theory of light.",
+            "Understands and can apply concepts of Photon theory of light.",
             "Successfully avoids common pitfalls when Photon theory of light is integrated with other concepts in Dual Nature of Matter and Radiation."
           ],
           "pyqPatterns": [
@@ -1153,7 +1153,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Particle nature of light."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Particle nature of light.",
+            "Understands and can apply concepts of Particle nature of light.",
             "Successfully avoids common pitfalls when Particle nature of light is integrated with other concepts in Dual Nature of Matter and Radiation."
           ],
           "pyqPatterns": [
@@ -1264,7 +1264,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Wave nature of matter."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Wave nature of matter.",
+            "Understands and can apply concepts of Wave nature of matter.",
             "Successfully avoids common pitfalls when Wave nature of matter is integrated with other concepts in Dual Nature of Matter and Radiation."
           ],
           "pyqPatterns": [
@@ -1363,7 +1363,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Heisenberg uncertainty principle."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Heisenberg uncertainty principle.",
+            "Understands and can apply concepts of Heisenberg uncertainty principle.",
             "Successfully avoids common pitfalls when Heisenberg uncertainty principle is integrated with other concepts in Dual Nature of Matter and Radiation."
           ],
           "pyqPatterns": [
@@ -1462,7 +1462,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Production of X-rays."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Production of X-rays.",
+            "Understands and can apply concepts of Production of X-rays.",
             "Successfully avoids common pitfalls when Production of X-rays is integrated with other concepts in Dual Nature of Matter and Radiation."
           ],
           "pyqPatterns": [
@@ -1561,7 +1561,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Continuous X-rays."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Continuous X-rays.",
+            "Understands and can apply concepts of Continuous X-rays.",
             "Successfully avoids common pitfalls when Continuous X-rays is integrated with other concepts in Dual Nature of Matter and Radiation."
           ],
           "pyqPatterns": [
@@ -1673,7 +1673,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Characteristic X-rays."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Characteristic X-rays.",
+            "Understands and can apply concepts of Characteristic X-rays.",
             "Successfully avoids common pitfalls when Characteristic X-rays is integrated with other concepts in Dual Nature of Matter and Radiation."
           ],
           "pyqPatterns": [
@@ -1772,7 +1772,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Moseley’s law."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Moseley’s law.",
+            "Understands and can apply concepts of Moseley’s law.",
             "Successfully avoids common pitfalls when Moseley’s law is integrated with other concepts in Dual Nature of Matter and Radiation."
           ],
           "pyqPatterns": [
@@ -1871,7 +1871,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Compton effect basics."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Compton effect basics.",
+            "Understands and can apply concepts of Compton effect basics.",
             "Successfully avoids common pitfalls when Compton effect basics is integrated with other concepts in Dual Nature of Matter and Radiation."
           ],
           "pyqPatterns": [
@@ -1970,7 +1970,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Electron diffraction applications."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Electron diffraction applications.",
+            "Understands and can apply concepts of Electron diffraction applications.",
             "Successfully avoids common pitfalls when Electron diffraction applications is integrated with other concepts in Dual Nature of Matter and Radiation."
           ],
           "pyqPatterns": [

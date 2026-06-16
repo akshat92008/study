@@ -42,7 +42,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Ideal gas equation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Ideal gas equation.",
+            "Understands and can apply concepts of Ideal gas equation.",
             "Successfully avoids common pitfalls when Ideal gas equation is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
@@ -141,7 +141,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Assumptions of kinetic theory."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Assumptions of kinetic theory.",
+            "Understands and can apply concepts of Assumptions of kinetic theory.",
             "Successfully avoids common pitfalls when Assumptions of kinetic theory is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
@@ -240,7 +240,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Pressure of an ideal gas."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Pressure of an ideal gas.",
+            "Understands and can apply concepts of Pressure of an ideal gas.",
             "Successfully avoids common pitfalls when Pressure of an ideal gas is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
@@ -339,7 +339,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Root mean square speed."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Root mean square speed.",
+            "Understands and can apply concepts of Root mean square speed.",
             "Successfully avoids common pitfalls when Root mean square speed is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
@@ -438,7 +438,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Average speed of gas molecules."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Average speed of gas molecules.",
+            "Understands and can apply concepts of Average speed of gas molecules.",
             "Successfully avoids common pitfalls when Average speed of gas molecules is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
@@ -550,7 +550,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Most probable speed."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Most probable speed.",
+            "Understands and can apply concepts of Most probable speed.",
             "Successfully avoids common pitfalls when Most probable speed is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
@@ -648,7 +648,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Temperature and kinetic energy relation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Temperature and kinetic energy relation.",
+            "Understands and can apply concepts of Temperature and kinetic energy relation.",
             "Successfully avoids common pitfalls when Temperature and kinetic energy relation is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
@@ -747,7 +747,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Degrees of freedom."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Degrees of freedom.",
+            "Understands and can apply concepts of Degrees of freedom.",
             "Successfully avoids common pitfalls when Degrees of freedom is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
@@ -845,7 +845,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Law of equipartition of energy."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Law of equipartition of energy.",
+            "Understands and can apply concepts of Law of equipartition of energy.",
             "Successfully avoids common pitfalls when Law of equipartition of energy is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
@@ -944,7 +944,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Specific heat of monoatomic gas."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Specific heat of monoatomic gas.",
+            "Understands and can apply concepts of Specific heat of monoatomic gas.",
             "Successfully avoids common pitfalls when Specific heat of monoatomic gas is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
@@ -1056,7 +1056,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Specific heat of diatomic gas."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Specific heat of diatomic gas.",
+            "Understands and can apply concepts of Specific heat of diatomic gas.",
             "Successfully avoids common pitfalls when Specific heat of diatomic gas is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
@@ -1155,7 +1155,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Mean free path formula."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Mean free path formula.",
+            "Understands and can apply concepts of Mean free path formula.",
             "Successfully avoids common pitfalls when Mean free path formula is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
@@ -1254,7 +1254,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Avogadro number significance."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Avogadro number significance.",
+            "Understands and can apply concepts of Avogadro number significance.",
             "Successfully avoids common pitfalls when Avogadro number significance is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
@@ -1352,7 +1352,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Kinetic energy per molecule."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Kinetic energy per molecule.",
+            "Understands and can apply concepts of Kinetic energy per molecule.",
             "Successfully avoids common pitfalls when Kinetic energy per molecule is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
@@ -1451,7 +1451,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Gas mixture properties."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Gas mixture properties.",
+            "Understands and can apply concepts of Gas mixture properties.",
             "Successfully avoids common pitfalls when Gas mixture properties is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
@@ -1562,7 +1562,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Maxwell Boltzmann velocity distribution."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Maxwell Boltzmann velocity distribution.",
+            "Understands and can apply concepts of Maxwell Boltzmann velocity distribution.",
             "Successfully avoids common pitfalls when Maxwell Boltzmann velocity distribution is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
@@ -1661,7 +1661,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Collision frequency."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Collision frequency.",
+            "Understands and can apply concepts of Collision frequency.",
             "Successfully avoids common pitfalls when Collision frequency is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
@@ -1760,7 +1760,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Real gas deviation from ideal behaviour."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Real gas deviation from ideal behaviour.",
+            "Understands and can apply concepts of Real gas deviation from ideal behaviour.",
             "Successfully avoids common pitfalls when Real gas deviation from ideal behaviour is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
@@ -1859,7 +1859,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Van der Waals equation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Van der Waals equation.",
+            "Understands and can apply concepts of Van der Waals equation.",
             "Successfully avoids common pitfalls when Van der Waals equation is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
@@ -1958,7 +1958,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Critical temperature."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Critical temperature.",
+            "Understands and can apply concepts of Critical temperature.",
             "Successfully avoids common pitfalls when Critical temperature is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
@@ -2070,7 +2070,7 @@
             "Failing to recall the exact conditions or sign conventions associated with Compressibility factor."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Compressibility factor.",
+            "Understands and can apply concepts of Compressibility factor.",
             "Successfully avoids common pitfalls when Compressibility factor is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
