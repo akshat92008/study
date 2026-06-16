@@ -14,6 +14,9 @@ export default function Loading() {
       <Card padding="lg">
         <Skeleton height="180px" width="100%" />
       </Card>
+      <div style={{ textAlign: 'center', marginTop: 'var(--sp-4)', color: 'var(--danger)', fontSize: 'var(--fs-sm)' }}>
+        v3.0.0 (Timeout Active)
+      </div>
     </div>
   );
 }
