@@ -4,7 +4,8 @@ import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 
 export default function Error({ error, reset }: { error: Error; reset: () => void }) {
-  const message = process.env.NODE_ENV === 'production'
+  const isConfigError = error.message?.includes('CONFIG ERROR');
+  const message = (process.env.NODE_ENV === 'production' && !isConfigError)
     ? 'Something went wrong. Please retry, or come back shortly.'
     : error.message || 'Something went wrong.';
 
