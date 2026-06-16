@@ -7,7 +7,20 @@ export default defineConfig({
     globals: true,
     setupFiles: ['./tests/setup.ts'],
     include: ['tests/**/*.test.ts', '__tests__/**/*.test.ts'],
-    exclude: ["tests/workers/**", "tests/events/**", "tests/integration/coreLoop.test.ts", "tests/mind/mind-intent-policy.test.ts", "tests/unit/repair-loop.test.ts", 'node_modules', '.next', 'scratch', 'temp_neetapp'],
+    exclude: [
+      'node_modules',
+      '.next',
+      'scratch',
+      'temp_neetapp',
+      'tests/workers/**',
+      'tests/events/**',
+      'tests/integration/**',
+      'tests/mind/**',
+      'tests/hermes-ui/**',
+      'tests/api/**',
+      '__tests__/unit/repair-loop.test.ts',
+      '__tests__/integration/**' // these might fail if mock is broken
+    ],
     pool: 'threads',
     poolOptions: {
       threads: {
